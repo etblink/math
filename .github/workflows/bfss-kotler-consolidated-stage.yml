@@ -1,0 +1,70 @@
+name: BFSS Kotler consolidated transfer staging
+
+on:
+  push:
+    branches:
+      - contrib/kotler-bfss-consolidated-prep
+    paths:
+      - tools/bfss/build_kotler_upstream_port.py
+      - .github/workflows/bfss-kotler-consolidated-stage.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kotler-bfss-port-staging
+  cancel-in-progress: false
+
+jobs:
+  stage-import-closure:
+    if: github.repository == 'etblink/math' && github.ref == 'refs/heads/contrib/kotler-bfss-consolidated-prep'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the owner-controlled staging branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+
+      - name: Check out exact original independent BFSS source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: etblink/Foundational-Convergence-Program
+          ref: b60baa806dab3f0b296229a78f70e07b787544ab
+          path: fcp-src
+          persist-credentials: false
+          sparse-checkout: |
+            experiments/openai-math-su2-concrete-potential
+            experiments/openai-math-su2-physical-domain
+          sparse-checkout-cone-mode: true
+
+      - name: Audit pinned source and generate complete qualified-root import closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C fcp-src rev-parse HEAD)" = 'b60baa806dab3f0b296229a78f70e07b787544ab'
+          python3 -m py_compile tools/bfss/build_kotler_upstream_port.py
+          python3 tools/bfss/build_kotler_upstream_port.py --source fcp-src
+          test -s contributions/bfss-kotler/PORT_MANIFEST.md
+          test -s lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS3K1ExactPhysicalGaugePreservationProbe.lean
+          test -s lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS3L3ASourcePositionDerivativeCommutatorProbe.lean
+          ! test -e lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS3L3BSourceOperatorHeisenbergProbe.lean
+          grep -q '10.5281/zenodo.23291242' contributions/bfss-kotler/PORT_MANIFEST.md
+          echo 'STAGING_IMPORT_CLOSURE_AUDIT_COMPLETE'
+
+      - name: Commit source-faithful generated port to staging only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Evan Kotler"
+          git config user.email "etblink@users.noreply.github.com"
+          git add lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler contributions/bfss-kotler/PORT_MANIFEST.md
+          if git diff --cached --quiet; then
+            echo 'No staging changes.'
+          else
+            git commit -m 'prep(bfss): stage qualified-root dependency closure in owner fork [skip ci]'
+            test "$(git branch --show-current)" = 'contrib/kotler-bfss-consolidated-prep'
+            git push origin HEAD:refs/heads/contrib/kotler-bfss-consolidated-prep
+          fi
