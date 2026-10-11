@@ -1,0 +1,82 @@
+name: BFSS Kotler consolidated pinned Lean gate
+
+on:
+  push:
+    branches:
+      - contrib/kotler-bfss-consolidated-prep
+    paths:
+      - tools/bfss/verify_kotler_upstream_port.py
+      - .github/workflows/bfss-kotler-consolidated-proof-gate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kotler-bfss-consolidated-proof
+  cancel-in-progress: false
+
+jobs:
+  qualified-import-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 170
+    steps:
+      - name: Check out exact owner staging branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            /lean/OAI/
+            /lean/lakefile.lean
+            /lean/lake-manifest.json
+            /lean/lean-toolchain
+            /tools/bfss/
+            /contributions/bfss-kotler/
+          sparse-checkout-cone-mode: false
+
+      - name: Audit dependency closure and unqualified exclusions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/bfss/verify_kotler_upstream_port.py
+          python3 tools/bfss/verify_kotler_upstream_port.py
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          grep -q 'Selected import-closed modules: 130' contributions/bfss-kotler/PORT_MANIFEST.md
+
+      - name: Reclaim runner disk before installing pinned Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          df -h /
+
+      - name: Install exact pinned Lean 4.34.1 toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          lean --version
+          lake --version
+
+      - name: Restore exact pinned Mathlib source and build cache
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1320s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Independently compile 130 contributed modules and required source imports
+        shell: bash
+        timeout-minutes: 125
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 -u tools/bfss/verify_kotler_upstream_port.py --compile --timeout-per-module 240
