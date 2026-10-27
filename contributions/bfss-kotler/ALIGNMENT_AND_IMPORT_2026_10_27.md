@@ -782,3 +782,34 @@ not an accepted contributor module, theorem or Spin(48) unitary result.
 [Self-adjoint corrected strict run 40595136674](https://github.com/etblink/math/actions/runs/40595136674)
 was in progress when this second dependent source was staged; the older
 regex-superseded run 40595038658 is not qualification evidence.
+
+
+### Fast-exit qualification and return-to-FCP handoff
+
+Terminal accepted [self-adjoint run 40595136674](https://github.com/etblink/math/actions/runs/40595136674),
+job `122509035922`, qualified source blob
+`98889cb8607ccc64091165fbca585acb898b9ddc` and both declared roots
+`sourceNormalizedGamma_selfAdjoint` and `sourceGammaRealLinear_selfAdjoint`
+with exactly allowed axioms `propext`, `Classical.choice`, `Quot.sound`,
+a fresh `.olean`, zero Lean source warnings/errors and no `sorryAx`.
+Marker: `KOTLER_BFSS_SOURCE48_FOCK_GAMMA_SELFADJOINT_TWO_ROOTS_STRICT_PASS`.
+The old [40595038658](https://github.com/etblink/math/actions/runs/40595038658)
+is a superseded regex-verifier red, not a failed theorem. **27 contributor
+modules are now independently strict-qualified** on the owner branch.
+
+To reduce CI overhead, a final source-pinned **bounded batch**
+`.github/workflows/bfss-kotler-source48-fock-bivector-batch-strict.yml` (Git blob `859ec2986fd8d9474d2f340cf03dcc0aa27dcfc7`) restores Lean/Mathlib once,
+builds the two previously qualified Source48 self-adjoint / genuine Fock
+Clifford-lift parents together in one dependency graph, then freshly compiles
+the staged degree-two Clifford-star theorem. Exact source hashes and
+declaration/axiom/warnings/`sorryAx` gates remain mandatory; a green
+parent is not counted as a new result. The bivector module is still
+**unaccepted until this job finishes green**.
+
+Operational stop rule: after adjudicating this final batched bivector
+result, **return to FCP rather than port the entire legacy 130-module
+archive one file per CI run**. Remaining archive content is a candidate
+inventory, not evidence of accepted mathematics. The community revision
+remains pinned at `mathcommunity/oai-math-revised@2a6ea33834056b87356e0e06bf9cbc2ea028b213`,
+and FCP's original research branch remains the active research record.
+No upstream community PR, issue, source write or owner main modification.

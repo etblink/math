@@ -1,0 +1,79 @@
+name: BFSS original Source48 Fock bivector batched strict gate
+on:
+  push:
+    branches:
+      - integration/community-20261027-bfss
+    paths:
+      - .github/workflows/bfss-kotler-source48-fock-bivector-batch-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  source48-bivector-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact qualified parents and new candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean)" = 'd12051e70de679f5458dbd456667a32c7b407ce4'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean)" = 'a9f446ea7986ca796c2f4b222a5ab710d98590cc'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48AllVectorFockCliffordSquareProbe.lean)" = '86436ee9a4f3b097bc9cbc4521d5fc582dbd7feb'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockCliffordUniversalLiftProbe.lean)" = 'f057756e42d30c8069a9c934001cf75c1e2d1ed2'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean)" = '98889cb8607ccc64091165fbca585acb898b9ddc'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean)" = '066adb767080c43b18b112376ae5c1402936b4af'
+      - name: Restore pinned Lean once for the combined parent graph
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+      - name: Rebuild both accepted dependencies in one graph
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3300s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockCliffordUniversalLiftProbe OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockGammaSelfAdjointProbe
+      - name: Fresh candidate compilation and single strict root audit
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockBivectorStarCompatibilityProbe.olean" "OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean" 2>&1 | tee /tmp/bfss-bivector-batch.log
+          test -s .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockBivectorStarCompatibilityProbe.olean
+          python3 - <<'PY'
+          import pathlib, re
+          log=pathlib.Path('/tmp/bfss-bivector-batch.log').read_text()
+          src=pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean').read_text()
+          root='sourceFockCliffordAlgHom_star_bivector'
+          wanted='FCP.BFSSSource48FockBivectorStar.'+root
+          requested=re.findall(r'^#print axioms (\S+)',src,re.M)
+          reported=re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",log)
+          warnings=re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:',log)
+          assert requested==[root],requested
+          assert not warnings and 'error:' not in log and 'sorryAx' not in log,(warnings,log[-5000:])
+          assert len(reported)==1 and reported[0][0]==wanted,reported
+          used={v.strip() for v in reported[0][1].split(',') if v.strip()}
+          assert used <= {'propext','Classical.choice','Quot.sound'},used
+          print('KOTLER_BFSS_SOURCE48_BIVECTOR_STAR_ONE_ROOT_STRICT_PASS')
+          PY
