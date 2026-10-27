@@ -854,3 +854,113 @@ not a promise to follow later upstream changes automatically.
 live FCP proof frontier; do not bulk-promote the old 130-source archive.
 Keep `etblink/math:main` unchanged. **No upstream community PR, issue,
 comment, or source write was performed or authorized.**
+
+
+## Independent FCP import-coverage audit — 2026-10-27
+
+**Snapshot and scope.** This audit compares the owner staging branch
+`integration/community-20261027-bfss@3d4df598fc6a99f64dbdde81aef9f1df6fc81a9d`,
+the pinned and, at audit time, latest
+`mathcommunity/oai-math-revised@2a6ea33834056b87356e0e06bf9cbc2ea028b213`,
+the legacy owner archive branch `contrib/kotler-bfss-consolidated-prep`,
+and the active FCP research branch
+`research/openai-math-su2-s1v52-global-lift-scoping-20261019@cc608e2282e1b32bb11bbb64424e4775b28138e2`.
+FCP's `main@cf06212a57db0ceffad74bd78280a8a240856a17` dates to October 9
+and is **not** the comprehensive BFSS source of record. This is a repository
+tree, source-import and published-CI evidence audit; it is *not* a new independent
+full-build or mathematical proof of the original BFSS spectral statement.
+
+### A. Pinned community-base integrity: PASS
+
+An independent exact Git-tree comparison found the owner branch equal to the
+pinned community baseline outside the documented owner additions. Under
+`lean/`, all immediate entries except `OAI/` have identical object IDs,
+including `lean-toolchain`, `lake-manifest.json`, `lakefile.lean`,
+`formalization.yaml`, and the comparator challenges. Under `OAI/`, only
+`MathematicalPhysics/` differs; under that tree only `BFSS/` differs.
+The baseline BFSS tree has **74 direct entries**, and **all 74 retain their
+unchanged Git object IDs** in the owner branch. Exactly two owner BFSS entries
+are added: `Contrib/` and `SpinPlaneCovariance.lean`. No original community
+BFSS source was silently replaced. The baseline is a *pinned snapshot*, not an
+automatic future upstream synchronization.
+
+### B. Imported proof graph and acceptance: PASS at the bounded contribution scope
+
+Exactly **27 Lean source files** exist under
+`lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/`, plus one distinct owner
+source file `BFSS/SpinPlaneCovariance.lean`, accounting for the ledger's
+**28-module imported proof set**. This resolves the apparent 27-versus-28
+count discrepancy. An individual read of every current contributor source found:
+
+- **Zero missing intra-Kotler imports** across the 27 source files.
+- **Zero explicit standalone `sorry`, `admit`, or `axiom` declarations** on
+  a lexical source check. These checks alone do not replace Lean's compiler or
+  axiom trace.
+- The latest degree-two bivector source compiles against its qualified original
+  Fock self-adjointness and Clifford-lift parents under the pinned
+  Lean 4.34.1 / Mathlib `d13f23b` interface; [strict run
+  40596787925](https://github.com/etblink/math/actions/runs/40596787925)
+  and job `122514609872` both ended `completed/success`.
+  The original aligned [spin-plane strict run
+  40553748437](https://github.com/etblink/math/actions/runs/40553748437)
+  also ended `completed/success`.
+
+**Boundary:** these are individually gated source modules; no claim is made
+that every formalized OpenAI manuscript theorem, the complete FCP experimental
+corpus, or a full clean-room recompile of *all* 28 contributor modules has been
+independently performed in this audit. Original Spin(48) kernel classification,
+global Spin(9) covering/lift and the BFSS spectral eigenstate remain separate
+obligations.
+
+### C. Historical archive coverage: intentionally incomplete; no automatic bulk import
+
+The legacy preparation branch holds **130** named Kotler BFSS Lean source
+files. Twelve exact filenames overlap the current 27-file contributor
+directory: **8 identical Git blobs**, **4 adapted blobs**. **118 older
+filenames are absent by exact name**, while **15 current filenames are new
+relative to that archive**. Neither number measures missing mathematics:
+renamed, strengthened, superseded, unproved, and proof-dependency-sensitive
+results cannot be equated by filename alone.
+
+The active FCP research branch's recursive tree instead contains **858 Lean
+experimental source files**, including **57 under `/recovery/`**. They are
+an inventory of candidates, accepted predecessors, historical experiments and
+recovery controls—not 858 independently qualified contributor results.
+The old 130-file broad build did **not** pass a complete fresh Lean acceptance
+gate (the prior failure occurred during Mathlib/cache restoration). Importing
+the archive en masse would replace auditable acceptance with file copying.
+
+### D. Frontier gap: current FCP research is not yet mirrored
+
+FCP has progressed through the source-exact PBW/contraction
+`K1D0`, `K1D1`, `K1D2A`–`K1D2F2` line, with separate original
+`K1C`, `F20B`, and `S1V38` source ancestors. The original
+`SU2BFSSPhysicalDomainS1V52K1D2F2OriginalPBWAllContractionsNoOccupiedLabelsProbe.lean`
+has Git blob `0dc59f0b2b5fe38f761bac4277049498a67d2871` and imports
+`K1D2F1` and `K1D2E4` by their original source-module names.
+The upstream FCP [F1 strict run
+40550171138](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/40550171138)
+and [F2 strict run
+40597125928](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/40597125928)
+ended `completed/success`. F2 proves the bounded no-occupied-labels
+consequence of vanishing original coordinate contractions; this **does not by
+itself discharge the entire scalar-common-kernel, Spin(48) kernel, covering,
+global Spin(9) or spectral obligations**. The FCP K1D lineage is not present
+as modules in the 28-source owner integration set.
+
+**Audit verdict:** (1) the **current bounded 28-source integration is internally
+import-closed and its documented selected strict CI gates are green**;
+(2) it **is not a complete or up-to-date mirror of the actively advancing FCP
+proof frontier**; (3) there is **no supported reason to import all 118
+archive-only filenames or 858 FCP experimental sources**.
+
+**Next bounded admission:** create a source-exact FCP theorem-root/dependency
+crosswalk for the K1D2F2 line, explicitly tracing `F20B`, `K1C`,
+`S1V38` and the intervening original PBW/exterior source files; select only
+the qualified transitive dependency closure, adapt imports without changing
+theorems, and run fresh strict Lean/axiom/no-warning checks on a separate
+owner-controlled integration sub-branch before advancing this ledger. Record
+each accepted root and supersession outcome, preserve failed attempts, and
+do not conflate structural copies with theorem acceptance. Avoid modifying
+`etblink/math:main` or contacting `mathcommunity` without a separate
+owner authorization.
