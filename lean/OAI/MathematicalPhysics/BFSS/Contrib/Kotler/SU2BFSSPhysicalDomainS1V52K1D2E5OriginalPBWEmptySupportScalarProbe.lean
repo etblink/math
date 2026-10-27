@@ -2,7 +2,9 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D2DOriginalExteriorPBWEmptyAndEraseInjectivityProbe
 
 /-! Owner FCP source-only port, original cc608e2282e1b32bb11bbb64424e4775b28138e2; Git blob 50943cf5f20a40cb8f65b1e90d6ca738af3bc660.
-Imports alone have been restructured; theorem statements/proof bodies unchanged.
+Imports have been restructured; the theorem statement is unchanged.
+The original staged E5 proof is repaired for the pinned Mathlib interface:
+empty membership by simp, and repr reconstruction by congrArg.
 The omitted original Spin ancestry is not claimed qualified by this port.
 Status: provisional pending fresh owner strict-gate acceptance. -/
 
@@ -58,13 +60,13 @@ theorem originalExteriorScalar_of_no_occupiedPBWLabels
           FCP.BFSSS1V52K1D2E4.originalSourcePBWSupportedIndex_member_occupied
             x I hs j hj
         rw [hempty] at hh
-        exact Finset.not_mem_empty j hh
-      simp [Finsupp.single_apply, hI, hc]
+        simp at hh
+      simp [hI, hc]
   refine ⟨f ∅, ?_⟩
   calc
     x = B.repr.symm f := by
       simp [f]
-    _ = B.repr.symm (Finsupp.single ∅ (f ∅)) := by rw [hf]
+    _ = B.repr.symm (Finsupp.single ∅ (f ∅)) := congrArg B.repr.symm hf
     _ = f ∅ • B (∅ : Finset Source48Label) := B.repr_symm_single ∅ (f ∅)
     _ = algebraMap ℝ E (f ∅) := by
       have hunit : B (∅ : Finset Source48Label) = (1 : E) := by
