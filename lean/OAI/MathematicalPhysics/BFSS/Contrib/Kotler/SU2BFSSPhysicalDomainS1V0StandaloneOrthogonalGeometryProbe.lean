@@ -40,7 +40,7 @@ theorem sourcePlane_decomposition (a b v : Source48Vector) :
 
 theorem sourcePlaneComplement_ortho_first
     (a b v : Source48Vector)
-    (ha : Q a = 1) (hb : Q b = 1)
+    (ha : Q a = 1) (_hb : Q b = 1)
     (hab : Q.IsOrtho a b) :
     Q.IsOrtho a (sourcePlaneComplement a b v) := by
   have hAA : B a a = 1 := by
@@ -49,12 +49,12 @@ theorem sourcePlaneComplement_ortho_first
     exact (QuadraticMap.associated_isOrtho (Q := Q)).2 hab
   have hzero : B a (sourcePlaneComplement a b v) = 0 := by
     simp only [sourcePlaneComplement, map_sub, map_smul, smul_eq_mul,
-      hAA, hAB, mul_one, mul_zero, sub_zero, sub_self]
+      hAA, hAB, mul_one, mul_zero, sub_self]
   exact (QuadraticMap.associated_isOrtho (Q := Q)).1 hzero
 
 theorem sourcePlaneComplement_ortho_second
     (a b v : Source48Vector)
-    (ha : Q a = 1) (hb : Q b = 1)
+    (_ha : Q a = 1) (hb : Q b = 1)
     (hab : Q.IsOrtho a b) :
     Q.IsOrtho b (sourcePlaneComplement a b v) := by
   have hBB : B b b = 1 := by
@@ -63,7 +63,7 @@ theorem sourcePlaneComplement_ortho_second
     exact (QuadraticMap.associated_isOrtho (Q := Q)).2 hab.symm
   have hzero : B b (sourcePlaneComplement a b v) = 0 := by
     simp only [sourcePlaneComplement, map_sub, map_smul, smul_eq_mul,
-      hBA, hBB, mul_one, mul_zero, zero_mul, sub_zero, sub_self]
+      hBA, hBB, mul_one, mul_zero, sub_zero, sub_self]
   exact (QuadraticMap.associated_isOrtho (Q := Q)).1 hzero
 
 #print axioms sourcePlane_decomposition
