@@ -4,7 +4,7 @@ on:
     branches:
       - integration/community-20261027-bfss
     paths:
-      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedDiagProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe.lean
       - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedDiagProbe.lean
       - .github/workflows/bfss-kotler-mixed-same-mode-strict.yml
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
           grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe.lean)" = '71e0002c8e1f23a1522abd301bdc7f50a3b58214'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedDiagProbe.lean)" = '526abb5d59547075709a52c1e0d44a30a8b5222f'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe.lean)" = '526abb5d59547075709a52c1e0d44a30a8b5222f'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedDiagProbe.lean)" = 'd9d137fb01ae96d3d4828337a079aae861246508'
       - name: Prepare pinned Lean environment
         shell: bash
@@ -68,7 +68,7 @@ jobs:
           warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
           assert 'error:' not in log and 'sorryAx' not in log and not warnings, (warnings, log[-4000:])
           assert requested == ['majorana01_car_self'] and len(actual) == 1, (requested, actual)
-          assert actual[0][0] == 'FCP.BFSSFermionF2B2Mixed.majorana01_car_ne'
+          assert actual[0][0] == 'FCP.BFSSFermionF2B2MixedDiag.majorana01_car_self'
           used = {item.strip() for item in actual[0][1].split(',') if item.strip()}
           assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, used
           print('KOTLER_BFSS_MIXED_SAME_MODE_ONE_ROOT_STRICT_PASS')
