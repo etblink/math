@@ -100,7 +100,7 @@ theorem majorana1_selfAdjoint (i : Fin 24) :
     IsSelfAdjoint (majorana1 i) := by
   unfold majorana1
   apply IsSelfAdjoint.smul
-  · simp [IsSelfAdjoint, Complex.star_def, Complex.conj_ofReal]
+  · simp [IsSelfAdjoint, Complex.conj_ofReal]
   · exact IsSelfAdjoint.add_star_self (Complex.I • creator i)
 
 /-- Dimension-preserving bijection between all BFSS fermion labels and
