@@ -34,7 +34,7 @@ theorem originalFockOperator_real_smul_eq_complex_smul
   -- Stop specifically at ContinuousLinearMap extensionality.
   apply ContinuousLinearMap.ext
   intro ψ
-  simp only [ContinuousLinearMap.smul_apply]
+  simp only [smul_apply]
   exact (Complex.coe_smul a (T ψ)).symm
 
 #print axioms originalFockOperator_real_smul_eq_complex_smul

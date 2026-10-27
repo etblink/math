@@ -24,7 +24,7 @@ jobs:
           test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
           grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean)" = '331689c9bfdd68166e7c4ba06319e719a6668e5a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean)" = 'a02f767ebf1f569302e27676b8d426850db37af1'
       - name: Prepare pinned Lean environment
         shell: bash
         timeout-minutes: 35
