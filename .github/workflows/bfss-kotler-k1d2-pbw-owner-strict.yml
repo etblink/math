@@ -1,0 +1,99 @@
+name: BFSS K1D2 owner-port source-exact PBW strict gate
+on:
+  push:
+    branches:
+      - integration/fcp-k1d2-pbw-20261027
+    paths:
+      - .github/workflows/bfss-kotler-k1d2-pbw-owner-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2*.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5F20B*.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  original-source-pbw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify source hashes and exact pinned Lean/Mathlib provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean)" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5F20BOriginalSource48CliffordPBWBasisFiniteDimensionalProbe.lean)" = '63d117da8cb2ad337cfb372946332cb42bdf5390'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2AOriginalExteriorCoordinateWordContractionProbe.lean)" = '3cedc0a0487fc2439a0a1cbc95190faa7e3a3ed2'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2BOriginalExteriorWordNonzeroEraseContractionProbe.lean)" = 'fa6c021f752ea1cdb97edc75a1cb2204112983d1'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2COriginalExteriorPBWBasisOrderedWordProbe.lean)" = '3ed038ffa6be357965af5c777ecebf958518fff3'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2DOriginalExteriorPBWEmptyAndEraseInjectivityProbe.lean)" = '390b9eb58e9895f29cdbc183f966e2ccf26b6125'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E1OriginalPBWBasisAbsentCoordinateContractionProbe.lean)" = '3ce8bffdbd5c7f9ef880900a2311e675d08d71db'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E2OriginalPBWLeastCoordinateHeadProbe.lean)" = '1183b901630d70981d102d803d3d9ed880539d43'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E3OriginalPBWLeastCoordinateContractionProbe.lean)" = 'c1f8568c804c6da574ae39755bc1f5a5ce4a2854'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E4OriginalPBWFinitelyOccupiedMinimumProbe.lean)" = 'ca5359c3ee1d9695bc2de16294d21b942d7ff426'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E5OriginalPBWEmptySupportScalarProbe.lean)" = 'e5daad4d957b9518dbc000b5e88b49e7070e69d9'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2F1OriginalPBWLeastContractionCoefficientProbe.lean)" = '4014ee2b0770d70908306652d393ee17aceeb3bf'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2F2OriginalPBWAllContractionsNoOccupiedLabelsProbe.lean)" = 'eada39fbd5891865e9662a610cf10deb584834da'
+      - name: Restore exact Lean and Mathlib artifacts
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+      - name: Fresh owner source proof compilation and strict per-module root audit
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3300s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe
+          files=(
+            'SU2BFSSPhysicalDomainS1V52L9E5F20BOriginalSource48CliffordPBWBasisFiniteDimensionalProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2AOriginalExteriorCoordinateWordContractionProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2BOriginalExteriorWordNonzeroEraseContractionProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2COriginalExteriorPBWBasisOrderedWordProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2DOriginalExteriorPBWEmptyAndEraseInjectivityProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2E1OriginalPBWBasisAbsentCoordinateContractionProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2E2OriginalPBWLeastCoordinateHeadProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2E3OriginalPBWLeastCoordinateContractionProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2E4OriginalPBWFinitelyOccupiedMinimumProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2E5OriginalPBWEmptySupportScalarProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2F1OriginalPBWLeastContractionCoefficientProbe.lean'
+            'SU2BFSSPhysicalDomainS1V52K1D2F2OriginalPBWAllContractionsNoOccupiedLabelsProbe.lean'
+          )
+          for f in "${files[@]}"; do
+            src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/$f"
+            dst=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/${f%.lean}.olean"
+            mkdir -p "$(dirname "$dst")"
+            timeout 900s lake env lean -o "$dst" "$src" 2>&1 | tee /tmp/fcp-k1d2-owner.log
+            test -s "$dst"
+            python3 - "$src" <<'PY'
+          import pathlib, re, sys
+          src = pathlib.Path(sys.argv[1]).read_text()
+          log = pathlib.Path('/tmp/fcp-k1d2-owner.log').read_text()
+          ns = re.search(r'(?m)^namespace\s+(\S+)', src).group(1)
+          wanted = re.findall(r'(?m)^#print axioms (\S+)', src)
+          reported = re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)", log)
+          warnings = re.findall(r'(?m)^.*\.lean:\d+:\d+: warning:', log)
+          assert wanted and len(reported) == len(wanted), (wanted, reported, log[-3000:])
+          assert [name for name,_ in reported] == [ns+'.'+w for w in wanted], (wanted, reported)
+          assert not warnings and 'error:' not in log and 'sorryAx' not in log, (warnings, log[-3000:])
+          for _, ax in reported:
+              used = {a.strip() for a in ax.split(',') if a.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, used
+          print('FCP_K1D2_OWNER_INDEPENDENT_SOURCE_MODULE_STRICT_PASS', sys.argv[1])
+          PY
+          done
+          echo FCP_K1D2_OWNER_TWELVE_MODULES_INDEPENDENT_STRICT_PASS
