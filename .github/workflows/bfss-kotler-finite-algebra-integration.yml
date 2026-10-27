@@ -24,7 +24,7 @@ jobs:
             pin: b9b8192055c70f0d001d7982669b9823c55562ed
           - module: SU2ColorCrossProbe
             parent: OAI.MathematicalPhysics.BFSS.PotentialBasis OAI.Analysis.CharacterCriterion.Pauli
-            pin: f2d6ca5a5bfb9de262c1128b15ddc407631d6c98
+            pin: 209b3808222730ca5e817d83ed32253a67513f7f
     runs-on: ubuntu-latest
     timeout-minutes: 105
     steps:
@@ -87,12 +87,17 @@ jobs:
           name = sys.argv[1]
           source = pathlib.Path(f'OAI/MathematicalPhysics/BFSS/Contrib/Kotler/{name}.lean').read_text()
           log = pathlib.Path(f'/tmp/{name}.log').read_text()
-          assert 'sorryAx' not in log and 'error:' not in log and 'warning:' not in log, log[-4500:]
+          # Lake emits repository-local-change notices for pinned, patched
+          # dependencies; these are environment notices, not Lean diagnostics.
+          lean_warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'sorryAx' not in log and 'error:' not in log and not lean_warnings, (name, lean_warnings, log[-4500:])
           printed = re.findall(r'^#print axioms (\S+)', source, re.M)
-          axioms = re.findall(r"(?m)^'([^']+)' depends on axioms: \[([^]]*)\]", log)
-          assert len(axioms) >= len(printed), (name, len(axioms), len(printed), log[-4500:])
+          # Axiom output can wrap after the opening '['.
+          axioms = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          assert len(axioms) == len(printed), (name, len(axioms), len(printed), log[-4500:])
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          for declaration, dependencies in axioms:
+          for (declaration, dependencies), requested in zip(axioms, printed):
+              assert declaration.endswith('.' + requested), (declaration, requested)
               used = {part.strip() for part in dependencies.split(',') if part.strip()}
               assert used <= allowed, (declaration, used)
           print(f'KOTLER_BFSS_{name}_STRICT_ONE_MODULE_PASS')
