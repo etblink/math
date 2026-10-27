@@ -348,3 +348,24 @@ new root. Source, workflow and audit are committed in ONE Git tree
 transaction with exact original and candidate SHA pins. F2B2b
 acceptance remains ZERO until this new strict gate terminates green.
 Neither mathcommunity nor canonical owner main is modified.
+
+### Strict source-labeling boundary for later global BFSS claims
+
+The accepted old F2 source at
+lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean
+defines its thetaLabelEquiv by composition using
+Fintype.equivFin on the 16-by-3 domain and on the 24-by-2 codomain.
+It proves a genuine bijection, and the CAR identities for the resulting
+Majorana operators are valid as *those specifically defined operators*.
+However, the definition does NOT expose the later explicit
+spin-pair/color-mode ordering of pairedTheta used by the FCP program.
+Thus a future successful 48-index theta CAR for this older
+thetaCandidate is **not** itself an identification with source-exact
+pairedTheta, original Majorana generators, or a global Spin(9)
+physical lift. That identification demands an explicit permutation /
+source-order crosswalk, separately qualified in Lean. No replacement
+ordering may be silently treated as identical.
+
+This is a scope safeguard, not a claim of counterexample or failure
+of the CAR itself. Keep the unproved original source identification
+separate from the now-qualified finite CAR algebra.
