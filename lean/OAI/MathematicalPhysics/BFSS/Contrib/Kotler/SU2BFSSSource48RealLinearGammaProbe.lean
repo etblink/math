@@ -39,8 +39,8 @@ noncomputable def sourceGammaRealLinear : Source48Vector →ₗ[ℝ] Op where
     calc
       (∑ p : Source48Label, (v p + w p) • sourceNormalizedGamma p) =
           ∑ p : Source48Label,
-            (v p) • sourceNormalizedGamma p +
-              (w p) • sourceNormalizedGamma p := by
+            ((v p) • sourceNormalizedGamma p +
+              (w p) • sourceNormalizedGamma p) := by
         apply Finset.sum_congr rfl
         intro p hp
         exact add_smul (v p) (w p) (sourceNormalizedGamma p)
@@ -65,8 +65,8 @@ theorem sourceGammaRealLinear_axis
     exact one_smul ℝ (sourceNormalizedGamma (sourceBlockColorLabel (j, s) A))
   · intro p hp hne
     have hzero : sourceBlockColorAxis (j, s) A p = 0 := by
-      simp only [sourceBlockColorAxis, Pi.single_apply]
-      exact if_neg hne
+      have hne' : sourceBlockColorLabel (j, s) A ≠ p := Ne.symm hne
+      simp [sourceBlockColorAxis, hne']
     rw [hzero]
     exact zero_smul ℝ (sourceNormalizedGamma p)
   · intro hnot
