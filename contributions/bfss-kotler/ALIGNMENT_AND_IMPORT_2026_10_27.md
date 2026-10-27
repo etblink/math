@@ -229,3 +229,32 @@ commit a source correction and its workflow hash update atomically (Git tree
 transaction), or explicitly suppress source-only gates during the short
 two-commit update. Retain immutable source hashes and NEVER weaken preflight
 to conceal mismatches.
+
+### Fock five-root qualification and F2 single-warning successor
+
+- [Fock strict run 40558967036](https://github.com/etblink/math/actions/runs/40558967036)
+  completed **SUCCESS**, job 122382517933, emitting the exact
+  KOTLER_BFSS_FOCK_TRANSPORT_FIVE_ROOTS_STRICT_PASS marker.
+  The pinned source blob dbe9241436c7d3633547e559bccd5fe1fd82de9a
+  compiled to an actual .olean; all five requested theorem roots had
+  only allowed Lean axioms and zero source warnings/errors/sorryAx.
+  These five source-typed results are now accepted *on the owner
+  community-aligned integration branch*, not on mathcommunity or owner main.
+- [First F2 strict run 40559163074](https://github.com/etblink/math/actions/runs/40559163074)
+  was **RED** at the cross-mode CAR module, after independently compiling
+  and revalidating its qualified Fock parent. The F2 Lean compiler
+  produced six intended axiom-report declarations, but a real source warning
+  at F2 line 103 rejected unused Complex.star_def in
+  majorana1_selfAdjoint. It is a proof-hygiene warning, not a mathematical
+  counterexample; no F2 theorem root was accepted.
+- Corrected only that unused simp argument in F2 source without changing
+  any theorem statement or imports. Old F2 blob
+  aa99b37d433b3a7b8881291e7a2b2003ea35b158; new source
+  93d7ae00d4ee21ce59ab137c349590e2c496ff38.
+  The exact source and workflow pin were committed **atomically**, removing
+  the guaranteed stale-pin red intermediate run seen in earlier work.
+  [Atomic commit 41d62de1](https://github.com/etblink/math/commit/41d62de136d85cb96da7c2b97ae6b579bf704611);
+  successor [strict run 40560600629](https://github.com/etblink/math/actions/runs/40560600629)
+  initiated. Until terminal success, F2 has **zero** accepted roots.
+- No upstream PR, owner main update, unproved physical BFSS spectral claim,
+  or change to the pinned community source tree.
