@@ -63,7 +63,7 @@ jobs:
           test -s ".lake/build/lib/lean/${target}.olean"
           python3 - <<'PY'
           import pathlib, re
-          log = pathlib.Path('/tmp/mixed-car-strict.log').read_text()
+          log = pathlib.Path('/tmp/mixed-all-strict.log').read_text()
           source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedAllProbe.lean').read_text()
           requested = re.findall(r'^#print axioms (\S+)', source, re.M)
           actual = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
