@@ -404,3 +404,9 @@ Each module is an unmodified owner-archived proof candidate, qualified only by i
 The initial same-mode gate 40565824919 was **red for our generated CI preflight typo**, not a proof diagnosis. The checker was corrected in run 40565903133, preserving warning-as-error and axiom controls.
 
 The eventual indexed CAR result, if accepted, applies to the exact `majoranaCandidate : Fin 24 × Fin 2 → BFSSOp` in these old formalizations. It is NOT an automatic source-label identification with later `pairedTheta`, a two-sign Spin(48) kernel, a Spin(9) lift, or BFSS spectral existence. Those obligations remain independent. No changes to canonical owner `main` or `mathcommunity`; no upstream PR.
+
+### Distinct-mode mixed CAR strict acceptance (2026-10-27)
+
+[Run 40565636078](https://github.com/etblink/math/actions/runs/40565636078), job `122406015667`, TERMINAL **GREEN**. Exact archived `SU2FermionF2B2MixedProbe.lean` Git blob `526abb5d59547075709a52c1e0d44a30a8b5222f` compiled against the actual source import chain, with fresh nonempty `.olean`, exact `FCP.BFSSFermionF2B2Mixed.majorana01_car_ne` proof root, permitted `propext, Classical.choice, Quot.sound` axioms and no Lean source warning, error or `sorryAx`. The log emitted `KOTLER_BFSS_MIXED_DISTINCT_MODE_ONE_ROOT_STRICT_PASS`. This is one new accepted root in the owner integration branch: real–imaginary Majorana anticommutation for `i ≠ j` only.
+
+Separate [same-mode run 40565903133](https://github.com/etblink/math/actions/runs/40565903133), [all-mode run 40566255546](https://github.com/etblink/math/actions/runs/40566255546) and [48-index run 40566511949](https://github.com/etblink/math/actions/runs/40566511949) were still awaiting terminal verification at the time of this entry. Do not promote downstream claims from the accepted distinct-mode theorem alone.
