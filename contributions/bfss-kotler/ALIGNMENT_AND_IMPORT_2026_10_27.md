@@ -813,3 +813,44 @@ inventory, not evidence of accepted mathematics. The community revision
 remains pinned at `mathcommunity/oai-math-revised@2a6ea33834056b87356e0e06bf9cbc2ea028b213`,
 and FCP's original research branch remains the active research record.
 No upstream community PR, issue, source write or owner main modification.
+
+### Terminal Source48 degree-two Clifford-star qualification — owner branch final checkpoint
+
+The final batched [strict run 40596787925](https://github.com/etblink/math/actions/runs/40596787925), job `122514609872`, is **TERMINAL SUCCESS**, against owner branch commit
+`6da721124eb41ae86457b2545998e328eabd57e5`. Its original CI record independently
+passed exact qualified parent/candidate source checks, restored Lean 4.34.1 /
+Mathlib `d13f23b`, rebuilt the previously accepted actual Source48 Fock
+self-adjointness and universal Clifford representation parents, compiled the
+candidate freshly, and completed the exact single-root, diagnostic and
+axiom audits. The candidate blob is
+`066adb767080c43b18b112376ae5c1402936b4af`.
+
+The accepted declaration is
+`FCP.BFSSSource48FockBivectorStar.sourceFockCliffordAlgHom_star_bivector`.
+Its compiler `#print axioms` output names only `propext`,
+`Classical.choice`, `Quot.sound`; the original job emits
+`KOTLER_BFSS_SOURCE48_BIVECTOR_STAR_ONE_ROOT_STRICT_PASS`.
+The job's fresh compilation and single-root audit succeeded with no new
+Lean source warning/error or `sorryAx`.
+
+The branch ledger advances **27 → 28 strict-qualified BFSS contributor
+modules**. This is a narrowly scoped **degree-two bivector star-compatibility**
+statement on the original 48-coordinate Fock representation, **not** a
+global Clifford star-homomorphism: odd Clifford generators have the
+opposite involution behavior to the represented self-adjoint Majoranas.
+It does **not** classify the original Spin(48) kernel, prove a global
+Spin(9) lift/covering, or establish a BFSS spectral eigenstate.
+
+The verified community-alignment baseline remains
+`mathcommunity/oai-math-revised@2a6ea33834056b87356e0e06bf9cbc2ea028b213`.
+Direct tree-entry SHA comparisons show all baseline top-level root files and
+directories identical except owner additions under `.github`,
+`contributions`, and `lean/OAI`; the remaining direct `lean/` entries
+match exactly, including `lean-toolchain`, `lake-manifest.json`,
+`lakefile.lean` and `formalization.yaml`. This is a pinned snapshot,
+not a promise to follow later upstream changes automatically.
+
+**Handoff:** honor the previous bounded-import stop rule and return to the
+live FCP proof frontier; do not bulk-promote the old 130-source archive.
+Keep `etblink/math:main` unchanged. **No upstream community PR, issue,
+comment, or source write was performed or authorized.**
