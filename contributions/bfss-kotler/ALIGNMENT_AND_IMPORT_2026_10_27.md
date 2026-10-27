@@ -748,3 +748,17 @@ own strict run terminates green.**
 Scope: owner integration branch only. Neither canonical owner main nor
 `mathcommunity/oai-math-revised` has been modified, and no upstream PR,
 issue or comment is authorized.
+
+
+### Self-adjoint CI verifier syntax correction (no mathematical source change)
+
+The initial two-root strict gate emitted its Python regular-expression source
+with doubled backslashes when serializing the workflow YAML. This would
+prevent correct extraction of `#print axioms` reports even if Lean compiled
+the candidate. The **workflow only** is corrected to the known-good one-escape
+axiom-regex patterns from the preceding accepted Clifford-lift gate; candidate
+Lean blob `98889cb8607ccc64091165fbca585acb898b9ddc`, original mathematical
+source pins, axiom whitelist and no-warnings rule remain identical. The
+corrected strict workflow blob is `b1adc45132ed7ac1a9dee76a1cd0312d4a10c48d`. Any earlier red caused solely
+by regex extraction is a verifier/interface failure, not a theorem failure.
+Only a terminal run using this corrected workflow may admit the two roots.

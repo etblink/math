@@ -65,9 +65,9 @@ jobs:
           log = pathlib.Path('/tmp/source48-selfadjoint-strict.log').read_text()
           source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean').read_text()
           wanted = ['sourceNormalizedGamma_selfAdjoint', 'sourceGammaRealLinear_selfAdjoint']
-          requested = re.findall(r'^#print axioms (\\S+)', source, re.M)
-          actual = re.findall(r"(?ms)^'([^'\\n]+)' depends on axioms: \\[([^]]*)\\]", log)
-          warnings = re.findall(r'(?m)^[^\\n]*\\.lean:\\d+:\\d+: warning:', log)
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          actual = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
           assert not warnings and 'error:' not in log and 'sorryAx' not in log, (warnings, log[-5000:])
           assert requested == wanted and len(actual) == len(wanted), (requested, actual)
           for (decl, axioms), name in zip(actual, wanted):
