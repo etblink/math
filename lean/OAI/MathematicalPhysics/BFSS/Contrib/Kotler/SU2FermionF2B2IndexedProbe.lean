@@ -38,17 +38,17 @@ theorem majoranaCandidate_car (p q : Fin 24 × Fin 2) :
           exact congrArg Prod.fst h
         · intro h
           exact Prod.ext h (hp.trans hq.symm)
-      simpa only [majoranaCandidate, if_pos hp, if_pos hq, heq] using
+      simpa only [majoranaCandidate, ite_eq_left hp, ite_eq_left hq, heq] using
         (majorana0_car_all p.1 q.1)
     · have hpq : p ≠ q := by
         intro h
         exact hq ((congrArg Prod.snd h).symm.trans hp)
       calc
         _ = (0 : BFSSOp) := by
-          simpa only [majoranaCandidate, if_pos hp, if_neg hq] using
+          simpa only [majoranaCandidate, ite_eq_left hp, ite_eq_right hq] using
             (majorana01_car_all p.1 q.1)
         _ = (if p = q then (1 : ℂ) else 0) • (1 : BFSSOp) := by
-          simp only [if_neg hpq]
+          simp only [ite_eq_right hpq]
           exact hzero
   · by_cases hq : q.2 = 0
     · have hpq : p ≠ q := by
@@ -57,11 +57,11 @@ theorem majoranaCandidate_car (p q : Fin 24 × Fin 2) :
       calc
         _ = majorana0 q.1 * majorana1 p.1 +
               majorana1 p.1 * majorana0 q.1 := by
-          simp only [majoranaCandidate, if_neg hp, if_pos hq]
+          simp only [majoranaCandidate, ite_eq_right hp, ite_eq_left hq]
           exact add_comm _ _
         _ = (0 : BFSSOp) := majorana01_car_all q.1 p.1
         _ = (if p = q then (1 : ℂ) else 0) • (1 : BFSSOp) := by
-          simp only [if_neg hpq]
+          simp only [ite_eq_right hpq]
           exact hzero
     · have hcomp : p.2 = q.2 := by omega
       have heq : (p = q) ↔ (p.1 = q.1) := by
@@ -70,7 +70,7 @@ theorem majoranaCandidate_car (p q : Fin 24 × Fin 2) :
           exact congrArg Prod.fst h
         · intro h
           exact Prod.ext h hcomp
-      simpa only [majoranaCandidate, if_neg hp, if_neg hq, heq] using
+      simpa only [majoranaCandidate, ite_eq_right hp, ite_eq_right hq, heq] using
         (majorana1_car_all p.1 q.1)
 
 #print axioms majoranaCandidate_car
