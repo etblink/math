@@ -313,3 +313,10 @@ Both the staged source and strict gate are added atomically. Until
 this exact run completes successfully the real all-mode proof adds
 ZERO accepted theorem roots. If F2B1 is red, repair its first causal
 compiler diagnostic before promoting either result.
+
+### Bounded Majorana CI run references
+
+- F2B1 same-mode imaginary Majorana candidate: [strict run 40561955237](https://github.com/etblink/math/actions/runs/40561955237) (candidate exact blob `de356c4c6a2f73f8d18de6700fe638c617225f4d`). Pending terminal Lean source/axiom verification at checkpoint.
+- F2B2a real-real all-mode Majorana candidate: [strict run 40562198520](https://github.com/etblink/math/actions/runs/40562198520) (candidate exact blob `d932e4fad64ffdecb06826f784e28826af2a3952`). Pending terminal Lean source/axiom verification at checkpoint.
+
+Both jobs use independent workflows with exact parent blob checks and source-exact theorem roots. Neither contributes accepted roots until its own strict success.
