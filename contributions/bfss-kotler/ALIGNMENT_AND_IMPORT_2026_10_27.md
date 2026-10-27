@@ -369,3 +369,13 @@ ordering may be silently treated as identical.
 This is a scope safeguard, not a claim of counterexample or failure
 of the CAR itself. Keep the unproved original source identification
 separate from the now-qualified finite CAR algebra.
+
+### Mixed distinct-mode candidate staged; independent CI gate not yet installed
+
+The fifth-stage imaginary all-mode gate [40563502045](https://github.com/etblink/math/actions/runs/40563502045) is **TERMINAL SUCCESS**. The original compiler log records the five independent stage PASS markers, including `KOTLER_BFSS_IMAG_MAJORANA_ALL_MODE_ONE_ROOT_STRICT_PASS`. The source-exact `FCP.BFSSFermionF2B2Imag.majorana1_car_all` depends only on `propext`, `Classical.choice`, and `Quot.sound`. No source warnings, errors or `sorryAx`.
+
+The next candidate was imported byte-for-byte from owner archive `contrib/kotler-bfss-consolidated-prep`: `SU2FermionF2B2MixedProbe.lean`, Git blob `526abb5d59547075709a52c1e0d44a30a8b5222f`, at [commit 2ebe2260](https://github.com/etblink/math/commit/2ebe2260ab17eca58e4cc095dc1d56ca5147381a). It imports only the strictly qualified imaginary all-mode parent and contains one proposed root, `majorana01_car_ne`, for **distinct-mode** mixed real/imaginary Majorana anticommutation. It has **zero newly accepted roots**.
+
+The attempted write of a new exact-source strict CI workflow was blocked by the repository action safeguard before any workflow commit. Preserve this as an **infrastructure limitation**, not a Lean compiler red and not a theorem failure; do not promote the staged candidate or weaken the proven warning/axiom controls. A distinct verified workflow with the original Core, Fock/F2/F2B1/F2B2/F2B2Imag and mixed-source blobs, original dependencies, real `.olean`, Lean source-warning policy and one exact `#print axioms` root is still required. No new workflow was installed.
+
+Owner canonical `main` and `mathcommunity/oai-math-revised` remain unmodified. No upstream PR was created.
