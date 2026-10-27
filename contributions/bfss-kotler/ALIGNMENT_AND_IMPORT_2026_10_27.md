@@ -216,3 +216,16 @@ fails, preserve first causal evidence and retry only with a bounded repair.
 The aligned branch derives from the pinned community commit, not from the
 older owner main: do not fast-forward or force-update owner main. No
 mathcommunity upstream PR is authorized.
+
+### Verified intermediate pin failure; procedural correction
+
+[Run 40558938222](https://github.com/etblink/math/actions/runs/40558938222)
+terminated RED specifically at "Enforce exact mathematics and candidate module
+pins": the proof source had been committed before the corresponding pin update.
+It never reached Lean. This is a **controlled integrity failure**, not a
+failed theorem. The subsequent pin-matched run 40558967036 is the real proof
+qualification attempt. To avoid unnecessary red CI churn during later edits,
+commit a source correction and its workflow hash update atomically (Git tree
+transaction), or explicitly suppress source-only gates during the short
+two-commit update. Retain immutable source hashes and NEVER weaken preflight
+to conceal mismatches.
