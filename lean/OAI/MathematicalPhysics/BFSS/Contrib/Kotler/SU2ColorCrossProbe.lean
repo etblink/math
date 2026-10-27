@@ -106,8 +106,7 @@ lemma pauli_trace_pair (a b : Fin 3) :
       (if a = b then 2 else 0 : ℂ) := by
   fin_cases a <;> fin_cases b <;>
     norm_num [pauli, Matrix.trace, Matrix.mul_apply, Fin.sum_univ_two,
-      Complex.I_sq] <;>
-    ring_nf <;> norm_num [Complex.I_sq]
+      Complex.I_sq]
 
 /-- The scaled basis is trace-orthonormal, as required by AlgebraData 2. -/
 lemma normalizedPauli_trace_pair (a b : Fin 3) :
@@ -118,7 +117,7 @@ lemma normalizedPauli_trace_pair (a b : Fin 3) :
   have hprod : normalizedPauli a * normalizedPauli b =
       ((pauliScale : ℂ)^2) • (pauli a * pauli b) := by
     simp only [normalizedPauli, Matrix.smul_mul, Matrix.mul_smul,
-      smul_smul, pow_two, Complex.ofReal_mul]
+      smul_smul, pow_two]
   rw [hprod, Matrix.trace_smul, smul_eq_mul, pauli_trace_pair, hs]
   split_ifs <;> norm_num
 
@@ -143,7 +142,7 @@ lemma normalizedPauli_commutator (a b : Fin 3) :
   have hprod (a b : Fin 3) : normalizedPauli a * normalizedPauli b =
       ((pauliScale : ℂ)^2) • (pauli a * pauli b) := by
     simp only [normalizedPauli, Matrix.smul_mul, Matrix.mul_smul,
-      smul_smul, pow_two, Complex.ofReal_mul]
+      smul_smul, pow_two]
   have hsum :
       (∑ c : Fin 3, (epsilon3 a b c : ℂ) • normalizedPauli c) =
         (pauliScale : ℂ) • (∑ c : Fin 3, (epsilon3 a b c : ℂ) • pauli c) := by
@@ -168,8 +167,7 @@ lemma normalizedPauli_commutator (a b : Fin 3) :
 lemma pauli_hermitian (a : Fin 3) : (pauli a).IsHermitian := by
   ext i j
   fin_cases a <;> fin_cases i <;> fin_cases j <;>
-    simp [pauli, Matrix.conjTranspose_apply, Complex.star_def,
-      Complex.conj_I]
+    simp [pauli, Matrix.conjTranspose_apply, Complex.conj_I]
 
 /-- The orthonormal Pauli color generators are Hermitian. -/
 lemma normalizedPauli_hermitian (a : Fin 3) :
@@ -177,8 +175,8 @@ lemma normalizedPauli_hermitian (a : Fin 3) :
   ext i j
   fin_cases a <;> fin_cases i <;> fin_cases j <;>
     simp [normalizedPauli, pauli, Matrix.conjTranspose_apply,
-      Matrix.smul_apply, smul_eq_mul, Complex.star_def,
-      Complex.conj_I, Complex.conj_ofReal, map_mul] <;> ring
+      Matrix.smul_apply, smul_eq_mul,
+      Complex.conj_I, Complex.conj_ofReal]
 
 /-- Normalization preserves the traceless color-generator condition. -/
 lemma normalizedPauli_trace_zero (a : Fin 3) :
@@ -218,7 +216,7 @@ lemma normalizedPauli_trace_epsilon_sum (a b c : Fin 3) :
   rw [Matrix.mul_sum, Matrix.trace_sum]
   simp only [Matrix.mul_smul, Matrix.trace_smul, smul_eq_mul,
     normalizedPauli_trace_pair]
-  simp [mul_ite, Finset.sum_ite_eq', eq_comm]
+  simp [mul_ite]
 
 /--
 Fully concrete version of the color structure-constant trace formula,
