@@ -105,7 +105,7 @@ theorem majorana0_selfAdjoint (i : Fin 24) :
     IsSelfAdjoint (majorana0 i) := by
   unfold majorana0
   apply IsSelfAdjoint.smul
-  · simp [IsSelfAdjoint, Complex.star_def, Complex.conj_ofReal]
+  · simp [IsSelfAdjoint, Complex.conj_ofReal]
   · simpa only [creator_adjoint] using
       (IsSelfAdjoint.add_star_self (creator i))
 
