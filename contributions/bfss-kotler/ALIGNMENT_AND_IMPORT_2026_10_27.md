@@ -387,3 +387,20 @@ The previous infrastructure boundary is superseded: a standalone owner-only stri
 A second exact owner-archive source `SU2FermionF2B2MixedDiagProbe.lean` (Git blob `d9d137fb01ae96d3d4828337a079aae861246508`) was staged atomically with a separate new same-mode strict workflow in [commit 151017cd](https://github.com/etblink/math/commit/151017cd630b51f98f8f93ace17bbd323849eee8). It imports the preceding distinct-mode source and targets only `FCP.BFSSFermionF2B2MixedDiag.majorana01_car_self`, **the same-mode** mixed CAR. The original generated workflow contained a duplicated wrong source-pin path and wrong declaration identifier. That initial source-integrity bug was corrected in [commit e6417df6](https://github.com/etblink/math/commit/e6417df68d3c93704d54396a4d4edd4e1483ba82), retaining full warnings/axioms checks. [Run 40565903133](https://github.com/etblink/math/actions/runs/40565903133) is the corrected strict gate; prior 40565824919 is superseded and must not be used for theorem acceptance.
 
 Both candidate proofs remain **unaccepted** until terminal independently examined Lean runs. Neither new run should be conflated with the later `majorana01_car_all` theorem, original pairedTheta ordering, or a physical BFSS spectral theorem. Original community files, the owner canonical main branch and upstream mathcommunity PR state are unchanged.
+
+### Indexed CAR admission chain staged (no premature acceptance)
+
+Four sequential exact-source qualification gates are now active on this owner-only research branch:
+
+| Gate | Run | Candidate root | Exact source blob | State at staging |
+| --- | --- | --- | --- | --- |
+| Mixed distinct-mode | [40565636078](https://github.com/etblink/math/actions/runs/40565636078) | `FCP.BFSSFermionF2B2Mixed.majorana01_car_ne` | `526abb5d59547075709a52c1e0d44a30a8b5222f` | pending |
+| Mixed same-mode | [40565903133](https://github.com/etblink/math/actions/runs/40565903133) | `FCP.BFSSFermionF2B2MixedDiag.majorana01_car_self` | `d9d137fb01ae96d3d4828337a079aae861246508` | pending |
+| Mixed all-mode | [40566255546](https://github.com/etblink/math/actions/runs/40566255546) | `FCP.BFSSFermionF2B2MixedAll.majorana01_car_all` | `71a174e955b5849e0309af15ddf2f2af437a4e2f` | pending |
+| 48-index Majorana CAR | [40566511949](https://github.com/etblink/math/actions/runs/40566511949) | `FCP.BFSSFermionF2B2Indexed.majoranaCandidate_car` | `98c41a0e617b70799b8c5280f9be95cd299a0bbd` | pending |
+
+Each module is an unmodified owner-archived proof candidate, qualified only by its own independent source-hash-pinned Lean 4.34.1 / Mathlib d13f23b build, original BFSS Core pin, fresh actual compiled object, no Lean source warnings/errors/sorryAx, exact single printed theorem root and allowed axioms. Every gate imports its previous candidate and therefore has an explicit dependency chain, but **an upstream dependency is not promoted merely because a downstream source was staged**. Do not count additional roots until their own terminal strict run is reviewed.
+
+The initial same-mode gate 40565824919 was **red for our generated CI preflight typo**, not a proof diagnosis. The checker was corrected in run 40565903133, preserving warning-as-error and axiom controls.
+
+The eventual indexed CAR result, if accepted, applies to the exact `majoranaCandidate : Fin 24 × Fin 2 → BFSSOp` in these old formalizations. It is NOT an automatic source-label identification with later `pairedTheta`, a two-sign Spin(48) kernel, a Spin(9) lift, or BFSS spectral existence. Those obligations remain independent. No changes to canonical owner `main` or `mathcommunity`; no upstream PR.
