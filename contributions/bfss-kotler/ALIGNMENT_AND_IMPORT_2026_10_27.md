@@ -291,3 +291,25 @@ The new candidate and its strict workflow are added in a single
 Git commit using base-tree source pinning, preventing the known
 source-before-hash workflow red. No upstream PR, no change to
 canonical owner main or original community BFSS sources.
+
+### Next bounded candidate: real Majorana full-mode pair CAR (F2B2a)
+
+After qualified Fock/F2, the exact archived SU2FermionF2BProbe.lean is the
+F2B1 same-mode imaginary Majorana bridge. Its new strict run 40561955237
+revalidates Fock/F2 then tests one same-mode CAR root. The present
+iteration does not claim it accepted before the terminal job.
+
+The next import-closed source, SU2FermionF2B2Probe.lean, from the owner's
+archived 130-module staging branch has Git blob
+d932e4fad64ffdecb06826f784e28826af2a3952 and imports only F2B1.
+Its ONE root majorana0_car_all is the pairwise **real-real** Majorana
+CAR for any two of 24 modes, with delta-one normalization, not the
+complex or mixed 48-generator CAR or physical spectrum. Independent
+strict workflow bfss-kotler-majorana-real-allmode-integration.yml
+revalidates Fock (5), F2 (6), F2B1 (1) and then this candidate (1)
+with source pins and accepted compiler/axiom evidence.
+
+Both the staged source and strict gate are added atomically. Until
+this exact run completes successfully the real all-mode proof adds
+ZERO accepted theorem roots. If F2B1 is red, repair its first causal
+compiler diagnostic before promoting either result.
