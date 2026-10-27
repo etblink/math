@@ -43,9 +43,12 @@ and proof source. Underlying `OAI.BFSSQuantum` definitions are credited to
 their original authors. Original community BFSS files are unchanged.
 
 The separate strict workflow
-`.github/workflows/bfss-spin-plane-covariance-integration.yml` qualifies
+`.github/workflows/bfss-spin-plane-covariance-integration.yml` requalifies
 the previously green spin-plane proof on the aligned branch, with actual
-`AlgebraData` and gamma source SHA checks. The separate matrix workflow
+`AlgebraData` and gamma source SHA checks. Its branch-local self-trigger was
+corrected in commit [`808af155`](https://github.com/etblink/math/commit/808af155f35be3f4b86139cdb85820e128da9998) and
+[aligned strict run 40553748437](https://github.com/etblink/math/actions/runs/40553748437)
+was initiated. Do not count this run as a new green until it terminates. The separate matrix workflow
 `.github/workflows/bfss-kotler-finite-algebra-integration.yml` compiles the
 two standalone finite-algebra modules and checks source blob identities,
 toolchain and parent imports, `.olean` existence, prohibited `sorryAx`, and
