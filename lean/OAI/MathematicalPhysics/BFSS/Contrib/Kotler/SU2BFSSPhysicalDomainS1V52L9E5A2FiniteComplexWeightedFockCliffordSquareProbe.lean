@@ -62,8 +62,8 @@ theorem finiteComplexWeightedFockClifford_square
         -- genuine Fock module, without manufacturing a new instance.
         apply ContinuousLinearMap.ext
         intro ψ
-        simp only [ContinuousLinearMap.smul_apply,
-          ContinuousLinearMap.zero_apply]
+        simp only [smul_apply,
+          zero_apply]
         exact (smul_zero (c i * c j) :
           (c i * c j) • (0 : Fermion 2) = 0)
   have hsum (t : Finset ι) :
