@@ -258,3 +258,36 @@ to conceal mismatches.
   initiated. Until terminal success, F2 has **zero** accepted roots.
 - No upstream PR, owner main update, unproved physical BFSS spectral claim,
   or change to the pinned community source tree.
+
+### F2 cross-mode six roots accepted; F2B imaginary Majorana next gate
+
+[Cross-mode strict run 40560600629](https://github.com/etblink/math/actions/runs/40560600629),
+job 122388254403, TERMINAL GREEN, independently recompiled qualified Fock
+and F2. The Fock report contained five expected roots; the F2 report
+contained **six** expected source declarations with only
+propext, Classical.choice and Quot.sound, no Lean warning, error or sorryAx,
+and exact actual compiled Lean objects. The decisive log marker is
+KOTLER_BFSS_CROSS_MODE_CAR_SIX_ROOTS_STRICT_PASS.
+Thus the corrected F2 source blob
+93d7ae00d4ee21ce59ab137c349590e2c496ff38 is formally accepted
+on the **owner integration branch only**; the prior source-hygiene red remains
+negative knowledge.
+
+Next source-exact archived F2B1 probe:
+lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2BProbe.lean.
+The sole imported owner archive parent is F2. Blob
+de356c4c6a2f73f8d18de6700fe638c617225f4d was copied unaltered,
+preserving authored theorem statement and license. The single root
+majorana1_car is the same-mode normalized complementary imaginary
+Majorana CAR, not the full different-mode CAR, original Spin48 kernel or
+spectral existence. The new distinct owner-only workflow
+bfss-kotler-majorana1-self-car-integration.yml requalifies Fock (5),
+F2 (6), and F2B1 (1) in dependency order with pinned toolchain,
+original source blob, exact candidate hashes, fresh compiled .olean and
+strict axiom/diagnostic audits. **F2B1 is PENDING, zero new accepted
+roots until its own terminal green**.
+
+The new candidate and its strict workflow are added in a single
+Git commit using base-tree source pinning, preventing the known
+source-before-hash workflow red. No upstream PR, no change to
+canonical owner main or original community BFSS sources.
