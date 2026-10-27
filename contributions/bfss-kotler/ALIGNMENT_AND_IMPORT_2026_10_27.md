@@ -164,3 +164,55 @@ not at the owner's older canonical main. Do not merge it blindly into main.
 The archived 130-module candidate batch remains unqualified for a bulk port;
 continue with small source-exact import-closed gates. No upstream community
 PR or other upstream write is authorized without a new explicit owner order.
+
+## Project Lead CI adjudication and bounded cross-mode import, October 27, 2026
+
+All operations stayed on owner branch integration/community-20261027-bfss. No upstream
+PR, issue, or source write; canonical owner main remains unchanged.
+
+### Terminal evidence
+
+1. [Aligned spin-plane 40553748437](https://github.com/etblink/math/actions/runs/40553748437):
+   strict SUCCESS; source-genuine compiled proof and exact original source pins.
+2. [Aligned gamma/color matrix 40556721475](https://github.com/etblink/math/actions/runs/40556721475):
+   both matrix entries completed SUCCESS with strict compiler, warnings and
+   permitted-axiom checks. Marker strings: KOTLER_BFSS_SU2RealGammaProbe_STRICT_ONE_MODULE_PASS
+   and KOTLER_BFSS_SU2ColorCrossProbe_STRICT_ONE_MODULE_PASS.
+   Prior red runs 40553427306/40556591916 are superseded and remain in history.
+3. [Initial Fock transport 40557148102](https://github.com/etblink/math/actions/runs/40557148102):
+   RED. Fresh source compilation succeeded with five requested declared
+   theorem roots, only propext/Classical.choice/Quot.sound, and a real Lean
+   linter warning at line 108: unused Complex.star_def in majorana0_selfAdjoint.
+   Strict warning-as-error rightly rejected the module. No Fock root accepted.
+4. Exact minimally repaired Fock source changed Git blob
+   3fcd159f2f920b62433fa95d6eb2ad2ea3a4273a to
+   dbe9241436c7d3633547e559bccd5fe1fd82de9a.
+   [Proof commit 672f6d22](https://github.com/etblink/math/commit/672f6d22ba7eb888e5fff5f0cafb477dcd4813ce)
+   removes only the unused simp argument, retaining every statement and
+   original import. [Workflow pin f521be4a](https://github.com/etblink/math/commit/f521be4a0c1021db0c6432d53f54097efe3eb47b);
+   strict [40558967036](https://github.com/etblink/math/actions/runs/40558967036)
+   initiated. Interim 40558938222 triggered before matching workflow pin and
+   is superseded. Do not count Fock until fully qualified.
+
+### Fifth source module: cross-mode CAR F2 (strict verification pending)
+
+Owner-archived SU2FermionF2Probe.lean copied without alteration from
+contrib/kotler-bfss-consolidated-prep into the contributor namespace.
+Exact Git blob aa99b37d433b3a7b8881291e7a2b2003ea35b158, port
+[commit c44efebf](https://github.com/etblink/math/commit/c44efebfb1a7c77fce6c73c5c4dbb283fec11c86).
+It depends only on the actual repaired Fock module and proves finite-mode
+cross CAR and Majorana identities, not spectral existence.
+
+An independent cross-mode CI workflow was added in
+[commit f86dd6ee](https://github.com/etblink/math/commit/f86dd6eebfda0440516205cfc8b29b08a96f1020).
+It checks exact source SHA identities (Core, Fock, F2), pinned Lean and
+Mathlib, compiles original source parents, separately strictly checks five
+Fock roots and six F2 roots with actual .olean objects, exact printed
+declarations, source-diagnostic freedom, and allowed axioms.
+[Strict run 40559163074](https://github.com/etblink/math/actions/runs/40559163074)
+initiated. F2 admits zero roots until this run terminates green. If it
+fails, preserve first causal evidence and retry only with a bounded repair.
+
+The aligned branch derives from the pinned community commit, not from the
+older owner main: do not fast-forward or force-update owner main. No
+mathcommunity upstream PR is authorized.
