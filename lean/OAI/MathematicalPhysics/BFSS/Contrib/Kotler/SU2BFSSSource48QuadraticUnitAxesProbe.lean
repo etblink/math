@@ -22,7 +22,6 @@ noncomputable section
 open Matrix
 open FCP.BFSSS1V0
 open FCP.BFSSS1V5
-open OAI.BFSSQuantum
 
 /-- Exact unit-weight original Source48 quadratic form is the
 usual dot product, with no alternative or rescaled quadratic form. -/
@@ -34,7 +33,7 @@ theorem source48Quadratic_eq_dot (v : Source48Vector) :
 /-- Every actual block/color coordinate axis has positive Clifford
 quadratic norm one, matching the required normalized Fock gamma square. -/
 theorem sourceBlockColorAxis_quadratic_one
-    (j : Fin 8) (s : Fin 2) (A : ColorIndex 2) :
+    (j : Fin 8) (s : Fin 2) (A : ColorLabel) :
     source48Quadratic (sourceBlockColorAxis (j, s) A) = 1 := by
   rw [source48Quadratic_eq_dot]
   change (∑ p : Source48Label,

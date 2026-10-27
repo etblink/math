@@ -578,3 +578,9 @@ The next candidate `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSour
 Separately, the Source48 positive quadratic *unit-axis* source gate [40584729315](https://github.com/etblink/math/actions/runs/40584729315) was triggered and remains independently pending. It tests the actual original Q on source axes and must not be conflated with Fock gamma normalization; acceptance requires its own terminal compiler audit.
 
 Owner canonical main and mathcommunity upstream untouched; no upstream PR.
+
+### Independent Source48 quadratic unit-axis first strict red: unresolved type, not a counterexample
+
+[Run 40584729315](https://github.com/etblink/math/actions/runs/40584729315) TERMINAL **RED**, job `122473059442`, first Lean compiler errors at source lines 25/37: unknown `OAI.BFSSQuantum` namespace, then unknown `ColorIndex` because this standalone source-only module imported S1V5 and Mathlib rather than BFSS Core. Consequently the axis theorem had a synthetic `sorryAx` artifact and an unsolved goal; there is no proved negative mathematical statement here.
+
+The correct original geometric type is `FCP.BFSSS1V5.ColorLabel`, already defined and imported by the genuine original S1V5 source. To retain the clean source-only dependency, we removed the invalid namespace opening and replaced the unbound `ColorIndex 2` binder with the exact S1V5 `ColorLabel` (definitionally the original three colors); the quadratic form, theorem proposition, proof and source axis construction remain unchanged. Original candidate SHA `d9abf9222a4ffb9294c00c7a2722d30f1ab73b7b`; corrected candidate SHA `de7cf67d2945718a1da98d05a14e1b0d7edcff4a`. The source pin is updated atomically with its strict workflow, without suppressing errors, warnings or axiom checks. This lane remains **zero accepted modules** until terminal green.
