@@ -762,3 +762,23 @@ source pins, axiom whitelist and no-warnings rule remain identical. The
 corrected strict workflow blob is `b1adc45132ed7ac1a9dee76a1cd0312d4a10c48d`. Any earlier red caused solely
 by regex extraction is a verifier/interface failure, not a theorem failure.
 Only a terminal run using this corrected workflow may admit the two roots.
+
+
+### Deferred next degree-two Clifford-star candidate — strict parent gate first
+
+The follow-up source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean`, blob `066adb767080c43b18b112376ae5c1402936b4af`, is staged
+as an **unverified** direct adaptation of FCP L9E5E3
+(original blob `109baa5a4e0e3d5480a17dc4ca3a3a0526d4b333`) to the
+actual previously admitted Source48 Clifford AlgHom. It asserts only
+star-adjoint compatibility of two genuine original Clifford generators
+under the Fock representation. The Clifford involution negates an odd
+generator, so **global star preservation is not asserted**.
+
+No strict workflow for this dependent claim will be launched until the
+Source48 Fock all-real-vector self-adjointness parent has its own clean
+strict terminal qualification. This source counts as a staged proposal,
+not an accepted contributor module, theorem or Spin(48) unitary result.
+
+[Self-adjoint corrected strict run 40595136674](https://github.com/etblink/math/actions/runs/40595136674)
+was in progress when this second dependent source was staged; the older
+regex-superseded run 40595038658 is not qualification evidence.
