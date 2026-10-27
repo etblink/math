@@ -1,0 +1,74 @@
+name: BFSS actual Fock real complex scalar compatibility strict qualification
+on:
+  push:
+    branches:
+      - integration/community-20261027-bfss
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean
+      - .github/workflows/bfss-kotler-fock-real-complex-scalar-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fock-real-complex-scalars:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact source and environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean)" = '331689c9bfdd68166e7c4ba06319e719a6668e5a'
+      - name: Prepare pinned Lean environment
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+      - name: Build exact upstream original BFSS Fermion 2 Core
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Core
+      - name: Compile original real complex Fock operator scalar equivalence
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/real-complex-scalar-strict.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          log = pathlib.Path('/tmp/real-complex-scalar-strict.log').read_text()
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          actual = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not warnings, (warnings, log[-4000:])
+          expected = ['originalFockOperator_real_smul_eq_complex_smul']
+          assert requested == expected and len(actual) == len(expected), (requested, actual)
+          for (declaration, dependencies), name in zip(actual, expected):
+              assert declaration == 'FCP.BFSSS1V52L9E5B0.' + name, (declaration, name)
+              used = {part.strip() for part in dependencies.split(',') if part.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, (declaration, used)
+          print('KOTLER_BFSS_FOCK_REAL_COMPLEX_SCALAR_ONE_ROOT_STRICT_PASS')
+          PY
