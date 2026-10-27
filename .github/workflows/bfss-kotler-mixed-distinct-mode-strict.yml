@@ -1,0 +1,73 @@
+name: BFSS Kotler mixed distinct-mode CAR strict qualification
+on:
+  push:
+    branches:
+      - integration/community-20261027-bfss
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe.lean
+      - .github/workflows/bfss-kotler-mixed-distinct-mode-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mixed-distinct-mode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact source and environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe.lean)" = '71e0002c8e1f23a1522abd301bdc7f50a3b58214'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe.lean)" = '526abb5d59547075709a52c1e0d44a30a8b5222f'
+      - name: Prepare pinned Lean environment
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+      - name: Build actual imported parents
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2ImagProbe
+      - name: Fresh mixed CAR proof and strict axiom audit
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/mixed-car-strict.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          log = pathlib.Path('/tmp/mixed-car-strict.log').read_text()
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe.lean').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          actual = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not warnings, (warnings, log[-4000:])
+          assert requested == ['majorana01_car_ne'] and len(actual) == 1, (requested, actual)
+          assert actual[0][0] == 'FCP.BFSSFermionF2B2Mixed.majorana01_car_ne'
+          used = {item.strip() for item in actual[0][1].split(',') if item.strip()}
+          assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, used
+          print('KOTLER_BFSS_MIXED_DISTINCT_MODE_ONE_ROOT_STRICT_PASS')
+          PY
