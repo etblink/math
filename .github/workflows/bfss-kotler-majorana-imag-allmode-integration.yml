@@ -1,0 +1,205 @@
+name: BFSS community-aligned Kotler imaginary Majorana all-mode CAR strict gate
+
+on:
+  push:
+    branches:
+      - integration/community-20261027-bfss
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2BProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2Probe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe.lean
+      - .github/workflows/bfss-kotler-majorana-imag-allmode-integration.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  majorana1-allmode-car:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: Check out owner-only community-aligned integration branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Enforce exact mathematics and candidate module pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean)" = 'dbe9241436c7d3633547e559bccd5fe1fd82de9a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean)" = '93d7ae00d4ee21ce59ab137c349590e2c496ff38'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2BProbe.lean)" = 'de356c4c6a2f73f8d18de6700fe638c617225f4d'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2Probe.lean)" = 'd932e4fad64ffdecb06826f784e28826af2a3952'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe.lean)" = '71e0002c8e1f23a1522abd301bdc7f50a3b58214'
+      - name: Free runner disk for Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+      - name: Install exact Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          lean --version
+          lake --version
+      - name: Restore pinned mathlib revision and compiled dependencies
+        shell: bash
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+      - name: Compile original source Fock and BFSS parents
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Core OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.FockNorm
+      - name: Compile exact transferred Fock proof and strictly audit axioms
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/KotlerFock.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean').read_text()
+          log = pathlib.Path('/tmp/KotlerFock.log').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          observed = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          lean_warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not lean_warnings, (lean_warnings, log[-4500:])
+          assert len(requested) == 5 and len(observed) == len(requested), (requested, observed, log[-4500:])
+          for (declaration, dependencies), expected in zip(observed, requested):
+              assert declaration.endswith('.' + expected), (declaration, expected)
+              used = {v.strip() for v in dependencies.split(',') if v.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, (declaration, used)
+          print('KOTLER_BFSS_FOCK_TRANSPORT_FIVE_ROOTS_STRICT_PASS')
+          PY
+
+      - name: Compile actual archived cross-mode CAR candidate and strictly audit axioms
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/KotlerCrossMode.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean').read_text()
+          log = pathlib.Path('/tmp/KotlerCrossMode.log').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          observed = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          lean_warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not lean_warnings, (lean_warnings, log[-4500:])
+          assert len(requested) == 6 and len(observed) == len(requested), (requested, observed, log[-4500:])
+          for (declaration, dependencies), expected in zip(observed, requested):
+              assert declaration.endswith('.' + expected), (declaration, expected)
+              used = {v.strip() for v in dependencies.split(',') if v.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, (declaration, used)
+          print('KOTLER_BFSS_CROSS_MODE_CAR_SIX_ROOTS_STRICT_PASS')
+          PY
+
+      - name: Compile archived imaginary Majorana same-mode CAR and strictly audit axioms
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2BProbe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/KotlerImagMajorana.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2BProbe.lean').read_text()
+          log = pathlib.Path('/tmp/KotlerImagMajorana.log').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          observed = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          lean_warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not lean_warnings, (lean_warnings, log[-4500:])
+          assert len(requested) == 1 and len(observed) == len(requested), (requested, observed, log[-4500:])
+          for (declaration, dependencies), expected in zip(observed, requested):
+              assert declaration.endswith('.' + expected), (declaration, expected)
+              used = {v.strip() for v in dependencies.split(',') if v.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, (declaration, used)
+          print('KOTLER_BFSS_IMAG_MAJORANA_SELF_CAR_ONE_ROOT_STRICT_PASS')
+          PY
+
+      - name: Compile exact real Majorana all-mode CAR candidate and strictly audit axioms
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2Probe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/KotlerRealAllMode.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2Probe.lean').read_text()
+          log = pathlib.Path('/tmp/KotlerRealAllMode.log').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          observed = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          lean_warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not lean_warnings, (lean_warnings, log[-4500:])
+          assert len(requested) == 1 and len(observed) == len(requested), (requested, observed, log[-4500:])
+          for (declaration, dependencies), expected in zip(observed, requested):
+              assert declaration.endswith('.' + expected), (declaration, expected)
+              used = {v.strip() for v in dependencies.split(',') if v.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, (declaration, used)
+          print('KOTLER_BFSS_REAL_MAJORANA_ALL_MODE_ONE_ROOT_STRICT_PASS')
+          PY
+
+      - name: Compile exact imaginary Majorana all-mode CAR candidate and strictly audit axioms
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/KotlerImagAllMode.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe.lean').read_text()
+          log = pathlib.Path('/tmp/KotlerImagAllMode.log').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          observed = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          lean_warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not lean_warnings, (lean_warnings, log[-4500:])
+          assert len(requested) == 1 and len(observed) == len(requested), (requested, observed, log[-4500:])
+          for (declaration, dependencies), expected in zip(observed, requested):
+              assert declaration.endswith('.' + expected), (declaration, expected)
+              used = {v.strip() for v in dependencies.split(',') if v.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, (declaration, used)
+          print('KOTLER_BFSS_IMAG_MAJORANA_ALL_MODE_ONE_ROOT_STRICT_PASS')
+          PY

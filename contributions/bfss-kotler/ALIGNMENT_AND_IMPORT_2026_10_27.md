@@ -320,3 +320,31 @@ compiler diagnostic before promoting either result.
 - F2B2a real-real all-mode Majorana candidate: [strict run 40562198520](https://github.com/etblink/math/actions/runs/40562198520) (candidate exact blob `d932e4fad64ffdecb06826f784e28826af2a3952`). Pending terminal Lean source/axiom verification at checkpoint.
 
 Both jobs use independent workflows with exact parent blob checks and source-exact theorem roots. Neither contributes accepted roots until its own strict success.
+
+### F2B1/F2B2a GREEN, F2B2b next exact archived candidate
+
+The F2B2a real all-mode [strict run 40562198520](https://github.com/etblink/math/actions/runs/40562198520),
+job 122393904614, TERMINAL SUCCESS: strict original Fock five-root,
+F2 six-root, F2B1 one-root, and F2B2a one-root gate markers appeared
+in the original Lean compiler job, with four fresh nonempty compiled
+objects, zero Lean source warnings/errors/sorryAx, and only permitted
+propext/Classical.choice/Quot.sound axioms.
+
+Accepted original 24-mode fermion statements on this owner branch:
+F2B1 majorana1_car (imaginary *same* mode) and F2B2a majorana0_car_all
+(real-real, *any* mode pair). This is NOT full 48-label CAR, a global
+Spin(48) kernel classification or BFSS spectral theorem.
+
+Next archive-exact owner candidate source:
+SU2FermionF2B2ImagProbe.lean, Git blob
+71e0002c8e1f23a1522abd301bdc7f50a3b58214,
+importing only SU2FermionF2B2Probe.lean, root majorana1_car_all.
+The candidate is imaginary-imaginary CAR for *all* 24-mode pairs.
+Mixed real-imaginary CAR remains a separate obligation.
+The new owner-only workflow
+bfss-kotler-majorana-imag-allmode-integration.yml
+strictly requalifies all four ancestor stages and then its single
+new root. Source, workflow and audit are committed in ONE Git tree
+transaction with exact original and candidate SHA pins. F2B2b
+acceptance remains ZERO until this new strict gate terminates green.
+Neither mathcommunity nor canonical owner main is modified.
