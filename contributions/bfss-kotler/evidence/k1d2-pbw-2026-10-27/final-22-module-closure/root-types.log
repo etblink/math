@@ -1,0 +1,163 @@
+FCP.BFSSS1V0.sourcePlane_decomposition : ∀ (a b v : FCP.BFSSS1V0.Source48Vector),
+  v = (FCP.BFSSS1V0.B✝ a) v • a + (FCP.BFSSS1V0.B✝ b) v • b + FCP.BFSSS1V0.sourcePlaneComplement a b v
+FCP.BFSSS1V0.sourcePlaneComplement_ortho_first : ∀ (a b v : FCP.BFSSS1V0.Source48Vector),
+  FCP.BFSSS1V0.Q✝ a = 1 →
+    FCP.BFSSS1V0.Q✝ b = 1 →
+      QuadraticMap.IsOrtho FCP.BFSSS1V0.Q✝ a b →
+        QuadraticMap.IsOrtho FCP.BFSSS1V0.Q✝ a (FCP.BFSSS1V0.sourcePlaneComplement a b v)
+FCP.BFSSS1V0.sourcePlaneComplement_ortho_second : ∀ (a b v : FCP.BFSSS1V0.Source48Vector),
+  FCP.BFSSS1V0.Q✝ a = 1 →
+    FCP.BFSSS1V0.Q✝ b = 1 →
+      QuadraticMap.IsOrtho FCP.BFSSS1V0.Q✝ a b →
+        QuadraticMap.IsOrtho FCP.BFSSS1V0.Q✝ b (FCP.BFSSS1V0.sourcePlaneComplement a b v)
+FCP.BFSSS1V29.all_sourceSpin48_generators_stay_real : ∀ (s : ↥(spinGroup FCP.BFSSS1V29.Q✝))
+  (v : FCP.BFSSS1V0.Source48Vector),
+  ConjAct.toConjAct (spinGroup.toUnits s) • (CliffordAlgebra.ι FCP.BFSSS1V29.Q✝) v ∈
+    (CliffordAlgebra.ι FCP.BFSSS1V29.Q✝).range
+FCP.BFSSS1V29.all_sourceSpin48_real_generator_space_preserved : ∀ (s : ↥(spinGroup FCP.BFSSS1V29.Q✝)),
+  ConjAct.toConjAct (spinGroup.toUnits s) • (CliffordAlgebra.ι FCP.BFSSS1V29.Q✝).range =
+    (CliffordAlgebra.ι FCP.BFSSS1V29.Q✝).range
+FCP.BFSSS1V29.sourceSpin48_conjugation_central_sign_invariant : ∀ (s : ↥(spinGroup FCP.BFSSS1V29.Q✝))
+  (x : FCP.BFSSS1V29.C✝), -↑s * x * star (-↑s) = ↑s * x * star ↑s
+FCP.BFSSS1V37.source48_polar_inverse_self : ∀ (a : FCP.BFSSS1V0.Source48Vector)
+  [inst : Invertible (FCP.BFSSS1V37.Q✝ a)], ⅟(FCP.BFSSS1V37.Q✝ a) * QuadraticMap.polar (⇑FCP.BFSSS1V37.Q✝) a a = 2
+FCP.BFSSS1V37.source48_clifford_generator_conjugation : ∀ (a b : FCP.BFSSS1V0.Source48Vector)
+  [inst : Invertible ((CliffordAlgebra.ι FCP.BFSSS1V37.Q✝) a)] [inst_1 : Invertible (FCP.BFSSS1V37.Q✝ a)],
+  (CliffordAlgebra.ι FCP.BFSSS1V37.Q✝) ((⅟(FCP.BFSSS1V37.Q✝ a) * QuadraticMap.polar (⇑FCP.BFSSS1V37.Q✝) a b) • a - b) =
+    (CliffordAlgebra.ι FCP.BFSSS1V37.Q✝) a * (CliffordAlgebra.ι FCP.BFSSS1V37.Q✝) b *
+      ⅟((CliffordAlgebra.ι FCP.BFSSS1V37.Q✝) a)
+FCP.BFSSS1V37.source48_rankOneConjugationMatrix_det : ∀ (a ell : FCP.BFSSS1V0.Source48Vector),
+  ell ⬝ᵥ a = 2 → (FCP.BFSSS1V37.source48_rankOneConjugationMatrix a ell).det = -1
+FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_cons : ∀ (k : FCP.BFSSS1V0.Source48Label)
+  (xs : List FCP.BFSSS1V0.Source48Label),
+  FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord (k :: xs) =
+    (ExteriorAlgebra.ι ℝ) (Pi.single k 1) * FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord xs
+FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_contraction_zero_of_not_mem : ∀ (j : FCP.BFSSS1V0.Source48Label)
+  (xs : List FCP.BFSSS1V0.Source48Label),
+  j ∉ xs → (CliffordAlgebra.contractLeft (LinearMap.proj j)) (FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord xs) = 0
+FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_leading_contraction : ∀ (j : FCP.BFSSS1V0.Source48Label)
+  (xs : List FCP.BFSSS1V0.Source48Label),
+  j ∉ xs →
+    (CliffordAlgebra.contractLeft (LinearMap.proj j)) (FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord (j :: xs)) =
+      FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord xs
+FCP.BFSSS1V52L9E5F20B.originalSourceCliffordPBWBasis : Module.Basis (Finset FCP.BFSSS1V0.Source48Label) ℝ
+  FCP.BFSSS1V52L9E5F20B.C✝
+FCP.BFSSS1V52L9E5F20B.originalSourceClifford_finiteDimensional : FiniteDimensional ℝ FCP.BFSSS1V52L9E5F20B.C✝
+FCP.BFSSS1V30.source48_cliffordGenerator_equivExterior : ∀ (v : FCP.BFSSS1V0.Source48Vector),
+  (CliffordAlgebra.equivExterior FCP.BFSSS1V30.Q✝) ((CliffordAlgebra.ι FCP.BFSSS1V30.Q✝) v) = (ExteriorAlgebra.ι ℝ) v
+FCP.BFSSS1V30.source48_cliffordGenerator_injective : Function.Injective ⇑(CliffordAlgebra.ι FCP.BFSSS1V30.Q✝)
+FCP.BFSSS1V38.source48Quadratic_eq_dot : ∀ (a : FCP.BFSSS1V0.Source48Vector), FCP.BFSSS1V38.Q✝ a = a ⬝ᵥ a
+FCP.BFSSS1V38.source48_polar_eq_two_dot : ∀ (a b : FCP.BFSSS1V0.Source48Vector),
+  QuadraticMap.polar (⇑FCP.BFSSS1V38.Q✝) a b = 2 * a ⬝ᵥ b
+FCP.BFSSS1V38.source48_normalizedPolarCoeff_dot : ∀ (a b : FCP.BFSSS1V0.Source48Vector)
+  [inst : Invertible (FCP.BFSSS1V38.Q✝ a)],
+  FCP.BFSSS1V38.source48_normalizedPolarCoeff a ⬝ᵥ b =
+    ⅟(FCP.BFSSS1V38.Q✝ a) * QuadraticMap.polar (⇑FCP.BFSSS1V38.Q✝) a b
+FCP.BFSSS1V38.source48_normalizedPolarCoeff_dot_self : ∀ (a : FCP.BFSSS1V0.Source48Vector)
+  [inst : Invertible (FCP.BFSSS1V38.Q✝ a)], FCP.BFSSS1V38.source48_normalizedPolarCoeff a ⬝ᵥ a = 2
+FCP.BFSSS1V38.source48_originalNormalizedRankOne_det : ∀ (a : FCP.BFSSS1V0.Source48Vector)
+  [inst : Invertible (FCP.BFSSS1V38.Q✝ a)],
+  (FCP.BFSSS1V37.source48_rankOneConjugationMatrix a (FCP.BFSSS1V38.source48_normalizedPolarCoeff a)).det = -1
+FCP.BFSSS1V52K1D2B.originalExteriorCoordinateWord_contract_present_nonzero_erase : ∀ (j : FCP.BFSSS1V0.Source48Label)
+  (xs : List FCP.BFSSS1V0.Source48Label),
+  xs.Nodup →
+    j ∈ xs →
+      ∃ c,
+        c ≠ 0 ∧
+          (CliffordAlgebra.contractLeft (LinearMap.proj j)) (FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord xs) =
+            c • FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord (xs.erase j)
+FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis_eq_originalCoordinateWord : ∀ (I : Finset FCP.BFSSS1V0.Source48Label),
+  FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis I =
+    FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord (FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels I)
+FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels_nodup : ∀ (I : Finset FCP.BFSSS1V0.Source48Label),
+  (FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels I).Nodup
+FCP.BFSSS1V52K1D2D.originalSourceExteriorPBWBasis_empty_eq_one : (Pi.basisFun ℝ
+        FCP.BFSSS1V0.Source48Label).ExteriorAlgebra
+    ∅ =
+  1
+FCP.BFSSS1V52K1D2D.originalSourceFinset_erase_injective_at_present_label : ∀ (j : FCP.BFSSS1V0.Source48Label)
+  (I J : Finset FCP.BFSSS1V0.Source48Label), j ∈ I → j ∈ J → I.erase j = J.erase j → I = J
+FCP.BFSSS1V31.every_sourceSpin48_conjugated_generator_unique : ∀ (s : ↥(spinGroup FCP.BFSSS1V31.Q✝))
+  (v : FCP.BFSSS1V0.Source48Vector),
+  ∃! w,
+    (CliffordAlgebra.ι FCP.BFSSS1V31.Q✝) w =
+      ConjAct.toConjAct (spinGroup.toUnits s) • (CliffordAlgebra.ι FCP.BFSSS1V31.Q✝) v
+FCP.BFSSS1V31.sourceSpin48VectorAction_clifford_generator : ∀ (s : ↥(spinGroup FCP.BFSSS1V31.Q✝))
+  (v : FCP.BFSSS1V0.Source48Vector),
+  (CliffordAlgebra.ι FCP.BFSSS1V31.Q✝) (FCP.BFSSS1V31.sourceSpin48VectorAction s v) =
+    ConjAct.toConjAct (spinGroup.toUnits s) • (CliffordAlgebra.ι FCP.BFSSS1V31.Q✝) v
+FCP.BFSSS1V31.sourceSpin48VectorAction_add : ∀ (s : ↥(spinGroup FCP.BFSSS1V31.Q✝)) (v w : FCP.BFSSS1V0.Source48Vector),
+  FCP.BFSSS1V31.sourceSpin48VectorAction s (v + w) =
+    FCP.BFSSS1V31.sourceSpin48VectorAction s v + FCP.BFSSS1V31.sourceSpin48VectorAction s w
+FCP.BFSSS1V52K1D2E1.originalSourcePBWOrderedLabels_mem_finset : ∀ (I : Finset FCP.BFSSS1V0.Source48Label),
+  ∀ j ∈ FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels I, j ∈ I
+FCP.BFSSS1V52K1D2E1.originalSourceExteriorPBWBasis_coordinateContraction_zero_of_not_mem : ∀
+  (I : Finset FCP.BFSSS1V0.Source48Label),
+  ∀ j ∉ I, (CliffordAlgebra.contractLeft (LinearMap.proj j)) (FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis I) = 0
+FCP.BFSSS1V52K1D2E2.originalSourcePBWOrderedLabels_eq_finsetSort : ∀ (I : Finset FCP.BFSSS1V0.Source48Label),
+  FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels I = I.sort fun a b => a ≤ b
+FCP.BFSSS1V52K1D2E2.originalSourcePBWOrderedLabels_cons_of_least : ∀ (I : Finset FCP.BFSSS1V0.Source48Label),
+  ∀ j ∈ I,
+    (∀ k ∈ I, j ≤ k) →
+      FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels I =
+        j :: FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels (I.erase j)
+FCP.BFSSS1V52K1D2E4.originalSourcePBWSupportedIndex_member_occupied : ∀ (x : FCP.BFSSS1V52K1D2E4.E✝),
+  ∀ I ∈ (FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis.repr x).support,
+    ∀ j ∈ I, j ∈ FCP.BFSSS1V52K1D2E4.originalSourcePBWOccupiedLabels x
+FCP.BFSSS1V52K1D2E4.originalSourcePBWLeastOccupied_le_every_supported_coordinate : ∀ (x : FCP.BFSSS1V52K1D2E4.E✝)
+  (hocc : (FCP.BFSSS1V52K1D2E4.originalSourcePBWOccupiedLabels x).Nonempty),
+  ∀ I ∈ (FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis.repr x).support,
+    ∀ k ∈ I, (FCP.BFSSS1V52K1D2E4.originalSourcePBWOccupiedLabels x).min' hocc ≤ k
+FCP.BFSSS1V52K1A.originalSourceSpin48_trivialAction_iff_generator_commutes : ∀ (s : ↥(spinGroup FCP.BFSSS1V52K1A.Q✝)),
+  (∀ (v : FCP.BFSSS1V0.Source48Vector), FCP.BFSSS1V31.sourceSpin48VectorAction s v = v) ↔
+    ∀ (v : FCP.BFSSS1V0.Source48Vector),
+      ↑s * (CliffordAlgebra.ι FCP.BFSSS1V52K1A.Q✝) v = (CliffordAlgebra.ι FCP.BFSSS1V52K1A.Q✝) v * ↑s
+FCP.BFSSS1V52K1D2E3.originalSourceExteriorPBWBasis_contraction_erase_of_least : ∀
+  (I : Finset FCP.BFSSS1V0.Source48Label),
+  ∀ j ∈ I,
+    (∀ k ∈ I, j ≤ k) →
+      (CliffordAlgebra.contractLeft (LinearMap.proj j)) (FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis I) =
+        FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis (I.erase j)
+FCP.BFSSS1V52K1D2E5.originalExteriorScalar_of_no_occupiedPBWLabels : ∀ (x : FCP.BFSSS1V52K1D2E5.E✝),
+  FCP.BFSSS1V52K1D2E4.originalSourcePBWOccupiedLabels x = ∅ → ∃ c, x = (algebraMap ℝ FCP.BFSSS1V52K1D2E5.E✝) c
+FCP.BFSSS1V52K1C.originalSourceClifford_gradedCommutator_eq_polarContraction : ∀ (v : FCP.BFSSS1V0.Source48Vector)
+  (x : FCP.BFSSS1V52K1C.C✝),
+  (CliffordAlgebra.ι FCP.BFSSS1V52K1C.Q✝) v * x -
+      CliffordAlgebra.involute x * (CliffordAlgebra.ι FCP.BFSSS1V52K1C.Q✝) v =
+    (CliffordAlgebra.contractLeft ((QuadraticMap.polarBilin FCP.BFSSS1V52K1C.Q✝) v)) x
+FCP.BFSSS1V52K1C.originalSourceClifford_evenCommutator_eq_polarContraction : ∀ (v : FCP.BFSSS1V0.Source48Vector),
+  ∀ x ∈ CliffordAlgebra.even FCP.BFSSS1V52K1C.Q✝,
+    (CliffordAlgebra.ι FCP.BFSSS1V52K1C.Q✝) v * x - x * (CliffordAlgebra.ι FCP.BFSSS1V52K1C.Q✝) v =
+      (CliffordAlgebra.contractLeft ((QuadraticMap.polarBilin FCP.BFSSS1V52K1C.Q✝) v)) x
+FCP.BFSSS1V52K1C.originalSourceSpin48_trivialAction_polarContractions_zero : ∀ (s : ↥(spinGroup FCP.BFSSS1V52K1C.Q✝)),
+  (∀ (v : FCP.BFSSS1V0.Source48Vector), FCP.BFSSS1V31.sourceSpin48VectorAction s v = v) →
+    ∀ (v : FCP.BFSSS1V0.Source48Vector),
+      (CliffordAlgebra.contractLeft ((QuadraticMap.polarBilin FCP.BFSSS1V52K1C.Q✝) v)) ↑s = 0
+FCP.BFSSS1V52K1D2F1.originalSourcePBWLeastContraction_coefficient : ∀ (x : FCP.BFSSS1V52K1D2F1.E✝)
+  (j : FCP.BFSSS1V0.Source48Label),
+  (∀ J ∈ (FCP.BFSSS1V52K1D2F1.B✝.repr x).support, ∀ k ∈ J, j ≤ k) →
+    ∀ I ∈ (FCP.BFSSS1V52K1D2F1.B✝.repr x).support,
+      j ∈ I →
+        (FCP.BFSSS1V52K1D2F1.B✝.repr ((CliffordAlgebra.contractLeft (LinearMap.proj j)) x)) (I.erase j) =
+          (FCP.BFSSS1V52K1D2F1.B✝.repr x) I
+FCP.BFSSS1V52K1D0.originalSourceClifford_exterior_contractLeft_transport : ∀
+  (d : Module.Dual ℝ FCP.BFSSS1V0.Source48Vector) (x : FCP.BFSSS1V52K1D0.C✝),
+  (CliffordAlgebra.equivExterior FCP.BFSSS1V52K1D0.Q✝) ((CliffordAlgebra.contractLeft d) x) =
+    (CliffordAlgebra.contractLeft d) ((CliffordAlgebra.equivExterior FCP.BFSSS1V52K1D0.Q✝) x)
+FCP.BFSSS1V52K1D0.originalSourceSpin48_trivialAction_exteriorPolarContractions_zero : ∀
+  (s : ↥(spinGroup FCP.BFSSS1V52K1D0.Q✝)),
+  (∀ (v : FCP.BFSSS1V0.Source48Vector), FCP.BFSSS1V31.sourceSpin48VectorAction s v = v) →
+    ∀ (v : FCP.BFSSS1V0.Source48Vector),
+      (CliffordAlgebra.contractLeft ((QuadraticMap.polarBilin FCP.BFSSS1V52K1D0.Q✝) v))
+          ((CliffordAlgebra.equivExterior FCP.BFSSS1V52K1D0.Q✝) ↑s) =
+        0
+FCP.BFSSS1V52K1D2F2.originalSourcePBWAllContractions_zero_implies_no_occupied_labels : ∀ (x : FCP.BFSSS1V52K1D2F2.E✝),
+  (∀ (j : FCP.BFSSS1V0.Source48Label), (CliffordAlgebra.contractLeft (LinearMap.proj j)) x = 0) →
+    FCP.BFSSS1V52K1D2E4.originalSourcePBWOccupiedLabels x = ∅
+FCP.BFSSS1V52K1D1.originalSourcePolar_halfSingle_eq_coordinateDual : ∀ (j : FCP.BFSSS1V0.Source48Label),
+  (QuadraticMap.polarBilin FCP.BFSSS1V52K1D1.Q✝) ((1 / 2) • Pi.single j 1) = LinearMap.proj j
+FCP.BFSSS1V52K1D1.originalSourceSpin48_trivialAction_exteriorCoordinateContractions_zero : ∀
+  (s : ↥(spinGroup FCP.BFSSS1V52K1D1.Q✝)),
+  (∀ (v : FCP.BFSSS1V0.Source48Vector), FCP.BFSSS1V31.sourceSpin48VectorAction s v = v) →
+    ∀ (j : FCP.BFSSS1V0.Source48Label),
+      (CliffordAlgebra.contractLeft (LinearMap.proj j)) ((CliffordAlgebra.equivExterior FCP.BFSSS1V52K1D1.Q✝) ↑s) = 0

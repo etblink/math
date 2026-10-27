@@ -964,3 +964,8 @@ each accepted root and supersession outcome, preserve failed attempts, and
 do not conflate structural copies with theorem acceptance. Avoid modifying
 `etblink/math:main` or contacting `mathcommunity` without a separate
 owner authorization.
+
+
+## Local synchronization continuation — October 27, 2026
+
+The detailed current handoff is [FCP_K1D2_PBW_PORT_CROSSWALK_2026_10_27.md](FCP_K1D2_PBW_PORT_CROSSWALK_2026_10_27.md), with its machine-readable [FCP_SYNC_MANIFEST_2026_10_27.json](FCP_SYNC_MANIFEST_2026_10_27.json). The original 28 accepted owner modules remain unchanged. The twelve PBW candidates (including a statement-preserving repair of previously unqualified E5) and nine exact-body Spin/Clifford ancestors pass a full 22-module / 47-check local build, including three pre-existing S1V0 checks. Automatic publication review blocked the push before independent GitHub qualification: all 21 added modules remain candidates and zero new owner modules are accepted. No scalar-common-kernel composition, canonical main update or upstream PR is claimed. Follow the scoped crosswalk for evidence, negative knowledge, precise branch state and the next bounded qualification step.

@@ -1,0 +1,70 @@
+name: BFSS original Spin48 ancestry owner strict gate
+on:
+  push:
+    branches:
+      - integration/fcp-k1d2-pbw-20261027
+    paths:
+      - .github/workflows/bfss-kotler-spin48-ancestry-owner-strict.yml
+      - contributions/bfss-kotler/FCP_SYNC_MANIFEST_2026_10_27.json
+      - contributions/bfss-kotler/tools/qualify_fcp_sync.py
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V29*.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V30*.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V31*.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V37*.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V38*.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1*.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5F20B*.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  original-spin48-ancestry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Pin exact source/dependency manifest and strict verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object contributions/bfss-kotler/FCP_SYNC_MANIFEST_2026_10_27.json)" = '601e77f885683eabff4fec3b5dc78a043c62f21e'
+          test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_sync.py)" = 'f0986e5748c383e4f4f6c5993114d195269326f9'
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+      - name: Restore exact Lean and Mathlib artifacts
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Fresh complete source-exact ancestry closure and 47 root checks
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_sync.py --group ancestry --mode lake --log-dir "$RUNNER_TEMP/bfss-spin48-ancestry-evidence"
+      - name: Emit original compiler and explicit theorem-type evidence
+        if: always()
+        shell: bash
+        run: |
+          python3 - "$RUNNER_TEMP/bfss-spin48-ancestry-evidence" <<'PY'
+          import pathlib, sys
+          for path in sorted(pathlib.Path(sys.argv[1]).glob('*.log')):
+              print('COMPILER_EVIDENCE_FILE', path.name)
+              print(path.read_text())
+          PY
+      - name: Preserve success and failure evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-spin48-ancestry-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-spin48-ancestry-evidence
+          if-no-files-found: warn
