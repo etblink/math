@@ -84,7 +84,7 @@ theorem sourceBlockColorAxis_other
         sourceBlockColorLabel q.1 q.2 := by
     intro h
     exact hpq (sourceBlockColorLabel_injective h)
-  simp [sourceBlockColorAxis, Pi.single_apply, hlabel]
+  simp [sourceBlockColorAxis, hlabel]
 
 #print axioms sourceColorModeEquiv
 #print axioms sourceBlockColorEquiv
