@@ -48,7 +48,11 @@ theorem sourceGammaRealLinear_sq (v : Source48Vector) :
     sourceNormalizedGamma_sq_one p
   have hanti (p q : Source48Label) (hpq : p ≠ q) :
       γ p * γ q + γ q * γ p = 0 := by
-    simpa [γ, hpq] using (sourceNormalizedGamma_pairwise_CAR p q)
+    calc
+      γ p * γ q + γ q * γ p = (0 : ℂ) • (1 : FockOp) := by
+        simpa only [γ, if_neg hpq] using
+          (sourceNormalizedGamma_pairwise_CAR p q)
+      _ = 0 := zero_smul ℂ (1 : FockOp)
   have hcomplex :
       (∑ p : Source48Label, cc p • γ p) *
         (∑ p : Source48Label, cc p • γ p) =
