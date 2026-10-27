@@ -1,0 +1,78 @@
+name: BFSS original Source48 concrete block color axes strict qualification
+on:
+  push:
+    branches:
+      - integration/community-20261027-bfss
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean
+      - .github/workflows/bfss-kotler-source48-block-color-axes-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source48-block-axes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact source and environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean)" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean)" = '12230c84dc5913ae8dd875abe22b079ee19d419f'
+      - name: Prepare pinned Lean environment
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+      - name: Build qualified S1V0 original 48-real geometry parent
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe
+      - name: Compile FCP S1V5 block-color axes and audit five roots
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe
+          mkdir -p .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          timeout 750s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee /tmp/source48-axes-strict.log
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          import pathlib, re
+          log = pathlib.Path('/tmp/source48-axes-strict.log').read_text()
+          source = pathlib.Path('OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean').read_text()
+          requested = re.findall(r'^#print axioms (\S+)', source, re.M)
+          actual = re.findall(r"(?ms)^'([^'\n]+)' depends on axioms: \[([^]]*)\]", log)
+          warnings = re.findall(r'(?m)^[^\n]*\.lean:\d+:\d+: warning:', log)
+          assert 'error:' not in log and 'sorryAx' not in log and not warnings, (warnings, log[-4000:])
+          expected = ['sourceColorModeEquiv', 'sourceBlockColorEquiv',
+                      'sourceBlockColorLabel_injective', 'sourceBlockColorAxis_self',
+                      'sourceBlockColorAxis_other']
+          assert requested == expected and len(actual) == len(expected), (requested, actual)
+          for (declaration, dependencies), name in zip(actual, expected):
+              assert declaration == 'FCP.BFSSS1V5.' + name, (declaration, name)
+              used = {part.strip() for part in dependencies.split(',') if part.strip()}
+              assert used <= {'propext', 'Classical.choice', 'Quot.sound'}, (declaration, used)
+          print('KOTLER_BFSS_SOURCE48_BLOCK_AXES_FIVE_ROOTS_STRICT_PASS')
+          PY
