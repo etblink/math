@@ -686,3 +686,65 @@ The next separate obligation, original `CliffordAlgebra.lift` into the **actual*
 The independently pinned strict [workflow](https://github.com/etblink/math/blob/integration/community-20261027-bfss/.github/workflows/bfss-kotler-source48-fock-clifford-universal-lift-strict.yml), added in [commit ebb16d50](https://github.com/etblink/math/commit/ebb16d50925c2ac4c103c2366eba6a9a3c6ca24d), requires Lean 4.34.1, Mathlib `d13f23b`, exact original Core, all-vector parent and candidate source hashes, fresh compiled `.olean`, printed axioms for the definition and generator theorem, no `sorryAx`, no Lean source warnings/errors and only `propext, Classical.choice, Quot.sound`. [Run 40593379663](https://github.com/etblink/math/actions/runs/40593379663) was initiated and is **pending**; neither the definition nor generator theorem is presently admitted. A red may reveal that an unproven real algebra instance or API bridge is needed; preserve that result rather than introducing an unjustified instance or surrogate Fock space.
 
 **Qualified count stays at 24 BFSS contributor modules** at this checkpoint. The all-vector square and universal representation remain two *separate pending qualifications*. No claim about original Spin(48) kernel classification, Spin(9) physical lift, BFSS spectrum or physical existence follows. Owner `main` and `mathcommunity/oai-math-revised` are unchanged; no upstream PR, issue or comment was created.
+
+
+### Terminal qualification: Source48 all-vector square and genuine Clifford algebra homomorphism
+
+The previously pending strict Source48 all-vector quadratic-square
+[run 40592922016](https://github.com/etblink/math/actions/runs/40592922016),
+job `122501474300`, is **TERMINAL SUCCESS**. Original job logs show the exact
+`FCP.BFSSSource48AllVectorFockCliffordSquare.sourceGammaRealLinear_sq`
+root, only `propext`, `Classical.choice` and `Quot.sound`, compiled
+source `.olean`, no Lean source errors, warnings or `sorryAx`, and marker
+`KOTLER_BFSS_SOURCE48_ALLVECTOR_QUADRATIC_SQUARE_ONE_ROOT_STRICT_PASS`.
+The final square source blob is `86436ee9a4f3b097bc9cbc4521d5fc582dbd7feb`.
+Prior red runs 40590463741 and 40591649154 are retained as genuine
+proof-interface / deprecation negative knowledge, not theorem counterexamples.
+
+The independent original Source48 Fock Clifford universal-lift strict
+[run 40593379663](https://github.com/etblink/math/actions/runs/40593379663),
+job `122503015484`, is also **TERMINAL SUCCESS**. The source
+`SU2BFSSSource48FockCliffordUniversalLiftProbe.lean` (blob
+`f057756e42d30c8069a9c934001cf75c1e2d1ed2`) compiled the genuine
+`CliffordAlgebra source48Quadratic →ₐ[ℝ] (Fermion 2 →L[ℂ] Fermion 2)`
+definition `sourceFockCliffordAlgHom` and generator theorem
+`sourceFockCliffordAlgHom_generator`. Both printed only the three permitted
+Lean axioms and passed exact declaration, compiled-object, warning, error,
+and `sorryAx` controls. The original compiler marker is
+`KOTLER_BFSS_SOURCE48_CLIFFORD_UNIVERSAL_DEF_GENERATOR_STRICT_PASS`.
+
+These are **two additional strictly qualified contributor modules**, bringing
+the owner integration branch from 24 to **26**. The universal map is now
+qualified but its injectivity, global Clifford-star preservation, Spin(48)
+kernel, Spin(9) physical lift, covering, and BFSS spectral/existence results
+remain **unproved separately**. In particular, the Clifford star is negative
+on odd original generators, whereas the corresponding normalized actual
+Fock Majoranas are self-adjoint: a global *-homomorphism claim would be
+unjustified.
+
+### Next bounded candidate: original Source48 normalized and all-vector Fock self-adjointness
+
+The contributor candidate `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean`
+(source Git blob `98889cb8607ccc64091165fbca585acb898b9ddc`) adapts the source
+FCP L9E5E1/E2 self-adjoint method while relying only on the already admitted
+owner Source48 normalized gamma map, original real-linear Fock gamma and the
+qualified real/complex Fock scalar bridge. Two proposed theorem roots:
+
+1. `FCP.BFSSSource48FockGammaSelfAdjoint.sourceNormalizedGamma_selfAdjoint`
+   for each exact original Source48 label.
+2. `FCP.BFSSSource48FockGammaSelfAdjoint.sourceGammaRealLinear_selfAdjoint`
+   for **every** original real Source48 vector.
+
+The independent strict workflow
+`.github/workflows/bfss-kotler-source48-fock-gamma-selfadjoint-strict.yml`
+(source Git blob `3478bdcd7ea92ee92718c92e0d3d4c0b187c8c28`) pins source identities, Lean 4.34.1 and
+Mathlib d13f23b, compiles original Fock ancestry, then requires a fresh
+candidate `.olean`, exactly both named Lean root reports, only permitted
+axioms, and zero Lean source warnings/errors/`sorryAx`. The source,
+workflow and this canonical audit are one atomic branch-local Git commit.
+**This candidate contributes ZERO new accepted modules/roots until its
+own strict run terminates green.**
+
+Scope: owner integration branch only. Neither canonical owner main nor
+`mathcommunity/oai-math-revised` has been modified, and no upstream PR,
+issue or comment is authorized.
