@@ -1,5 +1,16 @@
 # K1D10 — genuine original negative central Spin48 vector action
 
+## Gate 1 failure and statement-preserving repair — 2026-10-28 UTC
+
+**GATE 1 RED / NO K1D10 ACCEPTANCE:** [strict run #40627931241](https://github.com/etblink/math/actions/runs/40627931241), job `122617240801`, tested exact original source SHA [`42362c32f78b46a56795d539af0c6885b9ea9717`](https://github.com/etblink/math/commit/42362c32f78b46a56795d539af0c6885b9ea9717). All **59 accepted ancestor roots passed independently**; failure was strictly localized to first K1D10 declaration line 34, column 44: `error(lean.synthInstanceFailed): failed to synthesize instance of type class Inv C`. The source expression `(s⁻¹ : C)` demanded an inverse on the arbitrary Clifford algebra, not the existing spinGroup group inverse. The candidate compiler emitted `sorryAx` for both new declarations, so **neither** was accepted. Preserve exact [failed-run evidence artifact #12789964867](https://github.com/etblink/math/actions/runs/40627931241/artifacts/12789964867).
+
+**GATE 2 REPAIR CANDIDATE:** Re-type only the inverse as `((s⁻¹ : spinGroup Q) : C)`. Pinned Mathlib `spinGroup` has an actual group inverse implemented via `star`; this aligns with the actual `spinGroup.toUnits` map and avoids introducing an `Inv C` assumption. Both theorem statements, original source representation, proof dependencies, source-defined quadratic form, and allowed axiom policy remain unchanged. New Lean Git blob `659edfc3998fc078085ec376f61481164f61edf0`; new strict verifier blob `2e92a944eab4680d092e531978760bd572315013`. This repair has **no acceptance** without an independently completed strict run and original axiom reports.
+
+**Accepted baseline remains 56 owner contributor modules / 59 selected declaration roots**, regardless of red K1D10 runs. The original source-vector action of negative central Spin, the full two-sign group kernel, covering, global Spin9, and BFSS spectral existence remain separate.
+
+### Original pre-Gate-1 research charter
+
+
 **CANDIDATE; NOT YET ACCEPTED BY INDEPENDENT CI.** Owner research branch `research/fcp-k1d10-negative-action-20261027` is a one-commit descendant of qualified `research/fcp-k1d9-negative-spin-20261027@df624017f88678f86167125e4715adc7491e1a4f`.
 
 ## Accepted mathematical starting point

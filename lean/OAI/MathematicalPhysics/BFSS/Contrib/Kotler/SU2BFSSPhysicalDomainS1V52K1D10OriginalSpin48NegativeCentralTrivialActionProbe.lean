@@ -31,7 +31,7 @@ theorem originalSourceSpin48VectorAction_clifford_star
     CliffordAlgebra.ι Q (FCP.BFSSS1V31.sourceSpin48VectorAction s v) =
       (s : C) * CliffordAlgebra.ι Q v * star (s : C) := by
   rw [FCP.BFSSS1V31.sourceSpin48VectorAction_clifford_generator]
-  change (s : C) * CliffordAlgebra.ι Q v * (s⁻¹ : C) =
+  change (s : C) * CliffordAlgebra.ι Q v * ((s⁻¹ : spinGroup Q) : C) =
     (s : C) * CliffordAlgebra.ι Q v * star (s : C)
   rfl
 
