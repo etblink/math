@@ -1,5 +1,16 @@
 # K1D11 — exact two-sign pointwise kernel of original source Spin(48) vector action
 
+## Gate 1 red and source-exact correction — 2026-10-28 UTC
+
+**Gate 1 RED (not accepted):** [run #40630400313](https://github.com/etblink/math/actions/runs/40630400313), job `122625180094`, exact tested SHA [`a097b67280b8730e08506a895791b24ba7aaf8a8`](https://github.com/etblink/math/commit/a097b67280b8730e08506a895791b24ba7aaf8a8). All **61 previously accepted roots requalified**. The K1D11 source emitted axiom reports for all four declarations with only `propext`, `Classical.choice`, and `Quot.sound`, but strict `-DwarningAsError=true` rejected a single deprecated lemma at source line 72: `Set.mem_setOf_eq` has been deprecated and must be replaced by `Set.mem_ofPred_eq`. [Immutable failed-run compiler artifact #12791264149](https://github.com/etblink/math/actions/runs/40630400313/artifacts/12791264149) is preserved. A red run never qualifies any declaration, even with good axiom reports.
+
+**Gate 2 repair, not yet independently accepted:** one source token replacement `Set.mem_setOf_eq → Set.mem_ofPred_eq`. All four theorem statements, actual original Spin48 vector action, exact parent source files, proof structure, and permitted axiom policy remain unchanged. Re-pin the source Git blob `d954d2afe6fbf751314d6a36c84b1d4c9783d1d1` and verifier blob `c0167a1f0a2bd1d2ff45249108a4ef12f5f377e6`. No stale-verifier waiver, banned axiom, or replacement claim. Require a new completed strict gate for any acceptance.
+
+**Accepted baseline remains 57 scoped contributor modules / 61 selected declaration roots** until an independent completed green at the corrected source SHA.
+
+### Archived original candidate charter
+
+
 **State: RESEARCH CANDIDATE; new strict CI not yet qualified.** Parent qualified owner branch: `research/fcp-k1d10-negative-action-20261027`. New branch: `research/fcp-k1d11-exact-kernel-20261027`.
 
 ## Accepted source-exact ancestry

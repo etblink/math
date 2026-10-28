@@ -25,8 +25,8 @@ jobs:
           set -euo pipefail
           test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
           grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D11OriginalSpin48ExactTwoSignKernel.lean)" = '37876177639a3dd0e0bab7bad1d21e4ebb1f1a3d'
-          test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_k1d11.py)" = '5b4afa88f13ea8d09e1eb9af76874ba6d93fcaa4'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D11OriginalSpin48ExactTwoSignKernel.lean)" = 'd954d2afe6fbf751314d6a36c84b1d4c9783d1d1'
+          test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_k1d11.py)" = 'c0167a1f0a2bd1d2ff45249108a4ef12f5f377e6'
       - name: Restore pinned Lean and Mathlib dependencies
         shell: bash
         timeout-minutes: 35

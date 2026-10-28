@@ -69,7 +69,7 @@ theorem originalSourceSpin48_pointwiseKernel_eq_two_sign_set :
         FCP.BFSSS1V31.sourceSpin48VectorAction s v = v} =
       ({1, originalSourceNegativeCentral} : Set (spinGroup Q)) := by
   ext s
-  simpa only [Set.mem_setOf_eq, Set.mem_insert_iff, Set.mem_singleton_iff] using
+  simpa only [Set.mem_ofPred_eq, Set.mem_insert_iff, Set.mem_singleton_iff] using
     (originalSourceSpin48_trivialAction_iff_two_signs s)
 
 /-- The two genuine group elements in the exact kernel really are
