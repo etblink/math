@@ -1,5 +1,16 @@
 # K1D14 — exact kernel of original Spin48 linear representation
 
+## Gate 1 failure, negative knowledge, and candidate repair (2026-10-28 UTC)
+
+**Gate 1 RED, no new roots accepted.** [GitHub Actions run #40637439516](https://github.com/etblink/math/actions/runs/40637439516), job `122647544839`, tested exact SHA `829a5a05b70b89c5d6e7d3d38436eb313305596f`. Exact source and verifier hashes, Lean/Mathlib restoration, and **all 70 accepted ancestor declaration roots** passed. The new K1D14 module failed at original line 56, column 2: the first theorem proves `ρ s = 1 ↔ s = 1 ∨ s = originalSourceNegativeCentral`, but the equality of sets expects `s ∈ (↑ρ.ker : Set _) ↔ s = 1 ∨ s = originalSourceNegativeCentral`. The attempted `simpa only [MonoidHom.mem_ker, ...]` did not discharge the additional `SetLike.mem_coe` wrapper. The second theorem emitted `sorryAx` and must not be accepted; first and third root axiom reports alone are not acceptance. [Failed-run artifact #12794353662](https://github.com/etblink/math/actions/runs/40637439516/artifacts/12794353662) and complete original compiler/job logs are preserved.
+
+**Bounded Gate 2 candidate repair (not accepted):** Insert `SetLike.mem_coe` into the existing `simpa only` simplifier list before `MonoidHom.mem_ker`. Pinned Mathlib at `d13f23b723b8a846827a245b89c10fc7d3f11612` uses `SetLike.mem_coe` for exact set-level/coerced subgroup membership. This is the sole source change; all three mathematical statements, genuine Spin48→GL48 homomorphism, accepted antecedent source files, axiom policy, and proof architecture remain unchanged. Re-pinned K1D14 Lean source Git blob `3bdca4594e8a00d6597aadad61997af68209f46f`; strict verifier Git blob `9a2ab70de5359e0364d72bc3cb16c291de7fbb81`.
+
+**Fail closed:** The repair requires a *new* completed strict run at its exact new commit with fresh ancestry recompilation, nonempty `.olean`, three exact declaration-level allowed-axiom results, root types and no Lean source warnings/errors. Until then the accepted baseline is frozen at **60 modules / 70 roots**. The broader SO48/surjectivity/covering/Spin9/spectral claims remain unproved.
+
+### Archived initial candidate charter
+
+
 **STATUS: CANDIDATE, not independent strict qualified.** New owner research branch `research/fcp-k1d14-gl-kernel-20261027` descends from the accepted `research/fcp-k1d13-linear-representation-20261027@ee4bce66dca3a018383b59cb04cd7949fa5d7fcb` documentation checkpoint.
 
 ## Accepted mathematical baseline

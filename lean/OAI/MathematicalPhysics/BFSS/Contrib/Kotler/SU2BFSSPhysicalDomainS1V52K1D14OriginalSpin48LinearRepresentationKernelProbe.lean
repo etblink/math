@@ -53,7 +53,8 @@ theorem originalSourceSpin48LinearRepresentation_ker_eq_two_sign_set :
       ({1, FCP.BFSSS1V52K1D11.originalSourceNegativeCentral} :
         Set (spinGroup Q)) := by
   ext s
-  simpa only [MonoidHom.mem_ker, Set.mem_insert_iff, Set.mem_singleton_iff] using
+  simpa only [SetLike.mem_coe, MonoidHom.mem_ker, Set.mem_insert_iff,
+    Set.mem_singleton_iff] using
     (originalSourceSpin48LinearRepresentation_eq_one_iff_two_signs s)
 
 /-- The original source Spin48 representation is not injective,
