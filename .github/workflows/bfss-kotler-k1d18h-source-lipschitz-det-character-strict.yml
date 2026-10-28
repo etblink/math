@@ -1,0 +1,226 @@
+name: BFSS K1D18H original Lipschitz linear representation and determinant character strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - .github/workflows/bfss-kotler-k1d18h-source-lipschitz-det-character-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-lipschitz-det-character:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Exact source pins and no unproved declaration lexemes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean")" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V31CanonicalAllSpin48RealVectorActionProbe.lean")" = '3253f10de6d31ed6f0ec5fd5d4674109cf9e04d6'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V37Original48CliffordGeneratorRankOneDeterminantProbe.lean")" = '19db346be86030db4a3a291493b962bf00898898'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D13OriginalSpin48LinearRepresentationProbe.lean")" = 'ea7b39f86a3ee3da6e69ecde3e84a3e04252567d'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D16OriginalSpin48QuadraticIsometryProbe.lean")" = '6367c33e426cfda4269a34bf1fb8a71dec7fb8bc'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe.lean")" = '9dc33c924c22e8823ddc905440feb05fb8ce3d0f'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18BPolarAllVectorCliffordBridgeProbe.lean")" = 'd0531752fa8f63df4f94294d6cd748fed1af223e'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18CRankOneActualCliffordGeneratorProbe.lean")" = '9455998333da80845ab6b7514c13ef990c951019'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18DOriginalSourceSpinUnitFactorizationProbe.lean")" = '3e45853f5abbff26bf0dca170217013415736e9c'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18EOriginalSpinTwoFactorDeterminantProbe.lean")" = '4affb7ed6e0ca213e1317a87f313124f8fa844ae'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18FOriginalLipschitzVectorActionProbe.lean")" = '1562aaf20f77a96b7dd27afde090e59ff1258188'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18GOriginalLipschitzVectorActionLawsProbe.lean")" = '91d71119f865d4aec1e09bb55f9297e29e7174a4'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe.lean")" = '3de8f66a91063845b0aaa8417ed9260cc5d41df6'
+          test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_k1d17_cached_ancestry.py)" = 'ca97ad005f75fc270942d034772871471933c7b3'
+          python3 - <<'PY'
+          import pathlib,re,sys
+          sys.path.insert(0,str(pathlib.Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          p=pathlib.Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler')
+          files=[
+            ('SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe.lean',["source48_coordinate_sum","source48_normalized_polar_coordinate_dot"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18BPolarAllVectorCliffordBridgeProbe.lean',["source48NormalizedPolarRow_dot","source48NormalizedPolarRow_dot_self","source48_clifford_generator_conjugation_from_row"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18CRankOneActualCliffordGeneratorProbe.lean',["source48_rankOneConjugationMatrix_mulVec","source48_rankOneMatrix_matches_original_clifford_conjugation","source48_original_generator_rankOneMatrix_det"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18DOriginalSourceSpinUnitFactorizationProbe.lean',["originalSourceSpin48Isometry_clifford_generator","originalSourceInvertibleCliffordUnit_rankOne_action","originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18EOriginalSpinTwoFactorDeterminantProbe.lean',["originalSourceTwoGeneratorMatrices_det_one","originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization","originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18FOriginalLipschitzVectorActionProbe.lean',["sourceLipschitz_conjugated_generator_unique","sourceLipschitzVectorAction_clifford_generator","sourceLipschitzVectorAction_add","sourceLipschitzVectorAction_smul"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18GOriginalLipschitzVectorActionLawsProbe.lean',["originalSourceSpin48_unit_mem_lipschitz","sourceLipschitzVectorAction_one","sourceLipschitzVectorAction_mul","sourceLipschitzVectorAction_agrees_originalSpin48","originalSourceLipschitzLinearMap"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe.lean',["originalSourceLipschitzLinearEquiv","originalSourceLipschitzLinearEquiv_apply","originalSourceLipschitzLinearRepresentation","originalSourceLipschitzDeterminantCharacter"]),
+          ]
+          for name,roots in files:
+              s=(p/name).read_text()
+              assert not re.search(r'\b(?:sorry|admit|sorryAx|axiom)\b',code_only(s)),name
+              assert re.findall(r'(?m)^#print axioms (\S+)',s)==roots,(name,'roots mismatch')
+          print('K1D18H_EXACT_SOURCE_PINS_TWENTY_SEVEN_DECLARATIONS_PASS')
+          PY
+      - name: Restore exact accepted Lean/Mathlib dependencies; no full dependency cache
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          lake env lean --version
+      - name: Restore same-branch source accepted 81-root ancestry
+        id: accepted-cache
+        uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: lean/.lake/build/lib/lean/OAI
+          key: bfss-fcp-k1d17-source-accepted-ancestors-v1-389ecdcc-lean4341-d13f23b-${{ runner.os }}-${{ runner.arch }}
+      - name: Require exact validated 81-root source ancestry (no fallback)
+        shell: bash
+        timeout-minutes: 20
+        env:
+          EXACT_HIT: ${{ steps.accepted-cache.outputs.cache-hit }}
+        run: |
+          set -euo pipefail
+          test "$EXACT_HIT" = true || { echo 'K1D18H_NO_TRUSTED_ANCESTRY_CACHE_STOP'; exit 1; }
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d17_cached_ancestry.py verify --log-dir "$RUNNER_TEMP/k1d18h-cache"
+          echo K1D18H_ACCEPTED_81_ROOT_ANCESTRY_PASS
+      - name: Fresh warning-as-error source compilation K1D18A through H
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          p=OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          mkdir -p ".lake/build/lib/lean/$p" "$RUNNER_TEMP/k1d18h-fresh"
+          for m in SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe SU2BFSSPhysicalDomainS1V52K1D18BPolarAllVectorCliffordBridgeProbe SU2BFSSPhysicalDomainS1V52K1D18CRankOneActualCliffordGeneratorProbe SU2BFSSPhysicalDomainS1V52K1D18DOriginalSourceSpinUnitFactorizationProbe SU2BFSSPhysicalDomainS1V52K1D18EOriginalSpinTwoFactorDeterminantProbe SU2BFSSPhysicalDomainS1V52K1D18FOriginalLipschitzVectorActionProbe SU2BFSSPhysicalDomainS1V52K1D18GOriginalLipschitzVectorActionLawsProbe SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe; do
+            lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/$p/$m.olean" "$p/$m.lean" > "$RUNNER_TEMP/k1d18h-fresh/$m.log" 2>&1 || {
+              cat "$RUNNER_TEMP/k1d18h-fresh/$m.log"; exit 1;
+            }
+            test -s ".lake/build/lib/lean/$p/$m.olean"
+            cat "$RUNNER_TEMP/k1d18h-fresh/$m.log"
+            sha256sum ".lake/build/lib/lean/$p/$m.olean"
+          done
+          echo K1D18H_SOURCE_EXACT_EIGHT_FRESH_COMPILATIONS_PASS
+      - name: Independent source-exact twenty-seven declaration type/axiom audit
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          d="$RUNNER_TEMP/k1d18h-fresh"
+          cat > "$d/audit.lean" <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe
+          #print axioms FCP.BFSSS1V52K1D18A.source48_coordinate_sum
+          #print axioms FCP.BFSSS1V52K1D18A.source48_normalized_polar_coordinate_dot
+          #print axioms FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot
+          #print axioms FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot_self
+          #print axioms FCP.BFSSS1V52K1D18B.source48_clifford_generator_conjugation_from_row
+          #print axioms FCP.BFSSS1V52K1D18C.source48_rankOneConjugationMatrix_mulVec
+          #print axioms FCP.BFSSS1V52K1D18C.source48_rankOneMatrix_matches_original_clifford_conjugation
+          #print axioms FCP.BFSSS1V52K1D18C.source48_original_generator_rankOneMatrix_det
+          #print axioms FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_clifford_generator
+          #print axioms FCP.BFSSS1V52K1D18D.originalSourceInvertibleCliffordUnit_rankOne_action
+          #print axioms FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization
+          #print axioms FCP.BFSSS1V52K1D18E.originalSourceTwoGeneratorMatrices_det_one
+          #print axioms FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization
+          #print axioms FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitz_conjugated_generator_unique
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_clifford_generator
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_add
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_smul
+          #print axioms FCP.BFSSS1V52K1D18G.originalSourceSpin48_unit_mem_lipschitz
+          #print axioms FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_one
+          #print axioms FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_mul
+          #print axioms FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_agrees_originalSpin48
+          #print axioms FCP.BFSSS1V52K1D18G.originalSourceLipschitzLinearMap
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv_apply
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearRepresentation
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter
+          #check @FCP.BFSSS1V52K1D18A.source48_coordinate_sum
+          #check @FCP.BFSSS1V52K1D18A.source48_normalized_polar_coordinate_dot
+          #check @FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot
+          #check @FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot_self
+          #check @FCP.BFSSS1V52K1D18B.source48_clifford_generator_conjugation_from_row
+          #check @FCP.BFSSS1V52K1D18C.source48_rankOneConjugationMatrix_mulVec
+          #check @FCP.BFSSS1V52K1D18C.source48_rankOneMatrix_matches_original_clifford_conjugation
+          #check @FCP.BFSSS1V52K1D18C.source48_original_generator_rankOneMatrix_det
+          #check @FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_clifford_generator
+          #check @FCP.BFSSS1V52K1D18D.originalSourceInvertibleCliffordUnit_rankOne_action
+          #check @FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization
+          #check @FCP.BFSSS1V52K1D18E.originalSourceTwoGeneratorMatrices_det_one
+          #check @FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization
+          #check @FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitz_conjugated_generator_unique
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_clifford_generator
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_add
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_smul
+          #check @FCP.BFSSS1V52K1D18G.originalSourceSpin48_unit_mem_lipschitz
+          #check @FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_one
+          #check @FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_mul
+          #check @FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_agrees_originalSpin48
+          #check @FCP.BFSSS1V52K1D18G.originalSourceLipschitzLinearMap
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv_apply
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearRepresentation
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter
+          LEAN
+          lake env lean -DwarningAsError=true "$d/audit.lean" > "$d/audit.log" 2>&1 || { cat "$d/audit.log"; exit 1; }
+          cat "$d/audit.log"
+          python3 - "$d/audit.log" <<'PY'
+          import pathlib,re,sys
+          s=pathlib.Path(sys.argv[1]).read_text()
+          roots=[
+            'FCP.BFSSS1V52K1D18A.source48_coordinate_sum',
+            'FCP.BFSSS1V52K1D18A.source48_normalized_polar_coordinate_dot',
+            'FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot',
+            'FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot_self',
+            'FCP.BFSSS1V52K1D18B.source48_clifford_generator_conjugation_from_row',
+            'FCP.BFSSS1V52K1D18C.source48_rankOneConjugationMatrix_mulVec',
+            'FCP.BFSSS1V52K1D18C.source48_rankOneMatrix_matches_original_clifford_conjugation',
+            'FCP.BFSSS1V52K1D18C.source48_original_generator_rankOneMatrix_det',
+            'FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_clifford_generator',
+            'FCP.BFSSS1V52K1D18D.originalSourceInvertibleCliffordUnit_rankOne_action',
+            'FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization',
+            'FCP.BFSSS1V52K1D18E.originalSourceTwoGeneratorMatrices_det_one',
+            'FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization',
+            'FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitz_conjugated_generator_unique',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_clifford_generator',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_add',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_smul',
+            'FCP.BFSSS1V52K1D18G.originalSourceSpin48_unit_mem_lipschitz',
+            'FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_one',
+            'FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_mul',
+            'FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_agrees_originalSpin48',
+            'FCP.BFSSS1V52K1D18G.originalSourceLipschitzLinearMap',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv_apply',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearRepresentation',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter',
+          ]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",s)
+          assert [n for n,_ in reports]==roots,reports
+          allowed={'propext','Classical.choice','Quot.sound'}
+          for name,axs in reports:
+              assert set(x.strip() for x in axs.split(',') if x.strip())<=allowed,(name,axs)
+          assert 'sorryAx' not in s
+          assert not re.search(r'\.lean:\d+:\d+:\s*(?:warning|error)',s)
+          for root in roots: assert root+' :' in s,('missing source-exact declaration type',root)
+          print('K1D18H_EXACT_TWENTY_SEVEN_ROOT_TYPES_AXIOMS_PASS')
+          PY
+      - name: Preserve compiler and independent axiom evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-k1d18h-source-det-character-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/k1d18h-cache
+            ${{ runner.temp }}/k1d18h-fresh
+          if-no-files-found: warn
