@@ -56,3 +56,21 @@ Use **structure → exact source specialization → explicit premise discharge �
 These V1 facts do not prove existence/normalization of nonzero source vectors, an isometry theorem for every chosen rank-one generator, a genuine even Pin/Spin lift, reflection generation, image surjectivity, canonical matrix SO(48) equivalence, any topological covering or physical BFSS claim. Next work should select one genuinely missing Stage V premise at a time, using the evergreen rule structure → exact source specialization → explicit premise discharge → small composition. Do not reattempt the five Q definitional/recursion failures under new names without a different, discriminating architecture.
 
 **Publishing boundary:** research branch only; owner `main`, original OpenAI source, and community upstream untouched. No upstream PR, issue, or comment is authorized.
+
+
+## K1D18V1 strict acceptance — original reflection geometry (2026-10-28)
+
+**ACCEPTED, exact source only:** [run #40770616617](https://github.com/etblink/math/actions/runs/40770616617), job `123106472756`, attempt 1, completed green at tested commit `d55810fd5b62c9885a3ee07ca1b7203b82056aee`. The tested V1 source blob was `0924d31506cf4b94d0e5050b10685b2b467abf3c`. Job-log markers independently verified:
+- `K1D18V1_EXACT_SOURCE_PINS_SIXTY_FOUR_DECLARATIONS_PASS`;
+- `K1D18V1_ACCEPTED_81_ROOT_ANCESTRY_PASS` (37 cached modules, 81 source roots);
+- `K1D18V1_SOURCE_EXACT_TWENTY_ONE_FRESH_COMPILATIONS_PASS`;
+- `K1D18V1_EXACT_SIXTY_FOUR_ROOT_TYPES_AXIOMS_PASS`.
+
+The complete job's source-preflight, dependency pin, cache validation, compiler, independent type/axiom auditor and artifact preservation steps all succeeded. Three new source-exact declarations were accepted under the unchanged `[Invertible (source48Quadratic a)]` hypothesis:
+- `FCP.BFSSS1V52K1D18V1.source48_original_reflection_fixes_axis`;
+- `FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_normalized_polar_kernel`;
+- `FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_source_polar_orthogonal`.
+
+All 64 printed reports passed the explicit whitelist `{propext, Classical.choice, Quot.sound}`, without `sorryAx`. **Geometric consequence:** the source-defined Clifford-conjugation rank-one matrix fixes its original defining line and negates its original quadratic-polar orthogonal hyperplane. The orientation convention is `2P_a - I`, not `I - 2P_a`; the source norm is still an explicit invertibility premise. Earlier V1 “pending” statements above are historical, superseded by this green run.
+
+**Next bounded Stage V experiment:** prove the same source rank-one operator squares to identity, first as a generic finite dot-product/mulVec bridge with exact `ell ⬝ᵥ a = 2`, then specialize to the original B polar row using its already accepted self-dot theorem. This will not alone prove source Q preservation, nonzero unit normalization, inversion/star identities, genuine even Spin lifts, Cartan–Dieudonné generation or image surjectivity. No change to K1D18V1 source or prior audit.
