@@ -17,26 +17,43 @@ open FCP.BFSSS1V0
 private abbrev Q : QuadraticForm ℝ Source48Vector := source48Quadratic
 private abbrev GL48 := Source48Vector ≃ₗ[ℝ] Source48Vector
 
-/-- Genuine original quadratic-form-preserving real GL subgroup. -/
-noncomputable def source48QuadraticPreservingGL : Subgroup GL48 where
-  carrier := {f | ∀ v, Q (f v) = Q v}
+/-- Abstract form-preserving automorphisms. This generic lemma is
+proved without unfolding or even referencing the large source48Quadratic. -/
+private noncomputable def quadraticPreservingGLGeneric
+    {V : Type*} [AddCommGroup V] [Module ℝ V]
+    (q : QuadraticForm ℝ V) : Subgroup (V ≃ₗ[ℝ] V) where
+  carrier := {f | ∀ v, q (f v) = q v}
   one_mem' := by
     intro v
-    have hOne : ((1 : GL48) v) = v := rfl
-    exact congrArg Q hOne
+    have hOne : ((1 : V ≃ₗ[ℝ] V) v) = v := rfl
+    exact congrArg q hOne
   mul_mem' := by
     intro f g hf hg v
-    have hMul : ((f * g : GL48) v) = f (g v) := rfl
-    have hQuad : Q (f (g v)) = Q v :=
+    have hMul : ((f * g : V ≃ₗ[ℝ] V) v) = f (g v) := rfl
+    have hQuad : q (f (g v)) = q v :=
       (hf (g v)).trans (hg v)
-    exact (congrArg Q hMul).trans hQuad
+    exact (congrArg q hMul).trans hQuad
   inv_mem' := by
     intro f hf v
-    have hInv : ((f⁻¹ : GL48) v) = f.symm v := rfl
+    have hInv : ((f⁻¹ : V ≃ₗ[ℝ] V) v) = f.symm v := rfl
     have hApply : f (f.symm v) = v := f.apply_symm_apply v
-    have hQuad : Q (f.symm v) = Q v :=
-      (hf (f.symm v)).symm.trans (congrArg Q hApply)
-    exact (congrArg Q hInv).trans hQuad
+    have hQuad : q (f.symm v) = q v :=
+      (hf (f.symm v)).symm.trans (congrArg q hApply)
+    exact (congrArg q hInv).trans hQuad
+
+/-- An arbitrary abstract quadratic isometry belongs to that form's
+preserving GL subgroup by its native IsometryEquiv structure field. -/
+private theorem quadraticPreservingGLGeneric_mem_of_isometry
+    {V : Type*} [AddCommGroup V] [Module ℝ V]
+    (q : QuadraticForm ℝ V) (i : q.IsometryEquiv q) :
+    (i : V ≃ₗ[ℝ] V) ∈ quadraticPreservingGLGeneric q := by
+  intro v
+  exact i.map_app' v
+
+/-- Specialize the abstract construction to the ORIGINAL Fin24×Fin2
+source vectors and source48Quadratic, without changing either. -/
+noncomputable def source48QuadraticPreservingGL : Subgroup GL48 :=
+  quadraticPreservingGLGeneric source48Quadratic
 
 /-- Pinned Mathlib's actual invertible determinant character. -/
 noncomputable def source48DetCharacter : GL48 →* ℝˣ :=
@@ -51,8 +68,7 @@ isometry preserves the original quadratic form, by its source field. -/
 theorem source48QuadraticPreservingGL_mem_of_isometry
     (i : Q.IsometryEquiv Q) :
     (i : GL48) ∈ source48QuadraticPreservingGL := by
-  intro v
-  exact i.map_app v
+  exact quadraticPreservingGLGeneric_mem_of_isometry source48Quadratic i
 
 /-- Explicit same-action equality, using the accepted K1D16 source
 linear-equivalence equality, not an assumed replacement action. -/
