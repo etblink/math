@@ -1,0 +1,85 @@
+name: BFSS K1D18A source polar coordinate bounded diagnostic (not an acceptance gate)
+on:
+  push:
+    branches:
+      - research/fcp-k1d18-spin48-orientation-20261028
+    paths:
+      - .github/workflows/bfss-kotler-k1d18a-source-polar-coordinate-diagnostic.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe.lean
+permissions:
+  contents: read
+
+jobs:
+  k1d18a-polar-coordinate-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify frozen original source and candidate blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          root=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$root/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean")" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object "$root/SU2BFSSPhysicalDomainS1V37Original48CliffordGeneratorRankOneDeterminantProbe.lean")" = '19db346be86030db4a3a291493b962bf00898898'
+          test "$(git hash-object "$root/SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe.lean")" = '7b4eeb0df2f8e46c4a1c6d6e130db6de2d416188'
+          python3 - <<'PY'
+          import pathlib, re
+          p=pathlib.Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe.lean')
+          s=p.read_text()
+          # This is a conservative lexeme check, not the formal axiom audit.
+          code=re.sub(r'/-.*?-/', '', s, flags=re.S)
+          assert not re.search(r'\b(?:sorry|admit|sorryAx|axiom)\b', code)
+          assert re.findall(r'(?m)^#print axioms (\S+)',s)==[
+            'source48_coordinate_sum','source48_normalized_polar_coordinate_dot']
+          PY
+          echo K1D18A_SOURCE_BLOBS_AND_DECLARATION_STEMS_PINNED
+      - name: Restore exact pinned Lean and Mathlib dependencies
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          lake env lean --version
+      - name: Fresh compile exact original S1V0 and S1V37 source dependencies
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          p=OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          mkdir -p ".lake/build/lib/lean/$p" "$RUNNER_TEMP/k1d18a"
+          for m in SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe SU2BFSSPhysicalDomainS1V37Original48CliffordGeneratorRankOneDeterminantProbe; do
+            lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/$p/$m.olean" "$p/$m.lean" 2>&1 | tee "$RUNNER_TEMP/k1d18a/$m.log"
+            test -s ".lake/build/lib/lean/$p/$m.olean"
+          done
+          echo K1D18A_ORIGINAL_TWO_MODULE_FRESH_ANCESTRY_PASS
+      - name: Fresh compile scoped O1 polar coordinate candidate (diagnostic only)
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          p=OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          m=SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe
+          lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/$p/$m.olean" "$p/$m.lean" 2>&1 | tee "$RUNNER_TEMP/k1d18a/$m.log"
+          test -s ".lake/build/lib/lean/$p/$m.olean"
+          echo K1D18A_EXPLORATORY_COMPILER_PASS_NOT_FORMAL_QUALIFICATION
+      - name: Preserve both compiler successes and first failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-k1d18a-polar-coordinate-diagnostic-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/k1d18a
+          if-no-files-found: warn
