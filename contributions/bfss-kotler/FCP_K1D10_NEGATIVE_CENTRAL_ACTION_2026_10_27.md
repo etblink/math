@@ -1,5 +1,18 @@
 # K1D10 — genuine original negative central Spin48 vector action
 
+## Independent owner acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 57 scoped contributor modules, 61 selected declaration roots.** [Strict GitHub Actions run #40629007863](https://github.com/etblink/math/actions/runs/40629007863), job `122620713552`, attempt 1, concluded `completed/success` on exact tested source SHA [`009a4b4524c8199f0eea71912dd745acbf1f143c`](https://github.com/etblink/math/commit/009a4b4524c8199f0eea71912dd745acbf1f143c). The job requalified all **59 accepted antecedent roots** and both new K1D10 roots. Terminal marker `FCP_K1D10_NEGATIVE_CENTRAL_ACTION_STRICT_PASS modules=1 roots=2`; only `propext`, `Classical.choice`, `Quot.sound` reported, with no Lean source compiler errors, warnings or `sorryAx`. [Immutable compiled-verification artifact #12791585498](https://github.com/etblink/math/actions/runs/40629007863/artifacts/12791585498) preserves compiler and theorem-type reports.
+
+The source-exact original Spin48 vector action is now proven to equal Clifford-star conjugation of the original generators, and the genuine negative-central Spin element is proven to act trivially on *every* original source vector. The initial [red run #40627931241](https://github.com/etblink/math/actions/runs/40627931241) is retained as negative knowledge; its repair was a precise inverse type annotation, not a theorem-statement change. The historical candidate and repair material below is superseded as a status report but retained for auditability.
+
+**Not yet qualified:** full pointwise-stabilizer/two-sign set equality, identity action and sign distinctness at the new K1D11 proof roots. A formally defined homomorphism to SO(48), its covering/double-covering interpretation, global Spin(9) lift, and BFSS spectral existence remain separate.
+
+**Runtime note:** the observed 11m 54s run duration was dominated by dependency restoration and fresh ancestor requalification. Optimization must not weaken source pins, fresh-compilation conditions, or root-level axiom audit.
+
+### Archived pre-acceptance handoff
+
+
 ## Gate 1 failure and statement-preserving repair — 2026-10-28 UTC
 
 **GATE 1 RED / NO K1D10 ACCEPTANCE:** [strict run #40627931241](https://github.com/etblink/math/actions/runs/40627931241), job `122617240801`, tested exact original source SHA [`42362c32f78b46a56795d539af0c6885b9ea9717`](https://github.com/etblink/math/commit/42362c32f78b46a56795d539af0c6885b9ea9717). All **59 accepted ancestor roots passed independently**; failure was strictly localized to first K1D10 declaration line 34, column 44: `error(lean.synthInstanceFailed): failed to synthesize instance of type class Inv C`. The source expression `(s⁻¹ : C)` demanded an inverse on the arbitrary Clifford algebra, not the existing spinGroup group inverse. The candidate compiler emitted `sorryAx` for both new declarations, so **neither** was accepted. Preserve exact [failed-run evidence artifact #12789964867](https://github.com/etblink/math/actions/runs/40627931241/artifacts/12789964867).
