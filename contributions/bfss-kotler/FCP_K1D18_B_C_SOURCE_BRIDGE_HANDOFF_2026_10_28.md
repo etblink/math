@@ -255,3 +255,19 @@ Strict receipts verified from the job log: `K1D18P_EXACT_SOURCE_PINS_FORTY_NINE_
 **Next mathematical target (K1D18Q/R):** Define a subgroup of the **same** original 48-real linear equivalences comprising source-quadratic-preserving maps with determinant one. Qualify its group closure and exact membership of the existing K1D13 source Spin action via K1D15 and K1D18P. Then package the actual Spin → special orthogonal subgroup homomorphism and transport the already qualified K1D14 two-sign kernel. Any identification with a differently presented pinned Mathlib `Matrix.specialOrthogonalGroup` must be established by an explicit source-label-equivalence theorem; not assumed. No surjectivity, topological covering, global Spin9 lift, BFSS bound-state existence, or mass gap is inferred. Retain pinned dependency and cached-ancestor controls; all new roots require fresh strict CI.
 
 **Publication boundary:** Owner research branch only; no modification of `main`, no community upstream PR, and no external physical-claim promotion. A later gate's outcome shall be appended as a new dated status paragraph rather than silently editing this acceptance.
+
+## Project Lead K1D18Q staged candidate — special orthogonal subgroup membership
+
+**2026-10-28 UTC — CANDIDATE ONLY, NOT ACCEPTED.** Atomic owner research commit [`5a75246d`](https://github.com/etblink/math/commit/5a75246de0d227d8fa40e41c8e3facee79d38622) adds original-source Q proof candidate `SU2BFSSPhysicalDomainS1V52K1D18QOriginalSpinSpecialOrthogonalMembershipProbe.lean` (Git source blob `568eedac3655782daef80c4456bffa7f73cf1a00`) and its dedicated independent strict workflow `bfss-kotler-k1d18q-source-so-membership-strict.yml` (workflow blob `a1d9420c898fcefe0d9454c452528cb5909423da`).
+
+[Strict run #40748138079](https://github.com/etblink/math/actions/runs/40748138079), tested exact SHA `5a75246de0d227d8fa40e41c8e3facee79d38622`, was observed **in progress**, with no conclusion at this handoff. **Zero Q roots accepted until terminal green and independent first-error/type/axiom review.**
+
+**Four proposed exact-source roots:**
+1. `source48QuadraticPreservingGL`: genuine subgroup of original `Source48Vector ≃ₗ[ℝ] Source48Vector` preserving precisely `source48Quadratic`.
+2. `source48DetCharacter`: the pinned genuine `LinearEquiv.det` monoid homomorphism to `ℝˣ`.
+3. `source48SpecialOrthogonalGL`: intersection of original quadratic-form-preservers and the determinant-character kernel.
+4. `originalSourceSpin48_mem_sourceSO`: membership of the *existing* K1D13 original Spin48 real-linear representation in the same subgroup, using accepted K1D15 and P without invented coordinates or alternative action.
+
+The new gate pins exact original P and all ancestor source identities, permits only the original three standard Lean axioms, demands existing 37-module/81-root sealed-object revalidation, fresh A–Q (17-module) warning-as-error compilation, 53 new-or-parent source declaration type/axiom audits, and artifacts on failure as well as success. A `source48SpecialOrthogonalGL` definition would be a source-exact subgroup presentation, **not automatically an equivalence** with pinned `Matrix.specialOrthogonalGroup` or a proof that the Spin map is a group homomorphism into that subgroup. Q success is an admission prerequisite for later group-map/kernel transport, never proof of covering or surjectivity.
+
+**Negative-evidence rule:** if run #40748138079 is red, identify the first failed step and exact compiler diagnostic; preserve this candidate and the complete failed receipt. Repair typed/structure-field bridges under the same source, theorem, and axiom policy before any limit change. No main/upstream mutation.
