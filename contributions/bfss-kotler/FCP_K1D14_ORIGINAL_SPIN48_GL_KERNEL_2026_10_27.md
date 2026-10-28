@@ -1,5 +1,18 @@
 # K1D14 — exact kernel of original Spin48 linear representation
 
+## Independent owner acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 61 scoped contributor modules / 73 selected declaration roots.** [Strict run #40639080529](https://github.com/etblink/math/actions/runs/40639080529), job `122652742710`, attempt 1, terminal `completed/success`, exact tested SHA [`82ee5ab336bb95dc423265d704c535cac37500fd`](https://github.com/etblink/math/commit/82ee5ab336bb95dc423265d704c535cac37500fd). All **70 accepted ancestor roots** independently recompiled, followed by three K1D14 roots. Terminal marker: `FCP_K1D14_SOURCE_SPIN48_GL_KERNEL_STRICT_PASS modules=1 roots=3`. All new theorem axiom reports contain only `propext`, `Classical.choice`, `Quot.sound`; no Lean source warnings/errors or `sorryAx`. [Immutable compiler/root-type artifact #12795595612](https://github.com/etblink/math/actions/runs/40639080529/artifacts/12795595612) preserves evidence.
+
+**Precisely proved:** the actual Mathlib `MonoidHom.ker` of the accepted source-defined `spinGroup source48Quadratic →* (Source48Vector ≃ₗ[ℝ] Source48Vector)` homomorphism equals the two-element set `{1, originalSourceNegativeCentral}` *in the genuine source Spin group*. Both elements are distinct, and the homomorphism is not injective. This upgrades K1D11 pointwise-fixer equality to the exact group-homomorphism kernel, without changing the representation.
+
+**Not yet qualified:** source quadratic-form preservation, orthogonal or special-orthogonal target construction, image surjectivity, a topological covering, global Spin(9) lift, and BFSS spectral claims. An exact two-sign kernel by itself is not proof of surjectivity or covering.
+
+**Negative evidence preserved:** Original [Gate 1 red #40637439516](https://github.com/etblink/math/actions/runs/40637439516), job `122647544839`, passed the 70 ancestors but could not simplify `s ∈ (↑ρ.ker : Set _)` to `ρ s = 1`; it emitted `sorryAx` for the second new root. The pinned Mathlib `SetLike.mem_coe` correction preserved theorem statements, the old failure and compiler logs are retained as evidence. The historical candidate and red sections below are archived status.
+
+### Archived candidate and failure record
+
+
 ## Gate 1 failure, negative knowledge, and candidate repair (2026-10-28 UTC)
 
 **Gate 1 RED, no new roots accepted.** [GitHub Actions run #40637439516](https://github.com/etblink/math/actions/runs/40637439516), job `122647544839`, tested exact SHA `829a5a05b70b89c5d6e7d3d38436eb313305596f`. Exact source and verifier hashes, Lean/Mathlib restoration, and **all 70 accepted ancestor declaration roots** passed. The new K1D14 module failed at original line 56, column 2: the first theorem proves `ρ s = 1 ↔ s = 1 ∨ s = originalSourceNegativeCentral`, but the equality of sets expects `s ∈ (↑ρ.ker : Set _) ↔ s = 1 ∨ s = originalSourceNegativeCentral`. The attempted `simpa only [MonoidHom.mem_ker, ...]` did not discharge the additional `SetLike.mem_coe` wrapper. The second theorem emitted `sorryAx` and must not be accepted; first and third root axiom reports alone are not acceptance. [Failed-run artifact #12794353662](https://github.com/etblink/math/actions/runs/40637439516/artifacts/12794353662) and complete original compiler/job logs are preserved.
