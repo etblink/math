@@ -1,5 +1,16 @@
 # K1D11 — exact two-sign pointwise kernel of original source Spin(48) vector action
 
+## Independent owner acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 58 scoped contributor modules and 65/65 selected declaration roots.** [Strict run #40631762187](https://github.com/etblink/math/actions/runs/40631762187), job `122629519879`, attempt 1, completed `success` at exact tested SHA [`bde1b50da7719eafc05ae015c8b1490c8aa896c1`](https://github.com/etblink/math/commit/bde1b50da7719eafc05ae015c8b1490c8aa896c1). The run requalified 61 accepted ancestor roots through K1D10 and all four fresh K1D11 declarations, with terminal marker `FCP_K1D11_EXACT_TWO_SIGN_POINTWISE_KERNEL_STRICT_PASS modules=1 roots=4`. Every new root depended only on `propext`, `Classical.choice`, `Quot.sound`; no Lean source warnings/errors or `sorryAx` were present. [Immutable compiler and theorem-type artifact #12792655534](https://github.com/etblink/math/actions/runs/40631762187/artifacts/12792655534) preserves the complete evidence.
+
+**Mathematical scope:** the *original source-defined* Spin48 action on the genuine 48-real source vectors has pointwise-fixer set exactly `{1, originalSourceNegativeCentral}`, and the two elements are distinct within the genuine `spinGroup source48Quadratic` subtype. The source does not define or qualify a Spin48-to-SO48 group homomorphism, surjectivity or covering, global Spin9 lift, or BFSS spectral existence.
+
+**Negative knowledge:** the earlier [Gate 1 red #40630400313](https://github.com/etblink/math/actions/runs/40630400313) was caused by a deprecated `Set.mem_setOf_eq` rewrite. The exact replacement `Set.mem_ofPred_eq` preserved all four statements and discharged the strict source-warnings gate; the original failure remains retained in this handoff and in artifact #12791264149. Historical candidate status below is superseded by this accepted receipt.
+
+### Archived candidate and failure chronology
+
+
 ## Gate 1 red and source-exact correction — 2026-10-28 UTC
 
 **Gate 1 RED (not accepted):** [run #40630400313](https://github.com/etblink/math/actions/runs/40630400313), job `122625180094`, exact tested SHA [`a097b67280b8730e08506a895791b24ba7aaf8a8`](https://github.com/etblink/math/commit/a097b67280b8730e08506a895791b24ba7aaf8a8). All **61 previously accepted roots requalified**. The K1D11 source emitted axiom reports for all four declarations with only `propext`, `Classical.choice`, and `Quot.sound`, but strict `-DwarningAsError=true` rejected a single deprecated lemma at source line 72: `Set.mem_setOf_eq` has been deprecated and must be replaced by `Set.mem_ofPred_eq`. [Immutable failed-run compiler artifact #12791264149](https://github.com/etblink/math/actions/runs/40630400313/artifacts/12791264149) is preserved. A red run never qualifies any declaration, even with good axiom reports.
