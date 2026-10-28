@@ -1,5 +1,18 @@
 # K1D12 — exact original Spin(48) real-vector action laws
 
+## Independent strict acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 59 scoped contributor modules, 67/67 selected declaration checks.** Independent [strict run #40632924482](https://github.com/etblink/math/actions/runs/40632924482), job `122633242128`, attempt 1, completed `success` on exact source-tested SHA [`8f587c246e77783abad13d70d0e4d9fbee14c6c3`](https://github.com/etblink/math/commit/8f587c246e77783abad13d70d0e4d9fbee14c6c3). The workflow recompiled all **65 previously accepted declaration roots** and freshly compiled the two K1D12 declarations. Terminal marker `FCP_K1D12_SOURCE_SPIN48_VECTOR_ACTION_LAWS_STRICT_PASS modules=1 roots=2`. Both root axiom reports contain only `propext`, `Classical.choice`, `Quot.sound`; there are no Lean source warnings/errors or `sorryAx`. [Immutable compiler and root-type artifact #12792194240](https://github.com/etblink/math/actions/runs/40632924482/artifacts/12792194240) is preserved.
+
+**Precisely proved:** for the genuine original S1V31 Spin48 action on `Source48Vector`, real scalar-linearity `sourceSpin48VectorAction s (r • v) = r • sourceSpin48VectorAction s v`, and multiplicativity `sourceSpin48VectorAction (s*t) v = sourceSpin48VectorAction s (sourceSpin48VectorAction t v)`. Source-defined S1V31 additivity and K1D11 identity/trivial-action kernel were previously accepted.
+
+**Not yet qualified:** a packaged group homomorphism into real linear equivalences, quadratic isometry, special orthogonal image, surjectivity/covering, global Spin9, and BFSS spectral existence. The candidate wording below is a retained historical pre-CI record, not a current status.
+
+**Runtime note:** The run took approximately 12m 07s; pinned Lean/Mathlib dependency restoration and fresh ancestry qualification remained mandatory. No qualification rule was relaxed.
+
+### Archived pre-qualification handoff
+
+
 **STATE: RESEARCH CANDIDATE — NOT YET STRICT QUALIFIED.** This is an owner-controlled descendant `research/fcp-k1d12-action-laws-20261027` of qualified parent `research/fcp-k1d11-exact-kernel-20261027@1436eede86656509e95a57c033fe5ead46a91230` (documentation-only acceptance record).
 
 ## Accepted ancestry
