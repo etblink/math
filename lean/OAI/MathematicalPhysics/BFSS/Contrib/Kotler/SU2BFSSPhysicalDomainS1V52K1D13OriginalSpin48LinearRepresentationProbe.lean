@@ -40,15 +40,11 @@ noncomputable def originalSourceSpin48LinearEquiv
   invFun := FCP.BFSSS1V31.sourceSpin48VectorAction s⁻¹
   left_inv := by
     intro v
-    change FCP.BFSSS1V31.sourceSpin48VectorAction s⁻¹
-      (FCP.BFSSS1V31.sourceSpin48VectorAction s v) = v
     rw [← FCP.BFSSS1V52K1D12.originalSourceSpin48VectorAction_mul (s⁻¹) s v]
     simpa only [inv_mul_cancel] using
       (FCP.BFSSS1V52K1D11.originalSourceSpin48_one_trivialAction v)
   right_inv := by
     intro v
-    change FCP.BFSSS1V31.sourceSpin48VectorAction s
-      (FCP.BFSSS1V31.sourceSpin48VectorAction s⁻¹ v) = v
     rw [← FCP.BFSSS1V52K1D12.originalSourceSpin48VectorAction_mul s (s⁻¹) v]
     simpa only [mul_inv_cancel] using
       (FCP.BFSSS1V52K1D11.originalSourceSpin48_one_trivialAction v)

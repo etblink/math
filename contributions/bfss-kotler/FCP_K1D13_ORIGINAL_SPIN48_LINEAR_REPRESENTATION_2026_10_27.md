@@ -1,5 +1,21 @@
 # K1D13 — actual source Spin48 linear representation
 
+## Gate 1 attempt failures and statement-preserving repair — 2026-10-28 UTC
+
+**CURRENT STATUS: CANDIDATE / NOT ACCEPTED. 59 accepted modules; 67 accepted roots.**
+
+[Strict run #40634336284](https://github.com/etblink/math/actions/runs/40634336284), original source-tested SHA `61fc1351836f1ff8b5e154933db4dee2271e8d0f`:
+
+- **Attempt 1 RED (job `122637705818`):** checkout and source hash checks passed. Pinned Lean 4.34.1 restore failed attempting `https://releases.lean-lang.org/lean4/v4.34.1/lean-4.34.1-linux.tar.zst` with `[35] SSL connect error`. Original ancestor compilation and all K1D13 declarations were **not executed**. No new compiler evidence. No artifact was generated (all evidence directories absent).
+- **Attempt 2 RED (job `122638988199`):** dependency restoration and all **67 accepted ancestor declaration roots** passed. The fresh K1D13 compiler emitted only two source linter errors at original lines 43 and 50: `Unused tactic linter: change ... does nothing`, because `change` merely repeated the existing inverse-law goals. It produced `#print axioms` for all three intended K1D13 declarations with only `propext`, `Classical.choice`, `Quot.sound`, and no sorryAx; **strict warning-as-error correctly failed**. [Immutable compiler evidence artifact #12793407370](https://github.com/etblink/math/actions/runs/40634336284/artifacts/12793407370). Neither failed attempt qualifies a new root.
+
+**Next exact-source candidate repair:** delete only these two no-op `change` tactic blocks; retain the same real-linear-map, linear-equivalence and monoid-homomorphism declarations, definitions, proof arguments, and source-defined 48-vector action. New candidate Lean Git blob `ea7b39f86a3ee3da6e69ecde3e84a3e04252567d`, new verifier blob `b051603f6962dbad1ec87586109305bf6134cc3d`. Re-pin both in strict workflow, re-run the complete accepted ancestry from fresh source, and fail closed until the new terminal green source/compiler/axiom evidence is independently inspected. Do not disable the linter or relax the qualification verifier.
+
+The two failures have distinct causes: transient dependency-download TLS on first attempt and unused proof-tactic linter violations on second. Neither warrants weakening the mathematical statements. The original error evidence and compiler results are preserved in the run's job logs and artifact.
+
+### Archived original candidate charter
+
+
 **CANDIDATE — independent new strict CI not yet qualified.** Research branch `research/fcp-k1d13-linear-representation-20261027`, descended from accepted `research/fcp-k1d12-action-laws-20261027@52aeea6029a53ee422698e4c36ba32415e40c016`.
 
 ## Frozen accepted starting point
