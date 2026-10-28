@@ -32,7 +32,8 @@ theorem source48Quadratic_smul_sub_preserve_of_polar_scaling
     (a v : Source48Vector) (c : ℝ)
     (hscale : c * Q a = QuadraticMap.polar Q a v) :
     Q (c • a - v) = Q v := by
-  rw [sub_eq_add_neg, QuadraticMap.map_add,
+  rw [sub_eq_add_neg,
+    QuadraticMap.map_add (Q : Source48Vector → ℝ) (c • a) (-v),
     QuadraticMap.map_smul, QuadraticMap.map_neg,
     QuadraticMap.polar_neg_right, QuadraticMap.polar_smul_left]
   simp only [smul_eq_mul]
