@@ -21,7 +21,7 @@ from qualify_fcp_sync import code_only
 
 NAME = "SU2BFSSPhysicalDomainS1V52K1D9OriginalSpin48NegativeCentralMembershipProbe"
 REL = pathlib.Path("OAI/MathematicalPhysics/BFSS/Contrib/Kotler") / (NAME + ".lean")
-BLOB = "6e9c986e422fb4352969a8a6bb2b0d7e0e1455e2"
+BLOB = "d3f25e766279f1452c69608d420ed3689508d8ba"
 NS = "FCP.BFSSS1V52K1D9"
 ROOTS = [
     NS + ".sourceSpin48_neg_one_mem_of_unitVector",

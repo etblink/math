@@ -14,7 +14,7 @@ or a two-sign kernel equality. CANDIDATE, NOT QUALIFIED.
 -/
 
 set_option autoImplicit false
-set_option maxHeartbeats 400000
+set_option maxHeartbeats 900000
 
 namespace FCP.BFSSS1V52K1D9
 noncomputable section
@@ -37,14 +37,16 @@ theorem sourceSpin48_neg_one_mem_of_unitVector
     ⟨CliffordAlgebra.ι Q v, CliffordAlgebra.ι Q v, hsq, hsq⟩
   let w : Cˣ :=
     ⟨CliffordAlgebra.ι Q (-v), CliffordAlgebra.ι Q (-v), hsqNeg, hsqNeg⟩
+  -- Do not use `change` to expand the Lipschitz subgroup. Its definition
+  -- contains a large `Cˣ` coercion / set-preimage closure expression and
+  -- made Lean 4.34.1 exhaust elaboration heartbeats in strict run 40624928666.
+  -- Feed the actual source generator to the library inclusion theorem.
   have hu : u ∈ lipschitzGroup Q := by
-    change u ∈ Subgroup.closure
-      ((↑) ⁻¹' Set.range (CliffordAlgebra.ι Q) : Set Cˣ)
-    exact Subgroup.subset_closure ⟨v, rfl⟩
+    exact Subgroup.subset_closure
+      (show (u : C) ∈ Set.range (CliffordAlgebra.ι Q) from ⟨v, rfl⟩)
   have hw : w ∈ lipschitzGroup Q := by
-    change w ∈ Subgroup.closure
-      ((↑) ⁻¹' Set.range (CliffordAlgebra.ι Q) : Set Cˣ)
-    exact Subgroup.subset_closure ⟨-v, rfl⟩
+    exact Subgroup.subset_closure
+      (show (w : C) ∈ Set.range (CliffordAlgebra.ι Q) from ⟨-v, rfl⟩)
   have hneg : ((u * w : Cˣ) : C) = -1 := by
     change CliffordAlgebra.ι Q v * CliffordAlgebra.ι Q (-v) = -1
     rw [map_neg, mul_neg, hsq]

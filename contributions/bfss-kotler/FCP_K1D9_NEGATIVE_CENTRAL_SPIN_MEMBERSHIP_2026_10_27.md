@@ -1,5 +1,16 @@
 # K1D9 — actual negative central Spin48 membership
 
+## Gate 1 failure and source-exact repair (2026-10-28 UTC)
+
+**Gate 1 RED, NOT ACCEPTED:** [run 40624928666](https://github.com/etblink/math/actions/runs/40624928666), job `122607455739`, tested `94e12fb04d5250228d3422f3f3b80bc83483ac45`. All 57 accepted ancestor roots passed independently. The new source failed at original lines 41–43 (Lean deterministic `isDefEq` timeout) and the first theorem declaration at line 26 (`whnf` timeout), each at 400000 heartbeats. The second theorem's unknown-first-theorem error and phantom axiom report are downstream of the first failure, not independent proof acceptances. [Failed-run artifact 12788708833](https://github.com/etblink/math/actions/runs/40624928666/artifacts/12788708833) preserves exact compiler evidence.
+
+**Repair candidate (same two theorem statements):** replace eager `change` expansion of `lipschitzGroup Q` into the full `Subgroup.closure` on source `Cˣ` with direct uses of `Subgroup.subset_closure` applied to exact original Clifford generator witnesses; increase per-module elaboration heartbeats to 900000 as an auxiliary budget, **not** as evidence of correctness. Re-pin the source and verifier in the strict workflow. No new axioms, sorry, hidden group-membership assumption, or surrogate representation. New source Git blob: `d3f25e766279f1452c69608d420ed3689508d8ba`. New verifier blob: `339115c21cdf28881e942c77bfe5b604f04c826d`.
+
+**Fail-closed rule:** neither the original failed proof nor the repair candidate counts toward acceptance without a completed, source-exact, independently inspected strict green job. Baseline remains 55 modules / 57 selected roots. The negative central vector-action claim and full two-sign kernel equality remain separate, unproved obligations.
+
+### Original pre-Gate-1 candidate charter
+
+
 **STATUS: UNQUALIFIED CANDIDATE.** Baseline remains **55 accepted scoped contributor modules / 57 selected declaration roots**, through independently qualified K1D8 [run 40623452807](https://github.com/etblink/math/actions/runs/40623452807), exact tested SHA `7e3cb0d2aacd96d522a945f094656638ef072a75`. The parent owner research branch `research/fcp-k1d8-two-sign-upper-bound-20261027` has documentation-only acceptance head `e891b38755c142fcf4d3d4ee179ef16f04599fcf`.
 
 K1D9 is isolated on new owner descendant `research/fcp-k1d9-negative-spin-20261027`.
