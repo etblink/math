@@ -1,5 +1,18 @@
 # K1D15 — preservation of the exact original source Spin48 quadratic form
 
+## Independent owner acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 62 scoped contributor modules / 75 selected declaration roots.** Independently verified [strict run #40644331895](https://github.com/etblink/math/actions/runs/40644331895), job `122669506115`, attempt 1, terminal `completed/success`, exact tested source SHA [`b2d10d61420110341a640badf2f1c9543577d264`](https://github.com/etblink/math/commit/b2d10d61420110341a640badf2f1c9543577d264). Source/qualifier hashes passed, pinned Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restored, all **73 accepted ancestor declaration roots** freshly recompiled, then two K1D15 roots compiled with strict warnings-as-errors. Terminal `FCP_K1D15_SOURCE_SPIN48_QUADRATIC_PRESERVATION_STRICT_PASS modules=1 roots=2`. Both theorem axiom reports include only `propext`, `Classical.choice`, `Quot.sound`; no Lean source diagnostics or `sorryAx`. [Immutable compiler and root-type artifact #12797855045](https://github.com/etblink/math/actions/runs/40644331895/artifacts/12797855045) preserves evidence.
+
+**Precisely proved:** for the *actual source-defined* 48-real `Source48Vector`, the genuine Spin48 source action preserves the exact `source48Quadratic`, and real Clifford scalars are fixed by genuine Spin48 Clifford conjugation. This relies on the accepted K1D7 original Clifford real-scalar injection and exact S1V31 source action, not a surrogate form or guessed Spin action.
+
+**Not yet qualified:** a separately bundled quadratic-form isometry of the source action; a group homomorphism into the orthogonal group or SO48; determinant +1, image surjectivity, a topological covering, global Spin9 lift, or BFSS spectral existence.
+
+**Negative evidence:** [Gate 1 red #40640757502](https://github.com/etblink/math/actions/runs/40640757502) rejected an unknown unprimed `smul_mul` and recursion depth. [Gate 2 run #40642452550](https://github.com/etblink/math/actions/runs/40642452550), attempt 1, failed Lean toolchain restore (TLS); attempt 2 passed all ancestors and pinned `smul_mul'` but exhausted elaborator recursion at final source-action equality. The accepted Gate 3 proves the same theorem statements with an explicitly typed `hquad : Q w = Q v` followed by `simpa only [w] using hquad`. The failed compiler logs/artifacts remain immutable; no warning/axiom safeguards were weakened. Candidate history below is archived, not current status.
+
+### Archived pre-acceptance candidate and failure history
+
+
 ## Gate 2 attempt 2 red — explicitly typed original scalar-equality bridge
 
 **Current research state: K1D15 UNQUALIFIED. Accepted baseline remains 61 modules / 73 declaration roots.**
