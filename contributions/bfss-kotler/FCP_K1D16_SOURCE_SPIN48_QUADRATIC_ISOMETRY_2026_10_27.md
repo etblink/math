@@ -1,5 +1,20 @@
 # K1D16 — original-source Spin(48) quadratic isometry packaging
 
+## Gate 1 red — elaboration-depth qualification boundary — 2026-10-28 UTC
+
+**K1D16 NOT ACCEPTED. The frozen accepted baseline remains 62 scoped modules / 75 selected declaration roots.** [Original strict run #40646507049](https://github.com/etblink/math/actions/runs/40646507049), job `122676448850`, terminal `completed/failure`, source-tested exact SHA [`0ffc3ed4fb3a63dfe1bf200d234f20b24d17b8d5`](https://github.com/etblink/math/commit/0ffc3ed4fb3a63dfe1bf200d234f20b24d17b8d5). Checkout and exact source/verifier hash checks passed, pinned Lean/Mathlib restoration passed, and **all 75 accepted ancestor declaration roots independently recompiled and qualified**.
+
+**Original compiler failure:** In the new K1D16 module, errors at line 28:18 (constructing the `Q.IsometryEquiv Q` definition) and line 33:10 (its `map_app'` field) reported `maximum recursion depth has been reached`. This blocked creating the new isometry definition. Dependent uses at lines 39, 48, and 52 consequently reported `unknownIdentifier` or `unknown constant`. Both theorem axiom reports subsequently contained `sorryAx` and are rejected; no new mathematical root is qualified. [Preserved failed-run artifact #12798188055](https://github.com/etblink/math/actions/runs/40646507049/artifacts/12798188055) and original job/compiler logs are the authoritative negative evidence.
+
+**Bounded Gate 2 candidate, unqualified:** Pinned Mathlib's actual `QuadraticMap.IsometryEquiv` is a structure extending `LinearEquiv` with `map_app'`; accepted K1D13 supplies the exact underlying real-linear equivalence and accepted K1D15 supplies the source quadratic preservation. To test whether the failure is only the *elaborator's finite recursion budget* traversing these large typeclass/48-label source structures, retain **all three K1D16 definition/theorem declarations and proofs literally unchanged**, adding only local file `set_option maxRecDepth 4096` with an explanatory comment. Do not alter source action, original quadratic form, use a surrogate orthogonal map, increase permitted axioms, or disable warning-as-error.
+
+Gate 2 source Git blob `6367c33e426cfda4269a34bf1fb8a71dec7fb8bc`; repinned qualifier Git blob `7ead29ed11970cde3eb1a30de1830319a49f4fd5`. The strict workflow pins both and still freshly requalifies all **75 accepted ancestors** then all three K1D16 roots, requires nonempty olean and exact root-type/axiom results, and preserves compiler and failure artifacts. If Gate 2 fails again, classify the *new* compiler diagnostics and prefer explicit field/type bridges over unbounded recursion-limit escalation. Do not mark K1D16 accepted until an independently verified completed green.
+
+**Mathematical scope unchanged:** This is original Spin48 *quadratic isometry bundling*, not determinant +1, SO48 representation, surjectivity, a covering map, global Spin9 invariance or BFSS spectral existence.
+
+### Archived original candidate charter
+
+
 **STATUS: CANDIDATE — NO INDEPENDENT NEW STRICT COMPILER QUALIFICATION YET.** Owner research branch `research/fcp-k1d16-source-isometry-20261027` is a single-commit descendant of the accepted K1D15 checkpoint `research/fcp-k1d15-source-quadratic-20261027@736397c5ff5fa24140a0e45410c3e36d91716945`.
 
 ## Accepted mathematical baseline

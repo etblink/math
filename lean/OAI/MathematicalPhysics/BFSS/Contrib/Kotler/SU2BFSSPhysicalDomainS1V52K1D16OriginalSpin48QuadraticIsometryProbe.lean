@@ -16,6 +16,9 @@ Candidate only, pending independent strict source and axiom CI.
 
 set_option autoImplicit false
 set_option maxHeartbeats 900000
+-- IsometryEquiv extends LinearEquiv over the fully expanded 48-label source form.
+-- Bound deeper elaboration locally; this adds no proof hypotheses or axioms.
+set_option maxRecDepth 4096
 
 namespace FCP.BFSSS1V52K1D16
 noncomputable section
