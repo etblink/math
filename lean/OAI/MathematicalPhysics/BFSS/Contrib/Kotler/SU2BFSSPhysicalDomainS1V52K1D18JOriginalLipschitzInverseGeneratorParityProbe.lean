@@ -34,7 +34,7 @@ theorem originalSourceGeneratorInverse_det_neg_one
     (a : Source48Vector) [Invertible (CliffordAlgebra.ι Q a)] :
     ((FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter
       (generator a)⁻¹ : ℝˣ) : ℝ) = -1 := by
-  rw [map_inv, Units.val_inv,
+  rw [map_inv, Units.val_inv_eq_inv_val,
     FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzDeterminant_neg_one]
   norm_num
 
@@ -49,6 +49,9 @@ theorem originalSourceGeneratorInverse_involute_neg
       -((((generator a)⁻¹ : L) : Cˣ) : C) := by
   let u : Cˣ := (generator a : Cˣ)
   let : Invertible (u : C) := u.invertible
+  let : Invertible (CliffordAlgebra.involute (u : C)) :=
+    Invertible.map (CliffordAlgebra.involute (Q := Q)) (u : C)
+  let : Invertible (-(u : C)) := invertibleNeg (u : C)
   have hu : CliffordAlgebra.involute (u : C) = -(u : C) :=
     FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit_involute_neg a
   change CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) =
