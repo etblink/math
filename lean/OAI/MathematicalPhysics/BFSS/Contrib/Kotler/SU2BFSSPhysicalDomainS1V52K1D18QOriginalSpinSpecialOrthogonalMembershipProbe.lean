@@ -22,17 +22,21 @@ noncomputable def source48QuadraticPreservingGL : Subgroup GL48 where
   carrier := {f | ∀ v, Q (f v) = Q v}
   one_mem' := by
     intro v
-    rfl
+    have hOne : ((1 : GL48) v) = v := rfl
+    exact congrArg Q hOne
   mul_mem' := by
     intro f g hf hg v
-    change Q (f (g v)) = Q v
-    rw [hf (g v), hg v]
+    have hMul : ((f * g : GL48) v) = f (g v) := rfl
+    have hQuad : Q (f (g v)) = Q v :=
+      (hf (g v)).trans (hg v)
+    exact (congrArg Q hMul).trans hQuad
   inv_mem' := by
     intro f hf v
-    change Q (f.symm v) = Q v
-    have hv := hf (f.symm v)
-    rw [f.apply_symm_apply] at hv
-    exact hv.symm
+    have hInv : ((f⁻¹ : GL48) v) = f.symm v := rfl
+    have hApply : f (f.symm v) = v := f.apply_symm_apply v
+    have hQuad : Q (f.symm v) = Q v :=
+      (hf (f.symm v)).symm.trans (congrArg Q hApply)
+    exact (congrArg Q hInv).trans hQuad
 
 /-- Pinned Mathlib's actual invertible determinant character. -/
 noncomputable def source48DetCharacter : GL48 →* ℝˣ :=
@@ -49,7 +53,13 @@ theorem originalSourceSpin48_mem_sourceSO (s : spinGroup Q) :
       source48SpecialOrthogonalGL := by
   constructor
   · intro v
-    exact FCP.BFSSS1V52K1D15.originalSourceSpin48VectorAction_preserves_sourceQuadratic s v
+    let f : GL48 :=
+      FCP.BFSSS1V52K1D13.originalSourceSpin48LinearEquiv s
+    have hf : f v = FCP.BFSSS1V31.sourceSpin48VectorAction s v := rfl
+    have hquad : Q (f v) = Q v :=
+      (congrArg Q hf).trans
+        (FCP.BFSSS1V52K1D15.originalSourceSpin48VectorAction_preserves_sourceQuadratic s v)
+    exact hquad
   · change source48DetCharacter
       (FCP.BFSSS1V52K1D13.originalSourceSpin48LinearEquiv s) = 1
     apply Units.ext
