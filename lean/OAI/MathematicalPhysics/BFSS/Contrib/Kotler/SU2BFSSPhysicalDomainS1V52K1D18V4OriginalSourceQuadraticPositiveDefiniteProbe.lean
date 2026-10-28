@@ -36,7 +36,14 @@ private theorem weightedSumSquares_one_apply
 sum of all 48 original coordinate squares. -/
 theorem source48Quadratic_eq_sum_mul_self (a : Source48Vector) :
     Q a = ∑ j : Source48Label, a j * a j := by
-  exact weightedSumSquares_one_apply (ι := Source48Label) a
+  have hsource :
+      (QuadraticMap.weightedSumSquares ℝ
+        (fun _ : Source48Label => (1 : ℝ))) a =
+        ∑ j : Source48Label, a j * a j :=
+    weightedSumSquares_one_apply (ι := Source48Label) a
+  change source48Quadratic a = ∑ j : Source48Label, a j * a j
+  rw [source48Quadratic]
+  exact hsource
 
 /-- The true original real quadratic source is nonnegative on all
 48-coordinate input vectors. -/
