@@ -1,5 +1,16 @@
 # K1D9 — actual negative central Spin48 membership
 
+## Independent strict acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 56 scoped contributor modules and 59/59 checked declaration roots.** [Owner strict run #40626355158](https://github.com/etblink/math/actions/runs/40626355158), job `122612087375`, attempt 1, terminal `completed/success`, exact tested commit [`eeffeade763346c5a8a1278224ef492fb3da48a3`](https://github.com/etblink/math/commit/eeffeade763346c5a8a1278224ef492fb3da48a3). The verified original ancestry and K1D3–K1D8 57 ancestor roots all passed, followed by two freshly compiled K1D9 declarations. Terminal marker: `FCP_K1D9_NEGATIVE_CENTRAL_MEMBERSHIP_STRICT_PASS modules=1 roots=2`. Both root axiom lists contain only `propext`, `Classical.choice`, `Quot.sound`; no new source warnings or errors. [Immutable workflow evidence artifact 12789558908](https://github.com/etblink/math/actions/runs/40626355158/artifacts/12789558908) preserves the complete compiler and root-type record.
+
+The repaired source successfully establishes unconditional `(-1 : CliffordAlgebra source48Quadratic) ∈ spinGroup source48Quadratic` using exact source coordinate vectors and real Clifford generator units. The original [red #40624928666](https://github.com/etblink/math/actions/runs/40624928666) and its elaboration timeout remain part of the negative-evidence history; neither of its failed theorem declarations was retroactively accepted.
+
+**Still unproved:** the constructed negative-central Spin element acts trivially on every original Source48Vector, the reverse inclusion and the exact two-sign group kernel equality, covering, global Spin(9), and BFSS spectral assertions. Old CANDIDATE status below is the deliberately preserved pre-qualification record.
+
+### Archived pre-acceptance evidence and candidate charter
+
+
 ## Gate 1 failure and source-exact repair (2026-10-28 UTC)
 
 **Gate 1 RED, NOT ACCEPTED:** [run 40624928666](https://github.com/etblink/math/actions/runs/40624928666), job `122607455739`, tested `94e12fb04d5250228d3422f3f3b80bc83483ac45`. All 57 accepted ancestor roots passed independently. The new source failed at original lines 41–43 (Lean deterministic `isDefEq` timeout) and the first theorem declaration at line 26 (`whnf` timeout), each at 400000 heartbeats. The second theorem's unknown-first-theorem error and phantom axiom report are downstream of the first failure, not independent proof acceptances. [Failed-run artifact 12788708833](https://github.com/etblink/math/actions/runs/40624928666/artifacts/12788708833) preserves exact compiler evidence.
