@@ -52,14 +52,9 @@ theorem originalSourceSpin48_mem_sourceSO (s : spinGroup Q) :
     FCP.BFSSS1V52K1D13.originalSourceSpin48LinearRepresentation s ∈
       source48SpecialOrthogonalGL := by
   constructor
-  · intro v
-    let f : GL48 :=
-      FCP.BFSSS1V52K1D13.originalSourceSpin48LinearEquiv s
-    have hf : f v = FCP.BFSSS1V31.sourceSpin48VectorAction s v := rfl
-    have hquad : Q (f v) = Q v :=
-      (congrArg Q hf).trans
-        (FCP.BFSSS1V52K1D15.originalSourceSpin48VectorAction_preserves_sourceQuadratic s v)
-    exact hquad
+  · change ∀ v : Source48Vector,
+        Q (FCP.BFSSS1V31.sourceSpin48VectorAction s v) = Q v
+    exact FCP.BFSSS1V52K1D15.originalSourceSpin48VectorAction_preserves_sourceQuadratic s
   · change source48DetCharacter
       (FCP.BFSSS1V52K1D13.originalSourceSpin48LinearEquiv s) = 1
     apply Units.ext
