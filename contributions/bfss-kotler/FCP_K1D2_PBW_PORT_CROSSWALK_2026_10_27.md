@@ -1,5 +1,21 @@
 # FCP K1D2 PBW owner-port source/dependency crosswalk — 2026-10-27
 
+## Independent owner acceptance receipt — 2026-10-28 UTC
+
+**CURRENT STATUS: INDEPENDENT OWNER CI ACCEPTED.** The 28 previously accepted contributor modules are preserved. All **21** new source/ancestry modules are now independently qualified on the owner branch, making **49 accepted contributor modules within this bounded integration scope**. The selected 22-module dependency closure (21 new modules and already-accepted S1V0) passed **47/47** declaration checks, comprising **44 newly qualified roots** and **3 existing S1V0 roots**. This admission does not assert whole-FCP synchronization.
+
+- **Exact tested SHA:** [`25a8de278788ef251cc6076784191717fd6bb2bb`](https://github.com/etblink/math/commit/25a8de278788ef251cc6076784191717fd6bb2bb); its source tree preserves the approved research payload. Subsequent workflow-trigger commits changed YAML comments only, with no Lean source or strict verification changes.
+- **PBW gate:** [run 40611734249](https://github.com/etblink/math/actions/runs/40611734249), job `122564626273`, attempt 1, `completed/success`, tested SHA above. Original source hash/pin checks, dependency restoration, fresh 12-module PBW compilation, 20 declaration checks, terminal marker `FCP_K1D2_OWNER_TWELVE_MODULES_INDEPENDENT_STRICT_PASS`.
+- **Spin48 ancestry gate:** [run 40611734284](https://github.com/etblink/math/actions/runs/40611734284), job `122564624674`, attempt 1, `completed/success`, same tested SHA. Manifest/verifier hash pins, Lean/Mathlib restoration, fresh 22-module closure, **47 root checks**, terminal marker `FCP_OWNER_ANCESTRY_STRICT_PASS modules=22 roots=47`. Root type evidence was emitted and [artifact 12783502634](https://github.com/etblink/math/actions/runs/40611734284/artifacts/12783502634) uploaded.
+- **Axiom/source status:** the declaration audits allowed only `propext`, `Classical.choice`, `Quot.sound`; no Lean source warnings/errors or `sorryAx` were reported by the strict gates. Nonfatal GitHub runner and Mathlib dependency-checkout warnings appeared outside the strict Lean-source checks.
+- **Negative knowledge preserved:** [initial failed PBW run 40602151982](https://github.com/etblink/math/actions/runs/40602151982) remains recorded. The original FCP E5 source was unqualified; the now-accepted owner E5 proof repairs its proof without changing its statement. This does not retroactively qualify the failed original.
+- **Classification update:** all 21 `CANDIDATE_STAGED` entries in the original selected-owner matrix below are now **ACCEPTED_PRESENT** *at the tested owner SHA*. The pinned `FCP_SYNC_MANIFEST_2026_10_27.json` remains the immutable **pre-CI qualification input snapshot**, not a live acceptance counter; do not alter its hash without separately repinning and requalifying the gate.
+- **Unproved obligations:** the scalar-common-coordinate-kernel composition (F2 + repaired E5), its original Clifford transport, the two-sign Spin(48) kernel classification, covering, global Spin(9) lift/invariance, and BFSS spectral existence remain separate. No upstream PR or `main` modification is authorized or claimed.
+
+### Archived pre-CI handoff
+
+Everything below preserves the October 27 **pre-publication / pre-independent-qualification snapshot**, including historical `LOCAL_ONLY`, `CANDIDATE_STAGED`, `OWNER_CI_BLOCKED`, 28-accepted, and remote checkpoint references. Its **past-tense evidence and source mapping remain valuable**, but those operational statuses are superseded by the dated acceptance receipt above.
+
 **Current state: LOCAL_ONLY / OWNER_CI_BLOCKED. 28 prior accepted owner modules are preserved; 21 new modules are staged with 44 new declaration checks. The complete selected 22-module closure (including accepted S1V0) passes 47 local checks. No new owner module is independently accepted.** This bounded integration sub-branch starts from the accepted 28-module owner parent `d931f88731e5acb07ccd431d2edabfaa6c7b1734`. FCP research source branch `research/openai-math-su2-s1v52-global-lift-scoping-20261019@cc608e2282e1b32bb11bbb64424e4775b28138e2`. Baseline mathematical environment Lean 4.34.1 / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
 
 ## Exact source-to-candidate blob mapping
