@@ -194,6 +194,16 @@ Two **new qualified M roots**:
 
 **Accounting:** 43 accepted new A–M roots, plus separately audited 81-root immutable ancestor cache. No combined larger cache created.
 
+## K1D18N candidate — original Clifford real scalar injectivity
+
+**Unaccepted candidate:** source module `SU2BFSSPhysicalDomainS1V52K1D18NOriginalSpinRealScalarInjectionProbe.lean` blob `9a9e6315c08f40ba7b11451d09ea6d8997db0c30`; source-pinned strict workflow `bfss-kotler-k1d18n-spin-real-scalar-injection-strict.yml` blob `0d5124d4caf7b28fe7321d52d10090ad1a95da8f`. Both atomically published on the existing research branch in commit `ccd1492307fa00d9fd78c6fc6e2f920362362df5`. [**Run #40739321593**](https://github.com/etblink/math/actions/runs/40739321593) is **unaccepted until terminal green and fresh compiler/type/axiom review**.
+
+Target root `FCP.BFSSS1V52K1D18N.originalSourceSpin48_lipschitzDetCharacter_real_one`: combine accepted M `originalSourceSpin48_det_character_smul_one`, pinned Mathlib `CliffordAlgebra.Contraction` instance of `Nontrivial (CliffordAlgebra source48Quadratic)` (via original quadratic Clifford-to-exterior linear equivalence, requiring original real invertible 2), and faithful scalar action `FaithfulSMul.algebraMap_injective ℝ (CliffordAlgebra source48Quadratic)`, to prove the **actual H determinant character's real value equals `1 : ℝ` on every original Spin(48) element**. No alternative group or vector action, no additional theorem hypotheses.
+
+This explicit bridge is technically substantive and might fail on pinned typeclass resolution: **do not count the N root until strict compiler verifies it**. Same exact source pins, retained source-accepted 81-root cache, fresh 14-module A–N warning-as-error compilation and independent **44-root** declaration type/axiom audit; no Lean limit changes or extra axioms. The equality to the determinant of the *accepted original K1D13/K1D16* Spin action remains a separate subsequent proof, followed by SO48 packaging. Original two-sign kernel, covering, global Spin9 and spectral BFSS remain unproved.
+
+**Accounting while N runs:** 43 new A–M accepted roots, original separate 81-root ancestor cache, **N = 0 accepted**.
+
 ## Remaining actual scientific obligation
 
 K1D18D now supplies the exact bridge from the independently defined original Spin isometry to Clifford conjugation and the source rank-one generator units. It proves the two-matrix composition identity only *under an explicit, equality-in-actual-units factorization hypothesis*. The missing unconditional statement is a real group-theoretic parity/closure theorem, not an unidentified coordinate transport. The K1D18E determinant result has now been qualified, but **only under the exact two-unit factorization hypothesis**. No universal determinant theorem follows. Pinned Mathlib `lipschitzGroup Q` is a **subgroup closure** of invertible degree-one source Clifford generators, while `spinGroup Q` is the intersection of the pin group and even-grade subalgebra; it is **not by definition** a list of even generator words. Next establish the true Lipschitz closure determinant/grade-sign character and restrict to `spinGroup.involute_eq`. This is the missing proof of `det(originalSourceSpin48QuadraticIsometry s)=+1`, before any SO(48) packaging, topology, covering, global Spin(9), source Fock/gauge action, or BFSS spectra.
