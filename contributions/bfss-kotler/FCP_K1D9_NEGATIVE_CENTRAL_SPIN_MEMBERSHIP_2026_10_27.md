@@ -1,0 +1,35 @@
+# K1D9 — actual negative central Spin48 membership
+
+**STATUS: UNQUALIFIED CANDIDATE.** Baseline remains **55 accepted scoped contributor modules / 57 selected declaration roots**, through independently qualified K1D8 [run 40623452807](https://github.com/etblink/math/actions/runs/40623452807), exact tested SHA `7e3cb0d2aacd96d522a945f094656638ef072a75`. The parent owner research branch `research/fcp-k1d8-two-sign-upper-bound-20261027` has documentation-only acceptance head `e891b38755c142fcf4d3d4ee179ef16f04599fcf`.
+
+K1D9 is isolated on new owner descendant `research/fcp-k1d9-negative-spin-20261027`.
+
+## Goal and exact Mathlib scope
+
+K1D8 established that an element of `spinGroup source48Quadratic` with trivial action on all original 48 real vectors has **Clifford value one or negative one**. It did *not* prove the reverse inclusion of negative one in the actual Spin group. To close that distinction, K1D9 targets only the actual group membership of negative Clifford one. It does not target the action, two-sign kernel equality or covering.
+
+The pinned Mathlib `Mathlib/LinearAlgebra/CliffordAlgebra/SpinGroup.lean` defines:
+- `lipschitzGroup Q` by `Subgroup.closure` of actual Clifford units lying in the range of the original `CliffordAlgebra.ι Q`;
+- `pinGroup Q` as the image of that Lipschitz subgroup into the Clifford algebra intersected with `unitary`;
+- `spinGroup Q` as `pinGroup Q` intersected with the actual `CliffordAlgebra.even Q`.
+
+Pinned source `Mathlib/LinearAlgebra/CliffordAlgebra/Basic.lean` supplies `CliffordAlgebra.ι_sq_scalar`. We construct units from original `ι Q v` and `ι Q (-v)` for `Q v=1`; their product is negative Clifford one. This is a **source-generated** argument, not a postulated spinor/covering fact. The source form `FCP.BFSSS1V0.source48Quadratic` is the original weighted sum of 48 unit squares; the candidate also supplies a concrete source unit-coordinate vector.
+
+## Two candidate Lean roots
+
+File `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D9OriginalSpin48NegativeCentralMembershipProbe.lean`, exact Git blob `6e9c986e422fb4352969a8a6bb2b0d7e0e1455e2`.
+
+- `FCP.BFSSS1V52K1D9.sourceSpin48_neg_one_mem_of_unitVector`: given an actual source vector `v` satisfying `source48Quadratic v=1`, prove `(-1 : CliffordAlgebra source48Quadratic) ∈ spinGroup source48Quadratic` using actual Lipschitz, unitary and even membership.
+- `FCP.BFSSS1V52K1D9.originalSourceSpin48_neg_one_mem`: establish the above conclusion **unconditionally** by instantiating an original coordinate unit vector.
+
+The second theorem is a distinct obligation: a hypothetical unit vector is not evidence that the source quadratic form actually has one.
+
+## Exact-source CI contract
+
+Verifier `contributions/bfss-kotler/tools/qualify_fcp_k1d9.py`, Git blob `8da2cf3fa90249a4f29d18fcea6e8a665929b799`; strict workflow `.github/workflows/bfss-kotler-k1d9-negative-central-owner-strict.yml`. The new job pins compiler Lean 4.34.1 and Mathlib SHA `d13f23b723b8a846827a245b89c10fc7d3f11612`; independently requalifies all **57 accepted roots**, then demands fresh K1D9 compilation, real `.olean`, exactly 2 axiom reports, source token scan (no sorry/admit/sorryAx/axiom), theorem type evidence, and only permitted `propext`, `Classical.choice`, `Quot.sound`.
+
+**Fail closed.** On red, preserve exact compiler diagnostics and treat this as an unaccepted candidate. Do not alter its theorem statements to make CI green. A green and independently inspected run would qualify **the membership roots only**, increasing accepted scoped modules to 56. The trivial-action converse and group-level two-sign equality would remain open.
+
+## Future review boundary
+
+Keep source and failure history in owner-controlled research branches. The full future community PR must be a clean, minimal, independently qualified dependency bundle based on then-current `mathcommunity/oai-math-revised:main`, with proper automated-assistance disclosure and explicit owner authorization. No PR, upstream write or owner `main` merge is part of this candidate.
