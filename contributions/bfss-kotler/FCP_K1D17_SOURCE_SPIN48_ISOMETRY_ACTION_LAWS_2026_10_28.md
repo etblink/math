@@ -1,5 +1,18 @@
 # K1D17 — actual original Spin48 quadratic-isometry action laws
 
+## Independent owner acceptance — 2026-10-28 UTC
+
+**ACCEPTED: 64 cumulative scoped contributor modules / 81 selected declaration roots.** Independently reviewed [strict run #40649929983](https://github.com/etblink/math/actions/runs/40649929983), job `122687372133`, attempt 1, terminal `completed/success`, exact source-tested SHA [`389ecdcc5a325905d656a36fb961fa949ab03f67`](https://github.com/etblink/math/commit/389ecdcc5a325905d656a36fb961fa949ab03f67). The job passed source-hash/qualifier pin checks, Lean 4.34.1 with Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, all **78 original accepted declaration roots**, and three new K1D17 identity, source multiplication and inverse isometry laws with zero Lean source diagnostics, no `sorryAx`, and only `propext`, `Classical.choice`, `Quot.sound`. Terminal marker: `FCP_K1D17_SOURCE_SPIN48_ISOMETRY_ACTION_LAWS_STRICT_PASS modules=1 roots=3`; full immutable compiler and theorem-type evidence: [artifact #12799875789](https://github.com/etblink/math/actions/runs/40649929983/artifacts/12799875789).
+
+**Precisely accepted:** K1D16's genuine original-source `source48Quadratic.IsometryEquiv source48Quadratic` obeys the identity, composition and inverse laws of the actual `spinGroup source48Quadratic` action, in exact source `Fin 24 × Fin 2 → ℝ` coordinates. No new surrogate action is introduced. Still unproved: determinant +1, an SO48-valued homomorphism, orthogonal image surjectivity, topological cover, global Spin9 lift and BFSS spectra.
+
+**Performance observation:** the green run took approximately **13m58s** elapsed (GitHub timestamps 07:25:01–07:38:59 UTC). The strict work includes fresh Lean/Mathlib restoration, 22 original ancestry files/47 roots, K1D3–K1D4 files/2 roots, K1D5–K1D16 files/29 roots, and K1D17/3 roots. Thus the 81 selected declarations are distributed over **37 distinct compiler-verified source modules**, not 64 modules in this exact gate. The 64-module figure is the broader cumulative qualified-contributor tally and must not be confused with the exact cache closure.
+
+**Owner-directed optimization constraint:** reuse the historical FCP proof cache principles without changing mathematical claims. Cache keys must pin compiler/dependencies, exact original source ancestry, OS and architecture. Restore only source-qualified `.olean` files and verify full root names/types/axioms and provenance before using them. On miss build cold, on invalid receipt fail closed. Fresh future candidate theorem modules must still compile with `-DwarningAsError=true` into nonempty new `.olean`. Distinguish **fresh recompilation** from **cached ancestor audit** honestly. GitHub Actions cache scope is branch-dependent; a sibling research branch is not automatically entitled to another branch's cache. Do not weaken accepted root checks, original source constraints, or axiom whitelist.
+
+### Archived pre-acceptance candidate charter
+
+
 **STATUS: RESEARCH CANDIDATE — NOT INDEPENDENTLY STRICT QUALIFIED.**
 
 New owner-only research branch `research/fcp-k1d17-isometry-laws-20261028` descends from K1D16 accepted checkpoint `research/fcp-k1d16-source-isometry-20261027@000d7e2a7bfa375081b9b2166ccf5d2ed3d0f010`.
