@@ -36,6 +36,7 @@ theorem originalSourceLipschitzGradeDetInvariant_all (s : L) :
     unfold lipschitzGroup at hu
     induction hu using Subgroup.closure_induction'' with
     | mem u hu =>
+      have huL : u ∈ lipschitzGroup Q := Subgroup.subset_closure hu
       obtain ⟨a, ha⟩ := hu
       let : Invertible (CliffordAlgebra.ι Q a) := by
         rw [ha]
@@ -44,13 +45,14 @@ theorem originalSourceLipschitzGradeDetInvariant_all (s : L) :
         apply Units.ext
         exact ha.symm
       have hsub :
-          (⟨u, Subgroup.subset_closure hu⟩ : L) =
+          (⟨u, huL⟩ : L) =
             FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit a := by
         apply Subtype.ext
         exact heq
       rw [hsub]
       exact FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_generator a
     | inv_mem u hu =>
+      have huL : u ∈ lipschitzGroup Q := Subgroup.subset_closure hu
       obtain ⟨a, ha⟩ := hu
       let : Invertible (CliffordAlgebra.ι Q a) := by
         rw [ha]
@@ -59,7 +61,7 @@ theorem originalSourceLipschitzGradeDetInvariant_all (s : L) :
         apply Units.ext
         exact ha.symm
       have hsub :
-          (⟨u⁻¹, (lipschitzGroup Q).inv_mem (Subgroup.subset_closure hu)⟩ : L) =
+          (⟨u⁻¹, (lipschitzGroup Q).inv_mem huL⟩ : L) =
             (FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit a)⁻¹ := by
         apply Subtype.ext
         exact congrArg Inv.inv heq
