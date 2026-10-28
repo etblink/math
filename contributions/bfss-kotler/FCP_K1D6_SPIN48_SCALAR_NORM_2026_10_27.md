@@ -1,5 +1,16 @@
 # K1D6 — genuine Spin48 scalar-star and square-one consequences
 
+## Independent strict acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED.** The owner qualified contributor baseline increases from **52 to 53 modules**. Run [40618353517](https://github.com/etblink/math/actions/runs/40618353517), job `122586052475`, attempt 1, completed `success` at exact tested SHA [`25ca790ea1f326d48b0bc7f75dc7ce0f125b18bd`](https://github.com/etblink/math/commit/25ca790ea1f326d48b0bc7f75dc7ce0f125b18bd). The source pin, Lean 4.34.1/Mathlib pins, and all five proof and verification stages passed.
+
+Strict verifier markers: `FCP_OWNER_ANCESTRY_STRICT_PASS modules=22 roots=47`, `FCP_K1D3_SOURCE_SCALAR_COMPOSITION_STRICT_PASS modules=2 roots=2`, `FCP_K1D5_CLIFFORD_SCALAR_TRANSPORT_STRICT_PASS modules=1 roots=2`, and `FCP_K1D6_SPIN48_SCALAR_NORM_STRICT_PASS modules=1 roots=2`. This is **53/53 selected declaration checks**, including the two newly accepted roots. Their only permitted axioms are `propext`, `Classical.choice`, and `Quot.sound`. There were no Lean source warnings/errors or `sorryAx`. [Evidence artifact 12786925783](https://github.com/etblink/math/actions/runs/40618353517/artifacts/12786925783) preserves detailed logs and root types.
+
+K1D6 establishes `star (s : C) = (s : C)` and `(s : C)*(s : C)=1` **under genuine source Spin membership and trivial source-vector action**. It does not conclude `c² = 1` for the real coefficient without a separate scalar-injectivity argument, or prove the negative-central representative or the complete two-sign kernel. The CANDIDATE wording below is the preserved pre-green handoff.
+
+### Archived pre-qualification plan
+
+
 **Status: CANDIDATE, independent strict gate not yet accepted.**
 Research branch: `research/fcp-k1d6-spin48-scalar-norm-20261027`, descendant of the qualified K1D5 checkpoint `research/fcp-k1d5-clifford-scalar-20261027@98521f141e4bc1e732a710cc83774f94e8e5cc2f`.
 
