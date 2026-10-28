@@ -1,5 +1,10 @@
 # K1D5 — original Clifford scalar transport
 
+## Independent strict qualification, 2026-10-28
+
+Run [40616712698](https://github.com/etblink/math/actions/runs/40616712698) completed successfully at tested SHA `203d5d6d6f8550b616433005ed83163a17ec0299`. The 22-module ancestry gate passed 47 roots; the K1D3/K1D4 gate passed 2 roots; and the new K1D5 gate passed both of its roots. The verified total is 52 accepted scoped contributor modules and 51 checked roots. Approved axioms only: `propext`, `Classical.choice`, and `Quot.sound`. No Lean source compilation errors or warnings. Artifact: [12785378441](https://github.com/etblink/math/actions/runs/40616712698/artifacts/12785378441). The older candidate status below is a historical pre-CI record. The two-sign Spin(48) kernel remains unproved.
+
+
 **State: CANDIDATE, pending independent owner strict CI.**
 Research descendant branch: `research/fcp-k1d5-clifford-scalar-20261027`.
 Accepted owner ancestor: `research/fcp-k1d3-scalar-kernel-20261027@ff7f1c025ad12097c145016975de9ef875e146ed`.
