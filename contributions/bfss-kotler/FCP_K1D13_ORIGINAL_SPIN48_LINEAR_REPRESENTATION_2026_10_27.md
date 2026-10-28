@@ -1,5 +1,18 @@
 # K1D13 — actual source Spin48 linear representation
 
+## Independent strict acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 60 scoped contributor modules and 70/70 selected declaration roots.** [Strict run #40636013385](https://github.com/etblink/math/actions/runs/40636013385), job `122643034366`, attempt 1, completed `success` at exact source-tested SHA [`4a401dd606e9cb5a6dc961dd3392610d4a4dde2e`](https://github.com/etblink/math/commit/4a401dd606e9cb5a6dc961dd3392610d4a4dde2e). The strict workflow freshly verified all **67 accepted ancestor declaration roots** and three K1D13 declarations. Terminal marker: `FCP_K1D13_SOURCE_SPIN48_LINEAR_REPRESENTATION_STRICT_PASS modules=1 roots=3`. All three axioms lists contain only `propext`, `Classical.choice`, `Quot.sound`; no Lean source warnings/errors or `sorryAx` were present. [Immutable source/compiler/theorem evidence artifact #12793648936](https://github.com/etblink/math/actions/runs/40636013385/artifacts/12793648936) is preserved.
+
+**Precisely qualified:** the actual original S1V31 source Spin48 action has a genuine real-linear map and real-linear automorphism representation `spinGroup source48Quadratic →* (Source48Vector ≃ₗ[ℝ] Source48Vector)` with group inverse induced by the genuine inverse Spin element. This creates the representation into GL of the exact source 48-real vector space. The previously qualified pointwise two-sign kernel K1D11 has **not yet** been re-expressed as `MonoidHom.ker` of this new representation.
+
+**Not yet qualified:** an exact kernel theorem specifically for the newly constructed linear representation; quadratic-form preservation / image in O(48) or SO(48), surjectivity, topology/covering, global Spin9 lift and BFSS spectral existence. No such claims should be inferred from the green gate.
+
+**Negative evidence preserved:** [Run #40634336284 attempt 1](https://github.com/etblink/math/actions/runs/40634336284/attempts/1) failed during pinned Lean download due to TLS; [attempt 2](https://github.com/etblink/math/actions/runs/40634336284/attempts/2) rebuilt the original accepted ancestors successfully but rejected two no-op `change` tactics by warning-as-error. The new accepted commit removed only those two tactics. Both failures remain in the original immutable job logs and the attempt-2 artifact #12793407370; historical candidate status below is retained for auditability.
+
+### Archived candidate and repair history
+
+
 ## Gate 1 attempt failures and statement-preserving repair — 2026-10-28 UTC
 
 **CURRENT STATUS: CANDIDATE / NOT ACCEPTED. 59 accepted modules; 67 accepted roots.**
