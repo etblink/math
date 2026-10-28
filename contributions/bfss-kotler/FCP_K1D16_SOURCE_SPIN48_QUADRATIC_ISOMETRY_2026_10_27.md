@@ -1,5 +1,27 @@
 # K1D16 — original-source Spin(48) quadratic isometry packaging
 
+## Independent owner acceptance and updated elaboration protocol — 2026-10-28 UTC
+
+**ACCEPTED: 63 scoped contributor modules and 78 selected declaration roots.** [Owner strict run #40648129024](https://github.com/etblink/math/actions/runs/40648129024), job `122681620228`, attempt 1, completed **success** on exact tested source SHA [`9af0a76360b92ff11c3d4873f863097e72502d76`](https://github.com/etblink/math/commit/9af0a76360b92ff11c3d4873f863097e72502d76). Verified exact pinned source and verifier identities, Lean 4.34.1/Mathlib restoration, **all 75 accepted ancestor declaration roots**, and three K1D16 root declarations with zero new Lean source errors or warnings. Terminal marker: `FCP_K1D16_SOURCE_SPIN48_QUADRATIC_ISOMETRY_STRICT_PASS modules=1 roots=3`. All three `#print axioms` reports contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`. Immutable original compiler and root-type evidence: [artifact #12798846858](https://github.com/etblink/math/actions/runs/40648129024/artifacts/12798846858).
+
+**Precise result:** `originalSourceSpin48QuadraticIsometry` constructs a genuine `source48Quadratic.IsometryEquiv source48Quadratic` from K1D13's *exact original* `LinearEquiv` and K1D15's proven source quadratic preservation, with qualified equality of its underlying linear equivalence and pointwise action with S1V31. This is isometry packaging only. No determinant +1, SO48 group homomorphism, orthogonal image surjectivity, global Spin9 lift, topological covering, or spectral existence is admitted.
+
+**Failure evidence retained:** [Gate 1 red #40646507049](https://github.com/etblink/math/actions/runs/40646507049) passed all 75 ancestors, then failed while elaborating `Q.IsometryEquiv Q` with a recursion-depth error at definition line 28 and `map_app'` line 33. The two downstream theorems failed because the definition was not created and printed `sorryAx`. The accepted Gate 2 added only local `set_option maxRecDepth 4096`, leaving all theorem statements and proof bodies literally unchanged. The Gate 1 logs and [artifact #12798188055](https://github.com/etblink/math/actions/runs/40646507049/artifacts/12798188055) remain part of immutable negative knowledge.
+
+### Project Lead procedural correction — OWNER DIRECTIVE
+
+**Effective immediately for FUTURE Lean elaboration failures, prefer source-exact explicit type/structure-field bridges BEFORE raising `maxRecDepth`, `maxHeartbeats`, `maxRecDepth`-like budgets, or broad tactic limits.** This preference supersedes the ordering used during the K1D16 Gate 2 experiment; the accepted K1D16 source is not retroactively unqualified.
+
+1. Identify and preserve the **first causal compiler error**, distinguish definitional equality/coercion/field inference from a genuine missing theorem and from runner/TLS infrastructure failures.
+2. Inspect exact pinned Lean/Mathlib source and original accepted antecedent signatures; establish **explicitly typed intermediate goals**, source type aliases, field-level `toLinearEquiv` or `map_app'` projections, and local `change`/`show` only when they actually change the elaboration task (no no-op tactics that the strict linter rejects).
+3. Refactor only the smallest local proof term; keep original theorem statements, source 48-label ordering/quadratic form, accepted source pins, and strict axiom/lint policy fixed. Prefer a focused independent probe, then full strict ancestry qualification.
+4. **Only if explicit bridges demonstrably do not resolve the failure**, consider a **bounded, documented, module-local** elaborator budget increase as an exception. Record what was tried first and why the limit was needed. Never loosen the verifier, introduce sorry/axioms, or count red/infrastructure runs as mathematical successes.
+
+The Gate 2 success confirms a deeper budget sufficed *for that exact source*, not that raising limits should become the default procedure. This rule applies to K1D17 and all later owner source-exact qualification gates.
+
+### Archived candidate and prior red status
+
+
 ## Gate 1 red — elaboration-depth qualification boundary — 2026-10-28 UTC
 
 **K1D16 NOT ACCEPTED. The frozen accepted baseline remains 62 scoped modules / 75 selected declaration roots.** [Original strict run #40646507049](https://github.com/etblink/math/actions/runs/40646507049), job `122676448850`, terminal `completed/failure`, source-tested exact SHA [`0ffc3ed4fb3a63dfe1bf200d234f20b24d17b8d5`](https://github.com/etblink/math/commit/0ffc3ed4fb3a63dfe1bf200d234f20b24d17b8d5). Checkout and exact source/verifier hash checks passed, pinned Lean/Mathlib restoration passed, and **all 75 accepted ancestor declaration roots independently recompiled and qualified**.
