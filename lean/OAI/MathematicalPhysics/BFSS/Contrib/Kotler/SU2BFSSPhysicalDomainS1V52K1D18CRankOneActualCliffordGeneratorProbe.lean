@@ -33,7 +33,11 @@ theorem source48_rankOneConjugationMatrix_mulVec
   have hprod :
       (Matrix.replicateCol (Fin 1) a * Matrix.replicateRow (Fin 1) (-ell)) *ᵥ b =
         (MulOpposite.op ((-ell) ⬝ᵥ b)) • a := by
-    rw [← Matrix.vecMulVec_eq (ι := Fin 1)]
+    have hmatrix :
+        Matrix.replicateCol (Fin 1) a * Matrix.replicateRow (Fin 1) (-ell) =
+          Matrix.vecMulVec a (-ell) := by
+      exact (Matrix.vecMulVec_eq (ι := Fin 1) a (-ell)).symm
+    rw [hmatrix]
     exact Matrix.vecMulVec_mulVec a (-ell) b
   have hscalar :
       (MulOpposite.op ((-ell) ⬝ᵥ b)) • a =
