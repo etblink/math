@@ -335,3 +335,25 @@ The new gate pins exact original P and all ancestor source identities, permits o
 4. `originalSourceSpin48SpecialOrthogonalWitnessRepresentation_ker_eq_two_sign_set`: transplant K1D14's already accepted `MonoidHom.ker` theorem onto the new source-special-orthogonal codomain, exactly the two distinct original Spin signs.
 
 **Strict controls:** pin original D14, R, S Git blobs, original toolchain Lean 4.34.1 and Mathlib SHA `d13f23b723b8a846827a245b89c10fc7d3f11612`; sealed 37-module/81-root ancestor revalidation; warning-as-error fresh compile 16 A–P + R + S (18 modules); declaration type/axiom audit of 49 A–P + 4 R + 4 S = 57 roots. Allowed axioms only `propext`, `Classical.choice`, `Quot.sound`, no `sorryAx`. Preserve every red diagnostic before further changes. Do not classify a subgroup hom into an original source-isometry witness target as surjectivity onto that subgroup, a topological two-fold covering, or a Mathlib matrix SO48 identification without separate exact proofs. Do not reopen the five Q failed candidates automatically. No main/upstream mutation.
+
+### K1D18S independently verified acceptance — 2026-10-28
+
+**ACCEPTED — 4/4 exact K1D18S roots; 57/57 total A–P,R,S roots.** [Run #40761707962](https://github.com/etblink/math/actions/runs/40761707962) completed/success, exact tested commit `30e3ef645b655490ee3fcef1e3fea560dc7b3128`, job `123075057467`. R/S source and workflow Git blobs pinned: S module `2265778b3d43f9915bc88d2bafd16986e4c7571f`, S strict workflow `1d1b1c25a6e0d1cfe2c398a5d3879c55aa7c418a`. Immutable acceptance archive [artifact 12848173273](https://github.com/etblink/math/actions/runs/40761707962/artifacts/12848173273), `sha256:0467794f127b48912bfeb5a4fefabe92c9a1779938faf3b5a8f7c4606ed703da`.
+
+**Independent actual receipt strings and steps:**
+- `K1D18S_EXACT_SOURCE_PINS_FIFTY_SEVEN_DECLARATIONS_PASS` (source blobs and absence of unproved declaration lexemes).
+- `FCP_CACHE_PILOT_WARM_REVALIDATION_PASS modules=37 roots=81`; `K1D18S_ACCEPTED_81_ROOT_ANCESTRY_PASS` (source-exact sealed ancestry, not 81 new roots).
+- `K1D18S_SOURCE_EXACT_EIGHTEEN_FRESH_COMPILATIONS_PASS` (16 previous A–P and R/S freshly compiled `-DwarningAsError=true`).
+- `K1D18S_EXACT_FIFTY_SEVEN_ROOT_TYPES_AXIOMS_PASS` (independent `#check` and `#print axioms`, 49 original A–P + 4 R + 4 S).
+
+**Accepted exact new theorem/declaration names:**
+1. `FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation` — actual unchanged K1D13 original `spinGroup source48Quadratic →* source48SpecialOrthogonalWitnessGL` source isometry-witness determinant-one group hom.
+2. `FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_coe` — exactly the old original real GL map after subgroup forgetful coercion.
+3. `FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_eq_one_iff_original` — source-identity iff exact GL identity, using subtype extensionality.
+4. `FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_ker_eq_two_sign_set` — its true `MonoidHom.ker` equals the exact K1D14 two-sign set `{1, originalSourceNegativeCentral}`.
+
+All four S declarations printed only `propext`, `Classical.choice`, `Quot.sound` (and no `sorryAx`); compiler and independent audit jobs all completed successful. A–P and R remain previous accepted roots, not duplicated as S credit. The five older Q rejected experiments remain negative knowledge (not mathematical counterexamples).
+
+**Ceiling:** This establishes an algebraic hom and exact nontrivial two-element kernel into the original-source quadratic-isometry witness/determinant-one subgroup, **not** surjectivity onto it, an identification with canonical matrix specialOrthogonalGroup, an SO48 topological double covering, global Spin9 lift, physical Hilbert form invariance, or any BFSS spectral existence theorem.
+
+**Next decision:** Prefer a bounded exact algebraic image/fiber or quotient-by-kernel theorem built using the accepted S hom and K1D11/K1D14 two signs, rather than returning to the known Q predicate-definitional-reduction failure. A quotient-to-range isomorphism is purely an abstract group-theoretic result; it must never be labeled a topological covering. Use exact qualified Mathlib definitions, strict source pins, and independent root axiom checks. Full original SO48 surjectivity/covering remain open.
