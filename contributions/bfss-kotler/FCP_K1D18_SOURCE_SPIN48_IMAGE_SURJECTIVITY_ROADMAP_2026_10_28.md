@@ -123,3 +123,16 @@ Even a green V3 would prove only Q-preservation of the source rank-one matrix (c
 **Red-to-green causal lesson:** Gate 1 [#40773835723](https://github.com/etblink/math/actions/runs/40773835723) failed solely on the generic `QuadraticMap.map_add` metavariable rewrite; source shape specialization solved it. No source definition, theorem statement, cache key, proof limit or dependency pin changed. Preserve the red and corrected source provenance; the source-only workflow [#40777803921](https://github.com/etblink/math/actions/runs/40777803921) uses the intervening stale source pin and must not be interpreted as a separate mathematical test.
 
 **Qualified Stage V geometry so far:** V1 line-axis and original-polar-hyperplane action; V2 exact original-source rank-one pointwise involution; V3 preservation of `source48Quadratic` by the SAME original rank-one matrix under `[Invertible (source48Quadratic a)]`. This is a source Q-preserving involution, not yet a proof of nonzero generator normalization, Clifford star/inversion/Pin membership, even Spin lifts, full image surjectivity, SO(48) matrix presentation, covering, or a physical result. The next natural premise is source all-one weighted-sum-squares positivity and positive norm of each nonzero source vector, before defining genuine unit-length source Clifford factors.
+
+
+## K1D18V4 source positivity — new bounded mathematical candidate (2026-10-28)
+
+**NOT ACCEPTED; queued strict qualification.** New original-source module `SU2BFSSPhysicalDomainS1V52K1D18V4OriginalSourceQuadraticPositiveDefiniteProbe.lean`, blob `cb1a19ad6060ef6a659d0c87f49d58c28697a57c`, [source commit `2360caf2`](https://github.com/etblink/math/commit/2360caf230c18d6fd1ba7ef55a7615c1a87c0386). It imports the qualified V3 ancestry, uses the exact unchanged S1V0 `source48Quadratic := weightedSumSquares ℝ (fun _ : Fin 24 × Fin 2 => 1)`, and introduces no surrogate norm or reindexing.
+
+**Four candidate roots, in proof-dependency order:**
+1. `source48Quadratic_eq_sum_mul_self`: source quadratic value equals the original indexed sum of 48 coordinate squares.
+2. `source48Quadratic_nonneg`: that original real sum is nonnegative.
+3. `source48Quadratic_pos_of_ne_zero`: each nonzero original 48-label source vector has strictly positive quadratic value, using an actual nonzero source coordinate.
+4. `source48Quadratic_posDef`: exactly the original source form satisfies pinned Mathlib's `QuadraticMap.PosDef` proposition.
+
+The independent [V4 strict run #40779593768](https://github.com/etblink/math/actions/runs/40779593768) was queued for exact [workflow commit `2850f7f3`](https://github.com/etblink/math/commit/2850f7f339df7d1b044ca5d1bc65d4a4ef6bc4cb): source-hash-pinned 24 fresh modules, 72 declaration type/axiom audits and 81 cached ancestor-root revalidations. Source is **not** promoted on workflow dispatch. Accept only if terminal exact tested SHA, warning-as-error compilation and independent root axiom audit all pass. Diagnose and preserve the first causal red if it fails, with no blanket limit increase. Source positivity, even if qualified, does not yet construct a normalized vector, verify Clifford star/inversion/Pin, construct an even Spin lift, establish image surjectivity or prove any global physical BFSS claim.
