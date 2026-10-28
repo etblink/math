@@ -1,0 +1,28 @@
+# K1D10 — genuine original negative central Spin48 vector action
+
+**CANDIDATE; NOT YET ACCEPTED BY INDEPENDENT CI.** Owner research branch `research/fcp-k1d10-negative-action-20261027` is a one-commit descendant of qualified `research/fcp-k1d9-negative-spin-20261027@df624017f88678f86167125e4715adc7491e1a4f`.
+
+## Accepted mathematical starting point
+
+**56 owner contributor modules, 59 selected declaration checks** are qualified. K1D9 passed [strict run #40626355158](https://github.com/etblink/math/actions/runs/40626355158) at exact tested source SHA `eeffeade763346c5a8a1278224ef492fb3da48a3`. It proved that the actual original negative Clifford unit `-1` is in `spinGroup source48Quadratic`, with the exact original unit-weighted 48-real quadratic form and source Clifford generators.
+
+K1D8's already accepted result is only the **upper bound**: if a Spin48 element fixes all source real vectors, its original Clifford value is 1 or -1. It did not establish that the *actual* negative-central Spin element fixes all source vectors.
+
+## Exact candidate statement and proof plan
+
+New source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D10OriginalSpin48NegativeCentralTrivialActionProbe.lean` pinned Git blob `d0a06f78390b8048eb83233bcdd4bd96f59eb987`.
+
+1. `FCP.BFSSS1V52K1D10.originalSourceSpin48VectorAction_clifford_star` identifies the **actual S1V31 source action** on the injective original Clifford generators with conjugation `(s : C) * ι Q v * star (s : C)`. The inverse is source-exact via pinned Mathlib `spinGroup.toUnits`, `spinGroup.star_eq_inv`, and `ConjAct.units_smul_def`. No independent replacement action is introduced.
+2. `FCP.BFSSS1V52K1D10.originalSourceSpin48_negativeCentral_trivialAction`: construct the actual source Spin subtype from K1D9's unconditional `-1` membership proof and prove it fixes all original Source48Vectors. Transport equality via accepted S1V30 injectivity of the source `CliffordAlgebra.ι`.
+
+The first declaration may expose non-definitional coercion differences between `spinGroup.toUnits` and `star`; do not promote until strict Lean confirms it. On failure, diagnose exact elaboration/type errors rather than increasing heartbeats or postulating the conjugation formula.
+
+## Owner qualification and preservation
+
+Workflow `.github/workflows/bfss-kotler-k1d10-negative-central-action-owner-strict.yml` pins the candidate source and verifier `contributions/bfss-kotler/tools/qualify_fcp_k1d10.py` (Git blob `212543b427bacd324fd4c58c565c4d69fa90c77f`) with Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, and previously admitted source hashes. The job freshly requalifies 59 accepted declaration roots and demands strict compilation, a real `.olean`, two exact axiom checks with only `propext`, `Classical.choice`, `Quot.sound`, and root types. Preserve original compiler logs and all failure/acceptance artifacts.
+
+**Fail closed:** Red or incomplete run is negative evidence, not acceptance. Only a completed independent green qualifies K1D10 and advances the contributor count from 56 to 57, selected declaration roots from 59 to 61.
+
+## Explicit exclusions and upstream plan
+
+K1D10's negative action result, even if accepted, must still be composed with K1D8's upper bound and `1` action in a later theorem to obtain the precise **group-level kernel equality**. Distinctness of ±1 and the final map's group law, its SO48-target mapping, covering and global Spin(9) lift remain separately tracked. No owner `main` merge or upstream PR is authorized. For the eventual community PR, preserve this owner evidence but prepare a clean minimal proof/dependency bundle from the then-current `mathcommunity/oai-math-revised:main`, with full software-assistance disclosure.

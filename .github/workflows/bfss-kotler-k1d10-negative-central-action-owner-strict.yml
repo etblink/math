@@ -1,0 +1,125 @@
+name: BFSS K1D10 source original Spin48 negative central vector action strict qualification
+on:
+  push:
+    branches:
+      - research/fcp-k1d10-negative-action-20261027
+    paths:
+      - .github/workflows/bfss-kotler-k1d10-negative-central-action-owner-strict.yml
+      - contributions/bfss-kotler/tools/qualify_fcp_k1d10.py
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D10OriginalSpin48NegativeCentralTrivialActionProbe.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  original-negative-central-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact K1D10 candidate and verifier source identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D10OriginalSpin48NegativeCentralTrivialActionProbe.lean)" = 'd0a06f78390b8048eb83233bcdd4bd96f59eb987'
+          test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_k1d10.py)" = '212543b427bacd324fd4c58c565c4d69fa90c77f'
+      - name: Restore pinned Lean and Mathlib dependencies
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Requalify accepted 22-module original ancestry and 47 roots
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_sync.py --group ancestry --mode lake --log-dir "$RUNNER_TEMP/bfss-k1d10-ancestry-evidence"
+      - name: Requalify both accepted K1D3-K1D4 composition roots
+        shell: bash
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d3.py --log-dir "$RUNNER_TEMP/bfss-k1d10-parent-evidence"
+      - name: Requalify accepted K1D5 Clifford scalar transport roots
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d5.py --log-dir "$RUNNER_TEMP/bfss-k1d10-k1d5-evidence"
+      - name: Requalify accepted K1D6 Clifford star and square-one roots
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d6.py --log-dir "$RUNNER_TEMP/bfss-k1d10-k1d6-evidence"
+      - name: Requalify accepted K1D7 scalar coefficient norm roots
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d7.py --log-dir "$RUNNER_TEMP/bfss-k1d10-k1d7-evidence"
+      - name: Requalify accepted K1D8 two-sign upper bound roots
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d8.py --log-dir "$RUNNER_TEMP/bfss-k1d10-k1d8-evidence"
+      - name: Requalify accepted K1D9 negative Spin membership roots
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d9.py --log-dir "$RUNNER_TEMP/bfss-k1d10-k1d9-evidence"
+      - name: Fresh K1D10 source proof and two declaration axiom checks
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d10.py --log-dir "$RUNNER_TEMP/bfss-k1d10-new-evidence"
+      - name: Emit original compiler, root-type, and verifier evidence
+        if: always()
+        shell: bash
+        run: |
+          python3 - "$RUNNER_TEMP/bfss-k1d10-ancestry-evidence" "$RUNNER_TEMP/bfss-k1d10-parent-evidence" "$RUNNER_TEMP/bfss-k1d10-new-evidence" "$RUNNER_TEMP/bfss-k1d10-k1d5-evidence" <<'PY'
+          import pathlib, sys
+          for arg in sys.argv[1:]:
+              root = pathlib.Path(arg)
+              for path in sorted(root.glob('*.log')):
+                  print('COMPILER_EVIDENCE_FILE', root.name, path.name)
+                  print(path.read_text())
+              for path in sorted(root.glob('results.json')):
+                  print('VERIFIER_RESULTS_FILE', root.name, path.read_text())
+          PY
+      - name: Preserve success and failure artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-k1d10-negative-central-action-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/bfss-k1d10-ancestry-evidence
+            ${{ runner.temp }}/bfss-k1d10-parent-evidence
+            ${{ runner.temp }}/bfss-k1d10-new-evidence
+            ${{ runner.temp }}/bfss-k1d10-k1d9-evidence
+            ${{ runner.temp }}/bfss-k1d10-k1d8-evidence
+            ${{ runner.temp }}/bfss-k1d10-k1d7-evidence
+            ${{ runner.temp }}/bfss-k1d10-k1d6-evidence
+            ${{ runner.temp }}/bfss-k1d10-k1d5-evidence
+          if-no-files-found: warn
