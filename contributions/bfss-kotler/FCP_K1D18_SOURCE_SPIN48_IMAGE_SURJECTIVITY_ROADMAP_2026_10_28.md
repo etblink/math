@@ -92,3 +92,16 @@ The proof is deliberately a finite dot-product/scalar normalization, not a conve
 **Two accepted V2 roots:** `FCP.BFSSS1V52K1D18V2.source48_rankOneConjugationMatrix_square_mulVec` (explicit row dot axis equals 2), and `FCP.BFSSS1V52K1D18V2.source48_originalCliffordRankOne_square_mulVec` (actual original polar-normalized rank-one matrix under `[Invertible (source48Quadratic a)]`). Both prove pointwise `R_a (R_a(v)) = v` on the exact original 48-coordinate source. Earlier “queued/pending” report above is retained as historical, now superseded.
 
 **Not proved:** source-Q isometry, unit normalization/existence, Clifford star/unitary Pin conditions, construction of genuine even Spin elements, orthogonal reflection generation, image surjectivity, canonical SO(48), topology, global Spin(9), or spectral claims. Natural next Stage V experiment is actual original-source `Q(R_a(v)) = Q(v)` via a small *generic quadratic identity* before exact original polar specialization; stop if source coercion/shape mismatch emerges and insert a type-correct structure bridge before trying higher recursion limits.
+
+
+## K1D18V3 source-Q reflection isometry — candidate and strict gate (2026-10-28)
+
+**Research candidate, NOT yet qualified.** [Source commit `458795a4`](https://github.com/etblink/math/commit/458795a46340d0a568068de3c9ba4dcfd26865e8), source blob `9e8291967d714b089eee70f860e9d71395036e56`: `SU2BFSSPhysicalDomainS1V52K1D18V3OriginalSourceRankOneQuadraticIsometryProbe.lean`. It imports only accepted V2 ancestry and preserves the original source `Source48Label := Fin 24 × Fin 2`, `source48Quadratic`, normalized polar row, and S1V37 rank-one matrix.
+
+**Two candidate roots** in the typed-structure-first order:
+1. `FCP.BFSSS1V52K1D18V3.source48Quadratic_smul_sub_preserve_of_polar_scaling`: abstracted cancellation on the original source form, under explicit `c * Q(a) = polar Q a v`.
+2. `FCP.BFSSS1V52K1D18V3.source48_originalCliffordRankOne_preserves_quadratic`: actual source-rank-one matrix `R_a` preserves the same `Q` for every `v`, under explicit `[Invertible (Q a)]`; uses the accepted polar row and `invOf_mul_self` rather than an invented vector normalization.
+
+The [new strict gate #40773835723](https://github.com/etblink/math/actions/runs/40773835723) at [workflow commit `03640e85`](https://github.com/etblink/math/commit/03640e851055334a9313d3434b8b245f62f69d21) has been queued; its immutable preflight requires the exact V3 blob, 23 fresh ancestor-to-candidate source compilations, 68 independent root type/axiom audits, validated 81-root same-branch ancestor cache, and only whitelisted axioms. **Do not promote V3 before terminal run/compiler/axiom evidence.** If red, inspect the earliest causal failure and use a new typed structure bridge rather than reflexive resource-limit increases. V1/V2 original sources and green evidence remain unchanged.
+
+Even a green V3 would prove only Q-preservation of the source rank-one matrix (combined with separately accepted V2 involution and V1 geometry), not unit vector existence/normalization, Clifford star/inversion, genuine even Spin lifts, image surjectivity, topology, physical covariance, or BFSS spectral claims.
