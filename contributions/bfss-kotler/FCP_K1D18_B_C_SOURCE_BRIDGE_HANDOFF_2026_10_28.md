@@ -76,6 +76,41 @@ Three **newly qualified E theorem roots**, under `FCP.BFSSS1V52K1D18E`:
 
 **Boundary:** The hfactor hypothesis is not discharged for arbitrary `spinGroup Q`. A two-generator unit-factorization conditional theorem does **not** imply universal `det = 1` for `spinGroup Q`. Do not assert full orientation, a map into SO48, surjectivity, two-sheeted covering, global Spin9 or BFSS spectra from this checkpoint.
 
+## K1D18F accepted — genuine source Lipschitz vector action and real-linearity
+
+[**Green run #40709423123**](https://github.com/etblink/math/actions/runs/40709423123), job `122890307352`, tested commit `f911898f986a0f621cbc1f896618422cb6447189`, completed/success on 2026-10-28 around 14:54 UTC. Source blob `1562aaf20f77a96b7dd27afde090e59ff1258188`; strict workflow blob `f3581615aedbb17a4dec1ad1149dcf32100b6d94`. Atomically committed on **existing** cache-enabled branch.
+
+Using the actual pinned `lipschitzGroup.conjAct_smul_ι_mem_range_ι` and previously accepted `FCP.BFSSS1V30.source48_cliffordGenerator_injective`, the **four qualified new roots** in `FCP.BFSSS1V52K1D18F` are:
+
+1. `sourceLipschitz_conjugated_generator_unique`: every genuine Lipschitz-subgroup unit has a *unique* original 48-real source vector representing its conjugated Clifford generator.
+2. `sourceLipschitzVectorAction_clifford_generator`: the uniquely chosen source vector exactly implements the **actual original Clifford conjugation**, not a new independent action.
+3. `sourceLipschitzVectorAction_add`: source vector additivity.
+4. `sourceLipschitzVectorAction_smul`: real scalar-linearity on the original source module.
+
+Strict evidence: exact same-branch accepted 81-root cache restored, `FCP_CACHE_PILOT_WARM_REVALIDATION_PASS modules=37 roots=81`; fresh warning-as-error compiler over A–F emitted `K1D18F_SOURCE_EXACT_SIX_FRESH_COMPILATIONS_PASS`; independent 18-root type and axiom audit emitted `K1D18F_EXACT_EIGHTEEN_ROOT_TYPES_AXIOMS_PASS`, allowing only `propext`, `Classical.choice`, `Quot.sound`. No determinant or grade character was claimed.
+
+## K1D18G accepted — actual source Lipschitz group laws and Spin restriction
+
+[**Green run #40710730674**](https://github.com/etblink/math/actions/runs/40710730674), job `122894972826`, tested commit `dbf8f4a59d703a46144ed7934578fb804890931e`, completed/success around 2026-10-28T15:02 UTC. Source blob `91d71119f865d4aec1e09bb55f9297e29e7174a4`; workflow blob `2cdb211097be62a46f5985e4e9dee9768ba34646`. Source and workflow pinned and published atomically on the same branch.
+
+**Five new G roots** under `FCP.BFSSS1V52K1D18G`:
+
+1. `originalSourceSpin48_unit_mem_lipschitz`: the genuine original Mathlib Spin unit is an element of the actual original Lipschitz subgroup.
+2. `sourceLipschitzVectorAction_one`: actual Lipschitz unit identity fixes every source vector.
+3. `sourceLipschitzVectorAction_mul`: the action respects actual Lipschitz unit multiplication.
+4. `sourceLipschitzVectorAction_agrees_originalSpin48`: its **restriction** to the actual Spin group agrees pointwise with the accepted original S1V31 Clifford-conjugation action.
+5. `originalSourceLipschitzLinearMap`: packages the original source Lipschitz action as a genuine real-linear endomorphism without introducing a replacement source representation.
+
+Strict evidence: `FCP_CACHE_PILOT_WARM_REVALIDATION_PASS modules=37 roots=81`; fresh warning-as-error A–G compilation `K1D18G_SOURCE_EXACT_SEVEN_FRESH_COMPILATIONS_PASS`; `K1D18G_EXACT_TWENTY_THREE_ROOT_TYPES_AXIOMS_PASS` independently confirms all 23 A–G roots' types and axiom sets, restricted to `propext`, `Classical.choice`, `Quot.sound`. These group laws do **not** classify determinant sign and do not make all Spin elements finite two-generator products.
+
+## K1D18H candidate — actual Lipschitz linear equivalences and determinant UNIT character
+
+Unaccepted source blob `3de8f66a91063845b0aaa8417ed9260cc5d41df6` (`SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe.lean`) and workflow blob `8fd0c0e03fc0f5de69d1ad77a5294754f04d9eca` were atomically published at commit `83c064157126517ef1b5105a99238a258863ad55`. [**Strict run #40712014581**](https://github.com/etblink/math/actions/runs/40712014581) is a **pending candidate**, not an accepted theorem or proof root. It revalidates original 81 cached roots, freshly compiles A–H, and independently checks the intended 27 A–H declarations.
+
+H targets four separately auditable roots: actual Lipschitz-unit vector action packaged as an invertible real-linear equivalence with inverse given by the inverse group unit; source-exact apply identity; actual Lipschitz subgroup homomorphism to linear equivalences; and a determinant-valued **unit character** `L →* ℝˣ`, obtained from pinned `LinearEquiv.det`. None by itself establishes determinant (+1) on the even Spin group. If H runs red, preserve first causal Lean error and repair only source/API/type-field issue; no extra axioms, heartbeat or recursion-limit escalation by default.
+
+**K1D18 research accounting at G acceptance:** 81 earlier accepted source-cache ancestor roots + 2 A + 3 B + 3 C + 3 D + 3 E + 4 F + 5 G = **23 newly qualified A–G roots**, with the older **81-root cache unchanged**; no new 104-root combined cache created. H roots are excluded until independently qualified.
+
 ## Remaining actual scientific obligation
 
 K1D18D now supplies the exact bridge from the independently defined original Spin isometry to Clifford conjugation and the source rank-one generator units. It proves the two-matrix composition identity only *under an explicit, equality-in-actual-units factorization hypothesis*. The missing unconditional statement is a real group-theoretic parity/closure theorem, not an unidentified coordinate transport. The K1D18E determinant result has now been qualified, but **only under the exact two-unit factorization hypothesis**. No universal determinant theorem follows. Pinned Mathlib `lipschitzGroup Q` is a **subgroup closure** of invertible degree-one source Clifford generators, while `spinGroup Q` is the intersection of the pin group and even-grade subalgebra; it is **not by definition** a list of even generator words. Next establish the true Lipschitz closure determinant/grade-sign character and restrict to `spinGroup.involute_eq`. This is the missing proof of `det(originalSourceSpin48QuadraticIsometry s)=+1`, before any SO(48) packaging, topology, covering, global Spin(9), source Fock/gauge action, or BFSS spectra.
@@ -83,8 +118,10 @@ K1D18D now supplies the exact bridge from the independently defined original Spi
 **Standing policy:** truth over green CI, preserve negatives, proof source pins and original label order, typed/field bridges before recursion budgets, separate mathematical formalization from physical claims. Existing 81-root cache retains its original trusted branch; the 12.09 GB uncompressed Lean+Mathlib whole-dependency cache proposal was rejected after measured [green size-only run #40657131188](https://github.com/etblink/math/actions/runs/40657131188).
 
 
-### Recommended next program: original Lipschitz closure and determinant/grade parity
+### Updated next program: determinant character, original closure induction, and even parity
 
-The highest-value remaining bridge is **not** another two-generator calculation. Construct the actual source-vector action of general `u : (CliffordAlgebra Q)ˣ` *with `u ∈ lipschitzGroup Q`*, using pinned Mathlib `lipschitzGroup.conjAct_smul_ι_mem_range_ι` and the accepted source Clifford generator injectivity. Package its actual real-linear action and multiplicativity before a determinant theorem. Then prove, by the **actual `Subgroup.closure_induction''`** over original generator units, an invariant connecting determinant sign with Clifford `involute` parity, including the generator, inverse, identity and multiplication cases. Only after that subgroup-level invariant is qualified should one restrict it to the true `spinGroup Q` and use `spinGroup.involute_eq` to derive determinant `+1`. This is a **plan**, not a claimed theorem or completed gate.
+The general Lipschitz conjugation action and its group laws are now **qualified in F/G**, including exact agreement with the previously accepted original Spin action. The **next** independent structural gate is H: construct genuine Lipschitz **linear equivalences**, a group homomorphism and its determinant unit character. H was published but is **not accepted** until run #40712014581 completes with fresh compiler and declaration-level axiom evidence.
 
-Maintain strict original 48-label order and source form; prove typed/field bridges before any elaboration-limit adjustments. Preserve all source pins, fixed Lean/Mathlib, exact branch-scoped 81-root cached ancestry, fresh candidate compilation, and independent axiom/type audit. Keep negatives in the same authoritative handoff; avoid duplicate files. Do not silently assume every Spin element has a two-generator factorization, substitute a different group action, or publish to `main` or upstream without explicit authorization.
+After H, prove a source-exact relation between determinant units and the original Clifford involution. A promising direct route is to establish an invariant connecting `LinearEquiv.det` of the true Lipschitz action to `CliffordAlgebra.involute` on the same original Clifford unit. Prove it on *actual generator units*, extend it to the entire **actual** `lipschitzGroup Q` using the pinned `Subgroup.closure_induction''` (explicitly covering generator, inverse, identity, multiplication), then apply `spinGroup.involute_eq` and source scalar embedding injectivity to derive determinant `+1` for all genuine even Spin units. **That parity invariant, closure proof, and universal Spin theorem are NOT yet proved.**
+
+Maintain the exact original `Fin 24 × Fin 2` source labels and `source48Quadratic`, avoid new groups/representations or invented factorization hypotheses, and handle typed field/structure bridges before increasing elaboration limits. The accepted 81-root cache and pinned Lean/Mathlib remain unchanged; no entire dependency cache is warranted. Use one authoritative handoff and Git history as canonical memory, plus fresh warning-as-error candidate compilation and independent type/axiom audits; do not merge `main` or publish upstream without explicit authorization.
