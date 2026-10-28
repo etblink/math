@@ -1,5 +1,14 @@
 # K1D7 — source Clifford coefficient-square norm gate
 
+## Independent strict acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED, 54 scoped contributor modules.** [Owner strict run #40620376673](https://github.com/etblink/math/actions/runs/40620376673), job `122592687757`, attempt 1, completed `success` on the exact source SHA [`617639e3d168d913a1db22624124d8c1066b6c0e`](https://github.com/etblink/math/commit/617639e3d168d913a1db22624124d8c1066b6c0e). The run requalified all 53 accepted ancestor declaration roots and both new K1D7 roots, yielding **55/55** checked roots. Terminal marker `FCP_K1D7_SCALAR_COEFFICIENT_NORM_STRICT_PASS modules=1 roots=2`; permitted axioms only `propext`, `Classical.choice`, `Quot.sound`. No Lean source warnings or errors. [Compiled evidence artifact 12787337383](https://github.com/etblink/math/actions/runs/40620376673/artifacts/12787337383).
+
+Both original-source scalar algebraMap injectivity and coefficient-level `c*c=1` are now independently qualified. The candidate wording below is retained as a **pre-acceptance historical snapshot**, not current status. No `c=+1 ∨ c=-1` declaration or full two-sign kernel classification has yet been qualified.
+
+### Original pre-qualification handoff
+
+
 **Current state: CANDIDATE / independent owner CI not yet accepted.** This step is on a fresh descendant research branch `research/fcp-k1d7-scalar-coeff-20261027` of accepted `research/fcp-k1d6-spin48-scalar-norm-20261027@374562442da65a099dea16b2fb793b4d1baaf55e`, with **53 qualified contributor modules** preserved. K1D6 passed independent [run 40618353517](https://github.com/etblink/math/actions/runs/40618353517) on exact tested commit `25ca790ea1f326d48b0bc7f75dc7ce0f125b18bd`, with 53/53 selected declaration checks and only permitted axioms.
 
 ## New obligations, exact source
