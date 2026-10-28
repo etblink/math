@@ -103,13 +103,30 @@ Strict evidence: exact same-branch accepted 81-root cache restored, `FCP_CACHE_P
 
 Strict evidence: `FCP_CACHE_PILOT_WARM_REVALIDATION_PASS modules=37 roots=81`; fresh warning-as-error A–G compilation `K1D18G_SOURCE_EXACT_SEVEN_FRESH_COMPILATIONS_PASS`; `K1D18G_EXACT_TWENTY_THREE_ROOT_TYPES_AXIOMS_PASS` independently confirms all 23 A–G roots' types and axiom sets, restricted to `propext`, `Classical.choice`, `Quot.sound`. These group laws do **not** classify determinant sign and do not make all Spin elements finite two-generator products.
 
-## K1D18H candidate — actual Lipschitz linear equivalences and determinant UNIT character
+## K1D18H accepted — actual source Lipschitz linear equivalences and determinant unit character
 
-Unaccepted source blob `3de8f66a91063845b0aaa8417ed9260cc5d41df6` (`SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe.lean`) and workflow blob `8fd0c0e03fc0f5de69d1ad77a5294754f04d9eca` were atomically published at commit `83c064157126517ef1b5105a99238a258863ad55`. [**Strict run #40712014581**](https://github.com/etblink/math/actions/runs/40712014581) is a **pending candidate**, not an accepted theorem or proof root. It revalidates original 81 cached roots, freshly compiles A–H, and independently checks the intended 27 A–H declarations.
+[**Green run #40712014581**](https://github.com/etblink/math/actions/runs/40712014581), job `122899509129`, tested commit `83c064157126517ef1b5105a99238a258863ad55`, terminal `completed/success` around 2026-10-28T15:11 UTC. Exact accepted source blob `3de8f66a91063845b0aaa8417ed9260cc5d41df6`; exact strict workflow blob `8fd0c0e03fc0f5de69d1ad77a5294754f04d9eca`. The source and workflow were published together atomically on the same cache-enabled research branch.
 
-H targets four separately auditable roots: actual Lipschitz-unit vector action packaged as an invertible real-linear equivalence with inverse given by the inverse group unit; source-exact apply identity; actual Lipschitz subgroup homomorphism to linear equivalences; and a determinant-valued **unit character** `L →* ℝˣ`, obtained from pinned `LinearEquiv.det`. None by itself establishes determinant (+1) on the even Spin group. If H runs red, preserve first causal Lean error and repair only source/API/type-field issue; no extra axioms, heartbeat or recursion-limit escalation by default.
+The gate confirmed `FCP_CACHE_PILOT_WARM_REVALIDATION_PASS modules=37 roots=81`, `K1D18H_SOURCE_EXACT_EIGHT_FRESH_COMPILATIONS_PASS`, and `K1D18H_EXACT_TWENTY_SEVEN_ROOT_TYPES_AXIOMS_PASS`. Original A–H sources compiled freshly warning-as-error and 27 A–H roots had independent type and axiom audits. H's four new roots depend only on `propext`, `Classical.choice`, `Quot.sound`.
 
-**K1D18 research accounting at G acceptance:** 81 earlier accepted source-cache ancestor roots + 2 A + 3 B + 3 C + 3 D + 3 E + 4 F + 5 G = **23 newly qualified A–G roots**, with the older **81-root cache unchanged**; no new 104-root combined cache created. H roots are excluded until independently qualified.
+The **four newly qualified roots** in `FCP.BFSSS1V52K1D18H` are:
+
+1. `originalSourceLipschitzLinearEquiv`: the original-source Clifford-conjugation Lipschitz action is a genuine real-linear equivalence; inverse uses the **actual inverse unit of the same subgroup**, not a second action.
+2. `originalSourceLipschitzLinearEquiv_apply`: the equivalence acts pointwise as the unique original F source vector action.
+3. `originalSourceLipschitzLinearRepresentation`: a multiplicative homomorphism from the actual source `lipschitzGroup Q` into real-linear equivalences on the original 48-dimensional module.
+4. `originalSourceLipschitzDeterminantCharacter`: composition with pinned `LinearEquiv.det` gives a genuine multiplicative **unit-valued determinant character** `lipschitzGroup Q →* ℝˣ`.
+
+H establishes that the real determinant is invertible for every actual source Lipschitz group element. **It does not classify the determinant as ±1 or prove its relationship to Clifford grade parity**. Universal determinant +1 on the even Spin subgroup remains open.
+
+## K1D18I candidate — actual generator determinant and Clifford grade sign
+
+Source `SU2BFSSPhysicalDomainS1V52K1D18IOriginalLipschitzGeneratorParityProbe.lean`, exact blob `63403a729b0a84e98ae4ab51fc3be93f7fe8e3c4`, was published atomically with source-hash-pinned strict workflow blob `7b67ac23cdedf612d7c11e9a868e9f4f7883f6cc` at commit `de2d8457547173010bb9a5c6d63bed287089801b`. [**Strict run #40714116950**](https://github.com/etblink/math/actions/runs/40714116950) is **UNACCEPTED until completed green and exact log review**.
+
+I's five intended roots: (1) genuine original Clifford generator unit membership in the original Lipschitz closure; (2) packaging that unit as the actual `lipschitzGroup Q` subtype; (3) an equality of H's genuine original-source linear map with the accepted S1V37 rank-one source matrix; (4) determinant character equal to `-1` for this genuine generator unit; (5) source Clifford involution negates the same generator unit. The source derives `Invertible (Q a)` from the actual `Invertible (CliffordAlgebra.ι Q a)` using pinned Mathlib `invertibleOfInvertibleι`. A private source polar-row helper keeps this derivation in the statement without introducing another independent quadratic invertibility hypothesis.
+
+Until I's strict gate is green, do **not** classify its five roots as proven. Even if accepted, I would handle *only genuine generator units*. The inverse, identity and multiplication cases, full closure induction, universal even Spin determinant and SO48 target would still be separate obligations.
+
+**Qualified A–H accounting:** 2 A + 3 B + 3 C + 3 D + 3 E + 4 F + 5 G + 4 H = **27 new scoped source-exact roots**, beyond the original accepted 81-root cached ancestry. No combined 108-root cache has been sealed or claimed. I contributes zero accepted roots until its strict qualification succeeds.
 
 ## Remaining actual scientific obligation
 
@@ -120,7 +137,7 @@ K1D18D now supplies the exact bridge from the independently defined original Spi
 
 ### Updated next program: determinant character, original closure induction, and even parity
 
-The general Lipschitz conjugation action and its group laws are now **qualified in F/G**, including exact agreement with the previously accepted original Spin action. The **next** independent structural gate is H: construct genuine Lipschitz **linear equivalences**, a group homomorphism and its determinant unit character. H was published but is **not accepted** until run #40712014581 completes with fresh compiler and declaration-level axiom evidence.
+The general Lipschitz conjugation action and its group laws are **qualified in F/G**; H now **qualifies the genuine Lipschitz linear equivalence, group representation and invertible real determinant character**. The current **unaccepted** I gate targets the exact original generator sign, linking the H determinant character and Clifford involution for each actual source generator unit. Do not count I's roots until run #40714116950 completes green with source-exact compiler and axiom evidence.
 
 After H, prove a source-exact relation between determinant units and the original Clifford involution. A promising direct route is to establish an invariant connecting `LinearEquiv.det` of the true Lipschitz action to `CliffordAlgebra.involute` on the same original Clifford unit. Prove it on *actual generator units*, extend it to the entire **actual** `lipschitzGroup Q` using the pinned `Subgroup.closure_induction''` (explicitly covering generator, inverse, identity, multiplication), then apply `spinGroup.involute_eq` and source scalar embedding injectivity to derive determinant `+1` for all genuine even Spin units. **That parity invariant, closure proof, and universal Spin theorem are NOT yet proved.**
 
