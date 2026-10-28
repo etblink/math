@@ -1,6 +1,12 @@
 # BFSS K1D17 — accepted-ancestry cache qualification pilot
 
-**STATUS: PILOT NOT YET EMPIRICALLY QUALIFIED.** This is an owner research workflow experiment, **not** a new mathematical theorem or a replacement for source-exact strict qualification. Base owner checkpoint: `research/fcp-k1d17-isometry-laws-20261028@10848c058a5bf0c0f3ca7b554289089ef937ecdb`, after independent K1D17 acceptance. No change to `main` or upstream.
+**STATUS: COLD PATH SOURCE-EXACT QUALIFIED; WARM PATH UNTESTED.** This is an owner research workflow experiment, **not** a new mathematical theorem or a replacement for source-exact strict qualification. Base owner checkpoint: `research/fcp-k1d17-isometry-laws-20261028@10848c058a5bf0c0f3ca7b554289089ef937ecdb`, after independent K1D17 acceptance. No change to `main` or upstream.
+
+## Measured cold-seed checkpoint — 2026-10-28 UTC
+
+[Actions run #40652303580](https://github.com/etblink/math/actions/runs/40652303580), job `122694998133`, exact tested commit `d2cfbbc6b536d331558bef24f09d75515ddc840a`, terminal `completed/success`. The job reports a **cache miss**, then passes all original 37-module / 81-root fresh strict qualifications, prints `FCP_CACHE_PILOT_COLD_STRICT_RECEIPTS_PASS modules=37 roots=81` and `FCP_CACHE_PILOT_COLD_SEAL_PASS modules=37 roots=81`, and saves the cache with exact key `bfss-fcp-k1d17-source-accepted-ancestors-v1-389ecdcc-lean4341-d13f23b-Linux-X64`. Reported uncompressed path size: **2.5 MB**. The warm validation step was **skipped** on the cold run and is not accepted. This checkpoint adds **zero** new mathematical roots.
+
+**Prospective warm trial:** This document-only update intentionally retriggers the **same existing source-exact workflow** on its existing cache-seed branch, leaving all Lean source, acceptance verifiers, toolchain/dependency pins, key, save/restore path, and original accepted SHA untouched. Success requires a real exact-key hit, independent 81-root receipt/type/axiom verification, and a terminal green job; otherwise preserve a red cache-provenance result. Compare exact elapsed job and restoration/proof step times before claiming any acceleration. No change to main or upstream.
 
 ## Why run this pilot
 
