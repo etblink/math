@@ -45,7 +45,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18NOriginalSpinRealScalarInjectionProbe.lean")" = '9a9e6315c08f40ba7b11451d09ea6d8997db0c30'
           test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18OOriginalSpinDeterminantOneProbe.lean")" = '62dab2ca759c5a58a71cf99be914045f7e5e8ae5'
           test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18POriginalSpinQuadraticIsometryDetOneProbe.lean")" = 'ab6301da48b0a3c32e5678847203ef5c1b20779d'
-          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18QOriginalSpinSpecialOrthogonalMembershipProbe.lean")" = '8e49a25ddf776086c9142c1ecbabdac3eb16c4da'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18QOriginalSpinSpecialOrthogonalMembershipProbe.lean")" = '59afc9383e7d2b00984f939091cbb0babcbec1f6'
           test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_k1d17_cached_ancestry.py)" = 'ca97ad005f75fc270942d034772871471933c7b3'
           python3 - <<'PY'
           import pathlib,re,sys
@@ -69,13 +69,13 @@ jobs:
             ('SU2BFSSPhysicalDomainS1V52K1D18NOriginalSpinRealScalarInjectionProbe.lean',["originalSourceSpin48_lipschitzDetCharacter_real_one"]),
             ('SU2BFSSPhysicalDomainS1V52K1D18OOriginalSpinDeterminantOneProbe.lean',["originalSourceSpin48_linearEquiv_eq_lipschitz","originalSourceSpin48_linearEquiv_coe_eq_sourceLinearMap","originalSourceSpin48_originalLinearMap_det_one"]),
             ('SU2BFSSPhysicalDomainS1V52K1D18POriginalSpinQuadraticIsometryDetOneProbe.lean',["originalSourceSpin48_quadraticIsometry_linearMap_eq","originalSourceSpin48_quadraticIsometry_det_one"]),
-            ('SU2BFSSPhysicalDomainS1V52K1D18QOriginalSpinSpecialOrthogonalMembershipProbe.lean',["source48QuadraticPreservingGL","source48DetCharacter","source48SpecialOrthogonalGL","originalSourceSpin48_mem_sourceSO"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18QOriginalSpinSpecialOrthogonalMembershipProbe.lean',["source48QuadraticPreservingGL","source48DetCharacter","source48SpecialOrthogonalGL","source48QuadraticPreservingGL_mem_of_isometry","originalSourceSpin48_isometry_linearRepresentation_eq","originalSourceSpin48_mem_sourceSO"]),
           ]
           for name,roots in files:
               s=(p/name).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx|axiom)\b',code_only(s)),name
               assert re.findall(r'(?m)^#print axioms (\S+)',s)==roots,(name,'roots mismatch')
-          print('K1D18Q_EXACT_SOURCE_PINS_FIFTY_THREE_DECLARATIONS_PASS')
+          print('K1D18Q_EXACT_SOURCE_PINS_FIFTY_FIVE_DECLARATIONS_PASS')
           PY
       - name: Restore exact accepted Lean/Mathlib dependencies; no full dependency cache
         shell: bash
@@ -124,7 +124,7 @@ jobs:
             sha256sum ".lake/build/lib/lean/$p/$m.olean"
           done
           echo K1D18Q_SOURCE_EXACT_SEVENTEEN_FRESH_COMPILATIONS_PASS
-      - name: Independent source-exact fifty-three declaration type/axiom audit
+      - name: Independent source-exact fifty-five declaration type/axiom audit
         shell: bash
         timeout-minutes: 15
         run: |
@@ -186,6 +186,8 @@ jobs:
           #print axioms FCP.BFSSS1V52K1D18Q.source48QuadraticPreservingGL
           #print axioms FCP.BFSSS1V52K1D18Q.source48DetCharacter
           #print axioms FCP.BFSSS1V52K1D18Q.source48SpecialOrthogonalGL
+          #print axioms FCP.BFSSS1V52K1D18Q.source48QuadraticPreservingGL_mem_of_isometry
+          #print axioms FCP.BFSSS1V52K1D18Q.originalSourceSpin48_isometry_linearRepresentation_eq
           #print axioms FCP.BFSSS1V52K1D18Q.originalSourceSpin48_mem_sourceSO
           #check @FCP.BFSSS1V52K1D18A.source48_coordinate_sum
           #check @FCP.BFSSS1V52K1D18A.source48_normalized_polar_coordinate_dot
@@ -239,6 +241,8 @@ jobs:
           #check @FCP.BFSSS1V52K1D18Q.source48QuadraticPreservingGL
           #check @FCP.BFSSS1V52K1D18Q.source48DetCharacter
           #check @FCP.BFSSS1V52K1D18Q.source48SpecialOrthogonalGL
+          #check @FCP.BFSSS1V52K1D18Q.source48QuadraticPreservingGL_mem_of_isometry
+          #check @FCP.BFSSS1V52K1D18Q.originalSourceSpin48_isometry_linearRepresentation_eq
           #check @FCP.BFSSS1V52K1D18Q.originalSourceSpin48_mem_sourceSO
           LEAN
           lake env lean -DwarningAsError=true "$d/audit.lean" > "$d/audit.log" 2>&1 || { cat "$d/audit.log"; exit 1; }
@@ -299,6 +303,8 @@ jobs:
             'FCP.BFSSS1V52K1D18Q.source48QuadraticPreservingGL',
             'FCP.BFSSS1V52K1D18Q.source48DetCharacter',
             'FCP.BFSSS1V52K1D18Q.source48SpecialOrthogonalGL',
+            'FCP.BFSSS1V52K1D18Q.source48QuadraticPreservingGL_mem_of_isometry',
+            'FCP.BFSSS1V52K1D18Q.originalSourceSpin48_isometry_linearRepresentation_eq',
             'FCP.BFSSS1V52K1D18Q.originalSourceSpin48_mem_sourceSO',
           ]
           reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",s)
@@ -309,7 +315,7 @@ jobs:
           assert 'sorryAx' not in s
           assert not re.search(r'\.lean:\d+:\d+:\s*(?:warning|error)',s)
           for root in roots: assert root+' :' in s,('missing source-exact declaration type',root)
-          print('K1D18Q_EXACT_FIFTY_THREE_ROOT_TYPES_AXIOMS_PASS')
+          print('K1D18Q_EXACT_FIFTY_FIVE_ROOT_TYPES_AXIOMS_PASS')
           PY
       - name: Preserve compiler and independent axiom evidence
         if: always()

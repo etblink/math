@@ -46,15 +46,40 @@ noncomputable def source48DetCharacter : GL48 →* ℝˣ :=
 noncomputable def source48SpecialOrthogonalGL : Subgroup GL48 :=
   source48QuadraticPreservingGL ⊓ source48DetCharacter.ker
 
+/-- Generic source-exact bridge: the linear part of an existing
+isometry preserves the original quadratic form, by its source field. -/
+theorem source48QuadraticPreservingGL_mem_of_isometry
+    (i : Q.IsometryEquiv Q) :
+    (i : GL48) ∈ source48QuadraticPreservingGL := by
+  intro v
+  exact i.map_app v
+
+/-- Explicit same-action equality, using the accepted K1D16 source
+linear-equivalence equality, not an assumed replacement action. -/
+theorem originalSourceSpin48_isometry_linearRepresentation_eq
+    (s : spinGroup Q) :
+    (FCP.BFSSS1V52K1D16.originalSourceSpin48QuadraticIsometry s :
+       GL48) =
+      FCP.BFSSS1V52K1D13.originalSourceSpin48LinearRepresentation s := by
+  exact FCP.BFSSS1V52K1D16.originalSourceSpin48QuadraticIsometry_underlyingLinearEquiv s
+
 /-- The original Spin48 action lands in the exact source special
-orthogonal subgroup, using K1D15 and P, not an invented action. -/
+orthogonal subgroup, via the accepted isometry structure and P. -/
 theorem originalSourceSpin48_mem_sourceSO (s : spinGroup Q) :
     FCP.BFSSS1V52K1D13.originalSourceSpin48LinearRepresentation s ∈
       source48SpecialOrthogonalGL := by
+  have hIso :
+      (FCP.BFSSS1V52K1D16.originalSourceSpin48QuadraticIsometry s :
+        GL48) ∈ source48QuadraticPreservingGL :=
+    source48QuadraticPreservingGL_mem_of_isometry
+      (FCP.BFSSS1V52K1D16.originalSourceSpin48QuadraticIsometry s)
+  have hPreserving :
+      FCP.BFSSS1V52K1D13.originalSourceSpin48LinearRepresentation s ∈
+        source48QuadraticPreservingGL := by
+    rw [← originalSourceSpin48_isometry_linearRepresentation_eq s]
+    exact hIso
   constructor
-  · change ∀ v : Source48Vector,
-        Q (FCP.BFSSS1V31.sourceSpin48VectorAction s v) = Q v
-    exact FCP.BFSSS1V52K1D15.originalSourceSpin48VectorAction_preserves_sourceQuadratic s
+  · exact hPreserving
   · change source48DetCharacter
       (FCP.BFSSS1V52K1D13.originalSourceSpin48LinearEquiv s) = 1
     apply Units.ext
@@ -67,6 +92,8 @@ theorem originalSourceSpin48_mem_sourceSO (s : spinGroup Q) :
 #print axioms source48QuadraticPreservingGL
 #print axioms source48DetCharacter
 #print axioms source48SpecialOrthogonalGL
+#print axioms source48QuadraticPreservingGL_mem_of_isometry
+#print axioms originalSourceSpin48_isometry_linearRepresentation_eq
 #print axioms originalSourceSpin48_mem_sourceSO
 
 end
