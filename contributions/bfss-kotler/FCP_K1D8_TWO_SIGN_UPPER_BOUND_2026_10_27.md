@@ -1,5 +1,14 @@
 # K1D8 — original Spin(48) kernel two-sign upper bound
 
+## Independent strict acceptance — 2026-10-28 UTC
+
+**CURRENT STATUS: ACCEPTED — 55 scoped contributor modules.** [Run 40623452807](https://github.com/etblink/math/actions/runs/40623452807), job `122602691457`, attempt 1, completed `success`, tested exact SHA [`7e3cb0d2aacd96d522a945f094656638ef072a75`](https://github.com/etblink/math/commit/7e3cb0d2aacd96d522a945f094656638ef072a75). The strict compiler rebuilt the qualified ancestry through K1D7 (**55 ancestor roots**) and freshly accepted the two K1D8 roots, yielding **57/57 declaration checks**. Terminal marker `FCP_K1D8_TWO_SIGN_UPPER_BOUND_STRICT_PASS modules=1 roots=2`; axioms restricted to `propext`, `Classical.choice`, `Quot.sound`, with no Lean source warnings or errors. [Immutable run artifact 12788771596](https://github.com/etblink/math/actions/runs/40623452807/artifacts/12788771596) contains compiler, root-type and verifier evidence.
+
+**Exact scope:** every genuine original Spin48 element acting trivially on the exact source real-vector action has Clifford value `1` or `-1`. This is the **upper bound only**. The negative central Spin element's genuine membership, the lower bound and group-level kernel equality are **NOT yet qualified**. All candidate/pending wording below documents the prior unqualified state.
+
+### Archived pre-acceptance handoff
+
+
 **STATE: CANDIDATE. NO INDEPENDENT OWNER CI YET; 54 modules accepted.**
 
 Research branch: `research/fcp-k1d8-two-sign-upper-bound-20261027`. Accepted ancestor: `research/fcp-k1d7-scalar-coeff-20261027@fc7476d1a03136503fea22a1739cd6e1c00b35f1` (acceptance documentation only after source-tested `617639e3d168d913a1db22624124d8c1066b6c0e`). The accepted 54 scoped contributor modules have 55 selected strict declaration roots. K1D7 [run 40620376673](https://github.com/etblink/math/actions/runs/40620376673) passed strict compiler and axioms verification of the original scalar-injectivity and real-coefficient-square-one theorems.
