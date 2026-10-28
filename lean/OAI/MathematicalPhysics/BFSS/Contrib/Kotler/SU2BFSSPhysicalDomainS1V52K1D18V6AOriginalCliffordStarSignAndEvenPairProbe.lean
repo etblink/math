@@ -1,4 +1,5 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V5OriginalSourceUnitVectorNormalizationProbe
+import Mathlib.LinearAlgebra.CliffordAlgebra.SpinGroup
 
 /-!
 K1D18V6A — exact source Clifford star sign and even two-vector
