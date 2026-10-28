@@ -69,7 +69,7 @@ theorem originalSourceGeneratorLipschitzLinearMap_eq_rankOne
     Matrix.toLin'
       (FCP.BFSSS1V37.source48_rankOneConjugationMatrix a
         (sourceGeneratorPolarRow a)) := by
-  letI : Invertible (Q a) := invertibleOfInvertibleι Q a
+  let : Invertible (Q a) := invertibleOfInvertibleι Q a
   apply LinearMap.ext
   intro v
   change FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv
@@ -105,7 +105,7 @@ theorem originalSourceGeneratorLipschitzDeterminant_neg_one
     (a : Source48Vector) [Invertible (CliffordAlgebra.ι Q a)] :
     ((FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter
       (originalSourceGeneratorLipschitzUnit a) : ℝˣ) : ℝ) = -1 := by
-  letI : Invertible (Q a) := invertibleOfInvertibleι Q a
+  let : Invertible (Q a) := invertibleOfInvertibleι Q a
   change ((LinearEquiv.det
     (FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv
       (originalSourceGeneratorLipschitzUnit a)) : ℝˣ) : ℝ) = (-1 : ℝ)
