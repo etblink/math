@@ -40,7 +40,7 @@ theorem originalSourceGeneratorInverse_det_neg_one
 
 /-- The genuine source Clifford grade involution negates the inverse
 of an actual original invertible Clifford-generator unit. We use
-pinned `map_invOf`, `invOf_neg`, and the exact original generator
+actual unit inversion, multiplicativity of involution, and the exact original generator
 grade sign, without assuming an even Spin element. -/
 theorem originalSourceGeneratorInverse_involute_neg
     (a : Source48Vector) [Invertible (CliffordAlgebra.ι Q a)] :
@@ -48,15 +48,34 @@ theorem originalSourceGeneratorInverse_involute_neg
       ((((generator a)⁻¹ : L) : Cˣ) : C) =
       -((((generator a)⁻¹ : L) : Cˣ) : C) := by
   let u : Cˣ := (generator a : Cˣ)
-  let : Invertible (u : C) := u.invertible
-  let : Invertible (CliffordAlgebra.involute (u : C)) :=
-    Invertible.map (CliffordAlgebra.involute (Q := Q)) (u : C)
-  let : Invertible (-(u : C)) := invertibleNeg (u : C)
   have hu : CliffordAlgebra.involute (u : C) = -(u : C) :=
     FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit_involute_neg a
   change CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) =
     -((u⁻¹ : Cˣ) : C)
-  rw [← invOf_units u, map_invOf, hu, invOf_neg]
+  have hinv_mul :
+      CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) *
+        CliffordAlgebra.involute (u : C) = (1 : C) := by
+    rw [← map_mul]
+    simp
+  have hinv_neg :
+      CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) *
+        (-(u : C)) = (1 : C) := by
+    rw [← hu]
+    exact hinv_mul
+  have hinv_mul_unit :
+      CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) *
+        (u : C) = (-1 : C) := by
+    calc
+      _ = -(CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) *
+          (-(u : C))) := by simp
+      _ = -(1 : C) := by rw [hinv_neg]
+  calc
+    CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) =
+        (CliffordAlgebra.involute ((u⁻¹ : Cˣ) : C) *
+          (u : C)) * ((u⁻¹ : Cˣ) : C) := by
+            rw [mul_assoc, Units.mul_inv, mul_one]
+    _ = (-1 : C) * ((u⁻¹ : Cˣ) : C) := by rw [hinv_mul_unit]
+    _ = -((u⁻¹ : Cˣ) : C) := by simp
 
 /-- Grade sign and the genuine source Lipschitz determinant character
 AGREE on inverse generator units. This is a quantified mathematical
