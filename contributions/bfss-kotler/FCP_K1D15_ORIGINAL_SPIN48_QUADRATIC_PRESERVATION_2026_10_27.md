@@ -1,5 +1,21 @@
 # K1D15 — preservation of the exact original source Spin48 quadratic form
 
+## Gate 2 attempt 2 red — explicitly typed original scalar-equality bridge
+
+**Current research state: K1D15 UNQUALIFIED. Accepted baseline remains 61 modules / 73 declaration roots.**
+
+The unchanged research candidate at [commit `4a2a503f50f1c935dbabb6aa89119be130952508`](https://github.com/etblink/math/commit/4a2a503f50f1c935dbabb6aa89119be130952508) was tested twice in [run #40642452550](https://github.com/etblink/math/actions/runs/40642452550):
+
+- **Attempt 1 red (job `122663475696`)**: source and verifier identity checks passed, pinned Lean 4.34.1 install failed at the distribution TLS endpoint with `[35] SSL connect error`. No ancestor or new K1D15 compilation executed; no compiler artifacts existed.
+- **Attempt 2 red (job `122664837060`)**: dependency installation, verified original source pins, and **all 73 accepted ancestor declaration roots passed**. Pinned `smul_mul'` successfully eliminated the first Gate 1 unknown-name error. One exact new compiler error remained at source line 63:8: `maximum recursion depth has been reached` while comparing the local abbreviation `w := sourceSpin48VectorAction s v` with the expanded source action at the terminal `exact hscalar`. The first new scalar-conjugation root emitted only `propext`, `Classical.choice`, `Quot.sound`; the quadratic-preservation root emitted `sorryAx` due to uncompiled proof and **is rejected**. Preserve original immutable artifact [#12796208390](https://github.com/etblink/math/actions/runs/40642452550/artifacts/12796208390), original compiler output and job logs.
+
+**Next candidate Gate 3, still unaccepted:** Refactor only the proof's terminal scalar-injectivity bridge to an explicitly typed intermediate `have hquad : Q w = Q v := by ...` and then `simpa only [w] using hquad`. This isolates `originalSourceClifford_algebraMap_injective` against syntactically matching original-source quadratic terms, and only afterward unfolds the *named local abbreviation*, without unfolding or replacing the source action. Both theorem statements and all original source definitions remain byte-identical. No increase to `maxRecDepth`, weakened warnings, stronger axioms, fake scalar map, or altered quadratic form.
+
+Candidate source Git blob `43d0e626fb4180b78cda93744fd94ca8343189a6`; strict verifier Git blob `b214934433b196dcab632fbb8becd02c8f61e111`. The workflow must requalify 73 independently accepted roots and freshly compile both candidate roots with warning-as-error and exact declaration-level axiom reports, preserving success and failure logs. A new red is data; only a completed green at an exact tested SHA qualifies K1D15. The SO(48) image, determinant, covering, global Spin9, and BFSS spectral claims remain separate obligations.
+
+### Archived earlier Gate 1 and Gate 2 proposal
+
+
 ## Gate 1 red, pinned Mathlib diagnosis, and Gate 2 research repair — 2026-10-28 UTC
 
 **CURRENT STATUS: CANDIDATE — NO K1D15 ACCEPTANCE.** [Owner strict run #40640757502](https://github.com/etblink/math/actions/runs/40640757502), job `122658082345`, tested exact SHA [`1a77ca7b4a859bbb455e2d5df90534f4433eacec`](https://github.com/etblink/math/commit/1a77ca7b4a859bbb455e2d5df90534f4433eacec), concluded `completed/failure`. All **73 previously accepted ancestry declarations recompiled successfully** after exact hash and pinned Lean/Mathlib restore. New module failed the compiler at **line 53:15** (`Unknown identifier smul_mul`) and **line 62:8** (`maximum recursion depth has been reached`). The scalar Clifford conjugation fixedness theorem printed only `propext`, `Classical.choice`, `Quot.sound`; the source quadratic preservation theorem emitted `sorryAx` due to failed elaboration and is NOT accepted. The red evidence artifact [#12795399111](https://github.com/etblink/math/actions/runs/40640757502/artifacts/12795399111) and full job logs are immutable negative knowledge.

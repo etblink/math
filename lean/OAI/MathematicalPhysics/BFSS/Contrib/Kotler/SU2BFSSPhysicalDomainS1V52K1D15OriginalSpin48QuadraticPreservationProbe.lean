@@ -59,8 +59,10 @@ theorem originalSourceSpin48VectorAction_preserves_sourceQuadratic
         change (s : C) * algebraMap ℝ C (Q v) * star (s : C) =
           algebraMap ℝ C (Q v)
         exact originalSourceSpin48_scalar_conjugation_fixed s (Q v)
-  apply FCP.BFSSS1V52K1D7.originalSourceClifford_algebraMap_injective
-  exact hscalar
+  have hquad : Q w = Q v := by
+    apply FCP.BFSSS1V52K1D7.originalSourceClifford_algebraMap_injective
+    exact hscalar
+  simpa only [w] using hquad
 
 #print axioms originalSourceSpin48_scalar_conjugation_fixed
 #print axioms originalSourceSpin48VectorAction_preserves_sourceQuadratic
