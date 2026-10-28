@@ -22,14 +22,21 @@ open FCP.BFSSS1V0
 
 private abbrev Q : QuadraticForm ℝ Source48Vector := source48Quadratic
 
+/-- Keep weighted-sum-squares elaboration on a generic finite index
+type; only specialize the already typed statement to the exact
+48 original source labels in the public theorem below. -/
+private theorem weightedSumSquares_one_apply
+    {ι : Type*} [Fintype ι] (a : ι → ℝ) :
+    (QuadraticMap.weightedSumSquares ℝ
+      (fun _ : ι => (1 : ℝ))) a =
+      ∑ j : ι, a j * a j := by
+  simp only [QuadraticMap.weightedSumSquares_apply, one_smul]
+
 /-- Exactly the original unit-weight source quadratic value is the
 sum of all 48 original coordinate squares. -/
 theorem source48Quadratic_eq_sum_mul_self (a : Source48Vector) :
     Q a = ∑ j : Source48Label, a j * a j := by
-  change (QuadraticMap.weightedSumSquares ℝ
-    (fun _ : Source48Label => (1 : ℝ))) a =
-      ∑ j : Source48Label, a j * a j
-  simp only [QuadraticMap.weightedSumSquares_apply, one_smul]
+  exact weightedSumSquares_one_apply (ι := Source48Label) a
 
 /-- The true original real quadratic source is nonnegative on all
 48-coordinate input vectors. -/
@@ -44,10 +51,10 @@ theorem source48Quadratic_pos_of_ne_zero (a : Source48Vector)
     (ha : a ≠ 0) : 0 < Q a := by
   obtain ⟨j, hj⟩ : ∃ j : Source48Label, a j ≠ 0 := by
     by_contra h
-    push_neg at h
     apply ha
     funext j
-    exact h j
+    by_contra hj
+    exact h ⟨j, hj⟩
   rw [source48Quadratic_eq_sum_mul_self]
   exact Finset.sum_pos'
     (fun k _ => mul_self_nonneg (a k))
