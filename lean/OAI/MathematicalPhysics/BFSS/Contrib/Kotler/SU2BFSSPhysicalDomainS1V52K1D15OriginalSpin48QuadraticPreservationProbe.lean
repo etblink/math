@@ -50,7 +50,7 @@ theorem originalSourceSpin48VectorAction_preserves_sourceQuadratic
         simp only [w, FCP.BFSSS1V31.sourceSpin48VectorAction_clifford_generator]
       _ = ConjAct.toConjAct (spinGroup.toUnits s) •
           (CliffordAlgebra.ι Q v * CliffordAlgebra.ι Q v) := by
-        exact (smul_mul (ConjAct.toConjAct (spinGroup.toUnits s))
+        exact (smul_mul' (ConjAct.toConjAct (spinGroup.toUnits s))
           (CliffordAlgebra.ι Q v) (CliffordAlgebra.ι Q v)).symm
       _ = ConjAct.toConjAct (spinGroup.toUnits s) •
           algebraMap ℝ C (Q v) := by
@@ -59,8 +59,8 @@ theorem originalSourceSpin48VectorAction_preserves_sourceQuadratic
         change (s : C) * algebraMap ℝ C (Q v) * star (s : C) =
           algebraMap ℝ C (Q v)
         exact originalSourceSpin48_scalar_conjugation_fixed s (Q v)
-  exact FCP.BFSSS1V52K1D7.originalSourceClifford_algebraMap_injective
-    (Q w) (Q v) hscalar
+  apply FCP.BFSSS1V52K1D7.originalSourceClifford_algebraMap_injective
+  exact hscalar
 
 #print axioms originalSourceSpin48_scalar_conjugation_fixed
 #print axioms originalSourceSpin48VectorAction_preserves_sourceQuadratic

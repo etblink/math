@@ -1,5 +1,18 @@
 # K1D15 — preservation of the exact original source Spin48 quadratic form
 
+## Gate 1 red, pinned Mathlib diagnosis, and Gate 2 research repair — 2026-10-28 UTC
+
+**CURRENT STATUS: CANDIDATE — NO K1D15 ACCEPTANCE.** [Owner strict run #40640757502](https://github.com/etblink/math/actions/runs/40640757502), job `122658082345`, tested exact SHA [`1a77ca7b4a859bbb455e2d5df90534f4433eacec`](https://github.com/etblink/math/commit/1a77ca7b4a859bbb455e2d5df90534f4433eacec), concluded `completed/failure`. All **73 previously accepted ancestry declarations recompiled successfully** after exact hash and pinned Lean/Mathlib restore. New module failed the compiler at **line 53:15** (`Unknown identifier smul_mul`) and **line 62:8** (`maximum recursion depth has been reached`). The scalar Clifford conjugation fixedness theorem printed only `propext`, `Classical.choice`, `Quot.sound`; the source quadratic preservation theorem emitted `sorryAx` due to failed elaboration and is NOT accepted. The red evidence artifact [#12795399111](https://github.com/etblink/math/actions/runs/40640757502/artifacts/12795399111) and full job logs are immutable negative knowledge.
+
+**Pinned-source diagnosis:** Mathlib `Mathlib/Algebra/Group/Action/Defs.lean` at exact pinned dependency SHA `d13f23b723b8a846827a245b89c10fc7d3f11612` exports the multiplicative-distributive action lemma as `smul_mul'` (primed). The `ConjAct` action of Clifford units has `MulDistribMulAction`; no unproved algebra-map or pseudo-action is needed.
+
+**Gate 2 candidate repair, not yet qualified:** Replace only `smul_mul` with the pinned `smul_mul'`, and reformulate the *last step* as a tactic-level `apply FCP.BFSSS1V52K1D7.originalSourceClifford_algebraMap_injective` followed by `exact hscalar`, so the accepted exact real scalar injectivity theorem can infer its inputs from the target without first elaborating a very large application. New Lean Git blob `d58f9de2ca5d104940cf887376caeb96acd03b0f`; new strict verifier blob `e725a348b6535f48462c251b6c829aba56f2759b`. **The two theorem statements and exact original source quadratic form are unchanged**, all accepted source identities and allowed axioms remain pinned, and the proof has no new assumptions or increased recursion limits.
+
+**Fail closed:** Fresh independent strict CI must repeat all 73 accepted roots and check both new K1D15 roots before any increase above the current **61 modules / 73 selected roots**. If the recursion failure remains, preserve the new compiler trace and move to a more explicit type bridge; do not disguise it with a `sorry`, postulate, or changed statement. Quadratic preservation, SO48, surjectivity, covering, global Spin9 and BFSS spectra remain unaccepted.
+
+### Archived original charter
+
+
 **STATUS: RESEARCH CANDIDATE; NOT STRICT QUALIFIED.** Owner research branch `research/fcp-k1d15-source-quadratic-20261027`, created as a single-commit descendant of the qualified owner `research/fcp-k1d14-gl-kernel-20261027@b29f97c5c499924a3d8674e38042570efd1b0756` acceptance checkpoint.
 
 ## Accepted proof ancestry and scope
