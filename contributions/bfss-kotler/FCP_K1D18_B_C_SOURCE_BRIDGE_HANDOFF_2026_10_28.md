@@ -151,17 +151,30 @@ Qualified J roots in `FCP.BFSSS1V52K1D18J`:
 
 **Accounting:** 81 older accepted source-cache roots, plus 2 A + 3 B + 3 C + 3 D + 3 E + 4 F + 5 G + 4 H + 5 I + 3 J = **35 qualified new A–J roots**. The old cache was **not** resealed as a 116-root cache. A universal Lipschitz determinant/grade identity, universal Spin determinant `+1`, SO48 packaging, covering, global Spin9 and spectral existence remain **unproved**.
 
-## K1D18K candidate — exact identity and multiplication stability of the real Lipschitz grade/determinant invariant
+## K1D18K accepted — exact source Lipschitz grade/determinant stability
 
-**Published but not accepted:** source module `SU2BFSSPhysicalDomainS1V52K1D18KOriginalLipschitzGradeDetIdentityAndMulProbe.lean`, blob `81067e786cac0fbb65b936b6013d028dc3e73fed`, and exact source-pinned strict workflow `bfss-kotler-k1d18k-grade-det-stability-strict.yml`, blob `32e7bb081198f01e24fda7714acf47e77d01dfd3`. Both were atomically published on the existing cache-qualified research branch at `8749132388958624a370c4c04dde43d98398b579`. [**Strict run #40730252400**](https://github.com/etblink/math/actions/runs/40730252400) remains unaccepted until terminal `completed/success` and verification of compiler and axiom receipts.
+[**Green run #40730252400**](https://github.com/etblink/math/actions/runs/40730252400), job `122964308698`, tested `8749132388958624a370c4c04dde43d98398b579`, terminal `completed/success` on 2026-10-28. Source blob `81067e786cac0fbb65b936b6013d028dc3e73fed`, strict workflow blob `32e7bb081198f01e24fda7714acf47e77d01dfd3`, same atomic source/workflow commit.
 
-The candidate defines the exact invariant **on actual source Lipschitz elements**, `CliffordAlgebra.involute (↑u) = (((χ u : ℝˣ):ℝ)) • ↑u` for the accepted K1D18H genuine determinant unit character `χ`. Five targeted root declarations: definition; identity; genuine original generator case (from I); original inverse-generator case (from J); and multiplication preservation (by the fact that grade involution and the source determinant-unit character are multiplicative).
+Strict evidence: exact source pins (`K1D18K_EXACT_SOURCE_PINS_FORTY_DECLARATIONS_PASS`), source-exact revalidation of the original 37-module/81-root accepted ancestry (`FCP_CACHE_PILOT_WARM_REVALIDATION_PASS modules=37 roots=81`), fresh Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` warning-as-error compilation of A–K (`K1D18K_SOURCE_EXACT_ELEVEN_FRESH_COMPILATIONS_PASS`), and independent declaration type/axiom audit of all 40 A–K roots (`K1D18K_EXACT_FORTY_ROOT_TYPES_AXIOMS_PASS`). Only `propext`, `Classical.choice`, and `Quot.sound` permitted; no `sorryAx` or additional axioms.
 
-Gate checks: exact Lean 4.34.1 / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, original A–K source pins, the same separately audited immutable 81-root ancestor cache, fresh A–K warning-as-error compilation, and independent forty-root declaration type and axiom checks; no changed cache, compiler limits, extra axioms, finite-word hypotheses, or replacement source geometry.
+Five **newly accepted K roots** in `FCP.BFSSS1V52K1D18K`:
+1. `originalSourceLipschitzGradeDetInvariant`: exactly `CliffordAlgebra.involute (↑u) = (((χ u : ℝˣ) : ℝ)) • ↑u` for the genuine accepted H original source Lipschitz determinant-character `χ`. Definition only, not universal validity.
+2. `originalSourceLipschitzGradeDetInvariant_one`: identity case.
+3. `originalSourceLipschitzGradeDetInvariant_generator`: actual original invertible Clifford-generator case using I.
+4. `originalSourceLipschitzGradeDetInvariant_generator_inv`: actual inverse-generator case using J.
+5. `originalSourceLipschitzGradeDetInvariant_mul`: multiplication stability on actual source Lipschitz elements satisfying the invariant.
 
-**Do not count K until terminal green and log inspection.** K alone would qualify stability at identity, generators, inverse generators and products; it would not assert the invariant for the **whole** Lipschitz subgroup. A separate K1D18L `Subgroup.closure_induction''` candidate and workflow have been drafted as **unpublished Git blobs only** and must not be promoted unless K qualifies first. After a qualified all-closure theorem, a further explicit Spin parity/cancellation and determinant bridge is required before claiming unconditional Spin(48) orientation.
+**Scientific boundary:** these are four separately qualified induction cases, not yet the theorem for the whole subgroup. Do not infer an unconditional Spin orientation result merely from K.
 
-**Current accepted accounting:** 35 scoped K1D18A–J roots beyond the original 81 ancestor roots; K currently contributes zero accepted roots.
+## K1D18L candidate — actual original Lipschitz subgroup closure induction
+
+The exact source `SU2BFSSPhysicalDomainS1V52K1D18LOriginalLipschitzClosureGradeDetProbe.lean`, Git blob `db0488de5c74681f098ef1762af030d60431d628`, and strict workflow `bfss-kotler-k1d18l-closure-grade-det-strict.yml`, blob `59d3229d9c08b803a4683b323db4aa1b5f12ff66`, were atomically published on the **same research branch** at `f5bd29044c3b7f051cbb9b5e9c7c68cbd0a6eca9`. [**Gate #40732641941**](https://github.com/etblink/math/actions/runs/40732641941) is **unaccepted until terminal success and exact compiler/axiom review**.
+
+L attempts `originalSourceLipschitzGradeDetInvariant_all (s : lipschitzGroup Q)` by the **actual pinned Mathlib `Subgroup.closure_induction''`**, with source-exact conversion of actual generating Clifford units to I's unit subtype, and K's accepted generator, inverse, identity and multiplication cases. L explicitly does **not** assume a generator-word factorization for arbitrary Spin elements or replace the original 48-real source module/group. It does **not** prove full Spin48 determinant sign, SO48, covering, global Spin9 or BFSS spectral existence.
+
+Strict workflow requires fresh A–L compilation, exact existing immutable 81-root accepted ancestry cache revalidation, and independent **41-root** declaration type/axiom audit. No extra axioms, Lean limits, cache rebuilding, main-branch merge or upstream PR are authorized.
+
+**Accounting at this checkpoint:** 40 newly accepted A–K roots beyond the immutable original 81-root cache; L is 0 accepted until its independent gate qualifies. No combined 121-root cache claimed.
 
 ## Remaining actual scientific obligation
 
@@ -172,7 +185,7 @@ K1D18D now supplies the exact bridge from the independently defined original Spi
 
 ### Updated next program: determinant character, original closure induction, and even parity
 
-The general Lipschitz conjugation action and its group laws are **qualified in F/G**; H now **qualifies the genuine Lipschitz linear equivalence, group representation and invertible real determinant character**. I is now **accepted** for the original generator case and links the H determinant character and the Clifford grade involution for actual original generator units: both have sign `-1`. Five I roots are qualified at green #40715643807. Red #40714116950 remains recorded as a strict-linter issue. J now also qualifies the inverse of genuine generators, but the next unproved obligations remain the identity/multiplication cases, actual Lipschitz subgroup closure, and restriction to even Spin.
+The general Lipschitz conjugation action and its group laws are **qualified in F/G**; H now **qualifies the genuine Lipschitz linear equivalence, group representation and invertible real determinant character**. I is now **accepted** for the original generator case and links the H determinant character and the Clifford grade involution for actual original generator units: both have sign `-1`. Five I roots are qualified at green #40715643807. Red #40714116950 remains recorded as a strict-linter issue. J qualifies the inverse-generator case; K additionally qualifies the identity and multiplication cases. The next unproved obligations are the full actual Lipschitz subgroup closure (L is pending) and restriction to even Spin.
 
 After H, prove a source-exact relation between determinant units and the original Clifford involution. A promising direct route is to establish an invariant connecting `LinearEquiv.det` of the true Lipschitz action to `CliffordAlgebra.involute` on the same original Clifford unit. Prove it on *actual generator units*, extend it to the entire **actual** `lipschitzGroup Q` using the pinned `Subgroup.closure_induction''` (explicitly covering generator, inverse, identity, multiplication), then apply `spinGroup.involute_eq` and source scalar embedding injectivity to derive determinant `+1` for all genuine even Spin units. **That parity invariant, closure proof, and universal Spin theorem are NOT yet proved.**
 
