@@ -87,7 +87,7 @@ theorem originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization
     LinearMap.det (FCP.BFSSS1V52K1D13.originalSourceSpin48LinearMap s) =
       (1 : ℝ) := by
   rw [originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization
-    s a b hfactor, Matrix.det_toLin']
+    s a b hfactor, LinearMap.det_toLin']
   exact originalSourceTwoGeneratorMatrices_det_one a b
 
 #print axioms originalSourceTwoGeneratorMatrices_det_one
