@@ -26,6 +26,7 @@ set_option autoImplicit false
 namespace FCP.BFSSS1V52K1D18V7A
 noncomputable section
 open FCP.BFSSS1V0
+open Matrix
 
 private abbrev Q : QuadraticForm ℝ Source48Vector := source48Quadratic
 private abbrev GL48 := Source48Vector ≃ₗ[ℝ] Source48Vector
@@ -81,7 +82,7 @@ source SO unit-pair matrix elements lie in the genuine Spin image.
 The missing converse is precisely the global generation problem. -/
 theorem sourceSOUnitPairMatrixClosure_le_sourceSpinImage :
     Subgroup.closure sourceSOUnitPairMatrixSet ≤ sourceSOHom.range := by
-  apply Subgroup.closure_le.mpr
+  rw [Subgroup.closure_le]
   exact sourceSOUnitPairMatrixSet_subset_sourceSpinImage
 
 /-- A clear, explicitly conditional image-surjectivity criterion.
