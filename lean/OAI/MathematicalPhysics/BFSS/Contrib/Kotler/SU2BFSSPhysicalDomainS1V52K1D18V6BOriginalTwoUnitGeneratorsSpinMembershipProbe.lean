@@ -47,11 +47,13 @@ Not a generating theorem for arbitrary Spin or surjectivity to SO48. -/
 theorem source48_twoUnitGenerators_mem_spin
     (u v : Source48Vector) (hu : Q u = 1) (hv : Q v = 1) :
     CliffordAlgebra.ι Q u * CliffordAlgebra.ι Q v ∈ spinGroup Q := by
-  letI : Invertible (Q u) := by rw [hu]; infer_instance
-  letI : Invertible (Q v) := by rw [hv]; infer_instance
-  letI : Invertible (CliffordAlgebra.ι Q u) :=
+  have hqu : Q u ≠ 0 := by rw [hu]; exact one_ne_zero
+  have hqv : Q v ≠ 0 := by rw [hv]; exact one_ne_zero
+  let : Invertible (Q u) := invertibleOfNonzero hqu
+  let : Invertible (Q v) := invertibleOfNonzero hqv
+  let : Invertible (CliffordAlgebra.ι Q u) :=
     CliffordAlgebra.invertibleιOfInvertible Q u
-  letI : Invertible (CliffordAlgebra.ι Q v) :=
+  let : Invertible (CliffordAlgebra.ι Q v) :=
     CliffordAlgebra.invertibleιOfInvertible Q v
   let x : (CliffordAlgebra Q)ˣ :=
     unitOfInvertible (CliffordAlgebra.ι Q u) *
