@@ -48,17 +48,14 @@ theorem originalSourceUnitPairSpin_toUnits
 Spin pair is EXACTLY the product of the two accepted source-rank-one
 Clifford conjugation matrices, in the original label basis. -/
 theorem originalSourceUnitPairSpin_action
-    (u v w : Source48Vector) (hu : Q u = 1) (hv : Q v = 1) :
+    (u v w : Source48Vector) (hu : Q u = 1) (hv : Q v = 1)
+    [Invertible (Q u)] [Invertible (Q v)] :
     FCP.BFSSS1V52K1D16.originalSourceSpin48QuadraticIsometry
       (originalSourceUnitPairSpin u v hu hv) w =
       FCP.BFSSS1V37.source48_rankOneConjugationMatrix u
         (FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow u) *ᵥ
       (FCP.BFSSS1V37.source48_rankOneConjugationMatrix v
         (FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow v) *ᵥ w) := by
-  have hqu : Q u ≠ 0 := by rw [hu]; exact one_ne_zero
-  have hqv : Q v ≠ 0 := by rw [hv]; exact one_ne_zero
-  let : Invertible (Q u) := invertibleOfNonzero hqu
-  let : Invertible (Q v) := invertibleOfNonzero hqv
   let : Invertible (CliffordAlgebra.ι Q u) :=
     CliffordAlgebra.invertibleιOfInvertible Q u
   let : Invertible (CliffordAlgebra.ι Q v) :=
