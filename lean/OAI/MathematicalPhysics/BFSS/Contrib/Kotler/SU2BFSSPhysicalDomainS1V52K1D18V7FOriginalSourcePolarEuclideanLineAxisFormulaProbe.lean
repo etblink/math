@@ -73,7 +73,7 @@ theorem originalSourceUnitRankOne_euclidean_action
   have hinv : ⅟(Q u) = (1 : ℝ) := by
     calc
       ⅟(Q u) = ⅟(Q u) * Q u := by simp only [hu, mul_one]
-      _ = 1 := invOf_mul_self
+      _ = 1 := invOf_mul_self (Q u)
   change E (FCP.BFSSS1V37.source48_rankOneConjugationMatrix u
     (FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow u) *ᵥ w) = _
   rw [FCP.BFSSS1V52K1D18C.source48_rankOneConjugationMatrix_mulVec,
