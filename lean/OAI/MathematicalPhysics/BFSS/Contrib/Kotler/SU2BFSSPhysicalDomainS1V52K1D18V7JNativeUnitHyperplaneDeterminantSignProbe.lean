@@ -55,9 +55,20 @@ orientation assumption. -/
 theorem euclideanUnitHyperplane_reflection_det_neg_one
     (u : Euc48) (hu : ‖u‖ = 1) :
     LinearMap.det ((ℝ ∙ u)ᗮ.reflection.toLinearMap) = (-1 : ℝ) := by
+  have hline : (ℝ ∙ u : Submodule ℝ Euc48)ᗮᗮ =
+      (ℝ ∙ u : Submodule ℝ Euc48) :=
+    Submodule.orthogonal_orthogonal
+  have hdim : Module.finrank ℝ ((ℝ ∙ u)ᗮᗮ) = 1 := by
+    calc
+      Module.finrank ℝ ((ℝ ∙ u)ᗮᗮ) =
+          Module.finrank ℝ (ℝ ∙ u) :=
+        congrArg (fun K : Submodule ℝ Euc48 => Module.finrank ℝ K) hline
+      _ = 1 := euclideanUnitLine_finrank_one u hu
   have hd := Submodule.det_reflection ((ℝ ∙ u)ᗮ)
-  simpa only [Submodule.orthogonal_orthogonal,
-    euclideanUnitLine_finrank_one u hu, pow_one] using hd
+  calc
+    LinearMap.det ((ℝ ∙ u)ᗮ.reflection.toLinearMap) =
+        (-1 : ℝ) ^ Module.finrank ℝ ((ℝ ∙ u)ᗮᗮ) := hd
+    _ = (-1 : ℝ) := by rw [hdim, pow_one]
 
 #print axioms euclideanUnitNormal_ne_zero
 #print axioms euclideanUnitLine_finrank_one
