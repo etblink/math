@@ -57,7 +57,7 @@ theorem euclideanUnitHyperplane_reflection_det_neg_one
     LinearMap.det ((ℝ ∙ u)ᗮ.reflection.toLinearMap) = (-1 : ℝ) := by
   have hline : (ℝ ∙ u : Submodule ℝ Euc48)ᗮᗮ =
       (ℝ ∙ u : Submodule ℝ Euc48) :=
-    Submodule.orthogonal_orthogonal
+    Submodule.orthogonal_orthogonal (ℝ ∙ u : Submodule ℝ Euc48)
   have hdim : Module.finrank ℝ ((ℝ ∙ u)ᗮᗮ) = 1 := by
     calc
       Module.finrank ℝ ((ℝ ∙ u)ᗮᗮ) =
