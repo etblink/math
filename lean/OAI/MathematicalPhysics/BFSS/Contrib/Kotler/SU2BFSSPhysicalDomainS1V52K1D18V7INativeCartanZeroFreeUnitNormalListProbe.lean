@@ -36,7 +36,7 @@ normal without reordering the Cartan reflection factors. -/
 noncomputable def sourceEuclideanUnitNormals : List Euc48 → List Euc48
   | [] => []
   | u :: tail =>
-    if h : u = 0 then sourceEuclideanUnitNormals tail
+    if _h : u = 0 then sourceEuclideanUnitNormals tail
     else FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal u ::
       sourceEuclideanUnitNormals tail
 
@@ -69,9 +69,9 @@ theorem sourceEuclideanUnitNormals_length_le (l : List Euc48) :
       simp [sourceEuclideanUnitNormals]
   | cons u tail ih =>
       by_cases hu : u = 0
-      · simp only [sourceEuclideanUnitNormals, dif_pos hu, List.length_cons]
+      · simp only [sourceEuclideanUnitNormals, dite_eq_left hu, List.length_cons]
         exact ih.trans (Nat.le_succ _)
-      · simp only [sourceEuclideanUnitNormals, dif_neg hu, List.length_cons]
+      · simp only [sourceEuclideanUnitNormals, dite_eq_right hu, List.length_cons]
         exact Nat.succ_le_succ ih
 
 /-- The ENTIRE ordered native hyperplane-reflection product is
@@ -86,11 +86,11 @@ theorem sourceEuclideanUnitNormals_reflectionProduct_eq (l : List Euc48) :
       by_cases hu : u = 0
       · subst u
         simp only [List.map_cons, List.prod_cons,
-          sourceEuclideanUnitNormals, dif_pos rfl]
+          sourceEuclideanUnitNormals]
         rw [FCP.BFSSS1V52K1D18V7H.euclideanHyperplaneReflection_zero, one_mul]
         exact ih
       · simp only [List.map_cons, List.prod_cons,
-          sourceEuclideanUnitNormals, dif_neg hu]
+          sourceEuclideanUnitNormals, dite_eq_right hu]
         rw [FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_reflection_eq u hu, ih]
 
 /-- Original source SAME-LABEL Euclidean transport of a Cartan
