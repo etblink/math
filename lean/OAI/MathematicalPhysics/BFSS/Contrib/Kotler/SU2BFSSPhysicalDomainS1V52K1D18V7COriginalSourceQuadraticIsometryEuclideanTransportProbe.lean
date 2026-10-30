@@ -44,6 +44,23 @@ theorem originalSource48ToEuclidean_norm_sq_eq_Q (a : Source48Vector) :
   rw [originalSource48ToEuclidean_apply]
   exact (FCP.BFSSS1V52K1D18V7B.source48Quadratic_eq_euclidean_norm_sq a).symm
 
+/-- A generic norm-transport lemma over an ABSTRACT real quadratic
+form, proved without ever reducing an original 48-coordinate form.
+The accepted V7B Q/L2 equality will supply this premise later. -/
+theorem quadraticIsometry_norm_map_of_linearEquiv_norm_sq
+    {V W : Type*} [AddCommGroup V] [Module ℝ V]
+    [NormedAddCommGroup W] [Module ℝ W]
+    (q : QuadraticForm ℝ V) (e : V ≃ₗ[ℝ] W)
+    (hsq : ∀ x : V, ‖e x‖ ^ 2 = q x)
+    (i : q.IsometryEquiv q) (v : W) :
+    ‖e (i (e.symm v))‖ = ‖v‖ := by
+  have hq : q (i (e.symm v)) = q (e.symm v) := i.map_app' (e.symm v)
+  have hleft : ‖e (i (e.symm v))‖ ^ 2 = q (i (e.symm v)) :=
+    hsq (i (e.symm v))
+  have hright : ‖v‖ ^ 2 = q (e.symm v) := by
+    simpa only [e.apply_symm_apply] using hsq (e.symm v)
+  nlinarith [norm_nonneg (e (i (e.symm v))), norm_nonneg v]
+
 /-- Conjugation of an arbitrary accepted original quadratic-form
 isometry by the exact coordinate-to-L2 linear equivalence. -/
 noncomputable def originalSourceQIsometry_toEuclideanLinearEquiv
@@ -56,26 +73,11 @@ the actual original Q-preserving map and V7B's equality. -/
 theorem originalSourceQIsometry_toEuclidean_norm_map
     (i : Q.IsometryEquiv Q) (v : Euc48) :
     ‖originalSourceQIsometry_toEuclideanLinearEquiv i v‖ = ‖v‖ := by
-  let x : Source48Vector := originalSource48ToEuclidean.symm v
-  have htransport :
-      originalSourceQIsometry_toEuclideanLinearEquiv i v =
-        originalSource48ToEuclidean (i x) := by
-    rfl
-  have hx : originalSource48ToEuclidean x = v :=
-    originalSource48ToEuclidean.apply_symm_apply v
-  have hQ : Q (i x) = Q x := i.map_app' x
-  have hnormsq :
-      ‖originalSource48ToEuclidean (i x)‖ ^ 2 =
-        ‖originalSource48ToEuclidean x‖ ^ 2 := by
-    calc
-      ‖originalSource48ToEuclidean (i x)‖ ^ 2 = Q (i x) :=
-        originalSource48ToEuclidean_norm_sq_eq_Q (i x)
-      _ = Q x := hQ
-      _ = ‖originalSource48ToEuclidean x‖ ^ 2 :=
-        (originalSource48ToEuclidean_norm_sq_eq_Q x).symm
-  rw [htransport, ← hx]
-  nlinarith [norm_nonneg (originalSource48ToEuclidean (i x)),
-    norm_nonneg (originalSource48ToEuclidean x)]
+  change ‖originalSource48ToEuclidean
+    (i (originalSource48ToEuclidean.symm v))‖ = ‖v‖
+  exact quadraticIsometry_norm_map_of_linearEquiv_norm_sq
+    Q originalSource48ToEuclidean
+    originalSource48ToEuclidean_norm_sq_eq_Q i v
 
 /-- Actual source-Q isometry transported to a TRUE Mathlib
 Euclidean LinearIsometryEquiv. This is only a typed bridge,
@@ -89,6 +91,7 @@ noncomputable def originalSourceQIsometry_toEuclideanIsometry
 #print axioms originalSource48ToEuclidean_apply
 #print axioms originalSource48ToEuclidean_norm_sq_eq_Q
 #print axioms originalSourceQIsometry_toEuclideanLinearEquiv
+#print axioms quadraticIsometry_norm_map_of_linearEquiv_norm_sq
 #print axioms originalSourceQIsometry_toEuclidean_norm_map
 #print axioms originalSourceQIsometry_toEuclideanIsometry
 

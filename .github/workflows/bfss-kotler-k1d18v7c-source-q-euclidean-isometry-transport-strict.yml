@@ -61,7 +61,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V6DOriginalUnitPairMatrixWitnessProbe.lean")" = '61aa37a6970d78ab9e6692fc2621c03a2645f599'
           test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7AOriginalSourceSOImageGenerationBoundaryProbe.lean")" = '53b90c8ddf1b0e2bb195bec98070f6ae8045d37f'
           test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7BOriginalSourceEuclideanNormAndCartanBoundaryProbe.lean")" = 'f215d7339de6bed96cb07d378d849ef64b54f386'
-          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe.lean")" = 'b615f1fd0b774f4529aa018e8b50e598a3f3bdb6'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe.lean")" = '168e5ddb49ad1d896390c2c16aca5daf59e2b503'
           test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_k1d17_cached_ancestry.py)" = 'ca97ad005f75fc270942d034772871471933c7b3'
           python3 - <<'PY'
           import pathlib,re,sys
@@ -100,13 +100,13 @@ jobs:
             ('SU2BFSSPhysicalDomainS1V52K1D18V6DOriginalUnitPairMatrixWitnessProbe.lean',["originalSourceUnitRankOneMatrix","originalSourceUnitPairSpin_action_no_instance_premises","originalSourceUnitPairMatrices_det_one"]),
             ('SU2BFSSPhysicalDomainS1V52K1D18V7AOriginalSourceSOImageGenerationBoundaryProbe.lean',["sourceSOUnitPairMatrixSet","originalSourceSpinPairSO_image_matrix_action","sourceSOUnitPairMatrixSet_subset_sourceSpinImage","sourceSOUnitPairMatrixClosure_le_sourceSpinImage","sourceSpinSO_surjective_of_unitPairMatrixGeneration"]),
             ('SU2BFSSPhysicalDomainS1V52K1D18V7BOriginalSourceEuclideanNormAndCartanBoundaryProbe.lean',["weightedSumSquares_one_eq_euclidean_norm_sq","source48Quadratic_eq_euclidean_norm_sq","source48Euclidean_reflections_generate_dim","source48Euclidean_reflections_generate"]),
-            ('SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe.lean',["originalSource48ToEuclidean","originalSource48ToEuclidean_apply","originalSource48ToEuclidean_norm_sq_eq_Q","originalSourceQIsometry_toEuclideanLinearEquiv","originalSourceQIsometry_toEuclidean_norm_map","originalSourceQIsometry_toEuclideanIsometry"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe.lean',["originalSource48ToEuclidean","originalSource48ToEuclidean_apply","originalSource48ToEuclidean_norm_sq_eq_Q","originalSourceQIsometry_toEuclideanLinearEquiv","quadraticIsometry_norm_map_of_linearEquiv_norm_sq","originalSourceQIsometry_toEuclidean_norm_map","originalSourceQIsometry_toEuclideanIsometry"]),
           ]
           for name,roots in files:
               s=(p/name).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx|axiom)\b',code_only(s)),name
               assert re.findall(r'(?m)^#print axioms (\S+)',s)==roots,(name,'roots mismatch')
-          print('K1D18V7C_EXACT_SOURCE_PINS_ONE_HUNDRED_THREE_DECLARATIONS_PASS')
+          print('K1D18V7C_EXACT_SOURCE_PINS_ONE_HUNDRED_FOUR_DECLARATIONS_PASS')
           PY
       - name: Restore exact accepted Lean/Mathlib dependencies; no full dependency cache
         shell: bash
@@ -155,7 +155,7 @@ jobs:
             sha256sum ".lake/build/lib/lean/$p/$m.olean"
           done
           echo K1D18V7C_SOURCE_EXACT_THIRTY_TWO_FRESH_COMPILATIONS_PASS
-      - name: Independent source-exact one-hundred-three declaration type/axiom audit
+      - name: Independent source-exact one-hundred-four declaration type/axiom audit
         shell: bash
         timeout-minutes: 15
         run: |
@@ -279,6 +279,7 @@ jobs:
           #print axioms FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_apply
           #print axioms FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_norm_sq_eq_Q
           #print axioms FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanLinearEquiv
+          #print axioms FCP.BFSSS1V52K1D18V7C.quadraticIsometry_norm_map_of_linearEquiv_norm_sq
           #print axioms FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclidean_norm_map
           #print axioms FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanIsometry
           #check @FCP.BFSSS1V52K1D18A.source48_coordinate_sum
@@ -382,6 +383,7 @@ jobs:
           #check @FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_apply
           #check @FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_norm_sq_eq_Q
           #check @FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanLinearEquiv
+          #check @FCP.BFSSS1V52K1D18V7C.quadraticIsometry_norm_map_of_linearEquiv_norm_sq
           #check @FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclidean_norm_map
           #check @FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanIsometry
           LEAN
@@ -492,6 +494,7 @@ jobs:
             'FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_apply',
             'FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_norm_sq_eq_Q',
             'FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanLinearEquiv',
+            'FCP.BFSSS1V52K1D18V7C.quadraticIsometry_norm_map_of_linearEquiv_norm_sq',
             'FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclidean_norm_map',
             'FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanIsometry',
           ]
@@ -503,7 +506,7 @@ jobs:
           assert 'sorryAx' not in s
           assert not re.search(r'\.lean:\d+:\d+:\s*(?:warning|error)',s)
           for root in roots: assert root+' :' in s,('missing source-exact declaration type',root)
-          print('K1D18V7C_EXACT_ONE_HUNDRED_THREE_ROOT_TYPES_AXIOMS_PASS')
+          print('K1D18V7C_EXACT_ONE_HUNDRED_FOUR_ROOT_TYPES_AXIOMS_PASS')
           PY
       - name: Preserve compiler and independent axiom evidence
         if: always()
