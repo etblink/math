@@ -49,7 +49,10 @@ theorem weightedSumSquares_one_eq_euclidean_norm_sq
           rw [QuadraticMap.weightedSumSquares_apply]
           simp only [one_smul]
     _ = ∑ i, ‖(WithLp.toLp 2 a : EuclideanSpace ℝ ι) i‖ ^ 2 := by
-          simp only [WithLp.toLp_apply, Real.norm_eq_abs, sq_abs, pow_two]
+          apply Finset.sum_congr rfl
+          intro i _
+          change a i * a i = ‖a i‖ ^ 2
+          rw [Real.norm_eq_abs, sq_abs, pow_two]
     _ = ‖(WithLp.toLp 2 a : EuclideanSpace ℝ ι)‖ ^ 2 := by
           rw [EuclideanSpace.norm_eq, Real.sq_sqrt]
           exact Finset.sum_nonneg (fun i _ => sq_nonneg _)
@@ -59,7 +62,7 @@ its value equals squared canonical L2 norm after an explicit
 typed equivalence of the 48 real coordinates. -/
 theorem source48Quadratic_eq_euclidean_norm_sq (a : Source48Vector) :
     Q a = ‖(WithLp.toLp 2 a : Euc48)‖ ^ 2 := by
-  exact weightedSumSquares_one_eq_euclidean_norm_sq a
+  exact weightedSumSquares_one_eq_euclidean_norm_sq (ι := Source48Label) a
 
 /-- PINNED Mathlib already proves reflection factorization, with
 a bound of the auxiliary real Euclidean dimension. Source SO
