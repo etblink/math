@@ -66,7 +66,7 @@ unchanged by the above normalization. -/
 theorem euclideanUnitNormal_reflection_eq
     (u : Euc48) (hu : u ≠ 0) :
     (ℝ ∙ euclideanUnitNormal u)ᗮ.reflection = (ℝ ∙ u)ᗮ.reflection := by
-  rw [euclideanUnitNormal_span_eq u hu]
+  simpa only [euclideanUnitNormal_span_eq u hu]
 
 /-- A zero-normal native HYPERPLANE reflection is the identity;
 crucial for discarding zero factors before determinant parity.
