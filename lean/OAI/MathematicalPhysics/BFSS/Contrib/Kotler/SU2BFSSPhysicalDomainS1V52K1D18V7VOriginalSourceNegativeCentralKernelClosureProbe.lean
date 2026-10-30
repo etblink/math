@@ -55,7 +55,7 @@ theorem originalSourceSpinSO_kernel_eq_negativeCentralClosure :
       exact (Subgroup.closure ({negativeCentral} : Set (spinGroup Q))).one_mem
     · rw [Set.mem_singleton_iff.mp hneg]
       exact Subgroup.subset_closure (Set.mem_singleton negativeCentral)
-  · apply Subgroup.closure_le.mpr
+  · rw [Subgroup.closure_le]
     intro s hs
     have hs' : s = negativeCentral := Set.mem_singleton_iff.mp hs
     rw [hs']
