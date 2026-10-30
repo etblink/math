@@ -67,7 +67,7 @@ theorem originalSpinQuotient_toNativeEuclideanDetOneMulEquiv_mk
   change
     ((FCP.BFSSS1V52K1D18V7Y.originalSourceSO_toNativeEuclideanDetOneMulEquiv
       (FCP.BFSSS1V52K1D18V7W.originalSourceSpinSO_quotientNegativeCentralClosureMulEquiv
-        (QuotientGroup.mk s : spinGroup Q ⧸ centralClosure))) :
+        (QuotientGroup.mk s : spinGroup Q ⧸ centralClosure)) :
           FCP.BFSSS1V52K1D18V7Y.nativeEuclideanDetOneSubgroup) :
             EuclideanOrthogonal) = transport (sourceSOHom s)
   rw [FCP.BFSSS1V52K1D18V7W.originalSourceSpinSO_quotientNegativeCentralClosureMulEquiv_mk]
