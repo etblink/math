@@ -76,7 +76,6 @@ theorem originalSourceEvenUnitList_hasSpinWordImage
         exact hall z (by simp [hz])
       have hlen : (u :: v :: tail).length = tail.length + 2 := by
         simp only [List.length_cons]
-        omega
       have htailEven : Even tail.length := by
         rw [hlen] at heven
         simpa [Nat.even_add] using heven
