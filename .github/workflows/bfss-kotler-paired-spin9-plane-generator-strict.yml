@@ -92,6 +92,18 @@ jobs:
           cd lean
           cat > /tmp/PairedSpin9V8A_Audit.lean <<'LEAN'
           import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9PlaneGeneratorProbe
+          open OAI.BFSSQuantum
+          open FCP.BFSSS1V0
+          -- Actual Lean typechecking is the primary source-exact type audit.
+          example (r s : SpaceIndex) (hrs : r ≠ s) :
+              (FCP.BFSSPairedSpin9Plane.originalPairedPlane r s).transpose =
+                -(FCP.BFSSPairedSpin9Plane.originalPairedPlane r s) :=
+            FCP.BFSSPairedSpin9Plane.originalPairedPlane_transpose r s hrs
+          example (r s : SpaceIndex) (hrs : r ≠ s) :
+              FCP.BFSSPairedSpin9Plane.originalPairedPlane r s *
+                FCP.BFSSPairedSpin9Plane.originalPairedPlane r s =
+                -(1 : Matrix Source48Label Source48Label ℝ) :=
+            FCP.BFSSPairedSpin9Plane.originalPairedPlane_sq r s hrs
           #check FCP.BFSSPairedSpin9Plane.originalPairedPlane_transpose
           #check FCP.BFSSPairedSpin9Plane.originalPairedPlane_sq
           #print axioms FCP.BFSSPairedSpin9Plane.originalPairedPlane_transpose
@@ -111,7 +123,13 @@ jobs:
           for name,ax in reports:
               assert set(x.strip() for x in ax.split(',') if x.strip()) <= {'propext','Classical.choice','Quot.sound'},(name,ax)
           assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
-          for name in roots: assert name+' :' in s,('missing exact declaration type',name)
+          # Lean itself typechecked both original-source proposition examples above.
+          # Also require both complete printed binder prefixes as evidence.
+          for name in roots:
+              signature = r'(?m)^' + re.escape(name) + r' \(r s : OAI\.BFSSQuantum\.SpaceIndex\) \(hrs : r ≠ s\) :'
+              assert re.search(signature,s),('missing binder-aware exact declaration type',name)
+          assert '.transpose = -FCP.BFSSPairedSpin9Plane.originalPairedPlane r s' in s
+          assert 'originalPairedPlane r s = -1' in s
           print('K1D18V8A_EXACT_TWO_ROOT_TYPES_AXIOMS_PASS')
           PY
 
