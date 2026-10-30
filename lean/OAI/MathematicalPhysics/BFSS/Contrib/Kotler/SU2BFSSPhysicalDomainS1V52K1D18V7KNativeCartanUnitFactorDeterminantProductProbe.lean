@@ -55,7 +55,8 @@ theorem euclideanUnitReflectionList_det (l : List Euc48) :
   induction l with
   | nil =>
       intro _
-      simp
+      change LinearMap.det (LinearMap.id : Euc48 →ₗ[ℝ] Euc48) = 1
+      exact LinearMap.det_id
   | cons u tail ih =>
       intro hall
       have hu : ‖u‖ = 1 := hall u (by simp)
