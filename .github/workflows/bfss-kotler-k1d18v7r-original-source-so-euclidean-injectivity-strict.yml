@@ -1,0 +1,723 @@
+name: BFSS K1D18V7R actual original sourceSO Euclidean transport injectivity strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - .github/workflows/bfss-kotler-k1d18v7r-original-source-so-euclidean-injectivity-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D18V7ROriginalSourceSOEuclideanTransportInjectivityProbe.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-euclidean-isometry-transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Exact source pins and no unproved declaration lexemes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean")" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V31CanonicalAllSpin48RealVectorActionProbe.lean")" = '3253f10de6d31ed6f0ec5fd5d4674109cf9e04d6'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V37Original48CliffordGeneratorRankOneDeterminantProbe.lean")" = '19db346be86030db4a3a291493b962bf00898898'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D13OriginalSpin48LinearRepresentationProbe.lean")" = 'ea7b39f86a3ee3da6e69ecde3e84a3e04252567d'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D16OriginalSpin48QuadraticIsometryProbe.lean")" = '6367c33e426cfda4269a34bf1fb8a71dec7fb8bc'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe.lean")" = '9dc33c924c22e8823ddc905440feb05fb8ce3d0f'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18BPolarAllVectorCliffordBridgeProbe.lean")" = 'd0531752fa8f63df4f94294d6cd748fed1af223e'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18CRankOneActualCliffordGeneratorProbe.lean")" = '9455998333da80845ab6b7514c13ef990c951019'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18DOriginalSourceSpinUnitFactorizationProbe.lean")" = '3e45853f5abbff26bf0dca170217013415736e9c'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18EOriginalSpinTwoFactorDeterminantProbe.lean")" = '4affb7ed6e0ca213e1317a87f313124f8fa844ae'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18FOriginalLipschitzVectorActionProbe.lean")" = '1562aaf20f77a96b7dd27afde090e59ff1258188'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18GOriginalLipschitzVectorActionLawsProbe.lean")" = '91d71119f865d4aec1e09bb55f9297e29e7174a4'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe.lean")" = '3de8f66a91063845b0aaa8417ed9260cc5d41df6'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18IOriginalLipschitzGeneratorParityProbe.lean")" = '9e4d56f27e6f8f4cb3244236c36b29e595a91bc2'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18JOriginalLipschitzInverseGeneratorParityProbe.lean")" = '2dd6581775e92df5686267863c14529cde77bd60'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18KOriginalLipschitzGradeDetIdentityAndMulProbe.lean")" = '81067e786cac0fbb65b936b6013d028dc3e73fed'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18LOriginalLipschitzClosureGradeDetProbe.lean")" = '98a6ea03ae7a7f03ddad15cbab47d22b6f669ca4'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18MOriginalSpinScalarCancellationProbe.lean")" = '1c40c95894f80d9e96bb29acb46a9098c1b8413a'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18NOriginalSpinRealScalarInjectionProbe.lean")" = '9a9e6315c08f40ba7b11451d09ea6d8997db0c30'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18OOriginalSpinDeterminantOneProbe.lean")" = '62dab2ca759c5a58a71cf99be914045f7e5e8ae5'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18POriginalSpinQuadraticIsometryDetOneProbe.lean")" = 'ab6301da48b0a3c32e5678847203ef5c1b20779d'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D14OriginalSpin48LinearRepresentationKernelProbe.lean")" = '3bdca4594e8a00d6597aadad61997af68209f46f'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18RSourceSpinSpecialOrthogonalWitnessProbe.lean")" = 'bc8e99fc0637177bd7a34acdc4305f0a778fadc8'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18SOriginalSpinSpecialOrthogonalWitnessHomKernelProbe.lean")" = '2265778b3d43f9915bc88d2bafd16986e4c7571f'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18TOriginalSpinSOEqualActionFibersProbe.lean")" = 'b7986620c1513c075cb1f65e8b02cfc27f93edc7'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18UOriginalQuadraticNondegeneracyProbe.lean")" = '62cb0e6aaf3385a1253d826e58c7df3d704199d6'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V1OriginalSourceRankOneReflectionGeometryProbe.lean")" = '0924d31506cf4b94d0e5050b10685b2b467abf3c'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V2OriginalSourceRankOneInvolutionProbe.lean")" = 'fbd268c789fcc5ff8157b92d3e1c5c9063136d22'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V3OriginalSourceRankOneQuadraticIsometryProbe.lean")" = 'c11f67402bba3af0ba9b3b0b29d760d8a3a906d9'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V4AOriginalSourcePositiveDefiniteStructuralProbe.lean")" = '2fcea5dfef0452e7623e08803da7c4e6eda4763c'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V5OriginalSourceUnitVectorNormalizationProbe.lean")" = '8358402c696dc7c0eaf2f007e9cdf5e742ad3889'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V6AOriginalCliffordStarSignAndEvenPairProbe.lean")" = '982577f2cd9e40fbf0221e1e0a85b80e693ef822'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V6BOriginalTwoUnitGeneratorsSpinMembershipProbe.lean")" = '5733c1023c0d00635a29c98c74f6eaf63ded3b5e'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V6COriginalSpinPairMatrixActionAndDetProbe.lean")" = '46e49f92c46fda3ea52b4af5b101943319f54ab2'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V6DOriginalUnitPairMatrixWitnessProbe.lean")" = '61aa37a6970d78ab9e6692fc2621c03a2645f599'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7AOriginalSourceSOImageGenerationBoundaryProbe.lean")" = '53b90c8ddf1b0e2bb195bec98070f6ae8045d37f'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7BOriginalSourceEuclideanNormAndCartanBoundaryProbe.lean")" = 'f215d7339de6bed96cb07d378d849ef64b54f386'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe.lean")" = '168e5ddb49ad1d896390c2c16aca5daf59e2b503'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7DOriginalSourceSOWitnessEuclideanTransportProbe.lean")" = '56f21caa9b07e58d2d386687f07ebbf83bb0b566'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7EOriginalSourceSOEuclideanDeterminantTransportProbe.lean")" = 'a17c6321d2e0c6d7bf86684d6fb4cc27c70befb1'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7FOriginalSourcePolarEuclideanLineAxisFormulaProbe.lean")" = '5712cb4ca7a93e4b610cd977e44cc34054210b4b'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7GOriginalSourceNativeEuclideanReflectionCorrespondenceProbe.lean")" = 'c2960c1c45c0a15b3a181b988e28aac0c948f0e6'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7HNativeHyperplaneUnitNormalOrIdentityProbe.lean")" = 'f55cd43b5edd99b12aba51d76ee6b3fa75abb103'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7INativeCartanZeroFreeUnitNormalListProbe.lean")" = 'b796aef91beed8b57bd1508fea178332517dd8fe'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7JNativeUnitHyperplaneDeterminantSignProbe.lean")" = '5705f732166cce1bb37ed0fedbdf9a2eeb0f4a8d'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7KNativeCartanUnitFactorDeterminantProductProbe.lean")" = '671dabe97cd9fd923f192228f6e8d0aa27f09bca'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7LOriginalSourceSOEvenCartanListProbe.lean")" = '43cadfb74154eb70947c909eb6929f4b7bded747'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7MOriginalSourceQUnitNormalInverseTransportProbe.lean")" = '15b9cb1b02f0949c75c84934a1bd1edd833202a6'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7NOriginalSourceSpinInverseUnitPairActionProbe.lean")" = 'c06c5fccffd3cbb7dc632fdde12089c3a2ab9acd'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7OOriginalSourceSOEuclideanSpinPairImageBridgeProbe.lean")" = '1ae87dcd250979be838852916117009922bdf07c'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7POriginalSourceSOEuclideanGroupHomBridgeProbe.lean")" = 'aa8eebceb39f0a607c67efe89b9263629668ebfe'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7QOriginalSourceEvenUnitListSpinWordImageProbe.lean")" = '4759507962983c46e77c3608d40c7dc395728747'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D18V7ROriginalSourceSOEuclideanTransportInjectivityProbe.lean")" = '73d6c2c4ea2f03908d1d9323a8e7dd8e1b3ecc94'
+          test "$(git hash-object contributions/bfss-kotler/tools/qualify_fcp_k1d17_cached_ancestry.py)" = 'ca97ad005f75fc270942d034772871471933c7b3'
+          python3 - <<'PY'
+          import pathlib,re,sys
+          sys.path.insert(0,str(pathlib.Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          p=pathlib.Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler')
+          files=[
+            ('SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe.lean',["source48_coordinate_sum","source48_normalized_polar_coordinate_dot"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18BPolarAllVectorCliffordBridgeProbe.lean',["source48NormalizedPolarRow_dot","source48NormalizedPolarRow_dot_self","source48_clifford_generator_conjugation_from_row"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18CRankOneActualCliffordGeneratorProbe.lean',["source48_rankOneConjugationMatrix_mulVec","source48_rankOneMatrix_matches_original_clifford_conjugation","source48_original_generator_rankOneMatrix_det"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18DOriginalSourceSpinUnitFactorizationProbe.lean',["originalSourceSpin48Isometry_clifford_generator","originalSourceInvertibleCliffordUnit_rankOne_action","originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18EOriginalSpinTwoFactorDeterminantProbe.lean',["originalSourceTwoGeneratorMatrices_det_one","originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization","originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18FOriginalLipschitzVectorActionProbe.lean',["sourceLipschitz_conjugated_generator_unique","sourceLipschitzVectorAction_clifford_generator","sourceLipschitzVectorAction_add","sourceLipschitzVectorAction_smul"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18GOriginalLipschitzVectorActionLawsProbe.lean',["originalSourceSpin48_unit_mem_lipschitz","sourceLipschitzVectorAction_one","sourceLipschitzVectorAction_mul","sourceLipschitzVectorAction_agrees_originalSpin48","originalSourceLipschitzLinearMap"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe.lean',["originalSourceLipschitzLinearEquiv","originalSourceLipschitzLinearEquiv_apply","originalSourceLipschitzLinearRepresentation","originalSourceLipschitzDeterminantCharacter"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18IOriginalLipschitzGeneratorParityProbe.lean',["originalSourceGeneratorUnit_mem_lipschitz","originalSourceGeneratorLipschitzUnit","originalSourceGeneratorLipschitzLinearMap_eq_rankOne","originalSourceGeneratorLipschitzDeterminant_neg_one","originalSourceGeneratorLipschitzUnit_involute_neg"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18JOriginalLipschitzInverseGeneratorParityProbe.lean',["originalSourceGeneratorInverse_det_neg_one","originalSourceGeneratorInverse_involute_neg","originalSourceGeneratorInverse_grade_det_agreement"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18KOriginalLipschitzGradeDetIdentityAndMulProbe.lean',["originalSourceLipschitzGradeDetInvariant","originalSourceLipschitzGradeDetInvariant_one","originalSourceLipschitzGradeDetInvariant_generator","originalSourceLipschitzGradeDetInvariant_generator_inv","originalSourceLipschitzGradeDetInvariant_mul"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18LOriginalLipschitzClosureGradeDetProbe.lean',["originalSourceLipschitzGradeDetInvariant_all"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18MOriginalSpinScalarCancellationProbe.lean',["originalSourceSpin48_det_character_smul_unit","originalSourceSpin48_det_character_smul_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18NOriginalSpinRealScalarInjectionProbe.lean',["originalSourceSpin48_lipschitzDetCharacter_real_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18OOriginalSpinDeterminantOneProbe.lean',["originalSourceSpin48_linearEquiv_eq_lipschitz","originalSourceSpin48_linearEquiv_coe_eq_sourceLinearMap","originalSourceSpin48_originalLinearMap_det_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18POriginalSpinQuadraticIsometryDetOneProbe.lean',["originalSourceSpin48_quadraticIsometry_linearMap_eq","originalSourceSpin48_quadraticIsometry_det_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18RSourceSpinSpecialOrthogonalWitnessProbe.lean',["source48QuadraticIsometryWitnessGL","source48SpecialOrthogonalWitnessGL","originalSourceSpin48_mem_isometryWitness","originalSourceSpin48_mem_specialOrthogonalWitness"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18SOriginalSpinSpecialOrthogonalWitnessHomKernelProbe.lean',["originalSourceSpin48SpecialOrthogonalWitnessRepresentation","originalSourceSpin48SpecialOrthogonalWitnessRepresentation_coe","originalSourceSpin48SpecialOrthogonalWitnessRepresentation_eq_one_iff_original","originalSourceSpin48SpecialOrthogonalWitnessRepresentation_ker_eq_two_sign_set"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18TOriginalSpinSOEqualActionFibersProbe.lean',["originalSourceSpin48SO_equal_action_iff_two_sign_fiber","originalSourceSpin48SO_not_injective"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18UOriginalQuadraticNondegeneracyProbe.lean',["source48Quadratic_radical_eq_bot","source48Quadratic_nondegenerate"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V1OriginalSourceRankOneReflectionGeometryProbe.lean',["source48_original_reflection_fixes_axis","source48_original_reflection_negates_normalized_polar_kernel","source48_original_reflection_negates_source_polar_orthogonal"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V2OriginalSourceRankOneInvolutionProbe.lean',["source48_rankOneConjugationMatrix_square_mulVec","source48_originalCliffordRankOne_square_mulVec"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V3OriginalSourceRankOneQuadraticIsometryProbe.lean',["source48Quadratic_smul_sub_preserve_of_polar_scaling","source48_originalCliffordRankOne_preserves_quadratic"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V4AOriginalSourcePositiveDefiniteStructuralProbe.lean',["weightedSumSquares_one_posDef","source48Quadratic_posDef","source48Quadratic_pos_of_ne_zero"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V5OriginalSourceUnitVectorNormalizationProbe.lean',["real_sqrt_inv_square_mul_self","source48Quadratic_normalized_value","source48Quadratic_exists_unit_of_ne_zero"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V6AOriginalCliffordStarSignAndEvenPairProbe.lean',["source48_unitGenerator_star_mul_self_neg_one","source48_twoUnitGenerators_star_mul_self","source48_twoUnitGenerators_mul_star_self","source48_twoGenerators_mem_even","source48_twoUnitGenerators_mem_unitary"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V6BOriginalTwoUnitGeneratorsSpinMembershipProbe.lean',["source48_unitGenerator_isUnit","source48_twoUnitGenerators_mem_spin"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V6COriginalSpinPairMatrixActionAndDetProbe.lean',["originalSourceUnitPairSpin","originalSourceUnitPairSpin_toUnits","originalSourceUnitPairSpin_action","originalSourceUnitPairSpin_linearMap_det_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V6DOriginalUnitPairMatrixWitnessProbe.lean',["originalSourceUnitRankOneMatrix","originalSourceUnitPairSpin_action_no_instance_premises","originalSourceUnitPairMatrices_det_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7AOriginalSourceSOImageGenerationBoundaryProbe.lean',["sourceSOUnitPairMatrixSet","originalSourceSpinPairSO_image_matrix_action","sourceSOUnitPairMatrixSet_subset_sourceSpinImage","sourceSOUnitPairMatrixClosure_le_sourceSpinImage","sourceSpinSO_surjective_of_unitPairMatrixGeneration"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7BOriginalSourceEuclideanNormAndCartanBoundaryProbe.lean',["weightedSumSquares_one_eq_euclidean_norm_sq","source48Quadratic_eq_euclidean_norm_sq","source48Euclidean_reflections_generate_dim","source48Euclidean_reflections_generate"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe.lean',["originalSource48ToEuclidean","originalSource48ToEuclidean_apply","originalSource48ToEuclidean_norm_sq_eq_Q","originalSourceQIsometry_toEuclideanLinearEquiv","quadraticIsometry_norm_map_of_linearEquiv_norm_sq","originalSourceQIsometry_toEuclidean_norm_map","originalSourceQIsometry_toEuclideanIsometry"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7DOriginalSourceSOWitnessEuclideanTransportProbe.lean',["sourceSO_has_originalQ_witness","sourceSO_originalQIsometry","sourceSO_originalQIsometry_underlying","sourceSO_toEuclideanIsometry"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7EOriginalSourceSOEuclideanDeterminantTransportProbe.lean',["linearEquiv_conjugate_det_eq","originalSourceSO_det_one","originalSourceSO_euclideanDet_eq_sourceDet","originalSourceSO_euclideanLinearEquiv_det_one","originalSourceSO_euclideanIsometry_det_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7FOriginalSourcePolarEuclideanLineAxisFormulaProbe.lean',["quadraticPolar_eq_two_realInner_of_normSq","originalSourcePolar_eq_twoEuclideanInner","originalSourceUnitQ_euclidean_norm_one","originalSourceUnitRankOne_euclidean_action","originalSourceUnitRankOne_eq_negative_euclideanHyperplaneFormula"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7GOriginalSourceNativeEuclideanReflectionCorrespondenceProbe.lean',["euclideanUnitLineReflection_apply","originalSourceUnitRankOne_eq_nativeEuclideanLineReflection","originalSourceUnitRankOne_eq_negativeNativeHyperplaneReflection","originalSourceUnitPairMatrices_eq_nativeHyperplanePairAction","originalSourceSpinUnitPair_eq_nativeHyperplanePairAction"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7HNativeHyperplaneUnitNormalOrIdentityProbe.lean',["euclideanUnitNormal","euclideanUnitNormal_norm_one","euclideanUnitNormal_span_eq","euclideanUnitNormal_reflection_eq","euclideanHyperplaneReflection_zero","euclideanHyperplaneReflection_unitOrIdentity"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7INativeCartanZeroFreeUnitNormalListProbe.lean',["sourceEuclideanUnitNormals","sourceEuclideanUnitNormals_all_unit","sourceEuclideanUnitNormals_length_le","sourceEuclideanUnitNormals_reflectionProduct_eq","originalSourceEuclidean_Cartan_zeroFreeUnitNormals"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7JNativeUnitHyperplaneDeterminantSignProbe.lean',["euclideanUnitNormal_ne_zero","euclideanUnitLine_finrank_one","euclideanUnitHyperplane_reflection_det_neg_one"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7KNativeCartanUnitFactorDeterminantProductProbe.lean',["euclideanIsometry_mul_det","euclideanUnitReflectionList_det"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7LOriginalSourceSOEvenCartanListProbe.lean',["euclideanUnitReflectionList_even_of_det_one","originalSourceSO_has_evenUnitCartanFactorization"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7MOriginalSourceQUnitNormalInverseTransportProbe.lean',["originalSourceUnitNormal","originalSourceUnitNormal_roundtrip","originalSourceUnitNormal_Q_one","originalSourceUnitNormalList_all_Q_one","originalSourceUnitNormalList_roundtrip"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7NOriginalSourceSpinInverseUnitPairActionProbe.lean',["originalSourceSpinUnitPair_euclideanNormals_action","originalSourceSpinUnitPair_euclideanNormals_actionOnEuclidean"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7OOriginalSourceSOEuclideanSpinPairImageBridgeProbe.lean',["originalSourceSO_toEuclideanIsometry_exactAction","originalSourceSpinPairSO_toEuclidean_exactAction","originalSourceSpinPairSO_toEuclidean_nativePair"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7POriginalSourceSOEuclideanGroupHomBridgeProbe.lean',["originalSourceSO_toEuclidean_one","originalSourceSO_toEuclidean_mul","originalSourceSO_toEuclideanHom"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7QOriginalSourceEvenUnitListSpinWordImageProbe.lean',["originalSourceEvenUnitList_hasSpinWordImage"]),
+            ('SU2BFSSPhysicalDomainS1V52K1D18V7ROriginalSourceSOEuclideanTransportInjectivityProbe.lean',["originalSourceSO_toEuclideanIsometry_injective","originalSourceSO_toEuclideanHom_injective"]),
+          ]
+          for name,roots in files:
+              s=(p/name).read_text()
+              assert not re.search(r'\b(?:sorry|admit|sorryAx|axiom)\b',code_only(s)),name
+              assert re.findall(r'(?m)^#print axioms (\S+)',s)==roots,(name,'roots mismatch')
+          print('K1D18V7R_EXACT_SOURCE_PINS_ONE_HUNDRED_FIFTY_SEVEN_DECLARATIONS_PASS')
+          PY
+      - name: Restore exact accepted Lean/Mathlib dependencies; no full dependency cache
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          lake env lean --version
+      - name: Restore same-branch source accepted 81-root ancestry
+        id: accepted-cache
+        uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: lean/.lake/build/lib/lean/OAI
+          key: bfss-fcp-k1d17-source-accepted-ancestors-v1-389ecdcc-lean4341-d13f23b-${{ runner.os }}-${{ runner.arch }}
+      - name: Require exact validated 81-root source ancestry (no fallback)
+        shell: bash
+        timeout-minutes: 20
+        env:
+          EXACT_HIT: ${{ steps.accepted-cache.outputs.cache-hit }}
+        run: |
+          set -euo pipefail
+          test "$EXACT_HIT" = true || { echo 'K1D18V7R_NO_TRUSTED_ANCESTRY_CACHE_STOP'; exit 1; }
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_k1d17_cached_ancestry.py verify --log-dir "$RUNNER_TEMP/k1d18v7r-cache"
+          echo K1D18V7R_ACCEPTED_81_ROOT_ANCESTRY_PASS
+      - name: Fresh warning-as-error source compilation K1D18A through P, then R S T U V1 V2 V3 V4A V5 V6A V6B V6C V6D V7A V7B V7C V7D V7E V7F V7G V7H V7I V7J V7K V7L V7M V7N V7O V7P V7Q V7R
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          p=OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          mkdir -p ".lake/build/lib/lean/$p" "$RUNNER_TEMP/k1d18v7r-fresh"
+          for m in SU2BFSSPhysicalDomainS1V52K1D18APolarCoordinateNormalizationProbe SU2BFSSPhysicalDomainS1V52K1D18BPolarAllVectorCliffordBridgeProbe SU2BFSSPhysicalDomainS1V52K1D18CRankOneActualCliffordGeneratorProbe SU2BFSSPhysicalDomainS1V52K1D18DOriginalSourceSpinUnitFactorizationProbe SU2BFSSPhysicalDomainS1V52K1D18EOriginalSpinTwoFactorDeterminantProbe SU2BFSSPhysicalDomainS1V52K1D18FOriginalLipschitzVectorActionProbe SU2BFSSPhysicalDomainS1V52K1D18GOriginalLipschitzVectorActionLawsProbe SU2BFSSPhysicalDomainS1V52K1D18HOriginalLipschitzLinearRepresentationProbe SU2BFSSPhysicalDomainS1V52K1D18IOriginalLipschitzGeneratorParityProbe SU2BFSSPhysicalDomainS1V52K1D18JOriginalLipschitzInverseGeneratorParityProbe SU2BFSSPhysicalDomainS1V52K1D18KOriginalLipschitzGradeDetIdentityAndMulProbe SU2BFSSPhysicalDomainS1V52K1D18LOriginalLipschitzClosureGradeDetProbe SU2BFSSPhysicalDomainS1V52K1D18MOriginalSpinScalarCancellationProbe SU2BFSSPhysicalDomainS1V52K1D18NOriginalSpinRealScalarInjectionProbe SU2BFSSPhysicalDomainS1V52K1D18OOriginalSpinDeterminantOneProbe SU2BFSSPhysicalDomainS1V52K1D18POriginalSpinQuadraticIsometryDetOneProbe SU2BFSSPhysicalDomainS1V52K1D18RSourceSpinSpecialOrthogonalWitnessProbe SU2BFSSPhysicalDomainS1V52K1D18SOriginalSpinSpecialOrthogonalWitnessHomKernelProbe SU2BFSSPhysicalDomainS1V52K1D18TOriginalSpinSOEqualActionFibersProbe SU2BFSSPhysicalDomainS1V52K1D18UOriginalQuadraticNondegeneracyProbe SU2BFSSPhysicalDomainS1V52K1D18V1OriginalSourceRankOneReflectionGeometryProbe SU2BFSSPhysicalDomainS1V52K1D18V2OriginalSourceRankOneInvolutionProbe SU2BFSSPhysicalDomainS1V52K1D18V3OriginalSourceRankOneQuadraticIsometryProbe SU2BFSSPhysicalDomainS1V52K1D18V4AOriginalSourcePositiveDefiniteStructuralProbe SU2BFSSPhysicalDomainS1V52K1D18V5OriginalSourceUnitVectorNormalizationProbe SU2BFSSPhysicalDomainS1V52K1D18V6AOriginalCliffordStarSignAndEvenPairProbe SU2BFSSPhysicalDomainS1V52K1D18V6BOriginalTwoUnitGeneratorsSpinMembershipProbe SU2BFSSPhysicalDomainS1V52K1D18V6COriginalSpinPairMatrixActionAndDetProbe SU2BFSSPhysicalDomainS1V52K1D18V6DOriginalUnitPairMatrixWitnessProbe SU2BFSSPhysicalDomainS1V52K1D18V7AOriginalSourceSOImageGenerationBoundaryProbe SU2BFSSPhysicalDomainS1V52K1D18V7BOriginalSourceEuclideanNormAndCartanBoundaryProbe SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe SU2BFSSPhysicalDomainS1V52K1D18V7DOriginalSourceSOWitnessEuclideanTransportProbe SU2BFSSPhysicalDomainS1V52K1D18V7EOriginalSourceSOEuclideanDeterminantTransportProbe SU2BFSSPhysicalDomainS1V52K1D18V7FOriginalSourcePolarEuclideanLineAxisFormulaProbe SU2BFSSPhysicalDomainS1V52K1D18V7GOriginalSourceNativeEuclideanReflectionCorrespondenceProbe SU2BFSSPhysicalDomainS1V52K1D18V7HNativeHyperplaneUnitNormalOrIdentityProbe SU2BFSSPhysicalDomainS1V52K1D18V7INativeCartanZeroFreeUnitNormalListProbe SU2BFSSPhysicalDomainS1V52K1D18V7JNativeUnitHyperplaneDeterminantSignProbe SU2BFSSPhysicalDomainS1V52K1D18V7KNativeCartanUnitFactorDeterminantProductProbe SU2BFSSPhysicalDomainS1V52K1D18V7LOriginalSourceSOEvenCartanListProbe SU2BFSSPhysicalDomainS1V52K1D18V7MOriginalSourceQUnitNormalInverseTransportProbe SU2BFSSPhysicalDomainS1V52K1D18V7NOriginalSourceSpinInverseUnitPairActionProbe SU2BFSSPhysicalDomainS1V52K1D18V7OOriginalSourceSOEuclideanSpinPairImageBridgeProbe SU2BFSSPhysicalDomainS1V52K1D18V7POriginalSourceSOEuclideanGroupHomBridgeProbe SU2BFSSPhysicalDomainS1V52K1D18V7QOriginalSourceEvenUnitListSpinWordImageProbe SU2BFSSPhysicalDomainS1V52K1D18V7ROriginalSourceSOEuclideanTransportInjectivityProbe; do
+            lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/$p/$m.olean" "$p/$m.lean" > "$RUNNER_TEMP/k1d18v7r-fresh/$m.log" 2>&1 || {
+              cat "$RUNNER_TEMP/k1d18v7r-fresh/$m.log"; exit 1;
+            }
+            test -s ".lake/build/lib/lean/$p/$m.olean"
+            cat "$RUNNER_TEMP/k1d18v7r-fresh/$m.log"
+            sha256sum ".lake/build/lib/lean/$p/$m.olean"
+          done
+          echo K1D18V7R_SOURCE_EXACT_FORTY_SEVEN_FRESH_COMPILATIONS_PASS
+      - name: Independent source-exact one-hundred-fifty-seven declaration type/axiom audit
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          d="$RUNNER_TEMP/k1d18v7r-fresh"
+          cat > "$d/audit.lean" <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18TOriginalSpinSOEqualActionFibersProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18UOriginalQuadraticNondegeneracyProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V1OriginalSourceRankOneReflectionGeometryProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V2OriginalSourceRankOneInvolutionProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V3OriginalSourceRankOneQuadraticIsometryProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V4AOriginalSourcePositiveDefiniteStructuralProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V5OriginalSourceUnitVectorNormalizationProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V6AOriginalCliffordStarSignAndEvenPairProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V6BOriginalTwoUnitGeneratorsSpinMembershipProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V6COriginalSpinPairMatrixActionAndDetProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V6DOriginalUnitPairMatrixWitnessProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7AOriginalSourceSOImageGenerationBoundaryProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7BOriginalSourceEuclideanNormAndCartanBoundaryProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7COriginalSourceQuadraticIsometryEuclideanTransportProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7DOriginalSourceSOWitnessEuclideanTransportProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7EOriginalSourceSOEuclideanDeterminantTransportProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7FOriginalSourcePolarEuclideanLineAxisFormulaProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7GOriginalSourceNativeEuclideanReflectionCorrespondenceProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7HNativeHyperplaneUnitNormalOrIdentityProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7INativeCartanZeroFreeUnitNormalListProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7JNativeUnitHyperplaneDeterminantSignProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7KNativeCartanUnitFactorDeterminantProductProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7LOriginalSourceSOEvenCartanListProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7MOriginalSourceQUnitNormalInverseTransportProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7NOriginalSourceSpinInverseUnitPairActionProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7OOriginalSourceSOEuclideanSpinPairImageBridgeProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7POriginalSourceSOEuclideanGroupHomBridgeProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7QOriginalSourceEvenUnitListSpinWordImageProbe
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52K1D18V7ROriginalSourceSOEuclideanTransportInjectivityProbe
+          #print axioms FCP.BFSSS1V52K1D18A.source48_coordinate_sum
+          #print axioms FCP.BFSSS1V52K1D18A.source48_normalized_polar_coordinate_dot
+          #print axioms FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot
+          #print axioms FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot_self
+          #print axioms FCP.BFSSS1V52K1D18B.source48_clifford_generator_conjugation_from_row
+          #print axioms FCP.BFSSS1V52K1D18C.source48_rankOneConjugationMatrix_mulVec
+          #print axioms FCP.BFSSS1V52K1D18C.source48_rankOneMatrix_matches_original_clifford_conjugation
+          #print axioms FCP.BFSSS1V52K1D18C.source48_original_generator_rankOneMatrix_det
+          #print axioms FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_clifford_generator
+          #print axioms FCP.BFSSS1V52K1D18D.originalSourceInvertibleCliffordUnit_rankOne_action
+          #print axioms FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization
+          #print axioms FCP.BFSSS1V52K1D18E.originalSourceTwoGeneratorMatrices_det_one
+          #print axioms FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization
+          #print axioms FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitz_conjugated_generator_unique
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_clifford_generator
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_add
+          #print axioms FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_smul
+          #print axioms FCP.BFSSS1V52K1D18G.originalSourceSpin48_unit_mem_lipschitz
+          #print axioms FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_one
+          #print axioms FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_mul
+          #print axioms FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_agrees_originalSpin48
+          #print axioms FCP.BFSSS1V52K1D18G.originalSourceLipschitzLinearMap
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv_apply
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearRepresentation
+          #print axioms FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter
+          #print axioms FCP.BFSSS1V52K1D18I.originalSourceGeneratorUnit_mem_lipschitz
+          #print axioms FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit
+          #print axioms FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzLinearMap_eq_rankOne
+          #print axioms FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzDeterminant_neg_one
+          #print axioms FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit_involute_neg
+          #print axioms FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_det_neg_one
+          #print axioms FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_involute_neg
+          #print axioms FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_grade_det_agreement
+          #print axioms FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant
+          #print axioms FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_one
+          #print axioms FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_generator
+          #print axioms FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_generator_inv
+          #print axioms FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_mul
+          #print axioms FCP.BFSSS1V52K1D18L.originalSourceLipschitzGradeDetInvariant_all
+          #print axioms FCP.BFSSS1V52K1D18M.originalSourceSpin48_det_character_smul_unit
+          #print axioms FCP.BFSSS1V52K1D18M.originalSourceSpin48_det_character_smul_one
+          #print axioms FCP.BFSSS1V52K1D18N.originalSourceSpin48_lipschitzDetCharacter_real_one
+          #print axioms FCP.BFSSS1V52K1D18O.originalSourceSpin48_linearEquiv_eq_lipschitz
+          #print axioms FCP.BFSSS1V52K1D18O.originalSourceSpin48_linearEquiv_coe_eq_sourceLinearMap
+          #print axioms FCP.BFSSS1V52K1D18O.originalSourceSpin48_originalLinearMap_det_one
+          #print axioms FCP.BFSSS1V52K1D18P.originalSourceSpin48_quadraticIsometry_linearMap_eq
+          #print axioms FCP.BFSSS1V52K1D18P.originalSourceSpin48_quadraticIsometry_det_one
+          #print axioms FCP.BFSSS1V52K1D18R.source48QuadraticIsometryWitnessGL
+          #print axioms FCP.BFSSS1V52K1D18R.source48SpecialOrthogonalWitnessGL
+          #print axioms FCP.BFSSS1V52K1D18R.originalSourceSpin48_mem_isometryWitness
+          #print axioms FCP.BFSSS1V52K1D18R.originalSourceSpin48_mem_specialOrthogonalWitness
+          #print axioms FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation
+          #print axioms FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_coe
+          #print axioms FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_eq_one_iff_original
+          #print axioms FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_ker_eq_two_sign_set
+          #print axioms FCP.BFSSS1V52K1D18T.originalSourceSpin48SO_equal_action_iff_two_sign_fiber
+          #print axioms FCP.BFSSS1V52K1D18T.originalSourceSpin48SO_not_injective
+          #print axioms FCP.BFSSS1V52K1D18U.source48Quadratic_radical_eq_bot
+          #print axioms FCP.BFSSS1V52K1D18U.source48Quadratic_nondegenerate
+          #print axioms FCP.BFSSS1V52K1D18V1.source48_original_reflection_fixes_axis
+          #print axioms FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_normalized_polar_kernel
+          #print axioms FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_source_polar_orthogonal
+          #print axioms FCP.BFSSS1V52K1D18V2.source48_rankOneConjugationMatrix_square_mulVec
+          #print axioms FCP.BFSSS1V52K1D18V2.source48_originalCliffordRankOne_square_mulVec
+          #print axioms FCP.BFSSS1V52K1D18V3.source48Quadratic_smul_sub_preserve_of_polar_scaling
+          #print axioms FCP.BFSSS1V52K1D18V3.source48_originalCliffordRankOne_preserves_quadratic
+          #print axioms FCP.BFSSS1V52K1D18V4A.weightedSumSquares_one_posDef
+          #print axioms FCP.BFSSS1V52K1D18V4A.source48Quadratic_posDef
+          #print axioms FCP.BFSSS1V52K1D18V4A.source48Quadratic_pos_of_ne_zero
+          #print axioms FCP.BFSSS1V52K1D18V5.real_sqrt_inv_square_mul_self
+          #print axioms FCP.BFSSS1V52K1D18V5.source48Quadratic_normalized_value
+          #print axioms FCP.BFSSS1V52K1D18V5.source48Quadratic_exists_unit_of_ne_zero
+          #print axioms FCP.BFSSS1V52K1D18V6A.source48_unitGenerator_star_mul_self_neg_one
+          #print axioms FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_star_mul_self
+          #print axioms FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_mul_star_self
+          #print axioms FCP.BFSSS1V52K1D18V6A.source48_twoGenerators_mem_even
+          #print axioms FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_mem_unitary
+          #print axioms FCP.BFSSS1V52K1D18V6B.source48_unitGenerator_isUnit
+          #print axioms FCP.BFSSS1V52K1D18V6B.source48_twoUnitGenerators_mem_spin
+          #print axioms FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin
+          #print axioms FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_toUnits
+          #print axioms FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_action
+          #print axioms FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_linearMap_det_one
+          #print axioms FCP.BFSSS1V52K1D18V6D.originalSourceUnitRankOneMatrix
+          #print axioms FCP.BFSSS1V52K1D18V6D.originalSourceUnitPairSpin_action_no_instance_premises
+          #print axioms FCP.BFSSS1V52K1D18V6D.originalSourceUnitPairMatrices_det_one
+          #print axioms FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixSet
+          #print axioms FCP.BFSSS1V52K1D18V7A.originalSourceSpinPairSO_image_matrix_action
+          #print axioms FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixSet_subset_sourceSpinImage
+          #print axioms FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixClosure_le_sourceSpinImage
+          #print axioms FCP.BFSSS1V52K1D18V7A.sourceSpinSO_surjective_of_unitPairMatrixGeneration
+          #print axioms FCP.BFSSS1V52K1D18V7B.weightedSumSquares_one_eq_euclidean_norm_sq
+          #print axioms FCP.BFSSS1V52K1D18V7B.source48Quadratic_eq_euclidean_norm_sq
+          #print axioms FCP.BFSSS1V52K1D18V7B.source48Euclidean_reflections_generate_dim
+          #print axioms FCP.BFSSS1V52K1D18V7B.source48Euclidean_reflections_generate
+          #print axioms FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean
+          #print axioms FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_apply
+          #print axioms FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_norm_sq_eq_Q
+          #print axioms FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanLinearEquiv
+          #print axioms FCP.BFSSS1V52K1D18V7C.quadraticIsometry_norm_map_of_linearEquiv_norm_sq
+          #print axioms FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclidean_norm_map
+          #print axioms FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanIsometry
+          #print axioms FCP.BFSSS1V52K1D18V7D.sourceSO_has_originalQ_witness
+          #print axioms FCP.BFSSS1V52K1D18V7D.sourceSO_originalQIsometry
+          #print axioms FCP.BFSSS1V52K1D18V7D.sourceSO_originalQIsometry_underlying
+          #print axioms FCP.BFSSS1V52K1D18V7D.sourceSO_toEuclideanIsometry
+          #print axioms FCP.BFSSS1V52K1D18V7E.linearEquiv_conjugate_det_eq
+          #print axioms FCP.BFSSS1V52K1D18V7E.originalSourceSO_det_one
+          #print axioms FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanDet_eq_sourceDet
+          #print axioms FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanLinearEquiv_det_one
+          #print axioms FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanIsometry_det_one
+          #print axioms FCP.BFSSS1V52K1D18V7F.quadraticPolar_eq_two_realInner_of_normSq
+          #print axioms FCP.BFSSS1V52K1D18V7F.originalSourcePolar_eq_twoEuclideanInner
+          #print axioms FCP.BFSSS1V52K1D18V7F.originalSourceUnitQ_euclidean_norm_one
+          #print axioms FCP.BFSSS1V52K1D18V7F.originalSourceUnitRankOne_euclidean_action
+          #print axioms FCP.BFSSS1V52K1D18V7F.originalSourceUnitRankOne_eq_negative_euclideanHyperplaneFormula
+          #print axioms FCP.BFSSS1V52K1D18V7G.euclideanUnitLineReflection_apply
+          #print axioms FCP.BFSSS1V52K1D18V7G.originalSourceUnitRankOne_eq_nativeEuclideanLineReflection
+          #print axioms FCP.BFSSS1V52K1D18V7G.originalSourceUnitRankOne_eq_negativeNativeHyperplaneReflection
+          #print axioms FCP.BFSSS1V52K1D18V7G.originalSourceUnitPairMatrices_eq_nativeHyperplanePairAction
+          #print axioms FCP.BFSSS1V52K1D18V7G.originalSourceSpinUnitPair_eq_nativeHyperplanePairAction
+          #print axioms FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal
+          #print axioms FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_norm_one
+          #print axioms FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_span_eq
+          #print axioms FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_reflection_eq
+          #print axioms FCP.BFSSS1V52K1D18V7H.euclideanHyperplaneReflection_zero
+          #print axioms FCP.BFSSS1V52K1D18V7H.euclideanHyperplaneReflection_unitOrIdentity
+          #print axioms FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals
+          #print axioms FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_all_unit
+          #print axioms FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_length_le
+          #print axioms FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_reflectionProduct_eq
+          #print axioms FCP.BFSSS1V52K1D18V7I.originalSourceEuclidean_Cartan_zeroFreeUnitNormals
+          #print axioms FCP.BFSSS1V52K1D18V7J.euclideanUnitNormal_ne_zero
+          #print axioms FCP.BFSSS1V52K1D18V7J.euclideanUnitLine_finrank_one
+          #print axioms FCP.BFSSS1V52K1D18V7J.euclideanUnitHyperplane_reflection_det_neg_one
+          #print axioms FCP.BFSSS1V52K1D18V7K.euclideanIsometry_mul_det
+          #print axioms FCP.BFSSS1V52K1D18V7K.euclideanUnitReflectionList_det
+          #print axioms FCP.BFSSS1V52K1D18V7L.euclideanUnitReflectionList_even_of_det_one
+          #print axioms FCP.BFSSS1V52K1D18V7L.originalSourceSO_has_evenUnitCartanFactorization
+          #print axioms FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal
+          #print axioms FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal_roundtrip
+          #print axioms FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal_Q_one
+          #print axioms FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormalList_all_Q_one
+          #print axioms FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormalList_roundtrip
+          #print axioms FCP.BFSSS1V52K1D18V7N.originalSourceSpinUnitPair_euclideanNormals_action
+          #print axioms FCP.BFSSS1V52K1D18V7N.originalSourceSpinUnitPair_euclideanNormals_actionOnEuclidean
+          #print axioms FCP.BFSSS1V52K1D18V7O.originalSourceSO_toEuclideanIsometry_exactAction
+          #print axioms FCP.BFSSS1V52K1D18V7O.originalSourceSpinPairSO_toEuclidean_exactAction
+          #print axioms FCP.BFSSS1V52K1D18V7O.originalSourceSpinPairSO_toEuclidean_nativePair
+          #print axioms FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclidean_one
+          #print axioms FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclidean_mul
+          #print axioms FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclideanHom
+          #print axioms FCP.BFSSS1V52K1D18V7Q.originalSourceEvenUnitList_hasSpinWordImage
+          #print axioms FCP.BFSSS1V52K1D18V7R.originalSourceSO_toEuclideanIsometry_injective
+          #print axioms FCP.BFSSS1V52K1D18V7R.originalSourceSO_toEuclideanHom_injective
+          #check @FCP.BFSSS1V52K1D18A.source48_coordinate_sum
+          #check @FCP.BFSSS1V52K1D18A.source48_normalized_polar_coordinate_dot
+          #check @FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot
+          #check @FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot_self
+          #check @FCP.BFSSS1V52K1D18B.source48_clifford_generator_conjugation_from_row
+          #check @FCP.BFSSS1V52K1D18C.source48_rankOneConjugationMatrix_mulVec
+          #check @FCP.BFSSS1V52K1D18C.source48_rankOneMatrix_matches_original_clifford_conjugation
+          #check @FCP.BFSSS1V52K1D18C.source48_original_generator_rankOneMatrix_det
+          #check @FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_clifford_generator
+          #check @FCP.BFSSS1V52K1D18D.originalSourceInvertibleCliffordUnit_rankOne_action
+          #check @FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization
+          #check @FCP.BFSSS1V52K1D18E.originalSourceTwoGeneratorMatrices_det_one
+          #check @FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization
+          #check @FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitz_conjugated_generator_unique
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_clifford_generator
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_add
+          #check @FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_smul
+          #check @FCP.BFSSS1V52K1D18G.originalSourceSpin48_unit_mem_lipschitz
+          #check @FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_one
+          #check @FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_mul
+          #check @FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_agrees_originalSpin48
+          #check @FCP.BFSSS1V52K1D18G.originalSourceLipschitzLinearMap
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv_apply
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearRepresentation
+          #check @FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter
+          #check @FCP.BFSSS1V52K1D18I.originalSourceGeneratorUnit_mem_lipschitz
+          #check @FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit
+          #check @FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzLinearMap_eq_rankOne
+          #check @FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzDeterminant_neg_one
+          #check @FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit_involute_neg
+          #check @FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_det_neg_one
+          #check @FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_involute_neg
+          #check @FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_grade_det_agreement
+          #check @FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant
+          #check @FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_one
+          #check @FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_generator
+          #check @FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_generator_inv
+          #check @FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_mul
+          #check @FCP.BFSSS1V52K1D18L.originalSourceLipschitzGradeDetInvariant_all
+          #check @FCP.BFSSS1V52K1D18M.originalSourceSpin48_det_character_smul_unit
+          #check @FCP.BFSSS1V52K1D18M.originalSourceSpin48_det_character_smul_one
+          #check @FCP.BFSSS1V52K1D18N.originalSourceSpin48_lipschitzDetCharacter_real_one
+          #check @FCP.BFSSS1V52K1D18O.originalSourceSpin48_linearEquiv_eq_lipschitz
+          #check @FCP.BFSSS1V52K1D18O.originalSourceSpin48_linearEquiv_coe_eq_sourceLinearMap
+          #check @FCP.BFSSS1V52K1D18O.originalSourceSpin48_originalLinearMap_det_one
+          #check @FCP.BFSSS1V52K1D18P.originalSourceSpin48_quadraticIsometry_linearMap_eq
+          #check @FCP.BFSSS1V52K1D18P.originalSourceSpin48_quadraticIsometry_det_one
+          #check @FCP.BFSSS1V52K1D18R.source48QuadraticIsometryWitnessGL
+          #check @FCP.BFSSS1V52K1D18R.source48SpecialOrthogonalWitnessGL
+          #check @FCP.BFSSS1V52K1D18R.originalSourceSpin48_mem_isometryWitness
+          #check @FCP.BFSSS1V52K1D18R.originalSourceSpin48_mem_specialOrthogonalWitness
+          #check @FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation
+          #check @FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_coe
+          #check @FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_eq_one_iff_original
+          #check @FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_ker_eq_two_sign_set
+          #check @FCP.BFSSS1V52K1D18T.originalSourceSpin48SO_equal_action_iff_two_sign_fiber
+          #check @FCP.BFSSS1V52K1D18T.originalSourceSpin48SO_not_injective
+          #check @FCP.BFSSS1V52K1D18U.source48Quadratic_radical_eq_bot
+          #check @FCP.BFSSS1V52K1D18U.source48Quadratic_nondegenerate
+          #check @FCP.BFSSS1V52K1D18V1.source48_original_reflection_fixes_axis
+          #check @FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_normalized_polar_kernel
+          #check @FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_source_polar_orthogonal
+          #check @FCP.BFSSS1V52K1D18V2.source48_rankOneConjugationMatrix_square_mulVec
+          #check @FCP.BFSSS1V52K1D18V2.source48_originalCliffordRankOne_square_mulVec
+          #check @FCP.BFSSS1V52K1D18V3.source48Quadratic_smul_sub_preserve_of_polar_scaling
+          #check @FCP.BFSSS1V52K1D18V3.source48_originalCliffordRankOne_preserves_quadratic
+          #check @FCP.BFSSS1V52K1D18V4A.weightedSumSquares_one_posDef
+          #check @FCP.BFSSS1V52K1D18V4A.source48Quadratic_posDef
+          #check @FCP.BFSSS1V52K1D18V4A.source48Quadratic_pos_of_ne_zero
+          #check @FCP.BFSSS1V52K1D18V5.real_sqrt_inv_square_mul_self
+          #check @FCP.BFSSS1V52K1D18V5.source48Quadratic_normalized_value
+          #check @FCP.BFSSS1V52K1D18V5.source48Quadratic_exists_unit_of_ne_zero
+          #check @FCP.BFSSS1V52K1D18V6A.source48_unitGenerator_star_mul_self_neg_one
+          #check @FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_star_mul_self
+          #check @FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_mul_star_self
+          #check @FCP.BFSSS1V52K1D18V6A.source48_twoGenerators_mem_even
+          #check @FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_mem_unitary
+          #check @FCP.BFSSS1V52K1D18V6B.source48_unitGenerator_isUnit
+          #check @FCP.BFSSS1V52K1D18V6B.source48_twoUnitGenerators_mem_spin
+          #check @FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin
+          #check @FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_toUnits
+          #check @FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_action
+          #check @FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_linearMap_det_one
+          #check @FCP.BFSSS1V52K1D18V6D.originalSourceUnitRankOneMatrix
+          #check @FCP.BFSSS1V52K1D18V6D.originalSourceUnitPairSpin_action_no_instance_premises
+          #check @FCP.BFSSS1V52K1D18V6D.originalSourceUnitPairMatrices_det_one
+          #check @FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixSet
+          #check @FCP.BFSSS1V52K1D18V7A.originalSourceSpinPairSO_image_matrix_action
+          #check @FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixSet_subset_sourceSpinImage
+          #check @FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixClosure_le_sourceSpinImage
+          #check @FCP.BFSSS1V52K1D18V7A.sourceSpinSO_surjective_of_unitPairMatrixGeneration
+          #check @FCP.BFSSS1V52K1D18V7B.weightedSumSquares_one_eq_euclidean_norm_sq
+          #check @FCP.BFSSS1V52K1D18V7B.source48Quadratic_eq_euclidean_norm_sq
+          #check @FCP.BFSSS1V52K1D18V7B.source48Euclidean_reflections_generate_dim
+          #check @FCP.BFSSS1V52K1D18V7B.source48Euclidean_reflections_generate
+          #check @FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean
+          #check @FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_apply
+          #check @FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_norm_sq_eq_Q
+          #check @FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanLinearEquiv
+          #check @FCP.BFSSS1V52K1D18V7C.quadraticIsometry_norm_map_of_linearEquiv_norm_sq
+          #check @FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclidean_norm_map
+          #check @FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanIsometry
+          #check @FCP.BFSSS1V52K1D18V7D.sourceSO_has_originalQ_witness
+          #check @FCP.BFSSS1V52K1D18V7D.sourceSO_originalQIsometry
+          #check @FCP.BFSSS1V52K1D18V7D.sourceSO_originalQIsometry_underlying
+          #check @FCP.BFSSS1V52K1D18V7D.sourceSO_toEuclideanIsometry
+          #check @FCP.BFSSS1V52K1D18V7E.linearEquiv_conjugate_det_eq
+          #check @FCP.BFSSS1V52K1D18V7E.originalSourceSO_det_one
+          #check @FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanDet_eq_sourceDet
+          #check @FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanLinearEquiv_det_one
+          #check @FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanIsometry_det_one
+          #check @FCP.BFSSS1V52K1D18V7F.quadraticPolar_eq_two_realInner_of_normSq
+          #check @FCP.BFSSS1V52K1D18V7F.originalSourcePolar_eq_twoEuclideanInner
+          #check @FCP.BFSSS1V52K1D18V7F.originalSourceUnitQ_euclidean_norm_one
+          #check @FCP.BFSSS1V52K1D18V7F.originalSourceUnitRankOne_euclidean_action
+          #check @FCP.BFSSS1V52K1D18V7F.originalSourceUnitRankOne_eq_negative_euclideanHyperplaneFormula
+          #check @FCP.BFSSS1V52K1D18V7G.euclideanUnitLineReflection_apply
+          #check @FCP.BFSSS1V52K1D18V7G.originalSourceUnitRankOne_eq_nativeEuclideanLineReflection
+          #check @FCP.BFSSS1V52K1D18V7G.originalSourceUnitRankOne_eq_negativeNativeHyperplaneReflection
+          #check @FCP.BFSSS1V52K1D18V7G.originalSourceUnitPairMatrices_eq_nativeHyperplanePairAction
+          #check @FCP.BFSSS1V52K1D18V7G.originalSourceSpinUnitPair_eq_nativeHyperplanePairAction
+          #check @FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal
+          #check @FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_norm_one
+          #check @FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_span_eq
+          #check @FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_reflection_eq
+          #check @FCP.BFSSS1V52K1D18V7H.euclideanHyperplaneReflection_zero
+          #check @FCP.BFSSS1V52K1D18V7H.euclideanHyperplaneReflection_unitOrIdentity
+          #check @FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals
+          #check @FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_all_unit
+          #check @FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_length_le
+          #check @FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_reflectionProduct_eq
+          #check @FCP.BFSSS1V52K1D18V7I.originalSourceEuclidean_Cartan_zeroFreeUnitNormals
+          #check @FCP.BFSSS1V52K1D18V7J.euclideanUnitNormal_ne_zero
+          #check @FCP.BFSSS1V52K1D18V7J.euclideanUnitLine_finrank_one
+          #check @FCP.BFSSS1V52K1D18V7J.euclideanUnitHyperplane_reflection_det_neg_one
+          #check @FCP.BFSSS1V52K1D18V7K.euclideanIsometry_mul_det
+          #check @FCP.BFSSS1V52K1D18V7K.euclideanUnitReflectionList_det
+          #check @FCP.BFSSS1V52K1D18V7L.euclideanUnitReflectionList_even_of_det_one
+          #check @FCP.BFSSS1V52K1D18V7L.originalSourceSO_has_evenUnitCartanFactorization
+          #check @FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal
+          #check @FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal_roundtrip
+          #check @FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal_Q_one
+          #check @FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormalList_all_Q_one
+          #check @FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormalList_roundtrip
+          #check @FCP.BFSSS1V52K1D18V7N.originalSourceSpinUnitPair_euclideanNormals_action
+          #check @FCP.BFSSS1V52K1D18V7N.originalSourceSpinUnitPair_euclideanNormals_actionOnEuclidean
+          #check @FCP.BFSSS1V52K1D18V7O.originalSourceSO_toEuclideanIsometry_exactAction
+          #check @FCP.BFSSS1V52K1D18V7O.originalSourceSpinPairSO_toEuclidean_exactAction
+          #check @FCP.BFSSS1V52K1D18V7O.originalSourceSpinPairSO_toEuclidean_nativePair
+          #check @FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclidean_one
+          #check @FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclidean_mul
+          #check @FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclideanHom
+          #check @FCP.BFSSS1V52K1D18V7Q.originalSourceEvenUnitList_hasSpinWordImage
+          #check @FCP.BFSSS1V52K1D18V7R.originalSourceSO_toEuclideanIsometry_injective
+          #check @FCP.BFSSS1V52K1D18V7R.originalSourceSO_toEuclideanHom_injective
+          LEAN
+          lake env lean -DwarningAsError=true "$d/audit.lean" > "$d/audit.log" 2>&1 || { cat "$d/audit.log"; exit 1; }
+          cat "$d/audit.log"
+          python3 - "$d/audit.log" <<'PY'
+          import pathlib,re,sys
+          s=pathlib.Path(sys.argv[1]).read_text()
+          roots=[
+            'FCP.BFSSS1V52K1D18A.source48_coordinate_sum',
+            'FCP.BFSSS1V52K1D18A.source48_normalized_polar_coordinate_dot',
+            'FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot',
+            'FCP.BFSSS1V52K1D18B.source48NormalizedPolarRow_dot_self',
+            'FCP.BFSSS1V52K1D18B.source48_clifford_generator_conjugation_from_row',
+            'FCP.BFSSS1V52K1D18C.source48_rankOneConjugationMatrix_mulVec',
+            'FCP.BFSSS1V52K1D18C.source48_rankOneMatrix_matches_original_clifford_conjugation',
+            'FCP.BFSSS1V52K1D18C.source48_original_generator_rankOneMatrix_det',
+            'FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_clifford_generator',
+            'FCP.BFSSS1V52K1D18D.originalSourceInvertibleCliffordUnit_rankOne_action',
+            'FCP.BFSSS1V52K1D18D.originalSourceSpin48Isometry_twoGeneratorMatrices_of_unitFactorization',
+            'FCP.BFSSS1V52K1D18E.originalSourceTwoGeneratorMatrices_det_one',
+            'FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_eq_twoGeneratorToLin_of_unitFactorization',
+            'FCP.BFSSS1V52K1D18E.originalSourceSpin48LinearMap_det_one_of_twoUnitFactorization',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitz_conjugated_generator_unique',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_clifford_generator',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_add',
+            'FCP.BFSSS1V52K1D18F.sourceLipschitzVectorAction_smul',
+            'FCP.BFSSS1V52K1D18G.originalSourceSpin48_unit_mem_lipschitz',
+            'FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_one',
+            'FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_mul',
+            'FCP.BFSSS1V52K1D18G.sourceLipschitzVectorAction_agrees_originalSpin48',
+            'FCP.BFSSS1V52K1D18G.originalSourceLipschitzLinearMap',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearEquiv_apply',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzLinearRepresentation',
+            'FCP.BFSSS1V52K1D18H.originalSourceLipschitzDeterminantCharacter',
+            'FCP.BFSSS1V52K1D18I.originalSourceGeneratorUnit_mem_lipschitz',
+            'FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit',
+            'FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzLinearMap_eq_rankOne',
+            'FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzDeterminant_neg_one',
+            'FCP.BFSSS1V52K1D18I.originalSourceGeneratorLipschitzUnit_involute_neg',
+            'FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_det_neg_one',
+            'FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_involute_neg',
+            'FCP.BFSSS1V52K1D18J.originalSourceGeneratorInverse_grade_det_agreement',
+            'FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant',
+            'FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_one',
+            'FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_generator',
+            'FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_generator_inv',
+            'FCP.BFSSS1V52K1D18K.originalSourceLipschitzGradeDetInvariant_mul',
+            'FCP.BFSSS1V52K1D18L.originalSourceLipschitzGradeDetInvariant_all',
+            'FCP.BFSSS1V52K1D18M.originalSourceSpin48_det_character_smul_unit',
+            'FCP.BFSSS1V52K1D18M.originalSourceSpin48_det_character_smul_one',
+            'FCP.BFSSS1V52K1D18N.originalSourceSpin48_lipschitzDetCharacter_real_one',
+            'FCP.BFSSS1V52K1D18O.originalSourceSpin48_linearEquiv_eq_lipschitz',
+            'FCP.BFSSS1V52K1D18O.originalSourceSpin48_linearEquiv_coe_eq_sourceLinearMap',
+            'FCP.BFSSS1V52K1D18O.originalSourceSpin48_originalLinearMap_det_one',
+            'FCP.BFSSS1V52K1D18P.originalSourceSpin48_quadraticIsometry_linearMap_eq',
+            'FCP.BFSSS1V52K1D18P.originalSourceSpin48_quadraticIsometry_det_one',
+            'FCP.BFSSS1V52K1D18R.source48QuadraticIsometryWitnessGL',
+            'FCP.BFSSS1V52K1D18R.source48SpecialOrthogonalWitnessGL',
+            'FCP.BFSSS1V52K1D18R.originalSourceSpin48_mem_isometryWitness',
+            'FCP.BFSSS1V52K1D18R.originalSourceSpin48_mem_specialOrthogonalWitness',
+            'FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation',
+            'FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_coe',
+            'FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_eq_one_iff_original',
+            'FCP.BFSSS1V52K1D18S.originalSourceSpin48SpecialOrthogonalWitnessRepresentation_ker_eq_two_sign_set',
+            'FCP.BFSSS1V52K1D18T.originalSourceSpin48SO_equal_action_iff_two_sign_fiber',
+            'FCP.BFSSS1V52K1D18T.originalSourceSpin48SO_not_injective',
+            'FCP.BFSSS1V52K1D18U.source48Quadratic_radical_eq_bot',
+            'FCP.BFSSS1V52K1D18U.source48Quadratic_nondegenerate',
+            'FCP.BFSSS1V52K1D18V1.source48_original_reflection_fixes_axis',
+            'FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_normalized_polar_kernel',
+            'FCP.BFSSS1V52K1D18V1.source48_original_reflection_negates_source_polar_orthogonal',
+            'FCP.BFSSS1V52K1D18V2.source48_rankOneConjugationMatrix_square_mulVec',
+            'FCP.BFSSS1V52K1D18V2.source48_originalCliffordRankOne_square_mulVec',
+            'FCP.BFSSS1V52K1D18V3.source48Quadratic_smul_sub_preserve_of_polar_scaling',
+            'FCP.BFSSS1V52K1D18V3.source48_originalCliffordRankOne_preserves_quadratic',
+            'FCP.BFSSS1V52K1D18V4A.weightedSumSquares_one_posDef',
+            'FCP.BFSSS1V52K1D18V4A.source48Quadratic_posDef',
+            'FCP.BFSSS1V52K1D18V4A.source48Quadratic_pos_of_ne_zero',
+            'FCP.BFSSS1V52K1D18V5.real_sqrt_inv_square_mul_self',
+            'FCP.BFSSS1V52K1D18V5.source48Quadratic_normalized_value',
+            'FCP.BFSSS1V52K1D18V5.source48Quadratic_exists_unit_of_ne_zero',
+            'FCP.BFSSS1V52K1D18V6A.source48_unitGenerator_star_mul_self_neg_one',
+            'FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_star_mul_self',
+            'FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_mul_star_self',
+            'FCP.BFSSS1V52K1D18V6A.source48_twoGenerators_mem_even',
+            'FCP.BFSSS1V52K1D18V6A.source48_twoUnitGenerators_mem_unitary',
+            'FCP.BFSSS1V52K1D18V6B.source48_unitGenerator_isUnit',
+            'FCP.BFSSS1V52K1D18V6B.source48_twoUnitGenerators_mem_spin',
+            'FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin',
+            'FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_toUnits',
+            'FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_action',
+            'FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin_linearMap_det_one',
+            'FCP.BFSSS1V52K1D18V6D.originalSourceUnitRankOneMatrix',
+            'FCP.BFSSS1V52K1D18V6D.originalSourceUnitPairSpin_action_no_instance_premises',
+            'FCP.BFSSS1V52K1D18V6D.originalSourceUnitPairMatrices_det_one',
+            'FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixSet',
+            'FCP.BFSSS1V52K1D18V7A.originalSourceSpinPairSO_image_matrix_action',
+            'FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixSet_subset_sourceSpinImage',
+            'FCP.BFSSS1V52K1D18V7A.sourceSOUnitPairMatrixClosure_le_sourceSpinImage',
+            'FCP.BFSSS1V52K1D18V7A.sourceSpinSO_surjective_of_unitPairMatrixGeneration',
+            'FCP.BFSSS1V52K1D18V7B.weightedSumSquares_one_eq_euclidean_norm_sq',
+            'FCP.BFSSS1V52K1D18V7B.source48Quadratic_eq_euclidean_norm_sq',
+            'FCP.BFSSS1V52K1D18V7B.source48Euclidean_reflections_generate_dim',
+            'FCP.BFSSS1V52K1D18V7B.source48Euclidean_reflections_generate',
+            'FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean',
+            'FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_apply',
+            'FCP.BFSSS1V52K1D18V7C.originalSource48ToEuclidean_norm_sq_eq_Q',
+            'FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanLinearEquiv',
+            'FCP.BFSSS1V52K1D18V7C.quadraticIsometry_norm_map_of_linearEquiv_norm_sq',
+            'FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclidean_norm_map',
+            'FCP.BFSSS1V52K1D18V7C.originalSourceQIsometry_toEuclideanIsometry',
+            'FCP.BFSSS1V52K1D18V7D.sourceSO_has_originalQ_witness',
+            'FCP.BFSSS1V52K1D18V7D.sourceSO_originalQIsometry',
+            'FCP.BFSSS1V52K1D18V7D.sourceSO_originalQIsometry_underlying',
+            'FCP.BFSSS1V52K1D18V7D.sourceSO_toEuclideanIsometry',
+            'FCP.BFSSS1V52K1D18V7E.linearEquiv_conjugate_det_eq',
+            'FCP.BFSSS1V52K1D18V7E.originalSourceSO_det_one',
+            'FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanDet_eq_sourceDet',
+            'FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanLinearEquiv_det_one',
+            'FCP.BFSSS1V52K1D18V7E.originalSourceSO_euclideanIsometry_det_one',
+            'FCP.BFSSS1V52K1D18V7F.quadraticPolar_eq_two_realInner_of_normSq',
+            'FCP.BFSSS1V52K1D18V7F.originalSourcePolar_eq_twoEuclideanInner',
+            'FCP.BFSSS1V52K1D18V7F.originalSourceUnitQ_euclidean_norm_one',
+            'FCP.BFSSS1V52K1D18V7F.originalSourceUnitRankOne_euclidean_action',
+            'FCP.BFSSS1V52K1D18V7F.originalSourceUnitRankOne_eq_negative_euclideanHyperplaneFormula',
+            'FCP.BFSSS1V52K1D18V7G.euclideanUnitLineReflection_apply',
+            'FCP.BFSSS1V52K1D18V7G.originalSourceUnitRankOne_eq_nativeEuclideanLineReflection',
+            'FCP.BFSSS1V52K1D18V7G.originalSourceUnitRankOne_eq_negativeNativeHyperplaneReflection',
+            'FCP.BFSSS1V52K1D18V7G.originalSourceUnitPairMatrices_eq_nativeHyperplanePairAction',
+            'FCP.BFSSS1V52K1D18V7G.originalSourceSpinUnitPair_eq_nativeHyperplanePairAction',
+            'FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal',
+            'FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_norm_one',
+            'FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_span_eq',
+            'FCP.BFSSS1V52K1D18V7H.euclideanUnitNormal_reflection_eq',
+            'FCP.BFSSS1V52K1D18V7H.euclideanHyperplaneReflection_zero',
+            'FCP.BFSSS1V52K1D18V7H.euclideanHyperplaneReflection_unitOrIdentity',
+            'FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals',
+            'FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_all_unit',
+            'FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_length_le',
+            'FCP.BFSSS1V52K1D18V7I.sourceEuclideanUnitNormals_reflectionProduct_eq',
+            'FCP.BFSSS1V52K1D18V7I.originalSourceEuclidean_Cartan_zeroFreeUnitNormals',
+            'FCP.BFSSS1V52K1D18V7J.euclideanUnitNormal_ne_zero',
+            'FCP.BFSSS1V52K1D18V7J.euclideanUnitLine_finrank_one',
+            'FCP.BFSSS1V52K1D18V7J.euclideanUnitHyperplane_reflection_det_neg_one',
+            'FCP.BFSSS1V52K1D18V7K.euclideanIsometry_mul_det',
+            'FCP.BFSSS1V52K1D18V7K.euclideanUnitReflectionList_det',
+            'FCP.BFSSS1V52K1D18V7L.euclideanUnitReflectionList_even_of_det_one',
+            'FCP.BFSSS1V52K1D18V7L.originalSourceSO_has_evenUnitCartanFactorization',
+            'FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal',
+            'FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal_roundtrip',
+            'FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormal_Q_one',
+            'FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormalList_all_Q_one',
+            'FCP.BFSSS1V52K1D18V7M.originalSourceUnitNormalList_roundtrip',
+            'FCP.BFSSS1V52K1D18V7N.originalSourceSpinUnitPair_euclideanNormals_action',
+            'FCP.BFSSS1V52K1D18V7N.originalSourceSpinUnitPair_euclideanNormals_actionOnEuclidean',
+            'FCP.BFSSS1V52K1D18V7O.originalSourceSO_toEuclideanIsometry_exactAction',
+            'FCP.BFSSS1V52K1D18V7O.originalSourceSpinPairSO_toEuclidean_exactAction',
+            'FCP.BFSSS1V52K1D18V7O.originalSourceSpinPairSO_toEuclidean_nativePair',
+            'FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclidean_one',
+            'FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclidean_mul',
+            'FCP.BFSSS1V52K1D18V7P.originalSourceSO_toEuclideanHom',
+            'FCP.BFSSS1V52K1D18V7Q.originalSourceEvenUnitList_hasSpinWordImage',
+            'FCP.BFSSS1V52K1D18V7R.originalSourceSO_toEuclideanIsometry_injective',
+            'FCP.BFSSS1V52K1D18V7R.originalSourceSO_toEuclideanHom_injective',
+          ]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",s)
+          assert [n for n,_ in reports]==roots,reports
+          allowed={'propext','Classical.choice','Quot.sound'}
+          for name,axs in reports:
+              assert set(x.strip() for x in axs.split(',') if x.strip())<=allowed,(name,axs)
+          assert 'sorryAx' not in s
+          assert not re.search(r'\.lean:\d+:\d+:\s*(?:warning|error)',s)
+          for root in roots: assert root+' :' in s,('missing source-exact declaration type',root)
+          print('K1D18V7R_EXACT_ONE_HUNDRED_FIFTY_SEVEN_ROOT_TYPES_AXIOMS_PASS')
+          PY
+      - name: Preserve compiler and independent axiom evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-k1d18v7r-original-source-so-euclidean-injectivity-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/k1d18v7r-cache
+            ${{ runner.temp }}/k1d18v7r-fresh
+          if-no-files-found: warn
