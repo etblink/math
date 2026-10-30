@@ -40,7 +40,7 @@ nor original source labels are unfolded by this step. -/
 theorem euclideanUnitLineReflection_apply
     (u w : Euc48) (hu : ‖u‖ = 1) :
     (ℝ ∙ u).reflection w = (2 * inner ℝ u w) • u - w := by
-  simpa only [hu, one_pow, div_one, two_smul, two_mul, add_smul] using
+  simpa [hu, two_smul, two_mul, add_smul] using
     (Submodule.reflection_singleton_apply (𝕜 := ℝ) u w)
 
 /-- The ACTUAL accepted original source Clifford rank-one matrix
