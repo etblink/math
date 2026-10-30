@@ -75,10 +75,11 @@ theorem originalSourceEvenUnitList_hasSpinWordImage
         intro z hz
         exact hall z (by simp [hz])
       have hlen : (u :: v :: tail).length = tail.length + 2 := by
-        simp [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+        simp only [List.length_cons]
+        omega
       have htailEven : Even tail.length := by
         rw [hlen] at heven
-        simpa only [even_add_two] using heven
+        simpa [Nat.even_add] using heven
       rcases ih htail htailEven with ⟨t, ht⟩
       let pair : spinGroup Q :=
         FCP.BFSSS1V52K1D18V6C.originalSourceUnitPairSpin
