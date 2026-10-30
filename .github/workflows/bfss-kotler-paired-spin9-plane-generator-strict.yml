@@ -1,0 +1,124 @@
+name: BFSS V8A actual paired-label Spin9 plane generator strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9PlaneGeneratorProbe.lean
+      - .github/workflows/bfss-kotler-paired-spin9-plane-generator-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  paired-source-spin9-plane:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Exact immutable source and toolchain pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Core.lean)" = '9882359ced78b0a3bd7e2f057974bd0a031b3e60'
+          test "$(git hash-object "$p/SU2PairedThetaLabelCrosswalkProbe.lean")" = 'f3a2b41f902a20f6fe237ecce18dd7e869e9c45e'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean")" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSSource48FockIndexBridgeProbe.lean")" = '6d732c1acea271b7aba948c95755ac73d2d0fc0a'
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9PlaneGeneratorProbe.lean')
+          s = p.read_text()
+          assert s.count('theorem originalPairedPlane_transpose ') == 1
+          assert s.count('theorem originalPairedPlane_sq ') == 1
+          assert 'pairedLabelEquiv' in s and 'Matrix.reindexRingEquiv' in s
+          import re
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('K1D18V8A_EXACT_SOURCE_PIN_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Compile exact original gamma and paired-label ancestors
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build \
+            OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe \
+            OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2PairedThetaLabelCrosswalkProbe \
+            OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe
+
+      - name: Fresh compile actual 48-label plane source (warnings are errors)
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9PlaneGeneratorProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          mkdir -p "$RUNNER_TEMP/v8a"
+          timeout 750s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v8a/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v8a/compiler.log")" -eq 2
+
+      - name: Independent exact type and declaration-axiom audit
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V8A_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9PlaneGeneratorProbe
+          #check FCP.BFSSPairedSpin9Plane.originalPairedPlane_transpose
+          #check FCP.BFSSPairedSpin9Plane.originalPairedPlane_sq
+          #print axioms FCP.BFSSPairedSpin9Plane.originalPairedPlane_transpose
+          #print axioms FCP.BFSSPairedSpin9Plane.originalPairedPlane_sq
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V8A_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v8a/declaration-audit.log"
+          python3 - <<'PY'
+          import os,re,pathlib
+          d=pathlib.Path(os.environ['RUNNER_TEMP'])/'v8a'
+          s=(d/'declaration-audit.log').read_text()
+          roots=[
+            'FCP.BFSSPairedSpin9Plane.originalPairedPlane_transpose',
+            'FCP.BFSSPairedSpin9Plane.originalPairedPlane_sq',
+          ]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",s)
+          assert [n for n,_ in reports]==roots,reports
+          for name,ax in reports:
+              assert set(x.strip() for x in ax.split(',') if x.strip()) <= {'propext','Classical.choice','Quot.sound'},(name,ax)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          for name in roots: assert name+' :' in s,('missing exact declaration type',name)
+          print('K1D18V8A_EXACT_TWO_ROOT_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Retain immutable compiler and declaration evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v8a-paired-spin9-plane-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v8a
+          if-no-files-found: warn
