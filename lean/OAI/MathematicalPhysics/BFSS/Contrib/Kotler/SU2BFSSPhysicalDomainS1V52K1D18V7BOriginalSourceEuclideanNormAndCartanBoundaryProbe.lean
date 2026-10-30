@@ -62,7 +62,15 @@ its value equals squared canonical L2 norm after an explicit
 typed equivalence of the 48 real coordinates. -/
 theorem source48Quadratic_eq_euclidean_norm_sq (a : Source48Vector) :
     Q a = ‖(WithLp.toLp 2 a : Euc48)‖ ^ 2 := by
-  exact weightedSumSquares_one_eq_euclidean_norm_sq (ι := Source48Label) a
+  have hSourceQ : source48Quadratic =
+      QuadraticMap.weightedSumSquares ℝ
+        (fun _ : Source48Label => (1 : ℝ)) := rfl
+  calc
+    Q a = (QuadraticMap.weightedSumSquares ℝ
+        (fun _ : Source48Label => (1 : ℝ))) a :=
+      congrArg (fun q : QuadraticForm ℝ Source48Vector => q a) hSourceQ
+    _ = ‖(WithLp.toLp 2 a : Euc48)‖ ^ 2 :=
+      weightedSumSquares_one_eq_euclidean_norm_sq (ι := Source48Label) a
 
 /-- PINNED Mathlib already proves reflection factorization, with
 a bound of the auxiliary real Euclidean dimension. Source SO
