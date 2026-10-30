@@ -69,9 +69,9 @@ private theorem gamma_swap (r s : SpaceIndex) (hrs : r ≠ s) :
     _ = -(gamma r * gamma s) := by rw [h]; simp
 
 private theorem plane16_transpose (r s : SpaceIndex) (hrs : r ≠ s) :
-    (plane16 r s)ᵀ = -(plane16 r s) := by
+    (plane16 r s).transpose = -(plane16 r s) := by
   calc
-    (plane16 r s)ᵀ = -(gamma s * gamma r) := by
+    (plane16 r s).transpose = -(gamma s * gamma r) := by
       simp only [plane16, Matrix.transpose_neg, Matrix.transpose_mul]
       rw [FCP.BFSSGamma9.gamma_symmetric s,
         FCP.BFSSGamma9.gamma_symmetric r]
@@ -93,12 +93,12 @@ private theorem plane16_sq (r s : SpaceIndex) (hrs : r ≠ s) :
       rw [gamma_sq_one r, gamma_sq_one s, one_mul]
 
 private theorem kroneckerPlane_transpose (r s : SpaceIndex) (hrs : r ≠ s) :
-    (((1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) ⊗ₖ plane16 r s)ᵀ) =
+    (((1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) ⊗ₖ plane16 r s).transpose) =
       -((1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) ⊗ₖ plane16 r s) := by
   calc
-    (((1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) ⊗ₖ plane16 r s)ᵀ) =
-        ((1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ)ᵀ) ⊗ₖ
-          (plane16 r s)ᵀ := by
+    (((1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) ⊗ₖ plane16 r s).transpose) =
+        ((1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ).transpose) ⊗ₖ
+          (plane16 r s).transpose := by
       exact (Matrix.kroneckerMap_transpose (· * ·)
         (1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) (plane16 r s)).symm
     _ = (1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) ⊗ₖ
@@ -134,18 +134,18 @@ private theorem kroneckerPlane_sq (r s : SpaceIndex) (hrs : r ≠ s) :
 
 /-- Source-indexed doubled Spin(9) plane matrix is skew. -/
 theorem originalPairedPlane_transpose (r s : SpaceIndex) (hrs : r ≠ s) :
-    (originalPairedPlane r s)ᵀ = -(originalPairedPlane r s) := by
+    (originalPairedPlane r s).transpose = -(originalPairedPlane r s) := by
   let E := Matrix.reindexRingEquiv ℝ pairedColorSpinEquiv
   let B : Matrix (ColorIndex 2 × SpinIndex) (ColorIndex 2 × SpinIndex) ℝ :=
     (1 : Matrix (ColorIndex 2) (ColorIndex 2) ℝ) ⊗ₖ plane16 r s
   have htransport (M : Matrix (ColorIndex 2 × SpinIndex)
       (ColorIndex 2 × SpinIndex) ℝ) :
-      (E M)ᵀ = E Mᵀ := by
+      (E M).transpose = E M.transpose := by
     ext p q
     rfl
-  change (E B)ᵀ = -(E B)
+  change (E B).transpose = -(E B)
   calc
-    (E B)ᵀ = E Bᵀ := htransport B
+    (E B).transpose = E B.transpose := htransport B
     _ = E (-B) := by
       exact congrArg E (kroneckerPlane_transpose r s hrs)
     _ = -(E B) := by rw [map_neg]
