@@ -27,7 +27,7 @@ These differ in 44 of the 48 positions. Source proof objects must be expressed u
 
 ## 3. First genuinely missing Lean theorem — bounded target
 
-Build the real source 48×48 **infinitesimal** spin-plane matrix using the accepted gamma source and the exact paired label:
+Build the real source 48×48 **doubled spin-plane** matrix using the literal gamma source and the exact paired label:
 
 ```text
 labelUnpair(p) := pairedLabelEquiv.symm p  -- (α,a)
@@ -39,6 +39,8 @@ K48(r,s)[p,q] :=
 ```
 
 All indices `p,q` must have type `Source48Label`. This is equivalent to `P (I_3 ⊗ K16(r,s)) Pᵀ` for the **source-derived** permutation `P`, not an assumption of equality between paired and color-major label maps.
+
+**Normalization warning:** `K16(r,s)=-gamma r * gamma s` is the **doubled** plane generator used by the FCP exact-integer diagnostics. The conventionally normalized infinitesimal spinor generator is `J16(r,s)=K16(r,s)/2`; hence `K16²=-I` while `J16²=-(1/4)I`. The corresponding 48-label matrices inherit this factor. In subsequent Lie brackets and global integration, preserve the factor of 2 and the source sign rather than silently treating `K16` as `J16`. Both target roots below deliberately concern the doubled `K48`.
 
 **First target declaration roots:**
 
