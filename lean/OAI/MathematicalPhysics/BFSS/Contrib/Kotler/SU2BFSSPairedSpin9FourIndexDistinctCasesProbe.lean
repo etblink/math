@@ -45,7 +45,7 @@ theorem zeroDiagonalFourIndex_adjacent_case
       -(zeroDiagonalPairedPlane r t + zeroDiagonalPairedPlane r t) :=
       zeroDiagonalPairedPlane_adjacent_bracket r s t hrs hst hrt
     _ = zeroDiagonalFourIndexRHS r s s t := by
-      simp [zeroDiagonalFourIndexRHS, hrs, hst, hrt, Ne.symm hrs]
+      simp [zeroDiagonalFourIndexRHS, hrs, hst, hrt]
 
 /-- One common right endpoint. -/
 theorem zeroDiagonalFourIndex_shared_right_case
@@ -73,7 +73,7 @@ theorem zeroDiagonalFourIndex_shared_left_case
       zeroDiagonalPairedPlane s t + zeroDiagonalPairedPlane s t :=
       zeroDiagonalPairedPlane_shared_left_bracket r s t hrs hrt hst
     _ = zeroDiagonalFourIndexRHS r s r t := by
-      simp [zeroDiagonalFourIndexRHS, hrs, hrt, hst, Ne.symm hrs]
+      simp [zeroDiagonalFourIndexRHS, hrt, hst, Ne.symm hrs]
 
 /-- One common crossed endpoint. -/
 theorem zeroDiagonalFourIndex_cross_right_case
@@ -87,7 +87,7 @@ theorem zeroDiagonalFourIndex_cross_right_case
       -(zeroDiagonalPairedPlane s t + zeroDiagonalPairedPlane s t) :=
       zeroDiagonalPairedPlane_cross_right_bracket r s t hrs hrt hst
     _ = zeroDiagonalFourIndexRHS r s t r := by
-      simp [zeroDiagonalFourIndexRHS, hrs, hrt, hst, Ne.symm hrs]
+      simp [zeroDiagonalFourIndexRHS, hrt, hst, Ne.symm hrs]
 
 #print axioms zeroDiagonalFourIndex_disjoint_case
 #print axioms zeroDiagonalFourIndex_adjacent_case
