@@ -32,7 +32,7 @@ theorem pairedSkewExp_mem_orthogonalGroup
     pairedSkewExp_transpose_eq_inv X hX t]
   have hdet : IsUnit (exp (t • X)).det :=
     (Matrix.isUnit_iff_isUnit_det _).mp (Matrix.isUnit_exp (t • X))
-  exact Matrix.mul_nonsing_inv hdet
+  exact Matrix.mul_nonsing_inv _ hdet
 
 /-- The image of the actual canonical V9T real LieHom generates a
 one-parameter orthogonal matrix family on the original 48 labels. -/
@@ -49,7 +49,7 @@ theorem coordinateToPairedCanonicalSkewLieHom_exp_mem_orthogonalGroup
         Matrix Source48Label Source48Label ℝ))).det :=
     (Matrix.isUnit_iff_isUnit_det _).mp
       (Matrix.isUnit_exp _)
-  exact Matrix.mul_nonsing_inv hdet
+  exact Matrix.mul_nonsing_inv _ hdet
 
 /-- Every original normalized paired plane generates actual
 orthogonal matrices, with no substitution of the color-major labels. -/
@@ -61,7 +61,7 @@ theorem normalizedPairedPlane_exp_mem_orthogonalGroup
     normalizedPairedPlane_exp_transpose_eq_inv r s t]
   have hdet : IsUnit (exp (t • normalizedPairedPlane r s)).det :=
     (Matrix.isUnit_iff_isUnit_det _).mp (Matrix.isUnit_exp _)
-  exact Matrix.mul_nonsing_inv hdet
+  exact Matrix.mul_nonsing_inv _ hdet
 
 #print axioms pairedSkewExp_mem_orthogonalGroup
 #print axioms coordinateToPairedCanonicalSkewLieHom_exp_mem_orthogonalGroup
