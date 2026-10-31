@@ -39,12 +39,12 @@ theorem coordinateToPairedLinearMap_matrixUnit
   -- Use exact single-support obligations instead of a global ite simp.
   rw [Finset.sum_eq_single r]
   · rw [Finset.sum_eq_single s]
-    · simp [Matrix.single_apply]
+    · simp
     · intro y _ hy
-      simp [Matrix.single_apply, hy.symm]
+      simp [hy.symm]
     · simp
   · intro x _ hx
-    simp [Matrix.single_apply, hx.symm]
+    simp [hx.symm]
   · simp
 
 #print axioms coordinateToPairedLinearMap_matrixUnit
