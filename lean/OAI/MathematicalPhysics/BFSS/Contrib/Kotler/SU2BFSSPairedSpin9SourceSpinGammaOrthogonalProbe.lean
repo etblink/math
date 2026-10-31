@@ -48,8 +48,12 @@ theorem source9GammaCliffordAlgHom_reverse
       (source9GammaCliffordAlgHom a).transpose := by
   induction a using CliffordAlgebra.induction with
   | algebraMap r =>
-      simp only [CliffordAlgebra.reverse.commutes,
-        AlgHom.commutes, Algebra.algebraMap_eq_smul_one,
+      change source9GammaCliffordAlgHom
+        (CliffordAlgebra.reverse
+          (r • (1 : CliffordAlgebra source9Quadratic))) =
+        (source9GammaCliffordAlgHom
+          (r • (1 : CliffordAlgebra source9Quadratic))).transpose
+      simp only [map_smul, CliffordAlgebra.reverse.map_one, map_one,
         Matrix.transpose_smul, Matrix.transpose_one]
   | ι v =>
       simpa only [CliffordAlgebra.reverse_ι,
