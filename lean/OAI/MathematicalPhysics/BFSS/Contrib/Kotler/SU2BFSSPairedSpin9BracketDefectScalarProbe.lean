@@ -32,7 +32,6 @@ theorem coordinateToPairedBracketDefect_smul_left
   unfold coordinateToPairedBracketDefect
   simp only [smul_mul_assoc, mul_smul_comm,
     map_smul, map_sub, smul_sub]
-  abel
 
 /-- Real homogeneity of the exact commutator defect in its
 second source-native nine-index matrix argument. -/
@@ -43,7 +42,6 @@ theorem coordinateToPairedBracketDefect_smul_right
   unfold coordinateToPairedBracketDefect
   simp only [smul_mul_assoc, mul_smul_comm,
     map_smul, map_sub, smul_sub]
-  abel
 
 #print axioms coordinateToPairedBracketDefect_smul_left
 #print axioms coordinateToPairedBracketDefect_smul_right
