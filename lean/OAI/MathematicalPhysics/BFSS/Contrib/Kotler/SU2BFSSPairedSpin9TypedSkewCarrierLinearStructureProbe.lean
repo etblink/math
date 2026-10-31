@@ -69,7 +69,7 @@ theorem coordinateToPairedSkewCarrier_smul
   apply Subtype.ext
   change coordinateToPairedLinearMap (c • A.val) =
     c • coordinateToPairedLinearMap A.val
-  exact map_smul c A.val
+  exact map_smul coordinateToPairedLinearMap c A.val
 
 #print axioms coordinateToPairedSkewCarrier_add
 #print axioms coordinateToPairedSkewCarrier_smul

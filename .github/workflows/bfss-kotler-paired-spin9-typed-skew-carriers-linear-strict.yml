@@ -69,7 +69,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9NativeSkewCommutatorEqualityProbe.lean")" = 'ca26ae3f9942eb8d3ad639e77356a7df3c41456f'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9NativeSkewCommutatorClosureProbe.lean")" = '19c556c7c7d7610eac9c0030c03983344757408d'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedSkewCarrierCommutatorProbe.lean")" = 'd8d36c3207031a7429e00c0b3a7e383bf277e4ea'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedSkewCarrierLinearStructureProbe.lean")" = '112d2225e5823a32a260b2c831fd49f8429eba5b'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedSkewCarrierLinearStructureProbe.lean")" = 'ed6d4722aaedd7e5442e62ceb4a47bd5504ba0d5'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -83,7 +83,7 @@ jobs:
           assert 'SU2BFSSPairedSpin9TypedSkewCarrierCommutatorProbe' in s
           assert 'Matrix.transpose_add' in s and 'Matrix.transpose_smul' in s
           assert 'map_add coordinateToPairedLinearMap A.val B.val' in s
-          assert 'map_smul c A.val' in s
+          assert 'map_smul coordinateToPairedLinearMap c A.val' in s
           assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
           print('K1D18V9Q_EXACT_SOURCE_PIN_PREFLIGHT_PASS')
           PY
