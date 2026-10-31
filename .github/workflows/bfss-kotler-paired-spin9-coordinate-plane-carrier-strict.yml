@@ -42,7 +42,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9UniversalFourIndexBracketProbe.lean")" = 'b4b302b306e543194789d1af450d3658d93e6f09'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9ZeroDiagonalSkewSquareProbe.lean")" = 'a4a4ada7dab04c87cdad14206656c6b81b32aeae'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe.lean")" = '46e02a38f6647458132039bc1f44b0358c9c4f44'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean")" = '1ac381a90bc2d95e482d9681afc1d2f93ef4e33f'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean")" = '92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -52,7 +52,7 @@ jobs:
           assert s.count('theorem coordinatePlane9_transpose')==1
           assert 'SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe' in s
           assert 'Matrix SpaceIndex SpaceIndex ℝ' in s
-          assert 'propext (and_comm)' in s
+          assert 'simp only [and_comm]' in s
           assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
           print('K1D18V8S_EXACT_SOURCE_PIN_PREFLIGHT_PASS')
           PY

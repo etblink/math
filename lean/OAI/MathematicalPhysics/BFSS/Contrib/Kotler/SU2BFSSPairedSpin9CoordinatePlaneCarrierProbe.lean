@@ -53,11 +53,8 @@ theorem coordinatePlane9_transpose (r s : SpaceIndex) :
        (if j = s ∧ i = r then (1 : ℝ) else 0)) =
     -((if i = r ∧ j = s then (1 : ℝ) else 0) -
        (if i = s ∧ j = r then (1 : ℝ) else 0))
-  have h₁ : (j = r ∧ i = s) = (i = s ∧ j = r) :=
-    propext (and_comm)
-  have h₂ : (j = s ∧ i = r) = (i = r ∧ j = s) :=
-    propext (and_comm)
-  rw [h₁, h₂]
+  -- Simplification is congruence-aware inside dependent ite conditions.
+  simp only [and_comm]
   abel
 
 #print axioms coordinatePlane9_self
