@@ -82,9 +82,9 @@ jobs:
           assert s.count('noncomputable def coordinatePlaneLie')==1
           assert s.count('noncomputable def pairedPlaneLie')==1
           assert s.count('skewAdjointMatricesLieSubalgebra')==7
-                    assert s.count('mem_skewAdjointMatricesLieSubalgebra')==2
-                    assert s.count('mem_skewAdjointMatricesSubmodule')==2
-                    assert 'Matrix.skewAdjointMatricesLieSubalgebra' not in s
+          assert s.count('mem_skewAdjointMatricesLieSubalgebra')==2
+          assert s.count('mem_skewAdjointMatricesSubmodule')==2
+          assert 'Matrix.skewAdjointMatricesLieSubalgebra' not in s
           assert 'Mathlib.Algebra.Lie.SkewAdjoint' in s
           assert 'coordinateToPairedLinearMap_coordinatePlane' in s
           assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
