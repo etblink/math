@@ -31,24 +31,15 @@ theorem coordinateToPairedBracketDefect_plane_skew_right
     (B : Matrix SpaceIndex SpaceIndex ℝ)
     (hB : B.transpose = -B) :
     coordinateToPairedBracketDefect (coordinatePlane9 r s) B = 0 := by
-  have heval (C : Matrix SpaceIndex SpaceIndex ℝ) :
-      (coordinateToPairedBracketDefect_rightLinear
-        (coordinatePlane9 r s)) C =
-          coordinateToPairedBracketDefect (coordinatePlane9 r s) C := rfl
-  calc
-    coordinateToPairedBracketDefect (coordinatePlane9 r s) B =
-        (coordinateToPairedBracketDefect_rightLinear
-          (coordinatePlane9 r s)) B := (heval B).symm
-    _ = (coordinateToPairedBracketDefect_rightLinear
-          (coordinatePlane9 r s))
-          ((1 / 2 : ℝ) •
-            (∑ t : SpaceIndex, ∑ u : SpaceIndex,
-              (B t u) • coordinatePlane9 t u)) := by
-        rw [← coordinateSkewMatrix9_plane_spanning B hB]
-    _ = 0 := by
-        simp only [map_smul, map_sum, heval,
-          coordinateToPairedBracketDefect_coordinatePlanes,
-          smul_zero, Finset.sum_const_zero]
+  let L : Matrix SpaceIndex SpaceIndex ℝ →ₗ[ℝ]
+      Matrix Source48Label Source48Label ℝ :=
+    coordinateToPairedBracketDefect_rightLinear (coordinatePlane9 r s)
+  have hzero (t u : SpaceIndex) : L (coordinatePlane9 t u) = 0 :=
+    coordinateToPairedBracketDefect_coordinatePlanes r s t u
+  change L B = 0
+  rw [coordinateSkewMatrix9_plane_spanning B hB]
+  simp only [map_smul, map_sum, hzero, smul_zero,
+    Finset.sum_const_zero]
 
 #print axioms coordinateToPairedBracketDefect_plane_skew_right
 
