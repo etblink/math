@@ -1,0 +1,157 @@
+name: BFSS V8J source paired Spin9 four-index diagonal boundary strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe.lean
+      - .github/workflows/bfss-kotler-paired-spin9-four-index-diagonal-boundary-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-paired-zero-diagonal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Exact original paired and gamma pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2PairedThetaLabelCrosswalkProbe.lean")" = 'f3a2b41f902a20f6fe237ecce18dd7e869e9c45e'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean")" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9PlaneGeneratorProbe.lean")" = '02b8e54464b0aea151c96cefd316a86270cf8871'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9AdjacentLieBracketProbe.lean")" = '2186cce50ad2f06c125b7281cbe10f319d975a81'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9OrientationSwapProbe.lean")" = '58cd7bbd6d1314dc684309b0fe4724688d00e59f'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ZeroDiagonalInterfaceProbe.lean")" = '8aa93c41a83164e3a99eca139de477d82842d589'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe.lean")" = '90d99fe7fcf5a7b194a45186705f761e858be700'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe.lean').read_text()
+          roots=[
+            'zeroDiagonalFourIndexRHS_left_self',
+            'zeroDiagonalFourIndexRHS_right_self',
+            'zeroDiagonalFourIndex_left_self_bracket',
+            'zeroDiagonalFourIndex_right_self_bracket',
+          ]
+          for name in roots:
+              assert s.count('theorem '+name+' ')==1,(name,'missing unique theorem')
+          assert 'zeroDiagonalPairedPlane r t + zeroDiagonalPairedPlane r t' in s
+          assert 'if r = u then' in s and 'if s = t then' in s
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('K1D18V8J_SOURCE_EXACT_PIN_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Compile accepted original V8H zero-diagonal interface
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9ZeroDiagonalInterfaceProbe
+
+      - name: Fresh compile exact V8J source with warnings as errors
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          mkdir -p "$RUNNER_TEMP/v8j"
+          timeout 750s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v8j/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v8j/compiler.log")" -eq 4
+
+      - name: Fresh independent Lean theorem specialization and axiom gate
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V8J_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe
+          open OAI.BFSSQuantum
+          open FCP.BFSSS1V0
+          example (r t u : SpaceIndex) :
+              FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS r r t u = 0 :=
+            FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_left_self r t u
+          example (r s t : SpaceIndex) :
+              FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS r s t t = 0 :=
+            FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_right_self r s t
+          example (r t u : SpaceIndex) :
+              FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane r r *
+                FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane t u -
+                FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane t u *
+                  FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane r r =
+                FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS r r t u :=
+            FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_left_self_bracket r t u
+          example (r s t : SpaceIndex) :
+              FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane r s *
+                FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane t t -
+                FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane t t *
+                  FCP.BFSSPairedSpin9Plane.zeroDiagonalPairedPlane r s =
+                FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS r s t t :=
+            FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_right_self_bracket r s t
+          #check FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_left_self
+          #check FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_right_self
+          #check FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_left_self_bracket
+          #check FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_right_self_bracket
+          #print axioms FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_left_self
+          #print axioms FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_right_self
+          #print axioms FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_left_self_bracket
+          #print axioms FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_right_self_bracket
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V8J_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v8j/declaration-audit.log"
+          python3 - <<'PY'
+          import os,pathlib,re
+          s=(pathlib.Path(os.environ['RUNNER_TEMP'])/'v8j'/'declaration-audit.log').read_text()
+          roots=[
+            'FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_left_self',
+            'FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS_right_self',
+            'FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_left_self_bracket',
+            'FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndex_right_self_bracket',
+          ]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",s)
+          assert [n for n,_ in reports]==roots,reports
+          for name,ax in reports:
+              assert set(x.strip() for x in ax.split(',') if x.strip()) <= {
+                'propext','Classical.choice','Quot.sound'},(name,ax)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('K1D18V8J_FOUR_SOURCE_PAIRED_DIAGONAL_BOUNDARIES_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve compiler and independent axiom artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v8j-original-paired-zero-diagonal-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v8j
+          if-no-files-found: warn
