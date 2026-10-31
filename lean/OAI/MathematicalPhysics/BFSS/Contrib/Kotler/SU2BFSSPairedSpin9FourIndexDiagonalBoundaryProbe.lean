@@ -36,13 +36,13 @@ noncomputable def zeroDiagonalFourIndexRHS
 theorem zeroDiagonalFourIndexRHS_left_self (r t u : SpaceIndex) :
     zeroDiagonalFourIndexRHS r r t u = 0 := by
   by_cases hrt : r = t <;> by_cases hru : r = u
-  all_goals simp [zeroDiagonalFourIndexRHS, hrt, hru] <;> abel
+  all_goals simp [zeroDiagonalFourIndexRHS, hrt, hru]
 
 /-- The proposed universal RHS correctly vanishes for a right diagonal plane. -/
 theorem zeroDiagonalFourIndexRHS_right_self (r s t : SpaceIndex) :
     zeroDiagonalFourIndexRHS r s t t = 0 := by
   by_cases hst : s = t <;> by_cases hrt : r = t
-  all_goals simp [zeroDiagonalFourIndexRHS, hst, hrt] <;> abel
+  all_goals simp [zeroDiagonalFourIndexRHS, hst, hrt]
 
 /-- Exact source-native four-index bracket in the left diagonal case. -/
 theorem zeroDiagonalFourIndex_left_self_bracket (r t u : SpaceIndex) :
