@@ -33,7 +33,7 @@ noncomputable def pairedSkewContinuousOneParameterOrthogonalHom
       (Matrix.orthogonalGroup Source48Label ℝ) :=
   ⟨pairedSkewOneParameterOrthogonalHom X hX, by
     have h := (pairedSkewOneParameterOrthogonalHom_continuous_real X hX).comp
-      (Multiplicative.continuous_toAdd (X := ℝ))
+      (continuous_toAdd (X := ℝ))
     simpa only [Multiplicative.ofAdd_toAdd] using h⟩
 
 /-- Exact original paired matrix evaluation of the continuous hom. -/
@@ -53,7 +53,7 @@ noncomputable def normalizedPairedPlaneContinuousOneParameterOrthogonalHom
   ⟨normalizedPairedPlaneOneParameterOrthogonalHom r s, by
     have h :=
       (normalizedPairedPlaneOneParameterOrthogonalHom_continuous_real r s).comp
-        (Multiplicative.continuous_toAdd (X := ℝ))
+        (continuous_toAdd (X := ℝ))
     simpa only [Multiplicative.ofAdd_toAdd] using h⟩
 
 /-- Exact original normalized plane exponential as a
@@ -75,7 +75,7 @@ noncomputable def coordinateToPairedCanonicalContinuousOneParameterOrthogonalHom
   ⟨coordinateToPairedCanonicalOneParameterOrthogonalHom A, by
     have h :=
       (coordinateToPairedCanonicalOneParameterOrthogonalHom_continuous_real A).comp
-        (Multiplicative.continuous_toAdd (X := ℝ))
+        (continuous_toAdd (X := ℝ))
     simpa only [Multiplicative.ofAdd_toAdd] using h⟩
 
 /-- The canonical LieHom-image continuous one-parameter flow
