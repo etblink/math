@@ -32,14 +32,14 @@ attribute [local instance 100] LieRing.ofAssociativeRing
 Mathlib unit-form skew-adjoint matrix Lie subalgebra. -/
 theorem coordinateSkewLieSubalgebra_eq_mathlib :
     coordinateSkewLieSubalgebra =
-      Matrix.skewAdjointMatricesLieSubalgebra
+      skewAdjointMatricesLieSubalgebra
         (1 : Matrix SpaceIndex SpaceIndex ℝ) := by
   ext A
   change (A.transpose = -A) ↔
-    A ∈ Matrix.skewAdjointMatricesLieSubalgebra
+    A ∈ skewAdjointMatricesLieSubalgebra
       (1 : Matrix SpaceIndex SpaceIndex ℝ)
-  rw [Matrix.mem_skewAdjointMatricesLieSubalgebra,
-      Matrix.mem_skewAdjointMatricesSubmodule]
+  rw [mem_skewAdjointMatricesLieSubalgebra,
+      mem_skewAdjointMatricesSubmodule]
   change (A.transpose = -A) ↔
     (A.transpose * (1 : Matrix SpaceIndex SpaceIndex ℝ) =
       (1 : Matrix SpaceIndex SpaceIndex ℝ) * (-A))
@@ -50,14 +50,14 @@ actual canonical Mathlib unit-form skew-adjoint Lie subalgebra,
 with NO color-major substitution. -/
 theorem pairedSkewLieSubalgebra_eq_mathlib :
     pairedSkewLieSubalgebra =
-      Matrix.skewAdjointMatricesLieSubalgebra
+      skewAdjointMatricesLieSubalgebra
         (1 : Matrix Source48Label Source48Label ℝ) := by
   ext X
   change (X.transpose = -X) ↔
-    X ∈ Matrix.skewAdjointMatricesLieSubalgebra
+    X ∈ skewAdjointMatricesLieSubalgebra
       (1 : Matrix Source48Label Source48Label ℝ)
-  rw [Matrix.mem_skewAdjointMatricesLieSubalgebra,
-      Matrix.mem_skewAdjointMatricesSubmodule]
+  rw [mem_skewAdjointMatricesLieSubalgebra,
+      mem_skewAdjointMatricesSubmodule]
   change (X.transpose = -X) ↔
     (X.transpose * (1 : Matrix Source48Label Source48Label ℝ) =
       (1 : Matrix Source48Label Source48Label ℝ) * (-X))

@@ -71,7 +71,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedSkewCarrierCommutatorProbe.lean")" = 'd8d36c3207031a7429e00c0b3a7e383bf277e4ea'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedSkewCarrierLinearStructureProbe.lean")" = 'ed6d4722aaedd7e5442e62ceb4a47bd5504ba0d5'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9LieHomProbe.lean")" = '1b17d6542ebec81f12fd0231e8478f66679efd53'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9MathlibSkewBridgeProbe.lean")" = '579e6b7b2ef85b099c7bdc5bc4b91bc8bc9ade52'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9MathlibSkewBridgeProbe.lean")" = 'ee038db09af741bdd1af4b811d8daf79bb70ed37'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -81,7 +81,10 @@ jobs:
           assert s.count('theorem coordinateToPairedSkewLieHom_coordinatePlane')==1
           assert s.count('noncomputable def coordinatePlaneLie')==1
           assert s.count('noncomputable def pairedPlaneLie')==1
-          assert s.count('Matrix.skewAdjointMatricesLieSubalgebra')==4
+          assert s.count('skewAdjointMatricesLieSubalgebra')==7
+                    assert s.count('mem_skewAdjointMatricesLieSubalgebra')==2
+                    assert s.count('mem_skewAdjointMatricesSubmodule')==2
+                    assert 'Matrix.skewAdjointMatricesLieSubalgebra' not in s
           assert 'Mathlib.Algebra.Lie.SkewAdjoint' in s
           assert 'coordinateToPairedLinearMap_coordinatePlane' in s
           assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
