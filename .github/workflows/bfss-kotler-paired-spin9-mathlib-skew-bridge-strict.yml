@@ -101,14 +101,14 @@ jobs:
           test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
           test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
 
-      - name: Compile qualified V9S native to original-paired genuine LieHom ancestry
+      - name: Compile qualified V9R genuine LieHom and all V9S ancestry
         shell: bash
         timeout-minutes: 55
         run: |
           set -euo pipefail
           source "$HOME/.elan/env"
           cd lean
-          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9TypedSkewCarrierLinearStructureProbe
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9LieHomProbe
 
       - name: Fresh compile exact V9S Mathlib skew source with warnings as errors
         shell: bash
