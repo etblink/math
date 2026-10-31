@@ -1,0 +1,166 @@
+name: BFSS V10B original Fock-paired continuous one-parameter special orthogonal strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe.lean
+      - .github/workflows/bfss-kotler-paired-spin9-continuous-special-orthogonal-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-paired-continuous-special-orthogonal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify V10A acceptance, source SHA, original 48 labels and exact V10B declarations
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10b"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10b/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ContinuousMonoidOrthogonalFlowProbe.lean")" = '2b7cd4659e6aa9b8554281b045f9b6d56e30ffc6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SpecialOrthogonalExponentialProbe.lean")" = '2875f6ad5b6664438897e37a112a3269af6634c0'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe.lean")" = '6cfd2b7fd2c240818350da5b41ce6a5446b12e20'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe.lean').read_text()
+          defs=["pairedSkewOneParameterSpecialOrthogonalHom","pairedSkewContinuousOneParameterSpecialOrthogonalHom","normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom","coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom"]
+          checks=["pairedSkewContinuousOneParameterSpecialOrthogonalHom_apply","normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom_apply","coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom_apply"]
+          for n in defs:
+              assert s.count('noncomputable def '+n+'\n') == 1, n
+          for n in checks:
+              assert s.count('theorem '+n+'\n') == 1, n
+          assert s.count('#print axioms ') == 7
+          assert 'Matrix.specialOrthogonalGroup Source48Label ℝ' in s
+          assert 'ContinuousMonoidHom (Multiplicative ℝ)' in s
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('V10B_SOURCE_EXACT_ORIGINAL_PAIRED_AND_7_DECLARATIONS_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Compile accepted V10A original paired determinant-one and SO48 ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SpecialOrthogonalExponentialProbe
+
+      - name: Fresh V10B source compile with warnings as errors
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 750s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10b/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10b/compiler.log")" -eq 7
+
+      - name: Independently elaborate seven genuine typed SO48 declarations and audit their exact axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V10B_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe
+          open FCP.BFSSPairedSpin9Plane
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open NormedSpace
+          noncomputable example (X : Matrix Source48Label Source48Label ℝ)
+              (hX : X.transpose = -X) :
+              Multiplicative ℝ →* Matrix.specialOrthogonalGroup Source48Label ℝ :=
+            pairedSkewOneParameterSpecialOrthogonalHom X hX
+          noncomputable example (X : Matrix Source48Label Source48Label ℝ)
+              (hX : X.transpose = -X) :
+              ContinuousMonoidHom (Multiplicative ℝ)
+                (Matrix.specialOrthogonalGroup Source48Label ℝ) :=
+            pairedSkewContinuousOneParameterSpecialOrthogonalHom X hX
+          noncomputable example (X : Matrix Source48Label Source48Label ℝ)
+              (hX : X.transpose = -X) (t : ℝ) :
+              ((pairedSkewContinuousOneParameterSpecialOrthogonalHom X hX
+                (Multiplicative.ofAdd t)) : Matrix Source48Label Source48Label ℝ) =
+                exp (t • X) :=
+            pairedSkewContinuousOneParameterSpecialOrthogonalHom_apply X hX t
+          noncomputable example (r s : SpaceIndex) :
+              ContinuousMonoidHom (Multiplicative ℝ)
+                (Matrix.specialOrthogonalGroup Source48Label ℝ) :=
+            normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom r s
+          noncomputable example (r s : SpaceIndex) (t : ℝ) :
+              ((normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom
+                r s (Multiplicative.ofAdd t)) : Matrix Source48Label Source48Label ℝ) =
+                exp (t • normalizedPairedPlane r s) :=
+            normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom_apply r s t
+          noncomputable example (A : skewAdjointMatricesLieSubalgebra
+                (1 : Matrix SpaceIndex SpaceIndex ℝ)) :
+              ContinuousMonoidHom (Multiplicative ℝ)
+                (Matrix.specialOrthogonalGroup Source48Label ℝ) :=
+            coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom A
+          noncomputable example (A : skewAdjointMatricesLieSubalgebra
+                (1 : Matrix SpaceIndex SpaceIndex ℝ)) (t : ℝ) :
+              ((coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom
+                A (Multiplicative.ofAdd t)) : Matrix Source48Label Source48Label ℝ) =
+                exp (t • ((coordinateToPairedCanonicalSkewLieHom A) :
+                  Matrix Source48Label Source48Label ℝ)) :=
+            coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom_apply A t
+          #print axioms FCP.BFSSPairedSpin9Plane.pairedSkewOneParameterSpecialOrthogonalHom
+          #print axioms FCP.BFSSPairedSpin9Plane.pairedSkewContinuousOneParameterSpecialOrthogonalHom
+          #print axioms FCP.BFSSPairedSpin9Plane.pairedSkewContinuousOneParameterSpecialOrthogonalHom_apply
+          #print axioms FCP.BFSSPairedSpin9Plane.normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom
+          #print axioms FCP.BFSSPairedSpin9Plane.normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom_apply
+          #print axioms FCP.BFSSPairedSpin9Plane.coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom
+          #print axioms FCP.BFSSPairedSpin9Plane.coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom_apply
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V10B_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v10b/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os, re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10b'/'declaration-audit.log').read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          names=["pairedSkewOneParameterSpecialOrthogonalHom","pairedSkewContinuousOneParameterSpecialOrthogonalHom","pairedSkewContinuousOneParameterSpecialOrthogonalHom_apply","normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom","normalizedPairedPlaneContinuousOneParameterSpecialOrthogonalHom_apply","coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom","coordinateToPairedCanonicalContinuousOneParameterSpecialOrthogonalHom_apply"]
+          expected={'FCP.BFSSPairedSpin9Plane.'+x for x in names}
+          assert len(reports)==7 and {n for n,_ in reports}==expected, reports
+          allowed={'propext','Classical.choice','Quot.sound'}
+          for name, axioms in reports:
+              assert set(a.strip() for a in axioms.split(','))<=allowed, (name, axioms)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10B_ORIGINAL_PAIRED_CONTINUOUS_SO48_7_EXACT_TYPED_AXIOMS_PASS')
+          PY
+
+      - name: Preserve compiler and independent axiom artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10b-original-paired-continuous-so48-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10b
+          if-no-files-found: warn
