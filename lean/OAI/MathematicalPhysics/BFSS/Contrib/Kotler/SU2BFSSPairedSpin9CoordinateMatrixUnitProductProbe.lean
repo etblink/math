@@ -27,13 +27,13 @@ theorem coordinateMatrixUnit9_mul (r s t u : SpaceIndex) :
     else 0 := by
   by_cases hst : s = t
   · subst t
-    simpa using
-      (Matrix.single_mul_single_same (c := (1 : ℝ)) r s u (1 : ℝ))
+    simp
   · have hzero :
         (Matrix.single r s (1 : ℝ) : Matrix SpaceIndex SpaceIndex ℝ) *
           Matrix.single t u (1 : ℝ) = 0 :=
       Matrix.single_mul_single_of_ne (c := (1 : ℝ)) r s t hst (1 : ℝ)
-    simpa [hst] using hzero
+    simp only [hst, ite_false]
+    exact hzero
 
 #print axioms coordinateMatrixUnit9_mul
 
