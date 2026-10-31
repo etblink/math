@@ -33,9 +33,14 @@ noncomputable def coordinateSkewLieSubalgebra :
   zero_mem' := by simp
   add_mem' := by
     intro A B hA hB
+    change A.transpose = -A at hA
+    change B.transpose = -B at hB
+    change (A + B).transpose = -(A + B)
     rw [Matrix.transpose_add, hA, hB, neg_add]
   smul_mem' := by
     intro c A hA
+    change A.transpose = -A at hA
+    change (c • A).transpose = -(c • A)
     rw [Matrix.transpose_smul, hA, smul_neg]
   lie_mem' := by
     intro A B hA hB
@@ -49,9 +54,14 @@ noncomputable def pairedSkewLieSubalgebra :
   zero_mem' := by simp
   add_mem' := by
     intro X Y hX hY
+    change X.transpose = -X at hX
+    change Y.transpose = -Y at hY
+    change (X + Y).transpose = -(X + Y)
     rw [Matrix.transpose_add, hX, hY, neg_add]
   smul_mem' := by
     intro c X hX
+    change X.transpose = -X at hX
+    change (c • X).transpose = -(c • X)
     rw [Matrix.transpose_smul, hX, smul_neg]
   lie_mem' := by
     intro X Y hX hY

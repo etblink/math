@@ -70,7 +70,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9NativeSkewCommutatorClosureProbe.lean")" = '19c556c7c7d7610eac9c0030c03983344757408d'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedSkewCarrierCommutatorProbe.lean")" = 'd8d36c3207031a7429e00c0b3a7e383bf277e4ea'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedSkewCarrierLinearStructureProbe.lean")" = 'ed6d4722aaedd7e5442e62ceb4a47bd5504ba0d5'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9LieHomProbe.lean")" = '6a0e0a11c47341425a4c072eddefa2843be48c14'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9LieHomProbe.lean")" = '1b17d6542ebec81f12fd0231e8478f66679efd53'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -83,6 +83,10 @@ jobs:
           assert 'coordinateToPairedLinearMap_skew_commutator' in s
           assert 'coordinateToPairedLinearMap_image_transpose' in s
           assert 'map_smul coordinateToPairedLinearMap c A.val' in s
+          assert s.count('change (A + B).transpose = -(A + B)')==1
+          assert s.count('change (X + Y).transpose = -(X + Y)')==1
+          assert s.count('change (c • A).transpose = -(c • A)')==1
+          assert s.count('change (c • X).transpose = -(c • X)')==1
           assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
           print('K1D18V9R_EXACT_SOURCE_PIN_PREFLIGHT_PASS')
           PY
