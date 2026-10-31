@@ -34,7 +34,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9OrthogonalGroupMembershipProbe.lean")" = 'b471ebb2da441c4be099bed168f6fa3651e24a99'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9OneParameterOrthogonalFlowProbe.lean")" = 'fe56b8b55ea9e72d50b8991962d8b22def7375d9'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedOneParameterOrthogonalHomProbe.lean")" = '51f634be2330d53e976bf12d82be01f1f64683f6'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9ContinuousOrthogonalFlowProbe.lean")" = 'd5dc8389a906b08f499367468fcf7d8e7aa8b2fe'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ContinuousOrthogonalFlowProbe.lean")" = '8a09e7db98b842da215d7bc2e23d651d8b3e03ca'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -45,7 +45,7 @@ jobs:
                  'coordinateToPairedCanonicalOneParameterOrthogonalHom_continuous_real']
           for name in names:
             assert s.count('theorem '+name+'\n')==1,name
-          assert 'open scoped Norms.Operator' in s
+          assert 'open scoped Matrix.Norms.Operator' in s
           assert 'NormedSpace.exp_continuous' in s
           assert 'Continuous.subtype_mk' in s
           assert 'normalizedPairedPlane_transpose' in s

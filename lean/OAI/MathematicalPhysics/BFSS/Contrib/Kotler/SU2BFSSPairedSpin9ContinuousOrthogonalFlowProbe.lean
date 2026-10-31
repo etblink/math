@@ -16,7 +16,7 @@ Spin(9) group integration, SO(48) orientation or a Spin(48) lift.
 -/
 
 set_option autoImplicit false
-open scoped Norms.Operator
+open scoped Matrix.Norms.Operator
 
 namespace FCP.BFSSPairedSpin9Plane
 noncomputable section
@@ -30,8 +30,11 @@ in its real scalar parameter, using the pinned operator norm. -/
 theorem pairedMatrixExp_continuous_real
     (X : Matrix Source48Label Source48Label ℝ) :
     Continuous (fun t : ℝ => exp (t • X)) := by
-  exact (NormedSpace.exp_continuous).comp
-    (continuous_id.smul continuous_const)
+  have hscalar : Continuous (fun t : ℝ => t • X) :=
+    continuous_id.smul continuous_const
+  exact (NormedSpace.exp_continuous :
+    Continuous (exp : Matrix Source48Label Source48Label ℝ →
+      Matrix Source48Label Source48Label ℝ)).comp hscalar
 
 /-- The accepted generic V9X source-exact orthogonal-group-valued
 one-parameter hom has a continuous real-parameter evaluation. -/
