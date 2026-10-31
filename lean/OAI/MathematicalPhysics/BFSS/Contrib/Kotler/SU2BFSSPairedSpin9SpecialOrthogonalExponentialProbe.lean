@@ -42,12 +42,13 @@ theorem pairedSkewExp_det_one
     change (exp (u • X)).det ^ 2 = (1 : ℝ) ^ 2
     have horth :
         exp (u • X) * (exp (u • X)).transpose =
-          (1 : Matrix Source48Label Source48Label ℝ) :=
-      (Matrix.mem_orthogonalGroup_iff).mp
-        (pairedSkewExp_mem_orthogonalGroup X hX u)
+          (1 : Matrix Source48Label Source48Label ℝ) := by
+      have hm := pairedSkewExp_mem_orthogonalGroup X hX u
+      rw [Matrix.mem_orthogonalGroup_iff] at hm
+      exact hm
     have hdet := congrArg Matrix.det horth
     simpa only [Matrix.det_mul, Matrix.det_transpose,
-      Matrix.det_one, pow_two, one_pow] using hdet
+      Matrix.det_one, pow_two, one_mul] using hdet
   have hzero : f 0 = 1 := by
     change (exp ((0 : ℝ) • X)).det = 1
     rw [pairedMatrixExp_zero X]
@@ -57,7 +58,7 @@ theorem pairedSkewExp_det_one
       hf.continuousOn continuousOn_const hsq
       (by intro _ _; exact one_ne_zero)
       (Set.mem_univ (0 : ℝ)) hzero
-  exact hglobal t (Set.mem_univ t)
+  exact hglobal (Set.mem_univ t)
 
 /-- The same original paired-Fock exponentials are members
 of the genuine pinned Matrix.specialOrthogonalGroup subtype. -/
