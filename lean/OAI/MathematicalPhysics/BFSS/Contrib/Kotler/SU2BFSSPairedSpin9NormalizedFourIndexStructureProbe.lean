@@ -35,13 +35,12 @@ the correctly signed single-H normalized four-index RHS for all indices. -/
 theorem normalizedFourIndexRHS_scalar_bridge (r s t u : SpaceIndex) :
     (1 / 4 : ℝ) • zeroDiagonalFourIndexRHS r s t u =
       normalizedFourIndexRHS r s t u := by
-  classical
-  have hterm (p : Prop) (a b : SpaceIndex) :
+  have hterm (p : Prop) [Decidable p] (a b : SpaceIndex) :
       (1 / 4 : ℝ) •
           (if p then zeroDiagonalPairedPlane a b + zeroDiagonalPairedPlane a b else 0) =
         -(if p then normalizedPairedPlane a b else 0) := by
     by_cases hp : p
-    · simp only [if_pos hp]
+    · simp only [hp, ite_true]
       change (1 / 4 : ℝ) •
           (zeroDiagonalPairedPlane a b + zeroDiagonalPairedPlane a b) =
         -((-(1 / 2 : ℝ)) • zeroDiagonalPairedPlane a b)
