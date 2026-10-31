@@ -34,7 +34,10 @@ noncomputable def pairedSkewContinuousOneParameterOrthogonalHom
   ⟨pairedSkewOneParameterOrthogonalHom X hX, by
     have h := (pairedSkewOneParameterOrthogonalHom_continuous_real X hX).comp
       (continuous_toAdd (X := ℝ))
-    simpa only [Function.comp_apply, ofAdd_toAdd] using h⟩
+    change Continuous (fun u : Multiplicative ℝ =>
+      pairedSkewOneParameterOrthogonalHom X hX
+        (Multiplicative.ofAdd (Multiplicative.toAdd u))) at h
+    simpa only [ofAdd_toAdd] using h⟩
 
 /-- Exact original paired matrix evaluation of the continuous hom. -/
 theorem pairedSkewContinuousOneParameterOrthogonalHom_apply
@@ -54,7 +57,10 @@ noncomputable def normalizedPairedPlaneContinuousOneParameterOrthogonalHom
     have h :=
       (normalizedPairedPlaneOneParameterOrthogonalHom_continuous_real r s).comp
         (continuous_toAdd (X := ℝ))
-    simpa only [Function.comp_apply, ofAdd_toAdd] using h⟩
+    change Continuous (fun u : Multiplicative ℝ =>
+      normalizedPairedPlaneOneParameterOrthogonalHom r s
+        (Multiplicative.ofAdd (Multiplicative.toAdd u))) at h
+    simpa only [ofAdd_toAdd] using h⟩
 
 /-- Exact original normalized plane exponential as a
 continuous orthogonal-hom matrix evaluation. -/
@@ -76,7 +82,10 @@ noncomputable def coordinateToPairedCanonicalContinuousOneParameterOrthogonalHom
     have h :=
       (coordinateToPairedCanonicalOneParameterOrthogonalHom_continuous_real A).comp
         (continuous_toAdd (X := ℝ))
-    simpa only [Function.comp_apply, ofAdd_toAdd] using h⟩
+    change Continuous (fun u : Multiplicative ℝ =>
+      coordinateToPairedCanonicalOneParameterOrthogonalHom A
+        (Multiplicative.ofAdd (Multiplicative.toAdd u))) at h
+    simpa only [ofAdd_toAdd] using h⟩
 
 /-- The canonical LieHom-image continuous one-parameter flow
 uses exactly its original source 48×48 matrix exponential. -/
