@@ -130,10 +130,10 @@ jobs:
           import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9BracketDefectLinearExtensionsProbe
           open OAI.BFSSQuantum
           open FCP.BFSSS1V0
-          example (A : Matrix SpaceIndex SpaceIndex ℝ) :
+          noncomputable example (A : Matrix SpaceIndex SpaceIndex ℝ) :
               Matrix SpaceIndex SpaceIndex ℝ →ₗ[ℝ] Matrix Source48Label Source48Label ℝ :=
             FCP.BFSSPairedSpin9Plane.coordinateToPairedBracketDefect_rightLinear A
-          example (B : Matrix SpaceIndex SpaceIndex ℝ) :
+          noncomputable example (B : Matrix SpaceIndex SpaceIndex ℝ) :
               Matrix SpaceIndex SpaceIndex ℝ →ₗ[ℝ] Matrix Source48Label Source48Label ℝ :=
             FCP.BFSSPairedSpin9Plane.coordinateToPairedBracketDefect_leftLinear B
           example (r s t u : SpaceIndex) :
