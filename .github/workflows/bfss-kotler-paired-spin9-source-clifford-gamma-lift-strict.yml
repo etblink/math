@@ -1,0 +1,137 @@
+name: BFSS V10C original nine-gamma all-vector Clifford algebra lift strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean
+      - .github/workflows/bfss-kotler-paired-spin9-source-clifford-gamma-lift-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-nine-gamma-clifford:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify exact nine-source gammas and V10B boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10c"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10c/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe.lean")" = '6cfd2b7fd2c240818350da5b41ce6a5446b12e20'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean').read_text()
+          for n in ["source9Quadratic_eq_dot","gammaNineRealLinear_sq","source9GammaCliffordAlgHom_generator"]:
+              assert s.count('theorem '+n+' ') == 1 or s.count('theorem '+n+'\n') == 1, n
+          assert s.count('noncomputable def source9GammaCliffordAlgHom :') == 1
+          assert s.count('noncomputable def gammaNineRealLinear :') == 1
+          assert s.count('#print axioms ') == 4
+          assert 'FCP.BFSSGamma9' in s and 'CliffordAlgebra.lift' in s
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('V10C_EXACT_GAMMA9_SOURCE_CLIFFORD_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Recompile accepted exact nine gamma source and V10B SO48 ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe
+
+      - name: Fresh V10C gamma universal Clifford map with warningAsError
+        shell: bash
+        timeout-minutes: 18
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 900s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10c/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10c/compiler.log")" -eq 4
+
+      - name: Independently check four exact typed Clifford algebra declarations and axiom whitelist
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V10C_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example (v : SpaceIndex → ℝ) :
+              source9Quadratic v = dotProduct v v :=
+            source9Quadratic_eq_dot v
+          noncomputable example (v : SpaceIndex → ℝ) :
+              gammaNineRealLinear v * gammaNineRealLinear v =
+                (source9Quadratic v) • (1 : GammaMatrix) :=
+            gammaNineRealLinear_sq v
+          noncomputable example :
+              CliffordAlgebra source9Quadratic →ₐ[ℝ] GammaMatrix :=
+            source9GammaCliffordAlgHom
+          noncomputable example (v : SpaceIndex → ℝ) :
+              source9GammaCliffordAlgHom
+                (CliffordAlgebra.ι source9Quadratic v) =
+                  gammaNineRealLinear v :=
+            source9GammaCliffordAlgHom_generator v
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9Quadratic_eq_dot
+          #print axioms FCP.BFSSPairedSpin9Clifford.gammaNineRealLinear_sq
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9GammaCliffordAlgHom
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9GammaCliffordAlgHom_generator
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V10C_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v10c/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10c'/'declaration-audit.log').read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          expected={'FCP.BFSSPairedSpin9Clifford.'+x for x in ["source9Quadratic_eq_dot","gammaNineRealLinear_sq","source9GammaCliffordAlgHom","source9GammaCliffordAlgHom_generator"]}
+          assert len(reports)==4 and {n for n,_ in reports}==expected, reports
+          allowed={'propext','Classical.choice','Quot.sound'}
+          for n,axs in reports:
+              assert set(a.strip() for a in axs.split(','))<=allowed, (n,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10C_EXACT_SOURCE_GAMMA_CLIFFORD_4_TYPED_AXIOMS_PASS')
+          PY
+
+      - name: Preserve compiler, exact SHA and independent axiom artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10c-original-nine-gamma-clifford-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10c
+          if-no-files-found: warn
