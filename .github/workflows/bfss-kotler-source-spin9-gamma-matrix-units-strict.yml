@@ -1,0 +1,133 @@
+name: BFSS V10D source-exact global algebraic Spin9 gamma matrix units strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinGammaMatrixUnitsProbe.lean
+      - .github/workflows/bfss-kotler-source-spin9-gamma-matrix-units-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-spin9-global-matrix-units:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin original nine gamma Clifford source and V10D declaration types
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10d"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10d/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ContinuousSpecialOrthogonalFlowProbe.lean")" = '6cfd2b7fd2c240818350da5b41ce6a5446b12e20'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceSpinGammaMatrixUnitsProbe.lean")" = '351d4b0f1a704ca4e02261b36bf49245e22f80dd'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinGammaMatrixUnitsProbe.lean').read_text()
+          assert s.count('noncomputable def source9SpinGammaMatrixUnitsHom :') == 1
+          for n in ['source9SpinGammaMatrixUnitsHom_apply', 'source9SpinGammaMatrix_isUnit']:
+              assert s.count('theorem '+n+'\n') == 1
+          assert s.count('#print axioms ') == 3
+          assert 'spinGroup source9Quadratic →* GammaMatrixˣ' in s
+          assert 'Units.map' in s and 'spinGroup.toUnits' in s
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('V10D_ORIGINAL_SOURCE_SPIN9_MATRIX_UNITS_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Compile accepted V10C original gamma Clifford source
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe
+
+      - name: Fresh V10D global algebraic source Spin9 matrix-units compile, warnings fatal
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinGammaMatrixUnitsProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 750s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10d/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10d/compiler.log")" -eq 3
+
+      - name: Independently elaborate three exact source Spin9 global matrix units declarations and audit axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V10D_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceSpinGammaMatrixUnitsProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open OAI.BFSSQuantum
+          noncomputable example :
+              spinGroup source9Quadratic →* GammaMatrixˣ :=
+            source9SpinGammaMatrixUnitsHom
+          noncomputable example (g : spinGroup source9Quadratic) :
+              ((source9SpinGammaMatrixUnitsHom g) : GammaMatrix) =
+                source9GammaCliffordAlgHom
+                  (g : CliffordAlgebra source9Quadratic) :=
+            source9SpinGammaMatrixUnitsHom_apply g
+          noncomputable example (g : spinGroup source9Quadratic) :
+              IsUnit (source9GammaCliffordAlgHom
+                (g : CliffordAlgebra source9Quadratic)) :=
+            source9SpinGammaMatrix_isUnit g
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaMatrixUnitsHom
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaMatrixUnitsHom_apply
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaMatrix_isUnit
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V10D_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v10d/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, os
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10d'/'declaration-audit.log').read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          expected={'FCP.BFSSPairedSpin9Clifford.'+x for x in ["source9SpinGammaMatrixUnitsHom","source9SpinGammaMatrixUnitsHom_apply","source9SpinGammaMatrix_isUnit"]}
+          assert len(reports)==3 and {n for n,_ in reports}==expected, reports
+          allowed={'propext','Classical.choice','Quot.sound'}
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(','))<=allowed, (name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10D_ORIGINAL_SOURCE_SPIN9_GLOBAL_MATRIX_UNITS_3_TYPED_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA, compiler evidence and independent axiom audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10d-original-spin9-matrix-units-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10d
+          if-no-files-found: warn
