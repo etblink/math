@@ -27,8 +27,7 @@ theorem coordinateToPairedFiniteLift_smul
     coordinateToPairedFiniteLift (c • A) =
       c • coordinateToPairedFiniteLift A := by
   simp only [coordinateToPairedFiniteLift, Matrix.smul_apply,
-    Finset.smul_sum, smul_smul]
-  simp only [mul_comm, mul_left_comm, mul_assoc]
+    Finset.smul_sum, smul_smul, smul_eq_mul, mul_assoc]
 
 #print axioms coordinateToPairedFiniteLift_smul
 
