@@ -61,7 +61,7 @@ jobs:
           assert s.count('theorem coordinateToPairedLinearMap_matrixUnit')==1
           assert 'SU2BFSSPairedSpin9TypedLinearMapProbe' in s
           assert 'Mathlib.Algebra.Module.BigOperators' in s
-          assert 'Finset.sum_ite_eq\'' in s
+          assert 'Finset.sum_eq_single' in s
           assert 'Matrix.single r s (1 : ℝ)' in s
           assert 'normalizedPairedPlane r s' in s
           assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
