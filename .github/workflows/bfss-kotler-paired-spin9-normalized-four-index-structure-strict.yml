@@ -1,0 +1,151 @@
+name: BFSS V8R source-original normalized four-index structure strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe.lean
+      - .github/workflows/bfss-kotler-paired-spin9-normalized-four-index-structure-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-paired-normalized-four-index-structure-bracket:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Exact original paired and gamma pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2PairedThetaLabelCrosswalkProbe.lean")" = 'f3a2b41f902a20f6fe237ecce18dd7e869e9c45e'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean")" = '65db1f822b86bfbf400957a0aaa94784d6cb7a39'
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9PlaneGeneratorProbe.lean")" = '02b8e54464b0aea151c96cefd316a86270cf8871'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9AdjacentLieBracketProbe.lean")" = '2186cce50ad2f06c125b7281cbe10f319d975a81'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9OrientationSwapProbe.lean")" = '58cd7bbd6d1314dc684309b0fe4724688d00e59f'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SharedLeftBracketProbe.lean")" = 'ce5cdc1d8073262b867fc705e0adc4f0ac5e743e'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ZeroDiagonalBracketsProbe.lean")" = 'd9c453029eed5ffba4d498bb333a9d5302261aa3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ZeroDiagonalInterfaceProbe.lean")" = '8aa93c41a83164e3a99eca139de477d82842d589'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe.lean")" = 'd0fba846741de21848820f46a179d7cc0251c113'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9FourIndexPairCoincidenceProbe.lean")" = '10c1f7ea6bccece8003632d9fc43ace907dc27f1'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9FourIndexDistinctCasesProbe.lean")" = '35b6e9acd0504885521727ec0e655f7e51813ea0'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9UniversalFourIndexBracketProbe.lean")" = 'b4b302b306e543194789d1af450d3658d93e6f09'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9ZeroDiagonalSkewSquareProbe.lean")" = 'a4a4ada7dab04c87cdad14206656c6b81b32aeae'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9NormalizedPlaneInterfaceProbe.lean")" = 'a217471af24ba8c086746d8ade85d1337a1b66d6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9NormalizedAdjacentBracketProbe.lean")" = '8ffeb7c8a369f356837c47b2e514175f24c897f4'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9NormalizedUniversalScalarBracketProbe.lean")" = 'bf441cca38636920498b6283ca178aa82aa0b2a3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe.lean")" = 'b26cd3eb1378d8533934255a08c487364f927447'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe.lean').read_text()
+          assert s.count('theorem normalizedFourIndexRHS_scalar_bridge')==1
+          assert s.count('theorem normalizedPairedPlane_universal_four_index_bracket')==1
+          assert 'SU2BFSSPairedSpin9NormalizedUniversalScalarBracketProbe' in s
+          assert 'zeroDiagonalFourIndexRHS' in s
+          assert 'normalizedPairedPlane r t else 0' in s
+          assert 'normalizedFourIndexRHS_scalar_bridge' in s
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('K1D18V8R_EXACT_SOURCE_PIN_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Compile source-original accepted V8M, V8O and V8Q ancestors
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build \
+            OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9UniversalFourIndexBracketProbe \
+            OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9NormalizedPlaneInterfaceProbe \
+            OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9NormalizedUniversalScalarBracketProbe
+
+      - name: Fresh compile exact V8R source with warnings as errors
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          mkdir -p "$RUNNER_TEMP/v8r"
+          timeout 750s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v8r/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v8r/compiler.log")" -eq 2
+
+      - name: Fresh independent Lean theorem specialization and axiom gate
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V8R_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe
+          open OAI.BFSSQuantum
+          open FCP.BFSSS1V0
+          example (r s t u : SpaceIndex) :
+              (1 / 4 : ℝ) • FCP.BFSSPairedSpin9Plane.zeroDiagonalFourIndexRHS r s t u =
+                FCP.BFSSPairedSpin9Plane.normalizedFourIndexRHS r s t u :=
+            FCP.BFSSPairedSpin9Plane.normalizedFourIndexRHS_scalar_bridge r s t u
+          example (r s t u : SpaceIndex) :
+              FCP.BFSSPairedSpin9Plane.normalizedPairedPlane r s *
+                  FCP.BFSSPairedSpin9Plane.normalizedPairedPlane t u -
+                FCP.BFSSPairedSpin9Plane.normalizedPairedPlane t u *
+                  FCP.BFSSPairedSpin9Plane.normalizedPairedPlane r s =
+                FCP.BFSSPairedSpin9Plane.normalizedFourIndexRHS r s t u :=
+            FCP.BFSSPairedSpin9Plane.normalizedPairedPlane_universal_four_index_bracket r s t u
+          #check FCP.BFSSPairedSpin9Plane.normalizedFourIndexRHS_scalar_bridge
+          #check FCP.BFSSPairedSpin9Plane.normalizedPairedPlane_universal_four_index_bracket
+          #print axioms FCP.BFSSPairedSpin9Plane.normalizedFourIndexRHS_scalar_bridge
+          #print axioms FCP.BFSSPairedSpin9Plane.normalizedPairedPlane_universal_four_index_bracket
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V8R_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v8r/declaration-audit.log"
+          python3 - <<'PY'
+          import os,pathlib,re
+          s=(pathlib.Path(os.environ['RUNNER_TEMP'])/'v8r'/'declaration-audit.log').read_text()
+          roots=[
+            'FCP.BFSSPairedSpin9Plane.normalizedFourIndexRHS_scalar_bridge',
+            'FCP.BFSSPairedSpin9Plane.normalizedPairedPlane_universal_four_index_bracket',
+          ]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",s)
+          assert [n for n,_ in reports]==roots,reports
+          for name,ax in reports:
+              assert set(x.strip() for x in ax.split(',') if x.strip()) <= {
+                'propext','Classical.choice','Quot.sound'},(name,ax)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('K1D18V8R_TWO_NORMALIZED_FOUR_INDEX_STRUCTURE_ROOTS_AXIOMS_PASS')
+          PY
+
+      - name: Preserve compiler and independent axiom artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v8r-original-paired-normalized-four-index-structure-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v8r
+          if-no-files-found: warn
