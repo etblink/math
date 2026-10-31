@@ -1,0 +1,170 @@
+name: BFSS V9X source-exact real one-parameter typed orthogonal MonoidHom strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9TypedOneParameterOrthogonalHomProbe.lean
+      - .github/workflows/bfss-kotler-paired-spin9-typed-one-parameter-hom-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-paired-typed-one-parameter-orthogonal-hom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify exact V9W ancestry and typed one-parameter hom statements
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9LieHomProbe.lean")" = '1b17d6542ebec81f12fd0231e8478f66679efd53'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9MathlibSkewBridgeProbe.lean")" = 'ee038db09af741bdd1af4b811d8daf79bb70ed37'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CanonicalSkewLieHomProbe.lean")" = '2b350ed73e1f831532d1200f1a0ab148ee53dacf'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9OrthogonalExponentialProbe.lean")" = 'cb27bc0755dc7f64bed51943ae18c24a00cba912'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9OrthogonalGroupMembershipProbe.lean")" = 'b471ebb2da441c4be099bed168f6fa3651e24a99'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9OneParameterOrthogonalFlowProbe.lean")" = 'fe56b8b55ea9e72d50b8991962d8b22def7375d9'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedOneParameterOrthogonalHomProbe.lean")" = '51f634be2330d53e976bf12d82be01f1f64683f6'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9TypedOneParameterOrthogonalHomProbe.lean').read_text()
+          defs=['pairedSkewOneParameterOrthogonalHom',
+                'normalizedPairedPlaneOneParameterOrthogonalHom',
+                'coordinateToPairedCanonicalOneParameterOrthogonalHom']
+          apps=[name+'_apply' for name in defs]
+          for name in defs:
+            assert s.count('noncomputable def '+name+'\n')==1,name
+          for name in apps:
+            assert s.count('theorem '+name+'\n')==1,name
+          assert s.count('Multiplicative ℝ →* Matrix.orthogonalGroup')==3
+          assert 'pairedMatrixExp_add X' in s
+          assert 'pairedMatrixExp_zero X' in s
+          assert 'pairedSkewExp_mem_orthogonalGroup X hX' in s
+          assert 'normalizedPairedPlane_transpose' in s
+          assert 'pairedSkewLieSubalgebra_eq_mathlib' in s
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('K1D18V9X_PINNED_TYPED_ONE_PARAMETER_HOM_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Compile accepted V9W original paired one-parameter composition ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9OneParameterOrthogonalFlowProbe
+
+      - name: Fresh V9X typed one-parameter orthogonal hom compile with warnings as errors
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9TypedOneParameterOrthogonalHomProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          mkdir -p "$RUNNER_TEMP/v9x"
+          timeout 750s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v9x/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v9x/compiler.log")" -eq 6
+
+      - name: Independently elaborate six typed hom declarations and audit axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V9X_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9TypedOneParameterOrthogonalHomProbe
+          open FCP.BFSSPairedSpin9Plane
+          open OAI.BFSSQuantum
+          open NormedSpace
+          #check pairedSkewOneParameterOrthogonalHom
+          #check pairedSkewOneParameterOrthogonalHom_apply
+          #check normalizedPairedPlaneOneParameterOrthogonalHom
+          #check normalizedPairedPlaneOneParameterOrthogonalHom_apply
+          #check coordinateToPairedCanonicalOneParameterOrthogonalHom
+          #check coordinateToPairedCanonicalOneParameterOrthogonalHom_apply
+          example (r s : SpaceIndex) :
+              Multiplicative ℝ →*
+                Matrix.orthogonalGroup FCP.BFSSS1V0.Source48Label ℝ :=
+            normalizedPairedPlaneOneParameterOrthogonalHom r s
+          example (X : Matrix FCP.BFSSS1V0.Source48Label FCP.BFSSS1V0.Source48Label ℝ)
+              (hX : X.transpose = -X) (s t : Multiplicative ℝ) :
+              pairedSkewOneParameterOrthogonalHom X hX (s * t) =
+                pairedSkewOneParameterOrthogonalHom X hX s *
+                pairedSkewOneParameterOrthogonalHom X hX t :=
+            (pairedSkewOneParameterOrthogonalHom X hX).map_mul s t
+          example (r s : SpaceIndex) (t : ℝ) :
+              ((normalizedPairedPlaneOneParameterOrthogonalHom r s
+                (Multiplicative.ofAdd t)) :
+                  Matrix FCP.BFSSS1V0.Source48Label FCP.BFSSS1V0.Source48Label ℝ) =
+                exp (t • normalizedPairedPlane r s) :=
+            normalizedPairedPlaneOneParameterOrthogonalHom_apply r s t
+          example (A : skewAdjointMatricesLieSubalgebra
+                (1 : Matrix SpaceIndex SpaceIndex ℝ)) (t : ℝ) :
+              ((coordinateToPairedCanonicalOneParameterOrthogonalHom A
+                (Multiplicative.ofAdd t)) :
+                  Matrix FCP.BFSSS1V0.Source48Label FCP.BFSSS1V0.Source48Label ℝ) =
+                exp (t • ((coordinateToPairedCanonicalSkewLieHom A).val :
+                  Matrix FCP.BFSSS1V0.Source48Label FCP.BFSSS1V0.Source48Label ℝ)) :=
+            coordinateToPairedCanonicalOneParameterOrthogonalHom_apply A t
+          #print axioms FCP.BFSSPairedSpin9Plane.pairedSkewOneParameterOrthogonalHom
+          #print axioms FCP.BFSSPairedSpin9Plane.pairedSkewOneParameterOrthogonalHom_apply
+          #print axioms FCP.BFSSPairedSpin9Plane.normalizedPairedPlaneOneParameterOrthogonalHom
+          #print axioms FCP.BFSSPairedSpin9Plane.normalizedPairedPlaneOneParameterOrthogonalHom_apply
+          #print axioms FCP.BFSSPairedSpin9Plane.coordinateToPairedCanonicalOneParameterOrthogonalHom
+          #print axioms FCP.BFSSPairedSpin9Plane.coordinateToPairedCanonicalOneParameterOrthogonalHom_apply
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V9X_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v9x/declaration-audit.log"
+          python3 - <<'PY'
+          import os,pathlib,re
+          s=(pathlib.Path(os.environ['RUNNER_TEMP'])/'v9x'/'declaration-audit.log').read_text()
+          prefix='FCP.BFSSPairedSpin9Plane.'
+          expected=[prefix+'pairedSkewOneParameterOrthogonalHom',
+                    prefix+'pairedSkewOneParameterOrthogonalHom_apply',
+                    prefix+'normalizedPairedPlaneOneParameterOrthogonalHom',
+                    prefix+'normalizedPairedPlaneOneParameterOrthogonalHom_apply',
+                    prefix+'coordinateToPairedCanonicalOneParameterOrthogonalHom',
+                    prefix+'coordinateToPairedCanonicalOneParameterOrthogonalHom_apply']
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^]]*)\]|does not depend on any axioms)",s)
+          assert [n for n,_ in reports]==expected,reports
+          for _,ax in reports:
+            assert set(x.strip() for x in ax.split(',') if x.strip()) <= {
+              'propext','Classical.choice','Quot.sound'},ax
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('K1D18V9X_TYPED_ORIGINAL_PAIRED_ONE_PARAMETER_HOM_AXIOMS_PASS')
+          PY
+
+      - name: Preserve compiler and independent axiom artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v9x-original-paired-typed-one-parameter-hom-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v9x
+          if-no-files-found: warn
