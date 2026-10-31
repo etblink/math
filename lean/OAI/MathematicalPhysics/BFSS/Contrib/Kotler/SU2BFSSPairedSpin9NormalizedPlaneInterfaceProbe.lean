@@ -34,7 +34,9 @@ theorem normalizedPairedPlane_self (r : SpaceIndex) :
 /-- Normalization respects antisymmetry even when indices coincide. -/
 theorem normalizedPairedPlane_swap (r s : SpaceIndex) :
     normalizedPairedPlane s r = -(normalizedPairedPlane r s) := by
-  simp only [normalizedPairedPlane, zeroDiagonalPairedPlane_swap, smul_neg]
+  change (-(1 / 2 : ℝ)) • zeroDiagonalPairedPlane s r =
+    -((-(1 / 2 : ℝ)) • zeroDiagonalPairedPlane r s)
+  rw [zeroDiagonalPairedPlane_swap r s, smul_neg]
 
 /-- Every normalized source-original 48-real plane is skew-symmetric. -/
 theorem normalizedPairedPlane_transpose (r s : SpaceIndex) :
