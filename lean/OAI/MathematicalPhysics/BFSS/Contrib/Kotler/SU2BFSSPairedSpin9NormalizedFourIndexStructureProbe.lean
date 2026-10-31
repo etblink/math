@@ -36,17 +36,24 @@ theorem normalizedFourIndexRHS_scalar_bridge (r s t u : SpaceIndex) :
     (1 / 4 : ℝ) • zeroDiagonalFourIndexRHS r s t u =
       normalizedFourIndexRHS r s t u := by
   classical
-  by_cases hsu : s = u <;>
-    by_cases hst : s = t <;>
-    by_cases hrt : r = t <;>
-    by_cases hru : r = u
-  all_goals
-    ext i j
-    simp [zeroDiagonalFourIndexRHS, normalizedFourIndexRHS,
-      normalizedPairedPlane, hsu, hst, hrt, hru,
-      Matrix.smul_apply, Matrix.add_apply, Matrix.sub_apply,
-      Matrix.neg_apply, smul_eq_mul]
-    all_goals ring
+  have hterm (p : Prop) (a b : SpaceIndex) :
+      (1 / 4 : ℝ) •
+          (if p then zeroDiagonalPairedPlane a b + zeroDiagonalPairedPlane a b else 0) =
+        -(if p then normalizedPairedPlane a b else 0) := by
+    by_cases hp : p
+    · simp only [if_pos hp]
+      change (1 / 4 : ℝ) •
+          (zeroDiagonalPairedPlane a b + zeroDiagonalPairedPlane a b) =
+        -((-(1 / 2 : ℝ)) • zeroDiagonalPairedPlane a b)
+      ext i j
+      simp only [Matrix.smul_apply, Matrix.add_apply, Matrix.neg_apply, smul_eq_mul]
+      ring
+    · simp [hp]
+  unfold zeroDiagonalFourIndexRHS normalizedFourIndexRHS
+  simp only [smul_sub, smul_add]
+  rw [hterm (s = u) r t, hterm (s = t) r u,
+    hterm (r = t) s u, hterm (r = u) s t]
+  abel
 
 /-- Explicit universal normalized commutator for source-original
 paired-Fock 48-real plane matrices, including all repeated indices. -/
