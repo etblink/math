@@ -102,9 +102,9 @@ jobs:
             normalizedPairedPlane_exp_transpose_eq_inv r s t
           example (A : skewAdjointMatricesLieSubalgebra
               (1 : Matrix SpaceIndex SpaceIndex ℝ)) (t : ℝ) :
-              (exp (t • ((coordinateToPairedCanonicalSkewLieHom A) :
+              (exp (t • ((coordinateToPairedCanonicalSkewLieHom A).val :
                 Matrix Source48Label Source48Label ℝ))).transpose =
-                (exp (t • ((coordinateToPairedCanonicalSkewLieHom A) :
+                (exp (t • ((coordinateToPairedCanonicalSkewLieHom A).val :
                 Matrix Source48Label Source48Label ℝ)))⁻¹ :=
             coordinateToPairedCanonicalSkewLieHom_exp_transpose_eq_inv A t
           #print axioms FCP.BFSSPairedSpin9Plane.pairedSkewExp_transpose_eq_inv
