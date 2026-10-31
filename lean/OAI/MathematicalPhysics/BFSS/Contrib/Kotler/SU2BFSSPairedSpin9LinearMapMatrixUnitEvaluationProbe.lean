@@ -35,8 +35,17 @@ theorem coordinateToPairedLinearMap_matrixUnit
   rw [coordinateToPairedLinearMap_apply]
   unfold coordinateToPairedFiniteLift
   congr 1
-  rw [Matrix.single_eq_of_single_single]
-  simp [Pi.single_apply, Finset.sum_ite_eq']
+  -- The outer sum has only row r; the inner sum has only column s.
+  -- Use exact single-support obligations instead of a global ite simp.
+  rw [Finset.sum_eq_single r]
+  · rw [Finset.sum_eq_single s]
+    · simp [Matrix.single_apply]
+    · intro y _ hy
+      simp [Matrix.single_apply, hy.symm]
+    · simp
+  · intro x _ hx
+    simp [Matrix.single_apply, hx.symm]
+  · simp
 
 #print axioms coordinateToPairedLinearMap_matrixUnit
 
