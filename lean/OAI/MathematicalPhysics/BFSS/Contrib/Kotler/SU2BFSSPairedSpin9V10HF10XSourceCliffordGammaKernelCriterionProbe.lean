@@ -78,7 +78,23 @@ theorem source9OriginalPairedSO48_mem_ker_iff_clifford_one
         (g : CliffordAlgebra source9Quadratic) = 1 := by
   have heq := source9OriginalPairedSO48_eq_iff_clifford_gamma
     g (1 : spinGroup source9Quadratic)
-  simpa only [MonoidHom.mem_ker, map_one] using heq
+  have hOne :
+      source9GammaCliffordAlgHom
+          ((1 : spinGroup source9Quadratic) :
+            CliffordAlgebra source9Quadratic) =
+        (1 : GammaMatrix) := by
+    calc
+      source9GammaCliffordAlgHom
+          ((1 : spinGroup source9Quadratic) :
+            CliffordAlgebra source9Quadratic) =
+          ((source9SpinGammaOrthogonalHom
+              (1 : spinGroup source9Quadratic)) : GammaMatrix) :=
+        (source9SpinGammaOrthogonalHom_apply
+          (1 : spinGroup source9Quadratic)).symm
+      _ = 1 := by
+        rw [map_one]
+        rfl
+  simpa only [MonoidHom.mem_ker, map_one, hOne] using heq
 
 /-- The MISSING substantive obligation is explicitly stated:
 if the ACTUAL original source Cl(9) gamma AlgHom is injective
