@@ -43,14 +43,16 @@ theorem originalGamma8_eq_diagonal :
           if i.val < 8 then (1 : ℝ) else (-1 : ℝ)) := by
   ext i j
   fin_cases i <;> fin_cases j <;>
-    norm_num [gamma, Matrix.diagonal, Matrix.map_apply]
+    first
+    | rfl
+    | norm_num [gamma, Matrix.diagonal, Matrix.map_apply] <;> rfl
 
 /-- The determinant of the actual ninth original real
 gamma, not an arbitrary substitute, equals +1. -/
 theorem originalGamma8_det_one :
     (gamma (8 : SpaceIndex)).det = 1 := by
   rw [originalGamma8_eq_diagonal, Matrix.det_diagonal]
-  norm_num [Finset.prod_univ_succ]
+  norm_num [Fin.prod_univ_succ]
 
 /-- The original Clifford gamma linear map has determinant
 +1 on the original ninth coordinate unit vector.

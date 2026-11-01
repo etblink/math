@@ -32,7 +32,7 @@ jobs:
           test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF8CliffordUnitsGeneratorDetBridgeProbe.lean")" = '937e1033ad5261f2dfa0c415e60d4b7e38ac0736'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean")" = '44493c4d9b72de2d2d84725768f8e2572ac91ed4'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ExactGamma8PositiveAnchorProbe.lean")" = 'e3c63c63a88430154fa2686ec362eaeca7673027'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ExactGamma8PositiveAnchorProbe.lean")" = '89de4328dfc7a68f479f3ee427d16722fbfc9dd3'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -44,7 +44,7 @@ jobs:
           code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
           assert '/-' not in code,'unhandled nested source comment'
           for required in ['gamma (8 : SpaceIndex)', 'Matrix.diagonal',
-                           'Matrix.det_diagonal', 'Finset.prod_univ_succ',
+                           'Matrix.det_diagonal', 'Fin.prod_univ_succ',
                            'gammaNineRealLinear', 'originalGamma8_det_one']:
               assert required in code,required
           assert 'Matrix.detMonoidHom' not in code
