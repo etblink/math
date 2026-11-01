@@ -1,0 +1,143 @@
+name: BFSS V10H F10 original ninth real gamma determinant positive anchor strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ExactGamma8PositiveAnchorProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f10-exact-gamma8-positive-anchor-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-axis8-positive-det:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Preflight original gamma source and F9 qualified ancestor; exact F10 positive anchor
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF8CliffordUnitsGeneratorDetBridgeProbe.lean")" = '937e1033ad5261f2dfa0c415e60d4b7e38ac0736'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean")" = '44493c4d9b72de2d2d84725768f8e2572ac91ed4'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ExactGamma8PositiveAnchorProbe.lean")" = 'e3c63c63a88430154fa2686ec362eaeca7673027'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ExactGamma8PositiveAnchorProbe.lean').read_text()
+          names=["originalGamma8_eq_diagonal","originalGamma8_det_one","gammaNineRealLinear_axis8_det_one"]
+          for n in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(n)+r'\b',s))==1,n
+          assert s.count('#print axioms ')==3
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          assert '/-' not in code,'unhandled nested source comment'
+          for required in ['gamma (8 : SpaceIndex)', 'Matrix.diagonal',
+                           'Matrix.det_diagonal', 'Finset.prod_univ_succ',
+                           'gammaNineRealLinear', 'originalGamma8_det_one']:
+              assert required in code,required
+          assert 'Matrix.detMonoidHom' not in code
+          assert 'SU2BFSSPairedSpin9SourceDeterminantCharacterProbe' not in code
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10_EXACT_ORIGINAL_AXIS8_POSITIVE_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F9 exact original gamma generator determinant magnitude
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe
+
+      - name: Fresh F10 original ninth real gamma positive determinant warningAsError source compile
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ExactGamma8PositiveAnchorProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10h-f10/compiler.log")" -eq 3
+
+      - name: Independently elaborate original gamma8 exact three declarations and root axiom whitelist
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10ExactGamma8PositiveAnchorProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSPairedSpin9DetFixture
+          open FCP.BFSSGamma9
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example :
+              gamma (8 : SpaceIndex) =
+                Matrix.diagonal
+                  (fun i : SpinIndex =>
+                    if i.val < 8 then (1 : ℝ) else (-1 : ℝ)) :=
+            originalGamma8_eq_diagonal
+          noncomputable example :
+              (gamma (8 : SpaceIndex)).det = 1 :=
+            originalGamma8_det_one
+          noncomputable example :
+              (gammaNineRealLinear
+                (fun i : SpaceIndex => if i = 8 then (1 : ℝ) else 0)).det = 1 :=
+            gammaNineRealLinear_axis8_det_one
+          #print axioms FCP.BFSSPairedSpin9DetFixture.originalGamma8_eq_diagonal
+          #print axioms FCP.BFSSPairedSpin9DetFixture.originalGamma8_det_one
+          #print axioms FCP.BFSSPairedSpin9DetFixture.gammaNineRealLinear_axis8_det_one
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10'/'declaration-audit.log').read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          expected={'FCP.BFSSPairedSpin9DetFixture.'+n for n in ["originalGamma8_eq_diagonal","originalGamma8_det_one","gammaNineRealLinear_axis8_det_one"]}
+          assert len(reports)==3 and {n for n,_ in reports}==expected,reports
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10_ORIGINAL_AXIS8_3_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact tested SHA, compiler and independent axiom audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10-exact-original-axis8-positive-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10
+          if-no-files-found: warn
