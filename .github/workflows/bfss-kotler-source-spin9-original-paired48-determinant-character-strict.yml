@@ -1,0 +1,140 @@
+name: BFSS V10H source Spin9 exact determinant character and paired48 sign strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceDeterminantCharacterProbe.lean
+      - .github/workflows/bfss-kotler-source-spin9-original-paired48-determinant-character-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-spin9-determinant-sign:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify exact accepted V10G and V10H source candidate hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9OriginalPaired48DeterminantTransferProbe.lean")" = '1f71be97fb11a01022257b791ab38863de4407b5'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean")" = '9dc5713dfea7c40d8c9f58088392e144c3c28517'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceDeterminantCharacterProbe.lean")" = 'f0654d4ed887b25196bd7a4517976de395cf1bd9'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceDeterminantCharacterProbe.lean').read_text()
+          names=["source9SpinGammaDetHom","source9SpinGammaDetHom_sq","source9SpinOriginalPaired48_det_eq_gamma","source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one"]
+          for n in names:
+              assert len(re.findall(r'(?m)^(?:theorem|noncomputable def) '+re.escape(n)+r'\b',s))==1,n
+          assert s.count('#print axioms ')==4
+          assert 'Matrix.detMonoidHom' in s and 'Matrix.mem_orthogonalGroup_iff' in s
+          assert 'source9SpinOriginalPaired48OrthogonalHom_det' in s
+          assert 'Matrix.mem_specialOrthogonalGroup_iff' in s
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
+          print('V10H_SOURCE_SPIN9_DET_CHARACTER_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild original accepted paired48 determinant V10G ancestor
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9OriginalPaired48DeterminantTransferProbe
+
+      - name: Fresh V10H determinant character and orientation iff proof compile
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceDeterminantCharacterProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10h/compiler.log")" -eq 4
+
+      - name: Independently elaborate exact four declaration types and audit axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/PairedSpin9V10H_Audit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceDeterminantCharacterProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example :
+              spinGroup source9Quadratic →* ℝ :=
+            source9SpinGammaDetHom
+          noncomputable example (g : spinGroup source9Quadratic) :
+              (source9SpinGammaDetHom g) ^ 2 = 1 :=
+            source9SpinGammaDetHom_sq g
+          noncomputable example (g : spinGroup source9Quadratic) :
+              (((source9SpinOriginalPaired48OrthogonalHom g) :
+                Matrix Source48Label Source48Label ℝ)).det =
+                (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) :=
+            source9SpinOriginalPaired48_det_eq_gamma g
+          noncomputable example (g : spinGroup source9Quadratic) :
+              ((source9SpinOriginalPaired48OrthogonalHom g) :
+                Matrix Source48Label Source48Label ℝ) ∈
+                Matrix.specialOrthogonalGroup Source48Label ℝ ↔
+                (((source9SpinGammaOrthogonalHom g) : GammaMatrix)).det = 1 :=
+            source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one g
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaDetHom
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaDetHom_sq
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48_det_eq_gamma
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/PairedSpin9V10H_Audit.lean 2>&1 | tee "$RUNNER_TEMP/v10h/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h'/'declaration-audit.log').read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["source9SpinGammaDetHom","source9SpinGammaDetHom_sq","source9SpinOriginalPaired48_det_eq_gamma","source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one"]}
+          assert len(reports)==4 and {n for n,_ in reports}==expected,reports
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(','))<={'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_ORIGINAL_SOURCE_SPIN9_DET_CHARACTER_4_TYPED_AXIOMS_PASS')
+          PY
+
+      - name: Retain tested source SHA, fresh compiler and independent axiom audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-original-spin9-det-character-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h
+          if-no-files-found: warn
