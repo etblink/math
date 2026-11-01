@@ -37,6 +37,7 @@ open FCP.BFSSPairedSpin9Clifford
 open FCP.BFSSS1V0
 open OAI.BFSSQuantum
 open Matrix
+open WithLp
 
 /-- A source-exact original gamma spectral eigenvalue
 squares to the SOURCE quadratic form, not a substituted

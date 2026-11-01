@@ -34,7 +34,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean")" = '3922916e49fc961efa99a72d706ca83ca704e3d6'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10FSourceGammaSymmetricPositiveQuadraticProbe.lean")" = '19a1d1fd4cfc89d7c243d28a4c9f1663a3aa3ce3'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10GSourceGammaRealSpectralBridgeProbe.lean")" = '76800a61a1b26825896519789ae2aaaef19069e9'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10HSourceGammaEigenvalueSquareProbe.lean")" = 'da4a0ca3d35a925f717d6097e2cb588633b717f1'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10HSourceGammaEigenvalueSquareProbe.lean")" = '245d1c509d41e71f001204d04b154dee76bd1b6c'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -50,6 +50,7 @@ jobs:
                            'Matrix.smul_mulVec', 'Matrix.one_mulVec',
                            'hA.mulVec_eigenvectorBasis',
                            'hA.eigenvectorBasis.orthonormal.ne_zero',
+                           'open WithLp',
                            'smul_left_injective ℝ',
                            'source9Quadratic_eq_zero_iff']:
               assert required in code,required
