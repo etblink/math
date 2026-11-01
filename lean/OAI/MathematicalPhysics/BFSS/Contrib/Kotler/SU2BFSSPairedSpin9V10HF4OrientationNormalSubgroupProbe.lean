@@ -39,7 +39,7 @@ theorem gammaDet_one :
       (fun A : Matrix.orthogonalGroup SpinIndex ℝ => (A : GammaMatrix))
       (map_one source9SpinGammaOrthogonalHom)
   have hd := congrArg Matrix.det h
-  simpa only [Matrix.det_one] using hd
+  simpa only [Submonoid.coe_one, Matrix.det_one] using hd
 
 /-- Source EXACT Spin9 orientation-preserving subgroup,
 using a scalar equality on the original qualified 16-real
