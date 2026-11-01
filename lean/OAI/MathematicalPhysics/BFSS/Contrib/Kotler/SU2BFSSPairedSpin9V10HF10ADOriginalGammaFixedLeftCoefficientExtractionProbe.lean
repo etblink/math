@@ -57,7 +57,7 @@ theorem source9OriginalGamma_fixed_left_trace_extract
         ∑ c : SpaceIndex, Matrix.trace
           ((gamma a * gamma b) *
             (f c • (gamma a * gamma c))) := by
-      rw [mul_sum, Matrix.trace_sum]
+      rw [Matrix.mul_sum, Matrix.trace_sum]
     _ = ∑ c : SpaceIndex,
         f c * (if b = c then -(16 : ℝ) else 0) := by
       apply Finset.sum_congr rfl
