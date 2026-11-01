@@ -40,10 +40,10 @@ theorem source9OriginalGamma_fixed_left_pair_trace_gram
       if b = c then -(16 : ℝ) else 0 := by
   by_cases hbc : b = c
   · subst c
-    rw [if_pos rfl]
-    exact source9OriginalGamma_pair_square_trace_neg_sixteen a b hab
-  · rw [if_neg hbc]
-    exact source9OriginalGamma_pair_shared_left_trace_zero a b c hab hbc
+    simpa using
+      (source9OriginalGamma_pair_square_trace_neg_sixteen a b hab)
+  · simpa [hbc] using
+      (source9OriginalGamma_pair_shared_left_trace_zero a b c hab hbc)
 
 /-- Two original gamma words with common first label
 and DISTINCT second labels have unequal matrix images. -/
