@@ -57,13 +57,13 @@ theorem source9OriginalGamma_four_word_trace_zero
       _ = gamma b * (gamma c * (-(gamma a * gamma d))) := by
             rw [source9OriginalGamma_anticommute d a had.symm]
       _ = -(gamma b * (gamma c * (gamma a * gamma d))) := by
-            simp only [mul_neg, neg_mul]
+            simp only [mul_neg]
       _ = -(gamma b * ((gamma c * gamma a) * gamma d)) := by
             simp only [mul_assoc]
       _ = -(gamma b * ((-(gamma a * gamma c)) * gamma d)) := by
             rw [source9OriginalGamma_anticommute c a hac.symm]
       _ = gamma b * (gamma a * (gamma c * gamma d)) := by
-            simp only [neg_mul, mul_assoc, neg_neg]
+            simp only [neg_mul, mul_neg, mul_assoc, neg_neg]
       _ = (gamma b * gamma a) * (gamma c * gamma d) := by
             exact (mul_assoc _ _ _).symm
       _ = (-(gamma a * gamma b)) * (gamma c * gamma d) := by
