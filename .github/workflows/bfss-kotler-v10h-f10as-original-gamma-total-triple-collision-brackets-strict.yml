@@ -1,0 +1,168 @@
+name: BFSS V10H F10AS original gamma total triple collision Lie bracket strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets.lean
+      - .github/workflows/bfss-kotler-v10h-f10as-original-gamma-total-triple-collision-brackets-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-gamma-total-triple-collision-lie-bracket:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin original gamma F10E F10AJ F10AK F10AL F10AM F10AN F10AO F10AP F10AQ F10AR F10AS
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10as"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10as/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean")" = '3922916e49fc961efa99a72d706ca83ca704e3d6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AJOriginalGammaPairOrthogonalLieSubalgebraBridge.lean")" = '6c11e898dd7b5ed93db833ca0c7b678e6fda6ffe'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AKOriginalGammaOrderedChainLieBracketProbe.lean")" = '96836497816cdcd8caedc6970b1b667866847920'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ALOriginalGammaOrderedForkLieBracketProbe.lean")" = 'f9399a0ebf17b4aabbf889d12fbcb79111d89c45'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AMOriginalGammaOrderedSharedRightLieBracketProbe.lean")" = '00a521b011fe78eb9bf2983dc05e9e109ba0b403'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ANOriginalGammaDisjointPairLieBracketProbe.lean")" = 'a9c96b4840e297b0b79f343d32e3992f50a5ace0'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AOOriginalGammaPairReverseAndSelfLieBrackets.lean")" = '0764c5d8a0aab5bc5e960c5122e6bbeadccb1031'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10APOriginalGammaArbitraryOrientationNativeLieBridge.lean")" = '430611eec059c8119573c50fbcee12901b8457d5'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AQOriginalGammaAnyOrientationForkRightLieBrackets.lean")" = '58e39145e25f1117535bb7da4f5b128b7a7c2f7f'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AROriginalGammaNativeBracketOrientationAndZeroBridge.lean")" = '712f459104e2724793cd58ff62789b9effdf9f13'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets.lean")" = '0619f54b8d3490b67eb8fdb6e827198a06e866e9'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets.lean').read_text()
+          names=["source9OriginalGamma_distinct_pair_reverse_native_so_bracket_zero","source9OriginalGamma_total_chain_native_so_bracket","source9OriginalGamma_total_fork_native_so_bracket","source9OriginalGamma_total_shared_right_native_so_bracket"]
+          for n in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(n)+r'\b',s))==1,n
+              assert s.count('#print axioms '+n)==1,n
+          assert s.count('#print axioms ')==4
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          for term in ['source9OriginalGamma_distinct_pair_reverse_sign',
+                       'source9OriginalGamma_distinct_chain_native_so_bracket',
+                       'source9OriginalGamma_distinct_fork_native_so_bracket',
+                       'source9OriginalGamma_distinct_shared_right_native_so_bracket',
+                       'source9OriginalGammaDistinctPairInSo',
+                       'dif_pos', 'dif_neg', 'lie_self']:
+              assert term in code,term
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10AS_SOURCE_PIN_AND_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10AR native arbitrary orientation and zero ancestry
+        shell: bash
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3750s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10AROriginalGammaNativeBracketOrientationAndZeroBridge
+
+      - name: Fresh F10AS native total triple-collision brackets warnings-as-errors compiler
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10as/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently elaborate four total-triple native gamma bracket types and axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10AS_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSGamma9
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example (a b : SpaceIndex) (hab : a ≠ b) :
+              ⁅source9OriginalGammaDistinctPairInSo a b hab,
+                source9OriginalGammaDistinctPairInSo b a hab.symm⁆ =
+                (0 : LieAlgebra.Orthogonal.so SpinIndex ℝ) :=
+            source9OriginalGamma_distinct_pair_reverse_native_so_bracket_zero a b hab
+          noncomputable example (a b c : SpaceIndex) (hab : a ≠ b) (hbc : b ≠ c) :
+              ⁅source9OriginalGammaDistinctPairInSo a b hab,
+                source9OriginalGammaDistinctPairInSo b c hbc⁆ =
+                if hac : a = c then
+                  (0 : LieAlgebra.Orthogonal.so SpinIndex ℝ)
+                else
+                  (2 : ℝ) • source9OriginalGammaDistinctPairInSo a c hac :=
+            source9OriginalGamma_total_chain_native_so_bracket a b c hab hbc
+          noncomputable example (a b c : SpaceIndex) (hab : a ≠ b) (hac : a ≠ c) :
+              ⁅source9OriginalGammaDistinctPairInSo a b hab,
+                source9OriginalGammaDistinctPairInSo a c hac⁆ =
+                if hbc : b = c then
+                  (0 : LieAlgebra.Orthogonal.so SpinIndex ℝ)
+                else
+                  -((2 : ℝ) • source9OriginalGammaDistinctPairInSo b c hbc) :=
+            source9OriginalGamma_total_fork_native_so_bracket a b c hab hac
+          noncomputable example (a b c : SpaceIndex) (hac : a ≠ c) (hbc : b ≠ c) :
+              ⁅source9OriginalGammaDistinctPairInSo a c hac,
+                source9OriginalGammaDistinctPairInSo b c hbc⁆ =
+                if hab : a = b then
+                  (0 : LieAlgebra.Orthogonal.so SpinIndex ℝ)
+                else
+                  -((2 : ℝ) • source9OriginalGammaDistinctPairInSo a b hab) :=
+            source9OriginalGamma_total_shared_right_native_so_bracket a b c hac hbc
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_distinct_pair_reverse_native_so_bracket_zero
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_total_chain_native_so_bracket
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_total_fork_native_so_bracket
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_total_shared_right_native_so_bracket
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10AS_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10as/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10as'/'declaration-audit.log').read_text()
+          names=["source9OriginalGamma_distinct_pair_reverse_native_so_bracket_zero","source9OriginalGamma_total_chain_native_so_bracket","source9OriginalGamma_total_fork_native_so_bracket","source9OriginalGamma_total_shared_right_native_so_bracket"]
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in names}
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+          actual={n for n,_ in reports}|set(empty)
+          assert len(reports)+len(empty)==4 and actual==expected,(reports,empty)
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10AS_FOUR_TOTAL_TRIPLE_LIE_BRACKET_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA compiler and four independent total triple audits
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10as-gamma-total-triple-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10as
+          if-no-files-found: warn
