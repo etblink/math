@@ -63,7 +63,7 @@ theorem source9OriginalGamma_anticommute
     (a b : SpaceIndex) (hab : a ≠ b) :
     gamma a * gamma b = -(gamma b * gamma a) := by
   have h := gamma_clifford a b
-  simp only [if_neg hab, zero_smul] at h
+  simp only [ite_eq_right hab, zero_smul] at h
   exact eq_neg_of_add_eq_zero_left h
 
 /-- The trace of each ORIGINAL public real gamma basis
