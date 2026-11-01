@@ -26,6 +26,7 @@ namespace FCP.BFSSPairedSpin9Clifford
 noncomputable section
 
 open FCP.BFSSGamma9
+open FCP.BFSSPairedSpin9Plane
 open FCP.BFSSS1V0
 open OAI.BFSSQuantum
 open Matrix
