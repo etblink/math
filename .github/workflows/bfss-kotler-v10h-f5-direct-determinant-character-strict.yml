@@ -44,10 +44,14 @@ jobs:
           assert "map_mul' := gammaDet_mul" in s
           assert 'source9OrientationSubgroup' in s
           assert 'pairedDetEqualGamma' in s
-          assert 'Matrix.detMonoidHom' not in s
-          assert 'SU2BFSSPairedSpin9SourceDeterminantCharacterProbe' not in s
-          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',s)
-          print('V10H_F5_DIRECT_SOURCE_CHARACTER_PREFLIGHT_PASS')
+          # F5's exact pinned source uses nonnested Lean block/doc comments.
+          # Negative guards target executable code, not historical comments.
+          executable=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          assert '/-' not in executable, 'unhandled nested source comment'
+          assert 'Matrix.detMonoidHom' not in executable
+          assert 'SU2BFSSPairedSpin9SourceDeterminantCharacterProbe' not in executable
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',executable)
+          print('V10H_F5_DIRECT_SOURCE_CHARACTER_COMMENT_AWARE_PREFLIGHT_PASS')
           PY
 
       - name: Restore pinned Lean 4.34.1 and Mathlib
