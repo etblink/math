@@ -1,0 +1,143 @@
+name: BFSS V10H F10AC original gamma fixed-left pair discrimination strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ACOriginalGammaFixedLeftPairDiscriminationProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f10ac-original-gamma-fixed-left-discrimination-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-gamma-fixed-left-pair-discrimination:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin original gamma F10E F10AA F10AB and F10AC source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10ac"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10ac/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean")" = '3922916e49fc961efa99a72d706ca83ca704e3d6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AAOriginalGammaPairScalarSeparationProbe.lean")" = 'dea63f55d7881ea8ec4cf17bee298041b0567d33'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ABOriginalGammaPairTraceOrthogonalityProbe.lean")" = 'f30d1130636a6001be7e143357e90c9e8c552248'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ACOriginalGammaFixedLeftPairDiscriminationProbe.lean")" = '835ba234110bdba1a9d24c5ec4479b6d0c21cc20'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ACOriginalGammaFixedLeftPairDiscriminationProbe.lean').read_text()
+          names=['source9OriginalGamma_fixed_left_pair_trace_gram',
+                 'source9OriginalGamma_fixed_left_pair_ne',
+                 'source9OriginalGamma_fixed_left_pair_not_smul']
+          for n in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(n)+r'\b',s))==1,n
+          assert s.count('#print axioms ') == 3
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          for term in ['source9OriginalGamma_pair_square_trace_neg_sixteen',
+                       'source9OriginalGamma_pair_shared_left_trace_zero',
+                       'Matrix.trace_smul','mul_smul_comm']:
+              assert term in code,term
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10AC_SOURCE_PIN_AND_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10AB original gamma trace ancestry
+        shell: bash
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3750s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10ABOriginalGammaPairTraceOrthogonalityProbe
+
+      - name: Fresh F10AC gamma fixed-left pair discrimination warning-as-error compiler
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ACOriginalGammaFixedLeftPairDiscriminationProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10ac/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently elaborate three exact fixed-left pair discrimination types and axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10AC_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10ACOriginalGammaFixedLeftPairDiscriminationProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSGamma9
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example (a b c : SpaceIndex) (hab : a ≠ b) :
+              Matrix.trace ((gamma a * gamma b) * (gamma a * gamma c)) =
+                if b = c then -(16 : ℝ) else 0 :=
+            source9OriginalGamma_fixed_left_pair_trace_gram a b c hab
+          noncomputable example (a b c : SpaceIndex)
+              (hab : a ≠ b) (hbc : b ≠ c) :
+              gamma a * gamma b ≠ gamma a * gamma c :=
+            source9OriginalGamma_fixed_left_pair_ne a b c hab hbc
+          noncomputable example (a b c : SpaceIndex)
+              (hab : a ≠ b) (hbc : b ≠ c) (r : ℝ) :
+              gamma a * gamma b ≠ r • (gamma a * gamma c) :=
+            source9OriginalGamma_fixed_left_pair_not_smul a b c hab hbc r
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_fixed_left_pair_trace_gram
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_fixed_left_pair_ne
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_fixed_left_pair_not_smul
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10AC_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10ac/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10ac'/'declaration-audit.log').read_text()
+          names=['source9OriginalGamma_fixed_left_pair_trace_gram',
+                 'source9OriginalGamma_fixed_left_pair_ne',
+                 'source9OriginalGamma_fixed_left_pair_not_smul']
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in names}
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+          actual={n for n,_ in reports}|set(empty)
+          assert len(reports)+len(empty)==3 and actual==expected,(reports,empty)
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10AC_THREE_FIXED_LEFT_PAIR_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA compiler and independent fixed-left pair audits
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10ac-gamma-fixed-left-pair-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10ac
+          if-no-files-found: warn
