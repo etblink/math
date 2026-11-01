@@ -1,0 +1,153 @@
+name: BFSS V10H F10O exact Clifford unit generator positivity strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10OCliffordUnitGeneratorPositivityProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f10o-clifford-unit-generator-positive-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-clifford-unit-generator-positivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Source exact original gamma F9 F10E-N hashes and F10O candidate pin
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10o"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10o/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean")" = '44493c4d9b72de2d2d84725768f8e2572ac91ed4'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean")" = '3922916e49fc961efa99a72d706ca83ca704e3d6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10FSourceGammaSymmetricPositiveQuadraticProbe.lean")" = '19a1d1fd4cfc89d7c243d28a4c9f1663a3aa3ce3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10GSourceGammaRealSpectralBridgeProbe.lean")" = '76800a61a1b26825896519789ae2aaaef19069e9'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10HSourceGammaEigenvalueSquareProbe.lean")" = '245d1c509d41e71f001204d04b154dee76bd1b6c'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe.lean")" = '0497b3ac508931ad568fc6ef1e3c20c688627ba7'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10JSourceEigenvalueSignPartitionProbe.lean")" = '144d32242d33428fdf26b40a9cfb8ce42bbe7c87'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10KSourceEigenvalueCardinalityBalanceProbe.lean")" = '680122d148d53078f7b0493369b6a53f8f1101ef'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10LSourceRealEigenvalueEightEachProbe.lean")" = '225f44f885923e567f2965ffd587920d4bfdaf5e'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10MOriginalGammaEigenvalueProductPartitionProbe.lean")" = 'ec8c1ea8339df8262b394b0c8013e99b807a314b'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10NOriginalGammaPositiveDeterminantProbe.lean")" = '85ebcbfbe9929f249376e79ab735d4f3c2180e5b'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10OCliffordUnitGeneratorPositivityProbe.lean")" = '759ca747a5dcfb165c2cd6b70e1df59dae21ece5'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10OCliffordUnitGeneratorPositivityProbe.lean').read_text()
+          names=["source9CliffordUnitsGammaDetHom_ne_zero","source9CliffordUnitsGammaDetHom_pos_generator","source9CliffordUnitsGammaDetHom_pos_inv_of_pos"]
+          for name in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(name)+r'\b',s))==1,name
+          assert s.count('#print axioms ')==3
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          assert '/-' not in code
+          for required in ['source9CliffordUnitsGammaDetHom_generator_positive_branch',
+                           'source9Quadratic_nonneg', 'map_mul',
+                           'mul_nonpos_of_nonneg_of_nonpos', 'source9CliffordUnitsGammaDetHom_ne_zero']:
+              assert required in code,required
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10O_ORIGINAL_CLIFFORD_UNIT_POSITIVITY_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild qualified exact original gamma determinant F10N ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10NOriginalGammaPositiveDeterminantProbe
+
+      - name: Fresh F10O original Clifford unit positivity warning-as-error proof
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10OCliffordUnitGeneratorPositivityProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10o/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10h-f10o/compiler.log")" -eq 3
+
+      - name: Independently elaborate three exact source Clifford unit positivity types and root axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10O_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10OCliffordUnitGeneratorPositivityProbe
+          open FCP.BFSSGamma9
+          open FCP.BFSSPairedSpin9DetFixture
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example
+              (u : (CliffordAlgebra source9Quadratic)ˣ) :
+              source9CliffordUnitsGammaDetHom u ≠ 0 :=
+            source9CliffordUnitsGammaDetHom_ne_zero u
+          noncomputable example
+              (u : (CliffordAlgebra source9Quadratic)ˣ)
+              (v : SpaceIndex → ℝ)
+              (hvec : (u : CliffordAlgebra source9Quadratic) =
+                CliffordAlgebra.ι source9Quadratic v) :
+              0 < source9CliffordUnitsGammaDetHom u :=
+            source9CliffordUnitsGammaDetHom_pos_generator u v hvec
+          noncomputable example
+              (u : (CliffordAlgebra source9Quadratic)ˣ)
+              (hu : 0 < source9CliffordUnitsGammaDetHom u) :
+              0 < source9CliffordUnitsGammaDetHom u⁻¹ :=
+            source9CliffordUnitsGammaDetHom_pos_inv_of_pos u hu
+          #print axioms FCP.BFSSPairedSpin9DetFixture.source9CliffordUnitsGammaDetHom_ne_zero
+          #print axioms FCP.BFSSPairedSpin9DetFixture.source9CliffordUnitsGammaDetHom_pos_generator
+          #print axioms FCP.BFSSPairedSpin9DetFixture.source9CliffordUnitsGammaDetHom_pos_inv_of_pos
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10O_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10o/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ["RUNNER_TEMP"])/"v10h-f10o"/"declaration-audit.log").read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          names=["source9CliffordUnitsGammaDetHom_ne_zero","source9CliffordUnitsGammaDetHom_pos_generator","source9CliffordUnitsGammaDetHom_pos_inv_of_pos"]
+          expected={'FCP.BFSSPairedSpin9DetFixture.'+n for n in names}
+          assert len(reports)==3 and {n for n,_ in reports}==expected,reports
+          for n,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(n,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10O_CLIFFORD_UNIT_POSITIVITY_THREE_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA, compiler diagnostics and independent three-type audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10o-clifford-unit-positive-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10o
+          if-no-files-found: warn
