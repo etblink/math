@@ -56,7 +56,7 @@ theorem source9OriginalGamma_distinct_pair_first_reverse_bracket
       -⁅source9OriginalGammaDistinctPairInSo a b hab,
         source9OriginalGammaDistinctPairInSo c d hcd⁆ := by
   rw [source9OriginalGamma_distinct_pair_reverse_sign a b hab]
-  exact neg_lie
+  simp only [neg_lie]
 
 /-- Reversing the SECOND original gamma pair changes
 the bracket sign inside the true native so(16,R). -/
@@ -68,7 +68,7 @@ theorem source9OriginalGamma_distinct_pair_second_reverse_bracket
       -⁅source9OriginalGammaDistinctPairInSo a b hab,
         source9OriginalGammaDistinctPairInSo c d hcd⁆ := by
   rw [source9OriginalGamma_distinct_pair_reverse_sign c d hcd]
-  exact lie_neg
+  simp only [lie_neg]
 
 /-- For ANY two original gamma pairs with four
 distinct source labels (all cross inequalities),
