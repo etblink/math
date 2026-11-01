@@ -48,13 +48,30 @@ theorem source9GammaCliffordAlgHom_reverse
       (source9GammaCliffordAlgHom a).transpose := by
   induction a using CliffordAlgebra.induction with
   | algebraMap r =>
-      change source9GammaCliffordAlgHom
-        (CliffordAlgebra.reverse
-          (r • (1 : CliffordAlgebra source9Quadratic))) =
-        (source9GammaCliffordAlgHom
-          (r • (1 : CliffordAlgebra source9Quadratic))).transpose
-      simp only [map_smul, CliffordAlgebra.reverse.map_one, map_one,
-        Matrix.transpose_smul, Matrix.transpose_one]
+      have hreverse :
+          CliffordAlgebra.reverse
+            (algebraMap ℝ (CliffordAlgebra source9Quadratic) r) =
+          algebraMap ℝ (CliffordAlgebra source9Quadratic) r :=
+        CliffordAlgebra.reverse.commutes r
+      have hgamma :
+          source9GammaCliffordAlgHom
+            (algebraMap ℝ (CliffordAlgebra source9Quadratic) r) =
+          algebraMap ℝ GammaMatrix r :=
+        source9GammaCliffordAlgHom.commutes r
+      calc
+        source9GammaCliffordAlgHom
+            (CliffordAlgebra.reverse
+              (algebraMap ℝ (CliffordAlgebra source9Quadratic) r)) =
+          source9GammaCliffordAlgHom
+            (algebraMap ℝ (CliffordAlgebra source9Quadratic) r) :=
+          congrArg source9GammaCliffordAlgHom hreverse
+        _ = algebraMap ℝ GammaMatrix r := hgamma
+        _ = (algebraMap ℝ GammaMatrix r).transpose := by
+          rw [Algebra.algebraMap_eq_smul_one,
+            Matrix.transpose_smul, Matrix.transpose_one]
+        _ = (source9GammaCliffordAlgHom
+            (algebraMap ℝ (CliffordAlgebra source9Quadratic) r)).transpose :=
+          congrArg Matrix.transpose hgamma.symm
   | ι v =>
       simpa only [CliffordAlgebra.reverse_ι,
         source9GammaCliffordAlgHom_generator] using
