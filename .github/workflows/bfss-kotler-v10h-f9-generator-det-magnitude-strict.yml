@@ -1,0 +1,145 @@
+name: BFSS V10H F9 original real gamma generator determinant magnitude strict gate
+on:
+  push:
+    branches:
+      - research/fcp-k1d17-ancestor-cache-pilot-20261028
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f9-generator-det-magnitude-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-generator-det-magnitude:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin accepted F8 original Clifford source and F9 exact vector gamma magnitude
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f9"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f9/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF7TwoSignObstructionDiscriminatorProbe.lean")" = '9b9a2f85c8cbd8588c1d86fba92b4b6cffa16973'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF8CliffordUnitsGeneratorDetBridgeProbe.lean")" = '937e1033ad5261f2dfa0c415e60d4b7e38ac0736'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean")" = '44493c4d9b72de2d2d84725768f8e2572ac91ed4'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean').read_text()
+          names=["gammaNineRealLinear_det_sq16","gammaNineRealLinear_det_eq_pow8_or_neg","source9CliffordUnitsGammaDetHom_generator_two_sign"]
+          for n in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(n)+r'\b',s))==1,n
+          assert s.count('#print axioms ')==3
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          assert '/-' not in code, 'unhandled nested source comment'
+          for required in ['gammaNineRealLinear_sq', 'Matrix.det_mul',
+                           'Matrix.det_smul', 'Fintype.card_fin',
+                           'mul_self_eq_mul_self_iff',
+                           'source9CliffordUnitsGammaDetHom_generator']:
+              assert required in code,required
+          assert 'Matrix.detMonoidHom' not in code
+          assert 'SU2BFSSPairedSpin9SourceDeterminantCharacterProbe' not in code
+          assert not re.search(r'\b(sorry|admit)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F9_EXACT_ORIGINAL_GENERATOR_MAGNITUDE_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F8 original Clifford ambient generator determinant ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF8CliffordUnitsGeneratorDetBridgeProbe
+
+      - name: Fresh F9 source generator determinant magnitude strict compile
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f9/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10h-f9/compiler.log")" -eq 3
+
+      - name: Independently elaborate three exact F9 generator determinant types and root axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F9_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSPairedSpin9DetFixture
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example (v : SpaceIndex → ℝ) :
+              (gammaNineRealLinear v).det ^ 2 =
+                (source9Quadratic v) ^ 16 :=
+            gammaNineRealLinear_det_sq16 v
+          noncomputable example (v : SpaceIndex → ℝ) :
+              (gammaNineRealLinear v).det = (source9Quadratic v) ^ 8 ∨
+                (gammaNineRealLinear v).det = -(source9Quadratic v) ^ 8 :=
+            gammaNineRealLinear_det_eq_pow8_or_neg v
+          noncomputable example
+              (u : (CliffordAlgebra source9Quadratic)ˣ)
+              (v : SpaceIndex → ℝ)
+              (hvec : (u : CliffordAlgebra source9Quadratic) =
+                CliffordAlgebra.ι source9Quadratic v) :
+              source9CliffordUnitsGammaDetHom u = (source9Quadratic v) ^ 8 ∨
+                source9CliffordUnitsGammaDetHom u = -(source9Quadratic v) ^ 8 :=
+            source9CliffordUnitsGammaDetHom_generator_two_sign u v hvec
+          #print axioms FCP.BFSSPairedSpin9DetFixture.gammaNineRealLinear_det_sq16
+          #print axioms FCP.BFSSPairedSpin9DetFixture.gammaNineRealLinear_det_eq_pow8_or_neg
+          #print axioms FCP.BFSSPairedSpin9DetFixture.source9CliffordUnitsGammaDetHom_generator_two_sign
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F9_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f9/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f9'/'declaration-audit.log').read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          expected={'FCP.BFSSPairedSpin9DetFixture.'+n for n in ["gammaNineRealLinear_det_sq16","gammaNineRealLinear_det_eq_pow8_or_neg","source9CliffordUnitsGammaDetHom_generator_two_sign"]}
+          assert len(reports)==3 and {n for n,_ in reports}==expected,reports
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F9_GENERATOR_MAGNITUDE_3_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact tested SHA, compiler and independent axiom audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f9-generator-magnitude-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f9
+          if-no-files-found: warn
