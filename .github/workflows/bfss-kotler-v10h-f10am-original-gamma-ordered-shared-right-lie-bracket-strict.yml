@@ -19,7 +19,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Pin public original gamma F10E F10AJ F10AK and F10AM sources
+      - name: Pin public original gamma F10E F10AJ F10AK F10AL and F10AM sources
         shell: bash
         run: |
           set -euo pipefail
@@ -38,10 +38,10 @@ jobs:
           from pathlib import Path
           import re
           s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AMOriginalGammaOrderedSharedRightLieBracketProbe.lean').read_text()
-          names=['source9OriginalGamma_ordered_shared-right_forward_product',
-                 'source9OriginalGamma_ordered_shared-right_reverse_product',
-                 'source9OriginalGamma_ordered_shared-right_matrix_commutator',
-                 'source9OriginalGamma_ordered_shared-right_native_so_bracket']
+          names=['source9OriginalGamma_ordered_shared_right_forward_product',
+                 'source9OriginalGamma_ordered_shared_right_reverse_product',
+                 'source9OriginalGamma_ordered_shared_right_matrix_commutator',
+                 'source9OriginalGamma_ordered_shared_right_native_so_bracket']
           for n in names:
               assert len(re.findall(r'(?m)^theorem '+re.escape(n)+r'\b',s)) == 1, n
           assert s.count('#print axioms ') == 4
@@ -49,9 +49,9 @@ jobs:
           for term in ['source9OriginalGamma_basis_mul_self',
                        'source9OriginalGamma_anticommute',
                        'source9OrderedGammaPairInSo',
-                       'source9OriginalGamma_ordered_shared-right_forward_product',
-                       'source9OriginalGamma_ordered_shared-right_reverse_product',
-                       'source9OriginalGamma_ordered_shared-right_matrix_commutator',
+                       'source9OriginalGamma_ordered_shared_right_forward_product',
+                       'source9OriginalGamma_ordered_shared_right_reverse_product',
+                       'source9OriginalGamma_ordered_shared_right_matrix_commutator',
                        'Subtype.ext']:
               assert term in code, term
           assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
@@ -127,20 +127,20 @@ jobs:
                 source9OrderedGammaPairInSo ⟨(b,c),hbc⟩⁆ =
                 -((2 : ℝ) • source9OrderedGammaPairInSo ⟨(a,b),hab⟩) :=
             source9OriginalGamma_ordered_shared_right_native_so_bracket a b c hab hbc
-          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared-right_forward_product
-          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared-right_reverse_product
-          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared-right_matrix_commutator
-          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared-right_native_so_bracket
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared_right_forward_product
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared_right_reverse_product
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared_right_matrix_commutator
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalGamma_ordered_shared_right_native_so_bracket
           LEAN
           timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10AM_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10am/declaration-audit.log"
           python3 - <<'PY'
           from pathlib import Path
           import os,re
           s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10am'/'declaration-audit.log').read_text()
-          names=['source9OriginalGamma_ordered_shared-right_forward_product',
-                 'source9OriginalGamma_ordered_shared-right_reverse_product',
-                 'source9OriginalGamma_ordered_shared-right_matrix_commutator',
-                 'source9OriginalGamma_ordered_shared-right_native_so_bracket']
+          names=['source9OriginalGamma_ordered_shared_right_forward_product',
+                 'source9OriginalGamma_ordered_shared_right_reverse_product',
+                 'source9OriginalGamma_ordered_shared_right_matrix_commutator',
+                 'source9OriginalGamma_ordered_shared_right_native_so_bracket']
           expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in names}
           reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
           empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
@@ -149,7 +149,7 @@ jobs:
           for name,axs in reports:
               assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
           assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
-          print('V10H_F10AM_FOUR_FORK_LIE_BRACKET_TYPES_AXIOMS_PASS')
+          print('V10H_F10AM_FOUR_SHARED_RIGHT_LIE_BRACKET_TYPES_AXIOMS_PASS')
           PY
 
       - name: Preserve exact SHA compiler and four independent shared-right bracket audits
