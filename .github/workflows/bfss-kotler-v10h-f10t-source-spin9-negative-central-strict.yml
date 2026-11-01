@@ -1,0 +1,142 @@
+name: BFSS V10H F10T genuine source Spin9 negative central membership strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f10t-source-spin9-negative-central-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  genuine-source-spin9-negative-central:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin genuine source gamma F10S and original Spin48 structural method
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10t"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10t/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe.lean")" = 'b7e2755bb2db28e2ce3d31cb9e8c47df4985ba6d'
+          test "$(git hash-object "$p/SU2BFSSPhysicalDomainS1V52K1D9OriginalSpin48NegativeCentralMembershipProbe.lean")" = 'd3f25e766279f1452c69608d420ed3689508d8ba'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean")" = '251a9375d3f99e04d3bf547c8052185ebcf2b768'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean').read_text()
+          expected=['source9_neg_one_mem_of_unitVector','source9_neg_one_mem',
+                    'source9NegativeCentral','source9NegativeCentral_coe']
+          for name in expected:
+              pattern=r'(?m)^(?:theorem|noncomputable def) '+re.escape(name)+r'\b'
+              assert len(re.findall(pattern,s)) == 1,name
+          assert s.count('#print axioms ') == 4
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          for token in ['CliffordAlgebra.ι','lipschitzGroup','pinGroup.units_mem_iff',
+                        'spinGroup.mem_iff','source9Quadratic','source9NegativeCentral']:
+              assert token in code,token
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10T_SOURCE_PIN_AND_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10S original paired negative scalar ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe
+
+      - name: Fresh F10T genuine Spin9 negative central warning-as-error proof
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10t/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently elaborate four exact source Spin9 central types and axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10T_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open OAI.BFSSQuantum
+          noncomputable example (v : SpaceIndex → ℝ)
+              (hv : source9Quadratic v = 1) :
+              (-1 : CliffordAlgebra source9Quadratic) ∈
+                spinGroup source9Quadratic :=
+            source9_neg_one_mem_of_unitVector v hv
+          noncomputable example :
+              (-1 : CliffordAlgebra source9Quadratic) ∈
+                spinGroup source9Quadratic := source9_neg_one_mem
+          noncomputable example : spinGroup source9Quadratic :=
+            source9NegativeCentral
+          noncomputable example :
+              ((source9NegativeCentral : spinGroup source9Quadratic) :
+                CliffordAlgebra source9Quadratic) = -1 :=
+            source9NegativeCentral_coe
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9_neg_one_mem_of_unitVector
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9_neg_one_mem
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9NegativeCentral
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_coe
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10T_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10t/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10t'/'declaration-audit.log').read_text()
+          names=['source9_neg_one_mem_of_unitVector','source9_neg_one_mem',
+                 'source9NegativeCentral','source9NegativeCentral_coe']
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in names}
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+          actual={n for n,_ in reports}|set(empty)
+          assert len(reports)+len(empty)==4 and actual==expected,(reports,empty)
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10T_FOUR_SOURCE_SPIN9_CENTRAL_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA, compiler and independent central audits
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10t-source-spin9-negative-central-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10t
+          if-no-files-found: warn
