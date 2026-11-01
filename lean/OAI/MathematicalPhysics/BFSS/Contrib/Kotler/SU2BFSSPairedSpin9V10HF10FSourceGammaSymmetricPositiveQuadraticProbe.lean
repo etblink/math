@@ -61,15 +61,12 @@ data and respects the original SpinIndex=Fin16 basis. -/
 theorem gammaNineRealLinear_isSymm
     (v : SpaceIndex → ℝ) :
     (gammaNineRealLinear v).IsSymm := by
-  apply Matrix.IsSymm.ext
-  intro i j
-  change (∑ a : SpaceIndex, (v a) • gamma a) j i =
-    (∑ a : SpaceIndex, (v a) • gamma a) i j
-  simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
+  change (∑ a : SpaceIndex, (v a) • gamma a)ᵀ =
+    ∑ a : SpaceIndex, (v a) • gamma a
+  rw [Matrix.transpose_sum]
   apply Finset.sum_congr rfl
   intro a ha
-  exact congrArg (fun x : ℝ => v a * x)
-    ((gamma_symmetric a).apply i j)
+  rw [Matrix.transpose_smul, (gamma_symmetric a).eq]
 
 #print axioms source9Quadratic_eq_zero_iff
 #print axioms source9Quadratic_pos_of_ne
