@@ -1,0 +1,152 @@
+name: BFSS V10H F10U actual Spin9 negative central SO48 image strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f10u-actual-negative-central-so48-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-negative-central-original-so48:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin original gamma accepted F10S F10T and new F10U
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10u"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10u/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe.lean")" = 'b7e2755bb2db28e2ce3d31cb9e8c47df4985ba6d'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean")" = '251a9375d3f99e04d3bf547c8052185ebcf2b768'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean")" = '353978608b978b00d0e36deb1c1a47c32641ea59'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean').read_text()
+          names=['source9NegativeCentral_originalPairedSO48_image',
+                 'source9NegativeCentral_originalPairedSO48_image_ne_one',
+                 'source9NegativeCentral_not_mem_originalPairedSO48_ker',
+                 'source9NegativeCentral_ne_one']
+          for name in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(name)+r'\b',s))==1,name
+          assert s.count('#print axioms ')==4
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          for token in ['source9SpinOriginalPaired48SOHom_neg_scalar_of_mem',
+                        'source9NegativeCentral_coe',
+                        'source9SpinOriginalPaired48SpecialOrthogonalHom',
+                        'Source48Label','MonoidHom.mem_ker']:
+              assert token in code,token
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10U_SOURCE_PIN_AND_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10T source Spin9 negative central ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe
+
+      - name: Fresh F10U actual negative central SO48 warning-as-error proof
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10u/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently elaborate four exact SO48 negative central types and axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10U_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example :
+              ((source9SpinOriginalPaired48SpecialOrthogonalHom
+                  source9NegativeCentral) :
+                Matrix Source48Label Source48Label ℝ) =
+              -(1 : Matrix Source48Label Source48Label ℝ) :=
+            source9NegativeCentral_originalPairedSO48_image
+          noncomputable example :
+              source9SpinOriginalPaired48SpecialOrthogonalHom
+                source9NegativeCentral ≠ 1 :=
+            source9NegativeCentral_originalPairedSO48_image_ne_one
+          noncomputable example :
+              source9NegativeCentral ∉
+                source9SpinOriginalPaired48SpecialOrthogonalHom.ker :=
+            source9NegativeCentral_not_mem_originalPairedSO48_ker
+          noncomputable example :
+              source9NegativeCentral ≠ (1 : spinGroup source9Quadratic) :=
+            source9NegativeCentral_ne_one
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_originalPairedSO48_image
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_originalPairedSO48_image_ne_one
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_not_mem_originalPairedSO48_ker
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_ne_one
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10U_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10u/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10u'/'declaration-audit.log').read_text()
+          names=['source9NegativeCentral_originalPairedSO48_image',
+                 'source9NegativeCentral_originalPairedSO48_image_ne_one',
+                 'source9NegativeCentral_not_mem_originalPairedSO48_ker',
+                 'source9NegativeCentral_ne_one']
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in names}
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+          actual={n for n,_ in reports}|set(empty)
+          assert len(reports)+len(empty)==4 and actual==expected,(reports,empty)
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10U_FOUR_ACTUAL_CENTRAL_SO48_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA, compiler and independent central-image audits
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10u-actual-spin9-central-so48-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10u
+          if-no-files-found: warn
