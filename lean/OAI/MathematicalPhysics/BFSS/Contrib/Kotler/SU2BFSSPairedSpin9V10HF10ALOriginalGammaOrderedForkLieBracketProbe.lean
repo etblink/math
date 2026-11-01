@@ -42,7 +42,7 @@ open Matrix
 /-- The forward fork source product AB*AC is -BC for
 the exact original symmetric real gamma matrices. -/
 theorem source9OriginalGamma_ordered_fork_forward_product
-    (a b c : SpaceIndex) (hab : a < b) (hbc : b < c) :
+    (a b c : SpaceIndex) (hab : a < b) (_hbc : b < c) :
     (gamma a * gamma b) * (gamma a * gamma c) =
       -(gamma b * gamma c) := by
   have hba : b ≠ a := ne_of_gt hab
@@ -76,7 +76,7 @@ theorem source9OriginalGamma_ordered_fork_reverse_product
     _ = -(gamma c * gamma b) := by
           rw [source9OriginalGamma_basis_mul_self a, one_mul]
     _ = gamma b * gamma c := by
-          simpa only [source9OriginalGamma_anticommute c b hcb, neg_neg]
+          simp only [source9OriginalGamma_anticommute c b hcb, neg_neg]
 
 /-- The exact source gamma matrix commutator has
 coefficient NEGATIVE TWO for a<b<c and shared left a. -/
