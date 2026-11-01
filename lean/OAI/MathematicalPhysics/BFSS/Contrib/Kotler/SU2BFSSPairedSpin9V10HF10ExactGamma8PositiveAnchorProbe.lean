@@ -45,7 +45,8 @@ theorem originalGamma8_eq_diagonal :
   fin_cases i <;> fin_cases j <;>
     first
     | rfl
-    | norm_num [gamma, Matrix.diagonal, Matrix.map_apply] <;> rfl
+    | change ((-1 : ℤ) : ℝ) = (-1 : ℝ)
+      norm_num
 
 /-- The determinant of the actual ninth original real
 gamma, not an arbitrary substitute, equals +1. -/
