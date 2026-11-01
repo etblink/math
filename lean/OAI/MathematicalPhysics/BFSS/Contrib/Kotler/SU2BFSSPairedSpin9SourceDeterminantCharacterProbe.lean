@@ -37,6 +37,14 @@ noncomputable def source9SpinGammaDetHom :
     ((Matrix.orthogonalGroup SpinIndex ℝ).subtype.comp
       source9SpinGammaOrthogonalHom)
 
+/-- Explicit source-exact evaluation of the determinant
+character, isolating the MonoidHom and Submonoid subtype
+bridge before any orientation arithmetic. -/
+theorem source9SpinGammaDetHom_apply
+    (g : spinGroup source9Quadratic) :
+    source9SpinGammaDetHom g =
+      (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) := rfl
+
 /-- Every genuine orthogonal source gamma image has
 determinant square exactly one; orientation sign remains
 undetermined by this equality alone. -/
@@ -46,13 +54,16 @@ theorem source9SpinGammaDetHom_sq
   have horth :
       ((source9SpinGammaOrthogonalHom g) : GammaMatrix) *
         ((source9SpinGammaOrthogonalHom g) : GammaMatrix).transpose = 1 :=
-    Matrix.mem_orthogonalGroup_iff.mp
+    (Matrix.mem_orthogonalGroup_iff).mp
       (source9SpinGammaOrthogonalHom g).property
-  have hd := congrArg Matrix.det horth
-  simp only [Matrix.det_mul, Matrix.det_transpose,
-    Matrix.det_one] at hd
-  change (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) ^ 2 = 1
-  simpa only [pow_two] using hd
+  have hdet := congrArg Matrix.det horth
+  have hdet_sq :
+      (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) *
+        (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) = 1 := by
+    simpa only [Matrix.det_mul, Matrix.det_transpose,
+      Matrix.det_one] using hdet
+  rw [source9SpinGammaDetHom_apply, pow_two]
+  exact hdet_sq
 
 /-- On the ACTUAL original paired 48 indices, the group
 action determinant is exactly the 16-spinor determinant:
@@ -63,15 +74,22 @@ theorem source9SpinOriginalPaired48_det_eq_gamma
     (((source9SpinOriginalPaired48OrthogonalHom g) :
       Matrix Source48Label Source48Label ℝ)).det =
       (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) := by
-  let d := source9SpinGammaDetHom g
-  have hs : d ^ 2 = 1 := source9SpinGammaDetHom_sq g
-  change (((source9SpinOriginalPaired48OrthogonalHom g) :
-    Matrix Source48Label Source48Label ℝ)).det = d
-  rw [source9SpinOriginalPaired48OrthogonalHom_det]
-  change d ^ 3 = d
   calc
-    d ^ 3 = d ^ 2 * d := by ring
-    _ = d := by rw [hs, one_mul]
+    (((source9SpinOriginalPaired48OrthogonalHom g) :
+      Matrix Source48Label Source48Label ℝ)).det =
+        (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) ^ 3 :=
+      source9SpinOriginalPaired48OrthogonalHom_det g
+    _ = (source9SpinGammaDetHom g) ^ 3 := by
+      rw [source9SpinGammaDetHom_apply]
+    _ = source9SpinGammaDetHom g := by
+      calc
+        (source9SpinGammaDetHom g) ^ 3 =
+            (source9SpinGammaDetHom g) ^ 2 *
+              source9SpinGammaDetHom g := by ring
+        _ = source9SpinGammaDetHom g := by
+          rw [source9SpinGammaDetHom_sq g, one_mul]
+    _ = (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) :=
+      source9SpinGammaDetHom_apply g
 
 /-- The exact original paired 48-dimensional source action
 has determinant +1 if and only if its original 16-spinor
@@ -88,7 +106,7 @@ theorem source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one
     have hdet :
         (((source9SpinOriginalPaired48OrthogonalHom g) :
           Matrix Source48Label Source48Label ℝ)).det = 1 :=
-      (Matrix.mem_specialOrthogonalGroup_iff.mp h).2
+      ((Matrix.mem_specialOrthogonalGroup_iff).mp h).2
     rw [source9SpinOriginalPaired48_det_eq_gamma] at hdet
     exact hdet
   · intro h
@@ -97,6 +115,7 @@ theorem source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one
         g h
 
 #print axioms source9SpinGammaDetHom
+#print axioms source9SpinGammaDetHom_apply
 #print axioms source9SpinGammaDetHom_sq
 #print axioms source9SpinOriginalPaired48_det_eq_gamma
 #print axioms source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one

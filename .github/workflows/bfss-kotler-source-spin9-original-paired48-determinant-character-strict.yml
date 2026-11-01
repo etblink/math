@@ -31,15 +31,15 @@ jobs:
           p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
           test "$(git hash-object "$p/SU2BFSSPairedSpin9OriginalPaired48DeterminantTransferProbe.lean")" = '1f71be97fb11a01022257b791ab38863de4407b5'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean")" = '9dc5713dfea7c40d8c9f58088392e144c3c28517'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceDeterminantCharacterProbe.lean")" = 'f0654d4ed887b25196bd7a4517976de395cf1bd9'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceDeterminantCharacterProbe.lean")" = 'd9a602386393ddae820a30c2974685a77c78149e'
           python3 - <<'PY'
           from pathlib import Path
           import re
           s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceDeterminantCharacterProbe.lean').read_text()
-          names=["source9SpinGammaDetHom","source9SpinGammaDetHom_sq","source9SpinOriginalPaired48_det_eq_gamma","source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one"]
+          names=["source9SpinGammaDetHom","source9SpinGammaDetHom_apply","source9SpinGammaDetHom_sq","source9SpinOriginalPaired48_det_eq_gamma","source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one"]
           for n in names:
               assert len(re.findall(r'(?m)^(?:theorem|noncomputable def) '+re.escape(n)+r'\b',s))==1,n
-          assert s.count('#print axioms ')==4
+          assert s.count('#print axioms ')==5
           assert 'Matrix.detMonoidHom' in s and 'Matrix.mem_orthogonalGroup_iff' in s
           assert 'source9SpinOriginalPaired48OrthogonalHom_det' in s
           assert 'Matrix.mem_specialOrthogonalGroup_iff' in s
@@ -80,9 +80,9 @@ jobs:
           mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
           timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h/compiler.log"
           test -s ".lake/build/lib/lean/${target}.olean"
-          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10h/compiler.log")" -eq 4
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10h/compiler.log")" -eq 5
 
-      - name: Independently elaborate exact four declaration types and audit axioms
+      - name: Independently elaborate exact five declaration types and audit axioms
         shell: bash
         timeout-minutes: 12
         run: |
@@ -99,6 +99,10 @@ jobs:
               spinGroup source9Quadratic →* ℝ :=
             source9SpinGammaDetHom
           noncomputable example (g : spinGroup source9Quadratic) :
+              source9SpinGammaDetHom g =
+                (((source9SpinGammaOrthogonalHom g) : GammaMatrix).det) :=
+            source9SpinGammaDetHom_apply g
+          noncomputable example (g : spinGroup source9Quadratic) :
               (source9SpinGammaDetHom g) ^ 2 = 1 :=
             source9SpinGammaDetHom_sq g
           noncomputable example (g : spinGroup source9Quadratic) :
@@ -113,6 +117,7 @@ jobs:
                 (((source9SpinGammaOrthogonalHom g) : GammaMatrix)).det = 1 :=
             source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one g
           #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaDetHom
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaDetHom_apply
           #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinGammaDetHom_sq
           #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48_det_eq_gamma
           #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one
@@ -123,12 +128,12 @@ jobs:
           import os,re
           s=(Path(os.environ['RUNNER_TEMP'])/'v10h'/'declaration-audit.log').read_text()
           reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
-          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["source9SpinGammaDetHom","source9SpinGammaDetHom_sq","source9SpinOriginalPaired48_det_eq_gamma","source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one"]}
-          assert len(reports)==4 and {n for n,_ in reports}==expected,reports
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["source9SpinGammaDetHom","source9SpinGammaDetHom_apply","source9SpinGammaDetHom_sq","source9SpinOriginalPaired48_det_eq_gamma","source9SpinOriginalPaired48_mem_specialOrthogonal_iff_gamma_det_one"]}
+          assert len(reports)==5 and {n for n,_ in reports}==expected,reports
           for name,axs in reports:
               assert set(a.strip() for a in axs.split(','))<={'propext','Classical.choice','Quot.sound'},(name,axs)
           assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
-          print('V10H_ORIGINAL_SOURCE_SPIN9_DET_CHARACTER_4_TYPED_AXIOMS_PASS')
+          print('V10H_ORIGINAL_SOURCE_SPIN9_DET_CHARACTER_5_TYPED_AXIOMS_PASS')
           PY
 
       - name: Retain tested source SHA, fresh compiler and independent axiom audit
