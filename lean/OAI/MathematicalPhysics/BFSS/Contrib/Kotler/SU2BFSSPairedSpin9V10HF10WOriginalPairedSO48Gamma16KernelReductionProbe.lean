@@ -51,7 +51,8 @@ theorem gamma16ToOriginalPaired48_injective :
   have hij := congrArg
     (fun M : Matrix (ColorIndex 2 × SpinIndex)
         (ColorIndex 2 × SpinIndex) ℝ =>
-      M ((0 : ColorIndex 2), i) ((0 : ColorIndex 2), j)) hK
+      M ((⟨0, by decide⟩ : ColorIndex 2), i)
+        ((⟨0, by decide⟩ : ColorIndex 2), j)) hK
   simpa [Matrix.kronecker_apply] using hij
 
 /-- Equality of actual Spin9 original paired SO48 images is
