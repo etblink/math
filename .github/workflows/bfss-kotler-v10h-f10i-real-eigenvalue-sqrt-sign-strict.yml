@@ -1,0 +1,147 @@
+name: BFSS V10H F10I original eigenvalue sqrt two-sign strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f10i-real-eigenvalue-sqrt-sign-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-gamma-sqrt-two-sign:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin original gamma, qualified F9 and F10E-H and exact new F10I source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10i"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10i/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean")" = '44493c4d9b72de2d2d84725768f8e2572ac91ed4'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean")" = '3922916e49fc961efa99a72d706ca83ca704e3d6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10FSourceGammaSymmetricPositiveQuadraticProbe.lean")" = '19a1d1fd4cfc89d7c243d28a4c9f1663a3aa3ce3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10GSourceGammaRealSpectralBridgeProbe.lean")" = '76800a61a1b26825896519789ae2aaaef19069e9'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10HSourceGammaEigenvalueSquareProbe.lean")" = '245d1c509d41e71f001204d04b154dee76bd1b6c'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe.lean")" = '0497b3ac508931ad568fc6ef1e3c20c688627ba7'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe.lean').read_text()
+          names=['source9Quadratic_nonneg',
+                 'gammaNineRealLinear_realEigenvalues_eq_sqrt_or_neg',
+                 'source9Quadratic_sqrt_pos_of_ne']
+          for n in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(n)+r'\b',s))==1,n
+          assert s.count('#print axioms ')==3
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          assert '/-' not in code
+          for k in ['Real.mul_self_sqrt','mul_self_eq_mul_self_iff',
+                    'gammaNineRealLinear_realEigenvalues_mul_self',
+                    'source9Quadratic_pos_of_ne','Real.sqrt_pos.2']:
+              assert k in code,k
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10I_EXACT_SOURCE_SQRT_SIGN_PREFLIGHT_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted exact original F10H eigenvalue square source
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10HSourceGammaEigenvalueSquareProbe
+
+      - name: Fresh exact source F10I sqrt two-sign warning-as-error compile
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10i/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          test "$(grep -c '^.*depends on axioms:\|^.*does not depend on any axioms' "$RUNNER_TEMP/v10h-f10i/compiler.log")" -eq 3
+
+      - name: Independently elaborate three exact real gamma sqrt types and root axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10I_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe
+          open FCP.BFSSGamma9
+          open FCP.BFSSPairedSpin9DetFixture
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example (v : SpaceIndex → ℝ) :
+              0 ≤ source9Quadratic v :=
+            source9Quadratic_nonneg v
+          noncomputable example (v : SpaceIndex → ℝ) (i : SpinIndex) :
+              (gammaNineRealLinear_isHermitian v).eigenvalues i =
+                Real.sqrt (source9Quadratic v) ∨
+              (gammaNineRealLinear_isHermitian v).eigenvalues i =
+                -(Real.sqrt (source9Quadratic v)) :=
+            gammaNineRealLinear_realEigenvalues_eq_sqrt_or_neg v i
+          noncomputable example (v : SpaceIndex → ℝ) (hv : v ≠ 0) :
+              0 < Real.sqrt (source9Quadratic v) :=
+            source9Quadratic_sqrt_pos_of_ne v hv
+          #print axioms FCP.BFSSPairedSpin9DetFixture.source9Quadratic_nonneg
+          #print axioms FCP.BFSSPairedSpin9DetFixture.gammaNineRealLinear_realEigenvalues_eq_sqrt_or_neg
+          #print axioms FCP.BFSSPairedSpin9DetFixture.source9Quadratic_sqrt_pos_of_ne
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10I_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10i/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ["RUNNER_TEMP"])/"v10h-f10i"/"declaration-audit.log").read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          names=['source9Quadratic_nonneg',
+                 'gammaNineRealLinear_realEigenvalues_eq_sqrt_or_neg',
+                 'source9Quadratic_sqrt_pos_of_ne']
+          expected={'FCP.BFSSPairedSpin9DetFixture.'+n for n in names}
+          assert len(reports)==3 and {n for n,_ in reports}==expected,reports
+          for n,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(n,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10I_EXACT_SQRT_TWO_SIGN_THREE_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve tested SHA, compiler and independent declaration audits
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10i-source-sqrt-two-sign-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10i
+          if-no-files-found: warn
