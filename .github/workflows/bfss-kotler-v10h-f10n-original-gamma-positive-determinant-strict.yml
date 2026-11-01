@@ -39,7 +39,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10KSourceEigenvalueCardinalityBalanceProbe.lean")" = '680122d148d53078f7b0493369b6a53f8f1101ef'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10LSourceRealEigenvalueEightEachProbe.lean")" = '225f44f885923e567f2965ffd587920d4bfdaf5e'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10MOriginalGammaEigenvalueProductPartitionProbe.lean")" = 'ec8c1ea8339df8262b394b0c8013e99b807a314b'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10NOriginalGammaPositiveDeterminantProbe.lean")" = '07a96a2e476cd857c5e8cca1f106d39689793117'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10NOriginalGammaPositiveDeterminantProbe.lean")" = '5da6a2fe82c520f55abe7fb442c674cc7b051999'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -59,6 +59,8 @@ jobs:
                            'source9CliffordUnitsGammaDetHom_generator']:
               assert required in src,required
           assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',src)
+          assert 'simp [hQ] at h ⊢ <;> exact h' in src
+          assert 'simpa [hQ] using h' not in src
           print('V10H_F10N_ORIGINAL_POSITIVE_DETERMINANT_PREFLIGHT_PASS')
           PY
 

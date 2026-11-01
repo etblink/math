@@ -78,7 +78,7 @@ theorem gammaNineRealLinear_det_eq_source9Quadratic_pow8
       simp
     rcases gammaNineRealLinear_det_eq_pow8_or_neg (0 : SpaceIndex → ℝ) with h | h
     · exact h
-    · simpa [hQ] using h
+    · simp [hQ] at h ⊢ <;> exact h
   · exact gammaNineRealLinear_det_eq_source9Quadratic_pow8_of_ne v hv
 
 /-- Every original source real gamma16 generator determinant
