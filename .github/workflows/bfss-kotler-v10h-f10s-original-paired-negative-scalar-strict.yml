@@ -1,0 +1,154 @@
+name: BFSS V10H F10S exact original paired negative Clifford scalar strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe.lean
+      - .github/workflows/bfss-kotler-v10h-f10s-original-paired-negative-scalar-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-paired-negative-scalar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin exact V10F V10G F10R source gamma and new F10S
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10s"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10s/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean")" = '9dc5713dfea7c40d8c9f58088392e144c3c28517'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9OriginalPaired48DeterminantTransferProbe.lean")" = '1f71be97fb11a01022257b791ab38863de4407b5'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean")" = '75a679f2a1435d747e219617feea266b4508c53d'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe.lean")" = '8c4e7123cae8bfcc736bd70eb76a040ccaab1b82'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe.lean').read_text()
+          names=['source9GammaCliffordAlgHom_neg_one',
+                 'gamma16ToOriginalPaired48_neg',
+                 'source9OriginalPaired48_neg_scalar_matrix',
+                 'source9SpinOriginalPaired48SOHom_neg_scalar_of_mem']
+          for name in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(name)+r'\b',s))==1,name
+          assert s.count('#print axioms ')==4
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          for required in ['source9GammaCliffordAlgHom',
+                           'gamma16ToOriginalPaired48',
+                           'pairedColorSpinEquiv',
+                           'source9SpinOriginalPaired48SpecialOrthogonalHom']:
+              assert required in code,required
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
+          print('V10H_F10S_SOURCE_PIN_AND_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10R source exact original paired SO48 ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe
+
+      - name: Fresh F10S original gamma negative scalar warning-as-error proof
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10s/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently elaborate four negative-scalar exact types and axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10S_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSS1V0
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example :
+              source9GammaCliffordAlgHom (-1 : CliffordAlgebra source9Quadratic) =
+              -(1 : GammaMatrix) :=
+            source9GammaCliffordAlgHom_neg_one
+          noncomputable example (A : GammaMatrix) :
+              gamma16ToOriginalPaired48 (-A) =
+              -(gamma16ToOriginalPaired48 A) :=
+            gamma16ToOriginalPaired48_neg A
+          noncomputable example :
+              gamma16ToOriginalPaired48
+                  (source9GammaCliffordAlgHom
+                    (-1 : CliffordAlgebra source9Quadratic)) =
+                -(1 : Matrix Source48Label Source48Label ℝ) :=
+            source9OriginalPaired48_neg_scalar_matrix
+          noncomputable example (g : spinGroup source9Quadratic)
+              (hg : (g : CliffordAlgebra source9Quadratic) = -1) :
+              ((source9SpinOriginalPaired48SpecialOrthogonalHom g) :
+                Matrix Source48Label Source48Label ℝ) =
+                -(1 : Matrix Source48Label Source48Label ℝ) :=
+            source9SpinOriginalPaired48SOHom_neg_scalar_of_mem g hg
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9GammaCliffordAlgHom_neg_one
+          #print axioms FCP.BFSSPairedSpin9Clifford.gamma16ToOriginalPaired48_neg
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9OriginalPaired48_neg_scalar_matrix
+          #print axioms FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48SOHom_neg_scalar_of_mem
+          LEAN
+          timeout 600s lake env lean -DwarningAsError=true /tmp/V10H_F10S_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10s/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10s'/'declaration-audit.log').read_text()
+          names=['source9GammaCliffordAlgHom_neg_one',
+                 'gamma16ToOriginalPaired48_neg',
+                 'source9OriginalPaired48_neg_scalar_matrix',
+                 'source9SpinOriginalPaired48SOHom_neg_scalar_of_mem']
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in names}
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^]]*)\]",s)
+          assert len(reports)==4 and {n for n,_ in reports}==expected,reports
+          for name,axioms in reports:
+              assert set(a.strip() for a in axioms.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axioms)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10S_FOUR_NEGATIVE_SCALAR_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve tested SHA, compiler and independent scalar audits
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10s-original-paired-neg-scalar-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10s
+          if-no-files-found: warn
