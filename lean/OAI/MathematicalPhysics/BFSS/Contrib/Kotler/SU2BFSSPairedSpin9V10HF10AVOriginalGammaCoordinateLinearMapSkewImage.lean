@@ -120,7 +120,7 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane
   by_cases hrs : r = s
   · subst s
     simp [coordinatePlane9_self]
-  · simp only [if_neg hrs]
+  · rw [dite_eq_right hrs]
     rw [coordinatePlane9_eq_single_sub_single, map_sub,
       coordinateToOriginalGammaLinearMap_matrixUnit,
       coordinateToOriginalGammaLinearMap_matrixUnit]
@@ -138,7 +138,7 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_transpose
   · subst s
     simp [coordinateToOriginalGammaLinearMap_coordinatePlane]
   · rw [coordinateToOriginalGammaLinearMap_coordinatePlane]
-    simp only [if_neg hrs]
+    rw [dite_eq_right hrs]
     change
       ((1 / 2 : ℝ) • (gamma r * gamma s)).transpose =
         -((1 / 2 : ℝ) • (gamma r * gamma s))
@@ -161,7 +161,7 @@ theorem coordinateToOriginalGammaLinearMap_image_transpose
   rw [coordinateSkewMatrix9_plane_spanning A hA]
   simp only [map_smul, map_sum]
   rw [Matrix.transpose_smul, Matrix.transpose_sum]
-  simp_rw [Matrix.transpose_smul,
+  simp only [Matrix.transpose_smul,
     coordinateToOriginalGammaLinearMap_coordinatePlane_transpose]
   simp only [smul_neg, Finset.sum_neg_distrib]
 
