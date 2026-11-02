@@ -693,3 +693,54 @@ No limit increase, warning suppression, admission, theorem weakening, changed cu
 **Procedural lesson:** ordinary topology synthesis does not supply a normed-vector-space instance for a matrix type with several legitimate norm choices. Also, do not assume broad simplification will cross a function-valued operator boundary; provide a qualified pointwise equality or source-verified function-form API before raising any limits.
 
 **Next action:** review the unchanged strict gate, including the stronger independent audit. If the same function/topology boundary remains unresolved, isolate it in a small diagnostic before another full-source edit. Even a green F10BJ would establish only the stated vector-space curve derivatives, not a manifold differential or an F10BB tangent identification.
+
+
+### F10BJ Gate 2 ACCEPTED — exact source and gamma curve derivatives at zero
+
+**Run:** [#41528424272](https://github.com/etblink/math/actions/runs/41528424272) — terminal green  
+**Exact tested commit:** `278600c4e694b9e27dbd8b3a229c66e7846a978a`  
+**Accepted source blob:** `528937bc6f528eed64aea16ecc5eb69c74c2dd99`  
+**Independent audit blob:** `13186e289439acf51af42c80cb0585f74a6285c2`  
+**Job:** `exact-pbw-source-and-gamma-curve-derivatives` (`125562047366`)  
+**Artifact:** `13182055810`; ZIP SHA-256 `cdd4893708ae458e9f1aa2290b56fe023ebce375f73aa46245745d856ef8a871`
+
+Exact pins and dependency restoration, accepted F10BI/F10BE ancestry rebuild, fresh F10BJ warnings-as-errors compilation, and the strengthened independent topology/type/axiom audit passed. The classifier emitted `V10H_F10BJ_EXACT_PBW_SOURCE_AND_GAMMA_DERIVATIVE_TYPES_AXIOMS_PASS`. All three root reports in both compiler/audit logs contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+**Accepted declarations:**
+- `realHalfAngleVectorCurve_hasDerivAt_zero`
+- `source9PlaneSpinCurve_coe_hasDerivAt_zero`
+- `source9PlaneSpinCurve_gamma_hasDerivAt_zero`
+
+For distinct labels, the actual source curve coerced into the accepted PBW-normed Clifford vector space has derivative `(1/2) • (ι(e_r)*ι(e_s))` at zero. Its exact F10BC original-gamma matrix image has derivative `(1/2) • (gamma r * gamma s)` at zero. The audit independently reconstructed the PBW structures and confirmed the elementwise matrix norm's topology equals the pre-existing product topology by reflexivity.
+
+**Confirmed repair lesson:** an explicit function-sum/pointwise-lambda equality and an explicitly selected matrix norm resolved Gate 1's two source-interface defects. The theorem propositions, scalar half-angle convention and curve were unchanged. Preserve Gate 1 red and its artifacts as negative knowledge.
+
+**Scientific ceiling:** these are real-parameter vector-space derivatives at zero, not a manifold derivative of the whole F10BC group homomorphism. No canonical `so(9)` tangent identification, source group-action differential, Lie-group atlas, covering/lift, Fock, gauge or spectral result follows.
+
+### F10BK Gate 1 — canonical native-plane velocity comparison CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BKCoordinatePlaneVelocityComparison.lean`  
+**Candidate source blob:** `382e0c369c1455cfd39a7153c9017e6b9b546fd1`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BKIndependentAudit.lean`  
+**Audit blob:** `7c83f0446ed37b935cff96ce27df67acad83fd05`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bk-coordinate-plane-velocity-comparison-strict.yml`
+
+The source audit inspected accepted F10BB `coordinateToOriginalGammaSkewLieHom`, F10AV `coordinateToOriginalGammaLinearMap_coordinatePlane`, and the original source `coordinatePlane9` definition and matrix-unit bridge.
+
+**Exact normalization:** the accepted F10AV coefficient map is `(1/4) • Σ_rs A_rs • (gamma r*gamma s)`. The source plane is exactly `F_rs = E_rs - E_sr`; for `r ≠ s`, its image is **positive** `(1/2) • (gamma r*gamma s)`. F10BB packages this same coefficient map in the canonical native `so SpaceIndex ℝ →ₗ⁅ℝ⁆ so SpinIndex ℝ` carriers. No label reorder or extra source half factor is needed.
+
+Four declarations are proposed: one canonical-plane construction and three proofs.
+- `source9CoordinatePlaneInSo`
+- `coordinateToOriginalGammaSkewLieHom_coordinatePlane_apply`
+- `source9PlaneCliffordVelocity_gamma_eq_coordinatePlaneLieHom`
+- `source9PlaneSpinCurve_gamma_hasDerivAt_coordinatePlaneLieHom`
+
+The new plane value packages the **existing** `coordinatePlane9 r s` into exactly `LieAlgebra.Orthogonal.so SpaceIndex ℝ` with the accepted transpose proof. An explicit raw-carrier bridge exposes F10BB's existing coefficient evaluation. The candidate then checks that evaluating the qualified Clifford velocity through the original gamma algebra hom gives that canonical LieHom image, and restates the qualified target-curve derivative with the LieHom image as its derivative value.
+
+The independent audit checks the plane's underlying matrix is literally `Matrix.single r s 1 - Matrix.single s r 1`, not a differently normalized input. It restates the canonical evaluation, Clifford-velocity image equality and derivative comparison, and rechecks the elementwise matrix topology against the pre-existing product topology.
+
+The workflow pins F10BB, F10AV, the exact original-plane definition/matrix-unit bridge, accepted F10BJ and curve/PBW sources. It rebuilds the actual F10BJ/F10BB dependency closures once and requires fresh warnings-as-errors compilation plus exactly four whitelisted root reports per candidate/audit log. Static source/audit hashes, inventory/scope guards, YAML, shell and embedded Python checks pass. No local Lean elaboration is claimed; no F10BK declaration is accepted before terminal success and output review.
+
+**Scope ceiling:** a successful comparison would identify the **target velocity** along each accepted distinct-coordinate-plane source curve with F10BB evaluated on the corresponding canonical matrix label. It would not establish that the source curve's manifold tangent is that `so(9)` element, identify the full source tangent Lie algebra, or prove a global F10BC differential theorem.
+
+**Next action:** inspect F10BK's strict result. If accepted, source-audit the exact Clifford commutator/conjugation action on source nine-vectors as the next possible normalization bridge. Do not silently equate a Clifford bivector, a skew matrix and a manifold tangent vector.
