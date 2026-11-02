@@ -284,3 +284,22 @@ This is a **coordinate-adapter implementation defect**, not a failure of F10Y fi
 Transport the norm through this composite equivalence, using its additive-hom coercion and injectivity proof. The adapter is explicit and finite-index; no new mathematical axiom, theorem, or global instance is introduced.
 
 The next workflow attempt must still prove, rather than assume, the ambient and Spin(9) Hausdorff typeclass goals. A green result would establish only the chosen PBW-coordinate topology and inherited separation.
+
+
+### F10BD2 attempt 2 — invalid declaration modifier and term layout
+
+**Run:** [#41504802784](https://github.com/etblink/math/actions/runs/41504802784) — red  
+**Exact commit:** `d79fbf22470b575a29ea58cb54d54c081a7488a9`  
+**Diagnostic blob:** `cf98001dfcebe0e76c2dc8f6955f9ae4469e8d6d`  
+**Job:** `source-spin9-pbw-topology` (`125481237918`)  
+**Artifact:** `13171400943`; ZIP SHA-256 `0058e56e424a7e5f6b06c7690610dcbec2f8abbc038a78342b9b24bfd5a6c801`
+
+Exact source/toolchain pins, pinned dependency restoration, the accepted F10X ancestry rebuild, and fresh warnings-as-errors F10Y compilation all passed. The isolated diagnostic failed after approximately 14 seconds.
+
+**Earliest error:** line 30, `local def` is invalid declaration syntax in Lean 4.34.1 (`unexpected token 'def'`). The compiler then reported an unapplied `source9CliffordPBWBasis.repr.trans` and an unexpected opening parenthesis on the continuation line. These diagnostics do not qualify or refute the Finsupp/Pi adapter or the downstream topology goals.
+
+**Bounded correction:** use `private def source9PBWCoordinates`, and put the entire `.trans (...)` application on one line. Lean's pinned `src/Lean/Parser/Command.lean` explicitly supports `private` as a declaration visibility modifier; the pinned Mathlib source also confirms the intended finite-index equivalence interface. Keep all local instances, exact carrier types, synthesis goals, accepted ancestry, compiler strictness, and time limits unchanged. Update the diagnostic blob pin atomically with the source.
+
+**Procedural lesson:** a source pin and token-presence check are not a Lean syntax check. Parser-contaminated output is implementation feedback; do not interpret its later errors as mathematical negative evidence. Preserve this red run and require a fresh compiler result before drawing conclusions about the adapter.
+
+**Validation state:** no Lean executable is installed in the editing workspace. Source inspection and static source/pin checks are available locally; actual elaboration remains the isolated CI diagnostic's obligation. The correction is unqualified until that run passes. Even a green diagnostic adds zero formal theorem roots and establishes no multiplication continuity, topological group, manifold, Lie group, or differential comparison.

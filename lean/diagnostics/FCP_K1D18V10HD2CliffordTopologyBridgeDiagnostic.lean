@@ -27,10 +27,9 @@ example : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
   source9Clifford_finiteDimensional
 
 /-- The accepted PBW coordinates, expressed as a genuine finite Pi space. -/
-local def source9PBWCoordinates :
+private def source9PBWCoordinates :
     CliffordAlgebra source9Quadratic ≃ₗ[ℝ] (Finset SpaceIndex → ℝ) :=
-  source9CliffordPBWBasis.repr.trans
-    (Finsupp.linearEquivFunOnFinite ℝ ℝ (Finset SpaceIndex))
+  source9CliffordPBWBasis.repr.trans (Finsupp.linearEquivFunOnFinite ℝ ℝ (Finset SpaceIndex))
 
 local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   NormedAddCommGroup.induced
@@ -61,3 +60,4 @@ example : T2Space (Matrix.specialOrthogonalGroup SpinIndex ℝ) := inferInstance
 
 end
 end FCP.BFSSPairedSpin9Clifford
+
