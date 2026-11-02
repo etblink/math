@@ -410,3 +410,48 @@ Update the source blob pin atomically and add an explicit static check for the t
 **Procedural lesson:** when promoting a successful anonymous `local instance` to a reusable named class-valued definition, preserve instance-reduction transparency explicitly. A compile-time class-definition warning is interface feedback and must be repaired, not disabled. Pinned Mathlib's transfer-instance file likewise uses transparent class-valued abbreviations.
 
 **Local validation:** the exact source diff consists of the two reducibility attributes; independent audit content is unchanged. Source/audit hashes, declaration inventory, scope guards, YAML, shell syntax, and embedded Python syntax are checked before publication. Actual Lean elaboration remains the unchanged strict CI gate's obligation.
+
+
+### F10BE Gate 2 ACCEPTED — named PBW topology and original gamma continuity
+
+**Run:** [#41513371560](https://github.com/etblink/math/actions/runs/41513371560) — terminal green  
+**Exact tested commit:** `4ac2164fb698b02d099a78d4dc5f2d03b6b594b5`  
+**Accepted source blob:** `db887aa6e495eb2a74c2e826018ffb5453158806`  
+**Independent audit blob:** `dc765801abaf11df1cd08118b91ce37fe2e19337`  
+**Job:** `pbw-topology-original-gamma-continuity` (`125510588178`)  
+**Artifact:** `13174452197`; ZIP SHA-256 `41901253fe12a989258c019778e59400f9380a9d5240635fea0f86be03ac8cfa`
+
+Exact pins and dependency restoration, accepted F10X/F10BC ancestry rebuild, fresh F10Y compilation, fresh F10BE warnings-as-errors compilation, and independent topology/type/axiom audit all passed. The final classifier emitted `V10H_F10BE_EXACT_PBW_TOPOLOGY_CONTINUITY_TYPES_AXIOMS_PASS`.
+
+All seven declarations reported only `propext`, `Classical.choice`, and `Quot.sound` in both candidate and independent-audit logs; no `sorryAx`. The independent audit reconstructed the coordinate equivalence and induced normed group, checked their exact equality, and restated the four proof types under that independently reconstructed topology.
+
+**Accepted inventory:** three reusable constructions (`source9PBWCoordinates`, `source9PBWNormedAddCommGroup`, `source9PBWNormedSpace`) and four proof declarations (`source9Clifford_t2Space_pbw`, `source9Spin_t2Space_pbw`, `source9GammaCliffordAlgHom_continuous_pbw`, `source9SpinGammaSpecialOrthogonalHom_continuous_pbw`). Do not describe all seven as new proposition-level theorems.
+
+**Exact scope:** the named PBW-coordinate normed structures, ambient and source Spin9 Hausdorff separation, whole-Clifford gamma continuity, and continuity of the exact existing F10BC source Spin9-to-SO(16) homomorphism. These structures remain explicit named values, with no global instance registration.
+
+**Still open:** multiplication continuity (until a separate gate passes), source Spin9 inversion continuity/topological-group structure, manifolds, Lie groups, smoothness, tangent/skew identifications and differential equality with F10BB, lifts, Fock, gauge-domain compatibility and BFSS spectral claims.
+
+**Confirmed repair lesson:** adding `@[instance_reducible]` to the two named class-valued definitions, with unchanged definition bodies and unchanged independent audit, resolved both the strict class-definition warnings and the topological-additive-group synthesis failures. Preserve the red Gate 1 record as the negative knowledge for future anonymous-instance promotion.
+
+### F10BF Gate 1 — ambient Clifford multiplication and topological-ring CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean`  
+**Candidate source blob:** `f3d3121ef76af1d25a43ec574bbfc2fbeefce111`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BFIndependentAudit.lean`  
+**Audit blob:** `dd00871d12e1d533d15aa67608713d85eed0ec66`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bf-pbw-clifford-topological-ring-strict.yml`
+
+Source inspection of pinned Mathlib `Mathlib/Topology/Algebra/Module/FiniteDimension.lean` confirms the explicit bridge `isModuleTopologyOfFiniteDimensional`: the existing finite-dimensional Hausdorff real vector-space topology carries `IsModuleTopology`. The pinned `ModuleTopology.lean` then supplies `IsModuleTopology.continuous_mul_of_finite ℝ D` and `IsModuleTopology.isTopologicalRing ℝ D` for a finite real algebra `D`.
+
+The candidate installs exactly the accepted F10BE normed structures locally and uses accepted F10Y finite-dimensionality. It proves the module-topology bridge for that existing topology; it does not substitute a new topology. Three separate, exact declarations are proposed:
+- `source9Clifford_isModuleTopology_pbw`
+- `source9Clifford_mul_continuous_pbw`
+- `source9Clifford_isTopologicalRing_pbw`
+
+The multiplication proposition is joint continuity of `(x,y) ↦ x*y` on the actual `CliffordAlgebra source9Quadratic`, using its actual algebra multiplication. The independent audit reconstructs the PBW norm again, checks its equality with the accepted norm, and restates all three conclusions without installing module-topology, multiplication-continuity or topological-ring hypotheses.
+
+The strict gate pins the accepted source, recompiles accepted F10Y and F10BE, freshly compiles F10BF with warnings as errors, and checks exactly three root-axiom reports in each of the candidate and independent-audit logs against the established whitelist. Local source/audit hashes, declaration inventory/scope checks, YAML, shell and embedded Python checks pass. No local Lean elaboration is claimed.
+
+**Scope ceiling:** even if F10BF is accepted, its result is an ambient topological-ring statement. It will not itself establish inverse continuity or a topological-group structure on the source Spin9 subtype, a manifold, smoothness, a differential theorem, a Spin lift, a Fock realization, gauge-domain compatibility or spectral existence.
+
+**Next action:** inspect F10BF's terminal strict result. If accepted, audit the source group's exact inversion formula and the required continuity bridge as a separate bounded task.
