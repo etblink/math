@@ -95,3 +95,10 @@ Even a green F10BC would establish only a global **algebraic** source-group homo
 2. If green, freeze the algebraic SO(16) interface.
 3. Do not open a differential-equality or topological-integration gate until an exact manifold/API bridge exists.
 4. If such infrastructure is pursued, begin with a diagnostic-only source proving the required typeclass instances and tangent/skew comparison, not with a global theorem candidate.
+
+
+## Qualification result — superseding the candidate status
+
+F10BC Gate 2 is accepted at [run #41453417697](https://github.com/etblink/math/actions/runs/41453417697), exact tested commit `0504e72d34679fdb0684c5ee29e4d7e7f93ff534`, repaired source blob `7798089cb8ac4ec4fffc3ead4caa474def81b3f8`. Fresh warnings-as-errors compilation and all three independent exact type/root-axiom checks passed. The immutable acceptance record is [F10BC Gate 2 acceptance](FCP_K1D18V10H_F10BC_GATE2_ACCEPTANCE_GLOBAL_ALGEBRAIC_ORIGINAL_GAMMA_SO16_HOM_2026_11_02.md).
+
+The API-audit conclusions and scope ceiling above remain unchanged.
