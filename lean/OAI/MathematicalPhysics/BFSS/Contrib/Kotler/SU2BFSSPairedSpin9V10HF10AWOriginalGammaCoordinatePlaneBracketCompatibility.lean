@@ -74,13 +74,13 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
       have hmatrix :
           (gamma r * gamma s) * (gamma t * gamma u) -
             (gamma t * gamma u) * (gamma r * gamma s) =
-          if hac : r = t then
-            if hbd : s = u then
+          if _hac : r = t then
+            if _hbd : s = u then
               (0 : GammaMatrix)
             else
               -((2 : ℝ) • (gamma s * gamma u))
-          else if hbc : s = t then
-            if had : r = u then
+          else if _hbc : s = t then
+            if _had : r = u then
               (0 : GammaMatrix)
             else
               (2 : ℝ) • (gamma r * gamma u)
