@@ -557,3 +557,53 @@ Both quadratic norm-one hypotheses are explicit. The candidate constructs the ac
 The independent audit restates the normalized hypotheses and exact carrier/image types, and checks that both constructed units and Spin elements coerce to the claimed actual Clifford expressions. The strict gate requires fresh warnings-as-errors compilation and exactly five whitelisted axiom reports in each compiler/audit log. Local source/audit pins, inventory/scope checks, YAML, shell and embedded Python checks pass; actual elaboration remains CI's obligation.
 
 **Next action:** review F10BH's strict result. If accepted, define the distinct-coordinate-plane candidate curve and first prove normalization, membership, value at zero and original-gamma image. No derivative or global differential comparison is claimed at this prerequisite stage.
+
+
+### F10BH Gate 1 ACCEPTED — normalized source vector-pair Spin membership
+
+**Run:** [#41520309715](https://github.com/etblink/math/actions/runs/41520309715) — terminal green  
+**Exact tested commit:** `f0739d85aa0c125aa85628b7164e805d4e42398e`  
+**Accepted source blob:** `f17d83d961055ebf4b00b74dfb35010a51c886d4`  
+**Independent audit blob:** `441cca373a4d3ae9ec72277afc5c3339f1af2cf2`  
+**Job:** `actual-source-unit-vector-pair` (`125534323722`)  
+**Artifact:** `13178221036`; ZIP SHA-256 `3d5c4408be63ff40c9fcfdce7d5be80290ee5bd50058ad3c4b1337ed4d147910`
+
+Exact pins and pinned dependency restoration, accepted F10BC ancestry rebuild, fresh F10BH warnings-as-errors compilation and independent exact type/coercion/axiom audit all passed. The classifier emitted `V10H_F10BH_EXACT_NORMALIZED_SOURCE_PAIR_TYPES_AXIOMS_PASS`. Both logs report only `propext`, `Classical.choice`, and `Quot.sound` for each of the five declarations; no `sorryAx`.
+
+**Accepted inventory:** two constructions (`source9UnitVectorCliffordUnit`, `source9UnitVectorPairSpin`) and three proof declarations (`source9UnitVectorCliffordUnit_mem_lipschitzGroup`, `source9UnitVectorPair_mem_spinGroup`, `source9UnitVectorPairSpin_gamma`).
+
+**Exact scope:** if the two actual source vectors each satisfy `source9Quadratic = 1`, their actual Clifford product belongs to the existing source Spin9 carrier, and its F10BC image is exactly the product of their original real gamma evaluations. The audit also checks the underlying Clifford values of both constructions. No alternate group/carrier is used, and no individual positive unit vector's Pin membership is assumed.
+
+**Success lesson:** prove Lipschitz generator membership, the two unitary identities and evenness separately; use the source's actual Clifford-star convention. This qualified a reusable source membership primitive before attempting a curve or derivative.
+
+### F10BI Gate 1 — distinct-coordinate-plane source curve CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve.lean`  
+**Candidate source blob:** `faabd83f813eab9ae2026c5d426f8baed80d33a6`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BIIndependentAudit.lean`  
+**Audit blob:** `119ab4569f0ef663838856ed3611e500a7125c82`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bi-coordinate-plane-source-curve-strict.yml`
+
+Using the unchanged nine-coordinate source labels, define `e_r := Pi.single r 1` and `v_rs(t) := cos(t/2) • e_r + sin(t/2) • e_s`. For **distinct** labels `r ≠ s`, the candidate proves both actual quadratic norm-one conditions and applies accepted F10BH to form the actual source element `g_rs(t) := ι(e_r) * ι(v_rs(t))`.
+
+The source proof reuses the accepted `source9Quadratic_eq_dot` bridge, pinned Matrix dot-product add/scalar/single-vector lemmas, and the imported real identity `Real.sin_sq_add_cos_sq`. It does not use a guessed coordinate norm or gamma-side orthogonality as a substitute for Spin membership.
+
+Eight declarations are proposed: three constructions and five proofs.
+- `source9CoordinateVector`
+- `source9CoordinateVector_unit`
+- `source9PlaneUnitVector`
+- `source9PlaneUnitVector_unit`
+- `source9PlaneSpinCurve`
+- `source9PlaneSpinCurve_coe`
+- `source9PlaneSpinCurve_zero`
+- `source9PlaneSpinCurve_gamma`
+
+The exact Clifford expression to qualify is `cos(t/2) • 1 + sin(t/2) • (ι(e_r)*ι(e_s))`; the actual source group identity occurs at `t=0`. Its F10BC underlying matrix is to be proved exactly `cos(t/2) • 1 + sin(t/2) • (gamma r * gamma s)` on the **original 16-real target**, with the product order and sign fixed.
+
+The diagonal case `r=s` is deliberately outside the normalization proposition; the same moving-vector formula need not have norm one there. No one-parameter homomorphism, continuity, derivative, exponential identity, tangent/skew identification, manifold, Lie-group structure or global differential equality is included in this candidate.
+
+The independent audit restates each exact type and checks the coordinate vector, moving vector and raw Clifford product definitions by reflexivity. It retains the distinct-label hypothesis and explicit half-angle expressions. The strict gate pins the accepted F10BH source, freshly compiles its actual F10BC/F10BH ancestry, and requires fresh warnings-as-errors candidate/audit compilation plus exactly eight whitelisted axiom reports per log.
+
+Local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. No local Lean elaboration is claimed; zero F10BI declarations are accepted before the strict result and output review.
+
+**Next action:** inspect F10BI's strict result. If accepted, state and independently qualify the first-order derivatives at zero of the Clifford-valued curve and its original-gamma matrix image. Keep those directional curve statements distinct from a manifold differential theorem or an asserted match to the canonical F10BB input until the exact source-plane normalization is checked.
