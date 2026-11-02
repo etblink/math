@@ -798,3 +798,33 @@ Local source/audit hashes, declaration inventory/scope guards, YAML, shell synta
 **Scope ceiling:** the candidate is an algebraic commutator action calculation. It is not a derivative of the actual group conjugation curve and does not construct a source tangent equivalence, Lie-group atlas or global F10BC differential theorem.
 
 **Next action:** inspect F10BL's strict result. If accepted, source-audit the bounded-bilinear multiplication and inverse-curve calculus required to differentiate the actual source conjugation curve under the already accepted PBW norm. Do not assume a normed-ring multiplication estimate or a manifold tangent identification from a topological-ring theorem.
+
+
+### F10BL Gate 1 RED — unresolved guarded coordinate sums
+
+**Run:** [#41533585179](https://github.com/etblink/math/actions/runs/41533585179) — terminal red  
+**Exact tested commit:** `c3d8c520aee5ac2512180c4338acdb225fa43590`  
+**Candidate blob:** `c373443985d1541ed5d9a68bf787c90e7f8d2c1d`  
+**Job:** `actual-source-coordinate-commutator-action` (`125579694000`)  
+**Artifact:** `13184271082`; ZIP SHA-256 `d22e8a7f017390f294f0cdfa317f2e47d8278fc99f665d76678ebd82df5e5a27`
+
+Exact pins, pinned dependency restoration and accepted actual-source ancestry rebuild passed. Fresh F10BL warnings-as-errors compilation failed; the independent audit was skipped. **Zero F10BL proofs are accepted.**
+
+The polarization and general Clifford pair-commutator declarations elaborated with only the permitted axioms. The first failure was `source9CoordinatePlane_mulVec` at source line 65. Its four coordinate-equality cases left three residual goals, each of the same form:
+`(∑ x, if p ∧ x=j then z x else 0) = if p then z j else 0`.
+The displayed instances used `p := r=s`, `j := r`, or their swapped versions. Ordinary simplification had not split the guard inside the finite sum. No Clifford identity or source action counterexample was produced.
+
+The matrix-plane theorem's failed elaboration introduced the displayed `sorryAx`, which propagated to the final commutator-action declaration. Those are failed-elaboration artifacts, not source admissions or accepted proofs.
+
+### F10BL Gate 2 — explicit guarded-sum bridge CANDIDATE
+
+**Repaired source blob:** `bc0d8539c2523fffe2f36ee4b121a1b81a1431be`  
+**Independent audit blob unchanged:** `1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1`
+
+Add a local `sum_guarded_coordinate` lemma inside the matrix-plane proof, quantified over an arbitrary decidable proposition `p` and source coordinate `j`. Split `p` explicitly; the true branch becomes the ordinary single-coordinate finite sum, and the false branch is zero. Apply that exact lemma to each residual goal after the existing coordinate-case simplification.
+
+All four theorem headers/propositions are textually unchanged. The polarization proof, general Clifford proof, final normalized action proof, actual source labels and carriers, independent audit, compiler strictness, axiom whitelist and limits remain unchanged. The workflow changes only the source blob pin.
+
+**Procedural lesson:** a conjunction inside a finite-sum selector may survive broad simplification even when the outer coordinate cases were split. Bridge the guard explicitly with a general local sum identity; do not add a distinct-label hypothesis or use substitution-heavy source-label case repairs.
+
+**Local validation:** theorem-header equality, source/audit hashes, declaration inventory/scope guards, YAML, shell and embedded Python checks pass. This is static validation; the unchanged strict CI gate must compile the new local bridge and complete the independent audit. If the same selector boundary remains unresolved, isolate it in a diagnostic before another full-source edit.

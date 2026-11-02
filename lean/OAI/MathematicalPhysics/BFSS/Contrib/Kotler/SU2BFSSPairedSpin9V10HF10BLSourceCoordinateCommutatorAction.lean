@@ -63,10 +63,15 @@ theorem source9CoordinatePlane_mulVec
     (r s : SpaceIndex) (z : SpaceIndex → ℝ) :
     (coordinatePlane9 r s).mulVec z =
       (z s) • source9CoordinateVector r - (z r) • source9CoordinateVector s := by
+  have sum_guarded_coordinate (p : Prop) [Decidable p] (j : SpaceIndex) :
+      (∑ x : SpaceIndex, if p ∧ x = j then z x else 0) =
+        if p then z j else 0 := by
+    by_cases hp : p <;> simp [hp]
   ext i
   by_cases hir : i = r <;> by_cases his : i = s <;>
     simp [coordinatePlane9, Matrix.mulVec, dotProduct, source9CoordinateVector,
       Pi.single_apply, hir, his, sub_mul, Finset.sum_sub_distrib, ite_mul, smul_eq_mul]
+  all_goals exact sum_guarded_coordinate _ _
 
 /-- Commutation by the actual source half-bivector implements the unchanged native plane on vectors. -/
 theorem source9CoordinateBivector_commutator_vector
