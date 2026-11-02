@@ -14,12 +14,12 @@ The proof composes:
 * F10AU's exhaustive native so(16) oriented-pair bracket;
 * the native source four-index coordinate-plane bracket.
 
-Crucially, F10AU's LieSubalgebra bracket is explicitly
-transported through LieSubalgebra.coe_bracket and the
-associative-matrix commutator theorem before it is used
-as a GammaMatrix equality. The dependent five-way overlap
-classification is retained; no independent case table is
-guessed.
+F10AU's native LieSubalgebra bracket is transported to the
+GammaMatrix carrier before the source coefficient map is
+compared. The source and target four-index expressions retain
+the same priority-ordered dependent-if collision semantics.
+All case splits are performed on the unchanged source labels;
+no substitution-based case table is maintained separately.
 
 The factor is forced: (1/2)(1/2) times the gamma-pair
 commutator coefficient 2 gives 1/2, exactly the coefficient
@@ -94,10 +94,9 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
         have h := congrArg
           (fun z : LieAlgebra.Orthogonal.so SpinIndex ℝ => (z : GammaMatrix))
           hpair
-        simpa only [LieSubalgebra.coe_bracket,
+        simpa [LieSubalgebra.coe_bracket,
           LieRing.of_associative_ring_bracket,
-          source9OriginalGammaDistinctPairInSo,
-          Subtype.coe_mk] using h
+          source9OriginalGammaDistinctPairInSo] using h
       have hhalf :
           ((1 / 2 : ℝ) • (gamma r * gamma s)) *
               ((1 / 2 : ℝ) • (gamma t * gamma u)) -
@@ -130,46 +129,9 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
           coordinateToOriginalGammaLinearMap (if p then A else 0) =
             if p then coordinateToOriginalGammaLinearMap A else 0 := by
         by_cases hp : p <;> simp [hp]
-      by_cases hac : r = t
-      · subst t
-        by_cases hbd : s = u
-        · subst u
-          simp [coordinateFourIndexRHS, map_conditional,
-            coordinateToOriginalGammaLinearMap_coordinatePlane,
-            coordinatePlane9_self, hrs, htu]
-        · have hsr : s ≠ r := fun h => hrs h.symm
-          have hru : r ≠ u := htu
-          simp [coordinateFourIndexRHS, map_conditional,
-            coordinateToOriginalGammaLinearMap_coordinatePlane,
-            coordinatePlane9_self, hbd, hsr, hru]
-      · by_cases hbc : s = t
-        · subst t
-          by_cases had : r = u
-          · subst u
-            simp [coordinateFourIndexRHS, map_conditional,
-              coordinateToOriginalGammaLinearMap_coordinatePlane,
-              coordinatePlane9_self, hrs, htu]
-          · have hsu : s ≠ u := by simpa using htu
-            simp [coordinateFourIndexRHS, map_conditional,
-              coordinateToOriginalGammaLinearMap_coordinatePlane,
-              coordinatePlane9_self, hbc, hsu, had, hac]
-        · by_cases hbd : s = u
-          · subst u
-            have hru : r ≠ u := by
-              intro h
-              exact hrs (h.trans hbd.symm)
-            have hst : s ≠ t := htu.symm
-            simp [coordinateFourIndexRHS, map_conditional,
-              coordinateToOriginalGammaLinearMap_coordinatePlane,
-              coordinatePlane9_self, hbd, hst, hru, hac, hbc]
-          · by_cases had : r = u
-            · subst u
-              simp [coordinateFourIndexRHS, map_conditional,
-                coordinateToOriginalGammaLinearMap_coordinatePlane,
-                coordinatePlane9_self, hac, hbc, hbd, had, htu]
-            · simp [coordinateFourIndexRHS, map_conditional,
-                coordinateToOriginalGammaLinearMap_coordinatePlane,
-                coordinatePlane9_self, hac, hbc, hbd, had]
+      simp only [coordinateFourIndexRHS, map_neg, map_add, map_sub,
+        map_conditional, coordinateToOriginalGammaLinearMap_coordinatePlane]
+      split_ifs <;> simp_all <;> norm_num [smul_smul]
 
 #print axioms coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
 
