@@ -98,3 +98,18 @@ This section supersedes the earlier pending-diagnostic and unqualified-F10AW sta
 **Accepted scope:** the exact raw original-`16` bracket defect is defined and qualified as additive and real homogeneous in each arbitrary native `9×9` source-matrix argument. No vanishing theorem or `LieHom` is implied.
 
 **Next action:** package the left and right defect slices as real `LinearMap`s and use accepted F10AW to prove defect zero on every coordinate-plane pair. One-plane-versus-skew and arbitrary-skew extension remain later separate gates.
+
+
+## Superseding delta — F10AY Gate 1 ACCEPTED (2026-11-02 UTC)
+
+- Strict F10AY run [#41398327173](https://github.com/etblink/math/actions/runs/41398327173), exact tested commit `35d7a1acea738ebddec66d0a08e01063a9d604e0`, is terminal green.
+- Exact F10AY source blob: `2ea4de72e1b6c2e46b6394849373fcc90fc51f34`.
+- Accepted F10AX ancestry rebuilt successfully.
+- Fresh warnings-as-errors compilation and the independent generator-zero theorem-type restatement passed.
+- All three root declarations report only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+- Artifact #`13120762966`; ZIP SHA256 `2b84c1271b3fef107c4cc0f47ba123555065d8c97906fe55fec5c025e73d6b31`.
+- Acceptance record: [F10AY Gate 1 acceptance](FCP_K1D18V10H_F10AY_GATE1_ACCEPTANCE_ORIGINAL_GAMMA_DEFECT_LINEAR_SLICES_AND_GENERATOR_ZERO_2026_11_02.md).
+
+**Accepted scope:** the exact original-`16` defect is packaged as a real `LinearMap` in each input and vanishes on every source coordinate-plane pair. No finite-sum extension or arbitrary-skew theorem is implied.
+
+**Next action:** use the accepted right-linear slice and V9F's exact source-native skew coordinate-plane expansion to prove one-plane-versus-arbitrary-skew defect zero. Keep the original `16×16` gamma target distinct from the paired-`48` line.
