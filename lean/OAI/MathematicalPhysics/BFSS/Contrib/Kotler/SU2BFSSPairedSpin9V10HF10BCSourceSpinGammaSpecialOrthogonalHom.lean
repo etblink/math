@@ -59,6 +59,7 @@ noncomputable def source9SpinGammaSpecialOrthogonalHom :
       ((source9SpinGammaOrthogonalHom g) : GammaMatrix) *
         ((source9SpinGammaOrthogonalHom h) : GammaMatrix)
     rw [map_mul]
+    rfl
 
 /-- The SO(16)-valued homomorphism has exactly the accepted
 whole-Clifford original gamma evaluation. -/
