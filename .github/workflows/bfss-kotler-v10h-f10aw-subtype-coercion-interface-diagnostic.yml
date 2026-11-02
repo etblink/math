@@ -1,0 +1,90 @@
+name: BFSS V10H F10AW subtype coercion interface diagnostic
+
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AWSubtypeCoercionInterfaceDiagnostic.lean
+      - .github/workflows/bfss-kotler-v10h-f10aw-subtype-coercion-interface-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  subtype-coercion-interface:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin accepted F10AU source ancestry and diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10aw-coercion"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10aw-coercion/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean")" = '3922916e49fc961efa99a72d706ca83ca704e3d6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AJOriginalGammaPairOrthogonalLieSubalgebraBridge.lean")" = '6c11e898dd7b5ed93db833ca0c7b678e6fda6ffe'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AKOriginalGammaOrderedChainLieBracketProbe.lean")" = '96836497816cdcd8caedc6970b1b667866847920'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ALOriginalGammaOrderedForkLieBracketProbe.lean")" = 'f9399a0ebf17b4aabbf889d12fbcb79111d89c45'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AMOriginalGammaOrderedSharedRightLieBracketProbe.lean")" = '00a521b011fe78eb9bf2983dc05e9e109ba0b403'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ANOriginalGammaDisjointPairLieBracketProbe.lean")" = 'a9c96b4840e297b0b79f343d32e3992f50a5ace0'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AOOriginalGammaPairReverseAndSelfLieBrackets.lean")" = '0764c5d8a0aab5bc5e960c5122e6bbeadccb1031'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10APOriginalGammaArbitraryOrientationNativeLieBridge.lean")" = '430611eec059c8119573c50fbcee12901b8457d5'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AQOriginalGammaAnyOrientationForkRightLieBrackets.lean")" = '58e39145e25f1117535bb7da4f5b128b7a7c2f7f'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AROriginalGammaNativeBracketOrientationAndZeroBridge.lean")" = '712f459104e2724793cd58ff62789b9effdf9f13'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets.lean")" = 'b2e9158ec9a3661f4bf818953372249c851eccdb'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ATOriginalGammaAnyOrientationFourthOverlapLieBracket.lean")" = 'a19788b12942af020209dba21c5512f8518e5dc8'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AUOriginalGammaExhaustiveNativePairLieBracket.lean")" = '73746ee6b1f2ad9ec1be11efbba20ca9833a11c6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AWSubtypeCoercionInterfaceDiagnostic.lean")" = 'ddf7549a79ddfc5a5ee9cd64d5b1ab6ff9366023'
+          echo 'V10H_F10AW_ACCEPTED_ANCESTRY_AND_DIAGNOSTIC_SOURCE_PINS_PASS'
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10AU native pair bracket ancestry
+        shell: bash
+        timeout-minutes: 70
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 4050s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10AUOriginalGammaExhaustiveNativePairLieBracket
+
+      - name: Compile isolated subtype coercion diagnostic
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AWSubtypeCoercionInterfaceDiagnostic
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 1080s lake env lean -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10aw-coercion/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          echo 'V10H_F10AW_SUBTYPE_COERCION_INTERFACE_DIAGNOSTIC_PASS' | tee "$RUNNER_TEMP/v10h-f10aw-coercion/result.txt"
+
+      - name: Preserve exact SHA and complete diagnostic compiler log
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10aw-subtype-coercion-diagnostic-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10aw-coercion
+          if-no-files-found: warn
