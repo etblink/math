@@ -455,3 +455,55 @@ The strict gate pins the accepted source, recompiles accepted F10Y and F10BE, fr
 **Scope ceiling:** even if F10BF is accepted, its result is an ambient topological-ring statement. It will not itself establish inverse continuity or a topological-group structure on the source Spin9 subtype, a manifold, smoothness, a differential theorem, a Spin lift, a Fock realization, gauge-domain compatibility or spectral existence.
 
 **Next action:** inspect F10BF's terminal strict result. If accepted, audit the source group's exact inversion formula and the required continuity bridge as a separate bounded task.
+
+
+### F10BF Gate 1 ACCEPTED — ambient PBW Clifford topological ring
+
+**Run:** [#41515322947](https://github.com/etblink/math/actions/runs/41515322947) — terminal green  
+**Exact tested commit:** `1b2b0b82e6cba478167dea480bef92f0376f5fa2`  
+**Accepted source blob:** `f3d3121ef76af1d25a43ec574bbfc2fbeefce111`  
+**Independent audit blob:** `dd00871d12e1d533d15aa67608713d85eed0ec66`  
+**Job:** `pbw-clifford-ambient-topological-ring` (`125517288084`)  
+**Artifact:** `13175681311`; ZIP SHA-256 `5aa3edc1eb7c9cd89028f64e19696ca098cb1e6e189a765dedbb686e29cf7c6f`
+
+Exact pins and pinned Lean 4.34.1/Mathlib restoration, accepted ancestry rebuild, fresh F10Y/F10BE compilations, fresh F10BF warnings-as-errors compilation, and independent PBW topology/type/axiom audit all passed. The classifier emitted `V10H_F10BF_EXACT_PBW_AMBIENT_RING_TYPES_AXIOMS_PASS`. All three declaration reports in both candidate and independent-audit logs contained only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+**Accepted declarations:**
+- `source9Clifford_isModuleTopology_pbw`
+- `source9Clifford_mul_continuous_pbw`
+- `source9Clifford_isTopologicalRing_pbw`
+
+These identify the existing named PBW topology as the real module topology, establish joint continuity of the actual ambient Clifford multiplication, and establish `IsTopologicalRing` for that exact Clifford ring and topology. No new topology was substituted and no global instance was registered.
+
+**Scope ceiling:** this ambient ring result does not by itself establish source Spin9 inversion continuity, a source topological-group structure, any manifold or Lie group, smoothness, tangent identification or differential equality, covering/lift, Fock, gauge or spectral claim.
+
+**Success lesson:** source-audit the pinned library's finite-module topology theorem, supply the explicit bridge for the already accepted normed space, and specialize the existing bilinear multiplication infrastructure. No custom multiplication estimates or new norm were necessary.
+
+### F10BG Gate 1 — exact source Spin9 PBW topological group CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BGPBWSourceSpinTopologicalGroup.lean`  
+**Candidate source blob:** `df8bbc6de6b456b344684c65b032f1e299e45736`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BGIndependentAudit.lean`  
+**Audit blob:** `2934f82e5b6742896385f85083e96de563440ba0`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bg-pbw-source-spin-topological-group-strict.yml`
+
+The pinned `Mathlib/LinearAlgebra/CliffordAlgebra/SpinGroup.lean` defines the exact existing source group's inverse as `star`. Its `spinGroup.involute_eq` theorem applies to the actual membership proof. Pinned `Star.lean` identifies Clifford star as `reverse (involute x)`; consequently inversion on this even source carrier equals grade reversal. Pinned `Conjugation.lean` defines grade reversal as an ℝ-linear map, so accepted finite-dimensional PBW infrastructure gives its continuity.
+
+Do not replace Clifford star with reversal on arbitrary Clifford elements. The candidate crosses that boundary only after applying the exact source Spin9 membership/evenness theorem.
+
+The five proposed declarations are:
+- `source9Clifford_reverse_continuous_pbw`
+- `source9Spin_inv_coe_eq_reverse`
+- `source9Spin_inv_continuous_pbw`
+- `source9Spin_mul_continuous_pbw`
+- `source9Spin_isTopologicalGroup_pbw`
+
+The candidate keeps the existing carrier `spinGroup source9Quadratic`, inherited PBW topology and actual group operations. It proves inverse continuity via an explicit equality of underlying Clifford-valued functions, and joint multiplication continuity by composing accepted F10BF ambient multiplication with the continuous pair of subtype coercions. Only then does it assemble `IsTopologicalGroup` from those two proofs. No group/topology/continuity hypothesis is installed to prove that result.
+
+The independent audit reconstructs the PBW normed structures, checks their equality with the accepted structures, and restates all five exact theorem types. The strict workflow pins and freshly compiles the accepted F10Y/F10BE/F10BF ancestry, freshly compiles the candidate, and requires exactly five whitelisted axiom reports in each of the candidate and independent-audit logs.
+
+Local static source/audit hashes, declaration inventory, scope checks, YAML, shell syntax and embedded Python checks pass. Actual elaboration remains CI's obligation; zero F10BG declarations are accepted before the terminal strict result and output review.
+
+**Scope ceiling:** a successful F10BG would establish a topological group on the exact existing source carrier with this inherited topology. It would not establish a charted space, Lie group, smoothness, standard geometric Spin9 identification, simply-connectedness, a tangent/skew comparison, the F10BC differential equality, kernel classification, covering/lift, Fock realization, gauge-domain compatibility or BFSS spectral existence.
+
+**Next action:** review F10BG's strict result. If accepted, source-audit the manifold/smoothness obligations and their relation to the existing exact carrier before proposing another theorem gate; topological-group structure alone is not a Lie-group construction.
