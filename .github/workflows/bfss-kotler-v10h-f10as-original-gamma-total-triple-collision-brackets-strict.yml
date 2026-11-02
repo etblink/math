@@ -39,7 +39,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10APOriginalGammaArbitraryOrientationNativeLieBridge.lean")" = '430611eec059c8119573c50fbcee12901b8457d5'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AQOriginalGammaAnyOrientationForkRightLieBrackets.lean")" = '58e39145e25f1117535bb7da4f5b128b7a7c2f7f'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AROriginalGammaNativeBracketOrientationAndZeroBridge.lean")" = '712f459104e2724793cd58ff62789b9effdf9f13'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets.lean")" = '65fb8bb74c319592d0e977c8fdae6a4658b89d2f'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets.lean")" = 'b2e9158ec9a3661f4bf818953372249c851eccdb'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -55,7 +55,7 @@ jobs:
                        'source9OriginalGamma_distinct_fork_native_so_bracket',
                        'source9OriginalGamma_distinct_shared_right_native_so_bracket',
                        'source9OriginalGammaDistinctPairInSo',
-                       'dite_eq_right', 'by_cases', 'lie_self']:
+                       'dite_eq_right', 'dite_eq_left', 'by_cases', 'source9OriginalGamma_distinct_pair_native_so_self_bracket_zero']:
               assert term in code,term
           assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)',code)
           print('V10H_F10AS_SOURCE_PIN_AND_SCOPE_PASS')
