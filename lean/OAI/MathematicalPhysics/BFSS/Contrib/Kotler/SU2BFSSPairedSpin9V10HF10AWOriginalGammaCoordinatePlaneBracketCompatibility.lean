@@ -94,9 +94,10 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
         have h := congrArg
           (fun z : LieAlgebra.Orthogonal.so SpinIndex ℝ => (z : GammaMatrix))
           hpair
-        simpa [LieSubalgebra.coe_bracket,
-          LieRing.of_associative_ring_bracket,
-          source9OriginalGammaDistinctPairInSo] using h
+        simp only [LieSubalgebra.coe_bracket,
+          LieRing.of_associative_ring_bracket] at h
+        split_ifs at h ⊢ <;>
+          simpa [source9OriginalGammaDistinctPairInSo] using h
       have hhalf :
           ((1 / 2 : ℝ) • (gamma r * gamma s)) *
               ((1 / 2 : ℝ) • (gamma t * gamma u)) -
@@ -131,7 +132,17 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
         by_cases hp : p <;> simp [hp]
       simp only [coordinateFourIndexRHS, map_neg, map_add, map_sub,
         map_conditional, coordinateToOriginalGammaLinearMap_coordinatePlane]
-      split_ifs <;> simp_all <;> norm_num [smul_smul]
+      have no_su_ru (hsu : s = u) (hru : r = u) : False :=
+        hrs (hru.trans hsu.symm)
+      have no_st_rt (hst : s = t) (hrt : r = t) : False :=
+        hrs (hrt.trans hst.symm)
+      have no_rt_ru (hrt : r = t) (hru : r = u) : False :=
+        htu (hrt.symm.trans hru)
+      split_ifs <;>
+        first
+        | exfalso
+          solve_by_elim [no_su_ru, no_st_rt, no_rt_ru]
+        | (simp_all <;> norm_num [smul_smul])
 
 #print axioms coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
 
