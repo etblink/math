@@ -134,3 +134,29 @@ The original paired-label global **algebraic** `spinGroup source9Quadratic →* 
 4. **Stop rule:** if the next test cannot state a source-exact interface or distinguish competing mathematical possibilities, publish no new CI gate. No speculative `#synth` results, guesses about instances, proof-limit increases, new axioms, admitted results, or broad global proof attempts.
 
 **No new Lean declaration has been compiled by this re-audit; no CI run was launched; no additional theorem root is claimed.**
+
+
+## Post-F10BG — topology qualified; exact-carrier manifold route still unconstructed
+
+**Baseline:** `d872b38d3ff65c2e0b122e7731975ce8cf012732`; Lean 4.34.1; Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
+
+This supersedes the earlier topology-absence portion of this historical audit. F10BE qualifies the named PBW normed structures, Hausdorff separation and gamma continuity; F10BF qualifies the ambient Clifford topological ring; F10BG now qualifies the actual source `spinGroup source9Quadratic` as a topological group for the inherited PBW topology. Exact runs and artifacts are recorded in [the current-state handoff](FCP_K1D18_PROJECT_LEAD_CURRENT_STATE_HANDOFF_2026_11_02.md). None of these constructs charts.
+
+### Targeted source audit and decision
+
+- Pinned `Mathlib/Geometry/Manifold/Instances/UnitsOfNormedAlgebra.lean` constructs `ChartedSpace R Rˣ`, `IsManifold`, and `LieGroup` on the **whole unit group** of a complete normed algebra. Its assumptions include `NormedRing R`, `CompleteSpace R` and `NormedAlgebra 𝕜 R`. The accepted PBW data and topological-ring theorem are not a proof of all these normed-algebra assumptions.
+- More decisively, that theorem does not furnish charts on the proper exact `spinGroup source9Quadratic` carrier. The existing algebraic `spinGroup.toUnits` injection is not a proof that its image is an open subset or an embedded submanifold. No such atlas/image theorem has been constructed here.
+- The previously accepted one-parameter exponential flows inspected in the local project are on the **original paired 48-label matrix carrier**. They do not prove that a proposed curve lies in the actual source Clifford Spin9 carrier, nor do they identify its original 16-real gamma derivative. Reuse their exponential-composition method only where the exact carrier permits it.
+- This is a targeted source/interface audit, not a new exhaustive library-absence claim and not a mathematical impossibility result. Do not repeat the abstract-integration census or start a generic Lie-group synthesis gate.
+
+**Routing decision:** preserve the qualified topological-group interface, and use the previously authorized constructive alternative. First qualify a source-exact normalized-vector-pair membership lemma. Then define a coordinate-plane source curve, prove its quadratic normalization, actual Spin membership, value at zero and exact original-gamma image. Only after those facts pass should an exact first-order curve/image statement be proposed.
+
+A candidate future distinct-plane parameterization is the Clifford product of the coordinate vector `e_r` with `cos(t/2) e_r + sin(t/2) e_s`. This is a **plan**, not an accepted declaration. It requires `r ≠ s`, the actual `source9Quadratic` norm-one proof, and explicit sign/half-angle checks against the accepted original-gamma source-plane convention. No global differential equality follows from a successful curve calculation.
+
+### F10BH prerequisite scope
+
+Pinned `SpinGroup.lean`, `Star.lean`, `Even.lean` and `Basic.lean` support an exact bounded obligation: for `source9Quadratic u = 1` and `source9Quadratic v = 1`, show `ι u * ι v ∈ spinGroup source9Quadratic`, then compute its F10BC matrix image.
+
+Each positive unit vector squares to one, hence gives a Clifford unit and an actual generator of the defined Lipschitz group. A single such vector has Clifford star equal to its negative; it must not be assumed unitary or in the Pin subgroup. For a pair, the two signs cancel, and the existing even-grading theorem supplies evenness. The candidate proves each membership layer explicitly.
+
+This algebraic prerequisite has no dependency on the PBW/topological modules; its workflow rebuilds its actual F10BC algebraic ancestry without rebuilding unrelated manifold or paired-flow modules. It remains a candidate pending strict compilation and independent type/axiom checks. It adds no accepted root at publication.

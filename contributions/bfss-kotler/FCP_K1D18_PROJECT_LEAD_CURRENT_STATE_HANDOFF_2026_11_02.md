@@ -507,3 +507,53 @@ Local static source/audit hashes, declaration inventory, scope checks, YAML, she
 **Scope ceiling:** a successful F10BG would establish a topological group on the exact existing source carrier with this inherited topology. It would not establish a charted space, Lie group, smoothness, standard geometric Spin9 identification, simply-connectedness, a tangent/skew comparison, the F10BC differential equality, kernel classification, covering/lift, Fock realization, gauge-domain compatibility or BFSS spectral existence.
 
 **Next action:** review F10BG's strict result. If accepted, source-audit the manifold/smoothness obligations and their relation to the existing exact carrier before proposing another theorem gate; topological-group structure alone is not a Lie-group construction.
+
+
+### F10BG Gate 1 ACCEPTED — exact source Spin9 PBW topological group
+
+**Run:** [#41517689579](https://github.com/etblink/math/actions/runs/41517689579) — terminal green  
+**Exact tested commit:** `d872b38d3ff65c2e0b122e7731975ce8cf012732`  
+**Accepted source blob:** `df8bbc6de6b456b344684c65b032f1e299e45736`  
+**Independent audit blob:** `2934f82e5b6742896385f85083e96de563440ba0`  
+**Job:** `pbw-exact-source-spin-topological-group` (`125525323091`)  
+**Artifact:** `13176697656`; ZIP SHA-256 `160b4286cb0e0a6e8fb745668ae03189de792ed5938410dda7a25ab75f80fc21`
+
+Exact pins and pinned dependency restoration, accepted ancestry rebuild, fresh F10Y/F10BE/F10BF compilations, fresh F10BG warnings-as-errors compilation, and the independent reconstructed-topology audit all passed. The classifier emitted `V10H_F10BG_EXACT_PBW_SOURCE_SPIN_GROUP_TYPES_AXIOMS_PASS`. All five declarations in both candidate and independent-audit logs use only `propext`, `Classical.choice` and `Quot.sound`; no `sorryAx`.
+
+**Accepted declarations:**
+- `source9Clifford_reverse_continuous_pbw`
+- `source9Spin_inv_coe_eq_reverse`
+- `source9Spin_inv_continuous_pbw`
+- `source9Spin_mul_continuous_pbw`
+- `source9Spin_isTopologicalGroup_pbw`
+
+**Exact scope:** the existing source carrier `spinGroup source9Quadratic`, with its actual operations and the topology inherited from the named PBW norm, is a topological group. The independent audit reconstructed that topology and restated all five exact types without assuming operation continuity or a topological-group instance.
+
+**Scientific ceiling:** no charted space, manifold, Lie group, smoothness, standard geometric Spin9 identification, simply-connectedness, tangent/skew identification, F10BC differential equality, covering/lift, Fock realization, gauge compatibility or spectral result is inferred.
+
+**Success lesson:** use the exact existing inversion formula, prove the even-element star/reversal bridge, and cross subtype boundaries with explicit underlying-function identities. Multiplication continuity follows by restricting the accepted ambient map. The subtype group and its topology were not replaced.
+
+### Post-F10BG route decision and F10BH CANDIDATE
+
+The targeted source audit is appended to [the existing manifold/integration API audit](FCP_K1D18V10H_POST_F10BB_GLOBAL_SPIN9_TO_SO16_API_AUDIT_AND_F10BC_CANDIDATE_2026_11_02.md). Its decision is to keep the whole-group manifold route paused and take the constructive source-curve alternative. The unit-group manifold theorem does not provide an atlas on this proper Spin9 carrier; the inspected paired-48 matrix flows do not supply actual source Spin9 curves.
+
+**Next bounded prerequisite:** normalized source vector-pair Spin membership and exact original-gamma image.
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BHUnitVectorPairMembership.lean`  
+**Candidate blob:** `f17d83d961055ebf4b00b74dfb35010a51c886d4`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BHIndependentAudit.lean`  
+**Audit blob:** `441cca373a4d3ae9ec72277afc5c3339f1af2cf2`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bh-source-unit-vector-pair-membership-strict.yml`
+
+Five declarations are proposed: two constructions and three proofs.
+- `source9UnitVectorCliffordUnit`
+- `source9UnitVectorCliffordUnit_mem_lipschitzGroup`
+- `source9UnitVectorPair_mem_spinGroup`
+- `source9UnitVectorPairSpin`
+- `source9UnitVectorPairSpin_gamma`
+
+Both quadratic norm-one hypotheses are explicit. The candidate constructs the actual Clifford units, proves their generated Lipschitz membership, verifies both unitary products with the correct Clifford-star signs, supplies evenness, and only then packages the actual Spin element and computes its F10BC image. It assumes no individual positive unit vector is in Pin, and uses no alternate gamma or 48-label carrier.
+
+The independent audit restates the normalized hypotheses and exact carrier/image types, and checks that both constructed units and Spin elements coerce to the claimed actual Clifford expressions. The strict gate requires fresh warnings-as-errors compilation and exactly five whitelisted axiom reports in each compiler/audit log. Local source/audit pins, inventory/scope checks, YAML, shell and embedded Python checks pass; actual elaboration remains CI's obligation.
+
+**Next action:** review F10BH's strict result. If accepted, define the distinct-coordinate-plane candidate curve and first prove normalization, membership, value at zero and original-gamma image. No derivative or global differential comparison is claimed at this prerequisite stage.
