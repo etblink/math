@@ -57,7 +57,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe.lean")" = 'd80001bbe5052357dbca559232d81cc01c56fb34'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean")" = '92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe.lean")" = '46e02a38f6647458132039bc1f44b0358c9c4f44'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage.lean")" = 'c88ec079fa4ecaa5c06a8060dc13ab591d47abe9'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage.lean")" = 'bc895ed60f03a3e2091ff11ebd0b87e456f4408c'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -153,7 +153,7 @@ jobs:
             coordinateToOriginalGammaLinearMap_matrixUnit r s
           noncomputable example (r s : SpaceIndex) :
               coordinateToOriginalGammaLinearMap (coordinatePlane9 r s) =
-                if hrs : r = s then
+                if _hrs : r = s then
                   (0 : GammaMatrix)
                 else
                   (1 / 2 : ℝ) • (gamma r * gamma s) :=

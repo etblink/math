@@ -113,7 +113,7 @@ when r!=s, and to zero on the diagonal. -/
 theorem coordinateToOriginalGammaLinearMap_coordinatePlane
     (r s : SpaceIndex) :
     coordinateToOriginalGammaLinearMap (coordinatePlane9 r s) =
-      if hrs : r = s then
+      if _hrs : r = s then
         (0 : GammaMatrix)
       else
         (1 / 2 : ℝ) • (gamma r * gamma s) := by
