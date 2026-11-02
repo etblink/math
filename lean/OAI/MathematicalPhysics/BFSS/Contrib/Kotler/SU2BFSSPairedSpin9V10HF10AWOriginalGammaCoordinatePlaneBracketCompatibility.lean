@@ -122,8 +122,12 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
       have hscaled :=
         congrArg (fun X : GammaMatrix => (1 / 4 : ℝ) • X) hmatrix
       rw [hhalf, hscaled]
-      simp_all [coordinateFourIndexRHS,
-        coordinateToOriginalGammaLinearMap_coordinatePlane]
+      by_cases hac : r = t <;>
+        by_cases hbc : s = t <;>
+        by_cases hbd : s = u <;>
+        by_cases had : r = u <;>
+        simp_all [coordinateFourIndexRHS,
+          coordinateToOriginalGammaLinearMap_coordinatePlane]
 
 #print axioms coordinateToOriginalGammaLinearMap_coordinatePlane_bracket
 
