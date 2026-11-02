@@ -124,7 +124,7 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane
     rw [coordinatePlane9_eq_single_sub_single, map_sub,
       coordinateToOriginalGammaLinearMap_matrixUnit,
       coordinateToOriginalGammaLinearMap_matrixUnit]
-    rw [source9OriginalGamma_anticommute s r hrs.symm]
+    rw [source9OriginalGamma_anticommute s r (Ne.symm hrs)]
     rw [smul_neg, sub_neg_eq_add, ← add_smul]
     norm_num
 
@@ -148,7 +148,7 @@ theorem coordinateToOriginalGammaLinearMap_coordinatePlane_transpose
             rw [Matrix.transpose_smul, Matrix.transpose_mul,
               gamma_symmetric s, gamma_symmetric r]
       _ = -((1 / 2 : ℝ) • (gamma r * gamma s)) := by
-            rw [source9OriginalGamma_anticommute s r hrs.symm, smul_neg]
+            rw [source9OriginalGamma_anticommute s r (Ne.symm hrs), smul_neg]
 
 /-- The exact coefficient LinearMap sends EVERY skew native 9x9
 source matrix to a skew original 16x16 gamma matrix. This uses
@@ -159,11 +159,10 @@ theorem coordinateToOriginalGammaLinearMap_image_transpose
     (coordinateToOriginalGammaLinearMap A).transpose =
       -(coordinateToOriginalGammaLinearMap A) := by
   rw [coordinateSkewMatrix9_plane_spanning A hA]
-  simp only [map_smul, map_sum]
-  rw [Matrix.transpose_smul, Matrix.transpose_sum]
-  simp only [Matrix.transpose_smul,
-    coordinateToOriginalGammaLinearMap_coordinatePlane_transpose]
-  simp only [smul_neg, Finset.sum_neg_distrib]
+  simp only [map_smul, map_sum, Matrix.transpose_smul,
+    Matrix.transpose_sum,
+    coordinateToOriginalGammaLinearMap_coordinatePlane_transpose,
+    smul_neg, Finset.sum_neg_distrib]
 
 /-- Every skew source-native 9x9 input is mapped into the
 actual pinned Mathlib native real orthogonal Lie subalgebra so(16). -/
