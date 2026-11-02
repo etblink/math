@@ -607,3 +607,52 @@ The independent audit restates each exact type and checks the coordinate vector,
 Local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. No local Lean elaboration is claimed; zero F10BI declarations are accepted before the strict result and output review.
 
 **Next action:** inspect F10BI's strict result. If accepted, state and independently qualify the first-order derivatives at zero of the Clifford-valued curve and its original-gamma matrix image. Keep those directional curve statements distinct from a manifold differential theorem or an asserted match to the canonical F10BB input until the exact source-plane normalization is checked.
+
+
+### F10BI Gate 1 ACCEPTED — exact distinct-plane source curve
+
+**Run:** [#41524270429](https://github.com/etblink/math/actions/runs/41524270429) — terminal green  
+**Exact tested commit:** `de39a1a185af9b446c620f524c25b821aacfab89`  
+**Accepted source blob:** `faabd83f813eab9ae2026c5d426f8baed80d33a6`  
+**Independent audit blob:** `119ab4569f0ef663838856ed3611e500a7125c82`  
+**Job:** `exact-distinct-plane-source-spin-curve` (`125547873201`)  
+**Artifact:** `13178798237`; ZIP SHA-256 `49e260ad931e29dd697611ca3bee4ac9ad2656d47d7d23570fd301dcefa0f459`
+
+Exact pins and pinned dependency restoration, accepted F10BC ancestry rebuild, fresh F10BH compilation, fresh F10BI warnings-as-errors compilation, and independent type/coercion/axiom audit all passed. The classifier emitted `V10H_F10BI_EXACT_DISTINCT_PLANE_SOURCE_CURVE_TYPES_AXIOMS_PASS`. All eight reports in each compiler/audit log contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+**Accepted inventory:** three constructions (`source9CoordinateVector`, `source9PlaneUnitVector`, `source9PlaneSpinCurve`) and five proofs (`source9CoordinateVector_unit`, `source9PlaneUnitVector_unit`, `source9PlaneSpinCurve_coe`, `source9PlaneSpinCurve_zero`, `source9PlaneSpinCurve_gamma`).
+
+For every distinct actual source-label pair, the actual source curve has the qualified Clifford expression `cos(t/2) • 1 + sin(t/2) • (ι(e_r)*ι(e_s))`, lies in the existing source Spin group for every parameter, equals the actual group identity at zero, and has exact F10BC matrix image `cos(t/2) • 1 + sin(t/2) • (gamma r * gamma s)` on the original 16-real target.
+
+**Scope ceiling:** no continuity or derivative result was part of F10BI, and no one-parameter group law, exponential identity, manifold, tangent identification or global differential theorem follows merely from these formulas. The distinct-label hypothesis remains mandatory.
+
+**Success lesson:** normalize vectors with the existing source quadratic/dot-product bridge, reuse actual source membership, then obtain the Clifford/gamma formulas by explicit linearity and multiplication preservation. Source membership precedes gamma-image interpretation.
+
+### F10BJ Gate 1 — vector-space derivatives at zero CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean`  
+**Candidate source blob:** `5e95c7085849fe2e4331e0d491ee6fe1ac99625c`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean`  
+**Audit blob:** `dcf36c44cf9ee35ddef71207289853cbb03e598b`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bj-source-curve-derivatives-strict.yml`
+
+The three proposed declarations are:
+- `realHalfAngleVectorCurve_hasDerivAt_zero`
+- `source9PlaneSpinCurve_coe_hasDerivAt_zero`
+- `source9PlaneSpinCurve_gamma_hasDerivAt_zero`
+
+The first declaration is a generic real normed-vector-space helper: the curve `cos(t/2) • a + sin(t/2) • b` has derivative `(1/2) • b` at zero. The source proof uses the pinned scalar `HasDerivAt.div_const`, `.cos`, `.sin`, `.smul_const` and `.add` interfaces. This isolates the scalar chain rule from the source/group coercion boundaries.
+
+The second and third declarations cross those boundaries through explicit equalities of functions with the already qualified F10BI formulas. Their exact conclusions are:
+- The **Clifford-valued** actual source curve has velocity `(1/2) • (ι(e_r)*ι(e_s))` at zero, for the accepted named PBW normed structures.
+- The actual F10BC image curve, **coerced to the original gamma matrix vector space**, has velocity `(1/2) • (gamma r * gamma s)` at zero, for the standard matrix norm/topology.
+
+The independent audit reconstructs the PBW coordinate equivalence and normed structures directly, checks their equality with the accepted values, and restates the source derivative under that reconstructed norm. It separately restates the generic helper and exact gamma derivative types. The distinct-label and explicit positive half-angle conventions are preserved.
+
+The gate pins the accepted curve and PBW sources, rebuilds the actual F10BI and F10BE dependency closures once, then freshly compiles only the new candidate and independent audit with warnings as errors. It requires exactly three whitelisted axiom reports per log. No unrelated F10BF/F10BG theorem is rebuilt as a claimed mathematical dependency.
+
+Local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. Actual Lean elaboration remains CI's obligation; no F10BJ declaration is accepted before terminal strict success and output review.
+
+**Scope ceiling:** these are ordinary derivatives of real-parameter maps into vector spaces. They do not construct a manifold tangent space, a Lie-group atlas, the global differential of F10BC, or an identification with the canonical F10BB source-plane input. No covering/lift, Fock, gauge or spectral assertion is implied.
+
+**Next action:** inspect F10BJ's strict result. If accepted, audit the exact accepted F10BB coordinate-plane evaluation and source-label convention before qualifying a derivative-velocity comparison; do not silently identify a Clifford bivector with a skew-matrix tangent.
