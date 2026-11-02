@@ -895,3 +895,50 @@ Pinned Mathlib `Mathlib/LinearAlgebra/CliffordAlgebra/Basic.lean` confirms that 
 **Failure lesson:** in a `simpa ... using` argument, two vectors can determine the underlying module without determining the scalar/quadratic form of a polymorphic Clifford identity. Supply the actual quadratic form explicitly before simplification. Strict unused-simp feedback is repaired by removing the redundant fact, not by disabling its linter.
 
 **Validation state:** local source/audit hashes, unchanged theorem headers and audit, declaration/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean elaboration is claimed. The unchanged strict gate must freshly compile the explicit bridge and run the independent audit before any F10BM acceptance. Source conjugation differentiation, manifold tangent identification and the global F10BC differential remain open.
+
+
+### F10BM Gate 2 ACCEPTED — actual inverse curve and negative PBW velocity
+
+**Run:** [#41540062431](https://github.com/etblink/math/actions/runs/41540062431) — terminal green  
+**Exact tested commit:** `ae580875eb931bd46afb82d215f25b69c0b236a1`  
+**Accepted source blob:** `545581346eaf563b54dcf3c828e43d19c2d1dd23`  
+**Independent audit blob:** `057c3313f16775de85109fd5ca257eef69c04cf8`  
+**Job:** `actual-inverse-source-curve-derivative` (`125601637956`)  
+**Artifact:** `13186532529`; ZIP SHA-256 `6a1012230330971135d86e045faf7fedbdcfae8a466e45c2995ae94fec121581`
+
+Exact pins, pinned dependency restoration, accepted F10BL/F10BJ ancestry rebuild, fresh warnings-as-errors source compilation and independent PBW/type/axiom audit passed. The classifier emitted `V10H_F10BM_ACTUAL_INVERSE_EXACT_PBW_DERIVATIVE_TYPES_AXIOMS_PASS`. All three root reports in each log contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+The three F10BM proofs are accepted: `source9CoordinateClifford_anticommute`, `source9PlaneSpinCurve_inv_coe`, and `source9PlaneSpinCurve_inv_coe_hasDerivAt_zero`. For distinct original source labels, the actual group inverse has the negative-bivector half-angle formula and PBW-space derivative `-((1/2) • (ι(e_r)*ι(e_s)))` at zero. The audit reconstructed the accepted coordinate equivalence and induced norm/space rather than silently selecting another topology.
+
+**Success lesson:** an explicit `Q := source9Quadratic` supplies the missing scalar/module information before the polymorphic Clifford identity is simplified. Removing the unused simp fact resolves the strict linter feedback. No theorem proposition, audit, norm, limit or strictness setting was changed. The Gate 1 red provenance remains above.
+
+**Scope ceiling:** F10BM alone does not differentiate the actual conjugation action or identify a manifold tangent space.
+
+### F10BN Gate 1 — actual source conjugation derivative CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BNSourceConjugationDerivative.lean`  
+**Candidate source blob:** `4090ad6c9ad58249b5a617245065454baa4fb58a`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BNIndependentAudit.lean`  
+**Audit blob:** `a94269a67a995b25aeea3fc3f8a597e97ef5772a`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bn-source-conjugation-derivative-strict.yml`
+
+Pinned Mathlib source inspection verifies the scalar `HasDerivAt.mul` and `HasDerivAt.smul_const` interfaces. The candidate reuses the accepted actual curve and inverse formulas. With `B := ι(e_r)*ι(e_s)`, `c := cos(t/2)`, and `s := sin(t/2)`, it expands actual conjugation on any fixed Clifford element `W` as
+`(c*c) • W + (c*s) • (W*(-B)) + (s*c) • (B*W) + (s*s) • ((B*W)*(-B))`, with the explicit two-pair grouping in the Lean proposition.
+
+Only the real scalar products vary. Their derivatives at zero are respectively `0, 1/2, 1/2, 0`. The four-term vector-space helper uses those scalar derivatives, scalar multiplication by fixed Clifford coefficients, and addition. Explicit function equalities bridge pointwise multiplication/addition before simplification, following the accepted F10BJ lesson. Algebraic scalar-multiplication bridges fix the expansion order without assuming commutativity of Clifford multiplication.
+
+Four proof declarations are proposed:
+- `realHalfAngleQuadraticVectorCurve_hasDerivAt_zero`: four scalar-product coefficients in any real normed vector space.
+- `source9PlaneSpinCurve_conjugation_coe`: the exact four-term expansion using the actual source-group inverse at the same parameter.
+- `source9PlaneSpinCurve_conjugation_hasDerivAt_zero`: for every fixed Clifford `W`, the PBW-space derivative is `[(1/2) • B, W]` in explicit subtraction form.
+- `source9PlaneSpinCurve_conjugation_vector_hasDerivAt_zero`: for every source nine-vector `z`, the derivative is exactly `ι((coordinatePlane9 r s).mulVec z)`, using accepted F10BL.
+
+All actual curve statements require `r ≠ s`. The independent audit reconstructs PBW coordinates and the induced norm/space, restates all four exact types including arbitrary `W` and arbitrary `z`, and rechecks that the source matrix is literally `Matrix.single r s 1 - Matrix.single s r 1`. The workflow pins accepted F10BM/F10BL/F10BJ and source ancestry, rebuilds the F10BM closure once, freshly compiles the candidate and independent audit, and requires exactly four permitted root reports in each log.
+
+**Method boundary:** this is scalar-coefficient differentiation of an explicit algebraic expansion. No Clifford normed-ring instance, multiplication estimate, abstract topological-ring-to-calculus inference, global instance, admission, extra axiom, linter suppression or limit increase is introduced. The accepted F10BM negative inverse velocity remains independently qualified; the new conjugation proof uses its exact inverse formula.
+
+**Validation state:** local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. There is no local Lean executable; elaboration remains the strict CI obligation. Zero F10BN proofs are accepted before terminal success and output review.
+
+**Scientific ceiling:** even a successful result will be an ordinary real-parameter derivative in the accepted ambient Clifford PBW vector space. It will not construct a source or target Lie-group atlas, identify a source manifold tangent with native `so(9)`, or establish the full global F10BC differential equality.
+
+**Next action:** inspect F10BN's strict result. If accepted, use its actual source action derivative together with F10BK's exact gamma-image velocity comparison to assess the remaining source tangent-identification interface. Do not silently identify a Clifford velocity, a native skew-matrix plane and a manifold tangent vector.
