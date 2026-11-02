@@ -22,6 +22,7 @@ open FCP.BFSSPairedSpin9Clifford
 open FCP.BFSSPairedSpin9DetFixture
 open OAI.BFSSQuantum
 open Matrix
+open scoped Manifold ContDiff
 
 -- Positive controls: the pinned UnitsOfNormedAlgebra API must elaborate.
 #synth ChartedSpace ℝ ℝˣ

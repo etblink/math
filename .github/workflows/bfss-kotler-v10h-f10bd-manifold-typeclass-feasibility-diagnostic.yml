@@ -30,7 +30,7 @@ jobs:
           grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
           p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom.lean")" = '7798089cb8ac4ec4fffc3ead4caa474def81b3f8'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HDManifoldTypeclassFeasibilityDiagnostic.lean)" = '63dab235efa8cf013b8c791b2a90212003c97f60'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HDManifoldTypeclassFeasibilityDiagnostic.lean)" = '26ed463480ed316e8e86582a34f48db06d42f55e'
           echo "V10H_F10BD_PINNED_SOURCE_SCOPE_PASS"
 
       - name: Restore pinned Lean 4.34.1 and Mathlib
@@ -73,15 +73,15 @@ jobs:
           p=Path(os.environ["RUNNER_TEMP"])/"v10h-f10bd"/"typeclass-diagnostic.log"
           s=p.read_text()
           assert "failed to synthesize" in s, s
-          assert "TopologicalSpace (spinGroup source9Quadratic)" in s, s
-          assert "ChartedSpace" in s, s
-          assert "LieGroup" in s, s
-          assert "Matrix.specialOrthogonalGroup SpinIndex ℝ" in s, s
-          assert "Fin 120" in s, s
-          assert "unknown constant" not in s, s
+          assert "TopologicalSpace" in s and "spinGroup source9Quadratic" in s, s
+          assert "instTopologicalSpaceSubtype" in s, s
+          assert "ChartedSpace" in s and "specialOrthogonalGroup SpinIndex ℝ" in s, s
+          assert "LieGroup" in s and "Fin 120" in s, s
+          assert "Units.instChartedSpace" in s, s
+          assert "unknownIdentifier" not in s, s
           assert "unexpected token" not in s, s
-          assert "ChartedSpace ℝ ℝˣ" not in s, s
-          assert "LieGroup 𝓘(ℝ, ℝ) ∞ ℝˣ" not in s, s
+          assert "unknown constant" not in s, s
+          assert "ℝˣ" not in s, s
           print("F10BD_MANIFOLD_TYPECLASS_EXPECTED_GAPS_CONFIRMED")
           PY
 
