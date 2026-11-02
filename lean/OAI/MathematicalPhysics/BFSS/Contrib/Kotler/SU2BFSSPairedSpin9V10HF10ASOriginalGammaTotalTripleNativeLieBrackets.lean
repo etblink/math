@@ -58,10 +58,9 @@ theorem source9OriginalGamma_total_chain_native_so_bracket
         (2 : ℝ) • source9OriginalGammaDistinctPairInSo a c hac := by
   by_cases hac : a = c
   · subst c
-    simp only [dif_pos rfl]
     exact source9OriginalGamma_distinct_pair_reverse_native_so_bracket_zero
       a b hab
-  · simp only [dif_neg hac]
+  · simp only [dite_eq_right hac]
     exact source9OriginalGamma_distinct_chain_native_so_bracket
       a b c hab hac hbc
 
@@ -78,9 +77,8 @@ theorem source9OriginalGamma_total_fork_native_so_bracket
         -((2 : ℝ) • source9OriginalGammaDistinctPairInSo b c hbc) := by
   by_cases hbc : b = c
   · subst c
-    simp only [dif_pos rfl]
     exact lie_self _
-  · simp only [dif_neg hbc]
+  · simp only [dite_eq_right hbc]
     exact source9OriginalGamma_distinct_fork_native_so_bracket
       a b c hab hac hbc
 
@@ -97,9 +95,8 @@ theorem source9OriginalGamma_total_shared_right_native_so_bracket
         -((2 : ℝ) • source9OriginalGammaDistinctPairInSo a b hab) := by
   by_cases hab : a = b
   · subst b
-    simp only [dif_pos rfl]
     exact lie_self _
-  · simp only [dif_neg hab]
+  · simp only [dite_eq_right hab]
     exact source9OriginalGamma_distinct_shared_right_native_so_bracket
       a b c hab hac hbc
 
