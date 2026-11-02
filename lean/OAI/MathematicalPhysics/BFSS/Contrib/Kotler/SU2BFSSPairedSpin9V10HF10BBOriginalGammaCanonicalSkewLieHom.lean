@@ -40,8 +40,9 @@ noncomputable def coordinateToOriginalGammaSkewLieHom :
     ⟨coordinateToOriginalGammaLinearMap A.val,
       coordinateToOriginalGammaLinearMap_image_mem_so A.val
         (by
-          rw [LieAlgebra.Orthogonal.mem_so] at A.property
-          exact A.property)⟩
+          have hA_mem := A.property
+          rw [LieAlgebra.Orthogonal.mem_so] at hA_mem
+          exact hA_mem)⟩
   map_add' := by
     intro A B
     apply Subtype.ext
@@ -65,11 +66,13 @@ noncomputable def coordinateToOriginalGammaSkewLieHom :
         coordinateToOriginalGammaLinearMap B.val *
           coordinateToOriginalGammaLinearMap A.val
     have hA : A.val.transpose = -A.val := by
-      rw [LieAlgebra.Orthogonal.mem_so] at A.property
-      exact A.property
+      have hA_mem := A.property
+      rw [LieAlgebra.Orthogonal.mem_so] at hA_mem
+      exact hA_mem
     have hB : B.val.transpose = -B.val := by
-      rw [LieAlgebra.Orthogonal.mem_so] at B.property
-      exact B.property
+      have hB_mem := B.property
+      rw [LieAlgebra.Orthogonal.mem_so] at hB_mem
+      exact hB_mem
     exact sub_eq_zero.mp
       (coordinateToOriginalGammaBracketDefect_skew_pair_zero
         A.val B.val hA hB)
