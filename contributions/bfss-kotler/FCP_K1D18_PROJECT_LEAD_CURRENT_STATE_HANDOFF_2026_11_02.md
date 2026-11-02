@@ -244,7 +244,7 @@ F10Y already supplies the exact source-nine PBW basis and finite-dimensionality 
 - Source blob: `29a367d76ef75839ffa9b7dec1ded37a6094439c`
 - Workflow: `.github/workflows/bfss-kotler-v10h-f10bd2-clifford-topology-bridge-diagnostic.yml`
 - Workflow commit: `75932f4679ead6d1e3b23bcf077437624217b0ae`
-- Run: [#41501881751](https://github.com/etblink/math/actions/runs/41501881751), in progress at handoff update.
+- Run: [#41501881751](https://github.com/etblink/math/actions/runs/41501881751), completed red; failure classification and repair are recorded below.
 
 A successful F10BD2 result will establish only a chosen Hausdorff topology on the source Spin(9) carrier. It will **not** establish continuity of Clifford multiplication, a topological-group structure, a charted space, a Lie group, or the differential of the F10BC homomorphism. Those remain separate obligations.
 
@@ -261,3 +261,26 @@ The first F10BD attempt, [run #41495163096](https://github.com/etblink/math/acti
 **Failure lesson:** diagnostic harnesses must validate notation/scoped syntax before interpreting downstream typeclass failures. A red compile containing parser/identifier errors is harness feedback, not mathematical negative evidence. Preserve the original red artifact rather than rewriting its history.
 
 First-attempt artifact `13165899252`; ZIP SHA-256 `5ec0a60cfba7bbe943a3af945062e258f51c50cae456aea146dfe57a1b6ec682`. The accepted F10BC ancestry rebuild and pinned Lean/Mathlib restore had already passed before the malformed diagnostic failed.
+
+
+### F10BD2 attempt 1 — PBW coordinate codomain mismatch
+
+**Run:** [#41501881751](https://github.com/etblink/math/actions/runs/41501881751) — red  
+**Exact commit:** `75932f4679ead6d1e3b23bcf077437624217b0ae`  
+**Job:** `source-spin9-pbw-topology` (`125471162089`)  
+**Artifact:** `13168748501`; ZIP SHA-256 `5a15c82e924328939dfe6bc0acdc41e166f227f99f5da3b1492b886d79f32bc1`
+
+All prerequisite stages passed: source pins/scope checks, pinned Lean 4.34.1 and Mathlib restoration, F10X ancestry rebuild, and fresh F10Y PBW compilation. The only failing step was the isolated topology diagnostic.
+
+**Exact defect:** the accepted `source9CliffordPBWBasis.repr` has codomain `Finset SpaceIndex →₀ ℝ` (a finitely supported function), while the attempted norm transport declared codomain `Finset SpaceIndex → ℝ` (a Pi function). The source map was passed directly to `NormedAddCommGroup.induced` and `NormedSpace.induced` without converting codomains. Lean consequently reported:
+- no `FunLike` instance for the mismatched additive hom into Finsupp where a Pi target was expected;
+- injectivity proof mismatch between the PBW linear equivalence and its additive-hom coercion;
+- the analogous `FunLike` failure for `NormedSpace.induced`.
+
+This is a **coordinate-adapter implementation defect**, not a failure of F10Y finite-dimensionality and not evidence against the existence of a Hausdorff topology. The F10Y source compilation and finite-dimensionality declaration completed successfully.
+
+**Repair:** compose the accepted PBW representation with the pinned Mathlib equivalence `Finsupp.linearEquivFunOnFinite ℝ ℝ (Finset SpaceIndex)`, yielding an actual linear equivalence
+`source9PBWCoordinates : CliffordAlgebra source9Quadratic ≃ₗ[ℝ] (Finset SpaceIndex → ℝ)`.
+Transport the norm through this composite equivalence, using its additive-hom coercion and injectivity proof. The adapter is explicit and finite-index; no new mathematical axiom, theorem, or global instance is introduced.
+
+The next workflow attempt must still prove, rather than assume, the ambient and Spin(9) Hausdorff typeclass goals. A green result would establish only the chosen PBW-coordinate topology and inherited separation.
