@@ -38,7 +38,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HD2CliffordTopologyBridgeDiagnostic.lean)" = '2adc47f7faac87c35f3c76a95171eb21b6e5c0ff'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom.lean")" = '7798089cb8ac4ec4fffc3ead4caa474def81b3f8'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HD3GammaContinuityDiagnostic.lean)" = 'a40a345d01ac3051f5b6ec148b7433a6c7a75b12'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean)" = 'a39fe3c332c89e9f405f55ff3f20c58b5b2600fd'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean)" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BEIndependentAudit.lean)" = 'dc765801abaf11df1cd08118b91ce37fe2e19337'
           python3 - <<'PY'
           from pathlib import Path
@@ -50,6 +50,8 @@ jobs:
               assert len(re.findall(r'(?m)^(?:noncomputable def|theorem) '+re.escape(name)+r'\b',s))==1,name
               assert len(re.findall(r'(?m)^#print axioms '+re.escape(name)+r'[ \t]*$',s))==1,name
               assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
+          for name in ['source9PBWNormedAddCommGroup','source9PBWNormedSpace']:
+              assert '@[instance_reducible]\nnoncomputable def '+name+' :' in s,name
           assert s.count('#print axioms ')==len(names)
           assert audit.count('#print axioms ')==len(names)
           for text in [s,audit]:

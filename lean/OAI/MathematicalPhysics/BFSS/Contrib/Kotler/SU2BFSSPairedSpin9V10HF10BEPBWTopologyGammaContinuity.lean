@@ -37,6 +37,7 @@ noncomputable def source9PBWCoordinates :
   source9CliffordPBWBasis.repr.trans (Finsupp.linearEquivFunOnFinite ℝ ℝ (Finset SpaceIndex))
 
 /-- The exact PBW-coordinate induced normed additive group; not a global instance. -/
+@[instance_reducible]
 noncomputable def source9PBWNormedAddCommGroup :
     NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   NormedAddCommGroup.induced
@@ -48,6 +49,7 @@ noncomputable def source9PBWNormedAddCommGroup :
 attribute [local instance] source9PBWNormedAddCommGroup
 
 /-- Real normed-space compatibility for the named PBW normed group. -/
+@[instance_reducible]
 noncomputable def source9PBWNormedSpace :
     NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
   NormedSpace.induced ℝ

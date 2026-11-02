@@ -380,3 +380,33 @@ The gate requires a fresh warnings-as-errors candidate compilation, fresh indepe
 **Local validation:** source/audit inventory, source and audit blob pins, YAML, shell syntax, embedded Python syntax, and the workflow's static source-scope preflight pass. The local workspace still has no Lean executable; this is not a claim of local elaboration.
 
 **Next action:** review F10BE's strict compiler and independent-audit outputs. If accepted, reuse the named PBW structures for the next separately bounded multiplication or group-topology obligation; do not skip to a differential identification.
+
+
+### F10BE Gate 1 RED — named class-definition reducibility
+
+**Run:** [#41511437870](https://github.com/etblink/math/actions/runs/41511437870) — terminal red  
+**Exact tested commit:** `ceba60faa30f75e577a9d1a29bcbec8d026304eb`  
+**Candidate blob:** `a39fe3c332c89e9f405f55ff3f20c58b5b2600fd`  
+**Job:** `pbw-topology-original-gamma-continuity` (`125503972925`)  
+**Artifact:** `13173991889`; ZIP SHA-256 `f1d74be8f71cad5f5d52576238b0ed1ae3c8008bb8cf92c2177c48730d3bb7d3`
+
+Exact source/audit/toolchain pins, pinned dependency restoration, accepted F10X/F10BC ancestry rebuild, and fresh F10Y compilation all passed. Fresh F10BE warnings-as-errors compilation failed. The independent exact-topology/type/axiom audit was skipped. **Zero F10BE roots are accepted.**
+
+**Earliest failure:** the named `source9PBWNormedAddCommGroup` definition at source line 39 has class type but ordinary `def` makes it semireducible. Lean 4.34.1 requires the intended class-definition transparency, recommending `@[instance_reducible]`. The same diagnostic occurred at its local instance registration, at the `source9PBWNormedSpace` definition, and at that definition's registration. Both continuity proofs then failed to synthesize `IsTopologicalAddGroup (CliffordAlgebra source9Quadratic)` at lines 75 and 82.
+
+The emitted `sorryAx` dependencies on the two failed continuity declarations are failed-elaboration artifacts, not accepted proofs or source admissions. The earlier successful anonymous-instance F10BD2/F10BD3 diagnostics remain valid at their exact commits.
+
+**Classification:** named-structure packaging/transparency defect. Naming the previously anonymous local structures with ordinary definitions changed their availability to instance reduction. This does not refute either successful diagnostic and supplies no mathematical counterexample.
+
+### F10BE Gate 2 — explicit instance-reducibility repair CANDIDATE
+
+**Repaired source blob:** `db887aa6e495eb2a74c2e826018ffb5453158806`  
+**Independent audit blob unchanged:** `dc765801abaf11df1cd08118b91ce37fe2e19337`
+
+Add exactly `@[instance_reducible]` to the two named class-valued definitions `source9PBWNormedAddCommGroup` and `source9PBWNormedSpace`, as the pinned compiler recommends. Their bodies, all seven declaration names and types, local-only instance registration, and the independent reconstructed-topology audit remain unchanged. No warning suppression, global instance, limit increase, admission, or theorem weakening is introduced.
+
+Update the source blob pin atomically and add an explicit static check for the two reducibility attributes. The strict compilation must demonstrate that the secondary topological-additive-group synthesis failures are resolved; do not presume that from the attribute edit alone. All seven declaration axiom reports in each of the candidate and independent-audit logs must still pass the existing whitelist.
+
+**Procedural lesson:** when promoting a successful anonymous `local instance` to a reusable named class-valued definition, preserve instance-reduction transparency explicitly. A compile-time class-definition warning is interface feedback and must be repaired, not disabled. Pinned Mathlib's transfer-instance file likewise uses transparent class-valued abbreviations.
+
+**Local validation:** the exact source diff consists of the two reducibility attributes; independent audit content is unchanged. Source/audit hashes, declaration inventory, scope guards, YAML, shell syntax, and embedded Python syntax are checked before publication. Actual Lean elaboration remains the unchanged strict CI gate's obligation.
