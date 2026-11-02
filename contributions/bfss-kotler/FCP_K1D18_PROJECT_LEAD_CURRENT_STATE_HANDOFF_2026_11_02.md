@@ -828,3 +828,44 @@ All four theorem headers/propositions are textually unchanged. The polarization 
 **Procedural lesson:** a conjunction inside a finite-sum selector may survive broad simplification even when the outer coordinate cases were split. Bridge the guard explicitly with a general local sum identity; do not add a distinct-label hypothesis or use substitution-heavy source-label case repairs.
 
 **Local validation:** theorem-header equality, source/audit hashes, declaration inventory/scope guards, YAML, shell and embedded Python checks pass. This is static validation; the unchanged strict CI gate must compile the new local bridge and complete the independent audit. If the same selector boundary remains unresolved, isolate it in a diagnostic before another full-source edit.
+
+
+### F10BL Gate 2 ACCEPTED — exact algebraic source coordinate action
+
+**Run:** [#41535514514](https://github.com/etblink/math/actions/runs/41535514514) — terminal green  
+**Exact tested commit:** `fdd0771396d783f930544e48f6765522be55ac0e`  
+**Accepted source blob:** `bc0d8539c2523fffe2f36ee4b121a1b81a1431be`  
+**Independent audit blob:** `1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1`  
+**Job:** `actual-source-coordinate-commutator-action` (`125586229478`)  
+**Artifact:** `13184607938`; ZIP SHA-256 `51b4627b74cc337ca9506d2579b379e707dbe392d07195aa0dca269a339f97cd`
+
+Exact pins, pinned Lean/Mathlib restoration, accepted source ancestry rebuild, fresh warnings-as-errors source compilation and independent exact-type/normalization/axiom audit passed. Each of the four root reports in both logs contains only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+All four F10BL proofs are now accepted: `source9Quadratic_polar_coordinate`, `source9Clifford_pair_commutator_vector`, `source9CoordinatePlane_mulVec`, and `source9CoordinateBivector_commutator_vector`. In the actual source Clifford algebra, commutation by the positive half-bivector gives exactly the embedded action of the literal full native matrix plane `E_rs - E_sr` on every source nine-vector. The algebraic identity includes diagonal labels; the distinct-plane curve remains restricted to `r ≠ s`.
+
+**Success lesson:** the local guarded-coordinate-sum lemma closes the selector boundary without changing any theorem proposition, source labels, normalization or audit. The Gate 1 red run and its failed-elaboration provenance above remain immutable.
+
+**Scope ceiling:** this is an algebraic commutator identity, not yet a derivative of the actual conjugation curve, a source tangent equivalence, a manifold atlas or a global differential theorem.
+
+### F10BM Gate 1 — actual inverse source curve derivative CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BMInverseSourceCurveDerivative.lean`  
+**Candidate source blob:** `f400909e5bf8d7ecb6d5428c48f4218c6c46550b`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BMIndependentAudit.lean`  
+**Audit blob:** `057c3313f16775de85109fd5ca257eef69c04cf8`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bm-inverse-source-curve-derivative-strict.yml`
+
+Pinned Mathlib source inspection confirms that the existing `spinGroup` inverse is definitionally `star`, that Clifford star sends `ι(v)` to `-ι(v)`, and that `CliffordAlgebra.star_smul` is real-linear. The candidate uses this actual inverse and the accepted F10BI half-angle source curve, without replacing the group or its PBW topology.
+
+Three proof declarations are proposed:
+- `source9CoordinateClifford_anticommute`: distinct actual coordinate Clifford vectors anticommute, derived from the actual quadratic polarization.
+- `source9PlaneSpinCurve_inv_coe`: the actual inverse curve has the exact expression `cos(t/2) • 1 + sin(t/2) • (-(ι(e_r)*ι(e_s)))`.
+- `source9PlaneSpinCurve_inv_coe_hasDerivAt_zero`: under the accepted named PBW norm, the actual inverse curve has derivative `-((1/2) • (ι(e_r)*ι(e_s)))` at zero.
+
+The independent audit reconstructs the PBW coordinate equivalence and induced norm/space from the accepted basis, checks definitional equality with the accepted named coordinates and norm, and restates all three exact propositions. The strict workflow pins accepted F10BL/F10BJ and their actual source ancestry, rebuilds their closures, freshly compiles the candidate and audit with warnings-as-errors, and requires exactly three permitted root reports in each log. No global normed-ring instance, multiplication bound, new axiom, admission, linter suppression or limit increase is introduced.
+
+**Route refinement:** F10BF supplies a topological ring, not a normed-ring estimate for this PBW norm. The exact half-angle formulas allow an explicit scalar-coefficient route to differentiating the actual conjugation curve. F10BM qualifies only the inverse expression and negative inverse velocity prerequisite; it does not yet differentiate multiplication or conjugation. A later conjugation proof must either justify the appropriate bounded-bilinear calculus or derive and differentiate the explicit finite scalar-coefficient expansion. Neither can be inferred from topological-ring continuity alone.
+
+**Validation state:** local source/audit hashes, inventory/scope guards, YAML, shell syntax and embedded Python checks pass. No local Lean executable is installed; actual elaboration remains the new strict CI obligation. Zero F10BM proofs are accepted before terminal success and output review.
+
+**Next action:** inspect F10BM's strict result. If accepted, prove the actual source conjugation-curve derivative on arbitrary embedded nine-vectors and compare it to F10BL's literal coordinate-plane action. Keep Clifford velocities, matrix planes and manifold tangent vectors distinct; source tangent identification and the global F10BC differential remain open.
