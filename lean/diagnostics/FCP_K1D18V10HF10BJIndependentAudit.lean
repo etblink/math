@@ -5,6 +5,16 @@ open FCP.BFSSPairedSpin9Clifford
 open FCP.BFSSGamma9
 noncomputable section
 
+-- Capture the pre-existing product topology before enabling a matrix norm.
+private abbrev auditGammaProductTopology : TopologicalSpace GammaMatrix := inferInstance
+open scoped Matrix.Norms.Elementwise
+
+-- The chosen matrix norm supplies the missing structures and preserves topology.
+example : NormedAddCommGroup GammaMatrix := inferInstance
+example : NormedSpace ℝ GammaMatrix := inferInstance
+example : (inferInstance : TopologicalSpace GammaMatrix) = auditGammaProductTopology := rfl
+
+
 -- Reconstruct the accepted PBW norm independently before checking the source derivative.
 local instance : Fintype (Finset SpaceIndex) := Fintype.ofFinite _
 private def auditPBWCoordinates :

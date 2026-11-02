@@ -2,6 +2,7 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BICo
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 import Mathlib.Analysis.Calculus.Deriv.Mul
+import Mathlib.Analysis.Matrix.Normed
 
 /-!
 F10BJ — derivatives at zero of the actual distinct-plane source curve
@@ -26,6 +27,7 @@ noncomputable section
 
 open OAI.BFSSQuantum
 open FCP.BFSSGamma9
+open scoped Matrix.Norms.Elementwise
 
 local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedAddCommGroup
@@ -42,7 +44,15 @@ theorem realHalfAngleVectorCurve_hasDerivAt_zero
     simpa using (((hasDerivAt_id (0 : ℝ)).div_const 2).cos)
   have hs : HasDerivAt (fun t : ℝ => Real.sin (t / 2)) (1 / 2 : ℝ) 0 := by
     simpa using (((hasDerivAt_id (0 : ℝ)).div_const 2).sin)
-  simpa using ((hc.smul_const a).add (hs.smul_const b))
+  have hadd :
+      ((fun t : ℝ => (Real.cos (t / 2)) • a) +
+        (fun t : ℝ => (Real.sin (t / 2)) • b)) =
+      (fun t : ℝ => (Real.cos (t / 2)) • a + (Real.sin (t / 2)) • b) := by
+    funext t
+    rfl
+  have hsum := (hc.smul_const a).add (hs.smul_const b)
+  rw [hadd] at hsum
+  simpa only [zero_smul, zero_add] using hsum
 
 /-- The exact source Spin9 curve, coerced to its PBW-normed Clifford space, has the stated velocity. -/
 theorem source9PlaneSpinCurve_coe_hasDerivAt_zero

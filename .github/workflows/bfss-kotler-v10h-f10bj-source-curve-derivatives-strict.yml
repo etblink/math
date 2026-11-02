@@ -40,8 +40,8 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BIIndependentAudit.lean)" = '119ab4569f0ef663838856ed3611e500a7125c82'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean")" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe.lean")" = '578ddf1505da2ab2848bc88cf709660d941cb8ec'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean)" = '5e95c7085849fe2e4331e0d491ee6fe1ac99625c'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean)" = 'dcf36c44cf9ee35ddef71207289853cbb03e598b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean)" = '528937bc6f528eed64aea16ecc5eb69c74c2dd99'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean)" = '13186e289439acf51af42c80cb0585f74a6285c2'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -64,6 +64,12 @@ jobs:
                         '(hrs : r ≠ s)','HasDerivAt','((1 / 2 : ℝ) • (gamma r * gamma s)) 0',
                         'source9PlaneSpinCurve_coe r s hrs t','source9PlaneSpinCurve_gamma r s hrs t']:
               assert token in s,token
+          assert 'open scoped Matrix.Norms.Elementwise' in s
+          assert 'open scoped Matrix.Norms.Elementwise' in audit
+          assert 'rw [hadd] at hsum' in s
+          assert 'NormedAddCommGroup GammaMatrix := inferInstance' in audit
+          assert 'NormedSpace ℝ GammaMatrix := inferInstance' in audit
+          assert 'auditGammaProductTopology := rfl' in audit
           assert 'source9PBWCoordinates = auditPBWCoordinates := rfl' in audit
           print('V10H_F10BJ_SOURCE_PIN_EXACT_PBW_VECTOR_SPACE_DERIVATIVE_SCOPE_PASS')
           PY

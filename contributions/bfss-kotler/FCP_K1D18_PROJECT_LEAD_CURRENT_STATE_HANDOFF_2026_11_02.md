@@ -656,3 +656,40 @@ Local source/audit hashes, declaration inventory/scope guards, YAML, shell synta
 **Scope ceiling:** these are ordinary derivatives of real-parameter maps into vector spaces. They do not construct a manifold tangent space, a Lie-group atlas, the global differential of F10BC, or an identification with the canonical F10BB source-plane input. No covering/lift, Fock, gauge or spectral assertion is implied.
 
 **Next action:** inspect F10BJ's strict result. If accepted, audit the exact accepted F10BB coordinate-plane evaluation and source-label convention before qualifying a derivative-velocity comparison; do not silently identify a Clifford bivector with a skew-matrix tangent.
+
+
+### F10BJ Gate 1 RED — pointwise-function bridge and matrix norm scope
+
+**Run:** [#41526230040](https://github.com/etblink/math/actions/runs/41526230040) — terminal red  
+**Exact tested commit:** `9c504cb893d84b9cad4060f6448c6a0fda2cfbc3`  
+**Candidate blob:** `5e95c7085849fe2e4331e0d491ee6fe1ac99625c`  
+**Audit blob:** `dcf36c44cf9ee35ddef71207289853cbb03e598b`  
+**Job:** `exact-pbw-source-and-gamma-curve-derivatives` (`125554543609`)  
+**Artifact:** `13180318026`; ZIP SHA-256 `8feea9ad19f77cbe1ef7f7f4b40dd8e8d01e20814ff7f2f20f4168e1f38516fa`
+
+Exact source/audit/toolchain pins, pinned dependency restoration, and the joint accepted F10BI/F10BE dependency rebuild passed. Fresh F10BJ warnings-as-errors compilation failed; the independent audit was skipped. **Zero F10BJ roots are accepted.** The three emitted `sorryAx` reports are failed-elaboration artifacts, not accepted declarations.
+
+Two source-interface failures were observed:
+1. **First error, line 45:** the scalar cosine and sine derivative proofs elaborated, but `HasDerivAt.add` produced the function-valued sum `(fun y => cos(y/2) • a) + (fun y => sin(y/2) • b)`. The final `simpa` did not bridge this to the explicitly pointwise lambda in the helper's proposition. This is a function-representation mismatch, not a scalar derivative counterexample.
+2. **Line 83:** specialization of the normed-vector helper to `GammaMatrix` could not synthesize `NormedAddCommGroup GammaMatrix`. The standard matrix product topology existed, but a matrix norm had not been explicitly selected. The pinned matrix norm file deliberately supplies multiple norm choices as scoped non-instances.
+
+The exact source alias is `GammaMatrix := Matrix SpinIndex SpinIndex ℝ`, not a different carrier or a 48-label replacement. Pinned `Mathlib/Analysis/Calculus/Deriv/Add.lean` confirms that `HasDerivAt.add` returns the function sum. Pinned `Mathlib/Analysis/Matrix/Normed.lean` explicitly supplies `Matrix.Norms.Elementwise`, whose normed group and real normed space are constructed from the iterated Pi structures.
+
+### F10BJ Gate 2 — explicit pointwise bridge and elementwise matrix norm CANDIDATE
+
+**Repaired source blob:** `528937bc6f528eed64aea16ecc5eb69c74c2dd99`  
+**Strengthened audit blob:** `13186e289439acf51af42c80cb0585f74a6285c2`
+
+The three theorem declarations and their printed propositions remain textually unchanged:
+- Replace the helper's final broad `simpa` with an explicit equality of the function-valued sum and pointwise lambda, proved by `funext` and pointwise reflexivity. Rewrite the derivative proof through that equality, then simplify only `zero_smul` and `zero_add`.
+- Explicitly import the pinned matrix norm module and enable `open scoped Matrix.Norms.Elementwise` in the candidate. This supplies the normed structures needed by the generic derivative helper.
+- In the independent audit, capture the existing gamma product topology **before** opening the matrix norm scope. Add positive controls for `NormedAddCommGroup GammaMatrix` and `NormedSpace ℝ GammaMatrix`, and require the post-scope topology to equal the captured product topology by reflexivity. This equality must compile; do not presume topology compatibility merely because the carrier is finite-dimensional.
+- Retain the independent PBW norm reconstruction and all three original derivative-type restatements. Update source and audit pins atomically and extend the static scope checks to require the explicit bridges.
+
+No limit increase, warning suppression, admission, theorem weakening, changed curve, alternate matrix/gamma carrier or global instance registration is introduced. The matrix norm is an explicit scoped choice, and its compatibility with the already used topology is now an additional compiler obligation.
+
+**Local validation:** the three theorem headers/propositions are textually unchanged; source/audit hashes, declaration inventory, required bridge controls, YAML, shell and embedded Python checks pass. The local workspace has no Lean executable, so this is static verification only.
+
+**Procedural lesson:** ordinary topology synthesis does not supply a normed-vector-space instance for a matrix type with several legitimate norm choices. Also, do not assume broad simplification will cross a function-valued operator boundary; provide a qualified pointwise equality or source-verified function-form API before raising any limits.
+
+**Next action:** review the unchanged strict gate, including the stronger independent audit. If the same function/topology boundary remains unresolved, isolate it in a small diagnostic before another full-source edit. Even a green F10BJ would establish only the stated vector-space curve derivatives, not a manifold differential or an F10BB tangent identification.
