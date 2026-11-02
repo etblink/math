@@ -993,3 +993,50 @@ The independent audit reconstructs PBW coordinates and the induced norm/space, c
 **Scientific ceiling:** the candidate constructs and differentiates an exact vector-valued conjugation function. It does not yet package a linear/group/orthogonal homomorphism on nine-vectors, prove global smoothness, construct a Lie-group atlas, identify source or target manifold tangent spaces, or establish the global F10BC differential equality. The actual pinned source `spinGroup source9Quadratic` definition is unchanged.
 
 **Next action:** inspect F10BO's strict result. If accepted, reuse the projection left inverse and exact embedding identity when packaging the nine-vector conjugation laws; assess that interface against F10BK's target velocity before any manifold tangent claim. Preserve the distinction between actual action-curve derivatives and a full Lie-group differential.
+
+
+### F10BO Gate 1 ACCEPTED — actual nine-vector conjugation derivative
+
+**Run:** [#41545078833](https://github.com/etblink/math/actions/runs/41545078833) — terminal green  
+**Exact tested commit:** `71488c84e714f9491d182d40ea2fb78b9e04d956`  
+**Accepted source blob:** `03287d741b05cd4e373f1b5e608d0e6888b63e89`  
+**Independent audit blob:** `744a1917c34857f40c08aded9f2b1480c7dfe62c`  
+**Job:** `actual-nine-vector-conjugation-derivative` (`125618581416`)  
+**Artifact:** `13188428684`; ZIP SHA-256 `7cff220105a5754a339918fb5fee6051000b047c4c227452b2767500a2813af7`
+
+Exact pins, pinned dependency restoration, accepted F10BN ancestry rebuild, fresh warnings-as-errors source compilation and independent PBW/type/axiom audit passed. The classifier emitted `V10H_F10BO_ACTUAL_NINE_VECTOR_CONJUGATION_DERIVATIVE_TYPES_AXIOMS_PASS`. All seven root reports in each log contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+The two constructions `source9CliffordVectorProjection` and `source9SpinVectorConjugation`, and all five associated proofs, are accepted. Canonical vector recovery is a continuous real-linear left inverse of the actual Clifford vector embedding. Conjugation by every actual source Spin element lies in the original vector range, and the recovered vector embeds back to that exact expression. Along each accepted distinct-plane curve, the actual nine-vector-valued conjugation function has derivative `(coordinatePlane9 r s).mulVec z` at zero for every original nine-vector.
+
+**Success lesson:** reuse the existing Clifford/exterior linear equivalence, exterior `ιInv`, and Spin range-invariance theorem. Explicit unit-coercion, continuous-linear-map structure-field and composition-function bridges give an exact transfer to the original vector carrier. No preimage choice or multiplicative Clifford/exterior equivalence is required.
+
+**Scope ceiling:** F10BO supplies an exact vector-valued function and curve derivative. It does not yet package the function's real linearity or group laws, prove quadratic preservation, construct an atlas, or identify a full manifold differential.
+
+### F10BP Gate 1 — actual nine-vector linear representation CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BPSourceVectorLinearRepresentation.lean`  
+**Candidate source blob:** `23097e1842b4af3109afe4f5afe181a8a88f5c03`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BPIndependentAudit.lean`  
+**Audit blob:** `577618970cc8ed20c8d625564f4a0479583451be`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bp-source-vector-linear-representation-strict.yml`
+
+Pinned `Mathlib/RepresentationTheory/Basic.lean` defines `Representation ℝ G V` as a monoid homomorphism `G →* (V →ₗ[ℝ] V)`. For groups it already proves both `inv_self_apply` and `self_inv_apply`. Reuse that infrastructure to bundle the accepted actual conjugation function; a separate custom invertible-linear-map implementation is unnecessary.
+
+Two constructions and three proofs are proposed:
+- `source9CliffordVectorEmbedding_injective`: the actual vector embedding is injective by the accepted explicit projection left inverse.
+- `source9SpinVectorLinearMap`: for each actual source Spin element, the exact accepted vector conjugation is a real LinearMap on `SpaceIndex → ℝ`.
+- `source9SpinVectorConjugation_one`: the actual identity acts as the vector identity.
+- `source9SpinVectorConjugation_mul`: `C(g*h,z) = C(g,C(h,z))`, in the composition order of Mathlib endomorphism multiplication.
+- `source9SpinVectorRepresentation`: a genuine `Representation ℝ (spinGroup source9Quadratic) (SpaceIndex → ℝ)` with that exact evaluation.
+
+Linearity follows from the already qualified projection and Clifford embedding linearity plus scalar/distributive ring identities. Identity and composition are proved after applying the now-injective vector embedding, then using the accepted exact conjugation identity, the actual group inverse-product law, explicit subgroup-coercion bridges and ring associativity. No topology, norm or global instance is needed for these algebraic laws.
+
+The independent audit exposes the representation as the raw monoid homomorphism into `Module.End ℝ (SpaceIndex → ℝ)`, checks its exact evaluation by definitional equality, restates all proof types, and verifies its Clifford embedding is literal actual conjugation. It tests both inverse identities through Mathlib's generic representation theorems and rechecks the accepted F10BO plane derivative through the bundle by exact evaluation. These inverse/derivative controls do not add new source theorem roots.
+
+The workflow pins accepted F10BO/F10BN/F10BM/F10BL/F10BJ and actual source ancestry, rebuilds the F10BO closure once, freshly compiles the candidate and independent audit with warnings-as-errors, and requires exactly five permitted root reports in each log. The previous PBW topology and derivative remain qualified at their pinned sources; this new algebraic package introduces no normed structure.
+
+**Validation state:** local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. Zero F10BP declarations are qualified before terminal strict success and output review. No new axiom, admission, global instance, linter suppression or limit increase is introduced.
+
+**Scientific ceiling:** vector-embedding injectivity does not classify the group-representation kernel. The candidate does not prove quadratic preservation, orthogonal or special-orthogonal matrix membership, global smoothness, a manifold tangent identification, a covering/surjectivity theorem, or the global F10BC differential equality.
+
+**Next action:** inspect F10BP's strict result. If accepted, prove preservation of the actual `source9Quadratic` using the exact embedding/conjugation identity and Clifford square law, then assess packaging into the appropriate orthogonal carrier. Determinant-one membership and manifold tangent identification remain separate obligations; do not assume them from the existence of an algebraic linear representation.
