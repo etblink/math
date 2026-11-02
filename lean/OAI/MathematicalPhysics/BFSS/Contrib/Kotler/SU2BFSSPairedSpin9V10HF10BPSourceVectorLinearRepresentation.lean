@@ -38,7 +38,8 @@ noncomputable def source9SpinVectorLinearMap (g : spinGroup source9Quadratic) :
     simp only [source9SpinVectorConjugation, map_add, mul_add, add_mul]
   map_smul' := by
     intro c z
-    simp only [source9SpinVectorConjugation, map_smul, mul_smul_comm, smul_mul_assoc]
+    simp only [source9SpinVectorConjugation, map_smul, mul_smul_comm, smul_mul_assoc,
+      RingHom.id_apply]
 
 /-- The actual source identity acts as the identity on every original nine-vector. -/
 theorem source9SpinVectorConjugation_one (z : SpaceIndex → ℝ) :

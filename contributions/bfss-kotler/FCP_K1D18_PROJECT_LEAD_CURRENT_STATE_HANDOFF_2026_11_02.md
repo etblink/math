@@ -1040,3 +1040,30 @@ The workflow pins accepted F10BO/F10BN/F10BM/F10BL/F10BJ and actual source ances
 **Scientific ceiling:** vector-embedding injectivity does not classify the group-representation kernel. The candidate does not prove quadratic preservation, orthogonal or special-orthogonal matrix membership, global smoothness, a manifold tangent identification, a covering/surjectivity theorem, or the global F10BC differential equality.
 
 **Next action:** inspect F10BP's strict result. If accepted, prove preservation of the actual `source9Quadratic` using the exact embedding/conjugation identity and Clifford square law, then assess packaging into the appropriate orthogonal carrier. Determinant-one membership and manifold tangent identification remain separate obligations; do not assume them from the existence of an algebraic linear representation.
+
+
+### F10BP Gate 1 RED — unresolved identity-ring-hom scalar in LinearMap field
+
+**Run:** [#41547734483](https://github.com/etblink/math/actions/runs/41547734483) — terminal red  
+**Exact tested commit:** `e64731db8884703d12f491ac033e498dc8d343ed`  
+**Candidate source blob:** `23097e1842b4af3109afe4f5afe181a8a88f5c03`  
+**Job:** `actual-nine-vector-linear-representation` (`125627340392`)  
+**Artifact:** `13190211742`; ZIP SHA-256 `ccd66f6e6aec6f8198a4d8ed00141759c4a794e3995bdfad26e53b72915196d7`
+
+Exact pins, pinned dependency restoration and accepted F10BO ancestry rebuild passed. Fresh F10BP warnings-as-errors compilation failed; the independent audit was skipped. **Zero F10BP declarations are qualified.**
+
+The only compiler error was the unsolved `map_smul'` field of `source9SpinVectorLinearMap` at line 39. Scalar distribution and projection/embedding linearity had already reduced the goal to
+`c • v = (RingHom.id ℝ) c • v`, where `v` is the recovered actual conjugation vector. The restricted `simp only` list did not include identity-ring-hom application normalization.
+
+The embedding-injectivity, actual identity-action and actual multiplication/composition proofs elaborated with only the permitted three axioms. The failed LinearMap field produced `sorryAx` in its declaration and in the dependent representation construction; those reports qualify neither construction. No failure of conjugation linearity or group composition was demonstrated.
+
+### F10BP Gate 2 — explicit scalar identity-ring-hom normalization CANDIDATE
+
+**Repaired source blob:** `47684d3586cf7c53674c8d52341853f3f03fa319`  
+**Independent audit blob unchanged:** `577618970cc8ed20c8d625564f4a0479583451be`
+
+Pinned `Mathlib/Algebra/Ring/Hom/Defs.lean` confirms `RingHom.id_apply (x) : RingHom.id α x = x`. Add only this lemma to the existing `map_smul'` simplification list. It directly resolves the exact residual scalar identity. All five declaration headers/types, construction evaluations, other proof bodies, actual carriers, independent audit, compiler strictness, axiom whitelist and limits remain unchanged. The workflow changes only the candidate source blob pin.
+
+**Failure lesson:** a LinearMap's scalar-law structure field may retain its semilinear parent expression `(RingHom.id ℝ) c`. Normalize that scalar homomorphism explicitly when using a restricted simplification list. Reuse the explicit `RingHom.id_apply` bridge already present in accepted source modules rather than relying on transparency to erase the field boundary.
+
+**Validation state:** local source/audit hashes, exact proof-only edit, unchanged declaration headers and audit, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. The unchanged strict gate must freshly compile the scalar bridge and run the independent audit before any F10BP qualification. Quadratic preservation, orthogonal membership and manifold tangent identification remain open.
