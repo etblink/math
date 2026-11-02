@@ -336,3 +336,47 @@ The diagnostic preserves the accepted F10BD2 topology prelude verbatim; the work
 This route does not require asserting that the source is already a topological group. Multiplication continuity is a distinct obligation. This remains diagnostic-only and unqualified until CI compiles both examples. Any later named theorem promotion must separately expose the exact chosen structures and pass an independent type/axiom audit.
 
 Local static validation checks the candidate/workflow pins, exact reused topology prelude, required scope tokens, YAML, and unchanged absence of admissions or limit increases. No local Lean executable is available; CI owns elaboration.
+
+
+### F10BD3 — original gamma continuity DIAGNOSTIC PASS
+
+**Run:** [#41509271718](https://github.com/etblink/math/actions/runs/41509271718) — terminal green  
+**Exact tested commit:** `f4716536ad876ce20097f516630525e8a4db8a0e`  
+**Diagnostic blob:** `a40a345d01ac3051f5b6ec148b7433a6c7a75b12`  
+**Job:** `original-gamma-continuity` (`125496574998`)  
+**Artifact:** `13173340315`; ZIP SHA-256 `883560bda225e12ba31b8ceb3148be95d7109d257b17e1c54ac4ca2da04600e9`
+
+Exact diagnostic/ancestor/toolchain pins, verbatim topology-prelude comparison, pinned Lean 4.34.1/Mathlib restoration, F10X/F10BC ancestry rebuild, and fresh warnings-as-errors F10Y compilation passed. Both isolated continuity examples compiled; the compiler reached `V10H_F10BD3_ORIGINAL_GAMMA_CONTINUITY_PASS`.
+
+**Observed scope:** continuity of exactly `source9GammaCliffordAlgHom` from the chosen PBW-coordinate source topology to the standard real matrix topology, and continuity of exactly `source9SpinGammaSpecialOrthogonalHom` from the inherited Spin9 subtype topology to the standard SO(16) subtype topology. The latter used the accepted F10BC underlying-matrix identity explicitly before the subtype continuity bridge.
+
+**Acceptance level:** successful isolated continuity diagnostic, zero new accepted named theorem roots. No multiplication-continuity, topological-group, smoothness, manifold, Lie-group, differential, lift, Fock, gauge or spectral statement follows. Named reusable exports still require a separate strict type/axiom gate.
+
+**Success lesson:** reuse finite-dimensional linear-map continuity for the already constructed algebraic representation; cross the target subtype with the explicit accepted matrix-function equality. Neither an abstract LieHom integration theorem nor an assumed source topological-group structure is needed for these two continuity obligations.
+
+### F10BE Gate 1 — named PBW topology and continuity CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean`  
+**Source blob:** `a39fe3c332c89e9f405f55ff3f20c58b5b2600fd`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BEIndependentAudit.lean`  
+**Audit blob:** `dc765801abaf11df1cd08118b91ce37fe2e19337`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10be-pbw-topology-gamma-continuity-strict.yml`
+
+Promote only the successful F10BD2/F10BD3 constructions. The candidate names the coordinate equivalence, induced normed additive group, and compatible real normed space as ordinary values. Only local instance attributes are used. Downstream code must explicitly install the named structures; no global topology or norm is registered.
+
+The candidate inventory is seven declarations: three constructions and four proof declarations.
+- `source9PBWCoordinates`
+- `source9PBWNormedAddCommGroup`
+- `source9PBWNormedSpace`
+- `source9Clifford_t2Space_pbw`
+- `source9Spin_t2Space_pbw`
+- `source9GammaCliffordAlgHom_continuous_pbw`
+- `source9SpinGammaSpecialOrthogonalHom_continuous_pbw`
+
+The independent audit reconstructs the coordinate map and normed structures directly from accepted F10Y and pinned Mathlib, instead of installing the candidate's structures. It checks exact equality of the coordinate map and induced normed additive group, then restates both Hausdorff and both continuity conclusions under that independently reconstructed topology. This checks the hidden topology parameters, not merely the printed `Continuous` notation.
+
+The gate requires a fresh warnings-as-errors candidate compilation, fresh independent type audit, exactly seven axiom reports in each log, and an axiom whitelist limited to `propext`, `Classical.choice`, and `Quot.sound`. Existing red evidence and successful diagnostic sources remain unchanged. No new root is accepted until the gate is terminal green and its outputs are reviewed.
+
+**Local validation:** source/audit inventory, source and audit blob pins, YAML, shell syntax, embedded Python syntax, and the workflow's static source-scope preflight pass. The local workspace still has no Lean executable; this is not a claim of local elaboration.
+
+**Next action:** review F10BE's strict compiler and independent-audit outputs. If accepted, reuse the named PBW structures for the next separately bounded multiplication or group-topology obligation; do not skip to a differential identification.
