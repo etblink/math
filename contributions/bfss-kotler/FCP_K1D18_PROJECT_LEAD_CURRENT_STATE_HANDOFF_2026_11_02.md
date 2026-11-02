@@ -869,3 +869,29 @@ The independent audit reconstructs the PBW coordinate equivalence and induced no
 **Validation state:** local source/audit hashes, inventory/scope guards, YAML, shell syntax and embedded Python checks pass. No local Lean executable is installed; actual elaboration remains the new strict CI obligation. Zero F10BM proofs are accepted before terminal success and output review.
 
 **Next action:** inspect F10BM's strict result. If accepted, prove the actual source conjugation-curve derivative on arbitrary embedded nine-vectors and compare it to F10BL's literal coordinate-plane action. Keep Clifford velocities, matrix planes and manifold tangent vectors distinct; source tangent identification and the global F10BC differential remain open.
+
+
+### F10BM Gate 1 RED — implicit quadratic-form inference and unused simp argument
+
+**Run:** [#41538300404](https://github.com/etblink/math/actions/runs/41538300404) — terminal red  
+**Exact tested commit:** `806db8af5df8d5c7ee149f66902f08539005c4f2`  
+**Candidate source blob:** `f400909e5bf8d7ecb6d5428c48f4218c6c46550b`  
+**Job:** `actual-inverse-source-curve-derivative` (`125595684507`)  
+**Artifact:** `13185357682`; ZIP SHA-256 `653996769f1e5ac28fa2a3435da5554547c84d950c5a7d01ff795c65a5c9223b`
+
+Exact pins, pinned Lean/Mathlib restoration and accepted F10BL/F10BJ ancestry rebuild passed. Fresh F10BM warnings-as-errors compilation failed; the independent audit was skipped. **Zero F10BM proofs are accepted.**
+
+The first anticommutation proof called `CliffordAlgebra.ι_mul_ι_comm` with only its two vector arguments. At line 44 Lean left the scalar/quadratic-form parameters unresolved and reported a stuck `Module ?m.52 (SpaceIndex → ℝ)` instance problem. The `simpa ... using` elaboration did not obtain the needed quadratic form from the expected final equality. At line 42 the strict linter also reported that `hrs` was unused in `simp [source9CoordinateVector, hrs, Ne.symm hrs]`; the reversed inequality is the needed selector fact.
+
+All three displayed root reports consequently contain `sorryAx`, originating in failed elaboration of the first declaration and propagating through its dependents. These reports qualify no proofs. No mathematical counterexample, failure of the actual inverse formula, or failure of the accepted PBW derivative helper was established.
+
+### F10BM Gate 2 — explicit quadratic-form bridge CANDIDATE
+
+**Repaired source blob:** `545581346eaf563b54dcf3c828e43d19c2d1dd23`  
+**Independent audit blob unchanged:** `057c3313f16775de85109fd5ca257eef69c04cf8`
+
+Pinned Mathlib `Mathlib/LinearAlgebra/CliffordAlgebra/Basic.lean` confirms that `ι_mul_ι_comm` takes an implicit quadratic form `Q`. Supply `(Q := source9Quadratic)` at that application, which also fixes the scalar and module carrier. Remove only the unused `hrs` simp argument; retain `Ne.symm hrs`. All three theorem headers/propositions and the downstream inverse-expression and derivative proofs are textually unchanged. The workflow changes only the candidate source pin.
+
+**Failure lesson:** in a `simpa ... using` argument, two vectors can determine the underlying module without determining the scalar/quadratic form of a polymorphic Clifford identity. Supply the actual quadratic form explicitly before simplification. Strict unused-simp feedback is repaired by removing the redundant fact, not by disabling its linter.
+
+**Validation state:** local source/audit hashes, unchanged theorem headers and audit, declaration/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean elaboration is claimed. The unchanged strict gate must freshly compile the explicit bridge and run the independent audit before any F10BM acceptance. Source conjugation differentiation, manifold tangent identification and the global F10BC differential remain open.

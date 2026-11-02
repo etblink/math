@@ -39,9 +39,9 @@ theorem source9CoordinateClifford_anticommute
   have hpolar : QuadraticMap.polar source9Quadratic
       (source9CoordinateVector s) (source9CoordinateVector r) = 0 := by
     rw [source9Quadratic_polar_coordinate]
-    simp [source9CoordinateVector, hrs, Ne.symm hrs]
+    simp [source9CoordinateVector, Ne.symm hrs]
   simpa only [hpolar, map_zero, zero_sub] using
-    (CliffordAlgebra.ι_mul_ι_comm
+    (CliffordAlgebra.ι_mul_ι_comm (Q := source9Quadratic)
       (source9CoordinateVector s) (source9CoordinateVector r))
 
 /-- Exact underlying Clifford expression of the actual source group inverse curve. -/
