@@ -1,0 +1,133 @@
+name: BFSS V10H F10BL exact source half-bivector coordinate action strict gate
+
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean
+      - lean/diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean
+      - .github/workflows/bfss-kotler-v10h-f10bl-source-coordinate-commutator-action-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-source-coordinate-commutator-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin exact source quadratic coordinate ancestry and F10BL declarations
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10bl"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10bl/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BHUnitVectorPairMembership.lean")" = 'f17d83d961055ebf4b00b74dfb35010a51c886d4'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve.lean")" = 'faabd83f813eab9ae2026c5d426f8baed80d33a6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean")" = '92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe.lean")" = 'd80001bbe5052357dbca559232d81cc01c56fb34'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean)" = 'c373443985d1541ed5d9a68bf787c90e7f8d2c1d'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean)" = '1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean').read_text()
+          audit=Path('lean/diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean').read_text()
+          names=["source9Quadratic_polar_coordinate","source9Clifford_pair_commutator_vector","source9CoordinatePlane_mulVec","source9CoordinateBivector_commutator_vector"]
+          for name in names:
+              assert len(re.findall(r'(?m)^theorem '+re.escape(name)+r'\b',s))==1,name
+              assert len(re.findall(r'(?m)^#print axioms '+re.escape(name)+r'[ \t]*$',s))==1,name
+              assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
+          assert s.count('#print axioms ')==len(names)
+          assert audit.count('#print axioms ')==len(names)
+          for text in [s,audit]:
+              code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
+              code=re.sub(r'--[^\n]*','',code)
+              assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              assert 'Source48Label' not in code
+              assert not re.search(r'(?m)^(?:local )?instance\b',code)
+          for token in ['QuadraticMap.polar source9Quadratic','CliffordAlgebra.ι_mul_ι_comm',
+                        '(coordinatePlane9 r s).mulVec z','((1 / 2 : ℝ) •',
+                        'source9CoordinateVector','smul_smul']:
+              assert token in s,token
+          assert 'coordinatePlane9_eq_single_sub_single r s' in audit
+          print('V10H_F10BL_SOURCE_PIN_ACTUAL_SOURCE_VECTOR_COMMUTATOR_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted actual source-coordinate dependencies
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe
+
+      - name: Fresh F10BL source commutator warnings-as-errors compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10bl/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently check exact vector action normalization types and axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 600s lake env lean -DwarningAsError=true diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10bl/declaration-audit.log"
+          cp diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean "$RUNNER_TEMP/v10h-f10bl/independent-audit.lean"
+          cp OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean "$RUNNER_TEMP/v10h-f10bl/candidate-source.lean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["source9Quadratic_polar_coordinate","source9Clifford_pair_commutator_vector","source9CoordinatePlane_mulVec","source9CoordinateBivector_commutator_vector"]}
+          for filename in ['compiler.log','declaration-audit.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10bl'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for n,axs in reports:
+                  assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(n,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10BL_EXACT_SOURCE_COORDINATE_COMMUTATOR_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA compiler and independent F10BL audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10bl-exact-source-coordinate-commutator-action-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10bl
+          if-no-files-found: warn

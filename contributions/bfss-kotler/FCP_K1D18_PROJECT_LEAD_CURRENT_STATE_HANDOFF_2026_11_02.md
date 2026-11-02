@@ -744,3 +744,57 @@ The workflow pins F10BB, F10AV, the exact original-plane definition/matrix-unit 
 **Scope ceiling:** a successful comparison would identify the **target velocity** along each accepted distinct-coordinate-plane source curve with F10BB evaluated on the corresponding canonical matrix label. It would not establish that the source curve's manifold tangent is that `so(9)` element, identify the full source tangent Lie algebra, or prove a global F10BC differential theorem.
 
 **Next action:** inspect F10BK's strict result. If accepted, source-audit the exact Clifford commutator/conjugation action on source nine-vectors as the next possible normalization bridge. Do not silently equate a Clifford bivector, a skew matrix and a manifold tangent vector.
+
+
+### F10BK Gate 1 ACCEPTED — canonical native-plane gamma velocity comparison
+
+**Run:** [#41530621671](https://github.com/etblink/math/actions/runs/41530621671) — terminal green  
+**Exact tested commit:** `6f36df1b0901288d0d755855f468851427424772`  
+**Accepted source blob:** `382e0c369c1455cfd39a7153c9017e6b9b546fd1`  
+**Independent audit blob:** `7c83f0446ed37b935cff96ce27df67acad83fd05`  
+**Job:** `native-source-plane-original-gamma-velocity` (`125569542465`)  
+**Artifact:** `13181798807`; ZIP SHA-256 `4829b0b9a8dce0e7367c4802f2e9e2104ed5d52631b250c458a6a32967740cb8`
+
+Exact pins, pinned dependency restoration, accepted F10BJ/F10BB ancestry rebuild, fresh warnings-as-errors F10BK compilation and independent type/normalization/axiom audit passed. The classifier emitted `V10H_F10BK_EXACT_NATIVE_PLANE_LIEHOM_VELOCITY_TYPES_AXIOMS_PASS`. All four reports in both logs contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+**Accepted inventory:** the construction `source9CoordinatePlaneInSo` and the proofs `coordinateToOriginalGammaSkewLieHom_coordinatePlane_apply`, `source9PlaneCliffordVelocity_gamma_eq_coordinatePlaneLieHom`, and `source9PlaneSpinCurve_gamma_hasDerivAt_coordinatePlaneLieHom`.
+
+**Exact result:** for distinct source labels, the velocity at zero of the exact F10BC gamma-image curve equals the underlying original gamma matrix of F10BB evaluated on the exact canonical `so(9)` plane `F_rs = E_rs - E_sr`. Evaluating the actual Clifford curve velocity through the original gamma algebra hom gives the same matrix. The audit checked the full native plane, with no extra source half factor, and product-topology compatibility.
+
+**Scientific ceiling:** no theorem identifies the source curve's manifold tangent with that matrix plane, identifies the full tangent Lie algebra, or proves a global group-map differential equality. Clifford bivectors, matrix planes and manifold tangent vectors remain distinct interfaces.
+
+**Success lesson:** reuse the accepted coefficient-map evaluation and expose the canonical LieHom's underlying matrix by an explicit carrier bridge. This qualified the positive half-gamma normalization without altering the source plane or re-proving the LieHom.
+
+### F10BL Gate 1 — algebraic source-vector commutator action CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean`  
+**Candidate source blob:** `c373443985d1541ed5d9a68bf787c90e7f8d2c1d`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean`  
+**Audit blob:** `1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bl-source-coordinate-commutator-action-strict.yml`
+
+Targeted pinned-source inspection confirms `QuadraticMap.polar`, its symmetry, the accepted source quadratic/dot-product bridge, and `CliffordAlgebra.ι_mul_ι_comm`. The candidate uses these actual source interfaces, not the gamma image, to test the normalization on source vectors.
+
+Four proof declarations are proposed:
+- `source9Quadratic_polar_coordinate`
+- `source9Clifford_pair_commutator_vector`
+- `source9CoordinatePlane_mulVec`
+- `source9CoordinateBivector_commutator_vector`
+
+The proof sequence is:
+1. Polarization of the actual quadratic form against `e_r` is `2 * z r`.
+2. The commutator of an arbitrary embedded vector pair with an embedded vector is expressed through the actual quadratic polarization.
+3. The literal native matrix plane acts by `F_rs *ᵥ z = (z s) • e_r - (z r) • e_s`.
+4. Hence commutation by `(1/2) • (ι(e_r)*ι(e_s))` gives exactly `ι(F_rs *ᵥ z)`.
+
+The last proposition is an equality inside the actual `CliffordAlgebra source9Quadratic`, quantified over **every** actual nine-coordinate source vector. It includes all source-label pairs as an algebraic identity. In particular, diagonal labels give a vanishing commutator action; this does not extend the previously qualified distinct-plane curve to the diagonal.
+
+The independent audit restates all four exact types and checks the matrix plane is the same full `Matrix.single r s 1 - Matrix.single s r 1` used in F10BK. No gamma replacement, source-label change, special basis-vector-only restriction, manifold tangent assumption, or source-action derivative is smuggled into the conclusions.
+
+This algebraic candidate imports its actual source-coordinate dependencies directly, so the gate rebuilds F10BI and the accepted coordinate matrix-unit bridge without rebuilding F10BB/F10BJ as unnecessary mathematical dependencies. Fresh warnings-as-errors source/audit compilation and exactly four whitelisted axiom reports in each log remain mandatory.
+
+Local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. No local Lean elaboration is claimed; zero F10BL proofs are accepted before the terminal strict result and output review.
+
+**Scope ceiling:** the candidate is an algebraic commutator action calculation. It is not a derivative of the actual group conjugation curve and does not construct a source tangent equivalence, Lie-group atlas or global F10BC differential theorem.
+
+**Next action:** inspect F10BL's strict result. If accepted, source-audit the bounded-bilinear multiplication and inverse-curve calculus required to differentiate the actual source conjugation curve under the already accepted PBW norm. Do not assume a normed-ring multiplication estimate or a manifold tangent identification from a topological-ring theorem.
