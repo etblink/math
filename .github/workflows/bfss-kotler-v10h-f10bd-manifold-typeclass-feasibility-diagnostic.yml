@@ -1,0 +1,94 @@
+name: BFSS V10H F10BD manifold and typeclass feasibility diagnostic
+
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/diagnostics/FCP_K1D18V10HDManifoldTypeclassFeasibilityDiagnostic.lean
+      - .github/workflows/bfss-kotler-v10h-f10bd-manifold-typeclass-feasibility-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manifold-typeclass-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin exact accepted F10BC ancestry and diagnostic source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10bd"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10bd/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom.lean")" = '7798089cb8ac4ec4fffc3ead4caa474def81b3f8'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HDManifoldTypeclassFeasibilityDiagnostic.lean)" = '63dab235efa8cf013b8c791b2a90212003c97f60'
+          echo "V10H_F10BD_PINNED_SOURCE_SCOPE_PASS"
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild exact accepted F10BC source ancestry
+        shell: bash
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 5100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom
+
+      - name: Run isolated manifold and typeclass feasibility diagnostic
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          set +e
+          timeout 780s lake env lean diagnostics/FCP_K1D18V10HDManifoldTypeclassFeasibilityDiagnostic.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10bd/typeclass-diagnostic.log"
+          status=${PIPESTATUS[0]}
+          set -e
+          test "$status" -ne 0
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          p=Path(os.environ["RUNNER_TEMP"])/"v10h-f10bd"/"typeclass-diagnostic.log"
+          s=p.read_text()
+          assert "failed to synthesize" in s, s
+          assert "TopologicalSpace (spinGroup source9Quadratic)" in s, s
+          assert "ChartedSpace" in s, s
+          assert "LieGroup" in s, s
+          assert "Matrix.specialOrthogonalGroup SpinIndex ℝ" in s, s
+          assert "Fin 120" in s, s
+          assert "unknown constant" not in s, s
+          assert "unexpected token" not in s, s
+          assert "ChartedSpace ℝ ℝˣ" not in s, s
+          assert "LieGroup 𝓘(ℝ, ℝ) ∞ ℝˣ" not in s, s
+          print("F10BD_MANIFOLD_TYPECLASS_EXPECTED_GAPS_CONFIRMED")
+          PY
+
+      - name: Preserve exact SHA and typeclass diagnostic output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10bd-manifold-typeclass-feasibility-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10bd
+          if-no-files-found: warn
