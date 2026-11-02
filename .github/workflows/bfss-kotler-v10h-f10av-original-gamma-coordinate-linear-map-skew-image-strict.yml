@@ -1,0 +1,207 @@
+name: BFSS V10H F10AV original gamma coordinate LinearMap and skew image strict gate
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage.lean
+      - .github/workflows/bfss-kotler-v10h-f10av-original-gamma-coordinate-linear-map-skew-image-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-gamma-coordinate-linear-map-skew-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin original gamma F10AU and accepted native source skew-plane ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10av"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10av/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean")" = '3922916e49fc961efa99a72d706ca83ca704e3d6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AJOriginalGammaPairOrthogonalLieSubalgebraBridge.lean")" = '6c11e898dd7b5ed93db833ca0c7b678e6fda6ffe'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AKOriginalGammaOrderedChainLieBracketProbe.lean")" = '96836497816cdcd8caedc6970b1b667866847920'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ALOriginalGammaOrderedForkLieBracketProbe.lean")" = 'f9399a0ebf17b4aabbf889d12fbcb79111d89c45'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AMOriginalGammaOrderedSharedRightLieBracketProbe.lean")" = '00a521b011fe78eb9bf2983dc05e9e109ba0b403'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ANOriginalGammaDisjointPairLieBracketProbe.lean")" = 'a9c96b4840e297b0b79f343d32e3992f50a5ace0'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AOOriginalGammaPairReverseAndSelfLieBrackets.lean")" = '0764c5d8a0aab5bc5e960c5122e6bbeadccb1031'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10APOriginalGammaArbitraryOrientationNativeLieBridge.lean")" = '430611eec059c8119573c50fbcee12901b8457d5'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AQOriginalGammaAnyOrientationForkRightLieBrackets.lean")" = '58e39145e25f1117535bb7da4f5b128b7a7c2f7f'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AROriginalGammaNativeBracketOrientationAndZeroBridge.lean")" = '712f459104e2724793cd58ff62789b9effdf9f13'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ASOriginalGammaTotalTripleNativeLieBrackets.lean")" = 'b2e9158ec9a3661f4bf818953372249c851eccdb'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10ATOriginalGammaAnyOrientationFourthOverlapLieBracket.lean")" = 'a19788b12942af020209dba21c5512f8518e5dc8'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AUOriginalGammaExhaustiveNativePairLieBracket.lean")" = '73746ee6b1f2ad9ec1be11efbba20ca9833a11c6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SkewCoordinatePlaneSpanningProbe.lean")" = '626124eaa4635f64223b48bd6b986a367dc9b40e'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9AntisymmetricPartExpansionProbe.lean")" = '133ae2ada5935a5c1d66bbfd46f225c41173dfce'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9InputSkewMatrixUnitBridgeProbe.lean")" = 'da4020a35b3784a90ce76c03798061993fc6275b'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9LinearMapImageSkewProbe.lean")" = 'd8a75242a843db8b2cb26e62da0f10df9f814ea9'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9LinearMapGeneratorAgreementProbe.lean")" = '549c1d332a2b9de322fad13abc2ec23ec42c966b'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9LinearMapMatrixUnitEvaluationProbe.lean")" = '480a43155cb709cb549a19513ad99183a203afe4'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9TypedLinearMapProbe.lean")" = '3d83bef542ac264faf11506d2484fd656017b8cf'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9FiniteCoefficientScalarProbe.lean")" = 'c37cf40190b965c21da282aba49a37b07907530d'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9FiniteCoefficientLiftProbe.lean")" = 'b2c44f16a5acfb63d78ff8cc5c59c596fd41be0e'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinateUniversalBracketProbe.lean")" = '6d77516897cfbc229652fa779647da95150756c3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneProductExpansionProbe.lean")" = 'da60e25fe1e6f0c5bd29ea6db7754f27394974f5'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinateMatrixUnitProductProbe.lean")" = 'a84879ae64bf8341b403fccb61f33cbd5628cac8'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe.lean")" = 'd80001bbe5052357dbca559232d81cc01c56fb34'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean")" = '92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe.lean")" = '46e02a38f6647458132039bc1f44b0358c9c4f44'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage.lean")" = 'd6c89c147c0c1e4527e9d70412394aebff9b691e'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage.lean').read_text()
+          names=["coordinateToOriginalGammaFiniteLift","coordinateToOriginalGammaLinearMap","coordinateToOriginalGammaLinearMap_apply","coordinateToOriginalGammaLinearMap_matrixUnit","coordinateToOriginalGammaLinearMap_coordinatePlane","coordinateToOriginalGammaLinearMap_coordinatePlane_transpose","coordinateToOriginalGammaLinearMap_image_transpose","coordinateToOriginalGammaLinearMap_image_mem_so"]
+          for n in names:
+              assert len(re.findall(r'(?m)^(?:theorem|noncomputable def) '+re.escape(n)+r'\b',s))==1,n
+              assert s.count('#print axioms '+n)==1,n
+          assert s.count('#print axioms ')==8
+          code=re.sub(r'/\-.*?\-/', '', s, flags=re.S)
+          for term in ['(1 / 4 : ℝ)', '(1 / 2 : ℝ)',
+                       'Matrix.single', 'coordinatePlane9_eq_single_sub_single',
+                       'coordinateSkewMatrix9_plane_spanning',
+                       'source9OriginalGamma_anticommute',
+                       'gamma_symmetric', 'LieAlgebra.Orthogonal.mem_so']:
+              assert term in code,term
+          assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+          print('V10H_F10AV_SOURCE_PIN_AND_NORMALIZATION_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10AU exhaustive original gamma pair ancestry
+        shell: bash
+        timeout-minutes: 70
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 4050s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10AUOriginalGammaExhaustiveNativePairLieBracket
+
+      - name: Rebuild accepted V9F native source skew coordinate-plane spanning ancestry
+        shell: bash
+        timeout-minutes: 70
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 4050s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SkewCoordinatePlaneSpanningProbe
+
+      - name: Fresh F10AV original gamma LinearMap and skew-image warnings-as-errors compile
+        shell: bash
+        timeout-minutes: 18
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 960s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10av/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently elaborate eight exact original gamma map and skew-image declaration types
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          cat > /tmp/V10H_F10AV_IndependentAudit.lean <<'LEAN'
+          import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage
+          open FCP.BFSSPairedSpin9Clifford
+          open FCP.BFSSGamma9
+          open FCP.BFSSPairedSpin9DetFixture
+          open FCP.BFSSPairedSpin9Plane
+          open OAI.BFSSQuantum
+          open Matrix
+          noncomputable example (A : Matrix SpaceIndex SpaceIndex ℝ) :
+              GammaMatrix := coordinateToOriginalGammaFiniteLift A
+          noncomputable example :
+              Matrix SpaceIndex SpaceIndex ℝ →ₗ[ℝ] GammaMatrix :=
+            coordinateToOriginalGammaLinearMap
+          noncomputable example (A : Matrix SpaceIndex SpaceIndex ℝ) :
+              coordinateToOriginalGammaLinearMap A =
+                coordinateToOriginalGammaFiniteLift A :=
+            coordinateToOriginalGammaLinearMap_apply A
+          noncomputable example (r s : SpaceIndex) :
+              coordinateToOriginalGammaLinearMap
+                (Matrix.single r s (1 : ℝ) :
+                  Matrix SpaceIndex SpaceIndex ℝ) =
+                (1 / 4 : ℝ) • (gamma r * gamma s) :=
+            coordinateToOriginalGammaLinearMap_matrixUnit r s
+          noncomputable example (r s : SpaceIndex) :
+              coordinateToOriginalGammaLinearMap (coordinatePlane9 r s) =
+                if hrs : r = s then
+                  (0 : GammaMatrix)
+                else
+                  (1 / 2 : ℝ) • (gamma r * gamma s) :=
+            coordinateToOriginalGammaLinearMap_coordinatePlane r s
+          noncomputable example (r s : SpaceIndex) :
+              (coordinateToOriginalGammaLinearMap (coordinatePlane9 r s)).transpose =
+                -(coordinateToOriginalGammaLinearMap (coordinatePlane9 r s)) :=
+            coordinateToOriginalGammaLinearMap_coordinatePlane_transpose r s
+          noncomputable example (A : Matrix SpaceIndex SpaceIndex ℝ)
+              (hA : A.transpose = -A) :
+              (coordinateToOriginalGammaLinearMap A).transpose =
+                -(coordinateToOriginalGammaLinearMap A) :=
+            coordinateToOriginalGammaLinearMap_image_transpose A hA
+          noncomputable example (A : Matrix SpaceIndex SpaceIndex ℝ)
+              (hA : A.transpose = -A) :
+              coordinateToOriginalGammaLinearMap A ∈
+                LieAlgebra.Orthogonal.so SpinIndex ℝ :=
+            coordinateToOriginalGammaLinearMap_image_mem_so A hA
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaFiniteLift
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaLinearMap
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaLinearMap_apply
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaLinearMap_matrixUnit
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaLinearMap_coordinatePlane
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaLinearMap_coordinatePlane_transpose
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaLinearMap_image_transpose
+          #print axioms FCP.BFSSPairedSpin9Clifford.coordinateToOriginalGammaLinearMap_image_mem_so
+          LEAN
+          timeout 840s lake env lean -DwarningAsError=true /tmp/V10H_F10AV_IndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10av/declaration-audit.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10av'/'declaration-audit.log').read_text()
+          names=["coordinateToOriginalGammaFiniteLift","coordinateToOriginalGammaLinearMap","coordinateToOriginalGammaLinearMap_apply","coordinateToOriginalGammaLinearMap_matrixUnit","coordinateToOriginalGammaLinearMap_coordinatePlane","coordinateToOriginalGammaLinearMap_coordinatePlane_transpose","coordinateToOriginalGammaLinearMap_image_transpose","coordinateToOriginalGammaLinearMap_image_mem_so"]
+          expected={'FCP.BFSSPairedSpin9Clifford.'+n for n in names}
+          reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+          empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+          actual={n for n,_ in reports}|set(empty)
+          assert len(reports)+len(empty)==8 and actual==expected,(reports,empty)
+          for name,axs in reports:
+              assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+          assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10AV_EIGHT_ORIGINAL_GAMMA_LINEAR_MAP_SKEW_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA compiler and eight independent source declaration audits
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10av-original-gamma-linear-map-skew-image-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10av
+          if-no-files-found: warn
