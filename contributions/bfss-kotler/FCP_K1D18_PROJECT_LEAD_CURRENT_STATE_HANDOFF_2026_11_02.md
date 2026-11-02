@@ -303,3 +303,36 @@ Exact source/toolchain pins, pinned dependency restoration, the accepted F10X an
 **Procedural lesson:** a source pin and token-presence check are not a Lean syntax check. Parser-contaminated output is implementation feedback; do not interpret its later errors as mathematical negative evidence. Preserve this red run and require a fresh compiler result before drawing conclusions about the adapter.
 
 **Validation state:** no Lean executable is installed in the editing workspace. Source inspection and static source/pin checks are available locally; actual elaboration remains the isolated CI diagnostic's obligation. The correction is unqualified until that run passes. Even a green diagnostic adds zero formal theorem roots and establishes no multiplication continuity, topological group, manifold, Lie group, or differential comparison.
+
+
+### F10BD2 attempt 3 — PBW-coordinate Hausdorff topology DIAGNOSTIC PASS
+
+**Run:** [#41506887965](https://github.com/etblink/math/actions/runs/41506887965) — terminal green  
+**Exact tested commit:** `11f5fdbf6bead4d9a9a2bd95822a62fe96eef3f6`  
+**Diagnostic source blob:** `2adc47f7faac87c35f3c76a95171eb21b6e5c0ff`  
+**Job:** `source-spin9-pbw-topology` (`125488357590`)  
+**Artifact:** `13171602607`; ZIP SHA-256 `eaee6cb3e18e03aad6648fe1f36a36736c66e23833f3c07f31e855e1b2e51f85`
+
+All exact pins, pinned Lean 4.34.1/Mathlib restoration, accepted F10X ancestry rebuild, fresh warnings-as-errors F10Y compilation, and isolated warnings-as-errors topology compilation passed. The compiler reached `V10H_F10BD2_SOURCE9_PBW_TOPOLOGY_PASS` without parser, type, or synthesis errors. Recurring Lake package-local-change messages remained nonblocking launcher warnings.
+
+**Observed scope:** the explicit PBW/Finsupp-to-Pi coordinate equivalence supports the local induced `NormedAddCommGroup` and `NormedSpace ℝ` structures on exactly `CliffordAlgebra source9Quadratic`. The ambient Hausdorff topology, inherited `TopologicalSpace` and `T2Space` on exactly `spinGroup source9Quadratic`, and standard SO(16) subtype topology/separation all synthesized.
+
+**Acceptance level:** successful isolated construction diagnostic, zero new accepted named theorem roots. No global topology instance was registered. Clifford multiplication continuity, topological-group structure, manifolds, Lie groups, smoothness, and equality of the F10BC differential with F10BB remain unproved. The earlier two red F10BD2 runs and their artifacts remain immutable implementation evidence.
+
+**Success lesson:** explicit codomain conversion followed by valid declaration syntax removed the adapter/harness defects while preserving the exact source carrier and all topology goals. No limits, theorem propositions, or accepted dependencies were weakened.
+
+### Next bounded diagnostic — F10BD3 exact original gamma continuity
+
+The pinned Mathlib source `Mathlib/Topology/Algebra/Module/FiniteDimension.lean` supplies `LinearMap.continuous_of_finiteDimensional` for Hausdorff finite-dimensional real topological vector spaces. The accepted whole-Clifford evaluation `source9GammaCliffordAlgHom` is already an ℝ-algebra homomorphism, hence an ℝ-linear map. F10BC already supplies the exact matrix identity `source9SpinGammaSpecialOrthogonalHom_apply`.
+
+**Candidate:** `lean/diagnostics/FCP_K1D18V10HD3GammaContinuityDiagnostic.lean`  
+**Candidate blob:** `a40a345d01ac3051f5b6ec148b7433a6c7a75b12`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bd3-gamma-continuity-diagnostic.yml`
+
+The diagnostic preserves the accepted F10BD2 topology prelude verbatim; the workflow checks its equality against the pinned authoritative F10BD2 source. It adds a local instance from accepted F10Y finite-dimensionality and checks only:
+1. `Continuous source9GammaCliffordAlgHom` for the chosen PBW-coordinate topology and standard matrix topology.
+2. `Continuous source9SpinGammaSpecialOrthogonalHom`, using an explicit equality of underlying matrix functions before crossing the SO(16) subtype.
+
+This route does not require asserting that the source is already a topological group. Multiplication continuity is a distinct obligation. This remains diagnostic-only and unqualified until CI compiles both examples. Any later named theorem promotion must separately expose the exact chosen structures and pass an independent type/axiom audit.
+
+Local static validation checks the candidate/workflow pins, exact reused topology prelude, required scope tokens, YAML, and unchanged absence of admissions or limit increases. No local Lean executable is available; CI owns elaboration.
