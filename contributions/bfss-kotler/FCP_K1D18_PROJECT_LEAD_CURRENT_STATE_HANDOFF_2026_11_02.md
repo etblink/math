@@ -247,3 +247,17 @@ F10Y already supplies the exact source-nine PBW basis and finite-dimensionality 
 - Run: [#41501881751](https://github.com/etblink/math/actions/runs/41501881751), in progress at handoff update.
 
 A successful F10BD2 result will establish only a chosen Hausdorff topology on the source Spin(9) carrier. It will **not** establish continuity of Clifford multiplication, a topological-group structure, a charted space, a Lie group, or the differential of the F10BC homomorphism. Those remain separate obligations.
+
+
+### F10BD attempt history — failure classification
+
+The first F10BD attempt, [run #41495163096](https://github.com/etblink/math/actions/runs/41495163096), was red on exact commit `96ec97f9de4203d2ec167ae36aceaf725068dc08`. This was a **diagnostic-source syntax/scope defect**, not evidence against the mathematical construction:
+
+- Lean reported `unknownIdentifier: Unknown identifier 𝓘` at the positive-control and LieGroup probe lines, followed by parser errors.
+- The Spin9 topology and SO16 charted-space synthesis failures were also present, but the malformed LieGroup probes made the run's output contaminated; the expected-gap classifier correctly rejected the run because it disallowed unknown identifiers and parser errors.
+- The minimal correction in commit `441ee6485b7d5c09f3214ba7abbeafd2366b7b04` was `open scoped Manifold ContDiff`, which brings the model-with-corners notation into scope. No mathematical statement or theorem was changed.
+- The corrected [run #41496951766](https://github.com/etblink/math/actions/runs/41496951766) then passed the expected-gap classifier with no unknown-identifier or parser errors.
+
+**Failure lesson:** diagnostic harnesses must validate notation/scoped syntax before interpreting downstream typeclass failures. A red compile containing parser/identifier errors is harness feedback, not mathematical negative evidence. Preserve the original red artifact rather than rewriting its history.
+
+First-attempt artifact `13165899252`; ZIP SHA-256 `5ec0a60cfba7bbe943a3af945062e258f51c50cae456aea146dfe57a1b6ec682`. The accepted F10BC ancestry rebuild and pinned Lean/Mathlib restore had already passed before the malformed diagnostic failed.
