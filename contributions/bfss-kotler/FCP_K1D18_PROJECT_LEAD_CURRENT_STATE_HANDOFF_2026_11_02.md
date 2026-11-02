@@ -942,3 +942,54 @@ All actual curve statements require `r ≠ s`. The independent audit reconstruct
 **Scientific ceiling:** even a successful result will be an ordinary real-parameter derivative in the accepted ambient Clifford PBW vector space. It will not construct a source or target Lie-group atlas, identify a source manifold tangent with native `so(9)`, or establish the full global F10BC differential equality.
 
 **Next action:** inspect F10BN's strict result. If accepted, use its actual source action derivative together with F10BK's exact gamma-image velocity comparison to assess the remaining source tangent-identification interface. Do not silently identify a Clifford velocity, a native skew-matrix plane and a manifold tangent vector.
+
+
+### F10BN Gate 1 ACCEPTED — actual source conjugation derivative
+
+**Run:** [#41542519552](https://github.com/etblink/math/actions/runs/41542519552) — terminal green  
+**Exact tested commit:** `52b82a7b3eef287b2e1b2671a4b9350c1c37c7d1`  
+**Accepted source blob:** `4090ad6c9ad58249b5a617245065454baa4fb58a`  
+**Independent audit blob:** `a94269a67a995b25aeea3fc3f8a597e97ef5772a`  
+**Job:** `actual-source-conjugation-derivative` (`125609965111`)  
+**Artifact:** `13188170867`; ZIP SHA-256 `77fd08a8eb3c8bcf6b4fd14c3c1c83801188f0c6084a777f0d1b9ad401dfe7e0`
+
+Exact pins, pinned dependency restoration, accepted F10BM ancestry rebuild, fresh warnings-as-errors source compilation and independent PBW/type/axiom audit passed. The classifier emitted `V10H_F10BN_ACTUAL_CONJUGATION_NATIVE_PLANE_PBW_DERIVATIVE_TYPES_AXIOMS_PASS`. All four root reports in each log contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+The four F10BN proofs are accepted: `realHalfAngleQuadraticVectorCurve_hasDerivAt_zero`, `source9PlaneSpinCurve_conjugation_coe`, `source9PlaneSpinCurve_conjugation_hasDerivAt_zero`, and `source9PlaneSpinCurve_conjugation_vector_hasDerivAt_zero`. Actual source-curve conjugation of every fixed Clifford element has the positive half-bivector commutator velocity. On every embedded actual nine-vector, the derivative is exactly `ι((coordinatePlane9 r s).mulVec z)` for distinct labels.
+
+**Success lesson:** expanding the accepted actual curve and inverse into four fixed vector coefficients reduces the derivative to scalar products, scalar multiplication and addition. Explicit function-equality bridges avoid the earlier pointwise-function simplification issue. No normed-ring multiplication estimate, atlas or extra instance is needed for this route.
+
+**Remaining interface assessment:** F10BN gives an ambient Clifford-valued derivative, while F10BK separately gives the original gamma-image velocity as the canonical LieHom's native-plane image. To put the source action in the original nine-vector carrier, recover the vector canonically and prove its embedding is exact actual conjugation. Neither of these curve facts alone identifies a manifold tangent space. The next bounded step below addresses vector recovery and vector-valued differentiation; a source/target atlas and full tangent identification remain separate.
+
+### F10BO Gate 1 — actual nine-vector conjugation derivative CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean`  
+**Candidate source blob:** `03287d741b05cd4e373f1b5e608d0e6888b63e89`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean`  
+**Audit blob:** `744a1917c34857f40c08aded9f2b1480c7dfe62c`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bo-source-vector-conjugation-derivative-strict.yml`
+
+Targeted pinned-source inspection reuses the following actual Mathlib interfaces:
+- `SpinGroup.lean`: `spinGroup.toUnits` and `spinGroup.conjAct_smul_ι_mem_range_ι`, which prove that actual source Spin conjugation preserves the embedded vector range. The inspected file supplies range invariance, rather than a packaged vector-space action or manifold atlas.
+- `CliffordAlgebra/Contraction.lean`: the accepted real-linear `equivExterior`, `changeForm_ι`, and `changeForm.associated_neg_proof` send the Clifford vector embedding to the exterior vector embedding.
+- `ExteriorAlgebra/Basic.lean`: `ιInv` and `ι_leftInverse` recover the original vector linearly.
+- `FDeriv/Linear.lean` and `Deriv/Comp.lean`: continuous-linear differentiation and `HasFDerivAt.comp_hasDerivAt` transport the accepted F10BN derivative to nine-vectors.
+
+Two constructions and five proofs are proposed:
+- `source9CliffordVectorProjection`: `ExteriorAlgebra.ιInv` composed with the accepted real-linear Clifford/exterior equivalence.
+- `source9CliffordVectorProjection_ι`: this explicit projection is a left inverse of the actual source vector embedding.
+- `source9CliffordVectorProjection_continuous_pbw`: continuity under the accepted named PBW norm and the standard output Pi norm, using accepted finite-dimensionality.
+- `source9Spin_conjugation_mem_range`: actual conjugation lies in the original embedded vector range for every actual source Spin element and every source nine-vector.
+- `source9SpinVectorConjugation`: the recovered nine-vector obtained by applying that explicit projection to actual conjugation.
+- `source9SpinVectorConjugation_ι`: its embedding is literally the actual group conjugation expression, so the projection has not discarded a nonvector component.
+- `source9PlaneSpinCurve_vectorConjugation_hasDerivAt_zero`: on the original nine-coordinate real vector space, this actual conjugation curve has derivative `(coordinatePlane9 r s).mulVec z` at zero for every `z` and every distinct pair.
+
+The derivative uses an explicit continuous-linear-map structure-field bridge (`toLinearMap` and `cont`), an explicit composition-function equality, and the projection/embedding left-inverse theorem. No choice of vector preimages, replacement carrier, multiplicative Clifford/exterior equivalence, normed-ring instance or new topology is assumed. The Clifford/exterior equivalence is used only linearly.
+
+The independent audit reconstructs PBW coordinates and the induced norm/space, checks both constructions by definitional equality, restates all five proof types, and rechecks the full literal native plane `Matrix.single r s 1 - Matrix.single s r 1`. The output remains the original `SpaceIndex → ℝ` with its standard Pi structure. The workflow pins accepted F10BN/F10BM/F10BL/F10BJ and actual source ancestry, rebuilds the F10BN closure once, and requires fresh warnings-as-errors compilation and exactly seven permitted root reports in both source and audit logs.
+
+**Validation state:** local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. Zero F10BO declarations are qualified before terminal strict success and output review. No new axiom, admission, global instance, linter suppression or limit increase is introduced.
+
+**Scientific ceiling:** the candidate constructs and differentiates an exact vector-valued conjugation function. It does not yet package a linear/group/orthogonal homomorphism on nine-vectors, prove global smoothness, construct a Lie-group atlas, identify source or target manifold tangent spaces, or establish the global F10BC differential equality. The actual pinned source `spinGroup source9Quadratic` definition is unchanged.
+
+**Next action:** inspect F10BO's strict result. If accepted, reuse the projection left inverse and exact embedding identity when packaging the nine-vector conjugation laws; assess that interface against F10BK's target velocity before any manifold tangent claim. Preserve the distinction between actual action-curve derivatives and a full Lie-group differential.

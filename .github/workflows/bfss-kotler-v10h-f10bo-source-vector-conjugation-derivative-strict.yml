@@ -1,0 +1,159 @@
+name: BFSS V10H F10BO actual nine-vector conjugation derivative strict gate
+
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean
+      - lean/diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean
+      - .github/workflows/bfss-kotler-v10h-f10bo-source-vector-conjugation-derivative-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-nine-vector-conjugation-derivative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin accepted source conjugation PBW topology and F10BO vector recovery declarations
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10bo"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10bo/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceSpinGammaOrthogonalProbe.lean")" = '3979ea1d3c64e4a3cb82e4baf2c10cbc6b5cb627'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom.lean")" = '7798089cb8ac4ec4fffc3ead4caa474def81b3f8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BHUnitVectorPairMembership.lean)" = 'f17d83d961055ebf4b00b74dfb35010a51c886d4'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BHIndependentAudit.lean)" = '441cca373a4d3ae9ec72277afc5c3339f1af2cf2'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve.lean)" = 'faabd83f813eab9ae2026c5d426f8baed80d33a6'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BIIndependentAudit.lean)" = '119ab4569f0ef663838856ed3611e500a7125c82'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean")" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe.lean")" = '578ddf1505da2ab2848bc88cf709660d941cb8ec'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean)" = '528937bc6f528eed64aea16ecc5eb69c74c2dd99'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean)" = '13186e289439acf51af42c80cb0585f74a6285c2'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean")" = 'bc0d8539c2523fffe2f36ee4b121a1b81a1431be'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean)" = '1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BMInverseSourceCurveDerivative.lean)" = '545581346eaf563b54dcf3c828e43d19c2d1dd23'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BMIndependentAudit.lean)" = '057c3313f16775de85109fd5ca257eef69c04cf8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BNSourceConjugationDerivative.lean)" = '4090ad6c9ad58249b5a617245065454baa4fb58a'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BNIndependentAudit.lean)" = 'a94269a67a995b25aeea3fc3f8a597e97ef5772a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean)" = '03287d741b05cd4e373f1b5e608d0e6888b63e89'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean)" = '744a1917c34857f40c08aded9f2b1480c7dfe62c'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean').read_text()
+          audit=Path('lean/diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean').read_text()
+          names=["source9CliffordVectorProjection","source9CliffordVectorProjection_ι","source9CliffordVectorProjection_continuous_pbw","source9Spin_conjugation_mem_range","source9SpinVectorConjugation","source9SpinVectorConjugation_ι","source9PlaneSpinCurve_vectorConjugation_hasDerivAt_zero"]
+          defs={'source9CliffordVectorProjection','source9SpinVectorConjugation'}
+          for name in names:
+              kind='noncomputable def' if name in defs else 'theorem'
+              assert len(re.findall(r'(?m)^'+kind+' '+re.escape(name)+r'\b',s))==1,name
+              assert len(re.findall(r'(?m)^#print axioms '+re.escape(name)+r'[ \t]*$',s))==1,name
+              assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
+          assert s.count('#print axioms ')==len(names)
+          assert audit.count('#print axioms ')==len(names)
+          for text in [s,audit]:
+              code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
+              code=re.sub(r'--[^\n]*','',code)
+              assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              assert 'Source48Label' not in code and 'NormedRing' not in code
+              assert not re.search(r'(?m)^instance\b|attribute\s+\[instance\]',code)
+          for token in ['source9PBWNormedAddCommGroup','source9PBWNormedSpace',
+                        'source9Clifford_finiteDimensional','(hrs : r ≠ s)','HasDerivAt',
+                        'ExteriorAlgebra.ιInv','CliffordAlgebra.equivExterior source9Quadratic',
+                        'CliffordAlgebra.changeForm.associated_neg_proof (Q := source9Quadratic)',
+                        'ExteriorAlgebra.ι_leftInverse (R := ℝ)',
+                        'spinGroup.conjAct_smul_ι_mem_range_ι','(Q := source9Quadratic)',
+                        'source9PlaneSpinCurve_conjugation_vector_hasDerivAt_zero',
+                        'toLinearMap := source9CliffordVectorProjection',
+                        'cont := source9CliffordVectorProjection_continuous_pbw',
+                        'comp_hasDerivAt','(z : SpaceIndex → ℝ)','((coordinatePlane9 r s).mulVec z) 0']:
+              assert token in s,token
+          assert 'source9PBWCoordinates = auditPBWCoordinates := rfl' in audit
+          assert 'NormedAddCommGroup.induced' in audit and 'NormedSpace.induced' in audit
+          assert 'coordinatePlane9_eq_single_sub_single r s' in audit
+          assert 'example : source9CliffordVectorProjection =' in audit
+          assert 'ExteriorAlgebra.ιInv' in audit and '(z : SpaceIndex → ℝ)' in audit
+          print('V10H_F10BO_SOURCE_PIN_ACTUAL_NINE_VECTOR_CONJUGATION_PBW_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted F10BN actual source conjugation ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BNSourceConjugationDerivative
+
+      - name: Fresh F10BO source-vector conjugation warnings-as-errors compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10bo/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently reconstruct PBW norm and check exact nine-vector conjugation types and axioms
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 600s lake env lean -DwarningAsError=true diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10bo/declaration-audit.log"
+          cp diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean "$RUNNER_TEMP/v10h-f10bo/independent-audit.lean"
+          cp OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean "$RUNNER_TEMP/v10h-f10bo/candidate-source.lean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["source9CliffordVectorProjection","source9CliffordVectorProjection_ι","source9CliffordVectorProjection_continuous_pbw","source9Spin_conjugation_mem_range","source9SpinVectorConjugation","source9SpinVectorConjugation_ι","source9PlaneSpinCurve_vectorConjugation_hasDerivAt_zero"]}
+          for filename in ['compiler.log','declaration-audit.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10bo'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for n,axs in reports:
+                  assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(n,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10BO_ACTUAL_NINE_VECTOR_CONJUGATION_DERIVATIVE_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA compiler and independent F10BO audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10bo-actual-nine-vector-conjugation-derivative-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10bo
+          if-no-files-found: warn
