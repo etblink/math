@@ -69,9 +69,9 @@ theorem source9OriginalGamma_exhaustive_oriented_pair_native_so_bracket
           (0 : LieAlgebra.Orthogonal.so SpinIndex ℝ)
         else
           (2 : ℝ) • source9OriginalGammaDistinctPairInSo a d had
-      else if hbd : b = d then
+      else if _hbd : b = d then
         -((2 : ℝ) • source9OriginalGammaDistinctPairInSo a c hac)
-      else if had : a = d then
+      else if _had : a = d then
         (2 : ℝ) • source9OriginalGammaDistinctPairInSo b c hbc
       else
         (0 : LieAlgebra.Orthogonal.so SpinIndex ℝ) := by
