@@ -102,3 +102,35 @@ Even a green F10BC would establish only a global **algebraic** source-group homo
 F10BC Gate 2 is accepted at [run #41453417697](https://github.com/etblink/math/actions/runs/41453417697), exact tested commit `0504e72d34679fdb0684c5ee29e4d7e7f93ff534`, repaired source blob `7798089cb8ac4ec4fffc3ead4caa474def81b3f8`. Fresh warnings-as-errors compilation and all three independent exact type/root-axiom checks passed. The immutable acceptance record is [F10BC Gate 2 acceptance](FCP_K1D18V10H_F10BC_GATE2_ACCEPTANCE_GLOBAL_ALGEBRAIC_ORIGINAL_GAMMA_SO16_HOM_2026_11_02.md).
 
 The API-audit conclusions and scope ceiling above remain unchanged.
+
+
+## Project Lead succession: post-F10BC exact-interface re-audit (2026-11-02)
+
+**Disposition:** `SOURCE_ONLY_DIFFERENTIAL_BRIDGE_NOT_ESTABLISHED__ABSTRACT_INTEGRATION_PAUSED__NO_NEW_THEOREM_ROOTS`.
+
+This addendum is a source inspection and dependency decision, **not** a Lean-compiled diagnostic or a theorem acceptance. Source baseline is research branch HEAD `b90d268ec65ac68cff96629a9b93032ee6218d7c`, Lean `4.34.1`, and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`. It preserves the F10BB and F10BC acceptance records and all prior red runs.
+
+### Pinned interface facts verified directly
+
+- `Mathlib/LinearAlgebra/CliffordAlgebra/SpinGroup.lean`: `spinGroup Q` is the intersection submonoid `pinGroup Q ⊓ (CliffordAlgebra.even Q).toSubring.toSubmonoid` (lines 291–294). It has a `Group` instance (lines 384–387) and a `toUnits` homomorphism (lines 402–405). These **algebraic** declarations are not a manifold atlas, a smoothness proof, or a tangent-space identification.
+- `Mathlib/LinearAlgebra/UnitaryGroup.lean`: `Matrix.specialOrthogonalGroup n R` is an algebraic submonoid, with its `Group` instance noted at lines 313–325. The group structure alone does not provide the precise needed manifold structure.
+- `Mathlib/Geometry/Manifold/Algebra/LieGroup.lean` (lines 69–77): `LieGroup I n G` requires a specified model with corners, `TopologicalSpace G`, `ChartedSpace H G`, a group, and smooth multiplication and inversion.
+- `Mathlib/Geometry/Manifold/GroupLieAlgebra.lean` (lines 46–56, 89–100): `GroupLieAlgebra I G` is the tangent space at the identity; its bracket uses invariant vector fields. It is **not** definitionally `LieAlgebra.Orthogonal.so _ ℝ`.
+- These source facts reinforce the pre-existing pinned-source API audit: there is no justified direct path from F10BB's canonical `so(9) → so(16)` `LieHom` to a differential equality theorem without source-exact geometric infrastructure. Absence of a particular instance or theorem in the audited files is not a proof of mathematical impossibility.
+
+### Shorter critical path now that F10BC is accepted
+
+F10BC constructs a global **algebraic** map independently of Lie integration. Consequently, a future theorem asserting that its differential equals F10BB does **not** intrinsically require first proving source simply connectedness or an abstract Lie-algebra integration theorem. Those are prerequisites of certain *integration/existence* strategies, **not** of differentiating an already-constructed suitable smooth group map. Differential comparison still needs a precise manifold/tangent formalism and a proof of smoothness (or an independently qualified directional derivative formulation). Do not insert a `LieGroup` or `ChartedSpace` instance without proving its laws.
+
+### Accepted 48-real inventory clarification
+
+The original paired-label global **algebraic** `spinGroup source9Quadratic →* Matrix.specialOrthogonalGroup Source48Label ℝ` map is already qualified as **F10R**: run [#41287580971](https://github.com/etblink/math/actions/runs/41287580971), exact tested SHA `4e79469dae20001d8fcab770b5baae62d50afa22`. Its declaration is `source9SpinOriginalPaired48SpecialOrthogonalHom`. Do not reopen this SO(48) algebraic construction. F10R is **not** a map to `Spin(48)` and establishes no topological lift or physical implementer.
+
+### Bounded next diagnostic and stop rules
+
+1. **Topology/manifold feasibility:** list the exact instances and candidate constructions for the actual source `spinGroup source9Quadratic` subtype and target `Matrix.specialOrthogonalGroup SpinIndex ℝ`. Establish their specified model spaces and charted structures *before* asking for a `GroupLieAlgebra` or `LieGroup` proof. Typeclass elaboration or isolated exact source proofs are required to move beyond this source-only census.
+2. **Tangent/skew correspondence:** if legitimate Lie-group structures are qualified, construct and verify the exact source and target tangent-to-canonical-skew equivalences, with brackets and the original coordinate-plane normalization. Do not silently identify the tangent Lie algebra with `so(9)`.
+3. **Constructive alternative:** if manifold infrastructure proves disproportionate, investigate a *source-exact* one-parameter Spin(9) path for each coordinate plane and a matching SO(16) matrix path. First verify Spin membership, actual source quadratic normalization, and the precise Clifford/gamma image. A path identity or first-order calculation is **not** a global differential theorem without the relevant definitions.
+4. **Stop rule:** if the next test cannot state a source-exact interface or distinguish competing mathematical possibilities, publish no new CI gate. No speculative `#synth` results, guesses about instances, proof-limit increases, new axioms, admitted results, or broad global proof attempts.
+
+**No new Lean declaration has been compiled by this re-audit; no CI run was launched; no additional theorem root is claimed.**
