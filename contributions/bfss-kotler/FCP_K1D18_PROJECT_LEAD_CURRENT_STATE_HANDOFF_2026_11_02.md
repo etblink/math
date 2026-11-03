@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CA**, [run 41632537353](https://github.com/etblink/math/actions/runs/41632537353), tested `e289e2397ec41009a41f13d60190243f55ef5458`. **Current candidate F10CB:** one chosen finite bijection for the 36 native strict pairs, an actual source word ordered by `List.finRange 36`, zero identity, and BZ's full natural-matrix derivative specialized to that word. Seven roots await complete strict CI. The derivative remains the literal ordered plane sum; reindexing to CA, continuity and charts are separate next obligations. Both CA reds, BZ's audit-only red and all prior method/failure histories remain preserved.
+> **Latest accepted mathematical increment is F10CB**, [run 41649415524](https://github.com/etblink/math/actions/runs/41649415524), tested `0ed5c9e8fe4847f50978929e639880daa207764b`. Fresh warnings-as-errors source compilation, independent enumeration/actual-word/exact-derivative audit and all seven root axiom checks passed. One chosen bijection enumerates all 36 original strict pairs; the actual source word follows `List.finRange 36`, and its natural-matrix derivative is the literal ordered native-plane sum. Reindexing into CA's model, continuity, charts and tangent obligations remain open. All earlier red and green histories are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -1895,3 +1895,37 @@ Source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF
 **Independent checks:** exact finite-equivalence type, bijectivity, unique preimage of every original strict pair, literal row/column projections, distinct labels, list length 36, nodup and complete parameter-index coverage, actual Spin-group word type, equality with the literal ordered product of accepted source curves, zero identity, full actual natural-matrix `HasFDerivAt`, literal directional matrix-sum evaluation and independent native matrix-unit normalization. No new instance, norm context, linter suppression, custom limit or replacement carrier is introduced.
 
 **Validation and ceiling:** local source/audit hashes, declaration/scope preflight, YAML, trigger paths, shell syntax and both embedded Python blocks pass. The embedded-Python static check caught and corrected a generated marker-string substitution before publication. Local Lean is unavailable; no CB root is qualified until full strict CI passes. Next reindex the literal finite derivative sum into CA's model (or its upper-coordinate projection), then establish the appropriate continuous linear equivalence. Subgroup charts, source local fiber/kernel control, tangent identifications, determinant/covering statements, full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all earlier red and green evidence.
+
+## F10CB accepted — chosen ordered 36-plane actual source word
+
+**Verified strict result:** [run 41649415524](https://github.com/etblink/math/actions/runs/41649415524), tested `0ed5c9e8fe4847f50978929e639880daa207764b`, attempt 1, job `125963321451`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CA rebuild, fresh warnings-as-errors source compilation, independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CB_ORDERED_STRICT_PLANE_WORD_TYPES_AXIOMS_PASS`. Both fresh Lean phases contain exactly the seven expected fully qualified root reports, each once per phase (fourteen total), all using only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. Exact run metadata, tested SHA, all job steps, decoded log, terminal marker, root multiplicities, axiom whitelist, artifact metadata and candidate blob identities were inspected before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CBOrderedStrictPlaneWord.lean` | `d154844afabdfb7d66e9e3ec72c9b94714a781fa` |
+| `lean/diagnostics/FCP_K1D18V10HF10CBIndependentAudit.lean` | `f03c13f9e692aa404affcac76e4f96c4bf76435b` |
+| `.github/workflows/bfss-kotler-v10h-f10cb-ordered-strict-plane-word-strict.yml` | `75534316835ac34b4a1ca1a6802701f44d29784a` |
+
+All seven qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9StrictPlaneEnumeration`
+2. `source9StrictPlaneEnumeration_bijective`
+3. `source9StrictPlaneEnumeration_ne`
+4. `source9OrderedStrictPlaneWord`
+5. `source9OrderedStrictPlaneWord_zero`
+6. `source9OrderedStrictPlaneWord_matrix_hasFDerivAt_zero`
+7. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_apply`
+
+Retained artifact `13236068551`, `bfss-v10h-f10cb-ordered-strict-plane-word-0ed5c9e8fe4847f50978929e639880daa207764b-1`, 3519 bytes, GitHub-reported ZIP SHA-256 `f3a9709d4870a85e7cbd5023b841f735aae9e1cd6e75928c45c312d99ffb6226`.
+
+**Qualified mathematical content:** a single named chosen bijection `Fin 36 ≃ source9StrictPlaneIndex` enumerates each original increasing spatial pair exactly once. It is not asserted to be lexicographic or a computable label table. The parameter order is explicitly `List.finRange 36`. The word is the actual `spinGroup source9Quadratic` product of accepted source plane curves with their original labels, distinctness proofs and half-angle normalization; at zero it is the actual identity. The entire actual natural nine-matrix image has the full finite-parameter derivative at zero supplied by BZ. Evaluating in any direction gives the literal listed sum of the full native `E_rs - E_sr` planes, without a half factor.
+
+The independent audit checks the exact original strict-pair equivalence type, bijectivity, unique preimages, literal row/column projections, distinct labels, list length 36, nodup, complete parameter-index coverage, actual Spin-group membership, equality to the literal ordered curve product, zero identity, the complete actual matrix `HasFDerivAt` statement, literal directional sum and separate matrix-unit normalization.
+
+**Successful method:** reuse the inspected pinned finite-equivalence API and accepted BV/BZ interfaces with explicit finite parameters and source-label proofs. No additional Clifford norm instances, new structural instances, overloaded operator subtraction, custom limits or linter suppression were needed. This candidate passed on its first strict CI run. Earlier CA and BY failures remain evidence for their specific mechanisms; this green does not retroactively qualify any red run.
+
+**Next bounded plan and ceiling:** define parameter transport through the chosen enumeration, then reindex CB's literal list sum into CA's strict-pair sum using pinned list/finite-sum and equivalence APIs. Prove equality with the underlying matrix of CA's linear model and/or prove that the upper-coordinate projection of the actual derivative is the corresponding parameter transport. Keep the fully typed map/evaluation bridges that succeeded previously. After this algebraic identity, establish the appropriate continuous linear equivalence with the standard finite-dimensional topologies before any inverse-function or chart argument. The derivative into the full ambient 9x9 matrix space is not claimed to be an isomorphism onto all matrices. Source local fiber/kernel control, subgroup charts, tangent Lie-algebra identifications, determinant/covering claims, the full F10BC manifold differential and BFSS physical conclusions remain open. No new mathematical candidate is introduced in this acceptance-only update.
