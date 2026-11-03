@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CF**, [run 41735793415](https://github.com/etblink/math/actions/runs/41735793415), tested `31aa83a26375c40a13dc6decf414c62baab15d5f`. Fresh warnings-as-errors source compilation, independent actual matrix/literal upper-map smoothness/strict-derivative audit and all seven root axiom checks passed. The actual ordered-word upper-coordinate map is smooth at every order and has the literal identity CLM as its strict derivative at zero. CF's initial red, both CE reds and all earlier evidence remain preserved. Parameter-space local inversion, source coverage/local kernel control, subgroup charts and tangent/manifold obligations remain open.
+> **Latest accepted mathematical increment remains F10CF**, [run 41735793415](https://github.com/etblink/math/actions/runs/41735793415), tested `31aa83a26375c40a13dc6decf414c62baab15d5f`. **Current candidate F10CG:** instantiate the strict inverse-function constructor on the actual upper-coordinate map with identity continuous linear equivalence, obtaining a parameter-space open partial homeomorphism with exact forward function, zero in its source/target and both local inverse laws. Seven roots await complete strict CI. Source Spin coverage, source local kernel control, subgroup charts and tangent/manifold obligations remain open. All prior red and green evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2283,3 +2283,38 @@ The independent audit checks the standard parameter/matrix product topologies, o
 **Successful method and repair outcome:** reuse of BV's joint actual vector-action smoothness, typed product pairing, coordinate evaluation and two Pi assembly steps suffices; no new Clifford norm instance or normed-ring estimate is required. The first source rewrite failed only because its hypothesis retained composition syntax. Exposing the explicitly typed beta-reduced lambda before rewriting resolved that failure. All seven statements, the independent audit and strict limits remained unchanged. Explicit argument/function-shape bridges continue to succeed where an unnormalized rewrite does not. No linter suppression, custom proof limit, gamma/carrier replacement or topology change was introduced.
 
 **Next bounded plan and ceiling:** inspect the pinned inverse-function constructor and instantiate the actual upper-coordinate map with its strict literal identity derivative, the identity continuous linear equivalence and standard finite-parameter completeness. Construct a parameter-space local inverse or open partial homeomorphism and independently check its exact forward function, zero source/target neighborhood membership and local inverse identities. This step must not infer that nearby source Spin elements are exhausted by the word image; source local fiber/kernel control and subgroup-chart coverage remain separate obligations. Tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
+
+## F10CG candidate — actual upper-coordinate parameter-space local inverse
+
+**Baseline:** live research branch checked at `0a9d9f3d2f72a4896cf5b132dc1f1fb86768cb7f`, the documentation-only CF acceptance commit. Root AGENTS and current handoff reread; previously checked ancestor instruction files are unchanged at this baseline. Accepted source and independent-audit modules remain unchanged.
+
+**Bounded implementation:** expose CF's strict identity derivative using the explicitly typed identity continuous linear equivalence `ContinuousLinearEquiv.refl ℝ (Fin 36 → ℝ)`. Instantiate the pinned `HasStrictFDerivAt.toOpenPartialHomeomorph` constructor on the exact actual `source9OrderedUpperCoordinateMap`, with that equivalence passed explicitly as `f'`. The resulting object has type `OpenPartialHomeomorph (Fin 36 → ℝ) (Fin 36 → ℝ)`. Prove the complete forward-function equality, zero membership in source and target, and inverse identities with explicit neighborhood membership hypotheses. Use typed function evaluation/congruence and the forward-function equality when transporting the generic inverse laws to the actual map.
+
+**Pinned API inspection:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`:
+- `Analysis/Calculus/InverseFunctionTheorem/FDeriv.lean`, blob `e628f119f19643501a84e461c29575ff1365d511`: complete constructor signature, explicit forward function, invertible strict derivative, `CompleteSpace` domain requirement, source/target membership and forward-function theorem.
+- `Topology/OpenPartialHomeomorph/Defs.lean`, blob `9754374286e46a881a41d0977869a571d2353e79`: open source/target and complete `left_inv`/`right_inv` signatures with membership assumptions.
+- `Topology/OpenPartialHomeomorph/Continuity.lean`, blob `54b56e1b8b657b0417e16ed2e823b6f8aa757f03`: inverse continuity at each target point, used in the independent zero control.
+
+Seven pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrderedUpperCoordinateMap_hasStrictFDerivAt_refl`
+2. `source9OrderedUpperCoordinateLocalHomeomorph`
+3. `source9OrderedUpperCoordinateLocalHomeomorph_coe`
+4. `source9OrderedUpperCoordinateLocalHomeomorph_zero_mem_source`
+5. `source9OrderedUpperCoordinateLocalHomeomorph_zero_mem_target`
+6. `source9OrderedUpperCoordinateLocalHomeomorph_left_inv`
+7. `source9OrderedUpperCoordinateLocalHomeomorph_right_inv`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CGUpperCoordinateLocalInverse.lean` | `0d4ff0b02af7fc5e007b2943f03c72300720aafd` |
+| `lean/diagnostics/FCP_K1D18V10HF10CGIndependentAudit.lean` | `1c3e79574861ab27f1564d648bc6e81ac20b51ed` |
+| `.github/workflows/bfss-kotler-v10h-f10cg-upper-coordinate-local-inverse-strict.yml` | `f3a53ccada95bc77923e3a5e6456a36df6d0ebb7` |
+
+**Independent audit:** standard parameter product topology, actual `CompleteSpace (Fin 36 → ℝ)`, literal equality of the coerced identity continuous equivalence and identity CLM, exact strict-derivative interface, complete open-partial-homeomorphism type, actual forward-function equality, zero in both source/target and both sets as zero neighborhoods, inverse continuity at zero, local left/right inverse laws and inverse value zero. The accepted typed projection API proves a named equality with the completely expanded actual upper-entry function. It then checks every forward matrix entry, the literal actual-function left inverse, and each literal actual matrix entry of the right inverse. These checks preserve the original source word and native spatial labels and impose the required source/target membership conditions.
+
+**Verification discipline:** retain accepted ancestry pins through CF, including its repaired source and unchanged audit; rebuild CF, then compile CG and its independent audit freshly with warnings-as-errors. Require exactly seven expected permitted root reports in each phase, unchanged three-axiom whitelist and 840/600-second caps. The legacy conditional-alias guard remains active. No new instance, norm/topology, source/gamma replacement, linter suppression or custom proof limit is introduced. Local exact hashes, declaration/scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. Local Lean is unavailable; all seven CG roots remain candidates until complete strict CI succeeds.
+
+**Next action and ceiling:** inspect both fresh Lean phases before qualification. If accepted, inspect the same pinned inverse-function API for inverse regularity and derivative, and derive local parameter injectivity of the actual source word only on the established parameter neighborhood. Do not identify this parameter-space local inverse with a source Spin chart: exhaustion of nearby source Spin elements and source local fiber/kernel control remain independent obligations. Subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all previous negative evidence.
