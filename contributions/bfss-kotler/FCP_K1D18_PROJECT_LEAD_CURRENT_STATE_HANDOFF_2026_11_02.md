@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified state (F10BV):** [run 41576849333](https://github.com/etblink/math/actions/runs/41576849333) accepted at `8bdc6c513439d825b8010f05c97a59c4dcb390b9`: every finite ordered actual source plane word is smooth as a PBW Clifford-valued parameterization, and its actual nine-vector action is jointly smooth in parameters and vector. **Current candidate (F10BW):** full ambient Clifford-valued derivative of that word at zero, as the literal sum of coordinate half-bivector maps; pending strict CI. The [chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) remains a frozen baseline; acceptance and failure provenance are appended below.
+> **Latest verified mathematical baseline (F10BV):** [run 41576849333](https://github.com/etblink/math/actions/runs/41576849333), exact `8bdc6c513439d825b8010f05c97a59c4dcb390b9`. **Current F10BW repair:** [run 41578446550](https://github.com/etblink/math/actions/runs/41578446550) failed on an untyped coordinate-projection derivative application and a deprecated addition lemma. The projection now has an explicit real continuous-linear-map type and derivative bridge; the current `add_apply` replaces the deprecated alias. Statements and independent audit are unchanged; full ambient word-derivative qualification remains pending. Historical evidence and the latest diagnosis are appended below.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1506,3 +1506,28 @@ The independent audit reconstructs the accepted PBW coordinates/norm, restates t
 **Workflow/validation:** pin compatible BF/BG/BT/BU/BV, exact original source/PBW and BI/BJ curve source/audits, plus the candidate blobs. Rebuild combined BV ancestry, freshly compile BW and its independent audit with warnings-as-errors, require exactly six permitted root reports per log, and retain 840/600-second compiler/audit caps. Local exact hashes, source/audit preflight, YAML, shell syntax and embedded Python checks pass. No local Lean executable is available, so elaboration and independent mathematical acceptance remain pending CI.
 
 **Scientific ceiling and next action:** this is a full derivative of an ambient Clifford-valued parameterization. It is not yet the full derivative of the actual nine-vector action, a 36-dimensional model-space isomorphism, a source tangent equivalence, an atlas/local inverse or the full F10BC manifold differential. Inspect BW's exact strict result first. If accepted, transport the derivative through the actual action and recover the full native coordinate-plane sum before selecting a 36-plane order or invoking an inverse-function theorem. Preserve all prior red histories, including the scoped-notation and cross-branch local-instance collisions.
+
+## F10BW red diagnosis and explicit projection-type bridge
+
+**Rejected attempt:** [run 41578446550](https://github.com/etblink/math/actions/runs/41578446550), tested commit `a0ca8ff2095fb030a8a30ad868586bacc24045c6`, job `125727391898`, completed/failure. Pins, pinned dependency restoration and combined BV ancestry rebuild succeeded. Fresh BW compilation failed; the independent audit was skipped. Evidence artifact `13205078298`, ZIP SHA-256 `2904344cb9b5061324f97b38deebeab8aa6b026083d906c70803ce855050ed81`.
+
+Two exact source diagnostics:
+
+1. Line 51, column 20: `Application type mismatch` at `(ContinuousLinearMap.proj i).hasFDerivAt`. The untyped generic projection retained metavariables for the scalar, coordinate family and instances; its inferred product-space presentation did not unify with the expected real normed finite-Pi-domain derivative application. The explicitly typed projection in the velocity definition itself elaborated. This is an elaboration/type bridge failure, not evidence that the chosen topologies are mathematically different.
+2. Line 71, column 47: `ContinuousLinearMap.add_apply` is deprecated; the compiler directs consumers to `add_apply`. Warnings-as-errors correctly rejected the alias.
+
+The single-plane derivative root and its dependent full-word `HasFDerivAt` and `fderiv` roots reported `sorryAx` from compiler-error placeholders. Three other root reports contained only the permitted axioms, but the failed terminal compiler and skipped independent audit qualify no BW result. No admission was written into the source.
+
+**Bounded repair:** in the single-plane derivative proof, declare
+`P : (Fin k → ℝ) →L[ℝ] ℝ := ContinuousLinearMap.proj i`,
+then explicitly prove
+`hP : HasFDerivAt (fun t : Fin k → ℝ => t i) P (0 : Fin k → ℝ)`
+using `P.hasFDerivAt`. Compose accepted BJ's derivative with this typed bridge. Replace only the deprecated addition alias with the current unqualified `add_apply`. The finite-word induction and its explicit bilinear derivative/identity bridges remain the same.
+
+**Exact repaired source blob:** `6a67d6fb7a1d01f5d0045adb8a6edb3747d0ee70`. Independent audit unchanged: `0d0692e7920f20bc126789ffc767c2d86bf74da3`. All six declaration names, complete proposition statements, source/PBW carriers, norm values and local-instance registrations are unchanged. No new hypothesis, norm bound, global instance, limit increase or linter suppression is introduced.
+
+The workflow updates the candidate source pin, requires the typed `P`/`hP` bridge and current addition lemma, and rejects the deprecated alias. It retains the same fresh warnings-as-errors source/audit compilation, exact six-root reports, three-axiom whitelist and 840/600-second caps.
+
+**Validation/lesson:** local source hash, unchanged audit hash, complete source/audit preflight, YAML parsing, all shell syntax and embedded Python checks pass. No local Lean executable is available, so elaboration and independent acceptance remain pending the next strict run. For generic continuous-linear maps, fix the scalar, domain and codomain before invoking derivative fields; importing a suitable theorem alone need not solve its instance metavariables. Compiler-directed deprecation repairs should use the current lemma while keeping warning strictness intact.
+
+**Next action/scientific ceiling:** rerun the exact repaired six-root gate and inspect source plus independent audit before qualification. BV remains the latest accepted mathematical increment. BW still asserts only the full ambient Clifford-valued parameter derivative at zero; the actual-action derivative, native 36-plane model isomorphism, source/target charts, tangent identifications and full F10BC manifold differential remain open. Preserve this failure alongside the earlier scoped-notation and local-instance composition evidence.

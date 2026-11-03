@@ -47,8 +47,11 @@ theorem source9PlaneParameterCurve_hasFDerivAt_zero {k : ℕ}
       (fun t : Fin k → ℝ =>
         ((source9PlaneSpinCurve r s hrs (t i)) : CliffordAlgebra source9Quadratic))
       (source9PlaneParameterVelocity r s i) 0 := by
+  let P : (Fin k → ℝ) →L[ℝ] ℝ := ContinuousLinearMap.proj i
+  have hP : HasFDerivAt (fun t : Fin k → ℝ => t i) P (0 : Fin k → ℝ) :=
+    P.hasFDerivAt
   exact (source9PlaneSpinCurve_coe_hasDerivAt_zero r s hrs).hasFDerivAt.comp
-    (0 : Fin k → ℝ) (ContinuousLinearMap.proj i).hasFDerivAt
+    (0 : Fin k → ℝ) hP
 
 /-- The full linear candidate derivative sums the listed coordinate half-bivector maps. -/
 noncomputable def source9PlaneSpinWordVelocity {k : ℕ}
@@ -68,7 +71,7 @@ theorem source9PlaneSpinWordVelocity_apply {k : ℕ}
   induction l with
   | nil => rfl
   | cons i l ih =>
-      simp only [source9PlaneSpinWordVelocity, ContinuousLinearMap.add_apply,
+      simp only [source9PlaneSpinWordVelocity, add_apply,
         List.map_cons, List.sum_cons]
       change v i • ((1 / 2 : ℝ) •
         (CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (r i)) *

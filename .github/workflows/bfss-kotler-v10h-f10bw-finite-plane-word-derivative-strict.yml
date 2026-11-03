@@ -52,7 +52,7 @@ jobs:
           
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean")" = '528937bc6f528eed64aea16ecc5eb69c74c2dd99'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean)" = '13186e289439acf51af42c80cb0585f74a6285c2'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BWFinitePlaneWordDerivative.lean)" = 'd8ec57fa4e6ac8674cfc864ad8219feef37dfec9'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BWFinitePlaneWordDerivative.lean)" = '6a67d6fb7a1d01f5d0045adb8a6edb3747d0ee70'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BWIndependentAudit.lean)" = '0d0692e7920f20bc126789ffc767c2d86bf74da3'
           python3 - <<'PY'
           from pathlib import Path
@@ -66,6 +66,7 @@ jobs:
               assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
           assert s.count('#print axioms ')==len(names)
           assert audit.count('#print axioms ')==len(names)
+          assert 'ContinuousLinearMap.add_apply' not in s
           assert not re.search(r'(?m)^local instance\s*:',s)
           for cls in ['NormedAddCommGroup','NormedSpace']:
               assert re.search(r'local instance f10bwLocal'+cls+r'\s*:\s*'+cls,s),cls
@@ -79,6 +80,9 @@ jobs:
                         'ContinuousLinearMap.toSpanSingleton ℝ',
                         '(ContinuousLinearMap.proj i : (Fin k → ℝ) →L[ℝ] ℝ)',
                         '(source9PlaneSpinCurve_coe_hasDerivAt_zero r s hrs).hasFDerivAt.comp',
+              'let P : (Fin k → ℝ) →L[ℝ] ℝ := ContinuousLinearMap.proj i',
+              'have hP : HasFDerivAt (fun t : Fin k → ℝ => t i) P (0 : Fin k → ℝ)',
+              '(0 : Fin k → ℝ) hP','source9PlaneSpinWordVelocity, add_apply',
                         '| i :: l => source9PlaneParameterVelocity (r i) (s i) i +',
                         'List.map_cons, List.sum_cons','(hrs : ∀ i, r i ≠ s i)',
                         'hasFDerivAt_const (1 : CliffordAlgebra source9Quadratic) (0 : Fin k → ℝ)',
