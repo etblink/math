@@ -1226,3 +1226,49 @@ Only that anonymous audit proof term changes. Its concrete transpose-orthogonali
 **Failure lesson:** inspect the full declaration type before using theorem field notation. Parentheses resolve term parsing; they do not instantiate explicit parameters. Fully specialize a parameterized iff theorem before `.mp`, using an explicit matrix type when auditing a concrete carrier. Preserve rewrite-tactic and direct-proof-term argument conventions as distinct interfaces.
 
 **Validation state:** local source/audit hashes, unchanged mathematical source and audit control types, exact one-control proof-term edit, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. The unchanged strict gate must freshly compile the same source and fully specialized independent audit before F10BR acceptance. Determinant-one membership and manifold differential obligations remain open.
+
+
+### F10BR Gate 3 ACCEPTED — actual original-nine-vector orthogonal homomorphism
+
+**Run:** [#41558027343](https://github.com/etblink/math/actions/runs/41558027343) — terminal green  
+**Exact tested commit:** `c842d6bcbea24310011237c58611af675fbab520`  
+**Accepted mathematical source blob:** `8aa718eba564ae945e618aefbee9329f952256f0`  
+**Independent audit blob:** `2795a632293658d2fad33e5c0444c7ea0a6f8ff0`  
+**Job:** `actual-source-nine-vector-orthogonal-hom` (`125661573607`)  
+**Artifact:** `13195756711`; ZIP SHA-256 `e47bb97e322145d4c6ddd01620e1f2ba4b2dc829cbb42ba32ddc04f7c06d88fd`
+
+Exact pins, pinned dependency restoration, accepted F10BQ ancestry rebuild, fresh warnings-as-errors source compilation and complete independent matrix-coordinate/action/orthogonality/homomorphism/derivative/axiom audit passed. The classifier emitted `V10H_F10BR_ACTUAL_NINE_VECTOR_ORTHOGONAL_HOM_TYPES_AXIOMS_PASS`. All six root reports in each log contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+The two constructions `source9SpinVectorMatrixHom` and `source9SpinVectorOrthogonalHom`, and all four associated proofs, are accepted. The actual source `spinGroup source9Quadratic` now has a genuine global algebraic homomorphism into the native `Matrix.orthogonalGroup SpaceIndex ℝ`, acting exactly by the accepted original-nine-vector conjugation. The independent audit verified literal column ordering, full all-vector action, the concrete transpose identity, homomorphism laws, exact Clifford embedding and the accepted derivative after application to every vector.
+
+**Success lesson:** fully apply the existing orthogonality iff theorem to its explicit index, scalar and exact matrix before projecting `.mp`. Parenthesizing alone does not supply explicit parameters. The mathematical source was unchanged across all three attempts; both prior red runs and the incomplete first repair remain recorded above. Complete independent qualification is now established rather than inferred from clean source compilation alone.
+
+**Scope ceiling:** O(9) membership and the algebraic homomorphism are qualified. Determinant-one membership, the group kernel, surjectivity/covering, global continuity/smoothness and a manifold differential remain separate obligations.
+
+### F10BS Gate 1 — whole original-nine matrix curve velocity CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BSSourceMatrixCurveVelocity.lean`  
+**Candidate source blob:** `d06ba831accab10dc09b6f150a7b0c0d9a7a4072`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BSIndependentAudit.lean`  
+**Audit blob:** `fde386d80e3a219dbc696bb20bc3617f6370b244`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bs-source-matrix-curve-velocity-strict.yml`
+
+**Route assessment:** inspected F10Q's determinant-one proof. It concerns `gammaDetDirectHom` and uses the separately qualified F10P positivity theorem for that original gamma determinant character. No equality between that character and the new nine-vector matrix determinant has been proved, so it cannot establish determinant one for F10BR. That remains a distinct source-action obligation. The next bounded result instead completes the whole source-action matrix velocity from the already qualified vector-valued derivative.
+
+Pinned `Mathlib/Analysis/Calculus/Deriv/Prod.lean` supplies `hasDerivAt_pi` with implicit family/function/derivative/point parameters. It is applied to a typed existing vector derivative and twice to the typed matrix derivative goal. Pinned `Mathlib/Analysis/Matrix/Normed.lean` defines the scoped elementwise matrix norm through the corresponding Pi normed structures. Reuse the accepted F10BJ/F10BK scope and product-topology audit pattern; register no global normed instance.
+
+Two proofs are proposed:
+- `source9PlaneSpinCurve_vectorMatrix_entry_hasDerivAt_zero`: each literal nine-by-nine matrix entry of the actual source plane curve has derivative `coordinatePlane9 r s i j` at zero.
+- `source9PlaneSpinCurve_vectorOrthogonalMatrix_hasDerivAt_zero`: the entire underlying matrix of the actual O(9) image curve has derivative exactly `coordinatePlane9 r s` at zero.
+
+The entry proof uses F10BO's actual vector-conjugation derivative on the original column `source9CoordinateVector j`, the forward Pi criterion, and an explicit equality with F10BR's literal matrix-entry evaluation. The derivative coordinate is reduced using `dotProduct_single` and multiplication by one. The whole-matrix proof assembles all rows and columns using the existing Pi criterion twice. Every curve theorem retains `r ≠ s`; no diagonal source curve is introduced.
+
+The mathematical source uses only the original-nine matrix target. The independent audit separately imports accepted F10BK. It restates both exact derivative types, checks the standard elementwise source-matrix and original-gamma product topologies against their pre-scope values, and rechecks the literal full native plane `E_rs - E_sr` in the canonical `so SpaceIndex ℝ` carrier. A joint control checks the same exact source curve has native-plane matrix velocity under F10BR and canonical LieHom-image velocity under F10BC/F10BK. No extra source half factor or replacement input plane is used.
+
+The workflow combines the accepted F10BR ancestry pins with F10BK/F10BB/F10AV and the exact native-plane carrier/matrix-unit pins. It rebuilds the F10BR and F10BK closures together once, freshly compiles the candidate and independent audit with warnings-as-errors, and requires exactly two permitted root reports per log. The source/audit time caps and whitelist are unchanged.
+
+**Validation state:** local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. Zero F10BS proofs are qualified before terminal strict success and output review. No new axiom, admission, global instance, linter suppression or limit increase is introduced.
+
+**Scientific ceiling:** these are ordinary derivatives of underlying matrix curves. The joint comparison does not identify a full source manifold tangent space, construct source or target Lie-group charts, prove global smoothness, establish determinant one for F10BR, classify a kernel/covering, or prove the full F10BC manifold differential equality.
+
+**Next action:** inspect F10BS's strict result. If accepted, consolidate the source-side and gamma-side coordinate-curve differential data into a source-exact chart/tangent work plan. Formulate the actual missing geometric construction and its prerequisites; keep the new determinant-one obligation separately tracked. A topological group, a family of differentiable coordinate curves and an algebraic homomorphism do not by themselves supply a Lie-group atlas or full tangent identification.
