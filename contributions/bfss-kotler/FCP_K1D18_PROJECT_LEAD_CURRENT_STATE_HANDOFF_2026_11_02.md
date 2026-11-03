@@ -1113,3 +1113,51 @@ The workflow pins accepted F10BP/F10BO/F10BN/F10BM/F10BL/F10BJ and actual source
 **Scientific ceiling:** the candidate preserves the actual positive source quadratic form and packages individual isometric equivalences. It does not yet construct an orthogonal matrix homomorphism, prove determinant-one membership, classify the group kernel, prove surjectivity/covering or global smoothness, construct an atlas, or identify the full F10BC manifold differential.
 
 **Next action:** inspect F10BQ's strict result. If accepted, source-audit the existing finite-coordinate linear-map-to-matrix and orthogonal-group interfaces to package the same actual nine-vector representation. Keep determinant-one membership and manifold tangent identification as separately proved obligations.
+
+
+### F10BQ Gate 1 ACCEPTED — actual source quadratic preservation and isometric equivalence
+
+**Run:** [#41551925679](https://github.com/etblink/math/actions/runs/41551925679) — terminal green  
+**Exact tested commit:** `a9bad2a088b862c017d08e8ddf32d6840b609e51`  
+**Accepted source blob:** `cc78661038f8a9685f9e3eef397941ee90d39ca2`  
+**Independent audit blob:** `81a86e36de23f922eb9aafac7f2cafd82f921340`  
+**Job:** `actual-source-quadratic-preservation-isometry` (`125641371373`)  
+**Artifact:** `13192128928`; ZIP SHA-256 `fe6253e23f26c91e45fceb95855e108ba3bffa8d30fd08b99439053f170b63e6`
+
+Exact pins, pinned dependency restoration, accepted F10BP ancestry rebuild, fresh warnings-as-errors source compilation and independent exact-type/scalar-faithfulness/isometry/inverse/composition/derivative/axiom audit passed. The classifier emitted `V10H_F10BQ_ACTUAL_QUADRATIC_PRESERVATION_ISOMETRY_TYPES_AXIOMS_PASS`. Both root reports in each log contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+The theorem `source9SpinVectorRepresentation_preserves_quadratic` and construction `source9SpinVectorQuadraticIsometryEquiv` are accepted. Every actual source Spin element preserves the actual original-nine-vector quadratic form. The isometric equivalence evaluates by the accepted representation at `g`, with explicit inverse at `g⁻¹`. The independent audit checked the dot-product form, exact Clifford conjugation, identity, composition convention and accepted plane-curve derivative through the interface.
+
+**Success lesson:** the Clifford square law plus the actual group inverse identities reduces preservation to a central real scalar; faithful scalar embedding in the actual Clifford algebra closes the real equality. Existing Representation inverse identities fill the exact quadratic-isometry structure fields. No topology, replacement carrier, unproved scalar-faithfulness hypothesis or custom group instance was needed.
+
+**Scope ceiling:** an isometric-equivalence family is qualified. An orthogonal matrix homomorphism, determinant-one membership, group-kernel classification, smoothness and a full manifold differential remain separate.
+
+### F10BR Gate 1 — actual original-nine-vector orthogonal homomorphism CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BRSourceVectorOrthogonalHom.lean`  
+**Candidate source blob:** `8aa718eba564ae945e618aefbee9329f952256f0`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BRIndependentAudit.lean`  
+**Audit blob:** `563518d39305ef2e2f72b21497e7eebfe2e9ffff`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10br-source-vector-orthogonal-hom-strict.yml`
+
+Targeted pinned-source inspection reuses `Mathlib/LinearAlgebra/Matrix/ToLin.lean`'s canonical `LinearMap.toMatrixAlgEquiv'`, literal column evaluation and `LinearMap.toMatrix'_mulVec`. `Mathlib/LinearAlgebra/UnitaryGroup.lean` supplies the actual `Matrix.orthogonalGroup SpaceIndex ℝ` and the exact `mem_orthogonalGroup_iff'` criterion `A.transpose * A = 1`. The existing source Spin-to-gamma O(16) implementation provides a qualified subtype/group-law packaging pattern; the new mathematical output carrier is the original nine-vector action matrix.
+
+Two constructions and four proofs are proposed:
+- `source9SpinVectorRepresentation_preserves_dotProduct`: all-vector dot-product preservation, derived by polarizing accepted quadratic preservation with the representation's actual additivity.
+- `source9SpinVectorMatrixHom`: the canonical matrix monoid homomorphism of the accepted nine-vector representation, through the existing matrix algebra equivalence.
+- `source9SpinVectorMatrixHom_mulVec`: matrix multiplication on every original vector is exactly the accepted representation's value.
+- `source9SpinVectorMatrixHom_mem_orthogonalGroup`: the exact original-nine matrix is orthogonal, by its column Gram matrix.
+- `source9SpinVectorOrthogonalHom`: the global algebraic homomorphism `spinGroup source9Quadratic →* Matrix.orthogonalGroup SpaceIndex ℝ`.
+- `source9SpinVectorOrthogonalHom_mulVec`: the bundled orthogonal homomorphism still evaluates as literal actual nine-vector conjugation.
+
+The dot-product proof compares quadratic preservation for `z`, `w` and `z+w`, uses actual map additivity and dot-product symmetry, then cancels the two real cross terms. The matrix equivalence uses `Pi.single j 1` as column `j`. Orthogonality is checked on every original coordinate pair, with no source-label reorder, new normalization or basis substitute. Explicit canonical matrix/linear-map carrier bridges precede the subtype group-law packaging.
+
+The independent audit checks exact matrix entries and column ordering by definitional equality, exact action on every vector, the concrete transpose identity, the full native O(9) homomorphism type and both homomorphism laws. It verifies that embedding the matrix action gives the exact actual Clifford conjugation expression. It also rechecks the accepted distinct-plane derivative after applying the matrix to every vector. This is a vector-valued derivative control; no whole-matrix manifold differential is asserted.
+
+The workflow pins accepted F10BQ/F10BP/F10BO/F10BN/F10BM/F10BL/F10BJ and actual source ancestry, rebuilds the F10BQ closure once, freshly compiles the candidate and independent audit with warnings-as-errors, and requires exactly six permitted root reports per log. Leaf source/audit scope checks prohibit the alternate `SpinIndex`/`GammaMatrix` target. No new norm, topology, global instance, axiom, admission, linter suppression or limit increase is introduced.
+
+**Validation state:** local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. Zero F10BR declarations are qualified before terminal strict success and output review.
+
+**Scientific ceiling:** the proposed target is O(9) on the original source vectors. Determinant-one membership, the group kernel, surjectivity/covering, continuity/smoothness of the full homomorphism, manifold charts and the full F10BC differential are not proved here. F10BC's original gamma SO(16) homomorphism and F10BK's target-velocity comparison remain separately accepted; this gate supplies the source-side natural nine-vector action.
+
+**Next action:** inspect F10BR's strict result. If accepted, source-audit the remaining determinant and matrix-curve-velocity interfaces against the source chart/tangent obligations. Do not infer determinant one or a Lie-group structure from an algebraic orthogonal homomorphism, or infer source connectedness from a topological-group theorem.
