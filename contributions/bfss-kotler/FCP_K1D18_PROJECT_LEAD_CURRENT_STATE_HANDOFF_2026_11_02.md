@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified state (F10BU plus BF/BG/BT requalification):** all four strict runs accepted at `1429369557b52487c8d5b02831144852233a9407`. The actual source-vector action has a jointly smooth ambient extension under the unchanged named PBW norm; the renamed ancestor variants also passed their original independent audits. **Current candidate (F10BV):** ambient smoothness of finite ordered words in actual plane Spin curves and joint smoothness of their actual vector action. No F10BV qualification before strict CI. The [chart/tangent plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) remains the frozen baseline; current acceptance and failure evidence are recorded below.
+> **Latest verified state (F10BV):** [run 41576849333](https://github.com/etblink/math/actions/runs/41576849333) accepted at `8bdc6c513439d825b8010f05c97a59c4dcb390b9`: every finite ordered actual source plane word is smooth as a PBW Clifford-valued parameterization, and its actual nine-vector action is jointly smooth in parameters and vector. **Current candidate (F10BW):** full ambient Clifford-valued derivative of that word at zero, as the literal sum of coordinate half-bivector maps; pending strict CI. The [chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) remains a frozen baseline; acceptance and failure provenance are appended below.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1463,3 +1463,46 @@ The independent audit reconstructs the exact accepted PBW coordinates/norm, rest
 The workflow pins accepted compatible BF/BG/BT/BU, original source/PBW and plane-curve source/audit blobs; rebuilds combined BU ancestry once; freshly compiles the six-root candidate and independent audit with warnings-as-errors; and enforces exactly six permitted root reports per log. The compiler/audit caps remain 840/600 seconds. Local hashes, declaration/scope preflight, YAML, shell syntax and embedded Python checks pass; no local Lean executable is available. Lean elaboration and independent mathematical checks await strict CI.
 
 **Scientific ceiling and next action:** ordinary smoothness of an actual parameterized word and its actual action does not make the word a chart. The chosen 36-plane order, full derivative and its model-space isomorphism, inverse-function theorem, actual source neighborhood/fiber control, subgroup atlases, tangent Lie-algebra identifications and full F10BC differential remain open. Inspect BV's strict result before qualifying any root. If accepted, qualify a source-exact full derivative of the finite-word action at zero and its canonical native-plane normalization before attempting a local inverse.
+
+## F10BV accepted — smooth finite ordered actual plane words and vector action
+
+**Verified strict result:** [run 41576849333](https://github.com/etblink/math/actions/runs/41576849333), exact tested commit `8bdc6c513439d825b8010f05c97a59c4dcb390b9`, job `125722239464`, completed/success with all required steps successful. The actual terminal marker is `V10H_F10BV_EXACT_ORDERED_ACTUAL_SPIN_WORD_SMOOTHNESS_TYPES_AXIOMS_PASS`. Fresh compilation and independent audit each produced exactly six expected root reports, all using only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx` or source-level warning/error appears in those phases.
+
+Accepted source blob `1c0f3ddfc4fba9e28be411a4fd241e36398095a9`; audit `54d3a22f75892e7a98d3f0986e3544b57d82a54e`; workflow `1f22e63630f23ee19c15a0e83346e549b6132854`. Evidence artifact `13204551822`, ZIP SHA-256 `9086948c116076a21a1e419fa46f4f58b18800992fb7d571a75e3eb835540955`.
+
+**Qualified increment:** the entire actual source coordinate-plane curve is every-order smooth in the accepted ambient PBW space. For any finite family of distinct source-coordinate pairs, arbitrary ordered list of parameter indices and finite real parameter vector, `source9PlaneSpinWord` lies in the actual source Spin group, equals its literal ordered list product, and is the identity at the zero parameter. Its underlying Clifford-valued map is jointly every-order smooth in all parameters; its actual nine-vector action is jointly every-order smooth in parameters and vector. Empty words, exact two-factor order and the actual inverse-coercion action formula are checked independently.
+
+The proof reuses the qualified half-angle formula, finite-coordinate evaluation, BT multiplication and BU's exact ambient/action equality. Explicit function-equality bridges and unique local-instance names compose successfully. No source/target atlas or local inverse is obtained from these smooth parameterizations.
+
+## F10BW candidate — full ambient finite-word derivative at zero
+
+**Candidate only; six roots await fresh strict compilation and independent audit.** Differentiate the actual Clifford-valued finite-word parameterization at the all-zero vector. The expected value in direction `v : Fin k → ℝ` is the literal listed sum
+`Σ_{i in l} v i • ((1/2 : ℝ) • (ι(e_(r i)) * ι(e_(s i))))`.
+The list retains repeated indices: each occurrence contributes. This is the source Clifford half-bivector normalization, not the full native nine-matrix plane that appears after the natural action.
+
+| Candidate declaration | Exact obligation |
+|---|---|
+| `source9PlaneParameterVelocity` | Continuous linear map of one coordinate evaluation into the exact half-bivector, using `toSpanSingleton` and `proj`. |
+| `source9PlaneParameterCurve_hasFDerivAt_zero` | Full finite-parameter derivative of an actual distinct-plane factor, from accepted BJ and the chain rule. |
+| `source9PlaneSpinWordVelocity` | Recursive sum of those continuous linear maps over the exact word list. |
+| `source9PlaneSpinWordVelocity_apply` | Evaluation is the literal finite sum for every direction. |
+| `source9PlaneSpinWord_coe_hasFDerivAt_zero` | Actual ambient word has that full Fréchet derivative at zero. |
+| `source9PlaneSpinWord_coe_fderiv_zero` | Actual `fderiv` is exactly the independently evaluable linear sum. |
+
+Files:
+
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BWFinitePlaneWordDerivative.lean`, candidate source blob `d8ec57fa4e6ac8674cfc864ad8219feef37dfec9`.
+- `lean/diagnostics/FCP_K1D18V10HF10BWIndependentAudit.lean`, independent audit blob `0d0692e7920f20bc126789ffc767c2d86bf74da3`.
+- `.github/workflows/bfss-kotler-v10h-f10bw-finite-plane-word-derivative-strict.yml`.
+
+The linear formula can be defined for arbitrary pairs, but every actual-curve derivative theorem retains `hrs : ∀ i, r i ≠ s i`. No diagonal source curve is introduced. Both source normed instances have unique stage-specific names and are exactly the accepted named PBW values.
+
+The induction uses the actual BT continuous bilinear map and pinned `ContinuousLinearMap.hasFDerivAt_of_bilinear`, with its `precompR`/`precompL` derivative. Explicit zero-value coercion bridges come from accepted curve/word identity theorems. A pointwise equality of continuous linear maps reduces the product derivative at identity to the head-plus-tail velocity. No Clifford `NormedRing` estimate or generic normed-ring product rule is assumed.
+
+**Pinned API inspected:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`; `Deriv/Basic.lean` converts `HasDerivAt` to `HasFDerivAt` using `toSpanSingleton`; `FDeriv/Bilinear.lean` supplies the exact bilinear product-rule type; `Operator/Bilinear.lean` supplies its precomposition maps; `FDeriv/Const.lean` takes `hasFDerivAt_const (c) (x)` in that explicit order. The base case follows this inspected signature.
+
+The independent audit reconstructs the accepted PBW coordinates/norm, restates the complete six interfaces, checks literal half-bivector evaluation, empty-list velocity, a repeated-index control, `HasFDerivAt`, the actual `fderiv` equality and its literal finite-sum value in every direction. It prints all six roots.
+
+**Workflow/validation:** pin compatible BF/BG/BT/BU/BV, exact original source/PBW and BI/BJ curve source/audits, plus the candidate blobs. Rebuild combined BV ancestry, freshly compile BW and its independent audit with warnings-as-errors, require exactly six permitted root reports per log, and retain 840/600-second compiler/audit caps. Local exact hashes, source/audit preflight, YAML, shell syntax and embedded Python checks pass. No local Lean executable is available, so elaboration and independent mathematical acceptance remain pending CI.
+
+**Scientific ceiling and next action:** this is a full derivative of an ambient Clifford-valued parameterization. It is not yet the full derivative of the actual nine-vector action, a 36-dimensional model-space isomorphism, a source tangent equivalence, an atlas/local inverse or the full F10BC manifold differential. Inspect BW's exact strict result first. If accepted, transport the derivative through the actual action and recover the full native coordinate-plane sum before selecting a 36-plane order or invoking an inverse-function theorem. Preserve all prior red histories, including the scoped-notation and cross-branch local-instance collisions.
