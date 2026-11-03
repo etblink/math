@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified mathematical baseline (F10BV):** [run 41576849333](https://github.com/etblink/math/actions/runs/41576849333), exact `8bdc6c513439d825b8010f05c97a59c4dcb390b9`. **Current F10BW status:** source compilation now passes cleanly at `40b77e83a4a0a9ef9739e1a49302ed038e055a54`, but [run 41579847679](https://github.com/etblink/math/actions/runs/41579847679) failed in the audit's final directional-value rewrite. The audit now instantiates the full map equality and applies a typed evaluation congruence; source and all audit statements are unchanged. BW remains pending the complete strict gate. Earlier diagnoses and evidence remain below.
+> **Latest verified state (F10BW):** [run 41581121118](https://github.com/etblink/math/actions/runs/41581121118) accepted at `f16060f061dc84815f13a78bfb4e2354f9c4b066`: full ambient Clifford-valued derivative of every actual finite ordered plane word at zero, with the literal finite half-bivector sum checked in every direction. **Current candidate (F10BX):** algebraic commutator transport of that actual derivative to the full native nine-vector plane sum; pending strict CI. This is not yet the derivative of the actual action. The [chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) remains a frozen baseline; current acceptance and failure evidence are appended below.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1555,3 +1555,46 @@ This proves the same literal directional sum without generic rewriting beneath t
 **Validation/lesson:** local hashes, YAML parsing, shell syntax, embedded Python and exact source/audit preflight pass. No local Lean executable is available; complete acceptance awaits fresh CI. For an equality of bundled maps applied to a direction, instantiate all theorem parameters and use typed evaluation congruence when generic rewriting cannot match the elaborated target. A clean imported-root axiom inventory does not certify failed independent examples; terminal audit success remains mandatory.
 
 **Next action and ceiling:** inspect both phases of the next exact-commit strict run before BW qualification. The successful source proof covers the full ambient Clifford-valued word derivative at zero. Its independent acceptance is still pending; the actual-action derivative, native model isomorphism, source/target subgroup charts, tangent identifications and full F10BC manifold differential remain open. Preserve both BW red attempts and their distinct source-versus-audit failure boundaries.
+
+## F10BW accepted — full ambient finite-word derivative and directional finite sum
+
+**Verified strict result:** [run 41581121118](https://github.com/etblink/math/actions/runs/41581121118), exact tested commit `f16060f061dc84815f13a78bfb4e2354f9c4b066`, job `125735946133`, completed/success with every required step successful. Actual terminal marker: `V10H_F10BW_EXACT_PBW_FULL_WORD_DERIVATIVE_TYPES_AXIOMS_PASS`. Fresh source compilation and the independent PBW/type/value audit each report exactly six expected roots, all with axioms contained in `{propext, Classical.choice, Quot.sound}`. No `sorryAx` or source-level warning/error occurs in those phases.
+
+Accepted source blob `6a67d6fb7a1d01f5d0045adb8a6edb3747d0ee70`; independent audit `26d4bc3768986a3d5ec9bb44484ba818085f57f6`; workflow `3c150f9875585796b707180244727990b50ecac8`. Evidence artifact `13206048636`, ZIP SHA-256 `21bcf7ae2c930c34030833dbe00f770ae5bcc39a6b01253a319d29f7df059fca`.
+
+**Qualified increment:** the actual Clifford-valued finite ordered source word has full Fréchet derivative at the all-zero parameter vector equal to `source9PlaneSpinWordVelocity`. Its value in every direction is the listed sum of coordinate coefficients times the exact positive source half-bivectors. Every actual-curve derivative retains the distinct-label proof. Repeated indices contribute repeatedly, and the empty word has zero derivative.
+
+The accepted proof uses a typed real coordinate projection and derivative bridge, the actual continuous bilinear Clifford multiplication, explicit curve/word identity values, and pointwise continuous-linear-map equalities. The independent directional check instantiates the full derivative equality and applies typed evaluation congruence before transitivity with the literal finite sum. Both BW red attempts remain preserved: source elaboration/deprecation first, final independent audit rewrite second. Clean root printouts alone did not bypass either terminal failure.
+
+This is an ordinary derivative into the ambient Clifford vector space. The full derivative of the actual nine-vector action and its native model-space identification remain separate.
+
+## F10BX candidate — native vector commutator transport of the actual full word derivative
+
+**Candidate only; six roots pending strict CI.** First make the algebraic transport explicit using qualified BL and BW. The commutator of the full source half-bivector sum with an embedded original vector must equal the embedding of the full native-plane action sum. The canonical projection must recover that sum. Finally, tie this identity to the literal actual-word `fderiv` at zero, with explicit map/value congruences.
+
+| Candidate declaration | Exact obligation |
+|---|---|
+| `source9PlaneParameterVectorVelocity` | Coordinate evaluation times the literal full native plane `coordinatePlane9 r s` applied to the original vector. |
+| `source9PlaneWordVectorVelocity` | Recursive continuous-linear sum of those full native-plane maps over the exact list. |
+| `source9PlaneWordVectorVelocity_apply` | Literal full native-plane finite sum for every direction, retaining repetitions. |
+| `source9PlaneSpinWordVelocity_commutator_vector` | BW's source velocity commutator equals the Clifford embedding of that native vector sum. |
+| `source9PlaneSpinWordVelocity_projected_commutator` | Accepted canonical vector projection recovers exactly that sum. |
+| `source9PlaneSpinWord_fderiv_projected_commutator` | The projected commutator of the literal actual-word `fderiv` applied to any direction equals the same native vector sum. |
+
+Files:
+
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BXWordDerivativeNativeVectorAction.lean`, candidate source blob `bbf201b5af11213eacef21fe6ec41947635cc781`.
+- `lean/diagnostics/FCP_K1D18V10HF10BXIndependentAudit.lean`, independent audit blob `30d42b22ebadafb09c2b0c65db839af71ccf4ba7`.
+- `.github/workflows/bfss-kotler-v10h-f10bx-word-derivative-native-vector-action-strict.yml`.
+
+The induction reuses `source9CoordinateBivector_commutator_vector` for each weighted source half-bivector and real-linearity of the actual Clifford embedding. Source half factors are retained inside BW's velocity; BL's commutator identity produces full native planes without an extra half. The new algebraic identities can include diagonal labels as BL already does. Every connection to an actual curve/word `fderiv` retains `hrs : ∀ i, r i ≠ s i`; no diagonal actual source curve is introduced.
+
+The source explicitly uses typed `hmap`/`hvalue` bridges and evaluation congruences when specializing the actual derivative. Its norm values remain exactly the named PBW structures, with unique `f10bxLocal...` local-instance names. No new global instance, norm, hypothesis or limit change is introduced.
+
+**Independent controls:** reconstruct the accepted PBW coordinates/norm; restate all six complete interfaces; check the literal full `coordinatePlane9 = E_rs - E_sr` matrix-unit equality; check exact coordinate-map evaluation, empty velocity and repeated-index contributions; and finish with the projected commutator of the literal actual `fderiv` equal to the literal full native-plane finite sum. The final check uses explicitly instantiated equalities and transitivity. Six root reports are required in each phase.
+
+**Pinned reuse:** accepted BW and BL, the actual source/PBW basis and compatible BF/BG/BT/BU/BV chain, and the exact native-plane carrier/matrix-unit bridge. Primary native-plane files at the baseline were checked: carrier blob `92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3`, matrix-unit bridge `d80001bbe5052357dbca559232d81cc01c56fb34`. BL source/audit remain `bc0d8539c2523fffe2f36ee4b121a1b81a1431be`/`1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1`.
+
+**Workflow/validation:** rebuild combined BW ancestry, freshly compile BX and its independent audit with warnings-as-errors, require the exact six roots and standard three-axiom whitelist, and keep the existing 840/600-second compiler/audit caps. Local hashes, full declaration/scope preflight, YAML, shell syntax and embedded Python checks pass. Local Lean is unavailable; elaboration and independent mathematical acceptance remain pending CI.
+
+**Scientific ceiling/next action:** algebraic commutator transport of the actual word derivative is not yet `HasFDerivAt` for the actual vector-action parameterization. If BX is accepted, differentiate that actual action using the qualified ambient multiplication/reversal/projection formula, and connect its full derivative to the now-checked native sum. A chosen 36-plane model isomorphism, source neighborhood/fiber control, subgroup charts, tangent Lie-algebra identifications and full F10BC manifold differential remain open. Inspect BX's exact strict result before qualifying any root.
