@@ -65,7 +65,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BMInverseSourceCurveDerivative.lean")" = '545581346eaf563b54dcf3c828e43d19c2d1dd23'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BMIndependentAudit.lean)" = '057c3313f16775de85109fd5ca257eef69c04cf8'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BYActualWordVectorActionDerivative.lean)" = '1fa83224a22fc0c7d2efdd6b1fdffe2f55f536cc'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BYIndependentAudit.lean)" = '6f8d5cafcb8a9950f2ab3dac5162e5ac0e34b8a9'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BYIndependentAudit.lean)" = '63b13c337d63df13cbc8d9d7aeaa51d685a0cd6b'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -79,6 +79,13 @@ jobs:
           assert s.count('#print axioms ')==len(names)
           assert audit.count('#print axioms ')==len(names)
           assert audit.count('CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic).comp')==2
+          assert audit.count('let R : CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic :=')==2
+          assert audit.count('let L : CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic :=')==2
+          assert 'local instance auditPBWIsTopologicalAddGroup :' in audit
+          assert 'letI : IsTopologicalRing (CliffordAlgebra source9Quadratic) :=' in audit
+          assert 'source9Clifford_isTopologicalRing_pbw' in audit
+          assert 'exact IsTopologicalRing.isTopologicalAddGroup' in audit
+          assert 'example : Sub (CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic) :=' in audit
           assert not re.search(r'(?m)^local instance\s*:',s)
           for cls in ['NormedAddCommGroup','NormedSpace']:
               assert re.search(r'local instance f10byLocal'+cls+r'\s*:\s*'+cls,s),cls

@@ -24,6 +24,13 @@ example : source9PBWNormedAddCommGroup =
       (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ)
       auditPBWCoordinates.toAddMonoidHom auditPBWCoordinates.injective := rfl
 
+-- Derive the actual ring's additive topology from the accepted theorem at the reconstructed PBW norm.
+local instance auditPBWIsTopologicalAddGroup :
+    IsTopologicalAddGroup (CliffordAlgebra source9Quadratic) := by
+  letI : IsTopologicalRing (CliffordAlgebra source9Quadratic) :=
+    source9Clifford_isTopologicalRing_pbw
+  exact IsTopologicalRing.isTopologicalAddGroup
+
 example (r s : SpaceIndex) (hrs : r ≠ s) :
     CliffordAlgebra.reverse
       ((1 / 2 : ℝ) •
@@ -40,11 +47,18 @@ example {k : ℕ} (r s : Fin k → SpaceIndex) (hrs : ∀ i, r i ≠ s i)
       -source9PlaneSpinWordVelocity r s l v :=
   source9PlaneSpinWordVelocity_reverse r s hrs l v
 
+-- Ground capability check under the reconstructed PBW structures and derived additive topology.
+example : Sub (CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic) :=
+  inferInstance
+
 -- Independently evaluate the bundled Clifford derivative as the actual commutator.
 example {k : ℕ} (r s : Fin k → SpaceIndex) (l : List (Fin k))
     (v : Fin k → ℝ) (z : SpaceIndex → ℝ) :
-    (((source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z) -
-      source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)) :
+    let R : CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic :=
+      source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z)
+    let L : CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic :=
+      source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)
+    (((R - L) :
         CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic).comp
         (source9PlaneSpinWordVelocity r s l)) v =
       source9PlaneSpinWordVelocity r s l v * CliffordAlgebra.ι source9Quadratic z -
@@ -52,14 +66,17 @@ example {k : ℕ} (r s : Fin k → SpaceIndex) (l : List (Fin k))
 
 example {k : ℕ} (r s : Fin k → SpaceIndex) (hrs : ∀ i, r i ≠ s i)
     (l : List (Fin k)) (z : SpaceIndex → ℝ) :
+    let R : CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic :=
+      source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z)
+    let L : CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic :=
+      source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)
     HasFDerivAt
       (fun t : Fin k → ℝ =>
         ((source9PlaneSpinWord r s hrs t l) : CliffordAlgebra source9Quadratic) *
           CliffordAlgebra.ι source9Quadratic z *
           (((source9PlaneSpinWord r s hrs t l)⁻¹ : spinGroup source9Quadratic) :
             CliffordAlgebra source9Quadratic))
-      (((source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z) -
-        source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)) :
+      (((R - L) :
           CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic).comp
           (source9PlaneSpinWordVelocity r s l)) 0 :=
   source9PlaneSpinWord_conjugation_hasFDerivAt_zero r s hrs l z
