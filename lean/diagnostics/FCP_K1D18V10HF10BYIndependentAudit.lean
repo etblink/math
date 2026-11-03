@@ -43,8 +43,9 @@ example {k : ℕ} (r s : Fin k → SpaceIndex) (hrs : ∀ i, r i ≠ s i)
 -- Independently evaluate the bundled Clifford derivative as the actual commutator.
 example {k : ℕ} (r s : Fin k → SpaceIndex) (l : List (Fin k))
     (v : Fin k → ℝ) (z : SpaceIndex → ℝ) :
-    ((source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z) -
-      source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)).comp
+    (((source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z) -
+      source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)) :
+        CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic).comp
         (source9PlaneSpinWordVelocity r s l)) v =
       source9PlaneSpinWordVelocity r s l v * CliffordAlgebra.ι source9Quadratic z -
         CliffordAlgebra.ι source9Quadratic z * source9PlaneSpinWordVelocity r s l v := rfl
@@ -57,8 +58,9 @@ example {k : ℕ} (r s : Fin k → SpaceIndex) (hrs : ∀ i, r i ≠ s i)
           CliffordAlgebra.ι source9Quadratic z *
           (((source9PlaneSpinWord r s hrs t l)⁻¹ : spinGroup source9Quadratic) :
             CliffordAlgebra source9Quadratic))
-      ((source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z) -
-        source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)).comp
+      (((source9CliffordMulCLM.flip (CliffordAlgebra.ι source9Quadratic z) -
+        source9CliffordMulCLM (CliffordAlgebra.ι source9Quadratic z)) :
+          CliffordAlgebra source9Quadratic →L[ℝ] CliffordAlgebra source9Quadratic).comp
           (source9PlaneSpinWordVelocity r s l)) 0 :=
   source9PlaneSpinWord_conjugation_hasFDerivAt_zero r s hrs l z
 
