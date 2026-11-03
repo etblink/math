@@ -24,13 +24,13 @@ noncomputable section
 open OAI.BFSSQuantum
 open scoped ContDiff
 
-local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
+local instance f10btLocalNormedAddCommGroup : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedAddCommGroup
 
-local instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10btLocalNormedSpace : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedSpace
 
-local instance : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10btLocalFiniteDimensional : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
   source9Clifford_finiteDimensional
 
 /-- Actual left multiplication, continuously bundled for the accepted PBW norm. -/

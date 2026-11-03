@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified state (F10BT):** [run 41572318768](https://github.com/etblink/math/actions/runs/41572318768) accepted at `2a0e4932c7ecfc0ca8b2e637b9088eb462acd47d`: literal ambient Clifford multiplication is continuously bilinear and `ContDiff ℝ n` for every order under the unchanged named PBW norm. **Current candidate (F10BU):** jointly smooth ambient extension of actual source-vector conjugation, with exact restriction to Spin; pending strict CI. The [chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) remains the frozen planning baseline. Read the latest appended acceptance/candidate entries below; historical statuses and failures are retained.
+> **Latest verified mathematical baseline (F10BT):** [run 41572318768](https://github.com/etblink/math/actions/runs/41572318768), exact `2a0e4932c7ecfc0ca8b2e637b9088eb462acd47d`. **Current repair:** F10BU run [41573878864](https://github.com/etblink/math/actions/runs/41573878864) failed on a collision of generated anonymous-local-instance names when accepted branches were combined. BF/BG/BT and pending BU now use unique explicit local-instance names, with types, values and proof bodies unchanged. Four strict gates are pending: BF, BG and BT requalification, plus the combined BU candidate. Read the latest appended diagnosis below; all prior statuses and failure provenance remain historical evidence.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1370,3 +1370,39 @@ The independent audit reconstructs the exact accepted PBW coordinates/norm, chec
 **Workflow/validation:** retain Lean 4.34.1, exact Mathlib revision, source/PBW/BE/BF pins, accepted F10BG/F10BO/F10BT source pins and relevant independent audits. Rebuild BT/BO/BG ancestry together, freshly compile the six-root source and independent audit with warnings-as-errors, and enforce exactly six permitted root reports per log. Compiler/audit caps remain 840/600 seconds; no limit increase or linter suppression. Local exact candidate hashes, source/audit preflight, YAML parsing, shell syntax and embedded Python syntax pass. Local Lean is unavailable, so elaboration and all independent mathematical checks remain pending CI.
 
 **Scientific ceiling/next action:** this candidate is ambient vector-space calculus. It constructs no source/target subgroup chart, LieGroup instance, full tangent equivalence, natural-action determinant-one theorem, kernel/covering result or F10BC manifold differential equality. If accepted, this joint ambient formula can support smooth multivariable products of the actual plane curves and their action coordinates. Inspect the exact strict result first, then select that bounded parameterization prerequisite from the existing chart/tangent work plan.
+
+## F10BU red diagnosis — generated local-instance names collide across accepted branches
+
+**Rejected attempt:** [run 41573878864](https://github.com/etblink/math/actions/runs/41573878864), exact commit `6721dc727a30eeee8d3e01876147237d1a8a6be9`, job `125712816232`, completed/failure. Exact pins, dependency restoration and the separate BT/BO/BG ancestry build all passed. Fresh BU compilation failed at import line 1; the independent BU audit was skipped. Evidence artifact `13203540564`, ZIP SHA-256 `78fca38726393eb9a549558c0d1aa42616f5fdcb5f16914d179323ea3f7cb3f3`.
+
+**Exact diagnostic:** import of F10BJ failed because the environment already contained
+`FCP.BFSSPairedSpin9Clifford.instNormedAddCommGroupCliffordAlgebraRealForallSpaceIndexSource9Quadratic`
+from F10BF. BF and BJ had each compiled an anonymous `local instance` of the same class/type in the same namespace on independent branches of the import graph. Their separate `.olean` files succeeded. Loading them together encountered duplicate declaration names, before BU's own declarations or proofs were elaborated. This is an import-composition failure, not a failed smoothness proof or a contradiction of the qualified mathematics.
+
+**Bounded structural repair:** name the local-instance declarations explicitly and uniquely in BF, BG, BT and the pending BU file:
+
+- BF: `f10bfLocalNormedAddCommGroup`, `f10bfLocalNormedSpace`, `f10bfLocalFiniteDimensional`, `f10bfLocalIsModuleTopology`.
+- BG: `f10bgLocalNormedAddCommGroup`, `f10bgLocalNormedSpace`, `f10bgLocalFiniteDimensional`.
+- BT: `f10btLocalNormedAddCommGroup`, `f10btLocalNormedSpace`, `f10btLocalFiniteDimensional`.
+- BU: `f10buLocalNormedAddCommGroup`, `f10buLocalNormedSpace`, `f10buLocalFiniteDimensional`.
+
+The directly observed collision is BF versus BJ. Naming all local instances on the BF/BG/BT branch prevents the same generated-name hazard when the rest of the BO branch is loaded; BU uses the same convention for future composition. The shared BE ancestor and the BJ/BM/BN/BO branch are unchanged.
+
+A source normalization check removes only those new explicit identifiers and recovers each exact pre-repair file byte-for-byte. Thus no instance type, value, registration scope, proof term, theorem statement, mathematical carrier, norm or topology is changed. These remain `local instance` declarations, with no new global instance registration. All four independent audits are unchanged.
+
+| Repaired source variant | Exact candidate blob |
+|---|---|
+| F10BF | `f7ea4c9e9d996d04d07a7733ffe7ab6a91ce2636` |
+| F10BG | `9092ccaa5b4436bfa25cafe8b71541e6642999f6` |
+| F10BT | `10c56519331f867d5f453a63953e0018c03a09a3` |
+| F10BU | `aa38de95852718445ddd0448068592f9cefe4db4` |
+
+**Requalification:** the accepted mathematics remains tied to its earlier exact tested commits. The renamed source variants require fresh evidence. Refresh only the relevant exact source pins in each of the existing BF/BG/BT strict workflows and the BU workflow. Keep their existing theorem inventories, fresh warnings-as-errors compilation, independent audits, axiom whitelists and time caps. New static guards require the explicit stage-specific local-instance names; the existing BF/BG forbidden-instance guard now handles named declarations too.
+
+The atomic repair triggers four strict workflows. Require BF's 3 roots, BG's 5 roots and BT's 4 roots to pass their respective original independent audits at the new commit, and BU's 6 roots to pass its combined import, exact PBW joint-smoothness and actual-action audit. BU's independent audit remains blob `7a8e3f09d3a799d49ca5c3fa2060abe957ef7628`. Do not qualify BU or report all renamed variants requalified from only one of the four runs.
+
+**Validation state:** all four YAML files parse, all shell blocks pass `bash -n`, embedded Python parses, and each exact source/audit preflight passes. The only source differences are the explicit local-instance identifiers. Local Lean is unavailable; actual import compatibility, elaboration and independent audits await strict CI.
+
+**Method lesson:** a local typeclass registration still has a declaration in the compiled environment. Anonymous generated names can collide across separately accepted branches in a shared namespace. Separate ancestor builds do not establish that their environments compose. Use unique explicit names for local instances in reusable modules, and require a consumer that imports the branches together.
+
+**Scientific ceiling:** no new BU mathematical result is qualified from this red attempt. The proposed joint ambient extension remains the same candidate and still supplies no source/target subgroup atlas, tangent identification, kernel/covering or full manifold differential. Next action is to inspect all four exact-commit strict results before proceeding.

@@ -23,13 +23,13 @@ noncomputable section
 
 open OAI.BFSSQuantum
 
-local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
+local instance f10bgLocalNormedAddCommGroup : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedAddCommGroup
 
-local instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10bgLocalNormedSpace : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedSpace
 
-local instance : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10bgLocalFiniteDimensional : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
   source9Clifford_finiteDimensional
 
 /-- Real-linear Clifford grade reversal is continuous for the accepted PBW topology. -/

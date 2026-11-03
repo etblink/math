@@ -40,9 +40,9 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HD3GammaContinuityDiagnostic.lean)" = 'a40a345d01ac3051f5b6ec148b7433a6c7a75b12'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean)" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BEIndependentAudit.lean)" = 'dc765801abaf11df1cd08118b91ce37fe2e19337'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean)" = 'f3d3121ef76af1d25a43ec574bbfc2fbeefce111'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean)" = 'f7ea4c9e9d996d04d07a7733ffe7ab6a91ce2636'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BFIndependentAudit.lean)" = 'dd00871d12e1d533d15aa67608713d85eed0ec66'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BGPBWSourceSpinTopologicalGroup.lean)" = 'df8bbc6de6b456b344684c65b032f1e299e45736'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BGPBWSourceSpinTopologicalGroup.lean)" = '9092ccaa5b4436bfa25cafe8b71541e6642999f6'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BGIndependentAudit.lean)" = '2934f82e5b6742896385f85083e96de563440ba0'
           python3 - <<'PY'
           from pathlib import Path
@@ -56,12 +56,15 @@ jobs:
               assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
           assert s.count('#print axioms ')==len(names)
           assert audit.count('#print axioms ')==len(names)
+          assert not re.search(r'(?m)^local instance\s*:',s)
+          for cls in ['NormedAddCommGroup','NormedSpace','FiniteDimensional']:
+              assert 'local instance f10bgLocal'+cls+' : '+cls in s
           for text in [s,audit]:
               code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
               code=re.sub(r'--[^\n]*','',code)
               assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
               assert not re.search(r'(?m)^instance\b|attribute\s+\[instance\]',code)
-              assert not re.search(r'local instance\s*:\s*(TopologicalSpace|IsTopologicalGroup|ContinuousMul|ContinuousInv)\b',code)
+              assert not re.search(r'local instance(?:\s+[A-Za-z0-9_]+)?\s*:\s*(TopologicalSpace|IsTopologicalGroup|ContinuousMul|ContinuousInv)\b',code)
           for token in ['source9PBWNormedAddCommGroup','source9PBWNormedSpace',
                         'source9Clifford_finiteDimensional','continuous_of_finiteDimensional',
                         'CliffordAlgebra.star_def','spinGroup.involute_eq g.property',

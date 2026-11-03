@@ -22,13 +22,13 @@ noncomputable section
 
 open OAI.BFSSQuantum
 
-local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
+local instance f10bfLocalNormedAddCommGroup : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedAddCommGroup
 
-local instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10bfLocalNormedSpace : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedSpace
 
-local instance : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10bfLocalFiniteDimensional : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
   source9Clifford_finiteDimensional
 
 /-- The existing accepted PBW-coordinate topology is the real module topology. -/
@@ -36,7 +36,7 @@ theorem source9Clifford_isModuleTopology_pbw :
     IsModuleTopology ℝ (CliffordAlgebra source9Quadratic) := by
   exact isModuleTopologyOfFiniteDimensional
 
-local instance : IsModuleTopology ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10bfLocalIsModuleTopology : IsModuleTopology ℝ (CliffordAlgebra source9Quadratic) :=
   source9Clifford_isModuleTopology_pbw
 
 /-- The actual Clifford multiplication is jointly continuous for the accepted PBW topology. -/

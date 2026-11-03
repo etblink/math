@@ -34,9 +34,9 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe.lean")" = '578ddf1505da2ab2848bc88cf709660d941cb8ec'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean")" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean")" = 'f3d3121ef76af1d25a43ec574bbfc2fbeefce111'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean")" = 'f7ea4c9e9d996d04d07a7733ffe7ab6a91ce2636'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BFIndependentAudit.lean)" = 'dd00871d12e1d533d15aa67608713d85eed0ec66'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness.lean)" = '0d734b95f044a574490df1597118dbdc5d4ac0f6'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness.lean)" = '10c56519331f867d5f453a63953e0018c03a09a3'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BTIndependentAudit.lean)" = '7fd6812e2e5ee4bdfa5b56422a9905c5611e6bd3'
           python3 - <<'PY'
           from pathlib import Path
@@ -50,6 +50,9 @@ jobs:
               assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
           assert s.count('#print axioms ')==len(names)
           assert audit.count('#print axioms ')==len(names)
+          assert not re.search(r'(?m)^local instance\s*:',s)
+          for cls in ['NormedAddCommGroup','NormedSpace','FiniteDimensional']:
+              assert 'local instance f10btLocal'+cls+' : '+cls in s
           for text in [s,audit]:
               code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
               code=re.sub(r'--[^\n]*','',code)

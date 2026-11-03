@@ -24,11 +24,11 @@ noncomputable section
 open OAI.BFSSQuantum
 open scoped ContDiff
 
-local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
+local instance f10buLocalNormedAddCommGroup : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedAddCommGroup
-local instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10buLocalNormedSpace : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedSpace
-local instance : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
+local instance f10buLocalFiniteDimensional : FiniteDimensional ℝ (CliffordAlgebra source9Quadratic) :=
   source9Clifford_finiteDimensional
 
 /-- Actual Clifford grade reversal with the accepted PBW norm. -/
