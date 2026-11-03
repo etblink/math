@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment (F10BY):** [strict run 41590375172](https://github.com/etblink/math/actions/runs/41590375172) passed at `96a8d19755c90c42222fa8dabfaf383ff81db6bc`. The actual word's vector action has the full finite-parameter derivative at zero equal to the literal full native-plane sum, for every fixed original vector. Fresh source and independent audit passed all six root checks. The [three-red review and recovery plan](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md) and all failed runs are preserved. No new theorem candidate is active; the next mathematical obligation is the whole natural nine-matrix derivative/model identification, with charts and tangent equivalences still open.
+> **Latest accepted mathematical increment remains F10BY**, [run 41590375172](https://github.com/etblink/math/actions/runs/41590375172), tested `96a8d19755c90c42222fa8dabfaf383ff81db6bc`. **Current candidate (F10BZ):** full finite-parameter derivative at zero of the entire natural nine-matrix action, equal in each direction to the literal native-plane matrix sum. Independent standard product-topology, coordinate-column and finite-sum checks are included. No BZ qualification before strict CI. The [three-red method review](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md) and all earlier failures remain preserved; charts/model/tangent obligations remain open.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1731,3 +1731,38 @@ The independent audit retains PBW reconstruction, the derived additive topology 
 **Outcome of the method review:** result annotations alone failed. The combined derived-topology and typed-operand bridge removed the prior inference errors. Its first strict attempt then failed only because `letI` was unsuitable in the proposition proof. The one-keyword compiler-directed `let` correction passed without changing mathematical source or propositions, suppressing linters, raising limits or relaxing axioms. The three failed runs 41584710436, 41586108954 and 41587795099 remain red with exact evidence. The [frozen three-red review](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md) records the comparison with historical FCP/math techniques, the prior procedural shortcomings and stop rules. This live handoff supplies the later acceptance.
 
 **Current next obligation and ceiling:** package the entire natural nine-matrix action derivative and establish a source-exact nonredundant native skew-plane model/order. BY does not select an invertible 36-plane parameterization, install a subgroup atlas, identify a tangent Lie algebra, establish source local fiber/kernel control or covering, prove the full F10BC manifold differential, or establish a physical BFSS conclusion. No further theorem candidate was introduced during this review/recovery task.
+
+## F10BZ candidate — full natural nine-matrix derivative of actual finite source words
+
+**Project Lead resumption baseline:** branch HEAD `6352fbf663f30cd87c7caa4857a70d0d6c09112f` is the documentation-only acceptance commit after strictly accepted BY. The latest accepted mathematical source/audit/workflow are unchanged at `1fa83224a22fc0c7d2efdd6b1fdffe2f55f536cc`/`4e89a6df00269492b91bee147cd4a24bb3b688a3`/`0f00d9b291f5d67b53f64917aace155e487b97e2`. The live branch and current handoff were checked before selecting new work.
+
+**Candidate only; six declaration roots pending.** Assemble accepted BY's full vector-action derivatives on the original coordinate columns into the full derivative of the actual BR natural orthogonal image matrix. The derivative's value in direction `v` is the literal matrix sum
+`(l.map (fun a => v a • coordinatePlane9 (r a) (s a))).sum`.
+Every actual-word derivative retains `hrs : ∀ a, r a ≠ s a`; repeated parameter indices remain repeated contributions.
+
+| Candidate declaration | Exact obligation |
+|---|---|
+| `source9PlaneWordMatrixVelocity` | Continuous linear finite-parameter-to-original-nine-matrix map, assembled by two Pi constructors from accepted vector-column velocities. |
+| `source9PlaneWordMatrixVelocity_apply` | The assembled map equals the literal full native-plane matrix sum in every direction. |
+| `source9PlaneSpinWord_vectorMatrix_entry_hasFDerivAt_zero` | Exact entry derivative of the actual canonical natural matrix homomorphism. |
+| `source9PlaneSpinWord_vectorOrthogonalMatrix_hasFDerivAt_zero` | Full `HasFDerivAt` for the entire actual underlying O(9) image matrix. |
+| `source9PlaneSpinWord_vectorOrthogonalMatrix_fderiv_zero` | Actual matrix `fderiv` equals the assembled continuous linear map. |
+| `source9PlaneSpinWord_vectorOrthogonalMatrix_fderiv_zero_apply` | The actual whole-matrix derivative, evaluated in any direction, is the literal native-plane matrix sum. |
+
+Files:
+
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BZFullNaturalMatrixWordDerivative.lean`, source blob `6602ec877561b8751d8505b4cff096746bf0c27b`.
+- `lean/diagnostics/FCP_K1D18V10HF10BZIndependentAudit.lean`, independent audit blob `c8983613c3bed672b4b997e6b70875682de94c1a`.
+- `.github/workflows/bfss-kotler-v10h-f10bz-full-natural-matrix-word-derivative-strict.yml`.
+
+**Pinned source/API reuse:** BR's actual natural matrix/orthogonal homomorphisms, BY's actual full vector-action derivative, and BS's accepted original-column/entry bridge pattern. Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, `FDeriv/Prod.lean`, was inspected: `hasFDerivAt_pi'` extracts component derivatives via typed projections; `hasFDerivAt_pi` assembles a family of derivatives through `ContinuousLinearMap.pi`. `ContinuousLinearMap/PiProd.lean` defines the actual Pi constructors and their pointwise values. `Analysis/Matrix/Normed.lean` supplies the standard elementwise Pi norm. The prime and unprimed criteria have distinct roles and were selected from their complete pinned signatures.
+
+The literal matrix-sum proof uses entrywise induction, explicit coordinate-column evaluation and typed congruence from the induction hypothesis. Matrix entries are the accepted actual vector action on original coordinate columns; an explicit function equality bridges the derivative statement. The whole derivative is assembled twice through the Pi criterion. Final directional evaluation uses a fully instantiated map equality and typed evaluation congruence, following the accepted BW/BY audit recovery pattern.
+
+**Independent checks:** capture the standard matrix product topology before opening `Matrix.Norms.Elementwise`, then check it equals the scoped topology by reflexivity. Restate all six complete interfaces, check every assembled entry equals its accepted column velocity, check empty and repeated-index words, check the actual O(9) underlying matrix `HasFDerivAt`/`fderiv`, finish with the literal matrix sum, and recheck full native `E_rs - E_sr` normalization. No Clifford norm or topology is reconstructed here because the new asserted derivatives live only in the original vector/matrix spaces; BY supplies the already qualified source-action theorem.
+
+**Scope and verification discipline:** no new instance is registered. The only norm scope opened is the standard elementwise matrix norm. No normed-ring estimate, target/source atlas, tangent equivalence or carrier substitution is introduced. The source and audit contain no speculative proof-style bindings or overloaded endomorphism subtraction.
+
+The workflow pins the accepted compatible ancestry through BY, plus exact BP/BQ/BR source/audits. All newly added BP/BQ/BR pins were checked against the resumption baseline. It rebuilds BY and BR together, freshly compiles BZ and the independent audit with warnings-as-errors, requires exactly six permitted root reports in each phase and retains the standard three-axiom whitelist and 840/600-second caps. Local exact hashes, source/audit preflight, YAML, shell syntax and embedded Python checks pass. Local Lean is unavailable; actual elaboration and independent acceptance await strict CI.
+
+**Next action and scientific ceiling:** inspect the exact BZ strict result before qualification. If accepted, research/reuse the existing native skew-matrix spanning/coordinate modules and pinned Mathlib basis APIs to choose and prove a nonredundant source-exact model/order. Arbitrary words may omit or repeat planes, so this derivative alone gives no injectivity or invertibility. Proper subgroup charts, source local fiber/kernel control, tangent Lie-algebra identifications, determinant/covering claims and the full F10BC manifold differential remain open. Preserve all earlier red histories and the method review; no further mathematical step is authorized by a source-only or audit-only partial pass.
