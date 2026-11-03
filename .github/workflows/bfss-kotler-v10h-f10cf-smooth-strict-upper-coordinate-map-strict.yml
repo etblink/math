@@ -85,7 +85,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean)" = 'cd034f48ca310be62c95f0fc5a26158980744224'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean)" = 'e61f10d8b5726a84dd1fadc55e15318f3c40b158'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean)" = '22d23f1f272a14f8067f51524e4c17a6c138e72a'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CFSmoothStrictUpperCoordinateMap.lean)" = 'dee9feb80e2ae02ea6b639daaa1133409bf9b3cb'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CFSmoothStrictUpperCoordinateMap.lean)" = '18dfa7cb7391446b72658036730ae98f990d809d'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CFIndependentAudit.lean)" = 'dab723eea335c83d7824a16f59acd55e6b39d713'
           python3 - <<'PY'
           from pathlib import Path
@@ -106,6 +106,7 @@ jobs:
               assert not re.search(r'(?m)^(?:local )?instance\b|attribute\s+\[instance\]',code)
               assert all(t not in code for t in ['Source48Label','NormedRing','GammaMatrix','SpinIndex','ChartedSpace','LieGroup'])
           for t in ['source9PlaneSpinWord_vectorAction_contDiff_pbw n',
+                    '(source9CoordinateVector j) i) at h',
                     'contDiff_id.prodMk contDiff_const',
                     'source9NaturalMatrix_entry_eq_vectorConjugation',
                     'apply contDiff_pi.2',

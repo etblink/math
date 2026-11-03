@@ -41,6 +41,9 @@ theorem source9OrderedStrictPlaneWord_matrix_entry_contDiff
         Matrix SpaceIndex SpaceIndex ℝ) i j) := by
   have h := (contDiff_apply ℝ ℝ i).comp
     (source9OrderedStrictPlaneWord_column_contDiff n j)
+  change ContDiff ℝ n (fun t : Fin 36 → ℝ =>
+    source9SpinVectorConjugation (source9OrderedStrictPlaneWord t)
+      (source9CoordinateVector j) i) at h
   have heq :
       (fun t : Fin 36 → ℝ =>
         ((source9SpinVectorOrthogonalHom (source9OrderedStrictPlaneWord t)) :

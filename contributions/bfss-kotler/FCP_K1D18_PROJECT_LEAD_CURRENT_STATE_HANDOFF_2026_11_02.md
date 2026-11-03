@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CE**, [run 41725353183](https://github.com/etblink/math/actions/runs/41725353183), tested `abcd11965c65ae64739c460cb5dbb3148f30e236`. **Current candidate F10CF:** reuse actual finite-word vector-action smoothness and original coordinate columns to prove all-order smoothness of the actual natural matrix map and upper-coordinate map, then upgrade CE's literal identity derivative to a strict derivative at zero. Seven roots await full strict CI. Parameter-space local inversion, source coverage/local kernel control, subgroup charts and tangent/manifold obligations remain open. Both CE reds and all earlier histories are preserved.
+> **Latest accepted mathematical increment remains F10CE**, [run 41725353183](https://github.com/etblink/math/actions/runs/41725353183), tested `abcd11965c65ae64739c460cb5dbb3148f30e236`. **F10CF remains pending:** [run 41733830143](https://github.com/etblink/math/actions/runs/41733830143) failed fresh source compilation because the matrix-entry smoothness rewrite expected a lambda while its hypothesis retained composition syntax. The bounded repair exposes that lambda by a typed `change` before the existing equality rewrite. All seven statements, audit and limits are unchanged. No CF root is qualified. All prior red and green histories remain preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2228,3 +2228,24 @@ Candidate files:
 **Verification discipline:** retain accepted ancestry pins through CE, including its repaired source/audit; rebuild CE, then compile CF and its independent audit freshly with warnings-as-errors. Require exactly seven permitted root reports in each phase, unchanged three-axiom whitelist and 840/600-second caps. No new instance, Clifford norm context, topology, gamma/carrier replacement, linter suppression or custom limit is introduced. The legacy conditional-alias guard remains active. Local exact hashes, declaration/scope preflight, YAML, trigger paths, all shell blocks and both embedded Python blocks pass. Local Lean is unavailable; all seven CF roots remain candidates until complete strict CI succeeds.
 
 **Next action and ceiling:** inspect both exact fresh Lean phases before qualification. If accepted, use the strict literal identity derivative and standard finite-parameter completeness to construct the appropriate local inverse or open partial homeomorphism for the actual upper-coordinate map, auditing its exact forward function and source/target neighborhoods. A parameter-space local inverse does not prove source Spin coverage, source local kernel control or a subgroup atlas. Tangent Lie-algebra identifications, determinant/covering statements, full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all earlier negative evidence.
+
+## F10CF strict red — normalize the composition hypothesis before the entry rewrite
+
+**Immutable evidence:** [run 41733830143](https://github.com/etblink/math/actions/runs/41733830143), tested `d16d0e375426bd2085f1eb42cbe736e957176cbe`, job `126257749635`, completed/failure. Pins, environment restoration and accepted CE rebuild passed. Fresh CF source compilation failed; the independent audit was skipped and the terminal classifier did not run. Zero CF roots are qualified.
+
+The sole source diagnostic is line 54:6: the rewrite `rw [← heq] at h` cannot find the literal lambda in `h`, whose function is still `(fun f => f i) ∘ columnAction`. The proposition equality `heq` instead describes `fun t => columnAction t i`. Although these functions are definitionally equal, the rewrite matcher does not expose the composition in this occurrence. The first two roots print only the permitted axioms; the five downstream roots contain compiler-recovery `sorryAx` after the failed entry proof. Those are invalid partial reports, not source admissions or qualification.
+
+Artifact `13276954441`, `bfss-v10h-f10cf-smooth-strict-upper-coordinate-map-d16d0e375426bd2085f1eb42cbe736e957176cbe-1`, 1003 bytes, GitHub-reported ZIP SHA-256 `edc65e053c3995840659e8d43ee8d6c05bea799a12e6334265856abb34e058ee`. Failed source/audit/workflow blobs: `dee9feb80e2ae02ea6b639daaa1133409bf9b3cb` / `dab723eea335c83d7824a16f59acd55e6b39d713` / `3235a045496abfcb48805aeb0945778ec0d85246`.
+
+**Bounded repair:** immediately after composing the smooth evaluation map with the smooth actual column action, use a fully typed `change ContDiff ℝ n (fun t : Fin 36 → ℝ => source9SpinVectorConjugation (source9OrderedStrictPlaneWord t) (source9CoordinateVector j) i) at h`. Then apply the existing named entry-function equality and finish as before. This exposes only the beta-reduced composition shape; no actual source word, carrier, regularity order or derivative is replaced. Static comparison confirms that these three lines are the only mathematical source change and that all seven theorem signatures are identical. The independent audit remains byte-identical.
+
+Repaired files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CFSmoothStrictUpperCoordinateMap.lean` | `18dfa7cb7391446b72658036730ae98f990d809d` |
+| `.github/workflows/bfss-kotler-v10h-f10cf-smooth-strict-upper-coordinate-map-strict.yml` | `db5c0c83e001fe4ad2d7fbb1662e4d879734daa4` |
+
+The workflow updates only the source pin and adds a preflight check for the explicit shape bridge. All warning/linter rules, legacy conditional-alias guard, three-axiom whitelist, seven expected root reports per phase and 840/600-second caps remain. Local exact hashes, unchanged seven signatures, unchanged audit hash, declaration/scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available.
+
+**Next action and ceiling:** inspect complete fresh source and independent literal-function smoothness/strict-derivative audit before qualification. Treat a composition/lambda mismatch as an explicit interface obligation; do not repeat the same rewrite against the unnormalized hypothesis or raise limits. Parameter-space local inversion, source Spin coverage/local kernel control, subgroup charts, tangent identifications, determinant/covering results, full F10BC manifold differential and BFSS physical conclusions remain open. Preserve this red separately from CE's earlier audit failures.
