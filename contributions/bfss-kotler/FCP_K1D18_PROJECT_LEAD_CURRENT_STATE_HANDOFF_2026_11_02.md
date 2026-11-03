@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CE**, [run 41725353183](https://github.com/etblink/math/actions/runs/41725353183), tested `abcd11965c65ae64739c460cb5dbb3148f30e236`. **F10CF remains pending:** [run 41733830143](https://github.com/etblink/math/actions/runs/41733830143) failed fresh source compilation because the matrix-entry smoothness rewrite expected a lambda while its hypothesis retained composition syntax. The bounded repair exposes that lambda by a typed `change` before the existing equality rewrite. All seven statements, audit and limits are unchanged. No CF root is qualified. All prior red and green histories remain preserved.
+> **Latest accepted mathematical increment is F10CF**, [run 41735793415](https://github.com/etblink/math/actions/runs/41735793415), tested `31aa83a26375c40a13dc6decf414c62baab15d5f`. Fresh warnings-as-errors source compilation, independent actual matrix/literal upper-map smoothness/strict-derivative audit and all seven root axiom checks passed. The actual ordered-word upper-coordinate map is smooth at every order and has the literal identity CLM as its strict derivative at zero. CF's initial red, both CE reds and all earlier evidence remain preserved. Parameter-space local inversion, source coverage/local kernel control, subgroup charts and tangent/manifold obligations remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2249,3 +2249,37 @@ Repaired files:
 The workflow updates only the source pin and adds a preflight check for the explicit shape bridge. All warning/linter rules, legacy conditional-alias guard, three-axiom whitelist, seven expected root reports per phase and 840/600-second caps remain. Local exact hashes, unchanged seven signatures, unchanged audit hash, declaration/scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available.
 
 **Next action and ceiling:** inspect complete fresh source and independent literal-function smoothness/strict-derivative audit before qualification. Treat a composition/lambda mismatch as an explicit interface obligation; do not repeat the same rewrite against the unnormalized hypothesis or raise limits. Parameter-space local inversion, source Spin coverage/local kernel control, subgroup charts, tangent identifications, determinant/covering results, full F10BC manifold differential and BFSS physical conclusions remain open. Preserve this red separately from CE's earlier audit failures.
+
+## F10CF accepted — actual upper-coordinate smoothness and strict identity derivative
+
+**Verified strict result:** [run 41735793415](https://github.com/etblink/math/actions/runs/41735793415), tested `31aa83a26375c40a13dc6decf414c62baab15d5f`, attempt 1, job `126264522476`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CE rebuild, fresh warnings-as-errors CF compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CF_SMOOTH_STRICT_UPPER_COORDINATE_MAP_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the seven expected fully qualified roots, each once per phase, fourteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. Exact tested SHA and run state, all step verdicts, decoded log, actual terminal marker, root multiplicities, axiom whitelist, artifact metadata and all three candidate blob identities were checked before acceptance. The first CF run remains a strict source failure.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CFSmoothStrictUpperCoordinateMap.lean` | `18dfa7cb7391446b72658036730ae98f990d809d` |
+| `lean/diagnostics/FCP_K1D18V10HF10CFIndependentAudit.lean` | `dab723eea335c83d7824a16f59acd55e6b39d713` |
+| `.github/workflows/bfss-kotler-v10h-f10cf-smooth-strict-upper-coordinate-map-strict.yml` | `db5c0c83e001fe4ad2d7fbb1662e4d879734daa4` |
+
+All seven qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9NaturalMatrix_entry_eq_vectorConjugation`
+2. `source9OrderedStrictPlaneWord_column_contDiff`
+3. `source9OrderedStrictPlaneWord_matrix_entry_contDiff`
+4. `source9OrderedStrictPlaneWord_matrix_contDiff`
+5. `source9OrderedUpperCoordinateMap_contDiff`
+6. `source9OrderedUpperCoordinateMap_contDiffAt_one_zero`
+7. `source9OrderedUpperCoordinateMap_hasStrictFDerivAt_zero`
+
+Retained artifact `13280091046`, `bfss-v10h-f10cf-smooth-strict-upper-coordinate-map-31aa83a26375c40a13dc6decf414c62baab15d5f-1`, 3731 bytes, GitHub-reported ZIP SHA-256 `2acb61f8646bfcb188590189981c85dfee298a1991ff749551903be240c455e0`.
+
+**Qualified mathematical content:** for every regularity order `n : ℕ∞ω`, the actual ordered source word's action on each fixed original coordinate vector is `ContDiff ℝ n`. The general actual natural-matrix entry/vector-conjugation bridge then gives every-order smoothness of all matrix entries and the entire actual underlying nine-matrix map. Composing with CE's actual continuous upper projection proves `ContDiff ℝ n source9OrderedUpperCoordinateMap`. In particular, the actual map is order-one smooth at zero. Combining this with CE's specified ordinary derivative through the inspected `ContDiffAt.hasStrictFDerivAt'` API proves `HasStrictFDerivAt source9OrderedUpperCoordinateMap (ContinuousLinearMap.id ℝ (Fin 36 → ℝ)) 0`.
+
+The independent audit checks the standard parameter/matrix product topologies, original coordinate-column and actual matrix-entry interfaces, full matrix smoothness, smoothness of the named and completely expanded literal actual upper-coordinate map, order-one regularity at zero, the strict identity derivative for both functions, and recovery of the ordinary identity derivative from the strict result. The named literal-function equality bridge remains explicit and independently proved from the typed projection theorem.
+
+**Successful method and repair outcome:** reuse of BV's joint actual vector-action smoothness, typed product pairing, coordinate evaluation and two Pi assembly steps suffices; no new Clifford norm instance or normed-ring estimate is required. The first source rewrite failed only because its hypothesis retained composition syntax. Exposing the explicitly typed beta-reduced lambda before rewriting resolved that failure. All seven statements, the independent audit and strict limits remained unchanged. Explicit argument/function-shape bridges continue to succeed where an unnormalized rewrite does not. No linter suppression, custom proof limit, gamma/carrier replacement or topology change was introduced.
+
+**Next bounded plan and ceiling:** inspect the pinned inverse-function constructor and instantiate the actual upper-coordinate map with its strict literal identity derivative, the identity continuous linear equivalence and standard finite-parameter completeness. Construct a parameter-space local inverse or open partial homeomorphism and independently check its exact forward function, zero source/target neighborhood membership and local inverse identities. This step must not infer that nearby source Spin elements are exhausted by the word image; source local fiber/kernel control and subgroup-chart coverage remain separate obligations. Tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
