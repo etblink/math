@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified mathematical baseline (F10BX):** [run 41582840775](https://github.com/etblink/math/actions/runs/41582840775), exact `7f42df60823ba77e82ca7db0494eb9c07ec98e39`. **Current F10BY status:** source again compiled cleanly, but [run 41586108954](https://github.com/etblink/math/actions/runs/41586108954) retained both audit `HSub` failures. Result annotations alone were insufficient. The audit now derives additive topology from accepted BF, checks subtraction at the reconstructed PBW type, and binds both operands at that exact type before composition. Source and mathematical scope are unchanged; complete BY qualification remains pending. The failed hypothesis and revised bridge are recorded below.
+> **Latest accepted mathematics remains F10BX** at `7f42df60823ba77e82ca7db0494eb9c07ec98e39`. **F10BY method review complete:** the first two audits failed on `HSub`; [run 41587795099](https://github.com/etblink/math/actions/runs/41587795099) resolved those errors and failed only the proof-style linter on `letI`. The audit now follows the compiler's `let` correction; mathematical source and audit propositions remain unchanged. Complete BY qualification awaits the repaired strict run. Read the [three-red causal review and recovery plan](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md); historical evidence remains below.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1680,3 +1680,21 @@ The audit reconstructs its norm through a private coordinate-map definition, whe
 **Method lesson and next action:** repeated identical diagnostics after a type annotation reject that annotation as a sufficient explanation. Inspect the required instance's actual declaration and its structural hypotheses, then align the consumer's typed operands with the reconstructed dictionaries and check the ground prerequisite explicitly. Inspect both phases of the next exact-commit strict run before qualification. Preserve both BY failures; source-level success and imported-root reports do not certify failed audit expressions.
 
 **Scientific ceiling unchanged:** actual fixed-vector finite-parameter action derivatives compile in the mathematical source, but BY is still awaiting complete independent acceptance. Native model isomorphisms, subgroup charts, source local fiber/kernel control, tangent identifications and the full F10BC manifold differential remain open.
+
+## F10BY third red — instance bridge passed, proof-style linter isolated; method review implemented
+
+**Run preserved:** [41587795099](https://github.com/etblink/math/actions/runs/41587795099), exact tested commit `91764a75f189ccb7e59c937ccb00db31d1cb9fd1`, job `125757234015`, completed/failure. Pins, restoration, BX ancestry and fresh BY source compilation passed. Audit failed only at 30:2 under warnings-as-errors. Evidence artifact `13208927770`, ZIP SHA-256 `4b5146f08f9b0ef3dc83e53221f0daa4233691d957495d9c164e0434a87d06fc`.
+
+**New evidence:** neither of the previous `HSub` errors is present. The explicit additive-topology proof, ground subtraction capability and typed operand checks reached their propositions without those diagnostics. The combined bridge supports the intended audit; the individual contributions of its two changes were not separately isolated.
+
+**Exact remaining diagnostic:** the goal is a proposition, so Lean's `linter.style.haveILetI` requires `let` in place of `letI`. The compiler explains that value inlining is irrelevant here by proof irrelevance. This is a distinct proof-style failure. Source and imported audit roots each print six permitted reports, but the failed terminal audit still prevents BY acceptance.
+
+At the owner's request, reviewed the FCP evergreen and procedural success/failure plan at FCP `cc608e2282e1b32bb11bbb64424e4775b28138e2`, the V9Z six-red review, V8A validator recovery, V8L linter recovery, V10E conversion review, and the recent BW/BX acceptance and failure records. The evidence, causal comparison, procedural shortcomings, bounded plan and stop rules are in the new scoped [F10BY three-red review](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md). The evergreen itself is unchanged.
+
+**Implemented correction:** replace the single proof binding `letI : IsTopologicalRing ...` with compiler-requested `let : IsTopologicalRing ...`. The complete old audit is recovered by reversing that one keyword change. Repaired audit blob `4e89a6df00269492b91bee147cd4a24bb3b688a3`; mathematical source remains `1fa83224a22fc0c7d2efdd6b1fdffe2f55f536cc`. The workflow refreshes only its exact audit pin and local binding guard. No linter suppression, semantic validator relaxation, increased limit or new hypothesis is introduced.
+
+**Validation:** one-keyword audit diff checked; mathematical source hash unchanged; YAML, all shell blocks, embedded Python and complete source/audit preflight pass. These checks do not substitute for Lean. Local Lean is unavailable, so the strict run must validate the corrected audit and all original controls.
+
+**Ordered next action:** inspect the repaired run through terminal status, then review both fresh Lean phases, the exact six-root/axiom classifier and evidence artifact before accepting BY. If the previous `HSub` returns, stop broad wrapper retries and isolate the already defined ground/type bridge with complete types; do not repeat result-only annotations. If only a different style diagnostic appears, correct it locally while retaining warning strictness.
+
+**Scientific scope unchanged:** ordinary finite-parameter derivative of the actual word's vector action at zero, with the vector fixed. Subgroup charts, native model isomorphisms, tangent identifications, source local fiber/kernel control and the full F10BC manifold differential remain open.

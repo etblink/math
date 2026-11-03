@@ -27,7 +27,7 @@ example : source9PBWNormedAddCommGroup =
 -- Derive the actual ring's additive topology from the accepted theorem at the reconstructed PBW norm.
 local instance auditPBWIsTopologicalAddGroup :
     IsTopologicalAddGroup (CliffordAlgebra source9Quadratic) := by
-  letI : IsTopologicalRing (CliffordAlgebra source9Quadratic) :=
+  let : IsTopologicalRing (CliffordAlgebra source9Quadratic) :=
     source9Clifford_isTopologicalRing_pbw
   exact IsTopologicalRing.isTopologicalAddGroup
 
