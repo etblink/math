@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified state (F10BS):** run [41560403653](https://github.com/etblink/math/actions/runs/41560403653) accepted at `100347bf0cfadb49083802eaaf823cefca36f502`: the actual source action's whole nine-matrix curve velocity is the literal native coordinate plane. **Current candidate (F10BT repair):** first run [41571102917](https://github.com/etblink/math/actions/runs/41571102917) failed on the scoped order notation; explicit `ContDiff` scope is added in source and independent audit. Exact-PBW ambient bilinear multiplication and every-order smoothness remain unqualified pending a fresh strict run. Read the [source Spin(9) chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) and the appended F10BS/F10BT entries below. Historical entries retain their original status and failure provenance.
+> **Latest verified state (F10BT):** [run 41572318768](https://github.com/etblink/math/actions/runs/41572318768) accepted at `2a0e4932c7ecfc0ca8b2e637b9088eb462acd47d`: literal ambient Clifford multiplication is continuously bilinear and `ContDiff ℝ n` for every order under the unchanged named PBW norm. **Current candidate (F10BU):** jointly smooth ambient extension of actual source-vector conjugation, with exact restriction to Spin; pending strict CI. The [chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) remains the frozen planning baseline. Read the latest appended acceptance/candidate entries below; historical statuses and failures are retained.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1331,3 +1331,42 @@ The other three candidate declarations produced root reports using only the stan
 **Method lesson:** when reusing a theorem involving scoped notation, inspect both its declaration and surrounding `open scoped` commands. Static declaration inventories and shell/Python checks do not establish Lean parser acceptance. Keep terminal compiler status and independent audit mandatory even when a root printout appears harmless.
 
 **Validation/next action:** local candidate hash, declaration/scope preflight, YAML, shell syntax and embedded Python checks must pass before publication. No local Lean executable is installed. Run the unchanged fresh strict compiler and independent PBW/type/axiom audit; all four roots remain pending. Existing 840/600-second compiler/audit caps, warning strictness and axiom whitelist are retained. All earlier accepted checkpoints and red histories are preserved.
+
+## F10BT accepted — exact PBW bilinear multiplication and every-order ambient smoothness
+
+**Verified strict result:** [run 41572318768](https://github.com/etblink/math/actions/runs/41572318768), tested commit `2a0e4932c7ecfc0ca8b2e637b9088eb462acd47d`, job `125707834552`, completed/success with every required step successful. The actual terminal marker is `V10H_F10BT_EXACT_PBW_BILINEAR_MULTIPLICATION_SMOOTHNESS_TYPES_AXIOMS_PASS`. Fresh source compilation and the independent reconstructed-PBW audit each produced exactly the four expected root reports; all eight reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level compiler warning/error occurred in the fresh source/audit phases.
+
+Accepted source blob `0d734b95f044a574490df1597118dbdc5d4ac0f6`; independent audit blob `7fd6812e2e5ee4bdfa5b56422a9905c5611e6bd3`; workflow blob `ae4c521f434dd5f58ed82a3bcd15b2a4d9f76812`. Evidence artifact `13202078533`, ZIP SHA-256 `3e581af3295437db24bc0c84f2330abe997fa61adc4f67e6113755cb3a7253fb`.
+
+**Qualified increment:** the actual Clifford product is the accepted curried continuous bilinear map and its literal uncurried multiplication is `ContDiff ℝ n` for every `n : ℕ∞ω`, under the unchanged named PBW norm. This includes the smooth order; no constant-one submultiplicative norm estimate or `NormedRing` instance was needed or proved. No subgroup atlas, smooth subgroup inversion or tangent identification follows from this ambient theorem alone.
+
+**Success/failure lesson:** the first attempt failed at the scoped `ℕ∞ω` binder. Opening `ContDiff` separately in both consumers fixed that parser prerequisite; the proof terms and propositions were unchanged. The fresh strict compiler and independent audit are what now qualify the four roots. Retain red run 41571102917 and its misleading malformed-root empty axiom printout as evidence that root reports never override compiler failure.
+
+## F10BU candidate — jointly smooth ambient extension of the actual nine-vector action
+
+**Candidate only; zero F10BU roots qualified before strict success.** Use accepted F10BT multiplication, F10BG reversal/inverse identity and F10BO canonical projection. The expression
+`(a,z) ↦ source9CliffordVectorProjection (a * ι(z) * reverse(a))`
+is defined on the entire actual Clifford algebra times the original nine-vector space. On an actual source Spin element it must equal the already accepted `source9SpinVectorConjugation` exactly.
+
+| Candidate declaration | Exact obligation |
+|---|---|
+| `source9CliffordReverseCLM` | Continuously bundle actual real-linear grade reversal under the named PBW norm. |
+| `source9VectorEmbeddingCLM` | Continuously bundle the actual source-nine Clifford embedding with its standard Pi-domain norm. |
+| `source9VectorProjectionCLM` | Continuously bundle the accepted canonical vector projection. |
+| `source9AmbientVectorConjugation` | Literal ambient polynomial formula on all Clifford elements and nine-vectors. |
+| `source9AmbientVectorConjugation_eq_spin` | Exact equality with actual source Spin vector conjugation, using accepted inverse = reversal. |
+| `source9AmbientVectorConjugation_contDiff_pbw` | Joint every-order `ContDiff` in both inputs, by the pinned composition/product API and accepted F10BT. |
+
+Files:
+
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BUAmbientVectorActionSmoothness.lean`, candidate blob `08f716184dd87a1cb724fad2ad8455b69909c340`.
+- `lean/diagnostics/FCP_K1D18V10HF10BUIndependentAudit.lean`, independent audit blob `7a8e3f09d3a799d49ca5c3fa2060abe957ef7628`.
+- `.github/workflows/bfss-kotler-v10h-f10bu-ambient-vector-action-smoothness-strict.yml`.
+
+The independent audit reconstructs the exact accepted PBW coordinates/norm, checks the three complete continuous-linear-map types and literal values, restates the ambient polynomial definition by reflexivity, checks its equality with both the accepted action and actual inverse-coercion formula, and restates joint smoothness both with and without the ambient wrapper. It prints all six roots. The `ContDiff` scope is opened explicitly in each file.
+
+**Pinned primary API inspected:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, `ContDiff/Comp.lean` explicitly imports `Basic`, supplies `ContDiff.comp`, `comp₂`, `contDiff_fst` and `contDiff_snd`; `Basic.lean` supplies smoothness of continuous linear maps. Clifford grade reversal is the actual real-linear map from `CliffordAlgebra/Conjugation.lean`. The source explicitly imports F10BG for its accepted inverse/reversal and continuity roots.
+
+**Workflow/validation:** retain Lean 4.34.1, exact Mathlib revision, source/PBW/BE/BF pins, accepted F10BG/F10BO/F10BT source pins and relevant independent audits. Rebuild BT/BO/BG ancestry together, freshly compile the six-root source and independent audit with warnings-as-errors, and enforce exactly six permitted root reports per log. Compiler/audit caps remain 840/600 seconds; no limit increase or linter suppression. Local exact candidate hashes, source/audit preflight, YAML parsing, shell syntax and embedded Python syntax pass. Local Lean is unavailable, so elaboration and all independent mathematical checks remain pending CI.
+
+**Scientific ceiling/next action:** this candidate is ambient vector-space calculus. It constructs no source/target subgroup chart, LieGroup instance, full tangent equivalence, natural-action determinant-one theorem, kernel/covering result or F10BC manifold differential equality. If accepted, this joint ambient formula can support smooth multivariable products of the actual plane curves and their action coordinates. Inspect the exact strict result first, then select that bounded parameterization prerequisite from the existing chart/tangent work plan.
