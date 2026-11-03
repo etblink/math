@@ -96,8 +96,13 @@ noncomputable def source9StrictPlaneModelEquiv :
     intro i j
     change source9StrictPlaneMatrix (c + d) i j =
       source9StrictPlaneMatrix c i j + source9StrictPlaneMatrix d i j
-    by_cases hij : i < j <;> by_cases hji : j < i <;>
-      simp [source9StrictPlaneMatrix, hij, hji] <;> abel
+    by_cases hij : i < j
+    · simp [source9StrictPlaneMatrix, hij]
+    · by_cases hji : j < i
+      · simp only [source9StrictPlaneMatrix, dite_eq_right hij, dite_eq_left hji,
+          Pi.add_apply]
+        abel
+      · simp [source9StrictPlaneMatrix, hij, hji]
   map_smul' a c := by
     apply Subtype.ext
     apply Matrix.ext
