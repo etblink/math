@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CC**, [run 41672054647](https://github.com/etblink/math/actions/runs/41672054647), tested `69ad47237d37a06c19ef9d93c84789b13aecc9cb`. Fresh warnings-as-errors source compilation, independent transport/model/actual-derivative audit and all seven root axiom checks passed. CB's actual ordered-word matrix derivative equals the underlying canonical native model; upper entries recover every input coordinate and the derivative is injective. The independent audit also checks coverage of canonical skew matrices. Continuity, subgroup charts, source local fiber/kernel control and tangent obligations remain open. All prior red and green histories are preserved.
+> **Latest accepted mathematical increment remains F10CC**, [run 41672054647](https://github.com/etblink/math/actions/runs/41672054647), tested `69ad47237d37a06c19ef9d93c84789b13aecc9cb`. **Current candidate F10CD:** promote the identical canonical model to a continuous linear equivalence with standard parameter product and native skew-subspace topologies, check continuity in both directions and the literal inverse coordinates, and retain the actual derivative identity. Seven roots await complete strict CI. Subgroup charts, source local fiber/kernel control, tangent identifications and the full manifold differential remain open. All earlier red and green histories remain preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -1995,3 +1995,35 @@ The independent audit separately checks transport and model equivalence types, l
 **Successful method:** the inspected pinned `LinearEquiv.piCongrLeft'`, `Fin.sum_univ_def` and `Fintype.sum_equiv` interfaces compose directly with CA and CB. Explicit equality of each reindexed summand, typed coordinate extraction from CA's inverse law, and typed matrix-entry evaluation congruence succeed without broad overloaded rewrites. This candidate passed on its first strict run. No instance/norm context, linter suppression, custom proof limit, gamma basis or carrier replacement was introduced. Earlier red histories retain their original status.
 
 **Next bounded plan and ceiling:** inspect and reuse the pinned finite-dimensional continuity APIs to promote the existing parameter/canonical model equivalence to the appropriate continuous linear equivalence with standard function/matrix-subspace topologies. Audit those topologies and the literal underlying linear map independently. Then formulate the actual ordered-word map's upper-coordinate projection and its derivative identity for the inverse-function prerequisites. These steps do not themselves supply source local fiber/kernel control or show that nearby source Spin elements are exhausted by the word chart. Subgroup charts, source local fiber/kernel control, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
+
+## F10CD candidate — continuous canonical native model with standard topologies
+
+**Baseline:** live research branch checked at `6f83e3e4e43ba958df5d99b815bc830fdc64793d`, the documentation-only CC acceptance commit. Root AGENTS and current handoff reread. Previously checked ancestor instruction files are unchanged at this baseline. Accepted sources and verification records remain unchanged.
+
+**Plan and implementation:** promote the existing `source9OrderedStrictPlaneModelEquiv` directly through Mathlib's `LinearEquiv.toContinuousLinearEquiv`. Use the standard topology on `Fin 36 → ℝ` and the canonical skew subtype induced by the original matrix entries; register no topology or norm instance. Prove the underlying linear equivalence is literally CC's qualified map, expose continuity forward and backward, restate CC's actual ambient-matrix derivative using the continuous model, and derive the inverse's original upper-entry formula by typed model/derivative/entry equalities. This does not define a subgroup atlas or a group-manifold differential.
+
+**Pinned API inspection:** Mathlib revision `d13f23b723b8a846827a245b89c10fc7d3f11612`. `Topology/Algebra/Module/FiniteDimension.lean`, blob `b145c6f6f798571ca4680cf424fa53796437524e`, gives the complete topological vector-space assumptions and the constructor `LinearEquiv.toContinuousLinearEquiv`. Its definition retains the same `e`, proves forward continuity by finite-dimensional linear-map continuity, and obtains finite dimensionality of the target from `e.finiteDimensional` to prove inverse continuity. `Analysis/Normed/Module/FiniteDimension.lean`, blob `7acfd4dbd8e38944b0e6b935086dda443187b532`, was also inspected; the more general topological constructor suffices here without adding a norm context.
+
+Seven pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9NativeSkewTopology_induced`
+2. `source9OrderedStrictPlaneModelContinuousEquiv`
+3. `source9OrderedStrictPlaneModelContinuousEquiv_toLinearEquiv`
+4. `source9OrderedStrictPlaneModelContinuousEquiv_continuous`
+5. `source9OrderedStrictPlaneModelContinuousEquiv_symm_continuous`
+6. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_continuousModel`
+7. `source9OrderedStrictPlaneModelContinuousEquiv_symm_apply`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean` | `fa3049fae4e0392ea259e20184307c4edd0f08f9` |
+| `lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean` | `2647fa9273c035885b4edf8b805070d0ddc71ec4` |
+| `.github/workflows/bfss-kotler-v10h-f10cd-continuous-native-model-strict.yml` | `4cb57cee4e10df03e758f486f53e38a5779aff9d` |
+
+**Independent audit:** capture the standard matrix and parameter product topologies before opening the elementwise matrix norm scope, using the BZ-tested `@[instance_reducible] private def` style. Reflexive equalities check that the scoped matrix and parameter topologies remain those captured topologies and that canonical skew matrices have the induced matrix-entry topology. Check finite dimensionality of the actual parameter space and canonical model, the complete continuous-equivalence type, exact underlying CC linear equivalence and CA composition, continuity in each direction, inverse upper-coordinate formula, actual derivative equality and both-sided reconstruction on canonical skew matrices. No new instance definition or linter suppression is introduced.
+
+**Verification discipline:** retain accepted ancestry pins through CC, pinned Lean 4.34.1/Mathlib, fresh compiler and independent audit with warnings-as-errors, unchanged 840/600-second caps, exactly seven expected root reports per phase and the same three-axiom whitelist (including genuine axiom-free reports as before). Local candidate hashes, source/audit declaration and scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is installed; all seven roots remain candidates until strict CI succeeds.
+
+**Next action and scientific ceiling:** inspect the exact source and independent topology/type/axiom audit before qualification. If accepted, formulate the actual ordered-word map's upper-coordinate projection and prove the appropriate `HasFDerivAt` identity into the parameter model before considering inverse-function machinery. A continuous model of the derivative alone does not prove that nearby source Spin elements are exhausted by the word, identify the source tangent algebra or control the source local kernel. Subgroup charts, source local fiber/kernel control, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all prior negative evidence and accepted checkpoints.
