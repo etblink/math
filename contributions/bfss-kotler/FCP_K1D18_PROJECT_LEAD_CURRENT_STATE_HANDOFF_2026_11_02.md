@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CE**, [run 41725353183](https://github.com/etblink/math/actions/runs/41725353183), tested `abcd11965c65ae64739c460cb5dbb3148f30e236`. Fresh warnings-as-errors source compilation, independent topology/literal-actual-map/identity-derivative audit and all seven root axiom checks passed. The actual ordered-word upper-coordinate map sends zero to zero and has the literal identity continuous linear map as its full derivative there. Both CE reds and all earlier evidence remain preserved. Strict differentiability/smoothness for inverse-function use, source coverage/local kernel control, subgroup charts and tangent/manifold obligations remain open.
+> **Latest accepted mathematical increment remains F10CE**, [run 41725353183](https://github.com/etblink/math/actions/runs/41725353183), tested `abcd11965c65ae64739c460cb5dbb3148f30e236`. **Current candidate F10CF:** reuse actual finite-word vector-action smoothness and original coordinate columns to prove all-order smoothness of the actual natural matrix map and upper-coordinate map, then upgrade CE's literal identity derivative to a strict derivative at zero. Seven roots await full strict CI. Parameter-space local inversion, source coverage/local kernel control, subgroup charts and tangent/manifold obligations remain open. Both CE reds and all earlier histories are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2192,3 +2192,39 @@ The independent audit checks standard parameter/matrix product topologies, compl
 **Recovery outcome and method:** replacing the deprecated conditional alias in source and audit resolved the first red; the early guard against the four legacy conditional aliases remains active. The second run demonstrated full source success but failed independent controls. Exposing a scalar zero and using a named actual-function equality resolved those controls without raising recursion limits. The mathematical source blob `e61f10d8b5726a84dd1fadc55e15318f3c40b158` stayed unchanged through the successful audit-only repair. No theorem was weakened, no audit obligation dropped, and no instance, norm/topology, linter or proof-limit change was introduced. Clean partial root printouts never replaced complete audit success.
 
 **Next bounded plan and ceiling:** inspect pinned strict-derivative and smoothness APIs, and reuse BV's actual finite-word vector-action smoothness plus the original coordinate-column/matrix-entry bridges to obtain appropriate smoothness or strict differentiability of this exact upper-coordinate map. Qualify a strict identity-derivative statement or the necessary neighborhood regularity before invoking inverse-function machinery. An ordinary identity derivative at one point alone does not justify a local inverse. Any resulting parameter-space local inverse remains separate from proving source Spin coverage, local kernel control or a subgroup atlas. Tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
+
+## F10CF candidate — actual smooth upper-coordinate map and strict identity derivative
+
+**Baseline:** live research branch checked at `a6d1a92e941ec982bee3f01a8cb70e37d53e1bdc`, the documentation-only CE acceptance commit. Root AGENTS and current handoff reread; previously checked ancestor instruction files are unchanged at this baseline. Accepted source and independent-audit modules remain unchanged.
+
+**Bounded plan and implementation:** obtain every-order smoothness of each original coordinate-column action by composing BV's qualified actual finite-word/vector joint smoothness with `t ↦ (t, source9CoordinateVector j)`. Use a general actual natural-matrix entry equality on a source group variable to bridge to matrix entries, then assemble the whole matrix map with two Pi smoothness criteria. Compose with CE's actual continuous upper projection. Specialize to `ContDiffAt ℝ (1 : ℕ∞ω)` at zero and apply the inspected real/complex strict-derivative constructor to CE's qualified literal identity `HasFDerivAt`. The target remains the exact actual upper-coordinate map; no surrogate model function replaces it.
+
+**Pinned API review:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`:
+- `Analysis/Calculus/ContDiff/Basic.lean`, blob `cbed95fb0f6362777de54bccea7a4854f2292029`: continuous-linear-map smoothness and smooth product pairing.
+- `Analysis/Calculus/ContDiff/Operations.lean`, blob `80e898b98348cb111761430989137705f4a3cf63`: exact `contDiff_apply` and `contDiff_pi` interfaces.
+- `Analysis/Calculus/ContDiff/RCLike.lean`, blob `dff89ca9f7fee6191d8496a39a7aa2b1426fb6f0`: `ContDiffAt.hasStrictFDerivAt'` accepts the specified ordinary derivative and a nonzero regularity order. Use order one and `one_ne_zero`; do not infer strict differentiability from CE alone.
+- Read-only reconnaissance of `InverseFunctionTheorem/ContDiff.lean`, blob `add6679659423f2fa4d6ac3f2150ade77e93d7ae`, confirms the next local-inversion API route. No inverse-function construction is introduced in CF.
+
+Seven pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9NaturalMatrix_entry_eq_vectorConjugation`
+2. `source9OrderedStrictPlaneWord_column_contDiff`
+3. `source9OrderedStrictPlaneWord_matrix_entry_contDiff`
+4. `source9OrderedStrictPlaneWord_matrix_contDiff`
+5. `source9OrderedUpperCoordinateMap_contDiff`
+6. `source9OrderedUpperCoordinateMap_contDiffAt_one_zero`
+7. `source9OrderedUpperCoordinateMap_hasStrictFDerivAt_zero`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CFSmoothStrictUpperCoordinateMap.lean` | `dee9feb80e2ae02ea6b639daaa1133409bf9b3cb` |
+| `lean/diagnostics/FCP_K1D18V10HF10CFIndependentAudit.lean` | `dab723eea335c83d7824a16f59acd55e6b39d713` |
+| `.github/workflows/bfss-kotler-v10h-f10cf-smooth-strict-upper-coordinate-map-strict.yml` | `3235a045496abfcb48805aeb0945778ec0d85246` |
+
+**Independent audit:** standard parameter and matrix product topologies with the accepted class-definition reducibility style; exact actual group-variable matrix-entry/vector-action bridge; every-order original coordinate-column action, matrix-entry and full matrix smoothness; every-order smoothness of both the named map and the completely expanded literal actual function; order-one regularity at zero; `HasStrictFDerivAt` of both functions with the literal identity CLM; and recovery of the ordinary identity derivative from the strict one. The audit proves a named literal-function equality through the typed projection API before rewriting smoothness/strict derivative statements, preserving CE's successful recovery method and avoiding deep definitional comparisons.
+
+**Verification discipline:** retain accepted ancestry pins through CE, including its repaired source/audit; rebuild CE, then compile CF and its independent audit freshly with warnings-as-errors. Require exactly seven permitted root reports in each phase, unchanged three-axiom whitelist and 840/600-second caps. No new instance, Clifford norm context, topology, gamma/carrier replacement, linter suppression or custom limit is introduced. The legacy conditional-alias guard remains active. Local exact hashes, declaration/scope preflight, YAML, trigger paths, all shell blocks and both embedded Python blocks pass. Local Lean is unavailable; all seven CF roots remain candidates until complete strict CI succeeds.
+
+**Next action and ceiling:** inspect both exact fresh Lean phases before qualification. If accepted, use the strict literal identity derivative and standard finite-parameter completeness to construct the appropriate local inverse or open partial homeomorphism for the actual upper-coordinate map, auditing its exact forward function and source/target neighborhoods. A parameter-space local inverse does not prove source Spin coverage, source local kernel control or a subgroup atlas. Tangent Lie-algebra identifications, determinant/covering statements, full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all earlier negative evidence.
