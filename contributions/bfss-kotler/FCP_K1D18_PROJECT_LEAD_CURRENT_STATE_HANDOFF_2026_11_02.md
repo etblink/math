@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematics remains F10BX** at `7f42df60823ba77e82ca7db0494eb9c07ec98e39`. **F10BY method review complete:** the first two audits failed on `HSub`; [run 41587795099](https://github.com/etblink/math/actions/runs/41587795099) resolved those errors and failed only the proof-style linter on `letI`. The audit now follows the compiler's `let` correction; mathematical source and audit propositions remain unchanged. Complete BY qualification awaits the repaired strict run. Read the [three-red causal review and recovery plan](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md); historical evidence remains below.
+> **Latest accepted mathematical increment (F10BY):** [strict run 41590375172](https://github.com/etblink/math/actions/runs/41590375172) passed at `96a8d19755c90c42222fa8dabfaf383ff81db6bc`. The actual word's vector action has the full finite-parameter derivative at zero equal to the literal full native-plane sum, for every fixed original vector. Fresh source and independent audit passed all six root checks. The [three-red review and recovery plan](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md) and all failed runs are preserved. No new theorem candidate is active; the next mathematical obligation is the whole natural nine-matrix derivative/model identification, with charts and tangent equivalences still open.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1698,3 +1698,36 @@ At the owner's request, reviewed the FCP evergreen and procedural success/failur
 **Ordered next action:** inspect the repaired run through terminal status, then review both fresh Lean phases, the exact six-root/axiom classifier and evidence artifact before accepting BY. If the previous `HSub` returns, stop broad wrapper retries and isolate the already defined ground/type bridge with complete types; do not repeat result-only annotations. If only a different style diagnostic appears, correct it locally while retaining warning strictness.
 
 **Scientific scope unchanged:** ordinary finite-parameter derivative of the actual word's vector action at zero, with the vector fixed. Subgroup charts, native model isomorphisms, tangent identifications, source local fiber/kernel control and the full F10BC manifold differential remain open.
+
+## F10BY accepted after causal review — actual word vector-action full derivative
+
+**Terminal strict acceptance:** [run 41590375172](https://github.com/etblink/math/actions/runs/41590375172), exact tested repair commit `96a8d19755c90c42222fa8dabfaf383ff81db6bc`, job `125765477791`, completed/success. All ten job steps, including exact pins, restored environment, combined BX ancestry, fresh warnings-as-errors source compilation, independent audit and evidence preservation, completed successfully.
+
+The actual terminal classifier is `V10H_F10BY_ACTUAL_WORD_VECTOR_ACTION_FULL_DERIVATIVE_TYPES_AXIOMS_PASS`. Both fresh Lean phases contain exactly the six expected fully qualified root reports; each of the six names appears once in each phase. All twelve reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error occurs. This qualifies the complete gate; earlier red source/audit printouts are retained only as partial diagnostic evidence.
+
+| Accepted component | Exact Git blob |
+|---|---|
+| Mathematical source | `1fa83224a22fc0c7d2efdd6b1fdffe2f55f536cc` |
+| Independent audit | `4e89a6df00269492b91bee147cd4a24bb3b688a3` |
+| Strict workflow | `0f00d9b291f5d67b53f64917aace155e487b97e2` |
+
+Evidence artifact `13210162560`, ZIP SHA-256 `08d8ed0097e406f8421cd8286bec84e33ccc0a44660e1d737073474228792514`, size 5120 bytes. Lean remains 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
+
+**Qualified six roots:**
+
+- `source9CoordinateHalfBivector_reverse`.
+- `source9PlaneSpinWordVelocity_reverse`.
+- `source9PlaneSpinWord_conjugation_hasFDerivAt_zero`.
+- `source9PlaneSpinWord_vectorAction_hasFDerivAt_zero`.
+- `source9PlaneSpinWord_vectorAction_fderiv_zero`.
+- `source9PlaneSpinWord_vectorAction_fderiv_zero_apply`.
+
+**Exact mathematical scope:** for any finite real parameter family, list of parameter indices and family of original source-coordinate pairs with `hrs : ∀ i, r i ≠ s i`, actual Clifford conjugation by `source9PlaneSpinWord` has the stated full Fréchet derivative at zero. For every fixed original vector `z`, its actual `source9SpinVectorConjugation` action has derivative exactly `source9PlaneWordVectorVelocity`. In every direction `v`, the derivative is the literal list sum
+`(l.map (fun i => v i • ((coordinatePlane9 (r i) (s i)).mulVec z))).sum`.
+Repeated indices contribute repeatedly, and the output uses full native planes `E_rs - E_sr` without an extra half factor.
+
+The independent audit retains PBW reconstruction, the derived additive topology and ground subtraction check, both explicitly typed multiplication operands, literal bundled commutator evaluation by reflexivity, actual inverse-coercion conjugation, exact fixed-vector `HasFDerivAt`/`fderiv`, directional finite sum and matrix-unit normalization.
+
+**Outcome of the method review:** result annotations alone failed. The combined derived-topology and typed-operand bridge removed the prior inference errors. Its first strict attempt then failed only because `letI` was unsuitable in the proposition proof. The one-keyword compiler-directed `let` correction passed without changing mathematical source or propositions, suppressing linters, raising limits or relaxing axioms. The three failed runs 41584710436, 41586108954 and 41587795099 remain red with exact evidence. The [frozen three-red review](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md) records the comparison with historical FCP/math techniques, the prior procedural shortcomings and stop rules. This live handoff supplies the later acceptance.
+
+**Current next obligation and ceiling:** package the entire natural nine-matrix action derivative and establish a source-exact nonredundant native skew-plane model/order. BY does not select an invertible 36-plane parameterization, install a subgroup atlas, identify a tangent Lie algebra, establish source local fiber/kernel control or covering, prove the full F10BC manifold differential, or establish a physical BFSS conclusion. No further theorem candidate was introduced during this review/recovery task.
