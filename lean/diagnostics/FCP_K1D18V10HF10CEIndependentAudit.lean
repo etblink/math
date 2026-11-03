@@ -21,13 +21,29 @@ example (A : Matrix SpaceIndex SpaceIndex ℝ) (i : Fin 36) :
   source9OrderedUpperProjection_apply A i
 example : source9OrderedUpperProjection (1 : Matrix SpaceIndex SpaceIndex ℝ) = 0 := by
   funext i
+  change source9OrderedUpperProjection (1 : Matrix SpaceIndex SpaceIndex ℝ) i = (0 : ℝ)
   rw [source9OrderedUpperProjection_apply]
   simp only [Matrix.one_apply, ite_eq_right (source9StrictPlaneEnumeration_ne i)]
+
+-- Expose only the map wrapper, then use the typed projection theorem on the actual matrix.
+private theorem auditActualUpperCoordinateMap_eq :
+    source9OrderedUpperCoordinateMap =
+      (fun t : Fin 36 → ℝ => fun i : Fin 36 =>
+        ((source9SpinVectorOrthogonalHom (source9OrderedStrictPlaneWord t)) :
+          Matrix SpaceIndex SpaceIndex ℝ) (source9StrictPlaneRow i)
+            (source9StrictPlaneColumn i)) := by
+  funext t i
+  unfold source9OrderedUpperCoordinateMap
+  exact source9OrderedUpperProjection_apply
+    ((source9SpinVectorOrthogonalHom (source9OrderedStrictPlaneWord t)) :
+      Matrix SpaceIndex SpaceIndex ℝ) i
+
 example (t : Fin 36 → ℝ) (i : Fin 36) :
     source9OrderedUpperCoordinateMap t i =
       ((source9SpinVectorOrthogonalHom (source9OrderedStrictPlaneWord t)) :
         Matrix SpaceIndex SpaceIndex ℝ) (source9StrictPlaneRow i)
-          (source9StrictPlaneColumn i) := rfl
+          (source9StrictPlaneColumn i) :=
+  congrFun (congrFun auditActualUpperCoordinateMap_eq t) i
 example : source9OrderedUpperCoordinateMap 0 = 0 := source9OrderedUpperCoordinateMap_zero
 example : source9OrderedUpperProjection.comp
     (source9PlaneWordMatrixVelocity source9StrictPlaneRow source9StrictPlaneColumn
@@ -40,8 +56,10 @@ example : HasFDerivAt
       ((source9SpinVectorOrthogonalHom (source9OrderedStrictPlaneWord t)) :
         Matrix SpaceIndex SpaceIndex ℝ) (source9StrictPlaneRow i)
           (source9StrictPlaneColumn i))
-    (ContinuousLinearMap.id ℝ (Fin 36 → ℝ)) 0 :=
-  source9OrderedUpperCoordinateMap_hasFDerivAt_zero
+    (ContinuousLinearMap.id ℝ (Fin 36 → ℝ)) 0 := by
+  have h := source9OrderedUpperCoordinateMap_hasFDerivAt_zero
+  rw [auditActualUpperCoordinateMap_eq] at h
+  exact h
 example : fderiv ℝ source9OrderedUpperCoordinateMap 0 =
     ContinuousLinearMap.id ℝ (Fin 36 → ℝ) := source9OrderedUpperCoordinateMap_fderiv_zero
 example (v : Fin 36 → ℝ) :

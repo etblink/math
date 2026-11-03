@@ -84,7 +84,7 @@ jobs:
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean)" = 'b0f54834164eb031b880a6f96aa276cfac031f3b'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean)" = 'cd034f48ca310be62c95f0fc5a26158980744224'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean)" = 'e61f10d8b5726a84dd1fadc55e15318f3c40b158'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean)" = 'b8e6f1956f984f02aabfae550e1a91e4bc61d0ba'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean)" = '22d23f1f272a14f8067f51524e4c17a6c138e72a'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -113,6 +113,8 @@ jobs:
               assert t in s,t
           for t in ['auditStandardUpperParameterTopology := rfl',
                     'auditStandardUpperMatrixTopology := rfl',
+                    'private theorem auditActualUpperCoordinateMap_eq',
+                    'rw [auditActualUpperCoordinateMap_eq] at h',
                     'source9OrderedUpperProjection (1 : Matrix SpaceIndex SpaceIndex ℝ) = 0',
                     'source9OrderedUpperProjection_wordVelocity',
                     'source9OrderedUpperCoordinateMap_hasFDerivAt_zero',

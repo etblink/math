@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CD**, [run 41706060408](https://github.com/etblink/math/actions/runs/41706060408), tested `3061ea5b8337209d71f600427f5f544f3bc23bba`. **F10CE remains pending:** [run 41712069481](https://github.com/etblink/math/actions/runs/41712069481) failed fresh source compilation solely on deprecated `if_neg`; all seven source root reports contain only permitted axioms, but the independent audit was skipped. The bounded repair replaces that alias by `ite_eq_right` in source and audit and adds a preflight guard against legacy conditional aliases. All seven statements and strict verification rules are retained. No CE root is qualified. All previous red and green evidence remains preserved.
+> **Latest accepted mathematical increment remains F10CD**, [run 41706060408](https://github.com/etblink/math/actions/runs/41706060408), tested `3061ea5b8337209d71f600427f5f544f3bc23bba`. **F10CE remains pending:** [run 41718384697](https://github.com/etblink/math/actions/runs/41718384697) passed fresh strict source compilation, but the independent audit failed one scalar-zero control and two deep definitional comparisons. The bounded audit-only repair makes the scalar target explicit and supplies a named literal-function equality before derivative rewriting; source and limits are unchanged. All fourteen partial root reports use only permitted axioms, but no CE root is qualified before complete audit success. Both CE reds and all earlier evidence remain preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2137,3 +2137,24 @@ Repaired source/audit/workflow:
 | `.github/workflows/bfss-kotler-v10h-f10ce-upper-coordinate-identity-derivative-strict.yml` | `8b5e1d7312493f75bf2c8a6a9bebac668f77bd64` |
 
 **Validation and next action:** exact candidate hashes, source/audit alias-only comparison, declaration/scope/legacy-alias preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. Local Lean is unavailable. Run complete fresh source compilation and the independent topology/type/axiom audit with unchanged 840/600-second caps, seven expected roots per phase and the same three-axiom whitelist. CE remains pending until the entire gate passes. Strict differentiability or suitable smoothness must still be established before inverse-function use; source coverage, local kernel control, subgroup charts, tangent identification and full F10BC manifold differential remain open.
+
+## F10CE second strict red — explicit scalar and literal-function audit bridges
+
+**Immutable evidence:** [run 41718384697](https://github.com/etblink/math/actions/runs/41718384697), tested `04e600cda1cb2f4b6942cb2bd078196c4a4eb4ab`, job `126204310830`, completed/failure. Pins, pinned environment restoration, accepted CD rebuild and fresh warnings-as-errors CE source compilation passed. The original deprecated-alias failure is resolved. The independent audit failed; the terminal classifier did not run. Zero CE roots are qualified.
+
+The audit at line 22 left the scalar goal `0 = 0 i` in the identity-matrix projection control because its explicit `simp only` set did not reduce the pointwise zero function. Lines 30 and 44 hit the default recursion-depth limit while comparing the expanded literal actual-word upper-entry function to the named coordinate map, first through `rfl` and then by direct application of the derivative theorem. Both fresh output phases printed all seven roots, fourteen total, with only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`. These source-root reports do not certify failed anonymous audit controls.
+
+Artifact `13271759586`, `bfss-v10h-f10ce-upper-coordinate-identity-derivative-04e600cda1cb2f4b6942cb2bd078196c4a4eb4ab-1`, 1366 bytes, GitHub-reported ZIP SHA-256 `d978215e3bb6356b2e87091e662b187485c4779aae8972b7b043f9758762a77c`. Failed source/audit/workflow blobs: `e61f10d8b5726a84dd1fadc55e15318f3c40b158` / `b8e6f1956f984f02aabfae550e1a91e4bc61d0ba` / `8b5e1d7312493f75bf2c8a6a9bebac668f77bd64`.
+
+**Bounded audit-only repair:** after function extensionality, expose the identity-matrix projection goal with explicit scalar `(0 : ℝ)`. Prove a private `auditActualUpperCoordinateMap_eq` naming the equality between the coordinate map and the fully expanded actual-word matrix-entry function. Its proof unfolds only the map wrapper and applies the existing typed projection theorem to the actual matrix argument. Obtain the entry control by evaluation congruence on this equality. Rewrite the accepted `HasFDerivAt` theorem through this named function equality before checking the identical fully literal audit proposition. This replaces expensive definitional comparisons with explicit proposition bridges, following prior BW/BY recovery practice. The default recursion limit is retained.
+
+Source blob stays exactly `e61f10d8b5726a84dd1fadc55e15318f3c40b158`; no mathematical source file or declaration statement is changed. The complete literal actual-function `HasFDerivAt` audit, identity CLM, topology checks, zero controls and directional evaluation remain required. The workflow updates the audit pin and checks that the named bridge and explicit rewrite are present; the legacy-alias guard and all strict policies remain active.
+
+Repaired files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean` | `22d23f1f272a14f8067f51524e4c17a6c138e72a` |
+| `.github/workflows/bfss-kotler-v10h-f10ce-upper-coordinate-identity-derivative-strict.yml` | `3b07098a7927bde883befa0e53d205057404aae3` |
+
+**Validation and next action:** unchanged source hash, exact audit hash, declaration/scope and legacy-alias guard, YAML, trigger paths, all shell blocks and both embedded Python blocks pass. No local Lean executable is installed. Require complete fresh source and independent audit success under unchanged 840/600-second caps, seven expected root reports in each phase and the three-axiom whitelist. Preserve this audit-only red independently of the first source-deprecation red. If another deep comparison appears, isolate that comparison with a typed interface bridge before considering any limit change. Strict differentiability/smoothness for inverse-function use, source coverage, local kernel control, charts, tangent identifications and full F10BC manifold differential remain open.
