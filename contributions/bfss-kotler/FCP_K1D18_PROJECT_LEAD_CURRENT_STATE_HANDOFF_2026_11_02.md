@@ -1,8 +1,8 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10BY**, [run 41590375172](https://github.com/etblink/math/actions/runs/41590375172), tested `96a8d19755c90c42222fa8dabfaf383ff81db6bc`. **F10BZ remains pending:** [run 41599911562](https://github.com/etblink/math/actions/runs/41599911562) passed fresh source compilation but failed the independent audit's captured class-definition reducibility check. The bounded repair adds the compiler-recommended `@[instance_reducible]` attribute to that private topology definition; mathematical source and warning strictness are unchanged. No BZ qualification before complete strict CI. The [three-red method review](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md) and all earlier failures remain preserved; charts/model/tangent obligations remain open.
+> **Latest accepted mathematical increment is F10BZ**, [run 41601609222](https://github.com/etblink/math/actions/runs/41601609222), tested `686cf015d0a33d256a28f4cefabae998bbfe95bb`. Fresh source compilation, independent exact-type/product-topology checks and all six root axiom audits passed under warnings-as-errors. The full derivative at zero of the actual natural nine-matrix word action is the literal native-plane matrix sum in every parameter direction. The prior BZ audit-only red, its one-attribute repair, the [three-red method review](FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md), and all earlier failures remain preserved. A nonredundant native model, charts and tangent obligations remain open.
 
-**As of:** 2026-11-02 UTC  
+**As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
 **Active branch:** \`research/fcp-k1d17-ancestor-cache-pilot-20261028\`
 
@@ -1776,3 +1776,32 @@ The retained artifact is `13215155031`, `bfss-v10h-f10bz-whole-natural-nine-matr
 **Bounded repair:** mark the existing private topology capture `@[instance_reducible]`, retaining its definition body, position before the matrix-norm scope, and independent reflexive topology equality. This changes definition reducibility and registers no instance. No theorem, proposition, original carrier, source norm, matrix topology, or derivative formula is changed. Do not disable `warn.classDefReducibility` or any warning. Source blob remains `6602ec877561b8751d8505b4cff096746bf0c27b`; repaired audit blob is `0b5dd933bf5c36fe7daeece45f28b54cf54a58e9`; workflow blob `537e87ce72ff1d9f9a4b383138bcc0796ecca72c` changes only that audit pin. Require complete fresh source and independent audit success before qualification, with unchanged time caps and axiom whitelist.
 
 **Next-step inventory, not a new result:** inspected at `fcf8371b9b3fc00dbc878462effeb910917e14c9`, `SU2BFSSPairedSpin9SkewCoordinatePlaneSpanningProbe.lean` blob `626124eaa4635f64223b48bd6b986a367dc9b40e` gives a half-scaled sum over all ordered pairs. `SU2BFSSPairedSpin9InputSkewMatrixUnitBridgeProbe.lean` blob `da4020a35b3784a90ce76c03798061993fc6275b` gives the exact native matrix-unit decomposition and skew-entry bridge. Those are reuse candidates; the ordered-pair spanning formula does not itself provide a nonredundant 36-plane model or independence. No new model/chart theorem is claimed.
+
+## F10BZ accepted — full natural nine-matrix word derivative
+
+**Verified strict result:** [run 41601609222](https://github.com/etblink/math/actions/runs/41601609222), tested commit `686cf015d0a33d256a28f4cefabae998bbfe95bb`, attempt 1, job `125801433535`, completed/success with all ten recorded steps successful. Exact pins, pinned Lean 4.34.1/Mathlib restoration, combined BY/BR ancestry rebuild, fresh warnings-as-errors BZ source compilation, independent audit and evidence preservation all passed.
+
+The actual terminal classifier is `V10H_F10BZ_WHOLE_NATURAL_NINE_MATRIX_WORD_DERIVATIVE_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the six expected fully qualified roots, each once per phase (twelve reports total). Every report uses only `propext`, `Classical.choice`, and `Quot.sound`. There is no `sorryAx` or source-level warning/error. Complete audit success now qualifies the gate; the first run remains an immutable audit-only failure, not an accepted result.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BZFullNaturalMatrixWordDerivative.lean` | `6602ec877561b8751d8505b4cff096746bf0c27b` |
+| `lean/diagnostics/FCP_K1D18V10HF10BZIndependentAudit.lean` | `0b5dd933bf5c36fe7daeece45f28b54cf54a58e9` |
+| `.github/workflows/bfss-kotler-v10h-f10bz-full-natural-matrix-word-derivative-strict.yml` | `537e87ce72ff1d9f9a4b383138bcc0796ecca72c` |
+
+All six qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9PlaneWordMatrixVelocity`
+2. `source9PlaneWordMatrixVelocity_apply`
+3. `source9PlaneSpinWord_vectorMatrix_entry_hasFDerivAt_zero`
+4. `source9PlaneSpinWord_vectorOrthogonalMatrix_hasFDerivAt_zero`
+5. `source9PlaneSpinWord_vectorOrthogonalMatrix_fderiv_zero`
+6. `source9PlaneSpinWord_vectorOrthogonalMatrix_fderiv_zero_apply`
+
+The retained artifact is `13214538227`, `bfss-v10h-f10bz-whole-natural-nine-matrix-word-derivative-686cf015d0a33d256a28f4cefabae998bbfe95bb-1`, 4356 bytes, GitHub-reported ZIP SHA-256 `75d7ad5407b7b2666bdb40a1196cc5cef4b424aaccc7210f30aecad2ef68c129`. Exact run metadata, job status, decoded log, terminal marker, root counts, axiom whitelist and artifact metadata were checked before this acceptance record.
+
+**Qualified mathematical content:** for arbitrary finite parameters `Fin k → ℝ`, labels `r s`, distinctness proofs `hrs`, and ordered word `l`, the underlying original-nine matrix of the actual `source9SpinVectorOrthogonalHom` image of `source9PlaneSpinWord r s hrs t l` has a full Fréchet derivative at `t = 0`. Its value on any direction `v` equals `(l.map (fun a => v a • coordinatePlane9 (r a) (s a))).sum`. This is a derivative of the actual homomorphism applied to the actual source word, with the original source labels and full native-plane normalization. Empty and repeated-index words and standard matrix product topology were independently checked. The mathematical source stayed identical through the audit-only repair.
+
+**Method outcome and next obligation:** reuse of the pinned Pi derivative APIs, explicit original-coordinate column bridge and typed map evaluation succeeded. The audit definition needed the compiler-recommended reducibility attribute; no new instance or linter suppression was needed. Next choose a source-exact nonredundant 36-plane index/order and prove the corresponding native skew-coordinate model isomorphism, using existing exact decomposition/entry bridges and pinned APIs. Only after independence and the actual word derivative specialize to an invertible model can a chart argument be attempted. Subgroup charts, source local fiber/kernel control, tangent Lie-algebra identifications, determinant/covering claims, the full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate was introduced after acceptance in this task.
