@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CD**, [run 41706060408](https://github.com/etblink/math/actions/runs/41706060408), tested `3061ea5b8337209d71f600427f5f544f3bc23bba`. Fresh warnings-as-errors source compilation, independent standard-topology/exact-map/inverse/derivative audit and all seven root axiom checks passed. The identical CC canonical native model is now a continuous linear equivalence with the standard parameter product and skew-subspace topologies; its inverse retains the original upper-coordinate formula. The initial CD red and all earlier failure histories remain preserved. Subgroup charts, source local fiber/kernel control, tangent identifications and the full manifold differential remain open.
+> **Latest accepted mathematical increment remains F10CD**, [run 41706060408](https://github.com/etblink/math/actions/runs/41706060408), tested `3061ea5b8337209d71f600427f5f544f3bc23bba`. **Current candidate F10CE:** explicit continuous upper-entry projection of the actual ordered-word natural matrix map, zero value, exact projection/velocity composition identity, and full `HasFDerivAt`/`fderiv` equal to the literal identity continuous linear map at zero. Seven roots await complete strict CI. Strict differentiability/smoothness for inverse-function use, source charts, local fiber/kernel control and tangent/manifold obligations remain open. All earlier red and green histories are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2085,3 +2085,35 @@ The independent audit also checks finite dimensionality of the actual parameter 
 **Repair outcome and method:** the canonical Lie-subalgebra carrier needed explicit compatibility structures for typeclass search. The uniquely named local instances derive `IsTopologicalAddGroup` and `ContinuousSMul` through the existing canonical `toSubmodule` view, with Mathlib's associative matrix Lie-ring instance activated locally as in BB/CA. Independent audit controls derive the standard submodule structures afresh. With that bounded bridge, all later construction/map-equality errors disappeared while the original seven signatures and mathematical source bodies stayed byte-identical. The combined repair passed; the necessity of the additional scalar-continuity control was not isolated by ablation. No linter suppression, limit increase, source/gamma replacement, topology replacement or norm reconstruction was used. Preserve the missing-instance diagnosis as the first cause of the red, and the later recovery reports as invalid partial elaborations.
 
 **Next bounded plan and ceiling:** inspect the pinned Pi/projection composition derivative APIs and define the actual ordered-word natural matrix map's enumerated upper-coordinate projection into `Fin 36 → ℝ`. Prove its value at zero and full `HasFDerivAt` with the literal identity continuous linear map, using CC's coordinate-recovery theorem and fully typed evaluation/composition bridges. Only after these exact interfaces are qualified should inverse-function prerequisites be assembled. A continuous equivalence between the parameter and skew models does not prove that the word exhausts nearby source Spin elements or control the source local kernel. Subgroup charts, source local fiber/kernel control, tangent Lie-algebra identifications, determinant/covering results, full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
+
+## F10CE candidate — actual upper-coordinate map with identity derivative
+
+**Baseline:** live research branch checked at `ae12460c2c08d471186d18296b6b42be1067cb9e`, the documentation-only CD acceptance commit. Root AGENTS and current handoff reread; previously checked ancestor instruction files are unchanged at this baseline. Accepted source/audit modules and red histories remain unchanged.
+
+**Bounded implementation:** construct `source9OrderedUpperProjection` as a continuous linear Pi family of two explicitly typed coordinate projections on the original nine-matrix carrier. Define `source9OrderedUpperCoordinateMap` by applying this projection to the actual `source9SpinVectorOrthogonalHom` image of the actual `source9OrderedStrictPlaneWord`. Prove its zero value using the actual word identity and distinct original row/column labels. Prove equality of continuous linear maps `projection.comp wordVelocity = ContinuousLinearMap.id ℝ (Fin 36 → ℝ)` using CB's exact matrix derivative and CC's coordinate recovery, with fully typed evaluation congruence. Apply the actual chain rule to obtain the full `HasFDerivAt` statement with literal identity derivative and its `fderiv` equality.
+
+**Pinned API inspection:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, `Analysis/Calculus/FDeriv/Linear.lean`, blob `f0f78fdab141575c21f16a99dc2d1f88a62674dd`, supplies `ContinuousLinearMap.hasFDerivAt`. `Analysis/Calculus/FDeriv/Comp.lean`, blob `d7dee1ff3320db9442853106989cda47b2c0a221`, supplies `HasFDerivAt.comp`; its section explicitly makes the evaluation point an argument. The source uses `.comp (0 : Fin 36 → ℝ)` following this full signature and the accepted BY projection pattern. Standard continuous-linear Pi/projection constructions are the same inspected interfaces used in accepted BZ.
+
+Seven pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrderedUpperProjection`
+2. `source9OrderedUpperProjection_apply`
+3. `source9OrderedUpperCoordinateMap`
+4. `source9OrderedUpperCoordinateMap_zero`
+5. `source9OrderedUpperProjection_wordVelocity`
+6. `source9OrderedUpperCoordinateMap_hasFDerivAt_zero`
+7. `source9OrderedUpperCoordinateMap_fderiv_zero`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean` | `4793e7633f71e1a68071314697bfa42f4f727f20` |
+| `lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean` | `a42a5499acff2569a8ea96c39a479ceca2462cb1` |
+| `.github/workflows/bfss-kotler-v10h-f10ce-upper-coordinate-identity-derivative-strict.yml` | `f638ebd7ae04ca5e195607460dd2ba63d7fdd64d` |
+
+**Independent audit:** capture the standard parameter/matrix product topologies with the BZ-tested reducibility attribute and check that opening the elementwise matrix norm scope preserves them. Check the complete projection CLM type and literal entry evaluation, projection of the identity matrix to zero, the literal actual-word upper entries, actual zero value, exact composition identity of CLMs, `HasFDerivAt` for the completely expanded actual function with the literal identity CLM, `fderiv` equality and its directional value `v ↦ v`. Directional evaluation uses typed congruence, avoiding an extra tactic after a potentially closed rewrite.
+
+**Verification discipline:** retain accepted ancestry pins through CD and the qualified CD source/audit blobs, rebuild CD, then compile CE and its independent audit freshly with warnings-as-errors. Require exactly seven expected permitted root reports per phase, with unchanged three-axiom whitelist and 840/600-second caps. CE introduces no instance, new norm or topology, gamma/carrier replacement, linter suppression or proof-limit change. Local exact hashes, source/audit scope and declaration preflight, YAML, trigger paths, all shell blocks and both embedded Python blocks pass. Local Lean is unavailable; no CE root is qualified until strict CI succeeds.
+
+**Next action and ceiling:** inspect the exact fresh source and independent topology/type/axiom audit before acceptance. If accepted, inspect the pinned strict-derivative/smoothness and inverse-function APIs. An ordinary `HasFDerivAt` with identity derivative at one point alone is not sufficient for a local inverse theorem; supply the appropriate strict differentiability or neighborhood smoothness hypothesis explicitly, reusing the existing actual-word smoothness results. Any resulting finite-parameter local inverse must remain separate from source Spin coverage, local kernel control and a subgroup atlas. Tangent identifications, determinant/covering statements, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all previous negative evidence.
