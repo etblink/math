@@ -1,5 +1,7 @@
 # BFSS Project Lead — current-state delta handoff
 
+> **Latest verified state (F10BS):** run [41560403653](https://github.com/etblink/math/actions/runs/41560403653) accepted at `100347bf0cfadb49083802eaaf823cefca36f502`: the actual source action's whole nine-matrix curve velocity is the literal native coordinate plane. **Current candidate (F10BT):** exact-PBW continuous bilinear ambient multiplication and every-order smoothness; not yet qualified. Read the [source Spin(9) chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) and the appended F10BS/F10BT entries below. Historical entries retain their original status and failure provenance.
+
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
 **Active branch:** \`research/fcp-k1d17-ancestor-cache-pilot-20261028\`
@@ -1272,3 +1274,41 @@ The workflow combines the accepted F10BR ancestry pins with F10BK/F10BB/F10AV an
 **Scientific ceiling:** these are ordinary derivatives of underlying matrix curves. The joint comparison does not identify a full source manifold tangent space, construct source or target Lie-group charts, prove global smoothness, establish determinant one for F10BR, classify a kernel/covering, or prove the full F10BC manifold differential equality.
 
 **Next action:** inspect F10BS's strict result. If accepted, consolidate the source-side and gamma-side coordinate-curve differential data into a source-exact chart/tangent work plan. Formulate the actual missing geometric construction and its prerequisites; keep the new determinant-one obligation separately tracked. A topological group, a family of differentiable coordinate curves and an algebraic homomorphism do not by themselves supply a Lie-group atlas or full tangent identification.
+
+## F10BS accepted — whole original-nine matrix curve velocity
+
+**Verified strict result:** [run 41560403653](https://github.com/etblink/math/actions/runs/41560403653), tested commit `100347bf0cfadb49083802eaaf823cefca36f502`, job `125669384994`, completed/success with every required step successful. The terminal classifier is `V10H_F10BS_WHOLE_NINE_MATRIX_NATIVE_PLANE_VELOCITY_TYPES_AXIOMS_PASS`. Both the fresh source compiler and independent audit report exactly the two expected qualified roots, with axioms contained in `{propext, Classical.choice, Quot.sound}` and no `sorryAx`.
+
+Source blob `d06ba831accab10dc09b6f150a7b0c0d9a7a4072`; independent audit blob `fde386d80e3a219dbc696bb20bc3617f6370b244`; workflow blob `69633358de4a9591ed42588efd79cafcb5532082`. Evidence artifact `13197500439`, ZIP SHA-256 `360499b0396a1bf08167c99bac191d2834718f4ca42f5c0bcf5afd214f795d02`.
+
+**Qualified increment:** for every distinct original-nine coordinate pair, the actual F10BR orthogonal action evaluated on the actual source plane curve has entrywise and whole-matrix ordinary derivative equal to the literal full native plane `coordinatePlane9 r s = E_rs - E_sr`. The joint audit also checks the same curve's accepted original-gamma velocity is the F10BB canonical LieHom image of that native plane. This adds no source half factor. These are ordinary vector-space derivatives; the source/target subgroup charts, full tangent identifications and manifold differential equality remain open.
+
+The requested consolidation is now the [source Spin(9) chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md). Its pinned Mathlib census distinguishes the complete-normed-algebra unit-group construction from the proper-subgroup chart problem. Algebraic subgroup closure is not a proof of topological closedness. It explicitly tracks the missing local fiber/kernel control in a prospective source chart, and keeps natural nine-dimensional determinant one separate from the accepted original-gamma determinant result.
+
+## F10BT candidate — actual PBW bilinear multiplication and ambient smoothness
+
+**Candidate only; no F10BT qualification yet.** The next bounded mathematical dependency is actual ambient Clifford multiplication under the unchanged accepted named PBW norm. The candidate imports accepted F10BF, bundles left multiplication using `Algebra.lmul` and finite-dimensional continuity, then bundles its linear dependence on the left factor.
+
+Files:
+
+- Source: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness.lean`, blob `ce1e9f1c965109b0c8804c0a0c2d6ac67e9b3532`.
+- Independent audit: `lean/diagnostics/FCP_K1D18V10HF10BTIndependentAudit.lean`, blob `3a10cead83dc2ea4dcf1bdca00abaaef1e7761e4`.
+- Strict workflow: `.github/workflows/bfss-kotler-v10h-f10bt-pbw-bilinear-multiplication-smoothness-strict.yml`.
+- Frozen planning baseline: `contributions/bfss-kotler/FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md`. This handoff remains the qualification ledger.
+
+The exact four candidate declarations are:
+
+| Declaration | Obligation |
+|---|---|
+| `source9CliffordLeftMulCLM` | Continuous linear map of actual left multiplication in the accepted PBW vector space. |
+| `source9CliffordMulCLM` | Curried continuous bilinear map of actual multiplication. |
+| `source9CliffordMulCLM_apply` | Literal evaluation equals `a * b`, by reflexivity. |
+| `source9Clifford_mul_contDiff_pbw` | Actual ambient product is `ContDiff ℝ n` for every `n : ℕ∞ω`. |
+
+The independent audit reconstructs the PBW coordinates and induced norm from the actual source basis, checks exact map types and multiplication values, checks a bounded-bilinear certificate for the literal product, and restates every-order smoothness. It prints all four roots independently. No `NormedRing` instance, constant-one submultiplicative estimate, altered norm, carrier substitution or new global instance is introduced. A continuous bilinear map provides some finite bound; it does not assert the chosen PBW norm has multiplication bound one.
+
+The workflow pins Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, actual source/gamma, PBW basis, accepted BE/BF and BF audit, plus exact candidate source/audit blobs. It restores pinned dependencies, rebuilds accepted F10BF ancestry, freshly compiles F10BT with warnings-as-errors and checks the independent audit with the unchanged root-axiom whitelist. Compiler/audit time caps remain 840/600 seconds. The terminal marker is `V10H_F10BT_EXACT_PBW_BILINEAR_MULTIPLICATION_SMOOTHNESS_TYPES_AXIOMS_PASS`.
+
+**Validation state:** local hashes, declaration/scope preflight, YAML parsing, shell syntax and embedded Python syntax pass. No local Lean executable is installed; Lean elaboration and the independent mathematical checks are pending strict CI. All earlier red history, including both F10BR audit failures, remains preserved.
+
+**Scientific ceiling and next action:** if accepted, use the ambient multiplication calculus toward smooth finite products of actual coordinate-plane curves and ambient polynomial conjugation. Completeness and any operator-algebra embedding remain separate obligations. F10BT supplies no Spin/orthogonal atlas, smooth subgroup inversion, source tangent identification, covering/kernel result, natural-action determinant-one theorem or full F10BC manifold differential equality. Inspect the exact strict result before qualifying any of the four roots, then select the next bounded prerequisite from the work plan.
