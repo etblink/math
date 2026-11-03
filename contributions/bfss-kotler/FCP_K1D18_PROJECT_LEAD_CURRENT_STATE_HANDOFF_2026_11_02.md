@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CD**, [run 41706060408](https://github.com/etblink/math/actions/runs/41706060408), tested `3061ea5b8337209d71f600427f5f544f3bc23bba`. **F10CE remains pending:** [run 41718384697](https://github.com/etblink/math/actions/runs/41718384697) passed fresh strict source compilation, but the independent audit failed one scalar-zero control and two deep definitional comparisons. The bounded audit-only repair makes the scalar target explicit and supplies a named literal-function equality before derivative rewriting; source and limits are unchanged. All fourteen partial root reports use only permitted axioms, but no CE root is qualified before complete audit success. Both CE reds and all earlier evidence remain preserved.
+> **Latest accepted mathematical increment is F10CE**, [run 41725353183](https://github.com/etblink/math/actions/runs/41725353183), tested `abcd11965c65ae64739c460cb5dbb3148f30e236`. Fresh warnings-as-errors source compilation, independent topology/literal-actual-map/identity-derivative audit and all seven root axiom checks passed. The actual ordered-word upper-coordinate map sends zero to zero and has the literal identity continuous linear map as its full derivative there. Both CE reds and all earlier evidence remain preserved. Strict differentiability/smoothness for inverse-function use, source coverage/local kernel control, subgroup charts and tangent/manifold obligations remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2158,3 +2158,37 @@ Repaired files:
 | `.github/workflows/bfss-kotler-v10h-f10ce-upper-coordinate-identity-derivative-strict.yml` | `3b07098a7927bde883befa0e53d205057404aae3` |
 
 **Validation and next action:** unchanged source hash, exact audit hash, declaration/scope and legacy-alias guard, YAML, trigger paths, all shell blocks and both embedded Python blocks pass. No local Lean executable is installed. Require complete fresh source and independent audit success under unchanged 840/600-second caps, seven expected root reports in each phase and the three-axiom whitelist. Preserve this audit-only red independently of the first source-deprecation red. If another deep comparison appears, isolate that comparison with a typed interface bridge before considering any limit change. Strict differentiability/smoothness for inverse-function use, source coverage, local kernel control, charts, tangent identifications and full F10BC manifold differential remain open.
+
+## F10CE accepted — actual upper-coordinate map has literal identity derivative at zero
+
+**Verified strict result:** [run 41725353183](https://github.com/etblink/math/actions/runs/41725353183), tested `abcd11965c65ae64739c460cb5dbb3148f30e236`, attempt 1, job `126228570270`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CD rebuild, fresh warnings-as-errors CE source compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CE_UPPER_COORDINATE_IDENTITY_DERIVATIVE_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the seven expected fully qualified roots, each once per phase, fourteen reports total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. There is no `sorryAx` or source-level warning/error. Exact tested SHA and run state, every step, decoded log, terminal marker, root multiplicities, axiom whitelist, artifact metadata and all three candidate blob identities were inspected before acceptance. Both prior CE runs remain strict failures.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean` | `e61f10d8b5726a84dd1fadc55e15318f3c40b158` |
+| `lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean` | `22d23f1f272a14f8067f51524e4c17a6c138e72a` |
+| `.github/workflows/bfss-kotler-v10h-f10ce-upper-coordinate-identity-derivative-strict.yml` | `3b07098a7927bde883befa0e53d205057404aae3` |
+
+All seven qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrderedUpperProjection`
+2. `source9OrderedUpperProjection_apply`
+3. `source9OrderedUpperCoordinateMap`
+4. `source9OrderedUpperCoordinateMap_zero`
+5. `source9OrderedUpperProjection_wordVelocity`
+6. `source9OrderedUpperCoordinateMap_hasFDerivAt_zero`
+7. `source9OrderedUpperCoordinateMap_fderiv_zero`
+
+Retained artifact `13275559334`, `bfss-v10h-f10ce-upper-coordinate-identity-derivative-abcd11965c65ae64739c460cb5dbb3148f30e236-1`, 3699 bytes, GitHub-reported ZIP SHA-256 `8c307fc17821deb7c475a2de72beb1a196805d527a51b98db57fc7be37f0ba83`.
+
+**Qualified mathematical content:** `source9OrderedUpperProjection` is a continuous linear map from the original nine-matrix space to `Fin 36 → ℝ`, evaluating each original enumerated upper entry. `source9OrderedUpperCoordinateMap` applies it to the actual natural orthogonal image matrix of the actual ordered source word. This actual finite-parameter map takes zero to zero. The projection composed with the accepted matrix word velocity is exactly `ContinuousLinearMap.id ℝ (Fin 36 → ℝ)`. Consequently, the entire actual upper-coordinate map has `HasFDerivAt` at zero with the literal identity CLM and its `fderiv` there equals that identity.
+
+The independent audit checks standard parameter/matrix product topologies, complete projection type and literal entries, projection of the identity matrix to zero, the actual word's literal upper-entry function, zero value, exact CLM composition identity, `HasFDerivAt` restated on the completely expanded actual function with the literal identity CLM, the exact `fderiv` equality and directional value `v ↦ v`. The explicit private function-equality bridge is proved from the typed projection theorem and then used to rewrite the derivative statement; the literal audit proposition is preserved.
+
+**Recovery outcome and method:** replacing the deprecated conditional alias in source and audit resolved the first red; the early guard against the four legacy conditional aliases remains active. The second run demonstrated full source success but failed independent controls. Exposing a scalar zero and using a named actual-function equality resolved those controls without raising recursion limits. The mathematical source blob `e61f10d8b5726a84dd1fadc55e15318f3c40b158` stayed unchanged through the successful audit-only repair. No theorem was weakened, no audit obligation dropped, and no instance, norm/topology, linter or proof-limit change was introduced. Clean partial root printouts never replaced complete audit success.
+
+**Next bounded plan and ceiling:** inspect pinned strict-derivative and smoothness APIs, and reuse BV's actual finite-word vector-action smoothness plus the original coordinate-column/matrix-entry bridges to obtain appropriate smoothness or strict differentiability of this exact upper-coordinate map. Qualify a strict identity-derivative statement or the necessary neighborhood regularity before invoking inverse-function machinery. An ordinary identity derivative at one point alone does not justify a local inverse. Any resulting parameter-space local inverse remains separate from proving source Spin coverage, local kernel control or a subgroup atlas. Tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
