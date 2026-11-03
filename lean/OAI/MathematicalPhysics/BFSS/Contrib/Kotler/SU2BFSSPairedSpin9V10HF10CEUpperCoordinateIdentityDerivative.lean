@@ -39,7 +39,7 @@ theorem source9OrderedUpperCoordinateMap_zero : source9OrderedUpperCoordinateMap
   rw [source9OrderedStrictPlaneWord_zero, map_one]
   change (1 : Matrix SpaceIndex SpaceIndex ℝ)
     (source9StrictPlaneRow i) (source9StrictPlaneColumn i) = 0
-  simp only [Matrix.one_apply, if_neg (source9StrictPlaneEnumeration_ne i)]
+  simp only [Matrix.one_apply, ite_eq_right (source9StrictPlaneEnumeration_ne i)]
 
 /-- Literal equality of continuous linear maps, using actual derivative coordinate recovery. -/
 theorem source9OrderedUpperProjection_wordVelocity :

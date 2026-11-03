@@ -22,7 +22,7 @@ example (A : Matrix SpaceIndex SpaceIndex ℝ) (i : Fin 36) :
 example : source9OrderedUpperProjection (1 : Matrix SpaceIndex SpaceIndex ℝ) = 0 := by
   funext i
   rw [source9OrderedUpperProjection_apply]
-  simp only [Matrix.one_apply, if_neg (source9StrictPlaneEnumeration_ne i)]
+  simp only [Matrix.one_apply, ite_eq_right (source9StrictPlaneEnumeration_ne i)]
 example (t : Fin 36 → ℝ) (i : Fin 36) :
     source9OrderedUpperCoordinateMap t i =
       ((source9SpinVectorOrthogonalHom (source9OrderedStrictPlaneWord t)) :

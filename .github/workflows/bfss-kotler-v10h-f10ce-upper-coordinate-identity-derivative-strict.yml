@@ -83,8 +83,8 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CCIndependentAudit.lean)" = '2d550e34db5942dc6f712194339d543e9d31be21'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean)" = 'b0f54834164eb031b880a6f96aa276cfac031f3b'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean)" = 'cd034f48ca310be62c95f0fc5a26158980744224'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean)" = '4793e7633f71e1a68071314697bfa42f4f727f20'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean)" = 'a42a5499acff2569a8ea96c39a479ceca2462cb1'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean)" = 'e61f10d8b5726a84dd1fadc55e15318f3c40b158'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean)" = 'b8e6f1956f984f02aabfae550e1a91e4bc61d0ba'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -100,6 +100,7 @@ jobs:
               code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
               code=re.sub(r'--[^\n]*','',code)
               assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              assert not re.search(r'\b(if_pos|if_neg|dif_pos|dif_neg)\b',code)
               assert not re.search(r'(?m)^(?:local )?instance\b|attribute\s+\[instance\]',code)
               assert all(t not in code for t in ['Source48Label','NormedRing','GammaMatrix','SpinIndex','ChartedSpace','LieGroup'])
           for t in ['Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] (Fin 36 → ℝ)',
