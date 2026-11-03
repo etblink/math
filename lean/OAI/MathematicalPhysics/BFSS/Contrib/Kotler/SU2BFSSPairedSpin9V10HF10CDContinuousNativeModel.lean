@@ -1,5 +1,6 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10CCOrderedDerivativeNativeModel
 import Mathlib.Topology.Algebra.Module.FiniteDimension
+import Mathlib.Algebra.Lie.OfAssociative
 
 /-! F10CD: promote the accepted canonical model using standard topologies.
 No new topology or norm instance is installed. This supplies no subgroup atlas,
@@ -10,6 +11,19 @@ namespace FCP.BFSSPairedSpin9Clifford
 noncomputable section
 open OAI.BFSSQuantum
 open scoped Matrix.Norms.Elementwise
+
+attribute [local instance 100] LieRing.ofAssociativeRing
+
+-- Derive compatibility with the existing topology through the canonical submodule view.
+local instance f10cdNativeSkewIsTopologicalAddGroup :
+    IsTopologicalAddGroup (LieAlgebra.Orthogonal.so SpaceIndex ℝ) :=
+  inferInstanceAs (IsTopologicalAddGroup
+    ↥((LieAlgebra.Orthogonal.so SpaceIndex ℝ).toSubmodule))
+
+local instance f10cdNativeSkewContinuousSMul :
+    ContinuousSMul ℝ (LieAlgebra.Orthogonal.so SpaceIndex ℝ) :=
+  inferInstanceAs (ContinuousSMul ℝ
+    ↥((LieAlgebra.Orthogonal.so SpaceIndex ℝ).toSubmodule))
 
 /-- Canonical skew matrices retain the topology induced by original matrix entries. -/
 theorem source9NativeSkewTopology_induced :

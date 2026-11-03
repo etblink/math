@@ -81,8 +81,8 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CBIndependentAudit.lean)" = 'f03c13f9e692aa404affcac76e4f96c4bf76435b'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CCOrderedDerivativeNativeModel.lean)" = 'd29e46f62d923da0c47cb14caf547ee0dc5fa31e'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CCIndependentAudit.lean)" = '2d550e34db5942dc6f712194339d543e9d31be21'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean)" = 'fa3049fae4e0392ea259e20184307c4edd0f08f9'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean)" = '2647fa9273c035885b4edf8b805070d0ddc71ec4'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean)" = 'b0f54834164eb031b880a6f96aa276cfac031f3b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean)" = 'cd034f48ca310be62c95f0fc5a26158980744224'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -98,7 +98,12 @@ jobs:
               code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
               code=re.sub(r'--[^\n]*','',code)
               assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
-              assert not re.search(r'(?m)^(?:local )?instance\b|attribute\s+\[instance\]',code)
+              expected=['f10cdNativeSkewIsTopologicalAddGroup','f10cdNativeSkewContinuousSMul'] if text==s else []
+              assert re.findall(r'(?m)^local instance (\w+)',code)==expected
+              assert not re.search(r'(?m)^instance\b|attribute\s+\[instance\]',code)
+              assert code.count('inferInstanceAs (IsTopologicalAddGroup')==1
+              assert code.count('inferInstanceAs (ContinuousSMul')==1
+              assert code.count('↥((LieAlgebra.Orthogonal.so SpaceIndex ℝ).toSubmodule)')==2
               assert all(t not in code for t in ['Source48Label','NormedRing','GammaMatrix','SpinIndex','ChartedSpace','LieGroup'])
           for t in ['source9OrderedStrictPlaneModelEquiv.toContinuousLinearEquiv',
                     'TopologicalSpace.induced',

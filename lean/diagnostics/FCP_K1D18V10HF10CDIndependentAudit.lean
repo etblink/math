@@ -11,6 +11,16 @@ noncomputable section
     TopologicalSpace (Fin 36 → ℝ) := inferInstance
 open scoped Matrix.Norms.Elementwise
 
+attribute [local instance 100] LieRing.ofAssociativeRing
+
+-- Independently derive the required structures through standard submodule instances.
+example : IsTopologicalAddGroup (LieAlgebra.Orthogonal.so SpaceIndex ℝ) :=
+  inferInstanceAs (IsTopologicalAddGroup
+    ↥((LieAlgebra.Orthogonal.so SpaceIndex ℝ).toSubmodule))
+example : ContinuousSMul ℝ (LieAlgebra.Orthogonal.so SpaceIndex ℝ) :=
+  inferInstanceAs (ContinuousSMul ℝ
+    ↥((LieAlgebra.Orthogonal.so SpaceIndex ℝ).toSubmodule))
+
 example : (inferInstance : TopologicalSpace (Matrix SpaceIndex SpaceIndex ℝ)) =
     auditStandardMatrixTopology := rfl
 example : (inferInstance : TopologicalSpace (Fin 36 → ℝ)) =
