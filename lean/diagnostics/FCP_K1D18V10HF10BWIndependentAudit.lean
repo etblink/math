@@ -86,7 +86,13 @@ example {k : ℕ} (r s : Fin k → SpaceIndex) (hrs : ∀ i, r i ≠ s i)
       (l.map (fun i => v i • ((1 / 2 : ℝ) •
         (CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (r i)) *
           CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (s i)))))).sum := by
-  rw [source9PlaneSpinWord_coe_fderiv_zero, source9PlaneSpinWordVelocity_apply]
+  have hmap :
+      fderiv ℝ (fun t : Fin k → ℝ =>
+        ((source9PlaneSpinWord r s hrs t l) : CliffordAlgebra source9Quadratic)) 0 =
+        source9PlaneSpinWordVelocity r s l :=
+    source9PlaneSpinWord_coe_fderiv_zero r s hrs l
+  exact (congrArg (fun L : (Fin k → ℝ) →L[ℝ] CliffordAlgebra source9Quadratic =>
+    L v) hmap).trans (source9PlaneSpinWordVelocity_apply r s l v)
 
 #print axioms FCP.BFSSPairedSpin9Clifford.source9PlaneParameterVelocity
 #print axioms FCP.BFSSPairedSpin9Clifford.source9PlaneParameterCurve_hasFDerivAt_zero

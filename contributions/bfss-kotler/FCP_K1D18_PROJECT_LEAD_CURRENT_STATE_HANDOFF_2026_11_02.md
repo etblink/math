@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified mathematical baseline (F10BV):** [run 41576849333](https://github.com/etblink/math/actions/runs/41576849333), exact `8bdc6c513439d825b8010f05c97a59c4dcb390b9`. **Current F10BW repair:** [run 41578446550](https://github.com/etblink/math/actions/runs/41578446550) failed on an untyped coordinate-projection derivative application and a deprecated addition lemma. The projection now has an explicit real continuous-linear-map type and derivative bridge; the current `add_apply` replaces the deprecated alias. Statements and independent audit are unchanged; full ambient word-derivative qualification remains pending. Historical evidence and the latest diagnosis are appended below.
+> **Latest verified mathematical baseline (F10BV):** [run 41576849333](https://github.com/etblink/math/actions/runs/41576849333), exact `8bdc6c513439d825b8010f05c97a59c4dcb390b9`. **Current F10BW status:** source compilation now passes cleanly at `40b77e83a4a0a9ef9739e1a49302ed038e055a54`, but [run 41579847679](https://github.com/etblink/math/actions/runs/41579847679) failed in the audit's final directional-value rewrite. The audit now instantiates the full map equality and applies a typed evaluation congruence; source and all audit statements are unchanged. BW remains pending the complete strict gate. Earlier diagnoses and evidence remain below.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1531,3 +1531,27 @@ The workflow updates the candidate source pin, requires the typed `P`/`hP` bridg
 **Validation/lesson:** local source hash, unchanged audit hash, complete source/audit preflight, YAML parsing, all shell syntax and embedded Python checks pass. No local Lean executable is available, so elaboration and independent acceptance remain pending the next strict run. For generic continuous-linear maps, fix the scalar, domain and codomain before invoking derivative fields; importing a suitable theorem alone need not solve its instance metavariables. Compiler-directed deprecation repairs should use the current lemma while keeping warning strictness intact.
 
 **Next action/scientific ceiling:** rerun the exact repaired six-root gate and inspect source plus independent audit before qualification. BV remains the latest accepted mathematical increment. BW still asserts only the full ambient Clifford-valued parameter derivative at zero; the actual-action derivative, native 36-plane model isomorphism, source/target charts, tangent identifications and full F10BC manifold differential remain open. Preserve this failure alongside the earlier scoped-notation and local-instance composition evidence.
+
+## F10BW second red — clean mathematical source, final independent directional audit repair
+
+**Rejected strict attempt:** [run 41579847679](https://github.com/etblink/math/actions/runs/41579847679), exact commit `40b77e83a4a0a9ef9739e1a49302ed038e055a54`, job `125731852959`, completed/failure. Pins, dependency restoration, combined BV ancestry and fresh BW warnings-as-errors source compilation all passed. The independent audit ran and failed at its final example. Evidence artifact `13206465562`, ZIP SHA-256 `8757033a90761e34439898cd605a8859f6d8cc1e2eb8892af923ddd4a412d655`.
+
+**Verified diagnostic progress:** the explicit real `P`/`hP` bridge and current `add_apply` repair solved both earlier source diagnostics. All six fresh mathematical source roots now report only `propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx`. This is successful source compilation, not complete BW qualification.
+
+**Remaining failure:** independent audit line 89, column 6, `Tactic rewrite failed: Did not find an occurrence of the pattern`, at
+`rw [source9PlaneSpinWord_coe_fderiv_zero, source9PlaneSpinWordVelocity_apply]`.
+The final target applies the derivative map to a direction `v`. The generic uninstantiated rewrite did not match that elaborated map application. Earlier audit examples, including direct restatement of the complete map equality, reached the final example without diagnostics. Root printouts from the audit remained clean, but its failed example and nonzero terminal exit prevent acceptance.
+
+**Bounded repair:** keep the complete final directional finite-sum statement. In its proof, first instantiate an explicitly typed `hmap` of the full `fderiv` equality using
+`source9PlaneSpinWord_coe_fderiv_zero r s hrs l`.
+Apply
+`congrArg (fun L : (Fin k → ℝ) →L[ℝ] CliffordAlgebra source9Quadratic => L v) hmap`,
+then use equality transitivity with
+`source9PlaneSpinWordVelocity_apply r s l v`.
+This proves the same literal directional sum without generic rewriting beneath the continuous-linear-map coercion.
+
+**Source unchanged:** blob `6a67d6fb7a1d01f5d0045adb8a6edb3747d0ee70`. **Repaired audit:** blob `26d4bc3768986a3d5ec9bb44484ba818085f57f6`. All theorem statements, audit examples, six root names, norms, actual source carrier and finite-word definition are unchanged. The workflow refreshes only the audit pin and the proof-shape guard for the typed map/evaluation bridge. Fresh source and audit compilation, warnings-as-errors, axiom whitelist, root counts and 840/600-second caps are retained.
+
+**Validation/lesson:** local hashes, YAML parsing, shell syntax, embedded Python and exact source/audit preflight pass. No local Lean executable is available; complete acceptance awaits fresh CI. For an equality of bundled maps applied to a direction, instantiate all theorem parameters and use typed evaluation congruence when generic rewriting cannot match the elaborated target. A clean imported-root axiom inventory does not certify failed independent examples; terminal audit success remains mandatory.
+
+**Next action and ceiling:** inspect both phases of the next exact-commit strict run before BW qualification. The successful source proof covers the full ambient Clifford-valued word derivative at zero. Its independent acceptance is still pending; the actual-action derivative, native model isomorphism, source/target subgroup charts, tangent identifications and full F10BC manifold differential remain open. Preserve both BW red attempts and their distinct source-versus-audit failure boundaries.

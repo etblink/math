@@ -53,7 +53,7 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean")" = '528937bc6f528eed64aea16ecc5eb69c74c2dd99'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean)" = '13186e289439acf51af42c80cb0585f74a6285c2'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BWFinitePlaneWordDerivative.lean)" = '6a67d6fb7a1d01f5d0045adb8a6edb3747d0ee70'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BWIndependentAudit.lean)" = '0d0692e7920f20bc126789ffc767c2d86bf74da3'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BWIndependentAudit.lean)" = '26d4bc3768986a3d5ec9bb44484ba818085f57f6'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -102,7 +102,9 @@ jobs:
                         'source9PlaneSpinWordVelocity_apply r s l v',
                         'source9PlaneSpinWord_coe_hasFDerivAt_zero r s hrs l',
                         'source9PlaneSpinWord_coe_fderiv_zero r s hrs l',
-                        'rw [source9PlaneSpinWord_coe_fderiv_zero, source9PlaneSpinWordVelocity_apply]']:
+                        'have hmap :',
+                        'congrArg (fun L : (Fin k → ℝ) →L[ℝ] CliffordAlgebra source9Quadratic',
+                        'L v) hmap).trans (source9PlaneSpinWordVelocity_apply r s l v)']:
               assert token in audit,token
           print('V10H_F10BW_SOURCE_PIN_EXACT_PBW_FULL_WORD_DERIVATIVE_SCOPE_PASS')
           PY
