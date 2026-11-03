@@ -1,5 +1,6 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BZFullNaturalMatrixWordDerivative
 import Mathlib.Algebra.Lie.Classical
+import Mathlib.Algebra.Lie.OfAssociative
 import Mathlib.Algebra.BigOperators.Pi
 
 /-!
@@ -23,6 +24,8 @@ noncomputable section
 open OAI.BFSSQuantum
 open FCP.BFSSPairedSpin9Plane
 open scoped BigOperators
+
+attribute [local instance 100] LieRing.ofAssociativeRing
 
 /-- Each original spatial plane occurs once, with its increasing orientation. -/
 abbrev source9StrictPlaneIndex :=
@@ -63,7 +66,7 @@ noncomputable def source9StrictPlaneModelEquiv :
   left_inv c := by
     funext p
     change source9StrictPlaneMatrix c p.val.1 p.val.2 = c p
-    simp only [source9StrictPlaneMatrix, dif_pos p.property]
+    simp only [source9StrictPlaneMatrix, dite_eq_left p.property]
   right_inv A := by
     apply Subtype.ext
     apply Matrix.ext
@@ -80,7 +83,8 @@ noncomputable def source9StrictPlaneModelEquiv :
       · have hentry : A.val j i = -(A.val i j) :=
           congrArg (fun M : Matrix SpaceIndex SpaceIndex ℝ => M i j) hA
         simp [source9StrictPlaneMatrix, hij, hji, hentry]
-      · have heq : i = j := by omega
+      · have heq : i = j :=
+          le_antisymm (le_of_not_gt hji) (le_of_not_gt hij)
         subst j
         have hdiag : A.val i i = -(A.val i i) :=
           congrArg (fun M : Matrix SpaceIndex SpaceIndex ℝ => M i i) hA
@@ -93,14 +97,14 @@ noncomputable def source9StrictPlaneModelEquiv :
     change source9StrictPlaneMatrix (c + d) i j =
       source9StrictPlaneMatrix c i j + source9StrictPlaneMatrix d i j
     by_cases hij : i < j <;> by_cases hji : j < i <;>
-      simp [source9StrictPlaneMatrix, hij, hji, neg_add]
+      simp [source9StrictPlaneMatrix, hij, hji] <;> abel
   map_smul' a c := by
     apply Subtype.ext
     apply Matrix.ext
     intro i j
     change source9StrictPlaneMatrix (a • c) i j = a • source9StrictPlaneMatrix c i j
     by_cases hij : i < j <;> by_cases hji : j < i <;>
-      simp [source9StrictPlaneMatrix, hij, hji, smul_neg]
+      simp [source9StrictPlaneMatrix, hij, hji]
 
 /-- The inverse is literally extraction of original upper-triangular entries. -/
 theorem source9StrictPlaneModelEquiv_symm_apply
@@ -133,7 +137,7 @@ theorem source9StrictPlaneModelEquiv_plane (p : source9StrictPlaneIndex) :
         have hq := q.property
         rw [h.1, h.2] at hq
         exact (not_lt_of_gt p.property) hq
-      simp [coordinatePlane9, hpq, Ne.symm hpq, hcoords, hswap]
+      simp [coordinatePlane9, Ne.symm hpq, hcoords, hswap]
   exact congrArg (fun A : LieAlgebra.Orthogonal.so SpaceIndex ℝ => A.val) heq
 
 /-- Reconstruction equals the literal nonredundant native-plane sum, with no half factor. -/
@@ -144,13 +148,11 @@ theorem source9StrictPlaneModelEquiv_apply_sum (c : source9StrictPlaneIndex → 
   let L : (source9StrictPlaneIndex → ℝ) →ₗ[ℝ] Matrix SpaceIndex SpaceIndex ℝ :=
     (LieAlgebra.Orthogonal.so SpaceIndex ℝ).toSubmodule.subtype.comp
       source9StrictPlaneModelEquiv.toLinearMap
+  have hL (x : source9StrictPlaneIndex → ℝ) :
+      L x = (source9StrictPlaneModelEquiv x : Matrix SpaceIndex SpaceIndex ℝ) := rfl
   have hsum := congrArg L (pi_eq_sum_univ' c)
   simp only [map_sum, map_smul] at hsum
-  change (source9StrictPlaneModelEquiv c : Matrix SpaceIndex SpaceIndex ℝ) =
-    ∑ p : source9StrictPlaneIndex, c p •
-      (source9StrictPlaneModelEquiv (Pi.single p (1 : ℝ)) :
-        Matrix SpaceIndex SpaceIndex ℝ) at hsum
-  simpa only [source9StrictPlaneModelEquiv_plane] using hsum
+  simpa only [hL, source9StrictPlaneModelEquiv_plane] using hsum
 
 #print axioms source9StrictPlaneIndex_card
 #print axioms source9StrictPlaneMatrix
