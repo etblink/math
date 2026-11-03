@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified state (F10BS):** run [41560403653](https://github.com/etblink/math/actions/runs/41560403653) accepted at `100347bf0cfadb49083802eaaf823cefca36f502`: the actual source action's whole nine-matrix curve velocity is the literal native coordinate plane. **Current candidate (F10BT):** exact-PBW continuous bilinear ambient multiplication and every-order smoothness; not yet qualified. Read the [source Spin(9) chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) and the appended F10BS/F10BT entries below. Historical entries retain their original status and failure provenance.
+> **Latest verified state (F10BS):** run [41560403653](https://github.com/etblink/math/actions/runs/41560403653) accepted at `100347bf0cfadb49083802eaaf823cefca36f502`: the actual source action's whole nine-matrix curve velocity is the literal native coordinate plane. **Current candidate (F10BT repair):** first run [41571102917](https://github.com/etblink/math/actions/runs/41571102917) failed on the scoped order notation; explicit `ContDiff` scope is added in source and independent audit. Exact-PBW ambient bilinear multiplication and every-order smoothness remain unqualified pending a fresh strict run. Read the [source Spin(9) chart/tangent work plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) and the appended F10BS/F10BT entries below. Historical entries retain their original status and failure provenance.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1312,3 +1312,22 @@ The workflow pins Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612
 **Validation state:** local hashes, declaration/scope preflight, YAML parsing, shell syntax and embedded Python syntax pass. No local Lean executable is installed; Lean elaboration and the independent mathematical checks are pending strict CI. All earlier red history, including both F10BR audit failures, remains preserved.
 
 **Scientific ceiling and next action:** if accepted, use the ambient multiplication calculus toward smooth finite products of actual coordinate-plane curves and ambient polynomial conjugation. Completeness and any operator-algebra embedding remain separate obligations. F10BT supplies no Spin/orthogonal atlas, smooth subgroup inversion, source tangent identification, covering/kernel result, natural-action determinant-one theorem or full F10BC manifold differential equality. Inspect the exact strict result before qualifying any of the four roots, then select the next bounded prerequisite from the work plan.
+
+## F10BT red diagnosis and bounded notation-scope repair
+
+**Rejected strict attempt:** [run 41571102917](https://github.com/etblink/math/actions/runs/41571102917), exact tested commit `31e08e28a8456e694f4f336b7a9ee2e43539912f`, job `125703928754`, completed/failure. Pins, dependency restoration and accepted F10BF ancestry rebuild passed. Fresh F10BT warnings-as-errors compilation failed; the independent audit was skipped. Evidence artifact `13202061220`, ZIP SHA-256 `90562dd3e80ecb9dd019f508e7e38dfc0956cb92cc1f889599ee1a554be3ad5c`.
+
+**Exact failure:** source line 69, column 48, `unexpected identifier; expected ')'`, at the order binder `(n : ℕ∞ω)`. The file imports the calculus theorem but omits `open scoped ContDiff`. Pinned Mathlib `Analysis/Calculus/ContDiff/Defs.lean` explicitly documents `ℕ∞ω`, `∞` and `ω` as scoped in `ContDiff`; `ContDiff/Basic.lean` itself opens that scope before the same kind of binder.
+
+The other three candidate declarations produced root reports using only the standard three permitted axioms. The malformed smoothness declaration's “does not depend on any axioms” report is not acceptance evidence: its statement did not parse and the compiler exited 1. Zero F10BT roots are qualified from this failed gate.
+
+**Repair:** add `open scoped ContDiff` to both source and independent audit. Imported files' local scope openings do not replace the consumer audit's own opening. No proof term, proposition, norm, typeclass construction, carrier or theorem inventory is changed. Update the two exact blob pins and require the scope opening in both files in the preflight.
+
+| Repaired file | Exact candidate blob |
+|---|---|
+| F10BT source | `0d734b95f044a574490df1597118dbdc5d4ac0f6` |
+| F10BT independent audit | `7fd6812e2e5ee4bdfa5b56422a9905c5611e6bd3` |
+
+**Method lesson:** when reusing a theorem involving scoped notation, inspect both its declaration and surrounding `open scoped` commands. Static declaration inventories and shell/Python checks do not establish Lean parser acceptance. Keep terminal compiler status and independent audit mandatory even when a root printout appears harmless.
+
+**Validation/next action:** local candidate hash, declaration/scope preflight, YAML, shell syntax and embedded Python checks must pass before publication. No local Lean executable is installed. Run the unchanged fresh strict compiler and independent PBW/type/axiom audit; all four roots remain pending. Existing 840/600-second compiler/audit caps, warning strictness and axiom whitelist are retained. All earlier accepted checkpoints and red histories are preserved.

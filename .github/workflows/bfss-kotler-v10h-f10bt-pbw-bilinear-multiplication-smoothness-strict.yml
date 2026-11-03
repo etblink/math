@@ -36,8 +36,8 @@ jobs:
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean")" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean")" = 'f3d3121ef76af1d25a43ec574bbfc2fbeefce111'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BFIndependentAudit.lean)" = 'dd00871d12e1d533d15aa67608713d85eed0ec66'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness.lean)" = 'ce1e9f1c965109b0c8804c0a0c2d6ac67e9b3532'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BTIndependentAudit.lean)" = '3a10cead83dc2ea4dcf1bdca00abaaef1e7761e4'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness.lean)" = '0d734b95f044a574490df1597118dbdc5d4ac0f6'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BTIndependentAudit.lean)" = '7fd6812e2e5ee4bdfa5b56422a9905c5611e6bd3'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -56,6 +56,7 @@ jobs:
               assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
               assert not re.search(r'(?m)^instance\b|attribute\s+\[instance\]',code)
               assert 'Source48Label' not in code and 'NormedRing' not in code
+              assert 'open scoped ContDiff' in code
           for token in ['source9PBWNormedAddCommGroup','source9PBWNormedSpace',
                         'source9Clifford_finiteDimensional','Algebra.lmul ℝ',
                         'toLinearMap :=','cont :=','continuous_of_finiteDimensional',

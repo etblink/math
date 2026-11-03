@@ -22,6 +22,7 @@ namespace FCP.BFSSPairedSpin9Clifford
 noncomputable section
 
 open OAI.BFSSQuantum
+open scoped ContDiff
 
 local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
   source9PBWNormedAddCommGroup

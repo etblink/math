@@ -1,6 +1,7 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness
 set_option autoImplicit false
 open OAI.BFSSQuantum
+open scoped ContDiff
 open FCP.BFSSPairedSpin9Clifford
 noncomputable section
 
