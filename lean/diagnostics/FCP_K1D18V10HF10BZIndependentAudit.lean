@@ -6,7 +6,7 @@ open FCP.BFSSPairedSpin9Plane
 noncomputable section
 
 -- Capture the standard matrix product topology before enabling the scoped norm.
-private def auditNaturalMatrixProductTopology :
+@[instance_reducible] private def auditNaturalMatrixProductTopology :
     TopologicalSpace (Matrix SpaceIndex SpaceIndex ℝ) := inferInstance
 
 open scoped Matrix.Norms.Elementwise
