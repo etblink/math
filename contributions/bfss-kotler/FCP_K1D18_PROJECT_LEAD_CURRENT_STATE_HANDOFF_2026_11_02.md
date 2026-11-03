@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10BZ**, [run 41601609222](https://github.com/etblink/math/actions/runs/41601609222), tested `686cf015d0a33d256a28f4cefabae998bbfe95bb`. **F10CA remains pending:** [run 41630736020](https://github.com/etblink/math/actions/runs/41630736020) resolved the first run's proof/API/instance errors and reported only the permitted axioms for all seven roots, but source compilation still failed one `unnecessarySeqFocus` style diagnostic. The independent audit was skipped. The next bounded repair makes the additivity cases explicit; all seven statements and strict verification rules are retained. Both CA reds, BZ's audit-only red and all prior method/failure histories remain preserved. Word ordering, derivative specialization, charts and tangent obligations remain open.
+> **Latest accepted mathematical increment is F10CA**, [run 41632537353](https://github.com/etblink/math/actions/runs/41632537353), tested `e289e2397ec41009a41f13d60190243f55ef5458`. Fresh warnings-as-errors source compilation, independent exact-type/native-plane/uniqueness audit and all seven root axiom checks passed. The original increasing spatial pairs have card 36 and give an explicit real linear equivalence to canonical Mathlib `so(9, ℝ)`, inverse upper-entry extraction and literal full native-plane sum. Both CA reds, BZ's audit-only red and all prior method/failure histories remain preserved. Enumeration/order, actual word derivative specialization, continuity, charts and tangent obligations remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -1849,3 +1849,35 @@ The original index, reconstruction definition, declaration statements, seven roo
 Artifact `13228722208`, `bfss-v10h-f10ca-native-strict-plane-model-c1d7117c16efc88738b605918f66d6c4988258cd-1`, 833 bytes, GitHub-reported ZIP SHA-256 `5f8de817624750f9d4d8d5c696d617ee64e905c925120e3153d30db82857933e`. Failed source/audit/workflow blobs: `4ab3a48b947db73c3d7102431b418e81c62f79fa` / `658e557d5ff5d4e09fe44d43e08be98234b5abca` / `dac51d4b641f6da1c4919da4a01ab3b71de0049e`.
 
 **Bounded correction:** make the additivity proof's upper, lower and diagonal cases explicit. Only the lower-entry case unfolds the dependent conditions and function addition with `simp only`, then invokes `abel` on the remaining negative-sum identity. This removes the unnecessary sequence-focus combinator without relying on an extra tactic after already closed branches. All statements, the reconstruction definition, canonical carrier and independent audit remain unchanged. New source blob `c9c4bea7ef07c08d2ca1b8344dcf2a6532b0ff61`; workflow blob `5fa9119ee25d5e8a3a1016ec2d46c395343e1405` changes only its pin. Retain strict linter policy, time caps, exact seven-root checks and axiom whitelist. Inspect the next run through both Lean phases before acceptance; clean partial root reports are insufficient.
+
+## F10CA accepted — nonredundant native 36-plane model of canonical so(9,R)
+
+**Verified strict result:** [run 41632537353](https://github.com/etblink/math/actions/runs/41632537353), tested `e289e2397ec41009a41f13d60190243f55ef5458`, attempt 1, job `125905454297`, completed/success with all ten recorded steps successful. Exact source/ancestry pins, pinned Lean 4.34.1/Mathlib restoration, accepted BZ ancestry rebuild, fresh warnings-as-errors source compilation, independent audit and evidence preservation all passed.
+
+The actual terminal classifier is `V10H_F10CA_NATIVE_STRICT_PLANE_MODEL_TYPES_AXIOMS_PASS`. Each fresh phase contains exactly the seven expected fully qualified root reports, each once per phase (fourteen total). Every report uses only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx` or source-level warning/error occurs. The first two runs remain strict failures; their partial reports do not qualify them retroactively.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CANativeStrictPlaneModel.lean` | `c9c4bea7ef07c08d2ca1b8344dcf2a6532b0ff61` |
+| `lean/diagnostics/FCP_K1D18V10HF10CAIndependentAudit.lean` | `658e557d5ff5d4e09fe44d43e08be98234b5abca` |
+| `.github/workflows/bfss-kotler-v10h-f10ca-native-strict-plane-model-strict.yml` | `5fa9119ee25d5e8a3a1016ec2d46c395343e1405` |
+
+All seven qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9StrictPlaneIndex_card`
+2. `source9StrictPlaneMatrix`
+3. `source9StrictPlaneMatrix_transpose`
+4. `source9StrictPlaneModelEquiv`
+5. `source9StrictPlaneModelEquiv_symm_apply`
+6. `source9StrictPlaneModelEquiv_plane`
+7. `source9StrictPlaneModelEquiv_apply_sum`
+
+Artifact `13228853906`, `bfss-v10h-f10ca-native-strict-plane-model-e289e2397ec41009a41f13d60190243f55ef5458-1`, 4510 bytes, GitHub-reported ZIP SHA-256 `86af9895dc3668410ff7c39d864996c385e710cadd84be207a2f5d4ebaf3695b`. Exact run metadata, tested SHA, every job step, decoded log, terminal marker, root multiplicities, axiom whitelist and artifact metadata were checked before acceptance.
+
+**Qualified mathematical content:** the exact original increasing spatial-pair subtype has cardinality 36. `source9StrictPlaneModelEquiv` is a real linear equivalence from functions on that subtype to Mathlib's existing `LieAlgebra.Orthogonal.so SpaceIndex ℝ`. Its inverse literally extracts original upper-triangular matrix entries. A unit coordinate maps to the full native `coordinatePlane9 r s = E_rs - E_sr`, and arbitrary coordinates reconstruct the literal single native-plane sum without a half factor. The independent audit separately checks original subtype identity, cardinality, full equivalence type, both coordinate-recovery directions, literal matrix-unit normalization, the full sum and uniqueness from equality of literal sums.
+
+**Method outcome:** the explicit linear-order bridge succeeds without unfolding `SpaceIndex` or invoking arithmetic automation. Activating Mathlib's existing associative Lie-ring structure locally, as in BB, resolves the canonical submodule inclusion. A typed pointwise `hL` bridge succeeds for the literal finite-sum calculation. Explicit additivity cases remove the tactic-focus warning while preserving warning strictness. Static comparison confirms all seven declaration signatures and the reconstruction definition are identical to the first candidate; the independent audit remained byte-identical through both repairs. No new instance definition, custom limit or warning suppression was introduced. During the final run, pinned `Algebra/Notation/Pi/Defs.lean`, blob `77be7fd2c8ebe0f0e1dce25043113ad5e2303fd7`, was inspected: `Pi.add_apply` is generated from the ordinary pointwise `Pi.mul_apply` theorem, not a deprecated alias.
+
+**Next bounded obligation and ceiling:** choose and record a source-exact enumeration of the 36 strict pairs, use each exactly once in an explicit ordered source word, and specialize BZ's actual natural-matrix derivative to CA's nonredundant coordinate map. Check the derivative's model range or its upper-coordinate projection explicitly. CA's linear equivalence targets canonical skew matrices; it does not assert an isomorphism onto the entire ambient 9x9 matrix space. Establish the appropriate continuity/continuous linear equivalence using pinned finite-dimensional APIs before an inverse-function or chart argument. Source local fiber/kernel control, subgroup charts, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and physical BFSS conclusions remain open. No further theorem candidate is introduced in this acceptance record.
