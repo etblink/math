@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest verified mathematical baseline (F10BT):** [run 41572318768](https://github.com/etblink/math/actions/runs/41572318768), exact `2a0e4932c7ecfc0ca8b2e637b9088eb462acd47d`. **Current repair:** F10BU run [41573878864](https://github.com/etblink/math/actions/runs/41573878864) failed on a collision of generated anonymous-local-instance names when accepted branches were combined. BF/BG/BT and pending BU now use unique explicit local-instance names, with types, values and proof bodies unchanged. Four strict gates are pending: BF, BG and BT requalification, plus the combined BU candidate. Read the latest appended diagnosis below; all prior statuses and failure provenance remain historical evidence.
+> **Latest verified state (F10BU plus BF/BG/BT requalification):** all four strict runs accepted at `1429369557b52487c8d5b02831144852233a9407`. The actual source-vector action has a jointly smooth ambient extension under the unchanged named PBW norm; the renamed ancestor variants also passed their original independent audits. **Current candidate (F10BV):** ambient smoothness of finite ordered words in actual plane Spin curves and joint smoothness of their actual vector action. No F10BV qualification before strict CI. The [chart/tangent plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) remains the frozen baseline; current acceptance and failure evidence are recorded below.
 
 **As of:** 2026-11-02 UTC  
 **Repository:** \`etblink/math\`  
@@ -1406,3 +1406,60 @@ The atomic repair triggers four strict workflows. Require BF's 3 roots, BG's 5 r
 **Method lesson:** a local typeclass registration still has a declaration in the compiled environment. Anonymous generated names can collide across separately accepted branches in a shared namespace. Separate ancestor builds do not establish that their environments compose. Use unique explicit names for local instances in reusable modules, and require a consumer that imports the branches together.
 
 **Scientific ceiling:** no new BU mathematical result is qualified from this red attempt. The proposed joint ambient extension remains the same candidate and still supplies no source/target subgroup atlas, tangent identification, kernel/covering or full manifold differential. Next action is to inspect all four exact-commit strict results before proceeding.
+
+## F10BU accepted and BF/BG/BT renamed variants requalified together
+
+**Common exact tested commit:** `1429369557b52487c8d5b02831144852233a9407`. All four runs below are completed/success, and all required fresh compiler and independent audit steps passed. This verifies both the renamed ancestors and their combined consumer; the previous independent ancestor build alone had not established import compatibility.
+
+| Gate | Strict run | Job | Evidence artifact | Artifact ZIP SHA-256 |
+|---|---|---|---|---|
+| F10BU | [41575250552](https://github.com/etblink/math/actions/runs/41575250552) | `125717122102` | `13203553085` | `51cf007b8c154bc8b40786e046a96ebbc9f00c9fbf59351359709e268f545b7e` |
+| F10BF | [41575250674](https://github.com/etblink/math/actions/runs/41575250674) | `125717122921` | `13203767632` | `4b1ae55e92b7cbba5435a4576706361d418a401a0e255c005fdb528fe5d106f4` |
+| F10BG | [41575250610](https://github.com/etblink/math/actions/runs/41575250610) | `125717122195` | `13203388396` | `cd2d89e83175e97e063684ebdc35a3475245d99211700d0531a1a556828d4f8c` |
+| F10BT | [41575250675](https://github.com/etblink/math/actions/runs/41575250675) | `125717122543` | `13202559882` | `ea0dba077b4051e9b791e4ee0d93b728424562754c427f9fab2a86e9436d0f57` |
+
+Actual terminal classifiers reviewed:
+
+- `V10H_F10BU_EXACT_PBW_JOINT_AMBIENT_VECTOR_ACTION_SMOOTHNESS_TYPES_AXIOMS_PASS`.
+- `V10H_F10BF_EXACT_PBW_AMBIENT_RING_TYPES_AXIOMS_PASS`.
+- `V10H_F10BG_EXACT_PBW_SOURCE_SPIN_GROUP_TYPES_AXIOMS_PASS`.
+- `V10H_F10BT_EXACT_PBW_BILINEAR_MULTIPLICATION_SMOOTHNESS_TYPES_AXIOMS_PASS`.
+
+Each fresh source/audit pair has exactly its expected roots: BF 3, BG 5, BT 4, BU 6; 36 permitted root reports across the eight phases. Every report's axioms are contained in `{propext, Classical.choice, Quot.sound}`. No `sorryAx` or source-level warning/error occurs in those terminal compiler/audit phases.
+
+Accepted source variants are BF `f7ea4c9e9d996d04d07a7733ffe7ab6a91ce2636`, BG `9092ccaa5b4436bfa25cafe8b71541e6642999f6`, BT `10c56519331f867d5f453a63953e0018c03a09a3` and BU `aa38de95852718445ddd0448068592f9cefe4db4`. Their workflows are BF `581c0820bac70164529f6ad83e9f8f91f347f3f5`, BG `e6f72121057c5caa69ee655e0333a853aff25bf8`, BT `517bc2bced67edbfa2fa6462142020a1b1688dd6` and BU `2867e15663deeefe6d5f055689ce8a7becfe2536`. BU's unchanged independent audit is `7a8e3f09d3a799d49ca5c3fa2060abe957ef7628`.
+
+**New qualified mathematical scope:** the actual maps reversal, vector embedding and canonical projection are continuously bundled for the accepted PBW/Pi norms. The literal ambient formula
+`(a,z) ↦ source9CliffordVectorProjection (a * ι(z) * reverse(a))`
+is jointly `ContDiff ℝ n` for every order, and on the actual source Spin group it equals accepted `source9SpinVectorConjugation`. The independent audit checks this restriction against the actual inverse-coercion expression as well as the accepted action wrapper.
+
+**Qualified structural lesson:** explicit stage-specific local-instance names let the BF/BG/BT branch compose with the unchanged BJ/BM/BN/BO branch. The source changes were identifier-only and all original audits passed. Keep the failed BU run 41573878864 as evidence that separate successful builds do not prove joint importability. New reusable modules should use unique explicit local-instance names and a combined consumer gate.
+
+This remains ambient calculus. It does not install a subgroup manifold or prove a full tangent equivalence, determinant, kernel/covering or global manifold differential.
+
+## F10BV candidate — smooth finite ordered actual source plane words
+
+**Candidate only; six declaration roots pending.** Build the actual parameterized source word needed for the chart plan. Each factor is the accepted `source9PlaneSpinCurve`, retaining its explicit distinct-label proof and positive half-angle normalization. Parameters are `Fin k → ℝ`; an arbitrary `List (Fin k)` fixes multiplication order and allows repeated parameter indices. This avoids a commutative product on a noncommutative group.
+
+| Candidate declaration | Exact obligation |
+|---|---|
+| `source9PlaneSpinCurve_coe_contDiff_pbw` | Every-order smoothness of the entire actual source curve after coercion into the accepted PBW Clifford space, using its accepted sine/cosine formula. |
+| `source9PlaneSpinWord` | Recursive ordered product taking values in actual `spinGroup source9Quadratic`. |
+| `source9PlaneSpinWord_eq_listProd` | Equality with the literal list product in that group. |
+| `source9PlaneSpinWord_zero` | At the all-zero parameter vector, every ordered word equals the actual group identity. |
+| `source9PlaneSpinWord_coe_contDiff_pbw` | Joint every-order smoothness in all finite real parameters of the underlying Clifford-valued word, using accepted BT multiplication. |
+| `source9PlaneSpinWord_vectorAction_contDiff_pbw` | Joint every-order smoothness of the actual vector action in both parameters and vector, using accepted BU and an explicit function-equality bridge. |
+
+Files:
+
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BVFinitePlaneWordSmoothness.lean`, candidate source blob `1c0f3ddfc4fba9e28be411a4fd241e36398095a9`.
+- `lean/diagnostics/FCP_K1D18V10HF10BVIndependentAudit.lean`, independent audit blob `54d3a22f75892e7a98d3f0986e3544b57d82a54e`.
+- `.github/workflows/bfss-kotler-v10h-f10bv-finite-plane-word-smoothness-strict.yml`.
+
+The independent audit reconstructs the exact accepted PBW coordinates/norm, restates all six complete interfaces, checks empty words and an explicit two-factor order control in the actual group, checks the zero parameter, and restates the actual vector-action smoothness using the literal group-inverse coercion formula. Source local instances have unique `f10bvLocal...` names; each file explicitly opens `ContDiff`.
+
+**Pinned API reused:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, `Trigonometric/Deriv.lean` supplies real sine/cosine smoothness; `ContDiff/Operations.lean` supplies addition, scalar-constant multiplication, scalar division and `contDiff_apply ℝ ℝ i`; `ContDiff/Comp.lean` supplies composition/products. Scalar multiplication uses the real scalar field and normed vector space, with no Clifford `NormedRing` hypothesis. `List.prod_cons` retains the exact ordered group multiplication. No new generic ring-norm calculus is forced.
+
+The workflow pins accepted compatible BF/BG/BT/BU, original source/PBW and plane-curve source/audit blobs; rebuilds combined BU ancestry once; freshly compiles the six-root candidate and independent audit with warnings-as-errors; and enforces exactly six permitted root reports per log. The compiler/audit caps remain 840/600 seconds. Local hashes, declaration/scope preflight, YAML, shell syntax and embedded Python checks pass; no local Lean executable is available. Lean elaboration and independent mathematical checks await strict CI.
+
+**Scientific ceiling and next action:** ordinary smoothness of an actual parameterized word and its actual action does not make the word a chart. The chosen 36-plane order, full derivative and its model-space isomorphism, inverse-function theorem, actual source neighborhood/fiber control, subgroup atlases, tangent Lie-algebra identifications and full F10BC differential remain open. Inspect BV's strict result before qualifying any root. If accepted, qualify a source-exact full derivative of the finite-word action at zero and its canonical native-plane normalization before attempting a local inverse.
