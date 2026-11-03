@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CF**, [run 41735793415](https://github.com/etblink/math/actions/runs/41735793415), tested `31aa83a26375c40a13dc6decf414c62baab15d5f`. **Current candidate F10CG:** instantiate the strict inverse-function constructor on the actual upper-coordinate map with identity continuous linear equivalence, obtaining a parameter-space open partial homeomorphism with exact forward function, zero in its source/target and both local inverse laws. Seven roots await complete strict CI. Source Spin coverage, source local kernel control, subgroup charts and tangent/manifold obligations remain open. All prior red and green evidence is preserved.
+> **Latest accepted mathematical increment is F10CG**, [run 41738870699](https://github.com/etblink/math/actions/runs/41738870699), tested `0417579e042e5d7cde3919283ce51ded9d7c9cba`. All seven roots passed fresh strict compilation and the independent actual-function/type/axiom audit. The actual upper-coordinate map now has a parameter-space open partial homeomorphism around zero with exact forward function and both local inverse laws. Source Spin coverage, source local kernel control, subgroup charts and tangent/manifold obligations remain open. Next bounded work is inverse regularity/derivative and local parameter injectivity on the established neighborhood. All prior red and green evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2318,3 +2318,38 @@ Candidate files:
 **Verification discipline:** retain accepted ancestry pins through CF, including its repaired source and unchanged audit; rebuild CF, then compile CG and its independent audit freshly with warnings-as-errors. Require exactly seven expected permitted root reports in each phase, unchanged three-axiom whitelist and 840/600-second caps. The legacy conditional-alias guard remains active. No new instance, norm/topology, source/gamma replacement, linter suppression or custom proof limit is introduced. Local exact hashes, declaration/scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. Local Lean is unavailable; all seven CG roots remain candidates until complete strict CI succeeds.
 
 **Next action and ceiling:** inspect both fresh Lean phases before qualification. If accepted, inspect the same pinned inverse-function API for inverse regularity and derivative, and derive local parameter injectivity of the actual source word only on the established parameter neighborhood. Do not identify this parameter-space local inverse with a source Spin chart: exhaustion of nearby source Spin elements and source local fiber/kernel control remain independent obligations. Subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all previous negative evidence.
+
+
+## F10CG accepted — actual upper-coordinate parameter-space local inverse
+
+**Verified strict result:** [run 41738870699](https://github.com/etblink/math/actions/runs/41738870699), tested `0417579e042e5d7cde3919283ce51ded9d7c9cba`, attempt 1, job `126275024265`, completed/success with all ten recorded steps successful. Exact ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CF rebuild, fresh warnings-as-errors CG compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CG_UPPER_COORDINATE_LOCAL_INVERSE_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the seven expected fully qualified roots, each once per phase, fourteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The tested commit, terminal run state, ten step verdicts, decoded log, actual terminal marker, exact root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CGUpperCoordinateLocalInverse.lean` | `0d4ff0b02af7fc5e007b2943f03c72300720aafd` |
+| `lean/diagnostics/FCP_K1D18V10HF10CGIndependentAudit.lean` | `1c3e79574861ab27f1564d648bc6e81ac20b51ed` |
+| `.github/workflows/bfss-kotler-v10h-f10cg-upper-coordinate-local-inverse-strict.yml` | `f3a53ccada95bc77923e3a5e6456a36df6d0ebb7` |
+
+All seven qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrderedUpperCoordinateMap_hasStrictFDerivAt_refl`
+2. `source9OrderedUpperCoordinateLocalHomeomorph`
+3. `source9OrderedUpperCoordinateLocalHomeomorph_coe`
+4. `source9OrderedUpperCoordinateLocalHomeomorph_zero_mem_source`
+5. `source9OrderedUpperCoordinateLocalHomeomorph_zero_mem_target`
+6. `source9OrderedUpperCoordinateLocalHomeomorph_left_inv`
+7. `source9OrderedUpperCoordinateLocalHomeomorph_right_inv`
+
+Retained artifact `13280913671`, `bfss-v10h-f10cg-upper-coordinate-local-inverse-0417579e042e5d7cde3919283ce51ded9d7c9cba-1`, 3629 bytes, GitHub-reported ZIP SHA-256 `0d755bce15a858e7d3f095d16601972b47381762e9501f4565b0ce244b87f15a`. This records GitHub's artifact metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** CF's strict identity derivative is exposed as the coercion of the identity continuous linear equivalence. The inspected inverse-function constructor yields `source9OrderedUpperCoordinateLocalHomeomorph : OpenPartialHomeomorph (Fin 36 → ℝ) (Fin 36 → ℝ)`, whose complete forward function equals the actual `source9OrderedUpperCoordinateMap`. Zero lies in its open source and target. On the source neighborhood, applying the inverse to the actual upper-coordinate image recovers the original parameter; on the target neighborhood, applying the actual map to the inverse recovers the coordinate. Each inverse law retains its explicit neighborhood membership hypothesis.
+
+The independent audit also checks standard parameter topology and completeness, the literal identity derivative interface, open source/target zero neighborhoods, inverse continuity and inverse value zero. Its separately proved typed actual-function bridge expands the forward map into the original source ordered word's actual natural nine-matrix upper entries. The audit checks the forward entry formula and both inverse identities at that literal actual-function interface. It neither substitutes a surrogate map nor assumes source Spin coverage.
+
+**Successful method:** instantiate the pinned constructor with the explicit identity continuous linear equivalence and actual forward function; transport generic local inverse laws using the complete forward-function equality and typed function congruence. The previously successful projection-to-literal-function bridge avoids deep normalization in the independent audit. This first CG strict run passed without source repair. No new instances, norm/topology changes, gamma/carrier replacement, admissions, linter suppression, relaxed whitelist or proof-limit increase was introduced.
+
+**Next bounded plan and ceiling:** inspect the same pinned inverse-function API for the inverse's strict derivative at zero and regularity on its target neighborhood. Derive local parameter injectivity of the actual source ordered word from the established actual upper-coordinate left inverse, with both parameters restricted to the accepted source neighborhood. Independently audit literal original-word/matrix interfaces and all membership hypotheses. This remains parameter-space work: exhaustion of nearby source Spin elements, source local fiber/kernel control and subgroup-chart coverage are separate open obligations. Tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff; all earlier evidence remains intact.
