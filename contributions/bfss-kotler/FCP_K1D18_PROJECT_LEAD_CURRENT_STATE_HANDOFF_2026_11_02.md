@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CG**, [run 41738870699](https://github.com/etblink/math/actions/runs/41738870699), tested `0417579e042e5d7cde3919283ce51ded9d7c9cba`. All seven roots passed fresh strict compilation and the independent actual-function/type/axiom audit. The actual upper-coordinate map now has a parameter-space open partial homeomorphism around zero with exact forward function and both local inverse laws. Source Spin coverage, source local kernel control, subgroup charts and tangent/manifold obligations remain open. Next bounded work is inverse regularity/derivative and local parameter injectivity on the established neighborhood. All prior red and green evidence is preserved.
+> **Latest accepted mathematical increment remains F10CG**, [run 41738870699](https://github.com/etblink/math/actions/runs/41738870699), tested `0417579e042e5d7cde3919283ce51ded9d7c9cba`. **Current candidate F10CH:** the same accepted inverse has value zero, literal identity strict/ordinary derivative and every-order regularity at zero; the actual upper-coordinate map, actual full natural matrix image and original source ordered word are injective on CG's source neighborhood. Eight roots await complete strict CI. Source Spin coverage, general source local kernel control, subgroup charts and tangent/manifold obligations remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2353,3 +2353,44 @@ The independent audit also checks standard parameter topology and completeness, 
 **Successful method:** instantiate the pinned constructor with the explicit identity continuous linear equivalence and actual forward function; transport generic local inverse laws using the complete forward-function equality and typed function congruence. The previously successful projection-to-literal-function bridge avoids deep normalization in the independent audit. This first CG strict run passed without source repair. No new instances, norm/topology changes, gamma/carrier replacement, admissions, linter suppression, relaxed whitelist or proof-limit increase was introduced.
 
 **Next bounded plan and ceiling:** inspect the same pinned inverse-function API for the inverse's strict derivative at zero and regularity on its target neighborhood. Derive local parameter injectivity of the actual source ordered word from the established actual upper-coordinate left inverse, with both parameters restricted to the accepted source neighborhood. Independently audit literal original-word/matrix interfaces and all membership hypotheses. This remains parameter-space work: exhaustion of nearby source Spin elements, source local fiber/kernel control and subgroup-chart coverage are separate open obligations. Tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff; all earlier evidence remains intact.
+
+
+## F10CH candidate — inverse regularity and actual source-word local injectivity
+
+**Baseline:** live research branch checked at `e596de9ff9b261ed9d9bb0fdee64ad7186b5e3c0`, the documentation-only CG acceptance commit. Root AGENTS and current canonical handoff reread. Previously inspected ancestor instruction files and all accepted modules remain unchanged at this baseline.
+
+**Bounded implementation:** retain exactly CG's open partial homeomorphism and its inverse. Its left inverse at zero proves inverse value zero. Apply the pinned strict inverse-function derivative theorem, with the identity continuous linear equivalence supplied explicitly; bridge the library's local-inverse function to the accepted inverse by complete typed function equality, and bridge the inverse identity equivalence to the literal identity CLM. This gives the strict derivative at zero, its ordinary derivative and exact `fderiv` equality.
+
+Use `OpenPartialHomeomorph.contDiffAt_symm` on that same object, CG's zero target membership, CE's actual identity derivative and CF's actual every-order smoothness. Explicit forward-function and inverse-value equalities transport both prerequisites. The candidate is `ContDiffAt ℝ n` of the accepted inverse at zero for every `n : ℕ∞ω`, including analytic order; it does not assert derivative invertibility or regularity on the entire original target neighborhood.
+
+CG's actual left inverse proves `Set.InjOn source9OrderedUpperCoordinateMap` on its source. A typed application of the accepted upper projection transfers matrix equality to coordinate equality, giving injectivity of the complete actual natural nine-matrix word image on that set. A typed application of the actual natural homomorphism transfers original source-word equality to matrix equality, giving injectivity of `source9OrderedStrictPlaneWord` on the same set. Every local injectivity theorem retains both parameters' neighborhood restrictions.
+
+**Pinned API inspection:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`:
+- `Analysis/Calculus/InverseFunctionTheorem/FDeriv.lean`, blob `e628f119f19643501a84e461c29575ff1365d511`: `HasStrictFDerivAt.to_localInverse` gives strict derivative equal to the inverse continuous linear equivalence at the forward image.
+- `Analysis/Calculus/InverseFunctionTheorem/ContDiff.lean`, blob `add6679659423f2fa4d6ac3f2150ade77e93d7ae`: its alternate constructor was inspected; the candidate preserves CG's existing object instead of introducing another chosen inverse.
+- `Analysis/Calculus/ContDiff/Operations.lean`, blob `80e898b98348cb111761430989137705f4a3cf63`: complete `OpenPartialHomeomorph.contDiffAt_symm` signature, explicit target membership, forward derivative at the inverse point and forward regularity at that same point. Its regularity parameter includes the analytic case.
+
+Eight pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrderedUpperCoordinateLocalHomeomorph_symm_zero`
+2. `source9OrderedUpperCoordinateLocalHomeomorph_symm_hasStrictFDerivAt_zero`
+3. `source9OrderedUpperCoordinateLocalHomeomorph_symm_hasFDerivAt_zero`
+4. `source9OrderedUpperCoordinateLocalHomeomorph_symm_fderiv_zero`
+5. `source9OrderedUpperCoordinateLocalHomeomorph_symm_contDiffAt_zero`
+6. `source9OrderedUpperCoordinateMap_injOn_source`
+7. `source9OrderedStrictPlaneWord_matrix_injOn_source`
+8. `source9OrderedStrictPlaneWord_injOn_source`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CHInverseRegularityLocalInjectivity.lean` | `82835111241ebd88745a17743421cb2f82d23ddc` |
+| `lean/diagnostics/FCP_K1D18V10HF10CHIndependentAudit.lean` | `f8860e4365a6261ba0e3f31b8ec215965e6498a9` |
+| `.github/workflows/bfss-kotler-v10h-f10ch-inverse-regularity-local-injectivity-strict.yml` | `b746e31a6733e3aa02f10615c3db13a20525f998` |
+
+**Independent audit:** standard parameter product topology and completeness; exact accepted inverse value; strict and ordinary literal identity derivatives; full `fderiv` equality and every direction/coordinate evaluation; inverse regularity for every `n : ℕ∞ω`; actual map injectivity; separately proved equality with the completely expanded actual upper-entry function and injectivity of that literal function; full actual matrix injectivity and recovery from equality of every matrix entry; original source-word injectivity and its expansion to the original `source9PlaneSpinWord` with the exact enumeration and `List.finRange 36`. It also checks that an accepted-neighborhood parameter whose word equals the identity is zero. This last consequence concerns the parameterized word image, not arbitrary nearby source Spin elements or the natural representation's full local kernel.
+
+**Verification discipline:** preserve every accepted ancestry pin through CG and add exact CH source/audit pins. Rebuild CG, then compile CH and its independent audit freshly with warnings-as-errors. Require exactly eight expected permitted root reports per phase, unchanged three-axiom whitelist, actual terminal classifier `V10H_F10CH_INVERSE_REGULARITY_LOCAL_INJECTIVITY_TYPES_AXIOMS_PASS`, and unchanged 840/600-second fresh-phase caps. No new instance, norm/topology, source/gamma replacement, admission, linter suppression or custom proof limit is introduced. Local exact hashes, ancestry-pin preservation, eight-root scope preflight, YAML, three trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; all eight roots remain candidates until complete strict CI succeeds.
+
+**Next action and ceiling:** inspect complete fresh source and independent audit evidence before qualification. Preserve explicit inverse-function and derivative-operator bridges if an interface fails; do not normalize deeply or raise limits first. After qualification, inspect a bounded parameter-domain/actual-word-image inverse package and its inherited topology before attempting any source neighborhood coverage statement. General source Spin local fiber/kernel control, coverage of nearby source Spin elements, subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open.
