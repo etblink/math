@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CB**, [run 41649415524](https://github.com/etblink/math/actions/runs/41649415524), tested `0ed5c9e8fe4847f50978929e639880daa207764b`. **Current candidate F10CC:** parameter transport and canonical native model, literal ordered derivative sum reindexing, exact actual-matrix derivative/model equality, upper-entry recovery and derivative injectivity. Seven roots await complete strict CI. Continuity, subgroup charts, source local fiber/kernel control and tangent obligations remain open. All prior red and green histories remain preserved.
+> **Latest accepted mathematical increment is F10CC**, [run 41672054647](https://github.com/etblink/math/actions/runs/41672054647), tested `69ad47237d37a06c19ef9d93c84789b13aecc9cb`. Fresh warnings-as-errors source compilation, independent transport/model/actual-derivative audit and all seven root axiom checks passed. CB's actual ordered-word matrix derivative equals the underlying canonical native model; upper entries recover every input coordinate and the derivative is injective. The independent audit also checks coverage of canonical skew matrices. Continuity, subgroup charts, source local fiber/kernel control and tangent obligations remain open. All prior red and green histories are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -1961,3 +1961,37 @@ Candidate files:
 **Verification discipline:** retain exact accepted pins through CB, pinned Lean 4.34.1/Mathlib, fresh compiler and independent audit with warnings-as-errors, exactly seven permitted root reports per phase, unchanged three-axiom whitelist and 840/600-second caps. No new instance, norm context, linter suppression, custom limit, gamma basis or carrier substitution. Local exact hashes, declaration/scope preflight, YAML parsing, workflow trigger paths, every shell block and both embedded Python blocks pass. Local Lean is unavailable; all seven CC roots remain candidates until strict CI succeeds.
 
 **Next action and scientific ceiling:** inspect the exact fresh source and independent audit phases before qualification. If accepted, establish the appropriate continuous linear equivalence with the standard finite-dimensional topology and connect a coordinate-projected actual map to the inverse-function prerequisites. Source local fiber/kernel control, subgroup charts, tangent Lie-algebra identifications, determinant/covering claims, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all prior failures and accepted checkpoints.
+
+## F10CC accepted — actual ordered derivative identified with canonical native model
+
+**Verified strict result:** [run 41672054647](https://github.com/etblink/math/actions/runs/41672054647), tested `69ad47237d37a06c19ef9d93c84789b13aecc9cb`, attempt 1, job `126042721008`, completed/success with all ten recorded steps successful. Accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CB ancestry rebuild, fresh warnings-as-errors source compilation, independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CC_ORDERED_DERIVATIVE_NATIVE_MODEL_TYPES_AXIOMS_PASS`. Each of the seven expected fully qualified roots appears once in each fresh phase, fourteen reports total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error occurs. Exact run SHA and terminal state, every step, decoded log, terminal classifier, root multiplicities, axiom whitelist, artifact metadata and all three candidate blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CCOrderedDerivativeNativeModel.lean` | `d29e46f62d923da0c47cb14caf547ee0dc5fa31e` |
+| `lean/diagnostics/FCP_K1D18V10HF10CCIndependentAudit.lean` | `2d550e34db5942dc6f712194339d543e9d31be21` |
+| `.github/workflows/bfss-kotler-v10h-f10cc-ordered-derivative-native-model-strict.yml` | `53a2a102f6bbfc7dd7154e25b88bfeca1c5827b8` |
+
+All seven qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9StrictPlaneParameterEquiv`
+2. `source9StrictPlaneParameterEquiv_apply`
+3. `source9OrderedStrictPlaneModelEquiv`
+4. `source9OrderedStrictPlane_sum_eq_model`
+5. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_model`
+6. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_upper`
+7. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_injective`
+
+Retained artifact `13249996773`, `bfss-v10h-f10cc-ordered-derivative-native-model-69ad47237d37a06c19ef9d93c84789b13aecc9cb-1`, 3721 bytes, GitHub-reported ZIP SHA-256 `e17848c012f1ad4a0c64a8ce9d596cf8b8b16b6426c44806a007d660e1bb8639`.
+
+**Qualified mathematical content:** `source9StrictPlaneParameterEquiv` transports `Fin 36` parameters through CB's existing chosen enumeration, with literal value `v (source9StrictPlaneEnumeration.symm p)`. Composing that transport with CA gives a real linear equivalence from `Fin 36 → ℝ` to the existing canonical `LieAlgebra.Orthogonal.so SpaceIndex ℝ`. CB's literal ordered native-plane sum equals the underlying matrix of this composed model. Consequently, the actual full natural-matrix `fderiv` of `source9OrderedStrictPlaneWord` at zero, evaluated in any direction, equals that model's underlying original nine-matrix value. Its entry at the original enumerated row/column is exactly the corresponding input parameter. The actual matrix derivative is injective.
+
+The independent audit separately checks transport and model equivalence types, literal parameter transport, model composition, list-sum equality, the actual derivative equality restated with CA's reconstruction on an explicit parameter function, exact upper-coordinate recovery, injectivity and a derivative preimage for every canonical skew matrix. This establishes the stated algebraic model/range relationship, not surjectivity onto the full ambient matrix space.
+
+**Successful method:** the inspected pinned `LinearEquiv.piCongrLeft'`, `Fin.sum_univ_def` and `Fintype.sum_equiv` interfaces compose directly with CA and CB. Explicit equality of each reindexed summand, typed coordinate extraction from CA's inverse law, and typed matrix-entry evaluation congruence succeed without broad overloaded rewrites. This candidate passed on its first strict run. No instance/norm context, linter suppression, custom proof limit, gamma basis or carrier replacement was introduced. Earlier red histories retain their original status.
+
+**Next bounded plan and ceiling:** inspect and reuse the pinned finite-dimensional continuity APIs to promote the existing parameter/canonical model equivalence to the appropriate continuous linear equivalence with standard function/matrix-subspace topologies. Audit those topologies and the literal underlying linear map independently. Then formulate the actual ordered-word map's upper-coordinate projection and its derivative identity for the inverse-function prerequisites. These steps do not themselves supply source local fiber/kernel control or show that nearby source Spin elements are exhausted by the word chart. Subgroup charts, source local fiber/kernel control, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
