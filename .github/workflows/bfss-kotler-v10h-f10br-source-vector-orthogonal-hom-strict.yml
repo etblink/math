@@ -55,7 +55,7 @@ jobs:
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BQSourceVectorQuadraticIsometry.lean)" = 'cc78661038f8a9685f9e3eef397941ee90d39ca2'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BQIndependentAudit.lean)" = '81a86e36de23f922eb9aafac7f2cafd82f921340'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BRSourceVectorOrthogonalHom.lean)" = '8aa718eba564ae945e618aefbee9329f952256f0'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BRIndependentAudit.lean)" = 'fd6212be282a100b1ab8ed8601931e25de50592e'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BRIndependentAudit.lean)" = '2795a632293658d2fad33e5c0444c7ea0a6f8ff0'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -86,7 +86,8 @@ jobs:
                         'Matrix.one_apply, Pi.single_apply']:
               assert token in s,token
           assert 'source9SpinVectorRepresentation g (Pi.single j 1) i := rfl' in audit
-          assert "(Matrix.mem_orthogonalGroup_iff').mp" in audit
+          assert "(Matrix.mem_orthogonalGroup_iff' SpaceIndex ℝ" in audit
+          assert "(A := ((source9SpinVectorOrthogonalHom g) : Matrix SpaceIndex SpaceIndex ℝ))).mp" in audit
           assert 'map_one source9SpinVectorOrthogonalHom' in audit
           assert 'map_mul source9SpinVectorOrthogonalHom g h' in audit
           assert 'source9SpinVectorConjugation_ι g z' in audit

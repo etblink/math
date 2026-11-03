@@ -1194,3 +1194,35 @@ Update the audit blob pin and the syntax-presence guard to the parenthesized exp
 **Failure lesson:** parenthesize the fully qualified primed iff theorem as a term before applying `.mp`. A token-presence guard can preserve malformed Lean syntax; source and audit elaboration remain the authority. Classify an anonymous audit-control error separately from theorem compilation, and keep full qualification withheld until both pass.
 
 **Validation state:** local source/audit hashes, unchanged mathematical source and audit control types, exact parenthesis-only audit edit, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. The unchanged strict gate must freshly compile the same source and repaired independent audit before any F10BR acceptance. Determinant-one membership and manifold differential obligations remain open.
+
+
+### F10BR Gate 2 RED — explicit theorem parameters still unapplied in audit
+
+**Run:** [#41556302867](https://github.com/etblink/math/actions/runs/41556302867) — terminal red  
+**Exact tested commit:** `e3d7be9863d8e9dda296cdf9c499bc313ad6461e`  
+**Mathematical source blob unchanged:** `8aa718eba564ae945e618aefbee9329f952256f0`  
+**Audit blob:** `fd6212be282a100b1ab8ed8601931e25de50592e`  
+**Job:** `actual-source-nine-vector-orthogonal-hom` (`125655907158`)  
+**Artifact:** `13193949745`; ZIP SHA-256 `f6e3dbf00a6ed0c256a3d44596b7c7e932a31d8f90c8bed69eaa5ebc3aa56ff4`
+
+Exact pins, pinned dependency restoration, accepted F10BQ ancestry rebuild and fresh warnings-as-errors source compilation passed again. All six root reports in both printed outputs contain only the permitted three axioms; no `sorryAx`. The independent audit again failed at the same anonymous transpose-orthogonality control, so the final classifier did not run and **zero F10BR declarations are qualified**.
+
+The previous parenthesis repair resolved the unknown-constant interpretation but was incomplete. Lean now reported `Invalid field mp` and displayed the full type of `Matrix.mem_orthogonalGroup_iff'`:
+`∀ (n : Type) [DecidableEq n] [Fintype n] (R : Type) [CommRing R] {A : Matrix n n R}, A ∈ Matrix.orthogonalGroup n R ↔ A.transpose * A = 1`.
+
+Thus the parenthesized term was still a function awaiting explicit `n` and `R` arguments. It was not yet an iff proposition to which `.mp` applies. The attempted field lookup was consequently `Function.mp`. No new failure of the orthogonal homomorphism, matrix-coordinate evaluation or source proof was shown.
+
+**Correction to the prior diagnosis:** parsing was only the first issue. The pinned `UnitaryGroup.lean` source declares `variable (n) (R : Type v) [CommRing R]` in the orthogonal-group section. These parameters are explicit. The successful source `rw` application instantiated them from its goal; a direct proof-term projection requires the theorem to be applied first. This explicit-argument boundary should have been checked in the first repair.
+
+### F10BR Gate 3 — fully specialized orthogonality iff in audit CANDIDATE
+
+**Mathematical source blob unchanged:** `8aa718eba564ae945e618aefbee9329f952256f0`  
+**Repaired audit blob:** `2795a632293658d2fad33e5c0444c7ea0a6f8ff0`
+
+Instantiate `Matrix.mem_orthogonalGroup_iff'` with `SpaceIndex`, `ℝ`, and the exact matrix `(source9SpinVectorOrthogonalHom g : Matrix SpaceIndex SpaceIndex ℝ)`, then apply `.mp` to the existing membership property. This makes the iff proposition and all relevant carriers explicit before field projection. No `Function.mp` definition or alternate mathematical lemma is introduced.
+
+Only that anonymous audit proof term changes. Its concrete transpose-orthogonality proposition, all other controls, all six mathematical source declarations and implementations, actual group/vector/matrix carriers, ancestry, compiler strictness, axiom whitelist and time/resource limits remain unchanged. Update the audit pin and strengthen the syntax guard to require both the explicit index/scalar arguments and the exact matrix argument.
+
+**Failure lesson:** inspect the full declaration type before using theorem field notation. Parentheses resolve term parsing; they do not instantiate explicit parameters. Fully specialize a parameterized iff theorem before `.mp`, using an explicit matrix type when auditing a concrete carrier. Preserve rewrite-tactic and direct-proof-term argument conventions as distinct interfaces.
+
+**Validation state:** local source/audit hashes, unchanged mathematical source and audit control types, exact one-control proof-term edit, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. The unchanged strict gate must freshly compile the same source and fully specialized independent audit before F10BR acceptance. Determinant-one membership and manifold differential obligations remain open.
