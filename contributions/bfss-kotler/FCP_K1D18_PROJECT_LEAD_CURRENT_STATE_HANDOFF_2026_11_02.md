@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CB**, [run 41649415524](https://github.com/etblink/math/actions/runs/41649415524), tested `0ed5c9e8fe4847f50978929e639880daa207764b`. Fresh warnings-as-errors source compilation, independent enumeration/actual-word/exact-derivative audit and all seven root axiom checks passed. One chosen bijection enumerates all 36 original strict pairs; the actual source word follows `List.finRange 36`, and its natural-matrix derivative is the literal ordered native-plane sum. Reindexing into CA's model, continuity, charts and tangent obligations remain open. All earlier red and green histories are preserved.
+> **Latest accepted mathematical increment remains F10CB**, [run 41649415524](https://github.com/etblink/math/actions/runs/41649415524), tested `0ed5c9e8fe4847f50978929e639880daa207764b`. **Current candidate F10CC:** parameter transport and canonical native model, literal ordered derivative sum reindexing, exact actual-matrix derivative/model equality, upper-entry recovery and derivative injectivity. Seven roots await complete strict CI. Continuity, subgroup charts, source local fiber/kernel control and tangent obligations remain open. All prior red and green histories remain preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -1929,3 +1929,35 @@ The independent audit checks the exact original strict-pair equivalence type, bi
 **Successful method:** reuse the inspected pinned finite-equivalence API and accepted BV/BZ interfaces with explicit finite parameters and source-label proofs. No additional Clifford norm instances, new structural instances, overloaded operator subtraction, custom limits or linter suppression were needed. This candidate passed on its first strict CI run. Earlier CA and BY failures remain evidence for their specific mechanisms; this green does not retroactively qualify any red run.
 
 **Next bounded plan and ceiling:** define parameter transport through the chosen enumeration, then reindex CB's literal list sum into CA's strict-pair sum using pinned list/finite-sum and equivalence APIs. Prove equality with the underlying matrix of CA's linear model and/or prove that the upper-coordinate projection of the actual derivative is the corresponding parameter transport. Keep the fully typed map/evaluation bridges that succeeded previously. After this algebraic identity, establish the appropriate continuous linear equivalence with the standard finite-dimensional topologies before any inverse-function or chart argument. The derivative into the full ambient 9x9 matrix space is not claimed to be an isomorphism onto all matrices. Source local fiber/kernel control, subgroup charts, tangent Lie-algebra identifications, determinant/covering claims, the full F10BC manifold differential and BFSS physical conclusions remain open. No new mathematical candidate is introduced in this acceptance-only update.
+
+## F10CC candidate — actual ordered derivative into the canonical native model
+
+**Baseline:** live branch checked at `b35fe7abfda1c91c36b5b33a5d48db7e4230e346`, the documentation-only CB acceptance commit. Root AGENTS and current handoff reread. Previously checked ancestor instruction files are unchanged at this baseline. The new code imports accepted CB; all accepted sources remain unchanged.
+
+**Bounded plan and implementation:** reuse Mathlib's `LinearEquiv.piCongrLeft'` to transport `Fin 36` parameter coordinates through the already chosen enumeration. Compose with CA's existing linear equivalence to canonical `LieAlgebra.Orthogonal.so SpaceIndex ℝ`. Convert CB's exact list sum via `Fin.sum_univ_def`, then use `Fintype.sum_equiv` with an explicit equality of each summand. Compose that equality with CB's actual matrix `fderiv` evaluation. Recover the original input coordinates from actual enumerated upper entries using CA's two-sided inverse and explicit typed equality bridges, and deduce injectivity. No ambient-matrix surjectivity, continuous linear equivalence, subgroup atlas or group-manifold differential is asserted.
+
+**Pinned API inspection:** Mathlib revision `d13f23b723b8a846827a245b89c10fc7d3f11612`. `LinearAlgebra/Pi.lean`, blob `bb28df575bc416f6a7820f54d0bab7e056f2dba1`, gives the complete dependent coordinate-transport signature and its forward function. `Algebra/BigOperators/Fin.lean`, blob `0925d3fd11f19650de9a7f095870f5d1382ff44a`, gives the additive `Fin.sum_univ_def` via `to_additive`. `Algebra/BigOperators/Group/Finset/Defs.lean`, blob `0eec64f2576f4d449b44b877678fe95678cfc9f0`, gives `Fintype.sum_equiv`, including its explicit summand-equality argument. `Group/Finset/Basic.lean` was also inspected, blob `c3b552527a22e70a3d2535dfa37841520dcba3b0`. Existing canonical model and derivative proofs are reused rather than introducing another skew carrier or coefficient reconstruction.
+
+Seven pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9StrictPlaneParameterEquiv`
+2. `source9StrictPlaneParameterEquiv_apply`
+3. `source9OrderedStrictPlaneModelEquiv`
+4. `source9OrderedStrictPlane_sum_eq_model`
+5. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_model`
+6. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_upper`
+7. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_injective`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CCOrderedDerivativeNativeModel.lean` | `d29e46f62d923da0c47cb14caf547ee0dc5fa31e` |
+| `lean/diagnostics/FCP_K1D18V10HF10CCIndependentAudit.lean` | `2d550e34db5942dc6f712194339d543e9d31be21` |
+| `.github/workflows/bfss-kotler-v10h-f10cc-ordered-derivative-native-model-strict.yml` | `53a2a102f6bbfc7dd7154e25b88bfeca1c5827b8` |
+
+**Independent audit:** exact transport and canonical model equivalence types; literal inverse-enumeration parameter formula; model composition; literal list-sum equality; actual `fderiv` equality restated with CA's reconstruction on the explicit parameter function; exact upper-coordinate recovery; derivative injectivity; and existence of a derivative preimage for every canonical native skew matrix. The last check targets only canonical `so(9,ℝ)`, preserving the distinction from all ambient matrices.
+
+**Verification discipline:** retain exact accepted pins through CB, pinned Lean 4.34.1/Mathlib, fresh compiler and independent audit with warnings-as-errors, exactly seven permitted root reports per phase, unchanged three-axiom whitelist and 840/600-second caps. No new instance, norm context, linter suppression, custom limit, gamma basis or carrier substitution. Local exact hashes, declaration/scope preflight, YAML parsing, workflow trigger paths, every shell block and both embedded Python blocks pass. Local Lean is unavailable; all seven CC roots remain candidates until strict CI succeeds.
+
+**Next action and scientific ceiling:** inspect the exact fresh source and independent audit phases before qualification. If accepted, establish the appropriate continuous linear equivalence with the standard finite-dimensional topology and connect a coordinate-projected actual map to the inverse-function prerequisites. Source local fiber/kernel control, subgroup charts, tangent Lie-algebra identifications, determinant/covering claims, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all prior failures and accepted checkpoints.
