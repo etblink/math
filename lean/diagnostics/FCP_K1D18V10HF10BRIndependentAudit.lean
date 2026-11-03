@@ -42,7 +42,7 @@ example (g : spinGroup source9Quadratic) (z : SpaceIndex → ℝ) :
 example (g : spinGroup source9Quadratic) :
     ((source9SpinVectorOrthogonalHom g) : Matrix SpaceIndex SpaceIndex ℝ).transpose *
       ((source9SpinVectorOrthogonalHom g) : Matrix SpaceIndex SpaceIndex ℝ) = 1 :=
-  Matrix.mem_orthogonalGroup_iff'.mp (source9SpinVectorOrthogonalHom g).property
+  (Matrix.mem_orthogonalGroup_iff').mp (source9SpinVectorOrthogonalHom g).property
 
 example :
     ((source9SpinVectorOrthogonalHom (1 : spinGroup source9Quadratic)) :

@@ -1161,3 +1161,36 @@ The workflow pins accepted F10BQ/F10BP/F10BO/F10BN/F10BM/F10BL/F10BJ and actual 
 **Scientific ceiling:** the proposed target is O(9) on the original source vectors. Determinant-one membership, the group kernel, surjectivity/covering, continuity/smoothness of the full homomorphism, manifold charts and the full F10BC differential are not proved here. F10BC's original gamma SO(16) homomorphism and F10BK's target-velocity comparison remain separately accepted; this gate supplies the source-side natural nine-vector action.
 
 **Next action:** inspect F10BR's strict result. If accepted, source-audit the remaining determinant and matrix-curve-velocity interfaces against the source chart/tangent obligations. Do not infer determinant one or a Lie-group structure from an algebraic orthogonal homomorphism, or infer source connectedness from a topological-group theorem.
+
+
+### F10BR Gate 1 RED — malformed primed-iff projection in independent audit
+
+**Run:** [#41554624051](https://github.com/etblink/math/actions/runs/41554624051) — terminal red  
+**Exact tested commit:** `5ed3fbcb90397bd4742ebd1b2bb7ba7e4b10f444`  
+**Candidate source blob:** `8aa718eba564ae945e618aefbee9329f952256f0`  
+**Independent audit blob:** `563518d39305ef2e2f72b21497e7eebfe2e9ffff`  
+**Job:** `actual-source-nine-vector-orthogonal-hom` (`125650372523`)  
+**Artifact:** `13195350353`; ZIP SHA-256 `b652c1a7c3841aa1eca8028efb25aa159d15a7a0ed80d3ce6ce3866b7a9c47ec`
+
+Exact pins, pinned dependency restoration, accepted F10BQ ancestry rebuild and fresh F10BR warnings-as-errors source compilation passed. All six source root reports contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`. The independent audit failed on one anonymous transpose-orthogonality control. **Zero F10BR declarations are qualified by this red gate.**
+
+At audit line 45 Lean reported `Unknown constant Matrix.mem_orthogonalGroup_iff'.mp`. The expression was read as a fully qualified constant name rather than as the `mp` projection of the primed iff theorem. The actual pinned theorem `Matrix.mem_orthogonalGroup_iff'` exists and was already successfully used in the candidate source's membership proof. No missing orthogonal criterion, matrix-coordinate error or mathematical counterexample was shown.
+
+The imported six root reports in the audit output also contain only the permitted three axioms, but these reports do not certify a failed anonymous control. The shell stopped on the audit compiler's nonzero exit before the final two-log classifier ran. This is an independent-audit identifier-application defect; source compilation success alone does not replace complete qualification.
+
+### F10BR Gate 2 — explicit iff-term projection in audit CANDIDATE
+
+**Mathematical source blob unchanged:** `8aa718eba564ae945e618aefbee9329f952256f0`  
+**Repaired audit blob:** `fd6212be282a100b1ab8ed8601931e25de50592e`
+
+Replace only the audit expression
+`Matrix.mem_orthogonalGroup_iff'.mp (source9SpinVectorOrthogonalHom g).property`
+with
+`(Matrix.mem_orthogonalGroup_iff').mp (source9SpinVectorOrthogonalHom g).property`.
+The concrete transpose-orthogonality proposition and its membership premise are unchanged. All six source declarations, implementations, exact coordinates, carriers and derivative controls remain unchanged.
+
+Update the audit blob pin and the syntax-presence guard to the parenthesized expression atomically. The source pin, ancestry, compiler strictness, axiom whitelist and time/resource limits remain unchanged. The guard still requires the explicit intended iff projection; it is not removed or weakened.
+
+**Failure lesson:** parenthesize the fully qualified primed iff theorem as a term before applying `.mp`. A token-presence guard can preserve malformed Lean syntax; source and audit elaboration remain the authority. Classify an anonymous audit-control error separately from theorem compilation, and keep full qualification withheld until both pass.
+
+**Validation state:** local source/audit hashes, unchanged mathematical source and audit control types, exact parenthesis-only audit edit, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. The unchanged strict gate must freshly compile the same source and repaired independent audit before any F10BR acceptance. Determinant-one membership and manifold differential obligations remain open.
