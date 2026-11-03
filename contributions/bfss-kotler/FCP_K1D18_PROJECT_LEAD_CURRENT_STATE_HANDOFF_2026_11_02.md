@@ -1067,3 +1067,49 @@ Pinned `Mathlib/Algebra/Ring/Hom/Defs.lean` confirms `RingHom.id_apply (x) : Rin
 **Failure lesson:** a LinearMap's scalar-law structure field may retain its semilinear parent expression `(RingHom.id ℝ) c`. Normalize that scalar homomorphism explicitly when using a restricted simplification list. Reuse the explicit `RingHom.id_apply` bridge already present in accepted source modules rather than relying on transparency to erase the field boundary.
 
 **Validation state:** local source/audit hashes, exact proof-only edit, unchanged declaration headers and audit, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. The unchanged strict gate must freshly compile the scalar bridge and run the independent audit before any F10BP qualification. Quadratic preservation, orthogonal membership and manifold tangent identification remain open.
+
+
+### F10BP Gate 2 ACCEPTED — actual nine-vector linear representation
+
+**Run:** [#41549431192](https://github.com/etblink/math/actions/runs/41549431192) — terminal green  
+**Exact tested commit:** `de1c4143b8489bbe67d1517135ab2cfbe7644f1e`  
+**Accepted source blob:** `47684d3586cf7c53674c8d52341853f3f03fa319`  
+**Independent audit blob:** `577618970cc8ed20c8d625564f4a0479583451be`  
+**Job:** `actual-nine-vector-linear-representation` (`125633026187`)  
+**Artifact:** `13192135647`; ZIP SHA-256 `5932f410118956a7379aabafea7e0f7cfea4a09c48149fb3f1e40721374a4aef`
+
+Exact pins, pinned dependency restoration, accepted F10BO ancestry rebuild, fresh warnings-as-errors source compilation and independent exact-type/representation-law/inverse/derivative/axiom audit passed. The classifier emitted `V10H_F10BP_ACTUAL_NINE_VECTOR_LINEAR_REPRESENTATION_TYPES_AXIOMS_PASS`. All five root reports in each log contain only `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`.
+
+The two constructions `source9SpinVectorLinearMap` and `source9SpinVectorRepresentation`, and the three proofs of vector-embedding injectivity, identity action and multiplication/composition, are accepted. The actual source `spinGroup source9Quadratic` now has a genuine algebraic real linear representation on the original `SpaceIndex → ℝ`. Its evaluation is exactly the accepted actual vector conjugation. The independent audit verified both inverse identities through Mathlib's generic representation infrastructure and the existing native-plane curve derivative through the bundle.
+
+**Success lesson:** `RingHom.id_apply` explicitly normalizes the scalar homomorphism retained by the semilinear parent of `LinearMap.map_smul'`. This closes the exact residual field equality without altering any declaration type, construction evaluation, audit, compiler strictness or limit. The Gate 1 red evidence remains immutable above.
+
+**Scope ceiling:** algebraic linear representation is qualified. Quadratic preservation, an orthogonal matrix homomorphism, determinant-one membership, group-kernel classification, smoothness and a full manifold differential are not inferred from it.
+
+### F10BQ Gate 1 — actual source quadratic preservation and isometric equivalence CANDIDATE
+
+**Source:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BQSourceVectorQuadraticIsometry.lean`  
+**Candidate source blob:** `cc78661038f8a9685f9e3eef397941ee90d39ca2`  
+**Independent audit:** `lean/diagnostics/FCP_K1D18V10HF10BQIndependentAudit.lean`  
+**Audit blob:** `81a86e36de23f922eb9aafac7f2cafd82f921340`  
+**Workflow:** `.github/workflows/bfss-kotler-v10h-f10bq-source-vector-quadratic-isometry-strict.yml`
+
+Pinned source inspection reuses `CliffordAlgebra.ι_sq_scalar` with explicit `Q := source9Quadratic`, `Algebra.commutes` for central real scalars, and `FaithfulSMul.algebraMap_injective` in the actual source Clifford algebra. The new theorem has no scalar-faithfulness hypothesis; the concrete typeclass obligation must synthesize and is separately checked in the audit. No gamma image is used to replace the source scalar carrier.
+
+Two declarations are proposed:
+- `source9SpinVectorRepresentation_preserves_quadratic`: for every actual source Spin element and every original nine-vector, the accepted linear representation preserves exactly `source9Quadratic`.
+- `source9SpinVectorQuadraticIsometryEquiv`: each actual source Spin element gives an existing Mathlib `source9Quadratic.IsometryEquiv source9Quadratic`, with forward map the accepted representation at `g` and inverse map the same representation at `g⁻¹`.
+
+The preservation proof embeds the claimed real equality faithfully in the actual Clifford algebra. It uses the exact accepted vector-conjugation identity to square the conjugated vector, an explicit coerced `g⁻¹*g=1` bridge, the actual Clifford square law, centrality of the quadratic scalar and an explicit coerced `g*g⁻¹=1` bridge. It never treats the Clifford/exterior equivalence as multiplicative.
+
+Pinned `Mathlib/LinearAlgebra/QuadraticForm/IsometryEquiv.lean` supplies the exact structure fields `toLinearEquiv` and `map_app'`, plus the existing `refl`, `symm` and `trans` operations. Reuse these fields and Mathlib Representation's generic inverse identities; register no custom group structure. The candidate is an isometric-equivalence family, rather than a newly bundled matrix-group homomorphism.
+
+The independent audit checks scalar injectivity in the actual Clifford carrier, restates the quadratic theorem, checks the same result against the accepted dot-product form, and checks the isometry type and exact forward/inverse evaluations. It verifies literal Clifford conjugation, identity and the `trans` composition order, and rechecks the accepted distinct-plane derivative through the isometry interface. These controls add no extra source theorem roots.
+
+The workflow pins accepted F10BP/F10BO/F10BN/F10BM/F10BL/F10BJ and actual source ancestry, rebuilds the accepted F10BP closure once, freshly compiles the candidate and independent audit with warnings-as-errors, and requires exactly two permitted root reports in each log. No norm, topology or global instance is introduced.
+
+**Validation state:** local source/audit hashes, declaration inventory/scope guards, YAML, shell syntax and embedded Python checks pass. These are static checks; no local Lean executable is installed. Zero F10BQ declarations are qualified before terminal strict success and output review. No new axiom, admission, linter suppression or limit increase is introduced.
+
+**Scientific ceiling:** the candidate preserves the actual positive source quadratic form and packages individual isometric equivalences. It does not yet construct an orthogonal matrix homomorphism, prove determinant-one membership, classify the group kernel, prove surjectivity/covering or global smoothness, construct an atlas, or identify the full F10BC manifold differential.
+
+**Next action:** inspect F10BQ's strict result. If accepted, source-audit the existing finite-coordinate linear-map-to-matrix and orthogonal-group interfaces to package the same actual nine-vector representation. Keep determinant-one membership and manifold tangent identification as separately proved obligations.
