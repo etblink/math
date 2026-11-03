@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CC**, [run 41672054647](https://github.com/etblink/math/actions/runs/41672054647), tested `69ad47237d37a06c19ef9d93c84789b13aecc9cb`. **F10CD remains pending:** [run 41700469209](https://github.com/etblink/math/actions/runs/41700469209) failed fresh source compilation on missing `IsTopologicalAddGroup` for canonical native `so(9)`; the independent audit was skipped. The bounded repair derives topological-additive and scalar-continuity compatibility through the existing canonical submodule view, preserving all seven statements, map bodies and standard topologies. No CD root is qualified. All prior failure histories and scientific ceilings remain preserved.
+> **Latest accepted mathematical increment is F10CD**, [run 41706060408](https://github.com/etblink/math/actions/runs/41706060408), tested `3061ea5b8337209d71f600427f5f544f3bc23bba`. Fresh warnings-as-errors source compilation, independent standard-topology/exact-map/inverse/derivative audit and all seven root axiom checks passed. The identical CC canonical native model is now a continuous linear equivalence with the standard parameter product and skew-subspace topologies; its inverse retains the original upper-coordinate formula. The initial CD red and all earlier failure histories remain preserved. Subgroup charts, source local fiber/kernel control, tangent identifications and the full manifold differential remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2051,3 +2051,37 @@ Repaired source/audit/workflow:
 | `.github/workflows/bfss-kotler-v10h-f10cd-continuous-native-model-strict.yml` | `b0882dab41de5f6e66ca83af5dc025dd7335371d` |
 
 **Validation and next action:** local exact hashes, unchanged seven signatures and mathematical source body, declaration/scope guard, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available. Run complete fresh compilation and the independent topology/type/axiom audit with the unchanged 840/600-second caps and three-axiom whitelist. Do not qualify CD on partial reports or treat downstream constructor errors as separate mathematical counterexamples. If the next run identifies another structural premise, isolate its exact standard-submodule control; retain the same carrier and standard topology. Continuity acceptance, charts, source local fiber/kernel control, tangent identifications and full F10BC manifold differential remain pending.
+
+## F10CD accepted — continuous canonical native model and exact inverse coordinates
+
+**Verified strict result:** [run 41706060408](https://github.com/etblink/math/actions/runs/41706060408), tested `3061ea5b8337209d71f600427f5f544f3bc23bba`, attempt 1, job `126161565130`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CC rebuild, fresh warnings-as-errors source compilation, independent topology/type/axiom audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CD_CONTINUOUS_NATIVE_MODEL_TYPES_AXIOMS_PASS`. Each of the seven expected fully qualified roots appears exactly once per fresh phase, fourteen total. Every report uses only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The failed first CD run remains red and does not become qualified retroactively.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean` | `b0f54834164eb031b880a6f96aa276cfac031f3b` |
+| `lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean` | `cd034f48ca310be62c95f0fc5a26158980744224` |
+| `.github/workflows/bfss-kotler-v10h-f10cd-continuous-native-model-strict.yml` | `b0882dab41de5f6e66ca83af5dc025dd7335371d` |
+
+All seven qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9NativeSkewTopology_induced`
+2. `source9OrderedStrictPlaneModelContinuousEquiv`
+3. `source9OrderedStrictPlaneModelContinuousEquiv_toLinearEquiv`
+4. `source9OrderedStrictPlaneModelContinuousEquiv_continuous`
+5. `source9OrderedStrictPlaneModelContinuousEquiv_symm_continuous`
+6. `source9OrderedStrictPlaneWord_matrix_fderiv_zero_continuousModel`
+7. `source9OrderedStrictPlaneModelContinuousEquiv_symm_apply`
+
+Retained artifact `13266098351`, `bfss-v10h-f10cd-continuous-native-model-3061ea5b8337209d71f600427f5f544f3bc23bba-1`, 3780 bytes, GitHub-reported ZIP SHA-256 `96bdcaccb7ab7cf81b74af53d507b3409a7d59d78d3362299997f6e632bee6c7`. Exact tested SHA and run state, all step verdicts, decoded log, terminal classifier, root multiplicities, axiom whitelist, artifact metadata and all three candidate blob identities were inspected before acceptance.
+
+**Qualified mathematical content:** `source9OrderedStrictPlaneModelContinuousEquiv` has type `(Fin 36 → ℝ) ≃L[ℝ] LieAlgebra.Orthogonal.so SpaceIndex ℝ`. Its underlying linear equivalence is literally CC's already qualified model. Both it and its inverse are continuous. Canonical skew matrices retain the topology induced by original matrix entries; the audit captures the standard parameter and matrix product topologies before opening the elementwise norm scope and checks the resulting topologies by reflexivity. The inverse evaluates a canonical skew matrix at the original enumerated upper row/column. The actual ambient natural-matrix derivative of the chosen ordered source word remains exactly the underlying matrix of this continuous model in every direction.
+
+The independent audit also checks finite dimensionality of the actual parameter and canonical skew spaces, the full continuous-equivalence type, exact CC linear map and CA composition, continuity in both directions, inverse coordinates, actual derivative equality, and canonical target reconstruction. There is no surjectivity claim onto all ambient 9x9 matrices and no change to the standard topology or any norm instance.
+
+**Repair outcome and method:** the canonical Lie-subalgebra carrier needed explicit compatibility structures for typeclass search. The uniquely named local instances derive `IsTopologicalAddGroup` and `ContinuousSMul` through the existing canonical `toSubmodule` view, with Mathlib's associative matrix Lie-ring instance activated locally as in BB/CA. Independent audit controls derive the standard submodule structures afresh. With that bounded bridge, all later construction/map-equality errors disappeared while the original seven signatures and mathematical source bodies stayed byte-identical. The combined repair passed; the necessity of the additional scalar-continuity control was not isolated by ablation. No linter suppression, limit increase, source/gamma replacement, topology replacement or norm reconstruction was used. Preserve the missing-instance diagnosis as the first cause of the red, and the later recovery reports as invalid partial elaborations.
+
+**Next bounded plan and ceiling:** inspect the pinned Pi/projection composition derivative APIs and define the actual ordered-word natural matrix map's enumerated upper-coordinate projection into `Fin 36 → ℝ`. Prove its value at zero and full `HasFDerivAt` with the literal identity continuous linear map, using CC's coordinate-recovery theorem and fully typed evaluation/composition bridges. Only after these exact interfaces are qualified should inverse-function prerequisites be assembled. A continuous equivalence between the parameter and skew models does not prove that the word exhausts nearby source Spin elements or control the source local kernel. Subgroup charts, source local fiber/kernel control, tangent Lie-algebra identifications, determinant/covering results, full F10BC manifold differential and BFSS physical conclusions remain open. No new theorem candidate is introduced in this acceptance-only update.
