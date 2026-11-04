@@ -80,9 +80,17 @@ theorem source9IdentityChartInverse_fderiv_zero_projected_commutator
           ((fderiv ℝ (fun t : Fin 36 → ℝ =>
             ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) 0) v)) =
       source9PlaneWordVectorVelocity source9StrictPlaneRow source9StrictPlaneColumn z (List.finRange 36) v := by
-  rw [source9IdentityChartInverse_clifford_fderiv_zero]
-  exact source9PlaneSpinWordVelocity_projected_commutator source9StrictPlaneRow source9StrictPlaneColumn
-    (List.finRange 36) v z
+  have hvalue :
+      (fderiv ℝ (fun t : Fin 36 → ℝ =>
+        ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) 0) v =
+        source9PlaneSpinWordVelocity source9StrictPlaneRow source9StrictPlaneColumn (List.finRange 36) v :=
+    congrArg (fun L : (Fin 36 → ℝ) →L[ℝ] CliffordAlgebra source9Quadratic => L v)
+      source9IdentityChartInverse_clifford_fderiv_zero
+  exact (congrArg (fun a : CliffordAlgebra source9Quadratic =>
+    source9CliffordVectorProjection
+      (a * CliffordAlgebra.ι source9Quadratic z - CliffordAlgebra.ι source9Quadratic z * a))
+    hvalue).trans (source9PlaneSpinWordVelocity_projected_commutator source9StrictPlaneRow source9StrictPlaneColumn
+      (List.finRange 36) v z)
 
 /-- Actual natural-matrix action of the chart inverse retains the existing canonical native model. -/
 theorem source9IdentityChartInverse_naturalMatrix_fderiv_zero_model (v : Fin 36 → ℝ) :

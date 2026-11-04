@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10CX is the next candidate; CI is pending.** Latest accepted mathematics remains F10CW, [run 41872942447](https://github.com/etblink/math/actions/runs/41872942447), tested `a980c3e6ae6c26c26ccd48c891a1a11749ee9e54`. CX transports accepted finite-word regularity and derivatives to the exact chart inverse in the original Clifford carrier. Its nine roots include every-order ambient regularity, the literal ordered positive half-bivector derivative, projected native commutator, natural-matrix model and injectivity of the ambient derivative. These require fresh strict compilation and independent type/axiom qualification. Source tangent identification, atlas/manifold structures and the full F10BC differential comparison remain open. All prior evidence is preserved.
+> **F10CX repair is pending strict qualification.** [Run 41877796245](https://github.com/etblink/math/actions/runs/41877796245), tested `34b88f7d87b48edaef2f8e8938152da45e9263e2`, failed fresh source compilation with a recursion-depth diagnostic at the projected-commutator theorem application; its independent audit was skipped. The focused repair replaces whole-expression rewrite matching with BX’s accepted derivative-value/congrArg transport. All nine statements, other source proofs, the audit, limits and strict checks are unchanged; only the source pin is refreshed. Latest accepted mathematics remains F10CW, [run 41872942447](https://github.com/etblink/math/actions/runs/41872942447). No CX declaration is accepted from the failed file. All historical evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3978,3 +3978,57 @@ Before publication, YAML parsed, all run blocks passed bash syntax, both embedde
 **Successful and failed methods retained.** Reuse qualified finite-word derivatives and native coordinate separation instead of expanding the 36-factor actual word or enumerating Clifford coordinates. Preserve the half-angle normalization, actual source/gamma/order and inherited PBW structures. Use complete typed function/operator equalities before transporting fderiv or applying actual matrix coercions; this follows the successful CP/CL/BY repair methods. Keep ContDiff scopes explicit. No authored admissions, native_decide, linter suppression, theorem weakening, replacement norm/topology/carrier or larger proof limits are introduced. All historical red and green evidence remains intact.
 
 **Acceptance boundary and next bounded work.** CX is pending strict qualification. Verify tested SHA, terminal run/job steps, decoded fresh compiler/audit logs, nine-root multiplicity per phase, axiom whitelist, terminal marker, artifact metadata and all three candidate blobs before accepting. Preserve any red and identify its first causal diagnostic before a minimal repair. If accepted, CX supplies the exact chart inverse's original-Clifford regularity and injective ambient derivative at zero. Next examine existing source bivector/Lie-algebra and original representation derivative interfaces to identify the image of this explicit linear map and prepare a source tangent comparison; do not call that image the source tangent space before the relevant manifold and tangent interfaces are established. Translated atlas and compatibility, manifold/Lie-group structures, source tangent identification, full F10BC differential comparison, global reconstruction, full target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open.
+
+
+## 2026-11-04 Project Lead failure review and repair — F10CX projected-commutator normalization
+
+**Exact failed attempt.** The owner reported [run 41877796245](https://github.com/etblink/math/actions/runs/41877796245) red. It tested commit `34b88f7d87b48edaef2f8e8938152da45e9263e2`, tree `290879d85e88e24cc549b86f62d09f52de0c46df`, attempt 1. Job [126741954643](https://github.com/etblink/math/actions/runs/41877796245/job/126741954643) records fresh source compilation as completed/failure, the independent audit as completed/skipped, and artifact preservation/cleanup as completed/success. The live research ref remained the failed tested SHA before this repair. Aggregate run and job metadata still returned `in_progress` with null conclusions at retrieval and the later run refresh; this inconsistency is recorded rather than relabeled terminal. The failure classification follows the actual failed step and decoded Lean diagnostic, consistent with the owner's report.
+
+| Phase | Direct evidence |
+|---|---|
+| Exact pin/source-scope preflight | Success; all 90 pins checked on the tested SHA. |
+| Pinned Lean/Mathlib restore | Success. |
+| Accepted CW ancestry | Successful rebuild (9,050 jobs in the decoded build report). |
+| Fresh CX warnings-as-errors source compile | Failure at source 84:8: `error: maximum recursion depth has been reached`. |
+| CX source axiom printouts | Nine declarations printed: seven with only the permitted axioms; projected-commutator root and dependent injectivity root also contained sorryAx from failed elaboration recovery. |
+| Independent audit | Skipped; no audit example or control was qualified. |
+| Terminal acceptance marker | Absent. |
+| Evidence artifact | Preserved successfully. |
+
+**Causal diagnostic and scope.** The sole actual Lean source diagnostic in the fresh candidate phase is
+`SU2BFSSPairedSpin9V10HF10CXIdentityChartInverseCliffordDerivative.lean:84:8: error: maximum recursion depth has been reached`.
+The failing application is `source9PlaneSpinWordVelocity_projected_commutator source9StrictPlaneRow source9StrictPlaneColumn (List.finRange 36) v z`, after rewriting the fderiv operator throughout the projected-commutator goal. The error occurs at the imported-theorem application, not at the preceding rw line. This suggests expensive definitional alignment of the nested concrete derivative/velocity expression; that mechanism remains an inference until the focused repair is tested. It is not evidence of a false commutator identity or a failed accepted dependency.
+
+The affected declaration is `source9IdentityChartInverse_fderiv_zero_projected_commutator`. Its dependent `source9IdentityChartInverse_clifford_fderiv_zero_injective` inherited the failed elaboration placeholder in the axiom report and had no separate source diagnostic. Seven clean printouts do not qualify the failed file or any independent example. No authored sorry/admit was present; sorryAx in this failed output is an error-recovery artifact and remains forbidden by the acceptance gate. Latest accepted mathematics remains CW at `a980c3e6ae6c26c26ccd48c891a1a11749ee9e54`.
+
+**Preserved failed inputs and artifact.**
+- Failed source blob: `087428c711898625493d247ca7c2536849daece9`.
+- Unchanged independent audit blob: `326eea917df644d285dd5cb0455324ffa77122f4`.
+- Failed workflow blob: `59caefafb643cc33e8526ba0a29fbfec104c8c08`.
+- GitHub-reported artifact [13348012404](https://github.com/etblink/math/actions/runs/41877796245/artifacts/13348012404): `bfss-v10h-f10cx-identity-chart-inverse-clifford-derivative-34b88f7d87b48edaef2f8e8938152da45e9263e2-1`, 875 bytes, unexpired, associated with the failed tested SHA.
+- Reported ZIP digest: `be394dfd69ff06f26e4c99d9b149c14209204275d9a2b8650295bc47cf2cd6cc`. This is GitHub metadata, not an independently downloaded digest. The upload log reports two evidence files; the skipped independent phase supplied no audit qualification.
+
+**Successful method reused.** Read the accepted BX `source9PlaneSpinWord_fderiv_projected_commutator` proof at pinned source blob `bbf201b5af11213eacef21fe6ec41947635cc781`. It already avoids this whole-expression alignment: first apply the fully typed continuous-linear-map equality to the direction with congrArg; then transport that pointwise Clifford-value equality through the literal projected-commutator function with another congrArg; finally compose with the accepted velocity commutator theorem. This same explicit map/value transport is retained in the FCP procedural review and the CP/CL normalization-repair history.
+
+The existing frozen BY three-red review was also read at `contributions/bfss-kotler/FCP_K1D18V10H_F10BY_THREE_RED_METHOD_REVIEW_AND_RECOVERY_PLAN_2026_11_02.md`. Its relevant rule is to classify source versus audit failures, preserve already passing code and exact mathematical interfaces, and use the actual successful typed bridge rather than an annotation-only retry. BY's historical additive-topology/linter repair does not justify introducing a new instance here: the present failure is source normalization at a different operation.
+
+**Implemented minimal repair.** In the single failing proof, remove the operator-wide rw and direct final matching application. Introduce `hvalue` with the full type
+`(fderiv ℝ (fun t => ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) 0) v = source9PlaneSpinWordVelocity source9StrictPlaneRow source9StrictPlaneColumn (List.finRange 36) v`
+by applying the existing fderiv equality to v. Carry hvalue through
+`a ↦ source9CliffordVectorProjection (a * ι z - ι z * a)`
+with congrArg and compose it with BX's accepted velocity projected-commutator theorem. This is the exact accepted BX proof pattern specialized to the literal chart inverse. The proof statement and semantic commutator are unchanged.
+
+No other source proof, theorem hypothesis or conclusion changes. In particular, the already clean reverse and natural-matrix model proofs remain untouched. The entire independent audit remains byte-for-byte unchanged, including half-bivector coordinate evaluation, nonzero/doubling/sign controls, regularity, exact chart domains, native model and derivative injectivity checks. The workflow changes only the candidate source blob pin; its full guard code, nine roots, fresh phases, axiom whitelist, warning policy, 90-pin count and all resource limits remain byte-for-byte otherwise unchanged. The compiler's generic suggestion to increase maxRecDepth is not followed.
+
+**Exact repaired files and preserved audit.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CXIdentityChartInverseCliffordDerivative.lean` — Git blob `a6927651611f21ffd7e05dacf5d2aad9bfcac609`.
+- `lean/diagnostics/FCP_K1D18V10HF10CXIndependentAudit.lean` — Git blob `326eea917df644d285dd5cb0455324ffa77122f4`.
+- `.github/workflows/bfss-kotler-v10h-f10cx-identity-chart-inverse-clifford-derivative-strict.yml` — Git blob `df6ab7b71285fb7a6b7ad27d268188b56535d219`.
+
+Only the source, workflow source pin and canonical handoff are included in the repair commit. The audit is retained from the parent unchanged.
+
+**Validation before publication.** Static comparison against the authoritative failed source proves all nine declaration headers/statements identical and the entire source outside this one proof body identical. The audit text matches the authoritative failed blob exactly. The repaired workflow equals the authoritative failed workflow after exactly one source-hash substitution. YAML, all shell run blocks, both embedded Python programs, source-scope preflight, nine source/audit axiom-print counts and delimiter balance pass. All 88 inherited CW pins remain unchanged; the failed run's successful 90-pin phase supplies exact baseline evidence for the unchanged audit and ancestry, while 82 current local blobs were rechecked against the repaired pin set. The timeout sequence remains 1500/3150/840/600 seconds. There is no local Lean elaboration claim.
+
+**Discriminating next run and acceptance boundary.** A fresh commit/run must rebuild the same accepted CW ancestry, compile all nine CX declarations under unchanged limits and warnings-as-errors, and then run the unchanged independent audit for the first time. A green result requires each expected root exactly once in each fresh phase (18 reports), only propext/Classical.choice/Quot.sound, no sorryAx or Lean source diagnostics and the existing exact terminal marker. If a later audit failure appears after source success, classify that new boundary separately; do not label the audit pre-qualified by this repair.
+
+The red SHA, artifact and historical candidate event are preserved. CX remains unaccepted pending the complete strict gate. Source tangent identification, atlas/manifold structures, full F10BC differential comparison, global reconstruction, target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open.
