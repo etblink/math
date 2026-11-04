@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CR**, [run 41803034597](https://github.com/etblink/math/actions/runs/41803034597), tested `f172dcd9a20d5543da88ccfd54b38760ff9feca6`. **F10CS is now a candidate pending strict CI:** contraction columns on the existing F10Z native-nine exterior PBW basis, including absent-label zero, least-label erasure with coefficient +1, and scalar reconstruction under explicit vanishing of all nonempty PBW coefficients. The existing basis, words and native Fin 9 order are reused unchanged. Deriving coefficient vanishing from the common contraction kernel, two-sign classification, local source equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CS**, [run 41834840104](https://github.com/etblink/math/actions/runs/41834840104), tested `5c3db554acdfa77713babfbf16a7acf0fd50851d`. All nine roots passed fresh strict compilation and the independent PBW/type/axiom audit on the first CS run. The existing F10Z native-nine basis now has absent-label contraction zero, least-label erasure with coefficient +1, and exact empty-coefficient scalar reconstruction under explicit vanishing of all nonempty coefficients. The audit checks the negative sign at a nonleading coordinate. Deriving coefficient vanishing from the common contraction kernel, source two-sign classification, local source equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3546,3 +3546,46 @@ The gate removes the fresh candidate olean and compiles CS and its audit with wa
 YAML, every shell run-block syntax, both embedded Python ASTs, executable source/audit/instance scope preflight, inherited pin prefix, all 79 local or exact remote blob checks, nine-root print scope, balanced source/audit delimiters, both explicit accepted rebuild targets, three trigger paths, phase caps and whitelist pass static checks. No local Lean executable is available; no candidate source or audit elaboration success is claimed.
 
 **Next action and ceiling:** inspect the complete strict source and independent audit result before qualification. Preserve any red and repair its exact cause without weakening statements, sign controls or limits. If accepted, use finite support of the actual PBW expansion to choose a globally least occupied original coordinate. Combine the absent-label and positive least-label columns with erasure injectivity to isolate a nonempty coefficient; derive its vanishing from the common contraction kernel. Only then apply this candidate's scalar reconstruction theorem and CR's proved scalar transport. A common-coordinate-kernel scalar theorem, source scalar/two-sign kernel classification, local source fiber triviality, source Spin equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No authored admission, source/gamma substitution, norm/topology/order replacement, linter suppression, proof-limit increase, main/frozen-FCP/upstream change or upstream PR is introduced.
+
+
+## F10CS accepted — native exterior PBW contraction columns and conditional scalar reconstruction
+
+**Verified strict result:** [run 41834840104](https://github.com/etblink/math/actions/runs/41834840104), tested `5c3db554acdfa77713babfbf16a7acf0fd50851d`, attempt 1, job `126590977807`, completed/success with all ten recorded steps successful. Exact ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, explicit accepted CR and existing Z rebuild, fresh warnings-as-errors CS compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CS_EXTERIOR_PBW_CONTRACTIONS_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the nine expected fully qualified roots, each once per phase, eighteen total, using only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, separate phase/root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CSExteriorPBWContractions.lean` | `47e557bcf3a5f6f869382c7d5aa885ce365e7d33` |
+| `lean/diagnostics/FCP_K1D18V10HF10CSIndependentAudit.lean` | `47aa254a6e52f4e97ac077563ac952f9632b6845` |
+| `.github/workflows/bfss-kotler-v10h-f10cs-exterior-pbw-contractions-strict.yml` | `b881e647a089b21275214e4e1b183d7196b39e7c` |
+
+All nine qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9ExteriorCoordinateWord_cons`
+2. `source9ExteriorCoordinateWord_contraction_zero_of_not_mem`
+3. `source9ExteriorCoordinateWord_leading_contraction`
+4. `source9ExteriorPBWOrderedLabels_mem_finset`
+5. `source9ExteriorPBWBasis_coordinateContraction_zero_of_not_mem`
+6. `source9ExteriorPBWOrderedLabels_cons_of_least`
+7. `source9ExteriorPBWBasis_contraction_erase_of_least`
+8. `source9ExteriorPBWBasis_empty_eq_one`
+9. `source9Exterior_eq_scalar_of_nonempty_coefficients_zero`
+
+Retained artifact `13327291445`, `bfss-v10h-f10cs-exterior-pbw-contractions-5c3db554acdfa77713babfbf16a7acf0fd50851d-1`, 5882 bytes, GitHub-reported ZIP SHA-256 `f274a5e0b5c17484273fea8332b8bcd3606eaf7211368f88e257567f8f1783a9`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** reuse the existing accepted F10Z `source9ExteriorPBWBasis`, coordinate-word product and ordered-label enumeration on the actual original `SpaceIndex := Fin 9`. No new basis or order instance is introduced. The existing coordinate word's first factor is explicit. Contraction by a coordinate absent from a word is zero; contraction by its leading coordinate returns the remaining word with coefficient exactly one when that coordinate is absent from the tail.
+
+Every accepted ordered label is a member of its actual finite-set index. Thus contraction by a coordinate absent from the PBW index vanishes on that actual PBW monomial. The accepted ordered-label list is identified with its native finite-set sort. An explicitly least present label is therefore the first label, and contraction gives exactly the PBW monomial indexed by its erasure, with coefficient +1. Both presence and leastness assumptions are retained.
+
+The actual empty-index PBW monomial equals the exterior unit. If every nonempty-index PBW coefficient of an exterior element is zero, its complete finitely supported representation is the single empty-index coefficient. Applying the actual representation inverse reconstructs exactly the embedded real scalar whose value is that empty coefficient. This is conditional scalar reconstruction. It does not prove that simultaneous coordinate-contraction vanishing supplies its coefficient hypothesis.
+
+**Independent audit:** all nine interfaces pass with independently reconstructed accepted PBW structures and inherited source/standard matrix topology checks. Literal existing basis, word and ordered-label definitions are checked; native comparison agrees with comparison of the underlying natural values, and the exact ordered list is checked against native finite-set sorting. The audit checks absent contraction at arbitrary PBW coefficient positions, the +1 erased-index coefficient of a least-label contraction, the actual empty-index unit, fixed-value scalar reconstruction and existential scalar reconstruction under the same explicit hypothesis. Accepted CR scalar transport then gives the corresponding original Clifford scalar conclusion only with that coefficient hypothesis retained.
+
+**Sign and scope controls:** a two-label word contracted at its second coordinate gives the negative remaining first-coordinate word. The two opposite nested contraction orders give minus and plus the exterior unit respectively. This checks why the positive erasure formula must retain its least/leading-label condition. The distinct actual negative central source element, actual natural-action noninjectivity and transported coordinate-contraction kernel controls remain checked. No source identity, two-sign classification or common-coordinate-kernel scalar existence is inferred.
+
+**Successful method:** discover and reuse F10Z's existing exact nine-coordinate basis and ordered words rather than rebuilding them. Adapt the matching list, sorted finite-set head and scalar-reconstruction proof methods from the imported original-48 chain on the correct native-nine labels. Keep the native Fin order, avoiding the original product-label order/LE repair that does not apply here. Reconstruct via complete finitely supported coefficient equality and typed representation-inverse congruence, retaining the earlier E5 repair method. Rebuild the explicitly reused Z module alongside CR before the fresh candidate. The first CS strict run passed without repair. No authored admission, source instance registration, basis/order replacement, carrier/gamma substitution, norm/topology replacement, linter suppression, whitelist relaxation or proof-limit increase was introduced.
+
+**Next bounded plan and ceiling:** inspect the imported finite-support occupied-label and least-coefficient extraction methods. On the actual native-nine PBW expansion, form the finite union of labels occurring in nonzero supported indices. If it is nonempty, choose its least label and a supported index containing it. CS supplies zero contraction columns for indices omitting this label and +1 erasure columns for those containing it, because it is least in every supported index. Combine with erasure injectivity at a present label to isolate that supported coefficient without cancellation. Under common coordinate-contraction vanishing this contradicts nonzero support; derive vanishing of every nonempty coefficient, then apply accepted CS scalar reconstruction and CR fixed-scalar transport. This coefficient-separation/common-kernel theorem remains unproved. Source scalar/two-sign kernel classification, local source fiber triviality, source Spin equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves all prior red and green records.
