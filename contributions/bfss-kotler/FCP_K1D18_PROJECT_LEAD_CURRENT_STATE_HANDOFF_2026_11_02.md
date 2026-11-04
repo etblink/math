@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CM**, [run 41784700161](https://github.com/etblink/math/actions/runs/41784700161), tested `3626ee413b72781aa34d8344fbc79963c598b03f`. All eight roots passed fresh strict compilation and the independent literal-function/locality/type/axiom audit. The same completion map now has a local inverse on the original full matrix space, exact forward function, zero source/target neighborhoods, both local inverse laws and injectivity on its source. The audit retains global noninjectivity and excludes the known collision from that source. Full local orthogonal-matrix recovery, original source kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment remains F10CM**, [run 41784700161](https://github.com/etblink/math/actions/runs/41784700161), tested `3626ee413b72781aa34d8344fbc79963c598b03f`. **F10CN is now a candidate pending strict CI:** full orthogonal-matrix recovery from upper entries inside an explicit open identity neighborhood, and equality of the actual reconstructed/original natural matrices with both neighborhood hypotheses retained. Original source Spin equality, local kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3007,3 +3007,39 @@ The independent audit checks the standard matrix topology, completeness, literal
 **Successful method:** reuse the accepted CG constructor and typed inverse-identity transport on the full native matrix space. Supply the actual forward map and identity continuous linear equivalence explicitly, retain complete forward-function equality, and transport the generic inverse laws with typed matrix-function evaluation/congruence. Derive local injectivity from the actual left inverse. This first CM strict run passed without repair. No norm/topology/instance replacement, source/gamma substitution, authored admission, linter suppression, relaxed whitelist or proof-limit increase was introduced.
 
 **Next bounded plan and ceiling:** combine CM's local ambient injectivity with CK's exact orthogonal completion identity. For native orthogonal matrices `A` and `B` with equal accepted upper projections, require both perturbations `A - 1` and `B - 1` to belong to CM's source before concluding the full matrices equal. Audit the complete matrix conclusion and all neighborhood/membership hypotheses, then apply it to the actual original/reconstructed natural matrices under those same conditions. Choosing a suitable smaller original-source neighborhood and controlling the original source representation's local fibers remain separate obligations. Full local orthogonal-matrix recovery, original source local kernel control, source Spin neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
+
+
+## F10CN candidate — full local orthogonal recovery and actual natural-matrix reconstruction
+
+**Base and scope:** implemented on accepted F10CM handoff head `e8a50686c8895e86251aaa0ab7f555a0f6a7397d`, after strict CM run [41784700161](https://github.com/etblink/math/actions/runs/41784700161). This bounded candidate combines CK's exact orthogonal completion identity with CM's injectivity on its constructed matrix source. No prior source, audit or workflow is edited.
+
+**Eight candidate roots**, all in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrthogonalRecoveryNeighborhood`
+2. `source9OrthogonalRecoveryNeighborhood_isOpen`
+3. `source9OrthogonalRecoveryNeighborhood_one_mem`
+4. `source9Orthogonal_eq_of_upperProjection_eq_near_one`
+5. `source9OrderedUpperProjection_injOn_orthogonal_near_one`
+6. `source9Orthogonal_eq_of_strict_entries_eq_near_one`
+7. `source9NaturalMatrices_eq_of_upperCoordinates_eq_near_one`
+8. `source9NaturalMatrix_reconstruction_eq_near_one`
+
+The neighborhood is exactly the preimage of CM's source under `A ↦ A - 1` on the original full matrix space. Its candidate openness and identity membership use the ordinary matrix topology and subtraction continuity. For two native orthogonal matrices in this set, equal accepted upper coordinates yield equal completion values; CM injectivity equates their perturbations, and an explicitly typed addition bridge recovers full matrix equality. The finite native-pair statement and intersection-set injectivity retain all orthogonality and neighborhood conditions.
+
+The actual-source application concerns `source9SpinVectorOrthogonalHom` on the original `spinGroup source9Quadratic`. Both actual natural matrices must lie in the same neighborhood. Reconstruction additionally requires the accepted CJ reconstruction-domain membership. Only full natural-matrix equality is concluded; source Spin equality is not inferred.
+
+**Independent audit:** standard matrix topology is captured before the existing norm scope and checked unchanged. The audit checks the literal neighborhood preimage, its exact membership characterization, openness, identity membership and neighborhood property. It checks full matrix equality, the exact orthogonal/intersection injectivity type, native strict-pair indexing and the finite enumeration on actual orthogonal subtypes. Actual-source and reconstructed/original full natural-matrix conclusions, arbitrary matrix entries, and the literal accepted finite-word reconstruction formula are independently typed. Complete matrix equalities and typed entry congruence follow the successful CL/CM method; no fragile projected derivative target normalization is introduced.
+
+Locality remains explicit. The accepted completion-map global collision and its exclusion from CM's source are rechecked; the audit consequently excludes `-I` from the translated recovery neighborhood. It also independently checks that the accepted upper projection is not injective on the entire orthogonal group, using `I` and `-I`. This is a counterexample on the orthogonal group, with no assertion that `-I` belongs to the actual source Spin image.
+
+Candidate files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CNLocalOrthogonalRecovery.lean` | `897ea47e2ac9e7ef937fabbb74178073d18f52c5` |
+| `lean/diagnostics/FCP_K1D18V10HF10CNIndependentAudit.lean` | `75c9abb205c1db13f9e4ed281f1e9c1b0bf954f4` |
+| `.github/workflows/bfss-kotler-v10h-f10cn-local-orthogonal-recovery-strict.yml` | `e6404ef2dc183c8ae1509d6dd9357832decd8038` |
+
+**Gate and local checks:** all 65 accepted ancestry pins remain unchanged, with two exact candidate source/audit pins appended. The gate rebuilds accepted CM, removes the fresh candidate olean, then compiles CN and its independent audit with warnings as errors and the unchanged 840/600-second phase caps. The expected terminal classifier is `V10H_F10CN_LOCAL_ORTHOGONAL_RECOVERY_TYPES_AXIOMS_PASS`. Each phase must report exactly the eight expected fully qualified roots, using only `propext`, `Classical.choice`, and `Quot.sound`; actual Lean errors/warnings and `sorryAx` are rejected. Evidence is retained even on failure. YAML, all run-block bash syntax, both Python ASTs, the executable source-scope preflight, exact local/remote pinned blobs, ancestry-pin preservation, trigger scope and phase caps were checked. No local Lean executable is available; no elaboration success is claimed before complete CI.
+
+**Next action and ceiling:** inspect the complete strict source/audit outcome and retain any red diagnostic before repairing. If accepted, choose a smaller original-source neighborhood where CJ reconstruction is defined and both actual natural matrices satisfy this matrix neighborhood condition. Original source local fiber/kernel control is still required before converting natural-matrix equality into source equality or source word-image coverage. Subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No authored admission, instance registration, norm/topology replacement, gamma/carrier substitution, linter suppression, limit increase, main/frozen-FCP/upstream change or upstream PR is introduced.
