@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CK**, [run 41754991438](https://github.com/etblink/math/actions/runs/41754991438), tested `b106e809965b8790d7679c74389e8a21fa6c62b0`. All eight roots passed fresh strict compilation and the independent native-matrix/literal-reconstruction/type/axiom audit. The completion map's exact Gram identity and collapse to native upper-entry coordinates connect CJ's reconstructed/original natural matrices to equal completion values. The audit proves ambient global noninjectivity; the first CK red remains preserved. Smoothness/strict derivative and local matrix injectivity remain next; full matrix recovery, original source kernel control and source neighborhood coverage remain open.
+> **Latest accepted mathematical increment remains F10CK**, [run 41754991438](https://github.com/etblink/math/actions/runs/41754991438), tested `b106e809965b8790d7679c74389e8a21fa6c62b0`. **Current candidate F10CL:** every-order smoothness and the literal identity strict derivative at zero of the same completion map, using scalar entry products, finite sums and explicit full matrix-operator bridges. Eight roots await complete strict CI. The independent audit retains CK's ambient-global-noninjectivity counterexample. Local matrix injectivity/recovery, original source local kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2768,3 +2768,50 @@ The independent audit checks the standard matrix topology, literal polynomial fi
 No source/gamma replacement, new norm/topology or instance, authored admission, linter suppression, relaxed whitelist or proof-limit increase was introduced. The completion coordinates use the same native spatial labels and existing upper enumeration; the diagonal Gram factor does not alter the accepted rotor or generator normalization.
 
 **Next bounded plan and ceiling:** qualify smoothness and the strict literal identity derivative at zero of this same completion map in the standard matrix product topology. Reuse finite-coordinate calculus and explicit function/operator bridges; do not introduce a normed-ring structure solely for the matrix product. Once the derivative gate passes, instantiate the pinned strict inverse-function constructor and extract local ambient injectivity. Combine that local result with the accepted completion identity only when both orthogonal perturbations lie in the established neighborhood. The global counterexample remains a permanent negative control. Full local matrix recovery, original source local fiber/kernel control, source neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
+
+
+## F10CL candidate — smooth completion map and strict identity derivative
+
+**Baseline:** live research branch checked at `f4e5a2226641d86cfa7dba4ee373179d7e385502`, the documentation-only CK acceptance commit. The duplicate user report of green run 41754991438 was already verified and accepted; no second qualification or duplicate acceptance commit is made. Root AGENTS and the canonical handoff reread. Previously checked ancestor instructions and all accepted mathematical modules remain unchanged.
+
+**Bounded implementation:** retain exactly CK's `source9OrthogonalCompletionMap` on `Matrix SpaceIndex SpaceIndex ℝ`. Define a row/column entry continuous linear map using the original nested Pi projections and prove its literal evaluation formula. Express each actual Gram entry `(B.transpose * B) i j` by a named complete function equality with `∑ k : SpaceIndex, B k i * B k j`. Entry evaluation is continuous linear, so scalar products and finite sums give every-order smoothness of each Gram entry.
+
+For each scalar product, separately type both evaluation derivatives at the actual zero matrix before applying the product rule. Both scalar values there are zero, so each product derivative and the finite Gram sum derivative are the literal zero CLM. State the sum function, derivative operator and evaluation point completely before rewriting through the named Gram-entry equality.
+
+Use the fixed native index comparisons in CK's formula to obtain every-order smoothness of each completion entry, then assemble the two Pi levels. For the ordinary derivative, decompose the full literal identity operator through the two Pi derivative equivalences. An explicit equality, proved by continuous-linear-map extensionality, bridges the nested projection/identity compositions to the named entry CLM. Each branch has its entry derivative: upper entries are linear; lower and diagonal entries add zero quadratic derivatives, with the diagonal constant factor retained. Assemble the complete ordinary identity derivative and derive exact `fderiv` equality. Finally combine order-one smoothness with that specified ordinary derivative through the pinned strict-derivative API.
+
+The construction does not install a matrix normed-ring instance or replace any norm/topology. Only real scalar product calculus is used for multiplication; the ambient domain/codomain remain the original full matrix space with its standard product topology. No inverse-function constructor or local injectivity theorem is introduced in this gate.
+
+**Pinned API inspection:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`:
+- `Analysis/Calculus/FDeriv/Add.lean`, blob `99f2c6461a9d095cfde92b3a93aa450da1f128e1`: complete `HasFDerivAt.fun_sum` function/operator family and finite-set interface.
+- `Analysis/Calculus/FDeriv/Mul.lean`, blob `5c625329be59e8f6f32f242efbf6ccb9e783f1c5`: scalar product rule and multiplication by a fixed scalar.
+- `Analysis/Calculus/FDeriv/Prod.lean`, blob `411b5f2f6a95bdce18d85ba51f9f21e78f36e770`: `hasFDerivAt_pi'` retains the prescribed full derivative operator and projects it coordinatewise.
+- `Analysis/Calculus/ContDiff/Operations.lean`, blob `80e898b98348cb111761430989137705f4a3cf63`: finite sum and fixed-denominator regularity interfaces.
+- `Analysis/Calculus/ContDiff/RCLike.lean`, blob `dff89ca9f7fee6191d8496a39a7aa2b1426fb6f0`: `ContDiffAt.hasStrictFDerivAt'` requires the ordinary derivative and nonzero regularity order, as already used successfully in CF.
+
+Eight pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9CompletionEntryCLM`
+2. `source9CompletionEntryCLM_apply`
+3. `source9CompletionGramEntry_contDiff`
+4. `source9CompletionGramEntry_hasFDerivAt_zero`
+5. `source9OrthogonalCompletionMap_contDiff`
+6. `source9OrthogonalCompletionMap_hasFDerivAt_zero`
+7. `source9OrthogonalCompletionMap_fderiv_zero`
+8. `source9OrthogonalCompletionMap_hasStrictFDerivAt_zero`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean` | `810b849b50b94320d66c3b724fa121e5ff07888d` |
+| `lean/diagnostics/FCP_K1D18V10HF10CLIndependentAudit.lean` | `4df471178bd0045ccdf7fea3e12da06d78bd0e9b` |
+| `.github/workflows/bfss-kotler-v10h-f10cl-completion-smooth-strict-derivative-strict.yml` | `9a2b2d5efadffc01059d004d9fa485aa088143f7` |
+
+**Independent audit:** capture and check the standard matrix topology before/after the elementwise norm scope; check completeness for the same full matrix space. Check the exact entry CLM and literal evaluation, Gram-entry regularity at every order, literal zero Gram-entry derivative and its evaluation on every matrix direction. Check completion regularity at every order, full ordinary identity derivative, full `fderiv` equality and strict identity derivative. Evaluate the full derivative on every original matrix direction and every original row/column.
+
+Independently prove named full function equalities for the Gram entry's literal sum and the completion map's completely expanded piecewise finite-sum expression. Transport all required regularity and derivative checks through those equalities instead of deeply unfolding literal interfaces. The audit retains CK's concrete global noninjectivity control in full: both zero and the perturbation from the identity to the negative identity have completion zero, and their original diagonal entries are distinct. This control does not assert anything about the negative identity lying in the actual source Spin representation's image.
+
+**Verification discipline:** preserve all accepted ancestry pins through CK's repaired source and unchanged audit, add exact CL source/audit pins, rebuild CK and freshly compile CL and its independent audit with warnings-as-errors. Require exactly eight expected permitted root reports per phase and terminal classifier `V10H_F10CL_COMPLETION_SMOOTH_STRICT_DERIVATIVE_TYPES_AXIOMS_PASS`. Keep the three-axiom whitelist, 840/600-second fresh-phase caps, no-instance-registration guard, legacy conditional-alias guard and evidence preservation. No source/gamma substitution, new norm/topology/instance, authored admission, linter suppression or custom proof limit is introduced. Local exact hashes, accepted-pin preservation, eight-root scope preflight, YAML, all three trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; all eight roots remain candidates pending complete strict CI.
+
+**Next action and ceiling:** inspect complete fresh compilation and independent literal-function/operator audit before qualification. If accepted, instantiate the pinned strict inverse-function constructor with this same map, its strict literal identity derivative and the identity continuous linear equivalence on the full original matrix space. Extract zero source-neighborhood membership and local injectivity with explicit hypotheses. Combine that future result with CK's orthogonal completion identity only when both perturbations lie in the accepted ambient neighborhood. The global counterexample forbids dropping locality. Full local matrix recovery, original source local fiber/kernel control, source Spin neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all earlier red and green evidence.
