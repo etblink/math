@@ -88,3 +88,28 @@ A separate, non-acceptance source-interface diagnostic has been added:
 - Blob: `7990f156ac102258caec09c0cac812103921aea7`
 
 It pins the F10DB parent and candidate source, restores the pinned Lean/Mathlib environment, builds the exact F10DB import closure, and compiles only the F10DC source with warnings treated as errors. It does not run the independent audit and cannot qualify or accept F10DC. Its purpose is to expose actual Lean type/interface errors before the strict wrapper is repaired and retried.
+
+
+## Source diagnostic RED and bounded strict-gate repair — 2026-11-04
+
+[Direct diagnostic run #41922732725](https://github.com/etblink/math/actions/runs/41922732725), attempt 1, completed/failure at `6a0e798a63399d4ee14313b01658015119945623`, tree `2fac149f22451f05426930ce9dbc237d95ee9643`. Job `126899107511` passed exact pins, pinned Lean/Mathlib restore and the accepted DB import-closure build, then failed fresh source compilation under warnings-as-errors. The only source diagnostics were unused-tactic linter errors at lines 67 and 77: the two subtype-bridge `change ... in source9IdentityChartDerivativeRange` commands did nothing. Both reported candidate roots used only propext, Classical.choice and Quot.sound, but the compile failed and no independent audit ran. The diagnostic accepts no DC root.
+
+Artifact [13367699828](https://github.com/etblink/math/actions/runs/41922732725/artifacts/13367699828) is 820 bytes; GitHub reports ZIP SHA256 `469ff68ca88a1d625abb2e47e7928170e6ff5fe3ab7eea8d1ef261a11172a73d`. The earlier wrapper artifacts remain [13366109934](https://github.com/etblink/math/actions/runs/41921763563/artifacts/13366109934), 183 bytes, reported digest `9d3ce2d4666eb9b92cb1aaa562b8b7b1dde7ef4b2238f330e23d77451df49633`, and [13367272327](https://github.com/etblink/math/actions/runs/41922137755/artifacts/13367272327), 183 bytes, reported digest `6bb65674f1a1221dd22c44e515c6d740fe7056354a44c5d2aaf2dbf30a1cb0b0`. These are provider-reported metadata, not independently hashed binary downloads.
+
+The diagnostic has now exposed the actual source failure, completing the purpose of the wrapper-failure stop-rule investigation. The next full strict run uses a targeted repair with locally executed wrapper checks; it is not an unchanged retry.
+
+The repair deletes exactly the two source no-op tactics, leaving the same explicit subtype values and membership proofs. In the independent audit it removes the corresponding redundant inverse-bridge tactic and an unnecessary subtype-bracket change, marks the section explicitly noncomputable for its value aliases, and adds inverse bracket preservation `LieEquiv.map_lie e.symm x y`. Every existing audit proposition/control remains, and both public source declaration types and value functions are unchanged.
+
+The strict preflight now checks the unqualified in-namespace audit print spelling, while the compiler-output validator still requires the exact fully qualified root names. Its two candidate pins advance atomically. The direct diagnostic changes only its source pin. No warning/linter policy, proof/time limit, accepted parent pin or mathematical premise is relaxed.
+
+Repaired immutable blobs:
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean` — `ddf714a495217826446f059144169fd53761d77e`.
+- `lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean` — `96e36c17b56fe17d3b6fb5d6e49f23cf64bfcd3a`.
+- `.github/workflows/bfss-kotler-v10h-f10dc-derivative-range-lie-packaging-strict.yml` — `60f1b6fd21c23117e2b4e83c4c8301f28793a32e`.
+- `.github/workflows/bfss-kotler-v10h-f10dc-source-interface-diagnostic.yml` — `43b99d10a57e51ed1d3602887acd4c4470dc6e7e`.
+
+Local validation passed YAML, all run-block bash syntax, every embedded Python parse and actual execution of the strict source-scope preflight. All 102 accepted DB pin lines remain verbatim, with 104 total strict pins. Ninety-six local blobs and eight authoritative remote blobs matched. Exactly two public definitions and two print roots per candidate file remain. Strict timeouts are unchanged at 1500/3150/840/840/600 seconds; diagnostic timeouts remain 1500/3150/840 seconds. No local Lean elaboration is claimed.
+
+The repaired full gate must freshly check DB's nine accepted roots, both candidate roots in source and audit (four candidate reports), the permitted axioms, all original value/bracket/inverse controls and the added inverse bracket control, with no diagnostics or sorryAx. Only its terminal `V10H_F10DC_LIE_SUBALGEBRA_LIE_EQUIV_TYPES_AXIOMS_PASS` and complete exact-head success can qualify DC. A green direct diagnostic alone cannot.
+
+The canonical current-state handoff is updated in the same repair commit, preserving its historical body and recording this DC work plus all three failed runs. F10DB remains accepted pending full strict DC qualification.

@@ -4,6 +4,7 @@ import Mathlib.Algebra.Lie.OfAssociative
 
 set_option autoImplicit false
 namespace FCP.BFSSPairedSpin9Clifford
+noncomputable section
 
 open OAI.BFSSQuantum
 open FCP.BFSSGamma9
@@ -42,7 +43,6 @@ example (x : S) :
     e.symm x =
       source9NativeSkewDerivativeRangeEquiv.symm
         ⟨(x : C), by
-          change (x : C) ∈ source9IdentityChartDerivativeRange
           exact x.property⟩ := rfl
 
 -- Check the full LieHom law and both inverse laws independently at the consumer boundary.
@@ -51,13 +51,15 @@ example (A B : N) : e ⁅A, B⁆ = ⁅e A, e B⁆ :=
 
 example (A : N) : e.symm (e A) = A := e.left_inv A
 example (x : S) : e (e.symm x) = x := e.right_inv x
+example (x y : S) : e.symm ⁅x, y⁆ = ⁅e.symm x, e.symm y⁆ :=
+  LieEquiv.map_lie e.symm x y
 
 -- Check the actual LieSubalgebra interface on arbitrary subtype inputs.
 example (x y : S) : ((⁅x, y⁆ : S) : C) ∈ S := by
-  change ⁅(x : C), (y : C)⁆ ∈ S
   exact LieSubalgebra.lie_mem S x.property y.property
 
 #print axioms source9IdentityChartDerivativeLieSubalgebra
 #print axioms source9NativeSkewDerivativeRangeLieEquiv
 
+end
 end FCP.BFSSPairedSpin9Clifford

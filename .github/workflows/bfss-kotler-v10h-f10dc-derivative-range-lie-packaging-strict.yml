@@ -138,8 +138,8 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DAIndependentAudit.lean)" = '728c91b2db56f125be2292e682db1bcbf2bdc53a'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DBDerivativeRangeCommutatorClosure.lean)" = '12c3397a06a6e9ef634c69bae075c20564bb1e4c'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DBIndependentAudit.lean)" = '19e04f3e39986081154adccfb35e3f9d1db62407'
-          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean")" = '0231391e37f7c72ae1dfcd3e4ee6670869a1d800'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean)" = 'cd72a540378e7b7e29a6637f1bd43fa0267f40a9'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean")" = 'ddf714a495217826446f059144169fd53761d77e'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean)" = '96e36c17b56fe17d3b6fb5d6e49f23cf64bfcd3a'
           # Exact source and audit blob pins below are the ancestry control; keep this checkout shallow.
           python3 - <<'PY'
           from pathlib import Path
@@ -151,7 +151,7 @@ jobs:
           for name in names:
               assert len(re.findall(r'(?m)^noncomputable def '+re.escape(name)+r'\b',s))==1,name
               assert len(re.findall(r'(?m)^#print axioms '+re.escape(name)+r'[ \t]*$',s))==1,name
-              assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
+              assert '#print axioms '+name in audit,name
           for text in [s,audit]:
               assert text.count('#print axioms ')==len(names)
               code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
@@ -169,6 +169,7 @@ jobs:
           assert 'source9NativeSkewDerivativeRangeEquiv_commutator' in s
           assert "map_lie'" in s and 'left_inv' in s and 'right_inv' in s
           assert 'LieHom.map_lie' in audit and 'LieSubalgebra.lie_mem' in audit
+          assert 'LieEquiv.map_lie e.symm x y' in audit
           assert not re.search(r'(?<!Lie)Subalgebra\s+ℝ',s)
           assert not any(t in s for t in ['ChartedSpace','LieGroup','NormedRing','SubalgebraOf'])
           print('V10H_F10DC_SOURCE_PIN_LIE_SUBALGEBRA_LIE_EQUIV_SCOPE_PASS')

@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10DB is accepted from strict run 41913435697.** The exact tested commit is `abedd367f58f34054ba9bb9a4e2507a4eb1ba576`. All nine declarations passed fresh warnings-as-errors compilation and the complete independent audit on their first strict run (18 permitted-axiom reports), with no Lean source diagnostics or sorryAx. The exact native bracket defect vanishes; the actual Clifford derivative range and identical native half-bivector span are closed under the ambient commutator, and the existing native real-linear range equivalence obeys the exact bracket law. The proof establishes evenness explicitly and eliminates only the residual scalar through the actual gamma evaluation. No whole-Clifford gamma faithfulness, range Lie-algebra packaging, source tangent identification or manifold differential is asserted. All historical red evidence is preserved.
+> **F10DC Lie packaging remains a candidate; a bounded repair is pending strict CI.** Latest accepted mathematics is F10DB at [run 41913435697](https://github.com/etblink/math/actions/runs/41913435697), tested `abedd367f58f34054ba9bb9a4e2507a4eb1ba576`. The branch already contains DC's exact-range LieSubalgebra and native LieEquiv candidate. Two strict runs stopped in preflight; direct diagnostic [41922732725](https://github.com/etblink/math/actions/runs/41922732725) then exposed two unused subtype-bridge tactics. The repair preserves both public declarations and all existing audit controls, removes those no-ops, corrects the audit-name preflight, and adds inverse bracket preservation. No DC root is accepted until the complete exact-head strict gate passes. The source tangent identification and manifold differential remain open; all historical evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4721,3 +4721,58 @@ The accepted algebraic closure and native bracket law now justify a subsequent b
 Source tangent identification, translated atlas compatibility, source manifold/Lie-group structures and the full F10BC manifold differential remain separate. Further global source reconstruction, target-surjectivity/covering/lift results, upstream integration and BFSS physical conclusions remain open.
 
 This acceptance-only commit changes the canonical handoff alone. The source, audit and workflow remain the exact tested blobs above. Every historical byte beginning at the original As-of field is preserved and this event is appended. The research branch remains the only write target; main, frozen FCP and upstream integration remain unchanged, with no upstream PR opened.
+
+
+## 2026-11-04 Project Lead continuation — reconcile existing F10DC candidate and repair diagnosed boundaries
+
+**Current branch reconciliation.** After DB acceptance-only head `0d9b530d0703886eeded0017b81a0767934d2bbe`, the research branch advanced by three commits before this continuation began:
+- `d0acee3a797629cec8aeef80767ab97618b7648b`: existing F10DC Lie-packaging candidate.
+- `56f95fafb974b3cab1376f03b4deadc78f2a1c34`: shallow-history wrapper correction and first-red record.
+- `6a0e798a63399d4ee14313b01658015119945623`: source-interface diagnostic after two wrapper failures.
+
+The current observed head is the last commit above, tree `2fac149f22451f05426930ce9dbc237d95ee9643`; its canonical handoff is unchanged DB-acceptance blob `07b28f27ead1d7674d47a824410632250241848b`. The complete delta from DB acceptance was read and preserved. This continuation repairs that existing candidate rather than adding a competing implementation or overwriting branch history. Before publication the branch ref was read again and still pointed to the same observed head. Updates use an exact-head lease.
+
+**Existing candidate and exact mathematical scope.** Source `SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean` contains only two new public definitions:
+- `source9IdentityChartDerivativeLieSubalgebra : LieSubalgebra ℝ (CliffordAlgebra source9Quadratic)`, extending the literal existing derivative-range Submodule and using DB's actual commutator closure for its Lie closure field.
+- `source9NativeSkewDerivativeRangeLieEquiv`, from the existing canonical native so(9) to that exact range subtype. It preserves the existing CY real-linear values and inverse, supplies the bracket field from DB's exact native commutator equality, and retains both inverse laws.
+
+The two definitions package the accepted algebraic interfaces. They do not construct a new range, transport an invented bracket, change source labels/half normalization or identify the source manifold tangent. The independent audit checks literal underlying submodule equality, ambient and subtype brackets, underlying real-linear equivalence, forward values, explicit original inverse bridge, forward bracket preservation, both inverse laws and arbitrary subtype closure. The repair additionally checks inverse bracket preservation.
+
+**Primary dependency review.** Read pinned Mathlib `Algebra/Lie/Subalgebra.lean` (blob `515b576ec709f978ebf32e85229a3b9fbaa15ff7`) and `Algebra/Lie/Basic.lean` (blob `447ea9197ccc6d052f50033098b5ebe4dfb571b2`) at `d13f23b723b8a846827a245b89c10fc7d3f11612`. LieEquiv extends LieHom and supplies its canonical linear-equivalence coercion, forward map_lie, symm and inverse laws. The existing ambient associative commutator registration remains local at priority 100. No new global instance or source norm/topology registration is introduced.
+
+**Three failed runs, causally separated.**
+
+| Run | Exact tested SHA | Outcome |
+|---|---|---|
+| [41921763563](https://github.com/etblink/math/actions/runs/41921763563) | `d0acee3a797629cec8aeef80767ab97618b7648b` | Preflight failed at `git merge-base --is-ancestor`: historical DB tested commit was not available in the shallow checkout. All preceding pins passed; Lean setup/source/audit were skipped. |
+| [41922137755](https://github.com/etblink/math/actions/runs/41922137755) | `56f95fafb974b3cab1376f03b4deadc78f2a1c34` | Preflight failed because it required fully qualified audit print spelling, while the audit correctly prints the short name inside its namespace. All pins passed; Lean setup/source/audit were skipped. |
+| [41922732725](https://github.com/etblink/math/actions/runs/41922732725) | `6a0e798a63399d4ee14313b01658015119945623` | Non-acceptance direct source diagnostic passed pins, pinned environment and DB import-closure build, then failed warnings-as-errors at two unused subtype membership `change` tactics. No independent audit was run. |
+
+All three runs are terminal completed/failure, attempt 1. Read their actual job steps, decoded logs and artifact metadata. The first two jobs are `126895772850` and `126897049451`; diagnostic job is `126899107511`. Diagnostic source lines 67 and 77 report the exact same no-op: `change (x : CliffordAlgebra source9Quadratic) ∈ source9IdentityChartDerivativeRange` changes nothing. The two diagnostic root axiom reports contained only propext, Classical.choice and Quot.sound, but the linter failure prevents any acceptance.
+
+Artifacts are preserved:
+- [13366109934](https://github.com/etblink/math/actions/runs/41921763563/artifacts/13366109934), 183 bytes, reported ZIP SHA256 `9d3ce2d4666eb9b92cb1aaa562b8b7b1dde7ef4b2238f330e23d77451df49633`.
+- [13367272327](https://github.com/etblink/math/actions/runs/41922137755/artifacts/13367272327), 183 bytes, reported ZIP SHA256 `6bb65674f1a1221dd22c44e515c6d740fe7056354a44c5d2aaf2dbf30a1cb0b0`.
+- [13367699828](https://github.com/etblink/math/actions/runs/41922732725/artifacts/13367699828), 820 bytes, reported ZIP SHA256 `469ff68ca88a1d625abb2e47e7928170e6ff5fe3ab7eea8d1ef261a11172a73d`.
+
+These are GitHub-reported metadata, not independently hashed binary archives. Original failed source/audit/strict/diagnostic blobs remain `0231391e37f7c72ae1dfcd3e4ee6670869a1d800`, `cd72a540378e7b7e29a6637f1bd43fa0267f40a9`, `85261d28331ea0c98f3bc0fd554447cb17e82863` and `7990f156ac102258caec09c0cac812103921aea7`.
+
+**Bounded repair and stop-rule resolution.** The direct diagnostic has fulfilled the purpose of investigating the two wrapper failures: it reached the actual Lean interface and isolated two fatal linter no-ops. Remove exactly those two source tactics, leaving the explicit subtype values, membership proof terms, public signatures, linear values, inverse functions and bracket construction intact. No mathematical calculation is replaced or theorem weakened.
+
+In the independent audit remove the matching redundant inverse-membership tactic and an unnecessary subtype-bracket change, retain every existing proposition/control, place the private noncomputable value aliases in an explicit noncomputable section, and add `LieEquiv.map_lie e.symm x y` as an inverse-bracket control. The strict preflight now recognizes the unqualified audit print spelling in its namespace; its output validator still requires both fully qualified root names. Both candidate pins advance atomically and the direct diagnostic's source pin is updated. The already corrected shallow-history assertion stays removed; all 102 accepted DB ancestry pins stay verbatim. No linter is suppressed.
+
+The next full strict run follows executed offline wrapper validation and a targeted diagnosed source repair; it is not an unchanged third wrapper retry. The separate direct source diagnostic will use the same repaired SHA and remains explicitly non-acceptance evidence. Full qualification depends on the strict workflow and every independent control, regardless of the diagnostic result.
+
+**Repaired exact blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean` — `ddf714a495217826446f059144169fd53761d77e`.
+- `lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean` — `96e36c17b56fe17d3b6fb5d6e49f23cf64bfcd3a`.
+- `.github/workflows/bfss-kotler-v10h-f10dc-derivative-range-lie-packaging-strict.yml` — `60f1b6fd21c23117e2b4e83c4c8301f28793a32e`.
+- `.github/workflows/bfss-kotler-v10h-f10dc-source-interface-diagnostic.yml` — `43b99d10a57e51ed1d3602887acd4c4470dc6e7e`.
+
+**Validation and unchanged acceptance contract.** YAML parsing, bash syntax for every run block in both workflows, parsing every embedded Python program and actual execution of the strict source-scope preflight all passed locally. All 102 inherited DB pin lines remain verbatim, with 104 strict pins. Ninety-six local blobs matched and the eight unavailable ancestor blobs matched authoritative files at the observed exact head. Both candidate files retain exactly two axiom-print roots and balanced delimiters. Direct whole-file comparison confirms that source changes are exactly the two no-op removals. The audit's changes are exactly the stated proof cleanup, noncomputable section and added inverse bracket control. No local Lean elaboration is claimed.
+
+The strict gate retains Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, pinned Actions, warnings-as-errors and proof limits. It rebuilds accepted DA, freshly compiles and validates the exact DB parent with nine reports, freshly compiles DC and independently audits DC with two expected roots per phase (four candidate reports), all under the unchanged permitted-axiom set. It requires no sorryAx or Lean source diagnostics and terminal `V10H_F10DC_LIE_SUBALGEBRA_LIE_EQUIV_TYPES_AXIOMS_PASS`. Strict timeouts remain 1500/3150/840/840/600 seconds; diagnostic timeouts remain 1500/3150/840. Fresh native object deletion/nonempty checks and always-run artifacts remain.
+
+**Lessons and scope ceiling.** Preserve concurrently advanced history by reading the actual ref, delta, candidate and evidence before editing, and lease the eventual update to the reconciled head. Source pins and shallow Git history are distinct controls. A namespace-local audit print spelling must be validated as written while its actual compiler output is checked fully qualified. Treat no-op tactics as removable proof scaffolding rather than disabling a linter. A diagnostic's healthy axiom reports do not substitute for successful source compilation or independent audit.
+
+F10DC remains unaccepted. F10DB remains accepted. If the repaired full gate succeeds, the literal derivative range gains a canonical ambient commutator LieSubalgebra package and its existing native linear equivalence gains the corresponding LieEquiv package. Source tangent identification, translated atlas compatibility, manifold/Lie-group structures, the full F10BC manifold differential, further global/target-surjectivity/covering/lift and BFSS physical conclusions remain separate. This repair changes only the existing DC source/audit/workflows, appends its candidate record and updates this canonical handoff. Main, frozen FCP and upstream integration remain unchanged; no upstream PR is opened. All historical handoff bytes beginning at the original As-of field are preserved, with this event appended.

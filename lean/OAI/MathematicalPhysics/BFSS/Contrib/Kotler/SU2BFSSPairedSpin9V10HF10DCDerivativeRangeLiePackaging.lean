@@ -64,7 +64,6 @@ noncomputable def source9NativeSkewDerivativeRangeLieEquiv :
   invFun := fun x =>
     source9NativeSkewDerivativeRangeEquiv.symm
       ⟨(x : CliffordAlgebra source9Quadratic), by
-        change (x : CliffordAlgebra source9Quadratic) ∈ source9IdentityChartDerivativeRange
         exact x.property⟩
   left_inv := by
     intro A
@@ -74,7 +73,6 @@ noncomputable def source9NativeSkewDerivativeRangeLieEquiv :
     apply Subtype.ext
     let y : source9IdentityChartDerivativeRange :=
       ⟨(x : CliffordAlgebra source9Quadratic), by
-        change (x : CliffordAlgebra source9Quadratic) ∈ source9IdentityChartDerivativeRange
         exact x.property⟩
     exact congrArg (fun z : source9IdentityChartDerivativeRange =>
       (z : CliffordAlgebra source9Quadratic))
