@@ -113,3 +113,21 @@ Local validation passed YAML, all run-block bash syntax, every embedded Python p
 The repaired full gate must freshly check DB's nine accepted roots, both candidate roots in source and audit (four candidate reports), the permitted axioms, all original value/bracket/inverse controls and the added inverse bracket control, with no diagnostics or sorryAx. Only its terminal `V10H_F10DC_LIE_SUBALGEBRA_LIE_EQUIV_TYPES_AXIOMS_PASS` and complete exact-head success can qualify DC. A green direct diagnostic alone cannot.
 
 The canonical current-state handoff is updated in the same repair commit, preserving its historical body and recording this DC work plus all three failed runs. F10DB remains accepted pending full strict DC qualification.
+
+
+## Strict audit RED, source diagnostic GREEN — 2026-11-04
+
+Both runs tested `648920d128fde3a9dadc39663a2dcbc5f5665ed0`, tree `996152e65d9d9e150a58270f11dc29954884b155`, attempt 1.
+
+- [Strict run 41932166238](https://github.com/etblink/math/actions/runs/41932166238) completed/failure. Job `126931511467` passed all 104 pins, source scope, pinned environment, accepted DA rebuild, fresh DB parent compilation and fresh DC source compilation. The independent audit ran and failed only at line 50, the forward bracket-law proof. Its nine parent reports and two source reports used permitted axioms; its two imported audit-root reports also used permitted axioms, but those reports do not qualify a failed control. No DC root is accepted.
+- [Direct diagnostic 41932166289](https://github.com/etblink/math/actions/runs/41932166289) completed/success. Job `126931511410` passed all nine recorded steps, including fresh source warnings-as-errors compilation. Both expected source roots appeared once with only propext, Classical.choice and Quot.sound, no Lean source diagnostics or sorryAx, and actual `V10H_F10DC_DIRECT_SOURCE_INTERFACE_COMPILE_PASS`. This remains non-acceptance source evidence.
+
+The sole strict Lean diagnostic is a type mismatch for `LieHom.map_lie e A B`: the resulting proof contains an unresolved LieHom map metavariable where the exact expected equality is `e [A,B]=[e A,e B]`. The packaged object e is a LieEquiv. The inverse control already uses `LieEquiv.map_lie e.symm x y` successfully; use that same public matching API for the forward control.
+
+**Repair:** replace only `LieHom.map_lie e A B` with `LieEquiv.map_lie e A B`. Keep the exact forward bracket proposition, source definitions, forward/inverse values, every other audit control and proof unchanged. The strict workflow changes only its audit pin and required forward-API string. The source stays `ddf714a495217826446f059144169fd53761d77e`; the diagnostic workflow stays `43b99d10a57e51ed1d3602887acd4c4470dc6e7e`.
+
+Repaired audit blob: `14e40f456d816b551cb6a5b5ef39fdcef25fc4a0`. Repaired strict workflow blob: `3b13917ac11c41d6f7fa28e75ae8f8d021cfb750`. YAML, shell syntax, all embedded Python parsing, executed scope preflight, 104 pins, exact two-root inventories and delimiter checks passed locally. The full strict gate still checks DB's nine parent roots, two DC roots in each candidate phase, permitted axioms, no diagnostics/sorryAx, and every value/bracket/inverse control at unchanged limits. No local Lean elaboration is claimed.
+
+Artifacts preserved: strict [13373142058](https://github.com/etblink/math/actions/runs/41932166238/artifacts/13373142058), 1796 bytes, reported ZIP SHA256 `7183e8f90ce7b7ec7ba6ad7fdc1e0fefb60305a13223f60611ab18281b918461`; diagnostic [13373067301](https://github.com/etblink/math/actions/runs/41932166289/artifacts/13373067301), 639 bytes, reported ZIP SHA256 `fa0f69da0eb88447954c9c41a3962235d8051f92d81dabfe7d4139e52de4bc97`. These are GitHub-reported digests, not independent binary hashes.
+
+F10DB remains accepted. DC remains unaccepted until the repaired exact-head strict run and complete independent audit succeed. The green diagnostic is preserved and is not relabelled as complete qualification.

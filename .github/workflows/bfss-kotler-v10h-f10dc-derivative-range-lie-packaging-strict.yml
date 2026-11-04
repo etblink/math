@@ -139,7 +139,7 @@ jobs:
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DBDerivativeRangeCommutatorClosure.lean)" = '12c3397a06a6e9ef634c69bae075c20564bb1e4c'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DBIndependentAudit.lean)" = '19e04f3e39986081154adccfb35e3f9d1db62407'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean")" = 'ddf714a495217826446f059144169fd53761d77e'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean)" = '96e36c17b56fe17d3b6fb5d6e49f23cf64bfcd3a'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean)" = '14e40f456d816b551cb6a5b5ef39fdcef25fc4a0'
           # Exact source and audit blob pins below are the ancestry control; keep this checkout shallow.
           python3 - <<'PY'
           from pathlib import Path
@@ -168,7 +168,7 @@ jobs:
           assert 'source9IdentityChartDerivativeRange_commutator_mem' in s
           assert 'source9NativeSkewDerivativeRangeEquiv_commutator' in s
           assert "map_lie'" in s and 'left_inv' in s and 'right_inv' in s
-          assert 'LieHom.map_lie' in audit and 'LieSubalgebra.lie_mem' in audit
+          assert 'LieEquiv.map_lie e A B' in audit and 'LieSubalgebra.lie_mem' in audit
           assert 'LieEquiv.map_lie e.symm x y' in audit
           assert not re.search(r'(?<!Lie)Subalgebra\s+ℝ',s)
           assert not any(t in s for t in ['ChartedSpace','LieGroup','NormedRing','SubalgebraOf'])

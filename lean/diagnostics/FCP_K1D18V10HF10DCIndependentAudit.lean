@@ -47,7 +47,7 @@ example (x : S) :
 
 -- Check the full LieHom law and both inverse laws independently at the consumer boundary.
 example (A B : N) : e ⁅A, B⁆ = ⁅e A, e B⁆ :=
-  LieHom.map_lie e A B
+  LieEquiv.map_lie e A B
 
 example (A : N) : e.symm (e A) = A := e.left_inv A
 example (x : S) : e (e.symm x) = x := e.right_inv x
