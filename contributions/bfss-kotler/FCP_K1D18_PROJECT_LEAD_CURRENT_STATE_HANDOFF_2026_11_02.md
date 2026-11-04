@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CM**, [run 41784700161](https://github.com/etblink/math/actions/runs/41784700161), tested `3626ee413b72781aa34d8344fbc79963c598b03f`. **F10CN is now a candidate pending strict CI:** full orthogonal-matrix recovery from upper entries inside an explicit open identity neighborhood, and equality of the actual reconstructed/original natural matrices with both neighborhood hypotheses retained. Original source Spin equality, local kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CN**, [run 41787412802](https://github.com/etblink/math/actions/runs/41787412802), tested `d0c1365f71a378fdc0108f6e6a9a20418a6f1fd4`. All eight roots passed fresh strict compilation and the independent locality/type/axiom audit. Native orthogonal matrices in an explicit open identity neighborhood are now determined by the accepted strict upper coordinates. The actual reconstructed and original natural matrices are equal when both satisfy that neighborhood condition and reconstruction is defined. The global upper-coordinate counterexample and neighborhood exclusion remain checked. Choosing a suitable original-source neighborhood, original source local kernel control and source Spin equality/coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3043,3 +3043,41 @@ Candidate files and exact blobs:
 **Gate and local checks:** all 65 accepted ancestry pins remain unchanged, with two exact candidate source/audit pins appended. The gate rebuilds accepted CM, removes the fresh candidate olean, then compiles CN and its independent audit with warnings as errors and the unchanged 840/600-second phase caps. The expected terminal classifier is `V10H_F10CN_LOCAL_ORTHOGONAL_RECOVERY_TYPES_AXIOMS_PASS`. Each phase must report exactly the eight expected fully qualified roots, using only `propext`, `Classical.choice`, and `Quot.sound`; actual Lean errors/warnings and `sorryAx` are rejected. Evidence is retained even on failure. YAML, all run-block bash syntax, both Python ASTs, the executable source-scope preflight, exact local/remote pinned blobs, ancestry-pin preservation, trigger scope and phase caps were checked. No local Lean executable is available; no elaboration success is claimed before complete CI.
 
 **Next action and ceiling:** inspect the complete strict source/audit outcome and retain any red diagnostic before repairing. If accepted, choose a smaller original-source neighborhood where CJ reconstruction is defined and both actual natural matrices satisfy this matrix neighborhood condition. Original source local fiber/kernel control is still required before converting natural-matrix equality into source equality or source word-image coverage. Subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No authored admission, instance registration, norm/topology replacement, gamma/carrier substitution, linter suppression, limit increase, main/frozen-FCP/upstream change or upstream PR is introduced.
+
+
+## F10CN accepted — full local orthogonal recovery and actual natural-matrix reconstruction
+
+**Verified strict result:** [run 41787412802](https://github.com/etblink/math/actions/runs/41787412802), tested `d0c1365f71a378fdc0108f6e6a9a20418a6f1fd4`, attempt 1, job `126432623497`, completed/success with all ten recorded steps successful. Exact ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CM rebuild, fresh warnings-as-errors CN compilation, independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CN_LOCAL_ORTHOGONAL_RECOVERY_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total, using only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The tested head, terminal run state, all ten step verdicts, decoded log, actual terminal marker, separate phase/root multiplicities, axiom whitelist, artifact metadata and all three tested blobs were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CNLocalOrthogonalRecovery.lean` | `897ea47e2ac9e7ef937fabbb74178073d18f52c5` |
+| `lean/diagnostics/FCP_K1D18V10HF10CNIndependentAudit.lean` | `75c9abb205c1db13f9e4ed281f1e9c1b0bf954f4` |
+| `.github/workflows/bfss-kotler-v10h-f10cn-local-orthogonal-recovery-strict.yml` | `e6404ef2dc183c8ae1509d6dd9357832decd8038` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrthogonalRecoveryNeighborhood`
+2. `source9OrthogonalRecoveryNeighborhood_isOpen`
+3. `source9OrthogonalRecoveryNeighborhood_one_mem`
+4. `source9Orthogonal_eq_of_upperProjection_eq_near_one`
+5. `source9OrderedUpperProjection_injOn_orthogonal_near_one`
+6. `source9Orthogonal_eq_of_strict_entries_eq_near_one`
+7. `source9NaturalMatrices_eq_of_upperCoordinates_eq_near_one`
+8. `source9NaturalMatrix_reconstruction_eq_near_one`
+
+Retained artifact `13302282581`, `bfss-v10h-f10cn-local-orthogonal-recovery-d0c1365f71a378fdc0108f6e6a9a20418a6f1fd4-1`, 4803 bytes, GitHub-reported ZIP SHA-256 `0fc56dc02bafb51fbbb9617225eb7e08f4023e01b58c1958182330b1508febba`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** the recovery neighborhood is the exact preimage of CM's injective source under `A ↦ A - 1` in the original full nine-matrix space. It is open and contains the identity matrix. If two native orthogonal matrices lie in it and have equal accepted strict upper projections, then CK equates their completion values, CM equates their perturbations, and explicit addition cancellation yields equality of the full matrices. Equivalent native strict-pair and intersection-set injectivity statements are qualified with all orthogonality and neighborhood hypotheses retained.
+
+Applied to the original `spinGroup source9Quadratic`, equal actual upper coordinates now imply equality of the full actual natural matrices whenever both are in this neighborhood. In particular, the actual natural matrix of CJ reconstruction equals that of the original element when reconstruction-domain membership and both natural-matrix neighborhood memberships hold. This conclusion is matrix equality; it does not identify the original source elements.
+
+**Independent audit and locality:** standard matrix topology is checked unchanged. The literal neighborhood preimage, exact membership condition, openness, identity membership and neighborhood property are checked. The audit independently types full matrix recovery, exact intersection injectivity, native strict-pair and finite-enumeration recovery on actual orthogonal subtypes, actual-source matrix conclusions, arbitrary matrix entries and the literal finite-word reconstruction formula. It retains the global completion collision, excludes its perturbation from CM's source, excludes `-I` from the translated neighborhood and proves the accepted upper projection is not injective on the entire orthogonal group using `I` and `-I`. No assertion places `-I` in the actual source Spin image.
+
+**Successful method:** compose accepted CK and CM statements on their original carriers, retain explicit membership assumptions, and cancel perturbations through a complete typed matrix equality. Apply the accepted algebraic homomorphism's actual orthogonality properties and CJ's exact coordinate-recovery theorem. Independent checks use typed full-matrix and entry congruence, following the CL/CM remedy for earlier projected-target normalization failures. The first CN strict run passed without repair. No authored admission, instance registration, norm/topology replacement, carrier/gamma substitution, linter suppression, whitelist relaxation or proof-limit increase was introduced.
+
+**Next bounded plan and ceiling:** use the accepted original-source PBW continuity of the actual natural matrix, CJ reconstruction continuity on its open domain, and their identity values to select an original-source identity neighborhood where reconstruction is defined and both actual natural matrices lie in CN's recovery neighborhood. Require the selected set to be a neighborhood in the inherited original-source PBW topology and independently audit all containment/membership conditions before deriving the full natural-matrix reconstruction identity throughout that set. Do not silently infer global continuity of the totalized reconstruction from its accepted continuity on its domain. Original source local fiber/kernel control remains a separate obligation before source Spin equality or word-image neighborhood coverage. Subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
