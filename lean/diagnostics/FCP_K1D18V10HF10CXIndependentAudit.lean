@@ -32,6 +32,7 @@ example : source9PBWNormedAddCommGroup = NormedAddCommGroup.induced
     auditInversePBWCoordinates.toAddMonoidHom auditInversePBWCoordinates.injective := rfl
 example : source9PBWNormedSpace = NormedSpace.induced ℝ
     (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ) auditInversePBWCoordinates := rfl
+example : NormedSpace ℝ (CliffordAlgebra source9Quadratic) := inferInstance
 example : (inferInstance : TopologicalSpace (spinGroup source9Quadratic)) =
     auditInverseSpinTopology := rfl
 example : (inferInstance : TopologicalSpace (Matrix SpaceIndex SpaceIndex ℝ)) =
@@ -73,8 +74,11 @@ example : ContDiff ℝ ω (fun t : Fin 36 → ℝ =>
   source9IdentityChartInverse_clifford_contDiff_pbw ω
 example (n : ℕ∞ω) : ContDiffOn ℝ n (fun t : Fin 36 → ℝ =>
     ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic))
-    source9SpinIdentityLocalChart.target :=
-  (source9IdentityChartInverse_clifford_contDiff_pbw n).contDiffOn
+    source9SpinIdentityLocalChart.target := by
+  have hglobal : ContDiff ℝ n (fun t : Fin 36 → ℝ =>
+      ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) :=
+    source9IdentityChartInverse_clifford_contDiff_pbw n
+  exact hglobal.contDiffOn
 example : HasFDerivAt (fun t : Fin 36 → ℝ =>
     ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic))
     (source9PlaneSpinWordVelocity source9StrictPlaneRow source9StrictPlaneColumn (List.finRange 36)) 0 :=

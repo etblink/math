@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10CX audit repair is pending strict qualification.** [Run 41880969637](https://github.com/etblink/math/actions/runs/41880969637), tested `720427464aa4569bb41ee1f8af80c66b4e71cfa3`, passed fresh compilation of all nine source declarations with permitted axioms, confirming the commutator proof repair. Its independent audit failed at 102:6 when rewriting the coordinate-direction derivative formula. The new repair freezes the successful source and replaces only that private audit proof’s rewrite with an explicitly typed value equality and finite-sum composition; all audit propositions, controls and limits are unchanged. Latest complete acceptance remains F10CW, [run 41872942447](https://github.com/etblink/math/actions/runs/41872942447). Both CX red attempts are preserved.
+> **F10CX audit-environment repair is pending strict qualification.** [Run 41884763665](https://github.com/etblink/math/actions/runs/41884763665), tested `184637087bf3523bc03845ba8678a63cc0df5462`, again passed fresh source compilation of all nine declarations. Its sole audit diagnostic is a NormedSpace inference failure at 77:2 in the global-to-target ContDiffOn proof; the previous coordinate-helper rewrite diagnostic is absent. The focused repair binds the global regularity proof at the independently reconstructed audit type and adds a ground NormedSpace capability check. Source, coordinate helper, all existing propositions/controls and strict limits remain unchanged. Latest complete acceptance remains F10CW, [run 41872942447](https://github.com/etblink/math/actions/runs/41872942447). All three CX reds are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4083,3 +4083,62 @@ Only the audit, its single workflow hash pin and canonical handoff are changed i
 **Discriminating next run and scope ceiling.** Rerun the full unchanged strict source/audit procedure at the new exact commit. Source success must be reproduced, then the independent audit must finish, producing exactly nine expected root reports per fresh phase (18 total), only the three allowed axioms, no sorryAx or Lean source diagnostics, and the exact existing terminal pass marker. If the finite-sum simplification or another independent control becomes the first failing operation, record that new boundary separately; do not alter source mathematics or infer audit success from imported printouts. Do not raise limits, suppress warnings or remove controls.
 
 Latest complete acceptance remains CW at tested `a980c3e6ae6c26c26ccd48c891a1a11749ee9e54`. CX's composite result remains pending. Source tangent identification, translated atlas/manifold structures, full F10BC differential comparison, global reconstruction, target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open. The historical handoff body and both red-run evidence records are preserved.
+
+
+## 2026-11-04 Project Lead third CX failure review — typed audit regularity consumer
+
+**Exact latest attempt.** [Run 41884763665](https://github.com/etblink/math/actions/runs/41884763665), reported red by the owner, tested `184637087bf3523bc03845ba8678a63cc0df5462`, tree `41e203eb999822783bd3bce7be7a9730806d9fb4`, attempt 1. Both direct run metadata and job [126766138631](https://github.com/etblink/math/actions/runs/41884763665/job/126766138631) report completed/failure. The live research ref remained this tested SHA before the new repair. The authoritative handoff read is `e526fffd76b5235051f9d367ecbb51f0c4519bf3`.
+
+**Three distinct recorded boundaries.**
+
+| Run / tested commit | Fresh source | Independent audit | Retained decision |
+|---|---|---|---|
+| [41877796245](https://github.com/etblink/math/actions/runs/41877796245), `34b88f7d87b48edaef2f8e8938152da45e9263e2` | Recursion-depth failure at source 84:8, projected commutator. | Skipped. | Replace whole-expression matching with accepted BX derivative-value/congrArg transport; do not increase limits. |
+| [41880969637](https://github.com/etblink/math/actions/runs/41880969637), `720427464aa4569bb41ee1f8af80c66b4e71cfa3` | Success, all nine permitted roots. | Coordinate-direction rw failed at audit 102:6. | Freeze source; use a fully typed coordinate value equality and separate finite-sum proof. |
+| [41884763665](https://github.com/etblink/math/actions/runs/41884763665), `184637087bf3523bc03845ba8678a63cc0df5462` | Success again, same source blob and nine permitted roots. | Sole diagnostic: NormedSpace inference at audit 77:2 in `(source9IdentityChartInverse_clifford_contDiff_pbw n).contDiffOn`. The former coordinate rw diagnostic is absent. | Keep source and repaired coordinate helper; bind the imported regularity proof at the full audit consumer type before projection, with a ground class check. |
+
+The latest pin/source-scope preflight, dependency restoration, accepted CW rebuild, fresh source compile, artifact upload and cleanup succeeded. Both fresh phases emitted the expected nine source-root axiom reports once (18 total), all contained in propext/Classical.choice/Quot.sound. Those imported-root reports do not certify an audit file with a failed example. The audit step failed, and the exact terminal acceptance marker is absent.
+
+**Actual causal diagnostic.** The decoded job output reports:
+`diagnostics/FCP_K1D18V10HF10CXIndependentAudit.lean:77:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class NormedSpace ℝ (CliffordAlgebra source9Quadratic)`.
+Line 77 is the proof of regularity on the actual chart target:
+`(source9IdentityChartInverse_clifford_contDiff_pbw n).contDiffOn`.
+It is not the HasFDerivAt example that follows it. No diagnostic is reported in the coordinate half-bivector helper or elsewhere in the candidate/audit phases. This supports preserving that previous repair, without promoting any failed audit to accepted.
+
+The initial diagnostic reader required a colon immediately after the word error and therefore missed Lean's categorized `error(lean.synthInstanceFailed):` spelling. The full decoded output was inspected and the diagnostic reader corrected before any edit. The existing workflow rejection regex already matches the error prefix without requiring that colon, and the nonzero Lean exit also stops the shell; no workflow classifier change is needed. Future log inspection must handle categorized error/warning spellings as well as plain ones.
+
+**Evidence preserved.**
+- Successful source blob, unchanged since the source repair: `a6927651611f21ffd7e05dacf5d2aad9bfcac609`.
+- Latest failed audit blob: `727d88843df3081949d1eff6dd35dd5a2fac4ef7`.
+- Latest tested workflow blob: `6e08d72e955a38ee79d6d3f536e1b4ee492f322e`.
+- GitHub-reported artifact [13350689390](https://github.com/etblink/math/actions/runs/41884763665/artifacts/13350689390): `bfss-v10h-f10cx-identity-chart-inverse-clifford-derivative-184637087bf3523bc03845ba8678a63cc0df5462-1`, 1,442 bytes, unexpired, associated with the same tested SHA.
+- Reported ZIP digest: `6eae03eab02617fc1b188e6b4c47c7ffd0781fe7266f0fb12ddc7e54e3c7752c`. This is GitHub-reported metadata, not an independent binary/digest comparison.
+
+The first two failed SHAs, diagnostic boundaries, exact blobs and artifacts remain preserved in their prior events.
+
+**Structural and API inspection.** The audit already declares an independent `NormedAddCommGroup.induced` and `NormedSpace.induced` through the accepted source PBW coordinates and checks both named source structures definitionally. It has three local registrations only: finite index type, induced normed additive group and induced real normed space. The preceding fully typed global ContDiff examples for arbitrary order and analytic order are present without diagnostics.
+
+Reviewed pinned BE's named PBW norm structures and the accepted BY audit's complete consumer-operand bindings and ground capability control. At pinned Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, `Analysis/Normed/Module/Basic.lean`, blob `0c70350a94ff80dd45966f2a9e6abdd5d0a629e7`, confirms that NormedSpace is indexed by its seminormed additive structure and that `NormedSpace.induced` uses the corresponding induced group. `Analysis/Calculus/ContDiff/Defs.lean`, blob `4ab507f7d08758f6092f4529f1eb045208584f61`, confirms `ContDiff.contDiffOn` converts the global proof to an arbitrary set through univ restriction.
+
+The repair hypothesis is that direct field projection on the imported proof leaves structure-indexed inference on the imported side, while a full consumer-type binding first places the proof in the audit's reconstructed environment. The diagnostic does not by itself identify every hidden structure argument. The new ground check distinguishes availability of the intended local NormedSpace from imported-proof consumer inference; no replacement structure is assumed or registered.
+
+**Implemented bounded repair.** Add one positive ground check after the existing norm-structure equalities:
+`example : NormedSpace ℝ (CliffordAlgebra source9Quadratic) := inferInstance`.
+For the same existing ContDiffOn proposition on `source9SpinIdentityLocalChart.target`, bind
+`hglobal : ContDiff ℝ n (fun t : Fin 36 → ℝ => ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic))`
+to the accepted source theorem, then use `hglobal.contDiffOn`. This selects the complete independently reconstructed consumer type before calling the restriction lemma. It adds no hypothesis, new local/global instance, norm, topology, carrier or source mathematical change.
+
+The source remains byte-for-byte frozen. The entire coordinate-direction helper repair and finite-sum proof remain byte-for-byte unchanged. All prior audit propositions, source/target restrictions, regularity orders, derivative identities, native model, injectivity checks, nonzero/half/doubling/sign controls and global negative control remain unchanged. The added ground check strengthens diagnosis without replacing any independent assertion.
+
+**Exact repaired pin set.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CXIdentityChartInverseCliffordDerivative.lean` — Git blob `a6927651611f21ffd7e05dacf5d2aad9bfcac609`.
+- `lean/diagnostics/FCP_K1D18V10HF10CXIndependentAudit.lean` — Git blob `69e3f2c8551fa299ebe23f2c6c195d0ee4286afe`.
+- `.github/workflows/bfss-kotler-v10h-f10cx-identity-chart-inverse-clifford-derivative-strict.yml` — Git blob `698a183bab7471af6405d6dc7f68f5ae9684ea23`.
+
+Only the audit, its single workflow hash pin and the canonical handoff change in this repair commit. The successful mathematical source is inherited unchanged.
+
+**Validation before publication.** Static comparison against the latest authoritative tested files verifies identical source bytes, identical audit text outside the existing ContDiffOn proof plus the single added ground class check, and unchanged statement of that regularity-on-target proposition. The workflow is identical except one audit-hash substitution. YAML, all shell run blocks, both embedded Python programs, source-scope preflight, nine axiom-print roots in source and audit, and delimiter balance pass. The same 90-pin gate retains all 88 CW ancestry pins and the successful source pin. Eighty-two local blobs matched; unchanged baseline pins also passed the latest run's exact pin phase at the immutable parent. Lean 4.34.1, Mathlib, Actions versions, warning strictness, three-axiom whitelist, proof limits and timeout sequence 1500/3150/840/600 seconds are unchanged. No local Lean elaboration is claimed.
+
+**Next-run discriminator and scope ceiling.** Rerun the entire unchanged strict procedure. Confirm that the source's nine-root success is reproduced, the ground NormedSpace check elaborates, the same target-regularity proposition follows through the typed consumer binding, and the complete independent audit finishes. Acceptance still requires exactly nine expected roots once in each fresh phase, permitted axioms only, no sorryAx or Lean diagnostics, and the existing exact terminal marker. If either the ground check or the typed binding fails, that separates the next structural prerequisite from mere pretty-printed similarity; inspect that exact boundary before any further repair.
+
+No CX attempt is fully accepted yet. Latest complete acceptance remains F10CW at tested `a980c3e6ae6c26c26ccd48c891a1a11749ee9e54`. Source tangent identification, atlas/manifold structures, full F10BC differential comparison, global source recovery, target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open. All historical records and all three red attempts are preserved.
