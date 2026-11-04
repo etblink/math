@@ -1,6 +1,6 @@
 # F10DC candidate — actual derivative-range Lie packaging
 
-**Status:** CANDIDATE / NOT YET QUALIFIED  
+**Status:** ACCEPTED — strict run [41934575798](https://github.com/etblink/math/actions/runs/41934575798), tested `6729d54be338bbb71fce7ef841fa92d6e7343f83`  
 **Date:** 2026-11-04  
 **Repository:** `etblink/math`  
 **Write target:** `research/fcp-k1d17-ancestor-cache-pilot-20261028`
@@ -131,3 +131,23 @@ Repaired audit blob: `14e40f456d816b551cb6a5b5ef39fdcef25fc4a0`. Repaired strict
 Artifacts preserved: strict [13373142058](https://github.com/etblink/math/actions/runs/41932166238/artifacts/13373142058), 1796 bytes, reported ZIP SHA256 `7183e8f90ce7b7ec7ba6ad7fdc1e0fefb60305a13223f60611ab18281b918461`; diagnostic [13373067301](https://github.com/etblink/math/actions/runs/41932166289/artifacts/13373067301), 639 bytes, reported ZIP SHA256 `fa0f69da0eb88447954c9c41a3962235d8051f92d81dabfe7d4139e52de4bc97`. These are GitHub-reported digests, not independent binary hashes.
 
 F10DB remains accepted. DC remains unaccepted until the repaired exact-head strict run and complete independent audit succeed. The green diagnostic is preserved and is not relabelled as complete qualification.
+
+
+## F10DC accepted — strict run 41934575798 (2026-11-04)
+
+[Strict run 41934575798](https://github.com/etblink/math/actions/runs/41934575798), attempt 1, completed/success at tested commit `6729d54be338bbb71fce7ef841fa92d6e7343f83`, tree `f0b5570cc73ad73b505a5206978112fbfb32513b`. Job `126939698694` passed all eleven recorded steps. All 104 pins, pinned environment, accepted DA rebuild, fresh DB parent compilation, fresh DC source compilation and complete independent audit succeeded.
+
+The fresh parent has exactly its nine expected reports. DC source and audit each have exactly the two expected fully qualified roots, for four candidate reports and two new accepted definitions. Every reported axiom belongs to `{propext, Classical.choice, Quot.sound}`; no Lean source diagnostic or sorryAx is present. The parent, scope and complete candidate markers all occur, including `V10H_F10DC_LIE_SUBALGEBRA_LIE_EQUIV_TYPES_AXIOMS_PASS`.
+
+Accepted blobs:
+- Source `ddf714a495217826446f059144169fd53761d77e`.
+- Independent audit `14e40f456d816b551cb6a5b5ef39fdcef25fc4a0`.
+- Strict workflow `3b13917ac11c41d6f7fa28e75ae8f8d021cfb750`.
+
+[Artifact 13373569311](https://github.com/etblink/math/actions/runs/41934575798/artifacts/13373569311), `bfss-v10h-f10dc-derivative-range-lie-packaging-6729d54be338bbb71fce7ef841fa92d6e7343f83-1`, is 3953 bytes. GitHub reports ZIP SHA256 `6b1f045f1760c133a48133d7f0574508389ed23fe82c780446d254296e359bee`, matching the upload log; no independent binary hashing is claimed.
+
+Both public definitions are accepted at these exact tested interfaces. The LieSubalgebra's underlying Submodule is definitionally the existing actual derivative range, its subtype bracket is the original ambient Clifford commutator, and its closure field consumes DB's exact closure theorem. The LieEquiv has the same native real-linear values and explicit inverse as CY; its bracket field consumes DB's exact native commutator law. The independent audit checks underlying linear-equivalence equality, forward values, inverse bridge, both inverse laws, forward and inverse bracket preservation, and arbitrary subtype closure.
+
+The source is unchanged from the earlier clean source diagnostic and strict source phase. The final successful repair changed only the forward audit proof to `LieEquiv.map_lie e A B`, with its exact proposition and all other controls preserved. Earlier wrapper, source-linter and audit failures remain immutable; the green direct diagnostic remains supporting source-only evidence and is not the acceptance basis.
+
+Acceptance does not establish associative/unital closure, source tangent identification, translated atlas/manifold/Lie-group structures, the full F10BC manifold differential, global integration/covering/target-surjectivity/lift, or BFSS physical conclusions. The canonical current-state handoff records acceptance and the remaining boundaries. This documentation-only acceptance commit changes no tested source, audit or workflow.

@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10DC source compilation is green; full qualification remains pending after an independent audit failure.** At exact head `648920d128fde3a9dadc39663a2dcbc5f5665ed0`, [diagnostic 41932166289](https://github.com/etblink/math/actions/runs/41932166289) passed, while [strict run 41932166238](https://github.com/etblink/math/actions/runs/41932166238) passed fresh DB/DC compilation and failed one forward bracket-law audit proof at a LieHom/LieEquiv consumer boundary. The one-line repair uses `LieEquiv.map_lie` for the already packaged LieEquiv, preserving the source, exact audit proposition and every other control. F10DB remains accepted at [run 41913435697](https://github.com/etblink/math/actions/runs/41913435697). No DC root is accepted before full strict requalification; all red and green evidence is preserved.
+> **F10DC is accepted from strict run 41934575798.** The exact tested commit is `6729d54be338bbb71fce7ef841fa92d6e7343f83`. Fresh DB parent compilation, fresh DC source compilation and the complete independent audit passed: nine accepted-parent reports and two candidate roots once per phase (four candidate reports), using only propext, Classical.choice and Quot.sound, with no Lean source diagnostics or sorryAx. The literal actual derivative range is now packaged as the canonical ambient Clifford-commutator LieSubalgebra, and the existing native so(9) real-linear equivalence is packaged as a LieEquiv with unchanged values and inverse. Source tangent identification and the manifold differential remain open. All wrapper, source-linter and audit failure evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4809,3 +4809,59 @@ The gate remains full strict qualification: pinned Lean 4.34.1 and Mathlib `d13f
 **Lesson and acceptance boundary.** When a consumer has a LieEquiv, use its directly matching bracket API instead of relying on implicit inference into a LieHom consumer. Reuse the already successful inverse-control pattern. Freeze mathematical source that compiled cleanly, retain the failing proposition, and require the complete independent phase after repairing its proof.
 
 F10DC remains unaccepted until a new exact-head strict run succeeds completely. F10DB remains accepted; its actual range closure and defect elimination are unchanged. DC still packages the literal range as a canonical ambient Clifford LieSubalgebra and the existing native linear values/inverse as a LieEquiv. Source tangent identification, translated atlas compatibility, source manifold/Lie-group structure, the full F10BC manifold differential and further global/lift/covering/BFSS physical claims remain separate. This repair changes only the audit, its strict workflow, the appended DC candidate record and this canonical handoff. Main, frozen FCP and upstream integration remain unchanged. All historical handoff bytes beginning at the original As-of field are preserved and this event is appended.
+
+
+## 2026-11-04 F10DC accepted — canonical actual-range LieSubalgebra and native LieEquiv
+
+**Exact acceptance evidence.** [Strict run 41934575798](https://github.com/etblink/math/actions/runs/41934575798), attempt 1, is terminal completed/success at tested commit `6729d54be338bbb71fce7ef841fa92d6e7343f83`, tree `f0b5570cc73ad73b505a5206978112fbfb32513b`. Job `126939698694`, `derivative-range-lie-packaging`, completed all eleven recorded steps successfully: checkout; 104 exact pins and source-scope checks; pinned Lean/Mathlib restore; accepted DA rebuild; fresh accepted DB parent compilation; fresh DC source compilation; complete independent audit; evidence upload; cleanup and completion.
+
+Decoded logs contain exactly the nine expected DB roots in the fresh parent phase, exactly the two expected DC roots in the fresh source phase and exactly those two DC roots in the independent audit phase. The candidate therefore contributes two new accepted definitions and four candidate axiom reports, not thirteen new roots. Every reported axiom belongs to `{propext, Classical.choice, Quot.sound}`. No Lean source warning/error diagnostic, including categorized diagnostics, or sorryAx dependency is present. Command echo was excluded from root/sorryAx parsing, and ANSI-stripped full lines were also checked for source diagnostics.
+
+All actual markers occur exactly once:
+- `V10H_F10DC_SOURCE_PIN_LIE_SUBALGEBRA_LIE_EQUIV_SCOPE_PASS`
+- `V10H_F10DB_ACCEPTED_PARENT_FRESH_COMPILE_PASS`
+- `V10H_F10DC_LIE_SUBALGEBRA_LIE_EQUIV_TYPES_AXIOMS_PASS`
+
+**Exact accepted files.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean` — blob `ddf714a495217826446f059144169fd53761d77e`.
+- `lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean` — blob `14e40f456d816b551cb6a5b5ef39fdcef25fc4a0`.
+- `.github/workflows/bfss-kotler-v10h-f10dc-derivative-range-lie-packaging-strict.yml` — blob `3b13917ac11c41d6f7fa28e75ae8f8d021cfb750`.
+
+The authoritative pre-acceptance handoff is blob `d88d0a5b4300d88d4c742ae3659b4adfd677ffe9`; the DC candidate/evidence record is blob `1d8ac6eac287054991ed4e0c68a61c0f1b4b542b`. Root AGENTS remains blob `196529dbc512457e4fef0558c6a179e04860469e`.
+
+**Artifact.** [Artifact 13373569311](https://github.com/etblink/math/actions/runs/41934575798/artifacts/13373569311), `bfss-v10h-f10dc-derivative-range-lie-packaging-6729d54be338bbb71fce7ef841fa92d6e7343f83-1`, is 3953 bytes. GitHub reports ZIP SHA256 `6b1f045f1760c133a48133d7f0574508389ed23fe82c780446d254296e359bee`, matching the upload log. This is provider-reported metadata, not an independent binary archive digest computation.
+
+**Two accepted declarations.**
+- `FCP.BFSSPairedSpin9Clifford.source9IdentityChartDerivativeLieSubalgebra`
+- `FCP.BFSSPairedSpin9Clifford.source9NativeSkewDerivativeRangeLieEquiv`
+
+**Mathematical content and exact source identity.** The first declaration equips the actual existing `source9IdentityChartDerivativeRange` with the canonical ambient Clifford commutator LieSubalgebra structure. Its underlying Submodule is definitionally the same accepted CY range. The construction changes no carrier, norm, topology, source enumeration or pointwise value. Its Lie closure field is discharged by DB's accepted literal `x*y-y*x` closure theorem.
+
+The second declaration packages the existing `source9NativeSkewDerivativeRangeEquiv` as a genuine real Lie equivalence from the original canonical native so(9) to this LieSubalgebra. It retains CY's real-linear values and inverse, with only explicit subtype membership bridges. The bracket-preservation field uses DB's exact native equality in the original Clifford algebra. Both inverse laws are the existing linear inverse laws transported through the literal subtype values. No bracket is invented by transport.
+
+The source group remains `spinGroup source9Quadratic`, and the Clifford carrier remains the original one. This Lie equivalence is with the actual ambient identity-chart derivative range. It is not yet an identification of that range with a separately constructed source manifold tangent space.
+
+**Independent controls that passed.** The audit checks:
+- exact underlying Submodule equality with the pre-existing derivative range;
+- actual DB ambient commutator closure on arbitrary original Clifford inputs with membership hypotheses;
+- subtype bracket coercion equal to the unchanged ambient `x*y-y*x`;
+- equality of the packaged underlying real-linear equivalence with the original native equivalence;
+- literal forward values and the explicit original inverse bridge;
+- forward and inverse bracket preservation using the matching LieEquiv API;
+- both inverse laws and closure on arbitrary subtype inputs.
+
+These controls retain the exact underlying range and canonical ambient bracket, preventing a replacement carrier or transported surrogate bracket from masquerading as the accepted original one. No associative/unital subalgebra is claimed.
+
+**Failure history and successful repair retained.** The earlier strict wrapper failures [41921763563](https://github.com/etblink/math/actions/runs/41921763563) and [41922137755](https://github.com/etblink/math/actions/runs/41922137755) remain red, with Lean phases skipped. Direct diagnostic [41922732725](https://github.com/etblink/math/actions/runs/41922732725) remains red at the two redundant membership change tactics. Their exact commits, logs, artifacts and causal records remain above.
+
+At `648920d128fde3a9dadc39663a2dcbc5f5665ed0`, direct diagnostic [41932166289](https://github.com/etblink/math/actions/runs/41932166289) passed with this same source blob, while strict [41932166238](https://github.com/etblink/math/actions/runs/41932166238) passed fresh parent/source compilation but failed the independent forward bracket-law proof. The source was frozen. Replacing only `LieHom.map_lie e A B` with the matching `LieEquiv.map_lie e A B` resolved that audit API boundary without changing the proposition or removing any control.
+
+The direct diagnostic remains supporting source-only evidence and cannot independently qualify DC. Acceptance is based on the complete strict run above. The negative lessons remain: source pins do not require unavailable shallow historical commit objects; namespace-local print spelling differs from fully qualified compiler output; no-op tactics should be removed rather than suppressing linters; and a LieEquiv consumer should use its matching public bracket API when implicit LieHom inference leaves a map unresolved.
+
+**Reproducibility and next bounded work.** The successful gate retained 104 pins, Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, pinned Actions, warnings-as-errors, fresh object deletion/nonempty checks, exact accepted-parent and candidate root inventories, the same three-axiom whitelist and timeouts 1500/3150/840/840/600 seconds. No authored admission, theorem/control weakening, linter suppression, proof-limit increase, new global instance/norm/topology or source/gamma/order replacement is introduced.
+
+The algebraic range package is now accepted. The next bounded step should inspect and reuse CZ's exact original-gamma range comparison to package evaluation on this canonical LieSubalgebra and check its composition with the native LieEquiv against the existing BB LieHom, keeping literal gamma values and native so(16) membership explicit. That would be an algebraic representation-comparison step, not a source manifold differential theorem.
+
+Source tangent identification, translated atlas compatibility, source manifold/Lie-group structures and the full F10BC manifold differential remain separate. Further global source reconstruction, target-surjectivity/covering/lift, upstream integration and BFSS physical conclusions remain open.
+
+This acceptance-only commit changes the canonical handoff and DC evidence record, marking the latter accepted while preserving its historical candidate/failure narrative. All tested source, audit and workflow blobs remain unchanged. Every historical handoff byte beginning at the original As-of field is preserved and this event is appended. The research branch is the only write target; main, frozen FCP and upstream integration remain unchanged, with no upstream PR opened.
