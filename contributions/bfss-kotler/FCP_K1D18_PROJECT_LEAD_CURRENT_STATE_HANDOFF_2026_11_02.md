@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CL**, [run 41782743051](https://github.com/etblink/math/actions/runs/41782743051), tested `1eb18d6e7979c134480c643e29c99cbdfb2d1fdf`. All eight roots passed fresh strict compilation and the independent literal-function/full-operator/type/axiom audit. CK's same completion map is every-order smooth and has the literal identity ordinary and strict derivative at zero on the original full matrix space. Both CL reds and the ambient-global-noninjectivity control remain preserved. Next is a local inverse and injectivity construction on that full matrix space with explicit zero neighborhoods; local matrix recovery, original source kernel control and source neighborhood coverage remain open.
+> **Latest accepted mathematical increment remains F10CL**, [run 41782743051](https://github.com/etblink/math/actions/runs/41782743051), tested `1eb18d6e7979c134480c643e29c99cbdfb2d1fdf`. **Current candidate F10CM:** a local inverse for the same completion map on the full original matrix space, exact forward function, zero source/target neighborhoods, both local inverse laws and injectivity restricted to its source. Eight roots await complete strict CI. The audit retains global noninjectivity and checks exclusion of the known collision from the local source. Full local orthogonal-matrix recovery, original source kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2924,3 +2924,46 @@ The unchanged audit again proves the ambient-global-noninjectivity control using
 The successful implementation proves exact operator equalities independently and transports complete typed derivative predicates with `Eq.mp (congrArg ...)`. It separately normalizes the function argument with complete named function equalities. The full derivative is assembled as an explicit nested Pi CLM and identified with the literal identity by extensionality, outside the fragile projected target. This method covers finite sums, addition of zero, scalar multiplication of zero, division/multiplication function equality and branch functions consistently. Every theorem statement and the independent audit remained unchanged across the repairs. No authored admission, linter suppression, relaxed whitelist, proof-limit increase, gamma/carrier replacement or norm/topology change was introduced.
 
 **Next bounded plan and ceiling:** instantiate the pinned strict inverse-function constructor on this same full matrix completion map, using its strict literal identity derivative, the identity continuous linear equivalence and standard matrix completeness. Independently audit the exact forward function, zero source/target memberships, open neighborhoods, local inverse identities and injectivity with explicit source membership. Then combine local ambient injectivity with CK's orthogonal-completion equality only when both perturbations lie in the established neighborhood. The global negative control forbids dropping those hypotheses. Full local natural-matrix recovery, original source local fiber/kernel control, source Spin neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every prior red and green record.
+
+
+## F10CM candidate — completion local inverse and ambient local injectivity
+
+**Baseline:** live research branch checked at `d368452783ce0f7bef6e26184f317367008a43f0`, the documentation-only CL acceptance commit. Root AGENTS and current canonical handoff reread. Previously checked ancestor instructions and every accepted mathematical module remain unchanged.
+
+**Bounded implementation:** reuse the successful CG constructor/identity-transport pattern on the existing full `Matrix SpaceIndex SpaceIndex ℝ` domain and codomain. Expose CL's strict literal identity derivative through `ContinuousLinearEquiv.refl ℝ (Matrix SpaceIndex SpaceIndex ℝ)`. Instantiate the pinned `HasStrictFDerivAt.toOpenPartialHomeomorph` constructor with this explicit equivalence and the exact accepted `source9OrthogonalCompletionMap`. The new `source9OrthogonalCompletionLocalHomeomorph` is an open partial homeomorphism of that same full matrix space.
+
+Prove the complete forward-function equality, zero membership in the source and target, and both local inverse identities with explicit source/target membership hypotheses. Transport the generic inverse identities through the complete forward-function equality with typed matrix-function evaluation/congruence. Derive `Set.InjOn source9OrthogonalCompletionMap` on the constructed source by applying the actual left inverse to equal completion images. Both matrices' source-membership assumptions are retained. No full matrix recovery from upper entries is inferred yet.
+
+**Pinned API inspection:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`:
+- `Analysis/Calculus/InverseFunctionTheorem/FDeriv.lean`, blob `e628f119f19643501a84e461c29575ff1365d511`: complete constructor, explicit forward function, identity-equivalence interface, complete-domain requirement, exact forward-function theorem and source/forward-image target memberships.
+- `Topology/OpenPartialHomeomorph/Defs.lean`, blob `9754374286e46a881a41d0977869a571d2353e79`: complete left/right inverse laws, each requiring its relevant membership hypothesis.
+- The inverse continuity and open-neighborhood interfaces are the same pinned APIs already used successfully in CG and CI. Completeness of the standard full matrix space is checked independently, as in CL.
+
+Eight pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrthogonalCompletionMap_hasStrictFDerivAt_refl`
+2. `source9OrthogonalCompletionLocalHomeomorph`
+3. `source9OrthogonalCompletionLocalHomeomorph_coe`
+4. `source9OrthogonalCompletionLocalHomeomorph_zero_mem_source`
+5. `source9OrthogonalCompletionLocalHomeomorph_zero_mem_target`
+6. `source9OrthogonalCompletionLocalHomeomorph_left_inv`
+7. `source9OrthogonalCompletionLocalHomeomorph_right_inv`
+8. `source9OrthogonalCompletionMap_injOn_source`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CMCompletionLocalInverse.lean` | `04281724e6305c3d3d06c001fd3e37b91b17962f` |
+| `lean/diagnostics/FCP_K1D18V10HF10CMIndependentAudit.lean` | `db0462336ba7bd677cec97de3aa8a94456d9f820` |
+| `.github/workflows/bfss-kotler-v10h-f10cm-completion-local-inverse-strict.yml` | `610c676222be3e0177348bfa53d71f3211c3fc50` |
+
+**Independent audit:** capture and check the original standard matrix topology before/after the elementwise norm scope; check completeness and the literal identity equivalence/CLM equality. Check the exact strict-derivative interface, complete open-partial-homeomorphism type, complete forward-function equality and zero source/target memberships. Check both open sets as actual zero neighborhoods, inverse continuity at zero, the two local inverse laws and inverse value zero. Check local injectivity with its exact source set and recovery of matrix equality from equality of every completion entry.
+
+Independently prove a named equality between the accepted completion map and its full original-label piecewise finite-sum formula. Check the forward entry formula, literal-function left inverse, every literal right-inverse entry and injectivity of the completely expanded map on the same source set. Use typed `congrArg` matrix-entry evaluation on whole matrix equalities, avoiding fragile deep normalization or rewriting inside projected matrix derivative targets.
+
+The audit retains CK/CL's global counterexample and `¬ Function.Injective source9OrthogonalCompletionMap` on the entire ambient domain. It additionally checks that the perturbation `(-1 : Matrix SpaceIndex SpaceIndex ℝ) - 1` is not in this local injective source: otherwise its zero completion image and the accepted zero source member would contradict local injectivity at their distinct original diagonal entries. This is an explicit locality control, not a claim about which matrices lie in the actual source Spin image.
+
+**Verification discipline:** preserve accepted ancestry pins through CL's repaired source and unchanged audit, add exact CM source/audit pins, rebuild CL and freshly compile CM and its independent audit with warnings-as-errors. Require exactly eight expected permitted root reports in each phase and terminal classifier `V10H_F10CM_COMPLETION_LOCAL_INVERSE_TYPES_AXIOMS_PASS`. Keep the three-axiom whitelist, 840/600-second fresh-phase caps, no-instance-registration guard, legacy conditional-alias guard and evidence preservation. No new norm/topology/instance, gamma/carrier replacement, authored admission, linter suppression or custom proof limit is introduced. Local exact hashes, accepted-pin preservation, eight-root scope preflight, YAML, all three trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; all eight roots and the new audit controls remain candidates until complete strict CI succeeds.
+
+**Next action and ceiling:** inspect complete fresh compilation and independent literal-function/locality audit before qualification. If accepted, combine CM's local ambient injectivity with CK's exact orthogonal-completion identity to prove full matrix equality for orthogonal inputs with equal native upper coordinates, requiring both perturbations `A - 1` and `B - 1` to lie in this source neighborhood. Then inspect the corresponding actual original/reconstructed natural matrices under those same explicit hypotheses before selecting any smaller source Spin neighborhood. Original source local fiber/kernel control remains separate even after full natural-matrix equality. Source image openness/coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all previous red and green evidence.
