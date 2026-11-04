@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CG**, [run 41738870699](https://github.com/etblink/math/actions/runs/41738870699), tested `0417579e042e5d7cde3919283ce51ded9d7c9cba`. **Current candidate F10CH:** the same accepted inverse has value zero, literal identity strict/ordinary derivative and every-order regularity at zero; the actual upper-coordinate map, actual full natural matrix image and original source ordered word are injective on CG's source neighborhood. Eight roots await complete strict CI. Source Spin coverage, general source local kernel control, subgroup charts and tangent/manifold obligations remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CH**, [run 41741804304](https://github.com/etblink/math/actions/runs/41741804304), tested `fc11df43ce9e6a268a0fc6b0a30d26c00a943d94`. All eight roots passed fresh strict compilation and the independent actual-function/type/axiom audit. CG's same inverse has value zero, literal identity strict/ordinary derivative and every-order regularity at zero; the actual upper-coordinate map, full natural matrix image and original source ordered word are injective on CG's source neighborhood. Source Spin coverage, general source local kernel control, subgroup charts and tangent/manifold obligations remain open. Next bounded work is the parameter-domain/actual-word-image inverse package and inherited topology. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2394,3 +2394,41 @@ Candidate files:
 **Verification discipline:** preserve every accepted ancestry pin through CG and add exact CH source/audit pins. Rebuild CG, then compile CH and its independent audit freshly with warnings-as-errors. Require exactly eight expected permitted root reports per phase, unchanged three-axiom whitelist, actual terminal classifier `V10H_F10CH_INVERSE_REGULARITY_LOCAL_INJECTIVITY_TYPES_AXIOMS_PASS`, and unchanged 840/600-second fresh-phase caps. No new instance, norm/topology, source/gamma replacement, admission, linter suppression or custom proof limit is introduced. Local exact hashes, ancestry-pin preservation, eight-root scope preflight, YAML, three trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; all eight roots remain candidates until complete strict CI succeeds.
 
 **Next action and ceiling:** inspect complete fresh source and independent audit evidence before qualification. Preserve explicit inverse-function and derivative-operator bridges if an interface fails; do not normalize deeply or raise limits first. After qualification, inspect a bounded parameter-domain/actual-word-image inverse package and its inherited topology before attempting any source neighborhood coverage statement. General source Spin local fiber/kernel control, coverage of nearby source Spin elements, subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open.
+
+
+## F10CH accepted — inverse regularity and actual source-word local injectivity
+
+**Verified strict result:** [run 41741804304](https://github.com/etblink/math/actions/runs/41741804304), tested `fc11df43ce9e6a268a0fc6b0a30d26c00a943d94`, attempt 1, job `126284870536`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CG rebuild, fresh warnings-as-errors CH compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CH_INVERSE_REGULARITY_LOCAL_INJECTIVITY_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The exact tested commit, terminal run state, all ten step verdicts, decoded log, actual marker, root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CHInverseRegularityLocalInjectivity.lean` | `82835111241ebd88745a17743421cb2f82d23ddc` |
+| `lean/diagnostics/FCP_K1D18V10HF10CHIndependentAudit.lean` | `f8860e4365a6261ba0e3f31b8ec215965e6498a9` |
+| `.github/workflows/bfss-kotler-v10h-f10ch-inverse-regularity-local-injectivity-strict.yml` | `b746e31a6733e3aa02f10615c3db13a20525f998` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrderedUpperCoordinateLocalHomeomorph_symm_zero`
+2. `source9OrderedUpperCoordinateLocalHomeomorph_symm_hasStrictFDerivAt_zero`
+3. `source9OrderedUpperCoordinateLocalHomeomorph_symm_hasFDerivAt_zero`
+4. `source9OrderedUpperCoordinateLocalHomeomorph_symm_fderiv_zero`
+5. `source9OrderedUpperCoordinateLocalHomeomorph_symm_contDiffAt_zero`
+6. `source9OrderedUpperCoordinateMap_injOn_source`
+7. `source9OrderedStrictPlaneWord_matrix_injOn_source`
+8. `source9OrderedStrictPlaneWord_injOn_source`
+
+Retained artifact `13281219471`, `bfss-v10h-f10ch-inverse-regularity-local-injectivity-fc11df43ce9e6a268a0fc6b0a30d26c00a943d94-1`, 3894 bytes, GitHub-reported ZIP SHA-256 `17b8fc34677cb66be76b58beb2d38602ba3976c6260759b957fc13c039495ba6`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** CG's existing inverse sends zero to zero. At zero it has the literal identity strict derivative, hence the ordinary identity derivative and exact identity `fderiv`. That same inverse is `ContDiffAt ℝ n` at zero for every `n : ℕ∞ω`, including analytic order. This is pointwise regularity at zero; it does not assert regularity on the entire original target neighborhood.
+
+On CG's source neighborhood, the actual upper-coordinate map is injective. Projecting equality of the complete actual natural nine-matrix word images to their upper coordinates proves local injectivity of that full matrix image. Applying the actual natural homomorphism to equality of the original source ordered words then proves local injectivity of the original source word. Both parameters must belong to the accepted source neighborhood in every injectivity statement.
+
+The independent audit checks the standard parameter topology and completeness, exact inverse value and derivative operators, every directional/coordinate derivative evaluation, every-order inverse regularity at zero, named and completely expanded literal actual upper-coordinate injectivity, full actual matrix injectivity and recovery from equality of every entry, and the original ordered word with its exact `source9PlaneSpinWord`/`List.finRange 36` expansion. It also checks that a parameter in this neighborhood whose word is the identity is zero. This consequence applies only to the parameterized word image and does not settle the natural representation's kernel on arbitrary nearby source Spin elements.
+
+**Successful method:** preserve the accepted inverse; use the pinned library's inverse strict derivative and continuous-differentiability theorems with explicit continuous-equivalence arguments. Complete typed equalities bridge the library local-inverse function, CG's actual inverse, and the literal identity operator. The full forward-function equality and inverse value zero expose the regularity prerequisites. Typed congruence through the accepted upper projection and natural homomorphism transports injectivity without changing the source word or carrier. This first CH strict run passed without repair. No new instances, topology/norm changes, gamma/carrier replacement, admissions, linter suppression, relaxed whitelist or proof-limit increase was introduced.
+
+**Next bounded plan and ceiling:** inspect the inherited topology and existing Mathlib APIs for packaging the established parameter neighborhood and its actual source-word image with coordinate recovery as inverse. Keep the actual word, spatial enumeration and membership restrictions explicit; audit continuity and the inverse identities independently before claiming a homeomorphism onto that image. Such a package would still not prove that the image exhausts a source Spin neighborhood. General source local fiber/kernel control, source neighborhood coverage, subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves all earlier evidence.
