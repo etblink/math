@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CQ**, [run 41799648734](https://github.com/etblink/math/actions/runs/41799648734), tested `d2e29caa02b001ce8df5e395c2a2cf01a8b77727`. **F10CR is now a candidate pending strict CI:** exact contraction and vanishing transport through the actual source-nine Clifford/exterior linear equivalence, the exterior polar-kernel criterion, all literal exterior coordinate contractions of the reconstruction-relative element, and transport of a fixed scalar equality. The independent audit includes an explicit counterexample to multiplicativity of this equivalence. Common-coordinate-kernel scalar classification, two-sign fibers, local source equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CR**, [run 41803034597](https://github.com/etblink/math/actions/runs/41803034597), tested `f172dcd9a20d5543da88ccfd54b38760ff9feca6`. All eight roots passed fresh strict compilation and the independent PBW/type/axiom audit on the first CR run. Actual source-nine contraction and vanishing now transport through the original Clifford/exterior linear equivalence, including all literal exterior coordinate contractions of the reconstruction-relative element. Fixed scalar equalities transport back to the same original Clifford scalar. The audit proves that this equivalence is not multiplicative. Common-coordinate-kernel scalar classification, two-sign fibers, local source equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3449,3 +3449,49 @@ Candidate files and exact blobs:
 YAML, every shell run-block syntax, both embedded Python ASTs, executable source/audit/instance scope preflight, inherited pin prefix, all 76 local or exact remote blob checks, three trigger paths, phase caps and whitelist pass static checks. The accepted CO notation-scope guard and accepted CP full matrix bridge remain intact. No local Lean executable is available; no new source or audit elaboration success is claimed before complete strict CI.
 
 **Next action and ceiling:** inspect complete strict source compilation and independent audit before qualification. Preserve any red and repair its exact cause without weakening the statements, controls or limits. If accepted, inspect matching source-nine exterior PBW coefficient/ordered-word interfaces and the reusable imported common-coordinate-kernel proof method before building a scalar-classification candidate. Use only the linear equivalence's proved transport interfaces; do not transport products multiplicatively. A common-coordinate-kernel scalar theorem, source scalar/two-sign kernel classification, local source fiber triviality, source Spin equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No authored admission, source/gamma substitution, norm/topology replacement, linter suppression, proof-limit increase, main/frozen-FCP/upstream change or upstream PR is introduced.
+
+
+## F10CR accepted — native exterior contraction and scalar-equality transport
+
+**Verified strict result:** [run 41803034597](https://github.com/etblink/math/actions/runs/41803034597), tested `f172dcd9a20d5543da88ccfd54b38760ff9feca6`, attempt 1, job `126483199311`, completed/success with all ten recorded steps successful. Exact ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CQ rebuild, fresh warnings-as-errors CR compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CR_EXTERIOR_CONTRACTION_TRANSPORT_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total, using only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, separate phase/root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CRExteriorContractionTransport.lean` | `7685bb34d17bc85b3b4bcb9ec7f035c786c4f8ec` |
+| `lean/diagnostics/FCP_K1D18V10HF10CRIndependentAudit.lean` | `9ed95338f7ca09b80abc6d180629afced6211ea8` |
+| `.github/workflows/bfss-kotler-v10h-f10cr-exterior-contraction-transport-strict.yml` | `379b6f9b20e288fcd61992898f25bdd491a05f71` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9Clifford_exterior_contractLeft_transport`
+2. `source9Clifford_contractLeft_zero_iff_exterior`
+3. `source9NaturalMatrix_eq_one_iff_exteriorPolarContractions_zero`
+4. `source9NaturalKernel_exteriorCoordinateContractions_zero`
+5. `source9NaturalMatrix_eq_iff_relative_exteriorPolarContractions_zero`
+6. `source9Reconstruction_relative_exteriorPolarContractions_zero_on_sourceNeighborhood`
+7. `source9Reconstruction_relative_exteriorCoordinateContractions_zero_on_sourceNeighborhood`
+8. `source9Clifford_exterior_eq_scalar_iff`
+
+Retained artifact `13308898371`, `bfss-v10h-f10cr-exterior-contraction-transport-f172dcd9a20d5543da88ccfd54b38760ff9feca6-1`, 5441 bytes, GitHub-reported ZIP SHA-256 `c5b6e383576a948ba304cb2b73204dfaed72bba45e2d5b6724f4cae6093193f0`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** native left contraction by every original dual functional commutes with the actual source-nine `CliffordAlgebra.equivExterior source9Quadratic`. The domain is the original `CliffordAlgebra source9Quadratic`; the target contraction uses the zero-quadratic Clifford carrier underlying `ExteriorAlgebra ℝ (SpaceIndex → ℝ)`. Both sides retain the same original dual and labels. Injectivity and zero preservation give equivalence of contraction vanishing before and after transport.
+
+The complete actual natural matrix is the identity if and only if all native polar contractions of the exterior image vanish. Every actual natural-action kernel element also has all nine literal exterior coordinate-dual contractions zero. The exact original-source relative element `g * h⁻¹` yields the corresponding equal-matrix/exterior-polar criterion.
+
+On CO's accepted original-source identity neighborhood, the exterior image of `source9SpinCoordinateReconstruction g * g⁻¹` is annihilated by every polar and every literal coordinate contraction. The original source element's product and inverse remain inside the linear equivalence. The source carrier, exact relative order, dual labels and neighborhood hypothesis are retained; no exterior product substitution is used.
+
+For any specified real scalar `c`, an original Clifford element's exterior image equals the embedded exterior scalar `c` if and only if the original element equals the embedded original Clifford scalar `c`. This proves transport of a scalar equality, not existence of a scalar for the common coordinate-contraction kernel. That common-kernel classification remains the next separate obligation.
+
+**Independent audit:** independently reconstructed accepted PBW structures, exact inherited source/standard matrix topologies and the unchanged CO identity neighborhood are checked. The audit types the complete linear-equivalence carrier, pointwise contraction transport and the whole linear-operator composition identity. Both directions of vanishing transport and of the exterior polar-kernel criterion, arbitrary original matrix entries from its converse, all literal coordinate-dual statements, exact relative order and both reconstruction results are checked. The complete relative Clifford expression with the actual inverse written as grade reversal is checked inside the equivalence.
+
+Both directions of fixed-scalar transport, images of literal embedded scalars and equivalence of the corresponding existential scalar equalities are checked. No existential scalar condition is supplied for the contraction kernel. The actual negative central source element remains a distinct nonidentity example in the transported coordinate kernel, and the actual natural-action noninjectivity control remains checked.
+
+**Nonmultiplicativity control:** the audit proves that the actual linear equivalence does not preserve all products. The image of an original unit coordinate vector is its actual exterior vector; its Clifford square is one, while that exterior vector's square is zero. With the checked identity image, zero preservation, injectivity and original Clifford nontriviality, a hypothetical multiplicativity law gives a contradiction. This explicitly prevents treating the source's Clifford/exterior linear equivalence as an algebra equivalence.
+
+**Successful method:** reuse the inspected K1D0 change-form contraction transport method with the actual nine-vector source and the pinned native API. Compose full typed transport equalities with injectivity and zero preservation, and apply already accepted CQ/CP kernel statements. Prove the full scalar-image equality separately before transporting a fixed scalar equation. The first CR strict run passed without repair. No source instance registration, authored admission, carrier/gamma substitution, norm/topology replacement, linter suppression, whitelist relaxation, unsupported multiplicativity assumption or proof-limit increase was introduced.
+
+**Next bounded plan and ceiling:** inspect the matching original nine-coordinate exterior PBW basis and ordered-word coefficient/contraction interfaces, alongside the imported common-coordinate-kernel proof method. Select a bounded coefficient-separation statement on the original source labels before asserting that simultaneous vanishing of all coordinate contractions forces an exterior scalar. Preserve basis orientation, finite-set indexing and contraction signs explicitly; do not relabel an original-48 theorem to the nine-vector carrier. Use CR's proved fixed-scalar transport only after such scalar existence is established. A common-coordinate-kernel scalar theorem, source scalar/two-sign kernel classification, local source fiber triviality, source Spin equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves all prior red and green records.
