@@ -103,7 +103,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CMIndependentAudit.lean)" = 'db0462336ba7bd677cec97de3aa8a94456d9f820'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CNLocalOrthogonalRecovery.lean)" = '897ea47e2ac9e7ef937fabbb74178073d18f52c5'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CNIndependentAudit.lean)" = '75c9abb205c1db13f9e4ed281f1e9c1b0bf954f4'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CORecoverySourceNeighborhood.lean)" = '50be174bd9d18c52c82bfcd09e25829240ddfe05'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CORecoverySourceNeighborhood.lean)" = '211e593bbaa95d85ff6767448de3f3763d7d293d'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10COIndependentAudit.lean)" = '308373e8086b0846b68cdc1cd32cb6f32c9aa050'
           python3 - <<'PY'
           from pathlib import Path
@@ -129,6 +129,7 @@ jobs:
               assert all(t not in code for t in ['Source48Label','NormedRing','GammaMatrix','SpinIndex','ChartedSpace','LieGroup'])
           assert 'NormedAddCommGroup.induced' not in s and 'NormedSpace.induced' not in s
           assert 'TopologicalSpace.induced' not in s
+          assert 'open scoped ContDiff Topology Matrix.Norms.Elementwise' in s
           assert s.count('source9PBWNormedAddCommGroup')==1 and s.count('source9PBWNormedSpace')==1
           assert audit.count('NormedAddCommGroup.induced')==2 and audit.count('NormedSpace.induced')==2
           for t in ['continuous_subtype_val.prodMk continuous_const',

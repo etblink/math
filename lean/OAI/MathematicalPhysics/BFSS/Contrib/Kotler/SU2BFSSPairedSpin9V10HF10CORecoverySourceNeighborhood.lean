@@ -9,7 +9,7 @@ set_option autoImplicit false
 namespace FCP.BFSSPairedSpin9Clifford
 noncomputable section
 open OAI.BFSSQuantum
-open scoped Topology Matrix.Norms.Elementwise
+open scoped ContDiff Topology Matrix.Norms.Elementwise
 
 local instance f10coLocalNormedAddCommGroup :
     NormedAddCommGroup (CliffordAlgebra source9Quadratic) := source9PBWNormedAddCommGroup
