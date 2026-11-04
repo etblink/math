@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CH**, [run 41741804304](https://github.com/etblink/math/actions/runs/41741804304), tested `fc11df43ce9e6a268a0fc6b0a30d26c00a943d94`. All eight roots passed fresh strict compilation and the independent actual-function/type/axiom audit. CG's same inverse has value zero, literal identity strict/ordinary derivative and every-order regularity at zero; the actual upper-coordinate map, full natural matrix image and original source ordered word are injective on CG's source neighborhood. Source Spin coverage, general source local kernel control, subgroup charts and tangent/manifold obligations remain open. Next bounded work is the parameter-domain/actual-word-image inverse package and inherited topology. All prior evidence is preserved.
+> **Latest accepted mathematical increment remains F10CH**, [run 41741804304](https://github.com/etblink/math/actions/runs/41741804304), tested `fc11df43ce9e6a268a0fc6b0a30d26c00a943d94`. **Current candidate F10CI:** package CG's parameter neighborhood as a homeomorphism onto its actual original source-word image, using inherited PBW/subtype topologies and explicit recovery through the actual natural upper coordinates. Eight roots await complete strict CI. The image's openness or coverage of a source Spin neighborhood, general local kernel control, subgroup charts and tangent/manifold obligations remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2432,3 +2432,44 @@ The independent audit checks the standard parameter topology and completeness, e
 **Successful method:** preserve the accepted inverse; use the pinned library's inverse strict derivative and continuous-differentiability theorems with explicit continuous-equivalence arguments. Complete typed equalities bridge the library local-inverse function, CG's actual inverse, and the literal identity operator. The full forward-function equality and inverse value zero expose the regularity prerequisites. Typed congruence through the accepted upper projection and natural homomorphism transports injectivity without changing the source word or carrier. This first CH strict run passed without repair. No new instances, topology/norm changes, gamma/carrier replacement, admissions, linter suppression, relaxed whitelist or proof-limit increase was introduced.
 
 **Next bounded plan and ceiling:** inspect the inherited topology and existing Mathlib APIs for packaging the established parameter neighborhood and its actual source-word image with coordinate recovery as inverse. Keep the actual word, spatial enumeration and membership restrictions explicit; audit continuity and the inverse identities independently before claiming a homeomorphism onto that image. Such a package would still not prove that the image exhausts a source Spin neighborhood. General source local fiber/kernel control, source neighborhood coverage, subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves all earlier evidence.
+
+
+## F10CI candidate — inherited-topology homeomorphism onto the actual source-word image
+
+**Baseline:** live research branch checked at `1056b74a1e5cdfd65268e7d7b13741962e798144`, the documentation-only CH acceptance commit. Root AGENTS and the canonical handoff reread. Previously checked ancestor instruction files and all accepted mathematical modules remain unchanged at this baseline.
+
+**Bounded implementation:** define `source9SpinUpperCoordinates` on the original `spinGroup source9Quadratic` by applying the accepted continuous upper projection to its actual natural nine-matrix image. Prove continuity for the inherited PBW topology by using BU's continuous ambient vector-conjugation extension on the source Clifford coercion and original fixed coordinate columns, followed by original row evaluation. The accepted actual matrix-entry/vector-conjugation and ambient/Spin bridges identify the exact function; expose the composed function's typed lambda before rewriting.
+
+BV's ambient PBW smoothness gives continuity of the actual ordered word's Clifford coercion. The inherited source Spin subtype topology then gives continuity into the original group. Only the two accepted named PBW normed structures are activated locally by uniquely named aliases; no new norm, topology, group structure, global instance or topological hypothesis is introduced.
+
+Define the local image exactly as `source9OrderedStrictPlaneWord '' source9OrderedUpperCoordinateLocalHomeomorph.source`. The explicit parameter recovery is CG's inverse applied to the actual natural upper coordinates. On every parameter in CG's source, CG's left inverse proves recovery. Image membership proves that recovery stays in the source and that its coordinates lie in CG's target. Package the actual forward word and this specified inverse as `source9OrderedStrictPlaneWordImageHomeomorph` between the parameter-source subtype and the actual word-image subtype. Both inverse laws and both continuities are supplied explicitly. Inverse continuity is checked pointwise using CG's inverse continuity at each coordinate in the target, composed with the continuous actual upper-coordinate map. The complete forward and inverse formulas are exported as exact coercion equalities.
+
+**Pinned API inspection:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`:
+- `Topology/Homeomorph/Defs.lean`, blob `7c7e9c3c815eb873ab5e637aaac83e4cdf80f39d`: complete structure fields, inherited equivalence, explicit forward/inverse continuity, inverse identities and continuity projections.
+- `Topology/Constructions.lean`, blob `91a7136cc7b39e609f8becbf9e0785069bb2610d`: inherited subtype continuity, Pi continuity and coordinate evaluation; no substitute topology is needed.
+- `Topology/OpenPartialHomeomorph/Continuity.lean`, blob `54b56e1b8b657b0417e16ed2e823b6f8aa757f03`: inverse continuity at any point with explicit target membership.
+
+Eight pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9SpinUpperCoordinates`
+2. `source9SpinUpperCoordinates_continuous_pbw`
+3. `source9OrderedStrictPlaneWord_continuous_pbw`
+4. `source9OrderedStrictPlaneWordLocalImage`
+5. `source9OrderedStrictPlaneWord_coordinate_recovery`
+6. `source9OrderedStrictPlaneWordImageHomeomorph`
+7. `source9OrderedStrictPlaneWordImageHomeomorph_apply`
+8. `source9OrderedStrictPlaneWordImageHomeomorph_symm_apply`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CIActualWordImageHomeomorph.lean` | `ccee4ca45358a5bd0b63093b96144a6095b8bcb8` |
+| `lean/diagnostics/FCP_K1D18V10HF10CIIndependentAudit.lean` | `2b74d9256ef8be2d18689a2629ed8ab88b0b83f5` |
+| `.github/workflows/bfss-kotler-v10h-f10ci-actual-word-image-homeomorph-strict.yml` | `c94415e84b5089978c7209a736ac824b71e7a7a3` |
+
+**Independent audit:** reconstruct the accepted PBW coordinates and induced norm from the original Clifford basis and finite-coordinate adapter, and independently install the compatible normed-space structure. Check equality to the accepted coordinates/norm and capture the standard parameter and inherited original-source topologies. Check both the parameter-source and word-image subtype topologies as literal induced topologies. Check the actual upper-coordinate map's native matrix-entry formula and continuity, actual word continuity, exact image set and identity membership, coordinate recovery, the full homeomorphism type with the literal image set, and continuity in both directions. The forward formula is checked against the actual original ordered `List.finRange 36` product of source plane curves. The inverse formula is checked against the literal actual natural upper-entry function via a separately proved typed coordinate equality. Both subtype inverse laws and the expanded source-group reconstruction formula are checked without added continuity or inverse assumptions.
+
+**Verification discipline:** preserve every accepted ancestry pin through CH; add exact CI source/audit pins, rebuild CH, then freshly compile CI and the independent audit with warnings-as-errors. Require eight exact permitted root reports in each phase and actual terminal classifier `V10H_F10CI_ACTUAL_WORD_IMAGE_HOMEOMORPH_TYPES_AXIOMS_PASS`. Retain the three-axiom whitelist, legacy conditional-alias guard, 840/600-second fresh-phase caps and evidence preservation. The local-instance guard now permits exactly the two accepted source aliases and the three independent audit reconstruction instances while rejecting global instance declarations or registrations; the source preflight prohibits constructing a replacement norm or topology. All source/audit bytes are pinned. Local exact hashes, accepted-pin preservation, eight-root scope preflight, YAML, all three trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; all eight roots remain candidates pending complete strict CI.
+
+**Next action and ceiling:** inspect the complete fresh compilation and independent literal-function/PBW-topology audit before qualification. If accepted, determine the separate source-neighborhood coverage obligation and the exact local fiber/kernel facts it requires before constructing any source chart or atlas. A homeomorphism onto an image does not prove that image open or a neighborhood of the source identity. General source local kernel control, source Spin neighborhood coverage, subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all prior red and green evidence.
