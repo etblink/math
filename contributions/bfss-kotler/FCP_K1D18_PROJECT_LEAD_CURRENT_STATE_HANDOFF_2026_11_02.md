@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10CX audit-environment repair is pending strict qualification.** [Run 41884763665](https://github.com/etblink/math/actions/runs/41884763665), tested `184637087bf3523bc03845ba8678a63cc0df5462`, again passed fresh source compilation of all nine declarations. Its sole audit diagnostic is a NormedSpace inference failure at 77:2 in the global-to-target ContDiffOn proof; the previous coordinate-helper rewrite diagnostic is absent. The focused repair binds the global regularity proof at the independently reconstructed audit type and adds a ground NormedSpace capability check. Source, coordinate helper, all existing propositions/controls and strict limits remain unchanged. Latest complete acceptance remains F10CW, [run 41872942447](https://github.com/etblink/math/actions/runs/41872942447). All three CX reds are preserved.
+> **Latest accepted mathematical increment is F10CX**, [run 41888219932](https://github.com/etblink/math/actions/runs/41888219932), tested `595c8e58f1444a2f283695c9dd6995ed8cc77dfc`. All nine roots passed fresh strict compilation and the complete independent PBW/type/axiom audit (18 reports). The exact original-source identity-chart inverse is every-order regular as a Clifford-valued parameter map; its derivative at zero is the literal ordered positive half-bivector sum and is injective. Reversal, projected native commutator and the actual natural-matrix derivative/model are qualified. Source tangent identification, atlas/manifold structures and the full F10BC differential comparison remain open. All three CX red attempts and their causal repairs are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4142,3 +4142,54 @@ Only the audit, its single workflow hash pin and the canonical handoff change in
 **Next-run discriminator and scope ceiling.** Rerun the entire unchanged strict procedure. Confirm that the source's nine-root success is reproduced, the ground NormedSpace check elaborates, the same target-regularity proposition follows through the typed consumer binding, and the complete independent audit finishes. Acceptance still requires exactly nine expected roots once in each fresh phase, permitted axioms only, no sorryAx or Lean diagnostics, and the existing exact terminal marker. If either the ground check or the typed binding fails, that separates the next structural prerequisite from mere pretty-printed similarity; inspect that exact boundary before any further repair.
 
 No CX attempt is fully accepted yet. Latest complete acceptance remains F10CW at tested `a980c3e6ae6c26c26ccd48c891a1a11749ee9e54`. Source tangent identification, atlas/manifold structures, full F10BC differential comparison, global source recovery, target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open. All historical records and all three red attempts are preserved.
+
+
+## 2026-11-04 Project Lead acceptance — F10CX exact chart-inverse Clifford regularity and injective derivative
+
+**Exact successful evidence.** The owner reported [run 41888219932](https://github.com/etblink/math/actions/runs/41888219932) green. Direct run and job [126778310622](https://github.com/etblink/math/actions/runs/41888219932/job/126778310622) metadata both report completed/success, attempt 1, exact tested commit `595c8e58f1444a2f283695c9dd6995ed8cc77dfc`, tree `c4fbb909bc736ba8f558f14ad68d0a78c0fd97e8`. All ten job steps are completed/success. The live research branch still matched the tested commit before this acceptance-only update; the authoritative handoff read was blob `1ffb7d07dcd291783742bd33ccf696e03390c4af`.
+
+**Full strict qualification.** The 90-pin source-scope check, pinned Lean 4.34.1/Mathlib restoration and accepted CW ancestry rebuild succeeded. Fresh warnings-as-errors source compilation and the separate independent audit each produced exactly the nine expected public roots once (18 total reports), with every axiom set contained in `{propext, Classical.choice, Quot.sound}`. There is no sorryAx and no Lean source/audit warning or error diagnostic, including categorized forms such as `error(lean.synthInstanceFailed):`. The decoded log contains the exact tested SHA. After excluding timestamped/ANSI command echoes, scope marker `V10H_F10CX_SOURCE_PIN_IDENTITY_CHART_INVERSE_CLIFFORD_DERIVATIVE_SCOPE_PASS` and terminal marker `V10H_F10CX_IDENTITY_CHART_INVERSE_CLIFFORD_DERIVATIVE_TYPES_AXIOMS_PASS` each appear exactly once as output. Source/axiom reports alone were not substituted for the successful independent audit step.
+
+**Exact tested blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CXIdentityChartInverseCliffordDerivative.lean` — `a6927651611f21ffd7e05dacf5d2aad9bfcac609`.
+- `lean/diagnostics/FCP_K1D18V10HF10CXIndependentAudit.lean` — `69e3f2c8551fa299ebe23f2c6c195d0ee4286afe`.
+- `.github/workflows/bfss-kotler-v10h-f10cx-identity-chart-inverse-clifford-derivative-strict.yml` — `698a183bab7471af6405d6dc7f68f5ae9684ea23`.
+
+All three authoritative tested blobs match the published repaired candidate. The successful source remains the exact `a6927651611f21ffd7e05dacf5d2aad9bfcac609` blob frozen after the first source repair. The audit and workflow hashes qualify the final typed-consumer repair and ground NormedSpace check under the same strict gate.
+
+GitHub reports artifact [13353421289](https://github.com/etblink/math/actions/runs/41888219932/artifacts/13353421289), named `bfss-v10h-f10cx-identity-chart-inverse-clifford-derivative-595c8e58f1444a2f283695c9dd6995ed8cc77dfc-1`, size 5,717 bytes, unexpired, associated with the same tested SHA, ZIP digest `f693cae4cce1160bbdeac9f1c1c203ec707a09dad0ee215cbac3ba79ca2a92b7`. This is GitHub-reported archive metadata, not an independently downloaded binary/digest comparison.
+
+**Accepted declaration inventory.**
+- `source9IdentityChartInverse_clifford_eq_word`
+- `source9IdentityChartInverse_clifford_contDiff_pbw`
+- `source9IdentityChartInverse_clifford_hasFDerivAt_zero`
+- `source9IdentityChartInverse_clifford_fderiv_zero`
+- `source9IdentityChartInverse_clifford_fderiv_zero_apply`
+- `source9IdentityChartInverse_clifford_fderiv_zero_reverse`
+- `source9IdentityChartInverse_fderiv_zero_projected_commutator`
+- `source9IdentityChartInverse_naturalMatrix_fderiv_zero_model`
+- `source9IdentityChartInverse_clifford_fderiv_zero_injective`
+
+**Mathematical scope.** The map is the literal inverse of CW's specified original-source identity chart, coerced to the original Clifford algebra. Its total function equals the accepted actual ordered source word. For every `n : ℕ∞ω` it has the qualified ambient `ContDiff ℝ n` regularity. At zero its ordinary Fréchet derivative is the existing `source9PlaneSpinWordVelocity source9StrictPlaneRow source9StrictPlaneColumn (List.finRange 36)`. In each parameter direction v its value is the literal ordered positive half-bivector sum, retaining the exact `1/2`, original Clifford generators, native plane orientation, chosen enumeration and parameter-index order.
+
+Grade reversal negates this derivative. Projecting its Clifford commutator on an arbitrary original nine-vector yields the accepted full native-vector velocity. The actual natural nine-vector matrix action of the chart inverse has derivative equal to the existing canonical native skew model in each direction. Equality of two ambient Clifford derivative values therefore gives equality of the projected native matrix velocities; the accepted native derivative's injectivity recovers equality of the parameter directions. This establishes injectivity of the ambient derivative as a map from the 36 real parameters to the original Clifford algebra. It does not identify the domain or image with a formal source tangent space.
+
+Total inverse regularity is justified by its exact global word formula. The chart inverse laws remain restricted to CW's explicit open source/target sets; neither this regularity nor derivative injectivity supplies a global source coordinate inverse.
+
+**Independent audit completed.** The final audit independently reconstructs the original PBW norm from the accepted basis with exactly the intended three local registrations and verifies the named norm structures and inherited source/matrix/parameter topologies. The added ground NormedSpace capability check elaborates, as does the fully typed global regularity proof binding followed by restriction to the actual chart target. Arbitrary-order and explicit analytic-order regularity, exact chart target/zero neighborhood, literal word formula and original Clifford value at zero are checked.
+
+The audit re-elaborates HasFDerivAt, fderiv, every-direction ordered half-bivector sum, reversal, projected native commutator, actual natural-matrix model and ambient derivative injectivity. It isolates each unit parameter direction to its exact positive half-bivector and checks its nonzero value, rejects doubling/dropping the half factor and reversing its sign, and verifies zero derivative value iff zero parameter direction. Exact source/target membership premises remain in the inverse laws, and CU's global natural-map noninjectivity is retained.
+
+**Three reds remain negative knowledge.**
+
+| Run | Observed failure | Repair retained in the successful gate |
+|---|---|---|
+| [41877796245](https://github.com/etblink/math/actions/runs/41877796245) | Source recursion depth at projected commutator; independent audit skipped. | Apply the fully typed derivative-map equality to a direction, then use congrArg through the literal commutator and compose with accepted BX. |
+| [41880969637](https://github.com/etblink/math/actions/runs/41880969637) | Source passed; audit coordinate-direction derivative rw did not match. | Use a fully typed pointwise equality, separate finite-sum calculation and transitivity; retain the half-bivector proposition. |
+| [41884763665](https://github.com/etblink/math/actions/runs/41884763665) | Source passed; direct imported regularity projection could not synthesize NormedSpace in the audit. | Add a ground capability check and bind global regularity at the complete reconstructed audit consumer type before applying contDiffOn. |
+
+The final combined audit proof/control arrangement passes; no separate ablation is claimed to identify every hidden structure argument behind the third diagnostic. The source and all existing audit propositions/negative controls were preserved through the two audit-only repairs. Each new boundary was separated from the previous one, and the passing source was kept fixed. The historical failed commits, diagnostics, sorryAx error-recovery reports, skipped/failed audit distinctions and artifact metadata remain in their prior events.
+
+**Procedural result.** Complete typed function/operator/value equalities and consumer-side proof bindings are successful source-exact bridges here. Repeated pretty-printed similarity or imported-root reports do not establish a failed independent goal. Retain classified source-versus-audit evidence, capability controls for structure-indexed inference, explicit ContDiff scopes, exact native carriers/order and the unchanged full strict gate. No theorem weakening, negative-control removal, authored admission, native_decide, linter suppression, new norm/topology/global instance or proof/time-limit increase was used.
+
+**Next bounded work and scope ceiling.** CX is now completely accepted at these exact tested interfaces. Next inspect and reuse the existing original-source bivector/Lie-algebra and representation-derivative interfaces to characterize the image of this explicit positive half-bivector linear map and compare it with the canonical native skew model. Keep any resulting range equivalence separate from a source tangent-space identification until the relevant atlas/manifold/tangent interfaces are constructed. Translated atlas and compatibility, manifold/Lie-group structures, source tangent identification, the full F10BC manifold differential comparison, global source reconstruction, full target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open. This acceptance-only commit changes the canonical handoff alone and preserves the historical body verbatim.
