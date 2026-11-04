@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CI**, [run 41746257725](https://github.com/etblink/math/actions/runs/41746257725), tested `9ede511761a51b6784f6df4883ec01fcc4b06d8e`. **F10CJ first strict run 41748489293 is red:** fresh source compilation passed, but the independent literal matrix-entry audit reached the recursion limit at a deep definitional `change`. Zero CJ roots are qualified. The bounded repair evaluates the existing explicit coordinate-equality bridge instead; source bytes, all nine root statements, every audit statement and strict limits remain unchanged. Fresh strict CI is required. Source image openness/coverage, general local kernel control and tangent/manifold obligations remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CJ**, [run 41750357148](https://github.com/etblink/math/actions/runs/41750357148), tested `2ea75c9463d53e9d588c2f1246897a76f31211b1`. All nine roots passed fresh strict compilation and the independent PBW-topology/literal-coordinate/type/axiom audit. The coordinate-target preimage is an open original-source identity neighborhood; reconstruction is continuous there, lands in the accepted word image, preserves actual upper coordinates and fixes exactly that image. The first CJ audit red remains preserved. Source image openness/coverage, general local kernel control, subgroup charts and tangent/manifold obligations remain open. Next work must inspect local natural-matrix uniqueness and source fibers before a smaller-neighborhood coverage proof.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2608,3 +2608,44 @@ Repaired files:
 The workflow adds scope assertions for the evaluated coordinate bridges and their explicit equality chain. All accepted ancestry pins and the candidate source pin remain unchanged. The nine-root requirement per fresh phase, exact terminal classifier, warnings-as-errors, three-axiom whitelist, local-instance bounds, legacy conditional-alias guard and 840/600-second caps remain. Local exact hashes, source identity, audit-statement identity, candidate-audit-only pin change, scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; fresh source and independent audit elaboration remain required.
 
 **Method lesson and next action:** a literal interface check should use its explicit named function equality at every occurrence, including coordinate evaluation at a reconstructed element. A definitionally valid `change` can still traverse a large actual-word term and exhaust elaboration recursion. Reuse the already successful typed equality/evaluation method from CE, CF, CG and CI; do not raise recursion limits for this avoidable normalization path. Inspect the complete independent audit before qualification even when all source root reports are clean. Source image openness, source Spin neighborhood coverage, general local kernel control, subgroup charts, tangent identifications, the full F10BC manifold differential and BFSS physical conclusions remain open.
+
+
+## F10CJ accepted — open coordinate reconstruction domain and fixed-point criterion
+
+**Verified strict result:** [run 41750357148](https://github.com/etblink/math/actions/runs/41750357148), tested `2ea75c9463d53e9d588c2f1246897a76f31211b1`, attempt 1, job `126313635578`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CI rebuild, fresh warnings-as-errors CJ compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CJ_COORDINATE_RECONSTRUCTION_DOMAIN_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the nine expected fully qualified roots, each once per phase, eighteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The exact tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CJCoordinateReconstructionDomain.lean` | `6cc49685be9e93320841e3c31fa147e1fbea161d` |
+| `lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean` | `b2ac643dc4c9b39fce3820a33414843110aa3400` |
+| `.github/workflows/bfss-kotler-v10h-f10cj-coordinate-reconstruction-domain-strict.yml` | `7a63f5ec2aa7c4d0339a1417586ecdd09c0fdedd` |
+
+All nine qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9SpinCoordinateReconstructionDomain`
+2. `source9SpinCoordinateReconstructionDomain_isOpen_pbw`
+3. `source9SpinCoordinateReconstructionDomain_one_mem`
+4. `source9SpinCoordinateReconstruction`
+5. `source9SpinCoordinateReconstruction_continuousOn_pbw`
+6. `source9OrderedStrictPlaneWordLocalImage_subset_reconstructionDomain`
+7. `source9SpinCoordinateReconstruction_mem_wordImage`
+8. `source9SpinCoordinateReconstruction_upperCoordinates`
+9. `source9SpinCoordinateReconstruction_eq_self_iff`
+
+Retained artifact `13286911032`, `bfss-v10h-f10cj-coordinate-reconstruction-domain-2ea75c9463d53e9d588c2f1246897a76f31211b1-1`, 4577 bytes, GitHub-reported ZIP SHA-256 `6d0761a09cc20d89b2540f7a3ebfdcbfee25f361a1bd3c8f214da0fa5684a195`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** the preimage of CG's coordinate target under the actual source `source9SpinUpperCoordinates` is open for the inherited PBW topology and contains the original source Spin identity. On this stated domain, the specified reconstruction applies CG's inverse to the actual natural upper coordinates and then evaluates the original ordered source word. It is continuous on the domain. The accepted word image is contained in the domain; every reconstructed parameter lies in CG's source, so reconstruction lands in that exact word image.
+
+Reconstruction preserves the actual enumerated natural upper coordinates. On the domain, reconstruction equals the original input if and only if that input belongs to the accepted word image. These statements preserve all domain hypotheses and the actual original source group, word and spatial enumeration. They do not equate arbitrary source elements with their reconstructions or equate their complete natural matrices.
+
+The independent audit reconstructs the accepted PBW coordinates, induced norm and compatible normed space independently and checks the standard parameter, inherited source and subtype topologies. It checks the exact target preimage, openness, identity membership and identity-neighborhood status; the named and completely expanded literal matrix-entry reconstruction formulas; continuity on the domain; image inclusion; recovered parameter membership; reconstruction image membership; and equality of every enumerated actual natural upper entry. It checks the fixed-point equivalence, idempotence on the domain and fixation of every accepted-neighborhood word. For every smaller set `V` contained in the domain, it also checks the equivalence between `V` lying in the word image and reconstruction fixing every input in `V`. This identifies the additional coverage condition without asserting it.
+
+**Repair outcome and successful method:** first run [41748489293](https://github.com/etblink/math/actions/runs/41748489293) remains a failed independent audit despite successful source compilation and clean root reports. Its literal matrix-entry `change` exhausted recursion while unfolding the reconstruction. Evaluating the already proved explicit coordinate equality at each source element, then composing those equalities with the coordinate-recovery theorem, resolved the audit failure. The source stayed byte-identical and every audit statement was preserved. The repaired run passes the complete literal-interface audit under the original limits.
+
+The two repeated lessons remain operational: supply complete composition functions and points at subtype/coercion boundaries, and use named actual-function equalities rather than deep definitional unfolding at literal interfaces. No source/gamma replacement, new norm/topology, authored admission, linter suppression, relaxed whitelist or proof-limit increase was introduced. The source activates only the two accepted PBW structures by local aliases.
+
+**Next bounded plan and ceiling:** inspect existing native orthogonal-matrix infrastructure for local recovery of the complete matrix from the enumerated upper coordinates, then inspect the original source natural representation's local fibers. Coordinate equality alone is insufficient. A coverage proof must identify a suitable smaller original-source identity neighborhood and prove the full reconstruction identity there; the accepted conditional criterion can then transfer that identity to image coverage. Do not assume the entire coordinate-target preimage has that identity or that a continuous idempotent reconstruction implies source coverage. Image openness, source Spin neighborhood coverage, general local kernel control, subgroup charts, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
