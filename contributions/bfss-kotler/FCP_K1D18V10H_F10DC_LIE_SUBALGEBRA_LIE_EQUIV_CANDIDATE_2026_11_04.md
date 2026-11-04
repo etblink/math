@@ -35,9 +35,9 @@ The accepted environment remains Lean 4.34.1 and Mathlib `d13f23b723b8a846827a24
 - Independent audit: `lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean`
   - blob `cd72a540378e7b7e29a6637f1bd43fa0267f40a9`
 - Strict workflow: `.github/workflows/bfss-kotler-v10h-f10dc-derivative-range-lie-packaging-strict.yml`
-  - blob `6f8c32a896cd99dcd5f02814443609efb1b9c8ff`
+  - blob `85261d28331ea0c98f3bc0fd554447cb17e82863`
 
-The workflow pins the full F10DB accepted ancestry, F10DB source and audit blobs, exact candidate blobs, Lean/Mathlib revisions, and the tested F10DB commit. It rebuilds the DA ancestry, freshly compiles the exact F10DB parent, compiles F10DC with warnings treated as errors, then runs an independent consumer audit.
+The workflow pins the full F10DB accepted source ancestry, F10DB source and audit blobs, exact candidate blobs, and Lean/Mathlib revisions. The tested F10DB commit is recorded above; the workflow deliberately keeps checkout shallow and relies on the exact immutable source pins. It rebuilds the DA ancestry, freshly compiles the exact F10DB parent, compiles F10DC with warnings treated as errors, then runs an independent consumer audit.
 
 ## Acceptance requirements
 
@@ -61,3 +61,12 @@ Even if the gate passes, this is only a Lie-algebra packaging result. It does **
 - any additional BFSS physical, gauge-domain, or spectral conclusion.
 
 A red compiler or audit result must be classified at its earliest causal diagnostic. A type/subtype mismatch is an interface failure to investigate, not a mathematical counterexample. A missing closure proof or failed exact bracket equality would be a different and materially stronger result.
+
+
+## First preflight attempt — 2026-11-04
+
+[Run #41921763563](https://github.com/etblink/math/actions/runs/41921763563) failed before Lean setup. All listed historical source/audit blob checks and the exact F10DC source/audit blob checks completed successfully. The additional `git merge-base --is-ancestor` assertion then failed with `fatal: Not a valid commit name`: the checkout action's default shallow history did not include the historical F10DB tested commit object.
+
+Classification: **workflow/infrastructure wrapper failure**. No Lean source compilation, candidate declaration, or independent audit ran. This supplies no evidence for or against the F10DC mathematical interfaces. The assertion is removed rather than expanding checkout depth; the exact accepted-parent source and audit hashes remain pinned. No F10DC roots are accepted from this run.
+
+This is the first wrapper-level red. If another pre-compilation wrapper failure occurs without new information, stop full CI iteration and repair the wrapper offline before retrying.

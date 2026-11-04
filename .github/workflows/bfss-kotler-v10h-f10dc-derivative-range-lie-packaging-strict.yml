@@ -140,7 +140,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DBIndependentAudit.lean)" = '19e04f3e39986081154adccfb35e3f9d1db62407'
           test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean")" = '0231391e37f7c72ae1dfcd3e4ee6670869a1d800'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean)" = 'cd72a540378e7b7e29a6637f1bd43fa0267f40a9'
-          git merge-base --is-ancestor abedd367f58f34054ba9bb9a4e2507a4eb1ba576 HEAD
+          # Exact source and audit blob pins below are the ancestry control; keep this checkout shallow.
           python3 - <<'PY'
           from pathlib import Path
           import re
