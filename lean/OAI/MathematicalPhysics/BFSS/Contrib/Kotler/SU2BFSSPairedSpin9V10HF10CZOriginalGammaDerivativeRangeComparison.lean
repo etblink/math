@@ -15,6 +15,8 @@ open FCP.BFSSGamma9
 open FCP.BFSSPairedSpin9Plane
 open scoped BigOperators Matrix.Norms.Elementwise
 
+attribute [local instance 100] LieRing.ofAssociativeRing
+
 local instance f10czLocalNormedAddCommGroup :
     NormedAddCommGroup (CliffordAlgebra source9Quadratic) := source9PBWNormedAddCommGroup
 local instance f10czLocalNormedSpace :
@@ -124,8 +126,11 @@ theorem source9IdentityChartInverse_originalGamma_hasFDerivAt_zero :
       HasFDerivAt (fun t : Fin 36 → ℝ =>
         ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) D 0) hL.symm)
       source9IdentityChartInverse_clifford_hasFDerivAt_zero
-  have h := source9OriginalGammaEvaluationCLM.hasFDerivAt.comp (0 : Fin 36 → ℝ)
-    hC
+  have h : HasFDerivAt (fun t : Fin 36 → ℝ =>
+      source9OriginalGammaEvaluationCLM
+        ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic))
+      (source9OriginalGammaEvaluationCLM.comp source9IdentityChartDerivative) 0 :=
+    source9OriginalGammaEvaluationCLM.hasFDerivAt.comp (0 : Fin 36 → ℝ) hC
   have heq : (fun t : Fin 36 → ℝ =>
       source9OriginalGammaEvaluationCLM
         ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) =

@@ -7,6 +7,8 @@ open FCP.BFSSPairedSpin9Plane
 open FCP.BFSSPairedSpin9Clifford
 noncomputable section
 
+attribute [local instance 100] LieRing.ofAssociativeRing
+
 -- Reconstruct the accepted PBW norm independently, preserving the original Clifford carrier.
 local instance : Fintype (Finset SpaceIndex) := Fintype.ofFinite _
 private def auditGammaPBWCoordinates :
@@ -58,6 +60,7 @@ example : Fintype.card SpaceIndex = 9 := by decide
 example : (inferInstance : TopologicalSpace GammaMatrix) = auditGammaTargetTopology := rfl
 example : (inferInstance : TopologicalSpace (Fin 36 → ℝ)) = auditGammaParameterTopology := rfl
 example : NormedSpace ℝ GammaMatrix := inferInstance
+example : LieRing GammaMatrix := inferInstance
 example : Module ℝ (LieAlgebra.Orthogonal.so SpinIndex ℝ) := inferInstance
 example : (0 : Fin 36 → ℝ) ∈ source9SpinIdentityLocalChart.target :=
   source9SpinIdentityLocalChart_zero_mem_target
