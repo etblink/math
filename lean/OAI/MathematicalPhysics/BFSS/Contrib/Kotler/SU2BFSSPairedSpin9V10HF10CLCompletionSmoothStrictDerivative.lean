@@ -54,13 +54,22 @@ theorem source9CompletionGramEntry_hasFDerivAt_zero (i j : SpaceIndex) :
       ((0 : ℝ) • source9CompletionEntryCLM k j + (0 : ℝ) • source9CompletionEntryCLM k i)
       (0 : Matrix SpaceIndex SpaceIndex ℝ) at h
     simpa only [zero_smul, add_zero] using h
-  have hs : HasFDerivAt
+  have hsum : HasFDerivAt
       (fun B : Matrix SpaceIndex SpaceIndex ℝ => ∑ k : SpaceIndex, B k i * B k j)
-      (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ) (0 : Matrix SpaceIndex SpaceIndex ℝ) := by
-    simpa using (HasFDerivAt.fun_sum (u := Finset.univ)
+      (∑ _k : SpaceIndex, (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ))
+      (0 : Matrix SpaceIndex SpaceIndex ℝ) :=
+    HasFDerivAt.fun_sum (u := Finset.univ)
       (A := fun k : SpaceIndex => fun B : Matrix SpaceIndex SpaceIndex ℝ => B k i * B k j)
       (A' := fun _ : SpaceIndex => (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ))
-      (fun k _ => hprod k))
+      (fun k _ => hprod k)
+  have hzero : (∑ _k : SpaceIndex, (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ)) = 0 :=
+    Finset.sum_const_zero
+  have hs : HasFDerivAt
+      (fun B : Matrix SpaceIndex SpaceIndex ℝ => ∑ k : SpaceIndex, B k i * B k j)
+      (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ) (0 : Matrix SpaceIndex SpaceIndex ℝ) :=
+    Eq.mp (congrArg (fun L : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ =>
+      HasFDerivAt (fun B : Matrix SpaceIndex SpaceIndex ℝ => ∑ k : SpaceIndex, B k i * B k j)
+        L (0 : Matrix SpaceIndex SpaceIndex ℝ)) hzero) hsum
   rw [← completionGramEntry_eq_sum i j] at hs
   exact hs
 
@@ -84,38 +93,45 @@ theorem source9OrthogonalCompletionMap_contDiff (n : ℕ∞ω) :
 theorem source9OrthogonalCompletionMap_hasFDerivAt_zero :
     HasFDerivAt source9OrthogonalCompletionMap
       (ContinuousLinearMap.id ℝ (Matrix SpaceIndex SpaceIndex ℝ)) 0 := by
-  apply hasFDerivAt_pi'.2
-  intro i
-  apply hasFDerivAt_pi'.2
-  intro j
+  have hentry (i j : SpaceIndex) : HasFDerivAt
+      (fun B : Matrix SpaceIndex SpaceIndex ℝ => source9OrthogonalCompletionMap B i j)
+      (source9CompletionEntryCLM i j) (0 : Matrix SpaceIndex SpaceIndex ℝ) := by
+    have he : HasFDerivAt (fun B : Matrix SpaceIndex SpaceIndex ℝ => B i j)
+        (source9CompletionEntryCLM i j) (0 : Matrix SpaceIndex SpaceIndex ℝ) :=
+      (source9CompletionEntryCLM i j).hasFDerivAt
+    have hq := source9CompletionGramEntry_hasFDerivAt_zero i j
+    by_cases hij : i < j
+    · simpa only [source9OrthogonalCompletionMap, ite_eq_left hij] using he
+    · by_cases hji : j < i
+      · simpa only [source9OrthogonalCompletionMap, ite_eq_right hij, ite_eq_left hji, add_zero] using
+          he.add hq
+      · have hhalf : HasFDerivAt
+            (fun B : Matrix SpaceIndex SpaceIndex ℝ => (B.transpose * B) i j / 2)
+            (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ) 0 := by
+          simpa only [div_eq_mul_inv, smul_zero] using hq.mul_const ((2 : ℝ)⁻¹)
+        simpa only [source9OrthogonalCompletionMap, ite_eq_right hij, ite_eq_right hji, add_zero] using
+          he.add hhalf
+  have hmatrix : HasFDerivAt source9OrthogonalCompletionMap
+      (ContinuousLinearMap.pi (fun i : SpaceIndex =>
+        ContinuousLinearMap.pi (fun j : SpaceIndex => source9CompletionEntryCLM i j)))
+      (0 : Matrix SpaceIndex SpaceIndex ℝ) := by
+    apply hasFDerivAt_pi.2
+    intro i
+    apply hasFDerivAt_pi.2
+    intro j
+    exact hentry i j
   have hoperator :
-      (ContinuousLinearMap.proj j : (SpaceIndex → ℝ) →L[ℝ] ℝ).comp
-        ((ContinuousLinearMap.proj i :
-          (SpaceIndex → SpaceIndex → ℝ) →L[ℝ] (SpaceIndex → ℝ)).comp
-            (ContinuousLinearMap.id ℝ (Matrix SpaceIndex SpaceIndex ℝ))) =
-      source9CompletionEntryCLM i j := by
+      (ContinuousLinearMap.pi (fun i : SpaceIndex =>
+        ContinuousLinearMap.pi (fun j : SpaceIndex => source9CompletionEntryCLM i j)) :
+          Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] Matrix SpaceIndex SpaceIndex ℝ) =
+      ContinuousLinearMap.id ℝ (Matrix SpaceIndex SpaceIndex ℝ) := by
     apply ContinuousLinearMap.ext
     intro V
     rfl
-  rw [hoperator]
-  change HasFDerivAt
-    (fun B : Matrix SpaceIndex SpaceIndex ℝ => source9OrthogonalCompletionMap B i j)
-    (source9CompletionEntryCLM i j) (0 : Matrix SpaceIndex SpaceIndex ℝ)
-  have he : HasFDerivAt (fun B : Matrix SpaceIndex SpaceIndex ℝ => B i j)
-      (source9CompletionEntryCLM i j) (0 : Matrix SpaceIndex SpaceIndex ℝ) :=
-    (source9CompletionEntryCLM i j).hasFDerivAt
-  have hq := source9CompletionGramEntry_hasFDerivAt_zero i j
-  by_cases hij : i < j
-  · simpa only [source9OrthogonalCompletionMap, ite_eq_left hij] using he
-  · by_cases hji : j < i
-    · simpa only [source9OrthogonalCompletionMap, ite_eq_right hij, ite_eq_left hji, add_zero] using
-        he.add hq
-    · have hhalf : HasFDerivAt
-          (fun B : Matrix SpaceIndex SpaceIndex ℝ => (B.transpose * B) i j / 2)
-          (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ) 0 := by
-        simpa only [div_eq_mul_inv, smul_zero] using hq.mul_const ((2 : ℝ)⁻¹)
-      simpa only [source9OrthogonalCompletionMap, ite_eq_right hij, ite_eq_right hji, add_zero] using
-        he.add hhalf
+  exact Eq.mp (congrArg
+    (fun L : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] Matrix SpaceIndex SpaceIndex ℝ =>
+      HasFDerivAt source9OrthogonalCompletionMap L (0 : Matrix SpaceIndex SpaceIndex ℝ))
+    hoperator) hmatrix
 
 theorem source9OrthogonalCompletionMap_fderiv_zero :
     fderiv ℝ source9OrthogonalCompletionMap 0 =

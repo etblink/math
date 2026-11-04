@@ -97,7 +97,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean)" = 'b2ac643dc4c9b39fce3820a33414843110aa3400'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean)" = '98f847e34ada50f3c971c6ae3fa336667d0913f2'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CKIndependentAudit.lean)" = '0693c8c32d28bee27ba39a3c5f594892b2c9cef0'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean)" = '810b849b50b94320d66c3b724fa121e5ff07888d'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean)" = '34346c73eb3f294831710ea1a6412f75d6d0b2ae'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CLIndependentAudit.lean)" = '4df471178bd0045ccdf7fea3e12da06d78bd0e9b'
           python3 - <<'PY'
           from pathlib import Path
@@ -123,7 +123,11 @@ jobs:
                     'private theorem completionGramEntry_eq_sum',
                     'apply ContDiff.sum', 'have hki : HasFDerivAt', 'have hkj : HasFDerivAt',
                     'HasFDerivAt.fun_sum (u := Finset.univ)', 'have hoperator :',
-                    'rw [hoperator]', "apply hasFDerivAt_pi'.2",
+                    'have hsum : HasFDerivAt', 'have hzero :',
+                    'Finset.sum_const_zero', 'Eq.mp (congrArg',
+                    'have hentry (i j : SpaceIndex) : HasFDerivAt',
+                    'have hmatrix : HasFDerivAt source9OrthogonalCompletionMap',
+                    'apply hasFDerivAt_pi.2', 'hoperator) hmatrix',
                     'ContinuousLinearMap.id ℝ (Matrix SpaceIndex SpaceIndex ℝ)',
                     'source9OrthogonalCompletionMap_contDiff (1 : ℕ∞ω)',
                     "contDiffAt.hasStrictFDerivAt'"]:
