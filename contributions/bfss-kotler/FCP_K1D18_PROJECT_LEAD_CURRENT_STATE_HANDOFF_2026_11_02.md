@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10CZ is accepted from strict run 41901992068.** The exact tested commit is `e85045bfa324c7d4be9e6cb78ce5b6dc95c7262b`. All nine declarations passed fresh warnings-as-errors compilation and independent type/root-axiom audit (18 reports total), using only propext, Classical.choice and Quot.sound, with no Lean source diagnostics or sorryAx. Original-gamma evaluation agrees with F10BB for every native skew input and every actual derivative-range value. The ordinary derivative of the actual F10BC matrix image along CW's literal identity-chart inverse factors through the canonical native model and F10BB LieHom. This does not identify the source manifold differential or establish a Lie bracket on the actual range. The first CZ red run and all historical evidence remain preserved.
+> **F10DA is the next candidate; strict CI is pending.** Latest accepted mathematics remains F10CZ at [run 41901992068](https://github.com/etblink/math/actions/runs/41901992068), tested `e85045bfa324c7d4be9e6cb78ce5b6dc95c7262b`. DA studies the ambient commutator of actual derivative-range values: its full vector action is the native matrix-bracket action, its original-gamma image matches BB, and actual range membership is equivalent to the remaining exact native bracket equality. It does not assert range closure, a range Lie algebra, defect vanishing, source tangent identification or a manifold differential. Nine candidate declarations require fresh compilation and complete independent type/axiom qualification. All accepted declarations and red evidence remain preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4444,3 +4444,61 @@ The source is unchanged `spinGroup source9Quadratic`; the target is unchanged or
 The next bounded research step should reuse the accepted native half-bivector commutator and range/span interfaces to resolve actual-range bracket closure/compatibility, or establish a separately audited tangent identification, before promoting this parameter factorization to a manifold differential claim. Review existing exact interfaces before choosing or defining that next construction.
 
 This acceptance-only commit changes the canonical handoff alone. All source, audit and workflow blobs remain those tested above; every historical byte beginning at the original As-of field is preserved and this event is appended. The research branch remains the only write target. Main, frozen FCP and upstream integration are unchanged, with no upstream PR opened.
+
+
+## 2026-11-04 Project Lead continuation — F10DA actual-range commutator action and closure reduction candidate
+
+**Accepted baseline and authority.** Continue from F10CZ's strict acceptance at [run 41901992068](https://github.com/etblink/math/actions/runs/41901992068), tested `e85045bfa324c7d4be9e6cb78ce5b6dc95c7262b`, tree `78e6738c05aaba73765f770eea6e8ec40be93a57`. The acceptance-only branch head before DA is `f95719a1a75a7371b8e4628eaa86c8eff23bfa0e`, tree `63790590892592ecc54bd2bb4e618cc0059991c3`; the authoritative handoff read is blob `b30165b17447fc8d32985d408c9a2a3f8cf64578`. The owner authorized continuation. Keep the research branch as the only write target, with main, frozen FCP and upstream integration unchanged.
+
+**Interface reconnaissance and choice of scope.** Reviewed accepted CY's exact actual range/native equivalence and projected entry action, BL's full original-Clifford half-bivector action, BX's full finite-word vector commutator action, BZ's native matrix assembly and CC's canonical ordered model. BX already supplies a full Clifford-valued action equality before projection, which can be transported through the actual fderiv and CY inverse native coordinates. This is stronger input than merely the projected entry interface.
+
+Also inspected the actual CP/CT/CU kernel interfaces. The scalar/two-sign statements apply to actual elements of `spinGroup source9Quadratic`, using their group membership and unitarity infrastructure. An arbitrary ambient Clifford commutator defect is not supplied with that membership. Do not apply the group-kernel scalar theorem to it. The earlier native four-index coordinate-plane matrix bracket is not a theorem about closure of actual Clifford half-bivectors. Nor does matching original-gamma images alone prove equality in the whole Clifford algebra.
+
+The bounded step therefore proves full range action and the exact obstruction, keeping actual closure as a separate next theorem. No replacement carrier is introduced; inspected existing repository interfaces determine the boundary.
+
+For matrix operations, checked the pinned Mathlib source `Mathlib/Data/Matrix/Mul.lean` at `d13f23b723b8a846827a245b89c10fc7d3f11612` (blob `ff91eb667e375c22bc6d8973fa706f9dd1f9d100`), including add/smul/sub mulVec, composition and injectivity. Checked `Mathlib/Algebra/Lie/OfAssociative.lean` at the same revision (blob `e12b295c861027e309bcc40acfe8e912fe8698c0`), including its existing associative commutator construction and local priority-100 registration. These are reads of the pinned dependency; the dependency revision and repository sources are unchanged.
+
+**Mathematical plan implemented.** Write X(A) for CY's actual range representative of the canonical native A in so(9), iota(z) for the original Clifford vector embedding, K(A,B) for the ambient product difference X(A)X(B)-X(B)X(A), and D(A,B)=K(A,B)-X([A,B]).
+
+1. Prove the listed full vector velocity equals the same listed native matrix sum acting on z, by finite-list induction using the inspected matrix add/smul action laws. Compose with CC's exact native sum/model equality.
+2. Bind the actual derivative operator equality and its value at inverse native coordinates explicitly, then transport BX's full Clifford commutator identity. Obtain `X(A)iota(z)-iota(z)X(A)=iota(A.mulVec z)` for every A and every original z. Transfer it to every actual range value through CY's inverse equivalence.
+3. Prove vector commutator action is injective on the actual range, using the original vector embedding's injectivity, native matrix mulVec injectivity and CY's inverse equivalence. No injectivity is asserted on the entire Clifford carrier.
+4. Expand the associative double commutator by a private noncommutative ring identity and reuse the full vector action twice. Obtain `[K(A,B),iota(z)]=iota((AB-BA).mulVec z)`. The precise defect D therefore commutes with every original vector. This does not state D=0.
+5. Apply the actual gamma algebra map to K, reuse CZ's arbitrary-native-input comparison and BB's already qualified LieHom bracket preservation. Obtain `Gamma(K(A,B))=rho([A,B])` and `Gamma(D(A,B))=0`. No gamma-faithfulness assumption is introduced.
+6. Prove `K(A,B) in actualRange iff K(A,B)=X([A,B])`. In the forward direction actual membership explicitly supplies a range element; compare its full vector action with X([A,B]) and use range-action injectivity. The reverse direction transports the already known membership of X([A,B]). This equivalence reduces closure to exact bracket compatibility without claiming either side unconditionally.
+
+**Nine candidate declarations.**
+- `source9OrderedStrictPlaneVectorVelocity_model`
+- `source9NativeSkewDerivativeRangeEquiv_commutator_vector`
+- `source9DerivativeRange_commutator_vector`
+- `source9DerivativeRange_commutator_vector_injective`
+- `source9NativeSkewDerivativeRange_commutator_pair_vector`
+- `source9NativeSkewDerivativeRange_bracket_defect_commutes`
+- `source9NativeSkewDerivativeRange_commutator_pair_originalGamma`
+- `source9NativeSkewDerivativeRange_bracket_defect_gamma_zero`
+- `source9NativeSkewDerivativeRange_commutator_mem_iff_bracket`
+
+**Independent audit and controls.** Reconstruct the accepted PBW norm independently with the same three registrations, capture and compare source, parameter, native matrix and original gamma topologies, and check the original real 9-label/16-target carrier identities and ground native/gamma LieRing and gamma NormedSpace capabilities. Use the exact previously successful local priority-100 associative-ring registration in both source and audit; retain only the two named source PBW norm registrations. There is no new global instance, norm, topology or range bracket.
+
+Audit-only abbreviations expand to the literal original range representatives, Clifford embedding, ambient product difference and precise defect. Independently re-elaborate all nine interfaces, then check each direction of the closure equivalence separately with the appropriate explicit premise. Check pair-action equality with the native bracket representative, equality of the two actual gamma images, the original-coordinate projected matrix entries, full native-plane action and zero-action separation inside the actual range.
+
+Retain the negative boundary: scalar identity is nonzero and commutes with every original vector in the whole Clifford algebra, while reversal plus faithful real scalar embedding excludes it from the actual derivative range. Thus vector action cannot be treated as injective on all Clifford values. Retain positive-half normalization by rejecting doubling of each actual unit-direction derivative and preserve global noninjectivity of the separate natural nine-vector group map. These controls neither assume bracket closure nor remove the native inverse/range restrictions.
+
+**Candidate files and exact blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DADerivativeRangeCommutatorAction.lean` — `a983420660d0ebdb5c60f70e9cafb75ce2de5c53`.
+- `lean/diagnostics/FCP_K1D18V10HF10DAIndependentAudit.lean` — `5657e959aaa5b1a7f35c576a62c49f3b9201ecda`.
+- `.github/workflows/bfss-kotler-v10h-f10da-derivative-range-commutator-action-strict.yml` — `5c1c463d0eaa2b98c3cfb7e2d8dac75bd204543a`.
+
+**Strict gate.** Preserve all 98 accepted CZ pin lines verbatim and append DA source/audit pins (100 total). Rebuild accepted CZ before fresh DA compilation. Preserve Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, all Actions pins, warnings-as-errors, olean deletion/nonempty checks, exactly nine expected roots once per phase (18 reports), the three-axiom whitelist and all proof/time limits. The timeout sequence remains 1500/3150/840/600 seconds.
+
+Use marker `V10H_F10DA_SOURCE_PIN_DERIVATIVE_RANGE_COMMUTATOR_ACTION_SCOPE_PASS` for exact pins/scope, and terminal `V10H_F10DA_DERIVATIVE_RANGE_COMMUTATOR_ACTION_TYPES_AXIOMS_PASS` only after the complete independent gate. Preserve tested SHA, compiler and audit material in the always-run `bfss-v10h-f10da-derivative-range-commutator-action` artifact.
+
+The source-scope guard requires exactly the nine public declaration names, the original actual range/native/vector/gamma interfaces and the explicit membership/equality equivalence. It permits exactly the accepted local associative LieRing attribute once per file and the existing PBW registrations; all other instance declarations remain forbidden. It retains bans on admissions, native_decide, linter suppression, proof-limit changes, replacement source/gamma labels and Clifford NormedRing assumptions. It additionally forbids packaging a LieEquiv or LieSubalgebra in this preparatory candidate. The audit guard requires the precise abbreviations, both closure-equivalence premises, coordinate projection and scalar/nonzero/range-exclusion/doubling/noninjectivity controls.
+
+**Local validation.** YAML parsing, bash syntax for each run block, parsing both embedded Python programs, executed source-scope preflight, exact nine-print inventories and delimiter balance passed. All 98 inherited pin lines and timeout values were compared unchanged. Ninety-two local blob hashes matched; the other eight pins matched authoritative files at the exact baseline head. The local accepted CZ workflow matched the authoritative fetched content before generating DA. These are static checks, not local Lean elaboration.
+
+**Lessons applied.** Preserve the accepted full Clifford vector action rather than reproving a coordinate-only surrogate. Use typed derivative/value witnesses and exact inverse laws before transporting commutators. Reuse the known local LieRing registration explicitly rather than assuming imports export it. Inspect capability and theorem hypotheses at the consumer. Avoid the invalid jumps from group scalar-kernel statements to arbitrary algebra elements, from gamma image equality to whole-Clifford equality, or from an if-and-only-if closure reduction to unconditional closure.
+
+**Acceptance boundary and next obligation.** DA remains a candidate until a new exact-head run passes fresh source compilation, complete independent audit, all nine expected root reports per phase, permitted axioms, source diagnostics checks, terminal marker, artifact and exact new blobs. F10CZ remains the accepted baseline. If accepted, DA provides a precise full-action and gamma-image description of the bracket defect and an equivalence isolating actual closure. It does not yet prove that the defect vanishes or that the range is closed. A subsequent bounded proof must establish closure or independently eliminate this exact defect, with its required evenness/commutant or native half-bivector hypotheses proved from existing source interfaces. Only then package range bracket compatibility.
+
+Source tangent identification, translated atlas compatibility, source manifold/Lie-group structures and the full F10BC manifold differential remain separate. Further global/target-surjectivity/covering/lift, upstream integration and BFSS physical claims remain open. The source group, source quadratic, original Clifford carrier, native coordinates, gamma target and label order are unchanged. The historical handoff body beginning at its original As-of field is preserved verbatim and this event is appended.
