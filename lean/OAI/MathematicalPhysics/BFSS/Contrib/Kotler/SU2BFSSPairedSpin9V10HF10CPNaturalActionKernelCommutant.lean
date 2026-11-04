@@ -29,7 +29,16 @@ theorem source9NaturalMatrix_eq_one_iff_trivialAction (g : spinGroup source9Quad
         (LinearMap.toMatrixAlgEquiv' :
           ((SpaceIndex → ℝ) →ₗ[ℝ] (SpaceIndex → ℝ)) ≃ₐ[ℝ]
             Matrix SpaceIndex SpaceIndex ℝ) L) hrep
-    simpa only [map_one] using hm
+    have hmatrix :
+        (LinearMap.toMatrixAlgEquiv' :
+          ((SpaceIndex → ℝ) →ₗ[ℝ] (SpaceIndex → ℝ)) ≃ₐ[ℝ]
+            Matrix SpaceIndex SpaceIndex ℝ) (source9SpinVectorRepresentation g) = 1 := by
+      simpa only [map_one] using hm
+    have hactual : ((source9SpinVectorOrthogonalHom g) : Matrix SpaceIndex SpaceIndex ℝ) =
+        (LinearMap.toMatrixAlgEquiv' :
+          ((SpaceIndex → ℝ) →ₗ[ℝ] (SpaceIndex → ℝ)) ≃ₐ[ℝ]
+            Matrix SpaceIndex SpaceIndex ℝ) (source9SpinVectorRepresentation g) := rfl
+    exact hactual.trans hmatrix
 
 /-- Actual conjugation is trivial exactly when the source element commutes with every vector. -/
 theorem source9Spin_trivialAction_iff_generator_commutes (g : spinGroup source9Quadratic) :

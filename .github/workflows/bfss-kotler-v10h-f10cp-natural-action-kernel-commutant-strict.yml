@@ -106,7 +106,7 @@ jobs:
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CORecoverySourceNeighborhood.lean)" = '211e593bbaa95d85ff6767448de3f3763d7d293d'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10COIndependentAudit.lean)" = '308373e8086b0846b68cdc1cd32cb6f32c9aa050'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean)" = '251a9375d3f99e04d3bf547c8052185ebcf2b768'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CPNaturalActionKernelCommutant.lean)" = '41d323ac0a09ee4e82dc8212366c0d49c8063943'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CPNaturalActionKernelCommutant.lean)" = 'a7cde4e1ab7bcfdc0a4b36b3b49533e17798dae5'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CPIndependentAudit.lean)" = 'e599c2f998b4d63df37687e96b87879d51c1e94b'
           python3 - <<'PY'
           from pathlib import Path
@@ -136,6 +136,7 @@ jobs:
           assert 'source9PBWNormedAddCommGroup' not in s and 'source9PBWNormedSpace' not in s
           assert audit.count('NormedAddCommGroup.induced')==2 and audit.count('NormedSpace.induced')==2
           for t in ['source9SpinVectorOrthogonalHom_mulVec g z',
+                    'have hmatrix :', 'have hactual :', 'exact hactual.trans hmatrix',
                     'Matrix.one_mulVec z', "LinearMap.toMatrixAlgEquiv\'",
                     'source9SpinVectorConjugation_ι g z',
                     'apply source9CliffordVectorEmbedding_injective',

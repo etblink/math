@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CO**, [run 41791713031](https://github.com/etblink/math/actions/runs/41791713031), tested `404ed0908840b3d509069666fad2cf4ef9c20738`. **F10CP is now a candidate pending strict CI:** source-exact kernel/commutation equivalences for the original nine-vector action, relative-fiber commutation, and full Clifford commutation of the reconstruction-relative element on CO's source identity neighborhood. The audit independently checks the actual negative central source element as a nontrivial natural-action kernel element. Scalar/two-sign classification, local sign exclusion, source Spin equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment remains F10CO**, [run 41791713031](https://github.com/etblink/math/actions/runs/41791713031), tested `404ed0908840b3d509069666fad2cf4ef9c20738`. **F10CP red evidence is preserved:** [run 41794607452](https://github.com/etblink/math/actions/runs/41794607452) failed in the first matrix-kernel equivalence because simplification did not bridge the canonical matrix presentation to the underlying orthogonal-homomorphism matrix. Its independent audit was skipped. The targeted repair adds complete typed matrix equalities in that proof only; all statements and the audit remain unchanged. The repaired CP candidate is pending strict CI. Scalar/two-sign classification, local source equality and source word-image neighborhood coverage remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3236,3 +3236,38 @@ Candidate files and exact blobs:
 YAML, all run-block shell syntax, both Python ASTs, executable source/audit/instance scope preflight, the inherited pin prefix, all 72 local or exact remote blob checks, three trigger paths, phase caps and whitelist pass static checks. The scope preflight retains CO's notation lesson: any source use of `ℕ∞ω` requires the `ContDiff` scope; CP does not use that notation. No local Lean executable is available, so all new declarations and audit controls remain candidates until complete strict CI.
 
 **Next action and ceiling:** inspect complete fresh source compilation and independent audit before qualification. Preserve any red diagnostic and repair its cause without weakening the statements or audit. If accepted, use actual Spin evenness together with the source-exact Clifford contraction/PBW route to investigate scalar classification of these commuting elements. Only after a proved scalar/two-sign result should topology be used to exclude a nearby negative sign and conclude source equality. Original-source scalar/two-sign kernel classification, local fiber triviality, source Spin equality, finite-word image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No authored admission, linter suppression, proof-limit increase, source/gamma substitution, main/frozen-FCP/upstream change or upstream PR is introduced.
+
+
+## F10CP red preserved and typed actual-matrix bridge repair
+
+**Observed red:** [run 41794607452](https://github.com/etblink/math/actions/runs/41794607452), tested `177965fe29f62dc7eaaa643f202f3309eec68167`, attempt 1, job `126455624575`, completed/failure. Checkout, exact ancestry/candidate pins, pinned Lean/Mathlib restoration and accepted CO rebuild passed. Fresh F10CP warnings-as-errors source compilation failed. The independent audit was skipped; its negative-central and PBW checks have not yet run. Evidence preservation passed. No F10CP declaration is qualified from this failed gate.
+
+Retained artifact `13305552081`, `bfss-v10h-f10cp-natural-action-kernel-commutant-177965fe29f62dc7eaaa643f202f3309eec68167-1`, 946 bytes, GitHub-reported ZIP SHA-256 `4cd4e070b1765eeeec02a572f3610abe977bf34416775b01784c474cb3b10196`. Failed source/audit/workflow blobs remain `41d323ac0a09ee4e82dc8212366c0d49c8063943`, `e599c2f998b4d63df37687e96b87879d51c1e94b`, and `94ce2129097859afaccb5e4dabfacc7f5d1480c8`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Exact diagnostic and cause:** the only source diagnostic is line 32, column 4, in the reverse direction of `source9NaturalMatrix_eq_one_iff_trivialAction`. After `simpa only [map_one] using hm`, Lean has
+
+`LinearMap.toMatrixAlgEquiv' (source9SpinVectorRepresentation g) = 1`
+
+but the goal is
+
+`((source9SpinVectorOrthogonalHom g) : Matrix SpaceIndex SpaceIndex ℝ) = 1`.
+
+The simplifier has correctly normalized the canonical matrix at the identity; it has not supplied the actual-homomorphism representation bridge. BR's pinned definitions identify the actual orthogonal matrix with exactly this canonical matrix via `source9SpinVectorMatrixHom`. This is a presentation/transparency issue in proof transport, not a mathematical counterexample to the kernel criterion. No further source diagnostic was emitted.
+
+Eight axiom reports appeared during compiler recovery. Five contain `sorryAx`: the first equivalence, its generator/whole-Clifford consequences, the relative-commutation equivalence, and the final reconstruction-relative commutation. These are synthetic failed-proof placeholders, not authored admissions or accepted results. The source-exact generator cancellation, relative kernel group calculation and reconstruction-relative kernel report did not show this placeholder, but complete gate failure still leaves every new root unqualified.
+
+**Targeted repair:** retain `hm` and prove its canonical-matrix identity in an explicitly typed `hmatrix`. Separately prove the complete actual-matrix/canonical-matrix equality `hactual` by `rfl`, matching BR's definitions. Conclude with `hactual.trans hmatrix`. This follows the previously successful CL/CM pattern of complete typed equality bridges rather than asking simplification to unfold a whole representation/coercion stack implicitly.
+
+Only this reverse proof body changes. All eight theorem statements, other proof bodies, exact relative multiplication order, carriers, membership hypotheses and the independent audit remain unchanged. The workflow changes only the candidate source pin and adds scope tokens requiring the explicit typed bridge. It keeps all 70 inherited/dependency pins, the candidate audit pin, compilation limits, axiom whitelist and evidence retention unchanged.
+
+Repair blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CPNaturalActionKernelCommutant.lean` | `a7cde4e1ab7bcfdc0a4b36b3b49533e17798dae5` |
+| `lean/diagnostics/FCP_K1D18V10HF10CPIndependentAudit.lean` | `e599c2f998b4d63df37687e96b87879d51c1e94b` |
+| `.github/workflows/bfss-kotler-v10h-f10cp-natural-action-kernel-commutant-strict.yml` | `c2a901e715c70425845ea9117d6c4b077b2b62ac` |
+
+**Local verification:** exact comparison against failed remote content confirms only the selected reverse proof-body replacement; the audit is byte-for-byte unchanged. Exact workflow comparison confirms only the new source pin and typed-bridge preflight tokens. YAML, all shell run-block syntax, both Python ASTs, executable source/audit/instance scope preflight, local blob checks, inherited pin prefix, 72 source/dependency pins, three trigger paths, unchanged 840/600-second fresh-phase caps, retained evidence and three-axiom whitelist pass static checks. The six unavailable local dependency files retain the same previously checked exact remote pins. No local Lean executable is available; no repaired elaboration or audit success is claimed.
+
+**Method lesson and next action:** when transporting a matrix equality across the actual orthogonal subtype, canonical matrix monoid homomorphism and algebra equivalence, make the full native matrix equality explicit and compose it with the normalized canonical equality. Do not replace source-defined maps or weaken their interfaces to avoid a coercion bridge. Run the same complete strict gate and require both eight-root phases, the unchanged independent audit and the actual terminal classifier `V10H_F10CP_NATURAL_ACTION_KERNEL_COMMUTANT_TYPES_AXIOMS_PASS`. Preserve any further audit or source diagnostic before targeted repair. F10CO remains the accepted ceiling. Original-source scalar/two-sign kernel classification, local fiber triviality, source equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No authored admission, norm/topology replacement, linter suppression, proof-limit increase, main/frozen-FCP/upstream change or upstream PR is introduced.
