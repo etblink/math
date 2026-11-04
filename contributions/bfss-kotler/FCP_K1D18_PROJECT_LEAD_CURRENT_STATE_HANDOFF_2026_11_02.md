@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CJ**, [run 41750357148](https://github.com/etblink/math/actions/runs/41750357148), tested `2ea75c9463d53e9d588c2f1246897a76f31211b1`. **F10CK first strict run 41753221578 is red:** source compilation tried to project `.1` from the orthogonal-membership theorem before supplying its explicit index/scalar arguments. The independent audit was skipped and zero CK roots are qualified. The bounded repair supplies `SpaceIndex` and `ℝ` first and names the resulting exact orthogonality equality. All eight statements, the audit and strict limits remain unchanged. Fresh strict CI is required. Local matrix injectivity, source kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CK**, [run 41754991438](https://github.com/etblink/math/actions/runs/41754991438), tested `b106e809965b8790d7679c74389e8a21fa6c62b0`. All eight roots passed fresh strict compilation and the independent native-matrix/literal-reconstruction/type/axiom audit. The completion map's exact Gram identity and collapse to native upper-entry coordinates connect CJ's reconstructed/original natural matrices to equal completion values. The audit proves ambient global noninjectivity; the first CK red remains preserved. Smoothness/strict derivative and local matrix injectivity remain next; full matrix recovery, original source kernel control and source neighborhood coverage remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2724,3 +2724,47 @@ Repaired files:
 The workflow updates only the candidate source pin and adds scope assertions for the complete instantiated membership equivalence, exact `horth` type and named rewrite. Every accepted ancestry/audit pin, eight-root requirement, warnings-as-errors policy, three-axiom whitelist, instance guard, legacy conditional-alias guard, negative-control check and 840/600-second fresh-phase caps remains unchanged. Local exact hashes, source-change scope, unchanged statements/audit, source-only pin change, scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; complete source and independent audit success remain required.
 
 **Method lesson and next action:** inspect the declaration's full telescope, including section-level explicit parameters, before applying structure projections to a library theorem. Instantiate its index and coefficient types and name the exact proposition first; do not infer a projection interface from a successful rewrite use. This extends the existing explicit type/structure-field bridge method. Inspect both fresh phases and the global-noninjectivity control before qualification. Local matrix injectivity, full matrix recovery from upper coordinates, original source local fiber/kernel control, source neighborhood coverage, subgroup charts, tangent identifications, the full F10BC manifold differential and BFSS physical conclusions remain open.
+
+
+## F10CK accepted — native orthogonal completion-coordinate bridge
+
+**Verified strict result:** [run 41754991438](https://github.com/etblink/math/actions/runs/41754991438), tested `b106e809965b8790d7679c74389e8a21fa6c62b0`, attempt 1, job `126328888649`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CJ rebuild, fresh warnings-as-errors CK compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CK_ORTHOGONAL_COMPLETION_COORDINATES_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The exact tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean` | `98f847e34ada50f3c971c6ae3fa336667d0913f2` |
+| `lean/diagnostics/FCP_K1D18V10HF10CKIndependentAudit.lean` | `0693c8c32d28bee27ba39a3c5f594892b2c9cef0` |
+| `.github/workflows/bfss-kotler-v10h-f10ck-orthogonal-completion-coordinates-strict.yml` | `0a71402d3270ce6914a4053518fc8ab9453fae6c` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrthogonalCompletionMap`
+2. `source9OrthogonalCompletionMap_zero`
+3. `source9Matrix_perturbation_gram_identity`
+4. `source9Orthogonal_perturbation_gram_zero`
+5. `source9OrthogonalCompletionMap_on_orthogonal`
+6. `source9OrderedUpperProjection_eq_iff_strict_entries`
+7. `source9OrthogonalCompletionMap_eq_of_upperProjection_eq`
+8. `source9OrthogonalCompletionMap_actual_reconstruction`
+
+Retained artifact `13287758154`, `bfss-v10h-f10ck-orthogonal-completion-coordinates-b106e809965b8790d7679c74389e8a21fa6c62b0-1`, 4940 bytes, GitHub-reported ZIP SHA-256 `a2f72148b9e907f84041d643b9fcee6aca3ec8bbc499c57647a0a53848d69be0`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** the specified completion map acts on the original `Matrix SpaceIndex SpaceIndex ℝ` perturbation space. It retains strict upper entries, adds the quadratic Gram entries below the diagonal, and adds half the diagonal Gram entry on the diagonal. It maps zero to zero. The exact expansion `(1+B).transpose * (1+B) - 1 = B + B.transpose + B.transpose * B` is established without replacing the matrix carrier or operations.
+
+For any native orthogonal matrix `A`, its perturbation `A - 1` satisfies the zero Gram-defect identity. Completion of this perturbation is exactly CA's original strict-upper-entry skew matrix. Equality under the accepted finite upper projection is equivalent to equality of all native strict upper entries, via the already chosen enumeration. Thus equal upper projections of orthogonal matrices give equal completion values of their perturbations. This does not yet give equality of the matrices.
+
+In particular, on CJ's reconstruction domain, the actual natural matrix of the reconstructed source element and the actual natural matrix of the original input have equal completion values. The theorem uses their actual orthogonal-group subtype memberships and CJ's actual coordinate recovery; it does not assume equality of full matrices or source Spin elements.
+
+The independent audit checks the standard matrix topology, literal polynomial finite-sum entry formula, upper-entry preservation, zero value, Gram expansion, orthogonal perturbation identity and collapse to the exact accepted native skew model. It checks the projection/native-entry equivalence, arbitrary native orthogonal-group inputs with equal upper entries, actual original/reconstructed natural matrices with explicit domain membership, and the completely expanded original source-word reconstruction interface using a named equality bridge.
+
+**Accepted negative control:** the independent audit proves completion at `(-1 : Matrix SpaceIndex SpaceIndex ℝ) - 1` is zero, while completion at zero is also zero. Their original zero-index diagonal entries prove the perturbations distinct. Hence the audit proves `¬ Function.Injective source9OrthogonalCompletionMap` on its full ambient matrix domain. Any eventual matrix-recovery theorem must retain a suitable local neighborhood restriction. This is not a statement that the negative identity matrix occurs in the actual source Spin representation's image.
+
+**Repair outcome and successful method:** first run [41753221578](https://github.com/etblink/math/actions/runs/41753221578) remains a failed source compilation with skipped independent audit. The repair supplies the explicit `SpaceIndex` and `ℝ` parameters to `Matrix.mem_orthogonalGroup_iff'` before taking `.1`, and names the resulting exact orthogonality equality. Every mathematical statement and the audit remained unchanged. The complete repaired gate, including the global-noninjectivity control, now passes. Inspecting the complete library telescope and introducing a fully typed proposition bridge resolved the error without changing scope or limits.
+
+No source/gamma replacement, new norm/topology or instance, authored admission, linter suppression, relaxed whitelist or proof-limit increase was introduced. The completion coordinates use the same native spatial labels and existing upper enumeration; the diagonal Gram factor does not alter the accepted rotor or generator normalization.
+
+**Next bounded plan and ceiling:** qualify smoothness and the strict literal identity derivative at zero of this same completion map in the standard matrix product topology. Reuse finite-coordinate calculus and explicit function/operator bridges; do not introduce a normed-ring structure solely for the matrix product. Once the derivative gate passes, instantiate the pinned strict inverse-function constructor and extract local ambient injectivity. Combine that local result with the accepted completion identity only when both orthogonal perturbations lie in the established neighborhood. The global counterexample remains a permanent negative control. Full local matrix recovery, original source local fiber/kernel control, source neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
