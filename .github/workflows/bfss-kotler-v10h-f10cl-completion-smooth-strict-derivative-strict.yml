@@ -97,7 +97,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean)" = 'b2ac643dc4c9b39fce3820a33414843110aa3400'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean)" = '98f847e34ada50f3c971c6ae3fa336667d0913f2'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CKIndependentAudit.lean)" = '0693c8c32d28bee27ba39a3c5f594892b2c9cef0'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean)" = '34346c73eb3f294831710ea1a6412f75d6d0b2ae'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean)" = '902b063ca869c7efeea21828cdf3f97847c96b70'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CLIndependentAudit.lean)" = '4df471178bd0045ccdf7fea3e12da06d78bd0e9b'
           python3 - <<'PY'
           from pathlib import Path
@@ -125,6 +125,9 @@ jobs:
                     'HasFDerivAt.fun_sum (u := Finset.univ)', 'have hoperator :',
                     'have hsum : HasFDerivAt', 'have hzero :',
                     'Finset.sum_const_zero', 'Eq.mp (congrArg',
+                    'have hadd {f g : Matrix SpaceIndex SpaceIndex ℝ → ℝ}',
+                    'L + (0 : Matrix SpaceIndex SpaceIndex ℝ →L[ℝ] ℝ) = L := add_zero L',
+                    'smul_zero ((2 : ℝ)⁻¹)', 'hdiv.symm) hmulzero', 'hfun.symm) hsum',
                     'have hentry (i j : SpaceIndex) : HasFDerivAt',
                     'have hmatrix : HasFDerivAt source9OrthogonalCompletionMap',
                     'apply hasFDerivAt_pi.2', 'hoperator) hmatrix',
