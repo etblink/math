@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10CX repair is pending strict qualification.** [Run 41877796245](https://github.com/etblink/math/actions/runs/41877796245), tested `34b88f7d87b48edaef2f8e8938152da45e9263e2`, failed fresh source compilation with a recursion-depth diagnostic at the projected-commutator theorem application; its independent audit was skipped. The focused repair replaces whole-expression rewrite matching with BX’s accepted derivative-value/congrArg transport. All nine statements, other source proofs, the audit, limits and strict checks are unchanged; only the source pin is refreshed. Latest accepted mathematics remains F10CW, [run 41872942447](https://github.com/etblink/math/actions/runs/41872942447). No CX declaration is accepted from the failed file. All historical evidence is preserved.
+> **F10CX audit repair is pending strict qualification.** [Run 41880969637](https://github.com/etblink/math/actions/runs/41880969637), tested `720427464aa4569bb41ee1f8af80c66b4e71cfa3`, passed fresh compilation of all nine source declarations with permitted axioms, confirming the commutator proof repair. Its independent audit failed at 102:6 when rewriting the coordinate-direction derivative formula. The new repair freezes the successful source and replaces only that private audit proof’s rewrite with an explicitly typed value equality and finite-sum composition; all audit propositions, controls and limits are unchanged. Latest complete acceptance remains F10CW, [run 41872942447](https://github.com/etblink/math/actions/runs/41872942447). Both CX red attempts are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4032,3 +4032,54 @@ Only the source, workflow source pin and canonical handoff are included in the r
 **Discriminating next run and acceptance boundary.** A fresh commit/run must rebuild the same accepted CW ancestry, compile all nine CX declarations under unchanged limits and warnings-as-errors, and then run the unchanged independent audit for the first time. A green result requires each expected root exactly once in each fresh phase (18 reports), only propext/Classical.choice/Quot.sound, no sorryAx or Lean source diagnostics and the existing exact terminal marker. If a later audit failure appears after source success, classify that new boundary separately; do not label the audit pre-qualified by this repair.
 
 The red SHA, artifact and historical candidate event are preserved. CX remains unaccepted pending the complete strict gate. Source tangent identification, atlas/manifold structures, full F10BC differential comparison, global reconstruction, target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open.
+
+
+## 2026-11-04 Project Lead second CX failure review and audit-only recovery
+
+**Exact latest attempt.** The owner reported [run 41880969637](https://github.com/etblink/math/actions/runs/41880969637) red. It tested `720427464aa4569bb41ee1f8af80c66b4e71cfa3`, tree `da69ceafee4219e43dc690c384d8ffbb0a605eda`, attempt 1. Direct run and job [126753030600](https://github.com/etblink/math/actions/runs/41880969637/job/126753030600) metadata both report completed/failure. The live research ref remained that tested SHA before this repair. The authoritative handoff read is blob `9e2c9419a317f527bbab0ad344d6d66cd65b4094`.
+
+**Changed failure boundary.**
+
+| Attempt | Source compile | Independent audit | Consequence |
+|---|---|---|---|
+| [41877796245](https://github.com/etblink/math/actions/runs/41877796245), `34b88f7d87b48edaef2f8e8938152da45e9263e2` | Failed at source 84:8, maximum recursion depth, projected-commutator theorem application. Seven printed roots permitted; that root and dependent injectivity root carried failed-elaboration sorryAx. | Skipped. | Original broad rewrite/direct matching was unqualified. |
+| [41880969637](https://github.com/etblink/math/actions/runs/41880969637), `720427464aa4569bb41ee1f8af80c66b4e71cfa3` | Passed under unchanged warnings and limits. All nine expected roots printed exactly once with only propext, Classical.choice and Quot.sound; no source diagnostics or sorryAx in the fresh phase. | Failed at audit 102:6, derivative formula rewrite in a literal coordinate-direction helper. Nine imported root reports permitted; no terminal acceptance marker. | BX's explicit derivative-value/congrArg source repair succeeded. Freeze that source; repair only the new audit proof boundary. |
+
+The latest pin/preflight, Lean/Mathlib restoration, accepted CW ancestry rebuild, fresh source compilation, artifact preservation and cleanup all succeeded. The failed audit is a new operation/environment boundary, not recurrence of the source recursion-depth diagnostic. Clean imported axiom printouts do not certify the failed independent helper or complete the gate.
+
+**First causal audit diagnostic.** At `diagnostics/FCP_K1D18V10HF10CXIndependentAudit.lean:102:6`, Lean reports:
+`Tactic rewrite failed: Did not find an occurrence of the pattern (fderiv ℝ (fun t => ↑(↑source9SpinIdentityLocalChart.symm t)) 0) ?v`.
+The printed target contains the same displayed derivative applied to `Pi.single i 1`, with the positive original half-bivector on the right. This occurs in `auditInverse_coordinate_halfBivector`, on
+`rw [source9IdentityChartInverse_clifford_fderiv_zero_apply, ← Fin.sum_univ_def]`.
+There is no separate error in another audit declaration. The log alone does not identify the hidden definitional/instance detail that prevents rw matching, so no specific instance mismatch is asserted. The exact general-direction example immediately before this helper already elaborated using direct application of the same source theorem.
+
+**Successful evidence retained.** The complete mathematical source blob `a6927651611f21ffd7e05dacf5d2aad9bfcac609` compiled successfully, including the repaired projected commutator and injective ambient derivative. It is frozen byte-for-byte in this repair. The source's nine theorem statements, half factor, native enumeration, actual chart-inverse function and original Clifford carrier are unchanged. This source success is a necessary stage of qualification, not complete CX acceptance; the independent audit remains required.
+
+**Preserved latest failed inputs and artifact.**
+- Tested source: `a6927651611f21ffd7e05dacf5d2aad9bfcac609`.
+- Failed independent audit: `326eea917df644d285dd5cb0455324ffa77122f4`.
+- Tested workflow: `df6ab7b71285fb7a6b7ad27d268188b56535d219`.
+- GitHub-reported artifact [13348949328](https://github.com/etblink/math/actions/runs/41880969637/artifacts/13348949328): `bfss-v10h-f10cx-identity-chart-inverse-clifford-derivative-720427464aa4569bb41ee1f8af80c66b4e71cfa3-1`, size 1,671 bytes, unexpired, linked to this tested SHA.
+- Reported ZIP digest: `a308fae1425f2420088bd96b0b9c9aeeae6242136f16e4a2abf377b712a7dbf5`. This is reported archive metadata, not an independently downloaded binary comparison.
+
+The earlier red SHA, error, reports and artifact remain in the prior event. No failed attempt is relabeled accepted.
+
+**Implemented audit-only repair.** Keep the private helper's statement exactly unchanged: the actual chart-inverse Clifford derivative in every literal unit parameter direction equals the corresponding positive original half-bivector. Replace only its proof body:
+1. Bind a completely typed `hvalue` for the derivative at `Pi.single i (1 : ℝ)` equaling the explicit ordered half-bivector list sum. Obtain it by direct application of `source9IdentityChartInverse_clifford_fderiv_zero_apply` to that fully typed direction, following the successful general-direction audit example.
+2. Prove a separate `hsum` reducing that literal list sum to the specified half-bivector. Retain the existing `Fin.sum_univ_def` conversion and `Pi.single_apply` finite-sum simplification. Keep classical reasoning local to this finite-sum subproof; bind the derivative equality in the audit's existing environment.
+3. Finish by `hvalue.trans hsum`, avoiding derivative-formula rw matching in the reconstructed audit environment.
+
+This is an explicit pointwise theorem application and equality composition, not an assertion that the same pretty-printed expressions will rewrite. It reuses the value-transport method that just passed source compilation and the finite-sum pattern already used by CC. The source, helper proposition, all other audit propositions/proofs and every negative control remain unchanged. In particular, coordinate nonzero, doubled/sign-reversed derivative rejection, exact target/domain restrictions, native model and injectivity checks are retained.
+
+**Exact new pin set.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CXIdentityChartInverseCliffordDerivative.lean` — Git blob `a6927651611f21ffd7e05dacf5d2aad9bfcac609`.
+- `lean/diagnostics/FCP_K1D18V10HF10CXIndependentAudit.lean` — Git blob `727d88843df3081949d1eff6dd35dd5a2fac4ef7`.
+- `.github/workflows/bfss-kotler-v10h-f10cx-identity-chart-inverse-clifford-derivative-strict.yml` — Git blob `6e08d72e955a38ee79d6d3f536e1b4ee492f322e`.
+
+Only the audit, its single workflow hash pin and canonical handoff are changed in the repair commit. The complete successful source remains inherited from the parent.
+
+**Validation before publication.** Static comparison against the authoritative latest tested files establishes byte-for-byte source identity, identical audit text outside this one private proof body, the same helper statement, and identical workflow text except one audit-hash substitution. YAML parsed; all shell run blocks passed bash syntax; both embedded Python programs parsed; source-scope preflight, exact nine source/audit axiom-print counts and delimiter balance passed. The 90-pin gate retains all 88 inherited CW pins, the unchanged successful source pin and the new audit pin. Eighty-two available local blobs matched; the unchanged baseline pins also passed the previous run's exact preflight at the immutable parent. Lean remains 4.34.1, Mathlib remains `d13f23b723b8a846827a245b89c10fc7d3f11612`, and Actions versions, warnings-as-errors, whitelist and timeout sequence 1500/3150/840/600 seconds are unchanged. No local Lean elaboration is claimed.
+
+**Discriminating next run and scope ceiling.** Rerun the full unchanged strict source/audit procedure at the new exact commit. Source success must be reproduced, then the independent audit must finish, producing exactly nine expected root reports per fresh phase (18 total), only the three allowed axioms, no sorryAx or Lean source diagnostics, and the exact existing terminal pass marker. If the finite-sum simplification or another independent control becomes the first failing operation, record that new boundary separately; do not alter source mathematics or infer audit success from imported printouts. Do not raise limits, suppress warnings or remove controls.
+
+Latest complete acceptance remains CW at tested `a980c3e6ae6c26c26ccd48c891a1a11749ee9e54`. CX's composite result remains pending. Source tangent identification, translated atlas/manifold structures, full F10BC differential comparison, global reconstruction, target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open. The historical handoff body and both red-run evidence records are preserved.

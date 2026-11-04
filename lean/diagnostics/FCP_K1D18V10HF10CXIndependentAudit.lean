@@ -98,9 +98,24 @@ private theorem auditInverse_coordinate_halfBivector (i : Fin 36) :
       (1 / 2 : ℝ) •
         (CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneRow i)) *
           CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneColumn i))) := by
-  classical
-  rw [source9IdentityChartInverse_clifford_fderiv_zero_apply, ← Fin.sum_univ_def]
-  simp [Pi.single_apply]
+  have hvalue :
+      (fderiv ℝ (fun t : Fin 36 → ℝ =>
+        ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) 0) (Pi.single i (1 : ℝ)) =
+        ((List.finRange 36).map (fun j => (Pi.single i (1 : ℝ) : Fin 36 → ℝ) j • ((1 / 2 : ℝ) •
+          (CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneRow j)) *
+            CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneColumn j)))))).sum :=
+    source9IdentityChartInverse_clifford_fderiv_zero_apply (Pi.single i (1 : ℝ))
+  have hsum :
+      ((List.finRange 36).map (fun j => (Pi.single i (1 : ℝ) : Fin 36 → ℝ) j • ((1 / 2 : ℝ) •
+        (CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneRow j)) *
+          CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneColumn j)))))).sum =
+        (1 / 2 : ℝ) •
+          (CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneRow i)) *
+            CliffordAlgebra.ι source9Quadratic (source9CoordinateVector (source9StrictPlaneColumn i))) := by
+    classical
+    rw [← Fin.sum_univ_def]
+    simp [Pi.single_apply]
+  exact hvalue.trans hsum
 example (v : Fin 36 → ℝ) :
     CliffordAlgebra.reverse ((fderiv ℝ (fun t : Fin 36 → ℝ =>
       ((source9SpinIdentityLocalChart.symm t) : CliffordAlgebra source9Quadratic)) 0) v) =
