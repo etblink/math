@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CH**, [run 41741804304](https://github.com/etblink/math/actions/runs/41741804304), tested `fc11df43ce9e6a268a0fc6b0a30d26c00a943d94`. **F10CI first strict run 41744452128 is red:** inverse-continuity composition inferred the unrestricted Spin domain instead of the word-image subtype; independent audit was skipped and zero CI roots are qualified. The bounded repair supplies complete typed continuity hypotheses and explicit composition functions/point, preserving all eight signatures and the byte-identical audit. Fresh strict CI is required. Image openness/source-neighborhood coverage, general local kernel control, subgroup charts and tangent/manifold obligations remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CI**, [run 41746257725](https://github.com/etblink/math/actions/runs/41746257725), tested `9ede511761a51b6784f6df4883ec01fcc4b06d8e`. All eight roots passed fresh strict compilation and the independent PBW-topology/actual-function/type/axiom audit. CG's parameter-source neighborhood is homeomorphic to its actual original source-word image with inherited subtype topologies and explicit recovery through natural upper coordinates. The first CI red remains preserved. Image openness/source Spin neighborhood coverage, general local kernel control, subgroup charts and tangent/manifold obligations remain open. Next work must isolate the coverage/reconstruction gap before any source-chart claim.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2501,3 +2501,41 @@ Repaired files:
 The workflow updates only the candidate source pin and adds scope assertions for the explicit `hinv`/`hcoords` statements and composition functions/point. Every accepted ancestry pin, audit pin, eight-root requirement, warnings-as-errors policy, three-axiom whitelist, local-instance bounds, legacy conditional-alias guard and 840/600-second caps remains unchanged. Local exact hashes, unchanged statements/audit, candidate-only pin change, scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; fresh source and independent audit elaboration remain required.
 
 **Method lesson and next action:** at subtype boundaries, supply the complete intended composition domain and actual point, as well as typed continuity hypotheses. Do not repeat a dot-notation call whose implicit inner map is already inferred on the ambient domain, or raise limits for a direct type mismatch. Inspect both fresh phases before qualification and preserve this red separately from earlier composition/lambda rewrite failures. Image openness, source Spin neighborhood coverage, general local kernel control, subgroup charts, tangent identifications, the full F10BC manifold differential and BFSS physical conclusions remain open.
+
+
+## F10CI accepted — inherited-topology homeomorphism onto the actual source-word image
+
+**Verified strict result:** [run 41746257725](https://github.com/etblink/math/actions/runs/41746257725), tested `9ede511761a51b6784f6df4883ec01fcc4b06d8e`, attempt 1, job `126299905635`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CH rebuild, fresh warnings-as-errors CI compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CI_ACTUAL_WORD_IMAGE_HOMEOMORPH_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The exact tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CIActualWordImageHomeomorph.lean` | `7e7cc455efe13b804608f69d34cd1e106d9d3bbf` |
+| `lean/diagnostics/FCP_K1D18V10HF10CIIndependentAudit.lean` | `2b74d9256ef8be2d18689a2629ed8ab88b0b83f5` |
+| `.github/workflows/bfss-kotler-v10h-f10ci-actual-word-image-homeomorph-strict.yml` | `14386da3565fb682935ed7c08226834a5c55f3ad` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9SpinUpperCoordinates`
+2. `source9SpinUpperCoordinates_continuous_pbw`
+3. `source9OrderedStrictPlaneWord_continuous_pbw`
+4. `source9OrderedStrictPlaneWordLocalImage`
+5. `source9OrderedStrictPlaneWord_coordinate_recovery`
+6. `source9OrderedStrictPlaneWordImageHomeomorph`
+7. `source9OrderedStrictPlaneWordImageHomeomorph_apply`
+8. `source9OrderedStrictPlaneWordImageHomeomorph_symm_apply`
+
+Retained artifact `13283198839`, `bfss-v10h-f10ci-actual-word-image-homeomorph-9ede511761a51b6784f6df4883ec01fcc4b06d8e-1`, 4891 bytes, GitHub-reported ZIP SHA-256 `e18e3f23c11f308d51e4c989ffc4e86fb2c7c4d971d49706ae2cecb57749995f`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** `source9SpinUpperCoordinates` reads the accepted enumerated upper entries from the actual natural nine-matrix image of an arbitrary original source Spin element and is continuous for the inherited PBW topology. The actual original ordered source word is continuous into that same source Spin carrier. Its local image is exactly the image of CG's parameter-source neighborhood, and the identity belongs to it.
+
+The actual word restricted to the parameter-source subtype is a homeomorphism onto that exact image subtype. Its inverse is explicitly the accepted coordinate inverse applied to the original element's actual natural upper coordinates. Parameter recovery, both inverse laws and both continuities are established with the inherited subtype topologies. This proves a homeomorphism onto the word image; it does not prove the image open or a neighborhood in the full source Spin group.
+
+The independent audit reconstructs the PBW coordinates and induced norm from the original source Clifford basis and independently installs the compatible normed-space structure. It checks equality to the accepted coordinates/norm, standard parameter and inherited source topologies, and the two subtype topologies as literal induced topologies. It checks continuity of the actual coordinate map and word, the exact image set and identity membership, the complete homeomorphism type, both continuities and both subtype inverse laws. It checks the forward map against the literal `List.finRange 36` ordered product of the original source plane curves, and the inverse against the literal natural matrix upper-entry formula. The expanded source-group reconstruction identity is checked for every element with explicit membership in the word image. No continuity or inverse hypotheses are added by the audit.
+
+**Repair outcome and successful method:** first run [41744452128](https://github.com/etblink/math/actions/runs/41744452128) remains a strict source failure. Its inverse-continuity composition inferred the inner map on the ambient Spin group rather than the image subtype. Separately typed inverse and restricted-coordinate continuity hypotheses, together with explicit `f`, `g` and `x` arguments to the pinned `ContinuousAt.comp` theorem, resolved the mismatch. All eight declaration signatures and the independent audit remained unchanged. The repair supplies the intended composition domain before proof arguments drive inference through subtype coercions. This extends the established method of using complete type/function bridges at structure and coercion boundaries. No new norm/topology, source/gamma replacement, authored admission, linter suppression, relaxed whitelist or proof-limit increase was introduced; the source activates only the two accepted PBW structures by local aliases.
+
+**Next bounded plan and ceiling:** isolate the source-neighborhood coverage obligation. Inspect the open preimage of CG's coordinate target under the actual continuous source upper-coordinate map, the specified word reconstruction there, and which inverse identities follow solely from the existing parameter-space laws. Explicitly separate coordinate recovery from equality to an arbitrary source Spin input. Determine the additional local natural-matrix and source fiber/kernel facts needed for that equality before promoting any image package to a source chart. A continuous reconstruction or homeomorphism onto an image alone does not settle neighborhood coverage. Image openness, general source local kernel control, source Spin neighborhood coverage, subgroup-chart coverage, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
