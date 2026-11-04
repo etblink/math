@@ -91,7 +91,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CGIndependentAudit.lean)" = '1c3e79574861ab27f1564d648bc6e81ac20b51ed'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CHInverseRegularityLocalInjectivity.lean)" = '82835111241ebd88745a17743421cb2f82d23ddc'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CHIndependentAudit.lean)" = 'f8860e4365a6261ba0e3f31b8ec215965e6498a9'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CIActualWordImageHomeomorph.lean)" = 'ccee4ca45358a5bd0b63093b96144a6095b8bcb8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CIActualWordImageHomeomorph.lean)" = '7e7cc455efe13b804608f69d34cd1e106d9d3bbf'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CIIndependentAudit.lean)" = '2b74d9256ef8be2d18689a2629ed8ab88b0b83f5'
           python3 - <<'PY'
           from pathlib import Path
@@ -124,7 +124,10 @@ jobs:
                     'source9OrderedUpperCoordinateLocalHomeomorph.source ≃ₜ',
                     'wordImage_inverse_mem_source g.property',
                     'wordImage_coordinates_mem_target g.property',
-                    'continuous_induced_rng.2', 'have heq :']:
+                    'continuous_induced_rng.2', 'have heq :',
+                    'have hinv : ContinuousAt', 'have hcoords : ContinuousAt',
+                    '(f := fun h : source9OrderedStrictPlaneWordLocalImage => source9SpinUpperCoordinates h.val)',
+                    '(Fin 36 → ℝ) → (Fin 36 → ℝ))) (x := g) hinv hcoords']:
               assert t in s,t
           for t in ['source9PBWCoordinates = auditWordImagePBWCoordinates := rfl',
                     'NormedAddCommGroup.induced', 'NormedSpace.induced',

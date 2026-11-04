@@ -120,8 +120,17 @@ noncomputable def source9OrderedStrictPlaneWordImageHomeomorph :
     have hc : Continuous (fun h : source9OrderedStrictPlaneWordLocalImage =>
         source9SpinUpperCoordinates h.val) :=
       source9SpinUpperCoordinates_continuous_pbw.comp continuous_subtype_val
-    exact (source9OrderedUpperCoordinateLocalHomeomorph.continuousAt_symm
-      (wordImage_coordinates_mem_target g.property)).comp hc.continuousAt
+    have hinv : ContinuousAt
+        (source9OrderedUpperCoordinateLocalHomeomorph.symm : (Fin 36 → ℝ) → (Fin 36 → ℝ))
+        (source9SpinUpperCoordinates g.val) :=
+      source9OrderedUpperCoordinateLocalHomeomorph.continuousAt_symm
+        (wordImage_coordinates_mem_target g.property)
+    have hcoords : ContinuousAt (fun h : source9OrderedStrictPlaneWordLocalImage =>
+        source9SpinUpperCoordinates h.val) g := hc.continuousAt
+    exact ContinuousAt.comp
+      (f := fun h : source9OrderedStrictPlaneWordLocalImage => source9SpinUpperCoordinates h.val)
+      (g := (source9OrderedUpperCoordinateLocalHomeomorph.symm :
+        (Fin 36 → ℝ) → (Fin 36 → ℝ))) (x := g) hinv hcoords
 
 theorem source9OrderedStrictPlaneWordImageHomeomorph_apply
     (t : source9OrderedUpperCoordinateLocalHomeomorph.source) :
