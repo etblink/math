@@ -37,7 +37,7 @@ The accepted environment remains Lean 4.34.1 and Mathlib `d13f23b723b8a846827a24
 - Strict workflow: `.github/workflows/bfss-kotler-v10h-f10dc-derivative-range-lie-packaging-strict.yml`
   - blob `85261d28331ea0c98f3bc0fd554447cb17e82863`
 
-The workflow pins the full F10DB accepted source ancestry, F10DB source and audit blobs, exact candidate blobs, and Lean/Mathlib revisions. The tested F10DB commit is recorded above; the workflow deliberately keeps checkout shallow and relies on the exact immutable source pins. It rebuilds the DA ancestry, freshly compiles the exact F10DB parent, compiles F10DC with warnings treated as errors, then runs an independent consumer audit.
+The strict workflow pins the full F10DB accepted source ancestry, F10DB source and audit blobs, exact candidate blobs, and Lean/Mathlib revisions. The tested F10DB commit is recorded above; the workflow deliberately keeps checkout shallow and relies on the exact immutable source pins. It rebuilds the DA ancestry, freshly compiles the exact F10DB parent, compiles F10DC with warnings treated as errors, then runs an independent consumer audit. A separate direct source-interface diagnostic is being added before another full strict-gate attempt.
 
 ## Acceptance requirements
 
@@ -69,4 +69,22 @@ A red compiler or audit result must be classified at its earliest causal diagnos
 
 Classification: **workflow/infrastructure wrapper failure**. No Lean source compilation, candidate declaration, or independent audit ran. This supplies no evidence for or against the F10DC mathematical interfaces. The assertion is removed rather than expanding checkout depth; the exact accepted-parent source and audit hashes remain pinned. No F10DC roots are accepted from this run.
 
-This is the first wrapper-level red. If another pre-compilation wrapper failure occurs without new information, stop full CI iteration and repair the wrapper offline before retrying.
+
+
+
+## Second preflight attempt — 2026-11-04
+
+[Run #41922137755](https://github.com/etblink/math/actions/runs/41922137755) also failed before Lean setup. All exact parent/candidate source and audit blob checks passed. The Python preflight then raised `AssertionError: source9IdentityChartDerivativeLieSubalgebra` because it searched for a fully qualified `#print axioms FCP.BFSSPairedSpin9Clifford.<name>` string in the audit source. The audit correctly writes the unqualified declaration name inside its namespace; Lean resolves it there.
+
+Classification: **workflow-validator assertion failure**. No Lean environment restore, source compilation, or independent audit ran. No F10DC roots are accepted from this run. The offline correction is to check the in-namespace spelling `#print axioms <name>`, while the Lean output is still expected to report the fully qualified declaration.
+
+## Stop-rule action and direct diagnostic
+
+Two consecutive F10DC attempts have now failed before testing any Lean obligation, for two independent wrapper defects. In accordance with the FCP stop rule, no third full strict-gate retry will be launched yet.
+
+A separate, non-acceptance source-interface diagnostic has been added:
+
+- `.github/workflows/bfss-kotler-v10h-f10dc-source-interface-diagnostic.yml`
+- Blob: `7990f156ac102258caec09c0cac812103921aea7`
+
+It pins the F10DB parent and candidate source, restores the pinned Lean/Mathlib environment, builds the exact F10DB import closure, and compiles only the F10DC source with warnings treated as errors. It does not run the independent audit and cannot qualify or accept F10DC. Its purpose is to expose actual Lean type/interface errors before the strict wrapper is repaired and retried.
