@@ -34,7 +34,9 @@ theorem source9Orthogonal_perturbation_gram_zero (A : Matrix SpaceIndex SpaceInd
     (A - 1) + (A - 1).transpose + (A - 1).transpose * (A - 1) = 0 := by
   have h := source9Matrix_perturbation_gram_identity (A - 1)
   have heq : (1 : Matrix SpaceIndex SpaceIndex ℝ) + (A - 1) = A := by abel
-  rw [heq, Matrix.mem_orthogonalGroup_iff'.1 hA, sub_self] at h
+  have horth : A.transpose * A = 1 :=
+    (Matrix.mem_orthogonalGroup_iff' SpaceIndex ℝ).1 hA
+  rw [heq, horth, sub_self] at h
   exact h.symm
 
 private theorem completion_perturbation_offDiagonal (A : Matrix SpaceIndex SpaceIndex ℝ)

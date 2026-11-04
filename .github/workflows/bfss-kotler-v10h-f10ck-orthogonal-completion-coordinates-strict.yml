@@ -95,7 +95,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CIIndependentAudit.lean)" = '2b74d9256ef8be2d18689a2629ed8ab88b0b83f5'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CJCoordinateReconstructionDomain.lean)" = '6cc49685be9e93320841e3c31fa147e1fbea161d'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean)" = 'b2ac643dc4c9b39fce3820a33414843110aa3400'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean)" = '635a1c667697627c349e4139be4bfa3808ddbcc6'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean)" = '98f847e34ada50f3c971c6ae3fa336667d0913f2'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CKIndependentAudit.lean)" = '0693c8c32d28bee27ba39a3c5f594892b2c9cef0'
           python3 - <<'PY'
           from pathlib import Path
@@ -120,7 +120,9 @@ jobs:
           for t in ['source9OrthogonalCompletionMap (B : Matrix SpaceIndex SpaceIndex ℝ)',
                     'if i < j then B i j', 'B i j + (B.transpose * B) i j',
                     '(1 + B).transpose * (1 + B) - 1',
-                    "Matrix.mem_orthogonalGroup_iff'.1 hA",
+                    "(Matrix.mem_orthogonalGroup_iff' SpaceIndex ℝ).1 hA",
+                    'have horth : A.transpose * A = 1',
+                    'rw [heq, horth, sub_self] at h',
                     'source9StrictPlaneMatrix (fun p : source9StrictPlaneIndex => A p.val.1 p.val.2)',
                     'source9StrictPlaneEnumeration.apply_symm_apply p',
                     'source9SpinCoordinateReconstruction_upperCoordinates g hg',
