@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CP**, [run 41796588777](https://github.com/etblink/math/actions/runs/41796588777), tested `8eaaa72279a3a22214f9156d8c7e766d7bf98745`. **F10CQ is now a candidate pending strict CI:** the original source-nine graded-commutator/polar-contraction identity, its even-element form, an exact actual-kernel polar-contraction criterion, half-coordinate dual normalization, and vanishing literal coordinate contractions of the reconstruction-relative element on CO's identity neighborhood. The audit checks both the necessity of the grade/evenness distinction and nonidentity solutions with vanishing contractions. Scalar/two-sign classification, local source equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CQ**, [run 41799648734](https://github.com/etblink/math/actions/runs/41799648734), tested `d2e29caa02b001ce8df5e395c2a2cf01a8b77727`. All eight roots passed fresh strict compilation and the independent PBW/type/axiom audit on the first CQ run. The original source-nine graded-commutator identity and actual Spin evenness now give an exact kernel criterion through vanishing polar contractions. Half-coordinate normalization yields every literal coordinate contraction as zero for the reconstruction-relative element on CO's source identity neighborhood. The audit confirms that the unrestricted ordinary-commutator identity is false and that contraction vanishing alone does not select the identity sign. Exterior/PBW scalar classification, two-sign fibers, local source equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3359,3 +3359,47 @@ Candidate files and exact blobs:
 YAML, every run-block shell syntax, both embedded Python ASTs, executable source/audit/instance scope preflight, the inherited pin prefix, all 74 local or exact remote blob checks, three trigger paths, phase caps and whitelist pass static checks. CO's notation-scope guard is retained, and the full native-matrix bridge in accepted CP remains unchanged. No local Lean executable is available; no new source or audit elaboration success is claimed before complete CI.
 
 **Next action and ceiling:** inspect complete strict source compilation and independent audit before qualification. Preserve any red and repair its exact cause without weakening statements, changing the independent control requirements or increasing proof limits. If accepted, transport these same literal coordinate contractions through the actual source-nine Clifford/exterior linear equivalence, using the pinned contraction transport API; do not assume that equivalence is multiplicative. Then use matching source-nine PBW coefficient separation to investigate scalar classification. Scalar/two-sign classification, local source fiber triviality, source Spin equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No authored admission, norm/topology replacement, source/gamma substitution, linter suppression, proof-limit increase, main/frozen-FCP/upstream change or upstream PR is introduced.
+
+
+## F10CQ accepted — source-nine graded identity and coordinate contraction kernel
+
+**Verified strict result:** [run 41799648734](https://github.com/etblink/math/actions/runs/41799648734), tested `d2e29caa02b001ce8df5e395c2a2cf01a8b77727`, attempt 1, job `126471982012`, completed/success with all ten recorded steps successful. Exact ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CP rebuild, fresh warnings-as-errors CQ compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CQ_POLAR_CONTRACTION_KERNEL_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total, using only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, separate phase/root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CQPolarContractionKernel.lean` | `b0f7a355fadc28b5c96a87dd00b80713754a0289` |
+| `lean/diagnostics/FCP_K1D18V10HF10CQIndependentAudit.lean` | `f990f1cfc8914450c608547f983fd44122b2682e` |
+| `.github/workflows/bfss-kotler-v10h-f10cq-polar-contraction-kernel-strict.yml` | `7fcac9d1b2eed6611c244e1d09e10ac505c44559` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9Clifford_gradedCommutator_eq_polarContraction`
+2. `source9Clifford_evenCommutator_eq_polarContraction`
+3. `source9NaturalMatrix_eq_one_iff_polarContractions_zero`
+4. `source9Polar_halfCoordinate_eq_coordinateDual`
+5. `source9NaturalKernel_coordinateContractions_zero`
+6. `source9NaturalMatrix_eq_iff_relative_polarContractions_zero`
+7. `source9Reconstruction_relative_polarContractions_zero_on_sourceNeighborhood`
+8. `source9Reconstruction_relative_coordinateContractions_zero_on_sourceNeighborhood`
+
+Retained artifact `13307262741`, `bfss-v10h-f10cq-polar-contraction-kernel-d2e29caa02b001ce8df5e395c2a2cf01a8b77727-1`, 5582 bytes, GitHub-reported ZIP SHA-256 `b6c07b84911b779d074c5d49b9dfebfdebb9a82fbe951c8f3efe229005643de6`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** for every element of the original source-nine Clifford algebra and every original nine-vector, the graded commutator with its embedded vector is exactly native left contraction by the actual source quadratic polar functional. The grade involution is retained for arbitrary ambient Clifford elements. Under actual even-subalgebra membership the involution is the identity, yielding the ordinary commutator formula.
+
+For actual original source Spin elements, evenness is supplied by genuine Spin membership. CP's exact generator-commutation criterion and the commutator identity prove both directions: the complete actual natural matrix is the identity if and only if all source polar contractions of the underlying source Clifford element vanish. No conclusion about scalar coefficients or two-sign fibers is included.
+
+The actual quadratic polar functional at half of an original coordinate vector equals the literal native coordinate dual `LinearMap.proj j`. This uses the accepted source-nine factor-two polarization formula and scalar linearity; no source quadratic, coordinate labels or gamma/curve normalization is replaced. Consequently every actual natural-action kernel element is annihilated by all nine literal coordinate-dual contractions in the same original Clifford algebra.
+
+Equality of two complete actual natural matrices is equivalent to vanishing polar contractions of the exact relative source element `g * h⁻¹`. On CO's accepted original-source identity neighborhood, CP's reconstruction-relative kernel theorem supplies both polar and all literal coordinate-contraction vanishing for `source9SpinCoordinateReconstruction g * g⁻¹`. The actual multiplication order, inverse, source quadratic, original coordinate labels and neighborhood hypothesis remain explicit.
+
+**Independent audit:** all eight exact interfaces pass with independently reconstructed accepted PBW structures, exact inherited source/standard matrix topology checks and CO's identity-neighborhood property. Both directions of the kernel criterion, arbitrary matrix entries from its converse, native coordinate functional identity, its literal `Pi.single` form, evaluation on arbitrary original vectors and the unscaled factor-two polarization formula are checked. Both reconstruction contraction conclusions and the exact relative Clifford expression using actual grade reversal for the inverse are independently typed.
+
+Two negative controls are checked. A coordinate vector contracted by its own polar functional gives the actual embedded scalar two, while its ordinary self-commutator is zero. Scalar faithfulness refutes the unrestricted ordinary-commutator identity on every ambient Clifford element, so the grade involution/evenness distinction cannot be removed. Separately, the accepted distinct negative central source element has identity natural matrix and vanishing polar contractions. Thus vanishing contractions alone do not select the source identity sign. The actual natural-action noninjectivity control remains checked.
+
+**Successful method:** reuse K1C's scalar/sum/left-vector-product induction method on the actual nine-vector source, with the pinned Clifford contraction rules and genuine grade involution. Discharge actual Spin evenness before using ordinary commutators. Reuse the already accepted source-nine coordinate polarization rather than duplicating or relabeling the original-48 coefficient theorem. Transport the complete coordinate-functional equality explicitly and compose with accepted CP relative-kernel infrastructure. The first CQ strict run passed without repair. No source instance registration, authored admission, source/gamma substitution, norm/topology replacement, linter suppression, whitelist relaxation or proof-limit increase was introduced.
+
+**Next bounded plan and ceiling:** use the inspected pinned contraction/change-form API to transport these same native dual contractions through the actual source-nine `CliffordAlgebra.equivExterior source9Quadratic`. Check the exact underlying source and zero-quadratic target carriers, literal coordinate dual and complete transport equality before applying CQ's vanishing result. Treat this as a linear equivalence; do not assume multiplicativity or transport Clifford products as exterior products. Then inspect and reuse the matching source-nine PBW coefficient interfaces for a common-coordinate-kernel scalar theorem. Scalar/two-sign classification, local source fiber triviality, source Spin equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves all prior red and green records.
