@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment is F10CJ**, [run 41750357148](https://github.com/etblink/math/actions/runs/41750357148), tested `2ea75c9463d53e9d588c2f1246897a76f31211b1`. All nine roots passed fresh strict compilation and the independent PBW-topology/literal-coordinate/type/axiom audit. The coordinate-target preimage is an open original-source identity neighborhood; reconstruction is continuous there, lands in the accepted word image, preserves actual upper coordinates and fixes exactly that image. The first CJ audit red remains preserved. Source image openness/coverage, general local kernel control, subgroup charts and tangent/manifold obligations remain open. Next work must inspect local natural-matrix uniqueness and source fibers before a smaller-neighborhood coverage proof.
+> **Latest accepted mathematical increment remains F10CJ**, [run 41750357148](https://github.com/etblink/math/actions/runs/41750357148), tested `2ea75c9463d53e9d588c2f1246897a76f31211b1`. **Current candidate F10CK:** an explicit polynomial completion map on the original nine-matrix perturbations, exact Gram expansion, collapse on orthogonal inputs to the accepted native upper-entry skew model, and equal completion values for CJ's actual reconstructed/original matrices. Eight roots await complete strict CI. The independent audit includes a concrete failure of ambient global injectivity. Derivative/local injectivity, full matrix recovery, source local kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2649,3 +2649,50 @@ The independent audit reconstructs the accepted PBW coordinates, induced norm an
 The two repeated lessons remain operational: supply complete composition functions and points at subtype/coercion boundaries, and use named actual-function equalities rather than deep definitional unfolding at literal interfaces. No source/gamma replacement, new norm/topology, authored admission, linter suppression, relaxed whitelist or proof-limit increase was introduced. The source activates only the two accepted PBW structures by local aliases.
 
 **Next bounded plan and ceiling:** inspect existing native orthogonal-matrix infrastructure for local recovery of the complete matrix from the enumerated upper coordinates, then inspect the original source natural representation's local fibers. Coordinate equality alone is insufficient. A coverage proof must identify a suitable smaller original-source identity neighborhood and prove the full reconstruction identity there; the accepted conditional criterion can then transfer that identity to image coverage. Do not assume the entire coordinate-target preimage has that identity or that a continuous idempotent reconstruction implies source coverage. Image openness, source Spin neighborhood coverage, general local kernel control, subgroup charts, tangent Lie-algebra identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
+
+
+## F10CK candidate — algebraic orthogonal completion coordinates
+
+**Baseline:** live research branch checked at `475c022e100081f68fcffa0ad300d5dd8770a78f`, the documentation-only CJ acceptance commit. Root AGENTS and current canonical handoff reread. All accepted mathematical modules and previously checked ancestor instructions remain unchanged.
+
+**Research decision:** work on the existing full native matrix perturbation space before attempting source Spin coverage. The accepted orthogonality identity supplies an explicit polynomial completion map whose linear part is the identity and whose quadratic part vanishes to second order at zero. First qualify the exact algebraic relationship to native upper entries; strict differentiability and local injectivity will be separate later gates. No new source group, matrix carrier, basis order or gamma representation is introduced.
+
+For a perturbation `B : Matrix SpaceIndex SpaceIndex ℝ`, define `source9OrthogonalCompletionMap B` entrywise:
+- for `i < j`, use `B i j`;
+- for `j < i`, use `B i j + (B.transpose * B) i j`;
+- on the diagonal, use `B i i + (B.transpose * B) i i / 2`.
+
+The diagonal factor comes from the quadratic Gram expansion, not from any change to the accepted source rotor/generator normalization. The function is defined on the entire original nine-matrix space and maps zero to zero.
+
+**Bounded algebraic implementation:** expand `(1+B).transpose * (1+B) - 1` exactly as `B + B.transpose + B.transpose * B`. For `A ∈ Matrix.orthogonalGroup SpaceIndex ℝ`, set `B = A - 1` and deduce that this sum is zero. Its entries show that completion at `A - 1` is exactly `source9StrictPlaneMatrix (fun p => A p.val.1 p.val.2)`: original strict upper entries, their negative transpose below, and zero diagonal. Thus two orthogonal inputs with the same strict upper entries have equal completion values, without yet asserting equality of the inputs.
+
+Prove explicitly that equality under the accepted `source9OrderedUpperProjection` is equivalent to equality of all original increasing-pair entries. Use the already chosen `source9StrictPlaneEnumeration` and its exact inverse, with typed evaluation through `source9OrderedUpperProjection_apply`; no alternate enumeration is selected. Apply this bridge to CJ's coordinate recovery. Both the reconstructed and original actual natural matrices are members of the original orthogonal group, by the existing actual homomorphism subtype properties. Therefore their perturbations have equal completion values on CJ's stated reconstruction domain.
+
+**Pinned API inspection:** Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, `LinearAlgebra/UnitaryGroup.lean`, blob `2bc60a3c9927cdbf9c28371d1b4e9f66b7447583`: the original `Matrix.orthogonalGroup` and complete `mem_orthogonalGroup_iff'` equivalence with `A.transpose * A = 1`. Reuse the accepted BR orthogonal homomorphism, CA native strict-plane matrix, CB chosen enumeration, CE upper projection and CJ actual reconstruction. Matrix addition/transpose/multiplication and scalar entry algebra suffice; no new norm estimate or normed-ring structure is needed.
+
+Eight pending roots in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrthogonalCompletionMap`
+2. `source9OrthogonalCompletionMap_zero`
+3. `source9Matrix_perturbation_gram_identity`
+4. `source9Orthogonal_perturbation_gram_zero`
+5. `source9OrthogonalCompletionMap_on_orthogonal`
+6. `source9OrderedUpperProjection_eq_iff_strict_entries`
+7. `source9OrthogonalCompletionMap_eq_of_upperProjection_eq`
+8. `source9OrthogonalCompletionMap_actual_reconstruction`
+
+Candidate files:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean` | `635a1c667697627c349e4139be4bfa3808ddbcc6` |
+| `lean/diagnostics/FCP_K1D18V10HF10CKIndependentAudit.lean` | `0693c8c32d28bee27ba39a3c5f594892b2c9cef0` |
+| `.github/workflows/bfss-kotler-v10h-f10ck-orthogonal-completion-coordinates-strict.yml` | `f1d30254aabe8c7687b5b245be2fc6a05f443332` |
+
+**Independent audit:** capture the standard matrix product topology and verify its equality after the elementwise norm scope. Check the exact original matrix-domain/codomain, complete entrywise polynomial with each Gram product expanded as the literal original-label finite sum, strict-upper preservation, zero value, full Gram identity, orthogonal perturbation identity, collapse to CA's exact native skew model, and projection/native-strict-entry equivalence. Check equality of completion values for arbitrary native orthogonal-group inputs with equal native upper entries, and for CJ's actual reconstructed/original natural matrices with explicit domain membership. A separately named equality exposes the completely expanded original source-word reconstruction interface without deep definitional `change`.
+
+The audit includes a concrete negative control: completion at `(-1 : Matrix SpaceIndex SpaceIndex ℝ) - 1` is zero, just as completion at zero is zero, and these perturbations are distinct by their original zero-index diagonal entries. It therefore checks `¬ Function.Injective source9OrthogonalCompletionMap` on the full ambient matrix domain. This is a matrix-level control; it makes no claim that the negative identity matrix lies in the actual source Spin representation's image. Locality is essential for the planned inverse-function argument.
+
+**Verification discipline:** preserve accepted ancestry pins through CJ's unchanged source and repaired audit, then add exact CK source/audit pins. Rebuild CJ, freshly compile CK and the independent audit with warnings-as-errors, and require exactly eight expected permitted root reports per phase and terminal classifier `V10H_F10CK_ORTHOGONAL_COMPLETION_COORDINATES_TYPES_AXIOMS_PASS`. Keep the three-axiom whitelist, 840/600-second fresh-phase caps, legacy conditional-alias guard and evidence preservation. CK needs no local instances; the guard rejects instance declarations/registrations in both new files and prohibits source norm/topology replacement. Local exact hashes, accepted-pin preservation, eight-root scope preflight, YAML, all three trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; all eight roots and audit controls remain candidates pending complete strict CI.
+
+**Next bounded plan and ceiling:** if the complete algebraic gate passes, qualify smoothness and the strict literal identity derivative at zero of this same completion map using the standard matrix product topology and existing finite-coordinate calculus. Instantiate the pinned strict inverse-function constructor to obtain local ambient injectivity, then combine the accepted orthogonal-completion identity with explicit neighborhood membership to deduce local full-matrix recovery from the actual upper coordinates. The global negative control must remain in force; do not infer global injectivity. Even local full-matrix equality will leave original source Spin fiber/kernel control and source neighborhood coverage separate. Image openness, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all prior red and green evidence.
