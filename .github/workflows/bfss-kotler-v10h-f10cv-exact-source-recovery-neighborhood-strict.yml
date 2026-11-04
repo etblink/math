@@ -1,0 +1,226 @@
+name: BFSS V10H F10CV exact source recovery neighborhood strict gate
+
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CVExactSourceRecoveryNeighborhood.lean
+      - lean/diagnostics/FCP_K1D18V10HF10CVIndependentAudit.lean
+      - .github/workflows/bfss-kotler-v10h-f10cv-exact-source-recovery-neighborhood-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-recovery-neighborhood:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Pin accepted CU ancestry and exact F10CV declarations
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10cv"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10cv/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe.lean")" = '578ddf1505da2ab2848bc88cf709660d941cb8ec'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean")" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean")" = 'f7ea4c9e9d996d04d07a7733ffe7ab6a91ce2636'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BFIndependentAudit.lean)" = 'dd00871d12e1d533d15aa67608713d85eed0ec66'
+          
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BGPBWSourceSpinTopologicalGroup.lean")" = '9092ccaa5b4436bfa25cafe8b71541e6642999f6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean")" = '03287d741b05cd4e373f1b5e608d0e6888b63e89'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean)" = '744a1917c34857f40c08aded9f2b1480c7dfe62c'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness.lean")" = '10c56519331f867d5f453a63953e0018c03a09a3'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BTIndependentAudit.lean)" = '7fd6812e2e5ee4bdfa5b56422a9905c5611e6bd3'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BUAmbientVectorActionSmoothness.lean)" = 'aa38de95852718445ddd0448068592f9cefe4db4'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BUIndependentAudit.lean)" = '7a8e3f09d3a799d49ca5c3fa2060abe957ef7628'
+          
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve.lean")" = 'faabd83f813eab9ae2026c5d426f8baed80d33a6'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BIIndependentAudit.lean)" = '119ab4569f0ef663838856ed3611e500a7125c82'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BVFinitePlaneWordSmoothness.lean)" = '1c0f3ddfc4fba9e28be411a4fd241e36398095a9'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BVIndependentAudit.lean)" = '54d3a22f75892e7a98d3f0986e3544b57d82a54e'
+          
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean")" = '528937bc6f528eed64aea16ecc5eb69c74c2dd99'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean)" = '13186e289439acf51af42c80cb0585f74a6285c2'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BWFinitePlaneWordDerivative.lean)" = '6a67d6fb7a1d01f5d0045adb8a6edb3747d0ee70'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BWIndependentAudit.lean)" = '26d4bc3768986a3d5ec9bb44484ba818085f57f6'
+          
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean")" = 'bc0d8539c2523fffe2f36ee4b121a1b81a1431be'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean)" = '1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean")" = '92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe.lean")" = 'd80001bbe5052357dbca559232d81cc01c56fb34'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BXWordDerivativeNativeVectorAction.lean)" = 'bbf201b5af11213eacef21fe6ec41947635cc781'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BXIndependentAudit.lean)" = '30d42b22ebadafb09c2b0c65db839af71ccf4ba7'
+          
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BMInverseSourceCurveDerivative.lean")" = '545581346eaf563b54dcf3c828e43d19c2d1dd23'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BMIndependentAudit.lean)" = '057c3313f16775de85109fd5ca257eef69c04cf8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BYActualWordVectorActionDerivative.lean)" = '1fa83224a22fc0c7d2efdd6b1fdffe2f55f536cc'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BYIndependentAudit.lean)" = '4e89a6df00269492b91bee147cd4a24bb3b688a3'
+          
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BPSourceVectorLinearRepresentation.lean")" = '47684d3586cf7c53674c8d52341853f3f03fa319'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BPIndependentAudit.lean)" = '577618970cc8ed20c8d625564f4a0479583451be'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BQSourceVectorQuadraticIsometry.lean")" = 'cc78661038f8a9685f9e3eef397941ee90d39ca2'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BQIndependentAudit.lean)" = '81a86e36de23f922eb9aafac7f2cafd82f921340'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BRSourceVectorOrthogonalHom.lean")" = '8aa718eba564ae945e618aefbee9329f952256f0'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BRIndependentAudit.lean)" = '2795a632293658d2fad33e5c0444c7ea0a6f8ff0'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BZFullNaturalMatrixWordDerivative.lean)" = '6602ec877561b8751d8505b4cff096746bf0c27b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BZIndependentAudit.lean)" = '0b5dd933bf5c36fe7daeece45f28b54cf54a58e9'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CANativeStrictPlaneModel.lean)" = 'c9c4bea7ef07c08d2ca1b8344dcf2a6532b0ff61'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CAIndependentAudit.lean)" = '658e557d5ff5d4e09fe44d43e08be98234b5abca'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CBOrderedStrictPlaneWord.lean)" = 'd154844afabdfb7d66e9e3ec72c9b94714a781fa'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CBIndependentAudit.lean)" = 'f03c13f9e692aa404affcac76e4f96c4bf76435b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CCOrderedDerivativeNativeModel.lean)" = 'd29e46f62d923da0c47cb14caf547ee0dc5fa31e'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CCIndependentAudit.lean)" = '2d550e34db5942dc6f712194339d543e9d31be21'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean)" = 'b0f54834164eb031b880a6f96aa276cfac031f3b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean)" = 'cd034f48ca310be62c95f0fc5a26158980744224'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean)" = 'e61f10d8b5726a84dd1fadc55e15318f3c40b158'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean)" = '22d23f1f272a14f8067f51524e4c17a6c138e72a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CFSmoothStrictUpperCoordinateMap.lean)" = '18dfa7cb7391446b72658036730ae98f990d809d'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CFIndependentAudit.lean)" = 'dab723eea335c83d7824a16f59acd55e6b39d713'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CGUpperCoordinateLocalInverse.lean)" = '0d4ff0b02af7fc5e007b2943f03c72300720aafd'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CGIndependentAudit.lean)" = '1c3e79574861ab27f1564d648bc6e81ac20b51ed'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CHInverseRegularityLocalInjectivity.lean)" = '82835111241ebd88745a17743421cb2f82d23ddc'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CHIndependentAudit.lean)" = 'f8860e4365a6261ba0e3f31b8ec215965e6498a9'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CIActualWordImageHomeomorph.lean)" = '7e7cc455efe13b804608f69d34cd1e106d9d3bbf'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CIIndependentAudit.lean)" = '2b74d9256ef8be2d18689a2629ed8ab88b0b83f5'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CJCoordinateReconstructionDomain.lean)" = '6cc49685be9e93320841e3c31fa147e1fbea161d'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean)" = 'b2ac643dc4c9b39fce3820a33414843110aa3400'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean)" = '98f847e34ada50f3c971c6ae3fa336667d0913f2'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CKIndependentAudit.lean)" = '0693c8c32d28bee27ba39a3c5f594892b2c9cef0'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean)" = '902b063ca869c7efeea21828cdf3f97847c96b70'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CLIndependentAudit.lean)" = '4df471178bd0045ccdf7fea3e12da06d78bd0e9b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CMCompletionLocalInverse.lean)" = '04281724e6305c3d3d06c001fd3e37b91b17962f'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CMIndependentAudit.lean)" = 'db0462336ba7bd677cec97de3aa8a94456d9f820'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CNLocalOrthogonalRecovery.lean)" = '897ea47e2ac9e7ef937fabbb74178073d18f52c5'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CNIndependentAudit.lean)" = '75c9abb205c1db13f9e4ed281f1e9c1b0bf954f4'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CORecoverySourceNeighborhood.lean)" = '211e593bbaa95d85ff6767448de3f3763d7d293d'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10COIndependentAudit.lean)" = '308373e8086b0846b68cdc1cd32cb6f32c9aa050'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean)" = '251a9375d3f99e04d3bf547c8052185ebcf2b768'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CPNaturalActionKernelCommutant.lean)" = 'a7cde4e1ab7bcfdc0a4b36b3b49533e17798dae5'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CPIndependentAudit.lean)" = 'e599c2f998b4d63df37687e96b87879d51c1e94b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CQPolarContractionKernel.lean)" = 'b0f7a355fadc28b5c96a87dd00b80713754a0289'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CQIndependentAudit.lean)" = 'f990f1cfc8914450c608547f983fd44122b2682e'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CRExteriorContractionTransport.lean)" = '7685bb34d17bc85b3b4bcb9ec7f035c786c4f8ec'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CRIndependentAudit.lean)" = '9ed95338f7ca09b80abc6d180629afced6211ea8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ZSourceNineExteriorPBWOrderedWordProbe.lean)" = 'ea9c2a99c2f913277af18bcafbbf152f14cecbd6'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CSExteriorPBWContractions.lean)" = '47e557bcf3a5f6f869382c7d5aa885ce365e7d33'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CSIndependentAudit.lean)" = '47aa254a6e52f4e97ac077563ac952f9632b6845'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CTExteriorScalarKernel.lean)" = '912750d26995323c896d930b15e0358ee7dc90b7'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CTIndependentAudit.lean)" = '7620a2036efbdcbcda2bd69a67b3cd23d61974ac'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean)" = '353978608b978b00d0e36deb1c1a47c32641ea59'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CUNaturalActionTwoSignFibers.lean)" = 'bfd6c019f57f7a6a1201cbfedf543dcc16efb91b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CUIndependentAudit.lean)" = 'd7850f4be59aac26410daa9751ac81151c385a67'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CVExactSourceRecoveryNeighborhood.lean)" = '03af63a3f4ef46379c16ea13124262e76004c31b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CVIndependentAudit.lean)" = 'cecdf0df539b47857ce4d8e570964080bb8405a8'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CVExactSourceRecoveryNeighborhood.lean').read_text()
+          audit=Path('lean/diagnostics/FCP_K1D18V10HF10CVIndependentAudit.lean').read_text()
+          names=["source9SpinReconstructionRelative", "source9SpinReconstructionRelative_continuousOn_pbw", "source9SpinReconstructionRelative_one", "source9SpinExactRecoveryNeighborhood", "source9SpinExactRecoveryNeighborhood_isOpen_pbw", "source9SpinExactRecoveryNeighborhood_one_mem", "source9SpinExactRecoveryNeighborhood_mem_nhds_one_pbw", "source9SpinExactRecoveryNeighborhood_conditions", "source9SpinReconstructionRelative_eq_one_on_exactNeighborhood", "source9SpinCoordinateReconstruction_eq_self_on_exactNeighborhood", "source9SpinExactRecoveryNeighborhood_subset_wordImage", "source9OrderedStrictPlaneWordLocalImage_mem_nhds_one_pbw"]
+          for name in names:
+              assert len(re.findall(r'(?m)^(?:noncomputable def|theorem) '+re.escape(name)+r'\b',s))==1,name
+              assert len(re.findall(r'(?m)^#print axioms '+re.escape(name)+r'[ \t]*$',s))==1,name
+              assert '#print axioms FCP.BFSSPairedSpin9Clifford.'+name in audit,name
+          for text in [s,audit]:
+              assert text.count('#print axioms ')==len(names)
+              code=re.sub(r'/\-.*?\-/', '', text, flags=re.S)
+              code=re.sub(r'--[^\n]*','',code)
+              assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              assert not re.search(r'\b(if_pos|if_neg|dif_pos|dif_neg)\b',code)
+              allowed_instances = ['local instance f10cvLocalNormedAddCommGroup :\n    NormedAddCommGroup (CliffordAlgebra source9Quadratic) := source9PBWNormedAddCommGroup', 'local instance f10cvLocalNormedSpace :\n    NormedSpace ℝ (CliffordAlgebra source9Quadratic) := source9PBWNormedSpace'] if text is s else ['local instance : Fintype (Finset SpaceIndex) := Fintype.ofFinite _', 'local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=\n  NormedAddCommGroup.induced\n    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ)\n    auditExactPBWCoordinates.toAddMonoidHom auditExactPBWCoordinates.injective\nlocal instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=\n  NormedSpace.induced ℝ\n    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ) auditExactPBWCoordinates']
+              for allowed in allowed_instances:
+                  assert code.count(allowed)==1
+                  code=code.replace(allowed,'')
+              assert not re.search(r'(?m)^(?:local )?(?:noncomputable )?instance\b|attribute\s+\[(?:local )?instance',code)
+              assert all(t not in code for t in ['Source48Label','NormedRing','GammaMatrix','SpinIndex','ChartedSpace','LieGroup'])
+          assert 'NormedAddCommGroup.induced' not in s and 'NormedSpace.induced' not in s
+          assert 'TopologicalSpace.induced' not in s
+          assert 'ℕ∞ω' not in s or 'open scoped ContDiff' in s
+          assert s.count('source9PBWNormedAddCommGroup')==1 and s.count('source9PBWNormedSpace')==1
+          assert audit.count('NormedAddCommGroup.induced')==2 and audit.count('NormedSpace.induced')==2
+          for t in ['open scoped Topology Matrix.Norms.Elementwise', 'source9SpinCoordinateReconstruction g * g⁻¹', 'ContinuousOn source9SpinReconstructionRelative source9SpinCoordinateReconstructionDomain', 'source9SpinCoordinateReconstruction_continuousOn_pbw.prodMk', 'source9Spin_inv_continuous_pbw.continuousOn', "source9Spin_mul_continuous_pbw.comp_continuousOn' hpair", 'source9SpinNaturalMatrixRecoveryNeighborhood ∩', '({source9NegativeCentral}ᶜ : Set (spinGroup source9Quadratic))', 'hrel.isOpen_inter_preimage source9SpinNaturalMatrixRecoveryNeighborhood_isOpen_pbw', 'isOpen_compl_singleton', 'Ne.symm source9NegativeCentral_ne_one', 'source9Reconstruction_relative_kernel_on_sourceNeighborhood g hc.1', 'source9NaturalMatrix_eq_one_iff_two_signs (source9SpinReconstructionRelative g)', '(hg : g ∈ source9SpinExactRecoveryNeighborhood)', 'source9SpinCoordinateReconstruction_eq_self_iff g', 'source9SpinExactRecoveryNeighborhood_subset_wordImage']:
+              assert t in s,t
+          for t in ['source9PBWCoordinates = auditExactPBWCoordinates := rfl', 'auditExactSpinTopology := rfl', 'auditExactMatrixTopology := rfl', 'example : T2Space (spinGroup source9Quadratic) := inferInstance', 'source9SpinExactRecoveryNeighborhood =', 'source9SpinCoordinateReconstruction g * g⁻¹ ≠ source9NegativeCentral := Iff.rfl', 'source9Spin_inv_coe_eq_reverse g', 'Set.EqOn source9SpinCoordinateReconstruction', 'Set.InjOn source9SpinUpperCoordinates source9SpinExactRecoveryNeighborhood', '∃ t : Fin 36 → ℝ, t ∈ source9OrderedUpperCoordinateLocalHomeomorph.source ∧', 'private theorem auditExact_negative_reconstruction', 'private theorem auditExact_negative_not_in_wordImage', 'source9NegativeCentral ∉ source9SpinExactRecoveryNeighborhood', 'source9OrderedStrictPlaneWordLocalImage ≠ Set.univ', '¬ ∀ g : spinGroup source9Quadratic, source9SpinCoordinateReconstruction g = g', 'source9NaturalMatrix_not_injective', 'source9SpinReconstructionRelative', 'source9SpinReconstructionRelative_continuousOn_pbw', 'source9SpinReconstructionRelative_one', 'source9SpinExactRecoveryNeighborhood', 'source9SpinExactRecoveryNeighborhood_isOpen_pbw', 'source9SpinExactRecoveryNeighborhood_one_mem', 'source9SpinExactRecoveryNeighborhood_mem_nhds_one_pbw', 'source9SpinExactRecoveryNeighborhood_conditions', 'source9SpinReconstructionRelative_eq_one_on_exactNeighborhood', 'source9SpinCoordinateReconstruction_eq_self_on_exactNeighborhood', 'source9SpinExactRecoveryNeighborhood_subset_wordImage', 'source9OrderedStrictPlaneWordLocalImage_mem_nhds_one_pbw']:
+              assert t in audit,t
+          print('V10H_F10CV_SOURCE_PIN_EXACT_SOURCE_RECOVERY_NEIGHBORHOOD_SCOPE_PASS')
+          PY
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+
+      - name: Rebuild accepted CU ancestry
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10CUNaturalActionTwoSignFibers
+
+      - name: Fresh F10CV exact source recovery neighborhood warnings-as-errors compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CVExactSourceRecoveryNeighborhood
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean"
+          timeout 840s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10cv/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+
+      - name: Independently check inherited PBW topology relative sign exclusion source equality neighborhood coverage and negative controls
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 600s lake env lean -DwarningAsError=true diagnostics/FCP_K1D18V10HF10CVIndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10cv/declaration-audit.log"
+          cp diagnostics/FCP_K1D18V10HF10CVIndependentAudit.lean "$RUNNER_TEMP/v10h-f10cv/independent-audit.lean"
+          cp OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CVExactSourceRecoveryNeighborhood.lean "$RUNNER_TEMP/v10h-f10cv/candidate-source.lean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["source9SpinReconstructionRelative", "source9SpinReconstructionRelative_continuousOn_pbw", "source9SpinReconstructionRelative_one", "source9SpinExactRecoveryNeighborhood", "source9SpinExactRecoveryNeighborhood_isOpen_pbw", "source9SpinExactRecoveryNeighborhood_one_mem", "source9SpinExactRecoveryNeighborhood_mem_nhds_one_pbw", "source9SpinExactRecoveryNeighborhood_conditions", "source9SpinReconstructionRelative_eq_one_on_exactNeighborhood", "source9SpinCoordinateReconstruction_eq_self_on_exactNeighborhood", "source9SpinExactRecoveryNeighborhood_subset_wordImage", "source9OrderedStrictPlaneWordLocalImage_mem_nhds_one_pbw"]}
+          for filename in ['compiler.log','declaration-audit.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10cv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for n,axs in reports:
+                  assert set(a.strip() for a in axs.split(',')) <= {'propext','Classical.choice','Quot.sound'},(n,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)',s)
+          print('V10H_F10CV_EXACT_SOURCE_RECOVERY_NEIGHBORHOOD_TYPES_AXIOMS_PASS')
+          PY
+
+      - name: Preserve exact SHA compiler and independent F10CV audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10cv-exact-source-recovery-neighborhood-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10cv
+          if-no-files-found: warn
