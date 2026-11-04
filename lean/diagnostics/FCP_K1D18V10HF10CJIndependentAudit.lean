@@ -92,9 +92,11 @@ example (g : spinGroup source9Quadratic) (hg : g ∈ source9SpinCoordinateRecons
       Matrix SpaceIndex SpaceIndex ℝ) (source9StrictPlaneRow i) (source9StrictPlaneColumn i) =
     ((source9SpinVectorOrthogonalHom g) :
       Matrix SpaceIndex SpaceIndex ℝ) (source9StrictPlaneRow i) (source9StrictPlaneColumn i) := by
-  change source9SpinUpperCoordinates (source9SpinCoordinateReconstruction g) i =
-    source9SpinUpperCoordinates g i
-  exact congrFun (source9SpinCoordinateReconstruction_upperCoordinates g hg) i
+  have hleft := congrFun
+    (auditReconstructionActualCoordinates_eq (source9SpinCoordinateReconstruction g)) i
+  have hright := congrFun (auditReconstructionActualCoordinates_eq g) i
+  have hcoords := congrFun (source9SpinCoordinateReconstruction_upperCoordinates g hg) i
+  exact hleft.symm.trans (hcoords.trans hright)
 example (g : spinGroup source9Quadratic) (hg : g ∈ source9SpinCoordinateReconstructionDomain) :
     source9SpinCoordinateReconstruction g = g ↔ g ∈ source9OrderedStrictPlaneWordLocalImage :=
   source9SpinCoordinateReconstruction_eq_self_iff g hg

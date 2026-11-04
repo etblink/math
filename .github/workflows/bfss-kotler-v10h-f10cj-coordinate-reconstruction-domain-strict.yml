@@ -94,7 +94,7 @@ jobs:
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CIActualWordImageHomeomorph.lean)" = '7e7cc455efe13b804608f69d34cd1e106d9d3bbf'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CIIndependentAudit.lean)" = '2b74d9256ef8be2d18689a2629ed8ab88b0b83f5'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CJCoordinateReconstructionDomain.lean)" = '6cc49685be9e93320841e3c31fa147e1fbea161d'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean)" = 'b5614635c499a92b712b3451e98b424e59a4473f'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean)" = 'b2ac643dc4c9b39fce3820a33414843110aa3400'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -135,6 +135,9 @@ jobs:
                     'source9SpinCoordinateReconstructionDomain_isOpen_pbw.mem_nhds',
                     'private theorem auditReconstructionActualCoordinates_eq',
                     'source9SpinCoordinateReconstruction_upperCoordinates g hg',
+                    '(auditReconstructionActualCoordinates_eq (source9SpinCoordinateReconstruction g)) i',
+                    'have hright := congrFun (auditReconstructionActualCoordinates_eq g) i',
+                    'hleft.symm.trans (hcoords.trans hright)',
                     'source9SpinCoordinateReconstruction (source9SpinCoordinateReconstruction g)',
                     'V ⊆ source9OrderedStrictPlaneWordLocalImage ↔',
                     '∀ g ∈ V, source9SpinCoordinateReconstruction g = g']:
