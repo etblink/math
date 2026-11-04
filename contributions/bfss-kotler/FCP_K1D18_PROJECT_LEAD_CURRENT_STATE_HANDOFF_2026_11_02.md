@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10DB is the next candidate; strict CI is pending.** Latest accepted mathematics remains F10DA at [run 41909581483](https://github.com/etblink/math/actions/runs/41909581483), tested `722716ed4ccd78af42db99ba9ec18949a8342d68`. DB proves explicit evenness of the actual range and bracket defect, applies the existing arbitrary-even commutator/contraction and exterior scalar interfaces, and uses only faithful real scalar evaluation in the original gamma target to eliminate the defect. It targets exact native bracket equality and actual range/span commutator closure. Nine declarations require fresh compilation and complete independent type/axiom qualification. No range Lie-algebra packaging, source tangent identification or manifold differential is claimed. All accepted declarations and historical red evidence are preserved.
+> **F10DB is accepted from strict run 41913435697.** The exact tested commit is `abedd367f58f34054ba9bb9a4e2507a4eb1ba576`. All nine declarations passed fresh warnings-as-errors compilation and the complete independent audit on their first strict run (18 permitted-axiom reports), with no Lean source diagnostics or sorryAx. The exact native bracket defect vanishes; the actual Clifford derivative range and identical native half-bivector span are closed under the ambient commutator, and the existing native real-linear range equivalence obeys the exact bracket law. The proof establishes evenness explicitly and eliminates only the residual scalar through the actual gamma evaluation. No whole-Clifford gamma faithfulness, range Lie-algebra packaging, source tangent identification or manifold differential is asserted. All historical red evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4656,3 +4656,68 @@ YAML parsed, every shell run block passed bash syntax, both embedded Python prog
 DB remains unaccepted until a new exact-head strict run passes both complete phases, nine expected roots per phase, allowed axioms, all controls, diagnostics checks, terminal marker, artifact and exact new blobs. F10DA remains accepted. If DB passes, the exact defect vanishes, the native equivalence obeys the ambient Clifford commutator law, and both the actual derivative range and native half-bivector span are commutator-closed.
 
 Packaging that actual range as a canonical Lie subalgebra and the existing native real-linear equivalence as a Lie equivalence is a subsequent separate step; no associative/unital subalgebra claim is made about this range. Source tangent identification, translated atlas compatibility, source manifold/Lie-group structures and the full F10BC manifold differential remain separate. Further global/target-surjectivity/covering/lift, upstream integration and BFSS physical conclusions remain open. The source quadratic, group, Clifford carrier, gamma matrices and label order remain unchanged. The historical handoff body beginning at its original As-of field is preserved verbatim and this event is appended.
+
+
+## 2026-11-04 F10DB accepted — even bracket-defect elimination and actual derivative-range closure
+
+**Exact acceptance evidence.** [Strict run 41913435697](https://github.com/etblink/math/actions/runs/41913435697), attempt 1, is terminal completed/success at tested commit `abedd367f58f34054ba9bb9a4e2507a4eb1ba576`, tree `6be28d78c2ac77142794ce40095e110a3418ce7a`. Job `126866721139`, `derivative-range-commutator-closure`, completed all ten recorded steps successfully. These include all 102 exact pins and source-scope checks, pinned dependency restoration, accepted DA ancestry rebuild, fresh DB warnings-as-errors source compilation, complete independent audit, preserved evidence and cleanup.
+
+Decoded logs contain exactly the nine expected public-root axiom reports once in each fresh phase, totaling 18. Every reported axiom belongs to `{propext, Classical.choice, Quot.sound}`. No Lean source warning/error diagnostic, including categorized diagnostics, and no sorryAx dependency is present. Command echo was excluded from root/sorryAx parsing, and ANSI-stripped full lines were additionally checked for source diagnostics. The actual source-scope and terminal types/axioms markers both occur:
+- `V10H_F10DB_SOURCE_PIN_DERIVATIVE_RANGE_COMMUTATOR_CLOSURE_SCOPE_PASS`
+- `V10H_F10DB_DERIVATIVE_RANGE_COMMUTATOR_CLOSURE_TYPES_AXIOMS_PASS`
+
+This is DB's first strict run, with no intervening source or audit repair.
+
+**Exact accepted files.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DBDerivativeRangeCommutatorClosure.lean` — blob `12c3397a06a6e9ef634c69bae075c20564bb1e4c`.
+- `lean/diagnostics/FCP_K1D18V10HF10DBIndependentAudit.lean` — blob `19e04f3e39986081154adccfb35e3f9d1db62407`.
+- `.github/workflows/bfss-kotler-v10h-f10db-derivative-range-commutator-closure-strict.yml` — blob `092533be9850b52d73b786ef1a3f5a18fe4c72d5`.
+
+The authoritative pre-acceptance handoff is blob `d81cf6968f77d29b75e1a381b9c774d5d72e07ea`. Root AGENTS remains blob `196529dbc512457e4fef0558c6a179e04860469e`.
+
+**Artifact.** [Artifact 13363578535](https://github.com/etblink/math/actions/runs/41913435697/artifacts/13363578535), `bfss-v10h-f10db-derivative-range-commutator-closure-abedd367f58f34054ba9bb9a4e2507a4eb1ba576-1`, is 6506 bytes. GitHub reports ZIP SHA256 `61a152954706d15f4012bcdb4f9fc0950fd49cfda3755d7c8d9555c3da52ffdf`, matching the upload log. This is reported artifact metadata, not an independent binary digest computation.
+
+**Nine accepted declarations.**
+- `FCP.BFSSPairedSpin9Clifford.source9Clifford_even_commutes_coordinateContractions_zero`
+- `FCP.BFSSPairedSpin9Clifford.source9Clifford_even_commutes_eq_scalar`
+- `FCP.BFSSPairedSpin9Clifford.source9Clifford_even_commutes_gamma_zero`
+- `FCP.BFSSPairedSpin9Clifford.source9IdentityChartDerivativeRange_mem_even`
+- `FCP.BFSSPairedSpin9Clifford.source9NativeSkewDerivativeRange_bracket_defect_mem_even`
+- `FCP.BFSSPairedSpin9Clifford.source9NativeSkewDerivativeRange_bracket_defect_zero`
+- `FCP.BFSSPairedSpin9Clifford.source9NativeSkewDerivativeRangeEquiv_commutator`
+- `FCP.BFSSPairedSpin9Clifford.source9IdentityChartDerivativeRange_commutator_mem`
+- `FCP.BFSSPairedSpin9Clifford.source9NativeHalfBivectorSpan_commutator_mem`
+
+**Accepted mathematical content.** For an arbitrary original Clifford x, DB proves that explicit evenness and commutation with every original vector imply zero contraction against each original coordinate dual. It uses CQ's literal half-coordinate polarization and even commutator identity, CR's contraction transport through the actual exterior linear equivalence, and CT's common-coordinate-contraction scalar theorem to conclude that x is a real scalar. This general statement has no Spin-group membership premise.
+
+Under the additional actual equality `Gamma(x)=0`, DB eliminates that scalar. The gamma algebra homomorphism preserves real scalars, and the existing original real matrix target has faithful real scalar action. This proves x=0 for these even commutants. It does not assert that the full gamma algebra homomorphism is injective.
+
+Write R for CY's actual Clifford-valued identity-chart derivative range and X(A) for its accepted native so(9) real-linear representative. CY identifies R exactly with the span of original positive half-bivectors. Their evenness, together with span containment, establishes that every x in R is in the original even Clifford subalgebra. Products and differences of these even representatives show that the precise DA defect
+`D=X(A)X(B)-X(B)X(A)-X([A,B])`
+is even.
+
+DA already proves that this exact D commutes with every original vector and has zero original-gamma image. DB supplies its previously missing evenness and applies the now-proved even-commutant elimination theorem. Consequently D=0 for every native A,B, and
+`X(A)X(B)-X(B)X(A)=X([A,B])`
+as an equality in the original Clifford carrier. There is no unproved closure, parity, group-membership or faithfulness assumption in this application.
+
+The accepted DA membership/equality equivalence then gives actual range membership of these commutators. CY's inverse laws transfer this to arbitrary x,y in R, and its exact range/span equality transfers closure to arbitrary values in the native half-bivector span. These are ambient commutator closure and exact native bracket-law results. They do not claim closure under ordinary multiplication or that R is an associative/unital subalgebra.
+
+The source remains `spinGroup source9Quadratic`, the original Clifford carrier and source labels remain unchanged, and the gamma target remains the original real 16-by-16 matrices. The native model, enumeration and positive-half/quarter normalization are preserved. No paired-48 carrier or replacement representation is introduced.
+
+**Independent controls that passed.** The audit reconstructs the same PBW norm independently and checks inherited source, parameter, native-matrix and original-gamma topologies. It checks the original carrier identity and cardinalities 9/16, ground matrix LieRing and gamma NormedSpace capabilities, and the faithful real scalar action on GammaMatrix actually used in scalar elimination.
+
+All general evenness, full-vector commutation and zero-gamma hypotheses are re-elaborated explicitly. The audit checks range evenness, defect evenness, unconditional defect zero, exact native bracket equality, actual range closure for both subtype inputs and ambient inputs with membership witnesses, and native span closure. It independently checks that DA provides the defect's full-vector commutation and zero-gamma image, checks its coordinate contraction zeros, and preserves compatibility with the actual original-gamma LieHom bracket image.
+
+The scalar controls show that arbitrary real scalars are even commutants and that gamma evaluation detects nonzero scalar identity. The parity control proves that every nonzero original coordinate vector is excluded from the even subalgebra, using the actual grade involution and vector embedding. The audit retains scalar identity's exclusion from R, rejection of doubled positive-half unit-direction normalization, and global noninjectivity of the separate natural nine-vector group map. These controls prevent extending the scalar theorem beyond its parity hypotheses or mistaking commutator closure for associative/unital closure.
+
+**Successful method and preserved negative knowledge.** The proof reuses the arbitrary-element CQ/CR/CT interfaces under their actual hypotheses, rather than applying a Spin-specific scalar-kernel theorem to an arbitrary algebra element. It proves evenness before changing graded commutation into ordinary commutation. It transports contraction zeros and scalar equalities through the exterior linear equivalence without assuming that equivalence preserves products. It uses faithfulness only on real scalars in the unchanged gamma target. Typed consumer equalities and exact inverse laws preserve the successful techniques from CZ/DA.
+
+All earlier red evidence remains historical, including DA's independent column-to-entry audit failure and its accepted explicit dot-product repair. DB's first green does not erase or relabel those failures. No authored admission, theorem/control weakening, linter suppression, proof-limit increase, new norm/topology/global instance or source/gamma/order replacement was introduced.
+
+**Reproducibility and next bounded step.** The successful gate retained 102 pins, Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, unchanged Actions pins, warnings-as-errors in both fresh phases, candidate olean deletion/nonempty checks, exact nine-root multiplicities, the three-axiom whitelist and timeouts 1500/3150/840/600 seconds.
+
+The accepted algebraic closure and native bracket law now justify a subsequent bounded packaging step: equip the actual derivative range with the canonical ambient Clifford commutator Lie-subalgebra structure and package the existing native real-linear equivalence as a Lie equivalence. Preserve the literal underlying submodule/value maps and explicitly check ambient/subtype brackets and inverse laws when doing so. That packaging was deliberately not performed in DB.
+
+Source tangent identification, translated atlas compatibility, source manifold/Lie-group structures and the full F10BC manifold differential remain separate. Further global source reconstruction, target-surjectivity/covering/lift results, upstream integration and BFSS physical conclusions remain open.
+
+This acceptance-only commit changes the canonical handoff alone. The source, audit and workflow remain the exact tested blobs above. Every historical byte beginning at the original As-of field is preserved and this event is appended. The research branch remains the only write target; main, frozen FCP and upstream integration remain unchanged, with no upstream PR opened.
