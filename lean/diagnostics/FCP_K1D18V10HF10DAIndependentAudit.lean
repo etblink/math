@@ -105,7 +105,17 @@ example (A B : N) (i j : SpaceIndex) :
       I (source9CoordinateVector j) * K A B) i = (A.val * B.val - B.val * A.val) i j := by
   have h := congrArg (fun a : C => source9CliffordVectorProjection a i)
     (source9NativeSkewDerivativeRange_commutator_pair_vector A B (source9CoordinateVector j))
-  simpa only [source9CliffordVectorProjection_ι, source9CoordinateVector, Matrix.mulVec_single_one] using h
+  have hprojected :
+      source9CliffordVectorProjection (K A B * I (source9CoordinateVector j) -
+        I (source9CoordinateVector j) * K A B) i =
+      ((A.val * B.val - B.val * A.val).mulVec (source9CoordinateVector j)) i := by
+    simpa only [source9CliffordVectorProjection_ι] using h
+  have hcolumn : ((A.val * B.val - B.val * A.val).mulVec (source9CoordinateVector j)) i =
+      (A.val * B.val - B.val * A.val) i j := by
+    change dotProduct ((A.val * B.val - B.val * A.val) i) (Pi.single j (1 : ℝ)) =
+      (A.val * B.val - B.val * A.val) i j
+    rw [dotProduct_single, mul_one]
+  exact hprojected.trans hcolumn
 example (r s : SpaceIndex) (z : SpaceIndex → ℝ) :
     X (source9CoordinatePlaneInSo r s) * I z - I z * X (source9CoordinatePlaneInSo r s) =
       I ((coordinatePlane9 r s).mulVec z) :=
