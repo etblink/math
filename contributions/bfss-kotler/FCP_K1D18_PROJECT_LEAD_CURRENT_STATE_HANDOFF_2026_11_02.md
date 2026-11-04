@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10CY is the next candidate; CI is pending.** Latest accepted mathematics remains F10CX, [run 41888219932](https://github.com/etblink/math/actions/runs/41888219932), tested `595c8e58f1444a2f283695c9dd6995ed8cc77dfc`. CY names that exact chart-inverse derivative and its actual range, proves the range equals the real span of the original increasing-coordinate half-bivectors, and constructs real-linear equivalences from parameters and canonical native skew matrices to the range. Its projected commutator recovers every native matrix entry. These twelve roots require fresh strict compilation and independent type/axiom qualification. Lie-bracket compatibility, source tangent identification, manifold structures and the full F10BC differential comparison remain open. All historical evidence is preserved.
+> **Latest accepted mathematical increment is F10CY**, [run 41893512389](https://github.com/etblink/math/actions/runs/41893512389), tested `93e2001e330ad5d3dc2150e6d9281295282dfc04`. All twelve roots passed fresh strict compilation and the complete independent PBW/type/axiom audit on CY’s first run (24 reports). The exact chart-inverse derivative’s actual range equals the real span of the original increasing-coordinate positive half-bivectors. Parameters and canonical native skew matrices are real-linearly equivalent to this range, and the projected commutator recovers every native matrix entry. Lie-bracket compatibility, source tangent identification, manifold structures and full F10BC differential comparison remain open. All historical evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4255,3 +4255,51 @@ Before publication, YAML parsed, each run block passed bash syntax, both embedde
 **Acceptance boundary and next bounded work.** CY is pending the complete strict gate. Verify tested SHA, terminal run/job steps, decoded fresh source and audit output, exact twelve-root multiplicities, allowed axioms, terminal marker, artifact metadata and all three blobs before accepting; preserve and causally classify any red. If accepted, this characterizes the actual derivative image as the native half-bivector span and gives its canonical native real-linear coordinates and entrywise original-vector action. Next inspect the existing original-gamma linear/Lie comparison and the source commutator interfaces to determine the smallest exact bridge for this range, keeping bracket compatibility and full representation differential qualification separate.
 
 Source tangent identification, translated atlas and compatibility, manifold/Lie-group structures, full F10BC manifold differential comparison, global reconstruction, target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open. The historical body and every prior red/green record are preserved.
+
+
+## 2026-11-04 Project Lead acceptance — F10CY actual derivative range and native half-bivector span
+
+**Exact successful evidence.** The owner reported [run 41893512389](https://github.com/etblink/math/actions/runs/41893512389) green. Direct run and job [126796799100](https://github.com/etblink/math/actions/runs/41893512389/job/126796799100) metadata both report completed/success, attempt 1, tested commit `93e2001e330ad5d3dc2150e6d9281295282dfc04`, tree `21c81e31e07d69fac9019ff8c5da5616fb855461`. All ten job steps completed successfully. The live research ref still matched this tested commit before the acceptance-only update. The authoritative handoff read was blob `3ec6016c8bc09ee2b33041a9de03433a72d78877`.
+
+**Fresh strict qualification.** All 92 exact pins, source-scope checks, Lean 4.34.1/Mathlib restoration and accepted CX ancestry rebuild passed. Fresh warnings-as-errors source compilation and the separate independent audit each produced exactly the twelve expected public roots once (24 total reports), with all axiom sets contained in `{propext, Classical.choice, Quot.sound}`. The decoded log includes the tested SHA. No sorryAx or Lean source/audit warning or error diagnostic is present, including categorized diagnostic spellings. After excluding timestamps and ANSI command echoes, scope marker `V10H_F10CY_SOURCE_PIN_IDENTITY_CHART_DERIVATIVE_RANGE_SCOPE_PASS` and terminal marker `V10H_F10CY_IDENTITY_CHART_DERIVATIVE_RANGE_TYPES_AXIOMS_PASS` each appear exactly once as output. CY passed its first run; no repair, statement/control weakening, global instance addition or resource-limit increase was needed.
+
+**Exact tested blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CYIdentityChartDerivativeRange.lean` — `ad1050dd9b21c7a81b6e42dde20a07b5594a5732`.
+- `lean/diagnostics/FCP_K1D18V10HF10CYIndependentAudit.lean` — `c8a1e77e1e52b2d8fcbbe64e7144271a6dfe8378`.
+- `.github/workflows/bfss-kotler-v10h-f10cy-identity-chart-derivative-range-strict.yml` — `04c1c79e95284ff286eec8032a1fd048a9ba80a4`.
+
+All three authoritative tested blobs match the published candidate. GitHub reports artifact [13355194239](https://github.com/etblink/math/actions/runs/41893512389/artifacts/13355194239), named `bfss-v10h-f10cy-identity-chart-derivative-range-93e2001e330ad5d3dc2150e6d9281295282dfc04-1`, 6,296 bytes, unexpired, associated with the same tested SHA, ZIP digest `af1d316bee0d2908b7fc8e4799feaec2dfa6573c0fff973c5b444b8c42d0c823`. This is GitHub-reported archive metadata, not an independently downloaded binary/digest comparison.
+
+**Accepted declaration inventory.**
+- `source9IdentityChartDerivative`
+- `source9IdentityChartDerivativeRange`
+- `source9NativeHalfBivectorSpan`
+- `source9IdentityChartDerivative_apply`
+- `source9IdentityChartDerivative_coordinate`
+- `source9IdentityChartDerivative_range_eq_halfBivectorSpan`
+- `source9IdentityChartDerivativeRangeEquiv`
+- `source9IdentityChartDerivativeRangeEquiv_apply`
+- `source9NativeSkewDerivativeRangeEquiv`
+- `source9NativeSkewDerivativeRangeEquiv_apply`
+- `source9NativeSkewDerivativeRangeEquiv_symm`
+- `source9NativeSkewDerivativeRangeEquiv_projected_commutator`
+
+**Mathematical scope.** L is the literal already accepted fderiv at zero of CW's actual identity-chart inverse, coerced to the original source Clifford algebra. Its range is the actual `LinearMap.range L.toLinearMap` in that Clifford carrier. S is independently defined as the real span of the positive half-bivectors `(1/2) • (ι(e_r) * ι(e_s))` indexed by the existing native increasing-pair subtype r<s. The qualified equality is range(L)=S.
+
+The proof of range≤S uses the unchanged ordered finite sum and submodule closure. The reverse inclusion chooses the already specified enumeration inverse for each original increasing pair and applies the exact unit-coordinate derivative formula. The positive half factor, original Clifford generators, native orientation and existing enumeration are preserved. No new source group or abstract image carrier replaces the original Spin group.
+
+The qualified injective derivative gives a real-linear equivalence from the 36 parameters onto this actual range. Composing with the inverse of CC's accepted canonical native skew model gives a real-linear equivalence from `LieAlgebra.Orthogonal.so SpaceIndex ℝ` to the same range, with literal forward Clifford value and inverse native model exposed. For every native skew A and original matrix indices i,j, projecting the Clifford commutator of its corresponding range value with the jth original embedded coordinate vector recovers A.val i j. This supplies the exact native-vector normalization of the range coordinates.
+
+These are real-linear equivalences and a source-exact projected action identity. CY does not equip the range with a Lie-subalgebra structure, prove bracket preservation, identify a formal source tangent space or establish a manifold differential.
+
+**Independent audit completed.** The audit reconstructed the original PBW norm from the accepted basis through exactly the three intended local registrations, checked named norm structures and inherited source/matrix/parameter topologies, and elaborated ground NormedSpace and Module capability controls. It checked the literal actual derivative and accepted velocity, the genuine LinearMap range and existential witnesses, and the exact native increasing-pair half-bivector span.
+
+It re-elaborated all twelve public interfaces, every-direction and coordinate formulas, both range/span inclusions through the equality, native generator membership, both real-linear equivalences and their inverse laws, the forward/inverse formulas, and agreement with CC's native model on parameter directions. The complete projected matrix-entry identity was checked, and the inverse native matrix was recovered entrywise from an arbitrary actual range element.
+
+The scalar identity is independently excluded from the range by the derivative's reversal sign and faithful real scalar algebraMap; the exclusion transfers to S and proves S is not the whole Clifford space. Unit-direction doubling is rejected, preserving the positive-half normalization control. CU's global natural-map noninjectivity remains explicit. No source tangent or bracket-preservation assumption is used by these controls.
+
+**Successful methods retained.** The typed value equality/separate finite-sum method learned from CX supplied unit-coordinate evaluation without imported derivative rw matching. Actual range witnesses and explicit enumeration equalities supplied the geometric span comparison. Existing Mathlib `LinearEquiv.ofInjective` and CC's exact native model supplied the equivalences. Complete typed Clifford/operator/matrix equalities and congrArg transport supplied the projected action identity. The same independently reconstructed PBW structures and ground capability checks were retained. No expansion of the 36-factor word or 512-coordinate Clifford basis, new norm/topology/instance, authored admission, native_decide, linter suppression or larger proof limits was needed. The three CX red attempts and every earlier red remain archived.
+
+**Next bounded work and scope ceiling.** F10CY is now accepted at these exact tested declarations. Next inspect and reuse BK's original-gamma evaluation of each positive source half-bivector and BB's canonical native skew LieHom to compare the actual Clifford range evaluation with the existing original-gamma linear map on arbitrary native skew inputs. The qualified range/span equality and canonical parameter/native equivalences provide the domain bridge for extending the known coordinate-plane comparison. Keep that original-gamma vector-space comparison separate from range bracket closure/preservation and from a formal group-map manifold differential.
+
+Source tangent identification, translated atlas and compatibility, manifold/Lie-group structures, bracket compatibility for this range, full F10BC differential comparison, global source reconstruction, full target surjectivity, determinant/covering results, upstream integration and BFSS physical conclusions remain open. This acceptance-only commit changes the canonical handoff alone and preserves its historical body verbatim.
