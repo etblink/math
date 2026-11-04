@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CN**, [run 41787412802](https://github.com/etblink/math/actions/runs/41787412802), tested `d0c1365f71a378fdc0108f6e6a9a20418a6f1fd4`. **F10CO red evidence is preserved:** [run 41789852567](https://github.com/etblink/math/actions/runs/41789852567) failed fresh source compilation because the `ContDiff` scope required by `ℕ∞ω` was omitted; its independent audit was skipped. The targeted repair adds only that source scope, updates its exact pin and adds a preflight scope guard. All eight declarations, proofs, audit, limits and whitelist remain unchanged. The repaired candidate is pending strict CI. Original source local kernel control, source Spin equality and word-image neighborhood coverage remain open.
+> **Latest accepted mathematical increment is F10CO**, [run 41791713031](https://github.com/etblink/math/actions/runs/41791713031), tested `404ed0908840b3d509069666fad2cf4ef9c20738`. All eight roots passed fresh strict compilation and the unchanged independent PBW/locality/type/axiom audit. There is now an explicit open identity neighborhood in the original source PBW topology where reconstruction is defined, both actual natural matrices meet CN's recovery conditions, and reconstruction preserves the full natural matrix. The earlier notation-scope red and one-line repair are preserved. Original source local fiber/kernel control, source Spin equality and word-image neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -3148,3 +3148,45 @@ Repair blobs:
 **Method lesson:** when reusing a Lean proof, preserve its scoped notation requirements along with its imports and typeclass context. A source-file import does not activate the imported module's local notation scope. Diagnose the first parser failure before altering continuity arguments or downstream neighborhood proofs. Preserve the unchanged independent audit as the check on the repair rather than weakening its requirements.
 
 **Next action and ceiling:** rerun the same complete F10CO strict gate. Require fresh source compilation, all eight exact roots in each phase, only the three permitted axioms, no actual Lean warning/error or `sorryAx`, and the actual terminal classifier `V10H_F10CO_RECOVERY_SOURCE_NEIGHBORHOOD_TYPES_AXIOMS_PASS`. The independent audit has not run yet and may expose further issues; retain any such evidence before repair. F10CN remains the accepted ceiling until complete qualification. Original source local kernel control, source Spin equality, word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. No main/frozen-FCP/upstream change or upstream PR is introduced.
+
+
+## F10CO accepted — original-source identity neighborhood and full natural-matrix reconstruction
+
+**Verified strict result:** [run 41791713031](https://github.com/etblink/math/actions/runs/41791713031), tested `404ed0908840b3d509069666fad2cf4ef9c20738`, attempt 1, job `126446364949`, completed/success with all ten recorded steps successful. Exact ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CN rebuild, fresh warnings-as-errors F10CO compilation, complete unchanged independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CO_RECOVERY_SOURCE_NEIGHBORHOOD_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total, using only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, separate phase/root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CORecoverySourceNeighborhood.lean` | `211e593bbaa95d85ff6767448de3f3763d7d293d` |
+| `lean/diagnostics/FCP_K1D18V10HF10COIndependentAudit.lean` | `308373e8086b0846b68cdc1cd32cb6f32c9aa050` |
+| `.github/workflows/bfss-kotler-v10h-f10co-recovery-source-neighborhood-strict.yml` | `a93c36f72f91c08bd92c215e6179a3f98c1a504e` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9NaturalMatrix_continuous_pbw`
+2. `source9SpinCoordinateReconstruction_one`
+3. `source9SpinNaturalMatrixRecoveryNeighborhood`
+4. `source9SpinNaturalMatrixRecoveryNeighborhood_isOpen_pbw`
+5. `source9SpinNaturalMatrixRecoveryNeighborhood_one_mem`
+6. `source9SpinNaturalMatrixRecoveryNeighborhood_mem_nhds_one_pbw`
+7. `source9SpinNaturalMatrixRecoveryNeighborhood_conditions`
+8. `source9NaturalMatrix_reconstruction_eq_on_sourceNeighborhood`
+
+Retained artifact `13304456669`, `bfss-v10h-f10co-recovery-source-neighborhood-404ed0908840b3d509069666fad2cf4ef9c20738-1`, 5311 bytes, GitHub-reported ZIP SHA-256 `a7d537c3c4159b42f4d4bf8f31c9b8c7c310fbc6087608b5c85e64094382881b`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** continuity of the full actual natural matrix on the original source follows entrywise from the accepted ambient vector action, using every original coordinate column and row. The actual reconstruction sends the original source identity to itself. The set `source9SpinNaturalMatrixRecoveryNeighborhood` is exactly `(D ∩ (M ∘ R) ⁻¹' N) ∩ M ⁻¹' N`: CJ reconstruction domain `D`, actual reconstruction `R`, underlying actual natural matrix `M`, and CN matrix recovery neighborhood `N`.
+
+This set is open in the inherited original-source PBW topology and contains the original source identity, hence is a neighborhood of that identity. Its openness uses continuity of reconstruction only on its accepted open domain, through `ContinuousOn.isOpen_inter_preimage`; it does not assume global continuity of the totalized inverse or reconstruction. Membership supplies all three CN conditions: reconstruction is defined in its accepted domain, and both actual reconstructed/original natural matrices lie in the same matrix recovery neighborhood.
+
+Consequently, for every original source element in this explicit identity neighborhood, the full actual natural matrix of reconstruction equals the full actual natural matrix of that element. All original matrix entries are recovered. This advances CN's conditional matrix theorem to a statement valid throughout an original-source identity neighborhood. It still does not conclude equality of the underlying source Spin elements.
+
+**Independent audit:** the audit reconstructs the accepted PBW coordinates and induced normed additive group/compatible normed space independently on the original Clifford carrier, checks their definitional agreement with all three named structures, and checks the exact inherited source and standard matrix topologies. It checks full natural-matrix continuity and its complete equality to the original ambient Clifford multiplication/reversal/projection formula. Reconstruction at the identity, the literal selected intersection, its exact membership characterization, openness, identity membership, nonemptiness and identity-neighborhood property are checked.
+
+It checks all containment conditions and reconstruction continuity restricted to this set. Full natural-matrix equality is independently typed pointwise, as `Set.EqOn`, eventually in the original source identity filter, on arbitrary matrix entries, in the actual orthogonal-group subtype, and through the literal finite-word reconstruction formula. The audit retains the exact conditional source fixed-point/word-image equivalence and smaller-set coverage criterion, exposing source equality as a separate obligation. It also retains the `I,-I` counterexample to global upper-coordinate injectivity on the orthogonal group, without placing `-I` in the actual source Spin image.
+
+**Red-to-green method:** the earlier red [41789852567](https://github.com/etblink/math/actions/runs/41789852567) at `4259ba59c63413b93f650d21482775a33eb42c0a` remains preserved above with its exact parser diagnostic and retained artifact. The repair adds only the missing `ContDiff` scope to activate `ℕ∞ω`, updates the exact source pin and adds a required-scope preflight guard. All eight statements, definitions, proof bodies and the independent audit remain unchanged. The clean source and previously skipped unchanged audit now both pass. Preserve scoped notation alongside imports and local typeclass context when reusing a proof; diagnose the first parser failure before changing downstream mathematical arguments. No authored admission, proof-limit increase, warning suppression, whitelist relaxation, carrier/gamma substitution or norm/topology replacement was introduced. Source uses only the two existing accepted PBW structures locally; the audit's exact independent reconstruction registrations remain scope-checked.
+
+**Next bounded plan and ceiling:** inspect the imported original-source vector-action fiber/kernel lemmas and their precise assumptions before constructing a local fiber-control candidate. Distinguish the original nine-vector action from the previously studied gamma/Spin(48) representations; do not transfer their kernel conclusions without a proved source-exact bridge. Reuse accepted algebraic/PBW and topological separation results where their interfaces match. Any source-equality step must independently justify why equal full natural matrices force the selected nearby original source elements to coincide. Word-image neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
