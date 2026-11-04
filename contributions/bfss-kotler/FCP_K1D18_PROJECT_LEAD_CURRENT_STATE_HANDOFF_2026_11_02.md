@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CL**, [run 41782743051](https://github.com/etblink/math/actions/runs/41782743051), tested `1eb18d6e7979c134480c643e29c99cbdfb2d1fdf`. **Current candidate F10CM:** a local inverse for the same completion map on the full original matrix space, exact forward function, zero source/target neighborhoods, both local inverse laws and injectivity restricted to its source. Eight roots await complete strict CI. The audit retains global noninjectivity and checks exclusion of the known collision from the local source. Full local orthogonal-matrix recovery, original source kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
+> **Latest accepted mathematical increment is F10CM**, [run 41784700161](https://github.com/etblink/math/actions/runs/41784700161), tested `3626ee413b72781aa34d8344fbc79963c598b03f`. All eight roots passed fresh strict compilation and the independent literal-function/locality/type/axiom audit. The same completion map now has a local inverse on the original full matrix space, exact forward function, zero source/target neighborhoods, both local inverse laws and injectivity on its source. The audit retains global noninjectivity and excludes the known collision from that source. Full local orthogonal-matrix recovery, original source kernel control and source neighborhood coverage remain open. All prior evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2967,3 +2967,43 @@ The audit retains CK/CL's global counterexample and `¬ Function.Injective sourc
 **Verification discipline:** preserve accepted ancestry pins through CL's repaired source and unchanged audit, add exact CM source/audit pins, rebuild CL and freshly compile CM and its independent audit with warnings-as-errors. Require exactly eight expected permitted root reports in each phase and terminal classifier `V10H_F10CM_COMPLETION_LOCAL_INVERSE_TYPES_AXIOMS_PASS`. Keep the three-axiom whitelist, 840/600-second fresh-phase caps, no-instance-registration guard, legacy conditional-alias guard and evidence preservation. No new norm/topology/instance, gamma/carrier replacement, authored admission, linter suppression or custom proof limit is introduced. Local exact hashes, accepted-pin preservation, eight-root scope preflight, YAML, all three trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; all eight roots and the new audit controls remain candidates until complete strict CI succeeds.
 
 **Next action and ceiling:** inspect complete fresh compilation and independent literal-function/locality audit before qualification. If accepted, combine CM's local ambient injectivity with CK's exact orthogonal-completion identity to prove full matrix equality for orthogonal inputs with equal native upper coordinates, requiring both perturbations `A - 1` and `B - 1` to lie in this source neighborhood. Then inspect the corresponding actual original/reconstructed natural matrices under those same explicit hypotheses before selecting any smaller source Spin neighborhood. Original source local fiber/kernel control remains separate even after full natural-matrix equality. Source image openness/coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. Preserve all previous red and green evidence.
+
+
+## F10CM accepted — completion local inverse and ambient matrix local injectivity
+
+**Verified strict result:** [run 41784700161](https://github.com/etblink/math/actions/runs/41784700161), tested `3626ee413b72781aa34d8344fbc79963c598b03f`, attempt 1, job `126424063819`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CL rebuild, fresh warnings-as-errors CM compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CM_COMPLETION_LOCAL_INVERSE_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The exact tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CMCompletionLocalInverse.lean` | `04281724e6305c3d3d06c001fd3e37b91b17962f` |
+| `lean/diagnostics/FCP_K1D18V10HF10CMIndependentAudit.lean` | `db0462336ba7bd677cec97de3aa8a94456d9f820` |
+| `.github/workflows/bfss-kotler-v10h-f10cm-completion-local-inverse-strict.yml` | `610c676222be3e0177348bfa53d71f3211c3fc50` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9OrthogonalCompletionMap_hasStrictFDerivAt_refl`
+2. `source9OrthogonalCompletionLocalHomeomorph`
+3. `source9OrthogonalCompletionLocalHomeomorph_coe`
+4. `source9OrthogonalCompletionLocalHomeomorph_zero_mem_source`
+5. `source9OrthogonalCompletionLocalHomeomorph_zero_mem_target`
+6. `source9OrthogonalCompletionLocalHomeomorph_left_inv`
+7. `source9OrthogonalCompletionLocalHomeomorph_right_inv`
+8. `source9OrthogonalCompletionMap_injOn_source`
+
+Retained artifact `13300958361`, `bfss-v10h-f10cm-completion-local-inverse-3626ee413b72781aa34d8344fbc79963c598b03f-1`, 4290 bytes, GitHub-reported ZIP SHA-256 `e4077b02128cc7d24f1b066fd9789882e455a6f1a4778ab97c351943b035f985`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** CL's strict literal identity derivative is exposed through the identity continuous linear equivalence on the original full matrix space. The inspected strict inverse-function constructor yields `source9OrthogonalCompletionLocalHomeomorph`, with domain and codomain `Matrix SpaceIndex SpaceIndex ℝ` and complete forward function exactly `source9OrthogonalCompletionMap`. Zero belongs to both open source and target. The inverse recovers each matrix in the source from its completion value, and the completion map recovers each matrix in the target from its inverse. Both laws retain their explicit source/target membership assumptions.
+
+Consequently the actual completion map is injective on this constructed source set. Both matrices must belong to that source. This is ambient local injectivity of the accepted completion map, not yet a theorem recovering orthogonal matrices from upper entries or recovering original source Spin elements from their natural matrices.
+
+The independent audit checks the standard matrix topology, completeness, literal identity equivalence/operator interface, exact open-partial-homeomorphism type, complete forward equality, zero memberships and both open sets as zero neighborhoods. It checks inverse continuity and inverse value zero, local inverse laws and injectivity. A separately proved complete function equality connects the map with its original-label piecewise finite-sum formula. The audit checks the literal forward entry formula, complete literal left inverse, every literal right-inverse entry, injectivity of that expanded map and recovery from equality of every completion entry. Typed matrix-entry congruence avoids the earlier projected-target normalization failures.
+
+**Locality controls:** the unchanged global counterexample remains checked: completion at zero and at the perturbation `(-1 : Matrix SpaceIndex SpaceIndex ℝ) - 1` is zero, so global ambient injectivity is false. The audit additionally proves that this nonzero perturbation cannot belong to the constructed local source, because local injectivity and the accepted zero source member would then equate their distinct original diagonal entries. Thus locality is retained both in theorem statements and in an explicit exclusion check. No assertion is made about the negative identity occurring in the actual source Spin image.
+
+**Successful method:** reuse the accepted CG constructor and typed inverse-identity transport on the full native matrix space. Supply the actual forward map and identity continuous linear equivalence explicitly, retain complete forward-function equality, and transport the generic inverse laws with typed matrix-function evaluation/congruence. Derive local injectivity from the actual left inverse. This first CM strict run passed without repair. No norm/topology/instance replacement, source/gamma substitution, authored admission, linter suppression, relaxed whitelist or proof-limit increase was introduced.
+
+**Next bounded plan and ceiling:** combine CM's local ambient injectivity with CK's exact orthogonal completion identity. For native orthogonal matrices `A` and `B` with equal accepted upper projections, require both perturbations `A - 1` and `B - 1` to belong to CM's source before concluding the full matrices equal. Audit the complete matrix conclusion and all neighborhood/membership hypotheses, then apply it to the actual original/reconstructed natural matrices under those same conditions. Choosing a suitable smaller original-source neighborhood and controlling the original source representation's local fibers remain separate obligations. Full local orthogonal-matrix recovery, original source local kernel control, source Spin neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every earlier red and green record.
