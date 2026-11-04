@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **Latest accepted mathematical increment remains F10CK**, [run 41754991438](https://github.com/etblink/math/actions/runs/41754991438), tested `b106e809965b8790d7679c74389e8a21fa6c62b0`. **F10CL second strict run 41780259692 is red:** the earlier Gram zero-sum and Pi-target failures are resolved, but three scalar-branch derivative steps still leave `L + 0` or `2⁻¹ • 0` unreduced. The audit was skipped and zero CL roots are qualified. The bounded repair transports explicit operator and function equalities in the whole-map derivative proof. All eight statements, the corrected Gram proof, audit and strict limits remain unchanged. Fresh strict CI is required. Local matrix recovery, source kernel control and neighborhood coverage remain open.
+> **Latest accepted mathematical increment is F10CL**, [run 41782743051](https://github.com/etblink/math/actions/runs/41782743051), tested `1eb18d6e7979c134480c643e29c99cbdfb2d1fdf`. All eight roots passed fresh strict compilation and the independent literal-function/full-operator/type/axiom audit. CK's same completion map is every-order smooth and has the literal identity ordinary and strict derivative at zero on the original full matrix space. Both CL reds and the ambient-global-noninjectivity control remain preserved. Next is a local inverse and injectivity construction on that full matrix space with explicit zero neighborhoods; local matrix recovery, original source kernel control and source neighborhood coverage remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -2882,3 +2882,45 @@ Repaired files:
 The workflow updates only the candidate source pin and adds scope assertions for the local addition bridge, literal addition/scalar-zero equalities and full function transports. All accepted ancestry/audit pins, eight-root requirements, warnings-as-errors, three-axiom whitelist, instance/legacy-alias guards, global-noninjectivity control and 840/600-second fresh-phase caps remain. Local exact hashes, one-proof scope, unchanged statements/other proofs/audit, source-only pin change, scope preflight, YAML, trigger paths, every shell block and both embedded Python blocks pass. No local Lean executable is available; fresh source and independent audit success remain required.
 
 **Method lesson and next action:** once operator simplification fails in a representation-sensitive derivative statement, inspect the complete remaining operator algebra rather than repairing just its first sum. Addition of zero and scalar multiplication of zero need the same standalone typed-equality/proposition-transport treatment. Normalize function shape separately from the derivative operator. Preserve and reuse the portions the new run actually elaborates; do not repeat the earlier failed Pi rewrite or raise limits. Inspect both fresh phases before qualification. Local matrix injectivity/recovery, original source local fiber/kernel control, source neighborhood coverage, subgroup charts, tangent identifications, the full F10BC manifold differential and BFSS physical conclusions remain open.
+
+
+## F10CL accepted — completion smoothness and strict matrix identity derivative
+
+**Verified strict result:** [run 41782743051](https://github.com/etblink/math/actions/runs/41782743051), tested `1eb18d6e7979c134480c643e29c99cbdfb2d1fdf`, attempt 1, job `126417824440`, completed/success with all ten recorded steps successful. Exact accepted ancestry/candidate pins, pinned Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration, accepted CK rebuild, fresh warnings-as-errors CL compilation, complete independent audit and evidence preservation passed.
+
+The actual terminal classifier is `V10H_F10CL_COMPLETION_SMOOTH_STRICT_DERIVATIVE_TYPES_AXIOMS_PASS`. Both fresh Lean phases report exactly the eight expected fully qualified roots, each once per phase, sixteen total. All reports use only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or source-level warning/error appears. The exact tested commit, terminal run state, all ten step verdicts, decoded log, actual terminal marker, root multiplicities, axiom whitelist, artifact metadata and all three tested blob identities were checked before acceptance.
+
+Accepted files and exact blobs:
+
+| File | Blob SHA |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean` | `902b063ca869c7efeea21828cdf3f97847c96b70` |
+| `lean/diagnostics/FCP_K1D18V10HF10CLIndependentAudit.lean` | `4df471178bd0045ccdf7fea3e12da06d78bd0e9b` |
+| `.github/workflows/bfss-kotler-v10h-f10cl-completion-smooth-strict-derivative-strict.yml` | `79295806960a04903b548671a267225bc12da589` |
+
+All eight qualified roots are in `FCP.BFSSPairedSpin9Clifford`:
+
+1. `source9CompletionEntryCLM`
+2. `source9CompletionEntryCLM_apply`
+3. `source9CompletionGramEntry_contDiff`
+4. `source9CompletionGramEntry_hasFDerivAt_zero`
+5. `source9OrthogonalCompletionMap_contDiff`
+6. `source9OrthogonalCompletionMap_hasFDerivAt_zero`
+7. `source9OrthogonalCompletionMap_fderiv_zero`
+8. `source9OrthogonalCompletionMap_hasStrictFDerivAt_zero`
+
+Retained artifact `13300366721`, `bfss-v10h-f10cl-completion-smooth-strict-derivative-1eb18d6e7979c134480c643e29c99cbdfb2d1fdf-1`, 4943 bytes, GitHub-reported ZIP SHA-256 `f8561719b722c39ac1a183ca265f3240532a9a9f6e35d74bedd794e44b2036fa`. This records GitHub's metadata; no independent binary archive digest calculation is claimed.
+
+**Qualified mathematical content:** the original row/column evaluation is bundled continuously and linearly with its exact entry formula. Every actual Gram entry `(B.transpose * B) i j` is `ContDiff ℝ n` for every `n : ℕ∞ω` and has the literal zero CLM as its ordinary derivative at zero. The same accepted CK completion map is `ContDiff ℝ n` at every order on the original full matrix perturbation space. Its ordinary derivative at zero is exactly `ContinuousLinearMap.id ℝ (Matrix SpaceIndex SpaceIndex ℝ)`, its full `fderiv` equals that identity, and its strict derivative at zero is that same literal identity operator.
+
+The proof uses scalar entry evaluation, scalar products and finite sums, followed by assembly of the two original Pi levels. It does not install a new norm, topology, matrix normed ring or instance. The matrix carrier and completion function remain exactly CK's. The diagonal factor and original spatial labels are unchanged.
+
+The independent audit checks the standard matrix product topology before/after the elementwise norm scope and completeness of the same space. It checks exact entry evaluation, every-order Gram regularity, zero Gram derivative and evaluation on every original matrix direction. It checks every-order completion smoothness, full ordinary/strict identity derivative and full fderiv equality, including every direction and every original row/column entry. Separately proved complete function equalities transport the Gram and completion results to their literal finite-sum formulas. Thus the strict derivative applies to the fully expanded accepted map, not a surrogate function.
+
+The unchanged audit again proves the ambient-global-noninjectivity control using zero and the perturbation from the identity to the negative identity. This negative result remains compatible with the strict derivative at zero and requires any subsequent injectivity theorem to retain locality. No assertion is made that the negative identity is an actual natural source Spin image.
+
+**Repair outcomes and successful method:** first red [41778629430](https://github.com/etblink/math/actions/runs/41778629430) exposed an unreduced finite zero-operator sum and a rewrite inside a matrix/Pi target that was not type-correct under the rewrite matcher's implicit transparency. Second red [41780259692](https://github.com/etblink/math/actions/runs/41780259692) showed those repairs working and isolated the remaining scalar-branch additions/scalar-zero operators and function shapes. Both failed source runs remain preserved; neither qualified any CL roots.
+
+The successful implementation proves exact operator equalities independently and transports complete typed derivative predicates with `Eq.mp (congrArg ...)`. It separately normalizes the function argument with complete named function equalities. The full derivative is assembled as an explicit nested Pi CLM and identified with the literal identity by extensionality, outside the fragile projected target. This method covers finite sums, addition of zero, scalar multiplication of zero, division/multiplication function equality and branch functions consistently. Every theorem statement and the independent audit remained unchanged across the repairs. No authored admission, linter suppression, relaxed whitelist, proof-limit increase, gamma/carrier replacement or norm/topology change was introduced.
+
+**Next bounded plan and ceiling:** instantiate the pinned strict inverse-function constructor on this same full matrix completion map, using its strict literal identity derivative, the identity continuous linear equivalence and standard matrix completeness. Independently audit the exact forward function, zero source/target memberships, open neighborhoods, local inverse identities and injectivity with explicit source membership. Then combine local ambient injectivity with CK's orthogonal-completion equality only when both perturbations lie in the established neighborhood. The global negative control forbids dropping those hypotheses. Full local natural-matrix recovery, original source local fiber/kernel control, source Spin neighborhood coverage, subgroup charts, tangent identifications, determinant/covering results, the full F10BC manifold differential and BFSS physical conclusions remain open. This acceptance-only update changes only the canonical handoff and preserves every prior red and green record.
