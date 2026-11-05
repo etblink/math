@@ -5142,3 +5142,19 @@ Executed 110-pin/scope preflight passes; source/audit seven-root print inventori
 - `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DFCoordinateDerivativeInvertibility.lean` — `7115e6c74865b6b60d957e05b0b8297df7ca198a`.
 - `lean/diagnostics/FCP_K1D18V10HF10DFIndependentAudit.lean` — `c9f5c235c88775bec1a70aeb0c9ea77f29018b45`.
 - `.github/workflows/bfss-kotler-v10h-f10df-coordinate-derivative-invertibility-strict.yml` — `d94db904e9478ff97e9bcf310d343377eb10e596`.
+
+
+## 2026-11-05 F10DF source passed, independent-audit conversion red and method-guided repair
+
+[Run #42117716643](https://github.com/etblink/math/actions/runs/42117716643) tested `7d77fb4fe8d7680dd7c33f7c3195e4c185549f6b`, job `127561674580`. Exact pin/scope, environment, accepted ancestry, fresh DE parent and all seven DF source roots passed. The independent audit failed at thirteen conversion sites with maximum recursion depth, beginning at its whole-function `rfl` equality. Its clean imported-root reports do not certify the failed examples; no DF acceptance is recorded.
+
+Downloaded artifact `13457783329`, 1,900 bytes, SHA-256 `77afac8bbb89f68529b19f8b4bb203a1fbf35f4478c406369d45c18fa2495671`, matches the provider digest. The first DF red remains preserved as the separate notation/source failure. The source is now frozen at `7115e6c74865b6b60d957e05b0b8297df7ca198a`.
+
+The owner requested a thorough successful/failed-method review before another implementation. The [scoped DF causal review](FCP_K1D18V10H_F10DF_TWO_RED_METHOD_REVIEW_AND_AUDIT_CONVERSION_REPAIR_2026_11_05.md) records the inspected evergreen, FCP procedures, CE's exact accepted map-equality bridge, BY/V9Z/V10E reviews and later value-transport recoveries, distinguishing directly inspected DF evidence from historical records. The decision is to reuse CE's bounded pointwise projection proof rather than repeat deep `rfl` conversion or raise limits.
+
+Implemented audit-only repair: prove the source/audit function equality by t/i extensionality, unfold only the two coordinate wrappers, and apply the existing typed projection theorem on the unchanged original matrix/word. Use that equality explicitly at all twelve affected consumers. All 21 example propositions, the independent entry function, seven print roots, exact domains and negative controls remain unchanged. The source file is byte-identical. The workflow updates only the audit pin and corresponding proof-shape guard; all other 109 pins, resource bounds and strict phases are retained. Complete new strict source/audit qualification remains required. The scoped review records explicit stop rules if the bridge or a subsequent consumer still fails.
+
+**Repaired exact blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DFCoordinateDerivativeInvertibility.lean` — `7115e6c74865b6b60d957e05b0b8297df7ca198a`.
+- `lean/diagnostics/FCP_K1D18V10HF10DFIndependentAudit.lean` — `f2f898738d81f3750400bc16303d3f72216a15ec`.
+- `.github/workflows/bfss-kotler-v10h-f10df-coordinate-derivative-invertibility-strict.yml` — `e289ce53134db62ab27f4c0b07f05067419e09fd`.

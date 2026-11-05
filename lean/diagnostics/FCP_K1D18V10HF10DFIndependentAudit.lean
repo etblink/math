@@ -15,7 +15,17 @@ private def auditDFCoordinates (t : P) (i : Fin 36) : ℝ :=
 private abbrev auditDFChart : OpenPartialHomeomorph P P :=
   source9OrderedUpperCoordinateLocalHomeomorph
 
-example : auditDFCoordinates = source9OrderedUpperCoordinateMap := rfl
+-- Reuse CE's bounded projection bridge; never normalize the whole map by rfl.
+private theorem auditDFSourceMap_eq_coordinates :
+    source9OrderedUpperCoordinateMap = auditDFCoordinates := by
+  funext t i
+  unfold source9OrderedUpperCoordinateMap auditDFCoordinates
+  exact source9OrderedUpperProjection_apply
+    ((source9SpinVectorOrthogonalHom (source9OrderedStrictPlaneWord t)) :
+      Matrix SpaceIndex SpaceIndex ℝ) i
+
+example : auditDFCoordinates = source9OrderedUpperCoordinateMap :=
+  auditDFSourceMap_eq_coordinates.symm
 example : Fintype.card (Fin 36) = 36 := by decide
 example : Fintype.card SpaceIndex = 9 := by decide
 example : Fintype.card SpinIndex = 16 := by decide
@@ -29,43 +39,57 @@ example : auditDFChart.source = Classical.choose
 
 -- Check all seven roots at complete consumer types and the independently spelled-out map.
 example : ApproximatesLinearOn auditDFCoordinates (ContinuousLinearMap.id ℝ P)
-    auditDFChart.source (1 / 2) :=
-  source9UpperCoordinateMap_approximates_on_chart_source
+    auditDFChart.source (1 / 2) := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_approximates_on_chart_source
 example : LipschitzOnWith (1 / 2) (fun t : P => auditDFCoordinates t - t)
-    auditDFChart.source := source9UpperCoordinateMap_residual_lipschitzOn_chart_source
+    auditDFChart.source := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_residual_lipschitzOn_chart_source
 example (t u : P) (ht : t ∈ auditDFChart.source) (hu : u ∈ auditDFChart.source) :
     ‖auditDFCoordinates t - auditDFCoordinates u - (t - u)‖ ≤
-      ((1 / 2 : NNReal) : ℝ) * ‖t - u‖ :=
-  source9UpperCoordinateMap_chart_source_deviation t u ht hu
+      ((1 / 2 : NNReal) : ℝ) * ‖t - u‖ := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_chart_source_deviation t u ht hu
 example (t : P) (ht : t ∈ auditDFChart.source) :
-    ‖fderiv ℝ (fun u : P => auditDFCoordinates u - u) t‖ ≤ ((1 / 2 : NNReal) : ℝ) :=
-  source9UpperCoordinateMap_residual_fderiv_norm_le t ht
+    ‖fderiv ℝ (fun u : P => auditDFCoordinates u - u) t‖ ≤ ((1 / 2 : NNReal) : ℝ) := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_residual_fderiv_norm_le t ht
 example (t : P) (ht : t ∈ auditDFChart.source) :
     ‖fderiv ℝ auditDFCoordinates t - ContinuousLinearMap.id ℝ P‖ ≤
-      ((1 / 2 : NNReal) : ℝ) := source9UpperCoordinateMap_fderiv_sub_id_norm_le t ht
+      ((1 / 2 : NNReal) : ℝ) := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_fderiv_sub_id_norm_le t ht
 example (t : P) (ht : t ∈ auditDFChart.source) :
-    IsUnit (fderiv ℝ auditDFCoordinates t) :=
-  source9UpperCoordinateMap_fderiv_isUnit_on_chart_source t ht
+    IsUnit (fderiv ℝ auditDFCoordinates t) := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_fderiv_isUnit_on_chart_source t ht
 example (t : P) (ht : t ∈ auditDFChart.source) :
-    Function.Bijective (fderiv ℝ auditDFCoordinates t) :=
-  source9UpperCoordinateMap_fderiv_bijective_on_chart_source t ht
+    Function.Bijective (fderiv ℝ auditDFCoordinates t) := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_fderiv_bijective_on_chart_source t ht
 
 -- Invertibility is available at each inverse point of the exact accepted target.
 example (y : P) (hy : y ∈ auditDFChart.target) :
-    Function.Bijective (fderiv ℝ auditDFCoordinates (auditDFChart.symm y)) :=
-  source9UpperCoordinateMap_fderiv_bijective_on_chart_source _ (auditDFChart.map_target hy)
+    Function.Bijective (fderiv ℝ auditDFCoordinates (auditDFChart.symm y)) := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9UpperCoordinateMap_fderiv_bijective_on_chart_source _ (auditDFChart.map_target hy)
 example (t : P) (ht : t ∈ auditDFChart.source) (y : P) :
-    ∃ x : P, (fderiv ℝ auditDFCoordinates t) x = y :=
-  (source9UpperCoordinateMap_fderiv_bijective_on_chart_source t ht).surjective y
+    ∃ x : P, (fderiv ℝ auditDFCoordinates t) x = y := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact (source9UpperCoordinateMap_fderiv_bijective_on_chart_source t ht).surjective y
 example (t : P) (ht : t ∈ auditDFChart.source) (v : P)
-    (hv : (fderiv ℝ auditDFCoordinates t) v = 0) : v = 0 :=
-  (source9UpperCoordinateMap_fderiv_bijective_on_chart_source t ht).injective
-    (hv.trans (map_zero (fderiv ℝ auditDFCoordinates t)).symm)
-example : fderiv ℝ auditDFCoordinates 0 = ContinuousLinearMap.id ℝ P :=
-  source9OrderedUpperCoordinateMap_hasFDerivAt_zero.fderiv
+    (hv : (fderiv ℝ auditDFCoordinates t) v = 0) : v = 0 := by
+  rw [← auditDFSourceMap_eq_coordinates] at hv
+  exact (source9UpperCoordinateMap_fderiv_bijective_on_chart_source t ht).injective
+    (hv.trans (map_zero (fderiv ℝ source9OrderedUpperCoordinateMap t)).symm)
+example : fderiv ℝ auditDFCoordinates 0 = ContinuousLinearMap.id ℝ P := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9OrderedUpperCoordinateMap_hasFDerivAt_zero.fderiv
 example (y : P) (hy : y ∈ auditDFChart.target) :
-    auditDFCoordinates (auditDFChart.symm y) = y :=
-  source9OrderedUpperCoordinateLocalHomeomorph_right_inv y hy
+    auditDFCoordinates (auditDFChart.symm y) = y := by
+  rw [← auditDFSourceMap_eq_coordinates]
+  exact source9OrderedUpperCoordinateLocalHomeomorph_right_inv y hy
 
 -- Parameter derivative bijectivity does not assert global injectivity of the source natural action.
 example : ¬ Function.Injective (fun g : G =>
