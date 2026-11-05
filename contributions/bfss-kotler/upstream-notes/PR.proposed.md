@@ -1,3 +1,7 @@
+# HOLD: public-readiness review incomplete
+
+This draft is retained for review; it is not recommended for submission yet. See [PUBLIC_READINESS_REVIEW.md](PUBLIC_READINESS_REVIEW.md).
+
 # Proposed title
 
 BFSS SU(2): add a scoped follow-up report link

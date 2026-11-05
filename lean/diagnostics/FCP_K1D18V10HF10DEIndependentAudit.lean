@@ -85,14 +85,17 @@ example :
     letI : ChartedSpace P G := auditDEChartedSpace
     atlas P G = Set.range auditDECharts := rfl
 example : (⋃ g : G, (auditDECharts g).source) = Set.univ := by
-  letI : ChartedSpace P G := auditDEChartedSpace
+  let : ChartedSpace P G := auditDEChartedSpace
   exact iUnion_source_chartAt P G
 example (g : G) : IsOpen (auditDECharts g).source := (auditDECharts g).open_source
 example (g : G) : IsOpen (auditDECharts g).target := (auditDECharts g).open_target
 example (g : G) : (0 : P) ∈ (auditDECharts g).target :=
   (source9SpinLeftTranslatedChart_target g).symm ▸ source9SpinIdentityLocalChart_zero_mem_target
 example (g : G) : (auditDECharts g).symm (0 : P) = g := by
-  rw [source9SpinLeftTranslatedChart_symm_apply, source9OrderedStrictPlaneWord_zero, mul_one]
+  have hzero : (auditDECharts g).symm (0 : P) = g * source9OrderedStrictPlaneWord 0 :=
+    source9SpinLeftTranslatedChart_symm_apply g 0
+  exact hzero.trans ((congrArg (fun k : G => g * k)
+    source9OrderedStrictPlaneWord_zero).trans (mul_one g))
 example (g : G) : (auditDECharts g).source ∈ 𝓝 g :=
   (auditDECharts g).open_source.mem_nhds (source9SpinLeftTranslatedChart_self_mem_source g)
 example (g : G) : ContinuousOn (auditDECharts g) (auditDECharts g).source :=
@@ -119,7 +122,12 @@ example (g h : G) (t : P) :
     t ∈ ((auditDECharts h).symm.trans (auditDECharts g)).source ↔
       t ∈ source9SpinIdentityLocalChart.target ∧
         g⁻¹ * (h * source9OrderedStrictPlaneWord t) ∈ source9SpinIdentityLocalChart.source := by
-  rw [source9SpinLeftTranslatedChart_transition_source]
+  have hsource : ((auditDECharts h).symm.trans (auditDECharts g)).source =
+      source9SpinIdentityLocalChart.target ∩
+        (fun u : P => g⁻¹ * (h * source9OrderedStrictPlaneWord u)) ⁻¹'
+          source9SpinIdentityLocalChart.source :=
+    source9SpinLeftTranslatedChart_transition_source g h
+  exact Iff.of_eq (congrArg (fun domain : Set P => t ∈ domain) hsource)
 
 -- Local chart inverses do not make the natural nine-dimensional matrix map globally injective.
 example : ¬ Function.Injective (fun g : G =>

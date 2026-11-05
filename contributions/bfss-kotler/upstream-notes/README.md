@@ -1,10 +1,10 @@
 # First upstream contribution: BFSS SU(2) follow-up note
 
-Status: prepared and site-checked; pending owner review and explicit upstream submission authorization. This packet lives in the active research branch. It is a proposed notes change, not an upstream PR or an accepted community contribution.
+Status: **HOLD — public-readiness review incomplete.** The earlier submission-approval recommendation is withdrawn. See [the readiness review](PUBLIC_READINESS_REVIEW.md). The exact draft remains prepared and site-checked; those checks cover formatting, not the full scientific/public presentation. This packet lives in the active research branch. It is a proposed notes change, not an upstream PR or an accepted community contribution.
 
 ## Decision
 
-Submit one notes-only PR to `mathcommunity/oai-math-revised`, for the October 5 SU(2) manuscript. Link the author's already published v0.3.0 report with a neutral relation sentence and its spectral boundary. This contribution does not depend on F10DE or future manifold/tangent results. A source-code port or a manuscript correction can be assessed separately after a bounded import/review plan; neither is bundled here.
+Retain as a candidate route: one notes-only PR to `mathcommunity/oai-math-revised`, for the October 5 SU(2) manuscript. Link the author's already published v0.3.0 report with a neutral relation sentence and its spectral boundary. This contribution does not depend on F10DE or future manifold/tangent results. A source-code port or a manuscript correction can be assessed separately after a bounded import/review plan; neither is bundled here.
 
 The [community README](https://github.com/mathcommunity/oai-math-revised/blob/30cd1e55f058a163f0816c2026fb55f6c4426ea6/README.md) provides three routes:
 
@@ -39,4 +39,4 @@ The upstream parser recognizes exactly one contribution dated 2026-11-04 for `@e
 
 Create a clean owner-fork contribution branch from the then-current upstream main, recheck whether NOTES.md has since appeared, and apply only this note. If concurrent edits exist, merge the note into the existing sections without overwriting them. Update the contribution date if needed. Repeat the site check after any content change. Open the one-file PR with the prepared title/body and automation disclosure. Do not use the research branch as the upstream PR head: it contains unrelated proof and workflow history. Maintainers can add the eventual PR-number link to the contribution line.
 
-Opening an upstream PR, issue or comment remains subject to the owner's earlier explicit-authorization rule. No upstream write has been performed. The prepared patch is ready for that decision now; it is not deferred until completion of the research program.
+Opening an upstream PR, issue or comment remains subject to the owner's earlier explicit-authorization rule. No upstream write has been performed. The prepared patch remains a draft. Complete the bounded claim/evidence, reader-navigation, disclosure and publication-quality review before recommending the owner submission decision. This review does not wait for completion of the research program.
