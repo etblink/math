@@ -1,0 +1,11 @@
+## Contributions
+
+- 2026-11-04 @etblink: Added a follow-up link to the author's BFSS Lean progress report v0.3.0 with its spectral scope stated explicitly; prepared with ChatGPT/Codex, and the linked work uses Lean.
+
+## Follow-up works
+
+- Evan T. Kotler, [BFSS Lean progress report v0.3.0](https://doi.org/10.5281/zenodo.23937775) (2026): discusses source-specific representation geometry and conditional physical-operator correspondences related to this manuscript; it does not establish the existence of positive-energy eigenstates.
+
+## Constructive comments / reviews
+
+## People interested in meeting to work on digestion
