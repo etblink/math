@@ -5188,3 +5188,37 @@ Executed scope/pin preflight passes all 112 pins; YAML, all shell blocks and all
 - `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DGWholeTargetInverseRegularity.lean` — `fa7d17c69d923ef310b14c14ef21d8a6bc729582`.
 - `lean/diagnostics/FCP_K1D18V10HF10DGIndependentAudit.lean` — `19188753ca5def45286778ed15fc136a8543975a`.
 - `.github/workflows/bfss-kotler-v10h-f10dg-whole-target-inverse-regularity-strict.yml` — `317a17f56650f52b433ee88c47453092aa8dd82d`.
+
+
+## 2026-11-05 F10DG accepted — every-order regularity of the unchanged inverse on its full target
+
+[Strict run #42124171844](https://github.com/etblink/math/actions/runs/42124171844), attempt 1, passed at exact tested commit `57fc8524e0b075bc01d835597e460ab9c9accc02`, job `127583945475`. Pin/scope checks, pinned environment restoration, DD rebuild, fresh DE/DF parents, fresh DG source, independent audit and artifact upload all succeeded. This accepts the three DG roots at that commit, not a later candidate or an entire manuscript.
+
+Downloaded artifact `13459844626` is 4,786 bytes. Independently computed ZIP SHA-256 `9b2e21db5f2e8b08dc61139133a53b68ea6d3448a3a0102625230b8c8c794a04` matches GitHub metadata. The artifact's tested SHA and candidate source/audit bytes match the tested tree. DE/DF/DG-source/DG-audit logs contain exactly 10/7/3/3 expected permitted-axiom reports, restricted to `propext`, `Classical.choice`, `Quot.sound`, without `sorryAx` or Lean source diagnostics. All 16 audit examples passed. The successful audit step executes `V10H_F10DG_WHOLE_TARGET_INVERSE_REGULARITY_TYPES_AXIOMS_PASS`. Administrative Lake package-change warnings do not alter this verdict.
+
+Accepted DG blobs remain source `fa7d17c69d923ef310b14c14ef21d8a6bc729582`, independent audit `19188753ca5def45286778ed15fc136a8543975a`, workflow `317a17f56650f52b433ee88c47453092aa8dd82d`. Lean is 4.34.1 and Mathlib is `d13f23b723b8a846827a245b89c10fc7d3f11612`. The existing inverse is `ContDiffAt` for all `n : ℕ∞ω` at every point of the exact CG target, and `ContDiffOn` that entire target. Invertibility was derived from DF at each inverse point; it was not added as a hypothesis. No smaller replacement chart, new norm, instance, or proof-resource override was needed.
+
+**Method retained.** Use the actual pinned API (`ofBijective` with kernel/range witnesses and its checked CLM coercion equality), transport the forward derivative through a named chart-function equality, then apply inverse regularity at the exact target point. Reuse CE/DF's pointwise entry-function bridge in independent consumers instead of triggering deep implicit conversion. These techniques passed together on this exact case; no general success probability is inferred. Smooth compatibility of the translated atlas was still beyond DG's statement.
+
+## 2026-11-05 F10DH candidate — smooth translated transitions on the unchanged DE overlaps
+
+The next bounded question is regularity of `chart_g ∘ chart_h.symm` on `((chart_h).symm.trans chart_g).source`. The new five-root candidate uses only the accepted actual natural-matrix homomorphism, its smooth ordered-word entries, DG's existing inverse, and DE's exact transition/source formulas. It does not install a source-group norm or manifold instance.
+
+**Selected route and proof reuse.** A left-translated word's upper coordinates can be written as finite sums of a fixed original natural-matrix entry times a smooth original word entry. First prove this product-entry identity for arbitrary source elements using `map_mul source9SpinVectorMatrixHom`, the existing projection-application lemma and `Matrix.mul_apply`. Then use the accepted CF entry smoothness, scalar multiplication and the same `ContDiff.sum` architecture already used in CL. This avoids a new normed Clifford calculation for the fixed group factor while retaining the actual source-group product and original 9/16/36 carriers.
+
+The next roots expose the literal transition as `CG_inverse (upperCoordinates (g⁻¹ * (h * word t)))`, prove that actual DE overlap membership implies membership of that argument in CG's existing target via the CV/CO recovery-neighborhood conditions, and compose DG's whole-target regularity with the globally smooth inner coordinate map. The final root asserts `ContDiffOn ℝ n` of the existing translated transition for arbitrary `n : ℕ∞ω` on the entire exact DE overlap source. No additional invertibility or smoothness premise, substituted domain, or generic source-group smoothness is assumed.
+
+Inspected pinned Mathlib `Mathlib/Analysis/Calculus/ContDiff/Operations.lean` (`ContDiff.sum`) and `Mathlib/Analysis/Calculus/ContDiff/Comp.lean` (`ContDiffOn.comp`, requiring an explicit `Set.MapsTo` witness) at `d13f23b723b8a846827a245b89c10fc7d3f11612`, alongside the accepted CF/CL/CO/CV/CW/DE/DG declarations. The composition's complete function type and the transition-function equality are explicit to avoid the prior higher-order alias conversion failures.
+
+The independent audit has 16 examples. It independently spells original matrix entries and the inverse/entry transition, connects them with bounded pointwise equality proofs, and consumes all five roots. Controls include original dimensions, exact DE overlap formula, explicit inverse-target mapping, arbitrary-order and analytic transition regularity, infinite smoothness of the reverse transition on its own overlap, arbitrary within-overlap points, same-chart parameter recovery on its target, and negative global-natural-injectivity.
+
+The new strict workflow preserves all 112 DG pins verbatim and adds DH source/audit pins (114 total). It rebuilds accepted DD ancestry and freshly compiles DE, DF and DG with exact 10/7/3 report inventories before compiling DH and auditing its five roots. Same Lean/Mathlib, per-phase limits, warnings-as-errors, permitted axioms and error exits are retained. The 140-minute outer allowance accounts for the extra fresh DG parent phase; there is no Lean recursion/heartbeat override. Final marker: `V10H_F10DH_TRANSLATED_TRANSITION_REGULARITY_TYPES_AXIOMS_PASS`.
+
+Executed scope/pin preflight passes all 114 pins. YAML, all shell blocks and five embedded Python programs parse; parent validators also pass the verified downloaded DE/DF/DG reports. All accepted source/audit/workflow files are unchanged. These checks do not elaborate the candidate: local Lean startup remains unavailable, and DH awaits a complete strict CI gate. If the generic matrix-product equality or a function-level conversion fails, isolate the typed equality at that boundary; do not unfold the Clifford word, alter the overlap or raise proof limits.
+
+**Next boundary after acceptance.** Package the proved transition compatibility for the named translated atlas using Mathlib's appropriate smooth-atlas interface while preserving the original inherited topology. Installing manifold/Lie-group structures, identifying source tangents, and proving the full representation manifold differential remain distinct tasks. No global physical Spin lift, spectral existence or mass-gap result follows here.
+
+**DH candidate blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean` — `96e7b7134861a34d40e75df9b712c77b61cad3f1`.
+- `lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean` — `5163ac2f7f260bf237b6efb3b8747ab87b58fa37`.
+- `.github/workflows/bfss-kotler-v10h-f10dh-translated-transition-regularity-strict.yml` — `6d4907d681bc5cce2caece867e5d1ea8aa34a512`.
