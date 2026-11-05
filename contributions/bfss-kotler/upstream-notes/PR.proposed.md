@@ -1,24 +1,27 @@
-# HOLD: public-readiness review incomplete
+# Proposed PR — BFSS v0.4.0 follow-up
 
-This draft is retained for review; it is not recommended for submission yet. See [PUBLIC_READINESS_REVIEW.md](PUBLIC_READINESS_REVIEW.md).
+**Submission status:** exact text prepared; owner checking and explicit upstream-opening approval remain pending. This preface is not part of the PR body.
 
-# Proposed title
+**Title:** BFSS SU(2): add v0.4.0 operator and local-geometry follow-up
 
-BFSS SU(2): add a scoped follow-up report link
+## Proposed body
 
-# Proposed pull request body
+Adds a paper-specific NOTES.md linking Evan T. Kotler's separate v0.4.0 working paper, *Formalized Operator Correspondence and Local Spin Geometry for the Relative SU(2) BFSS Model*:
 
-Adds `NOTES.md` for `Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026`, linking Evan T. Kotler's published BFSS Lean progress report v0.3.0 (DOI 10.5281/zenodo.23937775). The note describes its relation to the manuscript and explicitly states that it does not establish positive-energy eigenstate existence.
+https://doi.org/10.5281/zenodo.23969575
 
-This follows the README's notes/follow-up contribution route. The change is confined to this paper's notes; the manuscript, bibliography, PDF, Lean library and catalogue are unchanged. It is offered for community review, with no claim of peer review or certification of the manuscript or linked report.
+The note describes its relationship to the October 5 BFSS manuscript: conditional physical-operator correspondences and local Clifford-source spin geometry. It explicitly states that the report does not establish positive-energy eigenstate existence, spectral confinement, or the full source-manifold differential.
 
-ChatGPT/Codex assisted preparation of this note and the linked report; the underlying research uses Lean 4. The report's scope statement and exact DOI record were checked during preparation. No independent human mathematical review is asserted.
+This is a follow-up-work link. It changes neither the original manuscript nor its Lean statements and makes no claim of community certification or peer review.
 
-Validation: `python3 site/build.py --pdfs none --out /tmp/bfss-community-notes-preview` completed successfully. The generated paper page contains the parsed contribution entry, exact DOI link, and scope sentence. No contribution-format warning was emitted. Live issue/discussion data were skipped by the builder because no GitHub token was supplied.
+Automation disclosure: ChatGPT/Codex drafted this entry and PR text, inspected the contribution guidance and linked report, and ran the format/build checks. Substantial AI and Lean assistance in the research is disclosed in the linked report. Evan T. Kotler directed the research, selected and published the report, and authorized preparation of this contribution. No independent human mathematical proof review is asserted.
 
-- [x] Added a line under `## Contributions` in the paper's `NOTES.md`.
-- [x] Substantial use of language models and proof assistants is stated above.
+Validation:
+- Contribution parser recognizes the single dated @etblink entry without problems.
+- Site build with `--pdfs none` succeeds and generates 751 paper pages.
+- Target HTML contains the DOI, disclosure and complete scope sentence.
+- Sparse checkout omits unrelated Lean challenge configurations; their missing-config warnings do not concern NOTES parsing. Live issue/discussion data was skipped without a GitHub token.
+- Exact diff: one file, eleven additions, zero deletions; whitespace and patch checks pass.
 
-# Owner review before submission
-
-Review the exact proposed note, its description of your report, attribution and automation disclosure. Upstream submission remains pending your explicit authorization. Update the contribution date if submission occurs on a later day; omit a PR-number link until one exists.
+- [x] Added a dated contribution entry under Contributions in the paper's NOTES.md; its PR link can be filled in once the number exists.
+- [x] Disclosed substantial language-model and proof-assistant assistance.

@@ -1,10 +1,10 @@
 ## Contributions
 
-- 2026-11-04 @etblink: Added a follow-up link to the author's BFSS Lean progress report v0.3.0 with its spectral scope stated explicitly; prepared with ChatGPT/Codex, and the linked work uses Lean.
+- 2026-11-05 @etblink (Evan T. Kotler): Added a link to the v0.4.0 follow-up report on operator correspondence and local spin geometry. Drafted with ChatGPT/Codex; the linked report describes substantial AI and Lean assistance.
 
 ## Follow-up works
 
-- Evan T. Kotler, [BFSS Lean progress report v0.3.0](https://doi.org/10.5281/zenodo.23937775) (2026): discusses source-specific representation geometry and conditional physical-operator correspondences related to this manuscript; it does not establish the existence of positive-energy eigenstates.
+- Evan T. Kotler, [Formalized Operator Correspondence and Local Spin Geometry for the Relative SU(2) BFSS Model](https://doi.org/10.5281/zenodo.23969575), v0.4.0 (2026): Reports conditional physical-operator correspondences and local Clifford-source spin geometry related to this manuscript; it does not establish positive-energy eigenstate existence, spectral confinement, or the full source-manifold differential.
 
 ## Constructive comments / reviews
 

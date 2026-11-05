@@ -1,5 +1,7 @@
 # BFSS Project Lead — current-state delta handoff
 
+> **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
+
 > **F10DE is accepted from strict run 41946635772 at tested commit `a8fb249ebc49021f466c9c73995f144edb379fba`. Public contribution submission remains on HOLD.** The original-source translated topological atlas, exact maps/overlaps and coverage are qualified. A v0.4.0 editorial scope is recorded for the substantive accepted advances since v0.3.0; it is not a completed or approved publication. Smooth atlas compatibility, source tangent identification, the full manifold differential and spectral existence remain open.
 
 **As of:** 2026-11-03 UTC  

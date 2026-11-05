@@ -1,42 +1,31 @@
-# First upstream contribution: BFSS SU(2) follow-up note
+# BFSS v0.4.0 follow-up contribution
 
-Status: **HOLD — public-readiness review incomplete.** The earlier submission-approval recommendation is withdrawn. See [the readiness review](PUBLIC_READINESS_REVIEW.md). The exact draft remains prepared and site-checked; those checks cover formatting, not the full scientific/public presentation. This packet lives in the active research branch. It is a proposed notes change, not an upstream PR or an accepted community contribution.
+Status: **Prepared and validated; upstream submission awaits owner approval of the exact entry.** The former v0.3.0 proposal is superseded by this packet. The historical [public-readiness review](PUBLIC_READINESS_REVIEW.md) and [editorial scope](V0_4_0_EDITORIAL_SCOPE.md) remain dated records; current findings are in [the v0.4.0 validation report](V0_4_0_SUBMISSION_REVIEW.md).
 
-## Decision
+## Exact proposed contribution
 
-Retain as a candidate route: one notes-only PR to `mathcommunity/oai-math-revised`, for the October 5 SU(2) manuscript. Link the author's already published v0.3.0 report with a neutral relation sentence and its spectral boundary. This contribution does not depend on F10DE or future manifold/tangent results. A source-code port or a manuscript correction can be assessed separately after a bounded import/review plan; neither is bundled here.
+- Target: mathcommunity/oai-math-revised, main at `30cd1e55f058a163f0816c2026fb55f6c4426ea6`.
+- Owner-fork branch: [contribution/bfss-v040-follow-up-20261105](https://github.com/etblink/math/tree/contribution/bfss-v040-follow-up-20261105).
+- Exact contribution commit: `37af0591d8c968e6232968b0951639798a2d7028`.
+- Diff: one new file, eleven added lines, no deletions.
+- Path: `preprints/Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026/NOTES.md`.
+- [Exact note](NOTES.proposed.md), [applicable patch](NOTES.patch), [proposed PR text](PR.proposed.md).
+- Published report: [v0.4.0, DOI 10.5281/zenodo.23969575](https://doi.org/10.5281/zenodo.23969575).
 
-The [community README](https://github.com/mathcommunity/oai-math-revised/blob/30cd1e55f058a163f0816c2026fb55f6c4426ea6/README.md) provides three routes:
+The note links the separate report and states its relationship to the October 5 manuscript neutrally. It describes conditional physical-operator correspondences and local Clifford-source spin geometry, and explicitly excludes positive-energy eigenstate existence, spectral confinement and the full source-manifold differential. It makes no certification or peer-review claim.
 
-| Route | Appropriate use here |
-| --- | --- |
-| Paper correction/citation PR | A specific supported manuscript change, with TeX/PDF and byline updates as applicable; no such mathematical correction is asserted in this packet. |
-| Issue proposing a change | A precise problem or reference report without a ready patch; useful for discussion, but the follow-up link already has a small ready patch. |
-| Paper-specific NOTES.md | A follow-up report link and neutral description; selected first contribution. |
+The manuscript, its PDF/TeX, Lean library, catalogue and maintainer-generated AGENT_NOTES are not changed by the contribution. No meeting-interest sign-up is added.
 
-The [agent guidance](https://github.com/mathcommunity/oai-math-revised/blob/30cd1e55f058a163f0816c2026fb55f6c4426ea6/AGENTS.md) and [PR template](https://github.com/mathcommunity/oai-math-revised/blob/30cd1e55f058a163f0816c2026fb55f6c4426ea6/.github/pull_request_template.md) require the four NOTES headings, parseable contribution line, automation disclosure and contributor checking of drafted notes. The owner should review the exact note before authorizing submission. No human source-checking or independent mathematical review is claimed on the owner's behalf.
+## Completed checks
 
-## Exact proposal
+The upstream README, AGENTS, PR template and paper directory were checked at the baseline. No paper NOTES existed there. The fork comparison confirms exactly the one-file change. The contribution parser accepts the date/handle/name and disclosure; the site builder generated 751 paper pages, and the target HTML contains the DOI, automation disclosure and full scope sentence. Patch reverse-application and whitespace checks pass. See the validation report for sparse-checkout and live-data limits.
 
-- Upstream baseline inspected: `30cd1e55f058a163f0816c2026fb55f6c4426ea6` (current main at preparation).
-- Only proposed changed path: `preprints/Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026/NOTES.md` (new file, eleven lines).
-- [Exact proposed note](NOTES.proposed.md).
-- [Applicable Git patch](NOTES.patch).
-- [Proposed PR title and text](PR.proposed.md), including owner-review instructions outside the proposed PR body.
-- Link: https://doi.org/10.5281/zenodo.23937775, version 0.3.0. Zenodo's record API returned this version and creator Kotler, Evan. The current report source was also read directly: its introduction treats the October 5 proposal as under investigation, and its abstract/physical-operator discussion distinguishes conditional eigenpair transport from eigenpair existence. The proposed sentence reflects those stated limits.
+The published Zenodo record supplies the revised title, version and PDF/TeX. The source checksum matches the reviewed source. The public PDF's download matches its record checksum, and all eighteen pages' extracted text matches the reviewed manuscript. Byte identity with the local signed PDF is not claimed.
 
-The current upstream paper directory has no NOTES.md. Its maintainer-generated AGENT_NOTES already links older FCP issue #28 and draft PR #25; this proposal supplies the published report in the separate contributor-notes channel. AGENT_NOTES is untouched. BFSS issue/PR searches returned no matches in this community repository at preparation; that is a bounded search, not a guarantee against all overlapping work.
+## Remaining submission step
 
-## Validation completed
+The owner previously reserved opening an upstream PR for explicit approval. Upstream AGENTS also says, “If you draft entries, the contributor must check them.” The short note and PR body are now concrete for that check. This packet does not claim the owner has performed an independent line-by-line mathematical review.
 
-The patch was applied in an isolated worktree at the exact current upstream baseline, containing only the proposed new NOTES.md. `git apply --reverse --check` passes against that worktree. Its status reports just that new file.
+After approval, refresh upstream main and check for concurrent NOTES edits, use the existing clean contribution branch (rebasing only if needed), refresh the contribution date if submission occurs on another day, repeat affected checks, then open the prepared one-file PR. Do not submit the research branch. The PR-number link can be added to the activity entry once known; upstream permits leaving it absent before opening.
 
-`python3 site/build.py --pdfs none --out /tmp/bfss-community-notes-preview` exited 0 and built 751 paper pages. No contribution-format warning was emitted. The builder skipped live issue/discussion data because no GitHub token was supplied; that limitation does not prevent local note rendering.
-
-The upstream parser recognizes exactly one contribution dated 2026-11-04 for `@etblink`, with zero parse problems. Inspection of the generated target HTML confirms the activity entry, automation disclosure, follow-up heading, exact DOI anchor and scope sentence. Empty headings are handled by the existing site renderer. No visual browser inspection or mathematical certification is claimed.
-
-## Submission after owner approval
-
-Create a clean owner-fork contribution branch from the then-current upstream main, recheck whether NOTES.md has since appeared, and apply only this note. If concurrent edits exist, merge the note into the existing sections without overwriting them. Update the contribution date if needed. Repeat the site check after any content change. Open the one-file PR with the prepared title/body and automation disclosure. Do not use the research branch as the upstream PR head: it contains unrelated proof and workflow history. Maintainers can add the eventual PR-number link to the contribution line.
-
-Opening an upstream PR, issue or comment remains subject to the owner's earlier explicit-authorization rule. No upstream write has been performed. The prepared patch remains a draft. Complete the bounded claim/evidence, reader-navigation, disclosure and publication-quality review before recommending the owner submission decision. This review does not wait for completion of the research program.
+No upstream PR, issue or comment has been opened. The preparation has no dependency on new manifold, lift or spectral theorems.
