@@ -39,14 +39,14 @@ theorem source9UpperCoordinateMap_chart_source_deviation
     (t u : P) (ht : t ∈ source9OrderedUpperCoordinateLocalHomeomorph.source)
     (hu : u ∈ source9OrderedUpperCoordinateLocalHomeomorph.source) :
     ‖source9OrderedUpperCoordinateMap t - source9OrderedUpperCoordinateMap u - (t - u)‖ ≤
-      ((1 / 2 : ℝ≥0) : ℝ) * ‖t - u‖ :=
+      ((1 / 2 : NNReal) : ℝ) * ‖t - u‖ :=
   source9UpperCoordinateMap_approximates_on_chart_source t ht u hu
 
 /-- Differentiate the actual residual on the open source, rather than assuming a bound. -/
 theorem source9UpperCoordinateMap_residual_fderiv_norm_le
     (t : P) (ht : t ∈ source9OrderedUpperCoordinateLocalHomeomorph.source) :
     ‖fderiv ℝ (fun u : P => source9OrderedUpperCoordinateMap u - u) t‖ ≤
-      ((1 / 2 : ℝ≥0) : ℝ) :=
+      ((1 / 2 : NNReal) : ℝ) :=
   norm_fderiv_le_of_lipschitzOn ℝ
     (source9OrderedUpperCoordinateLocalHomeomorph.open_source.mem_nhds ht)
     source9UpperCoordinateMap_residual_lipschitzOn_chart_source
@@ -55,7 +55,7 @@ theorem source9UpperCoordinateMap_residual_fderiv_norm_le
 theorem source9UpperCoordinateMap_fderiv_sub_id_norm_le
     (t : P) (ht : t ∈ source9OrderedUpperCoordinateLocalHomeomorph.source) :
     ‖fderiv ℝ source9OrderedUpperCoordinateMap t - ContinuousLinearMap.id ℝ P‖ ≤
-      ((1 / 2 : ℝ≥0) : ℝ) := by
+      ((1 / 2 : NNReal) : ℝ) := by
   have hf : DifferentiableAt ℝ source9OrderedUpperCoordinateMap t :=
     (source9OrderedUpperCoordinateMap_contDiff (1 : ℕ∞ω)).differentiable one_ne_zero t
   have hd : HasFDerivAt (fun u : P => source9OrderedUpperCoordinateMap u - u)

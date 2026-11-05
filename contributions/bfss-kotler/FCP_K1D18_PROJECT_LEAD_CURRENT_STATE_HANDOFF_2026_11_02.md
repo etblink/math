@@ -5122,3 +5122,23 @@ Let P be the original `Fin 36 → ℝ`, f the unchanged natural nine-vector matr
 - `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DFCoordinateDerivativeInvertibility.lean` — `67782473483f327028e7f0e87e71bf859ea02156`.
 - `lean/diagnostics/FCP_K1D18V10HF10DFIndependentAudit.lean` — `fa0bafb928284492efcb2a155ea78bb6c2fb1df8`.
 - `.github/workflows/bfss-kotler-v10h-f10df-coordinate-derivative-invertibility-strict.yml` — `4c5e29fc56b0c1461c4d2670e3bbec11c064d858`.
+
+
+## 2026-11-05 F10DF first strict red — explicit nonnegative-real type repair
+
+[Run #42115059384](https://github.com/etblink/math/actions/runs/42115059384), attempt 1, tested `88a83cb67b7006e06cdf64493b3f737b65793a9c`. Job `127552385364` passed the 110-pin/scope preflight, pinned environment restoration, accepted DD ancestry rebuild and fresh accepted DE parent compilation. DF source compilation failed; the independent DF consumer audit was skipped. This is a source elaboration failure, not a wrapper failure or mathematical counterexample.
+
+The causal diagnostics at source lines 42, 49 and 58 request `LE Type` and `OfNat Type 0`: the written `ℝ≥0` annotation was interpreted as a comparison instead of the intended nonnegative-real scalar type in this scope. The later `sorry () < 1` goal and `sorryAx` reports are recovery contamination from these failed annotations, not accepted results. The first two source roots emitted permitted-axiom reports, but neither they nor the candidate are accepted from this partial phase; the independent audit has not run.
+
+Downloaded artifact ID `13456268888` is 1,586 bytes; independently computed ZIP SHA-256 `77aa8329166bf768ba37feecc33eabadab9308a9016458fbc8e83d3ad6d1f75f` matches GitHub's digest. The artifact preserves tested SHA and parent/compiler logs. The parent log contains the exact ten DE reports with permitted axioms. Lake's package-local-change administrative warnings are separate from the causal Lean source diagnostics.
+
+**Minimal repair.** Replace exactly three `ℝ≥0` type annotations in DF source and the matching three in its audit by the explicit datatype name `NNReal`. All seven theorem names, proof bodies, rational constants, source-membership premises, consumer statements, exact chart domain, norm choices and negative controls remain textually unchanged apart from those type spellings. No scope-dependent alias, new instance, admission, suppressed linter or larger resource limit is added. The workflow changes only the two candidate blob pins. All 108 accepted ancestry pin lines remain verbatim, along with every compilation, report and axiom-control requirement.
+
+Executed 110-pin/scope preflight passes; source/audit seven-root print inventories, YAML, all shell blocks and all three embedded Python programs pass static checks. Exact forward comparison confirms that the six annotation replacements and two pin substitutions account for the complete source/audit/workflow diff. These checks do not substitute for a fresh complete Lean gate. DF remains unaccepted pending its new strict source and independent-audit result.
+
+**Method retained.** Write complete, unambiguous scalar types at independent consumer boundaries. Diagnose an apparent typeclass failure at the original annotation before changing typeclass infrastructure or downstream proofs. Preserve the first failing phase and recovery contamination rather than counting printed roots as accepted evidence.
+
+**Repaired candidate blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DFCoordinateDerivativeInvertibility.lean` — `7115e6c74865b6b60d957e05b0b8297df7ca198a`.
+- `lean/diagnostics/FCP_K1D18V10HF10DFIndependentAudit.lean` — `c9f5c235c88775bec1a70aeb0c9ea77f29018b45`.
+- `.github/workflows/bfss-kotler-v10h-f10df-coordinate-derivative-invertibility-strict.yml` — `d94db904e9478ff97e9bcf310d343377eb10e596`.

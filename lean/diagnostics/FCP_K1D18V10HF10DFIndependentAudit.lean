@@ -35,14 +35,14 @@ example : LipschitzOnWith (1 / 2) (fun t : P => auditDFCoordinates t - t)
     auditDFChart.source := source9UpperCoordinateMap_residual_lipschitzOn_chart_source
 example (t u : P) (ht : t ∈ auditDFChart.source) (hu : u ∈ auditDFChart.source) :
     ‖auditDFCoordinates t - auditDFCoordinates u - (t - u)‖ ≤
-      ((1 / 2 : ℝ≥0) : ℝ) * ‖t - u‖ :=
+      ((1 / 2 : NNReal) : ℝ) * ‖t - u‖ :=
   source9UpperCoordinateMap_chart_source_deviation t u ht hu
 example (t : P) (ht : t ∈ auditDFChart.source) :
-    ‖fderiv ℝ (fun u : P => auditDFCoordinates u - u) t‖ ≤ ((1 / 2 : ℝ≥0) : ℝ) :=
+    ‖fderiv ℝ (fun u : P => auditDFCoordinates u - u) t‖ ≤ ((1 / 2 : NNReal) : ℝ) :=
   source9UpperCoordinateMap_residual_fderiv_norm_le t ht
 example (t : P) (ht : t ∈ auditDFChart.source) :
     ‖fderiv ℝ auditDFCoordinates t - ContinuousLinearMap.id ℝ P‖ ≤
-      ((1 / 2 : ℝ≥0) : ℝ) := source9UpperCoordinateMap_fderiv_sub_id_norm_le t ht
+      ((1 / 2 : NNReal) : ℝ) := source9UpperCoordinateMap_fderiv_sub_id_norm_le t ht
 example (t : P) (ht : t ∈ auditDFChart.source) :
     IsUnit (fderiv ℝ auditDFCoordinates t) :=
   source9UpperCoordinateMap_fderiv_isUnit_on_chart_source t ht
