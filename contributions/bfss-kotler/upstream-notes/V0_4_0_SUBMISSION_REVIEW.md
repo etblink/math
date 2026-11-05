@@ -41,3 +41,14 @@ The one-file patch passes reverse application against the prepared worktree; the
 The owner authorized preparation and validation. Their earlier explicit-approval requirement for upstream PRs remains in force. Upstream [AGENTS](https://github.com/mathcommunity/oai-math-revised/blob/30cd1e55f058a163f0816c2026fb55f6c4426ea6/AGENTS.md) states: “If you draft entries, the contributor must check them.” The entry and proposed body are available for that exact check; no independent human mathematical proof audit is attributed to the owner.
 
 No upstream issue, comment or PR was opened. Recheck main, concurrent NOTES edits and the date before submission; update affected validation if anything changes.
+
+
+## Submission authorization and blocked attempt — 5 November 2026
+
+The owner replied “You are authorized to continue” after receiving links to the exact eleven-line note and proposed PR text. This supersedes the pending-approval status above. It does not attribute independent mathematical checking to the owner.
+
+Before submission, community main was rechecked at the same baseline, the target NOTES.md remained absent, the fork note matched the prepared bytes, and the open-PR query for the same owner/head branch returned an empty list.
+
+The create-pull-request request targeted `mathcommunity/oai-math-revised:main` from `etblink:contribution/bfss-v040-follow-up-20261105`, with the prepared title/body, draft=false and maintainer editing allowed. GitHub returned HTTP 403, “Resource not accessible by integration.” No PR number or URL was returned. The connected-browser fallback reported unavailable originating browser context; no browser submission occurred. GitHub CLI was unavailable.
+
+The packet now provides a prefilled compare/PR form as the manual handoff. There is no pending owner-authorization requirement; the remaining block is the available account/session surface's ability to create the upstream PR. No upstream issue, comment or PR has been opened.
