@@ -34,6 +34,7 @@ private abbrev P := Fin 36 → ℝ
 private abbrev C := CliffordAlgebra source9Quadratic
 -- Give imported objects their complete consumer types before applying their operations.
 private abbrev auditDECharts : G → OpenPartialHomeomorph G P := source9SpinLeftTranslatedChart
+@[instance_reducible]
 private def auditDEChartedSpace : ChartedSpace P G := source9SpinTranslatedChartedSpace
 
 example : Fintype.card SpaceIndex = 9 := by decide

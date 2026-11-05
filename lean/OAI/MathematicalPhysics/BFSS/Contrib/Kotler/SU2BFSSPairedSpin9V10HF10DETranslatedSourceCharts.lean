@@ -51,6 +51,7 @@ theorem source9SpinLeftTranslatedChart_self (g : spinGroup source9Quadratic) :
     (inv_mul_cancel g)).trans source9SpinIdentityLocalChart_one
 
 /-- A covering topological atlas value; no global instance or smoothness data is installed. -/
+@[instance_reducible]
 noncomputable def source9SpinTranslatedChartedSpace :
     ChartedSpace (Fin 36 → ℝ) (spinGroup source9Quadratic) where
   atlas := Set.range source9SpinLeftTranslatedChart
