@@ -5158,3 +5158,33 @@ Implemented audit-only repair: prove the source/audit function equality by t/i e
 - `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DFCoordinateDerivativeInvertibility.lean` — `7115e6c74865b6b60d957e05b0b8297df7ca198a`.
 - `lean/diagnostics/FCP_K1D18V10HF10DFIndependentAudit.lean` — `f2f898738d81f3750400bc16303d3f72216a15ec`.
 - `.github/workflows/bfss-kotler-v10h-f10df-coordinate-derivative-invertibility-strict.yml` — `e289ce53134db62ab27f4c0b07f05067419e09fd`.
+
+
+## 2026-11-05 F10DF accepted — exact derivative invertibility on the original chart source
+
+[Strict run #42121005736](https://github.com/etblink/math/actions/runs/42121005736), attempt 1, completed successfully at exact commit `ecbcceb83ded9b8e37c757e6ef0d1afe84b7e21e`, job `127573027266`. All steps passed: 110-pin/scope checks, pinned Lean 4.34.1 / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, accepted DD ancestry, fresh DE parent, fresh DF source and independent DF audit. DF is now accepted at that exact tested commit; this does not accept any later candidate.
+
+Downloaded artifact `13459687381` is 5,060 bytes. Independently computed ZIP SHA-256 `020ea3482569b706788f572a44e07a58509f00ad8741d4aeec2bd75309a9f660` matches GitHub metadata. The artifact's tested SHA, source and audit bytes match the tested tree. Its parent/source/audit logs contain exactly 10/7/7 expected reports, all restricted to `propext`, `Classical.choice`, `Quot.sound`, with no `sorryAx` or Lean source diagnostics. The successful audit step executes the unchanged final marker `V10H_F10DF_COORDINATE_DERIVATIVE_INVERTIBILITY_TYPES_AXIOMS_PASS`. Administrative Lake package-change warnings remain separate.
+
+Accepted DF blobs remain source `7115e6c74865b6b60d957e05b0b8297df7ca198a`, audit `f2f898738d81f3750400bc16303d3f72216a15ec`, workflow `e289ce53134db62ab27f4c0b07f05067419e09fd`. All 21 independent example propositions passed. The successful repair reused CE's already qualified t/i projection bridge and explicit equality transport at all twelve consumers. The mathematical source remained byte-identical to the second-red candidate; no recursion/heartbeat increase or linter suppression was needed. The separate notation error and conversion error remain preserved as negative knowledge in the scoped review.
+
+**Accepted mathematical boundary.** The actual 36-parameter original upper-coordinate map has the constructor's half-identity approximation, a half-Lipschitz nonlinear residual, derivative norm deviation at most one half, and unit/bijective derivative at every point of the unchanged CG source. Both membership premises in two-point estimates remain required. This is a parameter-chart theorem, not smooth compatibility of the translated Spin atlas or a full manifold differential.
+
+## 2026-11-05 F10DG candidate — regularity of the same inverse on the entire existing target
+
+Proceed with the next prerequisite from the accepted DF plan. The new three-root candidate packages the actual forward derivative as a continuous linear equivalence on the existing source, derives `ContDiffAt` of the same CG inverse at every point of the existing target for arbitrary `n : ℕ∞ω`, then derives `ContDiffOn` on that exact target. Invertibility is discharged by DF at `e.symm y ∈ e.source`, not added as a new premise. No smaller chart, replacement inverse, new source-group norm or global instance is introduced.
+
+**Pinned API reconnaissance.** Inspected Mathlib commit `d13f23b723b8a846827a245b89c10fc7d3f11612`, `Mathlib/Analysis/Normed/Operator/Banach.lean` (`ContinuousLinearEquiv.ofBijective` takes kernel-bottom and range-top witnesses; `coe_ofBijective` supplies the checked CLM equality), and `Mathlib/Analysis/Calculus/ContDiff/Operations.lean` (`OpenPartialHomeomorph.contDiffAt_symm` takes exact target membership, the forward derivative equivalence at the inverse point, and forward regularity). CH's accepted at-zero application is also retained as the direct local precedent. The candidate uses those actual interfaces rather than guessing a constructor signature or assuming global regularity.
+
+The independent audit spells the original matrix-entry function, reuses CE/DF's pointwise projection bridge, checks the derivative equivalence for that literal map both at source points and arbitrary inverse points, and consumes the new regularity declarations at arbitrary orders/target points, analytic order, infinite smoothness, differentiability and zero. Exact constructor-source, target openness/nonemptiness, inverse recovery and negative global-natural-injectivity controls remain present.
+
+The DG workflow preserves all 110 accepted pins verbatim and adds the two new candidate pins. It restores the same environment, rebuilds DD, freshly compiles DE and DF (10 and 7 permitted reports), freshly compiles DG and runs its independent audit (3 reports each), under the existing per-phase limits, warnings-as-errors and axiom whitelist. The new job's 125-minute outer allowance accounts for the additional fresh DF parent phase; no Lean heartbeat or recursion override is added. All source/audit errors stop the gate; the final marker is `V10H_F10DG_WHOLE_TARGET_INVERSE_REGULARITY_TYPES_AXIOMS_PASS`.
+
+Executed scope/pin preflight passes all 112 pins; YAML, all shell blocks and all four embedded Python programs parse. Accepted source/audit/workflow files remain unchanged. These are static checks, not Lean qualification: the local Lean startup limitation remains, and DG is a candidate pending a complete strict CI result. If a coercion/conversion fails, isolate its exact typed CLM equality or higher-order consumer rather than expanding the ordered word, changing a domain, increasing proof limits or altering the passing DF source.
+
+**Next boundary after DG acceptance.** Compose whole-target inverse regularity with accepted ambient multiplication/coordinate maps on DE's exact translated overlaps. Smooth compatibility, `IsManifold`, source tangent identification, Lie-group structure, the full F10BC representation manifold differential, a global physical Spin lift and spectral existence remain unclaimed.
+
+**DG candidate blobs.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DGWholeTargetInverseRegularity.lean` — `fa7d17c69d923ef310b14c14ef21d8a6bc729582`.
+- `lean/diagnostics/FCP_K1D18V10HF10DGIndependentAudit.lean` — `19188753ca5def45286778ed15fc136a8543975a`.
+- `.github/workflows/bfss-kotler-v10h-f10dg-whole-target-inverse-regularity-strict.yml` — `317a17f56650f52b433ee88c47453092aa8dd82d`.

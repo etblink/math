@@ -47,3 +47,10 @@ The evergreen is a stable generic guide and is not edited with run history. Thes
 - A style diagnostic warrants the compiler-prescribed local correction; no linter suppression. A real proposition/type mismatch requires mathematical reassessment with unchanged claim boundaries.
 
 Even acceptance would establish derivative invertibility on the existing parameter-chart source, not smooth compatibility of the group atlas, the full manifold differential, a global physical Spin lift, eigenpair existence or a mass gap.
+
+
+## Verified outcome
+
+[Strict run #42121005736](https://github.com/etblink/math/actions/runs/42121005736) passed at `ecbcceb83ded9b8e37c757e6ef0d1afe84b7e21e`. The exact source and all 21 independent example propositions passed, with 10 parent and 7/7 source/audit permitted-axiom reports. Downloaded artifact `13459687381` has verified ZIP SHA-256 `020ea3482569b706788f572a44e07a58509f00ad8741d4aeec2bd75309a9f660`; tested SHA and source/audit bytes match. The canonical handoff records acceptance and the bounded next prerequisite.
+
+This run supports the specific repair decision: CE's pointwise projection bridge plus explicit consumer transport removed the observed audit conversion failures while the mathematical source and all consumer propositions were fixed. It does not establish a general success rate or erase the earlier failure evidence.
