@@ -1,6 +1,6 @@
 # BFSS Project Lead — current-state delta handoff
 
-> **F10DD is the next candidate; strict CI is pending.** Latest accepted mathematics remains F10DC at [run 41934575798](https://github.com/etblink/math/actions/runs/41934575798), tested `6729d54be338bbb71fce7ef841fa92d6e7343f83`. DD defines literal original-gamma evaluation on the actual derivative-range LieSubalgebra with canonical native so(16) target, then proves that composition with the accepted native LieEquiv is the existing BB LieHom, together with the inverse factorization. Six declarations require fresh compilation and complete independent type/axiom qualification. This is an algebraic representation comparison; source tangent identification and the full F10BC manifold differential remain open. All accepted declarations and historical failure evidence are preserved.
+> **F10DD is accepted from strict run 41938138536.** The exact tested commit is `0019a5fe47be33765090c1a0fd409967211bb5d4`. Fresh DC parent compilation, fresh DD source compilation and the complete independent audit passed on the first DD run: two accepted-parent reports and six candidate roots once per candidate phase (12 candidate reports), using only propext, Classical.choice and Quot.sound, with no Lean source diagnostics or sorryAx. Literal original-gamma evaluation on the actual range is now a native so(16)-valued LieHom; its composition with the accepted native LieEquiv equals BB's existing LieHom, with the inverse factorization proved as a full bundled-map equality. Source tangent identification and the full F10BC manifold differential remain open. All historical failure evidence is preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -4914,3 +4914,64 @@ The source guard requires literal gamma toFun evaluation, the actual range targe
 F10DD remains unaccepted until a new exact-head strict run passes the fresh parent/source phases, all independent controls, exact root/axiom inventories, diagnostics checks, terminal marker, artifact and exact new blobs. F10DC remains accepted. If DD qualifies, it packages the algebraic original-gamma restriction to S and establishes exact equality with BB through the canonical native Lie equivalence.
 
 This does not identify S with a separately constructed source manifold tangent space. Source tangent identification, translated chart compatibility, source manifold/Lie-group structures and the full F10BC manifold differential remain separate. Further global source reconstruction, target-surjectivity/covering/lift, upstream integration and BFSS physical conclusions remain open. The actual group, source quadratic, Clifford/gamma carriers, matrices, source label order and normalization remain unchanged. Only the new DD source/audit/workflow and this canonical handoff change. Every historical handoff byte beginning at its original As-of field is preserved, with this event appended.
+
+
+## 2026-11-04 F10DD accepted — literal range-gamma LieHom and exact native representation identities
+
+**Exact acceptance evidence.** [Strict run 41938138536](https://github.com/etblink/math/actions/runs/41938138536), attempt 1, is terminal completed/success at tested commit `0019a5fe47be33765090c1a0fd409967211bb5d4`, tree `2ddb130d66fc89c175864f9db9c3d4e0b720ed18`. Job `126951730832`, `derivative-range-gamma-lie-hom`, completed all eleven recorded steps successfully: checkout; all 106 exact pins and source-scope checks; pinned Lean/Mathlib restore; accepted DB rebuild; fresh accepted DC parent compilation; fresh DD source compilation; complete independent audit; evidence upload; cleanup and completion.
+
+Decoded logs contain exactly the two expected DC roots in the fresh parent phase, exactly the six expected DD roots once in the fresh candidate phase and exactly those six DD roots once in the independent audit phase. DD contributes six newly accepted declarations and twelve candidate reports; the two parent reports remain separate accepted-parent checks. Every reported axiom belongs to `{propext, Classical.choice, Quot.sound}`. No Lean source warning/error diagnostic, including categorized diagnostics, or sorryAx dependency is present. Root parsing excludes command echo, and ANSI-stripped full lines were additionally scanned for source diagnostics.
+
+All actual markers occur exactly once:
+- `V10H_F10DD_SOURCE_PIN_DERIVATIVE_RANGE_GAMMA_LIE_HOM_SCOPE_PASS`
+- `V10H_F10DC_ACCEPTED_PARENT_FRESH_COMPILE_PASS`
+- `V10H_F10DD_DERIVATIVE_RANGE_GAMMA_LIE_HOM_TYPES_AXIOMS_PASS`
+
+This was DD's first strict run, without intervening source or audit repairs.
+
+**Exact accepted files.**
+- `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DDDerivativeRangeGammaLieHom.lean` — blob `2ad71c25550204f51bf96ad1c0da7b774f5044d1`.
+- `lean/diagnostics/FCP_K1D18V10HF10DDIndependentAudit.lean` — blob `276b9192a786c164e05e8125c6209c20110195cf`.
+- `.github/workflows/bfss-kotler-v10h-f10dd-derivative-range-gamma-lie-hom-strict.yml` — blob `a4d07cdb920d404f78a7ad9684e4d4c75418c852`.
+
+The authoritative pre-acceptance canonical handoff is blob `03ff30b0f60872fd93d30cb4da33dd13879633bd`. Root AGENTS remains blob `196529dbc512457e4fef0558c6a179e04860469e`.
+
+**Artifact.** [Artifact 13376730447](https://github.com/etblink/math/actions/runs/41938138536/artifacts/13376730447), `bfss-v10h-f10dd-derivative-range-gamma-lie-hom-0019a5fe47be33765090c1a0fd409967211bb5d4-1`, is 5065 bytes. GitHub reports ZIP SHA256 `1e72c48486f1e4f381f1f3eb0741883b76aa769025b19e5ba7785c02bc1883df`, matching the upload log. This is provider-reported metadata, not an independently computed binary archive digest.
+
+**Six accepted declarations.**
+- `FCP.BFSSPairedSpin9Clifford.source9DerivativeLieSubalgebra_gamma_mem_so`
+- `FCP.BFSSPairedSpin9Clifford.source9DerivativeRangeGammaSkewLieHom`
+- `FCP.BFSSPairedSpin9Clifford.source9DerivativeRangeGammaSkewLieHom_apply`
+- `FCP.BFSSPairedSpin9Clifford.source9DerivativeRangeGammaSkewLieHom_native_apply`
+- `FCP.BFSSPairedSpin9Clifford.source9DerivativeRangeGammaSkewLieHom_comp_native`
+- `FCP.BFSSPairedSpin9Clifford.source9DerivativeRangeGammaSkewLieHom_factor`
+
+**Accepted mathematical content.** Let S be DC's actual identity-chart derivative-range LieSubalgebra, e its unchanged native so(9)-to-S LieEquiv, Gamma the original whole-Clifford gamma algebra homomorphism, and rho BB's existing native so(9)-to-so(16) LieHom.
+
+DD proves that Gamma(x) belongs to the canonical native so(16) for every x in S. It defines H from S to that exact native target by literal original-gamma evaluation, `H(x)=(Gamma(x), membership)`. H's additivity, real linearity and bracket law come directly from the original algebra homomorphism and the already canonical source/target commutator brackets. The native inverse map is used only in the membership argument and comparison proofs, not to substitute transported values for Gamma(x).
+
+The application formula is definitionally the original gamma evaluation. For every native A, `H(e A)=rho A` in the canonical so(16) subtype. DD also establishes equality of full bundled LieHoms
+`H.comp e.toLieHom=rho`
+and
+`H=rho.comp e.symm.toLieHom`.
+Thus the algebraic original-gamma representation on the actual derivative range is identified with BB through the exact native Lie equivalence in both directions.
+
+S remains the literal accepted derivative range in the original source Clifford algebra. The source group and quadratic, source label ordering and positive-half normalization are unchanged. The target remains original real `Matrix SpinIndex SpinIndex ℝ` with SpinIndex cardinality 16 and native source SpaceIndex cardinality 9. No paired-48 representation or replacement gamma matrices are introduced.
+
+**Independent controls that passed.** The audit independently checks all six interfaces and the exact domain/range and original carrier identities. It checks ground ambient LieRing/LieAlgebra capabilities with only the established local associative registration, the original subtype bracket and underlying derivative-range Submodule.
+
+The full underlying LinearMap, after native target inclusion, is exactly Gamma.toLinearMap composed with the source subtype inclusion. The audit checks additivity, real scalar action, bracket preservation through a matching LieHom consumer, inverse-factorization evaluation on arbitrary S elements and every original gamma matrix entry. It checks the full original ambient gamma commutator identity against the bundled bracket law at the complete matrix consumer type.
+
+Both normalization controls passed: the quarter double-sum formula on arbitrary native skew A and the positive half-gamma product on every distinct original coordinate plane. Scalar identity is excluded from the actual range domain by the accepted reversal sign and faithful real scalar embedding; meanwhile the ambient Gamma remains unital and detects nonzero identity. The separate natural nine-vector group's global noninjectivity remains explicit. These controls do not treat S as an associative/unital subalgebra or assume whole-Clifford gamma faithfulness.
+
+**Method and negative knowledge retained.** Define the actual restriction first and prove its composition identity separately, so equality with the pre-existing representation is a checked conclusion. Keep native target membership, scalar normalization, complete operator/codomain types and literal subtype values explicit. Use a LieHom API on H, and explicit e.toLieHom/e.symm.toLieHom fields for cross-kind compositions. Bind the gamma bracket equality at its full consumer type and avoid no-op change scaffolding.
+
+The first-run green follows these source-exact methods without authored admissions, theorem/control weakening, linter suppression, proof-limit increases, new global instances, new norms/topologies or carrier/order replacement. Earlier wrapper, source-linter and independent-audit reds remain in the historical record, with their original exact commits, artifacts and phase distinctions. DD's first green does not erase or relabel them.
+
+**Reproducibility and remaining gap.** The successful gate retained 106 pins, Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, pinned Actions, warnings-as-errors, fresh object deletion/nonempty checks, exact parent/candidate root inventories, the three-axiom whitelist and timeouts 1500/3150/840/840/600 seconds.
+
+The algebraic range representation comparison is now accepted. CZ's ordinary finite-parameter derivative factorization, DC's range Lie equivalence and DD's literal gamma LieHom comparison remain separate accepted interfaces. They do not themselves identify S with a source manifold tangent space or turn that parameter derivative into the full manifold differential of F10BC.
+
+The next research decision should inspect the existing chart/atlas and Mathlib tangent/Lie-group interfaces, identify the exact source manifold and tangent obligations still missing, and choose a bounded construction or diagnostic. Do not relabel the ambient range Lie algebra as an already constructed group tangent object. Translated chart compatibility, source manifold/Lie-group structures and the full F10BC manifold differential remain open. Further global source reconstruction, target-surjectivity/covering/lift, upstream integration and BFSS physical conclusions also remain separate.
+
+This acceptance-only commit changes the canonical handoff alone. The source, audit and workflow remain the exact tested blobs above. Every historical handoff byte beginning at its original As-of field is preserved and this event is appended. The research branch is the only write target; main, frozen FCP and upstream integration remain unchanged, with no upstream PR opened.
