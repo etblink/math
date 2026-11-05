@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **2026-11-05 research status: F10DG remains accepted; F10DH is unaccepted after strict run 42127359381.** The red tested `fba3f26b08b9a8857ec0f16d1263758b123512f6`. Fresh DE/DF/DG parent checks passed; DH failed to synthesize the original Spin group topology at translated-chart consumers and its independent audit was skipped. The repaired candidate restores the same accepted local ambient PBW registrations and independently checks topology identity; all five theorem bodies and sixteen existing audit examples are unchanged. A complete new strict source/audit gate is required. Manifold/Lie-group structures, source tangent identification, the full representation manifold differential and spectral existence remain open.
+> **2026-11-05 research status: F10DH is accepted from strict run 42129673228 at exact tested commit `6e4cee0cddf911cf3417922ebfc7425a80f8a617`.** Fresh DE/DF/DG parents, all five DH source roots and the complete independent 24-example audit passed. The original translated-chart transitions are ContDiffOn at every order on their unchanged exact overlap domains, using the same accepted parameter inverse. The missing local PBW prerequisite was repaired without changing any theorem body or prior audit example. Packaging the named atlas in Mathlib's manifold interface, source tangent identification, Lie-group structure, the full F10BC representation manifold differential and spectral existence remain open. The first DH red and all historical evidence are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -5253,3 +5253,32 @@ These checks are not Lean elaboration. The new gate must establish whether the a
 | `.github/workflows/bfss-kotler-v10h-f10dh-translated-transition-regularity-strict.yml` | `4b590af27c9d7d04b0fac79f28ddc77141a0dcdd` |
 
 The original red and all earlier failure/acceptance evidence remain preserved. F10DG is the accepted baseline; source manifold/Lie-group structures, tangent identification, the full F10BC manifold differential, global physical lift and spectral existence remain distinct open obligations. The repair touches the research branch alone, with no upstream action. Existing publication/submission records are unchanged. Historical handoff bytes beginning at the original As-of field are preserved and this event is appended.
+
+
+## 2026-11-05 F10DH accepted — every-order regularity on the exact translated overlaps
+
+[Strict run #42129673228](https://github.com/etblink/math/actions/runs/42129673228), attempt 1, completed successfully at exact tested commit `6e4cee0cddf911cf3417922ebfc7425a80f8a617`, tree `ac7cf983148c940180c770136bc5edc79bc53c07`, job `127602803222`. All thirteen recorded job steps succeeded, including the 114-pin/scope preflight, pinned environment restoration, accepted DD ancestry rebuild, fresh accepted DE/DF/DG parents, fresh DH source, independent DH audit and artifact upload. DH's five roots are accepted at this exact tested head.
+
+**Artifact and phase evidence.** Downloaded artifact `13462894148` is 6,389 bytes. Its independently computed ZIP SHA-256 `63f49676bb6c32b75dee47836e4a9c21819271eaf2fbf4899ac75c297511a968` matches GitHub metadata and the upload log. The archive's tested SHA matches the run head; its candidate source and independent audit bytes match their exact tested Git blobs.
+
+The fresh DE, DF, DG, DH-source and DH-audit logs contain exactly 10/7/3/5/5 expected reports. The five DH names occur once in each candidate phase. Every report uses only propext, Classical.choice and Quot.sound, with no sorryAx or Lean source diagnostics. All 24 independent audit examples passed: the original sixteen controls and eight added PBW/topology controls. The final marker `V10H_F10DH_TRANSLATED_TRANSITION_REGULARITY_TYPES_AXIOMS_PASS` occurs exactly once as actual job output. Administrative Lake package-change warnings remain distinct from Lean source diagnostics.
+
+**Accepted exact blobs.**
+
+| File | Git blob |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean` | `6ede82cf62b79c90a71ab123d7b0b8798ac2165e` |
+| `lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean` | `4c304942d931b910326df47c51d412adea65651b` |
+| `.github/workflows/bfss-kotler-v10h-f10dh-translated-transition-regularity-strict.yml` | `4b590af27c9d7d04b0fac79f28ddc77141a0dcdd` |
+
+Lean remains 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`. All 114 pins, warnings-as-errors, complete root/axiom checks, fresh object deletion/nonempty controls, the 1500/3150/840/840/840/840/600-second per-phase limits and the 140-minute job allowance remain intact.
+
+**Mathematical boundary.** The original natural-matrix homomorphism supplies the finite product-entry formula. Its actual left-translated ordered word has upper coordinates regular at every `n : ℕ∞ω`. The literal existing transition is the accepted CG inverse evaluated on these original upper entries; membership in DE's exact overlap implies membership in that inverse's existing target. Composing with DG's whole-target inverse regularity proves `ContDiffOn ℝ n` of the original translated transition on the entire unchanged overlap.
+
+The independent audit checks literal original entries, exact overlap and target mapping, arbitrary-order/analytic regularity, infinite smoothness of reverse transitions on their own domains, within-overlap consumers, same-chart parameter recovery on the established target and negative global-natural-injectivity. The PBW norm and original subtype-induced source topology are checked independently. No smaller overlap, replacement chart/inverse, global natural-matrix inverse or whole-Clifford faithfulness is assumed.
+
+**Successful repair and negative knowledge.** The first DH red, run `42127359381` at `fba3f26b08b9a8857ec0f16d1263758b123512f6`, remains preserved with its exact artifact and six missing-topology diagnostics. The accepted repair only restored the already accepted local ambient PBW registrations and reconstructed them independently in the audit; all five theorem bodies and all sixteen existing audit examples stayed byte-identical. The eight new topology controls also passed. Imports do not export local instance registrations: a clean matrix-entry proof does not establish that a later topology-dependent chart consumer has its prerequisites. Exact local allowances and ground consumer controls are preferable to either a blanket instance ban or speculative global infrastructure. No proof limits, theorem hypotheses or scientific claims were relaxed.
+
+**Next bounded research obligation.** Inspect the pinned Mathlib atlas/groupoid/manifold interfaces and package this accepted every-order transition property for DE's named atlas while preserving the same inherited topology. Do not identify an ambient derivative range with a source manifold tangent space before constructing the required bridge. Source Lie-group structures, tangent identification and the full F10BC manifold differential remain separate obligations; no global physical Spin lift, spectral existence or mass-gap conclusion follows.
+
+This acceptance-only commit changes the canonical handoff alone. The Lean source, audit and workflow remain the exact tested blobs above. Existing publication/submission records are unchanged; every historical handoff byte beginning at the original As-of field is preserved, with this acceptance appended. The research branch is the only write target, with no upstream action.
