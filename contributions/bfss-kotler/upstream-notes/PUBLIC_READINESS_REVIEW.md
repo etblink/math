@@ -42,3 +42,10 @@ An external mathematical review would add value, but this plan does not invent a
 Run 41944503239 tested `f8bee5665407ae41b7f3e1cedebf382bf5d32f76`. Accepted DD parent and all ten DE source declarations compiled successfully with permitted axioms. The independent audit failed at three proof sites: a `letI` style linter in the coverage proof (line 88), and alias-sensitive rewrites in inverse-at-zero (95) and overlap membership (122). This is evidence about those proof interfaces; it neither accepts DE nor refutes the report's earlier results.
 
 The focused repair leaves the DE source unchanged, uses Lean's recommended ordinary `let` in the proof, and replaces the two rewrites with explicitly typed equality transports. Audit propositions, ten-root inventory, negative controls, whitelist, warning policy and proof/time limits stay fixed. Static preflight succeeds, but complete strict qualification is still required. F10DD remains accepted. The public-readiness hold does not depend on waiting for DE to turn green.
+
+
+## Superseding status — DE accepted and v0.4.0 scoped (2026-11-04)
+
+DE has now passed complete strict source/audit qualification in run 41946635772 at exact tested `a8fb249ebc49021f466c9c73995f144edb379fba`. The earlier failure section remains historical. The review's instruction to exclude unaccepted DE from a publication snapshot is superseded for the newly scoped v0.4.0, which explicitly includes this accepted topological atlas. Published v0.3.0 still stops at CK and remains unchanged.
+
+See [V0_4_0_EDITORIAL_SCOPE.md](V0_4_0_EDITORIAL_SCOPE.md) for the version recommendation, frozen cutoff, substantive change map and evidence anchors. The public-readiness hold and remaining claim/premise, reader-navigation, disclosure and publication-quality review tasks are unchanged. This scope document is not a completed manuscript or a publication authorization.
