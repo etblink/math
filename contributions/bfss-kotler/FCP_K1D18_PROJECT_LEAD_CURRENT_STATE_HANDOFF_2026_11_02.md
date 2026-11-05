@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **F10DE is accepted from strict run 41946635772 at tested commit `a8fb249ebc49021f466c9c73995f144edb379fba`. Public contribution submission remains on HOLD.** The original-source translated topological atlas, exact maps/overlaps and coverage are qualified. A v0.4.0 editorial scope is recorded for the substantive accepted advances since v0.3.0; it is not a completed or approved publication. Smooth atlas compatibility, source tangent identification, the full manifold differential and spectral existence remain open.
+> **2026-11-05 research status: F10DG remains accepted; F10DH is unaccepted after strict run 42127359381.** The red tested `fba3f26b08b9a8857ec0f16d1263758b123512f6`. Fresh DE/DF/DG parent checks passed; DH failed to synthesize the original Spin group topology at translated-chart consumers and its independent audit was skipped. The repaired candidate restores the same accepted local ambient PBW registrations and independently checks topology identity; all five theorem bodies and sixteen existing audit examples are unchanged. A complete new strict source/audit gate is required. Manifold/Lie-group structures, source tangent identification, the full representation manifold differential and spectral existence remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -5222,3 +5222,34 @@ Executed scope/pin preflight passes all 114 pins. YAML, all shell blocks and fiv
 - `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean` — `96e7b7134861a34d40e75df9b712c77b61cad3f1`.
 - `lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean` — `5163ac2f7f260bf237b6efb3b8747ab87b58fa37`.
 - `.github/workflows/bfss-kotler-v10h-f10dh-translated-transition-regularity-strict.yml` — `6d4907d681bc5cce2caece867e5d1ea8aa34a512`.
+
+
+## 2026-11-05 F10DH first red — restore accepted local PBW registrations at chart consumers
+
+[Strict run #42127359381](https://github.com/etblink/math/actions/runs/42127359381), attempt 1, tested exact commit `fba3f26b08b9a8857ec0f16d1263758b123512f6`, tree `df538a2050b6ef6749fe98aea6aa921536280ba7`, job `127594841023`. The pin/scope preflight, pinned environment restoration, accepted DD ancestry rebuild and fresh DE, DF and DG compilations succeeded. DH source elaboration failed. The independent DH audit was skipped, so DH is not accepted.
+
+**Evidence and first cause.** Six `lean.synthInstanceFailed` errors occur at source positions 59:38, 69:7, 83:54, 84:7, 91:7 and 95:54, all requesting `TopologicalSpace (spinGroup source9Quadratic)`. The first two matrix-entry/parameter-smoothness roots emitted permitted reports. The three subsequent topology-dependent chart roots emitted recovery-contaminated reports containing sorryAx; none is accepted from this partial phase. This is a missing local prerequisite at the chart consumer, not a mathematical counterexample or a resource-limit failure.
+
+Downloaded artifact `13462716088` is 2,438 bytes. Its independently computed ZIP SHA-256 `88dc39215e1af0c4a46ecdcc13a11816e02d9a0cbf50b8a39b91f2ae9178616c` matches GitHub metadata and upload logs. The archive contains tested-sha.txt, ancestor-de.log, parent.log, parent-dg.log and compiler.log; its tested SHA matches the failed head. The parent logs have exactly 10/7/3 reports, all using only propext, Classical.choice and Quot.sound, without sorryAx or Lean source diagnostics. The compiler log preserves all six errors and the two clean versus three contaminated root reports. Administrative Lake package-change warnings remain separate.
+
+**Prior method checked and bounded repair.** Re-read the pinned [FCP evergreen](https://github.com/etblink/Foundational-Convergence-Program/blob/cc608e2282e1b32bb11bbb64424e4775b28138e2/handoffs/FCP_PROJECT_LEAD_EVERGREEN_RESEARCH_GUIDANCE_0_1_0.md), blob `f5b53f680e7b3c119491be01306a33d83586bd9a`, and the scoped DF review, then inspected the accepted DE source and independent audit. DE registers the existing ambient PBW NormedAddCommGroup and NormedSpace locally; imports do not export those local registrations. DH's first two roots did not consume a topology-dependent source chart, so their clean reports did not test this missing prerequisite.
+
+The source repair adds only local registrations of `source9PBWNormedAddCommGroup` and `source9PBWNormedSpace`, exactly the accepted DE values. It defines no replacement norm or topology and installs no source-group norm, TopologicalSpace instance, global instance or new smoothness premise. The source after its P/G aliases, including all five theorem statements, proof bodies and print commands, is byte-identical to the red source.
+
+The independent audit reconstructs the same PBW norm using the established local finite-index, induced NormedAddCommGroup and induced NormedSpace construction from DE. Eight added controls check the ground NormedSpace, exact coordinate/norm-structure identities, captured source/parameter/Clifford topology identities and the group's original subtype-induced topology. All sixteen existing examples, entry/transition helpers and five print commands remain unchanged; no independent mathematical control is removed.
+
+The workflow replaces its blanket instance prohibition with an exact allowance for only these accepted source registrations and the three independently constructed audit registrations, then applies the original prohibition to everything remaining. It requires the topology-identity controls and refreshes only the source/audit blob pins. The other 112 pins remain verbatim. All compilation and audit phases, full-root/axiom checks, five warnings-as-errors invocations, error exits, artifact retention and per-phase limits 1500/3150/840/840/840/840/600 seconds remain unchanged; the outer job allowance remains 140 minutes.
+
+**Static verification and next discriminating test.** YAML, all shell blocks and all five embedded Python programs parse; the executed source/audit scope preflight passes. All 114 pin hashes match locally (the eighteen missing or stale local ancestry files were fetched at the failed immutable baseline). The three parent validators were re-executed successfully against the independently hashed artifact logs. Exact comparisons confirm all five theorem bodies and all sixteen old audit examples are unchanged, with eight additional topology controls.
+
+These checks are not Lean elaboration. The new gate must establish whether the accepted local topology data resolves all six chart-consumer failures and whether the now-reachable proofs and independent consumers pass. If another failure appears, isolate its first typed interface and preserve the new phase boundary before changing anything further. Do not increase recursion/heartbeats, unfold the Clifford word, shrink the overlap, change source/gamma carriers or assume global natural-matrix injectivity. Require all five roots clean in both candidate phases and the unchanged final marker `V10H_F10DH_TRANSLATED_TRANSITION_REGULARITY_TYPES_AXIOMS_PASS` before accepting DH.
+
+**Repaired exact blobs.**
+
+| File | Git blob |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean` | `6ede82cf62b79c90a71ab123d7b0b8798ac2165e` |
+| `lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean` | `4c304942d931b910326df47c51d412adea65651b` |
+| `.github/workflows/bfss-kotler-v10h-f10dh-translated-transition-regularity-strict.yml` | `4b590af27c9d7d04b0fac79f28ddc77141a0dcdd` |
+
+The original red and all earlier failure/acceptance evidence remain preserved. F10DG is the accepted baseline; source manifold/Lie-group structures, tangent identification, the full F10BC manifold differential, global physical lift and spectral existence remain distinct open obligations. The repair touches the research branch alone, with no upstream action. Existing publication/submission records are unchanged. Historical handoff bytes beginning at the original As-of field are preserved and this event is appended.

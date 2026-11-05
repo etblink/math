@@ -148,8 +148,8 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DFIndependentAudit.lean)" = 'f2f898738d81f3750400bc16303d3f72216a15ec'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DGWholeTargetInverseRegularity.lean)" = 'fa7d17c69d923ef310b14c14ef21d8a6bc729582'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DGIndependentAudit.lean)" = '19188753ca5def45286778ed15fc136a8543975a'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean)" = '96e7b7134861a34d40e75df9b712c77b61cad3f1'
-          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean)" = '5163ac2f7f260bf237b6efb3b8747ab87b58fa37'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean)" = '6ede82cf62b79c90a71ab123d7b0b8798ac2165e'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean)" = '4c304942d931b910326df47c51d412adea65651b'
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -160,6 +160,10 @@ jobs:
               code=re.sub(r'/\-.*?\-/','',text,flags=re.S)
               code=re.sub(r'--[^\n]*','',code)
               assert not re.search(r'\b(sorry|admit|native_decide)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              registrations = ['local instance f10dhLocalNormedAddCommGroup :\n    NormedAddCommGroup (CliffordAlgebra source9Quadratic) := source9PBWNormedAddCommGroup\nlocal instance f10dhLocalNormedSpace :\n    NormedSpace ℝ (CliffordAlgebra source9Quadratic) := source9PBWNormedSpace'] if text is s else ['local instance : Fintype (Finset SpaceIndex) := Fintype.ofFinite _', 'local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=\n  NormedAddCommGroup.induced\n    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ)\n    auditDHPBWCoordinates.toAddMonoidHom auditDHPBWCoordinates.injective\nlocal instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=\n  NormedSpace.induced ℝ\n    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ) auditDHPBWCoordinates']
+              for registration in registrations:
+                  assert code.count(registration)==1,registration
+                  code=code.replace(registration,'')
               assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
               assert not re.search(r'\b(IsManifold|ContMDiff|LieGroup|TangentSpace|ChartedSpaceCore|NormedRing)\b',code)
               assert 'set_option autoImplicit false' in code
@@ -167,6 +171,8 @@ jobs:
           for token in ['map_mul source9SpinVectorMatrixHom g h','source9OrderedUpperProjection_apply','Matrix.mul_apply','ContDiff.sum','source9OrderedStrictPlaneWord_matrix_entry_contDiff','source9SpinLeftTranslatedChart_transition_source','source9SpinExactRecoveryNeighborhood_conditions','source9SpinNaturalMatrixRecoveryNeighborhood_conditions','source9OrderedUpperCoordinateLocalHomeomorph_symm_contDiffOn_target','hinner.contDiffOn','rw [← heq] at hc','ContDiffOn ℝ n']:
               assert token in s,token
           for token in ['private abbrev P := Fin 36 → ℝ','source9StrictPlaneRow i','source9StrictPlaneColumn i','private theorem auditDHUpper_eq','funext g i','source9OrderedUpperProjection_apply','rw [← auditDHUpper_eq]','private theorem auditDHTransition_eq','auditDHOverlap g h','Set.MapsTo','ContDiffOn ℝ ω','ContDiffOn ℝ ∞','ContDiffWithinAt ℝ n','right_inv ht','source9NaturalMatrix_not_injective']:
+              assert token in a,token
+          for token in ['source9PBWCoordinates = auditDHPBWCoordinates := rfl', 'source9PBWNormedAddCommGroup = NormedAddCommGroup.induced', 'source9PBWNormedSpace = NormedSpace.induced ℝ', '(inferInstance : TopologicalSpace G) = auditDHSpinTopology := rfl', '(inferInstance : TopologicalSpace P) = auditDHParameterTopology := rfl', '(inferInstance : TopologicalSpace C) = auditDHCliffordTopology := rfl', 'TopologicalSpace.induced (Subtype.val : G → C) auditDHCliffordTopology := rfl']:
               assert token in a,token
           print('V10H_F10DH_ORIGINAL_MATRIX_EXACT_OVERLAP_SCOPE_PASS')
           PY

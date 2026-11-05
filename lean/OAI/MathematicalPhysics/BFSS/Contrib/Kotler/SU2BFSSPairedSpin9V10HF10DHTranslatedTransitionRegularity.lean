@@ -11,6 +11,12 @@ noncomputable section
 open OAI.BFSSQuantum
 open scoped ContDiff Matrix.Norms.Elementwise
 
+-- Imports do not export DE's local registrations; reuse the same accepted ambient PBW values.
+local instance f10dhLocalNormedAddCommGroup :
+    NormedAddCommGroup (CliffordAlgebra source9Quadratic) := source9PBWNormedAddCommGroup
+local instance f10dhLocalNormedSpace :
+    NormedSpace ℝ (CliffordAlgebra source9Quadratic) := source9PBWNormedSpace
+
 private abbrev P := Fin 36 → ℝ
 private abbrev G := spinGroup source9Quadratic
 

@@ -6,8 +6,29 @@ noncomputable section
 open OAI.BFSSQuantum
 open scoped ContDiff Matrix.Norms.Elementwise
 
+-- Independently reconstruct the same PBW norm before consuming topology-dependent charts.
+local instance : Fintype (Finset SpaceIndex) := Fintype.ofFinite _
+private def auditDHPBWCoordinates :
+    CliffordAlgebra source9Quadratic ≃ₗ[ℝ] (Finset SpaceIndex → ℝ) :=
+  source9CliffordPBWBasis.repr.trans (Finsupp.linearEquivFunOnFinite ℝ ℝ (Finset SpaceIndex))
+local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=
+  NormedAddCommGroup.induced
+    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ)
+    auditDHPBWCoordinates.toAddMonoidHom auditDHPBWCoordinates.injective
+local instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
+  NormedSpace.induced ℝ
+    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ) auditDHPBWCoordinates
+
+@[instance_reducible] private def auditDHSpinTopology :
+    TopologicalSpace (spinGroup source9Quadratic) := inferInstance
+@[instance_reducible] private def auditDHParameterTopology :
+    TopologicalSpace (Fin 36 → ℝ) := inferInstance
+@[instance_reducible] private def auditDHCliffordTopology :
+    TopologicalSpace (CliffordAlgebra source9Quadratic) := inferInstance
+
 private abbrev P := Fin 36 → ℝ
 private abbrev G := spinGroup source9Quadratic
+private abbrev C := CliffordAlgebra source9Quadratic
 private def auditDHUpper (g : G) (i : Fin 36) : ℝ :=
   ((source9SpinVectorOrthogonalHom g) : Matrix SpaceIndex SpaceIndex ℝ)
     (source9StrictPlaneRow i) (source9StrictPlaneColumn i)
@@ -29,6 +50,19 @@ private theorem auditDHTransition_eq (g h : G) :
   unfold auditDHTransition
   rw [← auditDHUpper_eq]
   exact source9SpinLeftTranslatedChart_transition_coordinates g h t
+
+example : NormedSpace ℝ C := inferInstance
+example : source9PBWCoordinates = auditDHPBWCoordinates := rfl
+example : source9PBWNormedAddCommGroup = NormedAddCommGroup.induced
+    C (Finset SpaceIndex → ℝ)
+    auditDHPBWCoordinates.toAddMonoidHom auditDHPBWCoordinates.injective := rfl
+example : source9PBWNormedSpace = NormedSpace.induced ℝ
+    C (Finset SpaceIndex → ℝ) auditDHPBWCoordinates := rfl
+example : (inferInstance : TopologicalSpace G) = auditDHSpinTopology := rfl
+example : (inferInstance : TopologicalSpace P) = auditDHParameterTopology := rfl
+example : (inferInstance : TopologicalSpace C) = auditDHCliffordTopology := rfl
+example : (inferInstance : TopologicalSpace G) =
+    TopologicalSpace.induced (Subtype.val : G → C) auditDHCliffordTopology := rfl
 
 example : Fintype.card (Fin 36) = 36 := by decide
 example : Fintype.card SpaceIndex = 9 := by decide
