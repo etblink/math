@@ -4,6 +4,8 @@
 
 **2026-11-06 A/B mini-audit:** [source normalization and gauge averaging](BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md) now have explicit analytical derivations and source-pinned independent diagnostics. This is zero new Lean acceptance. The full source confinement bound, representation/sector obligations and closed-domain bridge remain open. The audit also corrects the cross-branch source locators below.
 
+**2026-11-06 C analytical audit:** [weight six, explicit sectors and the source-lift hold](BFSS_SPECTRAL_CONFINEMENT_C_AUDIT_2026_11_06.md) supports `M=6` in the canonical continuous-lift model and the explicit candidate `mu=(6,0,0,0)`, `k=9`, `lambda=(24,18,0,0)`. Exact gamma/projector, character, branching and polynomial diagnostics pass. The actual source global lift/action binding and original core/closed-form obligations remain open; this is not Gate C formal acceptance.
+
 **Branch:** `research/bfss-spectral-confinement-roadmap-20261106`  
 **Exact ancestry:** `research/fcp-k1d17-ancestor-cache-pilot-20261028@4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e`  
 **Latest parent mathematical qualification:** [F10DW strict run #42287468238](https://github.com/etblink/math/actions/runs/42287468238), tested source commit `54748cb062b54d970d5f448ae4fca9bd84bcfcd4`, green; parent branch HEAD is the subsequent documentation-only acceptance commit.  
@@ -118,5 +120,7 @@ Choose **Gate A plus the sharp sphere-average inequality** as the first analytic
 Only after that audit succeeds should a new Lean theorem gate be chartered. A successful theorem gate must state precisely whether it proves (i) finite-dimensional Clifford/weight algebra, (ii) a smooth-core form estimate, (iii) a closed-source-operator estimate, or (iv) actual positive spectral existence. Those are distinct milestones.
 
 The [completed bounded A/B audit](BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md) supports designing independent finite-CAR and sphere-average formalizations. It derives the conditional H1 coefficients, including the oscillator factor `2 sqrt(beta)`, but does not qualify the full source form estimate. Gauge invariance makes the one fixed-direction density moment equal to its sphere average, so a separate rotated oscillator family is unnecessary for this averaging step. Gate C and the source-form/domain obligations remain decisive holds.
+
+The [C audit](BFSS_SPECTRAL_CONFINEMENT_C_AUDIT_2026_11_06.md) narrows that hold: finite normalization and an explicit nonempty-sector route survive analytically, while the literal source Spin(9)-domain continuous Fock lift and its gauge/core agreement still need construction. A gauge-domain sixteen-block Fock homomorphism in the separate operator package must not be mistaken for that Spin(9) map. Prioritize this exact binding and an adversarial Gate D test in the named candidate sector over another count of rotation planes. No spectral theorem or full source confinement estimate has been admitted.
 
 **Decision principle:** seek a decisive truth test, including a counterexample, not merely the next compilable lemma. Preserve accepted F10DW geometry while exploring the shorter spectral route.
