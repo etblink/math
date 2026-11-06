@@ -2,6 +2,8 @@
 
 **Status:** PROPOSAL ONLY. This document records a bounded, falsification-first research direction; it does **not** qualify a new Lean theorem, alter a manuscript conclusion, certify an independent peer review, or authorize publication/upstream submission.
 
+**2026-11-06 A/B mini-audit:** [source normalization and gauge averaging](BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md) now have explicit analytical derivations and source-pinned independent diagnostics. This is zero new Lean acceptance. The full source confinement bound, representation/sector obligations and closed-domain bridge remain open. The audit also corrects the cross-branch source locators below.
+
 **Branch:** `research/bfss-spectral-confinement-roadmap-20261106`  
 **Exact ancestry:** `research/fcp-k1d17-ancestor-cache-pilot-20261028@4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e`  
 **Latest parent mathematical qualification:** [F10DW strict run #42287468238](https://github.com/etblink/math/actions/runs/42287468238), tested source commit `54748cb062b54d970d5f448ae4fca9bd84bcfcd4`, green; parent branch HEAD is the subsequent documentation-only acceptance commit.  
@@ -14,7 +16,7 @@ The target is the **positive point spectrum** of the *relative* undeformed SU(2)
 
 Primary manuscript: [October 5 BFSS preprint (TeX)](https://github.com/mathcommunity/oai-math-revised/blob/main/preprints/Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026/build/positive-eigenvalues-relative-su2-bfss.tex): particularly its form/rotations lemma, Spin(9)→Spin(8) restriction lemma, transverse oscillator bound, confinement proposition, physical-sector construction, and final spectral argument. This manuscript **claims** infinitely many positive-energy eigenstates; our independent Lean work has **not** proved that claim.
 
-Relevant accepted library entry points: [contribution claims and locators](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/CLAIMS.md), `Core.lean`, the qualified `Contrib/Kotler/OperatorDependencies` package, [F10DW source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DWNativeRepresentationDifferentiability.lean), and the earlier [geometry plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md). The published v0.4.0 record is [Zenodo DOI 10.5281/zenodo.23969575](https://doi.org/10.5281/zenodo.23969575). Upstream [PR #77](https://github.com/mathcommunity/oai-math-revised/pull/77) contains the qualified contribution snapshot; it is **not** evidence that later F10DW or the proposed spectral statements were reviewed upstream.
+Relevant source entry points: [Core.lean](../../lean/OAI/MathematicalPhysics/BFSS/Core.lean), [F10DW source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DWNativeRepresentationDifferentiability.lean), and the earlier [geometry plan](FCP_K1D18_SOURCE_SPIN9_CHART_TANGENT_WORK_PLAN_2026_11_02.md) are in this exploratory tree. The [contribution claims and locators](https://github.com/etblink/math/blob/fa00aa36e770ca516f57b41f5b02229a5033d50f/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/CLAIMS.md) and [OperatorDependencies package](https://github.com/etblink/math/tree/fa00aa36e770ca516f57b41f5b02229a5033d50f/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies) are in the separate PR #77 head snapshot `fa00aa36e770ca516f57b41f5b02229a5033d50f`; they are **absent here**, and the F10DW workflow does not restore them. Any use requires a separately scoped, source-pinned integration and qualification; no import or merge is performed by this audit. The published v0.4.0 record is [Zenodo DOI 10.5281/zenodo.23969575](https://doi.org/10.5281/zenodo.23969575). Upstream [PR #77](https://github.com/mathcommunity/oai-math-revised/pull/77) contains the contribution snapshot; it is **not** evidence that later F10DW or the proposed spectral statements were reviewed upstream.
 
 ## 2. Research hypotheses from the 2026-11-06 discussion
 
@@ -90,6 +92,8 @@ The candidate conclusion is a compact-resolvent estimate potentially at `λ₂>6
 
 Do a qualified-theorem inventory before adding any Lean source:
 
+The `OperatorDependencies/` locators in the next four bullets refer to the **separate pinned package linked above**, not to files inherited by this exploratory branch. Source presence, historical qualification and applicability to a new gate must each be checked.
+
 - `OperatorDependencies/FCPM3LUnitaryCliffordModuleExistence.lean` constructs a unitary generator-preserving Clifford intertwiner **under explicit algebra-equivalence/commutant/irreducibility premises**. Determine which premises can be instantiated with original Fock data.
 - `OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean` supplies the original Clifford-to-Fock algebra equivalence; do not confuse this with an independent paper module identification.
 - `OperatorDependencies/SU2BFSSPhysicalDomainD2B28ConcretePairedSU2HamiltonianProbe.lean` identifies the actual original-source normalized physical self-adjoint Hamiltonian and its weak-form characterization; it does **not** supply spectral existence.
@@ -112,5 +116,7 @@ Use Schur's lemma/uniqueness of implementers as a **candidate shortcut**: after 
 Choose **Gate A plus the sharp sphere-average inequality** as the first analytical mini-audit. Build one independent, source-pinned derivation with a fully explicit theorem statement, coefficient table and adversarial examples. Ask: can a normalized, source-defined physical state in a fixed high-`λ₂` sector make the candidate H1 coercive bound false?
 
 Only after that audit succeeds should a new Lean theorem gate be chartered. A successful theorem gate must state precisely whether it proves (i) finite-dimensional Clifford/weight algebra, (ii) a smooth-core form estimate, (iii) a closed-source-operator estimate, or (iv) actual positive spectral existence. Those are distinct milestones.
+
+The [completed bounded A/B audit](BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md) supports designing independent finite-CAR and sphere-average formalizations. It derives the conditional H1 coefficients, including the oscillator factor `2 sqrt(beta)`, but does not qualify the full source form estimate. Gauge invariance makes the one fixed-direction density moment equal to its sphere average, so a separate rotated oscillator family is unnecessary for this averaging step. Gate C and the source-form/domain obligations remain decisive holds.
 
 **Decision principle:** seek a decisive truth test, including a counterexample, not merely the next compilable lemma. Preserve accepted F10DW geometry while exploring the shorter spectral route.
