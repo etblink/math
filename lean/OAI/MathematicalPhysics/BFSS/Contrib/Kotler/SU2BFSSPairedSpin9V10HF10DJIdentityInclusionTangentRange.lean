@@ -31,7 +31,7 @@ private abbrev T := TangentSpace I (1 : G)
 
 theorem source9SpinIdentity_extChartAt_center : extChartAt I (1 : G) (1 : G) = 0 := by
   have h : extChartAt I (1 : G) (1 : G) = chartAt P (1 : G) (1 : G) := by
-    simpa only [modelWithCornersSelf_coe] using
+    simpa only [modelWithCornersSelf_coe, Function.id_comp] using
       congrFun (extChartAt_coe (I := I) (1 : G)) (1 : G)
   exact h.trans (source9SpinLeftTranslatedChart_self (1 : G))
 
@@ -39,7 +39,7 @@ theorem source9SpinIdentity_extChartAt_symm (t : P) :
     (extChartAt I (1 : G)).symm t = source9SpinIdentityLocalChart.symm t := by
   calc
     (extChartAt I (1 : G)).symm t = (chartAt P (1 : G)).symm t := by
-      simpa only [modelWithCornersSelf_coe_symm] using
+      simpa only [modelWithCornersSelf_coe_symm, Function.comp_id] using
         congrFun (extChartAt_coe_symm (I := I) (1 : G)) t
     _ = (1 : G) * source9OrderedStrictPlaneWord t :=
       source9SpinLeftTranslatedChart_symm_apply (1 : G) t
@@ -56,7 +56,8 @@ theorem source9SpinIdentityInclusion_writtenInExtChartAt :
     writtenInExtChartAt I J (1 : G) inclusion t =
         extChartAt J (inclusion (1 : G)) (inclusion ((extChartAt I (1 : G)).symm t)) := rfl
     _ = inclusion ((extChartAt I (1 : G)).symm t) := by
-      rw [extChartAt_model_space_eq_id ℝ (inclusion (1 : G))]
+      exact ext_chart_model_space_apply (𝕜 := ℝ) (x := inclusion (1 : G))
+        (y := inclusion ((extChartAt I (1 : G)).symm t))
     _ = ((source9SpinIdentityLocalChart.symm t) : C) :=
       congrArg (fun g : G => (g : C)) (source9SpinIdentity_extChartAt_symm t)
 
