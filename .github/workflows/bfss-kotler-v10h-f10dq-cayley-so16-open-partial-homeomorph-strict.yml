@@ -177,7 +177,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DOIndependentAudit.lean)" = '273a09cd1e33813241b5d61c729f73bdcd512ec5'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph.lean)" = 'adaf988470203ab64ce1bf47f6e8b971f974e777'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean)" = '435d341dd186c26fb2d1c8ddbd3f8278b41ffaeb'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph.lean)" = '8159a08a0808faad911a032fb3db3fcf21e04a91'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph.lean)" = '9789a47b31b90331528add374195471bdec1f7e7'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DQIndependentAudit.lean)" = '3901be8511828b759fdad9448faad44846ccb8a8'
           python3 - <<'PY'
           from pathlib import Path
@@ -258,6 +258,8 @@ jobs:
           for token in ['private abbrev Q := gamma16StrictPlaneIndex → ℝ','private abbrev SO := Matrix.specialOrthogonalGroup SpinIndex ℝ','private abbrev U := gamma16CayleySource','private abbrev V := gamma16CayleyTarget','if h : r ∈ V then gamma16CayleyBackwardCoordinates ⟨r, h⟩ else 0','if h : c ∈ U then gamma16CayleySO ⟨c, h⟩ else 1','continuousOn_iff_continuous_domRestrict.mpr','gamma16CayleyForwardSO_backward','gamma16CayleyBackwardCoordinates_forward','OpenPartialHomeomorph SO Q where','toFun := gamma16CayleyChart','invFun := gamma16CayleyChartInv','source := V','target := U','continuousOn_toFun := gamma16CayleyChart_continuousOn','continuousOn_invFun := gamma16CayleyChartInv_continuousOn','open_source := gamma16CayleyTarget_isOpen','open_target := gamma16CayleySource_isOpen']:
               assert token in s,token
           assert 'continuousOn_iff_continuous_restrict' not in s
+          assert not re.search(r'\b(?:dif_pos|dif_neg)\b',code)
+          assert code.count('dite_eq_left')==2
           for token in ['OpenPartialHomeomorph (Matrix.specialOrthogonalGroup SpinIndex ℝ)','CH.source = {r : SO | ((r : M) + 1).det ≠ 0}','CH.target = {c : Q | (1 - A c).det ≠ 0}','gamma16CayleyChart r p = (((r : M) - 1) * ((r : M) + 1)⁻¹) p.val.1 p.val.2','(gamma16CayleyChartInv c : M) = (1 + A c) * (1 - A c)⁻¹','CH.left_inv hr','CH.right_inv hc','ContinuousOn CH V := CH.continuousOn','ContinuousOn CH.symm U := CH.continuousOn_symm','IsOpen CH.source := CH.open_source','IsOpen CH.target := CH.open_target']:
               assert token in a,token
           print('V10H_F10DQ_EXACT_NATIVE_SO16_CAYLEY_OPEN_PARTIAL_HOMEOMORPH_SCOPE_PASS')

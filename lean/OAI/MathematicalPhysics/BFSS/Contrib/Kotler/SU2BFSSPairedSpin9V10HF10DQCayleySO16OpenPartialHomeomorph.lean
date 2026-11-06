@@ -31,12 +31,12 @@ noncomputable def gamma16CayleyChartInv (c : Q) : SO := by
 theorem gamma16CayleyChart_apply (r : SO) (hr : r ∈ V) :
     gamma16CayleyChart r = gamma16CayleyBackwardCoordinates ⟨r, hr⟩ := by
   classical
-  simp only [gamma16CayleyChart, dif_pos hr]
+  simp only [gamma16CayleyChart, dite_eq_left hr]
 
 theorem gamma16CayleyChartInv_apply (c : Q) (hc : c ∈ U) :
     gamma16CayleyChartInv c = gamma16CayleySO ⟨c, hc⟩ := by
   classical
-  simp only [gamma16CayleyChartInv, dif_pos hc]
+  simp only [gamma16CayleyChartInv, dite_eq_left hc]
 
 theorem gamma16CayleyChart_mem_target (r : SO) (hr : r ∈ V) :
     gamma16CayleyChart r ∈ U := by
