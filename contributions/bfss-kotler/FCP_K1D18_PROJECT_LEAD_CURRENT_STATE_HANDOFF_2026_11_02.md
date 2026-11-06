@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **2026-11-06 research status: F10DN remains accepted; F10DO first source red is preserved and a bounded theorem-application repair awaits strict CI.** Run 42199371449 tested `a4a42b7b897aa41216b86d387decced95772f275`: all preflights and eleven fresh parents passed (88 reports). The sole source diagnostic was lookup of `Matrix.mem_orthogonalGroup_iff'.mp` in the orthogonality helper; six roots were clean and eleven contained dependent recovery axioms. The 111-example audit was skipped. The repair parenthesizes the existing primed theorem and explicitly supplies its original matrix argument, preserving all seventeen statements, the other sixteen bodies and the entire audit. Local syntax/scope and all 131 hash checks pass. F10DO remains unaccepted; two-sided Cayley inverse laws and atlas construction remain open.
+> **2026-11-06 research status: F10DO accepted at strict run 42202289612.** Exact tested commit `a1f8e7fa8ee0903f81e3f6b97702b8767c42a9bf` passed all preflights, eleven fresh parent phases (88 reports), seventeen source roots and all 111 independent audit examples with seventeen clean audit reports. On the proved open actual SO(16) subset det(R+1) ≠ 0 containing identity, (R-1)(R+1)⁻¹ is native skew and has continuous original upper-entry coordinates, exact matrix reconstruction and identity value zero. Artifact hash and tested source/audit bytes are independently checked. Forward/backward domain matching and two-sided Cayley inverse laws, LocalHomeomorph/atlas, smoothness, derivative normalization and intrinsic target tangent identification remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -6116,3 +6116,36 @@ The explicit f/x bindings learned from DN already gave a clean raw matrix-contin
 F10DN remains accepted, and DO remains a candidate. Forward/backward domain matching and two-sided Cayley inverse laws, LocalHomeomorph/atlas, smoothness and derivative normalization, intrinsic target tangent identification, source Lie-group/bracket structure and physical/spectral conclusions remain open.
 
 This three-file repair changes only DO source, its strict workflow and this canonical handoff on the research branch. All accepted source/audit/workflow files, the first red and its artifact, publication/submission records and every historical handoff byte beginning at the original As-of field are preserved, with this event appended. No upstream action is taken.
+
+
+## 2026-11-06 F10DO acceptance — continuous backward Cayley coordinates
+
+**Exact strict result.** [Run #42202289612](https://github.com/etblink/math/actions/runs/42202289612), attempt 1, job `127840257122`, passed at exact tested commit `a1f8e7fa8ee0903f81e3f6b97702b8767c42a9bf`, tree `5043ee80f01e07c122c798ac8e9c660200118162`. All 21 reported job steps succeeded. Observed runtime was 16 minutes 30 seconds (02:23:25–02:39:55 America/Los_Angeles on November 6; 10:23:25–10:39:55 UTC), one observation rather than a reliability estimate.
+
+| Accepted file | Exact tested Git blob |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DOCayleySO16BackwardCoordinates.lean` | `775877ca57562e03484cfa87e1408f8e657b3bb6` |
+| `lean/diagnostics/FCP_K1D18V10HF10DOIndependentAudit.lean` | `273a09cd1e33813241b5d61c729f73bdcd512ec5` |
+| `.github/workflows/bfss-kotler-v10h-f10do-cayley-so16-backward-coordinates-strict.yml` | `2f0dab0f0ed432fc46b6eb179abc51138f8d668c` |
+
+**Evidence checked.** All 131 pins, syntax/scope controls, pinned Lean 4.34.1/Mathlib restoration and DD/AI rebuild passed. Fresh DE/DF/DG/DH/DI/DJ/AI/DK/DL/DM/DN phases produced 10/7/3/5/3/10/2/9/9/15/15 clean reports (88 total); DO source and audit each produced the exact seventeen named reports, for 122 reports across the gate. All axiom sets lie within propext, Classical.choice and Quot.sound. Every one of the 111 independent examples completed under warnings-as-errors. Both candidate logs are free of Lean error/warning diagnostics, including after ANSI stripping, and recovery sorryAx.
+
+Actual output contains exactly one `V10H_F10DO_CAYLEY_SO16_BACKWARD_COORDINATES_TYPES_AXIOMS_PASS` marker. All thirteen embedded Python programs were independently replayed against matching source files and retained logs and passed; every shell block passes bash -n and every program passes ast.parse.
+
+Artifact `13495169140`, named `bfss-v10h-f10do-cayley-so16-backward-coordinates-a1f8e7fa8ee0903f81e3f6b97702b8767c42a9bf-1`, contains 16 files and is 13,695 bytes. Its independently recomputed ZIP SHA-256 `3e4bda5c1aff395f5ebf9fb74cc4ea0e171e4c84c0feda71908cc2ec49d1e3e3` matches metadata and the upload log. Archive integrity passes; tested-sha matches the commit; archived candidate-source.lean and independent-audit.lean match the tested source/audit bytes and Git blobs above.
+
+**Accepted mathematical scope.** For the actual native SO(16) group, V = {R | det(R+1) ≠ 0} is open and contains identity. The literal original-matrix B(R)=(R-1)*(R+1)⁻¹ has B(identity)=0 and is skew for every R in V. The proof uses native Rᵀ*R=1, actual determinant-unit witnesses for R+1 and its transpose, bounded matrix inverse cancellation and a noncommutative polynomial identity.
+
+This supplies an actual continuous native-skew-valued map on V. The accepted 120-coordinate continuous model inverse gives continuous backward coordinates, each equal to the corresponding original upper entry of B(R). Reconstructing those coordinates through gamma16StrictPlaneAmbientCLM gives exactly B(R), and the identity point has the zero coordinate function.
+
+All 93 DN examples are retained within the 111-example audit, with complete new interface and target-subtype topology checks. Original carriers, norms, topologies, gamma normalization, actual source differential and forward Cayley controls remain unchanged. No arbitrary matrix commutativity, replacement topology, NormedRing, subgroup atlas or intrinsic tangent is assumed.
+
+**Repair outcome and negative knowledge.** Preserve first red #42199371449, exact failed blobs, one combined primed-theorem/projection lookup error, six clean source reports, eleven recovery reports, skipped audit and hashed artifact. The only mathematical source edit explicitly grounds the existing primed membership theorem at rMatrix r and parenthesizes it before mp. All seventeen propositions, the other sixteen bodies and the entire 111-example audit stayed fixed. The full green supports this specific theorem-application repair and supplies the first successful complete consumer audit. The earlier projection error was not evidence that the underlying orthogonality lemma or claim was absent.
+
+**Next bounded obligation.** The forward and backward maps are now separately continuous on proved open domains, with their base-point values. They have not yet been proved mutual inverses. Require the following exact source/target laws before assembling a LocalHomeomorph:
+- For c in DN's U, the actual forward group value lies in V and its backward coordinates equal c.
+- For R in V, the backward coordinates lie in U and their actual forward group value equals R.
+
+Model reconstruction A(backwardCoordinates(R))=B(R) is not the second Cayley inverse law. Preserve this distinction when composing the typed subtype maps. After the domain/inverse laws, qualify the actual homeomorphism/chart, then smoothness and the chosen factor-two derivative normalization. Intrinsic target tangent identification and full intrinsic F10BC comparison, source Lie-group/bracket structure, global physical Spin lift, spectral existence and mass-gap consequences remain separate.
+
+This acceptance-only commit updates the canonical handoff alone from the exact tested head/tree. Lean source, independent audit and workflow remain the tested blobs. All prior reds, accepted artifacts, publication/submission records and historical handoff bytes beginning at the original As-of field are preserved, with this acceptance appended. Only the research branch is updated; no upstream action is taken.
