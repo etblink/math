@@ -52,29 +52,36 @@ theorem gamma16MatrixProduct_hasFDerivAt_one
     (hf : HasFDerivAt f F 0) (hg : HasFDerivAt g G 0)
     (hf0 : f 0 = 1) (hg0 : g 0 = 1) :
     HasFDerivAt (fun c : Q => f c * g c) (F + G) 0 := by
-  have hbil : HasFDerivAt (fun p : M × M => gamma16MatrixMulCLM p.1 p.2)
-      (gamma16MatrixMulCLM.isBoundedBilinearMap.deriv (f 0, g 0)) (f 0, g 0) :=
-    gamma16MatrixMulCLM.isBoundedBilinearMap.hasFDerivAt (f 0, g 0)
+  have hbil : IsBoundedBilinearMap ℝ (fun p : M × M => gamma16MatrixMulCLM p.1 p.2) :=
+    gamma16MatrixMulCLM.isBoundedBilinearMap
   have hfun : (fun p : M × M => gamma16MatrixMulCLM p.1 p.2) =
       (fun p : M × M => p.1 * p.2) := by
     funext p
     exact gamma16MatrixMulCLM_apply p.1 p.2
+  have hbound : IsBoundedBilinearMap ℝ (fun p : M × M => p.1 * p.2) :=
+    Eq.mp (congrArg (fun b : M × M → M => IsBoundedBilinearMap ℝ b) hfun) hbil
   have hmul : HasFDerivAt (fun p : M × M => p.1 * p.2)
-      (gamma16MatrixMulCLM.isBoundedBilinearMap.deriv (f 0, g 0)) (f 0, g 0) :=
-    Eq.mp (congrArg (fun b : M × M → M => HasFDerivAt b
-      (gamma16MatrixMulCLM.isBoundedBilinearMap.deriv (f 0, g 0)) (f 0, g 0)) hfun) hbil
+      (hbound.deriv (f 0, g 0)) (f 0, g 0) := hbound.hasFDerivAt (f 0, g 0)
   have hpair : HasFDerivAt (fun c : Q => (f c, g c)) (F.prod G) 0 := hf.prodMk hg
+  have hcomp : HasFDerivAt
+      ((fun p : M × M => p.1 * p.2) ∘ (fun c : Q => (f c, g c)))
+      ((hbound.deriv (f 0, g 0)).comp (F.prod G)) 0 :=
+    HasFDerivAt.comp (f := (fun c : Q => (f c, g c)))
+      (g := (fun p : M × M => p.1 * p.2)) 0 hmul hpair
+  have hcomposition :
+      ((fun p : M × M => p.1 * p.2) ∘ (fun c : Q => (f c, g c))) =
+      (fun c : Q => f c * g c) := rfl
   have hprod : HasFDerivAt (fun c : Q => f c * g c)
-      ((gamma16MatrixMulCLM.isBoundedBilinearMap.deriv (f 0, g 0)).comp (F.prod G)) 0 :=
-    hmul.comp 0 hpair
-  have hoperator :
-      (gamma16MatrixMulCLM.isBoundedBilinearMap.deriv (f 0, g 0)).comp (F.prod G) = F + G := by
+      ((hbound.deriv (f 0, g 0)).comp (F.prod G)) 0 :=
+    Eq.mp (congrArg (fun b : Q → M =>
+      HasFDerivAt b ((hbound.deriv (f 0, g 0)).comp (F.prod G)) 0) hcomposition) hcomp
+  have hoperator : (hbound.deriv (f 0, g 0)).comp (F.prod G) = F + G := by
     apply ContinuousLinearMap.ext
     intro v
-    change gamma16MatrixMulCLM.isBoundedBilinearMap.deriv (f 0, g 0) (F v, G v) = F v + G v
-    rw [IsBoundedBilinearMap.deriv_apply]
-    simp only [gamma16MatrixMulCLM_apply]
-    rw [hf0, hg0, Matrix.one_mul, Matrix.mul_one, add_comm]
+    change hbound.deriv (f 0, g 0) (F v, G v) = F v + G v
+    have hvalue : hbound.deriv (f 0, g 0) (F v, G v) = f 0 * G v + F v * g 0 :=
+      IsBoundedBilinearMap.deriv_apply hbound (f 0, g 0) (F v, G v)
+    exact hvalue.trans (by rw [hf0, hg0, Matrix.one_mul, Matrix.mul_one, add_comm])
   exact Eq.mp (congrArg (fun L : Q →L[ℝ] M =>
     HasFDerivAt (fun c : Q => f c * g c) L 0) hoperator) hprod
 
@@ -97,10 +104,11 @@ theorem gamma16CayleyMatrix_fderiv_zero :
       (fderiv ℝ gamma16CayleyMatrix 0 + -A) 0 :=
     gamma16MatrixProduct_hasFDerivAt_one gamma16CayleyMatrix (fun c : Q => 1 - A c)
       (fderiv ℝ gamma16CayleyMatrix 0) (-A) hC hd gamma16CayleyMatrix_zero hd0
+  have hU : ∀ᶠ c : Q in 𝓝 (0 : Q), c ∈ U :=
+    gamma16CayleySource_isOpen.mem_nhds gamma16CayleySource_zero
   have hevent : (fun c : Q => 1 + A c) =ᶠ[𝓝 (0 : Q)]
       (fun c : Q => gamma16CayleyMatrix c * (1 - A c)) :=
-    (gamma16CayleySource_isOpen.mem_nhds gamma16CayleySource_zero).mono
-      (fun c hc => (gamma16CayleyMatrix_mul_denominator c hc).symm)
+    Filter.Eventually.mono hU (fun c hc => (gamma16CayleyMatrix_mul_denominator c hc).symm)
   have hpos : HasFDerivAt (fun c : Q => 1 + A c) A 0 := A.hasFDerivAt.const_add 1
   have heq : fderiv ℝ gamma16CayleyMatrix 0 - A = A := by
     simpa only [sub_eq_add_neg] using (hp.congr_of_eventuallyEq hevent).unique hpos

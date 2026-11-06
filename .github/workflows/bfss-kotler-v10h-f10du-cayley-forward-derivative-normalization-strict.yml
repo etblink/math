@@ -185,7 +185,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DSIndependentAudit.lean)" = '686d710cd7e6132f26c90c961fb4d41582c2d59d'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DTNativeSO16AtlasRegularity.lean)" = '210e50c9f05eb3f7af7db42514d814d618b59e08'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DTIndependentAudit.lean)" = 'e6fdca0f49d6514a49303616c60090e9da03bf6f'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization.lean)" = 'a20d382a47ac3fb1abaa5e05878b2d553e27cdf4'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization.lean)" = '879b45312c7cca5abcb0d8052d60c52814abd1dc'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DUIndependentAudit.lean)" = '3fa7bad5cf814a70ad5841c383e35d5cb6fce90d'
           python3 - <<'PY'
           from pathlib import Path
@@ -404,6 +404,12 @@ jobs:
            assert token in s,token
           for token in ['private abbrev CD : Q →L[ℝ] M := fderiv ℝ gamma16CayleyMatrix 0','private abbrev planeDU : gamma16StrictPlaneIndex := ⟨(0, 1), by decide⟩','private abbrev basisDU : Q := Pi.single planeDU 1','CD = (2 : ℝ) • A','HasStrictFDerivAt CM ((2 : ℝ) • A) 0','CD v p.val.1 p.val.2 = (2 : ℝ) * v p','Function.Injective CD','example : CD ≠ 0','example : CD ≠ A','(1 / 2 : ℝ) • CD v = A v','(CD v).transpose = -CD v','((1 + A c) * (1 - A c)⁻¹) * (1 - A c) = 1 + A c']+names:
            assert token in a,token
+          assert 'have hbound : IsBoundedBilinearMap ℝ (fun p : M × M => p.1 * p.2)' in s
+          assert 'HasFDerivAt.comp (f := (fun c : Q => (f c, g c)))' in s
+          assert 'HasFDerivAt b ((hbound.deriv (f 0, g 0)).comp (F.prod G)) 0) hcomposition' in s
+          assert 'have hU : ∀ᶠ c : Q in 𝓝 (0 : Q), c ∈ U' in s
+          assert 'Filter.Eventually.mono hU' in s
+          assert '.isBoundedBilinearMap.deriv' not in s
           print('V10H_F10DU_EXACT_CAYLEY_FORWARD_DERIVATIVE_NORMALIZATION_SCOPE_PASS')
           PY
 
