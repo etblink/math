@@ -38,6 +38,36 @@ def git(*args):
     return subprocess.check_output(["git", "-C", str(REPO), *args], text=True).strip()
 
 
+def package_directories(lock):
+    """Mirror Lake's Name.toString (escape := false) for this frozen flat-name lock.
+
+    Manifest JSON may escape a simple Lean name as «doc-gen4», whereas Lake's
+    PackageEntry.dirName is doc-gen4. Reject unsupported name/layout forms;
+    never probe alternative directories or skip a dependency.
+    """
+    require(lock["packagesDir"] == ".lake/packages", "unsupported packages directory")
+    result = []
+    for package in lock["packages"]:
+        require(package["type"] == "git" and package.get("subDir") is None,
+                "unsupported dependency layout")
+        name = package["name"]
+        if name.startswith("«") and name.endswith("»"):
+            name = name[1:-1]
+        require(bool(re.fullmatch(r"[A-Za-z0-9_-]+", name)), "unsupported package name")
+        result.append((package, name))
+    require(len({name for _, name in result}) == len(result), "duplicate package directory")
+    return result
+
+
+def check_dependency_revisions(lock, packages_dir):
+    for package, dirname in package_directories(lock):
+        path = packages_dir / dirname
+        require((path / ".git").exists(), "missing dependency repository: " + dirname)
+        actual = subprocess.check_output(
+            ["git", "-C", str(path), "rev-parse", "HEAD"], text=True).strip()
+        require(actual == package["rev"], "dependency revision: " + package["name"])
+
+
 def load_manifest():
     m = json.loads(MANIFEST.read_text())
     require(m["schema"] == "bfss-dd-ai-accepted-ancestry-v1", "bad schema")
@@ -56,6 +86,8 @@ def check_sources(m):
         (e["path"], e["blob"]) for e in m["sources"]
     ]:
         require(git("hash-object", str(REPO / path)) == expected, "changed pin: " + path)
+    # Reject unsupported dependency names/layouts before expensive setup/build.
+    package_directories(json.loads((LEAN / "lake-manifest.json").read_text()))
     modules = {e["module"] for e in m["sources"]}
     reachable = set()
     imports = {}
@@ -91,13 +123,7 @@ def environment(m):
                                       cwd=LEAN, text=True).strip()
     require("version 4.34.1," in version, "wrong compiler")
     lock = json.loads((LEAN / "lake-manifest.json").read_text())
-    for package in lock["packages"]:
-        require(package["type"] == "git" and package.get("subDir") is None,
-                "unsupported dependency layout")
-        actual = subprocess.check_output(
-            ["git", "-C", str(LEAN / ".lake/packages" / package["name"]),
-             "rev-parse", "HEAD"], text=True).strip()
-        require(actual == package["rev"], "dependency revision: " + package["name"])
+    check_dependency_revisions(lock, LEAN / lock["packagesDir"])
     require(next(p["rev"] for p in lock["packages"] if p["name"] == "mathlib") == MATHLIB,
             "wrong Mathlib")
     return {"lean": version, "runner_os": os.environ["RUNNER_OS"],
@@ -184,7 +210,7 @@ def audit(m, logdir):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("check", "install", "seal"))
+    parser.add_argument("mode", choices=("check", "environment", "install", "seal"))
     parser.add_argument("--log-dir", type=Path)
     args = parser.parse_args()
     m = load_manifest()
@@ -193,6 +219,9 @@ def main():
     if args.mode == "check":
         return
     env = environment(m)
+    print("DD_AI_CACHE_ENVIRONMENT_PASS dependencies=42", flush=True)
+    if args.mode == "environment":
+        return
     logdir = args.log_dir.resolve()
     logdir.mkdir(parents=True, exist_ok=True)
     if args.mode == "install":

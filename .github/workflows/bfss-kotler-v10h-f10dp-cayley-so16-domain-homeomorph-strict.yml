@@ -248,6 +248,8 @@ jobs:
           timeout 1500s lake exe cache get
           test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
           test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+          cd ..
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py environment
 
       - name: Restore exact accepted DD AI object bundle
         if: ${{ !inputs.cold_build }}

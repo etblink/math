@@ -3,6 +3,8 @@
 import copy
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import tempfile
 import unittest
 
@@ -101,6 +103,58 @@ class CacheIntegrityTests(unittest.TestCase):
                      good + "X.lean:1:2: warning: unexpected\n"):
             with self.subTest(text=text), self.assertRaises(ValueError):
                 cache.check_reports(text, expected)
+
+
+class PackageDirectoryTests(unittest.TestCase):
+    def test_all_42_locked_names_resolve_uniquely(self):
+        lock = json.loads((cache.LEAN / "lake-manifest.json").read_text())
+        pairs = cache.package_directories(lock)
+        self.assertEqual(len(pairs), 42)
+        self.assertEqual(len({name for _, name in pairs}), 42)
+        mapping = {package["name"]: name for package, name in pairs}
+        self.assertEqual(mapping["«doc-gen4»"], "doc-gen4")
+        self.assertEqual(mapping["«formal-schemes»"], "formal-schemes")
+        self.assertEqual(mapping["mathlib"], "mathlib")
+        self.assertEqual(mapping["LeanSearchClient"], "LeanSearchClient")
+
+    def test_bad_names_and_layouts_fail_before_git(self):
+        for name in ("../outside", "/absolute", "a/b", "a.b", "«doc-gen4", "doc-gen4»", "««x»»"):
+            lock = {"packagesDir": ".lake/packages", "packages": [
+                {"name": name, "type": "git", "subDir": None}]}
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "package name"):
+                cache.package_directories(lock)
+        for mutation in ({"type": "path"}, {"subDir": "nested"}):
+            package = {"name": "x", "type": "git", "subDir": None, **mutation}
+            with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, "layout"):
+                cache.package_directories({"packagesDir": ".lake/packages", "packages": [package]})
+
+    def test_alias_collision_rejected(self):
+        packages = [{"name": name, "type": "git", "subDir": None}
+                    for name in ("«doc-gen4»", "doc-gen4")]
+        with self.assertRaisesRegex(ValueError, "duplicate package directory"):
+            cache.package_directories({"packagesDir": ".lake/packages", "packages": packages})
+
+    def test_real_git_revisions_and_missing_dependency(self):
+        with tempfile.TemporaryDirectory() as td:
+            packages_dir = Path(td)
+            packages = []
+            for manifest_name, dirname in (("«doc-gen4»", "doc-gen4"), ("mathlib", "mathlib")):
+                path = packages_dir / dirname
+                subprocess.run(["git", "init", "-q", str(path)], check=True)
+                subprocess.run(["git", "-C", str(path), "-c", "user.name=Cache Test",
+                                "-c", "user.email=cache-test@example.invalid", "-c", "commit.gpgsign=false",
+                                "commit", "-q", "--allow-empty", "-m", "local dependency fixture"], check=True)
+                rev = subprocess.check_output(["git", "-C", str(path), "rev-parse", "HEAD"], text=True).strip()
+                packages.append({"name": manifest_name, "rev": rev, "type": "git", "subDir": None})
+            lock = {"packagesDir": ".lake/packages", "packages": packages}
+            cache.check_dependency_revisions(lock, packages_dir)
+            bad = copy.deepcopy(lock)
+            bad["packages"][0]["rev"] = "0" * 40
+            with self.assertRaisesRegex(ValueError, "dependency revision"):
+                cache.check_dependency_revisions(bad, packages_dir)
+            shutil.rmtree(packages_dir / "doc-gen4")
+            with self.assertRaisesRegex(ValueError, "missing dependency repository"):
+                cache.check_dependency_revisions(lock, packages_dir)
 
 
 if __name__ == "__main__":
