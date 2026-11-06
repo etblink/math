@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 import time
 
 REPO = Path(__file__).resolve().parents[3]
@@ -149,6 +150,43 @@ def environment():
     return packages
 
 
+def compiler_environment(evidence):
+    """Resolve Lake's compiler environment once; retain its diagnostics separately.
+
+    Do not filter compiler output or waive any compiler warning. Only the named
+    compiler/search-path variables are read, and no full process environment is saved.
+    """
+    keys = ("PATH", "LEAN_PATH", "LEAN_SRC_PATH", "LEAN_SYSROOT",
+            "LD_LIBRARY_PATH", "DYLD_LIBRARY_PATH")
+    code = "import json,os; print(json.dumps({k:os.environ[k] for k in " + repr(keys) + \
+        " if k in os.environ}))"
+    logfile = evidence / "lake-environment.log"
+    with logfile.open("w") as out:
+        result = subprocess.run(["lake", "env", sys.executable, "-c", code], cwd=LEAN,
+                                stdout=subprocess.PIPE, stderr=out, text=True, timeout=60)
+    require(result.returncode == 0, "Lake environment resolution failed")
+    selected = json.loads(result.stdout)
+    require(set(selected) <= set(keys) and all(isinstance(v, str) for v in selected.values()),
+            "unexpected environment payload")
+    require(bool(selected.get("LEAN_PATH")) and bool(selected.get("PATH")),
+            "missing compiler/search path")
+    env = os.environ.copy()
+    for key in keys:
+        env.pop(key, None)
+    env.update(selected)
+    paths = [(LEAN / p).resolve() for p in env["LEAN_PATH"].split(os.pathsep)]
+    require(BUILD.resolve() in paths, "missing original build path")
+    compiler = shutil.which("lean", path=env["PATH"])
+    require(compiler is not None, "missing resolved Lean executable")
+    version = subprocess.check_output([compiler, "--version"], cwd=LEAN, env=env, text=True).strip()
+    require(version.startswith("Lean (version 4.34.1,"), "resolved compiler version")
+    provenance = {"compiler": compiler, "version": version,
+                  "compiler_sha256": digest(Path(compiler).resolve()),
+                  "lean_path": env["LEAN_PATH"],
+                  "lake_log_sha256": digest(logfile)}
+    return compiler, env, provenance
+
+
 def run(m, evidence):
     evidence.mkdir(parents=True, exist_ok=True)
     receipt = {"tested_sha": git("rev-parse", "HEAD"), "status": "INCOMPLETE",
@@ -161,6 +199,7 @@ def run(m, evidence):
     shutil.copyfile(MANIFEST, evidence / MANIFEST.name)
     try:
         receipt["packages"] = environment()
+        compiler, env, receipt["compiler_environment"] = compiler_environment(evidence)
         # Remove every controlled proof object before rebuilding any parent.
         for e in m["parents"] + m["candidates"]:
             stem = BUILD / e["module"].replace(".", "/")
@@ -171,14 +210,14 @@ def run(m, evidence):
             obj = BUILD / (e["module"].replace(".", "/") + ".olean")
             obj.parent.mkdir(parents=True, exist_ok=True)
             logfile = evidence / (f"{index:02d}-" + e["module"].rsplit(".", 1)[-1] + ".log")
-            command = ["lake", "env", "lean"]
+            command = [compiler]
             if candidate:
                 command += ["-DautoImplicit=false", "-DwarningAsError=true"]
             command += ["-o", str(obj), str(REPO / e["path"])]
             print("Compiling " + e["module"], flush=True)
             start = time.monotonic()
             with logfile.open("w") as out:
-                result = subprocess.run(command, cwd=LEAN, stdout=out,
+                result = subprocess.run(command, cwd=LEAN, env=env, stdout=out,
                                         stderr=subprocess.STDOUT, timeout=300)
             text = logfile.read_text()
             entry = {"module": e["module"], "returncode": result.returncode,
@@ -192,8 +231,8 @@ def run(m, evidence):
             entry["object_sha256"] = digest(obj)
             entry["log_sha256"] = digest(logfile)
             if candidate:
-                entry["axioms"] = check_reports(text, e["marker"])
                 print(text, flush=True)
+                entry["axioms"] = check_reports(text, e["marker"])
             else:
                 entry["warnings"] = [s for s in text.splitlines() if "warning" in s.lower()]
         preflight()  # Environment setup/build may not rewrite pinned sources or locks.

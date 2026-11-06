@@ -1,6 +1,6 @@
 # BFSS linear-moment analysis gate — 2026-11-06
 
-**Status: proposed Lean source and independent consumers; compilation pending.**
+**Status: source compiled in run #42312000477; wrapper red; independent consumer pending.**
 This bounded implementation follows the [E audit](BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md).
 It does not admit the confinement inequality, a physical Spin(9) action, or spectral existence.
 AI-assisted implementation and gate design require compiler and subsequent scope review.
@@ -69,6 +69,14 @@ the actual sets must be retained and reviewed. The gate rejects admissions,
 unsafe/native-decide proofs and mismatched source/control pins. Legacy parent
 warnings are recorded separately; they do not waive candidate warnings.
 
+Lake's environment is now resolved once, with its stderr retained in
+`lake-environment.log`. The compiler is then invoked directly with that
+environment. Compiler version, executable digest and Lean search path are
+recorded in the receipt; compiler output is never filtered. This separates
+Lake dependency diagnostics from the compiler log without allowing a Lean
+warning or changing a proof statement. Dependency revisions remain checked;
+this does not assert that all downloaded package working trees are clean.
+
 Artifacts retain the exact tested commit, proposed inputs even on setup
 failure, all parent/compiler/consumer logs and an object/log hash receipt.
 Formal qualification requires a successful actual run plus review of its
@@ -84,3 +92,29 @@ the statement to a quadratic moment or increasing proof budgets. After two
 wrapper failures, stop full retries and diagnose the wrapper separately.
 
 The original F10DW branch and upstream PRs remain outside this gate's scope.
+
+## First run and bounded wrapper correction
+
+[Run #42312000477](https://github.com/etblink/math/actions/runs/42312000477)
+tested `34e5c48836b5fea62465851fb328cc919cb7e143`. Environment restoration and
+all 33 cold parent compilations succeeded. The candidate source also returned
+zero, produced an object, printed both exact roots with only `propext`,
+`Classical.choice`, `Quot.sound`, and emitted its completion marker.
+
+The wrapper then rejected eleven Lake dependency-repository local-change
+warnings mixed into the candidate's output by `lake env lean`. These same
+warnings occur in the parent logs. No Lean diagnostic appears in the source
+compiler output. The consumer did not execute, and the formal gate remains
+unaccepted. This is the first wrapper failure; it is not a failed proof or a
+reason to alter the statement, permit compiler warnings, or raise budgets.
+
+The digest-checked artifact is `13549686395`, ZIP SHA-256
+`9bcb0602620c14e553ba57f0415ff384c147a1f6ff4f0ee04552b1388fdde398`.
+The [exact mixed source log](evidence/spectral-confinement-2026-11-06/linear-moment-42312000477-source-log.txt),
+[original incomplete receipt](evidence/spectral-confinement-2026-11-06/linear-moment-42312000477-receipt.json)
+and [failure record](evidence/spectral-confinement-2026-11-06/linear-moment-42312000477-failure.json)
+are preserved. Eight regression tests exercise this actual output, genuine
+compiler warning/error rejection, axiom and completion failures, and mocked
+environment-resolution failures. These tests are wrapper checks, not a Lean
+consumer run. The source and consumer bytes remain identical to the failed
+run. A fresh strict run must still compile and independently consume them.
