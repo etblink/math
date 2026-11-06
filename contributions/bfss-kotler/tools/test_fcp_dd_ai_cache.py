@@ -104,6 +104,26 @@ class CacheIntegrityTests(unittest.TestCase):
             with self.subTest(text=text), self.assertRaises(ValueError):
                 cache.check_reports(text, expected)
 
+    def test_full_root_generator_retains_private_numeric_names(self):
+        script = self.stage / "generated-audit.lean"
+        cache.write_import_audit(self.m["sources"], script)
+        text = script.read_text()
+        roots = [r["name"] for e in self.m["sources"] for r in e["roots"]]
+        private = [name for name in roots if name.startswith("_private.")]
+        self.assertEqual(len(private), 3)
+        self.assertEqual(text.count("Lean.Name.num ("), 3)
+        self.assertEqual(text.count("Lean.mkIdent rootName"), 3)
+        self.assertEqual(text.count("(#check @$rootId)"), 3)
+        self.assertEqual(text.count("(#print axioms $rootId)"), 3)
+        self.assertEqual(sum(line.startswith("#check @") for line in text.splitlines()), 663)
+        self.assertEqual(sum(line.startswith("import ") for line in text.splitlines()), 175)
+        for name in private:
+            self.assertNotIn("#check @" + name, text)
+            self.assertNotIn("#print axioms " + name, text)
+        for bad in ("_private.X.0.a;admit", "_private.X.bad-name.0.a", "X.0.y"):
+            with self.subTest(name=bad), self.assertRaises(ValueError):
+                cache.root_audit_commands(bad)
+
 
 class PackageDirectoryTests(unittest.TestCase):
     def test_all_42_locked_names_resolve_uniquely(self):

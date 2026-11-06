@@ -189,17 +189,47 @@ def run_audit(script, logfile):
     with logfile.open("w") as stream:
         result = subprocess.run(command, cwd=LEAN, stdout=stream, stderr=subprocess.STDOUT,
                                 timeout=600)
+    if result.returncode != 0:
+        # Preserve the full file and expose the causal Lean diagnostic in the job log.
+        print(logfile.read_text(), file=sys.stderr, flush=True)
     require(result.returncode == 0, "fresh audit failed: " + str(logfile))
     return logfile.read_text()
+
+
+def root_audit_commands(name):
+    parts = name.split(".")
+    if name.startswith("_private."):
+        require(any(part.isdecimal() for part in parts), "missing private numeric component")
+        expr = "Lean.Name.anonymous"
+        for part in parts:
+            if re.fullmatch(r"0|[1-9][0-9]*", part):
+                expr = "Lean.Name.num (" + expr + ") " + part
+            else:
+                require(bool(re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", part)),
+                        "unsupported private name component")
+                expr = "Lean.Name.str (" + expr + ") " + json.dumps(part)
+        # Numeric Name components are not ordinary identifier source tokens.
+        # mkIdent retains the exact structured Name; both original strict commands
+        # then elaborate against that same constant, without an alias or admission.
+        return ("run_cmd do\n  let rootName : Lean.Name := " + expr +
+                "\n  let rootId := Lean.mkIdent rootName\n" +
+                "  Lean.Elab.Command.elabCommand (← `(#check @$rootId))\n" +
+                "  Lean.Elab.Command.elabCommand (← `(#print axioms $rootId))")
+    require(all(part.isidentifier() for part in parts), "unsupported public name")
+    return "#check @" + name + "\n#print axioms " + name
+
+
+def write_import_audit(entries, script):
+    script.write_text("\n".join("import " + e["module"] for e in entries) + "\n" +
+                      "\n".join(root_audit_commands(r["name"])
+                                for e in entries for r in e["roots"]) + "\n")
 
 
 def audit(m, logdir):
     roots = [r for e in m["sources"] for r in e["roots"]]
     expected = {r["name"]: sorted(r["axioms"]) for r in roots}
     script = logdir / "accepted-ancestor-import-audit.lean"
-    script.write_text("\n".join("import " + e["module"] for e in m["sources"]) + "\n" +
-                      "\n".join("#check @" + r["name"] + "\n#print axioms " + r["name"]
-                                for r in roots) + "\n")
+    write_import_audit(m["sources"], script)
     check_reports(run_audit(script, logdir / "accepted-ancestor-import-audit.log"), expected)
     dd = LEAN / "diagnostics/FCP_K1D18V10HF10DDIndependentAudit.lean"
     text = run_audit(dd, logdir / "accepted-dd-independent-audit.log")

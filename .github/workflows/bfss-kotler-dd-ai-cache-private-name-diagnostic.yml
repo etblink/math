@@ -1,0 +1,84 @@
+name: BFSS cache private-name import diagnostic
+
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - .github/workflows/bfss-kotler-dd-ai-cache-private-name-diagnostic.yml
+      - contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py
+      - contributions/bfss-kotler/tools/test_fcp_dd_ai_cache.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-gamma-private-name-import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Pin accepted sources and test the exact audit generator
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/dd-ai-private-name"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/dd-ai-private-name/tested-sha.txt"
+          test "$(git hash-object contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json)" = 'e0da758a46dc2e1104503f1e24d9d26e9c389b34'
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py check
+          python3 -m unittest discover -s contributions/bfss-kotler/tools -p test_fcp_dd_ai_cache.py
+      - name: Restore the unchanged pinned compiler and dependencies
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+          cd ..
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py environment
+      - name: Build only the original gamma source and its required imports
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe 2>&1 | tee "$RUNNER_TEMP/dd-ai-private-name/gamma-build.log"
+      - name: Freshly check the exact public and private gamma names
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 - <<'PY'
+          import os,sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path('contributions/bfss-kotler/tools').resolve()))
+          import qualify_fcp_dd_ai_cache as cache
+          m=cache.load_manifest()
+          entry=next(e for e in m['sources'] if e['module']=='OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe')
+          expected={r['name']:sorted(r['axioms']) for r in entry['roots']}
+          private=[name for name in expected if name.startswith('_private.')]
+          assert len(private)==3
+          logdir=Path(os.environ['RUNNER_TEMP'])/'dd-ai-private-name'
+          script=logdir/'gamma-exact-name-import-audit.lean'
+          cache.write_import_audit([entry],script)
+          cache.check_reports((logdir/'gamma-build.log').read_text(),expected)
+          text=cache.run_audit(script,logdir/'gamma-exact-name-import-audit.log')
+          cache.check_reports(text,expected)
+          print('DD_AI_CACHE_PRIVATE_NAME_DIAGNOSTIC_PASS', 'roots='+str(len(expected)), 'private=3')
+          PY
+      - name: Preserve the bounded diagnostic evidence on every outcome
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-dd-ai-private-name-diagnostic-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/dd-ai-private-name
+          if-no-files-found: warn

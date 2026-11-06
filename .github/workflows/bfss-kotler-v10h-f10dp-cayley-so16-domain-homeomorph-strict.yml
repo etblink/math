@@ -1,16 +1,7 @@
 name: BFSS V10H F10DP Cayley SO16 domain homeomorph strict gate
 
 on:
-  push:
-    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
-    paths:
-      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph.lean
-      - lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean
-      - .github/workflows/bfss-kotler-v10h-f10dp-cayley-so16-domain-homeomorph-strict.yml
-      - contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json
-      - contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py
-      - contributions/bfss-kotler/tools/test_fcp_dd_ai_cache.py
-      - contributions/bfss-kotler/FCP_DD_AI_CACHE_PILOT_2026_11_06.md
+  # Automatic full cache trials are paused pending the bounded private-name diagnostic.
   workflow_dispatch:
     inputs:
       cold_build:
