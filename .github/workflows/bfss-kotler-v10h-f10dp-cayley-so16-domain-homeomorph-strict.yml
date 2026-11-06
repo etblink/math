@@ -167,7 +167,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DNIndependentAudit.lean)" = '2d28fabc4c6b7e7010fffb209403f9250f194f4b'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DOCayleySO16BackwardCoordinates.lean)" = '775877ca57562e03484cfa87e1408f8e657b3bb6'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DOIndependentAudit.lean)" = '273a09cd1e33813241b5d61c729f73bdcd512ec5'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph.lean)" = '4a16415b005bbeb6b21bb1d1c678858d9527e249'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph.lean)" = 'adaf988470203ab64ce1bf47f6e8b971f974e777'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean)" = '435d341dd186c26fb2d1c8ddbd3f8278b41ffaeb'
           python3 - <<'PY'
           from pathlib import Path
@@ -215,6 +215,8 @@ jobs:
               assert token in a,token
           for token in ['example : ChartedSpace M M := inferInstance', 'example : (inferInstance : ChartedSpace M M) = chartedSpaceSelf M := rfl', 'example : chartAt M (0 : M) = OpenPartialHomeomorph.refl M := rfl', 'example : ModelWithCorners ℝ M M := K', 'example : LieRing M := inferInstance', 'example : LieAlgebra ℝ M := inferInstance', 'example (A B : M) : (⁅A, B⁆ : M) = A * B - B * A := rfl']:
               assert token in a,token
+          assert '  apply gamma16StrictPlaneModelContinuousEquiv.injective\n  apply Subtype.ext\n  exact h' in s
+          assert '  have e : Q ≃L[ℝ] S16 := gamma16StrictPlaneModelContinuousEquiv' not in s
           print('V10H_F10DP_ORIGINAL_SO16_CAYLEY_HOMEOMORPH_SCOPE_PASS')
           PY
 

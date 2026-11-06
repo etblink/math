@@ -38,8 +38,7 @@ private abbrev backwardDen (r : SO) : M := (r : M) + 1
 
 theorem gamma16CayleyModel_injective : Function.Injective A := by
   intro c d h
-  have e : Q ≃L[ℝ] S16 := gamma16StrictPlaneModelContinuousEquiv
-  apply e.injective
+  apply gamma16StrictPlaneModelContinuousEquiv.injective
   apply Subtype.ext
   exact h
 
