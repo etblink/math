@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **2026-11-05 research status: F10DH remains accepted; F10DI is unaccepted after strict run 42132931609.** The red tested `9a5a3297f0b87ac7c89056e22dc718537d460255`. All fresh DE/DF/DG/DH parents passed. DI's first atlas-regularity root was clean, but the manifold constructor failed at the pointwise-versus-bundled transition coercion; the independent audit was skipped. The repaired candidate adds an explicit pointwise application bridge while preserving every statement and the entire 28-example audit. Full strict source/audit qualification is still required. Source Lie-group structure, tangent identification, the full representation manifold differential and spectral existence remain open.
+> **2026-11-05 research status: F10DI is accepted from strict run 42135401392 at exact tested commit `1eb052a89903acd1416215b4f3d68e4e7ad3ed17`.** The original named translated atlas satisfies Mathlib IsManifold and HasGroupoid at every regularity order, including analytic and smooth orders, on the same inherited PBW topology. All three DI source roots and all 28 independent audit examples passed after the explicit transition-application bridge. Verified job runtime: 14m 24s. No global manifold instance is installed. Source Lie-group structure, tangent identification, the full F10BC representation manifold differential and spectral existence remain open. The first DI red and all historical evidence are preserved.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -5360,3 +5360,38 @@ The next strict run must establish that the bridge discharges the constructor co
 | `.github/workflows/bfss-kotler-v10h-f10di-translated-atlas-manifold-strict.yml` | `794aea1ac452453992650d2e8635a5376a5df378` |
 
 F10DH remains the accepted baseline. The original DI red, exact artifact and all earlier failure/acceptance evidence are preserved. Manifold packaging remains an unaccepted candidate; source Lie-group structure, tangent identification, the full F10BC manifold differential, global physical lift and spectral existence remain separate. This repair changes source, workflow and the canonical handoff only on the research branch. Existing publication/submission records and historical handoff bytes beginning at the original As-of field are unchanged; this event is appended. No upstream action is taken.
+
+
+## 2026-11-05 F10DI accepted — manifold property for the unchanged named source atlas
+
+[Strict run #42135401392](https://github.com/etblink/math/actions/runs/42135401392), attempt 1, completed successfully at exact tested commit `1eb052a89903acd1416215b4f3d68e4e7ad3ed17`, tree `dce75843844b9ece99161892ee21774bc4723fca`, job `127622137044`. All fourteen recorded job steps succeeded, including pin/scope checks, pinned environment restoration, accepted DD ancestry, four fresh accepted parents, fresh DI source, independent DI audit and artifact upload. This accepts exactly the three DI roots at that tested head.
+
+**Artifact and complete phase evidence.** Downloaded artifact `13464874743` is 6,199 bytes. Its independently computed ZIP SHA-256 `54a655acf9bc31d813af0389f9a2e611f3b93173b940b3a667a350d450de355e` matches GitHub metadata and the upload log. The archive's tested-sha.txt matches the run head. Its candidate-source.lean and independent-audit.lean bytes match their exact tested Git blobs.
+
+The DE, DF, DG, DH, DI-source and DI-audit logs contain exactly 10/7/3/5/3/3 expected reports: 25 accepted-parent reports and three candidate roots once per candidate phase. Every report uses only propext, Classical.choice and Quot.sound, without sorryAx or Lean source diagnostics. Both DI phases have the exact expected three-name inventory. All 28 independent examples passed, and the final marker `V10H_F10DI_NAMED_TRANSLATED_ATLAS_MANIFOLD_TYPES_AXIOMS_PASS` occurs exactly once as actual job output. Administrative Lake package-change warnings are separate from Lean source diagnostics.
+
+**Accepted exact blobs.**
+
+| File | Git blob |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DITranslatedAtlasManifold.lean` | `0195b90bc6e43e4ae95300eee2640db8bbdd9e6c` |
+| `lean/diagnostics/FCP_K1D18V10HF10DIIndependentAudit.lean` | `656d1d9b2877944b8c17bbb7f6d42e3b74193b3f` |
+| `.github/workflows/bfss-kotler-v10h-f10di-translated-atlas-manifold-strict.yml` | `794aea1ac452453992650d2e8635a5376a5df378` |
+
+Lean remains 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`. All 116 pins, six warnings-as-errors direct compiler invocations, complete root/axiom checks, fresh-object deletion/nonempty controls, error exits and artifact retention passed unchanged. Per-phase bounds remain 1500/3150/840/840/840/840/840/600 seconds and the outer job allowance remains 155 minutes.
+
+**Accepted mathematical statement and controls.** On the original `spinGroup source9Quadratic`, locally registering exactly DE's `source9SpinTranslatedChartedSpace` supplies a fixed atlas with model `Fin 36 → ℝ`. Every pair in that atlas has DH's accepted regularity on the actual `(e.symm.trans e').source`. The native constructor gives `IsManifold (modelWithCornersSelf ℝ (Fin 36 → ℝ)) n` for arbitrary `n : ℕ∞ω`, and the native HasGroupoid parent supplies the corresponding two-direction compatibility.
+
+The result uses the same original carrier, accepted PBW topology, atlas, model, regularity parameter and exact overlap domains. It adds no independent regularity or invertibility premise, replacement chart or smaller domain. Norm/atlas registrations remain local, with no exported global ChartedSpace, HasGroupoid or IsManifold instance.
+
+The audit independently reconstructs PBW coordinates/norms, checks original topology and complete named-atlas data identity, preferred charts, cover, openness, target and boundaryless parameter model. It consumes all three roots, including analytic and infinite smoothness orders, checks both transition directions through the native compatibility projection, and retains the exact overlap formula, same-chart inverse recovery with target membership, and negative global-natural-injectivity control.
+
+**Successful repair and preserved negative knowledge.** The first DI red, `42132931609` at `9a5a3297f0b87ac7c89056e22dc718537d460255`, remains preserved with its exact artifact and single function-coercion diagnostic. The successful repair proved the identity-wrapped bundled transition's pointwise formula with function extensionality and the pinned `OpenPartialHomeomorph.trans_apply` lemma at `(x := t)`. It transported a completely typed ContDiffOn witness before applying the unchanged self-model simplification. Implicit conversion after model simplification had failed; a checked bounded pointwise equality succeeded.
+
+All three theorem statements, the first atlas-regularity proof and final groupoid projection were unchanged. The entire independent audit stayed byte-identical, so this green qualifies the previously unexecuted 28 examples. No larger proof budget, linter suppression, topology/atlas replacement or new hypothesis was required. Record this as a specific successful coercion-boundary repair, not evidence that arbitrary structural conversion will be cheap or automatic.
+
+**Observed runtime.** The owner's reported 14m 24s matches the job metadata: 864 seconds. The accepted DD ancestry rebuild took 8m 37s, pinned environment restoration 3m 37s, and fresh DI compilation and independent audit 14 seconds each. Fresh DE/DF/DG/DH phases took 17/14/14/13 seconds. These are observations from this exact run; the result did not require increasing any time or proof-resource bound. Restoration and ancestry dominate this measurement, rather than the new DI proof.
+
+**Next bounded research decision.** Inspect the pinned identity-chart, tangent-space and manifold-differential interfaces and identify the exact bridge from the source identity tangent to the already accepted ambient derivative range. Do not treat a type alias or the accepted algebraic range Lie equivalence as that canonical bridge without checking the chart/differential relationship. Source group-operation smoothness and Lie-group structure remain separate obligations. The full F10BC representation manifold differential, global physical Spin lift, spectral existence and mass-gap claims remain open.
+
+This acceptance-only commit updates the canonical handoff alone. The Lean source, independent audit and strict workflow remain the exact tested blobs above. Existing publication/submission records are unchanged; every historical handoff byte beginning at the original As-of field is preserved, with this acceptance appended. The research branch is the only write target, with no upstream action.
