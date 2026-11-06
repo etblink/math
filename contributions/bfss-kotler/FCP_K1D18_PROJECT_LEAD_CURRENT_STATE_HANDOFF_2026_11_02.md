@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **2026-11-05 research status: F10DM remains accepted; F10DN Cayley forward-parameterization candidate awaits strict CI.** DM was accepted at tested `6bd4d38c77648924b20b40be307d2bd875cb012d`, run 42160966407; acceptance-only head was `c25001fa468d362efe42214005e70e86468c5f84`. DN defines (1+A)(1-A)⁻¹ using the accepted native 120-coordinate skew model, proves its explicit determinant domain open and containing zero, and constructs a continuous actual SO(16)-valued map there. Its fifteen roots and 93-example audit remain unaccepted. The local runtime became unavailable during preparation; shell/Python validation is delegated to the first fail-closed CI preflight before Lean restoration/builds. The inverse chart, smoothness, Cayley derivative normalization and intrinsic target tangent remain open.
+> **2026-11-06 research status: F10DM remains accepted; F10DN first source red is preserved and an explicit subtype-composition repair awaits strict CI.** Run 42178841497 tested `79dcabadb10f51c21c7499c9ff51fbba96534c39`: preflights and all ten fresh parents passed (73 reports), fourteen source roots were clean, and only the final continuity proof failed when composition inferred the full coordinate domain instead of the source subtype. The independent 93-example audit was skipped. The repair explicitly binds the composition's subtype function and point, preserving all fifteen statements, the other fourteen bodies and the entire audit. Local shell/Python/scope and all 129 hash checks now pass after runtime recovery. F10DN remains unaccepted; inverse chart, smoothness, derivative normalization and intrinsic target tangent identification remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -5943,3 +5943,42 @@ The first CI preflight is therefore a necessary wrapper check before expensive p
 After any acceptance, the inverse Cayley coordinate formula, its exact image/open target, two-sided inverse laws and continuity must still be proved before a LocalHomeomorph/atlas claim. Smoothness and the factor-two derivative at zero remain separate, as does reconciliation with DM's coordinates and the existing gamma normalization. Intrinsic target tangent identification, full intrinsic F10BC differential, source Lie-group/bracket structure, global physical Spin lift, spectral existence and mass-gap consequences remain open.
 
 This four-file candidate changes only new DN source, independent audit, strict workflow and this canonical handoff on the authorized research branch. All accepted source/audit/workflow files, every prior red, publication/submission record and historical handoff byte beginning at the original As-of field are preserved, with this event appended. No upstream action is taken.
+
+
+## 2026-11-06 F10DN first source red — explicit subtype continuity composition
+
+**Immutable evidence and first failing phase.** [Run #42178841497](https://github.com/etblink/math/actions/runs/42178841497), attempt 1, job `127763466834`, tested exact commit `79dcabadb10f51c21c7499c9ff51fbba96534c39`, tree `1070688b17dbb1c3c56b4d92cf62db743d1af989`. The first CI preflight successfully checked all pins, shell/Python syntax and mathematical scope after the preparation runtime interruption. Restoration, DD/AI rebuild and all ten fresh parents passed: DE/DF/DG/DH/DI/DJ/AI/DK/DL/DM inventories 10/7/3/5/3/10/2/9/9/15, 73 reports.
+
+The sole source diagnostic is DN line 116:60, in gamma16CayleySO_continuous. ContinuousAt.comp inferred the inner function as denominator on the full coefficient space Q at c.val. The supplied hd is continuity of u ↦ denominator(u.val) on the source subtype U at c. These are different domain types; the provided witness is the intended one. This is an elaboration/inference boundary, not an orthogonality, determinant, source-domain or matrix-inverse counterexample.
+
+All fourteen earlier source roots report only permitted axioms. The final continuity root contains compiler-recovery sorryAx and is rejected. The independent audit was skipped, and no actual final PASS marker appears. None of the new DN roots is separately promoted from the failed gate.
+
+Artifact `13484913965` contains 12 files and is 5,976 bytes. Its independently computed ZIP SHA-256 `cd5adc653f0bf7c1db1d2c3b73134807b1d30a9bbe15d0276ba2619054176c27` matches metadata and the upload log. Archive integrity and exact tested-sha checks pass. All ten archived parent logs were independently replayed through the unchanged validators and passed; the final candidate validator correctly rejects the red source's recovery axiom.
+
+**Pinned interface and repair decision.** Read Mathlib Topology/Continuous.lean at `d13f23b723b8a846827a245b89c10fc7d3f11612`, blob `620526f00d25f19d30d07ba5cad2b7a3370ba6bb`. ContinuousAt.comp has implicit inner function f and point x and consumes continuity witnesses at f(x) and x. The raw target value denominator(c.val) does not uniquely fix the inner source function or source space. A complete result annotation did not constrain this early inference before hd was checked.
+
+Keep the actual source subtype and all existing witnesses. Add explicit named arguments f := (fun u : gamma16CayleySource => denominator u.val) and x := c to this single composition call. This makes the expected witness exactly the already-proved hd. The scalar inverse witness, matrix inverse theorem, original determinant premise and actual group-valued map remain unchanged.
+
+Do not replace the subtype witness by an assumed full-space inverse-continuity theorem or weaken the final continuity statement. No new topology, norm, instance, source domain, mathematical premise or proof-resource setting is needed.
+
+**Implemented exact scope.** Only one application inside the final continuity proof changes. All fifteen public declaration statements and the other fourteen bodies are byte-preserved: replacing that one new call with the old call reproduces the failed source exactly. The independent audit is byte-frozen at `2d28fabc4c6b7e7010fffb209403f9250f194f4b`, including all 93 examples.
+
+The strict workflow changes only the candidate source hash pin and the existing proof-shape token requiring that explicit composition. Restoring those two strings reproduces the failed workflow bytes. All other 128 pin lines, including the audit pin, remain unchanged (129 total). All build and parent/candidate compiler bodies, source/audit inventories, allowed axioms, warnings-as-errors, fresh-object/nonempty checks, diagnostic handling, final validator, artifacts and all phase/155-minute limits remain fixed.
+
+| File | Repaired/frozen Git blob |
+|---|---|
+| DN source | `d6b18917113a9388c351febed65ff9e7cbcb5fe7` |
+| DN independent audit — unchanged | `2d28fabc4c6b7e7010fffb209403f9250f194f4b` |
+| DN strict workflow | `11a7034618d32cad2f24f90f89608326184ba340` |
+
+**Local runtime recovery and completed checks.** The local execution runtime is available again. YAML parsing, all fifteen shell blocks via bash -n, all twelve embedded programs via ast.parse, the executed syntax/scope guard, complete declaration/example inventories and Lean delimiter checks pass. All 129 hash pins match local source bytes. All ten parent validators pass on this red artifact's exact 73 reports, and the candidate validator's rejection of its recovery axiom was checked directly. Source and workflow reconstruction checks confirm the narrow change; the audit byte/hash check confirms it is frozen.
+
+There is still no local Lean compiler. Local wrapper/pin checks are not acceptance of the continuity proof. The new exact head must pass the same 73 parent reports, all fifteen clean source reports, all 93 anonymous audit examples/fifteen clean audit reports, actual final marker and independently verified retained artifact.
+
+**Discriminating result and stop rules.** The next run tests whether explicitly fixing the intended domain and point resolves composition inference, then executes the previously unrun complete consumer audit. Preserve any new first diagnostic and phase. If the source becomes clean but an audit consumer fails, freeze the mathematical source and isolate that complete consumer type before changing proof architecture. If this same composition still fails, isolate its named f/x and typed matrix-inverse witness rather than repeat an implicitly inferred call, change domains or increase limits.
+
+This incident reinforces the existing lesson: a matching function value at a point does not identify the intended source function for higher-order composition. Specify the actual source map and point where the generic API leaves them implicit. The unchanged open source, identity image, orthogonality, determinant-one and actual SO(16)-valued map proofs remain evidence about their exact source compilation, not a substitute for the skipped independent audit.
+
+F10DM remains accepted. DN remains a candidate. The inverse Cayley chart/image laws, smoothness and factor-two derivative, intrinsic target tangent identification and full intrinsic F10BC comparison remain separate, as do source Lie-group/bracket structure, global physical Spin lift, spectral existence and mass-gap consequences.
+
+This three-file repair changes only DN source, its strict workflow and this canonical handoff on the research branch. All accepted source/audit/workflow files, the first red and its artifact, publication/submission records and every historical handoff byte beginning at the original As-of field are preserved, with this event appended. No upstream action is taken.

@@ -113,7 +113,8 @@ theorem gamma16CayleySO_continuous : Continuous gamma16CayleySO := by
       rw [Ring.inverse_eq_inv']
       exact continuousAt_inv₀ c.property
     have hi : ContinuousAt (fun u : gamma16CayleySource => (denominator u.val)⁻¹) c :=
-      (continuousAt_matrix_inv (denominator c.val) hs).comp hd
+      (continuousAt_matrix_inv (denominator c.val) hs).comp
+        (f := fun u : gamma16CayleySource => denominator u.val) (x := c) hd
     exact (continuous_const.continuousAt.add ha).mul hi
   exact h.subtype_mk (fun c : gamma16CayleySource => gamma16CayleyMatrix_mem_so c.val c.property)
 
