@@ -37,9 +37,17 @@ theorem source9SpinTranslatedAtlas_isManifold (n : ℕ∞ω) :
     IsManifold (modelWithCornersSelf ℝ P) n G := by
   apply isManifold_of_contDiffOn (modelWithCornersSelf ℝ P) n G
   intro e e' he he'
+  have htransition : (id ∘ (e.symm.trans e' : P → P) ∘ id) =
+      (fun t : P => e' (e.symm t)) := by
+    funext t
+    exact OpenPartialHomeomorph.trans_apply e.symm e' (x := t)
+  have hc : ContDiffOn ℝ n (id ∘ (e.symm.trans e' : P → P) ∘ id)
+      (e.symm.trans e').source := by
+    rw [htransition]
+    exact source9SpinTranslatedAtlas_contDiffOn n e e' he he'
   simpa only [modelWithCornersSelf_coe, modelWithCornersSelf_coe_symm,
     Set.preimage_id, Set.range_id, Set.inter_univ]
-    using source9SpinTranslatedAtlas_contDiffOn n e e' he he'
+    using hc
 
 /-- Expose compatibility with the native C^n structure groupoid for the unchanged atlas. -/
 theorem source9SpinTranslatedAtlas_hasGroupoid (n : ℕ∞ω) :

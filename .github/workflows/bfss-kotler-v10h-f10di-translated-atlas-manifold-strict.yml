@@ -150,7 +150,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DGIndependentAudit.lean)" = '19188753ca5def45286778ed15fc136a8543975a'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean)" = '6ede82cf62b79c90a71ab123d7b0b8798ac2165e'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean)" = '4c304942d931b910326df47c51d412adea65651b'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DITranslatedAtlasManifold.lean)" = '7d721b50a77ae5c7d529e09d42b55f865524e936'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DITranslatedAtlasManifold.lean)" = '0195b90bc6e43e4ae95300eee2640db8bbdd9e6c'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DIIndependentAudit.lean)" = '656d1d9b2877944b8c17bbb7f6d42e3b74193b3f'
           python3 - <<'PY'
           from pathlib import Path
@@ -176,6 +176,8 @@ jobs:
               assert token in s,token
           for token in ['source9PBWCoordinates = auditDIPBWCoordinates := rfl', 'source9PBWNormedAddCommGroup = NormedAddCommGroup.induced', 'source9PBWNormedSpace = NormedSpace.induced ℝ', 'TopologicalSpace.induced (Subtype.val : G → C) auditDICliffordTopology := rfl', '(inferInstance : ChartedSpace P G) = source9SpinTranslatedChartedSpace := rfl', 'atlas P G = Set.range source9SpinLeftTranslatedChart := rfl', 'chartAt P g = source9SpinLeftTranslatedChart g := rfl', 'iUnion_source_chartAt P G', '(modelWithCornersSelf ℝ P).Boundaryless', 'IsManifold (modelWithCornersSelf ℝ P) ω G', 'IsManifold (modelWithCornersSelf ℝ P) ∞ G', '(source9SpinTranslatedAtlas_hasGroupoid n).compatible hh hg', '(source9SpinTranslatedAtlas_hasGroupoid n).compatible hg hh', 'source9SpinLeftTranslatedChart_transition_source g h', 'right_inv ht', 'source9NaturalMatrix_not_injective', 'source9SpinTranslatedAtlas_contDiffOn', 'source9SpinTranslatedAtlas_isManifold', 'source9SpinTranslatedAtlas_hasGroupoid']:
               assert token in a,token
+          for token in ["have htransition : (id ∘ (e.symm.trans e' : P → P) ∘ id) =", "exact OpenPartialHomeomorph.trans_apply e.symm e' (x := t)", 'rw [htransition]', "have hc : ContDiffOn ℝ n (id ∘ (e.symm.trans e' : P → P) ∘ id)", 'using hc']:
+              assert token in s,token
           print('V10H_F10DI_NAMED_ATLAS_ORIGINAL_TOPOLOGY_SCOPE_PASS')
           PY
 
