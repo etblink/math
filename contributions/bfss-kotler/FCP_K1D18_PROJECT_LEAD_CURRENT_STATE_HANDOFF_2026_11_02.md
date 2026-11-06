@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **2026-11-05 research status: F10DI remains accepted; F10DJ is unaccepted after strict run 42139731692.** The red tested `d1e22d5059b045828d605efebb5f0d6d68f4f332`. The syntax/scope/pin preflight and all five accepted parents passed; DJ failed at three identity-chart wrapper reductions and its independent audit was skipped. The repaired candidate uses explicit Function identity-composition laws and the native pointwise model-chart lemma, preserving every theorem statement, differential/range proof and the entire 34-example audit. The recovered workspace has passed local static checks; a new complete strict source/audit gate is required. Source Lie-group structure, tangent bracket, the full representation manifold differential and spectral existence remain open.
+> **2026-11-05 research status: F10DI remains accepted; F10DJ is unaccepted after strict run 42141992243.** At tested commit `501b35984e007b9bf5f8315e044cec6b3e3394c6`, all five parents and all ten DJ source roots compiled cleanly. The independent audit failed at one direct native-derivative method projection through imported private aliases. The source is now frozen. The repaired audit first binds the existing differentiability theorem at its complete local consumer type, then applies hasMFDerivAt, preserving all 34 propositions and every other proof. A complete new strict source/audit green is still required. Source Lie-group structure, tangent bracket, full representation manifold differential and spectral existence remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -5486,3 +5486,40 @@ There is no local Lean elaboration result. The retained remote syntax preflight 
 | `.github/workflows/bfss-kotler-v10h-f10dj-identity-inclusion-tangent-range-strict.yml` | `d1b89a2fd15f1021805298073fd14fe08f702d4a` |
 
 F10DI remains accepted. DJ's tangent identification is still only a candidate. Source Lie-group structure, tangent bracket comparison, the full F10BC representation manifold differential, global physical lift and spectral existence remain separate. The original DJ red and all prior artifacts/history are preserved. This repair changes source, workflow and the canonical handoff only on the research branch; the independent audit and all accepted modules remain unchanged. Existing publication/submission records and every historical handoff byte beginning at the original As-of field are preserved, with this event appended. No upstream action is taken.
+
+
+## 2026-11-05 F10DJ source passed — independent native-derivative consumer repair
+
+[Strict run #42141992243](https://github.com/etblink/math/actions/runs/42141992243), attempt 1, tested `501b35984e007b9bf5f8315e044cec6b3e3394c6`, tree `e9575a5c2a744e873dde8ff01b224814e341ca32`, job `127644285639`. The syntax/scope/pin preflight, pinned restoration, DD rebuild and all fresh DE/DF/DG/DH/DI parents passed. All ten DJ source roots compiled with only the permitted axioms and no source diagnostics. The independent audit ran and failed. DJ remains unaccepted.
+
+**Changed failure boundary.** The previous three chart-wrapper repairs worked: their diagnostics are absent and the entire mathematical source now compiles cleanly. Freeze that source at `378fc2e02633bb2590063f4bc6c8e22a3c081674`. The new first and only diagnostic is audit 83:2, a `lean.synthInstanceFailed` request for `ChartedSpace P✝ G✝` expressed through the imported source theorem's private parameter/group aliases. It occurs at the direct call `source9SpinIdentityInclusion_mdifferentiableAt.hasMFDerivAt`.
+
+The earlier audit example already consumes the same theorem successfully at the complete local type `MDifferentiableAt I J (Subtype.val : G → C) (1 : G)`. The required local norm/topology/atlas registrations are present and their ground controls produce no diagnostics. The diagnostic is consistent with the field-style application being inferred through the imported theorem before specializing the native API to the audit's explicit consumer types. Treat this as an independent-consumer elaboration boundary, not a reason to alter the passing source or install a new global instance.
+
+**Artifact evidence.** Downloaded artifact `13469266387` is 3,890 bytes. Its independently computed ZIP SHA-256 `da2d8eedd952ac3ab3e3d9959974c72bc82b8a7b38d3d715cf8e01f68015de04` matches GitHub metadata and the upload log. The archive's tested SHA matches the run head. Its parent/source/audit logs contain exactly 10/7/3/5/3/10/10 reports, all restricted to propext, Classical.choice and Quot.sound, without sorryAx. The audit log alone contains the single typeclass diagnostic; all earlier logs are clean.
+
+The ten printed audit-root reports describe imported named constants. They do not certify the failed anonymous native HasMFDerivAt example. The audit process exited nonzero and the final acceptance marker did not execute. No root or tangent identification is accepted from this red.
+
+**Minimal implemented repair.** Change only the failing example's proof body. First bind `hInclusion` at the complete audit-local differentiability type above using the already passing source theorem. Then call `hInclusion.hasMFDerivAt`. This uses the matching native MDifferentiableAt API with its source and target models, original carriers, literal inclusion, identity point and charted-space data fixed before projection.
+
+The native HasMFDerivAt proposition and its actual `mfderiv I J (Subtype.val : G → C) (1 : G)` argument remain unchanged. All 34 audit propositions, all other audit proofs, the independent PBW reconstruction, topology/atlas identities, exact operator/range controls, inverse laws, half-bivector normalization and negative global-natural-injectivity control are preserved. No new hypothesis, source instance or replacement structure is introduced.
+
+The entire ten-root source file is byte-identical to the source that passed this run. The workflow refreshes only the audit pin and adds mandatory guards for the typed binding and its projection. All other 117 pin lines remain verbatim, including the frozen source pin and every accepted ancestor. Every step except pin/scope is identical, with the same complete root/axiom checks, source/audit exit policy, fresh-object controls, seven warnings-as-errors invocations and all time/resource bounds.
+
+**Static verification and method.** Exact comparison accounts for the entire audit diff as that one proof-body replacement. Source byte identity, unchanged propositions and all other proofs are checked. YAML, all shell blocks, all seven embedded Python programs, the executed syntax/scope preflight, ten-root/print inventories and delimiters pass. All 118 pin hashes match locally. The five parent validators pass when replayed against the independently hashed red artifact's clean parent logs.
+
+The final validator was also replayed against the archived compiler/audit logs. It correctly rejects the single audit diagnostic despite all ten imported audit-root reports being clean. Keep this fail-closed distinction: source compilation, imported-root axiom reports, independent consumer elaboration and final qualification are separate evidence obligations.
+
+The method is the previously successful complete-consumer staging approach: specialize the imported theorem at the full local type before invoking a generic projection. The independently successful earlier example justifies this bounded choice; no speculative class infrastructure or resource increase is added. The new full gate must still elaborate the changed proof and every unchanged consumer before acceptance. A local static pass does not establish that elaboration result.
+
+If another boundary appears, preserve its exact first diagnostic and phase, keep the passing mathematical source frozen unless new evidence requires a source change, and use the actual native API at explicit consumer types. Do not remove the native derivative witness, weaken its proposition, export local instances or accept from clean imported-root prints alone. The final marker remains `V10H_F10DJ_IDENTITY_INCLUSION_TANGENT_RANGE_TYPES_AXIOMS_PASS`.
+
+**Repaired exact blobs.**
+
+| File | Git blob |
+|---|---|
+| `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DJIdentityInclusionTangentRange.lean` | `378fc2e02633bb2590063f4bc6c8e22a3c081674` |
+| `lean/diagnostics/FCP_K1D18V10HF10DJIndependentAudit.lean` | `8d3a75f4412fedf047eec8526a583c3bbe8b4871` |
+| `.github/workflows/bfss-kotler-v10h-f10dj-identity-inclusion-tangent-range-strict.yml` | `67c69721c0682470b8e6a8a755dc1170c21935fc` |
+
+Both DJ reds and their different source-versus-audit failure boundaries remain preserved. F10DI is still the accepted baseline. Tangent identification by the actual inclusion differential remains an unaccepted candidate; source Lie-group structure, tangent bracket comparison, the full F10BC manifold differential, global physical lift and spectral existence remain separate obligations. This audit/workflow/handoff-only repair stays on the research branch. Existing publication/submission records and historical handoff bytes beginning at the original As-of field are unchanged, with this event appended. No upstream action is taken.

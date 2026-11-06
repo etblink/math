@@ -79,8 +79,10 @@ example (v : T) : (E v : C) = D v := source9SpinIdentityTangentRangeEquiv_apply 
 -- Native differentiability includes continuity, not just a chosen derivative in model coordinates.
 example : ContinuousAt (Subtype.val : G → C) (1 : G) := continuous_subtype_val.continuousAt
 example : HasMFDerivAt I J (Subtype.val : G → C) (1 : G)
-    (mfderiv I J (Subtype.val : G → C) (1 : G)) :=
-  source9SpinIdentityInclusion_mdifferentiableAt.hasMFDerivAt
+    (mfderiv I J (Subtype.val : G → C) (1 : G)) := by
+  have hInclusion : MDifferentiableAt I J (Subtype.val : G → C) (1 : G) :=
+    source9SpinIdentityInclusion_mdifferentiableAt
+  exact hInclusion.hasMFDerivAt
 example : R.subtype.comp E.toLinearMap = D.toLinearMap := by
   apply LinearMap.ext
   intro v
