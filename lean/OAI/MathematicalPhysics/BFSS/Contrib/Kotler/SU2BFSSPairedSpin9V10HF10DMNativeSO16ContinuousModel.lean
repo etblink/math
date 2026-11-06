@@ -1,6 +1,9 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DLIdentityGammaDifferentialInjectivityRank
 import Mathlib.Topology.Algebra.Module.FiniteDimension
 import Mathlib.Topology.Algebra.Module.ContinuousLinearMap.Restrict
+import Mathlib.Data.Finset.Prod
+import Mathlib.Data.Fintype.Card
+import Mathlib.Data.Fintype.Prod
 
 /-! F10DM: explicit continuous linear coordinates for native so(16) on the original matrix carrier.
 Reconstruct from original upper entries, then express the accepted actual identity differential
@@ -46,7 +49,18 @@ abbrev gamma16StrictPlaneIndex :=
 
 /-- There are exactly 120 increasing pairs of the original sixteen labels. -/
 theorem gamma16StrictPlaneIndex_card : Fintype.card gamma16StrictPlaneIndex = 120 := by
-  decide
+  classical
+  calc
+    Fintype.card gamma16StrictPlaneIndex =
+        (Finset.univ.filter (fun p : SpinIndex × SpinIndex => p.1 < p.2)).card :=
+      Fintype.card_subtype (fun p : SpinIndex × SpinIndex => p.1 < p.2)
+    _ = (((Finset.univ : Finset SpinIndex).product Finset.univ).filter
+        (fun p : SpinIndex × SpinIndex => p.1 < p.2)).card :=
+      congrArg (fun t : Finset (SpinIndex × SpinIndex) =>
+        (t.filter (fun p : SpinIndex × SpinIndex => p.1 < p.2)).card)
+        (Finset.univ_product_univ (α := SpinIndex) (β := SpinIndex)).symm
+    _ = (Finset.univ : Finset SpinIndex).card.choose 2 := Finset.card_product_filter_lt
+    _ = 120 := by norm_num [Nat.choose_two_right]
 
 /-- Reconstruct the full original target matrix from upper entries, with negative lower entries. -/
 noncomputable def gamma16StrictPlaneMatrix (c : gamma16StrictPlaneIndex → ℝ) :

@@ -161,7 +161,7 @@ jobs:
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AIOriginalGammaAllOrderedPairsLinearIndependentBridge.lean)" = 'd161986eaac79a27591c5538096451e858ec369d'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DLIdentityGammaDifferentialInjectivityRank.lean)" = 'a4b961db7974f4dcdb2d9813974a94b7dd54c162'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DLIndependentAudit.lean)" = '9496396ea1dcbe53fbce89d33f75c08dce42818a'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DMNativeSO16ContinuousModel.lean)" = '85e40b140e8f0133870e7bf792eb0efb76324c6a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DMNativeSO16ContinuousModel.lean)" = '5fc13cda0391957e28b14f243ee7cdf3a4f3f408'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DMIndependentAudit.lean)" = '5a72ed5bf96d922f5c33e681c3a701fed34913ae'
           python3 - <<'PY'
           from pathlib import Path
@@ -204,6 +204,12 @@ jobs:
               assert token in a,token
           for token in ['example : ChartedSpace M M := inferInstance', 'example : (inferInstance : ChartedSpace M M) = chartedSpaceSelf M := rfl', 'example : chartAt M (0 : M) = OpenPartialHomeomorph.refl M := rfl', 'example : ModelWithCorners ℝ M M := K', 'example : LieRing M := inferInstance', 'example : LieAlgebra ℝ M := inferInstance', 'example (A B : M) : (⁅A, B⁆ : M) = A * B - B * A := rfl']:
               assert token in a,token
+          count=s[s.index('theorem gamma16StrictPlaneIndex_card'):s.index('/-- Reconstruct')]
+          for token in ['Fintype.card_subtype (fun p : SpinIndex × SpinIndex => p.1 < p.2)', '(Finset.univ_product_univ (α := SpinIndex) (β := SpinIndex)).symm', 'Finset.card_product_filter_lt', 'norm_num [Nat.choose_two_right]']:
+              assert token in count,token
+          assert not re.search(r'\bdecide\b',count)
+          for token in ['import Mathlib.Data.Finset.Prod', 'import Mathlib.Data.Fintype.Card', 'import Mathlib.Data.Fintype.Prod']:
+              assert token in s,token
           print('V10H_F10DM_NATIVE_SO16_MODEL_TARGET_COORDINATES_SCOPE_PASS')
           PY
 
