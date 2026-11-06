@@ -7,7 +7,16 @@ on:
       - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph.lean
       - lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean
       - .github/workflows/bfss-kotler-v10h-f10dp-cayley-so16-domain-homeomorph-strict.yml
+      - contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json
+      - contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py
+      - contributions/bfss-kotler/tools/test_fcp_dd_ai_cache.py
+      - contributions/bfss-kotler/FCP_DD_AI_CACHE_PILOT_2026_11_06.md
   workflow_dispatch:
+    inputs:
+      cold_build:
+        description: Bypass cache and rebuild accepted DD/AI ancestry from source
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -174,7 +183,7 @@ jobs:
           import re,ast,subprocess
           wf=Path('.github/workflows/bfss-kotler-v10h-f10dp-cayley-so16-domain-homeomorph-strict.yml').read_text()
           blocks=re.findall(r'(?m)^        run: \|\n((?:          [^\n]*(?:\n|$)|\n)+)',wf)
-          assert len(blocks)==17,len(blocks)
+          assert len(blocks)==20,len(blocks)
           programs=[]
           for block in blocks:
               script='\n'.join(line[10:] if line.startswith('          ') else line for line in block.split('\n'))
@@ -220,6 +229,13 @@ jobs:
           print('V10H_F10DP_ORIGINAL_SO16_CAYLEY_HOMEOMORPH_SCOPE_PASS')
           PY
 
+      - name: Validate complete accepted cache source closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py check
+          python3 -m unittest discover -s contributions/bfss-kotler/tools -p test_fcp_dd_ai_cache.py
+
       - name: Restore pinned Lean 4.34.1 and Mathlib
         shell: bash
         timeout-minutes: 35
@@ -233,14 +249,41 @@ jobs:
           test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
           test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
 
+      - name: Restore exact accepted DD AI object bundle
+        if: ${{ !inputs.cold_build }}
+        id: dd-ai-cache
+        uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: lean/.lake/bfss-dd-ai-cache-v1
+          key: bfss-dd-ai-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json', 'contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py') }}
+
+      - name: Verify sealed objects and freshly audit accepted imports
+        if: steps.dd-ai-cache.outputs.cache-hit == 'true'
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py install --log-dir "$RUNNER_TEMP/v10h-f10dp"
+
       - name: Rebuild accepted DD and AI ancestry
+        if: steps.dd-ai-cache.outputs.cache-hit != 'true'
         shell: bash
         timeout-minutes: 55
         run: |
           set -euo pipefail
           source "$HOME/.elan/env"
           cd lean
-          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DDDerivativeRangeGammaLieHom OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10AIOriginalGammaAllOrderedPairsLinearIndependentBridge
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DDDerivativeRangeGammaLieHom OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10AIOriginalGammaAllOrderedPairsLinearIndependentBridge 2>&1 | tee "$RUNNER_TEMP/v10h-f10dp/ancestry-build.log"
+
+      - name: Audit and seal freshly rebuilt accepted DD AI ancestry
+        if: steps.dd-ai-cache.outputs.cache-hit != 'true'
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py seal --log-dir "$RUNNER_TEMP/v10h-f10dp"
 
       - name: Fresh accepted F10DE parent compilation
         shell: bash
@@ -603,6 +646,13 @@ jobs:
               assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
           print('V10H_F10DP_CAYLEY_SO16_DOMAIN_HOMEOMORPH_TYPES_AXIOMS_PASS')
           PY
+      - name: Save bounded ancestor bundle only after all strict phases pass
+        if: success() && steps.dd-ai-cache.outputs.cache-hit != 'true' && !inputs.cold_build
+        uses: actions/cache/save@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: lean/.lake/bfss-dd-ai-cache-v1
+          key: bfss-dd-ai-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json', 'contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py') }}
+
       - name: Preserve exact head compiler and independent F10DP audit
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
