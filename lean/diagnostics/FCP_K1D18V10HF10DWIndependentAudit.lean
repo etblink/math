@@ -708,21 +708,26 @@ example : MDifferentiableAt (modelWithCornersSelf ℝ (Fin 36 → ℝ))
     (source9SpinGammaSpecialOrthogonalHom : spinGroup source9Quadratic →
       Matrix.specialOrthogonalGroup SpinIndex ℝ) (1 : spinGroup source9Quadratic) :=
   source9SpinGammaSpecialOrthogonalHom_mdifferentiableAt_one
-example : ContinuousAt rep (1 : G) :=
-  source9SpinGammaSpecialOrthogonalHom_mdifferentiableAt_one.continuousAt
+example : ContinuousAt rep (1 : G) := by
+  have hnative : MDifferentiableAt I SOI rep (1 : G) :=
+    source9SpinGammaSpecialOrthogonalHom_mdifferentiableAt_one
+  exact hnative.continuousAt
 example : rep (1 : G) = (1 : SO) := source9SpinGammaSpecialOrthogonalHom.map_one
 example : chartMatrix = matrixMap ∘ source9SpinIdentityLocalChart.symm := rfl
 example (t : P) : chartMatrix t = source9GammaCliffordAlgHom
     (source9SpinIdentityLocalChart.symm t : C) :=
   source9SpinGammaSpecialOrthogonalHom_apply (source9SpinIdentityLocalChart.symm t)
 example : (chartMatrix (0 : P) + 1).det ≠ 0 := by
-  rw [source9SpinGammaIdentityChartMatrix_zero]
+  have hzero : chartMatrix (0 : P) = (1 : M) := source9SpinGammaIdentityChartMatrix_zero
+  rw [hzero]
   exact gamma16CayleyTwo_det_ne_zero
 example : ContDiffAt ℝ ∞ writtenRep (0 : P) := source9SpinGamma_written_contDiffAt_zero ∞
 example : DifferentiableWithinAt ℝ writtenRep (Set.range I)
     (extChartAt I (1 : G) (1 : G)) := by
-  rw [source9SpinIdentity_extChartAt_center]
-  exact source9SpinGamma_written_differentiableAt_zero.differentiableWithinAt
+  have hcenter : extChartAt I (1 : G) (1 : G) = (0 : P) := source9SpinIdentity_extChartAt_center
+  have hdiff : DifferentiableAt ℝ writtenRep (0 : P) := source9SpinGamma_written_differentiableAt_zero
+  rw [hcenter]
+  exact hdiff.differentiableWithinAt
 example : writtenRep (0 : P) = (backCoordinates ∘ chartMatrix) (0 : P) :=
   source9SpinGamma_written_eventuallyEq.eq_of_nhds
 example : writtenRep (0 : P) = 0 := by
