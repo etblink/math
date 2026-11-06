@@ -23,13 +23,14 @@ theorem gamma16SO_inv_coe_eq_transpose (g : SO) :
 
 /-- Native inversion is continuous for the inherited matrix topology. -/
 theorem gamma16SO_inv_continuous : Continuous (fun g : SO => g⁻¹) := by
-  apply continuous_induced_rng.mpr
-  have hfun : (fun g : SO => ((g⁻¹ : SO) : GammaMatrix)) =
-      (fun g : SO => (g : GammaMatrix).transpose) := by
-    funext g
-    exact gamma16SO_inv_coe_eq_transpose g
-  rw [hfun]
-  exact continuous_subtype_val.matrix_transpose
+  have hcoerced : Continuous (fun g : SO => ((g⁻¹ : SO) : GammaMatrix)) := by
+    have hfun : (fun g : SO => ((g⁻¹ : SO) : GammaMatrix)) =
+        (fun g : SO => (g : GammaMatrix).transpose) := by
+      funext g
+      exact gamma16SO_inv_coe_eq_transpose g
+    rw [hfun]
+    exact continuous_subtype_val.matrix_transpose
+  exact continuous_induced_rng.mpr hcoerced
 
 /-- Native multiplication is jointly continuous for the inherited matrix topology. -/
 theorem gamma16SO_mul_continuous : Continuous (fun gh : SO × SO => gh.1 * gh.2) := by
@@ -55,7 +56,9 @@ theorem gamma16SOLeftTranslatedChart_source (g : SO) :
       (fun h : SO => g⁻¹ * h) ⁻¹' gamma16CayleyOpenPartialHomeomorph.source := rfl
 
 theorem gamma16SOLeftTranslatedChart_target (g : SO) :
-    (gamma16SOLeftTranslatedChart g).target = gamma16CayleyOpenPartialHomeomorph.target := rfl
+    (gamma16SOLeftTranslatedChart g).target = gamma16CayleyOpenPartialHomeomorph.target :=
+  Homeomorph.transOpenPartialHomeomorph_target
+    (Homeomorph.mulLeft g⁻¹) gamma16CayleyOpenPartialHomeomorph
 
 theorem gamma16SOLeftTranslatedChart_apply (g h : SO) :
     gamma16SOLeftTranslatedChart g h = gamma16CayleyOpenPartialHomeomorph (g⁻¹ * h) := rfl

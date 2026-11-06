@@ -179,7 +179,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean)" = '435d341dd186c26fb2d1c8ddbd3f8278b41ffaeb'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph.lean)" = '9789a47b31b90331528add374195471bdec1f7e7'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DQIndependentAudit.lean)" = '3901be8511828b759fdad9448faad44846ccb8a8'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts.lean)" = '0f75277a6e12743de86a7c8a3829fc7093bca780'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts.lean)" = '15454b33c65f98f3c3105e00733bc8f9d4d2ef47'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DRIndependentAudit.lean)" = 'bbadc69787cce349271b341fc612af77f6f15f11'
           python3 - <<'PY'
           from pathlib import Path
@@ -297,6 +297,9 @@ jobs:
               assert token in s,token
           for token in ['TopologicalSpace.induced (Subtype.val : SO → M)','((g * h : SO) : M) = (g : M) * (h : M) := rfl','(fun h : SO => g⁻¹ * h) ⁻¹\' V','U ∩ (fun c : Q => g⁻¹ * (h * gamma16CayleyChartInv c)) ⁻¹\' V','atlas Q SO = Set.range gamma16SOLeftTranslatedChart','chartAt Q g = gamma16SOLeftTranslatedChart g','mem_chart_source Q g','chart_mem_atlas Q g']+names:
               assert token in a,token
+          assert 'have hcoerced : Continuous (fun g : SO => ((g⁻¹ : SO) : GammaMatrix)) := by' in s
+          assert 'exact continuous_induced_rng.mpr hcoerced' in s
+          assert 'Homeomorph.transOpenPartialHomeomorph_target' in s
           print('V10H_F10DR_EXACT_NATIVE_SO16_TRANSLATED_CHARTS_SCOPE_PASS')
           PY
 
