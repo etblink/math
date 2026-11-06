@@ -165,7 +165,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DMIndependentAudit.lean)" = '5a72ed5bf96d922f5c33e681c3a701fed34913ae'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DNCayleySO16ForwardParameterization.lean)" = 'd6b18917113a9388c351febed65ff9e7cbcb5fe7'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DNIndependentAudit.lean)" = '2d28fabc4c6b7e7010fffb209403f9250f194f4b'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DOCayleySO16BackwardCoordinates.lean)" = '174cef1e651a3a19dc64a64b983dd8cf2a17361f'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DOCayleySO16BackwardCoordinates.lean)" = '775877ca57562e03484cfa87e1408f8e657b3bb6'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DOIndependentAudit.lean)" = '273a09cd1e33813241b5d61c729f73bdcd512ec5'
           python3 - <<'PY'
           from pathlib import Path
@@ -211,6 +211,8 @@ jobs:
               assert token in a,token
           for token in ['example : ChartedSpace M M := inferInstance', 'example : (inferInstance : ChartedSpace M M) = chartedSpaceSelf M := rfl', 'example : chartAt M (0 : M) = OpenPartialHomeomorph.refl M := rfl', 'example : ModelWithCorners ℝ M M := K', 'example : LieRing M := inferInstance', 'example : LieAlgebra ℝ M := inferInstance', 'example (A B : M) : (⁅A, B⁆ : M) = A * B - B * A := rfl']:
               assert token in a,token
+          assert "(Matrix.mem_orthogonalGroup_iff' (A := rMatrix r)).mp h" in s
+          assert "Matrix.mem_orthogonalGroup_iff'.mp" not in s
           print('V10H_F10DO_ORIGINAL_SO16_BACKWARD_COORDINATES_SCOPE_PASS')
           PY
 

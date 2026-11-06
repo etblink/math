@@ -58,7 +58,7 @@ theorem gamma16CayleyTarget_orthogonal (r : SO) :
     (rMatrix r).transpose * rMatrix r = 1 := by
   have h : rMatrix r ∈ Matrix.orthogonalGroup SpinIndex ℝ :=
     (Matrix.mem_specialOrthogonalGroup_iff.mp r.property).1
-  exact Matrix.mem_orthogonalGroup_iff'.mp h
+  exact (Matrix.mem_orthogonalGroup_iff' (A := rMatrix r)).mp h
 
 /-- The literal backward matrix is skew; both cancellation conditions come from the target domain. -/
 theorem gamma16CayleyBackwardMatrix_transpose

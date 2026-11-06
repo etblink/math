@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **2026-11-06 research status: F10DN remains accepted; F10DO backward-coordinate candidate awaits strict CI.** DN was accepted at tested `22457b6162964c6d0182000027a15103342e1a83`, run 42194697214; acceptance-only head was `81a7dad75668573145e7e2d4406891cda9eeffef`. DO defines the actual group subset det(R+1) ≠ 0, proves it open and containing identity, proves the literal backward matrix (R-1)(R+1)⁻¹ is native skew there, and constructs continuous original upper-entry coordinates with exact matrix reconstruction and identity value zero. Its seventeen roots and 111-example audit remain unaccepted. The forward/backward domain matching and two-sided Cayley inverse laws, LocalHomeomorph/atlas, smoothness, derivative normalization and intrinsic target tangent identification remain open.
+> **2026-11-06 research status: F10DN remains accepted; F10DO first source red is preserved and a bounded theorem-application repair awaits strict CI.** Run 42199371449 tested `a4a42b7b897aa41216b86d387decced95772f275`: all preflights and eleven fresh parents passed (88 reports). The sole source diagnostic was lookup of `Matrix.mem_orthogonalGroup_iff'.mp` in the orthogonality helper; six roots were clean and eleven contained dependent recovery axioms. The 111-example audit was skipped. The repair parenthesizes the existing primed theorem and explicitly supplies its original matrix argument, preserving all seventeen statements, the other sixteen bodies and the entire audit. Local syntax/scope and all 131 hash checks pass. F10DO remains unaccepted; two-sided Cayley inverse laws and atlas construction remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -6076,3 +6076,43 @@ After any acceptance, prove the missing exact domain and inverse laws: forward C
 Smoothness, the factor-two derivative normalization and its relation to DM's actual differential coordinates remain later obligations. Intrinsic target tangent identification and the full intrinsic F10BC differential, source Lie-group/bracket structure, global physical Spin lift, spectral existence and mass-gap consequences remain open.
 
 This four-file candidate changes only new DO source, independent audit, strict workflow and this canonical handoff on the authorized research branch. All accepted source/audit/workflow files, every prior red, publication/submission record and historical handoff byte beginning at the original As-of field are preserved, with this event appended. No upstream action is taken.
+
+
+## 2026-11-06 F10DO first source red — explicit orthogonality theorem application
+
+**Immutable first diagnostic and phase.** [Run #42199371449](https://github.com/etblink/math/actions/runs/42199371449), attempt 1, job `127830563261`, tested exact commit `a4a42b7b897aa41216b86d387decced95772f275`, tree `755140d9ebe6362c2e71efb402410a7957a68265`. All pins, syntax/scope controls, restoration, DD/AI rebuild and eleven fresh parent phases passed. Parent report counts DE/DF/DG/DH/DI/DJ/AI/DK/DL/DM/DN = 10/7/3/5/3/10/2/9/9/15/15 (88 total).
+
+The sole source diagnostic is line 61:8: unknown constant `Matrix.mem_orthogonalGroup_iff'.mp`. It occurs in gamma16CayleyTarget_orthogonal when applying the primed orthogonal-group membership theorem to the already extracted native orthogonal membership witness.
+
+There are seventeen source reports. The target definition, backward matrix definition, target openness, identity membership, backward identity value and raw restricted matrix continuity give six permitted-axiom reports. The failed helper and its ten descendants give eleven recovery-sorryAx reports and are rejected. The independent audit was skipped, with no actual final PASS marker. No DO root is separately promoted from this failed gate.
+
+Artifact `13494656804` contains 13 files and is 6,440 bytes. Its independently computed ZIP SHA-256 `559fdae6a15c3dbf0048476706e087913f7db7fbbb350da0c6b26aa625234111` matches metadata and the upload log. Archive integrity and exact tested-sha checks pass. All eleven archived parent logs pass the unchanged validators when independently replayed, and the candidate validator correctly rejects the red source recovery axioms.
+
+**Primary-source check and diagnosis.** Re-read pinned Mathlib LinearAlgebra/UnitaryGroup.lean at `d13f23b723b8a846827a245b89c10fc7d3f11612`, blob `2bc60a3c9927cdbf9c28371d1b4e9f66b7447583`. The theorem Matrix.mem_orthogonalGroup_iff' exists with implicit matrix argument A and concludes A in the native orthogonal group iff Aᵀ*A=1.
+
+The error names the combined theorem/projection identifier; it is not evidence that the underlying theorem is absent or the orthogonality assertion false. The bounded repair explicitly grounds A as rMatrix r and parenthesizes the theorem term before projecting mp:
+`(Matrix.mem_orthogonalGroup_iff' (A := rMatrix r)).mp h`.
+
+This separates the intended theorem application and projection while preserving the original native matrix and membership witness. It does not claim to isolate lexer behavior from elaboration beyond the observed combined-identifier lookup diagnostic. No new import, assumption, topology, instance or mathematical identity is needed.
+
+**Implemented exact scope.** Change only that one application in gamma16CayleyTarget_orthogonal. All seventeen public statements and the other sixteen bodies are byte-preserved: replacing the new application with the old one reconstructs the exact failed source bytes. The 111-example independent audit remains byte-frozen at `273a09cd1e33813241b5d61c729f73bdcd512ec5`.
+
+The strict workflow updates only the candidate source hash and adds a guard requiring the explicit parenthesized matrix application and rejecting the old combined projection string. Removing that guard and restoring the old source pin reproduces the exact failed workflow. The other 130 pin lines, including the audit, remain unchanged (131 total). All parent/build bodies, seventeen-name inventories, warnings-as-errors, compiler error exits, fresh-object checks, whitelist, diagnostics, final validator, retained artifacts and per-phase/155-minute limits remain unchanged.
+
+| File | Repaired/frozen Git blob |
+|---|---|
+| DO source | `775877ca57562e03484cfa87e1408f8e657b3bb6` |
+| DO independent audit — unchanged | `273a09cd1e33813241b5d61c729f73bdcd512ec5` |
+| DO strict workflow | `2f0dab0f0ed432fc46b6eb179abc51138f8d668c` |
+
+**Verification and next strict gate.** YAML parsing, all sixteen shell blocks through bash -n, all thirteen embedded Python programs through ast.parse, the executed syntax/scope preflight, inventories and delimiter checks pass. All 131 local hashes match their pins. The frozen 111-example audit retains all original 93 DN examples. All eleven parent validators pass on both the accepted DN fixture set and this red DO artifact; these are replay checks of existing evidence, not new independent theorem results. The final validator's rejection of the eleven recovery reports is checked directly.
+
+No local Lean compiler is installed. The new exact head must pass all 88 fresh parent reports, seventeen clean source reports, every one of the 111 anonymous audit examples/seventeen clean audit reports, the actual final marker and independently checked retained artifact before acceptance. The next run tests the explicit theorem/projection application and then the previously unrun complete audit. A source green alone does not accept the candidate.
+
+On a new red, preserve the earliest phase and diagnostic. If the helper becomes clean but a downstream matrix cancellation fails, inspect its fully typed multiplication side and determinant-unit witness before altering proof architecture. If the complete source passes and an audit consumer fails, freeze the source and repair only that consumer. Do not infer success of a dependent root from a report containing recovery axioms or use a lookup failure to change the target domain or matrix formula.
+
+The explicit f/x bindings learned from DN already gave a clean raw matrix-continuity report in this run. Retain those successful bindings. The present failure is a different theorem/projection resolution boundary; it does not justify undoing the subtype-continuity repair or adding resource limits.
+
+F10DN remains accepted, and DO remains a candidate. Forward/backward domain matching and two-sided Cayley inverse laws, LocalHomeomorph/atlas, smoothness and derivative normalization, intrinsic target tangent identification, source Lie-group/bracket structure and physical/spectral conclusions remain open.
+
+This three-file repair changes only DO source, its strict workflow and this canonical handoff on the research branch. All accepted source/audit/workflow files, the first red and its artifact, publication/submission records and every historical handoff byte beginning at the original As-of field are preserved, with this event appended. No upstream action is taken.
