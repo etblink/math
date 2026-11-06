@@ -6,6 +6,7 @@ noncomputable section
 open OAI.BFSSQuantum
 open FCP.BFSSGamma9
 open scoped Topology ContDiff BigOperators Matrix.Norms.Elementwise
+attribute [local instance 100] LieRing.ofAssociativeRing
 
 local instance : Fintype (Finset SpaceIndex) := Fintype.ofFinite _
 private def auditDKPBWCoordinates :
@@ -29,6 +30,8 @@ local instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=
     TopologicalSpace GammaMatrix := inferInstance
 local instance f10dkAuditChartedSpace :
     ChartedSpace (Fin 36 → ℝ) (spinGroup source9Quadratic) := source9SpinTranslatedChartedSpace
+local instance f10dkAuditMatrixChartedSpace :
+    ChartedSpace GammaMatrix GammaMatrix := chartedSpaceSelf GammaMatrix
 
 private abbrev P := Fin 36 → ℝ
 private abbrev G := spinGroup source9Quadratic
@@ -36,7 +39,7 @@ private abbrev C := CliffordAlgebra source9Quadratic
 private abbrev M := GammaMatrix
 private abbrev I := modelWithCornersSelf ℝ P
 private abbrev J := modelWithCornersSelf ℝ C
-private abbrev K := modelWithCornersSelf ℝ M
+private abbrev K : ModelWithCorners ℝ M M := modelWithCornersSelf ℝ M
 private abbrev T := TangentSpace I (1 : G)
 private abbrev R := source9IdentityChartDerivativeRange
 private abbrev gammaCLM : C →L[ℝ] M := source9OriginalGammaEvaluationCLM
@@ -44,6 +47,15 @@ private abbrev inclusionD : T →L[ℝ] C := source9SpinIdentityInclusionDiffere
 private abbrev E : T ≃ₗ[ℝ] R := source9SpinIdentityTangentRangeEquiv
 private abbrev D : T →L[ℝ] M := source9SpinIdentityGammaDifferential
 private abbrev matrixMap : G → M := fun g => ((source9SpinGammaSpecialOrthogonalHom g) : M)
+
+-- Ground the canonical target data before consuming any native manifold interface.
+example : ChartedSpace M M := inferInstance
+example : (inferInstance : ChartedSpace M M) = chartedSpaceSelf M := rfl
+example : chartAt M (0 : M) = OpenPartialHomeomorph.refl M := rfl
+example : ModelWithCorners ℝ M M := K
+example : LieRing M := inferInstance
+example : LieAlgebra ℝ M := inferInstance
+example (A B : M) : (⁅A, B⁆ : M) = A * B - B * A := rfl
 
 example : M = Matrix SpinIndex SpinIndex ℝ := rfl
 example : Fintype.card (Fin 36) = 36 := by decide

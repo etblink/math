@@ -12,6 +12,7 @@ namespace FCP.BFSSPairedSpin9Clifford
 noncomputable section
 open OAI.BFSSQuantum
 open scoped Topology ContDiff Matrix.Norms.Elementwise
+attribute [local instance 100] LieRing.ofAssociativeRing
 
 local instance f10dkLocalNormedAddCommGroup :
     NormedAddCommGroup (CliffordAlgebra source9Quadratic) := source9PBWNormedAddCommGroup
@@ -19,6 +20,8 @@ local instance f10dkLocalNormedSpace :
     NormedSpace ℝ (CliffordAlgebra source9Quadratic) := source9PBWNormedSpace
 local instance f10dkLocalChartedSpace :
     ChartedSpace (Fin 36 → ℝ) (spinGroup source9Quadratic) := source9SpinTranslatedChartedSpace
+local instance f10dkLocalMatrixChartedSpace :
+    ChartedSpace GammaMatrix GammaMatrix := chartedSpaceSelf GammaMatrix
 
 private abbrev P := Fin 36 → ℝ
 private abbrev G := spinGroup source9Quadratic
@@ -26,7 +29,7 @@ private abbrev C := CliffordAlgebra source9Quadratic
 private abbrev M := GammaMatrix
 private abbrev I := modelWithCornersSelf ℝ P
 private abbrev J := modelWithCornersSelf ℝ C
-private abbrev K := modelWithCornersSelf ℝ M
+private abbrev K : ModelWithCorners ℝ M M := modelWithCornersSelf ℝ M
 private abbrev T := TangentSpace I (1 : G)
 private abbrev R := source9IdentityChartDerivativeRange
 private abbrev inclusion : G → C := Subtype.val
