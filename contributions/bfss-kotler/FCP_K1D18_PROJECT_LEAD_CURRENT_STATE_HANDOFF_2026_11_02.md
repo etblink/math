@@ -4,7 +4,7 @@
 
 > **2026-11-05 contribution update:** v0.4.0 is published at DOI `10.5281/zenodo.23969575`. The notes-only follow-up is prepared and validated on owner-fork branch `contribution/bfss-v040-follow-up-20261105`, exact commit `37af0591d8c968e6232968b0951639798a2d7028`. See [the current packet](upstream-notes/README.md) and [validation report](upstream-notes/V0_4_0_SUBMISSION_REVIEW.md). The prior publication-readiness hold is superseded; upstream submission still awaits owner checking of the exact entry and explicit approval. No upstream PR, issue or comment has been opened. F10DE and all mathematical scope limits are unchanged.
 
-> **2026-11-06 research status: F10DN accepted at strict run 42194697214.** Exact tested commit `22457b6162964c6d0182000027a15103342e1a83` passed all preflights, ten fresh parent phases (73 reports), fifteen source roots and all 93 independent audit examples with fifteen clean audit reports. The original-matrix Cayley formula (1+A)(1-A)⁻¹ defines a continuous actual SO(16)-valued map on its proved open determinant domain containing zero, with zero mapped to identity. Artifact hash and tested source/audit bytes are independently checked. The inverse chart and open image, smoothness and factor-two derivative normalization, intrinsic target tangent identification, source Lie-group/bracket structure and spectral existence remain open.
+> **2026-11-06 research status: F10DN remains accepted; F10DO backward-coordinate candidate awaits strict CI.** DN was accepted at tested `22457b6162964c6d0182000027a15103342e1a83`, run 42194697214; acceptance-only head was `81a7dad75668573145e7e2d4406891cda9eeffef`. DO defines the actual group subset det(R+1) ≠ 0, proves it open and containing identity, proves the literal backward matrix (R-1)(R+1)⁻¹ is native skew there, and constructs continuous original upper-entry coordinates with exact matrix reconstruction and identity value zero. Its seventeen roots and 111-example audit remain unaccepted. The forward/backward domain matching and two-sided Cayley inverse laws, LocalHomeomorph/atlas, smoothness, derivative normalization and intrinsic target tangent identification remain open.
 
 **As of:** 2026-11-03 UTC  
 **Repository:** \`etblink/math\`  
@@ -6027,3 +6027,52 @@ A later smooth-atlas gate must separately prove regularity and the chosen factor
 The inverse chart, its image characterization and injectivity/homeomorphism laws, smoothness, intrinsic target tangent identification and full intrinsic F10BC differential remain open. Source smooth group operations/Lie-group structure and native tangent-bracket compatibility, global physical Spin lift, spectral existence and mass-gap consequences remain separate.
 
 This acceptance-only commit changes the canonical handoff alone, based on the exact tested head/tree. All Lean source, independent audit and workflow files remain the tested blobs. Every prior red and accepted artifact, publication/submission record and historical handoff byte beginning at the original As-of field is preserved, with this acceptance appended. Only the authorized research branch is updated; no upstream action is taken.
+
+
+## 2026-11-06 F10DO candidate — continuous backward coordinates on the actual SO(16) target subset
+
+**Accepted baseline and bounded question.** Continue from acceptance-only head `81a7dad75668573145e7e2d4406891cda9eeffef`, tree `854a6ef2d2961f6e677753e924cd33f0982ee0f5`. Accepted DN tested `22457b6162964c6d0182000027a15103342e1a83`, [run #42194697214](https://github.com/etblink/math/actions/runs/42194697214), and supplies the continuous actual SO(16)-valued forward Cayley map on U = {c | det(1-A(c)) ≠ 0}.
+
+The next bounded question is whether the proposed backward matrix B(R) = (R-1)*(R+1)⁻¹ is native skew on the actual group subset V = {R in SO(16) | det(R+1) ≠ 0}, and therefore has continuous coordinates in the accepted original 120-coordinate model. This isolates the matrix algebra, native-skew inclusion and subtype continuity before the two-sided inverse laws and atlas construction.
+
+**Pinned APIs and prior methods reused.** At Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, Matrix/NonsingularInverse.lean (blob `b3ea61392d1cea6611deddfcf2c1da7938f3d9e6`) supplies the exact inverse-cancellation and injective-multiplication lemmas and the transpose determinant-unit transport. Matrix/Determinant/Basic.lean (blob `66f8b885e8ce08fecc06336d6a26d5eff6c15aa6`) supplies det_smul. Algebra/Lie/Classical.lean (blob `b5398a77f3282c2f21325182ae26f06d5e822a79`) identifies native so membership with transpose = negative.
+
+Reuse DN's inspected topological matrix inverse and scalar inverse-continuity APIs, and DM's exact native-skew continuous model. Reuse CD/DM's local IsTopologicalAddGroup and ContinuousSMul proofs through the native Submodule view and the established associative LieRing registration. No TopologicalSpace, norm or NormedRing is added or replaced.
+
+The DN red taught that a target value does not determine a higher-order composition's source domain. The new inverse-continuity composition explicitly binds its actual target-subtype function and point, matching the successful DN repair. Group-to-matrix and target-subtype projections are first bound at complete original types. The determinant at identity uses a symbolic scalar-two matrix and pow_ne_zero rather than another large finite enumeration or evaluation.
+
+**Seventeen prospective roots.** Define V on the literal Matrix.specialOrthogonalGroup SpinIndex ℝ and B on the original GammaMatrix carrier. Prove V open using continuous subgroup inclusion, addition and determinant. Prove identity lies in V by writing 1+1 as two times the identity, applying det_smul and nonzero scalar-power reasoning. Prove B(identity)=0. Extract the actual Rᵀ*R=1 relation from native special-orthogonal membership.
+
+For R in V, let S=R+1 and N=R-1. Obtain the actual determinant-unit conditions for S and Sᵀ. Prove Sᵀ*(B(R)ᵀ*S)=Nᵀ*S and Sᵀ*((-B(R))*S)=-(Sᵀ*N) by bounded reassociation and the actual left/right inverse laws. A polynomial identity reduces Nᵀ*S=-(Sᵀ*N) to Rᵀ*R=1. Cancel multiplication by the proved invertible S and Sᵀ to conclude B(R)ᵀ=-B(R). This does not assume commutativity of arbitrary matrices or an unproved inverse of the group element.
+
+Convert that equality into native so(16) membership and define an actual native-skew-valued map on V. Prove the raw matrix map continuous at every V point using matrix inversion at the nonzero determinant, then lift continuity through the existing native-skew subtype topology.
+
+Apply the accepted 120-coordinate continuous model inverse to this actual skew value. Expose every coordinate as its literal original upper matrix entry. Prove reconstruction through gamma16StrictPlaneAmbientCLM gives exactly B(R), prove coordinate continuity, and prove the identity target point has the zero coordinate function.
+
+These are backward coordinate candidates for the intended Cayley inverse. Reconstruction here means A(backwardCoordinates(R)) = B(R). It does not mean that applying the forward Cayley formula to those coordinates already returns R. Neither domain matching nor a two-sided inverse law is included in this gate.
+
+**Independent audit.** Preserve every one of DN's 93 examples and proof bodies modulo private consumer-prefix renaming. Add seventeen full consumers for the new source/target formulas, openness and identity membership, identity matrix value, actual group orthogonality, backward skewness/native membership, native-skew map and value, matrix/skew/coordinate continuity, literal coordinate entries, complete matrix reconstruction and zero coordinates at identity. Add the exact induced topology of V as a subtype of the original group. There are 111 examples total.
+
+All previous original 36/9/16 and 120-coordinate model checks, PBW and source atlas data, native differential/rank comparisons, gamma quarter/half factors, original matrix and group topologies, forward Cayley map and negative global-injectivity controls remain present. No result assumes a subgroup atlas or intrinsic target tangent.
+
+**Strict gate.** Preserve all 129 accepted DN pin lines verbatim and add only DO source/audit pins: 131 total. Keep the DD/AI rebuild and ten existing fresh parent phases; add fresh accepted DN with its exact fifteen-name validator. Expected parent inventories are 10/7/3/5/3/10/2/9/9/15/15 (88 reports). Candidate source and independent audit each require exactly seventeen new reports, for 122 reports across the full gate.
+
+Keep Lean 4.34.1, pinned Mathlib/Actions, warnings-as-errors, compiler error exits, fresh object deletion/nonempty checks, the three-axiom whitelist, retained artifacts on all outcomes and unchanged per-phase/155-minute outer limits. There are thirteen direct strict compiler invocations, sixteen shell blocks and thirteen embedded Python programs. The first preflight checks every shell/Python block before restoration/builds, permits only the exact canonical local registration blocks, and rejects additional instances, admissions, source tangent implementation casts, abusive derivative aliases, unconstructed LieGroup/ChartedSpaceCore/NormedRing/ContMDiff code, linter suppression and increased proof limits. Final marker: `V10H_F10DO_CAYLEY_SO16_BACKWARD_COORDINATES_TYPES_AXIOMS_PASS`.
+
+**Static verification.** YAML parsing, all sixteen shell blocks via bash -n, all thirteen embedded programs via ast.parse, executed syntax/scope guards, declaration/example inventories and delimiter checks pass. All 131 local source hashes match their pins. The old 93 examples are mechanically preserved after the declared prefix rename. All existing ancestry-build and fresh-parent bodies remain byte-preserved apart from the artifact directory. All eleven accepted-parent validators (88 reports) were independently replayed successfully using the hashed accepted DN artifact, with its source compiler log serving as the new DN parent fixture.
+
+| New file | Exact Git blob |
+|---|---|
+| DO actual SO(16) backward coordinates | `174cef1e651a3a19dc64a64b983dd8cf2a17361f` |
+| DO independent audit | `273a09cd1e33813241b5d61c729f73bdcd512ec5` |
+| DO strict workflow | `7c1a611d54bfbe5833c8c1f1572302f9aa5d1ea4` |
+
+No local Lean compiler is installed. This exact new head must still pass all parents, seventeen clean source reports, all 111 anonymous audit examples/seventeen clean audit reports, the actual final marker and independently verified artifact before DO acceptance. Local wrapper/hash checks are not proof acceptance.
+
+**Discriminating outcomes and next step.** On a red, preserve its earliest phase and diagnostic. For a cancellation failure, inspect the fully typed matrix product, correct side and the actual determinant-unit witness; do not replace matrix order or assume a commutative ring of matrices. For a subtype continuity failure, retain the named actual function and point and the complete native target type. For an identity/count simplification, use symbolic determinant/nonzero reasoning rather than resource increases. If source becomes clean and an independent consumer fails, freeze the source and repair only the demonstrated consumer boundary.
+
+After any acceptance, prove the missing exact domain and inverse laws: forward C(c) lies in V for c in U and backwardCoordinates(C(c))=c; backwardCoordinates(R) lies in U for R in V and forwardCayley(backwardCoordinates(R))=R, with the actual group-valued coercions checked. Only after these and the already qualified continuity/open-domain data may a LocalHomeomorph or chart be assembled.
+
+Smoothness, the factor-two derivative normalization and its relation to DM's actual differential coordinates remain later obligations. Intrinsic target tangent identification and the full intrinsic F10BC differential, source Lie-group/bracket structure, global physical Spin lift, spectral existence and mass-gap consequences remain open.
+
+This four-file candidate changes only new DO source, independent audit, strict workflow and this canonical handoff on the authorized research branch. All accepted source/audit/workflow files, every prior red, publication/submission record and historical handoff byte beginning at the original As-of field are preserved, with this event appended. No upstream action is taken.
