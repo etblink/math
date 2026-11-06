@@ -1,0 +1,1057 @@
+name: BFSS V10H F10DV native SO16 identity tangent strict gate
+
+on:
+  push:
+    branches: [research/fcp-k1d17-ancestor-cache-pilot-20261028]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DVNativeSO16IdentityTangent.lean
+      - lean/diagnostics/FCP_K1D18V10HF10DVIndependentAudit.lean
+      - .github/workflows/bfss-kotler-v10h-f10dv-native-so16-identity-tangent-strict.yml
+      - contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json
+      - contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py
+      - contributions/bfss-kotler/tools/test_fcp_dd_ai_cache.py
+  workflow_dispatch:
+    inputs:
+      cold_build:
+        description: Bypass cache and rebuild accepted DD/AI ancestry from source
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  native-so16-identity-tangent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 155
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Pin accepted DU ancestry and exact DV source and audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v10h-f10dv"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/v10h-f10dv/tested-sha.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          grep -q '"rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"' lean/lake-manifest.json
+          p=lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler
+          test "$(git hash-object "$p/SU2RealGammaProbe.lean")" = 'b9b8192055c70f0d001d7982669b9823c55562ed'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean")" = 'f53d7c52559d8e00061716d2746a87154e35e3fa'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe.lean")" = '578ddf1505da2ab2848bc88cf709660d941cb8ec'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean")" = 'db887aa6e495eb2a74c2e826018ffb5453158806'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BFPBWCliffordTopologicalRing.lean")" = 'f7ea4c9e9d996d04d07a7733ffe7ab6a91ce2636'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BFIndependentAudit.lean)" = 'dd00871d12e1d533d15aa67608713d85eed0ec66'
+
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BGPBWSourceSpinTopologicalGroup.lean")" = '9092ccaa5b4436bfa25cafe8b71541e6642999f6'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean")" = '03287d741b05cd4e373f1b5e608d0e6888b63e89'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BOIndependentAudit.lean)" = '744a1917c34857f40c08aded9f2b1480c7dfe62c'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BTPBWBilinearMultiplicationSmoothness.lean")" = '10c56519331f867d5f453a63953e0018c03a09a3'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BTIndependentAudit.lean)" = '7fd6812e2e5ee4bdfa5b56422a9905c5611e6bd3'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BUAmbientVectorActionSmoothness.lean)" = 'aa38de95852718445ddd0448068592f9cefe4db4'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BUIndependentAudit.lean)" = '7a8e3f09d3a799d49ca5c3fa2060abe957ef7628'
+
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve.lean")" = 'faabd83f813eab9ae2026c5d426f8baed80d33a6'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BIIndependentAudit.lean)" = '119ab4569f0ef663838856ed3611e500a7125c82'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BVFinitePlaneWordSmoothness.lean)" = '1c0f3ddfc4fba9e28be411a4fd241e36398095a9'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BVIndependentAudit.lean)" = '54d3a22f75892e7a98d3f0986e3544b57d82a54e'
+
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean")" = '528937bc6f528eed64aea16ecc5eb69c74c2dd99'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BJIndependentAudit.lean)" = '13186e289439acf51af42c80cb0585f74a6285c2'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BWFinitePlaneWordDerivative.lean)" = '6a67d6fb7a1d01f5d0045adb8a6edb3747d0ee70'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BWIndependentAudit.lean)" = '26d4bc3768986a3d5ec9bb44484ba818085f57f6'
+
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean")" = 'bc0d8539c2523fffe2f36ee4b121a1b81a1431be'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BLIndependentAudit.lean)" = '1900ee7fa3f95d025dd3a2e210f2fa63d9c659d1'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean")" = '92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe.lean")" = 'd80001bbe5052357dbca559232d81cc01c56fb34'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BXWordDerivativeNativeVectorAction.lean)" = 'bbf201b5af11213eacef21fe6ec41947635cc781'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BXIndependentAudit.lean)" = '30d42b22ebadafb09c2b0c65db839af71ccf4ba7'
+
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BMInverseSourceCurveDerivative.lean")" = '545581346eaf563b54dcf3c828e43d19c2d1dd23'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BMIndependentAudit.lean)" = '057c3313f16775de85109fd5ca257eef69c04cf8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BYActualWordVectorActionDerivative.lean)" = '1fa83224a22fc0c7d2efdd6b1fdffe2f55f536cc'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BYIndependentAudit.lean)" = '4e89a6df00269492b91bee147cd4a24bb3b688a3'
+
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BPSourceVectorLinearRepresentation.lean")" = '47684d3586cf7c53674c8d52341853f3f03fa319'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BPIndependentAudit.lean)" = '577618970cc8ed20c8d625564f4a0479583451be'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BQSourceVectorQuadraticIsometry.lean")" = 'cc78661038f8a9685f9e3eef397941ee90d39ca2'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BQIndependentAudit.lean)" = '81a86e36de23f922eb9aafac7f2cafd82f921340'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10BRSourceVectorOrthogonalHom.lean")" = '8aa718eba564ae945e618aefbee9329f952256f0'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BRIndependentAudit.lean)" = '2795a632293658d2fad33e5c0444c7ea0a6f8ff0'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BZFullNaturalMatrixWordDerivative.lean)" = '6602ec877561b8751d8505b4cff096746bf0c27b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10BZIndependentAudit.lean)" = '0b5dd933bf5c36fe7daeece45f28b54cf54a58e9'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CANativeStrictPlaneModel.lean)" = 'c9c4bea7ef07c08d2ca1b8344dcf2a6532b0ff61'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CAIndependentAudit.lean)" = '658e557d5ff5d4e09fe44d43e08be98234b5abca'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CBOrderedStrictPlaneWord.lean)" = 'd154844afabdfb7d66e9e3ec72c9b94714a781fa'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CBIndependentAudit.lean)" = 'f03c13f9e692aa404affcac76e4f96c4bf76435b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CCOrderedDerivativeNativeModel.lean)" = 'd29e46f62d923da0c47cb14caf547ee0dc5fa31e'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CCIndependentAudit.lean)" = '2d550e34db5942dc6f712194339d543e9d31be21'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CDContinuousNativeModel.lean)" = 'b0f54834164eb031b880a6f96aa276cfac031f3b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CDIndependentAudit.lean)" = 'cd034f48ca310be62c95f0fc5a26158980744224'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CEUpperCoordinateIdentityDerivative.lean)" = 'e61f10d8b5726a84dd1fadc55e15318f3c40b158'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CEIndependentAudit.lean)" = '22d23f1f272a14f8067f51524e4c17a6c138e72a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CFSmoothStrictUpperCoordinateMap.lean)" = '18dfa7cb7391446b72658036730ae98f990d809d'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CFIndependentAudit.lean)" = 'dab723eea335c83d7824a16f59acd55e6b39d713'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CGUpperCoordinateLocalInverse.lean)" = '0d4ff0b02af7fc5e007b2943f03c72300720aafd'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CGIndependentAudit.lean)" = '1c3e79574861ab27f1564d648bc6e81ac20b51ed'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CHInverseRegularityLocalInjectivity.lean)" = '82835111241ebd88745a17743421cb2f82d23ddc'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CHIndependentAudit.lean)" = 'f8860e4365a6261ba0e3f31b8ec215965e6498a9'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CIActualWordImageHomeomorph.lean)" = '7e7cc455efe13b804608f69d34cd1e106d9d3bbf'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CIIndependentAudit.lean)" = '2b74d9256ef8be2d18689a2629ed8ab88b0b83f5'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CJCoordinateReconstructionDomain.lean)" = '6cc49685be9e93320841e3c31fa147e1fbea161d'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CJIndependentAudit.lean)" = 'b2ac643dc4c9b39fce3820a33414843110aa3400'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CKOrthogonalCompletionCoordinates.lean)" = '98f847e34ada50f3c971c6ae3fa336667d0913f2'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CKIndependentAudit.lean)" = '0693c8c32d28bee27ba39a3c5f594892b2c9cef0'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CLCompletionSmoothStrictDerivative.lean)" = '902b063ca869c7efeea21828cdf3f97847c96b70'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CLIndependentAudit.lean)" = '4df471178bd0045ccdf7fea3e12da06d78bd0e9b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CMCompletionLocalInverse.lean)" = '04281724e6305c3d3d06c001fd3e37b91b17962f'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CMIndependentAudit.lean)" = 'db0462336ba7bd677cec97de3aa8a94456d9f820'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CNLocalOrthogonalRecovery.lean)" = '897ea47e2ac9e7ef937fabbb74178073d18f52c5'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CNIndependentAudit.lean)" = '75c9abb205c1db13f9e4ed281f1e9c1b0bf954f4'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CORecoverySourceNeighborhood.lean)" = '211e593bbaa95d85ff6767448de3f3763d7d293d'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10COIndependentAudit.lean)" = '308373e8086b0846b68cdc1cd32cb6f32c9aa050'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean)" = '251a9375d3f99e04d3bf547c8052185ebcf2b768'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CPNaturalActionKernelCommutant.lean)" = 'a7cde4e1ab7bcfdc0a4b36b3b49533e17798dae5'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CPIndependentAudit.lean)" = 'e599c2f998b4d63df37687e96b87879d51c1e94b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CQPolarContractionKernel.lean)" = 'b0f7a355fadc28b5c96a87dd00b80713754a0289'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CQIndependentAudit.lean)" = 'f990f1cfc8914450c608547f983fd44122b2682e'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CRExteriorContractionTransport.lean)" = '7685bb34d17bc85b3b4bcb9ec7f035c786c4f8ec'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CRIndependentAudit.lean)" = '9ed95338f7ca09b80abc6d180629afced6211ea8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ZSourceNineExteriorPBWOrderedWordProbe.lean)" = 'ea9c2a99c2f913277af18bcafbbf152f14cecbd6'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CSExteriorPBWContractions.lean)" = '47e557bcf3a5f6f869382c7d5aa885ce365e7d33'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CSIndependentAudit.lean)" = '47aa254a6e52f4e97ac077563ac952f9632b6845'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CTExteriorScalarKernel.lean)" = '912750d26995323c896d930b15e0358ee7dc90b7'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CTIndependentAudit.lean)" = '7620a2036efbdcbcda2bd69a67b3cd23d61974ac'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean)" = '353978608b978b00d0e36deb1c1a47c32641ea59'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CUNaturalActionTwoSignFibers.lean)" = 'bfd6c019f57f7a6a1201cbfedf543dcc16efb91b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CUIndependentAudit.lean)" = 'd7850f4be59aac26410daa9751ac81151c385a67'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CVExactSourceRecoveryNeighborhood.lean)" = '03af63a3f4ef46379c16ea13124262e76004c31b'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CVIndependentAudit.lean)" = 'cecdf0df539b47857ce4d8e570964080bb8405a8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CWOriginalSourceIdentityLocalChart.lean)" = '7cb44048523fa913948f7b77fd96cf616e1c67cf'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CWIndependentAudit.lean)" = '4f37c2a62840a1e0f8b0e96a7b2a6ee8256fbfc3'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CXIdentityChartInverseCliffordDerivative.lean)" = 'a6927651611f21ffd7e05dacf5d2aad9bfcac609'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CXIndependentAudit.lean)" = '69e3f2c8551fa299ebe23f2c6c195d0ee4286afe'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CYIdentityChartDerivativeRange.lean)" = 'ad1050dd9b21c7a81b6e42dde20a07b5594a5732'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CYIndependentAudit.lean)" = 'c8a1e77e1e52b2d8fcbbe64e7144271a6dfe8378'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AVOriginalGammaCoordinateLinearMapSkewImage.lean)" = 'bc895ed60f03a3e2091ff11ebd0b87e456f4408c'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BBOriginalGammaCanonicalSkewLieHom.lean)" = 'cbf92737d81c5e69efc2fa85735d6af239540070'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom.lean)" = '7798089cb8ac4ec4fffc3ead4caa474def81b3f8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BKCoordinatePlaneVelocityComparison.lean)" = '382e0c369c1455cfd39a7153c9017e6b9b546fd1'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CZOriginalGammaDerivativeRangeComparison.lean)" = '9011b9b07dfa2b108271fa5eafe7b46e724c858c'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10CZIndependentAudit.lean)" = 'c021e1c514f5067bec5696f86ce7b5f5ecd8aa6d'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DADerivativeRangeCommutatorAction.lean)" = 'a983420660d0ebdb5c60f70e9cafb75ce2de5c53'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DAIndependentAudit.lean)" = '728c91b2db56f125be2292e682db1bcbf2bdc53a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DBDerivativeRangeCommutatorClosure.lean)" = '12c3397a06a6e9ef634c69bae075c20564bb1e4c'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DBIndependentAudit.lean)" = '19e04f3e39986081154adccfb35e3f9d1db62407'
+          test "$(git hash-object "$p/SU2BFSSPairedSpin9V10HF10DCDerivativeRangeLiePackaging.lean")" = 'ddf714a495217826446f059144169fd53761d77e'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DCIndependentAudit.lean)" = '14e40f456d816b551cb6a5b5ef39fdcef25fc4a0'
+          # Exact source and audit blob pins below are the ancestry control; keep this checkout shallow.
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DDDerivativeRangeGammaLieHom.lean)" = '2ad71c25550204f51bf96ad1c0da7b774f5044d1'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DDIndependentAudit.lean)" = '276b9192a786c164e05e8125c6209c20110195cf'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DETranslatedSourceCharts.lean)" = '04b781ad0830ca6dd095894ad0039ab250d28314'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DEIndependentAudit.lean)" = 'bcfd56b99c4ca3d31b98f24d258c0eb281803024'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DFCoordinateDerivativeInvertibility.lean)" = '7115e6c74865b6b60d957e05b0b8297df7ca198a'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DFIndependentAudit.lean)" = 'f2f898738d81f3750400bc16303d3f72216a15ec'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DGWholeTargetInverseRegularity.lean)" = 'fa7d17c69d923ef310b14c14ef21d8a6bc729582'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DGIndependentAudit.lean)" = '19188753ca5def45286778ed15fc136a8543975a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity.lean)" = '6ede82cf62b79c90a71ab123d7b0b8798ac2165e'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DHIndependentAudit.lean)" = '4c304942d931b910326df47c51d412adea65651b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DITranslatedAtlasManifold.lean)" = '0195b90bc6e43e4ae95300eee2640db8bbdd9e6c'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DIIndependentAudit.lean)" = '656d1d9b2877944b8c17bbb7f6d42e3b74193b3f'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DJIdentityInclusionTangentRange.lean)" = '378fc2e02633bb2590063f4bc6c8e22a3c081674'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DJIndependentAudit.lean)" = '8d3a75f4412fedf047eec8526a583c3bbe8b4871'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DKAmbientGammaManifoldDifferential.lean)" = '12a6684a6553b7da3d2182407052f70f37c7280a'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DKIndependentAudit.lean)" = 'a9bdcb917ff31a26396b6b3936452a1cefe0d0ff'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AGOriginalGammaOrderedPairGramProbe.lean)" = 'ac69fc77e5a5b68c8ac06abf8f978a8be8b69a1b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AHOriginalGammaAllOrderedPairCoefficientExtractionProbe.lean)" = 'e7299c0be70800bfe5c939d98c595a6bf0488b6a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AIOriginalGammaAllOrderedPairsLinearIndependentBridge.lean)" = 'd161986eaac79a27591c5538096451e858ec369d'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DLIdentityGammaDifferentialInjectivityRank.lean)" = 'a4b961db7974f4dcdb2d9813974a94b7dd54c162'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DLIndependentAudit.lean)" = '9496396ea1dcbe53fbce89d33f75c08dce42818a'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DMNativeSO16ContinuousModel.lean)" = '5fc13cda0391957e28b14f243ee7cdf3a4f3f408'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DMIndependentAudit.lean)" = '5a72ed5bf96d922f5c33e681c3a701fed34913ae'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DNCayleySO16ForwardParameterization.lean)" = 'd6b18917113a9388c351febed65ff9e7cbcb5fe7'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DNIndependentAudit.lean)" = '2d28fabc4c6b7e7010fffb209403f9250f194f4b'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DOCayleySO16BackwardCoordinates.lean)" = '775877ca57562e03484cfa87e1408f8e657b3bb6'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DOIndependentAudit.lean)" = '273a09cd1e33813241b5d61c729f73bdcd512ec5'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph.lean)" = 'adaf988470203ab64ce1bf47f6e8b971f974e777'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean)" = '435d341dd186c26fb2d1c8ddbd3f8278b41ffaeb'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph.lean)" = '9789a47b31b90331528add374195471bdec1f7e7'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DQIndependentAudit.lean)" = '3901be8511828b759fdad9448faad44846ccb8a8'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts.lean)" = '15454b33c65f98f3c3105e00733bc8f9d4d2ef47'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DRIndependentAudit.lean)" = 'bbadc69787cce349271b341fc612af77f6f15f11'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity.lean)" = '001ba7d18a6cca5fa3e47f52a82c5bdf06c3198f'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DSIndependentAudit.lean)" = '686d710cd7e6132f26c90c961fb4d41582c2d59d'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DTNativeSO16AtlasRegularity.lean)" = '210e50c9f05eb3f7af7db42514d814d618b59e08'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DTIndependentAudit.lean)" = 'e6fdca0f49d6514a49303616c60090e9da03bf6f'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization.lean)" = '879b45312c7cca5abcb0d8052d60c52814abd1dc'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DUIndependentAudit.lean)" = '3fa7bad5cf814a70ad5841c383e35d5cb6fce90d'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DVNativeSO16IdentityTangent.lean)" = 'baddb8d01ac9337a74a495d4883f227635d778f6'
+          test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DVIndependentAudit.lean)" = '2b947162f419401b478df2f38e8c8b78aa25049c'
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,ast,subprocess
+          wf=Path('.github/workflows/bfss-kotler-v10h-f10dv-native-so16-identity-tangent-strict.yml').read_text()
+          blocks=re.findall(r'(?m)^        run: \|\n((?:          [^\n]*(?:\n|$)|\n)+)',wf)
+          assert len(blocks)==26,len(blocks)
+          programs=[]
+          for block in blocks:
+              script='\n'.join(line[10:] if line.startswith('          ') else line for line in block.split('\n'))
+              subprocess.run(['bash','-n'],input=script,text=True,check=True)
+              for code in re.findall(r"python3 - <<'PY'\n(.*?)\nPY",script,re.S):
+                  ast.parse(code)
+                  programs.append(code)
+          assert len(programs)==26,len(programs)
+          print('V10H_F10DP_SHELL_PYTHON_SYNTAX_PASS')
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph.lean').read_text();a=Path('lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean').read_text();names=['gamma16CayleyModel_injective', 'gamma16CayleyTwo_det_ne_zero', 'gamma16CayleyForward_add_one', 'gamma16CayleyForward_sub_one', 'gamma16CayleyForward_add_one_det_ne_zero', 'gamma16CayleyForward_mem_target', 'gamma16CayleyForwardTarget', 'gamma16CayleyBackwardMatrix_forward', 'gamma16CayleyBackwardCoordinates_forward', 'gamma16CayleyBackward_one_sub', 'gamma16CayleyBackward_one_add', 'gamma16CayleyBackward_one_sub_det_ne_zero', 'gamma16CayleyBackward_mem_source', 'gamma16CayleyBackwardSource', 'gamma16CayleyForwardMatrix_backward', 'gamma16CayleyForwardSO_backward', 'gamma16CayleyBackward_forward', 'gamma16CayleyForward_backward', 'gamma16CayleyForwardTarget_continuous', 'gamma16CayleyBackwardSource_continuous', 'gamma16CayleyDomainHomeomorph', 'gamma16CayleyDomainHomeomorph_apply', 'gamma16CayleyDomainHomeomorph_symm_apply', 'gamma16CayleyDomainHomeomorph_zero']
+          assert re.findall(r'(?m)^(?:theorem|noncomputable def) ([^\s:(]+)',s)==names
+          for text,registrations in [(s,['local instance f10dpNativeSkewIsTopologicalAddGroup :\n    IsTopologicalAddGroup (LieAlgebra.Orthogonal.so SpinIndex ℝ) :=\n  inferInstanceAs (IsTopologicalAddGroup\n    ↥((LieAlgebra.Orthogonal.so SpinIndex ℝ).toSubmodule))\nlocal instance f10dpNativeSkewContinuousSMul :\n    ContinuousSMul ℝ (LieAlgebra.Orthogonal.so SpinIndex ℝ) :=\n  inferInstanceAs (ContinuousSMul ℝ\n    ↥((LieAlgebra.Orthogonal.so SpinIndex ℝ).toSubmodule))', 'attribute [local instance 100] LieRing.ofAssociativeRing']),(a,['local instance : Fintype (Finset SpaceIndex) := Fintype.ofFinite _', 'local instance : NormedAddCommGroup (CliffordAlgebra source9Quadratic) :=\n  NormedAddCommGroup.induced\n    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ)\n    auditDPPBWCoordinates.toAddMonoidHom auditDPPBWCoordinates.injective\nlocal instance : NormedSpace ℝ (CliffordAlgebra source9Quadratic) :=\n  NormedSpace.induced ℝ\n    (CliffordAlgebra source9Quadratic) (Finset SpaceIndex → ℝ) auditDPPBWCoordinates', 'local instance f10dpAuditChartedSpace :\n    ChartedSpace (Fin 36 → ℝ) (spinGroup source9Quadratic) := source9SpinTranslatedChartedSpace\nlocal instance f10dpAuditMatrixChartedSpace :\n    ChartedSpace GammaMatrix GammaMatrix := chartedSpaceSelf GammaMatrix\n\nlocal instance f10dpAuditNativeSkewIsTopologicalAddGroup :\n    IsTopologicalAddGroup (LieAlgebra.Orthogonal.so SpinIndex ℝ) :=\n  inferInstanceAs (IsTopologicalAddGroup\n    ↥((LieAlgebra.Orthogonal.so SpinIndex ℝ).toSubmodule))\nlocal instance f10dpAuditNativeSkewContinuousSMul :\n    ContinuousSMul ℝ (LieAlgebra.Orthogonal.so SpinIndex ℝ) :=\n  inferInstanceAs (ContinuousSMul ℝ\n    ↥((LieAlgebra.Orthogonal.so SpinIndex ℝ).toSubmodule))', 'attribute [local instance 100] LieRing.ofAssociativeRing'])]:
+              assert re.findall(r'(?m)^#print axioms (.+)$',text)==names
+              code=re.sub(r'/\-.*?\-/','',text,flags=re.S)
+              code=re.sub(r'--[^\n]*','',code)
+              assert not re.search(r'\b(sorry|admit|native_decide|LieGroup|ChartedSpaceCore|NormedRing|ContMDiff|haveI|letI|variable|mfderiv_abuse|mfderivWithin_abuse|tangentSpaceCastModel)\b|(?m:^\s*axiom\s)|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              for registration in registrations:
+                  assert code.count(registration)==1,registration
+                  code=code.replace(registration,'')
+              assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
+              assert 'set_option autoImplicit false' in code
+          assert re.findall(r'(?m)^private abbrev (\w+)',s)==['Q','M','SO','S16','U','V','A','C','B','forwardDen','backwardDen']
+          assert not re.search(r'(?m)^abbrev |^private (?:theorem|def) ',s)
+          assert len(re.findall(r'(?m)^example\b',a))==135
+          for token in ['private abbrev Q := gamma16StrictPlaneIndex → ℝ', 'private abbrev M := GammaMatrix', 'private abbrev SO := Matrix.specialOrthogonalGroup SpinIndex ℝ', 'private abbrev S16 := LieAlgebra.Orthogonal.so SpinIndex ℝ', 'private abbrev U := gamma16CayleySource', 'private abbrev V := gamma16CayleyTarget', 'private abbrev A : Q →L[ℝ] M := gamma16StrictPlaneAmbientCLM', 'private abbrev C : Q → M := gamma16CayleyMatrix', 'private abbrev B : SO → M := gamma16CayleyBackwardMatrix', 'private abbrev forwardDen (c : Q) : M := 1 - A c', 'private abbrev backwardDen (r : SO) : M := (r : M) + 1', '(1 + 1 : M).det ≠ 0 := gamma16CayleyTarget_one', 'isUnit_iff_ne_zero.mpr c.property', 'isUnit_iff_ne_zero.mpr r.property', 'Matrix.mul_nonsing_inv', 'Matrix.nonsing_inv_mul', 'Matrix.det_mul', 'gamma16CayleyBackwardCoordinates_reconstruct', 'gamma16CayleySO_apply', 'gamma16CayleySO_continuous.subtype_mk gamma16CayleyForward_mem_target', 'gamma16CayleyBackwardCoordinates_continuous.subtype_mk gamma16CayleyBackward_mem_source', 'gamma16CayleyDomainHomeomorph : U ≃ₜ V', 'toFun := gamma16CayleyForwardTarget', 'invFun := gamma16CayleyBackwardSource', 'left_inv := gamma16CayleyBackward_forward', 'right_inv := gamma16CayleyForward_backward', 'continuous_toFun := gamma16CayleyForwardTarget_continuous', 'continuous_invFun := gamma16CayleyBackwardSource_continuous', 'noncomm_ring']:
+              assert token in s,token
+          for token in ['Function.Injective A', '(1 + 1 : M).det ≠ 0', 'CM c.val + 1 = (1 + 1 : M) * (1 - A c.val)⁻¹', 'CM c.val - 1 = ((1 + 1 : M) * A c.val) * (1 - A c.val)⁻¹', 'gamma16CayleySO c ∈ V', 'BM (gamma16CayleySO c) = A c.val', 'BC (gamma16CayleyForwardTarget c) = c.val', '1 - BM r.val = (1 + 1 : M) * ((r.val : M) + 1)⁻¹', '1 + BM r.val = ((1 + 1 : M) * (r.val : M)) * ((r.val : M) + 1)⁻¹', 'BC r ∈ U', 'CM (BC r) = (r.val : M)', 'gamma16CayleyBackwardSource (gamma16CayleyForwardTarget c) = c', 'gamma16CayleyForwardTarget (gamma16CayleyBackwardSource r) = r', 'Continuous (gamma16CayleyForwardTarget : U → V)', 'Continuous (gamma16CayleyBackwardSource : V → U)', 'U ≃ₜ V := gamma16CayleyDomainHomeomorph', 'gamma16CayleyModel_injective', 'gamma16CayleyTwo_det_ne_zero', 'gamma16CayleyForward_add_one', 'gamma16CayleyForward_sub_one', 'gamma16CayleyForward_add_one_det_ne_zero', 'gamma16CayleyForward_mem_target', 'gamma16CayleyForwardTarget', 'gamma16CayleyBackwardMatrix_forward', 'gamma16CayleyBackwardCoordinates_forward', 'gamma16CayleyBackward_one_sub', 'gamma16CayleyBackward_one_add', 'gamma16CayleyBackward_one_sub_det_ne_zero', 'gamma16CayleyBackward_mem_source', 'gamma16CayleyBackwardSource', 'gamma16CayleyForwardMatrix_backward', 'gamma16CayleyForwardSO_backward', 'gamma16CayleyBackward_forward', 'gamma16CayleyForward_backward', 'gamma16CayleyForwardTarget_continuous', 'gamma16CayleyBackwardSource_continuous', 'gamma16CayleyDomainHomeomorph', 'gamma16CayleyDomainHomeomorph_apply', 'gamma16CayleyDomainHomeomorph_symm_apply', 'gamma16CayleyDomainHomeomorph_zero']:
+              assert token in a,token
+          for token in ['V = {r : SO | ((r : M) + 1).det ≠ 0} := rfl', 'BM r = ((r : M) - 1) * ((r : M) + 1)⁻¹ := rfl', 'IsOpen V := gamma16CayleyTarget_isOpen', '(1 : SO) ∈ V', 'BM (1 : SO) = 0', '(BM r).transpose = -BM r', 'V → S16 := gamma16CayleyBackwardSkew', 'BC r = gamma16StrictPlaneModelContinuousEquiv.symm (gamma16CayleyBackwardSkew r) := rfl', 'BC r p = BM r.val p.val.1 p.val.2', 'A (BC r) = BM r.val', 'Continuous BC', 'BC ⟨1, gamma16CayleyTarget_one⟩ = 0', 'TopologicalSpace.induced (Subtype.val : V → SO)', 'gamma16CayleyTarget', 'gamma16CayleyBackwardMatrix', 'gamma16CayleyTarget_isOpen', 'gamma16CayleyTarget_one', 'gamma16CayleyBackwardMatrix_one', 'gamma16CayleyTarget_orthogonal', 'gamma16CayleyBackwardMatrix_transpose', 'gamma16CayleyBackwardMatrix_mem_so', 'gamma16CayleyBackwardSkew', 'gamma16CayleyBackwardSkew_apply', 'gamma16CayleyBackwardMatrix_continuous', 'gamma16CayleyBackwardSkew_continuous', 'gamma16CayleyBackwardCoordinates', 'gamma16CayleyBackwardCoordinates_apply', 'gamma16CayleyBackwardCoordinates_reconstruct', 'gamma16CayleyBackwardCoordinates_continuous', 'gamma16CayleyBackwardCoordinates_one']:
+              assert token in a,token
+          for token in ["U = {c : Q | (1 - A c).det ≠ 0} := rfl","CM c = (1 + A c) * (1 - A c)⁻¹ := rfl","(CM c).transpose * CM c = 1","(CM c).det = 1","CM c ∈ SO","U → SO := gamma16CayleySO","Continuous (gamma16CayleySO : U → SO)","TopologicalSpace.induced (fun g : SO => (g : M)) auditDPMatrixTopology := rfl","TopologicalSpace.induced (Subtype.val : U → Q)","gamma16CayleySO ⟨0, gamma16CayleySource_zero⟩","gamma16CayleySource","gamma16CayleyMatrix","gamma16CayleyModel_transpose","gamma16CayleyDenominator_transpose","gamma16CayleyNumerator_transpose","gamma16CayleyNumerator_det","gamma16CayleySource_isOpen","gamma16CayleySource_zero","gamma16CayleyMatrix_zero","gamma16CayleyMatrix_orthogonal","gamma16CayleyMatrix_det","gamma16CayleyMatrix_mem_so","gamma16CayleySO","gamma16CayleySO_apply","gamma16CayleySO_continuous"]:
+              assert token in a,token
+          for token in ['TopologicalSpace.induced (fun A : S16 => A.val) auditDPMatrixTopology := rfl', 'IsTopologicalAddGroup S16 := inferInstance', 'ContinuousSMul ℝ S16 := inferInstance', 'FiniteDimensional ℝ S16 := gamma16StrictPlaneModelEquiv.finiteDimensional', 'Fintype.card gamma16StrictPlaneIndex = 120', 'gamma16StrictPlaneModelContinuousEquiv.toLinearEquiv =', 'gamma16StrictPlaneModelEquiv := rfl', 'Module.finrank ℝ S16 = 120', 'Y = gamma16StrictPlaneModelContinuousEquiv.symm.toContinuousLinearMap.comp nativeD := rfl', 'Y v p = D v p.val.1 p.val.2', 'D = gamma16StrictPlaneAmbientCLM.comp Y', 'Function.Injective Y', 'Module.finrank ℝ Y.toLinearMap.range = 36', 'gamma16StrictPlaneModelContinuousEquiv.symm.continuous', 'gamma16StrictPlaneIndex_card', 'gamma16StrictPlaneMatrix', 'gamma16StrictPlaneMatrix_transpose', 'gamma16StrictPlaneModelEquiv', 'gamma16StrictPlaneModelEquiv_symm_apply', 'gamma16StrictPlaneModelEquiv_apply', 'gamma16StrictPlaneModelContinuousEquiv', 'gamma16NativeSkew_finrank', 'gamma16StrictPlaneAmbientCLM', 'gamma16StrictPlaneAmbientCLM_apply', 'source9SpinIdentityGammaTargetCoordinateCLM', 'source9SpinIdentityGammaTargetCoordinateCLM_apply', 'source9SpinIdentityGammaTargetCoordinateCLM_factor', 'source9SpinIdentityGammaTargetCoordinateCLM_injective', 'source9SpinIdentityGammaTargetCoordinateCLM_range_finrank']:
+              assert token in a,token
+          for token in ['F = E.trans source9NativeSkewDerivativeRangeEquiv.symm := rfl', 'Function.Injective (fun A : S => (coordinateToOriginalGammaSkewLieHom A : M))', 'D.toLinearMap.ker = ⊥', 'D.toLinearMap.range = rho.range', 'Module.finrank ℝ T = 36', 'Module.finrank ℝ D.toLinearMap.range = 36', 'D v = 0 ↔ v = 0', 'D v = D w ↔ v = w', 'coordinateToOriginalGammaSkewLieHom_orderedPair_sum', 'coordinateToOriginalGammaSkewLieHom_matrix_injective', 'source9SpinIdentityNativeSkewLinearEquiv', 'source9SpinIdentityGammaDifferential_native_factor', 'source9SpinIdentityGammaDifferential_injective', 'source9SpinIdentityGammaDifferential_ker', 'source9SpinIdentityGammaDifferential_range', 'source9SpinIdentityTangent_finrank', 'source9SpinIdentityGammaDifferential_range_finrank']:
+              assert token in a,token
+          for token in ['M = Matrix SpinIndex SpinIndex ℝ := rfl', 'Fintype.card SpaceIndex = 9', 'Fintype.card SpinIndex = 16', 'source9PBWCoordinates = auditDPPBWCoordinates := rfl', 'source9PBWNormedAddCommGroup = NormedAddCommGroup.induced', 'source9PBWNormedSpace = NormedSpace.induced ℝ', 'TopologicalSpace.induced (Subtype.val : G → C) auditDPCliffordTopology := rfl', '(inferInstance : TopologicalSpace M) = auditDPMatrixTopology := rfl', '(inferInstance : ChartedSpace P G) = source9SpinTranslatedChartedSpace := rfl', 'IsManifold I ∞ G := source9SpinTranslatedAtlas_isManifold ∞', 'have hMap : MDifferentiableAt I K matrixMap (1 : G) :=', 'exact hMap.hasMFDerivAt', 'mfderiv I K matrixMap (1 : G)', 'D = gammaCLM.comp inclusionD', 'HasMFDerivAt I K matrixMap (1 : G)', '(1 / 4 : ℝ) • ∑ r : SpaceIndex, ∑ s : SpaceIndex', '(1 / 2 : ℝ) • (gamma r * gamma s)', 'coordinateToOriginalGammaSkewLieHom_coordinatePlane_apply r s hrs', 'source9NaturalMatrix_not_injective', 'source9SpinGammaAmbient_eq_eval', 'source9SpinGammaAmbient_mdifferentiableAt', 'source9SpinIdentityGammaDifferential', 'source9SpinIdentityGammaDifferential_factor', 'source9SpinIdentityGammaDifferential_apply', 'source9SpinIdentityGammaDifferential_range_apply', 'source9SpinIdentityGammaDifferential_native_apply', 'source9SpinIdentityGammaDifferential_mem_so', 'source9SpinIdentityGammaDifferential_factor_linear']:
+              assert token in a,token
+          for token in ['example : ChartedSpace M M := inferInstance', 'example : (inferInstance : ChartedSpace M M) = chartedSpaceSelf M := rfl', 'example : chartAt M (0 : M) = OpenPartialHomeomorph.refl M := rfl', 'example : ModelWithCorners ℝ M M := K', 'example : LieRing M := inferInstance', 'example : LieAlgebra ℝ M := inferInstance', 'example (A B : M) : (⁅A, B⁆ : M) = A * B - B * A := rfl']:
+              assert token in a,token
+          assert '  apply gamma16StrictPlaneModelContinuousEquiv.injective\n  apply Subtype.ext\n  exact h' in s
+          assert '  have e : Q ≃L[ℝ] S16 := gamma16StrictPlaneModelContinuousEquiv' not in s
+          print('V10H_F10DP_ORIGINAL_SO16_CAYLEY_HOMEOMORPH_SCOPE_PASS')
+          PY
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,sys
+          sys.path.insert(0,str(Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph.lean').read_text()
+          a=Path('lean/diagnostics/FCP_K1D18V10HF10DQIndependentAudit.lean').read_text()
+          names=['gamma16CayleyChart', 'gamma16CayleyChartInv', 'gamma16CayleyChart_apply', 'gamma16CayleyChartInv_apply', 'gamma16CayleyChart_mem_target', 'gamma16CayleyChartInv_mem_source', 'gamma16CayleyChart_left_inv', 'gamma16CayleyChart_right_inv', 'gamma16CayleyChart_continuousOn', 'gamma16CayleyChartInv_continuousOn', 'gamma16CayleyChart_one', 'gamma16CayleyChartInv_zero', 'gamma16CayleyOpenPartialHomeomorph', 'gamma16CayleyOpenPartialHomeomorph_source', 'gamma16CayleyOpenPartialHomeomorph_target', 'gamma16CayleyOpenPartialHomeomorph_apply', 'gamma16CayleyOpenPartialHomeomorph_symm_apply', 'gamma16CayleyOpenPartialHomeomorph_one', 'gamma16CayleyOpenPartialHomeomorph_symm_zero', 'gamma16CayleyOpenPartialHomeomorph_source_one', 'gamma16CayleyOpenPartialHomeomorph_target_zero']
+          assert re.findall(r'(?m)^(?:theorem|noncomputable def) ([^\s:(]+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',a)==names
+          assert re.findall(r'(?m)^private abbrev (\w+)',s)==['Q','SO','U','V']
+          assert re.findall(r'(?m)^import (.+)',s)==['OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph','Mathlib.Topology.OpenPartialHomeomorph.Defs']
+          code=code_only(s)
+          assert 'set_option autoImplicit false' in code
+          assert not re.search(r'\b(sorry|admit|axiom|sorryAx|native_decide|LieGroup|ChartedSpaceCore|ContMDiff|NormedRing|haveI|letI)\b|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+          assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
+          old=Path('lean/diagnostics/FCP_K1D18V10HF10DPIndependentAudit.lean').read_text().split('\n#print axioms')[0]
+          old=old.replace('SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph','SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph').replace('auditDP','auditDQ').replace('f10dpAudit','f10dqAudit')
+          assert a.startswith(old)
+          extra=code_only(a[len(old):])
+          assert not re.search(r'\b(sorry|admit|axiom|sorryAx|native_decide|haveI|letI)\b|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',extra)
+          assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',extra)
+          assert len(re.findall(r'(?m)^example\b',old))==135
+          assert len(re.findall(r'(?m)^example\b',a))==166
+          for token in ['private abbrev Q := gamma16StrictPlaneIndex → ℝ','private abbrev SO := Matrix.specialOrthogonalGroup SpinIndex ℝ','private abbrev U := gamma16CayleySource','private abbrev V := gamma16CayleyTarget','if h : r ∈ V then gamma16CayleyBackwardCoordinates ⟨r, h⟩ else 0','if h : c ∈ U then gamma16CayleySO ⟨c, h⟩ else 1','continuousOn_iff_continuous_domRestrict.mpr','gamma16CayleyForwardSO_backward','gamma16CayleyBackwardCoordinates_forward','OpenPartialHomeomorph SO Q where','toFun := gamma16CayleyChart','invFun := gamma16CayleyChartInv','source := V','target := U','continuousOn_toFun := gamma16CayleyChart_continuousOn','continuousOn_invFun := gamma16CayleyChartInv_continuousOn','open_source := gamma16CayleyTarget_isOpen','open_target := gamma16CayleySource_isOpen']:
+              assert token in s,token
+          assert 'continuousOn_iff_continuous_restrict' not in s
+          assert not re.search(r'\b(?:dif_pos|dif_neg)\b',code)
+          assert code.count('dite_eq_left')==2
+          for token in ['OpenPartialHomeomorph (Matrix.specialOrthogonalGroup SpinIndex ℝ)','CH.source = {r : SO | ((r : M) + 1).det ≠ 0}','CH.target = {c : Q | (1 - A c).det ≠ 0}','gamma16CayleyChart r p = (((r : M) - 1) * ((r : M) + 1)⁻¹) p.val.1 p.val.2','(gamma16CayleyChartInv c : M) = (1 + A c) * (1 - A c)⁻¹','CH.left_inv hr','CH.right_inv hc','ContinuousOn CH V := CH.continuousOn','ContinuousOn CH.symm U := CH.continuousOn_symm','IsOpen CH.source := CH.open_source','IsOpen CH.target := CH.open_target']:
+              assert token in a,token
+          print('V10H_F10DQ_EXACT_NATIVE_SO16_CAYLEY_OPEN_PARTIAL_HOMEOMORPH_SCOPE_PASS')
+          PY
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,sys
+          sys.path.insert(0,str(Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts.lean').read_text()
+          a=Path('lean/diagnostics/FCP_K1D18V10HF10DRIndependentAudit.lean').read_text()
+          names=['gamma16SO_inv_coe_eq_transpose', 'gamma16SO_inv_continuous', 'gamma16SO_mul_continuous', 'gamma16SO_isTopologicalGroup', 'gamma16SOLeftTranslatedChart', 'gamma16SOLeftTranslatedChart_source', 'gamma16SOLeftTranslatedChart_target', 'gamma16SOLeftTranslatedChart_apply', 'gamma16SOLeftTranslatedChart_symm_apply', 'gamma16SOLeftTranslatedChart_self_mem_source', 'gamma16SOLeftTranslatedChart_self', 'gamma16SOTranslatedChartedSpace', 'gamma16SOLeftTranslatedChart_transition_apply', 'gamma16SOLeftTranslatedChart_transition_source']
+          assert re.findall(r'(?m)^(?:theorem|noncomputable def) ([^\s:(]+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',a)==names
+          assert re.findall(r'(?m)^private abbrev (\w+)',s)==['Q','SO']
+          assert re.findall(r'(?m)^import (.+)',s)==['OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph','Mathlib.Geometry.Manifold.ChartedSpace']
+          old=Path('lean/diagnostics/FCP_K1D18V10HF10DQIndependentAudit.lean').read_text().split('\n#print axioms')[0]
+          old=old.replace('SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph','SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts').replace('auditDQ','auditDR').replace('f10dqAudit','f10drAudit')
+          assert a.startswith(old)
+          assert len(re.findall(r'(?m)^example\b',old))==166
+          assert len(re.findall(r'(?m)^example\b',a))==188
+          for text,registration in [(s,'local instance f10drLocalTopologicalGroup : IsTopologicalGroup SO := gamma16SO_isTopologicalGroup'),(a[len(old):],'local instance f10drAuditSOChartedSpace : ChartedSpace Q SO := gamma16SOTranslatedChartedSpace')]:
+              code=code_only(text)
+              assert not re.search(r'\b(sorry|admit|axiom|sorryAx|native_decide|LieGroup|IsManifold|ChartedSpaceCore|ContMDiff|NormedRing|haveI|letI|variable)\b|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              assert code.count(registration)==1
+              code=code.replace(registration,'')
+              assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
+          assert 'set_option autoImplicit false' in code_only(s)
+          assert not re.search(r'(?m)^abbrev |^private (?:theorem|def) ',s)
+          for token in ['private abbrev Q := gamma16StrictPlaneIndex → ℝ','private abbrev SO := Matrix.specialOrthogonalGroup SpinIndex ℝ','((g⁻¹ : SO) : GammaMatrix) = (g : GammaMatrix).transpose := rfl','continuous_induced_rng.mpr','continuous_subtype_val.matrix_transpose','(continuous_subtype_val.comp continuous_fst).mul','continuous_mul := gamma16SO_mul_continuous','continuous_inv := gamma16SO_inv_continuous','(Homeomorph.mulLeft g⁻¹).transOpenPartialHomeomorph gamma16CayleyOpenPartialHomeomorph','atlas := Set.range gamma16SOLeftTranslatedChart','chartAt := gamma16SOLeftTranslatedChart','mem_chart_source := gamma16SOLeftTranslatedChart_self_mem_source','chart_mem_atlas g := ⟨g, rfl⟩','OpenPartialHomeomorph.trans_source','gamma16CayleyOpenPartialHomeomorph_source_one','gamma16CayleyOpenPartialHomeomorph_one','g⁻¹ * (h * gamma16CayleyChartInv t)']:
+              assert token in s,token
+          for token in ['TopologicalSpace.induced (Subtype.val : SO → M)','((g * h : SO) : M) = (g : M) * (h : M) := rfl','(fun h : SO => g⁻¹ * h) ⁻¹\' V','U ∩ (fun c : Q => g⁻¹ * (h * gamma16CayleyChartInv c)) ⁻¹\' V','atlas Q SO = Set.range gamma16SOLeftTranslatedChart','chartAt Q g = gamma16SOLeftTranslatedChart g','mem_chart_source Q g','chart_mem_atlas Q g']+names:
+              assert token in a,token
+          assert 'have hcoerced : Continuous (fun g : SO => ((g⁻¹ : SO) : GammaMatrix)) := by' in s
+          assert 'exact continuous_induced_rng.mpr hcoerced' in s
+          assert 'Homeomorph.transOpenPartialHomeomorph_target' in s
+          print('V10H_F10DR_EXACT_NATIVE_SO16_TRANSLATED_CHARTS_SCOPE_PASS')
+          PY
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,sys
+          sys.path.insert(0,str(Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity.lean').read_text();a=Path('lean/diagnostics/FCP_K1D18V10HF10DSIndependentAudit.lean').read_text();names=['gamma16MatrixEntryCLM', 'gamma16MatrixEntryCLM_apply', 'gamma16Matrix_det_contDiff', 'gamma16Matrix_updateRow_contDiff', 'gamma16Matrix_adjugate_contDiff', 'gamma16Matrix_mul_contDiff', 'gamma16Matrix_inv_contDiffAt', 'gamma16CayleyMatrix_contDiffAt', 'gamma16CayleyMatrix_contDiffOn', 'gamma16CayleyBackwardAmbientMatrix', 'gamma16CayleyBackwardAmbientMatrix_eq_native', 'gamma16CayleyBackwardAmbientMatrix_contDiffAt', 'gamma16CayleyBackwardAmbientCoordinates', 'gamma16CayleyBackwardAmbientCoordinates_eq_native', 'gamma16CayleyBackwardAmbientCoordinates_contDiffAt', 'gamma16CayleyBackwardAmbientCoordinates_contDiffOn']
+          assert re.findall(r'(?m)^(?:theorem|noncomputable def) ([^\s:(]+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',a)==names
+          assert re.findall(r'(?m)^private abbrev (\w+)',s)==['M','Q','SO','A','U','W']
+          assert re.findall(r'(?m)^import (.+)',s)==['OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts','Mathlib.Analysis.Calculus.ContDiff.Operations']
+          old=Path('lean/diagnostics/FCP_K1D18V10HF10DRIndependentAudit.lean').read_text().split('\n#print axioms')[0]
+          old=old.replace('SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts','SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity').replace('auditDR','auditDS').replace('f10drAudit','f10dsAudit')
+          assert a.startswith(old)
+          assert len(re.findall(r'(?m)^example\b',old))==188
+          assert len(re.findall(r'(?m)^example\b',a))==212
+          for text in [s,a[len(old):]]:
+              code=code_only(text)
+              assert not re.search(r'\b(sorry|admit|axiom|sorryAx|native_decide|LieGroup|IsManifold|ChartedSpaceCore|ContMDiff|NormedRing|haveI|letI|variable|HasFDerivAt|HasMFDerivAt|mfderiv)\b|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+              assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
+          assert 'set_option autoImplicit false' in code_only(s)
+          assert not re.search(r'(?m)^abbrev |^private (?:theorem|def) ',s)
+          assert not re.search(r'\b(dif_pos|dif_neg|if_pos|if_neg)\b',code_only(s))
+          for token in ['private abbrev M := GammaMatrix','private abbrev Q := gamma16StrictPlaneIndex → ℝ','private abbrev SO := Matrix.specialOrthogonalGroup SpinIndex ℝ','private abbrev A : Q →L[ℝ] M := gamma16StrictPlaneAmbientCLM','private abbrev U : Set Q := gamma16CayleySource','private abbrev W : Set M := {B | (B + 1).det ≠ 0}','ContinuousLinearMap.proj','Matrix.det_apply\'','apply contDiff_prod','Matrix.updateRow_apply','ite_eq_left h','ite_eq_right h','Matrix.adjugate_apply','∑ k : SpinIndex, B.1 i k * B.2 k j','Matrix.inv_def, Ring.inverse_eq_inv\'','(gamma16Matrix_det_contDiff n).contDiffAt.inv hB','(gamma16Matrix_adjugate_contDiff n).contDiffAt','(gamma16Matrix_mul_contDiff n).contDiffAt.comp','(gamma16Matrix_inv_contDiffAt n (1 - A c) hc).comp c hd','gamma16CayleyBackwardAmbientMatrix (B : M) : M := (B - 1) * (B + 1)⁻¹','(gamma16Matrix_inv_contDiffAt n (B + 1) hB).comp B hd','gamma16CayleyBackwardAmbientCoordinates (B : M) : Q','gamma16CayleyBackwardCoordinates_apply r p']:
+              assert token in s,token
+          for token in ['ContDiff ℝ n (Matrix.det : M → ℝ)','ContDiff ℝ n (Matrix.adjugate : M → M)','ContDiff ℝ n (fun B : M × M => B.1 * B.2)','ContDiffAt ℝ n (Inv.inv : M → M) B','ContDiffOn ℝ n CM U','gamma16CayleyBackwardAmbientCoordinates (r.val : M) = BC r','ContDiffAt ℝ n CM (0 : Q)','ContDiffAt ℝ n gamma16CayleyBackwardAmbientCoordinates (1 : M)','{c : Q | (1 - A c).det ≠ 0}','{B : M | (B + 1).det ≠ 0}']+names:
+              assert token in a,token
+          assert 'have hentry : (gamma16MatrixEntryCLM a b : M → ℝ) =' in s
+          assert 'have hdet : ContDiff ℝ n (Matrix.det : M → ℝ)' in s
+          assert 'have hrow : ContDiff ℝ n (fun B : M => B.updateRow j (Pi.single i 1))' in s
+          assert 'ContDiff.fun_comp (g := (Matrix.det : M → ℝ))' in s
+          assert s.count('Eq.mp (congrArg (fun f : M → ℝ => ContDiff ℝ n f)')==2
+          print('V10H_F10DS_EXACT_CAYLEY_AMBIENT_REGULARITY_SCOPE_PASS')
+          PY
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,sys
+          sys.path.insert(0,str(Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DTNativeSO16AtlasRegularity.lean').read_text();a=Path('lean/diagnostics/FCP_K1D18V10HF10DTIndependentAudit.lean').read_text();names=['gamma16CayleyChartInv_coe_on_source', 'gamma16CayleyChart_eq_ambient_on_target', 'gamma16CayleyTransitionMatrix', 'gamma16CayleyTransitionMatrix_eq_native', 'gamma16CayleyTransitionMatrix_contDiffAt', 'gamma16CayleyTransition_overlap_conditions', 'gamma16CayleyTransitionMatrix_mapsTo_backwardDomain', 'gamma16SOLeftTranslatedChart_transition_eq_ambient', 'gamma16CayleyTransitionAmbient_contDiffOn', 'gamma16SOLeftTranslatedChart_transition_contDiffOn', 'gamma16SOTranslatedAtlas_contDiffOn', 'gamma16SOTranslatedAtlas_isManifold', 'gamma16SOTranslatedAtlas_hasGroupoid']
+          assert re.findall(r'(?m)^(?:theorem|noncomputable def) ([^\s:(]+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',a)==names
+          assert re.findall(r'(?m)^private abbrev (\w+)',s)==['M','Q','SO','U','V','W','overlap']
+          assert re.findall(r'(?m)^import (.+)',s)==['OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity','Mathlib.Geometry.Manifold.IsManifold.Basic']
+          old=Path('lean/diagnostics/FCP_K1D18V10HF10DSIndependentAudit.lean').read_text().split('\n#print axioms')[0]
+          old=old.replace('SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity','SU2BFSSPairedSpin9V10HF10DTNativeSO16AtlasRegularity').replace('auditDS','auditDT').replace('f10dsAudit','f10dtAudit')
+          assert a.startswith(old)
+          assert len(re.findall(r'(?m)^example\b',old))==212
+          assert len(re.findall(r'(?m)^example\b',a))==236
+          registration='local instance f10dtLocalChartedSpace : ChartedSpace Q SO := gamma16SOTranslatedChartedSpace'
+          assert code_only(s).count(registration)==1
+          for text in [s.replace(registration,''),a[len(old):]]:
+           code=code_only(text)
+           assert not re.search(r'\b(sorry|admit|axiom|sorryAx|native_decide|LieGroup|ChartedSpaceCore|NormedRing|haveI|letI|variable|HasFDerivAt|HasMFDerivAt|mfderiv)\b|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+           assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
+          assert 'set_option autoImplicit false' in code_only(s)
+          assert not re.search(r'(?m)^abbrev |^private (?:theorem|def) ',s)
+          assert not re.search(r'\b(dif_pos|dif_neg|if_pos|if_neg)\b',code_only(s))
+          assert '(g⁻¹ : M)' not in s
+          for token in ['private abbrev M := GammaMatrix','private abbrev Q := gamma16StrictPlaneIndex → ℝ','private abbrev SO := Matrix.specialOrthogonalGroup SpinIndex ℝ','private abbrev U : Set Q := gamma16CayleySource','private abbrev V : Set SO := gamma16CayleyTarget','private abbrev W : Set M := {B | (B + 1).det ≠ 0}','((gamma16SOLeftTranslatedChart h).symm.trans (gamma16SOLeftTranslatedChart g)).source','gamma16CayleyChartInv_apply c hc, gamma16CayleySO_apply','gamma16CayleyBackwardAmbientCoordinates_eq_native ⟨r, hr⟩','((g⁻¹ : SO) : M) * ((h : M) * gamma16CayleyMatrix c)','congrArg (fun X : M','gamma16CayleyMatrix_contDiffAt n c hc','contDiffAt_const.prodMk hC','contDiffAt_const.prodMk hH','gamma16SOLeftTranslatedChart_transition_source','gamma16CayleyOpenPartialHomeomorph_target, gamma16CayleyOpenPartialHomeomorph_source','gamma16CayleyTransitionMatrix_eq_native g h c hdom.1','gamma16CayleyBackwardAmbientCoordinates_contDiffAt n _ hden','(gamma16CayleyTransitionAmbient_contDiffOn n g h).congr','change e ∈ Set.range gamma16SOLeftTranslatedChart at he','isManifold_of_contDiffOn (modelWithCornersSelf ℝ Q) n SO','OpenPartialHomeomorph.trans_apply e.symm e\'','modelWithCornersSelf_coe, modelWithCornersSelf_coe_symm','(gamma16SOTranslatedAtlas_isManifold n).toHasGroupoid']:
+           assert token in s,token
+          for token in ['private abbrev overlapDT (g h : SO) : Set Q','(gamma16CayleyChartInv c : M) = CM c','CH r = gamma16CayleyBackwardAmbientCoordinates (r : M)','((g⁻¹ : SO) : M) * ((h : M) * ((1 + A c) * (1 - A c)⁻¹))','(1 - A c).det ≠ 0','(gamma16CayleyTransitionMatrix g h c + 1).det ≠ 0','congrFun (gamma16SOLeftTranslatedChart_transition_eq_ambient g h c hc) p','(overlapDT h g) := gamma16SOLeftTranslatedChart_transition_contDiffOn n h g','(gamma16SOLeftTranslatedChart g).right_inv ht','IsManifold (modelWithCornersSelf ℝ Q) ∞ SO','HasGroupoid SO (contDiffGroupoid n (modelWithCornersSelf ℝ Q))']+names:
+           assert token in a,token
+          print('V10H_F10DT_EXACT_NATIVE_SO16_ATLAS_REGULARITY_SCOPE_PASS')
+          PY
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,sys
+          sys.path.insert(0,str(Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization.lean').read_text();a=Path('lean/diagnostics/FCP_K1D18V10HF10DUIndependentAudit.lean').read_text();names=['gamma16MatrixLeftMulCLM', 'gamma16MatrixMulCLM', 'gamma16MatrixMulCLM_apply', 'gamma16MatrixProduct_hasFDerivAt_one', 'gamma16CayleyMatrix_mul_denominator', 'gamma16CayleyMatrix_fderiv_zero', 'gamma16CayleyMatrix_hasFDerivAt_zero', 'gamma16CayleyMatrix_hasStrictFDerivAt_zero', 'gamma16CayleyMatrix_fderiv_zero_apply', 'gamma16CayleyMatrix_fderiv_zero_upper', 'gamma16CayleyMatrix_fderiv_zero_injective']
+          assert re.findall(r'(?m)^(?:theorem|noncomputable def) ([^\s:(]+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',a)==names
+          assert re.findall(r'(?m)^private abbrev (\w+)',s)==['M','Q','A','U']
+          assert re.findall(r'(?m)^import (.+)',s)==['OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DTNativeSO16AtlasRegularity','Mathlib.Analysis.Calculus.FDeriv.Bilinear','Mathlib.Analysis.Calculus.FDeriv.Add','Mathlib.Analysis.Calculus.FDeriv.Congr']
+          old=Path('lean/diagnostics/FCP_K1D18V10HF10DTIndependentAudit.lean').read_text().split('\n#print axioms')[0]
+          old=old.replace('SU2BFSSPairedSpin9V10HF10DTNativeSO16AtlasRegularity','SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization').replace('auditDT','auditDU').replace('f10dtAudit','f10duAudit')
+          assert a.startswith(old)
+          assert len(re.findall(r'(?m)^example\b',old))==236
+          assert len(re.findall(r'(?m)^example\b',a))==260
+          for text in [s,a[len(old):]]:
+           code=code_only(text)
+           assert not re.search(r'\b(sorry|admit|axiom|sorryAx|native_decide|LieGroup|ChartedSpaceCore|NormedRing|IsManifold|haveI|letI|variable|HasMFDerivAt|mfderiv)\b|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+           assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
+          assert 'set_option autoImplicit false' in code_only(s)
+          assert not re.search(r'(?m)^abbrev |^private (?:theorem|def) ',s)
+          assert not re.search(r'\b(dif_pos|dif_neg|if_pos|if_neg)\b',code_only(s))
+          for token in ['private abbrev M := GammaMatrix','private abbrev Q := gamma16StrictPlaneIndex → ℝ','private abbrev A : Q →L[ℝ] M := gamma16StrictPlaneAmbientCLM','private abbrev U : Set Q := gamma16CayleySource','Algebra.lmul ℝ M a','continuous_of_finiteDimensional','let L : M →ₗ[ℝ] (M →L[ℝ] M)','IsBoundedBilinearMap.deriv_apply','have hfun : (fun p : M × M => gamma16MatrixMulCLM p.1 p.2)','have hoperator :','(hf : HasFDerivAt f F 0) (hg : HasFDerivAt g G 0)','(hf0 : f 0 = 1) (hg0 : g 0 = 1)','Matrix.nonsing_inv_mul _ hd','gamma16CayleyMatrix c * (1 - A c) = 1 + A c','fderiv ℝ gamma16CayleyMatrix 0 = (2 : ℝ) • A','(gamma16CayleyMatrix_contDiffAt (1 : ℕ∞ω) 0 gamma16CayleySource_zero).differentiableAt','A.hasFDerivAt.const_sub 1','gamma16CayleyMatrix_zero hd0','gamma16CayleySource_isOpen.mem_nhds gamma16CayleySource_zero','(fun c hc => (gamma16CayleyMatrix_mul_denominator c hc).symm)','(hp.congr_of_eventuallyEq hevent).unique hpos','(sub_eq_iff_eq_add).mp heq','(two_smul ℝ A).symm','gamma16CayleyMatrix_hasFDerivAt_zero one_ne_zero','gamma16StrictPlaneAmbientCLM_apply','dite_eq_left p.property','apply gamma16CayleyModel_injective','(1 / 2 : ℝ) * 2 = 1']:
+           assert token in s,token
+          for token in ['private abbrev CD : Q →L[ℝ] M := fderiv ℝ gamma16CayleyMatrix 0','private abbrev planeDU : gamma16StrictPlaneIndex := ⟨(0, 1), by decide⟩','private abbrev basisDU : Q := Pi.single planeDU 1','CD = (2 : ℝ) • A','HasStrictFDerivAt CM ((2 : ℝ) • A) 0','CD v p.val.1 p.val.2 = (2 : ℝ) * v p','Function.Injective CD','example : CD ≠ 0','example : CD ≠ A','(1 / 2 : ℝ) • CD v = A v','(CD v).transpose = -CD v','((1 + A c) * (1 - A c)⁻¹) * (1 - A c) = 1 + A c']+names:
+           assert token in a,token
+          assert 'have hbound : IsBoundedBilinearMap ℝ (fun p : M × M => p.1 * p.2)' in s
+          assert 'HasFDerivAt.comp (f := (fun c : Q => (f c, g c)))' in s
+          assert 'HasFDerivAt b ((hbound.deriv (f 0, g 0)).comp (F.prod G)) 0) hcomposition' in s
+          assert 'have hU : ∀ᶠ c : Q in 𝓝 (0 : Q), c ∈ U' in s
+          assert 'Filter.Eventually.mono hU' in s
+          assert '.isBoundedBilinearMap.deriv' not in s
+          print('V10H_F10DU_EXACT_CAYLEY_FORWARD_DERIVATIVE_NORMALIZATION_SCOPE_PASS')
+          PY
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,sys
+          sys.path.insert(0,str(Path('contributions/bfss-kotler/tools').resolve()))
+          from qualify_fcp_sync import code_only
+          s=Path('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DVNativeSO16IdentityTangent.lean').read_text();a=Path('lean/diagnostics/FCP_K1D18V10HF10DVIndependentAudit.lean').read_text();names=['gamma16SOIdentity_extChartAt_center', 'gamma16SOIdentity_extChartAt_symm', 'gamma16SOIdentityInclusion_writtenInExtChartAt', 'gamma16SOIdentityInclusion_written_hasFDerivAt_zero', 'gamma16SOIdentityInclusion_mdifferentiableAt', 'gamma16SOIdentityInclusionDifferential', 'gamma16SOIdentityInclusionDifferential_injective', 'gamma16SOIdentityInclusionDifferential_mem_so', 'gamma16SOIdentityInclusionDifferential_range', 'gamma16SOIdentityNativeSkewLinearEquiv', 'gamma16SOIdentityNativeSkewLinearEquiv_apply', 'gamma16SOIdentityNativeSkewLinearEquiv_symm_apply', 'gamma16SOIdentityTangent_finrank']
+          assert re.findall(r'(?m)^(?:theorem|noncomputable def) ([^\s:(]+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',s)==names
+          assert re.findall(r'(?m)^#print axioms (\S+)',a)==names
+          assert re.findall(r'(?m)^private abbrev (\w+)',s)==['M','Q','SO','S16','I','K','inclusion','T','A','U']
+          assert re.findall(r'(?m)^private theorem (\w+)',s)==['gamma16SOIdentityInclusionDifferential_coordinates']
+          assert not re.search(r'(?m)^abbrev |^private def ',s)
+          assert re.findall(r'(?m)^import (.+)',s)==['OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization','Mathlib.Geometry.Manifold.MFDeriv.Basic']
+          old=Path('lean/diagnostics/FCP_K1D18V10HF10DUIndependentAudit.lean').read_text().split('\n#print axioms')[0]
+          old=old.replace('SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization','SU2BFSSPairedSpin9V10HF10DVNativeSO16IdentityTangent').replace('auditDU','auditDV').replace('f10duAudit','f10dvAudit')
+          assert a.startswith(old)
+          assert len(re.findall(r'(?m)^example\b',old))==260
+          assert len(re.findall(r'(?m)^example\b',a))==288
+          registrations=['attribute [local instance 100] LieRing.ofAssociativeRing','local instance f10dvLocalSOChartedSpace :\n    ChartedSpace (gamma16StrictPlaneIndex → ℝ) (Matrix.specialOrthogonalGroup SpinIndex ℝ) :=\n  gamma16SOTranslatedChartedSpace','local instance f10dvLocalMatrixChartedSpace : ChartedSpace GammaMatrix GammaMatrix :=\n  chartedSpaceSelf GammaMatrix']
+          sc=code_only(s)
+          for registration in registrations:
+           assert sc.count(registration)==1,registration
+           sc=sc.replace(registration,'')
+          for code in [sc,code_only(a[len(old):])]:
+           assert not re.search(r'\b(sorry|admit|axiom|sorryAx|native_decide|LieGroup|ChartedSpaceCore|NormedRing|haveI|letI|variable|mfderiv_abuse|mfderivWithin_abuse|fderivWithin_abuse)\b|set_option\s+(maxRecDepth|maxHeartbeats)|linter\.',code)
+           assert not re.search(r'(?m)^\s*(?:local )?(?:noncomputable )?instance\b|attribute\s+\[.*instance',code)
+          assert 'set_option autoImplicit false' in code_only(s)
+          assert not re.search(r'\b(dif_pos|dif_neg|if_pos|if_neg)\b',code_only(s))
+          for header in re.findall(r'(?ms)^(?:theorem|noncomputable def) .*?(?=:=)',s):
+           assert 'tangentSpaceCastModel' not in header
+          D=s.split('noncomputable def gamma16SOIdentityInclusionDifferential :')[1].split('-- Technical preferred-chart')[0]
+          assert 'mfderiv I K inclusion (1 : SO)' in D
+          assert 'NormedSpace.fromTangentSpace' in D and 'tangentSpaceCastModel' not in D
+          E=s.split('noncomputable def gamma16SOIdentityNativeSkewLinearEquiv :')[1].split('\ntheorem')[0]
+          assert 'LinearEquiv.ofInjective gamma16SOIdentityInclusionDifferential.toLinearMap' in E
+          assert 'gamma16SOIdentityInclusionDifferential_range' in E and 'tangentSpaceCastModel' not in E
+          assert s.index('theorem gamma16SOIdentityInclusion_writtenInExtChartAt') < s.index('private theorem gamma16SOIdentityInclusionDifferential_coordinates')
+          for token in ['private abbrev SO := Matrix.specialOrthogonalGroup SpinIndex ℝ','private abbrev T := TangentSpace I (1 : SO)','private abbrev S16 := LieAlgebra.Orthogonal.so SpinIndex ℝ','private abbrev inclusion : SO → M := Subtype.val','extChartAt_coe (I := I)','extChartAt_coe_symm (I := I)','ext_chart_model_space_apply (𝕜 := ℝ)','Filter.Eventually.mono hU','gamma16CayleyChartInv_coe_on_source c hc','gamma16CayleyMatrix_hasFDerivAt_zero.congr_of_eventuallyEq hevent','mdifferentiableAt_iff (I := I) (I\' := K)','gamma16SOIdentityInclusion_mdifferentiableAt.mfderiv','gamma16CayleyMatrix_fderiv_zero_injective','gamma16CayleyModel_transpose','gamma16StrictPlaneModelEquiv.apply_symm_apply x','let q : Q := (1 / 2 : ℝ) • gamma16StrictPlaneModelEquiv.symm x','(2 : ℝ) * (1 / 2) = 1','Module.finrank ℝ T = 120']:
+           assert token in s,token
+          for token in ['private abbrev SOI := modelWithCornersSelf ℝ Q','private abbrev SOT := TangentSpace SOI (1 : SO)','private abbrev SOIncl : SO → M := Subtype.val','private abbrev SOD : SOT →L[ℝ] M','private abbrev SOE : SOT ≃ₗ[ℝ] S16','TangentSpace (modelWithCornersSelf ℝ (gamma16StrictPlaneIndex → ℝ))','(1 : Matrix.specialOrthogonalGroup SpinIndex ℝ) ≃ₗ[ℝ] LieAlgebra.Orthogonal.so SpinIndex ℝ','mfderiv SOI K SOIncl (1 : SO)','LinearMap.range SOD.toLinearMap','Module.finrank ℝ SOT = 120','SOD.toLinearMap = (LieAlgebra.Orthogonal.so SpinIndex ℝ).toSubmodule.subtype.comp','(SOE v : M) = SOD v','SOD (SOE.symm X) = (X : M)','(SOE v : M) i j = SOD v i j','HasFDerivAt (writtenInExtChartAt SOI K (1 : SO) SOIncl) ((2 : ℝ) • A) 0']+names:
+           assert token in a,token
+          assert 'tangentSpaceCastModel' not in code_only(a[len(old):])
+          print('V10H_F10DV_EXACT_NATIVE_SO16_IDENTITY_TANGENT_SCOPE_PASS')
+          PY
+
+      - name: Validate complete accepted cache source closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py check
+          python3 -m unittest discover -s contributions/bfss-kotler/tools -p test_fcp_dd_ai_cache.py
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+          test -s .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean
+          cd ..
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py environment
+
+      - name: Restore exact accepted DD AI object bundle
+        if: ${{ !inputs.cold_build }}
+        id: dd-ai-cache
+        uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: lean/.lake/bfss-dd-ai-cache-v1
+          key: bfss-dd-ai-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json', 'contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py') }}
+
+      - name: Verify sealed objects and freshly audit accepted imports
+        if: steps.dd-ai-cache.outputs.cache-hit == 'true'
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py install --log-dir "$RUNNER_TEMP/v10h-f10dv"
+
+      - name: Rebuild accepted DD and AI ancestry
+        if: steps.dd-ai-cache.outputs.cache-hit != 'true'
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3150s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10DDDerivativeRangeGammaLieHom OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10AIOriginalGammaAllOrderedPairsLinearIndependentBridge 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/ancestry-build.log"
+
+      - name: Audit and seal freshly rebuilt accepted DD AI ancestry
+        if: steps.dd-ai-cache.outputs.cache-hit != 'true'
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py seal --log-dir "$RUNNER_TEMP/v10h-f10dv"
+
+      - name: Fresh accepted F10DE parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DETranslatedSourceCharts
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/ancestor-de.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['source9SpinLeftTranslatedChart', 'source9SpinLeftTranslatedChart_source', 'source9SpinLeftTranslatedChart_target', 'source9SpinLeftTranslatedChart_apply', 'source9SpinLeftTranslatedChart_symm_apply', 'source9SpinLeftTranslatedChart_self_mem_source', 'source9SpinLeftTranslatedChart_self', 'source9SpinTranslatedChartedSpace', 'source9SpinLeftTranslatedChart_transition_apply', 'source9SpinLeftTranslatedChart_transition_source']}
+          for filename in ['ancestor-de.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DE_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DF parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DFCoordinateDerivativeInvertibility
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['source9UpperCoordinateMap_approximates_on_chart_source', 'source9UpperCoordinateMap_residual_lipschitzOn_chart_source', 'source9UpperCoordinateMap_chart_source_deviation', 'source9UpperCoordinateMap_residual_fderiv_norm_le', 'source9UpperCoordinateMap_fderiv_sub_id_norm_le', 'source9UpperCoordinateMap_fderiv_isUnit_on_chart_source', 'source9UpperCoordinateMap_fderiv_bijective_on_chart_source']}
+          for filename in ['parent.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DF_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DG parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DGWholeTargetInverseRegularity
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dg.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['source9UpperCoordinateMap_fderiv_equiv_on_chart_source', 'source9OrderedUpperCoordinateLocalHomeomorph_symm_contDiffAt_on_target', 'source9OrderedUpperCoordinateLocalHomeomorph_symm_contDiffOn_target']}
+          for filename in ['parent-dg.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DG_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DH parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DHTranslatedTransitionRegularity
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dh.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['source9SpinUpperCoordinates_mul_entry', 'source9SpinLeftWord_upperCoordinates_contDiff', 'source9SpinLeftTranslatedChart_transition_coordinates', 'source9SpinLeftTranslatedChart_transition_mapsTo_coordinateTarget', 'source9SpinLeftTranslatedChart_transition_contDiffOn']}
+          for filename in ['parent-dh.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DH_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DI parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DITranslatedAtlasManifold
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-di.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["source9SpinTranslatedAtlas_contDiffOn","source9SpinTranslatedAtlas_isManifold","source9SpinTranslatedAtlas_hasGroupoid"]}
+          for filename in ['parent-di.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DI_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DJ parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DJIdentityInclusionTangentRange
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dj.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['source9SpinIdentity_extChartAt_center', 'source9SpinIdentity_extChartAt_symm', 'source9SpinIdentityInclusion_writtenInExtChartAt', 'source9SpinIdentityInclusion_written_hasFDerivAt_zero', 'source9SpinIdentityInclusion_mdifferentiableAt', 'source9SpinIdentityInclusionDifferential', 'source9SpinIdentityInclusionDifferential_injective', 'source9SpinIdentityInclusionDifferential_range', 'source9SpinIdentityTangentRangeEquiv', 'source9SpinIdentityTangentRangeEquiv_apply']}
+          for filename in ['parent-dj.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DJ_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10AI parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10AIOriginalGammaAllOrderedPairsLinearIndependentBridge
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-ai.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['source9OriginalGamma_all_ordered_pairs_linearIndependent', 'source9OriginalGamma_all_ordered_pairs_coeff_unique']}
+          for filename in ['parent-ai.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10AI_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DK parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DKAmbientGammaManifoldDifferential
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dk.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['source9SpinGammaAmbient_eq_eval', 'source9SpinGammaAmbient_mdifferentiableAt', 'source9SpinIdentityGammaDifferential', 'source9SpinIdentityGammaDifferential_factor', 'source9SpinIdentityGammaDifferential_apply', 'source9SpinIdentityGammaDifferential_range_apply', 'source9SpinIdentityGammaDifferential_native_apply', 'source9SpinIdentityGammaDifferential_mem_so', 'source9SpinIdentityGammaDifferential_factor_linear']}
+          for filename in ['parent-dk.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DK_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DL parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DLIdentityGammaDifferentialInjectivityRank
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dl.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['coordinateToOriginalGammaSkewLieHom_orderedPair_sum', 'coordinateToOriginalGammaSkewLieHom_matrix_injective', 'source9SpinIdentityNativeSkewLinearEquiv', 'source9SpinIdentityGammaDifferential_native_factor', 'source9SpinIdentityGammaDifferential_injective', 'source9SpinIdentityGammaDifferential_ker', 'source9SpinIdentityGammaDifferential_range', 'source9SpinIdentityTangent_finrank', 'source9SpinIdentityGammaDifferential_range_finrank']}
+          for filename in ['parent-dl.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DL_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DM parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DMNativeSO16ContinuousModel
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dm.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ["gamma16StrictPlaneIndex_card","gamma16StrictPlaneMatrix","gamma16StrictPlaneMatrix_transpose","gamma16StrictPlaneModelEquiv","gamma16StrictPlaneModelEquiv_symm_apply","gamma16StrictPlaneModelEquiv_apply","gamma16StrictPlaneModelContinuousEquiv","gamma16NativeSkew_finrank","gamma16StrictPlaneAmbientCLM","gamma16StrictPlaneAmbientCLM_apply","source9SpinIdentityGammaTargetCoordinateCLM","source9SpinIdentityGammaTargetCoordinateCLM_apply","source9SpinIdentityGammaTargetCoordinateCLM_factor","source9SpinIdentityGammaTargetCoordinateCLM_injective","source9SpinIdentityGammaTargetCoordinateCLM_range_finrank"]}
+          for filename in ['parent-dm.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DM_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DN parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DNCayleySO16ForwardParameterization
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dn.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16CayleySource', 'gamma16CayleyMatrix', 'gamma16CayleyModel_transpose', 'gamma16CayleyDenominator_transpose', 'gamma16CayleyNumerator_transpose', 'gamma16CayleyNumerator_det', 'gamma16CayleySource_isOpen', 'gamma16CayleySource_zero', 'gamma16CayleyMatrix_zero', 'gamma16CayleyMatrix_orthogonal', 'gamma16CayleyMatrix_det', 'gamma16CayleyMatrix_mem_so', 'gamma16CayleySO', 'gamma16CayleySO_apply', 'gamma16CayleySO_continuous']}
+          for filename in ['parent-dn.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DN_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DO parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DOCayleySO16BackwardCoordinates
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-do.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16CayleyTarget', 'gamma16CayleyBackwardMatrix', 'gamma16CayleyTarget_isOpen', 'gamma16CayleyTarget_one', 'gamma16CayleyBackwardMatrix_one', 'gamma16CayleyTarget_orthogonal', 'gamma16CayleyBackwardMatrix_transpose', 'gamma16CayleyBackwardMatrix_mem_so', 'gamma16CayleyBackwardSkew', 'gamma16CayleyBackwardSkew_apply', 'gamma16CayleyBackwardMatrix_continuous', 'gamma16CayleyBackwardSkew_continuous', 'gamma16CayleyBackwardCoordinates', 'gamma16CayleyBackwardCoordinates_apply', 'gamma16CayleyBackwardCoordinates_reconstruct', 'gamma16CayleyBackwardCoordinates_continuous', 'gamma16CayleyBackwardCoordinates_one']}
+          for filename in ['parent-do.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DO_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DP parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DPCayleySO16DomainHomeomorph
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dp.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16CayleyModel_injective', 'gamma16CayleyTwo_det_ne_zero', 'gamma16CayleyForward_add_one', 'gamma16CayleyForward_sub_one', 'gamma16CayleyForward_add_one_det_ne_zero', 'gamma16CayleyForward_mem_target', 'gamma16CayleyForwardTarget', 'gamma16CayleyBackwardMatrix_forward', 'gamma16CayleyBackwardCoordinates_forward', 'gamma16CayleyBackward_one_sub', 'gamma16CayleyBackward_one_add', 'gamma16CayleyBackward_one_sub_det_ne_zero', 'gamma16CayleyBackward_mem_source', 'gamma16CayleyBackwardSource', 'gamma16CayleyForwardMatrix_backward', 'gamma16CayleyForwardSO_backward', 'gamma16CayleyBackward_forward', 'gamma16CayleyForward_backward', 'gamma16CayleyForwardTarget_continuous', 'gamma16CayleyBackwardSource_continuous', 'gamma16CayleyDomainHomeomorph', 'gamma16CayleyDomainHomeomorph_apply', 'gamma16CayleyDomainHomeomorph_symm_apply', 'gamma16CayleyDomainHomeomorph_zero']}
+          for filename in ['parent-dp.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DP_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DQ parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DQCayleySO16OpenPartialHomeomorph
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dq.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16CayleyChart', 'gamma16CayleyChartInv', 'gamma16CayleyChart_apply', 'gamma16CayleyChartInv_apply', 'gamma16CayleyChart_mem_target', 'gamma16CayleyChartInv_mem_source', 'gamma16CayleyChart_left_inv', 'gamma16CayleyChart_right_inv', 'gamma16CayleyChart_continuousOn', 'gamma16CayleyChartInv_continuousOn', 'gamma16CayleyChart_one', 'gamma16CayleyChartInv_zero', 'gamma16CayleyOpenPartialHomeomorph', 'gamma16CayleyOpenPartialHomeomorph_source', 'gamma16CayleyOpenPartialHomeomorph_target', 'gamma16CayleyOpenPartialHomeomorph_apply', 'gamma16CayleyOpenPartialHomeomorph_symm_apply', 'gamma16CayleyOpenPartialHomeomorph_one', 'gamma16CayleyOpenPartialHomeomorph_symm_zero', 'gamma16CayleyOpenPartialHomeomorph_source_one', 'gamma16CayleyOpenPartialHomeomorph_target_zero']}
+          for filename in ['parent-dq.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DQ_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DR parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dr.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16SO_inv_coe_eq_transpose', 'gamma16SO_inv_continuous', 'gamma16SO_mul_continuous', 'gamma16SO_isTopologicalGroup', 'gamma16SOLeftTranslatedChart', 'gamma16SOLeftTranslatedChart_source', 'gamma16SOLeftTranslatedChart_target', 'gamma16SOLeftTranslatedChart_apply', 'gamma16SOLeftTranslatedChart_symm_apply', 'gamma16SOLeftTranslatedChart_self_mem_source', 'gamma16SOLeftTranslatedChart_self', 'gamma16SOTranslatedChartedSpace', 'gamma16SOLeftTranslatedChart_transition_apply', 'gamma16SOLeftTranslatedChart_transition_source']}
+          for filename in ['parent-dr.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DR_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DS parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-ds.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16MatrixEntryCLM', 'gamma16MatrixEntryCLM_apply', 'gamma16Matrix_det_contDiff', 'gamma16Matrix_updateRow_contDiff', 'gamma16Matrix_adjugate_contDiff', 'gamma16Matrix_mul_contDiff', 'gamma16Matrix_inv_contDiffAt', 'gamma16CayleyMatrix_contDiffAt', 'gamma16CayleyMatrix_contDiffOn', 'gamma16CayleyBackwardAmbientMatrix', 'gamma16CayleyBackwardAmbientMatrix_eq_native', 'gamma16CayleyBackwardAmbientMatrix_contDiffAt', 'gamma16CayleyBackwardAmbientCoordinates', 'gamma16CayleyBackwardAmbientCoordinates_eq_native', 'gamma16CayleyBackwardAmbientCoordinates_contDiffAt', 'gamma16CayleyBackwardAmbientCoordinates_contDiffOn']}
+          for filename in ['parent-ds.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DS_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DT parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DTNativeSO16AtlasRegularity
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-dt.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16CayleyChartInv_coe_on_source', 'gamma16CayleyChart_eq_ambient_on_target', 'gamma16CayleyTransitionMatrix', 'gamma16CayleyTransitionMatrix_eq_native', 'gamma16CayleyTransitionMatrix_contDiffAt', 'gamma16CayleyTransition_overlap_conditions', 'gamma16CayleyTransitionMatrix_mapsTo_backwardDomain', 'gamma16SOLeftTranslatedChart_transition_eq_ambient', 'gamma16CayleyTransitionAmbient_contDiffOn', 'gamma16SOLeftTranslatedChart_transition_contDiffOn', 'gamma16SOTranslatedAtlas_contDiffOn', 'gamma16SOTranslatedAtlas_isManifold', 'gamma16SOTranslatedAtlas_hasGroupoid']}
+          for filename in ['parent-dt.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DT_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh accepted F10DU parent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DUCayleyForwardDerivativeNormalization
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/parent-du.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16MatrixLeftMulCLM', 'gamma16MatrixMulCLM', 'gamma16MatrixMulCLM_apply', 'gamma16MatrixProduct_hasFDerivAt_one', 'gamma16CayleyMatrix_mul_denominator', 'gamma16CayleyMatrix_fderiv_zero', 'gamma16CayleyMatrix_hasFDerivAt_zero', 'gamma16CayleyMatrix_hasStrictFDerivAt_zero', 'gamma16CayleyMatrix_fderiv_zero_apply', 'gamma16CayleyMatrix_fderiv_zero_upper', 'gamma16CayleyMatrix_fderiv_zero_injective']}
+          for filename in ['parent-du.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DU_ACCEPTED_PARENT_FRESH_COMPILE_PASS')
+          PY
+      - name: Fresh F10DV native SO16 identity tangent compilation
+        shell: bash
+        timeout-minutes: 16
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DVNativeSO16IdentityTangent
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          rm -f ".lake/build/lib/lean/${target}.olean" ".lake/build/lib/lean/${target}.olean.private" ".lake/build/lib/lean/${target}.olean.server" ".lake/build/lib/lean/${target}.ilean"
+          timeout 840s lake env lean -DautoImplicit=false -DwarningAsError=true -o ".lake/build/lib/lean/${target}.olean" "${target}.lean" 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/compiler.log"
+          test -s ".lake/build/lib/lean/${target}.olean"
+      - name: Independent native SO16 identity tangent audit
+        shell: bash
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/FCP_K1D18V10HF10DVIndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/v10h-f10dv/declaration-audit.log"
+          cp diagnostics/FCP_K1D18V10HF10DVIndependentAudit.lean "$RUNNER_TEMP/v10h-f10dv/independent-audit.lean"
+          cp OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DVNativeSO16IdentityTangent.lean "$RUNNER_TEMP/v10h-f10dv/candidate-source.lean"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          names={'FCP.BFSSPairedSpin9Clifford.'+n for n in ['gamma16SOIdentity_extChartAt_center', 'gamma16SOIdentity_extChartAt_symm', 'gamma16SOIdentityInclusion_writtenInExtChartAt', 'gamma16SOIdentityInclusion_written_hasFDerivAt_zero', 'gamma16SOIdentityInclusion_mdifferentiableAt', 'gamma16SOIdentityInclusionDifferential', 'gamma16SOIdentityInclusionDifferential_injective', 'gamma16SOIdentityInclusionDifferential_mem_so', 'gamma16SOIdentityInclusionDifferential_range', 'gamma16SOIdentityNativeSkewLinearEquiv', 'gamma16SOIdentityNativeSkewLinearEquiv_apply', 'gamma16SOIdentityNativeSkewLinearEquiv_symm_apply', 'gamma16SOIdentityTangent_finrank']}
+          for filename in ['compiler.log', 'declaration-audit.log']:
+              s=(Path(os.environ['RUNNER_TEMP'])/'v10h-f10dv'/filename).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]",s)
+              empty=re.findall(r"(?m)^'([^'\n]+)' does not depend on any axioms",s)
+              assert len(reports)+len(empty)==len(names),(filename,reports,empty)
+              assert ({n for n,_ in reports}|set(empty))==names,(filename,reports,empty)
+              for name,axs in reports:
+                  assert {a.strip() for a in axs.split(',')} <= {'propext','Classical.choice','Quot.sound'},(name,axs)
+              assert 'sorryAx' not in s and not re.search(r'\.lean:\d+:\d+:\s*(warning|error)(?:\([^)]*\))?:',s)
+          print('V10H_F10DV_NATIVE_SO16_IDENTITY_TANGENT_TYPES_AXIOMS_PASS')
+          PY
+      - name: Save bounded ancestor bundle only after all strict phases pass
+        if: success() && steps.dd-ai-cache.outputs.cache-hit != 'true' && !inputs.cold_build
+        uses: actions/cache/save@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: lean/.lake/bfss-dd-ai-cache-v1
+          key: bfss-dd-ai-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('contributions/bfss-kotler/FCP_DD_AI_CACHE_MANIFEST_V1.json', 'contributions/bfss-kotler/tools/qualify_fcp_dd_ai_cache.py') }}
+
+      - name: Preserve exact head compiler and independent F10DV audit
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-v10h-f10dv-native-so16-identity-tangent-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/v10h-f10dv
+          if-no-files-found: warn
