@@ -181,7 +181,7 @@ jobs:
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DQIndependentAudit.lean)" = '3901be8511828b759fdad9448faad44846ccb8a8'
           test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DRTranslatedSO16Charts.lean)" = '15454b33c65f98f3c3105e00733bc8f9d4d2ef47'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DRIndependentAudit.lean)" = 'bbadc69787cce349271b341fc612af77f6f15f11'
-          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity.lean)" = 'f90bde555a3f0ad6d4acf7108817a80315e6bd58'
+          test "$(git hash-object lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DSCayleyAmbientRegularity.lean)" = '001ba7d18a6cca5fa3e47f52a82c5bdf06c3198f'
           test "$(git hash-object lean/diagnostics/FCP_K1D18V10HF10DSIndependentAudit.lean)" = '686d710cd7e6132f26c90c961fb4d41582c2d59d'
           python3 - <<'PY'
           from pathlib import Path
@@ -332,6 +332,11 @@ jobs:
               assert token in s,token
           for token in ['ContDiff ℝ n (Matrix.det : M → ℝ)','ContDiff ℝ n (Matrix.adjugate : M → M)','ContDiff ℝ n (fun B : M × M => B.1 * B.2)','ContDiffAt ℝ n (Inv.inv : M → M) B','ContDiffOn ℝ n CM U','gamma16CayleyBackwardAmbientCoordinates (r.val : M) = BC r','ContDiffAt ℝ n CM (0 : Q)','ContDiffAt ℝ n gamma16CayleyBackwardAmbientCoordinates (1 : M)','{c : Q | (1 - A c).det ≠ 0}','{B : M | (B + 1).det ≠ 0}']+names:
               assert token in a,token
+          assert 'have hentry : (gamma16MatrixEntryCLM a b : M → ℝ) =' in s
+          assert 'have hdet : ContDiff ℝ n (Matrix.det : M → ℝ)' in s
+          assert 'have hrow : ContDiff ℝ n (fun B : M => B.updateRow j (Pi.single i 1))' in s
+          assert 'ContDiff.fun_comp (g := (Matrix.det : M → ℝ))' in s
+          assert s.count('Eq.mp (congrArg (fun f : M → ℝ => ContDiff ℝ n f)')==2
           print('V10H_F10DS_EXACT_CAYLEY_AMBIENT_REGULARITY_SCOPE_PASS')
           PY
 

@@ -54,8 +54,14 @@ theorem gamma16Matrix_updateRow_contDiff (n : ℕ∞ω) (j : SpinIndex) (row : S
   by_cases h : a = j
   · simpa only [Matrix.updateRow_apply, ite_eq_left h] using
       (contDiff_const : ContDiff ℝ n (fun _ : M => row b))
-  · simpa only [Matrix.updateRow_apply, ite_eq_right h] using
+  · have he : ContDiff ℝ n (gamma16MatrixEntryCLM a b : M → ℝ) :=
       (gamma16MatrixEntryCLM a b).contDiff
+    have hentry : (gamma16MatrixEntryCLM a b : M → ℝ) = (fun B : M => B a b) := by
+      funext B
+      exact gamma16MatrixEntryCLM_apply a b B
+    have hraw : ContDiff ℝ n (fun B : M => B a b) :=
+      Eq.mp (congrArg (fun f : M → ℝ => ContDiff ℝ n f) hentry) he
+    simpa only [Matrix.updateRow_apply, ite_eq_right h] using hraw
 
 /-- Adjugate entries are determinants of fixed-row replacements. -/
 theorem gamma16Matrix_adjugate_contDiff (n : ℕ∞ω) :
@@ -68,9 +74,13 @@ theorem gamma16Matrix_adjugate_contDiff (n : ℕ∞ω) :
       (fun B : M => (B.updateRow j (Pi.single i 1)).det) := by
     funext B
     exact Matrix.adjugate_apply B i j
-  rw [hfun]
-  exact (gamma16Matrix_det_contDiff n).comp
-    (gamma16Matrix_updateRow_contDiff n j (Pi.single i 1))
+  have hdet : ContDiff ℝ n (Matrix.det : M → ℝ) := gamma16Matrix_det_contDiff n
+  have hrow : ContDiff ℝ n (fun B : M => B.updateRow j (Pi.single i 1)) :=
+    gamma16Matrix_updateRow_contDiff n j (Pi.single i 1)
+  have hcomp : ContDiff ℝ n (fun B : M => (B.updateRow j (Pi.single i 1)).det) :=
+    ContDiff.fun_comp (g := (Matrix.det : M → ℝ))
+      (f := (fun B : M => B.updateRow j (Pi.single i 1))) hdet hrow
+  exact Eq.mp (congrArg (fun f : M → ℝ => ContDiff ℝ n f) hfun.symm) hcomp
 
 /-- Matrix multiplication is smooth by its finite scalar-entry sums, without a matrix NormedRing. -/
 theorem gamma16Matrix_mul_contDiff (n : ℕ∞ω) :
