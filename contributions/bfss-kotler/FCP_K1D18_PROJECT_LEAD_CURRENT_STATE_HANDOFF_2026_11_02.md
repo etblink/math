@@ -7216,3 +7216,41 @@ PBW topology. No continuous choice of a factorization is assumed. Covering,
 Fock/gauge/domain, whole-sector branching, coercivity and spectra retain
 separate gates. Existing source/workflow/cache contracts, original branch
 and upstream PRs remain unchanged.
+
+
+## Runs #42349933839 / #42352505826 — Cartan acceptance reconciled; exact-word research handoff
+
+Current branch was reverified at 5553a9230d184b6f2a2e43095d805f5d24d6e4cc,
+which already records C0-A3 acceptance. The exact tested proof commit is
+b3bb2bd77498251dc6361e143ac7713b05d150a3; do not mistake the later
+documentation commit for a fresh Lean qualification.
+
+Red #42349933839 failed at the units-to-real determinant coercion.
+Three printed roots contained sorryAx recovery contamination and the
+independent consumer did not run. Adding Units.val_one on one proof line,
+plus its manifest blob/SHA256 refresh, is the entire tested repair.
+Green #42352505826 passed. This follow-up job-log replay finds 99
+compilation entries, 75 strict reports in manifest order with permitted
+axioms, five completion markers, no Lean error/warning diagnostics and
+the final gate-pass marker. The existing acceptance JSON records the
+earlier complete archive review; this replay does not assert another
+download/re-hash of the archive. Full timestamped red/green job logs and
+an explicit review record are now retained under the Cartan evidence
+prefix. Runner Node deprecation warnings are distinct from Lean diagnostics.
+
+C0-A3 qualifies an ordered even at-most-eight source-Q-unit reflection
+factorization of the ORIGINAL vector action. It does not yet qualify a
+literal Clifford word equal to g, source compactness or spectra.
+Memorandum section O records the next C0-A4 target and source interfaces:
+pair-lift the even list in order with F10BH/C0-A1/F10BP, compare original
+matrices through F10BR, and use F10CU's actual two-sign fiber theorem.
+Pad by repeated Q-unit axis pairs to exactly eight BEFORE sign correction.
+Then negating the first factor handles the negative fiber even when the
+initial list was empty. Check identity and negative central cases, exact
+Clifford equality and Fin 8 order explicitly. These are research proof
+obligations; no new Lean declaration is admitted by this documentation.
+
+The fixed-word topology/compactness gate remains separate. No continuous
+choice of factorization is required. The original branch remains at
+4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e. No Lean source, workflow,
+manifest, dependency, cache contract or upstream PR is changed here.

@@ -587,3 +587,84 @@ It is not yet an exact product of embedded Clifford vectors equal to g.
 If qualified, the next task is ordered pair lifting, central two-sign
 correction and exact eight-factor padding, followed separately by the
 source-unit parameter compactness and original-PBW continuous-image proof.
+
+
+## O. C0-A3 accepted; exact source word is the next research obligation
+
+**Status at 2026-11-07.** The [Cartan strict gate](BFSS_SPECTRAL_SOURCE_NINE_UNIT_CARTAN_GATE_2026_11_06.md)
+records scoped acceptance of green [#42352505826](https://github.com/etblink/math/actions/runs/42352505826)
+at `b3bb2bd77498251dc6361e143ac7713b05d150a3`. Its preceding red
+[#42349933839](https://github.com/etblink/math/actions/runs/42349933839)
+at `760e00536e40887254b38f4f01cb021b090f8c1c` failed because the final
+determinant transport left coercion of the unit one unequal definitionally
+to real one. The tested repair adds `Units.val_one` to that one proof
+line and refreshes only its manifest pins. No statement or proof policy changed.
+
+The failed compiler emitted `sorryAx` for the determinant transport and
+the two final Cartan existence declarations. These are recovery reports
+from the rejected compilation, not accepted assumptions or evidence.
+The independent consumer was never compiled on that red. The green job
+has 99 compilation entries, all 75 expected strict reports in exact
+manifest order with only the permitted foundational axioms, all five
+source/consumer markers, and the final gate-pass marker. The twenty
+complete-type consumers include the original pointwise action and zero
+normal deletion. Complete timestamped job logs and the limits of this
+follow-up review are retained in the
+[run-pair audit](evidence/spectral-confinement-2026-11-06/source-nine-unit-cartan-run-pair-audit-2026-11-07.json).
+The earlier scoped acceptance record contains the retained-archive review;
+this follow-up replay checks job logs and repository source, rather than
+claiming another independent download of that ZIP.
+
+**Accepted scope.** For every literal source Spin element, its original
+nine-vector action has an ordered, even list of at most eight original
+Q-unit hyperplane reflections. Equality of vector actions is not equality
+of source Spin elements. F10CU explicitly gives two distinct source signs.
+
+**Proposed C0-A4 target, still research:** for every original
+`g : spinGroup source9Quadratic`, find `w : Fin 8 → (SpaceIndex → ℝ)`
+with `source9Quadratic (w i) = 1` for every i and with the ordered product
+of the eight original `CliffordAlgebra.ι source9Quadratic (w i)` equal to
+`(g : CliffordAlgebra source9Quadratic)`. The finite order must be explicit
+and agree with the accepted pair action. This is a target statement,
+not a new Lean declaration or theorem admission.
+
+Use the following bounded proof seams, independently auditable:
+
+1. Induct on consecutive pairs of an even Q-unit list. Construct an
+   actual source Spin element h from F10BH's
+   `source9UnitVectorPairSpin`. Track both its literal Clifford product
+   and its original action on every source vector. Use C0-A1 for the pair
+   and F10BP for composition. Do not reverse the ordered list or assert
+   Spin membership of an individual positive Clifford vector.
+2. Apply this pair lift to the accepted C0-A3 list. Compare the attained
+   original matrices through F10BR's action bridge. Invoke exactly
+   `source9NaturalMatrix_eq_iff_two_sign_fiber` from F10CU, obtaining
+   g = h or g = source9NegativeCentral * h. No injectivity or target
+   surjectivity may be substituted.
+3. **Pad before sign correction.** Append repeated copies of one original
+   Q-unit coordinate axis in pairs until the list has exactly eight
+   entries. Each appended pair has Clifford product one because its
+   vector squares to Q = 1. This handles the initially empty list
+   uniformly and leaves both the word and its action unchanged.
+4. In the negative fiber, negate the first of the now eight unit factors.
+   Prove preservation of Q, linearity of the original Clifford embedding,
+   and equality to multiplication by the actual negative central source
+   element. This avoids the undefined operation of negating a factor of
+   an empty list. Check both signs when the original action is identity.
+5. Convert the exact-length list to the explicitly ordered Fin 8 family.
+   Recheck literal source equality after the conversion. A fixed eight-
+   input map can then be defined by four actual Spin pairs; no continuous
+   selection of a factorization depending on g is required.
+
+The empty-list case, h = 1, g = source9NegativeCentral, repeated-axis
+padding, and order-sensitive noncommuting pairs are required consumer
+cases. Pair-lift equality, the two-sign recovery, and fixed-length padding
+may be separate small gates if combining them obscures causal failures.
+
+**Later gate only:** prove compactness of the original Q-unit locus and
+continuity of this fixed word map in the existing F10BF/F10BG PBW topology.
+The action map to SO(9) supplies neither source compactness nor a
+topological embedding. No replacement group, quadratic form, norm or
+topology is authorized by this plan. Fock/gauge action, physical closed
+domains, full-sector branching, coercivity and spectral existence remain
+separate unresolved obligations.

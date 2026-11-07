@@ -1,0 +1,86 @@
+{
+  "schema": "bfss-source-nine-unit-cartan-followup-job-log-audit-v1",
+  "reviewed_at_utc_date": "2026-11-07",
+  "baseline_commit": "5553a9230d184b6f2a2e43095d805f5d24d6e4cc",
+  "red": {
+    "run_id": 42349933839,
+    "tested_sha": "760e00536e40887254b38f4f01cb021b090f8c1c",
+    "conclusion": "failure",
+    "compilation_entries": 98,
+    "first_failure": "SpectralSourceNineUnitCartan.lean:75:2: unit-one coercion to real not normalized",
+    "recovery_axiom": "sorryAx",
+    "recovery_roots": [
+      "source9SpinEuclideanIsometry_det_one",
+      "source9SpinEuclidean_unitCartan_le_eight",
+      "source9Spin_sourceUnitCartan_le_eight"
+    ],
+    "consumer_started": false,
+    "accepted": false,
+    "artifact": {
+      "id": 13565896472,
+      "name": "spectral-source-nine-unit-cartan-760e00536e40887254b38f4f01cb021b090f8c1c-1",
+      "size_in_bytes": 1839133,
+      "url": "https://api.github.com/repos/etblink/math/actions/artifacts/13565896472",
+      "archive_download_url": "https://api.github.com/repos/etblink/math/actions/artifacts/13565896472/zip",
+      "expired": false,
+      "created_at": "2026-11-07T07:20:53Z",
+      "expires_at": "2026-11-21T07:20:52Z",
+      "updated_at": "2026-11-07T07:20:53Z",
+      "digest": "sha256:22ab732d45f21601de13c280bfd4c7d16c3c35437c7d7610ab04483d44a3c855",
+      "workflow_run": {
+        "id": 42349933839,
+        "repository_id": 1414035400,
+        "head_repository_id": 1414035400,
+        "head_branch": "research/bfss-spectral-confinement-roadmap-20261106",
+        "head_sha": "760e00536e40887254b38f4f01cb021b090f8c1c"
+      }
+    }
+  },
+  "green": {
+    "run_id": 42352505826,
+    "tested_sha": "b3bb2bd77498251dc6361e143ac7713b05d150a3",
+    "conclusion": "success",
+    "compilation_entries": 99,
+    "strict_reports": 75,
+    "report_names_in_exact_manifest_order": true,
+    "unpermitted_axioms": [],
+    "lean_error_or_warning_diagnostics": [],
+    "completion_markers": 5,
+    "independent_consumer_examples": 20,
+    "final_gate_pass_marker": true,
+    "artifact": {
+      "id": 13567145779,
+      "name": "spectral-source-nine-unit-cartan-b3bb2bd77498251dc6361e143ac7713b05d150a3-1",
+      "size_in_bytes": 1839901,
+      "url": "https://api.github.com/repos/etblink/math/actions/artifacts/13567145779",
+      "archive_download_url": "https://api.github.com/repos/etblink/math/actions/artifacts/13567145779/zip",
+      "expired": false,
+      "created_at": "2026-11-07T08:00:42Z",
+      "expires_at": "2026-11-21T08:00:40Z",
+      "updated_at": "2026-11-07T08:00:42Z",
+      "digest": "sha256:19d2ffd6a3d22efcbab9a2ca20d32d1b33721ed5074040920c5d86bb16ebcb19",
+      "workflow_run": {
+        "id": 42352505826,
+        "repository_id": 1414035400,
+        "head_repository_id": 1414035400,
+        "head_branch": "research/bfss-spectral-confinement-roadmap-20261106",
+        "head_sha": "b3bb2bd77498251dc6361e143ac7713b05d150a3"
+      }
+    }
+  },
+  "repair": {
+    "source_lines_changed": 1,
+    "added_simp_lemma": "Units.val_one",
+    "only_other_file": "BFSS_SPECTRAL_SOURCE_NINE_UNIT_CARTAN_MANIFEST_V1.json",
+    "mathematical_statements_changed": false
+  },
+  "review_limit": "This follow-up independently parses GitHub job logs and compares repository source and consumers. It relies on the existing acceptance record for the earlier ZIP integrity, receipt, individual object/log digests and dependency review. It does not claim a fresh ZIP download or local compiler run.",
+  "logs": {
+    "red": "source-nine-unit-cartan-42349933839-job-log.txt",
+    "green": "source-nine-unit-cartan-42352505826-job-log.txt",
+    "format": "Complete timestamped GitHub workflow job logs as returned by the GitHub connector; runner warnings preserved."
+  },
+  "next_research_gate": "C0-A4 exact original eight-factor Clifford word; pad before central sign correction",
+  "protected_original_branch_sha": "4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e",
+  "new_lean_theorems_admitted": false
+}
