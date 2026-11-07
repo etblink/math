@@ -137,3 +137,33 @@ stabilizer. Compactness/closedness packaging, a surjection onto actual
 perpendicular SO(8), a two-sheeted covering, topological Spin(8) identification,
 the common torus/branching rule, a Fock-operator action and physical spectral
 claims remain separate obligations.
+
+## First candidate failure and bounded repair
+
+Run [42424031388](https://github.com/etblink/math/actions/runs/42424031388)
+tested `bb2587891a1994cdac0546dc56b83146ffaa6d08` and failed in the new
+source after all 125 original and thirteen inherited sources compiled. The
+independent consumer was not reached; the receipt is INCOMPLETE. The compiler
+reported two proof-interface errors, at original lines 58 and 136:
+
+- Sphere membership produced the subspace norm, whereas the intermediate goal
+  used its ambient Euclidean norm. Convert explicitly with Submodule.norm_coe.
+- The untyped continuous_induced_rng application inferred the wrong intermediate
+  subtype. First prove continuity into the explicit original coordinate type,
+  then use Continuous.subtype_mk to restore only the unit-condition proof.
+
+The pinned interfaces were checked directly: Analysis/Normed/Group/Submodule.lean,
+blob `42e7f83938359acd656bc48b85aa5d9db582ebbc`, and
+Topology/Constructions.lean, blob `91a7136cc7b39e609f8becbf9e0785069bb2610d`.
+This repair changes those proof bodies and the source's blob/SHA-256 pins only;
+all public declaration types, consumer bytes, inherited sources, imports,
+topologies, workflow, validators, dependency pins and budgets are preserved.
+
+Retained artifact: `13595700294`, ZIP SHA-256
+`a2e92eeaa73186f5f8dd5fe0ac9f121099f4ee8db22c01640977aa17f84981e1`.
+The archive digest/integrity, all 170 archived input pins, all 139 compiler-log
+hashes, and all thirteen inherited strict report inventories were independently
+checked. The failed source log SHA-256 is
+`1520039359a7bae92268cfb67463ca48876a12c301631fdcffbb42bb61b26ddb`.
+Its recovery-generated sorryAx reports are rejected, not qualified results.
+The corrected candidate still requires a complete new strict source/consumer run.

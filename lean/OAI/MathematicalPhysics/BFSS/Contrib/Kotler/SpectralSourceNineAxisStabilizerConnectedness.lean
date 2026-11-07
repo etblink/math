@@ -55,7 +55,9 @@ theorem source9Axis8PerpendicularSphere_image :
   constructor
   · rintro ⟨x, hx, rfl⟩
     have hn : ‖(x : Euc9)‖ = 1 := by
-      simpa only [Metric.mem_sphere, dist_zero_right] using hx
+      have hxnorm : ‖x‖ = 1 := by
+        simpa only [Metric.mem_sphere, dist_zero_right] using hx
+      exact (Submodule.norm_coe x).trans hxnorm
     have horth : inner ℝ (E (source9CoordinateVector 8)) (x : Euc9) = 0 :=
       x.property _ (Submodule.mem_span_singleton_self _)
     refine ⟨?_, ?_⟩
@@ -133,7 +135,9 @@ theorem source9Axis8EightUnitSpinWord_continuous_pbw :
         Fin 8 → {u : V // source9Quadratic u = 1})) := by
     apply continuous_pi
     intro i
-    exact continuous_induced_rng.2 (continuous_subtype_val.comp (continuous_apply i))
+    have hi : Continuous (fun w : P => ((w i).val : V)) :=
+      continuous_subtype_val.comp (continuous_apply i)
+    exact hi.subtype_mk (fun w => (w i).property.1)
   exact source9EightUnitSpinWord_continuous_pbw.comp hp
 
 /-- The eight original perpendicular Q-unit parameters are path connected. -/
