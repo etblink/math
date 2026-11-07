@@ -7496,3 +7496,44 @@ under source-nine-eight-input-spin-map-42385104317-*. Static preflight and
 ten adversarial validator tests pass. Require a complete fresh strict run
 and retained artifact review before C0-A5a acceptance. Original branch and
 upstream PRs untouched; topology/compactness and spectra remain separate.
+
+
+## Run #42392763939 — fixed source map accepted; PBW continuity candidate
+
+Green at exact tested fc3c9f16b52e65c1db67dfd6cca73463a5fcfc09. Artifact
+13583136435 ZIP SHA-256
+e40b29fc6b3c65f4f8bf89ad7313a8b0aa1da1c6cd37266e3ddba8a8e04c0f13
+matches downloaded bytes. Full review verifies 164 archive pins against
+the tested checkout, 134 successful cold exits/log digests, 79 strict
+reports, nine markers, eight consumers, 42 package revisions, compiler
+identity and Lake environment digest. No Lean diagnostics or recovery/
+foreign axioms. source-nine-eight-input-spin-map-42392763939-* retains
+scoped acceptance, receipt and complete logs; prior failed evidence retained.
+
+C0-A5a qualifies the fixed four-pair actual Spin map on eight original
+Q-unit inputs, its literal ordered Clifford value and actual source-group
+surjectivity. No continuity or compactness is admitted from that algebra.
+
+New C0-A5b source SpectralSourceNineSpinWordContinuity.lean explicitly
+activates only the existing F10BE PBW normed values locally, as F10BE
+requires. Reuse the original F10BU vector embedding and F10BF Clifford
+multiplication continuity; compose input coordinates and lift continuity
+to the original source subtype. Four roots and eight consumers pending.
+A compact-image consumer has an explicit IsCompact K premise, not a proof
+of whole-parameter or source compactness.
+
+New qualifier exact-allowlists the single local attribute line enabling
+source9PBWNormedAddCommGroup and source9PBWNormedSpace in each candidate,
+then rejects any other instance token. Accepted spectral sources must
+have no such setup. Six setup-adversary tests join the ten report tests;
+all sixteen pass. No arbitrary local norm, global instance, new source
+topology or change to an existing validator. The dedicated gate pins 165
+inputs and cold-builds 135 objects, expecting 83 reports and ten markers.
+Static closure/pin and workflow syntax checks pass. Strict linting,
+proof budgets, dependencies and cache policy remain unchanged.
+
+After qualification, prove original Q-unit locus and finite-input product
+compactness, then combine with the actual continuous surjection to prove
+source compactness in the same PBW topology. All covering, Fock/gauge,
+physical domain, branching, coercivity and spectral-existence obligations
+remain separate. Original research branch and upstream PRs untouched.

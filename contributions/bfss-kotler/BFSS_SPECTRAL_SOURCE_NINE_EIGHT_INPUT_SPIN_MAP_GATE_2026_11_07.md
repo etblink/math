@@ -101,3 +101,28 @@ receipt, all compiler logs, exact failed source and unbuilt consumer snapshots
 preserve the evidence. Static preflight and ten report-validator tests pass.
 A fresh complete cold source/consumer run and archive review are required
 before C0-A5a qualification. Continuity and compactness remain separate.
+
+
+## Run #42392763939 — scoped C0-A5a acceptance
+
+The repaired [fixed-map strict run](https://github.com/etblink/math/actions/runs/42392763939)
+is green at exact tested commit `fc3c9f16b52e65c1db67dfd6cca73463a5fcfc09`.
+Downloaded artifact 13583136435 has ZIP SHA-256
+`e40b29fc6b3c65f4f8bf89ad7313a8b0aa1da1c6cd37266e3ddba8a8e04c0f13`.
+Full review verifies all 164 archived pins against the manifest and tested
+checkout, 134 successful cold builds and log digests, 79 exact strict
+reports, nine markers, eight consumers, all 42 locked packages, compiler
+identity and Lake environment log digest. No Lean diagnostics, recovery
+axioms or foreign assumptions occur.
+
+C0-A5a qualifies the fixed four-pair formula into the actual source Spin
+group, its literal ordered eight-vector Clifford value, and surjectivity
+onto the literal original source group. The prior lint-only red remains
+retained. Only two redundant change commands and their file pins were
+removed; statement types and the fixed map formula were unchanged.
+
+The [acceptance JSON](evidence/spectral-confinement-2026-11-06/source-nine-eight-input-spin-map-42392763939-acceptance.json),
+receipt, source/consumer and all compiler logs preserve this review.
+Continuity and compactness are not admitted by this algebraic result.
+The [PBW continuity gate](BFSS_SPECTRAL_SOURCE_NINE_SPIN_WORD_CONTINUITY_GATE_2026_11_07.md)
+is a new candidate with explicitly checked original topology setup.

@@ -755,3 +755,26 @@ Then prove original PBW continuity, original Q-unit locus compactness and
 compactness of its finite eight-input product. Only their combination with
 actual surjectivity may establish source compactness. The original source
 representation, topology and all physical/spectral claim boundaries remain.
+
+
+## T. C0-A5a qualified; original PBW continuity isolated
+
+Green #42392763939 at fc3c9f16b52e65c1db67dfd6cca73463a5fcfc09 passes full
+artifact review: 164 input pins, 134 successful cold builds, eight consumers,
+79 strict reports and nine markers. The fixed four-pair source map, exact
+ordered Clifford value and actual source Spin surjectivity now qualify.
+The prior lint red is retained; its statement types were unchanged.
+
+The [C0-A5b candidate](BFSS_SPECTRAL_SOURCE_NINE_SPIN_WORD_CONTINUITY_GATE_2026_11_07.md)
+next proves continuity using exactly the existing named F10BE PBW structures,
+original F10BU embedding and F10BF multiplication, then the inherited source
+subtype topology. Four roots and eight consumers remain pending. The new
+qualifier permits only exact local activation of the two accepted PBW
+values and rejects foreign/global setup; six new topology-setup
+tests join the ten report tests. No replacement topology or global instance.
+
+Parameter-locus compactness and its finite product remain independent.
+A consumer transports compactness only under an explicit IsCompact K
+premise. Source compactness requires the actual whole parameter-space proof
+and the qualified continuous surjection. Physical and spectral obligations
+remain separate.
