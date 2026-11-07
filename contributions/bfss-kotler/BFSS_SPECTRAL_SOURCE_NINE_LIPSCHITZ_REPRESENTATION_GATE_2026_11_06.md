@@ -153,3 +153,27 @@ increase or validator waiver is used. The source-header equality check,
 preflight and ten report tests pass locally. These are not Lean qualification.
 Require a fresh full gate and retained-evidence review; inspect the first
 new failure if red. Determinant +1 and all later research remain open.
+
+
+## Run #42344283019 — repaired bridge accepted in scope
+
+Green run at exact commit `ce15a36619804d51aff1c958ff3dd5f398ba416e`
+passed retained-artifact review. Artifact 13563626232 contains matching
+124 input blob/SHA256 pins, 94 cold-build exits/log digests, twenty root
+reports, two completion markers, twelve consumers, all 42 dependency
+revisions and the qualified compiler/environment digests. No original
+or candidate compiler warnings occur; no recovery axioms remain.
+
+The [scoped acceptance](evidence/spectral-confinement-2026-11-06/source-nine-lipschitz-representation-42344283019-acceptance.json),
+receipt, complete logs and source/consumer logs are retained alongside the
+previous red evidence. Qualify all ten roots: actual real-linear Lipschitz
+conjugation and inverse laws, determinant-unit character, actual Spin
+inclusion and exact pointwise/whole-representation restriction to F10BP.
+The two explicit scalar/inverse repairs resolved the observed elaboration
+failures without changing public statements, consumers or verification policy.
+
+Determinant +1 is not part of this acceptance. The next
+[source-nine orientation candidate](BFSS_SPECTRAL_SOURCE_NINE_ORIENTATION_GATE_2026_11_06.md)
+attempts the actual normalized generator matrices, odd-nine determinant,
+Lipschitz closure and restriction to the existing nine-vector matrix hom.
+Fixed-eight factorization, source compactness and spectral claims remain open.

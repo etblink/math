@@ -204,3 +204,22 @@ unit character is constructed; determinant +1 is not yet proved. The actual
 generator-matrix identification and odd-nine determinant/closure propagation
 follow only after source/consumer qualification and evidence review.
 Fixed-eight factorization, original PBW compactness and spectra remain open.
+
+
+## Run #42344283019 — actual Lipschitz bridge accepted; C0-A2 orientation candidate
+
+Reviewed the complete artifact at ce15a36619804d51aff1c958ff3dd5f398ba416e:
+94 cold builds, 124 input pins, twelve consumers and twenty root reports
+pass, with no compiler warnings. The
+[Lipschitz action and exact Spin restriction](BFSS_SPECTRAL_SOURCE_NINE_LIPSCHITZ_REPRESENTATION_GATE_2026_11_06.md)
+qualify within their stated source scope; previous failed evidence is preserved.
+
+The [orientation candidate](BFSS_SPECTRAL_SOURCE_NINE_ORIENTATION_GATE_2026_11_06.md)
+now attempts determinant +1 on the entire actual nine-vector Lipschitz
+action, restriction to original F10BP/F10BR and algebraic SO(9) packaging.
+It uses actual normalized generator matrices and algebraic closure, with
+no assumed finite factorization or source connectedness. Sixteen proposed
+roots and sixteen consumers; 127 pinned inputs, 97 cold objects and 42
+root reports including fresh audit of the accepted Lipschitz source.
+Static checks are not acceptance. C0-A2, fixed-eight factorization, exact
+PBW compactness, Fock/gauge/domain, branching, coercivity and spectra remain open.

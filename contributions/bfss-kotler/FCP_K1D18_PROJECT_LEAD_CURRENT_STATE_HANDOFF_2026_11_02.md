@@ -7078,3 +7078,56 @@ gate remains a candidate; determinant-unit character is not determinant
 +1, and source orientation, compactness and spectra remain open. See the
 Lipschitz gate's scoped failure/repair section for exact causal evidence.
 Original research branch, upstream PRs and guarded caches are untouched.
+
+
+## Run #42344283019 — Lipschitz bridge accepted; full C0-A2 orientation candidate
+
+**Reverified state.** Spectral branch HEAD/tested commit was
+ce15a36619804d51aff1c958ff3dd5f398ba416e. Reviewed green #42344283019
+artifact 13563626232: all 124 input blob/SHA256 pins, 94 cold-build exits/
+log digests, twenty public-root reports, two markers, twelve consumers,
+42 package revisions and compiler/environment digests match. No compiler
+warnings or recovery axioms. Scoped acceptance, receipt/all logs/source/
+consumer logs are durable under evidence/spectral-confinement-2026-11-06/
+source-nine-lipschitz-representation-42344283019-*. Prior red #42342751657
+and failed source remain retained, with no retrospective promotion.
+
+**Accepted scope.** All ten Lipschitz bridge roots qualify: actual original
+nine-vector real-linear conjugation, inverse laws, determinant-unit character,
+actual Spin-to-units inclusion and exact pointwise/whole restriction to F10BP.
+Only the explicit real-scalar and unit-inverse type repairs changed from
+the initial red. No determinant-one, compactness or spectral fact is admitted.
+
+**Next C0-A2 candidate.** New SpectralSourceNineOrientation.lean derives the
+original polar/dot identity and normalized row, computes the actual line-
+reflection matrix with determinant (-1)^9(1-2)=+1, identifies the accepted
+Lipschitz action on actual invertible Clifford-vector generators with that
+matrix, and propagates its determinant-unit value through algebraic
+Subgroup.closure_induction''. Quadratic invertibility is derived from the
+source Clifford generator; no even/finite-word or connectedness premise.
+Restrict using the accepted exact bridge to F10BP, transfer to actual F10BR
+matrices, then package the same matrices algebraically in SO(9). Sixteen
+new public roots and sixteen complete-type consumers; one private derived-
+row helper is source-pinned and transitively audited without private-name
+guessing. The consumer spells its derived letI explicitly.
+
+Gate pins 127 inputs and cold-builds 97 objects: 94 originals matching
+preserved 4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e (BQ/BR add two),
+one accepted Lipschitz source, new source/consumer and 30 controls. Strictly
+reaudit accepted ten roots plus sixteen new roots in each candidate: 42
+reports, only the three foundational axioms. Source/closure preflight, ten
+adversarial report tests and workflow checks pass locally; actual compiler
+qualification remains pending. See BFSS_SPECTRAL_SOURCE_NINE_ORIENTATION_GATE_2026_11_06.md.
+
+Pinned Mathlib Inversion and SchurComplement interfaces were inspected at
+the unchanged dependency commit, along with source48 rank-one/closure proof
+patterns. No source48 module is newly imported, no public source action or
+quadratic form replaced, no new instance, cache change, waiver or proof-limit
+increase. Existing workflows, original branch and upstream PRs are unchanged.
+
+**Next decision.** Classify the first failure, or review the full retained
+artifact before accepting any C0-A2 orientation/SO9 claim. If accepted, test
+bounded source-normalized Cartan words using exact reflection pairs and
+two-sign fibers. Unit-locus compactness, eight-factor padding/sign correction,
+PBW continuity, source compactness and all Fock/gauge/domain, branching,
+coercivity and spectral gates remain distinct and open.

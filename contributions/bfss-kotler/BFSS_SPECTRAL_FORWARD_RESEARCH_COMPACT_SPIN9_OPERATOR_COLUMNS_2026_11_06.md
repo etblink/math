@@ -529,3 +529,32 @@ is not a determinant-one theorem. After its independent strict gate, the
 source-normalized generator matrix, odd-nine determinant and closure
 propagation remain separate proof obligations; the volume/word alternatives
 and all topology/spectral boundaries remain available and explicit.
+
+
+## M. Exact Lipschitz restriction accepted; orientation remains a candidate
+
+The repaired source-nine Lipschitz gate qualified at ce15a36619804d51aff1c958ff3dd5f398ba416e
+in #42344283019 after retained-evidence review: 94 cold builds, twelve
+consumers and twenty axiom reports. It constructs the actual real-linear
+Lipschitz action and determinant-unit character and identifies its exact
+Spin restriction with F10BP. The prior red source and scalar/inverse
+elaboration repairs remain in the scoped gate's evidence. A determinant
+unit character does not yet establish its value.
+
+The [new C0-A2 candidate](BFSS_SPECTRAL_SOURCE_NINE_ORIENTATION_GATE_2026_11_06.md)
+now attempts K's complete odd-dimensional argument: original polarization
+and normalized row; actual Clifford generator/rank-one matrix equality;
+`(-1)^9(1-2)=+1`; character propagation through algebraic Lipschitz closure;
+and restriction to the original F10BP/F10BR action, with algebraic SO(9)
+packaging. Clifford-generator invertibility is the actual generator premise;
+quadratic invertibility is derived inside the proof. No normalized-word
+existence, topological closure, source connectedness or gamma16 determinant
+is substituted. Sixteen proposed public roots and sixteen independent
+consumers remain pending a dedicated strict gate and evidence review.
+
+If this candidate qualifies, the next question is bounded normalized
+Cartan factorization for the literal source action, using the accepted
+reflection-pair identity and source two-sign fibers. Source quadratic
+unit-locus compactness, padding/sign correction and exact PBW continuity
+remain separate; no source compactness or spectral conclusion follows
+from an algebraic homomorphism into the compact target SO(9).
