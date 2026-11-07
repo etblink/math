@@ -7537,3 +7537,41 @@ compactness, then combine with the actual continuous surjection to prove
 source compactness in the same PBW topology. All covering, Fock/gauge,
 physical domain, branching, coercivity and spectral-existence obligations
 remain separate. Original research branch and upstream PRs untouched.
+
+
+## Run #42395290981 — PBW continuity accepted; source compactness candidate
+
+Green at tested be0b80c0517bfbcccd2466662d7cbded58da570a. Artifact
+13583726993 ZIP SHA-256
+4c6fa8612ee4a3e3e09f4de282b6e1d5dfa4363bd91174b068cb7ee26508c1ff
+matches downloaded bytes. Full review verifies all 165 archived pins,
+135 zero cold exits/log digests, 83 exact reports, ten markers, eight
+consumers, 42 package revisions, compiler identity, environment log digest
+and exact local PBW setup. No diagnostics or recovery/foreign axioms.
+source-nine-spin-word-continuity-42395290981-* retains acceptance,
+receipt and complete logs.
+
+C0-A5b qualifies the actual embedding/coordinate and fixed-map continuity
+for exactly the original named PBW topology, inherited by literal source
+Spin. Parameter compactness and source compactness were not accepted there.
+
+New C0-A5c SpectralSourceNineCompactness.lean proposes original Q-unit
+locus compactness via the accepted same-label Euclidean sphere preimage
+and linear homeomorphism, compactness of the exact finite input product,
+then actual source compactness from the qualified continuous surjection.
+Propose named CompactSpace value and ambient PBW compactness/closedness
+corollaries; no global registration. Eight roots and ten consumers pending.
+
+New strict gate: 166 pins, 136 cold objects, 95 reports, eleven markers.
+All 125 original and nine accepted source files remain unchanged. Exact
+local PBW allowlist now includes the newly accepted continuity module by
+name, plus new source/consumer; all other instance setup is rejected.
+Static closure/pins, sixteen validator tests and workflow syntax pass.
+Proof budgets, strict linting, dependencies and cache contracts unchanged.
+Require a fresh complete compiler/consumer gate and retained artifact
+review before C0-A5c or actual source compactness acceptance.
+
+If qualified, review the original memorandum's remaining operator-column,
+Fock/gauge action and character, closed-domain, full-sector branching and
+coercivity obligations. Source group compactness is not confinement,
+covering or spectral existence. Original branch and upstream PRs untouched.

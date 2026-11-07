@@ -778,3 +778,27 @@ A consumer transports compactness only under an explicit IsCompact K
 premise. Source compactness requires the actual whole parameter-space proof
 and the qualified continuous surjection. Physical and spectral obligations
 remain separate.
+
+
+## U. C0-A5b qualified; actual source compactness proposed
+
+Green #42395290981 at be0b80c0517bfbcccd2466662d7cbded58da570a passes full
+artifact review: 165 pins, 135 successful cold builds, eight consumers,
+83 strict reports and ten markers. The fixed actual source word map is
+continuous in the explicitly reinstated original named PBW topology.
+All sixteen validator tests and exact topology setup are preserved.
+
+The [C0-A5c candidate](BFSS_SPECTRAL_SOURCE_NINE_COMPACTNESS_GATE_2026_11_07.md)
+identifies the original Q-unit locus as the preimage of the native Euclidean
+unit sphere under the accepted same-label linear homeomorphism. It proposes
+compactness of that locus and its finite eight-input product, then of the
+whole actual source Spin group via the qualified continuous surjection.
+Ambient PBW compactness and closedness are proposed corollaries. Eight
+roots and ten consumers remain pending dedicated strict qualification.
+No global compact-space instance or replacement topology is installed.
+
+If qualified, this closes the C0-A group-compactness route; operator/Fock
+actions, source gauge characters, full physical-domain column identities,
+whole-sector branching and coercivity still require independent proofs.
+Do not treat group compactness as confinement or spectral existence. Review
+those original memorandum blockers before selecting the next formal gate.

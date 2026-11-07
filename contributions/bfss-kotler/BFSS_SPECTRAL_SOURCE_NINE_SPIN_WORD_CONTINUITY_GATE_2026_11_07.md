@@ -85,3 +85,27 @@ actual source surjectivity for compactness of the literal source Spin group
 in its original PBW topology. No source compactness, covering, Fock/gauge
 implementation, physical domain, branching, coercivity or spectral-existence
 claim is admitted here. Original branch and upstream PRs remain untouched.
+
+
+## Run #42395290981 — scoped C0-A5b acceptance
+
+The [PBW continuity strict run](https://github.com/etblink/math/actions/runs/42395290981)
+is green at exact tested commit `be0b80c0517bfbcccd2466662d7cbded58da570a`.
+Downloaded artifact 13583726993 has ZIP SHA-256
+`4c6fa8612ee4a3e3e09f4de282b6e1d5dfa4363bd91174b068cb7ee26508c1ff`.
+Full review verifies all 165 archive pins against the manifest and tested
+checkout, 135 successful cold builds and log digests, 83 exact strict
+reports, ten markers, eight consumers, 42 locked packages, compiler
+identity, Lake environment digest and the exact local PBW setup. No Lean
+diagnostic, recovery axiom or foreign assumption occurs.
+
+C0-A5b qualifies original vector/coordinate embedding continuity, the fixed
+formula's original Clifford-value continuity, and continuity into the actual
+source Spin subtype for its inherited original PBW topology. The consumer
+compact-image result retains its explicit IsCompact K premise. Neither
+parameter-space nor source compactness is admitted by this record.
+
+The [acceptance JSON](evidence/spectral-confinement-2026-11-06/source-nine-spin-word-continuity-42395290981-acceptance.json),
+receipt and all source/consumer/compiler logs preserve this qualification.
+The [original source compactness gate](BFSS_SPECTRAL_SOURCE_NINE_COMPACTNESS_GATE_2026_11_07.md)
+is the next separate candidate; its statement is not admitted until review.
