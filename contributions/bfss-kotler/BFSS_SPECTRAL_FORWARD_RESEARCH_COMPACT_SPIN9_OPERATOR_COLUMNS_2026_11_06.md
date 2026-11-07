@@ -2,10 +2,10 @@
 
 **Date:** 2026-11-06  
 **Status:** EXPLORATORY RESEARCH MEMORANDUM — NO NEW LEAN-QUALIFIED SPECTRAL CLAIM  
-**Research branch:** \`research/bfss-spectral-confinement-roadmap-20261106\`  
-**Pre-document branch HEAD:** \`c1f309ca6de85b6f9e6c76a38254140e333fe819\`  
-**Last strict mathematical gate verified:** [#42325087575](https://github.com/etblink/math/actions/runs/42325087575), green for the source-generic \`massless_coreForm_energy\` interface.  
-**Separate contribution snapshot, READ ONLY:** [\`etblink/math@fa00aa36...\`](https://github.com/etblink/math/tree/fa00aa36e770ca516f57b41f5b02229a5033d50f), the physical-operator ancestry used in PR #77. Its full \`OperatorDependencies\` tree is **not** present on this research branch.
+**Research branch:** `research/bfss-spectral-confinement-roadmap-20261106`  
+**Pre-document branch HEAD:** `c1f309ca6de85b6f9e6c76a38254140e333fe819`  
+**Last strict mathematical gate verified:** [#42325087575](https://github.com/etblink/math/actions/runs/42325087575), green for the source-generic `massless_coreForm_energy` interface.  
+**Separate contribution snapshot, READ ONLY:** [`etblink/math@fa00aa36...`](https://github.com/etblink/math/tree/fa00aa36e770ca516f57b41f5b02229a5033d50f), the physical-operator ancestry used in PR #77. Its full `OperatorDependencies` tree is **not** present on this research branch.
 
 ## Executive decision
 
@@ -25,12 +25,12 @@ The current branch retains:
 - [F10CW identity local chart](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CWOriginalSourceIdentityLocalChart.lean), [F10DE translated atlas](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DETranslatedSourceCharts.lean), [F10CU two-sign natural-action fibers](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CUNaturalActionTwoSignFibers.lean), and the more recent accepted F10DW identity-differentiability theorem.
 - [F10R original paired 48-label SO(48) homomorphism](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean). Its mathematical content is an **algebraic** homomorphism; continuity of the composed paired action still needs an exact consumer.
 - [Original normalized Fock gamma CAR](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean), [self-adjoint gamma candidate](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean), and [exploratory universal Clifford-to-Fock homomorphism](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockCliffordUniversalLiftProbe.lean). Do **not** mistake their historical/prospective file headers for a fresh gate on this branch.
-- The [massless core-form source theorem](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralMasslessCoreFormIdentity.lean) and source [\`PotentialBounds.lean\`](../../lean/OAI/MathematicalPhysics/BFSS/PotentialBounds.lean) containing \`fermionGrowthConstant\`, \`deformedFermionField_growth\`, and \`deformedFermionField_inner_lower\`. The first has a verified strict run; the latter source theorem is inherited, but its precise new consumer remains to be qualified.
+- The [massless core-form source theorem](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralMasslessCoreFormIdentity.lean) and source [`PotentialBounds.lean`](../../lean/OAI/MathematicalPhysics/BFSS/PotentialBounds.lean) containing `fermionGrowthConstant`, `deformedFermionField_growth`, and `deformedFermionField_inner_lower`. The first has a verified strict run; the latter source theorem is inherited, but its precise new consumer remains to be qualified.
 - The [A/B](BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md), [C](BFSS_SPECTRAL_CONFINEMENT_C_AUDIT_2026_11_06.md), [D/lift](BFSS_SPECTRAL_CONFINEMENT_D_AND_LIFT_AUDIT_2026_11_06.md), [E averaging](BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md) audits and three green linear-moment/smooth-core/weighted-closure gates. These are NOT a high-weight coercivity theorem.
 
-Separate-snapshot **reader candidates** (not inherited by this branch) include \`S1HSourceGaugeCovariantImplementerUniqueness\`, \`M3IOriginalComplexCliffordFockAlgebraEquiv\`, \`D2B10CFullHaarCoreCompatibilityAndDensity\`, and \`D2B28ConcretePairedSU2Hamiltonian\`. Source declarations and manifest qualifications must be distinguished from an imported and newly consumer-qualified branch interface.
+Separate-snapshot **reader candidates** (not inherited by this branch) include `S1HSourceGaugeCovariantImplementerUniqueness`, `M3IOriginalComplexCliffordFockAlgebraEquiv`, `D2B10CFullHaarCoreCompatibilityAndDensity`, and `D2B28ConcretePairedSU2Hamiltonian`. Source declarations and manifest qualifications must be distinguished from an imported and newly consumer-qualified branch interface.
 
-Pinned Mathlib \`d13f23b723b8a846827a245b89c10fc7d3f11612\` has \`CliffordAlgebra.equivExterior\` (LINEAR, not multiplicative), \`CliffordAlgebra.equivOfIsometry\`, and \`Subgroup.isClosed_of_isLocallyClosed\` in \`Mathlib/Topology/Algebra/OpenSubgroup.lean\`. Its \`CliffordAlgebra.star\` sends an **odd** real generator to its negative; it cannot be identified with Hilbert adjoint of a self-adjoint Majorana.
+Pinned Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` has `CliffordAlgebra.equivExterior` (LINEAR, not multiplicative), `CliffordAlgebra.equivOfIsometry`, and `Subgroup.isClosed_of_isLocallyClosed` in `Mathlib/Topology/Algebra/OpenSubgroup.lean`. Its `CliffordAlgebra.star` sends an **odd** real generator to its negative; it cannot be identified with Hilbert adjoint of a self-adjoint Majorana.
 
 ## B. New compactness route for the literal source Spin(9) (C0)
 
@@ -53,7 +53,7 @@ K=\{x\in\mathrm{Cl}_{9,+}^{\mathrm{even}}:
 \]
 The equations define a closed subset in the finite-dimensional PBW topology. Its elements satisfy \(\sum_Ic_I^2=1\), making it bounded and therefore compact. Reversal gives inversion and multiplication remains continuous, so \(K\) is a compact Hausdorff topological group. Do **not** claim \(K=\operatorname{Spin}(9)\): the inclusion may be strict.
 
-Mathlib's literal \`spinGroup source9Quadratic\` lies in \(K\): it is even and unitary, while on even elements the source Clifford \`star\` is reversal. Its topology is the inherited PBW subspace topology, the one used throughout F10BF/BG/CW/DE. The F10CW/DE open partial homeomorphisms to \(\mathbb R^{36}\) should supply a compact neighborhood of each source Spin element, i.e. local compactness of this *embedded subgroup*. A locally compact subgroup of a Hausdorff topological group, with the **subspace topology**, is closed; in pinned Mathlib one promising route is first establishing \`IsLocallyClosed\` and then applying \`Subgroup.isClosed_of_isLocallyClosed\`.
+Mathlib's literal `spinGroup source9Quadratic` lies in \(K\): it is even and unitary, while on even elements the source Clifford `star` is reversal. Its topology is the inherited PBW subspace topology, the one used throughout F10BF/BG/CW/DE. The F10CW/DE open partial homeomorphisms to \(\mathbb R^{36}\) should supply a compact neighborhood of each source Spin element, i.e. local compactness of this *embedded subgroup*. A locally compact subgroup of a Hausdorff topological group, with the **subspace topology**, is closed; in pinned Mathlib one promising route is first establishing `IsLocallyClosed` and then applying `Subgroup.isClosed_of_isLocallyClosed`.
 
 Proposed theorem boundary:
 \[
@@ -63,7 +63,7 @@ Proposed theorem boundary:
 \text{CompactSpace}(\operatorname{spinGroup}(Q_9)).
 \]
 
-**Falsification/hold:** failure of the actual PBW coefficient identity, different Clifford sign convention, lack of source chart/topology identification, or inability to prove local-closedness without importing new axioms. The abstract mathematical proof does **not** mean a Lean \`CompactSpace\` instance has been installed. No SO(9) surjectivity, Lie-group manifold, Fock vector lift or point-spectrum statement is implied.
+**Falsification/hold:** failure of the actual PBW coefficient identity, different Clifford sign convention, lack of source chart/topology identification, or inability to prove local-closedness without importing new axioms. The abstract mathematical proof does **not** mean a Lean `CompactSpace` instance has been installed. No SO(9) surjectivity, Lie-group manifold, Fock vector lift or point-spectrum statement is implied.
 
 ## C. Operator-algebra Spin(9) action without vector phases (C1)
 
@@ -77,7 +77,7 @@ Define \(\Gamma_p=\sqrt2\,\theta_p\) using the **original paired Source48 labels
 \]
 There are \(2^{48}=\dim_\mathbb C\mathcal A\) such elements, hence they would form a complete Hilbert–Schmidt basis. **Do not** attempt to enumerate those \(2^{48}\) operators computationally. This is a symbolic finite-CAR argument; source-exact \(\dim\mathcal F\), trace cyclicity and normalization need Lean evidence.
 
-Compare this minimal route against recovering the separate snapshot's full M3I equivalence. The latter imports 109 declared \`OperatorDependencies\` among 131 contribution modules in its manifest closure, whereas this branch currently has four \`OperatorDependencies\` files. Manifest counts are dependency-surface indicators, **not** compile-time benchmarks, and the minimal route may itself be harder to prove.
+Compare this minimal route against recovering the separate snapshot's full M3I equivalence. The latter imports 109 declared `OperatorDependencies` among 131 contribution modules in its manifest closure, whereas this branch currently has four `OperatorDependencies` files. Manifest counts are dependency-surface indicators, **not** compile-time benchmarks, and the minimal route may itself be harder to prove.
 
 F10R supplies the actual source-group action \(R_{48}(g)\) on original Majorana labels. An orthogonal action sends \(\Gamma(v)\mapsto\Gamma(R_{48}(g)v)\) and preserves the Clifford relations, inducing an algebra automorphism \(\alpha_g\) of \(\mathcal A\). Establish existence, the group law and continuity **on the original \(\mathcal A\)**, either via the full Clifford equivalence or the symbolic monomial basis.
 
@@ -90,7 +90,7 @@ Since \(\Gamma(v)\) is self-adjoint for real \(v\), each \(\alpha_g\) sends self
 =\operatorname{Tr}(T^\dagger T).
 \]
 
-**Critical negative knowledge:** Mathlib Clifford \`star\` is *negative* on the original odd generators; the Fock Hilbert adjoint is *positive*. Do not call the existing real Clifford homomorphism a global star homomorphism. Use the original Fock adjoint and its generator properties explicitly. An action on \(\mathcal A\) is not yet a unitary action on \(\mathcal F\), and we must not assert one.
+**Critical negative knowledge:** Mathlib Clifford `star` is *negative* on the original odd generators; the Fock Hilbert adjoint is *positive*. Do not call the existing real Clifford homomorphism a global star homomorphism. Use the original Fock adjoint and its generator properties explicitly. An action on \(\mathcal A\) is not yet a unitary action on \(\mathcal F\), and we must not assert one.
 
 ## D. Gauge projection and physical **left** ideal (C2)
 
@@ -100,7 +100,7 @@ For fixed \(s\in\operatorname{Spin}(9)\), assuming \(\alpha_s\) and its correct 
 \[
 \alpha_s(U_g)=U_g,\quad\alpha_s(P_W)=P_W.
 \]
-The separate-snapshot S1H \`original_source_gauge_representation_unique\` is a possible ready-made consumer, **subject to its exact Majorana covariance hypothesis and substantial import closure**. Test the cheaper direct character argument before importing S1H wholesale. A phase ambiguity must not simply be set to one by definition.
+The separate-snapshot S1H `original_source_gauge_representation_unique` is a possible ready-made consumer, **subject to its exact Majorana covariance hypothesis and substantial import closure**. Test the cheaper direct character argument before importing S1H wholesale. A phase ambiguity must not simply be set to one by definition.
 
 Define
 \[
@@ -149,11 +149,11 @@ The **largest open representation-theoretic obligation** remains the Spin(9)→S
 
 ## F. Qualitative first, quantitative later
 
-The original \`PotentialBounds.lean\` already proves a finite nonnegative source coefficient \(C_M=M.\mathrm{fermionGrowthConstant}\) and
+The original `PotentialBounds.lean` already proves a finite nonnegative source coefficient \(C_M=M.\mathrm{fermionGrowthConstant}\) and
 \[
 \|M.\mathrm{deformedFermionField}(1,0,X)\|\le C_M\|X\|.
 \]
-Combining the green exact \`massless_coreForm_energy\` identity with a separately accepted SU(2) wedge-potential specialization should give a *core-level* lower bound using **the original** \(H\), with no sharp source skew-CAR diagonalization.
+Combining the green exact `massless_coreForm_energy` identity with a separately accepted SU(2) wedge-potential specialization should give a *core-level* lower bound using **the original** \(H\), with no sharp source skew-CAR diagonalization.
 
 If the full-space one-color oscillator exclusion, rotated scalar-form averaging, and operator-column covariance all survive, choose
 \[
@@ -175,9 +175,9 @@ The previously investigated explicit \(C=8\sqrt3,\lambda_2>17\) and optional nea
 |---|---|---|
 | **C0a** | PBW scalar-reversal orthonormality against original F10Y basis, no ambiguous Clifford sign convention | Nonpositive coefficient form or mismatched source axes |
 | **C0b** | Original even reversal-unitary \(K\) is a compact Hausdorff group in the same PBW topology | Unproved continuity, subgroup law, or compactness |
-| **C0c** | Local compactness of literal \`spinGroup source9Quadratic\` from F10CW/DE charts; closedness in \(K\); compactness of the original Spin(9) | A different topology, unproved embedding, or missing locally-closed argument |
+| **C0c** | Local compactness of literal `spinGroup source9Quadratic` from F10CW/DE charts; closedness in \(K\); compactness of the original Spin(9) | A different topology, unproved embedding, or missing locally-closed argument |
 | **C1a** | Source 48 normalized Majorana adjoint/CAR plus symbolic monomial trace orthogonality; assess minimal imports vs M3I | Substitute module or brute-force \(2^{48}\) enumeration |
-| **C1b** | Genuine continuous algebra automorphism \(\alpha\), Fock adjoint preservation, trace invariance, HS unitarity | Confusing Clifford \`star\` with Hilbert adjoint, or mere projective action |
+| **C1b** | Genuine continuous algebra automorphism \(\alpha\), Fock adjoint preservation, trace invariance, HS unitarity | Confusing Clifford `star` with Hilbert adjoint, or mere projective action |
 | **C2a** | Exact source SU(2) covariance and \(\alpha_s(U_g)=U_g\), then \(\alpha_s(P_W)=P_W\) | Undischarged character phase, gauge-action mismatch |
 | **C2b** | Isometric physical-column identification and **closed-domain** equality \(\widetilde H\simeq H_{\rm phys}^{\oplus d}\) | A nonphysical gauge action, incorrect left/right ideal, wrong normalization or core |
 | **C3a** | Source-exact Spin(9) form covariance and reducing-sector projection | Lie-algebra action substituted for global representation |
