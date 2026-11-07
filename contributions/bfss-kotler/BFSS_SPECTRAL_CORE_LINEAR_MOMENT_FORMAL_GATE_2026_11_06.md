@@ -1,6 +1,6 @@
 # BFSS smooth-core linear-moment bridge — 2026-11-06
 
-**Status: proposed Lean source and six independent consumers; compiler qualification pending.**
+**Status: strict source/consumer gate passed in run #42318037096; two smooth-core analysis interfaces qualified under their stated hypotheses.**
 This follows the [qualified linear-moment gate](BFSS_SPECTRAL_LINEAR_MOMENT_FORMAL_GATE_2026_11_06.md#scoped-acceptance-complete-cold-run-42315568670)
 at `6b7f43be416bcfcef6d293dff423e13d2468f9d7`, run #42315568670.
 The proposal parent is `4b3df7b237e590b94a2ad70d90dd7e55ad5dbab4` on
@@ -27,7 +27,7 @@ The original smooth-core carrier already supplies each function's smoothness
 and compact support. The target's finite-dimensional hypothesis is explicit
 and is appropriate for the original finite SU(2) Fock carrier.
 
-Two named declarations are proposed:
+The successful run qualifies two named smooth-core analysis declarations:
 
 - `OAI.BFSSSliceSobolev.core_gradient_l2_local_totallyBounded`.
 - `OAI.BFSSSliceSobolev.core_linear_moment_totallyBounded`.
@@ -114,3 +114,56 @@ before any scoped acceptance. Diagnose a failure at its exact statement or
 proof boundary, preserving the failed attempt and the unchanged hypothesis
 contract. The original F10DW branch, upstream PRs and existing gates remain
 outside the modification scope.
+
+## Scoped acceptance: first complete run #42318037096
+
+[Run #42318037096](https://github.com/etblink/math/actions/runs/42318037096)
+passed on exact commit `5d7ba89d4ef46efdd5411169c35926c807fee76f`.
+The retained artifact is `13551724078`, with checked ZIP SHA-256
+`bfdd88da81784c9e13d67c10fccfb7c3ef5e7c9e67cce4db1b1d917cc8b44f54`.
+The original PASS receipt SHA-256 is
+`5ff851904f6525561e74cbddadc1d0467ad8fbb8ff1a30e9d47b7732e2b76fca`.
+
+Review matched all sixty source/control pins directly against the artifact
+and tested checkout, including the workflow under `inputs/.github`. All
+42 locked dependency revisions and the pinned compiler executable digest
+match. All 49 cold compilations returned zero; their compiler-log digests
+match and all fresh object digest fields are present. All 45 original
+compiler logs are empty. The accepted source and consumer were re-audited
+before the new pair. All eight exact root reports were replayed: each uses
+exactly `propext`, `Classical.choice`, `Quot.sound`. All four completion
+markers are exact, and all six new independent examples compiled without
+compiler diagnostics or increased proof limits. Both regression suites
+(eight accepted and five new checks) passed in the same run.
+
+This first complete smooth-core attempt passed. The proof reuses the
+original derivative/local Rellich argument and composes the qualified
+linear-moment result through the original `toL2` carrier. No source rewrite,
+new support-inference workaround or resource escalation was required.
+
+Durable evidence:
+
+- [Scoped acceptance record](evidence/spectral-confinement-2026-11-06/core-linear-moment-42318037096-acceptance.json).
+- [Original PASS receipt](evidence/spectral-confinement-2026-11-06/core-linear-moment-42318037096-receipt.json).
+- [All 49 compiler logs and separate Lake environment log](evidence/spectral-confinement-2026-11-06/core-linear-moment-42318037096-all-logs.json).
+- [New source reports](evidence/spectral-confinement-2026-11-06/core-linear-moment-42318037096-source-log.txt)
+  and [new independent-consumer reports](evidence/spectral-confinement-2026-11-06/core-linear-moment-42318037096-consumer-log.txt).
+
+**Lead decision.** Qualify the two named smooth-core interfaces under their
+exact hypotheses. Local compactness is now derived for a smooth-core family
+with the stated gradient and L2 bounds; a uniform first radial moment adds
+global total boundedness. Those three bounds remain hypotheses. This is
+internal Lean compilation and consumer evidence, not independent human or
+peer review, and supplies no BFSS energy/coercivity theorem or eigenpair.
+
+The next bounded bridge is an analogue of the original
+`weightedClosure_totallyBounded`, on the same `weightedClosure μ e w hw`
+triples, with `c*‖x‖ ≤ w(x)^2` for `c>0` replacing its quadratic-radius
+hypothesis. Reuse `weightedClosure_approx`, the original weighted norm
+identity, and `totallyBounded_asymptotic`; the approximating smooth-core
+family should use the newly qualified first-moment theorem. The prospective
+moment bound is `((C+1)^2)/c`, without taking its square root. An explicit
+corollary for `w(x)=Real.sqrt ‖x‖` would then match the intended radial
+weight. These closure statements remain unproved and must receive their own
+independent consumers and gate. They do not identify that weighted closure
+with a physical Hamiltonian form domain; P1–P3 and spectral claims remain open.
