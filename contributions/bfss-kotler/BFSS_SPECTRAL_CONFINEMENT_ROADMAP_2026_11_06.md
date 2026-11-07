@@ -223,3 +223,23 @@ roots and sixteen consumers; 127 pinned inputs, 97 cold objects and 42
 root reports including fresh audit of the accepted Lipschitz source.
 Static checks are not acceptance. C0-A2, fixed-eight factorization, exact
 PBW compactness, Fock/gauge/domain, branching, coercivity and spectra remain open.
+
+
+## Run #42347858285 — C0-A2 accepted; bounded Q-unit Cartan candidate
+
+Reviewed exact commit 3482485c9290ac8e01011d0a76e988a0c7e0ac3f and complete
+artifact: 127 input pins, 97 cold builds, sixteen consumers and 42 strict
+root reports pass without warnings. [C0-A2](BFSS_SPECTRAL_SOURCE_NINE_ORIENTATION_GATE_2026_11_06.md)
+qualifies original nine-vector determinant +1 and algebraic SO(9) packaging.
+Failed style evidence remains retained; source compactness is not admitted.
+
+The next [ordered Q-unit Cartan gate](BFSS_SPECTRAL_SOURCE_NINE_UNIT_CARTAN_GATE_2026_11_06.md)
+proposes an even list of at most eight original Q-unit normals giving the
+actual source action through native hyperplane reflections. It preserves
+order, removes zero identities before parity, and explicitly recovers
+the original action via the same coordinate/L2 equivalence. Twenty new
+roots and twenty consumers; 129 pins, 99 cold objects and 75 reports,
+including fresh audits of three qualified source modules. This candidate
+is not an exact source Clifford-word factorization. Pair lifting, two-sign
+correction, fixed-eight padding and original PBW compactness remain next
+obligations, alongside the independent physical spectral gates.

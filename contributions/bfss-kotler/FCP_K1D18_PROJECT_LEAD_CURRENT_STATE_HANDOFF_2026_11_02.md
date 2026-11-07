@@ -7166,3 +7166,53 @@ remains a candidate despite clean incidental axiom reports. Fixed-eight
 words, original PBW compactness, Fock/gauge/domain, branching, coercivity
 and spectral conclusions remain open. Original research branch, guarded
 cache contracts and upstream PRs are unchanged.
+
+
+## Run #42347858285 — source orientation accepted; bounded Q-unit Cartan candidate
+
+**Reverified state.** Spectral HEAD/tested commit was
+3482485c9290ac8e01011d0a76e988a0c7e0ac3f. Green #42347858285 artifact
+13564382132 passed review: all 127 input pins, 97 cold-build exits/log
+digests, 42 strict root reports, three markers, sixteen consumers, all
+42 dependency revisions and compiler/environment digests match. No compiler
+warnings or recovery axioms. Acceptance, receipt and complete source/
+consumer/all logs are durable at evidence/spectral-confinement-2026-11-06/
+source-nine-orientation-42347858285-*. The prior red #42346341940 stays
+retained; the strict style repair changed only four proof-local keywords.
+
+**Accepted C0-A2.** All sixteen new roots qualify: actual normalized
+Clifford-generator/rank-one matrix equality, determinant-unit value one
+through the entire untwisted nine-vector Lipschitz subgroup, exact Spin
+restriction, original F10BP/F10BR determinant +1, and algebraic SO(9)
+packaging of the same source action. The qualified Lipschitz source was
+freshly re-audited. No compactness, covering or physical spectral claim.
+
+**Next bounded candidate.** SpectralSourceNineUnitCartan.lean conjugates
+the actual F10BQ action by the already qualified same-label source9ToEuclidean,
+proves its native L2 isometry and determinant-one transport, removes zero
+identity hyperplane factors from a native Cartan list, normalizes remaining
+normals preserving their lines and full ordered product, proves native
+unit-reflection/list determinant parity, then bounds even length by eight
+in actual dimension nine. Pull normals back to ORIGINAL source-Q-unit
+vectors. Twenty public roots and twenty full-type consumers, including
+pointwise recovery of the source action and deletion of singleton zero.
+
+The gate pins 129 inputs and cold-builds 99 objects: 94 unchanged originals,
+accepted Lipschitz/orientation/reflection source files, new source/consumer
+and 30 controls. Three accepted source audits contribute 35 roots, plus
+twenty in each candidate: 75 reports, five strict markers. Static preflight,
+ten report-adversary tests and workflow syntax checks pass; actual Lean
+and retained-evidence qualification remain pending. See
+BFSS_SPECTRAL_SOURCE_NINE_UNIT_CARTAN_GATE_2026_11_06.md. Pinned PiL2 finrank
+API and old source48 V7C/E/H/I/J/K/L proof patterns were inspected; no
+source48 module or conclusion is substituted or newly imported.
+
+**Next after qualification.** This candidate factors the ORIGINAL vector
+action by reflections; it does not yet express g as a Clifford word. Lift
+ordered pairs using C0-A1, handle actual source two-sign fibers, pad/correct
+to exactly eight Q-unit factors, then separately prove source-unit-locus
+compactness and continuity/surjectivity of the word map in the unchanged
+PBW topology. No continuous choice of a factorization is assumed. Covering,
+Fock/gauge/domain, whole-sector branching, coercivity and spectra retain
+separate gates. Existing source/workflow/cache contracts, original branch
+and upstream PRs remain unchanged.

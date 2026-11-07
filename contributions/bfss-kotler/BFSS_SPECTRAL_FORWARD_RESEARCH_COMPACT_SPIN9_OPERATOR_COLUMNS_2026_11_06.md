@@ -558,3 +558,32 @@ reflection-pair identity and source two-sign fibers. Source quadratic
 unit-locus compactness, padding/sign correction and exact PBW continuity
 remain separate; no source compactness or spectral conclusion follows
 from an algebraic homomorphism into the compact target SO(9).
+
+
+## N. C0-A2 qualified; ordered source-unit Cartan list proposed
+
+Green #42347858285 at 3482485c9290ac8e01011d0a76e988a0c7e0ac3f survived
+full artifact review: 97 cold builds, sixteen consumers and 42 strict root
+reports without compiler warnings. The [orientation gate](BFSS_SPECTRAL_SOURCE_NINE_ORIENTATION_GATE_2026_11_06.md)
+now qualifies the original nine-vector determinant +1 and algebraic SO(9)
+packaging through the actual untwisted Lipschitz character. This is an
+accepted source-exact algebraic result, not source compactness, covering
+or a Fock/gauge/physical-domain theorem. The prior strict style red remains
+retained; it was repaired with four proof-local keyword changes only.
+
+The [next candidate](BFSS_SPECTRAL_SOURCE_NINE_UNIT_CARTAN_GATE_2026_11_06.md)
+transports the same original action to the already qualified same-label
+Euclidean space, proves its norm/determinant bridges, and applies native
+Cartan--Dieudonne. Zero-normal hyperplane identity factors are deleted;
+nonzero normals are normalized without reordering or changing the product.
+Unit reflection determinants give even length, and the actual dimension
+nine then gives length at most eight. Finally, the normals are pulled
+back to original source-Q-unit vectors via the same coordinate map.
+
+Twenty proposed roots and twenty complete-type consumers remain pending
+strict compilation and evidence review. Their intended result concerns
+the exact original vector action, including a pointwise source consumer.
+It is not yet an exact product of embedded Clifford vectors equal to g.
+If qualified, the next task is ordered pair lifting, central two-sign
+correction and exact eight-factor padding, followed separately by the
+source-unit parameter compactness and original-PBW continuous-image proof.

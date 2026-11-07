@@ -166,3 +166,28 @@ The source-header comparison, preflight and ten validator tests pass
 locally. They are not Lean acceptance. Require the fresh full compiler
 gate, independent consumer and retained-evidence review before any C0-A2
 orientation or SO(9) admission. Source compactness and spectra stay open.
+
+
+## Run #42347858285 — C0-A2 orientation accepted in scope
+
+Green run at exact commit `3482485c9290ac8e01011d0a76e988a0c7e0ac3f`
+passed retained-evidence review. Artifact 13564382132 has matching 127 input
+blob/SHA256 pins, 97 cold-build exits/log digests, 42 strict root reports,
+three completion markers, sixteen consumers, 42 dependency revisions and
+qualified compiler/environment digests. No compiler warnings or recovery
+axioms occur. The accepted Lipschitz source was also freshly re-audited.
+
+The [scoped acceptance](evidence/spectral-confinement-2026-11-06/source-nine-orientation-42347858285-acceptance.json),
+receipt, all logs and separate source/consumer logs are retained alongside
+the red evidence. Qualify all sixteen orientation roots: actual normalized
+generator matrices, untwisted nine-vector Lipschitz determinant character
+value one, determinant +1 of the original Spin linear/matrix action, and
+the unchanged action's algebraic SO(9) packaging. This discharges C0-A2
+in the stated source scope. The four proof-local keyword edits resolved
+the strict style failure without changing any public statement or policy.
+
+The next [ordered source-Q-unit Cartan candidate](BFSS_SPECTRAL_SOURCE_NINE_UNIT_CARTAN_GATE_2026_11_06.md)
+attempts an even reflection list of length at most eight for the actual
+source action. Exact source Clifford words, padding/sign correction,
+PBW continuity/compactness, covering and all physical spectral duties
+remain outside this orientation acceptance.
