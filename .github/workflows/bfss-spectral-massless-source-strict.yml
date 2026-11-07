@@ -1,0 +1,75 @@
+name: BFSS spectral massless source identity strict gate
+
+on:
+  push:
+    branches: [research/bfss-spectral-confinement-roadmap-20261106]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9ASourceChargeCoefficientCrosswalkProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9BSourcePairAndChargeReductionProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9COrderedPairCoefficientProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9DSourcePotentialMultiplierProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralMasslessCoreFormIdentity.lean
+      - lean/diagnostics/BFSSSpectralMasslessSourceIndependentAudit.lean
+      - contributions/bfss-kotler/BFSS_SPECTRAL_MASSLESS_SOURCE_MANIFEST_V1.json
+      - contributions/bfss-kotler/tools/qualify_spectral_massless_source.py
+      - contributions/bfss-kotler/tools/test_spectral_massless_source.py
+      - .github/workflows/bfss-spectral-massless-source-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  massless-source-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Retain recovery inputs and verify exact original proof preservation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/spectral-massless-source"
+          git rev-parse HEAD > "$RUNNER_TEMP/spectral-massless-source/tested-sha.txt"
+          tar -czf "$RUNNER_TEMP/spectral-massless-source/proposed-inputs.tar.gz" \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9{A,B,C,D}*Probe.lean \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralMasslessCoreFormIdentity.lean \
+            lean/diagnostics/BFSSSpectralMasslessSourceIndependentAudit.lean \
+            contributions/bfss-kotler/BFSS_SPECTRAL_MASSLESS_SOURCE_MANIFEST_V1.json \
+            contributions/bfss-kotler/tools/qualify_spectral_massless_source.py \
+            contributions/bfss-kotler/tools/test_spectral_massless_source.py \
+            .github/workflows/bfss-spectral-massless-source-strict.yml \
+            lean/lean-toolchain lean/lake-manifest.json lean/lakefile.lean
+          python3 contributions/bfss-kotler/tools/qualify_spectral_massless_source.py preflight
+          python3 contributions/bfss-kotler/tools/test_spectral_linear_moment.py
+          python3 contributions/bfss-kotler/tools/test_spectral_core_linear_moment.py
+          python3 contributions/bfss-kotler/tools/test_spectral_massless_source.py
+      - name: Restore pinned Lean and Mathlib environment
+        timeout-minutes: 30
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+      - name: Cold rebuild and audit the recovered charge and original core form
+        timeout-minutes: 28
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/qualify_spectral_massless_source.py run \
+            --evidence "$RUNNER_TEMP/spectral-massless-source"
+      - name: Retain exact recovery and compiler evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: spectral-massless-source-${{ github.sha }}
+          path: ${{ runner.temp }}/spectral-massless-source
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 14
