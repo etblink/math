@@ -117,3 +117,39 @@ surjectivity onto the literal source Spin group. A continuous choice of
 factorization as a function of g is not assumed. Covering, Fock/gauge
 implementation, physical closed domains, branching, coercivity and
 spectral existence retain their separate obligations.
+
+
+## Run #42352505826 — scoped acceptance of C0-A3 (2026-11-07)
+
+The dedicated [Cartan strict gate](https://github.com/etblink/math/actions/runs/42352505826)
+completed **green** on the exact tested source commit `b3bb2bd77498251dc6361e143ac7713b05d150a3`.
+The downloaded retained artifact **13567145779** has ZIP SHA-256
+`19d2ffd6a3d22efcbab9a2ca20d32d1b33721ed5074040920c5d86bb16ebcb19` and receipt SHA-256
+`bbfb318022646fb86dbcf083480c4cdbcb5b269a91dd5269ddf6b9c924d1894b`; both match the reviewed bytes.
+
+The receipt records 99 successful cold compilation exits, 99 matching log digests,
+42 dependency revisions, five completion markers and 75 strict axiom reports.
+All 75 report names and permitted axiom sets were independently replayed from the
+retained logs; no candidate/ancestor build log has an error or warning diagnostic,
+and no recovery axiom is present. The new source and its twenty independent
+complete-type consumers passed. The original source, reflection pair, orientation,
+Lipschitz interfaces, exact dependency pins and strict gate policy remain unchanged.
+The tested repair was only the determinant coercion normalization using
+`Units.val_one` plus its manifest integrity pins.
+
+[Scoped acceptance JSON](evidence/spectral-confinement-2026-11-06/source-nine-unit-cartan-42352505826-acceptance.json)
+records the run/commit identity, artifact digests, checks and explicit nonclaims.
+This documentation-only acceptance does **not** change the tested proof source.
+The original nine-vector action is now proved to admit an **ordered, even** list
+of **at most eight** original Q-unit hyperplane-reflection factors.
+
+**Next separate gate, C0-A4:** lift consecutive unit reflection pairs through
+the already qualified source unit-pair Spin theorem, prove ordered equality of
+their *original vector actions*, invoke the accepted two-sign fiber theorem to
+recover the **actual source group element**, correct a negative fiber by the
+appropriate sign change on one Q-unit factor, and pad by identity pairs to
+**exactly eight** factors. Check the source Clifford sign, order, zero-length
+case and pair-padding identity without using 48-dimensional conclusions.
+No continuous choice of witnesses is required. Only after this exact fixed-word
+gate may PBW-continuity of the fixed eight-factor map and compact-image
+surjectivity be proposed. Full spectral existence remains open.
