@@ -142,3 +142,25 @@ The [physical source-premise audit](BFSS_SPECTRAL_SOURCE_PREMISES_AUDIT_2026_11_
 The [massless source-binding gate](BFSS_SPECTRAL_MASSLESS_SOURCE_FORMAL_GATE_2026_11_06.md) now recovers only the four K9A–D crosswalk files with reversible, whole-file origin checks and composes the literal Core.coreForm energy identity. Sixteen recovered public roots, one composed root and ten independent consumer examples are proposed for a 21-file cold gate. Compiler qualification is pending. No potential-agreement premise is assumed by the final identities; concrete paired-instance discharge, field contraction/sharp norm bounds, P1 and P3 remain separate.
 
 **Decision principle:** seek a decisive truth test, including a counterexample, not merely the next compilable lemma. Preserve accepted F10DW geometry while exploring the shorter spectral route.
+
+
+## 2026-11-07 — source identity accepted; memorandum-driven C0-A1 candidate
+
+Reviewed the retained artifact of green run #42325087575 at
+`c1f309ca6de85b6f9e6c76a38254140e333fe819`: 21 cold builds, 34 public-root
+reports, ten consumers and exact recovery/input/dependency pins pass.
+The [massless source identity gate](BFSS_SPECTRAL_MASSLESS_SOURCE_FORMAL_GATE_2026_11_06.md)
+is accepted only in its stated generic source scope. Full P2, P1/P3 and
+spectral admission remain open.
+
+The [forward research memorandum](BFSS_SPECTRAL_FORWARD_RESEARCH_COMPACT_SPIN9_OPERATOR_COLUMNS_2026_11_06.md),
+including sections I/J, remains exploratory. Its preferred first test is
+now [C0-A1](BFSS_SPECTRAL_SOURCE_NINE_REFLECTION_PAIR_GATE_2026_11_07.md):
+identify the literal source Spin9 unit-pair's nine-vector action with the
+ordered native hyperplane-reflection pair, through explicit same-label L2
+transport. The new source/consumer/manifest/workflow are candidates pending
+strict compilation and evidence review. Determinant and compactness are
+separate gates. The full operator-column carrier supersedes the initial
+left-ideal requirement for feasibility; source gauge compatibility, closed
+Hamiltonian columns, full-isotypic branching and coercivity remain blockers.
+Qualitative use of finite C_M precedes any optional sharp constant.

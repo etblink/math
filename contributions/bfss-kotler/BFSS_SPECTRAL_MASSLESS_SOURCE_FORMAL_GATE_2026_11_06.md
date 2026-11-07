@@ -130,3 +130,29 @@ the finite evidence already recorded in the source-premise audit. Keep
 the actual Pauli/color/gamma binding, full Fock action and physical
 sector/domain obligations P1/P3 distinct. Do not interpret this equality
 as a confinement estimate or eigenpair existence result.
+
+
+## 2026-11-07 retained-evidence review — scoped acceptance
+
+[Run #42325087575](https://github.com/etblink/math/actions/runs/42325087575)
+completed successfully at exact commit
+`c1f309ca6de85b6f9e6c76a38254140e333fe819`. Artifact 13554134798 was
+downloaded and reviewed: all 32 pinned inputs, 21 cold-build exit statuses,
+21 log digests, 34 public-root reports, six completion markers and ten
+exact-type consumers pass. All fifteen original logs are empty; all 42
+dependency revisions match, and the compiler digest matches the previous
+qualified gate. The four original whole-file recovery inverses also pass.
+
+The [scoped acceptance](evidence/spectral-confinement-2026-11-06/massless-source-42325087575-acceptance.json),
+receipt, full logs and separate source/consumer logs are retained alongside
+the earlier evidence. Qualify the sixteen recovered source identities and
+the single new `AlgebraData.massless_coreForm_energy` composition under
+their explicit original-data hypotheses. This discharges the massless
+charge/named-core-form presentation bridge, not all of P2, a concrete
+paired instance, physical closed domains, confinement or eigenpair existence.
+
+The new research memorandum changes prioritization: its qualitative route
+can use the existing finite growth constant, so a sharp fermionic norm
+constant is optional. The next proposed formal test is the separately
+chartered [source nine-vector reflection-pair gate](BFSS_SPECTRAL_SOURCE_NINE_REFLECTION_PAIR_GATE_2026_11_07.md),
+not an assumed spectral consequence of this accepted identity.

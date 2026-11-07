@@ -6893,3 +6893,55 @@ Selected next formal milestone: recover/requalify the minimal existing K9A–D g
 From parent `2c2f632e97a4883caedf96d426fe79b7c4c3ecb8`, recovered only original K9A–D files under OperatorDependencies from pinned fa00aa36e770ca516f57b41f5b02229a5033d50f. K9A chronological import replaced by original MassiveMoments; K9B–D imports unchanged. Recovery note/autoImplicit=false/markers added; K9D private-helper standalone axiom print omitted, retaining both private proofs and transitive public-root audits. Exact inverse requires whole original-file blob/SHA256 matches for all four, with immutable origin blobs also frozen in qualifier. All theorem statements and proof bodies remain unchanged. New OAI.BFSSQuantum.AlgebraData.massless_coreForm_energy composes unconditional original massless core-form equality with original averaged_core_energy 1 0. Sixteen recovered public roots plus one composed root; ten consumers cover signs, factors, actual multipliers/charges/coreForm and generic/N=2 energy identity. N=2 keeps M explicit, not a concrete paired witness.
 
 New dedicated strict gate checks 32 inputs and cold-rebuilds 21 files (15 original ancestors matching preserved 4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e, four recovered files, new composition and consumer), with 34 public-root reports. Nineteen regression checks and exact source-recovery preflight pass locally; actual compiler qualification pending. See BFSS_SPECTRAL_MASSLESS_SOURCE_FORMAL_GATE_2026_11_06.md and BFSS_SPECTRAL_MASSLESS_SOURCE_MANIFEST_V1.json. No private kernel-name guessing or proof-budget increase. Artifacts retain original readers, recovered inputs, complete logs and exact tested-commit receipt. Full operator package, concrete paired witness, sharp source-field bound, P1/P3, confinement and spectral claims remain outside acceptance. Existing compactness files/gates, original branch, upstream PRs and guarded cache unchanged.
+
+
+## 2026-11-07 — massless source scoped acceptance and C0-A1 candidate
+
+Project Lead continuation is authorized on the separate spectral branch.
+Reverified HEAD `cec729468c5aa8da18e3c59e1bf3d0afbd10606f` and read the
+complete 461-line forward memorandum, including the superseding I/J
+addenda. Reread the unchanged FCP evergreen at cc608e2282e1b32bb11bbb64424e4775b28138e2,
+blob f5b53f680e7b3c119491be01306a33d83586bd9a. Research proposals remain
+unqualified; later sections supersede the initial compactness ordering
+and left-ideal carrier preference.
+
+**Accepted source bridge.** Independently verified green #42325087575 at
+`c1f309ca6de85b6f9e6c76a38254140e333fe819` and reviewed artifact 13554134798:
+32 exact inputs, 21 cold-build exits/log digests, 34 public-root reports,
+six completion markers, ten consumers, 42 dependency pins and compiler
+digest match; all fifteen original logs empty. Four exact whole-original-file
+recovery inverses pass. Scoped acceptance plus receipt/all logs/source and
+consumer logs are durable under evidence/spectral-confinement-2026-11-06/
+massless-source-42325087575-*. Qualify sixteen recovered identities and
+`OAI.BFSSQuantum.AlgebraData.massless_coreForm_energy` with explicit
+M : AlgebraData N. This closes only the massless charge/named-core-form
+presentation bridge, not all P2, a concrete paired instance, source sharp
+bound, physical closed domains, confinement or eigenpair existence.
+
+**Selected discriminating gate C0-A1, candidate only.** The new
+SpectralSourceNineReflectionPair.lean uses the unchanged F10BH actual
+source pair, F10BP original nine-vector representation and canonical
+same-label WithLp.linearEquiv. Proposes Q/L2 and polar bridges, exact
+Clifford single-vector line reflection, reversed pair inverse, literal
+pair action and equality with two native Mathlib hyperplane reflections
+in source order. A single positive Clifford vector acts as minus a
+hyperplane reflection; its Spin membership is never assumed. Nine roots,
+eight independently typed consumers, eighteen root reports. The manifest
+pins 124 inputs, with all 92 original closure modules matching preserved
+4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e. A dedicated new gate cold-builds
+94 objects. Static preflight and ten adversarial report tests pass; local
+Lean startup failed before compilation, so compiler qualification remains
+pending on GitHub. Complete original logs are retained, candidate warnings
+are fatal, default candidate proof budgets remain, and no BFSS cache is used.
+See BFSS_SPECTRAL_SOURCE_NINE_REFLECTION_PAIR_GATE_2026_11_07.md.
+
+**Next decision.** Review the earliest causal failure or, after full source/
+consumer/axiom success, independently review the retained artifact before
+acceptance. Only then advance the separately scoped native nine-vector
+determinant C0-A2; keep PBW fallback and algebraic gamma covariance as
+independent opportunities. Fixed-eight compactness is not yet established.
+Full operator action/adjoint, source SU2 character, closed-Hamiltonian
+column correspondence, B4→D4 exclusion for every vector of a fixed type
+and source coercivity remain separate spectral blockers. Existing Lean
+modules, old workflows/cache contracts, the original research branch and
+upstream PRs are unchanged.
