@@ -7575,3 +7575,46 @@ If qualified, review the original memorandum's remaining operator-column,
 Fock/gauge action and character, closed-domain, full-sector branching and
 coercivity obligations. Source group compactness is not confinement,
 covering or spectral existence. Original branch and upstream PRs untouched.
+
+
+## Run #42397460623 — C0-A source compactness accepted; operator recovery audit selected
+
+Green at tested a78c80da46bc8167df4753017b37cf1323008ac1. Artifact
+13584528960 ZIP SHA-256
+f5af47764d1987613043a9a9d8e4fc3a759cb8cbd4f8c9905c6b485b7ac3d7a2
+matches downloaded bytes. Verify all 166 archived pins against the exact
+checkout, 136 zero cold exits/log digests, 95 strict reports, eleven
+markers, ten consumers, 42 revisions, compiler identity, environment digest
+and exact local PBW setup. No Lean diagnostic or recovery/foreign axiom.
+source-nine-compactness-42397460623-* durably retains acceptance,
+receipt and complete source/consumer/all logs.
+
+All eight C0-A5c roots qualify: original Q-unit sphere-preimage and compact
+locus, compact finite input space, actual fixed map range, whole actual
+Spin compactness in original PBW subtype topology, named CompactSpace
+value (no global registration), ambient PBW compactness and closedness.
+This completes C0-A through actual pairs/orientation/Cartan, two signs,
+exact eight words, fixed source map and original topology continuity.
+Covering, operator/Fock action, gauge averaging, physical domains,
+branching, coercivity, confinement and spectra do not follow.
+
+Post-C0 source audit is preserved in memorandum V and the roadmap.
+Active Source48 gamma/universal-lift files were not requalified by the
+compactness gate; their real Clifford homomorphism is not a full complex
+operator equivalence. Read-only donor snapshot remains fa00aa36e770ca516f57b41f5b02229a5033d50f.
+M3D source uses actual complex full image/Jacobson density; M3H uses exact
+finrank equality plus full image for injectivity; M3I packages AlgEquiv.
+S1H gauge representation uniqueness explicitly assumes original-theta
+covariance. These inspected donor sources are not newly imported/accepted
+here and their header prose is not a qualification audit.
+
+Next bounded selection: verify donor qualification and minimum M2/M3B/C/
+D/E/F/G/H/I recovery closure, check exact active-branch declaration,
+normalization/pairing and scalar interfaces, then design reversible
+minimal recovery and fresh consumers. Compare with symbolic complex
+monomial generation before committing to a large new proof. Do not use
+Clifford star as Fock adjoint or assume covariance/phase elimination.
+Source-exact operator action, continuity, adjoint/trace laws and gauge
+compatibility precede Haar averaging. No Lean candidate is launched by
+this documentation-only acceptance/research commit. Original branch,
+accepted proof files, gates, cache contracts and upstream PRs untouched.

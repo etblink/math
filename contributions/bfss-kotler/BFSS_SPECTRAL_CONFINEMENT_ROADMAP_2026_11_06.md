@@ -243,3 +243,32 @@ including fresh audits of three qualified source modules. This candidate
 is not an exact source Clifford-word factorization. Pair lifting, two-sign
 correction, fixed-eight padding and original PBW compactness remain next
 obligations, alongside the independent physical spectral gates.
+
+
+## Run #42397460623 — source Spin compactness route completed
+
+C0-A5c qualifies at `a78c80da46bc8167df4753017b37cf1323008ac1` after
+full retained-artifact review: 166 pins, 136 successful cold builds,
+ten consumers and 95 exact strict reports. The original Q-unit locus,
+its finite eight-coordinate parameter space and literal source Spin
+carrier are compact; the same source subset is compact and closed in the
+original PBW Clifford topology. No source group, norm or topology changed.
+See the [compactness acceptance](BFSS_SPECTRAL_SOURCE_NINE_COMPACTNESS_GATE_2026_11_07.md).
+
+| Obligation | Current scoped state |
+| --- | --- |
+| Actual source Spin compactness in original PBW topology | C0-A complete, qualified by #42397460623 |
+| Fixed eight-factor actual source map and PBW continuity | Qualified prerequisites with retained separate gate evidence |
+| Full complex original Fock-operator action | Open; minimum donor generation/equivalence recovery audit selected next |
+| Source gauge phase elimination and actual averaging | Open; explicit action/covariance premises remain |
+| Closed physical operator-column identification | Open; exact original domains/graphs required |
+| Whole-sector branching, coercivity and physical spectral existence | Open |
+
+The [memorandum section V](BFSS_SPECTRAL_FORWARD_RESEARCH_COMPACT_SPIN9_OPERATOR_COLUMNS_2026_11_06.md#v-c0-a-complete-post-compactness-source-audit-and-next-decision)
+records the post-C0 source audit. The pinned complex M3D/H/I construction
+uses original full-image and exact finrank interfaces; the active real
+Clifford lift is not a replacement complex equivalence. S1H gauge uniqueness
+retains its explicit original-theta covariance premise. No new operator
+imports, candidate Lean gate, workflow, dependency or upstream change is
+made by this documentation-only completion. No confinement, mass gap or
+physical spectral existence is admitted.

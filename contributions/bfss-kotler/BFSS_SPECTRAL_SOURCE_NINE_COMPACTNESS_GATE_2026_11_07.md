@@ -92,3 +92,33 @@ Next review the memorandum's original operator-column and gauge-action
 obligations against these qualified interfaces before selecting the next
 bounded formalization. Preserve conditional statements and unresolved
 premises explicitly. Original branch and upstream PRs remain untouched.
+
+
+## Run #42397460623 — scoped C0-A5c acceptance and C0-A completion
+
+The [source compactness strict run](https://github.com/etblink/math/actions/runs/42397460623)
+is green at exact tested commit `a78c80da46bc8167df4753017b37cf1323008ac1`.
+Downloaded artifact 13584528960 has ZIP SHA-256
+`f5af47764d1987613043a9a9d8e4fc3a759cb8cbd4f8c9905c6b485b7ac3d7a2`.
+Full independent review verifies all 166 archived source/control pins against
+the manifest and tested checkout, 136 successful cold exits and matching
+log digests, 95 exact strict reports, eleven markers, ten consumers, all
+42 package revisions, compiler identity, Lake environment digest and exact
+local PBW setup. No Lean diagnostic, recovery axiom or foreign assumption.
+
+All eight new roots qualify. The original Q-unit locus and its eight-input
+parameter space are compact. The literal original source Spin group is
+compact in its inherited original PBW topology; its ambient Clifford subset
+is compact and closed. `source9Spin_compactSpace_pbw` is a named proof value,
+not a globally registered instance. The original group and topology have
+not been replaced. This completes the bounded C0-A compactness route through
+actual reflection pairs, nine-vector orientation, ordered unit Cartan lists,
+source two-sign recovery, exact eight-factor words, the fixed actual source
+map and its PBW continuity.
+
+The [scoped acceptance JSON](evidence/spectral-confinement-2026-11-06/source-nine-compactness-42397460623-acceptance.json),
+receipt and complete source/consumer/all logs retain the verification. No
+covering, Fock/operator action, gauge averaging, physical closed-domain,
+branching, coercivity, confinement or spectral-existence result is admitted.
+The memorandum's post-C0 audit selects the next source-recovery investigation;
+this documentation-only completion adds no further Lean theorem.

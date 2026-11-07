@@ -802,3 +802,118 @@ actions, source gauge characters, full physical-domain column identities,
 whole-sector branching and coercivity still require independent proofs.
 Do not treat group compactness as confinement or spectral existence. Review
 those original memorandum blockers before selecting the next formal gate.
+
+
+## V. C0-A complete; post-compactness source audit and next decision
+
+**Qualified endpoint.** Green #42397460623 at exact tested
+`a78c80da46bc8167df4753017b37cf1323008ac1` passes full artifact review:
+166 input pins, 136 cold zero exits and log digests, 95 strict reports,
+eleven markers, ten consumers, 42 dependency revisions, compiler identity,
+environment digest and exact local PBW setup. All eight compactness roots
+qualify. The literal `spinGroup source9Quadratic` is compact in its original
+inherited PBW topology and is compact/closed as the same Clifford subset.
+The CompactSpace proof is named, not a globally installed instance. See the
+[scoped compactness gate](BFSS_SPECTRAL_SOURCE_NINE_COMPACTNESS_GATE_2026_11_07.md).
+
+This closes I.9's constructive 0A/0B/0C compactness route. Sections B and
+I.1 remain the original research history; their prospective language does
+not reverse this later acceptance. The independent ambient reversal-unitary
+proof is retained as an alternative, not needed for the accepted result.
+C0 does not construct the operator action alpha, a Fock-vector lift or any
+physical confinement estimate.
+
+### V.1. Active-branch interfaces do not yet provide the required complex action
+
+The active Source48 normalized-gamma, real-linear-gamma, all-vector-square,
+self-adjointness and universal-lift files are present, but this C0 review
+does not requalify them for C1. They are outside the compactness gate's
+source inventory; file presence or header prose cannot supply fresh
+qualification. Several
+carry historical explicit heartbeat settings; do not copy or increase these
+settings as a way to bypass a new default-budget obligation.
+
+The inspected `sourceFockCliffordAlgHom` has type
+`CliffordAlgebra source48Quadratic →ₐ[ℝ] (Fermion 2 →L[ℂ] Fermion 2)`.
+Its source is REAL. It is not the complex algebra equivalence needed by
+section C; the dimensional obstruction in I.8 remains. The inspected
+self-adjointness interface concerns actual Fock Hilbert adjoint. It does
+not identify that adjoint with Mathlib's Clifford star, which is negative
+on odd real generators. The original F10R paired-48 SO homomorphism is
+algebraic; it does not itself construct alpha on all Fock operators.
+
+### V.2. Pinned donor construction: generation first, gauge uniqueness later
+
+The following files were read at the separate READ-ONLY contribution
+snapshot `fa00aa36e770ca516f57b41f5b02229a5033d50f`, under
+`lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/`:
+
+| Module suffix | Git blob | Inspected role |
+| --- | --- | --- |
+| `S1V52M3DOriginalComplexCliffordFullFockImageProbe` | `17ec2266d7854643338c1c238b90fb374b5fe139` | Surjectivity of the actual complexified Clifford-to-original-Fock map via the preceding simple-module/scalar-commutant interfaces and Jacobson density |
+| `S1V52M3HOriginalComplexCliffordFockFaithfulProbe` | `29fef149dd0b3b27c9cfc75f98e77e8d4924bde8` | Injectivity of that same map from full image and the preceding exact Clifford/Fock operator finrank equality |
+| `S1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe` | `754a5f2a13baea90312f6031eb8fa7963dbdf42b` | `AlgEquiv.ofBijective` packages the preceding map, injectivity and surjectivity as a complex algebra equivalence |
+| `S1HSourceGaugeCovariantImplementerUniquenessProbe` | `eacab43f1b9112e9e1920e656bdf1166f824a5a8` | Uniqueness of a representation of the literal SU(2) gauge group on original Fermion 2, under an explicit original 48-theta covariance premise |
+
+These are source inspections, not import or new-branch theorem acceptance.
+Historical candidate/qualified prose in their headers is not adjudicated
+here; actual donor qualification and a fresh applicable consumer must be
+checked before reuse. None of these four files was copied or changed by
+this completion commit.
+
+The M3D/H/I mechanism is a serious reuse candidate: it already targets the
+COMPLEXIFIED Clifford algebra and every complex-linear continuous operator
+of the original Fock space. A new symbolic trace basis proof is therefore
+not automatically cheaper. Its required M2/M3B/C/E/F/G prerequisites,
+source Majorana normalization, existing declarations and imports must be
+compared with the active branch before deciding a recovery slice. Prior
+memorandum import counts are historical dependency-surface observations;
+this audit does not relabel them as fresh counts or timing estimates.
+
+S1H is not an existence theorem for alpha or for a covariant V. Its exact
+input is `V : GaugeGroup 2 →* (Fermion 2 ≃ₗ[ℂ] Fermion 2)` together with
+pointwise covariance of each original `pairedTheta` on every original Fock
+vector. Only then does its conclusion identify V with the original gauge
+representation. To use it for an operator automorphism, first construct
+the induced honest gauge implementers and prove that covariance, including
+the original sqrt(2) normalization bridge. Do not assert the phase is one
+or treat an automorphism on operators as a Fock-vector spatial action.
+
+### V.3. Selected next bounded milestone and acceptance conditions
+
+**Selection:** audit the minimum source-exact recovery of the donor complex
+Clifford/Fock generation-and-equivalence chain before starting a second
+Majorana monomial-basis proof. This is a recovery design milestone; no new
+Lean candidate is launched by this documentation-only commit.
+
+1. Verify donor qualifications and enumerate the exact transitive source
+   closure. Compare overlapping module paths/declarations and original
+   Source48 pairing, Q, theta/Majorana scaling, Fermion 2 and real/complex
+   scalar interfaces with the active branch. Preserve the donor snapshot.
+2. Separate the canonical complex homomorphism, full-image theorem,
+   finrank equality and injectivity. Recover/requalify only the needed
+   slice with reversible provenance and explicit consumers; do not assume
+   the exploratory active real homomorphism is onto all complex operators.
+3. Before an operator-action claim, bind the actual paired-48 source
+   orthogonal action to that complex algebra, prove generator covariance,
+   the group law and original-source continuity. Include the actual negative
+   central regression: each original Majorana must map to its negative,
+   even though the natural nine-vector action has that element in its kernel.
+   Then prove Fock-adjoint
+   preservation and trace/Hilbert-Schmidt unitarity. An AlgEquiv alone is
+   not a StarAlgEquiv or a source gauge-compatibility theorem.
+4. Apply source character/implementer uniqueness only after its explicit
+   covariance premise is discharged. Construct Haar averages only after
+   the actual action, its continuity and its gauge laws are available.
+
+**Stop/hold criteria:** incompatible original pairing or normalization,
+namespace/declaration collision, missing donor qualification, unproved
+scalar-tower or dimension premise, dependence on identifying Clifford star
+with Hilbert adjoint, or inability to compile the source-exact consumer
+without weakening statements or proof policy. Retain the symbolic complex
+monomial route and direct Spin(48) vector-lift route as alternatives.
+
+The full operator-column Hilbert identification, exact closed physical
+operator correspondence, whole-sector B4-to-D4 branching/exclusion,
+coercivity and eigenvalue existence remain open. Compact source Spin is
+now an accepted prerequisite, not a proof of any of those conclusions.
