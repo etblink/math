@@ -108,7 +108,7 @@ theorem reflections_generate_fixing_nine
   have haW : a ∈ W := by
     change a - φ a = 0
     rw [ha, sub_self]
-  have hspan : (ℝ ∙ a) ≤ W := Submodule.span_singleton_le_iff_mem.mpr haW
+  have hspan : (ℝ ∙ a) ≤ W := (Submodule.span_singleton_le_iff_mem a W).mpr haW
   have hpositive : 1 ≤ finrank ℝ W := by
     simpa only [finrank_span_singleton ha0] using Submodule.finrank_mono hspan
   have hadd := W.finrank_add_finrank_orthogonal

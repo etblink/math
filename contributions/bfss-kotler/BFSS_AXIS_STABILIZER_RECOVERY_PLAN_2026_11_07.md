@@ -168,3 +168,45 @@ wrapper. The explicit import adds new source-interface evidence for a fresh
 diagnostic attempt. Do not begin full source-exact word composition before the
 complete diagnostic and its independent consumer pass. The owner supplies the
 next terminal result; do not poll CI.
+
+## Retained diagnostic red: 42419001149
+
+Exact tested commit: `ae7363778ff18fcb90e4f96840d0ace25adf6666`.
+Artifact: `13592778004`; ZIP SHA-256:
+`72bab0dc84cfe51ac0d84fe8e3393f1647d71db28bece2bb8e73d04231f77873`.
+The downloaded ZIP passed integrity and digest checks. All 33 archived input
+Git-blob/SHA-256 pins, the compiler-log digest and the tested commit were checked;
+the receipt records the unchanged 42-package environment.
+
+The explicit PiL2 import resolved the earlier concrete-carrier errors. The only
+compiler error in this attempt is at the span inclusion witness in the
+nine-dimensional specialization: the proof used
+`Submodule.span_singleton_le_iff_mem.mpr haW` without instantiating the lemma's
+explicit arguments. Pinned `Mathlib/LinearAlgebra/Span/Defs.lean`, blob
+`605c85954ec81f5b2e229329727572aa78f84ff6`, declares at line 544:
+
+```lean
+theorem span_singleton_le_iff_mem (m : M) (p : Submodule R M) :
+    R ∙ m ≤ p ↔ m ∈ p
+```
+
+Repair that single proof line to
+`(Submodule.span_singleton_le_iff_mem a W).mpr haW` and refresh only the source
+blob and SHA-256 pins. The complete theorem types, generic induction, remaining
+specialization proof, independent consumer, imports, diagnostic runner, workflow,
+dependency revisions, budgets and warning/axiom policy remain unchanged.
+
+The generic induction again printed only the permitted foundational axioms.
+The failed specialization printed sorryAx, which is recovery output and is
+explicitly rejected. The source compiler exit was 1, the receipt is INCOMPLETE,
+and the consumer was not attempted. No new theorem or diagnostic package is
+accepted by this run.
+
+The FCP evergreen was reread at its pinned revision. Its first-cause/source-API
+rule supports this exact-signature argument repair. Its stop rule against two
+wrapper-only reds does not authorize skipping this error: both attempts reached
+the actual source, and this run distinguishes the missing-import issue from a
+separate explicit-argument issue. The next bounded attempt tests the complete
+nine-dimensional specialization and, if it succeeds, the previously unrun
+consumer. An identical surviving error would require further primitive
+isolation before another retry. No full BFSS gate or CI polling is introduced.
