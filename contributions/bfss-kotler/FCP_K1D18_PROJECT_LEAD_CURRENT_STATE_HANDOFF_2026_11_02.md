@@ -7288,3 +7288,31 @@ remain mandatory cases. PBW continuity, source compactness and every
 physical/spectral obligation remain separate. No accepted Lean source,
 existing gate, dependency pin, proof budget, cache contract, original
 research branch or upstream PR is changed.
+
+
+## Run #42369068339 — source compiled; independent consumer repair pending
+
+Verified red at 8420f675bb3a0cf64394454221e459e13aa9c0c4. Retained artifact
+13572728507 ZIP digest f618cfcdcb24799a0ed1e0111593e886e78005ba1e9a04b16fc66447efb76473
+matches downloaded bytes. All 130 archived input pins and 100 log digests
+were independently checked. Builds 0 through 98 exit zero, including the
+new complete even-list proof source. Build 99, the independent consumer,
+exits one; receipt status INCOMPLETE. C0-A4a remains unqualified.
+
+Two consumer membership proofs incorrectly combined List.mem_cons and
+List.mem_singleton simplification. The first rule expanded the singleton
+into another disjunction including membership of the empty list; the
+intended substitution failed. Strict unused-simp-argument errors also
+occurred. Clean axiom reprints and a completion marker after unnamed
+example errors are not consumer acceptance. Preserve that negative lesson.
+
+Repair only those two proof blocks by explicit List.mem_cons.mp and
+List.mem_singleton.mp elimination; refresh only consumer blob/SHA-256
+pins. All four source public roots, eight consumer types and accepted
+ancestors are unchanged, as are gate policy, tests, workflow, dependencies,
+proof budgets and caches. Static preflight and ten adversarial validator
+tests pass. Failed receipt, all logs and failed consumer snapshot are
+retained under evidence/spectral-confinement-2026-11-06/
+source-nine-even-list-lift-42369068339-*. Require a fresh full cold build,
+independent consumer and archive review before qualification. Do not advance
+to source sign recovery, fixed-eight words or compactness on this red.

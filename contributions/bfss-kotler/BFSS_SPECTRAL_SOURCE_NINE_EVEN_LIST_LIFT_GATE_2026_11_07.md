@@ -81,3 +81,39 @@ Spin, covering, Fock/gauge actions, physical closed domains, full-sector
 branching, coercivity and spectral existence retain separate gates. The
 original research branch, upstream PRs, accepted source and existing gates
 are unchanged by this candidate.
+
+
+## Run #42369068339 — consumer membership repair; qualification pending
+
+The first strict run failed on exact commit
+`8420f675bb3a0cf64394454221e459e13aa9c0c4`. The downloaded retained artifact
+13572728507 has ZIP SHA-256
+`f618cfcdcb24799a0ed1e0111593e886e78005ba1e9a04b16fc66447efb76473`.
+All 130 archived source/control pins and all 100 compiler log digests
+match their manifest/receipt entries. The receipt is INCOMPLETE: the
+first 99 cold builds exit zero, including the complete new proof source;
+the independent consumer exits one.
+
+The cause is confined to the arbitrary-pair and repeated-pair consumer
+proofs. `simp only [List.mem_cons, List.mem_singleton]` expands the cons
+rule all the way into the singleton tail before the singleton rule can
+apply. The remaining nested disjunction still includes membership of the
+empty list, so the intended equality substitution fails. Redundant simp
+arguments also trigger strict lint errors. The new four public source
+roots print permitted axiom reports, but their acceptance remains pending
+the independent consumer. Even the consumer's clean printed reports and
+completion marker do not override its nonzero compiler exit: unnamed
+example errors are independently fatal.
+
+The bounded repair uses explicit `List.mem_cons.mp` followed, for the tail,
+by `List.mem_singleton.mp`. Both consumer statement types and all eight
+consumer entries are unchanged. Only the two membership proof blocks and
+the consumer's blob/SHA-256 manifest pins change. The new source proof,
+all accepted ancestors, qualifier, tests, workflow, dependency pins,
+compiler options and proof budgets remain byte-for-byte unchanged.
+
+The [failure record](evidence/spectral-confinement-2026-11-06/source-nine-even-list-lift-42369068339-failure.json)
+links the failure to exact source/run identity. The adjacent receipt,
+all-logs JSON, source/consumer logs and failed consumer snapshot preserve
+the negative evidence. The candidate requires a fresh complete cold run
+and retained-evidence review; this repair does not qualify C0-A4a.

@@ -1,0 +1,21 @@
+{
+  "schema": "bfss-source-nine-even-list-lift-failure-v1",
+  "run_id": 42369068339,
+  "run_url": "https://github.com/etblink/math/actions/runs/42369068339",
+  "tested_sha": "8420f675bb3a0cf64394454221e459e13aa9c0c4",
+  "artifact_id": 13572728507,
+  "artifact_zip_sha256": "f618cfcdcb24799a0ed1e0111593e886e78005ba1e9a04b16fc66447efb76473",
+  "receipt_status": "INCOMPLETE",
+  "cold_builds_attempted": 100,
+  "zero_exit_builds": 99,
+  "source_exit": 0,
+  "independent_consumer_exit": 1,
+  "archive_input_pins_verified": 130,
+  "build_log_digests_verified": 100,
+  "cause": "Two independent consumer proofs expanded List.mem_cons through the singleton tail, leaving membership of the empty list and nested disjunctions; substitution failed. Strict unused-simp-argument diagnostics also rejected redundant lemmas.",
+  "source_theorems_changed": false,
+  "consumer_statement_types_changed": false,
+  "qualification": false,
+  "repair": "Replace both membership simplifications with explicit List.mem_cons.mp and List.mem_singleton.mp eliminations. Refresh only the consumer blob and SHA-256 pins.",
+  "boundary": "Clean printed root axiom reports and the consumer completion marker after unnamed example errors do not qualify the consumer. Nonzero compiler exit remains fatal."
+}

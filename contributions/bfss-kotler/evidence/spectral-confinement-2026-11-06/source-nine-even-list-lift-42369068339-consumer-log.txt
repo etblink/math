@@ -1,0 +1,45 @@
+/home/runner/work/math/math/lean/diagnostics/BFSSSpectralSourceNineEvenListLiftIndependentAudit.lean:56:25: error: Tactic `subst` failed: invalid equality proof, it is not of the form (x = t) or (t = x)
+  w = v ∨ w ∈ []
+
+case inr
+u v : SpaceIndex → ℝ
+hu : source9Quadratic u = 1
+hv : source9Quadratic v = 1
+w : SpaceIndex → ℝ
+h✝ : w = v ∨ w ∈ []
+⊢ source9Quadratic w = 1
+/home/runner/work/math/math/lean/diagnostics/BFSSSpectralSourceNineEvenListLiftIndependentAudit.lean:55:30: error: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.mem_cons] at hw
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/runner/work/math/math/lean/diagnostics/BFSSSpectralSourceNineEvenListLiftIndependentAudit.lean:73:4: error: Tactic `subst` failed: did not find equation for eliminating 'w'
+
+u : SpaceIndex → ℝ
+hu : source9Quadratic u = 1
+w : SpaceIndex → ℝ
+hw : w = u ∨ w = u ∨ w ∈ []
+⊢ source9Quadratic w = 1
+/home/runner/work/math/math/lean/diagnostics/BFSSSpectralSourceNineEvenListLiftIndependentAudit.lean:72:30: error: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.mem_cons, or_self] at hw
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/runner/work/math/math/lean/diagnostics/BFSSSpectralSourceNineEvenListLiftIndependentAudit.lean:72:50: error: This simp argument is unused:
+  or_self
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [List.mem_cons, List.mem_singleton] at hw
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'FCP.BFSSSourceNineEvenListLift.source9CliffordWord' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FCP.BFSSSourceNineEvenListLift.source9NativeReflectionWord' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FCP.BFSSSourceNineEvenListLift.source9EvenUnitList_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FCP.BFSSSourceNineEvenListLift.source9Spin_sourceUnitCartan_lift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SPECTRAL_SOURCE_NINE_EVEN_LIST_LIFT_CONSUMER_COMPLETE

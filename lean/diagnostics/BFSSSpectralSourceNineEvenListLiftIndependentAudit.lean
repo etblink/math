@@ -52,10 +52,12 @@ example (u v : SpaceIndex → ℝ)
             ((ℝ ∙ source9ToEuclidean v)ᗮ.reflection (source9ToEuclidean z)) := by
   have hall : ∀ w ∈ [u, v], source9Quadratic w = 1 := by
     intro w hw
-    simp only [List.mem_cons, List.mem_singleton] at hw
-    rcases hw with rfl | rfl
-    · exact hu
-    · exact hv
+    rcases List.mem_cons.mp hw with hwu | hwv
+    · rw [hwu]
+      exact hu
+    · have hweq : w = v := List.mem_singleton.mp hwv
+      rw [hweq]
+      exact hv
   obtain ⟨h, hword, haction⟩ := source9EvenUnitList_lift [u, v] hall ⟨1, rfl⟩
   refine ⟨h, ?_, ?_⟩
   · simpa only [source9CliffordWord, List.map_cons, List.map_nil, List.prod_cons,
@@ -69,8 +71,9 @@ example (u : SpaceIndex → ℝ) (hu : source9Quadratic u = 1) :
       h = 1 ∧ (h : CliffordAlgebra source9Quadratic) = source9CliffordWord [u, u] := by
   have hall : ∀ w ∈ [u, u], source9Quadratic w = 1 := by
     intro w hw
-    simp only [List.mem_cons, List.mem_singleton, or_self] at hw
-    subst w
+    have hweq : w = u :=
+      (List.mem_cons.mp hw).elim id (fun h => List.mem_singleton.mp h)
+    rw [hweq]
     exact hu
   obtain ⟨h, hword, _haction⟩ := source9EvenUnitList_lift [u, u] hall ⟨1, rfl⟩
   refine ⟨h, ?_, hword⟩
