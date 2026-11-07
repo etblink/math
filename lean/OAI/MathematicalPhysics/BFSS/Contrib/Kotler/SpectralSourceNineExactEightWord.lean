@@ -102,16 +102,22 @@ theorem source9Spin_exact_eight_list (g : spinGroup source9Quadratic) :
     exact hsign
   rcases htsign with hpos | hneg
   · exact ⟨t, htunit, htlen, hpos⟩
-  · cases t with
-    | nil => simp at htlen
+  · cases ht : t with
+    | nil =>
+      have hzero : t.length = 0 := congrArg List.length ht
+      omega
     | cons u tail =>
-      refine ⟨(-u) :: tail, ?_, htlen, ?_⟩
+      have hconsunit : ∀ v ∈ u :: tail, source9Quadratic v = 1 := ht ▸ htunit
+      have hconslen : (u :: tail).length = 8 := ht ▸ htlen
+      have hconsneg : (g : CliffordAlgebra source9Quadratic) =
+          -source9CliffordWord (u :: tail) := ht ▸ hneg
+      refine ⟨(-u) :: tail, ?_, hconslen, ?_⟩
       · intro v hv
         rcases List.mem_cons.mp hv with hhead | htail
         · rw [hhead, QuadraticMap.map_neg]
-          exact htunit u (List.mem_cons.mpr (Or.inl rfl))
-        · exact htunit v (List.mem_cons.mpr (Or.inr htail))
-      · exact hneg.trans (source9CliffordWord_neg_head u tail).symm
+          exact hconsunit u (List.mem_cons.mpr (Or.inl rfl))
+        · exact hconsunit v (List.mem_cons.mpr (Or.inr htail))
+      · exact hconsneg.trans (source9CliffordWord_neg_head u tail).symm
 
 /-- The eight witnesses use the natural Fin 8 order, with no continuous-choice assertion. -/
 theorem source9Spin_exact_eight_word (g : spinGroup source9Quadratic) :
@@ -127,7 +133,14 @@ theorem source9Spin_exact_eight_word (g : spinGroup source9Quadratic) :
       exact hall (l.get i) (List.get_mem l i)
     · rw [List.ofFn_get]
       exact hword
-  simpa only [hlen] using aux
+  have transport : ∀ n : ℕ, l.length = n →
+      ∃ w : Fin n → (SpaceIndex → ℝ),
+        (∀ i, source9Quadratic (w i) = 1) ∧
+        (g : CliffordAlgebra source9Quadratic) = source9CliffordWord (List.ofFn w) := by
+    intro n hn
+    subst n
+    exact aux
+  exact transport 8 hlen
 
 #print axioms FCP.BFSSSourceNineExactEightWord.source9UnitPairPadding
 #print axioms FCP.BFSSSourceNineExactEightWord.source9UnitPairPadding_length

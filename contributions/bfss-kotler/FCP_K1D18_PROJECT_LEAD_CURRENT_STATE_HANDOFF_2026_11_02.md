@@ -7398,3 +7398,35 @@ compactness and original PBW continuity without selecting words continuously.
 Source compactness, covering, Fock/gauge implementation, physical domains,
 branching, coercivity and spectral existence remain later obligations.
 Original research branch and upstream PRs remain untouched.
+
+
+## Run #42373838709 — exact-eight dependent-transport repair pending
+
+Verified red at 5f514b0fb1500c30f22de37cfe633e61fec126e7. Artifact
+13575865066 ZIP SHA-256
+346216632d4cb459350f56a86f48dddbb5b67d5bfdd4f4635dec43b165cd7cb2
+matches downloaded bytes. All 163 archive input pins and 132 compiler-log
+digests match. The 131 preceding cold builds exit zero; the new source
+exits one, consumer is skipped, receipt status INCOMPLETE. Two final roots
+contain sorryAx recovery contamination; no exact-eight theorem is accepted.
+
+First cause: cases on the let-bound padded list did not transport unit,
+length and signed-word hypotheses onto its nil/cons branch. Repair with a
+named case equation and explicit equality transport of all three facts.
+Second cause: simplification of length equality inside a Fin-indexed
+existential retained the old witness domain and introduced casts. Repair
+by equality elimination on a fresh length variable, transporting the whole
+statement. Keep the original List.ofFn_get order bridge.
+
+All eight public headers and all ten consumer entries remain identical.
+Change only the two final source proof bodies and source blob/SHA-256 pins.
+The six helper proofs, accepted sources, imports, qualifier, tests,
+workflow, dependency pins, proof budgets and cache policy are unchanged.
+Static closure/pin preflight and ten validator tests pass. Full receipt,
+all logs and failed source snapshot are durable under
+source-nine-exact-eight-word-42373838709-* in the spectral evidence folder.
+
+Require a fresh complete source/consumer strict run and artifact review
+before C0-A4c acceptance. Do not advance source word-map compactness or any
+physical/spectral claim on this red. Original branch and upstream PRs
+remain untouched.

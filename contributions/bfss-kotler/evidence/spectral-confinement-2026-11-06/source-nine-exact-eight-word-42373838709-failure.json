@@ -1,0 +1,26 @@
+{
+  "schema": "bfss-source-nine-exact-eight-word-failure-v1",
+  "run_id": 42373838709,
+  "run_url": "https://github.com/etblink/math/actions/runs/42373838709",
+  "tested_sha": "5f514b0fb1500c30f22de37cfe633e61fec126e7",
+  "artifact_id": 13575865066,
+  "artifact_zip_sha256": "346216632d4cb459350f56a86f48dddbb5b67d5bfdd4f4635dec43b165cd7cb2",
+  "receipt_status": "INCOMPLETE",
+  "cold_builds_attempted": 132,
+  "zero_exit_builds": 131,
+  "source_exit": 1,
+  "independent_consumer_started": false,
+  "archive_input_pins_verified": 163,
+  "build_log_digests_verified": 132,
+  "first_cause": "Case split on a let-bound padded list left unit/length/signed-word hypotheses on the original list; the branches lacked named equality transport.",
+  "second_cause": "Simplifying l.length = 8 inside a dependent Fin-indexed existential introduced casts while retaining the original witness domain.",
+  "recovery_roots": [
+    "FCP.BFSSSourceNineExactEightWord.source9Spin_exact_eight_list",
+    "FCP.BFSSSourceNineExactEightWord.source9Spin_exact_eight_word"
+  ],
+  "qualification": false,
+  "repair": "Name the padded-list case equation and explicitly transport all three branch hypotheses. Convert the entire Fin-indexed existential by equality elimination on a fresh length variable.",
+  "public_statement_types_changed": false,
+  "consumer_changed": false,
+  "accepted_sources_or_gate_policy_changed": false
+}

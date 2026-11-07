@@ -1,0 +1,63 @@
+/home/runner/work/math/math/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineExactEightWord.lean:106:13: error: `simp` made no progress
+/home/runner/work/math/math/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineExactEightWord.lean:108:32: error: Application type mismatch: The argument
+  htlen
+has type
+  t.length = 8
+but is expected to have type
+  (-u :: tail).length = 8
+in the application
+  And.intro htlen
+/home/runner/work/math/math/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineExactEightWord.lean:112:25: error: Application type mismatch: The argument
+  List.mem_cons.mpr (Or.inl rfl)
+has type
+  ?m.346 ∈ ?m.346 :: ?m.339
+but is expected to have type
+  u ∈ t
+in the application
+  htunit u (List.mem_cons.mpr (Or.inl rfl))
+/home/runner/work/math/math/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineExactEightWord.lean:113:25: error: Application type mismatch: The argument
+  List.mem_cons.mpr (Or.inr htail)
+has type
+  v ∈ ?m.349 :: tail
+but is expected to have type
+  v ∈ t
+in the application
+  htunit v (List.mem_cons.mpr (Or.inr htail))
+/home/runner/work/math/math/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineExactEightWord.lean:114:25: error: Application type mismatch: The argument
+  Eq.symm (source9CliffordWord_neg_head u tail)
+has type
+  -source9CliffordWord (u :: tail) = source9CliffordWord (-u :: tail)
+but is expected to have type
+  -source9CliffordWord t = source9CliffordWord (-u :: tail)
+in the application
+  Eq.trans hneg (Eq.symm (source9CliffordWord_neg_head u tail))
+/home/runner/work/math/math/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineExactEightWord.lean:130:2: error: Type mismatch: After simplification, term
+  aux
+ has type
+  ∃ (w : Fin l.length → SpaceIndex → ℝ),
+    (∀ (i : Fin l.length), source9Quadratic (w i) = 1) ∧ ↑g = source9CliffordWord (List.ofFn fun i => w (Fin.cast ⋯ i))
+but is expected to have type
+  ∃ (w : Fin 8 → SpaceIndex → ℝ), (∀ (i : Fin 8), source9Quadratic (w i) = 1) ∧ ↑g = source9CliffordWord (List.ofFn w)
+'FCP.BFSSSourceNineExactEightWord.source9UnitPairPadding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FCP.BFSSSourceNineExactEightWord.source9UnitPairPadding_length' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FCP.BFSSSourceNineExactEightWord.source9UnitPairPadding_all_unit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FCP.BFSSSourceNineExactEightWord.source9UnitPairPadding_word' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FCP.BFSSSourceNineExactEightWord.source9CliffordWord_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FCP.BFSSSourceNineExactEightWord.source9CliffordWord_neg_head' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FCP.BFSSSourceNineExactEightWord.source9Spin_exact_eight_list' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'FCP.BFSSSourceNineExactEightWord.source9Spin_exact_eight_word' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+SPECTRAL_SOURCE_NINE_EXACT_EIGHT_WORD_SOURCE_COMPLETE

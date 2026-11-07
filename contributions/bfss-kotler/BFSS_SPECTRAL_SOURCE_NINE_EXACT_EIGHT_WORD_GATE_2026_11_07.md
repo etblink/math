@@ -92,3 +92,48 @@ a replacement compact group topology, is mandatory.
 No source compactness, covering, Fock/gauge implementation, physical closed
 domain, branching, coercivity or spectral-existence conclusion is admitted
 by this candidate. The original branch and upstream PRs remain untouched.
+
+
+## Run #42373838709 — dependent-transport repair; qualification pending
+
+The first exact-eight run failed at tested commit
+`5f514b0fb1500c30f22de37cfe633e61fec126e7`. Downloaded artifact
+13575865066 has ZIP SHA-256
+`346216632d4cb459350f56a86f48dddbb5b67d5bfdd4f4635dec43b165cd7cb2`.
+All 163 archived input pins and all 132 attempted compiler-log digests
+match the retained manifest and receipt. The first 131 cold builds succeed;
+the new proof source exits one and the independent consumer never starts.
+The receipt status is INCOMPLETE.
+
+Two proof-transport mechanisms failed:
+
+1. Splitting the let-bound padded list with `cases t` left the unit,
+   length and signed-word hypotheses referring to t. The nil branch
+   could not simplify its length, and the cons branch could not use those
+   hypotheses for the explicit cons list. Name the equation with
+   `cases ht : t` and transport all three hypotheses explicitly. In the
+   nil branch, compare list lengths through that equation.
+2. `simpa only [hlen] using aux` did not transport the whole existential
+   over `Fin l.length` to `Fin 8`. It retained the old witness domain and
+   inserted a dependent cast in the word. Generalize a fresh length n,
+   eliminate its equality with l.length, and transport the entire statement
+   together. The same ordered `List.ofFn_get` bridge is retained.
+
+The six helper roots printed permitted foundational axiom reports, but
+the two final existence roots contain recovery `sorryAx`. The entire new
+source remains unqualified; clean helper reports or a completion marker
+cannot qualify a failed compilation. No source claim is accepted from this red.
+
+Only the two final proof bodies and their source blob/SHA-256 pins change.
+All eight public statement types are identical and all ten independent
+consumers remain byte-identical. The six helper proofs, accepted source,
+imports, qualifier, tests, workflow, dependencies, compiler options and
+proof budgets remain unchanged. Static preflight and all ten adversarial
+output-validator tests pass. A fresh complete cold gate and retained-
+evidence review are still required.
+
+The [failure record](evidence/spectral-confinement-2026-11-06/source-nine-exact-eight-word-42373838709-failure.json),
+receipt, all-logs JSON, complete failed source log and original failed
+source snapshot preserve the exact negative evidence. Exact eight-factor
+equality, the fixed source word map, PBW continuity and source compactness
+retain their acceptance boundaries.
