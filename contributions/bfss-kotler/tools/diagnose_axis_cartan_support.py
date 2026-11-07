@@ -35,7 +35,8 @@ def preflight():
         q.require(e["path"] == "lean/" + e["module"].replace(".", "/") + ".lean", "module path")
         q.require(e["module"] == [SOURCE, SOURCE + "Consumer"][index], "module inventory")
         q.require(q.imports(REPO / e["path"]) ==
-                  (["Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"]
+                  (["Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+                    "Mathlib.Analysis.InnerProductSpace.PiL2"]
                    if index == 0 else [SOURCE]), "exact diagnostic imports")
         code = q.uncomment((REPO / e["path"]).read_text())
         q.require(not re.search(r"\b(?:sorry|admit|axiom|native_decide|unsafe|instance)\b|"

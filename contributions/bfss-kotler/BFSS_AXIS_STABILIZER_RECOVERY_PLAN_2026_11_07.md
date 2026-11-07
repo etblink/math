@@ -130,3 +130,41 @@ The owner explicitly authorized the diagnostic exception after reviewing the
 six prepared files. Commit only this diagnostic package and trigger its bounded
 run; do not poll CI for results. A diagnostic green cannot substitute for the
 final source-exact theorem or its independent cold source/consumer qualification.
+
+## Retained diagnostic red: 42418408846
+
+Exact tested commit: `7ac6e4a193be3484277f6a045f2be5b743370267`.
+Artifact: `13592831542`; ZIP SHA-256:
+`bae3f837d7b417609aabc422acc7f64f79f78e4f94a6e6dfc112fdc9a26d2521`.
+The downloaded ZIP passed integrity and digest checks. All 33 archived input
+Git-blob and SHA-256 pins, the retained compiler-log digest, and the tested
+commit were verified. All 42 installed package identities were recorded.
+
+Classification: missing explicit Mathlib import at the structural-to-concrete
+specialization boundary. The first error is the unknown `EuclideanSpace`
+identifier in the type of `reflections_generate_fixing_nine`. The source imported
+`Projection.FiniteDimensional`, which supplies the generic reflection argument
+but does not supply that concrete Euclidean carrier. The later unknown symbols,
+unsolved specialization and missing second axiom report follow from that error.
+
+The generic `reflections_generate_fixing_aux` proof emitted no diagnostic and
+printed only propext, Classical.choice and Quot.sound. This is useful diagnostic
+evidence; the complete source compiler exit was 1, the receipt is INCOMPLETE,
+and no independent consumer was attempted. Neither the diagnostic package nor
+any new BFSS source theorem is accepted by this run. A marker following errors
+does not override the failed exit.
+
+Verified repair: pinned Mathlib `Analysis/InnerProductSpace/PiL2.lean`, blob
+`2b67b8cc8a3eab5000f6646b8c9115c5b55a963f`, defines `EuclideanSpace` and its
+finite-dimensional finrank simp theorem. Add precisely this Mathlib import to
+the diagnostic source, make the preflight require precisely the resulting two
+imports, and refresh the source/runner hash pins. All proof bodies, theorem and
+consumer types, package revisions, compiler, workflow, budgets, warning policy
+and axiom controls remain unchanged. No BFSS dependency is added. The original
+consumer remains byte-identical and must compile in the next bounded run.
+
+This run tested the mathematical proof boundary rather than failing in the
+wrapper. The explicit import adds new source-interface evidence for a fresh
+diagnostic attempt. Do not begin full source-exact word composition before the
+complete diagnostic and its independent consumer pass. The owner supplies the
+next terminal result; do not poll CI.

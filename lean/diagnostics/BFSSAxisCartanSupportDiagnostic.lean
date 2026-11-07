@@ -1,4 +1,5 @@
 import Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional
+import Mathlib.Analysis.InnerProductSpace.PiL2
 
 /-!
 Exploratory diagnostic, not a qualified BFSS source theorem.
