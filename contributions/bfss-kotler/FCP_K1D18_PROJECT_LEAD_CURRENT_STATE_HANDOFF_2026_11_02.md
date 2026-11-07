@@ -6991,3 +6991,52 @@ gauge character, closed-Hamiltonian columns, whole-sector B4→D4 exclusion,
 source coercivity or spectra. Existing Lean files, workflows/cache contracts,
 original research branch and upstream PRs remain untouched; evergreen
 guidance remains unchanged.
+
+
+## Run #42341006499 — gamma covariance accepted; actual nine-vector Lipschitz bridge candidate
+
+**Reverified state and evidence.** Separate spectral branch HEAD was
+a57dee28569da0a1db3a947ba63fcee836a1cbee. Green #42341006499 tests that
+exact commit. Downloaded artifact 13561878078 and checked all 124 input
+blob/SHA256 pins, 94 cold-build exits/log digests, twelve public-root reports,
+two completion markers, eight consumers, all 42 package revisions and
+compiler/environment-log digests. No compiler warnings occur. Acceptance,
+receipt, complete logs and source/consumer logs are durable at
+evidence/spectral-confinement-2026-11-06/source-nine-gamma-covariance-42341006499-*.
+
+**Scoped acceptance.** All six P1-gamma roots qualify: actual Clifford
+AlgHom/vector-conjugation bridge, global original gamma16 matrix-units/SO16
+covariance, multiplication and inverse orientations, and original normalized
+source-pair specialization. The whole literal source Spin9 and existing
+F10BP representation are used, with no assumed covariance or derivative
+substitution. This is not all physical P1, Fock action, physical-domain
+covariance, nine-vector orientation, compactness, confinement or spectra.
+
+**Next bounded C0-A2 stage, candidate only.** Construct the actual source9
+Lipschitz action by F10BO's original vector projection and the pinned
+Mathlib range-preservation theorem, then package the real-linear representation/
+equivalences and determinant unit character. Use actual spinGroup.toUnits
+membership to give a monoid homomorphism into the exact Lipschitz subgroup,
+and prove both pointwise and whole-representation restriction equality
+with existing F10BP. Ten roots, twelve complete-type consumers and twenty
+public-root reports. Same 92 unchanged original ancestors, two candidates
+and 30 controls: 124 input pins, 94 cold objects. Default proof budgets,
+no instance changes, BFSS cache or linter waiver. Local preflight, ten
+adversarial report tests and workflow syntax checks pass; actual Lean
+qualification remains pending on the new dedicated gate.
+
+Inspected pinned Mathlib SpinGroup.lean blob f06d1130ec5d8d4a552fdb9e670c650135e75f9c:
+lipschitzGroup.conjAct_smul_ι_mem_range_ι and spinGroup.units_mem_lipschitzGroup
+are actual source interfaces. Old source48 K1D18F/G/H supply proof patterns
+only, not imported nine-dimensional conclusions. See
+BFSS_SPECTRAL_SOURCE_NINE_LIPSCHITZ_REPRESENTATION_GATE_2026_11_06.md.
+
+**Next after evidence review.** If this bridge qualifies, identify actual
+source-normalized generator matrices, prove odd-nine rank-one determinant
++1, propagate through algebraic Lipschitz closure and restrict to Spin9.
+The present determinant character only lands in real units; no orientation
+claim is admitted. Source9 determinant, bounded Cartan factorization,
+continuity/compactness in original PBW topology, operator/Fock action, gauge
+character, closed-Hamiltonian columns, full-isotypic branching, coercivity
+and spectra retain their gates. Existing Lean files, accepted workflows/
+guarded cache, original branch and upstream PRs are unchanged.

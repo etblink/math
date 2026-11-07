@@ -103,3 +103,26 @@ the claim; syntax or resource failure alone does not refute it.
 After qualification, return to bounded source9 determinant feasibility.
 Do not infer fixed-eight factorization or compactness from gamma covariance
 or from the compactness of its SO(16) target.
+
+
+## Run #42341006499 — retained-evidence review and scoped acceptance
+
+The run completed green at exact commit
+`a57dee28569da0a1db3a947ba63fcee836a1cbee`. Artifact 13561878078 was
+downloaded and reviewed: all 124 input blob/SHA256 pins, 94 cold-build
+exits and log digests, twelve public-root reports, two completion markers,
+eight consumers, 42 dependency revisions, compiler and environment-log
+digests match. All original and candidate compiler logs have no warnings.
+
+The [scoped acceptance](evidence/spectral-confinement-2026-11-06/source-nine-gamma-covariance-42341006499-acceptance.json),
+receipt, complete logs and source/consumer logs are retained. Qualify all
+six roots in their exact global algebraic source scope, including both
+matrix orientations and actual normalized source-pair specialization.
+This discharges the small P1-gamma compatibility component, not all P1,
+physical Fock action, closed-domain covariance, determinant, compactness
+or spectral existence.
+
+The next C0-A2 stage is the separately chartered
+[actual source nine-vector Lipschitz representation/restriction bridge](BFSS_SPECTRAL_SOURCE_NINE_LIPSCHITZ_REPRESENTATION_GATE_2026_11_06.md).
+Its determinant character is a unit-valued homomorphism only; proving its
+value +1 is reserved for the following generator/closure stage.

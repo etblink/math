@@ -504,3 +504,28 @@ without introducing a full Lipschitz representation or using a derivative
 as global evidence. Its [new charter](BFSS_SPECTRAL_SOURCE_NINE_GAMMA_COVARIANCE_GATE_2026_11_06.md)
 keeps Fock implementation, all of P1, determinant, topology and spectral
 claims outside acceptance. After that bounded test, return to C0-A2.
+
+
+## L. Gamma compatibility accepted; C0-A2 action bridge isolated
+
+Green #42341006499 at a57dee28569da0a1db3a947ba63fcee836a1cbee survived
+retained-evidence review: 94 cold builds, 124 input pins, eight consumers
+and twelve public-root reports, with no compiler warnings. The
+[P1-gamma gate](BFSS_SPECTRAL_SOURCE_NINE_GAMMA_COVARIANCE_GATE_2026_11_06.md)
+now qualifies global original gamma16 covariance under the literal source
+Spin9/nine-vector actions, including multiplication and inverse orientations.
+This is an algebraic compatibility result, not a physical Fock action or
+a discharge of all P1. No C0-A2 or compactness conclusion follows.
+
+To resume K's determinant route without assuming an extended action, the
+next candidate explicitly constructs the original nine-vector action of
+`lipschitzGroup source9Quadratic` via the accepted Clifford vector projection
+and Mathlib's actual range-preservation theorem. It packages real-linear
+equivalences and a determinant-unit character, then proves pointwise and
+whole-representation equality with F10BP after the actual Spin-to-units
+inclusion. See the [bounded C0-A2 bridge charter](BFSS_SPECTRAL_SOURCE_NINE_LIPSCHITZ_REPRESENTATION_GATE_2026_11_06.md).
+This candidate has not yet qualified. A unit-valued determinant character
+is not a determinant-one theorem. After its independent strict gate, the
+source-normalized generator matrix, odd-nine determinant and closure
+propagation remain separate proof obligations; the volume/word alternatives
+and all topology/spectral boundaries remain available and explicit.
