@@ -1,6 +1,6 @@
 # BFSS linear-moment analysis gate — 2026-11-06
 
-**Status: source audit passed in run #42313963781; independent consumer hit a heartbeat limit.**
+**Status: strict source/consumer gate passed in run #42315568670; two analysis interfaces qualified under their stated hypotheses.**
 This bounded implementation follows the [E audit](BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md).
 It does not admit the confinement inequality, a physical Spin(9) action, or spectral existence.
 AI-assisted implementation and gate design require compiler and subsequent scope review.
@@ -40,7 +40,7 @@ or assert that the physical Hamiltonian has compact resolvent.
 - Gate: [workflow](../../.github/workflows/bfss-spectral-linear-moment-strict.yml)
   and [qualifier](tools/qualify_spectral_linear_moment.py).
 
-Two named declarations are proposed:
+The successful run qualifies two named analysis declarations:
 
 1. `OAI.BFSSRellich.compactLp_bump_error_linear`.
 2. `OAI.BFSSRellich.linear_moment_tight_compactness`.
@@ -155,3 +155,56 @@ Replaying the report validator accepts the actual clean source output and
 rejects the actual timed-out consumer output despite its marker. Eight
 wrapper regression tests still pass. No formal acceptance or source BFSS
 confinement/spectral conclusion follows from this partial run.
+
+## Scoped acceptance: complete cold run #42315568670
+
+[Run #42315568670](https://github.com/etblink/math/actions/runs/42315568670)
+passed on exact commit `6b7f43be416bcfcef6d293dff423e13d2468f9d7`.
+All eight wrapper regression tests and the full strict compiler gate passed.
+The retained artifact is `13551435466`, ZIP SHA-256
+`058f843557efe5db637d0cf2cb1c4ca754ab02bb31247c3db0244b3449816a19`.
+The original receipt SHA-256 is
+`f29934df52e8eb66a5a2b5cfe224b97a095a4470d4cd3e4670506869a19dda55`.
+
+Evidence review checked all 42 pinned source/control files against both the
+artifact and tested checkout, all 42 locked dependency revisions, the pinned
+compiler executable digest, all 35 successful cold compilation entries and
+compiler-log digests, all recorded fresh object digests, and both exact
+completion markers. All 33 original parent compiler logs were empty. The
+source and consumer each reported both named roots with exactly
+`propext`, `Classical.choice`, `Quot.sound`, without compiler diagnostics.
+All six independent examples compiled, including the original SU(2)
+`Boson 2`, `Fermion 2`, and `FullL2 2` carriers. The explicit scalar-function
+argument resolved the observed consumer timeout at the unchanged default
+resource limits. No mathematical source proof changed across the three runs.
+
+The artifact uploader excludes hidden input directories, so the workflow's
+copy under `inputs/.github` is absent. Its exact pinned bytes were separately
+recovered and checked from the retained `proposed-inputs.tar.gz`; no workflow
+evidence was inferred from an absent file. Lake environment warnings remain
+in their separately retained log; they are not compiler warnings.
+
+Durable evidence:
+
+- [Scoped acceptance record](evidence/spectral-confinement-2026-11-06/linear-moment-42315568670-acceptance.json).
+- [Original PASS receipt](evidence/spectral-confinement-2026-11-06/linear-moment-42315568670-receipt.json).
+- [All 35 compiler logs and separate Lake environment log](evidence/spectral-confinement-2026-11-06/linear-moment-42315568670-all-logs.json).
+- [Source reports](evidence/spectral-confinement-2026-11-06/linear-moment-42315568670-source-log.txt)
+  and [independent consumer reports](evidence/spectral-confinement-2026-11-06/linear-moment-42315568670-consumer-log.txt).
+
+**Lead decision.** Qualify only the linear cutoff-error bound and the
+arbitrary-family tightness theorem under the hypotheses stated above. In
+particular, local total boundedness remains assumed. This run does not prove
+a source BFSS coercivity estimate, global physical action, physical reducing
+sector, closed-source Hamiltonian identification, compact resolvent, or
+positive eigenpair. Source obligations P1–P3 remain open. This is internal
+Lean compilation/consumer evidence, not independent human or peer review.
+
+The next bounded analysis bridge is to derive local total boundedness from
+the original smooth-core gradient and L2 bounds, then combine it with the
+qualified first-moment estimate. Reuse the derivative estimate and
+`localRellich_on` from the original `core_moment_totallyBounded` proof, while
+replacing only its quadratic-moment tightness step. A subsequent closure
+bridge must use the actual weighted closure with a linear radial weight;
+neither bridge is asserted by this acceptance record. Keep both separate
+from P1–P3 and from any proposed physical confinement inequality.
