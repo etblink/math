@@ -1,0 +1,854 @@
+{
+  "schema": "bfss-spectral-source-nine-even-list-lift-v1",
+  "preserved_parent": "4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e",
+  "research_parent": "f65398f849beb782dd48cac96b07c15094d72d64",
+  "accepted_origin_runs": [
+    42344283019,
+    42347858285,
+    42339266687,
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineUnitCartan",
+      "run_id": 42352505826,
+      "tested_sha": "b3bb2bd77498251dc6361e143ac7713b05d150a3"
+    }
+  ],
+  "originals": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+      "blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "sha256": "65a55ad7b4b013eb98bab24bc22d7781ae4c29fbf8e1ed1f595beb1f8c9379e9",
+      "module": "OAI.MathematicalPhysics.BFSS.Core"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean",
+      "blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+      "sha256": "f7db1bc6e1123df10d3f994f250515ba9991b206510de77ec417bd05ce05cf6a",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe.lean",
+      "blob": "f53d7c52559d8e00061716d2746a87154e35e3fa",
+      "sha256": "52f894c689ce216571f58c50fa72c7515246d6af6aba38810484d1e9c7b172f7",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceCliffordGammaLiftProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinGammaMatrixUnitsProbe.lean",
+      "blob": "351d4b0f1a704ca4e02261b36bf49245e22f80dd",
+      "sha256": "4b14fd6780c7eeff73036c1b2c1655147d7d17ffdd13fb24a77a71de4dc0ac63",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceSpinGammaMatrixUnitsProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinGammaOrthogonalProbe.lean",
+      "blob": "3979ea1d3c64e4a3cb82e4baf2c10cbc6b5cb627",
+      "sha256": "7dab86123e22bcf46b2135bdf13c14bb2600995d32063aee25cc43a42d0509a1",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceSpinGammaOrthogonalProbe"
+    },
+    {
+      "path": "lean/OAI/Analysis/Laughlin/Operators/CAR.lean",
+      "blob": "c27a22d4774ff3ff6324905475b03b125a22ccb0",
+      "sha256": "f6a8f4ebd473551c6dc6b9d73e0ecc4e9445bedb8e044a86b609acc2a1741d1a",
+      "module": "OAI.Analysis.Laughlin.Operators.CAR"
+    },
+    {
+      "path": "lean/OAI/Analysis/Laughlin/Operators/NormalOrder.lean",
+      "blob": "eb11bf676afaba85efec2252d2788f8cf8b7d9aa",
+      "sha256": "cca4b0b5011160204fc7665813f435a7316cc72131899c03ef1ad4637864ec5b",
+      "module": "OAI.Analysis.Laughlin.Operators.NormalOrder"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/HubbardGlobal.lean",
+      "blob": "a3394a53a9871cd425d30178a083726a6e0cd838",
+      "sha256": "3cbf09239ceaecd07236bb4b792f7d197c28281ad46fecc9aa4128649b016c35",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardGlobal"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/HubbardOccupation.lean",
+      "blob": "c9a645022b3feb692bef65752cc99e14481d0ff0",
+      "sha256": "3dc7a1bf9068c30d1bdadc34adb56a9ce2ac01188bcf8753d7302ccaf7371eab",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardOccupation"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/Spin.lean",
+      "blob": "bdf89bacd2de531ddeeaca2e2a6c7a11b779c43a",
+      "sha256": "82798020c10ff2106664dc670f79bccdf1a363981bb45926f94727838fe09b92",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.Spin"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/Reduction/SourceHamiltonian.lean",
+      "blob": "af7d9b1ae44b8f8a84fff07929f7a583f7453883",
+      "sha256": "afc393eb3bf64b770a3d866fc9a06114f6ee29175bc72be204d4066391a4101e",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.Reduction.SourceHamiltonian"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/HubbardSpin.lean",
+      "blob": "0c8779a3333eac2f1c03e90281a34211251fbcaa",
+      "sha256": "3f53187fdfda793738564838105d45b62f3fae729729d27e6084147df731d0b2",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardSpin"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/SpinEmbedding.lean",
+      "blob": "3b030d4a9a3f31c62da9503102800204abb693b5",
+      "sha256": "b3048c58190e5ac7090d0bd13ef23b223c2953f10e714e12d1a3ebd11da6b419",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.SpinEmbedding"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/ChargePenalty.lean",
+      "blob": "df386a12102caec90d0b26e36282019f48ad4c2d",
+      "sha256": "fa7d8a881d8ce336b981ba2dd1dd176c0b9d3a9d520e165d969c62a1e71d02eb",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.ChargePenalty"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/ChargeTransfer.lean",
+      "blob": "60e79c14674142a7fb14a8574336f38ef185e576",
+      "sha256": "1626babb2c953ae48902c4348408e1a30c203f56cda5d240507ba188b5a90daa",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.ChargeTransfer"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/HubbardExcitation.lean",
+      "blob": "0e4376f9ae5d091a6d2349bf0acac8bab71c8374",
+      "sha256": "5844d7ac578ca62def2d89e2ec3049cd9f655a0dcbb64886a20e1a3e2771359e",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardExcitation"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/GlobalSuperexchange.lean",
+      "blob": "3140c354aaeb38d228349d6531a0ba1c3f8292f6",
+      "sha256": "570af6b6bb16c557e1650f61f403cf84cc9bec481b6ad0c081a773fcac1d3e58",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.GlobalSuperexchange"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/FockNorm.lean",
+      "blob": "17e71994583e7096c26a1af2fe97671f94336d84",
+      "sha256": "8443ef635f64397915e4db46fc8c4c27ca80cc3290f8461eb07cf2a570e099a1",
+      "module": "OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.FockNorm"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean",
+      "blob": "dbe9241436c7d3633547e559bccd5fe1fd82de9a",
+      "sha256": "136c885e15c4b7c54368d474044ca433885964fa8d1b6bec1118e0c0c31eb0da",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionFockProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean",
+      "blob": "93d7ae00d4ee21ce59ab137c349590e2c496ff38",
+      "sha256": "e4360cb067121068d2a4775538de6dc52fc7565ba2ed48cc2279cfb8ac3e9647",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2Probe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2BProbe.lean",
+      "blob": "de356c4c6a2f73f8d18de6700fe638c617225f4d",
+      "sha256": "015557c9d4671f877b65cccfa63fb2f96a67de9f6ddb942a0d013d62a2c892d4",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2BProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2Probe.lean",
+      "blob": "d932e4fad64ffdecb06826f784e28826af2a3952",
+      "sha256": "4be2bd6e673f1315b5feed644c25c59d7dc507dc26d37c36f5d9bb59a6e8727c",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2Probe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe.lean",
+      "blob": "71e0002c8e1f23a1522abd301bdc7f50a3b58214",
+      "sha256": "478178d16129edab3765b6cbf5349b1f8d390fe16837742609bfdcebc6c3408c",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2ImagProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe.lean",
+      "blob": "526abb5d59547075709a52c1e0d44a30a8b5222f",
+      "sha256": "c6e75516465a4894b8e4d92a3d43cabbe9fb8a6492d571f61fc8b90bf166d571",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2MixedProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedDiagProbe.lean",
+      "blob": "d9d137fb01ae96d3d4828337a079aae861246508",
+      "sha256": "818847c3285a24ebc1594ebf1633ef5c4388ed4994ec7dd54c7025d9c21a7a1d",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2MixedDiagProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedAllProbe.lean",
+      "blob": "71a174e955b5849e0309af15ddf2f2af437a4e2f",
+      "sha256": "42487149b6393f65038a7d1512b1fd7dfc17f6474f117fdc2ae97d5a02fa5214",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2MixedAllProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2IndexedProbe.lean",
+      "blob": "ff91c3e92369b7abd9cb861ec1cbbbd91f8d2293",
+      "sha256": "4f9b9c3bcd08965932ff66c259d13897b2082f59044e5b43be738c0686c9fb4c",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2IndexedProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ThetaProbe.lean",
+      "blob": "bc8fc9209fa2b907f0b372300868bc730b5fb5bd",
+      "sha256": "bbcbcb579734b19e31ec466cb4bb4808254452243fa88a434a19b947ef31fe87",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2ThetaProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean",
+      "blob": "f3a2b41f902a20f6fe237ecce18dd7e869e9c45e",
+      "sha256": "8f7151a5a896fac06518cc17ec86e7f417e0ba92fbcb1250d0768db48d93b913",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2PairedThetaLabelCrosswalkProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean",
+      "blob": "65db1f822b86bfbf400957a0aaa94784d6cb7a39",
+      "sha256": "31727ce2d12d323c2010c329d814c3b2543ba5ab7f9c038f69a2fd1e53ce1684",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9PlaneGeneratorProbe.lean",
+      "blob": "02b8e54464b0aea151c96cefd316a86270cf8871",
+      "sha256": "76c170a2934fe89b2335f826cedf79830f612beeb2491f7450b096ac4f2b4c24",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9PlaneGeneratorProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean",
+      "blob": "9dc5713dfea7c40d8c9f58088392e144c3c28517",
+      "sha256": "2eead78e56aa77265233f68c6e8676248c4eac4f93d3166e3fa431c0ea0ca09b",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9OriginalPaired48DeterminantTransferProbe.lean",
+      "blob": "1f71be97fb11a01022257b791ab38863de4407b5",
+      "sha256": "c3a57014784a1641366738ea24b85abc9881cc0d795ca069f127a7dd7b3ac6b2",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9OriginalPaired48DeterminantTransferProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HTypedDeterminantFixture.lean",
+      "blob": "87b5e9ef8a241c6f16e488e4355d3aca12ff519a",
+      "sha256": "250a8945ef9219139df5a664489d8f721c7d3c9048e03fc957ceb0b09b451f40",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HTypedDeterminantFixture"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF2SourceOrientationBoundaryProbe.lean",
+      "blob": "612d68edfdddedadfa80b780c1e4768bd7bc0ecd",
+      "sha256": "a9c38f639da9c98c4c84c17875206bd853e9d0352e810cb79c02e7b57747cc35",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF2SourceOrientationBoundaryProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF3SourceSquareOrientationProbe.lean",
+      "blob": "76fa0635c0a4a7c1564d114bfc9442024d31177e",
+      "sha256": "2f7852c3d06f347d03e4c6c3385656818d6445f5eae7a8b809f22082d2c1b9ca",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF3SourceSquareOrientationProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF4OrientationNormalSubgroupProbe.lean",
+      "blob": "60af2103131f6dae30623ea7ce3204cd9ab96299",
+      "sha256": "7cbcf3fff277d7059ac5fc83e639589f21b556084b179656ded55e2f9de4105d",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF4OrientationNormalSubgroupProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF5TypedDirectDeterminantCharacterProbe.lean",
+      "blob": "47e13c108393146c2ebb699237edb1414564d34d",
+      "sha256": "8a98c74aa7a658d2bf112cce9c380a06f7398ed5153d7b3e34a5559034bcf0e8",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF5TypedDirectDeterminantCharacterProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF6SourceCommutatorObstructionProbe.lean",
+      "blob": "1b4edd14c457dea12481c1b5417ccf969290ddbd",
+      "sha256": "c32282ec1255aaed3ffa8556371f8264e68ca45c2146645b2670a86ebf8bee99",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF6SourceCommutatorObstructionProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF7TwoSignObstructionDiscriminatorProbe.lean",
+      "blob": "9b9a2f85c8cbd8588c1d86fba92b4b6cffa16973",
+      "sha256": "527bc8c1c0f05f5a6b90127e04e00ab62c6b0f3085cb010e5dc5c85f4ad8b60f",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF7TwoSignObstructionDiscriminatorProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF8CliffordUnitsGeneratorDetBridgeProbe.lean",
+      "blob": "937e1033ad5261f2dfa0c415e60d4b7e38ac0736",
+      "sha256": "488058e5875e225bd263cb61baa6311eb5bd2f2e1652442f712bd742133e6e5a",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF8CliffordUnitsGeneratorDetBridgeProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe.lean",
+      "blob": "44493c4d9b72de2d2d84725768f8e2572ac91ed4",
+      "sha256": "7947487cf746bc6acb18e0bb8df499df4d7af561f7c218453f79246ef0757e23",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF9GeneratorDeterminantMagnitudeProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe.lean",
+      "blob": "3922916e49fc961efa99a72d706ca83ca704e3d6",
+      "sha256": "90bcf6599227b62caf49e458f13672f57295600d22d373964c332a0656ed2838",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10EPublicGammaTraceZeroProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10FSourceGammaSymmetricPositiveQuadraticProbe.lean",
+      "blob": "19a1d1fd4cfc89d7c243d28a4c9f1663a3aa3ce3",
+      "sha256": "fc507d680b93fe4b1d83970c38e473b87aad3fca7cbd53765bdc773dec51f961",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10FSourceGammaSymmetricPositiveQuadraticProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10GSourceGammaRealSpectralBridgeProbe.lean",
+      "blob": "76800a61a1b26825896519789ae2aaaef19069e9",
+      "sha256": "6189368e46f1267b9ad08b37c2b402cffdd2a888a0405c8cc0ffabf3cb7096f4",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10GSourceGammaRealSpectralBridgeProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10HSourceGammaEigenvalueSquareProbe.lean",
+      "blob": "245d1c509d41e71f001204d04b154dee76bd1b6c",
+      "sha256": "154484908e39283cef61a3e769b68fd7b956274fa7e2b592ef1f153bc2e0c9df",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10HSourceGammaEigenvalueSquareProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe.lean",
+      "blob": "0497b3ac508931ad568fc6ef1e3c20c688627ba7",
+      "sha256": "f136f1b15961022e0c5d42d79abe91b2cbe9e2fd6ef7b102871ea6d356fd26f8",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10IRealEigenvalueSqrtTwoSignProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10JSourceEigenvalueSignPartitionProbe.lean",
+      "blob": "144d32242d33428fdf26b40a9cfb8ce42bbe7c87",
+      "sha256": "0840c15b2098fc9cab48bb4d4b38c3db8a6828aacbe27dc928544e3690b9519b",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10JSourceEigenvalueSignPartitionProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10KSourceEigenvalueCardinalityBalanceProbe.lean",
+      "blob": "680122d148d53078f7b0493369b6a53f8f1101ef",
+      "sha256": "4392b84add25d746016e45cfcb8751c3520f6196883f63844651110d3067493b",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10KSourceEigenvalueCardinalityBalanceProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10LSourceRealEigenvalueEightEachProbe.lean",
+      "blob": "225f44f885923e567f2965ffd587920d4bfdaf5e",
+      "sha256": "68988b36fef7ddea6ba97b4089cbb597d5d28c0bc3a9fe0f68800e6f97614a0c",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10LSourceRealEigenvalueEightEachProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10MOriginalGammaEigenvalueProductPartitionProbe.lean",
+      "blob": "ec8c1ea8339df8262b394b0c8013e99b807a314b",
+      "sha256": "43ea2ccb63c8d19defde6e7d54a4f524ba4e4bbf75bff0ed6c2d755e9367ac04",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10MOriginalGammaEigenvalueProductPartitionProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10NOriginalGammaPositiveDeterminantProbe.lean",
+      "blob": "85ebcbfbe9929f249376e79ab735d4f3c2180e5b",
+      "sha256": "fcbdab0c28636a30d57f9dacbf2ef3ab8c09902e4dedd075f9ab4df55225a277",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10NOriginalGammaPositiveDeterminantProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10OCliffordUnitGeneratorPositivityProbe.lean",
+      "blob": "759ca747a5dcfb165c2cd6b70e1df59dae21ece5",
+      "sha256": "77226d32870c6d0fc20c4835eb798ddd935eace8cf54df1f5bb312c1cfa0f44f",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10OCliffordUnitGeneratorPositivityProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10PLipschitzGroupDetPositivityProbe.lean",
+      "blob": "e97e94a0e507651b4b3fe4fe157acf9f664e1f78",
+      "sha256": "42f572d7f9393dc7f7a0618e9ad92189d57f419695525fb0937dc332932707ca",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10PLipschitzGroupDetPositivityProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10QSourceSpinOrientationDetOneProbe.lean",
+      "blob": "948712b83647829ab5902dfa88979f44747af1f3",
+      "sha256": "50285f6e5ff39bc98c516c3017a38ae5ff2f5fa5c84c0b0cfd07a1f002f05816",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10QSourceSpinOrientationDetOneProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom.lean",
+      "blob": "7798089cb8ac4ec4fffc3ead4caa474def81b3f8",
+      "sha256": "ba65900dc6bdd7ba8e63d0396c3e13d59156c7d15d04e5cf27ce5e775a26c436",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BHUnitVectorPairMembership.lean",
+      "blob": "f17d83d961055ebf4b00b74dfb35010a51c886d4",
+      "sha256": "317a46a90a6961e73fd1d0530e6f67e3c03e5fc15cdd2018c41f2bb15e3e25b8",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BHUnitVectorPairMembership"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve.lean",
+      "blob": "faabd83f813eab9ae2026c5d426f8baed80d33a6",
+      "sha256": "0ba779985914d29d8c7f9f2cf3ceadccb05a460ad124635757d781d7c71e31be",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BICoordinatePlaneSourceCurve"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9OrientationSwapProbe.lean",
+      "blob": "58cd7bbd6d1314dc684309b0fe4724688d00e59f",
+      "sha256": "af71af336d57eeb50d62e9d06c3707468b817a8fdb2f3aac7450be8ff41f0ae9",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9OrientationSwapProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9ZeroDiagonalInterfaceProbe.lean",
+      "blob": "8aa93c41a83164e3a99eca139de477d82842d589",
+      "sha256": "4871243df5826e4a02fd594d0a6c0a727d49f057e3ca3aad27c27623ef2fea8d",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9ZeroDiagonalInterfaceProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9AdjacentLieBracketProbe.lean",
+      "blob": "2186cce50ad2f06c125b7281cbe10f319d975a81",
+      "sha256": "97ec727741c0601d15e1847094fb03abdd05901fb841e93333432f0554c16213",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9AdjacentLieBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9DisjointLieBracketProbe.lean",
+      "blob": "fd66cbfb575b9e511769d3ceeab73556e77bc409",
+      "sha256": "63aab8958a0c4ba26e2bb1c4fa79a8551745867551a7e0b7d2871e4674091efc",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9DisjointLieBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SharedEndBracketProbe.lean",
+      "blob": "dfb8f78deeb44d0dd8d5de8ad8268f79edd0df51",
+      "sha256": "2b8d8397e20264dbcf1e785fe98470bf024b21dd2ae09880c3b1281b1218bbf3",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SharedEndBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SharedLeftBracketProbe.lean",
+      "blob": "ce5cdc1d8073262b867fc705e0adc4f0ac5e743e",
+      "sha256": "eb8c880bbfb200397901f66e9fc987a1924b291e41e50b1a037eb04edf04d06b",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9SharedLeftBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9CrossRightBracketProbe.lean",
+      "blob": "05e4d93ad64aeb5b2ccd42999f7d225e108eb433",
+      "sha256": "b62fde7bb9626936ba3e18123339deddbff60f5aa1c0ceff1e3ba31ddf3bbeea",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9CrossRightBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9ZeroDiagonalBracketsProbe.lean",
+      "blob": "d9c453029eed5ffba4d498bb333a9d5302261aa3",
+      "sha256": "e7377488cb97609d8c756ac2a799546a367e5c74d9a3b3206cdd0f0423639dbf",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9ZeroDiagonalBracketsProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe.lean",
+      "blob": "d0fba846741de21848820f46a179d7cc0251c113",
+      "sha256": "89446f2ae239e43e6298caa0f8e6d1773e8f1d24b1f6c9ba92882a48213d117d",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9FourIndexDiagonalBoundaryProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9FourIndexPairCoincidenceProbe.lean",
+      "blob": "10c1f7ea6bccece8003632d9fc43ace907dc27f1",
+      "sha256": "d9e17c8697f7b26d65efab2accc443c640c4c2278855a841fce910a3d08f286e",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9FourIndexPairCoincidenceProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9FourIndexDistinctCasesProbe.lean",
+      "blob": "35b6e9acd0504885521727ec0e655f7e51813ea0",
+      "sha256": "f602a604100415f9d247f4abc30ecd007eb0d3867ed721ef335d924aff276564",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9FourIndexDistinctCasesProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9UniversalFourIndexBracketProbe.lean",
+      "blob": "b4b302b306e543194789d1af450d3658d93e6f09",
+      "sha256": "2395d88089fd0734ef95b9da1874fa117209c3f78f4f92eb8e7965980600949f",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9UniversalFourIndexBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9ZeroDiagonalSkewSquareProbe.lean",
+      "blob": "a4a4ada7dab04c87cdad14206656c6b81b32aeae",
+      "sha256": "8491404735278d6f7c764a91870fb632895d2ef63a90d9c081fa98048d417405",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9ZeroDiagonalSkewSquareProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedPlaneInterfaceProbe.lean",
+      "blob": "a217471af24ba8c086746d8ade85d1337a1b66d6",
+      "sha256": "4eef2b76febbfb19666ad598e0fe0d6aca98ab4af4a7f45cba096013bbbcddcd",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9NormalizedPlaneInterfaceProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedAdjacentBracketProbe.lean",
+      "blob": "8ffeb7c8a369f356837c47b2e514175f24c897f4",
+      "sha256": "548893106b4f56446393075721b15a676000a96a82a227f779a375b2fd2225e7",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9NormalizedAdjacentBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedUniversalScalarBracketProbe.lean",
+      "blob": "bf441cca38636920498b6283ca178aa82aa0b2a3",
+      "sha256": "63fa6264e64b62fdff2cf5aea0463ba09521a13570d49826db1d1081accf5e04",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9NormalizedUniversalScalarBracketProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe.lean",
+      "blob": "46e02a38f6647458132039bc1f44b0358c9c4f44",
+      "sha256": "a5e34fa1183aef9f5ccf7010a39f42afc647fb325df9ce1c62aa547f73e20bbd",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9NormalizedFourIndexStructureProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe.lean",
+      "blob": "92a26e8380abe9c1f9bdf011d27b8e97b4e17ef3",
+      "sha256": "c4684e351891ff24ae820ec0a99d185067acfc912dc694f935a86dbdfcd923c4",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9CoordinatePlaneCarrierProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe.lean",
+      "blob": "d80001bbe5052357dbca559232d81cc01c56fb34",
+      "sha256": "262a9f6dfcb2aef10113454563cac7e850e9a5404ec4a797e9ebdef2b52bbf58",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9CoordinateMatrixUnitBridgeProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction.lean",
+      "blob": "bc0d8539c2523fffe2f36ee4b121a1b81a1431be",
+      "sha256": "e4e364bf133e3628b5f6c9b7b3cb925d613e1665b765860969b4b20235e22e39",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BLSourceCoordinateCommutatorAction"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean",
+      "blob": "75a679f2a1435d747e219617feea266b4508c53d",
+      "sha256": "58e1436a99163beddc693ae9bc83f058a23b030b39ebd9bdb6ee30602e7cbef4",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe.lean",
+      "blob": "b7e2755bb2db28e2ce3d31cb9e8c47df4985ba6d",
+      "sha256": "eadda885cc11be14c91ba02672d15900cb519eda20a0d38d2768c98e6d1acb4e",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10SOriginalPairedNegativeScalarActionProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe.lean",
+      "blob": "251a9375d3f99e04d3bf547c8052185ebcf2b768",
+      "sha256": "ae1f7f99083ea4a3cbb2d518563fe267ccee7f58a14e6a536c800b2d25d01458",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10TSourceSpin9NegativeCentralMembershipProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean",
+      "blob": "353978608b978b00d0e36deb1c1a47c32641ea59",
+      "sha256": "abbd6db504524f94f243c5e9a2479d5c7e434fc823b48458143aed32582a13af",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10VSourceCentralInvolutionSO48SignActionProbe.lean",
+      "blob": "4d61948281f17213e2c9ba1dc8ae9c57299c34d3",
+      "sha256": "c7568defb665a66f227f1a1e0835e9703543a8c9bcd73c223b958dfc50e1ea9f",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10VSourceCentralInvolutionSO48SignActionProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10WOriginalPairedSO48Gamma16KernelReductionProbe.lean",
+      "blob": "1e21a40ac75613dc1c7a31d8266185db8a77e809",
+      "sha256": "90c7e7b42dda8993252f21220e24334264f6488981a2eff195fcb14efc38ff6a",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10WOriginalPairedSO48Gamma16KernelReductionProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10XSourceCliffordGammaKernelCriterionProbe.lean",
+      "blob": "42da9e4d7cc74a6137defe7f68e457275be21b31",
+      "sha256": "de52b95a07500a6c97395b7f565cf6b90392400cb043ad414760e2b6a08a6f28",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10XSourceCliffordGammaKernelCriterionProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe.lean",
+      "blob": "578ddf1505da2ab2848bc88cf709660d941cb8ec",
+      "sha256": "3e8b76a920b5e3d0f072054434205cc87e9127b5b8bcb91f55d5b0c369f260f6",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity.lean",
+      "blob": "db887aa6e495eb2a74c2e826018ffb5453158806",
+      "sha256": "429ac5d24595d031062340baa03421440016aed4aa405d5dbda3765882a51720",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BEPBWTopologyGammaContinuity"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives.lean",
+      "blob": "528937bc6f528eed64aea16ecc5eb69c74c2dd99",
+      "sha256": "a82ab70621777eb7d107cb829bd8c66018aff056e3a65542cbe21495b95f53f0",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BJSourceCurveDerivatives"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BMInverseSourceCurveDerivative.lean",
+      "blob": "545581346eaf563b54dcf3c828e43d19c2d1dd23",
+      "sha256": "a78a089238add9611c8a7df9884159051d357586acef1c080d20dc5f29c0096d",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BMInverseSourceCurveDerivative"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BNSourceConjugationDerivative.lean",
+      "blob": "4090ad6c9ad58249b5a617245065454baa4fb58a",
+      "sha256": "5d628328cb765b8f45706e980ebe287dec4b23d41333294195cac7e99c3b7422",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BNSourceConjugationDerivative"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean",
+      "blob": "03287d741b05cd4e373f1b5e608d0e6888b63e89",
+      "sha256": "a77237d3c3f5f32091ee09f63429d9a19beef43873e6f03f8aef9cacf6d44e05",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BPSourceVectorLinearRepresentation.lean",
+      "blob": "47684d3586cf7c53674c8d52341853f3f03fa319",
+      "sha256": "c4bddc39baf888ea5ac4432b33078c6da5685294b0c4b6dafedd79dda5c5a299",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BPSourceVectorLinearRepresentation"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BQSourceVectorQuadraticIsometry.lean",
+      "blob": "cc78661038f8a9685f9e3eef397941ee90d39ca2",
+      "sha256": "73245b4a3899d1771b322853bebe33d5673d90a166fb60eda3a24538583dc211",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BQSourceVectorQuadraticIsometry"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BRSourceVectorOrthogonalHom.lean",
+      "blob": "8aa718eba564ae945e618aefbee9329f952256f0",
+      "sha256": "1b403d59f09c8b6c628eb732cb932288eea3de31cb3dbf7c64eab297af32326a",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10BRSourceVectorOrthogonalHom"
+    }
+  ],
+  "accepted": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineLipschitzRepresentation.lean",
+      "blob": "225cfcf37042ced221e31f941fd970322895cfc4",
+      "sha256": "56080109e4afa5323ebbfb7af5416816507c017e50d873f31acf4968b7255ecf",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineLipschitzRepresentation",
+      "roots": [
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzVectorLinearMap",
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzVectorLinearMap_\u03b9",
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzVectorRepresentation",
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzVectorLinearEquiv",
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzVectorLinearRepresentation",
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzDeterminantCharacter",
+        "FCP.BFSSSourceNineLipschitz.source9SpinToLipschitz",
+        "FCP.BFSSSourceNineLipschitz.source9SpinToLipschitz_toUnits",
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzVectorRepresentation_restrict_spin",
+        "FCP.BFSSSourceNineLipschitz.source9LipschitzVectorRepresentation_restrict_spin_hom"
+      ],
+      "marker": "SPECTRAL_SOURCE_NINE_LIPSCHITZ_REPRESENTATION_SOURCE_COMPLETE"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineOrientation.lean",
+      "blob": "ce25b541346c81c4821d52ad8cd7085e0bf518aa",
+      "sha256": "70fc9c992225f97e76643078ce241d2ed924ad56070dff128454029a3e89377e",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineOrientation",
+      "roots": [
+        "FCP.BFSSSourceNineOrientation.source9Quadratic_polar_dot",
+        "FCP.BFSSSourceNineOrientation.source9NormalizedPolarRow",
+        "FCP.BFSSSourceNineOrientation.source9NormalizedPolarRow_dot",
+        "FCP.BFSSSourceNineOrientation.source9NormalizedPolarRow_dot_self",
+        "FCP.BFSSSourceNineOrientation.source9RankOneConjugationMatrix",
+        "FCP.BFSSSourceNineOrientation.source9RankOneConjugationMatrix_mulVec",
+        "FCP.BFSSSourceNineOrientation.source9RankOneConjugationMatrix_det_one",
+        "FCP.BFSSSourceNineOrientation.source9GeneratorUnit_mem_lipschitz",
+        "FCP.BFSSSourceNineOrientation.source9GeneratorLipschitzUnit",
+        "FCP.BFSSSourceNineOrientation.source9GeneratorLinearMap_eq_rankOne",
+        "FCP.BFSSSourceNineOrientation.source9GeneratorDeterminantCharacter_one",
+        "FCP.BFSSSourceNineOrientation.source9LipschitzDeterminantCharacter_eq_one",
+        "FCP.BFSSSourceNineOrientation.source9SpinVectorRepresentation_det_one",
+        "FCP.BFSSSourceNineOrientation.source9SpinVectorMatrixHom_det_one",
+        "FCP.BFSSSourceNineOrientation.source9SpinVectorSpecialOrthogonalHom",
+        "FCP.BFSSSourceNineOrientation.source9SpinVectorSpecialOrthogonalHom_mulVec"
+      ],
+      "marker": "SPECTRAL_SOURCE_NINE_ORIENTATION_SOURCE_COMPLETE"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineReflectionPair.lean",
+      "blob": "ba5c27f56343717aab6542323c02f58c8f4f46a9",
+      "sha256": "fa874ac58425dfcb6e3263e6e8ed64edaed1e5154fa4effafb6b37b452934bd2",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineReflectionPair",
+      "roots": [
+        "FCP.BFSSSourceNineReflection.source9ToEuclidean",
+        "FCP.BFSSSourceNineReflection.source9Quadratic_eq_euclidean_norm_sq",
+        "FCP.BFSSSourceNineReflection.source9Polar_eq_two_euclidean_inner",
+        "FCP.BFSSSourceNineReflection.source9Unit_euclidean_norm_one",
+        "FCP.BFSSSourceNineReflection.source9Unit_clifford_conjugation",
+        "FCP.BFSSSourceNineReflection.source9UnitVectorPairSpin_inverse",
+        "FCP.BFSSSourceNineReflection.source9UnitVectorPairSpin_polar_action",
+        "FCP.BFSSSourceNineReflection.source9Unit_polar_action_eq_negative_hyperplane",
+        "FCP.BFSSSourceNineReflection.source9UnitVectorPairSpin_eq_native_hyperplane_pair"
+      ],
+      "marker": "SPECTRAL_SOURCE_NINE_REFLECTION_PAIR_SOURCE_COMPLETE"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineUnitCartan.lean",
+      "blob": "ec9f1e1b9ef9020068c7e25b1c1c13175df5981c",
+      "sha256": "c6780c1a5cefeed3d28813b3bb102eb0cc48a3ae979942f85290f123c617c3fb",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineUnitCartan",
+      "roots": [
+        "FCP.BFSSSourceNineCartan.source9SpinEuclideanLinearEquiv",
+        "FCP.BFSSSourceNineCartan.source9SpinEuclideanLinearEquiv_norm_map",
+        "FCP.BFSSSourceNineCartan.source9SpinEuclideanIsometry",
+        "FCP.BFSSSourceNineCartan.source9SpinEuclideanIsometry_apply_source",
+        "FCP.BFSSSourceNineCartan.source9SpinEuclideanIsometry_det_one",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormal",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormal_norm_one",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormal_span_eq",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormal_reflection_eq",
+        "FCP.BFSSSourceNineCartan.source9EuclideanHyperplaneReflection_zero",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormals",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormals_all_unit",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormals_length_le",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitNormals_reflectionProduct_eq",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitHyperplane_det_neg_one",
+        "FCP.BFSSSourceNineCartan.source9EuclideanIsometry_mul_det",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitReflectionList_det",
+        "FCP.BFSSSourceNineCartan.source9EuclideanUnitReflectionList_even_of_det_one",
+        "FCP.BFSSSourceNineCartan.source9SpinEuclidean_unitCartan_le_eight",
+        "FCP.BFSSSourceNineCartan.source9Spin_sourceUnitCartan_le_eight"
+      ],
+      "marker": "SPECTRAL_SOURCE_NINE_UNIT_CARTAN_SOURCE_COMPLETE"
+    }
+  ],
+  "candidates": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineEvenListLift.lean",
+      "blob": "b806a48b8be72ec239f15043fd987a946f6cacef",
+      "sha256": "24f4746f4ddf13674c39f3b44bde1c503a2b6a16c47e46abf0a1d93dbc9b9f19",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineEvenListLift",
+      "roots": [
+        "FCP.BFSSSourceNineEvenListLift.source9CliffordWord",
+        "FCP.BFSSSourceNineEvenListLift.source9NativeReflectionWord",
+        "FCP.BFSSSourceNineEvenListLift.source9EvenUnitList_lift",
+        "FCP.BFSSSourceNineEvenListLift.source9Spin_sourceUnitCartan_lift"
+      ],
+      "marker": "SPECTRAL_SOURCE_NINE_EVEN_LIST_LIFT_SOURCE_COMPLETE"
+    },
+    {
+      "path": "lean/diagnostics/BFSSSpectralSourceNineEvenListLiftIndependentAudit.lean",
+      "blob": "2e40290113e4bd6936a0b81075003225c02dd9af",
+      "sha256": "eee1490cd8e30d2a766d65d56d699507907ccfb5c200c2dc0ed7ad3b8e62d3a1",
+      "module": "diagnostics.BFSSSpectralSourceNineEvenListLiftIndependentAudit",
+      "roots": [
+        "FCP.BFSSSourceNineEvenListLift.source9CliffordWord",
+        "FCP.BFSSSourceNineEvenListLift.source9NativeReflectionWord",
+        "FCP.BFSSSourceNineEvenListLift.source9EvenUnitList_lift",
+        "FCP.BFSSSourceNineEvenListLift.source9Spin_sourceUnitCartan_lift"
+      ],
+      "marker": "SPECTRAL_SOURCE_NINE_EVEN_LIST_LIFT_CONSUMER_COMPLETE"
+    }
+  ],
+  "controls": [
+    {
+      "path": "lean/lean-toolchain",
+      "blob": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "path": "lean/lake-manifest.json",
+      "blob": "67d01d2717d0aaff59fb8814bb53581b961f42b4",
+      "sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794"
+    },
+    {
+      "path": "lean/lakefile.lean",
+      "blob": "cd24ca2ee09fb6fe33e82400534d9e60a616125b",
+      "sha256": "fc590a5d14923f79e71ea80e29efd42950bb3ec051481b5209157f0a01f63de1"
+    },
+    {
+      "path": "contributions/bfss-kotler/tools/qualify_spectral_linear_moment.py",
+      "blob": "c8e91ac7ec675b37d53b3e9a5baa117450ef6596",
+      "sha256": "35f692226217043162468a500e5d86a61a9c8270b02e4aad85e86d04cddbc8a0"
+    },
+    {
+      "path": "contributions/bfss-kotler/tools/qualify_spectral_source_nine_even_list_lift.py",
+      "blob": "c953451be62a213cde24f6fa5263f58ae3369e17",
+      "sha256": "a050c61e0226bb6ac8d10fbddc0829ec5a1b5a19563255bb66bb344790838a37"
+    },
+    {
+      "path": "contributions/bfss-kotler/tools/test_spectral_source_nine_even_list_lift.py",
+      "blob": "3f0cbe2fca5ad68b23f5188dc6cdbe262a3002d1",
+      "sha256": "6a067ed1a8485c189e93c0be55a4acf96602c9e0cd7995829ecd88efa8df8cd8"
+    },
+    {
+      "path": ".github/workflows/bfss-spectral-source-nine-even-list-lift-strict.yml",
+      "blob": "f1ce6814ff023b30598db89bc79740f95f3afaf0",
+      "sha256": "762b5a4dd62083e94d7c97f76044b7eb13d50bb89a94dc3b7ee344213de7e295"
+    },
+    {
+      "path": "lean/patches/AINTLIB-lean4341.patch",
+      "blob": "ef5fd2be6ee043fe405c150abba0b7a784822120",
+      "sha256": "076bee4cee068ad938e611d266bb32f7f1798189336087e88c08c8b3ac58dff1"
+    },
+    {
+      "path": "lean/patches/AbsorptionCutoff-lean4341.patch",
+      "blob": "2386161f30aa4691e22d4fc6864ee6847f59c20a",
+      "sha256": "8b35104dc12f807f594f7a61f7a183d967edcd0e601c7172e0e851e4c3adb3ba"
+    },
+    {
+      "path": "lean/patches/ClassFieldTheory-lean4341.patch",
+      "blob": "dbc569846ae53c9b01701417922e218c73734a61",
+      "sha256": "0275686e2febd9c14523a94cbfae105e6cf30997ed0b2a1ea28c84d0d0c12ba5"
+    },
+    {
+      "path": "lean/patches/PrimeNumberTheoremAnd-lean4341.patch",
+      "blob": "924c5f6ec6fe88ba7788b420af4e3c3c7ac00abc",
+      "sha256": "0890432340c0025973bcfe070b634355fa366cc831595f68526e4c73c8903d82"
+    },
+    {
+      "path": "lean/patches/SphereEversion-lean4341.patch",
+      "blob": "33c9eea01e40afede1d4ad4a16d9c6a9a48f8d26",
+      "sha256": "5c7c8dba85e4636ed2fec14a5765e937f2b1c428eadb12168645b9d2c0046098"
+    },
+    {
+      "path": "lean/patches/StrongPNT-lean4341.patch",
+      "blob": "0269959e81418ffd738958089922f4eca4fec787",
+      "sha256": "2cac5cbef22987314f9293bebcf243d0a3341caaf0227925d1f8d4c31be924d7"
+    },
+    {
+      "path": "lean/patches/Zeta3Irrational-lean4341.patch",
+      "blob": "01fc1060d47bfa6886175de566cbdac633bc6858",
+      "sha256": "169eb72e9d12740688467a0e6abf63923a60ec5f7ce8f49ca4b3684a22418901"
+    },
+    {
+      "path": "lean/patches/belyi-lean4341.patch",
+      "blob": "82cdea551412b8ca4e1ca95b936bb9b30008c3c2",
+      "sha256": "f54c2e211464c0f8194ce63a80a6562489f23f688b1c233efe3c2debfc1b9f66"
+    },
+    {
+      "path": "lean/patches/carleson-lean4341.patch",
+      "blob": "7185ab1aedd905bbdc034200f6690267becaf279",
+      "sha256": "8aa67adaeb6ef56967aa78c47a6c743f03ac72c125f503219a72dee5be23168c"
+    },
+    {
+      "path": "lean/patches/elliptic-curves-lean4341.patch",
+      "blob": "fab72b9b04063c5c96f792f6d0b584d229b436ea",
+      "sha256": "69e6575dae5797d43242694dc737b400b3e1e8fcb854094fead2a204a1f58632"
+    },
+    {
+      "path": "lean/patches/fixed-point-theorems-lean4341.patch",
+      "blob": "1213fb0a7a24f0be2ba1b9a8db5af1434f02c4ec",
+      "sha256": "d70872e41e80b25191538d1659c4aa3a001349b5bd16f806c9e3833a502516e5"
+    },
+    {
+      "path": "lean/patches/formal-schemes-lean4341.patch",
+      "blob": "9c11806b5836668ba59e4f485a30c6c5270e79eb",
+      "sha256": "5376716aa94fe0c6907570d650dd6604f170687c218cea7028d09b9f95877cea"
+    },
+    {
+      "path": "lean/patches/genl-lean4341.patch",
+      "blob": "d2ef990e3dab0d9d5ce8ad62ed08a559ab6a3cf9",
+      "sha256": "3a9edd7dd539e98f81145a3b6cc980c9d62a821b7d41e2591f9aa5c557a7b6fa"
+    },
+    {
+      "path": "lean/patches/gromov-lean4341.patch",
+      "blob": "60e39db95ff2e9abb30092d795d767763555b8c7",
+      "sha256": "26a1924bef774183a2e0865f144b782dc1f78eb0246993a31a5d63193b7781bb"
+    },
+    {
+      "path": "lean/patches/heights-lean4341.patch",
+      "blob": "0256e76da04bf980510c13b63f018088c5dd8580",
+      "sha256": "bd3b58a301df273a199d9a0fe486b25d194df176afe32583289d42b64ab583a3"
+    },
+    {
+      "path": "lean/patches/iut-lean4341.patch",
+      "blob": "e8c30d8fb73f32d3091006e0c0d54423281d6c22",
+      "sha256": "610ef069f7de5a5d500ead287287b60f193269ea4ddc0011101a9c7c98356dd4"
+    },
+    {
+      "path": "lean/patches/oka-lean4341.patch",
+      "blob": "f397a61a148d22802ef59c2722aad8fdfad23f26",
+      "sha256": "02995b860e7d566a10adc3488439d38abc06dcb317ae4576d504c71c921816e7"
+    },
+    {
+      "path": "lean/patches/orbicurve-cores-lean4341.patch",
+      "blob": "59f729289d198a5295e17890cb4dee307f31cebc",
+      "sha256": "4376110b9b7c823057cda21479a45de688c5138c81e5d4f1c050b632f168b93d"
+    },
+    {
+      "path": "lean/patches/pi1-lean4341.patch",
+      "blob": "407aac2b2dc9d042a7204eaa41da56fecde5137c",
+      "sha256": "816e0d8123d5622c5b3415675638053ae31126a829e4f21d96f7af28db292f5f"
+    },
+    {
+      "path": "lean/patches/rellich-kondrachov-lean4341.patch",
+      "blob": "43600843a74f7736b17db51af4783dc7ba69f6a2",
+      "sha256": "0c121d8517dfeadc93ef24fe2deb56beec7cb3998e2552dee8f61c780b1408c8"
+    },
+    {
+      "path": "lean/patches/schoenflies-lean-lean4341.patch",
+      "blob": "eb0f300c7f84c4f99fcc02d5835cb46b6ef296ba",
+      "sha256": "4cbc255a2be785e6b617ecd61cdaf67e6d236d65a87f284380f2713670c8e350"
+    },
+    {
+      "path": "lean/patches/tate-curves-theta-lean4341.patch",
+      "blob": "02f7fb07df38bc9038c27c836460fd6d61d5ffb7",
+      "sha256": "885a19a0dc2d004aaece1987e2b7d2ff4745aef8881cbc53971a852cc5644c3f"
+    },
+    {
+      "path": "lean/patches/tempered-fundamental-groups-lean4341.patch",
+      "blob": "4491cc15d9677e4922ad993fbd84801bf166fb15",
+      "sha256": "f2e51b5f38459f11515c21801c92c39de85a8feb5f2b490ebbe07a93511a8860"
+    }
+  ]
+}

@@ -7254,3 +7254,37 @@ The fixed-word topology/compactness gate remains separate. No continuous
 choice of factorization is required. The original branch remains at
 4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e. No Lean source, workflow,
 manifest, dependency, cache contract or upstream PR is changed here.
+
+
+## C0-A4a candidate — ordered even-list lift into the actual source Spin group
+
+Parent f65398f849beb782dd48cac96b07c15094d72d64 was reverified before work.
+C0-A3 acceptance and its red/green evidence remain unchanged. The next
+candidate is deliberately bounded: SpectralSourceNineEvenListLift.lean
+imports only the accepted UnitCartan source and constructs an actual
+source Spin h from an even original Q-unit list. Strong induction strips
+consecutive pairs, retaining BOTH the literal ordered Clifford product
+and the original vector action via F10BH/C0-A1/F10BP. Its specialization
+uses C0-A3 to give an even list of length at most eight and h with exactly
+the original action of g. No h = g assertion is made.
+
+Four public roots and eight independent consumers include the empty-list
+actual identity, arbitrary ordered pairs and repeated-pair identity.
+The separate strict gate pins 130 inputs and rebuilds 100 objects: 94
+unchanged originals, four accepted sources, new source and consumer.
+Expected strict output is 63 reports and six completion markers. Exact
+closure/pin preflight, ten adversarial output tests and workflow syntax
+checks pass locally. The local Lean executable cannot start (failed to
+locate application); the actual compiler/consumer gate and retained-
+evidence review are pending. No new theorem is qualified by this handoff.
+See BFSS_SPECTRAL_SOURCE_NINE_EVEN_LIST_LIFT_GATE_2026_11_07.md.
+
+The actual F10CU two-sign fiber theorem, sign correction and exact-eight
+padding are not imported or discharged here. After qualification, compare
+original matrices, recover the two possible source signs, pad BEFORE
+negating the first factor, and verify exact source equality in the chosen
+Fin 8 order. The empty initial Cartan list and negative central element
+remain mandatory cases. PBW continuity, source compactness and every
+physical/spectral obligation remain separate. No accepted Lean source,
+existing gate, dependency pin, proof budget, cache contract, original
+research branch or upstream PR is changed.

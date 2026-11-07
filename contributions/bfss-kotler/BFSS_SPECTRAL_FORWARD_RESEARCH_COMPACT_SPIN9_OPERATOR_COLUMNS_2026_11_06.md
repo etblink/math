@@ -668,3 +668,22 @@ topological embedding. No replacement group, quadratic form, norm or
 topology is authorized by this plan. Fock/gauge action, physical closed
 domains, full-sector branching, coercivity and spectral existence remain
 separate unresolved obligations.
+
+
+## P. C0-A4a candidate: actual even-list Spin lift isolated
+
+The [new bounded gate](BFSS_SPECTRAL_SOURCE_NINE_EVEN_LIST_LIFT_GATE_2026_11_07.md)
+attempts only O's first proof seam and its Cartan specialization. It tracks
+an actual source Spin element h, its literal original Clifford word and
+its ordered original nine-vector action, including the empty list and
+repeated-pair identity. Four proposed public roots and eight independent
+consumers remain pending strict compilation and retained-evidence review.
+The separate gate rebuilds the unchanged original closure and all four
+accepted spectral source modules; acceptance of C0-A3 is not reused as
+proof of this new construction.
+
+Even after this candidate qualifies, equality of actions will not identify
+h with g. F10CU two-sign recovery, padding before sign correction, exact
+eight-factor equality and original PBW continuity remain the next separate
+obligations. This is a candidate-status update, not source compactness or
+a spectral theorem.
