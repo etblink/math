@@ -72,7 +72,7 @@ theorem source9SpinEuclideanIsometry_det_one (g : spinGroup source9Quadratic) :
         change LinearMap.det (source9SpinVectorRepresentation g) = 1
         exact source9SpinVectorRepresentation_det_one g
   have hval := congrArg (fun u : ℝˣ => (u : ℝ)) hdet
-  simpa only [LinearEquiv.coe_det] using hval
+  simpa only [LinearEquiv.coe_det, Units.val_one] using hval
 
 /-- Normalize a nonzero native Euclidean reflection normal without changing its labels. -/
 noncomputable def source9EuclideanUnitNormal (u : Euc9) : Euc9 := ‖u‖⁻¹ • u
