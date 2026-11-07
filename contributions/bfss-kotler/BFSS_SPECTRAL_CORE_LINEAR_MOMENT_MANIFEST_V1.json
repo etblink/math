@@ -1,0 +1,428 @@
+{
+  "schema": "bfss-spectral-core-linear-moment-v1",
+  "proposal_parent": "4b3df7b237e590b94a2ad70d90dd7e55ad5dbab4",
+  "accepted_linear_moment_run": 42315568670,
+  "accepted_linear_moment_sha": "6b7f43be416bcfcef6d293dff423e13d2468f9d7",
+  "originals": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+      "blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "sha256": "65a55ad7b4b013eb98bab24bc22d7781ae4c29fbf8e1ed1f595beb1f8c9379e9",
+      "module": "OAI.MathematicalPhysics.BFSS.Core",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/CliffordSymbols.lean",
+      "blob": "cc01379653404c4ede3d551fd8d823e079543b21",
+      "sha256": "d16a70360849b1207927c15b306bb503a2bea01904c2dacc50b7f4788da637d4",
+      "module": "OAI.MathematicalPhysics.BFSS.CliffordSymbols",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Cutoffs.lean",
+      "blob": "7fe937b9af79f4ea7a8f994fa37d510608464c2b",
+      "sha256": "520e0076c0bb85b56af448c87fe4bf412c6c99a33c25fc89ec242f12f2f46f4d",
+      "module": "OAI.MathematicalPhysics.BFSS.Cutoffs",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Kinetic.lean",
+      "blob": "14045947b1860b28cbbd82c3f2b40967e795d5a8",
+      "sha256": "d0a464afd78b9f2f9eba63be1759cdd81d97713494b43dc6a15cef9464f4efe7",
+      "module": "OAI.MathematicalPhysics.BFSS.Kinetic",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean",
+      "blob": "d12051e70de679f5458dbd456667a32c7b407ce4",
+      "sha256": "2e0c72c0cb8f96080e861f4b50fb9d58afa61ffac1a289bb26417df9086dab2f",
+      "module": "OAI.MathematicalPhysics.BFSS.GammaWords",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GammaIdentity.lean",
+      "blob": "45e58da900a7691b88e5760a483b8adff1c7f015",
+      "sha256": "405ff75ad36e99a0af1d97c485b0e81cabd008b529b9f40199207b7e223fa30b",
+      "module": "OAI.MathematicalPhysics.BFSS.GammaIdentity",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/MassIdentity.lean",
+      "blob": "331351401561e09a661068e83eb34cb6d8a96138",
+      "sha256": "81342376865b6db7203097db175ce2f0fbc67eb57e219a822590e3796fb056d8",
+      "module": "OAI.MathematicalPhysics.BFSS.MassIdentity",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/PotentialBasis.lean",
+      "blob": "bc9b526284166efcba5a8e296adc79ba88e6764d",
+      "sha256": "c7e51a466961cfd49390b9d204492f6adfc113da38b62f9804860a6b4ec38fbe",
+      "module": "OAI.MathematicalPhysics.BFSS.PotentialBasis",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/MassiveCoercivity.lean",
+      "blob": "1a9a8fe629e69f3946602a786c2e63c2ca354462",
+      "sha256": "a09a8ae945860fcbe752b305f12b9b2b8895fdfde8e3b27e8b8080a321f6f42d",
+      "module": "OAI.MathematicalPhysics.BFSS.MassiveCoercivity",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/ColorMatrices.lean",
+      "blob": "1c1c2a838c48c0aea2a1c1640da5d412f22e3f0c",
+      "sha256": "8c410a6b2c4c2db2807bca14517f127721261cb23cca728642356df1e57318ea",
+      "module": "OAI.MathematicalPhysics.BFSS.ColorMatrices",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/PotentialSquares.lean",
+      "blob": "a42500d241692b42532482fe8fad639bbdc17881",
+      "sha256": "fd21c9fea84f52634921ae62fd3ce95e30855e035045e4f1f68d0ebe236b0933",
+      "module": "OAI.MathematicalPhysics.BFSS.PotentialSquares",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/MixedEnergy.lean",
+      "blob": "cc00f5b2ce4bb1811162e4bf2d9c773a9779ef8e",
+      "sha256": "0ce76ddd139df9c3b95d1c53a1103972233cb79694fb424ee73a1d9f4014f886",
+      "module": "OAI.MathematicalPhysics.BFSS.MixedEnergy",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/DeformedCharge.lean",
+      "blob": "c27c913c44090100f0c714e3eb34e25205f4d2d3",
+      "sha256": "dba32be66d65efba1ffacd21665ba3ae39655b752bd22efdb920fbb470c9d2be",
+      "module": "OAI.MathematicalPhysics.BFSS.DeformedCharge",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/PotentialBounds.lean",
+      "blob": "06afe0a2fa0c6d65439ad15e4e6031f1d43260b7",
+      "sha256": "a169881f560755112aa237f059d567207369b40772d66b76cf68c2534afa46cc",
+      "module": "OAI.MathematicalPhysics.BFSS.PotentialBounds",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/MassiveMoments.lean",
+      "blob": "2fd223d0da1a85c3be52bb2b9c68f4f12d10957e",
+      "sha256": "226582939e711824157c2ca9bc16d4774ea54f668de6a2fab301cf2fca99a4fe",
+      "module": "OAI.MathematicalPhysics.BFSS.MassiveMoments",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/ColorLie.lean",
+      "blob": "3c4bbd6b4a3ba21a0f05892e90665a8c2033640c",
+      "sha256": "5c60643839bf0ed85f395ee36b418ebba7a3cc37678a903715d729ba89ad313c",
+      "module": "OAI.MathematicalPhysics.BFSS.ColorLie",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/NormalCocycle.lean",
+      "blob": "b60bef3dd30de44a970fba5745eff67474662e5e",
+      "sha256": "9c12710d9d0ec802b01d454ee74585730fc2f5acf6c4341421a10951d201a8f8",
+      "module": "OAI.MathematicalPhysics.BFSS.NormalCocycle",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/NormalPotential.lean",
+      "blob": "60d6896f07a77a46eda5b243c278cbcfccf7d00c",
+      "sha256": "5d14261bbd11a18069b0c18c77f207217d6c4f9a9fce2e6faa95d46b864ba1e6",
+      "module": "OAI.MathematicalPhysics.BFSS.NormalPotential",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/NormalLinearization.lean",
+      "blob": "e92baa890518bcc66493a4931eac087f276e5581",
+      "sha256": "a5b5956a24d2bd1cb97f5b8f622b52056bed7783af2700b8f6ee0367b161f7b8",
+      "module": "OAI.MathematicalPhysics.BFSS.NormalLinearization",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/TaylorBounds.lean",
+      "blob": "72ef91a1ca57203746aa05a3bb6f6c4f52248c43",
+      "sha256": "b5f273121b498fb24558e7bc43673c59fa1d03e509643ae36c67f9ad5bca146e",
+      "module": "OAI.MathematicalPhysics.BFSS.TaylorBounds",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GaugeGeometry.lean",
+      "blob": "db8cf65e11799d156c1fc698ec885ae81c013414",
+      "sha256": "4034e4aa4a75675be927d09c9c06f959994208680244350935a80b5935bd6488",
+      "module": "OAI.MathematicalPhysics.BFSS.GaugeGeometry",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/DistanceBounds.lean",
+      "blob": "8f5e7ec56eff5565a09eeba7683599d6deaf84e0",
+      "sha256": "fedac22c0ed5559dcefa7ab763146024b9c309d43c3e292d1dd5be758a3981ab",
+      "module": "OAI.MathematicalPhysics.BFSS.DistanceBounds",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GaugeOrbits.lean",
+      "blob": "d6343a145884b289716c04b2bdc6acb99bfa839a",
+      "sha256": "b607e113b4fa19f178a7cc5fe28e2b3c22a5a2991e54ef4c2495e7cf2beccaaf",
+      "module": "OAI.MathematicalPhysics.BFSS.GaugeOrbits",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean",
+      "blob": "e4990dadf1d8bde849e351467282ab3f14989c3b",
+      "sha256": "0b7afbadce0e0a4c7234d6310e532c9be66616aae7af8ebcd39c96b5148f41c4",
+      "module": "OAI.MathematicalPhysics.BFSS.GaugeCore",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/NormalTubes.lean",
+      "blob": "5f3bc2631cf7aabe0061ac6816f00474fd5a9ada",
+      "sha256": "51da8f06618684e504421fddeb512704b3cb4d1382687e279675a7166879d8b9",
+      "module": "OAI.MathematicalPhysics.BFSS.NormalTubes",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/NormalCharts.lean",
+      "blob": "ced5896e52d93dfb192c54fe7d7f8da1dfe801f5",
+      "sha256": "f3b5fb0046440de0ab2db3e664886f2118f5ffc343c4b8b4bfc962c6c6541fd3",
+      "module": "OAI.MathematicalPhysics.BFSS.NormalCharts",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/SliceIntegrals.lean",
+      "blob": "17d407209b64b465b3d89beffc717f9705ccb9b7",
+      "sha256": "d72298e36889a3effe0ec3faf638b687330719903dbfaf82e0bcee03a5297711",
+      "module": "OAI.MathematicalPhysics.BFSS.SliceIntegrals",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GaugeAverages.lean",
+      "blob": "93ef971d4e71ee6aa58a3d331179ceedf769dfbb",
+      "sha256": "05a7b0f3ce4d3d80dad74e2a56272317735f702a598ef1c755577917b7d86605",
+      "module": "OAI.MathematicalPhysics.BFSS.GaugeAverages",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/SliceDensity.lean",
+      "blob": "4a2405ec7729db7a4508a5ab5d04b782df25246b",
+      "sha256": "28f56489c52c6fcf905d58dae76267504e07ab049eb91345c7c76455e9fa5961",
+      "module": "OAI.MathematicalPhysics.BFSS.SliceDensity",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/OrbitDensity.lean",
+      "blob": "4e4bbcfdea9f5ffea0ed81176376a2a99e934226",
+      "sha256": "4b2ca81a8eaa5d19b543b54b2ada3e6ac28b5727e21bc725659dd563f756f8f5",
+      "module": "OAI.MathematicalPhysics.BFSS.OrbitDensity",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/LocalBounds.lean",
+      "blob": "d989bbf9f8489c5ab786634641587f9ddf2b735d",
+      "sha256": "de884cafdfcd14de96699c21f6d355a7a2c0c7e116bf5c29167b8b11d3651cc5",
+      "module": "OAI.MathematicalPhysics.BFSS.LocalBounds",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/RellichSmoothing.lean",
+      "blob": "359b844bce3b7f85eef3bddbd82e46712b265793",
+      "sha256": "f1ff9e8fb2cbbe7b83416e8a8165d10935769727434b0bd8452c473e1d04186c",
+      "module": "OAI.MathematicalPhysics.BFSS.RellichSmoothing",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/RellichCompactness.lean",
+      "blob": "d7641afe2857b7d253d225a510e142e5af1fbc7f",
+      "sha256": "c817861e9399031216ebf6f3073a83cc1250087f6c888bead22b30553a10515e",
+      "module": "OAI.MathematicalPhysics.BFSS.RellichCompactness",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/CoreCompactness.lean",
+      "blob": "68e019ae80e5ae2d76049a82c0bf6dd5a601d872",
+      "sha256": "39d012bc22396fdbdd545c8b6472977331555bf0973c5f4124b97d341ec1c32d",
+      "module": "OAI.MathematicalPhysics.BFSS.CoreCompactness",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/SmallPatches.lean",
+      "blob": "349d05c9af6e8fc39e0190430cbe479a01639290",
+      "sha256": "8f10c9fa57835bfe0589f202a5a4921a8a6a1d60e8d5b2c087329e762d920431",
+      "module": "OAI.MathematicalPhysics.BFSS.SmallPatches",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/MeasuredFields.lean",
+      "blob": "eb64e7ecd6bb08b90d7e41a6b4d88f768cf8c7f3",
+      "sha256": "f4fd221441556890b2caa8baf4b883b7f67c03ae2f327d54dc020e23b16eb6f8",
+      "module": "OAI.MathematicalPhysics.BFSS.MeasuredFields",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/OrbitCutoffs.lean",
+      "blob": "a225da768010d70c5ee85af31a60fcfc7510af7a",
+      "sha256": "1e2a9360bc33cf8b487bbec2606a5598e8f5f2fd1b1dbf21a4bedf58ac330ae5",
+      "module": "OAI.MathematicalPhysics.BFSS.OrbitCutoffs",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/NormExhaustion.lean",
+      "blob": "7373827cc1dcce82b97f3b633be407ca95991c6e",
+      "sha256": "208474c5ce6e87ce71ae6fa88fca984e955678518fb380fe7cd8b1487e12f92a",
+      "module": "OAI.MathematicalPhysics.BFSS.NormExhaustion",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/WeightedCompactness.lean",
+      "blob": "368cdf0386dfa39e4be2af08300ef7f8bdf481bb",
+      "sha256": "dcb85fb19be685b0d855844cd7522a95d01c9033289d9d7065f28e5b646c1354",
+      "module": "OAI.MathematicalPhysics.BFSS.WeightedCompactness",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/ProfileExtraction.lean",
+      "blob": "7b4497eb8df8ba871efa095ddeed42a553223f23",
+      "sha256": "ae15c5277c809fda5a87204cdc0e2e15ea8432a9eb975815f94b6030ebacbe01",
+      "module": "OAI.MathematicalPhysics.BFSS.ProfileExtraction",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/ClosedProfiles.lean",
+      "blob": "f51be190cb41621492561a58201833a5d6df6779",
+      "sha256": "7fed29b6164eebb2ba599373bd3c3f166d2a2bc82800a234255cb7bbc25beeff",
+      "module": "OAI.MathematicalPhysics.BFSS.ClosedProfiles",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/WeakLimits.lean",
+      "blob": "b92321234863157be6bb772512150bdefd408d71",
+      "sha256": "4849a83883d4d10021d277ace8efe96e7d5b2fa744593206d00bca4dc35eaebd",
+      "module": "OAI.MathematicalPhysics.BFSS.WeakLimits",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/SobolevGraphs.lean",
+      "blob": "f0e743c67633d9871aad7e3b225ebe73f4bb9d67",
+      "sha256": "b4179d3856aa24a458a7f71898c2b0c4e336a94a496adceb0be8009f2f59c113",
+      "module": "OAI.MathematicalPhysics.BFSS.SobolevGraphs",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/LocalL2.lean",
+      "blob": "359d32e02ef4b7e3b6c203982e4a74ccfca59ec6",
+      "sha256": "c8bd31541ee53b4a556ad8905038b1fb837194fbe03b2b5522b69a503a685f22",
+      "module": "OAI.MathematicalPhysics.BFSS.LocalL2",
+      "roots": []
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/WeightedGradients.lean",
+      "blob": "2ce4356f8114f798336afb97b31182f71661557d",
+      "sha256": "c8a971dc132ea4636abfe14dc6389ebbc89e90b79e4175605ff3aec6f5a02903",
+      "module": "OAI.MathematicalPhysics.BFSS.WeightedGradients",
+      "roots": []
+    }
+  ],
+  "accepted": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralLinearMomentCompactness.lean",
+      "blob": "17a279f2728dd566c711e04eca7596028f355983",
+      "sha256": "0fda95d52cf2f4ef41ce69290cefc01a005b916238600ca88f330bf872835dc4",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralLinearMomentCompactness",
+      "marker": "SPECTRAL_LINEAR_MOMENT_SOURCE_OK",
+      "roots": [
+        "OAI.BFSSRellich.compactLp_bump_error_linear",
+        "OAI.BFSSRellich.linear_moment_tight_compactness"
+      ]
+    },
+    {
+      "path": "lean/diagnostics/BFSSSpectralLinearMomentIndependentAudit.lean",
+      "blob": "7556ecc756d0fe95c1835663f4a9616877f29abf",
+      "sha256": "bf280c8af2a7dca0dbae7277ffdffe7d6468dc38482942fa2b7df8b44b0f42a0",
+      "module": "diagnostics.BFSSSpectralLinearMomentIndependentAudit",
+      "marker": "SPECTRAL_LINEAR_MOMENT_AUDIT_OK",
+      "roots": [
+        "OAI.BFSSRellich.compactLp_bump_error_linear",
+        "OAI.BFSSRellich.linear_moment_tight_compactness"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralCoreLinearMomentCompactness.lean",
+      "blob": "7604eb127156b9772fad48cb0ad04c8fe488e3c9",
+      "sha256": "563416043d3ff95089d2898ef841ba8690246128aababd60503cea1a4d45720a",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralCoreLinearMomentCompactness",
+      "roots": [
+        "OAI.BFSSSliceSobolev.core_gradient_l2_local_totallyBounded",
+        "OAI.BFSSSliceSobolev.core_linear_moment_totallyBounded"
+      ],
+      "marker": "SPECTRAL_CORE_LINEAR_MOMENT_SOURCE_OK"
+    },
+    {
+      "path": "lean/diagnostics/BFSSSpectralCoreLinearMomentIndependentAudit.lean",
+      "blob": "f674d79aeadf21257a96527566aec05f7d0458cc",
+      "sha256": "9ffce58759832979df76f8369ac263f9efa24d1425e3179549ec3af64402ea18",
+      "module": "diagnostics.BFSSSpectralCoreLinearMomentIndependentAudit",
+      "roots": [
+        "OAI.BFSSSliceSobolev.core_gradient_l2_local_totallyBounded",
+        "OAI.BFSSSliceSobolev.core_linear_moment_totallyBounded"
+      ],
+      "marker": "SPECTRAL_CORE_LINEAR_MOMENT_AUDIT_OK"
+    }
+  ],
+  "controls": [
+    {
+      "path": "lean/lean-toolchain",
+      "blob": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "path": "lean/lake-manifest.json",
+      "blob": "67d01d2717d0aaff59fb8814bb53581b961f42b4",
+      "sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794"
+    },
+    {
+      "path": "lean/lakefile.lean",
+      "blob": "cd24ca2ee09fb6fe33e82400534d9e60a616125b",
+      "sha256": "fc590a5d14923f79e71ea80e29efd42950bb3ec051481b5209157f0a01f63de1"
+    },
+    {
+      "path": "contributions/bfss-kotler/tools/qualify_spectral_linear_moment.py",
+      "blob": "c8e91ac7ec675b37d53b3e9a5baa117450ef6596",
+      "sha256": "35f692226217043162468a500e5d86a61a9c8270b02e4aad85e86d04cddbc8a0"
+    },
+    {
+      "path": ".github/workflows/bfss-spectral-linear-moment-strict.yml",
+      "blob": "ac1080a305bbfc2119fdec7d37202c1195ed080a",
+      "sha256": "0b172c3b971b4ba525095fb78bac4df6b431fa7bc60aa5ea88b5da10fd2841f9"
+    },
+    {
+      "path": "contributions/bfss-kotler/tools/test_spectral_linear_moment.py",
+      "blob": "3ffba0855512cb89959bd7e5d618c0995eae4108",
+      "sha256": "993c0810fd98fe8cf756139c08d642ef67a54bc800836301e7612c50f09154dd"
+    },
+    {
+      "path": "contributions/bfss-kotler/evidence/spectral-confinement-2026-11-06/linear-moment-42312000477-source-log.txt",
+      "blob": "2119d3851095dd69100f9b8ca2f0a4abf6479f3b",
+      "sha256": "7152a12127d778edc4c80b2f5d0f1d421ceb414f9070552d82f0f66be1c5b71a"
+    },
+    {
+      "path": "contributions/bfss-kotler/BFSS_SPECTRAL_LINEAR_MOMENT_MANIFEST_V1.json",
+      "blob": "fbdda7229a1c1968eb5914c8b6316f224e4806ef",
+      "sha256": "b4471d3aeb155702f8589dd8a662e6dcc50228b5207edf6d67cfa4ab37e5bbc5"
+    },
+    {
+      "path": "contributions/bfss-kotler/tools/qualify_spectral_core_linear_moment.py",
+      "blob": "1ae3842126d5382dc2baeb7dd0826a29b9cbc9c9",
+      "sha256": "cd776cf2b19b4483cf18fbd1e05a9244c6f4102ad27bfbd4de0a462fa6afb8c2"
+    },
+    {
+      "path": "contributions/bfss-kotler/tools/test_spectral_core_linear_moment.py",
+      "blob": "21da106b4ba01009a8f7f6d1b0119dc7a6bf751d",
+      "sha256": "b7cdf542eef9d89e2f68a2d0356a155e97e42da71e8b5721408742de171141f3"
+    },
+    {
+      "path": ".github/workflows/bfss-spectral-core-linear-moment-strict.yml",
+      "blob": "56ca05109903d5356b0fdb7918176693ebeb0af1",
+      "sha256": "151ff91a56dd79df6935192c2aa989a81580b7570d38733334be2158bafbcd26"
+    }
+  ]
+}
