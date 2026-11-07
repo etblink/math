@@ -131,7 +131,7 @@ theorem source9GeneratorLinearMap_eq_rankOne
     (source9LipschitzVectorLinearEquiv (source9GeneratorLipschitzUnit a) :
         (SpaceIndex → ℝ) →ₗ[ℝ] (SpaceIndex → ℝ)) =
       Matrix.toLin' (source9RankOneConjugationMatrix a (source9GeneratorPolarRow a)) := by
-  letI : Invertible (source9Quadratic a) :=
+  let : Invertible (source9Quadratic a) :=
     CliffordAlgebra.invertibleOfInvertibleι source9Quadratic a
   apply LinearMap.ext
   intro z
@@ -155,7 +155,7 @@ theorem source9GeneratorLinearMap_eq_rankOne
 theorem source9GeneratorDeterminantCharacter_one
     (a : SpaceIndex → ℝ) [Invertible (CliffordAlgebra.ι source9Quadratic a)] :
     source9LipschitzDeterminantCharacter (source9GeneratorLipschitzUnit a) = 1 := by
-  letI : Invertible (source9Quadratic a) :=
+  let : Invertible (source9Quadratic a) :=
     CliffordAlgebra.invertibleOfInvertibleι source9Quadratic a
   apply Units.ext
   change ((LinearEquiv.det
@@ -176,7 +176,7 @@ theorem source9LipschitzDeterminantCharacter_eq_one
     | mem u hu =>
       have huL : u ∈ lipschitzGroup source9Quadratic := Subgroup.subset_closure hu
       obtain ⟨a, ha⟩ := hu
-      letI : Invertible (CliffordAlgebra.ι source9Quadratic a) := by
+      let : Invertible (CliffordAlgebra.ι source9Quadratic a) := by
         rw [ha]
         exact u.invertible
       have heq : u = unitOfInvertible (CliffordAlgebra.ι source9Quadratic a) := by
@@ -191,7 +191,7 @@ theorem source9LipschitzDeterminantCharacter_eq_one
     | inv_mem u hu =>
       have huL : u ∈ lipschitzGroup source9Quadratic := Subgroup.subset_closure hu
       obtain ⟨a, ha⟩ := hu
-      letI : Invertible (CliffordAlgebra.ι source9Quadratic a) := by
+      let : Invertible (CliffordAlgebra.ι source9Quadratic a) := by
         rw [ha]
         exact u.invertible
       have heq : u = unitOfInvertible (CliffordAlgebra.ι source9Quadratic a) := by

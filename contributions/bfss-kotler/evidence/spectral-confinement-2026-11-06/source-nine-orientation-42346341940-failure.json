@@ -1,0 +1,47 @@
+{
+  "schema": "bfss-source-nine-orientation-failure-v1",
+  "run_id": 42346341940,
+  "tested_sha": "337b6968753af8ff7c954772bfc33e9f678e53e3",
+  "status": "REJECTED_STRICT_STYLE_LINTER_CONSUMER_NOT_RUN",
+  "artifact_id": 13564221287,
+  "artifact_zip_sha256": "3a80ccc1d36ed00bbcbc2b4af815f25d17ba0318c73e41abd36d3e1ff554d136",
+  "receipt_sha256": "a7a33b0c4f71d8ac3f1764912b3f6624a44a28517d90d12f32364d27afb871cd",
+  "observed": {
+    "all_127_artifact_input_blob_and_sha256_pins_match": true,
+    "all_96_attempted_log_digests_match": true,
+    "all_94_original_compilations_pass_without_warnings": true,
+    "accepted_lipschitz_source_ten_root_reaudit_passes": true,
+    "candidate_source_compiler_exit": 1,
+    "candidate_sixteen_axiom_reports_have_only_permitted_axioms": true,
+    "candidate_source_has_no_recovery_axiom_reports": true,
+    "independent_consumer_compiled": false,
+    "completion_marker_does_not_qualify_failed_compilation": true
+  },
+  "cause": {
+    "class": "STRICT_SOURCE_STYLE_LINTER",
+    "linter": "linter.style.haveILetI",
+    "failed_lines": [
+      134,
+      158,
+      179,
+      194
+    ],
+    "detail": "Four proof-local letI bindings inline typeclass values in proposition goals; the enabled linter requires ordinary let, and warningAsError makes this a failed source compilation."
+  },
+  "repair": {
+    "four_proof_local_letI_changed_to_let": true,
+    "private_computational_letI_preserved": true,
+    "consumer_computational_letI_preserved": true,
+    "all_sixteen_public_headers_unchanged": true,
+    "all_sixteen_consumers_unchanged": true,
+    "only_candidate_manifest_source_pin_refreshed": true,
+    "qualifier_tests_workflow_unchanged": true,
+    "linter_or_warningAsError_disabled": false,
+    "new_axioms_instances_or_hypotheses": false,
+    "proof_limits_raised": false
+  },
+  "accepted": false,
+  "orientation_admitted": false,
+  "compactness_admitted": false,
+  "spectral_claim_admitted": false
+}

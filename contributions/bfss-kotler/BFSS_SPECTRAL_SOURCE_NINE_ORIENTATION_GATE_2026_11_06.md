@@ -131,3 +131,38 @@ fixed-eight padding/sign correction, continuity in the unchanged PBW
 topology and compact-image surjectivity still require their own gates.
 An SO(9)-valued homomorphism alone proves neither source compactness nor
 covering, Fock/gauge implementation, closed-domain covariance or spectra.
+
+
+## Run #42346341940 — strict source style rejection and four-keyword repair
+
+**RED, not qualified.** The exact tested commit was
+`337b6968753af8ff7c954772bfc33e9f678e53e3`. Artifact 13564221287 was
+reviewed: all 127 input blob/SHA256 pins and 96 attempted log digests match.
+All 94 original compilations passed without warnings, and the accepted
+Lipschitz source's ten-root strict re-audit passed. The new orientation
+source emitted sixteen reports with only permitted foundational axioms
+and no recovery axiom, but exited unsuccessfully; the independent consumer
+did not run. Those reports and the marker do not qualify the gate.
+
+The [failure record](evidence/spectral-confinement-2026-11-06/source-nine-orientation-42346341940-failure.json),
+receipt, complete logs, source log and verbatim failed source are retained.
+The complete source log reports exactly four `linter.style.haveILetI`
+violations at lines 134, 158, 179 and 194. Proof-local `letI` bindings are
+not preferred in proposition goals; ordinary `let` supplies the same local
+typeclass data without the unnecessary inlining. This is a strict source
+style failure, not a demonstrated mathematical contradiction, missing
+source premise, resource failure or cache error. No orientation result
+is accepted from this red run.
+
+Change only those four proof-local keywords from `letI` to `let`, as used
+in the older source48 generator/closure proof pattern. Preserve the private
+helper's computational `letI` and the consumer's computational `letI`
+expression. All sixteen public declaration headers and sixteen consumers
+remain unchanged; refresh only the new source's manifest blob/SHA256.
+Keep the linter enabled, warnings as errors, every axiom/root check and
+default proof budgets. Do not suppress diagnostics or change the validator.
+
+The source-header comparison, preflight and ten validator tests pass
+locally. They are not Lean acceptance. Require the fresh full compiler
+gate, independent consumer and retained-evidence review before any C0-A2
+orientation or SO(9) admission. Source compactness and spectra stay open.

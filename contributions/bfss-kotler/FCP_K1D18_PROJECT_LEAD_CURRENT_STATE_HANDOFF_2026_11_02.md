@@ -7131,3 +7131,38 @@ bounded source-normalized Cartan words using exact reflection pairs and
 two-sign fibers. Unit-locus compactness, eight-factor padding/sign correction,
 PBW continuity, source compactness and all Fock/gauge/domain, branching,
 coercivity and spectral gates remain distinct and open.
+
+
+## Run #42346341940 — orientation source style red; minimal let repair proposed
+
+Reverified tested spectral branch HEAD 337b6968753af8ff7c954772bfc33e9f678e53e3.
+Red #42346341940 passed all 94 original compilations and strict accepted
+Lipschitz ten-root re-audit, then rejected the new orientation source.
+Reviewed artifact 13564221287: 127 input pins and all 96 attempted log
+digests match. The orientation source printed all sixteen permitted-axiom
+reports with no sorryAx, but compiler exit was nonzero and the independent
+consumer did not run. No orientation/root acceptance is made from that run.
+Receipt, all logs, source log, verbatim failed source and classified failure
+are durable under evidence/spectral-confinement-2026-11-06/
+source-nine-orientation-42346341940-*. Earlier qualified results are unchanged.
+
+The complete source log contains exactly four strict style errors from
+linter.style.haveILetI at source lines 134, 158, 179, 194. They request
+ordinary let rather than inlining letI in proof/proposition goals. This is
+a source style-linter rejection under warningAsError, not an observed
+mathematical contradiction or an infrastructure/cache/resource failure.
+
+Bounded repair changes only those four proof-local letI keywords to let.
+The private helper's computational letI and independent consumer's data
+letI remain. All sixteen public headers, all sixteen consumers, accepted
+source, original modules, qualifier, tests, workflow and proof budgets are
+unchanged. Refresh only the orientation source blob/SHA256 in its manifest.
+The linter, warningAsError and all axiom checks stay enabled. Public-header
+comparison, static preflight and ten validator tests pass locally.
+
+Next require a fresh complete source/consumer gate and retained-artifact
+review before C0-A2 determinant-one/SO(9) acceptance. Determinant orientation
+remains a candidate despite clean incidental axiom reports. Fixed-eight
+words, original PBW compactness, Fock/gauge/domain, branching, coercivity
+and spectral conclusions remain open. Original research branch, guarded
+cache contracts and upstream PRs are unchanged.
