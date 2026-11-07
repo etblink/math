@@ -109,3 +109,47 @@ Even full C0-A2 would not prove bounded Cartan factorization, continuity of
 the fixed-word map or source Spin compactness in the original PBW topology.
 Fock action, gauge character, closed-Hamiltonian columns, full-sector
 branching, coercivity and spectral existence retain their separate gates.
+
+
+## Run #42342751657 — source elaboration failure and bounded repair
+
+**RED, not qualified.** The failed tested commit is
+`f7a2927b5082e41134d84bd93100905840c17374`. Reviewed retained artifact
+13562648689: all 124 input pins and all 93 attempted log digests match;
+all 92 inherited modules compiled without warnings. The new source
+returned a nonzero compiler exit and the independent consumer did not run.
+The completion marker printed after errors and eight public reports
+contained `sorryAx`; the gate correctly rejected them. The other two clean
+reports do not independently qualify any part of this gate.
+
+The [failure record](evidence/spectral-confinement-2026-11-06/source-nine-lipschitz-representation-42342751657-failure.json),
+receipt, complete logs, source log and verbatim failed source are retained.
+Both observed causes are source elaboration errors, not a demonstrated
+mathematical contradiction or an infrastructure/cache failure:
+
+- At line 38, bare `rw [map_smul]` selected the *outer* vector projection
+  with the conjugation group as scalar. It requested unintended
+  `SMul (ConjAct ...) (SpaceIndex → ℝ)` and action-hom instances. The intended
+  inner real-scalar rewrite was never reached. Unlike the older source48
+  proof, this expression has an extra outer real-linear projection; the
+  uninstantiated rewrite cannot be copied unchanged.
+- At line 171, annotating the unit *input* before inversion did not prevent
+  the expected Clifford-algebra result from driving inverse elaboration.
+  Lean requested `Inv (CliffordAlgebra source9Quadratic)`. No such global
+  inverse structure is required or introduced by the mathematical claim.
+
+**Repair:** instantiate the actual iota real-scalar law at `c`, carry it
+through the Clifford conjugation/projection with `congrArg`, commute `c`
+with conjugation in the Clifford algebra, and apply the projection's
+real-scalar law at `c`. Separately, annotate the inverse **result** as
+`(CliffordAlgebra source9Quadratic)ˣ` before coercing it into the algebra.
+This preserves the same actual unit and inverse.
+
+Only those source proof/type-expression sites and their candidate manifest
+pin change. All ten public declaration headers, all twelve consumers,
+qualifier, tests, workflow, original dependencies, options and root lists
+remain unchanged. No new instance, extra hypothesis, axiom, proof-limit
+increase or validator waiver is used. The source-header equality check,
+preflight and ten report tests pass locally. These are not Lean qualification.
+Require a fresh full gate and retained-evidence review; inspect the first
+new failure if red. Determinant +1 and all later research remain open.

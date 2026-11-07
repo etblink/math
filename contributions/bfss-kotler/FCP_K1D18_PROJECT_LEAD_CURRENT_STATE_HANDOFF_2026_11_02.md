@@ -7040,3 +7040,41 @@ continuity/compactness in original PBW topology, operator/Fock action, gauge
 character, closed-Hamiltonian columns, full-isotypic branching, coercivity
 and spectra retain their gates. Existing Lean files, accepted workflows/
 guarded cache, original branch and upstream PRs are unchanged.
+
+
+## Run #42342751657 — Lipschitz source red; two typed proof repairs proposed
+
+Reverified spectral branch/tested HEAD f7a2927b5082e41134d84bd93100905840c17374.
+Green gamma covariance acceptance remains unchanged. Red #42342751657
+passed setup, exact-input preflight and all 92 inherited compilations, then
+failed in the new Lipschitz source; the independent consumer was not run.
+Reviewed artifact 13562648689: all 124 input pins and 93 attempted log
+digests match. The failed source, complete logs, receipt and classified
+failure are durable at evidence/spectral-confinement-2026-11-06/
+source-nine-lipschitz-representation-42342751657-*. The source printed its
+marker after errors, and eight root reports contained sorryAx. No part of
+this new gate is accepted, including its two incidental clean reports.
+
+Earliest cause: uninstantiated map_smul selected the outer real-linear
+vector projection using ConjAct as scalar, requesting a spurious action
+on the original vector space. A second independent failure coerced a
+unit to the Clifford algebra before inversion and requested Inv on the
+whole algebra. These are source elaboration/type-bridge failures, not
+mathematical refutation or cache/infrastructure failure.
+
+Bounded repair changes only two source proof/type-expression sites: typed
+iota/projection real-scalar equalities at c are composed by congrArg in
+the Clifford algebra, and the inverse result is explicitly typed as a
+Clifford unit before its algebra coercion. All ten public headers match
+the failed source exactly; all twelve consumers, qualifier, tests, workflow,
+92 originals, options and axiom/root inventories remain unchanged. Only
+the source candidate blob/SHA256 is refreshed in the manifest. No new
+instance, hypothesis, axiom, limit or linter/validator waiver.
+
+Local preflight and ten validator tests pass. Next require fresh source/
+consumer compilation and complete retained-evidence review before any
+acceptance or determinant work. The ten-root Lipschitz action/restriction
+gate remains a candidate; determinant-unit character is not determinant
++1, and source orientation, compactness and spectra remain open. See the
+Lipschitz gate's scoped failure/repair section for exact causal evidence.
+Original research branch, upstream PRs and guarded caches are untouched.

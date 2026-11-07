@@ -1,0 +1,46 @@
+{
+  "schema": "bfss-source-nine-lipschitz-representation-failure-v1",
+  "run_id": 42342751657,
+  "tested_sha": "f7a2927b5082e41134d84bd93100905840c17374",
+  "status": "REJECTED_SOURCE_ELABORATION_CONSUMER_NOT_RUN",
+  "artifact_id": 13562648689,
+  "artifact_zip_sha256": "4c3b8db77a34feb59ce6157d87c8230889e576bdcb945dd01cb5104fc80533a2",
+  "receipt_sha256": "8ea44114bb51779129e43325737dce990cde0b677020e95661c36ab25f2025c8",
+  "observed": {
+    "all_124_artifact_input_pins_match": true,
+    "all_93_attempted_log_digests_match": true,
+    "all_92_inherited_compilations_pass_without_warnings": true,
+    "new_source_compiler_exit": 1,
+    "independent_consumer_compiled": false,
+    "source_completion_marker_printed_after_errors": true,
+    "recovery_axioms_in_eight_root_reports": true,
+    "two_clean_root_reports_do_not_qualify_the_gate": true
+  },
+  "causes": [
+    {
+      "class": "ELABORATION_REWRITE_SCALAR_INFERENCE",
+      "failed_line": 38,
+      "detail": "Bare map_smul rewrites the outer vector projection using the conjugation group as scalar, requesting an unintended conjugation action and action-hom class on the original vector space. The intended inner real-scalar map rewrite is not selected.",
+      "repair": "Instantiate the original iota and projection real-scalar laws at c explicitly and transport them with congrArg around Clifford conjugation."
+    },
+    {
+      "class": "ELABORATION_INVERSE_COERCION",
+      "failed_line": 171,
+      "detail": "Result expected in Clifford algebra causes inverse elaboration to request Inv on the full Clifford algebra despite an input unit ascription.",
+      "repair": "Type the inverse RESULT as the actual Clifford unit group before coercing that unit into the algebra."
+    }
+  ],
+  "repair_scope": {
+    "all_ten_public_declaration_headers_unchanged": true,
+    "all_twelve_consumers_unchanged": true,
+    "qualifier_and_workflow_unchanged": true,
+    "source_proof_or_type_expression_edits_only": true,
+    "candidate_manifest_pin_refreshed": true,
+    "new_instances_or_axioms": false,
+    "proof_limits_raised": false
+  },
+  "accepted": false,
+  "determinant_one_admitted": false,
+  "compactness_admitted": false,
+  "spectral_claim_admitted": false
+}

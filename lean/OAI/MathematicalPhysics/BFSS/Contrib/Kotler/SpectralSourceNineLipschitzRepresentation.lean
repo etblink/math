@@ -35,9 +35,22 @@ noncomputable def source9LipschitzVectorLinearMap
       c • source9CliffordVectorProjection
         (ConjAct.toConjAct (s : (CliffordAlgebra source9Quadratic)ˣ) •
           CliffordAlgebra.ι source9Quadratic z)
-    rw [map_smul,
-      ← smul_comm c (ConjAct.toConjAct (s : (CliffordAlgebra source9Quadratic)ˣ))
-        (CliffordAlgebra.ι source9Quadratic z), map_smul]
+    calc
+      _ = source9CliffordVectorProjection
+          (ConjAct.toConjAct (s : (CliffordAlgebra source9Quadratic)ˣ) •
+            (c • CliffordAlgebra.ι source9Quadratic z)) :=
+        congrArg (fun a : CliffordAlgebra source9Quadratic =>
+          source9CliffordVectorProjection
+            (ConjAct.toConjAct (s : (CliffordAlgebra source9Quadratic)ˣ) • a))
+          ((CliffordAlgebra.ι source9Quadratic).map_smul c z)
+      _ = source9CliffordVectorProjection
+          (c • (ConjAct.toConjAct (s : (CliffordAlgebra source9Quadratic)ˣ) •
+            CliffordAlgebra.ι source9Quadratic z)) :=
+        congrArg source9CliffordVectorProjection
+          ((smul_comm c
+            (ConjAct.toConjAct (s : (CliffordAlgebra source9Quadratic)ˣ))
+            (CliffordAlgebra.ι source9Quadratic z)).symm)
+      _ = _ := source9CliffordVectorProjection.map_smul c _
 
 /-- The recovered vector embeds to the original Clifford conjugation, with no assumed action. -/
 theorem source9LipschitzVectorLinearMap_ι
@@ -168,7 +181,7 @@ theorem source9LipschitzVectorRepresentation_restrict_spin
           CliffordAlgebra.ι source9Quadratic z := source9LipschitzVectorLinearMap_ι _ z
     _ = ((spinGroup.toUnits g : (CliffordAlgebra source9Quadratic)ˣ) :
           CliffordAlgebra source9Quadratic) * CliffordAlgebra.ι source9Quadratic z *
-        (((spinGroup.toUnits g : (CliffordAlgebra source9Quadratic)ˣ)⁻¹) :
+        (((spinGroup.toUnits g)⁻¹ : (CliffordAlgebra source9Quadratic)ˣ) :
           CliffordAlgebra source9Quadratic) := by
       rw [source9SpinToLipschitz_toUnits, ConjAct.units_smul_def,
         ConjAct.ofConjAct_toConjAct]
