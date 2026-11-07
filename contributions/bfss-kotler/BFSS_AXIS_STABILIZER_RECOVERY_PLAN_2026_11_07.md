@@ -1,7 +1,8 @@
 # Axis-stabilizer gate: procedural review and implemented diagnostic plan
 
-Status: STRUCTURAL DIAGNOSTIC PASSED at run 42419684762. The original-source
-axis-stabilizer theorem remains a candidate pending its separate strict gate.
+Status: STRUCTURAL DIAGNOSTIC PASSED at run 42419684762; original-source
+axis-stabilizer exact-eight-word theorem QUALIFIED at run 42421286452,
+exact tested commit `7bea5ca3353dd64d8c8b68ec3229aadc9296ec56`.
 Baseline: `f8b58b96a2b30334348347d2e5dbb7d7649675fb`.
 Authorized diagnostic write target:
 `research/bfss-original-gamma-faithfulness-20261107`.
@@ -231,3 +232,22 @@ central signs or the requested source-exact iff. The original-source gate now
 imports this byte-identical structural source, cold rebuilds it with the full
 source closure, and separately checks the original-source theorem and consumer.
 See BFSS_SPECTRAL_SOURCE_NINE_AXIS_STABILIZER_WORDS_GATE_2026_11_07.md.
+
+## Original-source gate qualified: 42421286452
+
+The exact requested original-source perpendicular exact-eight-word iff and
+original gamma8 commutator companion passed at
+`7bea5ca3353dd64d8c8b68ec3229aadc9296ec56`. The strict run cold rebuilt all 137
+controlled modules, compiled all sixteen independent original-source examples,
+and passed all 107 strict root reports. Independent retained-evidence replay
+verified all 167 input pins, 137 log digests, twelve markers and all 42 locked
+package revisions, with only the three permitted foundational axioms and zero
+compiler warnings. See the full scoped acceptance record in
+BFSS_SPECTRAL_SOURCE_NINE_AXIS_STABILIZER_WORDS_GATE_2026_11_07.md.
+
+The earlier reds remain failed and preserved. Approach B's successful generic
+invariant is now bound to the actual source axis, Q-unit normalization, ordered
+even-word lift, two-sign fibers, perpendicular padding and central sign
+absorption. There is no new Clifford algebra or even-Clifford faithfulness
+assumption. Source connectedness and subsequent covering/torus identification
+are separate next-stage obligations; no physical spectral conclusion follows.

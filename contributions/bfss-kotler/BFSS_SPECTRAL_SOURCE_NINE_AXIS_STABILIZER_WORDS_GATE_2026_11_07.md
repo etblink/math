@@ -1,8 +1,10 @@
 # Original source axis-stabilizer exact-eight-word gate
 
-Status: CANDIDATE. The complete original-source iff and its independent consumer
-require a separate strict run. Earlier structural success is not acceptance of
-this original-source theorem.
+Status: QUALIFIED at exact tested commit
+`7bea5ca3353dd64d8c8b68ec3229aadc9296ec56`, strict run
+[42421286452](https://github.com/etblink/math/actions/runs/42421286452).
+The full original-source proof and independent consumer passed; the retained
+evidence was independently replayed before this acceptance record.
 
 Exact parent: `a9c84b0194f02304f45bc6ae37eec10dad8700fe`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
@@ -47,7 +49,7 @@ source is imported and cold rebuilt; it is not renamed or silently promoted
 into an original-source identification. Its accepted evidence is recorded in
 BFSS_AXIS_STABILIZER_RECOVERY_PLAN_2026_11_07.md, including both earlier reds.
 
-The source composition makes the remaining obligations explicit:
+The checked source composition discharges these obligations:
 
 1. The inner product with the transported original e8 is literally coordinate 8.
 2. The checked generic nine-dimensional theorem applies to the actual original
@@ -125,8 +127,48 @@ and preserve its evidence. Unsupported support, reversed order, zero-normal
 parity, collapsed central signs, a failed mixed-pair exclusion, extra premise,
 unexpected axiom or resource failure holds the gate.
 
-The result, if qualified, is the actual source-axis stabilizer's supported-word
+The qualified result is the actual source-axis stabilizer's supported-word
 characterization. It does not yet establish connectedness, an SO(8) double
 cover, topological Spin(8) classification, common torus/root-data binding,
 operator-algebra action, Hamiltonian-domain identification, coercivity or
 spectral existence. Those remain separate later gates.
+
+## Acceptance evidence: 42421286452
+
+Exact tested SHA: `7bea5ca3353dd64d8c8b68ec3229aadc9296ec56`.
+Artifact: [13594077215](https://github.com/etblink/math/actions/runs/42421286452/artifacts/13594077215).
+ZIP SHA-256: `b16010e402e4cdacd89915ab39aee28eb6af0232c3e34dd898da1eefbf71716f`.
+Receipt SHA-256: `032253b3a63a0feea110ef1d4fc2a33369a214ff8277c288635085c61966ee2e`.
+
+Independent replay verified ZIP integrity and digest, exact tested SHA, PASS
+receipt, all 167 archived input Git-blob/SHA-256 pins, the exact ordered 137
+build inventory, zero compiler exits, all 137 compiler-log digests, 107 exact
+strict axiom reports and twelve completion markers. All 42 package revisions
+match the archived lock, including the unchanged Mathlib revision; compiler
+provenance is Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52.
+Both candidate files match their archived input bytes. The consumer contains
+all sixteen independent examples. No historical or strict compiler warning
+was recorded in this run. The job log also records all ten validator tests
+and the final SPECTRAL_SOURCE_NINE_AXIS_STABILIZER_WORDS_GATE_PASS marker.
+
+The source and consumer both report exactly propext, Classical.choice and
+Quot.sound for source9Axis8Stabilizer_perpendicularWord. No new mathematical
+hypothesis or axiom was introduced. All eleven new source roots and their
+consumer reports passed the same allowed-axiom policy.
+
+Source blob: `57b1e5ff33934c759c68a763ff33f8668d48d4e2`.
+Consumer blob: `7cf13e0bae5b7d6ca8a3142ae1bd7a2f69071825`.
+The receipt records object digests; the evidence ZIP contains source and logs,
+not the compiled object binaries. No independent binary-object recheck is
+claimed. The scoped machine record is
+[evidence/source-axis-stabilizer-2026-11-07/acceptance-42421286452.json](evidence/source-axis-stabilizer-2026-11-07/acceptance-42421286452.json).
+
+This acceptance update changes documentation and the scoped evidence record
+only. It changes no Lean file, manifest, verifier, workflow, dependency pin,
+resource budget or accepted theorem type, and requires no new proof run.
+
+The next separate milestone is source-stabilizer connectedness via the
+restricted continuous eight-word map on perpendicular Q-unit parameters. The
+perpendicular SO(8) covering, source-compatible torus and classical branching
+binding remain later independent obligations. No topological or spectral
+claim is accepted here.
