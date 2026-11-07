@@ -1,6 +1,6 @@
 # BFSS linear-moment analysis gate — 2026-11-06
 
-**Status: source compiled in run #42312000477; wrapper red; independent consumer pending.**
+**Status: source audit passed in run #42313963781; independent consumer hit a heartbeat limit.**
 This bounded implementation follows the [E audit](BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md).
 It does not admit the confinement inequality, a physical Spin(9) action, or spectral existence.
 AI-assisted implementation and gate design require compiler and subsequent scope review.
@@ -118,3 +118,40 @@ compiler warning/error rejection, axiom and completion failures, and mocked
 environment-resolution failures. These tests are wrapper checks, not a Lean
 consumer run. The source and consumer bytes remain identical to the failed
 run. A fresh strict run must still compile and independently consume them.
+
+## Second run: actual SU(2) consumer elaboration boundary
+
+[Run #42313963781](https://github.com/etblink/math/actions/runs/42313963781)
+tested `71d1cef68ae4d97074e1c19cf000f87a203b999f`. The environment/compiler
+diagnostic separation worked. All 33 original parents cold-compiled and the
+candidate source passed both strict compiler and exact two-root axiom checks.
+
+The independent consumer then reported a deterministic `whnf` timeout at
+line 58, column 61, on `hF.smul_left` in the fifth example's SU(2) cutoff
+statement, at the unchanged default of 200,000 heartbeats. This is a Lean
+elaboration resource failure, not a second wrapper failure. The source
+proofs were not failing. The consumer printed its final marker and the
+imported root reports after the error; its nonzero exit correctly kept the
+gate red. A completion marker alone is not acceptance.
+
+The bounded correction supplies the scalar function explicitly:
+`HasCompactSupport.smul_left (f := fun x : Boson 2 => φ x) hF`.
+The original `Core.lean` already uses this named-argument pattern in
+`AlgebraData.smoothMultiplier`. The pinned Mathlib support theorem has an
+implicit scalar function `f` and vector function `f'`; the correction names
+the same real-valued bump instead of asking elaboration to recover it from
+the pointwise scalar action on the concrete Fock carrier. It adds no
+hypothesis, surrogate carrier, local instance or resource option. The
+mathematical source and five other consumer examples remain unchanged.
+Whether this resolves the measured resource boundary still requires Lean.
+
+Artifact `13550560757` has checked ZIP SHA-256
+`51ff7875be904d36a4eb701b57d02ae7f4be3d8b985a51885583245c953ea404`.
+Preserved evidence: [source log](evidence/spectral-confinement-2026-11-06/linear-moment-42313963781-source-log.txt),
+[consumer log](evidence/spectral-confinement-2026-11-06/linear-moment-42313963781-consumer-log.txt),
+[incomplete receipt](evidence/spectral-confinement-2026-11-06/linear-moment-42313963781-receipt.json),
+and [failure record](evidence/spectral-confinement-2026-11-06/linear-moment-42313963781-failure.json).
+Replaying the report validator accepts the actual clean source output and
+rejects the actual timed-out consumer output despite its marker. Eight
+wrapper regression tests still pass. No formal acceptance or source BFSS
+confinement/spectral conclusion follows from this partial run.

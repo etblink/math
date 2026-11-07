@@ -55,7 +55,8 @@ open OAI.BFSSQuantum
 example (φ : ContDiffBump (0 : Boson 2)) (f : Boson 2 → Fermion 2)
     (hf : Continuous f) (hF : HasCompactSupport f) :
     φ.rIn * dist (compactLp f hf hF)
-      (compactLp (fun x => φ x • f x) (φ.continuous.smul hf) hF.smul_left)^2 ≤
+      (compactLp (fun x => φ x • f x) (φ.continuous.smul hf)
+        (HasCompactSupport.smul_left (f := fun x : Boson 2 => φ x) hF))^2 ≤
       ∫ x, ‖x‖ * ‖f x‖^2 :=
   compactLp_bump_error_linear φ f hf hF
 
