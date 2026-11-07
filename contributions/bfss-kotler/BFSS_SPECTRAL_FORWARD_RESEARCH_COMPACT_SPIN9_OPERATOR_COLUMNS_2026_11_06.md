@@ -358,3 +358,104 @@ The symbolic trace-orthogonality argument in section C can establish this comple
 **Research decision:** fixed-eight-factor source compactness and full operator-column Hilbert space become the **preferred feasibility path**. PBW ambient-unitary compactness, parity-even SO(9) descent, and literal Spin(48) Fock-vector lift remain explicit alternatives. The direct massless source fermion identity is a separate, small proof opportunity. All are conditional until separately formally accepted.
 
 **Operational boundary:** this addendum changes only the existing memorandum's contents. Do not interpret this documentation commit as a mathematical gate, alter Lean modules/workflows or create upstream PRs without a new owner instruction.
+---
+
+## J. Source-exact compactness and gamma-covariance follow-up (2026-11-06)
+
+**Status: read-only research findings promoted to a documentation-only addendum. No new Lean theorem or spectral result is admitted.** This section appends the next hostile review after the I-series and does **not** replace its original findings. All theorem names below identify existing interfaces or *proposed* statements as explicitly marked; inspect exact source and strict gate before relying on them.
+
+### J.1. Source-normalized pair action is the minimum useful C0-A gate
+
+The working research branch already contains:
+
+- [F10BH](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BHUnitVectorPairMembership.lean): `source9UnitVectorPairSpin`, genuinely in the literal `spinGroup source9Quadratic`.
+- [F10BR](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BRSourceVectorOrthogonalHom.lean): `source9SpinVectorOrthogonalHom`, the genuine orthogonal **nine-vector** action.
+- [F10CU](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CUNaturalActionTwoSignFibers.lean): equality of nine-vector images implies equality of source Spin elements up to the **actual central sign**.
+- Pinned Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, [`LinearIsometryEquiv.reflections_generate_dim`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/InnerProductSpace/Projection/FiniteDimensional.lean), a bounded Cartan–Dieudonné decomposition.
+
+**Exact convention audit, not optional:** for a **unit** Clifford vector `u` in a positive-definite 9D Clifford algebra,
+\[
+\iota(u)\,\iota(z)\,\iota(u)^{-1}
+=\iota(2\langle u,z\rangle u-z).
+\]
+Define the line-preserving involution `L_u(z)=2⟨u,z⟩u-z`. Ordinary hyperplane reflection in `u^\perp` is `H_u(z)=z-2⟨u,z⟩u`, so `L_u=-H_u`. **One Clifford vector acts by the line-preserving map, NOT by the hyperplane reflection.** In 9D, `det(L_u)=(-1)^8=+1`, while `det(H_u)=-1`.
+
+The two signs cancel for a **pair**:
+\[
+R_9(\iota(u)\iota(v))=L_uL_v=H_uH_v.
+\]
+This is the intended compactness lemma, with original source conjugation, multiplication order and inverse conventions. Do not silently identify single-vector Clifford conjugation with `H_u`. The F10BH pair is genuinely in Spin9; a **single** vector need not be. The product must be checked against F10BR's exact `mulVec` order.
+
+**Candidate first theorem (not currently qualified):**
+\[
+\forall u,v,\quad Q_9(u)=Q_9(v)=1\Longrightarrow
+R_9(\mathrm{source9UnitVectorPairSpin}(u,v))=H_u\circ H_v.
+\]
+Keep the quadratic-unit locus `\{u:Q_9(u)=1\}` and the ordinary norm sphere separate until an explicit Euclidean-topology identification is established; `SpaceIndex → ℝ` may have a default function-space norm not definitionally equal to the quadratic Euclidean norm.
+
+**Acceptance:** fresh exact source compilation, a second independent consumer, theorem type and axiom reports, original quadratic form and paired labels unchanged. If orientation or source unit-pair semantics fail, stop C0-A at that precise boundary; do not keep patching by replacing the source carrier.
+
+### J.2. Three candidates for the **nine-vector** determinant +1
+
+**(a) Central 9-volume:** the odd-dimensional Clifford volume `ω=e_1⋯e_9` is central and invertible, and under a genuine orthogonal action top degree transforms by determinant. Thus the equation `gωg⁻¹=ω=(det R_9(g))ω` would establish `det R_9(g)=+1`. New theorem required: the exact *source* transformed-volume/determinant identity in the original PBW order, not multiplication preservation of `equivExterior`.
+
+**(b) Finite generating words:** Mathlib's [`lipschitzGroup` definition](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/LinearAlgebra/CliffordAlgebra/SpinGroup.lean) is the `Subgroup.closure` of invertible Clifford vectors. The pinned [`Subgroup.closure_induction''`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Algebra/Group/Subgroup/Pointwise.lean) supports generators, inverses, identity and product. A normalized-word property may therefore be proved by closure induction. In positive signature, write each nonzero generator as a positive scalar times a `Q_9`-unit vector, absorb its inverse by the unit square relation, and prove
+\[
+g=c\,\iota(u_1)\cdots\iota(u_\ell),\quad c>0,\quad Q_9(u_j)=1.
+\]
+For a **source Spin9** element, its actual Clifford-star unitarity and `star(ι(u))=-ι(u)` give `1=c^2(-1)^\ell`, hence `\ell` even and `c=1`. Then `det R_9(g)=1` by the line-preserving unit-vector determinant. This is an **outline**; subgroup generated-word extraction, positive normalization and correct star/conjugation transport remain to be formalized. It is not an accepted finite-word theorem.
+
+**(c) Exterior/coordinate determinant:** reuse the original source nine-dimensional exterior PBW basis [F10Y/F10Z](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ZSourceNineExteriorPBWOrderedWordProbe.lean) and top-degree determinant transformation. A previously accepted determinant for **gamma16** or **paired48** is not a substitute: [F10Q](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10QSourceSpinOrientationDetOneProbe.lean) concerns those other representations.
+
+**Decision:** investigate (a) and (b) as independently bounded approaches. Keep (c) if the top-degree transport already costs less than generator normalization. Do **not** claim the nine-vector representation is SO(9)-valued until this exact determinant theorem is proved.
+
+### J.3. Fixed eight-factor compactness: the remaining topology check
+
+If `det R_9(g)=1` is proved, the pinned Cartan–Dieudonné theorem gives **at most nine hyperplane reflections**. Their number is even, hence at most **eight**. Group them into pairs and apply J.1's proven source-pair correspondence. F10CU recovers `g` up to central `±1`; negating one factor corrects the sign. Repeated identical unit pairs pad the list to exactly eight Clifford unit vectors:
+\[
+\forall g\in \operatorname{Spin}(9),\quad
+\exists u_1,\ldots,u_8\in\{u:Q_9(u)=1\},\quad
+g=\prod_{j=1}^8\iota(u_j).
+\]
+This is **still conditional**, not a Lean theorem.
+
+The factor domain is the **quadratic unit locus** in the nine-dimensional source real vector space. Prove its compactness from `Q_9(u)=\sum_i u_i^2` and finite-dimensional real topology; only after that may it be identified with the familiar sphere `S^8`. Continuity of the literal source Spin product must use **F10BF/F10BG's existing PBW topology**. Surjectivity of the fixed-eight-factor map, plus compactness of its domain, would prove compactness of the genuine source Spin9 directly, without requiring an SO(9) surjectivity/covering theorem.
+
+**Reject** any proof that silently switches to a replacement abstract Spin group, changes the quadratic form, assumes the hyperplane reflection sign of a single Clifford conjugation, or uses a merely algebraic group homomorphism as a continuous one.
+
+### J.4. Rival C0-B path: identity chart and explicit PBW-word positivity
+
+There is now a particularly concrete **local compactness** library entry point:
+[`ChartedSpace.locallyCompactSpace`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Geometry/Manifold/ChartedSpace.lean), applicable to the original source [F10DE charted-space value](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DETranslatedSourceCharts.lean) into `Fin 36 → ℝ`. The source also has an [F10CW identity chart](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CWOriginalSourceIdentityLocalChart.lean); the entire translated atlas may be avoidable if a compact identity neighborhood suffices to prove **local closedness at the identity**. Mathlib has [`Subgroup.isClosed_of_isLocallyClosedAt`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Topology/Algebra/OpenSubgroup.lean). The interface requires `IsLocallyClosedAt` in the **ambient** Clifford group; a locally compact chart **alone does not automatically provide that hypothesis in Lean**. The subgroup embedding/topology and compact-neighborhood-to-local-closedness argument must be spelled out.
+
+The ambient compact group candidate is the **even reversal-unitary** source Clifford locus `K`. F10Y [`source9CliffordPBWBasis`](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10YSourceNineCliffordPBWBasisProbe.lean) was made through a **real linear**, not multiplicative, Clifford-to-exterior equivalence. F10Z proves an *exterior ordered word* identity, **not automatically a Clifford ordered-product identity**. Before
+\[
+\operatorname{scalar}(\widetilde x x)=\sum_I c_I^2,
+\]
+prove that the **actual F10Y PBW vectors equal ordered original Clifford coordinate words**, using vanishing cross-coordinate contractions and original `Q_9` normalization. The off-repository `512²` signed-monomial diagnostic checks combinatorics only and does not discharge the F10Y identification or source ring topology.
+
+**Head-to-head test:** C0-A begins with exact unit-pair reflection correspondence; C0-B begins with exact Clifford PBW word correspondence. Run these as separate future strict gates, rather than wrapping both in a large compactness file.
+
+### J.5. An algebraic P1 target independent of either compactness route
+
+[F10BC](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BCSourceSpinGammaSpecialOrthogonalHom.lean) exposes the original source Clifford-to-gamma16 algebra homomorphism, while [F10BO](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BOSourceVectorConjugationDerivative.lean) gives source-exact Clifford conjugation on embedded nine-vectors; F10BP packages the nine-vector representation.
+
+Applying the algebra homomorphism to the source-conjugation identity should give the **global algebraic gamma covariance candidate**
+\[
+\gamma(g)\,\gamma(v)\,\gamma(g)^{-1}
+=\gamma(R_9(g)v).
+\]
+Prove it at the actual source names and both matrix orientations, with precise meaning of the gamma action. This **does not require** a Fock-vector lift, Haar averaging, compact source Spin9, or an infinitesimal approximation. It is a useful independent gate on the way to original supercharge covariance. The original 48-label and SU(2) color covariance must still be proved separately.
+
+**Rejected shortcut:** source Spin9→SO(16) or Spin9→SO(48) mapping into a compact matrix group does **not** make the source Spin9 compact. [F10X](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10XSourceCliffordGammaKernelCriterionProbe.lean) explicitly leaves even-Clifford gamma injectivity as a hypothesis, not a proof; a faithful closed topological embedding has not been certified from that interface.
+
+### J.6. Frozen decisions and next narrowly scoped gates
+
+1. **C0-A1 first:** native nine-vector Clifford **pair** vs hyperplane-pair action, with the `L_u=-H_u` sign made explicit. Verify on the original source representation, not gamma16/paired48.
+2. **C0-A2 independently:** native nine-vector determinant +1 by central 9-volume or normalized-word induction. Do not use F10Q as the determinant proof.
+3. **C0-B1 independently:** original F10Y PBW coordinate words vs actual Clifford ordered products; then reversal positivity, local compactness and ambient local-closedness.
+4. **P1-gamma microgate independently:** global gamma covariance from F10BC/F10BO/F10BP, exact source group and matrix orientation.
+5. If C0-A1 and C0-A2 pass, test Cartan bounded factorization and the **fixed eight** compact image. If they fail, retain their individual mathematics, use C0-B as fallback and record the exact failure.
+6. **Separate spectral blockers remain:** full operator-algebra/Fock adjoint action, source gauge character elimination, original closed-Hamiltonian column correspondence, B4→D4 branching/exclusion over **every** vector in the fixed isotypic sector, and source form coercivity. No spectral theorem, physical zero-mode exclusion or global mass gap follows from this memo.
+
+**Operational status:** original strict massless source gate [#42325087575](https://github.com/etblink/math/actions/runs/42325087575) remained the latest verified scientific gate during this read-only session. This section is a *documentation-only* preservation action; source Lean declarations, axiom conditions and workflow results are unchanged.
