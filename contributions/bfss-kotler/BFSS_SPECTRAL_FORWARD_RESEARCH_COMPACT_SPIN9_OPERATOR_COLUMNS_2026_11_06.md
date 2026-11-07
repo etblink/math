@@ -197,3 +197,164 @@ The previously investigated explicit \(C=8\sqrt3,\lambda_2>17\) and optional nea
 **Operational boundary:** this memorandum is the sole intended new repository file in the present commit. No changes to existing Lean sources, qualified runs, workflow YAML, cache validators, frozen source pin, existing roadmaps, original research branch or upstream PRs. New mathematical results require separately chartered source/consumer/axiom gates. A green documentation commit would show document integrity, **not** proof of any claim here.
 
 **Guiding rule:** preserve the theorem/assumption boundary, learn from counterexamples and failed implementations, and prefer a smaller exact source theorem to a larger elegant substitute.
+---
+
+## I. Supplemental forward-research audit: 2026-11-06, after the first memorandum
+
+**Status:** RESEARCH ADDENDUM; NOT A LEAN-QUALIFIED MATHEMATICAL RESULT. This section preserves the subsequent read-only investigation and updates the *preferred order of tests*. Sections A–H remain as contemporaneous evidence; this addendum explicitly supersedes their C0 ordering and simplifies the proposed C2 carrier. Nothing in this addendum asserts a new successful Lean run, physical eigenvalue, or formal resolution of the manuscript's spectral theorem.
+
+### I.1. A second, constructive compactness route: bounded normalized Clifford words
+
+Pinned Mathlib @ `d13f23b723b8a846827a245b89c10fc7d3f11612` contains the **Cartan–Dieudonné reflection factorization**, not merely generic reflection utilities: [`LinearIsometryEquiv.reflections_generate_dim`](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/InnerProductSpace/Projection/FiniteDimensional.lean#L226-L241) represents a real orthogonal map as a product of at most the dimension's number of hyperplane reflections.
+
+For the *natural nine-vector action* of the **literal** `spinGroup source9Quadratic`, an SO(9) element factors through at most 9 reflections. Its determinant is +1, so the number of reflections must be **even**, hence at most **8**. Pinned source [F10BH](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10BHUnitVectorPairMembership.lean) already constructs genuine source Spin(9) elements from **two** unit source Clifford vectors, with correct Clifford multiplication and gamma image. [F10CU](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CUNaturalActionTwoSignFibers.lean) classifies equal nine-vector action fibers as `g=h` or `g=(-1)h`.
+
+**Target:** for every original source Spin(9) element `g`,
+\[
+\exists (u_1,\ldots,u_8)\in(S^8)^8,\qquad
+g=\iota(u_1)\cdots\iota(u_8).
+\]
+A shorter even list can be padded with repeated unit pairs `ι(u)ι(u)=1`; to switch the sign when the natural representation only determines the element up to `±1`, negate one unit factor. If the map from `(S^8)^8` to the exact source Spin carrier is continuous in F10BG's topology, the fixed-eight-word theorem makes the source group a **continuous image of a compact space**. No ambient-even-unitary closed-subgroup or locally-closedness theorem is needed.
+
+**Do not silently port 48D to 9D.** Previous V7I–V7Q and V7X–V7Y modules demonstrate exact same-label Cartan factorization and genuine Spin words for **source48Quadratic**, not `source9Quadratic`. The nine-dimensional work requires its own source-normalized hyperplane reflection formula, determinant-one theorem for the **nine-vector action**, order preservation and even-word product. Reuse the successful proof method, not a different representation's theorem conclusion. [F10Q](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10QSourceSpinOrientationDetOneProbe.lean) proves determinant +1 for the original **16-dimensional real gamma representation** and associated paired 48-label action; this is **not itself** the determinant-one theorem for the nine-vector representation.
+
+**Failure criteria:** any incorrect reflection sign/order, odd determinant in the nine-vector image, failure to lift normalized reflection pairs as actual source Spin words, failure of the exact two-sign correction, or a mismatch between the image topology and source PBW topology. The result is not yet Lean-qualified.
+
+**Competing C0 fallback (retained):** the original PBW reversal-positivity route from section B. There, compactness of an ambient even reversal-unitary Clifford group follows from the source coefficient identity, followed by local closedness of the literal Spin subgroup. The fixed-eight-factorization route should now be **tested first** because its final compactness step uses a single continuous map of compact spaces, but the two C0 proofs are independent and neither should be claimed before strict verification.
+
+### I.2. Nine-dimensional orientation through the central Clifford volume
+
+A source-specific way to avoid abstract determinant characters uses
+\[
+\omega=e_1e_2\cdots e_9.
+\]
+For an orthonormal positive Clifford basis, `ω` commutes with every generator (eight swaps), and `ω²=1`. If the natural action `R_g` is genuinely orthogonal and `g e_i g^{-1}=R_g e_i`, then
+\[
+g\omega g^{-1}=\omega,\qquad
+\prod_{i=1}^9 \iota(R_g e_i)=(\det R_g)\omega
+\]
+(the latter for an orthonormal transformed frame, using the top-grade/volume identity). Hence `det R_g=1`.
+
+**Unproved source-exact step:** the top-degree transformed-product/determinant identity, including the exact source vector action, orientation and original basis. [F10Y/F10Z](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10ZSourceNineExteriorPBWOrderedWordProbe.lean) and [F10CR/F10CT](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10CTExteriorScalarKernel.lean) offer existing PBW/exterior coefficient technology. This is a **candidate proof route**, not an accepted determinant theorem. Preserve the generator-character and reflection-determinant alternatives if it fails.
+
+### I.3. Physical-column simplification: use the full operator algebra, not an ideal
+
+The left-ideal construction in section D remains valid **conditionally**, but is not necessary for the finite-column Hamiltonian comparison. Define the full operator-valued space
+\[
+\mathscr K=L^2(\mathbb R^{27},\,\mathcal A),
+\qquad \mathcal A=\operatorname{End}_{\mathbb C}(\mathcal F),
+\quad d=\dim_{\mathbb C}\mathcal F=2^{24}.
+\]
+Equip it with the *left-output* SU(2) gauge action
+\[
+(G_gT)(X)=U_g T(g^{-1}\!\cdot X)
+\]
+(with the precise source pullback convention to be audited). The input Fock index is **untransformed**, not conjugated. Choosing a constant orthonormal input basis `e₁,…,e_d` identifies the gauge-physical operator-valued subspace with **d copies** of the genuine source physical Hilbert space:
+\[
+\mathscr K_{\mathrm{phys}}\simeq\mathscr H_{\mathrm{phys}}^{\oplus d},
+\qquad T(X)\mapsto (T(X)e_j)_j.
+\]
+The source charge column/fermionic multiplier/gradient acts **on outputs** and therefore diagonally on these columns. The desired identity
+\[
+\widetilde H\simeq H_{\mathrm{phys}}^{\oplus d}
+\]
+still requires equality of the exact source smooth cores, closed quadratic forms, operator graphs and domains—not merely a pointwise formal expression. A proved nonzero eigenvector of `H̃` then has a nonzero physical column with the same eigenvalue. This does **not** create an eigenpair.
+
+For the proposed spatial action
+\[
+(S_sT)(X)=\alpha_s(T(s^{-1}\!\cdot X)),
+\]
+the **necessary gauge compatibility** is `α_s(U_g)=U_g`; it makes `S_s` commute with the *left-output* gauge action. This route removes the requirement that `\mathcal A P_W` be an invariant **left** ideal, and removes the full projector `P_W` from the **Hilbert-space carrier**. It does not eliminate the source group action, gauge uniqueness or form covariance proof.
+
+**Scientific warning:** an automorphism-valued action on Fock operators need not integrate to a genuine Fock-**vector** group action. The operator-column action is a different honest representation on a finite-multiplicity extension; it can be useful only with an exact self-adjoint **original-source** column comparison.
+
+### I.4. A single genuine gauge-singlet vacuum replaces the full gauge-singlet projector
+
+The separate PR #77 contribution snapshot [G4K2A](https://github.com/etblink/math/blob/fa00aa36e770ca516f57b41f5b02229a5033d50f/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2ANonzeroVacuumRadialProfileProbe.lean) explicitly identifies a **nonzero original Fock vacuum fixed by every genuine SU(2) gauge element**. Subsequent L6G6P/L6G6S source interfaces identify the same original vacuum in generator constructions. No such file is silently assumed inherited by the active branch.
+
+Pick a normalized original gauge-invariant vector `w` and the rank-one projection `P_w=|w⟩⟨w|`, so `U_gP_w=P_w`. If the proposed compact source Spin(9) action `α_s` is genuine, continuous, adjoint preserving, trace preserving, and satisfies `α_s(U_g)=U_g`, define the operator average
+\[
+T_0=\int_{\operatorname{Spin}(9)}\alpha_s(P_w)\,ds.
+\]
+Each integrand is positive with trace one. Consequently `T₀` is positive, has trace one and is **nonzero**; left gauge invariance and Spin invariance follow by the stated commutation and Haar invariance. The proposed test functions
+\[
+T_{k,\chi}(X)=\chi(\|X\|)\,P(X)^k\,T_0
+\]
+would provide high-weight physical-column witnesses **only after** source polynomial type, source gauge invariance, the group action, and compact-core requirements are proved. These functions are test vectors, not eigenvectors.
+
+The separate contribution import manifest lists **38** operator-dependency ancestors for G4K2A versus **176** for S1G, an important *dependency-surface warning*, not a precise Lean timing forecast. One genuine gauge-singlet vector and a Spin average may be cheaper than constructing the full gauge-singlet projector; however the Haar machinery is not free.
+
+### I.5. SU(2) gauge-phase elimination independently of compact Spin(9)
+
+The separate [S1G source character proof](https://github.com/etblink/math/blob/fa00aa36e770ca516f57b41f5b02229a5033d50f/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1GExactSourceRelativeCharacterTrivialityProbe.lean) uses **the literal Pauli-normalized SU(2)**, quarter-turn source matrices, diagonal/off-diagonal curves, and Euler factorization to eliminate the relative scalar character.
+
+For a source operator automorphism `α_s`, prove:
+\[
+\alpha_s\operatorname{Ad}_{U_g}=\operatorname{Ad}_{U_g}\alpha_s
+\quad\Rightarrow\quad
+\alpha_s(U_g)U_g^{-1}\in\mathbb C^\times I.
+\]
+This uses *complete complex* generation/irreducibility of the original Majorana operator algebra, not an unverified abstract Clifford equivalence. Then the scalar is a multiplicative character of literal SU(2) and must be trivial. Thus `α_s(U_g)=U_g`.
+
+Because S1G establishes character triviality **algebraically**, this proof lane can be investigated before Spin(9) compactness or any Haar projector. The quoted snapshot S1G/S1H interfaces have extensive transitive imports; a smaller exact character proof may be preferable. Do not set the scalar equal to one by definition.
+
+### I.6. Exterior-algebra weight bound without constructing quadratic CAR generators
+
+For a spatial rotation in one plane, the original 48 real Majorana labels decompose into 24 two-dimensional rotation blocks of angular frequency `1/2`. Under complexification, each block has weights `±1/2`; on exterior powers, each block contributes `−1/2,0,+1/2`. Therefore the **full Fock-operator algebra's** conservative first-Cartan weight bound is
+\[
+|w_1|\le 24/2=12.
+\]
+The natural Clifford/exterior identification
+`CliffordAlgebra.equivExterior` in pinned Mathlib is a **linear** equivalence. It may yield the needed representation-weight estimate without constructing the quadratic Fock generator `L(A)` or proving its exponential laws. The remaining theorem is **equivariance** under the *actual* source orthogonal automorphism, with exact Majorana scaling and real-to-complex transport. An abstract dimension count does not prove source-equivariance.
+
+**Rejected shortcut preserved:** two large commuting angular momenta do not force a large second highest weight. The harmonic example `(u₁+iu₂)^k(u₃+iu₄)^k` is a **one-row** highest-weight type `(2k,0,0,0)`; its large Cartan weights alone cannot replace the required Spin(9)→Spin(8) restriction theorem. Vanishing of one polynomial family on the commuting valley does not imply vanishing of its entire isotypic sector.
+
+### I.7. Exact source massless fermion frequency identity is within reach
+
+Inspect [original `FermionQuantization.lean`](../../lean/OAI/MathematicalPhysics/BFSS/FermionQuantization.lean), specifically the existing `deformedFermionField_bracket`, `frequency_bracket_contraction` and `deformedFermionField_quantized`. The last is written for `(h,m)=(1,1)`, but the bracket identities isolate the massless piece directly.
+
+Let
+\[
+K_0(X)_{rs}=-\sum_{j,C} f_{s_2r_2C}\,X_{jC}\,\gamma^j_{r_1s_1}.
+\]
+The natural exact-source **candidate** is
+\[
+M.\mathrm{deformedFermionField}(1,0,X)
+=\bigl(M.\mathrm{quantizeFrequency}(K_0(X))\bigr)
+.\mathrm{restrictScalars}\,\mathbb R.
+\]
+Its coefficients match the source massless `(-i/2)` cubic contraction after using the existing source lemma; it needs a separate Lean specialization and independent consumer/axiom gate. It is **not** the assertion that the existing `(1,1)` theorem itself proves `(1,0)`.
+
+The already-inherited [`PotentialBounds.lean`](../../lean/OAI/MathematicalPhysics/BFSS/PotentialBounds.lean) still gives the **qualitative** source bound `‖B(X)‖≤C_M‖X‖` without finite-matrix diagonalization. Hence the massless frequency identity is valuable for source crosswalk and future quantitative estimates, **not a dependency of qualitative confinement**.
+
+### I.8. Important real/complex Clifford dimensional obstruction
+
+The real Clifford algebra has real dimension `2^48`, whereas
+\[
+\dim_{\mathbb R}\operatorname{End}_{\mathbb C}(\mathcal F)=2^{49}.
+\]
+Thus a real-linear Clifford-to-Fock algebra homomorphism cannot be **onto all complex-linear Fock operators as a real vector space**. The *complex span* of the `2^48` Majorana monomials has the correct complex dimension:
+\[
+\dim_{\mathbb C}\operatorname{End}_{\mathbb C}(\mathcal F)=2^{48}.
+\]
+The symbolic trace-orthogonality argument in section C can establish this complex basis, if the actual Fock dimension, original CAR and trace identities are formalized. Alternatively use the full **complexified** Clifford algebra. Never turn an exploratory real Clifford homomorphism into a surjective complex matrix-algebra equivalence by dimensional guesswork.
+
+### I.9. Revised order of proposed gates and failure controls
+
+| Order | Bounded feasibility experiment | Accepted outcome vs. rejection |
+|---|---|---|
+| **0A** | Source Spin(9) natural SO(9) orientation via central Clifford 9-volume **or** direct determinant theorem | Actual source-nine determinant +1, not the existing gamma16 determinant; record any volume sign/convention failure |
+| **0B** | Native **nine-dimensional** reflection transport and even-list source Spin words using F10BH and pinned Cartan–Dieudonné | Exact fixed-eight normalized source factorization; fallback to section B PBW closedness if blocked |
+| **0C** | Compactness of literal source Spin(9) as image of `(S⁸)^8` in unchanged PBW topology | Verified compact source carrier; do not infer from a surrogate abstract Spin group |
+| **1A** | Source Majorana complex monomial generation and induced `α_s` | Actual complex Fock-operator automorphism, adjoint preservation, group law and continuity |
+| **1B** | Separate gauge-character elimination using S1G as method reference | `α_s(U_g)=U_g` for every original SU(2) element, without hidden phase |
+| **2A** | Full-operator Hilbert-space **left-output** gauge invariants | Exact finite-column Hilbert equivalence, followed by closed form/graph equivalence, not just core equalities |
+| **2B** | One genuine source gauge-singlet vector and Spin-average witness | Nonzero gauge/Spin-invariant `T₀`; no unverified projector onto all fermion gauge singlets |
+| **3A** | Exterior-equivariant first-Cartan weight bound; dedicated B4→D4 restriction | `M≤12` on actual operator space **and** oscillator exclusion for all of a fixed type |
+| **3B** | Original source coercivity using finite `C_M`; reducing sector and weighted closure | Only after all assumptions hold: compact resolvent on infinite-dimensional original-source physical-column sector and nonzero physical-column eigenpair |
+
+**Counterexample and provenance rules:** continue searching for bounded-energy escaping sequences within the *same actual* high-weight physical domain; test the negative-center parity automorphism; reject projected or left-output gauge conventions inconsistent with source `GaugeData`; never claim compact resolvent from abstract trace unitarity alone; keep source/theorem qualifications pinned to exact green runs. Never generalize from the original `(2k,2k,0,0)` polynomial's restriction to the entire isotypic space without a proper branching proof.
+
+**Research decision:** fixed-eight-factor source compactness and full operator-column Hilbert space become the **preferred feasibility path**. PBW ambient-unitary compactness, parity-even SO(9) descent, and literal Spin(48) Fock-vector lift remain explicit alternatives. The direct massless source fermion identity is a separate, small proof opportunity. All are conditional until separately formally accepted.
+
+**Operational boundary:** this addendum changes only the existing memorandum's contents. Do not interpret this documentation commit as a mathematical gate, alter Lean modules/workflows or create upstream PRs without a new owner instruction.
