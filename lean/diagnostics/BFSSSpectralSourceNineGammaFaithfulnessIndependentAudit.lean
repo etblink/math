@@ -77,7 +77,6 @@ example (g : spinGroup source9Quadratic) :
 
 example : source9SpinVectorRepresentation (1 : spinGroup source9Quadratic)
     (source9CoordinateVector 8) = source9CoordinateVector 8 := by
-  change (source9SpinVectorRepresentation (1 : spinGroup source9Quadratic)) _ = _
   rw [map_one]
   rfl
 

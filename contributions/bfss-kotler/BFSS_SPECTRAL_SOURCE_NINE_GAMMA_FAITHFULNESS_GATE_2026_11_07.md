@@ -86,3 +86,22 @@ A compiler/type/resource failure blocks acceptance; it is not a mathematical
 counterexample. An unexpected axiom, source mismatch, collapsed central sign,
 incorrect covariance orientation, missing consumer, warning, or incomplete receipt
 rejects qualification. The candidate is not accepted merely because it is committed.
+
+## Retained red: run 42406810092
+
+Tested commit: `104e8bfec43707ccab32a5e50520db2d0c9d728e`.
+All 126 ancestors and the complete faithfulness source compiled successfully.
+Each of the six new source roots reported only the three permitted foundational
+axioms. The independent consumer failed on its identity example at line 80:
+a `change` tactic left its goal unchanged, and the strict unused-tactic linter
+rejected it. The other consumer elaboration emitted no additional diagnostic.
+The receipt is correctly `INCOMPLETE`; the overall microgate is not accepted.
+
+Artifact: `13588237569`, ZIP SHA-256
+`b4c3e85cecce60453ea6f53b0a18cf9ffc120265835b0f6d6d100480f672c796`.
+The downloaded receipt and complete compiler logs were inspected.
+
+Repair: remove only that redundant consumer tactic and update the consumer's
+Git blob/SHA-256 manifest pins. The source proof, all theorem and example types,
+all dependencies, verification code, workflow, budgets and strict linter policy
+remain unchanged. A fresh complete cold run is required for acceptance.
