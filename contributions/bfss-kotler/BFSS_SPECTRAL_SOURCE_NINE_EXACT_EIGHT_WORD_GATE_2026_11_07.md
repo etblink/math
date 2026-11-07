@@ -137,3 +137,28 @@ receipt, all-logs JSON, complete failed source log and original failed
 source snapshot preserve the exact negative evidence. Exact eight-factor
 equality, the fixed source word map, PBW continuity and source compactness
 retain their acceptance boundaries.
+
+
+## Run #42375541902 — scoped C0-A4c acceptance
+
+The repaired [exact-eight strict run](https://github.com/etblink/math/actions/runs/42375541902)
+is green at exact tested commit `2eea63f03a0746b1b243a75676050580aab92a17`.
+Downloaded artifact 13576255900 has ZIP SHA-256
+`473b9a27e16ed31d3a6a8c297582954fdb7ab236aa73a0e7746f7372f43af6d1`.
+Full independent review verifies 163 archived input pins against the manifest
+and tested checkout, all 133 cold successful exits/log digests, 79 exact
+strict reports, eight markers, all ten consumers, 42 locked package
+revisions, compiler identity and Lake environment log digest. No Lean
+error/warning, recovery axiom or foreign assumption occurs.
+
+C0-A4c now qualifies exact eight-factor original Q-unit Clifford equality
+for every actual source Spin element, both as a list and as naturally
+ordered Fin 8 witnesses. Padding and sign absorption, including both
+central source cases, qualify within those statements. The failed run and
+dependent-transport repair remain retained without changing any public
+statement or consumer. Continuity and source compactness are not admitted.
+
+The [acceptance JSON](evidence/spectral-confinement-2026-11-06/source-nine-exact-eight-word-42375541902-acceptance.json),
+receipt and complete source/consumer/all logs preserve the qualification.
+The [fixed source-map gate](BFSS_SPECTRAL_SOURCE_NINE_EIGHT_INPUT_SPIN_MAP_GATE_2026_11_07.md)
+is a new candidate, independently pending compilation and evidence review.

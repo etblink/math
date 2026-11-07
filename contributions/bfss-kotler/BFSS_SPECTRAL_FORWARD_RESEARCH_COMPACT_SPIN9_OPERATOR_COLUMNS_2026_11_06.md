@@ -733,3 +733,25 @@ actual source Spin group, its surjectivity, original Q-unit parameter
 compactness and continuity in the unchanged PBW topology. Existence of
 word witnesses requires no continuous selection. Source compactness and
 all physical/domain/branching/coercivity/spectral claims remain separate.
+
+
+## S. C0-A4c qualified; fixed actual source map proposed
+
+Green #42375541902 at 2eea63f03a0746b1b243a75676050580aab92a17 passes full
+artifact review: 163 input pins, 133 successful cold builds, ten consumers,
+79 strict reports and eight markers. Exact eight-vector Q-unit Clifford
+equality to every original source Spin element now qualifies, including
+natural Fin 8 order and both original central signs. Prior dependent-
+transport failures are retained; no public statements were weakened.
+
+The [C0-A5a candidate](BFSS_SPECTRAL_SOURCE_NINE_EIGHT_INPUT_SPIN_MAP_GATE_2026_11_07.md)
+next gives a fixed formula on eight original Q-unit subtype inputs using
+four actual F10BH pairs, proves its exact ordered Clifford value, and
+uses source subtype extensionality for actual source surjectivity. Four
+public roots and eight consumers remain pending a separate strict gate.
+The map uses no chosen inverse or continuous selection of factorization.
+
+Then prove original PBW continuity, original Q-unit locus compactness and
+compactness of its finite eight-input product. Only their combination with
+actual surjectivity may establish source compactness. The original source
+representation, topology and all physical/spectral claim boundaries remain.

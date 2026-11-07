@@ -7430,3 +7430,42 @@ Require a fresh complete source/consumer strict run and artifact review
 before C0-A4c acceptance. Do not advance source word-map compactness or any
 physical/spectral claim on this red. Original branch and upstream PRs
 remain untouched.
+
+
+## Run #42375541902 — C0-A4c accepted; fixed actual Spin-map candidate
+
+Verified green at exact tested 2eea63f03a0746b1b243a75676050580aab92a17.
+Artifact 13576255900 ZIP SHA-256
+473b9a27e16ed31d3a6a8c297582954fdb7ab236aa73a0e7746f7372f43af6d1
+matches downloaded bytes. Full review checks all 163 archived pins against
+the tested checkout, 133 successful cold exits/log digests, 79 strict
+reports, eight markers, ten consumers, all 42 package revisions, compiler
+identity and Lake environment digest. No Lean diagnostics or recovery/
+foreign axioms. source-nine-exact-eight-word-42375541902-* durably retains
+scoped acceptance, receipt and full logs. Prior failed source retained.
+
+C0-A4c qualifies exact eight-factor original Q-unit Clifford equality to
+arbitrary actual source Spin g, both as length-eight lists and naturally
+ordered Fin 8 witnesses. Both source central signs qualify through the
+ten consumers. This is not continuity or source compactness.
+
+New bounded C0-A5a candidate SpectralSourceNineEightInputSpinMap.lean defines
+an explicit fixed product of four actual F10BH source pairs on eight
+original Q-unit subtype inputs. Proposed roots identify natural word order,
+the literal Clifford value, and surjectivity onto the actual source group
+via the qualified witnesses and subtype extensionality. No chosen lift is
+used to define the map. Four roots and eight full-type consumers remain
+unqualified pending their dedicated strict compiler/evidence gate.
+
+New gate: 164 input pins, 134 cold objects, 79 strict reports, nine markers.
+All 125 original source blobs and seven accepted spectral sources remain
+unchanged. Static pin/closure preflight, ten adversarial validator tests
+and workflow syntax checks pass. Proof budgets, compiler/dependency pins,
+strict linting and cache contracts are unchanged.
+
+After qualification prove fixed-map continuity in ORIGINAL PBW topology,
+original Q-unit parameter compactness and the finite-product compactness;
+only then combine with source surjectivity for actual source compactness.
+No continuous choice of word witnesses is needed. Covering, Fock/gauge,
+physical closed domains, branching, coercivity and spectral existence
+remain separate. Original research branch and upstream PRs untouched.
