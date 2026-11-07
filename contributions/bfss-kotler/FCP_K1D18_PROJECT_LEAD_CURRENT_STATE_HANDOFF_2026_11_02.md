@@ -6945,3 +6945,49 @@ column correspondence, B4→D4 exclusion for every vector of a fixed type
 and source coercivity remain separate spectral blockers. Existing Lean
 modules, old workflows/cache contracts, the original research branch and
 upstream PRs are unchanged.
+
+
+## Run #42339266687 — source-nine reflection acceptance; P1-gamma candidate
+
+**Reverified current state.** The separate spectral branch HEAD was
+09481a61d9a7abf965e962f747068f21a7b87364. Green run #42339266687 tests
+that exact commit. Retained artifact 13561053171 was independently reviewed:
+124 input blob/SHA256 pins, 94 cold-build exits/log digests, 18 public-root
+reports, two completion markers, eight exact-type consumers, all 42 package
+revisions, compiler digest and Lake-environment log digest match. No compiler
+warnings occur in any original or candidate log. The receipt, all logs,
+source/consumer logs and scoped acceptance are durable at
+evidence/spectral-confinement-2026-11-06/source-nine-reflection-pair-42339266687-*.
+
+**Scoped acceptance.** All nine C0-A1 roots qualify. For original source-Q
+unit u,v, the literal F10BH Spin pair acts through literal F10BP as the
+ordered pair of native Mathlib hyperplane reflections after explicit
+same-label Euclidean transport. The single-vector minus sign is discharged;
+single-vector Spin membership is not asserted. This is not determinant
++1 for arbitrary source action, fixed-eight factorization, source compactness,
+Fock action, confinement or eigenpair existence.
+
+**C0-A2 audit and selected independent gate.** Inspected the source48
+S1V37 rank-one determinant and K1D18F/G/H/L Lipschitz action/closure method.
+A nine-dimensional untwisted-generator determinant +1 candidate might avoid
+volume transport and even-word extraction, but requires actual source9
+Lipschitz representation, generator-matrix and restriction bridges. This
+is preserved as research in memorandum K, not assumed or imported from
+48 dimensions. Volume and normalized-word alternatives remain available.
+
+Next submit J.5's smaller independent P1-gamma test: apply original gamma
+AlgHom to F10BO conjugation, identify original F10BP action, and expose
+matrix-units/SO16 conjugation plus multiplication and inverse orientations
+and actual normalized pair specialization. Six roots and eight fully typed
+consumers; twelve axiom reports. The new dedicated qualifier/manifest pins
+124 inputs and cold-builds 94 objects over the same unchanged 92 originals.
+Static preflight, ten adversarial report tests and workflow syntax checks
+pass; compiler and retained-evidence qualification remain pending. See
+BFSS_SPECTRAL_SOURCE_NINE_GAMMA_COVARIANCE_GATE_2026_11_06.md.
+
+After this bounded compatibility test, return to C0-A2 feasibility. Even a
+green P1-gamma component does not discharge physical Fock action, all P1,
+gauge character, closed-Hamiltonian columns, whole-sector B4→D4 exclusion,
+source coercivity or spectra. Existing Lean files, workflows/cache contracts,
+original research branch and upstream PRs remain untouched; evergreen
+guidance remains unchanged.

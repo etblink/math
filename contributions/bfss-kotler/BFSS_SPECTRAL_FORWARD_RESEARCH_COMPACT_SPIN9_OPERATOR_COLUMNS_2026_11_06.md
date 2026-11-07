@@ -459,3 +459,48 @@ Prove it at the actual source names and both matrix orientations, with precise m
 6. **Separate spectral blockers remain:** full operator-algebra/Fock adjoint action, source gauge character elimination, original closed-Hamiltonian column correspondence, B4→D4 branching/exclusion over **every** vector in the fixed isotypic sector, and source form coercivity. No spectral theorem, physical zero-mode exclusion or global mass gap follows from this memo.
 
 **Operational status:** original strict massless source gate [#42325087575](https://github.com/etblink/math/actions/runs/42325087575) remained the latest verified scientific gate during this read-only session. This section is a *documentation-only* preservation action; source Lean declarations, axiom conditions and workflow results are unchanged.
+
+
+## K. Post-C0-A1 source audit: odd-dimensional Lipschitz determinant candidate
+
+**Research status:** this addendum preserves a proposed route and a bounded
+work-selection decision. It does not establish the nine-vector determinant
+or compactness. The independently audited C0-A1 reflection-pair result is
+recorded in its [scoped gate](BFSS_SPECTRAL_SOURCE_NINE_REFLECTION_PAIR_GATE_2026_11_07.md);
+that acceptance does not qualify the new arguments below.
+
+The source48 S1V37 rank-one determinant proof uses
+`Matrix.det_one_add_replicateCol_mul_replicateRow` and `Matrix.det_neg`.
+For a normalized polar row ell with ell dot a = 2, the matrix
+`-(I - a ell^T)` has determinant `(-1)^n (1-2) = (-1)^(n-1)`.
+The source48 theorem's result -1 is tied to n=48. In **nine** dimensions
+the candidate value is +1. This matches the accepted single-vector sign:
+untwisted positive-Clifford conjugation is line reflection, hence minus
+hyperplane reflection, with eight transverse minus signs.
+
+This suggests a third C0-A2 proof architecture: extend literal source9
+Clifford conjugation to its actual algebraically generated Lipschitz subgroup,
+prove its real-linear representation and exact agreement with F10BP on
+Spin9, identify every invertible Clifford-vector generator's actual matrix
+with the normalized polar rank-one matrix, and propagate determinant +1
+through subgroup closure. In odd dimension this may avoid both top-degree
+volume transport and extraction of even normalized words. It is an outline,
+not a formal proof; source generator invertibility/Q normalization, matrix
+identification, representation laws, inverse cases and the restriction
+bridge are separate obligations.
+
+The source48 K1D18F/G/H action/representation modules and K1D18L use of
+`Subgroup.closure_induction''` provide inspected proof patterns. Their
+48-dimensional conclusions do not prove anything on the nine-vector
+carrier. Reuse the method without importing a replacement source action.
+Compare this architecture with J.2's volume and normalized-word alternatives
+on the first source-exact obligation each can discharge. Keep all failures
+and accepted intermediate results; no compactness follows from the outline.
+
+**Bounded next selection:** while C0-A2 remains a feasibility obligation,
+execute J.5's independent algebraic gamma-covariance microgate from the
+existing F10BC/F10BO/F10BP interfaces. It tests an exact compatibility law
+without introducing a full Lipschitz representation or using a derivative
+as global evidence. Its [new charter](BFSS_SPECTRAL_SOURCE_NINE_GAMMA_COVARIANCE_GATE_2026_11_06.md)
+keeps Fock implementation, all of P1, determinant, topology and spectral
+claims outside acceptance. After that bounded test, return to C0-A2.

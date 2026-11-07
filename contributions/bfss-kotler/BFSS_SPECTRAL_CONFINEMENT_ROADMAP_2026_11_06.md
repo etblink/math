@@ -164,3 +164,24 @@ separate gates. The full operator-column carrier supersedes the initial
 left-ideal requirement for feasibility; source gauge compatibility, closed
 Hamiltonian columns, full-isotypic branching and coercivity remain blockers.
 Qualitative use of finite C_M precedes any optional sharp constant.
+
+
+## Run #42339266687 — C0-A1 accepted; independent P1-gamma candidate
+
+Reviewed artifact 13561053171 at exact tested commit
+`09481a61d9a7abf965e962f747068f21a7b87364`: all 124 input pins, 94 cold
+builds/log digests, 18 axiom reports, eight consumers and dependency/compiler
+provenance pass, with no compiler warnings. The
+[reflection-pair gate](BFSS_SPECTRAL_SOURCE_NINE_REFLECTION_PAIR_GATE_2026_11_07.md)
+is accepted only in its exact source-Q-unit, native-reflection scope.
+Source9 determinant, fixed-eight factorization and compactness remain open.
+
+The determinant audit and odd-dimensional Lipschitz candidate are preserved
+in memorandum section K. The smaller independent
+[P1-gamma gate](BFSS_SPECTRAL_SOURCE_NINE_GAMMA_COVARIANCE_GATE_2026_11_06.md)
+now proposes global original gamma covariance from the existing source
+Clifford conjugation identity. Six roots, eight consumers, twelve reports;
+94 cold objects and 124 pinned inputs. Static checks are not qualification.
+After strict result/evidence review, return to bounded C0-A2 feasibility.
+The operator/Fock, gauge, physical closed-domain, branching, coercivity and
+spectral boundaries remain unchanged.

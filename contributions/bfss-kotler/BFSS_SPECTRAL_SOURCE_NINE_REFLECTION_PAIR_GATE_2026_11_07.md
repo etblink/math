@@ -112,3 +112,28 @@ If C0-A1 qualifies, next assess C0-A2's **nine-vector** determinant theorem
 using the memorandum's volume/word alternatives. The global algebraic
 gamma-covariance candidate remains a separate bounded opportunity.
 Do not promote a matrix target's compactness into source-group compactness.
+
+
+## Run #42339266687 — retained-evidence review and scoped acceptance
+
+The run completed green at exact commit
+`09481a61d9a7abf965e962f747068f21a7b87364`. Artifact 13561053171 was
+downloaded and reviewed: all 124 input blobs/SHA256 pins, 94 cold-build
+exit statuses and log digests, 18 root reports, two completion markers,
+eight consumers, 42 dependency revisions and compiler/environment-log
+digests match. All 92 original logs and both candidate logs have no
+compiler warnings. The compiler digest matches the previous qualified gate.
+
+The [scoped acceptance](evidence/spectral-confinement-2026-11-06/source-nine-reflection-pair-42339266687-acceptance.json),
+receipt, complete logs and separate source/consumer logs are retained.
+Qualify the nine public roots in their exact stated scope: actual source
+Q-unit vectors, original nine labels, literal existing Spin pair and
+representation, explicit same-label Euclidean transport, single-factor
+minus sign and the ordered native hyperplane-reflection pair.
+
+No arbitrary nine-vector determinant, fixed-eight factorization, source
+compactness, physical Fock action or spectral claim is admitted. The
+source9 determinant feasibility audit is preserved in memorandum section K.
+The next independent candidate is the separately chartered
+[P1-gamma global algebraic covariance gate](BFSS_SPECTRAL_SOURCE_NINE_GAMMA_COVARIANCE_GATE_2026_11_06.md),
+which uses existing source interfaces and does not depend on compactness.
