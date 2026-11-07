@@ -1,0 +1,66 @@
+name: BFSS fixed-axis Cartan support diagnostic
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - lean/diagnostics/BFSSAxisCartanSupportDiagnostic.lean
+      - lean/diagnostics/BFSSAxisCartanSupportDiagnosticConsumer.lean
+      - contributions/bfss-kotler/tools/diagnose_axis_cartan_support.py
+      - contributions/bfss-kotler/BFSS_AXIS_CARTAN_SUPPORT_DIAGNOSTIC_MANIFEST_V1.json
+      - .github/workflows/bfss-axis-cartan-support-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixed-axis-cartan-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Retain proposed diagnostic and check immutable inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/axis-cartan-support"
+          git rev-parse HEAD > "$RUNNER_TEMP/axis-cartan-support/tested-sha.txt"
+          tar -czf "$RUNNER_TEMP/axis-cartan-support/proposed-inputs.tar.gz" \
+            lean/diagnostics/BFSSAxisCartanSupportDiagnostic.lean \
+            lean/diagnostics/BFSSAxisCartanSupportDiagnosticConsumer.lean \
+            contributions/bfss-kotler/tools/diagnose_axis_cartan_support.py \
+            contributions/bfss-kotler/BFSS_AXIS_CARTAN_SUPPORT_DIAGNOSTIC_MANIFEST_V1.json \
+            .github/workflows/bfss-axis-cartan-support-diagnostic.yml \
+            lean/lean-toolchain lean/lake-manifest.json lean/lakefile.lean
+          python3 contributions/bfss-kotler/tools/diagnose_axis_cartan_support.py preflight
+          python3 contributions/bfss-kotler/tools/test_spectral_source_nine_gamma_covariance.py
+      - name: Restore unchanged pinned compiler and Mathlib environment
+        timeout-minutes: 35
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+      - name: Freshly compile bounded Cartan lemma and independent consumers
+        timeout-minutes: 12
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          python3 contributions/bfss-kotler/tools/diagnose_axis_cartan_support.py run \
+            --evidence "$RUNNER_TEMP/axis-cartan-support"
+      - name: Retain complete diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: axis-cartan-support-diagnostic-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/axis-cartan-support
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 14
