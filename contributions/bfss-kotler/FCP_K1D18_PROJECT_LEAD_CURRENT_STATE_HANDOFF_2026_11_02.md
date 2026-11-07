@@ -7316,3 +7316,44 @@ retained under evidence/spectral-confinement-2026-11-06/
 source-nine-even-list-lift-42369068339-*. Require a fresh full cold build,
 independent consumer and archive review before qualification. Do not advance
 to source sign recovery, fixed-eight words or compactness on this red.
+
+
+## Run #42370342498 — C0-A4a accepted; C0-A4b signed-word candidate
+
+Verified green at exact tested b523a73843d1d89e771d298ca0f46d851eed9bed.
+Artifact 13573474686 ZIP digest
+bc031b678acb2985fcd1e95b99b169b262133b86ee0e5fbb76d3a52b787d5537
+matches downloaded bytes. Full review verifies all 130 archive pins against
+the tested checkout, all 100 successful cold exits/log digests, 63 strict
+reports, six markers, eight independent consumers, all 42 locked packages,
+compiler identity and Lake environment log digest. No Lean diagnostics or
+recovery/foreign axioms. Scoped acceptance, receipt and full logs are
+retained under source-nine-even-list-lift-42370342498-*. Prior red retained.
+
+C0-A4a now qualifies an actual source Spin lift for an even original Q-unit
+list, retaining its literal ordered Clifford word and exact original action.
+The at-most-eight Cartan specialization gives h with the action of g;
+it does not identify their two source signs or give an exact-eight word.
+
+The next separate source SpectralSourceNineSignedWord.lean imports that
+accepted lift and original F10CU. Four candidate roots compare original
+matrices from all-vector action equality, recover the actual source signs,
+and produce a bounded even original Clifford word equal to g or its
+negative. Eight consumers include identity and its distinct negative
+central source element with identical natural actions and signed empty
+words. Still unqualified pending a separate complete strict gate.
+
+Exact closure adds 31 original transitive modules of F10CU: all 125 original
+blobs match preserved parent 4d7a0aef7d64d38fc6e15e9927489f54e4e2db5e.
+Five accepted source modules plus new source/consumer give 132 cold builds,
+162 input pins, 67 strict reports and seven markers. Static preflight,
+ten output-adversary tests and workflow syntax pass. No proof-budget or
+cache-policy change; local Lean startup failure remains, so CI is required.
+See BFSS_SPECTRAL_SOURCE_NINE_SIGNED_WORD_GATE_2026_11_07.md.
+
+After qualification, pad before sign absorption to handle both empty source
+signs, then prove exact-eight order and Clifford equality. Original PBW
+continuity and source compactness remain later gates. All physical/domain,
+branching, coercivity and spectral existence obligations remain open.
+Original research branch, upstream PRs, accepted Lean files and existing
+gates stay unchanged.

@@ -117,3 +117,28 @@ links the failure to exact source/run identity. The adjacent receipt,
 all-logs JSON, source/consumer logs and failed consumer snapshot preserve
 the negative evidence. The candidate requires a fresh complete cold run
 and retained-evidence review; this repair does not qualify C0-A4a.
+
+
+## Run #42370342498 — scoped C0-A4a acceptance
+
+The repaired [strict run](https://github.com/etblink/math/actions/runs/42370342498)
+is green at exact tested commit `b523a73843d1d89e771d298ca0f46d851eed9bed`.
+Downloaded artifact 13573474686 has ZIP SHA-256
+`bc031b678acb2985fcd1e95b99b169b262133b86ee0e5fbb76d3a52b787d5537`.
+Independent review verifies all 130 archived input pins against both the
+manifest and tested checkout, 100 cold-build zero exits and log digests,
+63 exact strict reports, six markers, all eight consumers, 42 locked
+package revisions, compiler identity and the Lake environment log digest.
+No Lean diagnostics, recovery axioms or unexpected assumptions occur.
+
+C0-A4a is qualified within its stated scope: an actual source Spin lift
+with the literal ordered Clifford word and original vector action, and
+its at-most-eight even Cartan specialization. The preceding red remains
+retained. The repair changed two consumer proof blocks and only their
+manifest integrity pins; no source theorem statement or proof changed.
+
+The adjacent [acceptance JSON](evidence/spectral-confinement-2026-11-06/source-nine-even-list-lift-42370342498-acceptance.json),
+receipt, all-logs JSON and exact source/consumer logs preserve this review.
+Equal actions still do not identify the two actual source signs. The
+[next signed-word gate](BFSS_SPECTRAL_SOURCE_NINE_SIGNED_WORD_GATE_2026_11_07.md)
+is a new candidate, not a consequence admitted by this acceptance record.

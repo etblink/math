@@ -687,3 +687,26 @@ h with g. F10CU two-sign recovery, padding before sign correction, exact
 eight-factor equality and original PBW continuity remain the next separate
 obligations. This is a candidate-status update, not source compactness or
 a spectral theorem.
+
+
+## Q. C0-A4a qualified; bounded signed-word recovery proposed
+
+Green #42370342498 at b523a73843d1d89e771d298ca0f46d851eed9bed passes full
+retained-artifact review: 130 pins, 100 cold successful builds, eight
+independent consumers, 63 strict reports and six markers. The actual
+even-list Spin lift with its literal ordered Clifford word and original
+vector action now qualifies. Its prior consumer-only failure is retained;
+clean root reprints alone did not qualify the failed unnamed examples.
+
+The [C0-A4b candidate](BFSS_SPECTRAL_SOURCE_NINE_SIGNED_WORD_GATE_2026_11_07.md)
+next compares the attained original natural matrices, invokes the original
+F10CU two-sign fibers and states that arbitrary g has an original Q-unit
+even Clifford word of length at most eight, with an explicit external
+positive or negative sign. Four proposed roots and eight independent
+consumers remain pending their dedicated compiler/evidence gate. The
+negative empty-word source case is explicit, so equality of natural actions
+is not mistaken for injectivity of the source action.
+
+Padding before sign absorption, exact-eight source equality, original PBW
+continuity and source compactness remain separate proof obligations. No
+Fock/gauge, physical-domain or spectral claim is admitted here.
