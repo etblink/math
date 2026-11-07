@@ -1,6 +1,7 @@
 # Axis-stabilizer gate: procedural review and implemented diagnostic plan
 
-Status: UNQUALIFIED DIAGNOSTIC. Owner authorized committing these six diagnostic files and triggering the bounded run on 2026-11-07. No Lean result or CI result is claimed.
+Status: STRUCTURAL DIAGNOSTIC PASSED at run 42419684762. The original-source
+axis-stabilizer theorem remains a candidate pending its separate strict gate.
 Baseline: `f8b58b96a2b30334348347d2e5dbb7d7649675fb`.
 Authorized diagnostic write target:
 `research/bfss-original-gamma-faithfulness-20261107`.
@@ -210,3 +211,23 @@ separate explicit-argument issue. The next bounded attempt tests the complete
 nine-dimensional specialization and, if it succeeds, the previously unrun
 consumer. An identical surviving error would require further primitive
 isolation before another retry. No full BFSS gate or CI polling is introduced.
+
+## Structural diagnostic passed: 42419684762
+
+The run at exact commit `a9c84b0194f02304f45bc6ae37eec10dad8700fe` succeeded.
+Artifact `13593400402` has independently verified ZIP SHA-256
+`28e1c8e3d9d01a1e77f249a526aa12669172dc6b88ba44bd225e9439a5e3d5f7`.
+ZIP integrity, all 33 archived Git-blob/SHA-256 input pins, both compiler-log
+digests, the exact tested commit and receipt status DIAGNOSTIC_PASS were checked.
+Both diagnostic files compiled with zero exit under warnings-as-errors; the
+two source roots and two consumer reports matched exactly and contained only
+propext, Classical.choice and Quot.sound. All six independent structural
+examples compiled. All 42 dependency identities were retained in the receipt.
+
+This establishes the fixed-vector invariant induction and its nonzero-fixed-axis
+nine-dimensional specialization as checked structural inputs. It does not by
+itself bind the original source axis, normalization support, Clifford words,
+central signs or the requested source-exact iff. The original-source gate now
+imports this byte-identical structural source, cold rebuilds it with the full
+source closure, and separately checks the original-source theorem and consumer.
+See BFSS_SPECTRAL_SOURCE_NINE_AXIS_STABILIZER_WORDS_GATE_2026_11_07.md.
