@@ -1,6 +1,6 @@
 # BFSS original weighted-closure bridge — 2026-11-06
 
-**Status: proposed Lean source and six independent consumers; compiler qualification pending.**
+**Status: strict source/consumer gate passed in run #42320696105; two weighted-closure analysis interfaces qualified under their stated hypotheses. The bounded compactness analysis lane is complete in scope.**
 This follows the [qualified smooth-core bridge](BFSS_SPECTRAL_CORE_LINEAR_MOMENT_FORMAL_GATE_2026_11_06.md#scoped-acceptance-first-complete-run-42318037096)
 at `5d7ba89d4ef46efdd5411169c35926c807fee76f`, run #42318037096.
 Proposal parent: `7016ef6c6373918d611bd658688b136a101f6010`, on the separate
@@ -29,7 +29,7 @@ root, and `w(x)^2=‖x‖` proves the domination with `c=1`. This requires no
 false smoothness assumption on the radial weight at the origin: the
 original closure definition requires only continuity of `w`.
 
-Two declarations are proposed:
+The successful run qualifies two weighted-closure analysis declarations:
 
 - `OAI.BFSSSliceSobolev.weightedClosure_linear_totallyBounded`.
 - `OAI.BFSSSliceSobolev.weightedClosure_sqrt_radial_totallyBounded`.
@@ -120,3 +120,63 @@ open until their source premises and domain-accurate implications survive.
 
 The original F10DW branch, upstream PRs, accepted Lean sources and gates,
 and the guarded DD/AI cache remain outside the modification scope.
+
+## Scoped acceptance: first complete run #42320696105
+
+[Run #42320696105](https://github.com/etblink/math/actions/runs/42320696105)
+passed at exact commit `41e39e074671967fb9182693775e7e9a66642a62`.
+The retained artifact is `13553821120`, with checked ZIP SHA-256
+`00fd512eb278461d9b42a9226195baf8d932c4daf70e15356b31eda73ab6aada`.
+The original PASS receipt SHA-256 is
+`665353f4d30e9320bc6a8441e52f4ebfc81a9cbe391288dc4a6701dd626fc3de`.
+
+Review matched all 79 source/control pins directly against the artifact and
+tested checkout, including the workflow input, all 42 locked dependency
+revisions, and the pinned compiler executable digest. All 65 cold builds
+returned zero; all compiler-log digests match and all fresh object digest
+fields are present. All 59 original compiler logs are empty. Both accepted
+source/consumer pairs were re-audited before the new pair. All twelve exact
+root reports were replayed and use exactly `propext`, `Classical.choice`,
+`Quot.sound`, including the new corollary's multiline axiom formatting.
+All six completion markers are exact. The six new independent consumers
+compiled without compiler diagnostics or increased resource limits, and
+the thirteen accepted gate regression checks passed in the same run.
+
+This weighted-closure gate passed its first complete attempt. It preserves
+the original closure definition, approximation procedure and norm identity,
+then composes the newly qualified first-moment core theorem with the
+original asymptotic compactness transfer. No source proof repair, alternative
+carrier, new local instance or resource escalation was needed.
+
+Durable evidence:
+
+- [Scoped acceptance record](evidence/spectral-confinement-2026-11-06/weighted-closure-42320696105-acceptance.json).
+- [Original PASS receipt](evidence/spectral-confinement-2026-11-06/weighted-closure-42320696105-receipt.json).
+- [All 65 compiler logs and separate Lake environment log](evidence/spectral-confinement-2026-11-06/weighted-closure-42320696105-all-logs.json).
+- [New source reports](evidence/spectral-confinement-2026-11-06/weighted-closure-42320696105-source-log.txt)
+  and [new independent-consumer reports](evidence/spectral-confinement-2026-11-06/weighted-closure-42320696105-consumer-log.txt).
+
+**Lead decision.** Qualify only the two named statements on the original
+weighted closure under their exact hypotheses. The general theorem assumes
+linear radial domination, closure membership and uniform component bounds;
+the square-root radial corollary discharges only that weight's domination
+condition. Both require the stated closure membership and norm bounds.
+This is internal Lean compilation and consumer evidence, not human or peer
+review, and asserts no physical Hamiltonian domain identification.
+
+The bounded compactness analysis lane is now complete in scope. Across the
+three qualified gates, six named analysis interfaces cover linear cutoff
+error/tightness, smooth-core local/global compactness, and original
+weighted-closure compactness with the intended square-root radial weight.
+Do not equate that completion with a proof of BFSS confinement or spectral
+existence: none of these statements derives the necessary bounds from the
+physical Hamiltonian.
+
+The next objective is a bounded source-premise audit of P1–P3, selecting a
+precise physical binding statement from the original definitions and
+available accepted interfaces. Prioritize actual source action/core-form
+and domain binding over further compactness wrappers. A source physical
+Spin(9) action, exact normalized core-form estimate, physical reducing
+sector and domain-accurate Hamiltonian implication remain unproved here.
+This acceptance record admits no further physical theorem and does not
+change the standing restriction on upstream PRs.
