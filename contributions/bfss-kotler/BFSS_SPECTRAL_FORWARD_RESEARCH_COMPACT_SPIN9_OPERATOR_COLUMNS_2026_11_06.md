@@ -710,3 +710,26 @@ is not mistaken for injectivity of the source action.
 Padding before sign absorption, exact-eight source equality, original PBW
 continuity and source compactness remain separate proof obligations. No
 Fock/gauge, physical-domain or spectral claim is admitted here.
+
+
+## R. C0-A4b qualified; exact-eight original source words proposed
+
+Green #42371904867 at e0687c52c39c3e632784c67deab4716c9e3011e4 passes full
+retained-artifact review: 162 input pins, 132 successful cold builds,
+eight consumers, 67 strict reports and seven markers. The exact original
+action fibers and bounded signed Clifford words now qualify. The original
+natural action still has two distinct source signs; no injectivity follows.
+
+The [C0-A4c candidate](BFSS_SPECTRAL_SOURCE_NINE_EXACT_EIGHT_WORD_GATE_2026_11_07.md)
+now pads by original unit coordinate-axis pairs to exactly eight entries
+before absorbing the sign in the first vector. It proposes exact equality
+to arbitrary original g, both for an eight-entry list and in the natural
+Fin 8 order. Original Q preservation under negation and ordered Clifford
+products are explicit. Eight public roots and ten consumers, including
+both central source signs, remain pending the dedicated strict gate.
+
+If this qualifies, the next task is the fixed eight-input map into the
+actual source Spin group, its surjectivity, original Q-unit parameter
+compactness and continuity in the unchanged PBW topology. Existence of
+word witnesses requires no continuous selection. Source compactness and
+all physical/domain/branching/coercivity/spectral claims remain separate.

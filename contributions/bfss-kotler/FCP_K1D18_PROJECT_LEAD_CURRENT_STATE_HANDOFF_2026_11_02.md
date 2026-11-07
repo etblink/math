@@ -7357,3 +7357,44 @@ continuity and source compactness remain later gates. All physical/domain,
 branching, coercivity and spectral existence obligations remain open.
 Original research branch, upstream PRs, accepted Lean files and existing
 gates stay unchanged.
+
+
+## Run #42371904867 — C0-A4b accepted; exact-eight word candidate
+
+Verified green at exact tested e0687c52c39c3e632784c67deab4716c9e3011e4.
+Retained artifact 13574831606 ZIP SHA-256
+ e34b8d6b7b9c00c285581ad27af03808bd331446a7a38c8c1c52aa770a1af27d
+matches downloaded bytes. Full review checks all 162 archive pins against
+the tested checkout, 132 successful cold exits/log digests, 67 strict
+reports, seven markers, eight consumers, all 42 locked packages, compiler
+identity and Lake environment digest. No Lean diagnostics or recovery/
+foreign axioms. Durable source-nine-signed-word-42371904867-* evidence
+contains scoped acceptance, receipt and all logs.
+
+C0-A4b now qualifies equality of original actions to attained natural
+matrix equality, the actual source two-sign fiber equivalence and a
+Q-unit even Clifford word of length at most eight equal to g or its
+negative. The two source signs remain distinct; no source compactness.
+
+The next separate SpectralSourceNineExactEightWord.lean candidate pads
+with repeated original unit coordinate-axis pairs to length exactly eight
+BEFORE sign absorption. Its first vector can then be negated even if the
+initial word was empty. Propose literal Clifford equality to arbitrary g,
+both as a list of length eight and in natural Fin 8 order via List.ofFn_get.
+Eight roots and ten independent consumers include both original central
+source signs. They remain unqualified until a full dedicated strict gate
+and retained-evidence review. No accepted proof source changes.
+
+The new gate pins 163 inputs and rebuilds 133 objects: all 125 unchanged
+originals, six accepted sources, new source/consumer and thirty controls.
+Expect 79 strict reports and eight markers. Static closure/pin preflight,
+ten adversarial output tests and workflow syntax checks pass. Compiler
+validation remains CI because local Lean cannot start. Default proof
+budgets, linting, dependency pins and cache policy remain unchanged.
+
+After qualification, construct the fixed four-pair source map and prove
+its exact ordered value/surjectivity. Then prove original Q-unit parameter
+compactness and original PBW continuity without selecting words continuously.
+Source compactness, covering, Fock/gauge implementation, physical domains,
+branching, coercivity and spectral existence remain later obligations.
+Original research branch and upstream PRs remain untouched.

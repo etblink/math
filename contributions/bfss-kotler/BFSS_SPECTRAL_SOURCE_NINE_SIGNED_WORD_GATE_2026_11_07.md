@@ -81,3 +81,28 @@ topology. No continuous choice of factorization is required. Source
 compactness, Fock/gauge action, physical closed domains, branching,
 coercivity and spectral existence remain unresolved. Original branch and
 upstream PRs remain untouched.
+
+
+## Run #42371904867 — scoped C0-A4b acceptance
+
+The [strict signed-word run](https://github.com/etblink/math/actions/runs/42371904867)
+is green at exact tested commit `e0687c52c39c3e632784c67deab4716c9e3011e4`.
+Downloaded retained artifact 13574831606 has ZIP SHA-256
+`e34b8d6b7b9c00c285581ad27af03808bd331446a7a38c8c1c52aa770a1af27d`.
+Full review verifies all 162 archived input pins against the manifest and
+exact tested checkout, 132 cold successful builds and matching log digests,
+67 exact strict reports, seven markers, all eight independent consumers,
+42 locked package revisions, compiler identity and Lake environment digest.
+No Lean diagnostic, recovery axiom or foreign assumption occurs.
+
+C0-A4b is qualified: pointwise original action equality gives equality of
+attained original natural matrices; actual source signs classify those
+fibers; every original source Spin element is a Q-unit even word of length
+at most eight or its negative. Source distinctness of the negative central
+element and signed empty-word boundary remain explicit. This acceptance
+still does not give exact-eight source words or compactness.
+
+The [acceptance JSON](evidence/spectral-confinement-2026-11-06/source-nine-signed-word-42371904867-acceptance.json),
+receipt and all source/consumer/compiler logs are retained alongside the
+record. The [exact-eight gate](BFSS_SPECTRAL_SOURCE_NINE_EXACT_EIGHT_WORD_GATE_2026_11_07.md)
+is the next independently unqualified candidate.
