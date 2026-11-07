@@ -105,3 +105,17 @@ Repair: remove only that redundant consumer tactic and update the consumer's
 Git blob/SHA-256 manifest pins. The source proof, all theorem and example types,
 all dependencies, verification code, workflow, budgets and strict linter policy
 remain unchanged. A fresh complete cold run is required for acceptance.
+
+
+## Qualified acceptance addendum — 2026-11-07, run #42408460376
+
+**Acceptance status:** ACCEPTED, limited to the six public source gamma-faithfulness declarations and their independent literal-source consumers at **tested commit 2b2b4b0b3134606b7c54784a147aeae2a5072064**. The earlier "candidate" and retained-red text above is preserved as historical prequalification context; this addendum supersedes that status.
+
+- Branch at verification: research/bfss-original-gamma-faithfulness-20261107.
+- Workflow: BFSS spectral source nine gamma faithfulness strict gate; run [#42408460376](https://github.com/etblink/math/actions/runs/42408460376) succeeded.
+- Successful evidence artifact: [#13589166423](https://github.com/etblink/math/actions/runs/42408460376/artifacts/13589166423); GitHub ZIP SHA-256 ee34977814bbc490cac6bb3a1d24a73b84df2fd53c226521b410c7114e67c779.
+- Independently inspected archive: 158/158 original input/control SHA-256 and Git blob pins matched, 42/42 dependency revisions matched the retained manifest, 128/128 cold compilation logs passed with matched digests, the six new public declarations and independent consumer compiled.
+- Compiler reports for all six new declarations and the independent audit contained only propext, Classical.choice, and Quot.sound; strict Lean compilation produced no source/consumer errors or warnings; source and independent consumer completion markers plus SPECTRAL_SOURCE_NINE_GAMMA_FAITHFULNESS_GATE_PASS appeared.
+- The preceding red run #42406810092 is retained above. Its unused consumer change tactic was removed without changing source proof, theorem declarations, required dependency pins, verification policy or mathematical hypotheses.
+
+**Acceptance scope:** gamma-vector injectivity, nontrivial negative-center gamma image, group-map faithfulness, and the exact source vector-stabilizer/gamma-commutant criterion. **Not accepted by this gate:** a Spin(8) stabilizer identification, complete Fock-operator algebra action, physical domain or spectral existence claim. The later documentation-only commit recording this review is not a retest of its own new Git HEAD.
