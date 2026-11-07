@@ -7469,3 +7469,30 @@ only then combine with source surjectivity for actual source compactness.
 No continuous choice of word witnesses is needed. Covering, Fock/gauge,
 physical closed domains, branching, coercivity and spectral existence
 remain separate. Original research branch and upstream PRs untouched.
+
+
+## Run #42385104317 — fixed-map unused-tactic repair pending
+
+Red at exact tested 46d16536b749ebc4b685e717d37b17fe23f4195b. Artifact
+13580156703 ZIP digest
+39f5c3815a35b90216dfefa33326752f1b825b86741fbf98313638a49e37e840
+matches downloaded bytes. Verify all 164 archived pins and 133 log digests.
+The preceding 132 cold builds exit zero; the new source exits one and
+consumer never starts. Receipt INCOMPLETE; C0-A5a remains unqualified.
+
+Only observed compiler cause: strict unusedTactic rejects a redundant
+change after Subtype.ext in the surjectivity proof. All four printed root
+reports are clean, with no sorryAx, but nonzero compilation still rejects
+acceptance. Delete the redundant change. Proactively delete the identical
+pattern in the unbuilt consumer; no consumer compiler failure is claimed.
+The equality terms already target exactly the goals produced by Subtype.ext.
+
+All four source headers and eight consumer statement types are identical.
+Refresh only the two candidate file blob/SHA-256 pins. The map formula,
+word-order bridge, accepted source, imports, qualifier, tests, workflow,
+dependencies, linting, proof budgets and cache contracts are unchanged.
+Source/consumer snapshots, failure record, receipt and all logs are retained
+under source-nine-eight-input-spin-map-42385104317-*. Static preflight and
+ten adversarial validator tests pass. Require a complete fresh strict run
+and retained artifact review before C0-A5a acceptance. Original branch and
+upstream PRs untouched; topology/compactness and spectra remain separate.

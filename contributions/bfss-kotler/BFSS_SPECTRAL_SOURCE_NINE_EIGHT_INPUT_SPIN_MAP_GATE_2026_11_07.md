@@ -69,3 +69,35 @@ No original norm, quadratic form, source topology, group operation or
 carrier changes. No covering, Fock/gauge implementation, physical closed
 domain, branching, coercivity or spectral-existence result follows here.
 Original branch and upstream PRs remain untouched.
+
+
+## Run #42385104317 — no-op tactic repair; qualification pending
+
+Verified red at tested commit `46d16536b749ebc4b685e717d37b17fe23f4195b`.
+Downloaded artifact 13580156703 has ZIP SHA-256
+`39f5c3815a35b90216dfefa33326752f1b825b86741fbf98313638a49e37e840`.
+All 164 archived input pins and 133 compiler-log digests match. The 132
+preceding cold builds exit zero; the new source exits one and the consumer
+is skipped. Receipt status is INCOMPLETE.
+
+The sole reported source diagnostic is strict `linter.unusedTactic`:
+`change` after `apply Subtype.ext` restates the existing Clifford equality
+goal. All four root reports have only permitted foundational axioms and
+no recovery axiom, but the compiler exit and unbuilt independent consumer
+prevent qualification. Keep that acceptance boundary despite clean reports.
+
+Delete only the redundant two-line `change` command. The blocked consumer
+contains an identical no-op pattern after `Subtype.ext`; remove that too
+before the next run. This consumer edit is based on inspection of the
+same syntactic pattern, not an observed consumer failure. The exact equality
+terms already close the goals. All four public source headers and all
+eight consumer statement types are byte-identical to their failed versions.
+Refresh only the two candidate blob/SHA-256 pins. The fixed map definition,
+word enumeration, accepted sources, imports, qualifier, tests, workflow,
+dependencies, strict linting, proof budgets and cache policy are unchanged.
+
+The [failure record](evidence/spectral-confinement-2026-11-06/source-nine-eight-input-spin-map-42385104317-failure.json),
+receipt, all compiler logs, exact failed source and unbuilt consumer snapshots
+preserve the evidence. Static preflight and ten report-validator tests pass.
+A fresh complete cold source/consumer run and archive review are required
+before C0-A5a qualification. Continuity and compactness remain separate.

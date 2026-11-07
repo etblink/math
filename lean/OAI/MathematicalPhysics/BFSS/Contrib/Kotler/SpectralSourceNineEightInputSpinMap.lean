@@ -64,8 +64,6 @@ theorem source9EightUnitSpinWord_surjective :
     fun i => ⟨w i, hall i⟩
   refine ⟨p, ?_⟩
   apply Subtype.ext
-  change (source9EightUnitSpinWord p : CliffordAlgebra source9Quadratic) =
-    (g : CliffordAlgebra source9Quadratic)
   exact (source9EightUnitSpinWord_coe p).trans hword.symm
 
 #print axioms FCP.BFSSSourceNineEightInputSpinMap.source9CliffordWord_ofFn_eight

@@ -50,8 +50,6 @@ example (w v : Fin 8 → {u : SpaceIndex → ℝ // source9Quadratic u = 1})
       source9CliffordWord (List.ofFn (fun i => (v i).val))) :
     source9EightUnitSpinWord w = source9EightUnitSpinWord v := by
   apply Subtype.ext
-  change (source9EightUnitSpinWord w : CliffordAlgebra source9Quadratic) =
-    (source9EightUnitSpinWord v : CliffordAlgebra source9Quadratic)
   exact (source9EightUnitSpinWord_coe w).trans
     (hword.trans (source9EightUnitSpinWord_coe v).symm)
 
