@@ -344,3 +344,40 @@ The retained run artifact [13610389459](https://github.com/etblink/math/actions/
 Apply the frozen-source consumer-repair procedure from the [process optimization memorandum](BFSS_SOURCE_GEOMETRY_PROCEDURAL_SUCCESS_FAILURE_REVIEW_2026_11_07.md): **do not change one byte of the now-compiling source**. In the existing bottom-right-axis consumer example, replace only the tactic rewrite with a typed `calc` whose first equality is `source9Axis8Target_lastColumn A (Fin.last 8)` and whose second is `norm_num [source9CoordinateVector]`. The same source theorem was already used successfully by the consumer's immediately preceding example. This changes no proposition, no mathematical source, no independent negative example, and no verified ancestor; only the consumer proof and its two integrity pins change.
 
 Proposed consumer blob `7ad094b0b245149338c6c6579393dc3581d64853`, SHA-256 `cf007e0f263bd2033ab316e8b1c1ea953e7c3dbc0a27a18cdf221d73ce4b8924`. Maintain all 26 independent propositions and the original source blob `7df84b75d2d18fca18cc34e515359aa70e994cb0`. No new imports, modified strict runner, suppressed compiler error, altered axiom policy, heartbeat increase, cache or mathematical theorem weakening. The correction is proof-engineering hypothesis until a **fresh full strict run** passes source, consumer, all roots, and receipt.
+
+
+## Strict red #42464034784, attempt 1 — pinned-toolchain HTTP 504
+
+Run [#42464034784](https://github.com/etblink/math/actions/runs/42464034784)
+at exact tested commit 3085d66bcd22972d1455582d1c8b6fa52e3b5768 failed
+during environment restoration. Source-closure preflight and all ten
+adversarial validator tests passed. The pinned Lean 4.34.1 binary download
+from releases.lean-lang.org returned HTTP 504. The cold source/consumer
+compilation step was SKIPPED: zero Lean compilations, no compiler receipt
+and no newly tested consumer result. This is an infrastructure failure,
+not evidence of a source or consumer proof failure. The earlier elan
+self-update warning is retained; the fatal download 504 is the first
+causal failure preventing compilation.
+
+Artifact [13611500084](https://github.com/etblink/math/actions/runs/42464034784/artifacts/13611500084)
+was downloaded and ZIP/CRC verified at SHA-256
+aca1a51038db96d59e684b92270165e7686eceeb76f5e2a0d72026665cdbd1db.
+It contains the tested SHA and nine proposed input files in the input
+archive. All eight applicable archived input Git-blob/SHA-256 pins were
+checked against the retained manifest; the ninth file is that manifest
+itself. The toolchain pin and 42-package lock were retained and checked;
+no installed environment is claimed after a failed restoration.
+The source remains blob 7df84b75d2d18fca18cc34e515359aa70e994cb0 and
+the consumer remains blob 7ad094b0b245149338c6c6579393dc3581d64853.
+See [the environment failure record](evidence/source-axis-stabilizer-2026-11-07/environment-failure-42464034784-attempt-1.json)
+for all retained input hashes, decoded job-log digest and causal log excerpt.
+
+Do not modify Lean proofs, dependency pins, workflow, restoration timeout,
+proof budgets, warning policy or cache behavior to address this isolated
+download failure. GitHub accepted one request to rerun the failed job
+of the SAME run at the SAME tested commit. This retries the complete strict
+procedure, including restoration and fresh controlled source/consumer
+compilation; it does not reuse a successful proof result from this attempt.
+The historical attempt remains rejected. Await the owner's report of
+the retry outcome without polling. No new mathematical qualification follows
+from an accepted rerun request.

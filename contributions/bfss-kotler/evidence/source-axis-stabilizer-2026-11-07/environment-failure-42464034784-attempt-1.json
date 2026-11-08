@@ -1,0 +1,52 @@
+{
+  "schema": "bfss-coordinate-strict-environment-failure-v1",
+  "run_id": 42464034784,
+  "attempt": 1,
+  "tested_sha": "3085d66bcd22972d1455582d1c8b6fa52e3b5768",
+  "status": "REJECTED_ENVIRONMENT_RESTORE",
+  "job_id": 128679306484,
+  "artifact_id": 13611500084,
+  "artifact_zip_sha256": "aca1a51038db96d59e684b92270165e7686eceeb76f5e2a0d72026665cdbd1db",
+  "cause": "Pinned Lean 4.34.1 binary download returned HTTP 504 during environment restoration. Cold source/consumer build step was skipped.",
+  "preflight": "passed",
+  "adversarial_validator_tests": 10,
+  "actual_lean_compilations": 0,
+  "compiler_receipt_present": false,
+  "verified_archived_input_count": 9,
+  "verified_archived_git_and_sha256_pin_count": 8,
+  "input_sha256": {
+    "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateRestriction.lean": "6cfa55ae2108bcce60db1f50cff6911ad83f87e4dee5159ee8119f569378d9ac",
+    "lean/diagnostics/BFSSSpectralSourceNineAxisCoordinateRestrictionIndependentAudit.lean": "cf007e0f263bd2033ab316e8b1c1ea953e7c3dbc0a27a18cdf221d73ce4b8924",
+    "contributions/bfss-kotler/BFSS_SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_RESTRICTION_MANIFEST_V1.json": "5506b62a9681154df207689793030b64d48628f14fe07779dfe330acbd03fd5b",
+    "contributions/bfss-kotler/tools/qualify_spectral_source_nine_axis_coordinate_restriction.py": "955db57c1bb33f6c20b07926775d569d738d206d63269976845ba5c20aeb1609",
+    "contributions/bfss-kotler/tools/test_spectral_source_nine_axis_coordinate_restriction.py": "558a89ac9ca96cc8e3cf2d493f84ac986554f75bf27a68e05acaf06ba768cca3",
+    ".github/workflows/bfss-spectral-source-nine-axis-coordinate-restriction-strict.yml": "89df6f3f251059b38ae229da397f2e86cfdb010ae5e9b50eed83ca95844d4a35",
+    "lean/lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lean/lake-manifest.json": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794",
+    "lean/lakefile.lean": "fc590a5d14923f79e71ea80e29efd42950bb3ec051481b5209157f0a01f63de1"
+  },
+  "manifest_sha256": "5506b62a9681154df207689793030b64d48628f14fe07779dfe330acbd03fd5b",
+  "source_blob": "7df84b75d2d18fca18cc34e515359aa70e994cb0",
+  "consumer_blob": "7ad094b0b245149338c6c6579393dc3581d64853",
+  "decoded_job_log_sha256": "654ff1df7a41cd35aff14e9af5823a8a6a6b9b4895b98f445ab6915dbb08ec21",
+  "toolchain": "leanprover/lean4:v4.34.1",
+  "locked_package_count": 42,
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "causal_log_excerpt": [
+    "2026-11-08T08:42:46.0375842Z SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_RESTRICTION_PREFLIGHT_PASS",
+    "2026-11-08T08:42:46.0864458Z Ran 10 tests in 0.000s",
+    "2026-11-08T08:44:37.1877340Z info: downloading installer",
+    "2026-11-08T08:44:37.8389191Z warning: could not check for elan self-update: failed to parse latest release tag",
+    "2026-11-08T08:44:49.9069922Z error: could not download file from 'https://releases.lean-lang.org/lean4/v4.34.1/lean-4.34.1-linux.tar.zst' to '/home/runner/.elan/tmp/c49pnhmgss7qfdb0_file'",
+    "2026-11-08T08:44:49.9070602Z info: caused by: http request returned an unsuccessful status code: 504"
+  ],
+  "retry": {
+    "action": "rerun_failed_workflow_run_jobs",
+    "github_request_accepted": true,
+    "run_id": 42464034784,
+    "same_tested_sha": true,
+    "changes_to_proof_inputs": false,
+    "result": "Await owner report; CI result not polled."
+  },
+  "qualification": "No proof result is qualified by this attempt. Prior source-component success does not qualify the full gate without the independent consumer."
+}
