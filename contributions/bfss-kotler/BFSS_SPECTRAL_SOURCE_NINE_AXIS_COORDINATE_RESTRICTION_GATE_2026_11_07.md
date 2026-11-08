@@ -225,3 +225,57 @@ The **only direct source diagnostics** are at diagnostic lines 48, 75 and 121. A
 This is a fresh specific API-argument finding after the prior missing-import red, not a repeated wrapper-only failure without information. The source/math and strict gate remain frozen; the **diagnostic alone** can be rerun to discriminate whether these three substitutions resolve all its typed Fin9/Fin8 matrix interfaces. The next diagnostic green (if any) would be exploratory only. If a third diagnostic remains red, stop further speculative compilation loops and isolate the earliest failure before any additional run. Preserve both red artifacts and the original rejected strict run #42454470502.
 
 This correction leaves all fourteen candidate declaration types, twenty-six independent propositions, source blob 1f9e3dec2502446d3a95d138583c0bc400eb717c, frozen manifest, accepted ancestors, strict workflow, environment pin, axiom policy, warning-as-error and default proof budgets unchanged.
+
+
+## Diagnostic red #42459708602 — dependent-family failure isolated
+
+Run [#42459708602](https://github.com/etblink/math/actions/runs/42459708602)
+is RED at exact tested commit d0d3ee16d0deecc3a1d76e8f51eac78047771627.
+The archive [13608918861](https://github.com/etblink/math/actions/runs/42459708602/artifacts/13608918861)
+was downloaded, CRC-checked and rehashed at ZIP SHA-256
+322dccaa49dae5ae44d6791db2436ca41045a816e7878e74a94a5e6abcbc7a27.
+The archived tested SHA, diagnostic Git blob/SHA-256, workflow Git blob,
+toolchain pin, 42-package lock, source hash listing, compiler exit 1 and
+ordered nine root reports were checked. The diagnostic log SHA-256 is
+feb04fa2af5ed6fab760157c4caa7178bf9d13af4ab01951b9ef9e5f9c3610cd.
+The [rejected diagnostic record](evidence/source-axis-stabilizer-2026-11-07/diagnostic-failure-42459708602.json)
+preserves the complete compiler output and all eight retained-file hashes.
+
+There are exactly three direct errors, at diagnostic lines 48, 75 and 121.
+Adding the explicit scalar value was insufficient: the dependent codomain
+family of Pi.single_eq_of_ne remained a metavariable, so even the real value
+1 was rejected against an unresolved family applied to coordinate 8.
+Five root reports contain only permitted axioms; the two zero-entry roots
+and downstream orthogonality/determinant roots contain recovery sorryAx.
+Neither those five reports nor the completion marker qualifies this failed
+diagnostic. This is the same unresolved dependent-family interface, not a
+new mathematical counterexample, import failure or resource timeout.
+
+The third-red stop condition was applied before any further run: inspect
+the first failure and the FULL pinned declaration context rather than add
+another guessed argument. Pinned Mathlib Algebra/Notation/Pi/Basic.lean,
+blob 1f0d6aa8e4dcc65dbd97ecc3739192f740c1fbc6, first declares the DEPENDENT
+family M : index -> Type and the generated single_eq_of_ne theorem. Later
+it provides a NONDEPENDENT single_apply identity for an actual scalar type:
+a fully typed singleton value at j equals if j = i then x else 0.
+The file explicitly discusses nondependent specialization and dependent
+congruence pitfalls. The current diagnostic already uses this scalar
+single_apply interface elsewhere.
+
+Change the proof route at those THREE sites: retain the explicit original
+real-vector ascription and rewrite Pi.single_apply followed by if_neg with
+the already proved literal-index inequality. This eliminates the dependent
+singleton-lemma application instead of retrying its family inference.
+Preserve all nine diagnostic theorem types, reports, imports, workflow,
+warning-as-error and proof budgets. A single bounded diagnostic can now
+discriminate this concrete scalar rewrite; it is not a rerun of the original
+full strict gate or a claim that the revised proofs already compile.
+
+The original source remains blob 1f9e3dec2502446d3a95d138583c0bc400eb717c.
+Its fourteen declaration types, twenty-six independent propositions, manifest,
+strict runner/workflow, accepted ancestors and mathematical assumptions stay
+frozen. No new Lean source dependency or global instance is introduced.
+On diagnostic success, verify retained evidence before transferring checked
+proof shapes. On another red, inspect the next precise failure and do not
+return to blind argument-annotation retries. No original source theorem is
+qualified by this diagnostic repair.

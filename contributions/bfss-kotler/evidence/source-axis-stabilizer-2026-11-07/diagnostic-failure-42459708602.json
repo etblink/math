@@ -1,0 +1,82 @@
+{
+  "schema": "bfss-coordinate-interface-rejected-diagnostic-v1",
+  "run_id": 42459708602,
+  "tested_sha": "d0d3ee16d0deecc3a1d76e8f51eac78047771627",
+  "status": "REJECTED",
+  "compiler_exit": 1,
+  "artifact_id": 13608918861,
+  "artifact_zip_sha256": "322dccaa49dae5ae44d6791db2436ca41045a816e7878e74a94a5e6abcbc7a27",
+  "source_blob": "ece299eedcd930c235890a076a620f1e79f0e779",
+  "source_sha256": "9615474d2847a33a17e620f917ade96d2343df574414883ade3dab4c40d2019c",
+  "workflow_blob": "d090273d7198356bec72707dd9296f0394be46aa",
+  "log_sha256": "feb04fa2af5ed6fab760157c4caa7178bf9d13af4ab01951b9ef9e5f9c3610cd",
+  "exact_error_lines": [
+    "diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:48:30: error: Application type mismatch: The argument",
+    "diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:75:30: error: Application type mismatch: The argument",
+    "diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:121:39: error: Application type mismatch: The argument"
+  ],
+  "axiom_reports": {
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_index_eq": [
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_column": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_column_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext",
+      "sorryAx"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_row": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_row_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext",
+      "sorryAx"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_entry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_block": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.orthogonal_block": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext",
+      "sorryAx"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.det_eq_block": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext",
+      "sorryAx"
+    ]
+  },
+  "package_revision_count": 42,
+  "cause": "The explicit real scalar value did not instantiate the dependent codomain family of Pi.single_eq_of_ne; exactly three applications fail and four root reports contain recovery sorryAx.",
+  "verification_limit": "Exploratory artifact records source, workflow, toolchain, package lock, log and exit; it is not a complete strict source/consumer receipt or a compiler-binary hash record.",
+  "frozen_original_source_blob": "1f9e3dec2502446d3a95d138583c0bc400eb717c",
+  "retained_file_sha256": {
+    "tested-sha.txt": "f44f1fce615afeacd7c48aa5b5a94c7879cbd95bee5876bbc9b042ac3a6a8e2c",
+    "BFSSSourceNineCoordinateInterfaceDiagnostic.lean": "9615474d2847a33a17e620f917ade96d2343df574414883ade3dab4c40d2019c",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "bfss-source-nine-coordinate-interface-diagnostic.yml": "00d5454cd479060f0d95fefce5633c321eeba8979099418b50550afaa5716f84",
+    "diagnostic.log": "feb04fa2af5ed6fab760157c4caa7178bf9d13af4ab01951b9ef9e5f9c3610cd",
+    "lake-manifest.json": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794",
+    "compiler-exit.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "diagnostic-sha256.txt": "59df7578ab6bb4be6fd75376952b5084c203aa97c97b8d287221ca6116821b86"
+  },
+  "compiler_log": "warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes\nwarning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes\nwarning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes\nwarning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes\nwarning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes\nwarning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes\nwarning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes\nwarning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes\nwarning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes\nwarning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes\nwarning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes\ndiagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:48:30: error: Application type mismatch: The argument\n  1\nhas type\n  \u211d\nbut is expected to have type\n  ?m.56 8\nin the application\n  Pi.single_eq_of_ne hn 1\ndiagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:75:30: error: Application type mismatch: The argument\n  1\nhas type\n  \u211d\nbut is expected to have type\n  ?m.65 8\nin the application\n  Pi.single_eq_of_ne hn 1\ndiagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:121:39: error: Application type mismatch: The argument\n  1\nhas type\n  \u211d\nbut is expected to have type\n  ?m.183 8\nin the application\n  Pi.single_eq_of_ne hb8 1\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_index_eq' depends on axioms: [propext]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_column' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_column_zero' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_row' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_row_zero' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_entry' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_block' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.orthogonal_block' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.det_eq_block' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\nBFSS_SOURCE_NINE_COORDINATE_INTERFACE_DIAGNOSTIC_COMPLETE\n"
+}
