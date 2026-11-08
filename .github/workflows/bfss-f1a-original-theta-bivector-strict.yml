@@ -44,7 +44,7 @@ jobs:
           assert next(p for p in packages if p["name"] == "mathlib")["rev"] == "d13f23b723b8a846827a245b89c10fc7d3f11612"
           pred = Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean")
           data = pred.read_bytes()
-          blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+          blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
           assert blob == "7abc03723b3111e4a03389b722054e50d6a9bf30", (blob, pred)
           source = Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean").read_text()
           consumer = Path("lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean").read_text()
