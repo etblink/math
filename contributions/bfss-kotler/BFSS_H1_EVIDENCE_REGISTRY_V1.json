@@ -7,7 +7,7 @@
     "workbench": "research/bfss-original-gamma-faithfulness-20261107",
     "fcp_main_is_authoritative_only_for": "FCP program state and registers"
   },
-  "pilot_scope": "12 selected evidence/retrieval records, including OP2 source closure and exact workflow source index; not an exhaustive theorem or run catalogue.",
+  "pilot_scope": "13 selected proof/evidence/retrieval records, including qualified OP2a original-source G4-E action, OP0/OP1 and H2 source inventories; not exhaustive.",
   "starting_branch_head": "d79162ef4579ea645d48c64fb811099b33d10d09",
   "status_vocabulary": [
     "QUALIFIED_AT_COMMIT",
@@ -20,7 +20,7 @@
     "NOT_SCANNED",
     "UNKNOWN"
   ],
-  "record_count": 12,
+  "record_count": 13,
   "records": [
     {
       "id": "op0-qualified-projection",
@@ -585,6 +585,83 @@
       ],
       "scope_limit": "All workflow YAML files indexed from one source checkout; no YAML trigger semantics, CI run-history adjudication, dead-code proof, or permission to delete.",
       "location_url": "https://github.com/etblink/math/blob/8e3ef2b867f6e6913140e0295f3142b7720bde51/contributions/bfss-kotler/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json"
+    },
+    {
+      "id": "op2a-original-fock-source-qualified",
+      "title": "OP2a source-exact BFSS SU(2) G4-E unitary representation on literal Fermion 2",
+      "kind": "lean_proof_bundle",
+      "status": "QUALIFIED_AT_COMMIT",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "c763196c06eeb793af4137a9a48158c18d06e04d",
+      "source": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean",
+        "blob_sha": "328d607ee2bb45edd4268e5592d784c4c84488a7",
+        "symbols": [
+          "FCP.BFSSOriginalFockGaugeOP2A.originalFockGaugeUnitaryHom",
+          "FCP.BFSSOriginalFockGaugeOP2A.originalFockGaugeUnitaryHom_exact"
+        ]
+      },
+      "related_sources": [
+        {
+          "role": "independent_consumer",
+          "path": "lean/diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean",
+          "blob_sha": "03f9fd0cd40c59484aacc7b500e89d0d6de70461",
+          "symbols": []
+        },
+        {
+          "role": "strict_workflow",
+          "path": ".github/workflows/bfss-op2a-original-fock-gauge-source-strict.yml",
+          "blob_sha": "2ec08445d89a75ab738f3d51e291425a97f8301f",
+          "symbols": []
+        }
+      ],
+      "source_carrier": "OAI.BFSSQuantum.GaugeGroup 2 →* (OAI.BFSSQuantum.Fermion 2 ≃ₗᵢ[ℂ] OAI.BFSSQuantum.Fermion 2); exact alias for FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom",
+      "dependency_roots": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4EFermionHilbertUnitaryProbe",
+        "26 pinned source blobs from contribution fa00aa36e770ca516f57b41f5b02229a5033d50f",
+        "7 identical checked external boundary source blobs"
+      ],
+      "qualification": {
+        "run_id": 42525538193,
+        "run_attempt": 1,
+        "conclusion": "success",
+        "tested_sha": "c763196c06eeb793af4137a9a48158c18d06e04d",
+        "workflow_path": ".github/workflows/bfss-op2a-original-fock-gauge-source-strict.yml",
+        "consumer_path": "lean/diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean",
+        "lean_version": "4.34.1",
+        "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "axioms_observed": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "forbidden_axioms_observed": false,
+        "source_build_jobs": 9059,
+        "evidence_artifact_id": 13635014859,
+        "evidence_digest": "sha256:9f6c54f9fa170cf540078f0e8171d2167b0970e877973307c0708b4f6d9a4024",
+        "artifact_expires_at": "2026-11-22T21:41:52Z",
+        "warning_gate": "Direct OP2a source and independent-consumer Lean warnings checked; ancillary lake package local-change messages do not imply source warnings."
+      },
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "OP2a",
+        "SU2",
+        "SU(2)",
+        "G4-E",
+        "unitary",
+        "fermion",
+        "Fermion 2",
+        "GaugeGroup 2",
+        "original Fock",
+        "26 source blobs",
+        "independent consumer",
+        "qualified",
+        "42525538193"
+      ],
+      "scope_limit": "Strict original 26-file source, source-equivalence alias and independent consumer qualified. Does not discharge OP0 Module.End bridge, nonzero invariant vacuum, Spin(9) action or any BFSS spectral claim.",
+      "location_url": "https://github.com/etblink/math/blob/c763196c06eeb793af4137a9a48158c18d06e04d/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean"
     }
   ]
 }
