@@ -1,0 +1,67 @@
+name: BFSS H2 exact pinned OP2 source ancestry audit
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - contributions/bfss-kotler/tools/h2_op2_ancestry.py
+      - contributions/bfss-kotler/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json
+      - .github/workflows/bfss-h2-op2-source-ancestry.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-h2-op2-ancestry-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pinned-source-ancestry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact H2 code
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify code and original inventory identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          sha256sum contributions/bfss-kotler/tools/h2_op2_ancestry.py \
+            contributions/bfss-kotler/tools/build_import_graph.py
+
+      - name: Independently walk exact original OperatorDependencies import ancestry
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 contributions/bfss-kotler/tools/h2_op2_ancestry.py \
+            --output "$RUNNER_TEMP/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json" --emit-nodes
+
+      - name: Compare against frozen source inventory when present
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if test -f contributions/bfss-kotler/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json; then
+            diff -u contributions/bfss-kotler/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json \
+              "$RUNNER_TEMP/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json"
+            echo "H2 FROZEN ANCESTRY REPLAY: PASS"
+          else
+            echo "H2 CANDIDATE GRAPH: no frozen snapshot yet; source walk only"
+          fi
+
+      - name: Preserve H2 graph and receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-h2-op2-ancestry-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json
+          if-no-files-found: warn
+          retention-days: 14
