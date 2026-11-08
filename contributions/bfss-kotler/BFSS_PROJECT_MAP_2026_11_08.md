@@ -30,6 +30,24 @@ import graph, and the separate OP2 Fock dependency snapshot.
 
 **Integrity/maintenance:** Do not merge or delete branches simply to improve navigation. Preserve old proof bytes, exact run/commit identifiers, rejected attempts and research source provenance. GitHub branch HEADs can move; treat the JSON as a dated discovery/recovery snapshot, refresh it deliberately when milestone branches change, and confirm live HEAD before any mutation. This gateway belongs on the **research branch only** until a separately approved small navigation-only integration makes it visible from a stable default-branch landing page.
 
+## H1 — verified theorem/evidence retrieval (2026-11-08)
+
+The [H1 evidence registry](BFSS_H1_EVIDENCE_REGISTRY_V1.json) is now the
+**curated theorem/evidence lookup layer** above the dated
+[99-branch location inventory](BFSS_CROSS_REPO_BRANCH_LOCATOR_2026_11_08.json).
+Search by proof declaration, model carrier, failure mechanism, or unresolved
+source obligation using [the read-only tool](tools/h1_evidence_registry.py).
+Six [cold-start retrieval cases](BFSS_H1_COLD_START_TESTS_V1.json)
+passed, and [strict H1 run #42522165588](https://github.com/etblink/math/actions/runs/42522165588)
+at `4c1e088ac0b68ffdcbe01f242e7d638b3f6553f6` verified 15 immutable
+source files, three CI runs, and two evidence digests. See the
+[H1 evaluation and limitations](BFSS_REPOSITORY_DEPENDENCY_AND_HOUSEKEEPING_AUDIT_2026_11_08.md#h1-pilot-qualification-result--2026-11-08).
+
+The pilot is **not** an exhaustive theorem or branch-history index.
+The registry distinguishes abstract accepted OP0/OP1 from OP2's
+separately pinned, unqualified original-source ancestry. Next: H2
+exact dependency and lifecycle classification. **Do not change `main`.**
+
 ## Start here
 
 | Question | Starting point | What it does *not* establish |
