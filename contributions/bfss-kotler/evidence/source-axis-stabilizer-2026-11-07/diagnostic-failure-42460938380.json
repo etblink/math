@@ -1,0 +1,86 @@
+{
+  "schema": "bfss-coordinate-interface-rejected-diagnostic-v1",
+  "run_id": 42460938380,
+  "tested_sha": "d4ee137126c619190ceab849b04cb32c7fb63ccd",
+  "status": "REJECTED",
+  "compiler_exit": 1,
+  "artifact_id": 13609329872,
+  "artifact_zip_sha256": "5467f9b3490258bc23b7f186c050871764658c0ec15277ba5abc9e144e64ea08",
+  "source_blob": "f85699c29afe77649377b079e396675086ed994d",
+  "source_sha256": "25f73db67d996655d035c92b76d2d30f61ebfb6d10e9d78ff74fe173cb166e74",
+  "workflow_blob": "d090273d7198356bec72707dd9296f0394be46aa",
+  "log_sha256": "673fad636dbfb2ff7b914a789c55c1be6acb43939f217937e2b3ebb2f47387ea",
+  "exact_error_lines": [
+    "diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:48:23: error: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+    "diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:75:23: error: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+    "diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:121:31: error: `if_neg` has been deprecated: Use `ite_eq_right` instead"
+  ],
+  "axiom_reports": {
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_index_eq": [
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_column": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_column_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_row": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_row_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_entry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_block": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.orthogonal_block": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.det_eq_block": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "package_revision_count": 42,
+  "cause": "All singleton family/type errors are resolved. Exactly three deprecated if_neg references fail under unchanged warningAsError; nine root reports contain only permitted axioms, with no recovery axiom.",
+  "pinned_successor": {
+    "name": "ite_eq_right",
+    "repository": "leanprover/lean4",
+    "revision": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "path": "src/Init/Core.lean",
+    "blob": "d55190c7a9f9de89bc671813e643a22b016bfb39",
+    "deprecated_alias_since": "2026-07-21"
+  },
+  "verification_limit": "Exploratory artifact records source, workflow, toolchain, package lock, log and exit; it is not a complete strict source/consumer receipt or a compiler-binary hash record.",
+  "frozen_original_source_blob": "1f9e3dec2502446d3a95d138583c0bc400eb717c",
+  "retained_file_sha256": {
+    "tested-sha.txt": "64b5e37538969d0a980770e014994e6507ac8aa4710f0c70d27acfb3ee532963",
+    "BFSSSourceNineCoordinateInterfaceDiagnostic.lean": "25f73db67d996655d035c92b76d2d30f61ebfb6d10e9d78ff74fe173cb166e74",
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "bfss-source-nine-coordinate-interface-diagnostic.yml": "00d5454cd479060f0d95fefce5633c321eeba8979099418b50550afaa5716f84",
+    "diagnostic.log": "673fad636dbfb2ff7b914a789c55c1be6acb43939f217937e2b3ebb2f47387ea",
+    "lake-manifest.json": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794",
+    "compiler-exit.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "diagnostic-sha256.txt": "95220ec79d0e003a0281c8dcbda1f43315c3893a19b90411b6762657fce59a9b"
+  },
+  "compiler_log": "warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes\nwarning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes\nwarning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes\nwarning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes\nwarning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes\nwarning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes\nwarning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes\nwarning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes\nwarning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes\nwarning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes\nwarning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes\ndiagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:48:23: error: `if_neg` has been deprecated: Use `ite_eq_right` instead\ndiagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:75:23: error: `if_neg` has been deprecated: Use `ite_eq_right` instead\ndiagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean:121:31: error: `if_neg` has been deprecated: Use `ite_eq_right` instead\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_index_eq' depends on axioms: [propext]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_column' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_column_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.last_row' depends on axioms: [propext, Classical.choice, Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.upper_row_zero' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_entry' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.identity_block' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.orthogonal_block' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineCoordinateInterfaceDiagnostic.det_eq_block' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nBFSS_SOURCE_NINE_COORDINATE_INTERFACE_DIAGNOSTIC_COMPLETE\n"
+}

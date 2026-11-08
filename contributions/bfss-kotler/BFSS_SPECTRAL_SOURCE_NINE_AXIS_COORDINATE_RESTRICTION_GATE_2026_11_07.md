@@ -279,3 +279,48 @@ On diagnostic success, verify retained evidence before transferring checked
 proof shapes. On another red, inspect the next precise failure and do not
 return to blind argument-annotation retries. No original source theorem is
 qualified by this diagnostic repair.
+
+
+## Diagnostic red #42460938380 — singleton conversion resolved; Core alias rejected
+
+Run [#42460938380](https://github.com/etblink/math/actions/runs/42460938380)
+is RED at exact tested commit d4ee137126c619190ceab849b04cb32c7fb63ccd.
+Its sole direct diagnostics are the three if_neg deprecation errors at
+diagnostic lines 48, 75 and 121. The previous dependent-family/type errors
+are gone. All nine root reports contain only permitted axioms, with NO
+recovery sorryAx. Nonetheless compiler exit 1 and warningAsError correctly
+reject the diagnostic; no original source theorem is qualified.
+
+I introduced the deprecated Core alias in the scalar-rewrite repair. The
+pinned Lean compiler source was inspected before the replacement: at Lean
+commit 5045d0056413266e57c625dcd7c365b10e377c52, src/Init/Core.lean,
+Git blob d55190c7a9f9de89bc671813e643a22b016bfb39, ite_eq_right takes the
+same non-equality proof and states the same right-branch equality. The
+old if_neg theorem is explicitly deprecated since 2026-07-21 and its
+body is ite_eq_right applied to that proof. Replace only those THREE
+identifier references; retain the scalar rewrite, all nine diagnostic
+types, imports, reports, workflow and default proof limits.
+
+The rejected artifact
+[13609329872](https://github.com/etblink/math/actions/runs/42460938380/artifacts/13609329872)
+was downloaded and CRC/SHA-256 verified at
+5467f9b3490258bc23b7f186c050871764658c0ec15277ba5abc9e144e64ea08.
+The archived tested SHA, diagnostic/workflow Git blobs, diagnostic hash
+listing, toolchain, 42-package lock, compiler exit and ordered nine
+reports were checked. Full compiler output and all eight retained-file
+hashes are preserved in the
+[rejected diagnostic record](evidence/source-axis-stabilizer-2026-11-07/diagnostic-failure-42460938380.json).
+The reports without recovery are useful first-cause evidence, not an
+accepted diagnostic outcome or a complete strict source/consumer receipt.
+
+This is an exact alias correction supported by the pinned Core declaration,
+not another dependent-family annotation attempt or a relaxation of warnings.
+The interface checklist must cover Lean Core names as well as Mathlib,
+including familiar proof lemmas. Preserve all earlier red verdicts.
+
+Original source blob 1f9e3dec2502446d3a95d138583c0bc400eb717c, its fourteen
+public types, twenty-six independent consumer propositions, manifest,
+strict runner/workflow, accepted ancestry, environment pins and budgets
+remain unchanged. Submit only the bounded diagnostic. A diagnostic green
+would still require retained-evidence review followed by a separately
+justified proof-body transfer and full strict original-source qualification.

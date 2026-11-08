@@ -45,7 +45,7 @@ theorem upper_column_zero (A : M9) (hfix : A.mulVec axis = axis) (i : Fin 8) :
     intro h
     apply Fin.castSucc_ne_last i
     exact h.trans last_index_eq.symm
-  rw [Pi.single_apply, if_neg hn]
+  rw [Pi.single_apply, ite_eq_right hn]
 
 /-- Transpose-times-matrix and the fixed column recover the original last row. -/
 theorem last_row (A : M9) (hfix : A.mulVec axis = axis)
@@ -72,7 +72,7 @@ theorem upper_row_zero (A : M9) (hfix : A.mulVec axis = axis)
   have hn : (j.castSucc : Fin 9) ≠ (8 : Fin 9) := by
     intro h
     exact Fin.castSucc_ne_last j (h.trans last_index_eq.symm)
-  rw [Pi.single_apply, if_neg hn]
+  rw [Pi.single_apply, ite_eq_right hn]
 
 /-- The explicit identity-entry transport avoided by an inferred simp. -/
 theorem identity_entry (i j : Fin 8) :
@@ -118,7 +118,7 @@ theorem det_eq_block (A : M9) (hfix : A.mulVec axis = axis) :
         have hz : A b (Fin.last 8) = 0 := by
           rw [last_column A hfix]
           change (Pi.single (8 : Fin 9) (1 : ℝ) : V9) b = 0
-          rw [Pi.single_apply, if_neg hb8]
+          rw [Pi.single_apply, ite_eq_right hb8]
         simp only [hz, mul_zero, zero_mul]
       · intro hnot
         exact False.elim (hnot (Finset.mem_univ (Fin.last 8)))
