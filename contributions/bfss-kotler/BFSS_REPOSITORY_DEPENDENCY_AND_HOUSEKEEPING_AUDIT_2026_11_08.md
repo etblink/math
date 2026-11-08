@@ -108,3 +108,68 @@ Preserve original strict source/consumer/axiom checks and cold builds. No `sorry
 - **Phase D garbage collection:** deferred pending evidence and explicit review.
 
 **Change scope:** This audit adds only documentation. No Lean module, workflow, manifest, dependency pin, manuscript, or source file is moved, modified or deleted.
+
+
+---
+
+## Decision addendum — retrieval-first housekeeping gates H1/H2 (2026-11-08)
+
+**Status:** OWNER-ALIGNED PROJECT-LEAD STRATEGY; **NOT YET EXECUTED**. This section supersedes earlier *next-step* language in this historical audit where it conflicts with the current priorities. It does **not** reinterpret past qualification or claim any new Lean theorem.
+
+**Recorded against branch HEAD before this documentation change:**
+`50d7352734fb99f6c06612fa1e235be4360ff955`, `research/bfss-original-gamma-faithfulness-20261107`.
+
+### Decision and reason
+
+The next bottleneck is **research retrieval, provenance, proof-interface visibility, and durable qualification bookkeeping**, not cosmetic directory layout. We will invest in structured organization *before* a costly expansion of OP2's original-Fock dependency ancestry, while preserving forward mathematical momentum. The shortest immediate edit is not necessarily the most effective long-term procedure.
+
+Observed at the 2026-11-08 audit:
+- `etblink/math` had 25 enumerated remote branches; `etblink/Foundational-Convergence-Program` had 74: 99 branch heads in the dated cross-repository locator.
+- The existing [full BFSS import graph](BFSS_IMPORT_GRAPH_FULL_2026_11_08.json) inventories **420** modules, **597** internal direct import edges, **306** outside-inventory imports and **20** with zero internal downstreams at its frozen baseline. This is an import graph, **not** an exhaustive qualification/dead-code index.
+- The active branch contained **334** GitHub workflow files and **344** direct entries in `contributions/bfss-kotler/` (**307** Markdown and **34** JSON files). Counts are snapshots, not evidence of redundancy.
+- [BFSS Project Map](BFSS_PROJECT_MAP_2026_11_08.md) and [Cross-repository Branch Locator](BFSS_CROSS_REPO_BRANCH_LOCATOR_2026_11_08.json) now aid discovery, but they do **not** answer full theorem-level, cross-branch source-lineage, or historical-failure queries.
+- A state-drift example: this audit's earlier Phase B language says a complete import graph remained outstanding; the later frozen graph now exists. Preserve the original historical statement, but prefer this newer status addendum for current routing.
+
+### H1 — evidence/retrieval completeness (first bounded organizational gate)
+
+**Deliverable:** a small, reproducible, searchable cross-repository artifact and theorem registry, whose records have typed provenance rather than copied scientific conclusions.
+
+Minimum records for any important result:
+`artifact_id / kind / owner_repo / ref / exact_commit / source_path / declaration / source_carrier / dependency_roots / source_blobs / consumer_path / qualification_workflow / run_id / run_attempt / tested_sha / Lean+Mathlib pins / axioms_status / evidentiary_status / supersedes / failure_mode / location_url / evidence_digest`.
+
+Records must distinguish **verified at exact commit**, **candidate**, **unqualified**, **rejected**, **historical**, **not scanned**, and **unknown**. The registry must not infer an accepted theorem from a green ancestor or from mere file existence. CI artifact retention is limited; preserve enough durable hashes, metadata and links to reconstruct the original decision even when uploaded artifacts expire.
+
+**Validation:** a cold-start investigator, given *only* the registry and its pointers, can independently recover without conversational memory:
+1. The exact OP0 and OP1 theorems, original source and independent consumers, tested commits and strict runs (OP0 [#42516531636](https://github.com/etblink/math/actions/runs/42516531636), OP1 warning-clean [#42518687725](https://github.com/etblink/math/actions/runs/42518687725)).
+2. The original `Fermion 2` and `GaugeGroup 2` types, and the pinned **separate** original SU(2) gauge/vacuum candidate at `fa00aa36e770ca516f57b41f5b02229a5033d50f`, without pretending it exists on this active branch.
+3. A documented red attempt's first causal diagnostic, bounded correction and subsequent accepted run.
+4. One known negative result or rejected representation route, with the reason and source.
+5. An unresolved theorem, its missing exact-source premise, and the status of that premise.
+
+**Acceptance:** each query returns a resolvable path and immutable commit anchor; records have independent verification against Git/CI; unknowns are shown, not filled by guesses. Measure retrieval completeness and time/calls against the existing branch locator baseline, and report misses. No wholesale indexing of every theorem is required to qualify the **pilot**.
+
+### H2 — dependency and lifecycle classification (second bounded gate)
+
+**Deliverable:** an evidence-backed map of (a) OP2's smallest **exact** original-Fock/gauge transitive import closure across the separate snapshot, (b) reusable G/F/P/S interfaces, and (c) workflow, document and branch life-cycle states. Start with the known 420-module BFSS import graph; add qualified source roots, independent consumers, exact tested commits, and workflow references. Inventory GitHub ref topology without merging, rebasing or deleting branches.
+
+**Validation:** identify a minimal OP2 candidate dependency cut, likely expensive imports, which prerequisites are actually available and qualified on this branch, and which must be independently requalified. Explicitly classify stale documentation; do not overwrite historical assertions with a fabricated current state. Produce a bounded recommendation for `retain / index / annotate superseded / refactor-with-proof / investigate for eventual retirement` **without executing destructive retirement**.
+
+**Acceptance:** the OP2 entry gate becomes answerable from verified source data: which exact original Fock action, which carrier and gauge conventions, which transitive ancestors, which qualification evidence and where it is missing. No formal theorem is promoted by this documentation gate alone.
+
+### Governance and STOP boundaries
+
+- **Never modify `etblink/math:main`.** The repository is a downstream contribution to an upstream project outside the owner's control; do not treat its default branch as our organizational landing page.
+- The current BFSS research branch remains a bounded workbench; FCP's `main` remains canonical for **FCP's own** scientific register and program routing, **not** for BFSS Lean proof status.
+- Do not merge, rebase, rewrite history, delete branches, bulk rename/move Lean modules, retire strict workflows, or alter upstream manuscript, formalization or site contracts as part of housekeeping.
+- Do not import or rename the separate OperatorDependencies snapshot wholesale. Preserve exact original CAR, Fock, Spin(9), central signs, sixteen charges and physical closed-form carriers. Keep **Fock-vector M=6** distinct from **operator-fiber M=12**.
+- Do not quietly adopt `etblink/Project-Continuity-Research` as a live control plane: its documented `CCP0_SEMANTIC_FEASIBILITY = PASS` does not authorize live integration. A lightweight BFSS-specific **read-only retrieval pilot** may be assessed before a separate architecture/integration decision.
+- Record costs and utility; avoid creating a manually maintained registry that drifts from Git and CI. Generate or validate indexes against exact Git objects and available run evidence; retain negative knowledge.
+- Any destructive cleanup, upstream PR, cross-repo write or new live automation requires its own scoped assessment and authorization. This decision is not such authorization.
+
+### Scheduling and decision checkpoints
+
+Proceed in small units: **H1 pilot** → assess retrieval improvement → **H2 OP2 ancestry/lifecycle audit** → return to **OP2 or F1** with evidence-based source choice. Mathematical research may continue in parallel without claiming unqualified results; housekeeping must serve the science, not replace it.
+
+**Success metric:** someone unfamiliar with prior chat history can locate the *correct source*, recover its assumptions, know what passed and failed at the *exact tested commit*, and identify the next genuine proof obligation with substantially less reconstruction.
+
+**Preservation scope for this addendum:** documentation-only strategy and acceptance criteria. No source, workflow, pin, proof, original upstream file, branch ref (other than this documentation commit), or published work is changed.
