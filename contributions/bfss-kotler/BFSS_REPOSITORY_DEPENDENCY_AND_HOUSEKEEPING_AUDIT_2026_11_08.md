@@ -274,3 +274,20 @@ The token is optional for public GitHub access but avoids anonymous rate limits.
 H2's bounded, reproducible source/dependency and workflow-source/lifecycle **inventory** is complete and accepted. **No destructive garbage collection is justified** by this evidence. The next bounded science task is to assess the 26-module **original source G4-E unitary carrier** as an OP2a import/consumer candidate against its exact external ancestors, rather than importing the 38-module K2A endpoint wholesale. If that gate expands unexpectedly or exposes an incompatible carrier/normalization, record the negative result and compare the F1 direct-CAR route instead.
 
 **Governance confirmation:** `etblink/math:main` remains out of bounds. FCP and Project Continuity repositories were not modified. All H2 artifacts were added to the dedicated BFSS research branch.
+
+
+---
+
+## OP2a verified source qualification and next bounded gate — 2026-11-08
+
+**Scientific acceptance:** [OP2a source gate #42525538193](https://github.com/etblink/math/actions/runs/42525538193), SUCCESS, attempt 1, exact tested `c763196c06eeb793af4137a9a48158c18d06e04d`. This strictly qualifies the original source **G4-E SU(2) unitary group action on the literal `Fermion 2` carrier** and its exact-alias adapter and independent consumer. It does not prove original gauge-fixed projection nontriviality or invariance under Spin(9).
+
+The gate checked the H2-frozen **26 original imported Git blobs** at contribution snapshot `fa00aa36e770ca516f57b41f5b02229a5033d50f`, the seven identical immediate external-boundary blobs, Lean `4.34.1`, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, direct source and independent consumer, and disallowed axiom substrings. The `lake build` completed **9,059 jobs**. G4-E source and exact-alias reports use only `propext`, `Classical.choice`, `Quot.sound`. Workflow artifact `13635014859`, SHA-256 `9f6c54f9fa170cf540078f0e8171d2167b0970e877973307c0708b4f6d9a4024`, expires `2026-11-22T21:41:52Z`. The repository's checked-out dependency local-change warnings were not direct audited Lean source/consumer warnings.
+
+**Recovery:** The [H1 evidence registry](BFSS_H1_EVIDENCE_REGISTRY_V1.json) now includes a new `QUALIFIED_AT_COMMIT` OP2a record with exact source, consumer and workflow blobs, run ID/attempt, dependency roots and retained artifact digest. [Strict H1 #42526669805](https://github.com/etblink/math/actions/runs/42526669805) passed at `e85c1654facb120c0c06c7477a0d50d47f5ddf48`: 13 typed records, 9/9 recovery questions, 24 pinned source files, six exact CI runs, three digest checks.
+
+**Next bounded objective — OP2b (CANDIDATE, no proof yet):** On the **same exact `Fermion 2`**, construct from the qualified unitary homomorphism a monoid homomorphism `GaugeGroup 2 →* Module.End ℂ (Fermion 2)`, and continuous linear operators `V g : Fermion 2 →L[ℂ] Fermion 2`; prove the **pointwise exactness** `V g v = U g v`. Instantiate OP0 to obtain the canonical original fermionic gauge-fixed projection. Use a new independent consumer and source/consumer/axiom/identity gate; keep the original G4-E source blobs frozen. Investigate pinned Mathlib `LinearIsometryEquiv` conversion and composition APIs before choosing the narrowest Lean implementation. This must use **exact source action**, not a surrogate representation.
+
+**Separate next obligation:** Use the already imported G4-B source `fermionVacuum = fockAlgebraToBFSS (1 : Space 23)`, its proven gauge invariance, and injectivity of the literal Fock-to-BFSS equivalence to establish a *nonzero original fixed vector*. Avoid importing the remaining twelve G4-K2A radial modules solely to copy that small witness proof. Do not claim nonzero L², full gauge-physical Hilbert conclusions, global Spin(9) lift or an original Hamiltonian-domain/spectral result from this gate.
+
+**Operational stop:** No new module/CI modifications beyond this OP2a candidate were made in this qualification checkpoint; no branch merges, source renames, cross-repo writes or `main` edits. Prioritize the small OP2b conversion gate and preserve the results of any failures before increasing import scope.

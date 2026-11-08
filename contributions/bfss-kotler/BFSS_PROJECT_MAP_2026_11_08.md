@@ -65,7 +65,7 @@ Neither `etblink/math:main` nor FCP was changed.
 
 ### OP2a source-import candidate — 2026-11-08
 
-**CANDIDATE; do not promote without actual strict gate result.** At exact
+**SOURCE IMPORT + G4-E EXACT-ALIAS GATE QUALIFIED AT PINNED COMMIT; OP2 OPERATOR BRIDGE OPEN.** At exact
 commit [`c763196c06eeb793af4137a9a48158c18d06e04d`](https://github.com/etblink/math/commit/c763196c06eeb793af4137a9a48158c18d06e04d),
 the research branch imported **26 bit-for-bit original** OperatorDependencies
 Lean files from the pinned G4-E source closure. The source-binding adapter is
@@ -73,12 +73,22 @@ Lean files from the pinned G4-E source closure. The source-binding adapter is
 with an [independent consumer](../../lean/diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean)
 and [strict gate #42525538193](https://github.com/etblink/math/actions/runs/42525538193).
 
-Gate was **RUNNING when this note was authored**; consult the exact run for
-success/failure. This gate tests compilation and source identity for the literal
-`GaugeGroup 2 →* (Fermion 2 ≃ₗᵢ[ℂ] Fermion 2)` representation. It **does not**
-prove OP0 `Module.End` binding, invariant nonzero vacuum, central Spin sign,
-physical closed-form compatibility, a spectrum result or a mass gap. If red,
-record the first causative diagnostic and bounded repair. No file on
+The [strict gate #42525538193](https://github.com/etblink/math/actions/runs/42525538193)
+completed **SUCCESS** (attempt 1) at the exact source commit
+`c763196c06eeb793af4137a9a48158c18d06e04d`. The original 26 source
+blobs and seven boundary blobs matched, pinned Lean/Mathlib compiled 9,059
+jobs, and the independent consumer and displayed axioms passed.
+Allowed axioms observed: `propext`, `Classical.choice`, `Quot.sound`.
+Retained evidence SHA-256: `9f6c54f9fa170cf540078f0e8171d2167b0970e877973307c0708b4f6d9a4024`.
+Source and consumer warnings were checked, while incidental local-change
+warnings from checked-out dependencies were not treated as mathematical failures.
+
+The result qualifies the **exact genuine source unitary representation on
+the original `Fermion 2`**. OP0 `Module.End` binding, a nonzero invariant
+vacuum, source Spin(9) action, central signs, the closed physical form and any
+spectrum/mass-gap claim remain **OPEN**. H1 [recovery gate #42526669805](https://github.com/etblink/math/actions/runs/42526669805)
+also passed: 13 records, 9/9 future-session recovery queries, 24 pinned
+source files, 6 exact CI runs and 3 evidence digests. No file on
 `etblink/math:main` was modified.
 
 ## Start here
