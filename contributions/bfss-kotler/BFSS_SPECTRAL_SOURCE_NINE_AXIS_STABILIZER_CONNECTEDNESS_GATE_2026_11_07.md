@@ -1,6 +1,7 @@
 # Original source axis-stabilizer path connectedness gate
 
-Status: CANDIDATE, pending complete strict compilation and independent consumer.
+Status: QUALIFIED at `19b007c2d46243a803a958c6595e61911d21e41c`,
+strict run [42426258689](https://github.com/etblink/math/actions/runs/42426258689).
 Exact parent: `8f6b2e44fa3b76bdc8c1e8a81be4d7d80ae2972e`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
 
@@ -167,3 +168,52 @@ checked. The failed source log SHA-256 is
 `1520039359a7bae92268cfb67463ca48876a12c301631fdcffbb42bb61b26ddb`.
 Its recovery-generated sorryAx reports are rejected, not qualified results.
 The corrected candidate still requires a complete new strict source/consumer run.
+
+## Qualification: 42426258689
+
+The owner reported the terminal green result. Independent review of the retained
+artifact confirms PASS at exactly `19b007c2d46243a803a958c6595e61911d21e41c`.
+All 140 controlled modules cold compiled, including the complete source and
+fourteen independent examples. All 130 strict axiom reports and fifteen exact
+completion markers match their inventories. Only propext, Classical.choice and
+Quot.sound occur; no compiler warnings or recovery axioms occur. All 170 input
+Git-blob/SHA-256 pins, 140 compiler-log digests and 42 locked package revisions
+were independently replayed against the archived inputs and receipt.
+
+Artifact `13596206699` has ZIP SHA-256
+`522ba8d340fe8f02e6cdb368b807c81bfc6337425dd358d90d9d6e98be3127a4`.
+The PASS receipt SHA-256 is
+`50bc551e99a3d718e8844ca5d4cdc8570b2a7857ab9ab9babb39ec8262f5634e`.
+The machine-readable scoped acceptance record is
+[acceptance-42426258689.json](evidence/source-axis-stabilizer-2026-11-07/acceptance-42426258689.json).
+The receipt records proof-object digests; binary objects are not in the archive,
+so this review does not claim an independent binary-object rehash or a new local
+Lean compilation.
+
+The qualified result is unconditional path connectedness of the literal original
+axis stabilizer in the established source PBW topology. Its consumers include
+JoinedIn paths from identity to every stabilizer element and to the actual
+negative center, while preserving the latter's inequality from identity. The
+failed run remains failed and its recovery reports remain rejected.
+
+## One next bounded milestone
+
+Package the exact compact parametrization of the same stabilizer. First prove
+IsCompact of the original perpendicular Q-unit locus by the already identified
+finite-dimensional sphere image; then of its eight-fold parameter space. The
+qualified continuous exact-range word map should give IsCompact of the actual
+stabilizer and a continuous surjection onto its literal subtype. A compact-to-
+Hausdorff argument can then establish that this same map is a quotient map.
+These are proposed next source results, not consequences already checked by
+this run.
+
+Acceptance must preserve the original parameter type, word order, PBW topology,
+actual two central signs and exact range. Stop if a proof needs continuity of
+the full original nine-vector action as an unsupported premise, a continuously
+chosen factorization, a changed topology or only a dense/one-sign image. The
+independent consumer should check the compact fixed-axis set and the quotient
+map with the explicit original domain and stabilizer subtype. This prepares
+descent of continuity for the perpendicular vector projection; SO(8)
+surjectivity, kernel/covering identification, triality control and all physical
+claims remain separate obligations. No successor Lean source or CI run is
+introduced by this qualification record.

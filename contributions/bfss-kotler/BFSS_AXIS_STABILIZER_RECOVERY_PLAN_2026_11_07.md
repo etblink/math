@@ -251,3 +251,26 @@ even-word lift, two-sign fibers, perpendicular padding and central sign
 absorption. There is no new Clifford algebra or even-Clifford faithfulness
 assumption. Source connectedness and subsequent covering/torus identification
 are separate next-stage obligations; no physical spectral conclusion follows.
+
+## Original-source path connectedness qualified: 42426258689
+
+The successor gate qualifies path connectedness of the literal original ninth-
+axis stabilizer in the existing PBW topology at
+`19b007c2d46243a803a958c6595e61911d21e41c`. The strict source and all fourteen
+independent examples passed: 140 cold builds, 130 strict axiom reports, fifteen
+markers, 170 exact input pins and 42 locked dependency revisions were checked
+against retained evidence, with only the three permitted foundational axioms
+and zero compiler warnings. See
+[the scoped qualification](BFSS_SPECTRAL_SOURCE_NINE_AXIS_STABILIZER_CONNECTEDNESS_GATE_2026_11_07.md#qualification-42426258689)
+and its machine-readable acceptance record.
+
+The earlier connectedness red 42424031388 is retained in that gate record. Its
+two failures were resolved by explicit subspace/ambient norm conversion and a
+typed coordinate continuity proof followed by subtype construction. No theorem
+type, inherited source, consumer, topology, dependency or budget changed.
+
+The single next milestone is the compact exact parametrization and quotient-map
+package for the same source stabilizer. It precedes descent of perpendicular
+vector-action continuity and the actual SO(8) covering identification. Path
+connectedness alone does not establish those claims, Spin(8) classification,
+branching, an operator action or a physical spectral result.
