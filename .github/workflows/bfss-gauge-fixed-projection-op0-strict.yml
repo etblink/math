@@ -46,7 +46,8 @@ jobs:
           src = Path("lean/OAI/LinearAlgebra/GaugeFixedProjectionOP0.lean").read_text()
           consumer = Path("lean/diagnostics/BFSSGaugeFixedProjectionOP0IndependentAudit.lean").read_text()
           assert [s for s in src.splitlines() if s.startswith("import ")] == [
-              "import Mathlib.Analysis.InnerProductSpace.Adjoint"
+              "import Mathlib.Analysis.InnerProductSpace.Adjoint",
+              "import Mathlib.Topology.Algebra.Module.FiniteDimension"
           ]
           assert [s for s in consumer.splitlines() if s.startswith("import ")] == [
               "import OAI.LinearAlgebra.GaugeFixedProjectionOP0"
