@@ -14,11 +14,13 @@ noncomputable section
 open FCP.BFSSGaugeFixedProjectionOP0
 
 variable {G F : Type*} [Group G] [NormedAddCommGroup F]
-  [InnerProductSpace ℂ F] [FiniteDimensional ℂ F]
+  [InnerProductSpace ℂ F]
 
 example (U : G →* Module.End ℂ F) (v : F) :
     v ∈ gaugeFixedSubspace U ↔ ∀ g : G, U g v = v :=
   mem_gaugeFixedSubspace_iff U v
+
+variable [FiniteDimensional ℂ F]
 
 example (U : G →* Module.End ℂ F) :
     (gaugeFixedProjection U).range = gaugeFixedSubspace U :=
@@ -32,7 +34,7 @@ example (U : G →* Module.End ℂ F) :
     IsIdempotentElem (gaugeFixedProjection U) :=
   gaugeFixedProjection_idempotent U
 
-example (U : G →* Module.End ℂ F) :
+example [CompleteSpace F] (U : G →* Module.End ℂ F) :
     IsStarProjection (gaugeFixedProjection U) :=
   gaugeFixedProjection_isStarProjection U
 
