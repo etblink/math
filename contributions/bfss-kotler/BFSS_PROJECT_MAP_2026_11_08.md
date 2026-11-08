@@ -30,23 +30,38 @@ import graph, and the separate OP2 Fock dependency snapshot.
 
 **Integrity/maintenance:** Do not merge or delete branches simply to improve navigation. Preserve old proof bytes, exact run/commit identifiers, rejected attempts and research source provenance. GitHub branch HEADs can move; treat the JSON as a dated discovery/recovery snapshot, refresh it deliberately when milestone branches change, and confirm live HEAD before any mutation. This gateway belongs on the **research branch only** until a separately approved small navigation-only integration makes it visible from a stable default-branch landing page.
 
-## H1 — verified theorem/evidence retrieval (2026-11-08)
+## Future-session recovery: H1 and H2 accepted (2026-11-08)
 
-The [H1 evidence registry](BFSS_H1_EVIDENCE_REGISTRY_V1.json) is now the
-**curated theorem/evidence lookup layer** above the dated
-[99-branch location inventory](BFSS_CROSS_REPO_BRANCH_LOCATOR_2026_11_08.json).
-Search by proof declaration, model carrier, failure mechanism, or unresolved
-source obligation using [the read-only tool](tools/h1_evidence_registry.py).
-Six [cold-start retrieval cases](BFSS_H1_COLD_START_TESTS_V1.json)
-passed, and [strict H1 run #42522165588](https://github.com/etblink/math/actions/runs/42522165588)
-at `4c1e088ac0b68ffdcbe01f242e7d638b3f6553f6` verified 15 immutable
-source files, three CI runs, and two evidence digests. See the
-[H1 evaluation and limitations](BFSS_REPOSITORY_DEPENDENCY_AND_HOUSEKEEPING_AUDIT_2026_11_08.md#h1-pilot-qualification-result--2026-11-08).
+The [H1 theorem/evidence registry](BFSS_H1_EVIDENCE_REGISTRY_V1.json)
+is our searchable recovery layer above the dated
+[99-branch cross-repo locator](BFSS_CROSS_REPO_BRANCH_LOCATOR_2026_11_08.json).
+Search by theorem, carrier, source origin, failed procedure or open obligation
+using [h1_evidence_registry.py](tools/h1_evidence_registry.py).
+[Strict H1 run #42524474547](https://github.com/etblink/math/actions/runs/42524474547)
+at `799a0d70cc0674222e13efd9b90c62a4826016af` passed:
+**12 typed records, 8/8 future-session retrieval tests, 21 pinned
+source files, five exact CI runs, and two retained artifact digests**.
+This is a curated search pilot, not a complete archive or proof catalogue.
 
-The pilot is **not** an exhaustive theorem or branch-history index.
-The registry distinguishes abstract accepted OP0/OP1 from OP2's
-separately pinned, unqualified original-source ancestry. Next: H2
-exact dependency and lifecycle classification. **Do not change `main`.**
+H2 provides two reproducible, exact-source maps:
+
+- **[Original OP2 Fock/gauge dependency graph](BFSS_H2_OP2_PINNED_ANCESTRY_V1.json)**:
+  **38** pinned modules absent on the active baseline, **38** internal edges,
+  and **seven** immediate external imports. The within-namespace graph passed
+  [frozen replay #42523263158](https://github.com/etblink/math/actions/runs/42523263158)
+  at `35a12288c463bdd18065ba2b6cb7d215f66fdcc2`.
+  [Recompute tool](tools/h2_op2_ancestry.py).
+- **[Workflow source/reference index](BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json)**:
+  **337** source-hashed YAML workflow files, with **561** distinct lexical
+  source references; [frozen replay #42524327310](https://github.com/etblink/math/actions/runs/42524327310)
+  at `8e3ef2b867f6e6913140e0295f3142b7720bde51` passed.
+  [Recompute tool](tools/h2_workflow_index.py). All workflow lifecycle
+  statuses remain **PRESENT_UNASSESSED**; none has been approved for retirement.
+
+See [H2 verification, boundaries, negative knowledge and next gate](BFSS_REPOSITORY_DEPENDENCY_AND_HOUSEKEEPING_AUDIT_2026_11_08.md#h2-bounded-acceptance--op2-source-closure-and-workflow-lifecycle-evidence-2026-11-08).
+**This infrastructure is for our future sessions**, not for independent human
+testing. No BFSS Lean mathematical theorem is admitted by H1/H2 indexing.
+Neither `etblink/math:main` nor FCP was changed.
 
 ## Start here
 
@@ -108,10 +123,10 @@ Do not label a whole module `QUALIFIED` just because one theorem or its ancestor
 
 ## Active bounded next steps
 
-1. **OP0–OP1, operator-projection feasibility:** abstract Mathlib-only orthogonal projection lemma under a genuine complex star-algebra automorphism fixing the gauge unitaries. The [feasibility memorandum](BFSS_SPECTRAL_GAUGE_FIXED_PROJECTION_FEASIBILITY_2026_11_08.md) gives hypotheses, failure tests and exact pinned Mathlib APIs. No full BFSS imports initially.
-2. **F1, original 48-Majorana CAR Lie implementer:** exact skewness, commutator action, Lie bracket and normalization on original carriers. See [original Fock memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md). This is the main Fock route, not replaced by OP0.
-3. **Source and gate census before imports:** inspect the smallest qualified ancestor chain; choose independent consumers and exact pin inventories before adding expensive operator modules.
-4. **Physical closure later:** original SU(2) gauge compatibility, all sixteen original supercharge covariances, closed form and natural Hamiltonian domain. No spectrum assertion before these obligations.
+1. **OP0/OP1 qualified at their exact tested commits.** Their abstract projection and automorphism contracts are not yet source-bound to the original BFSS Fock action.
+2. **OP2a, source-faithful gauge-action adapter (next candidate):** audit a **26-module** original G4-E `Fermion 2` unitary-representation ancestor cut at the pinned contribution snapshot, instead of wholesale import of the **38-module** G4-K2A vacuum/radial endpoint. First validate the remaining outside-prefix import closure and exact conventions, then design the smallest independent original-type consumer. Reuse G4-B's genuine vacuum/invariance source and prove nonzero separately; all this remains **unqualified on our branch**.
+3. **F1, original 48-Majorana CAR Lie implementer (parallel main physics route):** original normalization, skewness, bracket and Cartan bounds. Compare its measured proof/import cost with OP3–OP4 before choosing a global lift route. See [original Fock memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md).
+4. **Physical closure later:** source Spin(9) gauge compatibility, all sixteen original smooth-supercharge covariances, the same closed physical form and natural Hamiltonian domain. No inferred spectrum or full mass-gap claim.
 
 ## Organization and garbage-collection policy
 
