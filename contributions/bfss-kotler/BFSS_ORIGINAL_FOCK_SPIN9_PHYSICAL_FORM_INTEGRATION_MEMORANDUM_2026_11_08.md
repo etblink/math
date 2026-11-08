@@ -275,3 +275,59 @@ closed Hamiltonian/spectral consequence from OP2c nonzeroness.
 **Scope of this checkpoint:** navigation/memo only; no new Lean
 declaration, workflow, source import, original Fock representation,
 theorem qualification or change to `etblink/math:main`.
+
+
+---
+
+## 12. F1A exact-CAR micro-gate and upstream theta binding boundary (2026-11-08)
+
+**Current F1A gate:** [strict run #42532370775](https://github.com/etblink/math/actions/runs/42532370775) on candidate commit
+`e0561b323c8c5792f00242d4e341f32fd9b81888`,
+source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean`,
+separate independent consumer
+`lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean`.
+**PENDING** at this recording; do not treat the two commutator statements
+as qualified before its pinned source/consumer/axiom/warning run is green.
+A prior workflow run #42532325615 was cancelled by the source-preserving
+Git-blob NUL-byte preflight correction.
+
+**Exact local lemma:** For distinct original pair-indices `p ≠ q` in
+`Source48Label`, the concrete Fock operators `θ_p = majoranaCandidate p`
+on the literal `OAI.BFSSQuantum.Fermion 2` obey
+`θ_p θ_q + θ_q θ_p = 0`, `2 θ_p² = I`,
+and the candidate signed commutators
+`[θ_p θ_q, θ_p] = -θ_q`, `[θ_p θ_q, θ_q] = +θ_p`.
+No `√2` is inserted into these physical delta-one CAR operators.
+The normalized positive Clifford unit axes `√2 θ_p` are a separate
+`Source48NormalizedFockGammaProbe` interface.
+
+**Critical remaining source/model boundary:** The pinned
+`SU2FermionF2B2IndexedProbe.lean` assembles the
+`majoranaCandidate_car` theorem over exactly `Fin 24 × Fin 2`,
+but explicitly says transport via `thetaLabelEquiv` into the upstream
+`AlgebraData.theta_CAR` and **theta irreducibility** remain distinct
+unproved steps. The original `BFSS/Core.lean` defines `AlgebraData N`
+as a structure whose `theta`, `theta_selfAdjoint`, `theta_CAR`, and
+`theta_irreducible` are fields. F1A is an exact operator result **on the
+original Hilbert carrier** and the concrete Fock Majorana candidate; it
+is **not** a proof that a particular original physical `AlgebraData 2`
+instance uses the candidate operators, nor a completed physical
+Hamiltonian-source identity. Keep that obligation visible in F4/F5.
+
+**Next if F1A qualifies:** Prove explicit
+`star (θ_p θ_q) = -(θ_p θ_q)` for `p ≠ q`
+using the already present candidate self-adjointness theorem
+`FCP.BFSSFermionF2.majoranaCandidate_selfAdjoint` and the actual
+offdiagonal CAR. Mathlib's general `IsSelfAdjoint` handles
+self-adjointness; do not assume a similarly named universal
+`IsSkewAdjoint` predicate on the star algebra, because the current
+Mathlib API defines different skew-adjoint notions in bilinear-form
+contexts. After skewness and all third-label commutators qualify,
+assemble exact 48-label skew matrices and normalization before the
+Lie-bracket/integration work. An F1A red must be classified at the first
+causal error rather than hidden by proof-budget or source-convention changes.
+
+**Provenance and scope:** The H1/OP2a–OP2c accepted results are unchanged.
+This paragraph records only source facts, a bounded candidate,
+and a missing physical-model identification; it does not add or
+independently qualify any Lean theorem.
