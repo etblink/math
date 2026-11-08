@@ -494,3 +494,27 @@ original entries and vector action. Source-cover transport to SO(8) is subsequen
 source Spin(8) classification, common torus/branching and all physical spectral
 claims remain separate. All prior source and consumer bytes remain frozen.
 Proceed without a separate continue prompt after qualification; do not poll CI.
+
+
+## 2026-11-08 — Exact target topological group equivalence candidate
+
+The [bounded coordinate-equivalence gate](BFSS_SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_EQUIVALENCE_GATE_2026_11_08.md)
+proves raw entrywise inverse continuity, lifts through the unchanged SO(9)/H
+subtypes, and packages the literal qualified R/E pair as ContinuousMulEquiv.
+Eight printed roots and 26 independent examples preserve exact functions,
+original entries/vector action, both central signs and point-stabilizer guards.
+Its 138 cold builds, 168 input pins, 137 reports and thirteen markers retain
+the existing dependency and proof limits; full strict qualification is pending.
+
+Workflow review also found the old extension template's early-tar/push-path
+reference to the older restriction manifest. Its complete green artifact
+contains the correct extension manifest and all verified inputs, so that
+qualification remains supported. The old controlled files remain fixed; the
+successor stages its own manifest and adds a prospective identity guard with
+two regression tests. Static preflight and all twelve validator tests pass.
+
+After qualification, transport the already qualified original source covering
+through the exact target homeomorphism to coordinate SO(8) as the next bounded
+step. No source Spin(8) classification, torus/branching or physical conclusion
+is included in this candidate. Proceed on verified qualification without another
+continue prompt; preserve the no-CI-polling rule.

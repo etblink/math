@@ -203,3 +203,23 @@ an inverse using choice or invoke an unverified compactness shortcut. Transport
 of the original source covering to SO(8), source Spin(8) classification, torus
 and branching, Fock actions and all physical conclusions remain separate.
 The owner authorizes direct progression after verified qualification; no CI polling.
+
+
+## Early-input manifest staging caveat discovered during successor review
+
+The qualified extension workflow's push-path and pre-build proposed-input tar
+still name the older COORDINATE_RESTRICTION manifest, inherited from its template.
+Its runner and preflight use the correct COORDINATE_EXTENSION manifest, and the
+completed run independently retained that correct manifest at the artifact root
+plus all 167 pinned inputs and the complete PASS receipt. These full-artifact
+bytes and every compiler log were verified before qualification. Therefore the
+actual completed mathematical qualification above remains supported.
+
+The defect affects early-input staging before a runner reaches its full input
+copy, and the extension manifest's own push-path trigger. It is preserved as a
+procedural negative finding, not silently corrected in a qualified workflow or
+used to relabel an earlier failed attempt. The new coordinate-equivalence gate
+uses its OWN manifest in both places and adds a prospective manifest-identity
+preflight guard with regression checks for the inherited mismatch. All qualified
+source/consumer/control bytes remain fixed. A separate old-workflow maintenance
+change is outside this mathematical successor gate.
