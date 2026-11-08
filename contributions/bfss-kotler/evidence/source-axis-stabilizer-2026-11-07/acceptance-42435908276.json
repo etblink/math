@@ -1,0 +1,59 @@
+{
+  "schema": "bfss-source-nine-axis-stabilizer-vector-continuity-acceptance-v1",
+  "run_id": 42435908276,
+  "run_url": "https://github.com/etblink/math/actions/runs/42435908276",
+  "tested_sha": "74f8c0624d61527bda7aec3a2b38f8c13475e1d1",
+  "artifact_id": 13599863920,
+  "artifact_zip_sha256": "91b79902b0237ae48958be328b51e88cc4e3e359e3039d7a6dc6421a932b2f9c",
+  "receipt_sha256": "45a292870378624e0f9d96b3393e1eb4f5f7d5add7e17b81aab1012d60a42bb0",
+  "status": "QUALIFIED",
+  "receipt_status": "PASS",
+  "target": "FCP.BFSSSourceNineAxisStabilizerVectorContinuity.source9Axis8Stabilizer_vectorSO9_continuous_pbw",
+  "joint_action_target": "FCP.BFSSSourceNineAxisStabilizerVectorContinuity.source9Axis8Stabilizer_vectorAction_continuous_pbw",
+  "source_blob": "a45e35e236088c36795327538c4650b5759c4ef2",
+  "source_sha256": "44b7afd72d2e33bfd2aa929b6b24d7fba57958892c18eabdddab6bc606906b8e",
+  "consumer_blob": "b170b8755f60cf1ab4ffe90bf94f828afb9e657a",
+  "consumer_sha256": "3bbee0f6adf4f550d73ce4dfb9cd46bdac555c3790df4d7edd75cbbc6d8059f3",
+  "source_log_sha256": "dbdbbd50132eceaa13e19ed68f3f8f0b10b615ad52acac67846515e5bb68f6b8",
+  "consumer_log_sha256": "a3234e2aa860fbf37e25363c58a81a55bcefa2b79d583f1bf1f5dae400d44fc1",
+  "source_roots": 8,
+  "independent_examples": 16,
+  "cold_builds": 142,
+  "verified_input_pins": 172,
+  "verified_build_log_digests": 142,
+  "verified_strict_axiom_reports": 146,
+  "verified_completion_markers": 17,
+  "verified_dependency_revisions": 42,
+  "compiler": {
+    "version": "Lean 4.34.1",
+    "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "target_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "strict_module_warnings": 0,
+  "historical_failures": [
+    {
+      "run_id": 42432065694,
+      "cause": "200000-heartbeat whnf timeout in source proof: expensive ContDiff-to-Continuous composition"
+    },
+    {
+      "run_id": 42434082524,
+      "cause": "200000-heartbeat whnf timeout in independent consumer: untyped fixed-vector continuity composition"
+    }
+  ],
+  "proof_object_note": "The receipt records compiler object digests; binary proof objects are not included in the retained ZIP, so this review does not claim an independent object rehash or local Lean recompilation.",
+  "scope": "Original SO(9)-valued vector projection restricted to the literal source ninth-axis stabilizer is continuous in source PBW topology; source matrix and jointly continuous source vector action companion theorems.",
+  "not_established": [
+    "Perpendicular SO(8) restricted representation as a new exact target",
+    "SO(8) surjectivity and kernel-covering identification",
+    "topological Spin(8) classification",
+    "torus and B4/D4 branching",
+    "Fock-operator action",
+    "physical Hamiltonian domain equivalence",
+    "coercivity",
+    "positive eigenvalue existence"
+  ]
+}

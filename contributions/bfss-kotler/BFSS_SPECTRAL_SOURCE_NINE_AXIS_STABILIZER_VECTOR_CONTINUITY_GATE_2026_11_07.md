@@ -1,6 +1,6 @@
 # Original source axis-stabilizer vector-projection continuity gate
 
-Status: CANDIDATE, pending strict source and independent consumer compilation.
+Status: QUALIFIED at exact tested commit `74f8c0624d61527bda7aec3a2b38f8c13475e1d1`, strict run [#42435908276](https://github.com/etblink/math/actions/runs/42435908276). The original candidate and red-run narrative below is retained as historical prequalification evidence.
 Exact parent: `ebfecd8b57dae98eb3ed73fc10c1ae703d0abb33`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
 
@@ -162,3 +162,17 @@ Run [#42434082524](https://github.com/etblink/math/actions/runs/42434082524) tes
 **Bounded proposed repair:** retain all mathematical source declarations, complete source file, other 15 independent consumer examples, 125 original modules, 15 qualified inherited modules, physical and mathematical definitions, pinned dependencies and workflow unchanged. Replace *only* that consumer example's proof term with typed `hpair : Continuous (fun g : K => (g,z))` and `h : Continuous ((source9Axis8Stabilizer_vectorAction) ∘ (fun g => (g,z)))`, followed by `simpa only [Function.comp_def]`. Preserve the exact example statement, do not increase heartbeat or relax linter/axioms. Change only the consumer's Git blob/SHA-256 pins in the manifest. The static exact-closure preflight and all 16 adversarial validator tests pass on the staged proposed inputs. They are not a Lean compilation.
 
 A new complete strict cold source and independent-consumer run is mandatory. Keep both earlier red runs as failed evidence, and do not accept the new candidate before a PASS receipt and independent axiom/consumer review.
+
+## Qualification: run #42435908276
+
+**Status: QUALIFIED.** The owner reported [run #42435908276](https://github.com/etblink/math/actions/runs/42435908276) green. The workflow completed on exact tested commit \`74f8c0624d61527bda7aec3a2b38f8c13475e1d1\`, with the source and all sixteen independent consumer examples compiled under unchanged strict controls.
+
+The retained artifact is \`13599863920\`, ZIP SHA-256 \`91b79902b0237ae48958be328b51e88cc4e3e359e3039d7a6dc6421a932b2f9c\`. Its \`PASS\` receipt SHA-256 is \`45a292870378624e0f9d96b3393e1eb4f5f7d5add7e17b81aab1012d60a42bb0\`. Independent artifact review verified the complete 172 original, accepted, candidate and control Git-blob/SHA-256 input pins, all 142 successful cold compiler exits and log digests, 42 pinned package revisions, 146 strict source-and-consumer declaration/axiom reports and 17 completion markers. New-source and consumer logs contain no warnings or recovered \`sorryAx\`; only \`propext\`, \`Classical.choice\` and \`Quot.sound\` occur in the reports.
+
+Machine-readable scoped acceptance: [acceptance-42435908276.json](evidence/source-axis-stabilizer-2026-11-07/acceptance-42435908276.json). The archive does not include independent binary proof objects; their digests are compiler-reported in the retained receipt, and no fresh local Lean recompilation is claimed.
+
+**Failure archaeology preserved:** [#42432065694](https://github.com/etblink/math/actions/runs/42432065694) failed only after all accepted ancestors compiled, at the new source's resource-intensive smoothness coercion. [#42434082524](https://github.com/etblink/math/actions/runs/42434082524) then compiled the complete source but failed at a single independent consumer's untyped fixed-vector composition. Both were repaired by explicit source-typed continuity steps, not increased heartbeats or weakened proofs. Both previous red runs remain rejected evidence, not silently overwritten by this acceptance.
+
+**Qualified scope:** continuity of the exact original \`source9SpinVectorSpecialOrthogonalHom\` when restricted to the literal source fixed-axis stabilizer in PBW topology; the original source matrix and jointly continuous vector action are accepted companion declarations. This does not yet construct the perpendicular SO(8) target or prove its surjectivity, kernel, covering property, Spin(8) classification, source-aligned torus, B4/D4 branching, Fock operator action or physical spectral claims.
+
+**Next bounded gate:** construct and characterize the *actual* perpendicular \(SO(8)\) restriction of the existing \(SO(9)\) action, prove the restriction's surjectivity and exact \(\{1,-1\}\) kernel, and explicitly preserve the vector eight-module to prevent D4 triality ambiguity. First audit whether this should be split into an elementary restriction gate followed by a separate two-sheeted covering gate. No successor source or workflow is introduced by this documentation-only acceptance.
