@@ -75,8 +75,8 @@ jobs:
           evidence="$RUNNER_TEMP/bfss-op0"
           cd lean
           lake build OAI.LinearAlgebra.GaugeFixedProjectionOP0 2>&1 | tee "$evidence/source-build.log"
-          lake env lean --werror OAI/LinearAlgebra/GaugeFixedProjectionOP0.lean 2>&1 | tee "$evidence/source-axioms.log"
-          lake env lean --werror diagnostics/BFSSGaugeFixedProjectionOP0IndependentAudit.lean 2>&1 | tee "$evidence/consumer.log"
+          lake env lean -E warning OAI/LinearAlgebra/GaugeFixedProjectionOP0.lean 2>&1 | tee "$evidence/source-axioms.log"
+          lake env lean -E warning diagnostics/BFSSGaugeFixedProjectionOP0IndependentAudit.lean 2>&1 | tee "$evidence/consumer.log"
           if grep -E 'sorryAx|Lean\.ofReduceBool' "$evidence/source-axioms.log" "$evidence/consumer.log"; then
             echo "STOP: unexpected proof axiom detected"
             exit 1
