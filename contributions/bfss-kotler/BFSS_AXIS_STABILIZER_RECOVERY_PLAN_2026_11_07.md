@@ -274,3 +274,27 @@ package for the same source stabilizer. It precedes descent of perpendicular
 vector-action continuity and the actual SO(8) covering identification. Path
 connectedness alone does not establish those claims, Spin(8) classification,
 branching, an operator action or a physical spectral result.
+
+## Original-source compact quotient qualified: 42429216538
+
+The compact-parametrization successor qualifies at exact tested commit
+`8f22713d9e14a7e851badfb0f680056f1fab1987`. Independent retained-evidence
+review confirms all 141 cold builds, sixteen independent examples, 143 strict
+axiom reports, sixteen markers, 171 input pins and 42 dependency revisions,
+with only the three permitted foundational axioms and no compiler warnings.
+See [the scoped qualification](BFSS_SPECTRAL_SOURCE_NINE_AXIS_STABILIZER_QUOTIENT_GATE_2026_11_07.md#qualification-42429216538)
+and its machine-readable acceptance record.
+
+The literal original fixed-axis set is compact and closed in the established
+PBW topology. The unchanged original perpendicular eight-word formula, with
+its stabilizer membership certificate, is a continuous closed surjective
+quotient map onto the literal stabilizer subtype. Its universal continuity
+test and both central-sign preimage consumers are qualified. No chosen
+continuous decomposition or whole-nine-vector continuity premise was needed.
+
+The next bounded milestone is continuity of the existing original SO(9)-valued
+vector projection restricted to this stabilizer: prove its parameter composite
+continuous from the ordered source pair-action formula and descend via the
+qualified quotient map. That particular continuity assertion is not yet proved.
+Perpendicular SO(8) construction, surjectivity, kernel/covering identification,
+Spin(8) classification, branching and every physical conclusion remain separate.

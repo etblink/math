@@ -1,6 +1,7 @@
 # Original source axis-stabilizer compact parametrization and quotient gate
 
-Status: CANDIDATE, pending complete strict source and independent consumer compilation.
+Status: QUALIFIED at `8f22713d9e14a7e851badfb0f680056f1fab1987`,
+strict run [42429216538](https://github.com/etblink/math/actions/runs/42429216538).
 Exact parent: `a03066208190eac51fe00398c1ced690e134ccb7`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
 
@@ -133,3 +134,60 @@ two-sheeted covering, Spin(8) classification, triality-safe torus binding,
 branching, Fock-operator action, physical domains, coercivity and positive
 eigenvalue existence remain separate obligations. No successor stage is admitted
 by an abstract compactness argument or a green validator alone.
+
+## Qualification: 42429216538
+
+The owner reported the terminal green result. Independent retained-evidence
+review confirms PASS at exactly `8f22713d9e14a7e851badfb0f680056f1fab1987`.
+All 141 controlled modules cold compiled, including the complete new source
+and sixteen independent examples. All 143 strict axiom reports and sixteen
+completion markers match their exact inventories. Only propext, Classical.choice
+and Quot.sound occur; no compiler warnings or recovery axioms occur. Review
+verified all 171 input Git-blob/SHA-256 pins, 141 compiler-log digests and all
+42 dependency revisions against archived inputs and the successful receipt.
+The current checked source/control bytes also match those retained inputs.
+
+Artifact `13596904866` has independently verified ZIP SHA-256
+`9f4a5624fbad28202bd60add01135d05598d27010b4fd2fefdb4e47b1807525f`.
+The PASS receipt SHA-256 is
+`5744b43ed8e7bcbc8de04914b9ab3b85e3bc2e7a3bcb5c5f89cce89cb1a9e9f8`.
+See [acceptance-42429216538.json](evidence/source-axis-stabilizer-2026-11-07/acceptance-42429216538.json)
+for the scoped machine-readable record. Proof-object digests are recorded by
+the successful compiler receipt; the archive contains no binary proof objects,
+so no independent binary-object rehash or new local Lean compilation is claimed.
+
+The compactness, closedness, literal continuous closed surjection, quotient-map
+theorem and universal continuity test in this package are now qualified with
+their original source types and PBW topology. The consumer separately checks
+preimages of identity and the distinct actual negative center. This does not
+qualify continuity of any particular vector projection merely by naming it.
+
+## One next bounded milestone
+
+Prove continuity of the EXISTING original SO(9)-valued vector projection when
+restricted to the actual axis stabilizer, using the qualified quotient map.
+The proposed source-exact target is
+
+```lean
+source9Axis8Stabilizer_vectorSO9_continuous_pbw :
+  Continuous (fun g : {g : spinGroup source9Quadratic //
+    source9SpinVectorRepresentation g (source9CoordinateVector 8) =
+      source9CoordinateVector 8} =>
+    source9SpinVectorSpecialOrthogonalHom g.val)
+```
+
+The existing projection is the one defined in BFSSSourceNineOrientation, not
+a new abstract SO(9) action. Establish continuity of its composite with the
+original perpendicular eight-word map by the qualified ordered pair-action
+formula and continuous source-coordinate polynomial operations, then descend.
+Check all original matrix entries and the unchanged subtype topology explicitly.
+Independent consumers should check literal action agreement and the identity
+and actual negative-center images. Do not assume the desired projection
+continuity to prove its composite continuity.
+
+This milestone supplies a continuous original projection whose image fixes the
+axis; it precedes constructing the actual perpendicular SO(8) target. Its kernel,
+surjectivity onto that target, covering property, Spin(8) classification and torus
+binding remain separate. Stop on a changed projection/topology, reflection-order
+error, or a circular continuity premise. No successor Lean source or workflow
+run is introduced by this documentation-only qualification.
