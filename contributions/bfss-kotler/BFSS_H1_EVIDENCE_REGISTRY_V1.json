@@ -7,7 +7,7 @@
     "workbench": "research/bfss-original-gamma-faithfulness-20261107",
     "fcp_main_is_authoritative_only_for": "FCP program state and registers"
   },
-  "pilot_scope": "14 selected proof/evidence/retrieval records, now including qualified OP2b original SU2 fermion projection; not an exhaustive research catalogue.",
+  "pilot_scope": "15 curated proof/evidence/retrieval records, including qualified OP0–OP2c at immutable tested commits; not an exhaustive research catalogue.",
   "starting_branch_head": "d79162ef4579ea645d48c64fb811099b33d10d09",
   "status_vocabulary": [
     "QUALIFIED_AT_COMMIT",
@@ -20,7 +20,7 @@
     "NOT_SCANNED",
     "UNKNOWN"
   ],
-  "record_count": 14,
+  "record_count": 15,
   "records": [
     {
       "id": "op0-qualified-projection",
@@ -739,6 +739,91 @@
       ],
       "scope_limit": "Finite-dimensional fermionic original SU(2) fixed-space orthogonal projection on literal Fermion 2. Not nonzero until OP2c qualifies, no Spin(9) commutation, physical bosonic L² or Hamiltonian/mass gap.",
       "location_url": "https://github.com/etblink/math/blob/0dc811f4e4764b6846e033242fddde24e8bc92db/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean"
+    },
+    {
+      "id": "op2c-original-nonzero-vacuum-qualified",
+      "title": "OP2c nonzero original SU(2)-invariant Fock vacuum and nonzero gauge-fixed fermionic projection",
+      "kind": "lean_proof_bundle",
+      "status": "QUALIFIED_AT_COMMIT",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "f84d092b2c71099cda790ee64083b5b81eb360d9",
+      "source": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean",
+        "blob_sha": "a16d3573b737bb4453e42b0b543d63cbbac1cd1b",
+        "symbols": [
+          "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionVacuum_ne_zero",
+          "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionVacuum_fixed",
+          "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionVacuum_mem_fixed",
+          "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionGaugeProjection_vacuum",
+          "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionGaugeProjection_ne_zero"
+        ]
+      },
+      "related_sources": [
+        {
+          "role": "independent_consumer",
+          "path": "lean/diagnostics/BFSSOP2cNonzeroOriginalGaugeVacuumIndependentAudit.lean",
+          "blob_sha": "30575647ba05dd4f2507bfd4e05e06362b594401"
+        },
+        {
+          "role": "strict_workflow",
+          "path": ".github/workflows/bfss-op2c-original-nonzero-gauge-vacuum-strict.yml",
+          "blob_sha": "d443eef113483a77c2d38a8fe935a89a7767ae52"
+        }
+      ],
+      "source_carrier": "Literal OAI.BFSSQuantum.Fermion 2 and original GaugeGroup 2. G4-B vacuum fockAlgebraToBFSS (1 : Space 23), unitary G4-E SU2 action, canonical OP2b fixed projection.",
+      "dependency_roots": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP2bOriginalGaugeProjectionBridge",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4BFermionLinearTransportProbe"
+      ],
+      "qualification": {
+        "run_id": 42530241914,
+        "run_attempt": 1,
+        "conclusion": "success",
+        "tested_sha": "f84d092b2c71099cda790ee64083b5b81eb360d9",
+        "workflow_path": ".github/workflows/bfss-op2c-original-nonzero-gauge-vacuum-strict.yml",
+        "consumer_path": "lean/diagnostics/BFSSOP2cNonzeroOriginalGaugeVacuumIndependentAudit.lean",
+        "lean_version": "4.34.1",
+        "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "axioms_observed": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "forbidden_axioms_observed": false,
+        "source_build_jobs": 9062,
+        "evidence_artifact_id": 13636949395,
+        "evidence_digest": "sha256:663e5d187b9e326fb904f47fb0054a364b00b3e7cb9f5966bac0ce753fe4daa5",
+        "artifact_expires_at": "2026-11-22T22:38:08Z",
+        "warning_gate": "Direct Lean source and independent-consumer warning check passed after one-line deprecated API repair; ancillary package checkout warnings are not source diagnostics."
+      },
+      "supersedes": [],
+      "failure_mode": {
+        "classification": "PREQUALIFICATION_CI_REPAIR",
+        "prior_red_run_id": 42528690361,
+        "prior_red_tested_sha": "c5a50d12ebf1e5a50f015ca487461c5f1c6d9129",
+        "diagnostic": "Source deprecated ContinuousLinearMap.zero_apply; all five theorem reports compiled, but strict warning gate rejected.",
+        "repair_commit": "f84d092b2c71099cda790ee64083b5b81eb360d9",
+        "lesson": "Replace deprecated API with unqualified zero_apply; never weaken the strict warning gate."
+      },
+      "keywords": [
+        "OP2c",
+        "nonzero vacuum",
+        "Fermion 2",
+        "SU2",
+        "SU(2)",
+        "gauge invariant",
+        "original",
+        "originalFermionVacuum_ne_zero",
+        "fixed projection",
+        "projection nonzero",
+        "nonzero fixed vector",
+        "42530241914",
+        "qualified",
+        "API warning"
+      ],
+      "scope_limit": "Finite-dimensional original fermionic gauge invariant vacuum and nonzero projection only; not a nonzero full physical L2 wavefunction, genuine Spin(9) action, closed Hamiltonian or mass gap.",
+      "location_url": "https://github.com/etblink/math/blob/f84d092b2c71099cda790ee64083b5b81eb360d9/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean"
     }
   ]
 }
