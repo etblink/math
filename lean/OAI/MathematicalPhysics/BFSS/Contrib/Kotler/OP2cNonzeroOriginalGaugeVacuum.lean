@@ -67,7 +67,7 @@ theorem originalFermionGaugeProjection_ne_zero :
   have hv := congrArg
     (fun T : Fermion 2 →L[ℂ] Fermion 2 => T fermionVacuum) hZero
   rw [originalFermionGaugeProjection_vacuum,
-    ContinuousLinearMap.zero_apply] at hv
+    zero_apply] at hv
   exact originalFermionVacuum_ne_zero hv
 
 #print axioms originalFermionVacuum_ne_zero
