@@ -15,6 +15,9 @@ needed for these fixed-space statements; the physical binding will require it.
 -/
 
 set_option autoImplicit false
+-- Local typeclass witnesses for complete finite-dimensional subspaces are required
+-- below; the generic have/let style suggestion does not apply to these witnesses.
+set_option linter.style.haveILetI false
 
 namespace FCP.BFSSGaugeFixedProjectionOP0
 noncomputable section
@@ -70,11 +73,12 @@ theorem gaugeFixedProjection_isStarProjection [CompleteSpace F]
   haveI : CompleteSpace (gaugeFixedSubspace U) :=
     FiniteDimensional.complete ℂ (gaugeFixedSubspace U)
   change IsStarProjection (gaugeFixedSubspace U).starProjection
-  exact Submodule.isStarProjection_starProjection
+  exact isStarProjection_starProjection
 
 /-- Universal OP0 range bound: any continuous linear operator with pointwise
 gauge-fixed output has range inside the literal fixed subspace. In particular,
 no idempotence or self-adjointness hypothesis is needed for this implication. -/
+omit [FiniteDimensional ℂ F] in
 theorem range_le_gaugeFixedSubspace (U : G →* Module.End ℂ F)
     (T : F →L[ℂ] F) (hT : ∀ (g : G) (v : F), U g (T v) = T v) :
     T.range ≤ gaugeFixedSubspace U := by
