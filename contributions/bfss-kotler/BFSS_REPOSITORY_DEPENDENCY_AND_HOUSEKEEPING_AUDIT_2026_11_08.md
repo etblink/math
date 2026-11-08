@@ -173,3 +173,42 @@ Proceed in small units: **H1 pilot** → assess retrieval improvement → **H2 O
 **Success metric:** someone unfamiliar with prior chat history can locate the *correct source*, recover its assumptions, know what passed and failed at the *exact tested commit*, and identify the next genuine proof obligation with substantially less reconstruction.
 
 **Preservation scope for this addendum:** documentation-only strategy and acceptance criteria. No source, workflow, pin, proof, original upstream file, branch ref (other than this documentation commit), or published work is changed.
+
+
+---
+
+## H1 pilot qualification result — 2026-11-08
+
+**Disposition:** **H1 BOUNDED PILOT ACCEPTED**, based on [strict registry run #42522165588](https://github.com/etblink/math/actions/runs/42522165588), SUCCESS, attempt 1, exact tested commit `4c1e088ac0b68ffdcbe01f242e7d638b3f6553f6`. This is an **evidence retrieval/verification gate**, not a new BFSS mathematical theorem or a comprehensive repository census.
+
+**Artifacts on research branch only:**
+- [BFSS_H1_EVIDENCE_REGISTRY_V1.json](BFSS_H1_EVIDENCE_REGISTRY_V1.json) — 10 curated, typed evidence records spanning qualified OP0/OP1, original BFSS carriers, separate OP2 vacuum candidate, red CI history, rejected Cl9 shortcut, unresolved OP2 premise and FCP source/state snapshots.
+- [BFSS_H1_COLD_START_TESTS_V1.json](BFSS_H1_COLD_START_TESTS_V1.json) — six independent-context questions with expected record IDs and explicit top-K budgets.
+- [h1_evidence_registry.py](tools/h1_evidence_registry.py) — stdlib-only, read-only local search, structural/epistemic checks, cold-start tests and GitHub remote blob/run/digest checks.
+- [BFSS H1 strict gate](../../.github/workflows/bfss-h1-evidence-registry-strict.yml) — source and fixture SHA-256 receipts, local check, remote check, and search smoke tests, scoped to this research branch.
+
+**Observed acceptance evidence from actual workflow logs:**
+```text
+STATIC PASS: 10 uniquely pinned, typed records
+COLD-START PASS: 6/6 defined queries returned all required records
+REMOTE PASS: 15 pinned source files, 3 exact CI runs, 2 available evidence digests
+```
+All workflow steps succeeded, including the standalone search smoke tests. OP0's accepted run is #42516531636 at `93e58dab8d077306250e7fb1140dc1dc1a5dd8c2`, and corrected warning-clean OP1 is #42518687725 at `44ea6b8001209d92f0e023a7f30f5125cde127e9`. The registry does not promote other source candidates.
+
+**Navigation baseline compared with H1 pilot (not equivalent sample populations):**
+- Old cross-repo branch locator: **11** selected entry points, **0** pinned source blob hashes, **0** independent-consumer fields, **2** run IDs, **0** explanatory failure-mode fields.
+- New H1 pilot: **10** selected records, **10** pinned primary source blobs, **2** independent-consumer/strict qualification references, **2** accepted gate runs, **3** explanatory failure/blocker records (one historical CI red, one rejected route, one open prerequisite). Additional related-source blobs are verified remotely.
+- H1's six predefined retrieval queries found every specified record within the stated top-K ranking budget. After checkout, each local query requires **no network request**; remote source/evidence validation deliberately does use GitHub API calls.
+- A same-query wall-clock speed comparison with manual branch browsing was **not measured**. The improvement claim is therefore **field/evidence coverage and tested retrieval completeness for this pilot**, not a general time-saving or comprehensive discoverability metric.
+
+**Use on a local checkout:**
+```bash
+python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --cold-test
+python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --search 'OP2 original SU2 Fock gauge binding'
+GITHUB_TOKEN=<read-only-token> python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --remote
+```
+The token is optional for public GitHub access but avoids anonymous rate limits. Never print or commit tokens.
+
+**Limits / STOP:** Ten records are not 420 modules or 99 branch histories. Keyword ranking is a small explicit index, not a semantic theorem prover or exhaustive search. A verified GitHub blob means the cited bytes exist at the pinned commit; it does not upgrade a candidate to a qualified theorem. The two artifact SHA-256 digests are durable metadata but the actual uploaded artifacts have expiration dates. Independent human cold-start usability and historical-failure coverage beyond the example remain untested. No new live Project Observatory control plane is authorized.
+
+**Next bounded objective:** H2 source closure and lifecycle classification. Start by mapping the exact pinned OP2 original-gauge/vacuum ancestry, then join that closure to the existing 420-module graph and gate evidence. Record missing modules and unqualified premises rather than bulk-importing or treating absences as failures. Continue to prohibit edits to `etblink/math:main`, FCP mutations, deletes, broad workflow retirements, source moves, and history rewrites without separate authorization.
