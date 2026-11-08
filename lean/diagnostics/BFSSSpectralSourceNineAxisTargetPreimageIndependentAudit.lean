@@ -54,7 +54,8 @@ private theorem mixed_moves_axis :
       -source9CoordinateVector 8 := by
   have h8 : QuadraticMap.polar source9Quadratic
       (source9CoordinateVector 8) (source9CoordinateVector 8) = 2 := by
-    norm_num [source9Quadratic_polar_dot, source9CoordinateVector, single_dotProduct]
+    rw [QuadraticMap.polar_self]
+    norm_num [source9CoordinateVector_unit, two_smul]
   have hline : (2 : ℝ) • source9CoordinateVector 8 - source9CoordinateVector 8 =
       source9CoordinateVector 8 := by simp [two_smul]
   have h0 : QuadraticMap.polar source9Quadratic
@@ -108,7 +109,7 @@ example (A : SO9)
   intro i j
   change (source9SpinVectorRepresentation g (source9CoordinateVector j)) i = (A : M9) i j
   have h := congrFun (haction (source9CoordinateVector j)) i
-  simpa only [source9CoordinateVector, Matrix.mulVec_single_one] using h
+  simpa only [source9CoordinateVector, Matrix.mulVec_single_one, Matrix.col_apply] using h
 
 example (A : SO9)
     (hfix : (A : M9).mulVec (source9CoordinateVector 8) = source9CoordinateVector 8) :

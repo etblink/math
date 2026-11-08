@@ -158,3 +158,44 @@ fibers/kernel, quotient/covering packaging and coordinate SO(8) equivalence rema
 separate obligations. No topological Spin(8) classification, torus/branching,
 Fock-operator action, physical domain correspondence, coercivity, confinement,
 mass gap or positive eigenvalue theorem follows from the candidate alone.
+
+## Retained consumer red and bounded repair: 42443227754
+
+Run [42443227754](https://github.com/etblink/math/actions/runs/42443227754)
+tested `ced3106928351500f8d996284c92b49fbe265597`. All 100 original/inherited
+ancestors and the COMPLETE new source compiled successfully. Its four strict
+root reports contain only the permitted foundational axioms. The independent
+consumer then failed at two interfaces; the receipt is INCOMPLETE and the
+complete gate remains unqualified.
+
+The first diagnostic, original consumer line 56, is a residual
+source9Quadratic (Pi.single 8 1)=1 goal in the mixed-axis self-polar calculation.
+Expanding the coordinate vector had hidden the qualified unit-coordinate fact.
+Use QuadraticMap.polar_self followed by source9CoordinateVector_unit explicitly.
+The second diagnostic, line 111, is the mismatch between A.col j i and A i j
+after the basis-vector matrix evaluation. Add the explicit Matrix.col_apply
+rewrite. Both retain the original consumer statements and concrete tests.
+
+Pinned interfaces inspected: QuadraticForm/Basic.lean, blob
+`ba86ff2cf97a7e31b5f653aef111f34d53964b9b`, states polar Q x x = 2 • Q x;
+LinearAlgebra/Matrix/Defs.lean, blob
+`b1064c6515b743afc9a5078bea3785b2dd71d254`, states A.col j i = A i j.
+The main SOURCE remains byte-identical. Only these consumer proof bodies,
+the consumer blob/SHA-256 pins, and this failure record change. No declaration
+type, example inventory, source dependency, workflow, validator, proof budget,
+instance or mathematical premise changes.
+
+Artifact `13603230610` has independently verified ZIP SHA-256
+`ec03e4d797730716f2c1249611615daeae84a24f4049e07e617816a53514d5d4`.
+Review checked ZIP integrity, all 132 input Git-blob/SHA-256 pins and current
+bytes, all 102 compiler-log hashes, all successful strict ancestor/source report
+inventories and all 42 locked package revisions. Source log SHA-256:
+`ff27b332b73f107ee5c464726924618aa82b2489c10fed44b669a200e64987d1`.
+Failed consumer log SHA-256:
+`ce1194dc2714fc74b97509a6e3de57f477440815b2322fe4fd0e3e8832dc988d`.
+INCOMPLETE receipt SHA-256:
+`f707899d9e1a730aa853e6c03b7d9eac9de2a392cac110c7740b9d480bd161f3`.
+
+The source-only pass and the consumer's printed markers/repeated root reports
+do not qualify an incomplete consumer. A fresh complete strict source/consumer
+run is required. The owner supplies terminal results; do not poll CI.
