@@ -1,6 +1,7 @@
 # Original source Spin preimages of arbitrary fixed-axis SO(9) targets
 
-Status: CANDIDATE, pending complete strict source and independent consumer compilation.
+Status: QUALIFIED at `bafe84205a6197b8e01fe796e1847274714230e6`,
+strict run [42444640879](https://github.com/etblink/math/actions/runs/42444640879).
 Exact parent: `32cea17d8ea8510c58fee656866cf2b79c3778f7`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
 
@@ -199,3 +200,58 @@ INCOMPLETE receipt SHA-256:
 The source-only pass and the consumer's printed markers/repeated root reports
 do not qualify an incomplete consumer. A fresh complete strict source/consumer
 run is required. The owner supplies terminal results; do not poll CI.
+
+## Qualification: 42444640879
+
+The owner reported the terminal green result. Independent retained-evidence
+review confirms PASS at exactly `bafe84205a6197b8e01fe796e1847274714230e6`.
+All 102 controlled modules cold compiled, including the complete source and all
+sixteen independent examples. All 76 strict axiom reports and eight completion
+markers match their exact inventories. Only propext, Classical.choice and
+Quot.sound occur; no compiler warnings or recovery axioms occur. Review checked
+all 132 input Git-blob/SHA-256 pins, 102 compiler-log digests and all 42 locked
+dependency revisions against retained inputs and the successful receipt.
+
+Artifact `13603188128` has independently verified ZIP SHA-256
+`ebf463fc9e0d502ed9e49aaef311fc2488df13d977d66af60f291cc617f9ca63`.
+The PASS receipt SHA-256 is
+`724b123ab856821a67ab1de524425ce6acdbed6ed1068485729158ac1fd3243e`.
+See [acceptance-42444640879.json](evidence/source-axis-stabilizer-2026-11-07/acceptance-42444640879.json)
+for the scoped machine-readable record. Binary proof objects are not in the
+archive; their digests are recorded by the successful compiler receipt. No
+independent binary-object rehash or new local Lean compilation is claimed.
+
+Every arbitrary original SO(9) matrix fixing the actual ninth axis now has a
+genuine original source Spin preimage in the literal stabilizer, with equality
+of its entire original nine-vector action. The stronger endpoint retains the
+exact original even Q-unit Clifford word and length bound eight. Consumers
+include exact original SO(9) matrix equality, the distinct negative center's
+vector action, the perpendicular pair and rejecting mixed-axis example.
+
+The earlier red 42443227754 remains preserved and rejected. The main source is
+byte-identical to that run's successfully compiled source. Only the two consumer
+proof conversions were repaired; all theorem and example statements, inherited
+files, pins and budgets remained unchanged.
+
+## One next bounded milestone
+
+Package the original source point stabilizer and original matrix fixed-axis
+target as subgroups with EXACTLY the already used predicates. Define their
+projection homomorphism by the unchanged source9SpinVectorSpecialOrthogonalHom.
+Use this qualified existence theorem for surjectivity and the qualified original
+full-action two-sign theorem for its exact fibers and kernel.
+
+The two kernel elements must be the distinct source identity and actual
+source9NegativeCentral, with their original Clifford values and source membership.
+Bridge subgroup carriers to the qualified literal subtype without changing its
+PBW topology. Retain the original SO(9) target and vector labels. Independent
+consumers must check exact projection values, both signs, arbitrary target
+preimages and mixed-axis rejection. Do not define a point stabilizer as a kernel
+of vector evaluation: evaluation at the axis is not an additive group homomorphism.
+
+This is the bounded algebraic projection/fiber gate. Its continuity can then be
+transported from the existing restricted original projection theorem, before
+the separate quotient-covering gate. A two-sign set fiber is not by itself a
+topological covering. Coordinate SO(8) identification, triality control, torus,
+branching and all physical spectral claims remain separate. This acceptance
+record introduces no successor Lean source or workflow run.

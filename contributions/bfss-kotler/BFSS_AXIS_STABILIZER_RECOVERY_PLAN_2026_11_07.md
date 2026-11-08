@@ -320,3 +320,26 @@ fixed-axis target, by generic target Cartan factorization and the accepted
 original even-list lift. Full-action equality must precede deducing stabilizer
 membership. Source-preimage existence, subgroup surjectivity, exact fibers,
 covering, coordinate SO(8) equivalence and all physical claims remain unqualified.
+
+## Arbitrary fixed-axis target preimages qualified: 42444640879
+
+At exact tested commit `bafe84205a6197b8e01fe796e1847274714230e6`, every
+arbitrary original SO(9) target fixing the ninth axis has a genuine original
+source Spin stabilizer preimage, agreeing on every original vector and admitting
+an exact original even Q-unit Clifford word of length at most eight. Independent
+evidence review confirms 102 cold builds, sixteen independent examples,
+76 strict axiom reports, eight markers, 132 input pins and 42 package revisions,
+with only the permitted foundational axioms and no compiler warnings. See
+[the scoped acceptance](BFSS_SPECTRAL_SOURCE_NINE_AXIS_TARGET_PREIMAGE_GATE_2026_11_07.md#qualification-42444640879)
+and its machine-readable record.
+
+The earlier red 42443227754 is retained. Its main source passed unchanged;
+two consumer conversions were repaired using the qualified Q-unit basis fact,
+polar_self and explicit Matrix.col_apply. No statement, source proof, dependency
+or budget changed. Negative-center and mixed-axis consumers now compile fully.
+
+The next bounded milestone is subgroup packaging of the EXACT source and target
+stabilizers, the unchanged original projection, its surjectivity and exact
+two-sign fibers/kernel. Continuity transfer and topological covering follow as
+separate obligations. Coordinate SO(8), Spin(8) classification, torus/branching
+and every physical spectral assertion remain outside this qualification.
