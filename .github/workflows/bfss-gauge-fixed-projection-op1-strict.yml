@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: bfss-op1-gauge-fixed-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   mathlib-only-op1:
@@ -78,8 +78,7 @@ jobs:
           lake env lean diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit.lean 2>&1 | tee "$evidence/consumer.log"
           # Lean 4.34.1 does not turn every warning fatal with -E warning.
           # Match only direct Lean source/consumer diagnostics, not dependency checkout warnings.
-          if grep -E '^(OAI/LinearAlgebra/GaugeFixedProjectionOP1\\.lean|diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit\\.lean):[0-9]+:[0-9]+: warning:' \\
-              "$evidence/source-axioms.log" "$evidence/consumer.log"; then
+          if grep -E '^(OAI/LinearAlgebra/GaugeFixedProjectionOP1[.]lean|diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit[.]lean):[0-9]+:[0-9]+: warning:' "$evidence/source-axioms.log" "$evidence/consumer.log"; then
             echo "STOP: OP1 source or consumer emitted a Lean warning" >&2
             exit 1
           fi
