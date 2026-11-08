@@ -7,7 +7,7 @@
     "workbench": "research/bfss-original-gamma-faithfulness-20261107",
     "fcp_main_is_authoritative_only_for": "FCP program state and registers"
   },
-  "pilot_scope": "10 deliberately selected cross-branch/cross-repo artifacts; does NOT enumerate every theorem, CI gate, historical commit or source declaration.",
+  "pilot_scope": "11 deliberately selected cross-branch/cross-repo artifact records, including frozen OP2 source ancestry; not exhaustive.",
   "starting_branch_head": "d79162ef4579ea645d48c64fb811099b33d10d09",
   "status_vocabulary": [
     "QUALIFIED_AT_COMMIT",
@@ -20,7 +20,7 @@
     "NOT_SCANNED",
     "UNKNOWN"
   ],
-  "record_count": 10,
+  "record_count": 11,
   "records": [
     {
       "id": "op0-qualified-projection",
@@ -474,6 +474,63 @@
       ],
       "scope_limit": "Historical framework source register; not an OP2 dependency-resolution or proof-status record.",
       "location_url": "https://github.com/etblink/Foundational-Convergence-Program/blob/cf06212a57db0ceffad74bd78280a8a240856a17/SOURCE_REGISTER.md"
+    },
+    {
+      "id": "h2-op2-pinned-ancestry",
+      "title": "H2 source-verified OP2 original Fock/gauge ancestor graph (38 modules)",
+      "kind": "source_dependency_inventory",
+      "status": "SOURCE_VERIFIED_NOT_THEOREM",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "35a12288c463bdd18065ba2b6cb7d215f66fdcc2",
+      "source": {
+        "path": "contributions/bfss-kotler/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json",
+        "blob_sha": "4fc2900b2799797eaf95e605ecaff094753ddaba",
+        "symbols": []
+      },
+      "related_sources": [
+        {
+          "role": "read_only_source_walker",
+          "path": "contributions/bfss-kotler/tools/h2_op2_ancestry.py",
+          "blob_sha": "ba99a7fe445969597718c382a45a380d72e8f53b"
+        },
+        {
+          "role": "source_audit_workflow",
+          "path": ".github/workflows/bfss-h2-op2-source-ancestry.yml",
+          "blob_sha": "dcd1b34d8ecc855e6184f492c031cf4bdc405f80"
+        }
+      ],
+      "source_carrier": "Original BFSS SU(2) Fock and gauge source lineage in pinned OperatorDependencies snapshot",
+      "dependency_roots": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K2ANonzeroVacuumRadialProfileProbe"
+      ],
+      "qualification": null,
+      "source_audit": {
+        "run_id": 42523263158,
+        "run_attempt": 1,
+        "tested_sha": "35a12288c463bdd18065ba2b6cb7d215f66fdcc2",
+        "conclusion": "success",
+        "source_graph_sha256": "d73b8dd0bf5d448a4bfb583f6de30fb3fcde54b12be8d22dfdee5502cc45a95e"
+      },
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "H2",
+        "OP2",
+        "38 modules",
+        "source graph",
+        "source ancestry",
+        "dependency closure",
+        "26 modules",
+        "Fock",
+        "SU2",
+        "seven boundaries",
+        "frozen snapshot",
+        "CI replay",
+        "42523263158"
+      ],
+      "scope_limit": "All 38 nodes verified within OperatorDependencies namespace; seven immediate outside imports separately identified, not recursively traversed. Source inventory only; not Lean qualification.",
+      "location_url": "https://github.com/etblink/math/blob/35a12288c463bdd18065ba2b6cb7d215f66fdcc2/contributions/bfss-kotler/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json"
     }
   ]
 }

@@ -88,6 +88,15 @@ def check_schema(db: dict) -> None:
             assert_true(q.get("forbidden_axioms_observed") is False, f"{loc}: forbidden axioms not cleared")
         else:
             assert_true(q is None, f"{loc}: nonqualified record carries accepted qualification")
+        audit = r.get("source_audit")
+        if audit is not None:
+            assert_true(r["status"] == "SOURCE_VERIFIED_NOT_THEOREM",
+                        f"{loc}: a source audit cannot masquerade as a theorem qualification")
+            assert_true(audit.get("tested_sha") == r["exact_commit"]
+                        and audit.get("run_id", 0) > 0
+                        and audit.get("run_attempt", 0) > 0
+                        and re.fullmatch(r"[a-f0-9]{64}", audit.get("source_graph_sha256", "")),
+                        f"{loc}: source audit run/hash not pinned")
         if r["status"] == "HISTORICAL_FAILURE":
             f = r.get("failure_mode")
             assert_true(isinstance(f, dict) and f.get("run_conclusion") == "failure"
@@ -188,6 +197,14 @@ def remote_verify(db: dict) -> None:
                 assert_true(datetime.now(timezone.utc) > expiration,
                             f"{loc}: missing artifact before expected expiry")
                 print(f"RETAINED HASH ONLY (artifact expired): {loc}")
+        audit = r.get("source_audit")
+        if audit:
+            run = api_json(f"/repos/{repo}/actions/runs/{audit['run_id']}", cache)
+            assert_true(run.get("head_sha") == audit["tested_sha"]
+                        and run.get("conclusion") == audit["conclusion"] == "success"
+                        and run.get("run_attempt") == audit["run_attempt"],
+                        f"{loc}: source audit run/status/commit mismatch")
+            runs_checked.add(audit["run_id"])
         if r["status"] == "HISTORICAL_FAILURE":
             f = r["failure_mode"]
             run = api_json(f"/repos/{repo}/actions/runs/{f['run_id']}", cache)
