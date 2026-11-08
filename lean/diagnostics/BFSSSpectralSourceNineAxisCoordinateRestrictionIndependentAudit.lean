@@ -72,8 +72,10 @@ example (A : H) (j : Fin 8) : M A (Fin.last 8) j.castSucc = 0 :=
   source9Axis8Target_lastRow_castSucc A j
 
 example (A : H) : M A (Fin.last 8) (Fin.last 8) = 1 := by
-  rw [source9Axis8Target_lastColumn]
-  norm_num [source9CoordinateVector]
+  calc
+    M A (Fin.last 8) (Fin.last 8) = source9CoordinateVector 8 (Fin.last 8) :=
+      source9Axis8Target_lastColumn A (Fin.last 8)
+    _ = 1 := by norm_num [source9CoordinateVector]
 
 example (A : H) (i j : Fin 8) :
     source9Axis8CoordinateBlock A i j = M A i.castSucc j.castSucc := rfl
