@@ -31,7 +31,7 @@ def collect() -> dict:
         data = p.read_bytes()
         body = data.decode("utf-8-sig")
         mentions = sorted(set(REFERENCE.findall(body)))
-        missing = [ref for ref in mentions if not (ROOT / ref).is_file()]
+        # A generated index may name its own output before that file exists.\n        missing = [ref for ref in mentions if ref != "contributions/bfss-kotler/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json"\n                   and not (ROOT / ref).is_file()]
         records.append({
             "path": p.relative_to(ROOT).as_posix(),
             "git_blob_sha": git_blob_sha(data),
