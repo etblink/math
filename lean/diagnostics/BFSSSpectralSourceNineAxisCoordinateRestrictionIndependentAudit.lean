@@ -75,7 +75,12 @@ example (A : H) : M A (Fin.last 8) (Fin.last 8) = 1 := by
   calc
     M A (Fin.last 8) (Fin.last 8) = source9CoordinateVector 8 (Fin.last 8) :=
       source9Axis8Target_lastColumn A (Fin.last 8)
-    _ = 1 := by norm_num [source9CoordinateVector]
+    _ = 1 := by
+      have hlast : (Fin.last 8 : SpaceIndex) = (8 : SpaceIndex) := by decide
+      have hone : source9CoordinateVector 8 (8 : SpaceIndex) = (1 : ℝ) :=
+        (Pi.single_apply (8 : SpaceIndex) (1 : ℝ) (8 : SpaceIndex)).trans
+          (ite_eq_left (rfl : (8 : SpaceIndex) = (8 : SpaceIndex)))
+      exact (congrArg (source9CoordinateVector 8) hlast).trans hone
 
 example (A : H) (i j : Fin 8) :
     source9Axis8CoordinateBlock A i j = M A i.castSucc j.castSucc := rfl

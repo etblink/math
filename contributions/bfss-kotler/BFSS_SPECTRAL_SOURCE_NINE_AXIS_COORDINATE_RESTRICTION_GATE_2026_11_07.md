@@ -381,3 +381,53 @@ compilation; it does not reuse a successful proof result from this attempt.
 The historical attempt remains rejected. Await the owner's report of
 the retry outcome without polling. No new mathematical qualification follows
 from an accepted rerun request.
+
+
+## Strict red #42464034784, attempt 2 — final consumer scalar conversion
+
+The owner's reported retry is **RED** at the same tested commit
+`3085d66bcd22972d1455582d1c8b6fa52e3b5768`. Unlike attempt 1, the
+environment restored successfully. All 134 inherited modules and the unchanged
+fourteen-root source compiled. The independent consumer alone failed at
+line 78 with `Pi.single 8 1 (Fin.last 8) = 1`. Its preceding typed
+matrix-to-coordinate equality now succeeds; the final normalization step
+was incomplete. Imported source-root reports and the printed marker do not
+qualify an anonymous consumer with compiler exit 1. The receipt remains
+`INCOMPLETE`, with 135 of 136 compiler exits zero.
+
+Artifact [13620159781](https://github.com/etblink/math/actions/runs/42464034784/artifacts/13620159781)
+was downloaded and ZIP/CRC verified at SHA-256
+`49a3dbdbed792e2bbd2f2e5d09dd0c74617ceb05e092b9390db4814a5979b0d5`.
+All 166 archived input pins, 136 ordered log digests, ten successful
+report/marker sets and 42 installed dependency revisions were checked.
+The [rejected attempt-2 record](evidence/source-axis-stabilizer-2026-11-07/strict-failure-42464034784-attempt-2.json)
+preserves the actual consumer error and the source's component success.
+No archived object binaries were available for independent rehashing.
+
+The [causal review and implemented recovery plan](BFSS_COORDINATE_RESTRICTION_ATTEMPT_REVIEW_AND_RECOVERY_PLAN_2026_11_08.md)
+compares this sequence with the evergreen, recent procedural review and
+V9Z/F10BY/F10DF recoveries. It records an avoidable procedural error: repairing
+the first calc equality without explicitly checking the final index conversion.
+
+Keep source blob `7df84b75d2d18fca18cc34e515359aa70e994cb0` fixed.
+Replace only the final proof in the existing consumer example with:
+a checked equality `Fin.last 8 = (8 : SpaceIndex)`; a typed real
+singleton same-coordinate equality using pinned `Pi.single_apply` and
+nondeprecated Core `ite_eq_left`; and `congrArg` transport through
+the actual original coordinate function. All 26 consumer propositions,
+imports, root inventories, original carriers/actions, accepted ancestry,
+workflow, runner, dependency pins and proof budgets remain unchanged.
+
+Proposed consumer blob `14317fec3f6034baa870f5dbe436587e214157e6`,
+SHA-256 `f64aced066d6d56aafad5eb44bb45d32d701aa365432edecf9a39aca9723ae9a`.
+Only its two manifest integrity fields change. Static source-closure preflight
+and all ten validator tests pass in the reconstructed pinned closure. These are
+static checks, not local Lean compilation or mathematical qualification.
+
+Submit one complete unchanged strict procedure at the new tested commit.
+Accept only all 136 cold builds, all 26 consumers, 121 strict reports,
+eleven markers and a complete receipt with the permitted axioms and no
+unexpected warnings. If the same scalar/index boundary persists, stop full
+retries and obtain a minimal working typed reproducer. Do not poll CI.
+No SO(8) inverse, Spin(8) classification or physical assertion follows here.
+

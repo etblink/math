@@ -418,3 +418,23 @@ in [the coordinate transfer and inverse audit](BFSS_SOURCE_NINE_COORDINATE_TRANS
 This is prospective research, with no diagnostic verdict or new qualification;
 original source and all verification controls remain frozen pending the owner's
 reported diagnostic outcome.
+
+
+## 2026-11-08 — Coordinate restriction recovery after attempt-level review
+
+The [coordinate causal review and recovery plan](BFSS_COORDINATE_RESTRICTION_ATTEMPT_REVIEW_AND_RECOVERY_PLAN_2026_11_08.md)
+preserves the current failure sequence, evergreen/historical-method comparison,
+implemented bounded plan and explicit stop conditions. Run 42464034784 attempt 1
+failed on a toolchain download HTTP 504 before any proof compilation; attempt 2
+restored the environment, compiled all 134 ancestors plus the unchanged source,
+then failed the consumer's final finite-index/scalar equality. Both attempts
+remain rejected; their causes must not be conflated.
+
+The candidate repair preserves the entire source, all 26 consumer propositions,
+dependency pins and strict controls. Only the last subproof of one consumer
+example and its integrity pins change. It composes an explicit checked last-index
+equality with the pinned scalar singleton evaluation. Static preflight and ten
+validator tests pass; the full 136-module strict source/consumer run remains
+required. See the [gate's exact attempt-2 record and acceptance rules](BFSS_SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_RESTRICTION_GATE_2026_11_07.md#strict-red-42464034784-attempt-2--final-consumer-scalar-conversion).
+No downstream theorem is qualified or launched by this recovery.
+

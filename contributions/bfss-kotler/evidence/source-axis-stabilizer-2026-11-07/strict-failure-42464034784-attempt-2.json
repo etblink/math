@@ -1,0 +1,105 @@
+{
+  "schema": "bfss-coordinate-strict-rejected-consumer-v1",
+  "run_id": 42464034784,
+  "attempt": 2,
+  "tested_sha": "3085d66bcd22972d1455582d1c8b6fa52e3b5768",
+  "status": "REJECTED",
+  "receipt_status": "INCOMPLETE",
+  "artifact_id": 13620159781,
+  "artifact_zip_sha256": "49a3dbdbed792e2bbd2f2e5d09dd0c74617ceb05e092b9390db4814a5979b0d5",
+  "receipt_sha256": "96381092441dcf5a60cb2a1177a95e6ae1eaa9e01e52ba561454cc51c5bdbef2",
+  "verified_input_pins": 166,
+  "verified_ordered_build_log_digests": 136,
+  "successful_lean_compilations": 135,
+  "failed_lean_compilations": 1,
+  "strict_successful_report_marker_sets": 10,
+  "source_blob": "7df84b75d2d18fca18cc34e515359aa70e994cb0",
+  "failed_consumer_blob": "7ad094b0b245149338c6c6579393dc3581d64853",
+  "proposed_consumer_blob": "14317fec3f6034baa870f5dbe436587e214157e6",
+  "source_log_sha256": "73cc7f43d83ddd920e868f25801e53974769d9a7a822687fd6e82371c38ba60c",
+  "consumer_log_sha256": "821414442e373fb64ff849213cb5adbb7e82b1747a190df8c553a51a99e8779c",
+  "compiler": {
+    "compiler": "/home/runner/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "compiler_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "lean_path": "/home/runner/work/math/math/lean/.lake/packages/MD4Lean/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/BibtexQuery/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/UnicodeBasic/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/Cli/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/leansqlite/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/batteries/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/Qq/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/aesop/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/importGraph/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/plausible/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/fixed-point-theorems/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/Zeta3Irrational/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/rellich-kondrachov/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/carleson/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/StrongPNT/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/AbsorptionCutoff/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/AINTLIB/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/ClassFieldTheory/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/schoenflies-lean/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/SphereEversion/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/TauCeti/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/gromov/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/iut/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/genl/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/heights/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/pi1/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/oka/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/elliptic-curves/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/formal-schemes/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/belyi/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/PrimeNumberTheoremAnd/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/leancert/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/LeanArchitect/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/PrimeCert/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/doc-gen4/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/checkdecls/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/packages/mathlib/.lake/build/lib/lean:/home/runner/work/math/math/lean/.lake/build/lib/lean:/home/runner/.elan/toolchains/leanprover--lean4---v4.34.1/lib/lean",
+    "lake_log_sha256": "c91c0dc3079ba71c7b0c9cca06b9450465142c7ab614bb9d76237c9942c8a3b9"
+  },
+  "verified_package_revisions": 42,
+  "cause": "The first typed consumer calc equality now succeeds, but its final norm_num step leaves Pi.single 8 1 (Fin.last 8) = 1. Explicit checked finite-index equality and scalar singleton evaluation are required.",
+  "proof_boundary": "The complete original source passes; an anonymous independent consumer example still fails. Imported source-root axiom reports do not audit that anonymous proof. The nonzero consumer exit rejects the complete gate.",
+  "consumer_log": "/home/runner/work/math/math/lean/diagnostics/BFSSSpectralSourceNineAxisCoordinateRestrictionIndependentAudit.lean:78:13: error: unsolved goals\nA : \u21a5H\n\u22a2 Pi.single 8 1 (Fin.last 8) = 1\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastColumn' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastRow' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastColumn_castSucc' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastRow_castSucc' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock_orthogonal' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_det_eq_coordinateBlock' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock_det_one' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock_mul' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_entry' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_injective' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_continuous' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_mulVec' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nSPECTRAL_SOURCE_NINE_AXIS_COORDINATE_RESTRICTION_CONSUMER_COMPLETE\n",
+  "source_axioms": {
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastColumn": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastRow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastColumn_castSucc": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_lastRow_castSucc": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock_orthogonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8Target_det_eq_coordinateBlock": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock_det_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateBlock_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_entry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_continuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateRestriction.source9Axis8CoordinateRestrictionHom_mulVec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "proof_object_note": "Object hashes are receipt records; binary objects are not included and were not independently rehashed."
+}
