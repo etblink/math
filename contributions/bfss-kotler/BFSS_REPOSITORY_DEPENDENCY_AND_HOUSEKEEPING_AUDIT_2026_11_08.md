@@ -139,7 +139,7 @@ Minimum records for any important result:
 
 Records must distinguish **verified at exact commit**, **candidate**, **unqualified**, **rejected**, **historical**, **not scanned**, and **unknown**. The registry must not infer an accepted theorem from a green ancestor or from mere file existence. CI artifact retention is limited; preserve enough durable hashes, metadata and links to reconstruct the original decision even when uploaded artifacts expire.
 
-**Validation:** a cold-start investigator, given *only* the registry and its pointers, can independently recover without conversational memory:
+**Validation:** a future project session—whether our next conversation or a later Project Lead instance—given *only* the registry and its pointers, can recover the project's exact evidence without relying on prior chat context:
 1. The exact OP0 and OP1 theorems, original source and independent consumers, tested commits and strict runs (OP0 [#42516531636](https://github.com/etblink/math/actions/runs/42516531636), OP1 warning-clean [#42518687725](https://github.com/etblink/math/actions/runs/42518687725)).
 2. The original `Fermion 2` and `GaugeGroup 2` types, and the pinned **separate** original SU(2) gauge/vacuum candidate at `fa00aa36e770ca516f57b41f5b02229a5033d50f`, without pretending it exists on this active branch.
 3. A documented red attempt's first causal diagnostic, bounded correction and subsequent accepted run.
@@ -209,6 +209,17 @@ python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --remote
 ```
 The token is optional for public GitHub access but avoids anonymous rate limits. Never print or commit tokens.
 
-**Limits / STOP:** Ten records are not 420 modules or 99 branch histories. Keyword ranking is a small explicit index, not a semantic theorem prover or exhaustive search. A verified GitHub blob means the cited bytes exist at the pinned commit; it does not upgrade a candidate to a qualified theorem. The two artifact SHA-256 digests are durable metadata but the actual uploaded artifacts have expiration dates. Independent human cold-start usability and historical-failure coverage beyond the example remain untested. No new live Project Observatory control plane is authorized.
+**Limits / STOP:** Ten records are not 420 modules or 99 branch histories. Keyword ranking is a small explicit index, not a semantic theorem prover or exhaustive search. A verified GitHub blob means the cited bytes exist at the pinned commit; it does not upgrade a candidate to a qualified theorem. The two artifact SHA-256 digests are durable metadata but the actual uploaded artifacts have expiration dates. Recovery across genuinely interrupted or context-reset future project sessions, and historical-failure coverage beyond the example, remain untested. No new live Project Observatory control plane is authorized.
 
 **Next bounded objective:** H2 source closure and lifecycle classification. Start by mapping the exact pinned OP2 original-gauge/vacuum ancestry, then join that closure to the existing 420-module graph and gate evidence. Record missing modules and unqualified premises rather than bulk-importing or treating absences as failures. Continue to prohibit edits to `etblink/math:main`, FCP mutations, deletes, broad workflow retirements, source moves, and history rewrites without separate authorization.
+
+
+## H1 project-user clarification — optimize for our future selves (2026-11-08)
+
+**Owner intent:** H1/H2 bookkeeping exists to make **our own future work** easier: rapid reorientation after a chat interruption, context-window loss, model/tool transition, a long break, or resumption from a different branch. No independent human researcher test is required or planned as an H1/H2 acceptance condition. A human-readable entry point remains useful, but it is not the target validation population.
+
+**Operational acceptance test:** a future session with no privileged conversational history should be able to find the exact current branch and scientific state, recover source declarations and ancestors, distinguish accepted from conditional/negative results, inspect the relevant green/red run evidence, and resume the smallest justified next unit without repeating old investigations. Favor deterministic, machine-readable lookup, provenance checks, succinct recovery instructions, and tests for stale/contradictory status. Do not add process or documentation whose maintenance cost outweighs demonstrated future-session value.
+
+**Effect on H1:** the six existing cold-start registry tests remain valid as synthetic future-session tests. The verified H1 run #42522165588 and its exact-source acceptance are unchanged; no independent human usability claim was or is made. For H2, assess reduced retrieval friction and unnecessary repeat work for our future sessions rather than organizing around hypothetical external handoffs.
+
+**Governance:** maintain the prohibition on modifying `etblink/math:main`; do not modify FCP or Project Continuity repositories, import unrelated proofs, or merge/delete branches to achieve this clarification.
