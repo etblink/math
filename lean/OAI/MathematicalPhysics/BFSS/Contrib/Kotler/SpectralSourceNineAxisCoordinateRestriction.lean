@@ -32,36 +32,56 @@ private theorem target_orthogonality (A : H) : (M A)ᵀ * M A = 1 :=
   (Matrix.mem_orthogonalGroup_iff' (A := M A)).mp
     (Matrix.mem_specialOrthogonalGroup_iff.mp (A : SO9).property).1
 
+/-- Same original coordinate 8 and Fin.last 8; bridge explicitly, as in diagnostic. -/
+private theorem axis_last_eq : (Fin.last 8 : SpaceIndex) = (8 : SpaceIndex) := by decide
+
 /-- The actual last column is the original fixed ninth coordinate vector. -/
 theorem source9Axis8Target_lastColumn (A : H) (i : SpaceIndex) :
     M A i (Fin.last 8) = source9CoordinateVector 8 i := by
   have hfix : (M A).mulVec (source9CoordinateVector 8) = source9CoordinateVector 8 :=
     A.property
-  have h := congrFun hfix i
-  simpa only [source9CoordinateVector, Matrix.mulVec_single_one, Matrix.col_apply] using h
+  have h : M A i (8 : SpaceIndex) = source9CoordinateVector 8 i := by
+    simpa only [source9CoordinateVector, Matrix.mulVec_single_one, Matrix.col_apply] using congrFun hfix i
+  simpa only [axis_last_eq] using h
 
 /-- Orthogonality and the actual last column force the corresponding last row. -/
 theorem source9Axis8Target_lastRow (A : H) (j : SpaceIndex) :
     M A (Fin.last 8) j = source9CoordinateVector 8 j := by
-  have h := congrArg (fun T : M9 => T (Fin.last 8) j) (target_orthogonality A)
-  have hsum : source9CoordinateVector 8 ⬝ᵥ (fun k : SpaceIndex => M A k j) =
+  have hsum : (∑ k : SpaceIndex, source9CoordinateVector 8 k * M A k j) =
       (1 : M9) (Fin.last 8) j := by
-    simpa only [Matrix.mul_apply, Matrix.transpose_apply, source9Axis8Target_lastColumn] using h
-  simpa [source9CoordinateVector, single_dotProduct, Matrix.one_apply, eq_comm] using hsum
+    simpa only [Matrix.mul_apply, Matrix.transpose_apply, source9Axis8Target_lastColumn] using
+      (congrArg (fun T : M9 => T (Fin.last 8) j) (target_orthogonality A))
+  calc
+    M A (Fin.last 8) j = (source9CoordinateVector 8 ⬝ᵥ fun k : SpaceIndex => M A k j) := by
+      simp only [source9CoordinateVector, single_one_dotProduct, axis_last_eq]
+    _ = (1 : M9) (Fin.last 8) j := by
+      change (∑ k : SpaceIndex, source9CoordinateVector 8 k * M A k j) =
+        (1 : M9) (Fin.last 8) j
+      exact hsum
+    _ = source9CoordinateVector 8 j := by
+      rw [axis_last_eq]
+      simp [source9CoordinateVector, Matrix.one_apply, Pi.single_apply, eq_comm]
 
 /-- All upper entries of the last column vanish in the original ordered inclusion. -/
 theorem source9Axis8Target_lastColumn_castSucc (A : H) (i : Fin 8) :
     M A i.castSucc (Fin.last 8) = 0 := by
   rw [source9Axis8Target_lastColumn]
-  change (Pi.single (Fin.last 8) (1 : ℝ)) i.castSucc = 0
-  simp [Pi.single_apply, Fin.castSucc_ne_last]
+  change (Pi.single (8 : SpaceIndex) (1 : ℝ) : V) i.castSucc = 0
+  have hn : (i.castSucc : SpaceIndex) ≠ (8 : SpaceIndex) := by
+    intro h
+    apply Fin.castSucc_ne_last i
+    exact h.trans axis_last_eq.symm
+  rw [Pi.single_apply, ite_eq_right hn]
 
 /-- All left entries of the last row vanish in the original ordered inclusion. -/
 theorem source9Axis8Target_lastRow_castSucc (A : H) (j : Fin 8) :
     M A (Fin.last 8) j.castSucc = 0 := by
   rw [source9Axis8Target_lastRow]
-  change (Pi.single (Fin.last 8) (1 : ℝ)) j.castSucc = 0
-  simp [Pi.single_apply, Fin.castSucc_ne_last]
+  change (Pi.single (8 : SpaceIndex) (1 : ℝ) : V) j.castSucc = 0
+  have hn : (j.castSucc : SpaceIndex) ≠ (8 : SpaceIndex) := by
+    intro h
+    exact Fin.castSucc_ne_last j (h.trans axis_last_eq.symm)
+  rw [Pi.single_apply, ite_eq_right hn]
 
 /-- Literal upper-left block on the unchanged ordered original coordinates. -/
 noncomputable def source9Axis8CoordinateBlock (A : H) : M8 :=
@@ -78,7 +98,9 @@ theorem source9Axis8CoordinateBlock_orthogonal (A : H) :
     source9Axis8Target_lastRow_castSucc, zero_mul, add_zero] at h
   change (∑ k : Fin 8, M A k.castSucc i.castSucc * M A k.castSucc j.castSucc) =
     (1 : M8) i j
-  simpa using h
+  have hident : (1 : M9) i.castSucc j.castSucc = (1 : M8) i j := by
+    simp only [Matrix.one_apply, Fin.castSucc_inj]
+  exact h.trans hident
 
 /-- Last-column Laplace expansion has exactly the original upper-left minor. -/
 theorem source9Axis8Target_det_eq_coordinateBlock (A : H) :
@@ -94,13 +116,19 @@ theorem source9Axis8Target_det_eq_coordinateBlock (A : H) :
       rw [Matrix.det_succ_column (M A) (Fin.last 8)]
       apply Finset.sum_eq_single (Fin.last 8)
       · intro b _ hb
-        rw [source9Axis8Target_lastColumn]
-        simp [source9CoordinateVector, Pi.single_apply, hb]
+        have hb8 : b ≠ (8 : SpaceIndex) := by
+          intro h
+          exact hb (h.trans axis_last_eq.symm)
+        have hz : M A b (Fin.last 8) = 0 := by
+          rw [source9Axis8Target_lastColumn]
+          change (Pi.single (8 : SpaceIndex) (1 : ℝ) : V) b = 0
+          rw [Pi.single_apply, ite_eq_right hb8]
+        simp only [hz, mul_zero, zero_mul]
       · intro hnot
         exact False.elim (hnot (Finset.mem_univ (Fin.last 8)))
     _ = (source9Axis8CoordinateBlock A).det := by
       rw [hminor, source9Axis8Target_lastColumn]
-      norm_num [source9CoordinateVector, Pi.single_apply]
+      norm_num [source9CoordinateVector, Pi.single_apply, axis_last_eq]
 
 /-- The original determinant-one condition descends to the unchanged eight-coordinate minor. -/
 theorem source9Axis8CoordinateBlock_det_one (A : H) :
@@ -128,7 +156,7 @@ noncomputable def source9Axis8CoordinateRestrictionHom : H →* SO8 where
     apply Subtype.ext
     ext i j
     change (1 : M9) i.castSucc j.castSucc = (1 : M8) i j
-    simp
+    simp only [Matrix.one_apply, Fin.castSucc_inj]
   map_mul' A B := Subtype.ext (source9Axis8CoordinateBlock_mul A B)
 
 /-- Exact entry binding; this is not an arbitrary equivalent eight-dimensional representation. -/
