@@ -1,0 +1,60 @@
+name: BFSS H1 cross-repository evidence registry strict diagnostic
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - contributions/bfss-kotler/BFSS_H1_EVIDENCE_REGISTRY_V1.json
+      - contributions/bfss-kotler/BFSS_H1_COLD_START_TESTS_V1.json
+      - contributions/bfss-kotler/tools/h1_evidence_registry.py
+      - .github/workflows/bfss-h1-evidence-registry-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: bfss-h1-evidence-registry-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  h1-evidence-retrieval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact test commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify exact input identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          sha256sum \
+            contributions/bfss-kotler/BFSS_H1_EVIDENCE_REGISTRY_V1.json \
+            contributions/bfss-kotler/BFSS_H1_COLD_START_TESTS_V1.json \
+            contributions/bfss-kotler/tools/h1_evidence_registry.py
+
+      - name: Validate static schema and six cold-start retrieval cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --cold-test
+
+      - name: Independently validate pinned blobs, runs, and retained evidence
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --remote
+
+      - name: Smoke-test operator retrieval for a cold investigator
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --search 'OP2 original Fock gauge binding'
+          python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --search 'Cl9 central sign rejected shortcut'
