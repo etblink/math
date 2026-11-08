@@ -187,3 +187,19 @@ claim surjectivity, homeomorphism or transport the covering to standard SO(8)
 from this gate alone. Spin(8) classification, source torus/root data, B4/D4
 branching, Fock-operator action, physical domains, coercivity, confinement and
 spectral existence remain separate obligations.
+
+
+## Run #42454470502 — RED; diagnostic-first source-interface isolation
+
+The exact tested commit b07f2799853cc4f9665eeb73b67add4c9bf04e98 failed [strict run #42454470502](https://github.com/etblink/math/actions/runs/42454470502). All **134 original and accepted inherited modules** compiled successfully after strict source-closure preflight and pinned environment restoration. The **new coordinate source** failed; independent consumer never ran. The archive is artifact 13606469514, independently downloaded ZIP SHA-256 3cd510fefbe2f1bcc28e4015741abe0e95f0673687e7dc6387fc5dc1d903d183, with an INCOMPLETE receipt and no accepted proof result.
+
+First actual diagnostics in new source are at lines 41, 49–50, 56, 63, 81, 96, 98 and 131: literal coordinate 8 versus Fin.last 8, Pi.single type inference, matrix multiplication sum versus dot-product expression and transposed equality, identity entry transport between 9x9 and 8x8 matrices, final-column determinant sum branch, unused simp argument, and ineffective map_one simp. Recovered sorryAx reports and the source completion marker are rejected. There is no verified mathematical counterexample and no source root qualified by this run. Workflow environment/setup/manifest pins passed; this is a **source interface** failure, not cache or runtime failure.
+
+Per [the scoped procedural optimization memorandum](BFSS_SOURCE_GEOMETRY_PROCEDURAL_SUCCESS_FAILURE_REVIEW_2026_11_07.md) and pinned Mathlib:
+
+- Pin and inspect Matrix.single_one_dotProduct, Matrix.mulVec_single_one, Matrix.col_apply, Matrix.one_apply and Matrix.submatrix_one; Fin.castSucc_ne_last, Fin.castSucc_injective, Fin.succAbove_last and Fin.sum_univ_castSucc; Matrix.det_succ_column. Their actual declarations occur in pinned Data/Matrix/Mul.lean, Data/Matrix/Diagonal.lean, Data/Fin/SuccPred.lean, Algebra/BigOperators/Fin.lean and LinearAlgebra/Matrix/Determinant/Basic.lean.
+- **First test in a minimal independent Mathlib-only diagnostic**, not another full 134-ancestor build. Proposed diagnostic file: lean/diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic.lean; workflow: .github/workflows/bfss-source-nine-coordinate-interface-diagnostic.yml. It tests the same original-index row/column, exact identity, orthogonality and last-column determinant conversions, *only conditionally* proving mathematical helper examples.
+- Preserve the actual candidate's 14 public theorem types, full source bytes, 26 consumer propositions, all accepted ancestors, unchanged original source carrier/topology, frozen manifest, compiler/dependency pins, and strict workflow **while diagnostic outcome is unknown**.
+- A diagnostic PASS does **not** qualify original source or consumer. Only then assess a proof-body-only correction to the strict source, refresh its candidate-only Git-blob/SHA-256 integrity pins and require a fresh complete strict source+consumer run. If the diagnostic fails, inspect its first causal error; do not run another full gate on unverified guesses.
+
+No proof-budget escalation, relaxed linter/axiom guard, source substitution, global typeclass change, new cache or Spin(8) classification is introduced. The diagnostic source and workflow are distinct from the exact strict candidate's watched paths.
