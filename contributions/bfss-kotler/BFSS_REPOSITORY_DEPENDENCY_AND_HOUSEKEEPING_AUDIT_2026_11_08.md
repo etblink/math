@@ -291,3 +291,17 @@ The gate checked the H2-frozen **26 original imported Git blobs** at contributio
 **Separate next obligation:** Use the already imported G4-B source `fermionVacuum = fockAlgebraToBFSS (1 : Space 23)`, its proven gauge invariance, and injectivity of the literal Fock-to-BFSS equivalence to establish a *nonzero original fixed vector*. Avoid importing the remaining twelve G4-K2A radial modules solely to copy that small witness proof. Do not claim nonzero L², full gauge-physical Hilbert conclusions, global Spin(9) lift or an original Hamiltonian-domain/spectral result from this gate.
 
 **Operational stop:** No new module/CI modifications beyond this OP2a candidate were made in this qualification checkpoint; no branch merges, source renames, cross-repo writes or `main` edits. Prioritize the small OP2b conversion gate and preserve the results of any failures before increasing import scope.
+
+
+---
+
+## OP2c red-run lesson — deprecated Lean API and strict warning gate (2026-11-08)
+
+**Classification:** `TOOLCHAIN_API_DEPRECATION`, not failed mathematics.
+
+- [Original red OP2c run #42528690361](https://github.com/etblink/math/actions/runs/42528690361) completed **failure** (attempt 1) at exact commit `c5a50d12ebf1e5a50f015ca487461c5f1c6d9129`.
+- Pinned Lean/Mathlib environment and source-import preflight succeeded; `lake build` completed **9,062 jobs successfully**. All five OP2c `#print axioms` reports showed only `propext`, `Classical.choice`, `Quot.sound`; the independent consumer ran. The final strict warning check failed on `OP2cNonzeroOriginalGaugeVacuum.lean:70:4`: `ContinuousLinearMap.zero_apply` is deprecated in Lean 4.34.1; the diagnostic directs use of unqualified `zero_apply`. Package-checkout local-change warnings are unrelated.
+- The targeted [one-line repair `f84d092b2c71099cda790ee64083b5b81eb360d9`](https://github.com/etblink/math/commit/f84d092b2c71099cda790ee64083b5b81eb360d9) replaces `ContinuousLinearMap.zero_apply` with `zero_apply` in the existing proof. The Git compare against `7d43ea4795627934d8c7bf1e1220e26a459ded66` verified **one insertion, one deletion in one OP2c source file**; accepted mathematical statements, imports, consumer, source ancestry and strict CI workflow remain unchanged.
+- [Strict replay #42530241914](https://github.com/etblink/math/actions/runs/42530241914) was **in progress at this memorandum checkpoint**. Do not promote OP2c to qualified until that exact run passes source compilation, independent consumer, axiom and warning checks.
+
+**Reusable lesson:** inspect all warnings of otherwise successful Lean compilations, resolve local deprecations using the pinned toolchain's recommended API, and keep the diagnostic warning gate strict. The failure is useful operational evidence of why `lake build` green alone is insufficient. Avoid broad refactors, cache changes or imported-module churn for this class of failure. Preserve both red and subsequent verified green run IDs for future-session recovery.
