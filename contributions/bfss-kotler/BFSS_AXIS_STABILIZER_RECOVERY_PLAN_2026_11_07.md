@@ -476,3 +476,21 @@ tests pass; there is no local Lean compilation or new mathematical qualification
 All older sources/consumers, theorem statements, controls and proof budgets are
 preserved. Full retained strict qualification is required before moving to the
 separate inverse-continuity/topological-group-equivalence step. No CI polling.
+
+
+## 2026-11-08 — Original coordinate extension qualified: 42494594055
+
+At exact tested commit `f31418acb402e97def0a9289dde45f11614238f1`, retained
+evidence verifies all 137 cold builds, 24 examples, 135 strict reports, twelve
+markers, 167 exact input pins and 42 dependency revisions, with zero warnings
+and only permitted foundational axioms. Raw original diag(B,+1), its noncircular
+SO(9)/H membership, both inverse identities and restriction surjectivity are
+qualified. See the [exact qualification](BFSS_SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_EXTENSION_GATE_2026_11_08.md#qualification-42494594055)
+and full receipt record.
+
+The next bounded step proves the explicit extension continuous entrywise and
+through the same subtypes, then packages R/E as a ContinuousMulEquiv with exact
+original entries and vector action. Source-cover transport to SO(8) is subsequent;
+source Spin(8) classification, common torus/branching and all physical spectral
+claims remain separate. All prior source and consumer bytes remain frozen.
+Proceed without a separate continue prompt after qualification; do not poll CI.

@@ -164,3 +164,42 @@ a typed reproducer before a near-identical retry. Distinguish infrastructure
 failures from Lean failures. Do not poll CI. The owner reports the verdict;
 after independent qualification, proceed to the next bounded step without
 requiring a separate continue instruction.
+
+
+## Qualification 42494594055
+
+The owner reported [strict run 42494594055](https://github.com/etblink/math/actions/runs/42494594055)
+GREEN. Independent retained-evidence review qualifies this bounded extension
+at exact tested commit `f31418acb402e97def0a9289dde45f11614238f1`.
+Artifact [13623433553](https://github.com/etblink/math/actions/runs/42494594055/artifacts/13623433553)
+was downloaded, ZIP/CRC checked and independently SHA-256 verified as
+`4e05440fd989167df70552235a467bad123e6d624d7d8e2095e5642f2e0416cb`.
+The complete PASS receipt hashes to
+`7fa3a3cb1cd43b201e2f2d902999e94add50cbd56cc9cca3997add9cfe895f56`.
+See [the scoped qualification and retained receipt](evidence/source-axis-stabilizer-2026-11-07/qualification-42494594055.json).
+
+Review verifies all 137 zero compiler exits, 167 archived input Git/SHA-256
+pins, 137 ordered compiler-log digests, 24 independent examples, 135 strict
+root reports, twelve exact markers, the pinned compiler identity and all 42
+installed dependency revisions. Compiler logs contain no warnings/errors or
+recovery axioms. Every audited root uses only propext, Classical.choice and
+Quot.sound. Object/compiler binary hashes are receipt records; binaries were
+not archived for independent rehashing. Workflow preflight, environment,
+complete cold build and evidence retention steps all succeeded.
+
+Qualified source blob: `376b0409836bc3b6ddaf77bc0cfebf11080e7cb1`.
+Qualified consumer blob: `bd548b0798ac740a69a498eec9b734e94d0f21c1`.
+The source is the literal raw diag(B,+1) on original coordinates, with raw
+orthogonality, determinant and axis fixing established before SO(9)/H membership.
+Both inverse identities and restriction surjectivity qualify without an assumed
+H/source preimage. The point/sign and arbitrary-vector consumers passed.
+
+This qualification does not yet establish continuity of the extension or a
+bundled topological group equivalence. The next single bounded gate proves
+raw entrywise continuity, lifts it through the SAME two target subtypes, and
+packages the existing R/E pair in Mathlib's ContinuousMulEquiv. Preserve both
+underlying functions and exact original entry/vector bindings. Do not reconstruct
+an inverse using choice or invoke an unverified compactness shortcut. Transport
+of the original source covering to SO(8), source Spin(8) classification, torus
+and branching, Fock actions and all physical conclusions remain separate.
+The owner authorizes direct progression after verified qualification; no CI polling.
