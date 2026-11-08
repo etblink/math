@@ -1,0 +1,479 @@
+{
+  "schema": "bfss-h1-evidence-registry/v1",
+  "generated_from": "Explicit pinned GitHub source blob and Actions metadata inspections; manually seeded pilot, all records remotely revalidatable by H1 validator.",
+  "as_of": "2026-11-08",
+  "repository_governance": {
+    "never_modify_main": "etblink/math:main",
+    "workbench": "research/bfss-original-gamma-faithfulness-20261107",
+    "fcp_main_is_authoritative_only_for": "FCP program state and registers"
+  },
+  "pilot_scope": "10 deliberately selected cross-branch/cross-repo artifacts; does NOT enumerate every theorem, CI gate, historical commit or source declaration.",
+  "starting_branch_head": "d79162ef4579ea645d48c64fb811099b33d10d09",
+  "status_vocabulary": [
+    "QUALIFIED_AT_COMMIT",
+    "SOURCE_VERIFIED_NOT_THEOREM",
+    "CANDIDATE_SEPARATE_SNAPSHOT",
+    "HISTORICAL_FAILURE",
+    "REJECTED_ROUTE",
+    "OPEN_UNQUALIFIED",
+    "REFERENCE_ONLY",
+    "NOT_SCANNED",
+    "UNKNOWN"
+  ],
+  "record_count": 10,
+  "records": [
+    {
+      "id": "op0-qualified-projection",
+      "title": "OP0 abstract fixed-subspace projection",
+      "kind": "lean_proof_bundle",
+      "status": "QUALIFIED_AT_COMMIT",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "93e58dab8d077306250e7fb1140dc1dc1a5dd8c2",
+      "source": {
+        "path": "lean/OAI/LinearAlgebra/GaugeFixedProjectionOP0.lean",
+        "blob_sha": "98b2c65be8054b4587a3b7a1c258f00dffbdaeae",
+        "symbols": [
+          "FCP.BFSSGaugeFixedProjectionOP0.mem_gaugeFixedSubspace_iff",
+          "FCP.BFSSGaugeFixedProjectionOP0.range_le_gaugeFixedSubspace",
+          "FCP.BFSSGaugeFixedProjectionOP0.range_gaugeFixedProjection",
+          "FCP.BFSSGaugeFixedProjectionOP0.gaugeFixedProjection_fixed",
+          "FCP.BFSSGaugeFixedProjectionOP0.gaugeFixedProjection_idempotent",
+          "FCP.BFSSGaugeFixedProjectionOP0.gaugeFixedProjection_isStarProjection"
+        ]
+      },
+      "related_sources": [
+        {
+          "role": "independent_consumer",
+          "path": "lean/diagnostics/BFSSGaugeFixedProjectionOP0IndependentAudit.lean",
+          "blob_sha": "f034f7f12cba96181f2d676bc6fe6cac28f6850d",
+          "symbols": []
+        },
+        {
+          "role": "strict_workflow",
+          "path": ".github/workflows/bfss-gauge-fixed-projection-op0-strict.yml",
+          "blob_sha": "28bc24947f99058d6de9e6ed2acad92584c63a2c",
+          "symbols": []
+        }
+      ],
+      "source_carrier": "Abstract finite-dimensional complex inner-product space F; group G with U : G →* Module.End ℂ F",
+      "dependency_roots": [
+        "Mathlib.Analysis.InnerProductSpace.Adjoint",
+        "Mathlib.Topology.Algebra.Module.FiniteDimension"
+      ],
+      "qualification": {
+        "run_id": 42516531636,
+        "run_attempt": 1,
+        "conclusion": "success",
+        "tested_sha": "93e58dab8d077306250e7fb1140dc1dc1a5dd8c2",
+        "workflow_path": ".github/workflows/bfss-gauge-fixed-projection-op0-strict.yml",
+        "consumer_path": "lean/diagnostics/BFSSGaugeFixedProjectionOP0IndependentAudit.lean",
+        "lean_version": "4.34.1",
+        "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "axioms_observed": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "forbidden_axioms_observed": false,
+        "source_build_jobs": 2437,
+        "evidence_artifact_id": 13631981588,
+        "evidence_digest": "sha256:d231db8b9255357e76952cdf7096ec0005e2d6747dd988a96448130db1797d73",
+        "artifact_expires_at": "2026-11-22T19:49:16Z",
+        "warning_gate": "source/consumer CLI -E warning; no OP0 source warning reported; not a general strict warning enforcement guarantee"
+      },
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "OP0",
+        "gauge fixed projection",
+        "range",
+        "orthogonal",
+        "finite-dimensional",
+        "Lean",
+        "independent consumer",
+        "qualified",
+        "run 42516531636"
+      ],
+      "scope_limit": "Abstract finite-dimensional complex Hilbert geometry only; no original BFSS action or spectral claim.",
+      "location_url": "https://github.com/etblink/math/blob/93e58dab8d077306250e7fb1140dc1dc1a5dd8c2/lean/OAI/LinearAlgebra/GaugeFixedProjectionOP0.lean"
+    },
+    {
+      "id": "op1-qualified-automorphism",
+      "title": "OP1 abstract fixed-projection star-algebra automorphism invariance",
+      "kind": "lean_proof_bundle",
+      "status": "QUALIFIED_AT_COMMIT",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "44ea6b8001209d92f0e023a7f30f5125cde127e9",
+      "source": {
+        "path": "lean/OAI/LinearAlgebra/GaugeFixedProjectionOP1.lean",
+        "blob_sha": "7d76162dd685324903fecdd501b4e602d1a93deb",
+        "symbols": [
+          "FCP.BFSSGaugeFixedProjectionOP1.starAlgEquiv_fixed_absorbing_projection",
+          "FCP.BFSSGaugeFixedProjectionOP1.starAlgEquiv_fixed_gaugeFixedProjection"
+        ]
+      },
+      "related_sources": [
+        {
+          "role": "independent_consumer",
+          "path": "lean/diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit.lean",
+          "blob_sha": "95986e3804b39bb62c3cc8b2e47bc2ff2630234b",
+          "symbols": []
+        },
+        {
+          "role": "strict_workflow",
+          "path": ".github/workflows/bfss-gauge-fixed-projection-op1-strict.yml",
+          "blob_sha": "5a62e2b20ec06cbf631e989af38d199663d94662",
+          "symbols": []
+        }
+      ],
+      "source_carrier": "Abstract star algebra End(F) with OP0 continuous-linear-map projection",
+      "dependency_roots": [
+        "OAI.LinearAlgebra.GaugeFixedProjectionOP0"
+      ],
+      "qualification": {
+        "run_id": 42518687725,
+        "run_attempt": 1,
+        "conclusion": "success",
+        "tested_sha": "44ea6b8001209d92f0e023a7f30f5125cde127e9",
+        "workflow_path": ".github/workflows/bfss-gauge-fixed-projection-op1-strict.yml",
+        "consumer_path": "lean/diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit.lean",
+        "lean_version": "4.34.1",
+        "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "axioms_observed": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "forbidden_axioms_observed": false,
+        "source_build_jobs": 2438,
+        "evidence_artifact_id": 13632139725,
+        "evidence_digest": "sha256:1adc09a086eadec5edbbf4c46d60fa85031bdb5d75513dbbec44b40e036d07a8",
+        "artifact_expires_at": "2026-11-22T20:15:19Z",
+        "warning_gate": "explicit grep on source/consumer diagnostic warnings passed"
+      },
+      "supersedes": [
+        "op1-source-green-with-warning"
+      ],
+      "failure_mode": null,
+      "keywords": [
+        "OP1",
+        "star algebra",
+        "automorphism",
+        "gauge projection",
+        "inverse",
+        "self adjoint",
+        "independent consumer",
+        "qualified",
+        "run 42518687725"
+      ],
+      "scope_limit": "Proves an abstract automorphism result under explicit fixed-gauge-operator hypotheses, not a physical Spin(9) action or original BFSS Hamiltonian.",
+      "location_url": "https://github.com/etblink/math/blob/44ea6b8001209d92f0e023a7f30f5125cde127e9/lean/OAI/LinearAlgebra/GaugeFixedProjectionOP1.lean"
+    },
+    {
+      "id": "bfss-original-core-carriers",
+      "title": "Original BFSS Fermion and GaugeGroup carrier definitions",
+      "kind": "source_type",
+      "status": "SOURCE_VERIFIED_NOT_THEOREM",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "50d7352734fb99f6c06612fa1e235be4360ff955",
+      "source": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+        "blob_sha": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+        "symbols": [
+          "BFSSQuantum.Fermion",
+          "BFSSQuantum.GaugeGroup",
+          "BFSSQuantum.AlgebraData"
+        ]
+      },
+      "related_sources": [],
+      "source_carrier": "Original BFSS Fermion 2 = EuclideanSpace ℂ (Fin (2 ^ (8 * colorDim 2))); GaugeGroup 2 = specialUnitaryGroup (Fin 2) ℂ",
+      "dependency_roots": [
+        "Mathlib"
+      ],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "original",
+        "Fermion 2",
+        "GaugeGroup 2",
+        "24 orbital",
+        "2^24",
+        "original physical carrier",
+        "Core.lean"
+      ],
+      "scope_limit": "Source definitions exist at this commit; this registry entry is not a new qualification of the original physical Hamiltonian.",
+      "location_url": "https://github.com/etblink/math/blob/50d7352734fb99f6c06612fa1e235be4360ff955/lean/OAI/MathematicalPhysics/BFSS/Core.lean"
+    },
+    {
+      "id": "bfss-gauge-interface",
+      "title": "Original BFSS generic gauge and physical-space interfaces",
+      "kind": "source_interface",
+      "status": "SOURCE_VERIFIED_NOT_THEOREM",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "50d7352734fb99f6c06612fa1e235be4360ff955",
+      "source": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean",
+        "blob_sha": "e4990dadf1d8bde849e351467282ab3f14989c3b",
+        "symbols": [
+          "BFSSQuantum.AlgebraData.GaugeData",
+          "BFSSQuantum.AlgebraData.GaugeData.physicalSpace"
+        ]
+      },
+      "related_sources": [],
+      "source_carrier": "Original BFSS GaugeData on Fermion N, Boson N and GaugeGroup N",
+      "dependency_roots": [
+        "OAI.MathematicalPhysics.BFSS.GaugeOrbits"
+      ],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "GaugeCore",
+        "GaugeData",
+        "gauge",
+        "fermion gauge action",
+        "physicalSpace",
+        "Fermion 2",
+        "genuine monoid representation"
+      ],
+      "scope_limit": "Generic GaugeData fields do not construct the specific original SU(2) Fock action by themselves.",
+      "location_url": "https://github.com/etblink/math/blob/50d7352734fb99f6c06612fa1e235be4360ff955/lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean"
+    },
+    {
+      "id": "op2-separate-vacuum-candidate",
+      "title": "Original SU(2) Fock vacuum invariance source in separate snapshot",
+      "kind": "source_candidate",
+      "status": "CANDIDATE_SEPARATE_SNAPSHOT",
+      "repository": "etblink/math",
+      "observed_ref": "contribution/bfss-lean-v040-20261105",
+      "exact_commit": "fa00aa36e770ca516f57b41f5b02229a5033d50f",
+      "source": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2ANonzeroVacuumRadialProfileProbe.lean",
+        "blob_sha": "737422b94f28f53d7caff69a5fb6cac88a1ed7c6",
+        "symbols": [
+          "FCP.BFSSSU2GaugeG4K2A.fermionVacuum_ne_zero",
+          "FCP.BFSSSU2GaugeG4K2A.fermionVacuum_unitary_invariant"
+        ]
+      },
+      "related_sources": [],
+      "source_carrier": "Literal original BFSS Fermion 2 via fockAlgebraToBFSS; SU(2) action fermionGaugeUnitaryHom",
+      "dependency_roots": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K1PhysicalSpaceCoreProbe"
+      ],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "OP2",
+        "Fock",
+        "SU2",
+        "SU(2)",
+        "vacuum",
+        "fermionGaugeUnitaryHom",
+        "nonzero",
+        "GaugeGroup 2",
+        "Fermion 2",
+        "separate branch"
+      ],
+      "scope_limit": "Source exists at pinned separate commit, not present on active BFSS research branch; no fresh transitive import qualification performed.",
+      "location_url": "https://github.com/etblink/math/blob/fa00aa36e770ca516f57b41f5b02229a5033d50f/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2ANonzeroVacuumRadialProfileProbe.lean"
+    },
+    {
+      "id": "op0-red-cli-diagnostic",
+      "title": "OP0 green-source/red-CI case: unsupported --werror",
+      "kind": "historical_failure",
+      "status": "HISTORICAL_FAILURE",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "0067cda87d999c16bdbdb3198d788e78e8481bfb",
+      "source": {
+        "path": ".github/workflows/bfss-gauge-fixed-projection-op0-strict.yml",
+        "blob_sha": "1f475b50505d077a8c1ac5a176ed9a1af7a704a5",
+        "symbols": []
+      },
+      "related_sources": [
+        {
+          "role": "source_compiled",
+          "path": "lean/OAI/LinearAlgebra/GaugeFixedProjectionOP0.lean",
+          "blob_sha": "98b2c65be8054b4587a3b7a1c258f00dffbdaeae",
+          "symbols": []
+        }
+      ],
+      "source_carrier": null,
+      "dependency_roots": [],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": {
+        "classification": "TOOLCHAIN_CLI",
+        "diagnostic": "lean: unrecognized option '--werror'",
+        "run_id": 42515890832,
+        "run_attempt": 1,
+        "run_conclusion": "failure",
+        "tested_sha": "0067cda87d999c16bdbdb3198d788e78e8481bfb",
+        "first_causal_step": "Compile exact OP0 source and independent consumer",
+        "repair_commit": "93e58dab8d077306250e7fb1140dc1dc1a5dd8c2",
+        "repair_run_id": 42516531636,
+        "lesson": "Inspect pinned Lean CLI help; supported option -E warning was used, but later OP1 audit showed it did not enforce all warnings as fatal."
+      },
+      "keywords": [
+        "red",
+        "OP0",
+        "CI",
+        "--werror",
+        "unrecognized option",
+        "Lean 4.34.1",
+        "warning enforcement",
+        "repair",
+        "42515890832"
+      ],
+      "scope_limit": "The source compiled, but the run failed before completing its independent consumer; do not classify this red as a failed theorem.",
+      "location_url": "https://github.com/etblink/math/blob/0067cda87d999c16bdbdb3198d788e78e8481bfb/.github/workflows/bfss-gauge-fixed-projection-op0-strict.yml"
+    },
+    {
+      "id": "rejected-cl9-scalar-shortcut",
+      "title": "Rejected source-Cl9 scalar -1 map as a Spin(9) Fock lift",
+      "kind": "negative_knowledge",
+      "status": "REJECTED_ROUTE",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "50d7352734fb99f6c06612fa1e235be4360ff955",
+      "source": {
+        "path": "contributions/bfss-kotler/BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md",
+        "blob_sha": "ca995de886132fcdaecaa6073ddb5f7c006212df",
+        "symbols": []
+      },
+      "related_sources": [],
+      "source_carrier": null,
+      "dependency_roots": [],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": {
+        "classification": "MISMATCHED_CENTRAL_ACTION",
+        "diagnostic": "A unital source-Cl9 algebra map preserves scalar -1, yielding trivial conjugation, whereas the original 48-label central action requires -I48.",
+        "source_section": "3. Central sign: a decisive construction filter",
+        "lesson": "Do not substitute a unital source-Clifford algebra map for the genuine group lift."
+      },
+      "keywords": [
+        "negative knowledge",
+        "rejected",
+        "Cl9",
+        "Clifford",
+        "scalar -1",
+        "central sign",
+        "Spin(9)",
+        "fermion parity",
+        "48 Majorana"
+      ],
+      "scope_limit": "Documented mathematical route exclusion, not a Lean-accepted standalone theorem; does not reject genuine Spin group lifting.",
+      "location_url": "https://github.com/etblink/math/blob/50d7352734fb99f6c06612fa1e235be4360ff955/contributions/bfss-kotler/BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md"
+    },
+    {
+      "id": "op2-source-binding-open",
+      "title": "OP2 original SU(2) Fock gauge action binding and transitive ancestry",
+      "kind": "open_proof_obligation",
+      "status": "OPEN_UNQUALIFIED",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "50d7352734fb99f6c06612fa1e235be4360ff955",
+      "source": {
+        "path": "contributions/bfss-kotler/BFSS_SPECTRAL_GAUGE_FIXED_PROJECTION_FEASIBILITY_2026_11_08.md",
+        "blob_sha": "e88b7124130b00fcd8fafc395859d22bf04f070f",
+        "symbols": []
+      },
+      "related_sources": [],
+      "source_carrier": null,
+      "dependency_roots": [
+        "FCP.BFSSGaugeFixedProjectionOP1",
+        "FCP.BFSSSU2GaugeG4K2A.fermionVacuum_unitary_invariant"
+      ],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": {
+        "classification": "MISSING_SOURCE_ANCESTRY",
+        "diagnostic": "The concrete source Fock gauge homomorphism and vacuum witness are in a separate pinned branch; exact transitive ancestors and fresh same-branch qualification are outstanding.",
+        "blocked_by": [
+          "op2-separate-vacuum-candidate"
+        ],
+        "next_action": "H2: inventory transitive import closure and identify minimal exact source adapter; no wholesale import."
+      },
+      "keywords": [
+        "OP2",
+        "unresolved",
+        "open",
+        "Fock",
+        "source binding",
+        "missing premise",
+        "transitive ancestors",
+        "gauge fixed projection",
+        "fermionVacuum"
+      ],
+      "scope_limit": "The abstract OP0/OP1 theorems do not discharge the original SU(2) Fock binding or vacuum/Spin(9) compatibility.",
+      "location_url": "https://github.com/etblink/math/blob/50d7352734fb99f6c06612fa1e235be4360ff955/contributions/bfss-kotler/BFSS_SPECTRAL_GAUGE_FIXED_PROJECTION_FEASIBILITY_2026_11_08.md"
+    },
+    {
+      "id": "fcp-live-state-snapshot",
+      "title": "FCP canonical current program state, pinned read-only snapshot",
+      "kind": "cross_repository_provenance",
+      "status": "REFERENCE_ONLY",
+      "repository": "etblink/Foundational-Convergence-Program",
+      "observed_ref": "main",
+      "exact_commit": "cf06212a57db0ceffad74bd78280a8a240856a17",
+      "source": {
+        "path": "CURRENT_STATE.md",
+        "blob_sha": "b5949af93a1855ae1d072fa4aaa4b1c29033579c",
+        "symbols": []
+      },
+      "related_sources": [],
+      "source_carrier": null,
+      "dependency_roots": [],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "FCP",
+        "Foundational Convergence Program",
+        "canonical program state",
+        "main",
+        "provenance",
+        "research governance"
+      ],
+      "scope_limit": "FCP program routing is not evidence that a BFSS Lean declaration qualified.",
+      "location_url": "https://github.com/etblink/Foundational-Convergence-Program/blob/cf06212a57db0ceffad74bd78280a8a240856a17/CURRENT_STATE.md"
+    },
+    {
+      "id": "fcp-source-register-snapshot",
+      "title": "FCP source register, pinned read-only snapshot",
+      "kind": "cross_repository_provenance",
+      "status": "REFERENCE_ONLY",
+      "repository": "etblink/Foundational-Convergence-Program",
+      "observed_ref": "main",
+      "exact_commit": "cf06212a57db0ceffad74bd78280a8a240856a17",
+      "source": {
+        "path": "SOURCE_REGISTER.md",
+        "blob_sha": "ee0f2ac6d66ec9aba2a9730ad58d82958565e64a",
+        "symbols": []
+      },
+      "related_sources": [],
+      "source_carrier": null,
+      "dependency_roots": [],
+      "qualification": null,
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "FCP",
+        "source register",
+        "provenance",
+        "comparison",
+        "origin",
+        "scientific source"
+      ],
+      "scope_limit": "Historical framework source register; not an OP2 dependency-resolution or proof-status record.",
+      "location_url": "https://github.com/etblink/Foundational-Convergence-Program/blob/cf06212a57db0ceffad74bd78280a8a240856a17/SOURCE_REGISTER.md"
+    }
+  ]
+}
