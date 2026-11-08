@@ -1,0 +1,256 @@
+{
+  "schema": "bfss-import-sample-v1",
+  "repository": "etblink/math",
+  "baseline_commit": "5e2591d70bed7aa111aa97737289396523375b29",
+  "coverage": "24 of 420 Lean modules; only direct import statements",
+  "sample_count": 24,
+  "edges": 51,
+  "known_internal_downstream": {
+    "OAI.MathematicalPhysics.BFSS.FormClosure": [
+      "OAI.MathematicalPhysics.BFSS.FormCompactness"
+    ],
+    "OAI.MathematicalPhysics.BFSS.DeformedCharge": [
+      "OAI.MathematicalPhysics.BFSS.PotentialBounds"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateExtension": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateEquivalence"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisProjection": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCovering",
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateRestriction"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockIndexBridgeProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48NormalizedFockGammaProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48RealLinearGammaProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48AllVectorFockCliffordSquareProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48QuadraticUnitAxesProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48AllVectorFockCliffordSquareProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockCliffordUniversalLiftProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockBivectorStarCompatibilityProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48AllVectorFockCliffordSquareProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockCliffordUniversalLiftProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48NormalizedFockGammaProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48RealLinearGammaProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateRestriction": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateExtension"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9ASourceChargeCoefficientCrosswalkProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9BSourcePairAndChargeReductionProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9BSourcePairAndChargeReductionProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9COrderedPairCoefficientProbe"
+    ],
+    "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9COrderedPairCoefficientProbe": [
+      "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9DSourcePotentialMultiplierProbe"
+    ]
+  },
+  "modules": [
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Core",
+      "imports": [
+        "Mathlib"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.GaugeCore",
+      "imports": [
+        "Mathlib",
+        "OAI.MathematicalPhysics.BFSS.GaugeOrbits"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.FormClosure",
+      "imports": [
+        "Mathlib",
+        "OAI.MathematicalPhysics.BFSS.OscillatorForms"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.FormCompactness",
+      "imports": [
+        "Mathlib",
+        "OAI.MathematicalPhysics.BFSS.FormClosure"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.DeformedCharge",
+      "imports": [
+        "Mathlib",
+        "OAI.MathematicalPhysics.BFSS.Cutoffs",
+        "OAI.MathematicalPhysics.BFSS.MixedEnergy"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.PotentialBounds",
+      "imports": [
+        "Mathlib",
+        "OAI.MathematicalPhysics.BFSS.DeformedCharge"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateEquivalence",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateExtension",
+        "Mathlib.Topology.Algebra.ContinuousMonoidHom"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCovering",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisProjection",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisStabilizerVectorContinuity",
+        "Mathlib.Topology.Algebra.Group.Subgroup",
+        "Mathlib.Topology.Covering.Quotient",
+        "Mathlib.Data.Set.Card"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisProjection",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisTargetPreimage",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineSignedWord"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineGammaFaithfulness",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10CUNaturalActionTwoSignFibers",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineGammaCovariance"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10QSourceSpinOrientationDetOneProbe"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockIndexBridgeProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2PairedThetaConcreteModesProbe"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48NormalizedFockGammaProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockIndexBridgeProbe",
+        "Mathlib.Tactic"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48AllVectorFockCliffordSquareProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48RealLinearGammaProbe",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48QuadraticUnitAxesProbe",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52L9E5A2FiniteComplexWeightedFockCliffordSquareProbe",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe",
+        "Mathlib.Basic.Complex.BigOperators"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockBivectorStarCompatibilityProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockGammaSelfAdjointProbe",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockCliffordUniversalLiftProbe"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockCliffordUniversalLiftProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48AllVectorFockCliffordSquareProbe",
+        "Mathlib.LinearAlgebra.CliffordAlgebra.Basic"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48RealLinearGammaProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48NormalizedFockGammaProbe"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48QuadraticUnitAxesProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe",
+        "Mathlib.LinearAlgebra.Matrix.ToLin"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateExtension",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateRestriction",
+        "Mathlib.Data.Fin.Tuple.Basic"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisCoordinateRestriction",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralSourceNineAxisProjection",
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+        "Mathlib.Topology.Instances.Matrix",
+        "Mathlib.Algebra.BigOperators.Fin",
+        "Mathlib.Data.Fin.SuccPred"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9ASourceChargeCoefficientCrosswalkProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.MassiveMoments"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9BSourcePairAndChargeReductionProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9ASourceChargeCoefficientCrosswalkProbe"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9COrderedPairCoefficientProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9BSourcePairAndChargeReductionProbe"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    },
+    {
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9DSourcePotentialMultiplierProbe",
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K9COrderedPairCoefficientProbe"
+      ],
+      "verified_by": "GitHub source read at 5e2591d70bed7aa111aa97737289396523375b29"
+    }
+  ],
+  "limitations": [
+    "This is not a complete dependency graph.",
+    "No module qualification is inferred from imports.",
+    "No Lean build or independent consumer has been executed.",
+    "Full inventory is in BFSS_LEAN_TREE_INVENTORY_2026_11_08.json."
+  ]
+}
