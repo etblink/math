@@ -438,3 +438,23 @@ validator tests pass; the full 136-module strict source/consumer run remains
 required. See the [gate's exact attempt-2 record and acceptance rules](BFSS_SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_RESTRICTION_GATE_2026_11_07.md#strict-red-42464034784-attempt-2--final-consumer-scalar-conversion).
 No downstream theorem is qualified or launched by this recovery.
 
+
+
+## 2026-11-08 — Coordinate-exact restriction qualified: 42491448288
+
+At exact tested commit `b4bf6de6572b4686d7858b204032698d1e928621`, retained
+evidence verifies 136 cold builds, 26 independent examples, 121 strict root
+reports, eleven markers, 166 input pins and 42 dependency revisions, with no
+warnings and only the three permitted foundational axioms. The literal actual
+target stabilizer's faithful continuous homomorphism to SO(8), exact original
+entries and arbitrary-original-vector action are qualified. See the
+[scoped qualification](BFSS_SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_RESTRICTION_GATE_2026_11_07.md#qualification-42491448288)
+and its full receipt record. Every earlier red remains rejected.
+
+The next bounded gate is the noncircular original-coordinate extension
+`diag(B,+1)`: prove raw entries, orthogonality, determinant and axis fixing
+before SO(9)/H bundling, then the two inverse identities and surjectivity of
+the qualified restriction. It excludes new topology equivalences, source Spin(8)
+classification, branching, Fock actions and every physical spectral claim.
+The owner explicitly authorizes proceeding after qualification without another
+continue prompt. Preserve the no-CI-polling rule and all existing proof controls.

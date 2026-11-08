@@ -431,3 +431,46 @@ unexpected warnings. If the same scalar/index boundary persists, stop full
 retries and obtain a minimal working typed reproducer. Do not poll CI.
 No SO(8) inverse, Spin(8) classification or physical assertion follows here.
 
+
+
+## Qualification 42491448288
+
+The owner reported strict run [42491448288](https://github.com/etblink/math/actions/runs/42491448288)
+GREEN. Independent retained-evidence review qualifies the coordinate restriction
+at exact tested commit `b4bf6de6572b4686d7858b204032698d1e928621`.
+Artifact [13621543227](https://github.com/etblink/math/actions/runs/42491448288/artifacts/13621543227)
+was downloaded, ZIP/CRC checked and independently SHA-256 verified as
+`1b7429b11c353859ce3a60e19de597f8c8fd67266e1daa793d03839f2968eb29`.
+The complete PASS receipt hashes to
+`2cd12ee7ef1dea5dead4b1efb57413b88b7b6529634e402980a599cc85d1d8ce`.
+See [the scoped machine-readable qualification](evidence/source-axis-stabilizer-2026-11-07/qualification-42491448288.json).
+
+All 136 cold compiler exits are zero. Review verified 166 exact input Git/SHA-256
+pins, all 136 ordered compiler-log digests, all 26 independent examples,
+121 strict axiom reports, eleven completion markers, the pinned Lean compiler
+identity and all 42 installed package revisions. No compiler warning/error or
+recovery axiom occurs. All audited roots use only propext, Classical.choice
+and Quot.sound. Object/compiler binary hashes are retained receipt records;
+archived binaries were not supplied for independent rehashing.
+
+The source remains blob `7df84b75d2d18fca18cc34e515359aa70e994cb0` and the
+qualified consumer is blob `14317fec3f6034baa870f5dbe436587e214157e6`.
+The earlier strict and diagnostic reds remain rejected. The final repair's
+explicit finite-index equality and typed scalar singleton evaluation close the
+previously incomplete consumer calc chain, without changing any proposition,
+source theorem, carrier, topology, dependency, strict control or proof budget.
+
+**Qualified scope:** the actual original fixed-axis SO(9) subgroup has its
+coordinate-exact faithful continuous group homomorphism into SO(8), on original
+labels 0 through 7, with determinant and arbitrary-original-vector action
+bindings. Surjectivity and an inverse are not included in this qualification.
+
+**Next single bounded gate:** construct the raw original-coordinate extension
+`diag(B,+1)` for arbitrary B, establish its orthogonality, raw determinant and
+fixed-axis identity before bundling SO(9)/H membership, then prove restriction
+and extension are inverse on their actual carriers. Surjectivity follows.
+Do not use an H-only determinant theorem to establish initial H membership.
+Full topological group equivalence, source Spin(8) classification, common torus
+and branching, Fock action, physical domains, coercivity and spectral existence
+remain separate obligations. The owner authorizes progression after each
+verified qualification without a separate continue instruction; CI is not polled.
