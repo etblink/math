@@ -205,7 +205,7 @@ All workflow steps succeeded, including the standalone search smoke tests. OP0's
 ```bash
 python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --cold-test
 python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --search 'OP2 original SU2 Fock gauge binding'
-GITHUB_TOKEN=<read-only-token> python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --remote
+python3 contributions/bfss-kotler/tools/h1_evidence_registry.py --check --remote  # optional: export GITHUB_TOKEN beforehand
 ```
 The token is optional for public GitHub access but avoids anonymous rate limits. Never print or commit tokens.
 
