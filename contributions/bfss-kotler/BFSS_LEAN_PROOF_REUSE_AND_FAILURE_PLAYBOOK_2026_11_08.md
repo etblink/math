@@ -95,6 +95,8 @@ If two similar historical red fixes exist, read the original goal and the eventu
 | [#42515890832](https://github.com/etblink/math/actions/runs/42515890832), **workflow/CLI RED** | Unsupported `--werror` assumption | [OP0 #42516531636](https://github.com/etblink/math/actions/runs/42516531636) **GREEN** with explicit version-appropriate warning checks |
 | [#42524110865](https://github.com/etblink/math/actions/runs/42524110865) and [#42524190259](https://github.com/etblink/math/actions/runs/42524190259), **bookkeeping RED** | Generated workflow index self-reference, then accidental escaped newlines in source | [H2 #42524327310](https://github.com/etblink/math/actions/runs/42524327310) **GREEN** after deterministic self-reference normalization and source-line repair |
 
+| [#42536718968](https://github.com/etblink/math/actions/runs/42536718968), **retrieval self-test RED** | Markdown `**Disposition:**` colon/bold ordering was misparsed; no science was tested | [#42536855449](https://github.com/etblink/math/actions/runs/42536855449) **GREEN** after one-line regex repair; real corpus searched 315 Markdown / 691 Markdown+Lean files |
+
 Distinguish **RED because a proof did not elaborate**, **RED because a successful proof emitted forbidden warnings**, **RED because infrastructure failed**, and **RED because the theorem is actually refuted**. The latter requires independent mathematical evidence; never infer it from the other three.
 
 ## Lean proof contracts and generalization policy
