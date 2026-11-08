@@ -8,12 +8,34 @@
 
 > Seek truth. Preserve results, not theories. Preserve negative knowledge. Every acceptance is tied to an exact source commit and actual consumer gate.
 
+## Cross-repository retrieval gateway (2026-11-08)
+
+**Canonical entry:** [cross-repo branch locator — 99-branch dated inventory](BFSS_CROSS_REPO_BRANCH_LOCATOR_2026_11_08.json).
+It records the observed remote head SHA and live/immutable GitHub URLs for
+**25 `etblink/math` branches** and **74 `etblink/Foundational-Convergence-Program` branches**.
+It also contains direct pointers to original BFSS carriers, OP0/OP1, the
+import graph, and the separate OP2 Fock dependency snapshot.
+
+**Division of responsibilities:**
+- [`etblink/math`](https://github.com/etblink/math): original BFSS/Lean source, theorem implementations, independent consumers, qualification gates and publication-facing integration.
+- [`Foundational-Convergence-Program`](https://github.com/etblink/Foundational-Convergence-Program): research provenance, comparison rules, source registers, claim ledger, and prior falsification/negative findings. Its [`CURRENT_STATE.md`](https://github.com/etblink/Foundational-Convergence-Program/blob/main/CURRENT_STATE.md) on `main` is authoritative **for FCP program routing**, not for the exact BFSS Lean gate.
+- The [original-Fock research branch](https://github.com/etblink/math/tree/research/bfss-original-gamma-faithfulness-20261107) is the current BFSS workbench. The [separately pinned BFSS v0.4.0 contribution snapshot](https://github.com/etblink/math/tree/fa00aa36e770ca516f57b41f5b02229a5033d50f) holds candidate original Fock/gauge ancestry for OP2, not automatically imported or requalified here.
+
+**Accepted abstract anchors (do not broaden their scope):**
+- OP0: [run #42516531636](https://github.com/etblink/math/actions/runs/42516531636), tested commit `93e58dab8d077306250e7fb1140dc1dc1a5dd8c2` — literal finite-dimensional fixed-space projection and basic properties.
+- OP1: [warning-clean corrected gate #42518687725](https://github.com/etblink/math/actions/runs/42518687725), tested commit `44ea6b8001209d92f0e023a7f30f5125cde127e9` — star-algebra automorphism invariance of that abstract projection with explicit assumptions. Earlier [run #42517863002](https://github.com/etblink/math/actions/runs/42517863002) compiled the mathematics, but revealed an insufficient warnings-as-errors check; later run corrected and passed it.
+- **OP2 remains OPEN**: original SU(2) Fock source binding requires exact dependency ancestry and fresh qualification, not a surrogate carrier or an assumption about an already-imported module.
+
+**How to locate an artifact:** Start in the JSON registry by repository/branch, then use the recorded commit SHA for an immutable historical snapshot. For a known Git path on a local clone with the relevant remote refs fetched, run `git show <commit>:<path>`; to find its earlier history use `git log --all -- <path>`. To find an unfamiliar file name on a specific ref, use `git ls-tree -r --name-only <ref>`. The registry enumerates *branch heads*, not every historical commit or every file. A missing indexed pointer does not mean a result never existed.
+
+**Integrity/maintenance:** Do not merge or delete branches simply to improve navigation. Preserve old proof bytes, exact run/commit identifiers, rejected attempts and research source provenance. GitHub branch HEADs can move; treat the JSON as a dated discovery/recovery snapshot, refresh it deliberately when milestone branches change, and confirm live HEAD before any mutation. This gateway belongs on the **research branch only** until a separately approved small navigation-only integration makes it visible from a stable default-branch landing page.
+
 ## Start here
 
 | Question | Starting point | What it does *not* establish |
 | --- | --- | --- |
 | What is the current research direction? | [Original Fock Spin(9) and closed-form integration memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md) | A global Fock action or closed-domain covariance |
-| Is there a shorter operator-algebra route? | [Gauge-fixed projection feasibility memorandum](BFSS_SPECTRAL_GAUGE_FIXED_PROJECTION_FEASIBILITY_2026_11_08.md) | A compiled OP0–OP5 gate |
+| Is there a shorter operator-algebra route? | [Gauge-fixed projection feasibility memorandum](BFSS_SPECTRAL_GAUGE_FIXED_PROJECTION_FEASIBILITY_2026_11_08.md) | OP0 and OP1 are abstract qualified gates; OP2–OP5 and original-source binding remain open |
 | Why must operator fibers use a different weight bound? | [Whole-sector oscillator exclusion](BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md) | A qualified physical spectral sector |
 | Which original carriers are actually bound? | [Representation-binding audit](BFSS_SPECTRAL_SOURCE_EXACT_REPRESENTATION_BINDING_AUDIT_2026_11_07.md) | Source-exact equality for all future transports |
 | What failed or succeeded procedurally? | [Procedural success/failure review](BFSS_SOURCE_GEOMETRY_PROCEDURAL_SUCCESS_FAILURE_REVIEW_2026_11_07.md) | That a green gate validates later modules |
