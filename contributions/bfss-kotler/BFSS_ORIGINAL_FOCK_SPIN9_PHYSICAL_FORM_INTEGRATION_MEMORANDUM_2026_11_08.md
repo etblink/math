@@ -331,3 +331,22 @@ causal error rather than hidden by proof-budget or source-convention changes.
 This paragraph records only source facts, a bounded candidate,
 and a missing physical-model identification; it does not add or
 independently qualify any Lean theorem.
+
+
+---
+
+## 13. F1A first strict red — type/simplification diagnosis and bounded repair (2026-11-08)
+
+**Observed first strict outcome:** [#42532370775](https://github.com/etblink/math/actions/runs/42532370775) — **FAIL**, attempt 1, at exact tested `e0561b323c8c5792f00242d4e341f32fd9b81888`. Initial source/predecessor Git blob, exact Lean 4.34.1/Mathlib dependency and environment gates passed. Cold ancestry compiled through `SU2BFSSSource48NormalizedFockGammaProbe`. The new F1A source did **not** compile, so the apparent `#print axioms` output included `sorryAx` from incomplete elaboration and does *not* constitute proof admission. The independent consumer was not built.
+
+**Four precise errors, all in the new F1A module:**
+- Line 38, off-diagonal CAR: `simpa only [if_neg hpq, zero_smul]` left `(0 : ℂ) • 1` unreduced. The `if_neg` spelling was also deprecated. Source CAR remained valid; the conversion tactic was too narrow.
+- Line 53, diagonal CAR: `simpa only [if_pos rfl, one_smul]` left `if True then 1 else 0` unreduced; the `if_pos` spelling was deprecated. Again an exact simplification/API failure, not a counterexample to CAR.
+- Lines 71 and 90, two ordered-bivector commutators: `noncomm_ring` stopped with goals containing `-1 •` and `2 •` on the continuous-linear-operator additive module, despite the mathematically elementary distributive identities. A generic noncommutative ring tactic did not bridge that scalar-action elaboration form.
+- Fail-closed implication: do not use the missing proof's `sorryAx` reports to claim that either candidate commutator was proved. Source-normalization `θ_p θ_q+θ_q θ_p=δ_{pq} I` is unchanged and the ordered-bivector sign target remains a candidate until a fresh independent green run.
+
+**Targeted repair:** [commit `ab0e1e997ed8862d975522c294a8326a86f13853`](https://github.com/etblink/math/commit/ab0e1e997ed8862d975522c294a8326a86f13853) changes only the new F1A proof source: uses `simpa [hpq]` and `simpa` for CAR specializations, and explicit `simp only` expansion of `mul_neg`, `neg_mul`, distributivity, associativity, and subtraction instead of `noncomm_ring`. No theorem statements, original CAR definitions, imports, independent consumer, workflow, upstream `main`, or mathlib/toolchain pins were changed.
+
+**Replay:** [run #42533094586](https://github.com/etblink/math/actions/runs/42533094586) started at the repair commit; **NOT YET QUALIFIED** at this recording. Require full original source/consumer compilation, warning-free exact source and consumer, and no `sorryAx`/forbidden axioms.
+
+**Procedural lesson:** for continuous-linear-map identities on the actual Fock operator algebra, specialize the existing source CAR exactly, then normalize scalar/negative module expressions with explicit ring/module rewrites rather than assuming `noncomm_ring` resolves module coercions. Preserve failed diagnostics as negative *procedural* knowledge; do not alter physical signs, normalizations or carriers to force a green gate.
