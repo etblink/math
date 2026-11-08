@@ -343,3 +343,30 @@ stabilizers, the unchanged original projection, its surjectivity and exact
 two-sign fibers/kernel. Continuity transfer and topological covering follow as
 separate obligations. Coordinate SO(8), Spin(8) classification, torus/branching
 and every physical spectral assertion remain outside this qualification.
+
+## Original stabilizer projection and exact fibers qualified: 42448494747
+
+At exact tested commit `d8ff8d32982a341d39745360a2b1b434f305e6f8`, the actual
+source axis stabilizer and actual fixed-axis SO(9) target are bundled subgroups,
+and their original projection is surjective with exactly two distinct original
+signs in every fiber and kernel carrier exactly identity and the genuine negative
+central element. Retained-evidence review confirms 135 cold builds, 22 independent
+examples, 110 strict axiom reports, ten completion markers, 165 input pins and
+42 package revisions. All roots use only the permitted foundational axioms;
+all compiler logs have zero warnings. See
+[the scoped acceptance](BFSS_SPECTRAL_SOURCE_NINE_AXIS_PROJECTION_GATE_2026_11_07.md#qualification-42448494747)
+and its machine-readable record.
+
+Red 42446746331 remains preserved: all 133 ancestors passed, but the kernel
+set-equality proof left the subgroup-to-Set membership coercion opaque to its
+restricted simplifier. Adding the pinned SetLike.mem_coe lemma repaired that
+one proof line. All theorem types, the complete independent consumer, inherited
+source bytes, dependency pins and resource controls remained unchanged.
+
+The single next bounded milestone is the exact original projection's topological
+covering gate. Transfer already qualified PBW continuity/compactness to the same
+subgroup carrier, establish quotient-map status and discrete exact finite kernel,
+and use the pinned quotient-covering criterion under the actual subgroup
+topologies. These obligations remain unqualified here. Coordinate SO(8), Spin(8)
+classification, torus/branching, Fock-operator action and every physical spectral
+claim remain separate. No new proof gate is launched by this acceptance record.

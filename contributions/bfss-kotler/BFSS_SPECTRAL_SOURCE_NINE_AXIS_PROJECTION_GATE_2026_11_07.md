@@ -1,6 +1,7 @@
 # Original source stabilizer projection, two-sign fibers and kernel
 
-Status: CANDIDATE, pending complete strict source and independent consumer compilation.
+Status: QUALIFIED at tested commit `d8ff8d32982a341d39745360a2b1b434f305e6f8`,
+strict run [42448494747](https://github.com/etblink/math/actions/runs/42448494747).
 Exact parent: `2d8a3c6980697b8db3b9e3628ab15d1f05a4da0b`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
 
@@ -220,3 +221,42 @@ then apply the pinned quotient-covering theorem. Coordinate SO(8) identification
 topological Spin(8) classification, source torus/branching, Fock-operator action,
 physical domains, coercivity, confinement and positive spectral existence remain
 separate obligations. No physical spectral statement is authorized by this gate.
+
+## Qualification: 42448494747
+
+The complete strict source and independent consumer qualify at EXACT tested
+commit `d8ff8d32982a341d39745360a2b1b434f305e6f8`. Retained-evidence review
+independently checked all 135 ordered cold-build logs and return codes, 165
+archived input Git blobs and SHA-256 pins, 110 strict axiom reports, ten exact
+completion markers and all 42 locked dependency revisions. All 22 independent
+examples compile. Original and strict modules report zero compiler warnings;
+every public root uses only propext, Classical.choice and Quot.sound.
+
+The verified evidence ZIP
+[13605046774](https://github.com/etblink/math/actions/runs/42448494747/artifacts/13605046774)
+has SHA-256
+`a9c0e9bdba5e6950e1f509d34622eff369cf48720f3157c540cea3a2c90e9c54`;
+the PASS receipt SHA-256 is
+`6b0137a6c8251f148510e788353293f0b0ee91fb129cde51209757e24a76d085`.
+The accepted source blob is `b466e46b43967e07c2c4f3200e872076a693576a`,
+and the unchanged consumer blob is `103b4ff62037ac020223647ef431e6a6ffe588f4`.
+Compiler/environment and all source/consumer log digests are retained in the
+[machine-readable acceptance record](evidence/source-axis-stabilizer-2026-11-07/acceptance-42448494747.json).
+Compiled object digests are receipt records, not independently rehashed binaries.
+
+The actual original source axis stabilizer and actual fixed-axis SO(9) subgroup
+are now bundled with the unchanged original surjective projection. Its fibers
+are exactly two distinct source signs; its kernel carrier is exactly the source
+identity and genuine negative central element. The perpendicular e0e1,
+mixed e0e8, both central signs, inverse closure and non-injectivity adverse
+consumers all pass. The failed predecessor and its coercion repair remain
+preserved above; the failed candidate itself is not retroactively accepted.
+
+The single next bounded milestone is topological qualification of this exact
+projection: transfer the previously qualified PBW continuity and compactness
+to its definitionally identical source carrier, obtain a quotient map, prove
+the exact finite kernel discrete, and apply the pinned quotient-covering
+criterion with the actual subgroup topologies. None of these newly bundled
+topological assertions is claimed by the present algebraic gate. Coordinate
+SO(8), Spin(8) classification, torus/branching and all physical conclusions
+remain outside this qualification.
