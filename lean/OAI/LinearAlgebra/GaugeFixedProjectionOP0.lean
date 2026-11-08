@@ -1,4 +1,5 @@
 import Mathlib.Analysis.InnerProductSpace.Adjoint
+import Mathlib.Topology.Algebra.Module.FiniteDimension
 
 /-!
 # OP0: gauge-fixed orthogonal projection, with no BFSS source imports
@@ -19,7 +20,7 @@ namespace FCP.BFSSGaugeFixedProjectionOP0
 noncomputable section
 
 variable {G F : Type*} [Group G] [NormedAddCommGroup F]
-  [InnerProductSpace ℂ F] [FiniteDimensional ℂ F]
+  [InnerProductSpace ℂ F]
 
 /-- Literal vectors fixed by every element of a complex-linear group representation. -/
 def gaugeFixedSubspace (U : G →* Module.End ℂ F) : Submodule ℂ F :=
@@ -31,17 +32,19 @@ theorem mem_gaugeFixedSubspace_iff (U : G →* Module.End ℂ F) (v : F) :
   simp only [gaugeFixedSubspace, Submodule.mem_iInf, LinearMap.mem_ker,
     LinearMap.sub_apply, LinearMap.id_apply, sub_eq_zero]
 
+variable [FiniteDimensional ℂ F]
+
 /-- The canonical continuous orthogonal projection onto the fixed subspace. -/
 def gaugeFixedProjection (U : G →* Module.End ℂ F) : F →L[ℂ] F := by
-  letI : CompleteSpace (gaugeFixedSubspace U) :=
-    FiniteDimensional.completeSpace ℂ (gaugeFixedSubspace U)
+  haveI : CompleteSpace (gaugeFixedSubspace U) :=
+    FiniteDimensional.complete ℂ (gaugeFixedSubspace U)
   exact (gaugeFixedSubspace U).starProjection
 
 /-- Projection range equals the literal common fixed subspace. -/
 theorem range_gaugeFixedProjection (U : G →* Module.End ℂ F) :
     (gaugeFixedProjection U).range = gaugeFixedSubspace U := by
-  letI : CompleteSpace (gaugeFixedSubspace U) :=
-    FiniteDimensional.completeSpace ℂ (gaugeFixedSubspace U)
+  haveI : CompleteSpace (gaugeFixedSubspace U) :=
+    FiniteDimensional.complete ℂ (gaugeFixedSubspace U)
   change (gaugeFixedSubspace U).starProjection.range = gaugeFixedSubspace U
   exact Submodule.range_starProjection _
 
@@ -55,17 +58,17 @@ theorem gaugeFixedProjection_fixed (U : G →* Module.End ℂ F) (v : F) (g : G)
 /-- The canonical projection is idempotent. -/
 theorem gaugeFixedProjection_idempotent (U : G →* Module.End ℂ F) :
     IsIdempotentElem (gaugeFixedProjection U) := by
-  letI : CompleteSpace (gaugeFixedSubspace U) :=
-    FiniteDimensional.completeSpace ℂ (gaugeFixedSubspace U)
+  haveI : CompleteSpace (gaugeFixedSubspace U) :=
+    FiniteDimensional.complete ℂ (gaugeFixedSubspace U)
   change IsIdempotentElem (gaugeFixedSubspace U).starProjection
   exact Submodule.isIdempotentElem_starProjection _
 
 /-- The canonical projection is an orthogonal (self-adjoint) projection. -/
-theorem gaugeFixedProjection_isStarProjection (U : G →* Module.End ℂ F) :
+theorem gaugeFixedProjection_isStarProjection [CompleteSpace F]
+    (U : G →* Module.End ℂ F) :
     IsStarProjection (gaugeFixedProjection U) := by
-  letI : CompleteSpace F := FiniteDimensional.completeSpace ℂ F
-  letI : CompleteSpace (gaugeFixedSubspace U) :=
-    FiniteDimensional.completeSpace ℂ (gaugeFixedSubspace U)
+  haveI : CompleteSpace (gaugeFixedSubspace U) :=
+    FiniteDimensional.complete ℂ (gaugeFixedSubspace U)
   change IsStarProjection (gaugeFixedSubspace U).starProjection
   exact Submodule.isStarProjection_starProjection
 
