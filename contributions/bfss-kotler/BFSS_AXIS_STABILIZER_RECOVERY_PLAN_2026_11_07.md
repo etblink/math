@@ -370,3 +370,34 @@ and use the pinned quotient-covering criterion under the actual subgroup
 topologies. These obligations remain unqualified here. Coordinate SO(8), Spin(8)
 classification, torus/branching, Fock-operator action and every physical spectral
 claim remain separate. No new proof gate is launched by this acceptance record.
+
+## Original stabilizer two-sheeted covering qualified: 42452043377
+
+At exact tested commit `f47dd34b869a1aec39e95a2ccb852f4ba67f5b22`, the original
+source ninth-axis stabilizer is a compact, path-connected topological group
+in its qualified PBW topology, and the unchanged original projection to the
+actual fixed-axis SO(9) subgroup is continuous, closed, a quotient map and
+a quotient covering by its exact discrete kernel. The kernel and every fiber
+have exactly two elements. Independent retained-evidence review confirms
+146 cold builds, 26 independent examples, 192 strict axiom reports, 21 markers,
+176 input pins and 42 package revisions, with zero compiler warnings and only
+the permitted foundational axioms. See
+[the scoped qualification](BFSS_SPECTRAL_SOURCE_NINE_AXIS_COVERING_GATE_2026_11_07.md#qualification-42452043377)
+and its machine-readable record.
+
+Red 42450508588 remains preserved: all 144 ancestors passed; the strict source
+rejected the deprecated Set.mem_setOf_eq alias in its fiber-count proof.
+Replacing it with the exact pinned successor Set.mem_ofPred_eq repaired that
+one line. The complete consumer, theorem types, topologies, inherited sources,
+dependency pins and strict warning/resource policy remained unchanged. A source
+with diagnostic output was not accepted merely because its reports and marker
+printed without recovery axioms.
+
+The single next bounded milestone is coordinate-exact identification of the
+actual target H with SO(8) on original coordinates 0 through 7 as a topological
+group, preserving the actual vector projection. Audit last-row/column,
+cross-block multiplication and determinant reduction before formalization.
+This does not yet classify the source as a separately constructed Spin(8), bind
+the common torus/root data, transfer branching or construct a Fock-operator
+action. Every physical spectral claim remains outside the qualification.
+No new proof gate is launched by this acceptance record.

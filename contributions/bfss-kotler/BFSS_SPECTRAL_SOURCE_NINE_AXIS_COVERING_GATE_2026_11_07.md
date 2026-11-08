@@ -1,6 +1,7 @@
 # Original source ninth-axis stabilizer: bounded covering gate
 
-Status: CANDIDATE; strict source and independent consumer qualification pending.
+Status: QUALIFIED at tested commit `f47dd34b869a1aec39e95a2ccb852f4ba67f5b22`,
+strict run [42452043377](https://github.com/etblink/math/actions/runs/42452043377).
 Exact parent: `2bbc67c4f15207dfb87c07a05e33dc8cebbafadb`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
 
@@ -206,3 +207,47 @@ must be audited before implementation.
 Source torus/root-data binding, B4/D4 branching, complex Fock-operator action,
 physical domains, coercivity, confinement and positive eigenvalue existence
 remain separate unproved obligations. No physical spectral claim follows here.
+
+## Qualification: 42452043377
+
+The complete strict source and independent consumer qualify at EXACT tested
+commit `f47dd34b869a1aec39e95a2ccb852f4ba67f5b22`. Independent retained-evidence
+review checked all 146 ordered cold-build logs and successful return codes,
+176 archived input Git blob/SHA-256 pins, 192 strict axiom reports, 21 exact
+completion markers, and all 42 locked dependency revisions. All 26 independent
+examples compile, including numerical cardinality of the full original fiber
+subtype and the separate exact central-sign tests. Every compiler log has zero
+warnings, and every public root uses only propext, Classical.choice and Quot.sound.
+
+The evidence ZIP
+[13606751487](https://github.com/etblink/math/actions/runs/42452043377/artifacts/13606751487)
+has verified SHA-256
+`f58d11e85cb65f54179fb84a8551c0456c2347967572590b312abfc5c07d7e44`.
+The PASS receipt SHA-256 is
+`eaa82a22ac5f6a47e02bb2aca3a340a38caf9d86e83aba37f7ff40338beaf785`.
+The accepted source blob is `5121baf4fc003c01854dbb4fe28038a04e961e76`;
+the unchanged independent consumer blob is
+`c97f68da79407862889570a306aae2576d7c8fd6`. Compiler/environment, all source
+axiom lists and source/consumer log digests are recorded in the
+[machine-readable acceptance record](evidence/source-axis-stabilizer-2026-11-07/acceptance-42452043377.json).
+Object digests are recorded by the compiler receipt; binary proof objects are
+not included in the ZIP and were not independently rehashed.
+
+The ACTUAL original source ninth-axis stabilizer is now qualified as a compact,
+path-connected topological group in its unchanged PBW topology. Its unchanged
+projection onto the ACTUAL fixed-axis SO(9) subgroup is continuous, closed,
+a quotient map and a quotient covering by its actual discrete kernel. That
+kernel and every target fiber have exactly two elements. Thus the projection
+is a genuine two-sheeted topological covering, rather than only a two-to-one
+set map. Both actual central signs remain distinct in the source.
+
+The failed predecessor and strict deprecation repair remain preserved above;
+the failed tested commit itself is not retroactively accepted. No source,
+consumer, dependency or workflow changes accompany this acceptance record.
+
+The single next bounded milestone is the coordinate-exact topological group
+equivalence from this actual target subgroup H to SO(8) on original coordinates
+0 through 7. Audit the last row/column, block multiplication and determinant
+interfaces before implementation, and require original-vector compatibility.
+Coordinate SO(8) identification, topological Spin(8) classification,
+triality-sensitive branching and all physical conclusions remain unqualified.
