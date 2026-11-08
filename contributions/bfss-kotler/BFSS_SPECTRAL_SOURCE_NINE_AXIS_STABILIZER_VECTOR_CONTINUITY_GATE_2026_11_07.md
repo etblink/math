@@ -144,3 +144,11 @@ surjectivity, two-sheeted covering, topological Spin(8) classification,
 triality-safe torus binding and branching remain separate obligations.
 No Fock-operator action, physical domain identification, coercivity, confinement,
 mass gap or positive eigenvalue existence is claimed by this gate.
+
+## Run 42432065694 — first red, bounded continuity-proof repair (2026-11-07)
+
+Run [42432065694](https://github.com/etblink/math/actions/runs/42432065694), exact tested commit `d736ff886911d3688b38c356e7994aebb08869e3`, is **RED / INCOMPLETE**, not a mathematical acceptance. Retained artifact `13598573370` has ZIP SHA-256 `ff62d9ce5f3370e1bc97c94deb8e1fce7a64bf6a3a3305f4a7d7bc0e7f63123c`; its receipt is `INCOMPLETE`. The pinned original and fifteen accepted ancestor modules compiled. The first new source failure was in `source9Axis8EightWord_vector_continuous_pbw`, at candidate line 44: deterministic `whnf` timeout at 200000 heartbeats while composing `(source9AmbientVectorConjugation_contDiff_pbw 0).continuous` with the word inputs. The later `sorryAx` reports were emitted by recovery after that failed theorem; the independent consumer was not compiled.
+
+**Bounded candidate repair:** remove only the resource-intensive generic `ContDiff`-to-`Continuous` composition in that proof. Instead compose existing, qualified, source-exact PBW-continuous maps for Clifford multiplication, reversal, and the vector projection, with explicit intermediate `Continuous` goals and the *unchanged* literal ambient-conjugation equality. Preserve all public theorem statements, the original source carrier/action, local PBW topology, dependency pins, strict controls, consumer, workflow, and proof budgets. Update only the candidate source Git blob/SHA-256 integrity pins. The archive inputs were staged locally, and the updated 172-input static preflight and all sixteen adversarial validator tests passed; this is **not** a Lean compilation or mathematical acceptance.
+
+A fresh strict cold source **and independent consumer** run must pass before qualification. Do not accept a partial source compile, recovered `sorryAx` result, or the validator alone.

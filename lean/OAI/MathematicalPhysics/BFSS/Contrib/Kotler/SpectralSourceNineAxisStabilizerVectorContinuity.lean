@@ -39,11 +39,30 @@ theorem source9Axis8EightWord_clifford_continuous_pbw :
 /-- Parameter continuity of the actual vector action follows from the existing ambient extension. -/
 theorem source9Axis8EightWord_vector_continuous_pbw (z : V) :
     Continuous (fun w : P => source9SpinVectorRepresentation (source9Axis8EightUnitSpinWord w) z) := by
+  -- Compose the existing PBW-continuous operations directly.  The generic
+  -- ContDiff-to-Continuous coercion above exhausted Lean's whnf budget; these
+  -- explicit intermediate carriers retain the exact same ambient formula.
+  have hc : Continuous (fun w : P => (source9Axis8EightUnitSpinWord w : C)) :=
+    source9Axis8EightWord_clifford_continuous_pbw
+  have hz : Continuous (fun _ : P => (CliffordAlgebra.ι source9Quadratic z : C)) :=
+    continuous_const
+  have hleft : Continuous (fun w : P =>
+      (source9Axis8EightUnitSpinWord w : C) * CliffordAlgebra.ι source9Quadratic z) :=
+    source9Clifford_mul_continuous_pbw.comp (hc.prodMk hz)
+  have hreverse : Continuous (fun w : P =>
+      CliffordAlgebra.reverse (source9Axis8EightUnitSpinWord w : C)) :=
+    source9Clifford_reverse_continuous_pbw.comp hc
+  have hproduct : Continuous (fun w : P =>
+      ((source9Axis8EightUnitSpinWord w : C) * CliffordAlgebra.ι source9Quadratic z) *
+        CliffordAlgebra.reverse (source9Axis8EightUnitSpinWord w : C)) :=
+    source9Clifford_mul_continuous_pbw.comp (hleft.prodMk hreverse)
   have h : Continuous (fun w : P =>
-      source9AmbientVectorConjugation (source9Axis8EightUnitSpinWord w : C) z) :=
-    (source9AmbientVectorConjugation_contDiff_pbw 0).continuous.comp
-    (source9Axis8EightWord_clifford_continuous_pbw.prodMk (continuous_const :
-      Continuous (fun _ : P => z)))
+      source9AmbientVectorConjugation (source9Axis8EightUnitSpinWord w : C) z) := by
+    change Continuous (fun w : P =>
+      source9CliffordVectorProjection
+        (((source9Axis8EightUnitSpinWord w : C) * CliffordAlgebra.ι source9Quadratic z) *
+          CliffordAlgebra.reverse (source9Axis8EightUnitSpinWord w : C)))
+    exact source9CliffordVectorProjection_continuous_pbw.comp hproduct
   have heq : (fun w : P =>
       source9AmbientVectorConjugation (source9Axis8EightUnitSpinWord w : C) z) =
       (fun w : P => source9SpinVectorRepresentation (source9Axis8EightUnitSpinWord w) z) := by
