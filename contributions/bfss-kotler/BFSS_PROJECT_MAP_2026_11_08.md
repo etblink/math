@@ -131,6 +131,31 @@ statements, original source files, imports, consumer and strict gate unchanged.
 fermionic fixed subspace, not nonzero full physical L², Spin(9) covariance,
 Hamiltonian form-domain equality or a mass-gap claim.
 
+### F1A original theta bivector orientation — pending qualification (2026-11-08)
+
+[Original F1A proof candidate](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean)
+and [independent consumer](../../lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean)
+were added at [commit `1cdf60a`](https://github.com/etblink/math/commit/1cdf60a387fe75b2a65f6fe152fd774ae07ad8de).
+They test the literal original Source48 Majorana operators `θ_p` with
+`θ_p θ_q + θ_q θ_p = δ_{pq} I` and, for `p ≠ q`, the ordered bivector
+`B_{pq}=θ_p θ_q`:
+
+- `B_{pq} θ_p - θ_p B_{pq} = -θ_q`;
+- `B_{pq} θ_q - θ_q B_{pq} = +θ_p`.
+
+These are **source-exact CAR sign tests**, not a complete Lie-bracket,
+skew-adjointness, original Spin(9) Fock implementation or Hamiltonian theorem.
+The earlier gate [#42532325615](https://github.com/etblink/math/actions/runs/42532325615)
+was **cancelled** after a one-line Git-blob NUL-byte preflight fix;
+the corrected candidate is [commit `e0561b3`](https://github.com/etblink/math/commit/e0561b323c8c5792f00242d4e341f32fd9b81888),
+with strict [run #42532370775](https://github.com/etblink/math/actions/runs/42532370775).
+**F1A is UNQUALIFIED until that exact run's cold source,
+independent consumer, warning and axiom checks pass.**
+
+Next after its qualification: original bivector skew-adjointness and
+the third-label commuting case, followed by a properly normalized
+48-label Lie-algebra implementer and only subsequently group integration.
+
 ## Start here
 
 | Question | Starting point | What it does *not* establish |
