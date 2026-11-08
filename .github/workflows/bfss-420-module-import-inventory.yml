@@ -1,0 +1,81 @@
+name: BFSS 420-module source import inventory (diagnostic)
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - .github/workflows/bfss-420-module-import-inventory.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-420-import-inventory-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  full-source-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify source-tree pin and run the existing generator
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-420-inventory"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS | tee "$evidence/actual-bfss-tree.txt"
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          inv = json.loads(Path("contributions/bfss-kotler/BFSS_LEAN_TREE_INVENTORY_2026_11_08.json").read_text())
+          actual = subprocess.check_output(
+              ["git", "rev-parse", "HEAD:lean/OAI/MathematicalPhysics/BFSS"], text=True
+          ).strip()
+          if actual != inv["bfss_subtree_sha"]:
+              raise SystemExit(f"STOP: BFSS subtree changed: actual={actual}, expected={inv['bfss_subtree_sha']}")
+          if inv["inventory_count"] != 420 or inv["complete_bfss_tree"] is not True:
+              raise SystemExit("STOP: frozen inventory count/coverage invalid")
+          print(f"Source subtree pin verified: {actual}, {inv['inventory_count']} listed modules")
+          PY
+          python3 contributions/bfss-kotler/tools/build_import_graph.py --repo-root . 2>&1 | tee "$evidence/generate.log"
+          python3 contributions/bfss-kotler/tools/build_import_graph.py --repo-root . --check 2>&1 | tee "$evidence/check.log"
+          cp contributions/bfss-kotler/BFSS_IMPORT_GRAPH_FULL_2026_11_08.json "$evidence/"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          graph = json.loads(Path("contributions/bfss-kotler/BFSS_IMPORT_GRAPH_FULL_2026_11_08.json").read_text())
+          info = {k: graph[k] for k in (
+              "schema", "repository", "baseline_commit", "bfss_subtree_sha",
+              "module_count", "internal_edge_count", "outside_inventory_edge_count",
+              "missing_bfss_module_imports", "cycles", "zero_internal_downstream_count",
+              "sample_crosscheck", "qualification_caveat"
+          )}
+          evidence = Path(__import__("os").environ["RUNNER_TEMP"]) / "bfss-420-inventory"
+          (evidence / "summary.json").write_text(json.dumps(info, indent=2) + "\n")
+          print(json.dumps(info, indent=2))
+          PY
+          {
+            echo "### BFSS 420-module import graph diagnostic"
+            echo "Full generator and byte-exact --check completed."
+            echo "Tested SHA: `$(git rev-parse HEAD)`"
+            echo "Source subtree SHA: `$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS)`"
+            echo "This is NOT a Lean build, axiom check, qualification or proof of dead code."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve graph, pin and diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-420-import-graph-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-420-inventory/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
