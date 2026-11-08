@@ -1,0 +1,127 @@
+name: BFSS OP2a original SU2 Fock gauge source strict gate
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/**
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean
+      - lean/diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean
+      - .github/workflows/bfss-op2a-original-fock-gauge-source-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-op2a-original-g4e-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-fock-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify original 26-file Git blobs and 7 external source boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-op2a"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean lean/diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean | tee "$evidence/input-sha256.txt"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip() == "leanprover/lean4:v4.34.1"
+          manifest = json.loads(Path("lean/lake-manifest.json").read_text())
+          assert next(p for p in manifest["packages"] if p["name"] == "mathlib")["rev"] == "d13f23b723b8a846827a245b89c10fc7d3f11612"
+          graph = json.loads(Path("contributions/bfss-kotler/BFSS_H2_OP2_PINNED_ANCESTRY_V1.json").read_text())
+          assert graph["snapshot_commit"] == "fa00aa36e770ca516f57b41f5b02229a5033d50f"
+          root = "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4EFermionHilbertUnitaryProbe"
+          by_name = {x["module"]: x for x in graph["modules"]}
+          seen, pending = set(), [root]
+          while pending:
+              n = pending.pop()
+              if n in seen:
+                  continue
+              seen.add(n)
+              assert n in by_name, n
+              pending.extend(by_name[n]["inside_prefix"])
+          assert len(seen) == 26, len(seen)
+          def git_sha(path):
+              data = Path(path).read_bytes()
+              return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+          for n in sorted(seen):
+              v = by_name[n]
+              assert git_sha(v["path"]) == v["snapshot_blob_sha"], v["path"]
+              assert Path(v["path"]).stat().st_size == v["bytes"], v["path"]
+          boundary = {
+            "OAI.Analysis.Laughlin.Exterior.SpinAction": "ab42b15ded2461c26edf24468f397c4c36fcfb57",
+            "OAI.Analysis.Laughlin.Exterior.SpinUnitary": "a44e3319b3d6f4bdfff6ad5188c75fccc2d58762",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2ColorCrossProbe": "209b3808222730ca5e817d83ed32253a67513f7f",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2ThetaProbe": "bc8fc9209fa2b907f0b372300868bc730b5fb5bd",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe": "b9b8192055c70f0d001d7982669b9823c55562ed",
+            "OAI.MathematicalPhysics.BFSS.CovariantFields": "a2a5430550524a57f2fb7d519169050053e886bb",
+            "OAI.MathematicalPhysics.BFSS.GaugeCore": "e4990dadf1d8bde849e351467282ab3f14989c3b",
+          }
+          outside = {x for n in seen for x in by_name[n]["outside_prefix"]}
+          assert outside == set(boundary), (sorted(outside), sorted(boundary))
+          for name, sha in boundary.items():
+              path = "lean/" + name.replace(".", "/") + ".lean"
+              assert git_sha(path) == sha, name
+          assert [x for x in Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean").read_text().splitlines() if x.startswith("import ")] == [
+              "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4EFermionHilbertUnitaryProbe"]
+          assert [x for x in Path("lean/diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean").read_text().splitlines() if x.startswith("import ")] == [
+              "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP2aOriginalFockGaugeSource"]
+          print("OP2a 26 original blobs, 7 source boundaries, exact source consumer, and pins: PASS")
+          PY
+
+      - name: Restore pinned Lean/Mathlib environment
+        timeout-minutes: 35
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+
+      - name: Compile actual G4-E source, adapter and independent consumer
+        timeout-minutes: 60
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          evidence="$RUNNER_TEMP/bfss-op2a"
+          cd lean
+          lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP2aOriginalFockGaugeSource 2>&1 | tee "$evidence/build.log"
+          lake env lean OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean 2>&1 | tee "$evidence/source-axioms.log"
+          lake env lean diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean 2>&1 | tee "$evidence/consumer.log"
+          if grep -E '^(OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource[.]lean|diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit[.]lean):[0-9]+:[0-9]+: warning:' "$evidence/source-axioms.log" "$evidence/consumer.log"; then
+            echo "STOP: OP2a source or consumer warning" >&2
+            exit 1
+          fi
+          if grep -E 'sorryAx|Lean[.]ofReduceBool' "$evidence/source-axioms.log" "$evidence/consumer.log"; then
+            echo "STOP: OP2a forbidden axiom detected" >&2
+            exit 1
+          fi
+          echo "OP2a original source import and exact independent consumer: PASS"
+
+      - name: Retain input hashes and diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-op2a-source-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-op2a/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
