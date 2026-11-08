@@ -298,3 +298,25 @@ continuous from the ordered source pair-action formula and descend via the
 qualified quotient map. That particular continuity assertion is not yet proved.
 Perpendicular SO(8) construction, surjectivity, kernel/covering identification,
 Spin(8) classification, branching and every physical conclusion remain separate.
+
+## Arbitrary original-target Euclidean bridge qualified: 42441345508
+
+At tested commit `cf9c247cc6b2297ddb243a8ac8d2be16d59a0b67`, the arbitrary
+original SO(9) matrix-to-Euclidean-isometry bridge and its exact matrix action,
+determinant-one and fixed-axis equivalence passed the strict gate. Independent
+retained-evidence review verified all 99 cold builds, fourteen independent
+examples, 53 strict axiom reports, five markers, 129 input pins and 42 package
+revisions, with only the three permitted foundational axioms and no compiler
+warnings. See [the scoped acceptance](BFSS_SPECTRAL_SOURCE_NINE_TARGET_EUCLIDEAN_BRIDGE_GATE_2026_11_07.md#qualification-42441345508)
+and machine-readable qualification record.
+
+The earlier red 42440025364 remains preserved and rejected. Its sole diagnostic
+was an uninstantiated primed orthogonality iff before .mp; the one-line explicit
+matrix instantiation changed no statement, consumer, dependency or proof budget.
+
+This resolves the noncircular arbitrary-target isometry/determinant interface.
+The next bounded milestone is a genuine original source preimage for each
+fixed-axis target, by generic target Cartan factorization and the accepted
+original even-list lift. Full-action equality must precede deducing stabilizer
+membership. Source-preimage existence, subgroup surjectivity, exact fibers,
+covering, coordinate SO(8) equivalence and all physical claims remain unqualified.

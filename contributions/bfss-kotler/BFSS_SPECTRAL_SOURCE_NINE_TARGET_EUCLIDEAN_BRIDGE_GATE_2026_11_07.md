@@ -1,6 +1,7 @@
 # Original SO(9) arbitrary-target Euclidean bridge gate
 
-Status: CANDIDATE, pending complete strict source and independent consumer qualification.
+Status: QUALIFIED at `cf9c247cc6b2297ddb243a8ac8d2be16d59a0b67`,
+strict run [42441345508](https://github.com/etblink/math/actions/runs/42441345508).
 Exact parent: `fd1383cca8aa14e2cca67ef9726a73c3349d4260`.
 Branch: `research/bfss-original-gamma-faithfulness-20261107`.
 
@@ -184,3 +185,60 @@ The failed source's recovery-generated sorryAx reports are explicitly rejected;
 its printed completion marker does not qualify the package. The corrected
 candidate still requires a complete fresh strict source/consumer run. The owner
 supplies the terminal result; do not poll CI.
+
+## Qualification: 42441345508
+
+The owner reported the terminal green result. Independent retained-evidence
+review confirms PASS at exactly `cf9c247cc6b2297ddb243a8ac8d2be16d59a0b67`.
+All 99 controlled modules cold compiled, including the new source and all fourteen
+independent examples. All 53 strict axiom reports and five exact completion
+markers match their inventories. Only propext, Classical.choice and Quot.sound
+occur; no compiler warnings or recovery axioms occur. All 129 input Git-blob/
+SHA-256 pins, 99 compiler-log digests and 42 locked package revisions were
+independently checked against the retained inputs and successful receipt.
+
+Artifact `13602535520` has independently verified ZIP SHA-256
+`75c2cac74de04e1453e36dfebfd2b2fcddf449a69537a7eb8a70a9bc692c515e`.
+The PASS receipt SHA-256 is
+`06b6c6a75f794611a380ea0fd6857a8cf53fe4cdaac1eb3bacfd2c909359e464`.
+See [acceptance-42441345508.json](evidence/source-axis-stabilizer-2026-11-07/acceptance-42441345508.json)
+for the scoped machine-readable record. Binary proof objects are not included
+in the archive; their digests are recorded by the successful compiler receipt.
+No independent binary-object rehash or new local Lean compilation is claimed.
+
+The arbitrary-target construction, exact original matrix action, Q/norm laws,
+determinant-one theorem and fixed-axis iff are now qualified. The original
+red 42440025364 and its recovery reports remain rejected. The only repair was
+explicit instantiation of the pinned orthogonality iff before taking .mp.
+No theorem type, consumer, inherited source, dependency or budget was changed.
+
+## One next bounded milestone
+
+Construct an original source preimage of an arbitrary fixed-axis target. The
+proposed source-exact statement is
+
+```lean
+source9Axis8Target_hasOriginalSourcePreimage
+    (A : Matrix.specialOrthogonalGroup SpaceIndex ℝ)
+    (hfix : (A : Matrix SpaceIndex SpaceIndex ℝ).mulVec
+      (source9CoordinateVector 8) = source9CoordinateVector 8) :
+  ∃ g : spinGroup source9Quadratic,
+    source9SpinVectorRepresentation g (source9CoordinateVector 8) =
+      source9CoordinateVector 8 ∧
+    ∀ z : SpaceIndex → ℝ,
+      source9SpinVectorRepresentation g z =
+        (A : Matrix SpaceIndex SpaceIndex ℝ).mulVec z
+```
+
+Apply generic Cartan factorization to the independently constructed target
+isometry. Reuse the qualified zero-normal cleanup, normalization, determinant
+parity and original even-list source lift. Establish full original action
+equality first; hfix then places that lift in the actual source stabilizer.
+Perpendicular normals are not necessary for this existence statement. Do not
+invoke a source-element Cartan theorem as if it already supplied a preimage.
+
+Keep the exact target A and all vector labels, preserve reflection order, test
+identity/empty and normalized lists, and independently consume the full-action
+equality. This proposed milestone does not yet package subgroup surjectivity,
+two-sign kernel or covering results. No successor Lean source or workflow is
+introduced by this documentation-only qualification.
