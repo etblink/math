@@ -84,3 +84,42 @@ Make **one theorem per gate**, with an independent consumer importing the exact 
 - [Pinned separate nonzero vacuum source](https://github.com/etblink/math/blob/fa00aa36e770ca516f57b41f5b02229a5033d50f/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2ANonzeroVacuumRadialProfileProbe.lean)
 
 **Scope of this commit:** new research memorandum only. No Lean source, manifest, workflow, dependency, PR, or publication changed.
+
+
+## 8. OP0 exact qualification — 2026-11-08
+
+**Disposition:** OP0 **QUALIFIED AT COMMIT**; OP1–OP6 remain **PROPOSED / UNQUALIFIED**.
+The earlier status at the top of this feasibility memorandum describes its original research stage;
+the exact qualification below supersedes that status for OP0 only.
+
+- **Qualified workflow:** [Run #42516531636](https://github.com/etblink/math/actions/runs/42516531636), completed SUCCESS, attempt 1.
+- **Exact tested commit:** `93e58dab8d077306250e7fb1140dc1dc1a5dd8c2`.
+- **Source:** `lean/OAI/LinearAlgebra/GaugeFixedProjectionOP0.lean`.
+- **Independent consumer:** `lean/diagnostics/BFSSGaugeFixedProjectionOP0IndependentAudit.lean`.
+- **Strict gate:** `.github/workflows/bfss-gauge-fixed-projection-op0-strict.yml`.
+- **Pinned dependencies:** Lean `4.34.1`; Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`.
+- **Observed:** source Lake build completed successfully (2,437 jobs); direct Lean warning-as-error source/independent-consumer invocations passed; six source `#print axioms` reports had only `propext`, `Classical.choice`, and `Quot.sound`; the gate's `sorryAx` and `Lean.ofReduceBool` checks passed.
+- **Retained evidence:** Actions artifact ID `13631981588`, expiring 2026-11-22; permanent source and Git workflow history remain canonical.
+
+### What OP0 actually proves
+
+For an abstract complex-linear group homomorphism to finite-dimensional endomorphisms:
+the literal common fixed subspace has a canonical orthogonal projection; its range is
+the fixed subspace, its outputs are fixed, and it is idempotent and a star projection.
+A dimension-independent range-containment theorem applies to any continuous linear
+map with gauge-fixed output. This is a Mathlib-only proof surface; no original BFSS
+Fock carrier, Spin(9) action, star-algebra automorphism, original physical Hilbert
+space, or Hamiltonian domain is bound by OP0.
+
+### Negative knowledge / procedural correction
+
+The initial red sequence was due to the exact pinned Mathlib completeness name,
+a theorem namespace mismatch, an unnecessarily placed local Lean `omit` directive,
+and a CI CLI `--werror` option unsupported by Lean 4.34.1. The accepted workflow uses
+`-E warning` and checks its output. Those engineering errors do not constitute
+mathematical counterexamples. Reuse the verified signatures and syntax rather than
+recreating the same red-green cycle.
+
+**Next bounded unit:** inspect pinned star-algebra automorphism and star-projection
+extensionality interfaces for OP1 before committing OP1 declarations. OP1 is not
+qualified or implemented by this OP0 acceptance.
