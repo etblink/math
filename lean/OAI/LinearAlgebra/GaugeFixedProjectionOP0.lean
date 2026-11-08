@@ -35,6 +35,16 @@ theorem mem_gaugeFixedSubspace_iff (U : G →* Module.End ℂ F) (v : F) :
   simp only [gaugeFixedSubspace, Submodule.mem_iInf, LinearMap.mem_ker,
     LinearMap.sub_apply, LinearMap.id_apply, sub_eq_zero]
 
+/-- Universal OP0 range bound: any continuous linear operator with pointwise
+gauge-fixed output has range inside the literal fixed subspace. In particular,
+no idempotence or self-adjointness hypothesis is needed for this implication. -/
+theorem range_le_gaugeFixedSubspace (U : G →* Module.End ℂ F)
+    (T : F →L[ℂ] F) (hT : ∀ (g : G) (v : F), U g (T v) = T v) :
+    T.range ≤ gaugeFixedSubspace U := by
+  intro v hv
+  obtain ⟨x, rfl⟩ := hv
+  exact (mem_gaugeFixedSubspace_iff U (T x)).mpr (fun g => hT g x)
+
 variable [FiniteDimensional ℂ F]
 
 /-- The canonical continuous orthogonal projection onto the fixed subspace. -/
@@ -75,16 +85,6 @@ theorem gaugeFixedProjection_isStarProjection [CompleteSpace F]
   change IsStarProjection (gaugeFixedSubspace U).starProjection
   exact isStarProjection_starProjection
 
-/-- Universal OP0 range bound: any continuous linear operator with pointwise
-gauge-fixed output has range inside the literal fixed subspace. In particular,
-no idempotence or self-adjointness hypothesis is needed for this implication. -/
-omit [FiniteDimensional ℂ F] in
-theorem range_le_gaugeFixedSubspace (U : G →* Module.End ℂ F)
-    (T : F →L[ℂ] F) (hT : ∀ (g : G) (v : F), U g (T v) = T v) :
-    T.range ≤ gaugeFixedSubspace U := by
-  intro v hv
-  obtain ⟨x, rfl⟩ := hv
-  exact (mem_gaugeFixedSubspace_iff U (T x)).mpr (fun g => hT g x)
 
 #print axioms mem_gaugeFixedSubspace_iff
 #print axioms range_gaugeFixedProjection
