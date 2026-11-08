@@ -101,8 +101,16 @@ example : Continuous ((fun g : K => source9SpinVectorSpecialOrthogonalHom g.val)
 example (i j : SpaceIndex) : Continuous (fun g : K => source9SpinVectorMatrixHom g.val i j) :=
   source9Axis8Stabilizer_vectorMatrix_continuous_pbw.matrix_elem i j
 
-example (z : V) : Continuous (fun g : K => source9SpinVectorRepresentation g.val z) :=
-  source9Axis8Stabilizer_vectorAction_continuous_pbw.comp (continuous_id.prodMk continuous_const)
+example (z : V) : Continuous (fun g : K => source9SpinVectorRepresentation g.val z) := by
+  -- The untyped composition hit whnf's default heartbeat bound.  Give Lean
+  -- the source and target of the constant-pair map before composing.
+  have hpair : Continuous (fun g : K => (g, z)) :=
+    (continuous_id : Continuous (fun g : K => g)).prodMk
+      (continuous_const : Continuous (fun _ : K => z))
+  have h : Continuous ((fun gz : K × V =>
+      source9SpinVectorRepresentation gz.1.val gz.2) ∘ (fun g : K => (g, z))) :=
+    source9Axis8Stabilizer_vectorAction_continuous_pbw.comp hpair
+  simpa only [Function.comp_def] using h
 
 example {X : Type*} [TopologicalSpace X]
     (f : Matrix.specialOrthogonalGroup SpaceIndex ℝ → X) (hf : Continuous f) :
