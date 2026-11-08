@@ -173,6 +173,12 @@ the third-label commuting case, followed by a properly normalized
 
 For historical qualification, consult the [H1 registry](BFSS_H1_EVIDENCE_REGISTRY_V1.json); for exact known dependencies, use the H2 inventories. The new playbook is **not itself a Lean proof or additional acceptance gate**. No independent human test, new workflow, or infrastructure project is required.
 
+## Historical red/green evidence discovery — operational (2026-11-08)
+
+Use the [historical gate lookup script](tools/historical_gate_lookup.py) to search **all** BFSS Markdown acceptance/failure notes on the checked-out branch, rather than only H1's curated evidence records. Start with --query "Fock bivector adjoint" --include-lean, then follow relevant exact source/CI/commit links. A separate FCP checkout can be included with repeated --notes-dir arguments. Read [the F1B historical reuse pilot](BFSS_HISTORICAL_GATE_RETRIEVAL_F1B_2026_11_08.md) for the current source-tested decision: adapt original theta self-adjointness and the existing staged bivector adjoint_comp **method**, without importing its unqualified Clifford-lift chain.
+
+This is read-only retrieval tooling and research guidance, not a newly admitted mathematical theorem or a new strict CI gate. Follow the [proof learning playbook](BFSS_LEAN_PROOF_REUSE_AND_FAILURE_PLAYBOOK_2026_11_08.md) and exact H1 qualified pins.
+
 ## Start here
 
 | Question | Starting point | What it does *not* establish |

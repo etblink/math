@@ -23,6 +23,16 @@ We adopt the following **capabilities as a single process**, not seven new infra
 
 **Prioritization:** start with retrieval, successful proof patterns, red-to-remedy records and a concise pre-proof check. Do not add a new service, CI workflow, separate repository, autonomous state machine, bulk index or general abstraction unless repeated real use justifies it. This is infrastructure in service of mathematical work.
 
+## Historical note first — cross-branch red/green retrieval (adopted 2026-11-08)
+
+Before new proof construction, **search historical gate memoranda as the primary discovery layer**, not only the 16 curated H1 records. The note names and bodies include negative tests, first-cause diagnoses, accepted fixes, exact runs, and often Lean source paths. Then inspect the *exact tested source and consumer*. H1 confirms the curated accepted subset; H2 identifies dependency ancestry; neither replaces the older note corpus or FCP research provenance.
+
+**New small read-only tool:** [historical_gate_lookup.py](tools/historical_gate_lookup.py), a deterministic stdlib text search of Markdown gate notes with optional direct Lean source matches. It ranks relevant files and extracts **reported** status, run IDs, source names and commit hashes. Use --notes-dir more than once to include a checked-out FCP archive; do not assume GitHub default-branch code search covers our research branches. The tool **does not prove** the reported qualifications and makes no network calls.
+
+**Worked F1B evidence pilot:** [historical-gate F1B reuse audit](BFSS_HISTORICAL_GATE_RETRIEVAL_F1B_2026_11_08.md) traces source-original F1A, the existing unqualified bivector-star candidate, source self-adjointness, and older F10AV/F10AW red-to-green records. The result favors direct original theta adjoint_comp + CAR, **not** a reimport of an unqualified Clifford universal lift. Its output is a **bounded proof plan, not a new formal theorem**.
+
+If two similar historical red fixes exist, read the original goal and the eventual accepted proof sequence **before** attempting a new tactic. Record a clear retrieval outcome: direct reuse / method only / staged candidate / genuine missing theorem, and the specific evidence supporting it.
+
 ## Standard pre-proof operating contract (for each new bounded gate)
 
 1. **State the exact theorem contract:** physical source carrier, operator type, index convention, norm/sign factor, assumptions, mathematical conclusion, and explicitly *not* established claims. Identify existing accepted theorem/consumer interfaces before writing a replacement.
