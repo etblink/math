@@ -145,12 +145,22 @@ They test the literal original Source48 Majorana operators `θ_p` with
 
 These are **source-exact CAR sign tests**, not a complete Lie-bracket,
 skew-adjointness, original Spin(9) Fock implementation or Hamiltonian theorem.
-The earlier gate [#42532325615](https://github.com/etblink/math/actions/runs/42532325615)
-was **cancelled** after a one-line Git-blob NUL-byte preflight fix;
-the corrected candidate is [commit `e0561b3`](https://github.com/etblink/math/commit/e0561b323c8c5792f00242d4e341f32fd9b81888),
-with strict [run #42532370775](https://github.com/etblink/math/actions/runs/42532370775).
-**F1A is UNQUALIFIED until that exact run's cold source,
-independent consumer, warning and axiom checks pass.**
+The first workflow [#42532325615](https://github.com/etblink/math/actions/runs/42532325615)
+was cancelled for a Git-blob NUL-byte preflight correction. The next
+two [#42532370775](https://github.com/etblink/math/actions/runs/42532370775)
+and [#42533094586](https://github.com/etblink/math/actions/runs/42533094586)
+were **RED** on new Lean source elaboration (off-diagonal `0 • 1` CAR
+specialization and CLM negation/distributivity). The diagonal CAR case
+was fixed by the first repair. The latest narrowly repaired source is
+[commit `b5a8759`](https://github.com/etblink/math/commit/b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f),
+with pending strict [run #42533991101](https://github.com/etblink/math/actions/runs/42533991101).
+This retry uses exact `zero_smul` and source-pinned
+`ContinuousLinearMap.comp_neg`/`neg_comp` APIs, without changing
+the original CAR normalization or theorem statements.
+**F1A remains UNQUALIFIED until the latest exact cold source,
+independent consumer, warning, and axiom gate finishes successfully.**
+The full diagnostics and rejected tactics are in the [Fock/Spin(9)
+memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md).
 
 Next after its qualification: original bivector skew-adjointness and
 the third-label commuting case, followed by a properly normalized
