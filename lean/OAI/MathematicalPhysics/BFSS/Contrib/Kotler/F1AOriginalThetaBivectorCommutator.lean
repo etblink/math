@@ -32,11 +32,16 @@ anticommute at distinct labels. No normalized Clifford replacement. -/
 private theorem theta_anticommute (p q : Source48Label) (hpq : p ≠ q) :
     majoranaCandidate q * majoranaCandidate p =
       -(majoranaCandidate p * majoranaCandidate q) := by
+  have hcar_scalar :
+      majoranaCandidate p * majoranaCandidate q +
+      majoranaCandidate q * majoranaCandidate p =
+        (0 : ℂ) • (1 : FockOp) := by
+    simpa only [ite_eq_right hpq] using
+      (FCP.BFSSFermionF2B2Indexed.majoranaCandidate_car p q)
   have hcar :
       majoranaCandidate p * majoranaCandidate q +
       majoranaCandidate q * majoranaCandidate p = (0 : FockOp) := by
-    simpa [hpq] using
-      (FCP.BFSSFermionF2B2Indexed.majoranaCandidate_car p q)
+    exact hcar_scalar.trans (zero_smul ℂ (1 : FockOp))
   have hswap :
       majoranaCandidate q * majoranaCandidate p +
       majoranaCandidate p * majoranaCandidate q = (0 : FockOp) := by
@@ -69,7 +74,16 @@ theorem originalThetaBivector_comm_first (p q : Source48Label) (hpq : p ≠ q) :
         a * (b * a) - (a * a) * b := by simp only [mul_assoc]
     _ = a * (-(a * b)) - (a * a) * b := by rw [hba]
     _ = -((a * a + a * a) * b) := by
-      simp only [mul_neg, sub_eq_add_neg, add_mul, neg_add_rev, mul_assoc]
+      have hcomp_neg : a * (-(a * b)) = -(a * (a * b)) := by
+        change a ∘L (-(a ∘L b)) = -(a ∘L (a ∘L b))
+        exact ContinuousLinearMap.comp_neg a (a ∘L b)
+      calc
+        a * (-(a * b)) - (a * a) * b =
+            -(a * (a * b)) - a * (a * b) := by
+              rw [hcomp_neg, mul_assoc]
+        _ = -((a * a + a * a) * b) := by
+              rw [add_mul, mul_assoc]
+              abel
     _ = -(1 * b) := by rw [haa]
     _ = -b := by simp
 
@@ -89,7 +103,15 @@ theorem originalThetaBivector_comm_second (p q : Source48Label) (hpq : p ≠ q) 
         a * (b * b) - (b * a) * b := by simp only [mul_assoc]
     _ = a * (b * b) - (-(a * b)) * b := by rw [hba]
     _ = a * (b * b + b * b) := by
-      simp only [neg_mul, sub_neg_eq_add, mul_assoc, mul_add]
+      have hneg_comp : (-(a * b)) * b = -((a * b) * b) := by
+        change (-(a ∘L b)) ∘L b = -((a ∘L b) ∘L b)
+        exact ContinuousLinearMap.neg_comp (a ∘L b) b
+      calc
+        a * (b * b) - (-(a * b)) * b =
+            a * (b * b) + (a * b) * b := by
+              rw [hneg_comp, sub_neg_eq_add]
+        _ = a * (b * b + b * b) := by
+              rw [mul_add, mul_assoc]
     _ = a * 1 := by rw [hbb]
     _ = a := by simp
 
