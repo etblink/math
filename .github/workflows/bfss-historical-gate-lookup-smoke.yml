@@ -1,0 +1,55 @@
+name: BFSS historical red-green note retrieval smoke
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - contributions/bfss-kotler/tools/historical_gate_lookup.py
+      - .github/workflows/bfss-historical-gate-lookup-smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-retrieval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout exact evidence snapshot
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Self test and real historical-corpus search
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          python3 -m py_compile contributions/bfss-kotler/tools/historical_gate_lookup.py
+          python3 contributions/bfss-kotler/tools/historical_gate_lookup.py --self-test
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          import subprocess
+          script = "contributions/bfss-kotler/tools/historical_gate_lookup.py"
+          def query(*args):
+              return json.loads(subprocess.check_output(
+                  ["python3", script, "--json", *args], text=True))
+          red = query("--query", "F10AW subtype coercion",
+                      "--require-all", "--limit", "100")
+          assert red["files_scanned"] >= 300, red["files_scanned"]
+          assert any("F10AW_GATE2_RED_REPEATED_SUBTYPE_COERCION" in x["path"]
+                     for x in red["results"]), red["results"][:5]
+          fock = query("--query", "Fock bivector adjoint",
+                       "--include-lean", "--require-all", "--limit", "100")
+          assert any(x["path"].endswith(
+              "SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean")
+                     for x in fock["results"]), fock["results"][:5]
+          assert any(x["file_kind"] == "historical note" for x in fock["results"])
+          print("HISTORICAL_REAL_CORPUS_PASS",
+                json.dumps({"red_notes_scanned": red["files_scanned"],
+                            "red_results": red["returned"],
+                            "fock_documents_scanned": fock["files_scanned"],
+                            "fock_results": fock["returned"]}))
+          PY
