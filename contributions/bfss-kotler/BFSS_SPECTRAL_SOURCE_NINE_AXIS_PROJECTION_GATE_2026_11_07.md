@@ -163,6 +163,44 @@ PASS receipt at the exact tested commit. The owner supplies terminal CI results;
 do not poll. On red, preserve and classify the first causal failure before any
 bounded repair.
 
+## Failed candidate and bounded coercion repair
+
+Run [42446746331](https://github.com/etblink/math/actions/runs/42446746331)
+tested `2307781ecf270f4b2407a8904f716c2ffdbc22e7` and failed at source
+line 176. All 125 original and eight qualified inherited modules compiled;
+the independent consumer was not reached. The sole compiler error was in
+source9Axis8ProjectionHom_ker_eq: the restricted simplifier reduced membership
+in the two-element set but left membership in the kernel's underlying Set
+distinct from subgroup membership in source9Axis8ProjectionHom_mem_ker_iff.
+The compiler's recovery axiom in this failed set-equality proof is rejected;
+printed reports and the completion marker do not qualify the source.
+
+The one-line repair adds SetLike.mem_coe to the existing simp-only list.
+The pinned Mathlib declaration is exactly
+`x ∈ (p : Set B) ↔ x ∈ p := Iff.rfl`, in Data/SetLike/Basic.lean,
+blob `72ec219659f5409bd8f014b4c501a928eb9e48c2` at the unchanged Mathlib revision.
+This explicitly exposes the missing coercion without changing the theorem
+type, carriers, projection, assumptions, imports or proof budgets. The entire
+independent consumer and all inherited source and verification-control bytes
+remain unchanged. Only the changed source's blob/SHA-256 manifest pins change.
+
+Retained artifact
+[13603984700](https://github.com/etblink/math/actions/runs/42446746331/artifacts/13603984700)
+has verified ZIP SHA-256
+`917681a868558d376c2fe66e52a4d648790b3ed33150d7515c7da4134f0e1f3f`.
+All 165 archived input blob/SHA-256 pins and all 134 ordered compiler-log hashes
+were checked. The eight strict inherited root/marker checks pass, and the
+original builds report no warnings. The INCOMPLETE receipt SHA-256 is
+`2b2a1b4f0e07781e18f0cae2d017d4049cdcae54e2354e8805e585d3a252f28d`;
+the failed source log SHA-256 is
+`55a1149964eb54eb31a8eec23ee368c6b7974cecb3d9551d570ed873807fc842`.
+The receipt records the pinned Lean compiler and 42 packages; compiled object
+hashes are receipt records, not independently rehashed binary artifacts.
+
+This remains a candidate until the repaired source and all 22 independent
+examples pass the complete strict gate at one exact tested commit. No result
+from the failed run is promoted to mathematical qualification.
+
 ## Boundaries and stop conditions
 
 Reject a changed carrier or projection, source-attainment premise, collapsed

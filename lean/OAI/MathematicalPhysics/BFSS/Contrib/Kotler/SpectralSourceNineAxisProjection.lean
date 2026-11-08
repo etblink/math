@@ -173,7 +173,7 @@ theorem source9Axis8ProjectionHom_mem_ker_iff (g : K) :
 theorem source9Axis8ProjectionHom_ker_eq :
     (source9Axis8ProjectionHom.ker : Set K) = {1, source9Axis8NegativeCentral} := by
   ext g
-  simpa only [Set.mem_insert_iff, Set.mem_singleton_iff] using source9Axis8ProjectionHom_mem_ker_iff g
+  simpa only [SetLike.mem_coe, Set.mem_insert_iff, Set.mem_singleton_iff] using source9Axis8ProjectionHom_mem_ker_iff g
 
 /-- The two sign-related preimages remain distinct for EVERY original stabilizer element. -/
 theorem source9Axis8ProjectionHom_fiber_signs_distinct (g : K) :
