@@ -1,0 +1,101 @@
+name: BFSS F1A original source theta bivector strict gate
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean
+      - lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean
+      - .github/workflows/bfss-f1a-original-theta-bivector-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-f1a-original-theta-bivector-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-commutator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact F1A tested commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Check immutable predecessor and source boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-f1a"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean | tee "$evidence/input-sha256.txt"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip() == "leanprover/lean4:v4.34.1"
+          packages = json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p for p in packages if p["name"] == "mathlib")["rev"] == "d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pred = Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean")
+          data = pred.read_bytes()
+          blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+          assert blob == "7abc03723b3111e4a03389b722054e50d6a9bf30", (blob, pred)
+          source = Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean").read_text()
+          consumer = Path("lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean").read_text()
+          assert [s for s in source.splitlines() if s.startswith("import ")] == [
+              "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48NormalizedFockGammaProbe",
+              "import Mathlib.Tactic.NoncommRing"
+          ]
+          assert [s for s in consumer.splitlines() if s.startswith("import ")] == [
+              "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1AOriginalThetaBivectorCommutator"
+          ]
+          print("F1A pinned original Source48 gamma, imports, and toolchain: PASS")
+          PY
+
+      - name: Restore pinned Lean/Mathlib environment
+        timeout-minutes: 35
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+
+      - name: Compile actual F1A source and independent consumer
+        timeout-minutes: 60
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          evidence="$RUNNER_TEMP/bfss-f1a"
+          cd lean
+          lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1AOriginalThetaBivectorCommutator 2>&1 | tee "$evidence/source-build.log"
+          lake env lean OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean 2>&1 | tee "$evidence/source-axioms.log"
+          lake env lean diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean 2>&1 | tee "$evidence/consumer.log"
+          if grep -E '^(OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator[.]lean|diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit[.]lean):[0-9]+:[0-9]+: warning:' "$evidence/source-axioms.log" "$evidence/consumer.log"; then
+            echo "STOP: F1A source or consumer warning" >&2
+            exit 1
+          fi
+          if grep -E 'sorryAx|Lean[.]ofReduceBool' "$evidence/source-axioms.log" "$evidence/consumer.log"; then
+            echo "STOP: F1A forbidden axiom" >&2
+            exit 1
+          fi
+          echo "F1A original theta bivector and independent consumer: PASS"
+
+      - name: Retain proof input receipts and logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-f1a-original-theta-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-f1a/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
