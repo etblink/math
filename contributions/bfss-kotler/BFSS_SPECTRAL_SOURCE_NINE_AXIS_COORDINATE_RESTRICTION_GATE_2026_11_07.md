@@ -1,0 +1,189 @@
+# Original fixed-axis target: coordinate SO(8) restriction gate
+
+Status: CANDIDATE, pending complete strict source and independent consumer qualification.
+Exact parent: `51db118b6f54a11f5307a015f4e672433fbe6fa3`.
+Branch: `research/bfss-original-gamma-faithfulness-20261107`.
+
+## Decision and exact staging boundary
+
+The original source stabilizer's two-sheeted covering of the actual fixed-axis
+SO(9) subgroup qualified at tested commit
+`f47dd34b869a1aec39e95a2ccb852f4ba67f5b22`, strict run
+[42452043377](https://github.com/etblink/math/actions/runs/42452043377).
+The next research milestone is coordinate-exact identification of that target
+with SO(8). Its first unqualified source interface is proving that the literal
+upper-left eight-coordinate block is itself in SO(8), with the right product
+and original vector action.
+
+Isolate that interface first. This gate proposes a faithful continuous group
+homomorphism H -> SO(8), where H is EXACTLY the already qualified
+source9Axis8MatrixStabilizer. It does not propose surjectivity or an equivalence.
+The inverse diagonal embedding and its two-sided/continuous inverse proofs are
+the single next bounded gate after this restriction qualifies. This staging
+preserves the full equivalence objective while making its new algebraic
+boundary independently reviewable before composing additional interfaces.
+
+## Literal coordinates and theorem statements
+
+In FCP.BFSSSourceNineAxisCoordinateRestriction, use the actual H subgroup of
+Matrix.specialOrthogonalGroup SpaceIndex Real, where SpaceIndex is Fin 9.
+For i : Fin 8, the inclusion is the original ordered Fin.castSucc i. It sends
+coordinate 0 to 0 and coordinate 7 to 7; no basis permutation or triality choice
+is made. Define only the actual submatrix:
+
+```lean
+source9Axis8CoordinateBlock (A : source9Axis8MatrixStabilizer) :
+    Matrix (Fin 8) (Fin 8) ℝ :=
+  (((A : Matrix.specialOrthogonalGroup SpaceIndex ℝ) :
+    Matrix SpaceIndex SpaceIndex ℝ)).submatrix Fin.castSucc Fin.castSucc
+```
+
+The fourteen proposed public roots give the actual last column and row,
+their vanishing cross entries, this block definition, orthogonality,
+determinant equality/one, multiplication, and the following main interfaces:
+
+```lean
+source9Axis8CoordinateRestrictionHom :
+  source9Axis8MatrixStabilizer →*
+    Matrix.specialOrthogonalGroup (Fin 8) ℝ
+
+source9Axis8CoordinateRestrictionHom_injective :
+  Function.Injective source9Axis8CoordinateRestrictionHom
+
+source9Axis8CoordinateRestrictionHom_continuous :
+  Continuous source9Axis8CoordinateRestrictionHom
+```
+
+The exact entry theorem binds output (i,j) to the ORIGINAL matrix entry
+(i.castSucc,j.castSucc). The vector-action theorem applies to EVERY original
+nine-vector z, without a source-attainment or perpendicular-vector premise:
+
+```lean
+((source9Axis8CoordinateRestrictionHom A : Matrix (Fin 8) (Fin 8) ℝ).mulVec
+  (fun j : Fin 8 => z j.castSucc)) i =
+  (((A : Matrix.specialOrthogonalGroup SpaceIndex ℝ) :
+    Matrix SpaceIndex SpaceIndex ℝ).mulVec z) i.castSucc
+```
+
+All roots are unconditional on these literal carriers. The parameter A : H
+contains its ACTUAL original fixed-axis membership. No new orthogonality,
+determinant, invertibility, continuity or source-generation premise is assumed.
+H and standard SO(8) retain their existing matrix subtype topologies. No PBW
+instance registration or new topology is needed in this matrix-only gate.
+
+## Proof and pinned interfaces
+
+1. Original H membership fixes the original coordinate vector e8. The qualified
+   Matrix.mulVec_single_one and explicit Matrix.col_apply convert this to the
+   literal last column. No opaque matrix column is treated as a reducible entry
+   without its explicit interface.
+2. From A-transpose times A = identity, inspect entry (8,j). Replace the first
+   factor by the known last column, and use single_dotProduct to obtain the last
+   row. Fixed last column alone would not justify the row conclusion.
+3. Expand block orthogonality by entries and split ONLY the original nine-index
+   sum using the explicitly typed Fin.sum_univ_castSucc function. Its last-row
+   term vanishes. The eight-index sum is precisely the original upper-left block.
+4. Expand det(A) along the actual last column with Matrix.det_succ_column.
+   Only row 8 survives; the sign (-1)^(8+8) is +1. The deleted-axis minor is the
+   exact castSucc submatrix, by Fin.succAbove_last. Original determinant one
+   therefore gives block determinant one.
+5. For A,B : H, split the ORIGINAL matrix-product sum. The cross-block term
+   vanishes because the last column above the axis is zero. This proves
+   multiplicativity on H, not on arbitrary matrices.
+6. Bundle the actual block in standard SO(8). Equality of its entries, together
+   with both fixed row/column formulas, recovers every original matrix entry;
+   use Fin.eq_castSucc_or_eq_last, preserving ordered coordinates.
+7. Continuity is the double subtype projection followed by the pinned
+   Continuous.matrix_submatrix and explicit subtype construction. The action
+   companion uses the same typed sum split and vanishing last-column term.
+
+Pinned Mathlib revision: `d13f23b723b8a846827a245b89c10fc7d3f11612`.
+
+| Inspected source | Git blob | Relevant interface |
+| --- | --- | --- |
+| LinearAlgebra/UnitaryGroup.lean | `2bc60a3c9927cdbf9c28371d1b4e9f66b7447583` | Actual SO membership and explicitly instantiated transpose orthogonality |
+| LinearAlgebra/Matrix/Determinant/Basic.lean | `66f8b885e8ce08fecc06336d6a26d5eff6c15aa6` | det_succ_column with exact row/column minor order |
+| Data/Fin/SuccPred.lean | `25a960243cc9bc2cfb7c59662de33e40e3ede29c` | castSucc_ne_last, eq_castSucc_or_eq_last, succAbove_last |
+| Algebra/BigOperators/Fin.lean | `0925d3fd11f19650de9a7f095870f5d1382ff44a` | sum_univ_castSucc generated from the inspected product theorem, remaining sum FIRST |
+| Topology/Instances/Matrix.lean | `13c038a9628a9a641cd8dff30d79c52506d2b847` | Continuous.matrix_submatrix |
+
+Use the previously qualified explicit Matrix.col_apply and single_dotProduct
+interfaces and the source's actual e8 normalization. Do not substitute an
+abstract eight-dimensional module or a Fock-vector representation.
+
+## Adversarial findings and independent consumers
+
+An exact rational-arithmetic research check gives a concrete obstruction to
+unrestricted block shortcuts. Let R be identity on coordinates 1 through 7,
+with the (0,8)-plane block [[0,-1],[1,0]]. Then R-transpose R is identity and
+det(R)=1, but R e8=-e0, so R is not in H. Its upper-left eight-block has
+determinant zero. Moreover block(R*R) has entry (0,0)=-1, whereas
+block(R)*block(R) has entry (0,0)=0. Thus even an arbitrary SO(9) matrix does
+not give an SO(8) block or a multiplicative block restriction. This finite
+check is research evidence, not a new Lean-qualified counterexample declaration.
+A perpendicular (0,1)-plane quarter-turn independently satisfies the expected
+fixed-axis block determinant and product identities in exact arithmetic.
+
+The 26 independent Lean examples check the literal H carrier, both fixed
+row/column formulas and vanishing cross entries, the bottom-right value 1,
+the exact original block entries, orthogonality, determinant equality/one,
+block multiplication, homomorphism entry, injectivity, continuity, identity,
+multiplication, inversion, and recovery of original matrices from image equality.
+They check the vector formula both on arbitrary original z and on every
+original source stabilizer element through the qualified projection.
+
+The actual negative central source still has Clifford value -1 and remains
+distinct from identity while its coordinate vector image is identity. An
+independent composed-kernel consumer retains the original two-sign kernel;
+faithfulness of H -> SO(8) is not confused with faithfulness of the original
+Spin vector representation. Perpendicular e0e1 has an exact coordinate image,
+and mixed e0e8 is rejected from the source stabilizer. Their helper proofs are
+copied byte-for-byte from the already qualified projection consumer, including
+the explicit Q-unit self-polar repair. An arbitrary raw SO(9) matrix with its
+actual fixed-axis proof tests the coordinate interface without source attainment.
+
+## Exact closure and strict procedure
+
+Import only the qualified original algebraic projection source and the four
+inspected Mathlib modules. The exact reachable original closure is the same
+125 original modules plus nine qualified inherited sources: Lipschitz,
+orientation, reflection, unit Cartan, even-list lift, signed word, arbitrary
+target bridge, fixed-axis target preimages and the algebraic projection.
+The already qualified covering/topology modules remain unchanged and are not
+re-imported to prove this smaller independent matrix-coordinate interface.
+
+The two new modules make 136 cold builds, with 166 exact input pins,
+121 strict axiom reports and eleven completion markers. Preserve all 27 shared
+environment controls; replace only the new runner, validator test and workflow
+pins. All ten inherited adversarial output tests remain. Every inherited source
+and dependency pin is immutable; no new donor reconstruction is introduced.
+
+Preserve Lean 4.34.1, Mathlib and all 42 package revisions, action pins,
+warningAsError, default proof budgets, 600 seconds per file, 70 minutes for cold
+compilation, 35 minutes for restoration and the 110-minute job. Remove all
+controlled BFSS proof objects before compiling the complete ordered closure;
+retain all exact proposed inputs, compiler logs, compiler/environment digests,
+package revisions and receipt on either outcome. Only propext, Classical.choice
+and Quot.sound are permitted axioms. No linter waiver or BFSS proof-object cache.
+
+Local Lean startup remains unavailable in this execution environment. Static
+preflight and syntax/validator tests do not qualify the Lean proofs. Qualification
+requires a complete strict source and independent consumer PASS at one exact
+tested commit with retained evidence. Confirm creation of one run, then await
+the owner's terminal report without polling its result. On red, preserve and
+classify the earliest causal diagnostic before any bounded repair.
+
+## Acceptance boundary and single next milestone
+
+Reject a changed axis, relabelled inclusion, false generic submatrix hom,
+lost determinant sign, omitted last-row argument, collapsed original central
+sign, mixed-axis membership, added mathematical premise or diagnostic/recovery
+axiom. No proof resource increase may conceal a failure.
+
+This candidate establishes only the forward faithful continuous coordinate
+restriction if it qualifies. Its inverse diagonal embedding and the resulting
+two-sided continuous group equivalence are the single next milestone. Do not
+claim surjectivity, homeomorphism or transport the covering to standard SO(8)
+from this gate alone. Spin(8) classification, source torus/root data, B4/D4
+branching, Fock-operator action, physical domains, coercivity, confinement and
+spectral existence remain separate obligations.
