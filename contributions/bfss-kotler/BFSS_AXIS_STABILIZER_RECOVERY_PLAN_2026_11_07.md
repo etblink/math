@@ -458,3 +458,21 @@ the qualified restriction. It excludes new topology equivalences, source Spin(8)
 classification, branching, Fock actions and every physical spectral claim.
 The owner explicitly authorizes proceeding after qualification without another
 continue prompt. Preserve the no-CI-polling rule and all existing proof controls.
+
+
+## 2026-11-08 — Noncircular coordinate extension candidate
+
+The [bounded extension gate](BFSS_SPECTRAL_SOURCE_NINE_AXIS_COORDINATE_EXTENSION_GATE_2026_11_08.md)
+implements raw diag(B,+1) on the original labels. Raw orthogonality, determinant
+and axis fixing precede SO(9)/actual-H membership; both inverse identities and
+restriction surjectivity follow without an assumed source/H preimage. Fourteen
+printed roots and 24 independent examples cover exact coordinates, arbitrary
+original-vector action, actual central signs, perpendicular/mixed source pairs
+and wrong-sign point-stabilizer rejection.
+
+The new gate pins 137 cold builds, 167 inputs, 135 strict reports, twelve markers
+and the unchanged 42-package environment. Static preflight and ten validator
+tests pass; there is no local Lean compilation or new mathematical qualification.
+All older sources/consumers, theorem statements, controls and proof budgets are
+preserved. Full retained strict qualification is required before moving to the
+separate inverse-continuity/topological-group-equivalence step. No CI polling.
