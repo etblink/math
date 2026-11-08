@@ -35,7 +35,7 @@ private theorem theta_anticommute (p q : Source48Label) (hpq : p ≠ q) :
   have hcar :
       majoranaCandidate p * majoranaCandidate q +
       majoranaCandidate q * majoranaCandidate p = (0 : FockOp) := by
-    simpa only [if_neg hpq, zero_smul] using
+    simpa [hpq] using
       (FCP.BFSSFermionF2B2Indexed.majoranaCandidate_car p q)
   have hswap :
       majoranaCandidate q * majoranaCandidate p +
@@ -50,7 +50,7 @@ private theorem theta_anticommute (p q : Source48Label) (hpq : p ≠ q) :
 private theorem theta_diagonal (p : Source48Label) :
     majoranaCandidate p * majoranaCandidate p +
     majoranaCandidate p * majoranaCandidate p = (1 : FockOp) := by
-  simpa only [if_pos rfl, one_smul] using
+  simpa using
     (FCP.BFSSFermionF2B2Indexed.majoranaCandidate_car p p)
 
 /-- The ordered original theta bivector rotates its first label with
@@ -68,7 +68,8 @@ theorem originalThetaBivector_comm_first (p q : Source48Label) (hpq : p ≠ q) :
     (a * b) * a - a * (a * b) =
         a * (b * a) - (a * a) * b := by simp only [mul_assoc]
     _ = a * (-(a * b)) - (a * a) * b := by rw [hba]
-    _ = -((a * a + a * a) * b) := by noncomm_ring
+    _ = -((a * a + a * a) * b) := by
+      simp only [mul_neg, sub_eq_add_neg, add_mul, neg_add_rev, mul_assoc]
     _ = -(1 * b) := by rw [haa]
     _ = -b := by simp
 
@@ -87,7 +88,8 @@ theorem originalThetaBivector_comm_second (p q : Source48Label) (hpq : p ≠ q) 
     (a * b) * b - b * (a * b) =
         a * (b * b) - (b * a) * b := by simp only [mul_assoc]
     _ = a * (b * b) - (-(a * b)) * b := by rw [hba]
-    _ = a * (b * b + b * b) := by noncomm_ring
+    _ = a * (b * b + b * b) := by
+      simp only [neg_mul, sub_neg_eq_add, mul_assoc, mul_add]
     _ = a * 1 := by rw [hbb]
     _ = a := by simp
 
