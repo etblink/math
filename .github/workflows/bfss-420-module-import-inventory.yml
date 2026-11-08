@@ -65,8 +65,8 @@ jobs:
           {
             echo "### BFSS 420-module import graph diagnostic"
             echo "Full generator and byte-exact --check completed."
-            echo "Tested SHA: `$(git rev-parse HEAD)`"
-            echo "Source subtree SHA: `$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS)`"
+            printf 'Tested SHA: `%s`\n' "$(git rev-parse HEAD)"
+            printf 'Source subtree SHA: `%s`\n' "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS)"
             echo "This is NOT a Lean build, axiom check, qualification or proof of dead code."
           } >> "$GITHUB_STEP_SUMMARY"
 
