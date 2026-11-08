@@ -131,7 +131,7 @@ statements, original source files, imports, consumer and strict gate unchanged.
 fermionic fixed subspace, not nonzero full physical L², Spin(9) covariance,
 Hamiltonian form-domain equality or a mass-gap claim.
 
-### F1A original theta bivector orientation — pending qualification (2026-11-08)
+### F1A original theta bivector orientation — qualified (2026-11-08)
 
 [Original F1A proof candidate](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean)
 and [independent consumer](../../lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean)
@@ -157,14 +157,21 @@ with pending strict [run #42533991101](https://github.com/etblink/math/actions/r
 This retry uses exact `zero_smul` and source-pinned
 `ContinuousLinearMap.comp_neg`/`neg_comp` APIs, without changing
 the original CAR normalization or theorem statements.
-**F1A remains UNQUALIFIED until the latest exact cold source,
-independent consumer, warning, and axiom gate finishes successfully.**
+**F1A is QUALIFIED** at exact tested `b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f` by [strict green #42533991101](https://github.com/etblink/math/actions/runs/42533991101): source and consumer compiled (8,955 jobs), warnings/axioms passed. The earlier reds remain historical diagnostic evidence.
 The full diagnostics and rejected tactics are in the [Fock/Spin(9)
 memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md).
 
 Next after its qualification: original bivector skew-adjointness and
 the third-label commuting case, followed by a properly normalized
 48-label Lie-algebra implementer and only subsequently group integration.
+
+## Lean proof reuse and failure-learning operating procedure (2026-11-08)
+
+**[Proof-first retrieval, working Lean patterns, negative knowledge and pre-proof checklist](BFSS_LEAN_PROOF_REUSE_AND_FAILURE_PLAYBOOK_2026_11_08.md)** is now the preferred procedural reference for future BFSS proof work. It consolidates seven improvements into **one lightweight research loop**: exact proof contracts → retrieve qualified precedent and pinned API → small type-check experiment when warranted → minimal source-faithful Lean proof → strict independent consumer gate → harvest success/failure patterns.
+
+**New qualified F1A:** [run #42533991101](https://github.com/etblink/math/actions/runs/42533991101), exact tested commit `b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f`, qualified the two source-original 48-label CAR ordered-bivector commutator signs. Build: 8,955 jobs, independent consumer, warnings and axioms passed; allowed `propext`, `Classical.choice`, `Quot.sound`. Prior [red #42532370775](https://github.com/etblink/math/actions/runs/42532370775) and [red #42533094586](https://github.com/etblink/math/actions/runs/42533094586) are explicitly preserved as examples of unsuccessful generic tactics; successful repair used source-exact `zero_smul`, `ContinuousLinearMap.comp_neg`, `neg_comp` and additive calculation. **No general Fock Spin(9) action or source `AlgebraData.theta` is yet proved.**
+
+For historical qualification, consult the [H1 registry](BFSS_H1_EVIDENCE_REGISTRY_V1.json); for exact known dependencies, use the H2 inventories. The new playbook is **not itself a Lean proof or additional acceptance gate**. No independent human test, new workflow, or infrastructure project is required.
 
 ## Start here
 

@@ -378,3 +378,17 @@ changes **only** the existing new F1A source file (no theorem statement changes)
 **Strict third replay:** [run #42533991101](https://github.com/etblink/math/actions/runs/42533991101), exact tested `b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f`, was **IN PROGRESS at this checkpoint**. The F1A theorems remain **CANDIDATE / UNQUALIFIED** until the cold source, independent consumer, warning and allowed-axiom gates finish green.
 
 **Operational rule:** repeated red proof goals require examining their *actual operator API* rather than successive changes to generic tactics; CI green is the scientific acceptance boundary. Preserve both failure logs and any qualification evidence, without silent model renormalization, source-carrier substitution, linter relaxation, or changes to `etblink/math:main`.
+
+
+---
+
+## 15. F1A qualified and proof-reuse procedural adoption (2026-11-08)
+
+**Accepted F1A:** [strict #42533991101](https://github.com/etblink/math/actions/runs/42533991101) completed **GREEN**, exact tested commit `b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f`, attempt 1. Cold source build 8,955 jobs, independent consumer, source and consumer warning checks and forbidden-axiom gate all passed. Original `θ_p` delta-one CAR bivector commutator signs for distinct original source labels:
+`[θ_pθ_q, θ_p] = -θ_q` and `[θ_pθ_q, θ_q] = +θ_p`. The only reported axioms were `propext`, `Classical.choice` and `Quot.sound`. Retained artifact ID `13638762656`, SHA-256 `7f0be359b324ce10dc2677f68867e3b18430f4f591d42dd1fb13d634bd45fa4d` (expires 2026-11-22).
+
+**Both earlier reds remain useful evidence:** #42532370775 (CAR/simplifier and `noncomm_ring` on CLM), #42533094586 (remaining scalar `0 • 1` and composition-negation, unused simp arguments). The successful exact API method and the new proof-first retrieval protocol are preserved in [the proof-reuse playbook](BFSS_LEAN_PROOF_REUSE_AND_FAILURE_PLAYBOOK_2026_11_08.md). The playbook consolidates proof retrieval, minimal experiments, typed adapters, reusable contracts, declaration dependencies when needed, red-to-remedy records, and measured CI/scientific cost **without** adding parallel infrastructure.
+
+**Next bounded original-Fock gate:** exact `star (θ_p θ_q) = -(θ_p θ_q)` for `p ≠ q` using original candidate self-adjointness, then the third-label commutator. Do not infer an existing global `so(48)` representation, unitary Spin(9) lift, upstream `AlgebraData.theta` identification/irreducibility, gauge symmetry, physical Hamiltonian equality, or spectral gap from these two local commutators.
+
+**Governance:** playbook and milestone records are written only to the research branch; all original source operators and `etblink/math:main` remain unchanged.

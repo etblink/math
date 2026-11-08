@@ -7,7 +7,7 @@
     "workbench": "research/bfss-original-gamma-faithfulness-20261107",
     "fcp_main_is_authoritative_only_for": "FCP program state and registers"
   },
-  "pilot_scope": "15 curated proof/evidence/retrieval records, including qualified OP0–OP2c at immutable tested commits; not an exhaustive research catalogue.",
+  "pilot_scope": "16 curated proof/evidence/retrieval records including F1A original CAR bivector signs and exact failure-to-remedy precedent; not exhaustive.",
   "starting_branch_head": "d79162ef4579ea645d48c64fb811099b33d10d09",
   "status_vocabulary": [
     "QUALIFIED_AT_COMMIT",
@@ -20,7 +20,7 @@
     "NOT_SCANNED",
     "UNKNOWN"
   ],
-  "record_count": 15,
+  "record_count": 16,
   "records": [
     {
       "id": "op0-qualified-projection",
@@ -824,6 +824,94 @@
       ],
       "scope_limit": "Finite-dimensional original fermionic gauge invariant vacuum and nonzero projection only; not a nonzero full physical L2 wavefunction, genuine Spin(9) action, closed Hamiltonian or mass gap.",
       "location_url": "https://github.com/etblink/math/blob/f84d092b2c71099cda790ee64083b5b81eb360d9/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean"
+    },
+    {
+      "id": "f1a-original-theta-bivector-qualified",
+      "title": "F1A exact original delta-one Majorana CAR ordered-bivector commutator signs; CLM comp_neg recovery",
+      "kind": "lean_proof_bundle",
+      "status": "QUALIFIED_AT_COMMIT",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f",
+      "source": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean",
+        "blob_sha": "1b91182135d53026ae0ece8f2f85da52ccbc6f58",
+        "symbols": [
+          "FCP.BFSSF1AOriginalThetaBivector.originalThetaBivector_comm_first",
+          "FCP.BFSSF1AOriginalThetaBivector.originalThetaBivector_comm_second"
+        ]
+      },
+      "related_sources": [
+        {
+          "role": "independent_consumer",
+          "path": "lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean",
+          "blob_sha": "fef1fa14b5c21b481db523f2359b2d0a6ca29e5d"
+        },
+        {
+          "role": "strict_workflow",
+          "path": ".github/workflows/bfss-f1a-original-theta-bivector-strict.yml",
+          "blob_sha": "cafce2f9bf6ad667ad8d1ba0c0e704a934b9d858"
+        }
+      ],
+      "source_carrier": "Actual OAI.BFSSQuantum.Fermion 2 →L[ℂ] Fermion 2; Source48Label = Fin 24 × Fin 2; theta_p = original majoranaCandidate p and delta-one CAR; raw ordered theta_p*theta_q.",
+      "dependency_roots": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48NormalizedFockGammaProbe",
+        "FCP.BFSSFermionF2B2Indexed.majoranaCandidate_car",
+        "Mathlib pinned continuous-linear-map comp_neg and neg_comp"
+      ],
+      "qualification": {
+        "run_id": 42533991101,
+        "run_attempt": 1,
+        "conclusion": "success",
+        "tested_sha": "b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f",
+        "workflow_path": ".github/workflows/bfss-f1a-original-theta-bivector-strict.yml",
+        "consumer_path": "lean/diagnostics/BFSSF1AOriginalThetaBivectorIndependentAudit.lean",
+        "lean_version": "4.34.1",
+        "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "axioms_observed": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "forbidden_axioms_observed": false,
+        "source_build_jobs": 8955,
+        "evidence_artifact_id": 13638762656,
+        "evidence_digest": "sha256:7f0be359b324ce10dc2677f68867e3b18430f4f591d42dd1fb13d634bd45fa4d",
+        "artifact_expires_at": "2026-11-22T23:19:33Z",
+        "warning_gate": "Exact Lean source and independent-consumer warnings, forbidden axioms and pinned build passed; ancillary dependency checkout warnings are distinct."
+      },
+      "failure_mode": {
+        "classification": "PREQUALIFICATION_PROOF_REPAIR",
+        "prior_red_runs": [
+          42532370775,
+          42533094586
+        ],
+        "diagnostic": "Offdiagonal CAR 0 • 1 specialization and composition-negation proof tactics failed, plus deprecated/unused simp warnings. Original physical CAR unchanged.",
+        "repair_commit": "b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f",
+        "lesson": "Use exact CAR scalar specialization zero_smul, ContinuousLinearMap.comp_neg and neg_comp, then explicit mul_assoc/ring-module rewrites."
+      },
+      "supersedes": [],
+      "keywords": [
+        "F1A",
+        "Majorana",
+        "Fock",
+        "Source48",
+        "CAR",
+        "theta",
+        "bivector",
+        "commutator",
+        "originalThetaBivector_comm_first",
+        "originalThetaBivector_comm_second",
+        "comp_neg",
+        "neg_comp",
+        "zero_smul",
+        "proof pattern",
+        "42533991101",
+        "red repair",
+        "qualified"
+      ],
+      "scope_limit": "Exactly two original literal Fermion 2 ordered-bivector commutators for p≠q, not skew-adjointness, Lie bracket, original AlgebraData.theta instantiation, Spin9 action, or closed Hamiltonian/mass gap.",
+      "location_url": "https://github.com/etblink/math/blob/b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean"
     }
   ]
 }
