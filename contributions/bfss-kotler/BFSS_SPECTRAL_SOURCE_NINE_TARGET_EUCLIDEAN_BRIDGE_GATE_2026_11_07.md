@@ -145,3 +145,42 @@ Source stabilizer subgroup packaging, exact fibers/kernel, quotient covering,
 coordinate SO(8) identification, triality-safe torus and branching remain later
 obligations. No Fock action, physical Hamiltonian domain, coercivity, confinement,
 mass gap or positive eigenvalue statement follows from this bridge.
+
+## Retained red and bounded repair: 42440025364
+
+Run [42440025364](https://github.com/etblink/math/actions/runs/42440025364)
+tested `ceddf0b89c2eda70dec94b9d71e5b53f34016fa6`. All 94 original modules and
+three inherited strict sources compiled successfully. The new source then failed
+at line 44; the independent consumer was not attempted. The receipt is INCOMPLETE.
+
+The sole compiler diagnostic is unknown constant
+`Matrix.mem_orthogonalGroup_iff'.mp`. This is a theorem-application elaboration
+failure at the orthogonality interface, not a changed mathematical premise or
+a proof-resource timeout. The pinned UnitaryGroup source, blob
+`2bc60a3c9927cdbf9c28371d1b4e9f66b7447583`, has exactly
+
+```lean
+theorem mem_orthogonalGroup_iff' {A : Matrix n n R} :
+  A ∈ Matrix.orthogonalGroup n R ↔ Aᵀ * A = 1
+```
+
+The repair explicitly instantiates the matrix before taking the iff direction:
+`(Matrix.mem_orthogonalGroup_iff' (A := (A : M9))).mp`.
+Only this proof line and its source blob/SHA-256 manifest pins change. All nine
+public declaration types, remaining proof bodies, independent consumer bytes,
+imports, qualified source pins, workflow, validators, dependency revisions and
+budgets are unchanged. No broader replacement or proof-limit adjustment is made.
+
+Retained artifact `13601498466` has independently verified ZIP SHA-256
+`3312e36716eedea38b4d9dc92ed4fcef03a69854723317eeed361395ff9a3eb2`.
+Review checked ZIP integrity, all 129 archived Git-blob/SHA-256 input pins and
+their current bytes, all 98 compiler-log hashes, the three inherited strict
+report inventories and all 42 locked dependency revisions. The failed source
+log SHA-256 is `0f22ae265da24e9cc6f275566ce2435dfbdc958b2b7413934485a19cd41238d2`;
+the INCOMPLETE receipt SHA-256 is
+`d45e727c3ed2d1dbe1d2b97e99ba930b622af22d7486f0f244af66d2aeaa9ecd`.
+
+The failed source's recovery-generated sorryAx reports are explicitly rejected;
+its printed completion marker does not qualify the package. The corrected
+candidate still requires a complete fresh strict source/consumer run. The owner
+supplies the terminal result; do not poll CI.

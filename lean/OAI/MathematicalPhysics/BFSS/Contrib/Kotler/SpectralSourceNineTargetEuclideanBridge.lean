@@ -41,7 +41,7 @@ theorem source9TargetVectorLinearEquiv_apply (A : SO9) (z : V) :
 theorem source9TargetVectorLinearEquiv_preserves_quadratic (A : SO9) (z : V) :
     source9Quadratic (source9TargetVectorLinearEquiv A z) = source9Quadratic z := by
   have horth : (A : M9)ᵀ * (A : M9) = 1 :=
-    Matrix.mem_orthogonalGroup_iff'.mp
+    (Matrix.mem_orthogonalGroup_iff' (A := (A : M9))).mp
       (Matrix.mem_specialOrthogonalGroup_iff.mp A.property).1
   simp only [source9Quadratic_eq_dot, source9TargetVectorLinearEquiv_apply]
   calc
