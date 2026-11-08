@@ -350,3 +350,31 @@ independently qualify any Lean theorem.
 **Replay:** [run #42533094586](https://github.com/etblink/math/actions/runs/42533094586) started at the repair commit; **NOT YET QUALIFIED** at this recording. Require full original source/consumer compilation, warning-free exact source and consumer, and no `sorryAx`/forbidden axioms.
 
 **Procedural lesson:** for continuous-linear-map identities on the actual Fock operator algebra, specialize the existing source CAR exactly, then normalize scalar/negative module expressions with explicit ring/module rewrites rather than assuming `noncomm_ring` resolves module coercions. Preserve failed diagnostics as negative *procedural* knowledge; do not alter physical signs, normalizations or carriers to force a green gate.
+
+
+---
+
+## 14. F1A second strict red — exact continuous-linear-map API repair (2026-11-08)
+
+**Read-only diagnosis before repair:** [F1A strict run #42533094586](https://github.com/etblink/math/actions/runs/42533094586) completed **RED** at tested source commit `ab0e1e997ed8862d975522c294a8326a86f13853` (attempt 1). Original predecessor Git blobs, source boundaries, Lean 4.34.1/Mathlib pins, and dependency restoration passed. The *new* F1A source failed to compile; its independent consumer did not run. Source `#print axioms` still contained `sorryAx` from incomplete theorems. No theorem was admitted.
+
+**Compared to the first red #42532370775:**
+- The diagonal `theta_diagonal` proof now elaborates. This is a genuine diagnostic improvement, **not a newly accepted independent theorem**.
+- Off-diagonal CAR `theta_anticommute` still fails: the original CAR equality specializes to `(0 : ℂ) • (1 : FockOp)`, and `simpa [hpq]` did not discharge that explicit scalar action.
+- Both ordered-bivector commutator subgoals still fail because the new `simp only` tactic does not transport negation through the **continuous-linear-map composition** (the actual operator multiplication). Unused simp-argument warnings also appear, so the strict gate would reject them even if the proof finished.
+- Diagnostic failures are in proof elaboration, **not** a source-Majorana CAR counterexample or evidence that the physical commutator signs need changing.
+
+**Pinned-API re-evaluation:** Inspected `Mathlib/Topology/Algebra/Module/ContinuousLinearMap/Basic.lean` at exact Mathlib commit
+`d13f23b723b8a846827a245b89c10fc7d3f11612`.
+It provides `ContinuousLinearMap.mul_def` (operator multiplication is composition), `ContinuousLinearMap.comp_neg`, and `ContinuousLinearMap.neg_comp` for the required continuous-linear-map negation identities. Therefore no generic noncommutative-ring normalization tactic is needed.
+
+**Third bounded candidate:** [commit `b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f`](https://github.com/etblink/math/commit/b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f)
+changes **only** the existing new F1A source file (no theorem statement changes):
+1. Explicitly specialize original off-diagonal CAR to `0 • 1` using `ite_eq_right hpq`, then use `zero_smul ℂ` to prove operator zero.
+2. Use the pinned `ContinuousLinearMap.comp_neg` lemma for `a * (-(a*b))`, a small `mul_assoc` calculation, and an additive identity.
+3. Use pinned `ContinuousLinearMap.neg_comp` for `(-(a*b))*b`, followed by `mul_add` and `mul_assoc` for the second commutator.
+4. Removed the unused broad `simp only` argument lists; retained exact independent consumer, original theta carrier, delta-one CAR normalization, source imports, strict CI, and toolchain pins.
+
+**Strict third replay:** [run #42533991101](https://github.com/etblink/math/actions/runs/42533991101), exact tested `b5a875923e467f1aa596f8cd12e6acf5dfa7fb8f`, was **IN PROGRESS at this checkpoint**. The F1A theorems remain **CANDIDATE / UNQUALIFIED** until the cold source, independent consumer, warning and allowed-axiom gates finish green.
+
+**Operational rule:** repeated red proof goals require examining their *actual operator API* rather than successive changes to generic tactics; CI green is the scientific acceptance boundary. Preserve both failure logs and any qualification evidence, without silent model renormalization, source-carrier substitution, linter relaxation, or changes to `etblink/math:main`.
