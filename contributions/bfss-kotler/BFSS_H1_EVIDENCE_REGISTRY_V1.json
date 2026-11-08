@@ -7,7 +7,7 @@
     "workbench": "research/bfss-original-gamma-faithfulness-20261107",
     "fcp_main_is_authoritative_only_for": "FCP program state and registers"
   },
-  "pilot_scope": "13 selected proof/evidence/retrieval records, including qualified OP2a original-source G4-E action, OP0/OP1 and H2 source inventories; not exhaustive.",
+  "pilot_scope": "14 selected proof/evidence/retrieval records, now including qualified OP2b original SU2 fermion projection; not an exhaustive research catalogue.",
   "starting_branch_head": "d79162ef4579ea645d48c64fb811099b33d10d09",
   "status_vocabulary": [
     "QUALIFIED_AT_COMMIT",
@@ -20,7 +20,7 @@
     "NOT_SCANNED",
     "UNKNOWN"
   ],
-  "record_count": 13,
+  "record_count": 14,
   "records": [
     {
       "id": "op0-qualified-projection",
@@ -662,6 +662,83 @@
       ],
       "scope_limit": "Strict original 26-file source, source-equivalence alias and independent consumer qualified. Does not discharge OP0 Module.End bridge, nonzero invariant vacuum, Spin(9) action or any BFSS spectral claim.",
       "location_url": "https://github.com/etblink/math/blob/c763196c06eeb793af4137a9a48158c18d06e04d/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean"
+    },
+    {
+      "id": "op2b-original-gauge-projection-qualified",
+      "title": "OP2b exact original SU2 Fermion 2 gauge linear action, bounded operators and canonical orthogonal projection",
+      "kind": "lean_proof_bundle",
+      "status": "QUALIFIED_AT_COMMIT",
+      "repository": "etblink/math",
+      "observed_ref": "research/bfss-original-gamma-faithfulness-20261107",
+      "exact_commit": "0dc811f4e4764b6846e033242fddde24e8bc92db",
+      "source": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean",
+        "blob_sha": "13a80bb53eb3d0ca357e4c87db4bd3ebd53854ec",
+        "symbols": [
+          "FCP.BFSSOriginalGaugeProjectionOP2B.originalGaugeLinearAction",
+          "FCP.BFSSOriginalGaugeProjectionOP2B.originalGaugeOperators_exact",
+          "FCP.BFSSOriginalGaugeProjectionOP2B.originalFermionGaugeProjection_fixed",
+          "FCP.BFSSOriginalGaugeProjectionOP2B.originalFermionGaugeProjection_range",
+          "FCP.BFSSOriginalGaugeProjectionOP2B.originalFermionGaugeProjection_idempotent",
+          "FCP.BFSSOriginalGaugeProjectionOP2B.originalFermionGaugeProjection_star"
+        ]
+      },
+      "related_sources": [
+        {
+          "role": "independent_consumer",
+          "path": "lean/diagnostics/BFSSOP2bOriginalGaugeProjectionIndependentAudit.lean",
+          "blob_sha": "0ec444b74738540fe53ff251216f51c95962d9dc"
+        },
+        {
+          "role": "strict_workflow",
+          "path": ".github/workflows/bfss-op2b-original-gauge-projection-strict.yml",
+          "blob_sha": "d1369a26feb80593edd5b701f7e97ca956978542"
+        }
+      ],
+      "source_carrier": "Original OAI.BFSSQuantum.Fermion 2, GaugeGroup 2. Canonical original SU(2) fixed-space orthogonal projection; exact G4-E source operators.",
+      "dependency_roots": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP2aOriginalFockGaugeSource",
+        "OAI.LinearAlgebra.GaugeFixedProjectionOP0"
+      ],
+      "qualification": {
+        "run_id": 42527245991,
+        "run_attempt": 1,
+        "conclusion": "success",
+        "tested_sha": "0dc811f4e4764b6846e033242fddde24e8bc92db",
+        "workflow_path": ".github/workflows/bfss-op2b-original-gauge-projection-strict.yml",
+        "consumer_path": "lean/diagnostics/BFSSOP2bOriginalGaugeProjectionIndependentAudit.lean",
+        "lean_version": "4.34.1",
+        "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "axioms_observed": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "forbidden_axioms_observed": false,
+        "source_build_jobs": 9061,
+        "evidence_artifact_id": 13636178348,
+        "evidence_digest": "sha256:6199864990aaffe9282a4727afc86338eaa7e4bce6636ff714c6e359bea8a215",
+        "artifact_expires_at": "2026-11-22T22:05:14Z",
+        "warning_gate": "Explicit audited source and independent consumer diagnostic warning/forbidden-axiom grep passed"
+      },
+      "supersedes": [],
+      "failure_mode": null,
+      "keywords": [
+        "OP2b",
+        "source exact",
+        "SU2",
+        "SU(2)",
+        "Fermion 2",
+        "GaugeGroup 2",
+        "Module.End",
+        "continuous operator",
+        "orthogonal gauge fixed projection",
+        "IsStarProjection",
+        "42527245991",
+        "qualified"
+      ],
+      "scope_limit": "Finite-dimensional fermionic original SU(2) fixed-space orthogonal projection on literal Fermion 2. Not nonzero until OP2c qualifies, no Spin(9) commutation, physical bosonic L² or Hamiltonian/mass gap.",
+      "location_url": "https://github.com/etblink/math/blob/0dc811f4e4764b6846e033242fddde24e8bc92db/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean"
     }
   ]
 }
