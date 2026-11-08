@@ -26,7 +26,7 @@ RUN_RE = re.compile(r"github[.]com/etblink/(?:math|Foundational-Convergence-Prog
 COMMIT_RE = re.compile(r"(?<![a-f0-9])[a-f0-9]{40}(?![a-f0-9])")
 SOURCE_RE = re.compile(r"lean/[A-Za-z0-9_./-]+[.]lean")
 DECL_SOURCE_RE = re.compile(r"\b(?:SU2|FCP|BFSS)[A-Za-z0-9_]+[.]lean\b")
-STATUS_RE = re.compile(r"(?im)^\s*(?:[*]{0,2})(?:status|disposition|scientific status)\s*[*]{0,2}\s*:\s*(.+)$")
+STATUS_RE = re.compile(r"(?im)^\s*\*{0,2}(?:status|disposition|scientific status)(?::\*{0,2}|\*{0,2}:)\s*(.+)$")
 QUERY_RE = re.compile(r"[A-Za-z0-9_]+")
 MAX_BYTES = 512_000
 
