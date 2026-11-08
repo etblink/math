@@ -1,0 +1,56 @@
+name: BFSS H2 read-only workflow source index qualification
+
+on:
+  push:
+    branches: [research/bfss-original-gamma-faithfulness-20261107]
+    paths:
+      - contributions/bfss-kotler/tools/h2_workflow_index.py
+      - contributions/bfss-kotler/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json
+      - .github/workflows/bfss-h2-workflow-source-index.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-h2-workflow-index-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Generate and source-hash every workflow in this checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          python3 contributions/bfss-kotler/tools/h2_workflow_index.py \
+            --output "$RUNNER_TEMP/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json" --emit-rows
+
+      - name: Require deterministic frozen index once it exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test -f contributions/bfss-kotler/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json; then
+            diff -u contributions/bfss-kotler/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json \
+              "$RUNNER_TEMP/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json"
+            echo "H2 WORKFLOW FROZEN REPLAY: PASS"
+          else
+            echo "H2 WORKFLOW CANDIDATE: no frozen source index yet"
+          fi
+
+      - name: Retain exact source index
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-h2-workflow-index-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/BFSS_H2_WORKFLOW_SOURCE_INDEX_V1.json
+          if-no-files-found: warn
+          retention-days: 14
