@@ -1,0 +1,44 @@
+name: Preserve verified BFSS import graph
+on:
+  push:
+    paths:
+      - '.github/workflows/bfss-preserve-import-graph.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  preserve:
+    if: github.ref == 'refs/heads/research/bfss-original-gamma-faithfulness-20261107'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download original artifact and validate graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="contributions/bfss-kotler/BFSS_IMPORT_GRAPH_FULL_2026_11_08.json"
+          test ! -e "$target" || { echo "Graph already tracked; refusing overwrite"; exit 1; }
+          gh api -H 'Accept: application/vnd.github+json' \
+            /repos/etblink/math/actions/artifacts/13629710423/zip > /tmp/bfss-graph.zip
+          unzip -l /tmp/bfss-graph.zip
+          unzip -p /tmp/bfss-graph.zip BFSS_IMPORT_GRAPH_FULL_2026_11_08.json > "$target"
+          echo '4d5722087e4cc7094ec086a3653520423a0d1116aa8192a2597ffaef07545b35  '"$target" | sha256sum -c -
+          test "$(wc -c < "$target" | tr -d ' ')" = 426146
+          python3 -m json.tool "$target" >/dev/null
+      - name: Commit verified original graph
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- contributions/bfss-kotler/BFSS_IMPORT_GRAPH_FULL_2026_11_08.json
+          git commit -m 'data(bfss): preserve verified 420-module import graph'
+          git push origin HEAD:refs/heads/research/bfss-original-gamma-faithfulness-20261107
