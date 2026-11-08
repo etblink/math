@@ -63,6 +63,24 @@ See [H2 verification, boundaries, negative knowledge and next gate](BFSS_REPOSIT
 testing. No BFSS Lean mathematical theorem is admitted by H1/H2 indexing.
 Neither `etblink/math:main` nor FCP was changed.
 
+### OP2a source-import candidate — 2026-11-08
+
+**CANDIDATE; do not promote without actual strict gate result.** At exact
+commit [`c763196c06eeb793af4137a9a48158c18d06e04d`](https://github.com/etblink/math/commit/c763196c06eeb793af4137a9a48158c18d06e04d),
+the research branch imported **26 bit-for-bit original** OperatorDependencies
+Lean files from the pinned G4-E source closure. The source-binding adapter is
+[`OP2aOriginalFockGaugeSource.lean`](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean),
+with an [independent consumer](../../lean/diagnostics/BFSSOP2aOriginalFockGaugeIndependentAudit.lean)
+and [strict gate #42525538193](https://github.com/etblink/math/actions/runs/42525538193).
+
+Gate was **RUNNING when this note was authored**; consult the exact run for
+success/failure. This gate tests compilation and source identity for the literal
+`GaugeGroup 2 →* (Fermion 2 ≃ₗᵢ[ℂ] Fermion 2)` representation. It **does not**
+prove OP0 `Module.End` binding, invariant nonzero vacuum, central Spin sign,
+physical closed-form compatibility, a spectrum result or a mass gap. If red,
+record the first causative diagnostic and bounded repair. No file on
+`etblink/math:main` was modified.
+
 ## Start here
 
 | Question | Starting point | What it does *not* establish |
