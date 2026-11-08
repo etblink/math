@@ -91,19 +91,35 @@ also passed: 13 records, 9/9 future-session recovery queries, 24 pinned
 source files, 6 exact CI runs and 3 evidence digests. No file on
 `etblink/math:main` was modified.
 
-### OP2b operator-interface conversion — candidate checkpoint (2026-11-08)
+### OP2b — qualified original gauge-operator projection (2026-11-08)
 
-[Source candidate](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean) and
-[independent consumer](../../lean/diagnostics/BFSSOP2bOriginalGaugeProjectionIndependentAudit.lean)
-were added together with the [strict OP2b gate](https://github.com/etblink/math/actions/runs/42527245991)
-at exact commit `0dc811f4e4764b6846e033242fddde24e8bc92db`.
-The commit adds **only those three files**; all previously qualified
-G4-E sources remain unchanged. Preflight source/import/toolchain checks passed;
-the compile and independent consumer checks were not yet complete at this
-checkpoint. **Do not infer OP2b acceptance from a green OP2a ancestor.**
-The theorem will remain unqualified until its own exact strict gate passes.
-Regardless of OP2b outcome, no original invariant nonzero vacuum or Spin(9)
-symmetry / closed physical Hamiltonian / spectral theorem has been established.
+[Source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean)
+and [independent consumer](../../lean/diagnostics/BFSSOP2bOriginalGaugeProjectionIndependentAudit.lean)
+qualified in [strict run #42527245991](https://github.com/etblink/math/actions/runs/42527245991)
+at exact tested commit `0dc811f4e4764b6846e033242fddde24e8bc92db`;
+9,061 Lean build jobs, source/consumer proofs, axioms and warning checks passed.
+Observed axioms: `propext`, `Classical.choice`, `Quot.sound`. Evidence
+SHA-256 `6199864990aaffe9282a4727afc86338eaa7e4bce6636ff714c6e359bea8a215`
+(retention ends 2026-11-22). The result binds the genuine original
+`GaugeGroup 2` SU(2) action to `Module.End ℂ (Fermion 2)`, verifies its
+pointwise equality to the corresponding bounded operators, and instantiates
+OP0's exact original fermionic gauge-fixed orthogonal projection. It does
+**not** prove nonzeroness, a source Spin(9) action, gauge/Spin commutation,
+closed physical Hamiltonian or spectral gap.
+
+### OP2c — original nonzero gauge vacuum (pending source qualification)
+
+[Candidate source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean),
+[independent consumer](../../lean/diagnostics/BFSSOP2cNonzeroOriginalGaugeVacuumIndependentAudit.lean),
+and [strict run #42528690361](https://github.com/etblink/math/actions/runs/42528690361)
+were introduced at `c5a50d12ebf1e5a50f015ca487461c5f1c6d9129`.
+The candidate uses the already-imported G4-B vacuum
+`fockAlgebraToBFSS (1 : Space 23)`, proves it is nonzero and SU(2)-fixed,
+then derives `originalFermionGaugeProjection ≠ 0`.
+**CANDIDATE ONLY until its own exact gate passes.** No additional
+G4-K2A/radial ancestor import, redefinition of the Fock carrier, or
+unsupported physical spectral conclusion.
+
 
 ## Start here
 
@@ -166,7 +182,7 @@ Do not label a whole module `QUALIFIED` just because one theorem or its ancestor
 ## Active bounded next steps
 
 1. **OP0/OP1 qualified at their exact tested commits.** Their abstract projection and automorphism contracts are not yet source-bound to the original BFSS Fock action.
-2. **OP2a qualified; OP2b in candidate verification:** [OP2a run #42525538193](https://github.com/etblink/math/actions/runs/42525538193) accepted the original 26-file G4-E SU(2) action and independent exact-source consumer at `c763196c06eeb793af4137a9a48158c18d06e04d`. [OP2b commit `0dc811f`](https://github.com/etblink/math/commit/0dc811f4e4764b6846e033242fddde24e8bc92db) adds a new exact `Module.End ℂ (Fermion 2)` conversion, pointwise continuous-operator equality, and original-gauge OP0 projection; its [strict run #42527245991](https://github.com/etblink/math/actions/runs/42527245991) is **UNQUALIFIED UNTIL COMPLETED GREEN**, with source/consumer and axiom checks. If qualified, prove a **nonzero original gauge-invariant vacuum** as a separate bounded OP2c gate, reusing original G4-B without importing the other 12 K2A/radial modules.
+2. **OP2a and OP2b qualified; OP2c pending:** original SU(2) Fock action qualified in [#42525538193](https://github.com/etblink/math/actions/runs/42525538193); its exact original-gauge orthogonal projection qualified in [#42527245991](https://github.com/etblink/math/actions/runs/42527245991). The short source-original nonzero G4-B vacuum/projection witness is in [OP2c candidate #42528690361](https://github.com/etblink/math/actions/runs/42528690361). Never promote OP2c before its own green strict gate. Next after it: exact Spin(9) compatibility, not an inferred mass gap.
 3. **F1, original 48-Majorana CAR Lie implementer (parallel main physics route):** original normalization, skewness, bracket and Cartan bounds. Compare its measured proof/import cost with OP3–OP4 before choosing a global lift route. See [original Fock memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md).
 4. **Physical closure later:** source Spin(9) gauge compatibility, all sixteen original smooth-supercharge covariances, the same closed physical form and natural Hamiltonian domain. No inferred spectrum or full mass-gap claim.
 
