@@ -123,3 +123,74 @@ recreating the same red-green cycle.
 **Next bounded unit:** inspect pinned star-algebra automorphism and star-projection
 extensionality interfaces for OP1 before committing OP1 declarations. OP1 is not
 qualified or implemented by this OP0 acceptance.
+
+
+## 9. OP1 source-and-consumer verification and warning-gate correction
+
+**Observed proof checkpoint:** [OP1 run #42517863002](https://github.com/etblink/math/actions/runs/42517863002) completed SUCCESS (attempt 1) at exact commit \`aa23e95f47667df4346400f01dabd7730157bf4f\`.
+The pinned Lean 4.34.1 / Mathlib \`d13f23b723b8a846827a245b89c10fc7d3f11612\`
+build finished 2,438 jobs successfully. The independent consumer completed, and both
+OP1 \`#print axioms\` reports contained only accepted foundations:
+the general absorbing-projection theorem [\`Quot.sound\`], and the
+gauge-fixed corollary [\`propext\`, \`Classical.choice\`, \`Quot.sound\`].
+No \`sorryAx\` or \`Lean.ofReduceBool\` was reported. Evidence:
+artifact \`13632118417\` (expires 2026-11-22).
+
+**Qualification nuance (positive green audit finding):** Source build and direct
+Lean invocation both emitted a nonfatal style warning at OP1 line 85,
+despite the workflow's \`-E warning\` flag. This flag did not enforce the
+advertised all-warnings-fatal property on Lean 4.34.1. Consequently the
+\`aa23e95\` gate demonstrates compiled mathematical proofs, source/consumer
+verification and allowed axioms, but **does not demonstrate a clean warning gate**.
+Do not silently promote it as a warning-clean strict acceptance.
+
+**Batched correction:**
+- Atomic source/workflow commit \`350115b87cfaf8aae67614407aed4b00a32f8552\`:
+  preserved the theorem statements/proofs; scoped the known
+  \`haveI\` style-linter diagnostic consistently with OP0, and replaced
+  ineffective warning enforcement with an explicit check for Lean source and
+  independent-consumer diagnostics. This is a style-linter exception for a
+  required local instance, **not** a mathematical axiom relaxation.
+- Shell quoting/regex correction commit
+  \`44ea6b8001209d92f0e023a7f30f5125cde127e9\`:
+  used \`[.]\` for literal file extensions and a one-line regex, avoiding
+  escaped line-continuation mistakes. Enabled cancellation of superseded
+  runs to limit wasted qualification resources.
+- [Corrected warning gate run #42518687725](https://github.com/etblink/math/actions/runs/42518687725):
+  **RUNNING at this memorandum update**. It must complete green before
+  claiming all-warnings-clean strict OP1 acceptance at \`44ea6b8\`.
+  The prior intermediate #42518648691 was cancelled as superseded, not
+  recorded as a mathematical failure.
+
+**Scientific scope:** OP1 proves a generic star-algebra automorphism invariance
+theorem under explicit fixed-operator and projection compatibility premises;
+the corollary reuses OP0. This is not yet a construction of a source Spin(9)
+star automorphism, the original SU(2) Fock action, an invariant high-weight
+sector, or a closed physical Hamiltonian-domain result.
+
+### OP2 read-only source-binding reconnaissance
+
+On the active branch, \`lean/OAI/MathematicalPhysics/BFSS/Core.lean\`
+defines the **literal** \`Fermion 2\` as \`EuclideanSpace ℂ (Fin (2 ^ (8 * colorDim 2)))\`
+and \`GaugeGroup 2\` as a special unitary matrix group.
+\`GaugeCore.lean\` defines the general
+\`AlgebraData.GaugeData.fermion\` as a genuine monoid homomorphism
+to complex linear isometries, but it does **not** instantiate the
+specific Fock gauge action by itself.
+
+The pinned, separate OperatorDependencies snapshot
+\`fa00aa36e770ca516f57b41f5b02229a5033d50f\` contains
+\`SU2BFSSG4K2ANonzeroVacuumRadialProfileProbe.lean\`, which names
+\`fermionGaugeUnitaryHom\`, proves \`fermionVacuum_ne_zero\`, and
+proves \`fermionVacuum_unitary_invariant\` on \`Fermion 2\`.
+That file is **absent on this active branch**. Its observed direct
+ancestry begins with \`SU2BFSSG4K1PhysicalSpaceCoreProbe.lean\`,
+then \`SU2BFSSG4JExactGaugeDataAssemblyProbe.lean\`, which itself
+imports further G4-IC2 and G2-B modules. This is not a one-file import.
+
+**OP2 decision:** STOP before importing the snapshot wholesale.
+First enumerate the exact transitive dependency closure, existing
+qualifications and source-level representation conventions; admit only
+a bounded adapter to the genuine original \`Fermion 2\` gauge action,
+with a separate consumer and fresh gate. No surrogate Fock carrier,
+no assumed invariant vacuum, and no inference of spectral confinement.
