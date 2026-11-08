@@ -201,3 +201,12 @@ Do not jump from representation facts or source Spin compactness to BFSS confine
 - [Existing forward operator-column research](BFSS_SPECTRAL_FORWARD_RESEARCH_COMPACT_SPIN9_OPERATOR_COLUMNS_2026_11_06.md)
 
 **Final boundary:** This commit preserves analytical and strategic work, including superseded reasoning, but does not create or qualify any new theorem, proof-object manifest, workflow, Hamiltonian covariance or spectrum.
+
+
+## 2026-11-07 covering and forward-research continuation (current status)
+
+The earlier theorem-status statements in this memorandum describe their **original research-time status** and are not overwritten. The subsequent strict runs qualified the original source perpendicular-word equivalence (#42421286452), source stabilizer connectedness (#42426258689), compact quotient parametrization (#42429216538), and original restricted SO(9) vector-action continuity (#42435908276). The latest accepted tested mathematical commit is 74f8c0624d61527bda7aec3a2b38f8c13475e1d1; its documentation-only acceptance is at 5f60e05c1ce6c5bdf1e74078e0cdea5f9b9878d0. See [scoped vector-continuity acceptance](evidence/source-axis-stabilizer-2026-11-07/acceptance-42435908276.json).
+
+**New consolidated forward-research memorandum:** [Original source Spin(8) covering — arbitrary-target lifting, quotient-covering, coordinate SO(8), center, torus and failure controls](BFSS_SPECTRAL_SOURCE_SPIN8_COVERING_FORWARD_RESEARCH_2026_11_07.md).
+
+Key improvement: do **not** attempt to use the source-only axis-Cartan theorem to generate an arbitrary target matrix. Construct an independent target isometry, apply *unrestricted* Cartan and source even-word lift; full-action equality then puts the lift inside the source stabilizer. Pinned Mathlib supplies a discrete-kernel quotient-covering theorem and a last-column determinant expansion for the eventual coordinate-exact SO(8) interface. Those are research reductions, **not yet newly compiled Lean statements**. Retain both red continuity runs (#42432065694, #42434082524) as method evidence.
