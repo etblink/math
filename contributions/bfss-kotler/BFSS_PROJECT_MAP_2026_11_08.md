@@ -107,19 +107,29 @@ OP0's exact original fermionic gauge-fixed orthogonal projection. It does
 **not** prove nonzeroness, a source Spin(9) action, gauge/Spin commutation,
 closed physical Hamiltonian or spectral gap.
 
-### OP2c — original nonzero gauge vacuum (pending source qualification)
+### OP2c — qualified original nonzero SU(2) gauge vacuum (2026-11-08)
 
-[Candidate source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean),
-[independent consumer](../../lean/diagnostics/BFSSOP2cNonzeroOriginalGaugeVacuumIndependentAudit.lean),
-and [strict run #42528690361](https://github.com/etblink/math/actions/runs/42528690361)
-were introduced at `c5a50d12ebf1e5a50f015ca487461c5f1c6d9129`.
-The candidate uses the already-imported G4-B vacuum
-`fockAlgebraToBFSS (1 : Space 23)`, proves it is nonzero and SU(2)-fixed,
-then derives `originalFermionGaugeProjection ≠ 0`.
-**CANDIDATE ONLY until its own exact gate passes.** No additional
-G4-K2A/radial ancestor import, redefinition of the Fock carrier, or
-unsupported physical spectral conclusion.
+[Source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean)
+and [independent consumer](../../lean/diagnostics/BFSSOP2cNonzeroOriginalGaugeVacuumIndependentAudit.lean)
+passed [strict run #42530241914](https://github.com/etblink/math/actions/runs/42530241914)
+at **exact tested commit** `f84d092b2c71099cda790ee64083b5b81eb360d9`:
+**9,062** Lean build jobs, all five theorem reports, independent consumer,
+source/consumer warning check and foundational-axiom audit passed.
+Observed axioms: `propext`, `Classical.choice`, `Quot.sound`.
+Retained evidence SHA-256:
+`663e5d187b9e326fb904f47fb0054a364b00b3e7cb9f5966bac0ce753fe4daa5`
+(expires 2026-11-22). Original `fockAlgebraToBFSS (1 : Space 23)`
+is nonzero, SU(2)-fixed, and fixed by the exact OP2b gauge projection;
+therefore `originalFermionGaugeProjection ≠ 0`.
 
+[Original red #42528690361](https://github.com/etblink/math/actions/runs/42528690361)
+was warning-gate rejection of deprecated `ContinuousLinearMap.zero_apply`,
+not a failed proof. One-line `zero_apply` repair kept all mathematical
+statements, original source files, imports, consumer and strict gate unchanged.
+
+**Scientific STOP:** this is nontriviality of a finite-dimensional
+fermionic fixed subspace, not nonzero full physical L², Spin(9) covariance,
+Hamiltonian form-domain equality or a mass-gap claim.
 
 ## Start here
 
@@ -181,10 +191,26 @@ Do not label a whole module `QUALIFIED` just because one theorem or its ancestor
 
 ## Active bounded next steps
 
-1. **OP0/OP1 qualified at their exact tested commits.** Their abstract projection and automorphism contracts are not yet source-bound to the original BFSS Fock action.
-2. **OP2a and OP2b qualified; OP2c pending:** original SU(2) Fock action qualified in [#42525538193](https://github.com/etblink/math/actions/runs/42525538193); its exact original-gauge orthogonal projection qualified in [#42527245991](https://github.com/etblink/math/actions/runs/42527245991). The short source-original nonzero G4-B vacuum/projection witness is in [OP2c candidate #42528690361](https://github.com/etblink/math/actions/runs/42528690361). Never promote OP2c before its own green strict gate. Next after it: exact Spin(9) compatibility, not an inferred mass gap.
-3. **F1, original 48-Majorana CAR Lie implementer (parallel main physics route):** original normalization, skewness, bracket and Cartan bounds. Compare its measured proof/import cost with OP3–OP4 before choosing a global lift route. See [original Fock memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md).
-4. **Physical closure later:** source Spin(9) gauge compatibility, all sixteen original smooth-supercharge covariances, the same closed physical form and natural Hamiltonian domain. No inferred spectrum or full mass-gap claim.
+1. **OP0–OP2c strictly qualified at exact commits.** Original `Fermion 2`
+   SU(2) action, operator-level orthogonal fixed projection, and its nonzero
+   original fixed-vacuum witness are accepted. The abstract OP1 star-algebra
+   theorem still requires **source-exact original Spin(9) automorphism**
+   and **pointwise gauge-operator compatibility** to apply physically.
+2. **NEXT: F1 bounded original-CAR implementation audit and micro-gate.**
+   Inspect the actual original 48-label Fock gamma and bivector sources,
+   verify CAR normalization/sign/ordering and declaration ancestry,
+   and qualify one smallest original Lie-implementer identity with an
+   independent consumer before attempting global group integration.
+3. **OP3/OP4 alternative remains OPEN, not discarded.** The original
+   Source48 Clifford universal-lift and bivector-star modules explicitly
+   identify themselves as exploratory/unqualified; simply importing them
+   does not establish a star-preserving original Spin(9) action or its
+   gauge commutation. Compare the true proof surface against F1 at
+   the next mathematical decision checkpoint.
+4. **Physical closure afterward:** original gauge and Spin(9) compatibility,
+   all sixteen original source supercharge covariances, exact closed
+   physical form and Hamiltonian natural domain, then adversarial
+   high-type coercivity/compactness analysis. No inferred full BFSS gap.
 
 ## Organization and garbage-collection policy
 

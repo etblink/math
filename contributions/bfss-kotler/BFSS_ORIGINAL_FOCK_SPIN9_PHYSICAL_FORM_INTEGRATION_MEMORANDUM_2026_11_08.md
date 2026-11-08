@@ -200,3 +200,78 @@ For each gate: inspect the exact pinned declaration signatures and ancestry; do 
 **Provenance rule:** A linked successful CI run qualifies only what its exact tested commit, workflow, complete root inventory, and independent consumer actually checked. This document does not advance the qualified theorem count. Research can be wrong; if F1 fails under the original source conventions, retain that negative result instead of rewriting the model to make a theorem compile.
 
 **No changes in this memorandum action** to any existing Lean source, manifest, Python validator, workflow, dependency pin, research ledger, upstream PR, published paper, or branch other than adding this standalone document.
+
+
+---
+
+## 11. Post-OP2c decision checkpoint — original F1 first (2026-11-08)
+
+**Acceptance baseline.** The operator-projection track now has:
+`OP0` (abstract finite-dimensional gauge fixed projection) and `OP1`
+(abstract star-automorphism projection invariance), plus original BFSS
+source binding `OP2a` [#42525538193](https://github.com/etblink/math/actions/runs/42525538193),
+original-gauge `Module.End` and orthogonal projection `OP2b`
+[#42527245991](https://github.com/etblink/math/actions/runs/42527245991),
+and nonzero literal original Fock vacuum/fixed projection `OP2c`
+[#42530241914](https://github.com/etblink/math/actions/runs/42530241914).
+**OP2c is qualified only at exact repaired commit**
+`f84d092b2c71099cda790ee64083b5b81eb360d9`, 9,062 jobs,
+independent consumer, source warning check, no forbidden axioms,
+retained artifact digest `sha256:663e5d187b9e326fb904f47fb0054a364b00b3e7cb9f5966bac0ce753fe4daa5`.
+The first #42528690361 red was a deprecated `ContinuousLinearMap.zero_apply`
+name and was repaired in one line without statement changes.
+
+**Source/API comparison: F1 versus OP3 (read-only evidence):**
+- F1 has original-index source entry points:
+  `SU2BFSSSource48FockIndexBridgeProbe.lean`,
+  `SU2BFSSSource48NormalizedFockGammaProbe.lean` (original
+  normalized generator square and pairwise CAR), and
+  `SU2BFSSSource48AllVectorFockCliffordSquareProbe.lean`
+  (all-real-vector quadratic square). Their Git blob presence and source
+  declarations were inspected, but this comparison did **not** freshly
+  establish each module's independent strict theorem qualification.
+- The normalization is a non-negotiable interface:
+  original Majorana `θ` has delta-one CAR, whereas Source48 normalized
+  Clifford generators use `√2 θ`. A correct first bivector/CAR
+  implementer must reconcile that factor and ordering in its *literal
+  source operator* commutator; no silent replacement of the physical
+  `θ` operators.
+- OP3 currently requires an exact real Source48 Clifford algebra map
+  to original continuous complex-linear Fock operators and a compatible
+  **star-preserving** automorphism for the actual Spin(9) action.
+  `SU2BFSSSource48FockCliffordUniversalLiftProbe.lean` explicitly
+  states **EXPLORATORY PORT — NOT STRICT-QUALIFIED**. Likewise
+  `SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean`
+  is an unqualified staged candidate. The Clifford odd-generator
+  star sign differs from the self-adjoint original gamma image, so an
+  algebra homomorphism cannot simply be assumed globally star-preserving.
+  Neither source proves a Spin(48) lift, continuous Spin(9) action or
+  gauge commutation.
+- The genuine algebraic source Spin(9) to original paired SO(48)
+  `F10R` carrier is a useful qualified ancestry candidate, but it is
+  *not* a topological/Fock action by itself. Verify exact historical
+  qualification when consumed.
+
+**Decision — prioritize one F1 micro-gate next** rather than spending
+more gates on OP-only abstractions. First inspect pinned original
+Source48 gamma/CAR and bivector declaration signatures and the smallest
+available source ancestry. Then prove and independently consume one
+exact-sign, exact-`θ`-normalization skew-adjoint/commutator identity
+for a source-labeled CAR bivector, before claiming any full Lie bracket.
+Require the ordinary cold build, exact-commit, warnings, axiom and
+original-source controls. The subsequent F1 gate addresses the full
+48-label Lie implementer and bracket, and only then F2/F3 weight
+and original continuous Spin(9) lift.
+
+**Alternatives and fail-closed checks:** If the source CAR bivector
+identities or exact Fock reindexing are absent/unqualified, qualify the
+smallest predecessor instead of broad-importing or weakening the theorem.
+If OP3's actual source interfaces become clearly cheaper after a measured
+source-level comparison, reconsider it without pretending that a
+Clifford universal property supplies the absent group lift, gauge
+commutation or star structure. Never infer a physical L² state or
+closed Hamiltonian/spectral consequence from OP2c nonzeroness.
+
+**Scope of this checkpoint:** navigation/memo only; no new Lean
+declaration, workflow, source import, original Fock representation,
+theorem qualification or change to `etblink/math:main`.
