@@ -13,6 +13,8 @@ It does not construct the original SU(2) action or a Spin(9) automorphism.
 -/
 
 set_option autoImplicit false
+-- The finite-dimensional completeness witness is a local typeclass instance.
+set_option linter.style.haveILetI false
 
 namespace FCP.BFSSGaugeFixedProjectionOP1
 noncomputable section

@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  mathlib-only-op0:
+  mathlib-only-op1:
     runs-on: ubuntu-latest
     timeout-minutes: 85
     steps:
@@ -65,7 +65,7 @@ jobs:
           cd lean
           timeout 1500s lake exe cache get
 
-      - name: Compile exact OP0 source and independent consumer
+      - name: Compile exact OP1 source and independent consumer
         timeout-minutes: 45
         shell: bash
         run: |
@@ -74,8 +74,15 @@ jobs:
           evidence="$RUNNER_TEMP/bfss-op1"
           cd lean
           lake build OAI.LinearAlgebra.GaugeFixedProjectionOP1 2>&1 | tee "$evidence/source-build.log"
-          lake env lean -E warning OAI/LinearAlgebra/GaugeFixedProjectionOP1.lean 2>&1 | tee "$evidence/source-axioms.log"
-          lake env lean -E warning diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit.lean 2>&1 | tee "$evidence/consumer.log"
+          lake env lean OAI/LinearAlgebra/GaugeFixedProjectionOP1.lean 2>&1 | tee "$evidence/source-axioms.log"
+          lake env lean diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit.lean 2>&1 | tee "$evidence/consumer.log"
+          # Lean 4.34.1 does not turn every warning fatal with -E warning.
+          # Match only direct Lean source/consumer diagnostics, not dependency checkout warnings.
+          if grep -E '^(OAI/LinearAlgebra/GaugeFixedProjectionOP1\\.lean|diagnostics/BFSSGaugeFixedProjectionOP1IndependentAudit\\.lean):[0-9]+:[0-9]+: warning:' \\
+              "$evidence/source-axioms.log" "$evidence/consumer.log"; then
+            echo "STOP: OP1 source or consumer emitted a Lean warning" >&2
+            exit 1
+          fi
           if grep -E 'sorryAx|Lean\.ofReduceBool' "$evidence/source-axioms.log" "$evidence/consumer.log"; then
             echo "STOP: unexpected proof axiom detected"
             exit 1
