@@ -63,7 +63,10 @@ jobs:
           printf '%s\n' "$code" > "$RUNNER_TEMP/bfss-coordinate-interface/compiler-exit.txt"
           test "$code" -eq 0
           grep -qx 'BFSS_SOURCE_NINE_COORDINATE_INTERFACE_DIAGNOSTIC_COMPLETE' "$RUNNER_TEMP/bfss-coordinate-interface/diagnostic.log"
-          ! grep -Eq '(^|[[:space:]])(error:|sorryAx|warning:)' "$RUNNER_TEMP/bfss-coordinate-interface/diagnostic.log"
+          ! grep -Eq '(^|[[:space:]])(error:|sorryAx)' "$RUNNER_TEMP/bfss-coordinate-interface/diagnostic.log"
+          # Lake package-dirty administrative warnings are not Lean proof warnings.
+          # Preserve -DwarningAsError=true and reject all file-line Lean warnings.
+          ! grep -Eq '^diagnostics/BFSSSourceNineCoordinateInterfaceDiagnostic\.lean:[0-9]+:[0-9]+: warning:' "$RUNNER_TEMP/bfss-coordinate-interface/diagnostic.log"
           printf '%s\n' COORDINATE_INTERFACE_DIAGNOSTIC_PASS
       - name: Retain complete diagnostic and rejected evidence
         if: always()

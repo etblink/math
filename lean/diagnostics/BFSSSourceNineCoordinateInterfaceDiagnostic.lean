@@ -1,4 +1,6 @@
 import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+import Mathlib.Basic.Real.Basic
+import Mathlib.Analysis.InnerProductSpace.PiL2
 import Mathlib.Data.Matrix.Diagonal
 import Mathlib.Data.Matrix.Mul
 import Mathlib.Data.Fin.SuccPred
@@ -43,7 +45,7 @@ theorem upper_column_zero (A : M9) (hfix : A.mulVec axis = axis) (i : Fin 8) :
     intro h
     apply Fin.castSucc_ne_last i
     exact h.trans last_index_eq.symm
-  simp [Pi.single_apply, hn]
+  exact Pi.single_eq_of_ne hn
 
 /-- Transpose-times-matrix and the fixed column recover the original last row. -/
 theorem last_row (A : M9) (hfix : A.mulVec axis = axis)
@@ -70,7 +72,7 @@ theorem upper_row_zero (A : M9) (hfix : A.mulVec axis = axis)
   have hn : (j.castSucc : Fin 9) ≠ (8 : Fin 9) := by
     intro h
     exact Fin.castSucc_ne_last j (h.trans last_index_eq.symm)
-  simp [Pi.single_apply, hn]
+  exact Pi.single_eq_of_ne hn
 
 /-- The explicit identity-entry transport avoided by an inferred simp. -/
 theorem identity_entry (i j : Fin 8) :
@@ -80,7 +82,7 @@ theorem identity_entry (i j : Fin 8) :
 /-- Pinned Matrix.submatrix_one provides a structural map_one proof. -/
 theorem identity_block :
     (1 : M9).submatrix Fin.castSucc Fin.castSucc = (1 : M8) :=
-  Matrix.submatrix_one Fin.castSucc Fin.castSucc_injective
+  Matrix.submatrix_one Fin.castSucc (Fin.castSucc_injective 8)
 
 /-- The eight-block's orthogonality is a checked nine-index sum decomposition. -/
 theorem orthogonal_block (A : M9) (hfix : A.mulVec axis = axis)
@@ -103,7 +105,6 @@ theorem det_eq_block (A : M9) (hfix : A.mulVec axis = axis) :
   have hminor : A.submatrix (Fin.last 8).succAbove (Fin.last 8).succAbove =
       A.submatrix Fin.castSucc Fin.castSucc := by
     simp only [Fin.succAbove_last]
-    rfl
   calc
     A.det = (-1 : ℝ) ^ ((Fin.last 8 : Fin 9) + (Fin.last 8 : Fin 9) : ℕ) *
         A (Fin.last 8) (Fin.last 8) *
@@ -116,7 +117,8 @@ theorem det_eq_block (A : M9) (hfix : A.mulVec axis = axis) :
           exact hb (h.trans last_index_eq.symm)
         have hz : A b (Fin.last 8) = 0 := by
           rw [last_column A hfix]
-          simp [axis, Pi.single_apply, hb8]
+          change (Pi.single (8 : Fin 9) (1 : ℝ) : V9) b = 0
+          exact Pi.single_eq_of_ne hb8
         simp only [hz, mul_zero, zero_mul]
       · intro hnot
         exact False.elim (hnot (Finset.mem_univ (Fin.last 8)))
