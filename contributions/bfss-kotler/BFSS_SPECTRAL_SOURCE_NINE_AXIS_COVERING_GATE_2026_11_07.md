@@ -155,6 +155,43 @@ independent consumer PASS receipt at one exact tested commit qualifies it.
 Confirm creation of one run, then await the owner's terminal report without
 polling its result.
 
+## Failed candidate and bounded alias repair
+
+Run [42450508588](https://github.com/etblink/math/actions/runs/42450508588)
+tested `8a457461ab73d16b8fce40e4a35c6bc9f6b357c7`. All 144 original and
+qualified ancestor modules compiled, with zero original compiler warnings.
+The sole strict source diagnostic was at line 102: Set.mem_setOf_eq is a
+deprecated alias, and warningAsError correctly rejects its use. The independent
+consumer was not reached. All twelve source reports listed only permitted
+axioms, with no recovery axiom, but those reports and the completion marker
+do not qualify a source compilation whose return code is nonzero.
+
+The one-line repair replaces Set.mem_setOf_eq with Set.mem_ofPred_eq. Pinned
+Mathlib Data/Set/Operations.lean, blob
+`f5d18fca655f6bf3079f859060f3738b5f2bc089`, declares the successor as
+`(x ∈ {y | p y}) = p x := rfl` and declares the former name as its deprecated
+alias (since 2026-07-09). The exact logical rewrite is preserved. No theorem
+type, carrier, topology, projection, mathematical hypothesis, import, independent
+consumer, dependency revision, warning/linter control or proof budget changes.
+Only the changed source's Git blob and SHA-256 manifest pins are refreshed.
+
+The retained artifact
+[13605434634](https://github.com/etblink/math/actions/runs/42450508588/artifacts/13605434634)
+has verified ZIP SHA-256
+`fe3909436e3a0a18f468422d1d2854d26bfbb1e54c6ce0c551016b0ad5fc9f16`.
+All 176 archived input blob/SHA-256 pins, 145 ordered compiler-log digests,
+nineteen strict inherited root/marker checks, and 42 package revisions were
+verified against retained evidence. The INCOMPLETE receipt SHA-256 is
+`997a8fe27ced9bbf669d3ca688f7e82ac6adf28adb8c0f71dbb14cf1924a7223`;
+the failed strict source log SHA-256 is
+`65524d80ccc79376cc0b6b3ad01c7848b4745a490ba9345be4e1e0efa3c86678`.
+Object hashes are receipt records, not independently rehashed binary artifacts.
+
+The candidate remains unqualified until the repaired source and every independent
+consumer pass the unchanged strict gate at one exact tested commit. Preserve
+this deprecation failure as negative knowledge; use the pinned successor rather
+than suppressing deprecation diagnostics.
+
 ## Boundaries and next research stage
 
 If qualified, this establishes a connected compact source group covering the

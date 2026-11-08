@@ -99,7 +99,7 @@ theorem source9Axis8ProjectionHom_fiber_ncard (A : H) :
   apply Set.ncard_eq_two.mpr
   refine ⟨g, source9Axis8NegativeCentral * g, hne, ?_⟩
   ext h
-  simpa only [Set.mem_setOf_eq, Set.mem_insert_iff, Set.mem_singleton_iff] using hfiber h
+  simpa only [Set.mem_ofPred_eq, Set.mem_insert_iff, Set.mem_singleton_iff] using hfiber h
 
 #print axioms FCP.BFSSSourceNineAxisCovering.source9Axis8SpinStabilizer_compactSpace_pbw
 #print axioms FCP.BFSSSourceNineAxisCovering.source9Axis8SpinStabilizer_pathConnectedSpace_pbw
