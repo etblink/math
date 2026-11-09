@@ -81,3 +81,15 @@ The original-Fock skew-adjointness contract above was implemented without changi
 **Still not qualified:** third-distinct-label commutator (F1C); arbitrary finite skew-matrix CAR implementer `L(A)`; Lie-bracket preservation; group integration; Spin(9) central phase or spatial action; original physical gauge/supercharge covariance; closed Hamiltonian symmetry; any spectral assertion.
 
 **Next small gate candidate:** F1C, original third-distinct-label `[(theta_p * theta_q),theta_r]=0` for `r≠p,q`; use only original F1B/F1A/F2 ancestry and an independent consumer. Once this passes, combine F1A first/second/third commutators into a whole-48-label elementary plane action, with factor/sign safeguards before any full LieHom.
+
+## F1C smallest successor — staged, not qualified (2026-11-08)
+
+Following strict F1B green #42549379198, the next proof is the **third distinct source label case** for an exact original Fock bivector. This does not introduce a full Lie algebra action.
+
+- Candidate theorem: `FCP.BFSSF1COriginalThetaBivector.originalThetaBivector_comm_third` in `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean`, source blob `5aaf1749c0e9259c6545fa889669587452ae62c5`.
+- Explicit assumptions `p ≠ q`, `p ≠ r`, `q ≠ r` on original `Source48Label`; exact conclusion `(theta_p*theta_q)*theta_r - theta_r*(theta_p*theta_q)=0`. The `p≠q` binder marks the intended distinct-plane domain; the proof uses the two third-label CAR relations.
+- Proof anatomy: original CAR gives `theta_p*theta_r = -(theta_r*theta_p)` and `theta_q*theta_r = -(theta_r*theta_q)`. Two swaps cause sign cancellation, `theta_p*theta_q*theta_r = theta_r*theta_p*theta_q`. Original F1A and F1B source files are unchanged; private CAR helper is restated in the bounded new module only.
+- Exact consumer `lean/diagnostics/BFSSF1COriginalThetaBivectorIndependentAudit.lean`, blob `b958328cbe81b120a7c36e485a81236738900e74`. Both added in [commit c93ac808](https://github.com/etblink/math/commit/c93ac808d6affed60e32f6b47f0283a06e7f9573).
+- Dedicated strict CI pins source and original accepted F1A/F1B dependencies, Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, an independent consumer and exact source-axiom check. A green F1B does **not** qualify F1C.
+
+**Status until new CI completes: UNQUALIFIED.** Subsequent source-evaluation/plane Lie-implementer gates must check `1/2` matrix coefficient and orientation rather than extrapolate from one generator or silently replacing `theta` with `sqrt(2)*theta`. Preserve all red diagnostics.

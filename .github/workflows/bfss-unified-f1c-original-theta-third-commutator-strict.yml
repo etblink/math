@@ -1,0 +1,125 @@
+name: BFSS unified F1C original third-label Majorana strict gate
+
+on:
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - .github/workflows/bfss-unified-f1c-original-theta-third-commutator-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean
+      - lean/diagnostics/BFSSF1COriginalThetaBivectorIndependentAudit.lean
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-unified-f1c-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-third-label-commutator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - name: Checkout exact original Fock proof candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify original F1A F1B source, F1C consumer and exact toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-unified-f1c"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-unified-f1c/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean lean/diagnostics/BFSSF1COriginalThetaBivectorIndependentAudit.lean | tee "$RUNNER_TEMP/bfss-unified-f1c/input-sha256.txt"
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip() == "leanprover/lean4:v4.34.1"
+          packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in packages if p["name"]=="mathlib") == "d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean":"5aaf1749c0e9259c6545fa889669587452ae62c5",
+            "lean/diagnostics/BFSSF1COriginalThetaBivectorIndependentAudit.lean":"b958328cbe81b120a7c36e485a81236738900e74",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean":"1b91182135d53026ae0ece8f2f85da52ccbc6f58",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean":"93d7ae00d4ee21ce59ab137c349590e2c496ff38",
+          }
+          for name,expected in pins.items():
+            actual=subprocess.check_output(["git","hash-object","--no-filters",name],text=True).strip()
+            assert actual==expected,(name,actual,expected)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSF1COriginalThetaBivectorIndependentAudit.lean").read_text()
+          assert [x for x in source.splitlines() if x.startswith("import ")] == [
+            "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1BOriginalThetaBivectorSkewAdjoint"
+          ]
+          assert [x for x in consumer.splitlines() if x.startswith("import ")] == [
+            "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1COriginalThetaBivectorThirdLabelCommutator"
+          ]
+          assert "theorem originalThetaBivector_comm_third" in source
+          assert "#print axioms originalThetaBivector_comm_third" in source
+          print("F1C_ORIGINAL_THIRD_LABEL_SOURCE_PINNED_ANCESTRY_PASS")
+          PY
+
+      - name: Prepare exact pinned Lean Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-unified-f1c/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold compile original F1C theorem and independent consumer
+        shell: bash
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-unified-f1c"
+          timeout 3450s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1COriginalThetaBivectorThirdLabelCommutator 2>&1 | tee "$evidence/source-build.log"
+          timeout 450s lake env lean OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean diagnostics/BFSSF1COriginalThetaBivectorIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-unified-f1c"
+          theorem="FCP.BFSSF1COriginalThetaBivector.originalThetaBivector_comm_third"
+          allowed={"propext","Classical.choice","Quot.sound"}
+          package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          def check(log,name):
+            for token in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+              assert token not in log,(name,token)
+            warnings=[line for line in log.splitlines() if "warning:" in line]
+            unexpected=[line for line in warnings if not package_warning.fullmatch(line)]
+            assert not unexpected,(name,"unexpected warnings",unexpected[:8])
+            if warnings:
+              print(name,"THIRD_PARTY_PACKAGE_WARNINGS_RECORDED",len(warnings))
+          for name in ["source-axioms.log","independent-consumer.log"]:
+            log=(root/name).read_text()
+            check(log,name)
+            reports=re.findall(r"'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+            found={decl:{a.strip() for a in axioms.split(",") if a.strip()} for decl,axioms in reports}
+            assert theorem in found,(name,reports[-10:])
+            assert found[theorem] <= allowed,(name,found[theorem])
+            print(name,"F1C_EXACT_THIRD_LABEL_ROOT_AXIOMS_PASS")
+          check((root/"source-build.log").read_text(),"source-build.log")
+          print("F1C_ORIGINAL_THETA_THIRD_LABEL_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Preserve all proof source and error evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-unified-f1c-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-unified-f1c/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
