@@ -1,4 +1,4 @@
-name: BFSS F1F original Fock coordinate-plane specialization diagnostic
+name: BFSS F1F source-plane explicit transport C1b diagnostic
 
 'on':
   push:
@@ -16,6 +16,8 @@ name: BFSS F1F original Fock coordinate-plane specialization diagnostic
       - lean/diagnostics/BFSSF1FAbstractMatrixUnitIndependentAudit.lean
       - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneCompactBridgeDiagnostic.lean
       - lean/diagnostics/BFSSF1FOriginalThetaCoordinatePlaneCompactBridgeIndependentAudit.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneTransportBridgeDiagnostic.lean
+      - lean/diagnostics/BFSSF1FOriginalThetaCoordinatePlaneTransportIndependentAudit.lean
       - lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean
       - lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean
       - .github/workflows/bfss-unified-f1f-abstract-coefficient-diagnostic.yml
@@ -51,7 +53,7 @@ jobs:
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           pkg=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
           assert next(p["rev"] for p in pkg if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean":"55b7efec8a2e4d3f66fc6c3bbc2ce2e2414e7b34","lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean":"ba5f5d5dbbf14c10b8e43b658ff5dc6b19640775","lean/diagnostics/BFSSF1FAbstractFockInstanceBoundary.lean":"c616aa4a7be7df3f1b091df4218caa54ad1923b9","lean/diagnostics/BFSSF1FAbstractFockCompactNamedSumBoundary.lean":"1eb16366010fb9c422f2e1d30bd5ed0e16184dc9","lean/diagnostics/BFSSF1FAbstractFockOriginalThetaNamedCompactBoundary.lean":"c16559b961b046dd8738bc592bd6dd147faca3ae","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCompactCoefficientLinearMapCandidate.lean":"0353d64fe30d03b9c664267c2f0cab72df05ae16","lean/diagnostics/BFSSF1FOriginalThetaCompactCandidateIndependentAudit.lean":"af613f8c5553fce584ff12cf6bd762a545584d06","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientMatrixUnitDiagnostic.lean":"3d509236cd0bf33b2d45fff8ded46358d21735a1","lean/diagnostics/BFSSF1FAbstractMatrixUnitIndependentAudit.lean":"dc9951bd2ac71d051cf3a515d5f6ceb0fabba207","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneCompactBridgeDiagnostic.lean":"5604fb3ba00162c6f0e1abe5b15fd7142b16857f","lean/diagnostics/BFSSF1FOriginalThetaCoordinatePlaneCompactBridgeIndependentAudit.lean":"8c10b0fe5173a32ce4f33115414534aee9f50b54","lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean":"e4de03e3b3b36b8a86336b080e0985ce0e6063a4","lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean":"ab2863b2515f853ca539ce3452bc406b7e6e5bac","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean":"3454f95cae979cc5aea9a8059882fe0ac346d0fc","lean/diagnostics/BFSSF1FOriginalThetaMatrixLinearMapIndependentAudit.lean":"9254f862a145583f34dfaa8e9d452612f61c63d1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1EOriginalThetaCoordinatePlaneMatrixAction.lean":"5c0c95e89ddc09b34d628dde3801e4a12ac98c53","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean":"b8cb1f81839cd3b26a05f949cc26e8bc88ebfbf0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean":"c56d3da8e89aa6cd428854003d94ff843c33af75","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean":"1b91182135d53026ae0ece8f2f85da52ccbc6f58","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean":"93d7ae00d4ee21ce59ab137c349590e2c496ff38"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean":"55b7efec8a2e4d3f66fc6c3bbc2ce2e2414e7b34","lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean":"ba5f5d5dbbf14c10b8e43b658ff5dc6b19640775","lean/diagnostics/BFSSF1FAbstractFockInstanceBoundary.lean":"c616aa4a7be7df3f1b091df4218caa54ad1923b9","lean/diagnostics/BFSSF1FAbstractFockCompactNamedSumBoundary.lean":"1eb16366010fb9c422f2e1d30bd5ed0e16184dc9","lean/diagnostics/BFSSF1FAbstractFockOriginalThetaNamedCompactBoundary.lean":"c16559b961b046dd8738bc592bd6dd147faca3ae","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCompactCoefficientLinearMapCandidate.lean":"0353d64fe30d03b9c664267c2f0cab72df05ae16","lean/diagnostics/BFSSF1FOriginalThetaCompactCandidateIndependentAudit.lean":"af613f8c5553fce584ff12cf6bd762a545584d06","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientMatrixUnitDiagnostic.lean":"3d509236cd0bf33b2d45fff8ded46358d21735a1","lean/diagnostics/BFSSF1FAbstractMatrixUnitIndependentAudit.lean":"dc9951bd2ac71d051cf3a515d5f6ceb0fabba207","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneCompactBridgeDiagnostic.lean":"5604fb3ba00162c6f0e1abe5b15fd7142b16857f","lean/diagnostics/BFSSF1FOriginalThetaCoordinatePlaneCompactBridgeIndependentAudit.lean":"8c10b0fe5173a32ce4f33115414534aee9f50b54","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneTransportBridgeDiagnostic.lean":"202317ed59bfe3db53d3135e8523bd6b2eaa36fb","lean/diagnostics/BFSSF1FOriginalThetaCoordinatePlaneTransportIndependentAudit.lean":"050f6f422128d8f46ef2d4c90d1947c17395bf6f","lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean":"e4de03e3b3b36b8a86336b080e0985ce0e6063a4","lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean":"ab2863b2515f853ca539ce3452bc406b7e6e5bac","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean":"3454f95cae979cc5aea9a8059882fe0ac346d0fc","lean/diagnostics/BFSSF1FOriginalThetaMatrixLinearMapIndependentAudit.lean":"9254f862a145583f34dfaa8e9d452612f61c63d1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1EOriginalThetaCoordinatePlaneMatrixAction.lean":"5c0c95e89ddc09b34d628dde3801e4a12ac98c53","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean":"b8cb1f81839cd3b26a05f949cc26e8bc88ebfbf0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean":"c56d3da8e89aa6cd428854003d94ff843c33af75","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean":"1b91182135d53026ae0ece8f2f85da52ccbc6f58","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean":"93d7ae00d4ee21ce59ab137c349590e2c496ff38"}
           for path,expected in pins.items():
               actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert actual==expected,(path,actual,expected)
@@ -66,6 +68,8 @@ jobs:
           unit_audit=Path("lean/diagnostics/BFSSF1FAbstractMatrixUnitIndependentAudit.lean").read_text()
           plane_source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneCompactBridgeDiagnostic.lean").read_text()
           plane_audit=Path("lean/diagnostics/BFSSF1FOriginalThetaCoordinatePlaneCompactBridgeIndependentAudit.lean").read_text()
+          transport_source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneTransportBridgeDiagnostic.lean").read_text()
+          transport_audit=Path("lean/diagnostics/BFSSF1FOriginalThetaCoordinatePlaneTransportIndependentAudit.lean").read_text()
           probe_arbitrary=Path("lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean").read_text()
           probe_named=Path("lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean").read_text()
           prod=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean").read_text()
@@ -153,6 +157,26 @@ jobs:
           assert "(1 / 2 : ℝ) •" in plane_source
           assert "∑" not in plane_source and "∑" not in plane_audit
           assert "originalSourceThetaCompactCoefficientLinearMap" not in plane_source
+          assert re.findall(r"(?m)^import (\S+)$",transport_source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FAbstractCoefficientMatrixUnitDiagnostic",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FOriginalThetaCompactCoefficientLinearMapCandidate"]
+          assert re.findall(r"(?m)^import (\S+)$",transport_audit)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FOriginalThetaCoordinatePlaneTransportBridgeDiagnostic"]
+          expected_transport=[
+              "originalF1EPlane_eq_singleSub",
+              "originalThetaFamily_halfMap_sourcePlane_transport"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",transport_source)==expected_transport
+          assert re.findall(r"(?m)^#print axioms (\S+)$",transport_audit)==[
+              "FCP.BFSSF1FOriginalThetaCoordinatePlaneTransport."+x for x in expected_transport]
+          assert "private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2" in transport_source
+          assert "originalSource48CoordinatePlane p q" in transport_source
+          assert "originalSource48CoordinatePlane p q" in transport_audit
+          assert "(originalF1EPlane_eq_singleSub p q)" in transport_source
+          assert "congrArg" in transport_source
+          assert "halfCoefficientLinearMap_skewPlane" in transport_source
+          assert "∑" not in transport_source and "∑" not in transport_audit
+          assert "originalSourceThetaCompactCoefficientLinearMap" not in transport_source
+          assert not re.search(r"(?m)^\s+change\s",transport_source)
           for name,code,roots in [
               ("arbitrary",probe_arbitrary,["arbitraryFockFamily_apply_expanded"]),
               ("named",probe_named,["namedOriginalThetaFamily_apply_expanded",
@@ -167,7 +191,7 @@ jobs:
                   assert "majoranaCandidate p * majoranaCandidate q" in code
           assert re.findall(r"(?m)^#print axioms (\S+)$",generic)==["rawCoefficientSum_add","rawCoefficientSum_smul","rawCoefficientLinearMap","halfCoefficientLinearMap","halfCoefficientLinearMap_apply","halfCoefficientLinearMap_apply_expanded"]
           assert re.findall(r"(?m)^#print axioms (\S+)$",audit)==["originalFockHalfCoefficientMap","originalFockHalfCoefficientMap_add","originalFockHalfCoefficientMap_smul","originalFockHalfCoefficientMap_apply"]
-          for name,code in [("generic",generic),("consumer",audit),("instances",probe_instances),("compact",probe_compact),("theta-compact",probe_theta_compact),("source-candidate",candidate),("independent-candidate",independent),("matrix-units",unit_source),("matrix-audit",unit_audit),("source-plane",plane_source),("independent-plane",plane_audit),("arbitrary",probe_arbitrary),("named",probe_named)]:
+          for name,code in [("generic",generic),("consumer",audit),("instances",probe_instances),("compact",probe_compact),("theta-compact",probe_theta_compact),("source-candidate",candidate),("independent-candidate",independent),("matrix-units",unit_source),("matrix-audit",unit_audit),("source-plane-red",plane_source),("independent-plane-red",plane_audit),("source-plane-transport",transport_source),("independent-plane-transport",transport_audit),("arbitrary",probe_arbitrary),("named",probe_named)]:
               assert [x for x in code.splitlines() if x.startswith("set_option ")]==["set_option autoImplicit false"],name
               cleaned=re.sub(r"/-.*?-/", "", code, flags=re.S)
               cleaned=re.sub(r"--[^\n]*","",cleaned)
@@ -259,18 +283,20 @@ jobs:
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCompactCoefficientLinearMapCandidate.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/compact-source-axioms.log"
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSF1FOriginalThetaCompactCandidateIndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/compact-independent-audit.log"
 
-      - name: Stage C original Fock source skew-plane specialization and independent audit
+      - name: Stage C2 source F1E plane identity then explicit Fock map transport
         shell: bash
         timeout-minutes: 20
         run: |
           set -euo pipefail
           source "$HOME/.elan/env"
           cd lean
-          timeout 600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FOriginalThetaCoordinatePlaneCompactBridgeDiagnostic 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/original-source-plane-build.log"
-          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -Ddiagnostics=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneCompactBridgeDiagnostic.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/original-source-plane-axioms.log"
-          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -Ddiagnostics=true diagnostics/BFSSF1FOriginalThetaCoordinatePlaneCompactBridgeIndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/original-source-plane-independent.log"
+          # The earlier failed C1 module remains pinned but is not executed:
+          # its 'change' crossed the expensive definitional-equality boundary.
+          timeout 600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FOriginalThetaCoordinatePlaneTransportBridgeDiagnostic 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/source-plane-transport-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -Ddiagnostics=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaCoordinatePlaneTransportBridgeDiagnostic.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/source-plane-transport-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -Ddiagnostics=true diagnostics/BFSSF1FOriginalThetaCoordinatePlaneTransportIndependentAudit.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/source-plane-transport-independent.log"
 
-      - name: Fail closed on 23 exact generic and source plane axiom reports
+      - name: Fail closed on 25 exact generic and source transport axiom reports
         shell: bash
         run: |
           set -euo pipefail
@@ -278,7 +304,7 @@ jobs:
           import json,os,re
           from pathlib import Path
           root=Path(os.environ["RUNNER_TEMP"])/"bfss-f1f-abstract"
-          expected={"b0-instance-synthesis.log":[],"abstract-axioms.log":["FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_add","FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_smul","FCP.BFSSF1FAbstractCoefficient.rawCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply_expanded"],"b1a-compact-named-sum.log":["FCP.BFSSF1FAbstractFockCompactBoundary.arbitraryFockFamily_apply_compact"],"b1b-original-theta-named.log":["FCP.BFSSF1FAbstractFockOriginalThetaCompact.originalThetaPairFamily_apply","FCP.BFSSF1FAbstractFockOriginalThetaCompact.originalThetaPairFamily_compact"],"compact-source-axioms.log":["FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily_apply","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaCompactCoefficientLinearMap"],"compact-independent-audit.log":["FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily_apply","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaCompactCoefficientLinearMap"],"matrix-unit-source-axioms.log":["FCP.BFSSF1FAbstractMatrixUnits.rawCoefficientSum_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_skewPlane"],"matrix-unit-independent-audit.log":["FCP.BFSSF1FAbstractMatrixUnits.rawCoefficientSum_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_skewPlane"],"original-source-plane-axioms.log":["FCP.BFSSF1FOriginalThetaCoordinatePlaneCompactBridge.originalThetaFamily_halfMap_sourcePlane"],"original-source-plane-independent.log":["FCP.BFSSF1FOriginalThetaCoordinatePlaneCompactBridge.originalThetaFamily_halfMap_sourcePlane"]}
+          expected={"b0-instance-synthesis.log":[],"abstract-axioms.log":["FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_add","FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_smul","FCP.BFSSF1FAbstractCoefficient.rawCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply_expanded"],"b1a-compact-named-sum.log":["FCP.BFSSF1FAbstractFockCompactBoundary.arbitraryFockFamily_apply_compact"],"b1b-original-theta-named.log":["FCP.BFSSF1FAbstractFockOriginalThetaCompact.originalThetaPairFamily_apply","FCP.BFSSF1FAbstractFockOriginalThetaCompact.originalThetaPairFamily_compact"],"compact-source-axioms.log":["FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily_apply","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaCompactCoefficientLinearMap"],"compact-independent-audit.log":["FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaPairFamily_apply","FCP.BFSSF1FOriginalThetaCompactCandidate.originalSourceThetaCompactCoefficientLinearMap"],"matrix-unit-source-axioms.log":["FCP.BFSSF1FAbstractMatrixUnits.rawCoefficientSum_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_skewPlane"],"matrix-unit-independent-audit.log":["FCP.BFSSF1FAbstractMatrixUnits.rawCoefficientSum_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_matrixUnit","FCP.BFSSF1FAbstractMatrixUnits.halfCoefficientLinearMap_skewPlane"],"source-plane-transport-axioms.log":["FCP.BFSSF1FOriginalThetaCoordinatePlaneTransport.originalF1EPlane_eq_singleSub","FCP.BFSSF1FOriginalThetaCoordinatePlaneTransport.originalThetaFamily_halfMap_sourcePlane_transport"],"source-plane-transport-independent.log":["FCP.BFSSF1FOriginalThetaCoordinatePlaneTransport.originalF1EPlane_eq_singleSub","FCP.BFSSF1FOriginalThetaCoordinatePlaneTransport.originalThetaFamily_halfMap_sourcePlane_transport"]}
           allowed={"propext","Classical.choice","Quot.sound"}
           package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
           roots={}
@@ -296,14 +322,14 @@ jobs:
                   roots[name]=sorted(have)
           b0=(root/"b0-instance-synthesis.log").read_text()
           assert b0.splitlines().count("F1F_B0_ORIGINAL_FOCK_INSTANCES_AND_PARTIAL_SPECIALIZATION_COMPLETE")==1
-          for path in ("abstract-build.log","matrix-unit-build.log","original-ancestry-build.log","compact-candidate-build.log","original-source-plane-build.log"):
+          for path in ("abstract-build.log","matrix-unit-build.log","original-ancestry-build.log","compact-candidate-build.log","source-plane-transport-build.log"):
               text=(root/path).read_text()
               assert "error:" not in text and "sorryAx" not in text,path
-          receipt={"status":"ORIGINAL_FOCK_SOURCE_PLANE_ONLY_PASS","tested_commit":(root/"tested-commit.txt").read_text().strip(),
+          receipt={"status":"EXPLICIT_SOURCE_PLANE_TRANSPORT_ONLY_PASS","tested_commit":(root/"tested-commit.txt").read_text().strip(),
                    "roots":roots,"production_F1F_qualified":False,
-                   "scope":"Accepted B0/B1a/B1b, genuine source compact LinearMap, abstract matrix-unit/skew-plane formulas, and separately specialized exact F1E original source plane identity for halfCoefficientLinearMap of named ordered original Majorana family. Equality to frozen literal production F1F and to concrete source map alias, and Spin/physical/spectral claims REMAIN OPEN."}
+                   "scope":"Reaccepted B0/B1a/B1b, compact source map, abstract matrix-unit/skew-plane; new isolated F1E source matrix equality and its explicit congrArg transport through genuine Fock halfCoefficientLinearMap with independent consumer. Original literal production F1F equality, concrete compact alias evaluation and Spin/physical/spectral claims REMAIN OPEN."}
           (root/"diagnostic-receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
-          print("F1F_ORIGINAL_FOCK_SOURCE_PLANE_BOUNDARY_PASS_NOT_PRODUCTION")
+          print("F1F_C1B_EXPLICIT_SOURCE_PLANE_TRANSPORT_PASS_NOT_PRODUCTION")
           PY
 
       - name: Preserve exact source inputs, failures, and component verdict
