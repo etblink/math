@@ -43,18 +43,34 @@ noncomputable def originalThetaCoefficientLinearMap :
   toFun := originalThetaCoefficientFiniteLift
   map_add' := by
     intro A B
-    -- Avoid broad nested-sum simp proof terms over original Fock operators.
-    simp only [originalThetaCoefficientFiniteLift, Matrix.add_apply]
-    rw [← smul_add]
-    congr 1
-    rw [← Finset.sum_add_distrib]
-    apply Finset.sum_congr rfl
-    intro p hp
-    rw [← Finset.sum_add_distrib]
-    apply Finset.sum_congr rfl
-    intro q hq
-    exact add_smul (A p q) (B p q)
-      (majoranaCandidate p * majoranaCandidate q)
+    -- Keep matrix evaluation typed; compose equalities without rewriting an
+    -- unfolded Matrix expression at the tactic's implicit transparency level.
+    have hentry (p q : Source48Label) :
+        ((A + B) p q) • (majoranaCandidate p * majoranaCandidate q) =
+          (A p q) • (majoranaCandidate p * majoranaCandidate q) +
+            (B p q) • (majoranaCandidate p * majoranaCandidate q) :=
+      (congrArg (fun a : ℝ => a • (majoranaCandidate p * majoranaCandidate q))
+        (show (A + B) p q = A p q + B p q from rfl)).trans
+        (add_smul (A p q) (B p q) (majoranaCandidate p * majoranaCandidate q))
+    have hrow (p : Source48Label) :
+        (∑ q : Source48Label, ((A + B) p q) • (majoranaCandidate p * majoranaCandidate q)) =
+          (∑ q : Source48Label, (A p q) • (majoranaCandidate p * majoranaCandidate q)) +
+            (∑ q : Source48Label, (B p q) • (majoranaCandidate p * majoranaCandidate q)) :=
+      (Finset.sum_congr rfl (fun q _ => hentry p q)).trans Finset.sum_add_distrib
+    have hsum :
+        (∑ p : Source48Label, ∑ q : Source48Label,
+          ((A + B) p q) • (majoranaCandidate p * majoranaCandidate q)) =
+          (∑ p : Source48Label, ∑ q : Source48Label,
+            (A p q) • (majoranaCandidate p * majoranaCandidate q)) +
+          (∑ p : Source48Label, ∑ q : Source48Label,
+            (B p q) • (majoranaCandidate p * majoranaCandidate q)) :=
+      (Finset.sum_congr rfl (fun p _ => hrow p)).trans Finset.sum_add_distrib
+    exact (congrArg (fun T : FockOp => (1 / 2 : ℝ) • T) hsum).trans
+      (smul_add (1 / 2 : ℝ)
+        (∑ p : Source48Label, ∑ q : Source48Label,
+          (A p q) • (majoranaCandidate p * majoranaCandidate q))
+        (∑ p : Source48Label, ∑ q : Source48Label,
+          (B p q) • (majoranaCandidate p * majoranaCandidate q)))
   map_smul' := by
     intro c A
     simp only [originalThetaCoefficientFiniteLift, Matrix.smul_apply,
