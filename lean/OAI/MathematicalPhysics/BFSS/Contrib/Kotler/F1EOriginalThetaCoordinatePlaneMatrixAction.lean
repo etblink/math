@@ -55,11 +55,16 @@ theorem originalThetaBivector_comm_coordinatePlane
   rw [FCP.BFSSF1DOriginalThetaBivector.originalThetaBivector_comm_all_labels p q r hpq]
   by_cases hrp : r = p
   · subst r
-    simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
+    simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq,
+      zero_smul ℝ, neg_one_smul ℝ]
   · by_cases hrq : r = q
     · subst r
-      simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
-    · simp [originalSource48CoordinatePlane, hrp, hrq]
+      simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq,
+        zero_smul ℝ, one_smul ℝ]
+    · have hpr : p ≠ r := Ne.symm hrp
+      have hqr : q ≠ r := Ne.symm hrq
+      simp [originalSource48CoordinatePlane, hrp, hrq, hpr, hqr,
+        zero_smul ℝ]
 
 #print axioms originalSource48CoordinatePlane_transpose
 #print axioms originalThetaBivector_comm_coordinatePlane
