@@ -19,6 +19,11 @@ open FCP.BFSSOP3B2OriginalSource48Isometry
 
 example (A : Matrix Source48Label Source48Label ℝ)
     (hA : A ∈ Matrix.orthogonalGroup Source48Label ℝ) :
+    Source48Vector ≃ₗ[ℝ] Source48Vector :=
+  orthogonalMatrix_source48LinearEquiv A hA
+
+example (A : Matrix Source48Label Source48Label ℝ)
+    (hA : A ∈ Matrix.orthogonalGroup Source48Label ℝ) :
     source48Quadratic.IsometryEquiv source48Quadratic :=
   orthogonalMatrix_source48IsometryEquiv A hA
 
@@ -38,6 +43,7 @@ example (g : spinGroup source9Quadratic) (v : Source48Vector) :
       source48Quadratic v :=
   (source9SpinOriginalPaired48IsometryEquiv g).map_app v
 
+#print axioms FCP.BFSSOP3B2OriginalSource48Isometry.orthogonalMatrix_source48LinearEquiv
 #print axioms FCP.BFSSOP3B2OriginalSource48Isometry.orthogonalMatrix_source48IsometryEquiv
 #print axioms FCP.BFSSOP3B2OriginalSource48Isometry.source9SpinOriginalPaired48IsometryEquiv
 #print axioms FCP.BFSSOP3B2OriginalSource48Isometry.source9SpinOriginalPaired48IsometryEquiv_apply
