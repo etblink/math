@@ -121,6 +121,12 @@ Use this exact **gate decision record** after every cold run:
 
 **Allowed adaptation examples:** If R1 normalization crosswalk is blocked by instance reduction, temporarily use separate source-axis label and scalar lemmas; do **not** repeat F1F C1/C1b. If R3 Clifford functor API is unsuitable, use another exact universal-property construction with the same source carrier. If R4 algebraic action passes but star/topology fails, retain only the algebraic theorem. If A finds a genuine high-sector escape sequence, stop P2; that negative result may be scientifically more important than another successful partial proof. If P1 original closed-domain identification fails, study the operator domain directly rather than substituting an easier Hamiltonian.
 
+## OP3-B2 decision checkpoint — 2026-11-09: HOLD the optional isometry-equivalence package
+
+**Qualified and retained:** OP3-A1 [#42668302044](https://github.com/etblink/math/actions/runs/42668302044), OP3-A2 [#42671945161](https://github.com/etblink/math/actions/runs/42671945161), and OP3-B1 [#42675821883](https://github.com/etblink/math/actions/runs/42675821883), the genuine original source-48 quadratic preservation theorem. **Not qualified:** OP3-B2 `IsometryEquiv` after two independent same-mechanism recursion failures, [#42678500270](https://github.com/etblink/math/actions/runs/42678500270) and [#42680558526](https://github.com/etblink/math/actions/runs/42680558526). The latter successfully elaborated its separately factored real `LinearEquiv` before recursing in the thin `IsometryEquiv.map_app'` wrapper, but the whole gate and its independent audit failed, so nothing from OP3-B2 is promoted.
+
+**Guardrail applied:** HOLD, perform source-level read-only review, and evaluate the pinned Mathlib lower interface `QuadraticMap.Isometry` → `CliffordAlgebra.map` or direct `CliffordAlgebra.lift` before implementing any new proof. Do not rebuild a different 48D action, raise Lean recursion budgets, or reattempt the same wrapper. See [the OP3-B2 two-red diagnosis and alternative-interface audit](BFSS_OP3B2_SOURCE48_ISOMETRY_PACKAGING_AND_OP3C_INTERFACE_AUDIT_2026_11_09.md). The mathematical OP3-C real/complex Clifford group action and original Fock operator representation remain open.
+
 ## 8. Immediate execution order and handoff contract
 
 **Next bounded task: R0 → R1 / OP3-A generator-axis crosswalk.**
