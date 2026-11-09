@@ -1,5 +1,6 @@
 import Mathlib.Data.Matrix.Basis
 import Mathlib.Algebra.Module.BigOperators
+import Mathlib.Basic.Real.Basic
 
 /-!
 # F1F diagnostic — abstract matrix coefficient real-linearity
