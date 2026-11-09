@@ -62,12 +62,17 @@ jobs:
           m3i=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean").read_text()
           assert "source9Spin_originalComplexCliffordAutomorphismHom" in c5b
           assert "originalComplexCliffordFockAlgEquiv" in m3i
+          # The complex Clifford carrier is specified by our pinned
+          # ancestors, not textually reconstructed in the C6-A consumer.
+          assert "CliffordAlgebra (source48Quadratic.baseChange ℂ)" in c5b
+          assert "private abbrev Q : QuadraticForm ℝ Source48Vector := source48Quadratic" in m3i
+          assert "private abbrev A := CliffordAlgebra (Q.baseChange ℂ)" in m3i
+          assert "private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2" in m3i
           for term in ("AlgEquiv.autCongr",
                        "source9Spin_originalComplexCliffordAutomorphismHom",
                        "FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv",
                        "spinGroup source9Quadratic",
                        "Fermion 2 →L[ℂ] Fermion 2",
-                       "source48Quadratic.baseChange ℂ",
                        "map_one", "map_mul"):
               assert term in source+consumer,term
           assert "private abbrev OriginalFockOp :=" in consumer
