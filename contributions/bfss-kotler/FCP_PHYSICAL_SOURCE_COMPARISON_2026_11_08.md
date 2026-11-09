@@ -85,3 +85,43 @@ Historical S3L5J9 and S1V27 do **not** occur under their original filenames in t
 5. **Only after** the literal source Spin/Fock/action and original sixteen-charge covariance have been demonstrated, use the already-established BH native Hamiltonian identity to transport the symmetry through the exact closed form, and only then pursue highest-weight or spectral conclusions.
 
 **Conclusion:** The major native physical-operator identity is not missing. The genuinely risky boundary is source-to-independent Clifford/Spin implementation and the exact closed-form symmetry connection. Prior notes let us distinguish these, saving substantial duplicated proof work.
+
+## Later-source correction: genuine native SU2 Spin48 lift and M3H
+
+**2026-11-08 — chronological source-document review.** This **supersedes** the earlier preliminary implication in section A that an original SU2-to-Spin48 *gauge* lift itself remains to be constructed. That early assessment was based on October 17–19 handoffs, not the later October 20–21 acceptance series. There is still no global **Spin(9) spatial Fock lift** qualified in this review. Historical qualifications are specific to their original tested source, not fresh integrated acceptance.
+
+### Already accomplished on the exact original source
+
+| Source family | Precise historical accomplishment | CI |
+| --- | --- | --- |
+| S1V52L7C7 | Unconditional actual original SU2→Spin48 per-block homomorphism | [#39502461552](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39502461552) |
+| S1V52L8E | Genuine sixteen-block ordered SU2→Spin48 homomorphism on source 48 labels | [#39507931392](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39507931392) |
+| S1V52L9E5F18C | Equality of the original native sixteen-block Spin48 Fock gauge homomorphism to the **actual source Fock SU2 gauge homomorphism**; not merely equal projective actions | [#39649964814](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39649964814) |
+| S1V52L9E5F19A | Exact native Spin48 Fock operator and FullL2 gauge pair agree with original `pairedGaugeData`; gauge-fixed vectors iff original physical space | [#39656920471](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39656920471) |
+| S1V52L9E5F20E | Continuity of genuine native sixteen-block source Spin48 SU2 lift | [#39670665471](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39670665471) |
+| S1V52L9E5F20F | Actual source Spin48 inversion continuity/topological group carrier | [#39673137959](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39673137959) |
+| S1V52M3D | Complex Clifford(48) acts *surjectively* on full original Fock continuous endomorphism algebra | [#39691674812](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39691674812) |
+| S1V52M3H | Source algebra action is **injective** (with M3D image and dimension equality), for the actual original Fock carrier | [#39699674509](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39699674509) |
+
+The individual Actions resources above were fetched on this review and returned `conclusion=success`. The acceptance notes provide exact theorem names, file hashes, bounded source scope and root axiom checks. They are historical source-checked proof evidence, **not** an integrated-tree CI pass.
+
+**What is still not established:** no checked original-source spatial `Spin(9) → U(Fermion 2)` implementation of the separate source F10R `Spin(9) → SO(48)` representation, no globally qualified spatial/cubic charge covariance on the actual closed operator, and no identification with the independently stipulated manuscript Clifford Hilbert module by simply pointing to these gauge results. SU2 gauge and Spin9 spatial symmetries must not be conflated.
+
+### Concrete source vs. ported implementation comparison
+
+All names below were checked at integration branch head `a51965b07c17f3241ba9b80eabf999ccfad8bb6f` in `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/`:
+
+- **Present** L7C7, L8E, F18C, M3D, M3H, M3I. The original F18C and M3I declarations/proof text from `namespace` onward match their upstream ports exactly; import lines differ.
+- **Absent by original filename** F19A, F20E, F20F in the inspected OperatorDependencies directory. This is *not* evidence that an equivalent current theorem is absent elsewhere. Search corresponding declarations before importing anything.
+- **Important porting difference:** original M3H source uses `letI : FiniteDimensional ℂ A := ...` and the current port uses `let : FiniteDimensional ℂ A := ...`. This potentially changes local typeclass synthesis. The historical M3H green source must not be transferred to that altered port without a new compiler and independent consumer check. A similar original `letI` → ported `let` difference exists in BH's source Hamiltonian identity.
+- **M3I algebra equivalence:** FCP's source `S1V52M3I` is explicitly marked strict-eligible but unqualified at its snapshot; it is the short `AlgEquiv.ofBijective` consequence of accepted M3D surjectivity and now independently **green** M3H injectivity, plus an `rfl` application lemma. The source branch has no Actions runs found under that exact branch filter and no later M3I qualification was verified here. **Candidate / not accepted**, including for its port.
+
+### Prioritized minimal proof checks (no new CI launched by this review)
+
+**Gate A — import fidelity on an already present short theorem.** In a scoped diagnostic branch/commit, restore or justify the original `letI` typeclass behavior of M3H; compile exact M3H under pinned imports with allowed axioms and independent consumer. Do not run a giant compilation and assume this change is harmless. Then independently qualify the already-present M3I algebra equivalence using the actual `AlgEquiv.ofBijective` constructor and its exact source representation. This closes an *existing source algebra-equivalence packaging gap*, not the spatial group implementation or manuscript module identification.
+
+**Gate B — smallest direct physical-spin proof.** F1B original unnormalized Source48 ordered Majorana bivector skew-adjointness on `Fermion 2`, reusing the qualified F1A theta CAR and original F2 self-adjointness, and the old S3F star-of-product pattern. The working contract is in `BFSS_HISTORICAL_GATE_RETRIEVAL_F1B_2026_11_08.md`. F1A is green [#42533991101](https://github.com/etblink/math/actions/runs/42533991101); F1B remains unqualified. Use the smallest old-contract consumer first, not the entire original Spin48 universal algebra closure.
+
+**Only after Gates A/B as relevant:** inspect/qualify exact 48-label Lie implementer; relate it to source F10R spatial `Spin(9) → SO(48)` map with the nontrivial negative central action, preserve source SU2 gauge commutation, and prove all sixteen original supercharge covariances plus the **BH-qualified same closed physical Hamiltonian** domain/form symmetry. Retain FCP's original S3L kinetic green [#38164568692](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38164568692) and the K2C concrete red failures as constraints on proof architecture.
+
+**Do not bulk-copy** the historical FCP directory or reopen the accepted original SU2 gauge group lift. The proof relations are now understood well enough to select these small tests without creating redundant paths, and no new Lean source or workflow needs to be added in this documentation pass.
