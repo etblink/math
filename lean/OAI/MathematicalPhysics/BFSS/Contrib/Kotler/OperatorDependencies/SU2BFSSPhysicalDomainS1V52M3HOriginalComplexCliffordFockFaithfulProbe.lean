@@ -25,6 +25,9 @@ spectrum. No merge to main.
 
 set_option autoImplicit false
 set_option maxHeartbeats 350000
+-- Preserve the original accepted proof's `letI` without the proposition-only
+-- haveILetI style suggestion. This does not alter the source theorem body.
+set_option linter.style.haveILetI false
 
 namespace FCP.BFSSS1V52M3H
 noncomputable section

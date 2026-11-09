@@ -46,7 +46,7 @@ jobs:
           required={
             root/"SU2BFSSPhysicalDomainS1V52M3DOriginalComplexCliffordFullFockImageProbe.lean": "17ec2266d7854643338c1c238b90fb374b5fe139",
             root/"SU2BFSSPhysicalDomainS1V52M3GOriginalFockContinuousOperatorFinrankProbe.lean": "a2c99c34756eba29472ce0ccd77f85c7db4d05c1",
-            root/"SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean": "f5e6b920565caab50fba62b8822217ae8fba43b3",
+            root/"SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean": "0b0b1f06f332cc9da738375e4511c28361c09f72",
             root/"SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean": "754a5f2a13baea90312f6031eb8fa7963dbdf42b",
             Path("lean/diagnostics/BFSSUnifiedM3H_M3IIndependentAudit.lean"): "665504e5a6651c5cab9e7b03ddd45e8ad7cfb501",
             archived/"SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean": "66c99d5aa6697a40a7da542dc0a5b3df7702ee91",
@@ -108,17 +108,31 @@ jobs:
             "independent-consumer.log":["FCP.BFSSS1V52M3H.originalComplexCliffordFock_injective","FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv","FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv_apply"],
           }
           allowed={"propext","Classical.choice","Quot.sound"}
+          # Lake emits distinct warnings when unrelated installed package working
+          # trees are dirty. Keep those logs and allow only that exact form.
+          # ALL Lean source warnings, all compiler errors and all forbidden
+          # axioms still fail closed, including in the full source build.
+          package_warning=re.compile(
+            r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\\.lake/packages/[a-zA-Z0-9_-]+' has local changes$"
+          )
+          def check_diagnostics(log,name):
+            for token in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+              assert token not in log,(name,token)
+            warnings=[line for line in log.splitlines() if "warning:" in line]
+            unexpected=[line for line in warnings if not package_warning.fullmatch(line)]
+            assert not unexpected,(name,"Unexpected warnings",unexpected[:8])
+            if warnings:
+              print(name,"THIRD_PARTY_PACKAGE_STATUS_WARNINGS_RECORDED",len(warnings))
           for name,roots in wanted.items():
             log=(p/name).read_text()
-            assert not re.search(r"(?m)^.*(?:warning:|error:|sorryAx|Lean[.]ofReduceBool).*?$",log),name
-            reports=re.findall(r"'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
-            found={name: {x.strip() for x in ax.split(",") if x.strip()} for name,ax in reports}
+            check_diagnostics(log,name)
+            reports=re.findall(r"'([^'\\n]+)' (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)",log)
+            found={decl: {x.strip() for x in ax.split(",") if x.strip()} for decl,ax in reports}
             for root in roots:
               assert root in found,(name,root,reports[-12:])
               assert found[root] <= allowed,(name,root,found[root])
-            print(name, "PERMITTED_AXIOMS_AND_EXACT_ROOTS_PASS", len(roots))
-          build=(p/"source-build.log").read_text()
-          assert "error:" not in build and "sorryAx" not in build
+            print(name,"PERMITTED_AXIOMS_AND_EXACT_ROOTS_PASS",len(roots))
+          check_diagnostics((p/"source-build.log").read_text(),"source-build.log")
           print("M3H_M3I_UNIFIED_SOURCE_AND_INDEPENDENT_CONSUMER_STRICT_PASS")
           PY
 
