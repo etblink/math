@@ -51,8 +51,10 @@ theorem originalFockHalfCoefficientMap_apply
       (1 / 2 : ℝ) •
         ∑ p : Source48Label, ∑ q : Source48Label,
           (A p q) • (majoranaCandidate p * majoranaCandidate q) := by
-  exact halfCoefficientLinearMap_apply_expanded
-    (fun p q : Source48Label => majoranaCandidate p * majoranaCandidate q) A
+  -- Rewrite only the named interface; avoid implicit reduction of FockOp.
+  simpa only [originalFockHalfCoefficientMap] using
+    (halfCoefficientLinearMap_apply_expanded
+      (fun p q : Source48Label => majoranaCandidate p * majoranaCandidate q) A)
 
 #print axioms originalFockHalfCoefficientMap
 #print axioms originalFockHalfCoefficientMap_add
