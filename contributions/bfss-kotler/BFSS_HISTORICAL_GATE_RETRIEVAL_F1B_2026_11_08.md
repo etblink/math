@@ -111,3 +111,15 @@ Following strict F1B green #42549379198, the next proof is the **third distinct 
 Exactly qualified: on actual original `Fermion 2` for the exact source labels `p≠q`, `p≠r`, `q≠r`, `[(theta_p * theta_q),theta_r]=0`. Combined **at the mathematical/theorem-inventory level** with separately accepted F1A signs and F1B skew-adjointness, the elementary bivector now has all three possible original-label commutator cases. A unified single Lean theorem, an arbitrary `so(48)` LieHom, a global Spin(9) lift, physical gauge covariance and any spectral conclusion are **not** established by this gate.
 
 **Next bounded integration gate F1D:** use only the accepted F1A and F1C names on unchanged source labels to prove a single exhaustive conditional equality for all `r`, separately checking the `r=p`, `r=q`, and third-distinct cases. Retain F1B as the independently accepted skew-adjoint companion. The expected formula is `[theta_p*theta_q,theta_r] = if r=p then -theta_q else if r=q then theta_p else 0`, for `p≠q`. A future matrix-action theorem must still pin sign and factor convention independently.
+
+## F1D whole-label source theorem staged (2026-11-08 local)
+
+After **F1C strict acceptance** #42551959570, F1D composes the three **accepted theorem interfaces** on the same original 48-label index type and actual `Fermion 2` operator algebra:
+
+`[(theta_p*theta_q),theta_r] = if r=p then -theta_q else if r=q then theta_p else 0`, with `p ≠ q`.
+
+The compact source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean` (blob `8e7e40be64d3a4d6bba73ea0d78b02bdf3af5557`) has a three-way label split. It applies exactly F1A `originalThetaBivector_comm_first`, F1A `originalThetaBivector_comm_second`, and F1C `originalThetaBivector_comm_third`. It does not rederive CAR or change the successful F1A/B/C code. Independent consumer: `lean/diagnostics/BFSSF1DOriginalThetaBivectorIndependentAudit.lean` (blob `ecdeb50a6f5655042a4261c64795f2621a5da44e`). The source and consumer were added by [commit ec8b34c](https://github.com/etblink/math/commit/ec8b34c5662ee2f5a54af973289c2ebbd6672ae9).
+
+The dedicated strict workflow `.github/workflows/bfss-unified-f1d-original-theta-all-labels-strict.yml` (commit [9f81d87](https://github.com/etblink/math/commit/9f81d874152d07d39acf964aa2ee6a9a3e7c2bf6)) checks exact source and consumer hashes, unchanged accepted F1A/F1B/F1C blobs, Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, independently compiled original-label statements, source warnings, and axiom whitelist. [Run #42553032429](https://github.com/etblink/math/actions/runs/42553032429) is its initial exact-gate attempt.
+
+**At authorship: F1D UNQUALIFIED pending strict run.** It is only an exhaustive elementary-plane identity, **not** a declared `so(48)` LieHom, skew-matrix sum implementation, continuous Spin(9) Fock action, gauge covariance, physical closed Hamiltonian equality, or spectral result. Next exploration should separately test the sign/factor of the `1/2 ∑ A_{pq}θ_p θ_q` implementer and its relation to the original paired 48-label matrix action.
