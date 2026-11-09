@@ -1,0 +1,125 @@
+name: BFSS unified F1B original Majorana bivector skew strict gate
+
+on:
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - .github/workflows/bfss-unified-f1b-original-theta-bivector-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean
+      - lean/diagnostics/BFSSF1BOriginalThetaBivectorIndependentAudit.lean
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-unified-f1b-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-majorana-bivector-skew:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - name: Checkout exact original-Fock proof commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify F1B source, predecessor and toolchain pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-unified-f1b"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-unified-f1b/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean lean/diagnostics/BFSSF1BOriginalThetaBivectorIndependentAudit.lean | tee "$RUNNER_TEMP/bfss-unified-f1b/sha256.txt"
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip() == "leanprover/lean4:v4.34.1"
+          packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in packages if p["name"]=="mathlib") == "d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70",
+            "lean/diagnostics/BFSSF1BOriginalThetaBivectorIndependentAudit.lean":"8b00d5e12cdba0fe0fd2327606ec9ba86425bf35",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean":"1b91182135d53026ae0ece8f2f85da52ccbc6f58",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean":"93d7ae00d4ee21ce59ab137c349590e2c496ff38",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30",
+          }
+          for name,expected in pins.items():
+            actual=subprocess.check_output(["git","hash-object","--no-filters",name],text=True).strip()
+            assert actual == expected, (name,actual,expected)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSF1BOriginalThetaBivectorIndependentAudit.lean").read_text()
+          assert [x for x in source.splitlines() if x.startswith("import ")] == [
+            "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1AOriginalThetaBivectorCommutator"
+          ]
+          assert [x for x in consumer.splitlines() if x.startswith("import ")] == [
+            "import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1BOriginalThetaBivectorSkewAdjoint"
+          ]
+          assert "theorem originalThetaBivector_skewAdjoint" in source
+          assert "#print axioms originalThetaBivector_skewAdjoint" in source
+          print("F1B_ORIGINAL_SOURCE_AND_PINNED_F1A_CAR_ANCESTRY_PASS")
+          PY
+
+      - name: Prepare pinned Lean Mathlib environment
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-unified-f1b/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Compile original F1B source and independent consumer with strict axiom audit
+        shell: bash
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-unified-f1b"
+          timeout 3450s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1BOriginalThetaBivectorSkewAdjoint 2>&1 | tee "$evidence/source-build.log"
+          timeout 450s lake env lean OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean diagnostics/BFSSF1BOriginalThetaBivectorIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-unified-f1b"
+          qualified="FCP.BFSSF1BOriginalThetaBivector.originalThetaBivector_skewAdjoint"
+          allowed={"propext","Classical.choice","Quot.sound"}
+          package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          def check(log,name):
+            for token in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+              assert token not in log,(name,token)
+            warnings=[line for line in log.splitlines() if "warning:" in line]
+            unexpected=[line for line in warnings if not package_warning.fullmatch(line)]
+            assert not unexpected,(name,"unexpected warnings",unexpected[:8])
+            if warnings:
+              print(name,"PACKAGE_WORKTREE_WARNINGS_RECORDED",len(warnings))
+          for name in ["source-axioms.log","independent-consumer.log"]:
+            log=(root/name).read_text()
+            check(log,name)
+            reports=re.findall(r"'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+            found={decl:{x.strip() for x in axioms.split(",") if x.strip()} for decl,axioms in reports}
+            assert qualified in found,(name,reports[-10:])
+            assert found[qualified] <= allowed,(name,found[qualified])
+            print(name,"ORIGINAL_F1B_EXACT_ROOT_AXIOMS_PASS")
+          check((root/"source-build.log").read_text(),"source-build.log")
+          print("F1B_ORIGINAL_THETA_BIVECTOR_SKEW_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Preserve all cold-run source inputs and diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-unified-f1b-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-unified-f1b/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
