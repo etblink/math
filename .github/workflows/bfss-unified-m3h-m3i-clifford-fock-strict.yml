@@ -1,0 +1,133 @@
+name: BFSS unified M3H M3I original Clifford Fock strict gate
+
+on:
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - .github/workflows/bfss-unified-m3h-m3i-clifford-fock-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean
+      - lean/diagnostics/BFSSUnifiedM3H_M3IIndependentAudit.lean
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-unified-m3h-m3i-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-clifford-fock-algebra-equiv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout immutable tested integration commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Verify exact original/ported proof bodies, toolchain, dependency and consumer pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-unified-m3"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-unified-m3/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-unified-m3/toolchain-sha256.txt"
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip() == "leanprover/lean4:v4.34.1"
+          packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in packages if p["name"]=="mathlib") == "d13f23b723b8a846827a245b89c10fc7d3f11612"
+          root=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies")
+          archived=Path("research-sources/fcp/clifford-fock-20261021")
+          required={
+            root/"SU2BFSSPhysicalDomainS1V52M3DOriginalComplexCliffordFullFockImageProbe.lean": "17ec2266d7854643338c1c238b90fb374b5fe139",
+            root/"SU2BFSSPhysicalDomainS1V52M3GOriginalFockContinuousOperatorFinrankProbe.lean": "a2c99c34756eba29472ce0ccd77f85c7db4d05c1",
+            root/"SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean": "f5e6b920565caab50fba62b8822217ae8fba43b3",
+            root/"SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean": "754a5f2a13baea90312f6031eb8fa7963dbdf42b",
+            Path("lean/diagnostics/BFSSUnifiedM3H_M3IIndependentAudit.lean"): "665504e5a6651c5cab9e7b03ddd45e8ad7cfb501",
+            archived/"SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean": "66c99d5aa6697a40a7da542dc0a5b3df7702ee91",
+            archived/"SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean": "300df1d7c886b636f2cfc206ac36f8b97f91d4b4",
+          }
+          for p, sha in required.items():
+            actual=subprocess.check_output(["git","hash-object","--no-filters",str(p)],text=True).strip()
+            assert actual==sha,(str(p),actual,sha)
+          for stem in ("SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe","SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe"):
+            orig=(archived/(stem+".lean")).read_text()
+            port=(root/(stem+".lean")).read_text()
+            assert orig.split("namespace FCP.",1)[1].strip()==port.split("namespace FCP.",1)[1].strip(),stem
+          h=(root/"SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean").read_text()
+          assert "  letI : FiniteDimensional ℂ A :=" in h
+          assert "  let : FiniteDimensional ℂ A :=" not in h
+          print("M3H_M3I_ORIGINAL_BODIES_AND_PINNED_PORTS_PASS")
+          PY
+
+      - name: Reclaim disposable CI runner disk
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-unified-m3/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oE '4\\.34\\.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold compile original-source M3H M3I port and independent consumer
+        shell: bash
+        timeout-minutes: 68
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          module=OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies
+          stemH=SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe
+          stemI=SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe
+          evidence="$RUNNER_TEMP/bfss-unified-m3"
+          timeout 3300s lake build "$module.$stemH" "$module.$stemI" 2>&1 | tee "$evidence/source-build.log"
+          timeout 450s lake env lean "OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/$stemH.lean" 2>&1 | tee "$evidence/m3h-axioms.log"
+          timeout 450s lake env lean "OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/$stemI.lean" 2>&1 | tee "$evidence/m3i-axioms.log"
+          timeout 450s lake env lean "diagnostics/BFSSUnifiedM3H_M3IIndependentAudit.lean" 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"bfss-unified-m3"
+          wanted={
+            "m3h-axioms.log":["FCP.BFSSS1V52M3H.originalComplexCliffordFock_injective"],
+            "m3i-axioms.log":["FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv","FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv_apply"],
+            "independent-consumer.log":["FCP.BFSSS1V52M3H.originalComplexCliffordFock_injective","FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv","FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv_apply"],
+          }
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for name,roots in wanted.items():
+            log=(p/name).read_text()
+            assert not re.search(r"(?m)^.*(?:warning:|error:|sorryAx|Lean\\.ofReduceBool).*?$",log),name
+            reports=re.findall(r"'([^'\\n]+)' (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)",log)
+            found={name: {x.strip() for x in ax.split(",") if x.strip()} for name,ax in reports}
+            for root in roots:
+              assert root in found,(name,root,reports[-12:])
+              assert found[root] <= allowed,(name,root,found[root])
+            print(name, "PERMITTED_AXIOMS_AND_EXACT_ROOTS_PASS", len(roots))
+          build=(p/"source-build.log").read_text()
+          assert "error:" not in build and "sorryAx" not in build
+          print("M3H_M3I_UNIFIED_SOURCE_AND_INDEPENDENT_CONSUMER_STRICT_PASS")
+          PY
+
+      - name: Retain exact inputs and diagnostics regardless of result
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-unified-m3h-m3i-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-unified-m3/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
