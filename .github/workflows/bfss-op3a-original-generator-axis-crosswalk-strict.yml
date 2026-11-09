@@ -1,0 +1,147 @@
+name: BFSS OP3-A1 original Clifford Fock generator-axis strict crosswalk
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean
+      - lean/diagnostics/BFSSOP3AOriginalGeneratorAxisCrosswalkIndependentAudit.lean
+      - .github/workflows/bfss-op3a-original-generator-axis-crosswalk-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-op3a-axis-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-clifford-fock-source-axis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout exact OP3-A1 source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze original BFSS definitions, historical donor, active gamma and independent consumer
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-op3a-axis"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-op3a-axis/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-op3a-axis/toolchain-sha256.txt"
+          python3 - <<'PY'
+          import json, subprocess, re, os
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in packages if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean":"f3a2b41f902a20f6fe237ecce18dd7e869e9c45e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe.lean":"218a419500ca208a2bc26e1528a11b62fa3802f0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockIndexBridgeProbe.lean":"6d732c1acea271b7aba948c95755ac73d2d0fc0a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean":"a9f446ea7986ca796c2f4b222a5ab710d98590cc","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E2OriginalFockMajoranaSourceCliffordAxisNormalizationProbe.lean":"1095d164cb0716ef5c9f80e8e0fdbc4ebd8e19d2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E4OriginalFockRealLinearCliffordGeneratorMapProbe.lean":"d1a6194ac68fef46ca99de45beb46d15ccb32c79","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M2OriginalComplexifiedCliffordFockRepresentationProbe.lean":"a5e2f46797b60f196423086a0d52aa7f1f2a14f2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean":"e5e89f59b7f9193239a8c050901c4e6ec6ed8ea6","lean/diagnostics/BFSSOP3AOriginalGeneratorAxisCrosswalkIndependentAudit.lean":"d68551de5c7d4b5ba18395417a8dc48bd7279d62"}
+          for p,sha in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
+              assert actual==sha,(p,actual,sha)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSOP3AOriginalGeneratorAxisCrosswalkIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainS1V52L9E4OriginalFockRealLinearCliffordGeneratorMapProbe",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48RealLinearGammaProbe"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3AOriginalCliffordFockGeneratorAxisCrosswalk"]
+          roots=["donor_normalized_eq_active_source_axis","donor_real_gamma_eq_active_on_source_axis"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
+              "FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk."+x for x in roots]
+          assert "sourceBlockColorMajorana_eq_G1APairedTheta" in source
+          assert "sourceGammaRealLinear_axis j s A" in source
+          assert "originalFockGammaRealLinear_sourceAxis (j, s) A" in source
+          assert "originalNormalizedFockMajorana" in source
+          assert "sourceNormalizedGamma" in source
+          assert "Real.sqrt 2" in Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean").read_text()
+          assert "Real.sqrt 2" in Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E2OriginalFockMajoranaSourceCliffordAxisNormalizationProbe.lean").read_text()
+          assert "Source48Label" in Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean").read_text()
+          assert "∑" not in source and "∑" not in consumer
+          for text_name,text_body in (("source",source),("consumer",consumer)):
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe|set_option maxRecDepth|set_option maxHeartbeats)\b",text_body),(text_name,"forbidden")
+          print("OP3A_EXACT_G1A_SOURCE_AXIS_NORMALIZATION_PROVENANCE_PASS",len(pins))
+          PY
+
+      - name: Reclaim disposable CI runner disk
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-op3a-axis/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold compile original donor, active gamma, OP3-A1 source and independent consumer
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-op3a-axis"
+          root=OAI.MathematicalPhysics.BFSS.Contrib.Kotler
+          timeout 3600s lake build \
+            "$root.OperatorDependencies.SU2BFSSPhysicalDomainS1V52L9E4OriginalFockRealLinearCliffordGeneratorMapProbe" \
+            "$root.SU2BFSSSource48RealLinearGammaProbe" \
+            "$root.OP3AOriginalCliffordFockGeneratorAxisCrosswalk" 2>&1 | tee "$evidence/cold-source-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSOP3AOriginalGeneratorAxisCrosswalkIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          import re,os,json
+          from pathlib import Path
+          evidence=Path(os.environ["RUNNER_TEMP"])/"bfss-op3a-axis"
+          roots=[
+              "FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_normalized_eq_active_source_axis",
+              "FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_real_gamma_eq_active_on_source_axis"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for filename in ("cold-source-build.log","source-axioms.log","independent-consumer.log"):
+              log=(evidence/filename).read_text()
+              for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+                  assert forbidden not in log,(filename,forbidden)
+              unexpected=[x for x in log.splitlines() if "warning:" in x and not package_warning.fullmatch(x)]
+              assert not unexpected,(filename,"unexpected warnings",unexpected[:12])
+              if filename!="cold-source-build.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [x for x,_ in reports]==roots,(filename,reports)
+                  for declaration,raw in reports:
+                      got={x.strip() for x in raw.split(",") if x.strip()}
+                      assert got<=allowed,(filename,declaration,got)
+                  print(filename,"EXACT_TWO_ROOT_AXIOM_GATE_PASS")
+          receipt={"status":"ORIGINAL_DONOR_ACTIVE_SOURCE_AXIS_ONLY_PASS",
+                   "production_F1F_qualified":False,
+                   "global_Spin9_operator_action_qualified":False,
+                   "M2_M3I_generator_identity_qualified":False,
+                   "roots":roots,
+                   "scope":"Exact original block/color label and sqrt(2) normalized donor-to-active Fock gamma equality, plus real-linear map evaluations on source axes. Full linear-map/M2/M3I/global action are NOT proven."}
+          (evidence/"scope-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True))
+          print("OP3A_ORIGINAL_DONOR_ACTIVE_SOURCE_AXIS_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Retain exact inputs and diagnostics regardless of result
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-op3a-source-axis-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-op3a-axis/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
