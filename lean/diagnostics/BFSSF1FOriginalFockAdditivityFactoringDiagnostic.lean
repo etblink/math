@@ -68,6 +68,24 @@ theorem originalSource48_doubleSum_add
 #print axioms FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalSource48_doubleSum_add
 #eval IO.println "F1F_FACTORING_DOUBLE_SUM_COMPLETE"
 
+/-- A typed name for precisely the existing unscaled original-operator sum. -/
+private noncomputable def originalSource48RawSum
+    (A : Matrix Source48Label Source48Label ℝ) : FockOp :=
+  ∑ p : Source48Label, ∑ q : Source48Label,
+    (A p q) • (majoranaCandidate p * majoranaCandidate q)
+
+private theorem originalSource48RawSum_add
+    (A B : Matrix Source48Label Source48Label ℝ) :
+    originalSource48RawSum (A + B) = originalSource48RawSum A + originalSource48RawSum B :=
+  originalSource48_doubleSum_add A B
+
+private theorem originalSource48RawSum_half_add
+    (A B : Matrix Source48Label Source48Label ℝ) :
+    (1 / 2 : ℝ) • originalSource48RawSum (A + B) =
+      (1 / 2 : ℝ) • originalSource48RawSum A + (1 / 2 : ℝ) • originalSource48RawSum B :=
+  (congrArg (fun T : FockOp => (1 / 2 : ℝ) • T) (originalSource48RawSum_add A B)).trans
+    (originalFock_half_smul_add (originalSource48RawSum A) (originalSource48RawSum B))
+
 /-- Third cut: combine the two separately checked opaque identities at the unchanged limits. -/
 theorem originalSource48_half_doubleSum_add
     (A B : Matrix Source48Label Source48Label ℝ) :
@@ -80,17 +98,10 @@ theorem originalSource48_half_doubleSum_add
   calc
     (1 / 2 : ℝ) • (∑ p : Source48Label, ∑ q : Source48Label,
         ((A + B) p q) • (majoranaCandidate p * majoranaCandidate q)) =
-        (1 / 2 : ℝ) •
-          ((∑ p : Source48Label, ∑ q : Source48Label,
-            (A p q) • (majoranaCandidate p * majoranaCandidate q)) +
-          (∑ p : Source48Label, ∑ q : Source48Label,
-            (B p q) • (majoranaCandidate p * majoranaCandidate q))) :=
-      congrArg (fun T : FockOp => (1 / 2 : ℝ) • T) (originalSource48_doubleSum_add A B)
-    _ = _ := originalFock_half_smul_add
-      (∑ p : Source48Label, ∑ q : Source48Label,
-        (A p q) • (majoranaCandidate p * majoranaCandidate q))
-      (∑ p : Source48Label, ∑ q : Source48Label,
-        (B p q) • (majoranaCandidate p * majoranaCandidate q))
+        (1 / 2 : ℝ) • originalSource48RawSum (A + B) := rfl
+    _ = (1 / 2 : ℝ) • originalSource48RawSum A + (1 / 2 : ℝ) • originalSource48RawSum B :=
+      originalSource48RawSum_half_add A B
+    _ = _ := rfl
 
 #print axioms FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalSource48_half_doubleSum_add
 #eval IO.println "F1F_FACTORING_SCALED_SUM_COMPLETE"
@@ -98,7 +109,11 @@ theorem originalSource48_half_doubleSum_add
 /-- Fourth cut: the literal production formula's folding boundary, still without a LinearMap. -/
 theorem literalOriginalLift_add (A B : Matrix Source48Label Source48Label ℝ) :
     literalOriginalLift (A + B) = literalOriginalLift A + literalOriginalLift B := by
-  exact originalSource48_half_doubleSum_add A B
+  calc
+    literalOriginalLift (A + B) = (1 / 2 : ℝ) • originalSource48RawSum (A + B) := rfl
+    _ = (1 / 2 : ℝ) • originalSource48RawSum A + (1 / 2 : ℝ) • originalSource48RawSum B :=
+      originalSource48RawSum_half_add A B
+    _ = literalOriginalLift A + literalOriginalLift B := rfl
 
 #print axioms FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.literalOriginalLift_add
 #eval IO.println "F1F_FACTORING_LITERAL_LIFT_COMPLETE"
