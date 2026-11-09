@@ -77,7 +77,25 @@ jobs:
         run: |
           set -euo pipefail
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
-          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          # GitHub release downloads can return transient HTTP 504; retry only
+          # the installer, fail closed after four attempts, and retain its log.
+          for attempt in 1 2 3 4; do
+            if (curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh |
+                sh -s -- -y --default-toolchain none) 2>&1 |
+                tee -a "$RUNNER_TEMP/bfss-unified-f1f/elan-bootstrap.log"; then
+              echo "F1F_ELAN_BOOTSTRAP_PASS_ATTEMPT_${attempt}" |
+                tee -a "$RUNNER_TEMP/bfss-unified-f1f/elan-bootstrap.log"
+              break
+            fi
+            echo "F1F_ELAN_BOOTSTRAP_RETRY_${attempt}" |
+              tee -a "$RUNNER_TEMP/bfss-unified-f1f/elan-bootstrap.log"
+            if (( attempt == 4 )); then
+              echo "F1F_ELAN_BOOTSTRAP_FAILED_AFTER_RETRIES" |
+                tee -a "$RUNNER_TEMP/bfss-unified-f1f/elan-bootstrap.log"
+              exit 1
+            fi
+            sleep $((15 * attempt))
+          done
           source "$HOME/.elan/env"
           cd lean
           timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-unified-f1f/mathlib-cache.log"
