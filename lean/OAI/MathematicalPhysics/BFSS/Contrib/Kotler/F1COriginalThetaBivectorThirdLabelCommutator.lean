@@ -69,7 +69,12 @@ theorem originalThetaBivector_comm_third
       _ = -(a * (c * b)) := mul_neg a (c * b)
       _ = -((a * c) * b) := by rw [mul_assoc a c b]
       _ = -((-(c * a)) * b) := by rw [hac]
-      _ = -(-((c * a) * b)) := by rw [neg_mul]
+      _ = -(-((c * a) * b)) := by
+        have hneg_comp :
+            (-(c * a)) * b = -((c * a) * b) := by
+          change (-(c ∘L a)) ∘L b = -((c ∘L a) ∘L b)
+          exact ContinuousLinearMap.neg_comp (c ∘L a) b
+        exact congrArg (fun T : FockOp => -T) hneg_comp
       _ = (c * a) * b := neg_neg _
       _ = c * (a * b) := mul_assoc c a b
   exact sub_eq_zero.mpr hreorder

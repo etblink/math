@@ -93,3 +93,11 @@ Following strict F1B green #42549379198, the next proof is the **third distinct 
 - Dedicated strict CI pins source and original accepted F1A/F1B dependencies, Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, an independent consumer and exact source-axiom check. A green F1B does **not** qualify F1C.
 
 **Status until new CI completes: UNQUALIFIED.** Subsequent source-evaluation/plane Lie-implementer gates must check `1/2` matrix coefficient and orientation rather than extrapolate from one generator or silently replacing `theta` with `sqrt(2)*theta`. Preserve all red diagnostics.
+
+## F1C Gate 1 red — targeted continuous-operator negation repair (2026-11-08 local)
+
+[Strict run #42550997582](https://github.com/etblink/math/actions/runs/42550997582) is **RED** at exact source SHA `0f3768a57a11e2c595da6e64c21de631ec81aebf`, job `128946324460`, after exact source and pinned Lean/Mathlib preflight and successful rebuilds of 8,956 ancestor modules. The single originating Lean error was `F1COriginalThetaBivectorThirdLabelCommutator.lean:72:38`: `rw [neg_mul]` could not match `-(-(c * a) * b) = - -(c * a * b)`. The `sorryAx` line in the failed theorem's axiom printout arose because compilation had failed; it is **not accepted mathematical evidence**. The red's diagnostic artifact is [#13645731077](https://github.com/etblink/math/actions/runs/42550997582/artifacts/13645731077).
+
+**Minimal repair:** Replace only this failed proof line. In the F1C proof, first prove `(-(c * a)) * b = -((c * a) * b)` by changing continuous-linear-map multiplication to `∘L` and applying `ContinuousLinearMap.neg_comp (c ∘L a) b`. Then apply `congrArg (fun T : FockOp => -T)` to establish the original nested-negation equality. This is the source-operator-safe method already used successfully in the accepted F1A original theta bivector commutator theorem. Keep the original theorem, all signs, all labels, F1A/F1B ancestors, independent consumer, Lean/Mathlib pins and workflow contract unchanged; update only the F1C source blob pin in its strict gate.
+
+**Epistemic status:** F1C remains UNQUALIFIED until a new exact-commit strict gate passes; do not count the red source or the prospective repair as a verified theorem.
