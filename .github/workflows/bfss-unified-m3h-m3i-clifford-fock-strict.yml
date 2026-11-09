@@ -113,7 +113,7 @@ jobs:
           # ALL Lean source warnings, all compiler errors and all forbidden
           # axioms still fail closed, including in the full source build.
           package_warning=re.compile(
-            r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\\.lake/packages/[a-zA-Z0-9_-]+' has local changes$"
+            r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$"
           )
           def check_diagnostics(log,name):
             for token in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
@@ -126,7 +126,7 @@ jobs:
           for name,roots in wanted.items():
             log=(p/name).read_text()
             check_diagnostics(log,name)
-            reports=re.findall(r"'([^'\\n]+)' (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)",log)
+            reports=re.findall(r"'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
             found={decl: {x.strip() for x in ax.split(",") if x.strip()} for decl,ax in reports}
             for root in roots:
               assert root in found,(name,root,reports[-12:])
