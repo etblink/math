@@ -38,3 +38,50 @@ No module imported automatically into the active Lean build. No old branch, hist
 Suggested reading order for a new proof task: scientific target memorandum → latest dated acceptance/handoff for that target → red/green causal notes → exact theorem and typed dependencies → actual CI run and axiom/consumer check. A green historical result is source-specific, a red elaboration timeout is not a mathematical disproof, and an analytical source argument is not Lean acceptance.
 
 **FCP source note locations (immutable donor):** `etblink/Foundational-Convergence-Program@beeb331836bb13a92c275f06f61337a6b97c0ada`, `experiments/openai-math-su2-physical-domain/` and `handoffs/`. The corresponding compiled source, consumer and pin should be verified at each noted historical qualified commit before adapting it to this branch.
+
+## Documentation-first family reconstruction: Clifford/Fock, native Hamiltonian, Spin48
+
+**Evidence review, 2026-11-08.** This section draws on later FCP acceptance audits, original handoffs, checked historical Actions runs, and a sampled source/ported-file comparison. It supersedes any earlier *status inference* in this report, without changing the original records. It is an integration strategy, **not** a new Lean qualification.
+
+### A. Original Fock and gauge representations: distinct interfaces
+
+- The original G1A/F2 family provides paired theta operators on the literal `Fermion 2`, preserving delta-one CAR and the real 48-label normalization. G4E and G4H construct the original exterior/occupation Fock SU2 gauge action and source theta covariance; G4J supplies concrete original `GaugeData`.
+- Historical S1P0/S1P1 [strict run #39162832661](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39162832661) qualified the source-real Cl(48) quadratic action and universal-algebra homomorphism, **not** a global Spin48 lift.
+- The original S1V27 [strict run #39329185740](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39329185740) qualified a real 48-matrix equality for a *specific historical SU2 quarter rotation* versus the independently constructed Spin48 rotor's vector conjugation. This does **not** prove equality of Spin48 elements: the double-cover central sign is an explicit unresolved normalization issue. The contemporaneous S1V28 document says a continuous SO48 base-hom gate was then pending. Inspect later acceptance evidence before treating that status as current.
+- FCP S1V52 M3G/M3H original Clifford/Fock finite-dimensional rank/faithfulness results have historical gate leads; M3I on source snapshot `beeb3318` explicitly labels its Clifford-to-Fock algebra equivalence **strict-eligible but UNQUALIFIED** at the snapshot. The port of M3I exists in the integration `OperatorDependencies` tree, but presence is not a substitute for a successful M3I gate. The exact M3I definition/theorem text from `namespace` onward matches its FCP snapshot; only import paths differ.
+- **Missing actual bridge:** identify the independently formulated manuscript's irreducible Clifford module, its uniquely normalized SU2/Spin48 lift and Fock action, and its smooth and physical Hilbert spaces with the source-native `Fermion 2` and `GaugeData`. An SO48 matrix identity, a Clifford algebra universal map, or Fock gauge covariance individually cannot provide the needed global group element/lift and phase.
+
+Useful documents: `audits/OPENAI_MATH_BFSS_SU2_INDEPENDENT_MANUSCRIPT_SPIN48_PHASE_BRIDGE_SOURCE_BOUND_RESEARCH_2026_10_17.md`; `audits/OPENAI_MATH_BFSS_SU2_S1P0_S1P1_UNIVERSAL_CLIFFORD48_ACTION_GATE1_ACCEPTANCE_2026_10_18.md`; `audits/OPENAI_MATH_BFSS_SU2_POST_S1V27_GLOBAL_SPIN48_LIFT_SOURCE_TOPOLOGY_OBLIGATIONS_2026_10_19.md`, all in `etblink/Foundational-Convergence-Program`.
+
+### B. Original source physical Hamiltonian: *completed historical equality chain*
+
+Chronological records make clear that the early AW/AX and AZ handoffs were later **superseded for specific operator obligations** by subsequent source-compiled results:
+
+| Original theorem family | Historical strict run and typed result | Scope |
+| --- | --- | --- |
+| AZ | [#39065429555](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39065429555): core inclusion and *conditional* domain density | The core-norm closure condition was still explicit. |
+| BA | [#39079626713](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39079626713): **unconditional** original physical Hilbert charge domain density, jointly co-compiling original Haar/core equality | The AZ condition is discharged at actual N=2. |
+| BE | [#39088799248](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39088799248): original normalized `(1/16) T†T` self-adjoint Hamiltonian on its natural domain and exact weak-form characterization | Does not yet identify the separately defined D2B28 operator. |
+| BF | [#39092193590](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39092193590): original AY minimal closed restricted charge graph equals source `G.deformedModelGraph 1 0` and paired specialization | Not an equality of the unrestricted `fullClosedGraph`. |
+| BG | [#39093937250](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39093937250): original AY native physical 16-charge `LinearPMap` equals historical D2B17, **graph and domain included** | Does not alone assert adjoint or Hamiltonian equality. |
+| BH | [#39096180117](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39096180117): actual original/native adjoints, natural `T†T`, normalized self-adjoint Hamiltonian and historical D2B28 paired Hamiltonian **equal on their full operator domains** | Still source-native; independent manuscript representation and spectral statements remain separate. |
+
+Historical green statuses above were also checked using actual GitHub run resources at the noted exact source commits; accepted axioms in records are subsets of `propext`, `Classical.choice`, `Quot.sound`. This audit does **not** rerun those jobs or reproduce the archived build artifacts.
+
+**Copy decision:** BA, BE, BF, BG and BH already exist in `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/` in the integration tree. **Do not copy or recreate them again.** They were upstream-ported and therefore have different Git blobs from the original FCP source. The sampled BG theorem body from `namespace` onward matches source exactly; BH differs additionally by a local `letI : CompleteSpace G.physicalSpace` → `let : CompleteSpace G.physicalSpace` line. That instance-elaboration change demands new Lean qualification rather than treating the old green BH gate as an unchanged certificate. The remaining ported modules must likewise be checked individually or by a reproducible semantic/typed diff and independent consumer, not assumed identical.
+
+### C. Kinetic/combined symmetry versus the complete original sixteen-charge column
+
+The chronological S3L documents qualify the *original kinetic* free-spinor covariance at [#38164568692](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38164568692), source commit `d9310e7d18098ed31533652173a0cf050f03af92`. The **weighted cubic** operator-response reindex/regroup from K2D3 to K6C remained a separately recorded bottleneck in its handoff, with the failed K2C tactic repetitions an explicit negative research result. The later conventional group-lift/covariance analysis is marked **not Lean certified**. None permits inferring source closed-domain covariance or a spectrum/mass-gap theorem without additional work.
+
+Historical S3L5J9 and S1V27 do **not** occur under their original filenames in the two integrated Kotler Lean directories at this checkpoint. This is a *filename observation*, **not** proof that equivalent results do not exist elsewhere under another declaration. Before importing them, search the current formal statements and the FCP cross-repository topic index.
+
+### D. Most economical next research actions
+
+1. **Requalify the already-present BF–BH and related operator closure as needed** with the current pinned Lean/Mathlib source and an independent consumer: test *actual* `let`/instance differences before advertising the unified branch as accepted.
+2. **Focus original Spin/Fock bridge work on real missing interfaces**, not on regenerating the existing CAR, source gauge action, or native Hamiltonian. Use the F1A historical strict gate and S3F source proof shapes to target F1B skewness and the full 48-label infinitesimal action with correct central signs.
+3. **Audit prior S1V27 and later source SO48/topological-lift work** before any copy. Preserve the distinction between matrix equality, Spin48 element equality, a continuous group lift, and phase-normalized action on the original Fock space.
+4. **Treat S3L kinetic and cubic sectors separately** and reuse their accepted source coefficient/transport theorem shapes; do not repeatedly elaborate the known K2C monolithic concrete expressions.
+5. **Only after** the literal source Spin/Fock/action and original sixteen-charge covariance have been demonstrated, use the already-established BH native Hamiltonian identity to transport the symmetry through the exact closed form, and only then pursue highest-weight or spectral conclusions.
+
+**Conclusion:** The major native physical-operator identity is not missing. The genuinely risky boundary is source-to-independent Clifford/Spin implementation and the exact closed-form symmetry connection. Prior notes let us distinguish these, saving substantial duplicated proof work.
