@@ -129,6 +129,12 @@ Use this exact **gate decision record** after every cold run:
 
 **Latest active research direction (2026-11-09):** The [pinned Mathlib and original BFSS OP3-C direct Clifford lift investigation](BFSS_OP3C_DIRECT_CLIFFORD_LIFT_INTERFACE_INVESTIGATION_2026_11_09.md) has completed a **read-only API audit**. It identifies direct `CliffordAlgebra.lift` applied to `(CliffordAlgebra.ι source48Quadratic).comp (R_g.mulVecLin)` as the preferred next source-exact experiment. The needed Clifford square condition follows from the already-qualified OP3-B1 quadratic preservation; the original L9E5C1 real Fock Clifford lift is a concrete internal precedent. The weaker `QuadraticMap.Isometry` → `CliffordAlgebra.map` remains a secondary route; the twice-red `IsometryEquiv` wrapper remains **HOLD**. OP3-C universal lift, its group law/inverse, complexification, original operator star/continuity and spectral claims remain **UNQUALIFIED**. The R0/R1 instructions below are **historical baseline**, superseded operationally by this updated checkpoint. No new Lean source or workflow was submitted during the research audit.
 
+## Current OP3-C checkpoint — 2026-11-09: OP3-C0 accepted, OP3-C1 candidate
+
+[OP3-C0 run #42685719690](https://github.com/etblink/math/actions/runs/42685719690) at commit `e45fc7e4f8e917682310628a2da1f5f877eb9475` **passed** its exact source/consumer cold build and eight permitted-axiom reports for four roots. The genuinely original source-48 Clifford generator under the qualified F10R Spin(9) paired-label matrix action obeys `f_g(v)²=source48Quadratic(v)·1`. Its original linear generator map and evaluation are independently qualified, avoiding the twice-red OP3-B2 `IsometryEquiv` wrapper. This is not an `AlgHom` or group action.
+
+**Operational next gate:** [OP3-C1 direct source real Clifford universal lift](BFSS_OP3C1_ORIGINAL_REAL_CLIFFORD_UNIVERSAL_LIFT_GATE_2026_11_09.md) via pinned `CliffordAlgebra.lift` and the accepted OP3-C0 square, with exact generator and original matrix covariance and an independent strict consumer. If qualified, next prove identity and same-order composition, then inverse, then real/complex Clifford and source M3I Fock transport. The original star, center, continuity, gauge-physical and spectral obligations remain open. This checkpoint supersedes the historical R0→R1 implementation instructions below; no already-qualified math is reopened.
+
 ## 8. Immediate execution order and handoff contract
 
 **Next bounded task: R0 → R1 / OP3-A generator-axis crosswalk.**
