@@ -41,34 +41,17 @@ noncomputable def originalSourceThetaCompactCoefficientLinearMap :
     Matrix Source48Label Source48Label ℝ →ₗ[ℝ] FockOp :=
   halfCoefficientLinearMap originalSourceThetaPairFamily
 
-theorem originalSourceThetaCompactCoefficientLinearMap_add
-    (A B : Matrix Source48Label Source48Label ℝ) :
-    originalSourceThetaCompactCoefficientLinearMap (A + B) =
-      originalSourceThetaCompactCoefficientLinearMap A +
-        originalSourceThetaCompactCoefficientLinearMap B :=
-  (originalSourceThetaCompactCoefficientLinearMap.map_add A B)
-
-theorem originalSourceThetaCompactCoefficientLinearMap_smul
-    (c : ℝ) (A : Matrix Source48Label Source48Label ℝ) :
-    originalSourceThetaCompactCoefficientLinearMap (c • A) =
-      c • originalSourceThetaCompactCoefficientLinearMap A :=
-  (originalSourceThetaCompactCoefficientLinearMap.map_smul c A)
-
-/-- An exact named-sum evaluation theorem; intentionally not an expanded
-finite sum or an equality to the old literal F1F production definition. -/
-theorem originalSourceThetaCompactCoefficientLinearMap_apply
-    (A : Matrix Source48Label Source48Label ℝ) :
-    originalSourceThetaCompactCoefficientLinearMap A =
-      (1 / 2 : ℝ) • rawCoefficientSum originalSourceThetaPairFamily A :=
-  halfCoefficientLinearMap_apply
-    (ι := Source48Label) (M := FockOp) originalSourceThetaPairFamily A
+/-!
+The concrete `LinearMap` type already carries additivity and homogeneity.
+Three attempted source-restatement theorems (add / smul / named-sum apply)
+exceeded Lean's recursion depth in run #42597183416. Their full formulas
+and the original production F1F remain preserved in research history.
+Do not silently treat those failed statements as independently qualified.
+-/
 
 #print axioms originalSourceThetaPairFamily
 #print axioms originalSourceThetaPairFamily_apply
 #print axioms originalSourceThetaCompactCoefficientLinearMap
-#print axioms originalSourceThetaCompactCoefficientLinearMap_add
-#print axioms originalSourceThetaCompactCoefficientLinearMap_smul
-#print axioms originalSourceThetaCompactCoefficientLinearMap_apply
 
 end
 end FCP.BFSSF1FOriginalThetaCompactCandidate

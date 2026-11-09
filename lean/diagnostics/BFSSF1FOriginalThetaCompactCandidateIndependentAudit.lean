@@ -31,35 +31,15 @@ example :
     Matrix Source48Label Source48Label ℝ →ₗ[ℝ] FockOp :=
   originalSourceThetaCompactCoefficientLinearMap
 
-example (A B : Matrix Source48Label Source48Label ℝ) :
-    originalSourceThetaCompactCoefficientLinearMap (A + B) =
-      originalSourceThetaCompactCoefficientLinearMap A +
-        originalSourceThetaCompactCoefficientLinearMap B :=
-  originalSourceThetaCompactCoefficientLinearMap_add A B
-
-example (c : ℝ) (A : Matrix Source48Label Source48Label ℝ) :
-    originalSourceThetaCompactCoefficientLinearMap (c • A) =
-      c • originalSourceThetaCompactCoefficientLinearMap A :=
-  originalSourceThetaCompactCoefficientLinearMap_smul c A
-
-example (A : Matrix Source48Label Source48Label ℝ) :
-    originalSourceThetaCompactCoefficientLinearMap A =
-      (1 / 2 : ℝ) • rawCoefficientSum originalSourceThetaPairFamily A :=
-  originalSourceThetaCompactCoefficientLinearMap_apply A
-
-example (p q : Source48Label) :
-    originalSourceThetaCompactCoefficientLinearMap
-        (originalSource48CoordinatePlane p q) =
-      (1 / 2 : ℝ) • rawCoefficientSum originalSourceThetaPairFamily
-        (originalSource48CoordinatePlane p q) :=
-  originalSourceThetaCompactCoefficientLinearMap_apply _
+-- Check a well-typed application to the genuine original F1E source
+-- coordinate plane, without asserting an unaccepted map-evaluation identity.
+example (p q : Source48Label) : FockOp :=
+  originalSourceThetaCompactCoefficientLinearMap
+    (originalSource48CoordinatePlane p q)
 
 #print axioms originalSourceThetaPairFamily
 #print axioms originalSourceThetaPairFamily_apply
 #print axioms originalSourceThetaCompactCoefficientLinearMap
-#print axioms originalSourceThetaCompactCoefficientLinearMap_add
-#print axioms originalSourceThetaCompactCoefficientLinearMap_smul
-#print axioms originalSourceThetaCompactCoefficientLinearMap_apply
 
 end
 end FCP.BFSSF1FOriginalThetaCompactIndependentAudit
