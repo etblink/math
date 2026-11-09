@@ -23,6 +23,7 @@ namespace FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk
 noncomputable section
 
 open OAI.BFSSQuantum
+open FCP.BFSSFermionF2
 open FCP.BFSSS1V0
 open FCP.BFSSS1V5
 open FCP.BFSSSource48NormalizedFockGamma
@@ -42,6 +43,9 @@ theorem donor_paired_label_eq_active_source_axis
   simp only [FCP.BFSSSU2GaugeG1A.pairedLabelEquiv,
     FCP.BFSSPairedThetaLabelCrosswalk.pairedLabelEquiv,
     Equiv.coe_fn_mk, Equiv.apply_symm_apply]
+  -- Both historical G1A and active crosswalk definitions use exactly
+  -- finProdFinEquiv for the same original (j, A) color/mode indices.
+  rfl
 
 /-- On the genuine original 8 × 2 × 3 block/color axes, the
 donor normalized Majorana equals the active normalized source gamma.
