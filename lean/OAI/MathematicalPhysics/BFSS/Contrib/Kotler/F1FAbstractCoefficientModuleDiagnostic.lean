@@ -85,11 +85,19 @@ theorem halfCoefficientLinearMap_apply
     halfCoefficientLinearMap T A =
       (1 / 2 : ℝ) • rawCoefficientSum T A := rfl
 
+/-- The fully expanded finite-sum interface is proved before specialization. -/
+theorem halfCoefficientLinearMap_apply_expanded
+    (T : ι → ι → M) (A : Matrix ι ι ℝ) :
+    halfCoefficientLinearMap T A =
+      (1 / 2 : ℝ) • ∑ p : ι, ∑ q : ι, (A p q) • T p q :=
+  halfCoefficientLinearMap_apply T A
+
 #print axioms rawCoefficientSum_add
 #print axioms rawCoefficientSum_smul
 #print axioms rawCoefficientLinearMap
 #print axioms halfCoefficientLinearMap
 #print axioms halfCoefficientLinearMap_apply
+#print axioms halfCoefficientLinearMap_apply_expanded
 
 end
 end FCP.BFSSF1FAbstractCoefficient
