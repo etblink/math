@@ -56,8 +56,12 @@ jobs:
           assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
           assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
               "FCP.BFSSOP3C2OriginalRealCliffordGroupLaw."+x for x in roots]
+          # The actual original paired-48 representation is intentionally
+          # encapsulated by the pinned, independently accepted OP3-C1 parent.
+          # Check its source there, not as a required literal in the C2 consumer.
+          parent_source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C1OriginalRealCliffordDirectUniversalLift.lean").read_text()
+          assert "source9SpinOriginalPaired48OrthogonalHom" in parent_source
           for term in ("CliffordAlgebra.hom_ext","LinearMap.ext",
-                       "source9SpinOriginalPaired48OrthogonalHom",
                        "source9Spin_originalRealCliffordAlgHom_generator_covariance",
                        "Matrix.mulVec_mulVec","Subgroup.coe_mul",
                        "spinGroup source9Quadratic","CliffordAlgebra.ι source48Quadratic"):

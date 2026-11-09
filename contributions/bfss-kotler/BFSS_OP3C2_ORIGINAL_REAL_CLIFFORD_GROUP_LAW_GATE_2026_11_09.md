@@ -39,3 +39,9 @@ The dedicated workflow `.github/workflows/bfss-op3c2-original-real-clifford-grou
 - Current status: **candidate until exact source/consumer gate returns terminal success**.
 
 Apply [Interface-First Proof Protocol](BFSS_INTERFACE_FIRST_PROOF_PROTOCOL_AND_OP3A_LESSON_2026_11_09.md) and [flexible roadmap](BFSS_FLEXIBLE_RESEARCH_ROADMAP_AND_GUARDRAILS_2026_11_09.md).
+
+## Run #42693939303 — first RED: false-positive literal source-preflight requirement
+
+[Run #42693939303](https://github.com/etblink/math/actions/runs/42693939303) tested exact commit `1a4b089444ed1373455f98b076ec1aaf868d1d34`, job `129420654491`, conclusion **FAILURE**. Checkout, exact source blob pins and Lean/Mathlib manifest checks passed. The first causal diagnostic was `AssertionError: source9SpinOriginalPaired48OrthogonalHom` in the preflight Python source-symbol check. OP3-C2 intentionally imports qualified OP3-C1 generator covariance and need not restate the lower-level original O(48) group name in its own source or consumer. The source/consumer cold builds, theorem checks and axiom audits **did not run**. This is a preflight-contract false positive, not a Lean compiler error, mathematical counterexample or qualified C2 theorem.
+
+**Single bounded repair:** Keep both C2 theorem bodies, original-carrier consumer, source Git blobs, 15 frozen source/consumer pins, Lean/Mathlib versions, exact two-root contract, and all strict gates unchanged. Check the `source9SpinOriginalPaired48OrthogonalHom` literal in its pinned accepted **OP3-C1 parent source** and remove only the unsupported requirement that C2 repeat it textually. This retains source provenance and recognizes the proven interface. After this workflow-only correction, allow CI to reach cold compilation. No theory, theorem statement, accepted source, or resources are changed. The retry remains **CANDIDATE** until terminal strict SUCCESS.
