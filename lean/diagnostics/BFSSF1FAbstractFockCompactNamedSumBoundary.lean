@@ -26,7 +26,7 @@ open FCP.BFSSF1FAbstractCoefficient
 
 private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2
 
-/-- The same *fully applied* generic term, without restating its result type. -/
+-- The same *fully applied* generic term, without restating its result type.
 #check (fun (T : Source48Label → Source48Label → FockOp)
     (A : Matrix Source48Label Source48Label ℝ) =>
     halfCoefficientLinearMap_apply (ι := Source48Label) (M := FockOp) T A)
