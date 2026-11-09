@@ -44,7 +44,7 @@ representation on the ACTUAL source Fock continuous operator algebra. -/
 theorem originalComplexCliffordFock_injective :
     Function.Injective
       (originalComplexCliffordFockAlgHom : A →ₐ[ℂ] FockOp) := by
-  let : FiniteDimensional ℂ A :=
+  letI : FiniteDimensional ℂ A :=
     originalComplexCliffordPBWBasis.finiteDimensional_of_finite
   have hsurj : Function.Surjective
       ((originalComplexCliffordFockAlgHom :
