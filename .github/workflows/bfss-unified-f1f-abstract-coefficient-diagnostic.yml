@@ -1,0 +1,167 @@
+name: BFSS F1F abstract real-module coefficient bridge diagnostic
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean
+      - lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean
+      - .github/workflows/bfss-unified-f1f-abstract-coefficient-diagnostic.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-unified-f1f-abstract-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  abstract-coefficient-original-fock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - name: Checkout exact pinned proof inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze original F1A-F1F and abstract/Fock boundary diagnostic inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-f1f-abstract"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          python3 - <<'PY'
+          import hashlib,json,os,re,shutil,subprocess
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          pkg=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in pkg if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean":"29a87547569555ec9e38bde6ca8ac4b0771ba2d8","lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean":"5cb010d4dffd45205a10aa37c3ea191b1ebc7fea","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean":"3454f95cae979cc5aea9a8059882fe0ac346d0fc","lean/diagnostics/BFSSF1FOriginalThetaMatrixLinearMapIndependentAudit.lean":"9254f862a145583f34dfaa8e9d452612f61c63d1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1EOriginalThetaCoordinatePlaneMatrixAction.lean":"5c0c95e89ddc09b34d628dde3801e4a12ac98c53","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean":"b8cb1f81839cd3b26a05f949cc26e8bc88ebfbf0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean":"c56d3da8e89aa6cd428854003d94ff843c33af75","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean":"1b91182135d53026ae0ece8f2f85da52ccbc6f58","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean":"93d7ae00d4ee21ce59ab137c349590e2c496ff38"}
+          for path,expected in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==expected,(path,actual,expected)
+          generic=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean").read_text()
+          audit=Path("lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean").read_text()
+          prod=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",generic)==[
+              "Mathlib.Data.Matrix.Basis","Mathlib.Algebra.Module.BigOperators"]
+          assert re.findall(r"(?m)^import (\S+)$",audit)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FAbstractCoefficientModuleDiagnostic",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1EOriginalThetaCoordinatePlaneMatrixAction"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",generic)==["rawCoefficientSum_add","rawCoefficientSum_smul","rawCoefficientLinearMap","halfCoefficientLinearMap","halfCoefficientLinearMap_apply"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",audit)==["originalFockHalfCoefficientMap","originalFockHalfCoefficientMap_add","originalFockHalfCoefficientMap_smul","originalFockHalfCoefficientMap_apply"]
+          for name,code in [("generic",generic),("consumer",audit)]:
+              assert [x for x in code.splitlines() if x.startswith("set_option ")]==["set_option autoImplicit false"],name
+              cleaned=re.sub(r"/-.*?-/", "", code, flags=re.S)
+              cleaned=re.sub(r"--[^\n]*","",cleaned)
+              assert not re.search(r"\b(?:sorry|admit|axiom|unsafe|native_decide|maxRecDepth|maxHeartbeats)\b",cleaned),name
+          assert "private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2" in audit
+          assert "private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2" in prod
+          assert "majoranaCandidate p * majoranaCandidate q" in audit
+          assert "majoranaCandidate p * majoranaCandidate q" in prod
+          assert "(1 / 2 : ℝ) •" in audit and "(1 / 2 : ℝ) •" in prod
+          evidence=Path(os.environ["RUNNER_TEMP"])/"bfss-f1f-abstract"
+          for path in [*pins,"lean/lean-toolchain","lean/lake-manifest.json","lean/lakefile.lean",".github/workflows/bfss-unified-f1f-abstract-coefficient-diagnostic.yml"]:
+              dst=evidence/"inputs"/path
+              dst.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copyfile(path,dst)
+          (evidence/"input-pins.json").write_text(json.dumps({
+              path:{"sha256":hashlib.sha256(Path(path).read_bytes()).hexdigest(),
+                    "blob":subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()}
+              for path in [*pins,"lean/lean-toolchain","lean/lake-manifest.json","lean/lakefile.lean",".github/workflows/bfss-unified-f1f-abstract-coefficient-diagnostic.yml"]
+          },indent=2)+"\n")
+          print("F1F_ABSTRACT_SYMBOLIC_AND_ORIGINAL_FOCK_EXACT_INPUT_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore unchanged pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          for attempt in 1 2 3 4; do
+            if (curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh |
+                sh -s -- -y --default-toolchain none) 2>&1 |
+                tee -a "$RUNNER_TEMP/bfss-f1f-abstract/elan-bootstrap.log"; then
+              echo "ELAN_BOOTSTRAP_PASS_ATTEMPT_${attempt}" | tee -a "$RUNNER_TEMP/bfss-f1f-abstract/elan-bootstrap.log"
+              break
+            fi
+            if (( attempt == 4 )); then
+              echo "ELAN_BOOTSTRAP_FAILED_AFTER_RETRIES" | tee -a "$RUNNER_TEMP/bfss-f1f-abstract/elan-bootstrap.log"
+              exit 1
+            fi
+            sleep $((15 * attempt))
+          done
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Stage A cold compile abstract module with no BFSS imports
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FAbstractCoefficientModuleDiagnostic 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/abstract-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/abstract-axioms.log"
+
+      - name: Stage B cold original F1E ancestry and independent Fock specialization
+        shell: bash
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 3450s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1EOriginalThetaCoordinatePlaneMatrixAction 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/original-ancestry-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/independent-specialization.log"
+
+      - name: Fail closed on all nine exact root axioms and warnings
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-f1f-abstract"
+          expected={"abstract-axioms.log":["FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_add","FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_smul","FCP.BFSSF1FAbstractCoefficient.rawCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply"],"independent-specialization.log":["FCP.BFSSF1FAbstractOriginalFockAudit.originalFockHalfCoefficientMap","FCP.BFSSF1FAbstractOriginalFockAudit.originalFockHalfCoefficientMap_add","FCP.BFSSF1FAbstractOriginalFockAudit.originalFockHalfCoefficientMap_smul","FCP.BFSSF1FAbstractOriginalFockAudit.originalFockHalfCoefficientMap_apply"]}
+          allowed={"propext","Classical.choice","Quot.sound"}
+          package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          roots={}
+          for path,names in expected.items():
+              text=(root/path).read_text()
+              for token in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+                  assert token not in text,(path,token)
+              warnings=[line for line in text.splitlines() if "warning:" in line]
+              assert all(package_warning.fullmatch(line) for line in warnings),(path,warnings[:10])
+              reports=re.findall(r"'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",text)
+              assert [n for n,_ in reports]==names,(path,reports)
+              for name,axioms in reports:
+                  have={x.strip() for x in axioms.split(",") if x.strip()}
+                  assert have<=allowed,(name,have)
+                  roots[name]=sorted(have)
+          for path in ("abstract-build.log","original-ancestry-build.log"):
+              text=(root/path).read_text()
+              assert "error:" not in text and "sorryAx" not in text,path
+          receipt={"status":"DIAGNOSTIC_PASS","tested_commit":(root/"tested-commit.txt").read_text().strip(),
+                   "roots":roots,"production_F1F_qualified":False,
+                   "scope":"Abstract real-module map and exact original-Fock specialization; production F1F/consumer unchanged."}
+          (root/"diagnostic-receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
+          print("F1F_GENERIC_REAL_MODULE_AND_ORIGINAL_FOCK_INDEPENDENT_DIAGNOSTIC_PASS")
+          PY
+
+      - name: Preserve exact source inputs, failures, and component verdict
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-f1f-abstract-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-f1f-abstract/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
