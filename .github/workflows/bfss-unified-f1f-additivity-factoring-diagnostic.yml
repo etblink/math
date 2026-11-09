@@ -1,0 +1,136 @@
+name: BFSS F1F exact original Fock additivity factoring diagnostic
+'on':
+  push:
+    branches:
+    - integration/bfss-unified-research-20261108
+    paths:
+    - lean/diagnostics/BFSSF1FOriginalFockAdditivityFactoringDiagnostic.lean
+    - .github/workflows/bfss-unified-f1f-additivity-factoring-diagnostic.yml
+  workflow_dispatch: null
+permissions:
+  contents: read
+concurrency:
+  group: bfss-unified-f1f-factoring-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  factored-original-fock-additivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+    - name: Checkout exact original Fock proof candidate
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        persist-credentials: false
+    - name: Pin unchanged production, original carrier and literal diagnostic formula
+      shell: bash
+      run: |
+        set -euo pipefail
+        mkdir -p "$RUNNER_TEMP/bfss-unified-f1f-factoring"
+        git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-unified-f1f-factoring/tested-commit.txt"
+        python3 - <<'PY'
+        import hashlib,json,os,re,shutil,subprocess
+        from pathlib import Path
+        assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+        lock=json.loads(Path("lean/lake-manifest.json").read_text())
+        assert next(p["rev"] for p in lock["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+        pins={'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean': '3454f95cae979cc5aea9a8059882fe0ac346d0fc', 'lean/diagnostics/BFSSF1FOriginalThetaMatrixLinearMapIndependentAudit.lean': '9254f862a145583f34dfaa8e9d452612f61c63d1', 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean': '75cdfab1c25e961ba777c9788e77a3e6e4ee6d70', 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean': 'c56d3da8e89aa6cd428854003d94ff843c33af75', 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean': 'b8cb1f81839cd3b26a05f949cc26e8bc88ebfbf0', 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1EOriginalThetaCoordinatePlaneMatrixAction.lean': '5c0c95e89ddc09b34d628dde3801e4a12ac98c53', 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean': '1b91182135d53026ae0ece8f2f85da52ccbc6f58', 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean': '93d7ae00d4ee21ce59ab137c349590e2c496ff38', 'lean/diagnostics/BFSSF1FOriginalFockAdditivityFactoringDiagnostic.lean': 'dde33c67e347444e4d2ecc876ce1e5b60e9c85d1'}
+        for name,expected in pins.items():
+            actual=subprocess.check_output(["git","hash-object","--no-filters",name],text=True).strip()
+            assert actual==expected,(name,actual,expected)
+        source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean").read_text()
+        diag=Path('lean/diagnostics/BFSSF1FOriginalFockAdditivityFactoringDiagnostic.lean').read_text()
+        def formula(text,name):
+            return re.sub(r"\s+"," ",text.split("def "+name,1)[1].split("\n\n",1)[0]).strip()
+        assert formula(source,"originalThetaCoefficientFiniteLift")==formula(diag,"literalOriginalLift")
+        carrier="private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2"
+        assert carrier in source and carrier in diag
+        assert re.findall(r"(?m)^import (\S+)$",diag)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1EOriginalThetaCoordinatePlaneMatrixAction",
+            "Mathlib.Algebra.Module.BigOperators"]
+        code=re.sub(r"/\-.*?\-/","",diag,flags=re.S)
+        code=re.sub(r"--[^\n]*","",code)
+        assert not re.search(r"\b(?:sorry|admit|axiom|native_decide|unsafe|maxRecDepth|maxHeartbeats)\b",code)
+        assert re.findall(r"(?m)^set_option (\S+) (\S+)$",code)==[("autoImplicit","false")]
+        assert re.findall(r"(?m)^#print axioms (\S+)$",diag)==['FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalFock_half_smul_add', 'FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalSource48_doubleSum_add', 'FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalSource48_half_doubleSum_add', 'FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.literalOriginalLift_add']
+        assert len(re.findall(r"(?m)^theorem ",diag))==4
+        out=Path(os.environ["RUNNER_TEMP"])/"bfss-unified-f1f-factoring"
+        entries=list(pins)+["lean/lean-toolchain","lean/lake-manifest.json","lean/lakefile.lean",'.github/workflows/bfss-unified-f1f-additivity-factoring-diagnostic.yml']
+        records={}
+        for name in entries:
+            data=Path(name).read_bytes();dest=out/"inputs"/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(name,dest)
+            records[name]={"sha256":hashlib.sha256(data).hexdigest(),"blob":subprocess.check_output(["git","hash-object","--no-filters",name],text=True).strip()}
+        (out/"input-pins.json").write_text(json.dumps(records,indent=2)+"\n")
+        print("F1F_FACTORING_EXACT_CARRIER_FORMULA_AND_FROZEN_SOURCE_PREFLIGHT_PASS")
+        PY
+    - name: Prepare unchanged pinned Lean Mathlib environment
+      shell: bash
+      timeout-minutes: 40
+      run: |
+        set -euo pipefail
+        sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+        # GitHub release downloads can return transient HTTP 504; retry only
+        # the installer, fail closed after four attempts, and retain its log.
+        for attempt in 1 2 3 4; do
+          if (curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh |
+              sh -s -- -y --default-toolchain none) 2>&1 |
+              tee -a "$RUNNER_TEMP/bfss-unified-f1f-factoring/elan-bootstrap.log"; then
+            echo "F1F_ELAN_BOOTSTRAP_PASS_ATTEMPT_${attempt}" |
+              tee -a "$RUNNER_TEMP/bfss-unified-f1f-factoring/elan-bootstrap.log"
+            break
+          fi
+          echo "F1F_ELAN_BOOTSTRAP_RETRY_${attempt}" |
+            tee -a "$RUNNER_TEMP/bfss-unified-f1f-factoring/elan-bootstrap.log"
+          if (( attempt == 4 )); then
+            echo "F1F_ELAN_BOOTSTRAP_FAILED_AFTER_RETRIES" |
+              tee -a "$RUNNER_TEMP/bfss-unified-f1f-factoring/elan-bootstrap.log"
+            exit 1
+          fi
+          sleep $((15 * attempt))
+        done
+        source "$HOME/.elan/env"
+        cd lean
+        timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-unified-f1f-factoring/mathlib-cache.log"
+        lake env lean --version | tee "$RUNNER_TEMP/bfss-unified-f1f-factoring/lean-version.txt"
+        test "$(grep -oF '4.34.1' "$RUNNER_TEMP/bfss-unified-f1f-factoring/lean-version.txt")" = 4.34.1
+        test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+    - name: Cold rebuild accepted F1E ancestry then strict four-stage probe
+      shell: bash
+      timeout-minutes: 65
+      run: |
+        set -euo pipefail
+        source "$HOME/.elan/env"
+        cd lean
+        evidence="$RUNNER_TEMP/bfss-unified-f1f-factoring"
+        timeout 3450s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1EOriginalThetaCoordinatePlaneMatrixAction 2>&1 | tee "$evidence/ancestor-build.log"
+        timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSF1FOriginalFockAdditivityFactoringDiagnostic.lean 2>&1 | tee "$evidence/diagnostic.log"
+        python3 - <<'PY'
+        import json,os,re
+        from pathlib import Path
+        r=Path(os.environ["RUNNER_TEMP"])/"bfss-unified-f1f-factoring"
+        roots=['FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalFock_half_smul_add', 'FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalSource48_doubleSum_add', 'FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.originalSource48_half_doubleSum_add', 'FCP.BFSSF1FOriginalFockAdditivityFactoringDiagnostic.literalOriginalLift_add']
+        allowed={"propext","Classical.choice","Quot.sound"}
+        text=(r/"diagnostic.log").read_text()
+        for token in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+            assert token not in text,token
+        package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+        for line in text.splitlines():
+            assert "warning:" not in line or package_warning.fullmatch(line),line
+        reports=re.findall(r"'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",text)
+        assert [name for name,_ in reports]==roots,reports
+        found={name:sorted(a.strip() for a in axioms.split(",") if a.strip()) for name,axioms in reports}
+        assert all(set(a)<=allowed for a in found.values()),found
+        markers=["F1F_FACTORING_SCALAR_COMPLETE","F1F_FACTORING_DOUBLE_SUM_COMPLETE","F1F_FACTORING_SCALED_SUM_COMPLETE","F1F_FACTORING_LITERAL_LIFT_COMPLETE","F1F_FACTORED_ORIGINAL_FOCK_ADDITIVITY_DIAGNOSTIC_COMPLETE"]
+        assert all(text.splitlines().count(m)==1 for m in markers)
+        receipt={"status":"DIAGNOSTIC_PASS","tested_sha":(r/"tested-commit.txt").read_text().strip(),"roots":found,"markers":markers,"production_F1F_qualified":False,"scope":"Four exact-original-Fock additivity component proofs; no production LinearMap or independent consumer qualification."}
+        (r/"diagnostic-receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
+        print("F1F_ORIGINAL_FOCK_FACTORING_DIAGNOSTIC_STRICT_PASS")
+        PY
+    - name: Retain diagnostic inputs, compiler output and component verdict
+      if: always()
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      with:
+        name: bfss-unified-f1f-factoring-${{ github.sha }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/bfss-unified-f1f-factoring/
+        if-no-files-found: error
+        include-hidden-files: true
+        retention-days: 14
