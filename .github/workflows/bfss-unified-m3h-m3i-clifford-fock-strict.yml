@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: bfss-unified-m3h-m3i-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   original-clifford-fock-algebra-equiv:
@@ -80,7 +80,7 @@ jobs:
           source "$HOME/.elan/env"
           cd lean
           timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-unified-m3/mathlib-cache.log"
-          test "$(lake env lean --version | grep -oE '4\\.34\\.1')" = 4.34.1
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
           test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
 
       - name: Cold compile original-source M3H M3I port and independent consumer
@@ -110,8 +110,8 @@ jobs:
           allowed={"propext","Classical.choice","Quot.sound"}
           for name,roots in wanted.items():
             log=(p/name).read_text()
-            assert not re.search(r"(?m)^.*(?:warning:|error:|sorryAx|Lean\\.ofReduceBool).*?$",log),name
-            reports=re.findall(r"'([^'\\n]+)' (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)",log)
+            assert not re.search(r"(?m)^.*(?:warning:|error:|sorryAx|Lean[.]ofReduceBool).*?$",log),name
+            reports=re.findall(r"'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
             found={name: {x.strip() for x in ax.split(",") if x.strip()} for name,ax in reports}
             for root in roots:
               assert root in found,(name,root,reports[-12:])
