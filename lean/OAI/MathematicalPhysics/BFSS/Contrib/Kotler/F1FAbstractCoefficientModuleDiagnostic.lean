@@ -58,7 +58,7 @@ theorem rawCoefficientSum_smul
       ((c • A) p q) • T p q = c • ((A p q) • T p q) := by
     calc
       _ = (c * A p q) • T p q := rfl
-      _ = _ := smul_smul c (A p q) (T p q)
+      _ = _ := (smul_smul c (A p q) (T p q)).symm
   have hrow (p : ι) :
       (∑ q : ι, ((c • A) p q) • T p q) =
         c • (∑ q : ι, (A p q) • T p q) :=
