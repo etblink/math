@@ -1,0 +1,152 @@
+name: BFSS OP3-A2 original complex Clifford M3I source-axis strict gate
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean
+      - lean/diagnostics/BFSSOP3A2OriginalComplexCliffordSourceAxisIndependentAudit.lean
+      - .github/workflows/bfss-op3a2-original-complex-clifford-axis-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-op3a2-axis-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  complex-clifford-source-axis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout exact tested OP3-A2 commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze original BFSS and independently accepted OP3-A1 M2 M3I sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-op3a2-axis"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/toolchain-sha256.txt"
+          python3 - <<'PY'
+          import json,subprocess,re
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in packages if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean":"65db1f822b86bfbf400957a0aaa94784d6cb7a39","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean":"f3a2b41f902a20f6fe237ecce18dd7e869e9c45e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe.lean":"218a419500ca208a2bc26e1528a11b62fa3802f0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockIndexBridgeProbe.lean":"6d732c1acea271b7aba948c95755ac73d2d0fc0a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean":"a9f446ea7986ca796c2f4b222a5ab710d98590cc","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E2OriginalFockMajoranaSourceCliffordAxisNormalizationProbe.lean":"1095d164cb0716ef5c9f80e8e0fdbc4ebd8e19d2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E4OriginalFockRealLinearCliffordGeneratorMapProbe.lean":"d1a6194ac68fef46ca99de45beb46d15ccb32c79","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M2OriginalComplexifiedCliffordFockRepresentationProbe.lean":"a5e2f46797b60f196423086a0d52aa7f1f2a14f2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean":"0b0b1f06f332cc9da738375e4511c28361c09f72","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean":"b3f032e8d2bc99901b659c323d982a29a926cd47","lean/diagnostics/BFSSOP3AOriginalGeneratorAxisCrosswalkIndependentAudit.lean":"21d49d36a9bb8f57f6fd33d23f2410d3390e1e5e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean":"a9db27fc28379b35ca85515d733cc0bc43376592","lean/diagnostics/BFSSOP3A2OriginalComplexCliffordSourceAxisIndependentAudit.lean":"cf71ad136eaad6fbbf6150ed07b70078d27ca92f"}
+          for p,sha in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
+              assert actual==sha,(p,actual,sha)
+          root=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/")
+          source=(root/"OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean").read_text()
+          independent=Path("lean/diagnostics/BFSSOP3A2OriginalComplexCliffordSourceAxisIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3AOriginalCliffordFockGeneratorAxisCrosswalk"]
+          assert re.findall(r"(?m)^import (\S+)$",independent)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk"]
+          roots=["originalComplexEquiv_generator_eq_donor",
+                 "originalComplexEquiv_sourceAxis_eq_activeGamma"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",independent)==[
+              "FCP.BFSSOP3A2OriginalComplexCliffordSourceAxis."+x for x in roots]
+          for term in ("originalComplexCliffordFockAlgEquiv_apply",
+                       "originalComplexCliffordFockAlgHom_generator",
+                       "donor_real_gamma_eq_active_on_source_axis",
+                       "sourceGammaRealLinear_axis",
+                       "source48Quadratic.baseChange ℂ",
+                       "sourceBlockColorAxis (j, s) A",
+                       "sourceNormalizedGamma"):
+              assert term in source,term
+          assert "⊗ₜ[ℝ]" in source and "⊗ₜ[ℝ]" in independent
+          assert "originalComplexCliffordFockAlgEquiv" in independent
+          assert "private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2" in independent
+          assert "∑" not in source and "∑" not in independent
+          for filename,body in (("source",source),("independent",independent)):
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe|set_option maxRecDepth|set_option maxHeartbeats)\b",body),(filename,"forbidden")
+          print("OP3A2_EXACT_ORIGINAL_M2_M3I_OP3A1_SOURCE_PINS_PASS",len(pins))
+          PY
+
+      - name: Reclaim disposable CI runner disk
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-op3a2-axis/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold compile M2 M3I OP3-A1 and OP3-A2 original Clifford source and independent consumer
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-op3a2-axis"
+          root=OAI.MathematicalPhysics.BFSS.Contrib.Kotler
+          timeout 3600s lake build \
+            "$root.OperatorDependencies.SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe" \
+            "$root.OP3AOriginalCliffordFockGeneratorAxisCrosswalk" \
+            "$root.OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk" 2>&1 | tee "$evidence/cold-source-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSOP3A2OriginalComplexCliffordSourceAxisIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          import re,os,json
+          from pathlib import Path
+          evidence=Path(os.environ["RUNNER_TEMP"])/"bfss-op3a2-axis"
+          roots=["FCP.BFSSOP3A2OriginalComplexCliffordSourceAxis.originalComplexEquiv_generator_eq_donor",
+                 "FCP.BFSSOP3A2OriginalComplexCliffordSourceAxis.originalComplexEquiv_sourceAxis_eq_activeGamma"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for filename in ("cold-source-build.log","source-axioms.log","independent-consumer.log"):
+              log=(evidence/filename).read_text()
+              for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+                  assert forbidden not in log,(filename,forbidden)
+              unexpected=[line for line in log.splitlines() if "warning:" in line and not package_warning.fullmatch(line)]
+              assert not unexpected,(filename,"unexpected warnings",unexpected[:12])
+              if filename!="cold-source-build.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [name for name,_ in reports]==roots,(filename,reports)
+                  for name,raw in reports:
+                      used={x.strip() for x in raw.split(",") if x.strip()}
+                      assert used<=allowed,(filename,name,used)
+                  print(filename,"EXACT_TWO_ROOT_AXIOM_GATE_PASS")
+          receipt={"status":"OP3A2_M2_M3I_ORIGINAL_CLIFFORD_SOURCE_AXIS_ONLY_PASS",
+                   "global_Spin9_operator_action_qualified":False,
+                   "original_physical_spectral_claim_qualified":False,
+                   "full_active_real_gamma_map_identification_qualified":False,
+                   "roots":roots,
+                   "scope":"Exact M3I complex source Clifford generator agrees with donor M2 on original real-source inputs, and on original block-color axes with active sqrt2 Majorana. No star/topology/Spin/gauge/spectrum claim."}
+          (evidence/"scope-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True))
+          print("OP3A2_COMPLEX_CLIFFORD_SOURCE_AXIS_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Retain exact inputs and diagnostics regardless of result
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-op3a2-clifford-axis-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-op3a2-axis/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
