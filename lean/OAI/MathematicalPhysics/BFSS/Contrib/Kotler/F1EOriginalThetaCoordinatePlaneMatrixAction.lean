@@ -65,11 +65,12 @@ theorem originalThetaBivector_comm_coordinatePlane
   · subst r
     have hpp :
         (originalSource48CoordinatePlane p q) p p = (0 : ℝ) := by
-      simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
+      simp [originalSource48CoordinatePlane, Ne.symm hpq]
     have hqp :
         (originalSource48CoordinatePlane p q) q p = (-1 : ℝ) := by
       simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
-    simpa [hpp, hqp, hsmul_zero, hsmul_neg_one]
+    simp only [hpp, hqp, hsmul_zero, hsmul_neg_one, zero_add]
+    simp
   · by_cases hrq : r = q
     · subst r
       have hpqcoeff :
@@ -77,17 +78,19 @@ theorem originalThetaBivector_comm_coordinatePlane
         simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
       have hqq :
           (originalSource48CoordinatePlane p q) q q = (0 : ℝ) := by
-        simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
-      simpa [hpqcoeff, hqq, hsmul_zero, hsmul_one]
+        simp [originalSource48CoordinatePlane, hpq]
+      simp only [hpqcoeff, hqq, hsmul_one, hsmul_zero, add_zero]
+      simp [hrp]
     · have hpr : p ≠ r := Ne.symm hrp
       have hqr : q ≠ r := Ne.symm hrq
       have hprcoeff :
           (originalSource48CoordinatePlane p q) p r = (0 : ℝ) := by
-        simp [originalSource48CoordinatePlane, hrp, hrq, hpr, hqr]
+        simp [originalSource48CoordinatePlane, hpr, hqr]
       have hqrcoeff :
           (originalSource48CoordinatePlane p q) q r = (0 : ℝ) := by
-        simp [originalSource48CoordinatePlane, hrp, hrq, hpr, hqr]
-      simpa [hrp, hrq, hprcoeff, hqrcoeff, hsmul_zero]
+        simp [originalSource48CoordinatePlane, hpr, hqr]
+      simp only [hprcoeff, hqrcoeff, hsmul_zero, zero_add]
+      simp [hrp, hrq]
 
 #print axioms originalSource48CoordinatePlane_transpose
 #print axioms originalThetaBivector_comm_coordinatePlane
