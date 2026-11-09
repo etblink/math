@@ -67,7 +67,7 @@ theorem source9Spin_originalRealCliffordAlgHom_mul
   rw [source9Spin_originalRealCliffordAlgHom_generator_covariance]
   rw [source9Spin_originalRealCliffordAlgHom_generator_covariance]
   rw [map_mul]
-  simp only [Subgroup.coe_mul, Matrix.mulVec_mulVec]
+  simp only [Submonoid.coe_mul, Matrix.mulVec_mulVec]
 
 #print axioms source9Spin_originalRealCliffordAlgHom_one
 #print axioms source9Spin_originalRealCliffordAlgHom_mul
