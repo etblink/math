@@ -1,0 +1,150 @@
+name: BFSS OP3-B1 original source48 quadratic-preserving Spin9 strict gate
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3BOriginalSource48QuadraticIsometryBridge.lean
+      - lean/diagnostics/BFSSOP3BOriginalSource48QuadraticIndependentAudit.lean
+      - .github/workflows/bfss-op3b-original-source48-quadratic-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-op3b-quadratic-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-source48-quadratic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout exact original OP3-B1 candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze source48 quadratic original F10R paired action and two independent roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-op3b-quadratic"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/toolchain-sha256.txt"
+          python3 - <<'PY'
+          import json,re,subprocess
+          from pathlib import Path
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in packages if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean":"65db1f822b86bfbf400957a0aaa94784d6cb7a39","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48QuadraticUnitAxesProbe.lean":"de7cf67d2945718a1da98d05a14e1b0d7edcff4a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean":"9dc5713dfea7c40d8c9f58088392e144c3c28517","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10QSourceSpinOrientationDetOneProbe.lean":"948712b83647829ab5902dfa88979f44747af1f3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean":"75a679f2a1435d747e219617feea266b4508c53d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean":"a9db27fc28379b35ca85515d733cc0bc43376592","lean/diagnostics/BFSSOP3A2OriginalComplexCliffordSourceAxisIndependentAudit.lean":"cf71ad136eaad6fbbf6150ed07b70078d27ca92f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3BOriginalSource48QuadraticIsometryBridge.lean":"e6a1c6fe0db9292dada850fae64bdd431a0f464d","lean/diagnostics/BFSSOP3BOriginalSource48QuadraticIndependentAudit.lean":"714be0a0aeec834bd233d2c66ae362ba68ca5cec"}
+          for path,sha in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==sha,(path,actual,sha)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3BOriginalSource48QuadraticIsometryBridge.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSOP3BOriginalSource48QuadraticIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48QuadraticUnitAxesProbe",
+              "Mathlib.LinearAlgebra.UnitaryGroup"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3BOriginalSource48QuadraticIsometryBridge"]
+          roots=["orthogonal_matrix_preserves_source48Quadratic",
+                 "source9SpinOriginalPaired48_preserves_source48Quadratic"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
+              "FCP.BFSSOP3BOriginalSource48Quadratic."+n for n in roots]
+          for token in ("source48Quadratic_eq_dot","Matrix.mem_orthogonalGroup_iff'",
+                        "Matrix.dotProduct_transpose_mulVec","Matrix.mulVec_mulVec",
+                        "Matrix.one_mulVec","source9SpinOriginalPaired48SpecialOrthogonalHom",
+                        "source9SpinOriginalPaired48OrthogonalHom",
+                        "source9SpinOriginalPaired48SpecialOrthogonalHom_apply",
+                        "Source48Vector","Source48Label"):
+              assert token in source,token
+          assert "source48Quadratic (A.mulVec v) = source48Quadratic v" in source
+          assert "spinGroup source9Quadratic" in consumer
+          for name,body in (("source",source),("consumer",consumer)):
+              assert "∑" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe|set_option maxRecDepth|set_option maxHeartbeats)\b",body),(name,"forbidden")
+          print("OP3B_ORIGINAL_SOURCE48_QUADRATIC_PINS_PASS",len(pins))
+          PY
+
+      - name: Reclaim disposable runner disk
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+
+      - name: Restore exactly pinned Lean Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-op3b-quadratic/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold build original F10R source and qualified quadratic donor and check independent OP3-B1
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-op3b-quadratic"
+          root=OAI.MathematicalPhysics.BFSS.Contrib.Kotler
+          timeout 3600s lake build \
+            "$root.SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe" \
+            "$root.SU2BFSSSource48QuadraticUnitAxesProbe" \
+            "$root.OP3BOriginalSource48QuadraticIsometryBridge" 2>&1 | tee "$evidence/cold-source-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3BOriginalSource48QuadraticIsometryBridge.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSOP3BOriginalSource48QuadraticIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          import os,re,json
+          from pathlib import Path
+          evidence=Path(os.environ["RUNNER_TEMP"])/"bfss-op3b-quadratic"
+          roots=["FCP.BFSSOP3BOriginalSource48Quadratic.orthogonal_matrix_preserves_source48Quadratic",
+                 "FCP.BFSSOP3BOriginalSource48Quadratic.source9SpinOriginalPaired48_preserves_source48Quadratic"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          allowed_package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name in ("cold-source-build.log","source-axioms.log","independent-consumer.log"):
+              log=(evidence/name).read_text()
+              for bad in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+                  assert bad not in log,(name,bad)
+              warnings=[x for x in log.splitlines() if "warning:" in x and not allowed_package_warning.fullmatch(x)]
+              assert not warnings,(name,"unexpected warnings",warnings[:12])
+              if name != "cold-source-build.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [n for n,_ in reports]==roots,(name,reports)
+                  for n,raw in reports:
+                      actual={x.strip() for x in raw.split(",") if x.strip()}
+                      assert actual<=allowed,(name,n,actual)
+                  print(name,"OP3B_EXACT_TWO_ROOT_AXIOM_GATE_PASS")
+          receipt={"status":"OP3B_ORIGINAL_SOURCE48_QUADRATIC_PRESERVATION_ONLY_PASS",
+                   "accepted_roots":roots,
+                   "operator_algebra_Spin9_action_qualified":False,
+                   "Clifford_automorphism_qualified":False,
+                   "star_continuity_gauge_and_spectrum_qualified":False,
+                   "scope":"Exact original source48Quadratic dot-product isometry on all vectors under genuine original G1A paired-label Spin9 SO48 matrix image. Does not construct any star-preserving group action on the original Fock operator algebra."}
+          (evidence/"scope-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True))
+          print("OP3B_ORIGINAL_PAIRED_SOURCE48_QUADRATIC_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Retain diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-op3b-quadratic-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-op3b-quadratic/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
