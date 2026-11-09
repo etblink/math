@@ -1,0 +1,155 @@
+name: BFSS OP3-C2 original real Clifford group law strict gate
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C2OriginalRealCliffordGroupLaw.lean
+      - lean/diagnostics/BFSSOP3C2OriginalRealCliffordGroupLawIndependentAudit.lean
+      - .github/workflows/bfss-op3c2-original-real-clifford-group-law-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-op3c2-real-clifford-group-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  real-clifford-group-law:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout exact OP3-C2 source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze original Spin9 Clifford group-law source and two independent roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-op3c2"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/toolchain-sha256.txt"
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re,subprocess
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in pkgs if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean":"65db1f822b86bfbf400957a0aaa94784d6cb7a39","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean":"9dc5713dfea7c40d8c9f58088392e144c3c28517","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean":"75a679f2a1435d747e219617feea266b4508c53d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48QuadraticUnitAxesProbe.lean":"de7cf67d2945718a1da98d05a14e1b0d7edcff4a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3BOriginalSource48QuadraticIsometryBridge.lean":"e6a1c6fe0db9292dada850fae64bdd431a0f464d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C0OriginalRealCliffordGeneratorSquare.lean":"a78dd151dd41726170eed639821460cf0b2882ed","lean/diagnostics/BFSSOP3C0OriginalRealCliffordSquareIndependentAudit.lean":"a7fe68b0fd995d024ba1bf9d66c0c48960ac9ef4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E5C1OriginalFockCliffordAlgebraUniversalLiftProbe.lean":"e41b8980284ead53ec5018587bef23c3cc741b59","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean":"a9db27fc28379b35ca85515d733cc0bc43376592","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C2OriginalRealCliffordGroupLaw.lean":"fa7bb94eac4d5f8107fca17532f7e1cb34829ae8","lean/diagnostics/BFSSOP3C2OriginalRealCliffordGroupLawIndependentAudit.lean":"e94a9d396f42a1f7be0e5f708ebf1d78e62f2b61","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C1OriginalRealCliffordDirectUniversalLift.lean":"5d689fc9537a2f7e9890a332421a501baa3c7532","lean/diagnostics/BFSSOP3C1OriginalRealCliffordUniversalLiftIndependentAudit.lean":"355b2accf8d902730b9e0a6d54346c12757d757f"}
+          for path,expected in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==expected,(path,expected,actual)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C2OriginalRealCliffordGroupLaw.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSOP3C2OriginalRealCliffordGroupLawIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3C1OriginalRealCliffordDirectUniversalLift"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3C2OriginalRealCliffordGroupLaw"]
+          roots=["source9Spin_originalRealCliffordAlgHom_one",
+                 "source9Spin_originalRealCliffordAlgHom_mul"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
+              "FCP.BFSSOP3C2OriginalRealCliffordGroupLaw."+x for x in roots]
+          for term in ("CliffordAlgebra.hom_ext","LinearMap.ext",
+                       "source9SpinOriginalPaired48OrthogonalHom",
+                       "source9Spin_originalRealCliffordAlgHom_generator_covariance",
+                       "Matrix.mulVec_mulVec","Subgroup.coe_mul",
+                       "spinGroup source9Quadratic","CliffordAlgebra.ι source48Quadratic"):
+              assert term in source+consumer,term
+          assert "AlgHom.id ℝ RealSourceClifford" in source
+          assert "private abbrev RealSourceClifford :=" in consumer
+          assert "CliffordAlgebra source48Quadratic" in consumer
+          assert "IsometryEquiv" not in source.split("theorem source9Spin_originalRealCliffordAlgHom_one",1)[1]
+          assert "maxRecDepth" not in source and "maxHeartbeats" not in source
+          for name,body in (("source",source),("consumer",consumer)):
+              assert "∑" not in body,(name,"unexpected original 48-mode finite sum")
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe|set_option maxRecDepth|set_option maxHeartbeats)\b",body),(name,"forbidden")
+          print("OP3C2_ORIGINAL_REAL_CLIFFORD_GROUP_LAW_EXACT_PINS_PASS",len(pins))
+          PY
+
+      - name: Reclaim disposable runner disk
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+
+      - name: Restore exactly pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-op3c2/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold compile original OP3-C0, OP3-C1 and OP3-C2 source and independent consumer
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-op3c2"
+          root=OAI.MathematicalPhysics.BFSS.Contrib.Kotler
+          timeout 3600s lake build \
+            "$root.OP3BOriginalSource48QuadraticIsometryBridge" \
+            "$root.OP3C0OriginalRealCliffordGeneratorSquare" \
+            "$root.OP3C1OriginalRealCliffordDirectUniversalLift" \
+            "$root.OP3C2OriginalRealCliffordGroupLaw" 2>&1 | tee "$evidence/cold-source-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C2OriginalRealCliffordGroupLaw.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSOP3C2OriginalRealCliffordGroupLawIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re,json
+          e=Path(os.environ["RUNNER_TEMP"])/"bfss-op3c2"
+          roots=[
+              "FCP.BFSSOP3C2OriginalRealCliffordGroupLaw.source9Spin_originalRealCliffordAlgHom_one",
+              "FCP.BFSSOP3C2OriginalRealCliffordGroupLaw.source9Spin_originalRealCliffordAlgHom_mul"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for fn in ("cold-source-build.log","source-axioms.log","independent-consumer.log"):
+              log=(e/fn).read_text()
+              for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+                  assert forbidden not in log,(fn,forbidden)
+              warnings=[line for line in log.splitlines() if "warning:" in line and not pkg_warning.fullmatch(line)]
+              assert not warnings,(fn,"unexpected warnings",warnings[:12])
+              if fn!="cold-source-build.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [name for name,_ in reports]==roots,(fn,reports)
+                  for name,raw in reports:
+                      actual={x.strip() for x in raw.split(",") if x.strip()}
+                      assert actual<=allowed,(fn,name,actual)
+                  print(fn,"OP3C2_EXACT_TWO_ROOT_AXIOM_GATE_PASS")
+          receipt={"status":"OP3C2_ORIGINAL_REAL_CLIFFORD_GROUP_LAW_ONLY_PASS",
+                   "accepted_roots":roots,
+                   "real_Clifford_AlgHom_constructor":True,
+                   "real_Clifford_group_law_qualified":True,
+                   "original_Clifford_AlgEquiv_qualified":False,
+                   "complexified_Fock_Spin9_action_qualified":False,
+                   "star_center_continuity_gauge_physical_spectral_claims":False,
+                   "OP3B2_IsometryEquiv_qualified":False,
+                   "scope":"Identity and same-order composition of OP3-C1 original real Clifford AlgHom family only. No inverse or AlgEquiv; no complex Fock, star, gauge, topology or spectrum."}
+          (e/"scope-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True))
+          print("OP3C2_ORIGINAL_REAL_CLIFFORD_GROUP_LAW_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Retain diagnostics regardless of outcome
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-op3c2-group-law-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-op3c2/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
