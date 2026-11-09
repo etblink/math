@@ -14,6 +14,7 @@ noncomputable section
 
 open OAI.BFSSQuantum
 open FCP.BFSSS1V0
+open FCP.BFSSPairedSpin9Clifford
 open FCP.BFSSOP3C1OriginalRealCliffordDirectLift
 
 private abbrev RealSourceClifford :=
