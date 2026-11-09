@@ -1,0 +1,176 @@
+name: BFSS OP3-C5B original complex Clifford Spin action strict gate
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5BOriginalComplexCliffordSpinAction.lean
+      - lean/diagnostics/BFSSOP3C5BOriginalComplexCliffordIndependentAudit.lean
+      - .github/workflows/bfss-op3c5b-original-complex-clifford-spin-action-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-op3c5b-complex-clifford-spin-action-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-complex-clifford-spin-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout exact OP3-C5B source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze original complex Clifford Spin action and four independent roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-op3c5b"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/toolchain-sha256.txt"
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re,subprocess
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in pkgs if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean":"65db1f822b86bfbf400957a0aaa94784d6cb7a39","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean":"9dc5713dfea7c40d8c9f58088392e144c3c28517","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean":"75a679f2a1435d747e219617feea266b4508c53d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48QuadraticUnitAxesProbe.lean":"de7cf67d2945718a1da98d05a14e1b0d7edcff4a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3BOriginalSource48QuadraticIsometryBridge.lean":"e6a1c6fe0db9292dada850fae64bdd431a0f464d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C0OriginalRealCliffordGeneratorSquare.lean":"a78dd151dd41726170eed639821460cf0b2882ed","lean/diagnostics/BFSSOP3C0OriginalRealCliffordSquareIndependentAudit.lean":"a7fe68b0fd995d024ba1bf9d66c0c48960ac9ef4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E5C1OriginalFockCliffordAlgebraUniversalLiftProbe.lean":"e41b8980284ead53ec5018587bef23c3cc741b59","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean":"a9db27fc28379b35ca85515d733cc0bc43376592","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C2OriginalRealCliffordGroupLaw.lean":"69267168df2edb54d55c4f5101273a2ac436a72d","lean/diagnostics/BFSSOP3C2OriginalRealCliffordGroupLawIndependentAudit.lean":"39f51ec530fd1b75d676da7d40a3fb070d4668f7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C1OriginalRealCliffordDirectUniversalLift.lean":"5d689fc9537a2f7e9890a332421a501baa3c7532","lean/diagnostics/BFSSOP3C1OriginalRealCliffordUniversalLiftIndependentAudit.lean":"355b2accf8d902730b9e0a6d54346c12757d757f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C3OriginalRealCliffordAlgEquiv.lean":"efe6ec3ca2b4b7203afde3f7f280f6fce97e409d","lean/diagnostics/BFSSOP3C3OriginalRealCliffordIndependentAudit.lean":"8163af16cf5800c00dca9151ba3e992eef32744a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C4OriginalRealCliffordSpinAction.lean":"6d1592a9681718d7a3a48c30168515b7cd0dc3ca","lean/diagnostics/BFSSOP3C4OriginalRealCliffordIndependentAudit.lean":"1bec56e0b8d3e0bf4e57902c814ccd53ad0ee69f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5AOriginalComplexCliffordBaseChange.lean":"3a28870674b5ce1b53c4a2854b3101f72442a201","lean/diagnostics/BFSSOP3C5AOriginalComplexCliffordIndependentAudit.lean":"3b535e4901bfa96d6144308d1cac86140c143710","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5BOriginalComplexCliffordSpinAction.lean":"bd0e69e754a8de32ee2face664ae1d71860930ed","lean/diagnostics/BFSSOP3C5BOriginalComplexCliffordIndependentAudit.lean":"bdfd3addde08ffe76a9e2d48a6b56eefc6b07e57"}
+          for path,expected in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==expected,(path,expected,actual)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5BOriginalComplexCliffordSpinAction.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSOP3C5BOriginalComplexCliffordIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3C5AOriginalComplexCliffordBaseChange"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3C5BOriginalComplexCliffordSpinAction"]
+          roots=["source9Spin_originalComplexTensorAutomorphismHom",
+                 "source9Spin_originalComplexCliffordAutomorphismHom",
+                 "source9Spin_originalComplexCliffordAutomorphismHom_apply",
+                 "source9Spin_originalComplexCliffordAutomorphismHom_generator"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
+              "FCP.BFSSOP3C5BOriginalComplexCliffordSpinAction."+x for x in roots]
+          parent_source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5AOriginalComplexCliffordBaseChange.lean").read_text()
+          assert "source9Spin_originalComplexCliffordAlgEquiv_generator" in parent_source
+          for term in ("Algebra.TensorProduct.congr_refl",
+                       "Algebra.TensorProduct.congr_trans",
+                       "AlgEquiv.autCongr",
+                       "AlgEquiv.self_trans_symm",
+                       "source9Spin_originalRealCliffordAutomorphismHom",
+                       "source9Spin_originalComplexCliffordAlgEquiv",
+                       "source9Spin_originalComplexCliffordAlgEquiv_generator",
+                       "spinGroup source9Quadratic", "source48Quadratic.baseChange ℂ",
+                       "Source48Vector","source9SpinOriginalPaired48OrthogonalHom"):
+              assert term in source+consumer,term
+          assert "private abbrev OriginalComplexClifford :=" in consumer
+          assert "private abbrev OriginalComplexTensor :=" in consumer
+          assert "CliffordAlgebra (source48Quadratic.baseChange ℂ)" in consumer
+          assert "open FCP.BFSSPairedSpin9Clifford" in consumer
+          assert "maxRecDepth" not in source and "maxHeartbeats" not in source
+          for name,body in (("source",source),("consumer",consumer)):
+              assert "∑" not in body,(name,"unexpected original 48-mode finite sum")
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe|set_option maxRecDepth|set_option maxHeartbeats)\b",body),(name,"forbidden")
+          print("OP3C5B_ORIGINAL_COMPLEX_CLIFFORD_SPIN_ACTION_EXACT_PINS_PASS",len(pins))
+          PY
+
+      - name: Reclaim disposable runner disk
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+
+      - name: Restore exactly pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-op3c5b/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold compile original OP3-C0 through OP3-C5B source and independent consumer
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-op3c5b"
+          root=OAI.MathematicalPhysics.BFSS.Contrib.Kotler
+          timeout 3600s lake build \
+            "$root.OP3BOriginalSource48QuadraticIsometryBridge" \
+            "$root.OP3C0OriginalRealCliffordGeneratorSquare" \
+            "$root.OP3C1OriginalRealCliffordDirectUniversalLift" \
+            "$root.OP3C2OriginalRealCliffordGroupLaw" \
+            "$root.OP3C3OriginalRealCliffordAlgEquiv" \
+            "$root.OP3C4OriginalRealCliffordSpinAction" \
+            "$root.OP3C5AOriginalComplexCliffordBaseChange" \
+            "$root.OP3C5BOriginalComplexCliffordSpinAction" 2>&1 | tee "$evidence/cold-source-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5BOriginalComplexCliffordSpinAction.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSOP3C5BOriginalComplexCliffordIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re,json
+          e=Path(os.environ["RUNNER_TEMP"])/"bfss-op3c5b"
+          roots=[
+              "FCP.BFSSOP3C5BOriginalComplexCliffordSpinAction.source9Spin_originalComplexTensorAutomorphismHom",
+              "FCP.BFSSOP3C5BOriginalComplexCliffordSpinAction.source9Spin_originalComplexCliffordAutomorphismHom",
+              "FCP.BFSSOP3C5BOriginalComplexCliffordSpinAction.source9Spin_originalComplexCliffordAutomorphismHom_apply",
+              "FCP.BFSSOP3C5BOriginalComplexCliffordSpinAction.source9Spin_originalComplexCliffordAutomorphismHom_generator"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for fn in ("cold-source-build.log","source-axioms.log","independent-consumer.log"):
+              log=(e/fn).read_text()
+              for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+                  assert forbidden not in log,(fn,forbidden)
+              warnings=[line for line in log.splitlines() if "warning:" in line and not pkg_warning.fullmatch(line)]
+              assert not warnings,(fn,"unexpected warnings",warnings[:12])
+              if fn!="cold-source-build.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [name for name,_ in reports]==roots,(fn,reports)
+                  for name,raw in reports:
+                      actual={x.strip() for x in raw.split(",") if x.strip()}
+                      assert actual<=allowed,(fn,name,actual)
+                  print(fn,"OP3C5B_EXACT_FOUR_ROOT_AXIOM_GATE_PASS")
+          receipt={"status":"OP3C5B_ORIGINAL_COMPLEX_CLIFFORD_SPIN_ACTION_ONLY_PASS",
+                   "accepted_roots":roots,
+                   "real_Clifford_AlgHom_constructor":True,
+                   "real_Clifford_group_law_qualified":True,
+                   "original_Clifford_AlgEquiv_qualified":True,
+                   "original_Clifford_inverse_compositions_qualified":True,
+                   "original_Clifford_AlgEquiv_underlying_AlgHom_qualified":True,
+                   "original_Clifford_Spin9_Aut_MonoidHom_qualified":True,
+                   "original_complex_Clifford_pointwise_AlgEquiv_qualified":True,
+                   "original_complex_Clifford_pure_generator_covariance_qualified":True,
+                   "original_complex_Clifford_MonoidHom_qualified":True,
+                   "original_complex_tensor_MonoidHom_qualified":True,
+                   "complexified_Fock_Spin9_action_qualified":False,
+                   "star_center_continuity_gauge_physical_spectral_claims":False,
+                   "OP3B2_IsometryEquiv_qualified":False,
+                   "scope":"Original source Spin9 complex tensor and complex Clifford automorphism-valued MonoidHoms, exact C5A pointwise evaluation and pure generator covariance. No M3I Fock operator action, star, center, continuity, gauge or spectrum."}
+          (e/"scope-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True))
+          print("OP3C5B_ORIGINAL_COMPLEX_CLIFFORD_SPIN_ACTION_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Retain diagnostics regardless of outcome
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-op3c5b-spin-action-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-op3c5b/
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 14
