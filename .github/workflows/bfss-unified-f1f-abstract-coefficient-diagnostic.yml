@@ -1,4 +1,4 @@
-name: BFSS F1F compact original-Fock named-sum boundary diagnostic
+name: BFSS F1F original theta family and compact named-sum diagnostic
 
 'on':
   push:
@@ -9,6 +9,7 @@ name: BFSS F1F compact original-Fock named-sum boundary diagnostic
       - lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean
       - lean/diagnostics/BFSSF1FAbstractFockInstanceBoundary.lean
       - lean/diagnostics/BFSSF1FAbstractFockCompactNamedSumBoundary.lean
+      - lean/diagnostics/BFSSF1FAbstractFockOriginalThetaNamedCompactBoundary.lean
       - lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean
       - lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean
       - .github/workflows/bfss-unified-f1f-abstract-coefficient-diagnostic.yml
@@ -44,7 +45,7 @@ jobs:
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           pkg=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
           assert next(p["rev"] for p in pkg if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean":"55b7efec8a2e4d3f66fc6c3bbc2ce2e2414e7b34","lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean":"ba5f5d5dbbf14c10b8e43b658ff5dc6b19640775","lean/diagnostics/BFSSF1FAbstractFockInstanceBoundary.lean":"c616aa4a7be7df3f1b091df4218caa54ad1923b9","lean/diagnostics/BFSSF1FAbstractFockCompactNamedSumBoundary.lean":"1eb16366010fb9c422f2e1d30bd5ed0e16184dc9","lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean":"e4de03e3b3b36b8a86336b080e0985ce0e6063a4","lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean":"ab2863b2515f853ca539ce3452bc406b7e6e5bac","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean":"3454f95cae979cc5aea9a8059882fe0ac346d0fc","lean/diagnostics/BFSSF1FOriginalThetaMatrixLinearMapIndependentAudit.lean":"9254f862a145583f34dfaa8e9d452612f61c63d1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1EOriginalThetaCoordinatePlaneMatrixAction.lean":"5c0c95e89ddc09b34d628dde3801e4a12ac98c53","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean":"b8cb1f81839cd3b26a05f949cc26e8bc88ebfbf0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean":"c56d3da8e89aa6cd428854003d94ff843c33af75","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean":"1b91182135d53026ae0ece8f2f85da52ccbc6f58","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean":"93d7ae00d4ee21ce59ab137c349590e2c496ff38"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean":"55b7efec8a2e4d3f66fc6c3bbc2ce2e2414e7b34","lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean":"ba5f5d5dbbf14c10b8e43b658ff5dc6b19640775","lean/diagnostics/BFSSF1FAbstractFockInstanceBoundary.lean":"c616aa4a7be7df3f1b091df4218caa54ad1923b9","lean/diagnostics/BFSSF1FAbstractFockCompactNamedSumBoundary.lean":"1eb16366010fb9c422f2e1d30bd5ed0e16184dc9","lean/diagnostics/BFSSF1FAbstractFockOriginalThetaNamedCompactBoundary.lean":"c16559b961b046dd8738bc592bd6dd147faca3ae","lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean":"e4de03e3b3b36b8a86336b080e0985ce0e6063a4","lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean":"ab2863b2515f853ca539ce3452bc406b7e6e5bac","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean":"3454f95cae979cc5aea9a8059882fe0ac346d0fc","lean/diagnostics/BFSSF1FOriginalThetaMatrixLinearMapIndependentAudit.lean":"9254f862a145583f34dfaa8e9d452612f61c63d1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1EOriginalThetaCoordinatePlaneMatrixAction.lean":"5c0c95e89ddc09b34d628dde3801e4a12ac98c53","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean":"b8cb1f81839cd3b26a05f949cc26e8bc88ebfbf0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean":"c56d3da8e89aa6cd428854003d94ff843c33af75","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1AOriginalThetaBivectorCommutator.lean":"1b91182135d53026ae0ece8f2f85da52ccbc6f58","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean":"93d7ae00d4ee21ce59ab137c349590e2c496ff38"}
           for path,expected in pins.items():
               actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert actual==expected,(path,actual,expected)
@@ -52,6 +53,7 @@ jobs:
           audit=Path("lean/diagnostics/BFSSF1FAbstractCoefficientOriginalFockAudit.lean").read_text()
           probe_instances=Path("lean/diagnostics/BFSSF1FAbstractFockInstanceBoundary.lean").read_text()
           probe_compact=Path("lean/diagnostics/BFSSF1FAbstractFockCompactNamedSumBoundary.lean").read_text()
+          probe_theta_compact=Path("lean/diagnostics/BFSSF1FAbstractFockOriginalThetaNamedCompactBoundary.lean").read_text()
           probe_arbitrary=Path("lean/diagnostics/BFSSF1FAbstractFockArbitraryFamilyBoundary.lean").read_text()
           probe_named=Path("lean/diagnostics/BFSSF1FAbstractFockNamedThetaBoundary.lean").read_text()
           prod=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean").read_text()
@@ -76,6 +78,16 @@ jobs:
           assert "Source48Label" in probe_compact and "(1 / 2 : ℝ) • rawCoefficientSum T A" in probe_compact
           assert "halfCoefficientLinearMap_apply (ι := Source48Label) (M := FockOp) T A" in probe_compact
           assert "majoranaCandidate" not in probe_compact and "∑" not in probe_compact
+          assert re.findall(r"(?m)^import (\S+)$",probe_theta_compact)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FAbstractCoefficientModuleDiagnostic",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1EOriginalThetaCoordinatePlaneMatrixAction"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",probe_theta_compact)==[
+              "originalThetaPairFamily_apply","originalThetaPairFamily_compact"]
+          assert "private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2" in probe_theta_compact
+          assert "Source48Label → Source48Label → FockOp" in probe_theta_compact
+          assert "fun p q => majoranaCandidate p * majoranaCandidate q" in probe_theta_compact
+          assert "(1 / 2 : ℝ) • rawCoefficientSum originalThetaPairFamily A" in probe_theta_compact
+          assert "∑" not in probe_theta_compact
           for name,code,roots in [
               ("arbitrary",probe_arbitrary,["arbitraryFockFamily_apply_expanded"]),
               ("named",probe_named,["namedOriginalThetaFamily_apply_expanded",
@@ -90,7 +102,7 @@ jobs:
                   assert "majoranaCandidate p * majoranaCandidate q" in code
           assert re.findall(r"(?m)^#print axioms (\S+)$",generic)==["rawCoefficientSum_add","rawCoefficientSum_smul","rawCoefficientLinearMap","halfCoefficientLinearMap","halfCoefficientLinearMap_apply","halfCoefficientLinearMap_apply_expanded"]
           assert re.findall(r"(?m)^#print axioms (\S+)$",audit)==["originalFockHalfCoefficientMap","originalFockHalfCoefficientMap_add","originalFockHalfCoefficientMap_smul","originalFockHalfCoefficientMap_apply"]
-          for name,code in [("generic",generic),("consumer",audit),("instances",probe_instances),("compact",probe_compact),("arbitrary",probe_arbitrary),("named",probe_named)]:
+          for name,code in [("generic",generic),("consumer",audit),("instances",probe_instances),("compact",probe_compact),("theta-compact",probe_theta_compact),("arbitrary",probe_arbitrary),("named",probe_named)]:
               assert [x for x in code.splitlines() if x.startswith("set_option ")]==["set_option autoImplicit false"],name
               cleaned=re.sub(r"/-.*?-/", "", code, flags=re.S)
               cleaned=re.sub(r"--[^\n]*","",cleaned)
@@ -148,7 +160,7 @@ jobs:
           timeout 1800s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.F1FAbstractCoefficientModuleDiagnostic 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/abstract-build.log"
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FAbstractCoefficientModuleDiagnostic.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/abstract-axioms.log"
 
-      - name: Stage B original F1E ancestry then B0 and compact B1a only
+      - name: Stage B original F1E ancestry and compact B0 B1a B1b
         shell: bash
         timeout-minutes: 65
         run: |
@@ -162,8 +174,11 @@ jobs:
           # B1a: only the *named* coefficient sum, never evaluate the old
           # expanded-sum B1/B2/B3 red experiments in this scoped gate.
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -Ddiagnostics=true diagnostics/BFSSF1FAbstractFockCompactNamedSumBoundary.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/b1a-compact-named-sum.log"
+          # B1b: use the original ordered theta products but KEEP the sum
+          # named; first verify source product pointwise, then compact map.
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -Ddiagnostics=true diagnostics/BFSSF1FAbstractFockOriginalThetaNamedCompactBoundary.lean 2>&1 | tee "$RUNNER_TEMP/bfss-f1f-abstract/b1b-original-theta-named.log"
 
-      - name: Fail closed on seven exact B1a/generic root axioms and warnings
+      - name: Fail closed on nine exact B1a B1b and generic roots
         shell: bash
         run: |
           set -euo pipefail
@@ -171,7 +186,7 @@ jobs:
           import json,os,re
           from pathlib import Path
           root=Path(os.environ["RUNNER_TEMP"])/"bfss-f1f-abstract"
-          expected={"b0-instance-synthesis.log":[],"abstract-axioms.log":["FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_add","FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_smul","FCP.BFSSF1FAbstractCoefficient.rawCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply_expanded"],"b1a-compact-named-sum.log":["FCP.BFSSF1FAbstractFockCompactBoundary.arbitraryFockFamily_apply_compact"]}
+          expected={"b0-instance-synthesis.log":[],"abstract-axioms.log":["FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_add","FCP.BFSSF1FAbstractCoefficient.rawCoefficientSum_smul","FCP.BFSSF1FAbstractCoefficient.rawCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply","FCP.BFSSF1FAbstractCoefficient.halfCoefficientLinearMap_apply_expanded"],"b1a-compact-named-sum.log":["FCP.BFSSF1FAbstractFockCompactBoundary.arbitraryFockFamily_apply_compact"],"b1b-original-theta-named.log":["FCP.BFSSF1FAbstractFockOriginalThetaCompact.originalThetaPairFamily_apply","FCP.BFSSF1FAbstractFockOriginalThetaCompact.originalThetaPairFamily_compact"]}
           allowed={"propext","Classical.choice","Quot.sound"}
           package_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
           roots={}
@@ -192,11 +207,11 @@ jobs:
           for path in ("abstract-build.log","original-ancestry-build.log"):
               text=(root/path).read_text()
               assert "error:" not in text and "sorryAx" not in text,path
-          receipt={"status":"COMPACT_INTERFACE_ONLY_PASS","tested_commit":(root/"tested-commit.txt").read_text().strip(),
+          receipt={"status":"SOURCE_THETA_NAMED_COMPACT_ONLY_PASS","tested_commit":(root/"tested-commit.txt").read_text().strip(),
                    "roots":roots,"production_F1F_qualified":False,
-                   "scope":"Exactly B0 original FockOp instances + generic six roots + B1a named-sum concrete original-Fock equality. Known failing expanded B1 and later B2/B3 intentionally NOT executed. Production F1F + consumer frozen/unqualified."}
+                   "scope":"B0 source FockOp instances, generic six roots, accepted B1a arbitrary-Fock named-sum, B1b original ordered theta-family pointwise and named-sum compact map. Expanded double sum intentionally NOT verified; production F1F/consumer frozen."}
           (root/"diagnostic-receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
-          print("F1F_B1A_COMPACT_NAMED_SUM_ONLY_PASS_NOT_PRODUCTION")
+          print("F1F_B1B_SOURCE_THETA_NAMED_COMPACT_PASS_NOT_PRODUCTION")
           PY
 
       - name: Preserve exact source inputs, failures, and component verdict
