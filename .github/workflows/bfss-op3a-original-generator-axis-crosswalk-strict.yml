@@ -40,7 +40,7 @@ jobs:
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
           assert next(x["rev"] for x in packages if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean":"f3a2b41f902a20f6fe237ecce18dd7e869e9c45e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe.lean":"218a419500ca208a2bc26e1528a11b62fa3802f0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockIndexBridgeProbe.lean":"6d732c1acea271b7aba948c95755ac73d2d0fc0a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean":"a9f446ea7986ca796c2f4b222a5ab710d98590cc","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E2OriginalFockMajoranaSourceCliffordAxisNormalizationProbe.lean":"1095d164cb0716ef5c9f80e8e0fdbc4ebd8e19d2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E4OriginalFockRealLinearCliffordGeneratorMapProbe.lean":"d1a6194ac68fef46ca99de45beb46d15ccb32c79","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M2OriginalComplexifiedCliffordFockRepresentationProbe.lean":"a5e2f46797b60f196423086a0d52aa7f1f2a14f2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean":"e5e89f59b7f9193239a8c050901c4e6ec6ed8ea6","lean/diagnostics/BFSSOP3AOriginalGeneratorAxisCrosswalkIndependentAudit.lean":"d68551de5c7d4b5ba18395417a8dc48bd7279d62"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean":"f3a2b41f902a20f6fe237ecce18dd7e869e9c45e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe.lean":"218a419500ca208a2bc26e1528a11b62fa3802f0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockIndexBridgeProbe.lean":"6d732c1acea271b7aba948c95755ac73d2d0fc0a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean":"a9f446ea7986ca796c2f4b222a5ab710d98590cc","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E2OriginalFockMajoranaSourceCliffordAxisNormalizationProbe.lean":"1095d164cb0716ef5c9f80e8e0fdbc4ebd8e19d2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E4OriginalFockRealLinearCliffordGeneratorMapProbe.lean":"d1a6194ac68fef46ca99de45beb46d15ccb32c79","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M2OriginalComplexifiedCliffordFockRepresentationProbe.lean":"a5e2f46797b60f196423086a0d52aa7f1f2a14f2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean":"c977fe56af9e086fe7771c4d18b718a292060a6a","lean/diagnostics/BFSSOP3AOriginalGeneratorAxisCrosswalkIndependentAudit.lean":"21d49d36a9bb8f57f6fd33d23f2410d3390e1e5e"}
           for p,sha in pins.items():
               actual=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
               assert actual==sha,(p,actual,sha)
@@ -51,11 +51,15 @@ jobs:
               "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48RealLinearGammaProbe"]
           assert re.findall(r"(?m)^import (\S+)$",consumer)==[
               "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3AOriginalCliffordFockGeneratorAxisCrosswalk"]
-          roots=["donor_normalized_eq_active_source_axis","donor_real_gamma_eq_active_on_source_axis"]
+          roots=["donor_paired_label_eq_active_source_axis","donor_normalized_eq_active_source_axis","donor_real_gamma_eq_active_on_source_axis"]
           assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
           assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
               "FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk."+x for x in roots]
-          assert "sourceBlockColorMajorana_eq_G1APairedTheta" in source
+          assert "donor_paired_label_eq_active_source_axis" in source
+          assert "FCP.BFSSSU2GaugeG1A.pairedLabelEquiv" in source
+          assert "FCP.BFSSPairedThetaLabelCrosswalk.pairedLabelEquiv" in source
+          assert "FCP.BFSSS1V7.sourceBlockColorLabel_eq_original_paired" in source
+          assert "Equiv.apply_symm_apply" in source
           assert "sourceGammaRealLinear_axis j s A" in source
           assert "originalFockGammaRealLinear_sourceAxis (j, s) A" in source
           assert "originalNormalizedFockMajorana" in source
@@ -109,6 +113,7 @@ jobs:
           from pathlib import Path
           evidence=Path(os.environ["RUNNER_TEMP"])/"bfss-op3a-axis"
           roots=[
+              "FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_paired_label_eq_active_source_axis",
               "FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_normalized_eq_active_source_axis",
               "FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_real_gamma_eq_active_on_source_axis"]
           allowed={"propext","Classical.choice","Quot.sound"}
@@ -125,13 +130,13 @@ jobs:
                   for declaration,raw in reports:
                       got={x.strip() for x in raw.split(",") if x.strip()}
                       assert got<=allowed,(filename,declaration,got)
-                  print(filename,"EXACT_TWO_ROOT_AXIOM_GATE_PASS")
+                  print(filename,"EXACT_THREE_ROOT_AXIOM_GATE_PASS")
           receipt={"status":"ORIGINAL_DONOR_ACTIVE_SOURCE_AXIS_ONLY_PASS",
                    "production_F1F_qualified":False,
                    "global_Spin9_operator_action_qualified":False,
                    "M2_M3I_generator_identity_qualified":False,
                    "roots":roots,
-                   "scope":"Exact original block/color label and sqrt(2) normalized donor-to-active Fock gamma equality, plus real-linear map evaluations on source axes. Full linear-map/M2/M3I/global action are NOT proven."}
+                   "scope":"Independent exact historical-G1A vs active-paired-index identity, then donor-to-active sqrt(2)-normalized original Fock operator equality and source-axis real-linear map equality. Full linear-map/M2/M3I/global action remain unproved."}
           (evidence/"scope-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True))
           print("OP3A_ORIGINAL_DONOR_ACTIVE_SOURCE_AXIS_INDEPENDENT_STRICT_PASS")
           PY

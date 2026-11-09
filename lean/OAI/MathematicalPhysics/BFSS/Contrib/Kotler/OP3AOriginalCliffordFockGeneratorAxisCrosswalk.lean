@@ -28,17 +28,43 @@ open FCP.BFSSS1V5
 open FCP.BFSSSource48NormalizedFockGamma
 open FCP.BFSSSource48RealLinearGamma
 
-/-- On the ACTUAL original 8 × 2 × 3 block/color labels, the
-donor sqrt(2)-normalized Majorana is exactly the active normalized
-source gamma. The needed label bridge is the proven G1A permutation,
-not an assumption about Fintype.equivFin ordering. -/
+/-- The historical original G1A and active crosswalk pack exactly
+the same 8 × 2 × 3 source mode, in their respective namespace
+definitions. Prove this strictly at the small LABEL level first:
+an apparent equality of two named Fock operators is not a licensed
+definitional rewrite. -/
+theorem donor_paired_label_eq_active_source_axis
+    (j : Fin 8) (s : Fin 2) (A : ColorIndex 2) :
+    FCP.BFSSSU2GaugeG1A.pairedLabelEquiv
+        (FCP.BFSSSU2GaugeG1A.spinPairEquiv.symm (j, s), A) =
+      FCP.BFSSPairedThetaLabelCrosswalk.pairedLabelEquiv
+        (FCP.BFSSPairedThetaLabelCrosswalk.spinPairEquiv.symm (j, s), A) := by
+  simp only [FCP.BFSSSU2GaugeG1A.pairedLabelEquiv,
+    FCP.BFSSPairedThetaLabelCrosswalk.pairedLabelEquiv,
+    Equiv.coe_fn_mk, Equiv.apply_symm_apply]
+
+/-- On the genuine original 8 × 2 × 3 block/color axes, the
+donor normalized Majorana equals the active normalized source gamma.
+The G1A and active paired-label definitions are explicitly matched;
+no source-index ordering or normalization is silently assumed. -/
 theorem donor_normalized_eq_active_source_axis
     (j : Fin 8) (s : Fin 2) (A : ColorIndex 2) :
     FCP.BFSSS1V52L9E2.originalNormalizedFockMajorana (j, s) A =
       sourceNormalizedGamma (sourceBlockColorLabel (j, s) A) := by
-  unfold FCP.BFSSS1V52L9E2.originalNormalizedFockMajorana
-    sourceNormalizedGamma
-  rw [FCP.BFSSSource48FockIndexBridge.sourceBlockColorMajorana_eq_G1APairedTheta]
+  have hlabel :
+      FCP.BFSSSU2GaugeG1A.pairedLabelEquiv
+          (FCP.BFSSSU2GaugeG1A.spinPairEquiv.symm (j, s), A) =
+        sourceBlockColorLabel (j, s) A :=
+    (donor_paired_label_eq_active_source_axis j s A).trans
+      (FCP.BFSSS1V7.sourceBlockColorLabel_eq_original_paired j s A).symm
+  change (↑(Real.sqrt 2) : ℂ) •
+      majoranaCandidate (FCP.BFSSSU2GaugeG1A.pairedLabelEquiv
+        (FCP.BFSSSU2GaugeG1A.spinPairEquiv.symm (j, s), A)) =
+    (↑(Real.sqrt 2) : ℂ) • majoranaCandidate
+      (sourceBlockColorLabel (j, s) A)
+  exact congrArg
+    (fun p : Source48Label =>
+      (↑(Real.sqrt 2) : ℂ) • majoranaCandidate p) hlabel
 
 /-- The two REAL-LINEAR original-source Fock gamma constructions
 coincide at every genuine original coordinate axis. Crucially,
@@ -59,6 +85,7 @@ theorem donor_real_gamma_eq_active_on_source_axis
     _ = sourceGammaRealLinear (sourceBlockColorAxis (j, s) A) :=
       (sourceGammaRealLinear_axis j s A).symm
 
+#print axioms donor_paired_label_eq_active_source_axis
 #print axioms donor_normalized_eq_active_source_axis
 #print axioms donor_real_gamma_eq_active_on_source_axis
 

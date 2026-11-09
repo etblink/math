@@ -25,6 +25,13 @@ open FCP.BFSSSource48RealLinearGamma
 private abbrev FockOp := Fermion 2 →L[ℂ] Fermion 2
 
 example (j : Fin 8) (s : Fin 2) (A : ColorIndex 2) :
+    FCP.BFSSSU2GaugeG1A.pairedLabelEquiv
+        (FCP.BFSSSU2GaugeG1A.spinPairEquiv.symm (j, s), A) =
+      FCP.BFSSPairedThetaLabelCrosswalk.pairedLabelEquiv
+        (FCP.BFSSPairedThetaLabelCrosswalk.spinPairEquiv.symm (j, s), A) :=
+  FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_paired_label_eq_active_source_axis j s A
+
+example (j : Fin 8) (s : Fin 2) (A : ColorIndex 2) :
     FCP.BFSSS1V52L9E2.originalNormalizedFockMajorana (j, s) A =
       sourceNormalizedGamma (sourceBlockColorLabel (j, s) A) :=
   FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_normalized_eq_active_source_axis j s A
@@ -38,6 +45,7 @@ example (j : Fin 8) (s : Fin 2) (A : ColorIndex 2) :
 example (j : Fin 8) (s : Fin 2) (A : ColorIndex 2) : FockOp :=
   sourceNormalizedGamma (sourceBlockColorLabel (j, s) A)
 
+#print axioms FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_paired_label_eq_active_source_axis
 #print axioms FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_normalized_eq_active_source_axis
 #print axioms FCP.BFSSOP3AOriginalGeneratorAxisCrosswalk.donor_real_gamma_eq_active_on_source_axis
 
