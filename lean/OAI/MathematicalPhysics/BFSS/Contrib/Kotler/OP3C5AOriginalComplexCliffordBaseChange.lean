@@ -67,11 +67,21 @@ theorem source9Spin_originalComplexCliffordAlgEquiv_generator
       Algebra.TensorProduct.congr_apply,
       Algebra.TensorProduct.map_tmul]
   simp only [map_one]
-  rw [source9Spin_originalRealCliffordAutomorphismHom_generator]
-  exact CliffordAlgebra.ofBaseChange_tmul_ι ℂ source48Quadratic (1 : ℂ)
-    (((source9SpinOriginalPaired48OrthogonalHom g :
-      Matrix.orthogonalGroup Source48Label ℝ) :
-      Matrix Source48Label Source48Label ℝ).mulVec v)
+  -- Rewrite can miss the coerced AlgEquiv application inside a pure
+  -- tensor. Transport the exact accepted original-source equality
+  -- through the base-change context instead of changing its statement.
+  have hsource :=
+    source9Spin_originalRealCliffordAutomorphismHom_generator g v
+  have htransport :=
+    congrArg
+      (fun x : CliffordAlgebra source48Quadratic =>
+        CliffordAlgebra.ofBaseChange ℂ source48Quadratic
+          (1 ⊗ₜ[ℝ] x)) hsource
+  exact htransport.trans
+    (CliffordAlgebra.ofBaseChange_tmul_ι ℂ source48Quadratic (1 : ℂ)
+      (((source9SpinOriginalPaired48OrthogonalHom g :
+        Matrix.orthogonalGroup Source48Label ℝ) :
+        Matrix Source48Label Source48Label ℝ).mulVec v))
 
 #print axioms source9Spin_originalComplexCliffordAlgEquiv
 #print axioms source9Spin_originalComplexCliffordAlgEquiv_generator
