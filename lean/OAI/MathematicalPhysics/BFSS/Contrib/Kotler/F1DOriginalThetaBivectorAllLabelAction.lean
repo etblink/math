@@ -35,16 +35,16 @@ theorem originalThetaBivector_comm_all_labels
         else (0 : FockOp) := by
   by_cases hrp : r = p
   · subst r
-    simpa only [if_pos rfl] using
+    simpa using
       (FCP.BFSSF1AOriginalThetaBivector.originalThetaBivector_comm_first p q hpq)
   · by_cases hrq : r = q
     · subst r
       have hqp : q ≠ p := Ne.symm hpq
-      simpa only [if_neg hqp, if_pos rfl] using
+      simpa [hqp] using
         (FCP.BFSSF1AOriginalThetaBivector.originalThetaBivector_comm_second p q hpq)
     · have hpr : p ≠ r := fun h => hrp h.symm
       have hqr : q ≠ r := fun h => hrq h.symm
-      simpa only [if_neg hrp, if_neg hrq] using
+      simpa [hrp, hrq] using
         (FCP.BFSSF1COriginalThetaBivector.originalThetaBivector_comm_third
           p q r hpq hpr hqr)
 

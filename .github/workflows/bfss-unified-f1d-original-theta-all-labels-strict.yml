@@ -41,7 +41,7 @@ jobs:
           packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
           assert next(p["rev"] for p in packages if p["name"]=="mathlib") == "d13f23b723b8a846827a245b89c10fc7d3f11612"
           pins={
-            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean":"8e7e40be64d3a4d6bba73ea0d78b02bdf3af5557",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1DOriginalThetaBivectorAllLabelAction.lean":"b8cb1f81839cd3b26a05f949cc26e8bc88ebfbf0",
             "lean/diagnostics/BFSSF1DOriginalThetaBivectorIndependentAudit.lean":"ecdeb50a6f5655042a4261c64795f2621a5da44e",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1BOriginalThetaBivectorSkewAdjoint.lean":"75cdfab1c25e961ba777c9788e77a3e6e4ee6d70",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1COriginalThetaBivectorThirdLabelCommutator.lean":"c56d3da8e89aa6cd428854003d94ff843c33af75",
