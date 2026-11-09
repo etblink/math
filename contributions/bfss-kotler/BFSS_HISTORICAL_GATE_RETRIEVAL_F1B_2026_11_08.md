@@ -190,3 +190,16 @@ The accepted gate is [run #42558495086](https://github.com/etblink/math/actions/
 **Limits:** No arbitrary skew `48×48` coefficient lift, proof of linearity, `so(48)` LieHom, source Spin(9) group lift or central sign, physical charge covariance, Hamiltonian equality or spectral claim was proved by F1E.
 
 **Next bounded task:** adopt the accepted F10AV finite-sum LinearMap proof procedure *only structurally*, but use the actual original Fock bivectors and coefficient `1/2`, not F10AV's normalized `16`-gamma coefficient `1/4`. First define and check additivity/scalar homogeneity on the original real 48-matrix carrier (F1F). Only then evaluate coordinate planes, prove all-skew generator action and consider bracket-preservation routes.
+
+## F1F real-linear original 48-coefficient lift staged (2026-11-08 local)
+
+**UNQUALIFIED candidate pending [strict run #42559478599](https://github.com/etblink/math/actions/runs/42559478599)** on exact test commit `878d476355668446a515ed6a58fa3f2a4e6cb7e4`. No Lean qualification is implied by source, workflow publication or queued/in-progress status.
+
+The next bounded target is the *actual* real-linear finite coefficient map on all matrices `A : Matrix Source48Label Source48Label ℝ` into the *same* original `Fermion 2 →L[ℂ] Fermion 2`:
+`L(A) = (1/2 : ℝ) • ∑ p, ∑ q, (A p q) • (majoranaCandidate p * majoranaCandidate q)`. The `1/2` prefactor is sourced from F1A/F1D/F1E on the delta-one original CAR, rather than the F10AV normalized real-16-gamma `1/4` formula. This gate attempts **definition, additivity, real scalar homogeneity, and exact unfolding only**; it does NOT prove equality `L(E_pq-E_qp)=theta_p theta_q`, general-skew commutator action, skew-adjointness, bracket preservation or LieHom.
+
+- Source: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/F1FOriginalThetaMatrixFiniteCoefficientLinearMap.lean` (Git blob `c369b976d31b7d2b18149b2d594bbe10f78d0a22`).
+- Independent full-carrier consumer: `lean/diagnostics/BFSSF1FOriginalThetaMatrixLinearMapIndependentAudit.lean` (blob `9254f862a145583f34dfaa8e9d452612f61c63d1`); exercises map_add, map_smul and direct unfolding, not just theorem names.
+- Two source files staged in [1fb281d](https://github.com/etblink/math/commit/1fb281d33cea622bccb64b0f4b8827d03705c0f1). Exact F1F workflow introduced in [878d476](https://github.com/etblink/math/commit/878d476355668446a515ed6a58fa3f2a4e6cb7e4); pins accepted F1A–F1E source files and independent candidate hashes, Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, three exact source declaration axioms, independent consumer compilation and warning/error inspection.
+
+**Method-provenance:** the finite-sum linearity tactic skeleton mirrors accepted `F10AV.coordinateToOriginalGammaLinearMap` on real gamma-16, but this source uses the literal `Source48Label` and original Fock operators, with coefficient and representation appropriate to F1E. A new strict green is required before relying on this F1F theorem. Retain any red cause and repair only that cause.
