@@ -53,18 +53,41 @@ theorem originalThetaBivector_comm_coordinatePlane
       ((originalSource48CoordinatePlane p q) q r) • majoranaCandidate q := by
   classical
   rw [FCP.BFSSF1DOriginalThetaBivector.originalThetaBivector_comm_all_labels p q r hpq]
+  -- Use explicitly typed real-scalar identities; the prior two simp-only
+  -- attempts reduced matrix entries but left these operator scalar actions.
+  have hsmul_zero (T : FockOp) : (0 : ℝ) • T = (0 : FockOp) :=
+    zero_smul ℝ T
+  have hsmul_one (T : FockOp) : (1 : ℝ) • T = T :=
+    one_smul ℝ T
+  have hsmul_neg_one (T : FockOp) : (-1 : ℝ) • T = -T :=
+    neg_one_smul ℝ T
   by_cases hrp : r = p
   · subst r
-    simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq,
-      zero_smul ℝ, neg_one_smul ℝ]
+    have hpp :
+        (originalSource48CoordinatePlane p q) p p = (0 : ℝ) := by
+      simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
+    have hqp :
+        (originalSource48CoordinatePlane p q) q p = (-1 : ℝ) := by
+      simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
+    simpa [hpp, hqp, hsmul_zero, hsmul_neg_one]
   · by_cases hrq : r = q
     · subst r
-      simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq,
-        zero_smul ℝ, one_smul ℝ]
+      have hpqcoeff :
+          (originalSource48CoordinatePlane p q) p q = (1 : ℝ) := by
+        simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
+      have hqq :
+          (originalSource48CoordinatePlane p q) q q = (0 : ℝ) := by
+        simp [originalSource48CoordinatePlane, hpq, Ne.symm hpq]
+      simpa [hpqcoeff, hqq, hsmul_zero, hsmul_one]
     · have hpr : p ≠ r := Ne.symm hrp
       have hqr : q ≠ r := Ne.symm hrq
-      simp [originalSource48CoordinatePlane, hrp, hrq, hpr, hqr,
-        zero_smul ℝ]
+      have hprcoeff :
+          (originalSource48CoordinatePlane p q) p r = (0 : ℝ) := by
+        simp [originalSource48CoordinatePlane, hrp, hrq, hpr, hqr]
+      have hqrcoeff :
+          (originalSource48CoordinatePlane p q) q r = (0 : ℝ) := by
+        simp [originalSource48CoordinatePlane, hrp, hrq, hpr, hqr]
+      simpa [hrp, hrq, hprcoeff, hqrcoeff, hsmul_zero]
 
 #print axioms originalSource48CoordinatePlane_transpose
 #print axioms originalThetaBivector_comm_coordinatePlane
