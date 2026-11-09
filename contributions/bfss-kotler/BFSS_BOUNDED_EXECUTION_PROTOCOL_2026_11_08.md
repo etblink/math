@@ -87,6 +87,7 @@ If an interruption occurs, the next session begins read-only by fetching the rem
 
 ## 7. Cross references
 
+- [Interface-First Proof Protocol and OP3-A lesson (2026-11-09)](BFSS_INTERFACE_FIRST_PROOF_PROTOCOL_AND_OP3A_LESSON_2026_11_09.md) — pre-gate source interoperability, dependency ladders, smallest-carrier proofs, negative proof-engineering knowledge; supplements this bounded-execution protocol.
 - [Project map](BFSS_PROJECT_MAP_2026_11_08.md)
 - [Dependency and housekeeping audit](BFSS_REPOSITORY_DEPENDENCY_AND_HOUSEKEEPING_AUDIT_2026_11_08.md)
 - [Original Fock / Spin(9) / physical form memorandum](BFSS_ORIGINAL_FOCK_SPIN9_PHYSICAL_FORM_INTEGRATION_MEMORANDUM_2026_11_08.md)
