@@ -43,8 +43,17 @@ noncomputable def originalThetaCoefficientLinearMap :
   toFun := originalThetaCoefficientFiniteLift
   map_add' := by
     intro A B
+    -- First discharge scalar additivity on the literal real FockOp module.
+    -- This type-specific identity is the missing step in the first red gate.
+    have hentry (p q : Source48Label) :
+        (A p q + B p q) • (majoranaCandidate p * majoranaCandidate q) =
+          A p q • (majoranaCandidate p * majoranaCandidate q) +
+            B p q • (majoranaCandidate p * majoranaCandidate q) :=
+      add_smul (A p q) (B p q) (majoranaCandidate p * majoranaCandidate q)
+    -- Only after the typed entry identity, distribute both finite sums
+    -- and the outer one-half real action.
     simp only [originalThetaCoefficientFiniteLift, Matrix.add_apply,
-      add_smul, Finset.sum_add_distrib, smul_add]
+      hentry, Finset.sum_add_distrib, smul_add]
   map_smul' := by
     intro c A
     simp only [originalThetaCoefficientFiniteLift, Matrix.smul_apply,
