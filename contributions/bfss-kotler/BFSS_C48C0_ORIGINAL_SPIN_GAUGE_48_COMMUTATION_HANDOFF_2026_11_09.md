@@ -291,3 +291,23 @@ The proof must preserve the complex scalar `√2`, real/imaginary spin-pair comp
 **Pending candidate run:** [#42802526685](https://github.com/etblink/math/actions/runs/42802526685), exact tested workflow commit `d81d1d8246016f917b5ef436f353b3e6d0c4b594`, in progress at this checkpoint. Do not claim success before final `C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS`. If red, inspect first actual Lean compiler/error/axiom diagnosis, apply bounded source+atomic manifest pin repair only where warranted, and preserve negative knowledge.
 
 **Next gate C48-1A1b:** bind the accepted axis coefficient sum to the **already accepted** S1J source real 48×48 `sourceRealMajoranaMatrix q` acting on every `Source48Vector`, via `Pi.basisFun` real-linear map extensionality, true G1A label transport and source coefficient check. Only after this all-vector/genuine Fock-unitary qualification compare route R1 (whole Fock algebra) against R2 (B3 physical-star + S1H source implementer uniqueness). Do not prematurely assert `α_g(U_q)=U_q` or any gauge-fixed physical Hamiltonian/spectral result.
+
+## 19. C48-1A1a first RED — deprecated Lean lemma, strict-warning failure, bounded repair
+
+**Strict RED:** [#42802526685](https://github.com/etblink/math/actions/runs/42802526685), tested exact `d81d1d8246016f917b5ef436f353b3e6d0c4b594`; job `129783396597` concluded failure. All **80 frozen Git blob pins** and the pinned Lean 4.34.1/Mathlib restore passed. The **9,151-job cold build completed successfully**, and both novel source theorem `#print axioms` reports contained only the permitted `propext`, `Classical.choice`, `Quot.sound`. This is evidence that the proof *elaborated*, **not** an acceptance: direct strict `-DwarningAsError=true` source compilation then failed before the independent consumer was run.
+
+**First causal diagnostics**, at source lines 82:25 and 96:25:
+
+```text
+error: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+```
+
+The old lemma was used for the application of the genuine positive-`√2) scalar to original source-normalized Fock operators; its current replacement is the namespace-free `smul_apply`. This is a pinned Lean API/deprecation drift, **not** an algebraic covariance counterexample or an independent audit result. All original SU2 color ordering, G4H source Fock unitary, `sourceGammaRealLinear`, and theorem statements remain untouched.
+
+**Retained failed-run artifact:** [#13758206102](https://github.com/etblink/math/actions/runs/42802526685/artifacts/13758206102), `sha256:6d92b88915cde9c110c414632e176c756c83941b48a4a469adb352d4a9a663b1`.
+
+**Exact bounded repair:** [commit `3c036b4a`](https://github.com/etblink/math/commit/3c036b4a8076b6cfd19a46796c740627d2aa1987), based on branch head `d3598527713732f84b9afb1eb48655812b2c48a5`, atomically changes exactly two files: the source replaces each of two occurrences of `ContinuousLinearMap.smul_apply` with `smul_apply` and the **same 80-pin** workflow changes only the source-blob hash and the corresponding exact text-preflight token. New source blob `e04fafcb831df875623c744e015adfa6f078bc9a`; new workflow blob `eccd7c1853a9c893160e8f4a3efc0a7ed107b954`. No theorem type, original source carrier, G4H/G4E ancestry, independent-consumer source blob `6f996d4bcf4c8834cc38bdb53a452dfbee6276d1`, other 79 Git blob pins, toolchain pins, resource limits, strict warning policy, or permitted axiom set was altered.
+
+**Retry launched:** [run #42805412706](https://github.com/etblink/math/actions/runs/42805412706), exact tested repair commit `3c036b4a8076b6cfd19a46796c740627d2aa1987`, **IN PROGRESS** when last checked. C48-1A1a remains **UNQUALIFIED** unless actual cold source and independent consumer pass, with final `C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS` marker.
+
+**Preserved methodological lesson:** A cold `lake build` may succeed and show clean `#print axioms` while the explicit strict source `-DwarningAsError=true` rejects a deprecated lemma. Distinguish compilation under default warnings from strict acceptance and do not interpret this particular red as an unproved mathematical obstruction. Future source preflight may scan for known deprecated exact API tokens, but must not suppress or relax strict compiler diagnostics.
