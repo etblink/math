@@ -79,7 +79,7 @@ theorem originalGaugeUnitary_sourceGammaAxis_covariant
         ((sourceGammaRealLinear (sourceBlockColorAxis (j,s) A)) ψ) =
       c • FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q
         (FCP.BFSSSU2GaugeG1A.pairedAlgebraData.theta α A ψ) := by
-          rw [hsource A, ContinuousLinearMap.smul_apply]
+          rw [hsource A, smul_apply]
           exact map_smul _ c _
     _ = c • ∑ B : ColorIndex 2,
           (FCP.BFSSSU2GaugeG3A.adjointColorMatrix q B A : ℂ) •
@@ -93,7 +93,7 @@ theorem originalGaugeUnitary_sourceGammaAxis_covariant
           rw [Finset.smul_sum]
           apply Finset.sum_congr rfl
           intro B _
-          rw [hsource B, ContinuousLinearMap.smul_apply]
+          rw [hsource B, smul_apply]
           simp only [smul_smul]
           rw [mul_comm c
             (FCP.BFSSSU2GaugeG3A.adjointColorMatrix q B A : ℂ)]
