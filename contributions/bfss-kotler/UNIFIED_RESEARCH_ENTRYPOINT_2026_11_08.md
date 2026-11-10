@@ -5,6 +5,13 @@
 
 The aim is one source-faithful mathematical research branch suitable for future proof reuse and eventual curated upstream contribution. This branch preserves the full inherited BFSS research worktree, carries the v0.4.0 OperatorDependencies closure as source copies, and now includes selected immutable FCP source copies under `research-sources/fcp/`. Historical refs and original repositories have not been edited.
 
+## Latest research checkpoint (2026-11-09)
+
+- **Current proof status:** [P2b-A original Majorana physical-star gate #42736594947](https://github.com/etblink/math/actions/runs/42736594947) qualified at exact tested commit `2e260bbeac70a8aa035b72bdbdda99db7984bb2b`; the **full** original Fock-operator star theorem is still open.
+- **Read first after interruption:** [Upstream proof reuse, verified branch ancestry and P2b-B1/T1 roadmap](BFSS_UPSTREAM_REUSE_AND_UNIFIED_BRANCH_CHRONOLOGY_2026_11_09.md). This reconstructs the lineage from FCP to the unified branch, pin-verifies upstream file reuse, and preserves rejected shortcuts.
+- **Next candidates (not implemented by this note):** P2b-B1 complexified-generator star extension, then P2b-B2 full star via Clifford induction; parallel read-only T1 original-Fock trace API comparison. No new physical or spectral claim.
+- The historical `Next work` section at the end describes the branch's initial source-integration task list. Use the checkpoint memo above for the **current** proof sequence.
+
 ## Find work quickly
 - Active Lean: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/`
 - Operator source closure: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/`
