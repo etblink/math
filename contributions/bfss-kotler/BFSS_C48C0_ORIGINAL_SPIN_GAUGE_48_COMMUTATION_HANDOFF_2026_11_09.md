@@ -396,3 +396,33 @@ The original source theorem blob remains `e04fafcb831df875623c744e015adfa6f078bc
 **Full strict candidate:** [run #42813706857](https://github.com/etblink/math/actions/runs/42813706857), exact tested commit `93a061c4870ab4be353f5128e683a9dbf37f166c`, **IN PROGRESS** at the time of this note. Mathematical **C48-1A1a remains UNQUALIFIED** until the full source and independent consumer compile, axiom reports pass and `C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS` appears. The mini-gate is a proof-engineering guardrail, **not** a replacement for full 80-pin verification.
 
 **Methodological lesson:** Separate small *source-index elaboration* from the heavy Fock expression when repeated `maxRecDepth` failures are caused by reducible inverse equivalence expressions, and distinguish Lean compiler results from post-compilation log-collection failures. A miniature source-exact probe can produce independently reproducible compiler evidence with a much smaller dependency closure; a narrowly correct warning parser is still needed for clean gate qualification.
+
+## 24. C48-1A1a strict GREEN — original G4H Fock-unitary source Majorana axis covariance
+
+**Independently verified two green runs on 2026-11-10:**
+
+- **Mini source-index witness** [#42813520548](https://github.com/etblink/math/actions/runs/42813520548), tested commit `eb076dbe967aff764fa3959485ee1d8e9a1642f1`, all steps **SUCCESS**, 3,095-job cold source-index build, exact 2-blob preflight, strict original-source label-witness compilation, both root `#print axioms` reports clean. Final `C48C1A1a_LABEL_WITNESS_MINIMAL_STRICT_PASS`. Artifact [#13763287834](https://github.com/etblink/math/actions/runs/42813520548/artifacts/13763287834), `sha256:41b96a6effb94897d744aacd95708e4f5a7b55506c6a151539e8e7fefaa937e0`. This qualified the *source-index witness proof*, not a Fock physical-sector theorem.
+- **Full original Fock G4H axis covariance** [#42813706857](https://github.com/etblink/math/actions/runs/42813706857), tested EXACT commit `93a061c4870ab4be353f5128e683a9dbf37f166c`, job `129821310779`, all steps **SUCCESS**, all **80 exact frozen Git blob pins**, Lean 4.34.1 / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, **9,151-job cold build**, strict source and independent consumer compilation with `-DwarningAsError=true`, complete expected 2 source + 4 independent consumer root `#print axioms` audits (only `propext`, `Classical.choice`, `Quot.sound`). Required final marker **`C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS`**. Artifact [#13765186566](https://github.com/etblink/math/actions/runs/42813706857/artifacts/13765186566), `sha256:f09fa787d95f674c73b48452f338cfdf52f3e8988b8d1057e44b3af46d3b14f6`.
+
+**New accepted mathematical source:** `FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.originalGaugeUnitary_sourceGammaAxis_covariant`, on the genuine original `Fermion 2` and genuine SU2 `fermionGaugeUnitaryHom`, with original `sourceGammaRealLinear` at each exact `sourceBlockColorAxis (j,s) A`:
+```text
+  U_q Γ(e_(j,s,A)) ψ
+    = Σ_{B:ColorIndex2} [adjointColorMatrix q B A : ℂ] ·
+        Γ(e_(j,s,B)) (U_q ψ).
+```
+The independent consumer checks the reverse equality and every literal original `Source48Label` via an explicit `j,s,A` witness with `sourceBlockColorLabel (j,s) A=p`. The source also qualified the exact original `√2` G1A theta crosswalk. This **does not** yet assert all-vector covariance against actual S1J `sourceRealMajoranaMatrix.mulVec`, full Fock star-automorphism commutation, a Spin9 Fock-vector lift, gauge-fixed projection or any spectral statement.
+
+**Negative knowledge and methodological qualification:** Three previous reds were (i) deprecated `ContinuousLinearMap.smul_apply` rejected under strict warning-as-error; (ii) nested inverse packing in independent consumer exhausted elaborator recursion; (iii) destructing its packed index without changing its statement still exhausted recursion. An independently compiled original source-index witness and **equivalent existential full-label consumer interface** resolved the last issue without increasing `maxRecDepth`, changing original source or relaxing axiom/pin policy. The initial mini CI warning-parser red was a post-compiler classifier bug and was repaired with the existing precise .lake dependency-notice exemption.
+
+**Next bounded mathematical gate — C48-1A1b0 then C48-1A1b1:**
+
+1. **1A1b0 source-vector matrix-axis bridge:** on literal S1V5 `Source48Label=Fin24×Fin2`, prove the actual accepted S1J source gauge matrix acts on each real source unit basis vector according to the output/input color coefficients:
+```text
+ (sourceRealMajoranaMatrix q).mulVec (sourceBlockColorAxis (j,s) A)
+   = Σ_B (adjointColorMatrix q B A) • sourceBlockColorAxis (j,s) B.
+```
+Import the accepted S1J matrix and G3B `oneParticleMatrix_block`; explicitly prove equality of the original S1V5 `sourceColorModeEquiv` and G1A `colorModeEquiv` (both the same `finProdFinEquiv`) and preserve the real/imaginary component `s`. Source C48-0B independently proves original source color matrix equals actual S1J. **Miniature preflight first**, only then a full strict source/consumer qualification. Prefer a finite original coordinate proof rather than converting to an invented color-major surrogate.
+2. **1A1b1 real-linear Fock bridge:** package `v ↦ U_q ((sourceGammaRealLinear v) ψ)` and `v ↦ (sourceGammaRealLinear ((sourceRealMajoranaMatrix q).mulVec v)) (U_q ψ)` as actual real-linear maps `Source48Vector →ₗ[ℝ] Fermion 2`; apply the previously successful `(Pi.basisFun ℝ Source48Label).ext` method from OP3C6C, using the source index witness **outside the large operator goal**. Reduce each basis case to *accepted* 1A1a Fock axis covariance + independently accepted 1A1b0 source S1J matrix-axis identity, preserving coefficients and operator scalar action. This targets true all-vector source G4E/S1J covariance, still not full gauge-unitary Spin9 commutation.
+3. **Adversarial full consumer:** independently consume the equation on arbitrary source vectors and on the G1A basis, check inverse/conjugation orientation using genuine SU2 group-law identities, and audit axes + `sorryAx` / allowed axioms. Freeze exactly required source ancestry, do not guess the pin count or promote the former 80-pin workflow as acceptance for a new theorem.
+
+**Research isolation:** The Spin8/Spin9 Hopf, gauge-groupoid, category-theory and GUT/ToE feasibility records remain exploratory; no source physical Hamiltonian spectral claim or three-chiral-generation mechanism is implied by this green.
