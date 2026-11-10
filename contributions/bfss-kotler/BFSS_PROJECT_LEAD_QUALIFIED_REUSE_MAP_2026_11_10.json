@@ -4,7 +4,7 @@
   "snapshot_branch": "integration/bfss-unified-research-20261108",
   "snapshot_start_sha": "4f4b5594d220480d776a43cc148f37ac34443070",
   "scope": "Dated source-evidence index, not a new Lean qualification or comprehensive proof inventory.",
-  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled.",
+  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only.",
   "records": [
     {
       "id": "fcp-d2b22-normalized-energy",
@@ -244,6 +244,32 @@
       "blob": "20b302aa9738ce5fb4abe96a386d4d5c5a563757",
       "scope": "Exact signed-permutation finite checks and conditional topology of rank 56/64 quadratic bundle, near-valley Kx proposal",
       "caveat": "No qualified topology or BFSS spectrum, no three generations; original spinor eigenspace flags not global Hopf flag"
+    },
+    {
+      "id": "math-bil0a-qualified-after-repair",
+      "tier": "STRICT_GREEN_AT_EXACT_COMMIT",
+      "run": 42917435336,
+      "job_id": 130183381303,
+      "commit": "4f4b5594d220480d776a43cc148f37ac34443070",
+      "repo": "etblink/math",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSBIL0AOriginalGaugeColorRowOrthogonality.lean",
+      "blob": "87fe338d00fef6ef5fd34110f42da6ce445e6235",
+      "consumer_path": "lean/diagnostics/BFSSBIL0AOriginalGaugeColorComplexConsumer.lean",
+      "consumer_blob": "cfb74343593f0a16b9882d95cd3bd3d6989bd0c4",
+      "scope": "Full real source G3A output-row color orthogonality and independent exact complex color-row contraction on actual original SU2 labels, 88-pin strict",
+      "caveat": "Does not itself prove two-Majorana gauge commutation; BIL-0B original Fock source is a separate candidate; historical red persists as evidence"
+    },
+    {
+      "id": "math-bil0b-source-staged",
+      "tier": "NEW_SOURCE_CANDIDATE_NEEDS_STRICT_GATE",
+      "repo": "etblink/math",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSBIL0BOriginalFockColorPairGaugeInvariant.lean",
+      "blob": "73ee506ee0ee972006476ab632683fa167c646d5",
+      "consumer_path": "lean/diagnostics/BFSSBIL0BOriginalColorPairCommutatorConsumer.lean",
+      "consumer_blob": "1e23dd9a112d5b87e1d684b04f53a5b0acdeb9d3",
+      "scope": "Historical S3G2 theorem adapted to current BIL-0A/G4H imports; original source color-contracted pair gauge invariance; proposed distinct Fock commutator consumer",
+      "caveat": "Not compiled on current SHA; do not promote until 90-pin strict CI success; archived S3G2 is historical green and not automatically current-qualified"
     }
-  ]
+  ],
+  "record_count": 23
 }

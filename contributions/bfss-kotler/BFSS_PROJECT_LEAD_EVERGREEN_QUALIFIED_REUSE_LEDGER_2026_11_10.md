@@ -120,3 +120,11 @@ This ledger is a **dated map above canonical Git history**, not a replacement fo
 To reproduce from a local clone with appropriate refs, use `git show COMMIT:PATH` to read an immutable source file; `git ls-tree -r --name-only COMMIT` to locate a historical tree path; `git log --all -- PATH` for chronology; `git hash-object --no-filters PATH` to compare current source pins; and the exact GitHub Actions run linked above for cold source, independent consumer and axiom evidence. **A source path absent on a later branch does not invalidate a previously qualified earlier commit.**
 
 **No new scientific theorem is claimed by this audit.** It establishes a re-usable navigation and methodological boundary so a future Project Lead can spend effort on the next mathematical interface instead of repeating the entire historical recovery.
+
+## 8. Post-handoff qualification supersession — BIL-0A and BIL-0B (2026-11-10)
+
+The earlier dated warning that BIL-0A's corrected retry was pending has now been **superseded by actual strict green**: [#42917435336](https://github.com/etblink/math/actions/runs/42917435336), exact accepted commit `4f4b5594d220480d776a43cc148f37ac34443070`, 88 frozen blobs, original source and distinct complex consumer, normal foundational axioms only. The prior red #42913624979 remains preserved as a notation and proof-reuse lesson.
+
+Next [BIL-0B source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSBIL0BOriginalFockColorPairGaugeInvariant.lean) and [distinct consumer](../../lean/diagnostics/BFSSBIL0BOriginalColorPairCommutatorConsumer.lean) are **new candidates only** pending their separate 90-blob cold strict gate. Their proof structure is a small current-namespace port of historically accepted FCP S3G2, rather than a new mathematical conjecture. S3G3 full arbitrary-`J` quadratic gauge commutation remains qualified only at its historical FCP gate until a current exact import/consumer is independently tested. Preserve current source and historical donor identities separately.
+
+Append records in [the machine-readable evidence map](BFSS_PROJECT_LEAD_QUALIFIED_REUSE_MAP_2026_11_10.json) rather than overwriting the original red receipt. Do not infer BIL-0B qualification from BIL-0A's green.
