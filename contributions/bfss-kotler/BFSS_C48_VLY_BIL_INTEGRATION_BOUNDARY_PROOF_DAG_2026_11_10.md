@@ -46,3 +46,16 @@ A separate [strict gate](../../.github/workflows/bfss-vly0a-original-boson-gram-
 **Next bounded unit upon green:** inspect BIL-0 original theta commutator signatures and construct one source-level color contraction identity with a separate consumer; do not combine VLY-0B/BIL-0/JOIN-0 in one speculative cold gate.
 
 **Method:** [Proof-DAG First](BFSS_PROOF_DAG_FIRST_METHOD_AND_C48_FAILURE_LEDGER_2026_11_10.md), [Interface First](BFSS_INTERFACE_FIRST_PROOF_PROTOCOL_AND_OP3A_LESSON_2026_11_09.md), and [Bounded Execution](BFSS_BOUNDED_EXECUTION_PROTOCOL_2026_11_08.md) remain binding.
+
+
+## 6. VLY-0A accepted and BIL-0A separately staged — 2026-11-10
+
+**Accepted VLY-0A:** [run #42908736563](https://github.com/etblink/math/actions/runs/42908736563) GREEN at exact source commit `9aa46a17ea95902067383c30a39da3d743314cd1`. The 86-pinned-blob closure, pinned Lean 4.34.1/Mathlib, original `Boson 2` spatial Gram source, independent color-row norm consumer, standard-only axiom checks and retained diagnostics passed. Thus the original G2A SU(2) action preserves the complete nine-by-nine spatial Gram matrix. This does not qualify spectral splitting or the Majorana-bilinear theorem.
+
+**BIL-0A new candidate:** The actual G3A original adjoint matrix is `R(q)[B,A]` (output B, input A). Its existing strict source theorem `adjointColorMatrix_orthogonal` establishes `Rᵀ R=I`, whereas the sum over original INPUT colors in a color-contracted theta bilinear needs `R Rᵀ=I`. A small new source uses G3A's existing `R(q)R(q⁻¹)=I` and `RᵀR=I` to prove real row orthogonality; a distinct independent consumer casts the coordinate contraction into the original complex scalar field for G4H theta covariance. Neither statement constructs a Fock bilinear.
+
+- [BIL-0A source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSBIL0AOriginalGaugeColorRowOrthogonality.lean) — original output-row matrix orthogonality.
+- [BIL-0A independent consumer](../../lean/diagnostics/BFSSBIL0AOriginalGaugeColorComplexConsumer.lean) — precise complex coefficient contraction for future two-theta action.
+- [BIL-0A strict workflow](../../.github/workflows/bfss-bil0a-original-gauge-color-row-strict.yml) — the 86 prior VLY/C48 pins stay exact, plus two new BIL source/consumer pins.
+
+**Acceptance:** only the new source + independent consumer at exact tested commit, with 88 frozen Git blobs and standard-only axioms on a pinned cold Lean/Mathlib build. If red, inspect the first causal error, do not alter original CAR, theta source, accepted parents or change the claim. **Next after green:** BIL-0B color-contracted product/commutator under the *actual original Fermion 2 Fock unitary*, independently consumed; then and only then attempt JOIN-0 with configuration-dependent geometry.
