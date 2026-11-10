@@ -124,3 +124,27 @@ Existing accepted source:
 [Exact finite rational checker](tools/spin8_triality_su2_commutant_exact.py) verifies: 27×9 Lie commutant coefficient rank 8, 18×9 finite-witness rank 8, scalar identity kernel, allowed ranks 3k, center-character signatures, and mutually inequivalent triality-twisted 16 blocks. Python 3 standard library only, with no approximate eigenvalue or threshold comparisons. This is a **model-level exact arithmetic test**, not a Lean/source-gate acceptance or empirical validation.
 
 The checker and this memo are added only to exploratory `research/unification/`; FCP canonical claims and all BFSS strict workflow/manifests remain unmodified. Preserve the prior [Spin48/Spin8/Spin9 original audit](SPIN48_SPIN8_SPIN9_SOURCE_REPRESENTATION_AUDIT_2026_11_10.md) as historical context.
+
+## 7. Exact checker execution receipt (separate from Lean)
+
+The exact `tools/spin8_triality_su2_commutant_exact.py` checker was **actually executed** using Python 3 in a fresh working-container copy. `git hash-object` of those exact bytes returned:
+
+```text
+ffa5be750d2acf81f578b558862fef067a9a8828
+```
+
+The **GitHub repository source blob** was then fetched independently and verified to be the **same hash** `ffa5be750d2acf81f578b558862fef067a9a8828`; this ties the local execution to the exact committed script rather than an uncaptured scratch calculation. The following output markers were observed:
+
+```text
+SU2_ADJOINT_REAL_COMMUTANT: rank 8/9, kernel = R * I3
+FINITE_TWO_QUARTERTURN_WITNESSES: rank 8/9
+GAUGE_INVARIANT_REAL_SOURCE_RANKS: multiples of 3 (0..48)
+RANK_16_BLOCK_OBSTRUCTED; RANK_24_PLUS_24_ALLOWED
+ORIGINAL_3S_PLUS_3C_CENTER_TRACES: (-48, 0, 0)
+TRIALITY_BALANCED_2V_PLUS_2S_PLUS_2C_TRACES: (-16, -16, -16)
+THREE_DIFFERENT_TWISTED_BLOCK_SIGNATURES: [(-16, 0, 0), (0, -16, 0), (0, 0, -16)]
+TRIALITY_TWISTS_CANNOT_BE_INTERTWINED_BY_UNBROKEN_COLOR_SU2
+FINITE_EXACT_CHECK_PASS — not source-Lean or physical qualification
+```
+
+**Qualification ceiling:** an exact finite-arithmetic check of **standard** SO(3) adjoint matrices and abstract Spin(8) center signatures, not a Lean proof of the real G3A source coefficient realization, original Spin(8) subgroup identification, physical gauge-invariant particle generations, or an experimental discriminator. The source-specific construction and independent strict consumer remain explicit future obligations.
