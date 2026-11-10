@@ -3,7 +3,7 @@
 **Date:** 2026-11-10 (America/Los_Angeles).  
 **Project:** FCP–BFSS (descriptive child research of Foundational Convergence Program).  
 **Branch:** `integration/bfss-unified-research-20261108`.  
-**Status:** **C48-1A1b1 STRICT QUALIFIED** at a specific commit; **C48-1A1c0 SOURCE+CONSUMER CANDIDATE**, no acceptance until own green. No canonical FCP changes.
+**Status (updated after completed runs): C48-1A1b1 and C48-1A1c0 both STRICT QUALIFIED at distinct exact tested commits.** Sections 2–4 retain the chronological C0 candidate plan; Section 5 records C0 acceptance. No canonical FCP changes.
 
 ## 1. Confirmed C48-1A1b1 strict green
 
@@ -59,3 +59,18 @@ This combines the **accepted gamma-color sum**, the actual **G4H theta covarianc
 ## 4. Methodological and evidence ceilings
 
 Six C48-1A1b0 reds were preserved as negative proof-engineering knowledge; #42880436131 green then qualified the direct diagnostic; #42884218851 green qualified the **importable interface with independent consumer**. C48-1A1c0 is the Proof-DAG-First smallest next edge and remains a candidate at preparation. This memo neither modifies original `Core.lean` nor alters FCP canonical framework conclusions or the separate, non-promoted Grok candidate discussion.
+
+## 5. Retrospective C48-1A1c0 strict acceptance — 2026-11-10
+
+**The C0 candidate described in Sections 2–4 is now STRICT QUALIFIED** as an importable source and independent consumer: [Run #42887781946](https://github.com/etblink/math/actions/runs/42887781946) finished **SUCCESS** at exact tested commit `8a93f8a2044fe63b9a424f12d4e2047d8f3a0b1f`, job `130080575576`.
+
+The workflow matched **eight Git blob pins**, verified Lean `4.34.1` / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, built **9,029 jobs**, separately compiled the downstream consumer under `-DwarningAsError=true`, and reported only `propext`, `Classical.choice`, `Quot.sound` in both source and independent consumer `#print axioms`. It printed `C48C1A1c0_ORIGINAL_GAMMA_COLOR_SUM_STRICT_PASS`, with no sorryAx. The workflow preserved a diagnostic artifact; the log records its SHA-256 `c3e766f4c59e7a0b54e1d6fda81b6660e8f8b7761ebfd1cff9307c64af697342`.
+
+**Qualified finite-dimensional source-gamma statement:**
+
+    sourceGammaRealLinear (C_q.mulVec e_(j,s,A))
+      = sum_B R(q)_(B,A) • sourceGammaRealLinear(e_(j,s,B)).
+
+Theorem `FCP.BFSSC48C1A1c0OriginalS1JAxisGammaColorSum.originalS1J_axis_gamma_color_sum` and distinct downstream theorem `FCP.BFSSC48C1A1c0OriginalS1JAxisGammaIndependentConsumer.originalGamma_identityColorColumn_reconstruct` both passed the strict gate.
+
+**New open atom:** the actual G4E Fock-gauge unitary / G4H original Majorana axis intertwiner must still be established. The original closed Hamiltonian, physical Hilbert space, all-vector covariance and spectral results are not proved by this acceptance. The separately authored [RP8/Majorana-bilinear research](../../research/unification/BFSS_ORIGINAL_MAJORANA_BILINEARS_RP8_TWISTED_QUADRATIC_BUNDLES_2026_11_10.md) remains exploratory and is not promoted by this run.

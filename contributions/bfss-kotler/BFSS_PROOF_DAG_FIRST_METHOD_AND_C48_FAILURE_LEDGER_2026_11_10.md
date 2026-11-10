@@ -85,3 +85,10 @@ The [FCP charter](https://github.com/etblink/Foundational-Convergence-Program/bl
 **Accepted direct diagnostic:** [#42880436131](https://github.com/etblink/math/actions/runs/42880436131) GREEN at exact commit `b588df82d5adb272dbda42d88d6fe04dc459f22c`; all 9,021 dependencies, 4 Git blob pins, three original S1J axis theorems and standard-axioms-only reports passed the strict check. Six previous reds remain recorded above as historical evidence, not current gate status.
 
 **Still pending:** the qualifying workflow compiled a single direct diagnostic and did **not** compile a separate importing consumer. The next bounded gate, [C48-1A1b1 source and independent consumer](BFSS_C48C1A1B0_STRICT_ACCEPTANCE_AND_B1_PROOF_DAG_2026_11_10.md), exports the exact proven statements into an importable source module, adds a distinct identity-color-column consumer, and requires its own strict green before calling the exported interface accepted. Subsequent C48 Fock action remains open.
+
+
+## 7. Subsequent green qualification receipts — 2026-11-10
+
+- **C48-1A1b1 importable source + consumer**: [#42884218851](https://github.com/etblink/math/actions/runs/42884218851) GREEN, exact SHA `420671d8cdf6e05fd34be4f923cfbf512c9c490c`; 9,022 source build jobs, five source/consumer pins, four standard-only axiom reports. This supersedes the historical “still pending” wording in Section 6.
+- **C48-1A1c0 real-linear source Gamma color-column + independent consumer**: [#42887781946](https://github.com/etblink/math/actions/runs/42887781946) GREEN, exact SHA `8a93f8a2044fe63b9a424f12d4e2047d8f3a0b1f`; 9,029 source build jobs, eight pins, both source and consumer standard-only axiom reports. Actual G4E/G4H Fock gauge-unitary axis intertwiner remains open.
+- **Separate exploratory lane**: [original gauge-invariant Majorana bilinears and RP8 quadratic bundles](../../research/unification/BFSS_ORIGINAL_MAJORANA_BILINEARS_RP8_TWISTED_QUADRATIC_BUNDLES_2026_11_10.md) is source-pinned integer research, abstract representation theory and conditional topology, **not** CI-qualified by either green gate. Do not promote to a generation index or spectral theorem.
