@@ -108,7 +108,7 @@ def main():
         ("nu^c", Fraction(1), Fraction(-1, 2), Fraction(0)),
         ("e^c", Fraction(1), Fraction(1, 2), Fraction(1)),
     )
-    print("\\nPati-Salam Y = T3R + (B-L)/2:")
+    print("\nPati-Salam Y = T3R + (B-L)/2:")
     for name, b_minus_l, t3r, expected_y in pati_salam:
         result = t3r + b_minus_l / 2
         assert result == expected_y, (name, result, expected_y)
