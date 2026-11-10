@@ -62,3 +62,15 @@ Further research should branch into separately qualified source-continuity and o
 **Replacement verification:** [run #42769361446](https://github.com/etblink/math/actions/runs/42769361446) was **QUEUED at this handoff**, tested commit `b05b97260bb56718110f014a1052b54bc74bafa2`. Do not promote T1 trace/pairing claims until its exact strict run qualifies.
 
 **Reusable procedural lesson:** When Lean reports `No goals to be solved`, determine which earlier tactic closed the goal. Delete only now-unreachable tactic lines; do not increase heartbeats, rebuild proof abstractions, or weaken the gate. Preserve the red receipt and the precise source line as negative knowledge.
+
+## 5. T1 strict acceptance — exact retry qualified
+
+**Accepted GREEN:** [run #42769361446](https://github.com/etblink/math/actions/runs/42769361446) completed `SUCCESS`, workflow attempt 1, at exact tested commit `b05b97260bb56718110f014a1052b54bc74bafa2`. This is the same narrowly scoped source fix described in Section 4 and **not** a requalification of unmodified unrelated branches.
+
+The strict workflow verified 55/55 Git blob pins (53 frozen B3 accepted ancestors/consumer plus the two T1 source/consumer roots), restored Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, passed cold source compilation and an independent warning-as-error consumer, and audited all five exact declarations against the allowed kernel axioms `propext`, `Classical.choice`, and `Quot.sound`. The workflow's final marker is `T1_ORIGINAL_FOCK_TRACE_INDEPENDENT_STRICT_PASS`, and both source and consumer reported `T1_ORIGINAL_FOCK_TRACE_AXIOM_GATE_PASS`.
+
+**Retained artifact:** [#13742365725](https://github.com/etblink/math/actions/runs/42769361446/artifacts/13742365725), SHA-256 `3929be4f22e74a045dbbe1345762760ab5d2665ad146ed740debc9ffce7d2bb1`.
+
+**Precisely accepted:** the exact original finite-dimensional `Fermion 2` trace `originalFockTrace` is invariant under the original Spin(9) operator star automorphism, and the independent consumer proves the trace pairing identity `Tr_F((α_g S)† (α_g T)) = Tr_F(S† T)`. This is an **algebraic finite-dimensional Hilbert–Schmidt isometry**; it is not a proof of continuity in `g`, a Fock-vector unitary representation, gauge fixedness, covariance of unbounded physical operators, coercivity or any BFSS mass gap.
+
+The earlier initial RED [#42767247872](https://github.com/etblink/math/actions/runs/42767247872) remains part of the reproducible record. Later T1 research branches should depend on this exact accepted `b05b9726` source proof and check their own strict-gate closures.
