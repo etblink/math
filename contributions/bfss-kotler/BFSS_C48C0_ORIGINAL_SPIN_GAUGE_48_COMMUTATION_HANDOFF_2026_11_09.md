@@ -4,6 +4,8 @@
 **Date:** 2026-11-09 (Pacific time; CI may report 2026-11-10 UTC).  
 **Scope:** one bounded original-source 48-real-label commutation candidate, with a separately compiled original 24-mode G3B coefficient bridge. **NOT qualified until its own strict gate is green.**
 
+> **Active handoff revision:** The original C48-0 decision in Section 5 is preserved as historical provenance. The approved downstream sequence now starts with C48-0B exact equality to existing S1J gauge matrices, then staged operator commutation, the source character/trace alternatives, and OP1 projection fixedness. See [Section 6](#6-approved-strategy-pivot-after-source-inventory-review) and the [living roadmap](BFSS_FLEXIBLE_RESEARCH_ROADMAP_AND_GUARDRAILS_2026_11_09.md#8-late-2026-11-09-strategy-revision--c48-original-gauge-compatibility-pivot).
+
 ## 1. Accepted parent receipts
 
 - P2b-B2 original physical star: green run [#42759465245](https://github.com/etblink/math/actions/runs/42759465245) at `f21db5d7fdf36b8ee07c230787af8691859956a9`.
@@ -69,3 +71,37 @@ This should simplify **C48-1**, provided its own source-pinned gate checks the e
 - **Later:** discharge the genuine SU(2) scalar-character obstruction before applying OP1/OP2b gauge-fixed projection; do not promote any Fock-vector implementation, topological continuity, unbounded original Hamiltonian domain or spectrum from this real-matrix gate.
 
 **Working principle:** preserve positive and negative evidence with exact Git hashes and tested commits. The target is mathematical truth, not advancing a particular hypothesis at the expense of source fidelity.
+
+## 6. Approved strategy pivot after source inventory review
+
+**Owner directive:** Changes to research strategy must be documented. This section is the currently approved **operational queue**, without altering the earlier C48-0 candidate contract, its workflow or accepted B2/B3/T1 ancestors. All work described in this section is **proposed** until its own exact pinned strict run qualifies.
+
+**First necessary bridge — C48-0B (original actual SU(2) matrix identity):** The earlier C48-0 candidate builds
+`sourceGaugeOriginalPaired48 q` by reindexing the existing G3A adjoint color matrix `R_3(q) ⊗ I_16` through `FCP.BFSSPairedSpin9Plane.pairedColorSpinEquiv`. The **preexisting independent source** `FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q` is `G3B.oneParticleMatrix q ⊗ I_2`, on the literal `OriginalMajoranaLabel = Fin 24 × Fin 2` already used by `Source48Label`. Prove directly:
+
+```lean
+theorem sourceGaugeOriginalPaired48_eq_S1J
+    (q : GaugeGroup 2) :
+    sourceGaugeOriginalPaired48 q =
+      FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q
+```
+
+The exact equality is an **open Lean obligation**. Prove by `Matrix.ext`, transporting arbitrary source entries back through the paired equivalence and invoking the C48-0 G3B mode-entry theorem and `S1J.sourceRealMajoranaMatrix_entry`. Check G1A spin-pair equality and the real/imaginary `Fin 2` delta separately; preserve output-color/input-color orientation. An independently compiled consumer must verify the literal source original matrix, not a newly redefined permutation surrogate. Source S1J blob `de0a042cb39f58b81a0ebd54ce64912bff481a80`.
+
+**C48-1A/B (commutation on original Fock operators):**
+- Existing `OP3C6C.source9Spin_originalFockOperatorAutomorphismHom_activeGamma` gives exact source Spin(9) covariance on the **active** original `sourceGammaRealLinear`, with M3I/C6B donor-to-active equality. Source OP3C6C blob `2d6f777568b0026737112ff8256e5ed50fc9e6e6`.
+- Existing `G4G.majorana0/1_fermionGauge_covariant` and `G4H.pairedAlgebraData_fermion_adjoint` give the exact **genuine SU(2) action** on the accepted 48 paired theta generators, and G4J packages the six-field original gauge data. Source blobs G4G `3714b1042583d91d02c6a39b8e1e8b045e42f1be`, G4H `7f4a93221c8f1168b274155f482e2f5c61f72786`, G4J `e20c76fb22bc09d16dbcd8657333227cb34ed1ea`.
+- First prove equality of the generator transformations using the exact C48-0B source matrix, then extend to the **full original Fock operator algebra** using M3I/Clifford generator induction and B3. The eventual target is `α_g ∘ Ad(U_q) = Ad(U_q) ∘ α_g`; **only commutation of conjugation automorphisms** is inferred at C48-1B.
+
+**C48-2 (genuine unitary gauge-operator fixedness):** Define `V_g(q)=α_g(U_q)` using the accepted B3 star algebra equivalence and actual OP2a/OP2b/G4E `Fermion 2` gauge unitary. Check its same-order group law and construct the exact complex-linear equivalence-valued homomorphism. From C48-1B derive the source `pairedTheta` gauge covariance premise for `V_g`; this is **not automatic merely from 48-matrix commutation**. Two independent proof routes:
+
+1. **Primary, if historical strict qualification is demonstrated:** `FCP.BFSSSU2PhysicalDomainS1G.original_relativeGaugeScalar_trivial` and `FCP.BFSSSU2PhysicalDomainS1H.original_source_gauge_representation_unique` were located in the older `OperatorDependencies` inventory. They work with the true original SU(2) group and paired `Fermion 2` theta family, and appear tailored to precisely the scalar-character obstruction. Source S1G blob `cf672337fc1196b1383eeb293a627383fdb0a3ca`, S1H blob `eacab43f1b9112e9e1920e656bdf1166f824a5a8`. **Their exact historical strict green runs and full parent qualification are not yet independently verified**. Do not cite a source file alone as accepted proof.
+2. **Independent fallback using accepted T1:** if `α_g(U_q)=c_g(q) U_q`, trace preservation gives `(c_g(q)-1)\operatorname{Tr}_F(U_q)=0`. The original finite-dimensional gauge representation has `U_1=1` and nonzero trace at identity; source G4E/G4IC2 continuity should give nonzero trace in an identity neighborhood. A multiplicative character trivial on a neighborhood is trivial globally **if source SU(2) connectedness / generation by every identity neighborhood is established**. This avoids requiring the full character formula `2^{24}\cos^{16}\theta`, which remains a computational cross-check, not a qualified Lean lemma. Explicitly check scalar character multiplicativity, operator trace continuity and source group connectedness.
+
+**C48-3 (actual fermionic gauge-fixed projection):** Only *after* the pointwise equality `α_g(U_q)=U_q`, instantiate existing `FCP.BFSSGaugeFixedProjectionOP1.starAlgEquiv_fixed_gaugeFixedProjection` with `FCP.BFSSOriginalGaugeProjectionOP2B.originalGaugeLinearAction`, `originalGaugeContinuousAction` and `originalGaugeOperators_exact`. This targets the literal source `originalFermionGaugeProjection`; it does **not** establish full bosonic × fermionic gauge-physical covariance or invariance of the original unbounded Hamiltonian domain.
+
+**Independent HS-0 lane:** Accepted B3 and T1 supply an algebraic Spin(9) action preserving the trace pairing `Tr_F(S†T)`. Package this as the original finite-dimensional Fock **operator** Hilbert-space unitary representation using suitable exact Mathlib/OAI Hilbert–Schmidt infrastructure, if doing so shortens the path to operator-fiber `M=12` weights. The Fock-vector `M=6` route is separate; continuity, actual weights, physical form domains and spectral conclusions remain open.
+
+**Execution and acceptance rules:** Keep C48-0's submitted 62-pin gate unchanged until a verified red requires a bounded repair or its exact strict green qualifies. Do not poll or rewrite the running job merely because the strategy evolved. Then prefer C48-0B over jumping directly to C48-1; preflight S1G/S1H qualification *before* relying on C48-2; test the typed C6C/G4H generator crosswalk before any full-algebra induction. One new high-risk obligation per strict gate, frozen Git source/consumer hashes, exact original carrier, independent consumer and fail-closed axiom audit. Preserve red evidence, scalar ambiguity and unfavorable results as negative knowledge.
+
+**Canonical current plan:** [`BFSS_FLEXIBLE_RESEARCH_ROADMAP_AND_GUARDRAILS_2026_11_09.md`, Section 8](BFSS_FLEXIBLE_RESEARCH_ROADMAP_AND_GUARDRAILS_2026_11_09.md#8-late-2026-11-09-strategy-revision--c48-original-gauge-compatibility-pivot). Earlier sections and the [Python forward checks](BFSS_ORIGINAL_FOCK_SU2_SPIN9_PYTHON_FORWARD_RESEARCH_2026_11_09.md) remain preserved as provenance.
