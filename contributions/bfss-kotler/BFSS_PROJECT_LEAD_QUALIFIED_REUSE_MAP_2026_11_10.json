@@ -4,7 +4,7 @@
   "snapshot_branch": "integration/bfss-unified-research-20261108",
   "snapshot_start_sha": "4f4b5594d220480d776a43cc148f37ac34443070",
   "scope": "Dated source-evidence index, not a new Lean qualification or comprehensive proof inventory.",
-  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only.",
+  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate.",
   "records": [
     {
       "id": "fcp-d2b22-normalized-energy",
@@ -282,7 +282,32 @@
       "original_gamma_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
       "scope": "Exact Python 120-skew auxiliary moments recover the original source classical quartic spatial-wedge potential and color triple Gram determinant; compute eight sign multiplicities and polynomial Delta valley signature boundary.",
       "caveat": "Original-source tables checked via GitHub and independent local frozen-table integer Python run; new repo checker is source drift pinned but not CI executed, all geometry conditional on independent Lean port, no physical Hamiltonian gap or NFC generations."
+    },
+    {
+      "id": "math-bil0b-qualified",
+      "tier": "STRICT_GREEN_AT_EXACT_COMMIT",
+      "repo": "etblink/math",
+      "run": 42920891450,
+      "job_id": 130195154715,
+      "commit": "8d707e6394055b4e0f06620777c94f312c2d4752",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSBIL0BOriginalFockColorPairGaugeInvariant.lean",
+      "blob": "73ee506ee0ee972006476ab632683fa167c646d5",
+      "consumer_path": "lean/diagnostics/BFSSBIL0BOriginalColorPairCommutatorConsumer.lean",
+      "consumer_blob": "1e23dd9a112d5b87e1d684b04f53a5b0acdeb9d3",
+      "scope": "Actual original G4E Fock-gauge SU2 commutation for every color-contracted two-Majorana pair, plus independent original-Fock commutator-zero consumer; 90 pinned source blobs",
+      "caveat": "Does not prove arbitrary real spinor matrix weighted sum, source Spin9 Fock-vector action or physical BFSS Hamiltonian"
+    },
+    {
+      "id": "math-bil0c-source-staged",
+      "tier": "NEW_SOURCE_CANDIDATE_NEEDS_STRICT_GATE",
+      "repo": "etblink/math",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSBIL0COriginalFockQuadraticGaugeInvariant.lean",
+      "blob": "cfd3e1eeed420ce92ca54821816f4a53e073ad4a",
+      "consumer_path": "lean/diagnostics/BFSSBIL0COriginalFockQuadraticNormConsumer.lean",
+      "consumer_blob": "06ff5939dffa5ca514f31e3ceee6763c4c13dafa",
+      "scope": "Actual Fock color quadratic finite weighted sum gauge commutation for arbitrary real 16x16 spinor coefficient matrices, and independent original Fock norm conservation consumer",
+      "caveat": "Current Lean source not yet compiled; separate 92-blob gate required. Historical S3G3 #155 does not automatically qualify current namespace/definition"
     }
   ],
-  "record_count": 24
+  "record_count": 26
 }
