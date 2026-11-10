@@ -200,3 +200,19 @@ The accepted B3 star map preserves algebra multiplication and Hilbert adjoints, 
 **Near-term dependency order unchanged:** C48-0B source identity → C48-1A original paired-theta/gamma covariance crosswalk → C48-1B Fock-operator conjugation-action commutation → C48-2 **genuine** SU(2) gauge-operator fixedness by audited S1G/S1H uniqueness or exact T1 trace+continuity fallback → C48-3 OP1/OP2b original **fermionic** gauge projection fixedness. In parallel, HS-0 can package accepted B3/T1 Hilbert–Schmidt operator action, without conflating it with full physical Hamiltonian or Fock-vector representation.
 
 **Stop line:** A matrix commutator does not discharge phase obstructions, source continuity, original unbounded operator domains, whole physical gauge projection or spectral confinement. C48-0B is a separate genuine-source binding, not a logical restatement or retroactive expansion of C48-0.
+
+## 10. C48-0B strict acceptance and next bounded generator gate
+
+**C48-0B accepted:** [#42787913738](https://github.com/etblink/math/actions/runs/42787913738), exact tested `153db2527bdc8b3bc2e57eff6ccba55f2e5e6fd0`, **all 67 frozen blobs, cold source, independent consumer, strict warning and clean allowed-axiom gates green**. Final `C48C0B_ACTUAL_S1J_GAUGE_IDENTITY_INDEPENDENT_STRICT_PASS`; evidence artifact `sha256:c26f392a938a772d4fafdc7f28057739fd17fd2a1adccc67d5577764838724d5`.
+
+The qualified theorem equates C48-0's original 48-Majorana gauge color matrix to the preexisting S1J source-real Majorana gauge matrix, then the independent consumer demonstrates true Spin(9) / **S1J original SU(2)** source-matrix commutation. The previous C48-0B reds are preserved as negative procedural knowledge in the C48 handoff, Sections 11–13.
+
+**Next bounded step C48-1A0:** Before proving G4H's full SU(2) conjugation action on the active normalized gamma map, reuse accepted OP3C6C `source9Spin_originalFockOperatorAutomorphismHom_activeGamma` and accepted C48-0B to show a precise original-Fock-*operator* identity
+```text
+  α_g(Γ(C_q · v)) = Γ(C_q · (S_g · v)).
+```
+Here `Γ=sourceGammaRealLinear` is the actual original normalized Fock Majorana map, `S_g` is the accepted original F10F source Spin9 matrix and `C_q` is the **independently existing S1J source gauge** matrix. This formula requires no new Fock-vector Spin9 implementer; the SU2 unitary `U_q` itself does not occur and its desired conjugation law remains the next C48-1A1 obligation. Prove with the exact C48-0B matrix commutator and the accepted OP3C6C active-gamma theorem, independently consume it on original `Source48Vector` and source-coordinate axes. Do not substitute an arbitrary tensor model or infer `Ad(U_q)` commutation yet.
+
+**Then C48-1A1:** Prove `U_q Γ(v)=Γ(C_q v)U_q` on all source vectors, using actual G4H paired-theta field covariance and sourceNormalizedGamma/sourceGammaRealLinear's exact `√2` normalization. Only after both formulae are qualified should C48-1B attempt full-algebra equality of `α_g` with SU(2) conjugation via original Clifford/Fock generation.
+
+The C48-2 S1G/H uniqueness or T1 trace-continuity fallback, C48-3 original fermionic projection, and original Hamiltonian analytical and spectral obligations remain unchanged. The Standard Model, gravity and dark-matter **feasibility conversations are exploratory parallel research and do not amend these BFSS verification gates**.
