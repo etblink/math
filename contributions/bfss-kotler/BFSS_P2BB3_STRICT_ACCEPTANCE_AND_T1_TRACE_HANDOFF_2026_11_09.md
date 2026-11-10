@@ -52,3 +52,13 @@ If T1 turns green, record exact run, tested commit, artifact digest, source/cons
 Further research should branch into separately qualified source-continuity and original gauge-compatibility/projector routes, with negative-center parity tests as adversarial sign controls. Keep original operator-fiber weight target `M=12` distinct from the Fock-vector `M=6` estimate and treat both as conditional until source-exact proofs.
 
 **Method lesson:** A global proof succeeded by aggregating qualified small original-carrier lemmas; a subsequent typeclass-search red was repaired in the consumer by applying the existing typed theorem. Preserve this pattern and the negative evidence. The source of truth remains Git objects and exact strict CI receipts.
+
+## 4. T1 initial RED, causal trace and bounded repair (subsequent checkpoint)
+
+**Initial RED:** [run #42767247872](https://github.com/etblink/math/actions/runs/42767247872), exact tested commit `9d4280a17388f540a1def6e13bac05f549bc6273`. All 55 pinned Git blobs, toolchain restore, and B2/B3 cold compilation passed. The T1 source failed on `T1OriginalFockTraceInvariance.lean:69:6` with Lean's `No goals to be solved`: a `congr 1` tactic had already closed the equality between transported trace expressions, so the following `change`, `rw`, and `rfl` lines were redundant. This was a final-script elaboration error, not a counterexample to trace invariance; the independent consumer was **not reached** and T1 remained unqualified. The source's axiom-report output alone did not override the nonzero build exit.
+
+**Bounded repair:** [commit `b05b9726`](https://github.com/etblink/math/commit/b05b97260bb56718110f014a1052b54bc74bafa2) removed only the three redundant tactics and updated the new T1 source Git blob pin in the 55-pin strict workflow. It did **not** change mathematical declarations, accepted B2/B3 ancestors, the T1 independent consumer, Lean/Mathlib versions, allowed-axiom list, or proof budgets.
+
+**Replacement verification:** [run #42769361446](https://github.com/etblink/math/actions/runs/42769361446) was **QUEUED at this handoff**, tested commit `b05b97260bb56718110f014a1052b54bc74bafa2`. Do not promote T1 trace/pairing claims until its exact strict run qualifies.
+
+**Reusable procedural lesson:** When Lean reports `No goals to be solved`, determine which earlier tactic closed the goal. Delete only now-unreachable tactic lines; do not increase heartbeats, rebuild proof abstractions, or weaken the gate. Preserve the red receipt and the precise source line as negative knowledge.
