@@ -85,7 +85,26 @@ theorem source9Spin_originalFockOperator_complexifiedGamma_map_star
       rw [originalComplexCliffordFockAlgEquiv_tmul_activeGamma]
       exact source9Spin_originalFockOperator_activeGamma_complex_smul_map_star g z v
   | add a b ha hb =>
-      simp only [map_add, star_add, ha, hb]
+      -- Deliberately avoid generic `map_add` synthesis on the
+      -- coerced original Fock AlgEquiv. Bind each exact linear interface.
+      have hGammaAdd :
+          FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
+              (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) (a + b)) =
+            FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
+                (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) a) +
+              FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
+                (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) b) := by
+        rw [(CliffordAlgebra.ι (source48Quadratic.baseChange ℂ)).map_add]
+        exact
+          (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv).toLinearEquiv.map_add
+            _ _
+      have hAlphaAdd (X Y : OriginalFockOp) :
+          source9Spin_originalFockOperatorAutomorphismHom g (X + Y) =
+            source9Spin_originalFockOperatorAutomorphismHom g X +
+              source9Spin_originalFockOperatorAutomorphismHom g Y :=
+        (source9Spin_originalFockOperatorAutomorphismHom g).toLinearEquiv.map_add X Y
+      rw [hGammaAdd, star_add, hAlphaAdd, hAlphaAdd, star_add]
+      exact congrArg₂ (· + ·) ha hb
 
 #print axioms originalComplexCliffordFockAlgEquiv_tmul_activeGamma
 #print axioms source9Spin_originalFockOperator_complexifiedGamma_map_star
