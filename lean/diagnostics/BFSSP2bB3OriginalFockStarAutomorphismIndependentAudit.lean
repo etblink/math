@@ -29,7 +29,13 @@ example (g : spinGroup source9Quadratic) (T : OriginalFockOp) :
 example (g : spinGroup source9Quadratic) (T : OriginalFockOp) :
     source9Spin_originalFockOperatorStarAlgEquiv g (star T) =
       star (source9Spin_originalFockOperatorStarAlgEquiv g T) :=
-  map_star (source9Spin_originalFockOperatorStarAlgEquiv g) T
+  by
+    change
+      source9Spin_originalFockOperatorAutomorphismHom g (star T) =
+        star (source9Spin_originalFockOperatorAutomorphismHom g T)
+    exact
+      FCP.BFSSP2bB2OriginalFockGlobalPhysicalStar.source9Spin_originalFockOperator_global_map_star
+        g T
 
 /-- Verify the source Spin(9) multiplication in the *star* target, not
 just the earlier algebra-equivalence target. -/
@@ -48,9 +54,12 @@ theorem originalFock_starAction_selfAdjoint
     (g : spinGroup source9Quadratic) (T : OriginalFockOp)
     (h : IsSelfAdjoint T) :
     IsSelfAdjoint (source9Spin_originalFockOperatorStarAlgEquiv g T) := by
-  change star (source9Spin_originalFockOperatorStarAlgEquiv g T) =
-    source9Spin_originalFockOperatorStarAlgEquiv g T
-  rw [← map_star (source9Spin_originalFockOperatorStarAlgEquiv g) T, h.star_eq]
+  change star (source9Spin_originalFockOperatorAutomorphismHom g T) =
+    source9Spin_originalFockOperatorAutomorphismHom g T
+  rw [
+    ← FCP.BFSSP2bB2OriginalFockGlobalPhysicalStar.source9Spin_originalFockOperator_global_map_star
+      g T,
+    h.star_eq]
 
 #print axioms FCP.BFSSP2bB3OriginalFockStarAutomorphismAction.source9Spin_originalFockOperatorStarAlgEquiv
 #print axioms FCP.BFSSP2bB3OriginalFockStarAutomorphismAction.source9Spin_originalFockOperatorStarAlgEquiv_apply
