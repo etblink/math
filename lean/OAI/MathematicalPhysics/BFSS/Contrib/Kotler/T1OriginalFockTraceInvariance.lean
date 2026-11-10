@@ -66,10 +66,6 @@ theorem source9Spin_originalFockTrace_invariant
           (e.symm (source9Spin_originalFockOperatorStarAutomorphismHom g T)) := rfl
     _ = LinearMap.trace ℂ (Fermion 2) (beta (e.symm T)) := by
       congr 1
-      change e.symm (source9Spin_originalFockOperatorStarAutomorphismHom g T) =
-        e.symm ((source9Spin_originalFockOperatorStarAlgEquiv g) (e (e.symm T)))
-      rw [e.apply_symm_apply]
-      rfl
     _ = originalFockTrace T := by
       exact htrace
 
