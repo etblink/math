@@ -30,16 +30,16 @@ The exact source `G3C.complexOneParticleMatrix_block` gives eight color-adjoint 
 
 **Representation identification requiring a new strict Lean binding:** the complexification of the three-dimensional real color adjoint of SU(2) is its integer spin-one irreducible. Eight source blocks therefore constitute $W=8V_1$. The actual exterior construction is $F=\Lambda^\bullet W$, with complex dimension $2^{24}=16,777,216$. For one block,
 
-$
+$$
 Λ^\bullet V_1 = Λ^0 V_1 ⊕ Λ^1 V_1 ⊕ Λ^2 V_1 ⊕ Λ^3 V_1
                 \cong 2V_0 ⊕ 2V_1.
-$
+$$
 
 Consequently $F\cong256(V_0\oplus V_1)^{\otimes8}$. For the torus weight variable $q$ and exterior-degree variable $t$, the character is exactly
 
-$
+$$
 \chi_F(t,q)=(1+t)^8(1+tq)^8(1+tq^{-1})^8.
-$
+$$
 
 The spin-$j$ multiplicity is $m_j=256[\binom{16}{8-j}-\binom{16}{7-j}]$, $0\le j\le8$. These **exact arithmetic/representation-theoretic predictions** follow from the stated representation identification, independently of the later numerical approximations:
 
@@ -57,17 +57,17 @@ The spin-$j$ multiplicity is $m_j=256[\binom{16}{8-j}-\binom{16}{7-j}]$, $0\le j
 
 The weighted sum is exactly (2^{24}). The singlet count is
 
-$
+$$
 \boxed{\dim F^{SU(2)}=m_0=256 C_8=256(1430)=366,080}.
-$
+$$
 
 This is approximately 2.1820068359375% of $F$. The gauge-fixed operator algebra compressed to this sector would have complex dimension $366080^2=134014566400$, versus $2^{48}=281474976710656$ for the full operator algebra. **Neither is a statement about the full bosonic × fermionic physical BFSS Hilbert space.**
 
 **Independent verification paths executed in Python:** (a) exact torus-character weight subtraction $m_j=w_j-w_{j+1}$; (b) exact integer Clebsch–Gordan recurrence for eight tensor copies of $2V_0\oplus2V_1$; and (c) SU(2) Weyl/Haar integral
 
-$
+$$
 m_0=\frac{2}{\pi}\int_0^\pi\sin^2\psi\;2^{24}\cos^{16}\psi\;d\psi,
-$
+$$
 
 whose deterministic Simpson quadrature gives `366079.9999999999`, agreeing numerically with the two exact integer paths. The Haar integral is an **independent numerical check**, not an axiom or proof substitute.
 
@@ -75,9 +75,9 @@ whose deterministic Simpson quadrature gives `366079.9999999999`, agreeing numer
 
 The exact exterior-degree singlet polynomial is obtained by the coefficient difference
 
-$
+$$
 P_0(t)=[q^0-q^1]\,(1+t)^8(1+tq)^8(1+t/q)^8.
-$
+$$
 
 Its coefficients in fermion degrees $k=0,\dots,24$ are:
 
@@ -92,9 +92,9 @@ This yields the predicted singlet supertrace `Tr_{F^G}((-1)^N)=0`. In addition t
 
 For source Spin(9) center, existing F10U proves genuine `source9NegativeCentral` acts by $-I_{48}$ on the original 48 Majorana labels (not a trivial kernel element). Original fermion parity $P_F=(-1)^N$ anti-commutes with each original Majorana generator. This strongly suggests
 
-$
+$$
 \alpha_{-1}(T)=P_F T P_F^{-1},
-$
+$$
 
 but the **original-source Fock parity implementer and equality of automorphisms are open**. In the small **three-mode** exterior model, Python independently checked normalized CAR, $P_F\gamma_aP_F=-\gamma_a$, gauge-vacuum fixedness, and parity/gauge commutation to machine precision. This neither proves original 24-mode parity identification nor provides a global Spin(9) unitary.
 
@@ -104,17 +104,17 @@ Pinned F10U blob: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPaire
 
 G1A/F10F uses the **literal source index ordering** for each spin pair $0\le j<8$, color $0\le A<3$, and real/imaginary label $r\in\{0,1\}$:
 
-$
+$$
 \ell(j,A,r)=2(3j+A)+r,
-$
+$$
 
 while an auxiliary color-major view uses (16A+(2j+r)). The permutation (P) from color-major to `Source48Label` is therefore exact.
 
 At the tensor-factor level, a spatial Spin(9) transformation acts as (I_3\otimes R_{16}) in color-major coordinates; the SU(2) color adjoint acts as (R_3\otimes I_{16}). After the **same** (P) reindexing,
 
-$
+$$
 [P(I_3\otimes R_{16})P^{-1},\;P(R_3\otimes I_{16})P^{-1}]=0.
-$
+$$
 
 **Numerical adversarial test:** sampled a generic orthogonal (R_{16}=\exp(A-A^T)) (scaled in the executable script) and a random (R_3∈SO(3)), seed `20261109`. The correctly transported 48×48 commutator Frobenius norm was exactly zero to floating precision. A deliberate bug omitting (P) on the gauge matrix produced a norm of approximately **9.004133**. This is a finite Kronecker/permutation sanity check, *not* a numerical evaluation of the source Spin(9) representation itself and *not* the Lean theorem.
 
@@ -136,9 +136,9 @@ On the representation in Section 1, the only SU(2) irreducibles have integer spi
 
 The smallest nonzero eigenvalue is 2, with spin-1 sector dimension $3m_1=2,635,776$. It follows **under the original-generator-normalization and source representation-identification obligations** that
 
-$
+$$
 \langle v,C_Gv\rangle\ge 2\lVert (1-P_G)v\rVert^2.
-$
+$$
 
 This could give a quantitative estimate on approximate fermionic gauge constraints; it is **not** positivity of the full BFSS Hamiltonian, a spectral gap for the full physical model, compactness, confinement or a BFSS mass gap. The original infinitesimal gauge generators, their skew adjoints and normalization still require source-bound Lean construction.
 
