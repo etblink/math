@@ -128,3 +128,16 @@ The earlier dated warning that BIL-0A's corrected retry was pending has now been
 Next [BIL-0B source](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSBIL0BOriginalFockColorPairGaugeInvariant.lean) and [distinct consumer](../../lean/diagnostics/BFSSBIL0BOriginalColorPairCommutatorConsumer.lean) are **new candidates only** pending their separate 90-blob cold strict gate. Their proof structure is a small current-namespace port of historically accepted FCP S3G2, rather than a new mathematical conjecture. S3G3 full arbitrary-`J` quadratic gauge commutation remains qualified only at its historical FCP gate until a current exact import/consumer is independently tested. Preserve current source and historical donor identities separately.
 
 Append records in [the machine-readable evidence map](BFSS_PROJECT_LEAD_QUALIFIED_REUSE_MAP_2026_11_10.json) rather than overwriting the original red receipt. Do not infer BIL-0B qualification from BIL-0A's green.
+
+## 9. New Python Kx trace-moment source recovery — 2026-11-10
+
+**Research-only commit:** [5ea48c74190b](https://github.com/etblink/math/commit/5ea48c74190b00e2693aab53a41a37798dc6c788). [Full scoped memorandum](../../research/unification/BFSS_KX_MOMENTS_POTENTIAL_VOLUME_AND_VALLEY_DISCRIMINANT_2026_11_10.md) and [reproducible, source-Git-blob-pinned Python checker](../../research/unification/tools/bfss_kx_exact_moment_spectrum_check.py). The original `SU2RealGammaProbe.lean` blob is `b9b8192055c70f0d001d7982669b9823c55562ed`. The checker reads the literal upstream gamma source, refuses source drift and checks 120-skew gamma character ranks, six structured integer cases and ten deterministic random cases. **The source-reading repo checker was committed but not separately source-run in CI; the equivalent frozen-coefficient Python calculation ran locally.** This is NOT a new Lean proof or physical BFSS spectral theorem.
+
+Define `T=tr(XᵀX)`, `V=Σ_(A<B) ||x_A ∧ x_B||²` (verified original FCP S2A Pauli normalization), and `D=det(XᵀX)`. On the 120-real-skew Gamma coefficient carrier, `K_x(B)=Σ_A Γ(x_A) B Γ(x_A)`. Direct Clifford calculations and exact finite matrices give:
+- `Tr K=-8T`, `Tr K²=120T²-224V`, `Tr K³=-8T³+96D`.
+- Eight original Clifford character multiplicities: `(+++,++-,+-+,+--,-++,-+-,--+,---)=(16,12,12,16,12,16,16,20)`.
+- `Delta=T³-4TV+8D` is the polynomial alternative to selecting the top Gram eigenline: `Delta>0` **equivalent** to `lambda1>lambda2+lambda3`. Auxiliary inertias `(positive,zero,negative)=(56,0,64)` for positive Delta; `(52,0,68)` for negative; at nonzero rank-three boundary `(40,28,52)`.
+
+**New source interface opportunities:** VLY-KX0 full original G3A/Gamma coefficient invariance; VLY-KX1 polynomial trace/potential source theorem; VLY-KX2 positive/negative projector regularity away from Delta=0; JOIN-0 only after genuine original Fock S3G3 quadratic map is requalified. No topological particle generation or Hamiltonian mass-gap claim.
+
+**Preservation mode:** research-only Python/checker and note; no changes to original Lean sources, BIL-0B strict workflow, frozen C48/VLY/BIL parent pins, FCP canonical main, or the user's independently running gate. The machine index marks this new row explicitly as **EXPLORATORY**, never as `STRICT_GREEN_AT_EXACT_COMMIT`.
