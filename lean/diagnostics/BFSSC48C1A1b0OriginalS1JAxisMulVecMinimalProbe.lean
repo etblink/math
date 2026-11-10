@@ -88,7 +88,7 @@ theorem originalS1J_mulVec_sourceBlockColorAxis
     · obtain ⟨hk, ht, hCB⟩ := h
       -- Rewrite by the equalities without destructively substituting
       -- local variables needed by the source-specific axis witness.
-      simp [hk, ht, hCB, sourceBlockColorAxis]
+      simp [hk, ht, hCB]
     · have hnot : ((j,s),C) ≠ ((k,t),B) := by
         intro heq
         apply h

@@ -26,7 +26,7 @@ This strengthens existing [Interface-First Proof Protocol](BFSS_INTERFACE_FIRST_
 
 The mathematical roadmap, Lean implementation roadmap, and physical-realization roadmap remain separate ledgers. A well-typed source theorem is not a physical Hamiltonian theorem; a compiled candidate is not a qualified theorem.
 
-## 2. Five consecutive C48-1A1b0 strict reds: causal record
+## 2. Six consecutive C48-1A1b0 strict reds: causal record
 
 Target: the original S1J source matrix acting on one exact G1A paired 48-real Majorana axis,
 
@@ -41,10 +41,13 @@ where C is the original S1J real Majorana matrix, R is the original G3A real adj
 | [#42863553538](https://github.com/etblink/math/actions/runs/42863553538) RED | Generic Pi.single_eq_of_ne caused dependent-function inference failure | Reuse existing sourceBlockColorAxis_self and sourceBlockColorAxis_other |
 | [#42867822784](https://github.com/etblink/math/actions/runs/42867822784) RED | Destructive substitution by rcases with rfl erased j/s/B before later source-specific application | Retain named equalities; avoid substituting live variables |
 | [#42873893752](https://github.com/etblink/math/actions/runs/42873893752) RED | All 9,021 source dependencies and the new proof elaborated with only standard axioms; Lean unnecessarySimpa linter at line 91 required simp instead of simpa | Distinguish lint-only qualification failure from type/proof failure; correct the exact style warning without changing the theorem |
+| [#42877745576](https://github.com/etblink/math/actions/runs/42877745576) RED | All 9,021 dependencies built; theorem elaborated with standard axioms, but unusedSimpArgs linter at line 91 flagged sourceBlockColorAxis | Trust the exact Lean lint hint, remove the unused simp arg; linter-only red still does **not** qualify the theorem |
 
-All five passed source-pin preflight and compiled **9,021 dependencies**; the appended diagnostic failed. The fifth red was *only* an unnecessarySimpa style-linter failure: the original axis mulVec theorem elaborated with standard axioms but the strict check failed, so it is still unqualified. This is an elaboration/proof-script failure, **not** an original-source mathematical counterexample. The reported sorryAx arose from error recovery and **disqualifies** the red candidates.
+All six passed exact source-pin preflight and built **9,021 dependencies**; the appended diagnostic was not strictly accepted. Earlier reds involved notation, dependent-type elaboration and tactic substitutions, whereas runs #42873893752 and #42877745576 were exclusively lint failures with the target theorem reported to depend only on standard axioms. Earlier sorryAx after elaboration errors disqualified those candidates; the last two runs reported no sorryAx, but CI was still red.
 
-Most recent bounded corrective commit at this writing: **bc0ebeb3a3a27e8b6ef380f9e962ec8a65ad51a3**. Its automatic [#42873893752](https://github.com/etblink/math/actions/runs/42873893752) was in progress when last observed. **Outcome now checked: RED, linter.unnecessarySimpa only at line 91; standard axioms and successful 9,021-dependency build.**
+**Last tested revision:** `2a357d510eeafb64a31de13e4537b56b5880cd1c`, run [#42877745576](https://github.com/etblink/math/actions/runs/42877745576) RED (unusedSimpArgs on explicit sourceBlockColorAxis). **Current bounded candidate:** remove the unused argument only; strict green still required. The scientific target and source representation were not weakened.
+
+**Procedure:** linter-specific edits to an already elaborated proof are an exception to further mathematical DAG decomposition, not a waiver of the Proof-DAG-First requirement on the next new gate. Prefer a cheap focused Lean lint check before expensive strict source rebuilds where the environment permits.
 
 ## 3. Smallest C48 matrix-axis DAG
 
@@ -74,4 +77,4 @@ When extracting a theorem from FCP's frozen reference corpus, separate the **sou
 
 The [FCP charter](https://github.com/etblink/Foundational-Convergence-Program/blob/main/FCP_CHARTER.md), [epistemic rules](https://github.com/etblink/Foundational-Convergence-Program/blob/main/EPISTEMIC_RULES.md), and prospectively active Method 0.2.1 remain authoritative. No canonical FCP source window or adjudication is changed by this memo.
 
-**Next conditional step:** the isolated remaining diagnostic is a strict style-linter correction of simpa to simp; mathematical proof elaboration is observed but **not yet qualified**. The subsequent all-vector C48 and polarization gates must begin with independently checked Proof-DAG atoms, including an explicit M3 reusable coordinate lemma if matrix-axis assembly requires revision. Always verify exact tested SHA, strict consumer and axioms before acceptance.
+**Next conditional step:** the isolated remaining diagnostic is an unusedSimpArgs style-linter correction; mathematical proof elaboration is observed but **not yet qualified**. The subsequent all-vector C48 and polarization gates must begin with independently checked Proof-DAG atoms, including an explicit M3 reusable coordinate lemma if matrix-axis assembly requires revision. Always verify exact tested SHA, strict consumer and axioms before acceptance.
