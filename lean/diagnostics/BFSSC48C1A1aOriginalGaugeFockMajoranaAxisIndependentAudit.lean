@@ -50,10 +50,13 @@ theorem originalGaugeUnitary_originalSource48Label
           (sourceBlockColorAxis
             (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).1 B)
             (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q ψ)) := by
-  exact originalGaugeUnitary_sourceGammaAxis_covariant q
-    (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).1.1
-    (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).1.2
-    (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).2 ψ
+  -- Name and destruct the genuine original G1A index crosswalk
+  -- before instantiating the source theorem; avoid deep reducible
+  -- nested projections during elaboration.
+  generalize hlabel :
+    FCP.BFSSS1V5.sourceBlockColorEquiv.symm p = label
+  rcases label with ⟨⟨j, s⟩, A⟩
+  exact originalGaugeUnitary_sourceGammaAxis_covariant q j s A ψ
 
 #print axioms FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.sourceGammaAxis_eq_originalGaugeTheta
 #print axioms FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.originalGaugeUnitary_sourceGammaAxis_covariant
