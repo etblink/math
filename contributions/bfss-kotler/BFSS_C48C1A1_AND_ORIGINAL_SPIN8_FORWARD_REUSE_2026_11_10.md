@@ -84,6 +84,19 @@ Then the identities are purely algebraic:
 
 **Best small new mathematical gate**: prove true source K-invariant rank-eight projectors on the literal original `SpinIndex=Fin16` representation. Identification as the inequivalent `8_s` and `8_c` of abstract Spin(8), and any outer triality action, remain **separate** representation-classification tests; no physical three-family interpretation follows.
 
+### 4.1. New induced 24+24 gauge-compatible split on the source 48-space (conditional)
+
+Once the original rank-eight projections `P_plus` and `P_minus` have been source-verified, lift them using the SAME accepted original `pairedColorSpinEquiv`:
+
+      Π_plus  = reindexRingEquiv (I_color3 ⊗ P_plus)
+      Π_minus = reindexRingEquiv (I_color3 ⊗ P_minus).
+
+Then `Π_plus + Π_minus = I_48`, `Π_plus Π_minus = 0`, and both have rank `3×8=24`. The accepted S1J gauge action, in the same exact index order, is `C_q = reindexRingEquiv (R_color(q) ⊗ I_spin16)`. The **already accepted C48-0 Kronecker multiplication technique** will prove `Π_± C_q = C_q Π_±` with no explicit 48×48 entries. The source Spin(8)-stabilizer action commutes with `Π_±` once original gamma covariance is established.
+
+This is the mathematically natural **24+24** decomposition on original real Majorana labels, *conditional* on the 16-spinor eigenspace/projector proofs. It preserves the gauge action because each full 24-dimensional half includes **all three color labels together**. It does **not** give three invariant sixteen-dimensional color-separated subspaces; the SU(2) adjoint mixes them. And it certainly does not establish a physical chiral particle spectrum, since a subspace of original *fermion generators* is not automatically a physical Fock state or a four-dimensional Weyl field.
+
+**New proposed independent check:** test projector idempotence and rank in original `SpinIndex`, then projectors' commutation with **actual** source S1J and exact original Spin(9) stabilizer, on the original paired 48 labels. Separate the abstract irreducible `8_s/8_c` identification and dynamical physical interpretation.
+
 ## 5. Causal negative knowledge and recommended sequence
 
 1. C48-1A1 is potentially a **source-existing-theorem transport**, not a new physical SU(2) construction. Do not refactor G4E, change the operator carrier, or use a non-original label ordering.
