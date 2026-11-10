@@ -54,7 +54,7 @@ jobs:
           assert re.findall(r"(?m)^import (\S+)$",test)==[
               "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P2bB2OriginalFockGlobalPhysicalStar"]
           assert re.findall(r"(?m)^#print axioms (\S+)$",source)==["source9Spin_originalFockOperator_clifford_map_star","source9Spin_originalFockOperator_global_map_star"]
-          assert re.findall(r"(?m)^#print axioms (\S+)$",test)==["FCP.BFSSP2bB2OriginalFockGlobalPhysicalStar.source9Spin_originalFockOperator_clifford_map_star","FCP.BFSSP2bB2OriginalFockGlobalPhysicalStar.source9Spin_originalFockOperator_global_map_star","FCP.BFSSP2bB2OriginalFockGlobalPhysicalStarIndependentAudit.originalFock_selfAdjoint_preserved"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",test)==["FCP.BFSSP2bB2OriginalFockGlobalPhysicalStar.source9Spin_originalFockOperator_clifford_map_star","FCP.BFSSP2bB2OriginalFockGlobalPhysicalStar.source9Spin_originalFockOperator_global_map_star","originalFock_selfAdjoint_preserved"]
           b0=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB0OriginalFockAdjointAdditiveBridge.lean").read_text()
           b1=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB1OriginalFockComplexifiedGammaPhysicalStar.lean").read_text()
           b2a=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB2aOriginalFockScalarProductPhysicalStar.lean").read_text()
