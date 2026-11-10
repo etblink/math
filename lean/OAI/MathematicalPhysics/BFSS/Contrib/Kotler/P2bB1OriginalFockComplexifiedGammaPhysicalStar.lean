@@ -103,10 +103,37 @@ theorem source9Spin_originalFockOperator_complexifiedGamma_map_star
             source9Spin_originalFockOperatorAutomorphismHom g X +
               source9Spin_originalFockOperatorAutomorphismHom g Y :=
         (source9Spin_originalFockOperatorAutomorphismHom g).toLinearEquiv.map_add X Y
-      -- The first `star_add` simplification processes both sides.
-      -- Avoid a redundant second rewrite that has no occurrence left.
-      simpa only [hGammaAdd, star_add, hAlphaAdd] using
-        (congrArg₂ (· + ·) ha hb)
+      -- Rewrite just the original source generator sum. Use a concrete
+      -- equality chain for physical star and source Spin(9) additivity,
+      -- rather than relying on simp to orient every nested expression.
+      rw [hGammaAdd]
+      let X : OriginalFockOp :=
+        FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
+          (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) a)
+      let Y : OriginalFockOp :=
+        FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
+          (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) b)
+      change
+        source9Spin_originalFockOperatorAutomorphismHom g (star (X + Y)) =
+          star (source9Spin_originalFockOperatorAutomorphismHom g (X + Y))
+      calc
+        source9Spin_originalFockOperatorAutomorphismHom g (star (X + Y)) =
+          source9Spin_originalFockOperatorAutomorphismHom g (star X + star Y) :=
+            congrArg
+              (fun Z : OriginalFockOp =>
+                source9Spin_originalFockOperatorAutomorphismHom g Z)
+              (star_add X Y)
+        _ = source9Spin_originalFockOperatorAutomorphismHom g (star X) +
+            source9Spin_originalFockOperatorAutomorphismHom g (star Y) :=
+          hAlphaAdd (star X) (star Y)
+        _ = star (source9Spin_originalFockOperatorAutomorphismHom g X) +
+            star (source9Spin_originalFockOperatorAutomorphismHom g Y) :=
+          congrArg₂ (· + ·) ha hb
+        _ = star (source9Spin_originalFockOperatorAutomorphismHom g X +
+            source9Spin_originalFockOperatorAutomorphismHom g Y) :=
+          (star_add _ _).symm
+        _ = star (source9Spin_originalFockOperatorAutomorphismHom g (X + Y)) :=
+          congrArg star (hAlphaAdd X Y).symm
 
 #print axioms originalComplexCliffordFockAlgEquiv_tmul_activeGamma
 #print axioms source9Spin_originalFockOperator_complexifiedGamma_map_star
