@@ -77,8 +77,7 @@ theorem sourceGaugeOriginalPaired48_entry
         (pairedColorSpinEquiv (A, α))
         (pairedColorSpinEquiv (B, β)) =
       if α = β then adjointColorMatrix q A B else 0 := by
-  simp [sourceGaugeOriginalPaired48, Matrix.reindex,
-    Matrix.kronecker, Matrix.one_apply]
+  simp [sourceGaugeOriginalPaired48, Matrix.reindex, Matrix.one_apply]
 
 /-- The original paired real/imaginary gauge coefficients recover
 exactly the qualified G3B 24-complex-mode one-particle matrix entries
