@@ -141,3 +141,25 @@ The exact equality is an **open Lean obligation**. Prove by `Matrix.ext`, transp
 **Historical red provenance retained:** initial [#42775475732](https://github.com/etblink/math/actions/runs/42775475732) failed at the nondefinitional reindexed entry `change` tactic; second [#42777976822](https://github.com/etblink/math/actions/runs/42777976822) passed mathematical cold compilation but failed strict warnings due to an unused `Matrix.kronecker` simp argument. Both were repaired without modifying statement, accepted ancestors, gate budget or independent consumer.
 
 **Authorized next research gate:** C48-0B — show the existing original source SU(2) `S1J.sourceRealMajoranaMatrix q` equals the strictly accepted C48-0 `sourceGaugeOriginalPaired48 q` on all 48 labels, via exact source G1A `colorModeEquiv`, paired `Fin 2` and the already accepted `sourceGaugeOriginalPaired48_G3B_mode_entry` coefficient theorem. This is a new separate qualification and must not be retroactively included in C48-0.
+
+## 10. C48-0B launched — exact independent S1J source gauge matrix identity
+
+**Prior accepted dependency:** C48-0 strict green [#42779878513](https://github.com/etblink/math/actions/runs/42779878513) on tested `b9bc56747d22ba2dae721aff91b47f6e7c2ce1b9`, artifact `sha256:d4c70877ff9ebb2a1c7f35c82a30e855d97ade66828779f2f644f67d2060c528`. The acceptance is recorded in Section 9 above.
+
+**New source candidate:** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean` [commit `df5ffbaa`](https://github.com/etblink/math/commit/df5ffbaafaba277ee0ff64d7cd6abdeffe92e498), Git blob `5674582759fc7ef061e3592681ae75fdfc40fa3c`. Two source roots:
+1. `pairedColorSpinEquiv_sourceMode`: source-exact crosswalk between F10F's color-major intermediate index and literal G1A `(Fin 24 × Fin 2)` mode/real-imag labels.
+2. `sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix`: equality on **every original 48-Majorana matrix entry** between accepted C48-0's real gauge matrix and preexisting S1J's actual `oneParticleMatrix ⊗ I_2`. Proof uses the accepted C48-0 `_G3B_mode_entry` theorem and independently defined S1J `sourceRealMajoranaMatrix_entry`, not an assumed representation isomorphism.
+
+**New independent consumer:** `lean/diagnostics/BFSSC48C0BOriginalSourceGaugeS1JMatrixIndependentAudit.lean` [commit `2f6c8cf4`](https://github.com/etblink/math/commit/2f6c8cf45b1216b016bb16250fe731be12e4ee4e), Git blob `e1b76de97bc077a9eb13288021cd86d25c62d175`. It checks the reversed exact S1J source equality, promotes the previously accepted C48-0 Spin(9)-gauge commutator to the **independently defined S1J original matrix**, and evaluates it on an arbitrary original `Source48Vector` with separate consumer roots.
+
+**Frozen 67-pin strict workflow:** `.github/workflows/bfss-c48c0b-actual-s1j-source-gauge-identity-strict.yml`. It retains 62 accepted C48-0 source/consumer pins and adds three exact S1J ancestor-source pins plus two new candidate roots:
+- `S1JActual48RealMajoranaColorActionProbe.lean` Git blob `de0a042cb39f58b81a0ebd54ce64912bff481a80`
+- `S1COneParticleSpecialUnitaryProbe.lean` Git blob `21a5eef11dd8413a798a2928345389dde206f296`
+- `G3CComplexOneParticleUnitaryProbe.lean` Git blob `161861a9494836fcd2fad02a76e25cc6a81cf20b`
+- The two C48-0B source and consumer hashes above.
+
+The workflow was initially created at [`ea1e3df8`](https://github.com/etblink/math/commit/ea1e3df852b68834da01139bfb08c31ed6b62708). A same-session static preflight caught a template-derived **wrong self-trigger path** in its `on.push.paths` list. This did not alter a Lean theorem or verification predicate and did **not** produce a successful acceptance run. Correction [`4ff4a5f0`](https://github.com/etblink/math/commit/4ff4a5f04940eb331f90e86da37dcb5993db4c7b) changed only that workflow path to the actual new filename. The 67 frozen Git hashes, toolchain pins (Lean 4.34.1 / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`), mandatory cold build, independent consumer, strict warnings and allowed-axiom checks remain unchanged.
+
+**New strict candidate run:** [#42782411960](https://github.com/etblink/math/actions/runs/42782411960), tested commit `4ff4a5f04940eb331f90e86da37dcb5993db4c7b`, **in progress at this handoff**. Await final exact acceptance marker `C48C0B_ACTUAL_S1J_GAUGE_IDENTITY_INDEPENDENT_STRICT_PASS`. The source and consumer are **not qualified** merely because created or because C48-0 is already green.
+
+**Scientific boundary:** This gate identifies original **real 48-label matrices**, not the induced Fock-space gauge operator with its possible phase, and not the original physical boson–fermion Hilbert projection. If accepted, it directly enables C48-1A generator covariance crosswalk, then C48-1B full Fock-operator conjugation-action commutation, followed by the separately audited S1G/S1H or T1 phase-elimination and OP1/OP2b original fermionic projection route. The living flexible roadmap's Section 8 remains the active strategy.
