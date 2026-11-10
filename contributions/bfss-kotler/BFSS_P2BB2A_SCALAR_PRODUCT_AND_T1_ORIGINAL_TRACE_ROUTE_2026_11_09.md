@@ -93,3 +93,26 @@ follows formally, supporting a source-exact Hilbert–Schmidt isometric represen
 - Keep R (representation), T1 (trace), A (adversarial spectral) and P (original operator-form/domain) distinct. No premature R→P inference.
 - Preserve the hard-earned B1 lesson: a repeated large-term `star_add` failure was solved by qualified original-carrier B0 helper. B2a uses typed scalar/product operations from the beginning.
 - B2a strict gate runs independently; T1 was **read-only investigation and source API verification** in this research interval. Advance full B2 or create a T1 formalization only as a separately bounded, pinned, independent-consumer gate.
+
+
+## V. Exact P2b-B2a GREEN qualification and first global B2 strict candidate (2026-11-09 PT)
+
+### Accepted P2b-B2a result
+
+- Strict [run #42757429782](https://github.com/etblink/math/actions/runs/42757429782), job `129634944486`, completed **SUCCESS** on exact tested commit `de7e1a268cc875a715ad07c5c3157273934ff49f` (attempt 1). GitHub retained [artifact #13736084539](https://github.com/etblink/math/actions/runs/42757429782/artifacts/13736084539), reported SHA-256 `31c5eeb67d7d456b87bcf6cb18f00d4c1df736041158806d4aa772d4782270b2`.
+- The preflight **47/47 source Git blob pins**, exact Lean 4.34.1 / pinned Mathlib, cold source build, typed independent consumer and all three separate `#print axioms` checks passed. Both source and independent consumer found **only `propext`, `Classical.choice`, `Quot.sound`**. Final strict acceptance text: `P2BB2A_ORIGINAL_FOCK_SCALAR_PRODUCT_INDEPENDENT_STRICT_PASS`.
+- Qualified **only** the exact original `Fermion 2 →L[ℂ] Fermion 2` B2a theorem roots `originalFock_physicalStar_mul`, `source9Spin_originalFockOperator_algebraMap_map_star`, and `source9Spin_originalFockOperator_mul_map_star`. They encode reversed Hilbert-adjoint multiplication, scalar star compatibility, and *conditional* multiplicative transport, respectively. This **supersedes the earlier B2a PENDING status** while preserving its exact provenance.
+- The strictly qualified B0 addition gate [#42752159572](https://github.com/etblink/math/actions/runs/42752159572), B1 generator gate [#42754462733](https://github.com/etblink/math/actions/runs/42754462733), and B2a scalar/product gate now cover every constructor required by pinned `CliffordAlgebra.induction`. The final global theorem nevertheless requires its **own cold verification**; never promote it from independent parent successes.
+
+### Full global original Fock-star B2 candidate
+
+- [Source commit `3abfed9d`](https://github.com/etblink/math/commit/3abfed9d50c2db373d2d5182e32ccb962c227d77): `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB2OriginalFockGlobalPhysicalStar.lean`, source blob `4e612210d9ca04f5877a87de54bc6bf1a350e602`.
+- [Independent consumer `f9cc90ed`](https://github.com/etblink/math/commit/f9cc90edd095601b1674f40a82839fb0a7d6005f): `lean/diagnostics/BFSSP2bB2OriginalFockGlobalPhysicalStarIndependentAudit.lean`, blob `84a9fe1213105893043d378de43759898bb97e93`; the consumer includes an additional source-faithful consequence that the original Spin(9) action carries physically self-adjoint original Fock operators to physically self-adjoint ones.
+- [Strict workflow commit `89aea96a`](https://github.com/etblink/math/commit/89aea96a47e29757a530386c500f2c88735e3aab): `.github/workflows/bfss-p2bb2-original-fock-global-physical-star-strict.yml`. It freezes **51 exact original source/consumer Git blobs** (49 union of accepted B1 and B2a parent closures, plus B2 source+independent consumer), pinned Lean/Mathlib, explicit parent root-name checks, original four-case Clifford induction, and a separate source/consumer no-`sorryAx` and allowed-axiom audit. All accepted old blobs remain unchanged.
+- **New run:** [#42759235198](https://github.com/etblink/math/actions/runs/42759235198) at exact candidate commit `89aea96a47e29757a530386c500f2c88735e3aab` was **IN PROGRESS** when triggered. No global physical-star theorem is currently accepted.
+- **The two B2 candidate roots:** `source9Spin_originalFockOperator_clifford_map_star` for every exact original complex Clifford element, and `source9Spin_originalFockOperator_global_map_star` for every actual original continuous Fock operator by M3I surjectivity. The second statement is the complete algebraic physical-adjoint intertwining `α_g(T†)=(α_g T)†`, but must **not** be called a unitary original Fock-vector implementation, continuous Spin(9) action, gauge-invariant column action, original closed Hamiltonian covariance, or spectral result.
+- **First-red protocol:** inspect only the first causal failure from the new strict B2 run. For a localized elaboration failure, prefer a small qualified typed helper to speculative heartbeats/recursion changes; record exact source hashes, forbidden axioms, diagnostics and failed variants. Do not alter accepted B0/B1/B2a source or their pins.
+
+### Parallel T1 status
+
+The source API discovery in section III remains valid and **read-only**: `Module.End.toContinuousLinearMap` and `LinearMap.trace_map` are both verified at the exact pinned Mathlib commit; a specialization to the actual original `Fermion 2` and source `α_g` is a separate future strict theorem. No trace qualification or Hilbert–Schmidt-unitary theorem is being asserted.
