@@ -1,0 +1,158 @@
+name: BFSS C48-1A1a actual SU2 gauge-unitary 48-Majorana axis strict gate
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1aOriginalGaugeFockMajoranaAxisCovariance.lean
+      - lean/diagnostics/BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.lean
+      - .github/workflows/bfss-c48c1a1a-gauge-fock-majorana-axis-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-c48c1a1a-original-spin-gauge-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-SU2-gauge-unitary-axis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout C48-1A1a exact source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze 69 accepted C48-1A0 pins and 9 G4H/G4E ancestry pins and 2 C48-1A1a roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-c48c1a1a"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/toolchain-sha256.txt"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json,subprocess
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in pkgs if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean":"65db1f822b86bfbf400957a0aaa94784d6cb7a39","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean":"9dc5713dfea7c40d8c9f58088392e144c3c28517","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean":"75a679f2a1435d747e219617feea266b4508c53d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48QuadraticUnitAxesProbe.lean":"de7cf67d2945718a1da98d05a14e1b0d7edcff4a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3BOriginalSource48QuadraticIsometryBridge.lean":"e6a1c6fe0db9292dada850fae64bdd431a0f464d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C0OriginalRealCliffordGeneratorSquare.lean":"a78dd151dd41726170eed639821460cf0b2882ed","lean/diagnostics/BFSSOP3C0OriginalRealCliffordSquareIndependentAudit.lean":"a7fe68b0fd995d024ba1bf9d66c0c48960ac9ef4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E5C1OriginalFockCliffordAlgebraUniversalLiftProbe.lean":"e41b8980284ead53ec5018587bef23c3cc741b59","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean":"a9db27fc28379b35ca85515d733cc0bc43376592","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C2OriginalRealCliffordGroupLaw.lean":"69267168df2edb54d55c4f5101273a2ac436a72d","lean/diagnostics/BFSSOP3C2OriginalRealCliffordGroupLawIndependentAudit.lean":"39f51ec530fd1b75d676da7d40a3fb070d4668f7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C1OriginalRealCliffordDirectUniversalLift.lean":"5d689fc9537a2f7e9890a332421a501baa3c7532","lean/diagnostics/BFSSOP3C1OriginalRealCliffordUniversalLiftIndependentAudit.lean":"355b2accf8d902730b9e0a6d54346c12757d757f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C3OriginalRealCliffordAlgEquiv.lean":"efe6ec3ca2b4b7203afde3f7f280f6fce97e409d","lean/diagnostics/BFSSOP3C3OriginalRealCliffordIndependentAudit.lean":"8163af16cf5800c00dca9151ba3e992eef32744a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C4OriginalRealCliffordSpinAction.lean":"6d1592a9681718d7a3a48c30168515b7cd0dc3ca","lean/diagnostics/BFSSOP3C4OriginalRealCliffordIndependentAudit.lean":"1bec56e0b8d3e0bf4e57902c814ccd53ad0ee69f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5AOriginalComplexCliffordBaseChange.lean":"3a28870674b5ce1b53c4a2854b3101f72442a201","lean/diagnostics/BFSSOP3C5AOriginalComplexCliffordIndependentAudit.lean":"3b535e4901bfa96d6144308d1cac86140c143710","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C5BOriginalComplexCliffordSpinAction.lean":"bd0e69e754a8de32ee2face664ae1d71860930ed","lean/diagnostics/BFSSOP3C5BOriginalComplexCliffordIndependentAudit.lean":"bdfd3addde08ffe76a9e2d48a6b56eefc6b07e57","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean":"0b0b1f06f332cc9da738375e4511c28361c09f72","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3DOriginalComplexCliffordFullFockImageProbe.lean":"17ec2266d7854643338c1c238b90fb374b5fe139","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3GOriginalFockContinuousOperatorFinrankProbe.lean":"a2c99c34756eba29472ce0ccd77f85c7db4d05c1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3COriginalCliffordFockSchurAndFiniteProbe.lean":"6fefd9ae344df0b7247feb34c9bec5ea0a27aea0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C6AOriginalFockOperatorSpinAction.lean":"94ba1beb876aaf9af7eaa50b444dc45c9ec9bc69","lean/diagnostics/BFSSOP3C6AOriginalFockOperatorIndependentAudit.lean":"6590095f10f5fa38008f34d231ebfc3150d63f32","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C6BOriginalFockDonorGammaCovariance.lean":"7d862a77489a57d9a7d7a3664d7b25908c55bfef","lean/diagnostics/BFSSOP3C6BOriginalFockDonorGammaIndependentAudit.lean":"d2788238f79bd65646ea4b043918f92bd1e6e213","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean":"b3f032e8d2bc99901b659c323d982a29a926cd47","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E4OriginalFockRealLinearCliffordGeneratorMapProbe.lean":"d1a6194ac68fef46ca99de45beb46d15ccb32c79","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean":"a9f446ea7986ca796c2f4b222a5ab710d98590cc","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C6COriginalFockActiveGammaCovariance.lean":"2d6f777568b0026737112ff8256e5ed50fc9e6e6","lean/diagnostics/BFSSOP3C6COriginalFockActiveGammaIndependentAudit.lean":"e4299e480783c1f12ba249ce73fd2a69ca2919da","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean":"a02f767ebf1f569302e27676b8d426850db37af1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean":"98889cb8607ccc64091165fbca585acb898b9ddc","lean/diagnostics/BFSSP2aOriginalFockGammaIndependentAudit.lean":"95d425e47ddd74a47c810095e2086e94b5157800","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bAOriginalFockGammaPhysicalStar.lean":"b8240c9c3060d825e65d126daa1172e65c569e74","lean/diagnostics/BFSSP2bAOriginalFockGammaIndependentAudit.lean":"b3ec33170d02f5333b96b3aa19b255f3a33126d1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB1OriginalFockComplexifiedGammaPhysicalStar.lean":"b6187c20366b31baca423979cb42b4a4ad707d5e","lean/diagnostics/BFSSP2bB1OriginalFockComplexifiedGammaIndependentAudit.lean":"d8842d9a719462ae7eec43bba5690a2ffd08ef48","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB0OriginalFockAdjointAdditiveBridge.lean":"a83e8d9df3d593159a370bd3219c8227edba3316","lean/diagnostics/BFSSP2bB0OriginalFockAdjointAdditiveIndependentAudit.lean":"7e5d13460214cb4f20ae32bac3ed113a60b86b13","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB2aOriginalFockScalarProductPhysicalStar.lean":"e2c0cd73128aa24b0550d6a58785eb68e1c04134","lean/diagnostics/BFSSP2bB2aOriginalFockScalarProductIndependentAudit.lean":"5e1f370759af281759224c438e48a6077815d5e3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB2OriginalFockGlobalPhysicalStar.lean":"4e612210d9ca04f5877a87de54bc6bf1a350e602","lean/diagnostics/BFSSP2bB2OriginalFockGlobalPhysicalStarIndependentAudit.lean":"84a9fe1213105893043d378de43759898bb97e93","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB3OriginalFockStarAutomorphismAction.lean":"b50ef04695587b267ad8519074b1293f98828749","lean/diagnostics/BFSSP2bB3OriginalFockStarAutomorphismIndependentAudit.lean":"cf10db6ffb01c8390e7f4833e1fd4e36bc9df7b7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/T1OriginalFockTraceInvariance.lean":"3be6c9a6f2898484df66690f94fdfa1877660897","lean/diagnostics/BFSST1OriginalFockTraceIndependentAudit.lean":"e3ce4de9987a07a7405c29ece850b9b203eeade7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean":"152204ef15a6569534e0503824a697cb9ae8e4ce","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3AAdjointColorRepresentationProbe.lean":"553869f1287c64893398c3b79c04fe010023bd08","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3B24ModeOrthogonalLiftProbe.lean":"3cdf867357ea2955bf9d88ec6f5f6a0f9228e92a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean":"f3a2b41f902a20f6fe237ecce18dd7e869e9c45e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9PlaneGeneratorProbe.lean":"02b8e54464b0aea151c96cefd316a86270cf8871","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0OriginalSpinGaugeMajoranaCommutation.lean":"9f9a5ce2186ded98a251efbc24c2b66f416044d5","lean/diagnostics/BFSSC48C0OriginalSpinGaugeMajoranaCommutationIndependentAudit.lean":"924d6bb330ea9e157164d20b60528de0b1eb35d7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1JActual48RealMajoranaColorActionProbe.lean":"de0a042cb39f58b81a0ebd54ce64912bff481a80","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1COneParticleSpecialUnitaryProbe.lean":"21a5eef11dd8413a798a2928345389dde206f296","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3CComplexOneParticleUnitaryProbe.lean":"161861a9494836fcd2fad02a76e25cc6a81cf20b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean":"dde53d8663f00d6832aa4cbb1eafbe7e4746eb1a","lean/diagnostics/BFSSC48C0BOriginalSourceGaugeS1JMatrixIndependentAudit.lean":"e1b76de97bc077a9eb13288021cd86d25c62d175","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean":"4c9a7d183e65d13b33ab9694653f3e0a74741747","lean/diagnostics/BFSSC48C1A0OriginalActiveGammaS1JSpinIndependentAudit.lean":"6e14d5fe0626693287e2ba353490c6badbeeb137","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4AExteriorGaugeActionProbe.lean":"141fbe74fc4883f686e05dbc702efb12c6fb8fab","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4BFermionLinearTransportProbe.lean":"e55fcbb58ce4d3776bddefdd6d11ad83560bb75c","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4CFermionOperatorCovarianceProbe.lean":"9e4074dfab1efc8d54aa50c1d7be5c1898651125","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4DExteriorOccupationIsometryProbe.lean":"61ca3360e72d94cf1c118210126cefa3071daccf","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4EFermionHilbertUnitaryProbe.lean":"7247844122ab870d31e92903db4c2ab561f98112","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4FRealColorAnnihilatorForwardProbe.lean":"236389659d386d476302cf3220af3cf48d66c696","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4GMajoranaModeCovarianceProbe.lean":"3714b1042583d91d02c6a39b8e1e8b045e42f1be","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4HExactThetaCovarianceProbe.lean":"7f4a93221c8f1168b274155f482e2f5c61f72786","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52L9E2OriginalFockMajoranaSourceCliffordAxisNormalizationProbe.lean":"1095d164cb0716ef5c9f80e8e0fdbc4ebd8e19d2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1aOriginalGaugeFockMajoranaAxisCovariance.lean":"9a10318d914ad4f771a6c366eb55b01d8f4e7cc8","lean/diagnostics/BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.lean":"6f996d4bcf4c8834cc38bdb53a452dfbee6276d1"}
+          assert len(pins)==80
+          for path,expected in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==expected,(path,expected,actual)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1aOriginalGaugeFockMajoranaAxisCovariance.lean").read_text()
+          test=Path("lean/diagnostics/BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3AOriginalCliffordFockGeneratorAxisCrosswalk","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4HExactThetaCovarianceProbe"]
+          assert re.findall(r"(?m)^import (\S+)$",test)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.C48C1A1aOriginalGaugeFockMajoranaAxisCovariance"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==["sourceGammaAxis_eq_originalGaugeTheta","originalGaugeUnitary_sourceGammaAxis_covariant"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",test)==["FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.sourceGammaAxis_eq_originalGaugeTheta","FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.originalGaugeUnitary_sourceGammaAxis_covariant","originalGaugeUnitary_originalAxis_reverse","originalGaugeUnitary_originalSource48Label"]
+          g4h=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4HExactThetaCovarianceProbe.lean").read_text()
+          g4e=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4EFermionHilbertUnitaryProbe.lean").read_text()
+          op3a=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3AOriginalCliffordFockGeneratorAxisCrosswalk.lean").read_text()
+          assert "pairedAlgebraData_fermion_adjoint" in g4h
+          assert "fermionGaugeUnitaryHom" in g4e
+          assert "donor_normalized_eq_active_source_axis" in op3a
+          for term in ("sourceGammaAxis_eq_originalGaugeTheta",
+                       "originalGaugeUnitary_sourceGammaAxis_covariant",
+                       "sourceGammaRealLinear","sourceBlockColorAxis",
+                       "pairedAlgebraData_fermion_adjoint",
+                       "donor_normalized_eq_active_source_axis",
+                       "fermionGaugeUnitaryHom","adjointColorMatrix",
+                       "ContinuousLinearMap.smul_apply"):
+              assert term in source,term
+          for term in ("originalGaugeUnitary_originalAxis_reverse",
+                       "originalGaugeUnitary_originalSource48Label",
+                       "sourceBlockColorEquiv.symm",
+                       "fermionGaugeUnitaryHom"):
+              assert term in test,term
+          for body,name in ((source,"source"),(test,"consumer")):
+              assert "set_option autoImplicit false" in body
+              assert "maxHeartbeats" not in body and "maxRecDepth" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body),(name,"forbidden")
+          print("C48C1A1a_EXACT_G4H_SOURCE_AXIS_80_BLOB_PINS_PASS")
+          PY
+
+      - name: Reclaim disposable runner disk
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+
+      - name: Restore precisely pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-c48c1a1a/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold compile genuine G4H gauge-unitary original Fock gamma axis and independent consumer
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-c48c1a1a"
+          root=OAI.MathematicalPhysics.BFSS.Contrib.Kotler
+          timeout 3600s lake build \
+            "$root.C48C1A1aOriginalGaugeFockMajoranaAxisCovariance" 2>&1 | tee "$evidence/cold-source-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1aOriginalGaugeFockMajoranaAxisCovariance.lean 2>&1 | tee "$evidence/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re,json
+          e=Path(os.environ["RUNNER_TEMP"])/"bfss-c48c1a1a"
+          source_roots=["FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.sourceGammaAxis_eq_originalGaugeTheta","FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.originalGaugeUnitary_sourceGammaAxis_covariant"]
+          consumer_roots=["FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.sourceGammaAxis_eq_originalGaugeTheta","FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.originalGaugeUnitary_sourceGammaAxis_covariant","FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.originalGaugeUnitary_originalAxis_reverse","FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.originalGaugeUnitary_originalSource48Label"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for fn in ("cold-source-build.log","source-axioms.log","independent-consumer.log"):
+              log=(e/fn).read_text()
+              for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+                  assert forbidden not in log,(fn,forbidden)
+              warnings=[line for line in log.splitlines() if "warning:" in line and not pkg_warning.fullmatch(line)]
+              assert not warnings,(fn,"unexpected warnings",warnings[:10])
+              if fn!="cold-source-build.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  expected=source_roots if fn=="source-axioms.log" else consumer_roots
+                  assert [x for x,_ in reports]==expected,(fn,reports,expected)
+                  for name,raw in reports:
+                      actual={x.strip() for x in raw.split(",") if x.strip()}
+                      assert actual<=allowed,(fn,name,actual)
+                  print(fn,"C48C1A1a_ORIGINAL_G4H_AXIS_AXIOM_GATE_PASS")
+          (e/"scope-receipt.json").write_text(json.dumps({
+              "status":"C48C1A1a_G4H_ACTUAL_SOURCE_FOCK_GAUGE_AXIS_ONLY_PASS",
+              "accepted_roots":source_roots,
+              "accepted_C48C1A0_original_Spin9_Fock_operator_gamma_compatibility":True,
+              "actual_original_Fock_G4H_gauge_unitary_axis_covariance":True,
+              "source_all_48_vector_covariance_qualified":False,
+              "full_Fock_operator_automorphism_commutation_qualified":False,
+              "Spin9_fixed_actual_SU2_gauge_unitary_qualified":False,
+              "fermionic_gauge_projection_fixed_qualified":False,
+              "original_BFSS_Hamiltonian_closed_domain_qualified":False,
+              "spectral_claims":False
+          },indent=2,sort_keys=True))
+          print("C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS")
+          PY
+
+      - name: Preserve full diagnostics whether green or red
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-c48c1a1a-original-48-source-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-c48c1a1a/
+          if-no-files-found: warn
+          retention-days: 14
