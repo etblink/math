@@ -63,7 +63,7 @@ theorem spin9_activeGamma_S1J_gauge_commute
         FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q *
           (((source9SpinOriginalPaired48OrthogonalHom g :
             Matrix.orthogonalGroup Source48Label ℝ) :
-            Source48Matrix) := by
+            Source48Matrix)) := by
     rw [← sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix]
     exact source9SpinOriginalPaired48_commutes_sourceGauge g q
   have hv := congrArg (fun M : Source48Matrix => M.mulVec v) hcomm
