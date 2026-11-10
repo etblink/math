@@ -144,3 +144,41 @@ For a future Lean gate, first find accepted Mathlib APIs for `ExteriorAlgebra`, 
 **Repository boundary:** This packet and helper script sit in `research/unification/` specifically to avoid pretending they are BFSS strict-accepted proofs or FCP canonical results. No FCP repo changed; no qualification manifest, Lean source, workflow or active BFSS gate changed. C48-1A0 remains a separate pending strict run whose result the user will relay.
 
 **Next bounded read-only investigation:** Investigate whether the `Spin(10)` exterior-spinor construction plus observed SM anomaly/coupling structure places any genuinely nontrivial restriction on *three-generation selection*, rather than merely repackaging already supplied representations. Specifically compare Spin(10) branching, Pati–Salam, and independently sourced chiral-index compactification candidates under the same `U-G0..G4` questions. Record `NONFORCED` where neither chirality multiplicity nor family count is fixed.
+
+## 8. Further investigation — Pati–Salam is an independent *calculation*, not independent evidence of Spin(10)
+
+A second, very useful four-dimensional representation cross-check comes from the Pati–Salam route inside `Spin(10)`. The chiral `16` branches as
+
+```text
+Spin(10) -> [SU(4)_C × SU(2)_L × SU(2)_R]/Z2
+  16 -> (4,2,1) ⊕ (4bar,1,2) = 8 ⊕ 8.
+```
+
+The quotient is the diagonal central `Z2` generated, in this subgroup presentation, by `(-I4,-I2,-I2)`: it acts as `(-1)(-1)=+1` on each of the two spinor summands. The kernel is *not* an arbitrary choice inferred just from the Lie algebra. Source context: [Baez and Huerta, *The Algebra of Grand Unified Theories*](https://arxiv.org/abs/0904.1556) discusses the non-injective lift `Spin(4) × Spin(6) -> Spin(10)`, and [*Geometry of Spin(10) symmetry breaking* (2024)](https://doi.org/10.1063/5.0210073) explains that properly aligned SU(5) and Pati–Salam subgroup structures intersect in the Standard Model gauge symmetry.
+
+Given the **chosen** SU(4) breaking `4 -> 3_(B-L=+1/3) ⊕ 1_(B-L=-1)` and SU(2) right-isospin `T3R = ±1/2`, the hypercharge formula is
+
+```text
+Y = T3R + (B-L)/2.
+```
+
+This is source-standard Pati–Salam group theory, for example [*Fermion Masses and Mixing in Pati–Salam Unification* (2025)](https://academic.oup.com/ptep/article/2025/3/033B05/8051399). Exact rational re-evaluation:
+
+| Left-handed field | `B-L` | `T3R` | Derived `Y` |
+| --- | ---: | ---: | ---: |
+| `Q` | `+1/3` | `0` | `+1/6` |
+| `L` | `-1` | `0` | `-1/2` |
+| `u^c` | `-1/3` | `-1/2` | `-2/3` |
+| `d^c` | `-1/3` | `+1/2` | `+1/3` |
+| `nu^c` | `+1` | `-1/2` | `0` |
+| `e^c` | `+1` | `+1/2` | `+1` |
+
+The six matches are reproduced in the exact-arithmetic checker alongside the Z6 and anomaly tests.
+
+**Important negative knowledge:** The SU(5) route `16 -> 10 ⊕ 5bar ⊕ 1` and the Pati–Salam route `16 -> (4,2,1) ⊕ (4bar,1,2)` are two distinct **decompositions of the same Spin(10) representation**. Their agreement on observed Standard Model quantum numbers is a meaningful *internal cross-check*, but **not** two independent confirmations that Spin(10) describes reality. It fails the FCP independence test if counted as cross-framework foundational convergence: both results depend on the shared parent `Spin(10)` and selected embedding geometry. Likewise, agreement with already-known hypercharges is a successful reconstruction under chosen assumptions, not an out-of-sample prediction.
+
+**Strongest positive transferable conclusion:** Fock/Clifford techniques, exact global central kernels, and representation restriction are general mathematical building blocks for comparing the SU(5) and Pati–Salam routes and checking for source-induced sign or matter-content mistakes. Formalizing the subgroup intersection and the actions of the exact kernels would provide reusable candidate-neutral Lean mathematics.
+
+**Strongest remaining open physical question:** Which breaking, vacuum and dynamics (if any) are *selected by reality*, and what genuinely new consequences follow? The representations explain how one family **fits** a Spin(10) model, not why three generations exist, why SU(5)/Pati–Salam embedding is realized, why neutrinos have observed masses, why gravity exists, or what dark matter is.
+
+**Recommended next falsification gate:** preregister identical representation and observable tests for these two subgroup routes and an explicit non-GUT null comparator. Do not double-count internal agreement, do not infer gravity/dark matter from gauge branching, and require a new discriminator (e.g. independently constrained decays, heavy intermediates or neutrino-sector predictions) that was not used to choose the representation.
