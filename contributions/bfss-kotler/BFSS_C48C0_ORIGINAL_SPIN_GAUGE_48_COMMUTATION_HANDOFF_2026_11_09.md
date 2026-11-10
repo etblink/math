@@ -269,3 +269,25 @@ for all source Spin(9) `g`, genuine SU(2) gauge `q`, original real `Source48Vect
 **Not qualified:** SU(2) **actual Fock-vector** operator covariance `U_q Γ(v)=Γ(C_q v)U_q`, full operator-algebra action commutation, `α_g(U_q)=U_q`, scalar character elimination, exact gauge-fixed projection, Spin(9) Fock-vector implementer, continuity, original BFSS Hamiltonian closed-domain correspondence, spectral gap/eigenstate or any GUT/ToE claim.
 
 **Next bounded gate:** **C48-1A1a** original 48-coordinate axis SU(2) gauge-unitary covariance. Reuse genuine G4H `pairedAlgebraData_fermion_adjoint`, exact `sourceGammaRealLinear_axis_paired`, G3A output-row/input-column coefficient ordering and S1J `sourceRealMajoranaMatrix_entry`. Qualify axis and independent source coefficient tests before all-vector extension C48-1A1b. The source covariance plan and alternative S1H uniqueness route are preserved in `BFSS_C48C1A1_AND_ORIGINAL_SPIN8_FORWARD_REUSE_2026_11_10.md`. Spin(8)/Spin(48) and unification feasibility remain separate exploratory, candidate-neutral research.
+
+## 18. C48-1A1a original gauge-unitary axis candidate — 80-pin verification launched
+
+**Scientific boundary:** C48-1A0 strict-green [#42798054277](https://github.com/etblink/math/actions/runs/42798054277), tested `5115e9d2178550f3333d83e8fbdbb6f414e5a4cd`, is **accepted**. C48-1A1a is a **new candidate** and must pass its own strict source/independent-consumer/axiom gate.
+
+**Candidate source** `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1aOriginalGaugeFockMajoranaAxisCovariance.lean`, commit [`feb1c3df`](https://github.com/etblink/math/commit/feb1c3df7f21fce6dfa1a7f9abcac49a291c85ea), Git blob `9a10318d914ad4f771a6c366eb55b01d8f4e7cc8`. It imports exactly existing OP3A original generator-source axis crosswalk and genuine G4H original SU(2) gauge theta covariance. Its two unqualified source claims:
+
+1. `sourceGammaAxis_eq_originalGaugeTheta`: the actual active `sourceGammaRealLinear` at each original `sourceBlockColorAxis (j,s) A` equals `√2` times **the independently defined original G1A** `pairedAlgebraData.theta` with the same original spin-pair/color label. This explicitly uses the accepted OP3A donor-to-active source normalization theorem, avoiding the false assumption that two named source index equivalences are definitionally equal.
+2. `originalGaugeUnitary_sourceGammaAxis_covariant`: the **genuine original** `fermionGaugeUnitaryHom q` acting on `sourceGammaRealLinear` at one source axis has exactly the same output-color coefficient sum as the original G4H `pairedAlgebraData_fermion_adjoint` theorem:
+```text
+ U_q Γ(e_(j,s,A)) ψ
+    = Σ_B [adjointColorMatrix(q) B A] · Γ(e_(j,s,B)) (U_q ψ).
+```
+The proof must preserve the complex scalar `√2`, real/imaginary spin-pair component `s`, correct G3A **rows=output B, columns=input A** color orientation, and full `Fermion 2` carrier.
+
+**Independent consumer** `lean/diagnostics/BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.lean`, commit [`3a8a97ee`](https://github.com/etblink/math/commit/3a8a97ee11669fa4a18119271afc9a7bcbbc8b95), Git blob `6f996d4bcf4c8834cc38bdb53a452dfbee6276d1`. It tests the reverse operator equality and the actual source `sourceBlockColorEquiv.symm` at an arbitrary literal original 48-real Majorana index, not a surrogate `Fin 48`.
+
+**Strict workflow** `.github/workflows/bfss-c48c1a1a-gauge-fock-majorana-axis-strict.yml`, commit [`d81d1d82`](https://github.com/etblink/math/commit/d81d1d8246016f917b5ef436f353b3e6d0c4b594). **80 exact Git blob pins**: all 69 accepted C48-1A0 roots/ancestry, nine genuine G4A–G4H and original L9E2 source normalization parents, and two new candidate Lean source/independent consumer roots. Static preflight confirmed exact workflow self-trigger, executed source and independent consumer diagnostics paths, expected import/root lists, pinned toolchain Lean 4.34.1 / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, cold build, warning-as-error and independent source/consumer axiom whitelist. No accepted source, axiom budget, timeouts or prior accepted manifests were changed.
+
+**Pending candidate run:** [#42802526685](https://github.com/etblink/math/actions/runs/42802526685), exact tested workflow commit `d81d1d8246016f917b5ef436f353b3e6d0c4b594`, in progress at this checkpoint. Do not claim success before final `C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS`. If red, inspect first actual Lean compiler/error/axiom diagnosis, apply bounded source+atomic manifest pin repair only where warranted, and preserve negative knowledge.
+
+**Next gate C48-1A1b:** bind the accepted axis coefficient sum to the **already accepted** S1J source real 48×48 `sourceRealMajoranaMatrix q` acting on every `Source48Vector`, via `Pi.basisFun` real-linear map extensionality, true G1A label transport and source coefficient check. Only after this all-vector/genuine Fock-unitary qualification compare route R1 (whole Fock algebra) against R2 (B3 physical-star + S1H source implementer uniqueness). Do not prematurely assert `α_g(U_q)=U_q` or any gauge-fixed physical Hamiltonian/spectral result.
