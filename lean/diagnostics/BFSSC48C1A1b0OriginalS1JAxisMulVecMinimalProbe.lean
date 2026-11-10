@@ -77,25 +77,33 @@ theorem originalS1J_mulVec_sourceBlockColorAxis
           ((Pi.single (sourceBlockColorLabel (j,s) C) (1 : ℝ) :
               Source48Vector) (sourceBlockColorLabel (k,t) B))
   rw [originalS1J_sourceBlockColor_entry]
+  -- Use the source-qualified S1V5 coordinate-axis lemmas, not the
+  -- polymorphic Pi.single equality whose dependent type inference caused
+  -- two consecutive diagnostic reds.
   have hsingle (C : ColorIndex 2) :
       ((Pi.single (sourceBlockColorLabel (j,s) C) (1 : ℝ) :
           Source48Vector) (sourceBlockColorLabel (k,t) B)) =
         if k = j ∧ t = s ∧ C = B then (1 : ℝ) else 0 := by
     by_cases h : k = j ∧ t = s ∧ C = B
-    · rcases h with ⟨rfl,rfl,rfl⟩
-      simp
-    · have hne :
-          sourceBlockColorLabel (k,t) B ≠
-            sourceBlockColorLabel (j,s) C := by
-        intro hsame
-        have hpair : ((k,t),B) = ((j,s),C) :=
-          sourceBlockColorLabel_injective hsame
+    · rcases h with ⟨rfl, rfl, rfl⟩
+      change sourceBlockColorAxis (j,s) B
+          (sourceBlockColorLabel (j,s) B) =
+        if j = j ∧ s = s ∧ B = B then (1 : ℝ) else 0
+      simpa using (sourceBlockColorAxis_self (j,s) B)
+    · have hnot : ((j,s),C) ≠ ((k,t),B) := by
+        intro heq
         apply h
         exact
-          ⟨congrArg (fun z : RealSpinBlock × ColorLabel => z.1.1) hpair,
-           congrArg (fun z : RealSpinBlock × ColorLabel => z.1.2) hpair,
-           (congrArg (fun z : RealSpinBlock × ColorLabel => z.2) hpair).symm⟩
-      simpa [h] using (Pi.single_eq_of_ne hne (1 : ℝ))
+          ⟨(congrArg
+              (fun z : RealSpinBlock × ColorLabel => z.1.1) heq).symm,
+           (congrArg
+              (fun z : RealSpinBlock × ColorLabel => z.1.2) heq).symm,
+           congrArg (fun z : RealSpinBlock × ColorLabel => z.2) heq⟩
+      change sourceBlockColorAxis (j,s) C
+          (sourceBlockColorLabel (k,t) B) =
+        if k = j ∧ t = s ∧ C = B then (1 : ℝ) else 0
+      simpa only [h, ite_false] using
+        (sourceBlockColorAxis_other ((j,s),C) ((k,t),B) hnot)
   simp_rw [hsingle]
   by_cases hk : k = j
   · subst k
