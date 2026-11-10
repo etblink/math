@@ -5,6 +5,10 @@
 
 The aim is one source-faithful mathematical research branch suitable for future proof reuse and eventual curated upstream contribution. This branch preserves the full inherited BFSS research worktree, carries the v0.4.0 OperatorDependencies closure as source copies, and now includes selected immutable FCP source copies under `research-sources/fcp/`. Historical refs and original repositories have not been edited.
 
+## Project Lead fast recovery — November 10, 2026
+
+**Start with the [evergreen qualified-proof reuse and failure ledger](BFSS_PROJECT_LEAD_EVERGREEN_QUALIFIED_REUSE_LEDGER_2026_11_10.md)** and its [machine-readable evidence crosswalk](BFSS_PROJECT_LEAD_QUALIFIED_REUSE_MAP_2026_11_10.json). They reconcile historical FCP strict acceptances, original source files copied into this branch, current-tree qualification and open gates. Older checkpoints below are preserved **as-of notes**, not always the latest gate status. In particular the historical S3G/S3G2/S3G3 original Fock gauge-bilinear proofs are already pinned in `research-sources/fcp/physical-spin-source-20261021/`; do not rederive them without first comparing their source signatures. The active C48–VLY–BIL proof DAG is [here](BFSS_C48_VLY_BIL_INTEGRATION_BOUNDARY_PROOF_DAG_2026_11_10.md). Follow the exact source and CI receipt, not a dated heading.
+
 ## Latest research checkpoint (2026-11-09)
 
 - **Latest independently qualified:** [P2b-B1 original complexified Clifford-generator physical-star #42754462733](https://github.com/etblink/math/actions/runs/42754462733) GREEN on exact tested commit `cd38c01c3f007f269c05ca95e17df4100ccab548`, with 47 frozen source/consumer pins, independent cold compilation and only three permitted foundational axioms. [B0 original-Fock adjoint sum #42752159572](https://github.com/etblink/math/actions/runs/42752159572) GREEN at `505f1adbeae12ededdd8b0d7bf30535a4e9fb76b`. Full operator physical-star and Hamiltonian/spectral results remain **OPEN**.
