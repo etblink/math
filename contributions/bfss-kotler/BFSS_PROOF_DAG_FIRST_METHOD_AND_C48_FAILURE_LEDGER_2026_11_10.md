@@ -78,3 +78,10 @@ When extracting a theorem from FCP's frozen reference corpus, separate the **sou
 The [FCP charter](https://github.com/etblink/Foundational-Convergence-Program/blob/main/FCP_CHARTER.md), [epistemic rules](https://github.com/etblink/Foundational-Convergence-Program/blob/main/EPISTEMIC_RULES.md), and prospectively active Method 0.2.1 remain authoritative. No canonical FCP source window or adjudication is changed by this memo.
 
 **Next conditional step:** the isolated remaining diagnostic is an unusedSimpArgs style-linter correction; mathematical proof elaboration is observed but **not yet qualified**. The subsequent all-vector C48 and polarization gates must begin with independently checked Proof-DAG atoms, including an explicit M3 reusable coordinate lemma if matrix-axis assembly requires revision. Always verify exact tested SHA, strict consumer and axioms before acceptance.
+
+
+## 6. Retrospective acceptance and reusable-source qualification boundary — 2026-11-10
+
+**Accepted direct diagnostic:** [#42880436131](https://github.com/etblink/math/actions/runs/42880436131) GREEN at exact commit `b588df82d5adb272dbda42d88d6fe04dc459f22c`; all 9,021 dependencies, 4 Git blob pins, three original S1J axis theorems and standard-axioms-only reports passed the strict check. Six previous reds remain recorded above as historical evidence, not current gate status.
+
+**Still pending:** the qualifying workflow compiled a single direct diagnostic and did **not** compile a separate importing consumer. The next bounded gate, [C48-1A1b1 source and independent consumer](BFSS_C48C1A1B0_STRICT_ACCEPTANCE_AND_B1_PROOF_DAG_2026_11_10.md), exports the exact proven statements into an importable source module, adds a distinct identity-color-column consumer, and requires its own strict green before calling the exported interface accepted. Subsequent C48 Fock action remains open.

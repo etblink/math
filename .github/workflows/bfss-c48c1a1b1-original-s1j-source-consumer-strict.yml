@@ -1,0 +1,124 @@
+name: BFSS C48-1A1b1 original S1J source import and independent consumer strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1b1OriginalS1JAxisMulVecSource.lean
+      - lean/diagnostics/BFSSC48C1A1b1OriginalS1JAxisMulVecIndependentConsumer.lean
+      - .github/workflows/bfss-c48c1a1b1-original-s1j-source-consumer-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-c48c1a1b1-source-consumer-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-and-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Checkout exact sources
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify original-source and independent consumer pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess,json,re
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in pkgs if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1JActual48RealMajoranaColorActionProbe.lean":"de0a042cb39f58b81a0ebd54ce64912bff481a80",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3B24ModeOrthogonalLiftProbe.lean":"3cdf867357ea2955bf9d88ec6f5f6a0f9228e92a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1b1OriginalS1JAxisMulVecSource.lean":"9838e582bacd01008c5194051c504282de53c89e",
+            "lean/diagnostics/BFSSC48C1A1b1OriginalS1JAxisMulVecIndependentConsumer.lean":"fcff3dec136c7bf49e0e1d268a8ffaeebf733095"
+          }
+          assert len(pins)==5
+          for path,expected in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==expected,(path,actual,expected)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1b1OriginalS1JAxisMulVecSource.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSC48C1A1b1OriginalS1JAxisMulVecIndependentConsumer.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainS1JActual48RealMajoranaColorActionProbe",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG3B24ModeOrthogonalLiftProbe",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe"
+          ]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.C48C1A1b1OriginalS1JAxisMulVecSource"
+          ]
+          roots=[
+            "FCP.BFSSC48C1A1b1OriginalS1JAxisMulVecSource.originalSourceLabel_eq_G1AColorMode",
+            "FCP.BFSSC48C1A1b1OriginalS1JAxisMulVecSource.originalS1J_sourceBlockColor_entry",
+            "FCP.BFSSC48C1A1b1OriginalS1JAxisMulVecSource.originalS1J_mulVec_sourceBlockColorAxis",
+            "originalS1J_unitColorColumn_reconstruct"
+          ]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==roots
+          for body in (source,consumer):
+              assert "set_option autoImplicit false" in body
+              assert "maxRecDepth" not in body and "maxHeartbeats" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
+          print("C48C1A1b1_FIVE_BLOB_SOURCE_CONSUMER_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1500s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Strict source build and separately compiled consumer
+        shell: bash
+        timeout-minutes: 17
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          mkdir -p "$RUNNER_TEMP/bfss-c48c1a1b1-source-consumer"
+          timeout 680s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.C48C1A1b1OriginalS1JAxisMulVecSource \
+            2>&1 | tee "$RUNNER_TEMP/bfss-c48c1a1b1-source-consumer/source-build.log"
+          timeout 200s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSC48C1A1b1OriginalS1JAxisMulVecIndependentConsumer.lean \
+            2>&1 | tee "$RUNNER_TEMP/bfss-c48c1a1b1-source-consumer/consumer-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          log=(Path(os.environ["RUNNER_TEMP"])/"bfss-c48c1a1b1-source-consumer"/"consumer-axioms.log").read_text()
+          for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+              assert forbidden not in log,(forbidden,log[-4000:])
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          warnings=[line for line in log.splitlines() if "warning:" in line and not pkg_warning.fullmatch(line)]
+          assert not warnings,("unexpected warning",warnings[:10])
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+          roots=[
+            "FCP.BFSSC48C1A1b1OriginalS1JAxisMulVecSource.originalSourceLabel_eq_G1AColorMode",
+            "FCP.BFSSC48C1A1b1OriginalS1JAxisMulVecSource.originalS1J_sourceBlockColor_entry",
+            "FCP.BFSSC48C1A1b1OriginalS1JAxisMulVecSource.originalS1J_mulVec_sourceBlockColorAxis",
+            "FCP.BFSSC48C1A1b1OriginalS1JAxisMulVecIndependentConsumer.originalS1J_unitColorColumn_reconstruct"
+          ]
+          assert [name for name,_ in reports]==roots,(reports,roots)
+          allowed={"propext","Classical.choice","Quot.sound"}
+          assert all({x.strip() for x in raw.split(",") if x.strip()}<=allowed for _,raw in reports),reports
+          print("C48C1A1b1_ORIGINAL_S1J_IMPORTABLE_CONSUMER_STRICT_PASS")
+          PY
+      - name: Preserve independent consumer proof diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-c48c1a1b1-source-consumer-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-c48c1a1b1-source-consumer/
+          retention-days: 14
