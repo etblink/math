@@ -56,8 +56,8 @@ theorem originalS1J_mulVec_sourceBlockColorAxis
           sourceBlockColorAxis (j,s) B := by
   classical
   change
-    FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q *ᵥ
-        Pi.single (sourceBlockColorLabel (j,s) A) (1 : ℝ) =
+    (FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec
+        (Pi.single (sourceBlockColorLabel (j,s) A) (1 : ℝ)) =
       ∑ B : ColorIndex 2,
         (FCP.BFSSSU2GaugeG3A.adjointColorMatrix q B A) •
           Pi.single (sourceBlockColorLabel (j,s) B) (1 : ℝ)
