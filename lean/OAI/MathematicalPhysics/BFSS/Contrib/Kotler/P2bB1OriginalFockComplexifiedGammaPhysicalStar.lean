@@ -103,8 +103,10 @@ theorem source9Spin_originalFockOperator_complexifiedGamma_map_star
             source9Spin_originalFockOperatorAutomorphismHom g X +
               source9Spin_originalFockOperatorAutomorphismHom g Y :=
         (source9Spin_originalFockOperatorAutomorphismHom g).toLinearEquiv.map_add X Y
-      rw [hGammaAdd, star_add, hAlphaAdd, hAlphaAdd, star_add]
-      exact congrArg₂ (· + ·) ha hb
+      -- The first `star_add` simplification processes both sides.
+      -- Avoid a redundant second rewrite that has no occurrence left.
+      simpa only [hGammaAdd, star_add, hAlphaAdd] using
+        (congrArg₂ (· + ·) ha hb)
 
 #print axioms originalComplexCliffordFockAlgEquiv_tmul_activeGamma
 #print axioms source9Spin_originalFockOperator_complexifiedGamma_map_star
