@@ -45,7 +45,7 @@ theorem source9Spin_originalFockOperatorAutomorphismHom_M3IGenerator
           (1 ⊗ₜ[ℝ]
             (((source9SpinOriginalPaired48OrthogonalHom g :
               Matrix.orthogonalGroup Source48Label ℝ) :
-              Matrix Source48Label Source48Label ℝ).mulVec v)) := by
+              Matrix Source48Label Source48Label ℝ).mulVec v))) := by
   calc
     source9Spin_originalFockOperatorAutomorphismHom g
         (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
@@ -68,7 +68,7 @@ theorem source9Spin_originalFockOperatorAutomorphismHom_M3IGenerator
           (1 ⊗ₜ[ℝ]
             (((source9SpinOriginalPaired48OrthogonalHom g :
               Matrix.orthogonalGroup Source48Label ℝ) :
-              Matrix Source48Label Source48Label ℝ).mulVec v)) :=
+              Matrix Source48Label Source48Label ℝ).mulVec v))) :=
       congrArg FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
         (source9Spin_originalComplexCliffordAutomorphismHom_generator g v)
 
@@ -99,7 +99,7 @@ theorem source9Spin_originalFockOperatorAutomorphismHom_donorGamma
           (1 ⊗ₜ[ℝ]
             (((source9SpinOriginalPaired48OrthogonalHom g :
               Matrix.orthogonalGroup Source48Label ℝ) :
-              Matrix Source48Label Source48Label ℝ).mulVec v)) :=
+              Matrix Source48Label Source48Label ℝ).mulVec v))) :=
       source9Spin_originalFockOperatorAutomorphismHom_M3IGenerator g v
     _ = FCP.BFSSS1V52L9E4.originalFockGammaRealLinear
         (((source9SpinOriginalPaired48OrthogonalHom g :

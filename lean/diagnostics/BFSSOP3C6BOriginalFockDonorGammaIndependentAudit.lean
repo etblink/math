@@ -33,7 +33,7 @@ example (g : spinGroup source9Quadratic) (v : Source48Vector) :
           (1 ⊗ₜ[ℝ]
             (((source9SpinOriginalPaired48OrthogonalHom g :
               Matrix.orthogonalGroup Source48Label ℝ) :
-              Matrix Source48Label Source48Label ℝ).mulVec v)) :=
+              Matrix Source48Label Source48Label ℝ).mulVec v))) :=
   source9Spin_originalFockOperatorAutomorphismHom_M3IGenerator g v
 
 example (g : spinGroup source9Quadratic) (v : Source48Vector) :
