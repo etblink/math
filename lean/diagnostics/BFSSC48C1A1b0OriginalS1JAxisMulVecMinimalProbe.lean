@@ -74,12 +74,12 @@ theorem originalS1J_mulVec_sourceBlockColorAxis
         (sourceBlockColorLabel (j,s) A) =
       ∑ C : ColorIndex 2,
         (FCP.BFSSSU2GaugeG3A.adjointColorMatrix q C A) •
-          Pi.single (sourceBlockColorLabel (j,s) C) (1 : ℝ)
-            (sourceBlockColorLabel (k,t) B)
+          ((Pi.single (sourceBlockColorLabel (j,s) C) (1 : ℝ) :
+              Source48Vector) (sourceBlockColorLabel (k,t) B))
   rw [originalS1J_sourceBlockColor_entry]
   have hsingle (C : ColorIndex 2) :
-      Pi.single (sourceBlockColorLabel (j,s) C) (1 : ℝ)
-          (sourceBlockColorLabel (k,t) B) =
+      ((Pi.single (sourceBlockColorLabel (j,s) C) (1 : ℝ) :
+          Source48Vector) (sourceBlockColorLabel (k,t) B)) =
         if k = j ∧ t = s ∧ C = B then (1 : ℝ) else 0 := by
     by_cases h : k = j ∧ t = s ∧ C = B
     · rcases h with ⟨rfl,rfl,rfl⟩
