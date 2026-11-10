@@ -85,11 +85,11 @@ theorem originalS1J_mulVec_sourceBlockColorAxis
           Source48Vector) (sourceBlockColorLabel (k,t) B)) =
         if k = j ∧ t = s ∧ C = B then (1 : ℝ) else 0 := by
     by_cases h : k = j ∧ t = s ∧ C = B
-    · rcases h with ⟨rfl, rfl, rfl⟩
-      change sourceBlockColorAxis (j,s) B
-          (sourceBlockColorLabel (j,s) B) =
-        if j = j ∧ s = s ∧ B = B then (1 : ℝ) else 0
-      simpa using (sourceBlockColorAxis_self (j,s) B)
+    · obtain ⟨hk, ht, hCB⟩ := h
+      -- Rewrite by the equalities without destructively substituting
+      -- local variables needed by the source-specific axis witness.
+      simpa [hk, ht, hCB, sourceBlockColorAxis] using
+        (sourceBlockColorAxis_self (j,s) B)
     · have hnot : ((j,s),C) ≠ ((k,t),B) := by
         intro heq
         apply h
