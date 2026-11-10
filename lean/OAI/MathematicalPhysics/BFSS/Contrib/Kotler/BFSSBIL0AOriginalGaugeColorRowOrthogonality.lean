@@ -15,33 +15,17 @@ set_option autoImplicit false
 namespace FCP.BFSSBIL0AOriginalGaugeColorRowOrthogonality
 noncomputable section
 
+open scoped BigOperators
+open Matrix Finset
 open OAI.BFSSQuantum
 open FCP.BFSSSU2GaugeG3A
 
-/-- Real orthogonality on the OUTPUT-color rows of the actual original
-SU(2) adjoint matrix; no determinant or separate SO(3) model assumed. -/
+/-- Real orthogonality on original output colors, derived directly from
+the qualified G3A column-orthogonality and pinned square matrix theorem.
+The proof body follows the historically green FCP S3G source. -/
 theorem originalColorRow_matrix_orthogonal (g : GaugeGroup 2) :
-    adjointColorMatrix g * (adjointColorMatrix g)ᵀ = 1 := by
-  have hcolumns : (adjointColorMatrix g)ᵀ * adjointColorMatrix g = 1 :=
-    adjointColorMatrix_orthogonal g
-  have hinverse : adjointColorMatrix g * adjointColorMatrix (g⁻¹) = 1 := by
-    calc
-      adjointColorMatrix g * adjointColorMatrix (g⁻¹) =
-          adjointColorMatrix (g * g⁻¹) :=
-        (adjointColorMatrix_mul g (g⁻¹)).symm
-      _ = adjointColorMatrix 1 := by rw [mul_inv_cancel]
-      _ = 1 := adjointColorMatrix_one
-  have htranspose : (adjointColorMatrix g)ᵀ = adjointColorMatrix (g⁻¹) := by
-    calc
-      (adjointColorMatrix g)ᵀ =
-          (adjointColorMatrix g)ᵀ *
-            (adjointColorMatrix g * adjointColorMatrix (g⁻¹)) := by
-              rw [hinverse, mul_one]
-      _ = ((adjointColorMatrix g)ᵀ * adjointColorMatrix g) *
-            adjointColorMatrix (g⁻¹) := (mul_assoc _ _ _).symm
-      _ = adjointColorMatrix (g⁻¹) := by rw [hcolumns, one_mul]
-  rw [htranspose]
-  exact hinverse
+    adjointColorMatrix g * (adjointColorMatrix g)ᵀ = 1 :=
+  mul_eq_one_comm.mp (adjointColorMatrix_orthogonal g)
 
 #print axioms originalColorRow_matrix_orthogonal
 

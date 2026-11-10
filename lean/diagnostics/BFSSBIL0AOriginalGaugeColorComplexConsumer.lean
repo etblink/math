@@ -13,6 +13,8 @@ set_option autoImplicit false
 namespace FCP.BFSSBIL0AOriginalGaugeColorComplexConsumer
 noncomputable section
 
+open scoped BigOperators
+open Matrix Finset
 open OAI.BFSSQuantum
 open FCP.BFSSSU2GaugeG3A
 
@@ -28,7 +30,26 @@ theorem originalColorRow_complex_orthogonal
       (fun X : Matrix (ColorIndex 2) (ColorIndex 2) ℝ => X B C)
       (FCP.BFSSBIL0AOriginalGaugeColorRowOrthogonality.originalColorRow_matrix_orthogonal g)
     simpa only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.one_apply] using hh
-  exact_mod_cast h
+  calc
+    _ = ∑ A : ColorIndex 2,
+          ((adjointColorMatrix g B A *
+            adjointColorMatrix g C A : ℝ) : ℂ) := by
+        apply Finset.sum_congr rfl
+        intro A _
+        exact (Complex.ofReal_mul _ _).symm
+    _ = ((∑ A : ColorIndex 2,
+          adjointColorMatrix g B A *
+            adjointColorMatrix g C A : ℝ) : ℂ) := by
+        simp
+    _ = ((if B = C then (1 : ℝ) else 0) : ℂ) := by
+        rw [h]
+        by_cases hBC : B = C
+        · simp [hBC]
+        · simp [hBC]
+    _ = if B = C then 1 else 0 := by
+        by_cases hBC : B = C
+        · simp [hBC]
+        · simp [hBC]
 
 #print axioms FCP.BFSSBIL0AOriginalGaugeColorRowOrthogonality.originalColorRow_matrix_orthogonal
 #print axioms originalColorRow_complex_orthogonal
