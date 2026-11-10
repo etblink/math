@@ -76,8 +76,14 @@ jobs:
           from pathlib import Path
           import re,os
           log=(Path(os.environ["RUNNER_TEMP"])/"bfss-c48c1a1a-mini"/"axioms.log").read_text()
-          for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier","warning:"):
+          for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
               assert forbidden not in log,(forbidden,log[-4000:])
+          # Same narrow dependency-checkout notice exception as the
+          # previously qualified BFSS strict source/consumer workflows.
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          warnings=[line for line in log.splitlines()
+                    if "warning:" in line and not pkg_warning.fullmatch(line)]
+          assert not warnings,("unexpected compiler or toolchain warning",warnings[:10])
           reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
           roots=[
             "FCP.BFSSC48C1A1aOriginalLabelWitnessMinimalProbe.original_source_label_has_explicit_paired_witness",
