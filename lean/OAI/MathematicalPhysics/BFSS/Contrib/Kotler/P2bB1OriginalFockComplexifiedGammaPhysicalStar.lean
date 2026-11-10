@@ -1,5 +1,6 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P2bAOriginalFockGammaPhysicalStar
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk
+import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P2bB0OriginalFockAdjointAdditiveBridge
 import Mathlib.LinearAlgebra.TensorProduct.Defs
 
 /-!
@@ -98,42 +99,19 @@ theorem source9Spin_originalFockOperator_complexifiedGamma_map_star
         exact
           (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv).toLinearEquiv.map_add
             _ _
-      have hAlphaAdd (X Y : OriginalFockOp) :
-          source9Spin_originalFockOperatorAutomorphismHom g (X + Y) =
-            source9Spin_originalFockOperatorAutomorphismHom g X +
-              source9Spin_originalFockOperatorAutomorphismHom g Y :=
-        (source9Spin_originalFockOperatorAutomorphismHom g).toLinearEquiv.map_add X Y
-      -- Rewrite just the original source generator sum. Use a concrete
-      -- equality chain for physical star and source Spin(9) additivity,
-      -- rather than relying on simp to orient every nested expression.
+      -- The separately strict-qualified B0 microgate handles the exact
+      -- original-Fock physical Hilbert-adjoint addition boundary.
+      -- Only the already proven Clifford-to-Fock additive bridge
+      -- remains in this generator-level induction case.
       rw [hGammaAdd]
-      let X : OriginalFockOp :=
-        FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
-          (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) a)
-      let Y : OriginalFockOp :=
-        FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
-          (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) b)
-      change
-        source9Spin_originalFockOperatorAutomorphismHom g (star (X + Y)) =
-          star (source9Spin_originalFockOperatorAutomorphismHom g (X + Y))
-      calc
-        source9Spin_originalFockOperatorAutomorphismHom g (star (X + Y)) =
-          source9Spin_originalFockOperatorAutomorphismHom g (star X + star Y) :=
-            congrArg
-              (fun Z : OriginalFockOp =>
-                source9Spin_originalFockOperatorAutomorphismHom g Z)
-              (star_add X Y)
-        _ = source9Spin_originalFockOperatorAutomorphismHom g (star X) +
-            source9Spin_originalFockOperatorAutomorphismHom g (star Y) :=
-          hAlphaAdd (star X) (star Y)
-        _ = star (source9Spin_originalFockOperatorAutomorphismHom g X) +
-            star (source9Spin_originalFockOperatorAutomorphismHom g Y) :=
-          congrArg₂ (· + ·) ha hb
-        _ = star (source9Spin_originalFockOperatorAutomorphismHom g X +
-            source9Spin_originalFockOperatorAutomorphismHom g Y) :=
-          (star_add _ _).symm
-        _ = star (source9Spin_originalFockOperatorAutomorphismHom g (X + Y)) :=
-          congrArg star (hAlphaAdd X Y).symm
+      exact
+        FCP.BFSSP2bB0OriginalFockAdjointAdditiveBridge.originalFock_spinStarCompat_add
+          g
+          (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
+            (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) a))
+          (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv
+            (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) b))
+          ha hb
 
 #print axioms originalComplexCliffordFockAlgEquiv_tmul_activeGamma
 #print axioms source9Spin_originalFockOperator_complexifiedGamma_map_star
