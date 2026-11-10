@@ -38,7 +38,14 @@ theorem pairedColorSpinEquiv_sourceMode
     (j : Fin 8) (A : ColorIndex 2) (r : Fin 2) :
     FCP.BFSSPairedSpin9Plane.pairedColorSpinEquiv
       (A, FCP.BFSSPairedThetaLabelCrosswalk.spinPairEquiv.symm (j, r)) =
-      (FCP.BFSSSU2GaugeG1A.colorModeEquiv (j, A), r) := rfl
+      (FCP.BFSSSU2GaugeG1A.colorModeEquiv (j, A), r) := by
+  calc
+    FCP.BFSSPairedSpin9Plane.pairedColorSpinEquiv
+        (A, FCP.BFSSPairedThetaLabelCrosswalk.spinPairEquiv.symm (j, r)) =
+      (FCP.BFSSPairedThetaLabelCrosswalk.colorModeEquiv (j, A), r) := by
+        simp [FCP.BFSSPairedSpin9Plane.pairedColorSpinEquiv,
+          FCP.BFSSPairedThetaLabelCrosswalk.pairedLabelEquiv]
+    _ = (FCP.BFSSSU2GaugeG1A.colorModeEquiv (j, A), r) := rfl
 
 /-- The C48-0 action equals the independently source-defined S1J
 real gauge matrix at each of the ORIGINAL 48 Majorana labels.
