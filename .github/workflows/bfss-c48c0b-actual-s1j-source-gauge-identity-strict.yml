@@ -108,7 +108,7 @@ jobs:
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
             OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean 2>&1 | tee "$evidence/source-axioms.log"
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true \
-            diagnostics/BFSSC48C0BOriginalSourceGaugeS1JMatrixIdentityIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
+            diagnostics/BFSSC48C0BOriginalSourceGaugeS1JMatrixIndependentAudit.lean 2>&1 | tee "$evidence/independent-consumer.log"
           python3 - <<'PY'
           from pathlib import Path
           import os,re,json
