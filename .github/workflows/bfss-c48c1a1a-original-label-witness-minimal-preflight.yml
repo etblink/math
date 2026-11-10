@@ -41,13 +41,13 @@ jobs:
               actual=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
               assert actual==expected,(p,actual,expected)
           body=Path(probe).read_text()
-          assert re.findall(r"(?m)^import (\\S+)$",body)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe"]
-          assert re.findall(r"(?m)^#print axioms (\\S+)$",body)==[
+          assert re.findall(r"(?m)^import (\S+)$",body)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",body)==[
               "original_source_label_has_explicit_paired_witness",
               "every_original_label_consumes_explicit_paired_predicate"]
           assert "set_option autoImplicit false" in body
           assert "maxRecDepth" not in body and "maxHeartbeats" not in body
-          assert not re.search(r"(?m)^\\s*(?:sorry|admit|axiom|unsafe)\\b",body)
+          assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
           print("C48C1A1a_LABEL_WITNESS_MINIMAL_PRECHECK_PINS_PASS")
           PY
       - name: Restore pinned Lean and Mathlib only
@@ -78,7 +78,7 @@ jobs:
           log=(Path(os.environ["RUNNER_TEMP"])/"bfss-c48c1a1a-mini"/"axioms.log").read_text()
           for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier","warning:"):
               assert forbidden not in log,(forbidden,log[-4000:])
-          reports=re.findall(r"(?m)^'([^'\\n]+)' (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)",log)
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
           roots=[
             "FCP.BFSSC48C1A1aOriginalLabelWitnessMinimalProbe.original_source_label_has_explicit_paired_witness",
             "FCP.BFSSC48C1A1aOriginalLabelWitnessMinimalProbe.every_original_label_consumes_explicit_paired_predicate"]
