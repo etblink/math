@@ -28,22 +28,22 @@ The exact source `G3C.complexOneParticleMatrix_block` gives eight color-adjoint 
 - `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean` — `13a80bb53eb3d0ca357e4c87db4bd3ebd53854ec`
 - `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean` — `a16d3573b737bb4453e42b0b543d63cbbac1cd1b`
 
-**Representation identification requiring a new strict Lean binding:** the complexification of the three-dimensional real color adjoint of SU(2) is its integer spin-one irreducible. Eight source blocks therefore constitute (W = 8 V_1). The actual exterior construction is (F = Λ^\bullet W), with complex dimension (2^{24}=16,777,216). For one block,
+**Representation identification requiring a new strict Lean binding:** the complexification of the three-dimensional real color adjoint of SU(2) is its integer spin-one irreducible. Eight source blocks therefore constitute $W=8V_1$. The actual exterior construction is $F=\Lambda^\bullet W$, with complex dimension $2^{24}=16,777,216$. For one block,
 
-[
+$
 Λ^\bullet V_1 = Λ^0 V_1 ⊕ Λ^1 V_1 ⊕ Λ^2 V_1 ⊕ Λ^3 V_1
                 \cong 2V_0 ⊕ 2V_1.
-]
+$
 
-Consequently (F\cong 256 (V_0⊕V_1)^{\otimes 8}). For the torus weight variable (q) and exterior-degree variable (t), the character is exactly
+Consequently $F\cong256(V_0\oplus V_1)^{\otimes8}$. For the torus weight variable $q$ and exterior-degree variable $t$, the character is exactly
 
-[
+$
 \chi_F(t,q)=(1+t)^8(1+tq)^8(1+tq^{-1})^8.
-]
+$
 
-The spin-(j) multiplicity is (m_j=256[\binom{16}{8-j}-\binom{16}{7-j}]), (0≤j≤8). These **exact arithmetic/representation-theoretic predictions** follow from the stated representation identification, independently of the later numerical approximations:
+The spin-$j$ multiplicity is $m_j=256[\binom{16}{8-j}-\binom{16}{7-j}]$, $0\le j\le8$. These **exact arithmetic/representation-theoretic predictions** follow from the stated representation identification, independently of the later numerical approximations:
 
-| spin (j) | copies (m_j) | actual sector dimension ((2j+1)m_j) |
+| spin $j$ | copies $m_j$ | sector dimension $(2j+1)m_j$ |
 |---:|---:|---:|
 | 0 | 366,080 | 366,080 |
 | 1 | 878,592 | 2,635,776 |
@@ -57,17 +57,17 @@ The spin-(j) multiplicity is (m_j=256[\binom{16}{8-j}-\binom{16}{7-j}]), (0≤j�
 
 The weighted sum is exactly (2^{24}). The singlet count is
 
-[
+$
 \boxed{\dim F^{SU(2)}=m_0=256 C_8=256(1430)=366,080}.
-]
+$
 
-This is approximately 2.1820068359375% of (F). The gauge-fixed operator algebra compressed to this sector would have complex dimension (366080^2=134014566400), versus (2^{48}=281474976710656) for the full operator algebra. **Neither is a statement about the full bosonic × fermionic physical BFSS Hilbert space.**
+This is approximately 2.1820068359375% of $F$. The gauge-fixed operator algebra compressed to this sector would have complex dimension $366080^2=134014566400$, versus $2^{48}=281474976710656$ for the full operator algebra. **Neither is a statement about the full bosonic × fermionic physical BFSS Hilbert space.**
 
-**Independent verification paths executed in Python:** (a) exact torus-character weight subtraction (m_j = w_j-w_{j+1}); (b) exact integer Clebsch–Gordan recurrence for eight tensor copies of (2V_0⊕2V_1); and (c) SU(2) Weyl/Haar integral
+**Independent verification paths executed in Python:** (a) exact torus-character weight subtraction $m_j=w_j-w_{j+1}$; (b) exact integer Clebsch–Gordan recurrence for eight tensor copies of $2V_0\oplus2V_1$; and (c) SU(2) Weyl/Haar integral
 
-[
+$
 m_0=\frac{2}{\pi}\int_0^\pi\sin^2\psi\;2^{24}\cos^{16}\psi\;d\psi,
-]
+$
 
 whose deterministic Simpson quadrature gives `366079.9999999999`, agreeing numerically with the two exact integer paths. The Haar integral is an **independent numerical check**, not an axiom or proof substitute.
 
@@ -75,46 +75,46 @@ whose deterministic Simpson quadrature gives `366079.9999999999`, agreeing numer
 
 The exact exterior-degree singlet polynomial is obtained by the coefficient difference
 
-[
+$
 P_0(t)=[q^0-q^1]\,(1+t)^8(1+tq)^8(1+t/q)^8.
-]
+$
 
-Its coefficients in fermion degrees (k=0,\dots,24) are:
+Its coefficients in fermion degrees $k=0,\dots,24$ are:
 
 `[1,0,28,120,406,1512,4060,8856,17605,29512,41392,51520,56056,51520,41392,29512,17605,8856,4060,1512,406,120,28,0,1]`.
 
-They are nonnegative, palindromic under (k\leftrightarrow24-k), sum to 366,080, and split equally:
+They are nonnegative, palindromic under $k\leftrightarrow24-k$, sum to 366,080, and split equally:
 
 - even-parity original SU(2) singlets: **183,040**
 - odd-parity original SU(2) singlets: **183,040**.
 
 This yields the predicted singlet supertrace `Tr_{F^G}((-1)^N)=0`. In addition to OP2c's strictly accepted nonzero **even** gauge-fixed vacuum, the original exterior **three-color volume wedge** in any one spin-pair block is a concrete candidate **odd** fixed vector: it transforms by the determinant of the three-dimensional color adjoint, which should be (+1). Its exact source occupation labels and nonvanishing need a new source-bound Lean proof. This is not a theorem imported from the generic three-mode numerical test.
 
-For source Spin(9) center, existing F10U proves genuine `source9NegativeCentral` acts by (-I_{48}) on the original 48 Majorana labels (not a trivial kernel element). Original fermion parity (P_F=(-1)^N) anti-commutes with each original Majorana generator. This strongly suggests
+For source Spin(9) center, existing F10U proves genuine `source9NegativeCentral` acts by $-I_{48}$ on the original 48 Majorana labels (not a trivial kernel element). Original fermion parity $P_F=(-1)^N$ anti-commutes with each original Majorana generator. This strongly suggests
 
-[
+$
 \alpha_{-1}(T)=P_F T P_F^{-1},
-]
+$
 
-but the **original-source Fock parity implementer and equality of automorphisms are open**. In the small **three-mode** exterior model, Python independently checked normalized CAR, (P_F\gamma_aP_F=-\gamma_a), gauge-vacuum fixedness, and parity/gauge commutation to machine precision. This neither proves original 24-mode parity identification nor provides a global Spin(9) unitary.
+but the **original-source Fock parity implementer and equality of automorphisms are open**. In the small **three-mode** exterior model, Python independently checked normalized CAR, $P_F\gamma_aP_F=-\gamma_a$, gauge-vacuum fixedness, and parity/gauge commutation to machine precision. This neither proves original 24-mode parity identification nor provides a global Spin(9) unitary.
 
 Pinned F10U blob: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean` — `353978608b978b00d0e36deb1c1a47c32641ea59`.
 
 ## 3. Original 48-label commutation: a high-value proof opportunity
 
-G1A/F10F uses the **literal source index ordering** for each spin pair (0≤j<8), color (0≤A<3), and real/imaginary label (r∈\{0,1\}):
+G1A/F10F uses the **literal source index ordering** for each spin pair $0\le j<8$, color $0\le A<3$, and real/imaginary label $r\in\{0,1\}$:
 
-[
+$
 \ell(j,A,r)=2(3j+A)+r,
-]
+$
 
 while an auxiliary color-major view uses (16A+(2j+r)). The permutation (P) from color-major to `Source48Label` is therefore exact.
 
 At the tensor-factor level, a spatial Spin(9) transformation acts as (I_3\otimes R_{16}) in color-major coordinates; the SU(2) color adjoint acts as (R_3\otimes I_{16}). After the **same** (P) reindexing,
 
-[
+$
 [P(I_3\otimes R_{16})P^{-1},\;P(R_3\otimes I_{16})P^{-1}]=0.
-]
+$
 
 **Numerical adversarial test:** sampled a generic orthogonal (R_{16}=\exp(A-A^T)) (scaled in the executable script) and a random (R_3∈SO(3)), seed `20261109`. The correctly transported 48×48 commutator Frobenius norm was exactly zero to floating precision. A deliberate bug omitting (P) on the gauge matrix produced a norm of approximately **9.004133**. This is a finite Kronecker/permutation sanity check, *not* a numerical evaluation of the source Spin(9) representation itself and *not* the Lean theorem.
 
@@ -130,15 +130,15 @@ Step 1 is probably the next best **small, high-leverage bounded Lean gate** afte
 
 ## 4. Finite SU(2) gauge Casimir: a *constraint* gap, never a BFSS mass gap
 
-On the representation in Section 1, the only SU(2) irreducibles have integer spin (0≤j≤8). With the **standard** angular-momentum normalization, the gauge quadratic Casimir (C_G=-\sum_{i=1}^3 J_i^2) acts on spin (j) as (j(j+1)). The spectrum of the finite fermionic gauge Casimir is therefore predicted to be
+On the representation in Section 1, the only SU(2) irreducibles have integer spin $0\le j\le8$. With the **standard** angular-momentum normalization, the gauge quadratic Casimir $C_G=-\sum_{i=1}^3J_i^2$ acts on spin $j$ as $j(j+1)$. The spectrum of the finite fermionic gauge Casimir is therefore predicted to be
 
 `0, 2, 6, 12, 20, 30, 42, 56, 72`.
 
-The smallest nonzero eigenvalue is 2, with spin-1 sector dimension (3m_1=2,635,776). It follows **under the original-generator-normalization and source representation-identification obligations** that
+The smallest nonzero eigenvalue is 2, with spin-1 sector dimension $3m_1=2,635,776$. It follows **under the original-generator-normalization and source representation-identification obligations** that
 
-[
+$
 \langle v,C_Gv\rangle\ge 2\lVert (1-P_G)v\rVert^2.
-]
+$
 
 This could give a quantitative estimate on approximate fermionic gauge constraints; it is **not** positivity of the full BFSS Hamiltonian, a spectral gap for the full physical model, compactness, confinement or a BFSS mass gap. The original infinitesimal gauge generators, their skew adjoints and normalization still require source-bound Lean construction.
 
@@ -152,7 +152,7 @@ If (U_g) implements `α_g` pointwise, its composition may only be projective: (U
 
 For source continuity, finite-dimensional generator covariance plus F10BG PBW source topological-group structure could be simpler than further global Lie atlas work; this is only a strategy until a pointwise `Continuous`/operator action theorem compiles.
 
-Finally, a **conditional** exterior spin-lift character with 24 real rotation planes, each at spatial half-angle, predicts Fock-vector weights from (-6) to (+6) and conjugation operator weights from (-12) to (+12). This recovers the hypothesized (M=6) vector and (M=12) operator bounds without certifying that the original source Spin(9) Fock-vector lift exists with that normalization. Do **not** confuse the original 48-real Majorana space with 48 independent complex fermion creation modes.
+Finally, a **conditional** exterior spin-lift character with 24 real rotation planes, each at spatial half-angle, predicts Fock-vector weights from $-6$ to $+6$ and conjugation operator weights from $-12$ to $+12$. This recovers the hypothesized $M=6$ vector and $M=12$ operator bounds without certifying that the original source Spin(9) Fock-vector lift exists with that normalization. Do **not** confuse the original 48-real Majorana space with 48 independent complex fermion creation modes.
 
 ## 6. Project Lead decision gates and negative knowledge
 
