@@ -52,7 +52,8 @@ theorem originalGaugeUnitary_S1J_gamma_axis_forward
             (sourceBlockColorAxis (j,s) A)))
           (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q ψ) := by
       rw [FCP.BFSSC48C1A1c0OriginalS1JAxisGammaColorSum.originalS1J_axis_gamma_color_sum]
-      simp only [Finset.sum_apply, Pi.smul_apply]
+      -- Evaluate the sum and scalar action in the original continuous-linear Fock operators.
+      simp only [sum_apply, smul_apply]
 
 #print axioms originalGaugeUnitary_S1J_gamma_axis_forward
 
