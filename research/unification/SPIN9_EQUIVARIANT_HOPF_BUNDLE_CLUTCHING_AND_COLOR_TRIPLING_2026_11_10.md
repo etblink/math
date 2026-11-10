@@ -82,6 +82,22 @@ The standard octonionic Hopf rank-eight bundle generates KO_tilde(S8)=Z, so its 
 
 This topology also is not independent support for any unrelated S8-based foundational framework: the eight-sphere arises generically from Spin9/Spin8 homogeneous geometry. FCP's non-generic recurrence and physical-realizability tests still apply.
 
+### 3.1. New simpler nontriviality certificate for the rank-24 bundle: w8 does not vanish
+
+The previous observation Euler(F+)∈H^24(S8)=0 **does not** make F+ trivial. Indeed, for an oriented real rank-eight bundle over S8, the top Stiefel–Whitney class is the mod-two reduction of its Euler class. The source-derived clutching degree has absolute value one, so
+
+    w8(E+) = a ≠ 0  in H^8(S8; Z/2),   a = the nonzero generator.
+
+Because the sphere has no cohomology in intermediate positive degrees, w(E+)=1+a. Whitney multiplication for F+≅E+⊕E+⊕E+ gives
+
+    w(F+) = (1+a)^3 = 1 + 3a = 1+a  (mod 2, since a²=0).
+
+Thus **w8(F+) = a ≠ 0**, proving the full **rank-24 real vector bundle is topologically nontrivial**, assuming the source-clutching-to-bundle construction as above. This conclusion uses only standard characteristic class functoriality and the exact source degree ±1; it does **not** require first proving that E+ represents a primitive integral KO generator.
+
+This is an important separate positive result about mathematical topology and a methodological negative result: a rank-24 Euler class vanishing for dimensional reasons is not evidence of global triviality. The color multiplicity contributes 3 mod 2 = 1, so this ordinary characteristic-class obstruction survives tripling. It does **not** mean there are three independent physical families or an anomaly. Independent physical realization remains mandatory.
+
+Standard facts: mod-two Euler reduction and Whitney sum formula for Stiefel–Whitney classes; see [Milnor–Stasheff, Characteristic Classes](https://www.maths.ed.ac.uk/~v1ranick/papers/milnstas.pdf) and [Hatcher, Vector Bundles & K-Theory](https://people.math.harvard.edu/~dafr/M392C-2012/Readings/Hatcher.pdf).
+
 ## 4. Physical stop line and next gates
 
 Even a complete topology/Lean formalization would say nothing by itself about the original BFSS physical Hamiltonian's normalizable gauge-singlet states, stable background selection, four-dimensional Lorentz/Weyl chirality, Standard Model hypercharges or family mixing, gravity, dark matter or physical GUT/ToE viability. A Spin9-covariant family indexed by n is not a physical field n(x) or a dynamically justified vacuum. Choosing a preferred n physically could break rotational symmetry; keeping all n avoids an arbitrary choice but does not create physical states.
