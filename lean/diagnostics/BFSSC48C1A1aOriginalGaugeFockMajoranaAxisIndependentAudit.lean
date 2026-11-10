@@ -33,30 +33,33 @@ theorem originalGaugeUnitary_originalAxis_reverse
         (sourceGammaRealLinear (sourceBlockColorAxis (j,s) A) ψ) :=
   (originalGaugeUnitary_sourceGammaAxis_covariant q j s A ψ).symm
 
-/-- The original G1A label crosswalk is surjective; this exact
-consumer checks the gate at any literal Source48Label, without
-silently identifying that label with an arbitrary Fin 48 order. -/
+/-- For EVERY genuine original Source48Label p, use the S1V5 bijection
+to exhibit an exact (j,s,A) preimage and the actual G4H
+gauge-unitary source Majorana covariance at that index.
+
+Equivalent to the previous equation written using
+sourceBlockColorEquiv.symm p, but deliberately keeps that
+reducible inverse packing OUT of the large Fock-operator goal.
+The proof uses the original source equivalence, not Fin 48
+or a new gauge representation. -/
 theorem originalGaugeUnitary_originalSource48Label
     (q : GaugeGroup 2) (p : Source48Label) (ψ : Fermion 2) :
-    FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q
-      (sourceGammaRealLinear
-        (sourceBlockColorAxis
-          (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).1
-          (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).2) ψ) =
-    ∑ B : ColorIndex 2,
-      (FCP.BFSSSU2GaugeG3A.adjointColorMatrix q B
-        (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).2 : ℂ) •
-        (sourceGammaRealLinear
-          (sourceBlockColorAxis
-            (FCP.BFSSS1V5.sourceBlockColorEquiv.symm p).1 B)
-            (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q ψ)) := by
-  -- Name and destruct the genuine original G1A index crosswalk
-  -- before instantiating the source theorem; avoid deep reducible
-  -- nested projections during elaboration.
-  generalize hlabel :
-    FCP.BFSSS1V5.sourceBlockColorEquiv.symm p = label
-  rcases label with ⟨⟨j, s⟩, A⟩
-  exact originalGaugeUnitary_sourceGammaAxis_covariant q j s A ψ
+    ∃ (j : Fin 8) (s : Fin 2) (A : ColorIndex 2),
+      sourceBlockColorLabel (j, s) A = p ∧
+        FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q
+          (sourceGammaRealLinear
+            (sourceBlockColorAxis (j, s) A) ψ) =
+        ∑ B : ColorIndex 2,
+          (FCP.BFSSSU2GaugeG3A.adjointColorMatrix q B A : ℂ) •
+            (sourceGammaRealLinear
+              (sourceBlockColorAxis (j, s) B)
+                (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q ψ)) := by
+  obtain ⟨⟨⟨j, s⟩, A⟩, hp⟩ :=
+    FCP.BFSSS1V5.sourceBlockColorEquiv.surjective p
+  refine ⟨j, s, A, ?_, ?_⟩
+  · change FCP.BFSSS1V5.sourceBlockColorEquiv ((j, s), A) = p
+    exact hp
+  · exact originalGaugeUnitary_sourceGammaAxis_covariant q j s A ψ
 
 #print axioms FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.sourceGammaAxis_eq_originalGaugeTheta
 #print axioms FCP.BFSSC48C1A1aOriginalGaugeFockMajoranaAxisCovariance.originalGaugeUnitary_sourceGammaAxis_covariant
