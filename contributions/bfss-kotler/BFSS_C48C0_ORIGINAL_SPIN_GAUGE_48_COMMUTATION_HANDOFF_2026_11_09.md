@@ -249,3 +249,23 @@ Here `α_g` is the accepted original `Fermion 2 →L[ℂ] Fermion 2` operator-al
 **Independent Spin(8) feasibility:** original source `Γ_9` eigenspaces lead to actual candidate `P_±=(I±Γ_9)/2` invariant under the source ninth-axis stabilizer; F10L proves eight/eight source eigenvalue counts. Proving rank eight and source stabilizer commuting projectors is a lower-cost step than directly constructing an abstract Spin(8) branching/classification, and does not imply three GUT generations or source triality.
 
 **Current status:** C48-1A0 repair [#42798054277](https://github.com/etblink/math/actions/runs/42798054277) still **PENDING at this forward pass**; only the user will relay its conclusion. Do not launch C48-1A1 until its exact-source 69-pin strict acceptance is qualified. No historical accepted gate, source module, run or FCP canonical result is modified by these research notes.
+
+## 17. C48-1A0 strictly qualified — original Fock gamma compatibility with actual S1J source SU(2)
+
+**Accepted strict GREEN:** [run #42798054277](https://github.com/etblink/math/actions/runs/42798054277), tested exact commit `5115e9d2178550f3333d83e8fbdbb6f414e5a4cd` (NOT the current documentation-advanced branch head), attempt 1, job `original-Fock-gamma-Spin9-S1J` **SUCCESS**. **69 frozen source/consumer blob pins** passed, Lean 4.34.1 and pinned Mathlib restored, **9,167 cold jobs** completed, source and independent diagnostic consumer compiled under `-DwarningAsError=true`, and all one-source and three-consumer root `#print axioms` reports passed with only `propext`, `Classical.choice`, `Quot.sound` and no `sorryAx`. Final log marker **`C48C1A0_ORIGINAL_GAMMA_S1J_INDEPENDENT_STRICT_PASS`**.
+
+**Evidence artifact:** [#13755871655](https://github.com/etblink/math/actions/runs/42798054277/artifacts/13755871655), `sha256:4457ac2e3376696285b8e7e869914907d16022e6d9896c47b0163b6e768c698e`.
+
+**Qualified source theorem** `FCP.BFSSC48C1A0OriginalActiveGammaS1JSpinCompatibility.spin9_activeGamma_S1J_gauge_commute`:
+
+```text
+  α_g ( Γ( C_q · v ) ) = Γ( C_q · (S_g · v) )
+```
+
+for all source Spin(9) `g`, genuine SU(2) gauge `q`, original real `Source48Vector` `v`, actual original active Fock Majorana real-linear map `Γ=sourceGammaRealLinear`, true original source Spin(9) Fock operator action `α_g`, original gamma source matrix `S_g`, and the actual independently defined S1J gauge source matrix `C_q`. The independent consumer qualified the reversed equation and all genuine 48 coordinate-axis cases. This is a direct source-faithful compatibility result from OP3C6C plus C48-0B, not a new original Spin(9) Fock-vector implementer.
+
+**Historical red:** [#42790623727](https://github.com/etblink/math/actions/runs/42790623727) failed at a missing one-token matrix type-coercion closing parenthesis, not a mathematical incompatibility. The atomic bounded repair is tested at `5115e9d2`. History preserved in Section 15. The succeeding strict run, not the repair commit by itself, qualifies this theorem.
+
+**Not qualified:** SU(2) **actual Fock-vector** operator covariance `U_q Γ(v)=Γ(C_q v)U_q`, full operator-algebra action commutation, `α_g(U_q)=U_q`, scalar character elimination, exact gauge-fixed projection, Spin(9) Fock-vector implementer, continuity, original BFSS Hamiltonian closed-domain correspondence, spectral gap/eigenstate or any GUT/ToE claim.
+
+**Next bounded gate:** **C48-1A1a** original 48-coordinate axis SU(2) gauge-unitary covariance. Reuse genuine G4H `pairedAlgebraData_fermion_adjoint`, exact `sourceGammaRealLinear_axis_paired`, G3A output-row/input-column coefficient ordering and S1J `sourceRealMajoranaMatrix_entry`. Qualify axis and independent source coefficient tests before all-vector extension C48-1A1b. The source covariance plan and alternative S1H uniqueness route are preserved in `BFSS_C48C1A1_AND_ORIGINAL_SPIN8_FORWARD_REUSE_2026_11_10.md`. Spin(8)/Spin(48) and unification feasibility remain separate exploratory, candidate-neutral research.
