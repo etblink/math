@@ -7,6 +7,7 @@
 ## Entry point
 
 - [Truth-First GUT/ToE Evidence Transfer and Global Gauge Audit (2026-11-10)](TRUTH_FIRST_GUT_TOE_EVIDENCE_TRANSFER_AND_GLOBAL_GROUP_AUDIT_2026_11_10.md): positive and negative transfer from BFSS and FCP; Standard Model global gauge-group ambiguity; exact Z6 charge-congruence tests; Spin(10) chiral-spinor exterior construction; six anomaly/global-parity checks; exact Pati–Salam hypercharge and central-kernel cross-check; nonindependence of SU(5) and Pati–Salam routes; limitations, falsifiers and proposed GUT/ToE gates.
+- [BFSS three-by-sixteen Spin(9)/Spin(10) family-feasibility audit (2026-11-10)](BFSS_THREE_BY_SIXTEEN_SPIN9_SPIN10_FAMILY_FEASIBILITY_2026_11_10.md): genuine abstract Spin(9)→Spin(10) chiral-spinor branching, real-vs-complex and external-vs-internal representation distinctions, exact SU(2) adjoint color commutant rank-eight calculation, and the absence of three gauge-invariant individual color-family projectors. Preserves both the promising representation-theory lead and the strongest direct negative constraint.
 - [Exact rational arithmetic helper](tools/global_group_exact_check.py): standalone Python 3 stdlib assertions. Execute from repository root with `python3 research/unification/tools/global_group_exact_check.py`. Passing this helper would be a *finite arithmetic consistency check*, not a Lean qualification or observational verification.
 
 ## Separation of scientific authority
