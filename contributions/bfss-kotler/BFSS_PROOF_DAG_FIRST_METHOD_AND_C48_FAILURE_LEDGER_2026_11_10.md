@@ -1,0 +1,76 @@
+# FCP–BFSS Proof-DAG-First Protocol and C48 Failure Ledger
+
+**Date:** 2026-11-10 (America/Los_Angeles)  
+**Status:** METHODOLOGY ONLY; no mathematical qualification, scientific promotion, FCP canonical change, or claim of a completed run.  
+**Identity:** Child of the **Foundational Convergence Program**; descriptive sub-identity **FCP–BFSS: Representation, Spectral, and Physical-Realization Research**. Not a new foundational framework or separate program.  
+**Active work branch:** integration/bfss-unified-research-20261108.
+
+## 1. Protocol adopted prospectively
+
+**Proof-DAG First:** design each new proof as the smallest meaningful, independently checked interfaces **before implementing** the composite theorem. Do not wait for multiple reds to decompose the obligation.
+
+This strengthens existing [Interface-First Proof Protocol](BFSS_INTERFACE_FIRST_PROOF_PROTOCOL_AND_OP3A_LESSON_2026_11_09.md), [bounded execution protocol](BFSS_BOUNDED_EXECUTION_PROTOCOL_2026_11_08.md), and [proof reuse/failure playbook](BFSS_LEAN_PROOF_REUSE_AND_FAILURE_PLAYBOOK_2026_11_08.md). It does not supersede their source-integrity safeguards.
+
+**Pre-implementation deliverable: a Proof DAG contract.** Record:
+
+1. The exact target statement, scientific motivation, and explicit limits on physical or empirical conclusions.
+2. Original Lean carriers and fully qualified source types: index/order, equivalences, real/complex structure, Clifford/CAR normalization, action orientation, adjoint/star, topology and domains.
+3. Qualified parent declarations with exact tested SHAs, workflow IDs, and source blobs; inspect signatures, not inferred names.
+4. One semantically small new lemma per unqualified node, and the explicit dependency edge that allows its output to feed the next node.
+5. A lightweight first check of each new node (syntax, type, focused lemma) where possible; **strict qualification still requires cold source build, manifest hashes, warning-as-error, axiom checks and an independent consumer**.
+6. Assembly from already verified nodes; any nontrivial remaining rewrite, summation, or coercion becomes a node.
+7. Independent downstream consumer using the theorem to prove a *distinct* corollary, not simply reasserting its type.
+8. Clear gate state: QUALIFIED / CANDIDATE / EXPLORATORY / CONDITIONAL / RED, with exact tested commit and qualification ceiling.
+9. After two substantively similar red elaboration errors, stop patching a long proof; re-audit the interfaces and decompose before the next expensive run.
+10. Publish negative knowledge with the same rigor as green evidence: first causal diagnostic, source hash, exact gate and what the failure does **not** disprove.
+
+The mathematical roadmap, Lean implementation roadmap, and physical-realization roadmap remain separate ledgers. A well-typed source theorem is not a physical Hamiltonian theorem; a compiled candidate is not a qualified theorem.
+
+## 2. Four consecutive C48-1A1b0 strict reds: causal record
+
+Target: the original S1J source matrix acting on one exact G1A paired 48-real Majorana axis,
+
+    C(q) e(j,s,A) = sum_(B : ColorIndex 2) R(q)_(B,A) e(j,s,B),
+
+where C is the original S1J real Majorana matrix, R is the original G3A real adjoint color matrix, and the axis is the S1V5 source-block color axis. Rows B are **output**, columns A are **input**. Original vector index is **Fin 24 × Fin 2**, not an arbitrary color-major replacement.
+
+| Strict run | First causal diagnostic | Method lesson |
+| --- | --- | --- |
+| [#42854278047](https://github.com/etblink/math/actions/runs/42854278047) RED | Scoped matrix-vector notation not available in the diagnostic | Inspect scopes; explicit Matrix.mulVec API |
+| [#42859271145](https://github.com/etblink/math/actions/runs/42859271145) RED | Polymorphic Pi.single coordinate type failed inference | Explicit source carrier or source-specific lemma |
+| [#42863553538](https://github.com/etblink/math/actions/runs/42863553538) RED | Generic Pi.single_eq_of_ne caused dependent-function inference failure | Reuse existing sourceBlockColorAxis_self and sourceBlockColorAxis_other |
+| [#42867822784](https://github.com/etblink/math/actions/runs/42867822784) RED | Destructive substitution by rcases with rfl erased j/s/B before later source-specific application | Retain named equalities; avoid substituting live variables |
+
+All four passed source-pin preflight and compiled **9,021 dependencies**; the appended diagnostic failed. This is an elaboration/proof-script failure, **not** an original-source mathematical counterexample. The reported sorryAx arose from error recovery and **disqualifies** the red candidates.
+
+Most recent bounded corrective commit at this writing: **bc0ebeb3a3a27e8b6ef380f9e962ec8a65ad51a3**. Its automatic [#42873893752](https://github.com/etblink/math/actions/runs/42873893752) was in progress when last observed. **No outcome is asserted or checked by this memorandum.**
+
+## 3. Smallest C48 matrix-axis DAG
+
+| Node | Interface | Evidence / action |
+| --- | --- | --- |
+| M0 | Original S1J source entry under exact G1A axis labels, output-input orientation | Accepted source preflight [#42847346999](https://github.com/etblink/math/actions/runs/42847346999), SHA dea9dbdd30043d6cd41d7940deac199b28b4bf46 |
+| M1 | Source axis evaluates to one at its own coordinate | Reuse existing S1V5 sourceBlockColorAxis_self |
+| M2 | Source axis evaluates to zero at a distinct coordinate | Reuse existing S1V5 sourceBlockColorAxis_other |
+| M3 | Typed coordinate formula for the finite sum of adjoint coefficients times source axes, at arbitrary output coordinate | **Not separately qualified**; isolate next if current candidate fails |
+| M4 | Matrix-column equality from M0–M3, exact Matrix.mulVec_single_one, source-label extensionality | Current candidate remains unqualified without strict green |
+| M5 | Independent consumer with a genuinely different corollary, type/axiom checks | **Pending** |
+
+**Critical engineering correction:** M3 should be independently checked **before** M4, not discovered by a monolithic gate's fourth red. Avoid repeated expensive 9,021-job builds for small type errors where a narrow real-source check can isolate the problem, but never replace cold final proof qualification with an unpinned warm check.
+
+## 4. Next all-vector covariance DAG, only after qualified M4/M5
+
+- F1: source-normalized real-linear Gamma on a literal axis matches the genuine G1A paired Majorana, including positive sqrt(2) and exact CAR.
+- F2: the actual G4E gauge Fock unitary intertwines that axis (earlier source-axis covariance accepted in #42813706857).
+- F3: use M4 and real-linearity to express Gamma(C(q)e) as the exact output-color sum.
+- F4: extend the axis intertwiner to any original real Source48Vector by basis or real-linear extensionality, yielding U(q) Gamma(v) psi = Gamma(C(q)v)(U(q)psi).
+- F5: independently consume F4 to derive inverse/conjugation and examine commuting original Spin(9) operator automorphism; do **not** invent a Spin(9) Fock-vector unitary from a mere algebra automorphism.
+- PHYS: actual gauge-physical FullL2 domain, original closed quadratic form, reducing sectors and spectral conclusions are separate obligations.
+
+## 5. Cross-framework and epistemic application
+
+When extracting a theorem from FCP's frozen reference corpus, separate the **source claim**, the **exact transferable mathematical statement**, its hypotheses, the **literal BFSS interface**, its failed-transfer countermodels, and the physical/empirical ceiling. A paper's framework admission status is irrelevant to whether a particular lemma is useful. Generic methods earn no fictitious FCP cross-framework convergence credit.
+
+The [FCP charter](https://github.com/etblink/Foundational-Convergence-Program/blob/main/FCP_CHARTER.md), [epistemic rules](https://github.com/etblink/Foundational-Convergence-Program/blob/main/EPISTEMIC_RULES.md), and prospectively active Method 0.2.1 remain authoritative. No canonical FCP source window or adjudication is changed by this memo.
+
+**Next conditional step:** if #42873893752 is red, inspect its first causal error and independently qualify M3 before another M4 assembly. If green, verify tested SHA, exact consumer and axioms before accepting the gate; use this protocol from the start of subsequent C48 and polarization research.
