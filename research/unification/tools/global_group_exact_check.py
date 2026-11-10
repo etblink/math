@@ -96,6 +96,31 @@ def main():
     print("  non-SM singlet Y=1/6: Z6 residue 1 (excluded under full quotient)")
     print("  additional vectorlike triplet + antitriplet: Z6 residues 0 and 0; anomalies 0")
     print("  therefore global quotient compatibility + anomalies do NOT uniquely force SM matter.")
+    # Pati-Salam 16 -> (4,2,1) + (4bar,1,2) source-branch check.
+    # The SU4 color/lepton B-L values are +1/3,-1 on 4,
+    # and -1/3,+1 on 4bar. Weak-right T3R labels are ±1/2.
+    # This is arithmetic under a chosen embedding, not physical selection.
+    pati_salam = (
+        ("Q", Fraction(1, 3), Fraction(0), Fraction(1, 6)),
+        ("L", Fraction(-1), Fraction(0), Fraction(-1, 2)),
+        ("u^c", Fraction(-1, 3), Fraction(-1, 2), Fraction(-2, 3)),
+        ("d^c", Fraction(-1, 3), Fraction(1, 2), Fraction(1, 3)),
+        ("nu^c", Fraction(1), Fraction(-1, 2), Fraction(0)),
+        ("e^c", Fraction(1), Fraction(1, 2), Fraction(1)),
+    )
+    print("\\nPati-Salam Y = T3R + (B-L)/2:")
+    for name, b_minus_l, t3r, expected_y in pati_salam:
+        result = t3r + b_minus_l / 2
+        assert result == expected_y, (name, result, expected_y)
+        print(f"  {name}: Y={result}")
+    assert 4 * 2 + 4 * 2 == 16  # (4,2,1) + (4bar,1,2)
+    print("  dimension of both multiplets: 8 + 8 = 16")
+    # The diagonal (-I4,-I2,-I2) acts trivially on both 16-spinor
+    # Pati-Salam multiplets; this is a kernel test, not a Lie-algebra test.
+    assert (-1) * (-1) * 1 == 1
+    assert (-1) * 1 * (-1) == 1
+    print("  diagonal central sign acts +1 on both spinor summands")
+
     print("\nEXACT_ARITHMETIC_CHECK_PASS — NOT PHYSICAL_UNIFICATION_PROOF")
 
 if __name__ == "__main__":
