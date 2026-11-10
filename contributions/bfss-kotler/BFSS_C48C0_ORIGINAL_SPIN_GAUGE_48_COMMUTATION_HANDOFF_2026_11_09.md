@@ -311,3 +311,24 @@ The old lemma was used for the application of the genuine positive-`√2) scalar
 **Retry launched:** [run #42805412706](https://github.com/etblink/math/actions/runs/42805412706), exact tested repair commit `3c036b4a8076b6cfd19a46796c740627d2aa1987`, **IN PROGRESS** when last checked. C48-1A1a remains **UNQUALIFIED** unless actual cold source and independent consumer pass, with final `C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS` marker.
 
 **Preserved methodological lesson:** A cold `lake build` may succeed and show clean `#print axioms` while the explicit strict source `-DwarningAsError=true` rejects a deprecated lemma. Distinguish compilation under default warnings from strict acceptance and do not interpret this particular red as an unproved mathematical obstruction. Future source preflight may scan for known deprecated exact API tokens, but must not suppress or relax strict compiler diagnostics.
+
+## 20. C48-1A1a second RED — independent original-label consumer elaborator recursion; repair and focus
+
+**Strict RED:** [run #42805412706](https://github.com/etblink/math/actions/runs/42805412706), exact tested commit `3c036b4a8076b6cfd19a46796c740627d2aa1987`, job `129793160690`, `failure`. **80 exact frozen blob pins**, pinned Lean 4.34.1/Mathlib restore, **9,151-job cold source build**, and **strict warning-as-error original source compilation** succeeded. The two source `#print axioms` reports only `propext`, `Classical.choice`, `Quot.sound`.
+
+**First causal error:** `diagnostics/BFSSC48C1A1aOriginalGaugeFockMajoranaAxisIndependentAudit.lean:53:8` **`maximum recursion depth has been reached`** when applying `originalGaugeUnitary_sourceGammaAxis_covariant` directly to three nested literal projections of `sourceBlockColorEquiv.symm p` at an arbitrary `p : Source48Label`. The fourth consumer root consequently reported `sorryAx`; its kernel acceptance **fails**. The earlier reverse-axis consumer root reported only allowed axioms. This is an independent-consumer *elaboration/resource* failure, not a counterexample to source gauge covariance, and not a successfully accepted theorem.
+
+**Retained artifact:** [#13761830257](https://github.com/etblink/math/actions/runs/42805412706/artifacts/13761830257), SHA-256 `15c9ef747c82c49efab1367f216916947782e752cb255d154639eb6412ac40bc`.
+
+**Bounded repair:** [commit `9209774b`](https://github.com/etblink/math/commit/9209774b7016e3850dc51b0b8d6cd9fa05705813), original consumer blob `6f996d4bcf4c8834cc38bdb53a452dfbee6276d1` -> `93b6ab58d57ab12bede1d356aa476d41307d7892`. Replaces the consumer proof's single deep `exact theorem q ((equiv.symm p).1).1 ((equiv.symm p).1).2 ((equiv.symm p).2 ψ` application with:
+```lean
+  generalize hlabel :
+    FCP.BFSSS1V5.sourceBlockColorEquiv.symm p = label
+  rcases label with ⟨⟨j, s⟩, A⟩
+  exact originalGaugeUnitary_sourceGammaAxis_covariant q j s A ψ
+```
+The consumer theorem statement remains **identical**, still quantifies over arbitrary genuine original `Source48Label` and the same actual original `Fermion 2`. The proof shape explicitly destructs the original source paired label and avoids repeated definally-reduced projections. The existing 80-pin strict workflow changes only the consumer blob pin, new workflow blob `5cf3a913b89f260414d3ee503f978a0a4bdf032d`; all **79 other pins, source blob, toolchain, independent root obligations, axioms, `-DwarningAsError=true`, exact source and diagnostic paths, and resource limits unchanged**. This is a candidate fix pending cold strict validation; do not claim it compiles before the run passes.
+
+**Retry:** [run #42808552511](https://github.com/etblink/math/actions/runs/42808552511) triggered automatically at exact tested commit `9209774b7016e3850dc51b0b8d6cd9fa05705813`, **IN PROGRESS** at this record. Final marker required: `C48C1A1a_ORIGINAL_G4H_FOCK_AXIS_INDEPENDENT_STRICT_PASS`.
+
+**Project Lead focus rule:** Finish C48-1A1a's precise source-label consumer gate without weakening verification; do not keep responding to unrelated reds by increasing global `maxRecDepth`, switching source carriers, or rebuilding G4H. If further consumer failure occurs, stop and extract a minimal elaborator reproducer and inspect working prior original-source label consumers before another expensive 9k-job strict CI. Once green, advance only the true all-vector S1J gamma covariance gate C48-1A1b. Parallel Spin(9)/Spin(8) S8 Hopf projectors and topological classes remain *exploratory*; their physical realization is independent and must not be counted as a BFSS mass gap, three chiral families, GUT, or ToE claim.
