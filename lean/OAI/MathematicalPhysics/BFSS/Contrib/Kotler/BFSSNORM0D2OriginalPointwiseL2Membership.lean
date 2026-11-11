@@ -33,9 +33,15 @@ theorem originalPointwiseFock_aeStronglyMeasurable
       (fun x : Boson 2 => originalNormalizedFockGramObservable x B)
       (volume : Measure (Boson 2)) :=
     (originalNormalizedFockGramObservable_continuous B).aestronglyMeasurable
-  exact (isBoundedBilinearMap_apply
-      (𝕜 := ℂ) (E := Fermion 2) (F := Fermion 2)).continuous.comp_aestronglyMeasurable
-        (hfield.prodMk (Lp.aestronglyMeasurable f))
+  -- Use the exact pinned continuous bilinear evaluation interface,
+  -- with all operator and fiber types fixed before elaboration.
+  let evaluation : (Fermion 2 →L[ℂ] Fermion 2) →L[ℂ]
+      (Fermion 2 →L[ℂ] Fermion 2) :=
+    (ContinuousLinearMap.apply ℂ (Fermion 2)).flip
+  have hEval := evaluation.aestronglyMeasurable_comp₂
+    hfield (Lp.aestronglyMeasurable f)
+  simpa only [evaluation, ContinuousLinearMap.flip_apply,
+    ContinuousLinearMap.apply_apply] using hEval
 
 /-- Dominating estimate on every original bosonic configuration.
 This bound comes only from the accepted NORM-0C actual Fock norm. -/
