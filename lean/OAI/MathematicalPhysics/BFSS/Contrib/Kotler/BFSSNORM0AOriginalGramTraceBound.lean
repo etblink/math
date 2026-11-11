@@ -34,11 +34,14 @@ private theorem originalGram_diag_le_trace
     (x : Boson 2) (i : SpaceIndex) :
     originalSpatialGram x i i ≤ originalGramTrace x := by
   unfold originalGramTrace
-  apply Finset.single_le_sum
-  · intro j _
-    change 0 ≤ inner ℝ (spatialColor x j) (spatialColor x j)
-    exact real_inner_self_nonneg
-  · exact Finset.mem_univ i
+  exact Finset.single_le_sum
+    (s := Finset.univ)
+    (f := fun j : SpaceIndex => originalSpatialGram x j j)
+    (by
+      intro j _
+      change 0 ≤ inner ℝ (spatialColor x j) (spatialColor x j)
+      exact real_inner_self_nonneg)
+    (Finset.mem_univ i)
 
 /-- The Gram coefficient is bounded by the entire nonnegative Gram trace.
 This uses only true original real inner products, Cauchy–Schwarz and
