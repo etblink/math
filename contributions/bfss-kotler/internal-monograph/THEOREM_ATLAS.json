@@ -1,0 +1,734 @@
+{
+  "schema": "bfss_internal_theorem_atlas_v0.1",
+  "snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+  "date": "2026-11-11",
+  "status_vocabulary": {
+    "SOURCE_DEFINITION": "Definition present in original source; not a standalone strict theorem receipt",
+    "HISTORICAL_STRICT": "Historical FCP green for original source; current port requires separate confirmation",
+    "INTEGRATED_STRICT": "Strict green in etblink/math at cited tested commit, not necessarily latest exact branch head",
+    "SOURCE_PRESENT_REQUIRES_RECEIPT": "Current source read and declaration verified; exact strict receipt not independently checked here",
+    "PENDING_STRICT_GATE": "Candidate present; no qualification conclusion as of snapshot",
+    "ANALYTICAL_CONDITIONAL": "Conventional argument under stated assumptions, not a Lean-qualified physical source theorem",
+    "OPEN_PROOF_OBLIGATION": "Research target, no exact accepted Lean theorem"
+  },
+  "records": [
+    {
+      "id": "D-01",
+      "chapter": "2",
+      "title": "The original carriers and dimensions",
+      "declarations": [
+        "SpaceIndex",
+        "ColorIndex",
+        "Boson",
+        "Fermion",
+        "FullL2",
+        "SmoothCore"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+      "source_blob_sha": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "SOURCE_DEFINITION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [],
+      "mathematical_role": "Nine spatial labels, three adjoint colors at N=2, 27 real configuration coordinates, original 2^24-dimensional complex fermion Hilbert space, and its vector-valued L2 carrier.",
+      "boundary": "Configuration-space dimension is not spacetime dimension. The 11D M-theory interpretation is not an axiom of these definitions.",
+      "notes": ""
+    },
+    {
+      "id": "D-02",
+      "chapter": "3",
+      "title": "Original gamma, theta, and CAR source data",
+      "declarations": [
+        "AlgebraData",
+        "AlgebraData.gamma",
+        "AlgebraData.theta"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+      "source_blob_sha": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "SOURCE_DEFINITION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-01"
+      ],
+      "mathematical_role": "Source assumptions of real gamma Clifford relations, 48 labeled fermion operators, and source irreducibility.",
+      "boundary": "A structure declaration with fields is not a proof that a chosen concrete instance exists; concrete source witness is separate.",
+      "notes": ""
+    },
+    {
+      "id": "D-03",
+      "chapter": "4",
+      "title": "The original 16 charge operators and quadratic core form",
+      "declarations": [
+        "AlgebraData.charge",
+        "AlgebraData.chargeVector",
+        "AlgebraData.coreForm"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+      "source_blob_sha": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "SOURCE_DEFINITION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-01",
+        "D-02"
+      ],
+      "mathematical_role": "The source charge vector and normalized (1/16) sum of squared charge norms on original smooth compact core.",
+      "boundary": "The core expression is not by itself a self-adjoint full physical Hamiltonian.",
+      "notes": ""
+    },
+    {
+      "id": "G-01",
+      "chapter": "5",
+      "title": "The original gauge-invariant physical Hilbert subspace",
+      "declarations": [
+        "AlgebraData.GaugeData.physicalSpace",
+        "AlgebraData.GaugeData.physicalSpace_closed"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean",
+      "source_blob_sha": "e4990dadf1d8bde849e351467282ab3f14989c3b",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "SOURCE_DEFINITION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-01",
+        "D-02"
+      ],
+      "mathematical_role": "The kernel-intersection definition of the original physical SU2 invariants as a closed subspace of FullL2.",
+      "boundary": "Definition of an invariant subspace alone does not give nonzero physical states.",
+      "notes": ""
+    },
+    {
+      "id": "G-02",
+      "chapter": "5",
+      "title": "Nonzero normalizable physical radial bump",
+      "declarations": [
+        "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_ne_zero",
+        "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_mem_physicalSpace",
+        "FCP.BFSSSU2GaugeG4K2B.pairedPhysicalSpace_ne_bot"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2BNonzeroPhysicalL2Probe.lean",
+      "source_blob_sha": "a288a1bccb847f9544211709fce75c7c7a519453",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "HISTORICAL_STRICT",
+      "strict_run": null,
+      "historical_strict_run": "https://github.com/etblink/Foundational-Convergence-Program/actions/runs/37894319431",
+      "direct_dependencies": [
+        "G-01"
+      ],
+      "mathematical_role": "An actual nonzero, normalizable and SU2-invariant original FullL2 state (not only a nonzero pointwise function).",
+      "boundary": "Historical strict-qualified result; the rewritten integration-port file is not independently qualified by this row; no supersymmetric ground state or eigenvalue.",
+      "notes": ""
+    },
+    {
+      "id": "G-03",
+      "chapter": "5",
+      "title": "Nonzero SU2-invariant original Fock vacuum and projection",
+      "declarations": [
+        "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionVacuum_mem_fixed",
+        "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionGaugeProjection_ne_zero"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean",
+      "source_blob_sha": "a16d3573b737bb4453e42b0b543d63cbbac1cd1b",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42530241914",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-02"
+      ],
+      "mathematical_role": "Nonzero gauge-invariant Fock vacuum and nonzero gauge-fixed orthogonal projection on the original fiber.",
+      "boundary": "A fiber state is not automatically a nonzero gauge-physical bosonic wavefunction or a Hamiltonian eigenstate.",
+      "notes": ""
+    },
+    {
+      "id": "H-01",
+      "chapter": "6",
+      "title": "Density of the original physical charge domain",
+      "declarations": [
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe.lean",
+      "source_blob_sha": "3ab254088e3fa2aea7622807b6b10e7eabc6fc8a",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "HISTORICAL_STRICT",
+      "strict_run": null,
+      "historical_strict_run": "https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39079626713",
+      "direct_dependencies": [
+        "D-03",
+        "G-01"
+      ],
+      "mathematical_role": "The genuine original 16-charge operator has dense domain in the gauge-invariant physical Hilbert space.",
+      "boundary": "Historical qualification, not an automatic integrated-tree qualification.",
+      "notes": ""
+    },
+    {
+      "id": "H-02",
+      "chapter": "6",
+      "title": "The original normalized self-adjoint physical Hamiltonian",
+      "declarations": [
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_selfAdjoint",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_weakForm_iff"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean",
+      "source_blob_sha": "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "HISTORICAL_STRICT",
+      "strict_run": null,
+      "historical_strict_run": "https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39088799248",
+      "direct_dependencies": [
+        "H-01"
+      ],
+      "mathematical_role": "The original densely defined physical 16-charge yields a normalized self-adjoint natural-domain (1/16) T†T Hamiltonian and its weak-form interface.",
+      "boundary": "Neither spectral confinement nor positive eigenpair existence follows from self-adjointness.",
+      "notes": ""
+    },
+    {
+      "id": "H-03",
+      "chapter": "6",
+      "title": "Identity of the native and historical paired physical Hamiltonians",
+      "declarations": [
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BH.originalMinimalPhysicalNormalizedHamiltonian_eq_historical",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BH.originalMinimalPhysicalNormalizedHamiltonian_domain_eq_historical",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BH.pairedOriginalPhysicalNormalizedHamiltonian_eq_historical"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BHOriginalHistoricalPairedHamiltonianEqualityProbe.lean",
+      "source_blob_sha": "a4818bb38bf22fd629f6b6c3c373c38479525dd4",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "HISTORICAL_STRICT",
+      "strict_run": null,
+      "historical_strict_run": "https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39096180117",
+      "direct_dependencies": [
+        "H-02"
+      ],
+      "mathematical_role": "Historical FCP BH proves equality on full operator graphs/domains of original source and previously constructed paired normalized Hamiltonians.",
+      "boundary": "The present integration port changes imports and one local letI to let; it is source-present but not independently requalified in this exact port.",
+      "notes": "Historical FCP source blob 05a540772eb1b0e5c8570fd4eca101be76bbdd9b; original letI line was changed to let in this port. The M3H linter warning example cautions against calling this a mathematical failure."
+    },
+    {
+      "id": "F-01",
+      "chapter": "3",
+      "title": "Faithfulness of the original Clifford-to-Fock operator map",
+      "declarations": [
+        "FCP.BFSSS1V52M3H.originalComplexCliffordFock_injective"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean",
+      "source_blob_sha": "0b0b1f06f332cc9da738375e4511c28361c09f72",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42547700192",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-02"
+      ],
+      "mathematical_role": "The original 48-Majorana complex Clifford map into original Fermion 2 operators is injective.",
+      "boundary": "This is an operator-algebra statement, not an independent manuscript module comparison.",
+      "notes": ""
+    },
+    {
+      "id": "F-02",
+      "chapter": "3",
+      "title": "Original complex Clifford/Fock algebra equivalence",
+      "declarations": [
+        "FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv",
+        "FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv_apply"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean",
+      "source_blob_sha": "754a5f2a13baea90312f6031eb8fa7963dbdf42b",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42547700192",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "F-01"
+      ],
+      "mathematical_role": "An actual complex algebra equivalence between the source complex Clifford algebra and the entire original Fermion 2 continuous operator algebra.",
+      "boundary": "Does not identify any separately stipulated manuscript Hilbert module; preserves the subtle central Spin signs.",
+      "notes": "A source-faithful letI with narrowly scoped style-lint setting was used; previous red was a style warning, not failed mathematics."
+    },
+    {
+      "id": "S-01",
+      "chapter": "7",
+      "title": "Connectedness of the exact source ninth-axis stabilizer",
+      "declarations": [
+        "FCP.BFSSSourceNineAxisStabilizerConnectedness.source9Axis8Stabilizer_isPathConnected_pbw"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisStabilizerConnectedness.lean",
+      "source_blob_sha": "948d4372be26c69dec4644253b24111a0a864402",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42426258689",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-01"
+      ],
+      "mathematical_role": "Path-connectedness of the literal source ninth-axis stabilizer in its PBW topology.",
+      "boundary": "Does not by itself identify its complete representation category with standard Spin(8) branching.",
+      "notes": ""
+    },
+    {
+      "id": "S-02",
+      "chapter": "7",
+      "title": "Compact source stabilizer and its quotient parameterization",
+      "declarations": [
+        "FCP.BFSSSourceNineAxisStabilizerQuotient.source9Axis8Stabilizer_isCompact_pbw",
+        "FCP.BFSSSourceNineAxisStabilizerQuotient.source9Axis8EightUnitSpinWordToStabilizer_isQuotientMap_pbw"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisStabilizerQuotient.lean",
+      "source_blob_sha": "677fc02a13affe8784285bffc9d318ce53f64fbf",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42429216538",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-01"
+      ],
+      "mathematical_role": "A compact exact-word parameterization of the literal source fixed-axis stabilizer with a quotient map.",
+      "boundary": "No automatic transfer of Spin(8) representation-theoretic branching or physical covariance.",
+      "notes": ""
+    },
+    {
+      "id": "S-03",
+      "chapter": "8",
+      "title": "Original active Majorana covariance under source Spin(9) operator action",
+      "declarations": [
+        "FCP.BFSSOP3C6COriginalFockActiveGammaCovariance.originalFockGammaRealLinear_eq_activeGammaRealLinear",
+        "FCP.BFSSOP3C6COriginalFockActiveGammaCovariance.source9Spin_originalFockOperatorAutomorphismHom_activeGamma"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C6COriginalFockActiveGammaCovariance.lean",
+      "source_blob_sha": "2d6f777568b0026737112ff8256e5ed50fc9e6e6",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42728268316",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "F-01",
+        "S-01"
+      ],
+      "mathematical_role": "The literal 48-real active Majorana gamma map is covariant under the sourced original operator automorphism.",
+      "boundary": "This is operator-algebra covariance, not a continuous Fock-vector implementation.",
+      "notes": ""
+    },
+    {
+      "id": "S-04",
+      "chapter": "8",
+      "title": "Original Fock operator Spin(9) physical-star action",
+      "declarations": [
+        "FCP.BFSSP2bB3OriginalFockStarAutomorphismAction.source9Spin_originalFockOperatorStarAutomorphismHom"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB3OriginalFockStarAutomorphismAction.lean",
+      "source_blob_sha": "b50ef04695587b267ad8519074b1293f98828749",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42764649026",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-03"
+      ],
+      "mathematical_role": "A genuine homomorphism into star algebra automorphisms of the original Fock continuous operator algebra.",
+      "boundary": "No source-group continuity, Fock-vector unitary implementation, or Hamiltonian domain covariance is asserted.",
+      "notes": ""
+    },
+    {
+      "id": "S-05",
+      "chapter": "8",
+      "title": "Trace invariance of the original Fock operator action",
+      "declarations": [
+        "FCP.BFSST1OriginalFockTraceInvariance.source9Spin_originalFockTrace_invariant"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/T1OriginalFockTraceInvariance.lean",
+      "source_blob_sha": "3be6c9a6f2898484df66690f94fdfa1877660897",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42769361446",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-04"
+      ],
+      "mathematical_role": "The sourced Spin(9) star algebra automorphism preserves the ordinary finite-dimensional trace on the actual original operator algebra.",
+      "boundary": "Supports but does not complete a continuous Hilbert–Schmidt group representation or its equality with the physical vector space.",
+      "notes": ""
+    },
+    {
+      "id": "S-06",
+      "chapter": "9",
+      "title": "Source Spin(9) and SU2 color commute on 48 labels",
+      "declarations": [
+        "FCP.BFSSC48C0OriginalSpinGaugeMajoranaCommutation.source9SpinOriginalPaired48_commutes_sourceGauge"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0OriginalSpinGaugeMajoranaCommutation.lean",
+      "source_blob_sha": "9f9a5ce2186ded98a251efbc24c2b66f416044d5",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "SOURCE_PRESENT_REQUIRES_RECEIPT",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-03",
+        "G-01"
+      ],
+      "mathematical_role": "The actual 48-real source spatial and color matrix actions commute under exact label equivalence.",
+      "boundary": "Do not elevate the source matrix commutator to fermionic gauge unitary, projector or full charge-operator commutation without a separate theorem/receipt.",
+      "notes": ""
+    },
+    {
+      "id": "A-01",
+      "chapter": "10",
+      "title": "Original massless core-energy identity",
+      "declarations": [
+        "OAI.BFSSQuantum.AlgebraData.massless_coreForm_energy"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralMasslessCoreFormIdentity.lean",
+      "source_blob_sha": "3a8dd27bb573e62c8f86b79b83e0ab96f391602a",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42325087575",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-03"
+      ],
+      "mathematical_role": "Relates the normalized source core charge norm to original kinetic, bosonic potential, and fermion field terms at (1,0).",
+      "boundary": "Generic AlgebraData theorem; concrete Pauli/color field contraction and sharp growth bound are distinct.",
+      "notes": ""
+    },
+    {
+      "id": "A-02",
+      "chapter": "11",
+      "title": "Uniform first radial moment gives L2 tightness",
+      "declarations": [
+        "OAI.BFSSRellich.linear_moment_tight_compactness"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralLinearMomentCompactness.lean",
+      "source_blob_sha": "17a279f2728dd566c711e04eca7596028f355983",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42315568670",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-01"
+      ],
+      "mathematical_role": "Abstract global L2 tightness from first radial moment and local compactness.",
+      "boundary": "Assumes a radial-moment estimate; does not obtain it from the physical Hamiltonian.",
+      "notes": ""
+    },
+    {
+      "id": "A-03",
+      "chapter": "11",
+      "title": "Smooth-core local/global compactness from gradients and moment",
+      "declarations": [
+        "OAI.BFSSSliceSobolev.core_gradient_l2_local_totallyBounded",
+        "OAI.BFSSSliceSobolev.core_linear_moment_totallyBounded"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralCoreLinearMomentCompactness.lean",
+      "source_blob_sha": "7604eb127156b9772fad48cb0ad04c8fe488e3c9",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42318037096",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "A-02"
+      ],
+      "mathematical_role": "Under uniform original gradient, L2, and first radial-moment bounds, smooth core image families are totally bounded.",
+      "boundary": "Not an estimate of source charge energy; the hypotheses remain to be supplied.",
+      "notes": ""
+    },
+    {
+      "id": "A-04",
+      "chapter": "11",
+      "title": "Weighted closure compactness",
+      "declarations": [
+        "OAI.BFSSSliceSobolev.weightedClosure_linear_totallyBounded",
+        "OAI.BFSSSliceSobolev.weightedClosure_sqrt_radial_totallyBounded"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralWeightedClosureCompactness.lean",
+      "source_blob_sha": "68741955a806a30da7b0f9ff168c41b9c29d90cd",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42320696105",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "A-03"
+      ],
+      "mathematical_role": "Total boundedness for the original weighted Sobolev closure when its weight dominates a linear radial moment and graph components are uniformly bounded.",
+      "boundary": "Physical form-domain identification and coercive bounds are not established by this result.",
+      "notes": ""
+    },
+    {
+      "id": "N-01",
+      "chapter": "12",
+      "title": "Uniformly bounded original normalized Fock Gram field",
+      "declarations": [
+        "FCP.BFSSNORM0COriginalNormalizedFockField.originalNormalizedFockGram_norm_le"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0COriginalNormalizedFockField.lean",
+      "source_blob_sha": "84de66e73be2018b03ced898ebf70e691c07b40f",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/43017992525",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "D-02"
+      ],
+      "mathematical_role": "For fixed real gamma matrix B, a normalized original Fock Gram observable has a uniform operator norm bound.",
+      "boundary": "Auxiliary quadratic-Gram observable is not the unnormalized original fermionic interaction (linear in bosonic coordinates).",
+      "notes": ""
+    },
+    {
+      "id": "N-02",
+      "chapter": "12",
+      "title": "Pointwise image belongs to original vector L2",
+      "declarations": [
+        "FCP.BFSSNORM0D2OriginalPointwiseL2Membership.originalPointwiseFock_memLp"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D2OriginalPointwiseL2Membership.lean",
+      "source_blob_sha": "597c1e771b2bf0c366a354fcc991a5b77a71ff9f",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/43047181537",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "N-01",
+        "D-01"
+      ],
+      "mathematical_role": "Actual original FullL2 2 representatives yield strongly measurable integrable pointwise images by the normalized operator field.",
+      "boundary": "This D1-A strict green does not establish a bounded continuous linear map on the full physical FullL2 carrier.",
+      "notes": ""
+    },
+    {
+      "id": "N-03",
+      "chapter": "12",
+      "title": "Original representative-safe carrier bridge",
+      "declarations": [
+        "FCP.BFSSNORM0D3AOriginalLpCarrierBridge.originalCarrierLpOfMemLp_congr"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3AOriginalLpCarrierBridge.lean",
+      "source_blob_sha": "3fc16b042fe51f1e1a8c52260d5bba5135831ffc",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/43084968990",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "N-02"
+      ],
+      "mathematical_role": "Canonical original FullL2 class and equality from a.e.-equal MemLp representatives.",
+      "boundary": "Generic carrier bridge does not alone prove the complete bounded complex-linear map.",
+      "notes": ""
+    },
+    {
+      "id": "N-04",
+      "chapter": "12",
+      "title": "Direct original Fock L2 output a.e. identity",
+      "declarations": [
+        "FCP.BFSSNORM0D3CDirectOriginalFockLpOutput.originalFockLpDirect_ae"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3CDirectOriginalFockLpOutput.lean",
+      "source_blob_sha": "bd9146fe825b4675bfb62f772bc02f83e204d30b",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/43091441892",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "N-03"
+      ],
+      "mathematical_role": "Wrapper-free original Fock-valued L2 output with source-actual pointwise a.e. representative behavior.",
+      "boundary": "The representative-class transport successor is not implied by this gate.",
+      "notes": ""
+    },
+    {
+      "id": "N-05",
+      "chapter": "12",
+      "title": "Image transport under a.e.-equal input representatives",
+      "declarations": [
+        "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_ae_of_rep",
+        "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_memLp_of_rep"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3DOriginalFockRepresentativeTransport.lean",
+      "source_blob_sha": "cb16f081fb1dbff0f149e94b39145d3ea2dec58b",
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "PENDING_STRICT_GATE",
+      "strict_run": "https://github.com/etblink/math/actions/runs/43095354808",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "N-04"
+      ],
+      "mathematical_role": "Candidate pointwise representative equality and alternate L2 output membership, with an independent original consumer.",
+      "boundary": "This atlas is pinned to the preceding reviewed snapshot; no pass/fail status is inferred for the queued run.",
+      "notes": ""
+    },
+    {
+      "id": "O-01",
+      "chapter": "9",
+      "title": "Continuous original physical Spin9 symmetry and full 16-charge covariance",
+      "declarations": [],
+      "repository": null,
+      "source_path": null,
+      "source_blob_sha": null,
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-02",
+        "S-04",
+        "S-06",
+        "H-02"
+      ],
+      "mathematical_role": "Bind actual source group and stabilizer to the correctly phased physical Fock/gauge action; establish full charge form and domain invariance.",
+      "boundary": "Matrix and operator-star covariance are insufficient without a physical-vector/source-domain bridge.",
+      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+    },
+    {
+      "id": "O-02",
+      "chapter": "10",
+      "title": "Source-typed unnormalized fermionic linear-growth inequality",
+      "declarations": [],
+      "repository": null,
+      "source_path": null,
+      "source_blob_sha": null,
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "A-01",
+        "F-02"
+      ],
+      "mathematical_role": "Prove a finite constant C with |B(X)| <= C |X| in the literal source original fermionic field.",
+      "boundary": "Numerical and finite-coefficient checks, and normalized auxiliary Gram bounds, are not this theorem.",
+      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+    },
+    {
+      "id": "O-03",
+      "chapter": "13",
+      "title": "Whole-sector low oscillator exclusion on the exact source carrier",
+      "declarations": [],
+      "repository": null,
+      "source_path": null,
+      "source_blob_sha": null,
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-02",
+        "S-05",
+        "O-01"
+      ],
+      "mathematical_role": "Transfer the conditional Spin9/Spin8 branching argument to the actual physical fiber; distinguish operator-valued 12 from vector-valued 6 first-Cartan thresholds.",
+      "boundary": "Conditional mathematical note exists, but physical-source transfer and bounded character projection remain unproved.",
+      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+    },
+    {
+      "id": "O-04",
+      "chapter": "13",
+      "title": "Physical high-type coercive first-moment estimate",
+      "declarations": [],
+      "repository": null,
+      "source_path": null,
+      "source_blob_sha": null,
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "O-02",
+        "O-03",
+        "H-02",
+        "A-01"
+      ],
+      "mathematical_role": "Deduce first radial-moment and gradient bounds from the exact native physical closed form on a nonzero reducing sector.",
+      "boundary": "Decisive source-specific missing estimate. No global physical form-domain reduction currently admitted.",
+      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+    },
+    {
+      "id": "O-05",
+      "chapter": "13",
+      "title": "Compact resolvent and positive eigenpairs in original physical sector",
+      "declarations": [],
+      "repository": null,
+      "source_path": null,
+      "source_blob_sha": null,
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "O-04",
+        "A-04"
+      ],
+      "mathematical_role": "Join verified compactness to the same historical native physical Hamiltonian and prove sector reduction and nontriviality.",
+      "boundary": "Not a full BFSS mass gap; not currently established.",
+      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+    },
+    {
+      "id": "C-01",
+      "chapter": "13",
+      "title": "Analytical whole-isotypic oscillator exclusion",
+      "declarations": [],
+      "repository": "etblink/math",
+      "source_path": "contributions/bfss-kotler/BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md",
+      "source_blob_sha": null,
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-02",
+        "S-05"
+      ],
+      "mathematical_role": "For the operator-valued fiber, under the specified source group and standard Spin8 identifications, lambda_2 > m+12 excludes oscillator levels 0..m on the full smooth isotypic core.",
+      "boundary": "Analytical conditional proof; not Lean-qualified for the original physical-vector Hilbert operator.",
+      "notes": "Conventional analysis; no Lean theorem claimed."
+    },
+    {
+      "id": "C-02",
+      "chapter": "13",
+      "title": "Conditional full-space coercivity and radial tail",
+      "declarations": [],
+      "repository": "etblink/math",
+      "source_path": "contributions/bfss-kotler/BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md",
+      "source_blob_sha": null,
+      "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "strict_run": null,
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "A-01",
+        "A-04"
+      ],
+      "mathematical_role": "Under explicit P1/P2 source action/core-form hypotheses, the conservative high-type source estimate implies a positive first radial moment coefficient, with rational illustrative constants.",
+      "boundary": "The earlier Fock-vector 6 threshold cannot be conflated with the endomorphism-fiber 12 bound; P1–P3 remain undischarged.",
+      "notes": "Conventional analysis; no Lean theorem claimed."
+    }
+  ]
+}

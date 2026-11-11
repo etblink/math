@@ -1,0 +1,191 @@
+% INTERNAL WORKING EDITION. Do not cite as an accepted theorem source.
+% Exact inspected source snapshot: etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5.
+% The 14-chapter architecture is in CHAPTER_BLUEPRINT.md.
+\documentclass[11pt,oneside]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{enumitem}
+\geometry{margin=1.1in}
+\hypersetup{hidelinks,pdftitle={The Relative SU(2) BFSS Quantum System: Internal Research Monograph},pdfauthor={Internal mathematical research collaboration}}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{openproblem}[theorem]{Open Problem}
+\newcommand{\formalrecord}[1]{\par\smallskip\noindent\textbf{Formalization record.}\enspace #1\par}
+\newcommand{\editornote}[1]{\par\smallskip\noindent\textit{Editorial scope: #1}\par}
+\newcommand{\OriginalLtwo}{\mathcal H_{\mathrm{orig}}}
+\newcommand{\Fermion}{\mathcal F}
+\newcommand{\Bconfiguration}{\mathcal X}
+
+\title{\textbf{The Relative $\mathrm{SU}(2)$ BFSS Quantum System}\\[0.4em]
+  \Large Mathematical Construction, Formal Verification, and the Spectral Research Frontier\\[0.6em]
+  \large Internal research monograph --- architecture edition 0.1}
+\author{Internal mathematical research collaboration}
+\date{11 November 2026}
+
+\begin{document}
+\frontmatter
+\maketitle
+\chapter*{Editorial status and reader's contract}
+\addcontentsline{toc}{chapter}{Editorial status and reader's contract}
+This is a \emph{living internal mathematical research monograph}, intended as an
+onboarding and research instrument for mathematicians and mathematical physicists.
+This architecture edition sets the narrative and evidence conventions; its chapter
+proofs have \emph{not yet been written}. The mathematical source snapshot is
+\texttt{etblink/math} at commit \texttt{d4870eb1ac58}.
+
+The subject is the source-exact relative $\mathrm{SU}(2)$ supersymmetric matrix
+quantum-mechanical system. The name BFSS identifies the equations' lineage;
+identification with eleven-dimensional M-theory is \emph{not} assumed. There are
+nine spatial labels, three color labels, sixteen spinor indices, and forty-eight
+real Majorana labels. In particular, the 27 real bosonic configuration
+coordinates are \emph{not} 27 spacetime dimensions.
+
+Throughout the completed manuscript, a result must be identified as one of:
+(i) an original source definition, (ii) historically strict-qualified,
+(iii) strict-qualified in the integration repository, (iv) source present with
+receipt pending, (v) a pending formal candidate, (vi) conditional analytical
+argument, or (vii) open proof obligation. Neither compiler success alone nor
+a conditional derivation supplies an unstated physical theorem.
+
+\tableofcontents
+\mainmatter
+\part{Defining the Original Quantum System}
+\chapter{Scope, Physical Context, and the Research Problem}
+\label{ch:scope}
+\section{Mathematical BFSS system versus M-theory interpretation}
+\section{Physical questions and precise spectral targets}
+\section{Evidence standards and the three proof chains}
+\editornote{Introduce the system without presupposing positive spectrum or a mass gap. Atlas: D-01, H-02, O-05.}
+
+\chapter{Carriers, Indices, Function Spaces, and Notation}
+\label{ch:carriers}
+\section{Nine spatial indices, SU(2) colors, and 27 real configuration coordinates}
+\section{The original finite fermion Hilbert space}
+\section[Vector-valued L2 representatives and smooth cores]{Vector-valued $L^2$, a.e. representatives, and smooth cores}
+\editornote{Start from literal \texttt{Core.lean} definitions. Atlas: D-01.}
+
+\chapter{Clifford Algebra, Majoranas, and the Original Fock Realization}
+\label{ch:clifford}
+\section{Gamma matrices and the source Clifford relations}
+\section{Forty-eight Majorana labels and 24 complex modes}
+\section{Faithfulness and original Clifford--Fock algebra equivalence}
+\section{Spin central signs and implementer distinctions}
+\editornote{Atlas: D-02, F-01, F-02. Explain the \texttt{letI} style-warning recovery without conflating it with theorem failure.}
+
+\chapter{Sixteen Supercharges and the Normalized Smooth-Core Form}
+\label{ch:charges}
+\section{The source charge operators and their conventions}
+\section{The normalized sixteen-charge core form}
+\section{Symmetry on the core versus closure on an operator domain}
+\editornote{Atlas: D-03, A-01. Do not replace the source charge with a convenient model.}
+
+\part{The Physical Gauge Hilbert Space and Hamiltonian}
+\chapter{Color Gauge Symmetry, Physical States, and Nontriviality}
+\label{ch:gauge}
+\section{Original SU(2) boson and Fock actions}
+\section{The closed gauge-invariant physical space}
+\section{Actual nonzero physical wavefunctions and Fock vacuum}
+\editornote{Atlas: G-01, G-02, G-03. Distinguish fiber invariance and full physical invariance.}
+
+\chapter{The Native Physical Closed Charge and Self-Adjoint Hamiltonian}
+\label{ch:hamiltonian}
+\section{Dense physical charge domain}
+\section[Adjoints and the natural-domain charge square]{Adjoints and the natural-domain operator $(1/16)T^\dagger T$}
+\section{Equality of the native and historical paired Hamiltonians}
+\section{Historical proof qualification versus integrated source portability}
+\editornote{Atlas: H-01, H-02, H-03. Historical strict qualifications are not a new CI certificate for edited ports.}
+
+\part{Spatial Symmetry and Representation Theory}
+\chapter{Source Spin(9), the Ninth-Axis Stabilizer, and Topology}
+\label{ch:spin-geometry}
+\section{The nine-dimensional source quadratic and group action}
+\section{The original axis stabilizer and its word parameterization}
+\section{Path connectedness, compactness, and the remaining Spin(8) bridge}
+\editornote{Atlas: S-01, S-02. The group/stabilizer topology does not prove branching.}
+
+\chapter{The Original Fock-Operator Action, Star Structure, and Trace}
+\label{ch:fock-action}
+\section{Original active Majorana covariance}
+\section{Physical-star preserving algebra automorphisms}
+\section{Trace invariance and prospective Hilbert--Schmidt representation}
+\section{Algebra automorphism versus Fock-vector unitary implementation}
+\editornote{Atlas: S-03, S-04, S-05. Never identify End(Fermion 2) with Fermion 2.}
+
+\chapter{Gauge Compatibility, Supercharge Covariance, and Reducing Sectors}
+\label{ch:covariance}
+\section{Commuting 48-label source matrix actions}
+\section{Full sixteen-charge covariance: the pending bridge}
+\section{Form-core invariance and isotypic projection}
+\editornote{Atlas: S-06, O-01. Preserve source-gauge and spatial-action distinctions.}
+
+\part{Analysis and the Prospective Spectral Mechanism}
+\chapter{Unnormalized Original Energy and the Fermionic Growth Problem}
+\label{ch:energy}
+\section{Original massless core-energy identity}
+\section{Bosonic valleys and original fermionic growth}
+\section{Exact source norm estimates versus finite diagnostics}
+\editornote{Atlas: A-01, O-02. A finite conservative constant may suffice; sharpness is a separate goal.}
+
+\chapter{From First Radial Moment to Compactness}
+\label{ch:compactness}
+\section{Local gradient compactness}
+\section[Linear radial moment and global L2 tightness]{Linear radial moment and global $L^2$ tightness}
+\section{Weighted closure and the physical form-domain gap}
+\editornote{Atlas: A-02, A-03, A-04. The source physical energy bound is still required.}
+
+\chapter{The Normalized Auxiliary Fock-Field Program}
+\label{ch:norm}
+\section{Normalized Gram observable and uniform operator bound}
+\section[Original L2 output and representative independence]{Original $L^2$ output and representative independence}
+\section{Bounded multiplier prospects and the unnormalized interaction distinction}
+\editornote{Atlas: N-01 through N-05. The pending strict gate is not presumed green.}
+
+\chapter{Oscillator Exclusion, High Spin Type, and Potential Point Spectrum}
+\label{ch:spectral}
+\section{Conditional whole-isotypic oscillator exclusion}
+\section{The different first-weight bounds: vector versus endomorphism fiber}
+\section{Conditional global coercivity and rank-one escape tests}
+\section{Physical-sector compactness and positive eigenpair obligations}
+\editornote{Atlas: C-01, C-02, O-03 through O-05. No source-Hamiltonian eigenpair theorem or full mass-gap claim is present.}
+
+\part{Research Synthesis}
+\chapter{The Theorem Frontier, Alternative Routes, and Publication Boundary}
+\label{ch:frontier}
+\section{The open joins in the proof dependency atlas}
+\section{Fock-vector and Hilbert--Schmidt pathways}
+\section{Adversarial falsification and preserved negative results}
+\section{Internal edition completion and the later external monograph}
+\editornote{Finish this chapter after the source-verified mathematical text.}
+
+\appendix
+\chapter{Formalization and Qualification Atlas}
+The full declaration-by-declaration inventory for this working edition is held
+in the versioned companion files \texttt{THEOREM\_ATLAS.json} and
+\texttt{THEOREM\_ATLAS.md}. The final book will convert selected records into
+mathematically typed formalization notes; the full ledger remains separate.
+
+\chapter{Notation and Normalization Audit}
+\editornote{Create a source-exact table for the theta/gamma CAR, 1/16 charge coefficient, color normalization and spatial representation when writing begins.}
+
+\chapter{Negative Knowledge, Source Provenance, and Reproducibility}
+\editornote{Keep the history of failed strategies and conditional claims, plus local offline build instructions and independent consumer policies, in this appendix.}
+
+\backmatter
+\chapter*{Bibliographic verification policy}
+\addcontentsline{toc}{chapter}{Bibliographic verification policy}
+No fabricated references are included in the architecture edition. Foundational
+citations will be inserted only after author, title, publication data, and
+actual relevance have been verified from primary literature.
+\end{document}
