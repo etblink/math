@@ -1,4 +1,4 @@
-# Internal monograph editorial and scientific review queue (v0.2)
+# Internal monograph editorial and scientific review queue (v0.3)
 
 This queue records **tasks for review**, not claims of pending Lean gates. It is independent of GitHub Actions and must not be converted automatically into scientific qualifications.
 
@@ -10,9 +10,15 @@ This queue records **tasks for review**, not claims of pending Lean gates. It is
 - **Chapter 5 (gauge):** Verify pointwise smooth-core invariance is not erroneously extended to arbitrary `L2` representatives; separately distinguish the original full physical `L2` nonzero radial witness (FCP #37894319431), the original finite Fock vacuum/projection (math #42530241914) and the all-three-generator Gauss kernel characterization (FCP #38994451291). Kernel equality does not identify full unbounded generator domains.
 - **Chapter 6 (Hamiltonian):** Verify BA density and the exact physical PiLp16 output; BE `T†T` *natural domain* and weak-form equivalence; BH full adjoints/natural-square/operator identity. The historical BH proof is green #39096180117; current imported `letI`→`let` line has not been separately qualified by this v0.2 narrative. Do not infer positive spectrum from self-adjointness.
 
+## Newly drafted Chapters 7–9 — review before v0.4
+
+- **Chapter 7 (source ninth-axis geometry):** Review whether the conventional proof that the source spin stabilizer is a quotient of `(S^7)^8` matches the accepted original eight-unit perpendicular word source and PBW topology; check that the two-sheeted covering and target `H ≃ₜ* SO(8)` are stated separately from unqualified vector-compatible `Spin(8)` representation branching. Accepted strict runs #42426258689, #42429216538, #42452043377 and #42498367504.
+- **Chapter 8 (Fock-operator action):** Check original M3I carrier, OP3-C6C original active gamma linear action, P2b-B2/B3 adjoint-star action, and T1 actual finite trace. Hilbert–Schmidt isometry is a conventional mathematical corollary, **not** yet a new Lean theorem on a continuous group representation. Treat the original negative center `z9` as a nontrivial minus action on 48 labels, not a scalar conjugation.
+- **Chapter 9 (gauge compatibility):** Verify source C48-0 [#42779878513], S1J identification C48-0B [#42787913738], one-sided active-gamma compatibility C48-1A0 [#42798054277]. No automatic gauge-unitary/projector fixedness, continuous physical `FullL2` Fock-vector action, complete 16-charge covariance, closed form reduction or isotypic spectral theorem. The functional-analysis conditional implication about a closed graph must remain explicitly conditional.
+
 ## Remaining chapters — mathematical order and dependency constraints
 
-- **Chapters 7–9:** Reconstruct source ninth-axis stabilizer and original Fock-operator Spin9 action. Check negative central sign and genuine gauge operator commutation before claiming a continuous action on original physical Fock vectors. The operator-valued Hilbert–Schmidt route is not the physical-vector carrier without a typed bridge.
+
 - **Chapters 10–11:** Use accepted source energy and first-moment compactness as separate blocks. Derive, or label as missing, the actual original unnormalized fermionic growth bound and the coercivity/weighted-closure inclusion on a reducing physical sector.
 - **Chapter 12:** Present NORM0C-D1 as bounded **auxiliary** operators and `FullL2` images, not as equivalent to the original unnormalized linear interaction. Require actual D2 and D3 theorem certificates before promotion.
 - **Chapter 13:** Maintain separate `lambda_2 > m+6` vector and `lambda_2 > m+12` operator-fiber conditional thresholds, verify exact source Spin(8) branching and a nontrivial physical high-type sector before admitting spectral consequences.

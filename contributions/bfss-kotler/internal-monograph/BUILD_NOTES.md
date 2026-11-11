@@ -36,3 +36,37 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
 ### Scientific scope remaining
 
 Chapters 1 and 7–14 are still architectural outlines. Even for drafted Chapters 2–6, the source exposition is a reviewable first pass, not a claim that every original Lean proof has been fully rewritten in conventional detail. Independent domain/normalization review remains useful before publication. No actual original physical Spin(9) reducing-sector coercivity, positive eigenpair, BFSS mass-gap or eleven-dimensional M-theory equivalence is claimed.
+
+## Edition 0.3 (source Spin(9), Fock operator algebra, and gauge compatibility; 2026-11-11)
+
+### Chronological research and primary-source review
+
+- Re-read the October 12 FCP S3L successor handoff: the exact source kinetic free-spinor covariance and smaller cubic-response interfaces were accepted, while R4B/R4D monolithic source-cubic assembly remained a kernel/elaboration problem, not a physical falsification.
+- Re-read the November 7 source Spin(8) research and November 8 Fock/physical-form memorandum, correcting the historical source-stabilizer state with subsequently verified strict-green covering and SO(8) coordinate results.
+- Checked original source declarations in `SpectralSourceNineAxisStabilizerConnectedness`, `SpectralSourceNineAxisStabilizerQuotient`, `SpectralSourceNineAxisProjection`, `SpectralSourceNineAxisCovering`, `SpectralSourceNineAxisCoordinateEquivalence`, `OP3C6COriginalFockActiveGammaCovariance`, `P2bB2OriginalFockGlobalPhysicalStar`, `P2bB3OriginalFockStarAutomorphismAction`, `T1OriginalFockTraceInvariance`, `C48C0OriginalSpinGaugeMajoranaCommutation`, `C48C0BOriginalSourceGaugeS1JMatrixIdentity`, and `C48C1A0OriginalActiveGammaS1JSpinCompatibility` against exact math source baseline.
+- Verified successful strict runs: stabilizer connectedness **#42426258689**; compact quotient **#42429216538**; covering **#42452043377**; coordinate equivalence **#42498367504**; original active gamma **#42728268316**; physical-star **#42764649026**; trace **#42769361446**; C48-0 **#42779878513**; C48-0B **#42787913738**; C48-1A0 **#42798054277**. No new proof certificates are asserted.
+- Added source audit correction to previous S-06 status: source 48-label gauge commutation is **integrated strict**, not merely source-present. Four new records S-07 through S-10 index source S1J equality, active-gamma compatibility, original source covering, and source SO(8) target coordinate equivalence.
+
+### Edited manuscript
+
+- New `chapters/ch07_spin_geometry.tex`, `ch08_fock_action.tex`, `ch09_gauge_covariance.tex`, with conventional proof structure, original indexed source definitions, historical motivation, reader checkpoints and explicit open source-binding theorems.
+- Updated the historical FCP-to-math appendix and chronological companion to distinguish earlier pending/failed stages from subsequent exact strict-green acceptance; kept the original source branch and mathematical gates untouched.
+- Extended source-verified theorem atlas from 33 to **37** records; checked all 37 unique IDs, dependency references, source status vocabulary and strict-gate URL obligations.
+- Chapter 8 contains a **conventional algebraic** Hilbert--Schmidt isometry corollary of the qualified source star/trace results, not a claim of a new Lean theorem or continuous original physical-vector Spin action.
+
+### Local-only validation
+
+```sh
+latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
+  -outdir=/tmp/bfss-monograph-build main.tex
+```
+
+- Locally built **53-page** manuscript with **zero LaTeX warnings**, **zero overfull boxes**, no undefined citations or labels; underfull/loose lines are present as ordinary TeX page composition diagnostics but no text overflow was found.
+- Rendered all 53 pages locally at 105 dpi and inspected a page contact sheet, including the new mathematical chapters and appendix.
+- `THEOREM_ATLAS.json` validated with 37 unique records and every narrative dependency resolving to a recorded ID.
+- No network-dependent LaTeX packages, GitHub Actions, Pages, webhooks, CI triggers or hosted build services used for compilation or scientific review. Only the monograph source tree is eligible for version control.
+
+### Still open
+
+- Source-identical, vector-compatible Spin(8) covering equivalence and actual representation branching; original continuous Fock-vector Spin(9) implementer and central phase normalization; gauge Fock-unitary and projector fixedness; complete original sixteen-charge intertwiner and closed form domain reduction; high-type unnormalized coercivity and positive eigenpairs.
+- Chapters 1 and 10–14 remain architectural outlines, not completed proofs.

@@ -2,7 +2,7 @@
 
 **Status:** internal working inventory, not a new theorem or a fresh CI acceptance.
 
-**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5`. The machine-readable companion is `THEOREM_ATLAS.json`.
+**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (mathematical baseline); theorem citations were rechecked against the monograph branch `65f9de5fc593`. The machine-readable companion is `THEOREM_ATLAS.json`.
 
 The *dependencies* listed below are **narrative/scientific prerequisites**, not necessarily the exact Lean import DAG. A strict-green receipt is always tied to its tested commit; the source blob identifies the file inspected for this manuscript.
 
@@ -38,7 +38,11 @@ The *dependencies* listed below are **narrative/scientific prerequisites**, not 
 | `S-03` | 8 | Original active Majorana covariance under source Spin(9) operator action | `INTEGRATED_STRICT` | `F-01`, `S-01` |
 | `S-04` | 8 | Original Fock operator Spin(9) physical-star action | `INTEGRATED_STRICT` | `S-03` |
 | `S-05` | 8 | Trace invariance of the original Fock operator action | `INTEGRATED_STRICT` | `S-04` |
-| `S-06` | 9 | Source Spin(9) and SU2 color commute on 48 labels | `SOURCE_PRESENT_REQUIRES_RECEIPT` | `S-03`, `G-01` |
+| `S-06` | 9 | Source Spin(9) and SU2 color commute on 48 labels | `INTEGRATED_STRICT` | `S-03`, `G-01` |
+| `S-07` | 9 | Equality of the actual original S1J real gauge matrix and the paired 48-label color action | `INTEGRATED_STRICT` | `S-06` |
+| `S-08` | 9 | Original active gamma / S1J gauge compatibility under Spin9 | `INTEGRATED_STRICT` | `S-03`, `S-06`, `S-07` |
+| `S-09` | 7 | Original ninth-axis stabilizer projection is a two-sheeted covering | `INTEGRATED_STRICT` | `S-01`, `S-02` |
+| `S-10` | 7 | Source fixed-axis orthogonal stabilizer is continuously isomorphic to SO(8) | `INTEGRATED_STRICT` | `S-09` |
 | `A-01` | 10 | Original massless core-energy identity | `INTEGRATED_STRICT` | `D-03` |
 | `A-02` | 11 | Uniform first radial moment gives L2 tightness | `INTEGRATED_STRICT` | `D-01` |
 | `A-03` | 11 | Smooth-core local/global compactness from gradients and moment | `INTEGRATED_STRICT` | `A-02` |
@@ -312,7 +316,7 @@ The sourced Spin(9) star algebra automorphism preserves the ordinary finite-dime
 
 ### S-06 — Source Spin(9) and SU2 color commute on 48 labels
 
-**Status:** `SOURCE_PRESENT_REQUIRES_RECEIPT`. **Chapter:** 9.
+**Status:** `INTEGRATED_STRICT`. **Chapter:** 9.
 
 The actual 48-real source spatial and color matrix actions commute under exact label equivalence.
 
@@ -322,7 +326,74 @@ The actual 48-real source spatial and color matrix actions commute under exact l
 
 **Inspected file blob:** `9f9a5ce2186ded98a251efbc24c2b66f416044d5`.
 
+**Accepted integrated gate:** https://github.com/etblink/math/actions/runs/42779878513
+
 **Boundary:** Do not elevate the source matrix commutator to fermionic gauge unitary, projector or full charge-operator commutation without a separate theorem/receipt.
+
+
+### S-07 — Equality of the actual original S1J real gauge matrix and the paired 48-label color action
+
+**Status:** `INTEGRATED_STRICT`. **Chapter:** 9.
+
+Binds source gauge color matrix to independent original S1J Fin24×Fin2 real Majorana representation.
+
+**Exact declarations:** `FCP.BFSSC48C0BOriginalSourceGaugeS1JMatrixIdentity.sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix`.
+
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean)
+
+**Inspected file blob:** `dde53d8663f00d6832aa4cbb1eafbe7e4746eb1a`.
+
+**Integrated gate:** https://github.com/etblink/math/actions/runs/42787913738
+
+**Boundary:** Exact source real-label matrix identity; not genuine Fock gauge-unitary fixedness or physical projector invariance.
+
+### S-08 — Original active gamma / S1J gauge compatibility under Spin9
+
+**Status:** `INTEGRATED_STRICT`. **Chapter:** 9.
+
+One-sided Spin9 operator automorphism covariance of the gauge-transformed active original Majorana map.
+
+**Exact declarations:** `FCP.BFSSC48C1A0OriginalActiveGammaS1JSpinCompatibility.spin9_activeGamma_S1J_gauge_commute`.
+
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean)
+
+**Inspected file blob:** `4c9a7d183e65d13b33ab9694653f3e0a74741747`.
+
+**Integrated gate:** https://github.com/etblink/math/actions/runs/42798054277
+
+**Boundary:** Does not yet prove full operator automorphism commutation with genuine gauge conjugation or source-unitary/projector fixedness.
+
+### S-09 — Original ninth-axis stabilizer projection is a two-sheeted covering
+
+**Status:** `INTEGRATED_STRICT`. **Chapter:** 7.
+
+Exact compact source Spin9 stabilizer K to fixed-axis SO9 stabilizer H covering with two-element original central kernel.
+
+**Exact declarations:** `FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_isCoveringMap_pbw`, `FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_fiber_ncard`.
+
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean)
+
+**Inspected file blob:** `5121baf4fc003c01854dbb4fe28038a04e961e76`.
+
+**Integrated gate:** https://github.com/etblink/math/actions/runs/42452043377
+
+**Boundary:** Covering does not alone identify K as standard Spin8 with vector-compatible root data and physical representation branching.
+
+### S-10 — Source fixed-axis orthogonal stabilizer is continuously isomorphic to SO(8)
+
+**Status:** `INTEGRATED_STRICT`. **Chapter:** 7.
+
+Concrete topological group equivalence H ≃ₜ* SO(8) via literal first-eight coordinate restriction/extension.
+
+**Exact declarations:** `FCP.BFSSSourceNineAxisCoordinateEquivalence.source9Axis8CoordinateContinuousMulEquiv`.
+
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean)
+
+**Inspected file blob:** `66a67b089977810c1fce0512f1e5631bb4026342`.
+
+**Integrated gate:** https://github.com/etblink/math/actions/runs/42498367504
+
+**Boundary:** Target H equivalence not a new Spin8 source covering isomorphism, branching theorem or physical Fock action.
 
 ### A-01 — Original massless core-energy identity
 

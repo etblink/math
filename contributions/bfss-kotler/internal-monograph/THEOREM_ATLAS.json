@@ -1,5 +1,5 @@
 {
-  "schema": "bfss_internal_theorem_atlas_v0.1",
+  "schema": "bfss_internal_theorem_atlas_v0.3",
   "snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
   "date": "2026-11-11",
   "status_vocabulary": {
@@ -381,8 +381,8 @@
       "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0OriginalSpinGaugeMajoranaCommutation.lean",
       "source_blob_sha": "9f9a5ce2186ded98a251efbc24c2b66f416044d5",
       "source_snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
-      "evidence_status": "SOURCE_PRESENT_REQUIRES_RECEIPT",
-      "strict_run": null,
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42779878513",
       "historical_strict_run": null,
       "direct_dependencies": [
         "S-03",
@@ -390,6 +390,94 @@
       ],
       "mathematical_role": "The actual 48-real source spatial and color matrix actions commute under exact label equivalence.",
       "boundary": "Do not elevate the source matrix commutator to fermionic gauge unitary, projector or full charge-operator commutation without a separate theorem/receipt.",
+      "notes": "Final green supersedes a dated handoff whose first two strict attempts were red. See C48-0 run #42779878513."
+    },
+    {
+      "id": "S-07",
+      "chapter": "9",
+      "title": "Equality of the actual original S1J real gauge matrix and the paired 48-label color action",
+      "declarations": [
+        "FCP.BFSSC48C0BOriginalSourceGaugeS1JMatrixIdentity.sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean",
+      "source_blob_sha": "dde53d8663f00d6832aa4cbb1eafbe7e4746eb1a",
+      "source_snapshot_commit": "65f9de5fc5932c415b7e2dca9d4e9728aac1d84e",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42787913738",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-06"
+      ],
+      "mathematical_role": "Binds source gauge color matrix to independent original S1J Fin24×Fin2 real Majorana representation.",
+      "boundary": "Exact source real-label matrix identity; not genuine Fock gauge-unitary fixedness or physical projector invariance.",
+      "notes": ""
+    },
+    {
+      "id": "S-08",
+      "chapter": "9",
+      "title": "Original active gamma / S1J gauge compatibility under Spin9",
+      "declarations": [
+        "FCP.BFSSC48C1A0OriginalActiveGammaS1JSpinCompatibility.spin9_activeGamma_S1J_gauge_commute"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean",
+      "source_blob_sha": "4c9a7d183e65d13b33ab9694653f3e0a74741747",
+      "source_snapshot_commit": "65f9de5fc5932c415b7e2dca9d4e9728aac1d84e",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42798054277",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-03",
+        "S-06",
+        "S-07"
+      ],
+      "mathematical_role": "One-sided Spin9 operator automorphism covariance of the gauge-transformed active original Majorana map.",
+      "boundary": "Does not yet prove full operator automorphism commutation with genuine gauge conjugation or source-unitary/projector fixedness.",
+      "notes": ""
+    },
+    {
+      "id": "S-09",
+      "chapter": "7",
+      "title": "Original ninth-axis stabilizer projection is a two-sheeted covering",
+      "declarations": [
+        "FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_isCoveringMap_pbw",
+        "FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_fiber_ncard"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean",
+      "source_blob_sha": "5121baf4fc003c01854dbb4fe28038a04e961e76",
+      "source_snapshot_commit": "65f9de5fc5932c415b7e2dca9d4e9728aac1d84e",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42452043377",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-01",
+        "S-02"
+      ],
+      "mathematical_role": "Exact compact source Spin9 stabilizer K to fixed-axis SO9 stabilizer H covering with two-element original central kernel.",
+      "boundary": "Covering does not alone identify K as standard Spin8 with vector-compatible root data and physical representation branching.",
+      "notes": ""
+    },
+    {
+      "id": "S-10",
+      "chapter": "7",
+      "title": "Source fixed-axis orthogonal stabilizer is continuously isomorphic to SO(8)",
+      "declarations": [
+        "FCP.BFSSSourceNineAxisCoordinateEquivalence.source9Axis8CoordinateContinuousMulEquiv"
+      ],
+      "repository": "etblink/math",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean",
+      "source_blob_sha": "66a67b089977810c1fce0512f1e5631bb4026342",
+      "source_snapshot_commit": "65f9de5fc5932c415b7e2dca9d4e9728aac1d84e",
+      "evidence_status": "INTEGRATED_STRICT",
+      "strict_run": "https://github.com/etblink/math/actions/runs/42498367504",
+      "historical_strict_run": null,
+      "direct_dependencies": [
+        "S-09"
+      ],
+      "mathematical_role": "Concrete topological group equivalence H ≃ₜ* SO(8) via literal first-eight coordinate restriction/extension.",
+      "boundary": "Target H equivalence not a new Spin8 source covering isomorphism, branching theorem or physical Fock action.",
       "notes": ""
     },
     {
@@ -730,5 +818,6 @@
       "boundary": "The earlier Fock-vector 6 threshold cannot be conflated with the endomorphism-fiber 12 bound; P1–P3 remain undischarged.",
       "notes": "Conventional analysis; no Lean theorem claimed."
     }
-  ]
+  ],
+  "atlas_review_commit": "65f9de5fc5932c415b7e2dca9d4e9728aac1d84e"
 }

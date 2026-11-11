@@ -1,0 +1,242 @@
+% Chapter 8: OP3-C6C, P2b-B2/B3 and T1 exact original Fock operator algebra.
+% The Hilbert--Schmidt derivation below is conventional and not separately Lean-qualified.
+\chapter[Spin(9) on the Original Fock Algebra]{The Original Fock-Operator Action, Physical Adjoint, and Trace}
+\label{ch:fock-action}
+
+\section{The operator action is not yet a wavefunction action}
+In Chapter~\ref{ch:clifford} we recovered a source-exact complex Clifford
+algebra isomorphism
+$\mathrm{Cl}_{48}^{\mathbb C}\cong\operatorname{End}_{\mathbb C}(\Fermion)$.
+A spatial rotation acts on the original forty-eight real Majorana
+labels through \eqref{eq:spin48-label-action}. A natural question is
+whether we can transfer that transformation to the full original
+Fock \emph{operator algebra}. That question differs from asking for a
+continuous unitary operator $U_{\Fermion}(g)$ on Fock \emph{vectors}.
+The distinction is not terminology: conjugation by $U$ forgets the
+phase of $U$, and its effect on the Spin center must still be checked.
+
+Let
+\[
+ \mathscr A:=\mathcal L_{\mathbb C}(\Fermion,\Fermion)
+ \cong \operatorname{End}_{\mathbb C}(\Fermion),
+ \qquad \Fermion=\mathbb C^{2^{24}}.
+\]
+The actual scalar field and adjoint in this definition are those of
+\texttt{Fermion 2}. In particular, the star below is the adjoint with
+respect to the \emph{original} finite-dimensional complex Hilbert
+inner product, not an abstract Clifford reversal introduced for a
+separate representation.
+
+\section{Covariance of all forty-eight active Majorana generators}
+Write $\Gamma:V_{48}\to_{\mathbb R}\mathscr A$ for the active original
+real-linear normalized Majorana map. We distinguish this original map
+from an earlier donor realization whose equivalence required a separate
+source-label proof.
+
+\begin{theorem}[Active original Majorana covariance; strict-qualified]
+\label{thm:active-majorana}
+There exists an exact source group homomorphism
+\[
+ \alpha:G_9\longrightarrow\operatorname{Aut}_{\mathbb C\text{-alg}}(\mathscr A)
+\]
+whose action agrees, for every $g\in G_9$ and original $v\in V_{48}$,
+with the source forty-eight-label orthogonal representation:
+\begin{equation}\label{eq:active-covariance}
+ \alpha_g\bigl(\Gamma(v)\bigr)
+   =\Gamma\bigl(R_{48}(g)v\bigr).
+\end{equation}
+The statement holds for an arbitrary real source vector, not merely
+the forty-eight preferred coordinate axes.
+\end{theorem}
+\begin{proof}[Source-aligned proof argument]
+The donor Clifford realization already carries the source Spin action,
+with covariance against $R_{48}$. The new comparison identifies the
+donor real-linear Majorana map with the \emph{active} original map.
+It suffices to prove that equality on the source real-coordinate basis;
+real-linearity then gives it on all of $V_{48}$. Substituting this equality
+into the donor covariance theorem gives \eqref{eq:active-covariance}
+without unfolding the enormous concrete finite Fock-operator sum.
+The latter point is not merely an implementation convenience: it
+certifies that the theorem refers to the original G1A-labelled CAR
+operators, rather than a mathematically equivalent but unbound donor.
+\end{proof}
+\formalrecord{\path{OP3C6COriginalFockActiveGammaCovariance.lean},
+\path{originalFockGammaRealLinear_eq_activeGammaRealLinear},
+\path{source9Spin_originalFockOperatorAutomorphismHom_activeGamma};
+strict-green original source and independent consumer
+\href{https://github.com/etblink/math/actions/runs/42728268316}{\#42728268316}.}
+
+\section{Preserving the genuine physical star}
+A complex algebra automorphism need not preserve a chosen Hermitian
+inner product. Thus \eqref{eq:active-covariance} by itself does not
+show that rotations respect the \emph{physical adjoint}. The difference
+was addressed through a separate sequence of small proof obligations:
+from generator compatibility and scalar algebra-map behavior to the
+result for arbitrary operators in the full finite Fock algebra.
+
+\begin{theorem}[Original physical-star Spin action; strict-qualified]
+\label{thm:fock-star-action}
+The original source group acts by complex star-algebra automorphisms:
+\begin{equation}\label{eq:fock-star-action}
+ \alpha:G_9\longrightarrow
+ \operatorname{Aut}_{\mathbb C,*}(\mathscr A),
+ \qquad
+ \alpha_g(A^*)=\alpha_g(A)^*,\quad
+ \alpha_{gh}=\alpha_g\circ\alpha_h.
+\end{equation}
+Here $A^*$ is the original Hilbert adjoint on $\Fermion$.
+\end{theorem}
+\begin{proof}[Mathematical structure of the accepted source proof]
+The original Clifford-to-Fock algebra equivalence of
+Theorem~\ref{thm:clifford-equivalence} is surjective. Every original
+Fock operator is therefore represented by an element of the source
+complex Clifford algebra. The prerequisite star proof establishes
+compatibility on the source Clifford generators, the scalar algebra
+map, multiplication, and the linear operations needed for the
+induction. Transporting those equalities through the original
+algebra equivalence gives the adjoint-preserving statement for every
+$A\in\mathscr A$. The accepted P2b-B3 stage packages the already
+proved algebra action with that property as a genuine
+\texttt{StarAlgEquiv}-valued group homomorphism. The group law is
+inherited from the underlying source automorphism action, including
+its order of composition.
+\end{proof}
+\formalrecord{\path{P2bB2OriginalFockGlobalPhysicalStar.lean},
+\path{source9Spin_originalFockOperator_global_map_star};
+\path{P2bB3OriginalFockStarAutomorphismAction.lean},
+\path{source9Spin_originalFockOperatorStarAutomorphismHom}.
+Strict-green P2b-B3 gate
+\href{https://github.com/etblink/math/actions/runs/42764649026}{\#42764649026}.
+The theorem is algebraic in the \emph{group parameter}; this gate
+does not assert continuity $g\mapsto\alpha_g$ in a named topology.}
+
+\section{A source trace, rather than a rescaled surrogate trace}
+Finite dimensionality provides the ordinary complex trace
+$\operatorname{Tr}_{\Fermion}$. It is important to use this particular
+trace, rather than an unrelated functional obtained from a regular
+Clifford representation: regular and irreducible traces have different
+normalizations.
+
+\begin{definition}[Original finite Fock trace]
+Let $e:\operatorname{End}_{\mathbb C}(\Fermion)\to\mathscr A$
+be the canonical finite-dimensional algebra equivalence between
+linear maps and continuous linear maps. Define
+\begin{equation}\label{eq:original-trace}
+ \operatorname{Tr}_{\mathrm{orig}}(A)
+  := \operatorname{Tr}_{\Fermion}(e^{-1}A),
+  \qquad A\in\mathscr A.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Trace invariance of the original action; strict-qualified]
+\label{thm:original-fock-trace}
+For every $g\in G_9$ and $A\in\mathscr A$,
+\begin{equation}\label{eq:trace-invariant}
+ \operatorname{Tr}_{\mathrm{orig}}(\alpha_g(A))
+   =\operatorname{Tr}_{\mathrm{orig}}(A).
+\end{equation}
+\end{theorem}
+\begin{proof}[Conjugation-free trace argument]
+Transport $\alpha_g$ through $e$ to an algebra automorphism
+$\beta_g=e^{-1}\alpha_g e$ of the finite-dimensional complex
+endomorphism algebra. The standard trace-invariance theorem for algebra
+equivalences of finite endomorphism algebras yields
+$\operatorname{Tr}(\beta_g B)=\operatorname{Tr}(B)$ for all $B$.
+Take $B=e^{-1}A$ and unfold \eqref{eq:original-trace}.
+This proof does not require choosing a unitary conjugator or fixing
+its phase on $\Fermion$.
+\end{proof}
+\formalrecord{\texttt{T1OriginalFockTraceInvariance.lean},
+\texttt{originalFockTrace} and
+\texttt{source9Spin\_originalFockTrace\_invariant}; strict-green
+\href{https://github.com/etblink/math/actions/runs/42769361446}{\#42769361446}.
+The source uses Mathlib's finite-dimensional
+\texttt{LinearMap.trace\_map}.}
+
+\section{The Hilbert--Schmidt consequence and what it does not give}
+The three accepted statements---the group action, physical-star
+preservation, and actual trace preservation---have a useful conventional
+mathematical consequence that does \emph{not} require an arbitrary choice
+of Fock-vector implementation.
+
+\begin{proposition}[Algebraic Hilbert--Schmidt isometry; conventional deduction]
+\label{prop:hs-isometry}
+Equip $\mathscr A$ with the finite-dimensional Hilbert--Schmidt product
+\begin{equation}\label{eq:hilbert-schmidt}
+ \langle A,B\rangle_{\mathrm{HS}}
+   :=\operatorname{Tr}_{\mathrm{orig}}(A^*B).
+\end{equation}
+Then the existing source automorphisms satisfy
+\[
+ \langle\alpha_g(A),\alpha_g(B)\rangle_{\mathrm{HS}}
+   =\langle A,B\rangle_{\mathrm{HS}}
+\]
+for all $A,B\in\mathscr A$ and $g\in G_9$. Thus the \emph{already
+constructed algebraic group homomorphism} acts by complex-linear
+isometries on the Hilbert--Schmidt space.
+\end{proposition}
+\begin{proof}
+Multiplicativity and star preservation give
+\[
+ \alpha_g(A)^*\alpha_g(B)
+  =\alpha_g(A^*)\alpha_g(B)=\alpha_g(A^*B).
+\]
+Taking the original trace and using
+Theorem~\ref{thm:original-fock-trace} proves the desired inner-product
+identity. The group law is Theorem~\ref{thm:fock-star-action}.
+\end{proof}
+\editornote{This is a conventional algebraic corollary of accepted Lean
+roots, not an independently qualified new Hilbert--Schmidt Lean declaration.
+Strong/topological continuity of the source $G_9$ representation and
+its physical significance are separate proof obligations.}
+
+The dimension of this operator-valued fiber is
+$\dim_{\mathbb C}\mathscr A=2^{48}$, while the dimension of the physical
+Fock-vector fiber is $2^{24}$. Accordingly, even a genuine continuous
+Hilbert--Schmidt action would not automatically be the original
+wavefunction action. The input index of the operator fiber contributes
+to representation-theoretic weights, a distinction that reappears in
+the conditional low-oscillator exclusion estimates.
+
+\section{The center and the missing implementer}
+The original negative central element $z_9$ acts trivially on the
+nine-dimensional \emph{vector} representation, but the separately
+qualified source forty-eight-label homomorphism satisfies
+\begin{equation}\label{eq:negative-center-48}
+ R_{48}(z_9)=-I_{48}.
+\end{equation}
+Thus \eqref{eq:active-covariance} yields
+$\alpha_{z_9}(\Gamma(v))=-\Gamma(v)$ on every original Majorana
+label. Since the original Majoranas generate the full finite Fock
+operator algebra, this is not the identity automorphism.
+
+If an operator $U_{\Fermion}(z_9)$ implements this transformation by
+conjugation on Fock vectors, its conjugation action agrees with that of
+fermion parity. But a conjugation automorphism determines its implementer
+only up to a complex scalar phase. One must establish the global
+continuous group lift, the central sign/phase normalization, and the
+required gauge behavior before asserting a particular vector action.
+The tempting shortcut that sends the scalar $-1\in\mathrm{Cl}_9$
+through a unital Clifford algebra homomorphism into scalar $-I$ on
+Fock space would produce \emph{trivial} conjugation and therefore
+cannot implement \eqref{eq:negative-center-48}. That rejected route
+is important negative knowledge, not an obstruction to a correctly
+constructed Spin group lift.
+
+\begin{openproblem}[Original physical-vector Spin action]
+Construct a continuous unitary representation
+$U_{\Fermion}:G_9\to U(\Fermion)$ satisfying the exact original
+Majorana covariance, correct source group law and central normalization.
+Alternatively, prove that a suitably continuous Hilbert--Schmidt
+operator-valued route suffices for an explicitly identified physical
+spectral problem. In either case establish its precise relation to
+the actual \texttt{FullL2 2} source representation and Hamiltonian.
+\end{openproblem}
+
+\section{Reader's checkpoint}
+The original Fock \emph{operator} algebra is no longer a speculative
+interface: it has a genuinely source-bound Spin action, physical-star
+structure, and invariant trace. These are substantial foundations for
+representation theory. They do not yet identify a continuous source
+Spin action on original Fock vectors or its reducing sectors for the
+self-adjoint physical Hamiltonian of Chapter~\ref{ch:hamiltonian}.

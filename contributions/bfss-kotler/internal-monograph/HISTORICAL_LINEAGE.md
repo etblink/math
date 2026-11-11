@@ -1,6 +1,6 @@
 # Historical source chronology: FCP to `etblink/math`
 
-**Editorial edition:** 0.2, 2026-11-11. **Status:** source-based historical navigation, not a new theorem qualification. **Source model:** relative SU(2) BFSS quantum mechanics, interpreted mathematically without assuming its M-theory identification.
+**Editorial edition:** 0.3, 2026-11-11. **Status:** source-based historical navigation, not a new theorem qualification. **Source model:** relative SU(2) BFSS quantum mechanics, interpreted mathematically without assuming its M-theory identification.
 
 The monograph reads mathematics in logical order, but this companion reconstructs the historical path because notes that were accurate at an earlier checkpoint can later become outdated. Every reported green attaches to the specific original source at that tested commit. The current integration branch is **not** presumed green simply because a historical branch compiled.
 
@@ -27,8 +27,11 @@ The monograph reads mathematics in logical order, but this companion reconstruct
 |---|---|---|---|
 | 11 | Nov 6 | Original massless core-energy interface and first-moment compactness implications | [#42325087575](https://github.com/etblink/math/actions/runs/42325087575), smooth-core [#42318037096](https://github.com/etblink/math/actions/runs/42318037096), weighted closure [#42320696105](https://github.com/etblink/math/actions/runs/42320696105). These do not prove physical high-type coercivity. |
 | 12 | Nov 7 | Actual ninth-axis stabilizer path-connectedness/compact quotient | [#42426258689](https://github.com/etblink/math/actions/runs/42426258689), [#42429216538](https://github.com/etblink/math/actions/runs/42429216538). Group geometry does not alone supply the required Fock representation branching. |
+| 12a | Nov 7 | Exact source stabilizer double cover and target SO(8) | Original `K→H` two-fiber quotient covering [#42452043377](https://github.com/etblink/math/actions/runs/42452043377); source target fixed-axis `H ≃ₜ* SO(8)` coordinate equivalence [#42498367504](https://github.com/etblink/math/actions/runs/42498367504). Standard Spin(8) root/weight binding and Fock branching still require proof. |
 | 13 | Nov 8–9 | Source-closing import and original complex Clifford/Fock equivalence | M3H/M3I [#42547700192](https://github.com/etblink/math/actions/runs/42547700192). Prior red [#42546021921](https://github.com/etblink/math/actions/runs/42546021921) was the scoped `linter.style.haveILetI` suggestion, not a theorem failure. |
 | 14 | Nov 9–10 | Actual Fock-operator Spin9 covariance, star preservation, trace | [#42728268316](https://github.com/etblink/math/actions/runs/42728268316), [#42764649026](https://github.com/etblink/math/actions/runs/42764649026), [#42769361446](https://github.com/etblink/math/actions/runs/42769361446). Operator algebra not automatically Fock-vector unitary/closed physical Hamiltonian symmetry. |
+| 14a | Nov 9 | Original spatial and color source matrices truly commute | C48-0 [#42779878513](https://github.com/etblink/math/actions/runs/42779878513), with exact original S1J gauge-matrix identification C48-0B [#42787913738](https://github.com/etblink/math/actions/runs/42787913738). Older pending/red notes are superseded for these exact theorems only. |
+| 14b | Nov 9 | Original active-Majorana map inherits one-sided S1J compatibility | C48-1A0 [#42798054277](https://github.com/etblink/math/actions/runs/42798054277). Does not by itself prove operator-level gauge-unitary commutation, scalar character triviality, or closed Hamiltonian covariance. |
 | 15 | Nov 10–11 | Normalized Fock field, original pointwise FullL² output, carrier bridge | D1-A [#43047181537](https://github.com/etblink/math/actions/runs/43047181537), carrier [#43084968990](https://github.com/etblink/math/actions/runs/43084968990), direct output [#43091441892](https://github.com/etblink/math/actions/runs/43091441892). Representative-class gate #43095354808 was pending at the v0.1 architecture snapshot; no outcome claimed here. |
 
 **Unified source index:**
@@ -36,6 +39,14 @@ The monograph reads mathematics in logical order, but this companion reconstruct
 - `contributions/bfss-kotler/BFSS_PROJECT_LEAD_EVERGREEN_QUALIFIED_REUSE_LEDGER_2026_11_10.md`
 - `contributions/bfss-kotler/BFSS_PHYSICAL_SPECTRAL_PROGRESS_REASSESSMENT_AND_LETI_WARNING_AUDIT_2026_11_11.md`
 - `lean/OAI/MathematicalPhysics/BFSS/Core.lean` and `GaugeCore.lean`
+
+## November representation sequence: what the chronological reconstruction corrected
+
+The 7 November first stabilizer gates already established a source-PBW path-connected compact subgroup and exact eight-word quotient. **Later accepted strict gates** also established the true two-sheeted `K → H` covering and concrete `H ≃ SO(8)` target coordinate group equivalence. These were not fully reflected in the earlier architecture atlas and are now indexed as S-09 and S-10.
+
+The 9 November C48 handoff begins with red and pending gates. Its later appended entries confirm that C48-0, C48-0B and C48-1A0 are independently strict-green. The early `SOURCE_PRESENT_REQUIRES_RECEIPT` classification of C48-0 in the atlas is therefore superseded by the accepted strict gate. The actual *Fock-vector unitary*, gauge-projector and all-sixteen-charge physical form commutation claims remain separate.
+
+The historical FCP S3L process explains why this modular route matters. A full source-cubic covariance assembly is a mathematical target; the prior R4B/R4D monolithic compilation attempts failed by proof elaboration/kernel limits. Green smaller covariance, active-gamma and source matrix gates should be preserved, not silently promoted into complete physical covariance or discarded because the final join remains open.
 
 ## Editorial rules derived from this history
 

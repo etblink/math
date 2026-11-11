@@ -1,0 +1,236 @@
+% Chapter 7: source-bound Spin(9)/Spin(8)-stabilizer geometry.
+% Historical evidence: FCP S3L Oct 12; math Nov 7 strict runs 42426258689,
+% 42429216538, 42452043377, 42498367504. No new Lean theorem is asserted.
+\chapter[Source Spin(9) and the Ninth-Axis Stabilizer]{Source $\operatorname{Spin}(9)$, the Ninth-Axis Stabilizer, and the Geometry of the Cover}
+\label{ch:spin-geometry}
+
+\section{Why spatial symmetry must be built on the actual source}
+The nine spatial labels in the original charge formula suggest the
+$\operatorname{Spin}(9)$ double cover of the spatial rotation group. That
+suggestion is not, by itself, a physical symmetry theorem. The matrix model
+contains a real nine-dimensional bosonic vector index, a sixteen-dimensional
+real spinor index, and a separate forty-eight-dimensional real Majorana
+index. The spatial group must act compatibly on all of them; a rotation of
+one index family cannot simply be declared a symmetry of the full closed
+Hamiltonian.
+
+The historical FCP S3L investigation exposed the difference. Its
+strict-qualified kinetic free-spinor covariance concerned the \emph{actual}
+source derivatives and spin matrices. The remaining cubic response involved
+finite color sums, the order of the Majorana operators, and a complicated
+composition of source identities. Smaller response lemmas qualified, but
+the monolithic R4B/R4D final assembly encountered Lean recursion and
+kernel-time limits. This was evidence about proof architecture, not a
+counterexample to rotational covariance. The later \texttt{etblink/math}
+program found more useful algebraic and geometric intermediate results
+instead of simply repeating the same large application.
+
+\begin{definition}[Original source spatial group and representations]
+Write $V=\mathbb R^9$ with source quadratic form
+$Q(v)=\sum_{i=0}^{8}v_i^2$, expressed in Lean as
+\texttt{source9Quadratic}. Let
+\[
+ G_9:=\operatorname{spinGroup}(Q),\qquad
+ \pi_9:G_9\longrightarrow \mathrm{SO}(V)
+\]
+denote the particular source Spin group and its \emph{source-defined}
+vector representation. On the real sixteen-dimensional spinor index
+there is a separately constructed homomorphism $D_{16}(g)$; on the
+original real forty-eight Majorana labels its source realization is
+\begin{equation}\label{eq:spin48-label-action}
+ R_{48}(g)=E\bigl(I_3\otimes D_{16}(g)\bigr)E^{-1},
+ \qquad g\in G_9,
+\end{equation}
+where $E$ is precisely the \texttt{pairedColorSpinEquiv} reindexing,
+not a freely chosen relabelling of the Fock generators. In these equations
+$R_{48}$ refers to an orthogonal \emph{label} representation, not
+an operator on the complex Fock-vector space.
+\end{definition}
+
+The source group carries a Clifford/PBW topology fixed in the qualified
+Lean construction. That detail matters: continuity in a conveniently
+chosen abstract group model is not the same as continuity of the literal
+homomorphisms used by the physical source. The later topological results
+are valuable because they work in that specific source topology.
+
+\section{Fixing the ninth axis without discarding the double cover}
+Let $e_8$ denote the final standard coordinate vector, using the source
+zero-based index $8$. There are two stabilizers that we must keep distinct:
+\begin{equation}\label{eq:two-stabilizers}
+ K:=\{g\in G_9:\pi_9(g)e_8=e_8\},\qquad
+ H:=\{A\in\mathrm{SO}(9):Ae_8=e_8\}.
+\end{equation}
+Restriction of $\pi_9$ defines $p:K\to H$. The notation may suggest
+a familiar pair $\operatorname{Spin}(8)\to\mathrm{SO}(8)$, but the
+mathematical task is to establish exactly which source subgroup,
+representation, topology, and covering map realize that familiar picture.
+In particular, a group isomorphism unspecified on the vector eight-module
+could introduce an unwanted triality identification.
+
+\begin{proposition}[Exact source perpendicular geometry; strict-qualified]
+The perpendicular source subspace
+\[
+ W=e_8^\perp\subset V
+\]
+has real dimension eight. The locus of source unit vectors perpendicular
+to the ninth axis is the image of the radius-one sphere in $W$, hence
+is path connected and compact. Moreover the source fixed-axis spin group
+$K$ is the image of the continuous ordered \emph{eight-factor} Clifford
+word map
+\begin{equation}\label{eq:source-eight-word}
+ \Phi:P:=\bigl\{u\in V:Q(u)=1,\ u_8=0\bigr\}^{8}
+ \longrightarrow K.
+\end{equation}
+This is a statement about the \emph{entire} source $K$, including both
+central signs, rather than merely a set of sample plane rotations.
+\end{proposition}
+\begin{proof}[Source-aligned mathematical explanation]
+The exact transport \texttt{source9ToEuclidean} identifies the equation
+$u_8=0$ with orthogonality to $e_8$. Its one-dimensional orthogonal
+complement has dimension eight. Under that transport the conditions
+$Q(u)=1$ and $u_8=0$ describe the unit sphere $S(W)$, which is
+homeomorphic to $S^7$. It is path connected and compact.
+
+An even Clifford word in perpendicular unit vectors fixes $e_8$:
+reflections with perpendicular normals fix $e_8$, and the source
+ordered reflection-to-Spin calculations preserve the multiplication
+order. The more difficult converse uses the \emph{source} fixed-axis
+Cartan factorization: every element of $K$ admits an ordered even
+factorization with its unit normals in $W$, padded to eight factors.
+Its exact central sign is handled within that source factorization.
+Consequently the range of the continuous map $\Phi$ is exactly $K$.
+This step is not justified solely by the familiar transitivity of
+$\mathrm{SO}(9)$ on spheres; it uses the accepted original perpendicular
+word theorem.
+\end{proof}
+\formalrecord{Source modules
+\path{SpectralSourceNineAxisStabilizerWords.lean},
+\path{SpectralSourceNineAxisStabilizerConnectedness.lean}; declarations
+\texttt{source9Axis8Perpendicular\_finrank},
+\texttt{source9Axis8EightUnitSpinWord\_range},
+\path{source9Axis8EightUnitSpinWord_continuous_pbw}.
+Strict-green path-connectedness gate
+\href{https://github.com/etblink/math/actions/runs/42426258689}{\#42426258689}.}
+
+\begin{theorem}[Compact and path-connected source stabilizer; strict-qualified]
+\label{thm:source-K-compact-connected}
+The actual subgroup $K$ is compact and path connected in its source PBW
+topology. The map $\Phi:P\to K$ in \eqref{eq:source-eight-word} is a
+continuous, surjective, closed quotient map. In particular, for any
+topological space $Y$ and $f:K\to Y$,
+\begin{equation}\label{eq:spin-quotient-continuity}
+ f\text{ continuous}\quad\Longleftrightarrow\quad
+ f\circ\Phi\text{ continuous}.
+\end{equation}
+\end{theorem}
+\begin{proof}[Proof structure]
+The parameter space $P\cong(S^7)^8$ is compact and path connected.
+The preceding proposition gives continuity and surjectivity of $\Phi$.
+Its image is thus compact and path connected, which proves the first
+claim. As the original source PBW topology is Hausdorff, a continuous
+map from compact $P$ to $K$ is closed. A continuous, surjective closed
+map is a quotient map, giving \eqref{eq:spin-quotient-continuity}.
+Notice that this argument gives a useful method for proving later
+continuity statements on \emph{the real source group}: it is enough
+to verify them after composition with an explicit eight-word map.
+\end{proof}
+\formalrecord{Strict-green quotient gate
+\href{https://github.com/etblink/math/actions/runs/42429216538}{\#42429216538};
+\path{SpectralSourceNineAxisStabilizerQuotient.lean},
+named quotient-map and continuity equivalence declarations in atlas S-02.}
+
+\section{The exact two-sheeted source covering}
+The second part of the geometry controls the sign that a spatial
+orthogonal matrix cannot see. In the source, the nontrivial negative
+Spin center is denoted $z_9=-1$.
+
+\begin{theorem}[Source ninth-axis covering; strict-qualified]
+\label{thm:axis-covering}
+The source projection $p:K\to H$ is surjective, continuous, and a
+two-sheeted covering map. Its kernel and fibers are exactly
+\begin{align}
+ \ker p &=\{1,z_9\},\quad z_9\ne1,\label{eq:cover-kernel}\\
+ p^{-1}(p(g))&=\{g,z_9g\},\qquad g\in K.\label{eq:cover-fibers}
+\end{align}
+The group $K$ is path connected and its target fixed-axis group has an
+explicit source-coordinate equivalence
+\begin{equation}\label{eq:axis-SO8}
+ H\ \cong_{\mathrm{top.grp}}\ \mathrm{SO}(8).
+\end{equation}
+\end{theorem}
+\begin{proof}[Proof structure and provenance]
+The original Spin-vector action sends $z_9$ to the identity on $V$,
+while the source two-sign fiber theorem proves that two spin elements
+have the same full vector action only if they differ by $z_9$.
+Applying this inside the fixed-axis subgroup gives
+\eqref{eq:cover-kernel} and \eqref{eq:cover-fibers}.
+The accepted source covering module combines the quotient property
+of the projection with discreteness of this finite kernel to invoke
+the covering-map criterion for a topological group homomorphism.
+This proves the source covering statement rather than merely counting
+preimages set-theoretically.
+
+To identify $H$, restrict the first eight coordinates of a matrix in
+$\mathrm{SO}(9)$ fixing $e_8$. Orthogonality implies that its last row
+and last column are those of the identity, while the first $8\times8$
+block belongs to $\mathrm{SO}(8)$. Conversely adjoining a final
+$1\times1$ identity block yields a fixed-axis $\mathrm{SO}(9)$ matrix.
+The source defines both maps, proves the group identities, and proves
+both directions continuous, yielding \eqref{eq:axis-SO8} as an actual
+\texttt{ContinuousMulEquiv}.
+\end{proof}
+\formalrecord{Original source files
+\path{SpectralSourceNineAxisProjection.lean},
+\path{SpectralSourceNineAxisCovering.lean},
+\path{SpectralSourceNineAxisCoordinateEquivalence.lean}.
+Strict-green covering gate
+\href{https://github.com/etblink/math/actions/runs/42452043377}{\#42452043377}
+and coordinate-equivalence gate
+\href{https://github.com/etblink/math/actions/runs/42498367504}{\#42498367504}.
+Principal declarations:
+\texttt{source9Axis8ProjectionHom\_ker\_eq},
+\path{source9Axis8ProjectionHom_isCoveringMap_pbw}, and
+\path{source9Axis8CoordinateContinuousMulEquiv}.}
+
+\section{Why this is not yet the branching theorem}
+We now possess the correct original fixed-axis source cover and the
+correct topological group on the orthogonal target. In classical compact
+Lie-group theory, a connected two-sheeted spin covering of $\mathrm{SO}(8)$
+is the setting in which $\operatorname{Spin}(8)$ representation theory
+and the $B_4\downarrow D_4$ branching rule naturally appear. But the
+\emph{specific} identification of the original $K$ with that standard
+covering representation, its common maximal torus and weight lattice,
+and the action on the original fermionic fiber have to be supplied at the
+correct source types. An abstract group isomorphism is insufficient for
+a theorem comparing the actual source vector representation with the
+standard eight-dimensional vector module: $D_4$ triality can permute
+its distinguished eight-dimensional representations.
+
+This is also where signs and weights matter. The later analytical notes
+corrected a proposed sign error: for the chosen active rotation,
+$e_r+i e_s$ is a complexified \emph{basis vector} of weight $+1$,
+while a coordinate function may transform with the opposite sign.
+The four circles of a maximal torus do \emph{not} drop to three when
+fixing one axis. The $B_4\to D_4$ restriction removes short roots,
+not a torus circle. These corrections belong in the monograph because
+an incorrect convention here would contaminate every later oscillator
+and highest-weight bound.
+
+\begin{openproblem}[Source-bound branching interface]
+Construct the exact source vector-compatible covering equivalence
+$K\to\operatorname{Spin}(8)$ (or an equivalent fully specified weight-
+lattice interface), including both center signs, and prove the required
+$\operatorname{Spin}(9)\downarrow\operatorname{Spin}(8)$ interlacing
+property on the actual source representations. Then bind the relevant
+representation to the original physical Fock-vector or operator-valued
+fiber without changing its highest-weight convention.
+\end{openproblem}
+
+\section{Reader's checkpoint}
+The original nine-dimensional Spin geometry is substantially realized:
+we have actual source word parametrizations, connectedness, compactness,
+a two-sheeted stabilizer covering, and the target $\mathrm{SO}(8)$
+coordinate equivalence. The missing link is \emph{not} another generic
+existence theorem for the Spin group. It is the precisely normalized
+representation-theoretic identification needed by the original
+physical-sector argument.

@@ -1,0 +1,257 @@
+% Chapter 9: original source Spin/SU2 real 48-label commutation and physical domain gap.
+% Frozen green: C48-0 #42779878513; C48-0B #42787913738; C48-1A0 #42798054277.
+\chapter[Gauge Compatibility and Physical Sector Reduction]{Gauge Compatibility, Sixteen-Charge Covariance, and the Physical Reducing-Sector Problem}
+\label{ch:covariance}
+
+\section{Two symmetries sharing the same Majorana labels}
+The original matrix system has a spatial symmetry acting on spinor
+indices and a color gauge symmetry acting on three adjoint labels.
+Their linear actions on real Majorana labels are expected to commute,
+but a mathematically correct proof must identify both with the
+\emph{same original} 48-label ordering, including the original
+$\mathrm{SU}(2)$ color coefficients. This is more subtle than proving
+that two formally written Kronecker products commute: the two source
+constructions originally came through different combinations of the
+24 complex creation/annihilation modes and their 48 real parts.
+
+Let $q\in\mathrm{SU}(2)$ be a source gauge element. Write
+$R_3(q)$ for its genuine adjoint-color matrix on
+$\mathbb R^3$. Let $D_{16}(g)$ be the source spinor action.
+The original source reindexing $E$ from Chapter~\ref{ch:spin-geometry}
+provides the two real forty-eight-label actions
+\begin{equation}\label{eq:spatial-vs-color-labels}
+ S_g=E\bigl(I_3\otimes D_{16}(g)\bigr)E^{-1},\qquad
+ C_q=E\bigl(R_3(q)\otimes I_{16}\bigr)E^{-1}.
+\end{equation}
+These are matrices on $V_{48}$; neither is a Hilbert-space operator
+on the full bosonic--fermionic $L^2$ state space.
+
+\begin{theorem}[Original 48-Majorana label commutation; strict-qualified]
+\label{thm:c48-commutation}
+For all original source $g\in G_9$ and $q\in\mathrm{SU}(2)$,
+\begin{equation}\label{eq:label-commutation}
+ S_gC_q=C_qS_g.
+\end{equation}
+The source $C_q$ also agrees entry-for-entry with the independent
+original S1J gauge Majorana matrix obtained from the 24-mode Fock
+construction; hence \eqref{eq:label-commutation} refers to the
+actual original gauge labels.
+\end{theorem}
+\begin{proof}[Two-step source proof]
+First calculate in the original paired color--spin tensor ordering:
+\[
+ (I_3\otimes D_{16})(R_3\otimes I_{16})
+   =(I_3R_3)\otimes(D_{16}I_{16})=R_3\otimes D_{16},
+\]
+and the reverse product is the same. Since $E$ is an exact source
+reindexing ring equivalence, its transport preserves products.
+This proves the C48-0 matrix commutator on all 48 real labels.
+
+The C48-0B proof separately expands the original color/real-imaginary
+source indices and compares the resulting entries with the S1J
+matrix. It invokes the accepted G3B one-particle coefficient theorem,
+so the identification is an exact equality of two independently
+constructed \emph{original} source matrices, not a definitional
+renaming. Consequently the label commutator also holds against the
+existing genuine S1J source gauge matrix.
+\end{proof}
+\formalrecord{\path{C48C0OriginalSpinGaugeMajoranaCommutation.lean},
+\path{source9SpinOriginalPaired48_commutes_sourceGauge};
+strict-green \href{https://github.com/etblink/math/actions/runs/42779878513}{\#42779878513}.
+\path{C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean},
+\path{sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix};
+strict-green \href{https://github.com/etblink/math/actions/runs/42787913738}{\#42787913738}.
+These receipts supersede earlier notes that called the gates pending.}
+
+\section{From the label commutator to active Fock-generator compatibility}
+A matrix equality is not yet an operator equality, but it provides
+exactly the algebra needed to compare two operations on the original
+active Majorana map $\Gamma:V_{48}\to\mathscr A$.
+For the source gauge matrix $C_q$ define
+$\Gamma_q(v):=\Gamma(C_qv)$. The previously qualified
+\eqref{eq:active-covariance} immediately suggests
+\begin{equation}\label{eq:one-sided-gamma-compatibility}
+ \alpha_g(\Gamma(C_qv))
+ =\Gamma(S_gC_qv)=\Gamma(C_qS_gv),
+ \qquad v\in V_{48}.
+\end{equation}
+The actual C48-1A0 proof constructs this one-sided identity with the
+source S1J matrix and independently checks it on the original labels.
+
+\begin{theorem}[Original active-gamma/S1J compatibility; strict-qualified]
+\label{thm:c48-active-compat}
+The source Spin(9) Fock-operator automorphism commutes with the
+\emph{source S1J gauge transformation on every original active
+normalized Majorana generator}, in the explicit one-sided sense
+\eqref{eq:one-sided-gamma-compatibility}.
+\end{theorem}
+\begin{proof}[Source dependency explanation]
+Apply Theorem~\ref{thm:active-majorana} to the real vector $C_qv$.
+Use Theorem~\ref{thm:c48-commutation} to interchange its spin and
+gauge matrices. The result is exactly the active Majorana map of the
+source gauge transform of $S_gv$. The Lean proof verifies the concrete
+S1J coefficient and real-Majorana carrier through the C48-0B bridge,
+rather than introducing an anonymous commuting pair of matrices.
+\end{proof}
+\formalrecord{\path{C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean},
+\texttt{spin9\_activeGamma\_S1J\_gauge\_commute}; strict-green
+\href{https://github.com/etblink/math/actions/runs/42798054277}{\#42798054277}.
+This accepted scope is on original gamma operators.}
+
+\section{Why the genuine gauge unitaries need another theorem}
+The true original gauge symmetry on the Fock-vector fiber is carried
+by the source \texttt{fermionGaugeUnitaryHom} and the
+\texttt{GaugeData} of Chapter~\ref{ch:gauge}. In the operator algebra,
+its action is conjugation by $U_q$. We ultimately need the spatial
+$\alpha_g$ to preserve this genuine gauge representation, or at least
+to preserve its physical fixed projection.
+
+The distinction can be written precisely. Even if one has proved
+\begin{equation}\label{eq:automorphism-commute-condition}
+ \alpha_g\circ\operatorname{Ad}_{U_q}
+   =\operatorname{Ad}_{U_q}\circ\alpha_g
+ \quad\text{on }\mathscr A,
+\end{equation}
+this does not immediately imply $\alpha_g(U_q)=U_q$. Indeed,
+\eqref{eq:automorphism-commute-condition} would imply
+\[
+ \operatorname{Ad}_{\alpha_g(U_q)}
+       =\operatorname{Ad}_{U_q},
+\]
+so the ratio $\alpha_g(U_q)U_q^{-1}$ commutes with every element of
+the full matrix algebra. Its center is $\mathbb C I$, hence
+\begin{equation}\label{eq:phase-ambiguity}
+ \alpha_g(U_q)=c_g(q)U_q,\qquad |c_g(q)|=1.
+\end{equation}
+The scalar phase $c_g(q)$ must be shown trivial by an actual source
+argument, such as a properly qualified uniqueness theorem for the
+source gauge representation or a continuity/character argument.
+The previously qualified M3I full-operator equivalence and original
+trace-preservation theorem make those routes promising. But
+\eqref{eq:phase-ambiguity} is currently an \emph{explanation of the
+missing implication}, not a declaration that the final gauge-unitary
+fixedness or projection invariance has been proved.
+
+\begin{openproblem}[Gauge-unitary fixedness and physical projection]
+Establish the full operator-level compatibility
+\eqref{eq:automorphism-commute-condition}, show the actual
+scalar gauge character is trivial for the original source
+$\mathrm{SU}(2)$, and deduce $\alpha_g(U_q)=U_q$ and invariance of
+the genuine original fermionic gauge projection. Then bind these
+facts to the full-space combined boson--Fock action.
+\end{openproblem}
+
+\section{The missing covariance of all sixteen source charges}
+The full physical wavefunction carrier is
+$\OriginalLtwo=L^2(\mathbb R^{27};\Fermion)$, and the invariant
+Hilbert subspace is $\mathcal H_{\mathrm{phys}}$ from
+Chapter~\ref{ch:gauge}. If a correctly normalized Fock-vector
+unitary $U_{\Fermion}(g)$ and spatial bosonic action $R_B(g)$ are
+established, the combined transformation is expected to have the form
+\begin{equation}\label{eq:combined-action}
+ (\mathcal U_g\psi)(x)
+   =U_{\Fermion}(g)\psi(R_B(g)^{-1}x),
+\end{equation}
+where conventions must be checked against the exact source
+\texttt{bosonPullback} and \texttt{fiberAction}. An operator-valued
+Hilbert--Schmidt action, even when unitary as an abstract fiber, is
+not automatically the action \eqref{eq:combined-action} on the
+original physical Fock-vector wavefunctions.
+
+Let $T$ denote the actual closed sixteen-charge column on
+$\mathcal H_{\mathrm{phys}}$ from Chapter~\ref{ch:hamiltonian}.
+A source-faithful all-spinor covariance would be an identity
+\begin{equation}\label{eq:full-charge-covariance-target}
+ T\mathcal U_g=\mathcal S_g T
+\end{equation}
+on the literal source domain, where $\mathcal S_g$ is the corresponding
+charge-output Hilbert-space unitary. Such a statement is stronger
+than the separate source kinetic covariance or individual cubic
+commutator lemmas: it must cover the exact original sixteen charges,
+the original $\gamma$ and $\theta$ normalizations, full color sums,
+Fock action, gauge restriction and original domain.
+
+\begin{proposition}[Closed-form transport from a verified charge intertwiner;
+conditional functional analysis]
+\label{prop:closed-form-transport}
+Suppose $\mathcal U_g$ and $\mathcal S_g$ are unitary actions on the
+original physical input and original charge-output Hilbert spaces.
+Suppose the original invariant smooth core is preserved and
+\eqref{eq:full-charge-covariance-target} holds there. If that core
+is a graph core for the closed $T$, then
+$\mathcal U_g\operatorname{Dom}(T)=\operatorname{Dom}(T)$ and
+\begin{equation}\label{eq:form-invariance-target}
+ q(\mathcal U_gu,\mathcal U_gv)=q(u,v),\qquad
+ q(u,v)=\tfrac1{16}\langle Tu,Tv\rangle.
+\end{equation}
+Consequently the associated self-adjoint Hamiltonian is invariant:
+$\mathcal U_g\operatorname{Dom}(H)=\operatorname{Dom}(H)$ and
+$H\mathcal U_g=\mathcal U_gH$ on its natural domain.
+\end{proposition}
+\begin{proof}[Conditional proof]
+Take $u\in\operatorname{Dom}(T)$ and choose core vectors $u_n$ with
+$(u_n,Tu_n)\to(u,Tu)$ in the original graph norm. Applying the unitary
+pair $(\mathcal U_g,\mathcal S_g)$ preserves convergence. The core
+intertwining identity puts
+$(\mathcal U_gu_n,\mathcal S_gTu_n)$ in the graph of $T$. Closedness
+of $T$ therefore yields
+$(\mathcal U_gu,\mathcal S_gTu)$ in the graph. The same argument
+with $g^{-1}$ proves equality of the transformed domain.
+Unitarity of $\mathcal S_g$ yields \eqref{eq:form-invariance-target}.
+The associated-vector characterization of $H$ from
+Chapter~\ref{ch:hamiltonian} then transports its operator domain and
+action under the invariant form. No guessed differential expression
+is substituted for the original $T^*T$.
+\end{proof}
+\editornote{This is a conventional implication under explicit hypotheses.
+The source-specific $\mathcal U_g$, physical gauge invariance, and full
+sixteen-charge intertwining have not been jointly accepted; the proposition
+must not be cited as a completed physical Spin(9) Hamiltonian symmetry.}
+
+\section{From a physical symmetry to reducing isotypic sectors}
+Only after a strongly continuous compact-group action on the \emph{same}
+physical Hilbert space is established do its character projections
+become available. For an irreducible Spin type $\lambda$, one expects
+\begin{equation}\label{eq:isotype-projector}
+ P_\lambda=d_\lambda\int_{G_9}
+   \overline{\chi_\lambda(g)}\mathcal U_g\,dg,
+\end{equation}
+with normalized Haar measure. The projection must preserve the
+physical closed form domain, not just the Hilbert space, if it is to
+reduce the associated Hamiltonian. A typical path proves the
+projected smooth invariant core is graph/form dense, then uses form
+invariance and the associated-operator theorem to obtain a reducing
+sector. That route must be checked against the original physical
+core, the precise group topology, and the original output action.
+
+In particular, existence of an algebraic character projector on an
+independently chosen module does not prove compact resolvent in the
+original physical sector. The conditional high-weight oscillator
+argument in Chapter~\ref{ch:spectral} also needs the actual
+$\operatorname{Spin}(8)$ branching and the correct bound for the
+chosen fermionic carrier. Without those source bridges, the
+subsequent radial coercivity and positive-eigenpair implications remain
+conditional.
+
+\section{Why the history of failed large proofs belongs here}
+The FCP S3L record preserves accepted kinetic covariance, the
+original cubic response components, and a sequence of failed large
+final specializations. The failures were source elaboration and kernel
+complexity phenomena. Later C48 work showed a more productive pattern:
+prove source-label commutation, independently identify the original
+S1J matrix, and then transport to active gamma operators in separate
+strict gates. Neither development licenses a leap from finite-label
+action to closed physical Hamiltonian covariance, but their contrast
+shows how the dependency structure can be made tractable without
+weakening the problem.
+
+\section{Reader's checkpoint}
+The original label-level Spin(9) and SU(2) actions commute, and the
+result has been connected to the \emph{actual} S1J source and the
+active Fock gamma action by independently qualified gates. The next
+substantive scientific obstacles are stronger: fix the genuine gauge
+unitaries, construct the correct physical-vector action, prove the
+sixteen-charge intertwiner and obtain the consequent closed-form
+and reducing-sector theorems. Those are the precise joins needed
+before the compactness and oscillator machinery can address the
+spectrum of the native self-adjoint Hamiltonian.

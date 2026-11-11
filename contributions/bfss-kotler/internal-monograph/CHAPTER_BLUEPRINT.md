@@ -1,5 +1,13 @@
 # Internal monograph — verified chapter architecture v0.1
 
+## v0.3 source-symmetry narrative milestone — 11 November 2026
+
+- **Substantive Chapters 7–9 added:** source (9) spatial action and original ninth-axis stabilizer, its connected compact 8-word quotient, two-sheeted covering and concrete target `SO(8)` equivalence; original active 48-Majorana covariance, full Fock-operator `StarAlgEquiv` action, actual trace invariance and the algebraic Hilbert–Schmidt consequence; actual C48-0/C48-0B source `SU(2)` label commutation and C48-1A0 active-gamma compatibility.
+- **Recovered accepted evidence that supersedes older statuses:** source axis covering strict #42452043377; `H≃SO(8)` coordinate equivalence strict #42498367504; C48-0 strict #42779878513; C48-0B strict #42787913738; C48-1A0 strict #42798054277. All tested exact source/consumer gates at historical integration commits; no new Lean proofs generated for this manuscript.
+- **Preserved remaining critical boundaries:** no unqualified identification of source `K` with a vector-compatible standard Spin(8) covering/branching theorem; no automatic physical Fock-vector implementer from operator automorphisms; no deduction from 48-label commutation to true gauge Fock-unitary fixedness; no original physical sixteen-charge source closed-form covariance; no new eigenpair or mass gap.
+- **Chronological research appendix strengthened:** October FCP S3L source covariance and rejected monolithic assembly precede the November original 48-label, stabilizer, full operator-star/trace developments. Early handoff `pending` statuses are corrected only when exact subsequent qualification is verified.
+- **Source baseline:** original `etblink/math@d4870eb1ac58`; monograph branch evidence and current manuscript build are independent of Actions/Pages/webhooks. The theorem atlas now has **37 records**, up from 33.
+
 ## v0.2 draft progress — 11 November 2026
 
 - **Substantive narrative drafted:** Chapter 2 original carriers and $L^2$; Chapter 3 gamma/48-Majorana/24-mode Clifford--Fock representation; Chapter 4 literal source sixteen charges and core form; Chapter 5 gauge actions, physical Hilbert space, nonzero physical states and maximal Gauss kernel; Chapter 6 native closed physical charge, BA--BH historical source Hamiltonian, its adjoint square, natural domain and weak form.
