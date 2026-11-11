@@ -14,6 +14,7 @@ namespace FCP.BFSSNORM0D3AOriginalLpCarrierBridgeConsumer
 noncomputable section
 
 open OAI.BFSSQuantum
+open OAI.BFSSQuantum.AlgebraData
 open MeasureTheory
 open FCP.BFSSNORM0COriginalNormalizedFockField
 open FCP.BFSSNORM0D2OriginalPointwiseL2Membership
