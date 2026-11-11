@@ -73,12 +73,8 @@ theorem originalColorQuadratic_real_smul
 to the zero original bounded operator. -/
 theorem originalColorQuadratic_zero :
     originalColorQuadratic (0 : GammaMatrix) = 0 := by
-  change (∑ α : SpinIndex, ∑ β : SpinIndex,
-      (0 : ℂ) •
-        (∑ A : ColorIndex 2,
-          FCP.BFSSSU2GaugeG1A.pairedTheta α A *
-            FCP.BFSSSU2GaugeG1A.pairedTheta β A)) = 0
-  simp only [zero_smul, Finset.sum_const_zero]
+  simpa only [zero_smul, Complex.ofReal_zero] using
+    (originalColorQuadratic_real_smul (0 : ℝ) (0 : GammaMatrix))
 
 /-- Finite real-matrix sums can be transported through the literal
 original Fock quadratic without choosing an auxiliary representation. -/
