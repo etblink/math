@@ -24,17 +24,17 @@ open FCP.BFSSNORM0D2OriginalPointwiseL2Membership
 with its a.e. representative law before any BFSS specialization. -/
 private noncomputable def certifiedLp
     {α E : Type*} [MeasurableSpace α] [NormedAddCommGroup E]
-    {μ : Measure α} {p : ℝ≥0∞}
-    (q : α → E) (hq : MemLp q p μ) :
-    {u : Lp E p μ // (u : α → E) =ᵐ[μ] q} :=
+    {μ : Measure α} 
+    (q : α → E) (hq : MemLp q 2 μ) :
+    {u : Lp E 2 μ // (u : α → E) =ᵐ[μ] q} :=
   ⟨hq.toLp q, MemLp.coeFn_toLp hq⟩
 
 /-- Generic quotient-invariance proof using only Lp.ext and a.e.
 equality; elaborated without unfolding the BFSS Fermion fiber. -/
 private theorem certifiedLp_eq_toLp_of_ae
     {α E : Type*} [MeasurableSpace α] [NormedAddCommGroup E]
-    {μ : Measure α} {p : ℝ≥0∞}
-    (q r : α → E) (hq : MemLp q p μ) (hr : MemLp r p μ)
+    {μ : Measure α} 
+    (q r : α → E) (hq : MemLp q 2 μ) (hr : MemLp r 2 μ)
     (hqr : q =ᵐ[μ] r) :
     (certifiedLp q hq).1 = hr.toLp r := by
   apply Lp.ext
