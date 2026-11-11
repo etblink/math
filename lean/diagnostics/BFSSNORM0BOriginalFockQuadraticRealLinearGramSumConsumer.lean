@@ -50,7 +50,7 @@ theorem originalFockGramObservable_zero_B
   intro i _
   apply Finset.sum_eq_zero
   intro j _
-  exact smul_zero ((originalSpatialGram x i j : ℝ) : ℂ)
+  simp only [smul_zero]
 
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_add
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_real_smul
