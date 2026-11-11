@@ -30,8 +30,35 @@ theorem originalColorQuadratic_add
     (J K : GammaMatrix) :
     originalColorQuadratic (J + K) =
       originalColorQuadratic J + originalColorQuadratic K := by
-  simp only [originalColorQuadratic, Matrix.add_apply,
-    Complex.ofReal_add, add_smul, Finset.sum_add_distrib]
+  let F : SpinIndex → SpinIndex →
+      (Fermion 2 →L[ℂ] Fermion 2) :=
+    fun α β => ∑ A : ColorIndex 2,
+      FCP.BFSSSU2GaugeG1A.pairedTheta α A *
+      FCP.BFSSSU2GaugeG1A.pairedTheta β A
+  change (∑ α : SpinIndex, ∑ β : SpinIndex,
+      (((J + K) α β : ℝ) : ℂ) • F α β) =
+    (∑ α : SpinIndex, ∑ β : SpinIndex,
+      ((J α β : ℝ) : ℂ) • F α β) +
+    (∑ α : SpinIndex, ∑ β : SpinIndex,
+      ((K α β : ℝ) : ℂ) • F α β)
+  calc
+    _ = ∑ α : SpinIndex, ∑ β : SpinIndex,
+          (((J α β : ℝ) : ℂ) • F α β +
+            ((K α β : ℝ) : ℂ) • F α β) := by
+      apply Finset.sum_congr rfl
+      intro α _
+      apply Finset.sum_congr rfl
+      intro β _
+      rw [Matrix.add_apply, Complex.ofReal_add]
+      exact add_smul ((J α β : ℝ) : ℂ) ((K α β : ℝ) : ℂ) (F α β)
+    _ = ∑ α : SpinIndex,
+          ((∑ β : SpinIndex, ((J α β : ℝ) : ℂ) • F α β) +
+           (∑ β : SpinIndex, ((K α β : ℝ) : ℂ) • F α β)) := by
+      apply Finset.sum_congr rfl
+      intro α _
+      rw [Finset.sum_add_distrib]
+    _ = _ := by
+      rw [Finset.sum_add_distrib]
 
 /-- Real coefficient scaling is complex scalar multiplication on the
 genuine original bounded Fermion 2 complex-linear operator. -/
@@ -46,7 +73,12 @@ theorem originalColorQuadratic_real_smul
 to the zero original bounded operator. -/
 theorem originalColorQuadratic_zero :
     originalColorQuadratic (0 : GammaMatrix) = 0 := by
-  simp [originalColorQuadratic]
+  change (∑ α : SpinIndex, ∑ β : SpinIndex,
+      (0 : ℂ) •
+        (∑ A : ColorIndex 2,
+          FCP.BFSSSU2GaugeG1A.pairedTheta α A *
+            FCP.BFSSSU2GaugeG1A.pairedTheta β A)) = 0
+  simp only [zero_smul, Finset.sum_const_zero]
 
 /-- Finite real-matrix sums can be transported through the literal
 original Fock quadratic without choosing an auxiliary representation. -/
