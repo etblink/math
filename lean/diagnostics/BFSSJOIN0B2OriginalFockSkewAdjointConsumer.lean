@@ -39,15 +39,16 @@ private theorem originalColorQuadratic_neg
       intro α _
       apply Finset.sum_congr rfl
       intro β _
-      rw [Matrix.neg_apply, Complex.ofReal_neg, neg_smul]
+      rw [Matrix.neg_apply, Complex.ofReal_neg]
+      exact neg_smul _ _
     _ = ∑ α : SpinIndex, -(∑ β : SpinIndex,
           ((J α β : ℝ) : ℂ) • F α β) := by
       apply Finset.sum_congr rfl
       intro α _
-      exact Finset.sum_neg_distrib
+      rw [Finset.sum_neg_distrib]
     _ = -(∑ α : SpinIndex, ∑ β : SpinIndex,
           ((J α β : ℝ) : ℂ) • F α β) := by
-      exact Finset.sum_neg_distrib
+      rw [Finset.sum_neg_distrib]
 
 theorem originalColorQuadratic_skewAdjoint
     (J : Matrix SpinIndex SpinIndex ℝ) (hJ : Jᵀ = -J) :
