@@ -30,6 +30,8 @@ noncomputable def originalFockL2Action
 
 /-- The L2 class has the source-original operator action almost
 everywhere, not at every representative point. -/
+-- Match the proven toLp interface with Mathlib's local defEq transparency rule.
+set_option backward.isDefEq.respectTransparency.types false in
 theorem originalFockL2Action_ae (B : GammaMatrix) (f : FullL2 2) :
     (originalFockL2Action B f : Boson 2 → Fermion 2) =ᵐ[volume]
       (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x)) := by
@@ -52,6 +54,8 @@ private theorem originalPointwiseFock_memLp_of_rep
 
 /-- The resulting actual FullL2 class is invariant under changing
 the input representative on any null set. -/
+-- Pinned Mathlib applies this same scoped elaboration option to toLp_congr.
+set_option backward.isDefEq.respectTransparency.types false in
 theorem originalFockL2Action_toLp_rep
     (B : GammaMatrix) (f : FullL2 2) (g : Boson 2 → Fermion 2)
     (hfg : (f : Boson 2 → Fermion 2) =ᵐ[volume] g) :

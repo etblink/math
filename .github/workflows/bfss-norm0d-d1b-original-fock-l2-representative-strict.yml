@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          evidence="$RUNNER_TEMP/bfss-norm0d-d1a"
+          evidence="$RUNNER_TEMP/bfss-norm0d-d1b"
           mkdir -p "$evidence"
           git rev-parse HEAD | tee "$evidence/tested-commit.txt"
           sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/environment-sha256.txt"
@@ -51,7 +51,7 @@ jobs:
               "lean/diagnostics/BFSSNORM0D1OriginalFockFieldContinuityConsumer.lean":"37353573501efaecc795fca6dbfc8e7b4e9f08bc",
               "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D2OriginalPointwiseL2Membership.lean":"597c1e771b2bf0c366a354fcc991a5b77a71ff9f",
               "lean/diagnostics/BFSSNORM0D2OriginalPointwiseL2MembershipConsumer.lean":"1b0579ddb1421288a665971437f82c06406d759a",
-              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3OriginalFockL2Representative.lean":"220d20e27ed5a675ac34d91f782ff7dc1add91a7",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3OriginalFockL2Representative.lean":"bcb2fd167dd0846142f346fd5f6cd099a82de66a",
               "lean/diagnostics/BFSSNORM0D3OriginalFockL2RepresentativeConsumer.lean":"228ba2cc5b725547d194e2b184c61c09c7c8232e",
           }
           assert len(new_pins)==8
@@ -107,7 +107,7 @@ jobs:
           set -euo pipefail
           source "$HOME/.elan/env"
           cd lean
-          evidence="$RUNNER_TEMP/bfss-norm0d-d1a"
+          evidence="$RUNNER_TEMP/bfss-norm0d-d1b"
           timeout 1600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D3OriginalFockL2Representative \
             2>&1 | tee "$evidence/source-build.log"
           timeout 320s lake env lean -DautoImplicit=false -DwarningAsError=true \
@@ -116,7 +116,7 @@ jobs:
           python3 - <<'PY'
           import os,re
           from pathlib import Path
-          log=(Path(os.environ["RUNNER_TEMP"])/"bfss-norm0d-d1a"/"consumer-axioms.log").read_text()
+          log=(Path(os.environ["RUNNER_TEMP"])/"bfss-norm0d-d1b"/"consumer-axioms.log").read_text()
           for bad in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
               assert bad not in log,(bad,log[-4000:])
           pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
