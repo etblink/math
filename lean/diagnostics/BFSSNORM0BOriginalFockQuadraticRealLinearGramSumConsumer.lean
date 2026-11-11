@@ -50,12 +50,9 @@ theorem originalFockGramObservable_zero_B
   intro i _
   apply Finset.sum_eq_zero
   intro j _
-  first
-  | rfl
-  | exact (show
-      ((originalSpatialGram x i j : ℝ) : ℂ) •
-        (0 : Fermion 2 →L[ℂ] Fermion 2) = 0
-      from smul_zero ((originalSpatialGram x i j : ℝ) : ℂ))
+  change ((originalSpatialGram x i j : ℝ) : ℂ) •
+    (0 : Fermion 2 →L[ℂ] Fermion 2) = 0
+  rw [smul_zero]
 
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_add
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_real_smul
