@@ -18,7 +18,7 @@ namespace FCP.BFSSJOIN0B2OriginalFockQuadraticStarTranspose
 noncomputable section
 
 open scoped BigOperators
-open Finset
+open Finset Matrix
 open OAI.BFSSQuantum
 open FCP.BFSSSU2GaugeG1A
 open FCP.BFSSBIL0COriginalFockQuadraticGaugeInvariant
@@ -36,10 +36,14 @@ color entries (not a generic or substitute Clifford representation). -/
 private theorem originalColorPair_star (α β : SpinIndex) :
     star (∑ A : ColorIndex 2, pairedTheta α A * pairedTheta β A) =
       ∑ A : ColorIndex 2, pairedTheta β A * pairedTheta α A := by
-  simp only [star_sum]
-  apply Finset.sum_congr rfl
-  intro A _
-  rw [star_mul, pairedTheta_star β A, pairedTheta_star α A]
+  calc
+    _ = ∑ A : ColorIndex 2, star (pairedTheta α A * pairedTheta β A) := by
+      exact star_sum (Finset.univ : Finset (ColorIndex 2))
+        (fun A => pairedTheta α A * pairedTheta β A)
+    _ = _ := by
+      apply Finset.sum_congr rfl
+      intro A _
+      rw [star_mul, pairedTheta_star β A, pairedTheta_star α A]
 
 /-- Generic finite REAL weighted Fock star transport, isolated before
 instantiation on the full original 16×16 spinor sum. -/
@@ -52,14 +56,24 @@ private theorem finiteRealWeightedFockStar
       ∑ α : SpinIndex, ∑ β : SpinIndex,
         ((J β α : ℝ) : ℂ) • F α β := by
   calc
+    _ = ∑ α : SpinIndex, star (∑ β : SpinIndex,
+          ((J α β : ℝ) : ℂ) • F α β) := by
+      exact star_sum (Finset.univ : Finset SpinIndex)
+        (fun α => ∑ β : SpinIndex,
+          ((J α β : ℝ) : ℂ) • F α β)
+    _ = ∑ α : SpinIndex, ∑ β : SpinIndex,
+          star (((J α β : ℝ) : ℂ) • F α β) := by
+      apply Finset.sum_congr rfl
+      intro α _
+      exact star_sum (Finset.univ : Finset SpinIndex)
+        (fun β => ((J α β : ℝ) : ℂ) • F α β)
     _ = ∑ α : SpinIndex, ∑ β : SpinIndex,
           ((J α β : ℝ) : ℂ) • F β α := by
-      simp only [star_sum, star_smul]
       apply Finset.sum_congr rfl
       intro α _
       apply Finset.sum_congr rfl
       intro β _
-      rw [hF α β]
+      rw [star_smul, hF α β]
       congr 1
       simp
     _ = _ := by
@@ -71,7 +85,7 @@ transpose. NO skew premise and NO altered CAR normalization. -/
 theorem originalColorQuadratic_star_transpose
     (J : Matrix SpinIndex SpinIndex ℝ) :
     star (originalColorQuadratic J) =
-      originalColorQuadratic Jᵀ := by
+      originalColorQuadratic (Jᵀ) := by
   unfold originalColorQuadratic
   simpa only [Matrix.transpose_apply] using
     (finiteRealWeightedFockStar J
