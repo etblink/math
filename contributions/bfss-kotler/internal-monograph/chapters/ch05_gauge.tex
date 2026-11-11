@@ -1,0 +1,185 @@
+% Chapter 5. GaugeCore and exact G4K2B / H5E8AA / OP2c chronology.
+\chapter[Gauge Symmetry and Physical Hilbert Space]{Color Gauge Symmetry, Physical States, and Nontriviality}
+\label{ch:gauge}
+
+\section{The gauge action is part of the model's data}
+For $N=2$ the gauge group is the \emph{actual} special unitary matrix
+group $G=\mathrm{SU}(2)$. It acts on the nine matrix coordinates by color
+conjugation and on the original fermionic fiber by a compatible unitary
+representation. We should not infer the existence or properties of the
+latter from the abstract fact that SO(3) rotates three color coordinates:
+the original 48-Majorana/Fock implementation, including central phases,
+has its own construction and proof lineage.
+
+In the source, admissible \texttt{GaugeData} consists of maps
+\begin{equation}\label{eq:gauge-actions}
+ b:G\longrightarrow\mathrm{Iso}_{\mathbb R}(\mathcal X),\qquad
+ u:G\longrightarrow\mathrm{Iso}_{\mathbb C}(\mathcal F)
+\end{equation}
+that respect multiplication and depend continuously on the group
+parameter. They satisfy the exact color-coordinate intertwining
+\begin{equation}\label{eq:boson-adjoint}
+ X_i\bigl(b(g)x\bigr)=gX_i(x)g^{\dagger},
+\end{equation}
+where $X_i(x)=\sum_A x_i^A t_A$ is the original Hermitian color matrix.
+The corresponding fermionic covariance is
+\begin{equation}\label{eq:fermion-gauge-covariance}
+ u(g)\,\theta_{\alpha A} v
+ =\sum_B R(g)_{AB}\theta_{\alpha B}\,u(g)v,
+\end{equation}
+where the real adjoint coefficients $R(g)_{AB}$ are defined from the
+\emph{source} trace of color conjugation, not from a substituted
+three-dimensional representation. This is the actual source requirement
+\texttt{fermion\_adjoint}.
+
+\section{The physical Hilbert subspace is a closed kernel intersection}
+Pullback by $b(g)$ and fiber action by $u(g)$ induce linear isometries
+on the original $\mathscr H=L^2(\mathcal X;\mathcal F)$. Write
+\begin{equation}\label{eq:physical-condition}
+ \mathscr H_{\mathrm{phys}}
+ :=\bigl\{\psi\in\mathscr H:
+ \psi\circ b(g)=u(g)\psi\text{ in }L^2
+ \text{ for every }g\in G\bigr\}.
+\end{equation}
+The equation is an equality of $L^2$ classes: it is not asserted at every
+point of an arbitrary measurable representative.
+
+\begin{theorem}[Closedness of the original physical space]
+The source-defined space $\mathscr H_{\mathrm{phys}}$ is a closed complex
+linear subspace of $\mathscr H$, hence a Hilbert space in the restricted
+original inner product.
+\end{theorem}
+\begin{proof}
+For each $g\in G$, let $P_g$ be the continuous measure-preserving
+pullback on $\mathscr H$ and $U_g$ the continuous fiber action. The
+equality constraint is $\ker(P_g-U_g)$, a closed complex subspace.
+The intersection of closed subspaces over all $g$ is closed. This is
+exactly the source's \texttt{physicalSpace} definition and
+\texttt{physicalSpace\_closed} lemma.
+\end{proof}
+\formalrecord{\texttt{AlgebraData.GaugeData},
+\texttt{GaugeData.bosonPullback}, \texttt{GaugeData.fiberAction},
+\texttt{GaugeData.physicalSpace} and
+\texttt{GaugeData.physicalSpace\_closed}, in \texttt{GaugeCore.lean}.
+Atlas G-01.}
+
+\section{The invariant smooth core and its stronger pointwise law}
+Let
+\begin{equation}\label{eq:invariant-core}
+ \mathscr D_{\mathrm{phys}}
+ :=\{\psi\in\mathscr D:\iota\psi\in\mathscr H_{\mathrm{phys}}\}.
+\end{equation}
+Because its members are continuous and compactly supported, the source
+strengthens their $L^2$ equality to the pointwise law
+\begin{equation}\label{eq:smooth-gauge-pointwise}
+ \psi(b(g)x)=u(g)\psi(x),\qquad
+ x\in\mathcal X,\;g\in G.
+\end{equation}
+There is a subtle measure-theoretic step here. The source first uses
+the measure-preserving action to establish an almost-everywhere equality.
+Both sides of \eqref{eq:smooth-gauge-pointwise} are continuous in $x$;
+Euclidean Lebesgue volume has full support, so almost-everywhere agreement
+of continuous functions implies equality everywhere. Only for \emph{this
+smooth-core argument} can one harmlessly evaluate at a chosen $x$.
+
+Taking norms and using the fermionic isometry gives the identity
+\begin{equation}\label{eq:gauge-norm}
+ \|\psi(b(g)x)\|_{\mathcal F}=\|\psi(x)\|_{\mathcal F}.
+\end{equation}
+This exact gauge-norm invariance will later support changes of color
+direction in conditional confinement arguments. It does not mean that
+arbitrary fixed slices of an $L^2$ wavefunction are defined.
+
+\section{Is the physical Hilbert space nonzero?}
+A definition as the intersection of symmetry constraints is not enough:
+it could yield the zero space. We need a \emph{normalizable nonzero} state,
+not just a formal gauge-invariant vector in the finite fermionic fiber.
+The historical FCP source produced such a witness.
+
+\begin{theorem}[Nonzero physical $L^2$ state;
+historically qualified]\label{thm:physical-nonzero}
+For the original paired $SU(2)$ color/gamma/Fock data, the actual physical
+Hilbert subspace is nonzero:
+\begin{equation}\label{eq:physical-nonzero}
+ \mathscr H_{\mathrm{phys}}\neq\{0\}.
+\end{equation}
+Indeed, a source-defined gauge-invariant fermionic vacuum multiplied by
+a compactly supported radial profile defines a nonzero member.
+\end{theorem}
+\begin{proof}[Mathematical construction]
+Let $v_0\in\mathcal F$ be the nonzero original gauge-fixed fermionic
+vacuum obtained in the source construction, and choose a continuous radial
+compactly supported scalar profile $\chi(\|x\|^2)$ with $\chi(0)=1$.
+The concrete source takes a smooth-transition function of
+$2-2\|x\|^2$. Define
+\begin{equation}\label{eq:radial-bump}
+ \psi_0(x):=\chi(\|x\|^2)v_0.
+\end{equation}
+Compact support and continuity imply $\psi_0\in L^2$. The color action
+preserves $\|x\|$, while the original fermionic unitary fixes $v_0$;
+thus $\psi_0$ obeys the physical covariance condition. Finally,
+$\psi_0(0)=v_0\ne0$, and by continuity $\psi_0$ is nonzero on an open
+neighborhood of the origin of positive volume. Therefore its $L^2$ class
+is nonzero. The last step is essential: nonzero value at \emph{one}
+point alone is not evidence that an $L^2$ equivalence class is nonzero.
+\end{proof}
+\formalrecord{Original G4--K2B declarations
+\texttt{radialBumpL2\_ne\_zero},
+\texttt{radialBumpL2\_mem\_physicalSpace},
+\texttt{pairedPhysicalSpace\_ne\_bot}; historical FCP strict
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/37894319431}{\#37894319431}
+(8 October 2026). Original source port is in
+\path{OperatorDependencies/SU2BFSSG4K2BNonzeroPhysicalL2Probe.lean}.
+Atlas G-02.}
+
+In November, the unified integration program also qualified a nonzero
+\emph{finite original Fock-vector} invariant and a nonzero original
+fermionic gauge projection. This provides an algebraically useful
+independent construction, but its finite fiber fixed-space conclusion
+is not the same theorem as \eqref{eq:physical-nonzero} about the full
+$L^2$ physical wavefunction space.
+\formalrecord{\path{OP2cNonzeroOriginalGaugeVacuum.lean}; integrated strict
+\href{https://github.com/etblink/math/actions/runs/42530241914}{\#42530241914}.
+Atlas G-03.}
+
+\section{The Gauss-law kernel is more than a formal slogan}
+The traditional Gauss constraint suggests that physical states are those
+annihilated by the three infinitesimal color generators. On unbounded
+operators, this statement needs domains. The historical FCP work
+constructed the actual \emph{maximal strong derivative} generators of
+the original full-$L^2$ group action, then established the relation of
+their joint kernel to the global invariant space.
+
+\begin{theorem}[Gauss-kernel/physical-space equivalence;
+historically qualified]
+For the original paired SU(2) action, an original full-$L^2$ state is
+physical if and only if it lies in the domains of all three actual color
+generators and is annihilated by each generator.
+\end{theorem}
+\begin{proof}[Logical outline]
+The forward direction follows from the fact that the orbit of an
+invariant vector is constant, so its strong derivative along every
+one-parameter color subgroup exists and vanishes. Conversely, the
+historically qualified one-parameter generator theorem identifies
+kernel vectors with vectors fixed by each of the corresponding flows.
+A separate \emph{exact} SU(2) Euler decomposition establishes that those
+flows generate the whole genuine matrix group, not merely a dense
+subgroup. Consequently joint zero-generator states are globally fixed
+and satisfy \eqref{eq:physical-condition}. This is a characterization
+of a joint kernel, \emph{not} equality between maximal generator domains
+and $\mathscr D_{\mathrm{phys}}$.
+\end{proof}
+\formalrecord{FCP historical Gauss source theorem family
+\texttt{L6H5E8AA}, strict
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38994451291}{\#38994451291}
+(16 October 2026); Euler decomposition \texttt{H5E8Y} strict
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38992065735}{\#38992065735}.
+The chronological source handoff is \path{FCP_BFSS_SU2_GAUSS_KERNEL_COMPLETION_AND_SPECTRAL_RETURN_2026_10_16.md}.}
+
+\section{Reader's checkpoint}
+We now know which vectors are physical, that the physical space is
+closed and nonzero, and that the original full-$L^2$ Gauss law has an
+accepted strong-generator characterization. None proves that the
+physical charge domain is dense, nor that a formal Hamiltonian preserves
+a Spin(9) isotypic sector. Those questions demand a separate
+closed-operator construction.

@@ -1,0 +1,224 @@
+% Chapter 6. Historical FCP BA-BH source native operator chain.
+\chapter[Native Physical Hamiltonian]{The Native Physical Closed Charge and Self-Adjoint Hamiltonian}
+\label{ch:hamiltonian}
+
+\section{The problem left by the smooth-core equations}
+The charge formula \eqref{eq:source-charge} is initially defined on a
+smooth test-function core. The physical Hilbert space of
+Chapter~\ref{ch:gauge} is an $L^2$ closed subspace. To speak rigorously
+about the spectrum of a physical Hamiltonian, we need an actual densely
+defined closed operator on that physical Hilbert space, with its
+operator domain specified. A formal integration-by-parts calculation on
+$C_c^\infty$ is insufficient: distinct closed extensions of an
+unbounded differential expression can have different spectra.
+
+The central achievement of the October FCP physical-domain program was to
+construct this operator \emph{from the original restricted charge graph}
+and to compare the resulting native Hamiltonian with a historically
+constructed paired one. This was not merely an isolated proposition; it
+required a sequence of exact graph, gauge-core, density, adjoint, and
+natural-domain results.
+
+\section{The native physical charge map}
+Let $\mathscr H_{\mathrm{phys}}\subset\mathscr H$ be as above and take
+$\mathscr D_{\mathrm{phys}}\subset\mathscr D$ to be the source
+invariant core. Restrict the original sixteen-charge column
+$\mathscr Q$ to this core. The historical source constructs its \emph{minimal
+closed} graph in the relevant product of the actual physical input Hilbert
+space and the sixteen-component output Hilbert space. Denote the
+resulting operator by
+\begin{equation}\label{eq:physical-T}
+ T:\operatorname{Dom}(T)\subset\mathscr H_{\mathrm{phys}}
+ \longrightarrow \mathscr K,
+ \qquad \mathscr K:=\bigoplus_{\alpha=0}^{15}\mathscr H.
+\end{equation}
+We do not replace its graph by the closure of the unrestricted source
+\texttt{fullClosedGraph}, nor assert that $T$ is a bounded map defined on
+all of $\mathscr H_{\mathrm{phys}}$.
+
+On $\mathscr D_{\mathrm{phys}}$ the source identifies
+$T\iota\psi=(\iota Q_\alpha\psi)_\alpha$.
+The closed operator is the \emph{minimal} extension obtained by graph
+closure. Its underlying source declarations are the AY original physical
+Hilbert charge and the earlier AU closed graph. Their formalization
+records are indexed in the companion theorem atlas.
+
+\section{Density is a theorem, not a convenience}
+\begin{theorem}[Original physical charge domain density;
+historically qualified]\label{thm:T-dense}
+For the original $N=2$ color gauge system, the natural domain of the
+actual original minimal closed physical Hilbert charge column is dense:
+\begin{equation}\label{eq:T-dense}
+ \overline{\operatorname{Dom}(T)}
+ =\mathscr H_{\mathrm{phys}}.
+\end{equation}
+\end{theorem}
+\begin{proof}[Accepted dependency argument]
+The original AY source operator is the graph closure of the literal
+restricted invariant-core charge. An earlier AZ reduction expresses its
+domain density as a consequence of an explicit equality between the
+source invariant-core norm closure and the whole physical subspace.
+The historical D2B10C theorem independently establishes precisely that
+core-norm equality using the original SU(2) Haar construction. BA
+composes the two results in one pinned source environment, thereby
+eliminating the formerly conditional density premise. It does not
+replace the physical domain with a convenient larger test space.
+\end{proof}
+\formalrecord{Original physical charge domain density theorem BA;
+full Lean name in atlas H-01. FCP strict
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39079626713}{\#39079626713}
+(17 October 2026).}
+
+This is a pivotal improvement over earlier records: a contemporaneous
+October 17 AW/AX handoff still lists density as an \emph{open} task.
+That handoff is a faithful snapshot of the research \emph{at that time},
+but it is not the latest theorem status. A narrative reconstructed solely
+from the earlier note would mistakenly describe an already-completed
+mathematical obligation as open.
+
+\section{The adjoint square has a particular domain}
+For a densely defined closed map $T:\mathscr H_{\mathrm{phys}}\to\mathscr K$,
+its Hilbert adjoint is the actual operator
+$T^\dagger:\operatorname{Dom}(T^\dagger)\subset\mathscr K
+\to\mathscr H_{\mathrm{phys}}$. The natural composition is
+\begin{equation}\label{eq:TstarT-domain}
+ \operatorname{Dom}(T^\dagger T)
+ =\{\psi\in\operatorname{Dom}(T):
+ T\psi\in\operatorname{Dom}(T^\dagger)\},\qquad
+ T^\dagger T\psi=T^\dagger(T\psi).
+\end{equation}
+The second condition is essential. It would be false to infer from
+$\psi\in\operatorname{Dom}(T)$ that $T\psi$ automatically belongs to
+$\operatorname{Dom}(T^\dagger)$.
+
+\begin{theorem}[Native normalized Hamiltonian;
+historically qualified]\label{thm:source-H}
+For the actual original physical source operator $T$,
+\begin{equation}\label{eq:source-H}
+ H_{\mathrm{phys}}:=\frac1{16}T^\dagger T,
+ \qquad
+ \operatorname{Dom}(H_{\mathrm{phys}})=
+ \operatorname{Dom}(T^\dagger T)
+\end{equation}
+is self-adjoint, nonnegative, densely defined and closed on
+$\mathscr H_{\mathrm{phys}}$. Its action and normalized weak-form
+representing-vector criterion are identified with the literal original
+source definitions.
+\end{theorem}
+\begin{proof}[Mathematical structure of the accepted proof]
+The historical BA theorem supplies the density needed to form the
+Hilbert adjoint. The original minimal closed charge construction supplies
+closedness. The standard adjoint-square theorem for a densely defined
+closed Hilbert-space operator gives that $T^\dagger T$ is positive and
+self-adjoint on the natural domain \eqref{eq:TstarT-domain}; in the FCP
+formalization, BC constructs that product and BD proves self-adjointness.
+Multiplication by the positive real scalar $1/16$ preserves that domain
+and self-adjointness. BE proves the exact normalized scalar action,
+closedness, density, and characterization by the weak form. This is a
+precise source-typed application of the general theorem, not an
+assumption that a formal differential Hamiltonian happens to be
+essentially self-adjoint on test functions.
+\end{proof}
+\formalrecord{Original native normalized Hamiltonian theorem family
+BE (self-adjointness, natural domain and weak form); exact declarations
+in atlas H-02. FCP strict
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39088799248}{\#39088799248}.}
+
+\section{The weak form fixes the associated operator}
+The actual closed physical quadratic form is
+\begin{equation}\label{eq:closed-q}
+ q(\psi):=\frac1{16}\|T\psi\|_{\mathscr K}^2,
+ \qquad \psi\in\operatorname{Dom}(T),
+\end{equation}
+and its polarized form is
+\begin{equation}\label{eq:polarized-q}
+ q(\psi,\phi):=\frac1{16}
+ \langle T\psi,T\phi\rangle_{\mathscr K},\qquad
+ \psi,\phi\in\operatorname{Dom}(T).
+\end{equation}
+There is a precise test for whether a vector $\psi$ lies in the
+domain of the associated operator: it must admit an actual
+$w\in\mathscr H_{\mathrm{phys}}$ with
+\begin{equation}\label{eq:weak-form-criterion}
+ \langle w,\phi\rangle_{\mathscr H_{\mathrm{phys}}}
+ =\frac1{16}\langle T\psi,T\phi\rangle_{\mathscr K}
+ \quad\text{for every }\phi\in\operatorname{Dom}(T).
+\end{equation}
+By the Hilbert adjoint definition and density of $\operatorname{Dom}(T)$,
+this is equivalent to $T\psi\in\operatorname{Dom}(T^\dagger)$, in which
+case $w=\frac1{16}T^\dagger T\psi$. Thus the weak form identifies the
+\emph{same natural-domain operator}, not an arbitrary extension.
+
+The earlier D2B23--D2B25 branch also gave a concrete complete weighted
+Hilbert graph representation of this source form, including the exact
+form norm. The graph norm equivalence and weighted-closure results are
+useful in later compactness arguments, but they must not be confused
+with equality between arbitrary operator domains.
+\formalrecord{FCP strict weighted-form stages
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38060943895}{\#38060943895},
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38061745424}{\#38061745424}, and
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38062563927}{\#38062563927}.
+The later BE weak-form theorem supplies the source-normalized native
+operator.}
+
+\section{The historical and native Hamiltonians were identified}
+The physical model existed in two separate source-defined lines: the
+original AY/BE minimal physical Hilbert charge construction, and the
+earlier historical D2B17--D2B28 paired construction. It was
+mathematically impermissible merely to point to their similar formulas
+and declare their closed operators equal. The FCP BF and BG stages first
+bound the charge graphs and domains. BH then compared adjoints,
+compositions and normalized operators.
+
+\begin{theorem}[Original and paired Hamiltonian identity;
+historically qualified]\label{thm:BH}
+At the historically accepted original source snapshot, the AY/BE native
+and D2B historical charge adjoints, natural adjoint squares, and
+normalized Hamiltonians agree as the exact source-defined unbounded
+operators, including their natural domains. On the actual paired SU(2)
+source data, the two normalized physical Hamiltonian declarations agree.
+\end{theorem}
+\begin{proof}[Dependency explanation]
+BG identifies the genuine original and historical physical charge
+operators as \emph{partial linear maps}, including their domains and
+closed graphs. Their Hilbert adjoints consequently agree, with the
+same adjoint domains. BH rewrites the two separately defined
+natural compositions into those identified adjoints and charge
+operators; equality of the compositions gives equality of their
+domains. Multiplying by the common scalar $1/16$ then establishes
+equality of the normalized Hamiltonians, not simply coincidence of
+their test-function formulas. The final paired specialization uses
+$\texttt{pairedAlgebraData}$ and $\texttt{pairedGaugeData}$ rather than
+a substitute representation.
+\end{proof}
+\formalrecord{Source-identification theorem family BH (adjoints,
+natural squares and Hamiltonian equality with domains); exact seven
+Lean declaration names in atlas H-03. Historical strict
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/39096180117}{\#39096180117}
+(17 October 2026).}
+
+\section{A crucial porting distinction: accepted source versus current tree}
+The historically qualified BH source used a local \texttt{letI} complete
+Hilbert instance. In the present imported \texttt{OperatorDependencies}
+copy, the analogous proof line is \texttt{let}, alongside rewritten
+imports. This is \emph{not} a demonstrated mathematical counterexample:
+the source-level BH theorem has its accepted exact-run certificate.
+The separate M3H import history shows how an identical sort of apparent
+difference can arise from a strict style-linter warning. But neither
+historical success nor the M3H experience is a substitute for a fresh
+independent current-port consumer test. We therefore classify BH as
+\emph{historically strict-qualified; current modified import requires its
+own exact qualification}.
+
+\section{What we know---and what we do not}
+We have a genuine source physical Hilbert space, a densely defined
+closed original charge column, its actual adjoint, a positive
+self-adjoint normalized Hamiltonian with precisely the natural domain,
+and a historically qualified identity to the paired construction.
+That settles an important part of the operator-theory foundation.
+It does \emph{not} yet construct a continuous spatial $\operatorname{Spin}(9)$
+unitary action that preserves this same closed physical form, select
+nontrivial high-type reducing sectors, derive radial coercivity in
+those sectors, or establish eigenpairs. These are the later chapters'
+real proof obligations. Treating them as already solved would erase
+the very mathematical frontier this monograph is intended to expose.

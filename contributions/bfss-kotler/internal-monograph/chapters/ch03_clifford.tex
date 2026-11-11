@@ -1,0 +1,162 @@
+% Chapter 3. Gamma and CAR definitions source-exact; M3H/M3I integration strict.
+\chapter[Clifford Algebra and Fock Realization]{Clifford Algebra, Majoranas, and the Original Fock Realization}
+\label{ch:clifford}
+
+\section{Two Clifford structures, and why they must not be confused}
+The source uses two related but different sets of operators. The first is a
+system of real $16\times16$ matrices encoding the nine spatial Clifford
+relations. The second is a family of 48 bounded operators acting on the
+\emph{original complex fermionic Hilbert space}. Their indices and their
+normalizations differ; merging them by an informal identification would
+invalidate the later supercharge coefficients.
+
+\begin{definition}[Spatial gamma matrices]
+Let $\gamma_i\in\operatorname{Mat}_{16}(\mathbb R)$, $0\le i<9$,
+be symmetric real matrices satisfying
+\begin{equation}\label{eq:gamma-clifford}
+ \gamma_i\gamma_j+\gamma_j\gamma_i
+ =2\delta_{ij}I_{16},\qquad \gamma_i^{\mathsf T}=\gamma_i.
+\end{equation}
+Define the antisymmetric two-index matrices
+\begin{equation}\label{eq:gamma-two}
+ \gamma^{ij}:=\frac12(\gamma_i\gamma_j-\gamma_j\gamma_i).
+\end{equation}
+These are source fields of \texttt{AlgebraData}, not arbitrary matrices
+introduced to fit a later calculation.
+\end{definition}
+
+\begin{definition}[Original fermionic CAR]
+For each spinor index $\alpha$ and color label $A$, the source supplies a
+self-adjoint complex-linear operator
+$\theta_{\alpha A}\in\mathcal L_{\mathbb C}(\mathcal F)$ satisfying
+\begin{equation}\label{eq:theta-car}
+ \theta_{\alpha A}\theta_{\beta B}
+ +\theta_{\beta B}\theta_{\alpha A}
+ =\delta_{\alpha\beta}\delta_{AB}I_{\mathcal F},
+ \qquad \theta_{\alpha A}^{\dagger}=\theta_{\alpha A}.
+\end{equation}
+The source also requires that the common invariant complex submodules of
+these operators are only $0$ and all of $\mathcal F$.
+\end{definition}
+
+One easy source of factor-of-two mistakes deserves emphasis. Taking
+$\alpha=\beta$ and $A=B$ in \eqref{eq:theta-car} gives
+\begin{equation}\label{eq:theta-square}
+ 2\theta_{\alpha A}^2=I_{\mathcal F},\qquad
+ \theta_{\alpha A}^2=\tfrac12 I_{\mathcal F}.
+\end{equation}
+Thus the source $\theta$'s are not the conventional generators whose
+squares equal the identity. With $\Gamma_{\alpha A}=\sqrt2\,\theta_{\alpha A}$
+one obtains the normalized relation
+$\Gamma_p\Gamma_q+\Gamma_q\Gamma_p=2\delta_{pq}I$.
+Any transfer from real Clifford elements into physical Fock operators must
+preserve this normalization, including signs under the Spin double cover.
+
+\begin{proposition}[Dimension count of the original Fock fiber]
+At $N=2$ there are $16\cdot3=48$ real Majorana labels and 24 complex
+fermion modes. The usual finite complex fermion Fock representation of
+these modes has dimension $2^{24}$.
+\end{proposition}
+\begin{proof}
+Choose an ordering of the 48 real labels and pair consecutive normalized
+Majorana generators into 24 complex annihilation--creation pairs. A
+fermionic occupation configuration is a choice of occupation number
+$n_a\in\{0,1\}$ for each mode $a=1,\dots,24$. There are precisely
+$2^{24}$ such configurations. The source's \texttt{Fermion 2} is the complex
+Euclidean space of that dimension. This counting argument does not by
+itself identify an arbitrary abstract CAR module with the actual source
+representation: that identification is the content of the separately
+qualified original Clifford/Fock maps discussed next.
+\end{proof}
+
+\section{From an abstract Clifford algebra to the actual source operators}
+Let $V_{48}$ be the real 48-label space and $\mathrm{Cl}_{\mathbb C}(V_{48})$
+its complexified Clifford algebra with the source quadratic normalization.
+The original CAR representation determines a complex algebra homomorphism
+\begin{equation}\label{eq:clifford-fock-hom}
+ \rho_{\mathrm{Cl}}:
+ \mathrm{Cl}_{\mathbb C}(V_{48})\longrightarrow
+ \operatorname{End}_{\mathbb C}(\mathcal F).
+\end{equation}
+At this level we are discussing the \emph{full finite-dimensional operator
+algebra}; no global Spin(9) unitary representation on wavefunctions has yet
+been invoked.
+
+\begin{theorem}[Original Clifford--Fock algebra equivalence;
+source-qualified]\label{thm:clifford-equivalence}
+For the original 48-real-generator source and the original
+$\mathcal F=\mathbb C^{2^{24}}$, the source complex Clifford action is
+faithful and surjective. Hence it determines an isomorphism of complex
+algebras
+\begin{equation}\label{eq:clifford-end}
+ \mathrm{Cl}_{48}^{\mathbb C}
+ \;\cong\;\operatorname{End}_{\mathbb C}(\mathcal F).
+\end{equation}
+\end{theorem}
+\begin{proof}[Mathematical dependency argument]
+The finite-dimensional source argument first establishes the image of the
+original Clifford action as the full Fock endomorphism algebra (historical
+M3D). A separate faithfulness theorem (M3H) proves that the same map is
+injective; in the source, the matching finite ranks are used in the
+injectivity reasoning. Surjectivity and injectivity give a bijective
+complex-algebra homomorphism. M3I packages its inverse as an actual
+\texttt{AlgEquiv} and proves its application law. Each step concerns the
+same original complex Fock carrier, not an independent abstract model
+named only by its dimension.
+
+This paragraph is the conventional argument and dependency explanation,
+not a claim that these few lines reproduce the full detailed Lean proof of
+M3D or M3H. Those declarations and their exact consumer form the formal
+proof evidence.
+\end{proof}
+\formalrecord{Integrated original Clifford-to-Fock faithfulness (M3H)
+and algebra equivalence (M3I); full qualified declaration names are
+indexed as atlas F-01--F-02. Strict-green run
+\href{https://github.com/etblink/math/actions/runs/42547700192}{\#42547700192},
+exact tested commit \texttt{741e629e228e}.}
+
+\section{Why this equivalence does not solve the spatial group problem}
+An algebra isomorphism is not yet a continuously chosen lift of a specific
+$\operatorname{Spin}(9)$ action to unitary operators on $\mathcal F$. A
+spatial transformation can induce an automorphism of
+$\operatorname{End}_{\mathbb C}(\mathcal F)$ without specifying a preferred
+unitary implementer on $\mathcal F$; multiplying a unitary implementer by
+an arbitrary scalar phase leaves its conjugation action unchanged. The
+source Spin groups also possess a nontrivial central element, and its
+sign matters when matching genuine spinor representations.
+
+\begin{remark}[Two possible fibers]
+The space $\mathcal F$ of physical fermion \emph{vectors} has complex
+dimension $2^{24}$; the endomorphism algebra
+$\operatorname{End}_{\mathbb C}(\mathcal F)$ has dimension $2^{48}$.
+A representation-theoretic bound established for one fiber must not be
+reused for the other without proof. In particular, the conditional
+first-weight thresholds 6 and 12 in the later spectral program belong to
+different actions and should remain visibly distinct.
+\end{remark}
+
+\section{A methodological correction from the historical files}
+The FCP source files and their integration copies have sometimes differed
+by imports and local Lean instance syntax. The M3H historical source used
+\texttt{letI}; an early integration port changed it to \texttt{let}. The
+source-faithful port restored \texttt{letI}, after which a strict build
+compiled the source and independent consumer but rejected the purely
+stylistic \texttt{linter.style.haveILetI} suggestion. The subsequent
+accepted repair retained the original theorem body and disabled only that
+specific style suggestion; the final integrated strict run was green.
+Thus a red workflow arising from a style warning must not be mistaken for
+a false Clifford theorem. Nor should this experience license blanket
+suppression of proof warnings or promotion of arbitrary changed ports.
+
+\formalrecord{FCP/math integration chronology in the historical source
+comparison memorandum, \path{FCP_PHYSICAL_SOURCE_COMPARISON_2026_11_08.md}.
+Red diagnostic \href{https://github.com/etblink/math/actions/runs/42546021921}{\#42546021921};
+accepted exact-source repair \href{https://github.com/etblink/math/actions/runs/42547700192}{\#42547700192}.}
+
+\section{Reader's checkpoint}
+We have specified two separate Clifford systems, fixed the Majorana
+normalization, and recovered the verified original complex Clifford/Fock
+algebra equivalence. We have \emph{not} silently introduced an independent
+manuscript Fock module or obtained an original physical $L^2$ spatial-spin
+representation. With the same $\gamma$ and $\theta$ operators in hand, we
+may now write the literal sixteen source supercharges.

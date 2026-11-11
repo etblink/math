@@ -1,15 +1,18 @@
 # Relative SU(2) BFSS — internal research monograph workspace
 
-**Status: v0.1 theorem-level architecture, not a completed mathematical manuscript.**
+**Status: v0.2 internal narrative edition: Chapters 2--6 drafted and locally compiled; Chapters 1 and 7--14 remain architectural. Not a completed research monograph.**
 
 This directory is a narrative, source-auditable onboarding reference for mathematicians and mathematical physicists joining the original relative SU(2) supersymmetric matrix quantum mechanics research program. It is a *living internal research monograph*, not the eventual external publication and not an assertion of a mass gap, a positive-eigenvalue theorem, or an 11-dimensional M-theory equivalence.
 
 ## Files
 
-- `CHAPTER_BLUEPRINT.md` — the planned 14-chapter mathematical narrative, open proof obligations and drafting order.
+- `CHAPTER_BLUEPRINT.md` — the planned 14-chapter mathematical narrative, drafted-chapter status, open proof obligations and drafting order.
+- `chapters/ch02_carriers.tex` through `chapters/ch06_hamiltonian.tex` — substantive mathematical narrative, source definitions, proof explanations, qualification records and explicit limitations.
+- `appendices/historical_lineage.tex` — narrative reconstruction of the FCP to unified-integration progression.
+- `HISTORICAL_LINEAGE.md` — detailed dated record with FCP and integrated run evidence, historical handoffs and source path locators.
 - `THEOREM_ATLAS.json` — structured, exact-snapshot crosswalk of source declarations, Git blob SHAs, evidence status, mathematical boundaries and **narrative** dependencies.
 - `THEOREM_ATLAS.md` — readable rendering of those same 33 records, with original-source and strict-run pointers.
-- `main.tex` — initial offline-compilable master TeX with the book's title, claim-status conventions, contents and section-level scaffold. Mathematical chapter proofs are **not yet drafted**.
+- `main.tex` — offline-compilable master TeX importing the five substantive chapters and the historical appendix; other chapters retain section-level scaffolds.
 - `BUILD_NOTES.md` — local-only compilation and review results.
 
 ## Source authority and careful interpretation
@@ -27,4 +30,4 @@ The term **BFSS** denotes the source mathematical system's origin and characteri
 5. Ignore LaTeX-generated `.aux`, `.toc`, `.log`, `.out`, `.fls`, `.fdb_latexmk` and PDF artifacts when committing source-only edits. Preserve reviewed edition PDFs separately if desired.
 6. For later fast-forward promotion, first verify the unified branch is an ancestor of the monograph HEAD; reconcile any divergence on the monograph branch and only then fast-forward the unified branch without `--force`.
 
-**Current priority:** Audit the theorem-atlas architecture for omissions and exact claim status before authoring Chapter 2's complete exposition. The present LaTeX scaffold deliberately contains no fabricated proofs or placeholders disguised as results.
+**Current priority:** Independently review the first mathematical draft, particularly the original charge coefficient normalization and exact current-source carrier interfaces; then extend Chapters 7–9 and 10–13 using the same source-first narrative/evidence standard. The v0.2 PDF is an internal working review artifact, not a claim that the remaining chapters or proofs are complete.

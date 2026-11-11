@@ -1,0 +1,173 @@
+% Chapter 4. Formulae are direct translations of original Core.lean.
+\chapter[Supercharges and Source Core Form]{Sixteen Supercharges and the Normalized Smooth-Core Form}
+\label{ch:charges}
+
+\section{Why we begin with charges instead of guessing a Hamiltonian}
+The supersymmetric structure of this model is encoded in sixteen first-order
+operators, each carrying a spatial spinor index. Starting from these
+operators is important for two reasons. First, the fermionic interaction,
+color structure, and normalization arise from specific finite sums: replacing
+one of them by a familiar-looking textbook expression can change a sign or
+factor. Second, defining a positive energy form directly from the charge
+column gives a controlled route to a closed physical Hamiltonian, avoiding
+an unjustified choice among self-adjoint realizations of a formal second-order
+differential expression.
+
+We retain the source's \emph{Hermitian color basis} $t_A$, satisfying
+\begin{equation}\label{eq:color-basis}
+ t_A^\dagger=t_A,\qquad \operatorname{tr}(t_A)=0,
+ \qquad \operatorname{tr}(t_A t_B)=\delta_{AB}.
+\end{equation}
+For two color matrices define the source bracket and structure constants by
+\begin{equation}\label{eq:source-bracket}
+ [X,Y]_{\mathrm{s}}:=-i(XY-YX),\qquad
+ f_{ABC}:=\Re\operatorname{tr}\bigl(t_A[t_B,t_C]_{\mathrm{s}}\bigr).
+\end{equation}
+The source data also require that the $t_A$ span the real vector space of
+Hermitian traceless color matrices. When specialized to the source's
+normalized Pauli basis, these definitions fix the numerical factors in the
+familiar $SU(2)$ structure constants. We do not reset that normalization
+by convention in a downstream argument.
+
+\section{The literal differential expressions}
+For $i=0,\ldots,8$ and $A=0,1,2$, write
+$\partial_{iA}:=\partial/\partial x_i^A$, and use the spinor matrices
+$\gamma_i$ and $\gamma^{ij}$ of \eqref{eq:gamma-clifford} and
+\eqref{eq:gamma-two}. For $\alpha\in\mathsf{Spin}$ define on
+$\mathscr D=C_c^\infty(\mathbb R^{27};\mathcal F)$
+\begin{align}\label{eq:source-charge}
+ Q_\alpha \psi
+ ={}&-i\sum_{i,A,\beta}
+   (\gamma_i)_{\alpha\beta}\,\theta_{\beta A}\,
+   \partial_{iA}\psi \\
+ &+\frac12\sum_{i,j,A,B,C,\beta}
+ f_{ABC}\,(\gamma^{ij})_{\alpha\beta}
+ \theta_{\beta A}\,x_i^B x_j^C\,\psi .\nonumber
+\end{align}
+These finite sums are \emph{ordered}, as in the original source
+\texttt{AlgebraData.charge}. The factor $1/2$ in the second term is
+part of the definition. Replacing ordered pairs with
+unordered pairs without tracking this coefficient would give an incorrect
+source operator.
+
+The matrices $\theta_{\beta A}$ are bounded on the \emph{finite} fiber
+$\mathcal F$, but $\partial_{iA}$ and multiplication by $x_i^B x_j^C$
+are unbounded after passage to $\mathscr H$. Thus \eqref{eq:source-charge}
+initially defines a linear map $\mathscr D\to\mathscr D$ and, after
+$\iota$, a densely defined map into the $L^2$ output. It is premature to
+call its formal adjoint its Hilbert-space adjoint until the operator domain
+has been constructed.
+
+\begin{definition}[Original charge column and smooth-core form]
+The original sixteen-charge column on $\mathscr D$ is
+\begin{equation}\label{eq:charge-column}
+ \mathscr Q:\mathscr D\longrightarrow\mathscr H^{16},\qquad
+ \mathscr Q\psi=(\iota Q_\alpha\psi)_{\alpha=0}^{15}.
+\end{equation}
+Its source-normalized nonnegative quadratic form is
+\begin{equation}\label{eq:core-form}
+ q_0(\psi):=\frac1{16}\sum_{\alpha=0}^{15}
+ \bigl\|\iota Q_\alpha\psi\bigr\|_{\mathscr H}^{2}
+ =\frac1{16}\|\mathscr Q\psi\|^2_{\mathscr H^{16}}.
+\end{equation}
+\end{definition}
+
+\begin{proposition}[The source form is nonnegative]
+For every $\psi\in\mathscr D$, $q_0(\psi)\geq0$.
+\end{proposition}
+\begin{proof}
+Each summand in \eqref{eq:core-form} is the square of a nonnegative
+Hilbert norm. Their sum is nonnegative, and $1/16>0$. This elementary
+fact is recorded as \texttt{AlgebraData.coreForm\_nonneg}; it is not a
+spectral theorem.
+\end{proof}
+\formalrecord{\texttt{AlgebraData.bracket}, \texttt{structureConstant},
+\texttt{gammaTwo}, \texttt{charge}, \texttt{chargeVector},
+\texttt{coreForm}, and \texttt{coreForm\_nonneg} in
+\texttt{Core.lean}. Atlas D-02, D-03.}
+
+\section{Formal symmetry on test functions is not self-adjointness}
+The source proves a core-symmetry theorem for each charge. A typical
+integration-by-parts identity is
+\begin{equation}\label{eq:core-symmetry}
+ \langle Q_\alpha\psi,\phi\rangle_{\mathscr H}
+ =\langle\psi,Q_\alpha\phi\rangle_{\mathscr H},
+ \qquad\psi,\phi\in\mathscr D,
+\end{equation}
+with the source's inner-product convention. Compact support eliminates
+the spatial boundary terms; self-adjointness of the original $\theta$
+operators and the real gamma/color coefficients handle the finite
+fermionic operations. But an operator may be symmetric and not
+self-adjoint, because its adjoint may have a larger domain.
+
+\begin{remark}[Two closures must not be confused]
+The source defines an all-smooth-core charge graph closure in
+$\mathscr H\times\mathscr H^{16}$. The \emph{physical} charge is instead
+obtained by starting with the \emph{gauge-invariant smooth core}, then
+closing the corresponding graph in the appropriate physical Hilbert
+input. A result about the former does not automatically identify the
+latter or its adjoint. This distinction became central in the historical
+FCP physical-domain sequence, and Chapter~\ref{ch:hamiltonian} retains it.
+\end{remark}
+
+\section{What the October source-operator work actually established}
+An important early task was to show that a parameterized source
+\emph{deformed} charge at $(h,m)=(1,0)$ really is the original $Q_\alpha$,
+not merely a formally similar family. The historical FCP G4--K9 chain
+worked coefficient by coefficient, passing through the original matrix
+commutators and finite index sums. Its accepted endpoint was stronger
+than a numeric comparison: it proved equality of the source's
+potential \emph{continuous linear maps}, then equality of the full
+smooth-core charges and smooth-core forms.
+
+\begin{theorem}[Original massless source equalities;
+historically qualified]\label{thm:massless-identity}
+With the original source color, gamma and fermionic data, the parameterized
+source fields at $(h,m)=(1,0)$ satisfy, on the literal original smooth
+core,
+\begin{equation}\label{eq:massless-identification}
+ Q^{\mathrm{def}}_\alpha(1,0)=Q_\alpha,
+ \qquad q^{\mathrm{def}}_{1,0}=q_0.
+\end{equation}
+The equalities are those of the actual source definitions for every
+admissible \texttt{AlgebraData}, not merely of a chosen finite sample.
+\end{theorem}
+\begin{proof}[Source-dependency explanation]
+The original potential multiplier $Q^{\mathrm{def}}_\alpha(1,0)$ is
+expanded in the exact ordered color/spin sums. Previously qualified
+finite-sum identities (G4--K9A through K9C) establish the coefficient
+regrouping. The G4--K9D source theorem identifies the \emph{full}
+fermionic multiplier with the original bracket multiplier and therefore
+identifies the differential charges on every test function. Applying
+$\iota$, taking the original sixteen norm squares, and summing with the
+same coefficient $1/16$ gives the form equality. The explanation records
+the logic of the accepted formal chain; it does not silently treat a
+finite floating-point check as a universal algebraic proof.
+\end{proof}
+\formalrecord{\path{FCP.BFSSSU2GaugeG4K9D.sourcePotentialMultipliers_equal},
+\path{sourceUnconditionalCoreCharge_equal}, and
+\path{sourceUnconditionalCoreForm_equal}; FCP strict
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38011995220}{\#38011995220}
+(9 October 2026 local). The integrated source core-energy interface is
+\path{AlgebraData.massless_coreForm_energy}, strict
+\href{https://github.com/etblink/math/actions/runs/42325087575}{\#42325087575}.
+Atlas D-03, A-01.}
+
+\section{Why the form will matter more than a formal expansion}
+In later chapters we will seek an identity of the schematic form
+\begin{equation}\label{eq:energy-schematic}
+ q_0(\psi)=\tfrac12\|\nabla\psi\|^2
+ +\int_{\mathcal X} V(x)\|\psi(x)\|^2\,dx
+ +\int_{\mathcal X}\langle\psi(x),B(x)\psi(x)\rangle_{\mathcal F}\,dx,
+\end{equation}
+where $V$ is the original bosonic potential and $B$ is the \emph{unnormalized}
+original fermionic field. The precise coefficients and color conventions
+matter. Chapter~\ref{ch:energy} will distinguish source-accepted
+identifications from finite diagnostics and conditional bounds. In
+particular, \eqref{eq:energy-schematic} is not an assumption of a radial
+spectral gap. The bosonic potential has flat directions, and a fermionic
+field growing linearly in $\|x\|$ needs genuine control.
+
+The next step is to impose the actual SU(2) gauge constraint and determine
+the Hilbert space on which the physically relevant closed charge operator
+acts. Only then can the adjoint-square construction be stated correctly.

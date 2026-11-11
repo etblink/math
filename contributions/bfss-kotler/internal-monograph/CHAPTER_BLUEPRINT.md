@@ -1,5 +1,13 @@
 # Internal monograph — verified chapter architecture v0.1
 
+## v0.2 draft progress — 11 November 2026
+
+- **Substantive narrative drafted:** Chapter 2 original carriers and $L^2$; Chapter 3 gamma/48-Majorana/24-mode Clifford--Fock representation; Chapter 4 literal source sixteen charges and core form; Chapter 5 gauge actions, physical Hilbert space, nonzero physical states and maximal Gauss kernel; Chapter 6 native closed physical charge, BA--BH historical source Hamiltonian, its adjoint square, natural domain and weak form.
+- **Historical chronology added:** `appendices/historical_lineage.tex` and full source/run crosswalk `HISTORICAL_LINEAGE.md`, read in dated FCP → unified integration sequence. Older handoff statuses are labelled as historical; new accepted results supersede them only for their exact source typed obligations.
+- **Status discipline:** The first five drafted chapters contain conventional proof explanations and exact formalization references but do not purport to reproduce entire original Lean proofs in prose. Later chapters remain outlines. The actual original physical sector Spin(9) covariance and spectral coercivity remain open.
+- **Build:** Local `latexmk` / `pdflatex`, no network/Actions/Pages/webhooks. 43-page v0.2 review edition, zero warnings and zero overfull lines at final source snapshot.
+
+
 **Working title:** *The Relative SU(2) BFSS Quantum System: Mathematical Construction, Formal Verification, and the Spectral Research Frontier*
 
 **Audience:** An independent mathematician or mathematical physicist joining the project. **Not** an external-paper draft, proof of a mass gap, or an assertion of M-theory equivalence.

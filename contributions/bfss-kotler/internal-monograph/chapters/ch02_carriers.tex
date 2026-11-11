@@ -1,0 +1,144 @@
+% Chapter 2. Exact original source carriers; evidence class: SOURCE DEFINITION.
+\chapter{Carriers, Indices, Function Spaces, and Notation}
+\label{ch:carriers}
+
+\section{Why the Hilbert space must be specified first}
+The equations of matrix quantum mechanics can be written compactly, but their
+mathematical content depends upon the spaces on which those equations act. A
+fermionic matrix expression, a smooth wavefunction and an equivalence class of
+square-integrable wavefunctions are distinct kinds of object. Many later
+questions---unitary implementation, charge closure, the existence of adjoints,
+and spectral confinement---are meaningful only after these distinctions are
+fixed. We therefore use the \emph{literal source carriers} from
+\path{OAI.MathematicalPhysics.BFSS.Core}, not a replacement representation
+chosen for computational convenience.
+
+Let $N$ denote the size of the color matrices, and set
+\begin{equation}\label{eq:source-indices}
+ \mathsf{Space}=\{0,\ldots,8\},\qquad
+ \mathsf{Spin}=\{0,\ldots,15\},\qquad
+ \mathsf{Color}_{N}=\{0,\ldots,N^2-2\}.
+\end{equation}
+Here $\mathsf{Color}_{N}$ has $N^2-1$ elements. The research program of the
+present volume specializes to $N=2$, so there are exactly three color labels.
+The nine spatial labels specify a nine-dimensional vector representation;
+they are \emph{not} a claim that our quantum mechanics has eleven independent
+coordinates or that it is equivalent to eleven-dimensional M-theory.
+
+\begin{definition}[Original source bosonic carrier]\label{def:boson-carrier}
+For $N\geq2$, the source's real Euclidean configuration space is
+\begin{equation}\label{eq:boson-carrier}
+ \mathcal X_N
+ :=\mathbb R^{\mathsf{Space}\times\mathsf{Color}_N}
+ \cong\mathbb R^{9(N^2-1)}.
+\end{equation}
+Its coordinates are $x_i^A$, with $i\in\mathsf{Space}$ and
+$A\in\mathsf{Color}_N$.
+\end{definition}
+The distinguished case is
+\begin{equation}\label{eq:boson-27}
+ \mathcal X:=\mathcal X_2\cong\mathbb R^{27},
+ \qquad x=(x_i^A)_{i=0,\ldots,8}^{A=0,1,2}.
+\end{equation}
+Thus 27 counts bosonic \emph{matrix components}, not spacetime dimensions.
+The potential's commuting-matrix valleys are geometrically special subsets
+of this configuration space; their existence will later prevent us from
+assuming that a quartic bosonic potential is globally radially confining.
+
+\begin{definition}[Original source fermionic carrier]\label{def:fermion-carrier}
+The complex Hilbert fiber is
+\begin{equation}\label{eq:fermion-carrier}
+ \mathcal F_N:=\mathbb C^{\,2^{8(N^2-1)}}.
+\end{equation}
+For $N=2$ this is $\mathcal F:=\mathcal F_2=\mathbb C^{2^{24}}$.
+The source uses the ordinary Euclidean Hermitian Hilbert structure and
+represents each fermionic generator by a bounded complex-linear operator on
+this \emph{same} $\mathcal F$.
+\end{definition}
+The interpretation of the exponent is important: sixteen real generators
+for each of three colors give 48 real Majorana generators, which are paired
+into 24 complex creation--annihilation modes. The finite-dimensional complex
+Fock representation has dimension $2^{24}$, not 48 and not $2^{48}$.
+We verify that operator-algebra identification in Chapter~\ref{ch:clifford};
+for now the exact fiber is part of the source definition.
+
+\section[The L2 Hilbert space is a different carrier]{The $L^2$ Hilbert space is a different carrier}
+\begin{definition}[Original full wavefunction Hilbert space]
+Equip $\mathcal X_N$ with Lebesgue volume $dx$. The original complex Hilbert
+space of square-integrable Fock-valued wavefunctions is
+\begin{equation}\label{eq:full-l2}
+ \mathscr H_N:=L^2(\mathcal X_N,dx;\mathcal F_N),\qquad
+ \mathscr H:=\mathscr H_2=L^2(\mathbb R^{27};\mathbb C^{2^{24}}).
+\end{equation}
+A member is an \emph{almost-everywhere equivalence class}, not a particular
+pointwise function. A convenient representative is written $x\mapsto\psi(x)$
+only when the distinction matters.
+\end{definition}
+
+There is no finite-volume hypothesis here:
+$\operatorname{vol}(\mathbb R^{27})=\infty$. Thus a uniformly bounded
+operator field $x\mapsto B(x)\in\mathcal L_{\mathbb C}(\mathcal F)$ need not
+itself be square integrable. In contrast, the product $B(x)\psi(x)$ is
+square integrable when $\psi\in\mathscr H$ and
+$\sup_x\|B(x)\|<\infty$, provided the product is strongly measurable.
+The distinction underlies the separate normalized-field multiplier program
+of Chapter~\ref{ch:norm}; it cannot be bypassed by pretending that all
+bounded functions belong to $L^2$.
+
+\begin{definition}[Original smooth test-function core]
+The original source core is
+\begin{equation}\label{eq:smooth-core}
+ \mathscr D_N:=C_c^\infty(\mathcal X_N;\mathcal F_N).
+\end{equation}
+The canonical map $\iota:\mathscr D_N\rightarrow\mathscr H_N$ sends a
+compactly supported smooth function to its $L^2$ equivalence class. In the
+source it is named \texttt{coreToL2}.
+\end{definition}
+
+\begin{proposition}[Core functions define actual $L^2$ vectors]
+For each $\psi\in\mathscr D_N$, the $L^2$ class $\iota\psi$ is defined,
+and addition and complex scalar multiplication commute with $\iota$.
+\end{proposition}
+\begin{proof}
+Continuity and compact support imply square integrability of a
+finite-dimensional vector-valued function on Euclidean space. Addition and
+scalar multiplication preserve its almost-everywhere equivalence class, so
+$\iota(\psi+\phi)=\iota\psi+\iota\phi$ and
+$\iota(c\psi)=c\iota\psi$. The source implements these identities using
+\texttt{MemLp.toLp\_add} and \texttt{MemLp.toLp\_const\_smul}; this is a
+proof about the chosen original Hilbert carrier, not a new physical model.
+\end{proof}
+\formalrecord{Definitions \texttt{Boson}, \texttt{Fermion}, \texttt{FullL2},
+\texttt{SmoothCore}, and \texttt{AlgebraData.coreToL2} in
+\texttt{Core.lean}, source snapshot \texttt{etblink/math@d4870eb1ac58}.
+Atlas records D-01--D-03.}
+
+\section{Conventional inner products, coordinate operators, and a warning}
+The original configuration coordinate $x_i^A$ acts on a smooth core
+wavefunction by multiplication; its directional derivative is
+$\partial_{iA}$. These are \emph{unbounded} operators in the full
+$\mathscr H$, even though they are well-defined as linear operations on
+$\mathscr D$. In particular, the fact that a first-order differential
+expression maps test functions to test functions does not make its closure,
+adjoint, or squared Hamiltonian automatic.
+
+For later use we write
+\begin{equation}\label{eq:original-inner}
+ \langle \psi,\phi\rangle_{\mathscr H}
+ :=\int_{\mathcal X}\langle \psi(x),\phi(x)\rangle_{\mathcal F}\,dx,
+ \quad \|\psi\|_{\mathscr H}^2
+ =\int_{\mathcal X}\|\psi(x)\|_{\mathcal F}^2\,dx.
+\end{equation}
+All weak-form equations later in this volume follow the source's
+\texttt{inner} conventions. We will not infer the domain of an unbounded
+operator from an identity on $\mathscr D$, nor infer equality of $L^2$
+classes from equality at a single point.
+
+\section{Reader's checkpoint}
+At this stage we have introduced only the setting: nine spatial labels,
+three SU(2) color labels, the 48-real-generator/24-complex-mode fermion
+fiber, the true vector-valued $L^2$ Hilbert space, and its compactly
+supported smooth core. None of these choices establishes an eigenstate,
+a spatial symmetry on the physical space, or an M-theory interpretation.
+The next task is to explain what the fermionic operators are and why the
+particular $2^{24}$-dimensional representation is the source one.

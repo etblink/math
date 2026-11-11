@@ -6,12 +6,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{geometry}
-\usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{hyperref}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{hyperref}\usepackage{url}
 \usepackage{microtype}
 \usepackage{enumitem}
 \geometry{margin=1.1in}
-\hypersetup{hidelinks,pdftitle={The Relative SU(2) BFSS Quantum System: Internal Research Monograph},pdfauthor={Internal mathematical research collaboration}}
+\emergencystretch=2em
+\urlstyle{same}\hypersetup{hidelinks,pdftitle={The Relative SU(2) BFSS Quantum System: Internal Research Monograph},pdfauthor={Internal mathematical research collaboration}}
 
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -22,7 +23,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{openproblem}[theorem]{Open Problem}
-\newcommand{\formalrecord}[1]{\par\smallskip\noindent\textbf{Formalization record.}\enspace #1\par}
+\newcommand{\formalrecord}[1]{\par\smallskip\begingroup\small\sloppy\noindent\textbf{Formalization record.}\enspace #1\par\endgroup}
 \newcommand{\editornote}[1]{\par\smallskip\noindent\textit{Editorial scope: #1}\par}
 \newcommand{\OriginalLtwo}{\mathcal H_{\mathrm{orig}}}
 \newcommand{\Fermion}{\mathcal F}
@@ -30,7 +31,7 @@
 
 \title{\textbf{The Relative $\mathrm{SU}(2)$ BFSS Quantum System}\\[0.4em]
   \Large Mathematical Construction, Formal Verification, and the Spectral Research Frontier\\[0.6em]
-  \large Internal research monograph --- architecture edition 0.1}
+  \large Internal research monograph --- substantive source-narrative edition 0.2}
 \author{Internal mathematical research collaboration}
 \date{11 November 2026}
 
@@ -41,9 +42,13 @@
 \addcontentsline{toc}{chapter}{Editorial status and reader's contract}
 This is a \emph{living internal mathematical research monograph}, intended as an
 onboarding and research instrument for mathematicians and mathematical physicists.
-This architecture edition sets the narrative and evidence conventions; its chapter
-proofs have \emph{not yet been written}. The mathematical source snapshot is
-\texttt{etblink/math} at commit \texttt{d4870eb1ac58}.
+This edition contains a first substantive narrative of the original mathematical
+carriers, Clifford/Fock structure, sixteen charges, gauge-physical space and
+source-native self-adjoint Hamiltonian (Chapters 2--6). Chapters 1 and 7--14
+remain architectural outlines. Formal records document historical and current
+qualification without claiming new Lean proofs. The core-source research snapshot is
+\texttt{etblink/math} at commit \texttt{d4870eb1ac58}; the monograph editorial
+branch is independently versioned.
 
 The subject is the source-exact relative $\mathrm{SU}(2)$ supersymmetric matrix
 quantum-mechanical system. The name BFSS identifies the equations' lineage;
@@ -69,43 +74,13 @@ a conditional derivation supplies an unstated physical theorem.
 \section{Evidence standards and the three proof chains}
 \editornote{Introduce the system without presupposing positive spectrum or a mass gap. Atlas: D-01, H-02, O-05.}
 
-\chapter{Carriers, Indices, Function Spaces, and Notation}
-\label{ch:carriers}
-\section{Nine spatial indices, SU(2) colors, and 27 real configuration coordinates}
-\section{The original finite fermion Hilbert space}
-\section[Vector-valued L2 representatives and smooth cores]{Vector-valued $L^2$, a.e. representatives, and smooth cores}
-\editornote{Start from literal \texttt{Core.lean} definitions. Atlas: D-01.}
-
-\chapter{Clifford Algebra, Majoranas, and the Original Fock Realization}
-\label{ch:clifford}
-\section{Gamma matrices and the source Clifford relations}
-\section{Forty-eight Majorana labels and 24 complex modes}
-\section{Faithfulness and original Clifford--Fock algebra equivalence}
-\section{Spin central signs and implementer distinctions}
-\editornote{Atlas: D-02, F-01, F-02. Explain the \texttt{letI} style-warning recovery without conflating it with theorem failure.}
-
-\chapter{Sixteen Supercharges and the Normalized Smooth-Core Form}
-\label{ch:charges}
-\section{The source charge operators and their conventions}
-\section{The normalized sixteen-charge core form}
-\section{Symmetry on the core versus closure on an operator domain}
-\editornote{Atlas: D-03, A-01. Do not replace the source charge with a convenient model.}
+\input{chapters/ch02_carriers}
+\input{chapters/ch03_clifford}
+\input{chapters/ch04_charges}
 
 \part{The Physical Gauge Hilbert Space and Hamiltonian}
-\chapter{Color Gauge Symmetry, Physical States, and Nontriviality}
-\label{ch:gauge}
-\section{Original SU(2) boson and Fock actions}
-\section{The closed gauge-invariant physical space}
-\section{Actual nonzero physical wavefunctions and Fock vacuum}
-\editornote{Atlas: G-01, G-02, G-03. Distinguish fiber invariance and full physical invariance.}
-
-\chapter{The Native Physical Closed Charge and Self-Adjoint Hamiltonian}
-\label{ch:hamiltonian}
-\section{Dense physical charge domain}
-\section[Adjoints and the natural-domain charge square]{Adjoints and the natural-domain operator $(1/16)T^\dagger T$}
-\section{Equality of the native and historical paired Hamiltonians}
-\section{Historical proof qualification versus integrated source portability}
-\editornote{Atlas: H-01, H-02, H-03. Historical strict qualifications are not a new CI certificate for edited ports.}
+\input{chapters/ch05_gauge}
+\input{chapters/ch06_hamiltonian}
 
 \part{Spatial Symmetry and Representation Theory}
 \chapter{Source Spin(9), the Ninth-Axis Stabilizer, and Topology}
@@ -175,6 +150,8 @@ The full declaration-by-declaration inventory for this working edition is held
 in the versioned companion files \texttt{THEOREM\_ATLAS.json} and
 \texttt{THEOREM\_ATLAS.md}. The final book will convert selected records into
 mathematically typed formalization notes; the full ledger remains separate.
+
+\input{appendices/historical_lineage}
 
 \chapter{Notation and Normalization Audit}
 \editornote{Create a source-exact table for the theta/gamma CAR, 1/16 charge coefficient, color normalization and spatial representation when writing begins.}
