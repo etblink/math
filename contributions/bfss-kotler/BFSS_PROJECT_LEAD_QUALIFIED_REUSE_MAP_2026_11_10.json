@@ -4,7 +4,7 @@
   "snapshot_branch": "integration/bfss-unified-research-20261108",
   "snapshot_start_sha": "4f4b5594d220480d776a43cc148f37ac34443070",
   "scope": "Dated source-evidence index, not a new Lean qualification or comprehensive proof inventory.",
-  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate. VLY-0B independently qualified at #42926845593; JOIN-0A remains a separately staged current-source candidate.",
+  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate. VLY-0B independently qualified at #42926845593; JOIN-0A remains a separately staged current-source candidate. JOIN-0A accepted as separate exact-commit 96-pin green; JOIN-0B1 strict transpose source/consumer is new candidate.",
   "records": [
     {
       "id": "fcp-d2b22-normalized-energy",
@@ -388,7 +388,32 @@
       ],
       "scope": "Exact-source reusable proof DAG for general Gram–gamma transpose compatibility and genuine Fock real-coefficient quadratic star/transpose compatibility, with separate skew/selfadjoint consumers.",
       "caveat": "New Lean declarations not written or cold-compiled, no JOIN0A status inference, no FullL2/physical form or Hamiltonian spectral assertion."
+    },
+    {
+      "id": "math-join0a-qualified",
+      "tier": "STRICT_GREEN_AT_EXACT_COMMIT",
+      "repo": "etblink/math",
+      "run": 42930427007,
+      "job_id": 130227488529,
+      "commit": "168fe73dd1744870e94d5519e2a198650eb1516a",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0AOriginalBosonFockGaugeCovariance.lean",
+      "blob": "68fd2067b2dcdb6851afed269d25726dd5b634c5",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0AOriginalBosonFockNormConsumer.lean",
+      "consumer_blob": "dc8e009ab2e7daf3705a71767909c9ca07206431",
+      "scope": "Current original Boson 2 / genuine Fermion 2 source pointwise simultaneous SU2 gauge covariance for Q(G_x(B)), with distinct Fock norm consumer and 96 pinned original sources.",
+      "caveat": "No original FullL2 bounded multiplier, source Hamiltonian domain covariance, self-adjointness of skew field or mass gap."
+    },
+    {
+      "id": "math-join0b1-gram-transpose-candidate",
+      "tier": "NEW_SOURCE_CANDIDATE_NEEDS_STRICT_GATE",
+      "repo": "etblink/math",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B1OriginalGramGammaTranspose.lean",
+      "blob": "e87563e9aae077346a6347ba30232d6555d38f3f",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0B1OriginalGramGammaSkewConsumer.lean",
+      "consumer_blob": "09205d8f236fc9438414cebfecaf68248f679a0a",
+      "scope": "Original Gram and real gamma matrix transpose compatibility for arbitrary real 16×16 input B, plus downstream source skew-carrier preservation.",
+      "caveat": "Uncompiled at current source commit; requires its own 98-pinned cold strict green; not the Fock star transpose, physical Hilbert boundedness or original BFSS spectral theorem."
     }
   ],
-  "record_count": 32
+  "record_count": 34
 }
