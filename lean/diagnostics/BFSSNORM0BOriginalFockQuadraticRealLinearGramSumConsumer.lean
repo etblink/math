@@ -39,6 +39,13 @@ theorem originalColorQuadratic_neg_from_real_smul
     _ = -originalColorQuadratic J :=
           neg_one_smul ℂ (originalColorQuadratic J)
 
+/-- Local typed scalar-zero interface on the literal original
+bounded Fermion 2 operator carrier. Isolate module inference from
+the source Matrix coefficient before instantiating the Gram entries. -/
+private theorem originalFockOperator_smul_zero (c : ℂ) :
+    c • (0 : Fermion 2 →L[ℂ] Fermion 2) = 0 := by
+  exact smul_zero (A := Fermion 2 →L[ℂ] Fermion 2) c
+
 /-- The new 81-term source decomposition correctly vanishes for a
 zero real source spinor coefficient matrix on true Fermion 2. -/
 theorem originalFockGramObservable_zero_B
@@ -50,9 +57,9 @@ theorem originalFockGramObservable_zero_B
   intro i _
   apply Finset.sum_eq_zero
   intro j _
-  change ((originalSpatialGram x i j : ℝ) : ℂ) •
-    (0 : Fermion 2 →L[ℂ] Fermion 2) = 0
-  rw [smul_zero]
+  let c : ℂ := ((originalSpatialGram x i j : ℝ) : ℂ)
+  change c • (0 : Fermion 2 →L[ℂ] Fermion 2) = 0
+  exact originalFockOperator_smul_zero c
 
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_add
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_real_smul
