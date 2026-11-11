@@ -40,7 +40,7 @@ private theorem originalColorQuadratic_neg
       apply Finset.sum_congr rfl
       intro β _
       rw [Matrix.neg_apply, Complex.ofReal_neg]
-      exact neg_smul _ _
+      exact neg_smul ((J α β : ℝ) : ℂ) (F α β)
     _ = ∑ α : SpinIndex, -(∑ β : SpinIndex,
           ((J α β : ℝ) : ℂ) • F α β) := by
       apply Finset.sum_congr rfl
