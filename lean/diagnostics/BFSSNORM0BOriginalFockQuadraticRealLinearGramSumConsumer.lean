@@ -17,6 +17,7 @@ noncomputable section
 open Matrix
 open OAI.BFSSQuantum
 open FCP.BFSSBIL0COriginalFockQuadraticGaugeInvariant
+open FCP.BFSSVLY0AOriginalBosonGramGaugeInvariant
 open FCP.BFSSJOIN0AOriginalBosonFockGaugeCovariance
 open FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum
 
@@ -26,8 +27,17 @@ theorem originalColorQuadratic_neg_from_real_smul
     (J : GammaMatrix) :
     originalColorQuadratic (-J) =
       -originalColorQuadratic J := by
-  simpa only [Complex.ofReal_neg, Complex.ofReal_one, neg_one_smul] using
-    (originalColorQuadratic_real_smul (-1 : ℝ) J)
+  calc
+    originalColorQuadratic (-J) =
+        originalColorQuadratic ((-1 : ℝ) • J) := by
+          rw [neg_one_smul ℝ J]
+    _ = ((-1 : ℝ) : ℂ) • originalColorQuadratic J :=
+          originalColorQuadratic_real_smul (-1 : ℝ) J
+    _ = (-1 : ℂ) • originalColorQuadratic J := by
+          have hc : ((-1 : ℝ) : ℂ) = (-1 : ℂ) := by norm_num
+          rw [hc]
+    _ = -originalColorQuadratic J :=
+          neg_one_smul ℂ (originalColorQuadratic J)
 
 /-- The new 81-term source decomposition correctly vanishes for a
 zero real source spinor coefficient matrix on true Fermion 2. -/
