@@ -1,5 +1,13 @@
 # Internal monograph — verified chapter architecture v0.1
 
+## v0.4 original energy and first-moment compactness milestone — 11 November 2026
+
+- **Substantive Chapters 10–11 added.** Chapter 10 gives the original `q_core=1/16 sum ||Qα||²` and the *qualified* source-generic massless energy identity; explains the Pauli wedge rank-one flat valleys, original unnormalized linear fermionic field, conditional `8 sqrt(3)` finite-CAR bound, and why the source physical coercivity gap survives the energy identity. Chapter 11 proves the cutoff first-moment estimate, local Rellich mechanism, global core tightness and the accepted weighted Sobolev triple-closure implication. It states only a *conditional* physical-sector compact-resolvent consequence.
+- **Chronology preserved:** October FCP G4–K9D #38011995220 and D2B23–25 original physical closed-form machinery precede the November source energy/compactness strict qualifications #42315568670, #42318037096, #42320696105, #42325087575. Earlier documents whose status said `pending` are read as dated snapshots.
+- **Crucial non-equivalence:** historical `Dom(T)` form-graph completeness is not definitionally the `weightedClosure` of triples `(u,gradient u,w·u)`. A physical-sector source-typed gradient/moment inequality and genuine domain map are necessary before composing them.
+- **No false promotion:** the analytical finite coefficient estimate `||B(X)|| ≤ 8√3||X||` is not a current Lean source theorem; the auxiliary normalized Gram multiplier is not the original unbounded linear fermionic term; no Spin9 reducing sector, eigenvalue or full mass-gap theorem is asserted.
+- **Documentation provenance:** mathematical base `etblink/math@d4870eb1ac58`; editorial parent `c348da90a3db`; same 37 atlas records, refined evidence commentary, no Lean source, consumer, manifests or Actions modifications.
+
 ## v0.3 source-symmetry narrative milestone — 11 November 2026
 
 - **Substantive Chapters 7–9 added:** source (9) spatial action and original ninth-axis stabilizer, its connected compact 8-word quotient, two-sheeted covering and concrete target `SO(8)` equivalence; original active 48-Majorana covariance, full Fock-operator `StarAlgEquiv` action, actual trace invariance and the algebraic Hilbert–Schmidt consequence; actual C48-0/C48-0B source `SU(2)` label commutation and C48-1A0 active-gamma compatibility.

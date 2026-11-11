@@ -70,3 +70,11 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
 
 - Source-identical, vector-compatible Spin(8) covering equivalence and actual representation branching; original continuous Fock-vector Spin(9) implementer and central phase normalization; gauge Fock-unitary and projector fixedness; complete original sixteen-charge intertwiner and closed form domain reduction; high-type unnormalized coercivity and positive eigenpairs.
 - Chapters 1 and 10–14 remain architectural outlines, not completed proofs.
+
+## Edition 0.4 (original energy and compactness; 2026-11-11)
+
+- Added `chapters/ch10_energy.tex` and `chapters/ch11_compactness.tex`, containing conventional proof arguments for the already qualified source core energy identity, first-moment cutoff/tightness, local gradient compactness and weighted Sobolev closure.
+- Reviewed October FCP G4–K9D #38011995220 and D2B23/24/25, then the November source and independent consumer green runs #42315568670, #42318037096, #42320696105 and #42325087575 against their exact source declarations.
+- Maintained the **generic vs concrete** physical boundary of the source energy theorem; `8 sqrt(3)` remains an analytical finite-CAR bound, and physical-sector source growth/domain/coercivity remain OPEN. Avoided identifying the source physical charge-form graph with the weighted spatial Sobolev triple closure.
+- Extended the chronological appendix, editorial queue, and 37-record atlas notes; no new declared Lean theorem or CI status changed.
+- All builds use local `latexmk`, without GitHub Actions, Pages, webhooks, remote typesetting or network packages. The PDF is a review output; generated artifacts are excluded from the source-only Git commit.

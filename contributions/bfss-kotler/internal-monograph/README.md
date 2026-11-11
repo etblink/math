@@ -1,18 +1,18 @@
 # Relative SU(2) BFSS — internal research monograph workspace
 
-**Status: v0.3 source-symmetry narrative edition: Chapters 2--9 drafted; Chapters 1 and 10--14 remain architectural. Not a completed research monograph or spectral theorem.**
+**Status: v0.4 source-energy/compactness narrative edition: Chapters 2--11 drafted; Chapters 1 and 12--14 remain architectural. Not a completed research monograph or spectral theorem.**
 
 This directory is a narrative, source-auditable onboarding reference for mathematicians and mathematical physicists joining the original relative SU(2) supersymmetric matrix quantum mechanics research program. It is a *living internal research monograph*, not the eventual external publication and not an assertion of a mass gap, a positive-eigenvalue theorem, or an 11-dimensional M-theory equivalence.
 
 ## Files
 
 - `CHAPTER_BLUEPRINT.md` — the planned 14-chapter mathematical narrative, drafted-chapter status, open proof obligations and drafting order.
-- `chapters/ch02_carriers.tex` through `chapters/ch09_gauge_covariance.tex` — eight substantive mathematical chapters with source definitions, mathematical arguments, acceptance records and explicitly stated missing bridges.
+- `chapters/ch02_carriers.tex` through `chapters/ch11_compactness.tex` — ten substantive mathematical chapters with source definitions, mathematical arguments, acceptance records and explicitly stated missing bridges.
 - `appendices/historical_lineage.tex` — narrative reconstruction of the FCP to unified-integration progression.
 - `HISTORICAL_LINEAGE.md` — detailed dated record with FCP and integrated run evidence, historical handoffs and source path locators.
 - `THEOREM_ATLAS.json` — structured, exact-snapshot crosswalk of source declarations, Git blob SHAs, evidence status, mathematical boundaries and **narrative** dependencies.
 - `THEOREM_ATLAS.md` — readable rendering of 37 records, with the recovered strict-green stabilizer covering, SO(8) coordinate equivalence, C48 label commutation and active-gamma compatibility.
-- `main.tex` — offline-compilable master TeX importing eight substantive chapters and the historical appendix; remaining chapters retain section-level scaffolds.
+- `main.tex` — offline-compilable master TeX importing ten substantive chapters and the historical appendix; remaining chapters retain section-level scaffolds.
 - `BUILD_NOTES.md` — local-only compilation and review results.
 
 ## Source authority and careful interpretation
@@ -30,4 +30,4 @@ The term **BFSS** denotes the source mathematical system's origin and characteri
 5. Ignore LaTeX-generated `.aux`, `.toc`, `.log`, `.out`, `.fls`, `.fdb_latexmk` and PDF artifacts when committing source-only edits. Preserve reviewed edition PDFs separately if desired.
 6. For later fast-forward promotion, first verify the unified branch is an ancestor of the monograph HEAD; reconcile any divergence on the monograph branch and only then fast-forward the unified branch without `--force`.
 
-**Current priority:** Independently review the newly drafted Chapters 7–9 against exact source/group topology and center signs, then develop original energy, compactness and high-type spectral Chapters 10–13. The v0.3 PDF is a working review edition, not a completed spectral theorem.
+**Current priority:** Independently review Chapters 10–11 against the exact source energy fields, compactness-domain data and finite-CAR diagnostic assumptions; then develop Chapter 12 normalized auxiliary field and Chapter 13 conditional high-type spectral mechanism. The v0.4 PDF is a working review edition, not a completed spectral theorem.

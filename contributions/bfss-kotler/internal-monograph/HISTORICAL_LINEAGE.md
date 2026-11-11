@@ -1,6 +1,6 @@
 # Historical source chronology: FCP to `etblink/math`
 
-**Editorial edition:** 0.3, 2026-11-11. **Status:** source-based historical navigation, not a new theorem qualification. **Source model:** relative SU(2) BFSS quantum mechanics, interpreted mathematically without assuming its M-theory identification.
+**Editorial edition:** 0.4, 2026-11-11. **Status:** source-based historical navigation, not a new theorem qualification. **Source model:** relative SU(2) BFSS quantum mechanics, interpreted mathematically without assuming its M-theory identification.
 
 The monograph reads mathematics in logical order, but this companion reconstructs the historical path because notes that were accurate at an earlier checkpoint can later become outdated. Every reported green attaches to the specific original source at that tested commit. The current integration branch is **not** presumed green simply because a historical branch compiled.
 
@@ -47,6 +47,16 @@ The 7 November first stabilizer gates already established a source-PBW path-conn
 The 9 November C48 handoff begins with red and pending gates. Its later appended entries confirm that C48-0, C48-0B and C48-1A0 are independently strict-green. The early `SOURCE_PRESENT_REQUIRES_RECEIPT` classification of C48-0 in the atlas is therefore superseded by the accepted strict gate. The actual *Fock-vector unitary*, gauge-projector and all-sixteen-charge physical form commutation claims remain separate.
 
 The historical FCP S3L process explains why this modular route matters. A full source-cubic covariance assembly is a mathematical target; the prior R4B/R4D monolithic compilation attempts failed by proof elaboration/kernel limits. Green smaller covariance, active-gamma and source matrix gates should be preserved, not silently promoted into complete physical covariance or discarded because the final join remains open.
+
+## Edition 0.4 forensic reconstruction — how the two analytical chains met
+
+- **9–10 October (FCP).** G4–K9D [#38011995220](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38011995220) proved that the source `deformedCoreCharge 1 0` and `deformedCoreEnergy 1 0` equal the *original* smooth-core charge and core form. Its original coefficient proof preserved the `-i` derivative, pair-skew signs, all color/spin sums and `1/16` form normalization. It did **not** derive a high-Spin energy estimate.
+- **10 October (FCP).** D2B23/24/25 [#38060943895](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38060943895), [#38061745424](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38061745424), [#38062563927](https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38062563927) constructed an exact complete graph model for the *physical closed charge form*, not the later weighted Sobolev triple closure.
+- **17 October (FCP).** BA–BH made the charge densely defined on the native physical Hilbert space, constructed the self-adjoint `H=(1/16)T†T` and identified original/historical paired operators on their natural domains. These historical strict greens are not new point-spectrum results and do not automatically qualify edited current ports.
+- **6 November analysis (strict runs completed 7 November UTC, math).** A-02 [#42315568670](https://github.com/etblink/math/actions/runs/42315568670) obtained first-moment tightness, A-03 [#42318037096](https://github.com/etblink/math/actions/runs/42318037096) added local gradient compactness, A-04 [#42320696105](https://github.com/etblink/math/actions/runs/42320696105) completed weighted-closure compactness, and A-01 [#42325087575](https://github.com/etblink/math/actions/runs/42325087575) joined October's exact core-form equality to `AlgebraData.averaged_core_energy 1 0`.
+- **6 November source-premise audit.** The A/B diagnostic identifies a plausible unnormalized fermionic growth constant `8√3` in the concrete 48-CAR model and explains the scalar bosonic rank-one valley. The source auditor explicitly did **not** prove the exact signed skew field as a Lean theorem or show physical-sector coercivity. The crucial missing join is from *the original physical closed charge form on a genuine high-Spin reducing sector* to the gradient and first-moment controls assumed by A-04.
+
+This reconstruction explains why an October declaration of `pending` may describe the state then but not its November qualification, and also why four November green analytical gates must not be mistaken for the eventual source physical spectrum.
 
 ## Editorial rules derived from this history
 

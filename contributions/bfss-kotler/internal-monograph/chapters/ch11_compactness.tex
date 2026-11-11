@@ -1,0 +1,262 @@
+% Exact first-radial moment compactness lane; not a claim of BFSS confinement.
+\chapter{From First Radial Moment to Compactness}
+\label{ch:compactness}
+
+\section{The analytical task and its source carriers}
+Suppose one has proved that the quadratic form of a physically correct
+high-Spin sector controls both the gradient and the \emph{first} radial
+moment of a wavefunction. What does that buy us?
+The November compactness program answered this question abstractly, in
+a sequence of \emph{strict-qualified} Lean results. It did not presume
+that the physical Hamiltonian already satisfies the required estimate.
+This separation is useful: the functional-analytic implications are now
+available for reuse, and the remaining source-specific energy problem
+can be stated independently of them.
+
+Let \(X=\mathbb R^d\), let \(F\) be a finite-dimensional real inner-product
+space (one may regard the underlying real space of the original complex
+Fock fiber), and set \(\mathscr L=L^2(X;F)\). For a compactly supported
+smooth \(F\)-valued function \(u\), define its first radial moment
+\begin{equation}\label{eq:first-moment}
+ M_1(u):=\int_X\|x\|\,\|u(x)\|_F^2\,dx.
+\end{equation}
+The source theorem uses actual Euclidean volume, an arbitrary finite
+coordinate type \(\iota\), a finite-dimensional fiber, and the
+original \texttt{Core}, \texttt{toL2}, \texttt{gradient} and
+\texttt{weightedClosure} interfaces. Our specialization to \(d=27\)
+comes only after the abstract theorem has been established.
+
+\section{A single moment yields uniform control of the tails}
+The key estimate is elementary but powerful. If \(R>0\), then on
+\(\{x:\|x\|\ge R\}\) one has \(1\le\|x\|/R\); consequently
+\begin{equation}\label{eq:tail-control}
+ \int_{\|x\|\ge R}\|u(x)\|^2\,dx
+ \le\frac{M_1(u)}{R}.
+\end{equation}
+A family with uniformly bounded \(M_1\) therefore has uniformly
+vanishing \(L^2\) tails as \(R\to\infty\). This is the
+\emph{tightness} needed to turn compactness on bounded balls into
+global compactness.
+
+The Lean proof uses a smooth cutoff rather than the discontinuous
+indicator in \eqref{eq:tail-control}. For the original source bump
+\(\varphi\), equal to one on the inner radius \(R=\varphi.rIn\)
+and supported on a larger ball, the quantitative estimate is
+\begin{equation}\label{eq:smooth-cutoff}
+ R\,\|u-\varphi u\|_{L^2}^2\le M_1(u).
+\end{equation}
+Indeed, the cutoff difference vanishes in the inner ball and
+\(|1-\varphi|\le1\) outside. There the radial factor dominates \(R\).
+This version retains the smooth compact carrier needed by subsequent
+Lean source interfaces, instead of quietly switching to an arbitrary
+measurable representative.
+
+\begin{theorem}[First-moment tightness and compactness;
+integration strict-qualified]\label{thm:linear-tightness}
+Let \(\{u_j\}_{j\in J}\subset C_c(X;F)\) be a family of continuous,
+compactly supported functions. Suppose
+\(\sup_j M_1(u_j)\le C<\infty\), and that for every \(R>0\) the
+family of restrictions to the closed \(R\)-ball is totally bounded in
+its local \(L^2\) space. Then \(\{u_j\}\) is totally bounded in
+\(L^2(X;F)\).
+\end{theorem}
+\begin{proof}[Cutoff and finite-net argument]
+Given \(\varepsilon>0\), choose a radius sufficiently large that
+\eqref{eq:smooth-cutoff} makes
+\(\|u_j-\varphi_Ru_j\|_2<\varepsilon/3\) for all \(j\).
+The cutoff family has compact support in a fixed ball and is totally
+bounded there by the local hypothesis, hence has a finite
+\(\varepsilon/3\)-net in global \(L^2\). Each \(u_j\) lies within
+\(\varepsilon/3\) of its cutoff representative, so a finite
+\(\varepsilon\)-net covers the original family. The formal proof
+instantiates this argument through
+\texttt{totallyBounded\_of\_uniform\_approximation} and
+\texttt{bump\_family\_totallyBounded}.
+\end{proof}
+\formalrecord{\texttt{OAI.BFSSRellich.compactLp\_bump\_error\_linear}
+and \texttt{linear\_moment\_tight\_compactness},
+\texttt{SpectralLinearMomentCompactness.lean}, blob
+\texttt{17a279f2728dd566c711e04eca7596028f355983};
+strict \href{https://github.com/etblink/math/actions/runs/42315568670}{\#42315568670}
+(success). Atlas A-02.}
+
+\section{Gradient control supplies the local hypothesis}
+For a bounded spatial region, the standard finite-dimensional-fiber
+Rellich theorem supplies local compactness from a uniform
+\(H^1\)-type bound. In the original Lean code the derivative norm is
+estimated from the coordinate-gradient norm, so the result applies to
+\texttt{BFSSSliceSobolev.Core} with its actual basis and volume measure.
+It is important that \(\|\nabla u\|_2\) is controlled, rather than
+inferred solely from \(\|u\|_2\).
+
+\begin{theorem}[Smooth-core linear-moment compactness;
+integration strict-qualified]\label{thm:core-moment}
+Let \(\{u_j\}\) be a family in the original smooth core of a
+finite-dimensional Euclidean base and finite-dimensional fiber. If
+\begin{equation}\label{eq:core-uniform-bounds}
+ \sup_j\|u_j\|_{2}\le B,\qquad
+ \sup_j\|\nabla u_j\|_2\le A,\qquad
+ \sup_j M_1(u_j)\le C,
+\end{equation}
+then the family of source \texttt{toL2} images is totally bounded in
+global \(L^2\).
+\end{theorem}
+\begin{proof}[Composition of accepted analysis interfaces]
+The source theorem
+\path{core_gradient_l2_local_totallyBounded} converts the
+uniform \(L^2\) and gradient bounds into total boundedness on every
+closed ball, using the original local Rellich result and a bound for
+the operator norm of the derivative by the coordinate derivatives.
+Theorem~\ref{thm:linear-tightness} then converts this local statement
+and the first-moment bound into total boundedness on the full base.
+The named source theorem
+\texttt{core\_linear\_moment\_totallyBounded} is exactly that
+composition, not an extra BFSS-specific assumption.
+\end{proof}
+\formalrecord{\texttt{OAI.BFSSSliceSobolev.core\_gradient\_l2\_local\_totallyBounded}
+and \texttt{core\_linear\_moment\_totallyBounded},
+\texttt{SpectralCoreLinearMomentCompactness.lean}, blob
+\texttt{7604eb127156b9772fad48cb0ad04c8fe488e3c9};
+strict \href{https://github.com/etblink/math/actions/runs/42318037096}{\#42318037096}
+(success). Atlas A-03.}
+
+\section{A weighted Sobolev closure, not an invented physical domain}
+Smooth-core compactness is insufficient by itself for a spectral
+theorem on a closed unbounded operator: the relevant form-domain unit
+ball contains limits of core vectors. The November work therefore
+proved a precise extension to the \emph{existing} weighted Sobolev
+closure from \texttt{BFSSSliceSobolev.FormCompactness}. This closure
+is not, by definition, the original physical Hamiltonian form domain.
+
+Let \(w:X\to\mathbb R\) be continuous. The source weighted closure
+\(\mathcal W_w\) is the closure of the triples
+\begin{equation}\label{eq:weighted-triple}
+ \bigl(u,\nabla u,wu\bigr),\qquad u\in C_c^\infty(X;F),
+\end{equation}
+in the product of the corresponding \(L^2\), gradient and weighted
+\(L^2\) carrier spaces. Thus a member is a \emph{triple}
+\((u,v,m)\), not an arbitrary physical state equipped with an
+unproved weak gradient. In the closure, these components are linked
+by the source closure construction; they are not independently chosen
+functions.
+
+\begin{theorem}[Weighted closure compactness;
+integration strict-qualified]\label{thm:weighted-closure}
+Suppose \(w\) is continuous and for some \(c>0\),
+\begin{equation}\label{eq:weight-dominates}
+ \quad w(x)^2\ge c\|x\|\quad\text{for all }x\in X.
+\end{equation}
+Let \((u_n,v_n,m_n)\in\mathcal W_w\) satisfy uniform bounds
+\begin{equation}\label{eq:weighted-triple-bounds}
+ \sup_n\|u_n\|_2\le B,\qquad
+ \sup_n\|v_n\|_2\le A,\qquad
+ \sup_n\|m_n\|_2\le C.
+\end{equation}
+Then the range of the first components \(\{u_n\}\) is totally
+bounded in global \(L^2(X;F)\). In particular, this holds for
+\(w(x)=\sqrt{\|x\|}\).
+\end{theorem}
+\begin{proof}[Asymptotic smooth-core approximation]
+The source's \texttt{weightedClosure\_approx} provides, for each
+\((u_n,v_n,m_n)\), a compactly supported smooth approximate triple
+\((f_n,\nabla f_n,wf_n)\) with all three errors at most
+\(\varepsilon_n=1/(n+1)\). Their corresponding norms are uniformly
+bounded by \(B+1\), \(A+1\), \(C+1\). The weight inequality
+\eqref{eq:weight-dominates} therefore supplies the uniform first
+moment estimate
+\begin{equation}\label{eq:weighted-moment}
+ c M_1(f_n)\le\|wf_n\|_2^2\le(C+1)^2.
+\end{equation}
+Theorem~\ref{thm:core-moment} yields total boundedness of
+\(\{f_n\}\) in global \(L^2\). The distances
+\(\|u_n-f_n\|_2\to0\), so the source's asymptotic total-boundedness
+lemma transfers the result to \(\{u_n\}\). For
+\(w(x)=\sqrt{\|x\|}\) one has \(w(x)^2=\|x\|\) and may take \(c=1\).
+\end{proof}
+\formalrecord{\texttt{OAI.BFSSSliceSobolev.weightedClosure\_linear\_totallyBounded}
+and \texttt{weightedClosure\_sqrt\_radial\_totallyBounded},
+\texttt{SpectralWeightedClosureCompactness.lean}, blob
+\texttt{68741955a806a30da7b0f9ff168c41b9c29d90cd};
+strict \href{https://github.com/etblink/math/actions/runs/42320696105}{\#42320696105}
+(success). Atlas A-04.}
+
+\section{Two different closed-domain statements must not be merged}
+The historical FCP D2B23--D2B25 sequence, recalled in
+Chapter~\ref{ch:hamiltonian}, constructs a complete weighted graph
+model of the \emph{physical charge form} on
+\(\operatorname{Dom}(T)\), with the exact norm arising from
+\(q(\psi)=\frac1{16}\|T\psi\|^2\). In contrast,
+Theorem~\ref{thm:weighted-closure} concerns a weighted \emph{spatial
+Sobolev} closure characterized by first-component, gradient and
+weighted-multiplication data. Their similarity as complete graph
+constructions does not supply an equality of domains.
+
+A genuine link must assign to each relevant physical form vector its
+correct spatial gradient and \(\sqrt{\|X\|}\)-weighted component,
+prove membership of the resulting triple in the existing
+\(\mathcal W_w\), and bound those components by the actual physical
+form norm, uniformly on the proposed reducing sector. This is the
+scientifically decisive source-matching step.
+
+\section{The conditional compact-resolvent implication}
+We record the last functional-analytic step as an explicitly
+\emph{conditional} conventional deduction, not a qualified source
+spectral result. Suppose a nonzero closed subspace
+\(\mathscr H_\lambda\subset\mathscr H_{\mathrm{phys}}\) is
+\emph{reducing} for the actual self-adjoint \(H_{\mathrm{phys}}\),
+and write \(q_\lambda\) for its genuinely restricted closed
+nonnegative form. Assume there are \(a,c>0\) and \(b\ge0\) such
+that the following is meaningful for every vector in its form domain:
+\begin{equation}\label{eq:conditional-coercivity}
+ q_\lambda(u)+b\|u\|_2^2\ge
+ a\|\nabla u\|_2^2+cM_1(u),
+\end{equation}
+and that the source-bound gradient and weighted-triple domain
+identification described above has been established. Then
+Theorem~\ref{thm:weighted-closure} makes the \(q_\lambda\)-form
+unit ball relatively compact in \(\mathscr H_\lambda\).
+
+\begin{proposition}[Conditional resolvent compactness;
+conventional deduction]\label{prop:conditional-resolvent}
+Under the preceding genuine reducing-subspace, domain-identification,
+and coercive-estimate hypotheses, the associated restricted
+nonnegative self-adjoint operator has compact resolvent.
+\end{proposition}
+\begin{proof}
+The form norm associated with \(q_\lambda+b\|\cdot\|^2\)
+is equivalent to the natural closed form norm. The assumed estimates
+and domain binding map bounded form-norm sets into sets of weighted
+triples satisfying \eqref{eq:weighted-triple-bounds}. By
+Theorem~\ref{thm:weighted-closure} these sets are relatively compact
+in the underlying \(L^2\) Hilbert space. Hence the form-domain
+inclusion into \(\mathscr H_\lambda\) is compact. The standard
+closed-form representation theorem identifies the half-resolvent with
+a bounded map into the form domain; composing with the compact
+embedding gives compactness of the resolvent (equivalently, of the
+form-domain embedding).\end{proof}
+
+This does not establish an eigenpair. Compact resolvent would imply
+a discrete eigenvalue structure on that \emph{particular} nonzero
+reducing sector, but the identity of the sector, the hypothesis
+\eqref{eq:conditional-coercivity}, and the correspondence to the
+\emph{original} physical Hamiltonian must all be proved first.
+It certainly does not imply a spectral gap for the \emph{whole}
+relative BFSS Hamiltonian.
+
+\begin{openproblem}[Join the physical form to weighted compactness]
+\label{op:form-compactness}
+Construct a source-exact, gauge-compatible, Spin(9)-reducing sector
+of the original physical Hilbert space and prove a coercive inequality
+of the form \eqref{eq:conditional-coercivity} on its original smooth
+form core. Extend it by the correct \emph{physical form}-core closure,
+identify its weighted Sobolev triple with the \emph{existing} source
+closure of Theorem~\ref{thm:weighted-closure}, and deduce compactness
+for the actual restricted Hamiltonian without changing the model or
+its domains.
+\end{openproblem}
+\editornote{A-02, A-03 and A-04 are fully accepted abstract analysis
+theorems. Their precise physical-source inputs O-01 through O-04 are
+not discharged in this edition. The conditional coercivity route
+is resumed in Chapter~\ref{ch:spectral}; the auxiliary normalized
+Fock observable of Chapter~\ref{ch:norm} is not substituted for the
+original unnormalized linear field.}

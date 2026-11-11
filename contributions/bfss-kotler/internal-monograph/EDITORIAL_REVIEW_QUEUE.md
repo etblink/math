@@ -1,4 +1,4 @@
-# Internal monograph editorial and scientific review queue (v0.3)
+# Internal monograph editorial and scientific review queue (v0.4)
 
 This queue records **tasks for review**, not claims of pending Lean gates. It is independent of GitHub Actions and must not be converted automatically into scientific qualifications.
 
@@ -16,10 +16,15 @@ This queue records **tasks for review**, not claims of pending Lean gates. It is
 - **Chapter 8 (Fock-operator action):** Check original M3I carrier, OP3-C6C original active gamma linear action, P2b-B2/B3 adjoint-star action, and T1 actual finite trace. Hilbert–Schmidt isometry is a conventional mathematical corollary, **not** yet a new Lean theorem on a continuous group representation. Treat the original negative center `z9` as a nontrivial minus action on 48 labels, not a scalar conjugation.
 - **Chapter 9 (gauge compatibility):** Verify source C48-0 [#42779878513], S1J identification C48-0B [#42787913738], one-sided active-gamma compatibility C48-1A0 [#42798054277]. No automatic gauge-unitary/projector fixedness, continuous physical `FullL2` Fock-vector action, complete 16-charge covariance, closed form reduction or isotypic spectral theorem. The functional-analysis conditional implication about a closed graph must remain explicitly conditional.
 
+## Newly drafted Chapters 10–11 — source and domain audit before v0.5
+
+- **Chapter 10:** Audit the generic `AlgebraData N` massless `coreForm` equality and real-inner-product convention against original `Core.lean`, `DeformedCharge.lean` and strict `SpectralMasslessCoreFormIdentity.lean`; retain exact `1/16` and `1/2` factors. Independently type-check the *concrete paired Pauli color* wedge identity before promoting `V_wedge` to an unconditional source theorem. The finite-CAR `8 sqrt(3)` bound is conditional pending exact signed original-field identification and source-typed Lean norm proof; distinguish diagnostic evidence from compiler acceptance. Confirm rank-one valley is a configuration argument, not a physical Weyl sequence.
+- **Chapter 11:** Check the original `BFSSRellich` linear cutoff and local ball hypotheses, the finite-dimensional fiber and gradient source types, and the weighted source closure of `(u,gradient u,w*u)`. Its operator is **not automatically** the BA–BH source physical `Dom(T)` form-graph model. Require a separate physical-sector form-core and weighted-closure embedding with the same actual original Hamiltonian before invoking compact resolvent. The conditional resolvent proposition is conventional mathematics, *not* Lean acceptance.
+- **Chronology:** Cross-check strict source runs #42315568670, #42318037096, #42320696105, #42325087575 (source records dated Nov 6; runs Nov 7 UTC) with historical G4–K9D #38011995220 and physical graph D2B23/24/25. Never confuse dated pending notes with later proofs.
+
 ## Remaining chapters — mathematical order and dependency constraints
 
 
-- **Chapters 10–11:** Use accepted source energy and first-moment compactness as separate blocks. Derive, or label as missing, the actual original unnormalized fermionic growth bound and the coercivity/weighted-closure inclusion on a reducing physical sector.
 - **Chapter 12:** Present NORM0C-D1 as bounded **auxiliary** operators and `FullL2` images, not as equivalent to the original unnormalized linear interaction. Require actual D2 and D3 theorem certificates before promotion.
 - **Chapter 13:** Maintain separate `lambda_2 > m+6` vector and `lambda_2 > m+12` operator-fiber conditional thresholds, verify exact source Spin(8) branching and a nontrivial physical high-type sector before admitting spectral consequences.
 - **Chapter 14:** Summarize established source mathematics, conditional analytical implications, and unresolved original physical spectral problem without prejudging a theorem, M-theory interpretation, or experimental support.

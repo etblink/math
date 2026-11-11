@@ -1,0 +1,231 @@
+% Source-faithful massless form and explicit unproved source-specific fields.
+\chapter[Original Energy and Fermionic Growth]{Unnormalized Original Energy and the Fermionic Growth Problem}
+\label{ch:energy}
+
+\section{Why an operator construction does not yet imply confinement}
+Chapter~\ref{ch:hamiltonian} established a positive self-adjoint physical
+Hamiltonian from the \emph{original} closed sixteen-charge column,
+\(H_{\mathrm{phys}}=\frac1{16}T^\dagger T\). The spectral question is more
+demanding. We must understand how its quadratic form behaves as the bosonic
+configuration escapes through the noncompact space
+\(\Bconfiguration=\mathbb R^{9\times3}\). The scalar potential is quartic,
+but it has noncompact valleys along commuting matrix configurations. On those
+valleys it cannot alone force the first radial moment
+\(\int\|X\|\,\|\Psi(X)\|^2\,dX\) to remain finite or bounded on a
+form-norm ball. The original fermionic field is unbounded and linear in \(X\),
+so dropping it is not legitimate.
+
+The historical research took two converging paths. In October, FCP proved the
+exact \emph{source-defined} undeformed charge/core-form identities (G4--K9D)
+and constructed the actual closed physical operator and its domain (BA--BH).
+In November, we returned to the energy decomposition and proved an explicit
+original-source smooth-core composition, then built first-moment compactness
+machinery without presupposing the missing physical confinement estimate.
+These paths meet at a precise outstanding mathematical interface, not at the
+mere similarity of their formulas.
+
+\section{The source charge form and its massless energy identity}
+The starting point is the original \texttt{AlgebraData N}, not an independent
+choice of gamma matrices or a convenient replacement Fock space. Write
+\(Q_\alpha^M\) for the literal smooth-core source supercharges from
+Chapter~\ref{ch:charges} and
+\(\iota:\mathscr D\to\OriginalLtwo\) for the source compact-core inclusion.
+For \(f\in\mathscr D\), define
+\begin{equation}\label{eq:energy-coreForm}
+ q_M^{\mathrm{core}}(f):=\frac1{16}\sum_{\alpha=0}^{15}
+   \|\iota(Q_\alpha^M f)\|_{L^2}^2.
+\end{equation}
+This is the original Lean declaration \texttt{M.coreForm f}; the coefficient
+\(1/16\) is an exact normalization, not a proportionality convention.
+
+\begin{theorem}[Original massless core-energy identity; integration
+strict-qualified]\label{thm:massless-energy}
+For every admissible source \(M:\texttt{AlgebraData N}\) and every original
+\(f:\texttt{SmoothCore N}\), the actual source definitions satisfy
+\begin{align}\label{eq:massless-energy}
+ q_M^{\mathrm{core}}(f)
+  &=\frac12\sum_{(i,a)\in\{0,\ldots,8\}\times\mathrm{Color}(N)}
+     \|\iota(\partial_{i,a}f)\|_{L^2}^2 \\
+  &\quad+\int_{\Bconfiguration_N}\!\left(
+     V_M^{(1,0)}(X)\,\|f(X)\|^2
+     +\operatorname{Re}\langle f(X),B_M^{(1,0)}(X)f(X)\rangle_{\mathbb C}
+     \right)\,dX .\nonumber
+\end{align}
+Here \(V_M^{(1,0)}\) and \(B_M^{(1,0)}\) denote, \emph{without changing
+any coefficients}, \texttt{M.deformedBosonicPotential 1 0} and
+\texttt{M.deformedFermionField 1 0}. The displayed real part records
+Lean's real inner product of the complex Fock fiber.
+\end{theorem}
+\begin{proof}[Accepted source-rewrite argument]
+The October G4--K9D source theorem establishes, on every
+original compactly supported smooth function, equality between
+\texttt{M.deformedCoreEnergy 1 0} and \texttt{M.coreForm}. It uses the
+original ordered gamma/color/fermion finite sums, including the massless
+\(1/2\) coefficient; no added potential-agreement premise remains.
+The existing source theorem \texttt{M.averaged\_core\_energy 1 0 f}
+expands that \emph{same} deformed core energy into kinetic, bosonic and
+fermionic components. Rewriting the left-hand side by G4--K9D then
+applying the source expansion yields \eqref{eq:massless-energy}.
+The integrated Lean proof is exactly this two-step composition; it does not
+expand a second, independently stipulated supercharge.
+\end{proof}
+\formalrecord{\texttt{OAI.BFSSQuantum.AlgebraData.massless\_coreForm\_energy},
+\texttt{SpectralMasslessCoreFormIdentity.lean}, blob
+\texttt{3a8dd27bb573e62c8f86b79b83e0ab96f391602a}; strict
+\href{https://github.com/etblink/math/actions/runs/42325087575}{\#42325087575}
+(success). The historical FCP ancestor G4--K9D was independently accepted at
+\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38011995220}{\#38011995220}.
+Atlas A-01; original-source definition D-03.}
+
+\begin{remark}[Scope of the identity]
+The theorem is generic in \(M\). It has not, \emph{by itself},
+(a) constructed a new Spin(9) action on the physical Hilbert space,
+(b) identified every concrete Pauli-color contraction with a separately
+printed wedge formula, (c) bounded the original field in operator norm,
+or (d) transferred the formula from the smooth core to a high-Spin reducing
+sector of the \emph{closed} physical Hamiltonian.
+These are logically separate statements. The BA--BH theorems guarantee the
+correct closed Hamiltonian exists, but do not make an arbitrary core-level
+inequality invariant under closure and projection.
+\end{remark}
+
+\section{The quartic bosonic potential and its valleys}
+For the usual concrete normalized Pauli \(\mathrm{SU}(2)\) color data,
+write a bosonic configuration as three row vectors
+\(X^a\in\mathbb R^9\), \(a=1,2,3\). The familiar wedge expression is
+\begin{equation}\label{eq:potential-wedges}
+ V_{\wedge}(X)=\sum_{1\le a<b\le3}\|X^a\wedge X^b\|^2
+ =\sum_{a<b}\bigl(\|X^a\|^2\|X^b\|^2-\langle X^a,X^b\rangle^2\bigr).
+\end{equation}
+The source audit locates the concrete equality
+\(V_M^{(1,0)}=V_{\wedge}\) in a normalized-Pauli color theorem whose
+\emph{hypothesis must be bound to the actual paired instance}. We use
+\eqref{eq:potential-wedges} here as the explicitly specified concrete
+potential, not as a new blanket consequence of
+Theorem~\ref{thm:massless-energy} for every \(M\).
+
+The geometric obstruction is immediate. Choose a unit spatial vector
+\(e\in\mathbb R^9\), a unit color vector \(n\in\mathbb R^3\), and a
+radius \(r\ge0\). The rank-one configurations
+\begin{equation}\label{eq:flat-valley}
+  X^a=r n_a e,\qquad a=1,2,3,
+\end{equation}
+satisfy \(X^a\wedge X^b=0\) for every pair, hence
+\(V_{\wedge}(X)=0\) for arbitrarily large \(r\). The quartic potential
+is positive away from the rank-one locus, but not coercive in \(\|X\|\)
+on its own. Rank-one \emph{configurations} are not normalizable physical
+states; nonetheless they identify escape channels that any rigorous
+spectral argument must control.
+
+\section{The unnormalized fermionic field is a different object}
+The original source fermionic field \(B_M^{(1,0)}(X)\) is an
+endomorphism of the genuine \(2^{24}\)-dimensional Fock fiber in the
+paired \(N=2\) specialization. Its coefficient construction is linear in
+\(X\), using the original real gamma matrices, oriented normalized
+\(\mathrm{SU}(2)\) structure constants and self-adjoint Majoranas with
+\(\{\theta_p,\theta_q\}=\delta_{pq}I\). An often useful skew-CAR
+representation is schematically
+\begin{equation}\label{eq:B-skew-CAR}
+ B(X)=\frac{i}{2}\sum_{p,q}K_{pq}(X)\theta_p\theta_q,
+ \qquad K(X)^\mathsf T=-K(X), \quad K(tX)=tK(X).
+\end{equation}
+The exact source-index orientation and coefficient agreement between
+\(B_M^{(1,0)}\) and \eqref{eq:B-skew-CAR} are an explicit \emph{binding
+obligation}; a matching numerical norm is insufficient to establish the
+signed operator identity.
+
+If a source-typed bound
+\begin{equation}\label{eq:B-linear-target}
+ \|B_M^{(1,0)}(X)\|_{\mathrm{op}}\le C\|X\|
+ \quad(X\in\mathbb R^{27}),\qquad 0\le C<\infty
+\end{equation}
+were established for the actual concrete data, its quadratic-form
+contribution would satisfy
+\begin{equation}\label{eq:B-negative}
+ \operatorname{Re}\langle v,B_M^{(1,0)}(X)v\rangle
+ \ge -C\|X\|\,\|v\|^2.
+\end{equation}
+The proof is the elementary estimate
+\(|\langle v,Bv\rangle|\le\|B\|\|v\|^2\).
+Thus a \emph{bounded} multiplier is not required here: a linear-growth
+multiplier is what the original energy argument needs.
+
+\begin{proposition}[Conservative finite-CAR growth estimate;
+analytical and not Lean-qualified]\label{prop:B-analytic}
+Under the exact 48-generator CAR, signed source-field identification,
+and the skew-matrix trace identity recorded in the November 6 A/B audit,
+one obtains the conditional conservative estimate
+\begin{equation}\label{eq:analytic-C}
+   \|B(X)\|_{\mathrm{op}}\le 8\sqrt3\,\|X\|.
+\end{equation}
+This is a conventional finite-dimensional derivation contingent on the
+specified identification, not a newly accepted Lean source theorem.
+\end{proposition}
+\begin{proof}[Structure of the audited calculation]
+Real orthogonal skew normal form decomposes the \(48\times48\) coefficient
+matrix into 24 two-dimensional rotation blocks with nonnegative
+frequencies \(a_1,\ldots,a_{24}\). CAR normalization
+\(\theta_p^2=I/2\) makes the magnitude of the contribution from each
+commuting fermion block \(a_j/2\). Hence
+\begin{equation}\label{eq:B-HS-bound}
+  \|B(X)\|_{\mathrm{op}}
+  \le \frac12\sum_{j=1}^{24}a_j
+  \le\frac12\sqrt{24}\left(\sum_j a_j^2\right)^{1/2}.
+\end{equation}
+The A/B source-normalization analysis gives
+\(\sum_j a_j^2=32\|X\|^2\), which yields
+\(\frac12\sqrt{24\cdot32}=8\sqrt3\).
+The equality between the coefficient matrix and the \emph{original}
+source field, and the source-level operator inequality, remain to be
+formally checked. These qualification requirements are not supplied by
+repeating the finite-dimensional arithmetic.
+\end{proof}
+\formalrecord{Analytical finite-source reconstruction:
+\path{BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md} and
+\path{BFSS_SPECTRAL_SOURCE_PREMISES_AUDIT_2026_11_06.md};
+source-typed growth obligation O-02 in the atlas. Their numerical checks
+are diagnostic evidence, not Lean acceptance.}
+
+\section{Why the first radial moment is the critical target}
+Combining Theorem~\ref{thm:massless-energy} with a \emph{hypothetically
+proved} source bound \eqref{eq:B-linear-target} would give, schematically,
+\begin{equation}\label{eq:weak-valley-bound}
+ q_M^{\mathrm{core}}(f)\ge
+ \frac12\|\nabla f\|_2^2 +\int V_M^{(1,0)}(X)\|f(X)\|^2\,dX
+   -C\int\|X\|\|f(X)\|^2\,dX.
+\end{equation}
+The negative final term can dominate along the flat valley, so
+\eqref{eq:weak-valley-bound} does \emph{not} prove confinement. The
+prospective high-Spin mechanism must rule out sufficiently many low
+transverse oscillator levels on the \emph{whole} appropriate isotypic
+component, thereby adding a positive linear-in-radius term that can
+outweigh the fermionic growth. This is the task for
+Chapter~\ref{ch:spectral}; its group/weight/sector assumptions remain
+explicitly conditional.
+
+There is a practical prioritization lesson. For qualitative confinement,
+a rigorously source-typed \emph{finite} constant \(C\) in
+\eqref{eq:B-linear-target} may suffice if a genuine family of high-type
+physical sectors with sufficiently strong oscillator exclusion is
+available. Obtaining the sharp coefficient \(8\sqrt3\) first may
+therefore be unnecessary. But changing \(C\) changes the required
+oscillator threshold, and that threshold cannot be adjusted without
+checking actual source branching, nonemptiness and center conventions.
+
+\begin{openproblem}[Physical unnormalized field and energy-to-moment
+bridge]\label{op:energy-to-moment}
+On the literal paired \(\mathrm{SU}(2)\) physical Hilbert space:
+(i) prove the exact Pauli/gamma/ordered-Majorana binding of the source
+fields, (ii) prove a source-typed operator growth bound, (iii) construct
+the physically correct Spin(9) reducing action and high-weight exclusion,
+and (iv) derive from the \emph{same} closed physical form a uniform
+positive first-radial-moment and gradient estimate. Theorem~\ref{thm:massless-energy}
+alone establishes none of (i)--(iv).
+\end{openproblem}
+
+\editornote{Evidence statuses: the source core form A-01 is integrated
+strict-qualified; the concrete conservative norm constant is conditional
+finite-dimensional analysis; the source physical growth and coercivity
+joins O-02 and O-04 remain open. The normalized Gram observable of
+Chapter~\ref{ch:norm} is auxiliary and does not replace the unnormalized
+fermionic field.}

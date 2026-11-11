@@ -2,7 +2,7 @@
 
 **Status:** internal working inventory, not a new theorem or a fresh CI acceptance.
 
-**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (mathematical baseline); theorem citations were rechecked against the monograph branch `65f9de5fc593`. The machine-readable companion is `THEOREM_ATLAS.json`.
+**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (mathematical baseline); theorem citations were rechecked against the monograph branches through `c348da90a3db` for the editorial evidence audit. The machine-readable companion is `THEOREM_ATLAS.json`.
 
 The *dependencies* listed below are **narrative/scientific prerequisites**, not necessarily the exact Lean import DAG. A strict-green receipt is always tied to its tested commit; the source blob identifies the file inspected for this manuscript.
 
@@ -17,6 +17,18 @@ The *dependencies* listed below are **narrative/scientific prerequisites**, not 
 | `PENDING_STRICT_GATE` | Candidate present; no qualification conclusion as of snapshot |
 | `ANALYTICAL_CONDITIONAL` | Conventional argument under stated assumptions, not a Lean-qualified physical source theorem |
 | `OPEN_PROOF_OBLIGATION` | Research target, no exact accepted Lean theorem |
+
+## Edition 0.4 — energy, growth and compactness joining map
+
+Chapters 10–11 now present full mathematical narrative and source-proof dependencies for the already-indexed entries A-01 through A-04. **No new Lean theorem and no changed status classification** is created by this prose. The important proof chain and its open join are:
+
+1. **October FCP G4–K9D (#38011995220):** original massless source potential multiplier, all sixteen charges and core form equal their `(h,m)=(1,0)` source definitions. Historical source qualification, not a physical spectral theorem.
+2. **November original energy A-01 (#42325087575):** the literal original `coreForm` rewrites to kinetic, source bosonic potential and source fermionic field by the existing `averaged_core_energy`. The generic `AlgebraData N` theorem has no implied Pauli wedge specialization, signed skew-field source binding or sector coercivity.
+3. **November first-moment A-02/A-03 (#42315568670 / #42318037096):** a first radial moment plus local compactness controls smooth cutoff tails and global total boundedness; gradients and L² bounds supply local compactness on Euclidean balls.
+4. **November weighted closure A-04 (#42320696105):** bounded original *weighted Sobolev triple* and `w² ≥ c‖x‖` imply L² total boundedness, including `w=√‖x‖`. This closure is not automatically the historical **physical charge-form graph** of D2B23–25 or the BA–BH Hamiltonian domain.
+5. **OPEN O-02/O-04/O-05:** prove the exact signed Pauli/gamma source fermionic linear-growth field, a nonempty source-physical reducing Spin sector, whole-isotypic oscillator/energy control on the same actual closed physical form, and source-typed weighted-closure membership. A formal compact-resolvent/positive-eigenpair result is not presently qualified.
+
+**Finite diagnostic vs theorem:** the November A/B audit's `‖B(X)‖ ≤ 8√3 ‖X‖` is a conditional finite-CAR source-normalization derivation, not a source-typed accepted Lean norm bound. A larger finite bound may suffice if the actual admissible sector parameters allow the corresponding increase in oscillator exclusion.
 
 ## Theorem and definition index
 

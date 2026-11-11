@@ -1,5 +1,5 @@
 {
-  "schema": "bfss_internal_theorem_atlas_v0.3",
+  "schema": "bfss_internal_theorem_atlas_v0.4",
   "snapshot_commit": "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
   "date": "2026-11-11",
   "status_vocabulary": {
@@ -499,7 +499,7 @@
       ],
       "mathematical_role": "Relates the normalized source core charge norm to original kinetic, bosonic potential, and fermion field terms at (1,0).",
       "boundary": "Generic AlgebraData theorem; concrete Pauli/color field contraction and sharp growth bound are distinct.",
-      "notes": ""
+      "notes": "v0.4 Ch. 10: accepted source generic coreForm rewrite via G4K9D plus M.averaged_core_energy 1 0; not source Pauli wedge or actual sector coercivity."
     },
     {
       "id": "A-02",
@@ -520,7 +520,7 @@
       ],
       "mathematical_role": "Abstract global L2 tightness from first radial moment and local compactness.",
       "boundary": "Assumes a radial-moment estimate; does not obtain it from the physical Hamiltonian.",
-      "notes": ""
+      "notes": "v0.4 Ch. 11: source smooth cutoff inequality R·dist² ≤ first radial moment; combined with local total boundedness, not a new energy estimate."
     },
     {
       "id": "A-03",
@@ -542,7 +542,7 @@
       ],
       "mathematical_role": "Under uniform original gradient, L2, and first radial-moment bounds, smooth core image families are totally bounded.",
       "boundary": "Not an estimate of source charge energy; the hypotheses remain to be supplied.",
-      "notes": ""
+      "notes": "v0.4 Ch. 11: controls local compactness from original gradient and L2, then global compactness from A-02."
     },
     {
       "id": "A-04",
@@ -564,7 +564,7 @@
       ],
       "mathematical_role": "Total boundedness for the original weighted Sobolev closure when its weight dominates a linear radial moment and graph components are uniformly bounded.",
       "boundary": "Physical form-domain identification and coercive bounds are not established by this result.",
-      "notes": ""
+      "notes": "v0.4 Ch. 11: weighted Sobolev closure of triples (u,∇u,wu); not automatically the physical T-charge closed form graph."
     },
     {
       "id": "N-01",
@@ -713,7 +713,7 @@
       ],
       "mathematical_role": "Prove a finite constant C with |B(X)| <= C |X| in the literal source original fermionic field.",
       "boundary": "Numerical and finite-coefficient checks, and normalized auxiliary Gram bounds, are not this theorem.",
-      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+      "notes": "v0.4 Ch. 10: audited 8√3 original-CAR finite-dimensional bound is CONDITIONAL until source-typed signed field and Lean norm control; weaker finite C may be sufficient. Do not confuse with NORM-0 normalized quadratic Gram field."
     },
     {
       "id": "O-03",
@@ -756,7 +756,7 @@
       ],
       "mathematical_role": "Deduce first radial-moment and gradient bounds from the exact native physical closed form on a nonzero reducing sector.",
       "boundary": "Decisive source-specific missing estimate. No global physical form-domain reduction currently admitted.",
-      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+      "notes": "v0.4 Chs. 10–11: the concrete open source-physical-sector energy-to-moment estimate and reducing domain compatibility, not the already qualified abstract compactness theorem."
     },
     {
       "id": "O-05",
@@ -776,7 +776,7 @@
       ],
       "mathematical_role": "Join verified compactness to the same historical native physical Hamiltonian and prove sector reduction and nontriviality.",
       "boundary": "Not a full BFSS mass gap; not currently established.",
-      "notes": "See conditional analysis in BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md and BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md."
+      "notes": "v0.4 Ch. 11: conditional standard implication from compact physical form embedding to compact resolvent; source-reducing sector and form bound remain open, no point-spectrum theorem established."
     },
     {
       "id": "C-01",
@@ -819,5 +819,6 @@
       "notes": "Conventional analysis; no Lean theorem claimed."
     }
   ],
-  "atlas_review_commit": "65f9de5fc5932c415b7e2dca9d4e9728aac1d84e"
+  "atlas_review_commit": "c348da90a3dbff70518830a1de2835ce2a4e89c6",
+  "editorial_note": "Edition 0.4 adds conventional Chapters 10–11, no new Lean theorem status; all runs and source snapshots retain their actual tested provenance."
 }
