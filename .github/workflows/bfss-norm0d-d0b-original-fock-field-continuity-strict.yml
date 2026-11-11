@@ -1,0 +1,134 @@
+name: BFSS NORM0D D0-B original Fock field continuity strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D1OriginalFockFieldContinuity.lean
+      - lean/diagnostics/BFSSNORM0D1OriginalFockFieldContinuityConsumer.lean
+      - .github/workflows/bfss-norm0d-d0b-original-fock-field-continuity-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-norm0d-d0b-field-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-normalized-fock-field-continuity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact source and consumer
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Preserve 108 accepted NORM0C parents, 2 accepted D0A parents, and 2 current D0B roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-norm0d-d0b"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/environment-sha256.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          python3 - <<'PY'
+          import json,re,subprocess
+          from pathlib import Path
+          def blob(path):
+              return subprocess.check_output(["git","hash-object","--no-filters",str(path)],text=True).strip()
+          parent_manifest=Path(".github/workflows/bfss-norm0c-original-normalized-fock-field-strict.yml")
+          assert blob(parent_manifest)=="29b5e76730dd894c0c953d1c9ff17d9f4521bc7e"
+          parent_pins=re.findall(r'(?m)^\s*"([^"]+)":"([0-9a-f]{40})",?$',parent_manifest.read_text())
+          assert len(parent_pins)==108
+          assert len({path for path,_ in parent_pins})==108
+          new_pins={
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D0OriginalGramContinuity.lean":"c5c7f6b966766188bed0bbd9334607e5316c7e20",
+              "lean/diagnostics/BFSSNORM0D0OriginalGramContinuityConsumer.lean":"fee6ee8ed7e24aad4bdab3380750cb452ed05181",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D1OriginalFockFieldContinuity.lean":"7cd3197dbef31af0fb25d8a47c41e037d8162f4e",
+              "lean/diagnostics/BFSSNORM0D1OriginalFockFieldContinuityConsumer.lean":"37353573501efaecc795fca6dbfc8e7b4e9f08bc",
+          }
+          assert len(new_pins)==4
+          assert not set(new_pins)&{path for path,_ in parent_pins}
+          for path,expected in parent_pins+list(new_pins.items()):
+              actual=blob(path)
+              assert actual==expected,(path,expected,actual)
+          assert blob(".github/workflows/bfss-norm0d-d0-original-gram-continuity-microgate.yml")=="e677ffd5557937a0103ad50682af1d157fa28eaf"
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in pkgs if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D1OriginalFockFieldContinuity.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSNORM0D1OriginalFockFieldContinuityConsumer.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0COriginalNormalizedFockField",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D0OriginalGramContinuity"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D1OriginalFockFieldContinuity"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==[
+              "originalFockGramObservable_continuous",
+              "originalNormalizedFockGramObservable_continuous"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
+              "FCP.BFSSNORM0D1OriginalFockFieldContinuity.originalFockGramObservable_continuous",
+              "FCP.BFSSNORM0D1OriginalFockFieldContinuity.originalNormalizedFockGramObservable_continuous",
+              "originalNormalizedFockGram_norm_continuous",
+              "originalNormalizedFockGram_aeStronglyMeasurable"]
+          for body in (source,consumer):
+              assert "set_option autoImplicit false" in body
+              assert "maxRecDepth" not in body and "maxHeartbeats" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
+          print("NORM0D_D0B_ORIGINAL_112_BLOB_CLOSURE_PASS")
+          PY
+          git hash-object --no-filters "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D1OriginalFockFieldContinuity.lean" "lean/diagnostics/BFSSNORM0D1OriginalFockFieldContinuityConsumer.lean" | tee "$evidence/new-git-blobs.txt"
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1700s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Cold original D0B source build and warning-clean independent L2 preparatory consumer
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-norm0d-d0b"
+          timeout 1600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D1OriginalFockFieldContinuity \
+            2>&1 | tee "$evidence/source-build.log"
+          timeout 320s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSNORM0D1OriginalFockFieldContinuityConsumer.lean \
+            2>&1 | tee "$evidence/consumer-axioms.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          log=(Path(os.environ["RUNNER_TEMP"])/"bfss-norm0d-d0b"/"consumer-axioms.log").read_text()
+          for bad in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+              assert bad not in log,(bad,log[-4000:])
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          warnings=[line for line in log.splitlines() if "warning:" in line and not pkg_warning.fullmatch(line)]
+          assert not warnings,("unexpected warnings",warnings[:10])
+          roots=[
+              "FCP.BFSSNORM0D1OriginalFockFieldContinuity.originalFockGramObservable_continuous",
+              "FCP.BFSSNORM0D1OriginalFockFieldContinuity.originalNormalizedFockGramObservable_continuous",
+              "FCP.BFSSNORM0D1OriginalFockFieldContinuityConsumer.originalNormalizedFockGram_norm_continuous",
+              "FCP.BFSSNORM0D1OriginalFockFieldContinuityConsumer.originalNormalizedFockGram_aeStronglyMeasurable"]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+          assert [name for name,_ in reports]==roots,(reports,roots)
+          allowed={"propext","Classical.choice","Quot.sound"}
+          assert all({a.strip() for a in raw.split(",") if a.strip()}<=allowed for _,raw in reports),reports
+          print("NORM0D_D0B_ORIGINAL_FOCK_FIELD_CONTINUITY_STRICT_PASS")
+          PY
+      - name: Save original D0B receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-norm0d-d0b-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-norm0d-d0b/
+          retention-days: 14
