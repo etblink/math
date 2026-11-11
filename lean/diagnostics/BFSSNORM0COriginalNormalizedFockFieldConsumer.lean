@@ -52,7 +52,7 @@ theorem originalNormalizedFockGram_gauge_covariant
         originalGramTrace x := by
     simp only [originalGramTrace, originalSpatialGram_gauge_invariant]
   unfold originalNormalizedFockGramObservable
-  simp only [ContinuousLinearMap.smul_apply]
+  simp only [smul_apply]
   rw [map_smul, originalFockGramObservable_gauge_covariant, hT]
 
 #print axioms FCP.BFSSNORM0COriginalNormalizedFockField.originalFockGammaBoundConstant_nonneg

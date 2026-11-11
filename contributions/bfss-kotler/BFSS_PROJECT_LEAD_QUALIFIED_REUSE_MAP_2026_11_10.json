@@ -966,7 +966,28 @@
       "memo_blob": "fa6a07408a0983684d2f6558f751552232df8961",
       "scope": "No Lean run: malformed Python pins dict missing comma before NORM0C source. Standalone parsed candidate map 108 keys, exactly reproduces 106 qualified parent path/hashes + two new candidate files. Only separator changed.",
       "caveat": "NORM0C candidate not qualified; require fresh cold source and independent consumer strict green."
+    },
+    {
+      "id": "math-norm0c-second-red-consumer-deprecated-smul-apply",
+      "tier": "STRICT_RED_CONSUMER_DEPRECATION_ONLY_SOURCE_AND_ALL_THEOREMS_COMPILED_WITH_ALLOWED_AXIOMS",
+      "repo": "etblink/math",
+      "run": 43015220730,
+      "job_id": 130504473501,
+      "tested_commit": "4a95e00ed3134293ba99a0649f7999ce92408f70",
+      "artifact_id": 13853142988,
+      "artifact_sha256": "5e14e46c0ca9ea4c9c017d60fdf63749c4c1a214e7c3b6f629853cb36158f0db",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0COriginalNormalizedFockField.lean",
+      "source_blob": "84de66e73be2018b03ced898ebf70e691c07b40f",
+      "consumer_path": "lean/diagnostics/BFSSNORM0COriginalNormalizedFockFieldConsumer.lean",
+      "failed_consumer_blob": "314694880753d91e6a0de516b6a8d50f5c6d10e5",
+      "candidate_consumer_blob": "307870a4cb93e1ead38253b9d94b5e79c3c2c11c",
+      "failed_workflow_blob": "543d50ff4b11995cccb988c07f70fa6f761e2a89",
+      "candidate_workflow_blob": "29b5e76730dd894c0c953d1c9ff17d9f4521bc7e",
+      "memo_path": "contributions/bfss-kotler/BFSS_NORM0C_SECOND_RED_CONSUMER_DEPRECATED_SMUL_APPLY_2026_11_11.md",
+      "memo_blob": "dcb1312fc5309e29aa3f2706bceaadf68abdee92",
+      "scope": "108-pin preflight and 9070 source jobs passed, three original source and both independent consumers printed standard-only axiom roots. Only fatal warning-as-error: deprecated ContinuousLinearMap.smul_apply at consumer line 55, replaced with current smul_apply. Original source frozen and only consumer pin updated.",
+      "caveat": "All theorem bodies elaborated but strict run failed; requires new exact CI green; no physical FullL2 or spectral claim."
     }
   ],
-  "record_count": 64
+  "record_count": 65
 }
