@@ -212,3 +212,24 @@ for arbitrary **real** J and actual `Fermion 2 →L[ℂ] Fermion 2`. Proof chain
 **Strict source-closure audit:** independently compared B1 and B2 98-pin workflow maps in the current branch: exactly 96 equal shared ancestor paths+hashes; B1 has 2 distinct qualified source/consumer files; B2 has 2 distinct source/consumer files pending its own green; zero hash conflicts. Union = **100 files**, and B3 source+consumer would make **102**, not 98. On B2 success, the new strict gate must pin all 102 exact blobs, preserving both historic green and negative proof evidence. Do not start B3 while B2 is red.
 
 The source-typed Fock theorem and scalar consumer yield **pointwise Fock self-adjointness**, not a uniformly bounded bosonic multiplier, preserved source physical supercharge domain, Hamiltonian spectral theorem or BFSS mass gap. Uniform normalization and 120D CAR trace remain separate.
+
+## 20. JOIN-0B2 third strict RED: explicit cast/negative finite-sum repair (2026-11-10 Pacific)
+
+**Third RED, independently retrieved:** [run #42938833425](https://github.com/etblink/math/actions/runs/42938833425), original tested commit `c763b2a9c61e446260fb87e1839b3096494f8fc0`, job `130255462330`, completed failure 2026-11-11 01:41:55 UTC. 98 pinned Git blobs and cold pinned toolchain passed. The SOURCE `BFSSJOIN0B2OriginalFockQuadraticStarTranspose.lean` compiled successfully a third time; `originalColorQuadratic_star_transpose` printed **only** `propext`, `Classical.choice`, `Quot.sound`. The **independent consumer** failed at line 25 with the unchanged normalized goal
+```
+(∑ α β, -((J α β : ℝ) : ℂ) • F α β) =
+  -(∑ α β, ((J α β : ℝ) : ℂ) • F α β)
+```
+and line 26 rejected `neg_smul` as an *unused* simp argument. It was not sufficient to append a rewrite to a broad `simp [originalColorQuadratic, ...]`: nested finite sums need explicit normalization. Consumer axiom output contains `sorryAx` from failed elaboration, so the **full B2 gate is unqualified**. Preserve all three reds and do not treat them as mathematical disproof. Failure archive ID `13821005832`, uploaded ZIP SHA-256 `d163664dafc38e2a8ab1e09592772c03790b4a486ecf3839f42429dab3771556`.
+
+**New bounded consumer-only repair:** replace the *single failed proof tactic* `simp [originalColorQuadratic, neg_smul]` by:
+```lean
+  unfold originalColorQuadratic
+  simp only [Matrix.neg_apply, Complex.ofReal_neg, neg_smul,
+    Finset.sum_neg_distrib]
+```
+This explicitly rewrites original real Matrix negation, exact ℝ→ℂ cast negation, scalar-product negation, and **two nested** finite-sum negations. These named lemmas were inspected against the pinned Mathlib corpus: `Mathlib/LinearAlgebra/Matrix/Defs.lean` source `neg_apply`; `Mathlib/Basic/Complex/Basic.lean` source `Complex.ofReal_neg`; actual `Finset.sum_neg_distrib` use in the pinned Mathlib source. This proof tactic is a **candidate until a NEW strict run builds source and consumer**, not a verified fix. No changes to original `Fermion 2` or gamma sources, 48-Majorana CAR, source B2 theorem, B1 qualified source or B3 preparation.
+
+B2 consumer blob moves from `15c890aece6ad0b326c61b24005184e906f245a0` to `cb1db73c004998b114b02f457a182a3b05809a20`. The independent B2 strict workflow blob moves to `90748a124637139d3aae273b2b4a7a6a58f85f36` by replacing precisely the ONE B2 consumer Git pin among 98; all 96 accepted ancestry pins and the clean-compiled B2 source `4c96a53f494ab0bd9891b686510aa59ea4e14044` remain byte-identical. No JOIN-0B1 source or strict manifest changes. On any additional red, inspect first causal compiler error and prefer a small explicit `calc` with two `Finset.sum_neg_distrib` equalities over broad simp modifications.
+
+**Next decision:** only after FULL B2 green, instantiate separately pinned 102-blob JOIN-0B3 as prepared in `BFSS_JOIN0B3_ACTUAL_FOCK_SELFADJOINT_PREPARATION_2026_11_10.md`; no promotion from the three source-only clean compilations.

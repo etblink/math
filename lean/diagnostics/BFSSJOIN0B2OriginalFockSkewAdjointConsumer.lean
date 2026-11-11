@@ -23,7 +23,9 @@ quadratic operator, not an unproved generic Fock representation. -/
 private theorem originalColorQuadratic_neg
     (J : Matrix SpinIndex SpinIndex ℝ) :
     originalColorQuadratic (-J) = -originalColorQuadratic J := by
-  simp [originalColorQuadratic, neg_smul]
+  unfold originalColorQuadratic
+  simp only [Matrix.neg_apply, Complex.ofReal_neg, neg_smul,
+    Finset.sum_neg_distrib]
 
 theorem originalColorQuadratic_skewAdjoint
     (J : Matrix SpinIndex SpinIndex ℝ) (hJ : Jᵀ = -J) :
