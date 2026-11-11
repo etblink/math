@@ -28,10 +28,12 @@ noncomputable def originalFockL2Action
   (originalPointwiseFock_memLp B f).toLp
     (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x))
 
+-- Match the pinned toLp interface under scoped definitional equality.
+section
+set_option backward.isDefEq.respectTransparency.types false
+
 /-- The L2 class has the source-original operator action almost
 everywhere, not at every representative point. -/
--- Match the proven toLp interface with Mathlib's local defEq transparency rule.
-set_option backward.isDefEq.respectTransparency.types false in
 theorem originalFockL2Action_ae (B : GammaMatrix) (f : FullL2 2) :
     (originalFockL2Action B f : Boson 2 → Fermion 2) =ᵐ[volume]
       (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x)) := by
@@ -39,6 +41,8 @@ theorem originalFockL2Action_ae (B : GammaMatrix) (f : FullL2 2) :
   -- elaborator reduction of the original 2^24-dimensional Fock fiber.
   unfold originalFockL2Action
   exact MemLp.coeFn_toLp (originalPointwiseFock_memLp B f)
+
+end
 
 /-- If g is any a.e.-equal representative of f, the pointwise
 original Fock image of g also belongs to L2. -/
@@ -52,10 +56,12 @@ private theorem originalPointwiseFock_memLp_of_rep
   filter_upwards [hfg] with x hx
   exact congrArg (originalNormalizedFockGramObservable x B) hx
 
+-- Pinned Mathlib scopes this transparency option around toLp_congr.
+section
+set_option backward.isDefEq.respectTransparency.types false
+
 /-- The resulting actual FullL2 class is invariant under changing
 the input representative on any null set. -/
--- Pinned Mathlib applies this same scoped elaboration option to toLp_congr.
-set_option backward.isDefEq.respectTransparency.types false in
 theorem originalFockL2Action_toLp_rep
     (B : GammaMatrix) (f : FullL2 2) (g : Boson 2 → Fermion 2)
     (hfg : (f : Boson 2 → Fermion 2) =ᵐ[volume] g) :
@@ -71,6 +77,8 @@ theorem originalFockL2Action_toLp_rep
     (by
       filter_upwards [hfg] with x hx
       exact congrArg (originalNormalizedFockGramObservable x B) hx)
+
+end
 
 /-- Representative independence, stated at the level of a.e. output
 function equality as well as equality of L2 classes. -/
