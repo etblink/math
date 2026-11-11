@@ -154,3 +154,21 @@ Never claim these proposed general transpose/adjoint identities qualified becaus
 **Candidate gate:** [strict workflow](../../.github/workflows/bfss-join0b1-original-gram-gamma-transpose-strict.yml) contains all **96 immutable accepted ancestor blobs** and two new exact source/consumer blobs, pinned cold source/consumer and allowed-axiom audits. The new source is **not qualified** until its separate new strict workflow is green. The previous [JOIN-0B preparation](BFSS_JOIN0B_TRANSPOSE_STAR_PREPARATION_AND_PROOF_DAG_2026_11_10.md) is a proof plan, not an accepted source.
 
 **After acceptance:** JOIN-0B2 general original Fock adjoint-transpose `star(Q(J))=Q(Jᵀ)` for all real J with its own source and independent skew-adjoint consumer. Then JOIN-0B3 yields pointwise actual-Fock self-adjoint `iQ(G_x(B))` for real skew B. Original color-column Kx, uniform normalized field bounds, CAR-Hilbert-Schmidt embedding, and physical `FullL2` closed-charge covariance remain independently gated.
+
+## 15. Parallel JOIN-0B2 Fock star-transpose source staged independently (2026-11-10)
+
+**Concurrent qualification:** JOIN-0B1 [strict run #42933342818](https://github.com/etblink/math/actions/runs/42933342818) was in progress when this research step was prepared. **This gate is not a parent of JOIN-0B2.** No JOIN-0B1 status is asserted here, and its original source, consumer, strict workflow, and 98-pin manifest remain unchanged.
+
+**JOIN-0B2 candidate source:** [actual original Fock quadratic star transpose](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B2OriginalFockQuadraticStarTranspose.lean), importing **only accepted BIL-0C** (thereby its exact G1A Majorana source) and proving
+```lean
+theorem originalColorQuadratic_star_transpose
+  (J : Matrix SpinIndex SpinIndex ℝ) :
+  star (originalColorQuadratic J) = originalColorQuadratic Jᵀ
+```
+for arbitrary **real** J and actual `Fermion 2 →L[ℂ] Fermion 2`. Proof chain: `pairedTheta_selfAdjoint` from genuine original G1A, pair `star` reverses source theta products, generic two-index **finite REAL weighted star** lemma with `star_sum`, `star_smul` and explicit `star (r:ℂ)=r` for real r, then `Finset.sum_comm` index swap. This identity does **not** need CAR, diagonal theta square, new Fock model or physical Hamiltonian. The pinned Mathlib `Mathlib/Algebra/Star/BigOperators.lean` explicitly supplies `star_sum`; `Mathlib/Algebra/Star/Basic.lean` supplies `star_smul`, exact Mathlib revision `d13f23b723b8a846827a245b89c10fc7d3f11612`. The prior F1B original-Fock adjoint method is a donor pattern only.
+
+**Independent B2 consumer:** [original Fock skew-adjointness](../../lean/diagnostics/BFSSJOIN0B2OriginalFockSkewAdjointConsumer.lean) verifies for all real J with `Jᵀ=-J`, `star(Q(J))=-Q(J)`. A private direct coefficient `Q(-J)=-Q(J)` lemma supplies the only extra normalization-sensitive step. This is a distinct actual Fock star assertion, not a restatement of a gauge covariance theorem.
+
+**Independent strict setup:** [JOIN-0B2 workflow](../../.github/workflows/bfss-join0b2-original-fock-star-transpose-strict.yml) includes **exactly the 96 previously accepted through JOIN-0A source+consumer blobs, plus two new B2 source+consumer blobs (98 total)**. It **intentionally excludes the pending JOIN-0B1 source/consumer from its pinned required ancestry** while leaving those files untouched on the integration branch. Hence a green B2 does **not** qualify B1 or the combined field. Its toolchain, exact source closure, separate cold source build/consumer build, warning boundaries and `#print axioms` remain strict.
+
+**Next steps:** Wait for each independent B1/B2 gate. If either red, isolate first causal diagnostic and make only a bounded source/consumer repair. Once **both are separately green**, assemble JOIN-0B3 `iQ(G_x(B))` actual Fock self-adjoint for skew B with its own independent consumer, while leaving direct color-column Kx, CAR trace, physical FullL2 and Hamiltonian spectral claims separate.

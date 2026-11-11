@@ -413,7 +413,23 @@
       "consumer_blob": "09205d8f236fc9438414cebfecaf68248f679a0a",
       "scope": "Original Gram and real gamma matrix transpose compatibility for arbitrary real 16×16 input B, plus downstream source skew-carrier preservation.",
       "caveat": "Uncompiled at current source commit; requires its own 98-pinned cold strict green; not the Fock star transpose, physical Hilbert boundedness or original BFSS spectral theorem."
+    },
+    {
+      "id": "math-join0b2-fock-star-candidate",
+      "tier": "NEW_SOURCE_CANDIDATE_NEEDS_STRICT_GATE",
+      "repo": "etblink/math",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B2OriginalFockQuadraticStarTranspose.lean",
+      "blob": "447e0cd6ed0b9d09588ff10c3833e8d639ffc416",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0B2OriginalFockSkewAdjointConsumer.lean",
+      "consumer_blob": "4abe3d0289fa9e068807bbb88de94c2893ac0093",
+      "workflow_path": ".github/workflows/bfss-join0b2-original-fock-star-transpose-strict.yml",
+      "workflow_blob": "32744286bb6b8272759dc774d3896169e96f3f08",
+      "independent_of_pending": "math-join0b1-gram-transpose-candidate",
+      "qualified_ancestor_count": 96,
+      "total_source_pins": 98,
+      "scope": "Current original Fock BIL-0C quadratic self-adjoint Majoranas yield star(Q(J))=Q(Jᵀ) for arbitrary real J, independent original skew coefficient star=- assertion; exact 96 accepted parent pins.",
+      "caveat": "Uncompiled at candidate commit; pending standalone strict gate; not dependent on current B1, not source Hamiltonian covariance, FullL2 domain, skew geometry, or BFSS spectral conclusion."
     }
   ],
-  "record_count": 34
+  "record_count": 35
 }
