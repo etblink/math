@@ -1,15 +1,14 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D2OriginalPointwiseL2Membership
 
 /-!
-# NORM-0D D1-B — genuine original FullL2 class and representative independence
+# NORM-0D D1-B — original FullL2 class and representative independence
 
-Use the accepted D1-A pointwise MemLp theorem to construct a true
-FullL2 2 class from the genuine original normalized Fock operator
-field. An independent representative changing on a null set gives
-the same L2 class, via pinned MemLp.toLp_congr.
+The accepted D1-A MemLp result is lifted to the genuine original FullL2 2
+carrier. Generic, type-parametric Lp certificates isolate the a.e.
+quotient/proof of representative independence from the large original
+2^24-dimensional Fock fiber; no surrogate Hamiltonian/model is used.
 
-This does NOT yet bundle a continuous complex-linear multiplier or
-establish original Hamiltonian/gauge-domain/spectral statements.
+A continuous complex-linear multiplier is NOT yet constructed (D2).
 -/
 set_option autoImplicit false
 
@@ -21,31 +20,46 @@ open MeasureTheory
 open FCP.BFSSNORM0COriginalNormalizedFockField
 open FCP.BFSSNORM0D2OriginalPointwiseL2Membership
 
-/-- A genuine original FullL2 2 output class, not a pointwise
-function claimed to be in L2 without the D1-A MemLp certificate. -/
+/-- Generic Lp quotient certificate: package the genuine Lp class
+with its a.e. representative law before any BFSS specialization. -/
+private noncomputable def certifiedLp
+    {α E : Type*} [MeasurableSpace α] [NormedAddCommGroup E]
+    {μ : Measure α} {p : ℝ≥0∞}
+    (q : α → E) (hq : MemLp q p μ) :
+    {u : Lp E p μ // (u : α → E) =ᵐ[μ] q} :=
+  ⟨hq.toLp q, MemLp.coeFn_toLp hq⟩
+
+/-- Generic quotient-invariance proof using only Lp.ext and a.e.
+equality; elaborated without unfolding the BFSS Fermion fiber. -/
+private theorem certifiedLp_eq_toLp_of_ae
+    {α E : Type*} [MeasurableSpace α] [NormedAddCommGroup E]
+    {μ : Measure α} {p : ℝ≥0∞}
+    (q r : α → E) (hq : MemLp q p μ) (hr : MemLp r p μ)
+    (hqr : q =ᵐ[μ] r) :
+    (certifiedLp q hq).1 = hr.toLp r := by
+  apply Lp.ext
+  exact (certifiedLp q hq).2.trans
+    (hqr.trans (MemLp.coeFn_toLp hr).symm)
+
+/-- An actual original FullL2 2 output, constructed from the
+accepted original D1-A MemLp proof via the generic certificate. -/
 noncomputable def originalFockL2Action
     (B : GammaMatrix) (f : FullL2 2) : FullL2 2 :=
-  (originalPointwiseFock_memLp B f).toLp
+  (certifiedLp
     (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x))
+    (originalPointwiseFock_memLp B f)).1
 
--- Match the pinned toLp interface under scoped definitional equality.
-section
-set_option backward.isDefEq.respectTransparency.types false
-
-/-- The L2 class has the source-original operator action almost
-everywhere, not at every representative point. -/
+/-- The original output class agrees a.e. with genuine original
+pointwise normalized Fock multiplication. -/
 theorem originalFockL2Action_ae (B : GammaMatrix) (f : FullL2 2) :
     (originalFockL2Action B f : Boson 2 → Fermion 2) =ᵐ[volume]
       (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x)) := by
-  -- Normalize only the newly defined wrapper, avoiding full
-  -- elaborator reduction of the original 2^24-dimensional Fock fiber.
-  unfold originalFockL2Action
-  exact MemLp.coeFn_toLp (originalPointwiseFock_memLp B f)
+  exact (certifiedLp
+    (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x))
+    (originalPointwiseFock_memLp B f)).2
 
-end
-
-/-- If g is any a.e.-equal representative of f, the pointwise
-original Fock image of g also belongs to L2. -/
+/-- Every a.e.-equal representative of f retains the original
+pointwise Fock image's L2 membership. -/
 private theorem originalPointwiseFock_memLp_of_rep
     (B : GammaMatrix) (f : FullL2 2) (g : Boson 2 → Fermion 2)
     (hfg : (f : Boson 2 → Fermion 2) =ᵐ[volume] g) :
@@ -56,32 +70,24 @@ private theorem originalPointwiseFock_memLp_of_rep
   filter_upwards [hfg] with x hx
   exact congrArg (originalNormalizedFockGramObservable x B) hx
 
--- Pinned Mathlib scopes this transparency option around toLp_congr.
-section
-set_option backward.isDefEq.respectTransparency.types false
-
-/-- The resulting actual FullL2 class is invariant under changing
-the input representative on any null set. -/
+/-- The actual original FullL2 output is unchanged when its input
+representative is changed on a null set. -/
 theorem originalFockL2Action_toLp_rep
     (B : GammaMatrix) (f : FullL2 2) (g : Boson 2 → Fermion 2)
     (hfg : (f : Boson 2 → Fermion 2) =ᵐ[volume] g) :
     originalFockL2Action B f =
       (originalPointwiseFock_memLp_of_rep B f g hfg).toLp
         (fun x : Boson 2 => originalNormalizedFockGramObservable x B (g x)) := by
-  -- Explicitly expose the exact MemLp.toLp form before applying
-  -- the pinned representative-independence theorem.
-  unfold originalFockL2Action
-  exact MemLp.toLp_congr
+  exact certifiedLp_eq_toLp_of_ae
+    (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x))
+    (fun x : Boson 2 => originalNormalizedFockGramObservable x B (g x))
     (originalPointwiseFock_memLp B f)
     (originalPointwiseFock_memLp_of_rep B f g hfg)
     (by
       filter_upwards [hfg] with x hx
       exact congrArg (originalNormalizedFockGramObservable x B) hx)
 
-end
-
-/-- Representative independence, stated at the level of a.e. output
-function equality as well as equality of L2 classes. -/
+/-- Representative independence at the a.e.-output level. -/
 theorem originalFockL2Action_ae_of_rep
     (B : GammaMatrix) (f : FullL2 2) (g : Boson 2 → Fermion 2)
     (hfg : (f : Boson 2 → Fermion 2) =ᵐ[volume] g) :
