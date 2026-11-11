@@ -4,7 +4,7 @@
   "snapshot_branch": "integration/bfss-unified-research-20261108",
   "snapshot_start_sha": "4f4b5594d220480d776a43cc148f37ac34443070",
   "scope": "Dated source-evidence index, not a new Lean qualification or comprehensive proof inventory.",
-  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate. VLY-0B independently qualified at #42926845593; JOIN-0A remains a separately staged current-source candidate. JOIN-0A accepted as separate exact-commit 96-pin green; JOIN-0B1 strict transpose source/consumer is new candidate.",
+  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate. VLY-0B independently qualified at #42926845593; JOIN-0A remains a separately staged current-source candidate. JOIN-0A accepted as separate exact-commit 96-pin green; JOIN-0B1 strict transpose source/consumer is new candidate. B1 has distinct exact-commit strict-green 98 pin receipt. B2 second strict red occurred only in consumer, with source compilation clean but gate not accepted.",
   "records": [
     {
       "id": "fcp-d2b22-normalized-energy",
@@ -463,7 +463,37 @@
       "repaired_workflow_blob": "080736790fae83b4760f6aa6c66fe4f9045fffd0",
       "scope": "Strict 98 pin preflight and Lean toolchain passed; source build failed at two simp no-progress star-sum steps and Jᵀ parser error. Repair uses explicit Mathlib star_sum, Matrix notation and bounded finite-sum reindex. 97 prior pins unchanged.",
       "caveat": "New repaired B2 is not Lean qualified until fresh strict success. Consumer never reached on red. Independent B1 currently under separate repair verification and is untouched."
+    },
+    {
+      "id": "math-join0b1-qualified",
+      "tier": "STRICT_GREEN_AT_EXACT_COMMIT",
+      "repo": "etblink/math",
+      "run": 42934871831,
+      "job_id": 130242326360,
+      "commit": "ed2fdce6b311fce7cabf766c6c9b06d26ce080b0",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B1OriginalGramGammaTranspose.lean",
+      "blob": "4070cbb2b8e6538bb5c328651f8df5a2c77a4bf5",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0B1OriginalGramGammaSkewConsumer.lean",
+      "consumer_blob": "09205d8f236fc9438414cebfecaf68248f679a0a",
+      "scope": "Source original Gram-gamma transpose compatibility and independent skew carrier preservation; 98 blob strict source and consumer green",
+      "caveat": "Does not prove separate Fock star, combined self-adjointness or physical Hamiltonian eigenspace"
+    },
+    {
+      "id": "math-join0b2-second-red-consumer-only",
+      "tier": "RED_CONSUMER_ONLY_SOURCE_COMPILED_REPAIR_PENDING",
+      "repo": "etblink/math",
+      "run": 42936821963,
+      "job_id": 130248834288,
+      "commit": "36db287895fcf0c7da93b29cdef45b2a54dcfb45",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B2OriginalFockQuadraticStarTranspose.lean",
+      "blob": "4c96a53f494ab0bd9891b686510aa59ea4e14044",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0B2OriginalFockSkewAdjointConsumer.lean",
+      "consumer_blob": "4abe3d0289fa9e068807bbb88de94c2893ac0093",
+      "repaired_consumer_blob": "15c890aece6ad0b326c61b24005184e906f245a0",
+      "repaired_workflow_blob": "44cb4e832e2050b8dc47778d5f7e1facae26787a",
+      "scope": "New source original ColorQuadratic star-transpose cold compiled with only allowed axioms, full gate red in independent skew consumer proof Q(-J)=-Q(J) due absent neg_smul rewrite, unused Finset.sum_neg_distrib argument; one-line consumer repair staged.",
+      "caveat": "Full B2 gate remains red and must pass new cold source+consumer and axiom audit. No alteration to accepted B1 source and 96 accepted B2 parent blobs."
     }
   ],
-  "record_count": 37
+  "record_count": 39
 }
