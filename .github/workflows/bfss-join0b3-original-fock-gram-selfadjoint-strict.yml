@@ -141,7 +141,7 @@ jobs:
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B1OriginalGramGammaTranspose.lean":"4070cbb2b8e6538bb5c328651f8df5a2c77a4bf5",
             "lean/diagnostics/BFSSJOIN0B1OriginalGramGammaSkewConsumer.lean":"09205d8f236fc9438414cebfecaf68248f679a0a",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B3OriginalFockGramStarTranspose.lean":"ecb6ab7935b0f46c1813aad2230cdd8ea0250d9a",
-            "lean/diagnostics/BFSSJOIN0B3OriginalFockGramSelfAdjointConsumer.lean":"76eb1788cae1cb24b38059f41fc3a0ed54f9f3a7"
+            "lean/diagnostics/BFSSJOIN0B3OriginalFockGramSelfAdjointConsumer.lean":"99ebef817b33dc56ef04e38c8b716ceb8d84f491"
           }
           assert len(pins)==102
           for path,expected in pins.items():
@@ -155,9 +155,7 @@ jobs:
             "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSJOIN0B2OriginalFockQuadraticStarTranspose"
           ]
           assert re.findall(r"(?m)^import (\S+)$",consumer)==[
-            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSJOIN0B3OriginalFockGramStarTranspose",
-            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSJOIN0B1OriginalGramGammaSkewConsumer",
-            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSJOIN0B2OriginalFockSkewAdjointConsumer"
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSJOIN0B3OriginalFockGramStarTranspose"
           ]
           assert re.findall(r"(?m)^#print axioms (\S+)$",source)==[
             "originalFockGramObservable_star_transpose"
