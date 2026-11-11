@@ -20,18 +20,17 @@ noncomputable section
 open scoped BigOperators
 open Matrix Finset
 open OAI.BFSSQuantum
+open OAI.BFSSQuantum.AlgebraData
 open FCP.BFSSSU2GaugeG1A
 open FCP.BFSSVLY0AOriginalBosonGramGaugeInvariant
 open FCP.BFSSVLY0BOriginalGramGammaCoefficient
-
-private abbrev M : AlgebraData 2 := pairedAlgebraData
 
 /-- The actual real nine-spatial Gram matrix is symmetric. -/
 private theorem originalSpatialGram_swap
     (x : Boson 2) (i j : SpaceIndex) :
     originalSpatialGram x i j = originalSpatialGram x j i := by
-  change inner ℝ (M.spatialColor x i) (M.spatialColor x j) =
-    inner ℝ (M.spatialColor x j) (M.spatialColor x i)
+  change inner ℝ (spatialColor x i) (spatialColor x j) =
+    inner ℝ (spatialColor x j) (spatialColor x i)
   exact real_inner_comm _ _
 
 /-- Real source Clifford gamma symmetry in the matrix-transpose form. -/
