@@ -132,3 +132,15 @@ This is the pointwise genuine G2A boson plus G4E Fock gauge covariance predicted
 **Qualification requirements:** Separate `bfss-join0a-original-boson-fock-gauge-strict.yml` must freeze all 94 accepted prior Git blobs plus exactly two new JOIN source/consumer blobs, cold pinned build, strict warning controls and printed-axiom audit. **Do not promote JOIN-0A from historical source equivalences or this commit; wait for its own green.** The research-only memo/ledger commit `469b2fe2fef0860e6e54e42963edb3e845a6705b` is an accepted tree ancestor but did not modify any qualified source files.
 
 **Next after green:** JOIN-0B1 real skew preservation; JOIN-0B2 true Fock star/self-adjointness; VLY-0B2 source normalized `K_x` color expansion and independent Frobenius bound; CAR-TRACE-0 faithful 120-dimensional skew-to-Fock Hilbert-Schmidt embedding. Keep the physical `FullL2` gauge-fixed multiplier and all source supercharge-domain/physical spectra as separate later theorems.
+
+## 13. Prepared JOIN-0B stronger source theorem DAG — while JOIN-0A pending (2026-11-10)
+
+See [the exact-source JOIN-0B transpose/star memorandum](BFSS_JOIN0B_TRANSPOSE_STAR_PREPARATION_AND_PROOF_DAG_2026_11_10.md) for checked Lean API paths, donor proof tactics, independent consumers, and stop conditions. No JOIN-0A strict run was polled or modified during this preparation.
+
+**Recommended after JOIN-0A green:**
+- JOIN-0B1: `(G_x(B))ᵀ = G_x(Bᵀ)` for arbitrary real source 16×16 B; independent consumer skew preservation for Bᵀ = -B.
+- JOIN-0B2: `star(Q(J)) = Q(Jᵀ)` for arbitrary real source spinor-matrix J on **actual original Fermion2**; independent consumer skew adjointness / `iQ(J)` self-adjointness. The general star identity only requires true G1A self-adjoint theta, not CAR.
+- JOIN-0B3: combine both to make the source-typed pointwise observable `iQ(G_x(B))` self-adjoint for skew B. Distinct future physical FullL2 multiplication and source charge/domain theorem.
+- NORM-0 / CAR-TRACE-0 remain separate original source potential/finite-dimensional trace contracts.
+
+Never claim these proposed general transpose/adjoint identities qualified because VLY-0B and BIL-0C are green. Independent new cold Lean gate, source/consumer hashes and standard axiom check required for each.
