@@ -1,0 +1,124 @@
+name: BFSS NORM0D D0-A original Gram continuity microgate
+
+'on':
+  push:
+    branches: [research/bfss-norm0d-d0-continuity-20261111]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D0OriginalGramContinuity.lean
+      - lean/diagnostics/BFSSNORM0D0OriginalGramContinuityConsumer.lean
+      - .github/workflows/bfss-norm0d-d0-original-gram-continuity-microgate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-norm0d-d0-gram-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-spatial-gram-continuity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout pinned source and candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify original 108-blob acceptance boundary and microgate declarations
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-norm0d-d0a"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/environment-sha256.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re,subprocess
+          original = Path(".github/workflows/bfss-norm0c-original-normalized-fock-field-strict.yml")
+          def blob(path):
+              return subprocess.check_output(["git","hash-object","--no-filters",str(path)],text=True).strip()
+          assert blob(original) == "29b5e76730dd894c0c953d1c9ff17d9f4521bc7e"
+          pins = re.findall(r'(?m)^\s*"([^"]+)":"([0-9a-f]{40})",?$',original.read_text())
+          assert len(pins)==108 and len(set(path for path,_ in pins))==108
+          for path,expected in pins:
+              assert blob(path)==expected,(path,expected,blob(path))
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in pkgs if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          source_path=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D0OriginalGramContinuity.lean")
+          consumer_path=Path("lean/diagnostics/BFSSNORM0D0OriginalGramContinuityConsumer.lean")
+          source=source_path.read_text()
+          consumer=consumer_path.read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0AOriginalGramTraceBound"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D0OriginalGramContinuity"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==[
+              "originalSpatialGram_continuous","originalGramTrace_continuous"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
+              "FCP.BFSSNORM0D0OriginalGramContinuity.originalSpatialGram_continuous",
+              "FCP.BFSSNORM0D0OriginalGramContinuity.originalGramTrace_continuous",
+              "originalGramTrace_one_add_continuous","originalGramTrace_one_add_pos"]
+          for body in (source,consumer):
+              assert "set_option autoImplicit false" in body
+              assert "maxRecDepth" not in body and "maxHeartbeats" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
+          print("NORM0D_D0A_108_PARENT_PINS_PASS")
+          print("candidate source:",blob(source_path))
+          print("candidate consumer:",blob(consumer_path))
+          PY
+          git hash-object --no-filters "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D0OriginalGramContinuity.lean" "lean/diagnostics/BFSSNORM0D0OriginalGramContinuityConsumer.lean" | tee "$evidence/candidate-git-blobs.txt"
+      - name: Restore exact Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1700s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Compile original D0-A source and independent consumer with strict axioms
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-norm0d-d0a"
+          timeout 1600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D0OriginalGramContinuity \
+            2>&1 | tee "$evidence/source-build.log"
+          timeout 320s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSNORM0D0OriginalGramContinuityConsumer.lean \
+            2>&1 | tee "$evidence/consumer-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          log=(Path(os.environ["RUNNER_TEMP"])/"bfss-norm0d-d0a"/"consumer-axioms.log").read_text()
+          for forbidden in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+              assert forbidden not in log,(forbidden,log[-4000:])
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          warnings=[line for line in log.splitlines() if "warning:" in line and not pkg_warning.fullmatch(line)]
+          assert not warnings,("unexpected diagnostics",warnings[:10])
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+          roots=[
+            "FCP.BFSSNORM0D0OriginalGramContinuity.originalSpatialGram_continuous",
+            "FCP.BFSSNORM0D0OriginalGramContinuity.originalGramTrace_continuous",
+            "FCP.BFSSNORM0D0OriginalGramContinuityConsumer.originalGramTrace_one_add_continuous",
+            "FCP.BFSSNORM0D0OriginalGramContinuityConsumer.originalGramTrace_one_add_pos"]
+          assert [name for name,_ in reports]==roots,(reports,roots)
+          allowed={"propext","Classical.choice","Quot.sound"}
+          assert all({a.strip() for a in raw.split(",") if a.strip()}<=allowed for _,raw in reports),reports
+          print("NORM0D_D0A_ORIGINAL_GRAM_CONTINUITY_MICROGATE_PASS")
+          PY
+      - name: Preserve D0-A candidate and diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-norm0d-d0a-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-norm0d-d0a/
+          retention-days: 14
