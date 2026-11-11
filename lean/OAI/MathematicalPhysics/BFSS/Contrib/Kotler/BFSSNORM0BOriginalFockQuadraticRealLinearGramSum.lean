@@ -73,8 +73,14 @@ theorem originalColorQuadratic_real_smul
 to the zero original bounded operator. -/
 theorem originalColorQuadratic_zero :
     originalColorQuadratic (0 : GammaMatrix) = 0 := by
-  simpa only [zero_smul, Complex.ofReal_zero] using
-    (originalColorQuadratic_real_smul (0 : ℝ) (0 : GammaMatrix))
+  have h :
+      originalColorQuadratic (0 : GammaMatrix) +
+        (0 : Fermion 2 →L[ℂ] Fermion 2) =
+      originalColorQuadratic (0 : GammaMatrix) +
+        originalColorQuadratic (0 : GammaMatrix) := by
+    simpa only [add_zero] using
+      (originalColorQuadratic_add (0 : GammaMatrix) (0 : GammaMatrix))
+  exact (add_left_cancel h).symm
 
 /-- Finite real-matrix sums can be transported through the literal
 original Fock quadratic without choosing an auxiliary representation. -/
