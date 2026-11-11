@@ -4,7 +4,7 @@
   "snapshot_branch": "integration/bfss-unified-research-20261108",
   "snapshot_start_sha": "4f4b5594d220480d776a43cc148f37ac34443070",
   "scope": "Dated source-evidence index, not a new Lean qualification or comprehensive proof inventory.",
-  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate. VLY-0B independently qualified at #42926845593; JOIN-0A remains a separately staged current-source candidate. JOIN-0A accepted as separate exact-commit 96-pin green; JOIN-0B1 strict transpose source/consumer is new candidate. B1 has distinct exact-commit strict-green 98 pin receipt. B2 second strict red occurred only in consumer, with source compilation clean but gate not accepted.",
+  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate. VLY-0B independently qualified at #42926845593; JOIN-0A remains a separately staged current-source candidate. JOIN-0A accepted as separate exact-commit 96-pin green; JOIN-0B1 strict transpose source/consumer is new candidate. B1 has distinct exact-commit strict-green 98 pin receipt. B2 second strict red occurred only in consumer, with source compilation clean but gate not accepted. B2 strict-green at #42947348625, 98 pins; B3 separate 102-pin source/consumer candidate only.",
   "records": [
     {
       "id": "fcp-d2b22-normalized-energy",
@@ -583,7 +583,36 @@
       "repaired_workflow_blob": "53819705ce555a934a7fe70e3579cd2ffb2ee099",
       "scope": "Sixth B2 red 98-pin/toolchain and original source clean, independent consumer error only at underdetermined neg_smul placeholders on actual Fock operator. Earlier inner and outer sum rewrites no longer fail. Explicitly type-instantiate scalar and original Fock operator for neg_smul.",
       "caveat": "No full B2 qualification; fresh strict consumer and standard axiom green required. Qualified B1 and original B2 source unchanged; B3 still preparation."
+    },
+    {
+      "id": "math-join0b2-qualified",
+      "tier": "STRICT_GREEN_AT_EXACT_COMMIT",
+      "repo": "etblink/math",
+      "run": 42947348625,
+      "job_id": 130283212660,
+      "commit": "9e6bee9cd6f260d12435f60b65cfe37bc6c9ada3",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B2OriginalFockQuadraticStarTranspose.lean",
+      "blob": "4c96a53f494ab0bd9891b686510aa59ea4e14044",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0B2OriginalFockSkewAdjointConsumer.lean",
+      "consumer_blob": "1a2e9fd33c75c80c52cd028d44e02c87c474b18c",
+      "scope": "General true original Fermion2 Fock Hilbert star(Q(J))=Q(Jᵀ) for arbitrary real source matrix J; independently qualified skew-adjoint Fock consumer; full 98-pin cold source/consumer and axiom checks green.",
+      "caveat": "Not original FullL2 multiplier, Hamiltonian/supercharge domain, Fock spectral result or source skew geometry proof."
+    },
+    {
+      "id": "math-join0b3-star-selfadjoint-candidate",
+      "tier": "NEW_SOURCE_CANDIDATE_NEEDS_STRICT_GATE",
+      "repo": "etblink/math",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B3OriginalFockGramStarTranspose.lean",
+      "blob": "ecb6ab7935b0f46c1813aad2230cdd8ea0250d9a",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0B3OriginalFockGramSelfAdjointConsumer.lean",
+      "consumer_blob": "76eb1788cae1cb24b38059f41fc3a0ed54f9f3a7",
+      "workflow_path": ".github/workflows/bfss-join0b3-original-fock-gram-selfadjoint-strict.yml",
+      "workflow_blob": "2357c77080be3234c470afbe162cde5d470bae83",
+      "qualified_ancestor_count": 100,
+      "total_pins": 102,
+      "scope": "Source-typed original observable star(O_x(B))=O_x(Bᵀ) for arbitrary real GammaMatrix B and genuine Boson2/Fermion2; independent consumer imports already qualified B1/B2 skew consumers to prove genuine pointwise IsSelfAdjoint (i • O_x(B)) for skew B.",
+      "caveat": "Uncompiled until own strict source and consumer green; no original FullL2 uniform bound, closed Hamiltonian domains, spectra or mass gap."
     }
   ],
-  "record_count": 44
+  "record_count": 46
 }
