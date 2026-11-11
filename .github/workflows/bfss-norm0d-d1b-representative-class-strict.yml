@@ -1,0 +1,151 @@
+name: BFSS NORM0D D1-B original representative class strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3DOriginalFockRepresentativeTransport.lean
+      - lean/diagnostics/BFSSNORM0D3DOriginalFockRepresentativeTransportConsumer.lean
+      - .github/workflows/bfss-norm0d-d1b-representative-class-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-norm0d-d1b-class-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-fock-representative-class:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact source and consumer
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify 118 accepted NORM0C-D1A-bridge-direct roots and 2 new representative candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/bfss-norm0d-d1b-class"
+          mkdir -p "$evidence"
+          git rev-parse HEAD | tee "$evidence/tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$evidence/environment-sha256.txt"
+          test "$(cat lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          python3 - <<'PY'
+          import json,re,subprocess
+          from pathlib import Path
+          def blob(path):
+              return subprocess.check_output(["git","hash-object","--no-filters",str(path)],text=True).strip()
+          parent_manifest=Path(".github/workflows/bfss-norm0c-original-normalized-fock-field-strict.yml")
+          assert blob(parent_manifest)=="29b5e76730dd894c0c953d1c9ff17d9f4521bc7e"
+          parent_pins=re.findall(r'(?m)^\s*"([^"]+)":"([0-9a-f]{40})",?$',parent_manifest.read_text())
+          assert len(parent_pins)==108
+          assert len({path for path,_ in parent_pins})==108
+          accepted_bridge_pins={
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D0OriginalGramContinuity.lean":"c5c7f6b966766188bed0bbd9334607e5316c7e20",
+              "lean/diagnostics/BFSSNORM0D0OriginalGramContinuityConsumer.lean":"fee6ee8ed7e24aad4bdab3380750cb452ed05181",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D1OriginalFockFieldContinuity.lean":"7cd3197dbef31af0fb25d8a47c41e037d8162f4e",
+              "lean/diagnostics/BFSSNORM0D1OriginalFockFieldContinuityConsumer.lean":"37353573501efaecc795fca6dbfc8e7b4e9f08bc",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D2OriginalPointwiseL2Membership.lean":"597c1e771b2bf0c366a354fcc991a5b77a71ff9f",
+              "lean/diagnostics/BFSSNORM0D2OriginalPointwiseL2MembershipConsumer.lean":"1b0579ddb1421288a665971437f82c06406d759a",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3AOriginalLpCarrierBridge.lean":"3fc16b042fe51f1e1a8c52260d5bba5135831ffc",
+              "lean/diagnostics/BFSSNORM0D3AOriginalLpCarrierBridgeConsumer.lean":"a445abcc4e363d956ec9935f13150fde56d1cd9a",
+          }
+          assert len(accepted_bridge_pins)==8
+          assert not set(accepted_bridge_pins)&{path for path,_ in parent_pins}
+          assert blob(".github/workflows/bfss-norm0d-d1b-carrier-bridge-strict.yml")=="e8418f4416a3be52192a4f6d7e2f3e4d2c5160e0"
+          assert blob(".github/workflows/bfss-norm0d-d1b-direct-fock-lp-strict.yml")=="1acebc200eedd8737bb659da5189f3fe7d833697"
+          direct_pins={
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3CDirectOriginalFockLpOutput.lean":"bd9146fe825b4675bfb62f772bc02f83e204d30b",
+              "lean/diagnostics/BFSSNORM0D3CDirectOriginalFockLpOutputConsumer.lean":"21539bc0475e32bac6584b8284fba319e880e81a",
+          }
+          assert len(direct_pins)==2
+          assert not set(direct_pins)&({path for path,_ in parent_pins}|set(accepted_bridge_pins))
+          new_pins={
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3DOriginalFockRepresentativeTransport.lean":"cb16f081fb1dbff0f149e94b39145d3ea2dec58b",
+              "lean/diagnostics/BFSSNORM0D3DOriginalFockRepresentativeTransportConsumer.lean":"acc8813fede0c09cee72302a4305a5849dc98852",
+          }
+          assert len(new_pins)==2
+          assert not set(new_pins)&({path for path,_ in parent_pins}|set(accepted_bridge_pins)|set(direct_pins))
+          for path,expected in parent_pins+list(accepted_bridge_pins.items())+list(direct_pins.items())+list(new_pins.items()):
+              actual=blob(path)
+              assert actual==expected,(path,expected,actual)
+          assert blob(".github/workflows/bfss-norm0d-d0-original-gram-continuity-microgate.yml")=="e677ffd5557937a0103ad50682af1d157fa28eaf"
+          assert blob(".github/workflows/bfss-norm0d-d0b-original-fock-field-continuity-strict.yml")=="4841955cdb744f4d8a6a5d6b50760dc13a5dad8c"
+          assert blob(".github/workflows/bfss-norm0d-d1a-original-pointwise-l2-memlp-strict.yml")=="ff3d074005a3940450d417a37e9049b7a45965a5"
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in pkgs if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3DOriginalFockRepresentativeTransport.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSNORM0D3DOriginalFockRepresentativeTransportConsumer.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D3CDirectOriginalFockLpOutput"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D3DOriginalFockRepresentativeTransport"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==[
+              "originalFockImage_ae_of_rep",
+              "originalFockImage_memLp_of_rep"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[
+              "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_ae_of_rep",
+              "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_memLp_of_rep",
+              "originalFockLpDirect_class_eq_of_rep"]
+          for body in (source,consumer):
+              assert "set_option autoImplicit false" in body
+              assert "maxRecDepth" not in body and "maxHeartbeats" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
+          print("NORM0D_D1B_REP_ORIGINAL_120_BLOB_CLOSURE_PASS")
+          PY
+          git hash-object --no-filters "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3DOriginalFockRepresentativeTransport.lean" "lean/diagnostics/BFSSNORM0D3DOriginalFockRepresentativeTransportConsumer.lean" | tee "$evidence/new-git-blobs.txt"
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1700s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Cold Fock-image representative transport and original L2 class consumer
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          evidence="$RUNNER_TEMP/bfss-norm0d-d1b-class"
+          timeout 1600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNORM0D3DOriginalFockRepresentativeTransport \
+            2>&1 | tee "$evidence/source-build.log"
+          timeout 320s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSNORM0D3DOriginalFockRepresentativeTransportConsumer.lean \
+            2>&1 | tee "$evidence/consumer-axioms.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          log=(Path(os.environ["RUNNER_TEMP"])/"bfss-norm0d-d1b-class"/"consumer-axioms.log").read_text()
+          for bad in ("error:","sorryAx","Lean.ofReduceBool","unknownIdentifier"):
+              assert bad not in log,(bad,log[-4000:])
+          pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          warnings=[line for line in log.splitlines() if "warning:" in line and not pkg_warning.fullmatch(line)]
+          assert not warnings,("unexpected warnings",warnings[:10])
+          roots=[
+              "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_ae_of_rep",
+              "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_memLp_of_rep",
+              "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransportConsumer.originalFockLpDirect_class_eq_of_rep"]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+          assert [name for name,_ in reports]==roots,(reports,roots)
+          allowed={"propext","Classical.choice","Quot.sound"}
+          assert all({a.strip() for a in raw.split(",") if a.strip()}<=allowed for _,raw in reports),reports
+          print("NORM0D_D1B_ORIGINAL_REPRESENTATIVE_CLASS_STRICT_PASS")
+          PY
+      - name: Save original Fock representative-class receipts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-norm0d-d1b-class-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-norm0d-d1b-class/
+          retention-days: 14
