@@ -23,9 +23,31 @@ quadratic operator, not an unproved generic Fock representation. -/
 private theorem originalColorQuadratic_neg
     (J : Matrix SpinIndex SpinIndex ℝ) :
     originalColorQuadratic (-J) = -originalColorQuadratic J := by
-  unfold originalColorQuadratic
-  simp only [Matrix.neg_apply, Complex.ofReal_neg, neg_smul,
-    Finset.sum_neg_distrib]
+  let F : SpinIndex → SpinIndex →
+      (Fermion 2 →L[ℂ] Fermion 2) :=
+    fun α β => ∑ A : ColorIndex 2,
+      FCP.BFSSSU2GaugeG1A.pairedTheta α A *
+      FCP.BFSSSU2GaugeG1A.pairedTheta β A
+  change (∑ α : SpinIndex, ∑ β : SpinIndex,
+      (((-J) α β : ℝ) : ℂ) • F α β) =
+    -(∑ α : SpinIndex, ∑ β : SpinIndex,
+      ((J α β : ℝ) : ℂ) • F α β)
+  calc
+    _ = ∑ α : SpinIndex, ∑ β : SpinIndex,
+          -(((J α β : ℝ) : ℂ) • F α β) := by
+      apply Finset.sum_congr rfl
+      intro α _
+      apply Finset.sum_congr rfl
+      intro β _
+      rw [Matrix.neg_apply, Complex.ofReal_neg, neg_smul]
+    _ = ∑ α : SpinIndex, -(∑ β : SpinIndex,
+          ((J α β : ℝ) : ℂ) • F α β) := by
+      apply Finset.sum_congr rfl
+      intro α _
+      exact Finset.sum_neg_distrib
+    _ = -(∑ α : SpinIndex, ∑ β : SpinIndex,
+          ((J α β : ℝ) : ℂ) • F α β) := by
+      exact Finset.sum_neg_distrib
 
 theorem originalColorQuadratic_skewAdjoint
     (J : Matrix SpinIndex SpinIndex ℝ) (hJ : Jᵀ = -J) :

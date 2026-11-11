@@ -529,7 +529,25 @@
       "repair_workflow_blob": "90748a124637139d3aae273b2b4a7a6a58f85f36",
       "scope": "Third independent B2 strict red on same consumer nested-sum negative goal; source compiled with standard-only axioms, original 98 pins and toolchain green. New consumer-only proof tactic explicitly uses Matrix.neg_apply, Complex.ofReal_neg, neg_smul and Finset.sum_neg_distrib.",
       "caveat": "This is candidate proof engineering, NOT a strict-green B2 result. B1 remains accepted and B3 remains documentation-only. No changes to source B2 theorem or original BFSS operators."
+    },
+    {
+      "id": "math-join0b2-fourth-red-explicit-calc",
+      "tier": "RED_CONSUMER_ONLY_SOURCE_COMPILED_REPAIR_PENDING",
+      "repo": "etblink/math",
+      "run": 42941303867,
+      "job_id": 130263501156,
+      "commit": "cdb5ee9e91b967af1e34cec0c70c3a232c579662",
+      "artifact_id": 13821262572,
+      "artifact_sha256": "229a79a3f70adfd9c682321f5165ecba2cf0cc03328a6667daaf7300c59fe606",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0B2OriginalFockQuadraticStarTranspose.lean",
+      "source_blob": "4c96a53f494ab0bd9891b686510aa59ea4e14044",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0B2OriginalFockSkewAdjointConsumer.lean",
+      "failed_consumer_blob": "cb1db73c004998b114b02f457a182a3b05809a20",
+      "repair_consumer_blob": "e57ee70a6fa6e320b18fe80bcfa815e479748143",
+      "repair_workflow_blob": "db64e531d2fa91b7f3b8400f64afe1a670e93ac7",
+      "scope": "Fourth red: 98 source pins green, unrestricted real coefficient source star-transpose theorem compiled with allowed axioms. Independent consumer negative nested sums fail again; unused neg_smul and sum_neg_distrib simp arguments. Change architecture to explicit local Fock operator family and three-stage calc with entrywise rewrite plus two sum_neg_distrib equalities.",
+      "caveat": "No strict B2 success until its independent consumer and axiom audit pass. Repair is staged not Lean compiled. Qualified B1 and original source unchanged; B3 only proposed."
     }
   ],
-  "record_count": 41
+  "record_count": 42
 }
