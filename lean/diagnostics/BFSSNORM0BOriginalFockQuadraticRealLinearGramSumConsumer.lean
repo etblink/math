@@ -26,7 +26,8 @@ theorem originalColorQuadratic_neg_from_real_smul
     (J : GammaMatrix) :
     originalColorQuadratic (-J) =
       -originalColorQuadratic J := by
-  simpa using originalColorQuadratic_real_smul (-1 : ℝ) J
+  simpa only [Complex.ofReal_neg, Complex.ofReal_one, neg_one_smul] using
+    (originalColorQuadratic_real_smul (-1 : ℝ) J)
 
 /-- The new 81-term source decomposition correctly vanishes for a
 zero real source spinor coefficient matrix on true Fermion 2. -/
@@ -34,7 +35,12 @@ theorem originalFockGramObservable_zero_B
     (x : Boson 2) :
     originalFockGramObservable x (0 : GammaMatrix) = 0 := by
   rw [originalFockGramObservable_sum]
-  simp [originalColorQuadratic_zero]
+  simp only [mul_zero, zero_mul, originalColorQuadratic_zero]
+  apply Finset.sum_eq_zero
+  intro i _
+  apply Finset.sum_eq_zero
+  intro j _
+  exact smul_zero ((originalSpatialGram x i j : ℝ) : ℂ)
 
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_add
 #print axioms FCP.BFSSNORM0BOriginalFockQuadraticRealLinearGramSum.originalColorQuadratic_real_smul
