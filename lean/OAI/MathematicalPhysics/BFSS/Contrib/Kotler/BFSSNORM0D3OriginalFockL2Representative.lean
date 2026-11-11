@@ -32,8 +32,11 @@ noncomputable def originalFockL2Action
 everywhere, not at every representative point. -/
 theorem originalFockL2Action_ae (B : GammaMatrix) (f : FullL2 2) :
     (originalFockL2Action B f : Boson 2 → Fermion 2) =ᵐ[volume]
-      (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x)) :=
-  MemLp.coeFn_toLp (originalPointwiseFock_memLp B f)
+      (fun x : Boson 2 => originalNormalizedFockGramObservable x B (f x)) := by
+  -- Normalize only the newly defined wrapper, avoiding full
+  -- elaborator reduction of the original 2^24-dimensional Fock fiber.
+  unfold originalFockL2Action
+  exact MemLp.coeFn_toLp (originalPointwiseFock_memLp B f)
 
 /-- If g is any a.e.-equal representative of f, the pointwise
 original Fock image of g also belongs to L2. -/
@@ -55,6 +58,9 @@ theorem originalFockL2Action_toLp_rep
     originalFockL2Action B f =
       (originalPointwiseFock_memLp_of_rep B f g hfg).toLp
         (fun x : Boson 2 => originalNormalizedFockGramObservable x B (g x)) := by
+  -- Explicitly expose the exact MemLp.toLp form before applying
+  -- the pinned representative-independence theorem.
+  unfold originalFockL2Action
   exact MemLp.toLp_congr
     (originalPointwiseFock_memLp B f)
     (originalPointwiseFock_memLp_of_rep B f g hfg)
