@@ -4,7 +4,7 @@
   "snapshot_branch": "integration/bfss-unified-research-20261108",
   "snapshot_start_sha": "4f4b5594d220480d776a43cc148f37ac34443070",
   "scope": "Dated source-evidence index, not a new Lean qualification or comprehensive proof inventory.",
-  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate.",
+  "warning": "Historical CI qualification is tied to its exact run and source; current-tree imports, refactors, and independently typed consumers require their own qualification. Repair run was deliberately not polled. Historical BIL-0A red and corrected green are separate records; newly staged BIL-0B is candidate-only. BIL-0B has an independent strict-green receipt, BIL-0C is a separate candidate. VLY-0B independently qualified at #42926845593; JOIN-0A remains a separately staged current-source candidate.",
   "records": [
     {
       "id": "fcp-d2b22-normalized-energy",
@@ -348,7 +348,32 @@
       ],
       "scope": "Algebraically derive symmetric Q scalar-collapse, skew coefficient/genuine Fock self-adjointness, source Gram/Kx Frobenius and normalized Fock uniform bounds, plus prospective scaled Hilbert-Schmidt isometry on 120 skew coefficients; propose JOIN0 proof DAG without direct Kx expansion",
       "caveat": "12 gamma integer tests plus six-Majorana CAR toy; not Lean-qualified, full 48-Majorana trace pairing not independently computed, VLY0B running during research, no physical FullL2 multiplier or Hamiltonian spectral theorem"
+    },
+    {
+      "id": "math-vly0b-qualified",
+      "tier": "STRICT_GREEN_AT_EXACT_COMMIT",
+      "repo": "etblink/math",
+      "run": 42926845593,
+      "job_id": 130215369682,
+      "commit": "feae0ee52eecaa3c5e496cf62582d6b9ae28e590",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSVLY0BOriginalGramGammaCoefficient.lean",
+      "blob": "e495f780f9ac382ac1e076ef20fa68b33c38f1cd",
+      "consumer_path": "lean/diagnostics/BFSSVLY0BOriginalGramGammaTraceConsumer.lean",
+      "consumer_blob": "ed7c9d6b432407204bdd5de084bbd160b72d011a",
+      "scope": "Current exact original Boson 2 VLY-0A spatial Gram and source gamma real 16×16 coefficient invariant under genuine SU2, plus independent original gamma trace-pairing consumer; all 94 pinned Git blobs passed.",
+      "caveat": "Does not prove direct source color-column identity, Kx trace moments, skew/Fock star or physical Hamiltonian spectral properties."
+    },
+    {
+      "id": "math-join0a-pointwise-candidate",
+      "tier": "NEW_SOURCE_CANDIDATE_NEEDS_STRICT_GATE",
+      "repo": "etblink/math",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSJOIN0AOriginalBosonFockGaugeCovariance.lean",
+      "blob": "68fd2067b2dcdb6851afed269d25726dd5b634c5",
+      "consumer_path": "lean/diagnostics/BFSSJOIN0AOriginalBosonFockNormConsumer.lean",
+      "consumer_blob": "dc8e009ab2e7daf3705a71767909c9ca07206431",
+      "scope": "Source exact pointwise simultaneous G2A boson and genuine G4E Fock gauge covariance of x,B mapped to the actual bounded Fermion2 operator BIL0C.Q(VLY0B.Gx(B)), with independent Fock norm consumer.",
+      "caveat": "Uncompiled new theorem pending its own 96-blob strict run; pointwise only, no physical FullL2 multiplier/domain, self-adjointness, BFSS Hamiltonian symmetry or spectral gap."
     }
   ],
-  "record_count": 29
+  "record_count": 31
 }
