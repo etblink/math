@@ -82,6 +82,20 @@ Euclidean Lebesgue volume has full support, so almost-everywhere agreement
 of continuous functions implies equality everywhere. Only for \emph{this
 smooth-core argument} can one harmlessly evaluate at a chosen $x$.
 
+\begin{remark}[The quantifiers in the pointwise upgrade]
+For \emph{each fixed} $g$, equality of the two $L^2$ classes gives
+an almost-everywhere identity in $x$. Continuity in $x$ and full
+support of Lebesgue measure then imply equality for \emph{every}
+$x$ for that same $g$. Because this reasoning works for an
+arbitrary $g$, the conclusion has the asserted quantifiers
+$\forall g\,\forall x$; no uncountable union of exceptional null
+sets is used. Conversely, an arbitrary $L^2$ class lacks this
+continuity and cannot be evaluated pointwise merely because it
+is physical. This is exactly the distinction between the source
+\texttt{invariantCore_equivariant} conclusion and the defining
+\texttt{physicalSpace} class equality.
+\end{remark}
+
 Taking norms and using the fermionic isometry gives the identity
 \begin{equation}\label{eq:gauge-norm}
  \|\psi(b(g)x)\|_{\mathcal F}=\|\psi(x)\|_{\mathcal F}.

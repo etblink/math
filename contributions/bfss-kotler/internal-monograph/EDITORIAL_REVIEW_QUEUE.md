@@ -1,3 +1,21 @@
+# Edition 0.7 development — increment 2 (original gauge/closed-form bridge)
+
+Direct source check: `GaugeCore.lean` at frozen baseline confirms
+`physicalSpace` as an intersection of `bosonPullback - fiberAction` kernels,
+`invariantCore` as its `coreToL2` preimage, and the pointwise-equivariance
+lemma derived from continuous representatives and full-support measure.
+
+- Chapter 5 now makes the quantifiers in the a.e.-to-pointwise argument
+  explicit, avoiding an invalid uncountable union of null exceptions.
+- Chapter 6 now connects the Chapter 4 polarized smooth-core form
+  to the restriction of the historically closed physical charge form.
+  This identity uses the source invariant-core graph inclusion; it
+  does not identify unrelated closed domains or add a Lean theorem.
+- No validation by GitHub-hosted CI is assumed. A complete local
+  typesetting and visual pass for Edition 0.7 remains outstanding.
+
+---
+
 # Edition 0.7 development — editorial increment 1 (not a release)
 
 This is a substantive source-checked exposition pass after the 0.6.1 referee response.
