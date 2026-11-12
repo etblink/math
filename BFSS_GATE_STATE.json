@@ -6,20 +6,35 @@
   "milestone": "M1",
   "last_reviewed_date": "2026-11-12",
   "last_qualified": {
-    "gate": "P3-D5B2",
+    "gate": "P3-D5B3",
     "verdict": "GREEN",
-    "run_id": 43318784891,
-    "tested_sha": "367a8272bae2afe94f732d12f60728832b732a56",
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B2OriginalFockL2InnerSum.lean",
-    "consumer": "lean/diagnostics/BFSSP3D5B2OriginalFockL2InnerSumIndependentConsumer.lean",
-    "manifest_pins": 73,
-    "artifact_id": 13990901889,
-    "digest": "sha256:0ef89121aa20b16aec0316af6775f5950d84176385fa1457fb5f2ccd60fb79c9",
-    "scope": "original-Fock complex L2 cross inner equals finite sum of genuine Fock L2 column pairings"
+    "run_id": 43325774438,
+    "tested_sha": "c143acd0b485d18474ceada0b3c5b64a1d7d62c0",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B3OriginalFockL2ColumnIsometry.lean",
+    "consumer": "lean/diagnostics/BFSSP3D5B3OriginalFockL2ColumnIsometryIndependentConsumer.lean",
+    "manifest_pins": 75,
+    "artifact_id": 13993603128,
+    "digest": "sha256:73cbaa4ad80e68b3f28acb1bdd0c7e5cbe2b748a47984559414645ba485e62a9",
+    "source_blob": "e17a6e5d174ba9362d9dc201b07d88bec723c18d",
+    "consumer_blob": "ca560ddfe3b5494dcad5560f9c7fa715a5ab918a",
+    "scope": "genuine Fermion 2 original-source complex-linear isometric embedding of finite-Hilbert-column L2 fields into finite PiLp2 of individual Fock-valued L2 columns; inner/norm preservation and injectivity; not surjective",
+    "declarations": [
+      "originalFockL2ColumnsLinear",
+      "originalFockL2ColumnsLinear_apply",
+      "originalFockL2ColumnsLinear_inner",
+      "originalFockL2ColumnsIsometry",
+      "originalFockL2ColumnsIsometry_apply"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "cold_build_jobs": 9181
   },
   "active": {
     "gate": "P3-D5B3",
-    "status": "PENDING_STRICT_CI",
+    "status": "GREEN_QUALIFIED",
     "candidate_sha": "c143acd0b485d18474ceada0b3c5b64a1d7d62c0",
     "run_id": 43325774438,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B3OriginalFockL2ColumnIsometry.lean",
@@ -27,19 +42,20 @@
     "manifest_pins": 75,
     "goal": "original-Fock complex-linear isometric L2 column embedding",
     "first_red_run": 43322309537,
-    "first_red_cause": "deterministic whnf heartbeat at concrete isometry constructor; unknown identifiers and sorryAx cascade",
-    "repair": "generic-first LinearMap.isometryOfInner, original-Fock source and consumer unchanged",
+    "first_red_cause": "whnf 200000-heartbeat timeout at direct original-Fock isometry constructor (not a mathematical counterexample); downstream identifiers and sorryAx were cascades",
+    "repair": "generic-first LinearMap.isometryOfInner proof boundary, no budget increase",
     "not_proved": [
-      "D5-B3 until matching strict green",
-      "surjectivity",
-      "isometric equivalence",
-      "gauge physical intertwining",
-      "closed Hamiltonian graph equality",
-      "spectral existence"
-    ]
+      "surjectivity of original-Fock finite L2 column embedding",
+      "full finite-L2 isometric equivalence",
+      "correct original operator-valued HS-fiber identification",
+      "gauge-physical fixed-space intertwining",
+      "original closed Hamiltonian graph and natural domain",
+      "positive spectrum/eigenpair existence"
+    ],
+    "receipt_verified": true
   },
-  "if_green": "verify run SHA and axiom/consumer receipt; update JSON; proceed to B4-A finite assembly surjectivity, then B4-B ofSurjective",
-  "if_red": "verify first causal diagnostic, preserve run/log, apply narrow repair; do not advance B4",
+  "if_green": "D5B3 already verified green. Before creating B4A, this checkpoint records accepted SHA, pins, artifacts, and the B4A decision. B4B only after B4A independently qualifies.",
+  "if_red": "D5B3 past red preserved at run #43322309537; any future B4A red must be separately diagnosed before further advances",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -51,5 +67,30 @@
     "five accepted gates",
     "stage change",
     "user big-picture request"
-  ]
+  ],
+  "prior_qualified": {
+    "gate": "P3-D5B2",
+    "run_id": 43318784891,
+    "tested_sha": "367a8272bae2afe94f732d12f60728832b732a56"
+  },
+  "next_planned": {
+    "gate": "P3-D5B4A",
+    "milestone": "M1",
+    "status": "PLANNED_NO_CI",
+    "goal": "original-Fock finite L2 column map surjective by pointwise coordinate assembly",
+    "accepted_inputs": [
+      "P3-D5B0 originalFockHilbertColumnField_memLp_iff",
+      "P3-D5B0 originalFockL2ColumnProjection_apply_ae",
+      "P3-D5B3 originalFockL2ColumnsIsometry_apply",
+      "pinned Mathlib MeasureTheory.MemLp.toLp + Lp.ext"
+    ],
+    "exit": "for every PiLp2 finite family of original Fermion 2 L2 columns, construct an original-source L2 PiLp2 field mapped to that family",
+    "not_proved": [
+      "gauge",
+      "Hamiltonian",
+      "spectra"
+    ],
+    "decision": "may begin bounded first source gate; avoid bundling isometric equivalence"
+  },
+  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_D5B3_GREEN_43325774438_ACCEPTANCE_AND_ROADMAP_CHECKPOINT_2026_11_12.md"
 }
