@@ -72,8 +72,12 @@ theorem originalLinearMoment_integrable (f : SmoothCore 2) :
 beyond genuine original SmoothCore membership. -/
 theorem originalActualDensity_integrable (f : SmoothCore 2) :
     Integrable (originalActualDensity f) (volume : Measure (Boson 2)) := by
-  simpa only [originalActualDensity] using
-    (originalPotentialDensity_integrable f).add (originalFermionDensity_integrable f)
+  change Integrable
+    ((fun x : Boson 2 => M.deformedBosonicPotential 1 0 x * ‖f x‖^2) +
+      (fun x : Boson 2 =>
+        inner ℝ (f x) (M.deformedFermionField 1 0 x (f x))))
+    (volume : Measure (Boson 2))
+  exact (originalPotentialDensity_integrable f).add (originalFermionDensity_integrable f)
 
 /-- The lower density is integrable; the finite source constant is the
 same original growth constant as in qualified P2-C2 and P2-C4A. -/
@@ -81,7 +85,19 @@ theorem originalLowerDensity_integrable (f : SmoothCore 2) :
     Integrable (originalLowerDensity f) (volume : Measure (Boson 2)) := by
   have hi := (originalPotentialDensity_integrable f).sub
     ((originalLinearMoment_integrable f).const_mul M.fermionGrowthConstant)
-  simpa only [originalLowerDensity, sub_mul, mul_assoc] using hi
+  have hDensity :
+      originalLowerDensity f =
+        (fun x : Boson 2 => M.deformedBosonicPotential 1 0 x * ‖f x‖^2) -
+          (fun x : Boson 2 => M.fermionGrowthConstant * (‖x‖ * ‖f x‖^2)) := by
+    funext x
+    change
+      (M.deformedBosonicPotential 1 0 x - M.fermionGrowthConstant * ‖x‖) *
+        ‖f x‖^2 =
+      M.deformedBosonicPotential 1 0 x * ‖f x‖^2 -
+        M.fermionGrowthConstant * (‖x‖ * ‖f x‖^2)
+    ring
+  rw [hDensity]
+  exact hi
 
 /-- The original smooth-core form inequality without artificial integrability
 premises, obtained by discharging both P2-C4A hypotheses from source results. -/
