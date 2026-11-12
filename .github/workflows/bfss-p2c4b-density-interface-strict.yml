@@ -75,7 +75,7 @@ jobs:
           assert "concreteAlgebraData.deformedFermionField 1 0" in source
           assert "simp only [originalActualDensity, Pi.add_apply]" in source
           assert "originalActualDensity_eq_sourceSum f" in consumer
-          assert "Pi.add_apply" in consumer
+          assert "congrFun (originalActualDensity_eq_sourceSum f) x" in consumer
           for body in (source,consumer):
               assert "set_option autoImplicit false" in body
               assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
