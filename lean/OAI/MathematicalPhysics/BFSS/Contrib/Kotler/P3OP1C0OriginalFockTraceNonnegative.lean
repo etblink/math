@@ -29,14 +29,24 @@ private abbrev OriginalFockOp :=
 
 variable {ι : Type*} [Fintype ι]
 
+/-- Generic finite-column positivity on an abstract complex inner-product space.
+Its proof is deliberately elaborated before specialization to the large
+original Fock carrier; no replacement physical model is introduced. -/
+private theorem finite_inner_self_re_nonneg
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    (v : ι → E) :
+    0 ≤ (∑ i : ι, ⟪v i, v i⟫_ℂ).re := by
+  rw [Complex.re_sum]
+  exact Finset.sum_nonneg (fun i _ =>
+    inner_self_nonneg (𝕜 := ℂ) (x := v i))
+
 /-- The real part of the original Fock-operator Hilbert-adjoint
 trace is nonnegative. The basis is arbitrary and is not enumerated. -/
 theorem originalFockTrace_star_mul_re_nonneg
     (b : OrthonormalBasis ι ℂ (Fermion 2)) (T : OriginalFockOp) :
     0 ≤ (originalFockTrace (star T * T)).re := by
   rw [originalFockTrace_star_mul_eq_sum_inner b T]
-  rw [Complex.re_sum]
-  exact Finset.sum_nonneg (fun i _ => inner_self_nonneg (x := T (b i)))
+  exact finite_inner_self_re_nonneg (fun i : ι => T (b i))
 
 #print axioms originalFockTrace_star_mul_re_nonneg
 
