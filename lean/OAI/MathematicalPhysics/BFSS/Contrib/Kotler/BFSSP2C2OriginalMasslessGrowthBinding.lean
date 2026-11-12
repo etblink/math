@@ -43,4 +43,6 @@ theorem originalMasslessFermionField_inner_lower (x : Boson 2) (z : Fermion 2) :
 #print axioms originalMasslessFermionField_growth
 #print axioms originalMasslessFermionField_inner_lower
 
+end
+
 end FCP.BFSSP2C2OriginalMasslessGrowth
