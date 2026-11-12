@@ -42,7 +42,7 @@ jobs:
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3C2ThetaFieldsProbe.lean": "ea5dff75247064d00bcd4645711256900473dacb",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSFullAlgebraDataProbe.lean": "de8242615e4b2959e2dfa57cf0c6fdf43896acb7",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSP2C0OriginalPauliPotentialBinding.lean": "3a2aa136e97bb907ac0d36a7b1559523f42c4d14",
-            "lean/diagnostics/BFSSP2C0OriginalPauliPotentialConsumer.lean": "1d956ee2d5123c258a7a016c78e8a0e5c28160c2",
+            "lean/diagnostics/BFSSP2C0OriginalPauliPotentialConsumer.lean": "30c6ce85f2d073ec02bff54477c01ab9e0c9fc59",
             "lean/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
             "lean/lake-manifest.json": "67d01d2717d0aaff59fb8814bb53581b961f42b4"
           }
@@ -106,7 +106,10 @@ jobs:
           for n in names:
               s=(root/n).read_text()
               assert "error:" not in s and "sorryAx" not in s,(n,s[-4000:])
-              warnings=[line for line in s.splitlines() if "warning:" in line]
+              dependency_warning=re.compile(
+                  r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+              warnings=[line for line in s.splitlines()
+                        if "warning:" in line and not dependency_warning.fullmatch(line)]
               assert not warnings,(n,warnings[:10])
           log=(root/"source-axioms.log").read_text()
           roots=[

@@ -19,21 +19,21 @@ open FCP.BFSSP2C0OriginalPauliPotentialBinding
 /-- Positive ordered Pauli cyclic orientation. -/
 example :
     FCP.BFSSSU2Full.concreteAlgebraData.structureConstant
-      (0 : ColorIndex 2) 1 2 = Real.sqrt 2 := by
+      (0 : Fin 3) (1 : Fin 3) (2 : Fin 3) = Real.sqrt 2 := by
   rw [originalPauli_structureConstant]
   norm_num [FCP.BFSSSU2.epsilon3]
 
 /-- Reversing color orientation reverses the source coefficient sign. -/
 example :
     FCP.BFSSSU2Full.concreteAlgebraData.structureConstant
-      (0 : ColorIndex 2) 2 1 = -Real.sqrt 2 := by
+      (0 : Fin 3) (2 : Fin 3) (1 : Fin 3) = -Real.sqrt 2 := by
   rw [originalPauli_structureConstant]
   norm_num [FCP.BFSSSU2.epsilon3]
 
 /-- Every repeated color entry vanishes on the original source. -/
 example :
     FCP.BFSSSU2Full.concreteAlgebraData.structureConstant
-      (0 : ColorIndex 2) 0 1 = 0 := by
+      (0 : Fin 3) (0 : Fin 3) (1 : Fin 3) = 0 := by
   rw [originalPauli_structureConstant]
   norm_num [FCP.BFSSSU2.epsilon3]
 
