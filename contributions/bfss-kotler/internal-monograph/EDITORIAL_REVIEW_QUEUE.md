@@ -1,4 +1,4 @@
-# Internal monograph editorial and scientific review queue (v0.4)
+# Internal monograph editorial and scientific review queue (v0.5)
 
 This queue records **tasks for review**, not claims of pending Lean gates. It is independent of GitHub Actions and must not be converted automatically into scientific qualifications.
 
@@ -10,7 +10,7 @@ This queue records **tasks for review**, not claims of pending Lean gates. It is
 - **Chapter 5 (gauge):** Verify pointwise smooth-core invariance is not erroneously extended to arbitrary `L2` representatives; separately distinguish the original full physical `L2` nonzero radial witness (FCP #37894319431), the original finite Fock vacuum/projection (math #42530241914) and the all-three-generator Gauss kernel characterization (FCP #38994451291). Kernel equality does not identify full unbounded generator domains.
 - **Chapter 6 (Hamiltonian):** Verify BA density and the exact physical PiLp16 output; BE `T†T` *natural domain* and weak-form equivalence; BH full adjoints/natural-square/operator identity. The historical BH proof is green #39096180117; current imported `letI`→`let` line has not been separately qualified by this v0.2 narrative. Do not infer positive spectrum from self-adjointness.
 
-## Newly drafted Chapters 7–9 — review before v0.4
+## Newly drafted Chapters 7–9 — review before v0.5
 
 - **Chapter 7 (source ninth-axis geometry):** Review whether the conventional proof that the source spin stabilizer is a quotient of `(S^7)^8` matches the accepted original eight-unit perpendicular word source and PBW topology; check that the two-sheeted covering and target `H ≃ₜ* SO(8)` are stated separately from unqualified vector-compatible `Spin(8)` representation branching. Accepted strict runs #42426258689, #42429216538, #42452043377 and #42498367504.
 - **Chapter 8 (Fock-operator action):** Check original M3I carrier, OP3-C6C original active gamma linear action, P2b-B2/B3 adjoint-star action, and T1 actual finite trace. Hilbert–Schmidt isometry is a conventional mathematical corollary, **not** yet a new Lean theorem on a continuous group representation. Treat the original negative center `z9` as a nontrivial minus action on 48 labels, not a scalar conjugation.
@@ -34,3 +34,14 @@ This queue records **tasks for review**, not claims of pending Lean gates. It is
 - Preserve the original seven-source-file/atlas v0.1 architecture, now extended additively; do not touch accepted mathematical modules or historical handoff files.
 - Each accepted theorem must cite its exact source file and tested receipt. In this narrative edition, **formalization records point to sources; they are not a substitute for the displayed conventional mathematics**.
 - The future external monograph is a separate publication stage after the substantive research and independently verified proofs; do not repurpose an internal v0.2 scaffold as a completed public research paper.
+
+
+## Edition 0.5 — mathematical and unification boundaries
+
+- Verify that NORM-0C's `i/(1+GramTrace)` uses the actual source 9-by-9 Gram matrix and original `Fermion 2` Fock terms; NORM0D D1-B run #43095354808 remained queued at this editorial check and MUST NOT be counted as strict-green.
+- For Chapter 13, do not transfer the `m+12` endomorphism-fiber bound to the `m+6` hypothetical Fock-vector setting, or infer an original physical high-type sector from the standard Spin(8) branching identity alone.
+- The proposed margin `14-8 sqrt(3)` assumes actual source field identification, genuine low-level exclusion, gauge/spatial reductions, and closed-form transfer; it is not a BFSS inequality already proved.
+- Chapter 15 color-projector Schur/commutant result is conventional algebra, not a newly source-qualified Lean theorem; never equate the SU(2) adjoint color triplet with three chiral families.
+- Chapter 16 source gamma bundle and clutching analysis is research-only; its source-specific topological no-ordinary-descent proof is conditional, not accepted as a Lean or physical result. Distinguish rank-8 eigenspaces from moving 56/64 quadratic coefficient bundles.
+- Chapter 17 must retain the separation between a BFSS fixed-N model, a lower-dimensional effective theory, a predictive GUT and a gravitating ToE. No observational discriminator has been derived here.
+- Before external publication, independently review the proof of each conventional proposition, verify primary bibliographic references and avoid transferring status from research memorandum prose to the formal theorem atlas.

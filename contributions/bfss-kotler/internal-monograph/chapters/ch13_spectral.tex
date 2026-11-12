@@ -1,0 +1,248 @@
+% Edition 0.5: prospective confinement, precise carrier distinctions and proof status.
+\chapter[Conditional Oscillator Exclusion and Spectrum]{Conditional Oscillator Exclusion, High Spin Type, and the Prospective Physical Spectrum}
+\label{ch:spectral}
+
+\section{The same obstruction seen from symmetry and analysis}
+Chapter~\ref{ch:spin-geometry} isolated a concrete ninth-axis
+stabilizer of the source spatial Spin(9) group. Chapters~\ref{ch:energy}
+and~\ref{ch:compactness} isolated the bound on the first radial moment
+that would suffice to control global $L^2$ tails. This chapter
+investigates a proposed join between these stories. The potential
+vanishes along rank-one configurations, but transverse oscillations
+around a rank-one valley have an energy proportional to the radial
+scale. A sufficiently high spatial representation type might prohibit
+the lowest transverse oscillator levels, leaving a positive linear
+energy that defeats the fermionic negative contribution.
+
+There are three distinct questions: (a) is the representation-theoretic
+exclusion valid in the \emph{chosen} Hilbert carrier? (b) can the
+inequality be proved for the \emph{original physical} smooth core and
+closed form, rather than an auxiliary model? (c) are the relevant
+physical isotypic sectors nonzero and infinite-dimensional? The first
+has a substantial conditional analytical solution in an
+operator-valued carrier; the second and third remain source-binding
+obligations. They must not be collapsed into a single spectral claim.
+
+\section{Transverse oscillators in nine spatial directions}
+Choose a nonzero one-color row $u\in E=\mathbb R^9$ with $r=\|u\|$
+and unit direction $a=u/r$. Decompose the other two color rows
+\begin{equation}\label{eq:spectral-onecolor}
+  x^2=t_2a+z_2,\qquad x^3=t_3a+z_3,
+  \qquad z_2,z_3\in a^\perp\cong\mathbb R^8.
+\end{equation}
+The transverse variables comprise sixteen real coordinates. A source
+of the required order-of-growth lower bound is the ordinary harmonic
+oscillator
+\begin{equation}\label{eq:transverse-oscillator}
+  h_{\beta,r}:=-\beta\Delta_{z}+r^2\|z\|^2,
+  \qquad \beta>0.
+\end{equation}
+In the conventional self-adjoint oscillator realization, each
+coordinate contributes $\sqrt\beta r(2n_j+1)$, so the eigenvalue at
+total excitation number $n=\sum_jn_j$ is
+\begin{equation}\label{eq:oscillator-level}
+  E_n(r)=2\sqrt\beta\,r(n+8).
+\end{equation}
+This is a standard theorem about the auxiliary transverse oscillator,
+not an identification with the physical BFSS Hamiltonian. In
+particular, the projection to a low transverse energy band is not
+automatically a reducing projection for the full interacting form.
+
+\section{The stabilizer and the branching inequality}
+Fix the original spatial unit vector $a$. The source subgroup
+$K_a\subset\operatorname{Spin}(9)$ is its stabilizer. The accepted
+covering/coordinate theorems identify its source two-sign covering of
+the corresponding orthogonal fixed-axis subgroup, and identify the
+latter with $SO(8)$. For a branching argument one needs more:
+a vector-compatible, correctly normalized identification of the
+actual source torus and stabilizer representations with the standard
+$B_4\to D_4$ branching data. Source geometry alone does not perform
+this representation identification.
+
+Under that additional hypothesis, if a dominant Spin(9) highest
+weight is $\lambda=(\lambda_1,\lambda_2,\lambda_3,\lambda_4)$
+and a Spin(8) constituent has highest weight $\nu$, the standard
+interlacing rule entails
+\begin{equation}\label{eq:branching-inequality}
+  \nu_1\ge\lambda_2.
+\end{equation}
+The four coordinates must be treated with their exact integral or
+half-integral weight lattice; the center and the two half-spinor
+representations cannot be identified away by passing to $SO(8)$.
+
+\section{The six-versus-twelve weight trap}
+A particularly valuable negative discovery was that the first
+fermionic weight bound depends on whether the fiber contains
+\emph{Fock vectors} or \emph{Fock endomorphisms}.
+
+On the original 48-real-label module, a spatial plane rotation acts
+in twenty-four real rotation planes with half-angle frequency.
+For a suitable CAR implementer of the Lie generator, each plane
+contributes a fermionic Hermitian weight $\pm\frac14$.
+Thus the first-weight interval on the Fock-vector module is
+$[-6,6]$ in the contemplated canonical lift.
+But an endomorphism fiber is $\operatorname{End}_{\mathbb C}\Fermion
+\simeq\Fermion\otimes\Fermion^*$, so the action by conjugation
+contains \emph{both} output and dual-input weights. Its first weight
+can therefore reach $12$, not just $6$.
+
+\begin{proposition}[Conditional low-level exclusion; operator-valued
+fiber]\label{prop:operator-lowlevel}
+Assume a continuous, source-compatible Spin(9) action on
+$L^2(E^3;\operatorname{End}_{\mathbb C}\Fermion)$, the correct
+Spin(8) stabilizer and torus identification, and the standard
+branching rule \eqref{eq:branching-inequality}. Suppose a smooth
+compactly supported vector belongs to a genuine Spin(9) isotypic
+component of highest weight $\lambda$. Then for $m\ge0$ the strict
+condition
+\begin{equation}\label{eq:op-threshold}
+   \lambda_2>m+12
+\end{equation}
+excludes transverse oscillator levels $0,\ldots,m$ on each smooth
+slice of the isotypic component.
+\end{proposition}
+\begin{proof}[Conditional analytical argument]
+The excitation-$n$ transverse oscillator carries Spin(8) first
+highest weight at most $n$; tensoring it with the endomorphism
+fiber adds at most $12$, yielding $\nu_1\le n+12$. But any Spin(8)
+constituent of the specified Spin(9) isotype must satisfy
+$\nu_1\ge\lambda_2$. If $\lambda_2>m+12$, these inequalities
+are incompatible for every $n\le m$.
+
+The pointwise restriction of an arbitrary $L^2$ equivalence class to
+a single slice is generally meaningless. The derivation therefore
+works on a smooth compactly supported \emph{isotypic} vector, where
+the finite-dimensional group orbit span makes the stabilizer
+intertwiner precise; only afterwards can a separate form-core
+argument attempt a closed-domain extension.
+\end{proof}
+\formalrecord{\path{contributions/bfss-kotler/BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md}.
+This is a \textbf{conditional analytical theorem}, not a strict Lean
+acceptance on the exact original physical Fock-vector space. Atlas C-01.}
+
+For the \emph{original vector} fiber, the proposed corresponding
+sufficient threshold would be $\lambda_2>m+6$, but it requires an
+actual global Fock-vector lift and its compatibility with the
+physical gauge action and closed charge operators. That lift cannot
+be inferred merely from the already accepted star automorphism of
+the \emph{operator} algebra. Nor may the operator-valued threshold
+$m+12$ be replaced by $m+6$ for numerical convenience.
+
+\section{The proposed global coercivity mechanism}
+Suppose one obtains, for the \emph{actual} physical smooth core in a
+specified high-type sector, a transverse oscillator lower bound
+combined with a source-typed fermionic estimate
+\eqref{eq:B-linear-target}. A natural target inequality is
+\begin{equation}\label{eq:sector-coercivity-target}
+ q_{\mathrm{phys}}(\psi)+b\|\psi\|_2^2
+ \ge a\|\nabla\psi\|_2^2+
+ c\int_{\mathbb R^{27}}\!\|X\|\,\|\psi(X)\|^2\,dX,
+ \qquad a,c>0.
+\end{equation}
+All constants, projections and domain statements must refer to
+\emph{that same} closed physical form. This is currently a proof
+target, not a result already established by the generic energy
+identity or abstract compactness theorem.
+
+The November 6 A/B/E audits identify a promising conservative
+calculation. One devotes $0<\beta<1/2$ of the kinetic coefficient
+to the one-color transverse oscillator. Averaging over the actual
+color sphere and using source-compatible spatial rotations gives,
+\emph{conditionally}, a positive radial contribution with coefficient
+\begin{equation}\label{eq:sector-margin}
+  \sqrt\beta\,(m+9)-C_B,
+\end{equation}
+provided oscillator levels up to $m$ are genuinely absent and the
+original fermionic term is bounded by $C_B\|X\|$. For the proposed
+original source finite-CAR constant $C_B=8\sqrt3$, the illustrative
+choice $\beta=0.49$ and $m=11$ gives the strictly positive margin
+\begin{equation}\label{eq:sector-example-margin}
+ \sqrt{0.49}(11+9)-8\sqrt3=14-8\sqrt3>0.
+\end{equation}
+The positivity follows from $14^2=196>192=(8\sqrt3)^2$.
+The \emph{physical Fock-vector} threshold would be
+$\lambda_2>17$ if the weight-six source-lift hypothesis holds;
+the \emph{operator-valued} hypothesis would instead require
+$\lambda_2>23$ for the same $m$. These are two different
+conditional settings. Equation~\eqref{eq:sector-example-margin}
+is not an accepted theorem of the original physical Hamiltonian.
+
+\section{What a valid physical high-type sector must supply}
+A mathematical projection onto a formal highest weight is not
+enough. A candidate positive-eigenvalue argument needs a nonzero
+closed \emph{physical} isotypic sector, invariance under the
+\emph{same} Hamiltonian, and an infinite-dimensional sector to
+obtain infinitely many discrete eigenvalues from compact resolvent.
+The historical polynomial proposal uses gauge-invariant combinations
+of spatial complex coordinates and radial bumps; its weights and
+nonvanishing have been tested analytically, but a complete source-
+exact, all-domain sector theorem remains separate.
+
+\begin{openproblem}[Exact physical sector and coercivity]
+Construct the original global source Spin(9) action on the physical
+Fock-vector $L^2$ Hilbert space, with correct central signs and true
+SU(2) gauge compatibility. Prove covariance of all sixteen literal
+supercharges on the original invariant smooth core and extend it
+to the closed physical charge form and associated Hamiltonian.
+Then produce at least one nonzero infinite-dimensional high-type
+physical sector and establish \eqref{eq:sector-coercivity-target}
+there, without replacing the Hamiltonian.
+\end{openproblem}
+
+\section{The exact compactness-to-eigenpair implication}
+The accepted weighted-closure theorem from
+Chapter~\ref{ch:compactness} has a powerful \emph{conditional}
+consequence. Assume that for a reducing sector $\mathcal H_\lambda$
+we have a densely defined lower-bounded closed quadratic form
+$q_\lambda$ of the \emph{original} Hamiltonian. Assume also that its
+form-domain unit ball maps continuously into the existing weighted
+Sobolev closure with uniform $L^2$, gradient and
+$\sqrt{\|X\|}$-weighted bounds. Then Chapter~\ref{ch:compactness}
+implies compact embedding of the form domain into
+$\mathcal H_\lambda$.
+
+\begin{proposition}[Conditional compact resolvent and point spectrum]
+\label{prop:conditional-spectrum}
+Under those assumptions, the self-adjoint operator associated with
+$q_\lambda$ has compact resolvent. If the reducing sector is
+infinite-dimensional, its spectrum consists of discrete eigenvalues
+of finite multiplicity tending to $+\infty$, and therefore contains
+positive eigenvalues. Their inclusion as eigenvalues of the original
+physical Hamiltonian additionally uses the verified reducing-sector
+identification. No positive gap of the full BFSS spectrum is implied.
+\end{proposition}
+\begin{proof}[Standard closed-form spectral argument]
+A lower-bounded closed form equips its domain with a Hilbert graph
+norm. The assumed compact embedding makes the form resolvent
+$\mathcal H_\lambda\to\mathcal H_\lambda$ compact through the
+usual variational solution map and form-domain injection.
+The spectral theorem for compact self-adjoint resolvents gives
+purely discrete finite-multiplicity spectrum with eigenvalues
+tending upward in an infinite-dimensional sector. A reducing
+subspace embeds the sector eigenvectors into the original Hilbert
+operator domain. None of these general implications proves the
+hypotheses on the original source.
+\end{proof}
+
+\section{Hostile escape states as scientific tests}
+The most valuable prospective counterexample would be a sequence
+$\psi_j$ in one fixed nonzero physical Spin(9) sector with
+$\|\psi_j\|_2=1$, support escaping to radial infinity, and
+$q_{\mathrm{phys}}(\psi_j)$ uniformly bounded. Such a sequence
+would contradict a claimed coercive first-moment inequality in that
+sector. A rank-one classical configuration alone is not such a
+sequence; it does not satisfy normalization, gauge invariance,
+sector membership or operator-domain conditions.
+
+The proposed near-valley localization route is higher-risk because
+cutoffs may destroy the required isotypic or gauge properties and
+introduce non-negligible IMS derivative terms. We therefore prioritize
+the global color-direction averaging route, but preserve any valid
+adversarial escape construction instead of modifying the sector or
+Hamiltonian after the fact.
+
+\formalrecord{Source controls: \path{BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md},
+\path{BFSS_SPECTRAL_CONFINEMENT_E_GLOBAL_AVERAGING_2026_11_06.md},
+\path{BFSS_SPECTRAL_CONFINEMENT_ROADMAP_2026_11_06.md}, and the
+conditional \path{BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md}.
+Open atlas obligations O-01 through O-05 and C-01/C-02.}

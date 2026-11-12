@@ -1,0 +1,231 @@
+% Edition 0.5. Source snapshot d4870eb1, exact original normalized Fock observables.
+\chapter[The Normalized Fock-Field Program]{The Normalized Original Fock-Field Program: Bounded Observables and Genuine $L^2$ Classes}
+\label{ch:norm}
+
+\section{Why we began another operator program after constructing the Hamiltonian}
+The original physical Hamiltonian of Chapter~\ref{ch:hamiltonian} is an
+unbounded operator on a gauge-invariant Hilbert space. It is tempting to
+read any subsequent bounded-operator theorem as a bound for the original
+fermionic interaction. That interpretation would be false. Our NORM-0
+program addresses a separate, reusable question: can a particular
+configuration-dependent quadratic expression in the \emph{original}
+Majorana operators be normalized into a uniformly bounded field, and can
+its pointwise action be constructed on the actual vector-valued Lebesgue
+$L^2$ space without changing representatives or carriers?
+
+The historical reason for the small-gate design is instructive. A bounded
+finite-dimensional operator at every $X$ need not be a valid multiplier
+unless measurability and almost-everywhere equivalence are handled; nor
+may a fixed-operator \texttt{compLp} theorem be applied to an
+$X$-dependent operator. Our source-first construction proceeds in
+four distinct steps: an algebraic Gram bound, a continuous field,
+$L^2$ membership of pointwise images, and quotient-level representative
+independence. Each is a different proof obligation.
+
+\section[The actual spatial Gram matrix and the fixed-B field]{The actual spatial Gram matrix and the fixed-$B$ field}
+For $X\in\mathbb R^{9\times3}$, let $x_i\in\mathbb R^3$ denote
+its $i$th color row, and write
+\begin{equation}\label{eq:norm-gram}
+  M_{ij}(X)=\langle x_i,x_j\rangle_{\mathbb R^3},
+  \qquad \tau(X)=\sum_{i=0}^{8}M_{ii}(X)=\|X\|^2.
+\end{equation}
+The equality with the squared Euclidean norm is notation for the
+\emph{original} source spatial Gram trace, not an identification with the
+quartic potential. The Cauchy--Schwarz and positivity of a Gram matrix
+supply
+\begin{equation}\label{eq:norm-gram-entry-bound}
+   |M_{ij}(X)|\le\sqrt{M_{ii}(X)M_{jj}(X)}\le\tau(X).
+\end{equation}
+The source qualified NORM-0A matrix bound is the exact finite-index
+version of this elementary argument.
+
+Let $\mathcal F$ denote the literal original \texttt{Fermion 2}, and let
+$B\in\operatorname{Mat}_{16}(\mathbb R)$ be a \emph{fixed} real matrix.
+For the original nine gamma matrices $\gamma_i$ and the already
+constructed color-contracted quadratic Fock-operator map
+$\mathcal Q:\operatorname{Mat}_{16}(\mathbb R)\to\operatorname{End}_{\mathbb C}(\mathcal F)$,
+put
+\begin{equation}\label{eq:norm-unscaled-fock}
+ A_B(X)=\sum_{i,j=0}^{8}M_{ij}(X)\,\mathcal Q(\gamma_iB\gamma_j),
+ \qquad
+ C_B=\sum_{i,j=0}^{8}\|\mathcal Q(\gamma_iB\gamma_j)\|_{\rm op}.
+\end{equation}
+The source writes $A_B$ as \texttt{originalFockGramObservable};
+$\mathcal Q$ is the \emph{original} color-quadratic operator map,
+not a newly chosen abstract Clifford representation.
+
+\begin{theorem}[Uniformly bounded normalized original Fock field;
+strict-qualified]\label{thm:norm-field}
+Define, on the genuine original complex Fock carrier,
+\begin{equation}\label{eq:norm-field}
+ \widetilde A_B(X)=\frac{i}{1+\tau(X)}A_B(X).
+\end{equation}
+Then $C_B\ge0$, $1+\tau(X)>0$, and
+\begin{equation}\label{eq:norm-field-bound}
+  \|A_B(X)\|_{\rm op}\le\tau(X)C_B,
+ \qquad \|\widetilde A_B(X)\|_{\rm op}\le C_B
+ \quad\text{for all }X.
+\end{equation}
+This is a statement about bounded Fock \emph{fiber operators} and a
+fixed $B$; it does not assert self-adjointness for arbitrary $B$.
+\end{theorem}
+\begin{proof}[The source finite-sum proof]
+Apply the triangle inequality to the $9\times9$ sum in
+\eqref{eq:norm-unscaled-fock}, the operator norm identity for scalar
+multiplication, and \eqref{eq:norm-gram-entry-bound}:
+\[
+  \|A_B(X)\|\le\sum_{ij}|M_{ij}(X)|
+  \|\mathcal Q(\gamma_iB\gamma_j)\|
+  \le\tau(X)C_B.
+\]
+Since $\tau(X)\ge0$, division by $1+\tau(X)$ gives the second
+inequality. The factor $i$ has modulus one. Every operator here acts
+on the already fixed original $2^{24}$-dimensional Fock space; neither
+the proof nor the normalization changes the physical Hamiltonian.
+\end{proof}
+\formalrecord{\texttt{BFSSNORM0COriginalNormalizedFockField.lean},
+\texttt{originalFockGammaBoundConstant\_nonneg},
+\texttt{originalFockGram\_norm\_le\_trace},
+\texttt{originalNormalizedFockGram\_norm\_le}; source blob
+\texttt{84de66e73be2018b03ced898ebf70e691c07b40f};
+\href{https://github.com/etblink/math/actions/runs/43017992525}{strict run \#43017992525}.
+Atlas N-01.}
+
+\section{Continuity, measurable evaluation, and the non-finite measure trap}
+The underlying bosonic space is $\mathbb R^{27}$ with ordinary
+Lebesgue volume. It is not a probability space, and its total volume
+is infinite. In particular, the constant function with values in a
+nonzero finite-dimensional Fock operator space does not become
+$L^2$ merely because its values are uniformly bounded.
+
+The valid conclusion instead concerns \emph{products with an $L^2$
+argument}. For fixed $B$, the source continuity gate establishes
+$X\mapsto\widetilde A_B(X)$ as a continuous function into the
+bounded-operator norm topology. For $f\in\OriginalLtwo=L^2(\mathbb R^{27};\mathcal F)$
+with representative $f(X)$, the evaluation map
+$(S,v)\mapsto Sv$ is continuous bilinear. It follows that
+$X\mapsto\widetilde A_B(X)f(X)$ is strongly measurable almost
+everywhere. The domination inequality
+\begin{equation}\label{eq:norm-lp-domination}
+  \|\widetilde A_B(X)f(X)\|\le C_B\|f(X)\|
+\end{equation}
+then gives the $L^2$ integrability of the output without requiring
+finite total measure.
+
+\begin{theorem}[Pointwise original $L^2$ membership;
+strict-qualified]\label{thm:norm-memlp}
+For every original $f\in\texttt{FullL2 2}$ and fixed real matrix $B$,
+$X\mapsto\widetilde A_B(X)f(X)$ is a.e. strongly measurable and is
+\texttt{MemLp} of exponent $2$ on the actual source bosonic Lebesgue
+measure. Moreover, \eqref{eq:norm-lp-domination} holds pointwise for
+the source representative.
+\end{theorem}
+\begin{proof}[Accepted bounded-evaluation and domination argument]
+The operator field's source continuity gives its a.e. strong
+measurability. The built-in source $L^2$ class supplies the a.e.
+strong measurability of $f$. Applying the pinned Mathlib continuous
+bilinear-evaluation interface yields measurable output; the NORM-0C
+norm estimate supplies the domination. \texttt{MemLp.of\_le\_mul}
+then proves membership, and its hypotheses do not require a finite
+measure of the full bosonic domain.
+\end{proof}
+\formalrecord{\texttt{BFSSNORM0D1OriginalFockFieldContinuity.lean} and
+\path{BFSSNORM0D2OriginalPointwiseL2Membership.lean}, including
+\path{originalPointwiseFock_aeStronglyMeasurable},
+\texttt{originalPointwiseFock\_norm\_le}, and
+\texttt{originalPointwiseFock\_memLp}; strict D1-A receipt
+\href{https://github.com/etblink/math/actions/runs/43047181537}{\#43047181537}.
+Atlas N-02.}
+
+\section{From a pointwise function to an actual almost-everywhere class}
+An $L^2$ element is an equivalence class modulo null sets, not a
+canonical pointwise wavefunction. One must be careful when saying a
+multiplication rule is independent of representatives.
+
+\begin{lemma}[Representative-safe $L^2$ construction;
+strict-qualified]\label{lem:norm-carrier}
+Let $q:\mathbb R^{27}\to\mathcal F$ be a function with an actual
+\texttt{MemLp} certificate. The original \texttt{MemLp.toLp}
+construction yields an element $[q]\in\OriginalLtwo$ whose
+representative agrees with $q$ almost everywhere. If $q=q'$ almost
+everywhere and both have the required integrability, their $L^2$
+classes coincide.
+\end{lemma}
+\begin{proof}
+This is the exact quotient property of the source carrier used by the
+NORM-0D3A bridge. It uses \texttt{MemLp.coeFn\_toLp} and
+\texttt{MemLp.toLp\_congr}; changing the function on a null set
+changes neither its class nor its norm.
+\end{proof}
+\formalrecord{\texttt{BFSSNORM0D3AOriginalLpCarrierBridge.lean},
+\texttt{originalCarrierLpOfMemLp},
+\texttt{originalCarrierLpOfMemLp\_ae}, and
+\texttt{originalCarrierLpOfMemLp\_congr}; blob
+\texttt{3fc16b042fe51f1e1a8c52260d5bba5135831ffc};
+\href{https://github.com/etblink/math/actions/runs/43084968990}{strict run \#43084968990}.
+Atlas N-03.}
+
+The next gate applies this carrier construction to the actual
+normalized Fock image and proves the almost-everywhere output law.
+The accepted theorem deliberately avoids a new named multiplication
+wrapper, because an earlier attempt at a large instantiated wrapper
+encountered Lean recursion. That failure does not falsify the intended
+mathematical operator; it changes how the result is packaged and
+verified.
+\formalrecord{\texttt{BFSSNORM0D3CDirectOriginalFockLpOutput.lean},
+\texttt{originalFockLpDirect\_ae}; blob
+\texttt{bd9146fe825b4675bfb62f772bc02f83e204d30b};
+\href{https://github.com/etblink/math/actions/runs/43091441892}{strict run \#43091441892}.
+Atlas N-04.}
+
+\section{A short mathematical deduction and an important qualification hold}
+The accepted results suggest the natural formula
+\begin{equation}\label{eq:norm-multiplier-definition}
+   (\mathsf M_B f)(X):=\widetilde A_B(X)f(X)
+   \qquad\text{a.e.},
+\end{equation}
+which, in ordinary functional analysis, describes a bounded linear
+multiplication operator on $L^2$ satisfying
+\begin{equation}\label{eq:norm-multiplier-goal}
+   \|\mathsf M_B f\|_2\le C_B\|f\|_2.
+\end{equation}
+This is a legitimate mathematical construction once one has verified
+that the rule descends to equivalence classes, is complex-linear, and
+its norm estimate holds in the quotient. We have \emph{not} silently
+relabelled this ordinary implication as a newly checked Lean
+\texttt{ContinuousLinearMap} theorem.
+
+The next exact source candidate makes the representative-independence
+step explicit: if $g=f$ almost everywhere, then
+$\widetilde A_B(X)g(X)=\widetilde A_B(X)f(X)$ almost everywhere, and
+the former is $\texttt{MemLp}$ whenever the latter is. Its source
+proof is small, but the required independently completed strict gate
+\href{https://github.com/etblink/math/actions/runs/43095354808}{\#43095354808}
+was still \emph{queued with no conclusion} at our 11 November
+editorial source check. It must not be counted as a green qualification
+without a complete run and consumer audit.
+\formalrecord{Pending source
+\texttt{BFSSNORM0D3DOriginalFockRepresentativeTransport.lean},
+\texttt{originalFockImage\_ae\_of\_rep} and
+\texttt{originalFockImage\_memLp\_of\_rep}; candidate blob
+\texttt{cb16f081fb1dbff0f149e94b39145d3ea2dec58b}.
+Atlas N-05, \textbf{pending strict acceptance}.}
+
+\section{The critical scientific boundary}
+The observable $\widetilde A_B$ is normalized by $1+\|X\|^2$;
+its unnormalized numerator is quadratic in $X$. The physical
+fermionic interaction $B_M^{(1,0)}(X)$ of
+Chapter~\ref{ch:energy}, however, has a different algebraic
+coefficient construction and grows \emph{linearly} in $X$. A uniform
+bound on $\widetilde A_B$ proves neither the desired source linear
+growth inequality \eqref{eq:B-linear-target} nor physical-sector
+coercivity. Any comparison must be a separately typed source theorem
+identifying the actual operators, with the signs, indices, domains and
+normalization intact. Without it, the two lanes are useful but distinct.
+
+The positive role of NORM-0 is methodological and mathematical: it
+exhibits how to build physically sourced, gauge-compatible bounded
+operator observables on an infinite-volume $L^2$ carrier, with rigorous
+handling of null-set representatives. This infrastructure may aid
+future compactness estimates or gauge-equivariant operator calculus;
+its usefulness is not evidence of an eigenpair or a mass gap.

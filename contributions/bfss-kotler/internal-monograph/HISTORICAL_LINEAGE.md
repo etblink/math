@@ -67,3 +67,11 @@ This reconstruction explains why an October declaration of `pending` may describ
 5. Do not claim exact original physical point spectrum, mass gap, or an eleven-dimensional M-theory identification from these foundational theorems.
 
 The text's historical appendix is a shorter mathematical account of this same index. This file is intended as a durable research retrieval tool rather than a substitute for the exact source and gate receipts.
+
+
+## Edition 0.5 additions: auxiliary fields and prospective unification (November 10--11)
+
+1. **November 10, research-only:** `research/unification/` collected candidate-neutral analyses of the original 3x16 factorization, Spin(10) branching, gamma-eigenspace Hopf clutching, RP8 gauge descent, bilinear 36+84 / 56+64 coefficient spaces, and categorical naturality failures. Their source-specific finite arithmetic and conventional topology are **not** newly compiled end-to-end source Lean unification theorems. They supply negative knowledge and target definitions, not a GUT/ToE.
+2. **November 10--11, qualified:** the original boson Gram/gauge covariance VLY lane and original quadratic-Fock bilinear interfaces feed into the normalized auxiliary NORM programme. A proof about quadratic configuration coefficients is not the original linear fermionic Hamiltonian interaction.
+3. **November 11, strict-green:** NORM-0C run #43017992525; D1-A pointwise MemLp run #43047181537; original carrier bridge run #43084968990; direct source `FullL2` output interface run #43091441892. The D1-B representative transport run #43095354808 was still queued without a conclusion at the edition's source check; do not infer a Lean failure or success.
+4. **Edition 0.5 boundary:** Chapters 12--14 consolidate the exact mathematical input and source-physical gap; Chapters 15--17 are a separated research charter. There is no source-physical positive eigenvalue, no observed three-family derivation, no emergent 3+1 quantum field theory and no gravitational/ToE conclusion.

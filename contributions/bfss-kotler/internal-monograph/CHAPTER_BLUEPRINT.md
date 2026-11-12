@@ -1,3 +1,13 @@
+# Internal monograph — revised 17-chapter architecture, edition 0.5
+
+## Edition 0.5 milestone: 11 November 2026
+
+Chapters 12--14 now contain substantive mathematics and research synthesis. Chapters 15--17 are intentionally **prospective, falsifiable research chapters**, not announcements of a GUT or ToE. The original physical model and exact Lean evidence remain unchanged. The review process uses locally compiled LaTeX, source-path verification and independently cross-checked historical notes, not GitHub Actions.
+
+**Mathematical sequence:** (1) exact source carrier and charges, (2) native physical Hamiltonian, (3) source Spin(9), original Fock and gauge actions, (4) original energy and abstract compactness, (5) normalized auxiliary Gram field, (6) conditional high-spin oscillator confinement and open form-domain join, (7) truth-first unification prospects.
+
+**Prospective part:** Ch.15 representation/particle-family tests; Ch.16 Hopf/projective topology and gauge descent; Ch.17 physical emergence, GUT/ToE criteria and observational falsifiability. These chapters must never be read as source-physical or empirically qualified results.
+
 # Internal monograph — verified chapter architecture v0.1
 
 ## v0.4 original energy and first-moment compactness milestone — 11 November 2026
@@ -177,7 +187,7 @@ The mathematical model is the relative `N=2` supersymmetric matrix quantum mecha
 
 **Evidence:** C-01, C-02, O-03, O-04, O-05; H-03 and A-04. **Open:** definitive source physical-sector estimate and eigenpairs.
 
-## Part V — Research synthesis
+## Part V — Research synthesis (Chapter 14)
 
 ### Chapter 14. The theorem frontier, alternate routes, and publication boundary
 **Central question:** What should a future expert prove or falsify next, with minimum duplicated work?
@@ -207,3 +217,15 @@ The mathematical model is the relative `N=2` supersymmetric matrix quantum mecha
 4. Write Chapters 10–13 with conditional statements fenced from strict-verified facts.
 5. Write Chapter 1, Chapter 14 and appendices last to avoid imposing an outcome on the mathematics.
 6. Repeat local LaTeX compilation and narrative/theorem audits; do not rely on Actions, Pages, webhooks or any continuous GitHub service for document validity.
+
+
+## Part VI — prospective unification research
+
+### Chapter 15. Spin and particles
+Original 3x16 label factorization and SU(2) adjoint mixing; real Spin(9) versus complex chiral Spin(10) restrictions; commutant obstruction; source-typed counterexamples before family counting. **Not a three-generation model.**
+
+### Chapter 16. Hopf and projective gauge descent
+Actual gamma(n) eigenspaces, antipodal exchange, Hopf-type clutching, gauge-natural projector obstruction, conditional bundle-characteristic-class no-descent; distinct quadratic-bilinear decompositions; no chiral index or spectral inference without a physical operator.
+
+### Chapter 17. Physical emergence and theory selection
+Separate the model mathematical system, a possible emergent 3+1-dimensional field theory, a predictive GUT, and a ToE including gravity. Rank the necessary representation, gauge, topology, closed-domain, and empirical gates and keep rejected candidates in the negative-knowledge record.

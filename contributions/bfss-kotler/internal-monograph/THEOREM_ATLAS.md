@@ -2,7 +2,7 @@
 
 **Status:** internal working inventory, not a new theorem or a fresh CI acceptance.
 
-**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (mathematical baseline); theorem citations were rechecked against the monograph branches through `c348da90a3db` for the editorial evidence audit. The machine-readable companion is `THEOREM_ATLAS.json`.
+**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (mathematical baseline); theorem citations were rechecked against the monograph branches through `c7f2c788e1e8` for the editorial evidence audit. The machine-readable companion is `THEOREM_ATLAS.json`.
 
 The *dependencies* listed below are **narrative/scientific prerequisites**, not necessarily the exact Lean import DAG. A strict-green receipt is always tied to its tested commit; the source blob identifies the file inspected for this manuscript.
 
@@ -17,6 +17,12 @@ The *dependencies* listed below are **narrative/scientific prerequisites**, not 
 | `PENDING_STRICT_GATE` | Candidate present; no qualification conclusion as of snapshot |
 | `ANALYTICAL_CONDITIONAL` | Conventional argument under stated assumptions, not a Lean-qualified physical source theorem |
 | `OPEN_PROOF_OBLIGATION` | Research target, no exact accepted Lean theorem |
+
+## Edition 0.5 — bounded field, conditional spectral join, and separate unification charter
+
+The previously indexed N-01 through N-05 original Fock-field entries and O-01 through O-05 / C-01 through C-02 research frontier entries now have full mathematical exposition in Chapters 12--14. N-05 strict run #43095354808 was **still queued without jobs or a terminal conclusion** at the editorial check; no status is promoted. The 37-record theorem atlas remains restricted to source mathematical declarations and explicit original spectral obligations. Prospective three-generation/Hopf/GUT/ToE ideas are tracked separately in `UNIFICATION_RESEARCH_CHARTER.md` rather than mislabelled as Lean-qualified theorems.
+
+The candidate-neutral November 10 notes preserve source-level negative results: three color labels do not define three SU(2)-invariant family projectors, and an individually labelled original gamma + eigenspace fails a basic antipodal gauge-naturality test. Their topology and representation deductions are conditional on specified source identifications and are not newly compiled Lean statements. A speculative GUT/ToE claim has **no** physical or empirical qualification in this edition.
 
 ## Edition 0.4 — energy, growth and compactness joining map
 

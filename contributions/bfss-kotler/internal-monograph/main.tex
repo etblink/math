@@ -1,6 +1,6 @@
 % INTERNAL WORKING EDITION. Do not cite as an accepted theorem source.
 % Exact inspected source snapshot: etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5.
-% The 14-chapter architecture is in CHAPTER_BLUEPRINT.md.
+% The 17-chapter architecture is in CHAPTER_BLUEPRINT.md.
 \documentclass[11pt,oneside]{book}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -31,21 +31,26 @@
 
 \title{\textbf{The Relative $\mathrm{SU}(2)$ BFSS Quantum System}\\[0.4em]
   \Large Mathematical Construction, Formal Verification, and the Spectral Research Frontier\\[0.6em]
-  \large Internal research monograph --- source-narrative edition 0.4}
+  \large Internal research monograph --- source-narrative edition 0.5}
 \author{Internal mathematical research collaboration}
 \date{11 November 2026}
 
 \begin{document}
+\hypersetup{pageanchor=false}
 \frontmatter
 \maketitle
+\hypersetup{pageanchor=true}
 \chapter*{Editorial status and reader's contract}
 \addcontentsline{toc}{chapter}{Editorial status and reader's contract}
 This is a \emph{living internal mathematical research monograph}, intended as an
 onboarding and research instrument for mathematicians and mathematical physicists.
 This edition contains substantive mathematical narratives of the original
-carriers and Hamiltonian (Chapters 2--6), the source Spin(9) geometry, Fock-operator algebra and gauge-covariance
-frontier (Chapters 7--9), and the original energy/compactness analysis
-(Chapters 10--11). Chapters 1 and 12--14 remain architectural outlines. Formal records document historical and current
+carriers and Hamiltonian (Chapters 2--6), the source Spin(9) geometry,
+Fock-operator algebra and gauge-covariance frontier (Chapters 7--9),
+the original energy, compactness and normalized-field programs
+(Chapters 10--12), and conditional spectral and research-frontier synthesis
+(Chapters 13--14). Chapters 15--17 form a clearly separated, prospective
+unification research program. Chapter 1 remains an architectural outline. Formal records document historical and current
 qualification without claiming new Lean proofs. The core-source research snapshot is
 \texttt{etblink/math} at commit \texttt{d4870eb1ac58}; the monograph editorial
 branch is independently versioned.
@@ -91,29 +96,16 @@ a conditional derivation supplies an unstated physical theorem.
 \input{chapters/ch10_energy}
 \input{chapters/ch11_compactness}
 
-\chapter{The Normalized Auxiliary Fock-Field Program}
-\label{ch:norm}
-\section{Normalized Gram observable and uniform operator bound}
-\section[Original L2 output and representative independence]{Original $L^2$ output and representative independence}
-\section{Bounded multiplier prospects and the unnormalized interaction distinction}
-\editornote{Atlas: N-01 through N-05. The pending strict gate is not presumed green.}
-
-\chapter{Oscillator Exclusion, High Spin Type, and Potential Point Spectrum}
-\label{ch:spectral}
-\section{Conditional whole-isotypic oscillator exclusion}
-\section{The different first-weight bounds: vector versus endomorphism fiber}
-\section{Conditional global coercivity and rank-one escape tests}
-\section{Physical-sector compactness and positive eigenpair obligations}
-\editornote{Atlas: C-01, C-02, O-03 through O-05. No source-Hamiltonian eigenpair theorem or full mass-gap claim is present.}
+\input{chapters/ch12_normalized}
+\input{chapters/ch13_spectral}
 
 \part{Research Synthesis}
-\chapter{The Theorem Frontier, Alternative Routes, and Publication Boundary}
-\label{ch:frontier}
-\section{The open joins in the proof dependency atlas}
-\section{Fock-vector and Hilbert--Schmidt pathways}
-\section{Adversarial falsification and preserved negative results}
-\section{Internal edition completion and the later external monograph}
-\editornote{Finish this chapter after the source-verified mathematical text.}
+\input{chapters/ch14_frontier}
+
+\part{Prospective Unification: Hypotheses, Obstructions, and Tests}
+\input{chapters/ch15_particle}
+\input{chapters/ch16_topology}
+\input{chapters/ch17_unification}
 
 \appendix
 \chapter{Formalization and Qualification Atlas}
@@ -133,7 +125,17 @@ mathematically typed formalization notes; the full ledger remains separate.
 \backmatter
 \chapter*{Bibliographic verification policy}
 \addcontentsline{toc}{chapter}{Bibliographic verification policy}
-No fabricated references are included in the architecture edition. Foundational
-citations will be inserted only after author, title, publication data, and
-actual relevance have been verified from primary literature.
+The primary BFSS lineage is Banks, Fischler, Shenker and Susskind,
+\emph{M Theory as a Matrix Model: A Conjecture},
+\emph{Physical Review D} \textbf{55} (1997), 5112--5128,
+\href{https://doi.org/10.1103/PhysRevD.55.5112}{doi:10.1103/PhysRevD.55.5112}.
+For the classical octonionic Hopf fibration and Spin(9) symmetry,
+see the original mathematical literature including
+H. Gluck, F. Warner and W. Ziller,
+\emph{The geometry of the Hopf fibrations}, at
+\url{https://ncatlab.org/nlab/files/GluckWarnerZiller-HopfFibrations.pdf}.
+All original-source Lean qualifications and research-only audits are
+indexed in the companion evidence files; a literature citation is not
+a proof that the cited physical interpretation holds for this fixed
+relative SU(2) system.
 \end{document}

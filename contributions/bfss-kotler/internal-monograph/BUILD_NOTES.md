@@ -78,3 +78,8 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
 - Maintained the **generic vs concrete** physical boundary of the source energy theorem; `8 sqrt(3)` remains an analytical finite-CAR bound, and physical-sector source growth/domain/coercivity remain OPEN. Avoided identifying the source physical charge-form graph with the weighted spatial Sobolev triple closure.
 - Extended the chronological appendix, editorial queue, and 37-record atlas notes; no new declared Lean theorem or CI status changed.
 - All builds use local `latexmk`, without GitHub Actions, Pages, webhooks, remote typesetting or network packages. The PDF is a review output; generated artifacts are excluded from the source-only Git commit.
+
+
+### 0.5 build
+
+Local offline LaTeX compilation only; no GitHub Actions, Pages, webhooks or hosted LaTeX services. Chapters 12--17 and the related research charters are documentation sources. This edition retains the same pinned mathematical snapshot as prior editions; no Lean source or strict consumer is edited. Generate PDF using `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex` and review first and last pages plus all new-chapter starts.
