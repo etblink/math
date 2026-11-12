@@ -26,9 +26,13 @@ Before touching unified: obtain source and independent consumer cold-green stric
 
 A successful illustrative Python diagnostic does not qualify Lean. A successful new Lean lemma neither certifies a concrete physical self-adjoint Hamiltonian nor a positive BFSS eigenpair. P2-C0/C1/C2 are pieces of the larger conditional energy argument, not a standalone spectrum theorem.
 
-## Current checkpoint (pending)
+## Current checkpoint — P2-C0 source and consumer QUALIFIED, promotion NOT YET AUTHORIZED
 
-P2-C0 uses *existing* SU2ColorCrossProbe.lean lemmas algebraData_structureConstant_of_pauli_color and deformedBosonicPotential_one_zero_eq_wedge, specialized by the established SU2BFSSFullAlgebraDataProbe.lean concreteAlgebraData_color witness. Source file BFSSP2C0OriginalPauliPotentialBinding.lean and separate diagnostics consumer are candidate until actual cold Lean and strict evidence. No CI workflow is created merely to publish this documentation; the pinned strict workflow must be prepared and accepted on its own merits, rather than using a green unrelated workflow as evidence.
+P2-C0 reuses the original SU2ColorCrossProbe.lean lemmas algebraData_structureConstant_of_pauli_color and deformedBosonicPotential_one_zero_eq_wedge, specialized by SU2BFSSFullAlgebraDataProbe.lean concreteAlgebraData_color. Strict GitHub Actions run #43169341680 **PASSED** at tested commit 9b3fd2eceebcf0aae07274956082f8db73aeb62a, compiling all 8,971 source-closure jobs, the actual source declaration, and the independent consumer with standard-only axioms and exact original blob pins. The original green receipt is recorded in P2C0_GREEN_43169341680_ACCEPTANCE.md, including the red-run lesson and external artifact reference.
+
+**Status:** P2-C0 mathematics/consumer strictly qualified at the tested pinned SHA. The research branch itself is not yet fast-forwarded, and the new source field-growth theorem and actual physical spectral consequences remain OPEN. The only commits after the green-tested SHA are documentation, keeping every tested Lean source, consumer and workflow blob unchanged. Promotion still requires a branch-diff audit and fresh explicit owner approval; do not infer permission from green CI.
+
+The accepted P2-C0 strict workflow is scoped to the historical research branch. After authorized fast-forward, retain it as audit evidence, but ensure **future** qualification workflows explicitly target integration/bfss-unified-research-20261108; do not silently reuse a research-only trigger to represent integration runs.
 
 
 ## Owner-directed post-promotion development policy — 2026-11-11 Pacific
