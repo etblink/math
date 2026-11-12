@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "purpose": "canonical_live_checkpoint_not_proof_receipt",
+  "branch": "integration/bfss-unified-research-20261108",
+  "roadmap": "BFSS_ACTIVE_ROADMAP.md",
+  "milestone": "M1",
+  "last_reviewed_date": "2026-11-12",
+  "last_qualified": {
+    "gate": "P3-D5B2",
+    "verdict": "GREEN",
+    "run_id": 43318784891,
+    "tested_sha": "367a8272bae2afe94f732d12f60728832b732a56",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B2OriginalFockL2InnerSum.lean",
+    "consumer": "lean/diagnostics/BFSSP3D5B2OriginalFockL2InnerSumIndependentConsumer.lean",
+    "manifest_pins": 73,
+    "artifact_id": 13990901889,
+    "digest": "sha256:0ef89121aa20b16aec0316af6775f5950d84176385fa1457fb5f2ccd60fb79c9",
+    "scope": "original-Fock complex L2 cross inner equals finite sum of genuine Fock L2 column pairings"
+  },
+  "active": {
+    "gate": "P3-D5B3",
+    "status": "PENDING_STRICT_CI",
+    "candidate_sha": "c143acd0b485d18474ceada0b3c5b64a1d7d62c0",
+    "run_id": 43325774438,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B3OriginalFockL2ColumnIsometry.lean",
+    "consumer": "lean/diagnostics/BFSSP3D5B3OriginalFockL2ColumnIsometryIndependentConsumer.lean",
+    "manifest_pins": 75,
+    "goal": "original-Fock complex-linear isometric L2 column embedding",
+    "first_red_run": 43322309537,
+    "first_red_cause": "deterministic whnf heartbeat at concrete isometry constructor; unknown identifiers and sorryAx cascade",
+    "repair": "generic-first LinearMap.isometryOfInner, original-Fock source and consumer unchanged",
+    "not_proved": [
+      "D5-B3 until matching strict green",
+      "surjectivity",
+      "isometric equivalence",
+      "gauge physical intertwining",
+      "closed Hamiltonian graph equality",
+      "spectral existence"
+    ]
+  },
+  "if_green": "verify run SHA and axiom/consumer receipt; update JSON; proceed to B4-A finite assembly surjectivity, then B4-B ofSurjective",
+  "if_red": "verify first causal diagnostic, preserve run/log, apply narrow repair; do not advance B4",
+  "toolchain": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "exploratory": "NOT_PROMOTED",
+  "review_trigger": [
+    "every gate verdict",
+    "two analogous reds",
+    "five accepted gates",
+    "stage change",
+    "user big-picture request"
+  ]
+}

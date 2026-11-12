@@ -1,0 +1,33 @@
+name: BFSS active-roadmap consistency
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - BFSS_ACTIVE_ROADMAP.md
+      - BFSS_GATE_STATE.json
+      - AGENTS.md
+      - README.md
+      - tools/check_bfss_roadmap.py
+      - .github/workflows/bfss-roadmap-watch.yml
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5*.lean'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checkpoint-consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout active BFSS integration branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Check project-lead roadmap and active gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/check_bfss_roadmap.py

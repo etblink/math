@@ -1,5 +1,20 @@
 # Instructions for AI agents working on this repository
 
+## BFSS Project Lead: compulsory live checkpoint (downstream branch only)
+
+For tasks on the original SU(2) BFSS/Kotler project, including Lean modules in
+`lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/`, related `research/`
+memos and its strict workflows, start by reading
+[BFSS_ACTIVE_ROADMAP.md](BFSS_ACTIVE_ROADMAP.md) and the authoritative
+**live operational status** in [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json).
+After verifying each red or green against exact run SHA and CI source/consumer
+receipts, update that checkpoint **before advancing** another proof gate.
+The roadmap governs which mathematical obligation to work on next; the exact
+Git/CI evidence remains proof authority. Keep `main` untouched for BFSS.
+This is a conditional addition for downstream BFSS, not a replacement of
+the community contribution requirements below.
+
+
 This file is for AI coding agents (Claude Code, Codex and others) that help someone contribute to `mathcommunity/oai-math-revised`. Humans may find it useful too; the main guide is [README.md](README.md). Maintainers review every pull request; following these rules means your PR needs fewer changes.
 
 ## What this repository is
