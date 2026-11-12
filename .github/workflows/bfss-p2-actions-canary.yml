@@ -1,0 +1,31 @@
+name: BFSS P2 Actions scheduling canary
+
+'on':
+  push:
+    branches:
+      - research/bfss-p2-original-field-20261111
+    paths:
+      - .github/workflows/bfss-p2-actions-canary.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-p2-actions-canary-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scheduling-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify runner scheduling and exact branch ref
+        shell: bash
+        env:
+          EXPECTED_REF: refs/heads/research/bfss-p2-original-field-20261111
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF}" = "${EXPECTED_REF}"
+          printf 'BFSS_P2_ACTIONS_SCHEDULING_CANARY_PASS\n'
+          printf 'run=%s\ncommit=%s\nref=%s\n' "${GITHUB_RUN_ID}" "${GITHUB_SHA}" "${GITHUB_REF}"
