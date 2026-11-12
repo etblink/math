@@ -16,6 +16,7 @@
 \urlstyle{same}\hypersetup{hidelinks,pdftitle={The Relative SU(2) BFSS Quantum System: Internal Research Monograph},pdfauthor={Internal mathematical research collaboration}}
 
 \newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{sourceaccount}[theorem]{Source account}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -24,6 +25,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{openproblem}[theorem]{Open Problem}
+\newenvironment{sourceexplanation}{\par\smallskip\noindent\textit{Source-account rationale (not an independent proof).}\enspace}{\par\smallskip}
 \newcommand{\formalrecord}[1]{\par\smallskip\begingroup\small\sloppy\noindent\textbf{Formalization record.}\enspace #1\par\endgroup}
 \newcommand{\editornote}[1]{\par\smallskip\noindent\textit{Editorial scope: #1}\par}
 \newcommand{\OriginalLtwo}{\mathcal H_{\mathrm{orig}}}
@@ -32,7 +34,7 @@
 
 \title{\textbf{The Relative $\mathrm{SU}(2)$ BFSS Quantum System}\\[0.4em]
   \Large Mathematical Construction, Formal Verification, and the Spectral Research Frontier\\[0.6em]
-  \large Internal research monograph --- expert-onboarding edition 0.6}
+  \large Internal research monograph --- referee-response edition 0.6.1}
 \author{Internal mathematical research collaboration}
 \date{11 November 2026}
 
@@ -43,6 +45,7 @@
 \hypersetup{pageanchor=true}
 \chapter*{Editorial status and reader's contract}
 \addcontentsline{toc}{chapter}{Editorial status and reader's contract}
+This revision responds to an external AI referee review. The response and preserved original referee text are in \texttt{reviews/}; this is not human peer review, Lean requalification, or proof of a spectral result.\par\medskip
 This is a \emph{living internal mathematical research monograph}, intended as an
 onboarding and research instrument for mathematicians and mathematical physicists.
 This edition begins with a source-exact research scope and evidence contract
@@ -132,4 +135,12 @@ All original-source Lean qualifications and research-only audits are
 indexed in the companion evidence files; a literature citation is not
 a proof that the cited physical interpretation holds for this fixed
 relative SU(2) system.
+Independent recent preprints: K. Bajaj and H. W. Lin,\
+\emph{Solving the SU(2) BFSS model} (submitted 10 November 2026),\
+\url{https://arxiv.org/abs/2611.14512};\
+A. Michel, J. Scheinpflug and X. Yin,\
+\emph{99.9...\% of the SU(2) BFSS ground state}\
+(submitted 6 November 2026),\
+\url{https://arxiv.org/abs/2611.09837}.\
+These are external manuscripts; no source-to-source Lean verification or proof audit of their full arguments is claimed here.
 \end{document}

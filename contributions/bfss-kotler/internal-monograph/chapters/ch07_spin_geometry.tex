@@ -67,7 +67,7 @@ representation, topology, and covering map realize that familiar picture.
 In particular, a group isomorphism unspecified on the vector eight-module
 could introduce an unwanted triality identification.
 
-\begin{proposition}[Exact source perpendicular geometry; strict-qualified]
+\begin{sourceaccount}[Exact source perpendicular geometry; strict-qualified]
 The perpendicular source subspace
 \[
  W=e_8^\perp\subset V
@@ -83,8 +83,8 @@ word map
 \end{equation}
 This is a statement about the \emph{entire} source $K$, including both
 central signs, rather than merely a set of sample plane rotations.
-\end{proposition}
-\begin{proof}[Source-aligned mathematical explanation]
+\end{sourceaccount}
+\begin{sourceexplanation}
 The exact transport \texttt{source9ToEuclidean} identifies the equation
 $u_8=0$ with orthogonality to $e_8$. Its one-dimensional orthogonal
 complement has dimension eight. Under that transport the conditions
@@ -102,7 +102,7 @@ Consequently the range of the continuous map $\Phi$ is exactly $K$.
 This step is not justified solely by the familiar transitivity of
 $\mathrm{SO}(9)$ on spheres; it uses the accepted original perpendicular
 word theorem.
-\end{proof}
+\end{sourceexplanation}
 \formalrecord{Source modules
 \path{SpectralSourceNineAxisStabilizerWords.lean},
 \path{SpectralSourceNineAxisStabilizerConnectedness.lean}; declarations
@@ -112,7 +112,7 @@ word theorem.
 Strict-green path-connectedness gate
 \href{https://github.com/etblink/math/actions/runs/42426258689}{\#42426258689}.}
 
-\begin{theorem}[Compact and path-connected source stabilizer; strict-qualified]
+\begin{sourceaccount}[Compact and path-connected source stabilizer; strict-qualified]
 \label{thm:source-K-compact-connected}
 The actual subgroup $K$ is compact and path connected in its source PBW
 topology. The map $\Phi:P\to K$ in \eqref{eq:source-eight-word} is a
@@ -122,8 +122,8 @@ topological space $Y$ and $f:K\to Y$,
  f\text{ continuous}\quad\Longleftrightarrow\quad
  f\circ\Phi\text{ continuous}.
 \end{equation}
-\end{theorem}
-\begin{proof}[Proof structure]
+\end{sourceaccount}
+\begin{sourceexplanation}
 The parameter space $P\cong(S^7)^8$ is compact and path connected.
 The preceding proposition gives continuity and surjectivity of $\Phi$.
 Its image is thus compact and path connected, which proves the first
@@ -133,7 +133,7 @@ map is a quotient map, giving \eqref{eq:spin-quotient-continuity}.
 Notice that this argument gives a useful method for proving later
 continuity statements on \emph{the real source group}: it is enough
 to verify them after composition with an explicit eight-word map.
-\end{proof}
+\end{sourceexplanation}
 \formalrecord{Strict-green quotient gate
 \href{https://github.com/etblink/math/actions/runs/42429216538}{\#42429216538};
 \path{SpectralSourceNineAxisStabilizerQuotient.lean},
@@ -144,7 +144,7 @@ The second part of the geometry controls the sign that a spatial
 orthogonal matrix cannot see. In the source, the nontrivial negative
 Spin center is denoted $z_9=-1$.
 
-\begin{theorem}[Source ninth-axis covering; strict-qualified]
+\begin{sourceaccount}[Source ninth-axis covering; strict-qualified]
 \label{thm:axis-covering}
 The source projection $p:K\to H$ is surjective, continuous, and a
 two-sheeted covering map. Its kernel and fibers are exactly
@@ -157,8 +157,8 @@ explicit source-coordinate equivalence
 \begin{equation}\label{eq:axis-SO8}
  H\ \cong_{\mathrm{top.grp}}\ \mathrm{SO}(8).
 \end{equation}
-\end{theorem}
-\begin{proof}[Proof structure and provenance]
+\end{sourceaccount}
+\begin{sourceexplanation}
 The original Spin-vector action sends $z_9$ to the identity on $V$,
 while the source two-sign fiber theorem proves that two spin elements
 have the same full vector action only if they differ by $z_9$.
@@ -178,7 +178,7 @@ $1\times1$ identity block yields a fixed-axis $\mathrm{SO}(9)$ matrix.
 The source defines both maps, proves the group identities, and proves
 both directions continuous, yielding \eqref{eq:axis-SO8} as an actual
 \texttt{ContinuousMulEquiv}.
-\end{proof}
+\end{sourceexplanation}
 \formalrecord{Original source files
 \path{SpectralSourceNineAxisProjection.lean},
 \path{SpectralSourceNineAxisCovering.lean},

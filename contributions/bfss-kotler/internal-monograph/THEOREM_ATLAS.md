@@ -2,7 +2,7 @@
 
 **Status:** internal working inventory, not a new theorem or a fresh CI acceptance.
 
-**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (mathematical baseline); theorem citations were rechecked against the monograph branches through `c7f2c788e1e8` for the editorial evidence audit. The machine-readable companion is `THEOREM_ATLAS.json`.
+**Source snapshot:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (mathematical baseline); theorem citations were rechecked against the monograph branches through `c348da90a3db` for the editorial evidence audit. The machine-readable companion is `THEOREM_ATLAS.json`.
 
 The *dependencies* listed below are **narrative/scientific prerequisites**, not necessarily the exact Lean import DAG. A strict-green receipt is always tied to its tested commit; the source blob identifies the file inspected for this manuscript.
 
@@ -17,12 +17,6 @@ The *dependencies* listed below are **narrative/scientific prerequisites**, not 
 | `PENDING_STRICT_GATE` | Candidate present; no qualification conclusion as of snapshot |
 | `ANALYTICAL_CONDITIONAL` | Conventional argument under stated assumptions, not a Lean-qualified physical source theorem |
 | `OPEN_PROOF_OBLIGATION` | Research target, no exact accepted Lean theorem |
-
-## Edition 0.5 — bounded field, conditional spectral join, and separate unification charter
-
-The previously indexed N-01 through N-05 original Fock-field entries and O-01 through O-05 / C-01 through C-02 research frontier entries now have full mathematical exposition in Chapters 12--14. N-05 strict run #43095354808 was **still queued without jobs or a terminal conclusion** at the editorial check; no status is promoted. The 37-record theorem atlas remains restricted to source mathematical declarations and explicit original spectral obligations. Prospective three-generation/Hopf/GUT/ToE ideas are tracked separately in `UNIFICATION_RESEARCH_CHARTER.md` rather than mislabelled as Lean-qualified theorems.
-
-The candidate-neutral November 10 notes preserve source-level negative results: three color labels do not define three SU(2)-invariant family projectors, and an individually labelled original gamma + eigenspace fails a basic antipodal gauge-naturality test. Their topology and representation deductions are conditional on specified source identifications and are not newly compiled Lean statements. A speculative GUT/ToE claim has **no** physical or empirical qualification in this edition.
 
 ## Edition 0.4 — energy, growth and compactness joining map
 
@@ -46,6 +40,7 @@ Chapters 10–11 now present full mathematical narrative and source-proof depend
 | `G-01` | 5 | The original gauge-invariant physical Hilbert subspace | `SOURCE_DEFINITION` | `D-01`, `D-02` |
 | `G-02` | 5 | Nonzero normalizable physical radial bump | `HISTORICAL_STRICT` | `G-01` |
 | `G-03` | 5 | Nonzero SU2-invariant original Fock vacuum and projection | `INTEGRATED_STRICT` | `D-02` |
+| `G-04` | 5 | Original maximal Gauss joint kernel iff physical space | `HISTORICAL_STRICT` | `G-01` |
 | `H-01` | 6 | Density of the original physical charge domain | `HISTORICAL_STRICT` | `D-03`, `G-01` |
 | `H-02` | 6 | The original normalized self-adjoint physical Hamiltonian | `HISTORICAL_STRICT` | `H-01` |
 | `H-03` | 6 | Identity of the native and historical paired physical Hamiltonians | `HISTORICAL_STRICT` | `H-02` |
@@ -167,6 +162,26 @@ Nonzero gauge-invariant Fock vacuum and nonzero gauge-fixed orthogonal projectio
 **Integrated gate:** https://github.com/etblink/math/actions/runs/42530241914
 
 **Boundary:** A fiber state is not automatically a nonzero gauge-physical bosonic wavefunction or a Hamiltonian eigenstate.
+
+### G-04 — Original maximal Gauss joint kernel iff physical space
+
+**Status:** `HISTORICAL_STRICT`. **Chapter:** 5.
+
+The original full-L2 joint domain/kernel of all three maximal strong
+SU(2) color generators equals the genuine physical gauge-fixed subspace.
+
+**Exact declarations:**
+`FCP.BFSSSU2PhysicalDomainL6H5E8AA.actualOriginalJointKernel_fixed_fullGauge`,
+`actualOriginalJointKernel_iff_fullGaugeFixed`,
+`actualOriginalJointKernel_iff_physical`.
+
+**Original historical source:** [SU2BFSSPhysicalDomainL6H5E8AAOriginalSU2JointGaussKernelPhysicalIffProbe.lean](https://github.com/etblink/Foundational-Convergence-Program/blob/68eb2b1d0d7405eb6728dbe98c92713f08885e3e/experiments/openai-math-su2-physical-domain/SU2BFSSPhysicalDomainL6H5E8AAOriginalSU2JointGaussKernelPhysicalIffProbe.lean)
+
+**Source blob:** `edb1567774ad3616ad9f8b6098ebd7604596191f`.
+
+**Exact historical strict run:** https://github.com/etblink/Foundational-Convergence-Program/actions/runs/38994451291
+
+**Boundary:** Does not imply equality of maximal domains and invariant SmoothCore, nor any full operator Spin(9) covariance theorem.
 
 ### H-01 — Density of the original physical charge domain
 
@@ -357,7 +372,7 @@ Binds source gauge color matrix to independent original S1J Fin24×Fin2 real Maj
 
 **Exact declarations:** `FCP.BFSSC48C0BOriginalSourceGaugeS1JMatrixIdentity.sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix`.
 
-**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean)
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean ](https://github.com/etblink/math/blob/d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean)
 
 **Inspected file blob:** `dde53d8663f00d6832aa4cbb1eafbe7e4746eb1a`.
 
@@ -373,7 +388,7 @@ One-sided Spin9 operator automorphism covariance of the gauge-transformed active
 
 **Exact declarations:** `FCP.BFSSC48C1A0OriginalActiveGammaS1JSpinCompatibility.spin9_activeGamma_S1J_gauge_commute`.
 
-**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean)
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean ](https://github.com/etblink/math/blob/d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean)
 
 **Inspected file blob:** `4c9a7d183e65d13b33ab9694653f3e0a74741747`.
 
@@ -389,7 +404,7 @@ Exact compact source Spin9 stabilizer K to fixed-axis SO9 stabilizer H covering 
 
 **Exact declarations:** `FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_isCoveringMap_pbw`, `FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_fiber_ncard`.
 
-**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean)
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean ](https://github.com/etblink/math/blob/d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean)
 
 **Inspected file blob:** `5121baf4fc003c01854dbb4fe28038a04e961e76`.
 
@@ -405,7 +420,7 @@ Concrete topological group equivalence H ≃ₜ* SO(8) via literal first-eight c
 
 **Exact declarations:** `FCP.BFSSSourceNineAxisCoordinateEquivalence.source9Axis8CoordinateContinuousMulEquiv`.
 
-**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean ](https://github.com/etblink/math/blob/65f9de5fc5932c415b7e2dca9d4e9728aac1d84e/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean)
+**Source:** [ lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean ](https://github.com/etblink/math/blob/d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean)
 
 **Inspected file blob:** `66a67b089977810c1fce0512f1e5631bb4026342`.
 

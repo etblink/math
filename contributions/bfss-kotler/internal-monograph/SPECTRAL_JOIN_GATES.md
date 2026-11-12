@@ -21,3 +21,12 @@
 - **Definite negative**: a full BFSS mass gap does not follow from an eigenvalue in a reducing sector; distinguish positive point spectrum and full spectral gap.
 
 Source histories: FCP G4--K9D #38011995220, BE #39088799248, BH #39096180117; math source energy #42325087575, linear-moment #42315568670, weighted-closure #42320696105; conditional `BFSS_SPECTRAL_WHOLE_SECTOR_OSCILLATOR_EXCLUSION_2026_11_07.md` and `BFSS_SPECTRAL_CONFINEMENT_AB_AUDIT_2026_11_06.md`.
+
+## Independent referee response: revised analytical priority (11 Nov 2026)
+
+1. **Source potential identity:** original `(h,m)=(1,0)` paired Pauli bosonic potential equals the exact wedge expression in the chosen normalization; no generic `AlgebraData` theorem is enough.
+2. **Fixed-u slicing:** at fixed nonzero first color row use a measurable orthogonal frame in the other two color rows; prove the Jacobian-one Fubini and gradient projection inequality. *Do not introduce fictitious moving-axis derivative loss where u is not being differentiated*.
+3. **Finite source field:** connect signed `deformedFermionField 1 0` to the audited 48x48 skew CAR coefficient and prove a bound with an explicit original-source constant.
+4. **Spin-sector transfer:** verify original vector/torus/gauge/closed-charge covariance, nonempty high isotypes, true transverse oscillator band projection on that carrier.
+5. **Adversarial packets:** require normalized original physical-domain escaping vectors; bounded form energy tests first-moment coercivity. Calling them a Weyl sequence additionally requires the operator-norm residual and weak escape.
+6. **External route comparison:** review Bajaj–Lin arXiv:2611.14512 §4.1 and Michel–Scheinpflug–Yin arXiv:2611.09837 as externally authored research, with no automatic Lean or physical claim promotion.

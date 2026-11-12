@@ -45,7 +45,7 @@ check('\\chapter{Scope, Physical Context, and the Research Problem}' in SOURCE,
 records = ATLAS['records']
 ids = [r['id'] for r in records]
 status = set(ATLAS['status_vocabulary'])
-check(len(records) == 37 and len(set(ids)) == 37, '37 unique frozen theorem atlas records')
+check(len(records) == 38 and len(set(ids)) == 38, '38 unique frozen theorem atlas records')
 check(all(r['evidence_status'] in status for r in records), 'Atlas statuses belong to accepted vocabulary')
 check(all(r.get('strict_run') for r in records if r['evidence_status'] == 'INTEGRATED_STRICT'),
       'All integrated strict records link exact run receipts')
@@ -55,6 +55,8 @@ check(ATLAS['snapshot_commit'] == 'd4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5',
 by_id = {r['id']: r for r in records}
 check(by_id['H-03']['evidence_status'] == 'HISTORICAL_STRICT',
       'Hamiltonian identity remains historically qualified, not silently ported')
+check(by_id['G-04']['evidence_status'] == 'HISTORICAL_STRICT',
+      'Gauss joint-kernel theorem historically qualified and indexed')
 check(by_id['N-05']['evidence_status'] == 'PENDING_STRICT_GATE',
       'NORM0D D1-B representative transport not silently promoted')
 check(by_id['C-01']['evidence_status'] == 'ANALYTICAL_CONDITIONAL',

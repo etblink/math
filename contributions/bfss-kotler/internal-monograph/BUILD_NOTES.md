@@ -93,3 +93,12 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
 - Verified `python3 tools/audit_manuscript.py`: **39/39 structural checks pass**.
 - Verified local `latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=/mnt/data/_bfss_v06_build main.tex`: **88 pages**, zero LaTeX warnings, undefined refs or overfull boxes. Selected pages rendered and visually inspected.
 - No mathematical Lean module, historical FCP proof, source manifest, CI workflow, Pages site or webhook is altered. Source-only commit to monograph branch is permitted; unified branch stays separate pending editorial acceptance and branch reconciliation.
+
+## Edition 0.6.1 (external-referee response, 2026-11-11 Pacific)
+
+- Preserved independent Grok report and authored a specific acceptance/qualification ledger for findings F1–F6.
+- Repaired the one-color analytical argument's exposition and source-status boundaries, and explicitly derived the oscillator/color-average coefficient.
+- Indexed historical Gauss original maximal-generator kernel source G-04 and corrected source-link snapshot hygiene.
+- Distinguished hypothetical noncompactness test families from operator Weyl sequences.
+- Added source-account provenance environments for dependency-only 'proofs' and two contemporaneous arXiv preprints as external context, not source-authoritative theorems.
+- All mathematical proof modules, original FCP history, strict workflows and unified integration branch remain untouched.

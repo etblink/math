@@ -1,3 +1,7 @@
+# Editorial review queue — external-referee response 0.6.1
+
+The independent AI report is preserved in `reviews/`. The source-first Project Lead adjudication is in `reviews/PROJECT_LEAD_RESPONSE_2026_11_11.md`. The report's positive finding is conditional, and its F3 heuristic is not a source-physical Weyl sequence. No new mathematical gate is qualified by this review. The external positive-bound-state preprints should be source-compared before future spectral route promotion.
+
 # Internal monograph editorial and scientific review queue (v0.6)
 
 This queue records **tasks for review**, not claims of pending Lean gates. It is independent of GitHub Actions and must not be converted automatically into scientific qualifications.
@@ -42,10 +46,3 @@ This queue records **tasks for review**, not claims of pending Lean gates. It is
 - Preserve the original seven-source-file/atlas v0.1 architecture, now extended additively; do not touch accepted mathematical modules or historical handoff files.
 - Each accepted theorem must cite its exact source file and tested receipt. In this narrative edition, **formalization records point to sources; they are not a substitute for the displayed conventional mathematics**.
 - The future external monograph is a separate publication stage after the substantive research and independently verified proofs; do not repurpose an internal v0.2 scaffold as a completed public research paper.
-
-## Preserved Edition 0.5 candidate-neutral research reviews
-
-- NORM0C's literal source fixed-B observable is `i / (1 + GramTrace)` times the true 9-by-9 Gram/Fock numerator, not a substitute for the original linear physical fermion term. D1-B run `#43095354808` was queued at the snapshot and retains `PENDING_STRICT_GATE` status.
-- The conditional first-weight thresholds `lambda_2 > m+12` (operator-valued) and `lambda_2 > m+6` (hypothetical physical Fock-vector lift) are not interchangeable. The example `14-8sqrt(3)` remains conditional on source binding and physical-sector coercivity.
-- The color-projector no-go is conventional algebra, not a new source-qualified Lean theorem or a general no-go for emergent composites. The source gamma bundle/Hopf and gauge-descent arguments are conditional, and rank-eight eigenspaces are not identical to the moving 56/64 quadratic coefficient bundles.
-- A GUT or ToE requires emergent four-dimensional chiral physical observables, actual gauge/charge assignments, interactions, gravity for a ToE, and independent empirical discriminators. No such physical model has been established.

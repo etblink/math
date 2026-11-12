@@ -48,6 +48,47 @@ not an identification with the physical BFSS Hamiltonian. In
 particular, the projection to a low transverse energy band is not
 automatically a reducing projection for the full interacting form.
 
+\section{Fixed-color-row slicing: an explicit analytic interface}
+\label{sec:fixed-color-slice}
+For a fixed nonzero first color row $u$, select an orthogonal frame
+$(a,e_2(u),\dots,e_9(u))$ and write the remaining two rows as in
+\eqref{eq:spectral-onecolor}. At this \emph{fixed} $u$, the map
+$(x^2,x^3)\mapsto(t_2,z_2,t_3,z_3)$ is orthogonal. Hence
+\begin{equation}\label{eq:slice-jacobian}
+  dx^2\,dx^3 =dt_2\,dz_2\,dt_3\,dz_3,\qquad
+  |\nabla_z f|^2\le |\nabla_{x^2,x^3}f|^2.
+\end{equation}
+For a smooth compactly supported vector-valued $f$, if the \emph{original
+concrete} bosonic potential agrees with the prescribed wedge expression,
+$V(X)=\sum_{A<B}\|x^A\wedge x^B\|^2$ in the exact source
+normalization, then
+\begin{equation}\label{eq:slice-wedge}
+ V(X)\ge r^2 (\|z_2\|^2+\|z_3\|^2).
+\end{equation}
+Consequently, if $0<\beta<\tfrac12$ and the concrete potential identity
+has been proved, the kinetic and bosonic portion of the \emph{smooth-core}
+energy obeys the formal integrated comparison
+\begin{equation}\label{eq:fixed-row-energy-comparison}
+ \tfrac12\|\nabla f\|_2^2+\int V\|f\|^2
+ \ge (\tfrac12-\beta)\|\nabla f\|_2^2
+ +\int\!du\,dt_2\,dt_3
+   \int_{(u^\perp)^2}
+   (\beta\|\nabla_z f\|^2+r^2\|z\|^2\|f\|^2)\,dz.
+\end{equation}
+Here $u=0$ is a null set, and choosing the frame measurably is sufficient
+for fiberwise integration. No derivative of $e_j(u)$ is taken in
+\eqref{eq:fixed-row-energy-comparison}, because the differentiated
+variables are the \emph{other two} color rows with $u$ fixed.
+Thus a moving-frame angular-error estimate need not be a prerequisite
+for this particular slicing strategy. This elementary analytic comparison
+is \emph{not} an accepted source-specific theorem: the original Pauli
+potential identity, exact measure/disintegration statement, measurable
+fiberwise low-level projection, physical Spin(9) branching on the
+\emph{original Fock-vector} fiber, and closed physical domain transport
+remain to be established. The separate numerical constant in the
+one-color estimate may be wrong if a different source normalization is
+silently substituted.
+
 \section{The stabilizer and the branching inequality}
 Fix the original spatial unit vector $a$. The source subgroup
 $K_a\subset\operatorname{Spin}(9)$ is its stabilizer. The accepted
@@ -79,8 +120,11 @@ On the original 48-real-label module, a spatial plane rotation acts
 in twenty-four real rotation planes with half-angle frequency.
 For a suitable CAR implementer of the Lie generator, each plane
 contributes a fermionic Hermitian weight $\pm\frac14$.
-Thus the first-weight interval on the Fock-vector module is
-$[-6,6]$ in the contemplated canonical lift.
+Thus the first-weight interval $[-6,6]$ is an \emph{infinitesimal Cartan
+implementer calculation}; it becomes a weight bound for the actual
+source Spin(9) Fock-vector representation only after the exact
+continuous group implementation, torus normalization and central sign
+have been established.
 But an endomorphism fiber is $\operatorname{End}_{\mathbb C}\Fermion
 \simeq\Fermion\otimes\Fermion^*$, so the action by conjugation
 contains \emph{both} output and dual-input weights. Its first weight
@@ -152,9 +196,28 @@ color sphere and using source-compatible spatial rotations gives,
 \begin{equation}\label{eq:sector-margin}
   \sqrt\beta\,(m+9)-C_B,
 \end{equation}
-provided oscillator levels up to $m$ are genuinely absent and the
-original fermionic term is bounded by $C_B\|X\|$. For the proposed
-original source finite-CAR constant $C_B=8\sqrt3$, the illustrative
+provided oscillator levels up to $m$ are genuinely absent on
+that same source-physical high-type sector and the original fermionic
+term is bounded by $C_B\|X\|$.
+
+The numerical coefficient is a \emph{two-step} result:
+\begin{equation}\label{eq:oscillator-color-factor}
+  2\sqrt\beta\,(m+9)\,I_f(v)
+  \ge 2\sqrt\beta\,(m+9)\cdot\tfrac12 J_f
+  =\sqrt\beta\,(m+9)J_f.
+\end{equation}
+Here $J_f=\int\|X\|\|f(X)\|^2\,dX$ and
+$I_f(v)=\int\|v^{\mathsf T}X\|\|f(X)\|^2\,dX$.
+The estimate $I_f(v)\ge J_f/2$ depends on more than the pointwise
+color-sphere inequality: for a genuine gauge-physical state,
+$\|f(X)\|^2$ is gauge-invariant almost everywhere, so $I_f(v)$ is
+independent of unit color direction $v$; averaging over the sphere
+and using $\int_{S^2}\|v^{\mathsf T}X\|\,d\sigma(v)
+\ge\tfrac12\|X\|$ then yields $I_f(v)\ge J_f/2$.
+The original SU(2) gauge action, Haar/sphere normalization,
+measurability and source-physical state assumption must be supplied
+explicitly before using this as a proved core inequality.
+For the proposed original source finite-CAR constant $C_B=8\sqrt3$, the illustrative
 choice $\beta=0.49$ and $m=11$ gives the strictly positive margin
 \begin{equation}\label{eq:sector-example-margin}
  \sqrt{0.49}(11+9)-8\sqrt3=14-8\sqrt3>0.

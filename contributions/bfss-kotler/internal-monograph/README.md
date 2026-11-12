@@ -15,7 +15,7 @@ This directory helps an independent mathematician or mathematical physicist unde
 - `appendices/historical_lineage.tex`, `HISTORICAL_LINEAGE.md` — FCP-to-`etblink/math` dated research evolution, later qualifications correcting older as-of statuses.
 - `appendices/notation_normalization.tex` — original indices, Fock/CAR, gamma matrices, exact colors, charge/form coefficients, central signs, field normalization, and operator versus Fock-vector carrier distinctions.
 - `appendices/negative_knowledge.tex` — bounded failures, explicit no-go scope, source provenance, and review methodology.
-- `THEOREM_ATLAS.json` and `THEOREM_ATLAS.md` — **37** source-linked qualification and theorem/dependency records. The editorial atlas does not substitute for the exact accepted Lean file and strict run evidence.
+- `THEOREM_ATLAS.json` and `THEOREM_ATLAS.md` — **38** source-linked qualification and theorem/dependency records. The editorial atlas does not substitute for the exact accepted Lean file and strict run evidence.
 - `SPECTRAL_JOIN_GATES.md`, `UNIFICATION_RESEARCH_CHARTER.md` — prospective research gates and explicit scientific stop conditions.
 - `CONSISTENCY_AUDIT_2026_11_11.md` — detailed cross-chapter review and unresolved claims.
 - `tools/audit_manuscript.py` — offline structural checks, *not* a Lean or mathematical proof certification.
@@ -39,17 +39,15 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
   -outdir=/tmp/bfss-monograph-build main.tex
 ```
 
-The 0.6 preview is **88 pages**, compiled locally with **zero LaTeX warnings, zero overfull lines, and zero unresolved internal references**. A selection of beginning, chapter-transition, and appendix pages was rendered locally and inspected. This workflow requires **no GitHub Actions, Pages, webhooks, or hosted LaTeX**. The review PDF is an output, not committed source.
+The 0.6 referee-response baseline preview is **88 pages**, compiled locally with **zero LaTeX warnings, zero overfull lines, and zero unresolved internal references**. A selection of beginning, chapter-transition, and appendix pages was rendered locally and inspected. This workflow requires **no GitHub Actions, Pages, webhooks, or hosted LaTeX**. The review PDF is an output, not committed source.
 
 ## Preservation and eventual integration
 
 The authorized editorial branch is `docs/bfss-internal-research-monograph-20261111`. Work on this branch may change only monograph files; no Lean proofs, frozen manifests, CI workflows, original FCP branches, or `main` are to be rewritten for editorial convenience. The unified integration branch remains separate until an explicit reviewed fast-forward decision. If it advances, incorporate/reconcile those changes before attempting a non-force fast-forward.
 
-## Collaboration rules retained from earlier editions
+## Independent referee response (edition 0.6.1)
 
-1. Do not substitute a green workflow, symbolic finite diagnostic or paper citation for a complete mathematical theorem and its exact hypotheses.
-2. Preserve historically qualified results together with source blob IDs and failure causes; never silently rewrite the original FCP record.
-3. Restrict editorial Git changes to this monograph branch and its source directory. Do not touch accepted Lean modules, manifests, original proof branches or `main`.
-4. Compile and validate the book locally; do not depend on GitHub Actions, Pages, webhooks, hosted LaTeX, or live services to validate its scientific statements.
-5. Keep generated PDFs and `.aux`/`.toc`/`.log`/`.fls`/`.fdb_latexmk` build files out of source commits.
-6. Promote to unified by a verified non-force fast-forward only after reviewer acceptance and reconciling any intervening changes on unified.
+- `reviews/GROK_REFEREE_REPORT_2026_11_11.md` preserves the external report without treating it as an independent Lean compilation or human peer review.
+- `reviews/PROJECT_LEAD_RESPONSE_2026_11_11.md` adjudicates F1–F6 and records an alternate current-literature line for future source-accurate comparison.
+- Chapter 13 now displays the fixed-row analytic slicing interface and the factor-two sphere-average cancellation. Chapter 10 explicitly distinguishes a hypothetical energy-bounded escaping sequence from a genuine operator Weyl sequence.
+- The historical Gauss-kernel theorem is now G-04 in the **38-record** atlas; the mathematical baseline and accepted parent-source statuses remain unchanged.
