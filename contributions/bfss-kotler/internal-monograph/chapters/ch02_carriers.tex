@@ -85,6 +85,36 @@ The distinction underlies the separate normalized-field multiplier program
 of Chapter~\ref{ch:norm}; it cannot be bypassed by pretending that all
 bounded functions belong to $L^2$.
 
+\begin{proposition}[Essentially bounded fields on the original $L^2$ carrier;
+conventional functional analysis]\label{prop:bounded-l2-multiplier}
+Let $B:\mathcal X\to\operatorname{End}_{\mathbb C}(\mathcal F)$ be a
+strongly measurable field such that
+$\operatorname*{ess\,sup}_{x\in\mathcal X}\|B(x)\|\leq C<\infty$.
+Then pointwise multiplication
+$(M_B\psi)(x)=B(x)\psi(x)$, interpreted almost everywhere,
+defines a bounded complex-linear operator
+$M_B:\mathscr H\to\mathscr H$ with $\|M_B\|\leq C$.
+\end{proposition}
+\begin{proof}
+In the finite-dimensional fiber, the product of a measurable operator
+field and a measurable vector representative is measurable. If two
+representatives of $\psi$ agree almost everywhere, their products
+with $B$ do likewise. The map is therefore well-defined on $L^2$
+equivalence classes, and
+\[
+ \|M_B\psi\|_{\mathscr H}^{2}
+ =\int_{\mathcal X}\|B(x)\psi(x)\|_{\mathcal F}^{2}\,dx
+ \leq C^2\int_{\mathcal X}\|\psi(x)\|_{\mathcal F}^{2}\,dx.
+\]
+Linearity passes from pointwise linearity to the equivalence classes.
+\end{proof}
+This is a conventional functional-analytic statement, not a new source
+Lean certificate. The measurability and essential bound must be established
+for an \emph{actual source field} before it can be applied there. An
+auxiliary endomorphism-valued construction, or a bound at a single
+configuration, does not supply those hypotheses on the original
+Fock-\emph{vector} Hilbert space.
+
 \begin{definition}[Original smooth test-function core]
 The original source core is
 \begin{equation}\label{eq:smooth-core}

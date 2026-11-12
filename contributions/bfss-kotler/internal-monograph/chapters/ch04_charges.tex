@@ -86,6 +86,29 @@ spectral theorem.
 \texttt{coreForm}, and \texttt{coreForm\_nonneg} in
 \texttt{Core.lean}. Atlas D-02, D-03.}
 
+\section{The polarized charge form and its precise limitation}
+From the exact charge column \eqref{eq:charge-column}, define the
+Hermitian sesquilinear expression on the source smooth core
+\begin{equation}\label{eq:polarized-charge-form}
+ q_0(\psi,\phi)=\frac1{16}\sum_{\alpha=0}^{15}
+ \langle\iota Q_\alpha\psi,\iota Q_\alpha\phi\rangle_{\mathscr H}.
+\end{equation}
+Its diagonal is the nonnegative source quadratic form
+\eqref{eq:core-form}. Cauchy--Schwarz in the finite Hilbert direct
+sum $\mathscr H^{16}$ gives
+\begin{equation}\label{eq:polarized-charge-bound}
+ |q_0(\psi,\phi)|^2\leq q_0(\psi)\,q_0(\phi).
+\end{equation}
+These are conventional core-level identities, not additional Lean
+qualification. They explain why the graph norm of the charge
+column is natural for a closure argument, but they do \emph{not}
+themselves prove closability, density or completeness on the
+gauge-invariant physical Hilbert space. The original physical domain
+and the natural domain of the adjoint square are distinct questions
+resolved in the historically qualified BA--BH sequence and carefully
+distinguished from current imported-source qualification in
+Chapter~\ref{ch:hamiltonian}.
+
 \section{Formal symmetry on test functions is not self-adjointness}
 The source proves a core-symmetry theorem for each charge. A typical
 integration-by-parts identity is

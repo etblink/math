@@ -1,6 +1,6 @@
 # The Relative SU(2) BFSS Quantum System — internal research monograph
 
-**Edition 0.6 (2026-11-11): 88-page locally compiled expert-onboarding review edition.** All **17 planned chapters** contain mathematical or explicitly bounded research exposition, with a fully written Chapter 1 and source-exact notation and negative-knowledge appendices. **This is a working internal manuscript, not a published theorem or a completed scientific research program.**
+**Edition 0.6.1 (2026-11-11): 90-page locally compiled referee-response review edition, with 40 offline checks reported at commit `900859ed`.** All **17 planned chapters** contain mathematical or explicitly bounded research exposition, with a fully written Chapter 1 and source-exact notation and negative-knowledge appendices. **This is a working internal manuscript, not a published theorem or a completed scientific research program.**
 
 This directory helps an independent mathematician or mathematical physicist understand, critique, reproduce, and extend the *original source-exact relative SU(2) quantum model* and its formal verification. Its ultimate external successor will be drafted only after the relevant scientific results and formal proofs are complete and independently reviewed.
 
@@ -39,7 +39,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
   -outdir=/tmp/bfss-monograph-build main.tex
 ```
 
-The 0.6 referee-response baseline preview is **88 pages**, compiled locally with **zero LaTeX warnings, zero overfull lines, and zero unresolved internal references**. A selection of beginning, chapter-transition, and appendix pages was rendered locally and inspected. This workflow requires **no GitHub Actions, Pages, webhooks, or hosted LaTeX**. The review PDF is an output, not committed source.
+The completed 0.6.1 referee-response checkpoint was reported as **90 pages**, with **40 offline structural checks passed** at commit `900859ed`. That was a local, GitHub-hosted-service-independent review; subsequent editorial work requires its own new compilation and inspection. A selection of beginning, chapter-transition, and appendix pages was rendered locally and inspected. This workflow requires **no GitHub Actions, Pages, webhooks, or hosted LaTeX**. The review PDF is an output, not committed source.
 
 ## Preservation and eventual integration
 
@@ -51,3 +51,7 @@ The authorized editorial branch is `docs/bfss-internal-research-monograph-202611
 - `reviews/PROJECT_LEAD_RESPONSE_2026_11_11.md` adjudicates F1–F6 and records an alternate current-literature line for future source-accurate comparison.
 - Chapter 13 now displays the fixed-row analytic slicing interface and the factor-two sphere-average cancellation. Chapter 10 explicitly distinguishes a hypothetical energy-bounded escaping sequence from a genuine operator Weyl sequence.
 - The historical Gauss-kernel theorem is now G-04 in the **38-record** atlas; the mathematical baseline and accepted parent-source statuses remain unchanged.
+
+## Edition 0.7 in development
+
+The isolated manuscript branch is undergoing a new source-and-proof exposition pass, beginning with Chapters 2--4. This is an **in-progress** editorial increment, not a completed 0.7 release. No new Lean gate or unified-branch fast-forward follows from it. See `EDITORIAL_REVIEW_QUEUE.md`.

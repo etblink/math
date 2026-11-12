@@ -52,6 +52,51 @@ $\Gamma_p\Gamma_q+\Gamma_q\Gamma_p=2\delta_{pq}I$.
 Any transfer from real Clifford elements into physical Fock operators must
 preserve this normalization, including signs under the Spin double cover.
 
+\section{Explicit mode pairing in the source normalization}
+Order the 48 original labels into pairs $(p_a,q_a)$,
+$a=1,\ldots,24$, and abbreviate the corresponding source
+operators by $\theta_p$. Set
+\begin{equation}\label{eq:source-mode-pair}
+ c_a=\frac{\theta_{p_a}+i\theta_{q_a}}{\sqrt{2}},
+ \qquad c_a^\dagger=\frac{\theta_{p_a}-i\theta_{q_a}}{\sqrt{2}}.
+\end{equation}
+The factor $1/\sqrt2$ is forced by the original delta-one
+Majorana anticommutator, not chosen from another Clifford convention.
+
+\begin{proposition}[Complex mode CAR; conventional calculation]
+The operators \eqref{eq:source-mode-pair} obey
+\begin{equation}\label{eq:source-complex-car}
+ \{c_a,c_b\}=0,\qquad
+ \{c_a^\dagger,c_b^\dagger\}=0,\qquad
+ \{c_a,c_b^\dagger\}=\delta_{ab}I.
+\end{equation}
+Moreover, $n_a=c_a^\dagger c_a$ is a projection, and the
+$n_a$ commute pairwise.
+\end{proposition}
+\begin{proof}
+The displayed adjoint follows from source self-adjointness.
+For a single pair, $\theta_{p_a}^2=\theta_{q_a}^2=I/2$
+and $\{\theta_{p_a},\theta_{q_a}\}=0$, so
+\[
+ c_a^2=\frac12\bigl(\theta_{p_a}^2-\theta_{q_a}^2+
+ i\{\theta_{p_a},\theta_{q_a}\}\bigr)=0.
+\]
+Similarly $c_ac_a^\dagger+c_a^\dagger c_a
+=\theta_{p_a}^2+\theta_{q_a}^2=I$.
+Distinct pairs anticommute because every cross-pair Majorana
+anticommutator vanishes. Finally
+$n_a^2=c_a^\dagger(1-n_a)c_a=n_a$ follows from $c_a^2=0$;
+cross-pair CAR give $n_an_b=n_bn_a$.
+\end{proof}
+The standard occupation model $\bigwedge^\bullet\mathbb C^{24}$
+has one basis vector per subset of the 24 modes and hence dimension
+$2^{24}$. This calculation explains the dimension and normalization;
+it does \emph{not} independently identify a new manuscript
+representation with the accepted source algebra action. Nor is an
+arbitrary pairing automatically Spin(9)- or SU(2)-equivariant:
+implementers, center signs and gauge compatibility require distinct
+source-level arguments.
+
 \begin{sourceaccount}[Dimension count of the original Fock fiber]
 At $N=2$ there are $16\cdot3=48$ real Majorana labels and 24 complex
 fermion modes. The usual finite complex fermion Fock representation of

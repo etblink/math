@@ -1,3 +1,31 @@
+# Edition 0.7 development — editorial increment 1 (not a release)
+
+This is a substantive source-checked exposition pass after the 0.6.1 referee response.
+The pinned original `Core.lean` (blob `9882359ced78b0a3bd7e2f057974bd0a031b3e60`)
+and `DeformedCharge.lean` (blob `c27c913c44090100f0c714e3eb34e25205f4d2d3`)
+were examined for original carrier types, Majorana CAR, exact charge sums,
+core-form coefficient and energy identity.
+
+- **Ch. 2:** add a conventional bounded-multiplier result with explicit
+  a.e.-representative and essential-bound hypotheses; no source-specific multiplier qualification.
+- **Ch. 3:** derive the 24 complex mode CAR with source delta-one normalization;
+  arbitrary pairing is not an equivariant Spin/gauge lift.
+- **Ch. 4:** display polarized charge core form and Cauchy--Schwarz;
+  the physical closed-domain operator remains separate.
+- **README:** synchronize the completed 0.6.1 historical review baseline
+  (90-page local build and 40 offline checks as reported at commit `900859ed`).
+
+**Verification outstanding:** a complete local LaTeX build and visual
+inspection for the developing 0.7 text have not been performed in this
+execution environment; the 0.6.1 checks are not represented as new
+0.7 validations. No new Lean theorem, scientific qualification or
+unified-branch fast-forward is claimed.
+
+Next: source-first scrutiny of Chapters 5--14, followed by historical
+narrative consolidation and candidate-neutral Chapters 15--17 editing.
+
+---
+
 # Editorial review queue — external-referee response 0.6.1
 
 The independent AI report is preserved in `reviews/`. The source-first Project Lead adjudication is in `reviews/PROJECT_LEAD_RESPONSE_2026_11_11.md`. The report's positive finding is conditional, and its F3 heuristic is not a source-physical Weyl sequence. No new mathematical gate is qualified by this review. The external positive-bound-state preprints should be source-compared before future spectral route promotion.
