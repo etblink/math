@@ -57,3 +57,8 @@ pdfinfo /tmp/bfss-monograph-build/main.pdf
 Check warning/error logs, scan every rendered page, verify bibliography, source theorem statements, notation and references, and obtain an independent adversarial mathematical read. Document the exact commit and results in BUILD_NOTES.md. Do not fast-forward the unified branch without owner review and another ancestry comparison.
 
 **No Lean proofs, frozen FCP history, main branch, CI workflows, or unified integration source have been changed by this development checkpoint.**
+
+
+## Addendum — source access and Edition 0.7 build now unblocked
+
+The earlier build-blocked paragraphs above describe the preceding checkpoint and are superseded by this addendum. On 11 November 2026 Pacific, the owner supplied the complete manuscript ZIP, enabling a genuine local TeX build. After repairing the source identifier, long-path layout and clipped timeline labels, the 112-page book passed 65/65 structural checks, compiled with zero LaTeX warnings or overfull boxes and rendered all 112 pages for contact-sheet screening. The current primary receipt is `RELEASE_CANDIDATE_VALIDATION_2026_11_11.md`. Independent mathematical referee review, substantive release acceptance and integration remain pending.

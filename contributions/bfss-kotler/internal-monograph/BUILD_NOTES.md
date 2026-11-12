@@ -119,3 +119,10 @@ Replaced the brief PDF atlas placeholder with a fully printed 38-record source/e
 ## Offline Edition 0.7 release-candidate driver (fixture-tested only)
 
 A source-only `tools/release_candidate_build.py` driver runs the full offline audit, local `latexmk` compilation, log checks, `pdfinfo`, page rendering, and Pillow contact sheets. It writes a manifest that explicitly marks **visual** and **scientific referee** review as not yet performed. From the monograph directory run `python3 tools/release_candidate_build.py --outdir /tmp/bfss-monograph-rc`. This driver was Python-compiled and tested end-to-end on a distinct one-page local LaTeX fixture with no GitHub-hosted services. **That test does not validate the actual manuscript or its PDF**; a complete source checkout is still unavailable in the local compilation sandbox.
+
+
+## Edition 0.7 complete local 112-page typesetting review candidate (2026-11-11 Pacific)
+
+The owner-provided `Internal-Monograph.zip` resolved the source checkout blocker. The actual 17-chapter/four-appendix manuscript was compiled using `python3 tools/release_candidate_build.py --outdir /mnt/data/_bfss_rc_build`, without hosted services. **65/65 offline checks passed** following three new regression checks; LaTeX produced **112 pages, zero warnings, zero overfull boxes and no unresolved references or citations**. All 112 pages were rendered into ten contact sheets and screened, with higher-resolution inspection of the fixed historical timeline. The PDF remains an editorial review candidate, **not** independently peer-reviewed or Lean-requalified.
+
+Repairs: escape `invariantCore\_equivariant` in Chapter 5; add `xurl` for long source-path line breaking; repair 15 left-clipped historical timeline labels; remove doubled periods in the printed atlas; update the reader contract and docs to the current build status. Details and reviewer questions: `RELEASE_CANDIDATE_VALIDATION_2026_11_11.md`. The mathematical source snapshot and theorem evidence statuses are unchanged, and the unified integration branch has not been modified.

@@ -55,8 +55,9 @@ check('Edition 0.7 development checkpoint' in MAIN and 'Edition 0.6.1' in MAIN,
       'Master distinguishes current v0.7 draft from historical compiled v0.6.1')
 check('Throughout this working manuscript' in MAIN,
       'Reader contract describes an unfinished working monograph')
-check('not yet' in MAIN and 'physical' in MAIN,
-      'Source master does not claim a new build or spectral theorem')
+check('not} an independent mathematical peer review' in MAIN and
+      'physical spectral result' in MAIN and 'LaTeX{} build' in MAIN,
+      'Current reader contract distinguishes a completed build from mathematical review')
 for required in [
     'prop:bounded-l2-multiplier',
     'eq:source-complex-car',
@@ -80,6 +81,14 @@ check((ROOT / 'EDITORIAL_CONVERGENCE_AUDIT_2026_11_11.md').exists(),
 check('\\chapter{Formalization and Qualification Atlas}' in SOURCE and SOURCE.count('\\paragraph{\\texttt{') >= 38,
       'Printed theorem atlas contains all 38 records')
 check('app:atlas' in labels, 'Printed source atlas has chapter label')
+check('\\usepackage{xurl}' in MAIN,
+      'Long Lean paths have active line-breaking support')
+check('\\texttt{invariantCore\\_equivariant}' in
+      (ROOT / 'chapters/ch05_gauge.tex').read_text(encoding='utf-8'),
+      'Source invariant-core identifier is properly TeX escaped')
+check('labelwidth=\\linewidth' not in
+      (ROOT / 'appendices/historical_lineage.tex').read_text(encoding='utf-8'),
+      'Historical timeline labels cannot overflow left margin')
 check('chapter{Source-Exact Notation and Normalization Audit}' in SOURCE,
       'Normalization appendix contains mathematical exposition')
 check('\\chapter{Scope, Physical Context, and the Research Problem}' in SOURCE,

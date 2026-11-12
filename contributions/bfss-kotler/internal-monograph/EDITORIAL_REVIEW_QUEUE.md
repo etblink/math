@@ -1,3 +1,9 @@
+# Edition 0.7 whole-book typesetting gate — completed; scientific review pending
+
+The owner's complete manuscript ZIP enabled a real local run of the offline release-candidate driver. The 112-page book passes 65/65 source checks and a zero-warning, zero-overfull LaTeX build. All pages were rendered and inspected in contact sheets; the source code's identifier escaping, long-path line breaking, and historically clipped timeline labels were repaired. The independent mathematical referee gate is still open and the owner has not authorized integration. See `RELEASE_CANDIDATE_VALIDATION_2026_11_11.md` and `BUILD_NOTES.md`.
+
+---
+
 # Offline release-candidate driver prepared
 
 `tools/release_candidate_build.py` is checked into the isolated manuscript branch. It was syntax-tested and exercised end-to-end on a separate one-page LaTeX fixture, including PDF metadata, rendering, and contact-sheet generation. That success certifies the procedure only. The actual Edition 0.7 whole-book source audit/build/render, visual page review, and independent scientific review remain blocked/pending until the complete branch is locally available.
