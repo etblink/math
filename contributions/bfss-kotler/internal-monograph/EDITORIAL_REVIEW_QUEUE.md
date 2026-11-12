@@ -1,3 +1,23 @@
+# Edition 0.7 development — increment 6 (family and twisted topology synthesis)
+
+Source evidence examined: original G1A/C48 color-label organization,
+and the research-only November 10 notes on 3x16 representations,
+quadratic bilinear invariants and projective Hopf descent.
+
+- Ch15: conventional proof of zero linear gauge invariants
+  in C3 tensor S16, versus 120 gauge-singlet skew-bilinear coefficients.
+- Ch16: conventional construction of a sign-twisted gamma section
+  in End(S16) tensor the tautological line over RP8. Individual
+  plus/minus eigenbundles still do not descend as labelled objects.
+- Ch17: a strict evidence-transfer ladder from source geometry
+  through genuine physical operators and domains to effective physics.
+
+These additions are conventional mathematical exposition, not
+new Lean proofs, physical particle sectors or a GUT/ToE claim.
+Full offline TeX compilation and independent editorial review
+remain outstanding. No existing theorem-atlas status was altered.
+
+---
 # Edition 0.7 development — increment 5 (color averaging and external-route comparison)
 
 Conventional Chapter 13 argument: exact probability-normalized

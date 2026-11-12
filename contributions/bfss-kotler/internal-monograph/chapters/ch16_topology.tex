@@ -73,6 +73,60 @@ a new Lean gate constructing the exact source gauge arrow is still
 required. It does \emph{not} rule out unordered pairs, a graded
 object, a twisted descent, or genuine gauge-groupoid representations.}
 
+
+\section{A positive survivor: the line-twisted gamma field}
+The failure of the individual $P_+$ bundle to descend
+does not remove every meaningful gamma object from
+the projective direction space. A natural survivor is
+an endomorphism twisted by the tautological real line.
+
+Let $L\to\mathbb{RP}^8$ be the tautological real
+line bundle, with fiber $L_{[n]}=\mathbb R n$,
+and put $S=\mathbb R^{16}$ for the original
+real spinor label space.
+
+\begin{proposition}[Twisted projective gamma section;
+conventional bundle construction]\label{prop:twisted-projective-gamma}
+For any unit representative $n\in S^8$, define
+\begin{equation}\label{eq:twisted-projective-gamma}
+ \mathscr G([n])=\Gamma(n)\otimes n
+ \in \operatorname{End}_{\mathbb R}(S)\otimes L_{[n]}.
+\end{equation}
+This gives a well-defined continuous section over
+$\mathbb{RP}^8$. After contraction of
+$L\otimes L$ with the Euclidean line metric, its
+square is $I_S$. It does not define an ordinary
+globally labelled $P_+$ eigenspace bundle over
+$\mathbb{RP}^8$.
+\end{proposition}
+\begin{proof}
+The original gamma matrices satisfy
+$\Gamma(-n)=-\Gamma(n)$. Since the tautological
+fiber vector also changes sign,
+\[
+ \Gamma(-n)\otimes(-n)=\Gamma(n)\otimes n.
+\]
+The expression is continuous upstairs on $S^8$
+and constant on antipodal fibers, hence descends.
+The original Clifford relation gives
+$\Gamma(n)^2=I_S$ for unit $n$, and the metric
+contracts $n\otimes n$ to $\|n\|^2=1$.
+Locally choosing a unit representative trivializes
+$L$ and recovers $\Gamma(n)$; changing that choice
+reverses its sign. Therefore the local positive
+and negative eigenspaces exchange, rather than
+becoming separately labelled global subbundles.
+\end{proof}
+
+The distinction between a twisted involution and an
+ordinary projector is a concrete, falsifiable use
+of gauge descent. It gives a positive topological
+construction but neither a source-physical observable
+nor a chiral index. A genuine physical role would
+still require a source-gauge-groupoid action, a
+compatible section-space construction and a relation
+to the original closed Hamiltonian.
+
 \section{Clutching, characteristic classes, and what does not descend}
 The source-exact gamma investigation computes an equatorial clutching
 map associated with $S_+(n)$ and compares it with the ordinary

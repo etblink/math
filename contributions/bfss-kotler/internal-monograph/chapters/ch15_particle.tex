@@ -48,6 +48,67 @@ was a conventional/symbolic audit, \textbf{not a new original-source Lean
 commutant theorem}. This proposition rules out only the naive
 ``one gauge color equals one generation'' mechanism.}
 
+
+\section{Quadratic gauge singlets despite the absence of invariant labels}
+The original real source Majorana label module has the
+gauge representation $V_{48}=C\otimes_{\mathbb R}S$, where
+$C=\mathbb R^3$ carries the adjoint $\mathrm{SU}(2)$ action
+and $S=\mathbb R^{16}$ carries the spatial spinor labels.
+The source reindexing of Chapter~\ref{ch:spin-geometry}
+matters here: this is an exact organization of the
+\emph{original} real labels, not three independent families.
+
+\begin{proposition}[Linear and quadratic gauge invariants;
+conventional representation theory]\label{prop:color-quadratic-120}
+For this real source-label representation,
+\begin{equation}\label{eq:color-invariants-120}
+ (C\otimes S)^{\mathrm{SU}(2)}=0,\qquad
+ \left(\Lambda^2(C\otimes S)\right)^{\mathrm{SU}(2)}
+ \cong\Lambda^2 S,\qquad
+ \dim_{\mathbb R}\Lambda^2 S=120.
+\end{equation}
+The identification is induced by contraction of the color
+factors with their invariant Euclidean inner product.
+\end{proposition}
+\begin{proof}
+The image of the adjoint $\mathrm{SU}(2)$ action on
+$C$ is the full $\mathrm{SO}(3)$ group. No nonzero
+vector of $C$ is invariant, which proves the first
+assertion. Over the reals there is a natural decomposition
+\[
+ \Lambda^2(C\otimes S)\cong
+ (\Lambda^2 C\otimes\operatorname{Sym}^2 S)
+ \oplus
+ (\operatorname{Sym}^2 C\otimes\Lambda^2 S).
+\]
+The first summand has no color invariants because
+$\Lambda^2 C\cong C$ as an $\mathrm{SO}(3)$ module.
+In the second, the invariant subspace of
+$\operatorname{Sym}^2 C$ is one-dimensional, generated
+by the Euclidean metric tensor: rotationally invariant
+symmetric bilinear forms are scalar. Consequently
+only the $\Lambda^2 S$ factor remains, of real dimension
+$\binom{16}{2}=120$.
+\end{proof}
+
+There is no contradiction between the absence of
+gauge-fixed \emph{individual} labels and the existence
+of 120 gauge-invariant \emph{skew quadratic coefficient}
+directions. Nor do 120 such directions constitute
+120 conserved original Fock observables. A source
+operator-valued bilinear, its gauge transformation,
+its physical domain and any Hamiltonian relation
+remain additional mathematical constructions. The
+historical $36+84$ and moving $56+64$ decompositions
+concern these real spinor coefficient spaces, not
+three chiral particle generations.
+
+\formalrecord{Conventional invariant-tensor proof, using the
+original G1A paired label reindexing and C48 color
+representation. Research-only source:
+\path{research/unification/BFSS_ORIGINAL_MAJORANA_BILINEARS_RP8_TWISTED_QUADRATIC_BUNDLES_2026_11_10.md}.
+No newly qualified source Lean invariant-module theorem.}
+
 \section{Why the Spin(10) sixteen is a lead, not a conclusion}
 The standard inclusion $\operatorname{Spin}(9)\subset
 \operatorname{Spin}(10)$ has the familiar representation-theoretic
