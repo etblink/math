@@ -68,8 +68,6 @@ theorem originalLinearMoment_integrable (f : SmoothCore 2) :
   exact (continuous_norm.mul (f.continuous.norm.pow 2)).integrable_of_hasCompactSupport
     (BFSSNormalMeasure.square_compact f f.hasCompactSupport).mul_left
 
-/-- The upper/original density is integrable, with no hypothesis on f
-beyond genuine original SmoothCore membership. -/
 /-- A small generic AlgebraData interface: combine potential and fermionic
 integrability before specialization to the large original concrete SU(2)
 record. This proves only a pointwise function-sum identity, with A opaque. -/
