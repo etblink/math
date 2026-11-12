@@ -35,9 +35,7 @@ example (f : SmoothCore 2) (x : Boson 2) :
       inner ℝ (f x)
         (FCP.BFSSSU2Full.concreteAlgebraData.deformedFermionField 1 0 x
           (f x)) := by
-  have h := congrFun (originalActualDensity_eq_sourceSum f) x
-  simp only [Pi.add_apply] at h
-  exact h
+  exact congrFun (originalActualDensity_eq_sourceSum f) x
 
 end
 end BFSSP2C4BOriginalActualDensityInterfaceConsumer
