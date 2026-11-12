@@ -12,6 +12,8 @@ set_option autoImplicit false
 namespace BFSSP3OP1BOriginalFockTraceColumnsIndependentConsumer
 noncomputable section
 
+open scoped InnerProductSpace
+
 open OAI.BFSSQuantum
 open FCP.BFSSS1V0
 open FCP.BFSST1OriginalFockTraceInvariance
