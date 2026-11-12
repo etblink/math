@@ -36,7 +36,7 @@ theorem originalFockTrace_star_mul_re_nonneg
     0 ≤ (originalFockTrace (star T * T)).re := by
   rw [originalFockTrace_star_mul_eq_sum_inner b T]
   rw [Complex.re_sum]
-  exact Finset.sum_nonneg (fun i _ => inner_self_nonneg (T (b i)))
+  exact Finset.sum_nonneg (fun i _ => inner_self_nonneg (x := T (b i)))
 
 #print axioms originalFockTrace_star_mul_re_nonneg
 
