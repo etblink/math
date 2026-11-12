@@ -102,3 +102,10 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
 - Distinguished hypothetical noncompactness test families from operator Weyl sequences.
 - Added source-account provenance environments for dependency-only 'proofs' and two contemporaneous arXiv preprints as external context, not source-authoritative theorems.
 - All mathematical proof modules, original FCP history, strict workflows and unified integration branch remain untouched.
+
+
+## Edition 0.7 source convergence — 11 November 2026 Pacific
+
+The six documentation-only mathematics revisions after 0.6.1 are `7508bd4c86b6`, `cbe665e6bafe`, `d4d44942923b`, `66229dd139c9`, `0137964ec46a`, and `f5870a05844d`. The master/README status was corrected at `d0e98c43f2e3`. A dedicated `EDITORIAL_CONVERGENCE_AUDIT_2026_11_11.md` now records the mathematical dependency joins, qualification boundaries and publication stops. The offline audit script checks new LaTeX anchors and nested environments as well as source atlas statuses.
+
+**Validation boundary:** complete Edition 0.7 `latexmk`, PDF page count and visual review are **not yet performed**. Local TeX executables are installed, but this execution environment cannot clone the connected GitHub repository (host DNS resolution failure). The source interface permits committed edits without providing local source files. The 0.6.1 90-page / 40-check compilation is a historical receipt only; no current build or mathematical review is inferred. Run the commands in the preceding Local Build section on a complete local checkout and document their exact results before review or integration. No GitHub Actions or other hosted build is used.

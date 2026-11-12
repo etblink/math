@@ -37,6 +37,46 @@ refs = re.findall(r'\\(?:eqref|ref|pageref|autoref)\{([^}]+)\}', SOURCE)
 count = Counter(labels)
 check(all(n == 1 for n in count.values()), 'Every LaTeX label is unique')
 check(set(refs) <= set(labels), 'All LaTeX refs resolve to existing labels')
+# Whole-book regression checks for developing Edition 0.7.
+environment_errors = []
+for tex_path in TEX:
+    stack = []
+    source_text = tex_path.read_text(encoding='utf-8')
+    for token in re.finditer(r'\\(begin|end)\{([A-Za-z*]+)\}', source_text):
+        action, environment = token.groups()
+        if action == 'begin':
+            stack.append(environment)
+        elif not stack or stack.pop() != environment:
+            environment_errors.append(f'{tex_path.name}: unexpected {environment}')
+    if stack:
+        environment_errors.append(f'{tex_path.name}: unclosed {stack!r}')
+check(not environment_errors, 'All TeX environments are properly nested')
+check('Edition 0.7 development checkpoint' in MAIN and 'Edition 0.6.1' in MAIN,
+      'Master distinguishes current v0.7 draft from historical compiled v0.6.1')
+check('Throughout this working manuscript' in MAIN,
+      'Reader contract describes an unfinished working monograph')
+check('not yet' in MAIN and 'physical' in MAIN,
+      'Source master does not claim a new build or spectral theorem')
+for required in [
+    'prop:bounded-l2-multiplier',
+    'eq:source-complex-car',
+    'eq:physical-core-form-agreement',
+    'prop:source-cover-descent',
+    'prop:original-parity-grading',
+    'prop:su2-phase-cancellation',
+    'prop:linear-field-core-bound',
+    'prop:weighted-domain-bridge',
+    'prop:normalized-class-multiplier',
+    'prop:color-sphere-half',
+    'prop:physical-color-direction',
+    'op:external-susy-projector',
+    'prop:color-quadratic-120',
+    'prop:twisted-projective-gamma',
+]:
+    check(required in count, f'Edition 0.7 mathematical anchor {required}')
+check((ROOT / 'EDITORIAL_CONVERGENCE_AUDIT_2026_11_11.md').exists(),
+      'Edition 0.7 whole-manuscript audit record is present')
+
 check('chapter{Source-Exact Notation and Normalization Audit}' in SOURCE,
       'Normalization appendix contains mathematical exposition')
 check('\\chapter{Scope, Physical Context, and the Research Problem}' in SOURCE,
