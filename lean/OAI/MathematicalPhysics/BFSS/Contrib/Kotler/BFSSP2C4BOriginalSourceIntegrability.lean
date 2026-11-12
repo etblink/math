@@ -104,9 +104,26 @@ private theorem algebraData_actualDensity_integrable_of_parts
 
 theorem originalActualDensity_integrable (f : SmoothCore 2) :
     Integrable (originalActualDensity f) (volume : Measure (Boson 2)) := by
-  exact algebraData_actualDensity_integrable_of_parts M 1 0 f
-    (originalPotentialDensity_integrable f)
-    (originalFermionDensity_integrable f)
+  have hIntegrated : Integrable (fun x : Boson 2 =>
+      M.deformedBosonicPotential 1 0 x * ‖f x‖^2 +
+        inner ℝ (f x) (M.deformedFermionField 1 0 x (f x)))
+        (volume : Measure (Boson 2)) :=
+    algebraData_actualDensity_integrable_of_parts M 1 0 f
+      (originalPotentialDensity_integrable f)
+      (originalFermionDensity_integrable f)
+  have hDensity :
+      originalActualDensity f = (fun x : Boson 2 =>
+        M.deformedBosonicPotential 1 0 x * ‖f x‖^2 +
+          inner ℝ (f x) (M.deformedFermionField 1 0 x (f x))) := by
+    funext x
+    change
+      (M.deformedBosonicPotential 1 0 x * ‖f x‖^2 +
+        inner ℝ (f x) (M.deformedFermionField 1 0 x (f x))) =
+      (M.deformedBosonicPotential 1 0 x * ‖f x‖^2 +
+        inner ℝ (f x) (M.deformedFermionField 1 0 x (f x)))
+    rfl
+  rw [hDensity]
+  exact hIntegrated
 
 /-- The lower density is integrable; the finite source constant is the
 same original growth constant as in qualified P2-C2 and P2-C4A. -/
