@@ -33,7 +33,7 @@ example (b : OrthonormalBasis ι ℂ (Fermion 2))
     (T : OriginalFockOp) (h : ∀ i : ι, T (b i) = 0) : T = 0 := by
   apply (originalFockColumns b).injective
   funext i
-  simpa only [originalFockColumns_apply, ContinuousLinearMap.zero_apply] using h i
+  simpa only [originalFockColumns_apply, zero_apply] using h i
 
 #print axioms FCP.BFSSP3D3OriginalFockColumns.originalFockColumns
 #print axioms FCP.BFSSP3D3OriginalFockColumns.originalFockColumns_apply
