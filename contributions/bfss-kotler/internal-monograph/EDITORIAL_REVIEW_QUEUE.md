@@ -214,3 +214,8 @@ This queue records **tasks for review**, not claims of pending Lean gates. It is
 - Preserve the original seven-source-file/atlas v0.1 architecture, now extended additively; do not touch accepted mathematical modules or historical handoff files.
 - Each accepted theorem must cite its exact source file and tested receipt. In this narrative edition, **formalization records point to sources; they are not a substitute for the displayed conventional mathematics**.
 - The future external monograph is a separate publication stage after the substantive research and independently verified proofs; do not repurpose an internal v0.2 scaffold as a completed public research paper.
+
+
+## Edition 0.7 independent AI referee (after typesetting gate)
+
+Preserve verbatim Grok report in `reviews/GROK_EDITION_07_INDEPENDENT_REFEREE_2026_11_11.md` and the Project Lead finding-by-finding adjudication in `reviews/PROJECT_LEAD_ED07_REFEREE_ADJUDICATION_2026_11_11.md`. The report recommended accept after minor corrections **as an internal record**, without Lean/source verification. Corrections address historical BA--BH provenance in Chapters 10 and 14, tight 0.144/1% spectral illustration in Chapter 13, the 37/38 atlas count, and the accurate external authorship claim in Chapter 14. **O-01 through O-05 remain open, N-05 pending at frozen evidence snapshot.** Human mathematical referee and new Lean qualification remain separate from the AI review.
