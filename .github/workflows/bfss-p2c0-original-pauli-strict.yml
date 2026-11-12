@@ -107,7 +107,7 @@ jobs:
               s=(root/n).read_text()
               assert "error:" not in s and "sorryAx" not in s,(n,s[-4000:])
               dependency_warning=re.compile(
-                  r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+                  r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
               warnings=[line for line in s.splitlines()
                         if "warning:" in line and not dependency_warning.fullmatch(line)]
               assert not warnings,(n,warnings[:10])
