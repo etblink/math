@@ -1,6 +1,6 @@
 # The Relative SU(2) BFSS Quantum System — internal research monograph
 
-**Edition 0.6.1 (2026-11-11): 90-page locally compiled referee-response review edition, with 40 offline checks reported at commit `900859ed`.** All **17 planned chapters** contain mathematical or explicitly bounded research exposition, with a fully written Chapter 1 and source-exact notation and negative-knowledge appendices. **This is a working internal manuscript, not a published theorem or a completed scientific research program.**
+**Active source: Edition 0.7 in development (not yet PDF-build-qualified).** The previous fully compiled checkpoint is **Edition 0.6.1 (2026-11-11), reported as 90 pages and 40 offline structural checks at commit `900859ed`**. All 17 chapters and the historical, normalization, and negative-knowledge appendices are drafted. **This is a working internal manuscript, not a published or peer-reviewed scientific result.**
 
 This directory helps an independent mathematician or mathematical physicist understand, critique, reproduce, and extend the *original source-exact relative SU(2) quantum model* and its formal verification. Its ultimate external successor will be drafted only after the relevant scientific results and formal proofs are complete and independently reviewed.
 
@@ -54,4 +54,6 @@ The authorized editorial branch is `docs/bfss-internal-research-monograph-202611
 
 ## Edition 0.7 in development
 
-The isolated manuscript branch is undergoing a new source-and-proof exposition pass, beginning with Chapters 2--4. This is an **in-progress** editorial increment, not a completed 0.7 release. No new Lean gate or unified-branch fast-forward follows from it. See `EDITORIAL_REVIEW_QUEUE.md`.
+The isolated manuscript branch has received source-checked substantive exposition revisions across **Chapters 2--17**, including physical-carrier and domain bridges, Spin and gauge conventions, energy and compactness joins, conditional spectral arguments, and clearly exploratory particle/topology questions. All new conventional proofs remain separate from formal Lean qualification. This is an **in-progress** source checkpoint, not a fully validated 0.7 release.
+
+The next release condition is a complete offline LaTeX build, structural audit, rendered-page inspection and independent mathematical review. Our current local execution environment has TeX tools, but GitHub name resolution fails for a checkout of this branch; the connected GitHub source API does not transfer the full source tree into the local compiler sandbox. **No Edition 0.7 PDF/page count is certified here**, and GitHub-hosted CI/Pages are not substitutes. See `EDITORIAL_REVIEW_QUEUE.md` and the convergence audit.
