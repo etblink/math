@@ -192,6 +192,44 @@ Principal declarations:
 \path{source9Axis8ProjectionHom_isCoveringMap_pbw}, and
 \path{source9Axis8CoordinateContinuousMulEquiv}.}
 
+\section{When a source representation descends through the double cover}
+The source covering itself yields an elementary but useful test for
+representation transfer. It separates representations that genuinely
+belong to the orthogonal target $H$ from ones which remember the
+negative central element of $K$.
+
+\begin{proposition}[Descent criterion for the source stabilizer;
+conventional consequence]\label{prop:source-cover-descent}
+Let $E$ be a complex Hilbert space and
+$\rho:K\to U(E)$ a continuous unitary group representation.
+There exists a unique continuous unitary representation
+$\bar\rho:H\to U(E)$ such that $\rho=\bar\rho\circ p$ if and only if
+\begin{equation}\label{eq:source-cover-descent}
+ \rho(z_9)=I_E.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Necessity follows from $p(z_9)=1$. Conversely, if
+$\rho(z_9)=I_E$, the exact two-point fiber identity
+\eqref{eq:cover-fibers} implies that $\rho$ is constant on every
+fiber of $p$. Define $\bar\rho(h)=\rho(k)$ for any $k$ with
+$p(k)=h$. Fiber constancy gives well-definedness, and
+surjectivity of the group homomorphism $p$ gives the group law
+and uniqueness. The source covering has already been shown a
+quotient map, so continuity of $\rho=\bar\rho\circ p$ implies
+continuity of $\bar\rho$.
+\end{proof}
+This proposition is ordinary topology and representation theory
+\emph{conditional on an actual continuous source representation};
+it is not a newly qualified Lean descent theorem. It has an
+immediate algebraic diagnostic: because the original Majorana
+\emph{label} action satisfies $R_{48}(z_9)=-I_{48}$, that label
+representation cannot factor through the ordinary orthogonal
+target $H$. This observation neither constructs nor excludes
+a correctly normalized source Fock-\emph{vector} representation.
+It explains why one must retain the source Spin cover when
+testing its weights and central phases.
+
 \section{Why this is not yet the branching theorem}
 We now possess the correct original fixed-axis source cover and the
 correct topological group on the orthogonal target. In classical compact

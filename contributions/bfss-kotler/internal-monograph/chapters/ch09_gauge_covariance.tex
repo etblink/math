@@ -123,22 +123,66 @@ the full matrix algebra. Its center is $\mathbb C I$, hence
 \begin{equation}\label{eq:phase-ambiguity}
  \alpha_g(U_q)=c_g(q)U_q,\qquad |c_g(q)|=1.
 \end{equation}
-The scalar phase $c_g(q)$ must be shown trivial by an actual source
-argument, such as a properly qualified uniqueness theorem for the
-source gauge representation or a continuity/character argument.
-The previously qualified M3I full-operator equivalence and original
-trace-preservation theorem make those routes promising. But
-\eqref{eq:phase-ambiguity} is currently an \emph{explanation of the
-missing implication}, not a declaration that the final gauge-unitary
-fixedness or projection invariance has been proved.
+There is a useful refinement: \emph{once the full operator-level
+commutation hypothesis is established for the genuine source
+unitary homomorphism, the phase cannot remain nontrivial}. It is
+automatically a one-dimensional character of the actual
+$\mathrm{SU}(2)$ group, which has no nontrivial characters.
+The missing source theorem is therefore the full automorphism
+compatibility and its precise binding to the original unitary
+carrier, rather than a freely adjustable independent scalar phase.
+
+\begin{proposition}[Gauge-character cancellation; conditional
+conventional argument]\label{prop:su2-phase-cancellation}
+Let $U:\mathrm{SU}(2)\to U(\Fermion)$ be a genuine unitary
+group homomorphism and let $\alpha$ be a complex star-algebra
+automorphism of $\mathscr A$ satisfying
+\[
+ \alpha\circ\operatorname{Ad}_{U_q}
+ =\operatorname{Ad}_{U_q}\circ\alpha
+ \qquad\text{for every }q\in\mathrm{SU}(2).
+\]
+Then $\alpha(U_q)=U_q$ for every $q\in\mathrm{SU}(2)$.
+\end{proposition}
+\begin{proof}
+The displayed commutation gives
+$\operatorname{Ad}_{\alpha(U_q)}
+=\operatorname{Ad}_{U_q}$. Since the center of the full
+finite matrix algebra is $\mathbb C I$, and $\alpha$
+preserves the star, there is $c(q)\in U(1)$ with
+$\alpha(U_q)=c(q)U_q$. Because $U$ is a homomorphism and
+$\alpha$ preserves multiplication,
+\[
+ c(qr)U_{qr}=\alpha(U_qU_r)
+ =c(q)c(r)U_qU_r,
+\]
+hence $c(qr)=c(q)c(r)$. Thus $c$ is a group character.
+The group $\mathrm{SU}(2)$ is perfect: every element is
+conjugate to a diagonal matrix
+$\operatorname{diag}(e^{it},e^{-it})$, and each such matrix
+is a commutator. For example, with
+$a=\operatorname{diag}(e^{it/2},e^{-it/2})$ and
+$j=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$,
+one has $aja^{-1}j^{-1}=a^2$. Every character into
+the abelian group $U(1)$ is therefore trivial.
+So $c(q)=1$.
+\end{proof}
+This is a \emph{conditional} conventional proposition; it does
+not supply the unproved full source
+\eqref{eq:automorphism-commute-condition} nor an accepted
+Lean gauge-unitary fixedness theorem. It uses the genuine
+$\mathrm{SU}(2)$ homomorphism law, not arbitrary phases
+attached independently to each gauge element.
 
 \begin{openproblem}[Gauge-unitary fixedness and physical projection]
-Establish the full operator-level compatibility
-\eqref{eq:automorphism-commute-condition}, show the actual
-scalar gauge character is trivial for the original source
-$\mathrm{SU}(2)$, and deduce $\alpha_g(U_q)=U_q$ and invariance of
-the genuine original fermionic gauge projection. Then bind these
-facts to the full-space combined boson--Fock action.
+Establish the full source operator-level compatibility
+\eqref{eq:automorphism-commute-condition} on the \emph{actual}
+Fock operator algebra with the \emph{actual} source
+$\mathrm{SU}(2)$ gauge unitary homomorphism. Then apply
+Proposition~\ref{prop:su2-phase-cancellation}, prove the fixedness
+of the genuine original fermionic gauge projection, and bind those
+facts to the full-space combined boson--Fock action. The conditional
+character argument alone is not the missing source compatibility theorem.
 \end{openproblem}
 
 \section{The missing covariance of all sixteen source charges}

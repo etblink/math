@@ -1,3 +1,32 @@
+# Edition 0.7 development — increment 3 (Spin center and gauge phase)
+
+The pinned mathematical source was inspected for the exact original
+ninth-axis stabilizer projection and two-sign fibers, the original
+Spin(9) star-algebra action and trace, C48-0 source label commutation,
+and the strict one-sided active-S1J compatibility. This is an
+editorial/proof-exposition increment, not a new Lean gate.
+
+- Chapter 7 derives the conventional descent criterion for a
+  continuous representation of the actual stabilizer through
+  `K -> H`: the kernel's negative sign must act trivially.
+  In particular the source 48-label spinor action does not
+  descend to the ordinary SO(8) target.
+- Chapter 8 makes the source negative center's involutive
+  parity grading on the original Fock-operator algebra explicit;
+  this does not identify the physical Fock-vector implementer.
+- Chapter 9 proves a **conditional** SU(2) character-cancellation
+  proposition: full operator-conjugation commutation with the
+  genuine SU(2) unitary homomorphism implies gauge-unitary fixedness.
+  The full original operator commutation hypothesis remains
+  **unqualified**, so no physical projector or closed-Hamiltonian
+  invariance has been promoted.
+
+**Open validation:** complete offline latexmk build and visual
+review for the developing Edition 0.7, plus mathematical
+source-specific review beyond the conventional derivations.
+No CI workflow, Lean source or unified integration branch changes.
+
+---
 # Edition 0.7 development — increment 2 (original gauge/closed-form bridge)
 
 Direct source check: `GaugeCore.lean` at frozen baseline confirms

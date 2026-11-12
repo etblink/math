@@ -210,6 +210,41 @@ $\alpha_{z_9}(\Gamma(v))=-\Gamma(v)$ on every original Majorana
 label. Since the original Majoranas generate the full finite Fock
 operator algebra, this is not the identity automorphism.
 
+\begin{proposition}[Central parity grading on the original operator
+algebra; conventional deduction]\label{prop:original-parity-grading}
+Let $\tau:=\alpha_{z_9}$. As a complex-linear map on
+$\mathscr A$, $\tau^2=\mathrm{id}$. Hence
+\begin{equation}\label{eq:original-parity-splitting}
+ \mathscr A=\mathscr A_+\oplus\mathscr A_-,
+ \qquad
+ \mathscr A_\pm=\{A:\tau(A)=\pm A\},
+ \quad
+ A_\pm=\tfrac12(A\pm\tau(A)).
+\end{equation}
+An even product of original normalized Majoranas lies in
+$\mathscr A_+$, and an odd product lies in $\mathscr A_-$.
+Moreover $\mathscr A_\varepsilon\mathscr A_\delta
+\subseteq\mathscr A_{\varepsilon\delta}$ for
+$\varepsilon,\delta\in\{+1,-1\}$.
+\end{proposition}
+\begin{proof}
+The source center has $z_9^2=1$, so the group action gives
+$\tau^2=\alpha_{z_9^2}=\mathrm{id}$. In characteristic zero
+the operators $\frac12(\mathrm{id}\pm\tau)$ are complementary
+idempotents, yielding the direct sum. Covariance
+\eqref{eq:negative-center-48} gives
+$\tau(\Gamma(v))=-\Gamma(v)$. Multiplicativity of $\tau$
+therefore produces the asserted sign on each finite Majorana
+word, and on products of homogeneous elements.
+\end{proof}
+The grading is on the \emph{source Fock-operator algebra}.
+It is compatible with the elementary even/odd Clifford
+description but is not by itself a choice of parity
+\emph{implementer} on Fock vectors, a new superselection
+sector of the original physical Hamiltonian, or a particle-family
+classification. It sharpens the reason that a scalar $-I$
+conjugation cannot represent the central source action.
+
 If an operator $U_{\Fermion}(z_9)$ implements this transformation by
 conjugation on Fock vectors, its conjugation action agrees with that of
 fermion parity. But a conjugation automorphism determines its implementer
