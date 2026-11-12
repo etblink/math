@@ -49,7 +49,7 @@ theorem originalMasslessCoreForm_lower_of_integrable (f : SmoothCore 2)
       (∫ x : Boson 2, originalLowerDensity f x) ≤
         FCP.BFSSSU2Full.concreteAlgebraData.coreForm f := by
   rw [originalMasslessCoreForm_energy]
-  exact add_le_add_left (originalMasslessDensity_integral_lower f hLower hActual) _
+  exact add_le_add_right (originalMasslessDensity_integral_lower f hLower hActual) _
 
 #print axioms originalMasslessDensity_integral_lower
 #print axioms originalMasslessCoreForm_lower_of_integrable
