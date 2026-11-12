@@ -89,9 +89,9 @@ jobs:
           cd lean
           e="$RUNNER_TEMP/bfss-p3-d4"
           source_file="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D4OriginalFockCrossPairingColumns.lean"
-          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D3OriginalFockColumns.olean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D4OriginalFockCrossPairingColumns.olean"
           rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
-          timeout 3600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3D3OriginalFockColumns 2>&1 | tee "$e/cold-build.log"
+          timeout 3600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3D4OriginalFockCrossPairingColumns 2>&1 | tee "$e/cold-build.log"
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$source_file" 2>&1 | tee "$e/source-axioms.log"
           timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3D4OriginalFockCrossPairingColumnsIndependentConsumer.lean 2>&1 | tee "$e/independent-consumer.log"
           python3 - <<'PY'
