@@ -114,3 +114,8 @@ The six documentation-only mathematics revisions after 0.6.1 are `7508bd4c86b6`,
 ## Edition 0.7 release-candidate gate — printed theorem atlas
 
 Replaced the brief PDF atlas placeholder with a fully printed 38-record source/evidence appendix generated from the frozen JSON. Entries distinguish historical strict receipts from integrated strict certificates, pending-gate references, conditional arguments and open obligations, with exact source retrieval guidance. Offline source audit now expects 22 TeX files. **No complete Edition 0.7 PDF compilation or visual inspection has been performed in this environment; do not report a page count or promote release status.**
+
+
+## Offline Edition 0.7 release-candidate driver (fixture-tested only)
+
+A source-only `tools/release_candidate_build.py` driver runs the full offline audit, local `latexmk` compilation, log checks, `pdfinfo`, page rendering, and Pillow contact sheets. It writes a manifest that explicitly marks **visual** and **scientific referee** review as not yet performed. From the monograph directory run `python3 tools/release_candidate_build.py --outdir /tmp/bfss-monograph-rc`. This driver was Python-compiled and tested end-to-end on a distinct one-page local LaTeX fixture with no GitHub-hosted services. **That test does not validate the actual manuscript or its PDF**; a complete source checkout is still unavailable in the local compilation sandbox.

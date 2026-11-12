@@ -1,3 +1,8 @@
+# Offline release-candidate driver prepared
+
+`tools/release_candidate_build.py` is checked into the isolated manuscript branch. It was syntax-tested and exercised end-to-end on a separate one-page LaTeX fixture, including PDF metadata, rendering, and contact-sheet generation. That success certifies the procedure only. The actual Edition 0.7 whole-book source audit/build/render, visual page review, and independent scientific review remain blocked/pending until the complete branch is locally available.
+
+---
 # Edition 0.7 release-candidate source atlas
 
 The PDF master now imports `appendices/theorem_atlas.tex`, rendering all 38 canonical source/evidence records rather than merely directing the reader to JSON. Source blob prefixes appear only for records that possess them; pending/open entries are not retroactively certified. The updated regression checker expects 22 TeX sources. A complete local latexmk build and rendered review are still required.
