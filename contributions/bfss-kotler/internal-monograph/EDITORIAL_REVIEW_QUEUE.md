@@ -1,3 +1,8 @@
+# Edition 0.7 release-candidate source atlas
+
+The PDF master now imports `appendices/theorem_atlas.tex`, rendering all 38 canonical source/evidence records rather than merely directing the reader to JSON. Source blob prefixes appear only for records that possess them; pending/open entries are not retroactively certified. The updated regression checker expects 22 TeX sources. A complete local latexmk build and rendered review are still required.
+
+---
 # Edition 0.7 whole-manuscript source convergence
 
 The master title/README now distinguish the developing 0.7 TeX source from the previously compiled 0.6.1 edition. The complete chapter source has been reviewed for labels and major status boundaries, and an expanded offline audit script will guard the new mathematical anchors. The detailed current dependency/readiness map is in `EDITORIAL_CONVERGENCE_AUDIT_2026_11_11.md`. **No full Edition 0.7 PDF build or visual review has been completed in the current local environment**; all mathematical source joins and human referee items listed there remain open. No unified branch promotion is authorized by this document.

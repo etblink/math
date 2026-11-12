@@ -6,7 +6,7 @@ This directory helps an independent mathematician or mathematical physicist unde
 
 ## Contents
 
-- `main.tex` — fully linked 17-chapter master manuscript, including three source/evidence appendices.
+- `main.tex` — fully linked 17-chapter master manuscript, including a printed 38-record atlas and three additional source/evidence appendices.
 - `chapters/ch01_scope.tex` — expert introduction: mathematical system versus large-`N` M-theory conjecture, spectral targets, three proof chains, and evidentiary contract.
 - `chapters/ch02_carriers.tex` through `ch06_hamiltonian.tex` — source carrier, CAR/Clifford, exact sixteen charges, gauge-physical state space, and native closed Hamiltonian.
 - `chapters/ch07_spin_geometry.tex` through `ch09_gauge_covariance.tex` — source Spin(9)/Spin(8) stabilizer, original Fock operator star/trace action, original Majorana-label gauge compatibility and the remaining physical source-lift requirements.
@@ -15,7 +15,7 @@ This directory helps an independent mathematician or mathematical physicist unde
 - `appendices/historical_lineage.tex`, `HISTORICAL_LINEAGE.md` — FCP-to-`etblink/math` dated research evolution, later qualifications correcting older as-of statuses.
 - `appendices/notation_normalization.tex` — original indices, Fock/CAR, gamma matrices, exact colors, charge/form coefficients, central signs, field normalization, and operator versus Fock-vector carrier distinctions.
 - `appendices/negative_knowledge.tex` — bounded failures, explicit no-go scope, source provenance, and review methodology.
-- `THEOREM_ATLAS.json` and `THEOREM_ATLAS.md` — **38** source-linked qualification and theorem/dependency records. The editorial atlas does not substitute for the exact accepted Lean file and strict run evidence.
+- `appendices/theorem_atlas.tex`, `THEOREM_ATLAS.json` and `THEOREM_ATLAS.md` — a printed **38-record** qualification index with source pins and receipts, plus the canonical machine-readable theorem/dependency ledger. The editorial atlas does not substitute for the exact accepted Lean file and strict run evidence.
 - `SPECTRAL_JOIN_GATES.md`, `UNIFICATION_RESEARCH_CHARTER.md` — prospective research gates and explicit scientific stop conditions.
 - `CONSISTENCY_AUDIT_2026_11_11.md` — detailed cross-chapter review and unresolved claims.
 - `tools/audit_manuscript.py` — offline structural checks, *not* a Lean or mathematical proof certification.

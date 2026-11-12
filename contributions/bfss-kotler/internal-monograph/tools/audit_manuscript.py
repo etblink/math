@@ -23,12 +23,12 @@ PASS = []
 def check(condition: bool, label: str):
     (PASS if condition else FAIL).append(label)
 
-check(len(TEX) == 21, '21 TeX source files (master, 17 chapters, 3 appendices)')
+check(len(TEX) == 22, '22 TeX source files (master, 17 chapters, 4 appendices)')
 for i in range(1, 18):
     hits = list((ROOT / 'chapters').glob(f'ch{i:02d}_*.tex'))
     check(len(hits) == 1 and f'\\input{{chapters/{hits[0].stem}}}' in MAIN,
           f'Chapter {i:02d} exists and is imported once')
-for f in ['appendices/historical_lineage', 'appendices/notation_normalization',
+for f in ['appendices/theorem_atlas', 'appendices/historical_lineage', 'appendices/notation_normalization',
           'appendices/negative_knowledge']:
     check(f'\\input{{{f}}}' in MAIN, f'{f} included in master')
 
@@ -77,6 +77,9 @@ for required in [
 check((ROOT / 'EDITORIAL_CONVERGENCE_AUDIT_2026_11_11.md').exists(),
       'Edition 0.7 whole-manuscript audit record is present')
 
+check('\\chapter{Formalization and Qualification Atlas}' in SOURCE and SOURCE.count('\\paragraph{\\texttt{') >= 38,
+      'Printed theorem atlas contains all 38 records')
+check('app:atlas' in labels, 'Printed source atlas has chapter label')
 check('chapter{Source-Exact Notation and Normalization Audit}' in SOURCE,
       'Normalization appendix contains mathematical exposition')
 check('\\chapter{Scope, Physical Context, and the Research Problem}' in SOURCE,
