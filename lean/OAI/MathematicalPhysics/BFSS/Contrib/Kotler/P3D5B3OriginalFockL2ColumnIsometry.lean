@@ -56,12 +56,25 @@ theorem originalFockL2ColumnsLinear_inner
   simpa only [PiLp.inner_apply, originalFockL2ColumnsLinear_apply] using
     (originalFockL2_inner_eq_sum_columns μ f g).symm
 
+/-- Abstract-first constructor: build the norm-preserving map at small
+generic complex Hilbert types, without unfolding the original 48-Majorana
+Fock representation while Lean reduces the isometry constructor. -/
+private noncomputable def generic_isometry_from_inner
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    [NormedAddCommGroup F] [InnerProductSpace ℂ F]
+    (L : E →ₗ[ℂ] F)
+    (h : ∀ x y, ⟪L x, L y⟫_ℂ = ⟪x, y⟫_ℂ) :
+    E →ₗᵢ[ℂ] F :=
+  LinearMap.isometryOfInner L h
+
 /-- Genuine source-exact original-Fock linear isometry from L² of finite
 Hilbert-column fields into finite PiLp 2 of the individual Fock L² fields. -/
 noncomputable def originalFockL2ColumnsIsometry :
     Lp (PiLp 2 (fun _ : ι => Fermion 2)) 2 μ →ₗᵢ[ℂ]
       PiLp 2 (fun _ : ι => Lp (Fermion 2) 2 μ) :=
-  (originalFockL2ColumnsLinear μ).isometryOfInner
+  generic_isometry_from_inner
+    (originalFockL2ColumnsLinear μ)
     (originalFockL2ColumnsLinear_inner μ)
 
 /-- The isometric embedding still evaluates to exactly the accepted
