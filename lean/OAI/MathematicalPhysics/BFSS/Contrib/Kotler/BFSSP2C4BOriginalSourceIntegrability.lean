@@ -72,6 +72,14 @@ theorem originalLinearMoment_integrable (f : SmoothCore 2) :
 beyond genuine original SmoothCore membership. -/
 theorem originalActualDensity_integrable (f : SmoothCore 2) :
     Integrable (originalActualDensity f) (volume : Measure (Boson 2)) := by
+  have hDensity :
+      originalActualDensity f =
+        (fun x : Boson 2 => M.deformedBosonicPotential 1 0 x * ‖f x‖^2) +
+          (fun x : Boson 2 =>
+            inner ℝ (f x) (M.deformedFermionField 1 0 x (f x))) := by
+    funext x
+    rfl
+  rw [hDensity]
   exact (originalPotentialDensity_integrable f).add (originalFermionDensity_integrable f)
 
 /-- The lower density is integrable; the finite source constant is the
