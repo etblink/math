@@ -1,0 +1,220 @@
+% Source-bound notation, without changing any Lean definition or physical field.
+\chapter{Source-Exact Notation and Normalization Audit}
+\label{app:normalization}
+
+\section{Indices, carriers, and the meaning of dimensions}
+
+We use the source declaration names as the authority on all indices;
+the prose notation below is an aid to an independent reader. The
+relative model is the $N=2$ specialization, \emph{not} a claim that
+the $N=2$ system has eleven spacetime dimensions.
+
+\begin{longtable}{@{}p{0.25\linewidth}p{0.31\linewidth}p{0.37\linewidth}@{}}
+\toprule
+Object / source name & Mathematical notation & Meaning and caution \\
+\midrule
+\endfirsthead
+\toprule
+Object / source name & Mathematical notation & Meaning and caution \\
+\midrule
+\endhead
+\texttt{SpaceIndex} & $i,j\in\mathrm{Fin}(9)$ & Nine spatial \emph{vector} labels; values $0,\ldots,8$. \\
+\texttt{SpinIndex} & $\alpha,\beta\in\mathrm{Fin}(16)$ & Sixteen original real spinor labels, not 16 spacetime coordinates. \\
+\texttt{ColorIndex 2} & $A,B,C\in\mathrm{Fin}(3)$ & Three adjoint $\mathrm{SU}(2)$ gauge-color directions; not three flavors. \\
+\texttt{Boson 2} & $\mathcal X\cong\mathbb R^{27}$ & Bosonic matrix-component configuration space. \\
+\texttt{Fermion 2} & $\mathcal F\cong\mathbb C^{2^{24}}$ & Literal original finite Fock Hilbert carrier. \\
+\texttt{FullL2 2} & $\mathscr H=L^2(\mathcal X;\mathcal F)$ & Infinite-dimensional wavefunction space; elements are a.e. classes. \\
+\texttt{SmoothCore 2} & $\mathscr D=C_c^\infty(\mathcal X;\mathcal F)$ & Test-function carrier for the original core charges. \\
+\texttt{GaugeGroup 2} & $\mathrm{SU}(2)$ & Original source compact color gauge group and its genuine actions. \\
+Original Majorana labels & $p=(m,r)$, $m\in\mathrm{Fin}(24)$, $r\in\mathrm{Fin}(2)$ & Source's accepted paired-mode reindexing; do not identify the interleaved order with an arbitrary block order. \\
+Original 48-label real space & $V_{48}\cong\mathbb R^{16}\otimes\mathbb R^3$ & An abstract orthogonal carrier description, linked to source labels by explicit equivalences. \\
+Original Fock operators & $\mathcal A=\operatorname{End}_{\mathbb C}(\mathcal F)$ & Complex dimension $2^{48}$; different from $\mathcal F$ itself. \\
+Original vector-valued $L^2$ & $L^2(\mathcal X;\mathcal F)$ & The actual physical-carrier parent; not $L^2(\mathcal X;\mathcal A)$. \\
+Auxiliary operator-valued $L^2$ & $L^2(\mathcal X;\mathcal A)$ & Used in a conditional oscillator argument; not identified with the physical Hilbert space. \\
+\bottomrule
+\end{longtable}
+
+The color dimension is $N^2-1$, hence $3$ at $N=2$; the bosonic
+configuration dimension is $9(N^2-1)=27$ and the complex Fock dimension
+is $2^{8(N^2-1)}=2^{24}$. In the real Majorana description the number
+of generator labels is $16\cdot3=48$. These are distinct dimension
+counts. The decomposition $V_{48}\cong\mathbb R^3\otimes\mathbb R^{16}$
+is \emph{not} a decomposition into three observable physical families.
+
+\section{Gamma matrices, Majoranas, and the two Clifford scales}
+
+The source real symmetric $16\times16$ matrices $\gamma_i$ obey
+\begin{equation}\label{eq:appendix-gamma-car}
+ \gamma_i\gamma_j+\gamma_j\gamma_i
+    =2\delta_{ij}I_{16},\qquad
+ \gamma^{ij}:=\tfrac12(\gamma_i\gamma_j-\gamma_j\gamma_i).
+\end{equation}
+The original self-adjoint Fock operators $\theta_{\alpha A}$ instead
+obey the \emph{delta-one} CAR
+\begin{equation}\label{eq:appendix-theta-car}
+ \theta_{\alpha A}\theta_{\beta B}
+ +\theta_{\beta B}\theta_{\alpha A}
+    =\delta_{\alpha\beta}\delta_{AB}I_{\mathcal F},
+ \qquad \theta_{\alpha A}^2=\tfrac12I_{\mathcal F}.
+\end{equation}
+If $\Gamma_p:=\sqrt2\,\theta_p$, then
+$\{\Gamma_p,\Gamma_q\}=2\delta_{pq}I$. This change of symbol is
+\emph{not} an authorized alteration to the original $\theta$ operator
+in a source Hamiltonian. The two Clifford structures also have different
+index sets: nine spatial vector directions versus forty-eight
+fermionic real-generator labels.
+
+The original complex Clifford representation on $\mathcal F$ is
+finite-dimensional and irreducible. Its faithful algebra identification
+with $\mathcal A$ is strictly qualified in the integrated M3H/M3I
+lineage, but it supplies neither a global source Spin(9) Fock-\emph{vector}
+unitary representation nor its infinitesimal/closed-Hamiltonian
+intertwiner. The algebraic equality $\dim_{\mathbb C}\mathcal A=2^{48}$
+does not mean that the Fock space has dimension $2^{48}$.
+
+\section{Source color bracket, Pauli normalization, and the charges}
+
+The source color matrices $t_A$ are Hermitian and traceless with
+$\operatorname{tr}(t_At_B)=\delta_{AB}$. It defines a Hermitian
+matrix bracket
+\begin{equation}\label{eq:appendix-color-bracket}
+ [X,Y]_{\mathrm{s}}:=-i(XY-YX),\qquad
+ f_{ABC}:=\Re\operatorname{tr}
+  \bigl(t_A[t_B,t_C]_{\mathrm{s}}\bigr).
+\end{equation}
+For the selected normalized Pauli color basis the source convention
+fixes the numerical structure constants, including their orientation
+sign. A calculation with another Pauli ordering must not inherit a
+numerical coefficient or sign without an exact source crosswalk.
+
+For $\psi\in\mathscr D$, the \emph{sixteen} source charges read
+\begin{align}\label{eq:appendix-charges}
+ Q_\alpha\psi={}&-i\sum_{i,A,\beta}
+ (\gamma_i)_{\alpha\beta}\theta_{\beta A}\partial_{iA}\psi\\
+ &+\frac12\sum_{i,j,A,B,C,\beta}
+ f_{ABC}(\gamma^{ij})_{\alpha\beta}
+ \theta_{\beta A}x_i^Bx_j^C\psi.\notag
+\end{align}
+The source uses ordered finite sums; the final $1/2$ is not a
+convention that can be dropped when reorganizing $i,j$.
+The nonnegative core form is exactly
+\begin{equation}\label{eq:appendix-core-form}
+ q_{\mathrm{core}}(\psi)=\frac1{16}\sum_{\alpha=0}^{15}
+  \|\iota Q_\alpha\psi\|_{\mathscr H}^2.
+\end{equation}
+The original massless energy identity then has a kinetic contribution
+$\tfrac12\sum_{i,A}\|\iota\partial_{iA}\psi\|^2$ and the \emph{named
+source} bosonic and fermionic potential fields. Thus $1/16$ in the
+charge norm and $1/2$ in the kinetic decomposition are consistent,
+not rival conventions. Both are demonstrated in the source
+\texttt{Core.lean}, \texttt{DeformedCharge.lean}, and the qualified
+\texttt{SpectralMasslessCoreFormIdentity.lean} composition.
+
+\section{The physical operator's domain versus the smooth core}
+
+The actual physical domain is constructed by closing the original
+charge column on the gauge-invariant core, not by declaring a formal
+differential expression self-adjoint. With the closed column denoted
+$T$, its associated operator is
+\begin{equation}\label{eq:appendix-domain}
+ H_{\mathrm{phys}}=\tfrac1{16}T^\dagger T,
+ \quad\operatorname{Dom}(H_{\mathrm{phys}})
+ =\{u\in\operatorname{Dom}(T):Tu\in\operatorname{Dom}(T^\dagger)\}.
+\end{equation}
+The source historical BA--BH certificates support the respective
+physical domain, weak-form, and operator-identification results at
+their accepted commits. Source copies inside another branch do not
+acquire those receipts automatically. This is also a different closure
+from the generic weighted Sobolev triple-closure in
+Chapter~\ref{ch:compactness}; a domain map between them remains open.
+
+\section{The original fermionic field and the bounded normalized observable}
+
+The source fermionic interaction appearing in the original energy
+identity is its massless \texttt{deformedFermionField 1 0}. Its
+configuration dependence is \emph{linear} in the bosonic coordinates
+in the intended concrete model, and the proposed uniform bound
+$\|B(X)\|\le8\sqrt3\|X\|$ is a \emph{conditional finite-CAR
+estimate}, not yet the accepted source-typed original-field theorem.
+The NORM program builds a different operator: the source spatial Gram
+matrix $M(X)_{ij}=\sum_A x_i^Ax_j^A$ has nonnegative trace
+$T(X)=\sum_iM(X)_{ii}=\|X\|^2$, and for fixed gamma matrix $B$ it
+constructs
+\begin{equation}\label{eq:appendix-norm-observable}
+ \widetilde A_B(X):=
+ \frac{i}{1+T(X)}\,A_B(X),\qquad
+ A_B(X):=\sum_{i,j}M(X)_{ij}C_{ij}(B),
+\end{equation}
+where the $C_{ij}(B)$ are the \emph{literal source original Fock
+operators} defined in Chapter~\ref{ch:norm}. For each fixed $B$, the
+accepted source norm inequality is
+\begin{equation}\label{eq:appendix-norm-bound}
+ \|\widetilde A_B(X)\|_{\mathrm{op}}
+ \le C_B:=\sum_{i,j}\|C_{ij}(B)\|_{\mathrm{op}}.
+\end{equation}
+This quadratic Gram numerator divided by $1+\|X\|^2$ is not the
+unnormalized linear term of the physical energy. The source D1
+proofs concern genuine $\mathrm{FullL2}\,2$ a.e. representatives,
+not a finite-volume assumption. A complete bounded
+$\mathscr H\to\mathscr H$ linear multiplier has separate proof
+obligations even when pointwise $L^2$ membership is known.
+
+\section{Groups, center, stabilizers, and representation fibers}
+
+Let $G=\operatorname{Spin}(9)$ in the original source Clifford model.
+Its nine-vector representation maps the negative central element
+$z=-1$ to the identity in $\mathrm{SO}(9)$, while the accepted
+original 48-label action maps it to $-I_{48}$. A unital algebra
+homomorphism sending the scalar $-1$ to the scalar $-1$ cannot alone
+provide that required nontrivial conjugation on the 48 generators.
+The full source group, a specified global lift, and its central
+phase matter. A star algebra automorphism of
+$\operatorname{End}_{\mathbb C}(\mathcal F)$ does not, without
+further argument, specify the desired source-normalized continuous
+$G\to U(\mathcal F)$ action.
+
+For a chosen ninth spatial axis, the source Spin stabilizer $K$
+projects onto the fixed-axis orthogonal stabilizer $H$ with two
+central signs; the exact source covering is qualified. There is a
+qualified continuous group equivalence $H\simeq\mathrm{SO}(8)$.
+These facts are not by themselves a source-bound, torus-compatible
+$K\simeq\operatorname{Spin}(8)$ classification with verified
+branching for the \emph{physical} Fock-vector carrier. The
+operator-valued first-torus weight bound $12$ includes a dual input
+index; the proposed Fock-vector lift bound $6$ does not. Thus
+$\lambda_2>m+12$ and $\lambda_2>m+6$ belong to \emph{different
+conditional models and hypotheses}.
+
+\section{A compact checklist for checking subsequent theorems}
+
+Before accepting a new mathematical inference, ask:
+\begin{enumerate}[leftmargin=1.6em]
+ \item Does it use the exact original $\mathbb R^{27}$ and
+ $2^{24}$-dimensional Fock carriers, or an explicitly marked auxiliary
+ space?
+ \item Is the anticommutator normalization $\{\theta,\theta\}=\delta$
+ retained, and is the source nine-gamma normalization
+ $\{\gamma_i,\gamma_j\}=2\delta_{ij}$ distinct?
+ \item Are the ordered finite sums, color orientation, $1/2$
+ commutator factor and $1/16$ charge-form normalization unchanged?
+ \item Does a statement about the physical Hilbert space use actual
+ $\mathrm{SU}(2)$ gauge invariance and a justified source action,
+ rather than a convenient color basis?
+ \item Has any use of an unbounded adjoint, extension, or spectrum
+ stated its domains and original closed form?
+ \item Is a result source-defined, historically or currently strict-
+ qualified, conditional, or still an open proof obligation?
+ \item Are the operator-valued and Fock-vector bounds kept separate,
+ including the negative central Spin sign?
+ \item Does any GUT/ToE or Hopf claim supply an actual mathematical
+ physical map rather than only a suggestive dimension count?
+\end{enumerate}
+
+\formalrecord{Primary notation authority:
+\texttt{Core.lean}
+(blob \texttt{9882359ced78b0a3bd7e2f057974bd0a031b3e60}),
+\texttt{DeformedCharge.lean} (blob
+\texttt{c27c913c44090100f0c714e3eb34e25205f4d2d3});
+source-stabilizer, gauge/Spin and NORM proof roots are linked in the
+37-record \texttt{THEOREM\_ATLAS.json}. No new Lean theorem is claimed
+by this normalization appendix.}

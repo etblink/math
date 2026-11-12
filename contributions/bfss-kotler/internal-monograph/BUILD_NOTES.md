@@ -79,7 +79,17 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
 - Extended the chronological appendix, editorial queue, and 37-record atlas notes; no new declared Lean theorem or CI status changed.
 - All builds use local `latexmk`, without GitHub Actions, Pages, webhooks, remote typesetting or network packages. The PDF is a review output; generated artifacts are excluded from the source-only Git commit.
 
+## Edition 0.5 (spectral and prospective unification, 2026-11-11)
 
-### 0.5 build
+- Completed Chapters 12--14 with the bounded original normalized Gram/Fock field, conditional whole-isotypic oscillator exclusion and physical coercivity proof gate map; added explicitly prospective Chapters 15--17 examining the gauge-triplet no-go, Spin9/Spin10 distinction, Hopf and projective-space descent, and GUT/ToE evidentiary conditions.
+- Retained the 37-record theorem atlas, including NORM0D D1-B pending `#43095354808`, and the separate existing spectral and unification research charters.
+- Local source edition compiled to 78 pages without GitHub-hosted services.
 
-Local offline LaTeX compilation only; no GitHub Actions, Pages, webhooks or hosted LaTeX services. Chapters 12--17 and the related research charters are documentation sources. This edition retains the same pinned mathematical snapshot as prior editions; no Lean source or strict consumer is edited. Generate PDF using `latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex` and review first and last pages plus all new-chapter starts.
+## Edition 0.6 (expert onboarding, normalization and consistency, 2026-11-11)
+
+- Completed the previously architectural Chapter 1 with the exact fixed N=2 research target, BFSS large-N interpretation caveat, native physical Hilbert/closed Hamiltonian, positive point spectrum versus full gap, three proof chains, hypothesis status vocabulary and source-research navigation.
+- Added source-exact notation/normalization and negative-knowledge/reproducibility appendices; recovered precise Core/DeformedCharge source coefficients and domain identities at the pinned baseline.
+- Reviewed all manuscript chapter anchors, atlas statuses and cross-chapter caveats; recorded closed and outstanding items in `CONSISTENCY_AUDIT_2026_11_11.md`.
+- Verified `python3 tools/audit_manuscript.py`: **39/39 structural checks pass**.
+- Verified local `latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=/mnt/data/_bfss_v06_build main.tex`: **88 pages**, zero LaTeX warnings, undefined refs or overfull boxes. Selected pages rendered and visually inspected.
+- No mathematical Lean module, historical FCP proof, source manifest, CI workflow, Pages site or webhook is altered. Source-only commit to monograph branch is permitted; unified branch stays separate pending editorial acceptance and branch reconciliation.

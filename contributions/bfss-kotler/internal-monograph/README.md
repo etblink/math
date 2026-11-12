@@ -1,50 +1,55 @@
-# Relative SU(2) BFSS — internal research monograph workspace
+# The Relative SU(2) BFSS Quantum System — internal research monograph
 
-**Status: internal research monograph v0.5, mathematical Chapters 2--14 drafted; prospective unification Chapters 15--17 drafted as research analyses, not physical results.**
+**Edition 0.6 (2026-11-11): 88-page locally compiled expert-onboarding review edition.** All **17 planned chapters** contain mathematical or explicitly bounded research exposition, with a fully written Chapter 1 and source-exact notation and negative-knowledge appendices. **This is a working internal manuscript, not a published theorem or a completed scientific research program.**
 
-This directory is a narrative, source-auditable onboarding reference for mathematicians and mathematical physicists joining the original relative SU(2) supersymmetric matrix quantum mechanics research program. It is a *living internal research monograph*, not the eventual external publication and not an assertion of a mass gap, a positive-eigenvalue theorem, or an 11-dimensional M-theory equivalence.
+This directory helps an independent mathematician or mathematical physicist understand, critique, reproduce, and extend the *original source-exact relative SU(2) quantum model* and its formal verification. Its ultimate external successor will be drafted only after the relevant scientific results and formal proofs are complete and independently reviewed.
 
-## Files
+## Contents
 
-- `CHAPTER_BLUEPRINT.md` — the 17-chapter research monograph architecture, drafted-chapter status, open proof obligations and drafting order.
-- `chapters/ch02_carriers.tex` through `chapters/ch14_frontier.tex` — thirteen substantive chapters on the original quantum model, mathematical proofs, qualified source theorems and the open spectral interface.
-- `appendices/historical_lineage.tex` — narrative reconstruction of the FCP to unified-integration progression.
-- `HISTORICAL_LINEAGE.md` — detailed dated record with FCP and integrated run evidence, historical handoffs and source path locators.
-- `THEOREM_ATLAS.json` — structured, exact-snapshot crosswalk of source declarations, Git blob SHAs, evidence status, mathematical boundaries and **narrative** dependencies.
-- `THEOREM_ATLAS.md` — readable rendering of 37 records, with the recovered strict-green stabilizer covering, SO(8) coordinate equivalence, C48 label commutation and active-gamma compatibility.
-- `chapters/ch15_particle.tex` through `chapters/ch17_unification.tex` — three **prospective** research chapters with precise no-go and emergence tests, not verified particle-physics claims.
-- `main.tex` — offline-compilable 17-chapter master TeX; Chapter 1 is still an editorial scaffold.
-- `BUILD_NOTES.md` — local-only compilation and review results.
-- `SPECTRAL_JOIN_GATES.md` — source-physical theorem dependency and counterexample checklist.
-- `UNIFICATION_RESEARCH_CHARTER.md` — prospective source-first research tracks and explicit rejection criteria.
+- `main.tex` — fully linked 17-chapter master manuscript, including three source/evidence appendices.
+- `chapters/ch01_scope.tex` — expert introduction: mathematical system versus large-`N` M-theory conjecture, spectral targets, three proof chains, and evidentiary contract.
+- `chapters/ch02_carriers.tex` through `ch06_hamiltonian.tex` — source carrier, CAR/Clifford, exact sixteen charges, gauge-physical state space, and native closed Hamiltonian.
+- `chapters/ch07_spin_geometry.tex` through `ch09_gauge_covariance.tex` — source Spin(9)/Spin(8) stabilizer, original Fock operator star/trace action, original Majorana-label gauge compatibility and the remaining physical source-lift requirements.
+- `chapters/ch10_energy.tex` through `ch14_frontier.tex` — original energy decomposition, accepted first-moment compactness, the bounded *auxiliary* NORM observables, conditional oscillator exclusions, and the unfinished coercivity/spectral joins.
+- `chapters/ch15_particle.tex` through `ch17_unification.tex` — **exploratory** GUT/ToE program, including no-go tests for naive color-generation identifications and gauge/descent restrictions on Hopf geometry.
+- `appendices/historical_lineage.tex`, `HISTORICAL_LINEAGE.md` — FCP-to-`etblink/math` dated research evolution, later qualifications correcting older as-of statuses.
+- `appendices/notation_normalization.tex` — original indices, Fock/CAR, gamma matrices, exact colors, charge/form coefficients, central signs, field normalization, and operator versus Fock-vector carrier distinctions.
+- `appendices/negative_knowledge.tex` — bounded failures, explicit no-go scope, source provenance, and review methodology.
+- `THEOREM_ATLAS.json` and `THEOREM_ATLAS.md` — **37** source-linked qualification and theorem/dependency records. The editorial atlas does not substitute for the exact accepted Lean file and strict run evidence.
+- `SPECTRAL_JOIN_GATES.md`, `UNIFICATION_RESEARCH_CHARTER.md` — prospective research gates and explicit scientific stop conditions.
+- `CONSISTENCY_AUDIT_2026_11_11.md` — detailed cross-chapter review and unresolved claims.
+- `tools/audit_manuscript.py` — offline structural checks, *not* a Lean or mathematical proof certification.
+- `BUILD_NOTES.md` — exact local compilation and validation record.
 
-## Source authority and careful interpretation
+## Mathematical source authority
 
-The source inspection baseline is `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5` (the parent of this documentation work). The original `Core.lean` and `GaugeCore.lean` determine the mathematical carriers and gauge definitions. FCP BA–BH proofs are historically strict-green but their imported copies are *not* automatically green in the new integration environment. Existing qualified original Clifford/Fock and abstract compactness results are not equivalent to a completed spectral theorem. The operator-valued Fock-endomorphism fiber and the actual physical Fock-vector Hilbert carrier are different mathematical spaces.
+- **Immutable mathematical source inspection baseline:** `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5`.
+- Original core source: `lean/OAI/MathematicalPhysics/BFSS/Core.lean` (Git blob `9882359ced78b0a3bd7e2f057974bd0a031b3e60`).
+- Original massless energy: `DeformedCharge.lean` (Git blob `c27c913c44090100f0c714e3eb34e25205f4d2d3`) and integrated massless form interface.
+- **Evidence classes:** source definition, historically strict-qualified, integrated strict-qualified at an exact commit, source present/receipt pending, conditional mathematical argument, and open proof obligation. No historical strict receipt automatically certifies a modified imported source in today's integration tree.
+- **Current scientific boundary:** no original-source positive-eigenpair theorem, full mass gap, source physical coercivity, Standard Model three-generation derivation, GUT, ToE, or M-theory equivalence is claimed.
 
-The term **BFSS** denotes the source mathematical system's origin and characteristic equations; this document does not assume the proposed eleven-dimensional M-theory interpretation. A truly changed model with new dynamics should be named separately and must not silently inherit source-exact theorems.
+The field on `Fermion 2` is different from an action on `FullL2 2`; the full Fock-operator algebra is different from the original Fock-*vector* Hilbert space; the normalized Gram/Fock auxiliary field is different from the unnormalized original fermionic energy term. Those boundaries are essential, not editorial footnotes.
 
-## Collaboration policy
+## Local build and review
 
-1. Every formal theorem claim must give its exact mathematical statement, source declaration, hypotheses, and qualification status. Do not cite CI alone in place of a conventional mathematical argument.
-2. Distinguish a conditional analytical theorem from a source-exact certified theorem. No invented statements, assumptions, citations, or phantom Lean proofs.
-3. Never modify historical accepted proof files, Git histories, pinned toolchains, workflows, or main while editing this workspace. Commit changes only on the dedicated monograph branch.
-4. Local `pdflatex`/`latexmk` is sufficient for building; **do not use GitHub Actions, Pages, webhooks or hosted build services**, especially during an incident.
-5. Ignore LaTeX-generated `.aux`, `.toc`, `.log`, `.out`, `.fls`, `.fdb_latexmk` and PDF artifacts when committing source-only edits. Preserve reviewed edition PDFs separately if desired.
-6. For later fast-forward promotion, first verify the unified branch is an ancestor of the monograph HEAD; reconcile any divergence on the monograph branch and only then fast-forward the unified branch without `--force`.
+```bash
+python3 tools/audit_manuscript.py
+latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
+  -outdir=/tmp/bfss-monograph-build main.tex
+```
 
-**Current priority:** Independently review Chapters 10–11 against the exact source energy fields, compactness-domain data and finite-CAR diagnostic assumptions; then develop Chapter 12 normalized auxiliary field and Chapter 13 conditional high-type spectral mechanism. The v0.5 PDF is a working review edition, not a completed spectral theorem.
+The 0.6 preview is **88 pages**, compiled locally with **zero LaTeX warnings, zero overfull lines, and zero unresolved internal references**. A selection of beginning, chapter-transition, and appendix pages was rendered locally and inspected. This workflow requires **no GitHub Actions, Pages, webhooks, or hosted LaTeX**. The review PDF is an output, not committed source.
 
+## Preservation and eventual integration
 
-## Edition 0.5 — spectral synthesis and unification prospectus
+The authorized editorial branch is `docs/bfss-internal-research-monograph-20261111`. Work on this branch may change only monograph files; no Lean proofs, frozen manifests, CI workflows, original FCP branches, or `main` are to be rewritten for editorial convenience. The unified integration branch remains separate until an explicit reviewed fast-forward decision. If it advances, incorporate/reconcile those changes before attempting a non-force fast-forward.
 
-- `chapters/ch12_normalized.tex`: original bounded Gram/Fock observable, true `FullL2 2` representatives, strict and queued-gate distinction.
-- `chapters/ch13_spectral.tex`: conditional operator-fiber/vectors weight bounds, oscillator exclusion, precise original-source coercivity and spectrum obligations.
-- `chapters/ch14_frontier.tex`: proof dependency gates, hostile counterexamples, evidence and version-control separation.
-- `chapters/ch15_particle.tex`: Spin(9)/Spin(10) comparison and color-triplet family-label obstruction, without claims of observed families.
-- `chapters/ch16_topology.tex`: source-gamma eigenspace bundles, Hopf geometry and projective gauge-descent tests, explicitly conditional topology qualifications.
-- `chapters/ch17_unification.tex`: GUT/ToE necessary conditions and falsifiable source/dynamics/phenomenology gates.
-- `SPECTRAL_JOIN_GATES.md`: open physical proof dependency checklist.
-- `UNIFICATION_RESEARCH_CHARTER.md`: source-first exploratory program, kill criteria and research-only evidence.
+## Collaboration rules retained from earlier editions
 
-Original research source and Lean evidence snapshot remains `etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5`. The manuscript branch advances editorially only; no CI, webhooks, workflow, or original Lean source changes are required to read or compile it.
+1. Do not substitute a green workflow, symbolic finite diagnostic or paper citation for a complete mathematical theorem and its exact hypotheses.
+2. Preserve historically qualified results together with source blob IDs and failure causes; never silently rewrite the original FCP record.
+3. Restrict editorial Git changes to this monograph branch and its source directory. Do not touch accepted Lean modules, manifests, original proof branches or `main`.
+4. Compile and validate the book locally; do not depend on GitHub Actions, Pages, webhooks, hosted LaTeX, or live services to validate its scientific statements.
+5. Keep generated PDFs and `.aux`/`.toc`/`.log`/`.fls`/`.fdb_latexmk` build files out of source commits.
+6. Promote to unified by a verified non-force fast-forward only after reviewer acceptance and reconciling any intervening changes on unified.

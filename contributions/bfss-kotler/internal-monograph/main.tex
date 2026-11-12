@@ -10,6 +10,7 @@
 \usepackage{hyperref}\usepackage{url}
 \usepackage{microtype}
 \usepackage{enumitem}
+\usepackage{booktabs,longtable}
 \geometry{margin=1.1in}
 \emergencystretch=2em
 \urlstyle{same}\hypersetup{hidelinks,pdftitle={The Relative SU(2) BFSS Quantum System: Internal Research Monograph},pdfauthor={Internal mathematical research collaboration}}
@@ -31,7 +32,7 @@
 
 \title{\textbf{The Relative $\mathrm{SU}(2)$ BFSS Quantum System}\\[0.4em]
   \Large Mathematical Construction, Formal Verification, and the Spectral Research Frontier\\[0.6em]
-  \large Internal research monograph --- source-narrative edition 0.5}
+  \large Internal research monograph --- expert-onboarding edition 0.6}
 \author{Internal mathematical research collaboration}
 \date{11 November 2026}
 
@@ -44,13 +45,13 @@
 \addcontentsline{toc}{chapter}{Editorial status and reader's contract}
 This is a \emph{living internal mathematical research monograph}, intended as an
 onboarding and research instrument for mathematicians and mathematical physicists.
-This edition contains substantive mathematical narratives of the original
-carriers and Hamiltonian (Chapters 2--6), the source Spin(9) geometry,
+This edition begins with a source-exact research scope and evidence contract
+(Chapter 1) and continues through the original carriers and Hamiltonian (Chapters 2--6), the source Spin(9) geometry,
 Fock-operator algebra and gauge-covariance frontier (Chapters 7--9),
 the original energy, compactness and normalized-field programs
 (Chapters 10--12), and conditional spectral and research-frontier synthesis
 (Chapters 13--14). Chapters 15--17 form a clearly separated, prospective
-unification research program. Chapter 1 remains an architectural outline. Formal records document historical and current
+unification research program. Chapter 1 now provides a complete expert-facing scope and evidence contract. Formal records document historical and current
 qualification without claiming new Lean proofs. The core-source research snapshot is
 \texttt{etblink/math} at commit \texttt{d4870eb1ac58}; the monograph editorial
 branch is independently versioned.
@@ -72,12 +73,7 @@ a conditional derivation supplies an unstated physical theorem.
 \tableofcontents
 \mainmatter
 \part{Defining the Original Quantum System}
-\chapter{Scope, Physical Context, and the Research Problem}
-\label{ch:scope}
-\section{Mathematical BFSS system versus M-theory interpretation}
-\section{Physical questions and precise spectral targets}
-\section{Evidence standards and the three proof chains}
-\editornote{Introduce the system without presupposing positive spectrum or a mass gap. Atlas: D-01, H-02, O-05.}
+\input{chapters/ch01_scope}
 
 \input{chapters/ch02_carriers}
 \input{chapters/ch03_clifford}
@@ -116,11 +112,9 @@ mathematically typed formalization notes; the full ledger remains separate.
 
 \input{appendices/historical_lineage}
 
-\chapter{Notation and Normalization Audit}
-\editornote{Create a source-exact table for the theta/gamma CAR, 1/16 charge coefficient, color normalization and spatial representation when writing begins.}
+\input{appendices/notation_normalization}
 
-\chapter{Negative Knowledge, Source Provenance, and Reproducibility}
-\editornote{Keep the history of failed strategies and conditional claims, plus local offline build instructions and independent consumer policies, in this appendix.}
+\input{appendices/negative_knowledge}
 
 \backmatter
 \chapter*{Bibliographic verification policy}

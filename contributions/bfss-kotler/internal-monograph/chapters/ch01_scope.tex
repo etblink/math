@@ -1,0 +1,255 @@
+% Chapter 1: expert onboarding, mathematical scope, and the evidentiary contract.
+% Research baseline etblink/math@d4870eb1ac58, FCP historical receipts recorded separately.
+\chapter{Scope, Physical Context, and the Research Problem}
+\label{ch:scope}
+
+\section{The object of study is a quantum system, not an assumed interpretation}
+
+The subject of this volume is a specified supersymmetric matrix quantum
+mechanical system: the \emph{relative} $N=2$ case of the Banks--Fischler--Shenker--Susskind
+(BFSS) family. Its fundamental variables are nine traceless Hermitian
+$2\times2$ matrix coordinates and sixteen matrix-valued fermionic
+components. The relative adjective indicates that the decoupled trace or
+center-of-mass sector is not part of the system analyzed here. The
+original source fixes a concrete choice of color basis, Clifford matrices,
+fermionic CAR realization, supercharge normalization, and physical gauge
+action. We will not silently replace any of these data with a more convenient
+isomorphic model when a theorem purports to concern the original system.
+
+This fixed-$N$ quantum mechanics is mathematically meaningful whether or not
+one assumes a particular high-energy interpretation. The original BFSS
+proposal relates a large-$N$ matrix-model limit to eleven-dimensional
+M-theory. That conjectural relationship is the historical motivation for the
+name; it is \emph{not} a hypothesis of our source definitions, of the
+physical Hilbert-space construction, or of the present spectral program.
+Nine spatial matrix labels do not amount to eleven explicitly modeled
+spacetime coordinates. Conversely, the 27 real coefficients in the
+relative $N=2$ bosonic configuration space are matrix components, not a
+27-dimensional physical spacetime. This distinction will be maintained
+throughout the book.
+
+\begin{definition}[The fixed mathematical research target]
+\label{def:research-target}
+The \emph{original relative $\mathrm{SU}(2)$ system} means the source
+$N=2$ specialization of \texttt{OAI.BFSSQuantum.AlgebraData} together with
+its genuine gauge representation, original smooth core, sixteen original
+supercharges, and the associated physical closed charge/Hamiltonian
+construction, with the source's exact representation and normalization data.
+A statement about an auxiliary Fock algebra or a different matrix model is
+not by this definition a statement about the original physical Hamiltonian.
+\end{definition}
+
+The underlying carrier will be introduced precisely in
+Chapter~\ref{ch:carriers}. In advance, its schematic form is
+\begin{equation}\label{eq:intro-full-hilbert}
+ \mathscr H=L^2(\mathbb R^{27},dx;\mathcal F),\qquad
+ \dim_{\mathbb C}\mathcal F=2^{24}.
+\end{equation}
+The physical Hilbert space $\mathscr H_{\mathrm{phys}}$ is the closed
+subspace satisfying the \emph{actual simultaneous} $\mathrm{SU}(2)$
+color-gauge invariance. It is not the tensor product of a purported
+three-family flavor space and an unrelated spinor Hilbert space. The
+three real color directions form the adjoint gauge representation.
+
+\section{Why the operator and its domain must precede the spectral question}
+
+The compact formula for a supersymmetric Hamiltonian conceals its most
+important analytic issue: a differential expression is not yet a
+self-adjoint unbounded operator. At the smooth-core level the original
+sixteen charge maps $Q_\alpha$ determine the nonnegative real form
+\begin{equation}\label{eq:intro-core-form}
+ q_{\mathrm{core}}(\psi)
+ =\frac1{16}\sum_{\alpha=0}^{15}
+   \bigl\|\iota(Q_\alpha\psi)\bigr\|_{\mathscr H}^{2},
+ \qquad \psi\in\mathscr D_{\mathrm{phys}},
+\end{equation}
+where $\iota$ denotes the original test-function-to-$L^2$ map and
+$\mathscr D_{\mathrm{phys}}$ is the source physical smooth core. The
+factor $1/16$ is not an adjustable unit convention in a source-exact
+claim. It is the one occurring in the formalized source
+\texttt{AlgebraData.coreForm}.
+
+The historical physical-domain program proved density, closedness and
+natural-domain statements leading to the native nonnegative operator
+\begin{equation}\label{eq:intro-physical-hamiltonian}
+ H_{\mathrm{phys}}=\frac1{16}\,T^\dagger T,
+ \qquad
+ \operatorname{Dom}(H_{\mathrm{phys}})
+ =\{\psi\in\operatorname{Dom}(T):
+       T\psi\in\operatorname{Dom}(T^\dagger)\}.
+\end{equation}
+Here $T$ denotes the \emph{closed original physical sixteen-charge
+column} in the historically qualified construction; the formula does
+not assert that an arbitrary formal core column has the same domain.
+The BA--BH sequence and its exact historical receipts are explained
+in Chapter~\ref{ch:hamiltonian} and the historical appendix. Importing
+those Lean files into a new tree without a separately qualified cold
+consumer does not create a new integration-level acceptance certificate.
+
+\section{The spectral questions: point spectrum, compact resolvent, and a gap}
+
+Three superficially similar questions must be separated. A
+\emph{normalizable eigenstate} is a nonzero vector
+$\psi\in\operatorname{Dom}(H_{\mathrm{phys}})$ satisfying
+\begin{equation}\label{eq:intro-eigenvalue}
+ H_{\mathrm{phys}}\psi=E\psi,\qquad
+ 0<\|\psi\|_{\mathscr H}<\infty.
+\end{equation}
+An eigenvalue is \emph{positive} when $E>0$. Its existence is a
+point-spectrum assertion and does not require the entire physical
+spectrum to be discrete. A \emph{compact-resolvent theorem on a
+reducing sector} is stronger in one direction and weaker in another:
+when the sector is infinite-dimensional, the restricted operator has
+an unbounded discrete sequence of eigenvalues, but the restriction
+need not describe the rest of the full physical spectrum. A
+\emph{positive spectral gap of the entire physical Hamiltonian} is
+a different claim about the global low-energy spectrum; it cannot be
+inferred from a positive sector eigenpair.
+
+Our primary prospective theorem concerns positive point spectrum in
+a rigorously identified original physical sector. We do \emph{not}
+assert a mass gap or positive-energy eigenstate as an established
+conclusion. Classical flat directions of the quartic bosonic potential
+make careless global confinement claims particularly suspect. The
+source exact energy identity is therefore a starting point, not a
+substitute for an estimate excluding escape to infinity.
+
+\begin{remark}[The meaning of ``original'']
+We distinguish the original physical $\mathcal F$-valued Hilbert
+space~\eqref{eq:intro-full-hilbert} from the auxiliary
+$\operatorname{End}_{\mathbb C}(\mathcal F)$-valued Hilbert space used
+in a conditional oscillator argument. Their representations and
+highest-weight bounds differ. A theorem proved for the second space
+cannot be transferred to the first by changing notation.
+\end{remark}
+
+\section{Three mathematical proof chains and the unproved joins}
+
+The research is easier to understand as three interacting chains
+than as a chronological list of CI jobs.
+
+\begin{description}[leftmargin=1.4em,style=nextline]
+ \item[The physical-operator chain.]
+ Original supercharges and gauge action lead to the physical smooth
+ core, density of its charge domain, a closed charge column, the
+ normalized adjoint-square Hamiltonian, and historical source-native
+ operator identification. Chapters~\ref{ch:charges}--\ref{ch:hamiltonian}
+ distinguish these statements and their exact domain requirements.
+ \item[The spatial-representation chain.]
+ Source $\operatorname{Spin}(9)$, its original nine-vector and
+ 48-Majorana actions, the exact ninth-axis covering, Clifford--Fock
+ operator automorphisms and genuine gauge-label compatibility have
+ substantial formal proof support. A continuous source-exact
+ \emph{Fock-vector} action preserving the full physical charge column
+ and its closed domain is a further mathematical obligation.
+ Chapters~\ref{ch:spin-geometry}--\ref{ch:covariance}
+ make this boundary explicit.
+ \item[The energy-and-compactness chain.]
+ The original massless core energy decomposition and the abstract
+ first-radial-moment compactness theorems are qualified source results.
+ The necessary high-type \emph{physical-sector coercivity}, source
+ fermionic field estimate, and closed-form-domain transfer remain
+ open. Chapters~\ref{ch:energy}--\ref{ch:spectral} reconstruct the
+ conditional bridge without treating it as an accomplished theorem.
+\end{description}
+
+The central missing join can be written schematically as
+\begin{equation}\label{eq:intro-join}
+\begin{gathered}
+ \text{original physical Hamiltonian and source-compatible sector}\\
+ \Big\Downarrow\quad\text{\emph{open}: coercivity and closed-domain transfer}\\
+ \text{first-radial-moment control and verified abstract compactness}\\
+ \Big\Downarrow\quad\text{\emph{conditional}: closed-form spectral theorem}\\
+ \text{positive sector eigenvalues}.
+\end{gathered}
+\end{equation}
+The arrow marked \emph{open} is the current mathematical research
+frontier. The right-hand implication is a standard theorem of closed
+quadratic forms, \emph{conditional on the precise hypotheses}.
+
+\section{Verified, conditional, and exploratory statements are different data}
+
+This monograph is simultaneously a mathematical exposition and a
+reproducible record of what the formal project has actually accepted.
+We use the following \emph{evidence statuses}, indexed in
+\texttt{THEOREM\_ATLAS.json}:
+\begin{description}[leftmargin=1.4em,style=nextline]
+ \item[Original source definition.] A declaration specifying an exact
+ carrier, operator or normalization; a definition alone proves no
+ spectral consequence.
+ \item[Historically strict-qualified.] A named theorem and its
+ independent consumer/axiom evidence at an exact tested historical
+ commit, often in the FCP record. It is not automatically a green
+ result for an altered copy on our current branch.
+ \item[Integrated strict-qualified.] A source theorem independently
+ cold-compiled and checked in the \texttt{etblink/math} research
+ lineage at a specified tested commit.
+ \item[Source present or qualification pending.] A declaration may
+ exist in the tree while the required exact acceptance is unverified,
+ queued, or failed. The distinction is substantive.
+ \item[Conditional analytical argument.] A conventional derivation
+ from explicit premises that are not yet bound to the exact original
+ physical system. It may be mathematically illuminating but has not
+ closed the source-specific physical theorem.
+ \item[Open proof obligation.] A statement selected as a research
+ target, rather than an established result.
+\end{description}
+A green infrastructure check is evidence about a particular source
+and consumer contract, not a substitute for an independent
+mathematical explanation. Conversely, a failure due to a generated
+manifest, file path, or deprecated Lean tactic is not in itself a
+counterexample to a mathematical statement. Both successes and
+failures are preserved at their historical commit and scope.
+
+\section{What the model cannot yet tell us about the universe}
+
+The source Spin(9) representation, original color triplet, Clifford
+algebra and gauge symmetry are mathematically real. They do not by
+themselves establish four-dimensional chiral matter, three particle
+generations, the Standard Model gauge and charge assignments, spacetime
+emergence, or a theory of quantum gravity. In particular, three adjoint
+color components are not three gauge-invariant flavor labels. The
+putative relation between a real Spin(9) sixteen and a complex chiral
+Spin(10) sixteen is representation-theoretic motivation, not an
+identification of their physical roles.
+
+The later exploratory chapters examine candidate-neutral connections
+to Hopf geometry, gauge descent, protected topology, category theory,
+and particle unification. Every proposal must specify a mathematical
+map on the \emph{actual} source carriers, preserve gauge equivalence
+and physical operator domains, and lead eventually to new testable
+physical content if it is to be promoted beyond structural analogy.
+Unsuccessful constructions are useful negative evidence and are
+recorded without disguising their failures.
+
+\section{How to read and extend the book}
+
+Chapters~\ref{ch:carriers}--\ref{ch:hamiltonian} first reconstruct the
+system's source definition and genuine physical Hamiltonian.
+Chapters~\ref{ch:spin-geometry}--\ref{ch:covariance} develop
+spatial symmetry and its strict representation boundaries.
+Chapters~\ref{ch:energy}--\ref{ch:spectral} explain the energy,
+normalized auxiliary observables, conditional oscillator exclusion,
+and the compactness-to-spectrum argument. The research-frontier and
+prospective-unification chapters then separate the remaining physical
+proof obligations from genuinely new hypotheses.
+
+The main exposition follows \emph{logical dependency order}. The
+historical appendix follows \emph{chronological order}, from the
+October FCP charge/gauge/domain results to their later integration and
+the November Spin(9), Fock and spectral interfaces. The theorem atlas
+provides the exact source paths, immutable Git blobs and strict-run
+receipts; its dependency relationships are editorial and must not be
+mistaken for Lean's import graph. The appendices distinguish source
+notations, normalization choices and negative knowledge. A new
+researcher should be able to locate both a mathematical proof and
+its formal acceptance record without confusing them.
+
+\formalrecord{Research baseline: \texttt{etblink/math@d4870eb1ac58};
+original carriers and charges in \texttt{Core.lean}; historical FCP
+physical-domain BA--BH sources and receipts in
+\texttt{HISTORICAL\_LINEAGE.md}; integrated spatial, Fock and spectral
+qualification in companion \texttt{THEOREM\_ATLAS.json}. This chapter
+introduces no new Lean theorem. The historical BFSS large-$N$ conjecture
+is Banks--Fischler--Shenker--Susskind (1997),
+\href{https://doi.org/10.1103/PhysRevD.55.5112}{doi:10.1103/PhysRevD.55.5112}.}

@@ -1,0 +1,121 @@
+% Methodological/negative evidence, not a mathematical no-go beyond stated scope.
+\chapter[Negative Knowledge and Reproducibility]{Negative Knowledge, Source Provenance, and Reproducibility}
+\label{app:negative-knowledge}
+
+\section{Why this appendix belongs in an internal research monograph}
+
+For an independent collaborator, a list of successful Lean declarations
+is not enough. A rejected proof route may be the most economical way
+to prevent a mistaken future construction. We therefore record
+negative findings with their \emph{minimal mathematical scope},
+separating a verified counterexample, a conditional objection, and
+an implementation failure. The full chronology and exact SHA-based
+receipts remain in \texttt{HISTORICAL\_LINEAGE.md}, the research
+memoranda, and the theorem atlas; this appendix is a reader's map.
+
+\section{Mathematical and representation-theoretic stop conditions}
+
+\begin{description}[leftmargin=1.4em,style=nextline]
+ \item[Source central sign cannot be discarded.]
+ The original $z=-1\in\operatorname{Spin}(9)$ is trivial on
+ the nine-vector representation but acts as $-I$ on the original
+ 48 Majorana label carrier. Sending $z$ to a scalar operator by a
+ simple unital $\mathrm{Cl}_9$-algebra homomorphism would yield
+ trivial conjugation and cannot implement the required CAR action.
+ This excludes that \emph{particular shortcut}, not all continuous
+ group-lift constructions.
+ \item[Commuting source label matrices do not prove commuting Fock unitaries.]
+ The accepted C48 source matrices on the forty-eight labels commute.
+ On a finite Fock representation, operators implementing commuting
+ automorphisms can differ by a scalar phase. Gauge-unitary
+ fixedness, a globally consistent implementing representation, and
+ the original physical projection still require their own proofs.
+ \item[Fock-vector and endomorphism fibers carry different weights.]
+ A possible bound $6$ for the original Fock-vector first weight is
+ not a bound for the full endomorphism fiber. The latter has the
+ contragredient input index and reaches first weight $12$. In the
+ conditional oscillator argument the operator-valued threshold is
+ $\lambda_2>m+12$. Source binding must precede a numerical
+ confinement claim.
+ \item[Rank-one valleys prohibit naive radial bosonic confinement.]
+ The quartic commutator potential vanishes on commuting rank-one
+ configurations. An unbounded potential away from these valleys is
+ insufficient to prove compact resolvent of the full Hamiltonian.
+ An actual escaping sequence in a \emph{fixed physical sector} would
+ be a substantive adverse test; merely pointing to one classical
+ commuting configuration is not such a sequence.
+ \item[Color multiplicity is not generation multiplicity.]
+ The three SU(2) adjoint-color directions mix under the physical
+ gauge group. Three independent rank-one color projectors cannot
+ all commute with this irreducible real action. This rules out the
+ naive direct color-as-three-family identification, not every
+ possible emergent gauge-invariant composite construction.
+ \item[Hopf bundles must pass gauge descent.]
+ The source nine-gamma eight-plus-eight eigenspace projectors are
+ interchanged under antipodal spatial direction. A proposed
+ individually named plus-bundle on the unoriented rank-one valley
+ quotient requires an explicit gauge-equivariant descent map.
+ Existing topological and category-theoretic objections are
+ conditional source-bridge arguments, not a formalized no-go theorem
+ against all physical or stacky structures.
+\end{description}
+
+\section{Implementation failures are not automatically counterexamples}
+
+Some failures in the historical project had precise nonmathematical
+causes: a generated manifest syntax error, a diagnostic file-path
+mismatch, an API deprecation treated as a warning-as-error, a Lean
+style-linter warning, or a proof elaborator issue in a large monolithic
+construction. They should be preserved because they informed more
+reliable bounded methods, but no failed job should be cited as a
+counterexample without a mathematical refutation.
+
+The operational response is to locate the \emph{first causal error},
+compare the candidate against the last qualified source and consumer,
+repair only the smallest necessary surface, and freeze the theorem
+statement and mathematical normalization. A cold source build,
+independent consumer, exact dependency pins, and allowed-axiom
+reports supply a reproducible certificate when they all pass.
+
+\section{Historical qualification is not current-tree acceptance}
+
+The project spans the FCP research corpus, the original upstream
+mathematical source, multiple research branches, and the unified
+\texttt{etblink/math} integration branch. A theorem's existence in
+that tree is a source-location fact. A historical strict-green
+qualification belongs to the exact tested Git object and dependencies.
+A present integration certificate is a separate statement requiring
+its own tested source closure. The manuscript's \emph{formalization
+records} link these layers but are not independent proof certificates.
+
+The manuscript itself is built locally from its \LaTeX{} sources.
+Generated PDF files, auxiliary compiler files and visual render
+images are review products, not components of the source-only Git
+commit. GitHub Actions, Pages, webhooks and hosted compilation are
+not prerequisites for compiling or reviewing the book.
+
+\section{A repeatable reader audit}
+
+For a theorem to be promoted from conditional research to an accepted
+result in the final external monograph, require at least the following:
+\begin{enumerate}[leftmargin=1.6em]
+ \item A complete conventional theorem statement, including exact
+ source types and hypotheses, with a proof or an explicit reduction
+ to previously accepted lemmas.
+ \item Exact Lean declaration, source blob and tested dependency
+ closure; no substitution of an equivalent but unbound physical model.
+ \item Independently compiled consumer and a closed, fail-fast
+ allowed-axiom report at the tested commit.
+ \item If a spectral theorem is claimed, exact physical-sector
+ reduction, the original charge-form domain bridge, and the energy
+ estimate on that same closed form.
+ \item If a physical unification claim is advanced, a definition of
+ observables and dynamics and an independently discriminating
+ empirical consequence, or an honest statement that none exists.
+\end{enumerate}
+
+\formalrecord{The complete run chronology, including historical reds,
+source recoveries and later corrections, resides in the preserved
+\texttt{HISTORICAL\_LINEAGE.md} and existing source memoranda. The
+current manuscript checks source-level claims against the frozen
+\texttt{etblink/math@d4870eb1ac58} mathematical baseline.}
