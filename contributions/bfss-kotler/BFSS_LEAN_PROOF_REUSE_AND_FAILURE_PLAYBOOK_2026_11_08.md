@@ -33,6 +33,12 @@ Before new proof construction, **search historical gate memoranda as the primary
 
 If two similar historical red fixes exist, read the original goal and the eventual accepted proof sequence **before** attempting a new tactic. Record a clear retrieval outcome: direct reuse / method only / staged candidate / genuine missing theorem, and the specific evidence supporting it.
 
+## Enforced pre-gate evidence receipt — adopted 2026-11-12
+
+Before the next NEW BFSS mathematical gate, complete the [Pre-Gate Evidence Receipt protocol](BFSS_PRE_GATE_EVIDENCE_RECEIPT_PROTOCOL_2026_11_12.md) and record the genuine missing interface, candidate-source type comparisons, exact accepted versus partial evidence, negative precedents, and a GO/HOLD decision. This makes the existing retrieval-before-invention rule a concrete Project Lead checkpoint, **without** adding new CI/infrastructure or user approval cycles.
+
+The [P2-C4B retrospective receipt](../../research/spectral-p2-original-field/P2C4B_PRE_GATE_SOURCE_REUSE_RECEIPT_2026_11_12.md) documents missed original MassiveMoments and ProfileEnergy lemmas, and the warning-only M0 consumer red. Underlying immutable source, consumers and accepted gates remain authoritative; this is operational documentation only.
+
 ## Standard pre-proof operating contract (for each new bounded gate)
 
 1. **State the exact theorem contract:** physical source carrier, operator type, index convention, norm/sign factor, assumptions, mathematical conclusion, and explicitly *not* established claims. Identify existing accepted theorem/consumer interfaces before writing a replacement.
