@@ -172,6 +172,83 @@ be inferred merely from the already accepted star automorphism of
 the \emph{operator} algebra. Nor may the operator-valued threshold
 $m+12$ be replaced by $m+6$ for numerical convenience.
 
+\section{The color-sphere average and its exact coefficient}
+The factor of one half in the prospective global bound is not an
+arbitrary loss inserted after the oscillator calculation. It is a
+sharp, elementary statement about the three-dimensional color
+sphere and a positive-semidefinite Gram matrix.
+
+\begin{proposition}[Normalized color-sphere inequality;
+conventional finite-dimensional proof]\label{prop:color-sphere-half}
+For any real $3\times9$ matrix $X$, and probability-normalized
+round measure $d\sigma$ on $S^2\subset\mathbb R^3$,
+\begin{equation}\label{eq:color-sphere-half}
+ \int_{S^2}\|v^{\mathsf T}X\|_{\mathbb R^9}\,d\sigma(v)
+ \ge \frac12\|X\|_{\mathrm{HS}}.
+\end{equation}
+The constant $1/2$ is sharp for matrices of rank one.
+\end{proposition}
+\begin{proof}
+Diagonalize the nonnegative $3\times3$ Gram matrix
+$XX^{\mathsf T}$. If $X\ne0$, its eigenvalues are
+$s_1,s_2,s_3\ge0$ with $S:=\sum_j s_j=\|X\|_{\mathrm{HS}}^2>0$.
+Write $p_j=s_j/S$, so $\sum_jp_j=1$. For fixed $v$, expressed
+in the corresponding orthogonal color basis, concavity of
+the square root gives
+\[
+ \|v^{\mathsf T}X\|=\sqrt{S}\,
+       \sqrt{\sum_jp_jv_j^2}
+ \ge \sqrt{S}\sum_jp_j|v_j|.
+\]
+Rotational invariance and the uniform distribution of one
+coordinate of a point on $S^2$ yield
+$\int_{S^2}|v_j|\,d\sigma(v)=1/2$.
+Integrating gives \eqref{eq:color-sphere-half}.
+For rank-one $X$, equality holds since its only nonzero
+singular value multiplies $|v_1|$. The zero matrix case
+is immediate.
+\end{proof}
+
+\begin{proposition}[Directional equality for physical smooth-core
+densities; conditional source binding]\label{prop:physical-color-direction}
+Suppose the original paired source color action is identified
+with the full adjoint $\mathrm{SO}(3)$ rotation action on the
+three color rows, preserves Lebesgue measure, and the
+gauge-invariant smooth core obeys the original pointwise
+norm covariance of Chapter~\ref{ch:gauge}. For such a smooth
+compactly supported physical $f$, put
+\[
+ I_f(v)=\int_{\mathbb R^{27}}
+       \|v^{\mathsf T}X\|\,\|f(X)\|^2\,dX,\qquad
+ J_f=\int_{\mathbb R^{27}}\|X\|_{\mathrm{HS}}\|f(X)\|^2\,dX.
+\]
+Then $I_f(v)$ is independent of unit $v\in S^2$ and
+\begin{equation}\label{eq:physical-color-half}
+ I_f(v)\ge \tfrac12 J_f.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For any $v,w\in S^2$, choose a source gauge element whose
+adjoint action carries $v$ to $w$. Use its orthogonal
+bosonic change of variables in the integral defining
+$I_f$, and the pointwise equality of $\|f\|$ on the
+invariant smooth core. Thus $I_f(v)=I_f(w)$.
+Averaging over the normalized color sphere and applying
+Proposition~\ref{prop:color-sphere-half} pointwise in $X$
+gives \eqref{eq:physical-color-half}. Compact support
+makes the weighted integrals finite.
+\end{proof}
+The first proposition is unconditional Euclidean
+linear algebra. The second is \emph{conditional on the
+exact paired-source color realization and smooth physical
+core}, not a newly strict-qualified Lean coercivity theorem.
+It does not prove that the correct transverse isotypic
+oscillator projection exists, that its source coefficient is
+$2\sqrt{\beta}(m+9)$, or that the resulting inequality
+extends to the closed physical form domain. Those are
+separate, essential joins.
+
+
 \section{The proposed global coercivity mechanism}
 Suppose one obtains, for the \emph{actual} physical smooth core in a
 specified high-type sector, a transverse oscillator lower bound

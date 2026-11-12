@@ -1,3 +1,28 @@
+# Edition 0.7 development — increment 5 (color averaging and external-route comparison)
+
+Conventional Chapter 13 argument: exact probability-normalized
+sphere average of the row norm is at least half the Hilbert--Schmidt
+norm (sharp at rank one), with the distinct original color-gauge
+equivariance premise stated explicitly for physical smooth-core states.
+Neither the oscillator coefficient nor the original source
+closed-domain transfer has been promoted.
+
+Chapter 14 now documents the independently authored
+Bajaj--Lin (arXiv:2611.14512v1) positive-energy supersymmetry-multiplet
+route and Michel--Scheinpflug--Yin (arXiv:2611.09837v1)
+auxiliary ground-state route. arXiv original paper abstract and
+Bajaj--Lin Sections 4.1 and Appendix F were reviewed.
+The full external proofs and source normalization have NOT been
+independently checked; labels 84/128 refer to superspin multiplets,
+not an original Fock-vector decomposition or physical families.
+The closed original supercharge/H^(-1/2) projection, Gauss,
+operator-domain and scattering-exclusion transfers are open.
+
+**Edition status:** further mathematical review and full local
+LaTeX rebuild outstanding; historical FCP and strict Lean
+acceptance records unchanged, no new physical spectral claim.
+
+---
 # Edition 0.7 development — increment 4 (energy, compactness, normalized field)
 
 Exact pinned source inspected:

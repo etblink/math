@@ -78,6 +78,96 @@ it must not be advertised as the original vector Hamiltonian theorem
 until an explicit isometric intertwiner with compatible gauge,
 charge, quadratic-form and operator domains has been constructed.
 
+\section{A separate supersymmetry-sector route in current literature}
+Two November 2026 preprints provide a useful independent comparison;
+neither is part of the frozen source-qualification atlas.
+Kabir Bajaj and Henry W. Lin,
+\emph{Solving the SU(2) BFSS model},
+\url{https://arxiv.org/abs/2611.14512} (10 November 2026,
+especially Section~4.1 and Appendix~F), report numerical
+positive-energy bound states and propose an existence argument
+through supermultiplet selection. Alexander Michel,
+Jaroslav Scheinpflug and Xi Yin,
+\emph{99.9... percent of the SU(2) BFSS ground state},
+\url{https://arxiv.org/abs/2611.09837} (6 November 2026),
+give a variational ground-state method with rigorous bounds
+derived using an \emph{auxiliary} operator whose zero-mode
+space is related to the original Hamiltonian. An auxiliary
+spectral gap is not a gap for the entire original Hamiltonian.
+
+The Bajaj--Lin route must be described with its \emph{own}
+representation labels. On a positive-energy supersymmetry
+multiplet, the normalized charge operators are formally
+\begin{equation}\label{eq:external-normalized-charges}
+ C_\alpha=Q_\alpha H^{-1/2},\qquad
+ \{C_\alpha,C_\beta\}=2\delta_{\alpha\beta}I.
+\end{equation}
+They use the $256$-dimensional positive-energy
+multiplet polarization with Spin(9) decomposition
+$\mathbf{44}\oplus\mathbf{84}\oplus\mathbf{128}$,
+and propose a projector onto an $\mathbf{84}$ (or
+$\mathbf{128}$) \emph{superspin} component. Their
+analysis argues that the relevant total singlet
+multiplet cannot enter the SU(2) scattering
+channels under their asymptotic channel classification,
+and develops test states by applying an operator to
+the normalizable ground state. The preprint also
+reports numerical energies for such states.
+
+This mechanism is \emph{not} our high-$\lambda_2$
+Spin(9)-isotypic oscillator exclusion.
+The $\mathbf{84}$ and $\mathbf{128}$ labels refer to
+components of the supersymmetry multiplet, not
+a proposed splitting of the original $2^{24}$-dimensional
+Fock fiber into separate generations. An overall
+Spin(9) \emph{singlet} can carry these
+\emph{internal superspin} labels, so no high-total-spin
+coercivity inference follows from their occurrence.
+
+\begin{openproblem}[Source-exact audit of the independent
+supermultiplet argument]\label{op:external-susy-projector}
+For the \emph{actual} original closed physical Hamiltonian,
+verify the full source supercharge anticommutation relation
+on a common appropriate domain, including the vanishing of
+the Gauss term on physical vectors. Define the operators
+$Q_\alpha H^{-1/2}$ first on a legitimate positive-energy
+spectral subspace, verify their boundedness and Clifford
+relations there, and prove that the polynomial
+$\mathbf{84}$ or $\mathbf{128}$ projector is a
+nonzero physical reducing projection. Independently
+verify the relevant scattering-channel exclusion,
+the normalizability and domain of proposed test states,
+and the argument that this sector has nontrivial
+unbounded positive spectrum. Finally identify all
+conventions with our source Hamiltonian
+$H_{\mathrm{phys}}=\tfrac1{16}T^\dagger T$.
+\end{openproblem}
+
+The appearance of $H^{-1/2}$ in
+\eqref{eq:external-normalized-charges} is a domain-sensitive
+operation, not a license to cancel unbounded factors
+formally. On spectral subspaces separated from zero,
+$H^{-1/2}$ is bounded, but the composition with the
+source supercharges and the exact anticommutation
+relations still require proof. A finite-dimensional
+multiplet analogy alone does not establish the
+closed-operator projector. In the original paper the
+$\mathbf{128}$ existence modification is explicitly
+left as an exercise; it is not supplied by merely
+relabeling the $\mathbf{84}$ construction.
+
+This external route deserves serious scrutiny because
+it potentially changes the shortest mathematical
+path to positive point spectrum. It has \emph{not}
+been independently source-typed or Lean qualified in
+our project, and its reported claims should not be
+presented as ours. The abstract original
+high-isotype compactness approach and the external
+supermultiplet/channel argument remain distinct
+research strategies until a precise comparison
+is completed.
+
+
 \section{Negative knowledge and hostile testing}
 The historical FCP work established a disciplined separation between
 physical counterexamples, genuinely false source equalities, Lean
