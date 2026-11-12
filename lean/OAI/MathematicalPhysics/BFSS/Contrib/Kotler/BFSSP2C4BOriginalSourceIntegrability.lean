@@ -70,17 +70,45 @@ theorem originalLinearMoment_integrable (f : SmoothCore 2) :
 
 /-- The upper/original density is integrable, with no hypothesis on f
 beyond genuine original SmoothCore membership. -/
-theorem originalActualDensity_integrable (f : SmoothCore 2) :
-    Integrable (originalActualDensity f) (volume : Measure (Boson 2)) := by
-  have hDensity :
-      originalActualDensity f =
-        (fun x : Boson 2 => M.deformedBosonicPotential 1 0 x * ‖f x‖^2) +
-          (fun x : Boson 2 =>
-            inner ℝ (f x) (M.deformedFermionField 1 0 x (f x))) := by
+/-- A small generic AlgebraData interface: combine potential and fermionic
+integrability before specialization to the large original concrete SU(2)
+record. This proves only a pointwise function-sum identity, with A opaque. -/
+private theorem algebraData_actualDensity_integrable_of_parts
+    {N : ℕ} (A : AlgebraData N) (h m : ℝ) (f : SmoothCore N)
+    (hPotential : Integrable (fun x : Boson N =>
+      A.deformedBosonicPotential h m x * ‖f x‖^2)
+      (volume : Measure (Boson N)))
+    (hFermion : Integrable (fun x : Boson N =>
+      inner ℝ (f x) (A.deformedFermionField h m x (f x)))
+      (volume : Measure (Boson N))) :
+    Integrable (fun x : Boson N =>
+      A.deformedBosonicPotential h m x * ‖f x‖^2 +
+        inner ℝ (f x) (A.deformedFermionField h m x (f x)))
+      (volume : Measure (Boson N)) := by
+  have hSum : Integrable
+      ((fun x : Boson N => A.deformedBosonicPotential h m x * ‖f x‖^2) +
+        (fun x : Boson N =>
+          inner ℝ (f x) (A.deformedFermionField h m x (f x))))
+      (volume : Measure (Boson N)) :=
+    hPotential.add hFermion
+  have hPointwise :
+      (fun x : Boson N =>
+        A.deformedBosonicPotential h m x * ‖f x‖^2 +
+          inner ℝ (f x) (A.deformedFermionField h m x (f x))) =
+        ((fun x : Boson N =>
+          A.deformedBosonicPotential h m x * ‖f x‖^2) +
+         (fun x : Boson N =>
+          inner ℝ (f x) (A.deformedFermionField h m x (f x)))) := by
     funext x
     rfl
-  rw [hDensity]
-  exact (originalPotentialDensity_integrable f).add (originalFermionDensity_integrable f)
+  rw [hPointwise]
+  exact hSum
+
+theorem originalActualDensity_integrable (f : SmoothCore 2) :
+    Integrable (originalActualDensity f) (volume : Measure (Boson 2)) := by
+  exact algebraData_actualDensity_integrable_of_parts M 1 0 f
+    (originalPotentialDensity_integrable f)
+    (originalFermionDensity_integrable f)
 
 /-- The lower density is integrable; the finite source constant is the
 same original growth constant as in qualified P2-C2 and P2-C4A. -/
