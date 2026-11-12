@@ -41,7 +41,9 @@ jobs:
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean": "b9b8192055c70f0d001d7982669b9823c55562ed",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3C2ThetaFieldsProbe.lean": "ea5dff75247064d00bcd4645711256900473dacb",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSFullAlgebraDataProbe.lean": "de8242615e4b2959e2dfa57cf0c6fdf43896acb7",
-            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSP2C4BOriginalSourceIntegrability.lean": "e9bfd0b871b49427b4b8c32082cdc12ea7211689",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSP2C4BOriginalSourceIntegrability.lean": "63b1d610d3924f1a78c077e009046d3fd6f811a3",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSP2C4BOriginalActualDensityInterfaceMicrogate.lean": "68b20c8d6cc0b752ceda20cfd3eb6bdba93c315f",
+            "lean/OAI/MathematicalPhysics/BFSS/MassiveMoments.lean": "2fd223d0da1a85c3be52bb2b9c68f4f12d10957e",
             "lean/diagnostics/BFSSP2C4BOriginalSourceIntegrabilityConsumer.lean": "ef776ac650d4a0a772da14798920cd09f0a82204",
             "lean/OAI/MathematicalPhysics/BFSS/PotentialBounds.lean": "06afe0a2fa0c6d65439ad15e4e6031f1d43260b7",
             "lean/OAI/MathematicalPhysics/BFSS/DeformedCharge.lean": "c27c913c44090100f0c714e3eb34e25205f4d2d3",
@@ -65,7 +67,9 @@ jobs:
           consumer=Path("lean/diagnostics/BFSSP2C4BOriginalSourceIntegrabilityConsumer.lean").read_text()
           assert re.findall(r"(?m)^import (\S+)$",source)==[
               "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSP2C4AOriginalCoreIntegralTransfer",
-              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralLinearMomentCompactness"]
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SpectralLinearMomentCompactness",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSP2C4BOriginalActualDensityInterfaceMicrogate",
+              "OAI.MathematicalPhysics.BFSS.MassiveMoments"]
           assert re.findall(r"(?m)^import (\S+)$",consumer)==[
               "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSP2C4BOriginalSourceIntegrability"]
           assert re.findall(r"(?m)^#print axioms (\S+)$",source)==[
@@ -80,6 +84,9 @@ jobs:
           assert "M.deformedRealField_anticommutator 1 0" in source
           assert "BFSSNormalMeasure.square_compact" in source
           assert "originalMasslessCoreForm_lower_of_integrable" in source
+          assert "originalActualDensity_eq_sourceSum" in source
+          assert "concreteAlgebraData.bosonic_core_integrable 1 0 f" in source
+          assert "concreteAlgebraData.fermion_core_integrable 1 0 f" in source
           assert "originalLowerDensity_integrable" in consumer
           assert "originalMasslessCoreForm_lower" in consumer
           for body in (source,consumer):
