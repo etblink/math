@@ -1,3 +1,30 @@
+# Edition 0.7 development — increment 4 (energy, compactness, normalized field)
+
+Exact pinned source inspected:
+`SpectralMasslessCoreFormIdentity.lean` (blob `3a8dd27bb573e62c8f86b79b83e0ab96f391602a`),
+`SpectralWeightedClosureCompactness.lean` (`68741955a806a30da7b0f9ff168c41b9c29d90cd`),
+`SpectralCoreLinearMomentCompactness.lean`, `SpectralLinearMomentCompactness.lean`,
+`BFSSNORM0COriginalNormalizedFockField.lean` and the source-present
+`BFSSNORM0D3DOriginalFockRepresentativeTransport.lean`.
+
+- Chapter 10 adds the precise conditional one-sided consequence
+  of a source linear fermionic bound and explains why it is not
+  an upper radial-moment estimate.
+- Chapter 11 states the actual bounded form-domain-to-weighted-closure
+  map needed before strict compactness results apply to the native
+  physical Hamiltonian; no source-specific map is claimed.
+- Chapter 12 applies Chapter 2's conventional bounded-multiplier
+  result to the source normalized field, while distinguishing a
+  conventional operator construction from pending Lean source gates
+  and the unnormalized physical interaction.
+
+All three additions are conventional implications under their stated
+source hypotheses. Original accepted and pending atlas statuses are
+unchanged. Full Edition 0.7 local LaTeX build remains outstanding
+(the sandbox here has TeX tools but cannot reach GitHub directly;
+the repository is being edited through its connected source API).
+
+---
 # Edition 0.7 development — increment 3 (Spin center and gauge phase)
 
 The pinned mathematical source was inspected for the exact original

@@ -189,11 +189,35 @@ multiplication operator on $L^2$ satisfying
 \begin{equation}\label{eq:norm-multiplier-goal}
    \|\mathsf M_B f\|_2\le C_B\|f\|_2.
 \end{equation}
-This is a legitimate mathematical construction once one has verified
-that the rule descends to equivalence classes, is complex-linear, and
-its norm estimate holds in the quotient. We have \emph{not} silently
-relabelled this ordinary implication as a newly checked Lean
-\texttt{ContinuousLinearMap} theorem.
+\begin{proposition}[Bounded multiplier from the source normalized
+field; conventional consequence]\label{prop:normalized-class-multiplier}
+For each \emph{fixed} real matrix $B$, the field
+$\widetilde A_B$ determines a bounded complex-linear operator
+$\mathsf M_B:\OriginalLtwo\to\OriginalLtwo$ in ordinary
+Hilbert-space mathematics, with
+\begin{equation}\label{eq:norm-multiplier-consequence}
+ \|\mathsf M_B\|_{\mathrm{op}}\le C_B.
+\end{equation}
+Its action on any representative is
+$\widetilde A_B(X)f(X)$ almost everywhere.
+\end{proposition}
+\begin{proof}
+The source continuity result makes $\widetilde A_B$ strongly
+measurable, and the exact NORM-0C theorem supplies the uniform
+operator bound $\|\widetilde A_B(X)\|\le C_B$.
+Proposition~\ref{prop:bounded-l2-multiplier}
+therefore applies to the original Fock-vector $L^2$ carrier:
+pointwise evaluation preserves almost-everywhere equality,
+the output is square integrable, and multiplication
+is complex-linear with the stated norm bound.
+No finite-volume assumption is used.
+\end{proof}
+This is a \emph{conventional} mathematical deduction from the
+displayed source inputs, not a newly checked source Lean
+\texttt{ContinuousLinearMap} theorem. In particular, it
+does not promote the next representative-transport source
+\emph{gate} to strict-qualified status or identify
+$\mathsf M_B$ with the original unbounded fermionic interaction.
 
 The next exact source candidate makes the representative-independence
 step explicit: if $g=f$ almost everywhere, then

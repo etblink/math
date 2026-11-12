@@ -186,6 +186,49 @@ repeating the finite-dimensional arithmetic.
 source-typed growth obligation O-02 in the atlas. Their numerical checks
 are diagnostic evidence, not Lean acceptance.}
 
+\section{What the linear field bound actually yields}
+The form consequence of a source-typed linear fermionic estimate should
+be stated before seeking a high-spin improvement. It is a legitimate
+one-sided inequality, but it is \emph{not} the coercivity estimate
+needed for compactness.
+
+\begin{proposition}[Smooth-core lower bound; conditional on the original
+field identification]\label{prop:linear-field-core-bound}
+Assume for the concrete paired source that the fields appearing
+in the exact energy identity \eqref{eq:massless-energy} are the
+original source operators, and that the original fermionic field
+satisfies \eqref{eq:B-linear-target} with a fixed $C<\infty$.
+Then for every original compactly supported smooth $f$,
+\begin{equation}\label{eq:linear-field-form-consequence}
+ q_M^{\mathrm{core}}(f)+C M_1(f)
+ \ge \frac12\sum_{i,A}\|\iota(\partial_{iA}f)\|_2^2
+ +\int_{\mathcal X}V_M^{(1,0)}(X)\|f(X)\|^2\,dX.
+\end{equation}
+\end{proposition}
+\begin{proof}
+At each configuration, Cauchy--Schwarz and the hypothesized
+source field norm estimate give
+\[
+ \operatorname{Re}\langle f(X),B_M^{(1,0)}(X)f(X)\rangle
+ \ge -C\|X\|\|f(X)\|^2.
+\]
+Insert this into the original core identity
+\eqref{eq:massless-energy} and collect the moment term.
+All integrals are finite for compactly supported smooth $f$.
+\end{proof}
+Crucially, the radial moment occurs on the \emph{left} with a
+positive coefficient. Formula \eqref{eq:linear-field-form-consequence}
+does not bound $M_1(f)$ above by the original energy; it allows
+the negative fermionic interaction to cancel transverse bosonic
+energy along valleys. Neither positivity of a wedge potential
+nor a numerical value of $C$ repairs that logical direction.
+A useful high-isotype argument must supply a \emph{new} positive
+moment contribution on a genuine physical reducing sector
+and then extend it through the \emph{correct} closed form domain.
+This proposition is conventional mathematics under explicitly
+unproved source-specific assumptions, not a new accepted Lean gate.
+
+
 \section{Adversarial valley packets: a conditional noncompactness test}
 \label{sec:valley-packets}
 A rank-one commuting configuration is not itself a quantum state. A
