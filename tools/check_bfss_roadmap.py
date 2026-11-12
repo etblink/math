@@ -53,8 +53,26 @@ def main():
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},
             "pinned toolchain changed without roadmap review")
     require(s.get("exploratory") == "NOT_PROMOTED", "exploratory physics promoted silently")
+    alignment = s.get("monograph_alignment")
+    require(isinstance(alignment, dict), "Edition 0.7 monograph review not recorded")
+    require(alignment.get("status") == "REVIEWED_NOT_MERGED", "monograph merge/qualification status needs review")
+    require(alignment.get("exact_commit") == "b603f4c1715e15f5f92c69d7fb071992dbaa9f40",
+            "monograph source changed without an explicit fresh review")
+    require(alignment.get("original_math_baseline") ==
+            "d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5",
+            "monograph historical proof baseline drift")
+    require(alignment.get("atlas_records") == 38 and
+            alignment.get("new_mathematical_qualification") is False and
+            alignment.get("monograph_fast_forward_authorized") is False,
+            "monograph review must not promote evidence or merge")
+    require(s.get("next_planned", {}).get("gate") == "P3-D5B4A" or
+            s.get("milestone") != "M1",
+            "D5-B4A plan changed without milestone review")
     roadmap = ROADMAP_PATH.read_text(encoding="utf-8")
     require(STATE_PATH.name in roadmap, "roadmap not linked to live checkpoint")
+    require("b603f4c1715e15f5f92c69d7fb071992dbaa9f40" in roadmap and
+            "Monograph S1" in roadmap and "Alternative independent spectral" in roadmap,
+            "pinned monograph dependency/alternate-route crosswalk missing")
     for name in ("README.md", "AGENTS.md"):
         require(ROADMAP_PATH.name in (ROOT/name).read_text(encoding="utf-8"),
                 name + " must point to canonical roadmap")
