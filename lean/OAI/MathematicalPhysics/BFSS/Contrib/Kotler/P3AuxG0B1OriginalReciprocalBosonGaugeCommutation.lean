@@ -47,7 +47,8 @@ theorem originalReciprocalFullL2CLM_bosonPullback_comm
       originalReciprocalField ε x •
         (pairedGaugeData.bosonPullback g f : Boson 2 → Fermion 2) x := hb
     _ = originalReciprocalField ε x •
-        (f : Boson 2 → Fermion 2) (pairedGaugeData.boson g x) := by rw [hf]
+        (f : Boson 2 → Fermion 2) (pairedGaugeData.boson g x) := by
+          exact congrArg (fun v : Fermion 2 => originalReciprocalField ε x • v) hf
     _ = originalReciprocalField ε (pairedGaugeData.boson g x) •
         (f : Boson 2 → Fermion 2) (pairedGaugeData.boson g x) := by
           rw [originalReciprocalField_gauge_invariant ε g x]
