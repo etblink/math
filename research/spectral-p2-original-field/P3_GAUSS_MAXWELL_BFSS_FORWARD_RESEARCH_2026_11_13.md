@@ -65,3 +65,30 @@ That topology is an established feature of 3+1 electromagnetic fields, **not** e
 **Priority C, parallel only:** revisit native Gram/orientation and orbit normal-slice interfaces, characterize stabilizer strata and candidate quotient measure. Test whether those yield a rigorous estimate useful for the Spin(9) Hardy inequality in the auxiliary-ground-state paper. Do not bypass the exact source-to-paper normalization crosswalk.
 
 **Non-claims:** No Maxwell-to-BFSS physical equivalence, Yang-Mills 3+1 mass gap, physical BFSS positive gap, nonzero ground state or fidelity estimate is proved by this note. All proposed source-level commutation, gauge and Hardy theorems remain unqualified.
+
+## 8. Original Gauss and charge-core interfaces recovered
+
+The source already contains the **full original color-Lie Gauss constraint on genuine invariant smooth-core states**:
+- `SU2BFSSPhysicalDomainL6G7TOriginalFullColorLieGaussIdentityProbe.lean` (blob `dca9ab9edb0019189e275ee025d083eed5cc3f3c`) defines `actualInvariantCore_fullColorLieGauss_zero` for arbitrary original `ColorVector 2`, with the source gauge tangent and original fermion color generator. This is a smooth-core identity, not an unbounded FullL2 Gauss generator or independently requalified result in this investigation.
+- `SU2BFSSPhysicalDomainD3BFullChargeGaugePreservationProbe.lean` (blob `532648ee147e218aba4e69ae2f79dd7da63cd9a8`) defines `sourceOriginalCoreCharge_mem_invariantCore`: every original supercharge preserves the original gauge-invariant SmoothCore.
+
+These source facts make the weighted-domain density route stronger. For invariant compactly supported f, every original charge component T_alpha f remains gauge-invariant and compactly supported. For ε>0 the radial w_epsilon is smooth, gauge invariant, and bounded on that compact support. Thus w_epsilon T_alpha f is an L2 candidate within the correct physical sector. The implementation must separately prove exact weighted MemLp, AE range, and transfer the accepted D2B10C→AZ→BA core density chain. None of these new weighted statements is qualified by the recovered source declarations alone.
+
+## 9. Negative knowledge: B_epsilon must NOT have a bounded inverse
+
+On the **full original** Fock-valued FullL2 2 over Boson 2 ≅ R^27, let b_epsilon(X) = 1/sqrt(norm(X)^2+epsilon^2) for ε>0. The bounded multiplier B_epsilon, if fully qualified by R0B2A, has the following mathematically expected and separately source-verifiable behavior:
+
+1. b_epsilon(x)>0 everywhere implies B_epsilon is injective on L2.
+2. As norm(X)→∞, b_epsilon(X)→0. Choose normalized Fock-valued nonzero shell functions f_R supported where norm(X)≥R. Then norm(B_epsilon f_R) ≤ 1/sqrt(R^2+epsilon^2) while norm(f_R)=1, so B_epsilon is not bounded below and cannot have a bounded inverse on its range.
+3. Since b_epsilon is real positive, B_epsilon is self-adjoint; ker(B_epsilon*)=0 implies closure(range(B_epsilon))=FullL2 2. With non-bounded-below behavior, this range is dense but not closed.
+4. The inverse B_epsilon^{-1} exists only as an **unbounded operator on range(B_epsilon)**, which is the correct weighted multiplication. This is not an anomaly: it is the intended input to the closed graph inverse-image/comap construction.
+
+**Do not attempt to prove bounded invertibility, closed range or global surjectivity of B_epsilon. These targets are false on the full original FullL2 2.** On the restricted physical gauge-singlet sector, analogous shell arguments require explicit physical shell witnesses (potentially reusable OP2c vacuum and radial bump constructions), and must be separately proved.
+
+## 10. Direct and indirect Gauss-preservation routes
+
+Primary route: the separately staged G0A source radial/reciprocal pointwise and AE gauge invariance → use pinned `Lp.coeFn_compMeasurePreserving` and `Lp.coeFn_lpSMul` to prove B_epsilon commutes with actual `G.bosonPullback`; use `Lp.coeFn_compLp` and scalar complex linearity to prove it commutes with `G.fiberAction`; the intersection-of-kernels definition then yields B_epsilon-preservation of literal `G.physicalSpace`. Optional commute with physical Haar projection by source Bochner integration.
+
+Secondary route: prove B_epsilon is bounded self-adjoint from the real scalar field and actual L2 inner-product identity. A self-adjoint bounded operator preserving a closed subspace also preserves its orthogonal complement, so commutes with orthogonal projection. This may avoid repeating Haar integration, but requires exact source orthogonal-projection interfaces. Both paths remain *unqualified hypotheses*.
+
+**Project Lead decision:** After G0A and R0B2A exact strict classifications, stage small independent proof of source FullL2 commutation and physical-space preservation. Separately prove injectivity and range characterization, then only afterward attempt the weighted closed charge graph. Never require B_epsilon to be boundedly invertible.
