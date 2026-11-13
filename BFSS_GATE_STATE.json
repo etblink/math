@@ -34,28 +34,22 @@
     "scope": "Exact actual source FullL2 2 SU2 unitary a.e. left-fermion-output inverse-boson-pullback action; the qualified M3G0A transport obeys corresponding a.e. genuine original Fock Lp column action; original operator-norm Lp field evaluated on each actual original ONB basis vector obeys the same formula a.e. for each fixed source parameter/basis index. DOES NOT prove common finite-index a.e. operator identity, basis independence, original operator-norm isometry, strong SU2 parameter continuity, gauge physical fixedness, physical nonzero witness, closed BFSS Hamiltonian domain or spectrum."
   },
   "active": {
-    "gate": "P3-M3G0B0",
-    "status": "GREEN_QUALIFIED",
-    "candidate_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
-    "workflow_tested_head_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
-    "run_id": 43422546945,
-    "job_id": 131875824677,
-    "manifest_pins": 461,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean",
-    "source_blob": "ffffa9e8d8679577a5f32999dd36fe5c9e904a07",
-    "consumer": "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean",
-    "consumer_blob": "c914864eccc801d9045656f0d06157ae384670f4",
-    "workflow": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
-    "workflow_blob": "0681a9292b420d729d1e63c95061750098958ada",
-    "artifact_id": 14036922930,
-    "digest": "sha256:50a8635204a4a20eec3fb6bc0690850236f486399be65fdb4cd5a119e7f1d641",
-    "strict_verdict": "R3_GREEN_VERIFIED_AND_SCOPED_ACCEPTED",
-    "declarations": [
-      "actualOriginalFullL2GaugeUnitaryHom_apply_ae",
-      "originalFockOperatorGaugeEquiv_source_column_ae",
-      "originalFockOperatorGaugeEquiv_source_basis_ae"
-    ],
-    "scope": "Exact actual source FullL2 2 SU2 unitary a.e. left-fermion-output inverse-boson-pullback action; the qualified M3G0A transport obeys corresponding a.e. genuine original Fock Lp column action; original operator-norm Lp field evaluated on each actual original ONB basis vector obeys the same formula a.e. for each fixed source parameter/basis index. DOES NOT prove common finite-index a.e. operator identity, basis independence, original operator-norm isometry, strong SU2 parameter continuity, gauge physical fixedness, physical nonzero witness, closed BFSS Hamiltonian domain or spectrum."
+    "gate": "P3-M3G0B1",
+    "status": "PENDING_STRICT_CI",
+    "candidate_sha": "a0c2d8ec7f48705f831e491db385ba20fd9ff43b",
+    "run_id": null,
+    "workflow_tested_head_sha": null,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean",
+    "source_blob": "e923a019ceac801b981e3fd22920f1cb5c0458f3",
+    "consumer": "lean/diagnostics/BFSSP3M3G0B1OriginalGaugeAEFullOperatorIndependentConsumer.lean",
+    "consumer_blob": "42e12c82dcf854fa0be0c73dbd38b0fd13f12692",
+    "workflow": ".github/workflows/bfss-p3-m3g0b1-original-gauge-ae-full-operator-strict.yml",
+    "manifest_pins": 463,
+    "accepted_predecessor_gate": "P3-M3G0B0",
+    "accepted_predecessor_run_id": 43422546945,
+    "accepted_predecessor_tested_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
+    "strict_verdict": "STAGED_NOT_TESTED",
+    "scope": "Three original source-exact B1 declarations: finite-index common a.e. Fock basis law, original bounded-Fock operator equality by qualified M2B2B0 injectivity, whole original source bounded-operator Lp a.e. left-output/inverse-boson source identity. No basis independence or source norm isometry."
   },
   "if_green": "B0 R3 accepted: original source FullL2 left-output inverse boson pullback a.e., transferred Fock Lp column a.e. and per-index original operator norm Lp basis evaluation a.e.; next B1 finite-index common-event and original operator field equality.",
   "if_red": "For B1 preserve first causal finite-index a.e. step or source operator injectivity failure; do not infer RHS measurable Lp, pointwise conjugation, source norm isometry or physical fixedness from B0.",
@@ -112,7 +106,7 @@
   "next_planned": {
     "gate": "P3-M3G0B1",
     "milestone": "M3",
-    "status": "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
     "pre_gate_receipt_required": true,
     "pre_gate_receipt_complete": true,
     "review_basis": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
@@ -143,8 +137,10 @@
       "M5 closed Hamiltonian port",
       "M6–M8 physical spectral gates"
     ],
-    "decision": "B1 literal original operator source and independent consumer STAGED UNCOMPILED. Build exact 463 union pin preflight only after verifying new blobs; strict CI not yet staged, M3G0B0 remains last accepted.",
-    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B1_PROSPECTIVE_FINITE_AE_FULL_ORIGINAL_FOCK_OPERATOR_ACTION_2026_11_13.md"
+    "decision": "Strict B1 exact 463-pin source + independent consumer workflow staged, NOT YET QUALIFIED; accept only source+consumer+3 axioms green.",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B1_PROSPECTIVE_FINITE_AE_FULL_ORIGINAL_FOCK_OPERATOR_ACTION_2026_11_13.md",
+    "workflow": ".github/workflows/bfss-p3-m3g0b1-original-gauge-ae-full-operator-strict.yml",
+    "manifest_pins": 463
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
@@ -518,13 +514,13 @@
   },
   "m3g0b1_prospective": {
     "gate": "P3-M3G0B1",
-    "status": "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
     "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_FORWARD_RESEARCH_FINITE_ORIGINAL_FOCK_OPERATOR_EXT_2026_11_13.md",
     "source_api_audit_complete": true,
     "pre_gate_receipt_complete": true,
     "source_staged": true,
     "consumer_staged": true,
-    "workflow_staged": false,
+    "workflow_staged": true,
     "mathematical_qualification": false,
     "predecessor": "P3-M3G0B0",
     "last_qualified_run_id": 43422546945,
@@ -543,6 +539,10 @@
       "originalFockOperatorGaugeEquiv_source_all_basis_ae",
       "originalFockOperator_eq_of_basis",
       "originalFockOperatorGaugeEquiv_source_operator_ae"
-    ]
+    ],
+    "manifest_pins": 463,
+    "source_blob": "e923a019ceac801b981e3fd22920f1cb5c0458f3",
+    "consumer_blob": "42e12c82dcf854fa0be0c73dbd38b0fd13f12692",
+    "workflow_path": ".github/workflows/bfss-p3-m3g0b1-original-gauge-ae-full-operator-strict.yml"
   }
 }
