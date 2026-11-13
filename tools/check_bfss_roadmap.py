@@ -43,8 +43,8 @@ def main():
     # by the *new* strict workflow. Never invent that count before its preflight.
     source_join = a.get("gate") == "P3-M3W0D0"
     if source_join:
-        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"},
-                "M3W0D0 mathematical claim promoted without independent strict receipt")
+        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED", "GREEN_QUALIFIED"},
+                "M3W0D0 status outside registered qualification phases")
         require(a.get("source") ==
                 "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean"
                 and a.get("source_blob") == "86823abdddb70d1c2158f8e215fb35760e107fd5"
@@ -59,19 +59,53 @@ def main():
                 and a.get("expected_root_count") == 3
                 and a.get("donor_axiom_root_count") == 5,
                 "M3W0D0 source baseline/consumer/axiom audit scope drift")
-        require(a.get("manifest_pins") is None,
-                "M3W0D0 source-closure pin count must come from completed strict audit")
-        require(s.get("next_planned", {}).get("gate") == a["gate"]
-                and s.get("next_planned", {}).get("status") ==
-                "STRICT_WORKFLOW_STAGED_PENDING"
-                and s.get("m3w0d0_prospective", {}).get("status") in {
-                    "STAGED_UNQUALIFIED", "STRICT_RUN_RUNNING_UNQUALIFIED"
-                }
-                and (ROOT / a["prospective_receipt"]).is_file(),
-                "M3W0D0 prospective receipt and guarded status mismatch")
-        require(q.get("gate") == "P3-M3G0B1" and
-                q.get("run_id") == 43467719230,
-                "new physical source gate cannot supersede accepted M3G0B1")
+        require((ROOT / a["prospective_receipt"]).is_file(),
+                "original M3W0D0 prospective receipt not preserved")
+        if a["status"] == "GREEN_QUALIFIED":
+            accepted = ("research/spectral-p2-original-field/"
+                        "P3_M3W0D0_R2_GREEN_43484147197_ACCEPTANCE_AND_M5_BE_HANDOFF_2026_11_13.md")
+            require(q.get("gate") == "P3-M3W0D0"
+                    and q.get("run_id") == 43484147197
+                    and q.get("tested_sha") ==
+                    "ea41de685de83c209e2ebccc1098fbcbb076918d"
+                    and q.get("manifest_pins") == 201
+                    and q.get("source_blob") ==
+                    "86823abdddb70d1c2158f8e215fb35760e107fd5"
+                    and q.get("consumer_blob") ==
+                    "38fab7d4dd44728cb1aef81d581340bcce755ac7"
+                    and q.get("workflow_blob") ==
+                    "e19abdc47e82f3372acd875fc2bc210e9579958c"
+                    and q.get("artifact_id") == 14067253421
+                    and q.get("digest") ==
+                    "sha256:c987b9af30a3b134e8c6e8726debc96277315e6dfbca46c8a70879e9e19b6ce1"
+                    and q.get("declarations") == [
+                        "originalPhysicalFullL2_witness_ne_zero",
+                        "originalPhysicalCharge_naturalDomain_dense",
+                        "originalPhysicalCharge_naturalDomain_has_nonzero",
+                    ]
+                    and q.get("allowed_axioms") ==
+                    ["propext", "Classical.choice", "Quot.sound"]
+                    and a.get("manifest_pins") == 201
+                    and a.get("run_id") == q.get("run_id")
+                    and a.get("candidate_sha") == q.get("tested_sha")
+                    and s.get("m3w0d0_prospective", {}).get("status") == "GREEN_QUALIFIED"
+                    and s.get("next_planned", {}).get("gate") == "P3-M5BE0"
+                    and s.get("next_planned", {}).get("status") ==
+                        "RESEARCH_DESIGN_NOT_STAGED"
+                    and (ROOT / accepted).is_file(),
+                    "M3W0D0 GREEN acceptance missing exact 201-pin original physical source evidence")
+        else:
+            require(a.get("manifest_pins") is None,
+                    "M3W0D0 pin count must come from a completed strict audit")
+            require(s.get("next_planned", {}).get("gate") == a["gate"]
+                    and s.get("next_planned", {}).get("status") ==
+                    "STRICT_WORKFLOW_STAGED_PENDING"
+                    and s.get("m3w0d0_prospective", {}).get("status") in {
+                        "STAGED_UNQUALIFIED", "STRICT_RUN_RUNNING_UNQUALIFIED"
+                    }, "M3W0D0 pending or RED transition drift")
+            require(q.get("gate") == "P3-M3G0B1" and
+                    q.get("run_id") == 43467719230,
+                    "new physical source gate cannot supersede accepted M3G0B1")
     if a["status"] == "RESEARCH_ONLY_NOT_STAGED":
         require(a.get("candidate_sha") is None and a.get("run_id") is None,
                 "unstaged research cannot claim exact tested CI")
@@ -87,7 +121,7 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and source_join:
+        if entry is a and source_join and a["status"] != "GREEN_QUALIFIED":
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
