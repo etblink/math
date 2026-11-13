@@ -6,6 +6,92 @@
   "milestone": "M2",
   "last_reviewed_date": "2026-11-12",
   "last_qualified": {
+    "gate": "P3-M2B2A",
+    "verdict": "GREEN",
+    "run_id": 43361307455,
+    "tested_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
+    "job_id": 131675210143,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2AOriginalFockOperatorHSNorm.lean",
+    "consumer": "lean/diagnostics/BFSSP3M2B2AOriginalFockOperatorHSNormIndependentConsumer.lean",
+    "source_blob": "14692ec746de15615e3cb7fce0323af3212589df",
+    "consumer_blob": "39b3759e4b0312f2088aab361268f1bb5410af57",
+    "donor_blob": "0fd282a5d4e54733288b267dfd7916302a7968fb",
+    "donor_path": "lean/OAI/RepresentationTheory/RowColumn/CopyOverlap.lean",
+    "manifest_pins": 86,
+    "cold_build_jobs": 9198,
+    "artifact_id": 14009700944,
+    "digest": "sha256:6619d3fd18e24f6b8db0133c3aa11f6b9e726ee970dfdab9bc5c999f8ed19cbf",
+    "declarations": [
+      "originalFockOperatorHS_norm_sq",
+      "originalFockOperator_norm_le_hs",
+      "originalFockOperator_hs_le_sqrt_card_mul_norm"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "Original Fermion 2 bounded-operator norm versus separate original-Fock Hilbert-Schmidt finite-column norm, at any finite genuine original-Fock orthonormal basis: squared norm=sum of squared operator output columns; operator norm <= HS norm; HS norm <= sqrt(cardinal) times original operator norm. Genuine original EuclideanSpace Fock basis independent consumer. No operator-norm equality or operator-valued L2 measurable/a.e. bridge, gauge, Spin9, closed physical H or spectral result."
+  },
+  "active": {
+    "gate": "P3-M2B2A",
+    "status": "GREEN_QUALIFIED",
+    "candidate_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
+    "run_id": 43361307455,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2AOriginalFockOperatorHSNorm.lean",
+    "consumer": "lean/diagnostics/BFSSP3M2B2AOriginalFockOperatorHSNormIndependentConsumer.lean",
+    "source_blob": "14692ec746de15615e3cb7fce0323af3212589df",
+    "consumer_blob": "39b3759e4b0312f2088aab361268f1bb5410af57",
+    "donor": {
+      "path": "lean/OAI/RepresentationTheory/RowColumn/CopyOverlap.lean",
+      "blob": "0fd282a5d4e54733288b267dfd7916302a7968fb",
+      "status": "SOURCE_AVAILABLE_NOT_SEPARATELY_QUALIFIED"
+    },
+    "manifest_pins": 86,
+    "expected_strict_workflow": ".github/workflows/bfss-p3-m2b2a-original-fock-operator-hs-norm-strict.yml",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M2B2A_PROSPECTIVE_PRE_GATE_SOURCE_NORM_HS_RECEIPT_2026_11_12.md",
+    "accepted_predecessor": {
+      "gate": "P3-M2B1",
+      "run": 43356859031,
+      "tested_sha": "f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6"
+    },
+    "reported_strict_status": "VERIFIED_SUCCESS",
+    "status_detail": "P3-M2B2A strict GREEN run #43361307455 at exact d4a0e2b4, 86 pin preflight, 9198 cold jobs, original Fock independent consumer and 3 allowed-axiom declarations. Operator-valued L2 remains unproved.",
+    "scope": "Only original bounded Fock operator norm versus distinct HS column Hilbert norm: square sum identity, lower and upper norm inequalities. No operator-L2, gauge, Hamiltonian or spectrum.",
+    "not_proved": [
+      "operator norm equals HS norm",
+      "M2B2B operator-valued L2 a.e.",
+      "M3 SU2 gauge",
+      "M4 Spin9",
+      "M5 original H domain",
+      "M6–M8 spectral claims"
+    ],
+    "strict_workflow_tested_head_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
+    "run_url": "https://github.com/etblink/math/actions/runs/43361307455",
+    "workflow_tested_head_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
+    "cold_build_jobs": 9198,
+    "job_id": 131675210143,
+    "artifact_id": 14009700944,
+    "artifact_digest": "sha256:6619d3fd18e24f6b8db0133c3aa11f6b9e726ee970dfdab9bc5c999f8ed19cbf",
+    "qualified_receipt": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md",
+    "decision": "Accept exactly original-Fock operator norm vs separate HS norm squared identity and two bounds. Next M2B2B research only, no new theorem source staged."
+  },
+  "if_green": "For future M2B2B, accept only after original Boson2/Fermion2 operator-valued Lp and a.e. reconstruction source/consumer, exact pins, full strict cold build, allowed axioms and evidence artifact; keep source operator norm distinct from HS.",
+  "if_red": "For M2B2B, isolate failure in source operator measurability, normed linear equivalence, representative a.e. or strict manifest and preserve first causal diagnostic; stop after two analogous reds.",
+  "toolchain": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "exploratory": "NOT_PROMOTED",
+  "review_trigger": [
+    "every gate verdict",
+    "two analogous reds",
+    "five accepted gates",
+    "stage change",
+    "user big-picture request",
+    "monograph source version or evidence-lineage change"
+  ],
+  "prior_qualified": {
     "gate": "P3-M2B1",
     "verdict": "GREEN",
     "run_id": 43356859031,
@@ -35,121 +121,39 @@
     ],
     "scope": "Original source Boson 2 Lp field of separate OriginalFockHSFiber PiLp2 Hilbert columns is linearly isometrically equivalent to finite original Fermion 2 Lp columns; MemLp iff component MemLp, exact D5B0 projection, source a.e. component equality, both inverse laws, HS field norm equality. Concrete original Fock basis and source Boson 2 independent consumer. Original bounded operator norm NOT replaced; no original operator-valued L2 reconstruction, gauge, Spin9 continuity, H domain or spectral existence."
   },
-  "active": {
-    "gate": "P3-M2B2A",
-    "status": "PENDING_STRICT_CI",
-    "candidate_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
-    "run_id": 43361307455,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2AOriginalFockOperatorHSNorm.lean",
-    "consumer": "lean/diagnostics/BFSSP3M2B2AOriginalFockOperatorHSNormIndependentConsumer.lean",
-    "source_blob": "14692ec746de15615e3cb7fce0323af3212589df",
-    "consumer_blob": "39b3759e4b0312f2088aab361268f1bb5410af57",
-    "donor": {
-      "path": "lean/OAI/RepresentationTheory/RowColumn/CopyOverlap.lean",
-      "blob": "0fd282a5d4e54733288b267dfd7916302a7968fb",
-      "status": "SOURCE_AVAILABLE_NOT_SEPARATELY_QUALIFIED"
-    },
-    "manifest_pins": 86,
-    "expected_strict_workflow": ".github/workflows/bfss-p3-m2b2a-original-fock-operator-hs-norm-strict.yml",
-    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M2B2A_PROSPECTIVE_PRE_GATE_SOURCE_NORM_HS_RECEIPT_2026_11_12.md",
-    "accepted_predecessor": {
-      "gate": "P3-M2B1",
-      "run": 43356859031,
-      "tested_sha": "f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6"
-    },
-    "reported_strict_status": "QUEUED_OR_RUNNING_UNQUALIFIED",
-    "status_detail": "Prospective pre-gate receipt at fa1cb425 preceded strict candidate source at d4a0e2b4; exact M2B2A strict #43361307455 at d4a0e2b4 is pending/unqualified.",
-    "scope": "Only original bounded Fock operator norm versus distinct HS column Hilbert norm: square sum identity, lower and upper norm inequalities. No operator-L2, gauge, Hamiltonian or spectrum.",
-    "not_proved": [
-      "operator norm equals HS norm",
-      "M2B2B operator-valued L2 a.e.",
-      "M3 SU2 gauge",
-      "M4 Spin9",
-      "M5 original H domain",
-      "M6–M8 spectral claims"
-    ],
-    "strict_workflow_tested_head_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
-    "run_url": "https://github.com/etblink/math/actions/runs/43361307455"
-  },
-  "if_green": "Verify all 86 exact pins including RowColumn donor, cold compile, independent actual Fock operator consumer, three declarations with only allowed axioms, exact tested SHA/run/artifact. Accept only M2B2A norm comparison.",
-  "if_red": "Preserve first causal RED, classify preflight vs source Lean vs independent consumer. Repair narrowly; no substitutions or increased Lean resource limits.",
-  "toolchain": {
-    "lean": "4.34.1",
-    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
-  },
-  "exploratory": "NOT_PROMOTED",
-  "review_trigger": [
-    "every gate verdict",
-    "two analogous reds",
-    "five accepted gates",
-    "stage change",
-    "user big-picture request",
-    "monograph source version or evidence-lineage change"
-  ],
-  "prior_qualified": {
-    "gate": "P3-M2A",
-    "verdict": "GREEN",
-    "run_id": 43351955062,
-    "tested_sha": "b2b17d2da5e4bc1a97718665f2d9c1d1aef553f3",
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2AOriginalFockHSFiber.lean",
-    "consumer": "lean/diagnostics/BFSSP3M2AOriginalFockHSFiberIndependentConsumer.lean",
-    "source_blob": "89543ae62bc971303cbb15d3a0c3207e114d57fa",
-    "consumer_blob": "098897960a993f87b5b6eed6275cc643940b5f0b",
-    "manifest_pins": 81,
-    "cold_build_jobs": 9178,
-    "job_id": 131644890628,
-    "artifact_id": 14005227265,
-    "digest": "sha256:d584684aedde1c2854ba915c7bbb2575ad12eb5ba770eb06067bc681257e078b",
-    "declarations": [
-      "originalFockOperatorToHSFiber",
-      "originalFockHSFiberToOperator",
-      "originalFockHSFiberToOperator_apply",
-      "originalFockHSFiber_tracePairing",
-      "originalFockHSFiber_traceSelf",
-      "originalFockHSFiberColumnsIsometry"
-    ],
-    "allowed_axioms": [
-      "propext",
-      "Classical.choice",
-      "Quot.sound"
-    ],
-    "scope": "Finite genuine original Fermion 2 Fock-operator Hilbert-Schmidt column carrier as a transparent PiLp2 abbreviation; source operator-norm carrier connected by linear equivalence, not isometric identification of original operator norm with HS norm. Source trace-star pairing equals column inner product; no Boson L2 operator field, gauge, closed H or spectrum."
-  },
   "next_planned": {
-    "gate": "P3-M2B2A",
+    "gate": "P3-M2B2B",
     "milestone": "M2",
-    "status": "IN_PROGRESS_STRICT_CANDIDATE",
-    "goal": "Establish source-exact original-Fock bounded-operator norm versus separately named HS column norm inequalities at a true original Fock ONB, without changing the original source norm; prepare for measurable operator-valued L2 transfer in later M2B2B.",
-    "candidate_contract": "For T : Fermion 2 →L[ℂ] Fermion 2 and source b : OrthonormalBasis ι ℂ (Fermion 2), derive ‖T‖ ≤ ‖originalFockOperatorToHSFiber b T‖ and ‖originalFockOperatorToHSFiber b T‖ ≤ sqrt(card ι) * ‖T‖; specialize original Fin (2^(8*colorDim 2)) only after abstract proof.",
+    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "goal": "Transfer the genuine original bounded-Fock-operator normed carrier to separate HS source fields via norm-controlled bounded linear equivalence, then establish strong measurability/Lp transport and genuine a.e. original-operator reconstruction on Boson 2; split into source microgates if necessary.",
+    "candidate_contract": "For original F = Fermion 2 and original b, use M2A originalFockOperatorToHSFiber b plus M2B2A bounds to construct continuous linear equivalence between different norms, and prove original operator-valued Lp representative / a.e. inverse correspondence, with no false norm isometry of original operator norm.",
     "research_donors": [
-      "M2A source exact HS finite-column equivalence/trace",
-      "D5A original Fock Hilbert columns",
-      "openai/math OAI.RowColumn.norm_sq_le_hilbertSchmidtSq — verify precise source type and bridge before importing",
-      "Mathlib finite ONB operator norm/column inequalities at pinned version"
+      "P3-M2A #43351955062 original exact Fock-operator linear equivalence to PiLp2 HS columns",
+      "P3-M2B1 #43356859031 HS-field Lp finite original-column equivalence and a.e. coordinate law",
+      "P3-M2B2A #43361307455 source operator norm <= HS norm <= sqrt(card ONB) times operator norm",
+      "BFSSNORM0D3AOriginalLpCarrierBridge original-source MemLp.toLp representative pattern (method donor, not automatically qualified for M2B2B)",
+      "BFSSNORM0D3CDirectOriginalFockLpOutput original-source a.e. representative pattern (method donor)",
+      "Pinned Mathlib Lp composition/continuous-linear-equivalence APIs, exact signatures to verify before source staging"
     ],
     "falsifiers": [
-      "Donor theorem uses an incompatible HilbertSchmidt carrier rather than original source operator; prove explicit adapter or hold",
-      "Source original operator norm accidentally substituted by HS norm",
-      "Concrete Fock elaboration unfolds 2^24 coordinates instead of abstract-first proof",
-      "No finite-dimensional norm bridge at exact physical source"
+      "Original bounded-operator carrier silently gets HS norm instead of its source operator norm",
+      "Pointwise original operators unavailable as measurable representatives on Boson 2",
+      "Only abstract HS Lp fields constructed, without source-operator reconstruction/a.e. inverse",
+      "Unqualified historical NORM source used as direct theorem without exact type/qualification evidence",
+      "Source finite Fock import blows up due to concrete basis enumeration"
     ],
     "blocked_followups": [
-      "P3-M2B2B exact a.e. measurable original-operator reconstruction",
-      "M3 original SU2 gauge left-output action and fixed spaces",
-      "M4 Spin9 original unitary continuity",
-      "M5 closed original Hamiltonian graph/domain",
-      "M6–M8 spectral claims"
+      "M3 actual original SU2 left-output fixed-space",
+      "M4 original continuous Spin9",
+      "M5 original closed physical Hamiltonian domain",
+      "M6–M8 coercivity and spectrum"
     ],
     "pre_gate_receipt_required": true,
-    "review_basis": "research/spectral-p2-original-field/P3_M2B2A_PROSPECTIVE_PRE_GATE_SOURCE_NORM_HS_RECEIPT_2026_11_12.md",
-    "decision": "CONDITIONAL GO for original source operator/HS norm bounds only; pre-gate receipt is prospective and committed prior to any new theorem source; donor import closure not measured; no M2B2A gate staged.",
-    "pre_gate_receipt_complete": true,
-    "expected_manifest_pins": 86,
-    "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2AOriginalFockOperatorHSNorm.lean",
-    "expected_consumer": "lean/diagnostics/BFSSP3M2B2AOriginalFockOperatorHSNormIndependentConsumer.lean",
-    "tested_candidate_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b"
+    "pre_gate_receipt_complete": false,
+    "review_basis": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md",
+    "decision": "RESEARCH ONLY. First complete prospective source-exact pre-gate receipt and check existing qualified a.e. representative APIs. No Lean theorem source or strict workflow staged."
   },
-  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2B1_GREEN_43356859031_ACCEPTANCE_AND_M2B2A_PRE_GATE_2026_11_12.md",
+  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
     "status": "REVIEWED_NOT_MERGED",
     "review_date": "2026-11-12",
@@ -246,7 +250,7 @@
   "stage_transition": {
     "from": "M1",
     "to": "M2",
-    "status": "M1_COMPLETE_M2A_M2B1_ACCEPTED_M2B2A_STAGED_UNQUALIFIED",
+    "status": "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B_UNSTAGED",
     "m1_acceptance": [
       {
         "gate": "P3-D5B3",
@@ -273,6 +277,11 @@
       "run_id": 43356859031,
       "tested_sha": "f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6",
       "receipt": "research/spectral-p2-original-field/P3_M2B1_GREEN_43356859031_ACCEPTANCE_AND_M2B2A_PRE_GATE_2026_11_12.md"
+    },
+    "m2b2a_acceptance": {
+      "run_id": 43361307455,
+      "tested_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
+      "receipt": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md"
     }
   }
 }
