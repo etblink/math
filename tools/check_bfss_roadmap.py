@@ -344,6 +344,7 @@ def main():
                               "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
                               "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
                               "STRICT_WORKFLOW_STAGED_PENDING",
+                              "RED_UNQUALIFIED_REPAIR_PENDING",
                           } and
                           nxt.get("pre_gate_receipt_complete") is True and
                           nxt.get("pre_gate_receipt") == str(b1_receipt) and
@@ -356,7 +357,10 @@ def main():
                           b1.get("consumer_staged") is
                              (nxt["status"] != "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED") and
                           b1.get("workflow_staged") is
-                             (nxt["status"] == "STRICT_WORKFLOW_STAGED_PENDING"))
+                             (nxt["status"] in {
+                                 "STRICT_WORKFLOW_STAGED_PENDING",
+                                 "RED_UNQUALIFIED_REPAIR_PENDING",
+                             }))
         require(nxt.get("gate") == "P3-M3G0B1" and
                 (phase_research or phase_prepared) and
                 s.get("stage_transition", {}).get("status") ==
@@ -375,7 +379,13 @@ def main():
             prospective_m3_source = source
         if b1.get("workflow_staged"):
             require(a.get("gate") == "P3-M3G0B1" and
-                    a.get("status") == "PENDING_STRICT_CI" and
+                    (a.get("status") == "PENDING_STRICT_CI" or
+                     (a.get("status") == "RED_UNQUALIFIED" and
+                      a.get("run_id") == 43461444633 and
+                      a.get("red_receipt") ==
+                        "research/spectral-p2-original-field/"
+                        "P3_M3G0B1_R1_RED_43461444633_FERMION_COE_NORMALIZATION_2026_11_13.md" and
+                      (ROOT / a["red_receipt"]).is_file())) and
                     a.get("manifest_pins") >= 461 and
                     b1.get("mathematical_qualification") is False,
                     "B1 strict pending must not be conflated with qualified B0")
