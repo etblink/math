@@ -955,13 +955,13 @@
   "parallel_auxiliary_next_gate": {
     "date": "2026-11-13",
     "gate": "P3-AUX-R0B1",
-    "status": "RED_UNQUALIFIED",
-    "candidate_sha": "2f419563ccf6d1eef1789f1117b076b8033c936f",
-    "run_id": 43514755373,
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "candidate_sha": "cd9c8e33194af34adc2904f36170715f6695b11b",
+    "run_id": 43516234402,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0B1OriginalReciprocalLpInfinity.lean",
-    "source_blob": "40419f0eb9eb5c91d826029f345cd26036013aee",
+    "source_blob": "d1cbb8077799236e5e1b82704270bdb9ab9153b4",
     "consumer": "lean/diagnostics/BFSSP3AuxR0B1OriginalReciprocalLpInfinityIndependentConsumer.lean",
-    "consumer_blob": "b7c53d620d0f1ebd1c3b6780837b1f0cdd5e4538",
+    "consumer_blob": "5a52d5ff8b05a72bfa1c009442d00883c1509881",
     "workflow": ".github/workflows/bfss-p3-aux-r0b1-original-reciprocal-lpinfty-strict.yml",
     "workflow_blob": "0e11b47f1ea20a23f786b164d38707e597d5c99a",
     "prospective_memo": "research/spectral-p2-original-field/P3_AUX_R0B1_PROSPECTIVE_ORIGINAL_RECIPROCAL_LPINFTY_2026_11_13.md",
@@ -989,9 +989,9 @@
     "red_artifact_id": 14079152984,
     "red_artifact_digest": "sha256:8cd9e763c926d2c1015ffd515d476e36f6c6d2442507cb2eb83718cb4c3966e3",
     "red_receipt": "research/spectral-p2-original-field/P3_AUX_R0B1_R1_RED_43513258078_FIRST_CAUSAL_2026_11_13.md",
-    "next_decision": "R3 preserve mathematical target and replace unavailable ℝ≥0∞ shorthand with fully named ENNReal type; recompile source then consumer",
-    "attempt_label": "R2_RED_NOTATION",
-    "proposal": "Narrow repair of Real.norm_eq_abs and (⊤ : ℝ≥0∞) on original real/complex source and consumer",
+    "next_decision": "Only if R3 exact strict source/consumer and root axioms GREEN, accept genuine source original complex L-infty field. Otherwise isolate new first causal issue, preserve third red.",
+    "attempt_label": "R3_EXPLICIT_ENNREAL_SOURCE_AND_CONSUMER",
+    "proposal": "Use explicitly named ENNReal top type rather than unavailable Unicode shorthand in native original Boson2 reciprocal Lp contract",
     "red_r1_unchanged": {
       "run_id": 43513258078,
       "tested_sha": "1c36cb1786d297db1d8aa433a9a25d9f61b423a4",
@@ -1008,6 +1008,36 @@
     "prospective_r2": "research/spectral-p2-original-field/P3_AUX_R0B1_R2_PROSPECTIVE_EXACT_LEAN_REPAIR_2026_11_13.md",
     "qualification": false,
     "r2_red": {
+      "run_id": 43514755373,
+      "tested_sha": "2f419563ccf6d1eef1789f1117b076b8033c936f",
+      "job_id": 132193748339,
+      "source_blob": "40419f0eb9eb5c91d826029f345cd26036013aee",
+      "consumer_blob": "b7c53d620d0f1ebd1c3b6780837b1f0cdd5e4538",
+      "first_causal": [
+        "line 39:46 parser expected token for ℝ≥0∞ type shorthand",
+        "line 46:17 same parser type shorthand"
+      ],
+      "first_norm_fix_accepted": false,
+      "norm_proof_compiled_in_red": true,
+      "artifact_id": 14080721997,
+      "digest": "sha256:75099b4c73f813b618edb0bab6a5acc176911a9d35d955efadaf2fad2da39f5a",
+      "red_ledger": "research/spectral-p2-original-field/P3_AUX_R0B1_R2_RED_43514755373_FIRST_CAUSAL_2026_11_13.md"
+    },
+    "prospective_r3": "research/spectral-p2-original-field/P3_AUX_R0B1_R3_PROSPECTIVE_EXPLICIT_ENNREAL_PARSER_REPAIR_2026_11_13.md",
+    "historical_R1_red_unchanged": {
+      "run_id": 43513258078,
+      "tested_sha": "1c36cb1786d297db1d8aa433a9a25d9f61b423a4",
+      "job_id": 132188587764,
+      "verdict": "failure",
+      "artifact_id": 14079152984,
+      "artifact_digest": "sha256:8cd9e763c926d2c1015ffd515d476e36f6c6d2442507cb2eb83718cb4c3966e3",
+      "first_causal": [
+        "line 35 Real norm/absolute-value normalization missing in radial reciprocal norm inequality",
+        "line 39 and line 46 non-parsing infinity literal; use explicit (⊤ : ℝ≥0∞)"
+      ],
+      "receipt": "research/spectral-p2-original-field/P3_AUX_R0B1_R1_RED_43513258078_FIRST_CAUSAL_2026_11_13.md"
+    },
+    "historical_R2_red_unchanged": {
       "run_id": 43514755373,
       "tested_sha": "2f419563ccf6d1eef1789f1117b076b8033c936f",
       "job_id": 132193748339,
