@@ -1369,16 +1369,16 @@
   "parallel_auxiliary_fermionic_commutation_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-G0B2",
-    "status": "RED_UNQUALIFIED",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
     "qualification": false,
-    "candidate_sha": "0d8502371d2621d06068e6b8ea8d3f01e30ff98e",
-    "run_id": 43530051259,
+    "candidate_sha": "ff8037b400fa66a2aad3db021156917374c47b0f",
+    "run_id": 43530462404,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B2OriginalReciprocalFermionGaugeCommutation.lean",
-    "source_blob": "7ca1cb15d094a695b3c1ee707e8835caaf0e847e",
+    "source_blob": "e1e55a9d8fa7869f0987e4a73087eca249ed0d5",
     "consumer": "lean/diagnostics/BFSSP3AuxG0B2OriginalReciprocalFermionGaugeCommutationIndependentConsumer.lean",
     "consumer_blob": "55fbf74c19b3224faa1db25a956ace44f4aa3a99",
     "workflow": ".github/workflows/bfss-p3-aux-g0b2-original-reciprocal-fermion-gauge-comm-strict.yml",
-    "workflow_blob": "5123b682155fb9f293318bbd47aa3c78b94c41ca",
+    "workflow_blob": "087b3e41734876309f884db9da5d3f8d6a8977a0",
     "memo": "research/spectral-p2-original-field/P3_AUX_G0B2_ORIGINAL_RECIPROCAL_FERMION_GAUGE_COMMUTATION_PROSPECTIVE_2026_11_13.md",
     "expected_roots": [
       "originalReciprocalFullL2CLM_fiberAction_comm"
@@ -1410,7 +1410,7 @@
       "no original 16-output PiLp action",
       "no injectivity inverse or weighted charge/Hamiltonian/gap"
     ],
-    "next_decision": "R2 comment-wording-only repair, keep strict no-forbidden-token scan and original theorem/consumer; correct legacy evidence name separately, require fresh strict GREEN.",
+    "next_decision": "Await strict #43530462404 cold Lean source and exact independent consumer, one root and permitted-axiom audit. If red preserve first causal; mathematical source theorem unchanged from R1.",
     "strict_conclusion": "failure",
     "r1_red": {
       "run_id": 43530051259,
@@ -1423,6 +1423,8 @@
       "artifact_digest": "sha256:637843db7816cca2cb8921dd19e9d2d34dbc641df22600b6803ae433dc963f64",
       "receipt": "research/spectral-p2-original-field/P3_AUX_G0B2_R1_RED_43530051259_FIRST_CAUSAL_2026_11_13.md",
       "compiled": false
-    }
+    },
+    "attempt_label": "R2_REPHRASE_COMMENT_AND_CORRECT_EVIDENCE_NAME",
+    "prospective_r2": "research/spectral-p2-original-field/P3_AUX_G0B2_R2_PROSPECTIVE_COMMENT_PREFLIGHT_REPAIR_2026_11_13.md"
   }
 }
