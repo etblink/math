@@ -5,7 +5,7 @@ P3-AUX-G0B2 — original FullL2 2 reciprocal bounded operator commutes
 with the exact pairedGaugeData FERMIONIC fiber SU(2) gauge action.
 
 PROSPECTIVE/UNQUALIFIED until exact strict source, native consumer and
-axiom audit pass. Does not assert physicalSpace preservation, combined
+standard proof audit pass. Does not assert physicalSpace preservation, combined
 gauge action, Haar, infinitesimal Gauss, weighted H or spectral gap.
 -/
 set_option autoImplicit false

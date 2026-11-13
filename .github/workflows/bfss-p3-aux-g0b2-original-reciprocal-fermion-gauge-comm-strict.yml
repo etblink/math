@@ -23,8 +23,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p bfss-aux-g0b1-evidence
-          git rev-parse HEAD > bfss-aux-g0b1-evidence/tested-sha.txt
+          mkdir -p bfss-aux-g0b2-evidence
+          git rev-parse HEAD > bfss-aux-g0b2-evidence/tested-sha.txt
           python3 - <<'PY'
           import subprocess,json,re,pathlib
           git=lambda *a:subprocess.check_output(["git",*a],text=True).strip()
@@ -71,13 +71,13 @@ jobs:
           mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxG0B2OriginalReciprocalFermionGaugeCommutation"
           obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B2OriginalReciprocalFermionGaugeCommutation.olean"
           rm -f "$obj"
-          timeout 3100s lake build "$mod" 2>&1 | tee ../bfss-aux-g0b1-evidence/build.log
-          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B2OriginalReciprocalFermionGaugeCommutation.lean 2>&1 | tee ../bfss-aux-g0b1-evidence/source.log
-          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3AuxG0B2OriginalReciprocalFermionGaugeCommutationIndependentConsumer.lean 2>&1 | tee ../bfss-aux-g0b1-evidence/consumer.log
+          timeout 3100s lake build "$mod" 2>&1 | tee ../bfss-aux-g0b2-evidence/build.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B2OriginalReciprocalFermionGaugeCommutation.lean 2>&1 | tee ../bfss-aux-g0b2-evidence/source.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3AuxG0B2OriginalReciprocalFermionGaugeCommutationIndependentConsumer.lean 2>&1 | tee ../bfss-aux-g0b2-evidence/consumer.log
           python3 - <<'PY'
           from pathlib import Path
           import re
-          d=Path("../bfss-aux-g0b1-evidence")
+          d=Path("../bfss-aux-g0b2-evidence")
           roots=["originalReciprocalFullL2CLM_fiberAction_comm"]
           expected=["FCP.BFSSP3AuxG0B2OriginalReciprocalFermionGaugeCommutation."+x for x in roots]
           allowed={"propext","Classical.choice","Quot.sound"}
@@ -97,7 +97,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: bfss-aux-g0b1-evidence
-          path: bfss-aux-g0b1-evidence/
+          name: bfss-aux-g0b2-evidence
+          path: bfss-aux-g0b2-evidence/
           if-no-files-found: warn
           retention-days: 14
