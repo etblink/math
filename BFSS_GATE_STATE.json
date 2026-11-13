@@ -1289,7 +1289,7 @@
   "parallel_auxiliary_bosonic_commutation_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-G0B1",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "candidate_sha": "4a1425588021ac88736253a2978d3c4acc22747c",
     "run_id": 43526064993,
@@ -1328,6 +1328,20 @@
       "no original 16-output PiLp action",
       "no weighted charge/Hamiltonian/gap"
     ],
-    "next_decision": "If strict source and native consumer 1-root standard-axiom GREEN, accept bosonic commutation only; next fermionic fiberAction and physicalSpace preservation gates. If RED preserve first causal and repair narrowly."
+    "next_decision": "R2 one-line source proof congrArg instead of syntactic rw, no declaration or consumer changes; only strict new GREEN qualifies.",
+    "strict_conclusion": "failure",
+    "r1_red": {
+      "run_id": 43526064993,
+      "tested_sha": "4a1425588021ac88736253a2978d3c4acc22747c",
+      "job_id": 132232004779,
+      "source_blob": "18ec705a7a67370c79d6010657d367dc4448d653",
+      "consumer_blob": "f45d0a97cc475b04205aeddfd290248f7e3b529f",
+      "first_causal": "line 50 rw [hf] cannot match original source pairedGaugeData.bosonPullback linear-map wrapper against raw Lp.compMeasurePreserving AE hypothesis",
+      "artifact_id": 14085322981,
+      "artifact_size": 7562,
+      "artifact_digest": "sha256:963c0d32cba1e1721d5427e2c5d9c8e374a1455e4af9601cf776350450f15b75",
+      "receipt": "research/spectral-p2-original-field/P3_AUX_G0B1_R1_RED_43526064993_FIRST_CAUSAL_2026_11_13.md",
+      "source_qualified": false
+    }
   }
 }
