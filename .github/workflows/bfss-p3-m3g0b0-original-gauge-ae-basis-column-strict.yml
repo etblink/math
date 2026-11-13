@@ -29,7 +29,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/bfss-p3-m3g0b0"
           git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-p3-m3g0b0/tested-commit.txt"
           test "$(git hash-object --no-filters tools/bfss_m3g0a_manifest_audit.py)" = "7ce1334dad835fbe9798cf7557a98cd6e7fba3d0"
-          test "$(git hash-object --no-filters lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean)" = "7938e0397d89cab8229dceff78728410c17a9396"
+          test "$(git hash-object --no-filters lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean)" = "ffffa9e8d8679577a5f32999dd36fe5c9e904a07"
           test "$(git hash-object --no-filters lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean)" = "c914864eccc801d9045656f0d06157ae384670f4"
           python3 tools/bfss_m3g0a_manifest_audit.py | tee "$RUNNER_TEMP/bfss-p3-m3g0b0/accepted-manifest-preflight.log"
           python3 - <<'PY'
@@ -38,7 +38,7 @@ jobs:
           old=json.loads(Path("bfss-m3g0a-manifest-audit/pin-manifest.json").read_text())
           assert old["unique_deduplicated_exact_pins"] == 459,old["unique_deduplicated_exact_pins"]
           assert old["gauge_z_transitive_OAI_modules"] == 225
-          new={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean":"7938e0397d89cab8229dceff78728410c17a9396",
+          new={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean":"ffffa9e8d8679577a5f32999dd36fe5c9e904a07",
                "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean":"c914864eccc801d9045656f0d06157ae384670f4"}
           pinned=dict(old["pins"])
           assert len(pinned)==459

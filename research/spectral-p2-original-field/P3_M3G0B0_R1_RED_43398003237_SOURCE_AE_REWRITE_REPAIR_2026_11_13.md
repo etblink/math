@@ -24,3 +24,9 @@ Historical original SU2 L6G7Y `SU2BFSSPhysicalDomainL6G7YActualSourceFullL2Combi
 
 ## Scope
 The accepted M3G0A gate remains [#43391099205](https://github.com/etblink/math/actions/runs/43391099205), exact `f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f`. No new physical operator identity, basis independence, source operator-norm isometry, physical fixedness, Hamiltonian or spectral theorem is implied by this R1 failure or its repair.
+
+## R2 source-only repair actually staged
+- Both same original three theorem statements remain unchanged.
+- Source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean`: R1 blob `7938e0397d89cab8229dceff78728410c17a9396` → R2 new blob `ffffa9e8d8679577a5f32999dd36fe5c9e904a07`. Changes limited to old lines 57 and 106: `change ... at hboson/hright` followed by `congrArg (pairedGaugeData.fermion g)`.
+- Strict workflow `.github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml`: only the two occurrences of the B0 source blob preflight expected hash changed; workflow blob `f6ea36c9368e8564f558d0d0ea95a071afe77b4e`. Independent consumer blob still `c914864eccc801d9045656f0d06157ae384670f4`.
+- **This staging is not a mathematical acceptance.** R2 must still pass all 461 exact pins, original cold source, original consumer and three named allowed-axiom reports. Stop and preserve a new causal failure if the tactic repair is insufficient.

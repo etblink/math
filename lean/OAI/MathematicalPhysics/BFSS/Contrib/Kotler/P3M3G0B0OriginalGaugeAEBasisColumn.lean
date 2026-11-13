@@ -54,7 +54,9 @@ theorem actualOriginalFullL2GaugeUnitaryHom_apply_ae
       exact hfiber
     _ = pairedGaugeData.fermion g
           (v (pairedGaugeData.boson g⁻¹ x)) := by
-      rw [hboson]
+      change (pairedGaugeData.bosonPullback g⁻¹ v) x =
+        v (pairedGaugeData.boson g⁻¹ x) at hboson
+      exact congrArg (pairedGaugeData.fermion g) hboson
 
 /-- Transported original operator Lp action on the literal Fock-vector
 Lp column is the original L6G7 source unitary field formula, a.e.
@@ -103,7 +105,10 @@ theorem originalFockOperatorGaugeEquiv_source_basis_ae
             (pairedGaugeData.boson g⁻¹ x)) := hmid
     _ = pairedGaugeData.fermion g
           ((f (pairedGaugeData.boson g⁻¹ x)) (b i)) := by
-      rw [hright]
+      change (originalFockOperatorLpColumnsEquiv b f i : FullL2 2)
+          (pairedGaugeData.boson g⁻¹ x) =
+        (f (pairedGaugeData.boson g⁻¹ x)) (b i) at hright
+      exact congrArg (pairedGaugeData.fermion g) hright
 
 #print axioms actualOriginalFullL2GaugeUnitaryHom_apply_ae
 #print axioms originalFockOperatorGaugeEquiv_source_column_ae
