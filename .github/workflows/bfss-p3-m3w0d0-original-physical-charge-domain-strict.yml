@@ -29,85 +29,85 @@ jobs:
           mkdir -p "$RUNNER_TEMP/bfss-p3-m3w0d0"
           git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-p3-m3w0d0/tested-commit.txt"
           python3 - <<'PY' | tee "$RUNNER_TEMP/bfss-p3-m3w0d0/source-closure-preflight.log"
-            from pathlib import Path
-            import subprocess,json,re,hashlib
-            BASE="c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
-            SRC="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean"
-            CON="lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean"
-            EXPECTED={
-              SRC:"6f307c53e84499b53d2ac78ac4086cc39dcdf9c0",
-              CON:"d0801eec68a52a89206acc8cadabe296e0043fa2",
-              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2BNonzeroPhysicalL2Probe.lean":"a288a1bccb847f9544211709fce75c7c7a519453",
-              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B10CFullHaarCoreCompatibilityAndDensityProbe.lean":"7b116f1efa2dd62cc5188b3ff2d2cf38ecd7bd9a",
-              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AZOriginalPhysicalChargeDomainDensityReductionProbe.lean":"b69166ba7b1118e3542ba826e73aa4f95f575c3c",
-              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe.lean":"3ab254088e3fa2aea7622807b6b10e7eabc6fc8a"
-            }
-            def git(*a):
-              return subprocess.check_output(["git",*a],text=True).strip()
-            assert git("cat-file","-t",BASE)=="commit"
-            assert subprocess.run(["git","merge-base","--is-ancestor",BASE,"HEAD"]).returncode==0
-            for p,sha in EXPECTED.items():
-              assert git("hash-object","--no-filters",p)==sha,(p,sha)
-            basepaths={}
-            for line in git("ls-tree","-r",BASE,"--","lean/OAI").splitlines():
-              m=re.fullmatch(r"\d+ blob ([0-9a-f]{40})\t(.+)",line)
-              if m: basepaths[m[2]]=m[1]
-            seen={}
-            stack=[SRC,CON]
-            while stack:
-              p=stack.pop()
-              if p in seen: continue
-              f=Path(p)
-              assert f.is_file(),("missing OAI module",p)
-              actual=git("hash-object","--no-filters",p)
-              if p not in (SRC,CON):
-                assert basepaths.get(p)==actual,("historical exact baseline drift",p,basepaths.get(p),actual)
-              seen[p]=actual
-              for mod in re.findall(r"(?m)^import (\S+)$",f.read_text()):
-                if mod=="OAI" or mod.startswith("OAI."):
-                  dep="lean/"+mod.replace(".","/")+".lean"
-                  assert Path(dep).is_file(),("missing OAI import",p,mod)
-                  stack.append(dep)
-            for p,sha in EXPECTED.items(): assert seen[p]==sha,("missing required source",p)
-            s=Path(SRC).read_text()
-            c=Path(CON).read_text()
-            assert re.findall(r"(?m)^import (\S+)$",s)==[
-              "Mathlib.Topology.Closure",
-              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K2BNonzeroPhysicalL2Probe",
-              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe"]
-            assert re.findall(r"(?m)^import (\S+)$",c)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M3W0D0OriginalNonzeroPhysicalChargeDomain"]
-            roots=["originalPhysicalFullL2_witness_ne_zero","originalPhysicalCharge_naturalDomain_dense","originalPhysicalCharge_naturalDomain_has_nonzero"]
-            cons_roots=["FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalFullL2_witness_ne_zero","FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalCharge_naturalDomain_dense","FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalCharge_naturalDomain_has_nonzero","FCP.BFSSSU2GaugeG4K2B.radialBumpL2_ne_zero","FCP.BFSSSU2GaugeG4K2B.radialBumpL2_mem_physicalSpace","FCP.BFSSSU2GaugeG4K2B.pairedPhysicalSpace_ne_bot","FCP.BFSSSU2PhysicalDomainD2B10C.sourceCoreNormClosure_eq_physical_unconditional","FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional"]
-            assert re.findall(r"(?m)^#print axioms (\S+)$",s)==roots
-            assert re.findall(r"(?m)^#print axioms (\S+)$",c)==cons_roots
-            for blob in (s,c):
-              assert "set_option autoImplicit false" in blob
-              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",blob)
-              assert "maxHeartbeats" not in blob
-            for required in ("radialBumpL2_mem_physicalSpace",
-                             "originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional",
-                             "closure_minimal","isClosed_singleton"):
-              assert required in s,required
-            for required in ("FullL2 2","Boson 2","Fermion 2",
-                             "pairedGaugeData.physicalSpace","originalMinimalPhysicalHilbertChargeColumn"):
-              assert required in c,required
-            assert git("show",BASE+":lean/lean-toolchain")=="leanprover/lean4:v4.34.1"
-            lm=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
-            assert next(p["rev"] for p in lm if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
-            out=Path("bfss-p3-m3w0d0-manifest-audit")
-            out.mkdir(exist_ok=True)
-            data={"tested_commit":git("rev-parse","HEAD"),
-                  "baseline":BASE,"root_source":SRC,"independent_consumer":CON,
-                  "immutable_transitive_OAI_pins":len(seen)-2,
-                  "new_candidate_files":2,"all_pins":dict(sorted(seen.items())),
-                  "historical_K2B_run":37894319431,"historical_BA_run":39079626713,
-                  "historical_BE_run":39088799248,"historical_BH_run":39096180117,
-                  "candidate_theorems":roots,"donor_axiom_roots":cons_roots[3:],
-                  "mathematical_qualification":False}
-            (out/"pin-manifest.json").write_text(json.dumps(data,indent=2,sort_keys=True)+"\n")
-            print("BFSS_P3_M3W0D0_SOURCE_CLOSURE_PREFLIGHT_PASS",
-                  len(seen),hashlib.sha256((out/"pin-manifest.json").read_bytes()).hexdigest())
-            
+          from pathlib import Path
+          import subprocess,json,re,hashlib
+          BASE="c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
+          SRC="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean"
+          CON="lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean"
+          EXPECTED={
+            SRC:"6f307c53e84499b53d2ac78ac4086cc39dcdf9c0",
+            CON:"d0801eec68a52a89206acc8cadabe296e0043fa2",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2BNonzeroPhysicalL2Probe.lean":"a288a1bccb847f9544211709fce75c7c7a519453",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B10CFullHaarCoreCompatibilityAndDensityProbe.lean":"7b116f1efa2dd62cc5188b3ff2d2cf38ecd7bd9a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AZOriginalPhysicalChargeDomainDensityReductionProbe.lean":"b69166ba7b1118e3542ba826e73aa4f95f575c3c",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe.lean":"3ab254088e3fa2aea7622807b6b10e7eabc6fc8a"
+          }
+          def git(*a):
+            return subprocess.check_output(["git",*a],text=True).strip()
+          assert git("cat-file","-t",BASE)=="commit"
+          assert subprocess.run(["git","merge-base","--is-ancestor",BASE,"HEAD"]).returncode==0
+          for p,sha in EXPECTED.items():
+            assert git("hash-object","--no-filters",p)==sha,(p,sha)
+          basepaths={}
+          for line in git("ls-tree","-r",BASE,"--","lean/OAI").splitlines():
+            m=re.fullmatch(r"\d+ blob ([0-9a-f]{40})\t(.+)",line)
+            if m: basepaths[m[2]]=m[1]
+          seen={}
+          stack=[SRC,CON]
+          while stack:
+            p=stack.pop()
+            if p in seen: continue
+            f=Path(p)
+            assert f.is_file(),("missing OAI module",p)
+            actual=git("hash-object","--no-filters",p)
+            if p not in (SRC,CON):
+              assert basepaths.get(p)==actual,("historical exact baseline drift",p,basepaths.get(p),actual)
+            seen[p]=actual
+            for mod in re.findall(r"(?m)^import (\S+)$",f.read_text()):
+              if mod=="OAI" or mod.startswith("OAI."):
+                dep="lean/"+mod.replace(".","/")+".lean"
+                assert Path(dep).is_file(),("missing OAI import",p,mod)
+                stack.append(dep)
+          for p,sha in EXPECTED.items(): assert seen[p]==sha,("missing required source",p)
+          s=Path(SRC).read_text()
+          c=Path(CON).read_text()
+          assert re.findall(r"(?m)^import (\S+)$",s)==[
+            "Mathlib.Topology.Closure",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4K2BNonzeroPhysicalL2Probe",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe"]
+          assert re.findall(r"(?m)^import (\S+)$",c)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M3W0D0OriginalNonzeroPhysicalChargeDomain"]
+          roots=["originalPhysicalFullL2_witness_ne_zero","originalPhysicalCharge_naturalDomain_dense","originalPhysicalCharge_naturalDomain_has_nonzero"]
+          cons_roots=["FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalFullL2_witness_ne_zero","FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalCharge_naturalDomain_dense","FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalCharge_naturalDomain_has_nonzero","FCP.BFSSSU2GaugeG4K2B.radialBumpL2_ne_zero","FCP.BFSSSU2GaugeG4K2B.radialBumpL2_mem_physicalSpace","FCP.BFSSSU2GaugeG4K2B.pairedPhysicalSpace_ne_bot","FCP.BFSSSU2PhysicalDomainD2B10C.sourceCoreNormClosure_eq_physical_unconditional","FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",c)==cons_roots
+          for blob in (s,c):
+            assert "set_option autoImplicit false" in blob
+            assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",blob)
+            assert "maxHeartbeats" not in blob
+          for required in ("radialBumpL2_mem_physicalSpace",
+                           "originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional",
+                           "closure_minimal","isClosed_singleton"):
+            assert required in s,required
+          for required in ("FullL2 2","Boson 2","Fermion 2",
+                           "pairedGaugeData.physicalSpace","originalMinimalPhysicalHilbertChargeColumn"):
+            assert required in c,required
+          assert git("show",BASE+":lean/lean-toolchain")=="leanprover/lean4:v4.34.1"
+          lm=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in lm if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          out=Path("bfss-p3-m3w0d0-manifest-audit")
+          out.mkdir(exist_ok=True)
+          data={"tested_commit":git("rev-parse","HEAD"),
+                "baseline":BASE,"root_source":SRC,"independent_consumer":CON,
+                "immutable_transitive_OAI_pins":len(seen)-2,
+                "new_candidate_files":2,"all_pins":dict(sorted(seen.items())),
+                "historical_K2B_run":37894319431,"historical_BA_run":39079626713,
+                "historical_BE_run":39088799248,"historical_BH_run":39096180117,
+                "candidate_theorems":roots,"donor_axiom_roots":cons_roots[3:],
+                "mathematical_qualification":False}
+          (out/"pin-manifest.json").write_text(json.dumps(data,indent=2,sort_keys=True)+"\n")
+          print("BFSS_P3_M3W0D0_SOURCE_CLOSURE_PREFLIGHT_PASS",
+                len(seen),hashlib.sha256((out/"pin-manifest.json").read_bytes()).hexdigest())
+          
           PY
       - name: Restore exact Lean 4.34.1 and pinned Mathlib
         shell: bash
