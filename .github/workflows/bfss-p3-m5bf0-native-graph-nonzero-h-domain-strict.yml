@@ -1,0 +1,148 @@
+name: BFSS P3-M5BF0 original source graph and nonzero H domain strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-p3-m5bf0-native-graph-nonzero-h-domain-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean
+      - lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bfss-p3-m5bf0-original-graph-domain-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native-source-graph-and-h-domain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout frozen sources and new qualified adapters
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 96
+          persist-credentials: false
+      - name: Preflight exact BF plus BE0 and W0 source closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-p3-m5bf0"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-p3-m5bf0/tested-commit.txt"
+          python3 - <<'PY' | tee "$RUNNER_TEMP/bfss-p3-m5bf0/source-closure-preflight.log"
+          from pathlib import Path
+          import subprocess, re, json, hashlib
+          BASE = "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
+          SRC = "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean"
+          CON = "lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean"
+          BE0 = "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BE0OriginalNativeHamiltonianPort.lean"
+          W0 = "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean"
+          EXEMPT = {SRC, CON, BE0, W0}
+          EXPECTED = {"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean":"f954917f21669fd68befc12f48a2b092b71a9044","lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean":"3d00bacf4b8e8cbf88c28d821d6b13336d23a2c2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BFOriginalSourceGraphAndPairedHamiltonianProbe.lean":"fd137fc6f62f42d96bcf6ff3eb9355839a59d562","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean":"0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BE0OriginalNativeHamiltonianPort.lean":"f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean":"86823abdddb70d1c2158f8e215fb35760e107fd5"}
+          NEW = ["originalPairedChargeGraph_eq_sourceRebased","originalPairedH_eq_accepted_BE","originalPairedH_naturalDomain_has_nonzero"]
+          BF = ["originalMinimalClosedGraph_eq_exactSourceGaugeGraph","originalMinimalPhysicalHilbertChargeGraph_mem_source_iff","originalMinimalPhysicalHilbertChargeGraph_eq_sourceRebased","originalMinimalPhysicalHilbertChargeColumn_graph_eq_sourceRebased","pairedOriginalPhysicalNormalizedHamiltonian","pairedOriginalPhysicalSpace_ne_bot","pairedOriginalPhysicalNormalizedHamiltonian_selfAdjoint","pairedOriginalPhysicalNormalizedHamiltonian_domain","pairedOriginalPhysicalNormalizedHamiltonian_weakForm_iff"]
+          def git(*a):
+            return subprocess.check_output(["git",*a],text=True).strip()
+          assert git("cat-file","-t",BASE) == "commit"
+          assert subprocess.run(["git","merge-base","--is-ancestor",BASE,"HEAD"]).returncode == 0
+          original = {}
+          for line in git("ls-tree","-r",BASE,"--","lean/OAI").splitlines():
+            m = re.fullmatch(r"\d+ blob ([0-9a-f]{40})\t(.+)",line)
+            if m: original[m[2]] = m[1]
+          seen = {}
+          stack = [SRC,CON,BE0,W0]
+          while stack:
+            p = stack.pop()
+            if p in seen: continue
+            f = Path(p)
+            assert f.is_file(), ("source missing",p)
+            sha = git("hash-object","--no-filters",p)
+            if p not in EXEMPT:
+              assert original.get(p) == sha, ("unexpected historical drift",p,sha)
+            seen[p] = sha
+            for mod in re.findall(r"(?m)^import\s+(\S+)\s*$",f.read_text()):
+              if mod == "OAI" or mod.startswith("OAI."):
+                dep = "lean/"+mod.replace(".","/")+".lean"
+                assert Path(dep).is_file(),("missing import",p,dep)
+                stack.append(dep)
+          for p,sha in EXPECTED.items(): assert seen.get(p) == sha, ("frozen blob mismatch",p,seen.get(p),sha)
+          ss = Path(SRC).read_text()
+          cc = Path(CON).read_text()
+          assert re.findall(r"(?m)^#print axioms (\S+)$",ss) == NEW
+          assert re.findall(r"(?m)^#print axioms (\S+)$",cc) == (["FCP.BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain."+x for x in NEW] + ["FCP.BFSSSU2PhysicalDomainL6H5E8BF."+x for x in BF] + ["FCP.BFSSP3M5BE0OriginalNativeHamiltonianPort.originalPairedNormalizedH_domain_dense","FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalFullL2_witness_ne_zero"])
+          for source in [ss,cc]:
+            assert "set_option autoImplicit false" in source
+            assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",source)
+          assert "pairedGaugeData.deformedModelGraph 1 0" in ss
+          assert "originalPairedH_naturalDomain_has_nonzero" in ss
+          assert all(x in cc for x in ["Boson 2","Fermion 2","FullL2 2","pairedGaugeData.physicalSpace"])
+          assert git("show",BASE+":lean/lean-toolchain")=="leanprover/lean4:v4.34.1"
+          manifest=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in manifest if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          out=Path("bfss-p3-m5bf0-manifest-audit")
+          out.mkdir(exist_ok=True)
+          rec={"status":"UNQUALIFIED_SOURCE_PREFLIGHT","tested_commit":git("rev-parse","HEAD"),
+           "baseline":BASE,"source":SRC,"consumer":CON,"local_pin_count":len(seen),
+           "new_candidate_files":2,"qualified_additional_ancestor_sources":[BE0,W0],
+           "pins":dict(sorted(seen.items()))}
+          (out/"pin-manifest.json").write_text(json.dumps(rec,indent=2,sort_keys=True)+"\n")
+          print("BFSS_P3_M5BF0_SOURCE_CLOSURE_PREFLIGHT_PASS",len(seen),hashlib.sha256((out/"pin-manifest.json").read_bytes()).hexdigest())
+          
+          PY
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-p3-m5bf0/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold native source/consumer and fourteen root axiom audits
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          e="$RUNNER_TEMP/bfss-p3-m5bf0"
+          src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 3600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain 2>&1 | tee "$e/cold-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee "$e/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean 2>&1 | tee "$e/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re,json
+          d=Path(os.environ["RUNNER_TEMP"])/"bfss-p3-m5bf0"
+          NEW=["FCP.BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.originalPairedChargeGraph_eq_sourceRebased","FCP.BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.originalPairedH_eq_accepted_BE","FCP.BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.originalPairedH_naturalDomain_has_nonzero"]
+          ALL=["FCP.BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.originalPairedChargeGraph_eq_sourceRebased","FCP.BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.originalPairedH_eq_accepted_BE","FCP.BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.originalPairedH_naturalDomain_has_nonzero","FCP.BFSSSU2PhysicalDomainL6H5E8BF.originalMinimalClosedGraph_eq_exactSourceGaugeGraph","FCP.BFSSSU2PhysicalDomainL6H5E8BF.originalMinimalPhysicalHilbertChargeGraph_mem_source_iff","FCP.BFSSSU2PhysicalDomainL6H5E8BF.originalMinimalPhysicalHilbertChargeGraph_eq_sourceRebased","FCP.BFSSSU2PhysicalDomainL6H5E8BF.originalMinimalPhysicalHilbertChargeColumn_graph_eq_sourceRebased","FCP.BFSSSU2PhysicalDomainL6H5E8BF.pairedOriginalPhysicalNormalizedHamiltonian","FCP.BFSSSU2PhysicalDomainL6H5E8BF.pairedOriginalPhysicalSpace_ne_bot","FCP.BFSSSU2PhysicalDomainL6H5E8BF.pairedOriginalPhysicalNormalizedHamiltonian_selfAdjoint","FCP.BFSSSU2PhysicalDomainL6H5E8BF.pairedOriginalPhysicalNormalizedHamiltonian_domain","FCP.BFSSSU2PhysicalDomainL6H5E8BF.pairedOriginalPhysicalNormalizedHamiltonian_weakForm_iff","FCP.BFSSP3M5BE0OriginalNativeHamiltonianPort.originalPairedNormalizedH_domain_dense","FCP.BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomain.originalPhysicalFullL2_witness_ne_zero"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name,expected in [("cold-build.log",None),("source-axioms.log",NEW),("independent-consumer.log",ALL)]:
+            content=(d/name).read_text()
+            assert not any(x in content for x in ("error:","sorryAx","unknownIdentifier")),(name,content[-4500:])
+            extra=[x for x in content.splitlines() if "warning:" in x and not depwarn.fullmatch(x)]
+            assert not extra,(name,extra[:8])
+            if expected is not None:
+              reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",content)
+              assert [name for name,_ in reports] == expected,(name,reports,expected)
+              for root,axioms in reports:
+                assert {v.strip() for v in axioms.split(",") if v.strip()} <= allowed,(root,axioms)
+          (d/"scope-receipt.json").write_text(json.dumps({"native_BF_charge_source_graph":True,"nonzero_original_native_H_natural_domain":True,"BF_roots":9,"new_roots":3,"prior_accepted_roots":2,"particular_radial_bump_H_domain":False,"BG_BH_equalities_qualified":False,"point_spectrum_or_gap":False},indent=2))
+          print("BFSS_P3_M5BF0_SOURCE_GRAPH_NONZERO_H_DOMAIN_STRICT_GREEN")
+          
+          PY
+      - name: Preserve immutable source and first-causal proof logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-p3-m5bf0-source-graph-h-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/bfss-p3-m5bf0/
+            bfss-p3-m5bf0-manifest-audit/
+          if-no-files-found: warn
+          retention-days: 14

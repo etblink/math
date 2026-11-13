@@ -180,6 +180,42 @@ def main():
                         "SOURCE_CONSUMER_WORKFLOW_STAGED_NOT_LEAN_QUALIFIED",
                         "STRICT_PENDING_UNQUALIFIED"
                     }, "M5BE0 pending source receipt/transition mismatch")
+    port_bf = a.get("gate") == "P3-M5BF0"
+    if port_bf:
+        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"},
+                "BF0 is not accepted without an exact strict receipt")
+        require(a.get("source") == "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean"
+                and a.get("source_blob") == "f954917f21669fd68befc12f48a2b092b71a9044"
+                and a.get("consumer") == "lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean"
+                and a.get("consumer_blob") == "3d00bacf4b8e8cbf88c28d821d6b13336d23a2c2"
+                and a.get("original_BF_source") == "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BFOriginalSourceGraphAndPairedHamiltonianProbe.lean"
+                and a.get("original_BF_blob") == "fd137fc6f62f42d96bcf6ff3eb9355839a59d562"
+                and a.get("accepted_BE0_blob") == "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1"
+                and a.get("accepted_W0_blob") == "86823abdddb70d1c2158f8e215fb35760e107fd5",
+                "BF0 source/consumer/prior qualified source SHA drift")
+        require(a.get("manifest_baseline_sha") ==
+                    "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
+                and a.get("manifest_pins") is None
+                and a.get("new_root_count") == 3
+                and a.get("historical_BF_root_count") == 9
+                and a.get("accepted_donor_root_count") == 2
+                and a.get("workflow") == ".github/workflows/bfss-p3-m5bf0-native-graph-nonzero-h-domain-strict.yml",
+                "BF0 prospective closure/axiom scope changed")
+        require(q.get("gate") == "P3-M5BE0"
+                and q.get("run_id") == 43493125150
+                and q.get("tested_sha") ==
+                    "10a9e7e3419f8b02b5e920c60e07facf8602fb42"
+                and q.get("source_blob") == "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1"
+                and q.get("manifest_pins") == 202
+                and q.get("artifact_id") == 14070858752,
+                "BF0 cannot supersede previous BE0 exact accepted source")
+        require(s.get("next_planned", {}).get("gate") == "P3-M5BF0"
+                and s.get("next_planned", {}).get("status") ==
+                    "STRICT_WORKFLOW_STAGED_PENDING"
+                and s.get("m5bf0_prospective", {}).get("status") ==
+                    "STAGED_UNQUALIFIED"
+                and (ROOT / a.get("prospective_receipt", "__missing__")).is_file(),
+                "BF0 prospective file/status not recorded")
     if a["status"] == "RESEARCH_ONLY_NOT_STAGED":
         require(a.get("candidate_sha") is None and a.get("run_id") is None,
                 "unstaged research cannot claim exact tested CI")
@@ -195,7 +231,7 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and ((port_be or source_join) and a["status"] != "GREEN_QUALIFIED"):
+        if entry is a and ((port_be or source_join or port_bf) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
@@ -205,7 +241,7 @@ def main():
             path = Path(entry[k])
             require(not path.is_absolute() and ".." not in path.parts and (ROOT/path).is_file(),
                     "missing or unsafe " + k + ": " + str(path))
-    if not source_join and not port_be:
+    if not source_join and not port_be and not port_bf:
         require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
     # The BE native-H source port is an independently pinned historical
     # dependency closure; never compare its raw count to M3W0D0's 201 pins.
