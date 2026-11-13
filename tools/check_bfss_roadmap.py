@@ -230,9 +230,20 @@ def main():
                 len(q.get("declarations", [])) == 9 and
                 (ROOT / receipt).is_file(),
                 "M3G0A exact accepted proof receipt/pins missing or mutated")
-        require(s.get("next_planned", {}).get("gate") == "P3-M3G0B" and
-                s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
-                s.get("next_planned", {}).get("pre_gate_receipt_complete") is False and
+        require(s.get("next_planned", {}).get("gate") in {"P3-M3G0B", "P3-M3G0B0"} and
+                ((s.get("next_planned", {}).get("gate") == "P3-M3G0B" and
+                  s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
+                  s.get("next_planned", {}).get("pre_gate_receipt_complete") is False)
+                 or
+                 (s.get("next_planned", {}).get("gate") == "P3-M3G0B0" and
+                  s.get("next_planned", {}).get("status") in {
+                      "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+                      "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
+                      "STRICT_WORKFLOW_STAGED_PENDING",
+                  } and
+                  s.get("next_planned", {}).get("pre_gate_receipt_complete") is True and
+                  (ROOT / s["next_planned"].get("pre_gate_receipt", "__missing__")).is_file() and
+                  s.get("m3g0b_prospective", {}).get("mathematical_qualification") is False)) and
                 s.get("stage_transition", {}).get("status") ==
                 "M3G0A_QUALIFIED_M3G0B_RESEARCH_UNSTAGED" and
                 s.get("m3g0a_prospective", {}).get("mathematical_qualification") is True and
@@ -241,6 +252,32 @@ def main():
                 s.get("m3g0b_prospective", {}).get("workflow_staged") is False and
                 s.get("evidence_ledger_latest") == str(receipt),
                 "M3G0A scoped acceptance requires read-only unstaged M3G0B handoff")
+
+    if s.get("next_planned", {}).get("gate") == "P3-M3G0B0":
+        b0 = s.get("m3g0b_prospective", {})
+        source = "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean"
+        consumer = "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean"
+        require(b0.get("gate") == "P3-M3G0B0" and
+                b0.get("pre_gate_receipt_complete") is True and
+                b0.get("status") in {
+                    "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+                    "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
+                    "STRICT_WORKFLOW_STAGED_PENDING",
+                }, "M3G0B0 pre-gate receipt must precede any new source")
+        if b0.get("source_staged") or b0.get("consumer_staged"):
+            require(b0.get("source_staged") is True and
+                    b0.get("consumer_staged") is True and
+                    (ROOT / source).is_file() and (ROOT / consumer).is_file() and
+                    b0.get("source_path") == source and
+                    b0.get("consumer_path") == consumer,
+                    "M3G0B0 source and original consumer must be staged together")
+            prospective_m3_source = source
+        if b0.get("workflow_staged"):
+            require(a.get("gate") == "P3-M3G0B0" and
+                    a.get("status") == "PENDING_STRICT_CI" and
+                    a.get("manifest_pins") >= q.get("manifest_pins") and
+                    b0.get("mathematical_qualification") is False,
+                    "M3G0B0 strict pending is not a qualified mathematical gate")
 
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and

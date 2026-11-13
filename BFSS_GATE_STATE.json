@@ -114,14 +114,14 @@
     "scope": "Original Boson 2 volume Lp of bounded Fermion 2 linear operators with original operator norm: continuous comparison to genuine Fock-vector Lp columns. Exactly target HS Lp column norm identity and lower 1 / upper sqrt(card ι) source Lp norm inequalities. Not an isometry of original operator-valued Lp, not gauge/Spin9/closed Hamiltonian/spectrum."
   },
   "next_planned": {
-    "gate": "P3-M3G0B",
+    "gate": "P3-M3G0B0",
     "milestone": "M3",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "status": "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
     "pre_gate_receipt_required": true,
-    "pre_gate_receipt_complete": false,
+    "pre_gate_receipt_complete": true,
     "review_basis": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md",
-    "goal": "Identify original operator-valued Boson2 a.e. representative of transported SU2 action as LEFT-output fermion unitary composed with inverse bosonic SU2 pullback. Prove genuine source law, basis independence and original operator-norm Lp isometry separately; do not substitute pointwise conjugation.",
-    "candidate_contract": "First reuse M3G0A qualified diagonal transport and M2C0 a.e. Fock-column evaluation; identify exact L6G7U/Z source fiberAction/bosonPullback and finite orthonormal basis extensionality. Preserve measurability, a.e. null-set and inverse orientation. Isolate pointwise law and basis-independence before optional norm-isometry claim. Define direct source action only after an exact existing source Lp API audit.",
+    "goal": "Qualify exact original FullL2 SU2 a.e. left-output inverse-boson formula and its transported ORIGINAL operator-valued Lp basis-column a.e. evaluation; reserve full operator identity/basis independence for B1.",
+    "candidate_contract": "Three named source/consumer theorems in lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean and lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean; exact L6G7Y a.e. APIs; original M2C0 and M3G0A. 461 unique pins expected only after exact manifest regeneration; no CI without pin preflight.",
     "research_donors": [
       "M3G0A strict #43391099205 source-exact original operator Lp diagonal SU2 transport and group laws",
       "M2C0 strict #43375482588 original bounded-operator Lp a.e. original Fock basis columns and inverse field reconstruction",
@@ -144,7 +144,8 @@
       "M5 original Hamiltonian natural domain requalification",
       "M6-M8 physical spectral gates"
     ],
-    "decision": "GO READ-ONLY source research and prospective M3G0B experiment receipt. HOLD all M3G0B Lean source/consumer/workflow changes until its own falsifiable receipt and exact source API review."
+    "decision": "Prospective B0 receipt and exact source-API research recorded. GO narrowly scoped B0 candidate source/consumer only; unqualified until independent strict GREEN.",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B0_PROSPECTIVE_ORIGINAL_GAUGE_AE_BASIS_COLUMN_2026_11_13.md"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
@@ -381,15 +382,32 @@
     "accepted_tested_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f"
   },
   "m3g0b_prospective": {
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "status": "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
     "read_only_source_audit_required": true,
-    "pre_gate_receipt_complete": false,
+    "pre_gate_receipt_complete": true,
     "source_staged": false,
     "consumer_staged": false,
     "workflow_staged": false,
     "mathematical_qualification": false,
     "predecessor": "P3-M3G0A",
-    "last_qualified_run_id": 43391099205
+    "last_qualified_run_id": 43391099205,
+    "gate": "P3-M3G0B0",
+    "receipt": "research/spectral-p2-original-field/P3_M3G0B0_PROSPECTIVE_ORIGINAL_GAUGE_AE_BASIS_COLUMN_2026_11_13.md",
+    "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean",
+    "consumer_path": "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean",
+    "source_apis_verified": [
+      "ContinuousLinearMap.coeFn_compLp",
+      "Lp.coeFn_compMeasurePreserving",
+      "EventuallyEq.comp_tendsto",
+      "originalFockOperatorLpColumnsEquiv_apply_ae",
+      "originalFockOperatorGaugeEquiv_column_apply"
+    ],
+    "first_gate_declarations": [
+      "actualOriginalFullL2GaugeUnitaryHom_apply_ae",
+      "originalFockOperatorGaugeEquiv_source_column_ae",
+      "originalFockOperatorGaugeEquiv_source_basis_ae"
+    ],
+    "expected_pin_count_provisional": 461
   },
   "m3g0a_acceptance": {
     "gate": "P3-M3G0A",
