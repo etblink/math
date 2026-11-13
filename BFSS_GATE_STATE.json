@@ -114,7 +114,7 @@
   "next_planned": {
     "gate": "P3-M2C1",
     "milestone": "M2",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "status": "PROSPECTIVE_RECEIPT_COMMITTED_GATE_NOT_STAGED",
     "goal": "Lift original bounded-Fock operator/HS norm comparison into actual Boson2 operator-valued Lp versus genuine source Fock-vector PiLp2 columns, preserving operator norm on input.",
     "candidate_contract": "For original ONB b, bound ‖f‖ ≤ ‖originalFockOperatorLpColumnsEquiv b f‖ ≤ sqrt(card ι) * ‖f‖ on the actual original bounded operator-valued Lp field. Numeric 4096 can be a future specialization but is not qualified.",
     "research_donors": [
@@ -136,9 +136,14 @@
       "M6–M8 spectral claims"
     ],
     "pre_gate_receipt_required": true,
-    "pre_gate_receipt_complete": false,
-    "review_basis": "research/spectral-p2-original-field/P3_M2C0_GREEN_43375482588_ACCEPTANCE_AND_M2C1_RESEARCH_HANDOFF_2026_11_12.md",
-    "decision": "Research only, not staged; inspect exact Lp bound APIs, prepare a prospective evidence receipt before new Lean source."
+    "pre_gate_receipt_complete": true,
+    "review_basis": "research/spectral-p2-original-field/P3_M2C1_PROSPECTIVE_ORIGINAL_OPERATOR_LP_COLUMN_NORM_BOUNDS_RECEIPT_2026_11_12.md",
+    "decision": "CONDITIONAL GO for two source-original operator norm Lp vs genuine Fock-column Lp bounds via pinned Lp ae inequalities and qualified M2B2A/B2/M2B1. Prospective receipt committed first; no Lean candidate yet.",
+    "expected_manifest_pins": 96,
+    "planned_declarations": [
+      "originalFockOperatorLp_norm_le_columns",
+      "originalFockOperatorLp_columns_norm_le_sqrt_card_mul_norm"
+    ]
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2C0_GREEN_43375482588_ACCEPTANCE_AND_M2C1_RESEARCH_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
