@@ -35,7 +35,7 @@
   "active": {
     "gate": "P3-M3G0A",
     "status": "PENDING_STRICT_CI",
-    "run_id": null,
+    "run_id": 43391099205,
     "candidate_sha": "78f5b7dfad811f67203a6013ee797c0073d67938",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.lean",
     "consumer": "lean/diagnostics/BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean",
@@ -51,7 +51,7 @@
       "run_id": 43379713104,
       "tested_sha": "88c0a1f5efef0418b12645cb05ff7eefac7e4fb2"
     },
-    "reported_strict_status": "NOT_YET_VERIFIED",
+    "reported_strict_status": "IN_PROGRESS_NOT_VERIFIED",
     "scope": "Original operator-norm Lp Fock-column diagonal FullL2 SU2 algebraic transport: intertwining, component law, identity, multiplication, inverse; exact original Boson2/Fermion2, not physical a.e. operator formula.",
     "not_proved": [
       "M3G0A strict Lean theorem (pending)",
@@ -62,7 +62,8 @@
       "M5 original Hamiltonian domain",
       "M6-M8 spectral result"
     ],
-    "decision": "PENDING strict CI. No M3 mathematical promotion until exact-run verified GREEN and independent consumer + allowed axioms pass."
+    "decision": "PENDING strict CI. No M3 mathematical promotion until exact-run verified GREEN and independent consumer + allowed axioms pass.",
+    "workflow_tested_head_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f"
   },
   "if_green": "M3-G0 source exact physical SU2 left-output + inverse boson pullback and per-column physical fixedness, real original source Fock consumer, permitted axioms and exact pins; no H/spectral claim.",
   "if_red": "For M3 preserve earliest source provenance/type/a.e. red; never substitute operator conjugation or weakened gauge action.",
@@ -353,6 +354,9 @@
     "pin_manifest_audit_sha": "e4ddc105f17e47f78bcf9ab60b5c822a9fab2e36",
     "pin_manifest_audit_artifact_digest": "sha256:7f38d8694b56656b08007af17212ddd724f2fa71815aa84375df53345e05c130",
     "pinned_import_closure": 225,
-    "distinct_deduplicated_manifest_pins": 459
+    "distinct_deduplicated_manifest_pins": 459,
+    "strict_run_id": 43391099205,
+    "strict_tested_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f",
+    "strict_run_status": "in_progress"
   }
 }

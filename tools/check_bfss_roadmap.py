@@ -168,7 +168,11 @@ def main():
                                     a.get("gate") == "P3-M3G0A" and
                                     a.get("status") == "PENDING_STRICT_CI" and
                                     a.get("manifest_pins") == 459 and
-                                    a.get("run_id") is None and
+                                    (a.get("run_id") is None or
+                                     (isinstance(a.get("run_id"), int) and
+                                      a.get("run_id") > 0 and
+                                      isinstance(a.get("workflow_tested_head_sha"), str) and
+                                      re.fullmatch(r"[0-9a-f]{40}", a["workflow_tested_head_sha"]))) and
                                     p.get("distinct_deduplicated_manifest_pins") == 459)))
         require(old_handoff or prospective_handoff,
                 "M2C1 qualified requires original M3G0 research handoff or bounded unqualified M3G0A candidate")
