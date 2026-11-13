@@ -34,8 +34,8 @@
   "active": {
     "gate": "P3-M2A",
     "status": "PENDING_STRICT_CI",
-    "candidate_sha": "19ed7578ffdb5768de720d1e2a227c2ff4e5bcd3",
-    "run_id": null,
+    "candidate_sha": "979c0573cb1b908cd8365ecfde28887dc89b8b2a",
+    "run_id": 43349181533,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2AOriginalFockHSFiber.lean",
     "consumer": "lean/diagnostics/BFSSP3M2AOriginalFockHSFiberIndependentConsumer.lean",
     "source_blob": "1d05f5dcd5f6df6b6bad7359f03850e2965c1b1f",
@@ -44,7 +44,7 @@
     "goal": "Distinct original-Fermion-2 HS finite operator fiber, original Fock bounded-operator linear equivalence and source physical-star trace-inner identification",
     "expected_strict_workflow": ".github/workflows/bfss-p3-m2a-original-fock-hs-fiber-strict.yml",
     "accepted_predecessor": "P3-D5B4B, strict GREEN #43343959865, 79 exact pins",
-    "status_detail": "PUSH_STAGED; workflow run/tested SHA unknown until GitHub creates run",
+    "status_detail": "M2A source/consumer/workflow submitted in commit 979c0573; exact CI #43349181533 pending. Strict verdict cannot be assumed.",
     "not_proved": [
       "operator norm equals HS norm (false in general)",
       "M2B operator-valued L2 bridge",
@@ -52,7 +52,10 @@
       "M4 source Spin9 parameter continuity",
       "M5 closed physical Hamiltonian graph",
       "M6–M8 sector compactness/positive spectrum"
-    ]
+    ],
+    "run_url": "https://github.com/etblink/math/actions/runs/43349181533",
+    "strict_workflow_tested_head_sha": "979c0573cb1b908cd8365ecfde28887dc89b8b2a",
+    "reported_strict_status": "QUEUED_OR_RUNNING_NOT_QUALIFIED"
   },
   "if_green": "Verify exact M2A strict run tested SHA, 81 source pins, original operator consumer, cold build, six named axioms; promote only finite HS carrier/trace pairing. Plan M2B later.",
   "if_red": "Preserve M2A first causal source/consumer/preflight red. Fix only bounded issue; never redefine the original continuous-linear-operator norm or promote an unrelated model.",
@@ -101,7 +104,8 @@
       "separate finite-fiber M2A from L2 operator field M2B",
       "use abstract-first construction and distinct independent Boson 2 consumer where L2 is entered"
     ],
-    "decision": "Do not stage any M2 Lean source until this committed M1-to-M2 review; candidate and strict run will be separately qualified."
+    "decision": "Do not stage any M2 Lean source until this committed M1-to-M2 review; candidate and strict run will be separately qualified.",
+    "tested_candidate_sha": "979c0573cb1b908cd8365ecfde28887dc89b8b2a"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_D5B4B_GREEN_43343959865_M1_CLOSURE_2026_11_12.md",
   "monograph_alignment": {
