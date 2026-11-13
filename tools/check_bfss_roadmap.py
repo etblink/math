@@ -244,14 +244,25 @@ def main():
                   s.get("next_planned", {}).get("pre_gate_receipt_complete") is True and
                   (ROOT / s["next_planned"].get("pre_gate_receipt", "__missing__")).is_file() and
                   s.get("m3g0b_prospective", {}).get("mathematical_qualification") is False)) and
-                s.get("stage_transition", {}).get("status") ==
-                "M3G0A_QUALIFIED_M3G0B_RESEARCH_UNSTAGED" and
+                ((s.get("next_planned", {}).get("gate") == "P3-M3G0B" and
+                  s.get("stage_transition", {}).get("status") ==
+                  "M3G0A_QUALIFIED_M3G0B_RESEARCH_UNSTAGED" and
+                  s.get("m3g0b_prospective", {}).get("source_staged") is False and
+                  s.get("m3g0b_prospective", {}).get("workflow_staged") is False)
+                 or
+                 (s.get("next_planned", {}).get("gate") == "P3-M3G0B0" and
+                  s.get("stage_transition", {}).get("status") ==
+                  "M3G0A_QUALIFIED_M3G0B0_PROSPECTIVE_AND_STRICT_PENDING" and
+                  s.get("m3g0b_prospective", {}).get("source_staged") is
+                    (s["next_planned"]["status"] != "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED") and
+                  s.get("m3g0b_prospective", {}).get("consumer_staged") is
+                    (s["next_planned"]["status"] != "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED") and
+                  s.get("m3g0b_prospective", {}).get("workflow_staged") is
+                    (s["next_planned"]["status"] == "STRICT_WORKFLOW_STAGED_PENDING"))) and
                 s.get("m3g0a_prospective", {}).get("mathematical_qualification") is True and
                 s.get("m3g0b_prospective", {}).get("mathematical_qualification") is False and
-                s.get("m3g0b_prospective", {}).get("source_staged") is False and
-                s.get("m3g0b_prospective", {}).get("workflow_staged") is False and
                 s.get("evidence_ledger_latest") == str(receipt),
-                "M3G0A scoped acceptance requires read-only unstaged M3G0B handoff")
+                "M3G0A acceptance requires exact unqualified M3G0B/B0 phase transition")
 
     if s.get("next_planned", {}).get("gate") == "P3-M3G0B0":
         b0 = s.get("m3g0b_prospective", {})

@@ -233,7 +233,7 @@
   "stage_transition": {
     "from": "M2",
     "to": "M3",
-    "status": "M3G0A_QUALIFIED_M3G0B_RESEARCH_UNSTAGED",
+    "status": "M3G0A_QUALIFIED_M3G0B0_PROSPECTIVE_AND_STRICT_PENDING",
     "m1_acceptance": [
       {
         "gate": "P3-D5B3",
@@ -302,7 +302,9 @@
       "M3G0B source pointwise operator action and basis independence",
       "M3G0C source physical fixedness",
       "M3-W0 source physical nonzero witness"
-    ]
+    ],
+    "m3g0b0_pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B0_PROSPECTIVE_ORIGINAL_GAUGE_AE_BASIS_COLUMN_2026_11_13.md",
+    "m3g0b0_status": "STRICT_PENDING_NOT_MATH_QUALIFIED"
   },
   "priority_review": {
     "status": "M3G0A_SCOPED_MATH_ACCEPTED_M3G0B_RESEARCH_ONLY",
@@ -400,7 +402,21 @@
     "source_blob": "7938e0397d89cab8229dceff78728410c17a9396",
     "consumer_blob": "c914864eccc801d9045656f0d06157ae384670f4",
     "manifest_pins": 461,
-    "workflow_path": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml"
+    "workflow_path": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
+    "administrative_watchdog": {
+      "first_red": {
+        "run_id": 43397718772,
+        "tested_sha": "f4c1f83078c2c868b43fad995a8e7468dcefebaa",
+        "first_causal": "Legacy M3G0A accepted checker still required M3G0B source_staged=false even with explicit B0 preregistration"
+      },
+      "second_red": {
+        "run_id": 43398003077,
+        "tested_sha": "9b64f7661918bc07db6d3d8d1db62737d4c036ba",
+        "first_causal": "Same legacy accepted-handoff guard; staged B0 strict workflow correctly did not edit qualified M3G0A"
+      },
+      "decision": "NARROW ADVISORY CHECKER FIX ONLY; original mathematical proof and M3G0A acceptance unchanged",
+      "qualification": false
+    }
   },
   "m3g0a_acceptance": {
     "gate": "P3-M3G0A",
