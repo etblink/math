@@ -124,7 +124,7 @@
   "next_planned": {
     "gate": "P3-M3G0A",
     "milestone": "M3",
-    "status": "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+    "status": "UNCOMPILED_SOURCE_AND_CONSUMER_CANDIDATE_STAGED_WORKFLOW_NOT_STAGED",
     "pre_gate_receipt_required": true,
     "pre_gate_receipt_complete": true,
     "review_basis": "research/spectral-p2-original-field/P3_M2_TO_M3_PRIORITY_RECONCILIATION_AND_OLDER_WORK_REUSE_2026_11_12.md",
@@ -150,8 +150,10 @@
       "M5-PORT0 historical BA-BH changed-source natural domain requalification",
       "M6-M8 source physical spectral tests"
     ],
-    "decision": "GO bounded M3G0A Lean preparation after documented prospective receipt; HOLD M3G0B/C and mathematical acceptance until strict source-exact GREEN.",
-    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0A_PROSPECTIVE_DIAGONAL_SOURCE_GAUGE_COLUMN_TRANSPORT_2026_11_12.md"
+    "decision": "Source-exact M3G0A algebraic transport candidate and consumer staged; NO mathematical qualification. STOP before strict CI until deduplicated exact dependency manifest/review.",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0A_PROSPECTIVE_DIAGONAL_SOURCE_GAUGE_COLUMN_TRANSPORT_2026_11_12.md",
+    "proof_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.lean",
+    "independent_consumer": "lean/diagnostics/BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2C1_R2_GREEN_43379713104_ACCEPTANCE_M2_CLOSURE_M3_PRIORITIES_2026_11_12.md",
   "monograph_alignment": {
@@ -336,7 +338,7 @@
     ]
   },
   "m3g0a_prospective": {
-    "status": "PROSPECTIVE_RECEIPT_ONLY",
+    "status": "SOURCE_CONSUMER_CANDIDATE_UNCOMPILED",
     "recorded_date_pacific": "2026-11-12",
     "receipt": "research/spectral-p2-original-field/P3_M3G0A_PROSPECTIVE_DIAGONAL_SOURCE_GAUGE_COLUMN_TRANSPORT_2026_11_12.md",
     "baseline_commit": "15318dd645f8c3ccff5a9b2f2737a1f87275581d",
@@ -345,8 +347,8 @@
     "verified_source_blobs_matching": 6,
     "source_dependency_closure_128": "PRIOR_HANDOFF_AUDIT_NOT_NEWLY_RECOUNTED",
     "manifest_distinct_pin_count": "PENDING_DEDUPLICATED_REGENERATION",
-    "lean_source_staged": false,
-    "independent_consumer_staged": false,
+    "lean_source_staged": true,
+    "independent_consumer_staged": true,
     "workflow_staged": false,
     "mathematical_qualification": false,
     "last_accepted_mathematical_run": 43379713104
