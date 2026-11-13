@@ -32,7 +32,7 @@ def main():
     require(s.get("roadmap") == ROADMAP_PATH.name, "canonical roadmap moved")
     require(re.fullmatch("M[1-8]", s.get("milestone", "")) is not None, "milestone must be M1-M8")
     q, a = s["last_qualified"], s["active"]
-    gate_rx = re.compile(r"P3-D5[A-Z][0-9]*[A-Z]?")
+    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M2[A-Z][0-9]*)")
     require(gate_rx.fullmatch(q.get("gate", "")) is not None, "qualified gate ID malformed")
     require(gate_rx.fullmatch(a.get("gate", "")) is not None, "active gate ID malformed")
     require(q["verdict"] == "GREEN", "last qualified verdict not GREEN")
@@ -97,6 +97,10 @@ def main():
         expected_next = {"P3-D5B3": "P3-D5B4A", "P3-D5B4A": "P3-D5B4B"}.get(q["gate"])
         require(expected_next is not None and s.get("next_planned", {}).get("gate") == expected_next,
                 "M1 accepted-gate to next-gate sequence drift")
+    if s["milestone"] == "M2" and q["gate"] == "P3-D5B4B":
+        require(s.get("next_planned", {}).get("gate") == "P3-M2A" and
+                s.get("stage_transition", {}).get("status") == "M1_DELIVERABLE_QUALIFIED_M2_GATE_NOT_STAGED",
+                "M2 transition requires B4B exact accepted receipt and first HS-fiber gate review")
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
                 a["manifest_pins"] == q["manifest_pins"] and
