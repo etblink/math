@@ -6,43 +6,38 @@
   "milestone": "M1",
   "last_reviewed_date": "2026-11-12",
   "last_qualified": {
-    "gate": "P3-D5B3",
+    "gate": "P3-D5B4A",
     "verdict": "GREEN",
-    "run_id": 43325774438,
-    "tested_sha": "c143acd0b485d18474ceada0b3c5b64a1d7d62c0",
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B3OriginalFockL2ColumnIsometry.lean",
-    "consumer": "lean/diagnostics/BFSSP3D5B3OriginalFockL2ColumnIsometryIndependentConsumer.lean",
-    "manifest_pins": 75,
-    "artifact_id": 13993603128,
-    "digest": "sha256:73cbaa4ad80e68b3f28acb1bdd0c7e5cbe2b748a47984559414645ba485e62a9",
-    "source_blob": "e17a6e5d174ba9362d9dc201b07d88bec723c18d",
-    "consumer_blob": "ca560ddfe3b5494dcad5560f9c7fa715a5ab918a",
-    "scope": "genuine Fermion 2 original-source complex-linear isometric embedding of finite-Hilbert-column L2 fields into finite PiLp2 of individual Fock-valued L2 columns; inner/norm preservation and injectivity; not surjective",
+    "run_id": 43336725804,
+    "tested_sha": "9ac8e7dd389b12c0dc1db596f176493a0c2628e4",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B4AOriginalFockL2ColumnSurjectivity.lean",
+    "consumer": "lean/diagnostics/BFSSP3D5B4AOriginalFockL2ColumnSurjectivityIndependentConsumer.lean",
+    "manifest_pins": 77,
+    "artifact_id": 13998782921,
+    "digest": "sha256:61a860fbb01dc6f5f2f25862185bf4b84fdd212798dd7e35b8e97a3bf2b17c08",
+    "source_blob": "c49f9217aa6092d80a1652d0b8ea04cd011535d9",
+    "consumer_blob": "2a0c0b6143759785acde3a36e568e0fbf317da7b",
+    "scope": "genuine original Fermion 2 finite-column L2 pointwise assembly, joint surjectivity of D5B0 projections and surjectivity of accepted D5B3 complex-linear isometry; does not construct B4B equivalence, gauge-fixedness, original Hamiltonian domain or spectrum",
     "declarations": [
-      "originalFockL2ColumnsLinear",
-      "originalFockL2ColumnsLinear_apply",
-      "originalFockL2ColumnsLinear_inner",
-      "originalFockL2ColumnsIsometry",
-      "originalFockL2ColumnsIsometry_apply"
+      "originalFockL2ColumnProjections_jointly_surjective",
+      "originalFockL2ColumnsIsometry_surjective"
     ],
     "allowed_axioms": [
       "propext",
       "Classical.choice",
       "Quot.sound"
     ],
-    "cold_build_jobs": 9181
+    "cold_build_jobs": 9182
   },
   "active": {
     "gate": "P3-D5B4A",
-    "status": "PENDING_STRICT_CI",
-    "candidate_sha": "55d806ca0a6c23b079ce074110b8965621765be0",
+    "status": "GREEN_QUALIFIED",
+    "candidate_sha": "9ac8e7dd389b12c0dc1db596f176493a0c2628e4",
     "run_id": 43336725804,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B4AOriginalFockL2ColumnSurjectivity.lean",
     "consumer": "lean/diagnostics/BFSSP3D5B4AOriginalFockL2ColumnSurjectivityIndependentConsumer.lean",
     "manifest_pins": 77,
     "goal": "source-original Fock L2 finite-coordinate assembly and surjectivity of accepted isometric embedding",
-    "source_commit_is_ancestor_of_soon_to_be_tested_workflow_commit": true,
-    "run_id_pending_reason": "Branch push atomically advances staged source commit and this checkpoint; run ID is created afterward",
     "expected_strict_workflow": ".github/workflows/bfss-p3-d5b4a-original-fock-l2-column-surjectivity-strict.yml",
     "accepted_predecessor": "P3-D5B3, 75 exact source/consumer pins",
     "not_proved": [
@@ -54,11 +49,13 @@
       "eigenpair or mass gap M8"
     ],
     "workflow_tested_head_sha": "9ac8e7dd389b12c0dc1db596f176493a0c2628e4",
-    "preflight_status": "NOT_YET_VERIFIED_BY_EXACT_LOG",
-    "run_url": "https://github.com/etblink/math/actions/runs/43336725804"
+    "preflight_status": "VERIFIED_GREEN_EXACT_COLD_BUILD_CONSUMER_77_PINS_AXIOMS",
+    "run_url": "https://github.com/etblink/math/actions/runs/43336725804",
+    "qualified_receipt": "research/spectral-p2-original-field/P3_D5B4A_GREEN_43336725804_ACCEPTANCE_AND_B4B_HANDOFF_2026_11_12.md",
+    "decision": "Exact B4A strict green accepted. Next mathematical gate B4B not staged or qualified."
   },
-  "if_green": "Verify D5B4A cold source+Boson2 consumer+77 pins at exact strict run SHA, record accepted theorem/axioms/artifact and update checkpoint BEFORE constructing B4B. Only B4A surjectivity promoted",
-  "if_red": "Inspect first causal Lean/preflight step from exact D5B4A run; preserve negative knowledge and repair boundedly, no B4B. Experiment E-M7-001-R1 finite green remains non-physical",
+  "if_green": "After staging a B4B candidate: verify its exact new strict CI run tested SHA, original Boson 2 independent consumer, inherited 77 plus 2 new blob pins and permitted axioms; then accept only B4B equivalence and update checkpoint before M2",
+  "if_red": "If B4B fails: preserve first causal Lean/preflight failure and exact red receipt; repair narrowly using abstract-first constructor rather than unfolding original large Fock fibers; do not change M2 or promote exploratory M7 findings",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -78,32 +75,29 @@
     "tested_sha": "c143acd0b485d18474ceada0b3c5b64a1d7d62c0"
   },
   "next_planned": {
-    "gate": "P3-D5B4A",
+    "gate": "P3-D5B4B",
     "milestone": "M1",
-    "status": "IN_PROGRESS_STRICT_CANDIDATE",
-    "goal": "original-Fock finite L2 column map surjective by pointwise coordinate assembly",
+    "status": "READY_TO_STAGE_NOT_TESTED",
+    "goal": "construct original-Fermion-2 finite-column complex LinearIsometryEquiv from accepted D5B3 isometry and B4A surjectivity",
+    "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B4BOriginalFockL2ColumnEquiv.lean",
+    "expected_consumer": "lean/diagnostics/BFSSP3D5B4BOriginalFockL2ColumnEquivIndependentConsumer.lean",
     "accepted_inputs": [
-      "P3-D5B0 originalFockHilbertColumnField_memLp_iff",
-      "P3-D5B0 originalFockL2ColumnProjection_apply_ae",
-      "P3-D5B3 originalFockL2ColumnsIsometry_apply",
-      "pinned Mathlib MeasureTheory.MemLp.toLp + Lp.ext"
+      "P3-D5B3 originalFockL2ColumnsIsometry",
+      "P3-D5B4A originalFockL2ColumnsIsometry_surjective",
+      "pinned Mathlib LinearIsometryEquiv.ofSurjective"
     ],
-    "exit": "for every PiLp2 finite family of original Fermion 2 L2 columns, construct an original-source L2 PiLp2 field mapped to that family",
+    "exit": "A complex-linear isometric equivalence with inverse/forward source-Fock L2 columns, original Boson 2 specialization in independent consumer, strict 79 exact file pins, cold build and axiom audit at one tested SHA",
     "not_proved": [
-      "gauge",
-      "Hamiltonian",
-      "spectra"
+      "operator-norm/HS original operator-carrier equivalence M2",
+      "physical SU2 gauge fixed-space equivalence M3",
+      "continuous source Spin9 action and closed-Hamiltonian covariance M4-M5",
+      "spectral compactness/eigenpairs/mass gap M6-M8"
     ],
-    "decision": "B4A is the current new mathematical gate; B4B blocked until exact B4A strict green and checkpoint update",
-    "monograph_review": "COMPLETE_SOURCE_PINNED_NO_GATE_CHANGE",
-    "pre_gate_conditions": [
-      "Use original Fermion 2 and Boson 2, accepted B0/B3 projections and pinned Mathlib MemLp.toLp/Lp.ext",
-      "First exact source coordinate assembly and surjectivity; independent consumer; no full equivalence or gauge in B4A",
-      "Keep 75 accepted pin sources immutable and update only new gated candidate pins"
-    ],
-    "source_commit": "55d806ca0a6c23b079ce074110b8965621765be0"
+    "decision": "B4A has exact accepted receipt; stage only B4B bounded Hilbert-field equivalence. Do not claim B4B until a separate strict green and accepted checkpoint.",
+    "parent_qualified_run": 43336725804,
+    "tested_candidate_sha": null
   },
-  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_D5B3_GREEN_43325774438_ACCEPTANCE_AND_ROADMAP_CHECKPOINT_2026_11_12.md",
+  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_D5B4A_GREEN_43336725804_ACCEPTANCE_AND_B4B_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
     "status": "REVIEWED_NOT_MERGED",
     "review_date": "2026-11-12",
@@ -136,7 +130,7 @@
     ],
     "crosswalk": "BFSS_ACTIVE_ROADMAP.md#monograph-s1s7-and-atlas-o-01o-05--c-01c-02-crosswalk",
     "decisions": [
-      "M1 remains active: D5B3 GREEN; B4A next; B4B only after B4A",
+      "Live M1 B4A qualified at strict #43336725804; B4B is next, while Edition 0.7 monograph retains its frozen historical snapshot",
       "M2 operator Hilbert-Schmidt fiber is not original Fock vector or original operator norm",
       "M3 left-output SU2 boson inverse pullback + actual gauge fixedness; source phase bridge",
       "M4 separate source continuous Spin9 operator and Fock-vector implementations; central sign",
@@ -167,7 +161,7 @@
     ],
     "conditional_m11_beta049_margin": 0.936054705156,
     "conditional_m10_beta049_margin": 0.236054705156,
-    "decision": "M1 B4A remains the next proof gate; review source sharp fermion norm as a separate M7 early-precondition track, not a new qualification",
+    "decision": "M1 B4B is next after qualified B4A; M7 sharp CAR coefficient remains a separate unqualified source identity/polynomial/normal-form research track",
     "effect_on_primary_gate": "NONE",
     "negative_controls": [
       "rank-one valley not a global measure class",
@@ -182,7 +176,7 @@
     "first_test_id": "E-M7-001-R1",
     "first_test_status": "SURVIVED_FINITE_TESTS_NOT_A_THEOREM",
     "decision": "Every future Python experiment must identify its falsifier, fixed controls, exact source pins, data and acceptance criteria before rerunning; no physical promotion from sampling.",
-    "scope": "Parallel M7 exact-coefficient research; next Lean gate remains P3-D5B4A",
+    "scope": "Parallel M7 exact-coefficient research; next Lean gate P3-D5B4B; finite tests not physical or Lean qualifications",
     "qualification": "NO_NEW_MATHEMATICAL_QUALIFICATION",
     "retroactivity": "Previous exploratory runs are NOT preregistered by this new protocol",
     "first_test_red_run": 43335288061,
@@ -190,5 +184,11 @@
     "first_test_green_run": 43335892084,
     "first_test_research_decision": "Keep M1 D5B4A next; M7 sharper CAR bound prioritized only as separate exact source identity/polynomial/normal-form future gates",
     "first_test_green_source_sha": "68cebe441fea9aedb1189662a3901bea0b8aaf04"
+  },
+  "recovered_frontier_research": {
+    "status": "EXPLORATORY_NOT_LEAN_QUALIFIED",
+    "memo": "research/spectral-p2-original-field/P3_84_THREE_FORM_SUPERSPIN_SPECTRAL_EXCLUSION_EXPLORATORY_2026_11_12.md",
+    "independent_of": "M1 B4B",
+    "next_candidate": "finite three-gamma / spatial three-form equivariance and separate physical protected-superspin witness audit"
   }
 }

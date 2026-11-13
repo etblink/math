@@ -93,9 +93,15 @@ def main():
             alignment.get("new_mathematical_qualification") is False and
             alignment.get("monograph_fast_forward_authorized") is False,
             "monograph review must not promote evidence or merge")
-    require(s.get("next_planned", {}).get("gate") == "P3-D5B4A" or
-            s.get("milestone") != "M1",
-            "D5-B4A plan changed without milestone review")
+    if s["milestone"] == "M1":
+        expected_next = {"P3-D5B3": "P3-D5B4A", "P3-D5B4A": "P3-D5B4B"}.get(q["gate"])
+        require(expected_next is not None and s.get("next_planned", {}).get("gate") == expected_next,
+                "M1 accepted-gate to next-gate sequence drift")
+    if a["status"] == "GREEN_QUALIFIED":
+        require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
+                a["manifest_pins"] == q["manifest_pins"] and
+                a.get("workflow_tested_head_sha") == q["tested_sha"],
+                "green active checkpoint does not match last qualified exact run")
     roadmap = ROADMAP_PATH.read_text(encoding="utf-8")
     require(STATE_PATH.name in roadmap, "roadmap not linked to live checkpoint")
     require("research/methodology/BFSS_SCIENTIFIC_METHOD_PROTOCOL.md" in roadmap and "research/methodology/BFSS_EXPERIMENT_REGISTRY.json" in roadmap,
