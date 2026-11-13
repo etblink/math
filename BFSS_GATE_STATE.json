@@ -43,33 +43,20 @@
     "scope": "For each exact original SU(2) group element g, diagonal genuine FullL2 2 unitary action on finite PiLp2 columns, transported through qualified M2C0 continuous equivalence to the actual Boson 2 volume Lp of bounded Fermion 2 operators with ORIGINAL operator norm; named column-intertwining, component action, identity, multiplication and inverse-cancellation laws. No original operator-norm isometry, basis independence, a.e. left-output field operator formula, SU2-parameter continuity, full physical fixedness, physical witness, Hamiltonian domain or spectral theorem."
   },
   "active": {
-    "gate": "P3-M3G0A",
-    "status": "GREEN_QUALIFIED",
-    "run_id": 43391099205,
-    "candidate_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f",
-    "workflow_tested_head_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f",
-    "manifest_pins": 459,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.lean",
-    "source_blob": "cc40839076eb980dab54f57af9c95b9d9e33da2c",
-    "consumer": "lean/diagnostics/BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean",
-    "consumer_blob": "b66dcf427baf572a44de3bd72566857803accbea",
-    "workflow": ".github/workflows/bfss-p3-m3g0a-original-fock-gauge-column-strict.yml",
-    "workflow_blob": "01339242a437da51153a64f97b55e077e73e01c5",
-    "artifact_id": 14021737638,
-    "digest": "sha256:f839289bb99d87777f7d61c19398809d80762e0e49d8f9f88eb388f4ea86df8b",
-    "reported_strict_status": "GREEN_VERIFIED_AND_ACCEPTED",
-    "declarations": [
-      "originalFockDiagonalGaugeUnitary",
-      "originalFockOperatorGaugeEquiv",
-      "originalFockOperatorGaugeEquiv_columns",
-      "originalFockOperatorGaugeEquiv_column_apply",
-      "originalFockDiagonalGaugeUnitary_one_apply",
-      "originalFockDiagonalGaugeUnitary_mul_apply",
-      "originalFockOperatorGaugeEquiv_one_apply",
-      "originalFockOperatorGaugeEquiv_mul_apply",
-      "originalFockOperatorGaugeEquiv_inv_cancel"
-    ],
-    "scope": "For each exact original SU(2) group element g, diagonal genuine FullL2 2 unitary action on finite PiLp2 columns, transported through qualified M2C0 continuous equivalence to the actual Boson 2 volume Lp of bounded Fermion 2 operators with ORIGINAL operator norm; named column-intertwining, component action, identity, multiplication and inverse-cancellation laws. No original operator-norm isometry, basis independence, a.e. left-output field operator formula, SU2-parameter continuity, full physical fixedness, physical witness, Hamiltonian domain or spectral theorem."
+    "gate": "P3-M3G0B0",
+    "status": "PENDING_STRICT_CI",
+    "candidate_sha": "f4c1f83078c2c868b43fad995a8e7468dcefebaa",
+    "run_id": null,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean",
+    "source_blob": "7938e0397d89cab8229dceff78728410c17a9396",
+    "consumer": "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean",
+    "consumer_blob": "c914864eccc801d9045656f0d06157ae384670f4",
+    "manifest_pins": 461,
+    "accepted_predecessor_run_id": 43391099205,
+    "accepted_predecessor_tested_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f",
+    "expected_strict_workflow": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
+    "strict_verdict": "NOT_YET_VERIFIED",
+    "scope": "True original source FullL2 SU2 inverse-boson left-output a.e. formula; qualified M3G0A transported genuine original operator-valued Lp Fock column a.e. and applied to source basis. No full field operator identity, basis independence, operator-norm isometry, physical fixedness, Hamiltonian or spectrum."
   },
   "if_green": "M3G0A strictly qualified within algebraic column-transport scope. Next M3G0B prospective source-exact a.e. LEFT-output inverse-boson-pullback operator action; isolate basis-independence and operator-norm isometry as separate conclusions.",
   "if_red": "M3G0B first causal source type, inverse boson pullback, finite basis a.e. equality or pointwise operator norm; do not swap for conjugation, HS norm, abstract surrogates or unqualified physical fixedness.",
@@ -116,7 +103,7 @@
   "next_planned": {
     "gate": "P3-M3G0B0",
     "milestone": "M3",
-    "status": "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
     "pre_gate_receipt_required": true,
     "pre_gate_receipt_complete": true,
     "review_basis": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md",
@@ -144,8 +131,10 @@
       "M5 original Hamiltonian natural domain requalification",
       "M6-M8 physical spectral gates"
     ],
-    "decision": "Exact new B0 source and independent original Fock consumer staged, but UNCOMPILED. Freeze both blobs; build deduplicated original 459-pin + B0 source/consumer manifest and only then launch strict CI.",
-    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B0_PROSPECTIVE_ORIGINAL_GAUGE_AE_BASIS_COLUMN_2026_11_13.md"
+    "decision": "P3-M3G0B0 exact 461-pin strict mathematical gate STAGED; do not claim GREEN until cold build, actual original consumer and three axiom checks succeed.",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B0_PROSPECTIVE_ORIGINAL_GAUGE_AE_BASIS_COLUMN_2026_11_13.md",
+    "expected_strict_workflow": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
+    "anticipated_manifest_pins": 461
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
@@ -382,12 +371,12 @@
     "accepted_tested_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f"
   },
   "m3g0b_prospective": {
-    "status": "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
     "read_only_source_audit_required": true,
     "pre_gate_receipt_complete": true,
     "source_staged": true,
     "consumer_staged": true,
-    "workflow_staged": false,
+    "workflow_staged": true,
     "mathematical_qualification": false,
     "predecessor": "P3-M3G0A",
     "last_qualified_run_id": 43391099205,
@@ -407,7 +396,11 @@
       "originalFockOperatorGaugeEquiv_source_column_ae",
       "originalFockOperatorGaugeEquiv_source_basis_ae"
     ],
-    "expected_pin_count_provisional": 461
+    "expected_pin_count_provisional": 461,
+    "source_blob": "7938e0397d89cab8229dceff78728410c17a9396",
+    "consumer_blob": "c914864eccc801d9045656f0d06157ae384670f4",
+    "manifest_pins": 461,
+    "workflow_path": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml"
   },
   "m3g0a_acceptance": {
     "gate": "P3-M3G0A",
