@@ -308,6 +308,43 @@ def main():
                     q.get("gate") == "P3-M3G0A",
                     "M3G0B0 strict pending or preserved R1 RED must not promote math")
 
+    if s["milestone"] == "M3" and q["gate"] == "P3-M3G0B0":
+        receipt = Path("research/spectral-p2-original-field/"
+                       "P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md")
+        required_declarations = [
+            "actualOriginalFullL2GaugeUnitaryHom_apply_ae",
+            "originalFockOperatorGaugeEquiv_source_column_ae",
+            "originalFockOperatorGaugeEquiv_source_basis_ae",
+        ]
+        require(q.get("verdict") == "GREEN" and
+                q.get("run_id") == 43422546945 and
+                q.get("tested_sha") == "38017936230c959dc61dfb07c0e776d5ffc04ab5" and
+                q.get("manifest_pins") == 461 and
+                q.get("source_blob") == "ffffa9e8d8679577a5f32999dd36fe5c9e904a07" and
+                q.get("consumer_blob") == "c914864eccc801d9045656f0d06157ae384670f4" and
+                q.get("workflow_blob") == "0681a9292b420d729d1e63c95061750098958ada" and
+                q.get("artifact_id") == 14036922930 and
+                q.get("declaration_count") == 3 and
+                q.get("declarations") == required_declarations and
+                q.get("allowed_axioms") ==
+                    ["propext", "Classical.choice", "Quot.sound"] and
+                (ROOT / receipt).is_file(),
+                "M3G0B0 scoped green needs exact tested original-source proof receipt/pins")
+        b1 = s.get("m3g0b1_prospective", {})
+        require(s.get("next_planned", {}).get("gate") == "P3-M3G0B1" and
+                s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
+                s.get("next_planned", {}).get("pre_gate_receipt_complete") is False and
+                s.get("stage_transition", {}).get("status") ==
+                    "M3G0B0_QUALIFIED_M3G0B1_RESEARCH_UNSTAGED" and
+                s.get("m3g0b_prospective", {}).get("mathematical_qualification") is True and
+                b1.get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
+                b1.get("mathematical_qualification") is False and
+                b1.get("source_staged") is False and
+                b1.get("consumer_staged") is False and
+                b1.get("workflow_staged") is False and
+                s.get("evidence_ledger_latest") == str(receipt),
+                "M3G0B0 acceptance must keep the next B1 full operator proof unstaged")
+
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
                 a["manifest_pins"] == q["manifest_pins"] and

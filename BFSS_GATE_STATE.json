@@ -6,6 +6,73 @@
   "milestone": "M3",
   "last_reviewed_date": "2026-11-13",
   "last_qualified": {
+    "gate": "P3-M3G0B0",
+    "verdict": "GREEN",
+    "run_id": 43422546945,
+    "tested_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
+    "job_id": 131875824677,
+    "manifest_pins": 461,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean",
+    "source_blob": "ffffa9e8d8679577a5f32999dd36fe5c9e904a07",
+    "consumer": "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean",
+    "consumer_blob": "c914864eccc801d9045656f0d06157ae384670f4",
+    "workflow": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
+    "workflow_blob": "0681a9292b420d729d1e63c95061750098958ada",
+    "artifact_id": 14036922930,
+    "digest": "sha256:50a8635204a4a20eec3fb6bc0690850236f486399be65fdb4cd5a119e7f1d641",
+    "declaration_count": 3,
+    "declarations": [
+      "actualOriginalFullL2GaugeUnitaryHom_apply_ae",
+      "originalFockOperatorGaugeEquiv_source_column_ae",
+      "originalFockOperatorGaugeEquiv_source_basis_ae"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "Exact actual source FullL2 2 SU2 unitary a.e. left-fermion-output inverse-boson-pullback action; the qualified M3G0A transport obeys corresponding a.e. genuine original Fock Lp column action; original operator-norm Lp field evaluated on each actual original ONB basis vector obeys the same formula a.e. for each fixed source parameter/basis index. DOES NOT prove common finite-index a.e. operator identity, basis independence, original operator-norm isometry, strong SU2 parameter continuity, gauge physical fixedness, physical nonzero witness, closed BFSS Hamiltonian domain or spectrum."
+  },
+  "active": {
+    "gate": "P3-M3G0B0",
+    "status": "GREEN_QUALIFIED",
+    "candidate_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
+    "workflow_tested_head_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
+    "run_id": 43422546945,
+    "job_id": 131875824677,
+    "manifest_pins": 461,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean",
+    "source_blob": "ffffa9e8d8679577a5f32999dd36fe5c9e904a07",
+    "consumer": "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean",
+    "consumer_blob": "c914864eccc801d9045656f0d06157ae384670f4",
+    "workflow": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
+    "workflow_blob": "0681a9292b420d729d1e63c95061750098958ada",
+    "artifact_id": 14036922930,
+    "digest": "sha256:50a8635204a4a20eec3fb6bc0690850236f486399be65fdb4cd5a119e7f1d641",
+    "strict_verdict": "R3_GREEN_VERIFIED_AND_SCOPED_ACCEPTED",
+    "declarations": [
+      "actualOriginalFullL2GaugeUnitaryHom_apply_ae",
+      "originalFockOperatorGaugeEquiv_source_column_ae",
+      "originalFockOperatorGaugeEquiv_source_basis_ae"
+    ],
+    "scope": "Exact actual source FullL2 2 SU2 unitary a.e. left-fermion-output inverse-boson-pullback action; the qualified M3G0A transport obeys corresponding a.e. genuine original Fock Lp column action; original operator-norm Lp field evaluated on each actual original ONB basis vector obeys the same formula a.e. for each fixed source parameter/basis index. DOES NOT prove common finite-index a.e. operator identity, basis independence, original operator-norm isometry, strong SU2 parameter continuity, gauge physical fixedness, physical nonzero witness, closed BFSS Hamiltonian domain or spectrum."
+  },
+  "if_green": "B0 R3 accepted: original source FullL2 left-output inverse boson pullback a.e., transferred Fock Lp column a.e. and per-index original operator norm Lp basis evaluation a.e.; next B1 finite-index common-event and original operator field equality.",
+  "if_red": "For B1 preserve first causal finite-index a.e. step or source operator injectivity failure; do not infer RHS measurable Lp, pointwise conjugation, source norm isometry or physical fixedness from B0.",
+  "toolchain": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "exploratory": "NOT_PROMOTED",
+  "review_trigger": [
+    "every gate verdict",
+    "two analogous reds",
+    "five accepted gates",
+    "stage change",
+    "user big-picture request",
+    "monograph source version or evidence-lineage change"
+  ],
+  "prior_qualified": {
     "gate": "P3-M3G0A",
     "verdict": "GREEN",
     "run_id": 43391099205,
@@ -42,125 +109,43 @@
     ],
     "scope": "For each exact original SU(2) group element g, diagonal genuine FullL2 2 unitary action on finite PiLp2 columns, transported through qualified M2C0 continuous equivalence to the actual Boson 2 volume Lp of bounded Fermion 2 operators with ORIGINAL operator norm; named column-intertwining, component action, identity, multiplication and inverse-cancellation laws. No original operator-norm isometry, basis independence, a.e. left-output field operator formula, SU2-parameter continuity, full physical fixedness, physical witness, Hamiltonian domain or spectral theorem."
   },
-  "active": {
-    "gate": "P3-M3G0B0",
-    "status": "PENDING_STRICT_CI",
-    "candidate_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
-    "run_id": 43422546945,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean",
-    "source_blob": "ffffa9e8d8679577a5f32999dd36fe5c9e904a07",
-    "consumer": "lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean",
-    "consumer_blob": "c914864eccc801d9045656f0d06157ae384670f4",
-    "manifest_pins": 461,
-    "accepted_predecessor_run_id": 43391099205,
-    "accepted_predecessor_tested_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f",
-    "expected_strict_workflow": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
-    "strict_verdict": "R3_IN_PROGRESS_UNVERIFIED",
-    "scope": "True original source FullL2 SU2 inverse-boson left-output a.e. formula; qualified M3G0A transported genuine original operator-valued Lp Fock column a.e. and applied to source basis. No full field operator identity, basis independence, operator-norm isometry, physical fixedness, Hamiltonian or spectrum.",
-    "workflow_tested_head_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
-    "failure_job_id": 131873831845,
-    "failure_artifact_id": 14034806526,
-    "failure_artifact_digest": "sha256:af23ae8c3ce37e104ef19751eb5333e8448cf214e347753dc8835a1f0b42ef35",
-    "first_causal": "R2 strict provenance preflight git cat-file -t immutable c6253c7c failed: checkout fetch-depth 10 omits baseline Git object",
-    "red_receipt": "research/spectral-p2-original-field/P3_M3G0B0_R2_RED_43421947368_SHALLOW_BASELINE_CHECKOUT_2026_11_13.md",
-    "expected_workflow_blob": "0681a9292b420d729d1e63c95061750098958ada",
-    "failure_history": [
-      {
-        "run_id": 43398003237,
-        "tested_sha": "9b64f7661918bc07db6d3d8d1db62737d4c036ba",
-        "first_causal": "source lines 57 and 106 rw syntactic mismatch on a.e. source wrappers; see receipt",
-        "receipt": "research/spectral-p2-original-field/P3_M3G0B0_R1_RED_43398003237_SOURCE_AE_REWRITE_REPAIR_2026_11_13.md",
-        "artifact_id": 14024434157
-      },
-      {
-        "run_id": 43421947368,
-        "tested_sha": "84bf477184f6974a263ae1525d79709e17f69ec4",
-        "first_causal": "R2 strict provenance preflight git cat-file -t immutable c6253c7c failed: checkout fetch-depth 10 omits baseline Git object",
-        "receipt": "research/spectral-p2-original-field/P3_M3G0B0_R2_RED_43421947368_SHALLOW_BASELINE_CHECKOUT_2026_11_13.md",
-        "artifact_id": 14034806526
-      }
-    ],
-    "decision": "R3 workflow-only depth 96 repair staged; immutable baseline unchanged and required; B0 Lean source and genuine consumer byte identical to R2. Await exact 461-pin strict CI and all three root axiom audits."
-  },
-  "if_green": "M3G0A strictly qualified within algebraic column-transport scope. Next M3G0B prospective source-exact a.e. LEFT-output inverse-boson-pullback operator action; isolate basis-independence and operator-norm isometry as separate conclusions.",
-  "if_red": "M3G0B first causal source type, inverse boson pullback, finite basis a.e. equality or pointwise operator norm; do not swap for conjugation, HS norm, abstract surrogates or unqualified physical fixedness.",
-  "toolchain": {
-    "lean": "4.34.1",
-    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
-  },
-  "exploratory": "NOT_PROMOTED",
-  "review_trigger": [
-    "every gate verdict",
-    "two analogous reds",
-    "five accepted gates",
-    "stage change",
-    "user big-picture request",
-    "monograph source version or evidence-lineage change"
-  ],
-  "prior_qualified": {
-    "gate": "P3-M2C1",
-    "verdict": "GREEN",
-    "run_id": 43379713104,
-    "tested_sha": "88c0a1f5efef0418b12645cb05ff7eefac7e4fb2",
-    "job_id": 131734378427,
-    "manifest_pins": 96,
-    "cold_build_jobs": 9210,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2C1OriginalFockOperatorLpColumnNorm.lean",
-    "source_blob": "1b528ed3921173a00725ebf23507b24a63a872be",
-    "consumer": "lean/diagnostics/BFSSP3M2C1OriginalFockOperatorLpColumnNormIndependentConsumer.lean",
-    "consumer_blob": "4a95ca22202834edf24138c2cd629e46ae356e70",
-    "workflow_blob": "a846ced5a6c0518cfad4f3312c8e6c4e552dd934",
-    "artifact_id": 14016628349,
-    "digest": "sha256:12db22f7b7ca3d3bdbeccea478f497d2621f89e90eff32999bde965ca5d31cce",
-    "declarations": [
-      "originalFockOperatorLpColumnsEquiv_norm_eq_hs",
-      "originalFockOperatorLp_norm_le_columns",
-      "originalFockOperatorLp_columns_norm_le_sqrt_card_mul_norm"
-    ],
-    "allowed_axioms": [
-      "propext",
-      "Classical.choice",
-      "Quot.sound"
-    ],
-    "scope": "Original Boson 2 volume Lp of bounded Fermion 2 linear operators with original operator norm: continuous comparison to genuine Fock-vector Lp columns. Exactly target HS Lp column norm identity and lower 1 / upper sqrt(card ι) source Lp norm inequalities. Not an isometry of original operator-valued Lp, not gauge/Spin9/closed Hamiltonian/spectrum."
-  },
   "next_planned": {
-    "gate": "P3-M3G0B0",
+    "gate": "P3-M3G0B1",
     "milestone": "M3",
-    "status": "STRICT_WORKFLOW_STAGED_PENDING",
+    "status": "RESEARCH_DESIGN_NOT_STAGED",
     "pre_gate_receipt_required": true,
-    "pre_gate_receipt_complete": true,
-    "review_basis": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md",
-    "goal": "Qualify exact original FullL2 SU2 a.e. left-output inverse-boson formula and its transported ORIGINAL operator-valued Lp basis-column a.e. evaluation; reserve full operator identity/basis independence for B1.",
-    "candidate_contract": "Three named source/consumer theorems in lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B0OriginalGaugeAEBasisColumn.lean and lean/diagnostics/BFSSP3M3G0B0OriginalGaugeAEBasisColumnIndependentConsumer.lean; exact L6G7Y a.e. APIs; original M2C0 and M3G0A. 461 unique pins expected only after exact manifest regeneration; no CI without pin preflight.",
+    "pre_gate_receipt_complete": false,
+    "review_basis": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
+    "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_FORWARD_RESEARCH_FINITE_ORIGINAL_FOCK_OPERATOR_EXT_2026_11_13.md",
+    "goal": "Combine the three qualified B0 source a.e. results into a finite-index common a.e. set and prove equality of actual original Fock bounded-operator field Γ_b(g)f with left output pairedGaugeData.fermion g composed with inverse source boson pullback, then treat basis independence as distinct follow-up.",
+    "candidate_contract": "Use B0 original per-index a.e. theorem, exact [Fintype ι] finite a.e. conjunction and qualified M2B2B0 originalFockOperatorHSContinuousEquiv b injectivity plus exact apply_basis; no surrogate HS norm or unproved direct measurable-Lp field.",
     "research_donors": [
-      "M3G0A strict #43391099205 source-exact original operator Lp diagonal SU2 transport and group laws",
-      "M2C0 strict #43375482588 original bounded-operator Lp a.e. original Fock basis columns and inverse field reconstruction",
-      "L6G7U and L6G7Z original gauge action as fiberAction g with bosonPullback g^-1, histor. #42095440280",
-      "M2C1 strict #43379713104 source operator norm versus Fock-column Lp bounds, not an isometry",
-      "Previous M3 exact-source provenance receipt and 459-path deduplicated preflight"
+      "M3G0B0 strict #43422546945 three verified original a.e. source-basis declarations",
+      "M2B2B0 strict #43364964618 originalFockOperatorHSContinuousEquiv_apply_basis and injectivity only",
+      "M2C0 strict #43375482588 original operator-valued Lp a.e. Fock column evaluation",
+      "L6G7Y original source measure-preserving boson inverse pullback and fiber action",
+      "research/spectral-p2-original-field/P3_M3G0B1_FORWARD_RESEARCH_FINITE_ORIGINAL_FOCK_OPERATOR_EXT_2026_11_13.md"
     ],
     "falsifiers": [
-      "Pointwise operator conjugation or double-sided fermionic action erroneously replaces left-output action",
-      "Bosonic pullback has wrong inverse orientation",
-      "Lp a.e. equality not closed under finite Fock basis reconstruction",
-      "Pointwise operator norm isometry inferred solely from M2C0 continuous equivalence",
-      "Unproved SU2 parameter continuity or physical fixedness promoted during operator-source transport",
-      "Genuine original Boson2 / Fermion2 displaced by a convenient proxy"
+      "Per-index a.e. equality lifted to all finite indices without an explicit common a.e. event",
+      "Uncountable SU2 parameter uniform a.e. set erroneously claimed",
+      "Original operator source left-output composition replaced by pointwise conjugation",
+      "Original operator norm replaced by HS norm or HS continuous equivalence claimed isometric",
+      "Unproved operator RHS is registered as a new Lp element without measurability/integrability",
+      "Basis independence, norm isometry or physical fixedness silently promoted from B0"
     ],
     "blocked_followups": [
-      "P3-M3G0C physical fixedness iff actual source columns physical via L6G7V",
-      "M3-W0 nonzero original physical L2 witness and rank-one embedding",
-      "M4 original Spin9 star/trace source HS action",
-      "M5 original Hamiltonian natural domain requalification",
-      "M6-M8 physical spectral gates"
+      "P3-M3G0B1-BI source operator action basis independence after B1 full a.e. equality",
+      "P3-M3G0B2 original operator-norm Lp SU2 isometry",
+      "P3-M3G0C physical fixedness iff genuine source FullL2 Fock columns physical",
+      "M3-W0 source nonzero physical L2 witness",
+      "M4 Spin9",
+      "M5 closed Hamiltonian port",
+      "M6–M8 physical spectral gates"
     ],
-    "decision": "R3 workflow-only fetch-depth 96 after preserved R2 shallow baseline RED. Mathematical original B0 theorem and consumer unchanged; accept only exact source+consumer+axiom strict GREEN.",
-    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B0_PROSPECTIVE_ORIGINAL_GAUGE_AE_BASIS_COLUMN_2026_11_13.md",
-    "expected_strict_workflow": ".github/workflows/bfss-p3-m3g0b0-original-gauge-ae-basis-column-strict.yml",
-    "anticipated_manifest_pins": 461
+    "decision": "GO read-only B1 finite-basis/Mathlib exact API review and prospective receipt; HOLD source/consumer/strict CI until preregistered and scoped. No B1 acceptance."
   },
-  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md",
+  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
     "status": "REVIEWED_NOT_MERGED",
     "review_date": "2026-11-12",
@@ -257,7 +242,7 @@
   "stage_transition": {
     "from": "M2",
     "to": "M3",
-    "status": "M3G0A_QUALIFIED_M3G0B0_PROSPECTIVE_AND_STRICT_PENDING",
+    "status": "M3G0B0_QUALIFIED_M3G0B1_RESEARCH_UNSTAGED",
     "m1_acceptance": [
       {
         "gate": "P3-D5B3",
@@ -323,22 +308,28 @@
       "receipt": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md"
     },
     "m3_exit_pending": [
-      "M3G0B source pointwise operator action and basis independence",
-      "M3G0C source physical fixedness",
-      "M3-W0 source physical nonzero witness"
+      "M3G0B1 full original operator a.e. left-output action",
+      "M3G0B1 basis independence and M3G0B2 source operator-norm isometry",
+      "M3G0C physical fixedness",
+      "M3-W0 genuine nonzero physical state"
     ],
     "m3g0b0_pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B0_PROSPECTIVE_ORIGINAL_GAUGE_AE_BASIS_COLUMN_2026_11_13.md",
-    "m3g0b0_status": "STRICT_PENDING_NOT_MATH_QUALIFIED"
+    "m3g0b0_status": "GREEN_QUALIFIED",
+    "m3g0b0_acceptance": {
+      "run_id": 43422546945,
+      "tested_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
+      "receipt": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md"
+    }
   },
   "priority_review": {
-    "status": "M3G0A_SCOPED_MATH_ACCEPTED_M3G0B_RESEARCH_ONLY",
+    "status": "M3G0B0_SCOPED_MATH_ACCEPTED_M3G0B1_RESEARCH_ONLY",
     "date": "2026-11-13",
     "review": "research/spectral-p2-original-field/P3_M2_TO_M3_PRIORITY_RECONCILIATION_AND_OLDER_WORK_REUSE_2026_11_12.md",
-    "acceptance": "research/spectral-p2-original-field/P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md",
+    "acceptance": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
     "primary": [
-      "M3G0B original gauge a.e. LEFT-output inverse-boson-pullback operator action and basis independence",
-      "M3G0C physical fixedness iff every genuine source Fock column physical",
-      "M3-W0 physical nonzero L2 witness and rank-one embedding"
+      "M3G0B1 full original bounded-operator a.e. left-output inverse boson pullback field equality",
+      "M3G0B1 basis independence / M3G0B2 true source original norm isometry",
+      "M3G0C physical fixedness iff every genuine original source Fock column physical"
     ],
     "parallel": [
       "M4-HS0 original Spin9 star/trace HS isometry research",
@@ -354,7 +345,10 @@
       "Hopf labeled plus-sector fails source gauge descent",
       "84 dimension match not superspin proof",
       "M3G0A continuous equivalence does not imply original operator-norm isometry",
-      "M3G0A does not assert SU2 group-parameter continuity or full operator-valued physical fixed-space identification"
+      "M3G0A does not assert SU2 group-parameter continuity or full operator-valued physical fixed-space identification",
+      "M3G0B0 a.e. identity holds for each fixed Fock basis index, not yet as one simultaneous operator equality",
+      "Original source norm isometry is NOT implied by M2C0 continuous equivalence",
+      "Immutable baseline pin audit requires reachable Git ancestor in strict CI checkout"
     ]
   },
   "m3g0a_prospective": {
@@ -397,13 +391,13 @@
     "accepted_tested_sha": "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f"
   },
   "m3g0b_prospective": {
-    "status": "STRICT_WORKFLOW_STAGED_PENDING",
+    "status": "QUALIFIED_SCOPED_CLOSED",
     "read_only_source_audit_required": true,
     "pre_gate_receipt_complete": true,
     "source_staged": true,
     "consumer_staged": true,
     "workflow_staged": true,
-    "mathematical_qualification": false,
+    "mathematical_qualification": true,
     "predecessor": "P3-M3G0A",
     "last_qualified_run_id": 43391099205,
     "gate": "P3-M3G0B0",
@@ -448,8 +442,8 @@
     },
     "strict_run_id": 43422546945,
     "strict_tested_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
-    "strict_run_status": "in_progress",
-    "strict_verdict": "R3_PENDING",
+    "strict_run_status": "completed",
+    "strict_verdict": "R3_GREEN",
     "red_run_id": 43421947368,
     "red_tested_sha": "9b64f7661918bc07db6d3d8d1db62737d4c036ba",
     "red_receipt": "research/spectral-p2-original-field/P3_M3G0B0_R2_RED_43421947368_SHALLOW_BASELINE_CHECKOUT_2026_11_13.md",
@@ -458,7 +452,7 @@
     "workflow_blob": "0681a9292b420d729d1e63c95061750098958ada",
     "previous_R1_source_blob": "7938e0397d89cab8229dceff78728410c17a9396",
     "last_R1_red_run_id": 43398003237,
-    "current_attempt": "R3_WORKFLOW_ONLY",
+    "current_attempt": "R3_QUALIFIED",
     "advisory_r1_red": {
       "run_id": 43421749439,
       "tested_sha": "b4e678ab9f67849b730ef58d1f7070ec329aafb5",
@@ -467,7 +461,15 @@
       "memo": "research/spectral-p2-original-field/P3_M3G0B0_R1_ADMINISTRATIVE_WATCHDOG_RED_43421749439_2026_11_13.md",
       "status": "ADVISORY_GUARD_REPAIRED_VERDICT_PENDING"
     },
-    "previous_R2_workflow_blob": "f6ea36c9368e8564f558d0d0ea95a071afe77b4e"
+    "previous_R2_workflow_blob": "f6ea36c9368e8564f558d0d0ea95a071afe77b4e",
+    "acceptance": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
+    "strict_job_id": 131875824677,
+    "strict_artifact_id": 14036922930,
+    "strict_artifact_digest": "sha256:50a8635204a4a20eec3fb6bc0690850236f486399be65fdb4cd5a119e7f1d641",
+    "historical_reds_preserved": [
+      43398003237,
+      43421947368
+    ]
   },
   "m3g0a_acceptance": {
     "gate": "P3-M3G0A",
@@ -485,5 +487,45 @@
       "green_tested_sha": "ab0c9fe07f9c7bfd22c625fb6f0fad6109b5ed2e",
       "qualification_unchanged": true
     }
+  },
+  "prior_prior_qualified": {
+    "gate": "P3-M2C1",
+    "verdict": "GREEN",
+    "run_id": 43379713104,
+    "tested_sha": "88c0a1f5efef0418b12645cb05ff7eefac7e4fb2",
+    "job_id": 131734378427,
+    "manifest_pins": 96,
+    "cold_build_jobs": 9210,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2C1OriginalFockOperatorLpColumnNorm.lean",
+    "source_blob": "1b528ed3921173a00725ebf23507b24a63a872be",
+    "consumer": "lean/diagnostics/BFSSP3M2C1OriginalFockOperatorLpColumnNormIndependentConsumer.lean",
+    "consumer_blob": "4a95ca22202834edf24138c2cd629e46ae356e70",
+    "workflow_blob": "a846ced5a6c0518cfad4f3312c8e6c4e552dd934",
+    "artifact_id": 14016628349,
+    "digest": "sha256:12db22f7b7ca3d3bdbeccea478f497d2621f89e90eff32999bde965ca5d31cce",
+    "declarations": [
+      "originalFockOperatorLpColumnsEquiv_norm_eq_hs",
+      "originalFockOperatorLp_norm_le_columns",
+      "originalFockOperatorLp_columns_norm_le_sqrt_card_mul_norm"
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "scope": "Original Boson 2 volume Lp of bounded Fermion 2 linear operators with original operator norm: continuous comparison to genuine Fock-vector Lp columns. Exactly target HS Lp column norm identity and lower 1 / upper sqrt(card ι) source Lp norm inequalities. Not an isometry of original operator-valued Lp, not gauge/Spin9/closed Hamiltonian/spectrum."
+  },
+  "m3g0b1_prospective": {
+    "gate": "P3-M3G0B1",
+    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_FORWARD_RESEARCH_FINITE_ORIGINAL_FOCK_OPERATOR_EXT_2026_11_13.md",
+    "source_api_audit_complete": false,
+    "pre_gate_receipt_complete": false,
+    "source_staged": false,
+    "consumer_staged": false,
+    "workflow_staged": false,
+    "mathematical_qualification": false,
+    "predecessor": "P3-M3G0B0",
+    "last_qualified_run_id": 43422546945
   }
 }
