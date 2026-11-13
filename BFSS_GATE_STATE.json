@@ -39,7 +39,7 @@
   },
   "active": {
     "gate": "P3-M3W0D0",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "candidate_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
     "run_id": 43481282293,
     "last_qualified_gate": "P3-M3G0B1",
@@ -52,7 +52,7 @@
     "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
     "expected_root_count": 3,
     "donor_axiom_root_count": 5,
-    "strict_verdict": "R1_RUNNING_UNQUALIFIED",
+    "strict_verdict": "R1_RED_FIRST_CAUSAL_MISSING_G1A_NAMESPACE",
     "historical_K2B_run": 37894319431,
     "historical_BA_run": 39079626713,
     "prospective_receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
@@ -63,10 +63,16 @@
       "does not supersede BI prospective"
     ],
     "workflow_tested_head_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
-    "manifest_pins": null
+    "manifest_pins": null,
+    "red_receipt": "research/spectral-p2-original-field/P3_M3W0D0_R1_RED_43481282293_PAIRED_ALGEBRA_NAMESPACE_2026_11_13.md",
+    "red_job_id": 132078130827,
+    "red_artifact_id": 14065039518,
+    "red_artifact_digest": "sha256:ebb7493ff8898bef81644213be98a61ffd342e5d004f3bda1b129ad743d6f89a",
+    "preflight_distinct_source_paths": 201,
+    "first_causal_error": "P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean:50:6 Unknown identifier pairedAlgebraData; missing open FCP.BFSSSU2GaugeG1A."
   },
-  "if_green": "If M3W0D0 passes, update exact tested SHA/job/source+consumer/axiom receipt, then advance BE port; original BI remains research only.",
-  "if_red": "If M3W0D0 fails, preserve error type and artifact; do not promote historic K2B/BA under a new current-source qualification.",
+  "if_green": "Accept only three named M3W0D0 roots after an independently verified R2 workflow; maintain original B1 strict green and separate BI research, then consider current BE port.",
+  "if_red": "R1 RED source name-resolution only. Preserve original proof statements and historical dependencies; add missing G1A namespace on R2, enforce independent consumer + allowed-axioms strict gate before promotion.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -139,7 +145,7 @@
       "FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional"
     ],
     "if_green": "Promote only three named new roots; then prepare scoped BE current-port qualification; BI remains research in parallel.",
-    "if_red": "Record first causal Lean or closure error, preserve historical inputs, repair only narrowly; no theorem promotion.",
+    "if_red": "R1 independently verified, preserved. First causal namespace failure at line 50; R2 repair only opens G1A in source+consumer and repins strict workflow hashes. No physical claim promoted.",
     "run_id": 43481282293
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md",
@@ -627,7 +633,7 @@
   },
   "m3w0d0_prospective": {
     "date": "2026-11-13",
-    "status": "STRICT_RUN_RUNNING_UNQUALIFIED",
+    "status": "STAGED_UNQUALIFIED",
     "proof_root_count": 3,
     "donor_root_count": 5,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
@@ -640,7 +646,10 @@
     "historical_witness": "G4K2B #37894319431",
     "historical_density": "BA #39079626713",
     "run_id": 43481282293,
-    "tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f"
+    "tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
+    "r1_red_receipt": "research/spectral-p2-original-field/P3_M3W0D0_R1_RED_43481282293_PAIRED_ALGEBRA_NAMESPACE_2026_11_13.md",
+    "r1_red_run_id": 43481282293,
+    "r1_red_tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f"
   },
   "admin_checks": {
     "status": "GREEN_ADVISORY",
@@ -673,5 +682,16 @@
     "root_axiom_count": 14,
     "next_after": "M3W0D0 strict verdict and checkpoint acceptance",
     "scope": "No mathematical promotion; requalify original native 1/16 T†T domain before BF/BG/BH."
+  },
+  "m3w0d0_r1_red": {
+    "run_id": 43481282293,
+    "head_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
+    "job_id": 132078130827,
+    "first_causal": "unknown pairedAlgebraData at source line 50, same identifier errors at 64,71",
+    "downstream": "originalPhysicalCharge_naturalDomain_dense undeclared; sorryAx provisional",
+    "preflight_import_modules": 201,
+    "artifact_id": 14065039518,
+    "artifact_digest": "sha256:ebb7493ff8898bef81644213be98a61ffd342e5d004f3bda1b129ad743d6f89a",
+    "receipt": "research/spectral-p2-original-field/P3_M3W0D0_R1_RED_43481282293_PAIRED_ALGEBRA_NAMESPACE_2026_11_13.md"
   }
 }
