@@ -141,11 +141,55 @@ def main():
                     "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_B2_M2C0_ACCEPTED_M2C1_UNSTAGED",
                     "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_B2_M2C0_ACCEPTED_M2C1_STAGED_UNQUALIFIED"},
                 "M2C0 qualified requires explicit original operator Lp vs Fock column norm-bound M2C1 handoff")
+    # M2C1 remains the last strictly qualified mathematical gate. The
+    # following states are PROSPECTIVE M3 preparation, not new theorem greens.
+    prospective_m3_source = None
     if s["milestone"] == "M3" and q["gate"] == "P3-M2C1":
-        require(s["next_planned"]["gate"] == "P3-M3G0" and
-                s["next_planned"]["status"] == "RESEARCH_DESIGN_NOT_STAGED" and
-                s["stage_transition"]["status"] == "M2_SCOPE_COMPLETE_M3G0_RESEARCH_UNSTAGED",
-                "M2C1 qualified requires M3-G0 source gauge research-only handoff")
+        nxt = s["next_planned"]
+        require(s["stage_transition"]["status"] ==
+                "M2_SCOPE_COMPLETE_M3G0_RESEARCH_UNSTAGED",
+                "M2C1 scoped closure/transition status changed")
+        old_handoff = (nxt.get("gate") == "P3-M3G0" and
+                       nxt.get("status") == "RESEARCH_DESIGN_NOT_STAGED")
+        p = s.get("m3g0a_prospective", {})
+        prospective_handoff = (nxt.get("gate") == "P3-M3G0A" and
+                               nxt.get("status") in {
+                                   "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+                                   "UNCOMPILED_SOURCE_AND_CONSUMER_CANDIDATE_STAGED_WORKFLOW_NOT_STAGED",
+                               } and
+                               p.get("mathematical_qualification") is False and
+                               p.get("workflow_staged") is False and
+                               p.get("last_accepted_mathematical_run") == 43379713104)
+        require(old_handoff or prospective_handoff,
+                "M2C1 qualified requires original M3G0 research handoff or bounded unqualified M3G0A candidate")
+        if prospective_handoff:
+            receipt = Path(p.get("receipt", "__missing__"))
+            require(not receipt.is_absolute() and ".." not in receipt.parts and
+                    (ROOT / receipt).is_file() and
+                    p.get("status") in {"PROSPECTIVE_RECEIPT_ONLY",
+                                       "SOURCE_CONSUMER_CANDIDATE_UNCOMPILED"} and
+                    nxt.get("pre_gate_receipt_complete") is True,
+                    "M3G0A prospective receipt/state missing or inaccurately qualified")
+            candidate_path = ("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/"
+                              "P3M3G0AOriginalFockGaugeColumnTransport.lean")
+            consumer_path = ("lean/diagnostics/"
+                             "BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean")
+            if p.get("lean_source_staged") or p.get("independent_consumer_staged"):
+                require(p.get("lean_source_staged") is True and
+                        p.get("independent_consumer_staged") is True and
+                        p.get("status") == "SOURCE_CONSUMER_CANDIDATE_UNCOMPILED" and
+                        nxt.get("status") ==
+                        "UNCOMPILED_SOURCE_AND_CONSUMER_CANDIDATE_STAGED_WORKFLOW_NOT_STAGED" and
+                        nxt.get("proof_source") == candidate_path and
+                        nxt.get("independent_consumer") == consumer_path and
+                        (ROOT / candidate_path).is_file() and
+                        (ROOT / consumer_path).is_file(),
+                        "M3G0A source and original-Fock independent consumer not both staged")
+                prospective_m3_source = candidate_path
+            else:
+                require(p.get("status") == "PROSPECTIVE_RECEIPT_ONLY" and
+                        nxt.get("status") == "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+                        "M3G0A receipt-only state must not claim a source or workflow")
         review = s.get("priority_review", {})
         require(review.get("status") == "M2_SCOPED_MATH_COMPLETE_M3_RESEARCH_ONLY" and
                 (ROOT / review.get("review", "__missing__")).is_file() and
@@ -183,8 +227,9 @@ def main():
             continue
         stem = Path(filename).stem
         if stem.startswith(("P3D5", "P3M2", "P3M3")) and filename.endswith(".lean"):
-            require(filename == a["source"],
-                    "P3 spectral source changed outside active source root: " +
+            require(filename == a["source"] or filename == prospective_m3_source,
+                    "P3 spectral source changed outside active qualified or explicitly "
+                    "staged uncompiled M3G0A source: " +
                     filename + " (active " + a["source"] + ")")
     print("BFSS_ROADMAP_CHECK_PASS", "milestone", s["milestone"],
           "accepted", q["gate"], "active", a["gate"], a["status"])
