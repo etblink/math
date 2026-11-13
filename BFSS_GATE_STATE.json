@@ -35,78 +35,34 @@
     "scope": "Finite genuine original Fermion 2 Fock-operator Hilbert-Schmidt column carrier as a transparent PiLp2 abbreviation; source operator-norm carrier connected by linear equivalence, not isometric identification of original operator norm with HS norm. Source trace-star pairing equals column inner product; no Boson L2 operator field, gauge, closed H or spectrum."
   },
   "active": {
-    "gate": "P3-M2A",
-    "status": "GREEN_QUALIFIED",
-    "candidate_sha": "b2b17d2da5e4bc1a97718665f2d9c1d1aef553f3",
-    "run_id": 43351955062,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2AOriginalFockHSFiber.lean",
-    "consumer": "lean/diagnostics/BFSSP3M2AOriginalFockHSFiberIndependentConsumer.lean",
-    "source_blob": "89543ae62bc971303cbb15d3a0c3207e114d57fa",
-    "consumer_blob": "098897960a993f87b5b6eed6275cc643940b5f0b",
-    "manifest_pins": 81,
-    "goal": "Distinct original-Fermion-2 HS finite operator fiber, original Fock bounded-operator linear equivalence and source physical-star trace-inner identification",
-    "expected_strict_workflow": ".github/workflows/bfss-p3-m2a-original-fock-hs-fiber-strict.yml",
-    "accepted_predecessor": "P3-D5B4B, strict GREEN #43343959865, 79 exact pins",
-    "status_detail": "R3 strict success: 81 pins, 9178 cold build, genuine original-Fock independent consumer, six source+consumer axiom audits; R1 and R2 causal reds retained.",
+    "gate": "P3-M2B1",
+    "status": "PENDING_STRICT_CI",
+    "candidate_sha": "458c071ceeec8fb13b76c85e2d74f00a264f71c1",
+    "run_id": null,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B1OriginalFockHSFieldColumns.lean",
+    "consumer": "lean/diagnostics/BFSSP3M2B1OriginalFockHSFieldColumnsIndependentConsumer.lean",
+    "source_blob": "e51e9db6d99adfdd9b077ffb846aef6155fecac6",
+    "consumer_blob": "01a72e91bbf8afd1f39d9083224220d6a6480b3d",
+    "manifest_pins": 83,
+    "expected_strict_workflow": ".github/workflows/bfss-p3-m2b1-original-fock-hs-l2-columns-strict.yml",
+    "accepted_predecessors": [
+      "P3-D5B4B #43343959865",
+      "P3-M2A #43351955062"
+    ],
+    "scope": "Original-Fock HS-field L2 finite-column isometric equivalence, a.e. forward source column law, two inverse identities and HS-field norm; not operator-norm L2 or a.e. operator reconstruction.",
+    "status_detail": "Candidate source + independent Boson2/Fermion2 Fock-basis consumer and 83-pin strict gate STAGED; CI verdict not observed.",
+    "reported_strict_status": "NOT_YET_OBSERVED",
     "not_proved": [
-      "operator norm equals HS norm (false in general)",
-      "M2B operator-valued L2 bridge",
-      "M3 physical SU2 gauge fixed-space intertwining",
-      "M4 source Spin9 parameter continuity",
-      "M5 closed physical Hamiltonian graph",
-      "M6–M8 sector compactness/positive spectrum"
-    ],
-    "run_url": "https://github.com/etblink/math/actions/runs/43351955062",
-    "strict_workflow_tested_head_sha": "b2b17d2da5e4bc1a97718665f2d9c1d1aef553f3",
-    "reported_strict_status": "VERIFIED_SUCCESS",
-    "previous_red": {
-      "run_id": 43349543790,
-      "tested_sha": "8de64bbab75b7ad414117c1c60ef02c58e4fd7a1",
-      "job_id": 131636984542,
-      "artifact_id": 14003863037,
-      "digest": "sha256:b8df2c22819496641db925da5ffc0975506b1a4c726749e91e295e90d20ce48c",
-      "phase": "COLD_SOURCE_LEAN_BUILD",
-      "qualification": "RED_UNQUALIFIED",
-      "first_causal": "OriginalFockHSFiber def prevents AddCommMonoid instance on aliases of PiLp 2; first errors lines 36 and 42, line 40 elaborate heartbeat timeout",
-      "caveat": "causal hypothesis, not yet R3-tested",
-      "receipt": "research/spectral-p2-original-field/P3_M2A_R2_RED_43349543790_DEF_HSFIBER_TYPECLASS_CASCADE_2026_11_12.md",
-      "repair": "One-token def→abbrev source transparency; original six theorem targets and consumer unchanged"
-    },
-    "red_history": [
-      {
-        "run_id": 43349181533,
-        "tested_sha": "979c0573cb1b908cd8365ecfde28887dc89b8b2a",
-        "job_id": 131635780370,
-        "artifact_id": 14003566048,
-        "cause": "81-entry textual manifest had 79 unique dict keys; B4B source/consumer paths had been renamed to the M2A paths, then M2A entries appended, so duplicate-key overwrite made assert len(pins)==81 fail",
-        "phase": "PREFLIGHT_BEFORE_LEAN",
-        "qualification": "NO_LEAN_VERDICT",
-        "receipt": "research/spectral-p2-original-field/P3_M2A_R1_RED_43349181533_MANIFEST_DUPLICATE_KEY_2026_11_12.md",
-        "repair": "Restore exact B4B original paths with accepted blobs, retain M2A source/consumer blobs unchanged; regenerate same 81 exact pins"
-      },
-      {
-        "run_id": 43349543790,
-        "tested_sha": "8de64bbab75b7ad414117c1c60ef02c58e4fd7a1",
-        "job_id": 131636984542,
-        "artifact_id": 14003863037,
-        "digest": "sha256:b8df2c22819496641db925da5ffc0975506b1a4c726749e91e295e90d20ce48c",
-        "phase": "COLD_SOURCE_LEAN_BUILD",
-        "qualification": "RED_UNQUALIFIED",
-        "first_causal": "OriginalFockHSFiber def prevents AddCommMonoid instance on aliases of PiLp 2; first errors lines 36 and 42, line 40 elaborate heartbeat timeout",
-        "caveat": "causal hypothesis, not yet R3-tested",
-        "receipt": "research/spectral-p2-original-field/P3_M2A_R2_RED_43349543790_DEF_HSFIBER_TYPECLASS_CASCADE_2026_11_12.md",
-        "repair": "One-token def→abbrev source transparency; original six theorem targets and consumer unchanged"
-      }
-    ],
-    "qualified_receipt": "research/spectral-p2-original-field/P3_M2A_R3_GREEN_43351955062_ACCEPTANCE_AND_M2B1_HANDOFF_2026_11_12.md",
-    "workflow_tested_head_sha": "b2b17d2da5e4bc1a97718665f2d9c1d1aef553f3",
-    "cold_build_jobs": 9178,
-    "artifact_id": 14005227265,
-    "artifact_digest": "sha256:d584684aedde1c2854ba915c7bbb2575ad12eb5ba770eb06067bc681257e078b",
-    "decision": "Accept exactly six M2A declarations; no M2B/physical/spectral qualification; plan bounded M2B1"
+      "M2B2 actual operator-valued a.e. reconstruction",
+      "operator norm equals HS norm",
+      "M3 physical SU2 gauge fixedness",
+      "M4 Spin9 continuity",
+      "M5 closed original H domain",
+      "M6–M8 spectral claims"
+    ]
   },
-  "if_green": "When P3-M2B1 is staged and GREEN: verify exact CI tested SHA, original Boson2/Fermion2 independent consumer, 83 exact pin manifest, allowed axioms and strict receipt before promoting finite HS L2 column equivalence; then plan M2B2 actual operator-valued a.e. reconstruction.",
-  "if_red": "At M2B1 red, preserve first causal error. Check source alias transparency and finite Lp PiLp instance path before any resource increase. Never replace original operator norm or promote gauge/physical spectrum.",
+  "if_green": "Before accepting M2B1 verify exact CI tested SHA, 83 source pins, genuine Boson2 original Fock consumer, seven source and independent consumer axiom checks, strict cold build and evidence artifact. Accept only HS L2 column equivalence; M2B2 unqualified.",
+  "if_red": "For M2B1 red preserve first causal failure and compare inherited pins. Avoid original operator norm instance changes, resource increases or surrogate Fock representations.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -128,7 +84,7 @@
   "next_planned": {
     "gate": "P3-M2B1",
     "milestone": "M2",
-    "status": "DESIGN_REVIEWED_NOT_STAGED",
+    "status": "IN_PROGRESS_STRICT_CANDIDATE",
     "goal": "On the separately named source-original Fock Hilbert–Schmidt column fiber, use accepted M1 B4B to construct finite-column L2 isometric equivalence with original-Fermion2 L2 fields, and verify source-Boson2 specialization in a genuinely independent consumer.",
     "accepted_inputs": [
       "P3-M2A OriginalFockHSFiber transparent PiLp2 carrier and original operator linear equivalence",
@@ -251,7 +207,7 @@
   "stage_transition": {
     "from": "M1",
     "to": "M2",
-    "status": "M1_COMPLETE_M2A_ACCEPTED_M2B1_UNSTAGED",
+    "status": "M1_COMPLETE_M2A_ACCEPTED_M2B1_STAGED_UNQUALIFIED",
     "m1_acceptance": [
       {
         "gate": "P3-D5B3",
