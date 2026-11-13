@@ -99,7 +99,7 @@ def main():
                 "M1 accepted-gate to next-gate sequence drift")
     if s["milestone"] == "M2" and q["gate"] == "P3-D5B4B":
         require(s.get("next_planned", {}).get("gate") == "P3-M2A" and
-                s.get("stage_transition", {}).get("status") == "M1_DELIVERABLE_QUALIFIED_M2_GATE_NOT_STAGED",
+                s.get("stage_transition", {}).get("status") in {"M1_DELIVERABLE_QUALIFIED_M2_GATE_NOT_STAGED", "M1_DELIVERABLE_QUALIFIED_M2_GATE_STAGED_UNQUALIFIED"},
                 "M2 transition requires B4B exact accepted receipt and first HS-fiber gate review")
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and

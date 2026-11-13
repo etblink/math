@@ -32,43 +32,30 @@
     "cold_build_jobs": 9183
   },
   "active": {
-    "gate": "P3-D5B4B",
-    "status": "GREEN_QUALIFIED",
-    "candidate_sha": "fa6d34dd54101fc61df5b637e33f92b96aa4c995",
-    "run_id": 43343959865,
-    "candidate_sha_status": "STAGED_SOURCE_COMMIT_MATCHES_STRICT_RUN_HEAD",
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B4BOriginalFockL2ColumnEquiv.lean",
-    "consumer": "lean/diagnostics/BFSSP3D5B4BOriginalFockL2ColumnEquivIndependentConsumer.lean",
-    "manifest_pins": 79,
-    "goal": "source-exact original Fermion 2 finite L2 column LinearIsometryEquiv from B3 isometry plus B4A surjectivity",
-    "expected_strict_workflow": ".github/workflows/bfss-p3-d5b4b-original-fock-l2-column-equivalence-strict.yml",
-    "accepted_predecessor": "P3-D5B4A, strict #43336725804, exact 77 pinned files",
-    "source_blob": "a0243e653c21c72693dc9484c868851eee1295dc",
-    "consumer_blob": "fec0d06457a1d6f928401a2fe7aba0a1bcd1bb8a",
+    "gate": "P3-M2A",
+    "status": "PENDING_STRICT_CI",
+    "candidate_sha": "19ed7578ffdb5768de720d1e2a227c2ff4e5bcd3",
+    "run_id": null,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2AOriginalFockHSFiber.lean",
+    "consumer": "lean/diagnostics/BFSSP3M2AOriginalFockHSFiberIndependentConsumer.lean",
+    "source_blob": "1d05f5dcd5f6df6b6bad7359f03850e2965c1b1f",
+    "consumer_blob": "098897960a993f87b5b6eed6275cc643940b5f0b",
+    "manifest_pins": 81,
+    "goal": "Distinct original-Fermion-2 HS finite operator fiber, original Fock bounded-operator linear equivalence and source physical-star trace-inner identification",
+    "expected_strict_workflow": ".github/workflows/bfss-p3-m2a-original-fock-hs-fiber-strict.yml",
+    "accepted_predecessor": "P3-D5B4B, strict GREEN #43343959865, 79 exact pins",
+    "status_detail": "PUSH_STAGED; workflow run/tested SHA unknown until GitHub creates run",
     "not_proved": [
-      "original bounded Fock operator-HS L2 equivalence M2",
-      "genuine physical SU2 fixed-space intertwining M3",
-      "continuous source Spin9 and original full charge covariance M4-M5",
-      "closed physical Hamiltonian graph/coercivity M5-M7",
-      "eigenpair or mass gap M8"
-    ],
-    "strict_run_status": "VERIFIED_SUCCESS",
-    "timing_note": "new strict run will be created by push; after staging, reconcile actual exact candidate SHA and run ID without predicting success",
-    "run_url": "https://github.com/etblink/math/actions/runs/43343959865",
-    "strict_workflow_tested_head_sha": "fa6d34dd54101fc61df5b637e33f92b96aa4c995",
-    "source_commit_is_ancestor_of_soon_to_be_tested_workflow_commit": true,
-    "qualification_boundary": "CI launch alone is no proof; exact source+independent consumer+79 pinned files+axioms must pass before promotion",
-    "workflow_tested_head_sha": "fa6d34dd54101fc61df5b637e33f92b96aa4c995",
-    "preflight_status": "79_EXACT_PINS_GREEN",
-    "axiom_audit": "ALL_FOUR_DECLARATIONS_PERMITTED_FOUNDATIONAL_AXIOMS_ONLY",
-    "cold_build_jobs": 9183,
-    "artifact_id": 14001084591,
-    "artifact_digest": "sha256:f9fc48320c3f3bc60b522eeab07283836c450e0c46b69d122dcb25262a5e1420",
-    "qualified_receipt": "research/spectral-p2-original-field/P3_D5B4B_GREEN_43343959865_M1_CLOSURE_2026_11_12.md",
-    "decision": "B4B accepted on exact strict CI. M1 mathematics complete; next milestone M2 requires a separate source operator/HS-fiber bridge."
+      "operator norm equals HS norm (false in general)",
+      "M2B operator-valued L2 bridge",
+      "M3 physical SU2 gauge fixed-space intertwining",
+      "M4 source Spin9 parameter continuity",
+      "M5 closed physical Hamiltonian graph",
+      "M6–M8 sector compactness/positive spectrum"
+    ]
   },
-  "if_green": "For a future M2A strict candidate, first compare source and independent consumer to accepted D3/D4/D5A exact pins; promote only transported HS-fiber Hilbert structure at the original operator type after exact run and axiom audit. Then plan M2B L2 transport.",
-  "if_red": "For future M2A failure, preserve first causal source/preflight error, avoid unfolding enormous Fock operators or replacing operator norm, repair abstract-first and keep M1 B4B acceptance intact.",
+  "if_green": "Verify exact M2A strict run tested SHA, 81 source pins, original operator consumer, cold build, six named axioms; promote only finite HS carrier/trace pairing. Plan M2B later.",
+  "if_red": "Preserve M2A first causal source/consumer/preflight red. Fix only bounded issue; never redefine the original continuous-linear-operator norm or promote an unrelated model.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -90,7 +77,7 @@
   "next_planned": {
     "gate": "P3-M2A",
     "milestone": "M2",
-    "status": "DESIGN_REVIEWED_NOT_STAGED",
+    "status": "IN_PROGRESS_STRICT_CANDIDATE",
     "goal": "On a distinct source-operator HS carrier, transport finite-column PiLp2 Hilbert structure through accepted D5A source-Fock operator column equivalence, preserve original continuous operator norm on original carrier and identify original trace-star pairing",
     "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2AOriginalFockHSFiber.lean",
     "expected_consumer": "lean/diagnostics/BFSSP3M2AOriginalFockHSFiberIndependentConsumer.lean",
@@ -213,7 +200,7 @@
   "stage_transition": {
     "from": "M1",
     "to": "M2",
-    "status": "M1_DELIVERABLE_QUALIFIED_M2_GATE_NOT_STAGED",
+    "status": "M1_DELIVERABLE_QUALIFIED_M2_GATE_STAGED_UNQUALIFIED",
     "m1_acceptance": [
       {
         "gate": "P3-D5B3",
