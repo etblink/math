@@ -32,7 +32,7 @@ def main():
     require(s.get("roadmap") == ROADMAP_PATH.name, "canonical roadmap moved")
     require(re.fullmatch("M[1-8]", s.get("milestone", "")) is not None, "milestone must be M1-M8")
     q, a = s["last_qualified"], s["active"]
-    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M[23][A-Z][0-9]*(?:[A-Z][0-9]*)?(?:-BI)?)")
+    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M[235][A-Z][0-9]*(?:[A-Z][0-9]*)?(?:-BI)?)")
     require(gate_rx.fullmatch(q.get("gate", "")) is not None, "qualified gate ID malformed")
     require(gate_rx.fullmatch(a.get("gate", "")) is not None, "active gate ID malformed")
     require(q["verdict"] == "GREEN", "last qualified verdict not GREEN")
@@ -106,6 +106,47 @@ def main():
             require(q.get("gate") == "P3-M3G0B1" and
                     q.get("run_id") == 43467719230,
                     "new physical source gate cannot supersede accepted M3G0B1")
+    port_be = a.get("gate") == "P3-M5BE0"
+    if port_be:
+        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"},
+                "M5BE0 source adapter cannot be silently treated as accepted math")
+        require(a.get("source") ==
+                "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BE0OriginalNativeHamiltonianPort.lean"
+                and a.get("source_blob") == "785633769214dcdfa6ef8517d58497f83fe30760"
+                and a.get("consumer") == "lean/diagnostics/BFSSP3M5BE0OriginalNativeHamiltonianPortIndependentConsumer.lean"
+                and a.get("consumer_blob") == "9e0c5538b19cba6d5952ed95636c02f37d12677f"
+                and a.get("underlying_original_BE_source") == "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean"
+                and a.get("underlying_original_BE_blob") == "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
+                "M5BE0 original BE, paired source or independent consumer pin drift")
+        require(a.get("manifest_baseline_sha") ==
+                "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
+                and a.get("original_root_count") == 7
+                and a.get("BE_donor_root_count") == 14
+                and a.get("workflow") == ".github/workflows/bfss-p3-m5be0-original-native-hamiltonian-port-strict.yml"
+                and a.get("manifest_pins") is None,
+                "M5BE0 exact source-closure manifest/21-root guard invalid")
+        require(q.get("gate") == "P3-M3W0D0"
+                and q.get("run_id") == 43484147197
+                and q.get("tested_sha") ==
+                    "ea41de685de83c209e2ebccc1098fbcbb076918d"
+                and q.get("manifest_pins") == 201
+                and q.get("artifact_id") == 14067253421
+                and q.get("source_blob") ==
+                    "86823abdddb70d1c2158f8e215fb35760e107fd5"
+                and q.get("consumer_blob") ==
+                    "38fab7d4dd44728cb1aef81d581340bcce755ac7"
+                and s.get("m3w0d0_prospective", {}).get("status") ==
+                    "GREEN_QUALIFIED",
+                "M5 port cannot bypass accepted original M3W0D0 predecessor")
+        require(s.get("next_planned", {}).get("gate") == "P3-M5BE0"
+                and s.get("next_planned", {}).get("status") ==
+                    "STRICT_WORKFLOW_STAGED_PENDING"
+                and s.get("m5be0_prospective", {}).get("status") in {
+                    "SOURCE_CONSUMER_WORKFLOW_STAGED_NOT_LEAN_QUALIFIED",
+                    "STRICT_PENDING_UNQUALIFIED"
+                }
+                and (ROOT / a.get("prospective_receipt", "__missing__")).is_file(),
+                "M5BE0 prospective proof contract, memo or active checkpoint missing")
     if a["status"] == "RESEARCH_ONLY_NOT_STAGED":
         require(a.get("candidate_sha") is None and a.get("run_id") is None,
                 "unstaged research cannot claim exact tested CI")
@@ -121,7 +162,7 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and source_join and a["status"] != "GREEN_QUALIFIED":
+        if entry is a and (port_be or (source_join and a["status"] != "GREEN_QUALIFIED")):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
@@ -131,8 +172,10 @@ def main():
             path = Path(entry[k])
             require(not path.is_absolute() and ".." not in path.parts and (ROOT/path).is_file(),
                     "missing or unsafe " + k + ": " + str(path))
-    if not source_join:
+    if not source_join and not port_be:
         require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
+    # The BE native-H source port is an independently pinned historical
+    # dependency closure; never compare its raw count to M3W0D0's 201 pins.
     # M3W0D0 does not reuse the M3B1 463-pin import closure.
     # It independently proves its current-source closure against the immutable
     # c625... baseline and records its count in CI; arithmetic comparison
@@ -528,7 +571,7 @@ def main():
         if not filename.startswith(source_dir):
             continue
         stem = Path(filename).stem
-        if stem.startswith(("P3D5", "P3M2", "P3M3")) and filename.endswith(".lean"):
+        if stem.startswith(("P3D5", "P3M2", "P3M3", "P3M5")) and filename.endswith(".lean"):
             require(filename == a["source"] or filename == prospective_m3_source,
                     "P3 spectral source changed outside active qualified or explicitly "
                     "staged uncompiled M3G0A source: " +
