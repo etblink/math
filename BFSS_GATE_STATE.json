@@ -34,9 +34,9 @@
   },
   "active": {
     "gate": "P3-M2C1",
-    "status": "R1_PREFLIGHT_RED_R2_REPAIR_PENDING_STRICT",
-    "run_id": null,
-    "candidate_sha": null,
+    "status": "PENDING_STRICT_CI",
+    "run_id": 43379713104,
+    "candidate_sha": "88c0a1f5efef0418b12645cb05ff7eefac7e4fb2",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2C1OriginalFockOperatorLpColumnNorm.lean",
     "consumer": "lean/diagnostics/BFSSP3M2C1OriginalFockOperatorLpColumnNormIndependentConsumer.lean",
     "source_blob": "1b528ed3921173a00725ebf23507b24a63a872be",
@@ -49,8 +49,8 @@
       "run_id": 43375482588,
       "tested_sha": "548d7978779e0a9ca5a91e01fccb686a786640f1"
     },
-    "reported_strict_status": "R1_RED_R2_STAGED_NOT_VERIFIED",
-    "status_detail": "R1 #43378870092 preflight RED (AssertionError: Boson 2). Bounded R2 changes only consumer: one actual original Boson2 operator-norm Lp alias example. Updated one consumer pin, source Lean unchanged. New R2 strict run pending.",
+    "reported_strict_status": "R2_RUNNING_UNQUALIFIED",
+    "status_detail": "R1 #43378870092 preflight-only RED (Boson 2 token). R2 strict #43379713104 tests exact 88c0a1f5 with one additional original source-carrier consumer example; 96 pins, original theorem source blob unchanged. Mathematical qualification pending.",
     "scope": "Actual original Fermion2 bounded-operator-norm Lp versus PiLp2 of genuine original Fermion2 vector-valued Lp columns, lower norm bound 1 and upper sqrt(card ι). Not isometry or numeric Lean 4096 specialization.",
     "not_proved": [
       "M2C1 original operator and HS Lp norm equality/isometry",
@@ -60,8 +60,8 @@
       "M5 original Hamiltonian port",
       "M6–M8 spectra"
     ],
-    "strict_workflow_tested_head_sha": null,
-    "run_url": "https://github.com/etblink/math/actions/runs/43378870092",
+    "strict_workflow_tested_head_sha": "88c0a1f5efef0418b12645cb05ff7eefac7e4fb2",
+    "run_url": "https://github.com/etblink/math/actions/runs/43379713104",
     "prior_red": {
       "run_id": 43378870092,
       "tested_sha": "a30d77b715ef7a11861ce3c65529f629f4bf45aa",
@@ -117,7 +117,7 @@
   "next_planned": {
     "gate": "P3-M2C1",
     "milestone": "M2",
-    "status": "R1_PREFLIGHT_RED_R2_STAGED_PENDING_STRICT",
+    "status": "IN_PROGRESS_STRICT_CANDIDATE_R2",
     "goal": "Lift original bounded-Fock operator/HS norm comparison into actual Boson2 operator-valued Lp versus genuine source Fock-vector PiLp2 columns, preserving operator norm on input.",
     "candidate_contract": "For original ONB b, bound ‖f‖ ≤ ‖originalFockOperatorLpColumnsEquiv b f‖ ≤ sqrt(card ι) * ‖f‖ on the actual original bounded operator-valued Lp field. Numeric 4096 can be a future specialization but is not qualified.",
     "research_donors": [
@@ -149,7 +149,7 @@
     ],
     "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2C1OriginalFockOperatorLpColumnNorm.lean",
     "expected_consumer": "lean/diagnostics/BFSSP3M2C1OriginalFockOperatorLpColumnNormIndependentConsumer.lean",
-    "tested_candidate_sha": "a30d77b715ef7a11861ce3c65529f629f4bf45aa",
+    "tested_candidate_sha": "88c0a1f5efef0418b12645cb05ff7eefac7e4fb2",
     "repair_memo": "research/spectral-p2-original-field/P3_M2C1_R1_43378870092_PREFLIGHT_BOSON2_LITERAL_REPAIR_2026_11_12.md"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2C0_GREEN_43375482588_ACCEPTANCE_AND_M2C1_RESEARCH_HANDOFF_2026_11_12.md",
