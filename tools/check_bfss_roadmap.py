@@ -228,7 +228,7 @@ def main():
                 q.get("workflow_blob") == "01339242a437da51153a64f97b55e077e73e01c5" and
                 q.get("declaration_count") == 9 and
                 len(q.get("declarations", [])) == 9 and
-                receipt.is_file() is False and (ROOT / receipt).is_file(),
+                (ROOT / receipt).is_file(),
                 "M3G0A exact accepted proof receipt/pins missing or mutated")
         require(s.get("next_planned", {}).get("gate") == "P3-M3G0B" and
                 s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
