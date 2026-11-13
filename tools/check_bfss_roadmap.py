@@ -129,6 +129,12 @@ def main():
                     "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_ACCEPTED_B2_UNSTAGED",
                     "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_ACCEPTED_B2_STAGED_UNQUALIFIED"},
                 "B1 qualified requires bounded original operator Lp B2 equivalence handoff, no physical promotion")
+    if s["milestone"] == "M2" and q["gate"] == "P3-M2B2B2":
+        require(s.get("next_planned", {}).get("gate") == "P3-M2C0" and
+                s.get("stage_transition", {}).get("status") in {
+                    "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_B2_ACCEPTED_M2C0_UNSTAGED",
+                    "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_B2_ACCEPTED_M2C0_STAGED_UNQUALIFIED"},
+                "B2 accepted requires bounded operator-to-Fock Lp columns M2C0 handoff, no physical promotion")
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
                 a["manifest_pins"] == q["manifest_pins"] and
