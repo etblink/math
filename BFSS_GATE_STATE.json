@@ -45,14 +45,14 @@
     "last_qualified_gate": "P3-M3G0B1",
     "last_qualified_run_id": 43467719230,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
-    "source_blob": "6f307c53e84499b53d2ac78ac4086cc39dcdf9c0",
+    "source_blob": "86823abdddb70d1c2158f8e215fb35760e107fd5",
     "consumer": "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean",
-    "consumer_blob": "d0801eec68a52a89206acc8cadabe296e0043fa2",
+    "consumer_blob": "38fab7d4dd44728cb1aef81d581340bcce755ac7",
     "workflow": ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml",
     "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
     "expected_root_count": 3,
     "donor_axiom_root_count": 5,
-    "strict_verdict": "R1_RED_FIRST_CAUSAL_MISSING_G1A_NAMESPACE",
+    "strict_verdict": "R1_RED_PRESERVED_R2_SOURCE_REPAIR_STAGED_UNQUALIFIED",
     "historical_K2B_run": 37894319431,
     "historical_BA_run": 39079626713,
     "prospective_receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
@@ -69,10 +69,17 @@
     "red_artifact_id": 14065039518,
     "red_artifact_digest": "sha256:ebb7493ff8898bef81644213be98a61ffd342e5d004f3bda1b129ad743d6f89a",
     "preflight_distinct_source_paths": 201,
-    "first_causal_error": "P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean:50:6 Unknown identifier pairedAlgebraData; missing open FCP.BFSSSU2GaugeG1A."
+    "first_causal_error": "P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean:50:6 Unknown identifier pairedAlgebraData; missing open FCP.BFSSSU2GaugeG1A.",
+    "r2_source_staged": true,
+    "r2_consumer_staged": true,
+    "r2_workflow_staged": true,
+    "r2_pre_gate_receipt": "research/spectral-p2-original-field/P3_M3W0D0_R2_PROSPECTIVE_PAIRED_ALGEBRA_NAMESPACE_REPAIR_2026_11_13.md",
+    "r2_candidate_tested_sha": null,
+    "r2_run_id": null,
+    "r2_status": "STAGED_NOT_TESTED"
   },
-  "if_green": "Accept only three named M3W0D0 roots after an independently verified R2 workflow; maintain original B1 strict green and separate BI research, then consider current BE port.",
-  "if_red": "R1 RED source name-resolution only. Preserve original proof statements and historical dependencies; add missing G1A namespace on R2, enforce independent consumer + allowed-axioms strict gate before promotion.",
+  "if_green": "Do not accept R2 until exact strict test SHA, historical source preflight, cold Lean, genuine independent consumer and eight permitted-axiom roots all independently verified.",
+  "if_red": "R1 protected and documented. R2 source exact missing-namespace-only repair staged; if RED again classify first causal error and do not promote physical claims.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -146,7 +153,9 @@
     ],
     "if_green": "Promote only three named new roots; then prepare scoped BE current-port qualification; BI remains research in parallel.",
     "if_red": "R1 independently verified, preserved. First causal namespace failure at line 50; R2 repair only opens G1A in source+consumer and repins strict workflow hashes. No physical claim promoted.",
-    "run_id": 43481282293
+    "run_id": 43481282293,
+    "r2_prospective_receipt": "research/spectral-p2-original-field/P3_M3W0D0_R2_PROSPECTIVE_PAIRED_ALGEBRA_NAMESPACE_REPAIR_2026_11_13.md",
+    "r2_scope": "Only two open FCP.BFSSSU2GaugeG1A lines and repinned hashes. Await prospective strict run."
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
@@ -637,9 +646,9 @@
     "proof_root_count": 3,
     "donor_root_count": 5,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
-    "source_blob": "6f307c53e84499b53d2ac78ac4086cc39dcdf9c0",
+    "source_blob": "86823abdddb70d1c2158f8e215fb35760e107fd5",
     "consumer": "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean",
-    "consumer_blob": "d0801eec68a52a89206acc8cadabe296e0043fa2",
+    "consumer_blob": "38fab7d4dd44728cb1aef81d581340bcce755ac7",
     "workflow": ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml",
     "receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
     "baseline": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
@@ -649,7 +658,9 @@
     "tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
     "r1_red_receipt": "research/spectral-p2-original-field/P3_M3W0D0_R1_RED_43481282293_PAIRED_ALGEBRA_NAMESPACE_2026_11_13.md",
     "r1_red_run_id": 43481282293,
-    "r1_red_tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f"
+    "r1_red_tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
+    "r2_prospective_receipt": "research/spectral-p2-original-field/P3_M3W0D0_R2_PROSPECTIVE_PAIRED_ALGEBRA_NAMESPACE_REPAIR_2026_11_13.md",
+    "r2_status": "STAGED_NOT_YET_TESTED"
   },
   "admin_checks": {
     "status": "GREEN_ADVISORY",

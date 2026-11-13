@@ -47,10 +47,10 @@ def main():
                 "M3W0D0 mathematical claim promoted without independent strict receipt")
         require(a.get("source") ==
                 "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean"
-                and a.get("source_blob") == "6f307c53e84499b53d2ac78ac4086cc39dcdf9c0"
+                and a.get("source_blob") == "86823abdddb70d1c2158f8e215fb35760e107fd5"
                 and a.get("consumer") ==
                 "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean"
-                and a.get("consumer_blob") == "d0801eec68a52a89206acc8cadabe296e0043fa2",
+                and a.get("consumer_blob") == "38fab7d4dd44728cb1aef81d581340bcce755ac7",
                 "M3W0D0 current-source theorem or genuine Fock consumer changed")
         require(a.get("workflow") ==
                 ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml"
