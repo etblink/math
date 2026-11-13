@@ -115,9 +115,14 @@ def main():
         require(s.get("next_planned", {}).get("gate") == "P3-M2B2B0" and
                 s.get("stage_transition", {}).get("status") in {
                     "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B0_UNSTAGED",
-                    "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B0_STAGED_UNQUALIFIED",
                     "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B0_STAGED_UNQUALIFIED"},
                 "M2B2A accepted requires source original operator-L2 M2B2B handoff, no M3 promotion")
+    if s["milestone"] == "M2" and q["gate"] == "P3-M2B2B0":
+        require(s.get("next_planned", {}).get("gate") == "P3-M2B2B1" and
+                s.get("stage_transition", {}).get("status") in {
+                    "M1_COMPLETE_M2A_M2B1_M2B2A_B0_ACCEPTED_B1_UNSTAGED",
+                    "M1_COMPLETE_M2A_M2B1_M2B2A_B0_ACCEPTED_B1_STAGED_UNQUALIFIED"},
+                "B0 qualified requires source operator-valued Lp B1 handoff; no physical promotion")
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
                 a["manifest_pins"] == q["manifest_pins"] and
