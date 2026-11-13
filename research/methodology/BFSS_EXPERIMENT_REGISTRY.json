@@ -7,7 +7,7 @@
       "id": "E-M7-001-R1",
       "title": "Prospective independent replication of source 48x48 fermion sharp-constant candidate",
       "registered_at": "2026-11-12",
-      "status": "INCONCLUSIVE",
+      "status": "SURVIVED_FINITE_TESTS",
       "phase": "M7_PRE_GATE_PARALLEL",
       "classification": "COMPUTATIONAL_COEFFICIENT_MODEL_NOT_PHYSICAL_FIELD_THEOREM",
       "prior_exploration_retroactively_registered": false,
@@ -80,7 +80,7 @@
         "communication": "Record exact commit, script SHA, environment, raw output hash, independent reproduction and a plain-language verdict in the experiment registry and linked research note."
       },
       "result": {
-        "status": "INCONCLUSIVE",
+        "status": "SURVIVED_FINITE_TESTS",
         "execution_attempts": [
           {
             "attempt": 1,
@@ -93,11 +93,38 @@
             "artifact_id": 13996992812,
             "artifact_digest": "sha256:99d9e1bebd991e7052a8a5f584bb7ea766ffd3afb6710734c3f5698e8b1e5f49",
             "verdict": "APPARATUS_ERROR_INCONCLUSIVE_NOT_HYPOTHESIS_FALSIFICATION"
+          },
+          {
+            "attempt": 2,
+            "run_id": 43335892084,
+            "sha": "68cebe441fea9aedb1189662a3901bea0b8aaf04",
+            "run_conclusion": "SUCCESS",
+            "source_exact_gamma_and_color_blob_check": "PASS",
+            "pre_registered_seed_and_thresholds": "UNCHANGED",
+            "sympy_normalization_fix_only": true,
+            "independent_algorithm_executed": true,
+            "independent_algorithm": "Kronecker reconstruction + eigvalsh(iK0)",
+            "baseline_algorithm": "source signed-coefficient construction + SVD 48x48",
+            "integer_polynomial_samples": 16,
+            "exact_polynomial_residuals": "ZERO_ON_ALL_SAMPLES",
+            "random_configurations": 200,
+            "max_random_observed_ratio": 13.051992491724643,
+            "proposed_universal_ratio_bound": 13.063945294843617,
+            "cross_method_difference_bound": "<=3e-10",
+            "symbolic_reduced_12x12_polynomial": "EXACT_PASS_WITH_EXPANSION",
+            "artifact_id": 13997356161,
+            "artifact_digest": "sha256:81d850d7e8900d7965044cd35523b6b9584b0020252d8a5ec383865b98537cae",
+            "baseline_json_sha256": "7ec775f8adbdf1dd60c8bc2c8216ab1e6057a7de1cd5599ae35b78737fe8d1db",
+            "independent_json_sha256": "d26a63ea143ff8bb5301a9a0638202d751b87a4efb7c06d99ac753cbaf40811b",
+            "comparison_json_sha256": "878dd7a66d5ba9529736820607d83403911eb2121800c62fbd11fa685029a06f",
+            "verdict": "SURVIVED_FINITE_TESTS_NOT_MATHEMATICAL_OR_PHYSICAL_PROOF"
           }
         ],
         "next_attempt": "Repeat same preregistered R1 variables/seed/tolerance using exact SymPy expansion; retain original failed CI; independent algorithm must complete",
-        "data_path": null,
-        "independent_reproduction": null
+        "data_path": "https://github.com/etblink/math/actions/runs/43335892084/artifacts/13997356161",
+        "independent_reproduction": "COMPLETED_AND_CROSSCHECKED",
+        "materialization_note": "Artifact ZIP and individual receipt hashes retained in strict Actions evidence; binary not copied into the repo",
+        "next_action": "M7 research only: source signed 48x48 K0 binding and universal matrix-polynomial/multiplicity theorem before physical-source CAR inequality"
       },
       "qualified_physical_claim": false,
       "relevant_roadmap": "M7; keep M1 P3-D5B4A next",
