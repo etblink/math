@@ -1081,14 +1081,14 @@
   "parallel_auxiliary_bounded_multiplier_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-R0B2A",
-    "status": "RED_UNQUALIFIED",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
     "qualification": false,
-    "candidate_sha": "2abbdf6c399b86e14ea6133fd7ea6689bef78a3b",
-    "run_id": 43518502567,
+    "candidate_sha": "777975848d39a51c2b4298f067ca249200febbf6",
+    "run_id": 43520543478,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0B2AOriginalReciprocalFullL2BoundedAction.lean",
     "source_blob": "e2a02b551486cfbc2a723f5b5ff0b282177c5e76",
     "consumer": "lean/diagnostics/BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedActionIndependentConsumer.lean",
-    "consumer_blob": "becdf68a5d78ba8b4133c1b805f685f56c8844d8",
+    "consumer_blob": "d36208b8168f3329a1cec159845c23828f59496c",
     "workflow": ".github/workflows/bfss-p3-aux-r0b2a-original-fulll2-bounded-action-strict.yml",
     "workflow_blob": "081c30aba3794bd21c39c35e076e5ea90b0a9912",
     "prospective_memo": "research/spectral-p2-original-field/P3_AUX_R0B2A_PROSPECTIVE_NATIVE_FULLL2_BOUNDED_RECIPROCAL_2026_11_13.md",
@@ -1119,6 +1119,21 @@
     "red_artifact_id": 14083000428,
     "red_artifact_digest": "sha256:c2263c85715c8ef9d702fbe8cb63306be9ccea2e35da36f7f711096162d5a574",
     "red_receipt": "research/spectral-p2-original-field/P3_AUX_R0B2A_R1_RED_43518502567_FIRST_CAUSAL_2026_11_13.md",
-    "next_decision": "R2 add noncomputable section to independent consumer only; preserve full source and type-checking example. Require fresh strict source/consumer green."
+    "next_decision": "Await exact R2 strict original source five-root and noncomputable independent consumer/axiom pass. Do not promote source based on prior R1 partial compile.",
+    "r1_red": {
+      "run_id": 43518502567,
+      "tested_sha": "2abbdf6c399b86e14ea6133fd7ea6689bef78a3b",
+      "job_id": 132206506133,
+      "source_blob": "e2a02b551486cfbc2a723f5b5ff0b282177c5e76",
+      "consumer_blob": "becdf68a5d78ba8b4133c1b805f685f56c8844d8",
+      "failure": "noncomputable source CLM construction in consumer example without noncomputable section",
+      "source_five_roots_compiled": true,
+      "strict_verdict": "failure",
+      "artifact_id": 14083000428,
+      "digest": "sha256:c2263c85715c8ef9d702fbe8cb63306be9ccea2e35da36f7f711096162d5a574",
+      "ledger": "research/spectral-p2-original-field/P3_AUX_R0B2A_R1_RED_43518502567_FIRST_CAUSAL_2026_11_13.md"
+    },
+    "attempt_label": "R2_INDEPENDENT_CONSUMER_NONCOMPUTABLE_SECTION",
+    "prospective_r2": "research/spectral-p2-original-field/P3_AUX_R0B2A_R2_PROSPECTIVE_NONCOMPUTABLE_CONSUMER_REPAIR_2026_11_13.md"
   }
 }
