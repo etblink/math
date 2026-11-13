@@ -240,6 +240,7 @@ def main():
                       "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
                       "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
                       "STRICT_WORKFLOW_STAGED_PENDING",
+                      "RED_UNQUALIFIED_REPAIR_PENDING",
                   } and
                   s.get("next_planned", {}).get("pre_gate_receipt_complete") is True and
                   (ROOT / s["next_planned"].get("pre_gate_receipt", "__missing__")).is_file() and
@@ -258,7 +259,10 @@ def main():
                   s.get("m3g0b_prospective", {}).get("consumer_staged") is
                     (s["next_planned"]["status"] != "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED") and
                   s.get("m3g0b_prospective", {}).get("workflow_staged") is
-                    (s["next_planned"]["status"] == "STRICT_WORKFLOW_STAGED_PENDING"))) and
+                    (s["next_planned"]["status"] in {
+                        "STRICT_WORKFLOW_STAGED_PENDING",
+                        "RED_UNQUALIFIED_REPAIR_PENDING",
+                    }))) and
                 s.get("m3g0a_prospective", {}).get("mathematical_qualification") is True and
                 s.get("m3g0b_prospective", {}).get("mathematical_qualification") is False and
                 s.get("evidence_ledger_latest") == str(receipt),
@@ -274,6 +278,7 @@ def main():
                     "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
                     "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
                     "STRICT_WORKFLOW_STAGED_PENDING",
+                    "RED_UNQUALIFIED_REPAIR_PENDING",
                 }, "M3G0B0 pre-gate receipt must precede any new source")
         if b0.get("source_staged") or b0.get("consumer_staged"):
             require(b0.get("source_staged") is True and
