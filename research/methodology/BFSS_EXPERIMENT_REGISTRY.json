@@ -134,10 +134,10 @@
       "id": "E-M5-PORT0-BE-R1",
       "title": "Current imported original BFSS BE normalized native Hamiltonian source-port strict qualification",
       "registered_at": "2026-11-13",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "LEAN_QUALIFIED",
       "phase": "M5_PORT0_NATIVE_H_AFTER_M3W0D0_GREEN",
       "classification": "EXACT_ORIGINAL_LEAN_SOURCE_PORT_NOT_SPECTRAL_THEOREM",
-      "qualified_physical_claim": false,
+      "qualified_physical_claim": true,
       "source_artifact": {
         "original_BE_blob": "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
         "new_adapter_blob": "785633769214dcdfa6ef8517d58497f83fe30760",
@@ -184,11 +184,42 @@
         "communication": "Preserve strict gate receipt and immutable artifact, classify GREEN/RED against exact tested source; update BFSS_GATE_STATE.json before advancing to BF/BG/BH."
       },
       "result": {
-        "status": "REGISTERED_NOT_EXECUTED",
-        "new_root_count": 7,
-        "BE_root_count": 14,
-        "mathematical_qualification": false
-      }
+        "status": "LEAN_QUALIFIED",
+        "attempts": [
+          {
+            "attempt": 1,
+            "run_id": 43489563180,
+            "conclusion": "FAILURE",
+            "tested_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b",
+            "first_causal": "adapter missing BB namespace for originalPhysicalHilbertComplete",
+            "artifact_id": 14069639347
+          },
+          {
+            "attempt": 2,
+            "run_id": 43493125150,
+            "conclusion": "SUCCESS",
+            "tested_sha": "10a9e7e3419f8b02b5e920c60e07facf8602fb42",
+            "imported_original_BE_blob": "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
+            "source_blob": "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1",
+            "consumer_blob": "9d20905d5509be44baf2374fc1bf0eb8820969eb",
+            "source_pins": 202,
+            "new_proof_roots": 7,
+            "imported_donor_roots": 14,
+            "allowed_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "artifact_id": 14070858752,
+            "digest": "sha256:77f7b59ba52f6f824ab8915176f70e90d7d3825827c9453a4b3e8415a5524375",
+            "strict_marker": "BFSS_P3_M5BE0_ORIGINAL_NATIVE_PHYSICAL_H_STRICT_GREEN"
+          }
+        ],
+        "acceptance_receipt": "research/spectral-p2-original-field/P3_M5BE0_R2_GREEN_43493125150_NATIVE_HAMILTONIAN_PORT_ACCEPTANCE_AND_BF_HANDOFF_2026_11_13.md",
+        "original_BF_BG_BH_qualified": false,
+        "physical_eigenstate_or_gap_proved": false
+      },
+      "qualified_physical_claim_scope": "Exact original paired SU2 normalized native physical H=(1/16)T†T self-adjointness, closed graph, natural domain, weak form and density; no spectral result or physical vacuum."
     }
   ],
   "allowed_statuses": [

@@ -108,8 +108,8 @@ def main():
                     "new physical source gate cannot supersede accepted M3G0B1")
     port_be = a.get("gate") == "P3-M5BE0"
     if port_be:
-        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"},
-                "M5BE0 source adapter cannot be silently treated as accepted math")
+        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED", "GREEN_QUALIFIED"},
+                "M5BE0 gate outside allowed strict acceptance phases")
         require(a.get("source") ==
                 "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BE0OriginalNativeHamiltonianPort.lean"
                 and a.get("source_blob") == "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1"
@@ -122,31 +122,64 @@ def main():
                 "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
                 and a.get("original_root_count") == 7
                 and a.get("BE_donor_root_count") == 14
-                and a.get("workflow") == ".github/workflows/bfss-p3-m5be0-original-native-hamiltonian-port-strict.yml"
-                and a.get("manifest_pins") is None,
+                and a.get("workflow") == ".github/workflows/bfss-p3-m5be0-original-native-hamiltonian-port-strict.yml",
                 "M5BE0 exact source-closure manifest/21-root guard invalid")
-        require(q.get("gate") == "P3-M3W0D0"
-                and q.get("run_id") == 43484147197
-                and q.get("tested_sha") ==
-                    "ea41de685de83c209e2ebccc1098fbcbb076918d"
-                and q.get("manifest_pins") == 201
-                and q.get("artifact_id") == 14067253421
-                and q.get("source_blob") ==
-                    "86823abdddb70d1c2158f8e215fb35760e107fd5"
-                and q.get("consumer_blob") ==
-                    "38fab7d4dd44728cb1aef81d581340bcce755ac7"
-                and s.get("m3w0d0_prospective", {}).get("status") ==
-                    "GREEN_QUALIFIED",
-                "M5 port cannot bypass accepted original M3W0D0 predecessor")
-        require(s.get("next_planned", {}).get("gate") == "P3-M5BE0"
-                and s.get("next_planned", {}).get("status") ==
-                    "STRICT_WORKFLOW_STAGED_PENDING"
-                and s.get("m5be0_prospective", {}).get("status") in {
-                    "SOURCE_CONSUMER_WORKFLOW_STAGED_NOT_LEAN_QUALIFIED",
-                    "STRICT_PENDING_UNQUALIFIED"
-                }
-                and (ROOT / a.get("prospective_receipt", "__missing__")).is_file(),
-                "M5BE0 prospective proof contract, memo or active checkpoint missing")
+        require((ROOT / a.get("prospective_receipt", "__missing__")).is_file(),
+                "M5BE0 prospective proof contract missing")
+        if a["status"] == "GREEN_QUALIFIED":
+            acceptance = ("research/spectral-p2-original-field/P3_M5BE0_R2_GREEN_43493125150_NATIVE_HAMILTONIAN_PORT_ACCEPTANCE_AND_BF_HANDOFF_2026_11_13.md")
+            require(q.get("gate") == "P3-M5BE0"
+                    and q.get("verdict") == "GREEN"
+                    and q.get("run_id") == 43493125150
+                    and q.get("tested_sha") == "10a9e7e3419f8b02b5e920c60e07facf8602fb42"
+                    and q.get("job_id") == 132119186214
+                    and q.get("manifest_pins") == 202
+                    and q.get("source_blob") == "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1"
+                    and q.get("consumer_blob") == "9d20905d5509be44baf2374fc1bf0eb8820969eb"
+                    and q.get("workflow_blob") == "1fffc09202d4a42aff9508214ca0edbb6757c39d"
+                    and q.get("original_BE_blob") == "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5"
+                    and q.get("artifact_id") == 14070858752
+                    and q.get("digest") ==
+                        "sha256:77f7b59ba52f6f824ab8915176f70e90d7d3825827c9453a4b3e8415a5524375"
+                    and q.get("declarations") == ["originalPairedNormalizedH_eq_charge_square","originalPairedNormalizedH_naturalDomain","originalPairedNormalizedH_apply","originalPairedNormalizedH_selfAdjoint","originalPairedNormalizedH_closed","originalPairedNormalizedH_domain_dense","originalPairedNormalizedH_weakForm_iff"]
+                    and q.get("allowed_axioms") == ["propext", "Classical.choice", "Quot.sound"]
+                    and a.get("manifest_pins") == 202
+                    and a.get("run_id") == q.get("run_id")
+                    and a.get("candidate_sha") == q.get("tested_sha")
+                    and s.get("m5be0_prospective", {}).get("status") == "GREEN_QUALIFIED"
+                    and s.get("next_planned", {}).get("gate") == "P3-M5BF0"
+                    and s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED"
+                    and (ROOT / acceptance).is_file(),
+                    "M5BE0 GREEN exact-source acceptance or bounded BF handoff drift")
+            prior = s.get("previous_qualified", {})
+            require(prior.get("gate") == "P3-M3W0D0"
+                    and prior.get("run_id") == 43484147197
+                    and prior.get("manifest_pins") == 201
+                    and prior.get("artifact_id") == 14067253421,
+                    "M5BE0 acceptance cannot erase the prior M3W0D0 strict source proof")
+        else:
+            require(a.get("manifest_pins") is None,
+                    "M5BE0 must not invent source-closure count pre-CI")
+            require(q.get("gate") == "P3-M3W0D0"
+                    and q.get("run_id") == 43484147197
+                    and q.get("tested_sha") ==
+                        "ea41de685de83c209e2ebccc1098fbcbb076918d"
+                    and q.get("manifest_pins") == 201
+                    and q.get("artifact_id") == 14067253421
+                    and q.get("source_blob") ==
+                        "86823abdddb70d1c2158f8e215fb35760e107fd5"
+                    and q.get("consumer_blob") ==
+                        "38fab7d4dd44728cb1aef81d581340bcce755ac7"
+                    and s.get("m3w0d0_prospective", {}).get("status") ==
+                        "GREEN_QUALIFIED",
+                    "M5 port cannot bypass accepted original M3W0D0 predecessor")
+            require(s.get("next_planned", {}).get("gate") == "P3-M5BE0"
+                    and s.get("next_planned", {}).get("status") ==
+                        "STRICT_WORKFLOW_STAGED_PENDING"
+                    and s.get("m5be0_prospective", {}).get("status") in {
+                        "SOURCE_CONSUMER_WORKFLOW_STAGED_NOT_LEAN_QUALIFIED",
+                        "STRICT_PENDING_UNQUALIFIED"
+                    }, "M5BE0 pending source receipt/transition mismatch")
     if a["status"] == "RESEARCH_ONLY_NOT_STAGED":
         require(a.get("candidate_sha") is None and a.get("run_id") is None,
                 "unstaged research cannot claim exact tested CI")
@@ -162,7 +195,7 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and (port_be or (source_join and a["status"] != "GREEN_QUALIFIED")):
+        if entry is a and ((port_be or source_join) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
