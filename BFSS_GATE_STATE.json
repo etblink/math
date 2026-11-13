@@ -955,7 +955,7 @@
   "parallel_auxiliary_next_gate": {
     "date": "2026-11-13",
     "gate": "P3-AUX-R0B1",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "candidate_sha": "2f419563ccf6d1eef1789f1117b076b8033c936f",
     "run_id": 43514755373,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0B1OriginalReciprocalLpInfinity.lean",
@@ -977,7 +977,7 @@
       "no Hamiltonian, spectral or physical singlet claim"
     ],
     "strict_conclusion": "failure",
-    "failed_job_id": 132188587764,
+    "failed_job_id": 132193748339,
     "first_causal_red": [
       "line 35 Real norm/absolute-value normalization missing in radial reciprocal norm inequality",
       "line 39 and line 46 non-parsing infinity literal; use explicit (⊤ : ℝ≥0∞)"
@@ -989,8 +989,8 @@
     "red_artifact_id": 14079152984,
     "red_artifact_digest": "sha256:8cd9e763c926d2c1015ffd515d476e36f6c6d2442507cb2eb83718cb4c3966e3",
     "red_receipt": "research/spectral-p2-original-field/P3_AUX_R0B1_R1_RED_43513258078_FIRST_CAUSAL_2026_11_13.md",
-    "next_decision": "R2 repair exact Real norm simplification and L-infinity top notation without theorem scope change",
-    "attempt_label": "R2_SOURCE_NORM_NOTATION_REPAIR",
+    "next_decision": "R3 preserve mathematical target and replace unavailable ℝ≥0∞ shorthand with fully named ENNReal type; recompile source then consumer",
+    "attempt_label": "R2_RED_NOTATION",
     "proposal": "Narrow repair of Real.norm_eq_abs and (⊤ : ℝ≥0∞) on original real/complex source and consumer",
     "red_r1_unchanged": {
       "run_id": 43513258078,
@@ -1006,6 +1006,22 @@
       "receipt": "research/spectral-p2-original-field/P3_AUX_R0B1_R1_RED_43513258078_FIRST_CAUSAL_2026_11_13.md"
     },
     "prospective_r2": "research/spectral-p2-original-field/P3_AUX_R0B1_R2_PROSPECTIVE_EXACT_LEAN_REPAIR_2026_11_13.md",
-    "qualification": false
+    "qualification": false,
+    "r2_red": {
+      "run_id": 43514755373,
+      "tested_sha": "2f419563ccf6d1eef1789f1117b076b8033c936f",
+      "job_id": 132193748339,
+      "source_blob": "40419f0eb9eb5c91d826029f345cd26036013aee",
+      "consumer_blob": "b7c53d620d0f1ebd1c3b6780837b1f0cdd5e4538",
+      "first_causal": [
+        "line 39:46 parser expected token for ℝ≥0∞ type shorthand",
+        "line 46:17 same parser type shorthand"
+      ],
+      "first_norm_fix_accepted": false,
+      "norm_proof_compiled_in_red": true,
+      "artifact_id": 14080721997,
+      "digest": "sha256:75099b4c73f813b618edb0bab6a5acc176911a9d35d955efadaf2fad2da39f5a",
+      "red_ledger": "research/spectral-p2-original-field/P3_AUX_R0B1_R2_RED_43514755373_FIRST_CAUSAL_2026_11_13.md"
+    }
   }
 }
