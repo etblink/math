@@ -1,0 +1,147 @@
+name: BFSS P3-M3G0A original Fock SU2 diagonal-column transport strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.lean
+      - lean/diagnostics/BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean
+      - .github/workflows/bfss-p3-m3g0a-original-fock-gauge-column-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bfss-p3-m3g0a-original-fock-gauge-column-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  original-source-and-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout exact source with immutable predecessor
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 8
+          persist-credentials: false
+      - name: 459-pin deduplicated original gauge and Fock operator source preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-p3-m3g0a"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-p3-m3g0a/tested-commit.txt"
+          test "$(git hash-object --no-filters tools/bfss_m3g0a_manifest_audit.py)" = "7ce1334dad835fbe9798cf7557a98cd6e7fba3d0"
+          test "$(git hash-object --no-filters lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.lean)" = "cc40839076eb980dab54f57af9c95b9d9e33da2c"
+          test "$(git hash-object --no-filters lean/diagnostics/BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean)" = "b66dcf427baf572a44de3bd72566857803accbea"
+          python3 tools/bfss_m3g0a_manifest_audit.py | tee "$RUNNER_TEMP/bfss-p3-m3g0a/manifest-preflight.log"
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          d=json.loads(Path("bfss-m3g0a-manifest-audit/pin-manifest.json").read_text())
+          assert (d["m2_accepted_exact_pins"],d["gauge_z_transitive_OAI_modules"],
+                  d["unique_deduplicated_exact_pins"])==(96,225,459),d
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+            "Mathlib.Analysis.Normed.Lp.PiLp",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M2C0OriginalFockOperatorLpColumns",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6G7ZActualSourceFullL2UnitaryGaugeRepresentationProbe"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M3G0AOriginalFockGaugeColumnTransport"]
+          roots=[
+            "originalFockDiagonalGaugeUnitary",
+            "originalFockOperatorGaugeEquiv",
+            "originalFockOperatorGaugeEquiv_columns",
+            "originalFockOperatorGaugeEquiv_column_apply",
+            "originalFockDiagonalGaugeUnitary_one_apply",
+            "originalFockDiagonalGaugeUnitary_mul_apply",
+            "originalFockOperatorGaugeEquiv_one_apply",
+            "originalFockOperatorGaugeEquiv_mul_apply",
+            "originalFockOperatorGaugeEquiv_inv_cancel"]
+          namespace="FCP.BFSSP3M3G0AOriginalFockGaugeColumnTransport."
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[namespace+x for x in roots]
+          assert "EuclideanSpace.basisFun" in consumer
+          for s in (source,consumer):
+            assert "set_option autoImplicit false" in s
+            assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",s)
+            assert "maxHeartbeats" not in s and "maxRecDepth" not in s
+          print("BFSS_P3_M3G0A_ORIGINAL_SOURCE_459_PIN_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-p3-m3g0a/mathlib-cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold build source, independent original Fock consumer and permitted axiom audit
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          e="$RUNNER_TEMP/bfss-p3-m3g0a"
+          src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0AOriginalFockGaugeColumnTransport.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 3600s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M3G0AOriginalFockGaugeColumnTransport 2>&1 | tee "$e/cold-build.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee "$e/source-axioms.log"
+          timeout 450s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M3G0AOriginalFockGaugeColumnTransportIndependentConsumer.lean 2>&1 | tee "$e/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re,json
+          d=Path(os.environ["RUNNER_TEMP"])/"bfss-p3-m3g0a"
+          short=[
+            "originalFockDiagonalGaugeUnitary",
+            "originalFockOperatorGaugeEquiv",
+            "originalFockOperatorGaugeEquiv_columns",
+            "originalFockOperatorGaugeEquiv_column_apply",
+            "originalFockDiagonalGaugeUnitary_one_apply",
+            "originalFockDiagonalGaugeUnitary_mul_apply",
+            "originalFockOperatorGaugeEquiv_one_apply",
+            "originalFockOperatorGaugeEquiv_mul_apply",
+            "originalFockOperatorGaugeEquiv_inv_cancel"]
+          names=["FCP.BFSSP3M3G0AOriginalFockGaugeColumnTransport."+x for x in short]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name in ("cold-build.log","source-axioms.log","independent-consumer.log"):
+            log=(d/name).read_text()
+            assert not any(x in log for x in ("error:","sorryAx","unknownIdentifier")),(name,log[-3000:])
+            warnings=[line for line in log.splitlines() if "warning:" in line and not depwarn.fullmatch(line)]
+            assert not warnings,(name,warnings[:8])
+            if name!="cold-build.log":
+              reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+              assert [n for n,_ in reports]==names,(name,reports,names)
+              for n,raw in reports:
+                assert {a.strip() for a in raw.split(",") if a.strip()}<=allowed,(n,raw)
+          (d/"scope-receipt.json").write_text(json.dumps({
+            "status":"BFSS_P3_M3G0A_STRICT_CANDIDATE_SCOPE",
+            "original_operator_norm_Lp":True,
+            "actual_Boson2_Fermion2_consumer":True,
+            "source_fullL2_SU2_unitary":True,
+            "diagonal_PiLp_unitary":True,
+            "transported_continuous_equiv":True,
+            "column_law_and_group_action":True,
+            "source_pointwise_a.e._action_proved":False,
+            "physical_fixedness_proved":False,
+            "operator_norm_isometry_proved":False,
+            "closed_Hamiltonian_proved":False,
+            "spectrum_proved":False
+          },indent=2,sort_keys=True))
+          print("BFSS_P3_M3G0A_459_PIN_ORIGINAL_GAUGE_COLUMN_STRICT_GREEN")
+          PY
+      - name: Preserve green and first-causal red evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-p3-m3g0a-original-fock-gauge-column-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/bfss-p3-m3g0a/
+            bfss-m3g0a-manifest-audit/
+          if-no-files-found: warn
+          retention-days: 14

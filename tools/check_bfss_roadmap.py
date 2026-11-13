@@ -156,10 +156,20 @@ def main():
                                nxt.get("status") in {
                                    "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
                                    "UNCOMPILED_SOURCE_AND_CONSUMER_CANDIDATE_STAGED_WORKFLOW_NOT_STAGED",
+                                   "STRICT_WORKFLOW_STAGED_PENDING",
                                } and
                                p.get("mathematical_qualification") is False and
-                               p.get("workflow_staged") is False and
-                               p.get("last_accepted_mathematical_run") == 43379713104)
+                               p.get("last_accepted_mathematical_run") == 43379713104 and
+                               ((p.get("workflow_staged") is False and
+                                 nxt.get("status") != "STRICT_WORKFLOW_STAGED_PENDING")
+                                or (p.get("workflow_staged") is True and
+                                    p.get("status") == "STRICT_WORKFLOW_STAGED_PENDING" and
+                                    nxt.get("status") == "STRICT_WORKFLOW_STAGED_PENDING" and
+                                    a.get("gate") == "P3-M3G0A" and
+                                    a.get("status") == "PENDING_STRICT_CI" and
+                                    a.get("manifest_pins") == 459 and
+                                    a.get("run_id") is None and
+                                    p.get("distinct_deduplicated_manifest_pins") == 459)))
         require(old_handoff or prospective_handoff,
                 "M2C1 qualified requires original M3G0 research handoff or bounded unqualified M3G0A candidate")
         if prospective_handoff:
@@ -167,7 +177,8 @@ def main():
             require(not receipt.is_absolute() and ".." not in receipt.parts and
                     (ROOT / receipt).is_file() and
                     p.get("status") in {"PROSPECTIVE_RECEIPT_ONLY",
-                                       "SOURCE_CONSUMER_CANDIDATE_UNCOMPILED"} and
+                                       "SOURCE_CONSUMER_CANDIDATE_UNCOMPILED",
+                                       "STRICT_WORKFLOW_STAGED_PENDING"} and
                     nxt.get("pre_gate_receipt_complete") is True,
                     "M3G0A prospective receipt/state missing or inaccurately qualified")
             candidate_path = ("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/"
@@ -177,9 +188,14 @@ def main():
             if p.get("lean_source_staged") or p.get("independent_consumer_staged"):
                 require(p.get("lean_source_staged") is True and
                         p.get("independent_consumer_staged") is True and
-                        p.get("status") == "SOURCE_CONSUMER_CANDIDATE_UNCOMPILED" and
-                        nxt.get("status") ==
-                        "UNCOMPILED_SOURCE_AND_CONSUMER_CANDIDATE_STAGED_WORKFLOW_NOT_STAGED" and
+                        p.get("status") in {
+                            "SOURCE_CONSUMER_CANDIDATE_UNCOMPILED",
+                            "STRICT_WORKFLOW_STAGED_PENDING",
+                        } and
+                        nxt.get("status") in {
+                            "UNCOMPILED_SOURCE_AND_CONSUMER_CANDIDATE_STAGED_WORKFLOW_NOT_STAGED",
+                            "STRICT_WORKFLOW_STAGED_PENDING",
+                        } and
                         nxt.get("proof_source") == candidate_path and
                         nxt.get("independent_consumer") == consumer_path and
                         (ROOT / candidate_path).is_file() and
