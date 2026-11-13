@@ -25,6 +25,7 @@ open OAI.BFSSQuantum.AlgebraData
 open FCP.BFSSSU2GaugeG1A
 open FCP.BFSSSU2GaugeG4J
 open FCP.BFSSSU2PhysicalDomainL6H5E8AY
+open FCP.BFSSSU2PhysicalDomainL6H5E8BB
 open FCP.BFSSSU2PhysicalDomainL6H5E8BC
 open FCP.BFSSSU2PhysicalDomainL6H5E8BE
 open LinearPMap

@@ -112,9 +112,9 @@ def main():
                 "M5BE0 source adapter cannot be silently treated as accepted math")
         require(a.get("source") ==
                 "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BE0OriginalNativeHamiltonianPort.lean"
-                and a.get("source_blob") == "785633769214dcdfa6ef8517d58497f83fe30760"
+                and a.get("source_blob") == "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1"
                 and a.get("consumer") == "lean/diagnostics/BFSSP3M5BE0OriginalNativeHamiltonianPortIndependentConsumer.lean"
-                and a.get("consumer_blob") == "9e0c5538b19cba6d5952ed95636c02f37d12677f"
+                and a.get("consumer_blob") == "9d20905d5509be44baf2374fc1bf0eb8820969eb"
                 and a.get("underlying_original_BE_source") == "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean"
                 and a.get("underlying_original_BE_blob") == "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
                 "M5BE0 original BE, paired source or independent consumer pin drift")
