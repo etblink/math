@@ -18,6 +18,9 @@ The user's shortest reliable resume instruction is:
 
 ## Current priorities — M3W0D0 original physical charge-domain GREEN; M5 native BE port next (2026-11-13 Pacific)
 
+**M5BE0 R1 STRICT RED (verified):** [#43489563180](https://github.com/etblink/math/actions/runs/43489563180), tested `b54bb9e3b62bf4012a6cad441627c77e1ace7e1b`, original 202-module import manifest PASS, historical current BE normalized Hamiltonian source compiled and permitted-axiom print passed; first new-adapter error line 69 `originalPhysicalHilbertComplete` unknown (missing `FCP.BFSSSU2PhysicalDomainL6H5E8BB` namespace). Provisional `sorryAx` consequential. [Immutable first-causal R1 receipt](research/spectral-p2-original-field/P3_M5BE0_R1_RED_43489563180_ORIGINAL_PHYSICAL_HILBERT_COMPLETE_NAMESPACE_2026_11_13.md). No BE adapter/consumer qualification; scope-preserving R2 namespace repair next.
+
+
 **M5BE0 administrative checkpoint R1 RED [#43489563142](https://github.com/etblink/math/actions/runs/43489563142):** memo text erroneously stored as file path, causing `Errno 36`. This is not a mathematical RED. Four path fields corrected in the canonical state; [first-causal receipt](research/spectral-p2-original-field/P3_M5BE0_ADMIN_R1_RED_43489563142_MEMO_TEXT_PATH_2026_11_13.md). The independent M5BE0 mathematical run #43489563180 remains unqualified pending its strict verdict.
 
 **P3-M5BE0 exact strict R1 [#43489563180](https://github.com/etblink/math/actions/runs/43489563180), tested `b54bb9e3b62bf4012a6cad441627c77e1ace7e1b`, PENDING/UNQUALIFIED:** No acceptance before independent source+consumer, 21 axiom roots and full pinned manifest. This is a separate scientific gate from accepted M3W0D0.

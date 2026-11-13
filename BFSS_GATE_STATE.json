@@ -42,7 +42,7 @@
   },
   "active": {
     "gate": "P3-M5BE0",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "candidate_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b",
     "run_id": 43489563180,
     "last_qualified_gate": "P3-M3W0D0",
@@ -58,13 +58,22 @@
     "historical_BE_blob": "bbe48532f9f66a7ef493e051453c00d40642752e",
     "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
     "manifest_pins": null,
-    "strict_verdict": "R1_RUNNING_UNQUALIFIED",
+    "strict_verdict": "R1_RED_ORIGINAL_PHYSICAL_HILBERT_COMPLETE_NAMESPACE_MISSING",
     "original_root_count": 7,
     "BE_donor_root_count": 14,
     "prospective_receipt": "research/spectral-p2-original-field/P3_M5BE0_PROSPECTIVE_NATIVE_HAMILTONIAN_PORT_GATE_2026_11_13.md",
     "scope": "Requalify exact current BE original (1/16)T†T natural-domain source, real paired SU2 source specializations and 21 axiom roots. Not BF/BG/BH current port or spectrum.",
     "qualification": false,
-    "workflow_tested_head_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b"
+    "workflow_tested_head_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b",
+    "r1_red_run_id": 43489563180,
+    "r1_red_tested_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b",
+    "r1_red_job_id": 132106826109,
+    "r1_red_artifact_id": 14069639347,
+    "r1_red_artifact_digest": "sha256:ce3633dee324174a3a7ffb01b60760c83211172d15088cffbea01e0c1a8370d7",
+    "r1_preflight_oai_paths": 202,
+    "r1_preflight_manifest_sha256": "306954aa34374a58b4ab0ca93339ce90f8983519cbba6abae1b5c7025fe542af",
+    "first_causal_error": "P3M5BE0OriginalNativeHamiltonianPort.lean:69:6 Unknown identifier originalPhysicalHilbertComplete; required open FCP.BFSSSU2PhysicalDomainL6H5E8BB.",
+    "r1_red_receipt": "research/spectral-p2-original-field/P3_M5BE0_R1_RED_43489563180_ORIGINAL_PHYSICAL_HILBERT_COMPLETE_NAMESPACE_2026_11_13.md"
   },
   "if_green": "Only if #43489563180 accepts exact current imported BE, 7 new paired specialization roots, 14 original BE roots, original consumer and source-closure pins, promote scoped native Hamiltonian port. Then plan BF separately.",
   "if_red": "If #43489563180 fails, preserve first causal error, exact current BE/import bytes, no speculative H change or spectral inference; use original BE historical delta.",
@@ -156,7 +165,7 @@
     "historical_BE_run": 39088799248,
     "acceptance_criterion": "Cold original BE import+paired consumer, 7 new roots, 14 original BE roots allowed-axiom audit, immutable full source-closure preflight; no inferred GREEN.",
     "if_green": "Promote only seven paired original BE interfaces, certify current BE import and plan BF next.",
-    "if_red": "Capture first causal failure in source/consumer/BE import and repair narrowly, retaining failed SHA; no new H claim.",
+    "if_red": "R1 original native BE compiled, adapter failed missing namespace `originalPhysicalHilbertComplete`. Preserve R1; R2 only open BB in adapter+consumer and repin strict source manifest; no theorem-domain edits.",
     "run_id": 43489563180,
     "tested_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b"
   },
@@ -786,6 +795,20 @@
     "manifest_baseline": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
     "mathematical_qualification": false,
     "run_id": 43489563180,
-    "tested_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b"
+    "tested_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b",
+    "r1_red_run_id": 43489563180,
+    "r1_red_receipt": "research/spectral-p2-original-field/P3_M5BE0_R1_RED_43489563180_ORIGINAL_PHYSICAL_HILBERT_COMPLETE_NAMESPACE_2026_11_13.md",
+    "r1_preflight_paths": 202,
+    "r1_status": "RED_UNQUALIFIED"
+  },
+  "m5be0_r1_red": {
+    "run_id": 43489563180,
+    "tested_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b",
+    "job_id": 132106826109,
+    "first_causal_error": "P3M5BE0OriginalNativeHamiltonianPort.lean:69:6 Unknown identifier originalPhysicalHilbertComplete; required open FCP.BFSSSU2PhysicalDomainL6H5E8BB.",
+    "preflight_path_count": 202,
+    "artifact_id": 14069639347,
+    "artifact_digest": "sha256:ce3633dee324174a3a7ffb01b60760c83211172d15088cffbea01e0c1a8370d7",
+    "receipt": "research/spectral-p2-original-field/P3_M5BE0_R1_RED_43489563180_ORIGINAL_PHYSICAL_HILBERT_COMPLETE_NAMESPACE_2026_11_13.md"
   }
 }
