@@ -115,6 +115,7 @@ def main():
         require(s.get("next_planned", {}).get("gate") == "P3-M2B2B0" and
                 s.get("stage_transition", {}).get("status") in {
                     "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B0_UNSTAGED",
+                    "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B0_STAGED_UNQUALIFIED",
                     "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B0_STAGED_UNQUALIFIED"},
                 "M2B2A accepted requires source original operator-L2 M2B2B handoff, no M3 promotion")
     if a["status"] == "GREEN_QUALIFIED":
