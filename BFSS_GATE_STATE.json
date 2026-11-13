@@ -38,22 +38,33 @@
     "scope": "Original bounded Fock operator-norm Lp a.e. whole-operator SU2 left-output/inverse-boson-pullback law, from a common finite-index a.e. event and actual basis-extensionality via M2B2B0 injectivity. For each fixed g,b,f; no basis independence, source operator-norm isometry, uniform all-g a.e. set, original physical fixedness, nonzero FullL2 witness, Hamiltonian domain or spectrum."
   },
   "active": {
-    "gate": "P3-M3G0B1-BI",
-    "status": "RESEARCH_ONLY_NOT_STAGED",
+    "gate": "P3-M3W0D0",
+    "status": "STAGED_STRICT_CI_PENDING",
     "candidate_sha": null,
     "run_id": null,
     "last_qualified_gate": "P3-M3G0B1",
     "last_qualified_run_id": 43467719230,
-    "last_qualified_tested_sha": "adb7f1378fd1e06da45352952a15d32b00c4654b",
-    "proposal": "Basis independence for two possibly distinct genuine finite original Fock ONBs, via two B1 operator a.e. laws and Lp.ext on original operator-norm Lp.",
-    "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_BI_BASIS_INDEPENDENCE_FORWARD_RESEARCH_2026_11_13.md",
-    "source_staged": false,
-    "consumer_staged": false,
-    "workflow_staged": false,
-    "acceptance_required": "Fresh prospective source/consumer/manifest/strict gate and allowed-axiom review; no new theorem accepted by documentation."
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
+    "source_blob": "6f307c53e84499b53d2ac78ac4086cc39dcdf9c0",
+    "consumer": "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean",
+    "consumer_blob": "d0801eec68a52a89206acc8cadabe296e0043fa2",
+    "workflow": ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml",
+    "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
+    "expected_root_count": 3,
+    "donor_axiom_root_count": 5,
+    "strict_verdict": "NOT_YET_CHECKED",
+    "historical_K2B_run": 37894319431,
+    "historical_BA_run": 39079626713,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
+    "goal": "Current-source certify nonzero original gauge physical FullL2 and dense native physical sixteen-charge domain; prove there exists a nonzero vector in the genuine natural charge domain.",
+    "exclusions": [
+      "does not prove radial witness in charge domain",
+      "no new H spectrum or BE/BF/BG/BH qualification",
+      "does not supersede BI prospective"
+    ]
   },
-  "if_green": "B1 R2 strict GREEN accepted; next B1-BI basis independence must be an independent qualified gate. In parallel recover original historical K2B physical witness and M3G0C-A fixedness per context memo.",
-  "if_red": "If B1-BI fails, preserve first causal source or Lp.ext error, do not infer basis independence from R2; B1 remains accepted.",
+  "if_green": "If M3W0D0 passes, update exact tested SHA/job/source+consumer/axiom receipt, then advance BE port; original BI remains research only.",
+  "if_red": "If M3W0D0 fails, preserve error type and artifact; do not promote historic K2B/BA under a new current-source qualification.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -105,34 +116,28 @@
     "scope": "For each exact original SU(2) group element g, diagonal genuine FullL2 2 unitary action on finite PiLp2 columns, transported through qualified M2C0 continuous equivalence to the actual Boson 2 volume Lp of bounded Fermion 2 operators with ORIGINAL operator norm; named column-intertwining, component action, identity, multiplication and inverse-cancellation laws. No original operator-norm isometry, basis independence, a.e. left-output field operator formula, SU2-parameter continuity, full physical fixedness, physical witness, Hamiltonian domain or spectral theorem."
   },
   "next_planned": {
-    "gate": "P3-M3G0B1-BI",
-    "milestone": "M3",
-    "status": "FORWARD_RESEARCH_ONLY_NOT_STAGED",
-    "review_basis": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md",
-    "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_BI_BASIS_INDEPENDENCE_FORWARD_RESEARCH_2026_11_13.md",
-    "goal": "Prove original operator-norm Lp Γ_b(g)f independent of finite original Fock ONB index type, using the two newly qualified B1 source operator a.e. laws and actual Lp.ext.",
-    "prerequisites": [
-      "B1 R2 #43467719230 accepted all three root declarations",
-      "M2B2B1 original Lp.ext API #43368580602"
+    "gate": "P3-M3W0D0",
+    "milestone": "M3/M5 physical-domain join",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
+    "consumer": "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml",
+    "prospective_receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
+    "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
+    "roots": [
+      "originalPhysicalFullL2_witness_ne_zero",
+      "originalPhysicalCharge_naturalDomain_dense",
+      "originalPhysicalCharge_naturalDomain_has_nonzero"
     ],
-    "falsifiers": [
-      "Pointwise equality claimed instead of a.e. Lp class equality",
-      "Uncountable all-g common a.e. exceptional set asserted",
-      "Operator-norm isometry claimed from HS/M2 continuous equivalence",
-      "M3G0C source intrinsic fixedness promoted without its own Lean gate"
+    "donors": [
+      "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_ne_zero",
+      "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_mem_physicalSpace",
+      "FCP.BFSSSU2GaugeG4K2B.pairedPhysicalSpace_ne_bot",
+      "FCP.BFSSSU2PhysicalDomainD2B10C.sourceCoreNormClosure_eq_physical_unconditional",
+      "FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional"
     ],
-    "independent_consumer_required": true,
-    "strict_manifest_required": true,
-    "source_staged": false,
-    "workflow_staged": false,
-    "parallel_recovery_memo": "research/spectral-p2-original-field/P3_M3_HISTORICAL_PHYSICAL_WITNESS_FIXED_SPACE_RECOVERY_AUDIT_2026_11_13.md",
-    "parallel_workstreams": [
-      "M3-W0 source-exact K2B requalification",
-      "M3G0C-A basis-relative columnwise original physical fixedness",
-      "M3-W1 nonzero transported operator fixed point after K2B and C-A",
-      "D2B8C/D2B9C current qualification/provenance audit"
-    ],
-    "decision": "HOLD new Lean/workflow. Preserve B1 acceptance and recovered context first; preregister BI gate before any proof edit."
+    "if_green": "Promote only three named new roots; then prepare scoped BE current-port qualification; BI remains research in parallel.",
+    "if_red": "Record first causal Lean or closure error, preserve historical inputs, repair only narrowly; no theorem promotion."
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
@@ -596,10 +601,40 @@
     "historical_k2b_blob": "d984c4e3831e4d21d7abf5776dbe63b5d190c4ed",
     "integrated_k2b_blob": "a288a1bccb847f9544211709fce75c7c7a519453",
     "comparison": "176/177 lines identical; only import line fully qualified; all declarations/proofs otherwise same",
-    "w0": "Requalify integrated G4K2B before new construction",
+    "w0": "P3-M3W0D0 integrated exact nonzero physical L2 + charge-domain density join STAGED; qualification pending CI",
     "g0c_a": "Basis-relative fixedness iff source actual FullL2 columns physical; Lean unproved",
     "w1": "Nonzero original operator-valued Lp fixed point from K2B and M2C0; Lean unproved",
     "strong_continuity_and_haar": "D2B8C/D2B9C source located; current strict qualification unchecked",
     "op2c": "Separate nonzero original fermionic gauge-fixed vector and projection; not full L2"
+  },
+  "previous_active": {
+    "gate": "P3-M3G0B1-BI",
+    "status": "RESEARCH_ONLY_NOT_STAGED",
+    "candidate_sha": null,
+    "run_id": null,
+    "last_qualified_gate": "P3-M3G0B1",
+    "last_qualified_run_id": 43467719230,
+    "last_qualified_tested_sha": "adb7f1378fd1e06da45352952a15d32b00c4654b",
+    "proposal": "Basis independence for two possibly distinct genuine finite original Fock ONBs, via two B1 operator a.e. laws and Lp.ext on original operator-norm Lp.",
+    "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_BI_BASIS_INDEPENDENCE_FORWARD_RESEARCH_2026_11_13.md",
+    "source_staged": false,
+    "consumer_staged": false,
+    "workflow_staged": false,
+    "acceptance_required": "Fresh prospective source/consumer/manifest/strict gate and allowed-axiom review; no new theorem accepted by documentation."
+  },
+  "m3w0d0_prospective": {
+    "date": "2026-11-13",
+    "status": "STAGED_UNQUALIFIED",
+    "proof_root_count": 3,
+    "donor_root_count": 5,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
+    "source_blob": "6f307c53e84499b53d2ac78ac4086cc39dcdf9c0",
+    "consumer": "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean",
+    "consumer_blob": "d0801eec68a52a89206acc8cadabe296e0043fa2",
+    "workflow": ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml",
+    "receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
+    "baseline": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
+    "historical_witness": "G4K2B #37894319431",
+    "historical_density": "BA #39079626713"
   }
 }
