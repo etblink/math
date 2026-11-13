@@ -499,6 +499,60 @@
         "red_receipt": "research/spectral-p2-original-field/P3_AUX_R0B1_R1_RED_43513258078_FIRST_CAUSAL_2026_11_13.md",
         "red_artifact_id": 14079152984
       }
+    },
+    {
+      "id": "E-P3-AUX-R0B1-R2",
+      "title": "Narrow proof/API repair of source original complex reciprocal L-infty",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "phase": "AUXILIARY_R0B1_AFTER_DOCUMENTED_R1_RED",
+      "classification": "REPAIR_STRICT_SAME_THEOREM_SCOPE",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "R1 strict source compiler failed on norm/absolute-value normalization and parser recognition of infinity exponent; R0A and toolchain preflight passed.",
+        "question": "Do explicit real norm simplification and top-exponent notation allow the original six L-infty reciprocal root declarations and independent consumer to compile on the exact pinned source?",
+        "background": [
+          "R1 strict #43513258078 RED, tested 1c36cb17",
+          "R1 first-causal red preserved in research/spectral-p2-original-field/P3_AUX_R0B1_R1_RED_43513258078_FIRST_CAUSAL_2026_11_13.md",
+          "Accepted R0A #43510200014 GREEN",
+          "Original Core pinned 9882359ced78b0a3bd7e2f057974bd0a031b3e60; Lean4.34.1 Mathlib d13f23b7"
+        ],
+        "hypothesis": "The expected norm reduces by Real.norm_eq_abs and positivity; (⊤ : ℝ≥0∞) parses and the original MemLp/Lp representatives typecheck without changing the theorem.",
+        "falsifiers": [
+          "Lean source still fails in strict workflow",
+          "Independent consumer errors remain after source repair",
+          "Axiom output contains sorryAx or nonallowed roots",
+          "Frozen original source and accepted R0A SHA mismatch",
+          "R2 requires changing mathematical statement or weakening L-infty on original infinite measure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "real norm simplification",
+            "explicit top exponent syntax"
+          ],
+          "dependent_variables": [
+            "source proof compilation",
+            "six axiom roots",
+            "independent original Boson2 carrier consumer"
+          ],
+          "controls": [
+            "all six R1 target declarations unchanged",
+            "exact frozen Core and R0A SHA",
+            "workflow identical to R1",
+            "Lean 4.34.1 Mathlib d13f23b7"
+          ]
+        },
+        "analysis_plan": "Observe exact strict R2 run #43514755373, capture first causal compile error if red, preserve exact tested commit and logs; accept only six source/consumer roots if GREEN and allowed axioms.",
+        "conclusion_rule": "Only strict exact-source/consumer and permitted-axiom GREEN may promote L-infty factor; neither R1 nor R2 demonstrates the L2 operator or physical aux spectrum.",
+        "communication": "Preserve R1 immutable RED, keep R2 separate with new tested SHA and scope, update canonical live checkpoint only on verified result."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "mathematical_qualification": false,
+        "strict_run_id": 43514755373,
+        "candidate_sha": "2f419563ccf6d1eef1789f1117b076b8033c936f",
+        "prior_red_run_id": 43513258078
+      }
     }
   ],
   "allowed_statuses": [
