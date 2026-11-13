@@ -289,11 +289,19 @@ def main():
                     "M3G0B0 source and original consumer must be staged together")
             prospective_m3_source = source
         if b0.get("workflow_staged"):
+            is_pending = (a.get("status") == "PENDING_STRICT_CI")
+            is_recorded_red = (a.get("status") == "RED_UNQUALIFIED" and
+                               a.get("run_id") == 43398003237 and
+                               a.get("red_receipt") ==
+                               "research/spectral-p2-original-field/"
+                               "P3_M3G0B0_R1_RED_43398003237_SOURCE_AE_REWRITE_REPAIR_2026_11_13.md" and
+                               (ROOT / a["red_receipt"]).is_file())
             require(a.get("gate") == "P3-M3G0B0" and
-                    a.get("status") == "PENDING_STRICT_CI" and
+                    (is_pending or is_recorded_red) and
                     a.get("manifest_pins") >= q.get("manifest_pins") and
-                    b0.get("mathematical_qualification") is False,
-                    "M3G0B0 strict pending is not a qualified mathematical gate")
+                    b0.get("mathematical_qualification") is False and
+                    q.get("gate") == "P3-M3G0A",
+                    "M3G0B0 strict pending or preserved R1 RED must not promote math")
 
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
