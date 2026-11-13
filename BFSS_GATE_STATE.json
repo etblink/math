@@ -1081,7 +1081,7 @@
   "parallel_auxiliary_bounded_multiplier_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-R0B2A",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "candidate_sha": "2abbdf6c399b86e14ea6133fd7ea6689bef78a3b",
     "run_id": 43518502567,
@@ -1109,6 +1109,16 @@
       "no auxiliary Hamiltonian or gap"
     ],
     "if_green": "Audit tested SHA, exact five roots/axioms and original consumer, write separate immutable acceptance and retain R0B1 factor qualification; then investigate native PiLp lift and injectivity",
-    "if_red": "Preserve first causal typeclass/holder/CLM compiler error, check pinned Mathlib Holders and direct source carrier, repair narrowly without changing mathematical target"
+    "if_red": "Preserve first causal typeclass/holder/CLM compiler error, check pinned Mathlib Holders and direct source carrier, repair narrowly without changing mathematical target",
+    "strict_conclusion": "failure",
+    "failed_job_id": 132206506133,
+    "red_run_id": 43518502567,
+    "first_causal_red": "Independent consumer line 14 Lean dependsOnNoncomputable: example constructing noncomputable originalReciprocalFullL2CLM lacked noncomputable section",
+    "source_compiled_five_roots_standard_axioms": true,
+    "independent_consumer_qualified": false,
+    "red_artifact_id": 14083000428,
+    "red_artifact_digest": "sha256:c2263c85715c8ef9d702fbe8cb63306be9ccea2e35da36f7f711096162d5a574",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_R0B2A_R1_RED_43518502567_FIRST_CAUSAL_2026_11_13.md",
+    "next_decision": "R2 add noncomputable section to independent consumer only; preserve full source and type-checking example. Require fresh strict source/consumer green."
   }
 }
