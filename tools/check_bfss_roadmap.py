@@ -107,8 +107,9 @@ def main():
                 "M2A strict qualification requires scoped M2B1 handoff; no premature M3 or spectrum")
     if s["milestone"] == "M2" and q["gate"] == "P3-M2B1":
         require(s.get("next_planned", {}).get("gate") == "P3-M2B2A" and
-                s.get("stage_transition", {}).get("status") ==
-                "M1_COMPLETE_M2A_M2B1_ACCEPTED_M2B2A_UNSTAGED",
+                s.get("stage_transition", {}).get("status") in {
+                    "M1_COMPLETE_M2A_M2B1_ACCEPTED_M2B2A_UNSTAGED",
+                    "M1_COMPLETE_M2A_M2B1_ACCEPTED_M2B2A_STAGED_UNQUALIFIED"},
                 "M2B1 strict qualification requires a scoped unstaged M2B2A research handoff")
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
