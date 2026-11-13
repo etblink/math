@@ -37,8 +37,8 @@
   "active": {
     "gate": "P3-M2B1",
     "status": "PENDING_STRICT_CI",
-    "candidate_sha": "458c071ceeec8fb13b76c85e2d74f00a264f71c1",
-    "run_id": null,
+    "candidate_sha": "f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6",
+    "run_id": 43356859031,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B1OriginalFockHSFieldColumns.lean",
     "consumer": "lean/diagnostics/BFSSP3M2B1OriginalFockHSFieldColumnsIndependentConsumer.lean",
     "source_blob": "e51e9db6d99adfdd9b077ffb846aef6155fecac6",
@@ -50,8 +50,8 @@
       "P3-M2A #43351955062"
     ],
     "scope": "Original-Fock HS-field L2 finite-column isometric equivalence, a.e. forward source column law, two inverse identities and HS-field norm; not operator-norm L2 or a.e. operator reconstruction.",
-    "status_detail": "Candidate source + independent Boson2/Fermion2 Fock-basis consumer and 83-pin strict gate STAGED; CI verdict not observed.",
-    "reported_strict_status": "NOT_YET_OBSERVED",
+    "status_detail": "Exact M2B1 source+consumer staged f3d741f8, 83 inherited+candidate source pins, strict #43356859031 pending; no mathematical verdict assumed.",
+    "reported_strict_status": "QUEUED_OR_RUNNING_UNQUALIFIED",
     "not_proved": [
       "M2B2 actual operator-valued a.e. reconstruction",
       "operator norm equals HS norm",
@@ -59,7 +59,9 @@
       "M4 Spin9 continuity",
       "M5 closed original H domain",
       "M6–M8 spectral claims"
-    ]
+    ],
+    "run_url": "https://github.com/etblink/math/actions/runs/43356859031",
+    "strict_workflow_tested_head_sha": "f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6"
   },
   "if_green": "Before accepting M2B1 verify exact CI tested SHA, 83 source pins, genuine Boson2 original Fock consumer, seven source and independent consumer axiom checks, strict cold build and evidence artifact. Accept only HS L2 column equivalence; M2B2 unqualified.",
   "if_red": "For M2B1 red preserve first causal failure and compare inherited pins. Avoid original operator norm instance changes, resource increases or surrogate Fock representations.",
@@ -108,7 +110,8 @@
       "mislabeling source operator norm as HS norm"
     ],
     "review": "research/spectral-p2-original-field/P3_M2B1_ORIGINAL_HS_L2_FIELD_BLUEPRINT_2026_11_12.md",
-    "decision": "Proceed with narrow source-exact M2B1 only AFTER committed M2A acceptance; no claim before fresh strict CI. M2B2 original-operator a.e. bridge is separate."
+    "decision": "Proceed with narrow source-exact M2B1 only AFTER committed M2A acceptance; no claim before fresh strict CI. M2B2 original-operator a.e. bridge is separate.",
+    "tested_candidate_sha": "f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2A_R3_GREEN_43351955062_ACCEPTANCE_AND_M2B1_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
