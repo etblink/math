@@ -40,7 +40,14 @@ def main():
             "invalid active status")
     for entry, key in [(q, "tested_sha"), (a, "candidate_sha")]:
         require(re.fullmatch(r"[0-9a-f]{40}", entry.get(key, "")) is not None, "invalid exact SHA")
-        require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0, "missing run ID")
+        if entry is a and entry["status"] == "PENDING_STRICT_CI" and entry.get("run_id") is None:
+            # A two-commit staged push has no GitHub run ID until the new ref is published.
+            # Record the *source ancestor* SHA first, then reconcile run ID on the next
+            # checkpoint-only commit; do not invent a workflow result.
+            pass
+        else:
+            require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
+                    "missing or invalid run ID")
         require(entry.get("manifest_pins", 0) >= 1, "missing verified source manifest count")
         for k in ("source", "consumer"):
             path = Path(entry[k])
