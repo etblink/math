@@ -1,0 +1,12 @@
+# P3-M2A R2 strict RED — opaque HS fiber def and elaboration cascade
+**Date:** 2026-11-12 Pacific / run completed 2026-11-13 UTC
+**Status:** RED, M2A UNQUALIFIED; no new physical claim.
+
+- Run: https://github.com/etblink/math/actions/runs/43349543790, attempt 1, completed FAILURE at exact head `8de64bbab75b7ad414117c1c60ef02c58e4fd7a1`.
+- Job: `131636984542`, source-and-independent-consumer. 81 exact manifest pins PASS; Lean 4.34.1 and Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612 restoration PASS; **cold M2A source build FAIL**. Independent consumer, source axiom-only build and audit were NOT executed, so neither gets an inferred verdict.
+- Exact failed evidence artifact `14003863037`, `sha256:b8df2c22819496641db925da5ffc0975506b1a4c726749e91e295e90d20ce48c`.
+- First causal diagnostics at source line 36: `failed to synthesize instance ... AddCommMonoid (OriginalFockHSFiber ι)`, again at line 42; line 40 deterministic heartbeat timeout at abstract nested proofs. Subsequent `u i` not a function, unknown `originalFockHSFiberToOperator`, missing `Inner`/`Norm` and recursion-depth errors are CASCADING and may not be independent failures. `#print axioms` with `sorryAx` in a failed build is not a qualified theorem.
+- Root hypothesis: `def OriginalFockHSFiber` is insufficiently reducible for synthesis of the standard finite `PiLp 2` algebraic/Hilbert instances and induces expensive large-Fock elaboration. The accepted D3/D4/D5A original trace/star relation is NOT contradicted by this log. **This hypothesis remains to be tested**.
+- Bounded R3 test: change precisely one keyword `def OriginalFockHSFiber` to `abbrev OriginalFockHSFiber`; pin the new exact source blob in the 81-entry manifest, preserve original independent consumer and six theorem targets, no extra axioms/heartbeats/recursion changes, no original operator-norm redefinition. Retry the same cold-source, consumer and axiom battery. Falsifier: further `AddCommMonoid` or source elaboration errors despite transparent abbreviation. In that case consider an abstract-first adapter with precise errors; never inflate resources or use a surrogate carrier to hide domain/norm issues.
+- Earlier distinct R1 manifest red [#43349181533](https://github.com/etblink/math/actions/runs/43349181533) remains preserved; R2 was the first genuine Lean compile attempt for M2A.
+- M1 B4B stays qualified at #43343959865. M2B operator-valued L², M3 gauge and later spectral results remain unproved.

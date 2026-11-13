@@ -24,7 +24,7 @@ open FCP.BFSSP3D5AOriginalFockHilbertColumns
 
 /-- A Hilbert-normalized operator fiber represented by genuine original
 Fock columns, distinct from the original operator-norm carrier. -/
-def OriginalFockHSFiber (ι : Type*) [Fintype ι] : Type _ :=
+abbrev OriginalFockHSFiber (ι : Type*) [Fintype ι] : Type _ :=
   PiLp 2 (fun _ : ι => Fermion 2)
 
 variable {ι : Type*} [Fintype ι]
