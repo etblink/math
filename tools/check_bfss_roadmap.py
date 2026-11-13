@@ -53,6 +53,27 @@ def main():
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},
             "pinned toolchain changed without roadmap review")
     require(s.get("exploratory") == "NOT_PROMOTED", "exploratory physics promoted silently")
+    scientific = s.get("scientific_method", {})
+    require(scientific.get("protocol") == "research/methodology/BFSS_SCIENTIFIC_METHOD_PROTOCOL.md" and
+            scientific.get("registry") == "research/methodology/BFSS_EXPERIMENT_REGISTRY.json",
+            "research-method protocol/registry absent from active checkpoint")
+    experiment = json.loads((ROOT / scientific["registry"]).read_text(encoding="utf-8"))
+    require(experiment.get("schema_version") == 1 and experiment.get("protocol") == scientific["protocol"],
+            "research method registry schema/link drift")
+    require((ROOT / scientific["protocol"]).is_file(), "scientific method protocol missing")
+    require("eight stages" in (ROOT / scientific["protocol"]).read_text(encoding="utf-8").lower(),
+            "eight-stage research protocol removed")
+    entries = experiment.get("entries", [])
+    require(entries and all(isinstance(x, dict) for x in entries), "experimental registry empty")
+    require(len({x["id"] for x in entries}) == len(entries), "duplicate experiment identifiers")
+    required = {"observation","question","background","hypothesis","falsifiers","experiment","analysis_plan","conclusion_rule","communication"}
+    for item in entries:
+        require(item["status"] in experiment["allowed_statuses"], "unregistered experiment status")
+        require(required <= set(item["stages"]), "missing scientific-method stages in " + item["id"])
+        require(item.get("qualified_physical_claim") is False or item["status"] == "LEAN_QUALIFIED",
+                "physical claim elevated from a non-Lean experiment")
+    require(scientific["first_test_id"] in [x["id"] for x in entries],
+            "active research test not indexed")
     alignment = s.get("monograph_alignment")
     require(isinstance(alignment, dict), "Edition 0.7 monograph review not recorded")
     require(alignment.get("status") == "REVIEWED_NOT_MERGED", "monograph merge/qualification status needs review")
@@ -70,6 +91,8 @@ def main():
             "D5-B4A plan changed without milestone review")
     roadmap = ROADMAP_PATH.read_text(encoding="utf-8")
     require(STATE_PATH.name in roadmap, "roadmap not linked to live checkpoint")
+    require("research/methodology/BFSS_SCIENTIFIC_METHOD_PROTOCOL.md" in roadmap and "research/methodology/BFSS_EXPERIMENT_REGISTRY.json" in roadmap,
+            "scientific-method protocol not discoverable from active roadmap")
     require("b603f4c1715e15f5f92c69d7fb071992dbaa9f40" in roadmap and
             "Monograph S1" in roadmap and "Alternative independent spectral" in roadmap,
             "pinned monograph dependency/alternate-route crosswalk missing")

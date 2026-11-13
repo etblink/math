@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "purpose": "append_only_falsifiable_research_tests_not_a_proof_or_live_gate_status",
+  "protocol": "research/methodology/BFSS_SCIENTIFIC_METHOD_PROTOCOL.md",
+  "entries": [
+    {
+      "id": "E-M7-001-R1",
+      "title": "Prospective independent replication of source 48x48 fermion sharp-constant candidate",
+      "registered_at": "2026-11-12",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "phase": "M7_PRE_GATE_PARALLEL",
+      "classification": "COMPUTATIONAL_COEFFICIENT_MODEL_NOT_PHYSICAL_FIELD_THEOREM",
+      "prior_exploration_retroactively_registered": false,
+      "source_artifact": {
+        "script": "research/spectral-p2-original-field/tools/audit_source_fermion_sharp_constant.py",
+        "script_blob": "f779c7a73f28b3d246f2c532877cd9835bd88333",
+        "memo": "research/spectral-p2-original-field/P3_SOURCE_FERMION_SHARP_CONSTANT_EXACT_NUMERICAL_RESEARCH_2026_11_12.md",
+        "source_gamma_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+        "source_epsilon_blob": "209b3808222730ca5e817d83ed32253a67513f7f",
+        "source_baseline_audit_blob": "4dcc78016765253e8efe5f9f5697aba4999a6d6d"
+      },
+      "stages": {
+        "observation": "Previously explored 48x48 original-source coefficient matrix exhibits smaller candidate norm constant than conservative 8 sqrt(3), but not formally established for the physical unnormalized field.",
+        "question": "Does the source coefficient matrix-derived CAR norm obey 16 sqrt(2/3)||X|| for all X, and what finite tests can refute the candidate?",
+        "background": [
+          "Edition 0.7 monograph Ch10/13, pin b603f4c1715e15f5f92c69d7fb071992dbaa9f40",
+          "Historical A/B and source-premise Python audits",
+          "Existing P3 sharp-constant memo"
+        ],
+        "hypothesis": "forall nonzero source X in R^(3x9), ||B_K(X)||/||X|| <= 16 sqrt(2/3); reduced spectral and polynomial identities hold",
+        "falsifiers": [
+          "exact source K0 polynomial residual nonzero on an integer X",
+          "direct SVD candidate norm ratio exceeds bound beyond verified numerical tolerance",
+          "reduced spectral formula fails a direct calculation reproducibly after source/precision checks"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "singular shape",
+            "radial scale",
+            "orthogonal/gauge orientation",
+            "integer oblique configuration",
+            "fixed random seed"
+          ],
+          "dependent_variables": [
+            "CAR normal-form norm ratio",
+            "direct-versus-reduced formula residual",
+            "matrix polynomial exact integer residual",
+            "saturation location"
+          ],
+          "controls": [
+            "pinned source gamma and epsilon blobs",
+            "exact Clifford and Gram checks",
+            "rank-one and isotropic known geometries",
+            "negative sign/factor-two normalization controls",
+            "independent numerical algorithm"
+          ],
+          "prespecified_fixtures": {
+            "integer_polynomial": 16,
+            "float_random": 200,
+            "geometry": [
+              "zero",
+              "rank1",
+              "rank2",
+              "isotropic",
+              "anisotropic",
+              "near-valley",
+              "oblique"
+            ]
+          },
+          "decision_thresholds": {
+            "norm_bound_tolerance_absolute": 3e-10,
+            "formula_crosscheck_tolerance_absolute": 3e-10,
+            "integer_polynomial_residual": "exact zero"
+          },
+          "reproduce_command": "python3 research/spectral-p2-original-field/tools/audit_source_fermion_sharp_constant.py --output /tmp/bfss-sharp-fermion-receipt.json",
+          "independent_followup": "separate high precision or exact symbolic implementation with source pins and independently recomputed coefficients"
+        },
+        "analysis_plan": "Retain all samples and maximal discrepancies; investigate every violation using exact/high precision and verify pin/normalization before classifying.",
+        "conclusion_rule": "FALSIFIED for reproducible verified counterexample; INCONCLUSIVE for failure/drift/uncontrolled numerical instability; SURVIVED_FINITE_TESTS if all controls pass, never mathematical proof.",
+        "communication": "Record exact commit, script SHA, environment, raw output hash, independent reproduction and a plain-language verdict in the experiment registry and linked research note."
+      },
+      "result": {
+        "status": "NO_NEW_EXECUTION_RECEIPT",
+        "data_path": null,
+        "run_sha": null,
+        "independent_reproduction": null
+      },
+      "qualified_physical_claim": false,
+      "relevant_roadmap": "M7; keep M1 P3-D5B4A next",
+      "next_action": "independent reproducible execution and contrast against source exact coefficient proof requirements"
+    }
+  ],
+  "allowed_statuses": [
+    "PROPOSED",
+    "REGISTERED_NOT_EXECUTED",
+    "EXECUTED_UNREVIEWED",
+    "SURVIVED_FINITE_TESTS",
+    "FALSIFIED",
+    "INCONCLUSIVE",
+    "LEAN_QUALIFIED"
+  ]
+}
