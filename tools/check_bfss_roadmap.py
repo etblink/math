@@ -32,7 +32,7 @@ def main():
     require(s.get("roadmap") == ROADMAP_PATH.name, "canonical roadmap moved")
     require(re.fullmatch("M[1-8]", s.get("milestone", "")) is not None, "milestone must be M1-M8")
     q, a = s["last_qualified"], s["active"]
-    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M2[A-Z][0-9]*)")
+    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M2[A-Z][0-9]*[A-Z]?)")
     require(gate_rx.fullmatch(q.get("gate", "")) is not None, "qualified gate ID malformed")
     require(gate_rx.fullmatch(a.get("gate", "")) is not None, "active gate ID malformed")
     require(q["verdict"] == "GREEN", "last qualified verdict not GREEN")
