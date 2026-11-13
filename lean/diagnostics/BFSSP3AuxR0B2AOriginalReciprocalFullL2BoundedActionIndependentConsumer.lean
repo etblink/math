@@ -29,4 +29,5 @@ example {ε : ℝ} (hε : 0 < ε) (f : FullL2 2) :
 #print axioms FCP.BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedAction.originalReciprocalFullL2Linear_norm_le
 #print axioms FCP.BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedAction.originalReciprocalFullL2CLM
 #print axioms FCP.BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedAction.originalReciprocalFullL2CLM_apply
+end
 end BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedActionIndependentConsumer
