@@ -18,6 +18,9 @@ The user's shortest reliable resume instruction is:
 
 ## Current priorities — M3W0D0 original physical charge-domain GREEN; M5 native BE port next (2026-11-13 Pacific)
 
+**M5BE0 R2 exact strict CI live:** [#43493125150](https://github.com/etblink/math/actions/runs/43493125150), tested `10a9e7e3419f8b02b5e920c60e07facf8602fb42`, PENDING/UNQUALIFIED. Earlier R1 [#43489563180](https://github.com/etblink/math/actions/runs/43489563180) RED is preserved separately. No R2 result is presumed; the original BE imported source and seven adapter statements remain fixed.
+
+
 **M5BE0 R2 source-first namespace repair (UNQUALIFIED):** [prospective R2 receipt](research/spectral-p2-original-field/P3_M5BE0_R2_PROSPECTIVE_ORIGINAL_PHYSICAL_HILBERT_COMPLETENESS_NAMESPACE_REPAIR_2026_11_13.md). New original paired adapter blob `f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1` and independent consumer `9d20905d5509be44baf2374fc1bf0eb8820969eb` each add exactly `open FCP.BFSSSU2PhysicalDomainL6H5E8BB`. Original BE imported source, all theorem bodies, seven new roots, fourteen BE donor roots and 202-path R1 preflight method unchanged. R1 [#43489563180](https://github.com/etblink/math/actions/runs/43489563180) RED stays preserved. Await a new strict CI verdict before mathematical acceptance.
 
 
