@@ -76,8 +76,8 @@
     "qualified_receipt": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md",
     "decision": "Accept exactly original-Fock operator norm vs separate HS norm squared identity and two bounds. Next M2B2B research only, no new theorem source staged."
   },
-  "if_green": "For future M2B2B, accept only after original Boson2/Fermion2 operator-valued Lp and a.e. reconstruction source/consumer, exact pins, full strict cold build, allowed axioms and evidence artifact; keep source operator norm distinct from HS.",
-  "if_red": "For M2B2B, isolate failure in source operator measurability, normed linear equivalence, representative a.e. or strict manifest and preserve first causal diagnostic; stop after two analogous reds.",
+  "if_green": "On B0 strict GREEN verify 88 unique pins, original Fock normed continuous equivalence, independent consumer and allowed axioms before accepting; next B1 remains separate.",
+  "if_red": "On B0 RED preserve first causal error and repair boundedly, no unsupported original operator norm equality, no resource escalation.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -122,36 +122,35 @@
     "scope": "Original source Boson 2 Lp field of separate OriginalFockHSFiber PiLp2 Hilbert columns is linearly isometrically equivalent to finite original Fermion 2 Lp columns; MemLp iff component MemLp, exact D5B0 projection, source a.e. component equality, both inverse laws, HS field norm equality. Concrete original Fock basis and source Boson 2 independent consumer. Original bounded operator norm NOT replaced; no original operator-valued L2 reconstruction, gauge, Spin9 continuity, H domain or spectral existence."
   },
   "next_planned": {
-    "gate": "P3-M2B2B",
+    "gate": "P3-M2B2B0",
     "milestone": "M2",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
-    "goal": "Transfer the genuine original bounded-Fock-operator normed carrier to separate HS source fields via norm-controlled bounded linear equivalence, then establish strong measurability/Lp transport and genuine a.e. original-operator reconstruction on Boson 2; split into source microgates if necessary.",
-    "candidate_contract": "For original F = Fermion 2 and original b, use M2A originalFockOperatorToHSFiber b plus M2B2A bounds to construct continuous linear equivalence between different norms, and prove original operator-valued Lp representative / a.e. inverse correspondence, with no false norm isometry of original operator norm.",
+    "status": "PROSPECTIVE_RECEIPT_COMMITTED_GATE_NOT_STAGED",
+    "goal": "Construct continuous complex-linear equivalence between original operator-norm Fermion 2 endomorphisms and separate M2A HS Hilbert columns, from qualified M2A/M2B2A source map and both norm bounds.",
+    "candidate_contract": "For original b : OrthonormalBasis ι ℂ (Fermion 2), construct (Fermion 2 →L[ℂ] Fermion 2) ≃L[ℂ] OriginalFockHSFiber ι, preserving each source norm; no original operator-valued Lp claims.",
     "research_donors": [
-      "P3-M2A #43351955062 original exact Fock-operator linear equivalence to PiLp2 HS columns",
-      "P3-M2B1 #43356859031 HS-field Lp finite original-column equivalence and a.e. coordinate law",
-      "P3-M2B2A #43361307455 source operator norm <= HS norm <= sqrt(card ONB) times operator norm",
-      "BFSSNORM0D3AOriginalLpCarrierBridge original-source MemLp.toLp representative pattern (method donor, not automatically qualified for M2B2B)",
-      "BFSSNORM0D3CDirectOriginalFockLpOutput original-source a.e. representative pattern (method donor)",
-      "Pinned Mathlib Lp composition/continuous-linear-equivalence APIs, exact signatures to verify before source staging"
+      "M2A qualified originalFockOperatorToHSFiber (algebraic equivalence) #43351955062",
+      "M2B2A source two norm bounds #43361307455",
+      "Pinned Mathlib LinearEquiv.toContinuousLinearEquivOfBounds",
+      "M2B1 HS-field Lp #43356859031 (future B1 only)"
     ],
     "falsifiers": [
-      "Original bounded-operator carrier silently gets HS norm instead of its source operator norm",
-      "Pointwise original operators unavailable as measurable representatives on Boson 2",
-      "Only abstract HS Lp fields constructed, without source-operator reconstruction/a.e. inverse",
-      "Unqualified historical NORM source used as direct theorem without exact type/qualification evidence",
-      "Source finite Fock import blows up due to concrete basis enumeration"
+      "Bound constructor type mismatch",
+      "Concrete source basis failure",
+      "Assuming isometry of original operator norm and HS",
+      "Omitted inverse norm bound"
     ],
     "blocked_followups": [
-      "M3 actual original SU2 left-output fixed-space",
-      "M4 original continuous Spin9",
-      "M5 original closed physical Hamiltonian domain",
-      "M6–M8 coercivity and spectrum"
+      "P3-M2B2B1 original operator-valued Lp and a.e. reconstruction",
+      "M3 physical SU2 fixed spaces",
+      "M4 Spin9 continuity",
+      "M5 source closed H",
+      "M6–M8 spectral conclusions"
     ],
     "pre_gate_receipt_required": true,
-    "pre_gate_receipt_complete": false,
-    "review_basis": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md",
-    "decision": "RESEARCH ONLY. First complete prospective source-exact pre-gate receipt and check existing qualified a.e. representative APIs. No Lean theorem source or strict workflow staged."
+    "pre_gate_receipt_complete": true,
+    "review_basis": "research/spectral-p2-original-field/P3_M2B2B0_PROSPECTIVE_SOURCE_OPERATOR_HS_CONTINUOUS_EQUIV_RECEIPT_2026_11_12.md",
+    "decision": "GO FOR B0 ONLY after prospective receipt commit. No mathematical source staged in this commit; defer B1 actual measurable original operator-valued Lp.",
+    "expected_manifest_pins": 88
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
@@ -250,7 +249,7 @@
   "stage_transition": {
     "from": "M1",
     "to": "M2",
-    "status": "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B_UNSTAGED",
+    "status": "M1_COMPLETE_M2A_M2B1_M2B2A_ACCEPTED_M2B2B0_UNSTAGED",
     "m1_acceptance": [
       {
         "gate": "P3-D5B3",
