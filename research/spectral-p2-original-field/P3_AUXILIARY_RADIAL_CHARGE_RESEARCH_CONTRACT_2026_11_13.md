@@ -7,10 +7,10 @@
 ## 1. Scientific observation and source boundary
 
 Michel–Scheinpflug–Yin, *99.9...% of the SU(2) BFSS ground state*, submitted 2026-11-06, [arXiv:2611.09837v1](https://arxiv.org/abs/2611.09837), use the auxiliary quadratic form
-$
+$$
 q_{\mathrm{aux}}(\psi)=\frac1{16}\sum_{\alpha=1}^{16}\|R Q_\alpha\psi\|^2,
 \qquad R(X)^2=\sum_{a,i} X_{ai}^2,
-$
+$$
 with a positive auxiliary gap on **gauge-invariant Spin(9)-singlet states**, even though the original physical BFSS Hamiltonian has continuum extending to zero. Their coefficient `kappa=(36+8*sqrt(14))/25` and resulting fidelity estimate require their Spin(9) representation/Hardy and supersymmetry arguments, not merely closedness.
 
 Do not equate the paper's `Q_alpha`, radial units, closed form, complete SU(2) physical representation, or auxiliary Hamiltonian to our source *until a separate exact convention and domain crosswalk is proved*.
@@ -27,9 +27,9 @@ Let `T:D(T) subset E -> K` be a closed linear operator between Hilbert spaces; l
 `B(Wy)=y` on `D(W)` and `W(By)=y` for all `y in K`; in particular `Range(B) subset D(W)`.
 
 Define the **maximal composition**
-$
+$$
 D(S)=\{u\in D(T):Tu\in D(W)\},\qquad Su=W(Tu).
-$
+$$
 
 **Proposed abstract result:** `S` is closed and `ker S=ker T` (no boundedness-above requirement for `w`).
 
@@ -61,17 +61,17 @@ Define `R(X)=||X||` provisionally, subject to the source/paper convention audit,
 Then `w_epsilon>=epsilon` and `1/w_epsilon` is bounded; `w_epsilon` need not be bounded above.
 
 For every positive `epsilon`, the maximal composition domains are the **same**:
-$
+$$
 D(S_\varepsilon)=D(T)\cap\{u: R T u\in K\}=:D_*,
-$
+$$
 because `R <= w_epsilon <= R+epsilon` pointwise and `Tu` is already L2 on `D(T)`.
 On this common domain, the corresponding closed quadratic forms satisfy exactly
-$
+$$
 q_\varepsilon(u)=\tfrac1{16}\|S_\varepsilon u\|^2
 =q_R(u)+\varepsilon^2 q(u),\quad
 q_R(u)=\tfrac1{16}\|RTu\|^2,\quad
 q(u)=\tfrac1{16}\|Tu\|^2.
-$
+$$
 No source physical gap follows from `q_epsilon >= epsilon² q` because `H` itself has no assumed positive gap.
 
 Once `D_*` is proved dense, every `S_epsilon` is densely defined and closed. Standard closed-operator Hilbert-space theory then gives a self-adjoint nonnegative `H_epsilon=(1/16) S_epsilon† S_epsilon` with `ker H_epsilon=ker S_epsilon=ker T=ker H`. The exact Lean constructors, type class instances and normalization still need source-qualified implementation.
