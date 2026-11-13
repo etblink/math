@@ -35,8 +35,8 @@
   "active": {
     "gate": "P3-M2C1",
     "status": "PENDING_STRICT_CI",
-    "run_id": null,
-    "candidate_sha": "b7423a90e094f749e7df6a3854f57c649575fa6f",
+    "run_id": 43378870092,
+    "candidate_sha": "a30d77b715ef7a11861ce3c65529f629f4bf45aa",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2C1OriginalFockOperatorLpColumnNorm.lean",
     "consumer": "lean/diagnostics/BFSSP3M2C1OriginalFockOperatorLpColumnNormIndependentConsumer.lean",
     "source_blob": "1b528ed3921173a00725ebf23507b24a63a872be",
@@ -49,8 +49,8 @@
       "run_id": 43375482588,
       "tested_sha": "548d7978779e0a9ca5a91e01fccb686a786640f1"
     },
-    "reported_strict_status": "NOT_YET_OBSERVED",
-    "status_detail": "Prospective receipt b7423a90 before new M2C1 source/consumer; 96-pin strict original operator/true Fock Lp column two-sided norm candidate staged, no verified Lean result yet.",
+    "reported_strict_status": "QUEUED_OR_RUNNING_UNQUALIFIED",
+    "status_detail": "M2C1 original bounded-operator Lp vs Fock-column Lp 96-pin strict #43378870092 running at exact a30d77b7. Prospective receipt b7423a90 preceded candidate; no Lean qualification yet.",
     "scope": "Actual original Fermion2 bounded-operator-norm Lp versus PiLp2 of genuine original Fermion2 vector-valued Lp columns, lower norm bound 1 and upper sqrt(card ι). Not isometry or numeric Lean 4096 specialization.",
     "not_proved": [
       "M2C1 original operator and HS Lp norm equality/isometry",
@@ -59,7 +59,9 @@
       "M4 Spin9 physical continuity",
       "M5 original Hamiltonian port",
       "M6–M8 spectra"
-    ]
+    ],
+    "strict_workflow_tested_head_sha": "a30d77b715ef7a11861ce3c65529f629f4bf45aa",
+    "run_url": "https://github.com/etblink/math/actions/runs/43378870092"
   },
   "if_green": "Accept M2C1 only after exact 96-pin strict green, original Boson2/Fermion2 operator norm Lp vs genuine vector Lp column lower and sqrt(card) upper bounds, source/consumer allowed axioms and artifact. No gauge/H/spectrum promotion.",
   "if_red": "Preserve first causal preflight or Lean a.e./norm-map failure, prefer isolated lower/upper microgate repair, no surrogate norm or increased Lean limits.",
@@ -137,7 +139,8 @@
       "originalFockOperatorLp_columns_norm_le_sqrt_card_mul_norm"
     ],
     "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2C1OriginalFockOperatorLpColumnNorm.lean",
-    "expected_consumer": "lean/diagnostics/BFSSP3M2C1OriginalFockOperatorLpColumnNormIndependentConsumer.lean"
+    "expected_consumer": "lean/diagnostics/BFSSP3M2C1OriginalFockOperatorLpColumnNormIndependentConsumer.lean",
+    "tested_candidate_sha": "a30d77b715ef7a11861ce3c65529f629f4bf45aa"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2C0_GREEN_43375482588_ACCEPTANCE_AND_M2C1_RESEARCH_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
