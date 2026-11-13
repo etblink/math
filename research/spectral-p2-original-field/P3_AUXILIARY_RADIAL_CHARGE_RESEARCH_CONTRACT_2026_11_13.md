@@ -37,6 +37,27 @@ Proof obligation in the native graph: if `u_n -> u` and `Su_n -> z`, boundedness
 
 **Important:** This argument *needs the actual right-inverse and multiplier domain identities*, not only the inequality `w>=epsilon` written informally. These identities are standard for full-L2 multiplication by `w` but are **not yet instantiated in the source's actual `PiLp` output type**.
 
+## 2A. Preferred implementation: inverse-graph comap from the bounded reciprocal
+
+**New source-level simplification (2026-11-13, research-only):** Construct the bounded **injective** reciprocal multiplier `B_epsilon:K ->L[C] K` first, rather than defining an unbounded `W_epsilon` and proving its closedness separately. For `epsilon>0`, `B_epsilon` should act as coordinatewise multiplication by `1/sqrt(R^2+epsilon^2)` on the exact sixteen `FullL2 2` fibers in `K`.
+
+Form the closed graph candidate
+```text
+G_epsilon = T.graph.comap ((LinearMap.id : E ->ₗ[C] E).prodMap B_epsilon.toLinearMap)
+          = {(u,z) : (u, B_epsilon z) in T.graph}.
+```
+This is a **graph inverse-image**, not an asserted inverse `B_epsilon⁻¹` defined on all `K`.
+
+The decisive obligations, each separately checkable, are:
+
+1. **Bounded reciprocal**: construct `B_epsilon` on *the original output carrier* using the pinned Mathlib `MemLp.of_le_mul` / `MemLp.toLp`, `Lp.norm_le_mul_norm_of_ae_le_mul` and finite `PiLp` equivalence. The current pinned [Mathlib LpSpace.Basic](https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean) contains these interfaces. `B_epsilon` is complex-linear, continuous and injective because the scalar reciprocal is nonzero almost everywhere.
+2. **Closed graph by comap**: since `T.graph` is a closed submodule and `id.prodMap B_epsilon` is continuous, its inverse image is a closed submodule. Because `B_epsilon` is injective, a vertical graph element `(0,z)` must have `z=0`; the imported `Submodule.toLinearPMap` interface (already used in source [H5E8AY](../../lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe.lean)) produces a genuine closed partial linear map `S_epsilon`.
+3. **Kernel exactly preserved**: `(u,0) in G_epsilon` iff `(u,B_epsilon 0)=(u,0) in T.graph`, hence `ker S_epsilon=ker T`. (Injectivity is needed for single-valuedness of `S_epsilon`, not for this zero-pair equivalence.)
+4. **Maximal-domain identification**: `D(S_epsilon) = {u in D(T): T u in Range(B_epsilon)}`. Independently prove `Range(B_epsilon) = {f in K: w_epsilon f belongs to K}` in the AE sense, so the graph-comap operator is **the desired weighted output multiplication**, not an arbitrary closed extension.
+5. **Density via original smooth core**: prove each original invariant smooth core vector has charge output in `Range(B_epsilon)` by compact support and weighted `MemLp`. Then existing D2B10C/AZ/BA density gives `Dense D(S_epsilon)` on the literal physical input Hilbert subtype.
+
+**Reason to prefer this route:** the repo already has both the closed `T.graph` and the exact `Submodule.comap` / vertical-uniqueness proof pattern. The difficult construction becomes an ordinary *bounded* reciprocal map on `L²`, followed by reuse of closed-submodule machinery. No unbounded multiplier API need be invented at the outset. This is a **proposal**, not a newly compiled theorem or verification gate.
+
 ## 3. Density bridge discovered in original source — substantial reuse
 
 There is a stronger existing theorem chain than merely `Dense D(T)`:
