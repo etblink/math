@@ -34,8 +34,8 @@
   "active": {
     "gate": "P3-M2B2B1",
     "status": "PENDING_STRICT_CI",
-    "candidate_sha": "b134563d012c9758c8c9d8235dd2b37548badd67",
-    "run_id": null,
+    "candidate_sha": "5f2443dacd60370b766b4591b4407c8f7aef8faa",
+    "run_id": 43368580602,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2B1OriginalOperatorLpTransport.lean",
     "consumer": "lean/diagnostics/BFSSP3M2B2B1OriginalOperatorLpTransportIndependentConsumer.lean",
     "source_blob": "d1c99e75bdf1081961b3b794b4dbe2da7ef30e82",
@@ -48,8 +48,8 @@
       "run_id": 43364964618,
       "tested_sha": "ba38ecf28450e54b33be72d9a7d67af0b89f23aa"
     },
-    "reported_strict_status": "NOT_YET_OBSERVED",
-    "status_detail": "Prospective B1 receipt at b134563d committed before new theorem source. Original operator-valued Lp and inverse AE candidate staged with 90 exact pins, no CI verdict yet.",
+    "reported_strict_status": "QUEUED_OR_RUNNING_UNQUALIFIED",
+    "status_detail": "B1 original operator-valued Lp source and independent consumer staged at 5f2443da with 90-pin strict #43368580602 PENDING. Prospective receipt b134563d predates first source commit; no Lean verdict.",
     "scope": "Actual original Boson 2 Lp of bounded Fermion 2 operators with original operator norm to separate HS field Lp: forward/inverse bounded maps, two a.e. formulas, two source class inverse identities. Not named Lp ≃L and not Lp isometry.",
     "not_proved": [
       "original operator-valued Lp norm equals HS Lp norm",
@@ -57,7 +57,9 @@
       "source physical gauge/Spin9",
       "original closed H",
       "spectral gap"
-    ]
+    ],
+    "strict_workflow_tested_head_sha": "5f2443dacd60370b766b4591b4407c8f7aef8faa",
+    "run_url": "https://github.com/etblink/math/actions/runs/43368580602"
   },
   "if_green": "Verify 90 exact immutable pins, actual original bounded operator-valued Boson2/Fermion2 Lp consumer, cold Lean and six source/consumer axiom inventories. Accept only field continuous maps, a.e. representatives and both Lp class inverses.",
   "if_red": "Classify first causal B1 failure (preflight, source Lean compLpL elaboration, a.e. filter proof, consumer) and repair narrowly, no blanket Lean resource increases or hidden operator norm substitutions.",
@@ -136,7 +138,8 @@
     "expected_manifest_pins": 90,
     "planned_declarations": 6,
     "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2B1OriginalOperatorLpTransport.lean",
-    "expected_consumer": "lean/diagnostics/BFSSP3M2B2B1OriginalOperatorLpTransportIndependentConsumer.lean"
+    "expected_consumer": "lean/diagnostics/BFSSP3M2B2B1OriginalOperatorLpTransportIndependentConsumer.lean",
+    "tested_candidate_sha": "5f2443dacd60370b766b4591b4407c8f7aef8faa"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2B2B0_GREEN_43364964618_ACCEPTANCE_AND_B1_RESEARCH_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
