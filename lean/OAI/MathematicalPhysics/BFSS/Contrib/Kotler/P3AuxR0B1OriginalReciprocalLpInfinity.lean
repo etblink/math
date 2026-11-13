@@ -36,14 +36,14 @@ theorem originalReciprocalField_norm_le {ε : ℝ} (hε : 0 < ε)
     (originalRadialWeight_inv_le hε x)
 
 theorem originalReciprocalField_memLp_infty {ε : ℝ} (hε : 0 < ε) :
-    MemLp (originalReciprocalField ε) (⊤ : ℝ≥0∞)
+    MemLp (originalReciprocalField ε) (⊤ : ENNReal)
       (volume : Measure (Boson 2)) := by
   exact memLp_top_of_bound
     (originalReciprocalField_continuous hε).aestronglyMeasurable
     ε⁻¹ (Filter.Eventually.of_forall (originalReciprocalField_norm_le hε))
 
 noncomputable def originalReciprocalLpInf {ε : ℝ} (hε : 0 < ε) :
-    Lp ℂ (⊤ : ℝ≥0∞) (volume : Measure (Boson 2)) :=
+    Lp ℂ (⊤ : ENNReal) (volume : Measure (Boson 2)) :=
   (originalReciprocalField_memLp_infty hε).toLp (originalReciprocalField ε)
 
 theorem originalReciprocalLpInf_ae {ε : ℝ} (hε : 0 < ε) :
