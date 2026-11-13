@@ -15,3 +15,9 @@ The mandatory `git cat-file`, ancestor `git merge-base --is-ancestor`, `git ls-t
 After a protected RED checkpoint is committed, stage R3 as workflow-only repair; never alter accepted M3G0A, historical L6G7U–Z, source B0 theorem statements, Fock carrier or independent consumer. R3 must pass source 461-pin manifest, original Lean cold compilation, independent consumer and three root axiom audits (only `propext`, `Classical.choice`, `Quot.sound`). Preserve future reds independently.
 
 **Last qualified mathematics:** M3G0A strict GREEN #43391099205. M3G0B0 remains unqualified.
+
+## R3 staged exact workflow-only remedy
+- Strict workflow checkout setting: `fetch-depth: 10` → `fetch-depth: 96`; new workflow blob `0681a9292b420d729d1e63c95061750098958ada`.
+- Original B0 source SHA `ffffa9e8d8679577a5f32999dd36fe5c9e904a07` and independent consumer SHA `c914864eccc801d9045656f0d06157ae384670f4` are unchanged. The 459 historical+2 B0 exact pins and immutable baseline `c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5` are unchanged.
+- A finite depth 96 is intentionally greater than the present baseline distance, minimizing excess Git history download compared with a full-history checkout while retaining the strict hash-verification contract. Reconsider if the branch later grows beyond 96 commits since this fixed baseline.
+- **R3 has not qualified any B0 theorem.** Await new exact strict CI.
