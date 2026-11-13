@@ -32,13 +32,52 @@ def main():
     require(s.get("roadmap") == ROADMAP_PATH.name, "canonical roadmap moved")
     require(re.fullmatch("M[1-8]", s.get("milestone", "")) is not None, "milestone must be M1-M8")
     q, a = s["last_qualified"], s["active"]
-    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M[23][A-Z][0-9]*(?:[A-Z][0-9]*)?)")
+    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M[23][A-Z][0-9]*(?:[A-Z][0-9]*)?(?:-BI)?)")
     require(gate_rx.fullmatch(q.get("gate", "")) is not None, "qualified gate ID malformed")
     require(gate_rx.fullmatch(a.get("gate", "")) is not None, "active gate ID malformed")
     require(q["verdict"] == "GREEN", "last qualified verdict not GREEN")
-    require(a["status"] in {"PENDING_STRICT_CI", "RED_UNQUALIFIED", "GREEN_QUALIFIED", "BLOCKED"},
+    require(a["status"] in {"PENDING_STRICT_CI", "RED_UNQUALIFIED", "GREEN_QUALIFIED", "BLOCKED", "RESEARCH_ONLY_NOT_STAGED"},
             "invalid active status")
+    # Requalification of historically accepted original physical sources has
+    # a pinned ancestor-closure manifest, whose deduplicated count is produced
+    # by the *new* strict workflow. Never invent that count before its preflight.
+    source_join = a.get("gate") == "P3-M3W0D0"
+    if source_join:
+        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"},
+                "M3W0D0 mathematical claim promoted without independent strict receipt")
+        require(a.get("source") ==
+                "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean"
+                and a.get("source_blob") == "6f307c53e84499b53d2ac78ac4086cc39dcdf9c0"
+                and a.get("consumer") ==
+                "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean"
+                and a.get("consumer_blob") == "d0801eec68a52a89206acc8cadabe296e0043fa2",
+                "M3W0D0 current-source theorem or genuine Fock consumer changed")
+        require(a.get("workflow") ==
+                ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml"
+                and a.get("manifest_baseline_sha") ==
+                "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
+                and a.get("expected_root_count") == 3
+                and a.get("donor_axiom_root_count") == 5,
+                "M3W0D0 source baseline/consumer/axiom audit scope drift")
+        require(a.get("manifest_pins") is None,
+                "M3W0D0 source-closure pin count must come from completed strict audit")
+        require(s.get("next_planned", {}).get("gate") == a["gate"]
+                and s.get("next_planned", {}).get("status") ==
+                "STRICT_WORKFLOW_STAGED_PENDING"
+                and s.get("m3w0d0_prospective", {}).get("status") in {
+                    "STAGED_UNQUALIFIED", "STRICT_RUN_RUNNING_UNQUALIFIED"
+                }
+                and (ROOT / a["prospective_receipt"]).is_file(),
+                "M3W0D0 prospective receipt and guarded status mismatch")
+        require(q.get("gate") == "P3-M3G0B1" and
+                q.get("run_id") == 43467719230,
+                "new physical source gate cannot supersede accepted M3G0B1")
+    if a["status"] == "RESEARCH_ONLY_NOT_STAGED":
+        require(a.get("candidate_sha") is None and a.get("run_id") is None,
+                "unstaged research cannot claim exact tested CI")
     for entry, key in [(q, "tested_sha"), (a, "candidate_sha")]:
+        if entry is a and a["status"] == "RESEARCH_ONLY_NOT_STAGED":
+            continue
         require(re.fullmatch(r"[0-9a-f]{40}", entry.get(key, "")) is not None, "invalid exact SHA")
         if entry is a and entry["status"] == "PENDING_STRICT_CI" and entry.get("run_id") is None:
             # A two-commit staged push has no GitHub run ID until the new ref is published.
@@ -48,12 +87,22 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        require(entry.get("manifest_pins", 0) >= 1, "missing verified source manifest count")
+        if entry is a and source_join:
+            require(entry.get("manifest_pins") is None,
+                    "new-source pin count was invented before strict CI")
+        else:
+            require(entry.get("manifest_pins", 0) >= 1,
+                    "missing verified source manifest count")
         for k in ("source", "consumer"):
             path = Path(entry[k])
             require(not path.is_absolute() and ".." not in path.parts and (ROOT/path).is_file(),
                     "missing or unsafe " + k + ": " + str(path))
-    require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
+    if not source_join:
+        require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
+    # M3W0D0 does not reuse the M3B1 463-pin import closure.
+    # It independently proves its current-source closure against the immutable
+    # c625... baseline and records its count in CI; arithmetic comparison
+    # between unrelated import closures is mathematically meaningless.
     require(Path(a["source"]).stem.startswith(a["gate"].replace("-", "")),
             "active gate/source mismatch")
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
@@ -93,6 +142,30 @@ def main():
             alignment.get("new_mathematical_qualification") is False and
             alignment.get("monograph_fast_forward_authorized") is False,
             "monograph review must not promote evidence or merge")
+    if s["milestone"] == "M3" and q["gate"] == "P3-M3G0B1":
+        receipt = ("research/spectral-p2-original-field/"
+                   "P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md")
+        require(q.get("verdict") == "GREEN"
+                and q.get("run_id") == 43467719230
+                and q.get("tested_sha") ==
+                "adb7f1378fd1e06da45352952a15d32b00c4654b"
+                and q.get("manifest_pins") == 463
+                and q.get("artifact_id") == 14061845908
+                and q.get("source_blob") ==
+                "095e63582a5f04a9dd2be0a192fb42586d97dd2f"
+                and q.get("consumer_blob") ==
+                "42e12c82dcf854fa0be0c73dbd38b0fd13f12692"
+                and q.get("workflow_blob") ==
+                "b3a7a888b89908a170aa4d1a690b11ef5f5ba9aa"
+                and q.get("declarations") == [
+                    "originalFockOperatorGaugeEquiv_source_all_basis_ae",
+                    "originalFockOperator_eq_of_basis",
+                    "originalFockOperatorGaugeEquiv_source_operator_ae",
+                ]
+                and q.get("allowed_axioms") ==
+                ["propext", "Classical.choice", "Quot.sound"]
+                and (ROOT / receipt).is_file(),
+                "M3G0B1 exact accepted source+consumer receipt mutated")
     if s["milestone"] == "M1":
         expected_next = {"P3-D5B3": "P3-D5B4A", "P3-D5B4A": "P3-D5B4B"}.get(q["gate"])
         require(expected_next is not None and s.get("next_planned", {}).get("gate") == expected_next,

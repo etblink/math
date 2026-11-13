@@ -39,9 +39,9 @@
   },
   "active": {
     "gate": "P3-M3W0D0",
-    "status": "STAGED_STRICT_CI_PENDING",
-    "candidate_sha": null,
-    "run_id": null,
+    "status": "PENDING_STRICT_CI",
+    "candidate_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
+    "run_id": 43481282293,
     "last_qualified_gate": "P3-M3G0B1",
     "last_qualified_run_id": 43467719230,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
@@ -52,7 +52,7 @@
     "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
     "expected_root_count": 3,
     "donor_axiom_root_count": 5,
-    "strict_verdict": "NOT_YET_CHECKED",
+    "strict_verdict": "R1_RUNNING_UNQUALIFIED",
     "historical_K2B_run": 37894319431,
     "historical_BA_run": 39079626713,
     "prospective_receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
@@ -61,7 +61,9 @@
       "does not prove radial witness in charge domain",
       "no new H spectrum or BE/BF/BG/BH qualification",
       "does not supersede BI prospective"
-    ]
+    ],
+    "workflow_tested_head_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
+    "manifest_pins": null
   },
   "if_green": "If M3W0D0 passes, update exact tested SHA/job/source+consumer/axiom receipt, then advance BE port; original BI remains research only.",
   "if_red": "If M3W0D0 fails, preserve error type and artifact; do not promote historic K2B/BA under a new current-source qualification.",
@@ -137,7 +139,8 @@
       "FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional"
     ],
     "if_green": "Promote only three named new roots; then prepare scoped BE current-port qualification; BI remains research in parallel.",
-    "if_red": "Record first causal Lean or closure error, preserve historical inputs, repair only narrowly; no theorem promotion."
+    "if_red": "Record first causal Lean or closure error, preserve historical inputs, repair only narrowly; no theorem promotion.",
+    "run_id": 43481282293
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
@@ -323,14 +326,14 @@
     }
   },
   "priority_review": {
-    "status": "M3G0B0_SCOPED_MATH_ACCEPTED_M3G0B1_RESEARCH_ONLY",
+    "status": "M3G0B1_QUALIFIED_ORIGINAL_PHYSICAL_DOMAIN_JOIN_STAGED",
     "date": "2026-11-13",
     "review": "research/spectral-p2-original-field/P3_M2_TO_M3_PRIORITY_RECONCILIATION_AND_OLDER_WORK_REUSE_2026_11_12.md",
-    "acceptance": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
+    "acceptance": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md",
     "primary": [
-      "M3G0B1 full original bounded-operator a.e. left-output inverse boson pullback field equality",
-      "M3G0B1 basis independence / M3G0B2 true source original norm isometry",
-      "M3G0C physical fixedness iff every genuine original source Fock column physical"
+      "P3-M3W0D0 original historical K2B+D2B10C+BA physical-source join strict pending",
+      "M3G0B1-BI separate basis-independence research",
+      "M5 BE/BF/BG/BH current Hamiltonian port qualification after source join"
     ],
     "parallel": [
       "M4-HS0 original Spin9 star/trace HS isometry research",
@@ -624,7 +627,7 @@
   },
   "m3w0d0_prospective": {
     "date": "2026-11-13",
-    "status": "STAGED_UNQUALIFIED",
+    "status": "STRICT_RUN_RUNNING_UNQUALIFIED",
     "proof_root_count": 3,
     "donor_root_count": 5,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
@@ -635,6 +638,25 @@
     "receipt": "research/spectral-p2-original-field/P3_M3W0D0_PROSPECTIVE_NONZERO_PHYSICAL_CHARGE_DOMAIN_JOIN_2026_11_13.md",
     "baseline": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
     "historical_witness": "G4K2B #37894319431",
-    "historical_density": "BA #39079626713"
+    "historical_density": "BA #39079626713",
+    "run_id": 43481282293,
+    "tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f"
+  },
+  "admin_checks": {
+    "status": "ADVISORY_CHECKER_RECONCILIATION_PENDING",
+    "prior_reds": [
+      {
+        "run_id": 43473395851,
+        "causal": "active gate ID P3-M3G0B1-BI rejected by outdated syntax checker; administrative only"
+      },
+      {
+        "run_id": 43481169969,
+        "causal": "STAGED_STRICT_CI_PENDING rejected by old checker; administrative only"
+      }
+    ],
+    "cancelled_run_id": 43481170771,
+    "active_math_run_id": 43481282293,
+    "math_run_tested_sha": "a8c6b285d6477ef037ec863e530a22478268611f",
+    "repair_receipt": "research/spectral-p2-original-field/P3_M3W0D0_ADMIN_ROADMAP_CHECKER_RECONCILIATION_2026_11_13.md"
   }
 }
