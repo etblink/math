@@ -1009,6 +1009,63 @@
         "physical_space_preservation_qualified": false,
         "auxiliary_H_or_gap_qualified": false
       }
+    },
+    {
+      "id": "E-P3-AUX-G0B1-R1",
+      "title": "Exact original FullL2 reciprocal bosonic gauge pullback commutation",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "phase": "AUXILIARY_GAUSS_BOSON_GAUGE_OPERATOR",
+      "classification": "SOURCE_EXACT_BOSONIC_GAUGE_PULLBACK_ONLY",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "G0B0 qualified AE multiplication by original reciprocal field; G0A qualified its exact pairedGaugeData bosonic invariance. Source G4J/GaugeCore defines actual measure-preserving bosonic Lp pullback.",
+        "question": "Does the bounded reciprocal operator Bε commute on the exact original Fock-valued FullL2 2 with pairedGaugeData.bosonPullback g for every SU2 gauge element?",
+        "background": [
+          "G0B0 strict #43523896876 original FullL2 AE multiplication 2 roots",
+          "G0A strict #43521457638 original radial SU2 invariance 3 roots",
+          "R0B2A strict #43521745235 bounded FullL2 operator 5 roots",
+          "Original GaugeCore.bosonPullback and Lp.coeFn_compMeasurePreserving",
+          "No new representation or source physics required"
+        ],
+        "hypothesis": "The original radial reciprocal field is invariant under actual bosonic gauge isometries; its true L2 bounded multiplication commutes with measure-preserving pullback at exact FullL2 2.",
+        "falsifiers": [
+          "AE pullback composition/measure preserving incorrect at literal source type",
+          "wrong source inverse convention",
+          "independent native consumer fails",
+          "Lean nonstandard axioms or sorryAx",
+          "frozen native source/toolchain pin changes"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "source positive epsilon regularization",
+            "original pairedGaugeData SU2 boson action",
+            "source Fock L2 state"
+          ],
+          "dependent_variables": [
+            "exact bosonPullback commutation theorem",
+            "native consumer",
+            "strict axiom root"
+          ],
+          "controls": [
+            "Core/R0A/R0B1/R0B2A/G0A/G0B0/G4J source pinned",
+            "Lean 4.34.1 Mathlib d13f23b7",
+            "one theorem and native independent consumer",
+            "no edits to original Hilbert Hamiltonian"
+          ]
+        },
+        "analysis_plan": "Check strict run #43526064993 exact SHA and cold source, independent consumer, one axiom root; preserve first causal red if needed.",
+        "conclusion_rule": "Accept bosonPullback commutation only on full exact strict GREEN; no fermion or physicalSpace conclusion from this single gate.",
+        "communication": "Source-faithful original gauge/weighted-factor crosswalk, report exact SHA, artifact and allowed axiom roots, keep original M5BF0 accepted."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "mathematical_qualification": false,
+        "strict_run_id": 43526064993,
+        "candidate_sha": "4a1425588021ac88736253a2978d3c4acc22747c",
+        "source_blob": "18ec705a7a67370c79d6010657d367dc4448d653",
+        "consumer_blob": "f45d0a97cc475b04205aeddfd290248f7e3b529f"
+      }
     }
   ],
   "allowed_statuses": [

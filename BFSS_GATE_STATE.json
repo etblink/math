@@ -1285,5 +1285,49 @@
     "consumer_passed": true,
     "next_gate": "P3-AUX-G0B1",
     "next_gate_status": "RESEARCH_NOT_STAGED"
+  },
+  "parallel_auxiliary_bosonic_commutation_experiment": {
+    "date": "2026-11-13",
+    "gate": "P3-AUX-G0B1",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "qualification": false,
+    "candidate_sha": "4a1425588021ac88736253a2978d3c4acc22747c",
+    "run_id": 43526064993,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B1OriginalReciprocalBosonGaugeCommutation.lean",
+    "source_blob": "18ec705a7a67370c79d6010657d367dc4448d653",
+    "consumer": "lean/diagnostics/BFSSP3AuxG0B1OriginalReciprocalBosonGaugeCommutationIndependentConsumer.lean",
+    "consumer_blob": "f45d0a97cc475b04205aeddfd290248f7e3b529f",
+    "workflow": ".github/workflows/bfss-p3-aux-g0b1-original-reciprocal-boson-gauge-comm-strict.yml",
+    "workflow_blob": "08db24155cbc9eb8e9fa2d85eaa42381ecdffc66",
+    "memo": "research/spectral-p2-original-field/P3_AUX_G0B1_ORIGINAL_RECIPROCAL_BOSON_GAUGE_COMMUTATION_PROSPECTIVE_2026_11_13.md",
+    "expected_roots": [
+      "originalReciprocalFullL2CLM_bosonPullback_comm"
+    ],
+    "frozen_sources": {
+      "Core": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "R0A": "a67f8740586588c6d4ee9c9148574c81c14d4937",
+      "R0B1": "d1cbb8077799236e5e1b82704270bdb9ab9153b4",
+      "R0B2A": "e2a02b551486cfbc2a723f5b5ff0b282177c5e76",
+      "G0A": "2e89826685d77551405cb17f707ae3b47ecc80e1",
+      "G0B0": "670cc600fdc42a03d21de759e8b46b6cb1306874",
+      "G4J": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea"
+    },
+    "accepted_predecessors": [
+      43510200014,
+      43516234402,
+      43521745235,
+      43521457638,
+      43523896876
+    ],
+    "scope": "Bosonic-only exact original gauge pullback commutation of the accepted bounded reciprocal operator on true FullL2 2",
+    "exclusions": [
+      "no fermion fiber gauge commutation",
+      "no physicalSpace preservation",
+      "no Haar commutation",
+      "no infinitesimal Gauss generator",
+      "no original 16-output PiLp action",
+      "no weighted charge/Hamiltonian/gap"
+    ],
+    "next_decision": "If strict source and native consumer 1-root standard-axiom GREEN, accept bosonic commutation only; next fermionic fiberAction and physicalSpace preservation gates. If RED preserve first causal and repair narrowly."
   }
 }
