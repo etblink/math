@@ -636,6 +636,62 @@
         "bounded_L2_multiplier_qualified": false,
         "auxiliary_H_or_gap_qualified": false
       }
+    },
+    {
+      "id": "E-P3-AUX-R0B2A-R1",
+      "title": "Native original FullL2 complex-linear bounded reciprocal L-infty action",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "phase": "AUXILIARY_AFTER_R0B1_LINFTY_GREEN",
+      "classification": "SOURCE_EXACT_FOCK_VALUED_L2_BOUNDED_OPERATOR_EXCLUDES_PHYSICAL_H",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "The original BFSS radial reciprocal field is formally qualified in L-infty, and original FullL2 2 is Fock-valued L2 on the same bosonic volume.",
+        "question": "Can pinned Mathlib Holder L∞×L² multiplication define a bounded complex-linear operator on exact original FullL2 2 with native norm bound?",
+        "background": [
+          "R0A scalar original radial source #43510200014 GREEN",
+          "R0B1 genuine original complex L-infty factor #43516234402 GREEN",
+          "Original Core.lean FullL2 2 = Lp (Fermion 2) 2 volume",
+          "Mathlib Holder.lean at d13f23b7: instInfty, Lp.add_smul, Lp.smul_comm, Lp.norm_smul_le",
+          "All R0B1 R1/R2 parser red ledgers preserved"
+        ],
+        "hypothesis": "The qualified L-infty reciprocal factor multiplies the original Fock-valued L2 via Hölder exponent triple top,2,2; this multiplication is complex-linear and bounded by the L-infty factor norm.",
+        "falsifiers": [
+          "HolderTriple or Lp heterogeneous smul fails at exact original Fock/L2 types",
+          "Source linear map additivity, complex scalar compatibility or norm estimate fails",
+          "Independent consumer and exact 16-output carrier anchor fail under pinned Lean",
+          "Compiler outputs sorryAx, extra axioms, or original source hashes fail",
+          "Gate accidentally needs a different configuration measure or substitute Fock space"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "qualified reciprocal positive regularization epsilon",
+            "native original Fock-valued L2 input"
+          ],
+          "dependent_variables": [
+            "source linear map",
+            "Hölder norm bound",
+            "continuous linear map",
+            "native independent consumer"
+          ],
+          "controls": [
+            "Lean 4.34.1 Mathlib d13f23b7",
+            "original Core blob immutable",
+            "R0A/R0B1 source frozen",
+            "five exact roots and allowed axioms",
+            "same original volume and Fermion2 carrier"
+          ]
+        },
+        "analysis_plan": "Run exact strict job #43518502567 cold source, independent consumer, five axiom checks and artifact; if red isolate earliest typeclass or statement mismatch, do not conflate with mathematical falsity; if green promote bounded FullL2 map only.",
+        "conclusion_rule": "LEAN_QUALIFIED only if exact strict source/consumer and allowed axioms GREEN. No PiLp, weighted Hamiltonian or physical gap inference.",
+        "communication": "Staged source/consumer/workflow/memo with original immutable pins and exact pending run; preserve first-causal R1 red or immutable green receipt."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "mathematical_qualification": false,
+        "strict_run_id": 43518502567,
+        "candidate_sha": "2abbdf6c399b86e14ea6133fd7ea6689bef78a3b"
+      }
     }
   ],
   "allowed_statuses": [
