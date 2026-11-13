@@ -36,8 +36,8 @@
   "active": {
     "gate": "P3-M2B2B0",
     "status": "PENDING_STRICT_CI",
-    "run_id": null,
-    "candidate_sha": "d4eab26dc0623c4d074cc8d5c989a98b31b512d5",
+    "run_id": 43364964618,
+    "candidate_sha": "ba38ecf28450e54b33be72d9a7d67af0b89f23aa",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2B0OriginalFockOperatorHSContinuousEquiv.lean",
     "consumer": "lean/diagnostics/BFSSP3M2B2B0OriginalFockOperatorHSContinuousEquivIndependentConsumer.lean",
     "source_blob": "3344283458bce762149d2ef00c445b1608bdb725",
@@ -50,8 +50,8 @@
       "run_id": 43361307455,
       "tested_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b"
     },
-    "reported_strict_status": "NOT_YET_OBSERVED",
-    "status_detail": "B0 source+independent original Fock consumer and 88 exact pins STAGED, no strict Lean verdict yet. Prospective receipt at d4eab26d precedes this first B0 theorem commit.",
+    "reported_strict_status": "QUEUED_OR_RUNNING_UNQUALIFIED",
+    "status_detail": "88-pin strict #43364964618 started at exact ba38ecf2; prospective receipt committed earlier d4eab26d. No Lean qualification yet.",
     "scope": "Actual original-Fock continuous operator norm ↔ distinct M2A HS fiber norm equivalence with existing M2B2A bounds, forward source basis law and inverse source operator law. No operator-valued Lp fields or a.e. reconstruction.",
     "not_proved": [
       "Original operator norm equals HS norm",
@@ -60,7 +60,9 @@
       "M4 Spin9 continuous",
       "M5 original closed Hamiltonian",
       "M6–M8 spectral claims"
-    ]
+    ],
+    "strict_workflow_tested_head_sha": "ba38ecf28450e54b33be72d9a7d67af0b89f23aa",
+    "run_url": "https://github.com/etblink/math/actions/runs/43364964618"
   },
   "if_green": "Only accept B0 after same SHA strict 88-pin validation, cold original-source Lean build, exact Fock independent consumer and three allowed-axiom audits; follow with prospective B1 original operator-valued Lp field plan.",
   "if_red": "Classify first causal B0 source/consumer/preflight failure; preserve evidence, make smallest repair, no source operator norm redefinition or compiler limit inflation.",
@@ -138,7 +140,8 @@
     "decision": "GO FOR B0 ONLY after prospective receipt commit. No mathematical source staged in this commit; defer B1 actual measurable original operator-valued Lp.",
     "expected_manifest_pins": 88,
     "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2B0OriginalFockOperatorHSContinuousEquiv.lean",
-    "expected_consumer": "lean/diagnostics/BFSSP3M2B2B0OriginalFockOperatorHSContinuousEquivIndependentConsumer.lean"
+    "expected_consumer": "lean/diagnostics/BFSSP3M2B2B0OriginalFockOperatorHSContinuousEquivIndependentConsumer.lean",
+    "tested_candidate_sha": "ba38ecf28450e54b33be72d9a7d67af0b89f23aa"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2B2A_GREEN_43361307455_ACCEPTANCE_AND_M2B2B_RESEARCH_HANDOFF_2026_11_12.md",
   "monograph_alignment": {
