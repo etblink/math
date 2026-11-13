@@ -1,6 +1,7 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxR0B2AOriginalReciprocalFullL2BoundedAction
 set_option autoImplicit false
 namespace BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedActionIndependentConsumer
+noncomputable section
 open OAI.BFSSQuantum
 open FCP.BFSSP3AuxR0AOriginalRadialScalar
 open FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity
