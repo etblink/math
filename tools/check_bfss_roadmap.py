@@ -32,7 +32,7 @@ def main():
     require(s.get("roadmap") == ROADMAP_PATH.name, "canonical roadmap moved")
     require(re.fullmatch("M[1-8]", s.get("milestone", "")) is not None, "milestone must be M1-M8")
     q, a = s["last_qualified"], s["active"]
-    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M2[A-Z][0-9]*(?:[A-Z][0-9]*)?)")
+    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M[23][A-Z][0-9]*(?:[A-Z][0-9]*)?)")
     require(gate_rx.fullmatch(q.get("gate", "")) is not None, "qualified gate ID malformed")
     require(gate_rx.fullmatch(a.get("gate", "")) is not None, "active gate ID malformed")
     require(q["verdict"] == "GREEN", "last qualified verdict not GREEN")
@@ -141,6 +141,16 @@ def main():
                     "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_B2_M2C0_ACCEPTED_M2C1_UNSTAGED",
                     "M1_COMPLETE_M2A_M2B1_M2B2A_B0_B1_B2_M2C0_ACCEPTED_M2C1_STAGED_UNQUALIFIED"},
                 "M2C0 qualified requires explicit original operator Lp vs Fock column norm-bound M2C1 handoff")
+    if s["milestone"] == "M3" and q["gate"] == "P3-M2C1":
+        require(s["next_planned"]["gate"] == "P3-M3G0" and
+                s["next_planned"]["status"] == "RESEARCH_DESIGN_NOT_STAGED" and
+                s["stage_transition"]["status"] == "M2_SCOPE_COMPLETE_M3G0_RESEARCH_UNSTAGED",
+                "M2C1 qualified requires M3-G0 source gauge research-only handoff")
+        review = s.get("priority_review", {})
+        require(review.get("status") == "M2_SCOPED_MATH_COMPLETE_M3_RESEARCH_ONLY" and
+                (ROOT / review.get("review", "__missing__")).is_file() and
+                (ROOT / review.get("acceptance", "__missing__")).is_file(),
+                "M2 closure and M3 prioritized reuse receipts absent")
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
                 a["manifest_pins"] == q["manifest_pins"] and
@@ -172,7 +182,7 @@ def main():
         if not filename.startswith(source_dir):
             continue
         stem = Path(filename).stem
-        if stem.startswith(("P3D5", "P3M2")) and filename.endswith(".lean"):
+        if stem.startswith(("P3D5", "P3M2", "P3M3")) and filename.endswith(".lean"):
             require(filename == a["source"],
                     "P3 spectral source changed outside active source root: " +
                     filename + " (active " + a["source"] + ")")
