@@ -7,7 +7,7 @@
       "id": "E-M7-001-R1",
       "title": "Prospective independent replication of source 48x48 fermion sharp-constant candidate",
       "registered_at": "2026-11-12",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "INCONCLUSIVE",
       "phase": "M7_PRE_GATE_PARALLEL",
       "classification": "COMPUTATIONAL_COEFFICIENT_MODEL_NOT_PHYSICAL_FIELD_THEOREM",
       "prior_exploration_retroactively_registered": false,
@@ -80,9 +80,23 @@
         "communication": "Record exact commit, script SHA, environment, raw output hash, independent reproduction and a plain-language verdict in the experiment registry and linked research note."
       },
       "result": {
-        "status": "NO_NEW_EXECUTION_RECEIPT",
+        "status": "INCONCLUSIVE",
+        "execution_attempts": [
+          {
+            "attempt": 1,
+            "run_id": 43335288061,
+            "sha": "ce67c9bba1a5b8b5498362409fd50b94af28e332",
+            "run_conclusion": "FAILURE",
+            "phase": "baseline optional symbolic 12x12 polynomial identity structural equality",
+            "first_cause": "SymPy Matrix equality compared unexpanded expression structure; 36 entries syntactically nonzero but all expand identically to zero",
+            "independent_algorithm_executed": false,
+            "artifact_id": 13996992812,
+            "artifact_digest": "sha256:99d9e1bebd991e7052a8a5f584bb7ea766ffd3afb6710734c3f5698e8b1e5f49",
+            "verdict": "APPARATUS_ERROR_INCONCLUSIVE_NOT_HYPOTHESIS_FALSIFICATION"
+          }
+        ],
+        "next_attempt": "Repeat same preregistered R1 variables/seed/tolerance using exact SymPy expansion; retain original failed CI; independent algorithm must complete",
         "data_path": null,
-        "run_sha": null,
         "independent_reproduction": null
       },
       "qualified_physical_claim": false,
