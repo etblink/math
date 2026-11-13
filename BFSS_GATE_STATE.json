@@ -34,8 +34,8 @@
   "active": {
     "gate": "P3-M2A",
     "status": "PENDING_STRICT_CI",
-    "candidate_sha": "979c0573cb1b908cd8365ecfde28887dc89b8b2a",
-    "run_id": 43349181533,
+    "candidate_sha": "cc7b22d051559328a11a79ad744ab06bff7c2dad",
+    "run_id": null,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2AOriginalFockHSFiber.lean",
     "consumer": "lean/diagnostics/BFSSP3M2AOriginalFockHSFiberIndependentConsumer.lean",
     "source_blob": "1d05f5dcd5f6df6b6bad7359f03850e2965c1b1f",
@@ -44,7 +44,7 @@
     "goal": "Distinct original-Fermion-2 HS finite operator fiber, original Fock bounded-operator linear equivalence and source physical-star trace-inner identification",
     "expected_strict_workflow": ".github/workflows/bfss-p3-m2a-original-fock-hs-fiber-strict.yml",
     "accepted_predecessor": "P3-D5B4B, strict GREEN #43343959865, 79 exact pins",
-    "status_detail": "M2A source/consumer/workflow submitted in commit 979c0573; exact CI #43349181533 pending. Strict verdict cannot be assumed.",
+    "status_detail": "R1 failed preflight manifest duplicate keys; R2 bounded workflow-only repair staged, pending exact CI run assignment",
     "not_proved": [
       "operator norm equals HS norm (false in general)",
       "M2B operator-valued L2 bridge",
@@ -54,11 +54,22 @@
       "M6–M8 sector compactness/positive spectrum"
     ],
     "run_url": "https://github.com/etblink/math/actions/runs/43349181533",
-    "strict_workflow_tested_head_sha": "979c0573cb1b908cd8365ecfde28887dc89b8b2a",
-    "reported_strict_status": "QUEUED_OR_RUNNING_NOT_QUALIFIED"
+    "strict_workflow_tested_head_sha": null,
+    "reported_strict_status": "NEW_RUN_NOT_YET_OBSERVED",
+    "previous_red": {
+      "run_id": 43349181533,
+      "tested_sha": "979c0573cb1b908cd8365ecfde28887dc89b8b2a",
+      "job_id": 131635780370,
+      "artifact_id": 14003566048,
+      "cause": "81-entry textual manifest had 79 unique dict keys; B4B source/consumer paths had been renamed to the M2A paths, then M2A entries appended, so duplicate-key overwrite made assert len(pins)==81 fail",
+      "phase": "PREFLIGHT_BEFORE_LEAN",
+      "qualification": "NO_LEAN_VERDICT",
+      "receipt": "research/spectral-p2-original-field/P3_M2A_R1_RED_43349181533_MANIFEST_DUPLICATE_KEY_2026_11_12.md",
+      "repair": "Restore exact B4B original paths with accepted blobs, retain M2A source/consumer blobs unchanged; regenerate same 81 exact pins"
+    }
   },
   "if_green": "Verify exact M2A strict run tested SHA, 81 source pins, original operator consumer, cold build, six named axioms; promote only finite HS carrier/trace pairing. Plan M2B later.",
-  "if_red": "Preserve M2A first causal source/consumer/preflight red. Fix only bounded issue; never redefine the original continuous-linear-operator norm or promote an unrelated model.",
+  "if_red": "If M2A R2 red, inspect first causal phase independently and preserve full logs; if Lean fails, do not diagnose it as R1 preflight. Keep source and consumer intact until causal diagnosis.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
