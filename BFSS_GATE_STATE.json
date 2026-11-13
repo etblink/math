@@ -1365,5 +1365,51 @@
     "receipt": "research/spectral-p2-original-field/P3_AUX_G0B1_R2_GREEN_43527998761_ORIGINAL_BOSON_PULLBACK_COMMUTATION_ACCEPTANCE_2026_11_13.md",
     "next_gate": "P3-AUX-G0B2",
     "next_gate_status": "RESEARCH_NOT_STAGED"
+  },
+  "parallel_auxiliary_fermionic_commutation_experiment": {
+    "date": "2026-11-13",
+    "gate": "P3-AUX-G0B2",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "qualification": false,
+    "candidate_sha": "0d8502371d2621d06068e6b8ea8d3f01e30ff98e",
+    "run_id": 43530051259,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B2OriginalReciprocalFermionGaugeCommutation.lean",
+    "source_blob": "7ca1cb15d094a695b3c1ee707e8835caaf0e847e",
+    "consumer": "lean/diagnostics/BFSSP3AuxG0B2OriginalReciprocalFermionGaugeCommutationIndependentConsumer.lean",
+    "consumer_blob": "55fbf74c19b3224faa1db25a956ace44f4aa3a99",
+    "workflow": ".github/workflows/bfss-p3-aux-g0b2-original-reciprocal-fermion-gauge-comm-strict.yml",
+    "workflow_blob": "5123b682155fb9f293318bbd47aa3c78b94c41ca",
+    "memo": "research/spectral-p2-original-field/P3_AUX_G0B2_ORIGINAL_RECIPROCAL_FERMION_GAUGE_COMMUTATION_PROSPECTIVE_2026_11_13.md",
+    "expected_roots": [
+      "originalReciprocalFullL2CLM_fiberAction_comm"
+    ],
+    "frozen_sources": {
+      "Core": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "R0A": "a67f8740586588c6d4ee9c9148574c81c14d4937",
+      "R0B1": "d1cbb8077799236e5e1b82704270bdb9ab9153b4",
+      "R0B2A": "e2a02b551486cfbc2a723f5b5ff0b282177c5e76",
+      "G0A": "2e89826685d77551405cb17f707ae3b47ecc80e1",
+      "G0B0": "670cc600fdc42a03d21de759e8b46b6cb1306874",
+      "G0B1": "28d0ed07d97008b4075b849b7dafd2d837a01423",
+      "G4J": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea"
+    },
+    "accepted_predecessors": [
+      43510200014,
+      43516234402,
+      43521745235,
+      43521457638,
+      43523896876,
+      43527998761
+    ],
+    "scope": "Exact original Fock-valued FullL2 2 bounded reciprocal Bε commutes with source pairedGaugeData.fiberAction g using complex linearity; distinct from original bosonic gauge pullback.",
+    "exclusions": [
+      "no physicalSpace preservation",
+      "no full gauge combined operator",
+      "no Haar projection commutation",
+      "no infinitesimal Gauss generator domain",
+      "no original 16-output PiLp action",
+      "no injectivity inverse or weighted charge/Hamiltonian/gap"
+    ],
+    "next_decision": "If strict exact source and original consumer with sole standard-axiom root GREEN, accept fermionic-only commutation; then prove literal GaugeCore.physicalSpace preservation in separate G0B3 microgate. If RED preserve first causal and fix narrowly."
   }
 }

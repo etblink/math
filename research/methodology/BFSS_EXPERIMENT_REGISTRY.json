@@ -1148,6 +1148,64 @@
         "fermionic_commutation_qualified": false,
         "auxiliary_H_or_gap_qualified": false
       }
+    },
+    {
+      "id": "E-P3-AUX-G0B2-R1",
+      "title": "Original full Fock L2 radial reciprocal commutes with exact fermionic fiber SU2 gauge action",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "phase": "AUXILIARY_GAUSS_FERMIONIC_FIBER_OPERATOR",
+      "classification": "SOURCE_EXACT_FERMONIC_FIBER_ONLY",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "The accepted bounded reciprocal action on original FullL2 2 acts AE by a complex scalar, and the genuine fermionic group action on the 48-theta Fock fiber is complex-linear.",
+        "question": "Does the original bounded radial reciprocal CLM commute with actual pairedGaugeData.fiberAction g for every original SU2 group element?",
+        "background": [
+          "Original R0B2A strict #43521745235 source bounded reciprocal CLM",
+          "Original G0B0 strict #43523896876 literal field AE action",
+          "Original G0B1 strict #43527998761 bosonPullback commutation",
+          "Original G4J fermion representation exact six-field assembly",
+          "Source D2B7 prior coeFn_compLp proof template",
+          "Pinned Mathlib ContinuousLinearMap.coeFn_compLp and complex LinearIsometryEquiv.map_smul"
+        ],
+        "hypothesis": "The scalar reciprocal multiplier commutes with exact complex-linear Fock gauge action pointwise a.e.; no bosonic pullback or gauge-fixed subspace argument is required.",
+        "falsifiers": [
+          "An original field/fiber type mismatch",
+          "Native Lp map's AE equation fails source elaboration",
+          "Complex linearity map_smul does not match pinned representation",
+          "Independent consumer or allowed-axiom audit fails",
+          "Source and toolchain pin drift"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "SU2 group g",
+            "positive epsilon",
+            "native Fock FullL2 f"
+          ],
+          "dependent_variables": [
+            "one exact fermionic commutation proof root",
+            "original independent consumer pass",
+            "strict axiom audit"
+          ],
+          "controls": [
+            "Core/R0A/R0B1/R0B2A/G0A/G0B0/G0B1/G4J source frozen",
+            "true volume and full source Fock L2",
+            "Lean 4.34.1 Mathlib d13f23b7",
+            "no physical Hamiltonian change"
+          ]
+        },
+        "analysis_plan": "Inspect run #43530051259 exact tested SHA, original cold build, independent consumer, sole source/consumer axioms; if red record earliest compiler diagnostic before bounded change.",
+        "conclusion_rule": "Only exact whole strict GREEN qualifies fermionic commutation. No physicalSpace, combined gauge projector, PiLp, weighted H or spectral result is implied by this gate alone.",
+        "communication": "Preserve prior G0B1 R1 red and R2 green receipts and source pins; current original M5BF0 physical operator remains accepted."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "mathematical_qualification": false,
+        "strict_run_id": 43530051259,
+        "candidate_sha": "0d8502371d2621d06068e6b8ea8d3f01e30ff98e",
+        "source_blob": "7ca1cb15d094a695b3c1ee707e8835caaf0e847e",
+        "consumer_blob": "55fbf74c19b3224faa1db25a956ace44f4aa3a99"
+      }
     }
   ],
   "allowed_statuses": [
