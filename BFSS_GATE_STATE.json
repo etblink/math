@@ -1289,12 +1289,12 @@
   "parallel_auxiliary_bosonic_commutation_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-G0B1",
-    "status": "RED_UNQUALIFIED",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
     "qualification": false,
-    "candidate_sha": "4a1425588021ac88736253a2978d3c4acc22747c",
-    "run_id": 43526064993,
+    "candidate_sha": "233efc9273dfa17a3553445a14ccee51210930ce",
+    "run_id": 43527998761,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B1OriginalReciprocalBosonGaugeCommutation.lean",
-    "source_blob": "18ec705a7a67370c79d6010657d367dc4448d653",
+    "source_blob": "28d0ed07d97008b4075b849b7dafd2d837a01423",
     "consumer": "lean/diagnostics/BFSSP3AuxG0B1OriginalReciprocalBosonGaugeCommutationIndependentConsumer.lean",
     "consumer_blob": "f45d0a97cc475b04205aeddfd290248f7e3b529f",
     "workflow": ".github/workflows/bfss-p3-aux-g0b1-original-reciprocal-boson-gauge-comm-strict.yml",
@@ -1328,7 +1328,7 @@
       "no original 16-output PiLp action",
       "no weighted charge/Hamiltonian/gap"
     ],
-    "next_decision": "R2 one-line source proof congrArg instead of syntactic rw, no declaration or consumer changes; only strict new GREEN qualifies.",
+    "next_decision": "Require new strict G0B1 R2 original source theorem and unchanged consumer/axiom GREEN. If RED preserve first causal. Do not promote until full pass.",
     "strict_conclusion": "failure",
     "r1_red": {
       "run_id": 43526064993,
@@ -1342,6 +1342,8 @@
       "artifact_digest": "sha256:963c0d32cba1e1721d5427e2c5d9c8e374a1455e4af9601cf776350450f15b75",
       "receipt": "research/spectral-p2-original-field/P3_AUX_G0B1_R1_RED_43526064993_FIRST_CAUSAL_2026_11_13.md",
       "source_qualified": false
-    }
+    },
+    "attempt_label": "R2_DEFINITIONALLY_TYPED_LP_PULLBACK_CONGRUENCE",
+    "prospective_r2": "research/spectral-p2-original-field/P3_AUX_G0B1_R2_PROSPECTIVE_LITERAL_PULLBACK_CONGRUENCE_REPAIR_2026_11_13.md"
   }
 }
