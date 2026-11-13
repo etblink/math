@@ -364,6 +364,63 @@
         "physical_mass_scale_derived": false,
         "spectral_gap_proved": false
       }
+    },
+    {
+      "id": "E-P3-AUX-R0A-R1",
+      "title": "Original BFSS SU2 scalar radial regularization strict microgate",
+      "registered_at": "2026-11-13",
+      "status": "LEAN_QUALIFIED",
+      "phase": "PARALLEL_AUXILIARY_SCALAR_PREREQUISITE_AFTER_M5BF0_GREEN",
+      "classification": "SOURCE_EXACT_SCALAR_LEAN_NOT_LP_MULTIPLIER",
+      "qualified_physical_claim": false,
+      "source_artifact": {
+        "source_sha": "a67f8740586588c6d4ee9c9148574c81c14d4937",
+        "consumer_sha": "aecf44061b26ccf6214d51826a1541d5ced87e48",
+        "original_core_sha": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+        "workflow_sha": "1acd94e04f91ede31641a2646ace5705ddc843fa",
+        "receipt": "research/spectral-p2-original-field/P3_AUX_R0A_R1_GREEN_43510200014_SCALAR_ACCEPTANCE_2026_11_13.md"
+      },
+      "stages": {
+        "observation": "Unbounded positive radial multiplication is desired; the strictly positive scalar epsilon-regularized weight has a bounded pointwise reciprocal.",
+        "question": "Can the exact native original SU2 Boson 2 pointwise weight and reciprocal identities be compiled with independent consumer and standard-only axioms?",
+        "hypothesis": "For epsilon>0, sqrt(||X||²+epsilon²)>=epsilon and complex inverse cancellation holds; these source facts require no artificial outer cutoff.",
+        "experiment": {
+          "independent_variables": [
+            "positive real epsilon",
+            "native boson configuration X"
+          ],
+          "dependent_variables": [
+            "source-typed squared weight",
+            "positivity and lower bound",
+            "inverse bound and cancellation"
+          ],
+          "controls": [
+            "frozen original Core.lean blob",
+            "Lean 4.34.1 and pinned Mathlib",
+            "independent original PiLp carrier consumer",
+            "strict compiler root axiom audit"
+          ]
+        },
+        "conclusion_rule": "Accept scalar source facts only on exact strict GREEN; do not infer Lp operator or auxiliary H.",
+        "communication": "Exact immutable run SHA, artifact digest, axiom roots, accepted receipt, and next distinction preserved in canonical branch."
+      },
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 43510200014,
+        "job_id": 132178140869,
+        "tested_sha": "481c6e9cbacebac1eaec0c8c625c8618589fef98",
+        "new_roots": 5,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "artifact_id": 14079185350,
+        "digest": "sha256:4280aa89836410fad4583f078b5d345f323ef12287421a32135336e405862c9e",
+        "original_native_physical_operator_gate_unchanged": "P3-M5BF0",
+        "bounded_Lp_multiplier_proved": false,
+        "auxiliary_H_or_gap_proved": false
+      }
     }
   ],
   "allowed_statuses": [
