@@ -182,8 +182,8 @@ def main():
                     }, "M5BE0 pending source receipt/transition mismatch")
     port_bf = a.get("gate") == "P3-M5BF0"
     if port_bf:
-        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"},
-                "BF0 is not accepted without an exact strict receipt")
+        require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED", "GREEN_QUALIFIED"},
+                "BF0 state outside strict acceptance phases")
         require(a.get("source") == "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean"
                 and a.get("source_blob") == "f954917f21669fd68befc12f48a2b092b71a9044"
                 and a.get("consumer") == "lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean"
@@ -195,27 +195,59 @@ def main():
                 "BF0 source/consumer/prior qualified source SHA drift")
         require(a.get("manifest_baseline_sha") ==
                     "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5"
-                and a.get("manifest_pins") is None
                 and a.get("new_root_count") == 3
                 and a.get("historical_BF_root_count") == 9
                 and a.get("accepted_donor_root_count") == 2
-                and a.get("workflow") == ".github/workflows/bfss-p3-m5bf0-native-graph-nonzero-h-domain-strict.yml",
-                "BF0 prospective closure/axiom scope changed")
-        require(q.get("gate") == "P3-M5BE0"
-                and q.get("run_id") == 43493125150
-                and q.get("tested_sha") ==
-                    "10a9e7e3419f8b02b5e920c60e07facf8602fb42"
-                and q.get("source_blob") == "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1"
-                and q.get("manifest_pins") == 202
-                and q.get("artifact_id") == 14070858752,
-                "BF0 cannot supersede previous BE0 exact accepted source")
-        require(s.get("next_planned", {}).get("gate") == "P3-M5BF0"
-                and s.get("next_planned", {}).get("status") ==
-                    "STRICT_WORKFLOW_STAGED_PENDING"
-                and s.get("m5bf0_prospective", {}).get("status") ==
-                    "STAGED_UNQUALIFIED"
+                and a.get("workflow") == ".github/workflows/bfss-p3-m5bf0-native-graph-nonzero-h-domain-strict.yml"
                 and (ROOT / a.get("prospective_receipt", "__missing__")).is_file(),
-                "BF0 prospective file/status not recorded")
+                "BF0 prospective source closure/14-root audit scope drift")
+        if a["status"] == "GREEN_QUALIFIED":
+            receipt = "research/spectral-p2-original-field/P3_M5BF0_R1_GREEN_43498649514_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_ACCEPTANCE_2026_11_13.md"
+            require(q.get("gate") == "P3-M5BF0"
+                    and q.get("run_id") == 43498649514
+                    and q.get("tested_sha") == "f2499980b808b6c9ddf2c6093f5b88ebff8b825f"
+                    and q.get("job_id") == 132138306349
+                    and q.get("manifest_pins") == 208
+                    and q.get("source_blob") == "f954917f21669fd68befc12f48a2b092b71a9044"
+                    and q.get("consumer_blob") == "3d00bacf4b8e8cbf88c28d821d6b13336d23a2c2"
+                    and q.get("workflow_blob") == "40e56e2ddd53bfbc325a8991e94b3bf34d537e8e"
+                    and q.get("original_BF_blob") == "fd137fc6f62f42d96bcf6ff3eb9355839a59d562"
+                    and q.get("artifact_id") == 14074535971
+                    and q.get("digest") ==
+                        "sha256:cd1ff2d72b54be0fd806ba8e962cff57637f9c4dc47e422f53505c347132ca18"
+                    and q.get("declarations") == ["originalPairedChargeGraph_eq_sourceRebased","originalPairedH_eq_accepted_BE","originalPairedH_naturalDomain_has_nonzero"]
+                    and q.get("allowed_axioms") == ["propext", "Classical.choice", "Quot.sound"]
+                    and a.get("manifest_pins") == 208
+                    and a.get("candidate_sha") == q.get("tested_sha")
+                    and a.get("run_id") == q.get("run_id")
+                    and s.get("m5bf0_prospective", {}).get("status") == "GREEN_QUALIFIED"
+                    and s.get("next_planned", {}).get("gate") == "P3-M5BG0"
+                    and s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED"
+                    and (ROOT / receipt).is_file(),
+                    "BF0 exact source/consumer GREEN or BG research-only handoff missing")
+            prior = s.get("previous_qualified", {})
+            require(prior.get("gate") == "P3-M5BE0"
+                    and prior.get("run_id") == 43493125150
+                    and prior.get("manifest_pins") == 202
+                    and prior.get("artifact_id") == 14070858752,
+                    "BF0 acceptance erased M5BE0 current physical Hamiltonian qualification")
+        else:
+            require(a.get("manifest_pins") is None,
+                    "BF0 must not invent source count before strict run")
+            require(q.get("gate") == "P3-M5BE0"
+                    and q.get("run_id") == 43493125150
+                    and q.get("tested_sha") ==
+                        "10a9e7e3419f8b02b5e920c60e07facf8602fb42"
+                    and q.get("source_blob") == "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1"
+                    and q.get("manifest_pins") == 202
+                    and q.get("artifact_id") == 14070858752,
+                    "BF0 cannot bypass accepted BE0 provenance")
+            require(s.get("next_planned", {}).get("gate") == "P3-M5BF0"
+                    and s.get("next_planned", {}).get("status") ==
+                        "STRICT_WORKFLOW_STAGED_PENDING"
+                    and s.get("m5bf0_prospective", {}).get("status") ==
+                        "STAGED_UNQUALIFIED",
+                    "BF0 pending original source/consumer status drift")
     if a["status"] == "RESEARCH_ONLY_NOT_STAGED":
         require(a.get("candidate_sha") is None and a.get("run_id") is None,
                 "unstaged research cannot claim exact tested CI")

@@ -6,53 +6,50 @@
   "milestone": "M3",
   "last_reviewed_date": "2026-11-13",
   "last_qualified": {
-    "gate": "P3-M5BE0",
+    "gate": "P3-M5BF0",
     "verdict": "GREEN",
-    "run_id": 43493125150,
+    "run_id": 43498649514,
     "run_attempt": 1,
-    "tested_sha": "10a9e7e3419f8b02b5e920c60e07facf8602fb42",
-    "job_id": 132119186214,
-    "manifest_pins": 202,
-    "manifest_hash": "f35e7cf381be16c6ad214b9a757a23c95b7e527c27bfb770e40b67457e2f1b45",
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BE0OriginalNativeHamiltonianPort.lean",
-    "source_blob": "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1",
-    "consumer": "lean/diagnostics/BFSSP3M5BE0OriginalNativeHamiltonianPortIndependentConsumer.lean",
-    "consumer_blob": "9d20905d5509be44baf2374fc1bf0eb8820969eb",
-    "workflow": ".github/workflows/bfss-p3-m5be0-original-native-hamiltonian-port-strict.yml",
-    "workflow_blob": "1fffc09202d4a42aff9508214ca0edbb6757c39d",
-    "original_BE_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean",
-    "original_BE_blob": "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
-    "original_BE_donor_count": 14,
-    "declaration_count": 7,
+    "job_id": 132138306349,
+    "tested_sha": "f2499980b808b6c9ddf2c6093f5b88ebff8b825f",
+    "manifest_pins": 208,
+    "manifest_hash": "7a5e667c122a185c819b5bfcc919bde33a30670408415b6e51f663512d87133f",
+    "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean",
+    "source_blob": "f954917f21669fd68befc12f48a2b092b71a9044",
+    "consumer": "lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean",
+    "consumer_blob": "3d00bacf4b8e8cbf88c28d821d6b13336d23a2c2",
+    "workflow": ".github/workflows/bfss-p3-m5bf0-native-graph-nonzero-h-domain-strict.yml",
+    "workflow_blob": "40e56e2ddd53bfbc325a8991e94b3bf34d537e8e",
+    "original_BF_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BFOriginalSourceGraphAndPairedHamiltonianProbe.lean",
+    "original_BF_blob": "fd137fc6f62f42d96bcf6ff3eb9355839a59d562",
+    "new_root_count": 3,
     "declarations": [
-      "originalPairedNormalizedH_eq_charge_square",
-      "originalPairedNormalizedH_naturalDomain",
-      "originalPairedNormalizedH_apply",
-      "originalPairedNormalizedH_selfAdjoint",
-      "originalPairedNormalizedH_closed",
-      "originalPairedNormalizedH_domain_dense",
-      "originalPairedNormalizedH_weakForm_iff"
+      "originalPairedChargeGraph_eq_sourceRebased",
+      "originalPairedH_eq_accepted_BE",
+      "originalPairedH_naturalDomain_has_nonzero"
     ],
+    "BF_donor_root_count": 9,
+    "previous_acceptance_root_count": 2,
     "allowed_axioms": [
       "propext",
       "Classical.choice",
       "Quot.sound"
     ],
-    "strict_marker": "BFSS_P3_M5BE0_ORIGINAL_NATIVE_PHYSICAL_H_STRICT_GREEN",
-    "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
-    "artifact_id": 14070858752,
-    "artifact_size_bytes": 25884,
-    "digest": "sha256:77f7b59ba52f6f824ab8915176f70e90d7d3825827c9453a4b3e8415a5524375",
-    "receipt": "research/spectral-p2-original-field/P3_M5BE0_R2_GREEN_43493125150_NATIVE_HAMILTONIAN_PORT_ACCEPTANCE_AND_BF_HANDOFF_2026_11_13.md",
-    "scope": "Requalified exact original imported normalized BE physical sixteen-charge H=(1/16)T†T with precise adjoint-square natural domain, action, self-adjointness, closed graph, dense domain and full weak-form associated-operator iff; 7 paired-data adapter roots + 14 historical BE roots. Does not requalify BF/BG/BH nor construct a point eigenstate/ground state/gap."
+    "strict_marker": "BFSS_P3_M5BF0_SOURCE_GRAPH_NONZERO_H_DOMAIN_STRICT_GREEN",
+    "artifact_id": 14074535971,
+    "artifact_size_bytes": 26489,
+    "digest": "sha256:cd1ff2d72b54be0fd806ba8e962cff57637f9c4dc47e422f53505c347132ca18",
+    "receipt": "research/spectral-p2-original-field/P3_M5BF0_R1_GREEN_43498649514_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_ACCEPTANCE_2026_11_13.md",
+    "scope": "Original actual native paired physical Hilbert charge closed graph equals rebased true gauge-restricted source graph at (h,m)=(1,0); frozen BF paired H equals accepted normalized original BE0 H; existence of some nonzero physical vector in natural H domain. No explicit radial H-domain witness, eigenstate, positive spectrum, global gap, or BG/BH current-source qualification."
   },
   "active": {
     "gate": "P3-M5BF0",
-    "status": "PENDING_STRICT_CI",
+    "status": "GREEN_QUALIFIED",
     "candidate_sha": "f2499980b808b6c9ddf2c6093f5b88ebff8b825f",
     "run_id": 43498649514,
-    "last_qualified_gate": "P3-M5BE0",
-    "last_qualified_run_id": 43493125150,
+    "last_qualified_gate": "P3-M5BF0",
+    "last_qualified_run_id": 43498649514,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean",
     "source_blob": "f954917f21669fd68befc12f48a2b092b71a9044",
     "consumer": "lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean",
@@ -63,11 +60,11 @@
     "accepted_BE0_blob": "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1",
     "accepted_W0_blob": "86823abdddb70d1c2158f8e215fb35760e107fd5",
     "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
-    "manifest_pins": null,
+    "manifest_pins": 208,
     "new_root_count": 3,
     "historical_BF_root_count": 9,
     "accepted_donor_root_count": 2,
-    "strict_verdict": "R1_PENDING_STRICT_CI_UNQUALIFIED",
+    "strict_verdict": "R1_GREEN_VERIFIED_ACCEPTED",
     "prospective_receipt": "research/spectral-p2-original-field/P3_M5BF0_PROSPECTIVE_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_2026_11_13.md",
     "goal": "Source original SU2 AY charge Hilbert graph equality, BF paired native-H alias, and nonzero original H natural-domain witness.",
     "exclusions": [
@@ -75,10 +72,21 @@
       "no specific radial wavepacket H-domain guarantee",
       "no point eigenvector or mass gap"
     ],
-    "workflow_tested_head_sha": "f2499980b808b6c9ddf2c6093f5b88ebff8b825f"
+    "workflow_tested_head_sha": "f2499980b808b6c9ddf2c6093f5b88ebff8b825f",
+    "manifest_hash": "7a5e667c122a185c819b5bfcc919bde33a30670408415b6e51f663512d87133f",
+    "workflow_blob": "40e56e2ddd53bfbc325a8991e94b3bf34d537e8e",
+    "qualification": true,
+    "verified_artifact_id": 14074535971,
+    "verified_artifact_digest": "sha256:cd1ff2d72b54be0fd806ba8e962cff57637f9c4dc47e422f53505c347132ca18",
+    "accepted_receipt": "research/spectral-p2-original-field/P3_M5BF0_R1_GREEN_43498649514_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_ACCEPTANCE_2026_11_13.md",
+    "qualified_declarations": [
+      "originalPairedChargeGraph_eq_sourceRebased",
+      "originalPairedH_eq_accepted_BE",
+      "originalPairedH_naturalDomain_has_nonzero"
+    ]
   },
-  "if_green": "Only after #43498649514 full BF source+consumer+14 audited root GREEN may BF graph and nonzero original H-domain be promoted. BG and BH remain separate.",
-  "if_red": "If #43498649514 is RED, preserve first causal frozen original BF import or new adapter error; M5BE0 GREEN unaffected.",
+  "if_green": "M5BF0 now accepted (208-pins, 3+9+2). BG current original charge operator graph/domain equality is next research-only candidate; BH afterward. Do not import external mass/spectrum as Lean source result.",
+  "if_red": "For BG0 if staged and RED, preserve first-causal diagnostics. Current BF0 accepted proof remains immutable.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -130,26 +138,28 @@
     "scope": "For each exact original SU(2) group element g, diagonal genuine FullL2 2 unitary action on finite PiLp2 columns, transported through qualified M2C0 continuous equivalence to the actual Boson 2 volume Lp of bounded Fermion 2 operators with ORIGINAL operator norm; named column-intertwining, component action, identity, multiplication and inverse-cancellation laws. No original operator-norm isometry, basis independence, a.e. left-output field operator formula, SU2-parameter continuity, full physical fixedness, physical witness, Hamiltonian domain or spectral theorem."
   },
   "next_planned": {
-    "gate": "P3-M5BF0",
-    "status": "STRICT_WORKFLOW_STAGED_PENDING",
-    "milestone": "M5 exact original source graph and nonzero natural Hamiltonian-domain",
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean",
-    "consumer": "lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean",
-    "workflow": ".github/workflows/bfss-p3-m5bf0-native-graph-nonzero-h-domain-strict.yml",
-    "prospective_receipt": "research/spectral-p2-original-field/P3_M5BF0_PROSPECTIVE_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_2026_11_13.md",
-    "new_roots": [
-      "originalPairedChargeGraph_eq_sourceRebased",
-      "originalPairedH_eq_accepted_BE",
-      "originalPairedH_naturalDomain_has_nonzero"
+    "gate": "P3-M5BG0",
+    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "milestone": "M5 original physical charge operator equivalence (BG historical source)",
+    "goal": "Requalify current original AY native physical Hilbert charge full graph/domain equality to historical D2B17 true physical Hilbert charge source, without replacing the native operator or domains.",
+    "historical_BG_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BGOriginalHistoricalPhysicalHilbertChargeEqualityProbe.lean",
+    "historical_BG_blob": "fbbe542085f850156491d9b24d8e48afed0e8ee5",
+    "original_BF_accepted_run": 43498649514,
+    "original_BE0_accepted_run": 43493125150,
+    "source_adapter_staged": false,
+    "independent_consumer_staged": false,
+    "strict_workflow_staged": false,
+    "prospective_BG_roots": [
+      "originalMinimalHilbertOutputEquiv_eq_historical",
+      "originalMinimalPhysicalHilbertChargeGraph_eq_historical",
+      "originalMinimalPhysicalHilbertChargeColumn_eq_historical",
+      "originalMinimalPhysicalHilbertChargeColumn_domain_eq_historical",
+      "pairedOriginalMinimalChargeColumn_eq_historical"
     ],
-    "original_BF_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BFOriginalSourceGraphAndPairedHamiltonianProbe.lean",
-    "original_BF_blob": "fd137fc6f62f42d96bcf6ff3eb9355839a59d562",
-    "if_green": "After strict source/consumer and 14 axiom roots, accept only three new BF0 roots; follow with BG native charge operator equality then BH normalized H/domain equality.",
-    "if_red": "Preserve first causal BF proof/source/consumer error; no alternate H construction or point spectrum.",
-    "run_id": 43498649514,
-    "tested_sha": "f2499980b808b6c9ddf2c6093f5b88ebff8b825f"
+    "if_green": "Then BH strict source equality of native and historical normalized paired Hamiltonian and exact domain; mass-energy physical interpretation stays research only.",
+    "if_red": "Preserve first causal new BG source/typeclass/consumer error and original import hashes."
   },
-  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M5BE0_R2_GREEN_43493125150_NATIVE_HAMILTONIAN_PORT_ACCEPTANCE_AND_BF_HANDOFF_2026_11_13.md",
+  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M5BF0_R1_GREEN_43498649514_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_ACCEPTANCE_2026_11_13.md",
   "monograph_alignment": {
     "status": "REVIEWED_NOT_MERGED",
     "review_date": "2026-11-12",
@@ -246,7 +256,7 @@
   "stage_transition": {
     "from": "M2",
     "to": "M3",
-    "status": "M5BE0_CURRENT_BE_NATIVE_H_ACCEPTED_BF0_NOT_STAGED",
+    "status": "M5BF0_ORIGINAL_SOURCE_GRAPH_AND_NONZERO_H_DOMAIN_QUALIFIED_BG0_UNSTAGED",
     "m1_acceptance": [
       {
         "gate": "P3-D5B3",
@@ -333,7 +343,7 @@
     }
   },
   "priority_review": {
-    "status": "M5BE0_NATIVE_H_ACCEPTED_BF_BG_BH_EQUIVALENCE_OUTSTANDING",
+    "status": "M5BF0_ACCEPTED_BG_BH_OPERATOR_EQUIVALENCE_OUTSTANDING",
     "date": "2026-11-13",
     "review": "research/spectral-p2-original-field/P3_M2_TO_M3_PRIORITY_RECONCILIATION_AND_OLDER_WORK_REUSE_2026_11_12.md",
     "acceptance": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md",
@@ -575,39 +585,45 @@
     "acceptance_receipt": "research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md"
   },
   "previous_qualified": {
-    "gate": "P3-M3W0D0",
+    "gate": "P3-M5BE0",
     "verdict": "GREEN",
-    "run_id": 43484147197,
+    "run_id": 43493125150,
     "run_attempt": 1,
-    "tested_sha": "ea41de685de83c209e2ebccc1098fbcbb076918d",
-    "job_id": 132088015792,
-    "manifest_pins": 201,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
-    "source_blob": "86823abdddb70d1c2158f8e215fb35760e107fd5",
-    "consumer": "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean",
-    "consumer_blob": "38fab7d4dd44728cb1aef81d581340bcce755ac7",
-    "workflow": ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml",
-    "workflow_blob": "e19abdc47e82f3372acd875fc2bc210e9579958c",
-    "artifact_id": 14067253421,
-    "artifact_size_bytes": 25846,
-    "digest": "sha256:c987b9af30a3b134e8c6e8726debc96277315e6dfbca46c8a70879e9e19b6ce1",
-    "declaration_count": 3,
+    "tested_sha": "10a9e7e3419f8b02b5e920c60e07facf8602fb42",
+    "job_id": 132119186214,
+    "manifest_pins": 202,
+    "manifest_hash": "f35e7cf381be16c6ad214b9a757a23c95b7e527c27bfb770e40b67457e2f1b45",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BE0OriginalNativeHamiltonianPort.lean",
+    "source_blob": "f08f1eac4dfb2ff75cdda7421faaf78d4dce77e1",
+    "consumer": "lean/diagnostics/BFSSP3M5BE0OriginalNativeHamiltonianPortIndependentConsumer.lean",
+    "consumer_blob": "9d20905d5509be44baf2374fc1bf0eb8820969eb",
+    "workflow": ".github/workflows/bfss-p3-m5be0-original-native-hamiltonian-port-strict.yml",
+    "workflow_blob": "1fffc09202d4a42aff9508214ca0edbb6757c39d",
+    "original_BE_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean",
+    "original_BE_blob": "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
+    "original_BE_donor_count": 14,
+    "declaration_count": 7,
     "declarations": [
-      "originalPhysicalFullL2_witness_ne_zero",
-      "originalPhysicalCharge_naturalDomain_dense",
-      "originalPhysicalCharge_naturalDomain_has_nonzero"
+      "originalPairedNormalizedH_eq_charge_square",
+      "originalPairedNormalizedH_naturalDomain",
+      "originalPairedNormalizedH_apply",
+      "originalPairedNormalizedH_selfAdjoint",
+      "originalPairedNormalizedH_closed",
+      "originalPairedNormalizedH_domain_dense",
+      "originalPairedNormalizedH_weakForm_iff"
     ],
-    "donor_axiom_root_count": 5,
     "allowed_axioms": [
       "propext",
       "Classical.choice",
       "Quot.sound"
     ],
-    "strict_marker": "BFSS_P3_M3W0D0_ORIGINAL_PHYSICAL_CHARGE_DOMAIN_STRICT_GREEN",
+    "strict_marker": "BFSS_P3_M5BE0_ORIGINAL_NATIVE_PHYSICAL_H_STRICT_GREEN",
     "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
-    "manifest_hash": "32fed5d6fc289b2fe05168c048c83705be87a90cb5119690b0e04165f5f0b219",
-    "receipt": "research/spectral-p2-original-field/P3_M3W0D0_R2_GREEN_43484147197_ACCEPTANCE_AND_M5_BE_HANDOFF_2026_11_13.md",
-    "scope": "Original physical FullL2 subtype nonzero, original native physical sixteen-charge natural domain dense, and a nonzero physical vector in that native natural domain. Radial bump is not claimed in charge domain; no H-domain, current BE/BF/BG/BH port, physical eigenvalue or mass gap."
+    "artifact_id": 14070858752,
+    "artifact_size_bytes": 25884,
+    "digest": "sha256:77f7b59ba52f6f824ab8915176f70e90d7d3825827c9453a4b3e8415a5524375",
+    "receipt": "research/spectral-p2-original-field/P3_M5BE0_R2_GREEN_43493125150_NATIVE_HAMILTONIAN_PORT_ACCEPTANCE_AND_BF_HANDOFF_2026_11_13.md",
+    "scope": "Requalified exact original imported normalized BE physical sixteen-charge H=(1/16)T†T with precise adjoint-square natural domain, action, self-adjointness, closed graph, dense domain and full weak-form associated-operator iff; 7 paired-data adapter roots + 14 historical BE roots. Does not requalify BF/BG/BH nor construct a point eigenstate/ground state/gap."
   },
   "m3_context_recovery": {
     "date": "2026-11-13",
@@ -810,7 +826,7 @@
   },
   "m5bf0_prospective": {
     "date": "2026-11-13",
-    "status": "STAGED_UNQUALIFIED",
+    "status": "GREEN_QUALIFIED",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean",
     "source_blob": "f954917f21669fd68befc12f48a2b092b71a9044",
     "consumer": "lean/diagnostics/BFSSP3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomainIndependentConsumer.lean",
@@ -827,10 +843,14 @@
     "new_root_count": 3,
     "original_BF_root_count": 9,
     "accepted_prior_root_count": 2,
-    "mathematical_qualification": false,
+    "mathematical_qualification": true,
     "run_id": 43498649514,
     "tested_sha": "f2499980b808b6c9ddf2c6093f5b88ebff8b825f",
-    "run_status": "R1_PENDING_STRICT_CI"
+    "run_status": "STRICT_GREEN_VERIFIED",
+    "manifest_pins": 208,
+    "artifact_id": 14074535971,
+    "artifact_digest": "sha256:cd1ff2d72b54be0fd806ba8e962cff57637f9c4dc47e422f53505c347132ca18",
+    "acceptance_receipt": "research/spectral-p2-original-field/P3_M5BF0_R1_GREEN_43498649514_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_ACCEPTANCE_2026_11_13.md"
   },
   "parallel_lightfront_mass_research": {
     "date": "2026-11-13",
@@ -846,5 +866,40 @@
     "new_external_low_spin_spectral_route": "RESEARCH_ONLY; R=84/128 candidate protected SO9 multiplets require zero-energy state/source identification",
     "new_math_theorem_qualified": false,
     "reference_numerical_spectrum": "arXiv:2611.14512v1 2026-11-10, not current etblink/math Lean source evidence"
+  },
+  "previous_previous_qualified": {
+    "gate": "P3-M3W0D0",
+    "verdict": "GREEN",
+    "run_id": 43484147197,
+    "run_attempt": 1,
+    "tested_sha": "ea41de685de83c209e2ebccc1098fbcbb076918d",
+    "job_id": 132088015792,
+    "manifest_pins": 201,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3W0D0OriginalNonzeroPhysicalChargeDomain.lean",
+    "source_blob": "86823abdddb70d1c2158f8e215fb35760e107fd5",
+    "consumer": "lean/diagnostics/BFSSP3M3W0D0OriginalNonzeroPhysicalChargeDomainIndependentConsumer.lean",
+    "consumer_blob": "38fab7d4dd44728cb1aef81d581340bcce755ac7",
+    "workflow": ".github/workflows/bfss-p3-m3w0d0-original-physical-charge-domain-strict.yml",
+    "workflow_blob": "e19abdc47e82f3372acd875fc2bc210e9579958c",
+    "artifact_id": 14067253421,
+    "artifact_size_bytes": 25846,
+    "digest": "sha256:c987b9af30a3b134e8c6e8726debc96277315e6dfbca46c8a70879e9e19b6ce1",
+    "declaration_count": 3,
+    "declarations": [
+      "originalPhysicalFullL2_witness_ne_zero",
+      "originalPhysicalCharge_naturalDomain_dense",
+      "originalPhysicalCharge_naturalDomain_has_nonzero"
+    ],
+    "donor_axiom_root_count": 5,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "strict_marker": "BFSS_P3_M3W0D0_ORIGINAL_PHYSICAL_CHARGE_DOMAIN_STRICT_GREEN",
+    "manifest_baseline_sha": "c6253c7c8bec20ede9ac9cb725fb694c5e55d6b5",
+    "manifest_hash": "32fed5d6fc289b2fe05168c048c83705be87a90cb5119690b0e04165f5f0b219",
+    "receipt": "research/spectral-p2-original-field/P3_M3W0D0_R2_GREEN_43484147197_ACCEPTANCE_AND_M5_BE_HANDOFF_2026_11_13.md",
+    "scope": "Original physical FullL2 subtype nonzero, original native physical sixteen-charge natural domain dense, and a nonzero physical vector in that native natural domain. Radial bump is not claimed in charge domain; no H-domain, current BE/BF/BG/BH port, physical eigenvalue or mass gap."
   }
 }
