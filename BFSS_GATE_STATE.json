@@ -38,8 +38,8 @@
   "active": {
     "gate": "P3-M2B2A",
     "status": "PENDING_STRICT_CI",
-    "candidate_sha": "fa1cb4254f1fbc203a7ae8ca898ff9df9d1fd5d1",
-    "run_id": null,
+    "candidate_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
+    "run_id": 43361307455,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2AOriginalFockOperatorHSNorm.lean",
     "consumer": "lean/diagnostics/BFSSP3M2B2AOriginalFockOperatorHSNormIndependentConsumer.lean",
     "source_blob": "14692ec746de15615e3cb7fce0323af3212589df",
@@ -57,8 +57,8 @@
       "run": 43356859031,
       "tested_sha": "f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6"
     },
-    "reported_strict_status": "NOT_YET_OBSERVED",
-    "status_detail": "Prospective receipt fa1cb425 committed before new M2B2A source. Source and original Fock consumer 86-pin strict gate staged; no CI status yet.",
+    "reported_strict_status": "QUEUED_OR_RUNNING_UNQUALIFIED",
+    "status_detail": "Prospective pre-gate receipt at fa1cb425 preceded strict candidate source at d4a0e2b4; exact M2B2A strict #43361307455 at d4a0e2b4 is pending/unqualified.",
     "scope": "Only original bounded Fock operator norm versus distinct HS column Hilbert norm: square sum identity, lower and upper norm inequalities. No operator-L2, gauge, Hamiltonian or spectrum.",
     "not_proved": [
       "operator norm equals HS norm",
@@ -67,7 +67,9 @@
       "M4 Spin9",
       "M5 original H domain",
       "M6–M8 spectral claims"
-    ]
+    ],
+    "strict_workflow_tested_head_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b",
+    "run_url": "https://github.com/etblink/math/actions/runs/43361307455"
   },
   "if_green": "Verify all 86 exact pins including RowColumn donor, cold compile, independent actual Fock operator consumer, three declarations with only allowed axioms, exact tested SHA/run/artifact. Accept only M2B2A norm comparison.",
   "if_red": "Preserve first causal RED, classify preflight vs source Lean vs independent consumer. Repair narrowly; no substitutions or increased Lean resource limits.",
@@ -144,7 +146,8 @@
     "pre_gate_receipt_complete": true,
     "expected_manifest_pins": 86,
     "expected_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2B2AOriginalFockOperatorHSNorm.lean",
-    "expected_consumer": "lean/diagnostics/BFSSP3M2B2AOriginalFockOperatorHSNormIndependentConsumer.lean"
+    "expected_consumer": "lean/diagnostics/BFSSP3M2B2AOriginalFockOperatorHSNormIndependentConsumer.lean",
+    "tested_candidate_sha": "d4a0e2b4431b62e61cc760e2618cce480e63212b"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M2B1_GREEN_43356859031_ACCEPTANCE_AND_M2B2A_PRE_GATE_2026_11_12.md",
   "monograph_alignment": {
