@@ -101,6 +101,10 @@ def main():
         require(s.get("next_planned", {}).get("gate") == "P3-M2A" and
                 s.get("stage_transition", {}).get("status") in {"M1_DELIVERABLE_QUALIFIED_M2_GATE_NOT_STAGED", "M1_DELIVERABLE_QUALIFIED_M2_GATE_STAGED_UNQUALIFIED"},
                 "M2 transition requires B4B exact accepted receipt and first HS-fiber gate review")
+    if s["milestone"] == "M2" and q["gate"] == "P3-M2A":
+        require(s.get("next_planned", {}).get("gate") == "P3-M2B1" and
+                s.get("stage_transition", {}).get("status") == "M1_COMPLETE_M2A_ACCEPTED_M2B1_UNSTAGED",
+                "M2A strict qualification requires scoped M2B1 handoff; no premature M3 or spectrum")
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
                 a["manifest_pins"] == q["manifest_pins"] and
