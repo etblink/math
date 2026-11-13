@@ -120,22 +120,26 @@ def main():
     for name in ("README.md", "AGENTS.md"):
         require(ROADMAP_PATH.name in (ROOT/name).read_text(encoding="utf-8"),
                 name + " must point to canonical roadmap")
-    # Narrow drift check: new P3-D5 source modifications must correspond to
-    # the declared active gate. Broader future tracks still require review.
+    # Advisory HEAD^→HEAD drift check for both active spectral gate families.
+    # Permit edits to exactly the currently declared source, not to a qualified
+    # ancestor or unrelated P3D5/P3M2 source. Do NOT parse a gate from the
+    # module stem: P3M2B1Original... would ambiguously swallow the "O".
+    # Strict source blob pins/CI, not this check, establish proof authority.
     try:
         changes = subprocess.check_output(
             ["git", "diff", "--name-only", "HEAD^", "HEAD"],
             cwd=ROOT, text=True).splitlines()
-    except subprocess.CalledProcessError:
-        changes = []
+    except subprocess.CalledProcessError as exc:
+        raise AssertionError("cannot inspect source drift from HEAD^: " + str(exc)) from exc
+    source_dir = "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/"
     for filename in changes:
-        if not filename.startswith("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/"):
+        if not filename.startswith(source_dir):
             continue
-        m = re.match(r"P3D5([A-Z][0-9]+[A-Z]?)", Path(filename).stem)
-        if m:
-            proposed = "P3-D5" + m.group(1)
-            require(proposed == a["gate"],
-                    "source gate " + proposed + " is missing from live active checkpoint " + a["gate"])
+        stem = Path(filename).stem
+        if stem.startswith(("P3D5", "P3M2")) and filename.endswith(".lean"):
+            require(filename == a["source"],
+                    "P3 spectral source changed outside active source root: " +
+                    filename + " (active " + a["source"] + ")")
     print("BFSS_ROADMAP_CHECK_PASS", "milestone", s["milestone"],
           "accepted", q["gate"], "active", a["gate"], a["status"])
 
