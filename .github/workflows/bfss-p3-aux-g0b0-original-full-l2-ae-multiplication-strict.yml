@@ -1,0 +1,101 @@
+name: BFSS P3-AUX-G0B0 original FullL2 reciprocal AE multiplication strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-p3-aux-g0b0-original-full-l2-ae-multiplication-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B0OriginalReciprocalFullL2AEMultiplication.lean
+      - lean/diagnostics/BFSSP3AuxG0B0OriginalReciprocalFullL2AEMultiplicationIndependentConsumer.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-full-l2-ae-multiplication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 105
+    steps:
+      - name: Checkout frozen sources
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 96
+          persist-credentials: false
+      - name: Preflight source and toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p bfss-aux-g0b0-evidence
+          git rev-parse HEAD > bfss-aux-g0b0-evidence/tested-sha.txt
+          python3 - <<'PY'
+          import subprocess,json,re,pathlib
+          git=lambda *a:subprocess.check_output(["git",*a],text=True).strip()
+          assert subprocess.run(["git","merge-base","--is-ancestor","de796120fac1a913c39fa13a333c12ea62c7c305","HEAD"]).returncode==0
+          assert git("hash-object","--no-filters","lean/OAI/MathematicalPhysics/BFSS/Core.lean")=="9882359ced78b0a3bd7e2f057974bd0a031b3e60"
+          assert git("hash-object","--no-filters","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0AOriginalRadialScalar.lean")=="a67f8740586588c6d4ee9c9148574c81c14d4937"
+          assert git("hash-object","--no-filters","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0B1OriginalReciprocalLpInfinity.lean")=="d1cbb8077799236e5e1b82704270bdb9ab9153b4"
+          assert git("hash-object","--no-filters","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean")=="e20c76fb22bc09d16dbcd8657333227cb34ed1ea"
+          assert git("hash-object","--no-filters","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0B2AOriginalReciprocalFullL2BoundedAction.lean")=="e2a02b551486cfbc2a723f5b5ff0b282177c5e76"
+          assert git("hash-object","--no-filters","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0AOriginalRadialGaugeInvariance.lean")=="2e89826685d77551405cb17f707ae3b47ecc80e1"
+          assert pathlib.Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          packages=json.loads(pathlib.Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in packages if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          roots=["originalReciprocalFullL2CLM_ae_factor","originalReciprocalFullL2CLM_ae_originalField"]
+          paths=["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B0OriginalReciprocalFullL2AEMultiplication.lean","lean/diagnostics/BFSSP3AuxG0B0OriginalReciprocalFullL2AEMultiplicationIndependentConsumer.lean"]
+          for i,path in enumerate(paths):
+            s=pathlib.Path(path).read_text()
+            expected=roots if i==0 else ["FCP.BFSSP3AuxG0B0OriginalReciprocalFullL2AEMultiplication."+x for x in roots]
+            assert re.findall(r"(?m)^#print axioms (\S+)$",s)==expected
+            assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",s)
+          print("BFSS_P3_AUX_G0B0_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold compile and independent consumer with root audit
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxG0B0OriginalReciprocalFullL2AEMultiplication"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B0OriginalReciprocalFullL2AEMultiplication.olean"
+          rm -f "$obj"
+          timeout 3100s lake build "$mod" 2>&1 | tee ../bfss-aux-g0b0-evidence/build.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B0OriginalReciprocalFullL2AEMultiplication.lean 2>&1 | tee ../bfss-aux-g0b0-evidence/source.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3AuxG0B0OriginalReciprocalFullL2AEMultiplicationIndependentConsumer.lean 2>&1 | tee ../bfss-aux-g0b0-evidence/consumer.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          d=Path("../bfss-aux-g0b0-evidence")
+          roots=["originalReciprocalFullL2CLM_ae_factor","originalReciprocalFullL2CLM_ae_originalField"]
+          expected=["FCP.BFSSP3AuxG0B0OriginalReciprocalFullL2AEMultiplication."+x for x in roots]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name,check in [("build.log",False),("source.log",True),("consumer.log",True)]:
+            s=(d/name).read_text()
+            assert "error:" not in s and "sorryAx" not in s,(name,s[-3500:])
+            assert not [v for v in s.splitlines() if "warning:" in v and not depwarn.fullmatch(v)],name
+            if check:
+              reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",s)
+              assert [x for x,_ in reports]==expected,(name,reports)
+              for root,axioms in reports:
+                assert {v.strip() for v in axioms.split(",") if v.strip()} <= allowed,(root,axioms)
+          print("BFSS_P3_AUX_G0B0_ORIGINAL_FULLL2_AE_MULTIPLICATION_STRICT_GREEN")
+          PY
+      - name: Preserve first-causal evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-aux-g0b0-evidence
+          path: bfss-aux-g0b0-evidence/
+          if-no-files-found: warn
+          retention-days: 14
