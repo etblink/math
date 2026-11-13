@@ -29,7 +29,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/bfss-p3-m3g0b1"
           git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-p3-m3g0b1/tested-commit.txt"
           test "$(git hash-object --no-filters tools/bfss_m3g0a_manifest_audit.py)" = "7ce1334dad835fbe9798cf7557a98cd6e7fba3d0"
-          test "$(git hash-object --no-filters lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean)" = "e923a019ceac801b981e3fd22920f1cb5c0458f3"
+          test "$(git hash-object --no-filters lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean)" = "095e63582a5f04a9dd2be0a192fb42586d97dd2f"
           test "$(git hash-object --no-filters lean/diagnostics/BFSSP3M3G0B1OriginalGaugeAEFullOperatorIndependentConsumer.lean)" = "42e12c82dcf854fa0be0c73dbd38b0fd13f12692"
           python3 tools/bfss_m3g0a_manifest_audit.py | tee "$RUNNER_TEMP/bfss-p3-m3g0b1/accepted-M3G0A-manifest-preflight.log"
           python3 - <<'PY'
@@ -48,7 +48,7 @@ jobs:
               "c914864eccc801d9045656f0d06157ae384670f4",
           }
           new_b1={
-            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean":"e923a019ceac801b981e3fd22920f1cb5c0458f3",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean":"095e63582a5f04a9dd2be0a192fb42586d97dd2f",
             "lean/diagnostics/BFSSP3M3G0B1OriginalGaugeAEFullOperatorIndependentConsumer.lean":"42e12c82dcf854fa0be0c73dbd38b0fd13f12692",
           }
           for name,expected in {**accepted_b0,**new_b1}.items():

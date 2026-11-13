@@ -35,12 +35,12 @@
   },
   "active": {
     "gate": "P3-M3G0B1",
-    "status": "RED_UNQUALIFIED",
-    "candidate_sha": "f163921f3363be9154a2ffbe0d3c10e94d0c8e75",
-    "run_id": 43461444633,
-    "workflow_tested_head_sha": "f163921f3363be9154a2ffbe0d3c10e94d0c8e75",
+    "status": "PENDING_STRICT_CI",
+    "candidate_sha": "9f6ce8631f986a6c47a7129c419f7c909443f638",
+    "run_id": null,
+    "workflow_tested_head_sha": null,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean",
-    "source_blob": "e923a019ceac801b981e3fd22920f1cb5c0458f3",
+    "source_blob": "095e63582a5f04a9dd2be0a192fb42586d97dd2f",
     "consumer": "lean/diagnostics/BFSSP3M3G0B1OriginalGaugeAEFullOperatorIndependentConsumer.lean",
     "consumer_blob": "42e12c82dcf854fa0be0c73dbd38b0fd13f12692",
     "workflow": ".github/workflows/bfss-p3-m3g0b1-original-gauge-ae-full-operator-strict.yml",
@@ -48,7 +48,7 @@
     "accepted_predecessor_gate": "P3-M3G0B0",
     "accepted_predecessor_run_id": 43422546945,
     "accepted_predecessor_tested_sha": "38017936230c959dc61dfb07c0e776d5ffc04ab5",
-    "strict_verdict": "R1_RED_VERIFIED_FERMION_COE",
+    "strict_verdict": "R2_STAGED_NOT_YET_TESTED",
     "scope": "Three original source-exact B1 declarations: finite-index common a.e. Fock basis law, original bounded-Fock operator equality by qualified M2B2B0 injectivity, whole original source bounded-operator Lp a.e. left-output/inverse-boson source identity. No basis independence or source norm isometry.",
     "failure_job_id": 132009112218,
     "red_receipt": "research/spectral-p2-original-field/P3_M3G0B1_R1_RED_43461444633_FERMION_COE_NORMALIZATION_2026_11_13.md",
@@ -63,7 +63,9 @@
         "artifact_id": 14057579425,
         "receipt": "research/spectral-p2-original-field/P3_M3G0B1_R1_RED_43461444633_FERMION_COE_NORMALIZATION_2026_11_13.md"
       }
-    ]
+    ],
+    "expected_workflow_blob": "b3a7a888b89908a170aa4d1a690b11ef5f5ba9aa",
+    "decision": "R2 one-line `simpa` normalization experiment staged; original source theorem statements unchanged. Strict 463 pins/actual independent Fock consumer/three root axiom audit REQUIRED. No mathematical promotion."
   },
   "if_green": "B0 R3 accepted: original source FullL2 left-output inverse boson pullback a.e., transferred Fock Lp column a.e. and per-index original operator norm Lp basis evaluation a.e.; next B1 finite-index common-event and original operator field equality.",
   "if_red": "For B1 preserve first causal finite-index a.e. step or source operator injectivity failure; do not infer RHS measurable Lp, pointwise conjugation, source norm isometry or physical fixedness from B0.",
@@ -120,7 +122,7 @@
   "next_planned": {
     "gate": "P3-M3G0B1",
     "milestone": "M3",
-    "status": "RED_UNQUALIFIED_REPAIR_PENDING",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
     "pre_gate_receipt_required": true,
     "pre_gate_receipt_complete": true,
     "review_basis": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
@@ -151,7 +153,7 @@
       "M5 closed Hamiltonian port",
       "M6–M8 physical spectral gates"
     ],
-    "decision": "R1 strict RED qualified as source last theorem fermion-coercion simp mismatch; preserve receipt and try one-tactic `simpa [ContinuousLinearMap.comp_apply]` in R2 only. B0 remains last math GREEN.",
+    "decision": "B1 R2 minimal one-tactic test after preserved R1 strict RED. Await exact CI; M3G0B0 remains last qualified.",
     "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B1_PROSPECTIVE_FINITE_AE_FULL_ORIGINAL_FOCK_OPERATOR_ACTION_2026_11_13.md",
     "workflow": ".github/workflows/bfss-p3-m3g0b1-original-gauge-ae-full-operator-strict.yml",
     "manifest_pins": 463
@@ -528,7 +530,7 @@
   },
   "m3g0b1_prospective": {
     "gate": "P3-M3G0B1",
-    "status": "RED_UNQUALIFIED_REPAIR_PENDING",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
     "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_FORWARD_RESEARCH_FINITE_ORIGINAL_FOCK_OPERATOR_EXT_2026_11_13.md",
     "source_api_audit_complete": true,
     "pre_gate_receipt_complete": true,
@@ -555,18 +557,20 @@
       "originalFockOperatorGaugeEquiv_source_operator_ae"
     ],
     "manifest_pins": 463,
-    "source_blob": "e923a019ceac801b981e3fd22920f1cb5c0458f3",
+    "source_blob": "095e63582a5f04a9dd2be0a192fb42586d97dd2f",
     "consumer_blob": "42e12c82dcf854fa0be0c73dbd38b0fd13f12692",
     "workflow_path": ".github/workflows/bfss-p3-m3g0b1-original-gauge-ae-full-operator-strict.yml",
-    "strict_run_id": 43461444633,
-    "strict_tested_sha": "f163921f3363be9154a2ffbe0d3c10e94d0c8e75",
-    "strict_run_status": "completed",
-    "strict_verdict": "R1_RED",
+    "strict_run_id": null,
+    "strict_tested_sha": null,
+    "strict_run_status": "NOT_ASSIGNED",
+    "strict_verdict": "R2_UNVERIFIED",
     "red_run_id": 43461444633,
     "red_tested_sha": "f163921f3363be9154a2ffbe0d3c10e94d0c8e75",
     "red_receipt": "research/spectral-p2-original-field/P3_M3G0B1_R1_RED_43461444633_FERMION_COE_NORMALIZATION_2026_11_13.md",
     "red_artifact_id": 14057579425,
     "first_causal": "Lean source line 78 simpa only leaves coerced fermion action ↑↑(pairedGaugeData.fermion g) unmatched to pairedGaugeData.fermion g",
-    "current_attempt": "R1_RED_ARCHIVED"
+    "current_attempt": "R2_STAGED_NOT_TESTED",
+    "workflow_blob": "b3a7a888b89908a170aa4d1a690b11ef5f5ba9aa",
+    "previous_R1_source_blob": "e923a019ceac801b981e3fd22920f1cb5c0458f3"
   }
 }

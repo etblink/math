@@ -16,3 +16,8 @@
 - On R2 GREEN verify cold build, independent original-Fock consumer and all three audited roots before acceptance. On RED preserve first new causal failure and repair narrowly. No promotion of basis independence, original operator-norm isometry, M3G0C physical fixedness, nonzero physical witness, closed Hamiltonian, spectrum or mass gap.
 
 **Project Lead:** preserve the real RED before source edits, then do one bounded R2 tactic preflight. M3G0B0 #43422546945 is the last accepted mathematical proof.
+
+## R2 one-tactic experiment staged
+- Exact R1 source `e923a019ceac801b981e3fd22920f1cb5c0458f3` → R2 `095e63582a5f04a9dd2be0a192fb42586d97dd2f`, only final theorem last line `simpa only [ContinuousLinearMap.comp_apply] using hx i` → `simpa [ContinuousLinearMap.comp_apply] using hx i`. This permits qualified `simp` coercion normalization while keeping the original left fermion action and all three theorem statements unchanged.
+- Original genuine Fock independent consumer stays frozen at `42e12c82dcf854fa0be0c73dbd38b0fd13f12692`. Workflow changes only the two exact source blob references; new workflow blob `b3a7a888b89908a170aa4d1a690b11ef5f5ba9aa`. 463-path predecessor/new pin inventory and pinned Lean/Mathlib stay unchanged.
+- **R2 is an explicit falsifiable experiment**: no proof is qualified by this staging. If the source fails again, retain the first actual Lean diagnostic before any new tactic change.

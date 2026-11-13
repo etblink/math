@@ -75,7 +75,7 @@ theorem originalFockOperatorGaugeEquiv_source_operator_ae
   filter_upwards [originalFockOperatorGaugeEquiv_source_all_basis_ae b g f] with x hx
   apply originalFockOperator_eq_of_basis b
   intro i
-  simpa only [ContinuousLinearMap.comp_apply] using hx i
+  simpa [ContinuousLinearMap.comp_apply] using hx i
 
 #print axioms originalFockOperatorGaugeEquiv_source_all_basis_ae
 #print axioms originalFockOperator_eq_of_basis
