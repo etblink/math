@@ -174,7 +174,8 @@ def test_optional_symbolic_block(eps):
     p = a*a+b*b+c*c
     d = a*a*b*b*c*c
     poly = A**6 + 2*p*A**4 + p**2*A**2 + 4*d*sp.eye(12)
-    require(poly == sp.zeros(12), "12x12 exact source-symmetry model polynomial")
+    require(all(sp.expand(entry) == 0 for entry in poly),
+            "12x12 exact source-symmetry model polynomial (canonicalized)")
     target = (tau**6 + 2*p*tau**4 + p**2*tau**2 + 4*d)**2
     require(sp.expand(A.charpoly(tau).as_expr()-target) == 0, "symbolic charpoly")
     return {"status": "EXACT_SYMBOLIC_PASS_REDUCED_12_BY_12",

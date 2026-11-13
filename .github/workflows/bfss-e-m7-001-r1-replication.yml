@@ -31,7 +31,9 @@ jobs:
           from pathlib import Path
           registry=json.loads(Path("research/methodology/BFSS_EXPERIMENT_REGISTRY.json").read_text())
           test=next(x for x in registry["entries"] if x["id"]=="E-M7-001-R1")
-          assert test["status"]=="REGISTERED_NOT_EXECUTED",test["status"]
+          assert test["status"]=="INCONCLUSIVE",test["status"]
+          assert test["result"]["execution_attempts"][0]["run_id"]==43335288061
+          assert test["prior_exploration_retroactively_registered"] is False
           assert test["prior_exploration_retroactively_registered"] is False
           assert test["stages"]["experiment"]["prespecified_fixtures"]["float_random"]==200
           pins={
@@ -39,7 +41,7 @@ jobs:
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2ColorCrossProbe.lean":"209b3808222730ca5e817d83ed32253a67513f7f",
             "contributions/bfss-kotler/tools/audit_spectral_confinement_ab.py":"4dcc78016765253e8efe5f9f5697aba4999a6d6d",
             "contributions/bfss-kotler/tools/audit_spectral_source_premises.py":"d52cbb008099513399abaf33b11c82a1dc52b665",
-            "research/spectral-p2-original-field/tools/audit_source_fermion_sharp_constant.py":"f779c7a73f28b3d246f2c532877cd9835bd88333",
+            "research/spectral-p2-original-field/tools/audit_source_fermion_sharp_constant.py":"a4609a25c8ed627f08da2821a71e73548d448449",
             "research/spectral-p2-original-field/tools/replicate_source_fermion_sharp_constant.py":"caad1c94d94d2d7c83a503a2927d773ec3ae2a48",
           }
           for path,sha in pins.items():
