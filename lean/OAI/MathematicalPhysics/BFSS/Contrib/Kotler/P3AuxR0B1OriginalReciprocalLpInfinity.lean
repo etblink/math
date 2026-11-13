@@ -31,19 +31,19 @@ theorem originalReciprocalField_continuous {ε : ℝ} (hε : 0 < ε) :
 theorem originalReciprocalField_norm_le {ε : ℝ} (hε : 0 < ε)
     (x : Boson 2) : ‖originalReciprocalField ε x‖ ≤ ε⁻¹ := by
   unfold originalReciprocalField
-  rw [norm_inv, Complex.norm_real]
-  simpa only [abs_of_pos (originalRadialWeight_pos hε x)] using
+  simpa only [norm_inv, Complex.norm_real, Real.norm_eq_abs,
+    abs_of_pos (originalRadialWeight_pos hε x)] using
     (originalRadialWeight_inv_le hε x)
 
 theorem originalReciprocalField_memLp_infty {ε : ℝ} (hε : 0 < ε) :
-    MemLp (originalReciprocalField ε) ∞
+    MemLp (originalReciprocalField ε) (⊤ : ℝ≥0∞)
       (volume : Measure (Boson 2)) := by
   exact memLp_top_of_bound
     (originalReciprocalField_continuous hε).aestronglyMeasurable
     ε⁻¹ (Filter.Eventually.of_forall (originalReciprocalField_norm_le hε))
 
 noncomputable def originalReciprocalLpInf {ε : ℝ} (hε : 0 < ε) :
-    Lp ℂ ∞ (volume : Measure (Boson 2)) :=
+    Lp ℂ (⊤ : ℝ≥0∞) (volume : Measure (Boson 2)) :=
   (originalReciprocalField_memLp_infty hε).toLp (originalReciprocalField ε)
 
 theorem originalReciprocalLpInf_ae {ε : ℝ} (hε : 0 < ε) :

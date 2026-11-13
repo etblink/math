@@ -7,7 +7,7 @@ open FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity
 open MeasureTheory
 example : OriginalChargeOutput = PiLp 2 (fun _ : SpinIndex => FullL2 2) := rfl
 example {ε : ℝ} (hε : 0 < ε) :
-    MemLp (originalReciprocalField ε) ∞
+    MemLp (originalReciprocalField ε) (⊤ : ℝ≥0∞)
       (volume : Measure (Boson 2)) :=
   originalReciprocalField_memLp_infty hε
 example {ε : ℝ} (hε : 0 < ε) :
