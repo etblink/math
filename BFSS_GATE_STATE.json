@@ -32,9 +32,9 @@
   "active": {
     "gate": "P3-D5B4B",
     "status": "PENDING_STRICT_CI",
-    "candidate_sha": "fa55a554859d7e13b98f4f57f33612837b1f0bda",
-    "run_id": null,
-    "candidate_sha_status": "PRE_STAGING_ACCEPTED_HEAD_PLACEHOLDER_TO_RECONCILE_AFTER_PUSH",
+    "candidate_sha": "fa6d34dd54101fc61df5b637e33f92b96aa4c995",
+    "run_id": 43343959865,
+    "candidate_sha_status": "STAGED_SOURCE_COMMIT_MATCHES_STRICT_RUN_HEAD",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3D5B4BOriginalFockL2ColumnEquiv.lean",
     "consumer": "lean/diagnostics/BFSSP3D5B4BOriginalFockL2ColumnEquivIndependentConsumer.lean",
     "manifest_pins": 79,
@@ -50,8 +50,12 @@
       "closed physical Hamiltonian graph/coercivity M5-M7",
       "eigenpair or mass gap M8"
     ],
-    "strict_run_status": "NOT_YET_OBSERVED",
-    "timing_note": "new strict run will be created by push; after staging, reconcile actual exact candidate SHA and run ID without predicting success"
+    "strict_run_status": "IN_PROGRESS_UNQUALIFIED",
+    "timing_note": "new strict run will be created by push; after staging, reconcile actual exact candidate SHA and run ID without predicting success",
+    "run_url": "https://github.com/etblink/math/actions/runs/43343959865",
+    "strict_workflow_tested_head_sha": "fa6d34dd54101fc61df5b637e33f92b96aa4c995",
+    "source_commit_is_ancestor_of_soon_to_be_tested_workflow_commit": true,
+    "qualification_boundary": "CI launch alone is no proof; exact source+independent consumer+79 pinned files+axioms must pass before promotion"
   },
   "if_green": "After staging a B4B candidate: verify its exact new strict CI run tested SHA, original Boson 2 independent consumer, inherited 77 plus 2 new blob pins and permitted axioms; then accept only B4B equivalence and update checkpoint before M2",
   "if_red": "If B4B fails: preserve first causal Lean/preflight failure and exact red receipt; repair narrowly using abstract-first constructor rather than unfolding original large Fock fibers; do not change M2 or promote exploratory M7 findings",
