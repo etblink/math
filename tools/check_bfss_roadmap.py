@@ -215,6 +215,33 @@ def main():
                 (ROOT / review.get("review", "__missing__")).is_file() and
                 (ROOT / review.get("acceptance", "__missing__")).is_file(),
                 "M2 closure and M3 prioritized reuse receipts absent")
+    if s["milestone"] == "M3" and q["gate"] == "P3-M3G0A":
+        receipt = Path("research/spectral-p2-original-field/"
+                       "P3_M3G0A_GREEN_43391099205_ACCEPTANCE_M3G0B_RESEARCH_HANDOFF_2026_11_13.md")
+        require(q.get("verdict") == "GREEN" and
+                q.get("run_id") == 43391099205 and
+                q.get("tested_sha") == "f5fffd4aa3ad0ddfda499f87a5e358cf83e83b2f" and
+                q.get("manifest_pins") == 459 and
+                q.get("artifact_id") == 14021737638 and
+                q.get("source_blob") == "cc40839076eb980dab54f57af9c95b9d9e33da2c" and
+                q.get("consumer_blob") == "b66dcf427baf572a44de3bd72566857803accbea" and
+                q.get("workflow_blob") == "01339242a437da51153a64f97b55e077e73e01c5" and
+                q.get("declaration_count") == 9 and
+                len(q.get("declarations", [])) == 9 and
+                receipt.is_file() is False and (ROOT / receipt).is_file(),
+                "M3G0A exact accepted proof receipt/pins missing or mutated")
+        require(s.get("next_planned", {}).get("gate") == "P3-M3G0B" and
+                s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
+                s.get("next_planned", {}).get("pre_gate_receipt_complete") is False and
+                s.get("stage_transition", {}).get("status") ==
+                "M3G0A_QUALIFIED_M3G0B_RESEARCH_UNSTAGED" and
+                s.get("m3g0a_prospective", {}).get("mathematical_qualification") is True and
+                s.get("m3g0b_prospective", {}).get("mathematical_qualification") is False and
+                s.get("m3g0b_prospective", {}).get("source_staged") is False and
+                s.get("m3g0b_prospective", {}).get("workflow_staged") is False and
+                s.get("evidence_ledger_latest") == str(receipt),
+                "M3G0A scoped acceptance requires read-only unstaged M3G0B handoff")
+
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and
                 a["manifest_pins"] == q["manifest_pins"] and
