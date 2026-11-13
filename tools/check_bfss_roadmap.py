@@ -331,19 +331,54 @@ def main():
                 (ROOT / receipt).is_file(),
                 "M3G0B0 scoped green needs exact tested original-source proof receipt/pins")
         b1 = s.get("m3g0b1_prospective", {})
-        require(s.get("next_planned", {}).get("gate") == "P3-M3G0B1" and
-                s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
-                s.get("next_planned", {}).get("pre_gate_receipt_complete") is False and
+        nxt = s.get("next_planned", {})
+        b1_receipt = Path("research/spectral-p2-original-field/"
+            "P3_M3G0B1_PROSPECTIVE_FINITE_AE_FULL_ORIGINAL_FOCK_OPERATOR_ACTION_2026_11_13.md")
+        phase_research = (nxt.get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
+                          nxt.get("pre_gate_receipt_complete") is False and
+                          b1.get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
+                          b1.get("source_staged") is False and
+                          b1.get("consumer_staged") is False and
+                          b1.get("workflow_staged") is False)
+        phase_prepared = (nxt.get("status") in {
+                              "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+                              "SOURCE_CONSUMER_STAGED_UNQUALIFIED",
+                              "STRICT_WORKFLOW_STAGED_PENDING",
+                          } and
+                          nxt.get("pre_gate_receipt_complete") is True and
+                          nxt.get("pre_gate_receipt") == str(b1_receipt) and
+                          (ROOT / b1_receipt).is_file() and
+                          b1.get("receipt") == str(b1_receipt) and
+                          b1.get("pre_gate_receipt_complete") is True and
+                          b1.get("status") == nxt.get("status") and
+                          b1.get("source_staged") is
+                             (nxt["status"] != "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED") and
+                          b1.get("consumer_staged") is
+                             (nxt["status"] != "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED") and
+                          b1.get("workflow_staged") is
+                             (nxt["status"] == "STRICT_WORKFLOW_STAGED_PENDING"))
+        require(nxt.get("gate") == "P3-M3G0B1" and
+                (phase_research or phase_prepared) and
                 s.get("stage_transition", {}).get("status") ==
                     "M3G0B0_QUALIFIED_M3G0B1_RESEARCH_UNSTAGED" and
                 s.get("m3g0b_prospective", {}).get("mathematical_qualification") is True and
-                b1.get("status") == "RESEARCH_DESIGN_NOT_STAGED" and
                 b1.get("mathematical_qualification") is False and
-                b1.get("source_staged") is False and
-                b1.get("consumer_staged") is False and
-                b1.get("workflow_staged") is False and
                 s.get("evidence_ledger_latest") == str(receipt),
-                "M3G0B0 acceptance must keep the next B1 full operator proof unstaged")
+                "M3G0B0 acceptance requires guarded unqualified B1 transition")
+        if b1.get("source_staged") or b1.get("consumer_staged"):
+            source = "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean"
+            consumer = "lean/diagnostics/BFSSP3M3G0B1OriginalGaugeAEFullOperatorIndependentConsumer.lean"
+            require(b1.get("source_path") == source and
+                    b1.get("consumer_path") == consumer and
+                    (ROOT / source).is_file() and (ROOT / consumer).is_file(),
+                    "M3G0B1 original bounded operator source/consumer mismatch")
+            prospective_m3_source = source
+        if b1.get("workflow_staged"):
+            require(a.get("gate") == "P3-M3G0B1" and
+                    a.get("status") == "PENDING_STRICT_CI" and
+                    a.get("manifest_pins") >= 461 and
+                    b1.get("mathematical_qualification") is False,
+                    "B1 strict pending must not be conflated with qualified B0")
 
     if a["status"] == "GREEN_QUALIFIED":
         require(a["gate"] == q["gate"] and a["run_id"] == q["run_id"] and

@@ -112,13 +112,13 @@
   "next_planned": {
     "gate": "P3-M3G0B1",
     "milestone": "M3",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "status": "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
     "pre_gate_receipt_required": true,
-    "pre_gate_receipt_complete": false,
+    "pre_gate_receipt_complete": true,
     "review_basis": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
     "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_FORWARD_RESEARCH_FINITE_ORIGINAL_FOCK_OPERATOR_EXT_2026_11_13.md",
     "goal": "Combine the three qualified B0 source a.e. results into a finite-index common a.e. set and prove equality of actual original Fock bounded-operator field Γ_b(g)f with left output pairedGaugeData.fermion g composed with inverse source boson pullback, then treat basis independence as distinct follow-up.",
-    "candidate_contract": "Use B0 original per-index a.e. theorem, exact [Fintype ι] finite a.e. conjunction and qualified M2B2B0 originalFockOperatorHSContinuousEquiv b injectivity plus exact apply_basis; no surrogate HS norm or unproved direct measurable-Lp field.",
+    "candidate_contract": "Three B1 exact source theorem roots: finite ∀i a.e. via pinned Filter.eventually_all; original operator equality via M2B2B0 continuous-equivalence injectivity and PiLp.ext; full source operator field a.e. left fermion output composed with inverse boson. Independent actual original Fock consumer; 463 paths provisional until exact manifest.",
     "research_donors": [
       "M3G0B0 strict #43422546945 three verified original a.e. source-basis declarations",
       "M2B2B0 strict #43364964618 originalFockOperatorHSContinuousEquiv_apply_basis and injectivity only",
@@ -143,7 +143,8 @@
       "M5 closed Hamiltonian port",
       "M6–M8 physical spectral gates"
     ],
-    "decision": "GO read-only B1 finite-basis/Mathlib exact API review and prospective receipt; HOLD source/consumer/strict CI until preregistered and scoped. No B1 acceptance."
+    "decision": "Prospective B1 receipt and exact pinned API contract recorded; GO narrow B1 candidate source+consumer only; NO qualification or B1-BI basis independence until strict CI.",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_M3G0B1_PROSPECTIVE_FINITE_AE_FULL_ORIGINAL_FOCK_OPERATOR_ACTION_2026_11_13.md"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_M3G0B0_R3_GREEN_43422546945_ACCEPTANCE_M3G0B1_HANDOFF_2026_11_13.md",
   "monograph_alignment": {
@@ -517,15 +518,31 @@
   },
   "m3g0b1_prospective": {
     "gate": "P3-M3G0B1",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "status": "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
     "forward_research_memo": "research/spectral-p2-original-field/P3_M3G0B1_FORWARD_RESEARCH_FINITE_ORIGINAL_FOCK_OPERATOR_EXT_2026_11_13.md",
-    "source_api_audit_complete": false,
-    "pre_gate_receipt_complete": false,
+    "source_api_audit_complete": true,
+    "pre_gate_receipt_complete": true,
     "source_staged": false,
     "consumer_staged": false,
     "workflow_staged": false,
     "mathematical_qualification": false,
     "predecessor": "P3-M3G0B0",
-    "last_qualified_run_id": 43422546945
+    "last_qualified_run_id": 43422546945,
+    "receipt": "research/spectral-p2-original-field/P3_M3G0B1_PROSPECTIVE_FINITE_AE_FULL_ORIGINAL_FOCK_OPERATOR_ACTION_2026_11_13.md",
+    "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean",
+    "consumer_path": "lean/diagnostics/BFSSP3M3G0B1OriginalGaugeAEFullOperatorIndependentConsumer.lean",
+    "source_apis_verified": [
+      "Mathlib.Order.Filter.Finite.Filter.eventually_all",
+      "FCP.BFSSP3M3G0B0OriginalGaugeAEBasisColumn.originalFockOperatorGaugeEquiv_source_basis_ae",
+      "FCP.BFSSP3M2B2B0OriginalFockOperatorHSContinuousEquiv.originalFockOperatorHSContinuousEquiv_apply_basis",
+      "PiLp.ext",
+      "ContinuousLinearMap.comp"
+    ],
+    "expected_pin_count_provisional": 463,
+    "first_gate_declarations": [
+      "originalFockOperatorGaugeEquiv_source_all_basis_ae",
+      "originalFockOperator_eq_of_basis",
+      "originalFockOperatorGaugeEquiv_source_operator_ae"
+    ]
   }
 }
