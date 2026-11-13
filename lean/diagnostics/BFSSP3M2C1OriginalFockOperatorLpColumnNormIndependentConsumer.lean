@@ -22,6 +22,11 @@ open MeasureTheory
 variable {ι : Type*} [Fintype ι]
 variable (b : OrthonormalBasis ι ℂ (Fermion 2))
 
+/-- The actual original Boson 2 operator-valued L² carrier. -/
+example : OriginalFockOperatorLp =
+    Lp (Fermion 2 →L[ℂ] Fermion 2) 2
+      (volume : Measure (Boson 2)) := rfl
+
 example (f : OriginalFockOperatorLp) :
     ‖originalFockOperatorLpColumnsEquiv b f‖ =
       ‖originalFockOperatorLpHSContinuousEquiv b f‖ :=
