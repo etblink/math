@@ -34,3 +34,9 @@ The existing accepted 175-module DD/AI same-branch cold/warm pilot reported **18
 - Leave [M2B1 strict #43356859031](https://github.com/etblink/math/actions/runs/43356859031) immutable at tested SHA `f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6`. At audit start, manifest and pinned toolchain succeeded; cold source build was in progress. Its later conclusion requires independent check.
 - No `main` write; no bulk deletion/move, reset, history rewrite, unqualified proof promotion, new toolchain pin, mathematical weakening or added axioms.
 - This note is not a substitute for the source consumer, axiom audit and strict CI receipt.
+
+## Post-audit strict milestone observation (2026-11-13 UTC)
+
+While the documentation and M2 source-drift guard were being completed, [M2B1 strict #43356859031](https://github.com/etblink/math/actions/runs/43356859031) completed **GREEN** at original source SHA `f3d741f8aedd9dbda5839e768e9d6bb41a0bcfb6` (83 unique pinned files, 9,185 cold jobs, source/independent original Boson 2/Fermion 2 consumer, seven axiom-clean declarations; artifact `14007023123`). [Dedicated acceptance receipt](research/spectral-p2-original-field/P3_M2B1_GREEN_43356859031_ACCEPTANCE_AND_M2B2A_PRE_GATE_2026_11_12.md) is the source-exact authority. The process-only drift-checker commit `f85563e6a8cb5c1b78b2bf8a108c6bd1bac62073` also passed its distinct [roadmap consistency run #43359056602](https://github.com/etblink/math/actions/runs/43359056602). Neither process check nor cache history is a substitute for the original M2B1 strict run.
+
+The next-three-new-gate measurement begins with M2B2A and subsequent independently defined mathematical source gates, not retroactively with M2B1. Require their prospective pre-gate receipts and track avoidable syntax/manifest reds, actual CI elapsed cost and source-semantic leverage.
