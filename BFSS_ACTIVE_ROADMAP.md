@@ -28,6 +28,8 @@ The user's shortest reliable resume instruction is:
 4. M5-PORT0 **preparation** — requalify historical original physical Hamiltonian BA–BH changed integration-port natural-domain and charge covariance before exact finite-column graph/form amplification.
 5. M6–M8 **conditional** — original high-type physical reducing sectors, signed unnormalized source fermionic field, low-band exclusion, coercivity, compactness and justified original spectrum. 36+84, three-form, Hopf/RP8 descent, external superspin and NFC/generation proposals remain exploratory with explicit negative controls.
 
+**M3G0A prospective receipt recorded:** [P3-M3G0A source gauge diagonal-column transport](research/spectral-p2-original-field/P3_M3G0A_PROSPECTIVE_DIAGONAL_SOURCE_GAUGE_COLUMN_TRANSPORT_2026_11_12.md). The historical L6G7U–Z six source blobs match strict full-contribution #42095440280 byte-for-byte; M3G0A remains *unproved/uncompiled*, new source/consumer/workflow not staged by the receipt. Build a **deduplicated** exact-pin union, not the naive 96+128 sum. M3G0B source action and M3G0C physical fixedness remain separately unqualified.
+
 **No new M3 theorem or strict CI is staged by this review.** Historical notes below are dated snapshots, not the latest live checkpoint. Qualified Lean source blobs, main, frozen Edition 0.7 monograph and FCP proofs remain unchanged.
 
 ---
