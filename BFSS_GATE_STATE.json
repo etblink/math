@@ -1223,8 +1223,8 @@
   "parallel_auxiliary_gauss_operator_bridge_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-G0B0",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
-    "qualification": false,
+    "status": "GREEN_QUALIFIED_NATIVE_FULLL2_AE_ONLY",
+    "qualification": true,
     "candidate_sha": "235adaaf1151f1711df989968ff8c006b6a8f3e1",
     "run_id": 43523896876,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B0OriginalReciprocalFullL2AEMultiplication.lean",
@@ -1260,6 +1260,30 @@
       "no 16 PiLp lift",
       "no injectivity or physical weighted H"
     ],
-    "next_decision": "Only accept on exact cold source and independent consumer and two allowed axiom roots GREEN; then stage bounded group commutation G0B1 and physicalSpace preservation G0B2 separately"
+    "next_decision": "Exact original bosonPullback gauge commutation for native FullL2 reciprocal operator, then fermion fiberAction commutation and physicalSpace preservation; preserve original Core and accepted roots.",
+    "strict_conclusion": "success",
+    "accepted_run_id": 43523896876,
+    "run_attempt": 1,
+    "job_id": 132224745129,
+    "tested_sha": "235adaaf1151f1711df989968ff8c006b6a8f3e1",
+    "qualified_roots": [
+      "originalReciprocalFullL2CLM_ae_factor",
+      "originalReciprocalFullL2CLM_ae_originalField"
+    ],
+    "qualified_root_count": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "strict_marker": "BFSS_P3_AUX_G0B0_ORIGINAL_FULLL2_AE_MULTIPLICATION_STRICT_GREEN",
+    "artifact_id": 14084139076,
+    "artifact_size_bytes": 7417,
+    "artifact_digest": "sha256:04bb838bdcfac3be1b454e974557c22176a55dab3806e807f8c0d80e1ff63827",
+    "receipt": "research/spectral-p2-original-field/P3_AUX_G0B0_R1_GREEN_43523896876_ORIGINAL_FULLL2_AE_RECIPROCAL_ACCEPTANCE_2026_11_13.md",
+    "source_passed": true,
+    "consumer_passed": true,
+    "next_gate": "P3-AUX-G0B1",
+    "next_gate_status": "RESEARCH_NOT_STAGED"
   }
 }
