@@ -1081,8 +1081,8 @@
   "parallel_auxiliary_bounded_multiplier_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-R0B2A",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
-    "qualification": false,
+    "status": "GREEN_QUALIFIED_ORIGINAL_FULLL2_BOUNDED_RECIPROCAL_ONLY",
+    "qualification": true,
     "candidate_sha": "5ea59877c651620db9a1af6231e6788e74f97ec6",
     "run_id": 43521745235,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0B2AOriginalReciprocalFullL2BoundedAction.lean",
@@ -1110,16 +1110,8 @@
     ],
     "if_green": "Audit tested SHA, exact five roots/axioms and original consumer, write separate immutable acceptance and retain R0B1 factor qualification; then investigate native PiLp lift and injectivity",
     "if_red": "Preserve first causal typeclass/holder/CLM compiler error, check pinned Mathlib Holders and direct source carrier, repair narrowly without changing mathematical target",
-    "strict_conclusion": "failure",
-    "failed_job_id": 132213380734,
-    "red_run_id": 43518502567,
-    "first_causal_red": "Independent consumer line 14 Lean dependsOnNoncomputable: example constructing noncomputable originalReciprocalFullL2CLM lacked noncomputable section",
-    "source_compiled_five_roots_standard_axioms": true,
-    "independent_consumer_qualified": false,
-    "red_artifact_id": 14083000428,
-    "red_artifact_digest": "sha256:c2263c85715c8ef9d702fbe8cb63306be9ccea2e35da36f7f711096162d5a574",
-    "red_receipt": "research/spectral-p2-original-field/P3_AUX_R0B2A_R1_RED_43518502567_FIRST_CAUSAL_2026_11_13.md",
-    "next_decision": "Accept only strict GREEN exact source + independent consumer + all five standard axiom roots. If RED preserve first causal. Maintain parallel G0A independent.",
+    "strict_conclusion": "success",
+    "next_decision": "Combine G0A exact scalar/AE invariance and R0B2A true FullL2 multiplication to prove gauge bosonPullback/fiberAction commutation and physicalSpace preservation. Separately qualify injectivity and finite PiLp lift. No H or gap.",
     "r1_red": {
       "run_id": 43518502567,
       "tested_sha": "2abbdf6c399b86e14ea6133fd7ea6689bef78a3b",
@@ -1146,13 +1138,39 @@
       "artifact_digest": "sha256:08fb0a2814ef3a12bddaf724bd7b94b951ec602a9e7439f6d64c6a317e19c6b5",
       "ledger": "research/spectral-p2-original-field/P3_AUX_R0B2A_R2_RED_43520543478_FIRST_CAUSAL_2026_11_13.md"
     },
-    "prospective_r3": "research/spectral-p2-original-field/P3_AUX_R0B2A_R3_PROSPECTIVE_SECTION_CLOSURE_REPAIR_2026_11_13.md"
+    "prospective_r3": "research/spectral-p2-original-field/P3_AUX_R0B2A_R3_PROSPECTIVE_SECTION_CLOSURE_REPAIR_2026_11_13.md",
+    "accepted_run_id": 43521745235,
+    "tested_sha": "5ea59877c651620db9a1af6231e6788e74f97ec6",
+    "attempt": 1,
+    "job_id": 132217454180,
+    "strict_marker": "BFSS_P3_AUX_R0B2A_ORIGINAL_FULLL2_BOUNDED_ACTION_STRICT_GREEN",
+    "roots": [
+      "originalReciprocalFullL2Linear",
+      "originalReciprocalFullL2Linear_apply",
+      "originalReciprocalFullL2Linear_norm_le",
+      "originalReciprocalFullL2CLM",
+      "originalReciprocalFullL2CLM_apply"
+    ],
+    "qualified_root_count": 5,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "artifact_id": 14083756993,
+    "artifact_size_bytes": 1922,
+    "artifact_digest": "sha256:5fb2e11d91933eab151e699ad3dd66a647e8c99511614cbdae034069e36ad0cc",
+    "receipt": "research/spectral-p2-original-field/P3_AUX_R0B2A_R3_GREEN_43521745235_ORIGINAL_FULLL2_BOUNDED_RECIPROCAL_ACCEPTANCE_2026_11_13.md",
+    "consumer_passed": true,
+    "source_passed": true,
+    "next_gate": "P3-AUX-G0B",
+    "next_gate_status": "RESEARCH_ONLY_UNSTAGED"
   },
   "parallel_auxiliary_gauss_radial_experiment": {
     "date": "2026-11-13",
     "gate": "P3-AUX-G0A",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
-    "qualification": false,
+    "status": "GREEN_QUALIFIED_RADIAL_GAUGE_SCALAR_AE_ONLY",
+    "qualification": true,
     "candidate_sha": "8eba5b3814fa41c2943e7477aedef7760e176558",
     "run_id": 43521457638,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0AOriginalRadialGaugeInvariance.lean",
@@ -1175,6 +1193,31 @@
       "no physical Haar projection commutation",
       "no weighted charge or spectral claim"
     ],
-    "next_decision": "Only qualify on source+independent consumer+3 allowed-root axioms GREEN; if RED preserve first causal without altering R0B2A"
+    "next_decision": "Prove source native FullL2 reciprocal-multiplier gauge commutation and preservation of exact pairedGaugeData.physicalSpace; no infinitesimal commutator claim.",
+    "strict_conclusion": "success",
+    "accepted_run_id": 43521457638,
+    "tested_sha": "8eba5b3814fa41c2943e7477aedef7760e176558",
+    "attempt": 1,
+    "job_id": 132216469504,
+    "strict_marker": "BFSS_P3_AUX_G0A_ORIGINAL_RADIAL_GAUGE_INVARIANCE_STRICT_GREEN",
+    "roots": [
+      "originalRadialWeight_gauge_invariant",
+      "originalReciprocalField_gauge_invariant",
+      "originalReciprocalLpInf_ae_gauge"
+    ],
+    "qualified_root_count": 3,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "artifact_id": 14084665266,
+    "artifact_size_bytes": 7265,
+    "artifact_digest": "sha256:b9aa8bcb96ee2159ff8e55723382cd4e501f1c11428348777fede6b8e96a35e5",
+    "receipt": "research/spectral-p2-original-field/P3_AUX_G0A_R1_GREEN_43521457638_ORIGINAL_GAUSS_RADIAL_INVARIANCE_ACCEPTANCE_2026_11_13.md",
+    "source_passed": true,
+    "consumer_passed": true,
+    "next_gate": "P3-AUX-G0B",
+    "next_gate_status": "RESEARCH_ONLY_UNSTAGED"
   }
 }
