@@ -2341,11 +2341,23 @@
       },
       "implementation": {
         "plan": "research/top-down-symmetry/TD_C1A_D2R2_DIFFERENTIAL_EXPRESSION_AUDIT_PREREGISTRATION_2026_11_13.md",
-        "source": null,
-        "workflow": null,
-        "manifest": null,
+        "source": "lean/diagnostics/BFSSTDC1AD2R2ExpressionInspector.lean",
+        "workflow": ".github/workflows/bfss-td-c1a-d2r2-differential.yml",
+        "manifest": "research/top-down-symmetry/TD_C1A_D2R2_DIFFERENTIAL_MANIFEST.json",
         "run_id": null,
-        "tested_sha": null
+        "tested_sha": null,
+        "source_files": [
+          "lean/diagnostics/BFSSTDC1AD2R2ExpressionInspector.lean",
+          "lean/diagnostics/BFSSTDC1AD2R2VariableControl.lean",
+          "lean/diagnostics/BFSSTDC1AD2R2DirectAxisControl.lean",
+          "lean/diagnostics/BFSSTDC1AD2R2NativeAxisObservation.lean",
+          "lean/diagnostics/BFSSTDC1AD2R2NativeEvaluationObservation.lean"
+        ],
+        "runner": "tools/run_bfss_td_c1a_d2r2_differential.py",
+        "collector_stage_commit": "65cc9a3494082ca37a58b394b72dba7714eda936",
+        "stage": "STAGED_UNCOMPILED",
+        "source_pins_count": 18,
+        "source_pins_verified_through_repository": true
       },
       "conclusion": "Preregistered differential comparison, no source implementation or CI yet."
     }
