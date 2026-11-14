@@ -3831,7 +3831,7 @@
       "id": "E-P3-AUX-HARDY-X0-R1",
       "title": "Original Hardy Xi coefficient norm and genuine cutoff coupling",
       "registered_at": "2026-11-14",
-      "status": "EXECUTED_UNREVIEWED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_X0_R1_PRE_GATE_ORIGINAL_XI_NORM_AND_CUTOFF_2026_11_14.md",
@@ -3900,7 +3900,91 @@
       "workflow_blob": "b4a2b26f0a0fc53307ebddac8dad812892ea96f5",
       "run_id": 43623576828,
       "tested_sha": "47e36232762e707d3b72ccb1dacbe9ca2c4f0fb5",
-      "job_id": 132534392755
+      "job_id": 132534392755,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_X0_R1_RED_43623576828_REAL_UNIT_ROW_INFERENCE_2026_11_14.md",
+      "result": {
+        "run_id": 43623576828,
+        "tested_sha": "47e36232762e707d3b72ccb1dacbe9ca2c4f0fb5",
+        "manifest_pins": 147,
+        "manifest_hash": "54128ffcbd135c11fb13904b084d36a40e5d75af722ab79569ac424b5bc92aa8",
+        "independent_consumer_reached": false,
+        "clean_source_roots_not_qualified": [
+          "originalHardyXi",
+          "originalHardyXi_apply",
+          "originalHardyXi_charge_realCutoff"
+        ],
+        "sorry_source_roots": [
+          "originalHardyXi_norm_sq",
+          "originalHardyXi_sum_norm_sq"
+        ],
+        "first_causal": "Source 31:43 local unit-row sum: argument 1 : Real supplied to a Pi.single application inferred to expect Nat. Outer sum/result and whole row lack explicit real type.",
+        "artifact_id": 14125985483,
+        "artifact_digest": "sha256:0753acefba7848d7725052069126a3ce719b1dcee2c345ff5932c9595aa1abfa"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-X0-R2",
+      "title": "Explicit real source unit-row typing for original Xi norm",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_X0_R2_PRE_GATE_EXPLICIT_REAL_UNIT_ROW_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyX0OriginalXiNormAndCutoff.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyX0OriginalXiNormAndCutoffIndependentConsumer.lean",
+      "consumer_blob": "1c81d54d3d14c13d0b4bcaddea0a8602d20e73b8",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-x0-original-xi-norm-cutoff-strict.yml",
+      "roots": [
+        "originalHardyXi",
+        "originalHardyXi_apply",
+        "originalHardyXi_norm_sq",
+        "originalHardyXi_sum_norm_sq",
+        "originalHardyXi_charge_realCutoff"
+      ],
+      "donor_roots": [
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_norm_sq",
+        "OAI.BFSSQuantum.AlgebraData.principalSymbol_norm_sq",
+        "OAI.BFSSQuantum.AlgebraData.principalSymbol_unit_norm_sq",
+        "OAI.BFSSQuantum.AlgebraData.principalSymbol_basis_apply",
+        "OAI.BFSSQuantum.AlgebraData.charge_realCutoff"
+      ],
+      "stages": {
+        "observation": "R1 failed local real Pi.single squared-sum inference; definition/action/cutoff clean, both norm roots sorryAx, consumer not reached.",
+        "question": "Do explicit whole-row and sum real types resolve the same unit-row boundary with unchanged mathematical contracts?",
+        "background": [
+          "Verified exact R1 diagnostics and 147-pin preflight",
+          "Re-read real-domain principalSymbol_unit_norm_sq donor",
+          "Original Xi statements and source CAR convention fixed"
+        ],
+        "hypothesis": "Only local type inference is missing; explicitly Real row and sum enable the existing proof and donor application.",
+        "falsifiers": [
+          "same typed boundary persists",
+          "different source or consumer failure",
+          "public statement/control changed",
+          "source/warning/axiom policy drift"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "whole local Pi.single row type",
+            "local squared-sum Real annotation"
+          ],
+          "dependent_variables": [
+            "complete source/consumer compile",
+            "same five/ten reports",
+            "same origin and doubled-coefficient controls"
+          ],
+          "controls": [
+            "entire consumer fixed",
+            "all public theorem types and coefficients fixed",
+            "frozen OAI baseline and donors",
+            "workflow expected source hash only",
+            "same budgets and warning-as-error"
+          ]
+        },
+        "analysis_plan": "Same cold exact source and native consumer; after two related reds isolate unit-row interface.",
+        "conclusion_rule": "LEAN_QUALIFIED only after full native source and independent consumer acceptance.",
+        "communication": "Proof typing repair only; no source physical Hardy or spectral promotion."
+      }
     }
   ],
   "allowed_statuses": [
