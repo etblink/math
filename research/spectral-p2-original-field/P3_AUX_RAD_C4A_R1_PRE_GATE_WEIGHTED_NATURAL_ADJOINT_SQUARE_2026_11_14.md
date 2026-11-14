@@ -72,3 +72,7 @@ No prospective result is qualified by this receipt or by administrative CI.
 GREEN: record exact SHA/run/source/consumer/axioms and then prepare C4B normalized weak-form associated operator; keep graph-core/maximal-domain and source-paper matching separate.
 RED: preserve first causal failure and unchanged predecessor evidence before a bounded repair. Do not alter original source Hamiltonian, old donor bodies, qualified Sε or its density.
 The old top-level M5 baseline and historical decisions are preserved. The existing route-selection and new auxiliary experiment fields describe this pending priority; no broad checkpoint/schema cleanup accompanies this mathematical gate.
+
+## Launch binding — no hypothesis or source change
+
+Strict [#43583785009](https://github.com/etblink/math/actions/runs/43583785009) started at exact source SHA `f7e6db3f05569403c47774655a17aabfaa4c656c`; initial administrative [#43583784919](https://github.com/etblink/math/actions/runs/43583784919) is independent. Original pre-gate receipt commit `ce4e981a70ffc59080fc356212bb2cc4e6e337b4` is the parent of that first source commit. Source `63561999a01e09638063d7efeb4ca057239f32f8`, consumer `820ec0bd4a0255d2564dc05b72bc488b1dabf4d0`, workflow `979ffcd0cf2cc47981e75903d2ba601cfcf661e0` unchanged. No verdict or import-closure count is assumed from launch.
