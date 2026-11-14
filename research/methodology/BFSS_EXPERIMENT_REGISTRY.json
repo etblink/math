@@ -4530,7 +4530,7 @@
       "id": "E-P3-AUX-HARDY-G3-R2",
       "title": "Remove three unused simplifier arguments in original Y derivative proof",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G3_R2_PRE_GATE_REMOVE_THREE_UNUSED_ARGUMENTS_2026_11_14.md",
@@ -4592,7 +4592,88 @@
       "prospective_receipt_commit": "95b94717a3034a23a0f914976637547bdaae6488",
       "run_id": 43638440460,
       "tested_sha": "8b90de4ed5ed176233eb60fb97e9ae895b8efa0b",
-      "job_id": 132580331749
+      "job_id": 132580331749,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G3_R2_RED_43638440460_TRANSVERSE_CONSUMER_UNUSED_SMUL_ITE_2026_11_14.md",
+      "result": {
+        "run_id": 43638440460,
+        "tested_sha": "8b90de4ed5ed176233eb60fb97e9ae895b8efa0b",
+        "job_id": 132580331749,
+        "manifest_pins": 149,
+        "manifest_hash": "81e8da9efde0654bbc02d8fde2f448e64bc1c9b167320aa654fb01915cd7b1f8",
+        "cold_source_passed": true,
+        "fresh_source_passed": true,
+        "source_reports_clean": 5,
+        "consumer_imported_reports_clean": 10,
+        "full_consumer_passed": false,
+        "first_causal": "Consumer 81:53: unused smul_ite in concrete ninth-axis transverse coefficient control. R1 three source unused args fixed; strict source passes. Sole observed consumer error.",
+        "artifact_id": 14131349180,
+        "artifact_digest": "sha256:8d508f2c8547ef6356f72ebf5241e620e4a77849efe85d122bab665282b24d4c"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G3-R3",
+      "title": "Isolated native transverse control before full Y derivative consumer",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G3_R3_PRE_GATE_ISOLATED_NATIVE_TRANSVERSE_CONTROL_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean",
+      "source_blob": "03b5236bd91e4664e7101544b065054bd6c925a1",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG3OriginalYDerivativeContractionIndependentConsumer.lean",
+      "isolated_diagnostic": "lean/diagnostics/BFSSP3AuxHardyG3NativeTransverseDiagnostic.lean",
+      "diagnostic_root": "BFSSP3AuxHardyG3NativeTransverseDiagnostic.nativeTransverseControl",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g3-original-y-derivative-contraction-strict.yml",
+      "roots": [
+        "originalHardyYCLM",
+        "originalHardyYCLM_apply",
+        "originalHardyY_fderiv",
+        "originalHardyY_basis_contraction",
+        "originalHardyY_derivative_contraction"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY",
+        "FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY_trace",
+        "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_square_trace",
+        "OAI.BFSSGamma.gamma_sq",
+        "OAI.BFSSGamma.gamma_anti"
+      ],
+      "stages": {
+        "observation": "R2 source is strict-clean; first reached consumer flags one unused smul_ite in exact native transverse1/56 control. Second lint red triggers isolation.",
+        "question": "Does isolated same native ninth-axis control pass with only the flagged argument removed, before the unchanged full consumer contract?",
+        "background": [
+          "Exact R2 full compiler logs",
+          "Five/ten clean named reports do not certify failed consumer",
+          "Two-related-red isolation rule"
+        ],
+        "hypothesis": "Removing unused smul_ite preserves exact proof; diagnostic-first checking localizes any residual issue without tactic permutations.",
+        "falsifiers": [
+          "isolated native control fails",
+          "full consumer or reports fail",
+          "source/control changed",
+          "lint weakened"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "one unused consumer list entry removed",
+            "separate exact native transverse diagnostic compiled before consumer"
+          ],
+          "dependent_variables": [
+            "one diagnostic root report",
+            "five/ten source/consumer reports",
+            "all twelve full native examples"
+          ],
+          "controls": [
+            "source byte-identical",
+            "same native color/direction1/56 statement",
+            "same frozen imports/toolchain/budgets/warnings",
+            "no new proof assumption"
+          ]
+        },
+        "analysis_plan": "Cold/fresh source, isolated warning-as-error native diagnostic with own report/log, then complete native consumer; preserve any failure and stop same-boundary permutations.",
+        "conclusion_rule": "LEAN_QUALIFIED only after source AND isolated diagnostic AND full native consumer strict acceptance.",
+        "communication": "Diagnostic-first lint repair; no physical Hardy/fidelity promotion."
+      }
     }
   ],
   "allowed_statuses": [

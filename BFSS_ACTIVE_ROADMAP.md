@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G3 R2 — staged, strict qualification pending
+## HARDY-G3 R2 — RED in transverse control; diagnostic-first recovery
+
+[Strict #43638440460](https://github.com/etblink/math/actions/runs/43638440460) RED at `8b90de4ed5ed176233eb60fb97e9ae895b8efa0b`: 149-pin preflight/toolchain, cold build and fresh source PASS. Consumer81:53 flags unused smul_ite in ninth-axis1/56 example; five/ten reports clean, complete consumer failed. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R2_RED_43638440460_TRANSVERSE_CONSUMER_UNUSED_SMUL_ITE_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G3_R2_TRANSVERSE_UNUSED_SMUL_ITE_43638440460_2026_11_14.txt), [R3 isolation contract](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R3_PRE_GATE_ISOLATED_NATIVE_TRANSVERSE_CONTROL_2026_11_14.md). Two lint reds trigger isolated exact native transverse check before full consumer; source fixed and all twelve controls retained. **R3 not staged yet; G3 unqualified.**
+
+## HARDY-G3 R2 — historical launch (subsequently RED above)
 
 R1 red checkpoint and exact-deletion repair contract committed at `95b94717a3034a23a0f914976637547bdaae6488` before source mutation. Only three flagged mul_smul_comm simp arguments removed; mathematical statements, all twelve native controls and entire consumer byte-identical. Strict lint retained. Source `03b5236bd91e4664e7101544b065054bd6c925a1`, consumer `8fd1ac6d819aaccf9cabe38448813a09c75e59bb`, workflow `db93728ab803f8b9e83059936babb8f8f06b9c9b`; workflow expected source hash only. Static exact-delta/hash/root/YAML/bash/Python PASS; no local Lean. [Strict #43638440460](https://github.com/etblink/math/actions/runs/43638440460) tests exact `8b90de4ed5ed176233eb60fb97e9ae895b8efa0b`, job #132580331749; checkout/preflight pending at binding. Administrative #43638440477 is separate. **Unqualified pending complete cold/fresh source and native consumer, five/ten reports.**
 
