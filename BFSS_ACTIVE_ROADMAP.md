@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G2 R2 — staged, strict qualification pending
+
+R1 red checkpoint and prospective current-lemma repair committed at `c616b2540a0c6a730f9e2c95ae9153ef8ca9036e` before edit. Sole proof delta: if_neg hij -> ite_eq_right hij. All original statements/coefficient definitions and full consumer fixed; warning-as-error retained. Source `952890f8056c2b115d69a03c08c39762210c1a0b`, consumer `f53612702cbf1b69c5ced0463baf17bb15dbf209`, workflow `1e0123c3dd8cffd70936c14fede2d2c6ab35f0bd`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean. **Unqualified pending complete cold/fresh original source and native consumer, five/ten reports.**
+
 ## HARDY-G2 R1 — RED, strict deprecated-lemma check
 
-[Strict #43631150630](https://github.com/etblink/math/actions/runs/43631150630) RED at `7d262f2df1b701b91756c9a00cb8ad237d456420`: 148-pin preflight/toolchain and cold build PASS; fresh warning-as-error source rejects deprecated if_neg at 21:8. Five clean standard-axiom reports, no sorryAx; native consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_RED_43631150630_DEPRECATED_IF_NEG_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G2_R1_DEPRECATED_IF_NEG_43631150630_2026_11_14.txt), [R2 prospective repair](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R2_PRE_GATE_CURRENT_ITE_REWRITE_2026_11_14.md) preserved. Sole R2 change: compiler-prescribed ite_eq_right, already used in current GammaWords. Consumer and strict warning policy fixed. **R2 not staged yet; G2 unqualified.**
+[Strict #43631150630](https://github.com/etblink/math/actions/runs/43631150630) RED at `7d262f2df1b701b91756c9a00cb8ad237d456420`: 148-pin preflight/toolchain and cold build PASS; fresh warning-as-error source rejects deprecated if_neg at 21:8. Five clean standard-axiom reports, no sorryAx; native consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_RED_43631150630_DEPRECATED_IF_NEG_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G2_R1_DEPRECATED_IF_NEG_43631150630_2026_11_14.txt), [R2 prospective repair](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R2_PRE_GATE_CURRENT_ITE_REWRITE_2026_11_14.md) preserved. Sole R2 change: compiler-prescribed ite_eq_right, already used in current GammaWords. Consumer and strict warning policy fixed. **Historical prerepair checkpoint; see current R2 launch above.**
 
 ## HARDY-G2 R1 — historical launch (subsequently RED above)
 

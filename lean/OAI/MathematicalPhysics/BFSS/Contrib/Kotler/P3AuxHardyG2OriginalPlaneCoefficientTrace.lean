@@ -18,7 +18,7 @@ theorem originalGamma_pair_trace (M : AlgebraData 2) (i j : SpaceIndex) :
   by_cases hij : i = j
   · subst j
     simpa only [ite_true] using originalGamma_square_trace M i
-  · rw [if_neg hij]
+  · rw [ite_eq_right hij]
     have ha := congrArg Matrix.trace (OAI.BFSSGamma.gamma_anti M.gamma M.gamma_clifford hij)
     rw [Matrix.trace_neg] at ha
     have hc := Matrix.trace_mul_comm (M.gamma i) (M.gamma j)
