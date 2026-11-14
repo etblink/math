@@ -79,3 +79,7 @@ After two related compiler reds isolate the exact source interface. Preserve fir
 GREEN qualifies native real reciprocal pairing and its original graph consequence only.
 No new restricted physical operator, full Spin(9) covariance, Hardy estimate, energy-space inverse identity, fidelity certificate, zero mode, zero-regulator limit or spectral gap is proved by this gate.
 Commit this receipt before the first new proof/consumer.
+
+## Exact launch binding — 2026-11-14 Pacific
+
+Source review/preregistration committed at `1dc1420a4d50a671c50e2445d2aeaa7a7dbc3d1c` before candidate source/consumer. [Strict #43621045697](https://github.com/etblink/math/actions/runs/43621045697) tests exact `e06545070752572665f87759fe450063109da870`, job #132526575723. Source `f3b4645d85cd611b48cc6f480857659c0b5934c2`, consumer `e1f5e395550146370e8d17387ff00d35f2c4fbc2`, workflow `701f3dbb94829234a6e833a36b0fd8fd2dd2b825`. Checkout/preflight pending at launch binding; administrative #43621045557 separate. **UNQUALIFIED until full native source/paired graph consumer and exact four/eight reports pass.**
