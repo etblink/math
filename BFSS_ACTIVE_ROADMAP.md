@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G5 R1 — staged, original Fock potential/tau CAR lift
+## HARDY-G5 R1 — RED at additive summand scope
+
+[Strict #43645016288](https://github.com/etblink/math/actions/runs/43645016288) RED at `6934c2af40193e6e9762a3e7d8f14566bcd4737e`: 150-path preflight/toolchain PASS; source65/75 unbound alpha in unparenthesized second summands, plus evaluation78 recursion. Four standard-axiom roots; final two sorryAx; consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_RED_43645016288_ADDITIVE_SUMMAND_BINDER_SCOPE_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G5_R1_BINDER_AND_RECURSION_43645016288_2026_11_14.txt), [R2 explicit grouping](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R2_PRE_GATE_EXPLICIT_ANTICOMMUTATOR_SUMMAND_SCOPE_2026_11_14.md). Restore full additive body under each binder in two source/two consumer expressions; proof bodies/budgets fixed. Recursion persistence must be tested, not assumed solved. **R2 not staged yet; G5 unqualified.**
+
+## HARDY-G5 R1 — historical launch (subsequently RED above)
 
 [Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_PRE_GATE_ORIGINAL_POTENTIAL_TAU_CAR_2026_11_14.md) committed at `712d77384dd41574edaec1f558bad15f4fbcd770` before source; administrative #43644748093 GREEN. Six roots define original coefficient tau/potential Fock fields, literal actions, summed zero operator anticommutator and original-vector evaluation. Twelve actual native controls include origin fields, unit-row CAR1/not2 and tau self-adjointness. Source `c1c04f779a6f104cce39a08e34434d4d6937b2d9`, consumer `db899c75288805c560ca0ad2e8c873456d407eb2`, workflow `89aa88686e315ceab7cd13042de00b96e4295ec5`; frozen OAI baseline `f51357761243008201f97d9e0ef0cbefa87d0b06`. Static hash/root/YAML/bash/Python PASS; local Lean unavailable. [Strict #43645016288](https://github.com/etblink/math/actions/runs/43645016288) tests exact `6934c2af40193e6e9762a3e7d8f14566bcd4737e`, job #132600730953; checkout/preflight pending at binding. Administrative #43645016179 is separate. **Unqualified pending full cold/fresh source and native consumer, six/eleven reports.** Literal Core charge potential equality and full smooth-core identity remain separate.
 

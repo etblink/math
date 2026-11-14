@@ -4797,7 +4797,7 @@
       "id": "E-P3-AUX-HARDY-G5-R1",
       "title": "Original Fock potential/tau CAR lift of scalar cancellation",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_PRE_GATE_ORIGINAL_POTENTIAL_TAU_CAR_2026_11_14.md",
@@ -4859,7 +4859,90 @@
       "prospective_receipt_commit": "712d77384dd41574edaec1f558bad15f4fbcd770",
       "run_id": 43645016288,
       "tested_sha": "6934c2af40193e6e9762a3e7d8f14566bcd4737e",
-      "job_id": 132600730953
+      "job_id": 132600730953,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_RED_43645016288_ADDITIVE_SUMMAND_BINDER_SCOPE_2026_11_14.md",
+      "result": {
+        "run_id": 43645016288,
+        "tested_sha": "6934c2af40193e6e9762a3e7d8f14566bcd4737e",
+        "job_id": 132600730953,
+        "manifest_pins": 150,
+        "manifest_hash": "effae561c4508074a96f1b09a6215b43aacbef6e0c24fc29cbc8a5de440c237b",
+        "clean_source_roots_not_qualified": [
+          "originalHardyTau",
+          "originalHardyTau_apply",
+          "originalPotentialFermion",
+          "originalPotentialFermion_apply"
+        ],
+        "sorry_source_roots": [
+          "originalPotentialTau_anticommutator_zero",
+          "originalPotentialTau_anticommutator_apply"
+        ],
+        "independent_consumer_reached": false,
+        "first_causal": "Source65:31/64 and75:31/63: unknown alpha in second addend of unparenthesized finite sum body. Source78:2 additionally reaches max recursion in later evaluation proof; its independent persistence is untested.",
+        "artifact_id": 14134281761,
+        "artifact_digest": "sha256:afbb9755874c3b61f635bece5d447d18892f8a666b5b75624da12337bd67a3a7"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G5-R2",
+      "title": "Explicit binder scope for original Fock anticommutator summands",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R2_PRE_GATE_EXPLICIT_ANTICOMMUTATOR_SUMMAND_SCOPE_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml",
+      "roots": [
+        "originalHardyTau",
+        "originalHardyTau_apply",
+        "originalPotentialFermion",
+        "originalPotentialFermion_apply",
+        "originalPotentialTau_anticommutator_zero",
+        "originalPotentialTau_anticommutator_apply"
+      ],
+      "donor_roots": [
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_mixed",
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_selfAdjoint",
+        "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_pairing_zero",
+        "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_apply",
+        "OAI.BFSSQuantum.AlgebraData.theta_CAR"
+      ],
+      "stages": {
+        "observation": "Unparenthesized additive sum bodies leave second-term alpha out of scope in two source statements; later simpa also reports recursion. First four roots clean, final two sorryAx.",
+        "question": "Do explicit full-summand parentheses restore the intended preregistered anticommutator statements before assessing any independent recursion boundary?",
+        "background": [
+          "Exact R1 source diagnostics and150-pin preflight",
+          "Preregistered intended sum of both products",
+          "No consumer reached"
+        ],
+        "hypothesis": "Parenthesizing both terms keeps the binder in scope; later evaluation can then be assessed without malformed declarations.",
+        "falsifiers": [
+          "binder still out of scope",
+          "independent recursion persists",
+          "new source/consumer failure",
+          "proof/control/budget drift"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "explicit additive-summand grouping in exactly two source and two consumer expressions"
+          ],
+          "dependent_variables": [
+            "whole cold/fresh source and native consumer",
+            "same six/eleven reports and twelve controls"
+          ],
+          "controls": [
+            "proof bodies byte-identical",
+            "no autoImplicit/budget change",
+            "all factors/order and hypotheses fixed",
+            "workflow expected source/consumer hashes only"
+          ]
+        },
+        "analysis_plan": "Retest exact repaired scope under same strict policy; if recursion persists isolate typed evaluation rather than increase limits; second related failure triggers minimal diagnostic.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete original source AND native consumer strict acceptance.",
+        "communication": "Restore intended summand syntax; neither mathematical falsification nor independent recursion repair claimed."
+      }
     }
   ],
   "allowed_statuses": [
