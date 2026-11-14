@@ -1,0 +1,11 @@
+# P3-AUX-RAD-C3D-B R3 — original AU core graph independent microdeclaration
+
+**Date:** 2026-11-14 Pacific. **Status:** STAGED_UNQUALIFIED_PENDING_STRICT_CI.
+
+**Motivation:** C3D-B R1 [#43573922855](https://github.com/etblink/math/actions/runs/43573922855) first error unknown source reciprocal identifier plus inline core graph `whnf` timeout. R2 [#43575336639](https://github.com/etblink/math/actions/runs/43575336639), source blob `093745393a1474863a1b46402f2db76537fa1512`, cleared the identifier and two initial proof roots but timed out at the explicit original source `hcore` witness `⟨f,rfl⟩` with 200,000 heartbeats. [Exact R2 red receipt](P3_AUX_RAD_C3DB_R2_RED_43575336639_WHNF_CORE_GRAPH_2026_11_14.md).
+
+**Bounded new hypothesis:** Move that original AU graph core witness into one **private theorem with an independent elaboration budget** before the expensive weighted graph rewrites. Replace the main theorem's inline `have hcore := ⟨f,rfl⟩` with the private helper application. This preserves the originally stated four externally audited roots and mathematically exact original `M.chargeVector` output/physical `G.physicalSpace` input. The H5E8AZ original source, blob `b69166ba7b1118e3542ba826e73aa4f95f575c3c`, previously used an identical typed `hcore` witness successfully prior to expensive rewriting; the new private helper is intentionally isolated, not replaced with a new assumption.
+
+**Changed only:** native C3DB source, this receipt and experiment/roadmap records. **Unchanged:** accepted C3/C3D-A/C2B, original G4J/AU/AY/AZ, exact four statements, original paired SU2 independent consumer blob `f85bddd055a5e6b34a95833749a3e3f900e8029f`, strict workflow blob `60fce3dbc09aecf1d4b45f86e37033c5cc075e04`, pinned Lean/Mathlib, and original 200k heartbeat cap. The helper carries no new axioms; any unproved helper would contaminate downstream roots and be rejected by `sorryAx` audit.
+
+**Decision rule:** If the exact strict native source cold build, paired SU2 consumer and four-root standard-axiom audit pass, accept R3 and advance to the separate [C3D-C density candidate](P3_AUX_RAD_C3DC_FORWARD_RESEARCH_DENSE_WEIGHTED_PHYSICAL_CHARGE_AND_ADJOINT_SQUARE_2026_11_14.md). If RED, diagnose first causal and consider avoiding AU range witness by reusing a source-certified exact original graph pair theorem; do not blindly raise heartbeats.

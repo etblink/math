@@ -3,7 +3,7 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxRADC3OriginalPhysicalWei
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AZOriginalPhysicalChargeDomainDensityReductionProbe
 
 /-!
-P3-AUX-RAD-C3D-B R2: the ACTUAL sixteen original smooth-core charge
+P3-AUX-RAD-C3D-B R3: the ACTUAL sixteen original smooth-core charge
 outputs have a weighted FullL2 representative in AY's PiLp 2 output.
 Exact original source invariant-core inputs lie in the accepted closed
 physical weighted charge graph. Not yet a dense-domain theorem.
@@ -46,6 +46,17 @@ theorem originalWeightedChargeCoreOutput_reciprocal
       coreToL2 (M.charge α f)
   exact originalReciprocalFullL2CLM_core_witness hε (M.charge α f)
 
+/-- Isolated source-exact smooth-core membership witness. Separating
+this heavy original AU range elaboration from the subsequent C3 graph
+rewrites avoids consuming the same theorem's elaboration budget.
+No new physical assumption and no altered original source operator. -/
+private theorem originalSourceInvariantCoreGraph_mem
+    (M : AlgebraData 2) (G : M.GaugeData)
+    (f : G.invariantCore) :
+    (coreToL2 f.val, M.chargeVector f.val) ∈
+      originalMinimalCoreGraph M G := by
+  exact ⟨f, rfl⟩
+
 /-- The actual original invariant smooth core is included in the
 actual physical-Hilbert weighted inverse-image graph, with the genuine
 source gauge data, via AU/AY original closed core graph. -/
@@ -60,9 +71,7 @@ theorem originalWeightedChargeCoreGraph_mem
   rw [originalWeightedChargeCoreOutput_reciprocal M hε f.val]
   rw [originalMinimalPhysicalHilbertChargeColumn_graph_eq M G]
   apply (originalMinimalPhysicalHilbertChargeGraph_mem_iff M G _).mpr
-  have hcore :
-      (coreToL2 f.val, M.chargeVector f.val) ∈
-        originalMinimalCoreGraph M G := ⟨f, rfl⟩
+  have hcore := originalSourceInvariantCoreGraph_mem M G f
   change (coreToL2 f.val, M.chargeVector f.val) ∈
     closure (originalMinimalCoreGraph M G :
       Set (FullL2 2 × (SpinIndex → FullL2 2)))

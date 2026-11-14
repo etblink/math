@@ -2260,14 +2260,14 @@
   "parallel_auxiliary_original_weighted_core_graph_experiment": {
     "gate": "P3-AUX-RAD-C3DB",
     "date": "2026-11-13",
-    "attempt": "R2",
+    "attempt": "R3",
     "status": "STAGED_UNQUALIFIED_PENDING_STRICT_CI",
     "qualification": false,
-    "parent_sha": "598b440c1baf8f794a35efeee17c7ecf51cb2b07",
+    "parent_sha": "8303129967701490874143c0947a219ca2f25245",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.lean",
     "consumer": "lean/diagnostics/BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraphIndependentConsumer.lean",
     "workflow": ".github/workflows/bfss-p3-aux-rad-c3db-original-physical-weighted-core-graph-strict.yml",
-    "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R2_MINIMAL_SOURCE_ELABORATION_REPAIR_2026_11_13.md",
+    "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R3_ISOLATED_ORIGINAL_AU_CORE_MEMBERSHIP_MICROGATE_2026_11_14.md",
     "roots": [
       "originalWeightedChargeCoreOutput",
       "originalWeightedChargeCoreOutput_reciprocal",
@@ -2283,15 +2283,27 @@
       "No maximal domain or weighted operator identity beyond exact graph",
       "No self-adjoint quadratic form or spectral conclusion"
     ],
-    "next_decision": "Run exact strict source and independent original paired SU2 consumer; accept only if all four roots standard axiom audit and artifact success.",
-    "prior_red_run_id": 43573922855,
-    "prior_red_receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_RED_43573922855_FIRST_CAUSAL_2026_11_13.md",
-    "classification": "BOUNDED_FIRST_CAUSAL_SOURCE_ELABORATION_REPAIR",
+    "next_decision": "Review strict source, original paired SU2 consumer and exact four-root axiom audits; if RED first causal evidence before further repair.",
+    "prior_red_run_id": 43575336639,
+    "prior_red_receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R2_RED_43575336639_WHNF_CORE_GRAPH_2026_11_14.md",
+    "classification": "R3_ORIGINAL_AU_CORE_HELPER_DECLARATION_ISOLATION",
     "revision_scope": [
       "Open already imported and previously qualified original FullL2 Bε namespace",
       "Factor original AU core graph witness into explicit hcore have as done in accepted AZ"
     ],
-    "first_causal_red_preserved": true
+    "first_causal_red_preserved": true,
+    "repair_scope": [
+      "move original AU core ⟨f,rfl⟩ elaboration into own small private theorem before graph chain",
+      "replace in-graph inline have hcore with invocation of new helper"
+    ],
+    "previous_preserved_red_runs": [
+      43573922855,
+      43575336639
+    ],
+    "unchanged_theorem_types": true,
+    "independent_consumer_unchanged": true,
+    "workflow_unchanged": true,
+    "no_heartbeat_increase": true
   },
   "parallel_auxiliary_original_weighted_core_graph_previous_red": {
     "gate": "P3-AUX-RAD-C3DB",
@@ -2313,5 +2325,37 @@
     "roadmap_consistency_run": 43573922840,
     "preserved_receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_RED_43573922855_FIRST_CAUSAL_2026_11_13.md",
     "mathematical_outcome": "UNTESTED_BY_SUCCESSFUL_COMPILER; do not treat RED as mathematical counterexample"
+  },
+  "parallel_auxiliary_original_weighted_core_graph_R2_red": {
+    "gate": "P3-AUX-RAD-C3DB",
+    "attempt": "R2",
+    "status": "RED_UNQUALIFIED",
+    "qualification": false,
+    "run_id": 43575336639,
+    "tested_sha": "76f207da39b2ead16e3652ddffdb5c16e8188255",
+    "job_id": 132388226207,
+    "first_causal_error": "P3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.lean line 65 column 44: whnf deterministic timeout with 200000 heartbeats in ⟨f,rfl⟩ explicit hcore proof",
+    "first_error_line": 65,
+    "first_error_column": 44,
+    "error_class": "SOURCE_ELABORATION_WHNF_TIMEOUT",
+    "preflight_passed": true,
+    "pinned_toolchain_passed": true,
+    "cold_compile_passed": false,
+    "consumer_reached": false,
+    "passed_root_evidence": [
+      "originalWeightedChargeCoreOutput",
+      "originalWeightedChargeCoreOutput_reciprocal"
+    ],
+    "unqualified_roots": [
+      "originalWeightedChargeCoreGraph_mem",
+      "originalWeightedChargeCore_mem_domain"
+    ],
+    "failed_source_blob": "093745393a1474863a1b46402f2db76537fa1512",
+    "artifact_id": 14106303757,
+    "artifact_size_bytes": 9938,
+    "artifact_digest": "sha256:0683e092a118497ec5038e5214efa4cc97582d42772e943329357345503f7c49",
+    "roadmap_consistency_independent_green_run": 43576112568,
+    "receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R2_RED_43575336639_WHNF_CORE_GRAPH_2026_11_14.md",
+    "explanation": "R1 unresolved identifier repaired; R2 core witness still timeouts, and dependent proofs show sorryAx; this is not a mathematical counterexample."
   }
 }
