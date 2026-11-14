@@ -23,3 +23,7 @@ GREEN requires whole source AND independent consumer compile, origin/equal-param
 RED: preserve exact first causal output; after two related reds isolate the type/conditional rewrite with explicit source-shaped goals. Do not disable unused-simp lint, remove the origin control, weaken positivity or raise proof budgets.
 
 Scope remains scalar/L-infinity only. No FullL2/PiLp ratio action, common domains, Hardy/fidelity, zero limit, eigenstate or gap claim.
+
+## Exact strict launch binding — 2026-11-14 Pacific
+
+R1 red/checkpoint and this R2 receipt committed at `621f3b0e698f6271a96002fa8c8b9af8074671ef` before candidate consumer bytes. [Strict #43593756655](https://github.com/etblink/math/actions/runs/43593756655) tests exact `9f647fc3770b58085be83ce4e579847311badc8a`, job #132443798452. Source unchanged `eabd26ec2a72043e622d634a6366f4b3ed5eaf77`; consumer `01dfc11b81fd2bffdd203c58d5a5f19d1a420b4c`; workflow `9678f6f92e94cfcab8bbd585af85960f6c08ffb0`. Checkout/preflight pending at binding; administrative #43593756662 separate. **UNQUALIFIED pending full source and independent consumer compile with exact ten/fourteen reports.**
