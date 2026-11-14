@@ -3457,8 +3457,8 @@
       "id": "E-P3-AUX-RAD-C4C-R1",
       "title": "Exact original weighted and unweighted Hamiltonian kernel submodule equality",
       "registered_at": "2026-11-14",
-      "status": "EXECUTED_UNREVIEWED",
-      "qualification": false,
+      "status": "LEAN_QUALIFIED",
+      "qualification": true,
       "qualified_physical_claim": false,
       "classification": "SOURCE_EXACT_ORIGINAL_SU2_KERNEL_PRESERVATION_PENDING_STRICT",
       "parent_sha": "6e38ae865ac5a4b0e25ec8c2d30f3d5343e5d33c",
@@ -3535,7 +3535,91 @@
       "run_id": 43589307044,
       "tested_sha": "c63c8c0be281d804495e8aa6334ad4f5689c9211",
       "job_id": 132430448551,
-      "preflight": "PASS"
+      "preflight": "PASS",
+      "acceptance_receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C4C_R1_GREEN_43589307044_ORIGINAL_WEIGHTED_KERNEL_PRESERVATION_ACCEPTANCE_2026_11_14.md",
+      "result": {
+        "run_id": 43589307044,
+        "tested_sha": "c63c8c0be281d804495e8aa6334ad4f5689c9211",
+        "source_reports": 9,
+        "consumer_reports": 16,
+        "manifest_pins": 215,
+        "manifest_hash": "1552342dc180d1f79ae5d114610b87107bbb746dd826dffc0f26241c2a367f2b",
+        "artifact_id": 14112461120,
+        "artifact_digest": "sha256:441a262b652153ae8a61239fdb208b142c65487b4c25e71d72d14232c3f3eb47",
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "zero_mode_existence_proved": false
+      }
+    },
+    {
+      "id": "E-P3-AUX-RAD-C5A-R1",
+      "title": "Original positive-regulator ratio and L-infinity class",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C5A_R1_PRE_GATE_ORIGINAL_POSITIVE_REGULATOR_RATIO_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC5AOriginalPositiveRegulatorRatio.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-rad-c5a-original-positive-regulator-ratio-strict.yml",
+      "roots": [
+        "originalRadialWeight_mono",
+        "originalRadialWeight_scaled_le",
+        "originalRegulatorRatioField",
+        "originalRegulatorRatioField_continuous",
+        "originalRegulatorRatioField_norm_le",
+        "originalRegulatorRatioField_mul_reverse",
+        "originalReciprocalField_mul_ratio",
+        "originalRegulatorRatioField_memLp_infty",
+        "originalRegulatorRatioLpInf",
+        "originalRegulatorRatioLpInf_ae"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxR0AOriginalRadialScalar.originalRadialWeight_sq",
+        "FCP.BFSSP3AuxR0AOriginalRadialScalar.originalRadialWeight_pos",
+        "FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity.originalRadialWeight_continuous",
+        "FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity.originalReciprocalLpInf_ae"
+      ],
+      "stages": {
+        "observation": "Native square/positivity and continuity/L-infinity donors exist; literal ratio interface absent.",
+        "question": "Can exact original positive ratios be qualified as bounded continuous complex fields and genuine L-infinity classes?",
+        "background": [
+          "Accepted C4C nine/sixteen reports, 215 pins",
+          "Exact R0A/R0B1 inspected",
+          "Preserved forward memo recommends bounded ratio first"
+        ],
+        "hypothesis": "Ordered square comparison gives both ratio orders; native MemLp/toLp/AE gives class.",
+        "falsifiers": [
+          "wrong orientation or order",
+          "denominator positivity dropped",
+          "surrogate carrier/measure",
+          "AE promoted to pointwise equality",
+          "native control or strict policy failure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "all positive epsilon/delta",
+            "original Boson 2 and volume",
+            "origin and equal-parameter controls"
+          ],
+          "dependent_variables": [
+            "ten source roots",
+            "fourteen consumer reports"
+          ],
+          "controls": [
+            "frozen OAI baseline 926f017b629ce9327e4c6f91c544c8e262131709",
+            "Core/G4J/R0A/R0B1 pins",
+            "pinned toolchain and warning-as-error",
+            "no operator/form conclusion"
+          ]
+        },
+        "analysis_plan": "Cold exact source, fresh native consumer, exact report order/axioms; preserve first causal red.",
+        "conclusion_rule": "LEAN_QUALIFIED only after exact tested source/consumer and measured manifest review.",
+        "communication": "Scalar/L-infinity only; no common domains, forms, resolvent, zero mode or gap."
+      }
     }
   ],
   "allowed_statuses": [
