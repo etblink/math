@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G4 R1 — staged, potential/Y scalar coefficient cancellation
+
+[Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_PRE_GATE_ORIGINAL_POTENTIAL_Y_COEFFICIENT_CANCELLATION_2026_11_14.md) committed at `dacd10ed306b1b82d0fc153ad509229597c06853` before proof source; administrative #43642725706 GREEN. Six roots qualify gammaTwo/Y trace, original potential matrix/literal entries, transpose sign, trace and actual same-index scalar pairing. Twelve native examples include diagonal-color sum, diagonal gammaTwo, origin and nonzero first-gamma/Y probe. Source `b2a482d0817fd39e7437a77d66d8f911c7073de3`, consumer `85b1897f300a82aa140cd33c2f6db0ec12c4357b`, workflow `0ad80b38c7620680e4280267c061fb4c3bcee179`; frozen OAI baseline `9a67c63087bc37ee6c6c19fcf76641c0437794fe`. Static hash/root/YAML/bash/Python PASS; local Lean unavailable. **Unqualified pending complete cold/fresh source and native consumer, six/eleven reports.** Source Fock/core CAR compression remains separate.
+
 ## HARDY-G4 prospective — original potential/Y scalar coefficient cancellation
 
-[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_PRE_GATE_ORIGINAL_POTENTIAL_Y_COEFFICIENT_CANCELLATION_2026_11_14.md) binds original Core.gammaTwo, structureConstant and quadratic coordinates to a real potential coefficient matrix, its literal entries, transpose sign, Y trace and actual same-index scalar pairing. Six roots/eleven reports, twelve native controls. This consumes G1 odd traces and G2 literal Y; G3 derivative remains accepted. **No G4 source staged yet.** Full Fock/core charge–tau compression and physical Hardy remain open.
+[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_PRE_GATE_ORIGINAL_POTENTIAL_Y_COEFFICIENT_CANCELLATION_2026_11_14.md) binds original Core.gammaTwo, structureConstant and quadratic coordinates to a real potential coefficient matrix, its literal entries, transpose sign, Y trace and actual same-index scalar pairing. Six roots/eleven reports, twelve native controls. This consumes G1 odd traces and G2 literal Y; G3 derivative remains accepted. **Historical preregistration status; see current launch above.** Full Fock/core charge–tau compression and physical Hardy remain open.
 
 ## HARDY-G3 R3 — accepted, original Y derivative contraction
 
