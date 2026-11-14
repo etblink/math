@@ -74,3 +74,7 @@ C4A R1's rewrite/instance diagnostic and six proof letI warnings remain preserve
 GREEN: record exact tested SHA, pins, source/consumer roots and receipt; only then discuss native positive-ratio/domain/form stability or projection packaging.
 RED: retain accepted C4B/C4A and original H, preserve first causal layer, repair only that layer.
 **No promotion:** nonzero kernel, existence/uniqueness/dimension of zero modes, a ground-state construction, singlet Hardy gap, spectral gap, maximal-domain/graph-core identity, regulator limit or source-paper equivalence.
+
+## Exact strict launch binding — 2026-11-14
+
+The pre-gate receipt was committed at `6e38ae865ac5a4b0e25ec8c2d30f3d5343e5d33c` before candidate source/consumer. Strict [#43589307044](https://github.com/etblink/math/actions/runs/43589307044) tests exact `c63c8c0be281d804495e8aa6334ad4f5689c9211`, job #132430448551. Source `0e234856784f0d427a1f1792151c158ad97802da`, consumer `e358d5e9e74f683b5bcc98cd472597a5d9834a71`, workflow `28f0a78c7802a9af45215ac94eaaf391c8dcdd6b`. Complete reviewed-source closure/toolchain preflight PASS; mathematical cold compilation and independent consumer remain pending. Administrative #43589306986 GREEN is separate. **UNQUALIFIED pending exact source/consumer/axiom receipts.**
