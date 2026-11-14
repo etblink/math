@@ -1,6 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G3 R3 — staged with isolated native transverse diagnostic first
+## HARDY-G3 R3 — accepted, original Y derivative contraction
+
+[Strict #43640943132](https://github.com/etblink/math/actions/runs/43640943132) GREEN at `3db5a85a5a5f6969ada47a4ec9619c1b3c9bd7fd`: full source, isolated native transverse diagnostic and complete native consumer PASS; five/one/ten exact standard-axiom reports, twelve controls, 150 pinned source paths, manifest `fa589ac5f463fdc55e1160a17fb63491229a8e63a4c5c1702d0e119f2b0eaab9`. Actual derivative coefficient1/4 and transverse1/56 control qualified. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R3_GREEN_43640943132_ORIGINAL_Y_DERIVATIVE_ACCEPTANCE_2026_11_14.md). R1/R2 negatives retained.
+
+G1/G2/G3 supply odd traces and both original Y contractions. Next source review: potential-term coefficient trace cancellation using actual gammaTwo, structureConstant and original coordinates, before full charge/tau compression. **No next source staged yet; no tau or physical Hardy qualification.**
+
+## HARDY-G3 R3 — historical launch (accepted above)
 
 [Isolation contract](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R3_PRE_GATE_ISOLATED_NATIVE_TRANSVERSE_CONTROL_2026_11_14.md) committed at `ead0a725cceb7bf8b26c8bc78fd05c26adbb697b` before edits; administrative #43640784373 GREEN. Source byte-identical `03b5236bd91e4664e7101544b065054bd6c925a1`. Full consumer removes only flagged smul_ite; isolated exact native ninth-axis1/56 statement/body compiled warning-as-error before complete consumer. All twelve native controls and five/ten reports retained; one additional diagnostic report required. Consumer `da78f000c8cb34232f71ee7e363c63e966f652a4`, diagnostic `23447d71b1bf08d411d48e9883612f3ebdab3628`, workflow `5792b24f968ee177aae6a51ddd0224ca8512fdf1`. Diagnostic frozen in manifest with same imports/strict policy. Static exact-delta/copy/hash/root/YAML/bash/Python PASS, local Lean unavailable. [Strict #43640943132](https://github.com/etblink/math/actions/runs/43640943132) tests exact `3db5a85a5a5f6969ada47a4ec9619c1b3c9bd7fd`, job #132588153263; checkout/preflight pending at binding. Administrative #43640943117 is separate. **Unqualified pending complete strict source, isolated diagnostic and full native consumer.**
 
