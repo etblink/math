@@ -30,3 +30,7 @@ The existing native `hinner` already elaborated in R1. The explicitly complex-sp
 If strict GREEN, independently review exact source SHA, source/consumer logs, all roots, pins and artifact before acceptance; only then C4B. If this second related attempt is RED, stop tactic variants and run an explicit tiny domain/instance diagnostic. Do not change source physics, accepted Sε/H, the six target statements, original consumer, proof budgets or qualification standard.
 
 The [forward C4B/kernel/positive-regulator memo](P3_AUX_RAD_C4B_FORWARD_RESEARCH_NORMALIZATION_KERNEL_AND_POSITIVE_REGULATOR_STABILITY_2026_11_14.md) remains conventional analysis only.
+
+## Launch binding
+
+[Strict #43585322863](https://github.com/etblink/math/actions/runs/43585322863) started at exact `c2ff95769d65b45e002118eac6e12f910866373f`; administrative #43585322835 is separate. Source/consumer/root contract and donor pins unchanged from this prospective repair. No verdict or R2 import count assumed.
