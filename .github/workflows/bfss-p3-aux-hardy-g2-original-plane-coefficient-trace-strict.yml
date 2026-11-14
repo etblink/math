@@ -34,7 +34,7 @@ jobs:
           BASE="3645cdc05202abefd0b5a9533a4daa1ca45fdf6d"
           SOURCE="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean"
           CONSUMER="lean/diagnostics/BFSSP3AuxHardyG2OriginalPlaneCoefficientTraceIndependentConsumer.lean"
-          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean": "952890f8056c2b115d69a03c08c39762210c1a0b", "lean/diagnostics/BFSSP3AuxHardyG2OriginalPlaneCoefficientTraceIndependentConsumer.lean": "f53612702cbf1b69c5ced0463baf17bb15dbf209", "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60", "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean": "d12051e70de679f5458dbd456667a32c7b407ce4", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean": "6a019c9111b384e73a05de7b776ac9e5a83c7eb7", "lean/OAI/MathematicalPhysics/BFSS/GammaIdentity.lean": "45e58da900a7691b88e5760a483b8adff1c7f015"}
+          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean": "952890f8056c2b115d69a03c08c39762210c1a0b", "lean/diagnostics/BFSSP3AuxHardyG2OriginalPlaneCoefficientTraceIndependentConsumer.lean": "7b612a3a537d2735127cb2e4b6f382d8baf60053", "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60", "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean": "d12051e70de679f5458dbd456667a32c7b407ce4", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean": "6a019c9111b384e73a05de7b776ac9e5a83c7eb7", "lean/OAI/MathematicalPhysics/BFSS/GammaIdentity.lean": "45e58da900a7691b88e5760a483b8adff1c7f015"}
           ROOTS=["originalGamma_pair_trace", "originalGamma_three_transpose", "originalGamma_trace_mul_three_distinct", "originalHardyY", "originalHardyY_trace"]
           NAMESPACE="FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace"
           DONORS=["FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_square_trace", "OAI.BFSSGamma.gamma_anti", "OAI.BFSSGamma.list_reverse_eq", "OAI.BFSSGamma.list_transpose", "OAI.BFSSGamma.trace_skew_symm"]
@@ -79,7 +79,7 @@ jobs:
           assert "pairedAlgebraData" in consumer
           assert "originalHardyY_trace pairedAlgebraData" in consumer
           assert "originalGamma_trace_mul_three_distinct pairedAlgebraData" in consumer
-          assert "EuclideanSpace.single (0, 0) 1" in consumer and "EuclideanSpace.single (1, 0) 1" in consumer
+          assert "EuclideanSpace.single (0, nativeColorZero) 1" in consumer and "EuclideanSpace.single (1, nativeColorZero) 1" in consumer
           assert "originalHardyY pairedAlgebraData 1 0 X A" in consumer and "≠ 1" in consumer
           assert len(re.findall(r"(?m)^example\b",consumer))==11
           assert "FullL2 2" in consumer and "Fermion 2" in consumer and "Boson 2" in consumer

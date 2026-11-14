@@ -12,6 +12,9 @@ open FCP.BFSSSU2GaugeG4J
 open FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace
 open MeasureTheory
 
+private def nativeColorZero : ColorIndex 2 :=
+  ⟨0, by change (0 : ℕ) < 3; decide⟩
+
 example : FullL2 2 = Lp (Fermion 2) 2
     (volume : Measure (Boson 2)) := rfl
 
@@ -47,13 +50,15 @@ example (i j : SpaceIndex) (hij : i ≠ j) (X : Boson 2) (A : ColorIndex 2)
 
 -- First plane axis has positive orientation against the second gamma.
 example : Matrix.trace (pairedAlgebraData.gamma 1 *
-    originalHardyY pairedAlgebraData 0 1 (EuclideanSpace.single (0, 0) 1) 0) = 1 := by
+    originalHardyY pairedAlgebraData 0 1
+      (EuclideanSpace.single (0, nativeColorZero) 1) nativeColorZero) = 1 := by
   rw [originalHardyY_trace pairedAlgebraData 0 1 (by decide)]
   norm_num [PiLp.single_apply]
 
 -- Second plane axis has negative orientation against the first gamma.
 example : Matrix.trace (pairedAlgebraData.gamma 0 *
-    originalHardyY pairedAlgebraData 0 1 (EuclideanSpace.single (1, 0) 1) 0) = -1 := by
+    originalHardyY pairedAlgebraData 0 1
+      (EuclideanSpace.single (1, nativeColorZero) 1) nativeColorZero) = -1 := by
   rw [originalHardyY_trace pairedAlgebraData 0 1 (by decide)]
   norm_num [PiLp.single_apply]
 
@@ -72,7 +77,8 @@ example (i j : SpaceIndex) (hij : i ≠ j) (A : ColorIndex 2) (a : SpaceIndex) :
 
 -- The incorrect positive sign on the second axis is rejected.
 example : Matrix.trace (pairedAlgebraData.gamma 0 *
-    originalHardyY pairedAlgebraData 0 1 (EuclideanSpace.single (1, 0) 1) 0) ≠ 1 := by
+    originalHardyY pairedAlgebraData 0 1
+      (EuclideanSpace.single (1, nativeColorZero) 1) nativeColorZero) ≠ 1 := by
   rw [originalHardyY_trace pairedAlgebraData 0 1 (by decide)]
   norm_num [PiLp.single_apply]
 
