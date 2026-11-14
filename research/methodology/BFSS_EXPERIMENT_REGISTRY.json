@@ -2189,8 +2189,8 @@
       "id": "E-TD-C1A-D2R1-INSTRUMENT-001",
       "title": "D2 original-Fock typed-witness inspector qualification microgate",
       "registered_at": "2026-11-13",
-      "status": "REGISTERED_NOT_EXECUTED",
-      "classification": "DIAGNOSTIC_INSTRUMENTATION_ONLY",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "LEAN_CONTROL_COMPILED_INSTRUMENTATION_ONLY_NOT_PHYSICAL_QUALIFICATION",
       "qualified_physical_claim": false,
       "stages": {
         "observation": "D2 #43560114891 green collection contained a failed variable original-Fock control, unresolved witness type metavariable and unused-tactic linter error; native leaves correctly skipped.",
@@ -2240,17 +2240,114 @@
         "source": "lean/diagnostics/BFSSTDC1AD2R1ExpressionInspector.lean",
         "workflow": ".github/workflows/bfss-td-c1a-d2r1-instrument-microgate.yml",
         "manifest": "research/top-down-symmetry/TD_C1A_D2R1_INSTRUMENT_MICROGATE_MANIFEST.json",
-        "run_id": null,
-        "tested_sha": null,
+        "run_id": 43561741732,
+        "tested_sha": "52f15317425b7e2be5af5c43ce2edfd0da2b43f9",
         "control": "lean/diagnostics/BFSSTDC1AD2R1VariableControl.lean",
         "collector": "tools/run_bfss_td_c1a_d2r1_instrument_microgate.py",
         "source_stage_commit": "c4a6a88b35d24440f308331e467d7052ebff0d21",
         "pinned_blob_count": 10,
-        "verified_compilation": false,
-        "stage": "STAGED_UNCOMPILED"
+        "verified_compilation": true,
+        "stage": "COMPLETED_REVIEWED"
       },
-      "conclusion": "Pre-registered instrumentation-only experiment; no original native operator goal yet tested.",
-      "result": null
+      "conclusion": "INSTRUMENTATION CONTROL PASS: the original-Fock variable theorem compiles with standard axioms and fully instantiated observations. Structural inequality is compatible with accepted exact, so native comparisons require positive-control calibration.",
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "execution_status": "COMPLETED_REVIEWED",
+        "mathematical_qualification": false,
+        "original_TD_C1A_qualification": false,
+        "result_scope": "Lean-compiling original-Fock variable operator-control theorem and structural inspector only; no source axis or native join attempted",
+        "run_id": 43561741732,
+        "tested_sha": "52f15317425b7e2be5af5c43ce2edfd0da2b43f9",
+        "run_conclusion": "success",
+        "job_id": 132346756846,
+        "artifact_id": 14100737285,
+        "artifact_digest": "sha256:dbf49eb7b409b2ade8880f3fc1f904fe6825591bcf1fe16d71ef58bd276e2127",
+        "artifact_provider_digest_verified_independently": false,
+        "case_outcomes": {
+          "preflight": "PASS",
+          "inspector": "PASS",
+          "core-build": "PASS",
+          "variable-control": "PASS"
+        },
+        "control_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "expression_report": {
+          "witness": "hw",
+          "raw_equal": false,
+          "raw_alpha": false,
+          "outer_metadata_equal": false,
+          "outer_metadata_alpha": false,
+          "witness_mvars": false,
+          "goal_mvars": false,
+          "first_difference": "root.arg[1].arg[5].arg[0].arg[6].fn: constructor_or_data_difference"
+        },
+        "important_negative_knowledge": "A trusted exact hw proof succeeds despite raw and metadata-stripped Expr.equal=false; structural mismatch is not by itself diagnostic of the failing native join.",
+        "receipt": "research/top-down-symmetry/TD_C1A_D2R1_GREEN_SOURCE_FOCK_CONTROL_43561741732_2026_11_13.md",
+        "next_rule": "Compare structural fingerprints between source-faithful accepted direct-axis and unproved native leaves; do not claim native failure cause from an Expr.equal=false report."
+      }
+    },
+    {
+      "id": "E-TD-C1A-D2R2-DIFFERENTIAL-001",
+      "title": "Differential original-Fock witness/goal fingerprints calibrated against accepted axis and variable controls",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "DIAGNOSTIC_ONLY_NO_NATIVE_THEOREM",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "D2R1 green variable control has raw_equal=false and metadata_equal=false with no mvars even though exact hw and axiom audit succeed; D1 native exact recurses despite visually matching goal.",
+        "question": "Do bounded first-difference paths and head names distinguish qualified original-Fock/axis control witnesses from actual native join observations?",
+        "background": [
+          "research/top-down-symmetry/TD_C1A_D2R1_GREEN_SOURCE_FOCK_CONTROL_43561741732_2026_11_13.md",
+          "research/top-down-symmetry/TD_C1A_D2R2_DIFFERENTIAL_EXPRESSION_AUDIT_PREREGISTRATION_2026_11_13.md",
+          "D2 #43560114891 inconclusive failed control",
+          "D0 #43554665838 original axis direct source consumer passed",
+          "D1 #43556707461 two native final exact recursions"
+        ],
+        "hypothesis": "Source-grounded fingerprint and separate success controls will identify whether native observations show a differentiating expression structure relative to successful original-carrier witnesses.",
+        "falsifiers": [
+          "variable original-Fock proof or standard axiom check fails",
+          "accepted literal source-axis control fails",
+          "native bounded report missing or contains metavars",
+          "all observed differences fail to distinguish native from successful controls",
+          "diagnostic tries a native proof step or resource limit workaround"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "accepted original-Fock variable witness",
+            "accepted original C48 axis witness",
+            "original-axis operator ext pointwise observation",
+            "conditional original-Fock evaluation observation"
+          ],
+          "dependent_variables": [
+            "first differing typed-application head/path and root types",
+            "raw and metadata-stripped structural flags",
+            "source-axiom checks and case return codes",
+            "native observation report completeness"
+          ],
+          "controls": [
+            "D2R1 actual Fermion 2 variable theorem and public rewrites",
+            "D0 direct source theorem and consumer",
+            "original source pins, positive before negative",
+            "no definitional reduction"
+          ],
+          "stop_rule": "No native observation until both source-faithful positive controls pass; no native exact/simpa/change/isDefEq; expected failing diagnostic never proof."
+        },
+        "analysis_plan": "Source-review pinned Lean 4.34.1 APIs; preregister before implementing a bounded named-node inspector and independent case runner; compare successful controls first, then native observation-only leaves.",
+        "conclusion_rule": "Never promote the original TD-C1A mathematical theorem based on D2R2. If positive controls fail, INCONCLUSIVE; if first differing path non-discriminating, report NEGATIVE KNOWLEDGE and stop proof retry.",
+        "communication": "research/top-down-symmetry/TD_C1A_D2R2_DIFFERENTIAL_EXPRESSION_AUDIT_PREREGISTRATION_2026_11_13.md"
+      },
+      "implementation": {
+        "plan": "research/top-down-symmetry/TD_C1A_D2R2_DIFFERENTIAL_EXPRESSION_AUDIT_PREREGISTRATION_2026_11_13.md",
+        "source": null,
+        "workflow": null,
+        "manifest": null,
+        "run_id": null,
+        "tested_sha": null
+      },
+      "conclusion": "Preregistered differential comparison, no source implementation or CI yet."
     }
   ],
   "allowed_statuses": [

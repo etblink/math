@@ -1863,7 +1863,7 @@
     },
     "d2r1_instrumentation_microgate": {
       "experiment_id": "E-TD-C1A-D2R1-INSTRUMENT-001",
-      "status": "STAGED_UNCOMPILED_NOT_QUALIFIED",
+      "status": "GREEN_SOURCE_FOCK_CONTROL_ONLY",
       "plan": "research/top-down-symmetry/TD_C1A_D2R1_INSTRUMENT_ONLY_MICROGATE_PLAN_2026_11_13.md",
       "goal": "prove source-Fock variable positive control and audit bounded type report only",
       "qualification": false,
@@ -1877,9 +1877,29 @@
       "manifest": "research/top-down-symmetry/TD_C1A_D2R1_INSTRUMENT_MICROGATE_MANIFEST.json",
       "workflow": ".github/workflows/bfss-td-c1a-d2r1-instrument-microgate.yml",
       "pinned_blobs": 10,
-      "run_id": null,
-      "tested_sha": null,
-      "next_decision": "Review source-Fock variable control and exact structural report; no original axis or native proof retry."
+      "run_id": 43561741732,
+      "tested_sha": "52f15317425b7e2be5af5c43ce2edfd0da2b43f9",
+      "next_decision": "D2R2 differential known-success vs native observation only; raw inequality is noncausal unless uniquely discriminating.",
+      "mathematical_td_c1a_status": "RED_UNQUALIFIED",
+      "conclusion": "success",
+      "receipt": "research/top-down-symmetry/TD_C1A_D2R1_GREEN_SOURCE_FOCK_CONTROL_43561741732_2026_11_13.md",
+      "report_first_diff": "root.arg[1].arg[5].arg[0].arg[6].fn",
+      "witness_mvars": false,
+      "goal_mvars": false,
+      "root_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "d2r2_differential_experiment": {
+      "experiment_id": "E-TD-C1A-D2R2-DIFFERENTIAL-001",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "plan": "research/top-down-symmetry/TD_C1A_D2R2_DIFFERENTIAL_EXPRESSION_AUDIT_PREREGISTRATION_2026_11_13.md",
+      "scope": "two accepted original-carrier controls before two native observations",
+      "qualification": false,
+      "no_native_proof_retry": true,
+      "full_strict_untouched": true
     }
   }
 }
