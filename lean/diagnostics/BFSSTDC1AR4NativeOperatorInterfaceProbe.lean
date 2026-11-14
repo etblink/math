@@ -35,12 +35,12 @@ def originalColorLinear (q : GaugeGroup 2) :
 /-- The accepted original axis equality, lifted once to Fock operators. -/
 theorem original_axis_operator
     (q : GaugeGroup 2) (j : Fin 8) (s : Fin 2) (a : ColorIndex 2) :
-    (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q).toContinuousLinearMap *
+    (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q : Fermion 2 →L[ℂ] Fermion 2) *
         sourceGammaRealLinear (sourceBlockColorAxis (j,s) a) =
       sourceGammaRealLinear
         ((FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec
           (sourceBlockColorAxis (j,s) a)) *
-        (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q).toContinuousLinearMap := by
+        (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q : Fermion 2 →L[ℂ] Fermion 2) := by
   apply operator_of_pointwise
   intro ψ
   exact
@@ -49,14 +49,14 @@ theorem original_axis_operator
 
 /-- Original all-label covariance, still at the Fock-operator level. -/
 theorem original_allVector_operator (q : GaugeGroup 2) (v : Source48Vector) :
-    (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q).toContinuousLinearMap *
+    (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q : Fermion 2 →L[ℂ] Fermion 2) *
         sourceGammaRealLinear v =
       sourceGammaRealLinear
         ((FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec v) *
-        (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q).toContinuousLinearMap := by
+        (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q : Fermion 2 →L[ℂ] Fermion 2) := by
   classical
   let U : Fermion 2 →L[ℂ] Fermion 2 :=
-    (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q).toContinuousLinearMap
+    (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q : Fermion 2 →L[ℂ] Fermion 2)
   have hb : ∀ p : Source48Label,
       U * sourceGammaRealLinear (Pi.single p 1) =
         sourceGammaRealLinear (originalColorLinear q (Pi.single p 1)) * U := by

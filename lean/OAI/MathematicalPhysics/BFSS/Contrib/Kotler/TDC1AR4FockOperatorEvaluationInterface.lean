@@ -18,7 +18,7 @@ variable {𝕜 E : Type*} [NormedField 𝕜]
 theorem operator_of_pointwise
     (U : E ≃ₗᵢ[𝕜] E) (A B : E →L[𝕜] E)
     (h : ∀ ψ : E, U (A ψ) = B (U ψ)) :
-    U.toContinuousLinearMap * A = B * U.toContinuousLinearMap := by
+    (U : E →L[𝕜] E) * A = B * (U : E →L[𝕜] E) := by
   apply ContinuousLinearMap.ext
   intro ψ
   exact h ψ
@@ -26,7 +26,7 @@ theorem operator_of_pointwise
 /-- Evaluate a sourced operator identity through the same generic boundary. -/
 theorem pointwise_of_operator
     (U : E ≃ₗᵢ[𝕜] E) (A B : E →L[𝕜] E)
-    (h : U.toContinuousLinearMap * A = B * U.toContinuousLinearMap)
+    (h : (U : E →L[𝕜] E) * A = B * (U : E →L[𝕜] E))
     (ψ : E) :
     U (A ψ) = B (U ψ) := by
   exact congrArg (fun T : E →L[𝕜] E => T ψ) h
