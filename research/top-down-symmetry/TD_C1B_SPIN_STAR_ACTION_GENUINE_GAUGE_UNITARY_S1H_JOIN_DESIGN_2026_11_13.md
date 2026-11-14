@@ -57,3 +57,9 @@ The source full Fock-operator algebra has dimensions `dim_C End(F)=2^48`, while 
 ## 5. Provenance
 
 Historical ed.0.4 internal monograph Chapters 7–9; source OP3C6C blob `2d6f777568b0026737112ff8256e5ed50fc9e6e6`, C48C0 blob `9f9a5ce2186ded98a251efbc24c2b66f416044d5`, C48C0B S1J identification, C48C1A1d0 blob `4d418ade58f8c3c1d998f623f5a5697723cb3d29`, P2bB3 blob `b50ef04695587b267ad8519074b1293f98828749`, S1H blob `eacab43f1b9112e9e1920e656bdf1166f824a5a8`, OP2b blob `13a80bb53eb3d0ca357e4c87db4bd3ebd53854ec`.
+
+## 6. Forward source review — November 13, 2026 (research only)
+
+[Units transport and projection-maximality investigation](TD_C1B_FORWARD_UNITS_TRANSPORT_AND_PROJECTION_MAXIMALITY_2026_11_13.md) refines this uncompiled plan. Package the transformed SU2 operator hom through MonoidHom.toHomUnits, ContinuousLinearEquiv.unitsEquiv and ContinuousLinearEquiv.toLinearEquivMonoidHom; verify the underlying literal G4E operator before applying S1H. This uses the original group inverse and does not require new adjoint proofs for representation packaging. It does not supply a Spin9 Fock-vector action or joint continuity.
+
+For projection fixedness, require full fixed-space range or its universal absorption property in addition to gauge-fixed outputs and physical self-adjointness. The shortened historical generic checklist is falsified by exact matrix counterexamples. Original OP0/OP2b range and idempotence provide the missing premise. Keep normalization cancellation at operator level and evaluate only after the theta identity is established. No new Lean gate is staged here; R4 #43546806160 remains independently pending.

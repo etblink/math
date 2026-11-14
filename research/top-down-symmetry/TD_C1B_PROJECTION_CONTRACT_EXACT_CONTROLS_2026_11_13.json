@@ -1,0 +1,240 @@
+{
+  "classification": "EXACT_FINITE_ALGEBRAIC_CONTROLS_NOT_LEAN_QUALIFIED",
+  "protocol": "E-TD-C1B-PROJ-CONTRACT-001",
+  "arithmetic": "Python integers; conjugate transpose equals transpose",
+  "weak_contract": "alpha fixes U; P*=P; P^2=P; U P=P",
+  "weak_contract_verdict": "FALSIFIED_BY_EXPLICIT_COUNTEREXAMPLE",
+  "missing_premise": "P projects onto the entire common fixed space, equivalently here the required universal left absorption",
+  "counterexamples": [
+    {
+      "name": "trivial_SU2_representation_on_C2",
+      "U": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "P": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "swap": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "alpha_P_and_absorption_witness_T": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "P_times_witness_T": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "observed": {
+        "gauge_unitary": true,
+        "gauge_generator_involution": true,
+        "automorphism_implementer_unitary": true,
+        "automorphism_fixes_gauge_generator": true,
+        "P_self_adjoint": true,
+        "P_idempotent": true,
+        "P_has_gauge_fixed_output": true,
+        "alpha_P_equals_P": false,
+        "witness_T_has_gauge_fixed_output": true,
+        "P_absorbs_witness_T": false
+      }
+    },
+    {
+      "name": "nontrivial_C2_group_representation_on_C3",
+      "U": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "P": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "swap": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "alpha_P_and_absorption_witness_T": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "P_times_witness_T": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "observed": {
+        "gauge_unitary": true,
+        "gauge_generator_involution": true,
+        "automorphism_implementer_unitary": true,
+        "automorphism_fixes_gauge_generator": true,
+        "P_self_adjoint": true,
+        "P_idempotent": true,
+        "P_has_gauge_fixed_output": true,
+        "alpha_P_equals_P": false,
+        "witness_T_has_gauge_fixed_output": true,
+        "P_absorbs_witness_T": false
+      }
+    }
+  ],
+  "positive_control": {
+    "U": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1
+      ]
+    ],
+    "P": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "swap": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "fixed_coordinates": [
+      0,
+      1
+    ],
+    "projection_coordinates": [
+      0,
+      1
+    ],
+    "alpha_P_equals_P": true,
+    "nonidentity_automorphism": true,
+    "nonzero_proper_projection": true
+  },
+  "scope": "Refutes only the weakened generic contract. Original OP0/OP2b canonical range theorem supplies the missing premise. No accepted BFSS result is refuted."
+}

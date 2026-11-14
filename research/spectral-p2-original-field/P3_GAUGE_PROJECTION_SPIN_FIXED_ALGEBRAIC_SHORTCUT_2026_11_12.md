@@ -28,7 +28,9 @@ Source-faithful proof:
 
 Everything here is **elementary algebra conditional on the explicit premise** alpha(U_q)=U_q. No source file currently proves that premise for all original q and g, so this is NOT a newly qualified Spin-invariant projection.
 
-A generic Lean lemma should expose star-preserving equiv, pointwise U_q fixedness, U_q P=P, and P*=P. It can prove the equality via the above two-sided multiplication route. Separate consumer must exercise inverse alpha and a nontrivial projection; identity alpha alone is an inadequate independent check.
+A generic Lean lemma must expose star-preserving equiv, pointwise U_q fixedness, U_q P=P, P*=P, and the universal absorption property: every operator T whose outputs are fixed by every U_q satisfies P T=T. The original canonical projection supplies absorption through its full fixed-space range and idempotence. It can then prove the equality via the above two-sided multiplication route. Separate consumer must exercise inverse alpha, a nonidentity automorphism and a nonzero proper canonical projection.
+
+**Correction — November 13, 2026:** the earlier abbreviated generic-interface checklist omitted the full-range/absorption premise used implicitly in step 1. That weakened checklist is false, even with P²=P: conjugation by the coordinate swap fixes the trivial SU2 action on C² but moves diag(1,0). The conventional argument for the canonical full fixed-space projection remains valid. [Exact counterexamples, corrected contract and source audit](../top-down-symmetry/TD_C1B_FORWARD_UNITS_TRANSPORT_AND_PROJECTION_MAXIMALITY_2026_11_13.md) preserve the correction and its negative evidence. No accepted source theorem is changed.
 
 ## 3. The exact remaining source join
 
