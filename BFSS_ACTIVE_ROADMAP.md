@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G3 R2 — staged, strict qualification pending
+
+R1 red checkpoint and exact-deletion repair contract committed at `95b94717a3034a23a0f914976637547bdaae6488` before source mutation. Only three flagged mul_smul_comm simp arguments removed; mathematical statements, all twelve native controls and entire consumer byte-identical. Strict lint retained. Source `03b5236bd91e4664e7101544b065054bd6c925a1`, consumer `8fd1ac6d819aaccf9cabe38448813a09c75e59bb`, workflow `db93728ab803f8b9e83059936babb8f8f06b9c9b`; workflow expected source hash only. Static exact-delta/hash/root/YAML/bash/Python PASS; no local Lean. **Unqualified pending complete cold/fresh source and native consumer, five/ten reports.**
+
 ## HARDY-G3 R1 — RED, three unused simp arguments
 
-[Strict #43636892909](https://github.com/etblink/math/actions/runs/43636892909) RED at `fba4a18f0ad2efa7c9a0b487ddbab5f728b906e2`: 149-pin preflight/toolchain and cold source PASS; fresh strict source rejects unused mul_smul_comm at59/63/66. All five source reports standard axioms; native consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_RED_43636892909_UNUSED_SIMPLIFIER_ARGUMENTS_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G3_R1_UNUSED_MUL_SMUL_COMM_43636892909_2026_11_14.txt), [R2 preregistration](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R2_PRE_GATE_REMOVE_THREE_UNUSED_ARGUMENTS_2026_11_14.md). Sole repair: delete those three unused entries, keep consumer and strict lint fixed. **R2 not staged yet; G3 unqualified.**
+[Strict #43636892909](https://github.com/etblink/math/actions/runs/43636892909) RED at `fba4a18f0ad2efa7c9a0b487ddbab5f728b906e2`: 149-pin preflight/toolchain and cold source PASS; fresh strict source rejects unused mul_smul_comm at59/63/66. All five source reports standard axioms; native consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_RED_43636892909_UNUSED_SIMPLIFIER_ARGUMENTS_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G3_R1_UNUSED_MUL_SMUL_COMM_43636892909_2026_11_14.txt), [R2 preregistration](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R2_PRE_GATE_REMOVE_THREE_UNUSED_ARGUMENTS_2026_11_14.md). Sole repair: delete those three unused entries, keep consumer and strict lint fixed. **Historical prerepair checkpoint; see current R2 launch above.**
 
 ## HARDY-G3 R1 — historical launch (subsequently RED above)
 

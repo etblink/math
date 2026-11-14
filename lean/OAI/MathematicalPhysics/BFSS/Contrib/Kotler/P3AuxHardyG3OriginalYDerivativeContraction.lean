@@ -56,14 +56,14 @@ private theorem nativeY_basis_weight (M : AlgebraData 2) (i j : SpaceIndex)
   rw [nativeY_basis_value]
   by_cases hki : k = i
   · subst k
-    simp [hij, Ne.symm hij, mul_smul_comm]
+    simp [hij, Ne.symm hij]
     module
   · by_cases hkj : k = j
     · subst k
-      simp [hij, Ne.symm hij, mul_smul_comm,
+      simp [hij, Ne.symm hij,
         OAI.BFSSGamma.gamma_anti M.gamma M.gamma_clifford (Ne.symm hij)]
       module
-    · simp [hki, hkj, Ne.symm hki, Ne.symm hkj, mul_smul_comm, ← mul_assoc,
+    · simp [hki, hkj, Ne.symm hki, Ne.symm hkj, ← mul_assoc,
         OAI.BFSSGamma.gamma_sq M.gamma M.gamma_clifford k]
 
 theorem originalHardyY_basis_contraction (M : AlgebraData 2) (i j : SpaceIndex)
