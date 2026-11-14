@@ -1459,5 +1459,37 @@
     "receipt": "research/spectral-p2-original-field/P3_AUX_G0B2_R3_GREEN_43532571952_ORIGINAL_FERMION_FIBER_COMMUTATION_ACCEPTANCE_2026_11_13.md",
     "next_gate": "P3-AUX-G0B3",
     "next_gate_status": "RESEARCH_NOT_STAGED"
+  },
+  "parallel_topdown_spin_gauge_full48_experiment": {
+    "date": "2026-11-13",
+    "gate": "TD-C1A",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "qualification": false,
+    "source_candidate_commit": "991f3bf43525226c6155bddaeaa775380668e67f",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AOriginalGaugeUnitaryFull48GammaCovariance.lean",
+    "source_blob": "117b487681c2e6b223a81bce184b51570077d673",
+    "consumer": "lean/diagnostics/BFSSTDC1AOriginalGaugeUnitaryFull48GammaCovarianceIndependentConsumer.lean",
+    "consumer_blob": "7c9998173589de762a486e60508c3a40fcdee2ac",
+    "workflow": ".github/workflows/bfss-td-c1a-original-full48-gauge-gamma-strict.yml",
+    "expected_roots": [
+      "originalGaugeUnitary_S1J_gamma_allVector_forward"
+    ],
+    "memo": "research/top-down-symmetry/TD_C1A_FULL48_ORIGINAL_GAUGE_UNITARY_COVARIANCE_PROSPECTIVE_2026_11_13.md",
+    "frozen_sources": {
+      "Core": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "C48C1A1d0": "4d418ade58f8c3c1d998f623f5a5697723cb3d29",
+      "C48C1A0": "4c9a7d183e65d13b33ab9694653f3e0a74741747",
+      "OP3C6C": "2d6f777568b0026737112ff8256e5ed50fc9e6e6",
+      "S1H": "eacab43f1b9112e9e1920e656bdf1166f824a5a8"
+    },
+    "purpose": "Extend accepted original SU2 gauge-unitary/48-normalized-Majorana axis covariance to all Source48Vector by real linearity, exact G4E/S1J source. Top-down structural input for Spin9 star automorphism/S1H representation uniqueness.",
+    "exclusions": [
+      "no α_spin(Uq)=Uq yet",
+      "no source Fock Spin9 unitary or continuity",
+      "no gauge projection Spin fixedness",
+      "no physical FullL2 spin reduction",
+      "no new Hamiltonian or auxiliary gap"
+    ],
+    "next_decision": "Require exact strict theorem/native consumer/allowed axioms; red first-causal evidence and bounded repair. After accepted, use original source Spin/gauge label commutation to derive full α_g(U_q) hV then S1H; keep original bosonic Gram reduction parallel."
   }
 }
