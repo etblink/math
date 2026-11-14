@@ -71,3 +71,7 @@ Pinned Lean 4.34.1 / Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612; cold OAI 
 GREEN: record exact tested SHA/run/pins/source/consumer/axioms before any successor. Then consider the short graph-zero/kernel bridge from the forward memo.
 RED: preserve first causal layer and the unchanged C4A acceptance; repair only that layer.
 No source/consumer/workflow is staged by this receipt; no external gap or ε=0 claim.
+
+## Launch binding — no contract change
+
+[Strict #43587088274](https://github.com/etblink/math/actions/runs/43587088274) started at exact source SHA `08afa5c57b1f90daa621b938e778bb2ffb7770a2`; administrative #43587088273 is separate. Pre-gate receipt commit `bc175d114927d8a8a3df9882e4f2c2f0cef4b6ab` is the parent of the first source commit. Source `0fe927b9709bd0e359aafb691aca086c6e4a5c46`, consumer `f31c84b53f812efd41906e524604e49c1a4ab12b`, workflow `a3b59a8d21bae2f4f0be58a98a4e27ddf1b0c594`. No verdict or source-closure pin count is assumed from launch.
