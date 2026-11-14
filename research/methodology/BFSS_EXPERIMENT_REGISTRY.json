@@ -2079,29 +2079,9 @@
       "id": "E-TD-C1A-D2-STRUCTURAL-EXPR-001",
       "title": "Bounded elaborated expression-tree audit at the two D1 native joins",
       "registered_at": "2026-11-13",
-      "status": "RUNNING_DIAGNOSTIC_NOT_QUALIFIED",
+      "status": "REGISTERED_NOT_EXECUTED",
       "classification": "DIAGNOSTIC_ONLY_NONQUALIFYING",
       "qualified_physical_claim": false,
-      "background": [
-        "D0 #43554665838 successful direct axis and failed native joins",
-        "D1 #43556707461 variable rewrite success and two native final-exact recursion failures",
-        "Lean 4.34.1 source-reviewed Expr.equal/eqv/getAppFn/getAppArgs and Tactic getMainTarget"
-      ],
-      "question": "Where do the complete elaborated types of D1's actual native witnesses and post-simplification goals first differ, relative to successful direct and variable-data controls?",
-      "hypothesis": "Structural comparison will either expose a first differing expression argument or show that the terms are syntactically identical; neither outcome is a proof of covariance.",
-      "falsifiers": [
-        "Successful D0 control has no valid expression report or source qualification",
-        "Variable original-Fock control fails or expression report cannot be interpreted",
-        "Native observation produces no bounded comparison/stop marker or shows instrumentation errors",
-        "Any diagnostic relies on a new proof retry or a weakened/changed physical carrier"
-      ],
-      "analysis_plan": "Report Expr.equal and Expr.eqv separately; first differing application argument path up to 32 steps; no definitional unfolding; classify first differing constructor and arguments; mark identical structures without asserting Lean checker bug.",
-      "controls": [
-        "literal original source D0 direct consumer",
-        "variable original-Fock data application control",
-        "unchanged D1 native axis/evaluation goals",
-        "standard-axiom and warning audits on successful controls"
-      ],
       "status_scope": "Plan and registry committed before new Lean source/runner/workflow; no mathematical CI launched by the preregistration.",
       "implementation": {
         "memo": "research/top-down-symmetry/TD_C1A_D2_PROSPECTIVE_BOUNDED_EXPRESSION_STRUCTURE_AUDIT_2026_11_13.md",
@@ -2128,7 +2108,64 @@
         "workflow_conclusion": null
       },
       "qualification": false,
-      "conclusion": "Diagnostic run observed in progress; no Lean results inferred."
+      "conclusion": "Administrative schema repaired at a separately tested commit while D2 diagnostic #43560114891 remains independent. Native TD-C1A RED_UNQUALIFIED.",
+      "stages": {
+        "observation": "D0 #43554665838 direct source axis control compiled while native joins recursed; D1 #43556707461 variable rewrite control passed while two actual-data final exact checks recursed despite matching printed goals. No cause of native elaboration/checking failure is established.",
+        "question": "Where do the complete elaborated types of D1's actual native witnesses and post-simplification goals first differ, relative to successful direct and variable-data controls?",
+        "background": [
+          "D0 #43554665838 successful direct axis and failed native joins",
+          "D1 #43556707461 variable rewrite success and two native final-exact recursion failures",
+          "Lean 4.34.1 source-reviewed Expr.equal/eqv/getAppFn/getAppArgs and Tactic getMainTarget"
+        ],
+        "hypothesis": "Structural comparison will either expose a first differing expression argument or show that the terms are syntactically identical; neither outcome is a proof of covariance.",
+        "falsifiers": [
+          "Successful D0 control has no valid expression report or source qualification",
+          "Variable original-Fock control fails or expression report cannot be interpreted",
+          "Native observation produces no bounded comparison/stop marker or shows instrumentation errors",
+          "Any diagnostic relies on a new proof retry or a weakened/changed physical carrier"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "literal D0 source witness versus D1 post-ext/post-simp native axis goal",
+            "D1 normalized heval hypothesis versus original goal",
+            "variable versus actual original G4E/gamma data"
+          ],
+          "dependent_variables": [
+            "Expr.equal exact structure",
+            "Expr.eqv alpha-equivalence",
+            "first differing bounded expression application path",
+            "per-case compiler return code and control root/axiom/warning audit"
+          ],
+          "cases": [
+            "inspector preflight",
+            "original Fock-variable application positive control",
+            "literal qualified D0 source direct-axis positive control",
+            "native axis expression observation with deliberate stop",
+            "native conditional evaluation expression observation with deliberate stop"
+          ],
+          "controls": [
+            "literal original source D0 direct consumer",
+            "variable original-Fock data application control",
+            "unchanged D1 native axis/evaluation goals",
+            "standard-axiom and warning audits on successful controls"
+          ],
+          "boundedness": "Inspect at most 32 expression path steps; no whnf/pp.all/unrestricted unfolding or substitution of the original Fermion 2; do not close any native D2 goal.",
+          "stop_rule": "If instrumentation or positive control fails, mark INCONCLUSIVE. Never treat observed native sorryAx or workflow collection GREEN as qualification; no original TD-C1A strict R4 run."
+        },
+        "analysis_plan": "Report Expr.equal and Expr.eqv separately; first differing application argument path up to 32 steps; no definitional unfolding; classify first differing constructor and arguments; mark identical structures without asserting Lean checker bug.",
+        "conclusion_rule": "Upon reviewed evidence assign an existing allowed registry status (INCONCLUSIVE unless a precisely preregistered diagnostic hypothesis is falsified). No LEAN_QUALIFIED for native observation-only files; full strict original theorem and independent consumer remain required for TD-C1A.",
+        "communication": "research/top-down-symmetry/TD_C1A_D2_PROSPECTIVE_BOUNDED_EXPRESSION_STRUCTURE_AUDIT_2026_11_13.md"
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "mathematical_qualification": false,
+        "execution_status": "WORKFLOW_LAUNCHED_IN_PROGRESS",
+        "tested_sha": "4afb0db8f9d2797fe69d8e6adf6b3020ac67a1d6",
+        "run_id": 43560114891,
+        "review_status": "NOT_YET_REVIEWED",
+        "source_pins_verified_in_staged_manifest": 14,
+        "warning": "Run launch is not execution success; no compiler or typed-expression findings are inferred."
+      }
     }
   ],
   "allowed_statuses": [
