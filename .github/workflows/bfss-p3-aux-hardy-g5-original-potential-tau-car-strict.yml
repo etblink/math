@@ -6,6 +6,7 @@ name: BFSS P3-AUX-HARDY-G5 original potential tau CAR strict
       - .github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml
       - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean
       - lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean
   workflow_dispatch:
 permissions:
   contents: read
@@ -34,7 +35,8 @@ jobs:
           BASE="f51357761243008201f97d9e0ef0cbefa87d0b06"
           SOURCE="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean"
           CONSUMER="lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean"
-          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean": "8c9e3e65831b0eca04c943e9a379bd7019c5ef94", "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean": "5e2257d149462ca507c1f9ccde2231846b4bbe65", "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60", "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean": "d12051e70de679f5458dbd456667a32c7b407ce4", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean": "6a019c9111b384e73a05de7b776ac9e5a83c7eb7", "lean/OAI/MathematicalPhysics/BFSS/GammaIdentity.lean": "45e58da900a7691b88e5760a483b8adff1c7f015", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean": "952890f8056c2b115d69a03c08c39762210c1a0b", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG4OriginalPotentialYCancellation.lean": "b2a482d0817fd39e7437a77d66d8f911c7073de3", "lean/OAI/MathematicalPhysics/BFSS/CliffordSymbols.lean": "cc01379653404c4ede3d551fd8d823e079543b21"}
+          HELPER="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean"
+          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean": "9ada3167a5de3be647c51f0740b5998d4e6ea45a", "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean": "5e2257d149462ca507c1f9ccde2231846b4bbe65", "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60", "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean": "d12051e70de679f5458dbd456667a32c7b407ce4", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean": "6a019c9111b384e73a05de7b776ac9e5a83c7eb7", "lean/OAI/MathematicalPhysics/BFSS/GammaIdentity.lean": "45e58da900a7691b88e5760a483b8adff1c7f015", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean": "952890f8056c2b115d69a03c08c39762210c1a0b", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG4OriginalPotentialYCancellation.lean": "b2a482d0817fd39e7437a77d66d8f911c7073de3", "lean/OAI/MathematicalPhysics/BFSS/CliffordSymbols.lean": "cc01379653404c4ede3d551fd8d823e079543b21", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean": "0398bafa58b46dfbd83ec90a65be84adb03dedf8"}
           ROOTS=["originalHardyTau", "originalHardyTau_apply", "originalPotentialFermion", "originalPotentialFermion_apply", "originalPotentialTau_anticommutator_zero", "originalPotentialTau_anticommutator_apply"]
           NAMESPACE="FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR"
           DONORS=["OAI.BFSSQuantum.AlgebraData.cliffordLinear_mixed", "OAI.BFSSQuantum.AlgebraData.cliffordLinear_selfAdjoint", "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_pairing_zero", "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_apply", "OAI.BFSSQuantum.AlgebraData.theta_CAR"]
@@ -48,7 +50,7 @@ jobs:
               if m:
                   baseline[m[2]]=m[1]
           seen={}
-          stack=[SOURCE,CONSUMER]
+          stack=[SOURCE,CONSUMER,HELPER]
           while stack:
               p=stack.pop()
               if p in seen:
@@ -56,7 +58,7 @@ jobs:
               f=Path(p)
               assert f.is_file(),("missing OAI source",p)
               sha=git("hash-object","--no-filters",p)
-              if p not in (SOURCE,CONSUMER):
+              if p not in (SOURCE,CONSUMER,HELPER):
                   assert baseline.get(p)==sha,("reviewed existing OAI source drift",p,baseline.get(p),sha)
               seen[p]=sha
               for names in re.findall(r"(?m)^(?:public )?import[ \t]+([^\n]+)",f.read_text()):
@@ -67,12 +69,16 @@ jobs:
               assert seen.get(p)==sha,("frozen donor/candidate drift",p,seen.get(p),sha)
           source=Path(SOURCE).read_text()
           consumer=Path(CONSUMER).read_text()
+          helper=Path(HELPER).read_text()
+          assert re.findall(r"(?m)^import (\S+)$",helper)==["Mathlib"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",helper)==["FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply"]
+          assert "mul_apply_eq_comp" in helper and "zero_apply" in helper
           assert re.findall(r"(?m)^#print axioms (\S+)$",source)==ROOTS
           assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==(
               [NAMESPACE+"."+x for x in ROOTS]+DONORS)
-          assert re.findall(r"(?m)^import (\S+)$",source)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG4OriginalPotentialYCancellation","OAI.MathematicalPhysics.BFSS.CliffordSymbols"]
+          assert re.findall(r"(?m)^import (\S+)$",source)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG4OriginalPotentialYCancellation","OAI.MathematicalPhysics.BFSS.CliffordSymbols","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG5FiniteOperatorEvaluation"]
           assert re.findall(r"(?m)^import (\S+)$",consumer)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG5OriginalPotentialTauCAR","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe"]
-          for code in (source,consumer):
+          for code in (source,consumer,helper):
               assert "set_option autoImplicit false" in code
               assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",code)
               assert "maxHeartbeats" not in code and "maxRecDepth" not in code
@@ -90,7 +96,7 @@ jobs:
           out=Path("bfss-aux-hardy-g5-evidence")
           out.mkdir(exist_ok=True)
           receipt={"status":"PREFLIGHT_NOT_LEAN_QUALIFICATION","tested_sha":git("rev-parse","HEAD"),
-              "reviewed_existing_source_baseline":BASE,"source":SOURCE,"consumer":CONSUMER,
+              "reviewed_existing_source_baseline":BASE,"source":SOURCE,"consumer":CONSUMER,"isolated_helper":HELPER,
               "transitive_OAI_pin_count":len(seen),"pins":dict(sorted(seen.items())),
               "source_roots":[NAMESPACE+"."+x for x in ROOTS],"independent_donor_roots":DONORS}
           manifest=out/"pin-manifest.json"
@@ -109,6 +115,37 @@ jobs:
           timeout 2100s lake exe cache get 2>&1 | tee ../bfss-aux-hardy-g5-evidence/cache.log
           test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
           test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Isolated Mathlib finite operator evaluation before native build
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          helper_mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG5FiniteOperatorEvaluation"
+          helper_src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean"
+          helper_obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.olean"
+          timeout 500s lake build "$helper_mod" 2>&1 | tee ../bfss-aux-hardy-g5-evidence/helper-build.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$helper_obj" "$helper_src" 2>&1 | tee ../bfss-aux-hardy-g5-evidence/helper.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json
+          d=Path("../bfss-aux-hardy-g5-evidence")
+          expected=["FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name in ("helper-build.log","helper.log"):
+              log=(d/name).read_text()
+              assert not any(x in log for x in ("error:","sorryAx","unknownIdentifier")),(name,log[-4500:])
+              assert not [line for line in log.splitlines() if "warning:" in line and not depwarn.fullmatch(line)],name
+              if name=="helper.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [n for n,_ in reports]==expected,(name,reports)
+                  for declaration,raw in reports:
+                      assert {x.strip() for x in raw.split(",") if x.strip()}<=allowed,(declaration,raw)
+          (d/"helper-scope.json").write_text(json.dumps({"status":"GENERIC_FINITE_OPERATOR_EVALUATION_PASS","native_G5_qualification":False},sort_keys=True,indent=2)+"\n")
+          print("BFSS_P3_AUX_HARDY_G5_FINITE_OPERATOR_EVALUATION_PASS")
+          PY
       - name: Cold source and native Fock potential tau CAR consumer with six and eleven root reports
         shell: bash
         timeout-minutes: 75
@@ -132,7 +169,7 @@ jobs:
           allowed={"propext","Classical.choice","Quot.sound"}
           depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
           for name,expected in [
-              ("build.log",None),("source.log",new_roots),("consumer.log",new_roots+donors)]:
+              ("helper-build.log",None),("helper.log",["FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply"]),("build.log",None),("source.log",new_roots),("consumer.log",new_roots+donors)]:
               log=(d/name).read_text()
               assert not any(x in log for x in ("error:","sorryAx","unknownIdentifier")),(name,log[-4500:])
               assert not [line for line in log.splitlines() if "warning:" in line and not depwarn.fullmatch(line)],name
@@ -146,6 +183,7 @@ jobs:
               "original_native_paired_Fock_and_Boson_consumer":True,
               "literal_real_coefficient_tau_and_potential_actions":True,
               "pointwise_Fock_potential_tau_anticommutator_zero":True,
+              "isolated_generic_operator_evaluation_checked_first":True,
               "actual_Fock_vector_anticommutator_evaluation":True,
               "native_CAR_one_and_wrong_two_controls":True,
               "tau_real_coefficient_selfAdjoint_control":True,

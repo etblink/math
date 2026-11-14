@@ -1,5 +1,6 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG4OriginalPotentialYCancellation
 import OAI.MathematicalPhysics.BFSS.CliffordSymbols
+import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG5FiniteOperatorEvaluation
 
 /-!
 HARDY-G5 R1: pointwise original Fock potential/tau CAR compression.
@@ -73,9 +74,10 @@ theorem originalPotentialTau_anticommutator_apply (M : AlgebraData 2)
     (∑ α : SpinIndex,
       (originalPotentialFermion M α X (originalHardyTau M i j α X v) +
         originalHardyTau M i j α X (originalPotentialFermion M α X v))) = 0 := by
-  have h := congrArg (fun L : Fermion 2 →L[ℂ] Fermion 2 => L v)
-    (originalPotentialTau_anticommutator_zero M i j X)
-  simpa only [sum_apply, IsAddApply.add_apply] using h
+  exact FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply
+    (fun α : SpinIndex => originalPotentialFermion M α X)
+    (fun α : SpinIndex => originalHardyTau M i j α X)
+    (originalPotentialTau_anticommutator_zero M i j X) v
 
 #print axioms originalHardyTau
 #print axioms originalHardyTau_apply
