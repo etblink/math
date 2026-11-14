@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C3D-B R2 — administrative registry-status repair (PENDING CHECK)
+
+[Roadmap-consistency #43575336761](https://github.com/etblink/math/actions/runs/43575336761) was **ADMIN RED** at `76f207da39b2ead16e3652ddffdb5c16e8188255`: first-causal `unregistered experiment status`, because the experiment registry did not enumerate the correctly recorded C3D-B R1 `RED_UNQUALIFIED` verdict. [Preserved first-causal receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R2_ROADMAP_ADMIN_RED_43575336761_STATUS_REGISTRATION_2026_11_14.md). Add only that allowed registry status and explain its semantics in the scientific-method protocol; mathematical strict [#43575336639](https://github.com/etblink/math/actions/runs/43575336639) remains independent at its own tested source SHA. Await fresh roadmap GREEN before acceptance of this administrative repair.
+
 ## P3-AUX-RAD-C3D-B R2 — bounded first-causal repair (STAGED, UNQUALIFIED)
 
 [Run #43573922855](https://github.com/etblink/math/actions/runs/43573922855) is **RED_UNQUALIFIED** at `598b440c1baf8f794a35efeee17c7ecf51cb2b07`: source line 43 unknown original Bε FullL2 identifier and source line 69 `whnf` timeout in inline AU graph membership. [Exact failure receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_RED_43573922855_FIRST_CAUSAL_2026_11_13.md); artifact #14105887571. R2 changes only missing existing namespace open and hcore proof factoring from accepted original AZ; unchanged four roots, native original paired SU2 consumer, source donor pins and workflow. [R2 prospective protocol](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R2_MINIMAL_SOURCE_ELABORATION_REPAIR_2026_11_13.md). **No theorem acceptance until strict GREEN**; no density or spectral claims.
