@@ -2079,7 +2079,7 @@
       "id": "E-TD-C1A-D2-STRUCTURAL-EXPR-001",
       "title": "Bounded elaborated expression-tree audit at the two D1 native joins",
       "registered_at": "2026-11-13",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "STAGED_NOT_EXECUTED",
       "classification": "DIAGNOSTIC_ONLY_NONQUALIFYING",
       "qualified_physical_claim": false,
       "background": [
@@ -2108,10 +2108,26 @@
         "base_sha": "44d16ad0f1148902b8446bbac38cfe208b623c50",
         "toolchain": "leanprover/lean4:v4.34.1",
         "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-        "source": "not_yet_created",
+        "source": "lean/diagnostics/BFSSTDC1AD2ExpressionInspector.lean",
         "tested_sha": null,
-        "run_id": null
-      }
+        "run_id": null,
+        "sources": [
+          "lean/diagnostics/BFSSTDC1AD2ExpressionInspector.lean",
+          "lean/diagnostics/BFSSTDC1AD2VariableControl.lean",
+          "lean/diagnostics/BFSSTDC1AD2DirectAxisControl.lean",
+          "lean/diagnostics/BFSSTDC1AD2NativeAxisObservation.lean",
+          "lean/diagnostics/BFSSTDC1AD2NativeEvaluationObservation.lean"
+        ],
+        "collector": "tools/run_bfss_td_c1a_d2_structural_expression.py",
+        "workflow": ".github/workflows/bfss-td-c1a-d2-structural-expression-diagnostic.yml",
+        "manifest": "research/top-down-symmetry/TD_C1A_D2_STRUCTURAL_MANIFEST.json",
+        "collector_stage_sha": "edf2be375f3637ab7891c705a44cacb52c585f58",
+        "manifest_commit": "PENDING_THIS_COMMIT",
+        "local_lean_compilation": false,
+        "source_pin_count": 14
+      },
+      "qualification": false,
+      "conclusion": "No native proof retry. Instrumentation is source reviewed, not yet Lean-compiled."
     }
   ],
   "allowed_statuses": [
