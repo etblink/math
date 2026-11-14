@@ -4980,7 +4980,7 @@
       "id": "E-P3-AUX-HARDY-G5-R3",
       "title": "Isolated finite continuous-linear operator evaluation before native Fock adapter",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R3_PRE_GATE_ISOLATED_FINITE_OPERATOR_EVALUATION_2026_11_14.md",
@@ -5049,7 +5049,86 @@
       "prospective_receipt_commit": "e2cca8847c74627e1b1d3d7839dce5948e836c5e",
       "run_id": 43649423110,
       "tested_sha": "3e57aaaf3c06e4977a1f9a9824a281eb078f99b2",
-      "job_id": 132614347356
+      "job_id": 132614347356,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R3_RED_43649423110_NATIVE_ZERO_CONTROLS_2026_11_14.md",
+      "result": {
+        "run_id": 43649423110,
+        "tested_sha": "3e57aaaf3c06e4977a1f9a9824a281eb078f99b2",
+        "job_id": 132614347356,
+        "manifest_pins": 151,
+        "manifest_hash": "dd567cc044591ac898c4c12a239da76ccfe602cdf001b2635e5073f3b90deb38",
+        "isolated_helper_pass": true,
+        "cold_build_jobs": 9073,
+        "source_six_roots_standard_axioms": true,
+        "native_direct_theorem_applications_no_error": true,
+        "consumer_failed_controls": [
+          {
+            "line": 56,
+            "kind": "tau_at_zero"
+          },
+          {
+            "line": 60,
+            "kind": "potential_at_zero"
+          }
+        ],
+        "whole_gate_qualified": false,
+        "artifact_id": 14136320401,
+        "artifact_size_bytes": 19214,
+        "artifact_digest": "sha256:881f24b85bd1e4d3d19f8739a6dc221cbccbc8b91f09402ca7dc42e8a3f873f2",
+        "artifact_digest_verification": "API digest matches upload log; ZIP not independently rehashed",
+        "first_causal": "Native consumer lines56:66 and60:70 leave sum p, (0 : Complex) smul pairedAlgebraData.theta p.1 p.2 = 0. Helper, cold build, six fresh source roots and direct native theorem applications emitted no error."
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G5-R4",
+      "title": "Explicit complex zero-scalar reduction in two original native controls",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R4_PRE_GATE_EXPLICIT_COMPLEX_ZERO_SCALAR_CONTROLS_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml",
+      "source_blob": "9ada3167a5de3be647c51f0740b5998d4e6ea45a",
+      "helper_blob": "0398bafa58b46dfbd83ec90a65be84adb03dedf8",
+      "prior_red_run": 43649423110,
+      "stages": {
+        "observation": "Native consumer lines56:66 and60:70 leave sum p, (0 : Complex) smul pairedAlgebraData.theta p.1 p.2 = 0. Helper, cold build, six fresh source roots and direct native theorem applications emitted no error.",
+        "question": "Do explicit complex zero_smul and sum_const_zero close both unchanged zero-input controls?",
+        "background": [
+          "Exact R3 helper/source/native log",
+          "Six clean fresh source roots",
+          "Exactly two scalar-zero failures"
+        ],
+        "hypothesis": "Explicit zero_smul Complex and sum_const_zero close displayed sums without further model unfolding.",
+        "falsifiers": [
+          "Either zero control still fails",
+          "Any helper/source/other native failure",
+          "Warning or disallowed axiom",
+          "Statement/control/budget drift"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "One explicit simp-only closure appended to each of two existing zero-control proofs"
+          ],
+          "dependent_variables": [
+            "Full strict helper/source/consumer result",
+            "Six/eleven reports",
+            "Twelve native examples"
+          ],
+          "controls": [
+            "Source/helper byte-identical",
+            "Declarations fixed",
+            "Other ten examples fixed",
+            "Workflow consumer hash only",
+            "Same donors/toolchain/budgets"
+          ]
+        },
+        "analysis_plan": "Check exact delta and YAML/Python/bash; run complete strict build. Same-goal recurrence requires typed scalar-action diagnostic and stops cosmetic retries.",
+        "conclusion_rule": "LEAN_QUALIFIED only after whole helper/source/native consumer strict success.",
+        "communication": "Source evaluation repaired; consumer normalization blocks acceptance. No Core charge or physical spectral claim."
+      }
     }
   ],
   "allowed_statuses": [
