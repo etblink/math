@@ -37,7 +37,9 @@ theorem originalGaugeUnitary_S1J_gamma_allVector_forward
         simp [map_add]
       map_smul' := by
         intro c v
-        simp [map_smul] }
+        simpa only [map_smul, Complex.coe_smul] using
+          (map_smul (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q)
+            (c : ℂ) ((sourceGammaRealLinear v) ψ)) }
   let R : Source48Vector →ₗ[ℝ] Fermion 2 :=
     { toFun := fun v =>
         (sourceGammaRealLinear
@@ -65,16 +67,11 @@ theorem originalGaugeUnitary_S1J_gamma_allVector_forward
           Source48Vector) =
           (Pi.single p (1 : ℝ) : Source48Vector)
       rw [hz]
-    change
-      FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q
-          ((sourceGammaRealLinear (Pi.single p (1 : ℝ))) ψ) =
-        (sourceGammaRealLinear
-            ((FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec
-              (Pi.single p (1 : ℝ))))
-          (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q ψ)
+    change L (Pi.single p (1 : ℝ)) = R (Pi.single p (1 : ℝ))
     rw [← haxis]
-    exact FCP.BFSSC48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner.originalGaugeUnitary_S1J_gamma_axis_forward
-      q z.1.1 z.1.2 z.2 ψ
+    exact
+      FCP.BFSSC48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner.originalGaugeUnitary_S1J_gamma_axis_forward
+        q z.1.1 z.1.2 z.2 ψ
   exact congrArg (fun f : Source48Vector →ₗ[ℝ] Fermion 2 => f v) hLR
 
 #print axioms originalGaugeUnitary_S1J_gamma_allVector_forward
