@@ -3736,6 +3736,69 @@
           "Quot.sound"
         ]
       }
+    },
+    {
+      "id": "E-P3-AUX-CERT-P0-R1",
+      "title": "Native original reciprocal Hilbert pairing and physical charge-graph transfer",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_CERT_P0_R1_PRE_GATE_ORIGINAL_RECIPROCAL_HILBERT_PAIRING_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxCertP0OriginalReciprocalHilbertPairing.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxCertP0OriginalReciprocalHilbertPairingIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-cert-p0-original-reciprocal-hilbert-pairing-strict.yml",
+      "roots": [
+        "originalReciprocalField_conj",
+        "originalReciprocalFullL2CLM_inner",
+        "originalReciprocalHilbertOutputCLM_inner",
+        "originalWeightedChargeGraph_pairing"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxG0B0OriginalReciprocalFullL2AEMultiplication.originalReciprocalFullL2CLM_ae_originalField",
+        "FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift.originalReciprocalHilbertOutputCLM_coordinate",
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_graph_eq",
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph_mem_iff"
+      ],
+      "stages": {
+        "observation": "Endpoint proof uses real reciprocal pairing, while original AE multiplier, coordinate lift and inverse graph are already accepted.",
+        "question": "Does the actual original reciprocal have symmetric Hilbert pairing on FullL2 and K, and transfer the weighted charge graph pairing without new domain assumptions?",
+        "background": [
+          "C5A accepted; post-C5A endpoint source review completed",
+          "Exact original G0B0/C2B/C3 and native G0B3 availability inspected",
+          "Pinned L2.inner_def, PiLp.inner_apply, complex conjugation and graph witness APIs read"
+        ],
+        "hypothesis": "Real scalar conjugation plus actual AE action yields FullL2 pairing; finite inner sum yields K pairing; exact inverse graph yields source charge consumer.",
+        "falsifiers": [
+          "wrong complex conjugation",
+          "AE replaced by pointwise equality",
+          "assumed AY equivalence isometric",
+          "source graph/domain witness changed",
+          "independent native consumer or strict policy fails"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "all positive epsilon",
+            "literal original FullL2 and sixteen-output K",
+            "arbitrary original M/G with genuine graph premise",
+            "actual paired source consumer"
+          ],
+          "dependent_variables": [
+            "four source roots",
+            "eight independent consumer reports",
+            "same native carrier/domain identities"
+          ],
+          "controls": [
+            "freeze existing OAI baseline 23849e62a9b8fe88a66acaa65e77fc8a000c0974",
+            "explicit original donors",
+            "pinned toolchain, warning-as-error and budgets",
+            "no Hardy or spectral hypothesis introduced"
+          ]
+        },
+        "analysis_plan": "Cold exact source/native G4J, fresh source/consumer and exact report/axiom order; preserve first causal red.",
+        "conclusion_rule": "LEAN_QUALIFIED only after full exact source and original paired graph consumer audit.",
+        "communication": "Native reciprocal pairing only; full fixed-regulator certificate remains conditional on separate physical and analytic obligations."
+      }
     }
   ],
   "allowed_statuses": [

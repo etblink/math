@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## Post-C5A review — CERT-P0 native Hilbert pairing selected (PROSPECTIVE)
+
+[Source review and pre-gate](research/spectral-p2-original-field/P3_AUX_CERT_P0_R1_PRE_GATE_ORIGINAL_RECIPROCAL_HILBERT_PAIRING_2026_11_14.md) follows the preserved fixed-regulator certificate review. Selected four-root adapter: real reciprocal conjugation, actual FullL2 pairing, true sixteen-output PiLp pairing and exact weighted/original physical charge-graph pairing. Reuses G0B0 AE semantics, C2B coordinates, C3 inverse graph and pinned Mathlib integral/finite inner sums; no isometry assumption on AY's product equivalence. This supplies the pairing step in the future certificate. Physical singlet/spinor covariance, individual source supercharge energy/domain identities and Hardy inequality remain unproved. **No successor source staged yet; no Hardy/fidelity qualification.**
+
 ## P3-AUX-RAD-C5A R2 — STRICT GREEN, native positive scalar/L∞ ratio
 
 [Strict #43593756655](https://github.com/etblink/math/actions/runs/43593756655) GREEN at exact `9f647fc3770b58085be83ce4e579847311badc8a`: 149-path frozen preflight, cold source and entire native consumer PASS; ten source/fourteen independent reports, standard axioms. [Acceptance](research/spectral-p2-original-field/P3_AUX_RAD_C5A_R2_GREEN_43593756655_ORIGINAL_POSITIVE_REGULATOR_RATIO_ACCEPTANCE_2026_11_14.md); artifact #14113903544 digest `2133965653f6f4f1b8cbfef973e44e5a22ad021dafef355a5562d8235fa261eb`. Original ordered weights, bounded continuous complex ratio, pointwise inverse/reciprocal identities and genuine L∞/AE interfaces accepted. Both native origin controls pass with the explicit zero-power premise; R1 red preserved. **Next: post-C5A fixed-regulator certificate source-obligation review**, no successor gate staged. No FullL2/PiLp ratio action, common domains, Hardy/fidelity, zero limit or gap follows from this gate.
