@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C3D-B R2 — bounded first-causal repair (STAGED, UNQUALIFIED)
+
+[Run #43573922855](https://github.com/etblink/math/actions/runs/43573922855) is **RED_UNQUALIFIED** at `598b440c1baf8f794a35efeee17c7ecf51cb2b07`: source line 43 unknown original Bε FullL2 identifier and source line 69 `whnf` timeout in inline AU graph membership. [Exact failure receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_RED_43573922855_FIRST_CAUSAL_2026_11_13.md); artifact #14105887571. R2 changes only missing existing namespace open and hcore proof factoring from accepted original AZ; unchanged four roots, native original paired SU2 consumer, source donor pins and workflow. [R2 prospective protocol](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R2_MINIMAL_SOURCE_ELABORATION_REPAIR_2026_11_13.md). **No theorem acceptance until strict GREEN**; no density or spectral claims.
+
 ## P3-AUX-RAD-C3D-B R1 — original physical sixteen-charge weighted smooth-core inclusion (STAGED, UNQUALIFIED)
 
 [Prospective gate](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_PROSPECTIVE_SIXTEEN_CHARGE_WEIGHTED_CORE_GRAPH_2026_11_13.md) stages a genuine original AY `PiLp 2` sixteen-output weighted smooth-core column and proves exact `B16ε zε=WithLp.toLp 2 (M.chargeVector f)`. It then uses AU/AY and the accepted RAD-C3 inverse graph to certify original invariant smooth-core inclusion in the weighted physical charge domain. Four exact roots, native independent `pairedAlgebraData/pairedGaugeData` consumer and strict pinned CI. **No new qualification until GREEN.** Next C3D-C physical Haar density separately; no maximal domain or spectral inference.

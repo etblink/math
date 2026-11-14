@@ -3,7 +3,7 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxRADC3OriginalPhysicalWei
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AZOriginalPhysicalChargeDomainDensityReductionProbe
 
 /-!
-P3-AUX-RAD-C3D-B R1: the ACTUAL sixteen original smooth-core charge
+P3-AUX-RAD-C3D-B R2: the ACTUAL sixteen original smooth-core charge
 outputs have a weighted FullL2 representative in AY's PiLp 2 output.
 Exact original source invariant-core inputs lie in the accepted closed
 physical weighted charge graph. Not yet a dense-domain theorem.
@@ -16,6 +16,7 @@ open OAI.BFSSQuantum
 open OAI.BFSSQuantum.AlgebraData
 open FCP.BFSSSU2PhysicalDomainL6H5E8AU
 open FCP.BFSSSU2PhysicalDomainL6H5E8AY
+open FCP.BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedAction
 open FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift
 open FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph
 open FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness
@@ -59,14 +60,13 @@ theorem originalWeightedChargeCoreGraph_mem
   rw [originalWeightedChargeCoreOutput_reciprocal M hε f.val]
   rw [originalMinimalPhysicalHilbertChargeColumn_graph_eq M G]
   apply (originalMinimalPhysicalHilbertChargeGraph_mem_iff M G _).mpr
-  change (coreToL2 f.val, M.chargeVector f.val) ∈
-    originalMinimalClosedGraph M G
+  have hcore :
+      (coreToL2 f.val, M.chargeVector f.val) ∈
+        originalMinimalCoreGraph M G := ⟨f, rfl⟩
   change (coreToL2 f.val, M.chargeVector f.val) ∈
     closure (originalMinimalCoreGraph M G :
       Set (FullL2 2 × (SpinIndex → FullL2 2)))
-  exact subset_closure (show
-    (coreToL2 f.val, M.chargeVector f.val) ∈
-      originalMinimalCoreGraph M G from ⟨f, rfl⟩)
+  exact subset_closure hcore
 
 /-- A SOURCE-EXACT inclusion in the domain of the closed weighted
 partial linear charge. Density is a separate Haar step. -/
