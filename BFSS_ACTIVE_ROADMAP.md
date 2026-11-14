@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## P3-AUX-RAD-C3 R1 — actual physical weighted charge inverse graph (STAGED, UNQUALIFIED)
+## P3-AUX-RAD-C3 R1 — STRICT GREEN original physical weighted charge graph
 
-[Prospective RAD-C3 R1](research/spectral-p2-original-field/P3_AUX_RAD_C3_R1_PROSPECTIVE_ORIGINAL_PHYSICAL_WEIGHTED_GRAPH_2026_11_13.md) stages an actual `pairedGaugeData.physicalSpace` input and sixteen-original-`FullL2` AY `PiLp 2` output **closed inverse-image graph** under the newly qualified `id×B16ε`. The proof package tests a literal graph submodule, its membership equation, a single-valued `LinearPMap`, graph equality, and closedness, plus an independent **concrete paired source** consumer. **No qualification until strict CI and exact root/axiom acceptance**. Density, weighted-domain equality, and the auxiliary-Hardy/spectral route remain separate.
+[Strict run #43570463487](https://github.com/etblink/math/actions/runs/43570463487) completed success at `6dfd221d486b74244f34de6fa051d0f2ec9162fa` for the true original physical input, sixteen-output inverse-image graph `Gε`, the partial `LinearPMap Sε`, graph equality and **closedness**, with independent original paired SU(2) consumer and five-root allowed axioms `[propext, Classical.choice, Quot.sound]`. [Acceptance receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3_R1_GREEN_43570463487_ORIGINAL_PHYSICAL_WEIGHTED_GRAPH_ACCEPTANCE_2026_11_13.md), artifact #14104512490 SHA256 `197d451fc63b250a34a498d9fe3c880a0b6b5c1b555ced641583cf23dd12a2f7`; consistency [#43570463439](https://github.com/etblink/math/actions/runs/43570463439) GREEN. **Next RAD-C3D-A** original compact-support weighted `FullL2` output range witness; then C3D-B original gauge-invariant smooth-core graph inclusion and C3D-C density via existing Haar. No dense domain, quadratic form or auxiliary spectrum yet.
+
+## P3-AUX-RAD-C3 R1 — historical staged gate (now accepted)
+
+[Prospective RAD-C3 R1](research/spectral-p2-original-field/P3_AUX_RAD_C3_R1_PROSPECTIVE_ORIGINAL_PHYSICAL_WEIGHTED_GRAPH_2026_11_13.md) stages an actual `pairedGaugeData.physicalSpace` input and sixteen-original-`FullL2` AY `PiLp 2` output **closed inverse-image graph** under the newly qualified `id×B16ε`. The proof package tests a literal graph submodule, its membership equation, a single-valued `LinearPMap`, graph equality, and closedness, plus an independent **concrete paired source** consumer. **Now accepted by strict exact source-and-consumer CI above**. Density, weighted-domain equality, and the auxiliary-Hardy/spectral route remain separate.
 
 ## P3-AUX-RAD-C2B R1 — strict GREEN original sixteen-output PiLp reciprocal
 
