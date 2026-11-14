@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G5 R1 — staged, original Fock potential/tau CAR lift
+
+[Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_PRE_GATE_ORIGINAL_POTENTIAL_TAU_CAR_2026_11_14.md) committed at `712d77384dd41574edaec1f558bad15f4fbcd770` before source; administrative #43644748093 GREEN. Six roots define original coefficient tau/potential Fock fields, literal actions, summed zero operator anticommutator and original-vector evaluation. Twelve actual native controls include origin fields, unit-row CAR1/not2 and tau self-adjointness. Source `c1c04f779a6f104cce39a08e34434d4d6937b2d9`, consumer `db899c75288805c560ca0ad2e8c873456d407eb2`, workflow `89aa88686e315ceab7cd13042de00b96e4295ec5`; frozen OAI baseline `f51357761243008201f97d9e0ef0cbefa87d0b06`. Static hash/root/YAML/bash/Python PASS; local Lean unavailable. **Unqualified pending full cold/fresh source and native consumer, six/eleven reports.** Literal Core charge potential equality and full smooth-core identity remain separate.
+
 ## HARDY-G5 prospective — lift scalar cancellation to original Fock CAR
 
-[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_PRE_GATE_ORIGINAL_POTENTIAL_TAU_CAR_2026_11_14.md) defines tau and potential fields using accepted real coefficients and original cliffordLinear/theta. Six roots cover literal actions and zero summed operator/vector anticommutators; six/eleven reports, twelve native controls, original CAR factor1/not2. **No G5 source staged yet.** Literal Core.charge potential identification and full smooth-core identity remain separate.
+[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_PRE_GATE_ORIGINAL_POTENTIAL_TAU_CAR_2026_11_14.md) defines tau and potential fields using accepted real coefficients and original cliffordLinear/theta. Six roots cover literal actions and zero summed operator/vector anticommutators; six/eleven reports, twelve native controls, original CAR factor1/not2. **Historical preregistration status; see current launch above.** Literal Core.charge potential identification and full smooth-core identity remain separate.
 
 ## HARDY-G4 R1 — accepted; next cut is original Fock CAR compression
 
