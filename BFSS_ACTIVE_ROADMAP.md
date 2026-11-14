@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## P3-AUX-RAD-C3DA R1 — original weighted core FullL2 reciprocal range (STAGED, UNQUALIFIED)
+## P3-AUX-RAD-C3D-A R1 — STRICT GREEN original compact-core Fock FullL2 range
+
+[Strict #43572123886](https://github.com/etblink/math/actions/runs/43572123886) completed success at `1166eb9f65ec7e23aea702011c99ea9d83871f35`. The genuine original `SmoothCore 2` weighted `FullL2 2` witness and identity `Bε[wεg]=coreToL2 g` are qualified with five roots, independent original Fock consumer and axioms `[propext, Classical.choice, Quot.sound]`. [Acceptance receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3DA_R1_GREEN_43572123886_ORIGINAL_CORE_RANGE_ACCEPTANCE_2026_11_13.md); artifact #14105123313 SHA256 `8787c7a2deea45391211c1f50ae907c652b686daa7ef40bc0128a3344c9194ec`, consistency [#43572123848](https://github.com/etblink/math/actions/runs/43572123848) GREEN. **Next:** RAD-C3D-B actual AY sixteen-charge invariant-core weighted graph inclusion, then RAD-C3D-C source Haar density. This gate is not density or a spectral result.
+
+## P3-AUX-RAD-C3DA R1 — historical staged candidate (now accepted)
 
 [Prospective gate](research/spectral-p2-original-field/P3_AUX_RAD_C3DA_R1_PROSPECTIVE_WEIGHTED_CORE_FULLL2_RANGE_2026_11_13.md) stages original Fock `FullL2 2` witness `[wεg]` for each `g:SmoothCore 2` and `Bε[wεg]=coreToL2 g`, using only accepted R0A scalar cancellation, G0B0 native AE original multiplier, and original Core compact support. Exact five-root strict source/consumer gate. Next if qualified: C3D-B apply to sixteen source `M.charge α f`, then C3D-C physical Haar density. No full inverse, maximal weighted domain or gap.
 
