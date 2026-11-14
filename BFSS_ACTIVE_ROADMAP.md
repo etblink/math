@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## Post-CERT-P0 source review — HARDY-X0 Xi primitive selected (PROSPECTIVE)
+
+[Review / pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_X0_R1_PRE_GATE_ORIGINAL_XI_NORM_AND_CUTOFF_2026_11_14.md) recovers a concrete Hardy-algebra input from existing `CliffordSymbols`: the unit-row principal-symbol norm gives `Σα ‖Xiα(X)v‖²=8‖X‖²‖v‖²`, and `charge_realCutoff` binds the same Xi to the actual original charge. Five roots, current generic donor re-audit and genuine paired consumer, including origin and wrong-factor-16 controls. No new Clifford library, physical Spin9 premise or conditional Hardy wrapper. **Not staged yet; no Hardy/fidelity qualification.** Individual closed supercharge identities, tau/gamma traces, physical sectors and Hardy/domain transfer remain separate.
+
 ## P3-AUX-CERT-P0 R1 — STRICT GREEN, native reciprocal and charge-graph pairing
 
 [Strict #43621045697](https://github.com/etblink/math/actions/runs/43621045697) GREEN at exact `e06545070752572665f87759fe450063109da870`: four source/eight independent native reports, standard axioms; 176-path frozen preflight and full cold source/consumer PASS. [Acceptance](research/spectral-p2-original-field/P3_AUX_CERT_P0_R1_GREEN_43621045697_ORIGINAL_RECIPROCAL_HILBERT_PAIRING_ACCEPTANCE_2026_11_14.md); artifact #14124816550 digest `7fc25d89a885233f419e26214b1aedd8796a0aa083589706e5ae567cceb9615e`. Original FullL2 and actual sixteen-output reciprocal pairing, plus exact `<Tt,y>=<z,Bεy>` for genuine weighted graph point and original charge-domain witness, accepted. No Hardy/fidelity, physical Spin9 or individual supercharge spectral identity. **Next: readiness review of source supercharge/energy-domain and bounded-reciprocal Hardy interfaces; no successor proof gate staged yet.**

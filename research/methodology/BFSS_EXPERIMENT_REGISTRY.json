@@ -3826,6 +3826,73 @@
           "Quot.sound"
         ]
       }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-X0-R1",
+      "title": "Original Hardy Xi coefficient norm and genuine cutoff coupling",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_X0_R1_PRE_GATE_ORIGINAL_XI_NORM_AND_CUTOFF_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyX0OriginalXiNormAndCutoff.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyX0OriginalXiNormAndCutoffIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-x0-original-xi-norm-cutoff-strict.yml",
+      "roots": [
+        "originalHardyXi",
+        "originalHardyXi_apply",
+        "originalHardyXi_norm_sq",
+        "originalHardyXi_sum_norm_sq",
+        "originalHardyXi_charge_realCutoff"
+      ],
+      "donor_roots": [
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_norm_sq",
+        "OAI.BFSSQuantum.AlgebraData.principalSymbol_norm_sq",
+        "OAI.BFSSQuantum.AlgebraData.principalSymbol_unit_norm_sq",
+        "OAI.BFSSQuantum.AlgebraData.principalSymbol_basis_apply",
+        "OAI.BFSSQuantum.AlgebraData.charge_realCutoff"
+      ],
+      "stages": {
+        "observation": "CliffordSymbols already gives original unit-row principal-symbol norm and actual charge cutoff coefficient; Xi matches its native gamma/theta action.",
+        "question": "Can exact original Xi norm coefficients 1/2 and 8 and the smooth-core cutoff binding be qualified without assuming unresolved physical Spin9?",
+        "background": [
+          "CERT-P0 accepted four/eight reports, 176 pins",
+          "Original Core/CliffordSymbols/DeformedCharge and prior Hardy primitive map read",
+          "Primary paper Appendix B Xi coefficient checked",
+          "Current exact generic donor roots to be re-audited"
+        ],
+        "hypothesis": "Unit Pi.single row, native Clifford norm, and spin cardinality 16 give exact Xi norms; existing charge_realCutoff binds the same symbol.",
+        "falsifiers": [
+          "incorrect CAR coefficient 16",
+          "gamma row/column or cutoff phase mismatch",
+          "new Fock surrogate",
+          "zero/nonzero native controls fail",
+          "unproved physical sector premise inserted",
+          "source/consumer/strict audit failure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "all original M:AlgebraData 2 and alpha",
+            "arbitrary original X and Fock v",
+            "actual source SmoothCore and real smooth cutoff",
+            "paired source origin and nonzero normalization controls"
+          ],
+          "dependent_variables": [
+            "five source roots",
+            "ten consumer reports",
+            "native cutoff identity and exact norm coefficients"
+          ],
+          "controls": [
+            "freeze OAI baseline e406851deadc1d5b90ed2f609232d75ebb9e162e",
+            "explicit Core/G4J/CliffordSymbols pins",
+            "pinned toolchain/warning-as-error and budgets",
+            "no physical Spin9 or Hardy assumption"
+          ]
+        },
+        "analysis_plan": "Cold exact source/G4J and full native consumer; exact root order/axioms; preserve first causal red.",
+        "conclusion_rule": "LEAN_QUALIFIED only after original source and complete independent consumer acceptance, including origin and doubled-coefficient controls.",
+        "communication": "Xi algebra and actual smooth-core cutoff only; no full physical Hardy/fidelity or spectral conclusion."
+      }
     }
   ],
   "allowed_statuses": [
