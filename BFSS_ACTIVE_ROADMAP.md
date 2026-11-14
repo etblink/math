@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G3 R1 — staged, strict qualification pending
+
+[Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_PRE_GATE_ORIGINAL_Y_DERIVATIVE_CONTRACTION_2026_11_14.md) committed at `4a43076d8f940b716e31f96bab8bc514c6fe1731` before source; administrative #43636602473 GREEN. Five roots assemble accepted original Y as native coordinate CLM, identify its literal action and actual fderiv, and contract all nine basis/derivative directions to1/4 gamma_i gamma_j. Twelve original paired-gamma/Boson controls include longitudinal1/16, transverse ninth-axis1/56, swapped plane, base-point zero and probe4/not8. Source `de25bd6dba96e7e2f682fb6e7490b60d430a45a0`, consumer `8fd1ac6d819aaccf9cabe38448813a09c75e59bb`, workflow `18aeef3a6ae51e92361f3d039c06e2baab8110ea`; frozen baseline `64718d564f311b914e629e8bae536327b053ee1f`. Static hash/root/YAML/bash/Python PASS, local Lean unavailable. **Unqualified pending complete cold/fresh source and native consumer, five/ten reports.**
+
 ## HARDY-G3 prospective — original Y actual derivative contraction
 
-[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_PRE_GATE_ORIGINAL_Y_DERIVATIVE_CONTRACTION_2026_11_14.md) commits to a native continuous-linear assembly of accepted Y, its actual fderiv, and nine-direction contraction1/4. Two longitudinal1/16 and seven transverse1/56 contributions; a ninth-axis control and probe4/not8 test the coefficient G2 trace cannot see. Five roots/ten reports, twelve native examples; explicit finite color witness and closed numeric bounds. **No G3 source staged yet.**
+[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_PRE_GATE_ORIGINAL_Y_DERIVATIVE_CONTRACTION_2026_11_14.md) commits to a native continuous-linear assembly of accepted Y, its actual fderiv, and nine-direction contraction1/4. Two longitudinal1/16 and seven transverse1/56 contributions; a ninth-axis control and probe4/not8 test the coefficient G2 trace cannot see. Five roots/ten reports, twelve native examples; explicit finite color witness and closed numeric bounds. **Historical preregistration status; see current launch above.**
 
 ## HARDY-G2 R3 — accepted; derivative contraction source review next
 
