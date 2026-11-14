@@ -2,7 +2,7 @@
 
 ## HARDY-G3 R2 — staged, strict qualification pending
 
-R1 red checkpoint and exact-deletion repair contract committed at `95b94717a3034a23a0f914976637547bdaae6488` before source mutation. Only three flagged mul_smul_comm simp arguments removed; mathematical statements, all twelve native controls and entire consumer byte-identical. Strict lint retained. Source `03b5236bd91e4664e7101544b065054bd6c925a1`, consumer `8fd1ac6d819aaccf9cabe38448813a09c75e59bb`, workflow `db93728ab803f8b9e83059936babb8f8f06b9c9b`; workflow expected source hash only. Static exact-delta/hash/root/YAML/bash/Python PASS; no local Lean. **Unqualified pending complete cold/fresh source and native consumer, five/ten reports.**
+R1 red checkpoint and exact-deletion repair contract committed at `95b94717a3034a23a0f914976637547bdaae6488` before source mutation. Only three flagged mul_smul_comm simp arguments removed; mathematical statements, all twelve native controls and entire consumer byte-identical. Strict lint retained. Source `03b5236bd91e4664e7101544b065054bd6c925a1`, consumer `8fd1ac6d819aaccf9cabe38448813a09c75e59bb`, workflow `db93728ab803f8b9e83059936babb8f8f06b9c9b`; workflow expected source hash only. Static exact-delta/hash/root/YAML/bash/Python PASS; no local Lean. [Strict #43638440460](https://github.com/etblink/math/actions/runs/43638440460) tests exact `8b90de4ed5ed176233eb60fb97e9ae895b8efa0b`, job #132580331749; checkout/preflight pending at binding. Administrative #43638440477 is separate. **Unqualified pending complete cold/fresh source and native consumer, five/ten reports.**
 
 ## HARDY-G3 R1 — RED, three unused simp arguments
 
