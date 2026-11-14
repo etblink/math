@@ -28,7 +28,8 @@ theorem originalHardyXi_norm_sq (M : AlgebraData 2)
     (α : SpinIndex) (X : Boson 2) (v : Fermion 2) :
     ‖originalHardyXi M α X v‖ ^ 2 =
       (1 / 2 : ℝ) * ‖X‖ ^ 2 * ‖v‖ ^ 2 := by
-  have hv : (∑ β : SpinIndex, (Pi.single α (1 : ℝ) β) ^ 2) = 1 := by
+  have hv : (∑ β : SpinIndex,
+      ((Pi.single α (1 : ℝ) : SpinIndex → ℝ) β) ^ 2 : ℝ) = 1 := by
     simp [Pi.single_apply]
   exact M.principalSymbol_unit_norm_sq (Pi.single α 1) hv X v
 
