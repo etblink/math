@@ -2177,5 +2177,33 @@
     "receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C3_R1_GREEN_43570463487_ORIGINAL_PHYSICAL_WEIGHTED_GRAPH_ACCEPTANCE_2026_11_13.md",
     "next_gate": "RAD-C3D-A original compact support weighted FullL2 output range witness",
     "next_gate_status": "RESEARCH_ROUTE_PROSPECTIVE_NOT_STAGED"
+  },
+  "parallel_auxiliary_original_weighted_core_range_experiment": {
+    "gate": "P3-AUX-RAD-C3DA",
+    "date": "2026-11-13",
+    "attempt": "R1",
+    "status": "STAGED_UNQUALIFIED_PENDING_STRICT_CI",
+    "qualification": false,
+    "parent_sha": "025b123ef353a3bcbc65c677b5ea44f5abce90e9",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.lean",
+    "consumer": "lean/diagnostics/BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitnessIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-rad-c3da-original-weighted-core-full-l2-range-strict.yml",
+    "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C3DA_R1_PROSPECTIVE_WEIGHTED_CORE_FULLL2_RANGE_2026_11_13.md",
+    "expected_roots": [
+      "originalWeightedCoreField_continuous",
+      "originalWeightedCoreField_hasCompactSupport",
+      "originalWeightedCoreFieldL2",
+      "originalReciprocalFullL2CLM_core_witness",
+      "originalCoreToL2_mem_reciprocalRange"
+    ],
+    "accepted_RAD_C3_run": 43570463487,
+    "frozen_original_core_blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+    "scope": "Native original Fock FullL2 [wεg] compact core witness, Bε cancellation, and range membership",
+    "exclusions": [
+      "No globally bounded radial multiplication",
+      "No entire FullL2 surjectivity",
+      "No physical weighted charge domain density or spectral claim"
+    ],
+    "next_decision": "Review exact source/consumer cold strict CI and root standard-axiom audit, preserve first causal RED."
   }
 }

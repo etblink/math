@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C3DA R1 — original weighted core FullL2 reciprocal range (STAGED, UNQUALIFIED)
+
+[Prospective gate](research/spectral-p2-original-field/P3_AUX_RAD_C3DA_R1_PROSPECTIVE_WEIGHTED_CORE_FULLL2_RANGE_2026_11_13.md) stages original Fock `FullL2 2` witness `[wεg]` for each `g:SmoothCore 2` and `Bε[wεg]=coreToL2 g`, using only accepted R0A scalar cancellation, G0B0 native AE original multiplier, and original Core compact support. Exact five-root strict source/consumer gate. Next if qualified: C3D-B apply to sixteen source `M.charge α f`, then C3D-C physical Haar density. No full inverse, maximal weighted domain or gap.
+
 ## P3-AUX-RAD-C3 R1 — STRICT GREEN original physical weighted charge graph
 
 [Strict run #43570463487](https://github.com/etblink/math/actions/runs/43570463487) completed success at `6dfd221d486b74244f34de6fa051d0f2ec9162fa` for the true original physical input, sixteen-output inverse-image graph `Gε`, the partial `LinearPMap Sε`, graph equality and **closedness**, with independent original paired SU(2) consumer and five-root allowed axioms `[propext, Classical.choice, Quot.sound]`. [Acceptance receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3_R1_GREEN_43570463487_ORIGINAL_PHYSICAL_WEIGHTED_GRAPH_ACCEPTANCE_2026_11_13.md), artifact #14104512490 SHA256 `197d451fc63b250a34a498d9fe3c880a0b6b5c1b555ced641583cf23dd12a2f7`; consistency [#43570463439](https://github.com/etblink/math/actions/runs/43570463439) GREEN. **Next RAD-C3D-A** original compact-support weighted `FullL2` output range witness; then C3D-B original gauge-invariant smooth-core graph inclusion and C3D-C density via existing Haar. No dense domain, quadratic form or auxiliary spectrum yet.
