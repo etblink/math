@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C3 R1 — actual physical weighted charge inverse graph (STAGED, UNQUALIFIED)
+
+[Prospective RAD-C3 R1](research/spectral-p2-original-field/P3_AUX_RAD_C3_R1_PROSPECTIVE_ORIGINAL_PHYSICAL_WEIGHTED_GRAPH_2026_11_13.md) stages an actual `pairedGaugeData.physicalSpace` input and sixteen-original-`FullL2` AY `PiLp 2` output **closed inverse-image graph** under the newly qualified `id×B16ε`. The proof package tests a literal graph submodule, its membership equation, a single-valued `LinearPMap`, graph equality, and closedness, plus an independent **concrete paired source** consumer. **No qualification until strict CI and exact root/axiom acceptance**. Density, weighted-domain equality, and the auxiliary-Hardy/spectral route remain separate.
+
 ## P3-AUX-RAD-C2B R1 — strict GREEN original sixteen-output PiLp reciprocal
 
 [Verified strict #43568618192](https://github.com/etblink/math/actions/runs/43568618192), head `fd745c3598bb237088f7a964ac810c82a2f91a35` qualified the genuine AY `PiLp` bounded `B16ε`, its literal sixteen-coordinate application equation, and `Function.Injective B16ε`; source+consumer three-root axiom audit `[propext, Classical.choice, Quot.sound]`. [Acceptance receipt](research/spectral-p2-original-field/P3_AUX_RAD_C2B_R1_GREEN_43568618192_ACCEPTANCE_2026_11_13.md); artifact #14103862228, SHA256 `820e76bd29de19a9694c0eb67a557dbf86f04f8355484b405089baaac17b8fb0`. Roadmap consistency [#43568618072](https://github.com/etblink/math/actions/runs/43568618072) also GREEN. **Next RAD-C3:** original AY physical-input closed inverse-image graph under `id×B16ε`; original M5BF0 and TD-C1A dispositions unchanged.
