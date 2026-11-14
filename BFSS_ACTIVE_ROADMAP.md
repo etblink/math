@@ -2,7 +2,7 @@
 
 ## HARDY-G1 R2 — staged, strict qualification pending
 
-R1 red checkpoint and closed-numeral repair contract committed at `7417d70876131bb3546f82b9ddec76570afb7e25` before source edit. Only the two local literal-list bounds are explicitly changed to 3<=5 and 5<=5 before decide; original statements and entire native consumer remain fixed. Source `6a019c9111b384e73a05de7b776ac9e5a83c7eb7`, consumer `6cde9e42664eb378136d12cde77989fee628f7d3`, workflow `55fa8248a643404967c1d30bda3737626187a8a8`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean available. Frozen source baseline and strict policy unchanged. **Unqualified pending exact cold source and full native consumer, five/ten reports.**
+R1 red checkpoint and closed-numeral repair contract committed at `7417d70876131bb3546f82b9ddec76570afb7e25` before source edit. Only the two local literal-list bounds are explicitly changed to 3<=5 and 5<=5 before decide; original statements and entire native consumer remain fixed. Source `6a019c9111b384e73a05de7b776ac9e5a83c7eb7`, consumer `6cde9e42664eb378136d12cde77989fee628f7d3`, workflow `55fa8248a643404967c1d30bda3737626187a8a8`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean available. Frozen source baseline and strict policy unchanged. [Strict #43628804541](https://github.com/etblink/math/actions/runs/43628804541) tests exact `5f03f53ea3478dcaf1b70cbeda4557c88876d843`, job #132550584577; checkout/preflight pending at binding. Administrative #43628804577 is separate. **Unqualified pending exact cold source and full native consumer, five/ten reports.**
 
 ## HARDY-G1 R1 — RED, local list-length decide boundary
 
