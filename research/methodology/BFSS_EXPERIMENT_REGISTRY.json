@@ -2074,6 +2074,44 @@
         "falsification_scope": "Tested explicit-normalization repair only; no mathematical covariance theorem is refuted.",
         "automatic_retry_halted": true
       }
+    },
+    {
+      "id": "E-TD-C1A-D2-STRUCTURAL-EXPR-001",
+      "title": "Bounded elaborated expression-tree audit at the two D1 native joins",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "DIAGNOSTIC_ONLY_NONQUALIFYING",
+      "qualified_physical_claim": false,
+      "background": [
+        "D0 #43554665838 successful direct axis and failed native joins",
+        "D1 #43556707461 variable rewrite success and two native final-exact recursion failures",
+        "Lean 4.34.1 source-reviewed Expr.equal/eqv/getAppFn/getAppArgs and Tactic getMainTarget"
+      ],
+      "question": "Where do the complete elaborated types of D1's actual native witnesses and post-simplification goals first differ, relative to successful direct and variable-data controls?",
+      "hypothesis": "Structural comparison will either expose a first differing expression argument or show that the terms are syntactically identical; neither outcome is a proof of covariance.",
+      "falsifiers": [
+        "Successful D0 control has no valid expression report or source qualification",
+        "Variable original-Fock control fails or expression report cannot be interpreted",
+        "Native observation produces no bounded comparison/stop marker or shows instrumentation errors",
+        "Any diagnostic relies on a new proof retry or a weakened/changed physical carrier"
+      ],
+      "analysis_plan": "Report Expr.equal and Expr.eqv separately; first differing application argument path up to 32 steps; no definitional unfolding; classify first differing constructor and arguments; mark identical structures without asserting Lean checker bug.",
+      "controls": [
+        "literal original source D0 direct consumer",
+        "variable original-Fock data application control",
+        "unchanged D1 native axis/evaluation goals",
+        "standard-axiom and warning audits on successful controls"
+      ],
+      "status_scope": "Plan and registry committed before new Lean source/runner/workflow; no mathematical CI launched by the preregistration.",
+      "implementation": {
+        "memo": "research/top-down-symmetry/TD_C1A_D2_PROSPECTIVE_BOUNDED_EXPRESSION_STRUCTURE_AUDIT_2026_11_13.md",
+        "base_sha": "44d16ad0f1148902b8446bbac38cfe208b623c50",
+        "toolchain": "leanprover/lean4:v4.34.1",
+        "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+        "source": "not_yet_created",
+        "tested_sha": null,
+        "run_id": null
+      }
     }
   ],
   "allowed_statuses": [
