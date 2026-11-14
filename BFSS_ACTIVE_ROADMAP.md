@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-HARDY-X0 R1 — original Xi norm and cutoff coupling (STAGED, UNQUALIFIED)
+
+[Source review / preregistration](research/spectral-p2-original-field/P3_AUX_HARDY_X0_R1_PRE_GATE_ORIGINAL_XI_NORM_AND_CUTOFF_2026_11_14.md) committed at `aa30430d1f95df181f0c3c2b4052daab90731883` before new source; administrative #43623257630 GREEN. Five roots name original principal-symbol Xi, literal gamma/theta action, per-row coefficient 1/2, sixteen-row coefficient 8, and actual `charge_realCutoff` binding. Eight native examples on pairedAlgebraData include source origin and incorrect-factor-16 rejection; ten reports (five new + five generic donors). Source `a84f1413524f894b364b1eb274f6d5edb47ad9f5`, consumer `1c81d54d3d14c13d0b4bcaddea0a8602d20e73b8`, workflow `b4a2b26f0a0fc53307ebddac8dad812892ea96f5`; frozen existing OAI baseline `e406851deadc1d5b90ed2f609232d75ebb9e162e`. Static hash/root/YAML/bash/Python syntax PASS, no local Lean. **Strict qualification pending.** No tau identity, closed supercharge square, physical Spin9/Hardy, fidelity, zero mode or gap.
+
 ## Post-CERT-P0 source review — HARDY-X0 Xi primitive selected (PROSPECTIVE)
 
 [Review / pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_X0_R1_PRE_GATE_ORIGINAL_XI_NORM_AND_CUTOFF_2026_11_14.md) recovers a concrete Hardy-algebra input from existing `CliffordSymbols`: the unit-row principal-symbol norm gives `Σα ‖Xiα(X)v‖²=8‖X‖²‖v‖²`, and `charge_realCutoff` binds the same Xi to the actual original charge. Five roots, current generic donor re-audit and genuine paired consumer, including origin and wrong-factor-16 controls. No new Clifford library, physical Spin9 premise or conditional Hardy wrapper. **Not staged yet; no Hardy/fidelity qualification.** Individual closed supercharge identities, tau/gamma traces, physical sectors and Hardy/domain transfer remain separate.
