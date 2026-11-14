@@ -1463,11 +1463,11 @@
   "parallel_topdown_spin_gauge_full48_experiment": {
     "date": "2026-11-13",
     "gate": "TD-C1A",
-    "status": "RED_UNQUALIFIED",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
     "qualification": false,
     "source_candidate_commit": "991f3bf43525226c6155bddaeaa775380668e67f",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AOriginalGaugeUnitaryFull48GammaCovariance.lean",
-    "source_blob": "1cd598864884b8c84159c1b899609b2baf06bed5",
+    "source_blob": "5aa97c2b48aadebda7de2f94bd11c084fa15a83e",
     "consumer": "lean/diagnostics/BFSSTDC1AOriginalGaugeUnitaryFull48GammaCovarianceIndependentConsumer.lean",
     "consumer_blob": "7c9998173589de762a486e60508c3a40fcdee2ac",
     "workflow": ".github/workflows/bfss-td-c1a-original-full48-gauge-gamma-strict.yml",
@@ -1490,10 +1490,10 @@
       "no physical FullL2 spin reduction",
       "no new Hamiltonian or auxiliary gap"
     ],
-    "next_decision": "R3 original source proof architecture avoids deep simpa via restrictScalars ℝ and avoids elaborating L/R via change; require cold original source/consumer GREEN; preserve both R1/R2 reds.",
-    "strict_run_id": 43539398734,
+    "next_decision": "Check exact strict R3 #43541591975 tested SHA and first causal if RED; only original source+unchanged independent consumer+root allowed axiom green qualifies, and Spin9 gauge fixedness still distinct.",
+    "strict_run_id": 43541591975,
     "strict_tested_sha": "5564c2f15044326f34f16d8a06c1cba7e131a958",
-    "strict_run_status": "COMPLETED_RED",
+    "strict_run_status": "QUEUED_AT_LAST_CHECK",
     "workflow_blob": "cc55480565ee935d499baef11c0ea4fe0f712372",
     "strict_conclusion": "failure",
     "r1_red": {
@@ -1509,9 +1509,9 @@
       "artifact_digest": "sha256:8be0116593ef09597c8491e2cfde4fc5caa31fff2be0f28ac9943432ca22bdd8",
       "receipt": "research/top-down-symmetry/TD_C1A_R1_RED_43536957727_FIRST_CAUSAL_2026_11_13.md"
     },
-    "candidate_sha": "6d156c9f2e8b06c2be5d8b032cd27ecc4d8902d6",
-    "run_id": 43539398734,
-    "attempt_label": "R2_EXPLICIT_REAL_SMUL_AND_TYPED_BASIS",
+    "candidate_sha": "ffb2e6b9f5e305d99a09ebedfaa7ec1864626a68",
+    "run_id": 43541591975,
+    "attempt_label": "R3_NATIVE_REAL_SCALAR_RESTRICTION_AND_BASIS_CONGRUENCE",
     "prospective_r2": "research/top-down-symmetry/TD_C1A_R2_PROSPECTIVE_REAL_SCALAR_AND_TYPED_BASIS_REPAIR_2026_11_13.md",
     "r2_red": {
       "run_id": 43539398734,
@@ -1526,6 +1526,7 @@
       "artifact_digest": "sha256:b7bc1fd6092506ee711d4e378e7942b26ae8a26e848c69f3da613d114ed8c37f",
       "receipt": "research/top-down-symmetry/TD_C1A_R2_RED_43539398734_FIRST_CAUSAL_2026_11_13.md",
       "source_qualified": false
-    }
+    },
+    "prospective_r3": "research/top-down-symmetry/TD_C1A_R3_PROSPECTIVE_SOURCE_REAL_LINEAR_RESTRICTION_AND_BASIS_PROOF_2026_11_13.md"
   }
 }
