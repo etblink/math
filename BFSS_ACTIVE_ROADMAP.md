@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G4 prospective — original potential/Y scalar coefficient cancellation
+
+[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_PRE_GATE_ORIGINAL_POTENTIAL_Y_COEFFICIENT_CANCELLATION_2026_11_14.md) binds original Core.gammaTwo, structureConstant and quadratic coordinates to a real potential coefficient matrix, its literal entries, transpose sign, Y trace and actual same-index scalar pairing. Six roots/eleven reports, twelve native controls. This consumes G1 odd traces and G2 literal Y; G3 derivative remains accepted. **No G4 source staged yet.** Full Fock/core charge–tau compression and physical Hardy remain open.
+
 ## HARDY-G3 R3 — accepted, original Y derivative contraction
 
 [Strict #43640943132](https://github.com/etblink/math/actions/runs/43640943132) GREEN at `3db5a85a5a5f6969ada47a4ec9619c1b3c9bd7fd`: full source, isolated native transverse diagnostic and complete native consumer PASS; five/one/ten exact standard-axiom reports, twelve controls, 150 pinned source paths, manifest `fa589ac5f463fdc55e1160a17fb63491229a8e63a4c5c1702d0e119f2b0eaab9`. Actual derivative coefficient1/4 and transverse1/56 control qualified. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R3_GREEN_43640943132_ORIGINAL_Y_DERIVATIVE_ACCEPTANCE_2026_11_14.md). R1/R2 negatives retained.

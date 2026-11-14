@@ -4704,6 +4704,67 @@
           "Quot.sound"
         ]
       }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G4-R1",
+      "title": "Original potential coefficient cancellation against source Y",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_PRE_GATE_ORIGINAL_POTENTIAL_Y_COEFFICIENT_CANCELLATION_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG4OriginalPotentialYCancellation.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG4OriginalPotentialYCancellationIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g4-original-potential-y-cancellation-strict.yml",
+      "roots": [
+        "originalGammaTwo_trace_Y",
+        "originalPotentialGamma",
+        "originalPotentialGamma_apply",
+        "originalPotentialGamma_transpose",
+        "originalPotentialGamma_trace_Y",
+        "originalPotentialGamma_pairing_zero"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_three_trace_zero",
+        "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_five_trace_zero",
+        "FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY",
+        "OAI.BFSSQuantum.AlgebraData.gammaTwo",
+        "OAI.BFSSQuantum.AlgebraData.charge"
+      ],
+      "stages": {
+        "observation": "Qualified odd traces/Y and derivative are available; actual potential coefficient pairing remains unqualified.",
+        "question": "Can exact Core potential coefficient cancel against literal Y with the correct same-index pairing?",
+        "background": [
+          "G1/G2/G3 accepted",
+          "Current Core gammaTwo/charge read",
+          "Pinned matrix trace expansion API",
+          "Primary AppendixB after B.7 checked"
+        ],
+        "hypothesis": "Odd traces imply gammaTwo/Y orthogonality; original real linear potential and transpose give scalar pairing zero.",
+        "falsifiers": [
+          "trace used in place of transpose pairing",
+          "wrong original indices/factors",
+          "native controls or strict audit failure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "all original source labels and coordinates"
+          ],
+          "dependent_variables": [
+            "six/eleven reports",
+            "twelve native examples"
+          ],
+          "controls": [
+            "literal original coefficient entry expansion",
+            "diagonal-color sum",
+            "nonzero gamma/Y probe",
+            "same strict pins/policy"
+          ]
+        },
+        "analysis_plan": "Cold/fresh exact source and complete native consumer, exact axioms/controls/manifest/artifact.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete original source/native consumer acceptance.",
+        "communication": "Real coefficient cancellation only; actual Fock/core CAR compression remains later."
+      }
     }
   ],
   "allowed_statuses": [
