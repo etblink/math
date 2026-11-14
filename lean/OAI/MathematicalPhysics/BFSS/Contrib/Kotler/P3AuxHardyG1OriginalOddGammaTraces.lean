@@ -39,7 +39,8 @@ theorem originalGamma_trace_of_missing_odd (M : AlgebraData 2)
 theorem originalGamma_three_trace_zero (M : AlgebraData 2)
     (i j k : SpaceIndex) :
     Matrix.trace (M.gamma i * M.gamma j * M.gamma k) = 0 := by
-  obtain ⟨a, ha⟩ := originalGamma_missing_of_length_le_five [i, j, k] (by decide)
+  obtain ⟨a, ha⟩ := originalGamma_missing_of_length_le_five [i, j, k]
+    (by change (3 : ℕ) ≤ 5; decide)
   have ht := originalGamma_trace_of_missing_odd M [i, j, k] a ha (by norm_num)
   simpa only [List.map_cons, List.map_nil, List.prod_cons, List.prod_nil,
     mul_one, mul_assoc] using ht
@@ -47,7 +48,8 @@ theorem originalGamma_three_trace_zero (M : AlgebraData 2)
 theorem originalGamma_five_trace_zero (M : AlgebraData 2)
     (i j k l m : SpaceIndex) :
     Matrix.trace (M.gamma i * M.gamma j * M.gamma k * M.gamma l * M.gamma m) = 0 := by
-  obtain ⟨a, ha⟩ := originalGamma_missing_of_length_le_five [i, j, k, l, m] (by decide)
+  obtain ⟨a, ha⟩ := originalGamma_missing_of_length_le_five [i, j, k, l, m]
+    (by change (5 : ℕ) ≤ 5; decide)
   have ht := originalGamma_trace_of_missing_odd M [i, j, k, l, m] a ha (by norm_num)
   simpa only [List.map_cons, List.map_nil, List.prod_cons, List.prod_nil,
     mul_one, mul_assoc] using ht

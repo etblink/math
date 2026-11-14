@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G1 R2 — staged, strict qualification pending
+
+R1 red checkpoint and closed-numeral repair contract committed at `7417d70876131bb3546f82b9ddec76570afb7e25` before source edit. Only the two local literal-list bounds are explicitly changed to 3<=5 and 5<=5 before decide; original statements and entire native consumer remain fixed. Source `6a019c9111b384e73a05de7b776ac9e5a83c7eb7`, consumer `6cde9e42664eb378136d12cde77989fee628f7d3`, workflow `55fa8248a643404967c1d30bda3737626187a8a8`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean available. Frozen source baseline and strict policy unchanged. **Unqualified pending exact cold source and full native consumer, five/ten reports.**
+
 ## HARDY-G1 R1 — RED, local list-length decide boundary
 
-[Strict #43627438161](https://github.com/etblink/math/actions/runs/43627438161) RED at `a74db0572da9101fcaf12d8dee139350f1301362`: 147-pin preflight/toolchain PASS; source 42:74 and 50:80 rejects decide on open literal-list length propositions. Three standard-axiom reports; three/five final trace roots consequential sorryAx; consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_RED_43627438161_OPEN_LIST_LENGTH_DECIDE_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G1_R1_OPEN_LIST_LENGTH_43627438161_2026_11_14.txt), [R2 contract](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_PRE_GATE_CLOSED_NUMERAL_LENGTH_BOUNDS_2026_11_14.md) preserved. R2 explicitly changes bounds to closed 3<=5 and 5<=5 before decide; consumer and statements fixed. **R2 not staged yet; no new qualification.**
+[Strict #43627438161](https://github.com/etblink/math/actions/runs/43627438161) RED at `a74db0572da9101fcaf12d8dee139350f1301362`: 147-pin preflight/toolchain PASS; source 42:74 and 50:80 rejects decide on open literal-list length propositions. Three standard-axiom reports; three/five final trace roots consequential sorryAx; consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_RED_43627438161_OPEN_LIST_LENGTH_DECIDE_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G1_R1_OPEN_LIST_LENGTH_43627438161_2026_11_14.txt), [R2 contract](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_PRE_GATE_CLOSED_NUMERAL_LENGTH_BOUNDS_2026_11_14.md) preserved. R2 explicitly changes bounds to closed 3<=5 and 5<=5 before decide; consumer and statements fixed. **Historical pre-repair checkpoint; see current R2 launch above.**
 
 ## HARDY-G1 R1 — historical launch (subsequently RED above)
 
