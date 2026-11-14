@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G3 R1 — staged, strict qualification pending
+## HARDY-G3 R1 — RED, three unused simp arguments
+
+[Strict #43636892909](https://github.com/etblink/math/actions/runs/43636892909) RED at `fba4a18f0ad2efa7c9a0b487ddbab5f728b906e2`: 149-pin preflight/toolchain and cold source PASS; fresh strict source rejects unused mul_smul_comm at59/63/66. All five source reports standard axioms; native consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_RED_43636892909_UNUSED_SIMPLIFIER_ARGUMENTS_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G3_R1_UNUSED_MUL_SMUL_COMM_43636892909_2026_11_14.txt), [R2 preregistration](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R2_PRE_GATE_REMOVE_THREE_UNUSED_ARGUMENTS_2026_11_14.md). Sole repair: delete those three unused entries, keep consumer and strict lint fixed. **R2 not staged yet; G3 unqualified.**
+
+## HARDY-G3 R1 — historical launch (subsequently RED above)
 
 [Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_PRE_GATE_ORIGINAL_Y_DERIVATIVE_CONTRACTION_2026_11_14.md) committed at `4a43076d8f940b716e31f96bab8bc514c6fe1731` before source; administrative #43636602473 GREEN. Five roots assemble accepted original Y as native coordinate CLM, identify its literal action and actual fderiv, and contract all nine basis/derivative directions to1/4 gamma_i gamma_j. Twelve original paired-gamma/Boson controls include longitudinal1/16, transverse ninth-axis1/56, swapped plane, base-point zero and probe4/not8. Source `de25bd6dba96e7e2f682fb6e7490b60d430a45a0`, consumer `8fd1ac6d819aaccf9cabe38448813a09c75e59bb`, workflow `18aeef3a6ae51e92361f3d039c06e2baab8110ea`; frozen baseline `64718d564f311b914e629e8bae536327b053ee1f`. Static hash/root/YAML/bash/Python PASS, local Lean unavailable. [Strict #43636892909](https://github.com/etblink/math/actions/runs/43636892909) tests exact `fba4a18f0ad2efa7c9a0b487ddbab5f728b906e2`, job #132575560968; checkout/preflight pending at binding. Administrative #43636892840 is separate. **Unqualified pending complete cold/fresh source and native consumer, five/ten reports.**
 

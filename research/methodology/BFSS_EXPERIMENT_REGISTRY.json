@@ -4447,7 +4447,7 @@
       "id": "E-P3-AUX-HARDY-G3-R1",
       "title": "Actual original Y derivative and coefficient contraction",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_PRE_GATE_ORIGINAL_Y_DERIVATIVE_CONTRACTION_2026_11_14.md",
@@ -4509,7 +4509,83 @@
       "prospective_receipt_commit": "4a43076d8f940b716e31f96bab8bc514c6fe1731",
       "run_id": 43636892909,
       "tested_sha": "fba4a18f0ad2efa7c9a0b487ddbab5f728b906e2",
-      "job_id": 132575560968
+      "job_id": 132575560968,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_RED_43636892909_UNUSED_SIMPLIFIER_ARGUMENTS_2026_11_14.md",
+      "result": {
+        "run_id": 43636892909,
+        "tested_sha": "fba4a18f0ad2efa7c9a0b487ddbab5f728b906e2",
+        "job_id": 132575560968,
+        "manifest_pins": 149,
+        "manifest_hash": "7aa5b88020006a0493b23ca70e823f76acbbb5c20bc7bbff00521db4fd80962b",
+        "cold_source_passed": true,
+        "fresh_source_passed": false,
+        "source_reports_clean": 5,
+        "independent_consumer_reached": false,
+        "first_causal": "Fresh warning-as-error source 59:28,63:30,66:48 rejects unused mul_smul_comm in three nativeY_basis_weight simp lists. Cold source and five standard-axiom reports pass; consumer not reached.",
+        "artifact_id": 14130986858,
+        "artifact_digest": "sha256:9379bdaccf3a4b7748d2d34fb8af27ad267e86fadc9ac1203df7bc5af5eee86b"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G3-R2",
+      "title": "Remove three unused simplifier arguments in original Y derivative proof",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G3_R2_PRE_GATE_REMOVE_THREE_UNUSED_ARGUMENTS_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG3OriginalYDerivativeContractionIndependentConsumer.lean",
+      "consumer_blob": "8fd1ac6d819aaccf9cabe38448813a09c75e59bb",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g3-original-y-derivative-contraction-strict.yml",
+      "roots": [
+        "originalHardyYCLM",
+        "originalHardyYCLM_apply",
+        "originalHardyY_fderiv",
+        "originalHardyY_basis_contraction",
+        "originalHardyY_derivative_contraction"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY",
+        "FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY_trace",
+        "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_square_trace",
+        "OAI.BFSSGamma.gamma_sq",
+        "OAI.BFSSGamma.gamma_anti"
+      ],
+      "stages": {
+        "observation": "Cold source and five standard-axiom reports pass; strict fresh source rejects three unused simp arguments before consumer.",
+        "question": "Does deleting exactly the three flagged redundant arguments satisfy unchanged strict source/native consumer contracts?",
+        "background": [
+          "Exact R1 source logs and 149-pin preflight",
+          "No theorem elaboration error or sorryAx",
+          "Warnings must remain errors"
+        ],
+        "hypothesis": "The simplifier did not use those arguments; removing them preserves proof behavior while satisfying lint.",
+        "falsifiers": [
+          "same warning persists",
+          "new source/native consumer failure",
+          "source statement/control drift",
+          "lint or budget policy weakened"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "three unused mul_smul_comm list entries only"
+          ],
+          "dependent_variables": [
+            "whole source/native consumer compilation",
+            "same five/ten reports and twelve controls"
+          ],
+          "controls": [
+            "consumer byte-identical",
+            "all public definitions/statements fixed",
+            "workflow expected source hash only",
+            "same frozen donors/toolchain/budgets/warning policy"
+          ]
+        },
+        "analysis_plan": "Same exact cold/fresh source/native consumer strict audit; preserve first new causal failure and isolate after two related reds.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete original source AND native consumer acceptance.",
+        "communication": "Proof-list cleanup only; actual derivative and physical conclusions remain unqualified pending full gate."
+      }
     }
   ],
   "allowed_statuses": [
