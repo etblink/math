@@ -55,10 +55,12 @@ example (i j : SpaceIndex) (X : Boson 2) (v : Fermion 2) :
 example (i j : SpaceIndex) (α : SpinIndex) :
     originalHardyTau pairedAlgebraData i j α (0 : Boson 2) = 0 := by
   simp [originalHardyTau, AlgebraData.cliffordLinear, originalHardyY]
+  simp only [zero_smul ℂ, Finset.sum_const_zero]
 
 example (α : SpinIndex) :
     originalPotentialFermion pairedAlgebraData α (0 : Boson 2) = 0 := by
   simp [originalPotentialFermion, AlgebraData.cliffordLinear, originalPotentialGamma]
+  simp only [zero_smul ℂ, Finset.sum_const_zero]
 
 private theorem nativeUnitRowCAR (p : FermionIndex 2) :
     pairedAlgebraData.cliffordLinear (Pi.single p (1 : ℝ)) *
