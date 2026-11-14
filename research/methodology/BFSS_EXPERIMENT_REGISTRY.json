@@ -2079,7 +2079,7 @@
       "id": "E-TD-C1A-D2-STRUCTURAL-EXPR-001",
       "title": "Bounded elaborated expression-tree audit at the two D1 native joins",
       "registered_at": "2026-11-13",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "INCONCLUSIVE",
       "classification": "DIAGNOSTIC_ONLY_NONQUALIFYING",
       "qualified_physical_claim": false,
       "status_scope": "Plan and registry committed before new Lean source/runner/workflow; no mathematical CI launched by the preregistration.",
@@ -2108,7 +2108,7 @@
         "workflow_conclusion": null
       },
       "qualification": false,
-      "conclusion": "Administrative schema repaired at a separately tested commit while D2 diagnostic #43560114891 remains independent. Native TD-C1A RED_UNQUALIFIED.",
+      "conclusion": "D2 collection succeeded but first variable positive control failed due unused-tactic linter and an unresolved witness-type mvar; native expression comparisons not reached. Root obstruction undetermined.",
       "stages": {
         "observation": "D0 #43554665838 direct source axis control compiled while native joins recursed; D1 #43556707461 variable rewrite control passed while two actual-data final exact checks recursed despite matching printed goals. No cause of native elaboration/checking failure is established.",
         "question": "Where do the complete elaborated types of D1's actual native witnesses and post-simplification goals first differ, relative to successful direct and variable-data controls?",
@@ -2157,15 +2157,94 @@
         "communication": "research/top-down-symmetry/TD_C1A_D2_PROSPECTIVE_BOUNDED_EXPRESSION_STRUCTURE_AUDIT_2026_11_13.md"
       },
       "result": {
-        "status": "REGISTERED_NOT_EXECUTED",
+        "status": "INCONCLUSIVE",
+        "classification": "D2_INCONCLUSIVE_INSTRUMENTATION_OR_PREREQUISITE",
+        "execution_status": "COMPLETED_REVIEWED",
         "mathematical_qualification": false,
-        "execution_status": "WORKFLOW_LAUNCHED_IN_PROGRESS",
-        "tested_sha": "4afb0db8f9d2797fe69d8e6adf6b3020ac67a1d6",
         "run_id": 43560114891,
-        "review_status": "NOT_YET_REVIEWED",
-        "source_pins_verified_in_staged_manifest": 14,
-        "warning": "Run launch is not execution success; no compiler or typed-expression findings are inferred."
+        "tested_sha": "4afb0db8f9d2797fe69d8e6adf6b3020ac67a1d6",
+        "workflow_conclusion": "success",
+        "artifact_id": 14099924518,
+        "artifact_digest": "sha256:c7bb149f08a388148bb33f5f2a00c100db945e597d17e3785003cc96be9f22be",
+        "artifact_digest_from_provider": true,
+        "artifact_bytes_independently_rehashed": false,
+        "case_outcomes": {
+          "inspector": "PASS",
+          "core-build": "PASS",
+          "variable-control": "FAIL",
+          "axis-build": "SKIPPED",
+          "direct-axis-control": "SKIPPED",
+          "native-axis-observation": "SKIPPED",
+          "native-evaluation-observation": "SKIPPED"
+        },
+        "reported_variable_comparison": "witness=hw raw_equal=false alpha_equiv=false witness_mvars=true goal_mvars=false first_difference=root: mvar vs metadata witness_node=mvar goal_node=metadata",
+        "first_compiler_error": "diagnostics/BFSSTDC1AD2VariableControl.lean:21:2: error: Unused tactic linter: `td_c1a_d2_compare hw` does nothing",
+        "observed_witness_type_unresolved": true,
+        "native_comparison_obtained": false,
+        "receipt": "research/top-down-symmetry/TD_C1A_D2_GREEN_COLLECTION_CONTROL_FAIL_43560114891_2026_11_13.md",
+        "last_mandatory_stop_rule": "No native axis build or proof attempt after failed variable control; never qualify a theorem from collection green."
       }
+    },
+    {
+      "id": "E-TD-C1A-D2R1-INSTRUMENT-001",
+      "title": "D2 original-Fock typed-witness inspector qualification microgate",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "DIAGNOSTIC_INSTRUMENTATION_ONLY",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "D2 #43560114891 green collection contained a failed variable original-Fock control, unresolved witness type metavariable and unused-tactic linter error; native leaves correctly skipped.",
+        "question": "Can the structural inspector emit fully elaborated raw and metadata-normalized type reports without failing the original-Fock variable-control proof/axiom audit?",
+        "background": [
+          "research/top-down-symmetry/TD_C1A_D2_GREEN_COLLECTION_CONTROL_FAIL_43560114891_2026_11_13.md",
+          "research/top-down-symmetry/TD_C1A_D2R1_INSTRUMENT_ONLY_MICROGATE_PLAN_2026_11_13.md",
+          "Lean v4.34.1 Expr.consumeMData and Tactic getMainTarget; confirmed unused tactic linter option reported by compiler"
+        ],
+        "hypothesis": "Explicitly typed local witness and read-only instantiateMVars eliminate witness_mvars, and narrowly suppressing the diagnostic no-op linter allows successful variable proof and standard-axiom audit.",
+        "falsifiers": [
+          "new source inspector fails compile",
+          "variable positive control fails full -DwarningAsError despite scoped unused-tactic disable",
+          "unresolved metavariable persists in witness/goal after instantiateMVars",
+          "unexpected axiom or missing/duplicate bounded type report"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "explicit witness type",
+            "read-only instantiateMVars",
+            "outer metadata stripping",
+            "narrowly scoped observation-only linter setting"
+          ],
+          "dependent_variables": [
+            "compiler result",
+            "fully instantiated type report",
+            "raw vs metadata-stripped equalities",
+            "standard-axiom report"
+          ],
+          "cases": [
+            "standalone source-inspector compile",
+            "original Core build",
+            "original-Fock variable control only"
+          ],
+          "controls": [
+            "unchanged original Fermion 2",
+            "same operator application simplifications",
+            "no original axis import or build"
+          ]
+        },
+        "analysis_plan": "Stage new diagnostic-only sources and small workflow after preregistration; pass/fail on exact structural report and proof+axioms. Stop before original axis.",
+        "conclusion_rule": "Green collection alone never qualifies D2 or TD-C1A. Only a report with no remaining metavariables plus passing variable root+standard-axioms audits qualifies the instrumentation microgate; otherwise INCONCLUSIVE.",
+        "communication": "research/top-down-symmetry/TD_C1A_D2R1_INSTRUMENT_ONLY_MICROGATE_PLAN_2026_11_13.md"
+      },
+      "implementation": {
+        "preregistration": "research/top-down-symmetry/TD_C1A_D2R1_INSTRUMENT_ONLY_MICROGATE_PLAN_2026_11_13.md",
+        "source": null,
+        "workflow": null,
+        "manifest": null,
+        "run_id": null,
+        "tested_sha": null
+      },
+      "conclusion": "Pre-registered instrumentation-only experiment; no original native operator goal yet tested.",
+      "result": null
     }
   ],
   "allowed_statuses": [

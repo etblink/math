@@ -1823,7 +1823,7 @@
     },
     "d2_structural_expression_diagnostic": {
       "experiment_id": "E-TD-C1A-D2-STRUCTURAL-EXPR-001",
-      "status": "RUNNING_DIAGNOSTIC_NOT_QUALIFIED",
+      "status": "GREEN_COLLECTION_INCONCLUSIVE_CONTROL_FAIL",
       "contract": "research/top-down-symmetry/TD_C1A_D2_PROSPECTIVE_BOUNDED_EXPRESSION_STRUCTURE_AUDIT_2026_11_13.md",
       "manifest": "research/top-down-symmetry/TD_C1A_D2_STRUCTURAL_MANIFEST.json",
       "source_sha": "92e96c1fc566227fe1a4e1f1eb93975669f3a99c",
@@ -1836,12 +1836,17 @@
       "qualification": false,
       "run_id": 43560114891,
       "tested_sha": "4afb0db8f9d2797fe69d8e6adf6b3020ac67a1d6",
-      "next_decision": "Inspect exact D2 control and observation reports before considering any new native proof attempt.",
-      "run_last_observed_status": "in_progress",
-      "conclusion": null
+      "next_decision": "D2R1 original-Fock variable-only instrumentation microgate before any original axis rebuild or native proof attempt.",
+      "run_last_observed_status": "completed",
+      "conclusion": "success",
+      "artifact_id": 14099924518,
+      "artifact_sha256": "c7bb149f08a388148bb33f5f2a00c100db945e597d17e3785003cc96be9f22be",
+      "outcome_classification": "D2_INCONCLUSIVE_INSTRUMENTATION_OR_PREREQUISITE",
+      "positive_control_failure": "unused tactic linter at 21:2 and unresolved witness type mvar; native axis and evaluation skipped",
+      "receipt": "research/top-down-symmetry/TD_C1A_D2_GREEN_COLLECTION_CONTROL_FAIL_43560114891_2026_11_13.md"
     },
     "d2_registry_administrative_repair": {
-      "status": "SUBMITTED_VALIDATION_PENDING",
+      "status": "GREEN_CONSISTENCY_VERIFIED",
       "failed_run_id": 43560215492,
       "failed_tested_sha": "5f155f16c36638bdcc9f1c453e8d9a3995b4cc7e",
       "failed_job_id": 132341996494,
@@ -1851,8 +1856,23 @@
       "repair_commit": "f3d7ce72c6ea0d132cbefc2e9ada272c73e5f45c",
       "repair_scope": "D2 registry status vocabulary and nine stages fields only; no Lean source or D2 frozen manifest changes",
       "repair_qualification": false,
-      "roadmap_ci_run_id": null,
-      "no_d2_retest_or_original_td_proof_retry": true
+      "roadmap_ci_run_id": 43560838888,
+      "no_d2_retest_or_original_td_proof_retry": true,
+      "roadmap_ci_tested_sha": "d33feb2a30f9d0fe69a2694e8135c5b767d3403c",
+      "roadmap_ci_conclusion": "success"
+    },
+    "d2r1_instrumentation_microgate": {
+      "experiment_id": "E-TD-C1A-D2R1-INSTRUMENT-001",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "plan": "research/top-down-symmetry/TD_C1A_D2R1_INSTRUMENT_ONLY_MICROGATE_PLAN_2026_11_13.md",
+      "goal": "prove source-Fock variable positive control and audit bounded type report only",
+      "qualification": false,
+      "excludes": [
+        "original axis build",
+        "TD-C1A all-vector proof",
+        "unbounded defeq",
+        "strict R4 retry"
+      ]
     }
   }
 }
