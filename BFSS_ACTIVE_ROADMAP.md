@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C3D-B R1 — original physical sixteen-charge weighted smooth-core inclusion (STAGED, UNQUALIFIED)
+
+[Prospective gate](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_PROSPECTIVE_SIXTEEN_CHARGE_WEIGHTED_CORE_GRAPH_2026_11_13.md) stages a genuine original AY `PiLp 2` sixteen-output weighted smooth-core column and proves exact `B16ε zε=WithLp.toLp 2 (M.chargeVector f)`. It then uses AU/AY and the accepted RAD-C3 inverse graph to certify original invariant smooth-core inclusion in the weighted physical charge domain. Four exact roots, native independent `pairedAlgebraData/pairedGaugeData` consumer and strict pinned CI. **No new qualification until GREEN.** Next C3D-C physical Haar density separately; no maximal domain or spectral inference.
+
 ## P3-AUX-RAD-C3D-A R1 — STRICT GREEN original compact-core Fock FullL2 range
 
 [Strict #43572123886](https://github.com/etblink/math/actions/runs/43572123886) completed success at `1166eb9f65ec7e23aea702011c99ea9d83871f35`. The genuine original `SmoothCore 2` weighted `FullL2 2` witness and identity `Bε[wεg]=coreToL2 g` are qualified with five roots, independent original Fock consumer and axioms `[propext, Classical.choice, Quot.sound]`. [Acceptance receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3DA_R1_GREEN_43572123886_ORIGINAL_CORE_RANGE_ACCEPTANCE_2026_11_13.md); artifact #14105123313 SHA256 `8787c7a2deea45391211c1f50ae907c652b686daa7ef40bc0128a3344c9194ec`, consistency [#43572123848](https://github.com/etblink/math/actions/runs/43572123848) GREEN. **Next:** RAD-C3D-B actual AY sixteen-charge invariant-core weighted graph inclusion, then RAD-C3D-C source Haar density. This gate is not density or a spectral result.

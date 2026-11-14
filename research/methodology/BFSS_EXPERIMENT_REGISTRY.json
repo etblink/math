@@ -2781,6 +2781,63 @@
       "artifact_digest": "sha256:8787c7a2deea45391211c1f50ae907c652b686daa7ef40bc0128a3344c9194ec",
       "receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C3DA_R1_GREEN_43572123886_ORIGINAL_CORE_RANGE_ACCEPTANCE_2026_11_13.md",
       "scope_boundary": "Original compact smooth-core weighted Fock FullL2 witness and reciprocal range membership; no weighted physical graph domain/density yet."
+    },
+    {
+      "id": "E-P3-AUX-RAD-C3DB-R1",
+      "title": "Original sixteen-charge weighted physical invariant-core graph inclusion",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualified_physical_claim": false,
+      "qualification": false,
+      "classification": "ORIGINAL_PHYSICAL_SOURCE_CANDIDATE_PENDING_STRICT_CI",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraphIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-rad-c3db-original-physical-weighted-core-graph-strict.yml",
+      "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_PROSPECTIVE_SIXTEEN_CHARGE_WEIGHTED_CORE_GRAPH_2026_11_13.md",
+      "roots": [
+        "originalWeightedChargeCoreOutput",
+        "originalWeightedChargeCoreOutput_reciprocal",
+        "originalWeightedChargeCoreGraph_mem",
+        "originalWeightedChargeCore_mem_domain"
+      ],
+      "parent_sha": "2dd2550f31076a89bb8626aadebdc55a1dc1479c",
+      "stages": {
+        "observation": "Accepted C3D-A provides scalar-Fock original core reciprocal range witness; accepted C3 closed weighted physical graph is now available.",
+        "question": "Does the true original sixteen-charge weighted smooth-core output lie in the native closed physical weighted graph?",
+        "background": [
+          "RAD-C3D-A accepted #43572123886 original compact-core output range",
+          "AY original PiLp output equivalence and actual original physical graph",
+          "AU original invariant core graph",
+          "RAD-C3 accepted closed original physical inverse graph"
+        ],
+        "hypothesis": "Coordinatewise weighted witness gives B16ε zε=J.symm (M.chargeVector f), certifying original invariant-core input in weighted domain.",
+        "falsifiers": [
+          "Lean PiLp coordinate defeq fails",
+          "Original AY physical graph/core membership mismatch",
+          "C3 graph proof fails",
+          "Independent original paired consumer or root axioms fail"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "ε>0",
+            "f in original invariant SmoothCore"
+          ],
+          "dependent_variables": [
+            "original PiLp weighted output",
+            "exact sixteen-coordinate cancellation",
+            "weighted physical graph membership",
+            "native weighted domain membership"
+          ],
+          "controls": [
+            "Frozen C3/DA, AY/AU, source Core/G4J",
+            "Lean 4.34.1 Mathlib d13f23b7",
+            "strict four-root and independent original paired consumer"
+          ]
+        },
+        "analysis_plan": "Check cold strict original source/consumer five-or-four-root policy (here exactly four), verify no unexpected axioms; preserve first causal failure.",
+        "conclusion_rule": "Only LEAN_QUALIFIED on exact tested SHA with all four declared roots, native original paired consumer and standard-axiom audit.",
+        "communication": "Do not confuse weighted invariant-core membership with unconditional physical-domain density until separate Haar gate."
+      }
     }
   ],
   "allowed_statuses": [
