@@ -115,6 +115,22 @@ The full auxiliary output space K is ambient sixteen-component L², not sixteen 
 
 **Stop rule:** no new strict CI on this parallel memo, no change to TD-C1A/D2R2, original H, accepted M5BF0/G0B2 or FCP/main; no false "graph domain stability proves gap" promotion. Any proposed source proof needs its own preregistration, source pins, actual-carrier consumer and independent strict audit.
 
+## Pinned Mathlib interface addendum — the finite PiLp square norm is already proved
+
+The exact required finite-output norm identity is *not* an interface to invent. At pinned Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, file `Mathlib/Analysis/Normed/Lp/PiLp.lean` lines 792–796 contains:
+
+```lean
+theorem PiLp.norm_sq_eq_of_L2 (β : ι → Type*)
+    [∀ i, SeminormedAddCommGroup (β i)] (x : PiLp 2 β) :
+    ‖x‖ ^ 2 = ∑ i : ι, ‖x i‖ ^ 2
+```
+
+The exact source AY `originalMinimalHilbertOutputEquiv` uses `PiLp.continuousLinearEquiv 2 ℂ` to identify the sixteen-component PiLp target with the genuine source function-output carrier. Thus the proof of (1) should use **the pinned PiLp.norm_sq_eq_of_L2** after constructing actual L² outputs, rather than hand-building a sixteen-dimensional Euclidean norm.
+
+The pinned `Mathlib/Topology/Algebra/Module/ContinuousLinearMap/PiProd.lean` supplies `ContinuousLinearMap.piMap` (line 268) with application lemma `coe_piMap'` (line 277), but **its domain is a function product**, not the PiLp wrapper. The source AY equivalence `J` is required to transport a componentwise multiplier from the product carrier to the actual Hilbert output. The resulting composition formula and isometry/norm claims must each be independently elaborated; the equivalence is bounded but not automatically an isometry.
+
+`Mathlib/MeasureTheory/Function/LpSpace/Basic.lean` provides `Lp.norm_def`, `Lp.memLp`, and `MemLp.coeFn_toLp` for the underlying genuine L² representatives. The future exact integrability lemma should work with `MemLp`/a.e. equality and **only after** proving membership apply the PiLp squared norm equation. The Mathlib source pin has been inspected; no Lean-specific theorem invocation or compilation of this proposal has yet occurred.
+
 ## 7. What is genuinely new here
 
 Earlier [G0B3 output-multiplier dependency review](P3_AUX_G0B3_OUTPUT_MULTIPLIER_DEPENDENCY_REVIEW_2026_11_13.md) identified source B16 construction, inverse-image graph, and marked positive-ε domain stability as an **open further obligation**. This memorandum isolates an exact `w_ε²=r²+ε²` identity already present in the literal source, derives the regulator-independent maximal weighted domain and simple parameter Lipschitz control, and clarifies that **zero-ε domain equality does not imply zero-ε closedness**. It is conventional operator theory with source-exact input, *not* a new qualified BFSS theorem.
