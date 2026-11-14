@@ -2,7 +2,7 @@
 
 ## P3-AUX-HARDY-X0 R2 — staged, strict qualification pending
 
-R1 red checkpoint and explicit-real-row preregistration committed at `92becdf0535671ba7fe39daf791e9368661b4e63`; administrative #43625158812 GREEN. The sole proof change explicitly types the local unit row as `SpinIndex → ℝ` and its squared sum as ℝ. Consumer byte-identical; workflow only expected source hash changes. Source `82505cfb51e833fdddb97b456812a3a086989f1d`, consumer `1c81d54d3d14c13d0b4bcaddea0a8602d20e73b8`, workflow `5cb529d576127105fb2999cf1c911472d05ed4f7`. Static exact-delta/hash/YAML/bash/embedded-Python checks PASS; no local Lean available. Five/ten strict reports and all native origin/incorrect-coefficient controls still required. **Unqualified pending strict CI.**
+R1 red checkpoint and explicit-real-row preregistration committed at `92becdf0535671ba7fe39daf791e9368661b4e63`; administrative #43625158812 GREEN. The sole proof change explicitly types the local unit row as `SpinIndex → ℝ` and its squared sum as ℝ. Consumer byte-identical; workflow only expected source hash changes. Source `82505cfb51e833fdddb97b456812a3a086989f1d`, consumer `1c81d54d3d14c13d0b4bcaddea0a8602d20e73b8`, workflow `5cb529d576127105fb2999cf1c911472d05ed4f7`. Static exact-delta/hash/YAML/bash/embedded-Python checks PASS; no local Lean available. Five/ten strict reports and all native origin/incorrect-coefficient controls still required. [Strict #43625439216](https://github.com/etblink/math/actions/runs/43625439216) tests exact `6668e4de9fae852b5947afc3d51e8102aea97d9e`, job #132540099559; checkout/preflight pending at binding. Administrative #43625439235 is separate. **Unqualified pending strict CI.**
 
 ## P3-AUX-HARDY-X0 R1 — RED, local real unit-row inference
 
