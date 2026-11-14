@@ -1,10 +1,14 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G1 R1 — staged, strict qualification pending
+
+[Prospective source contract](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_PRE_GATE_NATIVE_ODD_GAMMA_TRACES_2026_11_14.md) committed at `3d2e0c3c41b059a87a9aaf2d08a58fd6478185d3` before source; administrative #43627202050 GREEN. Five roots cover a missing label for lists of <=5, odd-conjugation trace cancellation, literal ordered three/five gamma traces with repeats allowed, and even square trace16. Ten actual native paired examples include an explicit unused ninth label, repeated triple, five-factor product and square nonzero. Source `7172ba68d2b95475a4f0b4383a8996ba3da40bb9`, consumer `6cde9e42664eb378136d12cde77989fee628f7d3`, workflow `cbf9c3fadf761c54c1a92b384003c093b1d56e60`; reviewed OAI baseline `321a49fb29de3ab55d41bf35f54e1fcfdfa6eaea`. Static hash/root/YAML/bash/embedded-Python checks PASS; Lean unavailable locally. **Unqualified pending full cold/fresh source and native consumer with five/ten strict reports.**
+
 ## HARDY-X0 R2 — accepted; HARDY-G1 next source-algebra obligation
 
 [Strict #43625439216](https://github.com/etblink/math/actions/runs/43625439216) GREEN at `6668e4de9fae852b5947afc3d51e8102aea97d9e`: complete cold source and actual native consumer, five/ten ordered standard-axiom reports, 147 pins, manifest `e7ead1e900cfe795a3a9ca2ed98c1ffb928e4104524783093f604b62574dd6bd`; origin and incorrect-factor-16 controls PASS. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_X0_R2_GREEN_43625439216_ORIGINAL_XI_NORM_CUTOFF_ACCEPTANCE_2026_11_14.md). Xi source norm coefficients and actual cutoff coupling qualified; full Hardy/fidelity remains open.
 
-[HARDY-G1 prospective gate](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_PRE_GATE_NATIVE_ODD_GAMMA_TRACES_2026_11_14.md) selects original ordered three/five gamma trace cancellation via existing GammaWords conjugation and an unused one of nine labels; repeated labels allowed, even square trace16/nonzero controls required. Generic/current source review replaces unavailable historical probe-path assumptions. **G1 not staged yet.**
+[HARDY-G1 prospective gate](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_PRE_GATE_NATIVE_ODD_GAMMA_TRACES_2026_11_14.md) selects original ordered three/five gamma trace cancellation via existing GammaWords conjugation and an unused one of nine labels; repeated labels allowed, even square trace16/nonzero controls required. Generic/current source review replaces unavailable historical probe-path assumptions. **Historical pre-gate status; see current G1 launch above.**
 
 ## P3-AUX-HARDY-X0 R2 — historical launch (accepted above)
 
