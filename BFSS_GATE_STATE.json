@@ -745,7 +745,16 @@
     "recent_red_run_id": 43489563142,
     "recent_red_tested_sha": "b54bb9e3b62bf4012a6cad441627c77e1ace7e1b",
     "recent_red_causal": "Full 5,178-char M5BE0 prospective memo accidentally serialized as path in four checkpoint fields; Path(...).is_file raised Errno 36; unrelated to mathematical CI.",
-    "recent_admin_receipt": "research/spectral-p2-original-field/P3_M5BE0_ADMIN_R1_RED_43489563142_MEMO_TEXT_PATH_2026_11_13.md"
+    "recent_admin_receipt": "research/spectral-p2-original-field/P3_M5BE0_ADMIN_R1_RED_43489563142_MEMO_TEXT_PATH_2026_11_13.md",
+    "g0b3_registry_schema_repair_20261113": {
+      "classification": "ADMIN_ONLY_NOT_MATHEMATICAL_RED",
+      "status": "REPAIR_STAGED_PENDING_ROADMAP_PASS",
+      "failing_run_id": 43566600912,
+      "failing_tested_sha": "fb8093b2145d0467782ce2f055f350d91805fe67",
+      "first_cause": "KeyError 'stages' in tools/check_bfss_roadmap.py because newly appended G0B3 registry entry lacked the nine required scientific-method stages",
+      "fix": "Populate missing nine stages and qualified_physical_claim false, without altering experiment verdict, G0B3 theorem files or RAD-C2A source.",
+      "scope": "Checkpoint consistency only; G0B3 source-and-consumer strict run #43565346269 independently passed"
+    }
   },
   "m5_port0_preparation": {
     "date": "2026-11-13",
