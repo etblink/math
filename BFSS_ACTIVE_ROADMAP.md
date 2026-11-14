@@ -1,10 +1,14 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G2 R1 — staged, strict qualification pending
+
+[Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_PRE_GATE_ORIGINAL_PLANE_COEFFICIENT_TRACE_2026_11_14.md) committed at `f5d100803637be529a06018b3e74cc7b721085cd` before source; administrative #43630888116 GREEN. Five roots identify native gamma pair/triple transpose/trace, literal original Y and its gamma trace contraction. Eleven actual paired-gamma/Boson examples include both basis-axis orientations, swapped plane, origin and wrong-sign rejection. Source `fb5ecf36b4a475d9c4b7b23b961412665ce5a860`, consumer `f53612702cbf1b69c5ced0463baf17bb15dbf209`, workflow `2a27ab3959bde62cbc5322637729fe08b8ffd957`; reviewed OAI baseline `3645cdc05202abefd0b5a9533a4daa1ca45fdf6d`. Static hash/root/YAML/bash/Python checks PASS; no local Lean available. **Unqualified pending full cold/fresh source and native consumer, five/ten reports.** Trace alone does not determine transverse coefficient 1/56; derivative/norm/anticommutator gates remain separate.
+
 ## HARDY-G1 R2 — accepted; original plane coefficient trace next
 
 [Strict #43628804541](https://github.com/etblink/math/actions/runs/43628804541) GREEN at `5f03f53ea3478dcaf1b70cbeda4557c88876d843`: complete original source and native consumer, five/ten standard-axiom reports, 147 pins, manifest `b37ae1a42e260a4fb2d26c9d4932f4fd79847c77eb1dc86ebc76868c21fab654`. Odd three/five traces include repeats; omitted ninth label and nonzero even-square controls PASS. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_GREEN_43628804541_NATIVE_ODD_GAMMA_TRACES_ACCEPTANCE_2026_11_14.md).
 
-[HARDY-G2 pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_PRE_GATE_ORIGINAL_PLANE_COEFFICIENT_TRACE_2026_11_14.md) selects the literal original Y coefficient and first gamma trace contraction in B.7, using existing list transpose and symmetric/skew trace; no four-word trace table rebuild. Eleven original native examples, two basis orientations and wrong-sign rejection. Derivative contraction, tau norm/anticommutator and physical Hardy remain separate. **G2 not staged yet.**
+[HARDY-G2 pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_PRE_GATE_ORIGINAL_PLANE_COEFFICIENT_TRACE_2026_11_14.md) selects the literal original Y coefficient and first gamma trace contraction in B.7, using existing list transpose and symmetric/skew trace; no four-word trace table rebuild. Eleven original native examples, two basis orientations and wrong-sign rejection. Derivative contraction, tau norm/anticommutator and physical Hardy remain separate. **Historical preregistration status; see current launch above.**
 
 ## HARDY-G1 R2 — historical launch (accepted above)
 
