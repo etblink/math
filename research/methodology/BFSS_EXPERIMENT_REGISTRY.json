@@ -4191,7 +4191,7 @@
       "id": "E-P3-AUX-HARDY-G2-R1",
       "title": "Original plane coefficient Y gamma trace contraction",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_PRE_GATE_ORIGINAL_PLANE_COEFFICIENT_TRACE_2026_11_14.md",
@@ -4254,7 +4254,83 @@
       "prospective_receipt_commit": "f5d100803637be529a06018b3e74cc7b721085cd",
       "run_id": 43631150630,
       "tested_sha": "7d262f2df1b701b91756c9a00cb8ad237d456420",
-      "job_id": 132557819255
+      "job_id": 132557819255,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_RED_43631150630_DEPRECATED_IF_NEG_2026_11_14.md",
+      "result": {
+        "run_id": 43631150630,
+        "tested_sha": "7d262f2df1b701b91756c9a00cb8ad237d456420",
+        "job_id": 132557819255,
+        "manifest_pins": 148,
+        "manifest_hash": "803d6f94f8b788138b721a8b4d548c69604f6b4bd1eed3325fbba13e87d7e70f",
+        "cold_source_passed": true,
+        "fresh_source_passed": false,
+        "source_reports_clean": 5,
+        "independent_consumer_reached": false,
+        "first_causal": "Fresh warning-as-error source 21:8: deprecated if_neg; compiler directs ite_eq_right. Cold source build and five allowed-axiom reports pass; consumer not reached.",
+        "artifact_id": 14128198644,
+        "artifact_digest": "sha256:c0edfcb150542e1cd2e93d9e3cc091ac95f3adc2aa16e9fe7cbea2ebdfd83eff"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G2-R2",
+      "title": "Current conditional rewrite lemma for original coefficient trace",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G2_R2_PRE_GATE_CURRENT_ITE_REWRITE_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG2OriginalPlaneCoefficientTraceIndependentConsumer.lean",
+      "consumer_blob": "f53612702cbf1b69c5ced0463baf17bb15dbf209",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g2-original-plane-coefficient-trace-strict.yml",
+      "roots": [
+        "originalGamma_pair_trace",
+        "originalGamma_three_transpose",
+        "originalGamma_trace_mul_three_distinct",
+        "originalHardyY",
+        "originalHardyY_trace"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_square_trace",
+        "OAI.BFSSGamma.gamma_anti",
+        "OAI.BFSSGamma.list_reverse_eq",
+        "OAI.BFSSGamma.list_transpose",
+        "OAI.BFSSGamma.trace_skew_symm"
+      ],
+      "stages": {
+        "observation": "Cold source and five allowed-axiom reports pass; warning-as-error source rejects deprecated if_neg, before consumer.",
+        "question": "Does replacing only if_neg with compiler-prescribed ite_eq_right complete strict source checking under unchanged contracts?",
+        "background": [
+          "Exact R1 logs and 148-pin preflight",
+          "Current frozen GammaWords already uses ite_eq_right hij",
+          "No mathematical theorem error or sorryAx report"
+        ],
+        "hypothesis": "Current conditional rewrite lemma preserves the proof while eliminating the sole observed deprecated-name warning.",
+        "falsifiers": [
+          "same warning/error persists",
+          "new source or consumer failure",
+          "consumer/statement/control drift",
+          "warning policy weakened"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "one lemma-name substitution in source proof"
+          ],
+          "dependent_variables": [
+            "complete strict source/native consumer",
+            "same five/ten reports and eleven controls"
+          ],
+          "controls": [
+            "consumer byte-identical",
+            "all source theorem/definition statements fixed",
+            "workflow expected source hash only",
+            "same baseline/toolchain/warning policy and budgets"
+          ]
+        },
+        "analysis_plan": "Same cold/fresh exact source and native consumer audit; preserve new causal failure and isolate after two related reds.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete original source/native consumer strict acceptance.",
+        "communication": "Deprecated-name repair only; no derivative/tau/Hardy or spectral promotion."
+      }
     }
   ],
   "allowed_statuses": [

@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G2 R1 — staged, strict qualification pending
+## HARDY-G2 R1 — RED, strict deprecated-lemma check
+
+[Strict #43631150630](https://github.com/etblink/math/actions/runs/43631150630) RED at `7d262f2df1b701b91756c9a00cb8ad237d456420`: 148-pin preflight/toolchain and cold build PASS; fresh warning-as-error source rejects deprecated if_neg at 21:8. Five clean standard-axiom reports, no sorryAx; native consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_RED_43631150630_DEPRECATED_IF_NEG_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G2_R1_DEPRECATED_IF_NEG_43631150630_2026_11_14.txt), [R2 prospective repair](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R2_PRE_GATE_CURRENT_ITE_REWRITE_2026_11_14.md) preserved. Sole R2 change: compiler-prescribed ite_eq_right, already used in current GammaWords. Consumer and strict warning policy fixed. **R2 not staged yet; G2 unqualified.**
+
+## HARDY-G2 R1 — historical launch (subsequently RED above)
 
 [Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_PRE_GATE_ORIGINAL_PLANE_COEFFICIENT_TRACE_2026_11_14.md) committed at `f5d100803637be529a06018b3e74cc7b721085cd` before source; administrative #43630888116 GREEN. Five roots identify native gamma pair/triple transpose/trace, literal original Y and its gamma trace contraction. Eleven actual paired-gamma/Boson examples include both basis-axis orientations, swapped plane, origin and wrong-sign rejection. Source `fb5ecf36b4a475d9c4b7b23b961412665ce5a860`, consumer `f53612702cbf1b69c5ced0463baf17bb15dbf209`, workflow `2a27ab3959bde62cbc5322637729fe08b8ffd957`; reviewed OAI baseline `3645cdc05202abefd0b5a9533a4daa1ca45fdf6d`. Static hash/root/YAML/bash/Python checks PASS; no local Lean available. [Strict #43631150630](https://github.com/etblink/math/actions/runs/43631150630) tests exact `7d262f2df1b701b91756c9a00cb8ad237d456420`, job #132557819255; checkout/preflight pending at binding. Administrative #43631150462 is separate. **Unqualified pending full cold/fresh source and native consumer, five/ten reports.** Trace alone does not determine transverse coefficient 1/56; derivative/norm/anticommutator gates remain separate.
 
