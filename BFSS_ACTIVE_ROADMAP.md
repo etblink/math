@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C2B — sixteen-output native reciprocal candidate (UNQUALIFIED)
+
+[Prospective R1 gate](research/spectral-p2-original-field/P3_AUX_RAD_C2B_R1_PROSPECTIVE_NATIVE_SIXTEEN_OUTPUT_RECIPROCAL_LIFT_2026_11_13.md) stages `B16` on true original AY `PiLp 2 (fun _ : SpinIndex => FullL2 2)`, via `ContinuousLinearMap.piMap` conjugated by AY `originalMinimalHilbertOutputEquiv`; three roots cover the bounded map, exact original charge-output coordinates and injectivity. Source, native output consumer and strict pinned workflow staged. **No new theorem qualification until strict GREEN.** RAD-C2A/G0B3 remain accepted; next if GREEN is RAD-C3 actual original AY inverse-image closed graph.
+
 ## P3-AUX-RAD-C2A — STRICT GREEN accepted reciprocal injectivity
 
 [Run #43566927415](https://github.com/etblink/math/actions/runs/43566927415) completed success at exact tested `656535418ed12198360ded1deefc5f5647993f7d`; [accepted source/consumer evidence](research/spectral-p2-original-field/P3_AUX_RAD_C2A_R1_GREEN_43566927415_ACCEPTANCE_2026_11_13.md). The native `Function.Injective (originalReciprocalFullL2CLM hε)` for `ε>0` is now qualified on genuine original `FullL2 2`, axioms `[propext, Classical.choice, Quot.sound]`; evidence artifact #14102703049, `sha256:30dc8fc4b9b9b1d7b700d6c3e9df30cade0728825e9c1fc229339e4a36c48106`. Administrative roadmap-consistency repair also GREEN [#43567044249](https://github.com/etblink/math/actions/runs/43567044249). **Next: RAD-C2B true sixteen-component PiLp output lift.** No bounded inverse, weighted-domain closure or auxiliary gap implied.
