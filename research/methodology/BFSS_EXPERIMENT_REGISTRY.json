@@ -2010,7 +2010,7 @@
       "id": "E-TD-C1A-D1-APPLICATION-NORMALIZATION-001",
       "title": "Explicit public application equalities at original Fock native joins",
       "registered_at": "2026-11-13",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "FALSIFIED",
       "classification": "DIAGNOSTIC_ONLY",
       "qualified_physical_claim": false,
       "stages": {
@@ -2044,9 +2044,9 @@
         "communication": "research/top-down-symmetry/TD_C1A_D1_PROSPECTIVE_EXPLICIT_APPLICATION_NORMALIZATION_2026_11_13.md"
       },
       "result": {
-        "status": "REGISTERED_NOT_EXECUTED",
+        "status": "FALSIFIED",
         "mathematical_qualification": false,
-        "execution_status": "IN_PROGRESS",
+        "execution_status": "COMPLETED_REVIEWED",
         "workflow": ".github/workflows/bfss-td-c1a-d1-explicit-application-diagnostic.yml",
         "manifest": "research/top-down-symmetry/TD_C1A_D1_APPLICATION_MANIFEST.json",
         "implementation_receipt": "research/top-down-symmetry/TD_C1A_D1_IMPLEMENTATION_LOCAL_REVIEW_2026_11_13.md",
@@ -2054,7 +2054,25 @@
         "local_checks": "AST/JSON/YAML; six simulated scenarios; inherited audit rejection fixtures pass. No local Lean compilation.",
         "run_id": 43556707461,
         "tested_sha": "8aefe4c7ed19ec76be9f074a3cfcc55bbb5073d6",
-        "implementation_commit": "8aefe4c7ed19ec76be9f074a3cfcc55bbb5073d6"
+        "implementation_commit": "8aefe4c7ed19ec76be9f074a3cfcc55bbb5073d6",
+        "conclusion": "success",
+        "receipt": "research/top-down-symmetry/TD_C1A_D1_GREEN_COLLECTION_TWO_NATIVE_JOINS_RED_43556707461_2026_11_13.md",
+        "artifact_id": 14098179924,
+        "artifact_digest": "sha256:15655719ea0fa7cae9bc1eeab21a00f21ab715773f170e710a16ae5240eba3dc",
+        "artifact_digest_verified": true,
+        "classification": "EXPLICIT_NATIVE_JOIN_OBSTRUCTED",
+        "case_outcomes": {
+          "frozen-generic": "PASS",
+          "core-build": "PASS",
+          "frozen-native-helper": "PASS",
+          "variable-control": "PASS",
+          "axis-build": "PASS",
+          "explicit-axis-lift": "FAIL",
+          "explicit-conditional-evaluation": "FAIL"
+        },
+        "hypothesis_result": "EXPLICIT_NORMALIZATION_REPAIR_FALSIFIED_FOR_TESTED_CONSTRUCTION",
+        "falsification_scope": "Tested explicit-normalization repair only; no mathematical covariance theorem is refuted.",
+        "automatic_retry_halted": true
       }
     }
   ],

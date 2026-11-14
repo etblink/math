@@ -1,0 +1,141 @@
+{
+  "experiment_id": "E-TD-C1A-D1-APPLICATION-NORMALIZATION-001",
+  "qualification": false,
+  "td_c1a_status": "RED_UNQUALIFIED",
+  "collection_finished": true,
+  "classification": "EXPLICIT_NATIVE_JOIN_OBSTRUCTED",
+  "conditional_evaluation_assumes_operator_identity": true,
+  "cases": {
+    "frozen-generic": {
+      "status": "PASS",
+      "returncode": 0,
+      "audit": "named roots and standard axioms checked",
+      "command": [
+        "timeout",
+        "--kill-after=10s",
+        "90s",
+        "lake",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-o",
+        "/home/runner/work/math/math/lean/.lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4FockOperatorEvaluationInterface.olean",
+        "OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4FockOperatorEvaluationInterface.lean"
+      ],
+      "seconds": 9.687,
+      "log": "frozen-generic.log",
+      "sha256": "d7279ab3a21576a56b3db779ad9c468ed667623f5bfacae28b58c4a95b090ede"
+    },
+    "core-build": {
+      "status": "PASS",
+      "returncode": 0,
+      "audit": "dependency build completed",
+      "command": [
+        "timeout",
+        "--kill-after=10s",
+        "900s",
+        "lake",
+        "build",
+        "OAI.MathematicalPhysics.BFSS.Core"
+      ],
+      "seconds": 27.444,
+      "log": "core-build.log",
+      "sha256": "c7fb1b52451fbe7eed943b2c4c0a87607601204159e1d27deb893597ec405e46"
+    },
+    "frozen-native-helper": {
+      "status": "PASS",
+      "returncode": 0,
+      "audit": "named roots and standard axioms checked",
+      "command": [
+        "timeout",
+        "--kill-after=10s",
+        "90s",
+        "lake",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "-o",
+        "/home/runner/work/math/math/lean/.lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AD0NativeCarrierEvaluationInterface.olean",
+        "OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AD0NativeCarrierEvaluationInterface.lean"
+      ],
+      "seconds": 14.148,
+      "log": "frozen-native-helper.log",
+      "sha256": "5b6b9776cafe53e46e92b14311234be0a156ce3c2ac3d4632d91f70e4e912d83"
+    },
+    "variable-control": {
+      "status": "PASS",
+      "returncode": 0,
+      "audit": "named roots and standard axioms checked",
+      "command": [
+        "timeout",
+        "--kill-after=10s",
+        "90s",
+        "lake",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "diagnostics/BFSSTDC1AD1VariableApplicationControl.lean"
+      ],
+      "seconds": 13.949,
+      "log": "variable-control.log",
+      "sha256": "2205593d6864b29b3fdaa5ba2ccbd74890d5c7ffbbfddfdbaeaf634338ab8848"
+    },
+    "axis-build": {
+      "status": "PASS",
+      "returncode": 0,
+      "audit": "dependency build completed",
+      "command": [
+        "timeout",
+        "--kill-after=10s",
+        "3000s",
+        "lake",
+        "build",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.C48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner"
+      ],
+      "seconds": 760.881,
+      "log": "axis-build.log",
+      "sha256": "2d4a50cb8be2088a75656f570a893b67790d10b8b83757f8934014bc4a31fd7d"
+    },
+    "explicit-axis-lift": {
+      "status": "FAIL",
+      "returncode": 1,
+      "audit": "compiler error or unqualified axiom in log",
+      "command": [
+        "timeout",
+        "--kill-after=10s",
+        "90s",
+        "lake",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "diagnostics/BFSSTDC1AD1ExplicitAxisLift.lean"
+      ],
+      "seconds": 13.761,
+      "log": "explicit-axis-lift.log",
+      "sha256": "ea1664d64509586924427f405b750df587be88ecae3953526af200e5fd57f49a"
+    },
+    "explicit-conditional-evaluation": {
+      "status": "FAIL",
+      "returncode": 1,
+      "audit": "compiler error or unqualified axiom in log",
+      "command": [
+        "timeout",
+        "--kill-after=10s",
+        "90s",
+        "lake",
+        "env",
+        "lean",
+        "-DautoImplicit=false",
+        "-DwarningAsError=true",
+        "diagnostics/BFSSTDC1AD1ExplicitConditionalEvaluation.lean"
+      ],
+      "seconds": 13.897,
+      "log": "explicit-conditional-evaluation.log",
+      "sha256": "aeac80ba582ec284ad142ca02ebd2d073b2f1f6df2c5c74c1e91604745916e06"
+    }
+  }
+}
