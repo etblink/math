@@ -1,6 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G2 R3 — staged, explicit original color-zero boundary
+## HARDY-G2 R3 — accepted; derivative contraction source review next
+
+[Strict #43634684249](https://github.com/etblink/math/actions/runs/43634684249) GREEN at `412da2700fb35f095991ae5a1a827f303093d4ba`: full original source and native consumer, five/ten standard-axiom reports, eleven controls, 148 pins, manifest `d607fff042cdd933839a7b7965fca6742ad5844e956eaf2c454cf5d60a389d26`. Both coordinate axes, swapped plane, origin and wrong-sign rejection PASS. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R3_GREEN_43634684249_ORIGINAL_PLANE_COEFFICIENT_TRACE_ACCEPTANCE_2026_11_14.md). Source trace contraction qualified; R1/R2 negatives preserved.
+
+Next source review: assemble the same Y as a continuous linear coordinate map and consume its basis values to prove the actual derivative contraction. This is where the transverse1/56 coefficient must enter independently of the trace theorem. **No next source staged yet; no derivative/tau or physical Hardy qualification.**
+
+## HARDY-G2 R3 — historical launch (accepted above)
 
 R2 checkpoint and prospective repair committed at `41ba0f94a9b7be52ad60fdebe8f57249c57a684f` before consumer edit. Source byte-identical `952890f8056c2b115d69a03c08c39762210c1a0b`. One private nativeColorZero : ColorIndex2 uses explicit Fin value0 with closed0<3 proof; six concrete color numeral positions in three basis/sign controls now use it. All eleven examples and conclusions retained. Consumer `7b612a3a537d2735127cb2e4b6f382d8baf60053`, workflow `667235af3c54dc812a3e072c4060d1ccb9bc9bf1`; workflow changes only expected consumer hash and exact basis strings for same color value. Static exact-delta/hash/root/YAML/bash/Python PASS; local Lean unavailable. [Strict #43634684249](https://github.com/etblink/math/actions/runs/43634684249) tests exact `412da2700fb35f095991ae5a1a827f303093d4ba`, job #132568784271; checkout/preflight pending at binding. Administrative #43634684381 is separate. **Unqualified pending full original source and native consumer, five/ten reports.** Repeated color boundary => Core-only minimal diagnostic.
 
