@@ -54,3 +54,7 @@ Freeze every existing transitive OAI source to reviewed 926f017b629ce9327e4c6f91
 Wrong ratio orientation, positivity dropped, one-order bound advertised general, surrogate configuration/measure, AE mistaken for pointwise equality, failed native controls, source drift, warning or disallowed axiom blocks qualification. Compiler red is RED_UNQUALIFIED, not mathematical falsification; preserve first causal evidence before bounded repair; after two related reds isolate the interface.
 
 GREEN qualifies scalar/L-infinity only. No FullL2/PiLp ratio action, common charge/Hamiltonian domain, form order, resolvent, epsilon zero, zero-mode existence, Hardy/gap or paper-source promotion. No numerical sampling or mathematical Python experiment.
+
+## Exact launch binding — 2026-11-14 Pacific
+
+Pre-gate receipt and C4C acceptance checkpoint committed at `1b22f133ac68fb18d80392685d7db9ebaf01dbc1` before new source. [Strict #43591940771](https://github.com/etblink/math/actions/runs/43591940771) tests exact `aee1979bc64e90cca0f75e67e3341c0bc8bc5d93`, job #132438328870. Source `eabd26ec2a72043e622d634a6366f4b3ed5eaf77`, consumer `8e276ff96ce82e7b5fe4fd81ec5bb37241142193`, workflow `c2b7e9f0dadcd53c0f6c785d50c4fc90a2110c85`. Checkout/preflight pending at binding. Administrative #43591940743 separate. **UNQUALIFIED pending exact cold source/consumer and axiom audit.**
