@@ -1568,7 +1568,7 @@
     },
     "r4_interface_probe": {
       "experiment_id": "E-TD-C1A-R4-P0P1-R2",
-      "status": "PENDING_INTERFACE_CI_UNQUALIFIED",
+      "status": "RED_INTERFACE_UNQUALIFIED",
       "qualification": false,
       "run_id": 43549082375,
       "generic_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.lean",
@@ -1584,13 +1584,17 @@
       "previous_red_run_id": 43546806160,
       "previous_red_receipt": "research/top-down-symmetry/TD_C1A_R4_P0P1_RED_43546806160_FIRST_CAUSAL_2026_11_13.md",
       "full_strict_r4_launched": false,
-      "next_decision": "Await exact focused generic/evaluation/native stage receipt. GREEN means feasibility only; native recursion RED forces renewed architecture review.",
+      "next_decision": "Explicitly import pinned Analysis.Normed.Module.Basic; repin only generic evaluation helper. Preserve proof bodies and native candidate.",
       "candidate_sha": "57e64b3183f8605faf0cc1f824f940f1f6254747",
       "tested_sha": "57e64b3183f8605faf0cc1f824f940f1f6254747",
       "workflow_blob": "2a8598584cd9c59067fddcaf8eab4da0e71be674",
-      "last_observed_run_status": "in_progress",
+      "last_observed_run_status": "completed",
       "red_checkpoint_consistency_run_id": 43548764350,
-      "red_checkpoint_consistency_conclusion": "success"
+      "red_checkpoint_consistency_conclusion": "success",
+      "conclusion": "failure",
+      "red_receipt": "research/top-down-symmetry/TD_C1A_R4_INTERFACE_R2_RED_43549082375_MISSING_NORMED_MODULE_IMPORT_2026_11_13.md",
+      "artifact_id": 14094964796,
+      "artifact_digest": "sha256:2b3740a485dcddcfc1396cb7c71dfdeca841859dd2e9f3678f0b726afdccc4d9"
     },
     "r4_donor_provenance_audit": {
       "date": "2026-11-13",
@@ -1635,6 +1639,28 @@
       "original_axis_prerequisite": "COMPILED",
       "first_causal": "P1 29:15 RingHom.id scalar annotation unresolved; 46:4 native pointwise-to-operator boundary recurses; 86:2 native operator-to-pointwise boundary recurses. P0 abstract proof compiles but has deprecated import warning; late final audit not reached.",
       "qualification": false
+    },
+    "r4_interface_r2_red": {
+      "run_id": 43549082375,
+      "tested_sha": "57e64b3183f8605faf0cc1f824f940f1f6254747",
+      "job_id": 132307116768,
+      "status": "RED_UNQUALIFIED",
+      "conclusion": "failure",
+      "artifact_id": 14094964796,
+      "artifact_size_bytes": 6763,
+      "artifact_digest": "sha256:2b3740a485dcddcfc1396cb7c71dfdeca841859dd2e9f3678f0b726afdccc4d9",
+      "artifact_digest_verified": true,
+      "receipt": "research/top-down-symmetry/TD_C1A_R4_INTERFACE_R2_RED_43549082375_MISSING_NORMED_MODULE_IMPORT_2026_11_13.md",
+      "raw_evidence": "research/top-down-symmetry/evidence/TD_C1A_R4_INTERFACE_R2_43549082375/",
+      "generic_evaluation_blob": "df617aa024e3890465a098b4c339765a8e7f6d15",
+      "native_blob": "241dada0969f9f3f2c762b93e15d6e751bac637f",
+      "workflow_blob": "2a8598584cd9c59067fddcaf8eab4da0e71be674",
+      "P0": "COMPILER_AND_IMMEDIATE_AUDIT_PASS",
+      "P0B": "MISSING_NORMED_MODULE_IMPORT",
+      "original_axis_build": "SKIPPED",
+      "native_probe": "SKIPPED",
+      "qualification": false,
+      "first_causal": "Generic evaluation source 13:24 Unknown identifier NormedField; failed variable declaration causes subsequent unknown E/scalar/universe diagnostics. No native Fock experiment reached."
     }
   }
 }
