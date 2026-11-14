@@ -1,6 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G4 R1 — staged, potential/Y scalar coefficient cancellation
+## HARDY-G4 R1 — accepted; next cut is original Fock CAR compression
+
+[Strict #43642981119](https://github.com/etblink/math/actions/runs/43642981119) GREEN at `615fb54c19668f8e82fd539546d4d79dde37a5ef`: complete source/native consumer, six/eleven standard-axiom reports, twelve controls, 149 pinned paths, manifest `8b409c55eba5fcab1f111ff1e91f5a96923a1ae81b1e3e670a67931232a9ec84`. Original potential/Y trace and correct same-index scalar pairing qualified. [Acceptance and five-gate review](research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_GREEN_43642981119_ORIGINAL_POTENTIAL_Y_CANCELLATION_ACCEPTANCE_2026_11_14.md).
+
+X0/G1–G4 form a coherent finite/core-coefficient input package. Next: use original cliffordLinear_mixed to lift scalar cancellation to pointwise original Fock operators. Literal Core charge-potential identification, full tau/rotation identity, tau norm and physical Hardy remain separate. **No next proof staged yet.**
+
+## HARDY-G4 R1 — historical launch (accepted above)
 
 [Prospective contract](research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_PRE_GATE_ORIGINAL_POTENTIAL_Y_COEFFICIENT_CANCELLATION_2026_11_14.md) committed at `dacd10ed306b1b82d0fc153ad509229597c06853` before proof source; administrative #43642725706 GREEN. Six roots qualify gammaTwo/Y trace, original potential matrix/literal entries, transpose sign, trace and actual same-index scalar pairing. Twelve native examples include diagonal-color sum, diagonal gammaTwo, origin and nonzero first-gamma/Y probe. Source `b2a482d0817fd39e7437a77d66d8f911c7073de3`, consumer `85b1897f300a82aa140cd33c2f6db0ec12c4357b`, workflow `0ad80b38c7620680e4280267c061fb4c3bcee179`; frozen OAI baseline `9a67c63087bc37ee6c6c19fcf76641c0437794fe`. Static hash/root/YAML/bash/Python PASS; local Lean unavailable. [Strict #43642981119](https://github.com/etblink/math/actions/runs/43642981119) tests exact `615fb54c19668f8e82fd539546d4d79dde37a5ef`, job #132594420689; checkout/preflight pending at binding. Administrative #43642981091 is separate. **Unqualified pending complete cold/fresh source and native consumer, six/eleven reports.** Source Fock/core CAR compression remains separate.
 
