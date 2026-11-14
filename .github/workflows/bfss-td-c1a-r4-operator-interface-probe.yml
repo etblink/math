@@ -1,0 +1,118 @@
+name: BFSS TD-C1A R4 focused operator interface probe
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-td-c1a-r4-operator-interface-probe.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.lean
+      - lean/diagnostics/BFSSTDC1AR4NativeOperatorInterfaceProbe.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  operator-interface:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 96
+          persist-credentials: false
+      - name: Freeze source and toolchain evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p bfss-td-c1a-r4-interface-evidence
+          git rev-parse HEAD > bfss-td-c1a-r4-interface-evidence/tested-sha.txt
+          python3 - <<'PY'
+          import json,pathlib,re,subprocess
+          d=pathlib.Path("bfss-td-c1a-r4-interface-evidence")
+          pins=json.loads("{\"lean/OAI/MathematicalPhysics/BFSS/Core.lean\":\"9882359ced78b0a3bd7e2f057974bd0a031b3e60\",\"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner.lean\":\"4d418ade58f8c3c1d998f623f5a5697723cb3d29\",\"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean\":\"4c9a7d183e65d13b33ab9694653f3e0a74741747\",\"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C6COriginalFockActiveGammaCovariance.lean\":\"2d6f777568b0026737112ff8256e5ed50fc9e6e6\",\"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1HSourceGaugeCovariantImplementerUniquenessProbe.lean\":\"eacab43f1b9112e9e1920e656bdf1166f824a5a8\",\"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AOriginalGaugeUnitaryFull48GammaCovariance.lean\":\"5aa97c2b48aadebda7de2f94bd11c084fa15a83e\",\"lean/diagnostics/BFSSTDC1AOriginalGaugeUnitaryFull48GammaCovarianceIndependentConsumer.lean\":\"7c9998173589de762a486e60508c3a40fcdee2ac\",\".github/workflows/bfss-td-c1a-original-full48-gauge-gamma-strict.yml\":\"cc55480565ee935d499baef11c0ea4fe0f712372\",\"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.lean\":\"cdb8d99d028d11670343cf3082b09f8163ae9117\",\"lean/diagnostics/BFSSTDC1AR4NativeOperatorInterfaceProbe.lean\":\"7084d41b69603e521ee1f96c7572f56c1b4aa5d8\"}")
+          for path,expected in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==expected,(path,actual,expected)
+          (d/"source-pins.json").write_text(json.dumps(pins,indent=2)+"\n")
+          assert pathlib.Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          packages=json.loads(pathlib.Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in packages if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          probes=["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.lean","lean/diagnostics/BFSSTDC1AR4NativeOperatorInterfaceProbe.lean"]
+          for path in probes:
+              src=pathlib.Path(path).read_text()
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",src)
+              assert not re.search(r"(?m)^\s*set_option\s+(maxRecDepth|maxHeartbeats)\b",src)
+              (d/pathlib.Path(path).name).write_text(src)
+          assert not re.search(r"(?m)^import .*TDC1AOriginalGaugeUnitaryFull48GammaCovariance$",pathlib.Path(probes[1]).read_text())
+          print("BFSS_TD_C1A_R4_INTERFACE_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: P0 abstract algebra interface before original Fock imports
+        shell: bash
+        timeout-minutes: 3
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.olean"
+          mkdir -p "$(dirname "$obj")"
+          rm -f "$obj"
+          timeout 120s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.lean 2>&1 | tee ../bfss-td-c1a-r4-interface-evidence/p0-generic.log
+          echo BFSS_TD_C1A_R4_P0_GENERIC_INTERFACE_PASS
+      - name: Compile frozen accepted original axis prerequisite
+        shell: bash
+        timeout-minutes: 52
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          rm -f .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner.olean
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.C48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner 2>&1 | tee ../bfss-td-c1a-r4-interface-evidence/predecessor.log
+      - name: P1 bounded original native operator and Fock evaluation probe
+        shell: bash
+        timeout-minutes: 3
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 120s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSTDC1AR4NativeOperatorInterfaceProbe.lean 2>&1 | tee ../bfss-td-c1a-r4-interface-evidence/p1-native.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          d=Path("../bfss-td-c1a-r4-interface-evidence")
+          expected={
+            "p0-generic.log":["FCP.BFSSTDC1AR4OperatorBasisExtensionInterface.operator_covariance_of_basis"],
+            "p1-native.log":["FCP.BFSSTDC1AR4NativeOperatorInterfaceProbe."+n for n in ["original_axis_operator","original_allVector_operator","original_allVector_pointwise"]]
+          }
+          allowed={"propext","Classical.choice","Quot.sound"}
+          depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name,roots in expected.items():
+              s=(d/name).read_text()
+              assert "error:" not in s and "sorryAx" not in s,(name,s[-3500:])
+              assert not [line for line in s.splitlines() if "warning:" in line and not depwarn.fullmatch(line)],name
+              reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",s)
+              assert [root for root,_ in reports]==roots,(name,reports)
+              for root,axs in reports:
+                  assert {x.strip() for x in axs.split(",") if x.strip()} <= allowed,(root,axs)
+          (d/"verdict.txt").write_text("INTERFACE_FEASIBLE_ONLY; TD-C1A acceptance requires unchanged original native independent consumer and full strict qualification.\n")
+          print("BFSS_TD_C1A_R4_OPERATOR_INTERFACE_FEASIBLE_NOT_GATE_ACCEPTED")
+          PY
+      - name: Preserve interface evidence on every outcome
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-td-c1a-r4-interface-evidence
+          path: bfss-td-c1a-r4-interface-evidence/
+          retention-days: 30
+          if-no-files-found: warn
+
