@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "classification": "CALIBRATED_TYPED_ZERO_ACTION_COLLECTION",
+  "strict_G5_qualification": false,
+  "baseline": "f51357761243008201f97d9e0ef0cbefa87d0b06",
+  "plan": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_D0_TYPED_ZERO_ACTION_DIAGNOSTIC_PLAN_2026_11_14.md",
+  "plan_commit": "0eda76d0ffe46ee411bfdc7ec99becf221b02085",
+  "prior_red_run": 43651471352,
+  "strict_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean",
+  "strict_helper": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean",
+  "strict_consumer": "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean",
+  "strict_workflow": ".github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml",
+  "inspector": "lean/diagnostics/BFSSTDC1AD2R2ExpressionInspector.lean",
+  "driver": "tools/run_bfss_g5_d0_typed_zero.py",
+  "workflow": ".github/workflows/bfss-g5-d0-typed-zero-diagnostic.yml",
+  "pins": {
+    "lean/diagnostics/BFSSP3AuxHardyG5D0Generic.lean": "4a4dd25c1f049f9e8f496ee7791da559eacb46a5",
+    "lean/diagnostics/BFSSP3AuxHardyG5D0Core.lean": "8a4738965711692695fff29ce62fef2013129499",
+    "lean/diagnostics/BFSSP3AuxHardyG5D0NativeZero.lean": "48b7f94f9d2e010afcb82754f16736a316bedb77",
+    "lean/diagnostics/BFSSP3AuxHardyG5D0CliffordJoin.lean": "cf04e79b2142b64bf0a79189087720c831c84020",
+    "lean/diagnostics/BFSSP3AuxHardyG5D0TauObservation.lean": "5edce163200bf409f1284e71c9839d00cbf6698f",
+    "lean/diagnostics/BFSSP3AuxHardyG5D0PotentialObservation.lean": "3e139f6abd60bf49de6989b7b50cc39c9eac4a02",
+    "lean/diagnostics/BFSSP3AuxHardyG5D0TauJoin.lean": "7dbcf7f988afaf4f43752019b7fc27164b106d2f",
+    "lean/diagnostics/BFSSP3AuxHardyG5D0PotentialJoin.lean": "7f76b594c8ec815fb56a87e881eca0ed237c0291",
+    "tools/run_bfss_g5_d0_typed_zero.py": "2e3701c5bbd032ce9087e79d037218e63e331e5a",
+    ".github/workflows/bfss-g5-d0-typed-zero-diagnostic.yml": "18550cd31ad210e2f2203d4e331821ad7fb5ba1c",
+    "lean/diagnostics/BFSSTDC1AD2R2ExpressionInspector.lean": "f977d68a3124a89e380a6f3ac0738a229c18c334",
+    "research/spectral-p2-original-field/P3_AUX_HARDY_G5_D0_TYPED_ZERO_ACTION_DIAGNOSTIC_PLAN_2026_11_14.md": "06ba2611c9e017a5406da56a2b26b2215ba55fe9",
+    "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean": "9ada3167a5de3be647c51f0740b5998d4e6ea45a",
+    "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean": "0398bafa58b46dfbd83ec90a65be84adb03dedf8",
+    "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean": "e5a7d974200a506750be3766754ecefd12633425",
+    ".github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml": "8c9e1dc3a62c82cf6942a0a42ccab7dce5eecdc8"
+  },
+  "cases": [
+    {
+      "label": "generic_zero_sum",
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.finiteComplexZeroSum"
+      ],
+      "mode": "required",
+      "phase": "generic",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0Generic.lean"
+    },
+    {
+      "label": "variable_original_fock",
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.variableFockZeroScalar",
+        "FCP.BFSSP3AuxHardyG5D0.variableFockZeroSum"
+      ],
+      "mode": "required",
+      "phase": "core",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0Core.lean"
+    },
+    {
+      "label": "native_theta_zero_sum",
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.nativeThetaZeroSum"
+      ],
+      "mode": "required",
+      "phase": "native",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0NativeZero.lean"
+    },
+    {
+      "label": "native_clifford_zero_join",
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.nativeCliffordZero"
+      ],
+      "mode": "join",
+      "phase": "native",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0CliffordJoin.lean"
+    },
+    {
+      "label": "tau_observation",
+      "roots": [],
+      "mode": "observation",
+      "phase": "native",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0TauObservation.lean"
+    },
+    {
+      "label": "potential_observation",
+      "roots": [],
+      "mode": "observation",
+      "phase": "native",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0PotentialObservation.lean"
+    },
+    {
+      "label": "tau_join",
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.tauZeroJoin"
+      ],
+      "mode": "join",
+      "phase": "native",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0TauJoin.lean"
+    },
+    {
+      "label": "potential_join",
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.potentialZeroJoin"
+      ],
+      "mode": "join",
+      "phase": "native",
+      "path": "lean/diagnostics/BFSSP3AuxHardyG5D0PotentialJoin.lean"
+    }
+  ],
+  "timeouts_seconds": {
+    "fresh_case": 120,
+    "dependency_build": 3600
+  },
+  "collection_success_is_not_G5_acceptance": true
+}
