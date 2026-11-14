@@ -61,8 +61,8 @@ private theorem nativePotentialTauCoefficient_zero (M : AlgebraData 2)
 theorem originalPotentialTau_anticommutator_zero (M : AlgebraData 2)
     (i j : SpaceIndex) (X : Boson 2) :
     (∑ α : SpinIndex,
-      originalPotentialFermion M α X * originalHardyTau M i j α X +
-        originalHardyTau M i j α X * originalPotentialFermion M α X) = 0 := by
+      (originalPotentialFermion M α X * originalHardyTau M i j α X +
+        originalHardyTau M i j α X * originalPotentialFermion M α X)) = 0 := by
   unfold originalPotentialFermion originalHardyTau
   simp_rw [M.cliffordLinear_mixed]
   rw [← Finset.sum_smul, ← Complex.ofReal_sum, nativePotentialTauCoefficient_zero,
@@ -71,8 +71,8 @@ theorem originalPotentialTau_anticommutator_zero (M : AlgebraData 2)
 theorem originalPotentialTau_anticommutator_apply (M : AlgebraData 2)
     (i j : SpaceIndex) (X : Boson 2) (v : Fermion 2) :
     (∑ α : SpinIndex,
-      originalPotentialFermion M α X (originalHardyTau M i j α X v) +
-        originalHardyTau M i j α X (originalPotentialFermion M α X v)) = 0 := by
+      (originalPotentialFermion M α X (originalHardyTau M i j α X v) +
+        originalHardyTau M i j α X (originalPotentialFermion M α X v))) = 0 := by
   have h := congrArg (fun L : Fermion 2 →L[ℂ] Fermion 2 => L v)
     (originalPotentialTau_anticommutator_zero M i j X)
   simpa only [sum_apply, IsAddApply.add_apply] using h

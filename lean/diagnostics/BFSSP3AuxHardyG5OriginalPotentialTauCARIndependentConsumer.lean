@@ -42,14 +42,14 @@ example (α : SpinIndex) (X : Boson 2) (v : Fermion 2) :
 
 example (i j : SpaceIndex) (X : Boson 2) :
     (∑ α : SpinIndex,
-      originalPotentialFermion pairedAlgebraData α X * originalHardyTau pairedAlgebraData i j α X +
-        originalHardyTau pairedAlgebraData i j α X * originalPotentialFermion pairedAlgebraData α X) = 0 :=
+      (originalPotentialFermion pairedAlgebraData α X * originalHardyTau pairedAlgebraData i j α X +
+        originalHardyTau pairedAlgebraData i j α X * originalPotentialFermion pairedAlgebraData α X)) = 0 :=
   originalPotentialTau_anticommutator_zero pairedAlgebraData i j X
 
 example (i j : SpaceIndex) (X : Boson 2) (v : Fermion 2) :
     (∑ α : SpinIndex,
-      originalPotentialFermion pairedAlgebraData α X (originalHardyTau pairedAlgebraData i j α X v) +
-        originalHardyTau pairedAlgebraData i j α X (originalPotentialFermion pairedAlgebraData α X v)) = 0 :=
+      (originalPotentialFermion pairedAlgebraData α X (originalHardyTau pairedAlgebraData i j α X v) +
+        originalHardyTau pairedAlgebraData i j α X (originalPotentialFermion pairedAlgebraData α X v))) = 0 :=
   originalPotentialTau_anticommutator_apply pairedAlgebraData i j X v
 
 example (i j : SpaceIndex) (α : SpinIndex) :
