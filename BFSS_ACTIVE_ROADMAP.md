@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-G0B3 — newly staged strict candidate (UNQUALIFIED)
+
+Original physicalSpace kernel-intersection preservation is now staged in source, independent consumer and a dedicated strict workflow; see [prospective G0B3 receipt](research/spectral-p2-original-field/P3_AUX_G0B3_R1_PROSPECTIVE_PHYSICAL_SPACE_PRESERVATION_2026_11_13.md). Accepted donor G0B1/G0B2 are unchanged. **No G0B3 qualification is asserted until exact strict CI verifies the source, consumer and root audit.** Keep B16/injectivity as independent essential weighted-charge obligations; the latest accepted original H remains M5BF0.
+
 ## Current Project Lead decision — D2R2 reviewed GREEN collection; auxiliary weighted-charge lead
 
 **D2R2 [#43562804737](https://github.com/etblink/math/actions/runs/43562804737)** at tested `8de590a9`: inspector/Core, original-Fock variable control, source-axis build and literal direct-axis control PASS; native axis/evaluation report `_private...sourceGammaRealLinear.Op` versus `ContinuousLinearMap` in reciprocal directions, then deliberately stop unproved. Original TD-C1A still **RED_UNQUALIFIED**. [Reviewed exact D2R2 receipt](research/top-down-symmetry/TD_C1A_D2R2_GREEN_DIFFERENTIAL_OBSERVATIONS_43562804737_2026_11_13.md).
