@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G1 R1 — staged, strict qualification pending
+## HARDY-G1 R1 — RED, local list-length decide boundary
+
+[Strict #43627438161](https://github.com/etblink/math/actions/runs/43627438161) RED at `a74db0572da9101fcaf12d8dee139350f1301362`: 147-pin preflight/toolchain PASS; source 42:74 and 50:80 rejects decide on open literal-list length propositions. Three standard-axiom reports; three/five final trace roots consequential sorryAx; consumer NOT REACHED. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_RED_43627438161_OPEN_LIST_LENGTH_DECIDE_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G1_R1_OPEN_LIST_LENGTH_43627438161_2026_11_14.txt), [R2 contract](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_PRE_GATE_CLOSED_NUMERAL_LENGTH_BOUNDS_2026_11_14.md) preserved. R2 explicitly changes bounds to closed 3<=5 and 5<=5 before decide; consumer and statements fixed. **R2 not staged yet; no new qualification.**
+
+## HARDY-G1 R1 — historical launch (subsequently RED above)
 
 [Prospective source contract](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_PRE_GATE_NATIVE_ODD_GAMMA_TRACES_2026_11_14.md) committed at `3d2e0c3c41b059a87a9aaf2d08a58fd6478185d3` before source; administrative #43627202050 GREEN. Five roots cover a missing label for lists of <=5, odd-conjugation trace cancellation, literal ordered three/five gamma traces with repeats allowed, and even square trace16. Ten actual native paired examples include an explicit unused ninth label, repeated triple, five-factor product and square nonzero. Source `7172ba68d2b95475a4f0b4383a8996ba3da40bb9`, consumer `6cde9e42664eb378136d12cde77989fee628f7d3`, workflow `cbf9c3fadf761c54c1a92b384003c093b1d56e60`; reviewed OAI baseline `321a49fb29de3ab55d41bf35f54e1fcfdfa6eaea`. Static hash/root/YAML/bash/embedded-Python checks PASS; Lean unavailable locally. [Strict #43627438161](https://github.com/etblink/math/actions/runs/43627438161) tests exact `a74db0572da9101fcaf12d8dee139350f1301362`, job #132546379281; checkout/preflight pending at binding. Administrative #43627438088 is separate. **Unqualified pending full cold/fresh source and native consumer with five/ten strict reports.**
 

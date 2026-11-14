@@ -4015,7 +4015,7 @@
       "id": "E-P3-AUX-HARDY-G1-R1",
       "title": "Native original odd three/five gamma traces",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_PRE_GATE_NATIVE_ODD_GAMMA_TRACES_2026_11_14.md",
@@ -4077,7 +4077,89 @@
       "prospective_receipt_commit": "3d2e0c3c41b059a87a9aaf2d08a58fd6478185d3",
       "run_id": 43627438161,
       "tested_sha": "a74db0572da9101fcaf12d8dee139350f1301362",
-      "job_id": 132546379281
+      "job_id": 132546379281,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_RED_43627438161_OPEN_LIST_LENGTH_DECIDE_2026_11_14.md",
+      "result": {
+        "run_id": 43627438161,
+        "tested_sha": "a74db0572da9101fcaf12d8dee139350f1301362",
+        "job_id": 132546379281,
+        "manifest_pins": 147,
+        "manifest_hash": "d18da8b4f28ad9d2c04ef620987c2bbc530b11a0ceec6f81ed50291c367df811",
+        "clean_source_roots_not_qualified": [
+          "originalGamma_missing_of_length_le_five",
+          "originalGamma_trace_of_missing_odd",
+          "originalGamma_square_trace"
+        ],
+        "sorry_source_roots": [
+          "originalGamma_three_trace_zero",
+          "originalGamma_five_trace_zero"
+        ],
+        "independent_consumer_reached": false,
+        "first_causal": "Source 42:74 and 50:80: decide rejects expected list-length bound containing free gamma indices; reduce list lengths to closed numerals first.",
+        "artifact_id": 14126474746,
+        "artifact_digest": "sha256:f845089c90bc28e70f05c63896fc27db220d9fcf46105e2a2e6fd9b583f340b0"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G1-R2",
+      "title": "Closed numeral list-length premises for original odd gamma traces",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_PRE_GATE_CLOSED_NUMERAL_LENGTH_BOUNDS_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG1OriginalOddGammaTracesIndependentConsumer.lean",
+      "consumer_blob": "6cde9e42664eb378136d12cde77989fee628f7d3",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g1-original-odd-gamma-traces-strict.yml",
+      "roots": [
+        "originalGamma_missing_of_length_le_five",
+        "originalGamma_trace_of_missing_odd",
+        "originalGamma_three_trace_zero",
+        "originalGamma_five_trace_zero",
+        "originalGamma_square_trace"
+      ],
+      "donor_roots": [
+        "OAI.BFSSGamma.gamma_sq",
+        "OAI.BFSSGamma.gamma_anti",
+        "OAI.BFSSGamma.list_commute",
+        "OAI.BFSSGamma.list_conj",
+        "OAI.BFSSGamma.trace_conj"
+      ],
+      "stages": {
+        "observation": "R1 source errors only two decide calls on literal list length bounds containing free index variables; generic missing-label/conjugation and square reports standard axioms.",
+        "question": "Will explicit definitional reduction to closed 3<=5 and 5<=5 permit the unchanged decide proofs?",
+        "background": [
+          "Exact R1 cold source diagnostics",
+          "147-pin source preflight",
+          "No independent consumer reached"
+        ],
+        "hypothesis": "The length propositions are definitionally closed numeral bounds; explicit change removes free variables before decide.",
+        "falsifiers": [
+          "same boundary persists",
+          "different source/consumer error",
+          "public statement or control changed",
+          "warning/axiom policy drift"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "closed numeral target before decide in exactly two local bounds"
+          ],
+          "dependent_variables": [
+            "complete source/native consumer compile",
+            "same five/ten reports"
+          ],
+          "controls": [
+            "consumer byte-identical",
+            "same original matrices and theorem statements",
+            "workflow expected source hash only",
+            "same source baseline/toolchain/budgets"
+          ]
+        },
+        "analysis_plan": "Same cold strict source/native consumer, exact reports and controls; second related red requires minimal typed list diagnostic.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete original source and unchanged native consumer strict acceptance.",
+        "communication": "Proof-engineering repair only; no tau/Hardy/fidelity promotion."
+      }
     }
   ],
   "allowed_statuses": [
