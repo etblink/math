@@ -4792,6 +4792,66 @@
           "Quot.sound"
         ]
       }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G5-R1",
+      "title": "Original Fock potential/tau CAR lift of scalar cancellation",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_PRE_GATE_ORIGINAL_POTENTIAL_TAU_CAR_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml",
+      "roots": [
+        "originalHardyTau",
+        "originalHardyTau_apply",
+        "originalPotentialFermion",
+        "originalPotentialFermion_apply",
+        "originalPotentialTau_anticommutator_zero",
+        "originalPotentialTau_anticommutator_apply"
+      ],
+      "donor_roots": [
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_mixed",
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_selfAdjoint",
+        "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_pairing_zero",
+        "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_apply",
+        "OAI.BFSSQuantum.AlgebraData.theta_CAR"
+      ],
+      "stages": {
+        "observation": "G4 scalar pairing is qualified; original CliffordSymbols supplies native CAR compression.",
+        "question": "Does scalar cancellation lift to actual original Fock operator and vector anticommutators?",
+        "background": [
+          "G4 accepted/five-gate review",
+          "Exact cliffordLinear_mixed/selfAdjoint read",
+          "Original index/order/source scope checked"
+        ],
+        "hypothesis": "Original real coefficient arrays and theta_CAR give zero summed mixed Clifford operator.",
+        "falsifiers": [
+          "wrong spin/color order or CAR factor",
+          "unsupported Core charge identity",
+          "native source/consumer/control failure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "original coordinates/labels and Fock vectors"
+          ],
+          "dependent_variables": [
+            "six/eleven reports",
+            "twelve native examples"
+          ],
+          "controls": [
+            "literal coefficient arrays/actions",
+            "unit-row CAR factor1 not2",
+            "origin and self-adjointness",
+            "same frozen strict policy"
+          ]
+        },
+        "analysis_plan": "Cold/fresh exact source/full native consumer, ordered allowed axioms, all controls, manifest/artifact review.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete exact source and native consumer acceptance.",
+        "communication": "Pointwise original Fock coefficient-field identity; source smooth-core charge binding remains later."
+      }
     }
   ],
   "allowed_statuses": [

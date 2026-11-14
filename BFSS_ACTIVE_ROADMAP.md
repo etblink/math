@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G5 prospective — lift scalar cancellation to original Fock CAR
+
+[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R1_PRE_GATE_ORIGINAL_POTENTIAL_TAU_CAR_2026_11_14.md) defines tau and potential fields using accepted real coefficients and original cliffordLinear/theta. Six roots cover literal actions and zero summed operator/vector anticommutators; six/eleven reports, twelve native controls, original CAR factor1/not2. **No G5 source staged yet.** Literal Core.charge potential identification and full smooth-core identity remain separate.
+
 ## HARDY-G4 R1 — accepted; next cut is original Fock CAR compression
 
 [Strict #43642981119](https://github.com/etblink/math/actions/runs/43642981119) GREEN at `615fb54c19668f8e82fd539546d4d79dde37a5ef`: complete source/native consumer, six/eleven standard-axiom reports, twelve controls, 149 pinned paths, manifest `8b409c55eba5fcab1f111ff1e91f5a96923a1ae81b1e3e670a67931232a9ec84`. Original potential/Y trace and correct same-index scalar pairing qualified. [Acceptance and five-gate review](research/spectral-p2-original-field/P3_AUX_HARDY_G4_R1_GREEN_43642981119_ORIGINAL_POTENTIAL_Y_CANCELLATION_ACCEPTANCE_2026_11_14.md).
