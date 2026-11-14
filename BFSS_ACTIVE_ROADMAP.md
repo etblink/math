@@ -1,6 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G1 R2 — staged, strict qualification pending
+## HARDY-G1 R2 — accepted; original plane coefficient trace next
+
+[Strict #43628804541](https://github.com/etblink/math/actions/runs/43628804541) GREEN at `5f03f53ea3478dcaf1b70cbeda4557c88876d843`: complete original source and native consumer, five/ten standard-axiom reports, 147 pins, manifest `b37ae1a42e260a4fb2d26c9d4932f4fd79847c77eb1dc86ebc76868c21fab654`. Odd three/five traces include repeats; omitted ninth label and nonzero even-square controls PASS. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_GREEN_43628804541_NATIVE_ODD_GAMMA_TRACES_ACCEPTANCE_2026_11_14.md).
+
+[HARDY-G2 pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_PRE_GATE_ORIGINAL_PLANE_COEFFICIENT_TRACE_2026_11_14.md) selects the literal original Y coefficient and first gamma trace contraction in B.7, using existing list transpose and symmetric/skew trace; no four-word trace table rebuild. Eleven original native examples, two basis orientations and wrong-sign rejection. Derivative contraction, tau norm/anticommutator and physical Hardy remain separate. **G2 not staged yet.**
+
+## HARDY-G1 R2 — historical launch (accepted above)
 
 R1 red checkpoint and closed-numeral repair contract committed at `7417d70876131bb3546f82b9ddec76570afb7e25` before source edit. Only the two local literal-list bounds are explicitly changed to 3<=5 and 5<=5 before decide; original statements and entire native consumer remain fixed. Source `6a019c9111b384e73a05de7b776ac9e5a83c7eb7`, consumer `6cde9e42664eb378136d12cde77989fee628f7d3`, workflow `55fa8248a643404967c1d30bda3737626187a8a8`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean available. Frozen source baseline and strict policy unchanged. [Strict #43628804541](https://github.com/etblink/math/actions/runs/43628804541) tests exact `5f03f53ea3478dcaf1b70cbeda4557c88876d843`, job #132550584577; checkout/preflight pending at binding. Administrative #43628804577 is separate. **Unqualified pending exact cold source and full native consumer, five/ten reports.**
 

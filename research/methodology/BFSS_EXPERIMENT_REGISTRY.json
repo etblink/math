@@ -4104,8 +4104,8 @@
       "id": "E-P3-AUX-HARDY-G1-R2",
       "title": "Closed numeral list-length premises for original odd gamma traces",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
-      "qualification": false,
+      "status": "LEAN_QUALIFIED",
+      "qualification": true,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_PRE_GATE_CLOSED_NUMERAL_LENGTH_BOUNDS_2026_11_14.md",
       "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean",
@@ -4166,7 +4166,87 @@
       "prospective_receipt_commit": "7417d70876131bb3546f82b9ddec76570afb7e25",
       "run_id": 43628804541,
       "tested_sha": "5f03f53ea3478dcaf1b70cbeda4557c88876d843",
-      "job_id": 132550584577
+      "job_id": 132550584577,
+      "acceptance_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G1_R2_GREEN_43628804541_NATIVE_ODD_GAMMA_TRACES_ACCEPTANCE_2026_11_14.md",
+      "result": {
+        "run_id": 43628804541,
+        "tested_sha": "5f03f53ea3478dcaf1b70cbeda4557c88876d843",
+        "source_reports": 5,
+        "consumer_reports": 10,
+        "manifest_pins": 147,
+        "manifest_hash": "b37ae1a42e260a4fb2d26c9d4932f4fd79847c77eb1dc86ebc76868c21fab654",
+        "artifact_id": 14128076339,
+        "artifact_digest": "sha256:3d3bfc09a92853f1c4fe8fc688a20719c1e729aa034152aee7fdd4ca901d315c",
+        "full_native_consumer_passed": true,
+        "repeated_and_ninth_label_controls_passed": true,
+        "even_square_sixteen_nonzero_controls_passed": true,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G2-R1",
+      "title": "Original plane coefficient Y gamma trace contraction",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G2_R1_PRE_GATE_ORIGINAL_PLANE_COEFFICIENT_TRACE_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG2OriginalPlaneCoefficientTraceIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g2-original-plane-coefficient-trace-strict.yml",
+      "roots": [
+        "originalGamma_pair_trace",
+        "originalGamma_three_transpose",
+        "originalGamma_trace_mul_three_distinct",
+        "originalHardyY",
+        "originalHardyY_trace"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_square_trace",
+        "OAI.BFSSGamma.gamma_anti",
+        "OAI.BFSSGamma.list_reverse_eq",
+        "OAI.BFSSGamma.list_transpose",
+        "OAI.BFSSGamma.trace_skew_symm"
+      ],
+      "stages": {
+        "observation": "Original Hardy plane coefficient needs a gamma trace contraction; native list transpose and skew/symmetric trace donors already exist.",
+        "question": "Can literal original coefficient and orientation qualify on actual source gamma/boson data?",
+        "background": [
+          "G1 R2 strict acceptance",
+          "Core/GammaWords/GammaIdentity exact source read",
+          "Primary B.5-B.7 checked",
+          "Pinned PiLp basis coordinate API read"
+        ],
+        "hypothesis": "Pair orthogonality and symmetric/skew trace cancellation yield native coordinate contraction.",
+        "falsifiers": [
+          "wrong normalization or orientation",
+          "missing distinct-plane assumption",
+          "source/native control failure",
+          "unsupported physical promotion"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "all original source labels and coordinates",
+            "two basis axes and swapped plane"
+          ],
+          "dependent_variables": [
+            "five/ten reports",
+            "eleven native examples"
+          ],
+          "controls": [
+            "frozen exact donors",
+            "actual pairedAlgebraData and Boson2",
+            "same toolchain and strict policy"
+          ]
+        },
+        "analysis_plan": "Cold exact source/full native consumer; exact roots/axioms, all controls, source closure and artifact.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete original source/native consumer strict acceptance.",
+        "communication": "Finite Y trace only; derivative/tau/physical Hardy remain open."
+      }
     }
   ],
   "allowed_statuses": [
