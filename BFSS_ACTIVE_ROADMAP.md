@@ -1,5 +1,13 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## Current Project Lead decision — D2R2 reviewed GREEN collection; auxiliary weighted-charge lead
+
+**D2R2 [#43562804737](https://github.com/etblink/math/actions/runs/43562804737)** at tested `8de590a9`: inspector/Core, original-Fock variable control, source-axis build and literal direct-axis control PASS; native axis/evaluation report `_private...sourceGammaRealLinear.Op` versus `ContinuousLinearMap` in reciprocal directions, then deliberately stop unproved. Original TD-C1A still **RED_UNQUALIFIED**. [Reviewed exact D2R2 receipt](research/top-down-symmetry/TD_C1A_D2R2_GREEN_DIFFERENTIAL_OBSERVATIONS_43562804737_2026_11_13.md).
+
+**Primary allocation:** original radial/weighted physical sixteen-charge operator (G0B3 as optional fast physical-compatibility gate; RAD-C0 normalization; RAD-C2 actual output multiplier B16/injectivity; RAD-C3 exact AY closed inverse graph; RAD-C4 same positive-ε domain/form). **Secondary:** one source-bound D2R3 private-Op/CLM adapter investigation, no full all-48 covariance retry unless a real source proof passes independent consumer. **Exploration:** original gamma/CAR Hardy B1-A/B and historical operator-column/high-Spin alternatives. [Complete route inventory and stop rules](research/methodology/BFSS_PROJECT_LEAD_ROUTE_SELECTION_POST_D2R2_2026_11_13.md).
+
+The latest accepted original Hamiltonian M5BF0 and original scalar/gauge radial donor chain are preserved; paper auxiliary gap remains external/conditional. No new strict theorem run is launched by this decision.
+
 **Scope:** original relative SU(2) BFSS research on `integration/bfss-unified-research-20261108`. Not on `main`.
 **Start here every session:** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) is the *sole canonical live checkpoint*: active mathematical gate, precise attempted SHA, verified accepted predecessor, first causal red and next conditional decision. This page holds the durable objectives and review process. Neither document is a mathematical proof: original Git/Lean source, independent consumer, and the **exact strict CI result** are the proof authority.
 
