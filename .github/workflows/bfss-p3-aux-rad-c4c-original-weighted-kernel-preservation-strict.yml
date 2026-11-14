@@ -1,0 +1,157 @@
+name: BFSS P3-AUX-RAD-C4C original weighted kernel preservation strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-p3-aux-rad-c4c-original-weighted-kernel-preservation-strict.yml
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4COriginalWeightedKernelPreservation.lean
+      - lean/diagnostics/BFSSP3AuxRADC4COriginalWeightedKernelPreservationIndependentConsumer.lean
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bfss-p3-aux-rad-c4c-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  original-weighted-kernel-preservation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout frozen source ancestry
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 96
+          persist-credentials: false
+      - name: Preflight complete reviewed source closure and toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p bfss-aux-rad-c4c-evidence
+          git rev-parse HEAD > bfss-aux-rad-c4c-evidence/tested-sha.txt
+          python3 - <<'PY' | tee bfss-aux-rad-c4c-evidence/preflight.log
+          from pathlib import Path
+          import subprocess,re,json,hashlib
+          BASE="b78b3d4583955e892e8cac0d151850541f9367db"
+          SOURCE="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4COriginalWeightedKernelPreservation.lean"
+          CONSUMER="lean/diagnostics/BFSSP3AuxRADC4COriginalWeightedKernelPreservationIndependentConsumer.lean"
+          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4COriginalWeightedKernelPreservation.lean":"0e234856784f0d427a1f1792151c158ad97802da","lean/diagnostics/BFSSP3AuxRADC4COriginalWeightedKernelPreservationIndependentConsumer.lean":"e358d5e9e74f683b5bcc98cd472597a5d9834a71","lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean":"e20c76fb22bc09d16dbcd8657333227cb34ed1ea","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe.lean":"a9f27a48852ac570aedc8e0ab88d683250e6b138","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe.lean":"3ab254088e3fa2aea7622807b6b10e7eabc6fc8a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BBOriginalPhysicalHilbertChargeAdjointProbe.lean":"044eef08490bcd2f15e95bb3cf1287704f5254de","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BCOriginalPhysicalChargeNaturalAdjointSquareProbe.lean":"a31a2a04c8c63061fa1d3a447283c2ee261d92d6","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BDOriginalPhysicalChargeAdjointSquareSelfAdjointProbe.lean":"9bedf73dded2229062dce43184c7b1bd11b2ef22","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean":"0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3OriginalPhysicalWeightedChargeGraph.lean":"6aff6416d341738a1f55e6aaad107f4726f1e34f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.lean":"5ed2b3bfc6add8b50e25d43db3252ee7848caed9","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4AOriginalWeightedNaturalAdjointSquare.lean":"3202d27cbe9c27ea2d559cb0a1966c4a6d974920","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.lean":"0fe927b9709bd0e359aafb691aca086c6e4a5c46"}
+          ROOTS=["mem_ker_iff_graph_zero","oneSixteenth_ker","naturalAdjointSquare_graph_zero_iff","naturalAdjointSquare_ker","originalWeightedPhysicalCharge_graph_zero_iff","originalWeightedPhysicalCharge_ker_eq_original","originalWeightedNormalized_ker_eq_charge","originalNormalizedHamiltonian_ker_eq_charge","originalWeightedNormalized_ker_eq_originalH"]
+          NAMESPACE="FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation"
+          DONORS=["FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_graph_eq","FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph_mem_iff","FCP.BFSSSU2PhysicalDomainL6H5E8BD.mem_graph_naturalComp","FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional","FCP.BFSSP3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.originalWeightedPhysicalChargeColumn_domain_dense_unconditional","FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_eq","FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_selfAdjoint"]
+          def git(*a):
+              return subprocess.check_output(["git",*a],text=True).strip()
+          assert git("cat-file","-t",BASE)=="commit"
+          assert subprocess.run(["git","merge-base","--is-ancestor",BASE,"HEAD"]).returncode==0
+          baseline={}
+          for line in git("ls-tree","-r",BASE,"--","lean/OAI").splitlines():
+              m=re.fullmatch(r"\d+ blob ([0-9a-f]{40})\t(.+)",line)
+              if m:
+                  baseline[m[2]]=m[1]
+          seen={}
+          stack=[SOURCE,CONSUMER]
+          while stack:
+              p=stack.pop()
+              if p in seen:
+                  continue
+              f=Path(p)
+              assert f.is_file(),("missing OAI source",p)
+              sha=git("hash-object","--no-filters",p)
+              if p not in (SOURCE,CONSUMER):
+                  assert baseline.get(p)==sha,("reviewed existing OAI source drift",p,baseline.get(p),sha)
+              seen[p]=sha
+              for names in re.findall(r"(?m)^(?:public )?import[ \t]+([^\n]+)",f.read_text()):
+                  for name in names.split("--",1)[0].split():
+                      if name=="OAI" or name.startswith("OAI."):
+                          stack.append("lean/"+name.replace(".","/")+".lean")
+          for p,sha in EXPECTED.items():
+              assert seen.get(p)==sha,("frozen donor/candidate drift",p,seen.get(p),sha)
+          source=Path(SOURCE).read_text()
+          consumer=Path(CONSUMER).read_text()
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==ROOTS
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==(
+              [NAMESPACE+"."+x for x in ROOTS]+DONORS)
+          assert re.findall(r"(?m)^import (\S+)$",source)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxRADC4BOriginalWeightedNormalizedAdjointSquare"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxRADC4COriginalWeightedKernelPreservation","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe"]
+          for code in (source,consumer):
+              assert "set_option autoImplicit false" in code
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",code)
+              assert "maxHeartbeats" not in code and "maxRecDepth" not in code
+          assert "pairedAlgebraData pairedGaugeData hε" in consumer
+          assert "FullL2 2" in consumer and "Fermion 2" in consumer and "Boson 2" in consumer
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in packages if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          out=Path("bfss-aux-rad-c4c-evidence")
+          out.mkdir(exist_ok=True)
+          receipt={"status":"PREFLIGHT_NOT_LEAN_QUALIFICATION","tested_sha":git("rev-parse","HEAD"),
+              "reviewed_existing_source_baseline":BASE,"source":SOURCE,"consumer":CONSUMER,
+              "transitive_OAI_pin_count":len(seen),"pins":dict(sorted(seen.items())),
+              "source_roots":[NAMESPACE+"."+x for x in ROOTS],"independent_donor_roots":DONORS}
+          manifest=out/"pin-manifest.json"
+          manifest.write_text(json.dumps(receipt,sort_keys=True,indent=2)+"\n")
+          print("BFSS_P3_AUX_RAD_C4C_PREFLIGHT_PASS",len(seen),hashlib.sha256(manifest.read_bytes()).hexdigest())
+          PY
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2100s lake exe cache get 2>&1 | tee ../bfss-aux-rad-c4c-evidence/cache.log
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold source and original paired consumer with nine and sixteen root reports
+        shell: bash
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxRADC4COriginalWeightedKernelPreservation"
+          src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4COriginalWeightedKernelPreservation.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4COriginalWeightedKernelPreservation.olean"
+          rm -rf .lake/build/lib/lean/OAI .lake/build/ir/OAI
+          timeout 3600s lake build "$mod" 2>&1 | tee ../bfss-aux-rad-c4c-evidence/build.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee ../bfss-aux-rad-c4c-evidence/source.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3AuxRADC4COriginalWeightedKernelPreservationIndependentConsumer.lean 2>&1 | tee ../bfss-aux-rad-c4c-evidence/consumer.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json
+          d=Path("../bfss-aux-rad-c4c-evidence")
+          new_roots=["FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.mem_ker_iff_graph_zero","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.oneSixteenth_ker","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.naturalAdjointSquare_graph_zero_iff","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.naturalAdjointSquare_ker","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedPhysicalCharge_graph_zero_iff","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedPhysicalCharge_ker_eq_original","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedNormalized_ker_eq_charge","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalNormalizedHamiltonian_ker_eq_charge","FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedNormalized_ker_eq_originalH"]
+          donors=["FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_graph_eq","FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph_mem_iff","FCP.BFSSSU2PhysicalDomainL6H5E8BD.mem_graph_naturalComp","FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional","FCP.BFSSP3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.originalWeightedPhysicalChargeColumn_domain_dense_unconditional","FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_eq","FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_selfAdjoint"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name,expected in [
+              ("build.log",None),("source.log",new_roots),("consumer.log",new_roots+donors)]:
+              log=(d/name).read_text()
+              assert not any(x in log for x in ("error:","sorryAx","unknownIdentifier")),(name,log[-4500:])
+              assert not [line for line in log.splitlines() if "warning:" in line and not depwarn.fullmatch(line)],name
+              if expected is not None:
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [n for n,_ in reports]==expected,(name,reports,expected)
+                  for declaration,raw in reports:
+                      assert {x.strip() for x in raw.split(",") if x.strip()}<=allowed,(declaration,raw)
+          (d/"scope-receipt.json").write_text(json.dumps({
+              "status":"ORIGINAL_WEIGHTED_KERNEL_PRESERVATION_STRICT_GREEN",
+              "original_paired_SU2_consumer":True,"epsilon_positive":True,
+              "actual_partial_operator_kernel_submodules":True,
+              "original_weighted_charge_kernel_eq_source_charge":True,
+              "normalized_weighted_kernel_eq_original_physical_H":True,
+              "new_roots":9,"independent_donor_roots":7,
+              "nonzero_kernel_or_zero_mode_existence_proved":False,
+              "graph_core_or_maximal_domain_qualified":False,
+              "epsilon_zero_or_spectral_gap_proved":False},sort_keys=True,indent=2)+"\n")
+          print("BFSS_P3_AUX_RAD_C4C_ORIGINAL_WEIGHTED_KERNEL_PRESERVATION_STRICT_GREEN")
+          PY
+      - name: Preserve strict and first-causal evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-aux-rad-c4c-evidence
+          path: bfss-aux-rad-c4c-evidence/
+          if-no-files-found: warn
+          retention-days: 14

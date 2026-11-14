@@ -3452,6 +3452,86 @@
       "artifact_digest": "sha256:ba600ba868210644c26b29d4df8f501f61b0299b10da5628d0c785dadfe0df18",
       "acceptance_receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C4B_R1_GREEN_43587088274_NORMALIZED_WEIGHTED_OPERATOR_WEAK_FORM_ACCEPTANCE_2026_11_14.md",
       "interpretation": "Exact normalized weighted physical operator on unchanged natural domain, self-adjoint/closed/dense and full native charge-domain weak-representative iff; no kernel or spectral promotion."
+    },
+    {
+      "id": "E-P3-AUX-RAD-C4C-R1",
+      "title": "Exact original weighted and unweighted Hamiltonian kernel submodule equality",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "classification": "SOURCE_EXACT_ORIGINAL_SU2_KERNEL_PRESERVATION_PENDING_STRICT",
+      "parent_sha": "6e38ae865ac5a4b0e25ec8c2d30f3d5343e5d33c",
+      "prospective_receipt_commit": "6e38ae865ac5a4b0e25ec8c2d30f3d5343e5d33c",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4COriginalWeightedKernelPreservation.lean",
+      "source_blob": "0e234856784f0d427a1f1792151c158ad97802da",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxRADC4COriginalWeightedKernelPreservationIndependentConsumer.lean",
+      "consumer_blob": "e358d5e9e74f683b5bcc98cd472597a5d9834a71",
+      "workflow": ".github/workflows/bfss-p3-aux-rad-c4c-original-weighted-kernel-preservation-strict.yml",
+      "workflow_blob": "28f0a78c7802a9af45215ac94eaaf391c8dcdd6b",
+      "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C4C_R1_PRE_GATE_ORIGINAL_WEIGHTED_KERNEL_PRESERVATION_2026_11_14.md",
+      "roots": [
+        "mem_ker_iff_graph_zero",
+        "oneSixteenth_ker",
+        "naturalAdjointSquare_graph_zero_iff",
+        "naturalAdjointSquare_ker",
+        "originalWeightedPhysicalCharge_graph_zero_iff",
+        "originalWeightedPhysicalCharge_ker_eq_original",
+        "originalWeightedNormalized_ker_eq_charge",
+        "originalNormalizedHamiltonian_ker_eq_charge",
+        "originalWeightedNormalized_ker_eq_originalH"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_graph_eq",
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph_mem_iff",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BD.mem_graph_naturalComp",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional",
+        "FCP.BFSSP3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.originalWeightedPhysicalChargeColumn_domain_dense_unconditional",
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_eq",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_selfAdjoint"
+      ],
+      "stages": {
+        "observation": "Accepted C3 inverse graph has (x,0) in Sε graph iff (x,Bε0) in original T graph, while accepted C4B normalizes the true natural Sε adjoint square. Mathlib already defines partial-map kernels including domain membership.",
+        "question": "Do the exact normalized weighted Hε and unchanged original physical H have equal actual LinearPMap kernel submodules, for every epsilon > 0?",
+        "background": [
+          "Exact C4B strict #43587088274 at 08afa5c57b1f90daa621b938e778bb2ffb7770a2 verified seven/thirteen roots, 214 pins",
+          "Reviewed C3/BA/BC/BD/BE original sources, C4A/C4B and M5BE0 receipts, forward kernel memo",
+          "Pinned Mathlib LinearPMap ker/mem_ker_iff/mem_graph_iff/smul_domain/smul_apply APIs inspected",
+          "Older D2B19 positive-square source has pairing/positivity but no kernel declaration",
+          "C4C pre-gate receipt committed at 6e38ae865ac5a4b0e25ec8c2d30f3d5343e5d33c before new mathematical source"
+        ],
+        "hypothesis": "Linear reciprocal preserves graph-zero pairs; dense-charge true adjoint pairing gives ker(S†S)=ker S; exact nonzero 1/16 normalization preserves partial-map kernel. Joining both original and weighted charge interfaces yields Hε.ker=H.ker.",
+        "falsifiers": [
+          "Kernel treated without domain membership",
+          "Adjoint density dropped despite junk-value branch",
+          "Wrong witness equality orientation or nonzero scalar cancellation",
+          "Unweighted original H silently replaced by a historical/auxiliary alias",
+          "Actual original paired consumer failure, source drift, unexpected warning or disallowed axiom"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "arbitrary literal original AlgebraData 2 and GaugeData",
+            "every epsilon > 0",
+            "actual original paired SU2 consumer",
+            "both source T and weighted Sε as genuine generic-helper consumers"
+          ],
+          "dependent_variables": [
+            "nine named source roots",
+            "sixteen independent consumer reports",
+            "ten actual original-carrier examples including FullL2 anchor"
+          ],
+          "controls": [
+            "all existing OAI imports frozen against reviewed base b78b3d4583955e892e8cac0d151850541f9367db",
+            "explicit original Core/G4J/AY/BA/BB/BC/BD/BE/C3/C3DC/C4A/C4B hashes",
+            "true naturalComp domains, exact 1/16, explicit charge density",
+            "no concrete re/norm rewrite, no proposition-proof letI",
+            "pinned Lean 4.34.1 and Mathlib, no new proof-budget settings"
+          ]
+        },
+        "analysis_plan": "Cold exact-source target, fresh warning-as-error source and literal paired SU2 consumer; check nine/sixteen report order and allowed axioms. Preserve first causal layer before any bounded repair; after two related reds isolate exact interface.",
+        "conclusion_rule": "LEAN_QUALIFIED only after exact tested SHA/source/consumer/frozen source closure and independent root audit reviewed. A compiler red is not mathematical falsification.",
+        "communication": "Actual original physical partial-map kernel equality only; no zero-mode existence, nonzero kernel, dimension, uniqueness, gap, epsilon-zero or full operator-domain equality."
+      }
     }
   ],
   "allowed_statuses": [
