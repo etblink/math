@@ -1463,11 +1463,11 @@
   "parallel_topdown_spin_gauge_full48_experiment": {
     "date": "2026-11-13",
     "gate": "TD-C1A",
-    "status": "RED_UNQUALIFIED",
+    "status": "PENDING_STRICT_CI_UNQUALIFIED",
     "qualification": false,
     "source_candidate_commit": "991f3bf43525226c6155bddaeaa775380668e67f",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AOriginalGaugeUnitaryFull48GammaCovariance.lean",
-    "source_blob": "117b487681c2e6b223a81bce184b51570077d673",
+    "source_blob": "1cd598864884b8c84159c1b899609b2baf06bed5",
     "consumer": "lean/diagnostics/BFSSTDC1AOriginalGaugeUnitaryFull48GammaCovarianceIndependentConsumer.lean",
     "consumer_blob": "7c9998173589de762a486e60508c3a40fcdee2ac",
     "workflow": ".github/workflows/bfss-td-c1a-original-full48-gauge-gamma-strict.yml",
@@ -1490,8 +1490,8 @@
       "no physical FullL2 spin reduction",
       "no new Hamiltonian or auxiliary gap"
     ],
-    "next_decision": "R2 source proof repair only: explicit real-to-complex scalar conversion and avoid fully expanded basis goal. No theorem, consumer or frozen sources changed; require fresh strict GREEN.",
-    "strict_run_id": 43536957727,
+    "next_decision": "Check exact strict #43539398734 source+native consumer+root. If failure preserve new first cause; only source-exact full-vector gauge lemma GREEN qualifies, not Spin9 gauge fixedness.",
+    "strict_run_id": 43539398734,
     "strict_tested_sha": "5564c2f15044326f34f16d8a06c1cba7e131a958",
     "strict_run_status": "IN_PROGRESS_AT_LAST_CHECK",
     "workflow_blob": "cc55480565ee935d499baef11c0ea4fe0f712372",
@@ -1508,6 +1508,10 @@
       "artifact_size_bytes": 14072,
       "artifact_digest": "sha256:8be0116593ef09597c8491e2cfde4fc5caa31fff2be0f28ac9943432ca22bdd8",
       "receipt": "research/top-down-symmetry/TD_C1A_R1_RED_43536957727_FIRST_CAUSAL_2026_11_13.md"
-    }
+    },
+    "candidate_sha": "6d156c9f2e8b06c2be5d8b032cd27ecc4d8902d6",
+    "run_id": 43539398734,
+    "attempt_label": "R2_EXPLICIT_REAL_SMUL_AND_TYPED_BASIS",
+    "prospective_r2": "research/top-down-symmetry/TD_C1A_R2_PROSPECTIVE_REAL_SCALAR_AND_TYPED_BASIS_REPAIR_2026_11_13.md"
   }
 }
