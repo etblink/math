@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C2A R1 — original reciprocal FullL2 injectivity candidate (UNQUALIFIED)
+
+[Prospective R1 contract](research/spectral-p2-original-field/P3_AUX_RAD_C2A_R1_PROSPECTIVE_ORIGINAL_RECIPROCAL_FULLL2_INJECTIVITY_2026_11_13.md) now stages source, original FullL2 independent consumer and dedicated strict CI for `Function.Injective (originalReciprocalFullL2CLM hε)`. This is the essential prerequisite to RAD-C2B: the genuine sixteen-output bounded reciprocal `PiLp` lift. **No qualification until exact strict source+consumer/axiom GREEN.** G0B3 is separately accepted; original M5BF0 remains accepted and TD-C1A remains RED_UNQUALIFIED.
+
 ## P3-AUX-G0B3 R1 STRICT GREEN — original physical Gauss-space preservation
 
 [Run #43565346269](https://github.com/etblink/math/actions/runs/43565346269) completed success, attempt 1 at exact tested `9ef31538fa47b61f2a8f577ca28782528265464c`; cold source, original `FullL2 2` independent consumer, exact one-root allowed-axiom audit and evidence upload passed. [Frozen acceptance receipt](research/spectral-p2-original-field/P3_AUX_G0B3_R1_GREEN_43565346269_ORIGINAL_PHYSICAL_SPACE_PRESERVATION_ACCEPTANCE_2026_11_13.md); artifact #14102487303, digest `sha256:aa3313dbaebb53b2a8656c2edf17bfeb3e258abb77a60bc90a25720469198be5`. The true original `B_ε` preserves the literal `pairedGaugeData.physicalSpace` for `ε>0`, by accepted G0B1/G0B2 and the original kernel intersection. **G0B3 does not prove orthogonal projector commutation, output lift, injectivity, or a gap; it does not block the ambient-output graph program.** Next research gate: RAD-C2A original reciprocal injectivity, then RAD-C2B actual sixteen-coordinate `PiLp` lift. Original M5BF0 remains accepted physical Hamiltonian and TD-C1A remains RED_UNQUALIFIED.
