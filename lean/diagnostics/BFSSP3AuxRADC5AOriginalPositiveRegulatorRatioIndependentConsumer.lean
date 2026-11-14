@@ -77,10 +77,12 @@ example {ε : ℝ} (hε : 0 < ε) (x : Boson 2) :
 example {ε δ : ℝ} (hε : 0 < ε) (hδ : 0 < δ) :
     originalRegulatorRatioField ε δ (0 : Boson 2) = (ε : ℂ) / (δ : ℂ) := by
   have he : originalRadialWeight ε (0 : Boson 2) = ε := by
-    simp only [originalRadialWeight, norm_zero, zero_pow, zero_add,
+    simp only [originalRadialWeight, norm_zero,
+      zero_pow (by decide : (2 : ℕ) ≠ 0), zero_add,
       Real.sqrt_sq_eq_abs, abs_of_pos hε]
   have hd : originalRadialWeight δ (0 : Boson 2) = δ := by
-    simp only [originalRadialWeight, norm_zero, zero_pow, zero_add,
+    simp only [originalRadialWeight, norm_zero,
+      zero_pow (by decide : (2 : ℕ) ≠ 0), zero_add,
       Real.sqrt_sq_eq_abs, abs_of_pos hδ]
   change (originalRadialWeight ε (0 : Boson 2) : ℂ) /
     (originalRadialWeight δ (0 : Boson 2) : ℂ) = (ε : ℂ) / (δ : ℂ)
