@@ -4887,7 +4887,7 @@
       "id": "E-P3-AUX-HARDY-G5-R2",
       "title": "Explicit binder scope for original Fock anticommutator summands",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R2_PRE_GATE_EXPLICIT_ANTICOMMUTATOR_SUMMAND_SCOPE_2026_11_14.md",
@@ -4950,7 +4950,97 @@
       "prospective_receipt_commit": "76ce61251973a422e20fa6f9882c02a222cf1de5",
       "run_id": 43647718971,
       "tested_sha": "e76aff10b5ebc16706ac27dec3affcc9d5542e7c",
-      "job_id": 132609101629
+      "job_id": 132609101629,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R2_RED_43647718971_TYPED_OPERATOR_EVALUATION_2026_11_14.md",
+      "result": {
+        "run_id": 43647718971,
+        "tested_sha": "e76aff10b5ebc16706ac27dec3affcc9d5542e7c",
+        "job_id": 132609101629,
+        "manifest_pins": 150,
+        "manifest_hash": "35955aea0ea212749ff3724eef73ef7ba57858dcff7fb32c96c3ba1aac4bf3cf",
+        "clean_source_roots_not_qualified": [
+          "originalHardyTau",
+          "originalHardyTau_apply",
+          "originalPotentialFermion",
+          "originalPotentialFermion_apply",
+          "originalPotentialTau_anticommutator_zero"
+        ],
+        "sorry_source_roots": [
+          "originalPotentialTau_anticommutator_apply"
+        ],
+        "binder_errors_gone": true,
+        "recursion_error_not_observed": true,
+        "independent_consumer_reached": false,
+        "first_causal": "Source78:2 type mismatch: simplified congrArg retains (V*T)v and 0 v; target requires V(T v) and vector0. Binder/recursion errors absent; only application root sorryAx.",
+        "artifact_id": 14135496115,
+        "artifact_digest": "sha256:bfd179169d3939bc80659753c5a542221dce44ac9cdb7a3e29f0dfe581c6f5d1"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G5-R3",
+      "title": "Isolated finite continuous-linear operator evaluation before native Fock adapter",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R3_PRE_GATE_ISOLATED_FINITE_OPERATOR_EVALUATION_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean",
+      "consumer_blob": "5e2257d149462ca507c1f9ccde2231846b4bbe65",
+      "isolated_helper": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean",
+      "helper_root": "FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml",
+      "roots": [
+        "originalHardyTau",
+        "originalHardyTau_apply",
+        "originalPotentialFermion",
+        "originalPotentialFermion_apply",
+        "originalPotentialTau_anticommutator_zero",
+        "originalPotentialTau_anticommutator_apply"
+      ],
+      "donor_roots": [
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_mixed",
+        "OAI.BFSSQuantum.AlgebraData.cliffordLinear_selfAdjoint",
+        "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_pairing_zero",
+        "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_apply",
+        "OAI.BFSSQuantum.AlgebraData.theta_CAR"
+      ],
+      "stages": {
+        "observation": "R2 fixes scope; operator identity clean, only final evaluation root fails because CLM multiplication and zero are not rewritten to vector action. Earlier recursion absent.",
+        "question": "Can a generic typed finite CLM evaluation lemma be qualified separately and then instantiate the unchanged original Fock theorem?",
+        "background": [
+          "Exact R2 typed mismatch/150-path preflight",
+          "Pinned CLM Basic current IsMulApplyEqComp and zero API read",
+          "Repeated evaluation-boundary isolation rule"
+        ],
+        "hypothesis": "Current mul_apply_eq_comp and root zero_apply close evaluation abstractly without unfolding the native model.",
+        "falsifiers": [
+          "isolated helper fails",
+          "model instantiation/native consumer fails",
+          "source statement/control drift",
+          "deprecated APIs or increased limits"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Mathlib-only finite CLM evaluation helper",
+            "last source proof replaced by typed instantiation"
+          ],
+          "dependent_variables": [
+            "helper strict report",
+            "six/eleven source/consumer reports",
+            "all twelve native controls"
+          ],
+          "controls": [
+            "five other source roots/proofs fixed",
+            "entire consumer byte-identical",
+            "same actual Fock types",
+            "same frozen donors/toolchain/lint/budgets"
+          ]
+        },
+        "analysis_plan": "Strict-check isolated helper immediately after Mathlib cache and before expensive model build; then complete original source/native consumer. Helper failure stops same-boundary permutations.",
+        "conclusion_rule": "LEAN_QUALIFIED only after isolated helper AND complete exact model source/native consumer acceptance.",
+        "communication": "Typed evaluation architecture repair only; no mathematical or physical scope promotion."
+      }
     }
   ],
   "allowed_statuses": [

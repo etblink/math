@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G5 R2 — staged, explicit intended anticommutator scope
+## HARDY-G5 R2 — RED at typed operator evaluation; isolate Layer1
+
+[Strict #43647718971](https://github.com/etblink/math/actions/runs/43647718971) RED at `e76aff10b5ebc16706ac27dec3affcc9d5542e7c`: 150-path preflight/toolchain PASS; binder/recursion errors gone. Five roots including operator-zero standard axioms; final vector evaluation alone sorryAx. Source78 type mismatch retains (V*T)v and0 v instead of composition/vector0. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R2_RED_43647718971_TYPED_OPERATOR_EVALUATION_2026_11_14.md), [typed diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G5_R2_EVALUATION_TYPE_MISMATCH_43647718971_2026_11_14.txt), [R3 helper contract](research/spectral-p2-original-field/P3_AUX_HARDY_G5_R3_PRE_GATE_ISOLATED_FINITE_OPERATOR_EVALUATION_2026_11_14.md). Isolate Mathlib-only finite CLM evaluation with current mul_apply_eq_comp/zero_apply, strict-check before model build, then instantiate original Fock source. Consumer/public contracts fixed. **R3 not staged yet; G5 unqualified.**
+
+## HARDY-G5 R2 — historical launch (subsequently RED above)
 
 R1 exact red and prospective grouping repair committed at `76ce61251973a422e20fa6f9882c02a222cf1de5` before mutation; administrative #43647597267 GREEN. Four full additive-summand parenthesis pairs added across two source/two matching native statements, restoring the intended binder scope. Proof bodies, all twelve controls, autoImplicit=false and budgets unchanged. Source `8c9e3e65831b0eca04c943e9a379bd7019c5ef94`, consumer `5e2257d149462ca507c1f9ccde2231846b4bbe65`, workflow `6c7ab054c9c4915f88116294523f6b3c1cf2d4d5`; workflow expected source/consumer hashes only. Static exact-delta/hash/root/YAML/bash/Python PASS; local Lean unavailable. [Strict #43647718971](https://github.com/etblink/math/actions/runs/43647718971) tests exact `e76aff10b5ebc16706ac27dec3affcc9d5542e7c`, job #132609101629; checkout/preflight pending at binding. Administrative #43647718965 is separate. **Unqualified pending complete source/native consumer, six/eleven reports.** Later evaluation recursion must be retested; no limit increase.
 

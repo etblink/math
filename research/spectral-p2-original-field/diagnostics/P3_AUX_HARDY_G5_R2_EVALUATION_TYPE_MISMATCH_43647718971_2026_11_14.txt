@@ -1,0 +1,72 @@
+Run43647718971; tested e76aff10b5ebc16706ac27dec3affcc9d5542e7c; job132609101629
+Manifest 150 35955aea0ea212749ff3724eef73ef7ba57858dcff7fb32c96c3ba1aac4bf3cf
+Artifact 14135496115 sha256:bfd179169d3939bc80659753c5a542221dce44ac9cdb7a3e29f0dfe581c6f5d1
+
+error: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean:78:2: Type mismatch: After simplification, term
+  h
+ has type
+  @Eq (Fermion 2)
+    (∑ x,
+      ((originalPotentialFermion M x X * originalHardyTau M i j x X) v +
+        (originalHardyTau M i j x X * originalPotentialFermion M x X) v))
+    (0 v)
+but is expected to have type
+  @Eq (Fermion 2)
+    (∑ α,
+      ((originalPotentialFermion M α X) ((originalHardyTau M i j α X) v) +
+        (originalHardyTau M i j α X) ((originalPotentialFermion M α X) v)))
+    0
+
+[
+  {
+    "name": "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalHardyTau",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalHardyTau_apply",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalPotentialFermion",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalPotentialFermion_apply",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalPotentialTau_anticommutator_zero",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalPotentialTau_anticommutator_apply",
+    "axioms": [
+      "propext",
+      "sorryAx",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  }
+]
+
+Binder/recursion errors no longer observed; consumer not reached.
