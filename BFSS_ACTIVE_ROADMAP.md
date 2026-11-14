@@ -1,5 +1,13 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## P3-AUX-RAD-C3D-C — independent forward research while C3D-B R2 runs (PROSPECTIVE)
+
+[Source-exact forward-research memo](research/spectral-p2-original-field/P3_AUX_RAD_C3DC_FORWARD_RESEARCH_DENSE_WEIGHTED_PHYSICAL_CHARGE_AND_ADJOINT_SQUARE_2026_11_14.md) identifies a two-root original physical `Sε` domain-density proof reusing H5E8AZ's `Subtype.dense_iff` + `closure_mono` and original D2B10C Haar `G.coreNormClosure = G.physicalSpace`; only missing mathematical premise is **C3D-B's original weighted-core inclusion, still strict-unqualified until CI**. A later optional nonzero-domain root can reuse accepted M3W0D0 separately. Generic BC/BD/BE original-source closed/dense adjoint-square and normalized form machinery supplies a candidate subsequent self-adjoint auxiliary-operator route, but no source transfer or spectral claim yet. The source smooth core is not yet known to be an `Sε` graph core.
+
+## RAD-C3D-B R2 — administrative registry checker GREEN (NOT math)
+
+[Admin repair #43575636423](https://github.com/etblink/math/actions/runs/43575636423) GREEN at `d9aebf22af3dd9330c1d86ebd2e75a8028b06c6f`, marker `BFSS_ROADMAP_CHECK_PASS`. [Administrative green receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_ADMIN_REPAIR_GREEN_43575636423_2026_11_14.md). Historical admin RED #43575336761 and mathematical C3D-B R1 RED #43573922855 remain preserved; mathematical strict C3D-B R2 #43575336639 at `76f207da...` stays independent of this checkpoint repair.
+
 ## P3-AUX-RAD-C3D-B R2 — administrative registry-status repair (PENDING CHECK)
 
 [Roadmap-consistency #43575336761](https://github.com/etblink/math/actions/runs/43575336761) was **ADMIN RED** at `76f207da39b2ead16e3652ddffdb5c16e8188255`: first-causal `unregistered experiment status`, because the experiment registry did not enumerate the correctly recorded C3D-B R1 `RED_UNQUALIFIED` verdict. [Preserved first-causal receipt](research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R2_ROADMAP_ADMIN_RED_43575336761_STATUS_REGISTRATION_2026_11_14.md). Add only that allowed registry status and explain its semantics in the scientific-method protocol; mathematical strict [#43575336639](https://github.com/etblink/math/actions/runs/43575336639) remains independent at its own tested source SHA. Await fresh roadmap GREEN before acceptance of this administrative repair.
