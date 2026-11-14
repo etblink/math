@@ -3558,7 +3558,7 @@
       "id": "E-P3-AUX-RAD-C5A-R1",
       "title": "Original positive-regulator ratio and L-infinity class",
       "registered_at": "2026-11-14",
-      "status": "EXECUTED_UNREVIEWED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C5A_R1_PRE_GATE_ORIGINAL_POSITIVE_REGULATOR_RATIO_2026_11_14.md",
@@ -3627,7 +3627,88 @@
       "workflow_blob": "c2b7e9f0dadcd53c0f6c785d50c4fc90a2110c85",
       "run_id": 43591940771,
       "tested_sha": "aee1979bc64e90cca0f75e67e3341c0bc8bc5d93",
-      "job_id": 132438328870
+      "job_id": 132438328870,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C5A_R1_RED_43591940771_NATIVE_ORIGIN_ZERO_POWER_CONTROL_2026_11_14.md",
+      "result": {
+        "run_id": 43591940771,
+        "tested_sha": "aee1979bc64e90cca0f75e67e3341c0bc8bc5d93",
+        "manifest_pins": 149,
+        "manifest_hash": "0e2acaaf33ad002994fa776aafd28f9d11fe45d6faa4286fa2a9475bc86cacf9",
+        "source_compile_passed": true,
+        "consumer_compile_passed": false,
+        "named_source_reports_clean": 10,
+        "named_consumer_imported_reports_clean": 14,
+        "first_causal": "Independent consumer origin controls 79:56 and 82:56 retain sqrt(0^2+parameter^2); bare zero_pow conditional simp lemma needs explicit exponent nonzero proof. Eight consequential unused-simp errors.",
+        "artifact_id": 14113580930,
+        "artifact_digest": "sha256:1132bd3b384fda50eddabb58f1388ae61344068a4a9d839f05d4bdab3ce77405"
+      }
+    },
+    {
+      "id": "E-P3-AUX-RAD-C5A-R2",
+      "title": "Explicit exponent-two zero-power premise in native origin controls",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C5A_R2_PRE_GATE_EXPLICIT_ORIGIN_ZERO_POWER_REPAIR_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC5AOriginalPositiveRegulatorRatio.lean",
+      "source_blob": "eabd26ec2a72043e622d634a6366f4b3ed5eaf77",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-rad-c5a-original-positive-regulator-ratio-strict.yml",
+      "roots": [
+        "originalRadialWeight_mono",
+        "originalRadialWeight_scaled_le",
+        "originalRegulatorRatioField",
+        "originalRegulatorRatioField_continuous",
+        "originalRegulatorRatioField_norm_le",
+        "originalRegulatorRatioField_mul_reverse",
+        "originalReciprocalField_mul_ratio",
+        "originalRegulatorRatioField_memLp_infty",
+        "originalRegulatorRatioLpInf",
+        "originalRegulatorRatioLpInf_ae"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxR0AOriginalRadialScalar.originalRadialWeight_sq",
+        "FCP.BFSSP3AuxR0AOriginalRadialScalar.originalRadialWeight_pos",
+        "FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity.originalRadialWeight_continuous",
+        "FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity.originalReciprocalLpInf_ae"
+      ],
+      "stages": {
+        "observation": "R1 source and named reports pass; native origin examples leave zero^2 because zero_pow requires a nonzero exponent proof.",
+        "question": "Does explicitly specializing that lemma at exponent 2 discharge the same native origin controls under unchanged strict policy?",
+        "background": [
+          "Verified R1 exact source/consumer logs and 149-pin manifest",
+          "Pinned zero_pow signature inspected",
+          "No source theorem error"
+        ],
+        "hypothesis": "Only the conditional simplifier premise is missing; supplying its exact proof enables the remaining existing square-root/positivity steps.",
+        "falsifiers": [
+          "same unsolved goal persists",
+          "different native control fails",
+          "source changed or origin test removed",
+          "unexpected warning/axiom or source drift"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "explicit exponent-two nonzero proof in exactly two origin simp lists"
+          ],
+          "dependent_variables": [
+            "whole source/consumer compile",
+            "same ten/fourteen report order",
+            "origin and equal-parameter controls"
+          ],
+          "controls": [
+            "source byte-identical",
+            "all original theorem/example types",
+            "frozen 149-path source closure policy",
+            "only expected consumer hash change in workflow",
+            "pinned toolchain, budgets and warnings"
+          ]
+        },
+        "analysis_plan": "Same cold strict audit; verify entire consumer rather than named imported-root reports alone.",
+        "conclusion_rule": "LEAN_QUALIFIED only after exact source AND independent consumer strict acceptance.",
+        "communication": "Consumer proof-engineering repair; source scalar/L-infinity scope unchanged, no physical spectral promotion."
+      }
     }
   ],
   "allowed_statuses": [

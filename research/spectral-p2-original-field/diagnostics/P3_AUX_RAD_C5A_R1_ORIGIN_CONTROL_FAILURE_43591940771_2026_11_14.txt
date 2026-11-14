@@ -1,0 +1,266 @@
+C5A R1 exact consumer diagnostic
+Run 43591940771 / job 132438328870 / tested aee1979bc64e90cca0f75e67e3341c0bc8bc5d93
+
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:79:56: error: unsolved goals
+ε δ : ℝ
+hε : 0 < ε
+hδ : 0 < δ
+⊢ √(0 ^ 2 + ε ^ 2) = ε
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:82:56: error: unsolved goals
+ε δ : ℝ
+hε : 0 < ε
+hδ : 0 < δ
+he : originalRadialWeight ε 0 = ε
+⊢ √(0 ^ 2 + δ ^ 2) = δ
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:80:48: error: This simp argument is unused:
+  zero_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_add, Real.sqrt_sq_eq_abs, abs_of_pos hε]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:80:58: error: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_pow, Real.sqrt_sq_eq_abs, abs_of_pos hε]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:81:6: error: This simp argument is unused:
+  Real.sqrt_sq_eq_abs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_pow, zero_add, abs_of_pos hε]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:81:27: error: This simp argument is unused:
+  abs_of_pos hε
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_pow, zero_add, Real.sqrt_sq_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:83:48: error: This simp argument is unused:
+  zero_pow
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_add, Real.sqrt_sq_eq_abs, abs_of_pos hδ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:83:58: error: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_pow, Real.sqrt_sq_eq_abs, abs_of_pos hδ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:84:6: error: This simp argument is unused:
+  Real.sqrt_sq_eq_abs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_pow, zero_add, abs_of_pos hδ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+diagnostics/BFSSP3AuxRADC5AOriginalPositiveRegulatorRatioIndependentConsumer.lean:84:27: error: This simp argument is unused:
+  abs_of_pos hδ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalRadialWeight, norm_zero, zero_pow, zero_add, Real.sqrt_sq_eq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+Named reports (all standard axioms, no whole-consumer qualification):
+[
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRadialWeight_mono",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRadialWeight_scaled_le",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_continuous",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_norm_le",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_mul_reverse",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalReciprocalField_mul_ratio",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_memLp_infty",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioLpInf",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioLpInf_ae",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRadialWeight_mono",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRadialWeight_scaled_le",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_continuous",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_norm_le",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_mul_reverse",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalReciprocalField_mul_ratio",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioField_memLp_infty",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioLpInf",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxRADC5AOriginalPositiveRegulatorRatio.originalRegulatorRatioLpInf_ae",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxR0AOriginalRadialScalar.originalRadialWeight_sq",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxR0AOriginalRadialScalar.originalRadialWeight_pos",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity.originalRadialWeight_continuous",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "name": "FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity.originalReciprocalLpInf_ae",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  }
+]
