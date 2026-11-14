@@ -41,7 +41,7 @@ theorem originalWeightedPhysicalAdjointSquare_domain (u : G.physicalSpace) :
       ∃ hu : u ∈ (originalWeightedPhysicalChargeColumn M G hε).domain,
         originalWeightedPhysicalChargeColumn M G hε ⟨u, hu⟩ ∈
           (originalWeightedPhysicalChargeColumn M G hε).adjoint.domain := by
-  letI : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
+  let : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
   exact naturalComp_mem_domain
 
 /-- Closed+dense Sε supplies the generic von Neumann graph argument
@@ -49,7 +49,7 @@ on the literal original input and sixteen-output Hilbert spaces. -/
 theorem originalWeightedPhysicalAdjointSquare_selfAdjoint :
     letI : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
     IsSelfAdjoint (originalWeightedPhysicalAdjointSquare M G hε) := by
-  letI : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
+  let : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
   apply selfAdjoint_of_formalSymmetry_and_shift_surjectivity
   · exact naturalFormalProduct_symmetric _ _
       (LinearPMap.adjoint_isFormalAdjoint
@@ -61,13 +61,13 @@ theorem originalWeightedPhysicalAdjointSquare_selfAdjoint :
 
 theorem originalWeightedPhysicalAdjointSquare_closed :
     (originalWeightedPhysicalAdjointSquare M G hε).IsClosed := by
-  letI : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
+  let : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
   exact (originalWeightedPhysicalAdjointSquare_selfAdjoint M G hε).isClosed
 
 theorem originalWeightedPhysicalAdjointSquare_domain_dense :
     Dense ((originalWeightedPhysicalAdjointSquare M G hε).domain :
       Set G.physicalSpace) := by
-  letI : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
+  let : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
   exact (originalWeightedPhysicalAdjointSquare_selfAdjoint M G hε).dense_domain
 
 /-- The unnormalized natural adjoint square has exactly the original
@@ -79,7 +79,7 @@ theorem originalWeightedPhysicalAdjointSquare_energy
       (u : G.physicalSpace)) =
       ‖originalWeightedPhysicalChargeColumn M G hε
         ⟨u, naturalComp_domain_le u.property⟩‖ ^ 2 := by
-  letI : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
+  let : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
   have hinner :
       inner ℂ (originalWeightedPhysicalAdjointSquare M G hε u)
         (u : G.physicalSpace) =
@@ -91,14 +91,17 @@ theorem originalWeightedPhysicalAdjointSquare_energy
     naturalFormalProduct_inner _ _
       (LinearPMap.adjoint_isFormalAdjoint
         (originalWeightedPhysicalChargeColumn_domain_dense_unconditional M G hε)) u
-  rw [hinner, inner_self_eq_norm_sq]
+  exact (congrArg Complex.re hinner).trans
+    (inner_self_eq_norm_sq (𝕜 := ℂ)
+      (originalWeightedPhysicalChargeColumn M G hε
+        ⟨u, naturalComp_domain_le u.property⟩))
 
 theorem originalWeightedPhysicalAdjointSquare_nonneg
     (u : (originalWeightedPhysicalAdjointSquare M G hε).domain) :
     0 ≤ Complex.re (inner ℂ
       (originalWeightedPhysicalAdjointSquare M G hε u)
       (u : G.physicalSpace)) := by
-  letI : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
+  let : CompleteSpace G.physicalSpace := originalPhysicalHilbertComplete M G
   rw [originalWeightedPhysicalAdjointSquare_energy M G hε u]
   exact sq_nonneg _
 
