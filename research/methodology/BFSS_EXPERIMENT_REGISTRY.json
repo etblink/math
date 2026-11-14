@@ -1630,6 +1630,54 @@
         "P1_verdict": null,
         "donor_audit": "research/top-down-symmetry/TD_C1A_R4_F13_F18_HISTORICAL_PROVENANCE_AUDIT_2026_11_13.md"
       }
+    },
+    {
+      "id": "E-TD-C1B-PROJ-CONTRACT-001",
+      "title": "Prospective exact replication of a derived counterexample to the weakened projector fixedness contract",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "EXPLICIT_ALGEBRAIC_COUNTEREXAMPLE_REPLICATION_NOT_BFSS_THEOREM",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "The historical Nov 12 research memo's conventional proof uses the entire fixed subspace, but its abbreviated proposed generic interface lists only alpha(U)=U, U P=P and self-adjointness; these are insufficient without range maximality or absorption.",
+        "question": "Do fixed integer-matrix controls reproduce the explicitly derived failure of the weakened interface and preserve the canonical full-fixed-space projection?",
+        "background": [
+          "Original OP0 range_gaugeFixedProjection and range_le_gaugeFixedSubspace",
+          "Original OP2b originalFermionGaugeProjection_range",
+          "Pinned Mathlib Submodule.starProjection_eq_self_iff",
+          "Exact mathematical counterexample already derived: U=I2, P=diag(1,0), alpha conjugates by coordinate swap. This registry preregisters only its deterministic reproduction."
+        ],
+        "hypothesis": "The weakened contract fails for the fixed C2 trivial SU2 representation and C3 nontrivial involutive group representation; replacing the latter subprojection by the full fixed-space projection gives a positive control.",
+        "falsifiers": [
+          "Any purported counterexample fails a listed weak hypothesis",
+          "Integer computation produces alpha(P)=P for the fixed subprojection",
+          "Positive-control full fixed-space projection is not fixed",
+          "Counterexample requires float tolerances or silently changes the listed matrices"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "subprojection versus full fixed-space projection in fixed small matrices"
+          ],
+          "dependent_variables": [
+            "exact matrix identity truth values",
+            "exact absorption failure witness T=alpha(P)"
+          ],
+          "controls": [
+            "Python integer arithmetic only",
+            "all weak hypotheses explicitly checked",
+            "trivial SU2 representation on C2",
+            "nontrivial C2-group action on C3",
+            "nonidentity conjugation and nonzero proper canonical projection"
+          ]
+        },
+        "analysis_plan": "Execute the committed deterministic script once, preserve JSON and script hash. A violated weak hypothesis invalidates that example. Separate the explicit counterexample from the general corrected conditional proof.",
+        "conclusion_rule": "Exact counterexample falsifies only the weakened generic interface. Neither finite controls nor the conventional corrected proof qualify a BFSS Lean gate.",
+        "communication": "Preserve the raw JSON, correct the historical memo by dated addendum, and source-bind the missing universal absorption to original OP0/OP2b."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "mathematical_qualification": false
+      }
     }
   ],
   "allowed_statuses": [
