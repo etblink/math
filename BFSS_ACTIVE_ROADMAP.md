@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## P3-AUX-RAD-C2B — sixteen-output native reciprocal candidate (UNQUALIFIED)
+## P3-AUX-RAD-C2B R1 — strict GREEN original sixteen-output PiLp reciprocal
 
-[Prospective R1 gate](research/spectral-p2-original-field/P3_AUX_RAD_C2B_R1_PROSPECTIVE_NATIVE_SIXTEEN_OUTPUT_RECIPROCAL_LIFT_2026_11_13.md) stages `B16` on true original AY `PiLp 2 (fun _ : SpinIndex => FullL2 2)`, via `ContinuousLinearMap.piMap` conjugated by AY `originalMinimalHilbertOutputEquiv`; three roots cover the bounded map, exact original charge-output coordinates and injectivity. Source, native output consumer and strict pinned workflow staged. **No new theorem qualification until strict GREEN.** RAD-C2A/G0B3 remain accepted; next if GREEN is RAD-C3 actual original AY inverse-image closed graph.
+[Verified strict #43568618192](https://github.com/etblink/math/actions/runs/43568618192), head `fd745c3598bb237088f7a964ac810c82a2f91a35` qualified the genuine AY `PiLp` bounded `B16ε`, its literal sixteen-coordinate application equation, and `Function.Injective B16ε`; source+consumer three-root axiom audit `[propext, Classical.choice, Quot.sound]`. [Acceptance receipt](research/spectral-p2-original-field/P3_AUX_RAD_C2B_R1_GREEN_43568618192_ACCEPTANCE_2026_11_13.md); artifact #14103862228, SHA256 `820e76bd29de19a9694c0eb67a557dbf86f04f8355484b405089baaac17b8fb0`. Roadmap consistency [#43568618072](https://github.com/etblink/math/actions/runs/43568618072) also GREEN. **Next RAD-C3:** original AY physical-input closed inverse-image graph under `id×B16ε`; original M5BF0 and TD-C1A dispositions unchanged.
+
+## P3-AUX-RAD-C2B — historical R1 staged candidate (now accepted)
+
+[Prospective R1 gate](research/spectral-p2-original-field/P3_AUX_RAD_C2B_R1_PROSPECTIVE_NATIVE_SIXTEEN_OUTPUT_RECIPROCAL_LIFT_2026_11_13.md) stages `B16` on true original AY `PiLp 2 (fun _ : SpinIndex => FullL2 2)`, via `ContinuousLinearMap.piMap` conjugated by AY `originalMinimalHilbertOutputEquiv`; three roots cover the bounded map, exact original charge-output coordinates and injectivity. Source, native output consumer and strict pinned workflow staged. **This R1 is now accepted by exact strict GREEN above.** RAD-C2A/G0B3 remain accepted; next if GREEN is RAD-C3 actual original AY inverse-image closed graph.
 
 ## P3-AUX-RAD-C2A — STRICT GREEN accepted reciprocal injectivity
 
