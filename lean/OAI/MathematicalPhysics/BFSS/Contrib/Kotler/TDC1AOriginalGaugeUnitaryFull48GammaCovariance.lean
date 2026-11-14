@@ -1,5 +1,6 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.C48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner
 import Mathlib.LinearAlgebra.StdBasis
+import Mathlib.Topology.Algebra.Module.ContinuousLinearMap.RestrictScalars
 
 /-!
 # TD-C1A — true original gauge unitary / all 48 real Majorana labels
@@ -28,18 +29,22 @@ theorem originalGaugeUnitary_S1J_gamma_allVector_forward
       (sourceGammaRealLinear
           ((FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec v))
         (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q ψ) := by
+  let Ureal : Fermion 2 →L[ℝ] Fermion 2 :=
+    ((FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q).toContinuousLinearMap).restrictScalars ℝ
   let L : Source48Vector →ₗ[ℝ] Fermion 2 :=
-    { toFun := fun v =>
-        FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q
-          ((sourceGammaRealLinear v) ψ)
+    { toFun := fun v => Ureal ((sourceGammaRealLinear v) ψ)
       map_add' := by
         intro v w
         simp [map_add]
       map_smul' := by
         intro c v
-        simpa only [map_smul, Complex.coe_smul] using
-          (map_smul (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q)
-            (c : ℂ) ((sourceGammaRealLinear v) ψ)) }
+        calc
+          Ureal ((sourceGammaRealLinear (c • v)) ψ) =
+              Ureal ((c • sourceGammaRealLinear v) ψ) := by
+                rw [map_smul]
+          _ = Ureal (c • ((sourceGammaRealLinear v) ψ)) := rfl
+          _ = c • Ureal ((sourceGammaRealLinear v) ψ) :=
+            Ureal.map_smul c _ }
   let R : Source48Vector →ₗ[ℝ] Fermion 2 :=
     { toFun := fun v =>
         (sourceGammaRealLinear
@@ -67,11 +72,18 @@ theorem originalGaugeUnitary_S1J_gamma_allVector_forward
           Source48Vector) =
           (Pi.single p (1 : ℝ) : Source48Vector)
       rw [hz]
-    change L (Pi.single p (1 : ℝ)) = R (Pi.single p (1 : ℝ))
-    rw [← haxis]
-    exact
-      FCP.BFSSC48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner.originalGaugeUnitary_S1J_gamma_axis_forward
-        q z.1.1 z.1.2 z.2 ψ
+    have hsource :
+        L (sourceBlockColorAxis z.1 z.2) =
+          R (sourceBlockColorAxis z.1 z.2) := by
+      exact
+        FCP.BFSSC48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner.originalGaugeUnitary_S1J_gamma_axis_forward
+          q z.1.1 z.1.2 z.2 ψ
+    rw [Pi.basisFun_apply]
+    calc
+      L (Pi.single p (1 : ℝ)) =
+          L (sourceBlockColorAxis z.1 z.2) := congrArg L haxis.symm
+      _ = R (sourceBlockColorAxis z.1 z.2) := hsource
+      _ = R (Pi.single p (1 : ℝ)) := congrArg R haxis
   exact congrArg (fun f : Source48Vector →ₗ[ℝ] Fermion 2 => f v) hLR
 
 #print axioms originalGaugeUnitary_S1J_gamma_allVector_forward
