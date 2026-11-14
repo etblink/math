@@ -2,7 +2,7 @@
 
 ## HARDY-G2 R2 — staged, strict qualification pending
 
-R1 red checkpoint and prospective current-lemma repair committed at `c616b2540a0c6a730f9e2c95ae9153ef8ca9036e` before edit. Sole proof delta: if_neg hij -> ite_eq_right hij. All original statements/coefficient definitions and full consumer fixed; warning-as-error retained. Source `952890f8056c2b115d69a03c08c39762210c1a0b`, consumer `f53612702cbf1b69c5ced0463baf17bb15dbf209`, workflow `1e0123c3dd8cffd70936c14fede2d2c6ab35f0bd`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean. **Unqualified pending complete cold/fresh original source and native consumer, five/ten reports.**
+R1 red checkpoint and prospective current-lemma repair committed at `c616b2540a0c6a730f9e2c95ae9153ef8ca9036e` before edit. Sole proof delta: if_neg hij -> ite_eq_right hij. All original statements/coefficient definitions and full consumer fixed; warning-as-error retained. Source `952890f8056c2b115d69a03c08c39762210c1a0b`, consumer `f53612702cbf1b69c5ced0463baf17bb15dbf209`, workflow `1e0123c3dd8cffd70936c14fede2d2c6ab35f0bd`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean. [Strict #43632885471](https://github.com/etblink/math/actions/runs/43632885471) tests exact `874343debfc492be5c872ae1908c565a31548d68`, job #132563163808; checkout/preflight pending at binding. Administrative #43632885406 is separate. **Unqualified pending complete cold/fresh original source and native consumer, five/ten reports.**
 
 ## HARDY-G2 R1 — RED, strict deprecated-lemma check
 
