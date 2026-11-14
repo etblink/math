@@ -58,6 +58,16 @@ The decisive obligations, each separately checkable, are:
 
 **Reason to prefer this route:** the repo already has both the closed `T.graph` and the exact `Submodule.comap` / vertical-uniqueness proof pattern. The difficult construction becomes an ordinary *bounded* reciprocal map on `L²`, followed by reuse of closed-submodule machinery. No unbounded multiplier API need be invented at the outset. This is a **proposal**, not a newly compiled theorem or verification gate.
 
+## 2B. Later November 13 dependency review after G0B2 acceptance
+
+The original status paragraphs above describe this contract's earlier snapshot; the canonical live checkpoint and exact acceptance receipts govern subsequent R0/G0B qualifications.
+
+The [source-bound G0B3/output-multiplier dependency review](P3_AUX_G0B3_OUTPUT_MULTIPLIER_DEPENDENCY_REVIEW_2026_11_13.md) confirms a short physicalSpace-preservation proof from accepted G0B1/G0B2, using the literal intersection of kernels. This compatibility result is useful, but it is **not required for the ambient-output inverse-image graph in Section 2A**: the multiplier acts on K=PiLp 2 (SpinIndex→FullL2 2), while physicalSpace constrains the input E.
+
+The essential missing output prerequisites are native reciprocal injectivity and its bounded injective sixteen-output lift. Pinned Mathlib ContinuousLinearMap.piMap and the exact continuous Hilbert-output equivalence already used by AY give a concrete construction. Continuity and injectivity suffice for closedness; a sharp norm constant can be proved later if needed. Preserve the final source PiLp2 carrier and verify its coordinate action.
+
+Weighted core-range membership supplies the intended density route; a global maximal-domain identification remains separate. This source review stages no new theorem or workflow and does not infer the concurrent R4 result.
+
 ## 3. Density bridge discovered in original source — substantial reuse
 
 There is a stronger existing theorem chain than merely `Dense D(T)`:
