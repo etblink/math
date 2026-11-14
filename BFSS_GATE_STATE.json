@@ -1568,7 +1568,7 @@
     },
     "r4_interface_probe": {
       "experiment_id": "E-TD-C1A-R4-P0P1-R3",
-      "status": "PENDING_INTERFACE_CI_UNQUALIFIED",
+      "status": "RED_INTERFACE_UNQUALIFIED",
       "qualification": false,
       "run_id": 43550275483,
       "generic_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.lean",
@@ -1584,13 +1584,17 @@
       "previous_red_run_id": 43549082375,
       "previous_red_receipt": "research/top-down-symmetry/TD_C1A_R4_INTERFACE_R2_RED_43549082375_MISSING_NORMED_MODULE_IMPORT_2026_11_13.md",
       "full_strict_r4_launched": false,
-      "next_decision": "Inspect focused retry after explicit Normed.Module.Basic import. Do not infer native result until P1 actually executes.",
+      "next_decision": "Two-RED interface review: replace nonexistent isometry-equivalence direct field with pinned explicit continuous-map cast in generic and native intermediate expressions; no target weakening.",
       "red_checkpoint_consistency_run_id": 43548764350,
       "red_checkpoint_consistency_conclusion": "success",
       "candidate_sha": "4f375b1a0a63a20ad7c1260e375aa19b16767306",
       "tested_sha": "4f375b1a0a63a20ad7c1260e375aa19b16767306",
-      "last_observed_run_status": "in_progress",
-      "workflow_blob": "7925c2284c898d911879aa7ff3055937eb5c1e32"
+      "last_observed_run_status": "completed",
+      "workflow_blob": "7925c2284c898d911879aa7ff3055937eb5c1e32",
+      "conclusion": "failure",
+      "red_receipt": "research/top-down-symmetry/TD_C1A_R4_INTERFACE_R3_RED_43550275483_INVALID_ISOMETRY_FIELD_2026_11_13.md",
+      "artifact_id": 14095099799,
+      "artifact_digest": "sha256:2c675acedb3c550b3f0561d81ba44c1bc73285f76d4cfe59f1ec6eb29de1f3f4"
     },
     "r4_donor_provenance_audit": {
       "date": "2026-11-13",
@@ -1657,6 +1661,28 @@
       "native_probe": "SKIPPED",
       "qualification": false,
       "first_causal": "Generic evaluation source 13:24 Unknown identifier NormedField; failed variable declaration causes subsequent unknown E/scalar/universe diagnostics. No native Fock experiment reached."
+    },
+    "r4_interface_r3_red": {
+      "run_id": 43550275483,
+      "tested_sha": "4f375b1a0a63a20ad7c1260e375aa19b16767306",
+      "job_id": 132310911779,
+      "status": "RED_UNQUALIFIED",
+      "conclusion": "failure",
+      "artifact_id": 14095099799,
+      "artifact_size_bytes": 6424,
+      "artifact_digest": "sha256:2c675acedb3c550b3f0561d81ba44c1bc73285f76d4cfe59f1ec6eb29de1f3f4",
+      "artifact_digest_verified": true,
+      "evaluation_blob": "a7a5e1b0b4f3f14fbb17a6b509cb7446d69bc3fe",
+      "native_blob": "241dada0969f9f3f2c762b93e15d6e751bac637f",
+      "workflow_blob": "7925c2284c898d911879aa7ff3055937eb5c1e32",
+      "P0": "COMPILER_AND_IMMEDIATE_AUDIT_PASS",
+      "P0B": "INVALID_LINEAR_ISOMETRY_EQUIV_FIELD",
+      "original_axis_build": "SKIPPED",
+      "native_probe": "SKIPPED",
+      "receipt": "research/top-down-symmetry/TD_C1A_R4_INTERFACE_R3_RED_43550275483_INVALID_ISOMETRY_FIELD_2026_11_13.md",
+      "raw_evidence": "research/top-down-symmetry/evidence/TD_C1A_R4_INTERFACE_R3_43550275483/",
+      "qualification": false,
+      "first_causal": "Generic helper 21:6 invalid field LinearIsometryEquiv.toContinuousLinearMap; same mistaken shortcut repeated in both theorem statements. NormedField import repair succeeded. No original native Fock stage reached."
     }
   }
 }
