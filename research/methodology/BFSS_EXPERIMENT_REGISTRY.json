@@ -3926,8 +3926,8 @@
       "id": "E-P3-AUX-HARDY-X0-R2",
       "title": "Explicit real source unit-row typing for original Xi norm",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
-      "qualification": false,
+      "status": "LEAN_QUALIFIED",
+      "qualification": true,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_X0_R2_PRE_GATE_EXPLICIT_REAL_UNIT_ROW_2026_11_14.md",
       "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyX0OriginalXiNormAndCutoff.lean",
@@ -3991,7 +3991,85 @@
       "workflow_blob": "5cb529d576127105fb2999cf1c911472d05ed4f7",
       "run_id": 43625439216,
       "tested_sha": "6668e4de9fae852b5947afc3d51e8102aea97d9e",
-      "job_id": 132540099559
+      "job_id": 132540099559,
+      "acceptance_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_X0_R2_GREEN_43625439216_ORIGINAL_XI_NORM_CUTOFF_ACCEPTANCE_2026_11_14.md",
+      "result": {
+        "run_id": 43625439216,
+        "tested_sha": "6668e4de9fae852b5947afc3d51e8102aea97d9e",
+        "source_reports": 5,
+        "consumer_reports": 10,
+        "manifest_pins": 147,
+        "manifest_hash": "e7ead1e900cfe795a3a9ca2ed98c1ffb928e4104524783093f604b62574dd6bd",
+        "artifact_id": 14126271213,
+        "artifact_digest": "sha256:893f27098d03ef2dd1bee91bba6c4f7624c03523c5cff019847cd538b5769f43",
+        "full_native_consumer_passed": true,
+        "origin_and_wrong_factor_sixteen_controls_passed": true,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G1-R1",
+      "title": "Native original odd three/five gamma traces",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_PRE_GATE_NATIVE_ODD_GAMMA_TRACES_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG1OriginalOddGammaTracesIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g1-original-odd-gamma-traces-strict.yml",
+      "roots": [
+        "originalGamma_missing_of_length_le_five",
+        "originalGamma_trace_of_missing_odd",
+        "originalGamma_three_trace_zero",
+        "originalGamma_five_trace_zero",
+        "originalGamma_square_trace"
+      ],
+      "donor_roots": [
+        "OAI.BFSSGamma.gamma_sq",
+        "OAI.BFSSGamma.gamma_anti",
+        "OAI.BFSSGamma.list_commute",
+        "OAI.BFSSGamma.list_conj",
+        "OAI.BFSSGamma.trace_conj"
+      ],
+      "stages": {
+        "observation": "Hardy potential/tau step needs odd traces; native GammaWords already has arbitrary ordered-list conjugation and cyclic trace.",
+        "question": "Can original gamma three/five traces qualify without group implementation or private tables?",
+        "background": [
+          "HARDY-X0 R2 strict acceptance",
+          "Current Core/GammaWords/G4J read",
+          "Pinned finite-list cardinality APIs verified"
+        ],
+        "hypothesis": "Unused one of nine gamma labels gives negative conjugation for odd three/five products, forcing zero trace.",
+        "falsifiers": [
+          "wrong product order/normalization",
+          "overclaim all words trace zero",
+          "source/consumer failure",
+          "physical group assumption introduced"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "all original labels including repeats",
+            "explicit ninth-label control"
+          ],
+          "dependent_variables": [
+            "five source/ten consumer reports",
+            "native square trace16 and nonzero"
+          ],
+          "controls": [
+            "frozen original OAI sources",
+            "actual pairedAlgebraData",
+            "same strict policy and toolchain"
+          ]
+        },
+        "analysis_plan": "Cold/fresh exact source and full native consumer; audit report order/axioms and measured manifest.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete original source and paired consumer strict acceptance.",
+        "communication": "Finite original gamma trace algebra only; no Hardy/fidelity promotion."
+      }
     }
   ],
   "allowed_statuses": [

@@ -1,6 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## P3-AUX-HARDY-X0 R2 — staged, strict qualification pending
+## HARDY-X0 R2 — accepted; HARDY-G1 next source-algebra obligation
+
+[Strict #43625439216](https://github.com/etblink/math/actions/runs/43625439216) GREEN at `6668e4de9fae852b5947afc3d51e8102aea97d9e`: complete cold source and actual native consumer, five/ten ordered standard-axiom reports, 147 pins, manifest `e7ead1e900cfe795a3a9ca2ed98c1ffb928e4104524783093f604b62574dd6bd`; origin and incorrect-factor-16 controls PASS. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_X0_R2_GREEN_43625439216_ORIGINAL_XI_NORM_CUTOFF_ACCEPTANCE_2026_11_14.md). Xi source norm coefficients and actual cutoff coupling qualified; full Hardy/fidelity remains open.
+
+[HARDY-G1 prospective gate](research/spectral-p2-original-field/P3_AUX_HARDY_G1_R1_PRE_GATE_NATIVE_ODD_GAMMA_TRACES_2026_11_14.md) selects original ordered three/five gamma trace cancellation via existing GammaWords conjugation and an unused one of nine labels; repeated labels allowed, even square trace16/nonzero controls required. Generic/current source review replaces unavailable historical probe-path assumptions. **G1 not staged yet.**
+
+## P3-AUX-HARDY-X0 R2 — historical launch (accepted above)
 
 R1 red checkpoint and explicit-real-row preregistration committed at `92becdf0535671ba7fe39daf791e9368661b4e63`; administrative #43625158812 GREEN. The sole proof change explicitly types the local unit row as `SpinIndex → ℝ` and its squared sum as ℝ. Consumer byte-identical; workflow only expected source hash changes. Source `82505cfb51e833fdddb97b456812a3a086989f1d`, consumer `1c81d54d3d14c13d0b4bcaddea0a8602d20e73b8`, workflow `5cb529d576127105fb2999cf1c911472d05ed4f7`. Static exact-delta/hash/YAML/bash/embedded-Python checks PASS; no local Lean available. Five/ten strict reports and all native origin/incorrect-coefficient controls still required. [Strict #43625439216](https://github.com/etblink/math/actions/runs/43625439216) tests exact `6668e4de9fae852b5947afc3d51e8102aea97d9e`, job #132540099559; checkout/preflight pending at binding. Administrative #43625439235 is separate. **Unqualified pending strict CI.**
 
