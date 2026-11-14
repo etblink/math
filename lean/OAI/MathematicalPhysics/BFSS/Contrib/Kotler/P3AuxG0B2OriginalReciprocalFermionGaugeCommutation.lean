@@ -15,6 +15,7 @@ noncomputable section
 open OAI.BFSSQuantum
 open OAI.BFSSQuantum.AlgebraData
 open FCP.BFSSSU2GaugeG4J
+open FCP.BFSSP3AuxR0B1OriginalReciprocalLpInfinity
 open FCP.BFSSP3AuxR0B2AOriginalReciprocalFullL2BoundedAction
 open FCP.BFSSP3AuxG0B0OriginalReciprocalFullL2AEMultiplication
 open MeasureTheory
