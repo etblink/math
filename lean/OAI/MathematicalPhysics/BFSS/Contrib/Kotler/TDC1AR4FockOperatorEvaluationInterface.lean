@@ -1,3 +1,4 @@
+import Mathlib.Analysis.Normed.Module.Basic
 import Mathlib.Analysis.Normed.Operator.LinearIsometry
 
 /-!

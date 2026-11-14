@@ -1788,6 +1788,53 @@
         "mathematical_qualification": false,
         "full_strict_r4_launched": false
       }
+    },
+    {
+      "id": "E-TD-C1A-R4-P0P1-R3",
+      "title": "Focused R4 import-only repair: expose the pinned normed-field/module hierarchy",
+      "registered_at": "2026-11-13",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "GENERIC_HELPER_IMPORT_ONLY_NO_PROOF_BODY_CHANGE",
+      "qualified_physical_claim": false,
+      "stages": {
+        "observation": "R2 P0 compiler/audit PASS; P0B source 13:24 NormedField unknown; original dependency build/native P1 skipped.",
+        "question": "Does explicitly importing pinned Normed.Module.Basic expose the helper assumptions and allow the same generic and native targets to be tested?",
+        "background": [
+          "R2 RED receipt and verified artifact committed at 72532f4d150aef6d182495677c6618d93951f302",
+          "Pinned Module.Basic defines NormedSpace and publicly imports Field.Lemmas -> Field.Basic defining NormedField"
+        ],
+        "hypothesis": "The source-reviewed direct import repairs the first causal unknown identifier without changing theorem statements or proof bodies.",
+        "falsifiers": [
+          "Generic hierarchy remains unavailable",
+          "Another generic proof/type error",
+          "Original native recursion persists when P1 is reached",
+          "Any source pin, warning/root/axiom or bounded-runtime failure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "one direct generic-helper import and its expected workflow blob pin"
+          ],
+          "dependent_variables": [
+            "same P0/P0B/native compiler and immediate root/warning audits"
+          ],
+          "controls": [
+            "all proof bodies and native probe unchanged",
+            "same standard axioms and 120-second new-proof budgets",
+            "same original frozen source/consumer/workflow and toolchain"
+          ],
+          "old_helper_blob": "df617aa024e3890465a098b4c339765a8e7f6d15",
+          "new_helper_blob": "a7a5e1b0b4f3f14fbb17a6b509cb7446d69bc3fe"
+        },
+        "analysis_plan": "Preserve exact stage and first error; distinguish generic success from actual native execution.",
+        "conclusion_rule": "Focused success is feasibility only; no full original TD-C1A qualification or physical promotion.",
+        "communication": "research/top-down-symmetry/TD_C1A_R4_INTERFACE_R3_EXPLICIT_NORMED_MODULE_IMPORT_2026_11_13.md"
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "mathematical_qualification": false,
+        "full_strict_r4_launched": false,
+        "previous_red_run_id": 43549082375
+      }
     }
   ],
   "allowed_statuses": [
