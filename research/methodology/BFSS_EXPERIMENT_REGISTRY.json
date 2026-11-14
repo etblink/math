@@ -5083,7 +5083,7 @@
       "id": "E-P3-AUX-HARDY-G5-R4",
       "title": "Explicit complex zero-scalar reduction in two original native controls",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R4_PRE_GATE_EXPLICIT_COMPLEX_ZERO_SCALAR_CONTROLS_2026_11_14.md",
@@ -5144,7 +5144,79 @@
       },
       "run_id": 43651471352,
       "tested_sha": "5d8e066d34e1c2f400c5affd05131fb17ea4a4d9",
-      "job_id": 132620666588
+      "job_id": 132620666588,
+      "result": {
+        "run_id": 43651471352,
+        "tested_sha": "5d8e066d34e1c2f400c5affd05131fb17ea4a4d9",
+        "job_id": 132620666588,
+        "manifest_pins": 151,
+        "manifest_hash": "3c70f4d01df2a808fcf08b13fc68273ff92cbc6ec9abfdeb14932d1a22affa18",
+        "helper_pass": true,
+        "cold_build_jobs": 9073,
+        "six_fresh_source_roots_standard_axioms": true,
+        "native_direct_source_applications_no_error": true,
+        "errors": [
+          "diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean:58:2: error: `simp` made no progress",
+          "diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean:63:2: error: `simp` made no progress"
+        ],
+        "artifact_id": 14136821694,
+        "artifact_bytes": 18788,
+        "artifact_digest": "sha256:6dee1ca1b03c0d9b3b66a7e968dfc4f09ef32a64436d5ae5cd11f85e66ebb84e",
+        "artifact_digest_verification": "API matches upload log; ZIP not independently rehashed",
+        "whole_gate_qualified": false,
+        "stop_rule_activated": true,
+        "first_causal": "Two added explicit zero_smul Complex/sum_const_zero simp-only steps make no progress at native consumer58:2 and63:2. No source or helper error. Scalar-action/instance mismatch is a hypothesis requiring typed observation."
+      },
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R4_RED_43651471352_ZERO_ACTION_STOP_2026_11_14.md"
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G5-D0",
+      "title": "Calibrated typed zero-action and native residual-goal collection",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_D0_TYPED_ZERO_ACTION_DIAGNOSTIC_PLAN_2026_11_14.md",
+      "prior_red_run": 43651471352,
+      "stages": {
+        "observation": "Two added explicit zero_smul Complex/sum_const_zero simp-only steps make no progress at native consumer58:2 and63:2. No source or helper error. Scalar-action/instance mismatch is a hypothesis requiring typed observation.",
+        "question": "Do canonical complex zero-action proofs work generically, on the actual Fock carrier and on original theta data; where does the native residual goal first differ?",
+        "background": [
+          "Exact R3 and R4 failures",
+          "D2R2 calibrated raw-expression inspector and positive-control discipline",
+          "Literal original source/helper passed twice"
+        ],
+        "hypothesis": "A typed canonical finite zero-sum witness may expose a normalization or elaborated-instance difference hidden by ordinary pretty printing; tree inequality alone is not definitional incompatibility.",
+        "falsifiers": [
+          "Generic or actual-carrier calibration fails",
+          "Inspector fails or no expected observation marker",
+          "Native canonical-zero proof fails",
+          "Matching raw expression does not resolve a join",
+          "Timeout or unreviewed source drift"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Generic vs actual carrier vs actual theta data",
+            "Canonical zero sum vs coefficient-defined Clifford zero",
+            "Literal canonical witness vs post-simp residual goal"
+          ],
+          "dependent_variables": [
+            "Eight case outcomes",
+            "Raw witness/goal comparison",
+            "Exact compile errors and permitted-axiom reports"
+          ],
+          "controls": [
+            "Unchanged existing D2R2 inspector, compiled first",
+            "Generic and variable-Fock positives before native build",
+            "Strict G5 source/helper/consumer/workflow bytes frozen",
+            "No resource-limit changes",
+            "Observations deliberately unproved; joins assessed separately"
+          ]
+        },
+        "analysis_plan": "Eight cases: generic finite CLM zero sum; variable actual Fock zero action/sum; literal theta zero sum; Clifford-zero join; tau residual observation; potential residual observation; tau canonical-witness join; potential canonical-witness join. Build inspector/generic first, Core controls second, native dependencies third. Failed calibration stops dependent stages. Observe with preserved D2R2 comparator, trace_state and deliberate stop. Record native join failures independently; collection success never qualifies G5.",
+        "conclusion_rule": "Only diagnostic collection. No strict G5 acceptance or public proof repair from a green collector. Review exact case evidence before proposing a new strict candidate.",
+        "communication": "Keep positive helper/source results, preserve negative native zero-control evidence, report case-level status and stop uncertainty. No mathematical or physical scope promotion."
+      }
     }
   ],
   "allowed_statuses": [
