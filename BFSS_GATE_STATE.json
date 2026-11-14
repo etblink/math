@@ -1490,7 +1490,7 @@
       "no physical FullL2 spin reduction",
       "no new Hamiltonian or auxiliary gap"
     ],
-    "next_decision": "Stop failed L/R Fock-vector proof architecture. Design higher-level source operator-valued linear-map proof or bounded finite basis sum, with smaller preflight before future strict CI. No R4 launched until architecture reviewed.",
+    "next_decision": "Original TD-C1A remains RED_UNQUALIFIED. R4 focused native interface is RED; preserve raw evidence, keep abstract basis result compiler-only, and review generic operator/vector conversion lemmas before any bounded focused retry.",
     "strict_run_id": 43541591975,
     "strict_tested_sha": "ffb2e6b9f5e305d99a09ebedfaa7ec1864626a68",
     "strict_run_status": "COMPLETED_RED",
@@ -1553,7 +1553,7 @@
     },
     "r4_interface_probe": {
       "experiment_id": "E-TD-C1A-R4-P0P1",
-      "status": "PENDING_INTERFACE_CI_UNQUALIFIED",
+      "status": "RED_INTERFACE_UNQUALIFIED",
       "qualification": false,
       "generic_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AR4OperatorBasisExtensionInterface.lean",
       "generic_blob": "cdb8d99d028d11670343cf3082b09f8163ae9117",
@@ -1563,18 +1563,22 @@
       "contract": "research/top-down-symmetry/TD_C1A_R4_P0_P1_OPERATOR_INTERFACE_PROBE_CONTRACT_2026_11_13.md",
       "full_strict_r4_launched": false,
       "run_id": 43546806160,
-      "next_decision": "Inspect exact P0/P1 probe receipt. GREEN permits preparing original R4 source only; RED requires first-causal preservation. Original TD-C1A remains RED_UNQUALIFIED.",
+      "next_decision": "Generic-first source-reviewed conversion-boundary repair; audit generic stages before predecessor build. No full strict R4 until focused native interface succeeds.",
       "candidate_sha": "454fad941b2b4b7e8bc54014420ad83087914a2d",
       "tested_sha": "454fad941b2b4b7e8bc54014420ad83087914a2d",
       "job_id": 132299931331,
-      "last_observed_run_status": "in_progress",
+      "last_observed_run_status": "completed",
       "workflow_blob": "ac90b8c9aa518ad0c7f447841537b94049f581be",
       "preflight": "PASS_OBSERVED",
-      "last_observed_phase": "RESTORING_PINNED_TOOLCHAIN",
+      "last_observed_phase": "P1_NATIVE_COMPILE_FAILED",
       "checkpoint_consistency_run_id": 43546885126,
       "checkpoint_consistency_conclusion": "success",
       "staging_consistency_run_id": 43546806027,
-      "staging_consistency_conclusion": "success"
+      "staging_consistency_conclusion": "success",
+      "conclusion": "failure",
+      "red_receipt": "research/top-down-symmetry/TD_C1A_R4_P0P1_RED_43546806160_FIRST_CAUSAL_2026_11_13.md",
+      "artifact_id": 14095221825,
+      "artifact_digest": "sha256:e4052878d404575e028c444e92ceb55c6dbdbcbfa94ed112d5133fc0033b8d9d"
     },
     "r4_donor_provenance_audit": {
       "date": "2026-11-13",
@@ -1599,6 +1603,26 @@
       "qualification": false,
       "r4_outcome_inferred": false,
       "next_decision": "Await independent R4 interface receipt; retain original full strict TD-C1A consumer. Use generic units packaging and source-bound absorption in future C1B designs."
+    },
+    "r4_p0p1_red": {
+      "run_id": 43546806160,
+      "tested_sha": "454fad941b2b4b7e8bc54014420ad83087914a2d",
+      "job_id": 132299931331,
+      "status": "RED_UNQUALIFIED",
+      "conclusion": "failure",
+      "generic_source_blob": "cdb8d99d028d11670343cf3082b09f8163ae9117",
+      "native_source_blob": "7084d41b69603e521ee1f96c7572f56c1b4aa5d8",
+      "workflow_blob": "ac90b8c9aa518ad0c7f447841537b94049f581be",
+      "artifact_id": 14095221825,
+      "artifact_size_bytes": 17513,
+      "artifact_digest": "sha256:e4052878d404575e028c444e92ceb55c6dbdbcbfa94ed112d5133fc0033b8d9d",
+      "artifact_digest_verified": true,
+      "receipt": "research/top-down-symmetry/TD_C1A_R4_P0P1_RED_43546806160_FIRST_CAUSAL_2026_11_13.md",
+      "raw_evidence": "research/top-down-symmetry/evidence/TD_C1A_R4_P0P1_43546806160/",
+      "P0_compiler_step": "PASS_WITH_DEPRECATED_IMPORT_WARNING_NOT_STRICT_QUALIFIED",
+      "original_axis_prerequisite": "COMPILED",
+      "first_causal": "P1 29:15 RingHom.id scalar annotation unresolved; 46:4 native pointwise-to-operator boundary recurses; 86:2 native operator-to-pointwise boundary recurses. P0 abstract proof compiles but has deprecated import warning; late final audit not reached.",
+      "qualification": false
     }
   }
 }
