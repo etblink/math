@@ -1463,7 +1463,7 @@
   "parallel_topdown_spin_gauge_full48_experiment": {
     "date": "2026-11-13",
     "gate": "TD-C1A",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "source_candidate_commit": "991f3bf43525226c6155bddaeaa775380668e67f",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AOriginalGaugeUnitaryFull48GammaCovariance.lean",
@@ -1490,10 +1490,10 @@
       "no physical FullL2 spin reduction",
       "no new Hamiltonian or auxiliary gap"
     ],
-    "next_decision": "Check exact strict #43539398734 source+native consumer+root. If failure preserve new first cause; only source-exact full-vector gauge lemma GREEN qualifies, not Spin9 gauge fixedness.",
+    "next_decision": "R3 original source proof architecture avoids deep simpa via restrictScalars ℝ and avoids elaborating L/R via change; require cold original source/consumer GREEN; preserve both R1/R2 reds.",
     "strict_run_id": 43539398734,
     "strict_tested_sha": "5564c2f15044326f34f16d8a06c1cba7e131a958",
-    "strict_run_status": "IN_PROGRESS_AT_LAST_CHECK",
+    "strict_run_status": "COMPLETED_RED",
     "workflow_blob": "cc55480565ee935d499baef11c0ea4fe0f712372",
     "strict_conclusion": "failure",
     "r1_red": {
@@ -1512,6 +1512,20 @@
     "candidate_sha": "6d156c9f2e8b06c2be5d8b032cd27ecc4d8902d6",
     "run_id": 43539398734,
     "attempt_label": "R2_EXPLICIT_REAL_SMUL_AND_TYPED_BASIS",
-    "prospective_r2": "research/top-down-symmetry/TD_C1A_R2_PROSPECTIVE_REAL_SCALAR_AND_TYPED_BASIS_REPAIR_2026_11_13.md"
+    "prospective_r2": "research/top-down-symmetry/TD_C1A_R2_PROSPECTIVE_REAL_SCALAR_AND_TYPED_BASIS_REPAIR_2026_11_13.md",
+    "r2_red": {
+      "run_id": 43539398734,
+      "tested_sha": "6d156c9f2e8b06c2be5d8b032cd27ecc4d8902d6",
+      "job_id": 132276153380,
+      "source_blob": "1cd598864884b8c84159c1b899609b2baf06bed5",
+      "consumer_blob": "7c9998173589de762a486e60508c3a40fcdee2ac",
+      "workflow_blob": "cc55480565ee935d499baef11c0ea4fe0f712372",
+      "first_causal": "source line 40:8 recursion-depth elaboration on simpa only map_smul and Complex.coe_smul of original G4E Fock unitary; second line 70:4 recursion-depth while change L/R basis goal; frozen preflight and predecessor successful",
+      "artifact_id": 14092041009,
+      "artifact_size_bytes": 13901,
+      "artifact_digest": "sha256:b7bc1fd6092506ee711d4e378e7942b26ae8a26e848c69f3da613d114ed8c37f",
+      "receipt": "research/top-down-symmetry/TD_C1A_R2_RED_43539398734_FIRST_CAUSAL_2026_11_13.md",
+      "source_qualified": false
+    }
   }
 }
