@@ -1,5 +1,9 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## HARDY-G3 prospective — original Y actual derivative contraction
+
+[Pre-gate](research/spectral-p2-original-field/P3_AUX_HARDY_G3_R1_PRE_GATE_ORIGINAL_Y_DERIVATIVE_CONTRACTION_2026_11_14.md) commits to a native continuous-linear assembly of accepted Y, its actual fderiv, and nine-direction contraction1/4. Two longitudinal1/16 and seven transverse1/56 contributions; a ninth-axis control and probe4/not8 test the coefficient G2 trace cannot see. Five roots/ten reports, twelve native examples; explicit finite color witness and closed numeric bounds. **No G3 source staged yet.**
+
 ## HARDY-G2 R3 — accepted; derivative contraction source review next
 
 [Strict #43634684249](https://github.com/etblink/math/actions/runs/43634684249) GREEN at `412da2700fb35f095991ae5a1a827f303093d4ba`: full original source and native consumer, five/ten standard-axiom reports, eleven controls, 148 pins, manifest `d607fff042cdd933839a7b7965fca6742ad5844e956eaf2c454cf5d60a389d26`. Both coordinate axes, swapped plane, origin and wrong-sign rejection PASS. [Acceptance](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R3_GREEN_43634684249_ORIGINAL_PLANE_COEFFICIENT_TRACE_ACCEPTANCE_2026_11_14.md). Source trace contraction qualified; R1/R2 negatives preserved.
