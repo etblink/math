@@ -1,5 +1,5 @@
 import Mathlib.Algebra.Algebra.Bilinear
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
 import Mathlib.LinearAlgebra.StdBasis
 
 /-!
@@ -40,4 +40,3 @@ theorem operator_covariance_of_basis
 
 end
 end FCP.BFSSTDC1AR4OperatorBasisExtensionInterface
-

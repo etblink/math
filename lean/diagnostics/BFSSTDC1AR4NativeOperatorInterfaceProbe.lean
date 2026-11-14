@@ -1,4 +1,5 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.TDC1AR4OperatorBasisExtensionInterface
+import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.TDC1AR4FockOperatorEvaluationInterface
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.C48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner
 
 /-!
@@ -18,6 +19,7 @@ open FCP.BFSSS1V0
 open FCP.BFSSS1V5
 open FCP.BFSSSource48RealLinearGamma
 open FCP.BFSSTDC1AR4OperatorBasisExtensionInterface
+open FCP.BFSSTDC1AR4FockOperatorEvaluationInterface
 
 /-- Literal original S1J multiplication, packaged over its label space only. -/
 def originalColorLinear (q : GaugeGroup 2) :
@@ -28,7 +30,7 @@ def originalColorLinear (q : GaugeGroup 2) :
     exact Matrix.mulVec_add _ v w
   map_smul' := by
     intro c v
-    simp only [Matrix.mulVec_smul]
+    simp only [Matrix.mulVec_smul, RingHom.id_apply]
 
 /-- The accepted original axis equality, lifted once to Fock operators. -/
 theorem original_axis_operator
@@ -39,9 +41,8 @@ theorem original_axis_operator
         ((FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec
           (sourceBlockColorAxis (j,s) a)) *
         (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q).toContinuousLinearMap := by
-  apply ContinuousLinearMap.ext
+  apply operator_of_pointwise
   intro ψ
-  simp only [mul_apply_eq_comp]
   exact
     FCP.BFSSC48C1A1d0OriginalGaugeUnitaryS1JAxisIntertwiner.originalGaugeUnitary_S1J_gamma_axis_forward
       q j s a ψ
@@ -81,9 +82,12 @@ theorem original_allVector_pointwise
       (sourceGammaRealLinear
         ((FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec v))
         (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q ψ) := by
-  have h := congrArg (fun T : Fermion 2 →L[ℂ] Fermion 2 => T ψ)
-    (original_allVector_operator q v)
-  simpa only [mul_apply_eq_comp] using h
+  exact pointwise_of_operator
+    (FCP.BFSSSU2GaugeG4E.fermionGaugeUnitaryHom q)
+    (sourceGammaRealLinear v)
+    (sourceGammaRealLinear
+      ((FCP.BFSSSU2PhysicalDomainS1J.sourceRealMajoranaMatrix q).mulVec v))
+    (original_allVector_operator q v) ψ
 
 #print axioms original_axis_operator
 #print axioms original_allVector_operator
@@ -91,4 +95,3 @@ theorem original_allVector_pointwise
 
 end
 end FCP.BFSSTDC1AR4NativeOperatorInterfaceProbe
-
