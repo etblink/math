@@ -3,7 +3,7 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxRADC3OriginalPhysicalWei
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AZOriginalPhysicalChargeDomainDensityReductionProbe
 
 /-!
-P3-AUX-RAD-C3D-B R3: the ACTUAL sixteen original smooth-core charge
+P3-AUX-RAD-C3D-B R4: the ACTUAL sixteen original smooth-core charge
 outputs have a weighted FullL2 representative in AY's PiLp 2 output.
 Exact original source invariant-core inputs lie in the accepted closed
 physical weighted charge graph. Not yet a dense-domain theorem.
@@ -47,11 +47,11 @@ theorem originalWeightedChargeCoreOutput_reciprocal
   exact originalReciprocalFullL2CLM_core_witness hε (M.charge α f)
 
 /-- Isolated source-exact smooth-core membership witness. Separating
-this heavy original AU range elaboration from the subsequent C3 graph
+the polymorphic original AU range elaboration from the subsequent C3 graph
 rewrites avoids consuming the same theorem's elaboration budget.
 No new physical assumption and no altered original source operator. -/
 private theorem originalSourceInvariantCoreGraph_mem
-    (M : AlgebraData 2) (G : M.GaugeData)
+    {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)
     (f : G.invariantCore) :
     (coreToL2 f.val, M.chargeVector f.val) ∈
       originalMinimalCoreGraph M G := by

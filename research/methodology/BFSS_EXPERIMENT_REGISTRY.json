@@ -2937,7 +2937,7 @@
       "id": "E-P3-AUX-RAD-C3DB-R3",
       "title": "Source exact original AU smooth-core graph helper isolated from weighted graph proof",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualified_physical_claim": false,
       "qualification": false,
       "classification": "R3_BOUNDED_FIRST_CAUSAL_LEAN_ELABORATION_ISOLATION",
@@ -2997,7 +2997,90 @@
         "originalWeightedChargeCoreGraph_mem",
         "originalWeightedChargeCore_mem_domain"
       ],
-      "red_receipt_reference": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_RED_43573922855_FIRST_CAUSAL_2026_11_13.md"
+      "red_receipt_reference": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_RED_43573922855_FIRST_CAUSAL_2026_11_13.md",
+      "run_id": 43576822333,
+      "tested_sha": "9b290d4997f3d2b662f5ac4423f8caac387eaf58",
+      "first_causal": "line 58:12 whnf deterministic timeout at 200000 heartbeats in isolated private helper exact ⟨f,rfl⟩ with M:AlgebraData 2",
+      "tested_source_blob": "97bd29e6b90254575dafed8dc861eb89ae91d5ff",
+      "passed_roots": [
+        "originalWeightedChargeCoreOutput",
+        "originalWeightedChargeCoreOutput_reciprocal"
+      ],
+      "unqualified_roots": [
+        "originalWeightedChargeCoreGraph_mem",
+        "originalWeightedChargeCore_mem_domain"
+      ],
+      "independent_consumer_reached": false,
+      "artifact_id": 14107641141,
+      "artifact_digest": "sha256:cbb3386aa8dc9b29d085cc7edc50bb2d2e2be4f4857f1a906064f7bdee34c70b",
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R3_RED_43576822333_GENERIC_DIMENSION_DISCOVERY_2026_11_14.md",
+      "interpretation": "R3 fixed-dimension helper isolated but still WHNF timeout; no mathematical falsification."
+    },
+    {
+      "id": "E-P3-AUX-RAD-C3DB-R4",
+      "title": "Original source AU core membership polymorphic N helper R4",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualified_physical_claim": false,
+      "qualification": false,
+      "classification": "ORIGINAL_POLYMORPHIC_SOURCE_MICROGATE_PENDING_STRICT",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraphIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-rad-c3db-original-physical-weighted-core-graph-strict.yml",
+      "memo": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R4_POLYMORPHIC_AU_CORE_MEMBERSHIP_PROSPECTIVE_2026_11_14.md",
+      "roots": [
+        "originalWeightedChargeCoreOutput",
+        "originalWeightedChargeCoreOutput_reciprocal",
+        "originalWeightedChargeCoreGraph_mem",
+        "originalWeightedChargeCore_mem_domain"
+      ],
+      "parent_sha": "9b290d4997f3d2b662f5ac4423f8caac387eaf58",
+      "stages": {
+        "observation": "R3 standalone original AU core helper with fixed AlgebraData 2 times out at whnf; original H5E8AZ same ⟨f,rfl⟩ source proof uses polymorphic AlgebraData N.",
+        "question": "Will proving the exact AU core range membership at symbolic N and specializing to 2 prevent Lean from unfolding specialized original algebra at proof elaboration?",
+        "background": [
+          "R1 #43573922855 RED first unknown identifier plus inline witness timeout",
+          "R2 #43575336639 RED same witness whnf in local have",
+          "R3 #43576822333 RED helper itself whnf at fixed N=2",
+          "H5E8AZ polymorphic proof source blob b69166ba7b1118e3542ba826e73aa4f95f575c3c included in cold import chain"
+        ],
+        "hypothesis": "A polymorphic helper proves the identical original AU core membership at generic N and is reusable at actual SU2 N=2 with no new mathematical assumptions.",
+        "falsifiers": [
+          "Polymorphic helper fails at whnf despite generic N",
+          "Later graph proof fails despite helper",
+          "Concrete paired original consumer fails",
+          "Any strict axiom audit reports sorryAx or nonstandard axioms"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "helper binder N symbolic instead of fixed 2"
+          ],
+          "dependent_variables": [
+            "original source cold Lean build",
+            "four public root audits",
+            "pairedAlgebraData/pairedGaugeData independent consumer success"
+          ],
+          "controls": [
+            "identical public four theorem statements",
+            "original source/consumer/workflow donor hashes unchanged",
+            "no heartbeat increase",
+            "same source physical SU2 model"
+          ]
+        },
+        "analysis_plan": "Review exact tested SHA source/consumer standard-axiom logs and first causal failure if any. Do not promote unqualified reds.",
+        "conclusion_rule": "Only LEAN_QUALIFIED after frozen original-source preflight, cold Lean compilation, paired original consumer, four root allowed axioms and evidence artifact.",
+        "communication": "R1-R3 red retained; domain density remains separate RAD-C3D-C gate."
+      },
+      "baseline_sha": "9b290d4997f3d2b662f5ac4423f8caac387eaf58",
+      "prior_red_run_id": 43575336639,
+      "expected_roots": [
+        "originalWeightedChargeCoreOutput",
+        "originalWeightedChargeCoreOutput_reciprocal",
+        "originalWeightedChargeCoreGraph_mem",
+        "originalWeightedChargeCore_mem_domain"
+      ],
+      "red_receipt_reference": "research/spectral-p2-original-field/P3_AUX_RAD_C3DB_R1_RED_43573922855_FIRST_CAUSAL_2026_11_13.md",
+      "previous_red_run_id": 43576822333
     }
   ],
   "allowed_statuses": [
