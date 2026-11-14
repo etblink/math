@@ -4275,7 +4275,7 @@
       "id": "E-P3-AUX-HARDY-G2-R2",
       "title": "Current conditional rewrite lemma for original coefficient trace",
       "registered_at": "2026-11-14",
-      "status": "REGISTERED_NOT_EXECUTED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G2_R2_PRE_GATE_CURRENT_ITE_REWRITE_2026_11_14.md",
@@ -4337,7 +4337,85 @@
       "prospective_receipt_commit": "c616b2540a0c6a730f9e2c95ae9153ef8ca9036e",
       "run_id": 43632885471,
       "tested_sha": "874343debfc492be5c872ae1908c565a31548d68",
-      "job_id": 132563163808
+      "job_id": 132563163808,
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G2_R2_RED_43632885471_NATIVE_COLOR_NUMERAL_BOUNDARY_2026_11_14.md",
+      "result": {
+        "run_id": 43632885471,
+        "tested_sha": "874343debfc492be5c872ae1908c565a31548d68",
+        "job_id": 132563163808,
+        "manifest_pins": 148,
+        "manifest_hash": "5e669e79841765fc6300123284da3b0557d408f43f7e4b65b870b807f6887358",
+        "cold_source_passed": true,
+        "fresh_source_passed": true,
+        "source_reports_clean": 5,
+        "consumer_imported_reports_clean": 10,
+        "full_consumer_passed": false,
+        "first_causal": "Native consumer 50:68/74, 56:68/74, 75:68/74: cannot synthesize OfNat (ColorIndex 2) 0 in three concrete basis/sign controls. R1 deprecation fixed, strict source passes.",
+        "artifact_id": 14128854349,
+        "artifact_digest": "sha256:038b126acf03cef55581f025f301c931e72fc6843d3da78218a574ba21cca5ae"
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G2-R3",
+      "title": "Explicit original color-zero witness in native plane coefficient consumer",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G2_R3_PRE_GATE_EXPLICIT_NATIVE_COLOR_ZERO_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean",
+      "source_blob": "952890f8056c2b115d69a03c08c39762210c1a0b",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG2OriginalPlaneCoefficientTraceIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g2-original-plane-coefficient-trace-strict.yml",
+      "roots": [
+        "originalGamma_pair_trace",
+        "originalGamma_three_transpose",
+        "originalGamma_trace_mul_three_distinct",
+        "originalHardyY",
+        "originalHardyY_trace"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_square_trace",
+        "OAI.BFSSGamma.gamma_anti",
+        "OAI.BFSSGamma.list_reverse_eq",
+        "OAI.BFSSGamma.list_transpose",
+        "OAI.BFSSGamma.trace_skew_symm"
+      ],
+      "stages": {
+        "observation": "R2 source passes strict; first reached consumer fails six color-zero OfNat instances across three basis/sign examples.",
+        "question": "Can an explicit original Fin constructor isolate the native zero color label while preserving all current controls?",
+        "background": [
+          "Exact R2 logs and source/consumer reports",
+          "Current Core ColorIndex2=Fin(colorDim2), colorDim2=2^2-1=3 read",
+          "R1 deprecation repaired; this is a new consumer boundary"
+        ],
+        "hypothesis": "Construct nativeColorZero explicitly as Fin value0 with closed proof0<3, eliminating color-label numeral typeclass synthesis.",
+        "falsifiers": [
+          "same color constructor boundary fails",
+          "basis/sign or another consumer control fails",
+          "source/control contract changes",
+          "strict policy weakened"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "private typed Fin zero witness",
+            "six color-zero positions in three concrete controls"
+          ],
+          "dependent_variables": [
+            "full native consumer",
+            "same five/ten report order and eleven examples"
+          ],
+          "controls": [
+            "source byte-identical",
+            "basis axes/color value and conclusions fixed",
+            "workflow expected consumer hash and exact basis-string bindings only",
+            "same baseline/toolchain/budgets/warnings"
+          ]
+        },
+        "analysis_plan": "Compile explicit constructor before native examples; same full strict audit. Repeated color failure => minimal Core-only diagnostic, no further full-gate proof permutations.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete source AND native consumer strict acceptance.",
+        "communication": "Native finite-index elaboration repair; no source mathematical or physical promotion."
+      }
     }
   ],
   "allowed_statuses": [

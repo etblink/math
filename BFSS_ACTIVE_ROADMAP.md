@@ -1,6 +1,10 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## HARDY-G2 R2 — staged, strict qualification pending
+## HARDY-G2 R2 — RED at native color numeral; strict source PASS
+
+[Strict #43632885471](https://github.com/etblink/math/actions/runs/43632885471) RED at `874343debfc492be5c872ae1908c565a31548d68`: 148-pin preflight/toolchain, cold build and fresh strict source PASS. Consumer fails six OfNat(ColorIndex2)0 instances in three basis/sign controls; all five/ten imported reports clean but full consumer failed. [Receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R2_RED_43632885471_NATIVE_COLOR_NUMERAL_BOUNDARY_2026_11_14.md), [diagnostic](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G2_R2_COLOR_OFNAT_43632885471_2026_11_14.txt), [R3 typed color contract](research/spectral-p2-original-field/P3_AUX_HARDY_G2_R3_PRE_GATE_EXPLICIT_NATIVE_COLOR_ZERO_2026_11_14.md). R1 deprecation fixed; new consumer boundary. Source frozen; R3 explicit Fin0 witness preserves same controls. **R3 not staged yet; G2 unqualified.**
+
+## HARDY-G2 R2 — historical launch (subsequently RED above)
 
 R1 red checkpoint and prospective current-lemma repair committed at `c616b2540a0c6a730f9e2c95ae9153ef8ca9036e` before edit. Sole proof delta: if_neg hij -> ite_eq_right hij. All original statements/coefficient definitions and full consumer fixed; warning-as-error retained. Source `952890f8056c2b115d69a03c08c39762210c1a0b`, consumer `f53612702cbf1b69c5ced0463baf17bb15dbf209`, workflow `1e0123c3dd8cffd70936c14fede2d2c6ab35f0bd`. Static exact-delta/hash/root/YAML/bash/Python checks PASS; no local Lean. [Strict #43632885471](https://github.com/etblink/math/actions/runs/43632885471) tests exact `874343debfc492be5c872ae1908c565a31548d68`, job #132563163808; checkout/preflight pending at binding. Administrative #43632885406 is separate. **Unqualified pending complete cold/fresh original source and native consumer, five/ten reports.**
 
