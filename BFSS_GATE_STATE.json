@@ -748,12 +748,14 @@
     "recent_admin_receipt": "research/spectral-p2-original-field/P3_M5BE0_ADMIN_R1_RED_43489563142_MEMO_TEXT_PATH_2026_11_13.md",
     "g0b3_registry_schema_repair_20261113": {
       "classification": "ADMIN_ONLY_NOT_MATHEMATICAL_RED",
-      "status": "REPAIR_STAGED_PENDING_ROADMAP_PASS",
+      "status": "REPAIR_GREEN_VERIFIED",
       "failing_run_id": 43566600912,
       "failing_tested_sha": "fb8093b2145d0467782ce2f055f350d91805fe67",
       "first_cause": "KeyError 'stages' in tools/check_bfss_roadmap.py because newly appended G0B3 registry entry lacked the nine required scientific-method stages",
       "fix": "Populate missing nine stages and qualified_physical_claim false, without altering experiment verdict, G0B3 theorem files or RAD-C2A source.",
-      "scope": "Checkpoint consistency only; G0B3 source-and-consumer strict run #43565346269 independently passed"
+      "scope": "Checkpoint consistency only; G0B3 source-and-consumer strict run #43565346269 independently passed",
+      "passing_run_id": 43567044249,
+      "passing_tested_sha": "f6efb02b41f83d7925489b5273de4c7d6e57807a"
     }
   },
   "m5_port0_preparation": {
@@ -1942,11 +1944,10 @@
     "primary": "P3 auxiliary original radial/weighted sixteen-charge inverse graph",
     "immediate_microgate": "G0B3 ACCEPTED run #43565346269; physicalSpace invariance only",
     "essential_followup": [
-      "RAD-C2A native original FullL2 reciprocal injectivity",
-      "RAD-C2B exact sixteen-output PiLp bounded reciprocal lift plus injectivity",
-      "RAD-C0 normalized radial/Pauli paper-source dictionary",
-      "RAD-C3 source AY inverse-image closed graph",
-      "RAD-C4 common regulator domains/forms"
+      "RAD-C2B exact original sixteen-output PiLp bounded reciprocal lift plus injectivity",
+      "RAD-C0 normalized radial/Pauli source dictionary",
+      "RAD-C3 original AY inverse-image closed weighted graph",
+      "RAD-C4 common regulator forms"
     ],
     "parallel_bounded_diagnostic": "D2R3 exact private Op vs ContinuousLinearMap original source interface",
     "independent_exploration": "Hardy B1 finite gamma algebra and original smooth-core CAR",
@@ -1955,7 +1956,7 @@
       "Source H_phys and accepted M5BF0",
       "No epsilon-zero closedness or global spectral gap asserted"
     ],
-    "next_review_trigger": "RAD-C2A source/consumer strict result, exact source normalization mismatches, or D2R3 proven adapter"
+    "next_review_trigger": "RAD-C2B strict source+consumer success/causal RED and subsequent original AY inverse-image graph prerequisites"
   },
   "parallel_auxiliary_physicalSpace_preservation_experiment": {
     "date": "2026-11-13",
@@ -2011,8 +2012,8 @@
     "gate": "P3-AUX-RAD-C2A",
     "attempt": "R1",
     "date": "2026-11-13",
-    "status": "STAGED_UNQUALIFIED_PENDING_STRICT_CI",
-    "qualification": false,
+    "status": "GREEN_QUALIFIED",
+    "qualification": true,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC2AOriginalReciprocalFullL2Injectivity.lean",
     "consumer": "lean/diagnostics/BFSSP3AuxRADC2AOriginalReciprocalFullL2InjectivityIndependentConsumer.lean",
     "workflow": ".github/workflows/bfss-p3-aux-rad-c2a-original-reciprocal-full-l2-injectivity-strict.yml",
@@ -2027,10 +2028,36 @@
       43521745235,
       43523896876
     ],
-    "next_decision": "Check exact strict tested SHA/source/consumer/allowed axioms before promoting or repairing.",
+    "next_decision": "Use AY original PiLp equivalence and Mathlib piMap for original B16 with exact coordinate equation and injectivity.",
     "exclusions": [
       "No surjectivity or bounded inverse",
       "No sixteen-output PiLp lift or spectral claim"
-    ]
+    ],
+    "run_id": 43566927415,
+    "tested_sha": "656535418ed12198360ded1deefc5f5647993f7d",
+    "run_attempt": 1,
+    "strict_status": "completed",
+    "strict_conclusion": "success",
+    "job_id": 132362688785,
+    "source_blob": "64905d174965632d19e6bd04d334538018692b16",
+    "consumer_blob": "3151e3089f38e0e715bce306c2a90c8c1eddd678",
+    "workflow_blob": "7e0faa6258b214cbd51aa8479abc28069bfcca0a",
+    "verified_root": "FCP.BFSSP3AuxRADC2AOriginalReciprocalFullL2Injectivity.originalReciprocalFullL2CLM_injective",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "source_passed": true,
+    "consumer_passed": true,
+    "preflight_passed": true,
+    "artifact_id": 14102703049,
+    "artifact_size_bytes": 7457,
+    "artifact_digest": "sha256:30dc8fc4b9b9b1d7b700d6c3e9df30cade0728825e9c1fc229339e4a36c48106",
+    "artifact_zip_independently_rehashed": false,
+    "strict_marker": "BFSS_P3_AUX_RAD_C2A_ORIGINAL_RECIPROCAL_FULLL2_INJECTIVITY_STRICT_GREEN",
+    "receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C2A_R1_GREEN_43566927415_ACCEPTANCE_2026_11_13.md",
+    "next_gate": "RAD-C2B exact sixteen-output PiLp bounded reciprocal lift",
+    "next_gate_status": "RESEARCH_NOT_STAGED"
   }
 }

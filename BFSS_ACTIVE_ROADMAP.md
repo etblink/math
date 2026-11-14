@@ -1,8 +1,12 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## P3-AUX-RAD-C2A R1 — original reciprocal FullL2 injectivity candidate (UNQUALIFIED)
+## P3-AUX-RAD-C2A — STRICT GREEN accepted reciprocal injectivity
 
-[Prospective R1 contract](research/spectral-p2-original-field/P3_AUX_RAD_C2A_R1_PROSPECTIVE_ORIGINAL_RECIPROCAL_FULLL2_INJECTIVITY_2026_11_13.md) now stages source, original FullL2 independent consumer and dedicated strict CI for `Function.Injective (originalReciprocalFullL2CLM hε)`. This is the essential prerequisite to RAD-C2B: the genuine sixteen-output bounded reciprocal `PiLp` lift. **No qualification until exact strict source+consumer/axiom GREEN.** G0B3 is separately accepted; original M5BF0 remains accepted and TD-C1A remains RED_UNQUALIFIED.
+[Run #43566927415](https://github.com/etblink/math/actions/runs/43566927415) completed success at exact tested `656535418ed12198360ded1deefc5f5647993f7d`; [accepted source/consumer evidence](research/spectral-p2-original-field/P3_AUX_RAD_C2A_R1_GREEN_43566927415_ACCEPTANCE_2026_11_13.md). The native `Function.Injective (originalReciprocalFullL2CLM hε)` for `ε>0` is now qualified on genuine original `FullL2 2`, axioms `[propext, Classical.choice, Quot.sound]`; evidence artifact #14102703049, `sha256:30dc8fc4b9b9b1d7b700d6c3e9df30cade0728825e9c1fc229339e4a36c48106`. Administrative roadmap-consistency repair also GREEN [#43567044249](https://github.com/etblink/math/actions/runs/43567044249). **Next: RAD-C2B true sixteen-component PiLp output lift.** No bounded inverse, weighted-domain closure or auxiliary gap implied.
+
+## P3-AUX-RAD-C2A R1 — historical staged candidate (now accepted)
+
+[Prospective R1 contract](research/spectral-p2-original-field/P3_AUX_RAD_C2A_R1_PROSPECTIVE_ORIGINAL_RECIPROCAL_FULLL2_INJECTIVITY_2026_11_13.md) now stages source, original FullL2 independent consumer and dedicated strict CI for `Function.Injective (originalReciprocalFullL2CLM hε)`. This is the essential prerequisite to RAD-C2B: the genuine sixteen-output bounded reciprocal `PiLp` lift. **Now accepted as verified by exact strict source+consumer/axiom GREEN above.** G0B3 is separately accepted; original M5BF0 remains accepted and TD-C1A remains RED_UNQUALIFIED.
 
 ## P3-AUX-G0B3 R1 STRICT GREEN — original physical Gauss-space preservation
 

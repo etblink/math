@@ -2476,6 +2476,73 @@
         "conclusion_rule": "LEAN_QUALIFIED only after exact run #43565346269 success, original source and consumer audits and allowed axioms; no spectral promotion.",
         "communication": "Record original G0B3 acceptance receipt, exact tested SHA, exclusions and evidence artifact in the active checkpoint."
       }
+    },
+    {
+      "id": "E-P3-AUX-RAD-C2A-R1",
+      "title": "Native original FullL2 reciprocal multiplier injectivity",
+      "registered_at": "2026-11-13",
+      "status": "LEAN_QUALIFIED",
+      "classification": "ORIGINAL_SOURCE_LEAN_THEOREM_NOT_SPECTRAL_CLAIM",
+      "qualified_physical_claim": false,
+      "qualification": true,
+      "gate": "P3-AUX-RAD-C2A",
+      "tested_sha": "656535418ed12198360ded1deefc5f5647993f7d",
+      "run_id": 43566927415,
+      "run_attempt": 1,
+      "first_source_baseline": "fb8093b2145d0467782ce2f055f350d91805fe67",
+      "source_blob": "64905d174965632d19e6bd04d334538018692b16",
+      "consumer_blob": "3151e3089f38e0e715bce306c2a90c8c1eddd678",
+      "workflow_blob": "7e0faa6258b214cbd51aa8479abc28069bfcca0a",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC2AOriginalReciprocalFullL2Injectivity.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxRADC2AOriginalReciprocalFullL2InjectivityIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-rad-c2a-original-reciprocal-full-l2-injectivity-strict.yml",
+      "receipt": "research/spectral-p2-original-field/P3_AUX_RAD_C2A_R1_GREEN_43566927415_ACCEPTANCE_2026_11_13.md",
+      "root": "FCP.BFSSP3AuxRADC2AOriginalReciprocalFullL2Injectivity.originalReciprocalFullL2CLM_injective",
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "artifact_id": 14102703049,
+      "artifact_digest": "sha256:30dc8fc4b9b9b1d7b700d6c3e9df30cade0728825e9c1fc229339e4a36c48106",
+      "exclusions": [
+        "No bounded inverse or surjectivity",
+        "No PiLp output lift",
+        "No physical auxiliary Hamiltonian or spectral gap"
+      ],
+      "stages": {
+        "observation": "The original bounded reciprocal CLM had an accepted AE multiplication formula, while operator injectivity remained unqualified.",
+        "question": "Is the exact original Fock-valued FullL2 2 reciprocal bounded map injective for every positive epsilon?",
+        "background": [
+          "Original R0A pointwise scalar reciprocal cancellation",
+          "Original G0B0 AE representative theorem #43523896876",
+          "Original R0B2A bounded original FullL2 multiplier #43521745235"
+        ],
+        "hypothesis": "For epsilon>0, Function.Injective (originalReciprocalFullL2CLM hε) on actual FullL2 2.",
+        "falsifiers": [
+          "Fail exact AE cancellation in native Lean source",
+          "Consumer fails to use native injectivity on original FullL2",
+          "Strict root audit reveals unauthorized axioms"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "epsilon>0",
+            "f,g in original FullL2 2"
+          ],
+          "dependent_variables": [
+            "equality from equal reciprocal images"
+          ],
+          "controls": [
+            "frozen Core/R0A/R0B1/R0B2A/G0B0",
+            "Lean 4.34.1 Mathlib d13f23b7",
+            "source and independent native consumer",
+            "root-only axioms and evidence"
+          ]
+        },
+        "analysis_plan": "Require successful strict run and root/consumer axiom audit at exact tested commit; preserve source and artifact pins, not just reported color.",
+        "conclusion_rule": "Classify LEAN_QUALIFIED iff source/consumer cold pass and only permitted axioms on one exact native root. No spectral inference.",
+        "communication": "Report the strict green root, SHA, run and artifact; document no bounded inverse, no PiLp lift and preserve negative knowledge."
+      }
     }
   ],
   "allowed_statuses": [
