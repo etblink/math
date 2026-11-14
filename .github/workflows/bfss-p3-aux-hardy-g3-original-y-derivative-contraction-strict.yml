@@ -6,6 +6,7 @@ name: BFSS P3-AUX-HARDY-G3 original Y derivative contraction strict
       - .github/workflows/bfss-p3-aux-hardy-g3-original-y-derivative-contraction-strict.yml
       - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean
       - lean/diagnostics/BFSSP3AuxHardyG3OriginalYDerivativeContractionIndependentConsumer.lean
+      - lean/diagnostics/BFSSP3AuxHardyG3NativeTransverseDiagnostic.lean
   workflow_dispatch:
 permissions:
   contents: read
@@ -34,7 +35,8 @@ jobs:
           BASE="64718d564f311b914e629e8bae536327b053ee1f"
           SOURCE="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean"
           CONSUMER="lean/diagnostics/BFSSP3AuxHardyG3OriginalYDerivativeContractionIndependentConsumer.lean"
-          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean": "03b5236bd91e4664e7101544b065054bd6c925a1", "lean/diagnostics/BFSSP3AuxHardyG3OriginalYDerivativeContractionIndependentConsumer.lean": "8fd1ac6d819aaccf9cabe38448813a09c75e59bb", "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60", "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean": "d12051e70de679f5458dbd456667a32c7b407ce4", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean": "6a019c9111b384e73a05de7b776ac9e5a83c7eb7", "lean/OAI/MathematicalPhysics/BFSS/GammaIdentity.lean": "45e58da900a7691b88e5760a483b8adff1c7f015", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean": "952890f8056c2b115d69a03c08c39762210c1a0b"}
+          DIAGNOSTIC="lean/diagnostics/BFSSP3AuxHardyG3NativeTransverseDiagnostic.lean"
+          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean": "03b5236bd91e4664e7101544b065054bd6c925a1", "lean/diagnostics/BFSSP3AuxHardyG3OriginalYDerivativeContractionIndependentConsumer.lean": "da78f000c8cb34232f71ee7e363c63e966f652a4", "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60", "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean": "d12051e70de679f5458dbd456667a32c7b407ce4", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG1OriginalOddGammaTraces.lean": "6a019c9111b384e73a05de7b776ac9e5a83c7eb7", "lean/OAI/MathematicalPhysics/BFSS/GammaIdentity.lean": "45e58da900a7691b88e5760a483b8adff1c7f015", "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG2OriginalPlaneCoefficientTrace.lean": "952890f8056c2b115d69a03c08c39762210c1a0b", "lean/diagnostics/BFSSP3AuxHardyG3NativeTransverseDiagnostic.lean": "23447d71b1bf08d411d48e9883612f3ebdab3628"}
           ROOTS=["originalHardyYCLM", "originalHardyYCLM_apply", "originalHardyY_fderiv", "originalHardyY_basis_contraction", "originalHardyY_derivative_contraction"]
           NAMESPACE="FCP.BFSSP3AuxHardyG3OriginalYDerivativeContraction"
           DONORS=["FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY", "FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY_trace", "FCP.BFSSP3AuxHardyG1OriginalOddGammaTraces.originalGamma_square_trace", "OAI.BFSSGamma.gamma_sq", "OAI.BFSSGamma.gamma_anti"]
@@ -48,7 +50,7 @@ jobs:
               if m:
                   baseline[m[2]]=m[1]
           seen={}
-          stack=[SOURCE,CONSUMER]
+          stack=[SOURCE,CONSUMER,DIAGNOSTIC]
           while stack:
               p=stack.pop()
               if p in seen:
@@ -56,7 +58,7 @@ jobs:
               f=Path(p)
               assert f.is_file(),("missing OAI source",p)
               sha=git("hash-object","--no-filters",p)
-              if p not in (SOURCE,CONSUMER):
+              if p not in (SOURCE,CONSUMER,DIAGNOSTIC):
                   assert baseline.get(p)==sha,("reviewed existing OAI source drift",p,baseline.get(p),sha)
               seen[p]=sha
               for names in re.findall(r"(?m)^(?:public )?import[ \t]+([^\n]+)",f.read_text()):
@@ -67,12 +69,17 @@ jobs:
               assert seen.get(p)==sha,("frozen donor/candidate drift",p,seen.get(p),sha)
           source=Path(SOURCE).read_text()
           consumer=Path(CONSUMER).read_text()
+          diagnostic=Path(DIAGNOSTIC).read_text()
+          assert re.findall(r"(?m)^#print axioms (\S+)$",diagnostic)==["BFSSP3AuxHardyG3NativeTransverseDiagnostic.nativeTransverseControl"]
+          assert re.findall(r"(?m)^import (\S+)$",diagnostic)==re.findall(r"(?m)^import (\S+)$",consumer)
+          assert "EuclideanSpace.single (8, nativeColorZero) 1" in diagnostic
+          assert "(1 / 56 : ℝ)" in diagnostic and "pairedAlgebraData" in diagnostic
           assert re.findall(r"(?m)^#print axioms (\S+)$",source)==ROOTS
           assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==(
               [NAMESPACE+"."+x for x in ROOTS]+DONORS)
           assert re.findall(r"(?m)^import (\S+)$",source)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG2OriginalPlaneCoefficientTrace"]
           assert re.findall(r"(?m)^import (\S+)$",consumer)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG3OriginalYDerivativeContraction","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe"]
-          for code in (source,consumer):
+          for code in (source,consumer,diagnostic):
               assert "set_option autoImplicit false" in code
               assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",code)
               assert "maxHeartbeats" not in code and "maxRecDepth" not in code
@@ -91,7 +98,7 @@ jobs:
           out=Path("bfss-aux-hardy-g3-evidence")
           out.mkdir(exist_ok=True)
           receipt={"status":"PREFLIGHT_NOT_LEAN_QUALIFICATION","tested_sha":git("rev-parse","HEAD"),
-              "reviewed_existing_source_baseline":BASE,"source":SOURCE,"consumer":CONSUMER,
+              "reviewed_existing_source_baseline":BASE,"source":SOURCE,"consumer":CONSUMER,"isolated_diagnostic":DIAGNOSTIC,
               "transitive_OAI_pin_count":len(seen),"pins":dict(sorted(seen.items())),
               "source_roots":[NAMESPACE+"."+x for x in ROOTS],"independent_donor_roots":DONORS}
           manifest=out/"pin-manifest.json"
@@ -123,6 +130,7 @@ jobs:
           rm -rf .lake/build/lib/lean/OAI .lake/build/ir/OAI
           timeout 3600s lake build "$mod" OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe 2>&1 | tee ../bfss-aux-hardy-g3-evidence/build.log
           timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee ../bfss-aux-hardy-g3-evidence/source.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3AuxHardyG3NativeTransverseDiagnostic.lean 2>&1 | tee ../bfss-aux-hardy-g3-evidence/diagnostic.log
           timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3AuxHardyG3OriginalYDerivativeContractionIndependentConsumer.lean 2>&1 | tee ../bfss-aux-hardy-g3-evidence/consumer.log
           python3 - <<'PY'
           from pathlib import Path
@@ -133,7 +141,7 @@ jobs:
           allowed={"propext","Classical.choice","Quot.sound"}
           depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
           for name,expected in [
-              ("build.log",None),("source.log",new_roots),("consumer.log",new_roots+donors)]:
+              ("build.log",None),("source.log",new_roots),("diagnostic.log",["BFSSP3AuxHardyG3NativeTransverseDiagnostic.nativeTransverseControl"]),("consumer.log",new_roots+donors)]:
               log=(d/name).read_text()
               assert not any(x in log for x in ("error:","sorryAx","unknownIdentifier")),(name,log[-4500:])
               assert not [line for line in log.splitlines() if "warning:" in line and not depwarn.fullmatch(line)],name
@@ -149,6 +157,7 @@ jobs:
               "actual_fderiv_identified":True,
               "all_nine_basis_and_derivative_contraction_one_quarter":True,
               "ninth_axis_one_over_fifty_six_control":True,
+              "isolated_native_transverse_diagnostic_first":True,
               "probe_four_and_wrong_eight_rejection":True,
               "tau_anticommutator_proved":False,
               "new_roots":5,"independent_donor_roots":5,

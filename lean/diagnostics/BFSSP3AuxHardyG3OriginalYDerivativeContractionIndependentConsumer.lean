@@ -78,7 +78,7 @@ example (X : Boson 2) :
       (1 / 56 : ℝ) • (pairedAlgebraData.gamma 8 * pairedAlgebraData.gamma 0 *
         pairedAlgebraData.gamma 1) := by
   rw [originalHardyY_fderiv, originalHardyYCLM_apply]
-  simp [originalHardyY, PiLp.single_apply, ite_smul, smul_ite]
+  simp [originalHardyY, PiLp.single_apply, ite_smul]
 
 private theorem nativeProbe (X : Boson 2) :
     Matrix.trace ((pairedAlgebraData.gamma 1 * pairedAlgebraData.gamma 0) *
