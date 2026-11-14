@@ -1,0 +1,28 @@
+warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes
+D0_METADATA_NATIVE_STRUCTURES_BEGIN
+PiLp.normedAddCommGroup 2 fun x => ℂ
+WithLp.instModule 2 ℂ ((i : Fin (2 ^ (8 * colorDim 2))) → (fun x => ℂ) i)
+PiLp.normedSpace 2 ℂ fun x => ℂ
+D0_METADATA_GENERIC_SIGNATURES_BEGIN
+@BFSSTDC1AR4FockOperatorEvaluationInterface.operator_of_pointwise : ∀ {𝕜 : Type u_1} {E : Type u_2}
+  [inst : NormedField 𝕜] [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] (U : E ≃ₗᵢ[𝕜] E) (A B : E →L[𝕜] E),
+  (∀ (ψ : E), U (A ψ) = B (U ψ)) → ↑↑U * A = B * ↑↑U
+@BFSSTDC1AR4FockOperatorEvaluationInterface.pointwise_of_operator : ∀ {𝕜 : Type u_1} {E : Type u_2}
+  [inst : NormedField 𝕜] [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] (U : E ≃ₗᵢ[𝕜] E) (A B : E →L[𝕜] E),
+  ↑↑U * A = B * ↑↑U → ∀ (ψ : E), U (A ψ) = B (U ψ)
+D0_METADATA_NATIVE_SPECIALIZATION_BEGIN
+BFSSTDC1AR4FockOperatorEvaluationInterface.operator_of_pointwise : ∀ (U : Fermion 2 ≃ₗᵢ[ℂ] Fermion 2)
+  (A B : Fermion 2 →L[ℂ] Fermion 2), (∀ (ψ : Fermion 2), U (A ψ) = B (U ψ)) → ↑↑U * A = B * ↑↑U
+BFSSTDC1AR4FockOperatorEvaluationInterface.pointwise_of_operator : ∀ (U : Fermion 2 ≃ₗᵢ[ℂ] Fermion 2)
+  (A B : Fermion 2 →L[ℂ] Fermion 2), ↑↑U * A = B * ↑↑U → ∀ (ψ : Fermion 2), U (A ψ) = B (U ψ)
+D0_METADATA_COMPLETE
