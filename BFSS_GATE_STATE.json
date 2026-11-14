@@ -1463,7 +1463,7 @@
   "parallel_topdown_spin_gauge_full48_experiment": {
     "date": "2026-11-13",
     "gate": "TD-C1A",
-    "status": "PENDING_STRICT_CI_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "source_candidate_commit": "991f3bf43525226c6155bddaeaa775380668e67f",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/TDC1AOriginalGaugeUnitaryFull48GammaCovariance.lean",
@@ -1490,10 +1490,24 @@
       "no physical FullL2 spin reduction",
       "no new Hamiltonian or auxiliary gap"
     ],
-    "next_decision": "Require exact strict theorem/native consumer/allowed axioms; red first-causal evidence and bounded repair. After accepted, use original source Spin/gauge label commutation to derive full α_g(U_q) hV then S1H; keep original bosonic Gram reduction parallel.",
+    "next_decision": "R2 source proof repair only: explicit real-to-complex scalar conversion and avoid fully expanded basis goal. No theorem, consumer or frozen sources changed; require fresh strict GREEN.",
     "strict_run_id": 43536957727,
     "strict_tested_sha": "5564c2f15044326f34f16d8a06c1cba7e131a958",
     "strict_run_status": "IN_PROGRESS_AT_LAST_CHECK",
-    "workflow_blob": "cc55480565ee935d499baef11c0ea4fe0f712372"
+    "workflow_blob": "cc55480565ee935d499baef11c0ea4fe0f712372",
+    "strict_conclusion": "failure",
+    "r1_red": {
+      "run_id": 43536957727,
+      "tested_sha": "5564c2f15044326f34f16d8a06c1cba7e131a958",
+      "job_id": 132268172955,
+      "source_blob": "117b487681c2e6b223a81bce184b51570077d673",
+      "consumer_blob": "7c9998173589de762a486e60508c3a40fcdee2ac",
+      "workflow_blob": "cc55480565ee935d499baef11c0ea4fe0f712372",
+      "first_causal": "line 38 source real-scalar map_smul' unresolved for source G4E complex-linear Fock unitary; separate line 68 recursive definitional expansion in basis ext",
+      "artifact_id": 14090063603,
+      "artifact_size_bytes": 14072,
+      "artifact_digest": "sha256:8be0116593ef09597c8491e2cfde4fc5caa31fff2be0f28ac9943432ca22bdd8",
+      "receipt": "research/top-down-symmetry/TD_C1A_R1_RED_43536957727_FIRST_CAUSAL_2026_11_13.md"
+    }
   }
 }
