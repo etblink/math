@@ -39,6 +39,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G10 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_PRE_GATE_ORIGINAL_KINETIC_TAU_CAR_2026_11_15.md), including the zero-only donor clarification, committed at `17360e8d` before proof code. Source `911ff8824b9c95005511aed22f25da4d0edb97f0`, consumer `ed4507504ac58eef9bcb4299bb8092c9b9679b75`, workflow `7ac3353e6415918cd08ae2c0c3e19202dd5abfe4`. Static imports/roots/hashes/YAML/bash/four Python/literal preflight and positive/five-negative strict-auditor fixtures PASS; local Lean unavailable. Fresh CI must recompute163 pins and pass early helpers1+3/source6/native12/all12 controls. All existing sources and resource limits fixed. G9 accepted; no coefficient-derivative fermion or full core rotation claim.
 
+**G10 R1 strict launch bound:** [#43699086864](https://github.com/etblink/math/actions/runs/43699086864), exact `2d7fabb4c83808c46cf0401cbd48e69a03da14fe`, job132765991969. Observed in progress at checkout; expected163 pins/helpers1+3/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_LAUNCH_BINDING_2026_11_15.md). G9 remains accepted; pointwise orbital CAR is the only new target.
+
 ## Historical G9 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G9 is now accepted as stated above; all red/green and launch receipts are preserved.
