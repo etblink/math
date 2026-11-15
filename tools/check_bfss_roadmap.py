@@ -51,8 +51,13 @@ def main():
     if core_assembly_candidate:
         g13 = s.get("parallel_auxiliary_hardy_core_kinetic_tau_assembly", {})
         require(q.get("gate") == "P3-AUX-HARDY-G12" and q.get("run_id") == 43740253917
-                and a.get("status") == "PENDING_STRICT_CI" and a.get("qualification") is False
-                and g13.get("status") == "STAGED_UNQUALIFIED" and g13.get("qualification") is False
+                and a.get("qualification") is False and g13.get("qualification") is False
+                and ((a.get("status") == "PENDING_STRICT_CI" and g13.get("status") == "STAGED_UNQUALIFIED")
+                     or (a.get("status") == "RED_UNQUALIFIED" and g13.get("status") == "RED_UNQUALIFIED"
+                         and a.get("run_id") == 43743787307
+                         and a.get("candidate_sha") == "6da84c396b509436588d7b2ec2e2a1428665e066"
+                         and a.get("manifest_pins") == 167
+                         and (ROOT / a.get("red_receipt", "__missing__")).is_file()))
                 and g13.get("prospective_receipt_commit") == "cd5520f58b00a83dce1ab73d916c4958ba0eba92"
                 and g13.get("reviewed_original_baseline") == "8b54ce6b150d8f3689342dd6bf80179414ab95fa"
                 and (ROOT / g13.get("prospective_receipt", "__missing__")).is_file()
@@ -60,6 +65,11 @@ def main():
                 and g13.get("expected_source_roots") == 6 and g13.get("expected_consumer_reports") == 12
                 and g13.get("native_examples") == 12 and g13.get("early_helper_reports") == [1, 3, 1],
                 "G13 cannot bypass accepted G12 or its exact original-core contract")
+        if a.get("status") == "RED_UNQUALIFIED":
+            archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G13_R1_43743787307_evidence.zip"
+            require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                    == "060fe7984f0a9c493482f54d9abd149432be35e0a7bccefdecf72b455f3bad09",
+                    "G13 complete red artifact missing or changed")
         for kind, sha in {'source': 'b112d763fe63a864e3b2ed72f551a521995b42b3', 'consumer': 'a82dd8590dea928538ebbef1c66bbc22b3726cdf', 'workflow': '02363ae34c5fd3c214b000bde0a79835d2b67ce5'}.items():
             require(a.get(kind) == g13.get(kind) and (ROOT / g13[kind]).is_file(),
                     "G13 registration path drift: " + kind)
@@ -535,6 +545,10 @@ def main():
                     and entry.get("run_id") in red_manifests
                     and entry.get("manifest_hash") == red_manifests[entry["run_id"]],
                     "G9 measured red preflight missing")
+        elif entry is a and core_assembly_candidate and a["status"] == "RED_UNQUALIFIED":
+            require(entry.get("manifest_pins") == 167 and entry.get("run_id") == 43743787307
+                    and entry.get("manifest_hash") == "378cf5196a17f4f476ae3e7eac56ff13e363a7a77b027818c92cfe42e283aa40",
+                    "G13 measured red preflight missing")
         elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate or derivative_candidate or bilinear_candidate or core_assembly_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
@@ -805,7 +819,7 @@ def main():
                 and focus.get("latest_qualified_gate") == q["gate"] and focus.get("latest_qualified_run") == q["run_id"]
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G13"
-                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS"},
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "RED_UNQUALIFIED_REPAIR_PENDING"},
                 "G12 predecessor, physical-H or bounded core-assembly handoff missing")
         archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R4_43740253917_evidence.zip"
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
