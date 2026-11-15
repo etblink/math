@@ -48,7 +48,7 @@ def main():
     derivative_candidate = a.get("gate") == "P3-AUX-HARDY-G11"
     bilinear_candidate = a.get("gate") == "P3-AUX-HARDY-G12"
     core_assembly_candidate = a.get("gate") == "P3-AUX-HARDY-G13"
-    if core_assembly_candidate:
+    if core_assembly_candidate and a["status"] != "GREEN_QUALIFIED":
         g13 = s.get("parallel_auxiliary_hardy_core_kinetic_tau_assembly", {})
         require(q.get("gate") == "P3-AUX-HARDY-G12" and q.get("run_id") == 43740253917
                 and a.get("qualification") is False and g13.get("qualification") is False
@@ -828,6 +828,29 @@ def main():
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                 == "2a3d6012d6348b7b63d4a6f7f7e0da3c1cbff39cdf2d10301ecb5bb4ed22a58b",
                 "G12 complete accepted artifact missing or changed")
+    if q["gate"] == "P3-AUX-HARDY-G13":
+        acc = s.get("parallel_auxiliary_hardy_core_kinetic_tau_assembly_acceptance", {})
+        result = acc.get("result", {})
+        require(q.get("run_id") == 43746155492 and q.get("tested_sha") == "d065dda605b28120e10c347efa9afc07ddbb8147"
+                and q.get("job_id") == 132909800078 and q.get("manifest_pins") == 167
+                and q.get("manifest_hash") == "33a135b594df1ed18c6cef9b4479c3552aced349617464950024bcb1fbf24517"
+                and q.get("artifact_id") == 14173879807 and acc.get("status") == "GREEN_QUALIFIED"
+                and (ROOT / q.get("receipt", "__missing__")).is_file()
+                and result.get("source_reports") == 6 and result.get("consumer_reports") == 12
+                and result.get("helper_reports") == [1, 3, 1] and result.get("all_twelve_native_controls_passed") is True
+                and s.get("last_qualified_hardy_pre_G13", {}).get("run_id") == 43740253917
+                and s.get("last_qualified_physical_operator", {}).get("run_id") == 43498649514
+                and s.get("current_focus", {}).get("latest_qualified_run") == 43746155492
+                and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G14",
+                "G13 exact acceptance or preserved predecessor/physical-H missing")
+        for kind, sha in {"source":"b112d763fe63a864e3b2ed72f551a521995b42b3", "consumer":"31437df721c4cca33e8ff7bd9cafc3826705bbc9", "workflow":"1111175721389f3d03ca7fdea8867f7fcd095aea"}.items():
+            data = (ROOT / q[kind]).read_bytes()
+            require(q.get(kind + "_blob") == hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest() == sha,
+                    "G13 accepted bytes drift: " + kind)
+        archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G13_R2_43746155492_evidence.zip"
+        require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                == "fa94fa2ff24279af34b7d67d46625dec1431b8a461cd7b910de503679f9e057d",
+                "G13 complete accepted artifact missing or changed")
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},
             "pinned toolchain changed without roadmap review")

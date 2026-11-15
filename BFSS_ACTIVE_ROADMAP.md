@@ -1,8 +1,8 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## Current strategic focus — G12 accepted, fixed-positive-regulator certificate
+## Current strategic focus — G13 accepted, fixed-positive-regulator certificate
 
-**Reviewed November 15, 2026 Pacific.** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) reports **P3-AUX-HARDY-G12 GREEN_QUALIFIED**, [strict #43740253917](https://github.com/etblink/math/actions/runs/43740253917), exact `8b54ce6b150d8f3689342dd6bf80179414ab95fa`:166 pins, helpers1+3+1, cold9088 build, fresh source6/native12 and all twelve controls PASS. [Exact acceptance and independently rehashed complete evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G12_R4_GREEN_43740253917_ORDERED_DERIVATIVE_FOCK_BILINEAR_ACCEPTANCE_2026_11_15.md). G12 closes the ordered pointwise derivative Fock bilinear; full smooth-core rotation/tau norm remain open. G11 and original-H M5BF0 remain distinct accepted dependencies.
+**Reviewed November 15, 2026 Pacific.** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) reports **P3-AUX-HARDY-G13 GREEN_QUALIFIED**, [strict #43746155492](https://github.com/etblink/math/actions/runs/43746155492), exact `d065dda605b28120e10c347efa9afc07ddbb8147`:167 pins/helpers1+3+1/cold9089/fresh source6/native12/all12 PASS. [Exact acceptance and rehashed complete17-file evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G13_R2_GREEN_43746155492_ORIGINAL_CORE_ASSEMBLY_ACCEPTANCE_2026_11_15.md). G13 qualifies actual core kinetic/tau assembly and summed charge-to-kinetic reduction. The final orbital/fermion collapse, tau norm and physical assumptions remain separate. G12/G11 and original-H M5BF0 remain distinct accepted dependencies.
 
 **Endpoint:** a fixed-positive-regulator ground-state fidelity certificate for a normalized original physical Spin(9) singlet,
 
@@ -12,11 +12,11 @@
 
 This remains a conditional target. The original-source constant, normalization, symmetry and spectral-domain identities must qualify; no paper constant is automatically imported. The [endpoint synthesis](research/methodology/BFSS_PROJECT_BIRDS_EYE_SYNTHESIS_POST_C4C_2026_11_14.md) and [Hardy prerequisite map](research/spectral-p2-original-field/P3_AUX_HARDY_B1_SOURCE_ALGEBRA_PRIMITIVE_MAP_2026_11_13.md) give the strategic and analytical boundaries.
 
-**Completed package, in accepted scopes:** original closed/dense positive-regulator weighted-charge graph; normalized adjoint-square operator and full weak form; exact original/positive-regulator kernel equality; native reciprocal pairing. The bounded Hardy lane has advanced through G1–G12, including actual smooth-core tau, original potential cancellation, the coordinate derivative bridge, exact scalar-entry basis binding, pointwise orbital CAR, all-color coefficient-derivative contraction and the exact ordered quarter-gamma derivative Fock bilinear. The full charge/tau identity and tau norm remain open.
+**Completed package, in accepted scopes:** original closed/dense positive-regulator weighted-charge graph; normalized adjoint-square operator and full weak form; exact original/positive-regulator kernel equality; native reciprocal pairing. The bounded Hardy lane has advanced through G1–G13, including actual smooth-core tau, original potential cancellation, the coordinate derivative bridge, exact scalar-entry basis binding, pointwise orbital CAR, all-color coefficient-derivative contraction and the exact ordered quarter-gamma derivative Fock bilinear, and actual core kinetic/tau assembly with potential-cancelled original charge reduction. The final core collapse and tau norm remain open.
 
 | Priority | Work and exit condition |
 | --- | --- |
-| Immediate proof | **G12 accepted; G13 R2 staged / unqualified:** only native origin specialization repaired; full gate remains unqualified. Then qualify full rotation and tau norm. Keep pointwise, core and closed-domain claims separate. |
+| Immediate proof | **G13 accepted; G14 core collapse preregistered / not staged:** collapse the accepted kinetic sum with G10 CAR/G12 derivative bilinear, retaining -i and original order. Then qualify tau norm and audit named rotation identification. Keep core, physical representation and closed domains separate. |
 | Highest forward research | Audit genuine physical Spin(9), a reducing spinor sector, singlet-to-spinor covariance of the sixteen original charges, and the supercharge energy/domain identity. Produce source-shaped theorem contracts with all domain hypotheses; presence of historical source is not current qualification. |
 | Next analytical stage | Prove the sector-specific bounded-reciprocal Hardy estimate, extend it through actual form/operator domains, justify spectral negative powers or shifted-resolvent duality, and assemble the certificate. Finite gamma/CAR identities alone do not prove these assertions. |
 | Concrete consumer | Identify a normalized physical singlet trial state with rigorously bounded weighted energy **q_epsilon < 1/kappa**, so the overlap lower bound is positive. Domain-vector existence alone is insufficient. |
@@ -38,6 +38,12 @@ This remains a conditional target. The original-source constant, normalization, 
 | Lovelock/emergent geometry | Exploratory; reviewed findings supply no direct replacement for the spectral program. |
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
+
+**G14 original core collapse preregistered / not staged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G14_R1_PRE_GATE_ORIGINAL_CORE_ANTICOMMUTATOR_COLLAPSE_2026_11_15.md) fixes the literal orbital derivative plus ordered quarter-gamma theta bilinear, six source/twelve native reports, twelve actual paired controls and expected168 pins. G13 accepted; no physical promotion.
+
+## Historical G13 receipts — superseded by the current focus
+
+Earlier staged/running labels below are their own as-of receipts. G13 is now accepted above; the R1 red and all launch/repair evidence remain preserved.
 
 **G13 original core kinetic/tau assembly preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G13_R1_PRE_GATE_ORIGINAL_CORE_KINETIC_TAU_ASSEMBLY_2026_11_15.md) binds the actual kinetic derivative to original symbol actions, applies G8 tau Leibniz, and uses G7 potential cancellation to reduce the summed original charge anticommutator to its kinetic contribution. Original -I, carriers and operator order fixed. Final G10/G12 kinetic collapse/rotation and tau norm remain separate. Six source/twelve native reports and twelve paired controls required; no physical promotion.
 
