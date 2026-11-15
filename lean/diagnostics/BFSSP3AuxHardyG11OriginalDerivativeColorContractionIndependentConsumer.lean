@@ -50,8 +50,8 @@ example (i j : SpaceIndex) (hij : i ≠ j) (A : ColorIndex 2) (β δ : SpinIndex
     (∑ k : SpaceIndex, ∑ α : SpinIndex, pairedAlgebraData.gamma k α β *
       originalHardyY pairedAlgebraData i j (EuclideanSpace.single (k, A) 1) A α δ) =
       (1 / 4 : ℝ) * (pairedAlgebraData.gamma i * pairedAlgebraData.gamma j) β δ := by
-  simpa only [ite_eq_left rfl] using
-    (originalHardyY_basis_spin_contraction pairedAlgebraData i j hij A A β δ)
+  rw [originalHardyY_basis_spin_contraction pairedAlgebraData i j hij A A β δ,
+    ite_eq_left rfl]
 
 example (i j : SpaceIndex) (hij : i ≠ j) (B A : ColorIndex 2) (hBA : B ≠ A) :
     (∑ k : SpaceIndex, pairedAlgebraData.gamma k *
