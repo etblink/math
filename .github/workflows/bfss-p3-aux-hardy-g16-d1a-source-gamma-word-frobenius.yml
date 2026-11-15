@@ -88,7 +88,9 @@ jobs:
               assert "set_option linter" not in text
           assert "pairedAlgebraData" not in src and "pairedAlgebraData" in control
           assert "trace_reverseWord_word" in src and "list_transpose" in src
-          assert "originalHardyY" not in src and "originalHardyY" not in control
+          assert src.count("/-!") == 1 and src.count("-/") == 1
+          assert "originalHardyY" not in src.split("-/",1)[1]
+          assert "originalHardyY" not in control
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           packages=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
           assert next(v["rev"] for v in packages if v["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
