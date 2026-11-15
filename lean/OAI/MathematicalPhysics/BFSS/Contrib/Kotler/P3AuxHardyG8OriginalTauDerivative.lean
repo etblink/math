@@ -39,7 +39,7 @@ theorem originalHardyTauCore_coordinateDerivative_apply (M : AlgebraData 2)
         originalHardyTauDerivative M i j k B α X (f X) := by
   simp only [originalHardyTauCore, LinearMap.sum_apply, LinearMap.comp_apply,
     map_sum, _root_.sum_apply, originalFermionMultiplier_derivative_apply,
-    fermionAction_apply, map_smul, originalHardyTauDerivative_apply,
+    fermionAction_apply, AlgebraData.smoothMultiplier_apply, map_smul, originalHardyTauDerivative_apply,
     originalHardyTauCoefficientDerivative, Finset.sum_add_distrib]
 
 theorem originalHardyTauCore_derivative_commutator_apply (M : AlgebraData 2)
