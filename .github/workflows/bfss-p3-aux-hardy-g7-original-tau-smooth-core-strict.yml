@@ -6,6 +6,7 @@ name: BFSS P3-AUX-HARDY-G7 original tau smooth-core strict
       - .github/workflows/bfss-p3-aux-hardy-g7-original-tau-smooth-core-strict.yml
       - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.lean
       - lean/diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7TypedZeroEvaluation.lean
       - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean
   workflow_dispatch:
 permissions:
@@ -36,7 +37,9 @@ jobs:
           SOURCE="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.lean"
           CONSUMER="lean/diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean"
           HELPER="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean"
-          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG6OriginalCorePotentialBinding.lean":"ebe37de869b25068dfedb98c60340a27335e5c04","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9ASourceChargeCoefficientCrosswalkProbe.lean":"6d0f99d61340b6a052e733c0b964b8c4dcf69457","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9BSourcePairAndChargeReductionProbe.lean":"e066601ddb02e78493eb91582ce2dcb0e6fa3ca1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9COrderedPairCoefficientProbe.lean":"1010bbfc6618718d98fbaf8cab065f4478759f94","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9DSourcePotentialMultiplierProbe.lean":"cc0f4624239160dc39a7a191a519786e71df6abd","lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/CliffordSymbols.lean":"cc01379653404c4ede3d551fd8d823e079543b21","lean/OAI/MathematicalPhysics/BFSS/Kinetic.lean":"14045947b1860b28cbbd82c3f2b40967e795d5a8","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG4OriginalPotentialYCancellation.lean":"b2a482d0817fd39e7437a77d66d8f911c7073de3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean":"9ada3167a5de3be647c51f0740b5998d4e6ea45a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean":"0398bafa58b46dfbd83ec90a65be84adb03dedf8","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean":"e20c76fb22bc09d16dbcd8657333227cb34ed1ea","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.lean":"d7320101971790d7fe56bfda1b011ae3e5d1b9d9","lean/diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean":"c2d0b2080debbb1cbf67ae3a0dc62dbff4a65ca4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean":"03b5236bd91e4664e7101544b065054bd6c925a1"}
+          EXPECTED={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG6OriginalCorePotentialBinding.lean":"ebe37de869b25068dfedb98c60340a27335e5c04","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9ASourceChargeCoefficientCrosswalkProbe.lean":"6d0f99d61340b6a052e733c0b964b8c4dcf69457","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9BSourcePairAndChargeReductionProbe.lean":"e066601ddb02e78493eb91582ce2dcb0e6fa3ca1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9COrderedPairCoefficientProbe.lean":"1010bbfc6618718d98fbaf8cab065f4478759f94","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K9DSourcePotentialMultiplierProbe.lean":"cc0f4624239160dc39a7a191a519786e71df6abd","lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/CliffordSymbols.lean":"cc01379653404c4ede3d551fd8d823e079543b21","lean/OAI/MathematicalPhysics/BFSS/Kinetic.lean":"14045947b1860b28cbbd82c3f2b40967e795d5a8","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG4OriginalPotentialYCancellation.lean":"b2a482d0817fd39e7437a77d66d8f911c7073de3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean":"9ada3167a5de3be647c51f0740b5998d4e6ea45a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5FiniteOperatorEvaluation.lean":"0398bafa58b46dfbd83ec90a65be84adb03dedf8","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean":"e20c76fb22bc09d16dbcd8657333227cb34ed1ea","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.lean":"d7320101971790d7fe56bfda1b011ae3e5d1b9d9","lean/diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean":"e6613c45d9f559a2aaf052966b4c45b1c242fd6b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG3OriginalYDerivativeContraction.lean":"03b5236bd91e4664e7101544b065054bd6c925a1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7TypedZeroEvaluation.lean":"3a7632ed45e9f8b48da263db46852b23d7dff930"}
+          CONTROL_HELPER="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7TypedZeroEvaluation.lean"
+          CONTROL_ROOTS=["FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.coreLinearMap_zero","FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.fockContinuousLinearMap_zero"]
           ROOTS=["originalHardyY_entry_contDiff","originalHardyTauCore","originalHardyTauCore_apply","originalHardyTauCore_support_subset","originalBracketTauCore_anticommutator_apply","originalBracketTauCore_anticommutator_zero"]
           NAMESPACE="FCP.BFSSP3AuxHardyG7OriginalTauSmoothCore"
           DONORS=["FCP.BFSSP3AuxHardyG3OriginalYDerivativeContraction.originalHardyYCLM_apply","FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalHardyTau_apply","FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalPotentialTau_anticommutator_apply","FCP.BFSSP3AuxHardyG6OriginalCorePotentialBinding.originalBracketPart_apply_potential","OAI.BFSSQuantum.AlgebraData.fermionAction_apply","OAI.BFSSQuantum.AlgebraData.smoothMultiplier_apply"]
@@ -50,7 +53,7 @@ jobs:
               if m:
                   baseline[m[2]]=m[1]
           seen={}
-          stack=[SOURCE,CONSUMER,HELPER]
+          stack=[SOURCE,CONSUMER,HELPER,CONTROL_HELPER]
           while stack:
               p=stack.pop()
               if p in seen:
@@ -58,7 +61,7 @@ jobs:
               f=Path(p)
               assert f.is_file(),("missing OAI source",p)
               sha=git("hash-object","--no-filters",p)
-              if p not in (SOURCE,CONSUMER):
+              if p not in (SOURCE,CONSUMER,CONTROL_HELPER):
                   assert baseline.get(p)==sha,("reviewed existing OAI source drift",p,baseline.get(p),sha)
               seen[p]=sha
               for names in re.findall(r"(?m)^(?:public )?import[ \t]+([^\n]+)",f.read_text()):
@@ -70,6 +73,11 @@ jobs:
           source=Path(SOURCE).read_text()
           consumer=Path(CONSUMER).read_text()
           helper=Path(HELPER).read_text()
+          control_helper=Path(CONTROL_HELPER).read_text()
+          assert re.findall(r"(?m)^import (\S+)$",control_helper)==["OAI.MathematicalPhysics.BFSS.Core"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",control_helper)==CONTROL_ROOTS
+          assert "pairedAlgebraData" not in control_helper and "originalHardyTau" not in control_helper
+          assert "LinearMap.map_zero L" in control_helper and "T.map_zero" in control_helper
           assert re.findall(r"(?m)^import (\S+)$",helper)==["Mathlib"]
           assert re.findall(r"(?m)^#print axioms (\S+)$",helper)==["FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply"]
           assert "mul_apply_eq_comp" in helper and "zero_apply" in helper
@@ -77,11 +85,13 @@ jobs:
           assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==(
               [NAMESPACE+"."+x for x in ROOTS]+DONORS)
           assert re.findall(r"(?m)^import (\S+)$",source)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG6OriginalCorePotentialBinding","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG3OriginalYDerivativeContraction"]
-          assert re.findall(r"(?m)^import (\S+)$",consumer)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG7OriginalTauSmoothCore","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe"]
-          for code in (source,consumer,helper):
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG7OriginalTauSmoothCore","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG7TypedZeroEvaluation"]
+          for code in (source,consumer,helper,control_helper):
               assert "set_option autoImplicit false" in code
               assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",code)
               assert "maxHeartbeats" not in code and "maxRecDepth" not in code
+          assert "FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.coreLinearMap_zero" in consumer
+          assert "FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.fockContinuousLinearMap_zero" in consumer
           assert "pairedAlgebraData" in consumer and "SmoothCore 2" in consumer
           assert "SmoothCore 2 →ₗ[ℂ] SmoothCore 2" in consumer
           assert "originalBracketTauCore_anticommutator_zero pairedAlgebraData" in consumer
@@ -98,6 +108,7 @@ jobs:
           out.mkdir(exist_ok=True)
           receipt={"status":"PREFLIGHT_NOT_LEAN_QUALIFICATION","tested_sha":git("rev-parse","HEAD"),
               "reviewed_existing_source_baseline":BASE,"source":SOURCE,"consumer":CONSUMER,"isolated_helper":HELPER,
+              "typed_zero_helper":CONTROL_HELPER,"typed_zero_roots":CONTROL_ROOTS,
               "transitive_OAI_pin_count":len(seen),"pins":dict(sorted(seen.items())),
               "source_roots":[NAMESPACE+"."+x for x in ROOTS],"independent_donor_roots":DONORS}
           manifest=out/"pin-manifest.json"
@@ -147,6 +158,37 @@ jobs:
           (d/"helper-scope.json").write_text(json.dumps({"status":"GENERIC_FINITE_OPERATOR_EVALUATION_PASS","native_G7_qualification":False},sort_keys=True,indent=2)+"\n")
           print("BFSS_P3_AUX_HARDY_G7_FINITE_OPERATOR_EVALUATION_PASS")
           PY
+      - name: Typed original carrier zero laws before native data build
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          helper_mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG7TypedZeroEvaluation"
+          helper_src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7TypedZeroEvaluation.lean"
+          helper_obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7TypedZeroEvaluation.olean"
+          timeout 500s lake build "$helper_mod" 2>&1 | tee ../bfss-aux-hardy-g7-evidence/typed-zero-build.log
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$helper_obj" "$helper_src" 2>&1 | tee ../bfss-aux-hardy-g7-evidence/typed-zero.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json
+          d=Path("../bfss-aux-hardy-g7-evidence")
+          expected=["FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.coreLinearMap_zero","FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.fockContinuousLinearMap_zero"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name in ("typed-zero-build.log","typed-zero.log"):
+              log=(d/name).read_text()
+              assert not any(x in log for x in ("error:","sorryAx","unknownIdentifier")),(name,log[-4500:])
+              assert not [line for line in log.splitlines() if "warning:" in line and not depwarn.fullmatch(line)],name
+              if name=="typed-zero.log":
+                  reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+                  assert [n for n,_ in reports]==expected,(name,reports)
+                  for declaration,raw in reports:
+                      assert {x.strip() for x in raw.split(",") if x.strip()}<=allowed,(declaration,raw)
+          (d/"typed-zero-scope.json").write_text(json.dumps({"status":"TYPED_ZERO_EVALUATION_HELPER_PASS","native_G7_qualification":False},sort_keys=True,indent=2)+"\n")
+          print("BFSS_P3_AUX_HARDY_G7_TYPED_ZERO_EVALUATION_HELPER_PASS")
+          PY
       - name: Cold source and native tau smooth-core consumer with six and twelve root reports
         shell: bash
         timeout-minutes: 75
@@ -158,7 +200,7 @@ jobs:
           src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.lean"
           obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.olean"
           rm -rf .lake/build/lib/lean/OAI .lake/build/ir/OAI
-          timeout 3600s lake build "$mod" OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe 2>&1 | tee ../bfss-aux-hardy-g7-evidence/build.log
+          timeout 3600s lake build "$mod" OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG7TypedZeroEvaluation 2>&1 | tee ../bfss-aux-hardy-g7-evidence/build.log
           timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee ../bfss-aux-hardy-g7-evidence/source.log
           timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean 2>&1 | tee ../bfss-aux-hardy-g7-evidence/consumer.log
           python3 - <<'PY'
@@ -170,7 +212,7 @@ jobs:
           allowed={"propext","Classical.choice","Quot.sound"}
           depwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
           for name,expected in [
-              ("helper-build.log",None),("helper.log",["FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply"]),("build.log",None),("source.log",new_roots),("consumer.log",new_roots+donors)]:
+              ("helper-build.log",None),("helper.log",["FCP.BFSSP3AuxHardyG5FiniteOperatorEvaluation.finiteOperatorAnticommutator_apply"]),("typed-zero-build.log",None),("typed-zero.log",["FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.coreLinearMap_zero","FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.fockContinuousLinearMap_zero"]),("build.log",None),("source.log",new_roots),("consumer.log",new_roots+donors)]:
               log=(d/name).read_text()
               assert not any(x in log for x in ("error:","sorryAx","unknownIdentifier")),(name,log[-4500:])
               assert not [line for line in log.splitlines() if "warning:" in line and not depwarn.fullmatch(line)],name
@@ -179,7 +221,7 @@ jobs:
                   assert [n for n,_ in reports]==expected,(name,reports,expected)
                   for declaration,raw in reports:
                       assert {x.strip() for x in raw.split(",") if x.strip()}<=allowed,(declaration,raw)
-          (d/"scope-receipt.json").write_text(json.dumps({"status":"ORIGINAL_TAU_SMOOTH_CORE_STRICT_GREEN","original_native_SmoothCore_Boson_Fock_consumer":True,"original_Y_complex_entry_smoothness":True,"original_complex_linear_tau_core":True,"exact_accepted_pointwise_tau_binding":True,"tau_core_support_subset":True,"original_potential_tau_core_pointwise_cancellation":True,"original_potential_tau_core_bundled_zero":True,"original_coefficients_unchanged":True,"diagonal_label_formula_preserved":True,"full_smooth_core_charge_tau_identity_proved":False,"bounded_L2_tau_extension_proved":False,"tau_norm_or_physical_Spin9_proved":False,"Hardy_fidelity_zero_mode_or_gap_proved":False,"new_roots":6,"independent_donor_roots":6,"isolated_accepted_generic_helper_reports":1,"new_Fock_Clifford_or_Hamiltonian":False},sort_keys=True,indent=2)+"\n")
+          (d/"scope-receipt.json").write_text(json.dumps({"status":"ORIGINAL_TAU_SMOOTH_CORE_STRICT_GREEN","original_native_SmoothCore_Boson_Fock_consumer":True,"original_Y_complex_entry_smoothness":True,"original_complex_linear_tau_core":True,"exact_accepted_pointwise_tau_binding":True,"tau_core_support_subset":True,"original_potential_tau_core_pointwise_cancellation":True,"original_potential_tau_core_bundled_zero":True,"original_coefficients_unchanged":True,"diagonal_label_formula_preserved":True,"full_smooth_core_charge_tau_identity_proved":False,"bounded_L2_tau_extension_proved":False,"tau_norm_or_physical_Spin9_proved":False,"Hardy_fidelity_zero_mode_or_gap_proved":False,"new_roots":6,"independent_donor_roots":6,"isolated_accepted_generic_helper_reports":1,"typed_original_carrier_zero_helper_reports":2,"native_core_and_Fock_zero_controls":True,"new_Fock_Clifford_or_Hamiltonian":False},sort_keys=True,indent=2)+"\n")
           print("BFSS_P3_AUX_HARDY_G7_ORIGINAL_TAU_SMOOTH_CORE_STRICT_GREEN")
           PY
       - name: Preserve strict and first-causal evidence

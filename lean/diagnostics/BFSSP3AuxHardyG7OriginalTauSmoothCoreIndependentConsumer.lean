@@ -1,5 +1,6 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG7OriginalTauSmoothCore
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe
+import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG7TypedZeroEvaluation
 
 /-! Original native tau core, support and potential-contribution controls. -/
 set_option autoImplicit false
@@ -62,13 +63,15 @@ example (i j : SpaceIndex) (α : SpinIndex) (c : ℂ) (f : SmoothCore 2) :
 
 example (i j : SpaceIndex) (α : SpinIndex) :
     originalHardyTauCore pairedAlgebraData i j α (0 : SmoothCore 2) = 0 :=
-  map_zero (originalHardyTauCore pairedAlgebraData i j α)
+  FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.coreLinearMap_zero
+    (originalHardyTauCore pairedAlgebraData i j α)
 
 example (i j : SpaceIndex) (α : SpinIndex) (f : SmoothCore 2) (X : Boson 2)
     (hf : f X = 0) :
     originalHardyTauCore pairedAlgebraData i j α f X = 0 := by
   rw [originalHardyTauCore_apply, hf]
-  exact (originalHardyTau pairedAlgebraData i j α X).map_zero
+  exact FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.fockContinuousLinearMap_zero
+    (originalHardyTau pairedAlgebraData i j α X)
 
 example : FullL2 2 = Lp (Fermion 2) 2 (volume : Measure (Boson 2)) := rfl
 
