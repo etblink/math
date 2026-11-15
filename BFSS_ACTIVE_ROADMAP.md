@@ -16,7 +16,7 @@ This remains a conditional target. The original-source constant, normalization, 
 
 | Priority | Work and exit condition |
 | --- | --- |
-| Immediate proof | **G10 accepted; G11 design / unstaged:** bind the original coefficient derivative across all colors and contract gamma/spin indices. Then assemble the finite fermion bilinear, original on-core rotation identity and tau norm. Keep pointwise, core and closed-domain claims separate. |
+| Immediate proof | **G11 R1 staged / unqualified:** bind the original coefficient derivative across all colors and contract gamma/spin indices. Then assemble the finite fermion bilinear, original on-core rotation identity and tau norm. Keep pointwise, core and closed-domain claims separate. |
 | Highest forward research | Audit genuine physical Spin(9), a reducing spinor sector, singlet-to-spinor covariance of the sixteen original charges, and the supercharge energy/domain identity. Produce source-shaped theorem contracts with all domain hypotheses; presence of historical source is not current qualification. |
 | Next analytical stage | Prove the sector-specific bounded-reciprocal Hardy estimate, extend it through actual form/operator domains, justify spectral negative powers or shifted-resolvent duality, and assemble the certificate. Finite gamma/CAR identities alone do not prove these assertions. |
 | Concrete consumer | Identify a normalized physical singlet trial state with rigorously bounded weighted energy **q_epsilon < 1/kappa**, so the overlap lower bound is positive. Domain-vector existence alone is insufficient. |
@@ -36,6 +36,8 @@ This remains a conditional target. The original-source constant, normalization, 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
 
 **G11 derivative color/spin contraction preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R1_PRE_GATE_ORIGINAL_DERIVATIVE_COLOR_CONTRACTION_2026_11_15.md) checks the missing off-color basis behavior and uses G3/G9 plus original gamma symmetry to contract the literal complex derivative coefficient across all colors. Six source/twelve consumer reports and twelve actual native controls are required. Final Fock bilinear and full core rotation remain separate; G10 accepted.
+
+**G11 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R1_PRE_GATE_ORIGINAL_DERIVATIVE_COLOR_CONTRACTION_2026_11_15.md) committed at `52436389` before proof code. Source `6f769ce6641ca327c13fc0a61d77496b85fe63c5`, consumer `c0470c8a91adf6548da0348ae8c02cb59cd97955`, workflow `b741f6366b44d1d0a4afdb6d1a578edf592be95b`. Static hashes/imports/roots/examples/YAML/bash/four Python/literal preflight and positive-five-negative strict-auditor fixtures PASS; no local Lean or complete local recursive closure. Fresh CI must measure164 pins and pass helpers1+3/source6/native12/all12 controls. Existing sources/resources fixed; G10 accepted; final Fock bilinear/core assembly excluded.
 
 ## Historical G10 receipts — superseded by the current focus
 
