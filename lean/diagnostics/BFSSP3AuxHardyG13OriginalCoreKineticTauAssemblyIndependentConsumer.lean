@@ -93,8 +93,9 @@ example (i j : SpaceIndex) (f : SmoothCore 2) :
         (OAI.BFSSKinetic.kineticDerivative (pairedAlgebraData.kineticSymbol α)
             (originalHardyTauCore pairedAlgebraData i j α f) 0 +
           originalHardyTauCore pairedAlgebraData i j α
-            (OAI.BFSSKinetic.kineticDerivative (pairedAlgebraData.kineticSymbol α) f) 0) :=
-  originalChargeTauCore_sum_eq_kinetic_apply pairedAlgebraData i j f 0
+            (OAI.BFSSKinetic.kineticDerivative (pairedAlgebraData.kineticSymbol α) f) 0) := by
+  generalize (0 : Boson 2) = X
+  exact originalChargeTauCore_sum_eq_kinetic_apply pairedAlgebraData i j f X
 
 example (i : SpaceIndex) (f : SmoothCore 2) (X : Boson 2) :
     (∑ α : SpinIndex,
