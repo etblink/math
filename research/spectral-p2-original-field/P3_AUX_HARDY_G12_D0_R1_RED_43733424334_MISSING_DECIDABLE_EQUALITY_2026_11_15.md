@@ -1,0 +1,11 @@
+# G12 D0 R1 verified RED — decidability missing from generic statement
+
+November 15, 2026 Pacific. [Diagnostic #43733424334](https://github.com/etblink/math/actions/runs/43733424334), attempt1, exact `1a05a6e7a4276a16c505c29b351dc4b7d9d4d54e`, job132870693397. Generic source `0a7b8ea4145a004d30577034c88db90346f2d77e`, native `12675baab7f764dbcb8f276d357246c70956a927`, workflow `5057a89c608565ab536ad89690628389816fee3f` match tested pins/checkpoint. Main G12's four fixed files remain unchanged.
+
+166-pin preflight PASS, manifest SHA256 `8bff719f6a81528469463d86eb51393e926833ef16b082470e0369c53e334590`. The isolated Mathlib-only build fails at generic15:15 because the selected-color theorem statement uses `if b = a` without a DecidableEq instance for the abstract color type. The `classical` command inside its proof acts after statement elaboration. Its subsequent print-axioms unknown-constant error is a consequence of that declaration failure.
+
+The explicitly typed complexZeroOperatorProduct root reports only standard axioms in lake-build output. Both printed zero_smul checks resolve to the same root theorem in this Mathlib-only context. This is evidence that the typed proof expression elaborates, not strict qualification of the generic module or evidence about the original native namespace: fresh generic.log and the entire native build/diagnostic were not reached.
+
+[Complete five-file artifact](diagnostics/P3_AUX_HARDY_G12_D0_R1_43733424334_evidence.zip):14169686026,12408bytes; independently rehashed SHA256 `8a2152150071afdc3523966561ef912b688f4eabb8ef04c2fbf77b257e1d0dae`. [Audit](diagnostics/P3_AUX_HARDY_G12_D0_R1_RED_43733424334_AUDIT_2026_11_15.json). [Causal log excerpt](diagnostics/P3_AUX_HARDY_G12_D0_R1_MISSING_DECIDABLE_EQUALITY_43733424334_2026_11_15.txt).
+
+Disposition: repair only the generic theorem's missing statement instance via `[DecidableEq ι]`. Keep both proofs, the native diagnostic, counts/controls and resources fixed; workflow changes only generic blob pin. A decidable equality on a finite abstract color type is available classically; this change makes the conditional statement well-formed and introduces no physical premise or axiom declaration. Continue within D0. Main G12 remains BLOCKED, G11 accepted; no full gate retry or physical promotion.

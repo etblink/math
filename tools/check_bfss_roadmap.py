@@ -79,13 +79,18 @@ def main():
                 and diagnostic.get("qualification") is False
                 and (ROOT / diagnostic.get("prospective_receipt", "__missing__")).is_file(),
                 "G12 repeated source boundary requires isolated diagnostic; no full retry")
-        require(diagnostic.get("status") in {"REGISTERED_NOT_EXECUTED", "STAGED_UNQUALIFIED", "CI_IN_PROGRESS"},
+        require(diagnostic.get("status") in {"REGISTERED_NOT_EXECUTED", "STAGED_UNQUALIFIED", "CI_IN_PROGRESS", "RED_UNQUALIFIED"},
                 "unreviewed G12 diagnostic status")
         if diagnostic.get("status") != "REGISTERED_NOT_EXECUTED":
             require(diagnostic.get("prospective_receipt_commit") == "d57c090740bcbc5648b778fd7a1a53afe8b2bcef"
                     and diagnostic.get("expected_manifest_pins") == 166
                     and diagnostic.get("generic_reports") == 2 and diagnostic.get("native_reports") == 5
-                    and diagnostic.get("native_examples") == 3 and diagnostic.get("manifest_pins") is None,
+                    and diagnostic.get("native_examples") == 3
+                    and ((diagnostic.get("status") == "RED_UNQUALIFIED"
+                          and diagnostic.get("run_id") == 43733424334 and diagnostic.get("manifest_pins") == 166
+                          and diagnostic.get("manifest_hash") == "8bff719f6a81528469463d86eb51393e926833ef16b082470e0369c53e334590"
+                          and (ROOT / diagnostic.get("red_receipt", "__missing__")).is_file())
+                         or (diagnostic.get("status") != "RED_UNQUALIFIED" and diagnostic.get("manifest_pins") is None)),
                     "G12 D0 diagnostic contract or unmeasured manifest drift")
             for kind, sha in {'generic_source': '0a7b8ea4145a004d30577034c88db90346f2d77e', 'native_source': '12675baab7f764dbcb8f276d357246c70956a927', 'workflow': '5057a89c608565ab536ad89690628389816fee3f'}.items():
                 data = (ROOT / diagnostic[kind]).read_bytes()
@@ -682,7 +687,7 @@ def main():
                 and focus.get("latest_qualified_run") == q["run_id"]
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G12"
-                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "PROSPECTIVE_REPAIR_NOT_STAGED", "ISOLATED_DIAGNOSTIC_REGISTERED", "ISOLATED_DIAGNOSTIC_STAGED", "ISOLATED_DIAGNOSTIC_IN_PROGRESS"},
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "PROSPECTIVE_REPAIR_NOT_STAGED", "ISOLATED_DIAGNOSTIC_REGISTERED", "ISOLATED_DIAGNOSTIC_STAGED", "ISOLATED_DIAGNOSTIC_IN_PROGRESS", "ISOLATED_DIAGNOSTIC_REPAIR_REGISTERED"},
                 "G11 predecessor, physical-H or bounded next-stage handoff missing")
         archive = (ROOT / "research/spectral-p2-original-field/diagnostics/"
                    "P3_AUX_HARDY_G11_R3_43708533905_evidence.zip")
