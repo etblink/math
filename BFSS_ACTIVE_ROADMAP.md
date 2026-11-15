@@ -63,6 +63,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G15 R3 strict launch bound:** [#43759253590](https://github.com/etblink/math/actions/runs/43759253590), exact `b3ae66c11c7de12a3fb03b82c19efe73e25533a2`, job132950119799. Observed checkout in progress; fresh170-pin/repair-helper2/helpers1+3+1/source6/native12/all12 pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R3_LAUNCH_BINDING_2026_11_15.md). D0 acceptance and separate R3 contract committed first; source/consumer statements and resource bounds fixed. G14 last qualified; numerical/physical assumptions remain separate.
 
+**G15 R3 RED — independently verified consumer-only failure:** [run #43759253590](https://github.com/etblink/math/actions/runs/43759253590), 170 pins, helper2+1+3+1 and cold9092 PASS, source6 accepted-axiom reports PASS, consumer fails only at the zero-vector sum simplification/unused simp arguments and two unused constant-sum binders. [R3 red receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R3_RED_43759253590_CONSUMER_ONLY_DIAGNOSIS_2026_11_15.md) preserves complete-artifact reference, hashes and first causal lines. [R4 preregistered contract](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R4_PRE_GATE_CONSUMER_ONLY_REPAIR_2026_11_15.md) allows only one consumer proof tactic, two binder alpha-renamings and the matching workflow consumer SHA pin. G14 remains last qualified full gate; no numerical/physical promotion.
+
 ## Historical G14 receipts — superseded by the current focus
 
 G14 is accepted above; earlier staged/running labels below remain as-of evidence.
