@@ -53,7 +53,11 @@ def main():
                      or (a.get("status") == g10.get("status") == "RED_UNQUALIFIED"
                          and a.get("run_id") == 43699086864
                          and (ROOT / g10.get("red_receipt", "__missing__")).is_file()))
-                and g10.get("prospective_receipt_commit") == "17360e8d15784bc2b19425edb7708564474b7a44"
+                and ((a.get("attempt") == "R1"
+                      and g10.get("prospective_receipt_commit") == "17360e8d15784bc2b19425edb7708564474b7a44")
+                     or (a.get("attempt") == "R2" and g10.get("prior_red_run") == 43699086864
+                         and g10.get("prospective_receipt_commit") == "ec6af36c579d35cdee9ad6eb87efd08092dbb57a"
+                         and (ROOT / g10.get("prior_red_receipt", "__missing__")).is_file()))
                 and g10.get("reviewed_original_baseline") == "e22dda02233c1e703cbb092e2ee705c3b169519a"
                 and (ROOT / g10.get("prospective_receipt", "__missing__")).is_file()
                 and g10.get("expected_manifest_pin_count") == a.get("expected_manifest_pins") == 163
@@ -61,9 +65,11 @@ def main():
                 and g10.get("native_examples") == 12,
                 "G10 cannot bypass accepted G9 or its exact prospective contract")
         for kind, sha in {
-            "source": "911ff8824b9c95005511aed22f25da4d0edb97f0",
+            "source": ("59aaed1da894e8b91b2df51eda6f47a37cf4c517" if a.get("attempt") == "R2"
+                       else "911ff8824b9c95005511aed22f25da4d0edb97f0"),
             "consumer": "ed4507504ac58eef9bcb4299bb8092c9b9679b75",
-            "workflow": "7ac3353e6415918cd08ae2c0c3e19202dd5abfe4",
+            "workflow": ("5e126c42ae799170ee6d4aeca33172747eaa3fc4" if a.get("attempt") == "R2"
+                         else "7ac3353e6415918cd08ae2c0c3e19202dd5abfe4"),
         }.items():
             require(a.get(kind) == g10.get(kind) and (ROOT / g10[kind]).is_file(),
                     "G10 registration path drift: " + kind)

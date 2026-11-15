@@ -75,7 +75,7 @@ theorem originalKineticTau_anticommutator_apply (M : AlgebraData 2)
   have he := congrArg (fun L : Fermion 2 →L[ℂ] Fermion 2 => L v)
     (originalKineticTau_anticommutator M i j hij k B X)
   simpa only [_root_.sum_apply, IsAddApply.add_apply, mul_apply_eq_comp,
-    IsSMulApply.smul_apply, ContinuousLinearMap.one_apply] using he
+    IsSMulApply.smul_apply, one_apply_eq_self] using he
 
 #print axioms originalKineticFermion
 #print axioms originalKineticFermion_apply
