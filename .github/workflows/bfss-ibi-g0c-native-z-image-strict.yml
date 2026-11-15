@@ -1,0 +1,131 @@
+name: BFSS IBI-G0C native Z adjoint image strict
+
+'on':
+  push:
+    branches: [research/bfss-incidence-unified-20261114]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CZImage.lean
+      - lean/diagnostics/BFSSIBIG0CZImageIndependentConsumer.lean
+      - .github/workflows/bfss-ibi-g0c-native-z-image-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-ibi-g0c-z-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-native-z-image-and-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - name: Checkout exact incidence candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Exact frozen source and contract preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-ibi-g0c-z-image"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-ibi-g0c-z-image/tested-commit.txt"
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re,subprocess
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CZImage.lean":"b4f3eaf8d5e163612fd715268b1b1b99ac696d35",
+            "lean/diagnostics/BFSSIBIG0CZImageIndependentConsumer.lean":"6ad67ab8d87d6f5866d410f01e94ea84d08bac3d",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CNativeZGenerator.lean":"4aa7884124fb1cc6497aaa78f8b4e6995c158338",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CInversePauli.lean":"3b6faa5aa1300cae29afbf11ef57e11abc865b0a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CPauliTrace.lean":"b3fc2604a8536cef7c5d0a1a6ca9ba12eccd4c8f",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3AAdjointColorRepresentationProbe.lean":"553869f1287c64893398c3b79c04fe010023bd08",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2ColorCrossProbe.lean":"209b3808222730ca5e817d83ed32253a67513f7f",
+            "lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+            "lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"
+          }
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,(path,expected,got)
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in pkgs if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CZImage.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSIBIG0CZImageIndependentConsumer.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",source)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CNativeZGenerator"]
+          assert re.findall(r"(?m)^import (\S+)$",consumer)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CZImage"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==[
+            "sourceZPauli_trace_rotZ","originalAdjointColorMatrix_sourceZ_eq_rotZ"]
+          assert len(re.findall(r"(?m)^example\b",consumer))==3
+          for token in ("originalAdjointColorMatrix_pauliInverseTrace","sourceZGauge",
+              "FCP.BFSSSU2.pauli", "sourceRotZ"):
+              assert token in source,token
+          for body in (source,consumer):
+              assert "set_option autoImplicit false" in body
+              assert "ᴴ" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
+              assert "set_option maxHeartbeats 0" not in body
+          print("BFSS_IBI_G0C_Z_IMAGE_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 36
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold source and independent consumer strict axiom audit
+        shell: bash
+        timeout-minutes: 43
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          module="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CZImage"
+          source_file="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CZImage.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CZImage.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 1650s lake build "$module" 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-z-image/cold-build.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$source_file" 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-z-image/source-axioms.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSIBIG0CZImageIndependentConsumer.lean 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-z-image/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-ibi-g0c-z-image"
+          for name in ("cold-build.log","source-axioms.log","independent-consumer.log"):
+              t=(root/name).read_text()
+              assert "error:" not in t and "sorryAx" not in t,(name,t[-4500:])
+              allowed=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+              bad=[x for x in t.splitlines() if "warning:" in x and not allowed.fullmatch(x)]
+              assert not bad,(name,bad[:10])
+          log=(root/"source-axioms.log").read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+          expected=[
+            "FCP.BFSSIBIG0CZImage.sourceZPauli_trace_rotZ",
+            "FCP.BFSSIBIG0CZImage.originalAdjointColorMatrix_sourceZ_eq_rotZ"]
+          assert [x for x,_ in reports]==expected,reports
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for name,raw in reports:
+              assert {x.strip() for x in raw.split(",") if x.strip()}<=allowed,(name,raw)
+          print("BFSS_IBI_G0C_NATIVE_Z_IMAGE_SOURCE_AND_CONSUMER_STRICT_GREEN")
+          PY
+      - name: Preserve G0C Z image strict evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-ibi-g0c-z-image-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-ibi-g0c-z-image/
+          if-no-files-found: warn
+          retention-days: 14
