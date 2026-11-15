@@ -6236,7 +6236,7 @@
       "id": "E-P3-AUX-HARDY-G9-R2",
       "title": "Explicit matrix entry evaluation and unused finite-instance omission",
       "registered_at": "2026-11-14",
-      "status": "EXECUTED_UNREVIEWED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R2_PRE_GATE_EXPLICIT_ENTRY_EVALUATION_2026_11_14.md",
@@ -6276,9 +6276,11 @@
         },
         "analysis_plan": "Audit exact two-edit helper delta and workflow pin-only change, then require whole original source/native strict success; preserve first causal failure.",
         "conclusion_rule": "Whole strict success only; no helper-only or static qualification.",
-        "communication": "Helper proof/evaluation repair; physical source and mathematical target unchanged."
+        "communication": "Helper proof/evaluation repair; physical source and mathematical target unchanged.",
+        "analysis": "R1 evaluation and apply warning fixed. All three helper proofs elaborate with permitted axioms; derivative theorem now reports unused Fintype instances under warning-as-error. Native source/consumer skipped.",
+        "conclusion": "G9 unqualified. Two-red review selects minimal shared context; retain all R2 proof bodies and native source/consumer."
       },
-      "code_status": "STRICT_CI_IN_PROGRESS",
+      "code_status": "RED_UNQUALIFIED",
       "prospective_receipt_commit": "0070198e3e0988c600ac3e71efad09bdb0ea9378",
       "static_checks": {
         "status": "STATIC_PASS_NOT_LEAN",
@@ -6315,9 +6317,85 @@
       "run_id": 43678236725,
       "tested_sha": "202c3c24a910d7bea9590902b0e683aff0e313d0",
       "job_id": 132702991129,
-      "run_last_observed_status": "in_progress",
-      "run_conclusion": null,
-      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R2_LAUNCH_BINDING_2026_11_14.md"
+      "run_last_observed_status": "completed",
+      "run_conclusion": "failure",
+      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R2_LAUNCH_BINDING_2026_11_14.md",
+      "result": {
+        "run_id": 43678236725,
+        "run_attempt": 1,
+        "tested_sha": "202c3c24a910d7bea9590902b0e683aff0e313d0",
+        "job_id": 132702991129,
+        "manifest_pins": 162,
+        "manifest_hash": "963b2de0e257bb28fcf9f5f5a8fd69108bd0799ced02772b27efa9484eb9a86b",
+        "preflight_pass": true,
+        "accepted_generic_helper_pass": true,
+        "entry_helper_build_pass": true,
+        "entry_helper_cold_build_jobs": 8924,
+        "entry_helper_strict_pass": false,
+        "entry_helper_all_three_reports_standard_axioms": true,
+        "original_R1_residual_resolved": true,
+        "original_R1_apply_warning_resolved": true,
+        "first_causal": "Fresh warning-as-error helper21:0: automatically included section variables [Fintype iota] [Fintype kappa] unused in complexMatrixEntry_fderiv_apply.",
+        "unsolved_goals": false,
+        "sorryAx": false,
+        "cold_native_build_executed": false,
+        "fresh_source_executed": false,
+        "native_consumer_executed": false,
+        "maximum_recursion_depth_error": false,
+        "whole_G9_qualified": false,
+        "artifact_id": 14147317865,
+        "artifact_bytes": 13251,
+        "artifact_digest": "sha256:4a58b7a0b80528431021bd9f3f976b985b9aabf1eab304a67d2093c58f213fc9",
+        "artifact_digest_independently_rehashed": true,
+        "durable_artifact": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R2_43678236725_evidence.zip"
+      },
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R2_RED_43678236725_UNUSED_DERIVATIVE_INSTANCES_2026_11_14.md"
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G9-R3",
+      "title": "Minimal matrix-entry helper variable context after two-red review",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_PRE_GATE_MINIMAL_ENTRY_HELPER_CONTEXT_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG9OriginalYEntryDerivativeBinding.lean",
+      "helper": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG9ComplexMatrixEntryDerivative.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG9OriginalYEntryDerivativeBindingIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g9-original-y-entry-derivative-binding-strict.yml",
+      "stages": {
+        "observation": "Fresh warning-as-error helper21:0: automatically included section variables [Fintype iota] [Fintype kappa] unused in complexMatrixEntry_fderiv_apply.",
+        "question": "Can removing redundant finite-index instances at the shared declaration boundary clear the strict linter while preserving all already-elaborated proof bodies?",
+        "background": [
+          "R2 helper build and all three root reports clean",
+          "R2 apply theorem compiles while omitting both Fintype instances",
+          "Two-red context-scope review completed"
+        ],
+        "hypothesis": "All helper roots need only the original domain normed-space and product-module structures; finite-index assumptions are unused.",
+        "falsifiers": [
+          "Missing required instance",
+          "Remaining or new warning",
+          "Changed proof body/statement/native source",
+          "Unexpected axiom or native failure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Remove Fintype classes from shared context and obsolete omit directive"
+          ],
+          "controls": [
+            "All helper proof bodies fixed",
+            "Original G9 source and complete consumer frozen",
+            "Only expected-helper workflow pin changes"
+          ],
+          "dependent_variables": [
+            "Early helper1+3 strict reports",
+            "Cold source6/native12 reports and12 examples"
+          ]
+        },
+        "analysis_plan": "Check exact two-change delta, then require entire strict gate. If generic context fails again, stop scope retries and inspect elaborated required instances in an isolated registered diagnostic.",
+        "conclusion_rule": "Whole strict source/native acceptance only. Helper reports alone do not qualify G9.",
+        "communication": "Generic context cleanup based on precise compiler evidence; original physical statements and target unchanged."
+      }
     }
   ],
   "allowed_statuses": [
