@@ -1,4 +1,5 @@
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG14OriginalCoreAnticommutatorCollapse
+import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG15RealCoefficientSumDiagnostic
 
 /-! G15: exact original tau action norms reduced to real coefficients.
 Cross terms in the four-plane sum are retained inside its square.
@@ -48,8 +49,8 @@ theorem originalHardyTau_fourPlane_sum_eq_cliffordLinear (M : AlgebraData 2)
       (∑ t : Fin 4, M.cliffordLinear (b t)) =
         M.cliffordLinear (fun p : FermionIndex 2 => ∑ t : Fin 4, b t p) := by
     unfold AlgebraData.cliffordLinear
-    simp_rw [Complex.ofReal_sum, Finset.sum_smul]
-    exact Finset.sum_comm
+    exact FCP.BFSSP3AuxHardyG15RealCoefficientSumDiagnostic.realCoefficient_doubleSum b
+      (fun p : FermionIndex 2 => M.theta p.1 p.2)
   exact hsum (fun t p => originalHardyY M (i t) (j t) X p.2 α p.1)
 
 theorem originalHardyTau_fourPlane_sum_norm_sq (M : AlgebraData 2)

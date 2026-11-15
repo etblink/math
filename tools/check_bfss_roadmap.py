@@ -63,22 +63,33 @@ def main():
                 and ((a.get("attempt") == "R1" and g15.get("prospective_receipt_commit") == "ae83c423e57bc4ff33b02f0d255728ac59206848")
                      or (a.get("attempt") == "R2" and g15.get("prospective_receipt_commit") == "d7c724f87a30ccb910d1f98b8b3afd6c173ee515"
                          and g15.get("prior_red_run") == 43751403932
+                         and (ROOT / g15.get("prior_red_receipt", "__missing__")).is_file())
+                     or (a.get("attempt") == "R3" and g15.get("prospective_receipt_commit") == "a52e30f5ab45bc50f82fdb7bfa3327b6c0c287d6"
+                         and g15.get("prior_red_run") == 43753325231 and g15.get("accepted_diagnostic_run") == 43756234296
                          and (ROOT / g15.get("prior_red_receipt", "__missing__")).is_file()))
                 and (ROOT / g15.get("receipt", "__missing__")).is_file()
-                and g15.get("expected_manifest_pins") == a.get("expected_manifest_pins") == 169
+                and g15.get("expected_manifest_pins") == a.get("expected_manifest_pins") == (170 if a.get("attempt") == "R3" else 169)
                 and g15.get("source_roots") == 6 and g15.get("consumer_reports") == 12
                 and g15.get("native_examples") == 12 and g15.get("early_helper_reports") == [1, 3, 1],
                 "G15 cannot bypass accepted G14 or its coefficient norm contract")
-        if a.get("status") == "RED_UNQUALIFIED" or a.get("attempt") == "R2":
+        if a.get("status") == "RED_UNQUALIFIED" or a.get("attempt") in {"R2", "R3"}:
             archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R1_43751403932_evidence.zip"
             require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                     == "555b4e20d3f43613db646871fa9c3917100e9ae0d87aa07f194d7da91fa09ea1",
                     "G15 complete red artifact missing or changed")
-        for kind, sha in {'source': ('3137f2fa64f3d1cbf08f06588c31303e06df4caa' if a.get('attempt') == 'R2' else '1138153ca0ebae9fb5b5e96d9c380d377dd24610'), 'consumer': '7e873eae9001339a0f746637b9ac906311ec106b', 'workflow': ('898e8882e6d5512e98b016a1ad918a7247aff33c' if a.get('attempt') == 'R2' else '0c3fbf040494b70d52fb44c76a7089dcac1d090b')}.items():
+        for kind, sha in {'source': ('1a6765a57f4dcea2a1d7f05ac5d37dbbade9bdfc' if a.get('attempt') == 'R3' else ('3137f2fa64f3d1cbf08f06588c31303e06df4caa' if a.get('attempt') == 'R2' else '1138153ca0ebae9fb5b5e96d9c380d377dd24610')), 'consumer': '7e873eae9001339a0f746637b9ac906311ec106b', 'workflow': ('c7d5518d1c5d24065ca9f3bd6c3b29d1be8d0744' if a.get('attempt') == 'R3' else ('898e8882e6d5512e98b016a1ad918a7247aff33c' if a.get('attempt') == 'R2' else '0c3fbf040494b70d52fb44c76a7089dcac1d090b'))}.items():
             data = (ROOT / a[kind]).read_bytes()
             require(a.get(kind) == g15.get(kind) and a.get(kind + "_blob") == g15.get(kind + "_blob")
                     == hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest() == sha,
                     "G15 staged bytes drift: " + kind)
+    if tau_norm_candidate and a.get("attempt") == "R3":
+        helper = s["g15_tau_norm_prospective"].get("repair_helper", "__missing__")
+        data = (ROOT / helper).read_bytes()
+        require(s.get("g15_real_coefficient_sum_diagnostic", {}).get("qualification") is True
+                and s["g15_tau_norm_prospective"].get("repair_helper_reports") == 2
+                and hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+                == "732cee2546bfd629fe8bf0b20e63ac3ef356b5bd",
+                "G15 R3 cannot bypass accepted real-sum helper")
     if tau_norm_candidate and s.get("g15_real_coefficient_sum_diagnostic") and not s["g15_real_coefficient_sum_diagnostic"].get("qualification"):
         diagnostic = s["g15_real_coefficient_sum_diagnostic"]
         require(a.get("status") == "BLOCKED" and a.get("run_id") == 43753325231
