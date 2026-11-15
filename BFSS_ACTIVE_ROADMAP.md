@@ -67,6 +67,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G15 R4 consumer-only candidate STAGED / UNQUALIFIED:** [pre-gate registered contract](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R4_PRE_GATE_CONSUMER_ONLY_REPAIR_2026_11_15.md) committed at `a2bf15fc` before the exact three consumer edits: simplify zero-vector norm using `simp`, rename both unused constant finite-sum binders. New consumer Git blob `fe33403df207a37deb495efb99a63814583f1951`, G15 production source and D0 helper unchanged; workflow differs only in consumer pin `fe33403df207a37deb495efb99a63814583f1951` (workflow blob `8a54f68795fccb16775ee2fbf1650ccdc2f5e659`). Exact 12 examples/12 axiom reports, 170-pin closure and all timeouts preserved. Static reversible whitelist and negative mutants PASS; local Lean unavailable. Fresh strict R4 CI and independent artifact audit REQUIRED; G14 remains last qualified full gate.
 
+**G15 R4 strict launched:** [#43763173942](https://github.com/etblink/math/actions/runs/43763173942) at exact tested `4d45f9c3`, job132962286824. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R4_LAUNCH_BINDING_2026_11_15.md) preserved. Observed in progress at checkout only; 170-pin, helpers, cold source6/native12 and independent evidence remain PENDING. G14 is last qualified full gate.
+
 ## Historical G14 receipts — superseded by the current focus
 
 G14 is accepted above; earlier staged/running labels below remain as-of evidence.
