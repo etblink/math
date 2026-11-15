@@ -26,7 +26,7 @@ Source: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG10OriginalK
 3. `originalKineticCoefficient_basis`: principal coefficients equal the color selector times the original gamma entry.
 4. `originalKineticTauCoefficient_trace`: same-index CAR scalar pairing equals the accepted coordinate/trace expression.
 5. `originalKineticTau_anticommutator`: pointwise complex Fock operator identity above.
-6. `originalKineticTau_anticommutator_apply`: the exact vector-evaluation identity, using the accepted generic finite-operator evaluation helper.
+6. `originalKineticTau_anticommutator_apply`: the exact vector-evaluation identity, using the accepted helper's congrArg/finite-evaluation proof pattern. The existing G5 helper is zero-only and cannot directly consume this nonzero scalar identity; do not claim that its statement provides a nonzero evaluation theorem.
 
 Import accepted G9 and original Kinetic explicitly. Consumer: `lean/diagnostics/BFSSP3AuxHardyG10OriginalKineticTauCARIndependentConsumer.lean`, using the exact paired source and actual carriers. Require all six source roots and six independent donor reports: original kinetic-symbol action, principal-coefficient basis, mixed CAR, original Y trace, original tau action and G9 coefficient-derivative basis binding.
 
@@ -41,3 +41,5 @@ Workflow: `.github/workflows/bfss-p3-aux-hardy-g10-original-kinetic-tau-car-stri
 A coefficient, sign, transpose, color-selector or source-carrier mismatch falsifies the proposed source binding at that boundary. Static checks are not Lean verification. Preserve the first causal failure and all reports. On a repeated native conversion boundary, stop full-gate retries and preregister an isolated typed comparison; on two analogous reds, review the architecture before another attempt. No unchanged retry, suppressed warning, copied gamma table, alternate Hamiltonian or stronger hypothesis replacing the actual source is permitted.
 
 G9 remains accepted. Coefficient-derivative fermion contraction, actual smooth-core rotation assembly, tau norm, physical Spin(9)/singlet covariance, energy domains, Hardy, fidelity, zero modes and mass-gap conclusions remain outside this gate. The physical symmetry/energy-domain audit remains the highest forward-research priority.
+
+Pre-implementation donor check: the zero-only scope of `finiteOperatorAnticommutator_apply` was inspected before new proof code. Root 6 must use the explicit evaluation pattern on the new nonzero operator identity. No helper source modification or extra hypothesis is authorized by this clarification.
