@@ -1,0 +1,55 @@
+# G16 D1 forward research — literal gamma-word Frobenius adapter
+
+**November 15, 2026 | PROSPECTIVE, NOT LEAN-QUALIFIED, DO NOT STAGE D1 UNTIL D0 GREEN.** G15 accepted full strict [#43763173942](https://github.com/etblink/math/actions/runs/43763173942); D0 finite incidence [#43767310379](https://github.com/etblink/math/actions/runs/43767310379) launched against pinned G15. This memo is a proof architecture for *the next* stage, not a claim of new Lean verification.
+
+## Native mathematical bridge
+
+`lean/OAI/MathematicalPhysics/BFSS/Core.lean` pins `SpaceIndex = Fin 9`, `SpinIndex = Fin 16`, `GammaMatrix = Matrix SpinIndex SpinIndex ℝ`, and `AlgebraData.gamma_clifford/gamma_symmetric`. In `GammaWords.lean` (frozen blob `d12051e70de679f5458dbd456667a32c7b407ce4`), `word` uses a sorted `Finset SpaceIndex`; `reverseWord` uses its reversed list, and `trace_reverseWord_word` proves
+
+```lean
+Matrix.trace (OAI.BFSSGamma.reverseWord M.gamma s *
+              OAI.BFSSGamma.word M.gamma t)
+  = if s = t then 16 else 0
+```
+
+provided `s.card ≤ 4` and `t.card ≤ 4`. The equality is already a pinned source theorem, so *no new six-gamma trace proof is required*. Its direct Frobenius corollary on the **actual source gamma carrier** is
+
+```lean
+Matrix.trace ((OAI.BFSSGamma.word M.gamma s).transpose *
+              OAI.BFSSGamma.word M.gamma t)
+  = if s = t then 16 else 0
+```
+
+via `OAI.BFSSGamma.list_transpose M.gamma (fun i => (M.gamma_symmetric i).eq)` on `s.sort (· ≤ ·)`. Test this first as a source-exact independent adapter: its inputs must be `M : AlgebraData 2` (or generic `N` with exact source type), not a rewritten gamma representation. Avoid a fresh `GammaIdentity` copy.
+
+For literal G2 `originalHardyY` each plane has `i=2t, j=2t+1`, `i<j`. Every triple word `M.gamma k * M.gamma i * M.gamma j` has `k≠i,j`. Its ordered-to-sorted-word sign is
+
+```text
+k<i<j   :  +word {k,i,j}
+i<k<j   :  -word {i,k,j}
+i<j<k   :  +word {i,j,k}
+```
+
+(all indices are zero based). Prove this by source `gamma_anti` on the adjacent necessary swaps; do not guess a closed signature or rely on a normalization tactic. For squared Frobenius norms the ± signs square to 1; for off-diagonal cross terms orthogonality requires support distinctness. A singleton support has cardinality1 and cannot coincide with a triple support of cardinality3. Among eligible `(t,k)` there are precisely 28 **distinct** triple supports `{i_t,j_t,k}`; an independent Python exhaustive enumeration confirms that, but Lean must prove or control it before source promotion.
+
+Thus for each fixed original color (A), the coefficient of each original spatial coordinate (X(k,A)) in the four-plane sum has one singleton word when (k<8), zero when (k=8), plus three triple words when (k<8), four when (k=8). The word-norm is exactly 16, giving
+
+```text
+Σ_{α,β} (Σ_{t:Fin4} originalHardyY M i_t j_t X A α β)^2
+  = (61/784) Σ_{k=0}^7 X(k,A)^2 + (16/784) X(8,A)^2.
+```
+
+This is a **proposed theorem on literal original gamma/source data**, conditional on the pending ordered-word sign/uniqueness bridge. By G15 accepted CAR factor 1/2, the proposed Fock action identity after all colors and charges becomes `(61 R² − 45 Σ_A X(8,A)²)/1568 * ‖v‖²`. A formula matching Appendix B's coefficients in Michel–Scheinpflug–Yin, arXiv:2611.09837v1, is external analytical guidance, not an accepted Lean proof.
+
+## Minimal falsifiable D1 gate design
+
+1. Source-only gamma Frobenius word pairing, with exact `AlgebraData.gamma_clifford`, `gamma_symmetric`, cardinality ≤4; native independent consumer specializes `pairedAlgebraData` and tests same support, different singleton supports and single/triple support.
+2. Separate finite index lemma: prove triple-support uniqueness (`(t,k)` eligible pair uniquely determines `{k,2t,2t+1}`) and literal parity/sign map. Independent controls swap one plane's endpoints and verify the expected sign reverses; a wrong `k=i` case must be rejected.
+3. Orthogonal-sum squared norm via `Matrix.trace` and `Matrix.trace_transpose_mul`, without exploding 36×36 proof by `simp_rw`. Pair inner products by support, then count terms using D0. Register an independent native `originalHardyY` basis-coordinate control for axes0 and8 and a two-coordinate mixed test.
+4. Full G16 bridge only **after** independent D0/D1 acceptance: consume the unchanged G15 4-plane norm root to obtain the exact source (61/1568) and (16/1568) coefficients. New gate 170+ pinned dependencies, fresh strict CI, independent axiom reports and complete archive review.
+
+Negative stop: a convention difference in triple ordering, `GammaMatrix` transpose, CAR half, or the ninth-axis multiplicity invalidates the proposed target and must trigger a red scope review, *not* a silent sign/normalization rewrite.
+
+## Scientific stop line
+
+Even the accepted numerical coefficient identity would be a pointwise finite Fock-operator theorem, **not** the Spin(9)-spinor-sector Hardy inequality. The physical representation, Gauss law, equal-charge Hamiltonian form/domain, sector averaging, Hardy/resolvent and fidelity trial-state construction remain independent open obligations. Do not infer a global BFSS energy/mass gap from the auxiliary ground-state method.
