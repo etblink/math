@@ -5602,6 +5602,72 @@
           "tau_norm_or_physical_Spin9_proved": false
         }
       }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G7-R1",
+      "title": "Original smooth-core tau endomorphism and potential cancellation lift",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G7_R1_PRE_GATE_ORIGINAL_TAU_SMOOTH_CORE_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g7-original-tau-smooth-core-strict.yml",
+      "roots": [
+        "originalHardyY_entry_contDiff",
+        "originalHardyTauCore",
+        "originalHardyTauCore_apply",
+        "originalHardyTauCore_support_subset",
+        "originalBracketTauCore_anticommutator_apply",
+        "originalBracketTauCore_anticommutator_zero"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG3OriginalYDerivativeContraction.originalHardyYCLM_apply",
+        "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalHardyTau_apply",
+        "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalPotentialTau_anticommutator_apply",
+        "FCP.BFSSP3AuxHardyG6OriginalCorePotentialBinding.originalBracketPart_apply_potential",
+        "OAI.BFSSQuantum.AlgebraData.fermionAction_apply",
+        "OAI.BFSSQuantum.AlgebraData.smoothMultiplier_apply"
+      ],
+      "stages": {
+        "observation": "G6 identifies original bracket potential with accepted Fock potential, but tau is only pointwise. G3 provides actual Y continuous-linear field and source smoothMultiplier/fermionAction preserve original SmoothCore.",
+        "question": "Can the accepted pointwise tau be realized as a complex-linear endomorphism of original SmoothCore2 with support inclusion and original potential/tau cancellation on core inputs?",
+        "background": [
+          "Accepted G6 strict43664706689",
+          "Accepted G3 YCLM and YCLM_apply read",
+          "Original fermionAction/smoothMultiplier definitions and apply lemmas read",
+          "Pinned TestFunction ext/IsZeroApply/IsAddApply/IsSMulApply read; deprecated coe aliases avoided"
+        ],
+        "hypothesis": "Smooth complex Y entries give source scalar multipliers; finite fermionAction composition evaluates to G5 tau, preserves support and lifts accepted pointwise potential cancellation to original bundled core equality.",
+        "falsifiers": [
+          "Y smoothness/field-entry interface failure",
+          "Tau core evaluation differs from accepted pointwise family",
+          "Support or bundled core zero conversion fails",
+          "Wrong original carrier/hidden domain assumption",
+          "Unexpected warning/axiom or changed accepted source"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Six source core-domain and evaluation adapters"
+          ],
+          "dependent_variables": [
+            "Six new source roots",
+            "Twelve native source/donor reports",
+            "Actual SmoothCore tau action, support and two-sided bracket cancellation"
+          ],
+          "controls": [
+            "Original G2/G3/G5/G6/Core/CliffordSymbols source bytes fixed at11656f35 baseline",
+            "Original G4J paired Fock and scalar source multiplier",
+            "No re-encoding1/16 or1/56 coefficients",
+            "All i,j preserved, no unproved diagonal vanishing assumption",
+            "Early accepted generic helper, existing pins/budgets"
+          ]
+        },
+        "analysis_plan": "Prove complex entry smoothness from G3 CLM with source coordinate evaluations, define finite source multiplier/postcomposition map, then derive exact field evaluation. Use linear zero action for support inclusion and G5/G6 pointwise cancellation plus pinned TestFunction.ext/current generic apply rewrites for bundled core zero. Native controls inspect actual core types and complex linearity. Preserve first causal failure before repair.",
+        "conclusion_rule": "LEAN_QUALIFIED only after whole strict source/native consumer success. Derivative/full charge-tau identity, bounded L2 extension, tau norm, physical Spin9/Hardy/fidelity and spectrum remain separate.",
+        "communication": "Qualifies a domain-preserving original smooth-core tau map and potential contribution cancellation, not the complete supercharge anticommutator."
+      }
     }
   ],
   "allowed_statuses": [
