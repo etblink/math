@@ -55,6 +55,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G15 D0 STAGED / UNQUALIFIED:** [diagnostic contract](research/spectral-p2-original-field/P3_AUX_HARDY_G15_D0_PRE_GATE_REAL_COEFFICIENT_SUM_DIAGNOSTIC_2026_11_15.md) committed at `b2fa6246` before code. Generic `732cee25` tests explicit scalar/double sums (two reports); native `bb36497f` tests exact original Clifford/tau interfaces with three paired examples/four reports. Workflow `af7d10b5` expects169 pins and runs the generic strict phase first. Main G15 three bytes frozen, source/consumer excluded from diagnostic closure/build; no full retry. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_D0_R1_STATIC_CHECKS_2026_11_15.json): exact imports/roots/three examples,169 expected pins/main exclusions/frozen hashes, YAML/bash/three Python/literal preflight and positive-six-negative auditor fixtures PASS. Fresh CI pending; local Lean unavailable. G14 accepted.
 
+**G15 D0 R1 strict launch bound:** [#43756234296](https://github.com/etblink/math/actions/runs/43756234296), exact `337f33b74ae6bc0fecce598ae52c1612c7d25413`, job132940823716. Observed checkout in progress; expected169 diagnostic pins/generic2/native4/three paired controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G15_D0_R1_LAUNCH_BINDING_2026_11_15.md). Main G15 remains BLOCKED at R2; all three bytes frozen and full source/consumer excluded. No full R3 before diagnostic acceptance and separate contract. G14 last qualified.
+
 ## Historical G14 receipts — superseded by the current focus
 
 G14 is accepted above; earlier staged/running labels below remain as-of evidence.
