@@ -53,14 +53,24 @@ def main():
     if tau_norm_candidate:
         g15 = s.get("g15_tau_norm_prospective", {})
         require(q.get("gate") == "P3-AUX-HARDY-G14" and q.get("run_id") == 43749092953
-                and a.get("status") == "PENDING_STRICT_CI" and a.get("qualification") is False
-                and g15.get("status") == "STAGED_UNQUALIFIED" and g15.get("qualification") is False
+                and a.get("qualification") is False and g15.get("qualification") is False
+                and ((a.get("status") == "PENDING_STRICT_CI" and g15.get("status") == "STAGED_UNQUALIFIED")
+                     or (a.get("status") == "RED_UNQUALIFIED" and g15.get("status") == "RED_UNQUALIFIED"
+                         and a.get("run_id") == 43751403932
+                         and a.get("candidate_sha") == "a2d247a1000f2d59807092358ac0f6f71b2909a1"
+                         and a.get("manifest_pins") == 169
+                         and (ROOT / a.get("red_receipt", "__missing__")).is_file()))
                 and g15.get("prospective_receipt_commit") == "ae83c423e57bc4ff33b02f0d255728ac59206848"
                 and (ROOT / g15.get("receipt", "__missing__")).is_file()
                 and g15.get("expected_manifest_pins") == a.get("expected_manifest_pins") == 169
                 and g15.get("source_roots") == 6 and g15.get("consumer_reports") == 12
                 and g15.get("native_examples") == 12 and g15.get("early_helper_reports") == [1, 3, 1],
                 "G15 cannot bypass accepted G14 or its coefficient norm contract")
+        if a.get("status") == "RED_UNQUALIFIED":
+            archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R1_43751403932_evidence.zip"
+            require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                    == "555b4e20d3f43613db646871fa9c3917100e9ae0d87aa07f194d7da91fa09ea1",
+                    "G15 complete red artifact missing or changed")
         for kind, sha in {'source': '1138153ca0ebae9fb5b5e96d9c380d377dd24610', 'consumer': '7e873eae9001339a0f746637b9ac906311ec106b', 'workflow': '0c3fbf040494b70d52fb44c76a7089dcac1d090b'}.items():
             data = (ROOT / a[kind]).read_bytes()
             require(a.get(kind) == g15.get(kind) and a.get(kind + "_blob") == g15.get(kind + "_blob")
@@ -586,6 +596,10 @@ def main():
             require(entry.get("manifest_pins") == 167 and entry.get("run_id") == 43743787307
                     and entry.get("manifest_hash") == "378cf5196a17f4f476ae3e7eac56ff13e363a7a77b027818c92cfe42e283aa40",
                     "G13 measured red preflight missing")
+        elif entry is a and tau_norm_candidate and a["status"] == "RED_UNQUALIFIED":
+            require(entry.get("manifest_pins") == 169 and entry.get("run_id") == 43751403932
+                    and entry.get("manifest_hash") == "1c474d67d01103777db6504bf12ba72a2280297b4b738e85e1e9dbf2b3fb316a",
+                    "G15 measured red preflight missing")
         elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate or derivative_candidate or bilinear_candidate or core_assembly_candidate or core_collapse_candidate or tau_norm_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
