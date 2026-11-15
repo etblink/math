@@ -41,7 +41,7 @@ theorem quaternionAdjointPolynomial_det (a b c d : ℝ) :
     (quaternionAdjointPolynomial a b c d).det =
       (quaternionNormSq a b c d) ^ 3 := by
   simp [Matrix.det_fin_three, quaternionAdjointPolynomial, quaternionNormSq]
-  <;> ring
+  ring
 
 #print axioms quaternionNormSq
 #print axioms quaternionAdjointPolynomial
