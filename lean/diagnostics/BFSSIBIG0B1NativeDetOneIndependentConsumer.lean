@@ -14,6 +14,7 @@ namespace BFSSIBIG0B1NativeDetOneIndependentConsumer
 noncomputable section
 
 open OAI.BFSSQuantum
+open Matrix
 open FCP.BFSSIBIG0B1FinDet3
 open FCP.BFSSIBIG0B1NativeDetOne
 
