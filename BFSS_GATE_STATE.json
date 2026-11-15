@@ -124,16 +124,17 @@
   },
   "next_planned": {
     "gate": "P3-AUX-HARDY-G10",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "status": "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
     "milestone": "M5 original-source Hardy algebra",
-    "goal": "Separate and qualify the literal kinetic/tau CAR contraction: first-order orbital coefficient and coefficient-derivative fermion term before actual smooth-core rotation assembly.",
+    "goal": "Pointwise original kinetic/tau orbital CAR contraction; coefficient-derivative fermion contraction and actual core assembly remain later.",
     "accepted_predecessor_run": 43681465949,
     "source_adapter_staged": false,
     "independent_consumer_staged": false,
     "strict_workflow_staged": false,
-    "pre_gate_receipt_complete": false,
+    "pre_gate_receipt_complete": true,
     "if_green": "Preserve exact source/native receipts, then assemble the actual on-core charge/tau rotation identity and separately qualify tau norm.",
-    "if_red": "Preserve first causal error; isolate generic finite algebra before native conversion; no unchanged native retry or resource escalation."
+    "if_red": "Preserve first causal error; isolate generic finite algebra before native conversion; no unchanged native retry or resource escalation.",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_PRE_GATE_ORIGINAL_KINETIC_TAU_CAR_2026_11_15.md"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R4_GREEN_43681465949_ORIGINAL_ENTRY_DERIVATIVE_ACCEPTANCE_2026_11_15.md",
   "monograph_alignment": {
@@ -7244,5 +7245,21 @@
     },
     "independent_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R4_GREEN_43681465949_AUDIT_2026_11_15.json",
     "qualification": true
+  },
+  "parallel_auxiliary_hardy_kinetic_tau_car": {
+    "gate": "P3-AUX-HARDY-G10",
+    "status": "REGISTERED_NOT_EXECUTED",
+    "qualification": false,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_PRE_GATE_ORIGINAL_KINETIC_TAU_CAR_2026_11_15.md",
+    "accepted_predecessor_run": 43681465949,
+    "reviewed_original_baseline": "e22dda02233c1e703cbb092e2ee705c3b169519a",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG10OriginalKineticTauCAR.lean",
+    "consumer": "lean/diagnostics/BFSSP3AuxHardyG10OriginalKineticTauCARIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g10-original-kinetic-tau-car-strict.yml",
+    "expected_manifest_pin_count": 163,
+    "expected_source_roots": 6,
+    "expected_consumer_reports": 12,
+    "native_examples": 12,
+    "scope": "Only pointwise orbital coefficient; no coefficient-derivative fermion contraction or full core rotation."
   }
 }

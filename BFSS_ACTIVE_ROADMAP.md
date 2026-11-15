@@ -35,6 +35,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
 
+**G10 orbital CAR preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_PRE_GATE_ORIGINAL_KINETIC_TAU_CAR_2026_11_15.md) freezes the exact principal-symbol/kinetic-symbol binding, same-index pairing to gamma trace and original mixed CAR. Six source/twelve consumer reports and twelve original native controls, including +1/-1, transverse, swapped-plane and distinct-color controls, are required. Coefficient-derivative fermion contraction remains separate. G9 accepted; no next proof code staged.
+
 ## Historical G9 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G9 is now accepted as stated above; all red/green and launch receipts are preserved.
