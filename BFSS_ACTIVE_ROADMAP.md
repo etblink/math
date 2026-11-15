@@ -35,6 +35,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
 
+**G12 ordered derivative Fock bilinear preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G12_R1_PRE_GATE_ORIGINAL_DERIVATIVE_FOCK_BILINEAR_2026_11_15.md) first isolates a Mathlib-only finite coefficient/product sum contraction, then binds the actual kinetic symbol and tau-derivative multiplier to the quarter-gamma theta bilinear with product order fixed. Require early helpers1+3+1, source6/native12 and twelve actual paired controls. Full core rotation remains separate; G11 accepted.
+
 ## Historical G11 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G11 is accepted above; all negative and launch receipts remain preserved.
