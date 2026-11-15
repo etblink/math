@@ -15,6 +15,19 @@ open FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation
 open FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR
 open MeasureTheory
 
+-- Canonical zero witnesses: tested generic/native decomposition from G5 D0.
+private theorem nativeFiniteComplexZeroSum {ι E : Type*} [Fintype ι]
+    [NormedAddCommGroup E] [NormedSpace ℂ E] (T : ι → E →L[ℂ] E) :
+    (∑ p : ι, (0 : ℂ) • T p) = (0 : E →L[ℂ] E) := by
+  apply Finset.sum_eq_zero
+  intro p _
+  exact zero_smul ℂ (T p)
+
+private theorem nativeThetaZeroSum :
+    (∑ p : FermionIndex 2, (0 : ℂ) • pairedAlgebraData.theta p.1 p.2) =
+      (0 : Fermion 2 →L[ℂ] Fermion 2) :=
+  nativeFiniteComplexZeroSum (fun p : FermionIndex 2 => pairedAlgebraData.theta p.1 p.2)
+
 example : FullL2 2 = Lp (Fermion 2) 2
     (volume : Measure (Boson 2)) := rfl
 
@@ -55,12 +68,12 @@ example (i j : SpaceIndex) (X : Boson 2) (v : Fermion 2) :
 example (i j : SpaceIndex) (α : SpinIndex) :
     originalHardyTau pairedAlgebraData i j α (0 : Boson 2) = 0 := by
   simp [originalHardyTau, AlgebraData.cliffordLinear, originalHardyY]
-  simp only [zero_smul ℂ, Finset.sum_const_zero]
+  exact nativeThetaZeroSum
 
 example (α : SpinIndex) :
     originalPotentialFermion pairedAlgebraData α (0 : Boson 2) = 0 := by
   simp [originalPotentialFermion, AlgebraData.cliffordLinear, originalPotentialGamma]
-  simp only [zero_smul ℂ, Finset.sum_const_zero]
+  exact nativeThetaZeroSum
 
 private theorem nativeUnitRowCAR (p : FermionIndex 2) :
     pairedAlgebraData.cliffordLinear (Pi.single p (1 : ℝ)) *
