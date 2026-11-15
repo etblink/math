@@ -35,6 +35,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G9 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_PRE_GATE_ORIGINAL_Y_ENTRY_DERIVATIVE_BINDING_2026_11_14.md) committed at `c2f96fc7` before proof code. Mathlib-only entry helper3 precedes native data; six source/twelve native reports and all twelve controls required. Static source/hash/import/root/YAML/bash/four Python and positive/five-negative auditor checks PASS; no local Lean proof. Accepted G8 and original source bytes are fixed. Physical symmetry/energy-domain audit remains the highest forward-research priority.
 
+**G9 R1 strict launch bound:** [#43677035838](https://github.com/etblink/math/actions/runs/43677035838), exact `bf556a9a7fa4c921ca1ad8c4b539ed094451de2a`, job132699358033. Observed at checkout; expected162 pins, early helpers1+3/source6/native12 and all12 controls remain pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_LAUNCH_BINDING_2026_11_14.md). G8 remains accepted; G9 unqualified.
+
 ## Historical checkpoint journal — newest entries first
 
 Everything below records its own as-of state. Earlier staged/running labels, allocation paragraphs and “next” decisions are retained for provenance and are superseded by the current-focus block and canonical JSON. Exact source/consumer/strict receipts remain proof authority.
