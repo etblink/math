@@ -59,12 +59,12 @@ was RED_UNQUALIFIED: cold 8,924-job build succeeded, but strict
 warning-as-error rejected the `<;> ring` tactic style; independent consumer
 not executed. See [first-causal receipt](IBI_G0B0_R1_RED_43691017217_TACTIC_LINTER_2026_11_14.md).
 R2 [#43692012496](https://github.com/etblink/math/actions/runs/43692012496)
-uses the preregistered one-line sequential-tactic repair,
-with unchanged consumer and atomically updated source pin:
-[exact launch binding](IBI_G0B0_R2_LAUNCH_43692012496_2026_11_14.md).
-It remains **UNQUALIFIED** pending completed strict evidence.
-Even success qualifies only finite quaternion polynomial algebra,
-not the original BFSS source SU(2) determinant-one bridge.
+**GREEN_QUALIFIED** at tested `770307121c8e12d374ddca75a4e535bfc36b677f`:
+8,924-job cold build, byte-identical independent consumer with three examples,
+three allowed-axiom reports and all strict checks pass.
+See [acceptance and artifact evidence](IBI_G0B0_R2_GREEN_43692012496_ACCEPTANCE_2026_11_15.md).
+This qualifies the finite original-oriented quaternion coefficient polynomial,
+**not yet** the literal original G3A SU(2) determinant-one bridge.
 
 
 ## Scalar L² reconstruction falsifier
