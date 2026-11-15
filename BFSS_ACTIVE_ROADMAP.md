@@ -1,8 +1,8 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## Current strategic focus — G9 accepted, fixed-positive-regulator certificate
+## Current strategic focus — G10 accepted, fixed-positive-regulator certificate
 
-**Reviewed November 15, 2026 Pacific.** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) reports **P3-AUX-HARDY-G9 GREEN_QUALIFIED**, [strict #43681465949](https://github.com/etblink/math/actions/runs/43681465949), exact tested `e22dda02233c1e703cbb092e2ee705c3b169519a`:162 pins, cold9084-job build, early helpers1+3, fresh source6/native12 reports and all12 native controls PASS. [Exact acceptance and independently rehashed complete evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R4_GREEN_43681465949_ORIGINAL_ENTRY_DERIVATIVE_ACCEPTANCE_2026_11_15.md). G9 binds the actual complex scalar-entry derivative to the original Y coordinate-basis value and its Fock multiplier. G8 and original-H M5BF0 remain distinct accepted dependencies.
+**Reviewed November 15, 2026 Pacific.** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) reports **P3-AUX-HARDY-G10 GREEN_QUALIFIED**, [strict #43702235044](https://github.com/etblink/math/actions/runs/43702235044), exact `7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d`:163 pins, cold9085-job build, early helpers1+3, fresh source6/native12 reports and all12 controls PASS. [Exact acceptance and independently rehashed complete evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_GREEN_43702235044_ORBITAL_CAR_ACCEPTANCE_2026_11_15.md). G10 qualifies the original pointwise kinetic/tau orbital CAR coefficient, including native sign/normalization/color controls. G9, G8 and original-H M5BF0 remain distinct accepted dependencies.
 
 **Endpoint:** a fixed-positive-regulator ground-state fidelity certificate for a normalized original physical Spin(9) singlet,
 
@@ -12,11 +12,11 @@
 
 This remains a conditional target. The original-source constant, normalization, symmetry and spectral-domain identities must qualify; no paper constant is automatically imported. The [endpoint synthesis](research/methodology/BFSS_PROJECT_BIRDS_EYE_SYNTHESIS_POST_C4C_2026_11_14.md) and [Hardy prerequisite map](research/spectral-p2-original-field/P3_AUX_HARDY_B1_SOURCE_ALGEBRA_PRIMITIVE_MAP_2026_11_13.md) give the strategic and analytical boundaries.
 
-**Completed package, in accepted scopes:** original closed/dense positive-regulator weighted-charge graph; normalized adjoint-square operator and full weak form; exact original/positive-regulator kernel equality; native reciprocal pairing. The bounded Hardy lane has advanced through G1–G9, including actual smooth-core tau, original potential cancellation, the coordinate derivative bridge and exact scalar-entry basis binding. The full charge/tau identity and tau norm remain open.
+**Completed package, in accepted scopes:** original closed/dense positive-regulator weighted-charge graph; normalized adjoint-square operator and full weak form; exact original/positive-regulator kernel equality; native reciprocal pairing. The bounded Hardy lane has advanced through G1–G10, including actual smooth-core tau, original potential cancellation, the coordinate derivative bridge exact scalar-entry basis binding and pointwise orbital CAR. The full charge/tau identity and tau norm remain open.
 
 | Priority | Work and exit condition |
 | --- | --- |
-| Immediate proof | **G10 R3 staged / unqualified:** qualify the literal pointwise kinetic/tau orbital CAR coefficient. Keep the coefficient-derivative fermion contraction separate. Then assemble the original on-core charge/tau rotation identity and prove tau norm. Each adapter needs exact original carriers and an independent consumer. |
+| Immediate proof | **G10 accepted; G11 design / unstaged:** bind the original coefficient derivative across all colors and contract gamma/spin indices. Then assemble the finite fermion bilinear, original on-core rotation identity and tau norm. Keep pointwise, core and closed-domain claims separate. |
 | Highest forward research | Audit genuine physical Spin(9), a reducing spinor sector, singlet-to-spinor covariance of the sixteen original charges, and the supercharge energy/domain identity. Produce source-shaped theorem contracts with all domain hypotheses; presence of historical source is not current qualification. |
 | Next analytical stage | Prove the sector-specific bounded-reciprocal Hardy estimate, extend it through actual form/operator domains, justify spectral negative powers or shifted-resolvent duality, and assemble the certificate. Finite gamma/CAR identities alone do not prove these assertions. |
 | Concrete consumer | Identify a normalized physical singlet trial state with rigorously bounded weighted energy **q_epsilon < 1/kappa**, so the overlap lower bound is positive. Domain-vector existence alone is insufficient. |
@@ -34,6 +34,10 @@ This remains a conditional target. The original-source constant, normalization, 
 | Lovelock/emergent geometry | Exploratory; reviewed findings supply no direct replacement for the spectral program. |
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
+
+## Historical G10 receipts — superseded by the current focus
+
+The staged/running labels below record their own as-of states. G10 is accepted above; all negative and launch receipts remain preserved.
 
 **G10 orbital CAR preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_PRE_GATE_ORIGINAL_KINETIC_TAU_CAR_2026_11_15.md) freezes the exact principal-symbol/kinetic-symbol binding, same-index pairing to gamma trace and original mixed CAR. Six source/twelve consumer reports and twelve original native controls, including +1/-1, transverse, swapped-plane and distinct-color controls, are required. Coefficient-derivative fermion contraction remains separate. G9 accepted; no next proof code staged.
 

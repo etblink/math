@@ -45,7 +45,7 @@ def main():
     source_join = a.get("gate") == "P3-M3W0D0"
     auxiliary_candidate = a.get("gate") == "P3-AUX-HARDY-G9"
     kinetic_candidate = a.get("gate") == "P3-AUX-HARDY-G10"
-    if kinetic_candidate:
+    if kinetic_candidate and a["status"] != "GREEN_QUALIFIED":
         g10 = s.get("parallel_auxiliary_hardy_kinetic_tau_car", {})
         require(q.get("gate") == "P3-AUX-HARDY-G9" and q.get("run_id") == 43681465949
                 and a.get("qualification") is False and g10.get("qualification") is False
@@ -473,6 +473,56 @@ def main():
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                 == "4d3cb75b8649dac9d4ed9c3ac81543b1999ebd007fd078712acbe030852cef2e",
                 "G9 complete accepted artifact missing or changed")
+    if q["gate"] == "P3-AUX-HARDY-G10":
+        acceptance = s.get("parallel_auxiliary_hardy_kinetic_tau_car_acceptance", {})
+        result = acceptance.get("result", {})
+        g10 = s.get("parallel_auxiliary_hardy_kinetic_tau_car", {})
+        receipt = ("research/spectral-p2-original-field/"
+                   "P3_AUX_HARDY_G10_R3_GREEN_43702235044_ORBITAL_CAR_ACCEPTANCE_2026_11_15.md")
+        require(s["milestone"] == "M5" and a.get("gate") == q["gate"]
+                and a.get("status") == "GREEN_QUALIFIED" and a.get("qualification") is True
+                and q.get("run_id") == a.get("run_id") == 43702235044
+                and q.get("tested_sha") == a.get("candidate_sha") == "7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d"
+                and q.get("job_id") == 132775658384
+                and q.get("manifest_pins") == a.get("manifest_pins") == 163
+                and q.get("manifest_hash") == a.get("manifest_hash") == "65142f6ef1c9f0233eddf42729c09ba4f7cc55403add65bcdbec58b76922534d"
+                and q.get("artifact_id") == 14157550157
+                and q.get("digest") == "sha256:d7acb15fac710626dbb608cbf7c929091b6ad716521e4ff51b989f3ffd4ebb6c"
+                and q.get("receipt") == receipt and (ROOT / receipt).is_file()
+                and acceptance.get("status") == g10.get("status") == "GREEN_QUALIFIED"
+                and g10.get("qualification") is True
+                and result.get("helper_reports") == [1, 3]
+                and result.get("source_reports") == 6 and result.get("consumer_reports") == 12
+                and result.get("all_twelve_native_controls_passed") is True,
+                "G10 exact accepted source/native evidence missing")
+        for kind, sha in {
+            "source": "59aaed1da894e8b91b2df51eda6f47a37cf4c517",
+            "consumer": "4f5ad59752d744a8e1dd218b36b7f15b6250ab3e",
+            "workflow": "bf74a5a1bc304924b8b24334ab5dab9f3a398e53",
+        }.items():
+            data = (ROOT / q[kind]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+            require(q.get(kind + "_blob") == a.get(kind + "_blob") == g10.get(kind + "_blob") == actual == sha,
+                    "G10 accepted bytes drift: " + kind)
+        prior = s.get("last_qualified_hardy_pre_G10", {})
+        physical = s.get("last_qualified_physical_operator", {})
+        focus = s.get("current_focus", {})
+        require(prior.get("gate") == "P3-AUX-HARDY-G9" and prior.get("run_id") == 43681465949
+                and prior.get("tested_sha") == "e22dda02233c1e703cbb092e2ee705c3b169519a"
+                and (ROOT / prior.get("receipt", "__missing__")).is_file()
+                and physical.get("gate") == "P3-M5BF0" and physical.get("run_id") == 43498649514
+                and physical.get("tested_sha") == "f2499980b808b6c9ddf2c6093f5b88ebff8b825f"
+                and focus.get("latest_qualified_gate") == q["gate"]
+                and focus.get("latest_qualified_run") == q["run_id"]
+                and focus.get("highest_forward_research") and focus.get("remaining_blockers")
+                and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G11"
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED"},
+                "G10 predecessor, physical-H or bounded next-stage handoff missing")
+        archive = (ROOT / "research/spectral-p2-original-field/diagnostics/"
+                   "P3_AUX_HARDY_G10_R3_43702235044_evidence.zip")
+        require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                == "d7acb15fac710626dbb608cbf7c929091b6ad716521e4ff51b989f3ffd4ebb6c",
+                "G10 complete accepted artifact missing or changed")
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},
             "pinned toolchain changed without roadmap review")
