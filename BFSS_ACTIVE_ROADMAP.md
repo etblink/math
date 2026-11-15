@@ -16,7 +16,7 @@ This remains a conditional target. The original-source constant, normalization, 
 
 | Priority | Work and exit condition |
 | --- | --- |
-| Immediate proof | **G9 source review, not staged:** bind G8 complex scalar-entry fderiv to accepted G3 real Y derivative coefficients. Then separately qualify kinetic CAR contraction, assemble the original on-core charge/tau rotation identity, and prove tau norm. Each adapter needs exact original carriers and an independent consumer. |
+| Immediate proof | **G9 staged / unqualified:** bind G8 complex scalar-entry fderiv to accepted G3 real Y derivative coefficients. Then separately qualify kinetic CAR contraction, assemble the original on-core charge/tau rotation identity, and prove tau norm. Each adapter needs exact original carriers and an independent consumer. |
 | Highest forward research | Audit genuine physical Spin(9), a reducing spinor sector, singlet-to-spinor covariance of the sixteen original charges, and the supercharge energy/domain identity. Produce source-shaped theorem contracts with all domain hypotheses; presence of historical source is not current qualification. |
 | Next analytical stage | Prove the sector-specific bounded-reciprocal Hardy estimate, extend it through actual form/operator domains, justify spectral negative powers or shifted-resolvent duality, and assemble the certificate. Finite gamma/CAR identities alone do not prove these assertions. |
 | Concrete consumer | Identify a normalized physical singlet trial state with rigorously bounded weighted energy **q_epsilon < 1/kappa**, so the overlap lower bound is positive. Domain-vector existence alone is insufficient. |
@@ -33,7 +33,7 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
 
-**G9 R1 preregistered, not staged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_PRE_GATE_ORIGINAL_Y_ENTRY_DERIVATIVE_BINDING_2026_11_14.md) fixes the original complex-entry derivative/basis target, Mathlib-only variable-data helper, six source/twelve native reports and twelve original controls. G8 remains accepted. G8 roadmap administrative #43676019954 is separately GREEN.
+**G9 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_PRE_GATE_ORIGINAL_Y_ENTRY_DERIVATIVE_BINDING_2026_11_14.md) committed at `c2f96fc7` before proof code. Mathlib-only entry helper3 precedes native data; six source/twelve native reports and all twelve controls required. Static source/hash/import/root/YAML/bash/four Python and positive/five-negative auditor checks PASS; no local Lean proof. Accepted G8 and original source bytes are fixed. Physical symmetry/energy-domain audit remains the highest forward-research priority.
 
 ## Historical checkpoint journal — newest entries first
 

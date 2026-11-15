@@ -43,6 +43,23 @@ def main():
     # a pinned ancestor-closure manifest, whose deduplicated count is produced
     # by the *new* strict workflow. Never invent that count before its preflight.
     source_join = a.get("gate") == "P3-M3W0D0"
+    auxiliary_candidate = a.get("gate") == "P3-AUX-HARDY-G9"
+    if auxiliary_candidate:
+        g9 = s.get("parallel_auxiliary_hardy_entry_derivative_binding", {})
+        require(q.get("gate") == "P3-AUX-HARDY-G8" and q.get("run_id") == 43674445069
+                and a.get("status") == "PENDING_STRICT_CI"
+                and g9.get("qualification") is False
+                and g9.get("status") == "STAGED_UNQUALIFIED"
+                and g9.get("prospective_receipt_commit") == "c2f96fc7ca5dec3bc47c7f92dadde2a97cac52a7"
+                and (ROOT / g9.get("prospective_receipt", "__missing__")).is_file()
+                and g9.get("expected_manifest_pin_count") == 162,
+                "G9 cannot bypass accepted G8 or its prior unqualified contract")
+        for kind in ("source", "consumer", "helper", "workflow"):
+            require(g9.get(kind + "_staged") is True
+                    and a.get(kind) == g9.get(kind)
+                    and a.get(kind + "_blob") == g9.get(kind + "_blob")
+                    and (ROOT / g9[kind]).is_file(),
+                    "G9 source/helper/consumer/workflow registration drift: " + kind)
     if source_join:
         require(a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED", "GREEN_QUALIFIED"},
                 "M3W0D0 status outside registered qualification phases")
@@ -264,7 +281,7 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and ((port_be or source_join or port_bf) and a["status"] != "GREEN_QUALIFIED"):
+        if entry is a and ((port_be or source_join or port_bf or auxiliary_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
@@ -274,7 +291,7 @@ def main():
             path = Path(entry[k])
             require(not path.is_absolute() and ".." not in path.parts and (ROOT/path).is_file(),
                     "missing or unsafe " + k + ": " + str(path))
-    if not source_join and not port_be and not port_bf:
+    if not source_join and not port_be and not port_bf and not auxiliary_candidate:
         require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
     # The BE native-H source port is an independently pinned historical
     # dependency closure; never compare its raw count to M3W0D0's 201 pins.
