@@ -140,3 +140,30 @@ are included; they do not prove an original BFSS source theorem.
 image containment in SO3. Actual G0C image surjectivity,
 rank-split G2 orbit classification and original quantum
 physical usefulness remain independent stop gates.
+
+
+## Octonion-to-source bridge audit (source exact arithmetic, not yet Lean)
+
+[Source gamma / octonionic composition bridge audit](IBI_OCTONION_TO_SOURCE_BRIDGE_AUDIT_2026_11_15.md)
+finds an explicit signed-permutation orthogonal correction
+`Q x=A(x)e7` in the original nine 16×16 gamma source:
+the raw product `A(x)y` has only a left identity, while
+`x star y=A(Q^T x)y` has a two-sided unit and preserves
+norm multiplicatively. The same exact source gamma blocks
+generate a classical `S15→S8` quadratic Hopf-norm formula.
+[Source-blob-pinned finite diagnostic](tools/bfss_octonion_source_gamma_bridge_exact.py)
+is staged; it has **not** passed an independent Python/Lean CI
+in this pass. No dedicated original BFSS octonion algebra
+Lean equivalence was identified in the inventoried source tree.
+Color SU2→SO3 gates and source Spin9/octonion geometry are
+different tracks, and original-Fock CAR null controls apply.
+
+**G1B R1 has now finished RED_UNQUALIFIED:**
+[#43695261997](https://github.com/etblink/math/actions/runs/43695261997)
+failed `originalLieTriple_eq_crossTriple` at source line 84:2
+(`simp made no progress`); two dependent roots list `sorryAx`,
+and the independent consumer was not executed.
+[First-causal red receipt](IBI_G1B_R1_RED_43695261997_SOURCE_INNER_SCALING_2026_11_15.md).
+The prior G1B launch-time PENDING statement above is historical
+and is superseded by this exact red verdict. No new G1B
+source repair or strict run was launched by the octonion audit.
