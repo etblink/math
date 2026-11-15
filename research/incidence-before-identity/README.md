@@ -65,3 +65,15 @@ with unchanged consumer and atomically updated source pin:
 It remains **UNQUALIFIED** pending completed strict evidence.
 Even success qualifies only finite quaternion polynomial algebra,
 not the original BFSS source SU(2) determinant-one bridge.
+
+
+## Scalar L² reconstruction falsifier
+
+[Orientation-odd scalar Schwartz witness](IBI_ORIENTATION_ODD_SCALAR_SCHWARTZ_WITNESS_2026_11_14.md)
+gives an explicit SO(3)-invariant nonzero smooth L² function
+`f(X)=det(x_0,x_1,x_2) exp(-||X||²)` which is odd under
+improper color reflection. Therefore no Gram-only function
+represents every legitimate conventional SO(3)-invariant
+scalar state. An exact Gaussian/Laplacian calculation is
+provided; this is **not** a proof of an original BFSS
+Fock-gauge physical domain vector or a reducing sector.
