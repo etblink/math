@@ -63,13 +63,13 @@ example (i j : SpaceIndex)
 example (i j : SpaceIndex) (X : Boson 2) :
     (∑ α : SpinIndex,
       ‖originalHardyTau pairedAlgebraData i j α X (0 : Fermion 2)‖ ^ 2) = 0 := by
-  simp only [map_zero, norm_zero, zero_pow, Finset.sum_const_zero]
+  simp
 
 example     (i j : SpaceIndex) (X : Boson 2) (v : Fermion 2) :
     (∑ α : SpinIndex,
-      ‖(∑ t : Fin 4, originalHardyTau pairedAlgebraData i j α X) v‖ ^ 2) =
+      ‖(∑ _t : Fin 4, originalHardyTau pairedAlgebraData i j α X) v‖ ^ 2) =
       (1 / 2 : ℝ) * (∑ α : SpinIndex, ∑ p : FermionIndex 2,
-        (∑ t : Fin 4, originalHardyY pairedAlgebraData i j X p.2 α p.1) ^ 2) * ‖v‖ ^ 2 :=
+        (∑ _t : Fin 4, originalHardyY pairedAlgebraData i j X p.2 α p.1) ^ 2) * ‖v‖ ^ 2 :=
   originalHardyTau_fourPlane_sum_norm_sq pairedAlgebraData (fun _ => i) (fun _ => j) X v
 
 example (i j : SpaceIndex) (α : SpinIndex) (f : SmoothCore 2) : FullL2 2 :=
