@@ -43,6 +43,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G15 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R1_PRE_GATE_ORIGINAL_TAU_COEFFICIENT_NORM_REDUCTION_2026_11_15.md) committed at `ae83c423` before code. Source `1138153c` binds original tau square/self-adjointness/action norm and the cross-term-preserving four-plane coefficient sum-square. Consumer `7e873eae` retains12 literal paired controls; workflow `0c3fbf04` expects169 pins/helpers1+3+1/source6/native12/all12. Source-model, half factor and all donors/resources fixed. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R1_STATIC_CHECKS_2026_11_15.json): imports/hashes/roots, twelve literal controls/first-six statement bindings, retained four-plane sum-square, YAML/bash/five Python/literal preflight and positive-six-negative auditor fixtures PASS. Fresh CI required; no local Lean or numerical/physical promotion.
 
+**G15 R1 strict launch bound:** [#43751403932](https://github.com/etblink/math/actions/runs/43751403932), exact `a2d247a1000f2d59807092358ac0f6f71b2909a1`, job132925943593. Observed setup in progress; expected169 pins/helpers1+3+1/source6/native12/all12 pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R1_LAUNCH_BINDING_2026_11_15.md). G14 acceptance and separate G15 contract committed first. Only exact tau coefficient norm reduction targeted; numerical estimate and physical assumptions remain separate. G14 last qualified.
+
 ## Historical G14 receipts — superseded by the current focus
 
 G14 is accepted above; earlier staged/running labels below remain as-of evidence.
