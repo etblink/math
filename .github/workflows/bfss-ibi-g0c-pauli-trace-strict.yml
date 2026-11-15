@@ -36,7 +36,7 @@ jobs:
           from pathlib import Path
           pins = {
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CPauliTrace.lean": "b3fc2604a8536cef7c5d0a1a6ca9ba12eccd4c8f",
-            "lean/diagnostics/BFSSIBIG0CPauliTraceIndependentConsumer.lean": "afed0e446ce16c5e94a170018a7e37b8c2e5b510",
+            "lean/diagnostics/BFSSIBIG0CPauliTraceIndependentConsumer.lean": "e330a6bd52aba03c7e85308d6220d9a9631044fc",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3AAdjointColorRepresentationProbe.lean": "553869f1287c64893398c3b79c04fe010023bd08",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean": "152204ef15a6569534e0503824a697cb9ae8e4ce",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSFullAlgebraDataProbe.lean": "de8242615e4b2959e2dfa57cf0c6fdf43896acb7",
@@ -62,6 +62,7 @@ jobs:
               "originalAdjointColorMatrix_normalizedPauliTrace",
               "originalAdjointColorMatrix_pauliTrace"]
           assert len(re.findall(r"(?m)^example\b", consumer)) == 3
+          assert "ᴴ" not in source and "ᴴ" not in consumer, "unscoped matrix notation"
           for body in (source, consumer):
               assert "set_option autoImplicit false" in body
               assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b", body)

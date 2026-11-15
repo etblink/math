@@ -38,7 +38,7 @@ example (B A : ColorIndex 2) :
     (Matrix.trace (FCP.BFSSSU2.pauli B *
       (((1 : GaugeGroup 2) : ColorMatrix 2) *
         FCP.BFSSSU2.pauli A *
-        ((1 : GaugeGroup 2) : ColorMatrix 2)ᴴ))).re / 2 =
+        ((1 : GaugeGroup 2) : ColorMatrix 2).conjTranspose))).re / 2 =
         (if B = A then 1 else 0 : ℝ) := by
   have h := originalAdjointColorMatrix_pauliTrace
     (1 : GaugeGroup 2) B A
