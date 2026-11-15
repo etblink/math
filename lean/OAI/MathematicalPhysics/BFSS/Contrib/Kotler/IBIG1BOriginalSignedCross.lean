@@ -81,7 +81,9 @@ theorem originalLieTriple_eq_crossTriple
       Real.sqrt 2 * originalCrossTriple x i j k := by
   unfold originalLieTriple originalCrossTriple
   rw [pairedColorLie_eq_sourceCross]
-  simp
+  exact real_inner_smul_left
+    (sourceCross (spatialColor x i) (spatialColor x j))
+    (spatialColor x k) (Real.sqrt 2)
 
 /-- The source signed cross triple is genuinely SU(2) gauge invariant.
 It follows by cancelling the proved nonzero positive sqrt(2). -/
