@@ -324,7 +324,9 @@ def main():
                 and focus.get("highest_forward_research")
                 and focus.get("remaining_blockers") and focus.get("reconsideration_triggers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G9"
-                and s["next_planned"].get("status") == "RESEARCH_DESIGN_NOT_STAGED",
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED",
+                    "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+                    "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS"},
                 "G8 live focus or bounded unqualified G9 handoff missing")
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},

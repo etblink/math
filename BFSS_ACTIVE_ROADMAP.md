@@ -33,6 +33,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
 
+**G9 R1 preregistered, not staged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_PRE_GATE_ORIGINAL_Y_ENTRY_DERIVATIVE_BINDING_2026_11_14.md) fixes the original complex-entry derivative/basis target, Mathlib-only variable-data helper, six source/twelve native reports and twelve original controls. G8 remains accepted. G8 roadmap administrative #43676019954 is separately GREEN.
+
 ## Historical checkpoint journal — newest entries first
 
 Everything below records its own as-of state. Earlier staged/running labels, allocation paragraphs and “next” decisions are retained for provenance and are superseded by the current-focus block and canonical JSON. Exact source/consumer/strict receipts remain proof authority.
