@@ -1,5 +1,42 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
+## Current strategic focus — G8 accepted, fixed-positive-regulator certificate
+
+**Reviewed November 14, 2026 Pacific.** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) now reports **P3-AUX-HARDY-G8 GREEN_QUALIFIED**, [strict #43674445069](https://github.com/etblink/math/actions/runs/43674445069), tested `19a441adc0bc2408e639a1dca2ec0e67e31e6f57`: 160 pins, early helper reports 1+1, cold 9082-job build, six source/twelve native reports and all twelve controls pass. [Exact acceptance and complete evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G8_R2_GREEN_43674445069_ORIGINAL_TAU_DERIVATIVE_ACCEPTANCE_2026_11_14.md). G8 qualifies the original tau coordinate product rule and pointwise commutator/locality, within its stated scope.
+
+**Endpoint:** a fixed-positive-regulator ground-state fidelity certificate for a normalized original physical Spin(9) singlet,
+
+\[
+\|P_{\ker H}\psi\|^2\ge\max(0,1-\kappa q_\varepsilon[\psi]).
+\]
+
+This remains a conditional target. The original-source constant, normalization, symmetry and spectral-domain identities must qualify; no paper constant is automatically imported. The [endpoint synthesis](research/methodology/BFSS_PROJECT_BIRDS_EYE_SYNTHESIS_POST_C4C_2026_11_14.md) and [Hardy prerequisite map](research/spectral-p2-original-field/P3_AUX_HARDY_B1_SOURCE_ALGEBRA_PRIMITIVE_MAP_2026_11_13.md) give the strategic and analytical boundaries.
+
+**Completed package, in accepted scopes:** original closed/dense positive-regulator weighted-charge graph; normalized adjoint-square operator and full weak form; exact original/positive-regulator kernel equality; native reciprocal pairing. The bounded Hardy lane has advanced through G1–G8, including actual smooth-core tau, original potential cancellation and the coordinate derivative bridge. The full charge/tau identity and tau norm remain open.
+
+| Priority | Work and exit condition |
+| --- | --- |
+| Immediate proof | **G9 source review, not staged:** bind G8 complex scalar-entry fderiv to accepted G3 real Y derivative coefficients. Then separately qualify kinetic CAR contraction, assemble the original on-core charge/tau rotation identity, and prove tau norm. Each adapter needs exact original carriers and an independent consumer. |
+| Highest forward research | Audit genuine physical Spin(9), a reducing spinor sector, singlet-to-spinor covariance of the sixteen original charges, and the supercharge energy/domain identity. Produce source-shaped theorem contracts with all domain hypotheses; presence of historical source is not current qualification. |
+| Next analytical stage | Prove the sector-specific bounded-reciprocal Hardy estimate, extend it through actual form/operator domains, justify spectral negative powers or shifted-resolvent duality, and assemble the certificate. Finite gamma/CAR identities alone do not prove these assertions. |
+| Concrete consumer | Identify a normalized physical singlet trial state with rigorously bounded weighted energy **q_epsilon < 1/kappa**, so the overlap lower bound is positive. Domain-vector existence alone is insufficient. |
+
+**Reconsideration triggers:** a failed physical symmetry or energy-domain feasibility audit; a normalization/Hardy mismatch; two analogous reds or the same native conversion boundary; a whole-sector escape counterexample; five accepted gates or a stage transition without removing a named endpoint obstruction; or trial energy that fails to make the certificate informative. Review endpoint assumptions and alternatives at those triggers, rather than treating further green counts as physical progress. Preserve first-causal failures; no unchanged native retries or resource-limit escalation.
+
+| Retained route | Disposition |
+| --- | --- |
+| Positive-regulator comparison and zero limit | Useful independent analysis; the first fixed-regulator certificate need not wait for either. Zero-limit closure/kernel assertions retain their own obligations. |
+| High-spin/operator-column confinement | Fallback requiring physical covariance, nonempty reducing sectors, domain transfer and whole-sector oscillator exclusion. |
+| Superspin 84/128 exclusion | Separate projectors, nonempty sectors and channel-to-spectrum argument; dimension matches do not establish these. |
+| S2/SU(2), Hopf and valley geometry | Supporting research; physical operator/domain payoff remains conditional. |
+| Lovelock/emergent geometry | Exploratory; reviewed findings supply no direct replacement for the spectral program. |
+
+**Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
+
+## Historical checkpoint journal — newest entries first
+
+Everything below records its own as-of state. Earlier staged/running labels, allocation paragraphs and “next” decisions are retained for provenance and are superseded by the current-focus block and canonical JSON. Exact source/consumer/strict receipts remain proof authority.
+
 **HARDY-G8 R2 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G8_R2_PRE_GATE_EXPLICIT_MULTIPLIER_EVALUATION_2026_11_14.md) committed at `bf157953` before repair. Source `138ab7f545bf00812a55d1cb035251a9eccb6c27` adds only AlgebraData.smoothMultiplier_apply; workflow `73a08204ca5a38089f1e69fa6dcb72dd1b1a006c` changes only its source pin. Helper/consumer/statements/other proofs/budgets unchanged. Static exact-delta/hash/root/import/YAML/bash/four Python/scope checks PASS; no local Lean proof. Full strict1 generic+1 product helper/6 source/12 consumer audits and12 controls required. G7 accepted; no physical/spectral promotion.
 
 **HARDY-G8 R1 verified RED — missing original multiplier evaluation:** [#43673139716](https://github.com/etblink/math/actions/runs/43673139716), exact `2a0da05b`,160-pin preflight and early generic/product-rule helpers PASS. Cold source39 leaves RHS smoothMultiplier unevaluated; unused map_smul warning,3 clean/3 consequential sorryAx source reports. Native consumer not executed; no recursion. [Red receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G8_R1_RED_43673139716_MULTIPLIER_EVALUATION_2026_11_14.md) preserves rehashed ZIP. [R2 contract](research/spectral-p2-original-field/P3_AUX_HARDY_G8_R2_PRE_GATE_EXPLICIT_MULTIPLIER_EVALUATION_2026_11_14.md) adds only existing smoothMultiplier_apply; helper/consumer/statements/budgets frozen. G7 stays accepted. Physical Spin9/energy-domain audit remains highest forward-research priority.
@@ -334,18 +371,18 @@ Following accepted C3DC density [#43579923559](https://github.com/etblink/math/a
 
 Original physicalSpace kernel-intersection preservation is now staged in source, independent consumer and a dedicated strict workflow; see [prospective G0B3 receipt](research/spectral-p2-original-field/P3_AUX_G0B3_R1_PROSPECTIVE_PHYSICAL_SPACE_PRESERVATION_2026_11_13.md). Accepted donor G0B1/G0B2 are unchanged. **No G0B3 qualification is asserted until exact strict CI verifies the source, consumer and root audit.** Keep B16/injectivity as independent essential weighted-charge obligations; the latest accepted original H remains M5BF0.
 
-## Current Project Lead decision — D2R2 reviewed GREEN collection; auxiliary weighted-charge lead
+## Historical Project Lead decision — D2R2 reviewed GREEN collection; auxiliary weighted-charge lead
 
 **D2R2 [#43562804737](https://github.com/etblink/math/actions/runs/43562804737)** at tested `8de590a9`: inspector/Core, original-Fock variable control, source-axis build and literal direct-axis control PASS; native axis/evaluation report `_private...sourceGammaRealLinear.Op` versus `ContinuousLinearMap` in reciprocal directions, then deliberately stop unproved. Original TD-C1A still **RED_UNQUALIFIED**. [Reviewed exact D2R2 receipt](research/top-down-symmetry/TD_C1A_D2R2_GREEN_DIFFERENTIAL_OBSERVATIONS_43562804737_2026_11_13.md).
 
-**Primary allocation:** original radial/weighted physical sixteen-charge operator (G0B3 as optional fast physical-compatibility gate; RAD-C0 normalization; RAD-C2 actual output multiplier B16/injectivity; RAD-C3 exact AY closed inverse graph; RAD-C4 same positive-ε domain/form). **Secondary:** one source-bound D2R3 private-Op/CLM adapter investigation, no full all-48 covariance retry unless a real source proof passes independent consumer. **Exploration:** original gamma/CAR Hardy B1-A/B and historical operator-column/high-Spin alternatives. [Complete route inventory and stop rules](research/methodology/BFSS_PROJECT_LEAD_ROUTE_SELECTION_POST_D2R2_2026_11_13.md).
+**Historical allocation (superseded by current strategic focus):** original radial/weighted physical sixteen-charge operator (G0B3 as optional fast physical-compatibility gate; RAD-C0 normalization; RAD-C2 actual output multiplier B16/injectivity; RAD-C3 exact AY closed inverse graph; RAD-C4 same positive-ε domain/form). **Secondary:** one source-bound D2R3 private-Op/CLM adapter investigation, no full all-48 covariance retry unless a real source proof passes independent consumer. **Exploration:** original gamma/CAR Hardy B1-A/B and historical operator-column/high-Spin alternatives. [Complete route inventory and stop rules](research/methodology/BFSS_PROJECT_LEAD_ROUTE_SELECTION_POST_D2R2_2026_11_13.md).
 
 The latest accepted original Hamiltonian M5BF0 and original scalar/gauge radial donor chain are preserved; paper auxiliary gap remains external/conditional. No new strict theorem run is launched by this decision.
 
 **Scope:** original relative SU(2) BFSS research on `integration/bfss-unified-research-20261108`. Not on `main`.
 **Start here every session:** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) is the *sole canonical live checkpoint*: active mathematical gate, precise attempted SHA, verified accepted predecessor, first causal red and next conditional decision. This page holds the durable objectives and review process. Neither document is a mathematical proof: original Git/Lean source, independent consumer, and the **exact strict CI result** are the proof authority.
 
-## Parallel auxiliary-ground-state research priority — 2026-11-13 (RESEARCH ONLY)
+## Historical auxiliary-ground-state research priority — 2026-11-13 (RESEARCH ONLY)
 
 **Auxiliary dependency refinement:** [G0B3 / output-multiplier source review](research/spectral-p2-original-field/P3_AUX_G0B3_OUTPUT_MULTIPLIER_DEPENDENCY_REVIEW_2026_11_13.md) finds a short literal kernel-intersection proof of physicalSpace preservation from accepted G0B1/G0B2. Keep it as a bounded compatibility join. The weighted graph has physical input E and ambient sixteen-FullL2 output K, so input preservation by B is not a prerequisite for that graph; native reciprocal injectivity, the exact PiLp2 output lift (pinned piMap plus AY's output equivalence), and generic graph closure are the essential output obligations. Weighted-core density and full maximal-domain identification remain separate. Research only; no extra mathematical CI or qualification, and focused R4 #43549082375 is not presumed.
 
@@ -467,7 +504,7 @@ The latest accepted original Hamiltonian M5BF0 and original scalar/gauge radial 
 The user's shortest reliable resume instruction is:
 > **Resume BFSS from `BFSS_ACTIVE_ROADMAP.md` and `BFSS_GATE_STATE.json` on `integration/bfss-unified-research-20261108`; verify the latest CI receipt first.**
 
-## Current priorities — M5BF0 original source graph and nonzero H-domain GREEN; BG/BH next (2026-11-13 Pacific)
+## Historical priorities — M5BF0 original source graph and nonzero H-domain GREEN; BG/BH handoff (2026-11-13 Pacific)
 
 **New exact accepted M5BF0 R1 strict GREEN:** [#43498649514](https://github.com/etblink/math/actions/runs/43498649514), original tested `f2499980b808b6c9ddf2c6093f5b88ebff8b825f`, 208 exact local OAI source paths, qualified historical BF blob `fd137fc6f62f42d96bcf6ff3eb9355839a59d562`, original-Fock independent consumer, 14 audited declarations (three new BF0, nine historical BF, two accepted BE0/W0), `[propext, Classical.choice, Quot.sound]` only; artifact #14074535971 digest `sha256:cd1ff2d72b54be0fd806ba8e962cff57637f9c4dc47e422f53505c347132ca18`. Three new facts: actual AY gauge-restricted native charge graph = source-rebased graph, original BF paired H = accepted normalized M5BE0 H, **nonzero physical vector exists in exact natural normalized H-domain**. [Permanent accepted receipt](research/spectral-p2-original-field/P3_M5BF0_R1_GREEN_43498649514_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_ACCEPTANCE_2026_11_13.md). Not radial wavepacket H-domain membership, eigenstate, ground state, Lorentz mass or BFSS gap. **Next proposed P3-M5BG0 RESEARCH ONLY (not staged):** original AY charge graph/LinearPMap/domain equals historical D2B17, then separately BH native H/domain equality. Separate concurrent mass/energy source convention audit remains research only.
 
@@ -725,3 +762,4 @@ The [prospective M2C0 receipt](research/spectral-p2-original-field/P3_M2C0_PROSP
 ## M2C1 accepted R2 GREEN; user priority review and M3 research-only handoff
 
 [Strict #43379713104](https://github.com/etblink/math/actions/runs/43379713104) GREEN at immutable 88c0a1f5, 96 pins, 9,210 cold jobs, independent original Fock source consumer and three allowed-axiom roots; artifact 14016628349, sha256:12db22f7b7ca3d3bdbeccea478f497d2621f89e90eff32999bde965ca5d31cce. [Acceptance](research/spectral-p2-original-field/P3_M2C1_R2_GREEN_43379713104_ACCEPTANCE_M2_CLOSURE_M3_PRIORITIES_2026_11_12.md) and [prioritized reuse review](research/spectral-p2-original-field/P3_M2_TO_M3_PRIORITY_RECONCILIATION_AND_OLDER_WORK_REUSE_2026_11_12.md) supersede earlier pending-status snapshots. **Historical 2026-11-12 M3G0 handoff was research-only; superseded by M3G0A strict GREEN [#43391099205](https://github.com/etblink/math/actions/runs/43391099205). Next M3G0B remains research-only and unstaged.**
+

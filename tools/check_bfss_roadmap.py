@@ -7,6 +7,7 @@ theorems, or protect a branch ref.
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 import re
 import subprocess
@@ -32,7 +33,7 @@ def main():
     require(s.get("roadmap") == ROADMAP_PATH.name, "canonical roadmap moved")
     require(re.fullmatch("M[1-8]", s.get("milestone", "")) is not None, "milestone must be M1-M8")
     q, a = s["last_qualified"], s["active"]
-    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M[235][A-Z][0-9]*(?:[A-Z][0-9]*)?(?:-BI)?)")
+    gate_rx = re.compile(r"P3-(?:D5[A-Z][0-9]*[A-Z]?|M[235][A-Z][0-9]*(?:[A-Z][0-9]*)?(?:-BI)?|AUX-HARDY-G[0-9]+)")
     require(gate_rx.fullmatch(q.get("gate", "")) is not None, "qualified gate ID malformed")
     require(gate_rx.fullmatch(a.get("gate", "")) is not None, "active gate ID malformed")
     require(q["verdict"] == "GREEN", "last qualified verdict not GREEN")
@@ -281,8 +282,50 @@ def main():
     # It independently proves its current-source closure against the immutable
     # c625... baseline and records its count in CI; arithmetic comparison
     # between unrelated import closures is mathematically meaningless.
-    require(Path(a["source"]).stem.startswith(a["gate"].replace("-", "")),
+    require(Path(a["source"]).stem.casefold().startswith(a["gate"].replace("-", "").casefold()),
             "active gate/source mismatch")
+    # The live allocation has moved from the original-H port to Hardy algebra.
+    # Preserve the physical-H receipt independently; do not require its old BG
+    # handoff to remain the project's current mathematical priority.
+    if q["gate"] == "P3-AUX-HARDY-G8":
+        accepted = s.get("parallel_auxiliary_hardy_tau_derivative_acceptance", {})
+        result = accepted.get("result", {})
+        focus = s.get("current_focus", {})
+        receipt = ("research/spectral-p2-original-field/"
+                   "P3_AUX_HARDY_G8_R2_GREEN_43674445069_ORIGINAL_TAU_DERIVATIVE_ACCEPTANCE_2026_11_14.md")
+        require(s["milestone"] == "M5" and q.get("run_id") == 43674445069
+                and q.get("tested_sha") == "19a441adc0bc2408e639a1dca2ec0e67e31e6f57"
+                and q.get("manifest_pins") == 160
+                and q.get("manifest_hash") == "06a3822136ea677928f38230b4b6840447a0e09b9c06230a6acde22f9dc1d2a5"
+                and q.get("artifact_id") == 14146161190
+                and q.get("digest") == "sha256:62414b5ff808ab2afe72e0243150379708f1bbd8d7891d53ab43cb2663a49160"
+                and accepted.get("status") == "GREEN_QUALIFIED"
+                and result.get("source_reports") == 6
+                and result.get("consumer_reports") == 12
+                and result.get("all_twelve_native_controls_passed") is True
+                and q.get("receipt") == receipt and (ROOT / receipt).is_file(),
+                "G8 exact accepted receipt or native audit drift")
+        expected_blobs = {
+            "source": "138ab7f545bf00812a55d1cb035251a9eccb6c27",
+            "consumer": "0d3714894391fd6afa1bfb00b1df7238421ae7e7",
+            "workflow": "73a08204ca5a38089f1e69fa6dcb72dd1b1a006c",
+        }
+        for kind, expected in expected_blobs.items():
+            data = (ROOT / q[kind]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+            require(q.get(kind + "_blob") == expected and actual == expected,
+                    "G8 accepted " + kind + " bytes drift")
+        physical = s.get("last_qualified_physical_operator", {})
+        require(physical.get("gate") == "P3-M5BF0" and physical.get("run_id") == 43498649514
+                and physical.get("tested_sha") == "f2499980b808b6c9ddf2c6093f5b88ebff8b825f",
+                "G8 refresh erased original physical-H qualification")
+        require(focus.get("latest_qualified_gate") == q["gate"]
+                and focus.get("latest_qualified_run") == q["run_id"]
+                and focus.get("highest_forward_research")
+                and focus.get("remaining_blockers") and focus.get("reconsideration_triggers")
+                and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G9"
+                and s["next_planned"].get("status") == "RESEARCH_DESIGN_NOT_STAGED",
+                "G8 live focus or bounded unqualified G9 handoff missing")
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},
             "pinned toolchain changed without roadmap review")
@@ -687,3 +730,4 @@ if __name__ == "__main__":
     except (AssertionError, KeyError, TypeError, ValueError, OSError) as exc:
         print("BFSS_ROADMAP_CHECK_FAIL:", exc, file=sys.stderr)
         sys.exit(1)
+
