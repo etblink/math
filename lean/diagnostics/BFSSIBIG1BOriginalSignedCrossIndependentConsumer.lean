@@ -21,7 +21,8 @@ open FCP.BFSSIBIG1BOriginalSignedCross
 /-- The original positive Pauli 012 color orientation. -/
 example :
     pairedAlgebraData.structureConstant
-      (0 : ColorIndex 2) (1 : ColorIndex 2) (2 : ColorIndex 2) =
+      (⟨0, by decide⟩ : ColorIndex 2) (⟨1, by decide⟩ : ColorIndex 2)
+      (⟨2, by decide⟩ : ColorIndex 2) =
         Real.sqrt 2 := by
   rw [pairedColor_structureConstant]
   norm_num [FCP.BFSSSU2.epsilon3]
@@ -29,7 +30,8 @@ example :
 /-- Reversing the original Pauli colors flips the signed coefficient. -/
 example :
     pairedAlgebraData.structureConstant
-      (0 : ColorIndex 2) (2 : ColorIndex 2) (1 : ColorIndex 2) =
+      (⟨0, by decide⟩ : ColorIndex 2) (⟨2, by decide⟩ : ColorIndex 2)
+      (⟨1, by decide⟩ : ColorIndex 2) =
         -Real.sqrt 2 := by
   rw [pairedColor_structureConstant]
   norm_num [FCP.BFSSSU2.epsilon3]
