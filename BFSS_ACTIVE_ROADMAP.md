@@ -39,6 +39,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G13 R1 STAGED / UNQUALIFIED:** [core assembly contract](research/spectral-p2-original-field/P3_AUX_HARDY_G13_R1_PRE_GATE_ORIGINAL_CORE_KINETIC_TAU_ASSEMBLY_2026_11_15.md) committed at `cd5520f5` before code. Source `b112d763`/consumer `a82dd859`/workflow `02363ae3` bind actual original core kinetic derivative, tau Leibniz and summed charge-to-kinetic reduction with original -I. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G13_R1_STATIC_CHECKS_2026_11_15.json): source6/native12/all12 including literal first-six source substitutions, expected167 pins, early accepted helpers1+3+1; YAML/bash/five Python/preflight/positive-six-negative auditor fixtures PASS. No local Lean; fresh qualification required. Final G10/G12 kinetic collapse, full rotation, tau norm and physical assumptions excluded. G12 accepted.
 
+**G13 R1 strict launch bound:** [#43743787307](https://github.com/etblink/math/actions/runs/43743787307), exact `6da84c396b509436588d7b2ec2e2a1428665e066`, job132902504883. Observed setup in progress;167 pins/helpers1+3+1/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G13_R1_LAUNCH_BINDING_2026_11_15.md). G12 acceptance/evidence and separate G13 contract committed first. Only original core kinetic/tau assembly targeted; final rotation, tau norm and physical assumptions remain separate. G12 remains last qualified full gate.
+
 ## Historical G12 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G12 is accepted above; all negative, diagnostic and launch receipts remain preserved.
