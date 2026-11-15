@@ -43,6 +43,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G14 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G14_R1_PRE_GATE_ORIGINAL_CORE_ANTICOMMUTATOR_COLLAPSE_2026_11_15.md) committed at `893ac983` before code. Source `ef1fd6b6` collapses original core orbital and derivative terms; consumer `9dfb7f66` retains twelve literal paired controls; workflow `dfcee5b2` expects168 pins/helpers1+3+1/source6/native12/all12. Original -i/quarter coefficient/theta order and all donors/resources fixed. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G14_R1_STATIC_CHECKS_2026_11_15.json): imports/hashes/roots, twelve literal controls/first-six statement bindings, YAML/bash/five Python/literal preflight and positive-six-negative auditor fixtures PASS. Fresh CI required; no local Lean or physical promotion.
 
+**G14 R1 strict launch bound:** [#43749092953](https://github.com/etblink/math/actions/runs/43749092953), exact `3e2cc5da7a2e0965f158c0683acc774bcf1a81b8`, job132918820908. Observed setup in progress; expected168 pins/helpers1+3+1/source6/native12/all12 pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G14_R1_LAUNCH_BINDING_2026_11_15.md). G13 acceptance and separate G14 contract committed first; only literal original core collapse targeted. Tau norm and physical representation/domains remain separate. G13 last qualified.
+
 ## Historical G13 receipts — superseded by the current focus
 
 Earlier staged/running labels below are their own as-of receipts. G13 is now accepted above; the R1 red and all launch/repair evidence remain preserved.
