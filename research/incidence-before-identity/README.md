@@ -77,3 +77,23 @@ represents every legitimate conventional SO(3)-invariant
 scalar state. An exact Gaussian/Laplacian calculation is
 provided; this is **not** a proof of an original BFSS
 Fock-gauge physical domain vector or a reducing sector.
+
+
+## Next exact-source gate: IBI-G1A
+
+The original `GaugeGeometry.lean` proves source color-bracket
+naturality under gauge conjugation, and `GaugeOrbits.lean` proves
+inner-product preservation. These offer a shorter source path than
+assuming a newly verified SU2-to-SO3 covering:
+`L_ijk(x)=<pairedAlgebraData.colorLie(x_i,x_j),x_k>`
+must be gauge invariant under the literal G2A action.
+[Preregistered obligation](IBI_G1A_SOURCE_LIE_TRIPLE_PREREG_2026_11_15.md);
+[strict run #43693100174](https://github.com/etblink/math/actions/runs/43693100174)
+is **UNQUALIFIED pending full CI evidence**, exact tested
+`42944aec076bea77469ac4f2a54f7529fce29f67`.
+[Exact launch receipt](IBI_G1A_R1_LAUNCH_43693100174_2026_11_15.md).
+
+An accepted G1A would prove a new gauge-invariant source color-Lie
+triple, but not yet its epsilon determinant normalization (G1B)
+or source adjoint determinant one / SO3 image surjectivity (G0B1/G0C).
+No ontology or physical spectral consequence is claimed.
