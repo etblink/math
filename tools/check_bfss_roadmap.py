@@ -47,6 +47,26 @@ def main():
     kinetic_candidate = a.get("gate") == "P3-AUX-HARDY-G10"
     derivative_candidate = a.get("gate") == "P3-AUX-HARDY-G11"
     bilinear_candidate = a.get("gate") == "P3-AUX-HARDY-G12"
+    core_assembly_candidate = a.get("gate") == "P3-AUX-HARDY-G13"
+    if core_assembly_candidate:
+        g13 = s.get("parallel_auxiliary_hardy_core_kinetic_tau_assembly", {})
+        require(q.get("gate") == "P3-AUX-HARDY-G12" and q.get("run_id") == 43740253917
+                and a.get("status") == "PENDING_STRICT_CI" and a.get("qualification") is False
+                and g13.get("status") == "STAGED_UNQUALIFIED" and g13.get("qualification") is False
+                and g13.get("prospective_receipt_commit") == "cd5520f58b00a83dce1ab73d916c4958ba0eba92"
+                and g13.get("reviewed_original_baseline") == "8b54ce6b150d8f3689342dd6bf80179414ab95fa"
+                and (ROOT / g13.get("prospective_receipt", "__missing__")).is_file()
+                and g13.get("expected_manifest_pin_count") == a.get("expected_manifest_pins") == 167
+                and g13.get("expected_source_roots") == 6 and g13.get("expected_consumer_reports") == 12
+                and g13.get("native_examples") == 12 and g13.get("early_helper_reports") == [1, 3, 1],
+                "G13 cannot bypass accepted G12 or its exact original-core contract")
+        for kind, sha in {'source': 'b112d763fe63a864e3b2ed72f551a521995b42b3', 'consumer': 'a82dd8590dea928538ebbef1c66bbc22b3726cdf', 'workflow': '02363ae34c5fd3c214b000bde0a79835d2b67ce5'}.items():
+            require(a.get(kind) == g13.get(kind) and (ROOT / g13[kind]).is_file(),
+                    "G13 registration path drift: " + kind)
+            data = (ROOT / g13[kind]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+            require(a.get(kind + "_blob") == g13.get(kind + "_blob") == actual == sha,
+                    "G13 staged bytes drift: " + kind)
     if bilinear_candidate and a["status"] != "GREEN_QUALIFIED":
         g12 = s.get("parallel_auxiliary_hardy_derivative_fock_bilinear", {})
         require(q.get("gate") == "P3-AUX-HARDY-G11" and q.get("run_id") == 43708533905
@@ -515,7 +535,7 @@ def main():
                     and entry.get("run_id") in red_manifests
                     and entry.get("manifest_hash") == red_manifests[entry["run_id"]],
                     "G9 measured red preflight missing")
-        elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate or derivative_candidate or bilinear_candidate) and a["status"] != "GREEN_QUALIFIED"):
+        elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate or derivative_candidate or bilinear_candidate or core_assembly_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
@@ -525,7 +545,7 @@ def main():
             path = Path(entry[k])
             require(not path.is_absolute() and ".." not in path.parts and (ROOT/path).is_file(),
                     "missing or unsafe " + k + ": " + str(path))
-    if not source_join and not port_be and not port_bf and not auxiliary_candidate and not kinetic_candidate and not derivative_candidate and not bilinear_candidate:
+    if not source_join and not port_be and not port_bf and not auxiliary_candidate and not kinetic_candidate and not derivative_candidate and not bilinear_candidate and not core_assembly_candidate:
         require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
     # The BE native-H source port is an independently pinned historical
     # dependency closure; never compare its raw count to M3W0D0's 201 pins.
@@ -754,13 +774,15 @@ def main():
         acceptance = s.get("parallel_auxiliary_hardy_derivative_fock_bilinear_acceptance", {})
         result = acceptance.get("result", {})
         receipt = "research/spectral-p2-original-field/P3_AUX_HARDY_G12_R4_GREEN_43740253917_ORDERED_DERIVATIVE_FOCK_BILINEAR_ACCEPTANCE_2026_11_15.md"
-        require(a.get("gate") == q["gate"] and a.get("status") == "GREEN_QUALIFIED"
-                and a.get("qualification") is True and g12.get("qualification") is True
+        require((core_assembly_candidate or (a.get("gate") == q["gate"] and a.get("status") == "GREEN_QUALIFIED"
+                     and a.get("qualification") is True and a.get("run_id") == q.get("run_id")
+                     and a.get("candidate_sha") == q.get("tested_sha") and a.get("manifest_pins") == q.get("manifest_pins")
+                     and a.get("manifest_hash") == q.get("manifest_hash"))) and g12.get("qualification") is True
                 and acceptance.get("status") == g12.get("status") == "GREEN_QUALIFIED"
-                and q.get("run_id") == a.get("run_id") == 43740253917
-                and q.get("tested_sha") == a.get("candidate_sha") == "8b54ce6b150d8f3689342dd6bf80179414ab95fa"
-                and q.get("job_id") == 132891625052 and q.get("manifest_pins") == a.get("manifest_pins") == 166
-                and q.get("manifest_hash") == a.get("manifest_hash") == "17a3155a59d23f270d406ac167cfbda1dbe1330128738879c360a5bd9868aae5"
+                and q.get("run_id") == 43740253917
+                and q.get("tested_sha") == "8b54ce6b150d8f3689342dd6bf80179414ab95fa"
+                and q.get("job_id") == 132891625052 and q.get("manifest_pins") == 166
+                and q.get("manifest_hash") == "17a3155a59d23f270d406ac167cfbda1dbe1330128738879c360a5bd9868aae5"
                 and q.get("artifact_id") == 14172740560
                 and q.get("digest") == "sha256:2a3d6012d6348b7b63d4a6f7f7e0da3c1cbff39cdf2d10301ecb5bb4ed22a58b"
                 and q.get("receipt") == receipt and (ROOT / receipt).is_file()
@@ -770,7 +792,8 @@ def main():
         for kind, sha in {'source': 'f6296a909dcd84a9800012f18f55f7005866cb59', 'helper': '2c0b07a603a94ad18342a53a5d88eaad5345cb5d', 'consumer': '77b70b7a906d26befcc2f08ab71fa3478c4da0d0', 'workflow': '440e10c2736994e5fa90c2c604fd8481dd703d88'}.items():
             data = (ROOT / q[kind]).read_bytes()
             actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
-            require(q.get(kind + "_blob") == a.get(kind + "_blob") == g12.get(kind + "_blob") == actual == sha,
+            require(q.get(kind + "_blob") == g12.get(kind + "_blob") == actual == sha
+                    and (core_assembly_candidate or a.get(kind + "_blob") == sha),
                     "G12 accepted bytes drift: " + kind)
         prior = s.get("last_qualified_hardy_pre_G12", {})
         physical = s.get("last_qualified_physical_operator", {})
@@ -782,7 +805,7 @@ def main():
                 and focus.get("latest_qualified_gate") == q["gate"] and focus.get("latest_qualified_run") == q["run_id"]
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G13"
-                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED"},
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS"},
                 "G12 predecessor, physical-H or bounded core-assembly handoff missing")
         archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R4_43740253917_evidence.zip"
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
