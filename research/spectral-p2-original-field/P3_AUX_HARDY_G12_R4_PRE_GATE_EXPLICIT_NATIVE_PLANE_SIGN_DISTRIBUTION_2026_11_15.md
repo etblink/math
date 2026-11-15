@@ -1,0 +1,11 @@
+# G12 R4 — explicit native plane-sign distribution
+
+November 15, 2026 Pacific. REGISTERED_NOT_EXECUTED; commit before proof edit. Prior RED #43738033537 at `9b66022f30779241a7953c25f9d16fe51eead017` has strict source6 PASS. Accepted D0 #43734601883 remains separate.
+
+Only replace example9's final `simp` in the native consumer. Preserve its three existing source/gamma antisymmetry rewrites. Reduce matrix-entry negation, real-to-complex negative cast and multiplication by a negative via a minimal explicit simp-only list. Rewrite the negative nested sum into nested sums of negatives using reverse Finset.sum_neg_distrib, descending B,beta,delta with sum_congr. Close the scalar/operator leaf by exact _root_.neg_smul applied to the actual complex quarter-gamma coefficient and actual ordered theta product. This fixes scalar type and product order without commuting operators or unfolding paired data.
+
+All twelve example statements, other eleven proof bodies, imports and twelve named reports stay byte-identical. Full source `f6296a909dcd84a9800012f18f55f7005866cb59`, coefficient helper, accepted D0 sources/workflow and all donors stay fixed. Main workflow changes only native consumer explicit blob pin. Keep166 pins/helpers1+3+1/source6/native12/all12 requirements, scope exclusions, Lean/Mathlib pins, warning-as-error/axioms and resource bounds unchanged.
+
+Before launch require exact single-example-proof-tail and workflow-pin-only delta; fixed source/helper/D0 bytes; hashes/imports/root/example counts; YAML/bash/five Python/preflight and auditor rejection fixtures; canonical red preservation and contract binding. Local static checks are not Lean qualification.
+
+On green audit complete exact source/native receipts and qualify only the ordered pointwise Fock bilinear; preregister core rotation/tau norm separately. If this native sign/negative-action boundary recurs, block further full retries for a separately preregistered isolated typed diagnostic. Any recursion/native conversion repeat receives the same treatment. No unchanged retry, suppressed warning, removed control, substitute model or resource escalation. G11 stays last qualified until full acceptance. Physical Spin9/covariance/energy/domain/Hardy/fidelity obligations remain open; physical symmetry/energy-domain audit stays highest forward priority.

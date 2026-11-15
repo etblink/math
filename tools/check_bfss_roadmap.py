@@ -53,7 +53,7 @@ def main():
                 and a.get("qualification") is False and g12.get("qualification") is False
                 and ((a.get("status") == "PENDING_STRICT_CI" and g12.get("status") == "STAGED_UNQUALIFIED")
                      or (a.get("status") in {"RED_UNQUALIFIED", "BLOCKED"} and g12.get("status") == "RED_UNQUALIFIED"
-                         and a.get("run_id") in {43711440502, 43730966120}
+                         and a.get("run_id") in {43711440502, 43730966120, 43738033537}
                          and (ROOT / g12.get("red_receipt", "__missing__")).is_file()))
                 and ((a.get("attempt") == "R1" and g12.get("prospective_receipt_commit") == "a080af0c4b08f9085d6a4dfdc1a3169541b132ac")
                      or (a.get("attempt") == "R2" and g12.get("prospective_receipt_commit") == "3a2e7cd63544cda2cded485f3f5be1f0a3683267"
@@ -139,7 +139,7 @@ def main():
                 "G12 D0 complete accepted artifact missing or changed")
         require(a.get("qualification") is False
                 and (a.get("status") == "BLOCKED"
-                     or (a.get("attempt") == "R3" and a.get("status") == "PENDING_STRICT_CI"
+                     or (a.get("attempt") == "R3" and a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"}
                          and s.get("g12_r3_prospective", {}).get("prospective_receipt_commit") == "443d9913145656589cc4f3ce29f76f439155e61a"
                          and s["g12_r3_prospective"].get("accepted_diagnostic_commit") == "bbeb8f0dd2cfe2f6bfc9794963db71683142fb97"
                          and s["g12_r3_prospective"].get("qualification") is False
@@ -473,7 +473,8 @@ def main():
                     "missing or invalid run ID")
         if entry is a and bilinear_candidate and a["status"] in {"RED_UNQUALIFIED", "BLOCKED"}:
             g12_red_manifests = {43711440502: "20954c2b80e5b2d0a685d79696d2602e49f721097be054abdb98a641651c2843",
-                                 43730966120: "2e93cecf32df8b1e6687cbb0f8db80b082c71dbc16531e42de664a6da8b89995"}
+                                 43730966120: "2e93cecf32df8b1e6687cbb0f8db80b082c71dbc16531e42de664a6da8b89995",
+                                 43738033537: "c3f595a7f969e10e4b79a26317c31c9c4b932751e8a09411894a64e4dd636ba8"}
             require(entry.get("run_id") in g12_red_manifests and entry.get("manifest_pins") == 166
                     and entry.get("manifest_hash") == g12_red_manifests[entry["run_id"]],
                     "G12 measured red preflight missing")
