@@ -122,3 +122,21 @@ classification stay separate gates.
 [Project Lead proposed stopping and merge thresholds](IBI_PROMOTION_AND_STOPPING_RULE_PROPOSAL_2026_11_15.md)
 require scientific payoff and an audited clean source/consumer package,
 **not** promotion of this entire exploratory branch based on green counts.
+
+
+## G0B1 direct source orientation route (prospective)
+
+[Source-Lie-triple determinant-one route](IBI_G0B1_DIRECT_LIE_TRIPLE_ORIENTATION_ROUTE_2026_11_15.md)
+identifies a potentially shorter path to
+`det (G3A.adjointColorMatrix g)=+1` using accepted G3A
+output-row/input-column basis coefficients and G1A invariant
+source color-Lie triples, once signed normalization in G1B
+qualifies. It avoids treating historically staged quaternion
+whole-matrix identities as accepted donors.
+[Finite exact column/row and reflection controls](tools/bfss_ibi_g0b1_det_cross_columns_exact.py)
+are included; they do not prove an original BFSS source theorem.
+
+**Separation:** native matrix determinant +1 would only prove
+image containment in SO3. Actual G0C image surjectivity,
+rank-split G2 orbit classification and original quantum
+physical usefulness remain independent stop gates.
