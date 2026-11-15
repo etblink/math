@@ -147,7 +147,11 @@
     "source_adapter_staged": false,
     "independent_consumer_staged": false,
     "strict_workflow_staged": false,
-    "physical_assumptions_open": true
+    "physical_assumptions_open": true,
+    "d0_qualified_run": 43768003845,
+    "d0_qualification": "GREEN_DIAGNOSTIC_ONLY",
+    "d0_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G16_D0_R2_GREEN_43768003845_FINITE_INCIDENCE_ACCEPTANCE_2026_11_15.md",
+    "next_source_bridge": "G16 D1 original gamma word trace Frobenius and ordered triple-to-word adapter"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R4_GREEN_43763173942_ORIGINAL_TAU_NORM_ACCEPTANCE_2026_11_15.md",
   "monograph_alignment": {
@@ -6466,7 +6470,7 @@
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
     "latest_qualified_gate": "P3-AUX-HARDY-G15",
     "latest_qualified_run": 43763173942,
-    "immediate_proof": "G15 R4 accepted; G16 original gamma coefficient numerical identity is research design only, not staged",
+    "immediate_proof": "G15 accepted; G16 D0 Mathlib-only finite incidence and rational weights now green diagnostic; next D1 original source gamma-word Frobenius adapter, then actual originalHardyY quadratic and full G16. Physical Spin9/energy/domains/Hardy remain open.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -10522,5 +10526,49 @@
     "physical_Spin9_proved": false,
     "Hardy_fidelity_proved": false,
     "job_id": 132962286824
-  }
+  },
+  "g16_finite_plane_incidence_diagnostic": {
+    "status": "GREEN_DIAGNOSTIC_QUALIFIED",
+    "qualification": true,
+    "full_G16_qualification": false,
+    "attempt": "R2",
+    "run_id": 43768003845,
+    "job_id": 132977339518,
+    "tested_sha": "1cba8fd806dad1446bf2a7e2e2d37e2e85811db8",
+    "artifact_id": 14182842480,
+    "artifact_size_bytes": 6936,
+    "artifact_sha256": "77b884761ef5b2dcf7b10665cfe657e085e89eb4edbfa9faebd9094fb08f2522",
+    "manifest_sha256": "f5f7071dee4c5104e2c312d149e03c365f7819d9b4c525428c896f6074f4af3b",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG16FourPlaneIncidenceDiagnostic.lean",
+    "source_blob": "a4e71f5d41e505a93e4e7cb70494d4c0a8e774cd",
+    "consumer": "lean/diagnostics/BFSSP3AuxHardyG16FourPlaneIncidenceIndependentConsumer.lean",
+    "consumer_blob": "959e0b5936b81d6d039028fd4d7047b253829a82",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g16-d0-finite-plane-incidence.yml",
+    "workflow_blob": "2b3d689ca7f2cb97b69f18d01ea8728666ae06a6",
+    "roots": [
+      "singleCount_exact",
+      "tripleCount_exact",
+      "frobeniusWeight_exact",
+      "tauHalfWeight_exact"
+    ],
+    "source_reports": 4,
+    "consumer_reports": 4,
+    "independent_examples": 8,
+    "source_build_jobs": 8924,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "prior_red_run": 43767310379,
+    "prior_red_artifact_sha256": "1dcca9924eb8d1bf95db2fe5da1d4240352e8e4a0ced962d3f16d9c531d4457c",
+    "receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G16_D0_R2_GREEN_43768003845_FINITE_INCIDENCE_ACCEPTANCE_2026_11_15.md",
+    "independent_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G16_D0_R2_GREEN_43768003845_AUDIT_2026_11_15.json",
+    "source_gamma_trace_adapter_verified": false,
+    "source_originalHardyY_coefficient_verified": false,
+    "original_Fock_tau_numerical_formula_verified": false,
+    "physical_Hardy_or_sector_verified": false,
+    "scientific_scope": "Finite 4-plane / 9-axis multiplicities, rational Frobenius and CAR weights; NOT source gamma representation or full G16"
+  },
+  "g16_research_diagnostic_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G16_D0_R2_GREEN_43768003845_FINITE_INCIDENCE_ACCEPTANCE_2026_11_15.md"
 }
