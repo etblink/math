@@ -18,23 +18,37 @@ open FCP.BFSSSU2GaugeG1A
 open FCP.BFSSIBIG1AOriginalLieTriple
 open FCP.BFSSIBIG1BOriginalSignedCross
 
-/-- The original positive Pauli 012 color orientation. -/
-example :
-    pairedAlgebraData.structureConstant
-      (⟨0, by decide⟩ : ColorIndex 2) (⟨1, by decide⟩ : ColorIndex 2)
-      (⟨2, by decide⟩ : ColorIndex 2) =
-        Real.sqrt 2 := by
-  rw [pairedColor_structureConstant]
-  norm_num [FCP.BFSSSU2.epsilon3]
+/-!
+Canonical finite-orientation layer. Literal Fin 3 numerals match the
+source epsilon3 patterns directly; ColorIndex 2 reduces to Fin 3.
+These are *not* assumptions about a surrogate gauge representation.
+-/
 
-/-- Reversing the original Pauli colors flips the signed coefficient. -/
+private theorem epsilon3_canonical_pos :
+    FCP.BFSSSU2.epsilon3 (0 : Fin 3) (1 : Fin 3) (2 : Fin 3) = 1 := by
+  rfl
+
+private theorem epsilon3_canonical_neg :
+    FCP.BFSSSU2.epsilon3 (0 : Fin 3) (2 : Fin 3) (1 : Fin 3) = -1 := by
+  rfl
+
+/-- Original source paired-Pauli structure constants, positive 012 orientation.
+The arguments use the canonical carrier definitionally equal to ColorIndex 2. -/
 example :
     pairedAlgebraData.structureConstant
-      (⟨0, by decide⟩ : ColorIndex 2) (⟨2, by decide⟩ : ColorIndex 2)
-      (⟨1, by decide⟩ : ColorIndex 2) =
+      (0 : Fin 3) (1 : Fin 3) (2 : Fin 3) =
+        Real.sqrt 2 := by
+  rw [pairedColor_structureConstant, epsilon3_canonical_pos]
+  ring
+
+/-- Original source paired-Pauli structure constants, negative 021 orientation.
+This is sign-sensitive: an improper basis reversal must give -sqrt(2). -/
+example :
+    pairedAlgebraData.structureConstant
+      (0 : Fin 3) (2 : Fin 3) (1 : Fin 3) =
         -Real.sqrt 2 := by
-  rw [pairedColor_structureConstant]
-  norm_num [FCP.BFSSSU2.epsilon3]
+  rw [pairedColor_structureConstant, epsilon3_canonical_neg]
+  ring
 
 /-- A new consequence combining G1A invariance and G1B normalization,
 on arbitrary original bosons, SU(2) elements and spatial labels. -/
