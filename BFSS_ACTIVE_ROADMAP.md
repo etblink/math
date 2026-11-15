@@ -16,7 +16,7 @@ This remains a conditional target. The original-source constant, normalization, 
 
 | Priority | Work and exit condition |
 | --- | --- |
-| Immediate proof | **G13 accepted; G14 core collapse preregistered / not staged:** collapse the accepted kinetic sum with G10 CAR/G12 derivative bilinear, retaining -i and original order. Then qualify tau norm and audit named rotation identification. Keep core, physical representation and closed domains separate. |
+| Immediate proof | **G13 accepted; G14 core collapse staged / unqualified:** collapse the accepted kinetic sum with G10 CAR/G12 derivative bilinear, retaining -i and original order. Then qualify tau norm and audit named rotation identification. Keep core, physical representation and closed domains separate. |
 | Highest forward research | Audit genuine physical Spin(9), a reducing spinor sector, singlet-to-spinor covariance of the sixteen original charges, and the supercharge energy/domain identity. Produce source-shaped theorem contracts with all domain hypotheses; presence of historical source is not current qualification. |
 | Next analytical stage | Prove the sector-specific bounded-reciprocal Hardy estimate, extend it through actual form/operator domains, justify spectral negative powers or shifted-resolvent duality, and assemble the certificate. Finite gamma/CAR identities alone do not prove these assertions. |
 | Concrete consumer | Identify a normalized physical singlet trial state with rigorously bounded weighted energy **q_epsilon < 1/kappa**, so the overlap lower bound is positive. Domain-vector existence alone is insufficient. |
@@ -40,6 +40,8 @@ This remains a conditional target. The original-source constant, normalization, 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
 
 **G14 original core collapse preregistered / not staged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G14_R1_PRE_GATE_ORIGINAL_CORE_ANTICOMMUTATOR_COLLAPSE_2026_11_15.md) fixes the literal orbital derivative plus ordered quarter-gamma theta bilinear, six source/twelve native reports, twelve actual paired controls and expected168 pins. G13 accepted; no physical promotion.
+
+**G14 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G14_R1_PRE_GATE_ORIGINAL_CORE_ANTICOMMUTATOR_COLLAPSE_2026_11_15.md) committed at `893ac983` before code. Source `ef1fd6b6` collapses original core orbital and derivative terms; consumer `9dfb7f66` retains twelve literal paired controls; workflow `dfcee5b2` expects168 pins/helpers1+3+1/source6/native12/all12. Original -i/quarter coefficient/theta order and all donors/resources fixed. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G14_R1_STATIC_CHECKS_2026_11_15.json): imports/hashes/roots, twelve literal controls/first-six statement bindings, YAML/bash/five Python/literal preflight and positive-six-negative auditor fixtures PASS. Fresh CI required; no local Lean or physical promotion.
 
 ## Historical G13 receipts — superseded by the current focus
 
