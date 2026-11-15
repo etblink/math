@@ -48,7 +48,8 @@ theorem originalAdjointColorMatrix_pauliTrace
   rw [originalAdjointColorMatrix_normalizedPauliTrace]
   simp only [FCP.BFSSSU2.normalizedPauli]
   have hscale : ((FCP.BFSSSU2.pauliScale : ℂ) ^ 2) = (1 / 2 : ℂ) := by
-    exact_mod_cast FCP.BFSSSU2.pauliScale_sq
+    simpa using congrArg (fun t : ℝ => (t : ℂ))
+      FCP.BFSSSU2.pauliScale_sq
   have hmatrix :
       ((FCP.BFSSSU2.pauliScale : ℂ) • FCP.BFSSSU2.pauli B) *
         ((g : ColorMatrix 2) *
@@ -60,7 +61,7 @@ theorem originalAdjointColorMatrix_pauliTrace
             (g : ColorMatrix 2).conjTranspose)) := by
     simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, pow_two]
   rw [hmatrix, hscale, Matrix.trace_smul]
-  norm_num [smul_eq_mul, Complex.mul_re]
+  norm_num [smul_eq_mul, Complex.mul_re] <;> ring
 
 #print axioms originalAdjointColorMatrix_normalizedPauliTrace
 #print axioms originalAdjointColorMatrix_pauliTrace
