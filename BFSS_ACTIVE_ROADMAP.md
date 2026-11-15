@@ -57,6 +57,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G12 D0 R2 STAGED / UNQUALIFIED:** [repair contract](research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R2_PRE_GATE_EXPLICIT_DECIDABLE_COLOR_EQUALITY_2026_11_15.md) committed at `536a26c3` before edits. Generic source `22345a23` adds only selected-color DecidableEq header instance; both proofs fixed. Workflow `fd23b619` changes only generic pin. Native `12675baa` and all main G12 bytes/resources fixed. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_D0_R2_STATIC_CHECKS_2026_11_15.json): exact one-header/workflow-pin delta, frozen-byte/hash/import/root/example/YAML/bash/three Python/preflight and positive-six-negative auditor fixtures PASS; local Lean unavailable. Full166-pin/generic2/native5/three-example diagnostic remains required. Main G12 stays BLOCKED; G11 accepted.
 
+**G12 D0 R2 diagnostic launch bound:** [#43734601883](https://github.com/etblink/math/actions/runs/43734601883), exact `5e0836ea1923c8f153bd2b3a0d9c491ebcecabf9`, job132874310874. Observed checkout in progress;166 pins/generic2/native5/three native examples pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R2_LAUNCH_BINDING_2026_11_15.md). Only generic declaration instance and workflow pin change; full G12 remains BLOCKED with four main files fixed. G11 accepted.
+
 ## Historical G11 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G11 is accepted above; all negative and launch receipts remain preserved.
