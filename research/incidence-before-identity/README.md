@@ -38,3 +38,30 @@ Passing the finite diagnostic does not qualify any formal source
 theorem. The main BFSS G9/Hardy spectral research remains separately
 prioritized; no original accepted BFSS proof or physical claim has
 been altered.
+
+
+## Forward research — rank-two local geometry
+
+[Rank-two SO(3) versus Gram quotient memorandum](IBI_RANK2_LOCAL_ORBIT_GEOMETRY_FORWARD_RESEARCH_2026_11_14.md):
+the conventional effective SO(3) rank-two quotient is smooth (free action),
+whereas Gram-only O(3)-equivalence folds seven transverse coordinates by
+`z ~ -z`. Signed triples `D_(0,1,k+2)=z_k` recover all seven;
+the Gram transverse Jacobian is rank 0, the selected D Jacobian rank 7.
+Reproduce [exact integer diagnostics](tools/bfss_ibi_rank2_transverse_exact.py)
+with `python3 research/incidence-before-identity/tools/bfss_ibi_rank2_transverse_exact.py`.
+These are conventional source-informed mathematical results and finite exact
+diagnostics, **not** a source-specific Lean proof or physical quotient theorem.
+
+## G0B0 finite determinant gate (distinct from source orientation)
+
+R1 [#43691017217](https://github.com/etblink/math/actions/runs/43691017217)
+was RED_UNQUALIFIED: cold 8,924-job build succeeded, but strict
+warning-as-error rejected the `<;> ring` tactic style; independent consumer
+not executed. See [first-causal receipt](IBI_G0B0_R1_RED_43691017217_TACTIC_LINTER_2026_11_14.md).
+R2 [#43692012496](https://github.com/etblink/math/actions/runs/43692012496)
+uses the preregistered one-line sequential-tactic repair,
+with unchanged consumer and atomically updated source pin:
+[exact launch binding](IBI_G0B0_R2_LAUNCH_43692012496_2026_11_14.md).
+It remains **UNQUALIFIED** pending completed strict evidence.
+Even success qualifies only finite quaternion polynomial algebra,
+not the original BFSS source SU(2) determinant-one bridge.
