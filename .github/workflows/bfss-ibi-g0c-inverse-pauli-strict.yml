@@ -1,0 +1,128 @@
+name: BFSS IBI-G0C original SU2 inverse Pauli interface strict
+
+'on':
+  push:
+    branches: [research/bfss-incidence-unified-20261114]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CInversePauli.lean
+      - lean/diagnostics/BFSSIBIG0CInversePauliIndependentConsumer.lean
+      - .github/workflows/bfss-ibi-g0c-inverse-pauli-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-ibi-g0c-inverse-pauli-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native-inverse-pauli-source-and-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - name: Checkout exact incidence candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify frozen source pins and narrow inverse contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-ibi-g0c-inverse-pauli"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-ibi-g0c-inverse-pauli/tested-commit.txt"
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re, subprocess
+          pins = {
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CInversePauli.lean": "3b6faa5aa1300cae29afbf11ef57e11abc865b0a",
+            "lean/diagnostics/BFSSIBIG0CInversePauliIndependentConsumer.lean": "65b082f066c13721746f60c95307bae5e2779ca1",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CPauliTrace.lean": "b3fc2604a8536cef7c5d0a1a6ca9ba12eccd4c8f",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3AAdjointColorRepresentationProbe.lean": "553869f1287c64893398c3b79c04fe010023bd08",
+            "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean": "e4990dadf1d8bde849e351467282ab3f14989c3b",
+            "lean/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+            "lean/lake-manifest.json": "67d01d2717d0aaff59fb8814bb53581b961f42b4",
+          }
+          for path, expected in pins.items():
+              got = subprocess.check_output(["git", "hash-object", "--no-filters", path],
+                  text=True).strip()
+              assert got == expected, (path, expected, got)
+          assert Path("lean/lean-toolchain").read_text().strip() == "leanprover/lean4:v4.34.1"
+          pkgs = json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in pkgs if p["name"] == "mathlib") == "d13f23b723b8a846827a245b89c10fc7d3f11612"
+          s = Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CInversePauli.lean").read_text()
+          c = Path("lean/diagnostics/BFSSIBIG0CInversePauliIndependentConsumer.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",s) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CPauliTrace"]
+          assert re.findall(r"(?m)^import (\S+)$",c) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CInversePauli"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s) == [
+            "sourceGaugeMatrix_inverse_eq_star",
+            "originalAdjointColorMatrix_pauliInverseTrace"]
+          assert len(re.findall(r"(?m)^example\b", c)) == 2
+          assert "Matrix.inv_eq_left_inv" in s and "originalAdjointColorMatrix_pauliTrace" in s
+          for body in (s,c):
+              assert "set_option autoImplicit false" in body
+              assert "ᴴ" not in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
+              assert "set_option maxHeartbeats 0" not in body
+          print("BFSS_IBI_G0C_INV_PAULI_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 36
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold native inverse source plus independent consumer and axiom audit
+        shell: bash
+        timeout-minutes: 43
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          module="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CInversePauli"
+          source_file="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CInversePauli.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CInversePauli.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 1650s lake build "$module" 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-inverse-pauli/cold-build.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$source_file" 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-inverse-pauli/source-axioms.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true             diagnostics/BFSSIBIG0CInversePauliIndependentConsumer.lean 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-inverse-pauli/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,os
+          folder=Path(os.environ["RUNNER_TEMP"])/"bfss-ibi-g0c-inverse-pauli"
+          for n in ("cold-build.log","source-axioms.log","independent-consumer.log"):
+              log=(folder/n).read_text()
+              assert "error:" not in log and "sorryAx" not in log,(n,log[-5000:])
+              allow=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+              bad=[v for v in log.splitlines() if "warning:" in v and not allow.fullmatch(v)]
+              assert not bad,(n,bad[:15])
+          log=(folder/"source-axioms.log").read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",log)
+          expected=[
+            "FCP.BFSSIBIG0CInversePauli.sourceGaugeMatrix_inverse_eq_star",
+            "FCP.BFSSIBIG0CInversePauli.originalAdjointColorMatrix_pauliInverseTrace"]
+          assert [n for n,_ in reports]==expected,reports
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for name,raw in reports:
+              assert {a.strip() for a in raw.split(",") if a.strip()}<=allowed,(name,raw)
+          print("BFSS_IBI_G0C_INV_PAULI_NATIVE_SOURCE_AND_CONSUMER_STRICT_GREEN")
+          PY
+      - name: Preserve strict G0C inverse interface evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-ibi-g0c-inverse-pauli-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-ibi-g0c-inverse-pauli/
+          if-no-files-found: warn
+          retention-days: 14
