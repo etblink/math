@@ -9,7 +9,7 @@ theorem complexZeroOperatorProduct {E : Type*}
     (0 : ℂ) • (T * U) = 0 :=
   _root_.zero_smul ℂ (T * U)
 
-theorem complexSelectedColorSum {ι E : Type*} [Fintype ι]
+theorem complexSelectedColorSum {ι E : Type*} [Fintype ι] [DecidableEq ι]
     [NormedAddCommGroup E] [NormedSpace ℂ E]
     (b : ι) (c : ℂ) (T : ι → E →L[ℂ] E) :
     (∑ a : ι, (if b = a then c else 0) • T a) = c • T b := by

@@ -82,7 +82,10 @@ def main():
         require(diagnostic.get("status") in {"REGISTERED_NOT_EXECUTED", "STAGED_UNQUALIFIED", "CI_IN_PROGRESS", "RED_UNQUALIFIED"},
                 "unreviewed G12 diagnostic status")
         if diagnostic.get("status") != "REGISTERED_NOT_EXECUTED":
-            require(diagnostic.get("prospective_receipt_commit") == "d57c090740bcbc5648b778fd7a1a53afe8b2bcef"
+            require(((diagnostic.get("attempt") != "R2" and diagnostic.get("prospective_receipt_commit") == "d57c090740bcbc5648b778fd7a1a53afe8b2bcef")
+                     or (diagnostic.get("attempt") == "R2" and diagnostic.get("prospective_receipt_commit") == "536a26c3341016301733cb46690819aee077b21c"
+                         and diagnostic.get("prior_diagnostic_red_run") == 43733424334
+                         and (ROOT / diagnostic.get("prior_diagnostic_red_receipt", "__missing__")).is_file()))
                     and diagnostic.get("expected_manifest_pins") == 166
                     and diagnostic.get("generic_reports") == 2 and diagnostic.get("native_reports") == 5
                     and diagnostic.get("native_examples") == 3
@@ -92,7 +95,7 @@ def main():
                           and (ROOT / diagnostic.get("red_receipt", "__missing__")).is_file())
                          or (diagnostic.get("status") != "RED_UNQUALIFIED" and diagnostic.get("manifest_pins") is None)),
                     "G12 D0 diagnostic contract or unmeasured manifest drift")
-            for kind, sha in {'generic_source': '0a7b8ea4145a004d30577034c88db90346f2d77e', 'native_source': '12675baab7f764dbcb8f276d357246c70956a927', 'workflow': '5057a89c608565ab536ad89690628389816fee3f'}.items():
+            for kind, sha in {'generic_source': ('22345a2348f3c2cfcbb893037a07dcbe0030ca34' if diagnostic.get('attempt') == 'R2' else '0a7b8ea4145a004d30577034c88db90346f2d77e'), 'native_source': '12675baab7f764dbcb8f276d357246c70956a927', 'workflow': ('fd23b619157723a8965d83e11d3c61433a81ab86' if diagnostic.get('attempt') == 'R2' else '5057a89c608565ab536ad89690628389816fee3f')}.items():
                 data = (ROOT / diagnostic[kind]).read_bytes()
                 actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
                 require(diagnostic.get(kind + "_blob") == actual == sha,
@@ -101,6 +104,12 @@ def main():
             require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                     == "62fd68bee2d6cbfbc947cea7c74f585c155f406ede48db9e9e2f746bc0c55a3f",
                     "G12 R2 complete red evidence missing or changed")
+            if diagnostic.get("attempt") == "R2":
+                archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_D0_R1_43733424334_evidence.zip"
+                require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                        == "8a2152150071afdc3523966561ef912b688f4eabb8ef04c2fbf77b257e1d0dae",
+                        "D0 R1 complete red evidence missing or changed")
+
 
     if derivative_candidate and a["status"] != "GREEN_QUALIFIED":
         g11 = s.get("parallel_auxiliary_hardy_derivative_color_contraction", {})

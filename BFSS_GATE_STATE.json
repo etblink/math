@@ -127,7 +127,7 @@
   },
   "next_planned": {
     "gate": "P3-AUX-HARDY-G12",
-    "status": "ISOLATED_DIAGNOSTIC_REPAIR_REGISTERED",
+    "status": "ISOLATED_DIAGNOSTIC_STAGED",
     "milestone": "M5 original-source Hardy algebra",
     "goal": "Assemble the actual ordered kinetic-symbol/tau-derivative Fock bilinear using the accepted all-color coefficient contraction and an isolated finite-sum helper.",
     "accepted_predecessor_run": 43708533905,
@@ -6460,7 +6460,7 @@
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
     "latest_qualified_gate": "P3-AUX-HARDY-G11",
     "latest_qualified_run": 43708533905,
-    "immediate_proof": "Main G12 BLOCKED. D0 R1 red at missing decidable equality in generic selected-color statement; typed zero-product proof elaborates, native stage skipped. D0 R2 single-header instance repair preregistered, not staged. G11 accepted.",
+    "immediate_proof": "Main G12 remains BLOCKED. D0 R2 staged/unqualified: generic selected-color theorem header adds explicit DecidableEq; both proof bodies, native diagnostic, full G12 files and resources fixed. D0 R1 evidence preserved; G11 accepted.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -8446,6 +8446,146 @@
   },
   "g12_typed_zero_action_diagnostic": {
     "gate": "P3-AUX-HARDY-G12-D0",
+    "status": "STAGED_UNQUALIFIED",
+    "qualification": false,
+    "main_G12_blocked": true,
+    "prior_red_run": 43730966120,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R2_PRE_GATE_EXPLICIT_DECIDABLE_COLOR_EQUALITY_2026_11_15.md",
+    "generic_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12TypedZeroActionDiagnostic.lean",
+    "native_source": "lean/diagnostics/BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g12-typed-zero-action-diagnostic.yml",
+    "expected_manifest_pins": 166,
+    "generic_reports": 2,
+    "native_reports": 5,
+    "native_examples": 3,
+    "generic_source_blob": "22345a2348f3c2cfcbb893037a07dcbe0030ca34",
+    "native_source_blob": "12675baab7f764dbcb8f276d357246c70956a927",
+    "workflow_blob": "fd23b619157723a8965d83e11d3c61433a81ab86",
+    "generic_roots": [
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexZeroOperatorProduct",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexSelectedColorSum"
+    ],
+    "native_roots": [
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalZeroProduct",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalOffColorZero",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalSelectedColorSum"
+    ],
+    "frozen_main": {
+      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean": "80ea179d9e2afa223bda77ce0d62af6ab61db422",
+      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12FiniteCoefficientContraction.lean": "2c0b07a603a94ad18342a53a5d88eaad5345cb5d",
+      "lean/diagnostics/BFSSP3AuxHardyG12OriginalDerivativeFockBilinearIndependentConsumer.lean": "13f5557809b7ecce2dfeb60d2988febcd85bf529",
+      ".github/workflows/bfss-p3-aux-hardy-g12-original-derivative-fock-bilinear-strict.yml": "a90a4f2b04623abdfe7b1db860b3716f0d60d570"
+    },
+    "explicit_pins": 23,
+    "prospective_receipt_commit": "536a26c3341016301733cb46690819aee077b21c",
+    "candidate_sha": "536a26c3341016301733cb46690819aee077b21c",
+    "candidate_sha_scope": "Preregistered diagnostic repair ancestor; exact tested commit/run bound after publication",
+    "run_id": null,
+    "manifest_pins": null,
+    "static_checks": {
+      "status": "STATIC_PASS_NOT_LEAN",
+      "candidate_hashes": {
+        "generic_source": "22345a2348f3c2cfcbb893037a07dcbe0030ca34",
+        "native_source": "12675baab7f764dbcb8f276d357246c70956a927",
+        "workflow": "fd23b619157723a8965d83e11d3c61433a81ab86"
+      },
+      "main_G12_source_helper_consumer_workflow_byte_fixed": true,
+      "generic_reports": 2,
+      "native_reports": 5,
+      "native_examples": 3,
+      "expected_recursive_pins_from_measured_R2_closure_and_diagnostic_imports": 166,
+      "explicit_pins": 23,
+      "present_local_pin_files_verified": 9,
+      "full_recursive_recomputation": "REQUIRED_IN_FRESH_CI",
+      "yaml_bash_three_python_blocks_and_literal_preflight_assertions": "PASS",
+      "auditor_positive_and_six_negative_fixtures": "PASS",
+      "main_G12_not_a_build_target_or_consumer": true,
+      "no_main_G12_object_checks": 2,
+      "same_job_cold_compiler_resource_bounds": true,
+      "local_Lean_available": false,
+      "prior_red_run": 43733424334,
+      "exact_generic_delta": "Only selected-color theorem header adds DecidableEq instance; both proof bodies fixed",
+      "native_source_byte_fixed": true,
+      "workflow_delta": "Only generic source explicit blob pin"
+    },
+    "attempt": "R2",
+    "prior_diagnostic_red_run": 43733424334,
+    "prior_diagnostic_red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R1_RED_43733424334_MISSING_DECIDABLE_EQUALITY_2026_11_15.md"
+  },
+  "g12_d0_r1_pre_red": {
+    "gate": "P3-AUX-HARDY-G12-D0",
+    "status": "CI_IN_PROGRESS",
+    "qualification": false,
+    "main_G12_blocked": true,
+    "prior_red_run": 43730966120,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_PRE_GATE_TYPED_ZERO_ACTION_DIAGNOSTIC_2026_11_15.md",
+    "generic_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12TypedZeroActionDiagnostic.lean",
+    "native_source": "lean/diagnostics/BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g12-typed-zero-action-diagnostic.yml",
+    "expected_manifest_pins": 166,
+    "generic_reports": 2,
+    "native_reports": 5,
+    "native_examples": 3,
+    "generic_source_blob": "0a7b8ea4145a004d30577034c88db90346f2d77e",
+    "native_source_blob": "12675baab7f764dbcb8f276d357246c70956a927",
+    "workflow_blob": "5057a89c608565ab536ad89690628389816fee3f",
+    "generic_roots": [
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexZeroOperatorProduct",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexSelectedColorSum"
+    ],
+    "native_roots": [
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalZeroProduct",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalOffColorZero",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalSelectedColorSum"
+    ],
+    "frozen_main": {
+      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean": "80ea179d9e2afa223bda77ce0d62af6ab61db422",
+      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12FiniteCoefficientContraction.lean": "2c0b07a603a94ad18342a53a5d88eaad5345cb5d",
+      "lean/diagnostics/BFSSP3AuxHardyG12OriginalDerivativeFockBilinearIndependentConsumer.lean": "13f5557809b7ecce2dfeb60d2988febcd85bf529",
+      ".github/workflows/bfss-p3-aux-hardy-g12-original-derivative-fock-bilinear-strict.yml": "a90a4f2b04623abdfe7b1db860b3716f0d60d570"
+    },
+    "explicit_pins": 23,
+    "prospective_receipt_commit": "d57c090740bcbc5648b778fd7a1a53afe8b2bcef",
+    "candidate_sha": "1a05a6e7a4276a16c505c29b351dc4b7d9d4d54e",
+    "candidate_sha_scope": "Exact tested diagnostic workflow head",
+    "run_id": 43733424334,
+    "manifest_pins": null,
+    "static_checks": {
+      "status": "STATIC_PASS_NOT_LEAN",
+      "candidate_hashes": {
+        "generic_source": "0a7b8ea4145a004d30577034c88db90346f2d77e",
+        "native_source": "12675baab7f764dbcb8f276d357246c70956a927",
+        "workflow": "5057a89c608565ab536ad89690628389816fee3f"
+      },
+      "main_G12_source_helper_consumer_workflow_byte_fixed": true,
+      "generic_reports": 2,
+      "native_reports": 5,
+      "native_examples": 3,
+      "expected_recursive_pins_from_measured_R2_closure_and_diagnostic_imports": 166,
+      "explicit_pins": 23,
+      "present_local_pin_files_verified": 9,
+      "full_recursive_recomputation": "REQUIRED_IN_FRESH_CI",
+      "yaml_bash_three_python_blocks_and_literal_preflight_assertions": "PASS",
+      "auditor_positive_and_six_negative_fixtures": "PASS",
+      "main_G12_not_a_build_target_or_consumer": true,
+      "no_main_G12_object_checks": 2,
+      "same_job_cold_compiler_resource_bounds": true,
+      "local_Lean_available": false
+    },
+    "tested_sha": "1a05a6e7a4276a16c505c29b351dc4b7d9d4d54e",
+    "job_id": 132870693397,
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_LAUNCH_BINDING_2026_11_15.md"
+  },
+  "g12_d0_r2_prospective": {
+    "status": "STAGED_UNQUALIFIED",
+    "qualification": false,
+    "prior_red_run": 43733424334,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R2_PRE_GATE_EXPLICIT_DECIDABLE_COLOR_EQUALITY_2026_11_15.md",
+    "allowed_delta": "One generic header DecidableEq binder; workflow generic pin only; native/main/proofs/resources fixed.",
+    "prospective_receipt_commit": "536a26c3341016301733cb46690819aee077b21c"
+  },
+  "g12_d0_r1_red_checkpoint": {
+    "gate": "P3-AUX-HARDY-G12-D0",
     "status": "RED_UNQUALIFIED",
     "qualification": false,
     "main_G12_blocked": true,
@@ -8513,76 +8653,5 @@
     "artifact_id": 14169686026,
     "artifact_sha256": "8a2152150071afdc3523966561ef912b688f4eabb8ef04c2fbf77b257e1d0dae",
     "red_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_D0_R1_RED_43733424334_AUDIT_2026_11_15.json"
-  },
-  "g12_d0_r1_pre_red": {
-    "gate": "P3-AUX-HARDY-G12-D0",
-    "status": "CI_IN_PROGRESS",
-    "qualification": false,
-    "main_G12_blocked": true,
-    "prior_red_run": 43730966120,
-    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_PRE_GATE_TYPED_ZERO_ACTION_DIAGNOSTIC_2026_11_15.md",
-    "generic_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12TypedZeroActionDiagnostic.lean",
-    "native_source": "lean/diagnostics/BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.lean",
-    "workflow": ".github/workflows/bfss-p3-aux-hardy-g12-typed-zero-action-diagnostic.yml",
-    "expected_manifest_pins": 166,
-    "generic_reports": 2,
-    "native_reports": 5,
-    "native_examples": 3,
-    "generic_source_blob": "0a7b8ea4145a004d30577034c88db90346f2d77e",
-    "native_source_blob": "12675baab7f764dbcb8f276d357246c70956a927",
-    "workflow_blob": "5057a89c608565ab536ad89690628389816fee3f",
-    "generic_roots": [
-      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexZeroOperatorProduct",
-      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexSelectedColorSum"
-    ],
-    "native_roots": [
-      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalZeroProduct",
-      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalOffColorZero",
-      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalSelectedColorSum"
-    ],
-    "frozen_main": {
-      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean": "80ea179d9e2afa223bda77ce0d62af6ab61db422",
-      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12FiniteCoefficientContraction.lean": "2c0b07a603a94ad18342a53a5d88eaad5345cb5d",
-      "lean/diagnostics/BFSSP3AuxHardyG12OriginalDerivativeFockBilinearIndependentConsumer.lean": "13f5557809b7ecce2dfeb60d2988febcd85bf529",
-      ".github/workflows/bfss-p3-aux-hardy-g12-original-derivative-fock-bilinear-strict.yml": "a90a4f2b04623abdfe7b1db860b3716f0d60d570"
-    },
-    "explicit_pins": 23,
-    "prospective_receipt_commit": "d57c090740bcbc5648b778fd7a1a53afe8b2bcef",
-    "candidate_sha": "1a05a6e7a4276a16c505c29b351dc4b7d9d4d54e",
-    "candidate_sha_scope": "Exact tested diagnostic workflow head",
-    "run_id": 43733424334,
-    "manifest_pins": null,
-    "static_checks": {
-      "status": "STATIC_PASS_NOT_LEAN",
-      "candidate_hashes": {
-        "generic_source": "0a7b8ea4145a004d30577034c88db90346f2d77e",
-        "native_source": "12675baab7f764dbcb8f276d357246c70956a927",
-        "workflow": "5057a89c608565ab536ad89690628389816fee3f"
-      },
-      "main_G12_source_helper_consumer_workflow_byte_fixed": true,
-      "generic_reports": 2,
-      "native_reports": 5,
-      "native_examples": 3,
-      "expected_recursive_pins_from_measured_R2_closure_and_diagnostic_imports": 166,
-      "explicit_pins": 23,
-      "present_local_pin_files_verified": 9,
-      "full_recursive_recomputation": "REQUIRED_IN_FRESH_CI",
-      "yaml_bash_three_python_blocks_and_literal_preflight_assertions": "PASS",
-      "auditor_positive_and_six_negative_fixtures": "PASS",
-      "main_G12_not_a_build_target_or_consumer": true,
-      "no_main_G12_object_checks": 2,
-      "same_job_cold_compiler_resource_bounds": true,
-      "local_Lean_available": false
-    },
-    "tested_sha": "1a05a6e7a4276a16c505c29b351dc4b7d9d4d54e",
-    "job_id": 132870693397,
-    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_LAUNCH_BINDING_2026_11_15.md"
-  },
-  "g12_d0_r2_prospective": {
-    "status": "REGISTERED_NOT_EXECUTED",
-    "qualification": false,
-    "prior_red_run": 43733424334,
-    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R2_PRE_GATE_EXPLICIT_DECIDABLE_COLOR_EQUALITY_2026_11_15.md",
-    "allowed_delta": "One generic header DecidableEq binder; workflow generic pin only; native/main/proofs/resources fixed."
   }
 }
