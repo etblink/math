@@ -17,7 +17,7 @@ theorem originalHardyY_basis_off_color (M : AlgebraData 2) (i j k : SpaceIndex)
     originalHardyY M i j (EuclideanSpace.single (k, B) 1) A = 0 := by
   classical
   have hAB : A ≠ B := Ne.symm hBA
-  simp_all [originalHardyY, PiLp.single_apply]
+  simp_all [originalHardyY]
 
 theorem originalHardyY_basis_color (M : AlgebraData 2) (i j k : SpaceIndex)
     (B A : ColorIndex 2) :
@@ -26,8 +26,8 @@ theorem originalHardyY_basis_color (M : AlgebraData 2) (i j k : SpaceIndex)
   classical
   by_cases hBA : B = A
   · subst B
-    rw [if_pos rfl]
-  · rw [if_neg hBA, originalHardyY_basis_off_color M i j k B A hBA]
+    rw [ite_eq_left rfl]
+  · rw [ite_eq_right hBA, originalHardyY_basis_off_color M i j k B A hBA]
 
 theorem originalHardyY_basis_color_contraction (M : AlgebraData 2)
     (i j : SpaceIndex) (hij : i ≠ j) (B A : ColorIndex 2) :
@@ -37,9 +37,9 @@ theorem originalHardyY_basis_color_contraction (M : AlgebraData 2)
   classical
   by_cases hBA : B = A
   · subst B
-    rw [if_pos rfl]
+    rw [ite_eq_left rfl]
     exact originalHardyY_basis_contraction M i j hij A
-  · rw [if_neg hBA]
+  · rw [ite_eq_right hBA]
     simp_rw [originalHardyY_basis_off_color M i j _ B A hBA]
     simp only [mul_zero, Finset.sum_const_zero]
 
@@ -55,9 +55,9 @@ theorem originalHardyY_basis_spin_contraction (M : AlgebraData 2)
   have he := congrArg (fun C : GammaMatrix => C β δ)
     (originalHardyY_basis_color_contraction M i j hij B A)
   by_cases hBA : B = A
-  · simpa only [if_pos hBA, Matrix.sum_apply, Matrix.mul_apply,
+  · simpa only [ite_eq_left hBA, Matrix.sum_apply, Matrix.mul_apply,
       Matrix.smul_apply, smul_eq_mul] using he
-  · simpa only [if_neg hBA, Matrix.sum_apply, Matrix.mul_apply,
+  · simpa only [ite_eq_right hBA, Matrix.sum_apply, Matrix.mul_apply,
       Matrix.zero_apply] using he
 
 theorem originalHardyY_basis_complex_spin_contraction (M : AlgebraData 2)
@@ -68,10 +68,10 @@ theorem originalHardyY_basis_complex_spin_contraction (M : AlgebraData 2)
   have he := congrArg (fun r : ℝ => (r : ℂ))
     (originalHardyY_basis_spin_contraction M i j hij B A β δ)
   by_cases hBA : B = A
-  · simp only [if_pos hBA] at he ⊢
+  · simp only [ite_eq_left hBA] at he ⊢
     push_cast at he
     exact he
-  · simp only [if_neg hBA] at he ⊢
+  · simp only [ite_eq_right hBA] at he ⊢
     push_cast at he
     exact he
 

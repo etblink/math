@@ -50,26 +50,26 @@ example (i j : SpaceIndex) (hij : i ≠ j) (A : ColorIndex 2) (β δ : SpinIndex
     (∑ k : SpaceIndex, ∑ α : SpinIndex, pairedAlgebraData.gamma k α β *
       originalHardyY pairedAlgebraData i j (EuclideanSpace.single (k, A) 1) A α δ) =
       (1 / 4 : ℝ) * (pairedAlgebraData.gamma i * pairedAlgebraData.gamma j) β δ := by
-  simpa only [if_pos rfl] using
+  simpa only [ite_eq_left rfl] using
     (originalHardyY_basis_spin_contraction pairedAlgebraData i j hij A A β δ)
 
 example (i j : SpaceIndex) (hij : i ≠ j) (B A : ColorIndex 2) (hBA : B ≠ A) :
     (∑ k : SpaceIndex, pairedAlgebraData.gamma k *
       originalHardyY pairedAlgebraData i j (EuclideanSpace.single (k, B) 1) A) = 0 := by
-  rw [originalHardyY_basis_color_contraction pairedAlgebraData i j hij B A, if_neg hBA]
+  rw [originalHardyY_basis_color_contraction pairedAlgebraData i j hij B A, ite_eq_right hBA]
 
 example (i j : SpaceIndex) (hij : i ≠ j) (B A : ColorIndex 2) (hBA : B ≠ A)
     (β δ : SpinIndex) (X : Boson 2) :
     (∑ k : SpaceIndex, ∑ α : SpinIndex, (pairedAlgebraData.gamma k α β : ℂ) *
       originalHardyTauCoefficientDerivative pairedAlgebraData i j k B A α δ X) = 0 := by
   rw [originalHardyTauCoefficientDerivative_spin_contraction pairedAlgebraData i j hij B A β δ X,
-    if_neg hBA]
+    ite_eq_right hBA]
 
 example (i j : SpaceIndex) (hij : i ≠ j) (A : ColorIndex 2) :
     (∑ k : SpaceIndex, pairedAlgebraData.gamma k *
       originalHardyY pairedAlgebraData j i (EuclideanSpace.single (k, A) 1) A) =
       -(1 / 4 : ℝ) • (pairedAlgebraData.gamma i * pairedAlgebraData.gamma j) := by
-  rw [originalHardyY_basis_color_contraction pairedAlgebraData j i (Ne.symm hij) A A, if_pos rfl,
+  rw [originalHardyY_basis_color_contraction pairedAlgebraData j i (Ne.symm hij) A A, ite_eq_left rfl,
     OAI.BFSSGamma.gamma_anti pairedAlgebraData.gamma pairedAlgebraData.gamma_clifford (Ne.symm hij)]
   module
 
@@ -88,7 +88,7 @@ example (i j : SpaceIndex) (hij : i ≠ j) (A : ColorIndex 2) (β δ : SpinIndex
       originalHardyTauCoefficientDerivative pairedAlgebraData i j k A A α δ X) =
       ((pairedAlgebraData.gamma i * pairedAlgebraData.gamma j) β δ : ℂ) := by
   rw [originalHardyTauCoefficientDerivative_spin_contraction pairedAlgebraData i j hij A A β δ X,
-    if_pos rfl]
+    ite_eq_left rfl]
   ring
 
 #print axioms FCP.BFSSP3AuxHardyG11OriginalDerivativeColorContraction.originalHardyY_basis_off_color

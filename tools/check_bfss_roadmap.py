@@ -54,7 +54,11 @@ def main():
                      or (a.get("status") == g11.get("status") == "RED_UNQUALIFIED"
                          and a.get("run_id") == 43704688425
                          and (ROOT / g11.get("red_receipt", "__missing__")).is_file()))
-                and g11.get("prospective_receipt_commit") == "52436389bb07df1e7e5cbefbcc0137c2252ffeb5"
+                and ((a.get("attempt") == "R1"
+                      and g11.get("prospective_receipt_commit") == "52436389bb07df1e7e5cbefbcc0137c2252ffeb5")
+                     or (a.get("attempt") == "R2" and g11.get("prior_red_run") == 43704688425
+                         and g11.get("prospective_receipt_commit") == "f4cc79e6be261d4bf83580057f4c01ba018f9cf6"
+                         and (ROOT / g11.get("prior_red_receipt", "__missing__")).is_file()))
                 and g11.get("reviewed_original_baseline") == "7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d"
                 and (ROOT / g11.get("prospective_receipt", "__missing__")).is_file()
                 and g11.get("expected_manifest_pin_count") == a.get("expected_manifest_pins") == 164
@@ -62,9 +66,12 @@ def main():
                 and g11.get("native_examples") == 12,
                 "G11 cannot bypass accepted G10 or its exact prospective contract")
         for kind, sha in {
-            "source": "6f769ce6641ca327c13fc0a61d77496b85fe63c5",
-            "consumer": "c0470c8a91adf6548da0348ae8c02cb59cd97955",
-            "workflow": "b741f6366b44d1d0a4afdb6d1a578edf592be95b",
+            "source": ("fae4dc32dee27c5542f7fffddf217b276ed2bfef" if a.get("attempt") == "R2"
+                       else "6f769ce6641ca327c13fc0a61d77496b85fe63c5"),
+            "consumer": ("51cebb400a0da2cf35998888bdd81dfbaa591ec4" if a.get("attempt") == "R2"
+                         else "c0470c8a91adf6548da0348ae8c02cb59cd97955"),
+            "workflow": ("81bcb1651f66b105b2b140162b5ab75ff4503c86" if a.get("attempt") == "R2"
+                         else "b741f6366b44d1d0a4afdb6d1a578edf592be95b"),
         }.items():
             require(a.get(kind) == g11.get(kind) and (ROOT / g11[kind]).is_file(),
                     "G11 registration path drift: " + kind)
