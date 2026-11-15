@@ -30,16 +30,16 @@ theorem frobeniusWeight_exact (k : Fin 9) :
       ((tripleCount k : ℝ) / (56 : ℝ) ^ 2)) =
       if k = (8 : Fin 9) then (16 : ℝ) / 784 else 61 / 784 := by
   by_cases h : k = (8 : Fin 9)
-  · simp [singleCount_exact, tripleCount_exact, h] <;> norm_num
-  · simp [singleCount_exact, tripleCount_exact, h] <;> norm_num
+  · simp [singleCount_exact, tripleCount_exact, h] ; norm_num
+  · simp [singleCount_exact, tripleCount_exact, h] ; norm_num
 
 theorem tauHalfWeight_exact (k : Fin 9) :
     (1 / 2 : ℝ) * ((16 : ℝ) * (((singleCount k : ℝ) / (16 : ℝ) ^ 2) +
       ((tripleCount k : ℝ) / (56 : ℝ) ^ 2))) =
       if k = (8 : Fin 9) then (16 : ℝ) / 1568 else 61 / 1568 := by
   by_cases h : k = (8 : Fin 9)
-  · simp [singleCount_exact, tripleCount_exact, h] <;> norm_num
-  · simp [singleCount_exact, tripleCount_exact, h] <;> norm_num
+  · simp [singleCount_exact, tripleCount_exact, h] ; norm_num
+  · simp [singleCount_exact, tripleCount_exact, h] ; norm_num
 
 #print axioms FCP.BFSSP3AuxHardyG16FourPlaneIncidenceDiagnostic.singleCount_exact
 #print axioms FCP.BFSSP3AuxHardyG16FourPlaneIncidenceDiagnostic.tripleCount_exact
