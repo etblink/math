@@ -1,0 +1,7 @@
+# G16 D0 R2 — exact linter-only candidate launch
+
+Run [#43768003845](https://github.com/etblink/math/actions/runs/43768003845), attempt 1, tested `1cba8fd806dad1446bf2a7e2e2d37e2e85811db8` (full GitHub Actions SHA) on `integration/bfss-unified-research-20261108`. [R2 preregistration](P3_AUX_HARDY_G16_D0_R2_PREREG_LINTER_CONSUMER_FROZEN_2026_11_15.md) commit `4084905817d6e65da94c04ad27f6835061bf0bb3` precedes the only source modifications; R1 [RED #43767310379](https://github.com/etblink/math/actions/runs/43767310379) remains frozen, artifact SHA256 `1dcca9924eb8d1bf95db2fe5da1d4240352e8e4a0ced962d3f16d9c531d4457c`.
+
+Exact R2 source blob `a4e71f5d41e505a93e4e7cb70494d4c0a8e774cd`; unchanged independent consumer `959e0b5936b81d6d039028fd4d7047b253829a82`; diagnostic workflow blob `2b3d689ca7f2cb97b69f18d01ea8728666ae06a6`. R1→R2 source differs by four `<;>`→`;` tactic separators only; workflow changes the expected source SHA only. [Static delta JSON](diagnostics/P3_AUX_HARDY_G16_D0_R2_STATIC_DELTA_2026_11_15.json) says `STATIC_PASS_NOT_LEAN_QUALIFICATION`. Four Mathlib-only roots / eight independent controls and strict axioms are still required. All G15/D0/GammaWords donor hashes and 4.34.1/Mathlib pins remain frozen.
+
+GitHub's first R2 status was IN_PROGRESS at pinned toolchain restore after preflight PASS; subsequent results must be independently checked. **No main G16 mathematical or physical qualification is claimed**.
