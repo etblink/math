@@ -61,6 +61,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G12 D0 R2 accepted / main G12 still blocked:** [#43734601883](https://github.com/etblink/math/actions/runs/43734601883), exact `5e0836ea`:166 pins/generic2/cold9088/native5/all three paired examples PASS. [Acceptance and complete independently rehashed nine-file evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R2_GREEN_43734601883_TYPED_ZERO_ACTION_ACCEPTANCE_2026_11_15.md). Both original auditors replay PASS, scope bytes identical. Printed lemma names agree; explicit complex zero proof succeeds on original carriers. This qualifies only D0. Separately preregister minimal R3 before reopening full G12; G11 remains last qualified full gate.
 
+**G12 R3 minimal source repair preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G12_R3_PRE_GATE_ACCEPTED_TYPED_COMPLEX_ZERO_ACTION_2026_11_15.md) carries over only the accepted explicit complex zero proof in the failed off-color branch; all other source/helper/consumer/D0/resource bytes fixed. D0 acceptance committed at `bbeb8f0d` first. Main G12 stays blocked pending exact contract-bound staging; G11 accepted.
+
 ## Historical G11 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G11 is accepted above; all negative and launch receipts remain preserved.
