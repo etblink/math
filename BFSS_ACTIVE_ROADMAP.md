@@ -39,6 +39,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G12 R1 STAGED / UNQUALIFIED:** contract committed at `a080af0c` before proof code. The new Mathlib-only coefficient helper preserves operator product order; the source binds the original kinetic symbol and actual tau derivative to the quarter-gamma theta bilinear. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R1_STATIC_CHECKS_2026_11_15.json): source6/native12/all12 controls, expected166 pins and early helpers1+3+1; YAML/bash/five Python blocks, literal preflight checks and positive-six-negative auditor fixtures PASS. Existing donor bytes/toolchain/resource bounds fixed. Local Lean unavailable; full fresh strict CI remains required. Full core rotation, tau norm and physical certificate remain open; G11 accepted.
 
+**G12 R1 strict launch bound:** [#43711440502](https://github.com/etblink/math/actions/runs/43711440502), exact `40933c1e2f76a67093b4a2abde977d5298c09a82`, job132803656126. Observed in progress at checkout; expected166 pins/helpers1+3+1/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G12_R1_LAUNCH_BINDING_2026_11_15.md). Only pointwise ordered derivative Fock bilinear targeted; core rotation, tau norm and physical assumptions remain open. G11 accepted; existing donors/resources fixed.
+
 ## Historical G11 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G11 is accepted above; all negative and launch receipts remain preserved.
