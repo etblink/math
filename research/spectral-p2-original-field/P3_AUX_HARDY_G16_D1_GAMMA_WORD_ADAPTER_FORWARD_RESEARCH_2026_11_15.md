@@ -22,15 +22,16 @@ Matrix.trace ((OAI.BFSSGamma.word M.gamma s).transpose *
 
 via `OAI.BFSSGamma.list_transpose M.gamma (fun i => (M.gamma_symmetric i).eq)` on `s.sort (· ≤ ·)`. Test this first as a source-exact independent adapter: its inputs must be `M : AlgebraData 2` (or generic `N` with exact source type), not a rewritten gamma representation. Avoid a fresh `GammaIdentity` copy.
 
-For literal G2 `originalHardyY` each plane has `i=2t, j=2t+1`, `i<j`. Every triple word `M.gamma k * M.gamma i * M.gamma j` has `k≠i,j`. Its ordered-to-sorted-word sign is
+For literal G2 `originalHardyY`, the four fixed planes have **consecutive endpoints** `i=2t, j=2t+1`, `i<j` (`t:Fin4`, zero-based). Every eligible triple word `M.gamma k * M.gamma i * M.gamma j` has `k≠i,j`, which implies **`k<i` or `j<k`**: there is no spatial index strictly between consecutive integers. Therefore the ordered-to-sorted gamma-word sign is always **positive**:
 
 ```text
-k<i<j   :  +word {k,i,j}
-i<k<j   :  -word {i,k,j}
-i<j<k   :  +word {i,j,k}
+k<i<j  : gamma[k] gamma[i] gamma[j] = +word {k,i,j}, zero swaps
+i<j<k  : gamma[k] gamma[i] gamma[j] = +word {i,j,k}, two swaps
 ```
 
-(all indices are zero based). Prove this by source `gamma_anti` on the adjacent necessary swaps; do not guess a closed signature or rely on a normalization tactic. For squared Frobenius norms the ± signs square to 1; for off-diagonal cross terms orthogonality requires support distinctness. A singleton support has cardinality1 and cannot coincide with a triple support of cardinality3. Among eligible `(t,k)` there are precisely 28 **distinct** triple supports `{i_t,j_t,k}`; an independent Python exhaustive enumeration confirms that, but Lean must prove or control it before source promotion.
+No middle case `i<k<j` can occur. A fresh exhaustive Python parity check verified all 28 eligible `(t,k)` words: **12 with zero inversions, 16 with two, zero with odd parity**, and 28 unique triple-index supports. Prove the missing-middle-index dichotomy in Lean with integer inequalities / `omega`, and use `OAI.BFSSGamma.gamma_anti` exactly twice for the `k>j` branch. This removes all `-word` branches from the source adapter; do not accidentally apply the simplification to arbitrary nonconsecutive planes.
+
+A singleton support has cardinality 1 and cannot coincide with a triple support of cardinality 3. Among eligible `(t,k)` there are precisely 28 **distinct** triple supports `{i_t,j_t,k}`; independent enumeration is a falsifiable control, not a Lean theorem. The exact native uniqueness proof is still required before promotion.
 
 Thus for each fixed original color (A), the coefficient of each original spatial coordinate (X(k,A)) in the four-plane sum has one singleton word when (k<8), zero when (k=8), plus three triple words when (k<8), four when (k=8). The word-norm is exactly 16, giving
 
