@@ -51,6 +51,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G10 R3 STAGED / UNQUALIFIED:** [native-tail contract](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_PRE_GATE_EXPLICIT_NATIVE_CONTROL_TAILS_2026_11_15.md) committed at `11b9619e` before edits. Source `59aaed1da894e8b91b2df51eda6f47a37cf4c517` fixed; consumer `4f5ad59752d744a8e1dd218b36b7f15b6250ab3e` changes only four registered tails, all twelve statements and other eight bodies unchanged. Workflow `bf74a5a1bc304924b8b24334ab5dab9f3a398e53` changes only consumer pin. Static exact-delta/hash/root/import/YAML/bash/four Python/positive-five-negative auditor and checkpoint fixtures PASS; no local Lean. Full163-pin/helper1+3/source6/native12/all12 qualification still required. Repeat native boundary => isolated diagnostic. R1/R2 reds preserved; G9 accepted.
 
+**G10 R3 strict launch bound:** [#43702235044](https://github.com/etblink/math/actions/runs/43702235044), exact `7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d`, job132775658384. Observed in progress at checkout; expected163 pins/helpers1+3/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_LAUNCH_BINDING_2026_11_15.md). Only four native proof tails changed; clean source and all statements fixed. R1/R2 reds/two-red review preserved; G9 accepted.
+
 ## Historical G9 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G9 is now accepted as stated above; all red/green and launch receipts are preserved.
