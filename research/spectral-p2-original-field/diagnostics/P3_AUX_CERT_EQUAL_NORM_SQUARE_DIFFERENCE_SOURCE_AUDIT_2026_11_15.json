@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-15",
+  "timezone": "America/Los_Angeles",
+  "snapshot": "f432548d366518c5d8c04d9f6f8b2138decba577",
+  "kind": "source_inspection_and_prospective_mathematical_contract",
+  "donors": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G3OriginalChargeNormalOrderProbe.lean",
+      "blob": "93b5f1eb20b4ff6f23f7f8334ad1c382d5ecd632"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G4BOriginalCoefficientCommutatorProbe.lean",
+      "blob": "c043464e7e605d4a3f456060da9e66d3beecb549"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe.lean",
+      "blob": "980ddf4dd5593c2464476513b75b8e064eff2af2"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5QOriginalDiagonalMixedCommutatorProbe.lean",
+      "blob": "42d758cc80ecb9bea781f636e53877d285a17cf6"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5WOriginalOrbitalGaugeTangentProbe.lean",
+      "blob": "7fccbe6d246eb12e238c1041e730926807512b98"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G6HOriginalOrderedMajoranaFierzAssemblyProbe.lean",
+      "blob": "fa4c225a10c9d78b8dd35c42a8d5dc1e6d2d311d"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G6IOriginalFermionColorCurrentProjectionProbe.lean",
+      "blob": "0be30a74442f65545b1c4fccf57de350a5b2b914"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G6KOriginalBoundedFermionColorCurrentProbe.lean",
+      "blob": "b71adefca6898253e8c7b6c9ad72b70296f2e958"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G7TOriginalFullColorLieGaussIdentityProbe.lean",
+      "blob": "dca9ab9edb0019189e275ee025d083eed5cc3f3c"
+    }
+  ],
+  "core_source": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+  "prospective_contract": "For real spinors w,z with equal source spinorSquareNorm, original smooth-core Q(w)^2-Q(z)^2=i times the exact source full-color Gauss residual at W_w(x)-W_z(x).",
+  "fermion_normalization": {
+    "current": "C=(-i/2) ordered source theta-pair sum",
+    "skew_generator": "J=i C",
+    "orbital": "-i D",
+    "residual": "-i D+C=i(-D-J)"
+  },
+  "sanity_check": {
+    "engine": "SymPy exact scalar expansion",
+    "checks": [
+      "equal-norm common channels cancel",
+      "one-half times mixed two equals one",
+      "J=i C implies C=-i J",
+      "-i D+C=i source Gauss"
+    ],
+    "status": "PASS_SCALAR_BOOKKEEPING_ONLY",
+    "source_noncommutative_assembly_verified": false
+  },
+  "new_Lean_declarations_qualified": false,
+  "full_source_square_difference_qualified": false,
+  "physical_energy_norm_identity_qualified": false,
+  "individual_selfadjointness_or_Qsquare_equals_H_qualified": false,
+  "g13_running_run": 43746155492,
+  "g13_sources_workflow_checkpoint_changed": false,
+  "parallel_CI_launched": false,
+  "source_representation_bindings": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSFullAlgebraDataProbe.lean",
+      "blob": "de8242615e4b2959e2dfa57cf0c6fdf43896acb7"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean",
+      "blob": "152204ef15a6569534e0503824a697cb9ae8e4ce"
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/FCPM4F1PairedSourceSpecialization.lean",
+      "blob": "d300e25478befd263148b1d33e6ebcf8ef850f8d"
+    }
+  ]
+}
