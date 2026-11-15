@@ -48,8 +48,11 @@ def main():
     if kinetic_candidate:
         g10 = s.get("parallel_auxiliary_hardy_kinetic_tau_car", {})
         require(q.get("gate") == "P3-AUX-HARDY-G9" and q.get("run_id") == 43681465949
-                and a.get("status") == "PENDING_STRICT_CI" and a.get("qualification") is False
-                and g10.get("status") == "STAGED_UNQUALIFIED" and g10.get("qualification") is False
+                and a.get("qualification") is False and g10.get("qualification") is False
+                and ((a.get("status") == "PENDING_STRICT_CI" and g10.get("status") == "STAGED_UNQUALIFIED")
+                     or (a.get("status") == g10.get("status") == "RED_UNQUALIFIED"
+                         and a.get("run_id") == 43699086864
+                         and (ROOT / g10.get("red_receipt", "__missing__")).is_file()))
                 and g10.get("prospective_receipt_commit") == "17360e8d15784bc2b19425edb7708564474b7a44"
                 and g10.get("reviewed_original_baseline") == "e22dda02233c1e703cbb092e2ee705c3b169519a"
                 and (ROOT / g10.get("prospective_receipt", "__missing__")).is_file()
@@ -319,7 +322,11 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and auxiliary_candidate and a["status"] == "RED_UNQUALIFIED":
+        if entry is a and kinetic_candidate and a["status"] == "RED_UNQUALIFIED":
+            require(entry.get("run_id") == 43699086864 and entry.get("manifest_pins") == 163
+                    and entry.get("manifest_hash") == "9f8d89f87571dba21fd345fd730ea4c062f78a8d3f50236091407fd8ec411ac8",
+                    "G10 measured red preflight missing")
+        elif entry is a and auxiliary_candidate and a["status"] == "RED_UNQUALIFIED":
             red_manifests = {
                 43677035838: "860a3059669d4f6e92ee523c37055a61dfc3fc157845ce9a28ef9aa4f97534f8",
                 43678236725: "963b2de0e257bb28fcf9f5f5a8fd69108bd0799ced02772b27efa9484eb9a86b",
@@ -439,7 +446,7 @@ def main():
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G10"
                 and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
-                    "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS"},
+                    "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "RED_UNQUALIFIED_REPAIR_PENDING"},
                 "G9 predecessor, physical-H or bounded next-stage handoff missing")
         if not kinetic_candidate:
             require(a.get("status") == "GREEN_QUALIFIED" and a.get("qualification") is True
