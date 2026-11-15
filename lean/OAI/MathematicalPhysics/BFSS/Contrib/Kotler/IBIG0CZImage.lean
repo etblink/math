@@ -60,6 +60,7 @@ theorem sourceZPauli_trace_rotZ
       push_cast
       ring
     rw [harg, Complex.exp_ofReal_mul_I, Real.cos_neg, Real.sin_neg]
+    simp only [Complex.ofReal_neg]
     ring
   have hcos : (Real.cos θ : ℂ) =
       (Real.cos (θ / 2) : ℂ) ^ 2 -
