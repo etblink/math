@@ -49,6 +49,23 @@ def main():
     bilinear_candidate = a.get("gate") == "P3-AUX-HARDY-G12"
     core_assembly_candidate = a.get("gate") == "P3-AUX-HARDY-G13"
     core_collapse_candidate = a.get("gate") == "P3-AUX-HARDY-G14"
+    tau_norm_candidate = a.get("gate") == "P3-AUX-HARDY-G15"
+    if tau_norm_candidate:
+        g15 = s.get("g15_tau_norm_prospective", {})
+        require(q.get("gate") == "P3-AUX-HARDY-G14" and q.get("run_id") == 43749092953
+                and a.get("status") == "PENDING_STRICT_CI" and a.get("qualification") is False
+                and g15.get("status") == "STAGED_UNQUALIFIED" and g15.get("qualification") is False
+                and g15.get("prospective_receipt_commit") == "ae83c423e57bc4ff33b02f0d255728ac59206848"
+                and (ROOT / g15.get("receipt", "__missing__")).is_file()
+                and g15.get("expected_manifest_pins") == a.get("expected_manifest_pins") == 169
+                and g15.get("source_roots") == 6 and g15.get("consumer_reports") == 12
+                and g15.get("native_examples") == 12 and g15.get("early_helper_reports") == [1, 3, 1],
+                "G15 cannot bypass accepted G14 or its coefficient norm contract")
+        for kind, sha in {'source': '1138153ca0ebae9fb5b5e96d9c380d377dd24610', 'consumer': '7e873eae9001339a0f746637b9ac906311ec106b', 'workflow': '0c3fbf040494b70d52fb44c76a7089dcac1d090b'}.items():
+            data = (ROOT / a[kind]).read_bytes()
+            require(a.get(kind) == g15.get(kind) and a.get(kind + "_blob") == g15.get(kind + "_blob")
+                    == hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest() == sha,
+                    "G15 staged bytes drift: " + kind)
     if core_collapse_candidate and a["status"] != "GREEN_QUALIFIED":
         g14 = s.get("g14_core_collapse_prospective", {})
         require(q.get("gate") == "P3-AUX-HARDY-G13" and q.get("run_id") == 43746155492
@@ -569,7 +586,7 @@ def main():
             require(entry.get("manifest_pins") == 167 and entry.get("run_id") == 43743787307
                     and entry.get("manifest_hash") == "378cf5196a17f4f476ae3e7eac56ff13e363a7a77b027818c92cfe42e283aa40",
                     "G13 measured red preflight missing")
-        elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate or derivative_candidate or bilinear_candidate or core_assembly_candidate or core_collapse_candidate) and a["status"] != "GREEN_QUALIFIED"):
+        elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate or derivative_candidate or bilinear_candidate or core_assembly_candidate or core_collapse_candidate or tau_norm_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
@@ -579,7 +596,7 @@ def main():
             path = Path(entry[k])
             require(not path.is_absolute() and ".." not in path.parts and (ROOT/path).is_file(),
                     "missing or unsafe " + k + ": " + str(path))
-    if not source_join and not port_be and not port_bf and not auxiliary_candidate and not kinetic_candidate and not derivative_candidate and not bilinear_candidate and not core_assembly_candidate and not core_collapse_candidate:
+    if not source_join and not port_be and not port_bf and not auxiliary_candidate and not kinetic_candidate and not derivative_candidate and not bilinear_candidate and not core_assembly_candidate and not core_collapse_candidate and not tau_norm_candidate:
         require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
     # The BE native-H source port is an independently pinned historical
     # dependency closure; never compare its raw count to M3W0D0's 201 pins.
