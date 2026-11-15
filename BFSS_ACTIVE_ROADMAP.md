@@ -51,6 +51,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G11 R3 STAGED / UNQUALIFIED:** [explicit-rewrite contract](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_PRE_GATE_EXPLICIT_MATCHING_COLOR_REWRITE_2026_11_15.md) committed at `9f79c202` before edits. Source `fae4dc32dee27c5542f7fffddf217b276ed2bfef` fixed; consumer `27b63114ea4635beed31bc9cef954b8499e8194e` changes only example7 proof tail, all twelve statements/other eleven proofs fixed. Workflow `d0f14e9aa39fe01e1c7d5f41a3d0fe31cb26c75c` changes only consumer pin. Static exact-delta/hash/import/root/YAML/bash/four Python/positive-five-negative auditor and checkpoint fixtures PASS; local Lean unavailable. Complete164-pin/helper1+3/source6/native12/all12 qualification required. Same conditional/native conversion => isolated diagnostic before another full retry. R1/R2 reds preserved; G10 accepted.
 
+**G11 R3 strict launch bound:** [#43708533905](https://github.com/etblink/math/actions/runs/43708533905), exact `7459e472085a6ef9b3c5c8352073ea1bafa6645e`, job132794815882. Observed in progress at checkout; expected164 pins/helpers1+3/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_LAUNCH_BINDING_2026_11_15.md). Only matching-color native proof tail changes; source/statements/other eleven proofs fixed. Same conditional/native conversion => isolated diagnostic before further full retry. R1/R2 evidence and two-red review preserved; G10 accepted.
+
 ## Historical G10 receipts — superseded by the current focus
 
 The staged/running labels below record their own as-of states. G10 is accepted above; all negative and launch receipts remain preserved.
