@@ -61,6 +61,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G15 R3 STAGED / UNQUALIFIED:** [reuse contract](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R3_PRE_GATE_CONSUME_QUALIFIED_REAL_SUM_HELPER_2026_11_15.md) committed at `a52e30f5` before code. Source `1a6765a5` adds exact accepted helper import and replaces only the failed local sum normalizer by D0-tested helper consumption; all six statements/other five bodies/consumer `7e873eae` fixed. Workflow `c7d5518d` binds helper to accepted D0 ancestry, expects170 pins and adds early repair-helper2 to unchanged helpers1+3+1/source6/native12/all12. Budgets fixed. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R3_STATIC_CHECKS_2026_11_15.json): exact one-proof/import delta, all six statements/other five bodies/consumer fixed; 170-pin closure expectation, YAML/bash/six Python/literal preflight and positive-eight-negative auditor fixtures PASS. Fresh CI pending; no local Lean, numerical or physical promotion. G14 accepted.
 
+**G15 R3 strict launch bound:** [#43759253590](https://github.com/etblink/math/actions/runs/43759253590), exact `b3ae66c11c7de12a3fb03b82c19efe73e25533a2`, job132950119799. Observed checkout in progress; fresh170-pin/repair-helper2/helpers1+3+1/source6/native12/all12 pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R3_LAUNCH_BINDING_2026_11_15.md). D0 acceptance and separate R3 contract committed first; source/consumer statements and resource bounds fixed. G14 last qualified; numerical/physical assumptions remain separate.
+
 ## Historical G14 receipts — superseded by the current focus
 
 G14 is accepted above; earlier staged/running labels below remain as-of evidence.
