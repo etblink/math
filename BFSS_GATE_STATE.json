@@ -45,12 +45,12 @@
   "active": {
     "gate": "P3-AUX-HARDY-G9",
     "attempt": "R3",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "candidate_sha": "b8bbae75b03a3eff9df7a6f15915b161a8d998b5",
     "candidate_sha_scope": "Exact tested workflow head",
     "run_id": 43679125806,
-    "manifest_pins": null,
+    "manifest_pins": 162,
     "expected_manifest_pins": 162,
     "last_qualified_gate": "P3-AUX-HARDY-G8",
     "last_qualified_run_id": 43674445069,
@@ -65,10 +65,13 @@
     "workflow_blob": "cfdf124d53c6802352dd4e2e493fb19befa1e2f4",
     "workflow_tested_head_sha": "b8bbae75b03a3eff9df7a6f15915b161a8d998b5",
     "job_id": 132705709839,
-    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_LAUNCH_BINDING_2026_11_14.md"
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_LAUNCH_BINDING_2026_11_14.md",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_RED_43679125806_SOURCE_DERIVATIVE_CONVERSION_2026_11_14.md",
+    "manifest_hash": "5bce6af68bc704073e666549f238c39e6f5d0dc8590f0862832ea4aeb91abc2e",
+    "first_causal_failure": "Original source line 41:2 function-presentation type mismatch after simplification; both early helpers PASS"
   },
   "if_green": "On G9 whole strict success, preserve exact helper/source/native receipts and qualify only the entry derivative/basis adapter; then preregister kinetic/tau CAR contraction separately. Physical Spin9/covariance/energy-domain audit remains highest forward priority.",
-  "if_red": "R2 helper proof succeeds; its strict unused-instance failure is preserved. R3 removes only redundant shared context. A persisting generic context failure stops scope retries for a separately registered diagnostic.",
+  "if_red": "R3 resolves both helpers; preserve new source derivative conversion failure. R4 may reuse the exact preceding original derivative and entry laws. Repeated source conversion stops for an isolated typed diagnostic.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -121,7 +124,7 @@
   },
   "next_planned": {
     "gate": "P3-AUX-HARDY-G9",
-    "status": "STRICT_CI_IN_PROGRESS",
+    "status": "RED_UNQUALIFIED_REPAIR_PENDING",
     "milestone": "M5 original-source Hardy algebra",
     "goal": "Bind G8 literal complex scalar-entry fderiv to the accepted G3 original real Y derivative coefficients before kinetic CAR contraction.",
     "accepted_predecessor_run": 43674445069,
@@ -132,7 +135,7 @@
     "if_green": "Use the qualified coefficient bridge for a separately registered kinetic/tau CAR contraction, then assemble original on-core charge/tau rotation identity and tau norm.",
     "if_red": "Preserve first causal typed derivative/coercion mismatch; isolate a variable-data helper before native data. No limits increase or unchanged native retry.",
     "pre_gate_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_PRE_GATE_MINIMAL_ENTRY_HELPER_CONTEXT_2026_11_14.md",
-    "repair_contract": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_PRE_GATE_MINIMAL_ENTRY_HELPER_CONTEXT_2026_11_14.md"
+    "repair_contract": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R4_PRE_GATE_REUSE_EXACT_SOURCE_DERIVATIVE_2026_11_14.md"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G8_R2_GREEN_43674445069_ORIGINAL_TAU_DERIVATIVE_ACCEPTANCE_2026_11_14.md",
   "monograph_alignment": {
@@ -6451,7 +6454,7 @@
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
     "latest_qualified_gate": "P3-AUX-HARDY-G8",
     "latest_qualified_run": 43674445069,
-    "immediate_proof": "G9 R3 strict #43679125806 at b8bbae75 running/unqualified; minimal shared helper context only. R2 proof bodies and native source/consumer frozen. G8 accepted.",
+    "immediate_proof": "G9 R3 #43679125806 RED: both early helpers PASS, original source conversion fails at line 41. R4 exact-source derivative reuse preregistered, not staged. G8 accepted.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -6497,7 +6500,7 @@
   "parallel_auxiliary_hardy_entry_derivative_binding": {
     "gate": "P3-AUX-HARDY-G9",
     "attempt": "R3",
-    "status": "STAGED_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_PRE_GATE_MINIMAL_ENTRY_HELPER_CONTEXT_2026_11_14.md",
     "accepted_predecessor_run": 43674445069,
@@ -6532,7 +6535,7 @@
     "consumer_staged": true,
     "workflow_staged": true,
     "expected_manifest_pin_count": 162,
-    "manifest_pin_count": null,
+    "manifest_pin_count": 162,
     "goal": "Bind G8 literal complex scalar-entry fderiv to the accepted G3 original real Y derivative coefficients before kinetic CAR contraction.",
     "exclusions": [
       "No kinetic CAR contraction or full charge/tau identity",
@@ -6578,11 +6581,12 @@
     "run_id": 43679125806,
     "tested_sha": "b8bbae75b03a3eff9df7a6f15915b161a8d998b5",
     "job_id": 132705709839,
-    "run_last_observed_status": "in_progress",
-    "run_conclusion": null,
+    "run_last_observed_status": "completed",
+    "run_conclusion": "failure",
     "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_LAUNCH_BINDING_2026_11_14.md",
     "administrative_run": 43679125802,
-    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION"
+    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_RED_43679125806_SOURCE_DERIVATIVE_CONVERSION_2026_11_14.md"
   },
   "parallel_auxiliary_hardy_entry_derivative_binding_R1_red": {
     "gate": "P3-AUX-HARDY-G9",
@@ -7047,5 +7051,113 @@
     ],
     "qualification": false,
     "scope": "Documentation and conditional analytical derivations only; no proof/source/workflow changes or new numerical experiment"
+  },
+  "parallel_auxiliary_hardy_entry_derivative_binding_R3_red": {
+    "gate": "P3-AUX-HARDY-G9",
+    "attempt": "R3",
+    "status": "STAGED_UNQUALIFIED",
+    "qualification": false,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_PRE_GATE_MINIMAL_ENTRY_HELPER_CONTEXT_2026_11_14.md",
+    "accepted_predecessor_run": 43674445069,
+    "reviewed_original_baseline": "19a441adc0bc2408e639a1dca2ec0e67e31e6f57",
+    "source": "First three roots standard axioms; failed basis theorem and two dependents have consequential sorryAx",
+    "helper": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG9ComplexMatrixEntryDerivative.lean",
+    "consumer": "NOT_EXECUTED",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g9-original-y-entry-derivative-binding-strict.yml",
+    "roots": [
+      "originalHardyYEntryCLM",
+      "originalHardyYEntryCLM_apply",
+      "originalHardyY_entry_fderiv",
+      "originalHardyTauCoefficientDerivative_eq_basis",
+      "originalHardyTauCoefficientDerivative_independent_point",
+      "originalHardyTauDerivative_eq_basis"
+    ],
+    "donor_roots": [
+      "FCP.BFSSP3AuxHardyG3OriginalYDerivativeContraction.originalHardyYCLM_apply",
+      "FCP.BFSSP3AuxHardyG3OriginalYDerivativeContraction.originalHardyY_fderiv",
+      "FCP.BFSSP3AuxHardyG3OriginalYDerivativeContraction.originalHardyY_derivative_contraction",
+      "FCP.BFSSP3AuxHardyG8OriginalTauDerivative.originalHardyTauCoefficientDerivative",
+      "FCP.BFSSP3AuxHardyG8OriginalTauDerivative.originalHardyTauDerivative_apply",
+      "FCP.BFSSP3AuxHardyG8OriginalTauDerivative.originalHardyTauCore_coordinateDerivative_apply"
+    ],
+    "helper_roots": [
+      "FCP.BFSSP3AuxHardyG9ComplexMatrixEntryDerivative.complexMatrixEntryCLM",
+      "FCP.BFSSP3AuxHardyG9ComplexMatrixEntryDerivative.complexMatrixEntryCLM_apply",
+      "FCP.BFSSP3AuxHardyG9ComplexMatrixEntryDerivative.complexMatrixEntry_fderiv_apply"
+    ],
+    "source_staged": true,
+    "helper_staged": true,
+    "consumer_staged": true,
+    "workflow_staged": true,
+    "expected_manifest_pin_count": 162,
+    "manifest_pin_count": null,
+    "goal": "Bind G8 literal complex scalar-entry fderiv to the accepted G3 original real Y derivative coefficients before kinetic CAR contraction.",
+    "exclusions": [
+      "No kinetic CAR contraction or full charge/tau identity",
+      "No tau norm, physical Spin9, energy-domain, Hardy/fidelity or spectral theorem"
+    ],
+    "prospective_receipt_commit": "bffaf9812a3fa5a27f04441a1807e82df0a823d2",
+    "parent_sha": "bffaf9812a3fa5a27f04441a1807e82df0a823d2",
+    "static_checks": {
+      "status": "STATIC_PASS_NOT_LEAN",
+      "hashes": {
+        "source_blob": "3b5a4b52254add95f741bb883f7e9edecf48dbdf",
+        "helper_blob": "e7904e1edf3af664b3900c31c0757412d495d60c",
+        "consumer_blob": "88aa4d8382e62da727ef81b0f998673fe9f9513d",
+        "workflow_blob": "cfdf124d53c6802352dd4e2e493fb19befa1e2f4"
+      },
+      "source_and_entire_consumer_byte_identical_to_R2": true,
+      "helper_only_shared_Fintype_context_and_obsolete_omit_removed": true,
+      "all_R2_helper_proof_bodies_and_explicit_statements_unchanged": true,
+      "no_Fintype_context_or_omit_remains": true,
+      "no_linter_disable_or_budget_change": true,
+      "workflow_only_expected_helper_blob_changed": true,
+      "source_roots": 6,
+      "consumer_reports": 12,
+      "native_examples": 12,
+      "early_helper_reports": [
+        1,
+        3
+      ],
+      "embedded_python_blocks": 4,
+      "explicit_pins": 19,
+      "expected_transitive_pins": 162,
+      "yaml_bash_python_import_root_pin_scope_audits": "PASS",
+      "strict_auditor_positive_and_five_negative_fixtures": "PASS",
+      "local_Lean_available": false
+    },
+    "source_blob": "3b5a4b52254add95f741bb883f7e9edecf48dbdf",
+    "helper_blob": "e7904e1edf3af664b3900c31c0757412d495d60c",
+    "consumer_blob": "88aa4d8382e62da727ef81b0f998673fe9f9513d",
+    "workflow_blob": "cfdf124d53c6802352dd4e2e493fb19befa1e2f4",
+    "prior_red_run": 43678236725,
+    "prior_red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R2_RED_43678236725_UNUSED_DERIVATIVE_INSTANCES_2026_11_14.md",
+    "old_helper_blob": "bb18c4f1defe98ffa779d48060c3d2644cf63c87",
+    "run_id": 43679125806,
+    "tested_sha": "b8bbae75b03a3eff9df7a6f15915b161a8d998b5",
+    "job_id": 132705709839,
+    "run_last_observed_status": "in_progress",
+    "run_conclusion": null,
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_LAUNCH_BINDING_2026_11_14.md",
+    "administrative_run": 43679125802,
+    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION",
+    "verdict": "RED_UNQUALIFIED",
+    "first_causal": "Original source line 41:2 function-presentation type mismatch after simplification; both early helpers PASS",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_RED_43679125806_SOURCE_DERIVATIVE_CONVERSION_2026_11_14.md",
+    "artifact_id": 14148096780,
+    "artifact_size_bytes": 22116,
+    "digest": "sha256:40860cc239b341797a4509ade3adccb9bdf81264c7477da85465b65d795d8839",
+    "evidence_zip": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R3_43679125806_evidence.zip",
+    "manifest_pins": 162,
+    "manifest_hash": "5bce6af68bc704073e666549f238c39e6f5d0dc8590f0862832ea4aeb91abc2e",
+    "helpers": "PASS: finite operator 1 and matrix entry 3; fresh strict audits"
+  },
+  "parallel_auxiliary_hardy_entry_derivative_binding_R4_prospective": {
+    "status": "REGISTERED_NOT_EXECUTED",
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R4_PRE_GATE_REUSE_EXACT_SOURCE_DERIVATIVE_2026_11_14.md",
+    "prior_red_run": 43679125806,
+    "qualification": false,
+    "repair": "Only the failed basis proof tail: exact original fderiv rewrite then native entry evaluation; freeze helpers and consumer",
+    "stop": "Repeated source conversion => separately registered typed diagnostic; no full retry or limits increase"
   }
 }
