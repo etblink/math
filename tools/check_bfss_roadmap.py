@@ -50,8 +50,11 @@ def main():
     if bilinear_candidate:
         g12 = s.get("parallel_auxiliary_hardy_derivative_fock_bilinear", {})
         require(q.get("gate") == "P3-AUX-HARDY-G11" and q.get("run_id") == 43708533905
-                and a.get("status") == "PENDING_STRICT_CI" and a.get("qualification") is False
-                and g12.get("status") == "STAGED_UNQUALIFIED" and g12.get("qualification") is False
+                and a.get("qualification") is False and g12.get("qualification") is False
+                and ((a.get("status") == "PENDING_STRICT_CI" and g12.get("status") == "STAGED_UNQUALIFIED")
+                     or (a.get("status") == g12.get("status") == "RED_UNQUALIFIED"
+                         and a.get("run_id") == 43711440502
+                         and (ROOT / g12.get("red_receipt", "__missing__")).is_file()))
                 and g12.get("prospective_receipt_commit") == "a080af0c4b08f9085d6a4dfdc1a3169541b132ac"
                 and g12.get("reviewed_original_baseline") == "7459e472085a6ef9b3c5c8352073ea1bafa6645e"
                 and (ROOT / g12.get("prospective_receipt", "__missing__")).is_file()
@@ -392,7 +395,11 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and derivative_candidate and a["status"] == "RED_UNQUALIFIED":
+        if entry is a and bilinear_candidate and a["status"] == "RED_UNQUALIFIED":
+            require(entry.get("run_id") == 43711440502 and entry.get("manifest_pins") == 166
+                    and entry.get("manifest_hash") == "20954c2b80e5b2d0a685d79696d2602e49f721097be054abdb98a641651c2843",
+                    "G12 measured red preflight missing")
+        elif entry is a and derivative_candidate and a["status"] == "RED_UNQUALIFIED":
             g11_red_manifests = {
                 43704688425: "de65204afbda816fb1e54184fe1e87572f65045c46f4b5223dcf6978907dbfe5",
                 43706576557: "1bdf0f07ecdfce11e6266dd4f7975bd68395a8f803110db9d98ff7245572885b",
@@ -645,7 +652,7 @@ def main():
                 and focus.get("latest_qualified_run") == q["run_id"]
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G12"
-                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS"},
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "PROSPECTIVE_REPAIR_NOT_STAGED"},
                 "G11 predecessor, physical-H or bounded next-stage handoff missing")
         archive = (ROOT / "research/spectral-p2-original-field/diagnostics/"
                    "P3_AUX_HARDY_G11_R3_43708533905_evidence.zip")

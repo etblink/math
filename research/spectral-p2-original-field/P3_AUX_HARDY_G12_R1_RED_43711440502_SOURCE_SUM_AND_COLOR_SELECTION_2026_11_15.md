@@ -1,0 +1,13 @@
+# G12 R1 verified RED — explicit source sum and color obligations
+
+November 15, 2026 Pacific. [Strict #43711440502](https://github.com/etblink/math/actions/runs/43711440502), attempt1, tested `40933c1e2f76a67093b4a2abde977d5298c09a82`, job132803656126: RED_UNQUALIFIED.
+
+Source `567661beef53c27fb8d3a3282a580e296c992962`, helper `2c0b07a603a94ad18342a53a5d88eaad5345cb5d`, consumer `13f5557809b7ecce2dfeb60d2988febcd85bf529`, workflow `d987f7e02dfe98be035d1710409f1ad04601ddc9` match exact tested remote bytes and local candidates.
+
+The 166-pin preflight passed (manifest SHA256 `20954c2b80e5b2d0a685d79696d2602e49f721097be054abdb98a641651c2843`). Early generic helper1, complex-entry helper3 and new finite coefficient helper1 passed warning/axiom audits. All three original embedded auditors were rerun independently on the downloaded logs. The coefficient helper is compiled, but this does not qualify the native G12 statement.
+
+Cold source compilation fails first at source35: the broad simplification leaves the derivative scalar outside an inner kinetic sum, ordered A,delta,beta rather than beta,A,delta. It never uses smul_smul. A second unsolved goal at source61 leaves off-color 0-scalar actions inside a conditional; zero_smul and the three sum-selection simp arguments remain unused after ite_smul. Five unused-argument warnings accompany the two failed proofs. The expansion and its three descendants report sorryAx from failed elaboration, so they are not accepted. Fresh warning-as-error source and native consumer were never reached. The final cold-build target count is9088, but the build did not pass.
+
+[Complete 14-file evidence ZIP](diagnostics/P3_AUX_HARDY_G12_R1_43711440502_evidence.zip), artifact14161436297,24189bytes, independently rehashed SHA256 `cf62dda3ae4ec2ed7f0d43c78923d2cd427c2596a1550609efcd8e83b76e833f`. [Independent audit](diagnostics/P3_AUX_HARDY_G12_R1_RED_43711440502_AUDIT_2026_11_15.json). [Verbatim causal diagnostics](diagnostics/P3_AUX_HARDY_G12_R1_SOURCE_SUM_AND_COLOR_TAILS_43711440502_2026_11_15.txt). No source.log or consumer.log exists; neither is claimed.
+
+Disposition: preserve the successful isolated helper and all source/consumer statements. Repair only the two source proof tails using explicit finite distributivity and selected-color summation. This is the first G12 source failure, with no recursion/native-conversion error. The architecture already separated the helper successfully; repeating the same broad simp or increasing limits is not justified. If the repaired source repeats either boundary, stop full-gate retries for a preregistered small typed diagnostic/architecture review. G11 remains accepted; no physical/spectral promotion.

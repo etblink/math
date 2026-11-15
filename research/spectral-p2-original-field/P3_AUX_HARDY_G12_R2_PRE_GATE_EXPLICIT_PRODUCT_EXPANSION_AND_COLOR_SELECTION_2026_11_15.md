@@ -1,0 +1,13 @@
+# G12 R2 prospective repair — explicit ordered multiplication and selected color
+
+November 15, 2026 Pacific. REGISTERED_NOT_EXECUTED. Commit before proof edits. Predecessor failure: G12 R1 #43711440502 at `40933c1e2f76a67093b4a2abde977d5298c09a82`; G11 #43708533905 remains accepted.
+
+Only two source proof tails may change. All six statements, the literal ordered operator definition, remaining four proof bodies, the Mathlib-only helper, all twelve native example statements/proofs, six donor reports and accepted Lean donors stay byte-fixed. Workflow changes only the new source's explicit blob pin. Lean/Mathlib pins, warning-as-error, allowed axioms, source/native counts, closure166 and helper1+3+1, all time/resource bounds and scope receipt stay fixed.
+
+Expansion: unfold the literal original derivative product and descend explicitly through k,alpha,B using sum_congr. Rewrite the kinetic symbol to its accepted sum and unfold actual tau derivative. Distribute the left kinetic sum first using sum_mul, then descend beta and distribute the two right tau sums with mul_sum, descending A and delta. At the scalar/operator leaf, rewrite smul_mul_assoc, mul_smul_comm and smul_smul in that order. This yields gamma*coefficient times theta_beta*theta_delta without commuting operators or coefficients, and without relying on simp to reorder nested sums.
+
+Color selection: retain G11 contraction and the outer B,beta congruences. After swapping A,delta sums, descend delta explicitly. Use sum_eq_single B; the diagonal branch closes by ite_eq_left rfl, all off-color branches by ite_eq_right (Ne.symm hAB) then zero_smul, and the absent-selected-index branch by contradiction with mem_univ. Replace the entire failed simp tail; no warning suppression or weakened controls.
+
+Before publication verify the exact two-tail delta, unchanged helper/consumer/donors, workflow source-pin-only delta, imports/root/example counts, YAML/bash/five embedded Python blocks, literal preflight and strict auditor rejection fixtures, and checkpoint bindings. No local Lean is available; static checks do not qualify the repaired source. Fresh strict CI must rebuild and pass helper1+3+1/source6/native12/all12 controls.
+
+If red, preserve complete first-causal evidence. A repeated source sum/color failure requires a separately preregistered isolated typed diagnostic before another full retry; two analogous reds require architecture review. No unchanged retry or resource escalation. G12 remains pointwise ordered Fock bilinear only; full core rotation, tau norm and physical symmetry/energy-domain/Hardy/fidelity obligations remain open.

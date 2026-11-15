@@ -1,0 +1,91 @@
+error: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:35:43: unsolved goals
+M : AlgebraData 2
+i j : SpaceIndex
+X : Boson 2
+⊢ ∑ x,
+      ∑ x_1,
+        ∑ B,
+          ∑ x_2,
+            ∑ x_3,
+              originalHardyTauCoefficientDerivative M i j x B x_2 x_1 x_3 X •
+                ∑ x_4, ↑(M.gamma x x_1 x_4) • (M.theta x_4 B * M.theta x_3 x_2) =
+    ∑ k,
+      ∑ α,
+        ∑ B,
+          ∑ β,
+            ∑ A,
+              ∑ δ,
+                (↑(M.gamma k α β) * originalHardyTauCoefficientDerivative M i j k B A α δ X) •
+                  (M.theta β B * M.theta δ A)
+warning: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:38:35: This simp argument is unused:
+  smul_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [originalKineticTauDerivativeFermion, originalKineticFermion_eq_sum, originalHardyTauDerivative,
+    Finset.sum_mul, Finset.mul_sum, smul_mul_assoc, mul_smul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:61:41: unsolved goals
+M : AlgebraData 2
+i j : SpaceIndex
+hij : i ≠ j
+X : Boson 2
+B : ColorIndex 2
+a✝¹ : B ∈ Finset.univ
+β : SpinIndex
+a✝ : β ∈ Finset.univ
+⊢ (∑ x,
+      ∑ x_1,
+        if B = x_1 then (1 / 4 * ↑((M.gamma i * M.gamma j) β x)) • (M.theta β B * M.theta x x_1)
+        else 0 • (M.theta β B * M.theta x x_1)) =
+    ∑ δ, (1 / 4 * ↑((M.gamma i * M.gamma j) β δ)) • (M.theta β B * M.theta δ B)
+warning: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:70:23: This simp argument is unused:
+  zero_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_smul, Finset.sum_ite_eq, Finset.mem_univ, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:70:34: This simp argument is unused:
+  Finset.sum_ite_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_smul, zero_smul, Finset.mem_univ, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:70:53: This simp argument is unused:
+  Finset.mem_univ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_smul, zero_smul, Finset.sum_ite_eq, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:70:70: This simp argument is unused:
+  ite_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_smul, zero_smul, Finset.sum_ite_eq, Finset.mem_univ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:81:0: 'FCP.BFSSP3AuxHardyG12OriginalDerivativeFockBilinear.originalKineticFermion_eq_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:82:0: 'FCP.BFSSP3AuxHardyG12OriginalDerivativeFockBilinear.originalKineticTauDerivativeFermion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:83:0: 'FCP.BFSSP3AuxHardyG12OriginalDerivativeFockBilinear.originalKineticTauDerivativeFermion_expand' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:84:0: 'FCP.BFSSP3AuxHardyG12OriginalDerivativeFockBilinear.originalKineticTauDerivativeFermion_eq_contracted' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:85:0: 'FCP.BFSSP3AuxHardyG12OriginalDerivativeFockBilinear.originalKineticTauDerivativeFermion_eq_bilinear' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean:86:0: 'FCP.BFSSP3AuxHardyG12OriginalDerivativeFockBilinear.originalKineticTauDerivativeFermion_apply' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
