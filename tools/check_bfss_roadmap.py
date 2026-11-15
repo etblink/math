@@ -79,7 +79,7 @@ def main():
             require(a.get(kind) == g15.get(kind) and a.get(kind + "_blob") == g15.get(kind + "_blob")
                     == hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest() == sha,
                     "G15 staged bytes drift: " + kind)
-    if tau_norm_candidate and s.get("g15_real_coefficient_sum_diagnostic"):
+    if tau_norm_candidate and s.get("g15_real_coefficient_sum_diagnostic") and not s["g15_real_coefficient_sum_diagnostic"].get("qualification"):
         diagnostic = s["g15_real_coefficient_sum_diagnostic"]
         require(a.get("status") == "BLOCKED" and a.get("run_id") == 43753325231
                 and a.get("full_retry_blocked") is True and diagnostic.get("main_G15_blocked") is True
@@ -102,6 +102,33 @@ def main():
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                 == "db2ec23889c6611ebcc2533d89c6678129dd8e0ffd3c0f3d19948282b1190d8d",
                 "G15 R2 complete red evidence missing or changed")
+    if tau_norm_candidate and s.get("g15_real_coefficient_sum_diagnostic", {}).get("qualification"):
+        diagnostic = s["g15_real_coefficient_sum_diagnostic"]
+        result = diagnostic.get("result", {})
+        require(diagnostic.get("status") == "GREEN_DIAGNOSTIC_QUALIFIED"
+                and diagnostic.get("run_id") == 43756234296 and diagnostic.get("job_id") == 132940823716
+                and diagnostic.get("tested_sha") == "337f33b74ae6bc0fecce598ae52c1612c7d25413"
+                and diagnostic.get("manifest_pins") == 169
+                and diagnostic.get("manifest_hash") == "bd200b231d69143399efae8372794f0c7456bf88f0e89f74590d03c1b45d0b33"
+                and diagnostic.get("artifact_id") == 14178828720
+                and (ROOT / diagnostic.get("receipt", "__missing__")).is_file()
+                and result.get("generic_reports") == 2 and result.get("native_reports") == 4
+                and result.get("literal_paired_examples") == 3 and result.get("main_G15_qualification") is False
+                and (a.get("status") == "BLOCKED" or (a.get("attempt") == "R3" and a.get("status") == "PENDING_STRICT_CI"
+                    and s.get("g15_tau_norm_prospective", {}).get("accepted_diagnostic_run") == 43756234296)),
+                "G15 D0 exact acceptance or guarded full retry missing")
+        for kind, sha in {"generic_source":"732cee2546bfd629fe8bf0b20e63ac3ef356b5bd", "native_source":"bb36497f6b2ff95be2395da263effb1f74b9b7b3", "workflow":"af7d10b5660898547ddde28d797e164fbdf88369"}.items():
+            data = (ROOT / diagnostic[kind]).read_bytes()
+            require(diagnostic.get(kind + "_blob") == hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest() == sha,
+                    "G15 D0 accepted bytes drift: " + kind)
+        archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_D0_R1_43756234296_evidence.zip"
+        require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                == "0e8d2c8fa0a4a9dd07c9e494ad514974e220af1c5f896b026ff534c251c049f0",
+                "G15 D0 complete accepted artifact missing or changed")
+        prior_red = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R2_43753325231_evidence.zip"
+        require(prior_red.is_file() and hashlib.sha256(prior_red.read_bytes()).hexdigest()
+                == "db2ec23889c6611ebcc2533d89c6678129dd8e0ffd3c0f3d19948282b1190d8d",
+                "G15 R2 red evidence lost after diagnostic")
     if core_collapse_candidate and a["status"] != "GREEN_QUALIFIED":
         g14 = s.get("g14_core_collapse_prospective", {})
         require(q.get("gate") == "P3-AUX-HARDY-G13" and q.get("run_id") == 43746155492
