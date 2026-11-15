@@ -45,6 +45,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G11 R2 STAGED / UNQUALIFIED:** [cleanup contract](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R2_PRE_GATE_CURRENT_ITE_NAMES_AND_MINIMAL_SIMP_2026_11_15.md) committed at `f4cc79e6` before edits. Source `fae4dc32dee27c5542f7fffddf217b276ed2bfef` changes only eight conditional aliases and the flagged simp argument; consumer `51cebb400a0da2cf35998888bdd81dfbaa591ec4` changes only five copies of those aliases. All statements/controls/other proofs fixed. Workflow `81bcb1651f66b105b2b140162b5ab75ff4503c86` changes only the two candidate pins. Static exact-delta/hash/import/root/YAML/bash/four Python/positive-five-negative auditor and checkpoint fixtures PASS; local Lean unavailable. Complete164-pin/helper1+3/source6/native12/all12 qualification required. R1 red preserved; G10 accepted.
 
+**G11 R2 strict launch bound:** [#43706576557](https://github.com/etblink/math/actions/runs/43706576557), exact `2092258396c549f3076d10ebcc4b0537ff1053dd`, job132788867782. Observed in progress at checkout; expected164 pins/helpers1+3/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R2_LAUNCH_BINDING_2026_11_15.md). R1 evidence/contract committed first; only current conditional aliases and one flagged simp argument change. Statements/controls/resources fixed; G10 accepted.
+
 ## Historical G10 receipts — superseded by the current focus
 
 The staged/running labels below record their own as-of states. G10 is accepted above; all negative and launch receipts remain preserved.
