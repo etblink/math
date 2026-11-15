@@ -42,6 +42,17 @@ Thus for each fixed original color (A), the coefficient of each original spatial
 
 This is a **proposed theorem on literal original gamma/source data**, conditional on the pending ordered-word sign/uniqueness bridge. By G15 accepted CAR factor 1/2, the proposed Fock action identity after all colors and charges becomes `(61 R² − 45 Σ_A X(8,A)²)/1568 * ‖v‖²`. A formula matching Appendix B's coefficients in Michel–Scheinpflug–Yin, arXiv:2611.09837v1, is external analytical guidance, not an accepted Lean proof.
 
+## Exact explicit-matrix cross-check — independent but not universal
+
+A deterministic [Python source control](diagnostics/G16_EXACT_OCTONION_GAMMA_MATRIX_CONTROL_2026_11_15.py) constructs a real 16×16 symmetric gamma system via Cayley–Dickson octonion left multiplication, checks all **81** Clifford relation pairs exactly in signed integer arithmetic, then evaluates the literal G2 four-plane formula with denominators 16 and 56 at **nine unit vectors and 64 seeded integer vectors**. Clearing the denominator 112 gives
+
+```text
+Σ_{αβ} [112 Σ_t Y^{i_t j_t}(X)_{αβ}]²
+  = 16 * (61 Σ_{k=0}^7 X_k² + 16 X_8²).
+```
+
+All 73 cases passed without floating-point rounding; the first unit axis gives 976 and the unpaired ninth axis gives 256. The original JSON output from that run was SHA256 `a3d5729c777c351d3666bafab3b96364bd25d7b9dcb35180caa2f1c7a59dd6ff`. This confirms the proposed identity in **one explicit faithful gamma representation**, not the actual repository basis or the universal `AlgebraData 2` theorem. Do not use the test as a substitute for source typed sign/trace adapters, full Lean axiom audit, or physical Spin(9)/domain proofs.
+
 ## Minimal falsifiable D1 gate design
 
 1. Source-only gamma Frobenius word pairing, with exact `AlgebraData.gamma_clifford`, `gamma_symmetric`, cardinality ≤4; native independent consumer specializes `pairedAlgebraData` and tests same support, different singleton supports and single/triple support.
