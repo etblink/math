@@ -51,6 +51,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G12 D0 STAGED / UNQUALIFIED:** [diagnostic contract](research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_PRE_GATE_TYPED_ZERO_ACTION_DIAGNOSTIC_2026_11_15.md) committed at `d57c0907` before code. Mathlib-only generic source `0a7b8ea4` tests explicit complex root-qualified zero action and selected-color sums (two reports). Original-carrier diagnostic `12675baa` tests three roots and three paired examples, with two generic donor reports. Main G12 bytes fixed and absent from build targets/full-consumer steps. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_D0_STATIC_CHECKS_2026_11_15.json): hashes/imports/root/example/YAML/bash/three Python/preflight and positive-six-negative auditor fixtures PASS; local Lean unavailable. Expected166 pins require CI recomputation. D0 green alone will not qualify G12 or authorize an unregistered full retry.
 
+**G12 D0 isolated diagnostic launch bound:** [#43733424334](https://github.com/etblink/math/actions/runs/43733424334), exact `1a05a6e7a4276a16c505c29b351dc4b7d9d4d54e`, job132870693397. Observed checkout in progress; expected166 pins/generic2/native5/three paired examples pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_LAUNCH_BINDING_2026_11_15.md). Full G12 remains BLOCKED at R2; its source/helper/consumer/workflow are fixed and absent from diagnostic build/full-consumer targets. G11 accepted.
+
 ## Historical G11 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G11 is accepted above; all negative and launch receipts remain preserved.
