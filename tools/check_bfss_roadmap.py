@@ -55,9 +55,9 @@ def main():
         require(q.get("gate") == "P3-AUX-HARDY-G14" and q.get("run_id") == 43749092953
                 and a.get("qualification") is False and g15.get("qualification") is False
                 and ((a.get("status") == "PENDING_STRICT_CI" and g15.get("status") == "STAGED_UNQUALIFIED")
-                     or (a.get("status") == "RED_UNQUALIFIED" and g15.get("status") == "RED_UNQUALIFIED"
-                         and a.get("run_id") == 43751403932
-                         and a.get("candidate_sha") == "a2d247a1000f2d59807092358ac0f6f71b2909a1"
+                     or (a.get("status") in {"RED_UNQUALIFIED", "BLOCKED"} and g15.get("status") == "RED_UNQUALIFIED"
+                         and ((a.get("run_id") == 43751403932 and a.get("candidate_sha") == "a2d247a1000f2d59807092358ac0f6f71b2909a1")
+                              or (a.get("run_id") == 43753325231 and a.get("candidate_sha") == "271ee0174f173cf2917514cd225be76385a1592f"))
                          and a.get("manifest_pins") == 169
                          and (ROOT / a.get("red_receipt", "__missing__")).is_file()))
                 and ((a.get("attempt") == "R1" and g15.get("prospective_receipt_commit") == "ae83c423e57bc4ff33b02f0d255728ac59206848")
@@ -79,6 +79,17 @@ def main():
             require(a.get(kind) == g15.get(kind) and a.get(kind + "_blob") == g15.get(kind + "_blob")
                     == hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest() == sha,
                     "G15 staged bytes drift: " + kind)
+    if tau_norm_candidate and s.get("g15_real_coefficient_sum_diagnostic"):
+        diagnostic = s["g15_real_coefficient_sum_diagnostic"]
+        require(a.get("status") == "BLOCKED" and a.get("run_id") == 43753325231
+                and a.get("full_retry_blocked") is True and diagnostic.get("main_G15_blocked") is True
+                and diagnostic.get("qualification") is False
+                and (ROOT / diagnostic.get("prospective_receipt", "__missing__")).is_file(),
+                "Repeated G15 boundary requires isolated diagnostic; no full retry")
+        archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R2_43753325231_evidence.zip"
+        require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                == "db2ec23889c6611ebcc2533d89c6678129dd8e0ffd3c0f3d19948282b1190d8d",
+                "G15 R2 complete red evidence missing or changed")
     if core_collapse_candidate and a["status"] != "GREEN_QUALIFIED":
         g14 = s.get("g14_core_collapse_prospective", {})
         require(q.get("gate") == "P3-AUX-HARDY-G13" and q.get("run_id") == 43746155492
@@ -599,9 +610,10 @@ def main():
             require(entry.get("manifest_pins") == 167 and entry.get("run_id") == 43743787307
                     and entry.get("manifest_hash") == "378cf5196a17f4f476ae3e7eac56ff13e363a7a77b027818c92cfe42e283aa40",
                     "G13 measured red preflight missing")
-        elif entry is a and tau_norm_candidate and a["status"] == "RED_UNQUALIFIED":
-            require(entry.get("manifest_pins") == 169 and entry.get("run_id") == 43751403932
-                    and entry.get("manifest_hash") == "1c474d67d01103777db6504bf12ba72a2280297b4b738e85e1e9dbf2b3fb316a",
+        elif entry is a and tau_norm_candidate and a["status"] in {"RED_UNQUALIFIED", "BLOCKED"}:
+            require(entry.get("manifest_pins") == 169 and ((entry.get("run_id") == 43751403932
+                    and entry.get("manifest_hash") == "1c474d67d01103777db6504bf12ba72a2280297b4b738e85e1e9dbf2b3fb316a")
+                    or (entry.get("run_id") == 43753325231 and entry.get("manifest_hash") == "8865f8167bed9d038f9967480f9eed47c80a0cb77554d4de5dae756742970478")),
                     "G15 measured red preflight missing")
         elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate or derivative_candidate or bilinear_candidate or core_assembly_candidate or core_collapse_candidate or tau_norm_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,

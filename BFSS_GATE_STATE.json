@@ -45,7 +45,7 @@
     "gate": "P3-AUX-HARDY-G15",
     "qualification": false,
     "attempt": "R2",
-    "status": "PENDING_STRICT_CI",
+    "status": "BLOCKED",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG15OriginalTauCoefficientNormReduction.lean",
     "consumer": "lean/diagnostics/BFSSP3AuxHardyG15OriginalTauCoefficientNormReductionIndependentConsumer.lean",
     "workflow": ".github/workflows/bfss-p3-aux-hardy-g15-original-tau-coefficient-norm-reduction-strict.yml",
@@ -56,7 +56,7 @@
     "prospective_receipt_commit": "d7c724f87a30ccb910d1f98b8b3afd6c173ee515",
     "candidate_sha": "271ee0174f173cf2917514cd225be76385a1592f",
     "candidate_sha_scope": "Exact tested workflow head",
-    "manifest_pins": null,
+    "manifest_pins": 169,
     "expected_manifest_pins": 169,
     "last_qualified_gate": "P3-AUX-HARDY-G14",
     "last_qualified_run_id": 43749092953,
@@ -65,7 +65,14 @@
     "workflow_tested_head_sha": "271ee0174f173cf2917514cd225be76385a1592f",
     "run_id": 43753325231,
     "job_id": 132931880950,
-    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_LAUNCH_BINDING_2026_11_15.md"
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_LAUNCH_BINDING_2026_11_15.md",
+    "manifest_hash": "8865f8167bed9d038f9967480f9eed47c80a0cb77554d4de5dae756742970478",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_RED_43753325231_SUM_SMUL_TWO_RED_REVIEW_2026_11_15.md",
+    "independent_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R2_RED_43753325231_AUDIT_2026_11_15.json",
+    "artifact_id": 14178240278,
+    "digest": "sha256:db2ec23889c6611ebcc2533d89c6678129dd8e0ffd3c0f3d19948282b1190d8d",
+    "first_causal_boundary": "source51:33 repeated sum_smul no-progress",
+    "full_retry_blocked": true
   },
   "if_green": "Preserve full exact qualification first, then preregister a source-shaped actual smooth-core assembly; keep tau norm and physical sector/energy/domain assumptions separate.",
   "if_red": "Preserve first-causal evidence and complete artifact; repeated native conversion requires isolated source-shaped diagnostic; two analogous reds require architecture review; no unchanged retry or resource escalation.",
@@ -121,16 +128,18 @@
   },
   "next_planned": {
     "gate": "P3-AUX-HARDY-G15",
-    "status": "STRICT_CI_IN_PROGRESS",
+    "status": "BLOCKED_PENDING_ISOLATED_DIAGNOSTIC",
     "goal": "Original tau/four-plane-sum coefficient norm reduction, retaining cross terms; numerical coefficient estimate remains separate.",
     "pre_gate_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_PRE_GATE_ABSTRACT_REAL_COEFFICIENT_TABLE_2026_11_15.md",
     "pre_gate_receipt_complete": true,
     "source_adapter_staged": true,
     "independent_consumer_staged": true,
     "strict_workflow_staged": true,
-    "accepted_predecessor_run": 43749092953
+    "accepted_predecessor_run": 43749092953,
+    "diagnostic_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_D0_PRE_GATE_REAL_COEFFICIENT_SUM_DIAGNOSTIC_2026_11_15.md",
+    "full_retry_authorized": false
   },
-  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R1_RED_43751403932_FOUR_PLANE_COEFFICIENT_TRANSPARENCY_2026_11_15.md",
+  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_RED_43753325231_SUM_SMUL_TWO_RED_REVIEW_2026_11_15.md",
   "monograph_alignment": {
     "status": "REVIEWED_NOT_MERGED",
     "review_date": "2026-11-12",
@@ -6447,7 +6456,7 @@
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
     "latest_qualified_gate": "P3-AUX-HARDY-G14",
     "latest_qualified_run": 43749092953,
-    "immediate_proof": "G14 accepted; G15 R2 staged/unqualified, isolating the failed four-plane finite sum on abstract real coefficients before source substitution. Numerical estimate and physical assumptions remain separate.",
+    "immediate_proof": "G14 accepted; full G15 BLOCKED after two scalar-sum failures. D0 Mathlib-first/source-shaped diagnostic preregistered; no R3 before diagnostic acceptance and separate contract.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -9954,7 +9963,7 @@
     }
   },
   "g15_tau_norm_prospective": {
-    "status": "STAGED_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_PRE_GATE_ABSTRACT_REAL_COEFFICIENT_TABLE_2026_11_15.md",
     "accepted_predecessor_run": 43749092953,
@@ -10020,7 +10029,7 @@
       "workflow_only_source_pin_changed": true,
       "neutral_real_table_calculation_precedes_source_instantiation": true
     },
-    "manifest_pin_count": null,
+    "manifest_pin_count": 169,
     "attempt": "R2",
     "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_PRE_GATE_ABSTRACT_REAL_COEFFICIENT_TABLE_2026_11_15.md",
     "prior_red_run": 43751403932,
@@ -10028,7 +10037,8 @@
     "tested_sha": "271ee0174f173cf2917514cd225be76385a1592f",
     "run_id": 43753325231,
     "job_id": 132931880950,
-    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_LAUNCH_BINDING_2026_11_15.md"
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_LAUNCH_BINDING_2026_11_15.md",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_RED_43753325231_SUM_SMUL_TWO_RED_REVIEW_2026_11_15.md"
   },
   "prior_active_before_G15": {
     "gate": "P3-AUX-HARDY-G14",
@@ -10121,5 +10131,47 @@
     "first_causal_boundary": "source48:31 coefficient-sum implicit-transparency failure",
     "fresh_source_pass": false,
     "consumer_pass": false
+  },
+  "g15_r2_pre_red_checkpoint": {
+    "gate": "P3-AUX-HARDY-G15",
+    "qualification": false,
+    "attempt": "R2",
+    "status": "PENDING_STRICT_CI",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG15OriginalTauCoefficientNormReduction.lean",
+    "consumer": "lean/diagnostics/BFSSP3AuxHardyG15OriginalTauCoefficientNormReductionIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g15-original-tau-coefficient-norm-reduction-strict.yml",
+    "source_blob": "3137f2fa64f3d1cbf08f06588c31303e06df4caa",
+    "consumer_blob": "7e873eae9001339a0f746637b9ac906311ec106b",
+    "workflow_blob": "898e8882e6d5512e98b016a1ad918a7247aff33c",
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_PRE_GATE_ABSTRACT_REAL_COEFFICIENT_TABLE_2026_11_15.md",
+    "prospective_receipt_commit": "d7c724f87a30ccb910d1f98b8b3afd6c173ee515",
+    "candidate_sha": "271ee0174f173cf2917514cd225be76385a1592f",
+    "candidate_sha_scope": "Exact tested workflow head",
+    "manifest_pins": null,
+    "expected_manifest_pins": 169,
+    "last_qualified_gate": "P3-AUX-HARDY-G14",
+    "last_qualified_run_id": 43749092953,
+    "prior_red_run": 43751403932,
+    "prior_red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R1_RED_43751403932_FOUR_PLANE_COEFFICIENT_TRANSPARENCY_2026_11_15.md",
+    "workflow_tested_head_sha": "271ee0174f173cf2917514cd225be76385a1592f",
+    "run_id": 43753325231,
+    "job_id": 132931880950,
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_LAUNCH_BINDING_2026_11_15.md"
+  },
+  "g15_real_coefficient_sum_diagnostic": {
+    "status": "REGISTERED_NOT_EXECUTED",
+    "qualification": false,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_D0_PRE_GATE_REAL_COEFFICIENT_SUM_DIAGNOSTIC_2026_11_15.md",
+    "prior_red_run": 43753325231,
+    "main_G15_blocked": true,
+    "frozen_main": {
+      "source": "3137f2fa64f3d1cbf08f06588c31303e06df4caa",
+      "consumer": "7e873eae9001339a0f746637b9ac906311ec106b",
+      "workflow": "898e8882e6d5512e98b016a1ad918a7247aff33c"
+    },
+    "expected_manifest_pins": 169,
+    "generic_reports": 2,
+    "native_reports": 4,
+    "native_examples": 3
   }
 }
