@@ -45,6 +45,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G10 R2 STAGED / UNQUALIFIED:** [rename contract](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_PRE_GATE_CURRENT_ONE_APPLY_LEMMA_2026_11_15.md) committed at `ec6af36c` before edits. Source `59aaed1da894e8b91b2df51eda6f47a37cf4c517` replaces only the compiler-identified deprecated one-application lemma. Entire consumer `ed4507504ac58eef9bcb4299bb8092c9b9679b75` fixed; workflow `5e126c42ae799170ee6d4aeca33172747eaa3fc4` changes only source pin. Static exact-delta/hash/root/import/YAML/bash/four Python/positive-five-negative auditor and checkpoint fixtures PASS; no local Lean. Full fresh163-pin/helper1+3/source6/native12/all12 strict qualification still required. R1 evidence preserved; G9 accepted.
 
+**G10 R2 strict launch bound:** [#43700520096](https://github.com/etblink/math/actions/runs/43700520096), exact `232c40b89bbdc3579f9ba59f5063967351c644cd`, job132770419918. Observed in progress at checkout; expected163 pins/helpers1+3/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_LAUNCH_BINDING_2026_11_15.md). Sole source delta is the compiler-recommended identity-evaluation lemma rename. Consumer/statements/resources fixed; R1 red preserved; G9 accepted.
+
 ## Historical G9 receipts — superseded by the current focus
 
 Earlier staged/running labels below record their own as-of states. G9 is now accepted as stated above; all red/green and launch receipts are preserved.
