@@ -53,6 +53,21 @@ A deterministic [Python source control](diagnostics/G16_EXACT_OCTONION_GAMMA_MAT
 
 All 73 cases passed without floating-point rounding; the first unit axis gives 976 and the unpaired ninth axis gives 256. The original JSON output from that run was SHA256 `a3d5729c777c351d3666bafab3b96364bd25d7b9dcb35180caa2f1c7a59dd6ff`. This confirms the proposed identity in **one explicit faithful gamma representation**, not the actual repository basis or the universal `AlgebraData 2` theorem. Do not use the test as a substitute for source typed sign/trace adapters, full Lean axiom audit, or physical Spin(9)/domain proofs.
 
+## Proof architecture after D1A: coefficient-table rather than full Y expansion
+
+An economical route avoids expanding `originalHardyY` inside the double sum `∑ α, ∑ β`:
+
+1. Prove a **Mathlib-only finite orthogonal-family identity** for any real matrix family `W : Index → Matrix (Fin 16) (Fin 16) ℝ` satisfying `trace (W p)ᵀ(W q) = if p=q then 16 else 0`:
+   ```text
+   Σ_{αβ} (Σ_p c_p W_p(α,β))² = 16 Σ_p c_p².
+   ```
+   Do the matrix trace/Frobenius expansion and `Finset.sum_comm` here, without the original BFSS import or a heavy source normalizer. Require a consumer with two nonzero coefficients and a cross-term negative control.
+2. Encode the actual **eight singleton + 28 triple** supports as a *subtype finite index family*. The support map to `Finset (Fin 9)` must be injective. For this small literal problem, use a separately audited `decide`/finite-case theorem for the 28 admissible `(plane,thirdAxis)` labels rather than a general signed-permutation library.
+3. For consecutive plane endpoints (2t,2t+1), prove the source product `Γ_k Γ_{2t} Γ_{2t+1}` is **positive** `OAI.BFSSGamma.word` of its support, by zero swaps when (k<2t) or two exact `gamma_anti` swaps when (k>2t+1). Keep a negative control for a nonconsecutive artificial plane; the simplification is not universal.
+4. Refold `originalHardyY` once into the word-support coefficient table, then apply the isolated orthogonal-family theorem and D0's already qualified multiplicities and rational weights. This preserves the proof architecture *scalar counting → exact original gamma → actual original coefficients → G15 tau norm*, preventing a high-cost direct `simp_rw` explosion.
+
+This is a **design**, not an implementation or extra qualification. It requires explicit source proofs, native consumers and strict artifacts. The generic orthogonal-family lemma cannot itself establish `AlgebraData`/physical gamma properties.
+
 ## Minimal falsifiable D1 gate design
 
 1. Source-only gamma Frobenius word pairing, with exact `AlgebraData.gamma_clifford`, `gamma_symmetric`, cardinality ≤4; native independent consumer specializes `pairedAlgebraData` and tests same support, different singleton supports and single/triple support.
