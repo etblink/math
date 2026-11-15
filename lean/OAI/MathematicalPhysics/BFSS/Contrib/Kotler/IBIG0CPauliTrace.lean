@@ -61,7 +61,7 @@ theorem originalAdjointColorMatrix_pauliTrace
             (g : ColorMatrix 2).conjTranspose)) := by
     simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, pow_two]
   rw [hmatrix, hscale, Matrix.trace_smul]
-  norm_num [smul_eq_mul, Complex.mul_re] <;> ring
+  norm_num [smul_eq_mul, Complex.mul_re]; ring
 
 #print axioms originalAdjointColorMatrix_normalizedPauliTrace
 #print axioms originalAdjointColorMatrix_pauliTrace
