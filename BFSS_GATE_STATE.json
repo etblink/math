@@ -127,7 +127,7 @@
   },
   "next_planned": {
     "gate": "P3-AUX-HARDY-G12",
-    "status": "ISOLATED_DIAGNOSTIC_REGISTERED",
+    "status": "ISOLATED_DIAGNOSTIC_STAGED",
     "milestone": "M5 original-source Hardy algebra",
     "goal": "Assemble the actual ordered kinetic-symbol/tau-derivative Fock bilinear using the accepted all-color coefficient contraction and an isolated finite-sum helper.",
     "accepted_predecessor_run": 43708533905,
@@ -139,7 +139,9 @@
     "if_red": "Preserve first causal error; repeated native conversion requires isolated typed comparison; no unchanged retry or resource escalation.",
     "pre_gate_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_PRE_GATE_TYPED_ZERO_ACTION_DIAGNOSTIC_2026_11_15.md",
     "isolated_helper_staged": true,
-    "attempt": "D0"
+    "attempt": "D0",
+    "diagnostic_sources_staged": true,
+    "diagnostic_workflow_staged": true
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md",
   "monograph_alignment": {
@@ -6458,7 +6460,7 @@
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
     "latest_qualified_gate": "P3-AUX-HARDY-G11",
     "latest_qualified_run": 43708533905,
-    "immediate_proof": "G12 main BLOCKED after repeated off-color zero-action boundary. D0 typed generic/native diagnostic preregistered, not staged; ordered expansion now clean in cold source output. G11 accepted.",
+    "immediate_proof": "G12 main BLOCKED after repeated off-color zero-action boundary. D0 typed generic/original-carrier diagnostic staged/unqualified, with main G12 source/helper/consumer/workflow fixed. G11 accepted.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -8444,7 +8446,7 @@
   },
   "g12_typed_zero_action_diagnostic": {
     "gate": "P3-AUX-HARDY-G12-D0",
-    "status": "REGISTERED_NOT_EXECUTED",
+    "status": "STAGED_UNQUALIFIED",
     "qualification": false,
     "main_G12_blocked": true,
     "prior_red_run": 43730966120,
@@ -8455,6 +8457,52 @@
     "expected_manifest_pins": 166,
     "generic_reports": 2,
     "native_reports": 5,
-    "native_examples": 3
+    "native_examples": 3,
+    "generic_source_blob": "0a7b8ea4145a004d30577034c88db90346f2d77e",
+    "native_source_blob": "12675baab7f764dbcb8f276d357246c70956a927",
+    "workflow_blob": "5057a89c608565ab536ad89690628389816fee3f",
+    "generic_roots": [
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexZeroOperatorProduct",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic.complexSelectedColorSum"
+    ],
+    "native_roots": [
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalZeroProduct",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalOffColorZero",
+      "FCP.BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.originalSelectedColorSum"
+    ],
+    "frozen_main": {
+      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12OriginalDerivativeFockBilinear.lean": "80ea179d9e2afa223bda77ce0d62af6ab61db422",
+      "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG12FiniteCoefficientContraction.lean": "2c0b07a603a94ad18342a53a5d88eaad5345cb5d",
+      "lean/diagnostics/BFSSP3AuxHardyG12OriginalDerivativeFockBilinearIndependentConsumer.lean": "13f5557809b7ecce2dfeb60d2988febcd85bf529",
+      ".github/workflows/bfss-p3-aux-hardy-g12-original-derivative-fock-bilinear-strict.yml": "a90a4f2b04623abdfe7b1db860b3716f0d60d570"
+    },
+    "explicit_pins": 23,
+    "prospective_receipt_commit": "d57c090740bcbc5648b778fd7a1a53afe8b2bcef",
+    "candidate_sha": "d57c090740bcbc5648b778fd7a1a53afe8b2bcef",
+    "candidate_sha_scope": "Preregistered diagnostic ancestor; exact tested commit/run bound after publication",
+    "run_id": null,
+    "manifest_pins": null,
+    "static_checks": {
+      "status": "STATIC_PASS_NOT_LEAN",
+      "candidate_hashes": {
+        "generic_source": "0a7b8ea4145a004d30577034c88db90346f2d77e",
+        "native_source": "12675baab7f764dbcb8f276d357246c70956a927",
+        "workflow": "5057a89c608565ab536ad89690628389816fee3f"
+      },
+      "main_G12_source_helper_consumer_workflow_byte_fixed": true,
+      "generic_reports": 2,
+      "native_reports": 5,
+      "native_examples": 3,
+      "expected_recursive_pins_from_measured_R2_closure_and_diagnostic_imports": 166,
+      "explicit_pins": 23,
+      "present_local_pin_files_verified": 9,
+      "full_recursive_recomputation": "REQUIRED_IN_FRESH_CI",
+      "yaml_bash_three_python_blocks_and_literal_preflight_assertions": "PASS",
+      "auditor_positive_and_six_negative_fixtures": "PASS",
+      "main_G12_not_a_build_target_or_consumer": true,
+      "no_main_G12_object_checks": 2,
+      "same_job_cold_compiler_resource_bounds": true,
+      "local_Lean_available": false
+    }
   }
 }

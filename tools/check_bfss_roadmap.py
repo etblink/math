@@ -72,13 +72,31 @@ def main():
             actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
             require(a.get(kind + "_blob") == g12.get(kind + "_blob") == actual == sha,
                     "G12 staged bytes drift: " + kind)
-    if bilinear_candidate and a.get("status") == "BLOCKED":
+    if bilinear_candidate and s.get("g12_typed_zero_action_diagnostic"):
         diagnostic = s.get("g12_typed_zero_action_diagnostic", {})
-        require(a.get("run_id") == 43730966120 and diagnostic.get("main_G12_blocked") is True
+        require(a.get("status") == "BLOCKED" and a.get("run_id") == 43730966120 and diagnostic.get("main_G12_blocked") is True
                 and diagnostic.get("prior_red_run") == 43730966120
                 and diagnostic.get("qualification") is False
                 and (ROOT / diagnostic.get("prospective_receipt", "__missing__")).is_file(),
                 "G12 repeated source boundary requires isolated diagnostic; no full retry")
+        require(diagnostic.get("status") in {"REGISTERED_NOT_EXECUTED", "STAGED_UNQUALIFIED", "CI_IN_PROGRESS"},
+                "unreviewed G12 diagnostic status")
+        if diagnostic.get("status") != "REGISTERED_NOT_EXECUTED":
+            require(diagnostic.get("prospective_receipt_commit") == "d57c090740bcbc5648b778fd7a1a53afe8b2bcef"
+                    and diagnostic.get("expected_manifest_pins") == 166
+                    and diagnostic.get("generic_reports") == 2 and diagnostic.get("native_reports") == 5
+                    and diagnostic.get("native_examples") == 3 and diagnostic.get("manifest_pins") is None,
+                    "G12 D0 diagnostic contract or unmeasured manifest drift")
+            for kind, sha in {'generic_source': '0a7b8ea4145a004d30577034c88db90346f2d77e', 'native_source': '12675baab7f764dbcb8f276d357246c70956a927', 'workflow': '5057a89c608565ab536ad89690628389816fee3f'}.items():
+                data = (ROOT / diagnostic[kind]).read_bytes()
+                actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+                require(diagnostic.get(kind + "_blob") == actual == sha,
+                        "G12 D0 diagnostic bytes drift: " + kind)
+            archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R2_43730966120_evidence.zip"
+            require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                    == "62fd68bee2d6cbfbc947cea7c74f585c155f406ede48db9e9e2f746bc0c55a3f",
+                    "G12 R2 complete red evidence missing or changed")
+
     if derivative_candidate and a["status"] != "GREEN_QUALIFIED":
         g11 = s.get("parallel_auxiliary_hardy_derivative_color_contraction", {})
         require(q.get("gate") == "P3-AUX-HARDY-G10" and q.get("run_id") == 43702235044
@@ -664,7 +682,7 @@ def main():
                 and focus.get("latest_qualified_run") == q["run_id"]
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G12"
-                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "PROSPECTIVE_REPAIR_NOT_STAGED", "ISOLATED_DIAGNOSTIC_REGISTERED", "ISOLATED_DIAGNOSTIC_IN_PROGRESS"},
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "PROSPECTIVE_REPAIR_NOT_STAGED", "ISOLATED_DIAGNOSTIC_REGISTERED", "ISOLATED_DIAGNOSTIC_STAGED", "ISOLATED_DIAGNOSTIC_IN_PROGRESS"},
                 "G11 predecessor, physical-H or bounded next-stage handoff missing")
         archive = (ROOT / "research/spectral-p2-original-field/diagnostics/"
                    "P3_AUX_HARDY_G11_R3_43708533905_evidence.zip")
