@@ -5607,7 +5607,7 @@
       "id": "E-P3-AUX-HARDY-G7-R1",
       "title": "Original smooth-core tau endomorphism and potential cancellation lift",
       "registered_at": "2026-11-14",
-      "status": "EXECUTED_UNREVIEWED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G7_R1_PRE_GATE_ORIGINAL_TAU_SMOOTH_CORE_2026_11_14.md",
@@ -5689,7 +5689,90 @@
       "run_id": 43667791893,
       "tested_sha": "02cf15534de709ae49652b85d5836b5cd428fee0",
       "job_id": 132670947600,
-      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G7_R1_LAUNCH_BINDING_2026_11_14.md"
+      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G7_R1_LAUNCH_BINDING_2026_11_14.md",
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G7_R1_RED_43667791893_NATIVE_ZERO_EVALUATION_2026_11_14.md",
+      "result": {
+        "run_id": 43667791893,
+        "tested_sha": "02cf15534de709ae49652b85d5836b5cd428fee0",
+        "job_id": 132670947600,
+        "manifest_pins": 158,
+        "manifest_hash": "14372a72810c1d5120465f9a9c9773233dd70f59af8219c40ea44619dd26cfe1",
+        "cold_build_jobs": 9080,
+        "generic_helper_pass": true,
+        "six_source_roots_standard_axioms": true,
+        "twelve_consumer_reports_standard_axioms": true,
+        "other_ten_consumer_controls_no_error": true,
+        "scalar_and_addition_controls_no_error": true,
+        "errors": [
+          "diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean:65:2: error: maximum recursion depth has been reached",
+          "diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean:71:8: error: maximum recursion depth has been reached"
+        ],
+        "whole_G7_qualified": false,
+        "artifact_id": 14142787891,
+        "artifact_bytes": 20312,
+        "artifact_digest": "sha256:b81aa8021fc5e0dc04a3e6ce1d48476362e0d81f88fe5ff56121e8c75e498aa3",
+        "artifact_digest_independently_rehashed": true,
+        "durable_artifact": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G7_R1_43667791893_evidence.zip",
+        "first_causal": "Native consumer map_zero on concrete tau core at65:2 and concrete Fock tau at71:8 recurse. Source six roots and addition/scalar controls pass; inherited zero-map law inference on fixed native operator data is the bounded boundary to isolate."
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G7-R2",
+      "title": "Typed original core/Fock zero evaluation before native tau instantiation",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G7_R2_PRE_GATE_TYPED_ZERO_EVALUATION_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7OriginalTauSmoothCore.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG7OriginalTauSmoothCoreIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g7-original-tau-smooth-core-strict.yml",
+      "source_blob": "d7320101971790d7fe56bfda1b011ae3e5d1b9d9",
+      "typed_zero_helper": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG7TypedZeroEvaluation.lean",
+      "helper_roots": [
+        "FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.coreLinearMap_zero",
+        "FCP.BFSSP3AuxHardyG7TypedZeroEvaluation.fockContinuousLinearMap_zero"
+      ],
+      "stages": {
+        "observation": "Native consumer map_zero on concrete tau core at65:2 and concrete Fock tau at71:8 recurse. Source six roots and addition/scalar controls pass; inherited zero-map law inference on fixed native operator data is the bounded boundary to isolate.",
+        "question": "Do fixed original carrier zero-law helpers with arbitrary map data compile early, then close exactly the two failing native zero controls?",
+        "background": [
+          "Exact R1 first-causal artifact independently rehashed",
+          "All six G7 source declarations fresh pass",
+          "Addition/scalar native controls pass",
+          "G5 variable-data helper and canonical-witness recovery",
+          "Pinned LinearMap protected map_zero and actual-source variable-map_zero usage read"
+        ],
+        "hypothesis": "Moving the zero law to a variable operator with explicit original carrier avoids inference through concrete native tau definitions; native instantiation then needs only typed application.",
+        "falsifiers": [
+          "Core-only helper fails",
+          "Native zero controls still recurse or mismatch",
+          "Any original source/other ten controls warning/error",
+          "Changed statements, source bytes or limits"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "New Core-only two-law helper, arbitrary typed operators",
+            "Only two native zero proof bodies call helper"
+          ],
+          "dependent_variables": [
+            "Early two-helper proof/root audit",
+            "Full source six/native consumer twelve audits",
+            "All twelve consumer controls"
+          ],
+          "controls": [
+            "G7 source byte-identical",
+            "Scalar/addition controls unchanged",
+            "Both original zero-input statements retained",
+            "Helper imports only original Core, not tau/native model",
+            "Helper checked before expensive native-data build",
+            "Same budgets/toolchain/donors"
+          ]
+        },
+        "analysis_plan": "Build/fresh-check Core-only helper before paired data; if it fails stop immediately. Include helper in cold model build after deleting OAI objects. Re-run unchanged source and native consumer. A second native zero-boundary failure requires typed differential collection; do not increase recursion or permute generic map_zero tactics.",
+        "conclusion_rule": "LEAN_QUALIFIED only after full strict helper/source/native success; helper/source successes alone do not qualify G7.",
+        "communication": "Original tau construction and core potential cancellation are clean source observations. Whole G7 remains unqualified until both native zero controls pass."
+      }
     }
   ],
   "allowed_statuses": [
