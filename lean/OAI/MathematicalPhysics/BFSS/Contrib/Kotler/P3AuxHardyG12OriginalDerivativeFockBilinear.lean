@@ -89,7 +89,8 @@ theorem originalKineticTauDerivativeFermion_eq_bilinear (M : AlgebraData 2)
   rw [Finset.sum_eq_single B]
   · rw [ite_eq_left rfl]
   · intro A _ hAB
-    rw [ite_eq_right (Ne.symm hAB), zero_smul]
+    rw [ite_eq_right (Ne.symm hAB)]
+    exact _root_.zero_smul ℂ (M.theta β B * M.theta δ A)
   · intro hB
     exact False.elim (hB (Finset.mem_univ B))
 
