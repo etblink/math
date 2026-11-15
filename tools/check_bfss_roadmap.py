@@ -58,6 +58,12 @@ def main():
                          and g9.get("prior_red_run") == {"R2": 43677035838, "R3": 43678236725}[g9["attempt"]]
                          and re.fullmatch(r"[0-9a-f]{40}", g9.get("prospective_receipt_commit", "")) is not None
                          and g9.get("source_blob") == "3b5a4b52254add95f741bb883f7e9edecf48dbdf"
+                         and g9.get("consumer_blob") == "88aa4d8382e62da727ef81b0f998673fe9f9513d")
+                     or (g9.get("attempt") == "R4"
+                         and g9.get("prior_red_run") == 43679125806
+                         and g9.get("prospective_receipt_commit") == "a7196d6248e7cafb5aae57eca6310de7b6a4552f"
+                         and g9.get("source_blob") == "59a1360ee22b9ffa24fdcf018d9c9299a0b9ce11"
+                         and g9.get("helper_blob") == "e7904e1edf3af664b3900c31c0757412d495d60c"
                          and g9.get("consumer_blob") == "88aa4d8382e62da727ef81b0f998673fe9f9513d"))
                 and (ROOT / g9.get("prospective_receipt", "__missing__")).is_file()
                 and g9.get("expected_manifest_pin_count") == 162,

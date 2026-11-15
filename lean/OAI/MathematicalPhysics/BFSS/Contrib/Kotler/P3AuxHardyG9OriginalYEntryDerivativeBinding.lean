@@ -38,9 +38,8 @@ theorem originalHardyTauCoefficientDerivative_eq_basis (M : AlgebraData 2)
     originalHardyTauCoefficientDerivative M i j k B A α β X =
       (originalHardyY M i j (EuclideanSpace.single (k, B) 1) A α β : ℂ) := by
   unfold originalHardyTauCoefficientDerivative
-  simpa only [originalHardyYCLM_apply] using
-    (complexMatrixEntry_fderiv_apply (originalHardyYCLM M i j A) α β X
-      (EuclideanSpace.single (k, B) 1))
+  rw [originalHardyY_entry_fderiv]
+  exact originalHardyYEntryCLM_apply M i j A α β (EuclideanSpace.single (k, B) 1)
 
 theorem originalHardyTauCoefficientDerivative_independent_point (M : AlgebraData 2)
     (i j k : SpaceIndex) (B A : ColorIndex 2) (α β : SpinIndex) (X Z : Boson 2) :
