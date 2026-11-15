@@ -44,9 +44,13 @@ theorem originalHardyTau_fourPlane_sum_eq_cliffordLinear (M : AlgebraData 2)
     (∑ t : Fin 4, originalHardyTau M (i t) (j t) α X) =
       M.cliffordLinear (fun p : FermionIndex 2 =>
         ∑ t : Fin 4, originalHardyY M (i t) (j t) X p.2 α p.1) := by
-  unfold originalHardyTau AlgebraData.cliffordLinear
-  simp_rw [Complex.ofReal_sum, Finset.sum_smul]
-  exact Finset.sum_comm
+  have hsum (b : Fin 4 → FermionIndex 2 → ℝ) :
+      (∑ t : Fin 4, M.cliffordLinear (b t)) =
+        M.cliffordLinear (fun p : FermionIndex 2 => ∑ t : Fin 4, b t p) := by
+    unfold AlgebraData.cliffordLinear
+    simp_rw [Complex.ofReal_sum, Finset.sum_smul]
+    exact Finset.sum_comm
+  exact hsum (fun t p => originalHardyY M (i t) (j t) X p.2 α p.1)
 
 theorem originalHardyTau_fourPlane_sum_norm_sq (M : AlgebraData 2)
     (i j : Fin 4 → SpaceIndex) (X : Boson 2) (v : Fermion 2) :
