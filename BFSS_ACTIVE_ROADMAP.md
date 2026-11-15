@@ -47,6 +47,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G9 R3 STAGED / UNQUALIFIED:** [minimal-context contract](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_PRE_GATE_MINIMAL_ENTRY_HELPER_CONTEXT_2026_11_14.md) committed at`bffaf981` before edits. Helper`e7904e1edf3af664b3900c31c0757412d495d60c` removes only redundant shared Fintype classes and obsolete apply omit; ALL R2 proof bodies/explicit statements fixed. Source`3b5a4b52254add95f741bb883f7e9edecf48dbdf` and entire native consumer`88aa4d8382e62da727ef81b0f998673fe9f9513d` unchanged; workflow`cfdf124d53c6802352dd4e2e493fb19befa1e2f4` changes only expected helper pin. Static exact-delta/hash/import/root/YAML/bash/four Python/scope and positive/five-negative auditor checks PASS; no local Lean. Full helper1+3/source6/native12/12 controls required. G8 accepted; R1/R2 reds and two-red review preserved.
 
+**G9 R3 strict launch bound:** [#43679125806](https://github.com/etblink/math/actions/runs/43679125806), exact`b8bbae75b03a3eff9df7a6f15915b161a8d998b5`, job132705709839. Observed at checkout; expected162 pins/full early helpers1+3/source6/native12/12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_LAUNCH_BINDING_2026_11_14.md). R2 proof bodies and original source/consumer fixed; R1/R2 reds preserved; G8 accepted.
+
 ## Historical checkpoint journal — newest entries first
 
 Everything below records its own as-of state. Earlier staged/running labels, allocation paragraphs and “next” decisions are retained for provenance and are superseded by the current-focus block and canonical JSON. Exact source/consumer/strict receipts remain proof authority.
