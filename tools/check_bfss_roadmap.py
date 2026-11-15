@@ -44,6 +44,30 @@ def main():
     # by the *new* strict workflow. Never invent that count before its preflight.
     source_join = a.get("gate") == "P3-M3W0D0"
     auxiliary_candidate = a.get("gate") == "P3-AUX-HARDY-G9"
+    kinetic_candidate = a.get("gate") == "P3-AUX-HARDY-G10"
+    if kinetic_candidate:
+        g10 = s.get("parallel_auxiliary_hardy_kinetic_tau_car", {})
+        require(q.get("gate") == "P3-AUX-HARDY-G9" and q.get("run_id") == 43681465949
+                and a.get("status") == "PENDING_STRICT_CI" and a.get("qualification") is False
+                and g10.get("status") == "STAGED_UNQUALIFIED" and g10.get("qualification") is False
+                and g10.get("prospective_receipt_commit") == "17360e8d15784bc2b19425edb7708564474b7a44"
+                and g10.get("reviewed_original_baseline") == "e22dda02233c1e703cbb092e2ee705c3b169519a"
+                and (ROOT / g10.get("prospective_receipt", "__missing__")).is_file()
+                and g10.get("expected_manifest_pin_count") == a.get("expected_manifest_pins") == 163
+                and g10.get("expected_source_roots") == 6 and g10.get("expected_consumer_reports") == 12
+                and g10.get("native_examples") == 12,
+                "G10 cannot bypass accepted G9 or its exact prospective contract")
+        for kind, sha in {
+            "source": "911ff8824b9c95005511aed22f25da4d0edb97f0",
+            "consumer": "ed4507504ac58eef9bcb4299bb8092c9b9679b75",
+            "workflow": "7ac3353e6415918cd08ae2c0c3e19202dd5abfe4",
+        }.items():
+            require(a.get(kind) == g10.get(kind) and (ROOT / g10[kind]).is_file(),
+                    "G10 registration path drift: " + kind)
+            data = (ROOT / g10[kind]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+            require(a.get(kind + "_blob") == g10.get(kind + "_blob") == actual == sha,
+                    "G10 staged bytes drift: " + kind)
     if auxiliary_candidate and a["status"] != "GREEN_QUALIFIED":
         g9 = s.get("parallel_auxiliary_hardy_entry_derivative_binding", {})
         require(q.get("gate") == "P3-AUX-HARDY-G8" and q.get("run_id") == 43674445069
@@ -305,7 +329,7 @@ def main():
                     and entry.get("run_id") in red_manifests
                     and entry.get("manifest_hash") == red_manifests[entry["run_id"]],
                     "G9 measured red preflight missing")
-        elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate) and a["status"] != "GREEN_QUALIFIED"):
+        elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate or kinetic_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
@@ -315,7 +339,7 @@ def main():
             path = Path(entry[k])
             require(not path.is_absolute() and ".." not in path.parts and (ROOT/path).is_file(),
                     "missing or unsafe " + k + ": " + str(path))
-    if not source_join and not port_be and not port_bf and not auxiliary_candidate:
+    if not source_join and not port_be and not port_bf and not auxiliary_candidate and not kinetic_candidate:
         require(a["manifest_pins"] >= q["manifest_pins"], "pin count regression")
     # The BE native-H source port is an independently pinned historical
     # dependency closure; never compare its raw count to M3W0D0's 201 pins.
@@ -375,13 +399,12 @@ def main():
         g9 = s.get("parallel_auxiliary_hardy_entry_derivative_binding", {})
         receipt = ("research/spectral-p2-original-field/"
                    "P3_AUX_HARDY_G9_R4_GREEN_43681465949_ORIGINAL_ENTRY_DERIVATIVE_ACCEPTANCE_2026_11_15.md")
-        require(s["milestone"] == "M5" and a.get("gate") == q["gate"]
-                and a.get("status") == "GREEN_QUALIFIED" and a.get("qualification") is True
-                and q.get("run_id") == a.get("run_id") == 43681465949
-                and q.get("tested_sha") == a.get("candidate_sha") == "e22dda02233c1e703cbb092e2ee705c3b169519a"
+        require(s["milestone"] == "M5" and (a.get("gate") == q["gate"] or kinetic_candidate)
+                and q.get("run_id") == 43681465949
+                and q.get("tested_sha") == "e22dda02233c1e703cbb092e2ee705c3b169519a"
                 and q.get("job_id") == 132712801846
-                and q.get("manifest_pins") == a.get("manifest_pins") == 162
-                and q.get("manifest_hash") == a.get("manifest_hash") == "51f5a6eeb0cbaf4bc42c3f4c04a2ec480b5757d2ef3313fe2ec7390ac6b30bf3"
+                and q.get("manifest_pins") == 162
+                and q.get("manifest_hash") == "51f5a6eeb0cbaf4bc42c3f4c04a2ec480b5757d2ef3313fe2ec7390ac6b30bf3"
                 and q.get("artifact_id") == 14149490274
                 and q.get("digest") == "sha256:4d3cb75b8649dac9d4ed9c3ac81543b1999ebd007fd078712acbe030852cef2e"
                 and q.get("receipt") == receipt and (ROOT / receipt).is_file()
@@ -400,7 +423,8 @@ def main():
         for kind, sha in expected.items():
             data = (ROOT / q[kind]).read_bytes()
             actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
-            require(q.get(kind + "_blob") == a.get(kind + "_blob") == g9.get(kind + "_blob") == actual == sha,
+            require(q.get(kind + "_blob") == g9.get(kind + "_blob") == actual == sha
+                    and (kinetic_candidate or a.get(kind + "_blob") == sha),
                     "G9 accepted bytes drift: " + kind)
         prior = s.get("last_qualified_hardy_pre_G9", {})
         physical = s.get("last_qualified_physical_operator", {})
@@ -414,8 +438,14 @@ def main():
                 and focus.get("latest_qualified_run") == q["run_id"]
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G10"
-                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED"},
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
+                    "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS"},
                 "G9 predecessor, physical-H or bounded next-stage handoff missing")
+        if not kinetic_candidate:
+            require(a.get("status") == "GREEN_QUALIFIED" and a.get("qualification") is True
+                    and a.get("run_id") == q["run_id"] and a.get("candidate_sha") == q["tested_sha"]
+                    and a.get("manifest_pins") == q["manifest_pins"] and a.get("manifest_hash") == q["manifest_hash"],
+                    "G9 active accepted checkpoint drift")
         archive = (ROOT / "research/spectral-p2-original-field/diagnostics/"
                    "P3_AUX_HARDY_G9_R4_43681465949_evidence.zip")
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
