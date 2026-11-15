@@ -35,6 +35,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
 
+**G11 derivative color/spin contraction preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R1_PRE_GATE_ORIGINAL_DERIVATIVE_COLOR_CONTRACTION_2026_11_15.md) checks the missing off-color basis behavior and uses G3/G9 plus original gamma symmetry to contract the literal complex derivative coefficient across all colors. Six source/twelve consumer reports and twelve actual native controls are required. Final Fock bilinear and full core rotation remain separate; G10 accepted.
+
 ## Historical G10 receipts — superseded by the current focus
 
 The staged/running labels below record their own as-of states. G10 is accepted above; all negative and launch receipts remain preserved.

@@ -120,16 +120,17 @@
   },
   "next_planned": {
     "gate": "P3-AUX-HARDY-G11",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
+    "status": "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
     "milestone": "M5 original-source Hardy algebra",
     "goal": "Bind original coefficient derivatives across all colors and contract their gamma/spin indices before the full fermion bilinear/core assembly.",
     "accepted_predecessor_run": 43702235044,
     "source_adapter_staged": false,
     "independent_consumer_staged": false,
     "strict_workflow_staged": false,
-    "pre_gate_receipt_complete": false,
+    "pre_gate_receipt_complete": true,
     "if_green": "Preserve exact receipts, then assemble the derivative fermion bilinear and actual core rotation identity before tau norm.",
-    "if_red": "Preserve first causal error; repeated native conversion requires isolated typed comparison; no unchanged retry or resource escalation."
+    "if_red": "Preserve first causal error; repeated native conversion requires isolated typed comparison; no unchanged retry or resource escalation.",
+    "pre_gate_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R1_PRE_GATE_ORIGINAL_DERIVATIVE_COLOR_CONTRACTION_2026_11_15.md"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_GREEN_43702235044_ORBITAL_CAR_ACCEPTANCE_2026_11_15.md",
   "monograph_alignment": {
@@ -7646,5 +7647,21 @@
       "supercharge_energy_domain_identity_proved": false,
       "tau_norm_or_physical_Spin9_proved": false
     }
+  },
+  "parallel_auxiliary_hardy_derivative_color_contraction": {
+    "gate": "P3-AUX-HARDY-G11",
+    "status": "REGISTERED_NOT_EXECUTED",
+    "qualification": false,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R1_PRE_GATE_ORIGINAL_DERIVATIVE_COLOR_CONTRACTION_2026_11_15.md",
+    "accepted_predecessor_run": 43702235044,
+    "reviewed_original_baseline": "7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG11OriginalDerivativeColorContraction.lean",
+    "consumer": "lean/diagnostics/BFSSP3AuxHardyG11OriginalDerivativeColorContractionIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g11-original-derivative-color-contraction-strict.yml",
+    "expected_manifest_pin_count": 164,
+    "expected_source_roots": 6,
+    "expected_consumer_reports": 12,
+    "native_examples": 12,
+    "scope": "Original scalar/matrix derivative color/spin contraction; final Fock bilinear and full core rotation remain separate."
   }
 }
