@@ -6,27 +6,27 @@
   "milestone": "M5",
   "last_reviewed_date": "2026-11-15",
   "last_qualified": {
-    "gate": "P3-AUX-HARDY-G10",
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG10OriginalKineticTauCAR.lean",
-    "source_blob": "59aaed1da894e8b91b2df51eda6f47a37cf4c517",
-    "consumer": "lean/diagnostics/BFSSP3AuxHardyG10OriginalKineticTauCARIndependentConsumer.lean",
-    "consumer_blob": "4f5ad59752d744a8e1dd218b36b7f15b6250ab3e",
-    "workflow": ".github/workflows/bfss-p3-aux-hardy-g10-original-kinetic-tau-car-strict.yml",
-    "workflow_blob": "bf74a5a1bc304924b8b24334ab5dab9f3a398e53",
+    "gate": "P3-AUX-HARDY-G11",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG11OriginalDerivativeColorContraction.lean",
+    "source_blob": "fae4dc32dee27c5542f7fffddf217b276ed2bfef",
+    "consumer": "lean/diagnostics/BFSSP3AuxHardyG11OriginalDerivativeColorContractionIndependentConsumer.lean",
+    "consumer_blob": "27b63114ea4635beed31bc9cef954b8499e8194e",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g11-original-derivative-color-contraction-strict.yml",
+    "workflow_blob": "d0f14e9aa39fe01e1c7d5f41a3d0fe31cb26c75c",
     "verdict": "GREEN",
-    "run_id": 43702235044,
+    "run_id": 43708533905,
     "run_attempt": 1,
-    "job_id": 132775658384,
-    "tested_sha": "7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d",
-    "manifest_pins": 163,
-    "manifest_hash": "65142f6ef1c9f0233eddf42729c09ba4f7cc55403add65bcdbec58b76922534d",
+    "job_id": 132794815882,
+    "tested_sha": "7459e472085a6ef9b3c5c8352073ea1bafa6645e",
+    "manifest_pins": 164,
+    "manifest_hash": "9b58bf7f93dbcf7586da0c39d89741e77b723cdfe1f354e2191708145da34d2a",
     "declarations": [
-      "originalKineticFermion",
-      "originalKineticFermion_apply",
-      "originalKineticCoefficient_basis",
-      "originalKineticTauCoefficient_trace",
-      "originalKineticTau_anticommutator",
-      "originalKineticTau_anticommutator_apply"
+      "originalHardyY_basis_off_color",
+      "originalHardyY_basis_color",
+      "originalHardyY_basis_color_contraction",
+      "originalHardyY_basis_spin_contraction",
+      "originalHardyY_basis_complex_spin_contraction",
+      "originalHardyTauCoefficientDerivative_spin_contraction"
     ],
     "new_root_count": 6,
     "allowed_axioms": [
@@ -34,25 +34,25 @@
       "Classical.choice",
       "Quot.sound"
     ],
-    "artifact_id": 14157550157,
-    "artifact_size_bytes": 22246,
-    "digest": "sha256:d7acb15fac710626dbb608cbf7c929091b6ad716521e4ff51b989f3ffd4ebb6c",
-    "receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_GREEN_43702235044_ORBITAL_CAR_ACCEPTANCE_2026_11_15.md",
-    "independent_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G10_R3_GREEN_43702235044_AUDIT_2026_11_15.json",
-    "scope": "Literal pointwise kinetic/tau orbital CAR coefficient and original symbol binding; no coefficient-derivative fermion or full rotation identity."
+    "artifact_id": 14159937387,
+    "artifact_size_bytes": 22543,
+    "digest": "sha256:021dc41236d246ecfcf503d273effe46f7e06b5b9b105b522cc8f3bb435ada35",
+    "receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md",
+    "independent_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G11_R3_GREEN_43708533905_AUDIT_2026_11_15.json",
+    "scope": "Original all-color scalar/matrix derivative spin contraction; no final derivative Fock bilinear or full core rotation identity."
   },
   "active": {
     "gate": "P3-AUX-HARDY-G11",
     "attempt": "R3",
-    "status": "PENDING_STRICT_CI",
-    "qualification": false,
+    "status": "GREEN_QUALIFIED",
+    "qualification": true,
     "candidate_sha": "7459e472085a6ef9b3c5c8352073ea1bafa6645e",
     "candidate_sha_scope": "Exact tested workflow head",
     "run_id": 43708533905,
-    "manifest_pins": null,
+    "manifest_pins": 164,
     "expected_manifest_pins": 164,
-    "last_qualified_gate": "P3-AUX-HARDY-G10",
-    "last_qualified_run_id": 43702235044,
+    "last_qualified_gate": "P3-AUX-HARDY-G11",
+    "last_qualified_run_id": 43708533905,
     "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_PRE_GATE_EXPLICIT_MATCHING_COLOR_REWRITE_2026_11_15.md",
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG11OriginalDerivativeColorContraction.lean",
     "source_blob": "fae4dc32dee27c5542f7fffddf217b276ed2bfef",
@@ -62,10 +62,12 @@
     "workflow_blob": "d0f14e9aa39fe01e1c7d5f41a3d0fe31cb26c75c",
     "workflow_tested_head_sha": "7459e472085a6ef9b3c5c8352073ea1bafa6645e",
     "job_id": 132794815882,
-    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_LAUNCH_BINDING_2026_11_15.md"
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_LAUNCH_BINDING_2026_11_15.md",
+    "manifest_hash": "9b58bf7f93dbcf7586da0c39d89741e77b723cdfe1f354e2191708145da34d2a",
+    "acceptance_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md"
   },
-  "if_green": "On complete G11 strict success, preserve exact coefficient contraction receipts before preregistering final derivative Fock bilinear and actual core rotation assembly. Physical symmetry/energy domains remain highest forward priority.",
-  "if_red": "If the same matching-color conditional/native conversion boundary recurs, stop full strict retries and preregister an isolated variable-data/actual-carrier diagnostic. Preserve any distinct first failure for review; no unchanged retry or resource escalation.",
+  "if_green": "G11 accepted only in its coefficient contraction scope. Preregister ordered derivative Fock bilinear assembly with isolated finite-sum helper before native data, then actual core rotation and tau norm; physical symmetry/energy domains remain highest forward priority.",
+  "if_red": "G11 R1/R2 negatives remain preserved. For the next gate preserve exact first failure; repeated native conversion requires isolated typed comparison before another full retry.",
   "toolchain": {
     "lean": "4.34.1",
     "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -117,21 +119,19 @@
     "scope": "For each exact original SU(2) group element g, diagonal genuine FullL2 2 unitary action on finite PiLp2 columns, transported through qualified M2C0 continuous equivalence to the actual Boson 2 volume Lp of bounded Fermion 2 operators with ORIGINAL operator norm; named column-intertwining, component action, identity, multiplication and inverse-cancellation laws. No original operator-norm isometry, basis independence, a.e. left-output field operator formula, SU2-parameter continuity, full physical fixedness, physical witness, Hamiltonian domain or spectral theorem."
   },
   "next_planned": {
-    "gate": "P3-AUX-HARDY-G11",
-    "status": "STRICT_CI_IN_PROGRESS",
+    "gate": "P3-AUX-HARDY-G12",
+    "status": "RESEARCH_DESIGN_NOT_STAGED",
     "milestone": "M5 original-source Hardy algebra",
-    "goal": "Bind original coefficient derivatives across all colors and contract their gamma/spin indices before the full fermion bilinear/core assembly.",
-    "accepted_predecessor_run": 43702235044,
-    "source_adapter_staged": true,
-    "independent_consumer_staged": true,
-    "strict_workflow_staged": true,
-    "pre_gate_receipt_complete": true,
-    "if_green": "Preserve exact receipts, then assemble the derivative fermion bilinear and actual core rotation identity before tau norm.",
-    "if_red": "Preserve first causal error; repeated native conversion requires isolated typed comparison; no unchanged retry or resource escalation.",
-    "pre_gate_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_PRE_GATE_EXPLICIT_MATCHING_COLOR_REWRITE_2026_11_15.md",
-    "repair_contract": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_PRE_GATE_EXPLICIT_MATCHING_COLOR_REWRITE_2026_11_15.md"
+    "goal": "Assemble the actual ordered kinetic-symbol/tau-derivative Fock bilinear using the accepted all-color coefficient contraction and an isolated finite-sum helper.",
+    "accepted_predecessor_run": 43708533905,
+    "source_adapter_staged": false,
+    "independent_consumer_staged": false,
+    "strict_workflow_staged": false,
+    "pre_gate_receipt_complete": false,
+    "if_green": "Preserve exact receipts, then preregister actual smooth-core charge/tau rotation assembly and tau norm.",
+    "if_red": "Preserve first causal error; repeated native conversion requires isolated typed comparison; no unchanged retry or resource escalation."
   },
-  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_GREEN_43702235044_ORBITAL_CAR_ACCEPTANCE_2026_11_15.md",
+  "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md",
   "monograph_alignment": {
     "status": "REVIEWED_NOT_MERGED",
     "review_date": "2026-11-12",
@@ -235,11 +235,11 @@
   },
   "priority_review": {
     "date": "2026-11-15",
-    "status": "G10_ACCEPTED_FIXED_REGULATOR_CERTIFICATE_FOCUS",
-    "acceptance": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_GREEN_43702235044_ORBITAL_CAR_ACCEPTANCE_2026_11_15.md",
+    "status": "G11_ACCEPTED_FIXED_REGULATOR_CERTIFICATE_FOCUS",
+    "acceptance": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md",
     "review": "research/methodology/BFSS_PROJECT_BIRDS_EYE_SYNTHESIS_POST_C4C_2026_11_14.md",
     "primary": [
-      "Original coefficient-derivative color/spin contraction, finite fermion bilinear, actual core rotation identity, then tau norm"
+      "Original ordered derivative Fock bilinear, actual core charge/tau rotation identity, then tau norm"
     ],
     "parallel": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
@@ -6446,9 +6446,9 @@
     "date": "2026-11-15",
     "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for a normalized original physical Spin9 singlet",
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
-    "latest_qualified_gate": "P3-AUX-HARDY-G10",
-    "latest_qualified_run": 43702235044,
-    "immediate_proof": "G11 R3 strict #43708533905 at 7459e472 running/unqualified. Only matching-color native proof tail changed; clean source/all twelve statements/other eleven proofs fixed. Same conditional/native conversion => isolated diagnostic. G10 accepted.",
+    "latest_qualified_gate": "P3-AUX-HARDY-G11",
+    "latest_qualified_run": 43708533905,
+    "immediate_proof": "G11 R3 #43708533905 accepted. Next: ordered original kinetic-symbol/tau-derivative Fock bilinear via an isolated finite-sum contraction helper.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -6459,11 +6459,12 @@
       "Normalized positive-regulator adjoint-square Hamiltonian and full weak form",
       "Exact positive-regulator/original kernel equality",
       "Native reciprocal Hilbert pairing",
-      "G1-G10 source algebra through actual tau core, potential cancellation and coordinate derivative and scalar-entry basis binding",
-      "Exact pointwise original kinetic/tau orbital CAR coefficient with native normalization/sign/color controls"
+      "G1-G11 source algebra through actual tau core, potential cancellation and coordinate derivative and scalar-entry basis binding",
+      "Exact pointwise original kinetic/tau orbital CAR coefficient with native normalization/sign/color controls",
+      "Exact all-color original coefficient-derivative spin contraction with source gamma symmetry and complex binding"
     ],
     "remaining_blockers": [
-      "Coefficient-derivative color/spin contraction and fermion bilinear, full core charge/tau rotation identity, tau norm",
+      "Final derivative Fock bilinear, full original core charge/tau rotation identity and tau norm",
       "Genuine physical Spin9 action, sectors and charge covariance",
       "Original supercharge energy/domain identities; negative powers on legitimate spectral domains",
       "Sector-specific bounded-reciprocal Hardy estimate and native form-domain extension",
@@ -6489,7 +6490,7 @@
       "research/spectral-p2-original-field/P3_AUX_HARDY_B1_SOURCE_ALGEBRA_PRIMITIVE_MAP_2026_11_13.md",
       "research/spectral-p2-original-field/P3_AUX_HARDY_G8_R2_GREEN_43674445069_ORIGINAL_TAU_DERIVATIVE_ACCEPTANCE_2026_11_14.md"
     ],
-    "claim_ceiling": "G10 qualifies pointwise orbital CAR only; no physical Hardy, fidelity, zero mode or gap follows.",
+    "claim_ceiling": "G11 qualifies scalar/matrix coefficient contraction only; no full Fock/core or physical Hardy/fidelity/zero-mode/gap conclusion follows.",
     "energy_domain_research_contract": "research/spectral-p2-original-field/P3_AUX_CERT_FORWARD_RESEARCH_AVERAGED_RESOLVENT_AND_CHARGE_CLOSURE_2026_11_14.md"
   },
   "parallel_auxiliary_hardy_entry_derivative_binding": {
@@ -7649,8 +7650,8 @@
   },
   "parallel_auxiliary_hardy_derivative_color_contraction": {
     "gate": "P3-AUX-HARDY-G11",
-    "status": "STAGED_UNQUALIFIED",
-    "qualification": false,
+    "status": "GREEN_QUALIFIED",
+    "qualification": true,
     "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_PRE_GATE_EXPLICIT_MATCHING_COLOR_REWRITE_2026_11_15.md",
     "accepted_predecessor_run": 43702235044,
     "reviewed_original_baseline": "7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d",
@@ -7686,7 +7687,7 @@
     "source_staged": true,
     "consumer_staged": true,
     "workflow_staged": true,
-    "manifest_pin_count": null,
+    "manifest_pin_count": 164,
     "static_checks": {
       "status": "STATIC_PASS_NOT_LEAN",
       "hashes": {
@@ -7720,15 +7721,17 @@
     "run_id": 43708533905,
     "tested_sha": "7459e472085a6ef9b3c5c8352073ea1bafa6645e",
     "job_id": 132794815882,
-    "run_last_observed_status": "in_progress",
-    "run_conclusion": null,
+    "run_last_observed_status": "completed",
+    "run_conclusion": "success",
     "attempt": "R3",
     "prior_red_run": 43706576557,
     "prior_red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R2_RED_43706576557_NATIVE_TRUE_CONDITIONAL_2026_11_15.md",
     "old_consumer_blob": "51cebb400a0da2cf35998888bdd81dfbaa591ec4",
     "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_LAUNCH_BINDING_2026_11_15.md",
     "administrative_run": 43708533789,
-    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION"
+    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION",
+    "manifest_hash": "9b58bf7f93dbcf7586da0c39d89741e77b723cdfe1f354e2191708145da34d2a",
+    "acceptance_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md"
   },
   "prior_active_before_G11": {
     "gate": "P3-AUX-HARDY-G10",
@@ -7959,10 +7962,10 @@
     "native_controls_passed": false
   },
   "parallel_auxiliary_hardy_derivative_color_contraction_R3_prospective": {
-    "status": "STAGED_UNQUALIFIED",
+    "status": "GREEN_QUALIFIED",
     "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_PRE_GATE_EXPLICIT_MATCHING_COLOR_REWRITE_2026_11_15.md",
     "prior_red_run": 43706576557,
-    "qualification": false,
+    "qualification": true,
     "repair": "Only native example7 explicit source/conditional rewrite; freeze source and all statements",
     "stop": "Repeated conditional/native conversion => isolated diagnostic before another full retry",
     "prospective_receipt_commit": "9f79c202888e40d59064b77bb62abc2434439c17",
@@ -7972,6 +7975,79 @@
     "run_id": 43708533905,
     "tested_sha": "7459e472085a6ef9b3c5c8352073ea1bafa6645e",
     "job_id": 132794815882,
-    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_LAUNCH_BINDING_2026_11_15.md"
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_LAUNCH_BINDING_2026_11_15.md",
+    "acceptance_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md"
+  },
+  "last_qualified_hardy_pre_G11": {
+    "gate": "P3-AUX-HARDY-G10",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG10OriginalKineticTauCAR.lean",
+    "source_blob": "59aaed1da894e8b91b2df51eda6f47a37cf4c517",
+    "consumer": "lean/diagnostics/BFSSP3AuxHardyG10OriginalKineticTauCARIndependentConsumer.lean",
+    "consumer_blob": "4f5ad59752d744a8e1dd218b36b7f15b6250ab3e",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g10-original-kinetic-tau-car-strict.yml",
+    "workflow_blob": "bf74a5a1bc304924b8b24334ab5dab9f3a398e53",
+    "verdict": "GREEN",
+    "run_id": 43702235044,
+    "run_attempt": 1,
+    "job_id": 132775658384,
+    "tested_sha": "7d5f8f74b9d922a6e7628b7d05e30d2d2d6ab73d",
+    "manifest_pins": 163,
+    "manifest_hash": "65142f6ef1c9f0233eddf42729c09ba4f7cc55403add65bcdbec58b76922534d",
+    "declarations": [
+      "originalKineticFermion",
+      "originalKineticFermion_apply",
+      "originalKineticCoefficient_basis",
+      "originalKineticTauCoefficient_trace",
+      "originalKineticTau_anticommutator",
+      "originalKineticTau_anticommutator_apply"
+    ],
+    "new_root_count": 6,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "artifact_id": 14157550157,
+    "artifact_size_bytes": 22246,
+    "digest": "sha256:d7acb15fac710626dbb608cbf7c929091b6ad716521e4ff51b989f3ffd4ebb6c",
+    "receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_GREEN_43702235044_ORBITAL_CAR_ACCEPTANCE_2026_11_15.md",
+    "independent_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G10_R3_GREEN_43702235044_AUDIT_2026_11_15.json",
+    "scope": "Literal pointwise kinetic/tau orbital CAR coefficient and original symbol binding; no coefficient-derivative fermion or full rotation identity."
+  },
+  "parallel_auxiliary_hardy_derivative_color_contraction_acceptance": {
+    "status": "GREEN_QUALIFIED",
+    "qualification": true,
+    "receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md",
+    "independent_audit": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G11_R3_GREEN_43708533905_AUDIT_2026_11_15.json",
+    "result": {
+      "helper_reports": [
+        1,
+        3
+      ],
+      "source_reports": 6,
+      "consumer_reports": 12,
+      "all_twelve_native_controls_passed": true,
+      "cold_build_jobs": 9086
+    },
+    "scope": {
+      "Hardy_fidelity_zero_mode_or_gap_proved": false,
+      "all_color_matrix_derivative_contraction": true,
+      "base_point_independence_control": true,
+      "early_complex_matrix_entry_helper_reports": 3,
+      "full_derivative_Fock_bilinear_assembly_proved": false,
+      "full_smooth_core_charge_tau_identity_proved": false,
+      "independent_donor_roots": 6,
+      "isolated_accepted_generic_helper_reports": 1,
+      "kinetic_gamma_row_orientation_via_source_symmetry": true,
+      "new_Fock_Clifford_or_Hamiltonian": false,
+      "new_roots": 6,
+      "off_color_original_basis_zero": true,
+      "original_complex_coefficient_derivative_contraction": true,
+      "original_native_Boson_color_spin_gamma_consumer": true,
+      "quarter_normalization_and_swapped_plane_controls": true,
+      "status": "ORIGINAL_DERIVATIVE_COLOR_SPIN_CONTRACTION_STRICT_GREEN",
+      "supercharge_energy_domain_identity_proved": false,
+      "tau_norm_or_physical_Spin9_proved": false
+    }
   }
 }
