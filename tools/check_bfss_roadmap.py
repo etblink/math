@@ -57,6 +57,9 @@ def main():
                       and g10.get("prospective_receipt_commit") == "17360e8d15784bc2b19425edb7708564474b7a44")
                      or (a.get("attempt") == "R2" and g10.get("prior_red_run") == 43699086864
                          and g10.get("prospective_receipt_commit") == "ec6af36c579d35cdee9ad6eb87efd08092dbb57a"
+                         and (ROOT / g10.get("prior_red_receipt", "__missing__")).is_file())
+                     or (a.get("attempt") == "R3" and g10.get("prior_red_run") == 43700520096
+                         and g10.get("prospective_receipt_commit") == "11b9619e376875e8c06b7bc05e7131e2cf73aaba"
                          and (ROOT / g10.get("prior_red_receipt", "__missing__")).is_file()))
                 and g10.get("reviewed_original_baseline") == "e22dda02233c1e703cbb092e2ee705c3b169519a"
                 and (ROOT / g10.get("prospective_receipt", "__missing__")).is_file()
@@ -65,11 +68,13 @@ def main():
                 and g10.get("native_examples") == 12,
                 "G10 cannot bypass accepted G9 or its exact prospective contract")
         for kind, sha in {
-            "source": ("59aaed1da894e8b91b2df51eda6f47a37cf4c517" if a.get("attempt") == "R2"
+            "source": ("59aaed1da894e8b91b2df51eda6f47a37cf4c517" if a.get("attempt") in {"R2", "R3"}
                        else "911ff8824b9c95005511aed22f25da4d0edb97f0"),
-            "consumer": "ed4507504ac58eef9bcb4299bb8092c9b9679b75",
-            "workflow": ("5e126c42ae799170ee6d4aeca33172747eaa3fc4" if a.get("attempt") == "R2"
-                         else "7ac3353e6415918cd08ae2c0c3e19202dd5abfe4"),
+            "consumer": ("4f5ad59752d744a8e1dd218b36b7f15b6250ab3e" if a.get("attempt") == "R3"
+                         else "ed4507504ac58eef9bcb4299bb8092c9b9679b75"),
+            "workflow": {"R1": "7ac3353e6415918cd08ae2c0c3e19202dd5abfe4",
+                         "R2": "5e126c42ae799170ee6d4aeca33172747eaa3fc4",
+                         "R3": "bf74a5a1bc304924b8b24334ab5dab9f3a398e53"}[a["attempt"]],
         }.items():
             require(a.get(kind) == g10.get(kind) and (ROOT / g10[kind]).is_file(),
                     "G10 registration path drift: " + kind)

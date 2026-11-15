@@ -60,12 +60,13 @@ example (i j : SpaceIndex) (hij : i ≠ j) (B : ColorIndex 2) :
   dsimp only [nativePairing]
   rw [originalKineticTauCoefficient_trace pairedAlgebraData i j hij]
   simp_all [PiLp.single_apply]
+  exact Ne.symm hij
 
 example (i j : SpaceIndex) (hij : i ≠ j) (B : ColorIndex 2) :
     nativePairing i j i B (EuclideanSpace.single (j, B) 1) = -1 := by
   dsimp only [nativePairing]
   rw [originalKineticTauCoefficient_trace pairedAlgebraData i j hij]
-  simp_all [PiLp.single_apply]
+  simp_all
 
 example (i j : SpaceIndex) (hij : i ≠ j) (k : SpaceIndex)
     (hki : k ≠ i) (hkj : k ≠ j) (B : ColorIndex 2) (X : Boson 2) :
@@ -79,6 +80,7 @@ example (i j : SpaceIndex) (hij : i ≠ j) (B : ColorIndex 2) :
   dsimp only [nativePairing]
   rw [originalKineticTauCoefficient_trace pairedAlgebraData j i (Ne.symm hij)]
   simp_all [PiLp.single_apply]
+  exact Ne.symm hij
 
 example (i j : SpaceIndex) (hij : i ≠ j) (k : SpaceIndex) (B : ColorIndex 2) :
     nativePairing i j k B 0 = 0 := by
@@ -90,7 +92,7 @@ example (i j : SpaceIndex) (hij : i ≠ j) (A B : ColorIndex 2) (hAB : A ≠ B) 
     nativePairing i j j B (EuclideanSpace.single (i, A) 1) = 0 := by
   dsimp only [nativePairing]
   rw [originalKineticTauCoefficient_trace pairedAlgebraData i j hij]
-  simp_all [PiLp.single_apply]
+  simp_all
 
 #print axioms FCP.BFSSP3AuxHardyG10OriginalKineticTauCAR.originalKineticFermion
 #print axioms FCP.BFSSP3AuxHardyG10OriginalKineticTauCAR.originalKineticFermion_apply
