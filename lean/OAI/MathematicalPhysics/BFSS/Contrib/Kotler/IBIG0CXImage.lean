@@ -79,7 +79,7 @@ theorem sourceXPauli_trace_rotX (β : ℝ) (B A : Fin 3) :
       Matrix.head_fin_const, Matrix.cons_val_two, Matrix.tail_cons,
       Fin.reduceFinMk, Fin.zero_eta, Fin.mk_one, Fin.isValue,
       Complex.ofReal_zero, Complex.ofReal_one, Complex.ofReal_neg,
-      neg_mul, mul_neg, neg_zero, mul_zero, zero_mul, add_zero,
+      neg_mul, mul_neg, mul_zero, zero_mul, add_zero,
       zero_add, mul_one, one_mul, hcos, hsin] <;>
     (ring_nf;
       (try (simp only [Complex.I_sq, Complex.I_pow_four]; ring_nf));
