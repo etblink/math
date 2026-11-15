@@ -27,7 +27,10 @@ theorem unitCircle_exists_angle {c s : ℝ} (h : c ^ 2 + s ^ 2 = 1) :
     rw [Complex.norm_def, Complex.normSq_mk,
       show c * c + s * s = 1 by nlinarith only [h]]
     simp
-  have hz : (⟨c, s⟩ : ℂ) ≠ 0 := Complex.ne_zero_of_norm_eq_one hn
+  have hz : (⟨c, s⟩ : ℂ) ≠ 0 := by
+    intro hzero
+    rw [hzero] at hn
+    norm_num at hn
   exact ⟨Complex.arg (⟨c, s⟩ : ℂ), by rw [Complex.cos_arg hz, hn]; simp,
     by rw [Complex.sin_arg, hn]; simp⟩
 
