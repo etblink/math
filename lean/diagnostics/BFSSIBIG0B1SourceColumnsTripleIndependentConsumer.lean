@@ -11,6 +11,7 @@ No surrogate SO(3) group and no determinant-one assertion.
 set_option autoImplicit false
 
 namespace BFSSIBIG0B1SourceColumnsTripleIndependentConsumer
+noncomputable section
 
 open OAI.BFSSQuantum
 open OAI.BFSSQuantum.AlgebraData
@@ -46,4 +47,5 @@ example (g : GaugeGroup 2) (u v w : ColorVector 2) :
     inner ℝ (sourceCross u v) w :=
   sourceCrossTriple_conjugate g u v w
 
+end
 end BFSSIBIG0B1SourceColumnsTripleIndependentConsumer
