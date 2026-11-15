@@ -28,10 +28,10 @@ theorem originalAdjointColorMatrix_normalizedPauliTrace
     (FCP.BFSSSU2GaugeG3A.adjointColorMatrix g) B A =
       (Matrix.trace (FCP.BFSSSU2.normalizedPauli B *
         ((g : ColorMatrix 2) * FCP.BFSSSU2.normalizedPauli A *
-          (g : ColorMatrix 2)ᴴ))).re := by
+          (g : ColorMatrix 2).conjTranspose))).re := by
   change (Matrix.trace (M.color B *
     ((g : ColorMatrix 2) * M.color A *
-      (g : ColorMatrix 2)ᴴ))).re = _
+      (g : ColorMatrix 2).conjTranspose))).re = _
   rw [pairedAlgebraData_color B, pairedAlgebraData_color A,
     FCP.BFSSSU2Full.concreteAlgebraData_color B,
     FCP.BFSSSU2Full.concreteAlgebraData_color A]
@@ -44,7 +44,7 @@ theorem originalAdjointColorMatrix_pauliTrace
     (FCP.BFSSSU2GaugeG3A.adjointColorMatrix g) B A =
       (Matrix.trace (FCP.BFSSSU2.pauli B *
         ((g : ColorMatrix 2) * FCP.BFSSSU2.pauli A *
-          (g : ColorMatrix 2)ᴴ))).re / 2 := by
+          (g : ColorMatrix 2).conjTranspose))).re / 2 := by
   rw [originalAdjointColorMatrix_normalizedPauliTrace]
   simp only [FCP.BFSSSU2.normalizedPauli]
   have hscale : ((FCP.BFSSSU2.pauliScale : ℂ) ^ 2) = (1 / 2 : ℂ) := by
@@ -53,11 +53,11 @@ theorem originalAdjointColorMatrix_pauliTrace
       ((FCP.BFSSSU2.pauliScale : ℂ) • FCP.BFSSSU2.pauli B) *
         ((g : ColorMatrix 2) *
           ((FCP.BFSSSU2.pauliScale : ℂ) • FCP.BFSSSU2.pauli A) *
-          (g : ColorMatrix 2)ᴴ) =
+          (g : ColorMatrix 2).conjTranspose) =
       ((FCP.BFSSSU2.pauliScale : ℂ) ^ 2) •
         (FCP.BFSSSU2.pauli B *
           ((g : ColorMatrix 2) * FCP.BFSSSU2.pauli A *
-            (g : ColorMatrix 2)ᴴ)) := by
+            (g : ColorMatrix 2).conjTranspose)) := by
     simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, pow_two]
   rw [hmatrix, hscale, Matrix.trace_smul]
   norm_num [smul_eq_mul, Complex.mul_re]

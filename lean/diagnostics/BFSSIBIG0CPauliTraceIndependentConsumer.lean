@@ -21,7 +21,7 @@ example (g : GaugeGroup 2) (B A : ColorIndex 2) :
     (FCP.BFSSSU2GaugeG3A.adjointColorMatrix g) B A =
       (Matrix.trace (FCP.BFSSSU2.pauli B *
         ((g : ColorMatrix 2) * FCP.BFSSSU2.pauli A *
-          (g : ColorMatrix 2)ᴴ))).re / 2 :=
+          (g : ColorMatrix 2).conjTranspose))).re / 2 :=
   originalAdjointColorMatrix_pauliTrace g B A
 
 /-- Extensional equality of the genuine source 3x3 matrix for arbitrary g. -/
@@ -29,7 +29,7 @@ example (g : GaugeGroup 2) :
     FCP.BFSSSU2GaugeG3A.adjointColorMatrix g =
       fun B A => (Matrix.trace (FCP.BFSSSU2.pauli B *
         ((g : ColorMatrix 2) * FCP.BFSSSU2.pauli A *
-          (g : ColorMatrix 2)ᴴ))).re / 2 := by
+          (g : ColorMatrix 2).conjTranspose))).re / 2 := by
   ext B A
   exact originalAdjointColorMatrix_pauliTrace g B A
 
