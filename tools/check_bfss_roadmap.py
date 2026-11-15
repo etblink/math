@@ -72,7 +72,7 @@ def main():
             actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
             require(a.get(kind + "_blob") == g12.get(kind + "_blob") == actual == sha,
                     "G12 staged bytes drift: " + kind)
-    if bilinear_candidate and s.get("g12_typed_zero_action_diagnostic"):
+    if bilinear_candidate and s.get("g12_typed_zero_action_diagnostic") and not s["g12_typed_zero_action_diagnostic"].get("qualification"):
         diagnostic = s.get("g12_typed_zero_action_diagnostic", {})
         require(a.get("status") == "BLOCKED" and a.get("run_id") == 43730966120 and diagnostic.get("main_G12_blocked") is True
                 and diagnostic.get("prior_red_run") == 43730966120
@@ -111,6 +111,30 @@ def main():
                         "D0 R1 complete red evidence missing or changed")
 
 
+    if bilinear_candidate and s.get("g12_typed_zero_action_diagnostic", {}).get("qualification"):
+        diagnostic = s["g12_typed_zero_action_diagnostic"]
+        receipt = "research/spectral-p2-original-field/P3_AUX_HARDY_G12_D0_R2_GREEN_43734601883_TYPED_ZERO_ACTION_ACCEPTANCE_2026_11_15.md"
+        require(diagnostic.get("status") == "GREEN_DIAGNOSTIC_QUALIFIED"
+                and diagnostic.get("run_id") == 43734601883 and diagnostic.get("job_id") == 132874310874
+                and diagnostic.get("tested_sha") == "5e0836ea1923c8f153bd2b3a0d9c491ebcecabf9"
+                and diagnostic.get("manifest_pins") == 166
+                and diagnostic.get("manifest_hash") == "968e3ea902d2c88d03c4a4c29482f44be9a67cbb44dfe481755aff54c0491d74"
+                and diagnostic.get("artifact_id") == 14170108662
+                and diagnostic.get("artifact_sha256") == "e9f80f6e2bf5ad8edc84ebeba040b2d06e877e5afe7f10175b5d6491187176e4"
+                and diagnostic.get("generic_reports") == 2 and diagnostic.get("native_reports") == 5
+                and diagnostic.get("native_examples") == 3
+                and diagnostic.get("acceptance_receipt") == receipt and (ROOT / receipt).is_file(),
+                "G12 D0 exact diagnostic acceptance missing")
+        for kind, sha in {'generic_source': '22345a2348f3c2cfcbb893037a07dcbe0030ca34', 'native_source': '12675baab7f764dbcb8f276d357246c70956a927', 'workflow': 'fd23b619157723a8965d83e11d3c61433a81ab86'}.items():
+            data = (ROOT / diagnostic[kind]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+            require(diagnostic.get(kind + "_blob") == actual == sha, "G12 D0 accepted bytes drift: " + kind)
+        archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_D0_R2_43734601883_evidence.zip"
+        require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                == "e9f80f6e2bf5ad8edc84ebeba040b2d06e877e5afe7f10175b5d6491187176e4",
+                "G12 D0 complete accepted artifact missing or changed")
+        require(a.get("status") == "BLOCKED" and a.get("qualification") is False,
+                "D0 acceptance alone cannot reopen full G12 without separate R3 contract")
     if derivative_candidate and a["status"] != "GREEN_QUALIFIED":
         g11 = s.get("parallel_auxiliary_hardy_derivative_color_contraction", {})
         require(q.get("gate") == "P3-AUX-HARDY-G10" and q.get("run_id") == 43702235044
