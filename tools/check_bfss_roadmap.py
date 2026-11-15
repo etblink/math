@@ -50,7 +50,7 @@ def main():
     core_assembly_candidate = a.get("gate") == "P3-AUX-HARDY-G13"
     core_collapse_candidate = a.get("gate") == "P3-AUX-HARDY-G14"
     tau_norm_candidate = a.get("gate") == "P3-AUX-HARDY-G15"
-    if tau_norm_candidate:
+    if tau_norm_candidate and a.get("status") != "GREEN_QUALIFIED":
         g15 = s.get("g15_tau_norm_prospective", {})
         require(q.get("gate") == "P3-AUX-HARDY-G14" and q.get("run_id") == 43749092953
                 and a.get("qualification") is False and g15.get("qualification") is False
@@ -126,7 +126,10 @@ def main():
                 and result.get("generic_reports") == 2 and result.get("native_reports") == 4
                 and result.get("literal_paired_examples") == 3 and result.get("main_G15_qualification") is False
                 and (a.get("status") == "BLOCKED" or (a.get("attempt") == "R3" and a.get("status") == "PENDING_STRICT_CI"
-                    and s.get("g15_tau_norm_prospective", {}).get("accepted_diagnostic_run") == 43756234296)),
+                    and s.get("g15_tau_norm_prospective", {}).get("accepted_diagnostic_run") == 43756234296)
+                    or (a.get("attempt") == "R4" and a.get("status") == "GREEN_QUALIFIED"
+                        and q.get("gate") == "P3-AUX-HARDY-G15"
+                        and s.get("g15_tau_norm_prospective", {}).get("accepted_diagnostic_run") == 43756234296)),
                 "G15 D0 exact acceptance or guarded full retry missing")
         for kind, sha in {"generic_source":"732cee2546bfd629fe8bf0b20e63ac3ef356b5bd", "native_source":"bb36497f6b2ff95be2395da263effb1f74b9b7b3", "workflow":"af7d10b5660898547ddde28d797e164fbdf88369"}.items():
             data = (ROOT / diagnostic[kind]).read_bytes()
@@ -987,6 +990,97 @@ def main():
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                 == "8bc27105fd09627299e21d9f2c8b56dee4d77432b291a7f6feec45c7d5163d5b",
                 "G14 complete accepted artifact missing or changed")
+    if q["gate"] == "P3-AUX-HARDY-G15":
+        g15 = s.get("g15_tau_norm_prospective", {})
+        acc = s.get("g15_tau_norm_acceptance", {})
+        g14 = s.get("last_qualified_hardy_pre_G15", {})
+        receipt = "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R4_GREEN_43763173942_ORIGINAL_TAU_NORM_ACCEPTANCE_2026_11_15.md"
+        audit_path = "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R4_43763173942_INDEPENDENT_EVIDENCE_AUDIT_2026_11_15.json"
+        r3 = "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R3_RED_43759253590_CONSUMER_ONLY_DIAGNOSIS_2026_11_15.md"
+        require(a.get("gate") == "P3-AUX-HARDY-G15" and a.get("status") == "GREEN_QUALIFIED"
+                and a.get("qualification") is True and a.get("attempt") == "R4"
+                and acc.get("status") == "GREEN_QUALIFIED" and acc.get("qualification") is True
+                and g15.get("status") == "GREEN_QUALIFIED" and g15.get("qualification") is True
+                and q.get("run_id") == a.get("run_id") == acc.get("run_id") == 43763173942
+                and q.get("job_id") == a.get("job_id") == acc.get("job_id") == 132962286824
+                and q.get("tested_sha") == a.get("tested_sha") == a.get("workflow_tested_head_sha")
+                  == acc.get("tested_sha") == "4d45f9c3bd1b3b2e94c7d23e2576a8fb87a65166"
+                and q.get("manifest_pins") == a.get("manifest_pins") == acc.get("manifest_pins") == 170
+                and q.get("manifest_hash") == a.get("manifest_hash") == acc.get("manifest_hash") == "0c1aa2a10703870dfa99f55ec9ecaff22be4f26049ce4eb9f4a07031127f93d3"
+                and q.get("artifact_id") == acc.get("artifact_id") == 14181661177
+                and q.get("artifact_size_bytes") == acc.get("artifact_size_bytes") == 26056
+                and q.get("digest") == acc.get("digest") == "sha256:e3e0d762ba36291a43a8d135951599263d9ef858fab97adb92c4cac834616ae7"
+                and q.get("receipt") == acc.get("receipt") == receipt
+                and q.get("independent_audit") == acc.get("independent_audit") == audit_path
+                and (ROOT / receipt).is_file() and (ROOT / audit_path).is_file(),
+                "G15 R4 strict evidence, qualification or acceptance receipt missing")
+        require(g14.get("gate") == "P3-AUX-HARDY-G14" and g14.get("verdict") == "GREEN"
+                and g14.get("run_id") == 43749092953 and g14.get("manifest_pins") == 168
+                and g14.get("tested_sha") == "3e2cc5da7a2e0965f158c0683acc774bcf1a81b8"
+                and g14.get("artifact_id") == 14176380839
+                and g14.get("manifest_hash") == "359fa5c4224a095c6c535ac87025c9e2510f8dc4a22e8f1d4b827b2dffd25548"
+                and (ROOT / g14.get("receipt", "__missing__")).is_file()
+                and s.get("g14_core_collapse_acceptance", {}).get("status") == "GREEN_QUALIFIED",
+                "G15 accepted without predecessor G14 evidence")
+        require(a.get("previous_red_run") == acc.get("r3_red_run") == 43759253590
+                and a.get("previous_red_tested_sha") == "b3ae66c11c7de12a3fb03b82c19efe73e25533a2"
+                and a.get("r3_prior_red_receipt") == acc.get("r3_red_receipt") == r3
+                and a.get("r3_prior_red_evidence_sha256") == acc.get("r3_red_artifact_sha256")
+                  == "d35537748f16c29d0f9b69baddc892396765abd7a181a6a4c444bec96ee538c6"
+                and (ROOT / r3).is_file()
+                and s["g15_real_coefficient_sum_diagnostic"].get("qualification") is True
+                and g15.get("accepted_diagnostic_run") == 43756234296
+                and g15.get("repair_helper_reports") == 2,
+                "G15 R4 lost R3 red or accepted D0 lineage")
+        for kind, expected in {"source":"1a6765a57f4dcea2a1d7f05ac5d37dbbade9bdfc", "consumer":"fe33403df207a37deb495efb99a63814583f1951", "workflow":"8a54f68795fccb16775ee2fbf1650ccdc2f5e659"}.items():
+            src_bytes = (ROOT / a[kind]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(src_bytes)).encode() + bytes([0]) + src_bytes).hexdigest()
+            require(actual == expected and q[kind] == a[kind] == g15[kind]
+                    and q[kind + "_blob"] == a[kind + "_blob"] == g15[kind + "_blob"] == expected,
+                    "G15 accepted source, consumer or workflow drift: " + kind)
+        helper_bytes = (ROOT / g15["repair_helper"]).read_bytes()
+        require(hashlib.sha1(b"blob " + str(len(helper_bytes)).encode() + bytes([0]) + helper_bytes).hexdigest()
+                == g15.get("repair_helper_blob") == "732cee2546bfd629fe8bf0b20e63ac3ef356b5bd",
+                "G15 accepted D0 helper bytes drift")
+        audited = json.loads((ROOT / audit_path).read_text(encoding="utf-8"))
+        require(audited.get("strict_run_id") == 43763173942
+                and audited.get("strict_conclusion") == "success"
+                and audited.get("tested_sha") == "4d45f9c3bd1b3b2e94c7d23e2576a8fb87a65166"
+                and audited.get("artifact_sha256") == "e3e0d762ba36291a43a8d135951599263d9ef858fab97adb92c4cac834616ae7"
+                and audited.get("artifact_size_bytes") == 26056
+                and audited.get("artifact_id") == 14181661177
+                and audited.get("artifact_count") == len(audited.get("entry_sha256", {})) == 19
+                and audited["entry_sha256"].get("pin-manifest.json") == "0c1aa2a10703870dfa99f55ec9ecaff22be4f26049ce4eb9f4a07031127f93d3"
+                and audited.get("manifest_sha256") == "0c1aa2a10703870dfa99f55ec9ecaff22be4f26049ce4eb9f4a07031127f93d3"
+                and audited.get("pin_count") == 170
+                and audited.get("source_reports") == 6 and audited.get("consumer_reports") == 12
+                and audited.get("helper_reports") == [2, 1, 3, 1]
+                and audited.get("cold_build_jobs") == 9092
+                and audited.get("scope_receipt_status") == "ORIGINAL_TAU_COEFFICIENT_NORM_REDUCTION_STRICT_GREEN"
+                and audited.get("numerical_tau_coefficient_estimate_proved") is False
+                and audited.get("physical_Spin9_or_unbounded_charge_selfAdjointness_proved") is False
+                and audited.get("Hardy_fidelity_zero_mode_or_gap_proved") is False,
+                "G15 independent evidence digest, exact roots or claim ceiling drift")
+        require(audited.get("r3_to_r4_changed_source_pins") == {
+            "lean/diagnostics/BFSSP3AuxHardyG15OriginalTauCoefficientNormReductionIndependentConsumer.lean":
+            ["7e873eae9001339a0f746637b9ac906311ec106b", "fe33403df207a37deb495efb99a63814583f1951"]},
+            "G15 R4 pin delta beyond independently accepted consumer")
+        src=(ROOT/a["source"]).read_text(encoding="utf-8")
+        c=(ROOT/a["consumer"]).read_text(encoding="utf-8")
+        require(q.get("declarations") == g15.get("roots")
+                and len(q["declarations"]) == 6
+                and len(re.findall(r"(?m)^#print axioms ",src)) == 6
+                and len(re.findall(r"(?m)^example\b",c)) == 12
+                and len(re.findall(r"(?m)^#print axioms ",c)) == 12
+                and c.count("∑ _t : Fin 4") == 2
+                and "  simp" in c and "set_option linter.unused" not in c,
+                "G15 R4 exact native consumer weakened")
+        require(s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G16"
+                and s.get("next_planned", {}).get("status") == "RESEARCH_DESIGN_NOT_STAGED"
+                and s.get("current_focus", {}).get("latest_qualified_gate") == "P3-AUX-HARDY-G15"
+                and s.get("current_focus", {}).get("latest_qualified_run") == 43763173942,
+                "G15 accepted but G16 prospective numerical stage not separated")
+
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},
             "pinned toolchain changed without roadmap review")
