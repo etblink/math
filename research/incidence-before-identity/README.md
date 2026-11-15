@@ -97,3 +97,28 @@ An accepted G1A would prove a new gauge-invariant source color-Lie
 triple, but not yet its epsilon determinant normalization (G1B)
 or source adjoint determinant one / SO3 image surjectivity (G0B1/G0C).
 No ontology or physical spectral consequence is claimed.
+
+
+## Source Lie-triple G1A accepted; signed-cross G1B pending
+
+**G1A GREEN_QUALIFIED:** [#43693100174](https://github.com/etblink/math/actions/runs/43693100174)
+at immutable tested `42944aec076bea77469ac4f2a54f7529fce29f67`,
+9,017-job cold build, original source, independent consumer and
+accepted axiom reports. [Acceptance record](IBI_G1A_R1_GREEN_43693100174_ACCEPTANCE_2026_11_15.md).
+Older text above reflecting G1A pending is the launch-time historical
+entry and is superseded by this verdict.
+
+**G1B PROSPECTIVE / UNQUALIFIED:**
+[preregistered signed normalization](IBI_G1B_SIGNED_SOURCE_NORMALIZATION_PREREG_2026_11_15.md)
+and [strict run #43695261997](https://github.com/etblink/math/actions/runs/43695261997)
+at tested `28a0efe59fb31d5a07cf07da219b77bc731c8db5`;
+[source, independent consumer and exact launch receipt](IBI_G1B_R1_LAUNCH_43695261997_2026_11_15.md).
+Targets exact original `+√2` Pauli color-Lie cross relation and
+derived original SU(2)-invariant normalized signed triple. The
+cross-to-determinant equation, true G3A determinant+1,
+SU2→SO3 surjectivity and original source classical orbit
+classification stay separate gates.
+
+[Project Lead proposed stopping and merge thresholds](IBI_PROMOTION_AND_STOPPING_RULE_PROPOSAL_2026_11_15.md)
+require scientific payoff and an audited clean source/consumer package,
+**not** promotion of this entire exploratory branch based on green counts.
