@@ -25,7 +25,7 @@ This matches the normalization and anisotropic term of Appendix B.8 in Michel–
 
 ## Compact coefficient derivation
 
-Use Frobenius pairing `⟨U,V⟩_F = tr(UᵀV)`; for the nine source real symmetric Clifford gamma matrices, `‖Γ_i‖_F²=16`. Every three-distinct-index gamma word `Γ_k Γ_i Γ_j` is skew-symmetric with Frobenius norm squared 16, orthogonal to all single gamma matrices. Different unordered triple-index sets are orthogonal if the even-length residual Clifford product (length 2, 4, or 6) has trace zero. The length-six trace case must be supplied as an exact source lemma: conjugate by an included gamma generator to reverse the sign of a distinct six-word; cyclicity forces trace zero. Do not pretend existing trace-word lemmas already cover length six without inspection.
+Use Frobenius pairing `⟨U,V⟩_F = tr(UᵀV)`; for the nine source real symmetric Clifford gamma matrices, `‖Γ_i‖_F²=16`. Every three-distinct-index gamma word `Γ_k Γ_i Γ_j` is skew-symmetric with Frobenius norm squared 16, orthogonal to all single gamma matrices. Different unordered triple-index sets are orthogonal by the **existing source donor** `OAI.BFSSGamma.trace_reverseWord_word` in `lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean` (pinned blob `d12051e70de679f5458dbd456667a32c7b407ce4`). Its theorem states `Matrix.trace (reverseWord G s * word G t) = if s = t then 16 else 0` for **both** `s.card ≤ 4` and `t.card ≤ 4`, covering singleton/triple and triple/triple pairings **even when their product is a six-gamma word**. Existing `list_transpose` identifies reverse words with transposes for symmetric gamma matrices. Thus **a new six-gamma trace-zero lemma is unnecessary**; what remains is a source-exact adapter from ordered literal Clifford products to typed `Finset` words, including permutation signs. This donor exists in the source and was pinned by the G15 R3 170-source manifest, but the new adapter is NOT yet independently qualified.
 
 For the four disjoint planes, each of axes 1..8 occurs once in a single-gamma component (coefficient magnitude `1/16`) and in three distinct three-gamma components (each `1/56`). The ninth axis occurs in zero single-gamma and four triple-gamma components. Thus the Frobenius norm-squared coefficient per axis is
 ```text
@@ -36,7 +36,7 @@ G15's literal CAR factor `1/2` converts this to `61/1568` and `16/1568` in the a
 
 ## Economical candidate gate after R4 full qualification
 
-1. Prove exact orthogonality of source gamma **single words and the 28 triple words** from the four fixed planes, including six-distinct-index trace zero, on the original `GammaMatrix`. Keep this as a small mathematics-facing proof layer; no fresh alternate gamma representation.
+1. **Reuse** `OAI.BFSSGamma.trace_reverseWord_word` for the original gamma single-word and 28 triple-word Frobenius pairings; establish only the source-exact ordered-product/`Finset`-word sign and transpose adapters, with literal gamma and matrix types. No new length-six trace proof, gamma representation, or alternate Clifford source.
 2. Prove finite coefficient counting independently: each axis 1..8 contributes one single and three triple monomials; axis 9 contributes four triple monomials. Use `Fin 9` and `Fin 4` typed incidence counts with source literal indexing.
 3. Bridge the resulting scalar Frobenius identity to the actual `originalHardyY pairedAlgebraData` and G15 four-plane norm theorem, retaining all cross terms until orthogonality has been proved.
 4. Independent native consumer: unit coordinate at an axis in 1..8 gives predicted `61/1568`, ninth-axis unit coordinate gives `16/1568`, and a two-axis vector checks vanishing mixed coefficient. Negative controls: change `1/56`, drop a plane, swap gamma order without sign correction, or break the distinctness hypothesis.
@@ -46,4 +46,4 @@ The broad pointwise inequalities `R²/98 ≤ (61 R² - 45 Σ_a X_a9²)/1568 ≤ 
 
 ## Explicit stop line
 
-If native gamma traces, CAR normalization or plane enumeration disagree, preserve a red counterexample and correct the derivation before broadening the gate. G15 R4 must finish and be independently accepted before this is promoted. This memo records prospective research only, and no Lean/CI for this new coefficient formula has been run.
+If native trace-word adapters, CAR normalization or plane enumeration disagree, preserve a red counterexample and correct the derivation before broadening the gate. G15 R4 must finish and be independently accepted before this is promoted. This memo records prospective research only, and no Lean/CI for this new coefficient formula has been run.
