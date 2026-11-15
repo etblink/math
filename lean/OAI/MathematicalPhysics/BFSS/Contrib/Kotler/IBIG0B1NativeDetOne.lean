@@ -60,6 +60,9 @@ theorem originalColumnTriple_eq_sourceInner
         (matrixColorColumn R 1)) (matrixColorColumn R 2) := by
   simp [originalColumnTriple, sourceCross, matrixColorColumn,
     PiLp.inner_apply, RCLike.inner_apply]
+  apply Finset.sum_congr rfl
+  intro A _
+  ring
 
 /-- The ordered ORIGINAL color basis has positive, not absolute,
 orientation +1. The FIN-DET3 signed control fixes this sign. -/
@@ -93,19 +96,19 @@ theorem originalAdjointColorMatrix_det_one (g : GaugeGroup 2) :
     _ = inner ℝ
       (sourceCross
         (M.colorConjugate (g : ColorMatrix 2)
-          (FCP.BFSSSU2GaugeG3A.colorUnit 0))
+          (FCP.BFSSSU2GaugeG3A.colorUnit (0 : Fin 3)))
         (M.colorConjugate (g : ColorMatrix 2)
-          (FCP.BFSSSU2GaugeG3A.colorUnit 1)))
+          (FCP.BFSSSU2GaugeG3A.colorUnit (1 : Fin 3))))
         (M.colorConjugate (g : ColorMatrix 2)
-          (FCP.BFSSSU2GaugeG3A.colorUnit 2)) := by
+          (FCP.BFSSSU2GaugeG3A.colorUnit (2 : Fin 3))) := by
             rw [matrixColorColumn_adjoint g 0,
               matrixColorColumn_adjoint g 1,
               matrixColorColumn_adjoint g 2]
     _ = inner ℝ
       (sourceCross
-        (FCP.BFSSSU2GaugeG3A.colorUnit 0)
-        (FCP.BFSSSU2GaugeG3A.colorUnit 1))
-        (FCP.BFSSSU2GaugeG3A.colorUnit 2) :=
+        (FCP.BFSSSU2GaugeG3A.colorUnit (0 : Fin 3))
+        (FCP.BFSSSU2GaugeG3A.colorUnit (1 : Fin 3)))
+        (FCP.BFSSSU2GaugeG3A.colorUnit (2 : Fin 3)) :=
           sourceCrossTriple_conjugate g _ _ _
     _ = 1 := sourceColorUnitTriple_eq_one
 
