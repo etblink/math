@@ -1,8 +1,8 @@
 # BFSS ACTIVE ROADMAP — Project Lead operational entry point
 
-## Current strategic focus — G11 accepted, fixed-positive-regulator certificate
+## Current strategic focus — G12 accepted, fixed-positive-regulator certificate
 
-**Reviewed November 15, 2026 Pacific.** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) reports **P3-AUX-HARDY-G11 GREEN_QUALIFIED**, [strict #43708533905](https://github.com/etblink/math/actions/runs/43708533905), exact `7459e472085a6ef9b3c5c8352073ea1bafa6645e`:164 pins, cold9086-job build, helpers1+3, fresh source6/native12 reports and all12 controls PASS. [Exact acceptance and independently rehashed complete evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R3_GREEN_43708533905_DERIVATIVE_COLOR_CONTRACTION_ACCEPTANCE_2026_11_15.md). G11 qualifies the original all-color coefficient-derivative spin contraction. G10/G9/G8 and original-H M5BF0 remain distinct accepted dependencies.
+**Reviewed November 15, 2026 Pacific.** [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json) reports **P3-AUX-HARDY-G12 GREEN_QUALIFIED**, [strict #43740253917](https://github.com/etblink/math/actions/runs/43740253917), exact `8b54ce6b150d8f3689342dd6bf80179414ab95fa`:166 pins, helpers1+3+1, cold9088 build, fresh source6/native12 and all twelve controls PASS. [Exact acceptance and independently rehashed complete evidence](research/spectral-p2-original-field/P3_AUX_HARDY_G12_R4_GREEN_43740253917_ORDERED_DERIVATIVE_FOCK_BILINEAR_ACCEPTANCE_2026_11_15.md). G12 closes the ordered pointwise derivative Fock bilinear; full smooth-core rotation/tau norm remain open. G11 and original-H M5BF0 remain distinct accepted dependencies.
 
 **Endpoint:** a fixed-positive-regulator ground-state fidelity certificate for a normalized original physical Spin(9) singlet,
 
@@ -12,11 +12,11 @@
 
 This remains a conditional target. The original-source constant, normalization, symmetry and spectral-domain identities must qualify; no paper constant is automatically imported. The [endpoint synthesis](research/methodology/BFSS_PROJECT_BIRDS_EYE_SYNTHESIS_POST_C4C_2026_11_14.md) and [Hardy prerequisite map](research/spectral-p2-original-field/P3_AUX_HARDY_B1_SOURCE_ALGEBRA_PRIMITIVE_MAP_2026_11_13.md) give the strategic and analytical boundaries.
 
-**Completed package, in accepted scopes:** original closed/dense positive-regulator weighted-charge graph; normalized adjoint-square operator and full weak form; exact original/positive-regulator kernel equality; native reciprocal pairing. The bounded Hardy lane has advanced through G1–G11, including actual smooth-core tau, original potential cancellation, the coordinate derivative bridge, exact scalar-entry basis binding, pointwise orbital CAR and all-color coefficient-derivative contraction. The full charge/tau identity and tau norm remain open.
+**Completed package, in accepted scopes:** original closed/dense positive-regulator weighted-charge graph; normalized adjoint-square operator and full weak form; exact original/positive-regulator kernel equality; native reciprocal pairing. The bounded Hardy lane has advanced through G1–G12, including actual smooth-core tau, original potential cancellation, the coordinate derivative bridge, exact scalar-entry basis binding, pointwise orbital CAR, all-color coefficient-derivative contraction and the exact ordered quarter-gamma derivative Fock bilinear. The full charge/tau identity and tau norm remain open.
 
 | Priority | Work and exit condition |
 | --- | --- |
-| Immediate proof | **G11 accepted; source clean, G12 R4 native repair staged / unqualified:** assemble the ordered original kinetic-symbol/tau-derivative Fock bilinear using the accepted coefficient contraction and an isolated finite-sum helper. Then qualify actual core rotation and tau norm. Keep pointwise, core and closed-domain claims separate. |
+| Immediate proof | **G12 accepted; G13 core assembly design / unstaged:** inspect the actual smooth-core charge/kinetic donor interfaces and preregister a bounded original core assembly. Then qualify full rotation and tau norm. Keep pointwise, core and closed-domain claims separate. |
 | Highest forward research | Audit genuine physical Spin(9), a reducing spinor sector, singlet-to-spinor covariance of the sixteen original charges, and the supercharge energy/domain identity. Produce source-shaped theorem contracts with all domain hypotheses; presence of historical source is not current qualification. |
 | Next analytical stage | Prove the sector-specific bounded-reciprocal Hardy estimate, extend it through actual form/operator domains, justify spectral negative powers or shifted-resolvent duality, and assemble the certificate. Finite gamma/CAR identities alone do not prove these assertions. |
 | Concrete consumer | Identify a normalized physical singlet trial state with rigorously bounded weighted energy **q_epsilon < 1/kappa**, so the overlap lower bound is positive. Domain-vector existence alone is insufficient. |
@@ -34,6 +34,10 @@ This remains a conditional target. The original-source constant, normalization, 
 | Lovelock/emergent geometry | Exploratory; reviewed findings supply no direct replacement for the spectral program. |
 
 **Checkpoint interpretation:** top-level `active`, `last_qualified`, `next_planned`, `priority_review` and `current_focus` now describe this live allocation. `last_qualified_physical_operator` retains the distinct M5BF0 original-H qualification; the prior root checkpoint is preserved in `historical_operational_checkpoint_pre_G8_refresh`. BG/BH source equivalence remains deferred research. Moving the operational milestone to M5 does not close the remaining M3 physical fixed-space or M4 Spin(9) obligations.
+
+## Historical G12 receipts — superseded by the current focus
+
+Earlier staged/running labels below record their own as-of states. G12 is accepted above; all negative, diagnostic and launch receipts remain preserved.
 
 **G12 ordered derivative Fock bilinear preregistered / unstaged:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G12_R1_PRE_GATE_ORIGINAL_DERIVATIVE_FOCK_BILINEAR_2026_11_15.md) first isolates a Mathlib-only finite coefficient/product sum contraction, then binds the actual kinetic symbol and tau-derivative multiplier to the quarter-gamma theta bilinear with product order fixed. Require early helpers1+3+1, source6/native12 and twelve actual paired controls. Full core rotation remains separate; G11 accepted.
 

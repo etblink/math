@@ -47,7 +47,7 @@ def main():
     kinetic_candidate = a.get("gate") == "P3-AUX-HARDY-G10"
     derivative_candidate = a.get("gate") == "P3-AUX-HARDY-G11"
     bilinear_candidate = a.get("gate") == "P3-AUX-HARDY-G12"
-    if bilinear_candidate:
+    if bilinear_candidate and a["status"] != "GREEN_QUALIFIED":
         g12 = s.get("parallel_auxiliary_hardy_derivative_fock_bilinear", {})
         require(q.get("gate") == "P3-AUX-HARDY-G11" and q.get("run_id") == 43708533905
                 and a.get("qualification") is False and g12.get("qualification") is False
@@ -142,7 +142,8 @@ def main():
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                 == "e9f80f6e2bf5ad8edc84ebeba040b2d06e877e5afe7f10175b5d6491187176e4",
                 "G12 D0 complete accepted artifact missing or changed")
-        require(a.get("qualification") is False
+        require((a.get("status") == "GREEN_QUALIFIED" and q.get("gate") == "P3-AUX-HARDY-G12" and a.get("qualification") is True)
+                or (a.get("qualification") is False
                 and (a.get("status") == "BLOCKED"
                      or (a.get("attempt") == "R3" and a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"}
                          and s.get("g12_r3_prospective", {}).get("prospective_receipt_commit") == "443d9913145656589cc4f3ce29f76f439155e61a"
@@ -153,7 +154,7 @@ def main():
                          and s.get("g12_r4_prospective", {}).get("prospective_receipt_commit") == "22b8877413feffb7467abbcb5af000613cf95d96"
                          and s["g12_r4_prospective"].get("accepted_diagnostic_run") == 43734601883
                          and s["g12_r4_prospective"].get("qualification") is False
-                         and (ROOT / s["g12_r4_prospective"].get("prospective_receipt", "__missing__")).is_file())),
+                         and (ROOT / s["g12_r4_prospective"].get("prospective_receipt", "__missing__")).is_file()))),
                 "D0 acceptance alone cannot reopen full G12 without separate R3 contract")
     if derivative_candidate and a["status"] != "GREEN_QUALIFIED":
         g11 = s.get("parallel_auxiliary_hardy_derivative_color_contraction", {})
@@ -748,6 +749,45 @@ def main():
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                 == "021dc41236d246ecfcf503d273effe46f7e06b5b9b105b522cc8f3bb435ada35",
                 "G11 complete accepted artifact missing or changed")
+    if q["gate"] == "P3-AUX-HARDY-G12":
+        g12 = s.get("parallel_auxiliary_hardy_derivative_fock_bilinear", {})
+        acceptance = s.get("parallel_auxiliary_hardy_derivative_fock_bilinear_acceptance", {})
+        result = acceptance.get("result", {})
+        receipt = "research/spectral-p2-original-field/P3_AUX_HARDY_G12_R4_GREEN_43740253917_ORDERED_DERIVATIVE_FOCK_BILINEAR_ACCEPTANCE_2026_11_15.md"
+        require(a.get("gate") == q["gate"] and a.get("status") == "GREEN_QUALIFIED"
+                and a.get("qualification") is True and g12.get("qualification") is True
+                and acceptance.get("status") == g12.get("status") == "GREEN_QUALIFIED"
+                and q.get("run_id") == a.get("run_id") == 43740253917
+                and q.get("tested_sha") == a.get("candidate_sha") == "8b54ce6b150d8f3689342dd6bf80179414ab95fa"
+                and q.get("job_id") == 132891625052 and q.get("manifest_pins") == a.get("manifest_pins") == 166
+                and q.get("manifest_hash") == a.get("manifest_hash") == "17a3155a59d23f270d406ac167cfbda1dbe1330128738879c360a5bd9868aae5"
+                and q.get("artifact_id") == 14172740560
+                and q.get("digest") == "sha256:2a3d6012d6348b7b63d4a6f7f7e0da3c1cbff39cdf2d10301ecb5bb4ed22a58b"
+                and q.get("receipt") == receipt and (ROOT / receipt).is_file()
+                and result.get("helper_reports") == [1, 3, 1] and result.get("source_reports") == 6
+                and result.get("consumer_reports") == 12 and result.get("all_twelve_native_controls_passed") is True,
+                "G12 exact full source/native acceptance missing")
+        for kind, sha in {'source': 'f6296a909dcd84a9800012f18f55f7005866cb59', 'helper': '2c0b07a603a94ad18342a53a5d88eaad5345cb5d', 'consumer': '77b70b7a906d26befcc2f08ab71fa3478c4da0d0', 'workflow': '440e10c2736994e5fa90c2c604fd8481dd703d88'}.items():
+            data = (ROOT / q[kind]).read_bytes()
+            actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+            require(q.get(kind + "_blob") == a.get(kind + "_blob") == g12.get(kind + "_blob") == actual == sha,
+                    "G12 accepted bytes drift: " + kind)
+        prior = s.get("last_qualified_hardy_pre_G12", {})
+        physical = s.get("last_qualified_physical_operator", {})
+        focus = s.get("current_focus", {})
+        require(prior.get("gate") == "P3-AUX-HARDY-G11" and prior.get("run_id") == 43708533905
+                and prior.get("tested_sha") == "7459e472085a6ef9b3c5c8352073ea1bafa6645e"
+                and (ROOT / prior.get("receipt", "__missing__")).is_file()
+                and physical.get("gate") == "P3-M5BF0" and physical.get("run_id") == 43498649514
+                and focus.get("latest_qualified_gate") == q["gate"] and focus.get("latest_qualified_run") == q["run_id"]
+                and focus.get("highest_forward_research") and focus.get("remaining_blockers")
+                and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G13"
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED"},
+                "G12 predecessor, physical-H or bounded core-assembly handoff missing")
+        archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R4_43740253917_evidence.zip"
+        require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
+                == "2a3d6012d6348b7b63d4a6f7f7e0da3c1cbff39cdf2d10301ecb5bb4ed22a58b",
+                "G12 complete accepted artifact missing or changed")
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},
             "pinned toolchain changed without roadmap review")
