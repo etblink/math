@@ -137,7 +137,8 @@
     "strict_workflow_staged": true,
     "accepted_predecessor_run": 43749092953,
     "diagnostic_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_D0_PRE_GATE_REAL_COEFFICIENT_SUM_DIAGNOSTIC_2026_11_15.md",
-    "full_retry_authorized": false
+    "full_retry_authorized": false,
+    "diagnostic_status": "STAGED_UNQUALIFIED"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_RED_43753325231_SUM_SMUL_TWO_RED_REVIEW_2026_11_15.md",
   "monograph_alignment": {
@@ -6456,7 +6457,7 @@
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
     "latest_qualified_gate": "P3-AUX-HARDY-G14",
     "latest_qualified_run": 43749092953,
-    "immediate_proof": "G14 accepted; full G15 BLOCKED after two scalar-sum failures. D0 Mathlib-first/source-shaped diagnostic preregistered; no R3 before diagnostic acceptance and separate contract.",
+    "immediate_proof": "G14 accepted; full G15 BLOCKED. D0 Mathlib-only/source-shaped scalar-sum diagnostic staged/unqualified; no full R3 before diagnostic acceptance and separate contract.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -10159,7 +10160,7 @@
     "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_LAUNCH_BINDING_2026_11_15.md"
   },
   "g15_real_coefficient_sum_diagnostic": {
-    "status": "REGISTERED_NOT_EXECUTED",
+    "status": "STAGED_UNQUALIFIED",
     "qualification": false,
     "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G15_D0_PRE_GATE_REAL_COEFFICIENT_SUM_DIAGNOSTIC_2026_11_15.md",
     "prior_red_run": 43753325231,
@@ -10172,6 +10173,37 @@
     "expected_manifest_pins": 169,
     "generic_reports": 2,
     "native_reports": 4,
-    "native_examples": 3
+    "native_examples": 3,
+    "prospective_receipt_commit": "b2fa6246e72fce8616b0788c2780aa75dab08398",
+    "generic_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG15RealCoefficientSumDiagnostic.lean",
+    "native_source": "lean/diagnostics/BFSSP3AuxHardyG15RealCoefficientSumNativeDiagnostic.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g15-real-coefficient-sum-diagnostic.yml",
+    "generic_source_blob": "732cee2546bfd629fe8bf0b20e63ac3ef356b5bd",
+    "native_source_blob": "bb36497f6b2ff95be2395da263effb1f74b9b7b3",
+    "workflow_blob": "af7d10b5660898547ddde28d797e164fbdf88369",
+    "manifest_pins": null,
+    "reviewed_original_baseline": "3e2cc5da7a2e0965f158c0683acc774bcf1a81b8",
+    "static_checks": {
+      "status": "STATIC_PASS_NOT_LEAN",
+      "hashes": {
+        "generic_source_blob": "732cee2546bfd629fe8bf0b20e63ac3ef356b5bd",
+        "native_source_blob": "bb36497f6b2ff95be2395da263effb1f74b9b7b3",
+        "workflow_blob": "af7d10b5660898547ddde28d797e164fbdf88369"
+      },
+      "expected_diagnostic_pins": 169,
+      "explicit_pins": 26,
+      "present_local_recursive_files_hashed": 19,
+      "generic_reports": 2,
+      "native_reports": 4,
+      "literal_paired_examples": 3,
+      "generic_strict_phase_before_native_build": true,
+      "full_G15_three_files_frozen": true,
+      "full_G15_source_consumer_excluded_from_closure": true,
+      "main_G15_qualification": false,
+      "yaml_bash_three_python_blocks_and_literal_preflight": "PASS",
+      "positive_and_six_negative_auditor_fixtures": "PASS",
+      "native_tau_statement_matches_frozen_G15_target": true,
+      "local_Lean_available": false
+    }
   }
 }

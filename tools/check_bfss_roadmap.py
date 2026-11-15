@@ -86,6 +86,18 @@ def main():
                 and diagnostic.get("qualification") is False
                 and (ROOT / diagnostic.get("prospective_receipt", "__missing__")).is_file(),
                 "Repeated G15 boundary requires isolated diagnostic; no full retry")
+        require(diagnostic.get("status") in {"REGISTERED_NOT_EXECUTED", "STAGED_UNQUALIFIED", "CI_IN_PROGRESS", "RED_UNQUALIFIED"},
+                "unreviewed G15 D0 status")
+        if diagnostic.get("status") != "REGISTERED_NOT_EXECUTED":
+            require(diagnostic.get("prospective_receipt_commit") == "b2fa6246e72fce8616b0788c2780aa75dab08398"
+                    and diagnostic.get("expected_manifest_pins") == 169 and diagnostic.get("manifest_pins") is None
+                    and diagnostic.get("generic_reports") == 2 and diagnostic.get("native_reports") == 4
+                    and diagnostic.get("native_examples") == 3,
+                    "G15 D0 bounded contract or unmeasured manifest drift")
+            for kind, sha in {'generic_source': '732cee2546bfd629fe8bf0b20e63ac3ef356b5bd', 'native_source': 'bb36497f6b2ff95be2395da263effb1f74b9b7b3', 'workflow': 'af7d10b5660898547ddde28d797e164fbdf88369'}.items():
+                data = (ROOT / diagnostic[kind]).read_bytes()
+                require(diagnostic.get(kind + "_blob") == hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest() == sha,
+                        "G15 D0 staged bytes drift: " + kind)
         archive = ROOT / "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R2_43753325231_evidence.zip"
         require(archive.is_file() and hashlib.sha256(archive.read_bytes()).hexdigest()
                 == "db2ec23889c6611ebcc2533d89c6678129dd8e0ffd3c0f3d19948282b1190d8d",
