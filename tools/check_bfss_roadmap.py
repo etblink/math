@@ -55,14 +55,17 @@ def main():
                      or (a.get("status") == g12.get("status") == "RED_UNQUALIFIED"
                          and a.get("run_id") == 43711440502
                          and (ROOT / g12.get("red_receipt", "__missing__")).is_file()))
-                and g12.get("prospective_receipt_commit") == "a080af0c4b08f9085d6a4dfdc1a3169541b132ac"
+                and ((a.get("attempt") == "R1" and g12.get("prospective_receipt_commit") == "a080af0c4b08f9085d6a4dfdc1a3169541b132ac")
+                     or (a.get("attempt") == "R2" and g12.get("prospective_receipt_commit") == "3a2e7cd63544cda2cded485f3f5be1f0a3683267"
+                         and g12.get("prior_red_run") == 43711440502
+                         and (ROOT / g12.get("prior_red_receipt", "__missing__")).is_file()))
                 and g12.get("reviewed_original_baseline") == "7459e472085a6ef9b3c5c8352073ea1bafa6645e"
                 and (ROOT / g12.get("prospective_receipt", "__missing__")).is_file()
                 and g12.get("expected_manifest_pin_count") == a.get("expected_manifest_pins") == 166
                 and g12.get("expected_source_roots") == 6 and g12.get("expected_consumer_reports") == 12
                 and g12.get("early_helper_reports") == [1, 3, 1] and g12.get("native_examples") == 12,
                 "G12 cannot bypass accepted G11 or its exact prospective contract")
-        for kind, sha in {'source': '567661beef53c27fb8d3a3282a580e296c992962', 'helper': '2c0b07a603a94ad18342a53a5d88eaad5345cb5d', 'consumer': '13f5557809b7ecce2dfeb60d2988febcd85bf529', 'workflow': 'd987f7e02dfe98be035d1710409f1ad04601ddc9'}.items():
+        for kind, sha in {'source': ('80ea179d9e2afa223bda77ce0d62af6ab61db422' if a.get('attempt') == 'R2' else '567661beef53c27fb8d3a3282a580e296c992962'), 'helper': '2c0b07a603a94ad18342a53a5d88eaad5345cb5d', 'consumer': '13f5557809b7ecce2dfeb60d2988febcd85bf529', 'workflow': ('a90a4f2b04623abdfe7b1db860b3716f0d60d570' if a.get('attempt') == 'R2' else 'd987f7e02dfe98be035d1710409f1ad04601ddc9')}.items():
             require(a.get(kind) == g12.get(kind) and (ROOT / g12[kind]).is_file(),
                     "G12 registration path drift: " + kind)
             data = (ROOT / g12[kind]).read_bytes()

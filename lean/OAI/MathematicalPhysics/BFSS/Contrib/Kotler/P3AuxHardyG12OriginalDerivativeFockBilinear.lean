@@ -33,9 +33,26 @@ theorem originalKineticTauDerivativeFermion_expand (M : AlgebraData 2)
         ∑ β : SpinIndex, ∑ A : ColorIndex 2, ∑ δ : SpinIndex,
           ((M.gamma k α β : ℂ) * originalHardyTauCoefficientDerivative M i j k B A α δ X) •
             (M.theta β B * M.theta δ A) := by
-  simp only [originalKineticTauDerivativeFermion, originalKineticFermion_eq_sum,
-    originalHardyTauDerivative, Finset.sum_mul, Finset.mul_sum,
-    smul_mul_assoc, mul_smul_comm, smul_smul]
+  classical
+  unfold originalKineticTauDerivativeFermion
+  apply Finset.sum_congr rfl
+  intro k _
+  apply Finset.sum_congr rfl
+  intro α _
+  apply Finset.sum_congr rfl
+  intro B _
+  rw [originalKineticFermion_eq_sum]
+  unfold originalHardyTauDerivative
+  rw [Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro β _
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro A _
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro δ _
+  rw [smul_mul_assoc, mul_smul_comm, smul_smul]
 
 theorem originalKineticTauDerivativeFermion_eq_contracted (M : AlgebraData 2)
     (i j : SpaceIndex) (X : Boson 2) :
@@ -67,7 +84,14 @@ theorem originalKineticTauDerivativeFermion_eq_bilinear (M : AlgebraData 2)
   apply Finset.sum_congr rfl
   intro β _
   rw [Finset.sum_comm]
-  simp only [ite_smul, zero_smul, Finset.sum_ite_eq, Finset.mem_univ, ite_true]
+  apply Finset.sum_congr rfl
+  intro δ _
+  rw [Finset.sum_eq_single B]
+  · rw [ite_eq_left rfl]
+  · intro A _ hAB
+    rw [ite_eq_right (Ne.symm hAB), zero_smul]
+  · intro hB
+    exact False.elim (hB (Finset.mem_univ B))
 
 theorem originalKineticTauDerivativeFermion_apply (M : AlgebraData 2)
     (i j : SpaceIndex) (hij : i ≠ j) (X : Boson 2) (v : Fermion 2) :
