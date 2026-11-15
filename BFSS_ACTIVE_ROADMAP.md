@@ -49,6 +49,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G15 R2 STAGED / UNQUALIFIED:** [abstract real-table contract](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_PRE_GATE_ABSTRACT_REAL_COEFFICIENT_TABLE_2026_11_15.md) committed at `d7c724f8` before code. Source `3137f2fa` changes only the failed four-plane sum proof: universal neutral table first, then literal source substitution. Consumer `7e873eae` and all statements/other five bodies/donors/resources fixed; workflow `898e8882` changes only source pin. [Static receipt](research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R2_STATIC_CHECKS_2026_11_15.json): exact one-proof delta, six fixed statements/other five bodies/complete consumer, hashes/YAML/bash/five Python/literal preflight and positive-six-negative auditor fixtures PASS. Fresh169-pin/helpers1+3+1/source6/native12/all12 qualification required. R1 evidence preserved; repeated boundary => isolated diagnostic/two-red review. G14 accepted.
 
+**G15 R2 strict launch bound:** [#43753325231](https://github.com/etblink/math/actions/runs/43753325231), exact `271ee0174f173cf2917514cd225be76385a1592f`, job132931880950. Observed queued/job allocated;169 pins/helpers1+3+1/source6/native12/all12 pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G15_R2_LAUNCH_BINDING_2026_11_15.md). Only the failed source proof tail changes; all statements/other five bodies/consumer/donors/resources fixed. Same boundary again => isolated diagnostic/two-red review. G14 remains accepted.
+
 ## Historical G14 receipts — superseded by the current focus
 
 G14 is accepted above; earlier staged/running labels below remain as-of evidence.
