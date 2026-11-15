@@ -1,0 +1,148 @@
+name: BFSS IBI-G1B original signed cross normalization strict
+
+'on':
+  push:
+    branches: [research/bfss-incidence-unified-20261114]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1BOriginalSignedCross.lean
+      - lean/diagnostics/BFSSIBIG1BOriginalSignedCrossIndependentConsumer.lean
+      - .github/workflows/bfss-ibi-g1b-original-signed-cross-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-ibi-g1b-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-signed-cross-and-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - name: Checkout exact incidence candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify original source pins and declared theorem contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-ibi-g1b"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-ibi-g1b/tested-commit.txt"
+          python3 - <<'PY'
+          import json, re, subprocess
+          from pathlib import Path
+          pins = {
+            "lean/OAI/MathematicalPhysics/BFSS/GaugeGeometry.lean": "db8cf65e11799d156c1fc698ec885ae81c013414",
+            "lean/OAI/MathematicalPhysics/BFSS/ColorLie.lean": "3c4bbd6b4a3ba21a0f05892e90665a8c2033640c",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0AOriginalBosonGram.lean": "382315f9e9442f8506bcbe5b42dbc2bad4e7d86d",
+            "lean/OAI/MathematicalPhysics/BFSS/GaugeOrbits.lean": "d6343a145884b289716c04b2bdc6acb99bfa839a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG2ABosonGaugeProbe.lean": "898c987cbcc0840f9c137682c3be345baca809d1",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3AAdjointColorRepresentationProbe.lean": "553869f1287c64893398c3b79c04fe010023bd08",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSP2C0OriginalPauliPotentialBinding.lean": "3a2aa136e97bb907ac0d36a7b1559523f42c4d14",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean": "152204ef15a6569534e0503824a697cb9ae8e4ce",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2ColorCrossProbe.lean": "209b3808222730ca5e817d83ed32253a67513f7f",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1BOriginalSignedCross.lean": "5cbab8c706edd239e593c3da45c94fa13c256a35",
+            "lean/diagnostics/BFSSIBIG1BOriginalSignedCrossIndependentConsumer.lean": "8ab857bdbc77e01ec0e5c4dd1138cc1698f12244",
+            "lean/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+            "lean/lake-manifest.json": "67d01d2717d0aaff59fb8814bb53581b961f42b4",
+          }
+          for path, expected in pins.items():
+              got = subprocess.check_output(
+                  ["git", "hash-object", "--no-filters", path], text=True).strip()
+              assert got == expected, (path, expected, got)
+          packages = json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in packages if p["name"] == "mathlib") == (
+              "d13f23b723b8a846827a245b89c10fc7d3f11612")
+          assert Path("lean/lean-toolchain").read_text().strip() == "leanprover/lean4:v4.34.1"
+          root = "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1BOriginalSignedCross.lean"
+          consumer_path = "lean/diagnostics/BFSSIBIG1BOriginalSignedCrossIndependentConsumer.lean"
+          source, consumer = Path(root).read_text(), Path(consumer_path).read_text()
+          assert re.findall(r"(?m)^import (\S+)$", source) == [
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG1AOriginalLieTriple",
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSP2C0OriginalPauliPotentialBinding"]
+          assert re.findall(r"(?m)^import (\S+)$", consumer) == [
+              "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG1BOriginalSignedCross"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$", source) == [
+              "pairedColor_structureConstant",
+              "pairedColorLie_cross", "sourceCross",
+              "pairedColorLie_eq_sourceCross", "originalCrossTriple",
+              "originalLieTriple_eq_crossTriple", "originalCrossTriple_gauge"]
+          assert len(re.findall(r"(?m)^example\b", consumer)) == 4
+          for body in (source, consumer):
+              assert "set_option autoImplicit false" in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b", body)
+              assert "set_option maxHeartbeats 0" not in body
+          assert "FCP.BFSSSU2GaugeG2A.bosonGauge" in source
+          assert "FCP.BFSSSU2.epsilon3_contraction" in source
+          assert "FCP.BFSSP2C0OriginalPauliPotentialBinding.originalPauli_structureConstant" in source
+          print("BFSS_IBI_G1B_ORIGINAL_SOURCE_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 36
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold native source plus independent consumer and axiom audit
+        shell: bash
+        timeout-minutes: 43
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          source_file="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1BOriginalSignedCross.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1BOriginalSignedCross.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 1650s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG1BOriginalSignedCross 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g1b/cold-build.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$source_file" 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g1b/source-axioms.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true             diagnostics/BFSSIBIG1BOriginalSignedCrossIndependentConsumer.lean 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g1b/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os, re
+          root = Path(os.environ["RUNNER_TEMP"]) / "bfss-ibi-g1b"
+          for name in ("cold-build.log", "source-axioms.log", "independent-consumer.log"):
+              log = (root / name).read_text()
+              assert "error:" not in log and "sorryAx" not in log, (name, log[-4000:])
+              allowed_warning = re.compile(
+                  r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+              unexpected = [s for s in log.splitlines()
+                            if "warning:" in s and not allowed_warning.fullmatch(s)]
+              assert not unexpected, (name, unexpected[:10])
+          log = (root / "source-axioms.log").read_text()
+          reports = re.findall(
+              r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",
+              log)
+          expected = [
+              "FCP.BFSSIBIG1BOriginalSignedCross.pairedColor_structureConstant",
+              "FCP.BFSSIBIG1BOriginalSignedCross.pairedColorLie_cross",
+              "FCP.BFSSIBIG1BOriginalSignedCross.sourceCross",
+              "FCP.BFSSIBIG1BOriginalSignedCross.pairedColorLie_eq_sourceCross",
+              "FCP.BFSSIBIG1BOriginalSignedCross.originalCrossTriple",
+              "FCP.BFSSIBIG1BOriginalSignedCross.originalLieTriple_eq_crossTriple",
+              "FCP.BFSSIBIG1BOriginalSignedCross.originalCrossTriple_gauge"]
+          assert [name for name, _ in reports] == expected, reports
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name, raw in reports:
+              assert {a.strip() for a in raw.split(",") if a.strip()} <= allowed, (name, raw)
+          print("BFSS_IBI_G1B_SOURCE_AND_INDEPENDENT_CONSUMER_STRICT_GREEN")
+          PY
+      - name: Preserve exact IBI-G1B gate evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-ibi-g1b-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-ibi-g1b/
+          if-no-files-found: warn
+          retention-days: 14
