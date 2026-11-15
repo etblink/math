@@ -47,10 +47,17 @@ def main():
     if auxiliary_candidate:
         g9 = s.get("parallel_auxiliary_hardy_entry_derivative_binding", {})
         require(q.get("gate") == "P3-AUX-HARDY-G8" and q.get("run_id") == 43674445069
-                and a.get("status") == "PENDING_STRICT_CI"
+                and a.get("status") in {"PENDING_STRICT_CI", "RED_UNQUALIFIED"}
                 and g9.get("qualification") is False
-                and g9.get("status") == "STAGED_UNQUALIFIED"
-                and g9.get("prospective_receipt_commit") == "c2f96fc7ca5dec3bc47c7f92dadde2a97cac52a7"
+                and ((a.get("status") == "PENDING_STRICT_CI" and g9.get("status") == "STAGED_UNQUALIFIED")
+                     or (a.get("status") == "RED_UNQUALIFIED" and g9.get("status") == "RED_UNQUALIFIED"
+                         and a.get("run_id") == 43677035838
+                         and (ROOT / g9.get("red_receipt", "__missing__")).is_file()))
+                and ((g9.get("attempt") == "R1" and g9.get("prospective_receipt_commit") == "c2f96fc7ca5dec3bc47c7f92dadde2a97cac52a7")
+                     or (g9.get("attempt") == "R2" and g9.get("prior_red_run") == 43677035838
+                         and re.fullmatch(r"[0-9a-f]{40}", g9.get("prospective_receipt_commit", "")) is not None
+                         and g9.get("source_blob") == "3b5a4b52254add95f741bb883f7e9edecf48dbdf"
+                         and g9.get("consumer_blob") == "88aa4d8382e62da727ef81b0f998673fe9f9513d"))
                 and (ROOT / g9.get("prospective_receipt", "__missing__")).is_file()
                 and g9.get("expected_manifest_pin_count") == 162,
                 "G9 cannot bypass accepted G8 or its prior unqualified contract")
@@ -281,7 +288,11 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and ((port_be or source_join or port_bf or auxiliary_candidate) and a["status"] != "GREEN_QUALIFIED"):
+        if entry is a and auxiliary_candidate and a["status"] == "RED_UNQUALIFIED":
+            require(entry.get("manifest_pins") == 162
+                    and entry.get("manifest_hash") == "860a3059669d4f6e92ee523c37055a61dfc3fc157845ce9a28ef9aa4f97534f8",
+                    "G9 R1 measured red preflight missing")
+        elif entry is a and ((port_be or source_join or port_bf or auxiliary_candidate) and a["status"] != "GREEN_QUALIFIED"):
             require(entry.get("manifest_pins") is None,
                     "new-source pin count was invented before strict CI")
         else:
@@ -343,7 +354,7 @@ def main():
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G9"
                 and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED",
                     "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED",
-                    "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS"},
+                    "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "RED_UNQUALIFIED_REPAIR_PENDING"},
                 "G8 live focus or bounded unqualified G9 handoff missing")
     require(s.get("if_green") and s.get("if_red"), "decision alternatives missing")
     require(s["toolchain"] == {"lean": "4.34.1", "mathlib": EXPECTED_MATHLIB},

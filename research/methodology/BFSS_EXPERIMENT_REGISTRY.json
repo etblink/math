@@ -6110,7 +6110,7 @@
       "id": "E-P3-AUX-HARDY-G9-R1",
       "title": "Original complex Y entry derivative to real Y basis binding",
       "registered_at": "2026-11-14",
-      "status": "EXECUTED_UNREVIEWED",
+      "status": "RED_UNQUALIFIED",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_PRE_GATE_ORIGINAL_Y_ENTRY_DERIVATIVE_BINDING_2026_11_14.md",
@@ -6167,9 +6167,11 @@
         },
         "analysis_plan": "Compile Mathlib-only variable helper first, then cold original source/native consumer and exact axiom audit. Preserve first causal failure; repeated native conversion stops for typed inspection.",
         "conclusion_rule": "Only whole strict helper/source/native success qualifies G9. No physical promotion from coefficient algebra.",
-        "communication": "Original derivative coefficient binding only; kinetic CAR/rotation and physical analytical assumptions remain separate."
+        "communication": "Original derivative coefficient binding only; kinetic CAR/rotation and physical analytical assumptions remain separate.",
+        "analysis": "Early entry helper emits unused Fintype-instance warning and leaves exact entry evaluation after derivative rewrite. No native build/source/consumer executed. Existing helper apply root matches residual.",
+        "conclusion": "R1 unqualified. Two bounded helper corrections are preregistered; accepted G8 and all native source/consumer statements remain frozen."
       },
-      "code_status": "STRICT_CI_IN_PROGRESS",
+      "code_status": "RED_UNQUALIFIED",
       "prospective_receipt_commit": "c2f96fc7ca5dec3bc47c7f92dadde2a97cac52a7",
       "static_checks": {
         "status": "STATIC_PASS_NOT_LEAN",
@@ -6199,9 +6201,83 @@
       "run_id": 43677035838,
       "tested_sha": "bf556a9a7fa4c921ca1ad8c4b539ed094451de2a",
       "job_id": 132699358033,
-      "run_last_observed_status": "in_progress",
-      "run_conclusion": null,
-      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_LAUNCH_BINDING_2026_11_14.md"
+      "run_last_observed_status": "completed",
+      "run_conclusion": "failure",
+      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_LAUNCH_BINDING_2026_11_14.md",
+      "result": {
+        "run_id": 43677035838,
+        "run_attempt": 1,
+        "tested_sha": "bf556a9a7fa4c921ca1ad8c4b539ed094451de2a",
+        "job_id": 132699358033,
+        "manifest_pins": 162,
+        "manifest_hash": "860a3059669d4f6e92ee523c37055a61dfc3fc157845ce9a28ef9aa4f97534f8",
+        "preflight_pass": true,
+        "accepted_generic_helper_pass": true,
+        "entry_helper_build_pass": false,
+        "entry_helper_first_two_reports_standard_axioms": true,
+        "entry_helper_derivative_report_has_sorryAx": true,
+        "first_compiler_error": "P3AuxHardyG9ComplexMatrixEntryDerivative.lean:22:65: unsolved goals",
+        "residual": "(complexMatrixEntryCLM L a b) h = (L h a b : Complex)",
+        "strict_blocking_warning": "helper16:0 automatically included unused [Fintype iota] [Fintype kappa] in complexMatrixEntryCLM_apply",
+        "cold_native_build_executed": false,
+        "fresh_source_executed": false,
+        "native_consumer_executed": false,
+        "maximum_recursion_depth_error": false,
+        "whole_G9_qualified": false,
+        "artifact_id": 14147315518,
+        "artifact_bytes": 13511,
+        "artifact_digest": "sha256:ef6d6af5b86701f80b6bcd4db251a4eac32ace814d15b4efcb0b291bcc3d1ece",
+        "artifact_digest_independently_rehashed": true,
+        "durable_artifact": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R1_43677035838_evidence.zip"
+      },
+      "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R1_RED_43677035838_ENTRY_EVALUATION_AND_UNUSED_INSTANCES_2026_11_14.md"
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G9-R2",
+      "title": "Explicit matrix entry evaluation and unused finite-instance omission",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R2_PRE_GATE_EXPLICIT_ENTRY_EVALUATION_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG9OriginalYEntryDerivativeBinding.lean",
+      "helper": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG9ComplexMatrixEntryDerivative.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG9OriginalYEntryDerivativeBindingIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g9-original-y-entry-derivative-binding-strict.yml",
+      "old_helper_blob": "3748b667fd18724845da3cf5f2b11717f6d87ac8",
+      "stages": {
+        "observation": "(complexMatrixEntryCLM L a b) h = (L h a b : Complex); apply theorem also emits unused Fintype-instance warning.",
+        "question": "Do the two compiler-directed helper corrections close the exact residual and restore full strict qualification without native changes?",
+        "background": [
+          "Exact R1 helper log and manifest",
+          "Existing apply theorem reports standard axioms",
+          "Compiler recommends omit Fintype instances"
+        ],
+        "hypothesis": "Existing apply rewrite closes the exact residual; omit removes only redundant inferred instances.",
+        "falsifiers": [
+          "Same or new helper residual",
+          "Unexpected warning/axiom",
+          "Changed source/consumer/statement/budget",
+          "Native source/consumer failure"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Two helper-only edits"
+          ],
+          "controls": [
+            "Source and complete consumer byte-identical",
+            "Workflow expected-helper hash only",
+            "Same162-pin baseline/toolchain/budgets"
+          ],
+          "dependent_variables": [
+            "Early helper1+3",
+            "Cold source6/native12 reports and12 examples"
+          ]
+        },
+        "analysis_plan": "Audit exact two-edit helper delta and workflow pin-only change, then require whole original source/native strict success; preserve first causal failure.",
+        "conclusion_rule": "Whole strict success only; no helper-only or static qualification.",
+        "communication": "Helper proof/evaluation repair; physical source and mathematical target unchanged."
+      }
     }
   ],
   "allowed_statuses": [
