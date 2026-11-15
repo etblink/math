@@ -1,0 +1,117 @@
+{
+  "run_id": 43653626212,
+  "tested_sha": "6fda35546c1976fe6e15bf9a2013ed0f8b98b45a",
+  "job_id": 132627276146,
+  "collection_reviewed": true,
+  "strict_G5_qualification": false,
+  "case_statuses": [
+    {
+      "case": "inspector",
+      "mode": "required",
+      "returncode": 0,
+      "roots": [],
+      "status": "PASS",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "generic_zero_sum",
+      "mode": "required",
+      "returncode": 0,
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.finiteComplexZeroSum"
+      ],
+      "status": "PASS",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "variable_original_fock",
+      "mode": "required",
+      "returncode": 0,
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.variableFockZeroScalar",
+        "FCP.BFSSP3AuxHardyG5D0.variableFockZeroSum"
+      ],
+      "status": "PASS",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "native_theta_zero_sum",
+      "mode": "required",
+      "returncode": 0,
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.nativeThetaZeroSum"
+      ],
+      "status": "PASS",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "native_clifford_zero_join",
+      "mode": "join",
+      "returncode": 0,
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.nativeCliffordZero"
+      ],
+      "status": "PASS",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "tau_observation",
+      "mode": "observation",
+      "returncode": 1,
+      "roots": [],
+      "status": "OBSERVED_STOP_UNQUALIFIED",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "potential_observation",
+      "mode": "observation",
+      "returncode": 1,
+      "roots": [],
+      "status": "OBSERVED_STOP_UNQUALIFIED",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "tau_join",
+      "mode": "join",
+      "returncode": 0,
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.tauZeroJoin"
+      ],
+      "status": "PASS",
+      "strict_G5_qualification": false
+    },
+    {
+      "case": "potential_join",
+      "mode": "join",
+      "returncode": 0,
+      "roots": [
+        "FCP.BFSSP3AuxHardyG5D0.potentialZeroJoin"
+      ],
+      "status": "PASS",
+      "strict_G5_qualification": false
+    }
+  ],
+  "positive_proof_roots": [
+    "FCP.BFSSP3AuxHardyG5D0.finiteComplexZeroSum",
+    "FCP.BFSSP3AuxHardyG5D0.variableFockZeroScalar",
+    "FCP.BFSSP3AuxHardyG5D0.variableFockZeroSum",
+    "FCP.BFSSP3AuxHardyG5D0.nativeThetaZeroSum",
+    "FCP.BFSSP3AuxHardyG5D0.nativeCliffordZero",
+    "FCP.BFSSP3AuxHardyG5D0.tauZeroJoin",
+    "FCP.BFSSP3AuxHardyG5D0.potentialZeroJoin"
+  ],
+  "all_positive_proofs_standard_axioms": true,
+  "original_OAI_paths": 150,
+  "total_source_closure_paths": 160,
+  "manifest_sha256": "bd234c997cb78cc37ddc3c4d86f6b330042c7a8a99a17f65e0b02882951ecd4b",
+  "observations": {
+    "tau_observation": "TD_C1A_D2R2_EXPR_REPORT witness=hw raw_equal=false raw_alpha=false outer_metadata_equal=false outer_metadata_alpha=false witness_mvars=false goal_mvars=false first_difference=root.arg[1].arg[2].arg[13].fn:lhs=const:IsTopologicalAddGroup.toContinuousAdd:universes=1:rhs=const:OAI.BFSSQuantum.AlgebraData.cliffordLinear._proof_1:universes=0 root_witness=app-of:Eq:universes=1 root_goal=app-of:Eq:universes=1",
+    "potential_observation": "TD_C1A_D2R2_EXPR_REPORT witness=hw raw_equal=false raw_alpha=false outer_metadata_equal=false outer_metadata_alpha=false witness_mvars=false goal_mvars=false first_difference=root.arg[1].arg[2].arg[13].fn:lhs=const:IsTopologicalAddGroup.toContinuousAdd:universes=1:rhs=const:OAI.BFSSQuantum.AlgebraData.cliffordLinear._proof_1:universes=0 root_witness=app-of:Eq:universes=1 root_goal=app-of:Eq:universes=1"
+  },
+  "artifact_id": 14136952981,
+  "artifact_bytes": 22186,
+  "artifact_digest": "sha256:32c8c3569065ec3afbb324f4cc7120169e36e98b59afd32aa1471c568b69eb99",
+  "artifact_digest_independently_rehashed": true,
+  "durable_artifact": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G5_D0_43653626212_evidence.zip",
+  "conclusion": "Generic, variable original Fock, original theta sum, Clifford-zero and both literal native zero-input joins pass. First raw difference is continuity-proof argument; exact nativeThetaZeroSum closes both residual goals. Raw difference is not definitional incompatibility. Entire strict G5 remains unqualified."
+}

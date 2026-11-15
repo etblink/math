@@ -5173,7 +5173,7 @@
       "id": "E-P3-AUX-HARDY-G5-D0",
       "title": "Calibrated typed zero-action and native residual-goal collection",
       "registered_at": "2026-11-14",
-      "status": "EXECUTED_UNREVIEWED",
+      "status": "SURVIVED_FINITE_TESTS",
       "qualification": false,
       "qualified_physical_claim": false,
       "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_D0_TYPED_ZERO_ACTION_DIAGNOSTIC_PLAN_2026_11_14.md",
@@ -5232,7 +5232,177 @@
       "run_id": 43653626212,
       "tested_sha": "6fda35546c1976fe6e15bf9a2013ed0f8b98b45a",
       "job_id": 132627276146,
-      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_D0_LAUNCH_BINDING_2026_11_14.md"
+      "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_D0_LAUNCH_BINDING_2026_11_14.md",
+      "review_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_D0_GREEN_43653626212_CANONICAL_ZERO_JOINS_REVIEW_2026_11_14.md",
+      "result": {
+        "run_id": 43653626212,
+        "tested_sha": "6fda35546c1976fe6e15bf9a2013ed0f8b98b45a",
+        "job_id": 132627276146,
+        "collection_reviewed": true,
+        "strict_G5_qualification": false,
+        "case_statuses": [
+          {
+            "case": "inspector",
+            "mode": "required",
+            "returncode": 0,
+            "roots": [],
+            "status": "PASS",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "generic_zero_sum",
+            "mode": "required",
+            "returncode": 0,
+            "roots": [
+              "FCP.BFSSP3AuxHardyG5D0.finiteComplexZeroSum"
+            ],
+            "status": "PASS",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "variable_original_fock",
+            "mode": "required",
+            "returncode": 0,
+            "roots": [
+              "FCP.BFSSP3AuxHardyG5D0.variableFockZeroScalar",
+              "FCP.BFSSP3AuxHardyG5D0.variableFockZeroSum"
+            ],
+            "status": "PASS",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "native_theta_zero_sum",
+            "mode": "required",
+            "returncode": 0,
+            "roots": [
+              "FCP.BFSSP3AuxHardyG5D0.nativeThetaZeroSum"
+            ],
+            "status": "PASS",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "native_clifford_zero_join",
+            "mode": "join",
+            "returncode": 0,
+            "roots": [
+              "FCP.BFSSP3AuxHardyG5D0.nativeCliffordZero"
+            ],
+            "status": "PASS",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "tau_observation",
+            "mode": "observation",
+            "returncode": 1,
+            "roots": [],
+            "status": "OBSERVED_STOP_UNQUALIFIED",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "potential_observation",
+            "mode": "observation",
+            "returncode": 1,
+            "roots": [],
+            "status": "OBSERVED_STOP_UNQUALIFIED",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "tau_join",
+            "mode": "join",
+            "returncode": 0,
+            "roots": [
+              "FCP.BFSSP3AuxHardyG5D0.tauZeroJoin"
+            ],
+            "status": "PASS",
+            "strict_G5_qualification": false
+          },
+          {
+            "case": "potential_join",
+            "mode": "join",
+            "returncode": 0,
+            "roots": [
+              "FCP.BFSSP3AuxHardyG5D0.potentialZeroJoin"
+            ],
+            "status": "PASS",
+            "strict_G5_qualification": false
+          }
+        ],
+        "positive_proof_roots": [
+          "FCP.BFSSP3AuxHardyG5D0.finiteComplexZeroSum",
+          "FCP.BFSSP3AuxHardyG5D0.variableFockZeroScalar",
+          "FCP.BFSSP3AuxHardyG5D0.variableFockZeroSum",
+          "FCP.BFSSP3AuxHardyG5D0.nativeThetaZeroSum",
+          "FCP.BFSSP3AuxHardyG5D0.nativeCliffordZero",
+          "FCP.BFSSP3AuxHardyG5D0.tauZeroJoin",
+          "FCP.BFSSP3AuxHardyG5D0.potentialZeroJoin"
+        ],
+        "all_positive_proofs_standard_axioms": true,
+        "original_OAI_paths": 150,
+        "total_source_closure_paths": 160,
+        "manifest_sha256": "bd234c997cb78cc37ddc3c4d86f6b330042c7a8a99a17f65e0b02882951ecd4b",
+        "observations": {
+          "tau_observation": "TD_C1A_D2R2_EXPR_REPORT witness=hw raw_equal=false raw_alpha=false outer_metadata_equal=false outer_metadata_alpha=false witness_mvars=false goal_mvars=false first_difference=root.arg[1].arg[2].arg[13].fn:lhs=const:IsTopologicalAddGroup.toContinuousAdd:universes=1:rhs=const:OAI.BFSSQuantum.AlgebraData.cliffordLinear._proof_1:universes=0 root_witness=app-of:Eq:universes=1 root_goal=app-of:Eq:universes=1",
+          "potential_observation": "TD_C1A_D2R2_EXPR_REPORT witness=hw raw_equal=false raw_alpha=false outer_metadata_equal=false outer_metadata_alpha=false witness_mvars=false goal_mvars=false first_difference=root.arg[1].arg[2].arg[13].fn:lhs=const:IsTopologicalAddGroup.toContinuousAdd:universes=1:rhs=const:OAI.BFSSQuantum.AlgebraData.cliffordLinear._proof_1:universes=0 root_witness=app-of:Eq:universes=1 root_goal=app-of:Eq:universes=1"
+        },
+        "artifact_id": 14136952981,
+        "artifact_bytes": 22186,
+        "artifact_digest": "sha256:32c8c3569065ec3afbb324f4cc7120169e36e98b59afd32aa1471c568b69eb99",
+        "artifact_digest_independently_rehashed": true,
+        "durable_artifact": "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G5_D0_43653626212_evidence.zip",
+        "conclusion": "Generic, variable original Fock, original theta sum, Clifford-zero and both literal native zero-input joins pass. First raw difference is continuity-proof argument; exact nativeThetaZeroSum closes both residual goals. Raw difference is not definitional incompatibility. Entire strict G5 remains unqualified."
+      }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G5-R5",
+      "title": "Transfer tested canonical zero-sum witnesses into original strict consumer",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G5_R5_PRE_GATE_TESTED_CANONICAL_ZERO_WITNESSES_2026_11_14.md",
+      "diagnostic_run": 43653626212,
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG5OriginalPotentialTauCAR.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG5OriginalPotentialTauCARIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g5-original-potential-tau-car-strict.yml",
+      "source_blob": "9ada3167a5de3be647c51f0740b5998d4e6ea45a",
+      "helper_blob": "0398bafa58b46dfbd83ec90a65be84adb03dedf8",
+      "stages": {
+        "observation": "Generic, variable original Fock, original theta sum, Clifford-zero and both literal native zero-input joins pass. First raw difference is continuity-proof argument; exact nativeThetaZeroSum closes both residual goals. Raw difference is not definitional incompatibility. Entire strict G5 remains unqualified.",
+        "question": "Does the successful canonical-witness decomposition close both zero controls in the complete original strict G4J-importing consumer?",
+        "background": [
+          "D0 artifact independently rehashed and all seven positive root audits reviewed",
+          "Both actual native residual joins compile via exact nativeThetaZeroSum",
+          "Raw continuity-proof differences coexist with successful exact matching"
+        ],
+        "hypothesis": "Two consumer-private zero-sum witnesses copied from D0 generic/native proof decomposition allow exact closure without the failed simp-only rewrites.",
+        "falsifiers": [
+          "Either complete native zero-control still fails",
+          "Private helper elaboration differs under original G4J import context",
+          "Any source/helper/other example failure or unexpected warning/axiom",
+          "Changed source statements or removed controls"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Two consumer-private canonical zero-sum helper declarations using D0 proof bodies",
+            "Replace failed added simp-only lines by exact nativeThetaZeroSum"
+          ],
+          "dependent_variables": [
+            "Whole strict helper/source/native consumer",
+            "Six/eleven source/consumer root reports",
+            "Twelve unchanged native examples"
+          ],
+          "controls": [
+            "Original source and helper byte-identical",
+            "All existing statements/imports/other example proofs fixed",
+            "Workflow expected consumer pin only",
+            "No diagnostic module import",
+            "Same actual G4J data/donors/toolchain/budgets"
+          ]
+        },
+        "analysis_plan": "Inspect helper bodies against D0 Generic/NativeZero and two join bodies against literal D0 TauJoin/PotentialJoin; static hash/root/import/count/YAML/bash/Python checks, then unchanged full strict policy. Failure requires compare full consumer import/private helper context against successful D0; no blind simp retry.",
+        "conclusion_rule": "LEAN_QUALIFIED only after complete exact strict helper/source/native-consumer success, not from D0 collection.",
+        "communication": "Canonical witness succeeds despite continuity-proof expression differences. Whole G5 and all physical spectral conclusions remain unqualified until their own gates."
+      }
     }
   ],
   "allowed_statuses": [
