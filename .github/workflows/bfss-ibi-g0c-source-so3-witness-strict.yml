@@ -1,0 +1,139 @@
+name: BFSS IBI-G0C original source SO3 universal witness strict
+
+'on':
+  push:
+    branches: [research/bfss-incidence-unified-20261114]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSourceSO3Witness.lean
+      - lean/diagnostics/BFSSIBIG0CSourceSO3WitnessIndependentConsumer.lean
+      - .github/workflows/bfss-ibi-g0c-source-so3-witness-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-ibi-g0c-original-so3-witness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-source-so3-witness-and-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - name: Checkout exact incidence candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact original-source contract and pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-ibi-g0c-source-so3-witness"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-ibi-g0c-source-so3-witness/tested-commit.txt"
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re,subprocess
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSourceSO3Witness.lean":"0437c3f68ae392371a3954b5d48304a74cb33b29",
+            "lean/diagnostics/BFSSIBIG0CSourceSO3WitnessIndependentConsumer.lean":"6a16b24ae6921494209a44123e3b13685fc02a88",
+            "lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+            "lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Euler.lean":"ffc6fb6449800a533015cdc7b648bc5d85037ac0",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Angle.lean":"2bc7521a8f417ddd8e0e74370d3d014ddb200e2a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CXImage.lean":"999a0c66110431d1c92aaaf6ca37b21f253a9501",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CZImage.lean":"e4623ef2e7ce825575a73f96e087bee17c4872ab",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CNativeXGenerator.lean":"def779ebf09a2f1ac11ed1449c64b5b7d013a1ed",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CNativeZGenerator.lean":"4aa7884124fb1cc6497aaa78f8b4e6995c158338",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3AAdjointColorRepresentationProbe.lean":"553869f1287c64893398c3b79c04fe010023bd08"
+          }
+          for p,sha in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
+              assert got==sha,(p,sha,got)
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          pkgs=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(p["rev"] for p in pkgs if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSourceSO3Witness.lean").read_text()
+          c=Path("lean/diagnostics/BFSSIBIG0CSourceSO3WitnessIndependentConsumer.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",s)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CSO3Euler",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CXImage",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CZImage"]
+          assert re.findall(r"(?m)^import (\S+)$",c)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CSourceSO3Witness"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==[
+            "abstractRotZ_eq_sourceRotZ","abstractRotX_eq_sourceRotX",
+            "originalAdjointColorMatrix_sourceZXZ",
+            "originalBFSS_adjoint_hits_every_SO3"]
+          assert len(re.findall(r"(?m)^example\b",c))==3
+          for token in ("adjointColorMatrix_mul","originalAdjointColorMatrix_sourceZ_eq_rotZ",
+              "originalAdjointColorMatrix_sourceX_eq_rotX","sourceSO3_euler_decomp",
+              "sourceZGauge α * sourceXGauge β * sourceZGauge γ"):
+              assert token in s,token
+          for t in [s,c]:
+              assert "set_option autoImplicit false" in t
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",t)
+              assert "set_option maxHeartbeats 0" not in t
+          print("BFSS_IBI_G0C_SOURCE_SO3_WITNESS_PREFLIGHT_PASS")
+          PY
+      - name: Restore frozen Lean and Mathlib cache
+        shell: bash
+        timeout-minutes: 36
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold source and independent consumer strict axiom audit
+        shell: bash
+        timeout-minutes: 43
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          module="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CSourceSO3Witness"
+          source_file="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSourceSO3Witness.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSourceSO3Witness.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 1650s lake build "$module" 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-source-so3-witness/cold-build.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$source_file" 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-source-so3-witness/source-axioms.log"
+          timeout 420s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSIBIG0CSourceSO3WitnessIndependentConsumer.lean 2>&1 |
+            tee "$RUNNER_TEMP/bfss-ibi-g0c-source-so3-witness/independent-consumer.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-ibi-g0c-source-so3-witness"
+          for name in ("cold-build.log","source-axioms.log","independent-consumer.log"):
+              t=(root/name).read_text()
+              assert "error:" not in t and "sorryAx" not in t,(name,t[-4500:])
+              allow=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+              bad=[x for x in t.splitlines() if "warning:" in x and not allow.fullmatch(x)]
+              assert not bad,(name,bad[:10])
+          t=(root/"source-axioms.log").read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",t)
+          expected=[
+            "FCP.BFSSIBIG0CSourceSO3Witness.abstractRotZ_eq_sourceRotZ",
+            "FCP.BFSSIBIG0CSourceSO3Witness.abstractRotX_eq_sourceRotX",
+            "FCP.BFSSIBIG0CSourceSO3Witness.originalAdjointColorMatrix_sourceZXZ",
+            "FCP.BFSSIBIG0CSourceSO3Witness.originalBFSS_adjoint_hits_every_SO3"]
+          assert [name for name,_ in reports]==expected,reports
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for name,raw in reports:
+              assert {x.strip() for x in raw.split(",") if x.strip()}<=allowed,(name,raw)
+          print("BFSS_IBI_G0C_SOURCE_SO3_WITNESS_SOURCE_AND_CONSUMER_STRICT_GREEN")
+          PY
+      - name: Preserve exact original source SO3 witness evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-ibi-g0c-source-so3-witness-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-ibi-g0c-source-so3-witness/
+          if-no-files-found: warn
+          retention-days: 14
