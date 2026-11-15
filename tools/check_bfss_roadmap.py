@@ -52,8 +52,8 @@ def main():
         require(q.get("gate") == "P3-AUX-HARDY-G11" and q.get("run_id") == 43708533905
                 and a.get("qualification") is False and g12.get("qualification") is False
                 and ((a.get("status") == "PENDING_STRICT_CI" and g12.get("status") == "STAGED_UNQUALIFIED")
-                     or (a.get("status") == g12.get("status") == "RED_UNQUALIFIED"
-                         and a.get("run_id") == 43711440502
+                     or (a.get("status") in {"RED_UNQUALIFIED", "BLOCKED"} and g12.get("status") == "RED_UNQUALIFIED"
+                         and a.get("run_id") in {43711440502, 43730966120}
                          and (ROOT / g12.get("red_receipt", "__missing__")).is_file()))
                 and ((a.get("attempt") == "R1" and g12.get("prospective_receipt_commit") == "a080af0c4b08f9085d6a4dfdc1a3169541b132ac")
                      or (a.get("attempt") == "R2" and g12.get("prospective_receipt_commit") == "3a2e7cd63544cda2cded485f3f5be1f0a3683267"
@@ -72,6 +72,13 @@ def main():
             actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
             require(a.get(kind + "_blob") == g12.get(kind + "_blob") == actual == sha,
                     "G12 staged bytes drift: " + kind)
+    if bilinear_candidate and a.get("status") == "BLOCKED":
+        diagnostic = s.get("g12_typed_zero_action_diagnostic", {})
+        require(a.get("run_id") == 43730966120 and diagnostic.get("main_G12_blocked") is True
+                and diagnostic.get("prior_red_run") == 43730966120
+                and diagnostic.get("qualification") is False
+                and (ROOT / diagnostic.get("prospective_receipt", "__missing__")).is_file(),
+                "G12 repeated source boundary requires isolated diagnostic; no full retry")
     if derivative_candidate and a["status"] != "GREEN_QUALIFIED":
         g11 = s.get("parallel_auxiliary_hardy_derivative_color_contraction", {})
         require(q.get("gate") == "P3-AUX-HARDY-G10" and q.get("run_id") == 43702235044
@@ -398,9 +405,11 @@ def main():
         else:
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
-        if entry is a and bilinear_candidate and a["status"] == "RED_UNQUALIFIED":
-            require(entry.get("run_id") == 43711440502 and entry.get("manifest_pins") == 166
-                    and entry.get("manifest_hash") == "20954c2b80e5b2d0a685d79696d2602e49f721097be054abdb98a641651c2843",
+        if entry is a and bilinear_candidate and a["status"] in {"RED_UNQUALIFIED", "BLOCKED"}:
+            g12_red_manifests = {43711440502: "20954c2b80e5b2d0a685d79696d2602e49f721097be054abdb98a641651c2843",
+                                 43730966120: "2e93cecf32df8b1e6687cbb0f8db80b082c71dbc16531e42de664a6da8b89995"}
+            require(entry.get("run_id") in g12_red_manifests and entry.get("manifest_pins") == 166
+                    and entry.get("manifest_hash") == g12_red_manifests[entry["run_id"]],
                     "G12 measured red preflight missing")
         elif entry is a and derivative_candidate and a["status"] == "RED_UNQUALIFIED":
             g11_red_manifests = {
@@ -655,7 +664,7 @@ def main():
                 and focus.get("latest_qualified_run") == q["run_id"]
                 and focus.get("highest_forward_research") and focus.get("remaining_blockers")
                 and s.get("next_planned", {}).get("gate") == "P3-AUX-HARDY-G12"
-                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "PROSPECTIVE_REPAIR_NOT_STAGED"},
+                and s["next_planned"].get("status") in {"RESEARCH_DESIGN_NOT_STAGED", "PROSPECTIVE_RECEIPT_RECORDED_NOT_STAGED", "STRICT_WORKFLOW_STAGED_PENDING", "STRICT_CI_IN_PROGRESS", "PROSPECTIVE_REPAIR_NOT_STAGED", "ISOLATED_DIAGNOSTIC_REGISTERED", "ISOLATED_DIAGNOSTIC_IN_PROGRESS"},
                 "G11 predecessor, physical-H or bounded next-stage handoff missing")
         archive = (ROOT / "research/spectral-p2-original-field/diagnostics/"
                    "P3_AUX_HARDY_G11_R3_43708533905_evidence.zip")

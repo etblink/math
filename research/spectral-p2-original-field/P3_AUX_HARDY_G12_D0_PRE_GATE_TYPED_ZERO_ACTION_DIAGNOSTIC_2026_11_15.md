@@ -1,0 +1,17 @@
+# G12 D0 — typed zero-action diagnostic preregistration
+
+November 15, 2026 Pacific. REGISTERED_NOT_EXECUTED; commit before diagnostic code. Trigger: G12 R2 #43730966120, exact `2eea49ab254b0c328e130b5a646bf881acd7d19d`. Main G12 retries BLOCKED; G11 remains accepted.
+
+## Falsifiable diagnostic question
+
+Does an explicitly typed, root-qualified complex zero-action proof close the off-color continuous-linear theta-product goal, and can the same proof close a selected-color sum with the original carriers/import context? Current logs do not distinguish namespace resolution from scalar inference. Print both zero_smul and _root_.zero_smul types and the fully elaborated complex-zero operator expression; do not assert a cause before evidence.
+
+New Mathlib-only module `P3AuxHardyG12TypedZeroActionDiagnostic.lean`, namespace `FCP.BFSSP3AuxHardyG12TypedZeroActionDiagnostic`, two audited roots: complexZeroOperatorProduct and complexSelectedColorSum. Test arbitrary normed complex E, continuous-linear T,U and finite color set; zero action uses exact _root_.zero_smul ℂ (...) and the finite sum uses sum_eq_single, explicit diagonal/off-color conditionals, typed zero proof and mem_univ contradiction. No OAI or paired data imports in the generic module.
+
+New native diagnostic `BFSSP3AuxHardyG12TypedZeroActionNativeDiagnostic.lean` imports accepted G11, the existing G12 coefficient helper, original G4J paired data and the new generic diagnostic. It never imports the failed G12 main source. Use the same open source namespaces as G12. Print lemma types and typed complex operator expression. Three audited roots: originalZeroProduct, originalOffColorZero and originalSelectedColorSum, plus three literal pairedAlgebraData examples. Audit both generic donor roots as well, yielding five native reports. No full Fock bilinear or source-root promotion.
+
+New separate push workflow `bfss-p3-aux-hardy-g12-typed-zero-action-diagnostic.yml`: pins all original donors to accepted G11 source bytes, plus explicit immutable existing G12 coefficient helper and candidate diagnostic files. Expected166 closure is R2's measured166 minus failed G12 source/consumer plus two diagnostic files; recompute it in CI. Preserve Lean4.34.1/Mathlib pins, standard axioms, warning-as-error and existing overall120/cold3600/compiler500 bounds. First compile and audit the Mathlib-only diagnostic (two reports); then cold-build only accepted G11/G4J and diagnostic/helper modules, followed by a fresh strict native diagnostic (five reports/three examples). Do not compile the failed G12 main module or run its full consumer. Preserve complete evidence and explicit scope exclusions in a separate artifact. Main G12 workflow bytes and all its source/helper/consumer bytes remain fixed.
+
+Before launch require exact frozen-main-byte checks, imports/root/example counts, candidate and donor pins, YAML/bash/embedded Python compilation, preflight checks and auditor rejection fixtures, and canonical BLOCKED main checkpoint linked to D0. Local static checks are not Lean evidence.
+
+On D0 green, audit and preserve exact receipts, then preregister minimal R3; no automatic main qualification or full retry in the same unreviewed step. On D0 red, keep main blocked and reason only from isolated first-causal evidence. Full core rotation/tau norm, physical Spin9/covariance, energy/domains, Hardy/fidelity and spectral claims remain open.
