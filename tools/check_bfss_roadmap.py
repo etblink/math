@@ -62,6 +62,11 @@ def main():
                      or (a.get("attempt") == "R3" and g12.get("prospective_receipt_commit") == "443d9913145656589cc4f3ce29f76f439155e61a"
                          and g12.get("prior_red_run") == 43730966120
                          and g12.get("accepted_diagnostic_run") == 43734601883
+                         and (ROOT / g12.get("prior_red_receipt", "__missing__")).is_file())
+                     or (a.get("attempt") == "R4" and g12.get("prospective_receipt_commit") == "22b8877413feffb7467abbcb5af000613cf95d96"
+                         and g12.get("prior_red_run") == 43738033537
+                         and g12.get("source_strict_verified_in_prior_run") == 43738033537
+                         and g12.get("accepted_diagnostic_run") == 43734601883
                          and (ROOT / g12.get("prior_red_receipt", "__missing__")).is_file()))
                 and g12.get("reviewed_original_baseline") == "7459e472085a6ef9b3c5c8352073ea1bafa6645e"
                 and (ROOT / g12.get("prospective_receipt", "__missing__")).is_file()
@@ -69,7 +74,7 @@ def main():
                 and g12.get("expected_source_roots") == 6 and g12.get("expected_consumer_reports") == 12
                 and g12.get("early_helper_reports") == [1, 3, 1] and g12.get("native_examples") == 12,
                 "G12 cannot bypass accepted G11 or its exact prospective contract")
-        for kind, sha in {'source': ('f6296a909dcd84a9800012f18f55f7005866cb59' if a.get('attempt') == 'R3' else ('80ea179d9e2afa223bda77ce0d62af6ab61db422' if a.get('attempt') == 'R2' else '567661beef53c27fb8d3a3282a580e296c992962')), 'helper': '2c0b07a603a94ad18342a53a5d88eaad5345cb5d', 'consumer': '13f5557809b7ecce2dfeb60d2988febcd85bf529', 'workflow': ('a6671b7de617bae1df3c1925286d50ae35d1ef3e' if a.get('attempt') == 'R3' else ('a90a4f2b04623abdfe7b1db860b3716f0d60d570' if a.get('attempt') == 'R2' else 'd987f7e02dfe98be035d1710409f1ad04601ddc9'))}.items():
+        for kind, sha in {'source': ('f6296a909dcd84a9800012f18f55f7005866cb59' if a.get('attempt') in {'R3', 'R4'} else ('80ea179d9e2afa223bda77ce0d62af6ab61db422' if a.get('attempt') == 'R2' else '567661beef53c27fb8d3a3282a580e296c992962')), 'helper': '2c0b07a603a94ad18342a53a5d88eaad5345cb5d', 'consumer': ('77b70b7a906d26befcc2f08ab71fa3478c4da0d0' if a.get('attempt') == 'R4' else '13f5557809b7ecce2dfeb60d2988febcd85bf529'), 'workflow': ('440e10c2736994e5fa90c2c604fd8481dd703d88' if a.get('attempt') == 'R4' else ('a6671b7de617bae1df3c1925286d50ae35d1ef3e' if a.get('attempt') == 'R3' else ('a90a4f2b04623abdfe7b1db860b3716f0d60d570' if a.get('attempt') == 'R2' else 'd987f7e02dfe98be035d1710409f1ad04601ddc9')))}.items():
             require(a.get(kind) == g12.get(kind) and (ROOT / g12[kind]).is_file(),
                     "G12 registration path drift: " + kind)
             data = (ROOT / g12[kind]).read_bytes()
@@ -143,7 +148,12 @@ def main():
                          and s.get("g12_r3_prospective", {}).get("prospective_receipt_commit") == "443d9913145656589cc4f3ce29f76f439155e61a"
                          and s["g12_r3_prospective"].get("accepted_diagnostic_commit") == "bbeb8f0dd2cfe2f6bfc9794963db71683142fb97"
                          and s["g12_r3_prospective"].get("qualification") is False
-                         and (ROOT / s["g12_r3_prospective"].get("prospective_receipt", "__missing__")).is_file())),
+                         and (ROOT / s["g12_r3_prospective"].get("prospective_receipt", "__missing__")).is_file())
+                     or (a.get("attempt") == "R4" and a.get("status") == "PENDING_STRICT_CI"
+                         and s.get("g12_r4_prospective", {}).get("prospective_receipt_commit") == "22b8877413feffb7467abbcb5af000613cf95d96"
+                         and s["g12_r4_prospective"].get("accepted_diagnostic_run") == 43734601883
+                         and s["g12_r4_prospective"].get("qualification") is False
+                         and (ROOT / s["g12_r4_prospective"].get("prospective_receipt", "__missing__")).is_file())),
                 "D0 acceptance alone cannot reopen full G12 without separate R3 contract")
     if derivative_candidate and a["status"] != "GREEN_QUALIFIED":
         g11 = s.get("parallel_auxiliary_hardy_derivative_color_contraction", {})

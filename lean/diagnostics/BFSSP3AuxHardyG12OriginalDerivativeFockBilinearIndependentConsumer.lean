@@ -71,7 +71,19 @@ example (i j : SpaceIndex) (hij : i ≠ j) (X : Boson 2) :
   rw [originalKineticTauDerivativeFermion_eq_bilinear pairedAlgebraData j i (Ne.symm hij) X,
     originalKineticTauDerivativeFermion_eq_bilinear pairedAlgebraData i j hij X,
     OAI.BFSSGamma.gamma_anti pairedAlgebraData.gamma pairedAlgebraData.gamma_clifford (Ne.symm hij)]
-  simp
+  simp only [Matrix.neg_apply, Complex.ofReal_neg, mul_neg]
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro B _
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro β _
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro δ _
+  exact _root_.neg_smul
+    ((1 / 4 : ℂ) * ((pairedAlgebraData.gamma i * pairedAlgebraData.gamma j) β δ : ℂ))
+    (pairedAlgebraData.theta β B * pairedAlgebraData.theta δ B)
 
 example (i j : SpaceIndex) (hij : i ≠ j) (X : Boson 2) :
     (4 : ℂ) • originalKineticTauDerivativeFermion pairedAlgebraData i j X =
