@@ -5463,6 +5463,72 @@
           "tau_real_coefficient_selfAdjoint_control": true
         }
       }
+    },
+    {
+      "id": "E-P3-AUX-HARDY-G6-R1",
+      "title": "Bind accepted Fock potential to literal original Core charge potential",
+      "registered_at": "2026-11-14",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/spectral-p2-original-field/P3_AUX_HARDY_G6_R1_PRE_GATE_ORIGINAL_CORE_POTENTIAL_BINDING_2026_11_14.md",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG6OriginalCorePotentialBinding.lean",
+      "independent_consumer": "lean/diagnostics/BFSSP3AuxHardyG6OriginalCorePotentialBindingIndependentConsumer.lean",
+      "workflow": ".github/workflows/bfss-p3-aux-hardy-g6-original-core-potential-binding-strict.yml",
+      "roots": [
+        "originalPotentialGamma_eq_sourceCoefficient",
+        "originalPotentialFermion_eq_sourceMultiplier",
+        "originalPotentialFermion_eq_bracketMultiplier",
+        "originalCharge_apply_kinetic_add_potential",
+        "originalBracketPart_apply_potential",
+        "originalBracketMultiplier_tau_anticommutator_zero"
+      ],
+      "donor_roots": [
+        "FCP.BFSSP3AuxHardyG4OriginalPotentialYCancellation.originalPotentialGamma_apply",
+        "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalPotentialTau_anticommutator_zero",
+        "FCP.BFSSSU2GaugeG4K9C.sourceMasslessCoefficient_eq_halfOriginalOrdered",
+        "FCP.BFSSSU2GaugeG4K9D.sourcePotentialMultipliers_equal",
+        "OAI.BFSSQuantum.AlgebraData.charge_kinetic_plus_bracket",
+        "OAI.BFSSQuantum.AlgebraData.bracketPart_apply"
+      ],
+      "stages": {
+        "observation": "G5 proves pointwise coefficient-defined Fock cancellation, but the literal Core potential association is not yet qualified. Recovered K9C/D and Kinetic already supply exact source normalization and six-sum binding machinery.",
+        "question": "Can accepted originalPotentialGamma and originalPotentialFermion be identified with original massless coefficient/multiplier/bracketMultiplier, then original SmoothCore charge and bracketPart without adding an agreement premise?",
+        "background": [
+          "Accepted G5 strict43662023823",
+          "Original Kinetic bracketMultiplier literal six-sum and charge_kinetic_plus_bracket/bracketPart_apply read",
+          "Recovered K9A/B/C/D exact source coefficient orientation and one-half factor read",
+          "PotentialBasis coefficients use transposed beta-alpha entry; K9A sign/skew conversion is essential"
+        ],
+        "hypothesis": "G4 entry expansion and K9C ordered coefficient give component equality; congrArg cliffordLinear and K9D give operator equality; existing Kinetic identities bind actual SmoothCore charge and transfer G5 cancellation.",
+        "falsifiers": [
+          "Index transpose/sign/one-half mismatch",
+          "Recovered donor fails fresh source or native audit",
+          "New abstract potential-agreement premise",
+          "Native full-carrier conversion fails",
+          "Changed accepted source/helper/donor bytes or resource limits"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Six source adapter theorems using existing original source lemmas"
+          ],
+          "dependent_variables": [
+            "Fresh six source roots",
+            "Native consumer six new plus six donor reports",
+            "Literal source field/charge/bracketPart identities and conditional wrong-index/wrong-factor controls"
+          ],
+          "controls": [
+            "Original G5/Core/Kinetic/K9 sources immutable at accepted24789946 baseline",
+            "No new Clifford/Fock/carrier",
+            "Original G4J paired data and actual SmoothCore2",
+            "Early accepted generic evaluation helper audit retained",
+            "Same Lean4.34.1/Mathlib pins and budgets"
+          ]
+        },
+        "analysis_plan": "First real coefficient equality via four finite sum congruences/ring; then exact original operator equality, original charge/bracketPart pointwise formulas and original bracket-tau cancellation. Fresh-compile imported recovered K9C/D bytes and independently audit native donor applications. Any failure preserve first causal typed boundary before edits.",
+        "conclusion_rule": "LEAN_QUALIFIED only on full new source/native consumer strict success. Original charge/tau full differential identity, closed domains, physical Spin9/Hardy/fidelity remain separate.",
+        "communication": "This source-binding gate identifies the same original potential and preserves exact indices/factors; it is not a new Hamiltonian or ground-state claim."
+      }
     }
   ],
   "allowed_statuses": [
