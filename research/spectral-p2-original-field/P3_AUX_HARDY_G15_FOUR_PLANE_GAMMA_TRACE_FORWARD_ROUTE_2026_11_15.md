@@ -1,6 +1,6 @@
 # G15 next-stage forward research — source four-plane gamma trace contraction
 
-**2026-11-15; PROSPECTIVE / NOT LEAN-QUALIFIED.** G15 R4 strict [#43763173942](https://github.com/etblink/math/actions/runs/43763173942) is in progress at exact tested `4d45f9c3bd1b3b2e94c7d23e2576a8fb87a65166`. G14 remains last qualified full gate. Do not promote the present calculation to verified physical Hardy or even a new Lean theorem until exact source and consumer pass.
+**2026-11-15; PROSPECTIVE NUMERICAL CLAIM / NOT LEAN-QUALIFIED.** G15 R4 strict [#43763173942](https://github.com/etblink/math/actions/runs/43763173942) completed GREEN at exact tested `4d45f9c3bd1b3b2e94c7d23e2576a8fb87a65166` and its independent audit plus roadmap [#43766043356](https://github.com/etblink/math/actions/runs/43766043356) accepted G15 as the last fully qualified gate. G16 D0 (finite counts only) has been staged separately; see its preregistration and independent R1/R2 receipts. Do not promote the numerical coefficient identity to verified original-source gamma or physical Hardy without a full exact bridge and native consumer.
 
 ## Source-exact target (1-based physics indices)
 
