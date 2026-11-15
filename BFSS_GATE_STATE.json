@@ -46,12 +46,12 @@
   "active": {
     "gate": "P3-AUX-HARDY-G10",
     "attempt": "R2",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "candidate_sha": "232c40b89bbdc3579f9ba59f5063967351c644cd",
     "candidate_sha_scope": "Exact tested workflow head",
     "run_id": 43700520096,
-    "manifest_pins": null,
+    "manifest_pins": 163,
     "expected_manifest_pins": 163,
     "last_qualified_gate": "P3-AUX-HARDY-G9",
     "last_qualified_run_id": 43681465949,
@@ -64,7 +64,10 @@
     "workflow_blob": "5e126c42ae799170ee6d4aeca33172747eaa3fc4",
     "workflow_tested_head_sha": "232c40b89bbdc3579f9ba59f5063967351c644cd",
     "job_id": 132770419918,
-    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_LAUNCH_BINDING_2026_11_15.md"
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_LAUNCH_BINDING_2026_11_15.md",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_RED_43700520096_NATIVE_CONTROL_PROOF_TAILS_2026_11_15.md",
+    "manifest_hash": "cb3bf548628c0368cc648a905a7969308b2a760f7e4eb7d1af1c3df6f829aa62",
+    "first_causal_failure": "Native example7 reverse inequality goal; example8 unused simp argument; same pair repeats in examples10/12"
   },
   "if_green": "Qualify only the pointwise orbital CAR coefficient on complete G10 strict success; preserve exact receipts before preregistering the coefficient-derivative fermion contraction and later core rotation assembly.",
   "if_red": "Preserve exact first causal G10 failure. Repeated native conversion => separately preregistered typed diagnostic; two analogous reds => architecture review. No resource escalation or unchanged retry.",
@@ -120,7 +123,7 @@
   },
   "next_planned": {
     "gate": "P3-AUX-HARDY-G10",
-    "status": "STRICT_CI_IN_PROGRESS",
+    "status": "RED_UNQUALIFIED_REPAIR_PENDING",
     "milestone": "M5 original-source Hardy algebra",
     "goal": "Pointwise original kinetic/tau orbital CAR contraction; coefficient-derivative fermion contraction and actual core assembly remain later.",
     "accepted_predecessor_run": 43681465949,
@@ -131,7 +134,7 @@
     "if_green": "Preserve exact source/native receipts, then assemble the actual on-core charge/tau rotation identity and separately qualify tau norm.",
     "if_red": "Preserve first causal error; isolate generic finite algebra before native conversion; no unchanged native retry or resource escalation.",
     "pre_gate_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_PRE_GATE_CURRENT_ONE_APPLY_LEMMA_2026_11_15.md",
-    "repair_contract": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_PRE_GATE_CURRENT_ONE_APPLY_LEMMA_2026_11_15.md"
+    "repair_contract": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_PRE_GATE_EXPLICIT_NATIVE_CONTROL_TAILS_2026_11_15.md"
   },
   "evidence_ledger_latest": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R4_GREEN_43681465949_ORIGINAL_ENTRY_DERIVATIVE_ACCEPTANCE_2026_11_15.md",
   "monograph_alignment": {
@@ -6450,7 +6453,7 @@
     "certificate": "F >= max(0, 1 - kappa * q_epsilon[psi]); kappa and normalization require original-source justification",
     "latest_qualified_gate": "P3-AUX-HARDY-G9",
     "latest_qualified_run": 43681465949,
-    "immediate_proof": "G10 R2 strict #43700520096 at 232c40b8 running/unqualified: only compiler-recommended identity-evaluation lemma rename. Consumer/statements/budgets fixed; R1 red preserved; G9 accepted.",
+    "immediate_proof": "G10 R2 #43700520096 RED in four native proof tails; helpers/cold build/fresh source and all named reports clean. R3 bounded consumer repair preregistered, unstaged; source frozen; G9 accepted.",
     "highest_forward_research": [
       "Genuine physical Spin9 vector action and reducing spinor sector",
       "Singlet-to-spinor covariance of the original sixteen charges",
@@ -7245,7 +7248,7 @@
   },
   "parallel_auxiliary_hardy_kinetic_tau_car": {
     "gate": "P3-AUX-HARDY-G10",
-    "status": "STAGED_UNQUALIFIED",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_PRE_GATE_CURRENT_ONE_APPLY_LEMMA_2026_11_15.md",
     "accepted_predecessor_run": 43681465949,
@@ -7283,7 +7286,7 @@
     "source_staged": true,
     "consumer_staged": true,
     "workflow_staged": true,
-    "manifest_pin_count": null,
+    "manifest_pin_count": 163,
     "static_checks": {
       "status": "STATIC_PASS_NOT_LEAN",
       "hashes": {
@@ -7315,15 +7318,16 @@
     "run_id": 43700520096,
     "tested_sha": "232c40b89bbdc3579f9ba59f5063967351c644cd",
     "job_id": 132770419918,
-    "run_last_observed_status": "in_progress",
-    "run_conclusion": null,
+    "run_last_observed_status": "completed",
+    "run_conclusion": "failure",
     "attempt": "R2",
     "prior_red_run": 43699086864,
     "prior_red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_RED_43699086864_DEPRECATED_ONE_APPLY_2026_11_15.md",
     "old_source_blob": "911ff8824b9c95005511aed22f25da4d0edb97f0",
     "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_LAUNCH_BINDING_2026_11_15.md",
     "administrative_run": 43700520075,
-    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION"
+    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_RED_43700520096_NATIVE_CONTROL_PROOF_TAILS_2026_11_15.md"
   },
   "prior_active_before_G10": {
     "gate": "P3-AUX-HARDY-G9",
@@ -7455,5 +7459,110 @@
     "tested_sha": "232c40b89bbdc3579f9ba59f5063967351c644cd",
     "job_id": 132770419918,
     "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_LAUNCH_BINDING_2026_11_15.md"
+  },
+  "parallel_auxiliary_hardy_kinetic_tau_car_R2_red": {
+    "gate": "P3-AUX-HARDY-G10",
+    "status": "RED_UNQUALIFIED",
+    "qualification": false,
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_PRE_GATE_CURRENT_ONE_APPLY_LEMMA_2026_11_15.md",
+    "accepted_predecessor_run": 43681465949,
+    "reviewed_original_baseline": "e22dda02233c1e703cbb092e2ee705c3b169519a",
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG10OriginalKineticTauCAR.lean",
+    "consumer": "lean/diagnostics/BFSSP3AuxHardyG10OriginalKineticTauCARIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-p3-aux-hardy-g10-original-kinetic-tau-car-strict.yml",
+    "expected_manifest_pin_count": 163,
+    "expected_source_roots": 6,
+    "expected_consumer_reports": 12,
+    "native_examples": 12,
+    "scope": "Only pointwise orbital coefficient; no coefficient-derivative fermion contraction or full core rotation.",
+    "preimplementation_donor_check": "Existing G5 finite anticommutator evaluation helper is zero-only. Reuse its explicit congrArg/finite evaluation pattern for the new nonzero scalar identity; do not misapply its statement or change helper source.",
+    "source_blob": "59aaed1da894e8b91b2df51eda6f47a37cf4c517",
+    "consumer_blob": "ed4507504ac58eef9bcb4299bb8092c9b9679b75",
+    "workflow_blob": "5e126c42ae799170ee6d4aeca33172747eaa3fc4",
+    "roots": [
+      "originalKineticFermion",
+      "originalKineticFermion_apply",
+      "originalKineticCoefficient_basis",
+      "originalKineticTauCoefficient_trace",
+      "originalKineticTau_anticommutator",
+      "originalKineticTau_anticommutator_apply"
+    ],
+    "donor_roots": [
+      "OAI.BFSSQuantum.AlgebraData.kineticSymbol_apply",
+      "OAI.BFSSQuantum.AlgebraData.principalCoefficients_basis",
+      "OAI.BFSSQuantum.AlgebraData.cliffordLinear_mixed",
+      "FCP.BFSSP3AuxHardyG2OriginalPlaneCoefficientTrace.originalHardyY_trace",
+      "FCP.BFSSP3AuxHardyG5OriginalPotentialTauCAR.originalHardyTau_apply",
+      "FCP.BFSSP3AuxHardyG9OriginalYEntryDerivativeBinding.originalHardyTauCoefficientDerivative_eq_basis"
+    ],
+    "explicit_pins": 20,
+    "prospective_receipt_commit": "ec6af36c579d35cdee9ad6eb87efd08092dbb57a",
+    "source_staged": true,
+    "consumer_staged": true,
+    "workflow_staged": true,
+    "manifest_pin_count": 163,
+    "static_checks": {
+      "status": "STATIC_PASS_NOT_LEAN",
+      "hashes": {
+        "source_blob": "59aaed1da894e8b91b2df51eda6f47a37cf4c517",
+        "consumer_blob": "ed4507504ac58eef9bcb4299bb8092c9b9679b75",
+        "workflow_blob": "5e126c42ae799170ee6d4aeca33172747eaa3fc4"
+      },
+      "source_roots": 6,
+      "consumer_reports": 12,
+      "native_examples": 12,
+      "early_helper_reports": [
+        1,
+        3
+      ],
+      "expected_transitive_pins_from_G9_closure_and_unchanged_imports": 163,
+      "explicit_pins": 20,
+      "present_local_pin_files_verified": 6,
+      "complete_recursive_pin_recomputation": "REQUIRED_IN_FRESH_CI_NOT_AVAILABLE_LOCALLY",
+      "yaml_bash_four_python_blocks_and_literal_preflight_assertions": "PASS",
+      "strict_auditor_positive_and_five_negative_fixtures": "PASS",
+      "toolchain_warning_axiom_and_resource_policy_unchanged": true,
+      "local_Lean_available": false,
+      "source_only_compiler_recommended_lemma_rename": true,
+      "entire_consumer_byte_identical": true,
+      "workflow_only_source_pin_changed": true,
+      "checkpoint_five_negative_fixtures": "PASS",
+      "R1_measured_manifest_pins": 163
+    },
+    "run_id": 43700520096,
+    "tested_sha": "232c40b89bbdc3579f9ba59f5063967351c644cd",
+    "job_id": 132770419918,
+    "run_last_observed_status": "in_progress",
+    "run_conclusion": null,
+    "attempt": "R2",
+    "prior_red_run": 43699086864,
+    "prior_red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R1_RED_43699086864_DEPRECATED_ONE_APPLY_2026_11_15.md",
+    "old_source_blob": "911ff8824b9c95005511aed22f25da4d0edb97f0",
+    "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_LAUNCH_BINDING_2026_11_15.md",
+    "administrative_run": 43700520075,
+    "administrative_result": "PENDING_SEPARATE_FROM_STRICT_QUALIFICATION",
+    "red_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R2_RED_43700520096_NATIVE_CONTROL_PROOF_TAILS_2026_11_15.md",
+    "manifest_hash": "cb3bf548628c0368cc648a905a7969308b2a760f7e4eb7d1af1c3df6f829aa62",
+    "artifact_id": 14156322640,
+    "artifact_size_bytes": 22078,
+    "digest": "sha256:4c2836a467aebc33cd0b2ae2ed5d96f0c8d43a8106909d68479f218262284c21",
+    "first_causal": "Native example7 reverse inequality goal; example8 unused simp argument; same pair repeats in examples10/12",
+    "cold_build_jobs": 9085,
+    "early_helper_reports": [
+      1,
+      3
+    ],
+    "source_reports": 6,
+    "consumer_reports": 12,
+    "all_named_reports_standard_axioms_only": true,
+    "native_controls_passed": false
+  },
+  "parallel_auxiliary_hardy_kinetic_tau_car_R3_prospective": {
+    "status": "REGISTERED_NOT_EXECUTED",
+    "prospective_receipt": "research/spectral-p2-original-field/P3_AUX_HARDY_G10_R3_PRE_GATE_EXPLICIT_NATIVE_CONTROL_TAILS_2026_11_15.md",
+    "prior_red_run": 43700520096,
+    "qualification": false,
+    "repair": "Only four native control proof tails; freeze the clean source and all statements",
+    "stop": "Repeated reverse-inequality/native control boundary => isolated diagnostic before another full retry"
   }
 }

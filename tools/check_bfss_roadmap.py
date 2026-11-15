@@ -51,7 +51,7 @@ def main():
                 and a.get("qualification") is False and g10.get("qualification") is False
                 and ((a.get("status") == "PENDING_STRICT_CI" and g10.get("status") == "STAGED_UNQUALIFIED")
                      or (a.get("status") == g10.get("status") == "RED_UNQUALIFIED"
-                         and a.get("run_id") == 43699086864
+                         and a.get("run_id") in {43699086864, 43700520096}
                          and (ROOT / g10.get("red_receipt", "__missing__")).is_file()))
                 and ((a.get("attempt") == "R1"
                       and g10.get("prospective_receipt_commit") == "17360e8d15784bc2b19425edb7708564474b7a44")
@@ -329,8 +329,12 @@ def main():
             require(isinstance(entry.get("run_id"), int) and entry["run_id"] > 0,
                     "missing or invalid run ID")
         if entry is a and kinetic_candidate and a["status"] == "RED_UNQUALIFIED":
-            require(entry.get("run_id") == 43699086864 and entry.get("manifest_pins") == 163
-                    and entry.get("manifest_hash") == "9f8d89f87571dba21fd345fd730ea4c062f78a8d3f50236091407fd8ec411ac8",
+            g10_red_manifests = {
+                43699086864: "9f8d89f87571dba21fd345fd730ea4c062f78a8d3f50236091407fd8ec411ac8",
+                43700520096: "cb3bf548628c0368cc648a905a7969308b2a760f7e4eb7d1af1c3df6f829aa62",
+            }
+            require(entry.get("run_id") in g10_red_manifests and entry.get("manifest_pins") == 163
+                    and entry.get("manifest_hash") == g10_red_manifests[entry["run_id"]],
                     "G10 measured red preflight missing")
         elif entry is a and auxiliary_candidate and a["status"] == "RED_UNQUALIFIED":
             red_manifests = {
