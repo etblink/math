@@ -39,6 +39,8 @@ This remains a conditional target. The original-source constant, normalization, 
 
 **G11 R1 STAGED / UNQUALIFIED:** [contract](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R1_PRE_GATE_ORIGINAL_DERIVATIVE_COLOR_CONTRACTION_2026_11_15.md) committed at `52436389` before proof code. Source `6f769ce6641ca327c13fc0a61d77496b85fe63c5`, consumer `c0470c8a91adf6548da0348ae8c02cb59cd97955`, workflow `b741f6366b44d1d0a4afdb6d1a578edf592be95b`. Static hashes/imports/roots/examples/YAML/bash/four Python/literal preflight and positive-five-negative strict-auditor fixtures PASS; no local Lean or complete local recursive closure. Fresh CI must measure164 pins and pass helpers1+3/source6/native12/all12 controls. Existing sources/resources fixed; G10 accepted; final Fock bilinear/core assembly excluded.
 
+**G11 R1 strict launch bound:** [#43704688425](https://github.com/etblink/math/actions/runs/43704688425), exact `c171140ef465d1b9bdb0efca4b2749622ef9c913`, job132783129968. Observed in progress at checkout; expected164 pins/helpers1+3/source6/native12/all12 controls pending. [Launch receipt](research/spectral-p2-original-field/P3_AUX_HARDY_G11_R1_LAUNCH_BINDING_2026_11_15.md). G10 acceptance/evidence and G11 contract committed before advancing. Existing sources/resources fixed; final Fock bilinear/core assembly excluded.
+
 ## Historical G10 receipts — superseded by the current focus
 
 The staged/running labels below record their own as-of states. G10 is accepted above; all negative and launch receipts remain preserved.
