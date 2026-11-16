@@ -41,4 +41,28 @@ K(A)=\frac14\sum_{p,q\in\mathrm{Source48Label}} A_{pq}\,c_p c_q.
 Using qualified LB0 summands plus `A_{pq}=-A_{qp}`, derive
 `[K(A),c_k]=∑_p A_{pk}c_p` (the factor 1/4 is fixed by CAR, not adjustable) and `K(A)†=-K(A)`. The diagonal terms cancel in a real skew `A`. First isolate algebraic finite-sum identities; only afterward use `F10BB` original `so(9)→so(16)` LieHom and the source `gamma16ToOriginalPaired48` transport to construct the source-`so(9)` Fock-vector infinitesimal action. A later separately qualified Lie bracket/generator-to-group integration theorem is required for a global source Spin9 physical Fock unitary. Gauge SU2, bosonic pullback, source supercharges and their joint invariant domain remain distinct proofs.
 
+## Finite-sum K(A) proof architecture to test AFTER source LB0 qualification
+
+A potentially less fragile equivalent definition for any REAL `Source48Label`-indexed matrix `A` is
+
+\[
+K_{\mathrm{anti}}(A)=\frac18\sum_{p,q} A_{pq}(c_pc_q-c_qc_p).
+\]
+
+The term `c_pc_q-c_qc_p` is skew-adjoint for any original source `p,q` (including the diagonal where it vanishes), provided each actual normalized `c_p` is Hilbert-self-adjoint. Thus for REAL `A`, `K_anti(A)†=-K_anti(A)` can be proved **without** using skewness of `A`, avoiding expensive early matrix reindexing. For `Aᵀ=-A`, finite `Finset.sum_comm` plus `A_{qp}=-A_{pq}` yields the exact desired
+
+\[
+K_{\mathrm{anti}}(A)=K(A)=\frac14\sum_{p,q} A_{pq}c_pc_q.
+\]
+
+This equality is a **required** source theorem, not a silent change in the physical K normalization. From the LB0 triple formula, the exact finite commutator expansion is
+
+\[
+[K(A),c_k]=\frac12\sum_p A_{pk}c_p
+          -\frac12\sum_q A_{kq}c_q
+          =\sum_p A_{pk}c_p
+\]
+
+where the final equality uses **real skewness** `A_{kq}=-A_{qk}` and the exact 1/4 coefficient. Prove scalar-to-operator commutation and `Finset.sum_mul` / `Finset.mul_sum` as separate abstract algebraic lemmas, then bind the actual `sourceNormalizedGamma` on `Fermion 2`, then evaluate the exact original paired color transport. This is a recommended *proof plan*, not accepted Lean or a new source declaration.
+
 **Stop rule:** even complete finite `K(A)` CAR covariance is not a physical 16-supercharge equality, Hardy/fidelity theorem or gap result. The operator-HS identity singlet remains distinct from a physical Fock-vector singlet. Do not change `main` or create separate research branches; preserve exact failed and accepted records on unified.
