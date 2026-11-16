@@ -28,7 +28,7 @@ theorem originalAdjointColorMatrix_mem_SO3 (g : GaugeGroup 2) :
     FCP.BFSSSU2GaugeG3A.adjointColorMatrix g ∈
       Matrix.specialOrthogonalGroup (Fin 3) ℝ := by
   apply Matrix.mem_specialOrthogonalGroup_iff.mpr
-  exact ⟨Matrix.mem_orthogonalGroup_iff'.mpr
+  exact ⟨(Matrix.mem_orthogonalGroup_iff' (Fin 3) ℝ).mpr
       (FCP.BFSSSU2GaugeG3A.adjointColorMatrix_orthogonal g),
     FCP.BFSSIBIG0B1NativeDetOne.originalAdjointColorMatrix_det_one g⟩
 
