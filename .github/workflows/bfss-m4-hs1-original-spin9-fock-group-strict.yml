@@ -35,7 +35,7 @@ jobs:
           import re,json,subprocess
           from pathlib import Path
           pins={
-            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS1OriginalSpin9FockHSUnitaryGroupAction.lean":"fdcc4774534c7cad81ac0b484ae5109e76bae84b",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS1OriginalSpin9FockHSUnitaryGroupAction.lean":"a9c7b74e358eef4a56c2ae11eca5f138842d55a8",
             "lean/diagnostics/BFSSP3M4HS1OriginalSpin9FockHSUnitaryGroupIndependentConsumer.lean":"2f615ef5d62eceb9b47d4e0bbc5b00e21bb50622",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS0OriginalSpin9FockHSIsometry.lean":"780850642b475c53a91fb4c5dd91c3c6f46a1839",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB3OriginalFockStarAutomorphismAction.lean":"b50ef04695587b267ad8519074b1293f98828749",
@@ -90,9 +90,9 @@ jobs:
           source "$HOME/.elan/env"
           cd lean
           root="$RUNNER_TEMP/bfss-m4-hs1"
-          mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4HS0OriginalSpin9FockHSIsometry"
+          mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4HS1OriginalSpin9FockHSUnitaryGroupAction"
           src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS1OriginalSpin9FockHSUnitaryGroupAction.lean"
-          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS0OriginalSpin9FockHSIsometry.olean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS1OriginalSpin9FockHSUnitaryGroupAction.olean"
           rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
           timeout 1900s lake build "$mod" 2>&1 | tee "$root/cold-native-source.log"
           timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee "$root/source-axioms.log"
