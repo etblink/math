@@ -94,7 +94,12 @@ theorem originalMajorana_bivector_skewAdjoint
   have hcar :
       sourceNormalizedGamma p * sourceNormalizedGamma q +
         sourceNormalizedGamma q * sourceNormalizedGamma p = (0 : Op) := by
-    simpa [hpq] using (sourceNormalizedGamma_pairwise_CAR p q)
+    calc
+      sourceNormalizedGamma p * sourceNormalizedGamma q +
+          sourceNormalizedGamma q * sourceNormalizedGamma p =
+          (0 : ℂ) • (1 : Op) := by
+            simpa [hpq] using (sourceNormalizedGamma_pairwise_CAR p q)
+      _ = (0 : Op) := zero_smul ℂ (1 : Op)
   calc
     star (sourceNormalizedGamma p * sourceNormalizedGamma q) =
       ContinuousLinearMap.adjoint
