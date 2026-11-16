@@ -75,6 +75,7 @@ jobs:
           cd lean
           root="$RUNNER_TEMP/bfss-m4-lb1l2"
           timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1L2AbstractOriginalFockCovarianceLeibniz 2>&1 | tee "$root/cold-source.log"
+          timeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean 2>&1 | tee "$root/source-axioms.log"
           timeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibnizIndependentConsumer.lean 2>&1 | tee "$root/independent-consumer.log"
           python3 - <<'PY'
           import os,re
@@ -82,14 +83,15 @@ jobs:
           root=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-lb1l2"
           allowed={"propext","Classical.choice","Quot.sound"}
           allowed_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
-          for file in ("cold-source.log","independent-consumer.log"):
+          for file in ("cold-source.log","source-axioms.log","independent-consumer.log"):
               t=(root/file).read_text()
               assert "error:" not in t and "sorryAx" not in t,(file,t[-9000:])
               bad=[line for line in t.splitlines() if "warning:" in line and not allowed_warning.fullmatch(line)]
               assert not bad,(file,bad[:12])
-          s=(root/"cold-source.log").read_text()
+          build=(root/"cold-source.log").read_text()
+          s=(root/"source-axioms.log").read_text()
           c=(root/"independent-consumer.log").read_text()
-          assert "Build completed successfully" in s
+          assert "Build completed successfully" in build
           targets=["originalFock_product_covariance_from_two_hypotheses","originalFock_indexed_product_covariance","originalFock_product_covariance_from_two_hypotheses_consumer","originalFock_indexed_product_covariance_consumer"]
           reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",s+"\n"+c)
           seen={}
