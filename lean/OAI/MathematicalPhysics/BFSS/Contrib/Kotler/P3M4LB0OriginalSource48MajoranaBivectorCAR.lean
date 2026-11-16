@@ -103,10 +103,8 @@ theorem originalMajorana_bivector_skewAdjoint
         (sourceNormalizedGamma p ∘L sourceNormalizedGamma q) =
           sourceNormalizedGamma q ∘L sourceNormalizedGamma p
       rw [ContinuousLinearMap.adjoint_comp,
-        (sourceNormalizedGamma q).selfAdjoint_iff.mp
-          (sourceNormalizedGamma_selfAdjoint q),
-        (sourceNormalizedGamma p).selfAdjoint_iff.mp
-          (sourceNormalizedGamma_selfAdjoint p)]
+        (sourceNormalizedGamma_selfAdjoint q).adjoint_eq,
+        (sourceNormalizedGamma_selfAdjoint p).adjoint_eq]
     _ = -(sourceNormalizedGamma p * sourceNormalizedGamma q) := by
       linear_combination hcar
 
