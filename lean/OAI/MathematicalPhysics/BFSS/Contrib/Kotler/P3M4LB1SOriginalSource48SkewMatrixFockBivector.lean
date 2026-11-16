@@ -135,7 +135,7 @@ theorem originalSource48BivectorK_skewAdjoint
         rw [hd, zero_div]
         exact originalRealZero_smul_FockOp _
       rw [hz, neg_zero]
-      exact star_zero
+      exact star_zero Op
     · rw [hrealStar, originalMajorana_bivector_skewAdjoint p q hpq]
       rw [smul_neg]
   let f : Source48Label → Source48Label → Op :=
