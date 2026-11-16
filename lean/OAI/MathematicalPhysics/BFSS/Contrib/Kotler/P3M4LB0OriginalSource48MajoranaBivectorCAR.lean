@@ -91,8 +91,10 @@ theorem originalMajorana_bivector_skewAdjoint
     (p q : Source48Label) (hpq : p ≠ q) :
     star (sourceNormalizedGamma p * sourceNormalizedGamma q) =
       -(sourceNormalizedGamma p * sourceNormalizedGamma q) := by
-  have hcar := sourceNormalizedGamma_pairwise_CAR p q
-  simp only [if_neg hpq, zero_smul] at hcar
+  have hcar :
+      sourceNormalizedGamma p * sourceNormalizedGamma q +
+        sourceNormalizedGamma q * sourceNormalizedGamma p = (0 : Op) := by
+    simpa [hpq] using (sourceNormalizedGamma_pairwise_CAR p q)
   calc
     star (sourceNormalizedGamma p * sourceNormalizedGamma q) =
       ContinuousLinearMap.adjoint
@@ -106,7 +108,15 @@ theorem originalMajorana_bivector_skewAdjoint
         (sourceNormalizedGamma_selfAdjoint q).adjoint_eq,
         (sourceNormalizedGamma_selfAdjoint p).adjoint_eq]
     _ = -(sourceNormalizedGamma p * sourceNormalizedGamma q) := by
-      linear_combination hcar
+      calc
+        sourceNormalizedGamma q * sourceNormalizedGamma p =
+            (sourceNormalizedGamma p * sourceNormalizedGamma q +
+              sourceNormalizedGamma q * sourceNormalizedGamma p) -
+                sourceNormalizedGamma p * sourceNormalizedGamma q := by
+              abel
+        _ = -(sourceNormalizedGamma p * sourceNormalizedGamma q) := by
+              rw [hcar]
+              simp
 
 #print axioms originalMajorana_bivector_commutator_CAR
 #print axioms originalMajorana_bivector_commutator
