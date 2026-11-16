@@ -120,10 +120,15 @@ theorem originalSpin9FockHSFiberUnitaryHom_fixes_operator_one
       originalFockOperatorToHSFiber b (1 : Fermion 2 →L[ℂ] Fermion 2) := by
   apply (originalFockHSFiberToOperator b).injective
   rw [originalSpin9FockHSFiberUnitaryHom_toOperator]
-  rw [(originalFockOperatorToHSFiber b).symm_apply_apply]
-  change
-    (source9Spin_originalFockOperatorStarAutomorphismHom g)
-      (1 : Fermion 2 →L[ℂ] Fermion 2) = 1
+  have hround :
+      originalFockHSFiberToOperator b
+        (originalFockOperatorToHSFiber b (1 : Fermion 2 →L[ℂ] Fermion 2)) =
+      (1 : Fermion 2 →L[ℂ] Fermion 2) := by
+    change (originalFockOperatorToHSFiber b).symm
+        (originalFockOperatorToHSFiber b (1 : Fermion 2 →L[ℂ] Fermion 2)) =
+      (1 : Fermion 2 →L[ℂ] Fermion 2)
+    exact (originalFockOperatorToHSFiber b).symm_apply_apply _
+  rw [hround]
   exact (source9Spin_originalFockOperatorStarAlgEquiv g).map_one
 
 #print axioms originalSpin9FockHSFiberIsometryEquiv
