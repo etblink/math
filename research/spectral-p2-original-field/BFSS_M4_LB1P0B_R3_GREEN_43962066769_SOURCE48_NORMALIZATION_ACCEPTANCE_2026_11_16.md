@@ -1,0 +1,9 @@
+# P0B R3 — strict CI success; archive preservation pending
+
+Run https://github.com/etblink/math/actions/runs/43962066769, exact tested commit becb76924cabe59681dade936eda971ec1254ee3, job 133631788981. GitHub reports success and every job step passed.
+
+Reviewed complete job log research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P0B_R3_43962066769_complete_job.log, Git blob b25374a7c879b6afe178255ec9a6ab98f0566e1a: exact source/donor/toolchain/checkpoint preflight PASS, Lean 4.34.1 and pinned Mathlib restoration PASS, cold source build 8964/8964 PASS, separate source and consumer warning-as-error compilations PASS, exactly two source + two independent-consumer standard-only reports PASS, all three consumer examples compile, checkpoint positive/six negative controls PASS and auditor positive/six negative controls PASS. Final marker BFSS_M4_LB1P0B_ORIGINAL_SOURCE48_NORMALIZATION_2_SOURCE_2_CONSUMERS_3_CONTROLS_STRICT_GREEN is present as executed output. No errors, sorryAx or source/consumer compiler warnings are reported; existing package local-change notices are explicitly allowlisted by frozen policy.
+
+Original artifact 14273998605, 3944 bytes, provider SHA256 4b106db2f5be4ee3717c74616f96a99633b3872d2bc3d678346c1c29127595cf. Separate hosted retrieval/rehash and repository preservation are pending. Checkpoint remains unqualified/BLOCKED until exact original archive is preserved. No new proof gate is advanced by this observation.
+
+The accepted scope, once preservation completes, is arbitrary-label K(E i j) = (1/4 : ℝ) • (ΓiΓj − ΓjΓi) and the distinct-label specialization K(E i j) = (1/2 : ℝ) • ΓiΓj on the unchanged original source operators. Full Lie bracket, physical Spin9, gauge/charge domains, G16, Hardy/fidelity and spectrum remain open. Edition 0.8 stays a dated snapshot. This is machine-checked internal qualification, not peer review or independent human mathematical review.
