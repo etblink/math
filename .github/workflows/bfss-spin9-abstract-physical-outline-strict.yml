@@ -91,6 +91,9 @@ jobs:
           rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
           timeout 1800s lake build "$mod" 2>&1 | tee "$root/cold-abstract-build.log"
           timeout 650s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee "$root/abstract-axioms.log"
+          # Build the exact original BFSS carrier before compiling its independent consumer.
+          timeout 1500s lake build OAI.MathematicalPhysics.BFSS.Core 2>&1 | tee "$root/original-core-build.log"
+          test -f .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Core.olean
           timeout 700s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSSpin9AbstractPhysicalOutlineIndependentConsumer.lean 2>&1 | tee "$root/native-fullL2-consumer.log"
           python3 - <<'PY'
           import os,re
@@ -98,12 +101,13 @@ jobs:
           root=Path(os.environ["RUNNER_TEMP"])/"bfss-spin9-outline"
           allowed={"propext","Classical.choice","Quot.sound"}
           allowed_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
-          for name in ("cold-abstract-build.log","abstract-axioms.log","native-fullL2-consumer.log"):
+          for name in ("cold-abstract-build.log","abstract-axioms.log","original-core-build.log","native-fullL2-consumer.log"):
               s=(root/name).read_text()
               assert "error:" not in s and "sorryAx" not in s,(name,s[-8000:])
               bad=[x for x in s.splitlines() if "warning:" in x and not allowed_warning.fullmatch(x)]
               assert not bad,(name,bad[:15])
           assert "Build completed successfully" in (root/"cold-abstract-build.log").read_text()
+          assert "Build completed successfully" in (root/"original-core-build.log").read_text()
           for file,count in (("abstract-axioms.log",6),("native-fullL2-consumer.log",3)):
               s=(root/file).read_text()
               reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",s)
