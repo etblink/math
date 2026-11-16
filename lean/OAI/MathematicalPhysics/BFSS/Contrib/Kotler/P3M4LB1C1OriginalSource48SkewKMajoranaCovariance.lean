@@ -65,7 +65,7 @@ source simplifier failure. -/
 private theorem originalFock_real_smul_zero (a : ℝ) :
     a • (0 : Op) = (0 : Op) := by
   rw [FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul]
-  exact smul_zero (a : ℂ) Op
+  exact smul_zero (a : ℂ)
 
 /-- A single delta picks out the exact original source coefficient
 with factor 1/2 from the two inside the LB0 CAR. This is proved
@@ -169,7 +169,7 @@ theorem originalFock_skew_delta_doubleSum_contract
                 (a k p / 2) (x p)]
       _ = (((a p k / 2 : ℝ) : ℂ) -
             ((a k p / 2 : ℝ) : ℂ)) • x p := by
-              rw [sub_smul]
+              rw [← sub_smul]
       _ = ((a p k : ℝ) : ℂ) • x p := by rw [hc]
       _ = (a p k : ℝ) • x p :=
         (FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
