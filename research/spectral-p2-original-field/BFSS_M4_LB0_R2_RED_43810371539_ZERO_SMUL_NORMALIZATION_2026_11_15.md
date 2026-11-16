@@ -23,10 +23,16 @@ Rewrite **only** the third theorem's `hcar` local derivation to exhibit the scal
       sourceNormalizedGamma p * sourceNormalizedGamma q +
         sourceNormalizedGamma q * sourceNormalizedGamma p =
           (0 : ℂ) • (1 : Op) := by
-            simpa only [if_neg hpq] using
+            simpa [hpq] using
               (sourceNormalizedGamma_pairwise_CAR p q)
       _ = (0 : Op) := zero_smul ℂ (1 : Op)
 ```
 This is a proposed proof body; it must pass compiler/strict warning-as-error and restricted-axiom tests before acceptance. Keep all statements, two earlier source proofs, full skew proof's additive `abel` rearrangement, and original independent consumer byte-identical. Do not replace noncommutative Fock operators by a commutative proxy or change the original sqrt(2) normalization/48-label order. Update only the exact LB0 source Git blob preflight in workflow, then rerun cold LB0 source and 3 native independent consumers, auditing all 6 standard-only `#print axioms`.
 
 **Decision boundary:** the finite bivector skew-adjointness and triple CAR theorem remain unqualified as a combined package until all native source and consumer reports are green. Even once qualified, the full real-skew K(A), Lie bracket, global Spin9 Fock-vector action, physical common charge domain and BFSS spectrum remain open.
+
+## R3 exact repair launch — not qualified
+
+- Source proof-only commit `5c842de9c1d9b8246ecfdee78344c77b68cf3c6c`, source Git blob `d08200fae8ef6c9c9544414307ad537f1eeaa4a4`. Third proof's local CAR normalization is now split into two **typed** equalities: `c_p c_q + c_q c_p = (0:ℂ) • (1:Op)` via existing pairwise CAR and `p ≠ q`, and `(0:ℂ) • (1:Op) = (0:Op)` using `zero_smul ℂ (1:Op)`. The previous `abel` additive conclusion is unchanged.
+- Exact strict source-pin workflow update `a0279b211a81922b17bff24c735bc1c4569f80f0`. [R3 run #43811766549](https://github.com/etblink/math/actions/runs/43811766549) is the intended full cold-build and 3+3 independent original-Fock consumer test; the intermediate source-only push run [#43811749230](https://github.com/etblink/math/actions/runs/43811749230) may be cancelled by same-workflow concurrency. Cancellation is not proof failure.
+- No theorem statement, independent consumer, initial two already clean proof bodies, source normalization or source index changed. The R3 result must be checked for native compiler errors, warning-as-error, all six standard-only axiom reports, and persisted artifact before acceptance.
