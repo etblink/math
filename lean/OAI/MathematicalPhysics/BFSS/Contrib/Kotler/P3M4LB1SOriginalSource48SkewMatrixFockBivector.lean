@@ -128,15 +128,30 @@ theorem originalSource48BivectorK_skewAdjoint
       have hd : A p p = 0 := by
         have hs := hA p p
         linarith
-      simp only [hd, zero_div, originalRealZero_smul_FockOp,
-        star_zero, neg_zero]
+      have hz :
+          (A p p / 4 : ℝ) •
+            (sourceNormalizedGamma p * sourceNormalizedGamma p) =
+              (0 : Op) := by
+        rw [hd, zero_div]
+        exact originalRealZero_smul_FockOp _
+      rw [hz, neg_zero]
+      exact star_zero
     · rw [hrealStar, originalMajorana_bivector_skewAdjoint p q hpq]
       rw [smul_neg]
-  exact originalFockStar_doubleSum_neg
-    (fun p q : Source48Label =>
-      (A p q / 4 : ℝ) •
-        (sourceNormalizedGamma p * sourceNormalizedGamma q))
-    hterm
+  let f : Source48Label → Source48Label → Op :=
+    fun p q => (A p q / 4 : ℝ) •
+      (sourceNormalizedGamma p * sourceNormalizedGamma q)
+  have hf : ∀ p q : Source48Label, star (f p q) = -(f p q) := by
+    intro p q
+    exact hterm p q
+  have hsum : star (∑ p : Source48Label, ∑ q : Source48Label, f p q) =
+      -(∑ p : Source48Label, ∑ q : Source48Label, f p q) :=
+    originalFockStar_doubleSum_neg f hf
+  have hk : originalSource48BivectorK A =
+      ∑ p : Source48Label, ∑ q : Source48Label, f p q := by
+    rfl
+  rw [hk]
+  exact hsum
 
 /-- Transpose-skew matrices use the same exact Fock K(A) generator;
 no alternate Lie carrier or surrogate spinor model is constructed. -/
