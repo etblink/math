@@ -23,3 +23,14 @@
 Make a bounded proof-only R2 fix for the **generic** source-operator scalar/zero/delta lemmas, and isolate the **native 48-label** adapter rather than modifying the established source definitions. Maintain all three theorem statements, strict pinned donors, restricted axiom reports, correct cold new `.olean`, no sorryAx/warnings. Capture any R2 red first-causal error separately before further edit. If native 48×48 elaboration remains red, change the adapter proof architecture; never loosen resource bounds.
 
 This work does not establish Lie bracket preservation, global Fock-vector Spin9 unitary, original physical sixteen-supercharge or SU2 gauge domain covariance, a ground state, mass gap or any unification theorem.
+
+## R2 bounded proof-only launch — still unqualified
+
+- Exact repair-only source commit `19efb7a379c41d8f08ddab067c6748785a636e0c`, updated source Git blob **`eb6a4c804cb8b87616fd1c3ae5bb45029ade307f`**. All three public theorem statements, true original 1/4 source K(A), frozen qualified LB1C0/LB1S/LB0 donor blobs, and three independent original-Fock consumer bodies unchanged.
+- In `originalFock_quarter_two`, use the **accepted original real→complex scalar bridge** for `a/4` and `a/2`, then genuine complex `smul_smul` and an explicitly typed complex coercion of the real coefficient identity `(a/4)*2=a/2`, without guessing a real scalar tower.
+- In original real-zero `smul`, specialize `smul_zero (a:ℂ) Op` to the exact real underlying original Fock operator type, avoiding a metavariable typeclass goal.
+- Replace deprecated `if_pos/if_neg` by `ite_eq_left/ite_eq_right` in the generic delta case split.
+- In skew-term scalar subtraction, use explicit source real→complex bridge for EACH coefficient, complex `sub_smul`, and source real-skew coefficient arithmetic; no invented operator algebra commutativity.
+- At the native 48-label specialization, establish `hcarNative` with the literal **qualified** LB1C0 theorem and ACTUAL original `A p q` and `sourceNormalizedGamma` carrier first. Combine separately with abstract delta contraction under named local functions `a`, `x`, so Lean never unifies an unfolding of the entire original double gamma sum at the initial theorem application.
+- Source-pin workflow commit **`43a4679adf9fa202d67386e4f82fde1396cfd16c`**, [LB1C1 R2 strict run #43858870801](https://github.com/etblink/math/actions/runs/43858870801). Intermediate source-only workflow #43858826138 was cancelled by same-workflow concurrency on source-pin update, **not** proof failure.
+- **R2 still unqualified** until actual cold correct LB1C1 source, 3 native + 3 independent original-Fock consumer restricted-axiom reports, no `sorryAx`/unallowlisted warnings and persisted artifact digest. If RED, preserve its first-causal error before any further change. All work exclusively unified branch, no `main` changes.
