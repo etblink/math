@@ -54,6 +54,48 @@ theorem originalSource48_matrixSkew_entries
     (fun M : Matrix Source48Label Source48Label ℝ => M q p) hA
   simpa using h
 
+/-- The zero REAL scalar on genuine original complex Fock operators
+is zero via the established source real-to-complex scalar bridge.
+Do not install an invented StarModule ℝ instance. -/
+private theorem originalRealZero_smul_FockOp (x : Op) :
+    (0 : ℝ) • x = (0 : Op) := by
+  rw [FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul]
+  exact zero_smul ℂ x
+
+/-- Small, source-independent ADDITIVE double-Finset lemma; never
+expand the full 48×48 original gamma expression while rearranging star.
+This acts on the genuine original Fock-OPERATOR additive star group. -/
+private theorem originalFockStar_doubleSum_neg
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    (f : ι → κ → Op)
+    (hf : ∀ i j, star (f i j) = -(f i j)) :
+    star (∑ i, ∑ j, f i j) =
+      -(∑ i, ∑ j, f i j) := by
+  classical
+  have hrow (i : ι) :
+      star (∑ j : κ, f i j) =
+        -(∑ j : κ, f i j) := by
+    calc
+      star (∑ j : κ, f i j) =
+        ∑ j : κ, star (f i j) :=
+          star_sum Finset.univ (fun j : κ => f i j)
+      _ = ∑ j : κ, -(f i j) := by
+        apply Finset.sum_congr rfl
+        intro j hj
+        exact hf i j
+      _ = -(∑ j : κ, f i j) := by
+        rw [Finset.sum_neg_distrib]
+  calc
+    star (∑ i : ι, ∑ j : κ, f i j) =
+      ∑ i : ι, star (∑ j : κ, f i j) :=
+        star_sum Finset.univ (fun i : ι => ∑ j : κ, f i j)
+    _ = ∑ i : ι, -(∑ j : κ, f i j) := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      exact hrow i
+    _ = -(∑ i : ι, ∑ j : κ, f i j) := by
+      rw [Finset.sum_neg_distrib]
+
 /-- Original 48×48 REAL skew coefficient matrices yield genuinely
 skew-adjoint original Fock-vector infinitesimal operators.
 
@@ -86,38 +128,15 @@ theorem originalSource48BivectorK_skewAdjoint
       have hd : A p p = 0 := by
         have hs := hA p p
         linarith
-      simp only [hd, zero_div, zero_smul, star_zero, neg_zero]
+      simp only [hd, zero_div, originalRealZero_smul_FockOp,
+        star_zero, neg_zero]
     · rw [hrealStar, originalMajorana_bivector_skewAdjoint p q hpq]
       rw [smul_neg]
-  let f (p q : Source48Label) : Op :=
-    (A p q / 4 : ℝ) •
-      (sourceNormalizedGamma p * sourceNormalizedGamma q)
-  have hrow (p : Source48Label) :
-      star (∑ q : Source48Label, f p q) =
-        -(∑ q : Source48Label, f p q) := by
-    calc
-      star (∑ q : Source48Label, f p q) =
-        ∑ q : Source48Label, star (f p q) :=
-          star_sum Finset.univ (fun q : Source48Label => f p q)
-      _ = ∑ q : Source48Label, -(f p q) := by
-        apply Finset.sum_congr rfl
-        intro q hq
-        exact hterm p q
-      _ = -(∑ q : Source48Label, f p q) := by
-        rw [Finset.sum_neg_distrib]
-  change star (∑ p : Source48Label, ∑ q : Source48Label, f p q) =
-    -(∑ p : Source48Label, ∑ q : Source48Label, f p q)
-  calc
-    star (∑ p : Source48Label, ∑ q : Source48Label, f p q) =
-      ∑ p : Source48Label, star (∑ q : Source48Label, f p q) :=
-        star_sum Finset.univ
-          (fun p : Source48Label => ∑ q : Source48Label, f p q)
-    _ = ∑ p : Source48Label, -(∑ q : Source48Label, f p q) := by
-      apply Finset.sum_congr rfl
-      intro p hp
-      exact hrow p
-    _ = -(∑ p : Source48Label, ∑ q : Source48Label, f p q) := by
-      rw [Finset.sum_neg_distrib]
+  exact originalFockStar_doubleSum_neg
+    (fun p q : Source48Label =>
+      (A p q / 4 : ℝ) •
+        (sourceNormalizedGamma p * sourceNormalizedGamma q))
+    hterm
 
 /-- Transpose-skew matrices use the same exact Fock K(A) generator;
 no alternate Lie carrier or surrogate spinor model is constructed. -/
@@ -137,7 +156,8 @@ theorem originalSource48BivectorK_zero :
   change (∑ p : Source48Label, ∑ q : Source48Label,
       ((0 : ℝ) / 4) •
         (sourceNormalizedGamma p * sourceNormalizedGamma q)) = (0 : Op)
-  simp only [zero_div, zero_smul, Finset.sum_const_zero]
+  simp only [zero_div, originalRealZero_smul_FockOp,
+    Finset.sum_const_zero]
 
 #print axioms originalSource48BivectorK
 #print axioms originalSource48_matrixSkew_entries
