@@ -138,12 +138,11 @@ theorem charge_basis_sq_eq_average_of_sphere_transitive
     (i : Fin 16) :
     ‖Q (basis i) ψ‖ ^ 2 =
       (1 / 16 : ℝ) * ∑ j : Fin 16, ‖Q (basis j) ψ‖ ^ 2 := by
-  apply charge_basis_sq_eq_average spin U D hD Q hCov basis
-  · intro j k
+  have hTrans : ∀ j k : Fin 16, ∃ g : G, spin g (basis j) = basis k := by
+    intro j k
     exact hSphere (basis j) (basis k) (hUnit j) (hUnit k)
-  · exact ψ
-  · exact hSinglet
-  · exact i
+  exact charge_basis_sq_eq_average spin U D hD Q hCov basis
+    hTrans ψ hSinglet i
 
 /-- Independent top-level consequence: if a real physical group action
 commutes with the true gauge unitary action on ALL physical vectors,
