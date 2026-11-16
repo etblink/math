@@ -118,7 +118,7 @@
   "active": {
     "gate": "P3-M4-LB1P0B",
     "attempt": "R2",
-    "status": "PENDING_STRICT_CI",
+    "status": "BLOCKED",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0BOriginalSource48SkewPlaneNormalization.lean",
     "consumer": "lean/diagnostics/BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalizationIndependentConsumer.lean",
@@ -127,7 +127,7 @@
     "consumer_blob": "056d7692125f723c91e1d4a50540b9bcfaaf09da",
     "workflow_blob": "c57b2957d87eeb0604eeaac2f69bc1f726d6ac22",
     "run_id": 43958703251,
-    "source_reports": 0,
+    "source_reports": 2,
     "consumer_reports": 0,
     "accepted_predecessor_run": 43951949627,
     "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_RED_43957825299_SHALLOW_CHECKOUT_PREFLIGHT_2026_11_16.md",
@@ -140,7 +140,18 @@
     "initial_contract": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_PRE_GATE_SPARSE_NORMALIZATION_2026_11_16.md",
     "tested_sha": "d235bf1bba640ffa6b3caa4fbea9b33cbe86b103",
     "job_id": 133620014176,
-    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R2_LAUNCH_43958703251_2026_11_16.md"
+    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R2_LAUNCH_43958703251_2026_11_16.md",
+    "strict_outcome": "failure",
+    "failure_phase": "COLD_SOURCE_COMPILATION",
+    "receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R2_RED_43958703251_TYPED_SUB_SMUL_2026_11_16.md",
+    "evidence_job_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P0B_R2_43958703251_complete_job.log",
+    "evidence_job_log_blob": "be309e080a96e1e2f72af4560326ad9c1a970eb0",
+    "artifact_id": 14272854442,
+    "artifact_sha256": "46b201bd2b46e29a3650d3982fd9e605d9cd54ede30f8aca4019d7887a9e7ec2",
+    "qualified_source_reports": 0,
+    "source_axioms_include_sorryAx": true,
+    "first_causal": "35:37 sub_smul _ _ _ type mismatch; unresolved scalar/operator metavariables",
+    "evidence_status": "BLOCKED_PENDING_ORIGINAL_ZIP_REHASH_AND_REPOSITORY_PRESERVATION"
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -153,7 +164,7 @@
   },
   "strategic_focus": {
     "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for the original physical Hamiltonian",
-    "immediate": "P0B R2 strict run 43958703251 in progress; source normalization unqualified pending exact cold build, native roots, independent controls and axiom audit",
+    "immediate": "P0B R2 cold source RED confirmed; preserve original ZIP before bounded explicitly typed scalar repair",
     "last_full_hardy_gate": "P3-AUX-HARDY-G15",
     "last_full_hardy_run": 43763173942,
     "full_G16_qualified": false,
@@ -164,7 +175,7 @@
   },
   "next_planned": {
     "gate": "P3-M4-LB1P0B",
-    "status": "STRICT_CI_IN_PROGRESS",
+    "status": "BLOCKED_PENDING_RED_ARCHIVE",
     "contract": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_PRE_GATE_SPARSE_NORMALIZATION_2026_11_16.md",
     "source_staged": true,
     "consumer_staged": true,
