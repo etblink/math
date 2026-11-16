@@ -1,0 +1,18 @@
+# BFSS M4-LB1L0 R1 RED — native source gamma-product Leibniz elaboration recursion
+
+**Date:** 2026-11-16 Pacific. **Repository/branch:** `etblink/math` — `integration/bfss-unified-research-20261108` exclusively. **Status:** first LB1L0 strict gate RED. No valid full gamma-product or bivector Lie-bracket acceptance.
+
+## Immutable failure receipt
+
+- [Strict original Fock product rule R1 #43916000648](https://github.com/etblink/math/actions/runs/43916000648), `completed/failure`, attempt 1. Exact tested commit **`532c6c3d7a3a8a0c0216322de1e9c5dba96b69d1`**, job **`133470182721`**.
+- New proposed LB1L0 source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L0OriginalFockProductCommutator.lean` Git blob **`660cc1ccf402703dc1468ae6982e271825150f27`**; original independently compiled consumer source blob **`84afd9b7acb7f6d67396c57b2893e727fc2d04cc`**. Qualified preceding LB1C1 original gamma covariance source blob remains **`c2e7a7c665121283cde13ae5dabc183362b6b420`**. All original LB1C0/LB1S/LB0, original gamma, toolchain and consumer byte pins passed.
+- [R1 logs artifact #14252590377](https://github.com/etblink/math/actions/runs/43916000648/artifacts/14252590377), 3,208 bytes. **GitHub-reported, not independently rehashed**, ZIP SHA256 `d9c50a4b2164400df37ed0a79c5ddf58415bcfcb84343ec63408b9aabd930c3e`.
+- Checkout, exact source/donor/consumer/toolchain preflight and restored frozen Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` PASS. Cold native module `P3M4LB1L0OriginalFockProductCommutator.lean` FAILED at 8,962nd build job. No independent consumer compilation.
+- **First-causal Lean diagnostic:** line **67:14**, `maximum recursion depth has been reached` while Lean applies `originalFock_commutator_product (originalSource48BivectorK A) (sourceNormalizedGamma p) (sourceNormalizedGamma q)` directly to the concrete source `K(A) * (Γ_p*Γ_q) - (Γ_p*Γ_q)*K(A)` target.
+- Three source `#print axioms`: generic `originalFock_commutator_product` **PASS** with `[propext, Classical.choice, Quot.sound]`; the concrete `originalSource48BivectorK_skew_commutator_gamma_product` and native-transpose consumer-facing theorem reported `sorryAx` as a compiler-failure consequence; **both UNQUALIFIED**. No mathematical counterexample to the Leibniz identity is known.
+
+## Bounded R2 repair and stopping rule
+
+The source proposition and donor `originalFock_commutator_product` are mathematically valid in the true original `Op = Fermion 2 →L[ℂ] Fermion 2`. Instead of asking Lean to unify the entire literal 48×48 source operator expression with a polymorphic lemma *at first application*, derive the **identical associative product-commutator identity locally** at the single native calc step using the same already-proven `simp only [sub_mul, mul_sub, mul_assoc]; abel` tactic sequence as the generic theorem. This keeps gamma and K(A) opaque during simplification, preserves noncommutative multiplication, and introduces no source-axiom or resource-limit change. Leave all three external theorem statements and independently compiled consumer proofs unmodified. Only the new LB1L0 source blob pin in its own strict workflow is updated, with original LB1C1/LB1C0/LB1S/LB0 and consumer pins immutable.
+
+**Acceptance:** Cold native new source `.olean`, 3 source + 3 independent Fock consumer `#print axioms` reports limited to `{propext, Classical.choice, Quot.sound}`, no `sorryAx`, compiler errors, new warnings or weakened limits, and artifact digest. If R2 RED, retain first error and stop for typed-local comparison, not arbitrary `maxRecDepth` escalation. Even if R2 GREEN, full `[K(A),K(B)]=K(AB-BA)` Lie bracket, global Spin9 Fock-vector unitary, SU2 gauge/16-charge domain and spectral claims remain OPEN.

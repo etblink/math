@@ -64,9 +64,9 @@ theorem originalSource48BivectorK_skew_commutator_gamma_product
         sourceNormalizedGamma p *
           (originalSource48BivectorK A * sourceNormalizedGamma q -
             sourceNormalizedGamma q * originalSource48BivectorK A) :=
-              originalFock_commutator_product
-                (originalSource48BivectorK A)
-                (sourceNormalizedGamma p) (sourceNormalizedGamma q)
+              by
+                simp only [sub_mul, mul_sub, mul_assoc]
+                abel
     _ = (∑ r : Source48Label,
           (A r p : ℝ) • sourceNormalizedGamma r) *
             sourceNormalizedGamma q +
