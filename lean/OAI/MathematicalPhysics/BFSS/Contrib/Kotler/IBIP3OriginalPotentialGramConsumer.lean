@@ -29,8 +29,10 @@ theorem sourceColorWedgeSquared_eq_gramMinor
         (fun a : Fin 3 => x (j, a)) =
       originalGram x i i * originalGram x j j -
         (originalGram x i j)^2 := by
+  have hspatial (k : SpaceIndex) (A : Fin 3) :
+      (spatialColor x k) A = x (k, A) := rfl
   simp only [FCP.BFSSSU2.colorWedgeSquared, originalGram,
-    PiLp.inner_apply, RCLike.inner_apply, conj_trivial,
+    PiLp.inner_apply, RCLike.inner_apply, conj_trivial, hspatial,
     Fin.sum_univ_three]
   ring
 
