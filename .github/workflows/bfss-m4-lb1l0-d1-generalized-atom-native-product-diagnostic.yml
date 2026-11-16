@@ -4,7 +4,7 @@ name: BFSS M4 LB1L0 D1 generalized-atom native product diagnostic
   push:
     branches: [integration/bfss-unified-research-20261108]
     paths:
-      - lean/diagnostics/BFSSP3M4LB1L0D1TypedAtomNativeProductBridge.lean
+      - lean/diagnostics/BFSSP3M4LB1L0D1GeneralizedAtomNativeProductBridge.lean
       - .github/workflows/bfss-m4-lb1l0-d1-generalized-atom-native-product-diagnostic.yml
   workflow_dispatch:
 
@@ -34,7 +34,7 @@ jobs:
           import json,re,subprocess
           from pathlib import Path
           pins={
-            "lean/diagnostics/BFSSP3M4LB1L0D1TypedAtomNativeProductBridge.lean":"4f0358a84d3f79300d5ad077230878803fd200b1",
+            "lean/diagnostics/BFSSP3M4LB1L0D1GeneralizedAtomNativeProductBridge.lean":"4f0358a84d3f79300d5ad077230878803fd200b1",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean":"8b11930128c92bb8a499970593252de942052b1b",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4",
@@ -46,7 +46,7 @@ jobs:
           for path, sha in pins.items():
               got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert got==sha,(path,sha,got)
-          s=Path("lean/diagnostics/BFSSP3M4LB1L0D1TypedAtomNativeProductBridge.lean").read_text()
+          s=Path("lean/diagnostics/BFSSP3M4LB1L0D1GeneralizedAtomNativeProductBridge.lean").read_text()
           assert re.findall(r"(?m)^#print axioms (\S+)$",s)==[
               "originalFock_product_three_typed_atoms",
               "source48_gamma_product_covariance_via_typed_atoms"]
@@ -82,7 +82,7 @@ jobs:
           cd lean
           root="$RUNNER_TEMP/bfss-m4-lb1l0-d1"
           timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1C1OriginalSource48SkewKMajoranaCovariance 2>&1 | tee "$root/accepted-donor-cold.log"
-          timeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4LB1L0D1TypedAtomNativeProductBridge.lean 2>&1 | tee "$root/generalized-atom-diagnostic.log"
+          timeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4LB1L0D1GeneralizedAtomNativeProductBridge.lean 2>&1 | tee "$root/generalized-atom-diagnostic.log"
           python3 - <<'PY'
           import re,os
           from pathlib import Path
