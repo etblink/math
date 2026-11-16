@@ -25,13 +25,14 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          fetch-depth: 2
       - name: Verify exact native source and independent consumer, donor bytes and toolchain
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/bfss-m4-lb1p0b"
           git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-lb1p0b/tested-commit.txt"
-          python3 - <<'PY'
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-lb1p0b/preflight.log"
           import json,re,subprocess
           from pathlib import Path
           pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0BOriginalSource48SkewPlaneNormalization.lean":"c27ebd4b909b157d70efb5ad5db0ce836468f4d3","lean/diagnostics/BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalizationIndependentConsumer.lean":"056d7692125f723c91e1d4a50540b9bcfaaf09da","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean":"7eb090ab82be47ecae18ae0d091716188cb2db79","lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean":"53da0ec8242c49cfb062257d71d5a22bd4c35500","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean":"b4012951a26aa7573db513adab3d7ce27396db7e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean":"8b11930128c92bb8a499970593252de942052b1b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean":"d08200fae8ef6c9c9544414307ad537f1eeaa4a4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
@@ -61,7 +62,7 @@ jobs:
           state=json.loads(Path("BFSS_GATE_STATE.json").read_text())
           check_checkpoint(Path.cwd(),state)
           mutators=[
-              lambda x:x["active"].update(attempt="R2"),
+              lambda x:x["active"].update(attempt="R2",previous_red_run=None),
               lambda x:x["active"].update(accepted_predecessor_run=0),
               lambda x:x["active"].update(contract_commit="invalid"),
               lambda x:x["active"].update(qualification=True),

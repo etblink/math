@@ -117,6 +117,71 @@
   ],
   "active": {
     "gate": "P3-M4-LB1P0B",
+    "attempt": "R2",
+    "status": "PENDING_STRICT_CI",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0BOriginalSource48SkewPlaneNormalization.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalizationIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-lb1p0b-source48-skew-plane-normalization-strict.yml",
+    "source_blob": "c27ebd4b909b157d70efb5ad5db0ce836468f4d3",
+    "consumer_blob": "056d7692125f723c91e1d4a50540b9bcfaaf09da",
+    "workflow_blob": "656cc7c42438a3f8ed2629b19bc47b86c523143e",
+    "run_id": null,
+    "source_reports": 0,
+    "consumer_reports": 0,
+    "accepted_predecessor_run": 43951949627,
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_RED_43957825299_SHALLOW_CHECKOUT_PREFLIGHT_2026_11_16.md",
+    "contract_commit": "0ceb83528afa42efbd2da6c870d6abb085425bd8",
+    "expected_source_reports": 2,
+    "expected_consumer_reports": 2,
+    "independent_controls": 3,
+    "previous_red_run": 43957825299,
+    "prior_red_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_RED_43957825299_SHALLOW_CHECKOUT_PREFLIGHT_2026_11_16.md",
+    "initial_contract": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_PRE_GATE_SPARSE_NORMALIZATION_2026_11_16.md"
+  },
+  "toolchain": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "historical_checkpoint": {
+    "path": "research/methodology/checkpoints/BFSS_GATE_STATE_PRE_M4_2026_11_16.json",
+    "git_blob": "db3005c09dab0eb6983975ba91ff9332aaa78d46",
+    "scope": "Immutable exact pre-consolidation state, including G15/G16, all older milestones and scientific-method registry pointers; historical, not competing live state"
+  },
+  "strategic_focus": {
+    "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for the original physical Hamiltonian",
+    "immediate": "P0B R1 preflight RED preserved; R2 checkout/log-capture correction staged with source and consumer unchanged",
+    "last_full_hardy_gate": "P3-AUX-HARDY-G15",
+    "last_full_hardy_run": 43763173942,
+    "full_G16_qualified": false,
+    "physical_Spin9_qualified": false,
+    "full_bivector_bracket_qualified": false,
+    "physical_Hardy_fidelity_qualified": false,
+    "positive_eigenpair_qualified": false
+  },
+  "next_planned": {
+    "gate": "P3-M4-LB1P0B",
+    "status": "STRICT_WORKFLOW_STAGED_PENDING",
+    "contract": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_PRE_GATE_SPARSE_NORMALIZATION_2026_11_16.md",
+    "source_staged": true,
+    "consumer_staged": true,
+    "workflow_staged": true,
+    "decision": "Sparse-plane normalization selected after source comparison; energy square-difference contraction retained for forward research"
+  },
+  "monograph": {
+    "edition": "0.8 internal consolidated checkpoint",
+    "baseline_editorial_sha": "b603f4c1715e15f5f92c69d7fb071992dbaa9f40",
+    "source_snapshot_sha": "2325d494224beef60c19a652643164a16db9afc5",
+    "status": "LOCAL_BUILD_AND_MODEL_VISUAL_REVIEW_PASS_INDEPENDENT_MATH_REVIEW_PENDING",
+    "pages": 119,
+    "structural_checks": 68,
+    "atlas_records": 59,
+    "validation": "contributions/bfss-kotler/internal-monograph/BUILD_VALIDATION_0_8_2026_11_16.md",
+    "next_decision": "P0B sparse normalization selected, prospective/not staged; preserve independent energy comparator"
+  },
+  "stop_rule": "Preserve every first-causal RED; no unchanged retry, resource escalation, weakened linter/axiom policy or altered donor; no new major proof gate before consolidation review",
+  "previous_active": {
+    "gate": "P3-M4-LB1P0B",
     "attempt": "R1",
     "status": "RED_UNQUALIFIED",
     "qualification": false,
@@ -145,70 +210,6 @@
     "artifact_id": 14272324214,
     "artifact_sha256": "4b8fae8a8523bce02b2aa973e30cec4b068d6b233156ca5b5cb08d9deb10b729",
     "first_causal": "HEAD^ unavailable in default depth-1 checkout; watchdog subprocess exit 128"
-  },
-  "toolchain": {
-    "lean": "4.34.1",
-    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
-  },
-  "historical_checkpoint": {
-    "path": "research/methodology/checkpoints/BFSS_GATE_STATE_PRE_M4_2026_11_16.json",
-    "git_blob": "db3005c09dab0eb6983975ba91ff9332aaa78d46",
-    "scope": "Immutable exact pre-consolidation state, including G15/G16, all older milestones and scientific-method registry pointers; historical, not competing live state"
-  },
-  "strategic_focus": {
-    "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for the original physical Hamiltonian",
-    "immediate": "P0B sparse-plane normalization R1 staged; await exact native source and independent consumer strict qualification",
-    "last_full_hardy_gate": "P3-AUX-HARDY-G15",
-    "last_full_hardy_run": 43763173942,
-    "full_G16_qualified": false,
-    "physical_Spin9_qualified": false,
-    "full_bivector_bracket_qualified": false,
-    "physical_Hardy_fidelity_qualified": false,
-    "positive_eigenpair_qualified": false
-  },
-  "next_planned": {
-    "gate": "P3-M4-LB1P0B",
-    "status": "RED_UNQUALIFIED_REPAIR_PENDING",
-    "contract": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R1_PRE_GATE_SPARSE_NORMALIZATION_2026_11_16.md",
-    "source_staged": true,
-    "consumer_staged": true,
-    "workflow_staged": true,
-    "decision": "Sparse-plane normalization selected after source comparison; energy square-difference contraction retained for forward research"
-  },
-  "monograph": {
-    "edition": "0.8 internal consolidated checkpoint",
-    "baseline_editorial_sha": "b603f4c1715e15f5f92c69d7fb071992dbaa9f40",
-    "source_snapshot_sha": "2325d494224beef60c19a652643164a16db9afc5",
-    "status": "LOCAL_BUILD_AND_MODEL_VISUAL_REVIEW_PASS_INDEPENDENT_MATH_REVIEW_PENDING",
-    "pages": 119,
-    "structural_checks": 68,
-    "atlas_records": 59,
-    "validation": "contributions/bfss-kotler/internal-monograph/BUILD_VALIDATION_0_8_2026_11_16.md",
-    "next_decision": "P0B sparse normalization selected, prospective/not staged; preserve independent energy comparator"
-  },
-  "stop_rule": "Preserve every first-causal RED; no unchanged retry, resource escalation, weakened linter/axiom policy or altered donor; no new major proof gate before consolidation review",
-  "previous_active": {
-    "gate": "P3-M4-LB1P0A",
-    "attempt": "R3",
-    "status": "RED_UNQUALIFIED",
-    "qualification": false,
-    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean",
-    "consumer": "lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean",
-    "workflow": ".github/workflows/bfss-m4-lb1p0a-source48-skew-plane-strict.yml",
-    "source_blob": "762c3419cf76eb00f2c3b78c30c731c4a169841c",
-    "consumer_blob": "53da0ec8242c49cfb062257d71d5a22bd4c35500",
-    "workflow_blob": "67738b318b3b58d05e0fe7c1fa028adbe924072f",
-    "run_id": 43945952471,
-    "tested_sha": "2325d494224beef60c19a652643164a16db9afc5",
-    "job_id": 133575536412,
-    "cold_build_jobs": 8963,
-    "source_reports": 2,
-    "consumer_reports": 0,
-    "receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0A_R3_RED_43945952471_UNUSED_SIMP_STRICT_AUDIT_2026_11_16.md",
-    "first_causal": "warningAsError: unused simp argument h' at 41:15 and 51:15; independent consumer not reached",
-    "artifact_id": 14265816354,
-    "artifact_sha256": "ae276445656ecfe96d8b29674a9965aca52112229384e2ace474882978c9f482",
-    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P0A_R3_43945952471_evidence.zip"
   },
   "previous_qualified_before_P0B": {
     "gate": "P3-M4-LB1P0A",
@@ -242,5 +243,28 @@
       "Classical.choice",
       "Quot.sound"
     ]
+  },
+  "prior_negative_before_P0B": {
+    "gate": "P3-M4-LB1P0A",
+    "attempt": "R3",
+    "status": "RED_UNQUALIFIED",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-lb1p0a-source48-skew-plane-strict.yml",
+    "source_blob": "762c3419cf76eb00f2c3b78c30c731c4a169841c",
+    "consumer_blob": "53da0ec8242c49cfb062257d71d5a22bd4c35500",
+    "workflow_blob": "67738b318b3b58d05e0fe7c1fa028adbe924072f",
+    "run_id": 43945952471,
+    "tested_sha": "2325d494224beef60c19a652643164a16db9afc5",
+    "job_id": 133575536412,
+    "cold_build_jobs": 8963,
+    "source_reports": 2,
+    "consumer_reports": 0,
+    "receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0A_R3_RED_43945952471_UNUSED_SIMP_STRICT_AUDIT_2026_11_16.md",
+    "first_causal": "warningAsError: unused simp argument h' at 41:15 and 51:15; independent consumer not reached",
+    "artifact_id": 14265816354,
+    "artifact_sha256": "ae276445656ecfe96d8b29674a9965aca52112229384e2ace474882978c9f482",
+    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P0A_R3_43945952471_evidence.zip"
   }
 }
