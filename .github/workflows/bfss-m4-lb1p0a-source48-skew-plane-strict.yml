@@ -1,0 +1,112 @@
+name: BFSS M4 LB1P0A original Source48 skew-plane strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean
+      - lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean
+      - .github/workflows/bfss-m4-lb1p0a-source48-skew-plane-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-m4-lb1p0a-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-source48-skew-plane-and-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - name: Checkout exact unified integration
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact native source and independent consumer, donor bytes and toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-m4-lb1p0a"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-lb1p0a/tested-commit.txt"
+          python3 - <<'PY'
+          import json,re,subprocess
+          from pathlib import Path
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean":"687982cf876424fa5b47f7a4617d2157eedc7247","lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean":"53da0ec8242c49cfb062257d71d5a22bd4c35500","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean":"b4012951a26aa7573db513adab3d7ce27396db7e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean":"8b11930128c92bb8a499970593252de942052b1b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean":"d08200fae8ef6c9c9544414307ad537f1eeaa4a4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          for path, expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,(path,expected,got)
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean").read_text()
+          c=Path("lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean").read_text()
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==["originalSource48SkewPlane_entries_skew","originalSource48SkewPlane_transpose"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",c)==["originalSource48SkewPlane_entries_skew_consumer","originalSource48SkewPlane_transpose_consumer"]
+          for t in (s,c):
+              assert "set_option autoImplicit false" in t
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",t)
+              assert "maxRecDepth" not in t and "maxHeartbeats" not in t
+          assert "Matrix Source48Label Source48Label ℝ" in s
+          assert "originalSource48SkewPlane" in c
+          assert "originalSource48BivectorK" not in s
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())
+          assert next(x["rev"] for x in m["packages"] if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_M4_LB1P0A_EXACT_NATIVE_SKEW_PLANE_DONORS_CONSUMER_PREFLIGHT_PASS")
+          PY
+      - name: Restore frozen Lean and Mathlib
+        shell: bash
+        timeout-minutes: 36
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold native original source, explicit warning-as-error audit and independent consumer
+        shell: bash
+        timeout-minutes: 26
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/bfss-m4-lb1p0a"
+          timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1P0AOriginalSource48SkewPlane 2>&1 | tee "$root/cold-source.log"
+          timeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean 2>&1 | tee "$root/source-axioms.log"
+          timeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean 2>&1 | tee "$root/consumer.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-lb1p0a"
+          allowed={"propext","Classical.choice","Quot.sound"}
+          allowed_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name in ("cold-source.log","source-axioms.log","consumer.log"):
+              s=(root/name).read_text()
+              assert "error:" not in s and "sorryAx" not in s,(name,s[-9000:])
+              bad=[line for line in s.splitlines() if "warning:" in line and not allowed_warning.fullmatch(line)]
+              assert not bad,(name,bad[:12])
+          assert "Build completed successfully" in (root/"cold-source.log").read_text()
+          text=(root/"source-axioms.log").read_text()+"\n"+(root/"consumer.log").read_text()
+          targets=["originalSource48SkewPlane_entries_skew","originalSource48SkewPlane_transpose","originalSource48SkewPlane_entries_skew_consumer","originalSource48SkewPlane_transpose_consumer"]
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",text)
+          seen={}
+          for full,raw in reports:
+              short=full.rsplit(".",1)[-1]
+              if short not in targets: continue
+              a={x.strip() for x in raw.split(",") if x.strip()}
+              assert a<=allowed,(short,a)
+              seen[short]=a
+          assert set(seen)==set(targets),(seen,targets)
+          print("BFSS_M4_LB1P0A_ORIGINAL_SOURCE48_SKEW_PLANE_2_SOURCE_2_CONSUMERS_STRICT_GREEN")
+          PY
+      - name: Preserve exact cold, source, consumer logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-m4-lb1p0a-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-m4-lb1p0a/
+          if-no-files-found: warn
+          retention-days: 14
