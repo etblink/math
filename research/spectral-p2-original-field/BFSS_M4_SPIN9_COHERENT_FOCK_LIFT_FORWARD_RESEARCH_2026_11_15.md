@@ -94,6 +94,17 @@ There is an obvious reuse interface: the existing original source Spin9 gamma Li
 
 **Bounded next-gate design:** prove (1) K(A) skew-adjoint; (2) the native CAR generator commutator; (3) only after both pass, Lie bracket preservation; (4) only then consider integration to a global group action with topology, central signs and physical-domain compatibility. The central Spin9(-1) negative control is mandatory for any final group implementation.
 
+## D.1. Exact source Lie-to-Majorana reuse audit while HS1/CS0 run
+
+Additional inspection of the **unified original source tree**, with NO code writes to the running gates, identifies the following preexisting interfaces:
+
+- `SU2BFSSPairedSpin9V10HF10BBOriginalGammaCanonicalSkewLieHom.lean` defines `coordinateToOriginalGammaSkewLieHom : LieAlgebra.Orthogonal.so SpaceIndex ℝ →ₗ⁅ℝ⁆ LieAlgebra.Orthogonal.so SpinIndex ℝ`. This has already crossed the native `so(9)→so(16)` bracket interface, not merely a source Lie-level paper calculation.
+- `SU2BFSSPairedSpin9SourceSpinOriginalPaired48OrthogonalProbe.lean` defines `gamma16ToOriginalPaired48` by the ACTUAL original three-color Kronecker identity and the source G1A `pairedColorSpinEquiv`; multiplication and transpose preservation and group `Spin9 → O(48)` are explicit. A bounded linear source `so(16)→so(48)` transport follows from that same formula (must be proved against the exact native Lie carrier before use).
+- `SU2BFSSPairedSpin9V10HF10DDDerivativeRangeGammaLieHom.lean` already identifies the original gamma representation on the **source identity-chart derivative range**, and factors through the accepted `F10BB` native skew Lie map. `SU2BFSSPairedSpin9V10HF10DWNativeRepresentationDifferentiability.lean` proves identity differentiability of the literal `Spin9→SO16` source representation under explicitly installed source/target charts. These are a better existing starting point for linking a derived Lie hom to the group action than creating a new representation.
+- `SU2BFSSSource48NormalizedFockGammaProbe.lean` supplies `sourceNormalizedGamma` and `sourceNormalizedGamma_pairwise_CAR` with **sqrt(2)** normalization and square one, on the actual original `Source48Label`. `SU2BFSSSource48FockBivectorStarCompatibilityProbe.lean` contains a potential two-generator Clifford-star-to-physical-Fock-adjoint comparison, but its **source comments mark it an unqualified candidate**. For the real skew bivector operator `K(A)`, use directly qualified normalized source gamma self-adjointness and CAR; do not silently import that unqualified Clifford-star bridge as an accepted premise.
+
+This narrows the proposed next strict gate to **one** native Fock-CAR Lie-generator compatibility microgate: take the already defined `F10BB` `so(9)→so(16)` map, transfer its real skew 16-index coefficients to the **actual paired** `Source48Label` skew matrix using `gamma16ToOriginalPaired48`, then prove the `[K(A), c_p]` Majorana commutator and skew-adjointness on the literal `Fermion 2`. Even if green, infinitesimal compatibility **is not** a global Spin9 Fock-vector unitary nor a physical unbounded-charge identity. The factor `1/4` remains fixed by CAR; do not adjust it to fit a failed elaboration. This should be the first candidate only after the independent HS1/CS0 gates complete their source proofs and receipts.
+
 ## E. Revised decision table and next strict experiments
 
 | Path | What it would establish | Gap / proof cost | Scientific ceiling |
