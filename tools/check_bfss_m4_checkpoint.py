@@ -66,7 +66,12 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'), 'incomplete strict qualification')
         require('STRICT GREEN' in (root/a['receipt']).read_text(), 'green lacks acceptance receipt')
     if a['status']=='PENDING_STRICT_CI':
-        require((root/a['prospective_receipt']).is_file() and a.get('previous_red_run'), 'retry lacks pre-gate contract')
+        first_attempt = (a.get('attempt') == 'R1'
+                         and a.get('accepted_predecessor_run') == s['last_qualified']['run_id'])
+        retry = a.get('attempt') != 'R1' and bool(a.get('previous_red_run'))
+        require((root/a['prospective_receipt']).is_file()
+                and SHA.fullmatch(a.get('contract_commit','')) is not None
+                and (first_attempt or retry), 'pending gate lacks qualified predecessor/prior RED and pre-gate contract')
     f = s['strategic_focus']
     for key in ('full_G16_qualified','physical_Spin9_qualified','full_bivector_bracket_qualified',
                 'physical_Hardy_fidelity_qualified','positive_eigenpair_qualified'):
