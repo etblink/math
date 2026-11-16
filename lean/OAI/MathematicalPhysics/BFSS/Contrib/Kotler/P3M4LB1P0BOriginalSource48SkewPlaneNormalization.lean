@@ -32,7 +32,7 @@ private theorem originalFock_real_sub_smul (a b : ℝ) (x : Op) :
       FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
         (a - b) x
     _ = ((a : ℂ) - (b : ℂ)) • x := by rw [Complex.ofReal_sub]
-    _ = (a : ℂ) • x - (b : ℂ) • x := sub_smul _ _ _
+    _ = (a : ℂ) • x - (b : ℂ) • x := sub_smul (a : ℂ) (b : ℂ) x
     _ = a • x - b • x := by
       rw [← FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul a x,
         ← FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul b x]
@@ -42,8 +42,8 @@ private theorem originalFock_quarter_indicator
     ((if b then (1 : ℝ) else 0) / 4 : ℝ) • x =
       if b then (1 / 4 : ℝ) • x else (0 : Op) := by
   by_cases h : b
-  · simp only [if_pos h]
-  · simp only [if_neg h, zero_div]
+  · simp only [ite_eq_left h]
+  · simp only [ite_eq_right h, zero_div]
     exact originalFock_real_zero_smul x
 
 /-- Opaque finite contraction before original gamma substitution. -/
