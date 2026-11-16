@@ -66,6 +66,16 @@ theorem originalSource48BivectorK_skewAdjoint
     star (originalSource48BivectorK A) =
       -(originalSource48BivectorK A) := by
   classical
+  have hrealStar (a : ℝ) (x : Op) :
+      star (a • x) = a • star x := by
+    calc
+      star (a • x) = star ((a : ℂ) • x) := by
+        rw [FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul]
+      _ = star (a : ℂ) • star x := star_smul _ _
+      _ = (a : ℂ) • star x := by simp
+      _ = a • star x :=
+        (FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
+          a (star x)).symm
   have hterm (p q : Source48Label) :
       star ((A p q / 4 : ℝ) •
         (sourceNormalizedGamma p * sourceNormalizedGamma q)) =
@@ -76,30 +86,38 @@ theorem originalSource48BivectorK_skewAdjoint
       have hd : A p p = 0 := by
         have hs := hA p p
         linarith
-      simp [hd]
-    · rw [star_smul, originalMajorana_bivector_skewAdjoint p q hpq]
-      simp
-  unfold originalSource48BivectorK
+      simp only [hd, zero_div, zero_smul, star_zero, neg_zero]
+    · rw [hrealStar, originalMajorana_bivector_skewAdjoint p q hpq]
+      rw [smul_neg]
+  let f (p q : Source48Label) : Op :=
+    (A p q / 4 : ℝ) •
+      (sourceNormalizedGamma p * sourceNormalizedGamma q)
+  have hrow (p : Source48Label) :
+      star (∑ q : Source48Label, f p q) =
+        -(∑ q : Source48Label, f p q) := by
+    calc
+      star (∑ q : Source48Label, f p q) =
+        ∑ q : Source48Label, star (f p q) :=
+          star_sum Finset.univ (fun q : Source48Label => f p q)
+      _ = ∑ q : Source48Label, -(f p q) := by
+        apply Finset.sum_congr rfl
+        intro q hq
+        exact hterm p q
+      _ = -(∑ q : Source48Label, f p q) := by
+        rw [Finset.sum_neg_distrib]
+  change star (∑ p : Source48Label, ∑ q : Source48Label, f p q) =
+    -(∑ p : Source48Label, ∑ q : Source48Label, f p q)
   calc
-    star (∑ p : Source48Label, ∑ q : Source48Label,
-        (A p q / 4 : ℝ) •
-          (sourceNormalizedGamma p * sourceNormalizedGamma q)) =
-      ∑ p : Source48Label, ∑ q : Source48Label,
-        star ((A p q / 4 : ℝ) •
-          (sourceNormalizedGamma p * sourceNormalizedGamma q)) := by
-          simp only [star_sum]
-    _ = ∑ p : Source48Label, ∑ q : Source48Label,
-        -((A p q / 4 : ℝ) •
-          (sourceNormalizedGamma p * sourceNormalizedGamma q)) := by
-          apply Finset.sum_congr rfl
-          intro p hp
-          apply Finset.sum_congr rfl
-          intro q hq
-          exact hterm p q
-    _ = -(∑ p : Source48Label, ∑ q : Source48Label,
-        (A p q / 4 : ℝ) •
-          (sourceNormalizedGamma p * sourceNormalizedGamma q)) := by
-          simp only [Finset.sum_neg_distrib]
+    star (∑ p : Source48Label, ∑ q : Source48Label, f p q) =
+      ∑ p : Source48Label, star (∑ q : Source48Label, f p q) :=
+        star_sum Finset.univ
+          (fun p : Source48Label => ∑ q : Source48Label, f p q)
+    _ = ∑ p : Source48Label, -(∑ q : Source48Label, f p q) := by
+      apply Finset.sum_congr rfl
+      intro p hp
+      exact hrow p
+    _ = -(∑ p : Source48Label, ∑ q : Source48Label, f p q) := by
+      rw [Finset.sum_neg_distrib]
 
 /-- Transpose-skew matrices use the same exact Fock K(A) generator;
 no alternate Lie carrier or surrogate spinor model is constructed. -/
@@ -116,7 +134,10 @@ operator, a basic non-surrogate coefficient sanity control. -/
 theorem originalSource48BivectorK_zero :
     originalSource48BivectorK
       (0 : Matrix Source48Label Source48Label ℝ) = (0 : Op) := by
-  simp [originalSource48BivectorK]
+  change (∑ p : Source48Label, ∑ q : Source48Label,
+      ((0 : ℝ) / 4) •
+        (sourceNormalizedGamma p * sourceNormalizedGamma q)) = (0 : Op)
+  simp only [zero_div, zero_smul, Finset.sum_const_zero]
 
 #print axioms originalSource48BivectorK
 #print axioms originalSource48_matrixSkew_entries
