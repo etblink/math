@@ -38,7 +38,7 @@ theorem originalSource48SkewPlane_entries_skew
         (if p = j ∧ q = i then (1 : ℝ) else 0) := by
     by_cases h : q = i ∧ p = j
     · have h' : p = j ∧ q = i := ⟨h.2, h.1⟩
-      simp [h, h']
+      simp [h]
     · have h' : ¬(p = j ∧ q = i) := by
         intro hb
         exact h ⟨hb.2, hb.1⟩
@@ -48,7 +48,7 @@ theorem originalSource48SkewPlane_entries_skew
         (if p = i ∧ q = j then (1 : ℝ) else 0) := by
     by_cases h : q = j ∧ p = i
     · have h' : p = i ∧ q = j := ⟨h.2, h.1⟩
-      simp [h, h']
+      simp [h]
     · have h' : ¬(p = i ∧ q = j) := by
         intro hb
         exact h ⟨hb.2, hb.1⟩

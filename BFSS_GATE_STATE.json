@@ -72,26 +72,21 @@
   ],
   "active": {
     "gate": "P3-M4-LB1P0A",
-    "attempt": "R3",
-    "status": "RED_UNQUALIFIED",
+    "attempt": "R4",
+    "status": "PENDING_STRICT_CI",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean",
     "consumer": "lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean",
     "workflow": ".github/workflows/bfss-m4-lb1p0a-source48-skew-plane-strict.yml",
-    "source_blob": "762c3419cf76eb00f2c3b78c30c731c4a169841c",
+    "source_blob": "7eb090ab82be47ecae18ae0d091716188cb2db79",
     "consumer_blob": "53da0ec8242c49cfb062257d71d5a22bd4c35500",
-    "workflow_blob": "67738b318b3b58d05e0fe7c1fa028adbe924072f",
-    "run_id": 43945952471,
-    "tested_sha": "2325d494224beef60c19a652643164a16db9afc5",
-    "job_id": 133575536412,
-    "cold_build_jobs": 8963,
-    "source_reports": 2,
+    "workflow_blob": "2245e0e696687f972d33c11d4055d7f3a03adbc7",
+    "run_id": null,
+    "source_reports": 0,
     "consumer_reports": 0,
-    "receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0A_R3_RED_43945952471_UNUSED_SIMP_STRICT_AUDIT_2026_11_16.md",
-    "first_causal": "warningAsError: unused simp argument h' at 41:15 and 51:15; independent consumer not reached",
-    "artifact_id": 14265816354,
-    "artifact_sha256": "ae276445656ecfe96d8b29674a9965aca52112229384e2ace474882978c9f482",
-    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P0A_R3_43945952471_evidence.zip"
+    "previous_red_run": 43945952471,
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0A_R3_RED_43945952471_UNUSED_SIMP_STRICT_AUDIT_2026_11_16.md",
+    "contract_commit": "5c8e559c860dc3f57bd59e8e979bd24ce7dbd9bb"
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -114,10 +109,9 @@
     "positive_eigenpair_qualified": false
   },
   "next_planned": {
-    "gate": "P3-M4-LB1P0A",
-    "attempt": "R4",
-    "status": "RESEARCH_DESIGN_NOT_STAGED",
-    "contract": "Only remove the two unused positive-branch simp arguments; statements, consumer, matrix definition, donor bytes, normalization and strict resources unchanged"
+    "gate": "INTERNAL-MONOGRAPH-0.8",
+    "status": "EDITORIAL_CONSOLIDATION",
+    "scope": "No new major proof gate before checkpoint/monograph review"
   },
   "monograph": {
     "edition": "0.8 internal consolidation planned",
@@ -125,5 +119,28 @@
     "source_snapshot_sha": "2325d494224beef60c19a652643164a16db9afc5",
     "status": "NOT_YET_UPDATED"
   },
-  "stop_rule": "Preserve every first-causal RED; no unchanged retry, resource escalation, weakened linter/axiom policy or altered donor; no new major proof gate before consolidation review"
+  "stop_rule": "Preserve every first-causal RED; no unchanged retry, resource escalation, weakened linter/axiom policy or altered donor; no new major proof gate before consolidation review",
+  "previous_active": {
+    "gate": "P3-M4-LB1P0A",
+    "attempt": "R3",
+    "status": "RED_UNQUALIFIED",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-lb1p0a-source48-skew-plane-strict.yml",
+    "source_blob": "762c3419cf76eb00f2c3b78c30c731c4a169841c",
+    "consumer_blob": "53da0ec8242c49cfb062257d71d5a22bd4c35500",
+    "workflow_blob": "67738b318b3b58d05e0fe7c1fa028adbe924072f",
+    "run_id": 43945952471,
+    "tested_sha": "2325d494224beef60c19a652643164a16db9afc5",
+    "job_id": 133575536412,
+    "cold_build_jobs": 8963,
+    "source_reports": 2,
+    "consumer_reports": 0,
+    "receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P0A_R3_RED_43945952471_UNUSED_SIMP_STRICT_AUDIT_2026_11_16.md",
+    "first_causal": "warningAsError: unused simp argument h' at 41:15 and 51:15; independent consumer not reached",
+    "artifact_id": 14265816354,
+    "artifact_sha256": "ae276445656ecfe96d8b29674a9965aca52112229384e2ace474882978c9f482",
+    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P0A_R3_43945952471_evidence.zip"
+  }
 }
