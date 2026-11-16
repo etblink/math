@@ -1,5 +1,4 @@
-import Mathlib.Analysis.Normed.Operator.LinearIsometry
-import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib
 
 /-!
 # Spin(9) structural outline — explicit hypotheses, no original-source overclaim
