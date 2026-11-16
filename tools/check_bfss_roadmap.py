@@ -27,6 +27,10 @@ def require(ok, msg):
 
 def main():
     s = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    if s.get("schema_version") == 2:
+        from check_bfss_m4_checkpoint import check_checkpoint
+        check_checkpoint(ROOT, s)
+        return
     require(s.get("schema_version") == 1, "schema mismatch")
     require(s.get("purpose") == "canonical_live_checkpoint_not_proof_receipt", "checkpoint/proof conflation")
     require(s.get("branch") == CANONICAL_BRANCH, "unreviewed branch migration")
