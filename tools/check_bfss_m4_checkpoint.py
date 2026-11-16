@@ -59,13 +59,21 @@ def check_checkpoint(root: Path, s: dict):
         require(a.get('run_id') and SHA.fullmatch(a.get('tested_sha','')), 'verdict lacks exact execution')
         receipt = (root/a['receipt']).read_text()
         require(str(a['run_id']) in receipt and a['tested_sha'] in receipt, 'verdict receipt mismatch')
-        require(hashlib.sha256((root/a['evidence_archive']).read_bytes()).hexdigest()==a['artifact_sha256'],
-                'complete evidence archive missing or changed')
+        if a.get('evidence_archive'):
+            require(hashlib.sha256((root/a['evidence_archive']).read_bytes()).hexdigest()==a['artifact_sha256'],
+                    'complete evidence archive missing or changed')
+        else:
+            require(a['status'] == 'RED_UNQUALIFIED' and a.get('failure_phase') == 'PREFLIGHT_BEFORE_LEAN'
+                    and a.get('artifact_id') and re.fullmatch(r'[0-9a-f]{64}', a.get('artifact_sha256',''))
+                    and blob(root/a['evidence_job_log']) == a['evidence_job_log_blob'],
+                    'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
         require(a.get('source_reports') == a.get('consumer_reports') == 2
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'), 'incomplete strict qualification')
         require('STRICT GREEN' in (root/a['receipt']).read_text(), 'green lacks acceptance receipt')
     if a['status']=='PENDING_STRICT_CI':
+        require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
+                'pending gate qualified-predecessor drift')
         first_attempt = (a.get('attempt') == 'R1'
                          and a.get('accepted_predecessor_run') == s['last_qualified']['run_id'])
         retry = a.get('attempt') != 'R1' and bool(a.get('previous_red_run'))
