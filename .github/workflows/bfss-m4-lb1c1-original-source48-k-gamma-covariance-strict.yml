@@ -1,0 +1,130 @@
+name: BFSS M4 LB1C1 original Source48 skew K gamma covariance strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean
+      - lean/diagnostics/BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovarianceIndependentConsumer.lean
+      - .github/workflows/bfss-m4-lb1c1-original-source48-k-gamma-covariance-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-m4-lb1c1-original-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-Fock-skew-gamma-covariance-independent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact unified integration branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify exact new source, original donors, independent consumer and toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-m4-lb1c1"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-lb1c1/tested-commit.txt"
+          python3 - <<'PY'
+          import re,json,subprocess
+          from pathlib import Path
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"9e39d24150d9146ffe6ac0484977a867fb269103",
+            "lean/diagnostics/BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovarianceIndependentConsumer.lean":"a1c186bf3a630b251e4596ecf63a1dd48c12e701",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean":"8b11930128c92bb8a499970593252de942052b1b",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean":"d08200fae8ef6c9c9544414307ad537f1eeaa4a4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean":"98889cb8607ccc64091165fbca585acb898b9ddc",
+            "lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+            "lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"
+          }
+          for p,sha in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
+              assert got==sha,(p,sha,got)
+          p=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean")
+          s=p.read_text()
+          c=Path("lean/diagnostics/BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovarianceIndependentConsumer.lean").read_text()
+          assertions=["originalFock_skew_delta_doubleSum_contract",
+            "originalSource48BivectorK_skew_commutator_gamma",
+            "originalSource48BivectorK_skew_commutator_gamma_of_transpose"]
+          controls=["originalFock_skew_delta_generic_consumer",
+            "originalSource48_skew_K_gamma_consumer",
+            "originalSource48_skew_K_gamma_native_transpose_consumer"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==assertions
+          assert re.findall(r"(?m)^#print axioms (\S+)$",c)==controls
+          assert "originalFock_single_delta" in s
+          assert "originalFock_skew_delta_doubleSum_contract" in s
+          assert "originalSource48BivectorK_commutator_CAR_sum" in s
+          assert "a p q / 4" in s
+          assert "set_option autoImplicit false" in s and "set_option autoImplicit false" in c
+          assert "set_option maxHeartbeats 0" not in s and "set_option maxRecDepth" not in s
+          for t in (s,c):
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",t)
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())
+          assert next(x["rev"] for x in m["packages"] if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_M4_LB1C1_SOURCE_DONORS_CONSUMER_PIN_PREFLIGHT_PASS")
+          PY
+      - name: Restore frozen Lean 4.34.1 and Mathlib cache
+        shell: bash
+        timeout-minutes: 36
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold native source and independent source consumer with six axiom reports
+        shell: bash
+        timeout-minutes: 57
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/bfss-m4-lb1c1"
+          mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1C1OriginalSource48SkewKMajoranaCovariance"
+          src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 1900s lake build "$mod" 2>&1 | tee "$root/cold-native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee "$root/source-axioms.log"
+          timeout 720s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovarianceIndependentConsumer.lean 2>&1 | tee "$root/independent-consumer.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-lb1c1"
+          allow={"propext","Classical.choice","Quot.sound"}
+          allowed_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name in ("cold-native-source.log","source-axioms.log","independent-consumer.log"):
+              t=(root/name).read_text()
+              assert "error:" not in t and "sorryAx" not in t,(name,t[-9000:])
+              bad=[x for x in t.splitlines() if "warning:" in x and not allowed_warning.fullmatch(x)]
+              assert not bad,(name,bad[:15])
+          assert "Build completed successfully" in (root/"cold-native-source.log").read_text()
+          for name,ct in (("source-axioms.log",3),("independent-consumer.log",3)):
+              t=(root/name).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",t)
+              assert len(reports)==ct,(name,reports)
+              for decl,raw in reports:
+                  got={a.strip() for a in raw.split(",") if a.strip()}
+                  assert got<=allow,(decl,got)
+          print("BFSS_M4_LB1C1_ORIGINAL_FOCK_SKEW_K_GAMMA_COVARIANCE_3_SOURCE_3_CONSUMERS_STRICT_GREEN")
+          PY
+      - name: Preserve full source and independent consumer logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-m4-lb1c1-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-m4-lb1c1/
+          if-no-files-found: warn
+          retention-days: 14
