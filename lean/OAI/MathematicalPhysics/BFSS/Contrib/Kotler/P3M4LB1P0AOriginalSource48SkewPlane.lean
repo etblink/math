@@ -33,10 +33,13 @@ theorem originalSource48SkewPlane_entries_skew
     originalSource48SkewPlane i j p q =
       -(originalSource48SkewPlane i j q p) := by
   classical
-  by_cases hpi : p = i <;> by_cases hpj : p = j <;>
-    by_cases hqi : q = i <;> by_cases hqj : q = j <;>
-      simp [originalSource48SkewPlane, hpi, hpj, hqi, hqj] <;>
-      ring
+  simp only [originalSource48SkewPlane]
+  have h₁ : (q = i ∧ p = j) = (p = j ∧ q = i) :=
+    propext (and_comm)
+  have h₂ : (q = j ∧ p = i) = (p = i ∧ q = j) :=
+    propext (and_comm)
+  rw [h₁, h₂]
+  ring
 
 /-- The standard native real-matrix transpose condition, not a
 surrogate Clifford or Lie carrier. -/
