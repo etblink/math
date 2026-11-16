@@ -113,7 +113,7 @@ spin=[np.kron(gamma[i]@gamma[j],I3)
 colors=[np.kron(I16,l) for l in color]
 Z=np.stack([coords(z) for z in spin+colors],axis=1)
 assert Z.shape==(1128,39)
-assert (M@Z).nnz==0
+assert np.count_nonzero(M@Z)==0
 for p in (97,101,103,1009):
     rg=rank_mod(Gram,p)
     rz=rank_mod(Z,p)
