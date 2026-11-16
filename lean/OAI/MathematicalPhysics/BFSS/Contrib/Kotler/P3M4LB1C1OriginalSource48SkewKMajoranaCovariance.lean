@@ -65,7 +65,7 @@ source simplifier failure. -/
 private theorem originalFock_real_smul_zero (a : ℝ) :
     a • (0 : Op) = (0 : Op) := by
   rw [FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul]
-  simpa only using (smul_zero (a : ℂ) : (a : ℂ) • (0 : Op) = (0 : Op))
+  ext v <;> simp
 
 /-- A single delta picks out the exact original source coefficient
 with factor 1/2 from the two inside the LB0 CAR. This is proved
