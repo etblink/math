@@ -56,11 +56,13 @@ theorem originalAdjointColorMatrix_sourceZXZ
           FCP.BFSSIBIG0CXImage.sourceRotX β *
           FCP.BFSSIBIG0CZImage.sourceRotZ γ := by
             rw [FCP.BFSSSU2GaugeG3A.adjointColorMatrix_mul,
-              FCP.BFSSSU2GaugeG3A.adjointColorMatrix_mul,
+              FCP.BFSSSU2GaugeG3A.adjointColorMatrix_mul]
+            simp only [
               FCP.BFSSIBIG0CZImage.originalAdjointColorMatrix_sourceZ_eq_rotZ,
               FCP.BFSSIBIG0CXImage.originalAdjointColorMatrix_sourceX_eq_rotX]
     _ = _ := by
-      rw [← abstractRotZ_eq_sourceRotZ, ← abstractRotX_eq_sourceRotX]
+      simp only [← abstractRotZ_eq_sourceRotZ,
+        ← abstractRotX_eq_sourceRotX]
 
 /-- Universal original-BFSS source-gauge witness for each proper real
 three-dimensional rotation. It asserts surjectivity *onto the subset*
