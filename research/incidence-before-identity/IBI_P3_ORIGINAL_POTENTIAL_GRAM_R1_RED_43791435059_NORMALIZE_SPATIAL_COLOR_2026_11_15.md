@@ -1,0 +1,15 @@
+# IBI→P3 original potential Gram utility R1 strict RED — missing spatialColor coordinate normalization
+
+Date: 2026-11-15 Pacific / 2026-11-16 UTC.  
+Branch: `research/bfss-ibi-p3-potential-consumer-20261115`.  
+Status: **RED_UNQUALIFIED**, only finite real-color coordinate proof repair permitted. Parent original-green qualified-source import remains valid and unchanged.
+
+- [Run #43791435059](https://github.com/etblink/math/actions/runs/43791435059) completed failure on tested immutable candidate commit `48b666b5f53992e4e9b2471cb032cfd4689e30ef`; job `133050526385`.
+- Preflight pinned original P2C0 potential/G0A incidence and Lean/Mathlib PASS; frozen cache PASS; cold source build RED at `IBIP3OriginalPotentialGramConsumer.lean:31:34`, failing first target `sourceColorWedgeSquared_eq_gramMinor`.
+- Exact source blob `a04cb0e2babcf5b6d0567cf802e9e73f9740294e`, independent consumer blob `877b934221f69bee4737d92e3d2d65f5623434ea`.
+- Error: `ring` unable to close because the wedge side is fully in `x.ofLp (i,A)` coordinates but the Gram side remains as `∑ x_1, (spatialColor x i).ofLp x_1 ^2` etc. The `Fin.sum_univ_three` item in the same `simp only` was unused (linter warning). The subsequent two theorem axiom reports show `sorryAx` solely because the first proof failed. Source-independent consumer not reached. No algebraic inconsistency established.
+- [Evidence artifact #14192243712](https://github.com/etblink/math/actions/runs/43791435059/artifacts/14192243712), zip 5,320 bytes, GitHub uploaded SHA-256 `889bfcaeeaf7edca94304dadb3729ee76be489eee49e84ae0ec5613bfe788671`.
+- Local independent exact polynomial control: `colorWedgeSquared(u,v) - ((u·u)(v·v)-(u·v)^2)` simplifies identically to 0, confirming the mathematical statement in the abstract three-real-variable model. This does NOT certify Lean source-transport.
+- **R2 allowed one-step repair**: explicitly prove the original `(spatialColor x k) A = x (k,A)` by definitional equality and rewrite it *before* expanding `Fin.sum_univ_three`; retain all three theorem statements, original P2C0 import, original G0A import, independent consumer bytes, resource limits and proof dependencies. Remove unused `Fin.sum_univ_three` from prior simp pass; use it after the source-typed rewrite. Two analogous conversion failures require architecture review rather than repeated expensive retries.
+- The original PR #2 qualified-only candidate was restored by forward commit `a561138e2d5ecdc8a49160f680a514666f5203e4` to byte-identical tree of prior qualified candidate `827aae5df87b0e2608ad54dbbd55fa69da46a071`; no force, no original history change. The experimental source and diagnostics remain preserved here. A separate 17-module import guard [#43791313109](https://github.com/etblink/math/actions/runs/43791313109) failed only because its file-set preflight rejected the extra experimental IBI source; it was not a Lean-source failure.
+- **Claim ceiling**: no physical Gauss/Fock/Hardy/domain/spectrum result even if R2 succeeds; a qualified P2C0 potential Gram consumer would demonstrate reusable original-source infrastructure only.
