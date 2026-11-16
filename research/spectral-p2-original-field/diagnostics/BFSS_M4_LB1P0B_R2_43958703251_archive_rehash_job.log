@@ -1,0 +1,83 @@
+﻿2026-11-16T21:36:32.2671215Z Current runner version: '2.338.2'
+2026-11-16T21:36:32.2690233Z ##[group]Runner Image Provisioner
+2026-11-16T21:36:32.2690792Z Hosted Compute Agent
+2026-11-16T21:36:32.2691232Z Version: 20261103.629
+2026-11-16T21:36:32.2691632Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-16T21:36:32.2692113Z Build Date: 2026-11-03T17:26:59Z
+2026-11-16T21:36:32.2692594Z Worker ID: {30e42279-370e-4890-9f6c-acc1454c03ab}
+2026-11-16T21:36:32.2693037Z Region: centralus
+2026-11-16T21:36:32.2693451Z Cloud: Azure
+2026-11-16T21:36:32.2693796Z ##[endgroup]
+2026-11-16T21:36:32.2694812Z ##[group]Operating System
+2026-11-16T21:36:32.2695249Z Ubuntu
+2026-11-16T21:36:32.2695577Z 26.04.1
+2026-11-16T21:36:32.2696128Z LTS
+2026-11-16T21:36:32.2696472Z ##[endgroup]
+2026-11-16T21:36:32.2696856Z ##[group]Runner Image
+2026-11-16T21:36:32.2697261Z Image: ubuntu-26.04
+2026-11-16T21:36:32.2697620Z Version: 20261111.196.1
+2026-11-16T21:36:32.2698450Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-16T21:36:32.2699398Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-16T21:36:32.2700000Z ##[endgroup]
+2026-11-16T21:36:32.2700751Z ##[group]GITHUB_TOKEN Permissions
+2026-11-16T21:36:32.2702246Z Actions: read
+2026-11-16T21:36:32.2702619Z Contents: read
+2026-11-16T21:36:32.2703336Z Metadata: read
+2026-11-16T21:36:32.2703681Z ##[endgroup]
+2026-11-16T21:36:32.2705171Z Secret source: Actions
+2026-11-16T21:36:32.2705958Z Cache mode: write
+2026-11-16T21:36:32.2706476Z Prepare workflow directory
+2026-11-16T21:36:32.3006366Z Prepare all required actions
+2026-11-16T21:36:32.3084961Z Complete job name: preserve-exact-original-zip
+2026-11-16T21:36:32.3976314Z ##[group]Run set -euo pipefail
+2026-11-16T21:36:32.3976972Z [36;1mset -euo pipefail[0m
+2026-11-16T21:36:32.3977460Z [36;1mpython3 - <<'PY'[0m
+2026-11-16T21:36:32.3978053Z [36;1mimport os,json,urllib.request,urllib.error,hashlib,base64,zipfile,io[0m
+2026-11-16T21:36:32.3978783Z [36;1mapi="https://api.github.com/repos/etblink/math/actions/artifacts/14272854442"[0m
+2026-11-16T21:36:32.3979654Z [36;1mheaders={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}[0m
+2026-11-16T21:36:32.3980614Z [36;1mwith urllib.request.urlopen(urllib.request.Request(api,headers=headers),timeout=60) as r:[0m
+2026-11-16T21:36:32.3981206Z [36;1m    m=json.load(r)[0m
+2026-11-16T21:36:32.3981787Z [36;1mexpected="46b201bd2b46e29a3650d3982fd9e605d9cd54ede30f8aca4019d7887a9e7ec2"[0m
+2026-11-16T21:36:32.3982411Z [36;1massert m["id"]==14272854442 and m["size_in_bytes"]==3745[0m
+2026-11-16T21:36:32.3983024Z [36;1massert m["workflow_run"]["id"]==43958703251[0m
+2026-11-16T21:36:32.3983596Z [36;1massert m["workflow_run"]["head_sha"]=="d235bf1bba640ffa6b3caa4fbea9b33cbe86b103"[0m
+2026-11-16T21:36:32.3984193Z [36;1massert m["digest"]=="sha256:"+expected[0m
+2026-11-16T21:36:32.3984721Z [36;1mclass NoRedirect(urllib.request.HTTPRedirectHandler):[0m
+2026-11-16T21:36:32.3985323Z [36;1m    def redirect_request(self,req,fp,code,msg,hdrs,newurl):[0m
+2026-11-16T21:36:32.3986013Z [36;1m        return None[0m
+2026-11-16T21:36:32.3986455Z [36;1mopener=urllib.request.build_opener(NoRedirect)[0m
+2026-11-16T21:36:32.3986929Z [36;1mtry:[0m
+2026-11-16T21:36:32.3987438Z [36;1m    r=opener.open(urllib.request.Request(api+"/zip",headers=headers),timeout=60)[0m
+2026-11-16T21:36:32.3988047Z [36;1mexcept urllib.error.HTTPError as e:[0m
+2026-11-16T21:36:32.3988613Z [36;1m    assert e.code==302[0m
+2026-11-16T21:36:32.3989267Z [36;1m    signed=e.headers["Location"][0m
+2026-11-16T21:36:32.3989960Z [36;1m    assert signed.startswith("https://")[0m
+2026-11-16T21:36:32.3990782Z [36;1m    with urllib.request.urlopen(signed,timeout=60) as r:[0m
+2026-11-16T21:36:32.3991506Z [36;1m        data=r.read()[0m
+2026-11-16T21:36:32.3992112Z [36;1melse:[0m
+2026-11-16T21:36:32.3992580Z [36;1m    with r:[0m
+2026-11-16T21:36:32.3992991Z [36;1m        data=r.read()[0m
+2026-11-16T21:36:32.3993620Z [36;1massert len(data)==3745[0m
+2026-11-16T21:36:32.3994025Z [36;1mactual=hashlib.sha256(data).hexdigest()[0m
+2026-11-16T21:36:32.3994518Z [36;1massert actual==expected[0m
+2026-11-16T21:36:32.3994972Z [36;1mwith zipfile.ZipFile(io.BytesIO(data)) as z:[0m
+2026-11-16T21:36:32.3995404Z [36;1m    assert z.testzip() is None[0m
+2026-11-16T21:36:32.3996011Z [36;1m    names=z.namelist()[0m
+2026-11-16T21:36:32.3996537Z [36;1m    assert set(names)=={"tested-commit.txt","preflight.log","cold-source.log"},names[0m
+2026-11-16T21:36:32.3997302Z [36;1m    assert z.read("tested-commit.txt").decode().strip()=="d235bf1bba640ffa6b3caa4fbea9b33cbe86b103"[0m
+2026-11-16T21:36:32.3997943Z [36;1m    pre=z.read("preflight.log").decode()[0m
+2026-11-16T21:36:32.3998449Z [36;1m    cold=z.read("cold-source.log").decode()[0m
+2026-11-16T21:36:32.3998941Z [36;1m    assert "PREFLIGHT_PASS" in pre[0m
+2026-11-16T21:36:32.3999430Z [36;1m    assert ":35:37: Type mismatch" in cold and "sorryAx" in cold[0m
+2026-11-16T21:36:32.3999996Z [36;1m    assert "Build completed successfully" not in cold[0m
+2026-11-16T21:36:32.4000691Z [36;1m    entries=[{"name":n,"bytes":len(z.read(n)),"sha256":hashlib.sha256(z.read(n)).hexdigest()} for n in names][0m
+2026-11-16T21:36:32.4001978Z [36;1mprint("BFSS_P0B_R2_ORIGINAL_ZIP_REHASH_PASS "+json.dumps({"artifact_id":14272854442,"original_run":43958703251,"tested_sha":"d235bf1bba640ffa6b3caa4fbea9b33cbe86b103","bytes":len(data),"sha256":actual,"zip_integrity":"PASS","entries":entries},sort_keys=True))[0m
+2026-11-16T21:36:32.4071405Z [36;1mprint("BFSS_P0B_R2_ORIGINAL_ZIP_BASE64 "+base64.b64encode(data).decode())[0m
+2026-11-16T21:36:32.4072459Z [36;1mPY[0m
+2026-11-16T21:36:32.4772212Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T21:36:32.4772814Z env:
+2026-11-16T21:36:32.4775066Z   GH_TOKEN: ***
+2026-11-16T21:36:32.4775339Z ##[endgroup]
+2026-11-16T21:36:33.4394249Z BFSS_P0B_R2_ORIGINAL_ZIP_REHASH_PASS {"artifact_id": 14272854442, "bytes": 3745, "entries": [{"bytes": 25583, "name": "cold-source.log", "sha256": "84880067cee7e774accc299b66256b10edc31774257e16be4a2abc04e4f04ea4"}, {"bytes": 262, "name": "preflight.log", "sha256": "0251165420efab164d8c4fc3be072a6a8e7eb3dc129c22bfb8e4aaaebe417d98"}, {"bytes": 41, "name": "tested-commit.txt", "sha256": "667236cbb78a54a89d9db00969a37a5ab96507af8e49db9654497b110bf08620"}], "original_run": 43958703251, "sha256": "46b201bd2b46e29a3650d3982fd9e605d9cd54ede30f8aca4019d7887a9e7ec2", "tested_sha": "d235bf1bba640ffa6b3caa4fbea9b33cbe86b103", "zip_integrity": "PASS"}
+2026-11-16T21:36:33.4498876Z BFSS_P0B_R2_ORIGINAL_ZIP_BASE64 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
+2026-11-16T21:36:33.4689610Z Cleaning up orphan processes
