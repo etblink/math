@@ -116,9 +116,18 @@ def check_checkpoint(root: Path, s: dict):
                 and a['expected_source_reports'] == a['expected_consumer_reports'] == 3
                 and a['independent_controls'] == 4
                 and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
-                and a.get('pending_tested_sha') == '144d2d1d9c7b14199ad5ebf9e0c0dfe13410e55e'
-                and a.get('pending_run_id') == 43980155870,
-                'CT0 registration cannot erase predecessor or alter strict contract')
+                and ((a.get('attempt') == 'R1'
+                      and a.get('pending_tested_sha') == '144d2d1d9c7b14199ad5ebf9e0c0dfe13410e55e'
+                      and a.get('pending_run_id') == 43980155870)
+                     or (a.get('attempt') == 'R2'
+                      and a.get('previous_red_run') == 43980155870
+                      and a.get('previous_red_tested_sha') == '144d2d1d9c7b14199ad5ebf9e0c0dfe13410e55e'
+                      and a.get('prior_red_artifact_id') == 14284665134
+                      and a.get('prior_red_artifact_sha256') == '8657ba3a6002428c8e7194d88460ac7998ed2ed4b86aeeaf6816613a3953e3b3'
+                      and a.get('prior_red_job_log_blob') == blob(root/a['prior_red_job_log'])
+                      and str(a['previous_red_run']) in (root/a['prior_red_receipt']).read_text()
+                      and a.get('source_blob') != '6f884308f3029d5e2b227ddcabd0558e35c2c6f8')),
+                'CT0 registration cannot erase predecessor, R1 RED, or strict contract')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

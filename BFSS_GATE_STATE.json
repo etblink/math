@@ -174,25 +174,23 @@
   ],
   "active": {
     "gate": "P3-M4-CT0",
-    "attempt": "R1",
+    "attempt": "R2",
     "status": "PENDING_STRICT_CI",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT0OriginalSkewBivectorTrace.lean",
     "consumer": "lean/diagnostics/BFSSP3M4CT0OriginalSkewBivectorTraceIndependentConsumer.lean",
     "workflow": ".github/workflows/bfss-m4-ct0-original-skew-bivector-trace-strict.yml",
-    "source_blob": "6f884308f3029d5e2b227ddcabd0558e35c2c6f8",
+    "source_blob": "a6f93c62c83bf51a0b89691196f875399d2896fa",
     "consumer_blob": "f2ddadc880c62632dd91547526ee97bc92a0d504",
-    "workflow_blob": "11071ae728e6f6b21bf623b5662c220872f0d935",
+    "workflow_blob": "ff7a9b5c612ee9a6050cc3622b7004150b03f46c",
     "accepted_predecessor_run": 43962066769,
     "initial_contract": "research/spectral-p2-original-field/BFSS_M4_CT0_ORIGINAL_TRACE_SKEW_K_PRE_GATE_2026_11_16.md",
-    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_CT0_R1_STAGED_43980155870_2026_11_16.md",
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_CT0_R2_PRE_GATE_TYPE_ARGUMENT_REPAIR_2026_11_16.md",
     "contract_commit": "a08033b6621d48de878d00850e69458ce5b698cb",
     "expected_source_reports": 3,
     "expected_consumer_reports": 3,
     "independent_controls": 4,
-    "pending_run_id": 43980155870,
-    "pending_tested_sha": "144d2d1d9c7b14199ad5ebf9e0c0dfe13410e55e",
-    "note": "Registration only: R1 preflight passed; strict Lean verdict unqualified.",
+    "note": "R2 registered pending after original R1 source typing RED; exact donor pins unchanged; strict source and independent consumer unqualified.",
     "prior_roadmap_red_runs": [
       43979915272,
       43979979963
@@ -201,7 +199,14 @@
       "propext",
       "Classical.choice",
       "Quot.sound"
-    ]
+    ],
+    "previous_red_run": 43980155870,
+    "previous_red_tested_sha": "144d2d1d9c7b14199ad5ebf9e0c0dfe13410e55e",
+    "prior_red_receipt": "research/spectral-p2-original-field/BFSS_M4_CT0_R1_RED_43980155870_SOURCE_TRACE_TYPE_MISMATCH_2026_11_16.md",
+    "prior_red_job_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_CT0_R1_43980155870_complete_job.log",
+    "prior_red_job_log_blob": "ac64d90cfb718526652404f83feabc0b9f82fae8",
+    "prior_red_artifact_id": 14284665134,
+    "prior_red_artifact_sha256": "8657ba3a6002428c8e7194d88460ac7998ed2ed4b86aeeaf6816613a3953e3b3"
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -214,7 +219,7 @@
   },
   "strategic_focus": {
     "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for the original physical Hamiltonian",
-    "immediate": "P0B R3 remains STRICT GREEN last qualified; CT0 R1 original Fock skew trace active PENDING_STRICT_CI (#43980155870). P1 prospective fallback; Gauss energy comparator. No CT0 theorem qualified.",
+    "immediate": "P0B R3 remains last qualified; CT0 R2 (exact Lean trace_mul_comm ℂ typing repair) PENDING_STRICT_CI, prior CT0 R1 RED #43980155870 preserved. P1 prospective fallback; Gauss energy comparator.",
     "last_full_hardy_gate": "P3-AUX-HARDY-G15",
     "last_full_hardy_run": 43763173942,
     "full_G16_qualified": false,
@@ -416,5 +421,36 @@
     "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P0B_R3_43962066769_evidence.zip",
     "evidence_archive_blob": "8a1223ca0f7f9aa68d03bbf063d0b37fd4b17b9e",
     "evidence_preservation_run": 43965370829
+  },
+  "previous_active_CT0_R1": {
+    "gate": "P3-M4-CT0",
+    "attempt": "R1",
+    "status": "PENDING_STRICT_CI",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT0OriginalSkewBivectorTrace.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4CT0OriginalSkewBivectorTraceIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-ct0-original-skew-bivector-trace-strict.yml",
+    "source_blob": "6f884308f3029d5e2b227ddcabd0558e35c2c6f8",
+    "consumer_blob": "f2ddadc880c62632dd91547526ee97bc92a0d504",
+    "workflow_blob": "11071ae728e6f6b21bf623b5662c220872f0d935",
+    "accepted_predecessor_run": 43962066769,
+    "initial_contract": "research/spectral-p2-original-field/BFSS_M4_CT0_ORIGINAL_TRACE_SKEW_K_PRE_GATE_2026_11_16.md",
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_CT0_R1_STAGED_43980155870_2026_11_16.md",
+    "contract_commit": "a08033b6621d48de878d00850e69458ce5b698cb",
+    "expected_source_reports": 3,
+    "expected_consumer_reports": 3,
+    "independent_controls": 4,
+    "pending_run_id": 43980155870,
+    "pending_tested_sha": "144d2d1d9c7b14199ad5ebf9e0c0dfe13410e55e",
+    "note": "Registration only: R1 preflight passed; strict Lean verdict unqualified.",
+    "prior_roadmap_red_runs": [
+      43979915272,
+      43979979963
+    ],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
   }
 }

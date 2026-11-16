@@ -37,7 +37,7 @@ canonical source endomorphism equivalence. -/
 theorem originalFockTrace_mul_comm (X Y : Op) :
     originalFockTrace (X * Y) = originalFockTrace (Y * X) := by
   simp only [originalFockTrace_apply, map_mul]
-  exact LinearMap.trace_mul_comm
+  exact LinearMap.trace_mul_comm ℂ
     (originalFockEndAlgEquiv.symm X) (originalFockEndAlgEquiv.symm Y)
 
 /-- Finite antisymmetric coefficients cancel against symmetric

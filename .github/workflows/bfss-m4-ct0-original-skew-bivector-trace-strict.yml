@@ -37,7 +37,7 @@ jobs:
           from pathlib import Path
           base="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/"
           pins={
-            base+"P3M4CT0OriginalSkewBivectorTrace.lean":"6f884308f3029d5e2b227ddcabd0558e35c2c6f8",
+            base+"P3M4CT0OriginalSkewBivectorTrace.lean":"a6f93c62c83bf51a0b89691196f875399d2896fa",
             "lean/diagnostics/BFSSP3M4CT0OriginalSkewBivectorTraceIndependentConsumer.lean":"f2ddadc880c62632dd91547526ee97bc92a0d504",
             base+"T1OriginalFockTraceInvariance.lean":"3be6c9a6f2898484df66690f94fdfa1877660897",
             base+"P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4",
@@ -79,6 +79,13 @@ jobs:
           assert state["branch"]=="integration/bfss-unified-research-20261108"
           assert state["last_qualified"]["gate"]=="P3-M4-LB1P0B"
           assert state["last_qualified"]["run_id"]==43962066769
+          assert state["active"]["gate"]=="P3-M4-CT0"
+          assert state["active"]["attempt"]=="R2"
+          assert state["active"]["status"]=="PENDING_STRICT_CI"
+          assert state["active"]["qualification"] is False
+          assert state["active"]["previous_red_run"]==43980155870
+          assert state["active"]["source_blob"]=="a6f93c62c83bf51a0b89691196f875399d2896fa"
+          assert state["active"]["consumer_blob"]=="f2ddadc880c62632dd91547526ee97bc92a0d504"
           assert state["next_planned"]["status"]=="PROSPECTIVE_NOT_STAGED"
           print("BFSS_M4_CT0_EXACT_SOURCE_CONSUMER_DONOR_TOOLCHAIN_AND_CHECKPOINT_PREFLIGHT_PASS")
           PY
