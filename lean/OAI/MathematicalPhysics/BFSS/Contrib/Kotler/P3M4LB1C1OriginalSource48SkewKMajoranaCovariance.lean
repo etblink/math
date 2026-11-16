@@ -43,10 +43,21 @@ than guessing a real-complex scalar-tower instance. -/
 private theorem originalFock_quarter_two (a : ℝ) (x : Op) :
     (a / 4 : ℝ) • ((2 : ℂ) • x) =
       (a / 2 : ℝ) • x := by
-  rw [← FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
-    (2 : ℝ) x, smul_smul]
   have h : (a / 4 : ℝ) * 2 = a / 2 := by ring
-  rw [h]
+  have hc : ((a / 4 : ℝ) : ℂ) * (2 : ℂ) =
+      ((a / 2 : ℝ) : ℂ) := by
+    exact_mod_cast h
+  calc
+    (a / 4 : ℝ) • ((2 : ℂ) • x) =
+        ((a / 4 : ℝ) : ℂ) • ((2 : ℂ) • x) :=
+      FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
+        (a / 4) ((2 : ℂ) • x)
+    _ = (((a / 4 : ℝ) : ℂ) * (2 : ℂ)) • x := by
+      rw [smul_smul]
+    _ = ((a / 2 : ℝ) : ℂ) • x := by rw [hc]
+    _ = (a / 2 : ℝ) • x :=
+      (FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
+        (a / 2) x).symm
 
 /-- A real coefficient acting on the genuine zero original
 Fock operator is zero. This avoids the historical real-zero
@@ -54,7 +65,7 @@ source simplifier failure. -/
 private theorem originalFock_real_smul_zero (a : ℝ) :
     a • (0 : Op) = (0 : Op) := by
   rw [FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul]
-  exact smul_zero (a : ℂ)
+  exact smul_zero (a : ℂ) Op
 
 /-- A single delta picks out the exact original source coefficient
 with factor 1/2 from the two inside the LB0 CAR. This is proved
@@ -74,9 +85,9 @@ private theorem originalFock_single_delta
           apply Finset.sum_congr rfl
           intro q hq
           by_cases h : q = k
-          · simp only [if_pos h]
+          · simp only [ite_eq_left h]
             exact originalFock_quarter_two (a q) x
-          · simp only [if_neg h]
+          · simp only [ite_eq_right h]
             rw [zero_smul ℂ x, originalFock_real_smul_zero]
     _ = (a k / 2 : ℝ) • x := by
       simp only [Fintype.sum_ite_eq']
@@ -139,9 +150,30 @@ theorem originalFock_skew_delta_doubleSum_contract
       (a p k / 2 : ℝ) • x p -
         (a k p / 2 : ℝ) • x p =
         (a p k : ℝ) • x p := by
-    rw [← sub_smul, ha k p]
-    have h : (a p k / 2 : ℝ) - (-a p k / 2) = a p k := by ring
-    rw [h]
+    have hcoeff :
+        (a p k / 2 : ℝ) - (a k p / 2 : ℝ) = a p k := by
+      rw [ha k p]
+      ring
+    have hc :
+        ((a p k / 2 : ℝ) : ℂ) - ((a k p / 2 : ℝ) : ℂ) =
+          ((a p k : ℝ) : ℂ) := by
+      exact_mod_cast hcoeff
+    calc
+      (a p k / 2 : ℝ) • x p - (a k p / 2 : ℝ) • x p =
+        ((a p k / 2 : ℝ) : ℂ) • x p -
+          ((a k p / 2 : ℝ) : ℂ) • x p := by
+            rw [
+              FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
+                (a p k / 2) (x p),
+              FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
+                (a k p / 2) (x p)]
+      _ = (((a p k / 2 : ℝ) : ℂ) -
+            ((a k p / 2 : ℝ) : ℂ)) • x p := by
+              rw [sub_smul]
+      _ = ((a p k : ℝ) : ℂ) • x p := by rw [hc]
+      _ = (a p k : ℝ) • x p :=
+        (FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul
+          (a p k) (x p)).symm
   calc
     (∑ p : ι, ∑ q : ι, (a p q / 4 : ℝ) •
       (((if q = k then (2 : ℂ) else 0) • x p) -
@@ -176,13 +208,13 @@ theorem originalSource48BivectorK_skew_commutator_gamma
   have ha : ∀ p q : Source48Label, a p q = -(a q p) := by
     intro p q
     exact hA p q
-  have hcar :
-      originalSource48BivectorK A * x k -
-        x k * originalSource48BivectorK A =
+  have hcarNative :
+      originalSource48BivectorK A * sourceNormalizedGamma k -
+        sourceNormalizedGamma k * originalSource48BivectorK A =
       ∑ p : Source48Label, ∑ q : Source48Label,
-        (a p q / 4 : ℝ) •
-          (((if q = k then (2 : ℂ) else 0) • x p) -
-            ((if p = k then (2 : ℂ) else 0) • x q)) :=
+        (A p q / 4 : ℝ) •
+          (((if q = k then (2 : ℂ) else 0) • sourceNormalizedGamma p) -
+            ((if p = k then (2 : ℂ) else 0) • sourceNormalizedGamma q)) :=
     originalSource48BivectorK_commutator_CAR_sum A k
   have hcollapse :
       (∑ p : Source48Label, ∑ q : Source48Label,
@@ -195,9 +227,9 @@ theorem originalSource48BivectorK_skew_commutator_gamma
     originalSource48BivectorK A * sourceNormalizedGamma k -
       sourceNormalizedGamma k * originalSource48BivectorK A =
         ∑ p : Source48Label, ∑ q : Source48Label,
-          (a p q / 4 : ℝ) •
-            (((if q = k then (2 : ℂ) else 0) • x p) -
-              ((if p = k then (2 : ℂ) else 0) • x q)) := hcar
+          (A p q / 4 : ℝ) •
+            (((if q = k then (2 : ℂ) else 0) • sourceNormalizedGamma p) -
+              ((if p = k then (2 : ℂ) else 0) • sourceNormalizedGamma q)) := hcarNative
     _ = ∑ p : Source48Label, (A p k : ℝ) •
           sourceNormalizedGamma p := hcollapse
 
