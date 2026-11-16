@@ -70,13 +70,38 @@ Because any algebra automorphism fixes the unit, `α_g(1)=1` for all g. This giv
 
 A cost-effective follow-on once HS0 is green is a coherent **HS-fiber group action** `Spin9 →* (OriginalFockHSFiber ι ≃ₗᵢ[ℂ] OriginalFockHSFiber ι)`, transported from B3, with pointwise trace pairing and operator-unit fixed-vector consumers. HS0 only constructs a linear isometry for each g; the group law for isometries should be proved separately, without invoking a Fock-vector implementer. Extending it to original operator-valued L² requires an independently source-accurate bosonic pullback/measure-preserving action.
 
-## D. Revised decision table and next strict experiments
+## D. An even smaller connector: 48-Majorana infinitesimal bivectors
+
+A Lie-algebra-first path may be significantly smaller than the global covering lift. Start with the already present source-exact **normalized** original Majorana operators c_p = sourceNormalizedGamma p, with p indexed by the ACTUAL original Source48Label (24 modes × two real labels). Existing theorems sourceNormalizedGamma_sq_one and sourceNormalizedGamma_pairwise_CAR provide self-adjoint square-one operators with CAR c_p c_q + c_q c_p = 2 delta_pq I.
+
+For a REAL skew 48×48 matrix A on these exact labels, define the *candidate* operator
+
+\[
+K(A)=\frac14\sum_{p,q=1}^{48}A_{pq}c_pc_q,\qquad A^\mathsf T=-A.
+\]
+
+The CAR give [c_p c_q,c_k] = 2(delta_qk c_p - delta_pk c_q), hence
+
+\[
+[K(A),c_k]=\sum_p A_{pk}c_p.
+\]
+
+This derives the coefficient 1/4 rather than guessing it. Since A is real skew and c_p are self-adjoint, K(A) is skew-adjoint. The same CAR support [K(A),K(B)] = K(AB-BA), by a direct bivector commutator expansion or a commutant-and-trace argument using source full Fock image and faithful representation. The latter method requires separately qualified original M3I/T1 source interfaces. These are **proposed** original-source Lean theorems, not yet qualified declarations.
+
+**Numerical sanity check, not a proof:** on four exact 4×4 Jordan–Wigner normalized Majoranas, with two independent random integer skew 4×4 matrices, verified CAR error 0, K-skew-adjoint error 0, [K(A),c_k] covariance error 0, and [K(A),K(B)] - K([A,B]) error 0. This verifies the chosen factor/sign in a small CAR representation, not the original 48-dimensional Lean result.
+
+There is an obvious reuse interface: the existing original source Spin9 gamma Lie-level skew hom and paired-color 16→48 transport can provide the exact A corresponding to so(9). Check Lie normalization and source signs before composing anything. An exact finite 48-Majorana generator commutator is much more feasible to test independently than a global continuous Spin(9)→Spin(48) lift. On a nontrivial smooth core, a later original charge covariance proof would also require the bosonic angular differential generator and exact physical operator domain; the finite K(A) alone does not give that theorem.
+
+**Bounded next-gate design:** prove (1) K(A) skew-adjoint; (2) the native CAR generator commutator; (3) only after both pass, Lie bracket preservation; (4) only then consider integration to a global group action with topology, central signs and physical-domain compatibility. The central Spin9(-1) negative control is mandatory for any final group implementation.
+
+## E. Revised decision table and next strict experiments
 
 | Path | What it would establish | Gap / proof cost | Scientific ceiling |
 | --- | --- | --- | --- |
 | **M4-HS0 → HS1** | True unitary group action on original **operator Hilbert–Schmidt columns**, source-star/trace invariant | HS0 cold/consumer result pending; HS1 group hom and inverse/isometry packaging are small | Not a Fock-vector unitary, no physical charge covariance |
 | **Central-sign microgate** | Falsifiable `Spin9(-1)` action on literal 48-real gamma operators, distinguishing nontrivial parity-type implementation | Exact typed negative matrix-vector and normalized gamma square bridge; comparatively small | Does not construct a full Spin9 Fock-vector lift |
 | **Explicit source Spin9→Spin48 lift** | Global coherent original Fock-vector implementer with central sign and source gamma conjugation | Requires continuity/covering or explicit even-Clifford representation, all in source label order; potentially large | Still must prove combined bosonic pullback, gauge commutation and charge-domain covariance |
+| **Lie-bivector finite CAR connector** | Native skew-adjoint Fock generator, exact Majorana commutator and eventually Lie hom | Small source CAR gate first; group integration still substantial | Infinitesimal only; no Fock group action or domain theorem |
 | **Per-element unitary via matrix automorphisms** | Every individual B3 star automorphism is inner | Projective phases and globally coherent group law persist | Never label single-element innerness as a physical representation |
 | **Bottom-up original charge-square difference** | Direct actual 16-charge norm equality potentially without global physical Spin9 group action | Native source algebra and physical operator form/domain | Independent comparator; avoid making global Spin9 lift a logically required step when it is not |
 
