@@ -51,8 +51,8 @@ for tex_path in TEX:
     if stack:
         environment_errors.append(f'{tex_path.name}: unclosed {stack!r}')
 check(not environment_errors, 'All TeX environments are properly nested')
-check('Edition 0.7 development checkpoint' in MAIN and 'Edition 0.6.1' in MAIN,
-      'Master distinguishes current v0.7 draft from historical compiled v0.6.1')
+check('Edition 0.8 consolidated research checkpoint' in MAIN and 'Edition 0.6.1' in MAIN,
+      'Master distinguishes Edition 0.8 from historical compiled checkpoints')
 check('Throughout this working manuscript' in MAIN,
       'Reader contract describes an unfinished working monograph')
 check('not} an independent mathematical peer review' in MAIN and
@@ -79,7 +79,7 @@ check((ROOT / 'EDITORIAL_CONVERGENCE_AUDIT_2026_11_11.md').exists(),
       'Edition 0.7 whole-manuscript audit record is present')
 
 check('\\chapter{Formalization and Qualification Atlas}' in SOURCE and SOURCE.count('\\paragraph{\\texttt{') >= 38,
-      'Printed theorem atlas contains all 38 records')
+      'Printed theorem atlas preserves the 38 historical records')
 check('app:atlas' in labels, 'Printed source atlas has chapter label')
 check('\\usepackage{xurl}' in MAIN,
       'Long Lean paths have active line-breaking support')
@@ -97,7 +97,11 @@ check('\\chapter{Scope, Physical Context, and the Research Problem}' in SOURCE,
 records = ATLAS['records']
 ids = [r['id'] for r in records]
 status = set(ATLAS['status_vocabulary'])
-check(len(records) == 38 and len(set(ids)) == 38, '38 unique frozen theorem atlas records')
+check(len(records) == 59 and len(set(ids)) == 59, '59 unique records: 38 frozen plus 21 dated additions')
+frozen = json.loads((ROOT / 'THEOREM_ATLAS_0_7_FROZEN.json').read_text())
+check(records[:38] == frozen['records'], 'Original 38 atlas records preserved unchanged')
+check('eq:ed08-R' in count and 'eq:ed08-Hardy' in count and 'eq:ed08-certificate' in count, 'Conditional fidelity contract explicitly labeled')
+check((ROOT / 'RESEARCH_ROUTE_MAP_2026_11_16.md').is_file(), 'Dated physical route comparison present')
 check(all(r['evidence_status'] in status for r in records), 'Atlas statuses belong to accepted vocabulary')
 check(all(r.get('strict_run') for r in records if r['evidence_status'] == 'INTEGRATED_STRICT'),
       'All integrated strict records link exact run receipts')

@@ -209,10 +209,68 @@ product, extracted only after relevant results have been independently
 verified, adversarially reviewed and placed into a coherent
 mathematical theorem chain.
 
-Our version control policy follows that distinction. The monograph
-lives on an isolated documentation branch; the original Lean
-sources, pinned compilation manifests, and historical receipts remain
-unaltered. Local LaTeX compilation and inspection are independent of
-GitHub Actions or Pages. Eventual promotion into the unified
-integration branch should be a non-forced fast-forward after checking
-ancestry and integrating any intervening scientific work.
+Our version control policy follows that distinction. Edition 0.7 was
+developed on an isolated documentation branch and is already an
+ancestor of unified integration. Edition 0.8 is updated directly on
+unified integration, with editorial and proof changes in separate
+commits. Original accepted Lean sources, pinned manifests and
+historical receipts retain their own qualification boundaries. Local
+LaTeX compilation and inspection remain independent of GitHub Actions
+or Pages; no new manuscript-branch merge is required.
+
+\section{Edition 0.8: a minimal conditional certificate contract}
+\label{sec:ed08-resolvent}
+Let $E$ be the original physical Hilbert space and $T$ its closed
+sixteen-charge column, with $H=T^\dagger T/16$. For a normalized
+physical singlet $\psi$ in the weighted domain put
+$z=S_\varepsilon\psi$ and $\chi_\alpha=(T\psi)_\alpha$.
+The existing reciprocal construction gives
+$\chi_\alpha=B_\varepsilon z_\alpha$ under its actual graph
+hypotheses. Assume additionally that the outputs are physical,
+belong to a reducing spinor sector, and satisfy, for $t>0$,
+\begin{equation}\label{eq:ed08-R}
+ \tfrac1{16}\sum_\alpha
+ \langle\chi_\alpha,(H+t)^{-1}\chi_\alpha\rangle
+ =\langle\psi,H(H+t)^{-1}\psi\rangle.
+\end{equation}
+Assume the native spinor form-domain inequality
+\begin{equation}\label{eq:ed08-Hardy}
+ \|B_\varepsilon\eta\|^2\leq\kappa h[\eta],
+ \qquad \eta\in D(h)\cap E_{\rm spinor}.
+\end{equation}
+Neither displayed assumption has been qualified on the original
+source. The constant is not imported from a paper by convention.
+
+Conditionally, take $\eta_\alpha=(H+t)^{-1}\chi_\alpha$ and
+$a_\alpha=\langle\chi_\alpha,\eta_\alpha\rangle\geq0$.
+The resolvent equation gives $h[\eta_\alpha]\leq a_\alpha$.
+Reciprocal pairing and Cauchy--Schwarz yield
+$a_\alpha\leq\sqrt\kappa\|z_\alpha\|\sqrt{a_\alpha}$,
+hence $a_\alpha\leq\kappa\|z_\alpha\|^2$. Averaging and
+letting the spectral shift $t$ decrease to zero gives
+$\|(I-P_{\ker H})\psi\|^2\leq\kappa q_\varepsilon[\psi]$.
+The radial regulator $\varepsilon$ stays fixed. This is a conditional
+argument using bounded shifted resolvents, not a new Lean certificate
+or a proof of the assumptions.
+
+\section{Edition 0.8: allocation and decision boundaries}
+\label{sec:ed08-decisions}
+The current finite symmetry route uses sparse source skew planes
+before a general bivector bracket. Abstract finite-sum transport
+and a commutant/trace argument remain alternatives; the latter needs
+the source generation and trace interfaces qualified explicitly.
+Global even-Clifford lifting and coherent unitary implementation of
+the accepted star action are further alternatives, with topology
+and phase-coherence obligations. It is worth auditing whether the
+needed Spin(9) subalgebra is cheaper than full skew-matrix generality.
+
+The competing energy investigation is the source square-difference
+contract in Chapter 10. It is independent enough to compare against
+the symmetry construction without launching competing expensive
+proof runs. G16 remains the coefficient-estimate lane for the Hardy
+endpoint. The next major gate should be selected by which original
+physical prerequisite it removes, after this consolidation is reviewed.
+Repeated equivalent red failures trigger architecture review;
+changed normalization, an empty physical sector, or an escape
+counterexample can require abandoning a scientific route. A compiler
+failure alone is not such a counterexample.

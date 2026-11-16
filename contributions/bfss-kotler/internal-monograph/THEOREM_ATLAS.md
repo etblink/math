@@ -645,3 +645,217 @@ Under explicit P1/P2 source action/core-form hypotheses, the conservative high-t
 **Boundary:** The earlier Fock-vector 6 threshold cannot be conflated with the endomorphism-fiber 12 bound; P1–P3 remain undischarged.
 
 **Notes:** Conventional analysis; no Lean theorem claimed.
+
+## Edition 0.8 dated additions (16 November 2026)
+
+The original 38 records remain frozen; these additions retain their own exact tested commits. No new combined-tree qualification is asserted.
+
+### E08-M2C1 — Original operator-L2 / Fock-column norm comparisons
+
+Status: INTEGRATED_STRICT. Qualified continuous comparison with true column Hilbert norm.
+
+Boundary: No original operator-norm isometry, Hamiltonian-domain transport or spectral result.
+
+Receipt: `research/spectral-p2-original-field/P3_M2C1_R2_GREEN_43379713104_ACCEPTANCE_M2_CLOSURE_M3_PRIORITIES_2026_11_12.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43379713104), tested `88c0a1f5efef0418b12645cb05ff7eefac7e4fb2`.
+
+### E08-M3G0B1 — Almost-everywhere original full gauge operator action
+
+Status: INTEGRATED_STRICT. Simultaneous finite-basis and full-operator source action identity.
+
+Boundary: No group-parameter continuity or full physical Hamiltonian covariance.
+
+Receipt: `research/spectral-p2-original-field/P3_M3G0B1_R2_GREEN_43467719230_ACCEPTANCE_AND_M3_RECOVERY_HANDOFF_2026_11_13.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43467719230), tested `adb7f1378fd1e06da45352952a15d32b00c4654b`.
+
+### E08-BF — Original charge graph, normalized H and nonzero natural domain
+
+Status: INTEGRATED_STRICT. Exact original graph/paired Hamiltonian connection and some nonzero H-domain vector.
+
+Boundary: No eigenstate, kernel vector, selected radial witness or automatic BG/BH port qualification.
+
+Receipt: `research/spectral-p2-original-field/P3_M5BF0_R1_GREEN_43498649514_NATIVE_SOURCE_GRAPH_NONZERO_H_DOMAIN_ACCEPTANCE_2026_11_13.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43498649514), tested `f2499980b808b6c9ddf2c6093f5b88ebff8b825f`.
+
+### E08-C4A — Positive-regulator natural weighted adjoint square
+
+Status: INTEGRATED_STRICT. Natural domain, dense self-adjoint closed weighted adjoint square and energy.
+
+Boundary: Positive regulator only; normalized operator and kernel have separate receipts.
+
+Receipt: `research/spectral-p2-original-field/P3_AUX_RAD_C4A_R2_GREEN_43585322863_ORIGINAL_WEIGHTED_NATURAL_ADJOINT_SQUARE_ACCEPTANCE_2026_11_14.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43585322863), tested `c2ff95769d65b45e002118eac6e12f910866373f`.
+
+### E08-C4B — Normalized weighted operator and full weak form
+
+Status: INTEGRATED_STRICT. Exact 1/16-normalized natural operator, self-adjointness and weak-form iff.
+
+Boundary: No original/weighted operator equality, zero-regulator limit or spectral gap.
+
+Receipt: `research/spectral-p2-original-field/P3_AUX_RAD_C4B_R1_GREEN_43587088274_NORMALIZED_WEIGHTED_OPERATOR_WEAK_FORM_ACCEPTANCE_2026_11_14.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43587088274), tested `08afa5c57b1f90daa621b938e778bb2ffb7770a2`.
+
+### E08-C4C — Original and weighted kernel equality
+
+Status: INTEGRATED_STRICT. Equality of original and positive-regulator kernels with native domains.
+
+Boundary: No nonzero kernel, uniqueness, equality of operators or positive spectra.
+
+Receipt: `research/spectral-p2-original-field/P3_AUX_RAD_C4C_R1_GREEN_43589307044_ORIGINAL_WEIGHTED_KERNEL_PRESERVATION_ACCEPTANCE_2026_11_14.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43589307044), tested `c63c8c0be281d804495e8aa6334ad4f5689c9211`.
+
+### E08-CERTP0 — Original reciprocal Hilbert pairing
+
+Status: INTEGRATED_STRICT. Native FullL2/output pairing consumed by the weighted charge graph.
+
+Boundary: No Hardy estimate, physical spinor sector or fidelity theorem.
+
+Receipt: `research/spectral-p2-original-field/P3_AUX_CERT_P0_R1_GREEN_43621045697_ORIGINAL_RECIPROCAL_HILBERT_PAIRING_ACCEPTANCE_2026_11_14.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43621045697), tested `e06545070752572665f87759fe450063109da870`.
+
+### E08-G15 — Original tau norm and four-plane coefficient reduction
+
+Status: INTEGRATED_STRICT. Exact source tau action norm and cross-term-preserving sum-square.
+
+Boundary: No numerical coefficient estimate, full G16 or physical Hardy theorem.
+
+Receipt: `research/spectral-p2-original-field/P3_AUX_HARDY_G15_R4_GREEN_43763173942_ORIGINAL_TAU_NORM_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43763173942), tested `4d45f9c3bd1b3b2e94c7d23e2576a8fb87a65166`.
+
+### E08-G16D0 — Finite plane incidence diagnostic
+
+Status: INTEGRATED_STRICT. Finite multiplicities and rational coefficient weights.
+
+Boundary: Diagnostic only; no original gamma adapter or full G16.
+
+Receipt: `research/spectral-p2-original-field/P3_AUX_HARDY_G16_D0_R2_GREEN_43768003845_FINITE_INCIDENCE_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43768003845), tested `1cba8fd806dad1446bf2a7e2e2d37e2e85811db8`.
+
+### E08-G16D1A — Original gamma-word Frobenius diagnostic
+
+Status: INTEGRATED_STRICT. Original gamma word-support pairing with native controls.
+
+Boundary: No complete ordered-word/originalHardyY bridge or full G16.
+
+Receipt: `research/spectral-p2-original-field/P3_AUX_HARDY_G16_D1A_R2_GREEN_43769722679_SOURCE_GAMMA_FROBENIUS_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43769722679), tested `bcd340435ac02763a95949c95808379df634cc66`.
+
+### E08-IBI — Seventeen-source incidence bundle
+
+Status: INTEGRATED_STRICT. Source Gram, signed triples and native SU2/SO3 infrastructure imported byte-identically.
+
+Boundary: No full orbit-classification converse, quantum dynamics, octonion identity or ontology theorem.
+
+Receipt: `research/incidence-before-identity/IBI_QUALIFIED_INTEGRATION_R1_GREEN_43788864430_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43788864430), tested `bbc22c6e7dbb46b09db5f0b11a6ef25270a3b8e4`.
+
+### E08-OUTLINE — Conditional Spin9 physical outline
+
+Status: INTEGRATED_STRICT. Six abstract theorems and three original FullL2-typed consumers.
+
+Boundary: Physical unitary, domain, covariance, transitivity and singlet premises remain uninstantiated.
+
+Receipt: `research/spectral-p2-original-field/SPIN9_ABSTRACT_OUTLINE_R4_GREEN_43799204363_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43799204363), tested `54d9f05ad803fac15fd7d956007694b95cb9f3c3`.
+
+### E08-HS0 — Original Fock-operator HS isometry
+
+Status: INTEGRATED_STRICT. Original star action preserves the correctly normed HS fiber pairing.
+
+Boundary: Not a Fock-vector action or physical singlet; group packaging belongs to HS1.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_HS0_R1_GREEN_43801631165_ORIGINAL_FOCK_HS_ISOMETRY_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43801631165), tested `e9c02b1eb5ff0aaf4b90be66abf761d5a5db117f`.
+
+### E08-HS1 — Algebraic Spin9 group action on operator HS fiber
+
+Status: INTEGRATED_STRICT. Coherent algebraic isometry-equivalence group law and identity-operator fixedness.
+
+Boundary: No group-parameter continuity, Fock-vector implementer or physical domain result.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_HS1_R2_GREEN_43806197198_UNITARY_OPERATOR_HS_GROUP_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43806197198), tested `522b8943407775037b507a45e7cd0de0a3483ce1`.
+
+### E08-CS0 — Original central gamma sign
+
+Status: INTEGRATED_STRICT. Source negative central element induces -identity on labels and gamma sign reversal.
+
+Boundary: No full physical lift or exact parity implementer construction.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_CS0_R2_GREEN_43806215702_SOURCE_CENTRAL_GAMMA_SIGN_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43806215702), tested `71b9fdd27500c75a4154c7032c4a8f73b1de1163`.
+
+### E08-LB0 — Original Majorana bivector CAR
+
+Status: INTEGRATED_STRICT. Triple commutator and distinct-label physical skew-adjointness.
+
+Boundary: No arbitrary K(A) theorem or global symmetry follows from this gate alone.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_LB0_R3_GREEN_43811766549_ORIGINAL_MAJORANA_BIVECTOR_CAR_ACCEPTANCE_2026_11_15.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43811766549), tested `a0279b211a81922b17bff24c735bc1c4569f80f0`.
+
+### E08-LB1S — Original skew-matrix Fock bivector
+
+Status: INTEGRATED_STRICT. Original K(A) is skew-adjoint for real skew source matrices.
+
+Boundary: No Lie bracket, group integration, charge-domain or spectral theorem.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_LB1S_R5_GREEN_43849019596_ORIGINAL_SOURCE48_K_SKEW_ACCEPTANCE_2026_11_16.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43849019596), tested `13e79693918135c375db702c377cffa11ffd9d83`.
+
+### E08-LB1C0 — Original K(A) CAR commutator expansion
+
+Status: INTEGRATED_STRICT. Exact real-scaled original double-sum commutator/CAR expansion.
+
+Boundary: Skew delta contraction belongs to the separate LB1C1 receipt.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_LB1C0_R1_GREEN_43853833739_ORIGINAL_K_COMMUTATOR_EXPANSION_ACCEPTANCE_2026_11_16.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43853833739), tested `373e9b017586812bbfe47646fb5d80c76609e7e9`.
+
+### E08-LB1C1 — Original K(A)-Majorana covariance
+
+Status: INTEGRATED_STRICT. Full original real-skew Source48 covariance with fixed factor 1/4.
+
+Boundary: No full bivector bracket, global Fock-vector group action or physical covariance.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_LB1C1_R6_GREEN_43901524171_SOURCE48_K_GAMMA_COVARIANCE_ACCEPTANCE_2026_11_16.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43901524171), tested `af8471e0bd30306778b65ace8d7c68ddf1ff2982`.
+
+### E08-LB1L2 — Hypothesis-first original Fock product covariance
+
+Status: INTEGRATED_STRICT. Leibniz covariance on actual Fock operators under two explicit hypotheses and finite indexed version.
+
+Boundary: Native K(A) substitution and full source Lie bracket remain unqualified.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_LB1L2_GREEN_43937204884_ABSTRACT_FOCK_COVARIANCE_ACCEPTANCE_2026_11_16.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43937204884), tested `3f1de41d122d2f00e05b3530039f8dffe8798b53`.
+
+### E08-P0A — Original sparse skew-plane matrix gate
+
+Status: INTEGRATED_STRICT. STRICT GREEN: original Source48 elementary real-matrix entrywise skewness and transpose for arbitrary labels, including coincident labels.
+
+Boundary: No K(E) normalization, full bracket or physical symmetry conclusion.
+
+Receipt: `research/spectral-p2-original-field/BFSS_M4_LB1P0A_R4_GREEN_43951949627_SOURCE48_SKEW_PLANE_ACCEPTANCE_2026_11_16.md`.
+
+[Strict run](https://github.com/etblink/math/actions/runs/43951949627), tested `7e3df8b9a760b1eecc8ac46a2a49ea5c3e4e76a0`; complete artifact independently rehashed, 2+2 standard-only reports.

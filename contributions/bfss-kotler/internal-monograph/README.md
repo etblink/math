@@ -1,6 +1,9 @@
 # The Relative SU(2) BFSS Quantum System — internal research monograph
 
-**Active source: Edition 0.7 typesetting review candidate, locally built and visually screened (independent mathematical review pending).** The previous fully compiled checkpoint is **Edition 0.6.1 (2026-11-11), reported as 90 pages and 40 offline structural checks at commit `900859ed`**. All 17 chapters and the historical, normalization, and negative-knowledge appendices are drafted. **This is a working internal manuscript, not a published or peer-reviewed scientific result.**
+**Current: Edition 0.8 consolidated checkpoint (16 November 2026).** The sections below retain Edition 0.7 historical validation and review provenance. See [Edition 0.8 consolidation](EDITION_0_8_CONSOLIDATION_2026_11_16.md), [route map](RESEARCH_ROUTE_MAP_2026_11_16.md), and the [dated build record](BUILD_VALIDATION_0_8_2026_11_16.md). Edition 0.7 is already an ancestor of unified integration; Edition 0.8 is developed directly on that branch. The original 38 atlas records are frozen in `THEOREM_ATLAS_0_7_FROZEN.json`; the current atlas adds 21 dated entries. No new physical spectral theorem or independent scientific referee acceptance is claimed.
+
+
+**Historical Edition 0.7 source: typesetting review candidate, locally built and visually screened (independent mathematical review pending).** The previous fully compiled checkpoint is **Edition 0.6.1 (2026-11-11), reported as 90 pages and 40 offline structural checks at commit `900859ed`**. All 17 chapters and the historical, normalization, and negative-knowledge appendices are drafted. **This is a working internal manuscript, not a published or peer-reviewed scientific result.**
 
 This directory helps an independent mathematician or mathematical physicist understand, critique, reproduce, and extend the *original source-exact relative SU(2) quantum model* and its formal verification. Its ultimate external successor will be drafted only after the relevant scientific results and formal proofs are complete and independently reviewed.
 
@@ -62,3 +65,13 @@ The complete manuscript ZIP provided by the owner resolved the local-source acce
 ## Edition 0.7 independent AI referee response (November 11, 2026 Pacific)
 
 A fresh Grok session reviewed the printed Edition 0.7 text and recommended **accept after minor corrections for an internal mathematical research record**. It did **not** inspect or recompile Lean, and it expressly did not accept an original positive-eigenvalue theorem, physical compact-resolvent result, or mass gap. The original report is preserved in `reviews/GROK_EDITION_07_INDEPENDENT_REFEREE_2026_11_11.md`; the Project Lead's finding-by-finding response is `reviews/PROJECT_LEAD_ED07_REFEREE_ADJUDICATION_2026_11_11.md`. This response corrects the historical-only Hamiltonian status in Chapters 10 and 14, emphasizes the fragility of the numerical coercivity illustration, reconciles the 38-record atlas cardinality, and attributes the Bajaj--Lin Appendix F existence claim accurately without promoting it. The mathematics and theorem-atlas evidence status remain unchanged.
+
+## Edition 0.8 validation commands
+
+```bash
+python3 tools/audit_manuscript.py
+python3 tools/audit_consolidation_evidence.py
+python3 tools/release_candidate_build.py --outdir /tmp/bfss-ed08
+```
+
+The evidence audit needs the Git checkout. The build and visual review validate editorial output; exact source/consumer strict receipts retain mathematical proof authority. Current workflow status is in the root checkpoint. Edition 0.7 branch instructions above are historical; ongoing authorized work is directly on unified integration.

@@ -30,3 +30,7 @@ Source histories: FCP G4--K9D #38011995220, BE #39088799248, BH #39096180117; ma
 4. **Spin-sector transfer:** verify original vector/torus/gauge/closed-charge covariance, nonempty high isotypes, true transverse oscillator band projection on that carrier.
 5. **Adversarial packets:** require normalized original physical-domain escaping vectors; bounded form energy tests first-moment coercivity. Calling them a Weyl sequence additionally requires the operator-norm residual and weak escape.
 6. **External route comparison:** review Bajaj–Lin arXiv:2611.14512 §4.1 and Michel–Scheinpflug–Yin arXiv:2611.09837 as externally authored research, with no automatic Lean or physical claim promotion.
+
+## Edition 0.8 reconciliation — 16 November 2026
+
+The S1–S7 table remains a useful high-Spin dependency map, not the current exclusive route. The lead endpoint is now fixed-positive-regulator fidelity; see `RESEARCH_ROUTE_MAP_2026_11_16.md`. Original weighted normalized operator/kernel, reciprocal pairing and G15 tau-norm qualifications have advanced. HS1 is algebraic operator-HS symmetry, CS0 is the original central gamma sign, LB1C1 is original K/gamma covariance, and LB1L2 is hypothesis-first Fock product covariance. Full physical Fock-vector Spin9, closed-charge covariance, Hardy/fidelity and positive eigenpairs remain open. The bottom-up square-difference/Gauss energy route is a separate comparator.

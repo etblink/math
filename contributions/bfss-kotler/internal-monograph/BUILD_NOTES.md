@@ -131,3 +131,7 @@ Repairs: escape `invariantCore\_equivariant` in Chapter 5; add `xurl` for long s
 ## Edition 0.7 independent Grok referee correction pass (11 November 2026 Pacific)
 
 Preserved the complete independent AI report and a Project Lead finding-by-finding adjudication. Applied four bounded textual corrections to Chapters 10, 13, 14 and Appendix notation, plus source-status guardrails in the front matter. No Lean source, strict receipt, or mathematical hypothesis was changed; the outside paper was checked directly at arXiv:2611.14512v1 Appendix F. The report did not inspect or compile Lean. A new local full PDF build and visual-diff check follow this edition; the specific validation results are recorded in the new build manifest and the adjudication document.
+
+## Edition 0.8 — 16 November 2026
+
+See [separate validation record](BUILD_VALIDATION_0_8_2026_11_16.md): 119 pages; 68/68 structural checks; 38 unchanged historical plus 21 dated atlas records; 95 source/consumer/workflow pins and 21 run metadata records; local build, all-page render and model visual screen. Independent mathematics/human review pending. Historical build notes above retain their original scope.
