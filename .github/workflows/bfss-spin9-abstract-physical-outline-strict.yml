@@ -1,0 +1,122 @@
+name: BFSS Spin9 top down abstract physical outline strict
+
+'on':
+  push:
+    branches: [research/bfss-spin9-structural-outline-20261115]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSSpin9AbstractPhysicalOutline.lean
+      - lean/diagnostics/BFSSSpin9AbstractPhysicalOutlineIndependentConsumer.lean
+      - .github/workflows/bfss-spin9-abstract-physical-outline-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-spin9-abstract-physical-outline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pure-spin9-symmetry-with-original-FullL2-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - name: Checkout exact outline source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify original Hilbert and frozen outline blob, domain premise and toolchain pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-spin9-outline"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-spin9-outline/tested-commit.txt"
+          python3 - <<'PY'
+          import json,re,subprocess
+          from pathlib import Path
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSSpin9AbstractPhysicalOutline.lean": "4789901698c1978279a3b7921d636f7b2f5a32bc",
+            "lean/diagnostics/BFSSSpin9AbstractPhysicalOutlineIndependentConsumer.lean": "af490d8363742a95c859202d2b70a9e1025c7740",
+            "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+            "lean/lean-toolchain": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+            "lean/lake-manifest.json": "67d01d2717d0aaff59fb8814bb53581b961f42b4"
+          }
+          for p,sha in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
+              assert got==sha,(p,sha,got)
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSSpin9AbstractPhysicalOutline.lean").read_text()
+          c=Path("lean/diagnostics/BFSSSpin9AbstractPhysicalOutlineIndependentConsumer.lean").read_text()
+          a=["charge_norm_eq_of_spin_orbit","charge_basis_norm_eq","charge_basis_sum_sq_eq_sixteen",
+             "charge_basis_sq_eq_average","charge_basis_sq_eq_average_of_sphere_transitive",
+             "spin_preserves_gauge_fixed"]
+          b=["sourceFullL2_singlet_charge_average","sourceFullL2_any_two_charge_norms",
+             "sourceFullL2_gaugeFixed_spinStable"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==a
+          assert re.findall(r"(?m)^#print axioms (\S+)$",c)==b
+          assert "D : Set H" in s and "hD : ∀" in s and "hCov : ∀" in s
+          assert "FullL2 2" in c
+          assert 'import OAI.MathematicalPhysics.BFSS.Core' in c
+          assert "set_option autoImplicit false" in s and "set_option autoImplicit false" in c
+          assert "set_option maxHeartbeats 0" not in s and "set_option maxRecDepth" not in s
+          for t in (s,c):
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",t)
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          manifest=json.loads(Path("lean/lake-manifest.json").read_text())
+          assert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_SPIN9_OUTLINE_EXPLICIT_DOMAIN_AND_AXIOM_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean 4.34.1 and frozen Mathlib cache
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+      - name: Cold pure outline source, original FullL2 consumer and nine axiom reports
+        shell: bash
+        timeout-minutes: 50
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/bfss-spin9-outline"
+          mod="OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSSpin9AbstractPhysicalOutline"
+          src="OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSSpin9AbstractPhysicalOutline.lean"
+          obj=".lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSSpin9AbstractPhysicalOutline.olean"
+          rm -f "$obj" "${obj%.olean}.ilean" "${obj%.olean}.olean.private" "${obj%.olean}.olean.server"
+          timeout 1800s lake build "$mod" 2>&1 | tee "$root/cold-abstract-build.log"
+          timeout 650s lake env lean -DautoImplicit=false -DwarningAsError=true -o "$obj" "$src" 2>&1 | tee "$root/abstract-axioms.log"
+          timeout 700s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSSpin9AbstractPhysicalOutlineIndependentConsumer.lean 2>&1 | tee "$root/native-fullL2-consumer.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-spin9-outline"
+          allowed={"propext","Classical.choice","Quot.sound"}
+          allowed_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          for name in ("cold-abstract-build.log","abstract-axioms.log","native-fullL2-consumer.log"):
+              s=(root/name).read_text()
+              assert "error:" not in s and "sorryAx" not in s,(name,s[-8000:])
+              bad=[x for x in s.splitlines() if "warning:" in x and not allowed_warning.fullmatch(x)]
+              assert not bad,(name,bad[:15])
+          assert "Build completed successfully" in (root/"cold-abstract-build.log").read_text()
+          for file,count in (("abstract-axioms.log",6),("native-fullL2-consumer.log",3)):
+              s=(root/file).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",s)
+              assert len(reports)==count,(file,reports)
+              for name,raw in reports:
+                  assert {a.strip() for a in raw.split(",") if a.strip()}<=allowed,(file,name,raw)
+          print("BFSS_SPIN9_TOP_DOWN_6_ABSTRACT_3_ORIGINAL_FULLL2_STRICT_GREEN")
+          PY
+      - name: Preserve source and consumer logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-spin9-outline-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-spin9-outline/
+          if-no-files-found: warn
+          retention-days: 14
