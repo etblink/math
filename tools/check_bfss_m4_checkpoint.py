@@ -3601,7 +3601,7 @@ def check_checkpoint(root: Path, s: dict):
             require(a.get('contract_commit')=='2ece5242c232a2e77a8e5ecbf6ed634c5529a3a6'
                     and a.get('source_blob')=='96d3b63d08413f880d1adf0cef8b8e291f7b9453'
                     and a.get('consumer_blob')=='fe9136065179d706c60871ae16e02b8f60e1b189'
-                    and a.get('workflow_blob')=='5df8bb9123ee0bd47bccfa6f566d0c28cd339080'
+                    and a.get('workflow_blob')=='b36fb1ae5b76a3b611292ac9ac4c11ca59509bde'
                     and a.get('previous_red_run')==44184526501
                     and a.get('previous_red_preservation_run')==44189939903
                     and a.get('previous_red_artifact_sha256')=='a1c300789de7b8e97e88efa894841670ab92bf7e98d489373c54dff285b9eb73',
@@ -3633,6 +3633,35 @@ def check_checkpoint(root: Path, s: dict):
             require((root/first['evidence_archive']).stat().st_size==754
                     and hashlib.sha256((root/first['evidence_archive']).read_bytes()).hexdigest()==first['artifact_sha256'],
                     'W0C0 R2 original setup-RED ZIP digest or size drift')
+            second=s.get('w0c0_r2_second_preflight_red',{})
+            require(second.get('run_id')==44191695033
+                    and second.get('status')=='PREFLIGHT_RED_UNQUALIFIED'
+                    and second.get('failure_phase')=='PRE_LEAN_PYTHON_SYNTAX_ERROR'
+                    and second.get('preservation_run')==44192086295
+                    and second.get('source_blob')==a.get('source_blob')
+                    and second.get('consumer_blob')==a.get('consumer_blob')
+                    and second.get('workflow_blob')=='5df8bb9123ee0bd47bccfa6f566d0c28cd339080'
+                    and second.get('evidence_archive_blob')=='5655f0d212cc75319ad45d8f8ec1a0fb143c8dba'
+                    and second.get('evidence_job_log_blob')=='60cb9f3a92c411448b15165588b8a686d9e18d0e'
+                    and second.get('evidence_manifest_blob')=='f2bb56bead71167e4b4409de43f47a587609c4b3',
+                    'W0C0 R2 second preflight-only syntax RED provenance lost')
+            for kind in ('evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/second[kind])==second[kind+'_blob'],
+                        'W0C0 R2 second setup-only RED original evidence drift '+kind)
+            require((root/second['evidence_archive']).stat().st_size==514
+                    and hashlib.sha256((root/second['evidence_archive']).read_bytes()).hexdigest()==second['artifact_sha256']
+                    and 'SyntaxError' in (root/second['evidence_job_log']).read_text(),
+                    'W0C0 R2 second setup-RED original provider ZIP or failure log invalid')
+            # Distinct from a Lean theorem check: require both embedded Python
+            # heredocs in strict YAML to be syntactically valid before launch.
+            import textwrap
+            pyblocks=re.findall(r"(?m)^          python3 - <<'PY'[^\n]*\n(.*?)\n          PY$", workflow, re.S)
+            require(len(pyblocks)==2, 'W0C0 R2 strict workflow must contain two exact Python heredocs')
+            for block in pyblocks:
+                try:
+                    ast.parse(textwrap.dedent(block))
+                except SyntaxError as exc:
+                    raise AssertionError('W0C0 R2 strict workflow Python syntax failure') from exc
             import zipfile
             original=root/r['evidence_archive']
             require(original.stat().st_size==18813

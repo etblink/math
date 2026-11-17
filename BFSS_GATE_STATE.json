@@ -1069,7 +1069,7 @@
     "workflow": ".github/workflows/bfss-m4-w0c0-r2-original-fock-scalar-trace-strict.yml",
     "source_blob": "96d3b63d08413f880d1adf0cef8b8e291f7b9453",
     "consumer_blob": "fe9136065179d706c60871ae16e02b8f60e1b189",
-    "workflow_blob": "5df8bb9123ee0bd47bccfa6f566d0c28cd339080",
+    "workflow_blob": "b36fb1ae5b76a3b611292ac9ac4c11ca59509bde",
     "contract_commit": "2ece5242c232a2e77a8e5ecbf6ed634c5529a3a6",
     "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0C0_R2_ORIGINAL_FOCK_LET_STYLE_REPAIR_PRE_GATE_2026_11_17.md",
     "accepted_predecessor_run": 44180157170,
@@ -1093,7 +1093,7 @@
       44127193329
     ],
     "original_W0H1B_R1_native_red_run": 44160611850,
-    "note": "R2 still pending strict source/consumer qualification after first setup-only RED #44190799433 (wrong contract pin), provider-original ZIP/log/manifest separately preserved #44191210547. Corrected workflow pins actual frozen R2 contract. Native R2 source and consumer bytes unchanged.",
+    "note": "R2 PENDING strict after 2 setup-only/pre-Lean REDs #44190799433 wrong frozen-contract filename and #44191695033 missing Python bracket; both provider ZIP, full Actions logs and SHA/CRC manifests Git-preserved, preservation runs #44191210547 and #44192086295 GREEN. R2 original source/consumer byte-identical. Corrected workflow embeds syntactically balanced preflight; no R2 native-source verdict.",
     "previous_red_run": 44184526501,
     "previous_red_artifact_sha256": "a1c300789de7b8e97e88efa894841670ab92bf7e98d489373c54dff285b9eb73",
     "previous_red_preservation_run": 44189939903
@@ -4017,5 +4017,29 @@
     "failed_before_lean": true,
     "failure_phase": "PRE_LEAN_PIN_PATH_MISMATCH",
     "note": "Wrong R2 contract filename in frozen source/consumer preflight pin table; source and consumer never executed, no native mathematical RED."
+  },
+  "w0c0_r2_second_preflight_red": {
+    "gate": "P3-M4-W0C0",
+    "attempt": "R2",
+    "status": "PREFLIGHT_RED_UNQUALIFIED",
+    "qualification": false,
+    "run_id": 44191695033,
+    "job_id": 134422479000,
+    "tested_sha": "f1f86486035da380c1da30812b6830a3ef1e7dee",
+    "artifact_id": 14376422748,
+    "artifact_sha256": "447f688355a42051acc9926d3cc64e3d49148acd258b0e749e91bb3151a4e124",
+    "source_blob": "96d3b63d08413f880d1adf0cef8b8e291f7b9453",
+    "consumer_blob": "fe9136065179d706c60871ae16e02b8f60e1b189",
+    "workflow_blob": "5df8bb9123ee0bd47bccfa6f566d0c28cd339080",
+    "evidence_archive": "research/quantum-information/diagnostics/BFSS_M4_W0C0_R2_44191695033_PREFLIGHT_SYNTAX_RED_evidence.zip",
+    "evidence_archive_blob": "5655f0d212cc75319ad45d8f8ec1a0fb143c8dba",
+    "evidence_job_log": "research/quantum-information/diagnostics/BFSS_W0C0_R2_44191695033_complete_job.log",
+    "evidence_job_log_blob": "60cb9f3a92c411448b15165588b8a686d9e18d0e",
+    "evidence_manifest": "research/quantum-information/diagnostics/BFSS_W0C0_R2_44191695033_PREFLIGHT_SYNTAX_RED_evidence_manifest.json",
+    "evidence_manifest_blob": "f2bb56bead71167e4b4409de43f47a587609c4b3",
+    "preservation_run": 44192086295,
+    "failed_before_lean": true,
+    "failure_phase": "PRE_LEAN_PYTHON_SYNTAX_ERROR",
+    "note": "Python preflight SyntaxError '[' was never closed in historical-evidence assert; strict Lean was not attempted."
   }
 }
