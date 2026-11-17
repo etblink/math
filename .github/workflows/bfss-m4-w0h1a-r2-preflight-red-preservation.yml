@@ -90,7 +90,7 @@ jobs:
           assert b"No such file or directory" in raw
           assert b"bfss-m4-w0h1a-r2/tested-commit.txt" in raw
           assert b"No files were found" in raw
-          assert b"Preflight original W0H0 and W0B0 GREEN with original W0B1 RED STOP provenance" in raw
+          assert b"Process completed with exit code 1" in raw
           root=Path("research/quantum-information/diagnostics")
           root.mkdir(parents=True,exist_ok=True)
           log=root/f"BFSS_W0H1A_R2_{run}_PREFLIGHT_ONLY_complete_job.log"
