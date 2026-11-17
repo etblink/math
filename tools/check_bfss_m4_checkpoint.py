@@ -3063,6 +3063,165 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0B2 Schur scalar bridge must remain prospective until independent W0H1B R2 strict GREEN')
+    if a['gate']=='P3-M4-W0H1B' and a['status']=='GREEN_QUALIFIED':
+        import zipfile
+        require(a.get('attempt')=='R2' and a.get('qualification') is True
+                and a.get('verdict')=='GREEN' and a.get('strict_outcome')=='success'
+                and a.get('run_id')==44164974919 and a.get('job_id')==134328472568
+                and a.get('tested_sha')=='a383fc5bcab5656b3fb67efe4a398c1788b201d1'
+                and a.get('artifact_id')==14366581610
+                and a.get('artifact_sha256')=='a5dc404d93dd6df74ff97e5a4f498661d467edc75391cb46099147859b8928a3'
+                and a.get('source_blob')=='9139fba785aa31a1e1cde83419f9848ea67fc016'
+                and a.get('consumer_blob')=='61964ed693120a6db5f39d034581fc5a5aac9f0a'
+                and a.get('workflow_blob')=='c46291c407af0f5e85f23bad2cb20114abd6b03c'
+                and a.get('contract_commit')=='c7ba0b963d904487461203e43d3f1f844a352dde'
+                and a.get('accepted_predecessor_run')==44151962609
+                and a.get('previous_red_run')==a.get('previous_original_native_red_run')==44160611850
+                and a.get('evidence_archive_blob')=='7e49358ea47500a2b2e8ab0407e7db44c7871cb5'
+                and a.get('evidence_job_log_blob')=='7a0996ce15adfc8f9bf5462c350dafaecd6ff906'
+                and a.get('evidence_manifest_blob')=='4ef0a86aabdf53da7bf85dd15101f89b592badd3'
+                and a.get('evidence_preservation_run')==a.get('preservation_run')==44168840610
+                and a.get('source_reports')==a.get('consumer_reports')==2
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
+                and a.get('independent_controls')==3
+                and a.get('auditor_negative_tests')==6
+                and a.get('cold_build_jobs')==9132
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and a.get('strict_marker')=='BFSS_W0H1B_R2_ORIGINAL_ADJOIN_FULL_CLIFFORD_2_SOURCE_2_CONSUMER_3_CONTROLS_SIX_MUTANTS_STRICT_GREEN'
+                and s['last_qualified']==a and s['accepted_anchors'][-1]==a,
+                'W0H1B R2 original source full Clifford GREEN acceptance drift')
+        idx=s.get('last_qualified_source_exact_original_BFSS',{})
+        donor=next((x for x in s['accepted_anchors'] if x.get('gate')=='P3-M4-W0H1A'),{})
+        require(idx.get('gate')=='P3-M4-W0H1B'
+                and idx.get('run_id')==44164974919
+                and idx.get('qualification') is True
+                and idx.get('evidence_archive_blob')==a['evidence_archive_blob']
+                and donor.get('attempt')=='R2'
+                and donor.get('run_id')==44151962609
+                and donor.get('qualification') is True
+                and donor.get('source_blob')=='c5c0894d99a01e92e92a58dac7313698a2f69971'
+                and donor.get('evidence_archive_blob')=='4437e182a35763d448b9780d158df926d073d839'
+                and blob(root/donor['evidence_archive'])==donor['evidence_archive_blob'],
+                'W0H1B accepted source exact index or original W0H1A donor drift')
+        m=json.loads((root/a['evidence_manifest']).read_text())
+        require(m.get('gate')=='P3-M4-W0H1B' and m.get('attempt')=='R2'
+                and m.get('status')=='GREEN_STRICT_PROVIDER_ORIGINAL_UNPROMOTED'
+                and m.get('run_id')==a['run_id'] and m.get('job_id')==a['job_id']
+                and m.get('tested_sha')==a['tested_sha']
+                and m.get('artifact_id')==a['artifact_id']
+                and m.get('source_blob')==a['source_blob']
+                and m.get('consumer_blob')==a['consumer_blob']
+                and m.get('workflow_blob')==a['workflow_blob']
+                and m['original_zip']['size']==14233
+                and m['original_zip']['sha256']==a['artifact_sha256']
+                and m['original_job_log']['size']==263992
+                and m['original_job_log']['sha256']=='69a02201199eb43b3e60cabc1dd0491fa6de7c61064596fd9eb807410ab762fe'
+                and m.get('source_reports')==m.get('consumer_reports')==2
+                and m.get('independent_controls')==3
+                and m.get('negative_mutants')==6
+                and m.get('cold_build_jobs')==9132
+                and m.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and m.get('accepted_predecessor_run')==44151962609
+                and m.get('prior_W0H1B_native_source_red_run')==44160611850
+                and m.get('prior_W0H1B_native_red_preservation_run')==44163946021
+                and m.get('prior_W0B1_stopped_original_native_red_runs')==[44117272657,44127193329],
+                'W0H1B source-exact provider-original GREEN manifest mismatch')
+        require(blob(root/a['evidence_archive'])==a['evidence_archive_blob']
+                and blob(root/a['evidence_job_log'])==a['evidence_job_log_blob']
+                and blob(root/a['evidence_manifest'])==a['evidence_manifest_blob']
+                and hashlib.sha256((root/a['evidence_archive']).read_bytes()).hexdigest()==a['artifact_sha256']
+                and hashlib.sha256((root/a['evidence_job_log']).read_bytes()).hexdigest()==m['original_job_log']['sha256'],
+                'W0H1B provider-original strict GREEN evidence ZIP/full log SHA drift')
+        names={'auditor.log','cold-source.log','consumer.log','preflight.log','source-axioms.log','tested-commit.txt'}
+        pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+        allowed={'propext','Classical.choice','Quot.sound'}
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())==names
+                    and len(m['original_zip']['members'])==6,
+                    'W0H1B provider-original six-member ZIP CRC/member count drift')
+            for member in m['original_zip']['members']:
+                original=z.read(member['name'])
+                require(len(original)==member['size']
+                        and hashlib.sha256(original).hexdigest()==member['sha256'],
+                        'W0H1B provider original member digest mismatch '+member['name'])
+            require(z.read('tested-commit.txt').decode().strip()==a['tested_sha']
+                    and 'Build completed successfully (9132 jobs).' in z.read('cold-source.log').decode()
+                    and 'BFSS_W0H1B_R2_W0H1A_GREEN_R1_NATIVE_RED_W0B1_STOP_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+                    and a['strict_marker'] in z.read('auditor.log').decode(),
+                    'W0H1B original preflight, cold build, strict auditor result missing')
+            for name,expected in (('source-axioms.log',['originalSourceCentralizerPullback_eq_top',
+                                                        'originalComplexEquiv_fullClifford_commutes']),
+                                  ('consumer.log',['originalSourceCentralizerPullback_eq_top_consumer',
+                                                   'originalComplexEquiv_fullClifford_commutes_consumer'])):
+                report=z.read(name).decode()
+                roots=pat.findall(report)
+                require('error:' not in report and 'sorryAx' not in report
+                        and len(roots)==2 and [n.rsplit('.',1)[-1] for n,_ in roots]==expected
+                        and len(set(n for n,_ in roots))==2
+                        and all({x.strip() for x in axioms.split(',') if x.strip()}<=allowed for _,axioms in roots),
+                        'W0H1B original independent theorem/consumer axiom evidence failed '+name)
+        complete=(root/a['evidence_job_log']).read_text()
+        require('Build completed successfully (9132 jobs).' in complete
+                and a['strict_marker'] in complete
+                and 'BFSS_W0H1B_R2_W0H1A_GREEN_R1_NATIVE_RED_W0B1_STOP_PREFLIGHT_PASS' in complete,
+                'W0H1B complete provider-original strict CI Actions job log missing strict result')
+        source=(root/a['source']).read_text()
+        consumer=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\s+',source))==2
+                and len(re.findall(r'(?m)^theorem\s+',consumer))==2
+                and len(re.findall(r'(?m)^example\b',consumer))==3
+                and 'Algebra.adjoin_le' in source
+                and 'CliffordAlgebra.adjoin_range_ι' in source
+                and 'originalGenerator_mem_sourceCentralizerPullback' in source
+                and 'rw [Subalgebra.mem_centralizer_iff] at hmem' in source
+                and 'exact hmem T (Set.mem_singleton T)' in source
+                and 'originalComplexCliffordFockAlgEquiv' in source
+                and 'CliffordAlgebra.induction' not in source
+                and 'P3M4W0B1OriginalFullCliffordCommutantInduction' not in source,
+                'W0H1B original source all-element Clifford claim drift or stopped induction revived')
+        red=s.get('previous_active_W0H1B_R1_RED',{})
+        require(red.get('gate')=='P3-M4-W0H1B' and red.get('attempt')=='R1'
+                and red.get('status')=='RED_UNQUALIFIED'
+                and red.get('qualification') is False
+                and red.get('run_id')==44160611850
+                and red.get('tested_sha')=='cbbcfc739d68451173c4825e5e656f76eee15afb'
+                and red.get('source_blob')=='94049ca4a90eeff2cacf423e2fa31250d316b6a1'
+                and red.get('consumer_blob')=='3a5d04948ff1adae3fabd6f16da664d4a85725bf'
+                and red.get('workflow_blob')=='d05f7de7d7a3acefba34221858cf716f8d8e02a1'
+                and red.get('evidence_archive_blob')=='3cfab55e2a8a30cb4c63e0a4aa47d224b826636a'
+                and red.get('evidence_job_log_blob')=='51c99b6096bffee493f39713f2b48c8add482440'
+                and red.get('evidence_manifest_blob')=='1487191587142dbd9caa6fc881250a0b3b8e099b'
+                and red.get('preservation_run')==44163946021,
+                'W0H1B R1 original native source RED was erased, overclaimed or reclassified')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/red[kind])==red[kind+'_blob'],'W0H1B frozen source R1 RED drift '+kind)
+        with zipfile.ZipFile(root/red['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'cold-source.log','preflight.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()==red['tested_sha']
+                    and 'Unknown constant' in z.read('cold-source.log').decode()
+                    and 'Subalgebra.mem_centralizer_iff.mp' in z.read('cold-source.log').decode()
+                    and 'sorryAx' in z.read('cold-source.log').decode(),
+                    'W0H1B original R1 native source RED provider evidence corrupt')
+        require(s['previous_active_W0B1_R2_stopped'].get('stopped') is True
+                and s['previous_active_W0B1_R2_stopped'].get('stop_reason')
+                    =='TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP',
+                'W0H1B acceptance cannot revive stopped W0B1 original induction')
+        for frozen in (s.get('previous_active_W0B1_R1_RED',{}),
+                       s.get('previous_active_W0B1_R2_stopped',{})):
+            require(frozen.get('run_id') in {44117272657,44127193329}
+                    and blob(root/frozen['evidence_archive'])==frozen['evidence_archive_blob']
+                    and blob(root/frozen['evidence_job_log'])==frozen['evidence_job_log_blob']
+                    and blob(root/frozen['evidence_manifest'])==frozen['evidence_manifest_blob'],
+                    'W0H1B original stopped W0B1 native source RED evidence drift')
+        nxt=s.get('next_planned',{})
+        require(nxt.get('gate')=='P3-M4-W0B2'
+                and nxt.get('status')=='PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False,
+                'W0B2 scalar Schur bridge remains prospective after W0H1B full commutant')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
