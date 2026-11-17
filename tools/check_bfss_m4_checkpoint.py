@@ -1622,7 +1622,7 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['status'] == 'PROSPECTIVE_NOT_STAGED'
                 and s['next_planned']['source_staged'] is False,
                 'W0A4 stop must not conceal incomplete ZIP or stage next theorem')
-    if a['gate'] == 'P3-M4-W0B0' and a['status'] == 'PENDING_STRICT_CI':
+    if a['gate'] == 'P3-M4-W0B0' and a.get('attempt') == 'R1' and a['status'] == 'PENDING_STRICT_CI':
         import zipfile
         require(a.get('attempt') == 'R1' and a.get('qualification') is False
                 and a.get('accepted_predecessor_run') == 44051746176

@@ -1,0 +1,235 @@
+﻿2026-11-17T15:01:19.0003985Z Current runner version: '2.338.2'
+2026-11-17T15:01:19.0021576Z ##[group]Runner Image Provisioner
+2026-11-17T15:01:19.0022103Z Hosted Compute Agent
+2026-11-17T15:01:19.0022502Z Version: 20261103.629
+2026-11-17T15:01:19.0022872Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-17T15:01:19.0023285Z Build Date: 2026-11-03T17:26:59Z
+2026-11-17T15:01:19.0023760Z Worker ID: {9d4b90df-1e57-4232-90b1-74556850acf0}
+2026-11-17T15:01:19.0024163Z Region: centralus
+2026-11-17T15:01:19.0024724Z Cloud: Azure
+2026-11-17T15:01:19.0025042Z ##[endgroup]
+2026-11-17T15:01:19.0025793Z ##[group]Operating System
+2026-11-17T15:01:19.0026232Z Ubuntu
+2026-11-17T15:01:19.0026536Z 26.04.1
+2026-11-17T15:01:19.0026853Z LTS
+2026-11-17T15:01:19.0027181Z ##[endgroup]
+2026-11-17T15:01:19.0027502Z ##[group]Runner Image
+2026-11-17T15:01:19.0027912Z Image: ubuntu-26.04
+2026-11-17T15:01:19.0028246Z Version: 20261111.196.1
+2026-11-17T15:01:19.0029019Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-17T15:01:19.0029875Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-17T15:01:19.0030486Z ##[endgroup]
+2026-11-17T15:01:19.0031132Z ##[group]GITHUB_TOKEN Permissions
+2026-11-17T15:01:19.0032503Z Contents: read
+2026-11-17T15:01:19.0032842Z Metadata: read
+2026-11-17T15:01:19.0033450Z ##[endgroup]
+2026-11-17T15:01:19.0035056Z Secret source: Actions
+2026-11-17T15:01:19.0035566Z Cache mode: write
+2026-11-17T15:01:19.0036072Z Prepare workflow directory
+2026-11-17T15:01:19.0267604Z Prepare all required actions
+2026-11-17T15:01:19.0298897Z Getting action download info
+2026-11-17T15:01:19.2714357Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-17T15:01:19.4321919Z Complete job name: checkpoint-consistency
+2026-11-17T15:01:19.4950083Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-17T15:01:19.4950968Z with:
+2026-11-17T15:01:19.4951408Z   persist-credentials: false
+2026-11-17T15:01:19.4951863Z   fetch-depth: 2
+2026-11-17T15:01:19.4952278Z   repository: etblink/math
+2026-11-17T15:01:19.4955602Z   token: ***
+2026-11-17T15:01:19.4955878Z   ssh-strict: true
+2026-11-17T15:01:19.4956138Z   ssh-user: git
+2026-11-17T15:01:19.4956394Z   clean: true
+2026-11-17T15:01:19.4956659Z   sparse-checkout-cone-mode: true
+2026-11-17T15:01:19.4956962Z   fetch-tags: false
+2026-11-17T15:01:19.4957258Z   show-progress: true
+2026-11-17T15:01:19.4957523Z   lfs: false
+2026-11-17T15:01:19.4957772Z   submodules: false
+2026-11-17T15:01:19.4958040Z   set-safe-directory: true
+2026-11-17T15:01:19.4958337Z   allow-unsafe-pr-checkout: false
+2026-11-17T15:01:19.4958861Z ##[endgroup]
+2026-11-17T15:01:19.7193490Z Syncing repository: etblink/math
+2026-11-17T15:01:19.7195070Z ##[group]Getting Git version info
+2026-11-17T15:01:19.7195708Z Working directory is '/home/runner/work/math/math'
+2026-11-17T15:01:19.7196278Z [command]/usr/bin/git version
+2026-11-17T15:01:19.7200769Z git version 2.56.1
+2026-11-17T15:01:19.7212406Z ##[endgroup]
+2026-11-17T15:01:19.7221850Z Temporarily overriding HOME='/home/runner/work/_temp/3869cbb9-41c1-411e-b778-eebdefba8110' before making global git config changes
+2026-11-17T15:01:19.7223001Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T15:01:19.7225311Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-17T15:01:19.7284731Z Deleting the contents of '/home/runner/work/math/math'
+2026-11-17T15:01:19.7286895Z ##[group]Initializing the repository
+2026-11-17T15:01:19.7289835Z [command]/usr/bin/git init /home/runner/work/math/math
+2026-11-17T15:01:19.7607546Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-17T15:01:19.7608893Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-17T15:01:19.7610234Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-17T15:01:19.7611571Z hint: call:
+2026-11-17T15:01:19.7612101Z hint:
+2026-11-17T15:01:19.7612733Z hint: 	git config --global init.defaultBranch <name>
+2026-11-17T15:01:19.7613277Z hint:
+2026-11-17T15:01:19.7613694Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-17T15:01:19.7614220Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-17T15:01:19.7614815Z hint:
+2026-11-17T15:01:19.7615053Z hint: 	git branch -m <name>
+2026-11-17T15:01:19.7615324Z hint:
+2026-11-17T15:01:19.7615674Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-17T15:01:19.7620986Z Initialized empty Git repository in /home/runner/work/math/math/.git/
+2026-11-17T15:01:19.7634987Z [command]/usr/bin/git remote add origin https://github.com/etblink/math
+2026-11-17T15:01:19.7733628Z ##[endgroup]
+2026-11-17T15:01:19.7734207Z ##[group]Disabling automatic garbage collection
+2026-11-17T15:01:19.7742321Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-17T15:01:19.7780794Z ##[endgroup]
+2026-11-17T15:01:19.7781538Z ##[group]Setting up auth
+2026-11-17T15:01:19.7793001Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T15:01:19.7825260Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T15:01:19.8193805Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T15:01:19.8221386Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T15:01:19.8508404Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T15:01:19.8510442Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T15:01:19.8856072Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-17T15:01:19.8900552Z ##[endgroup]
+2026-11-17T15:01:19.8901740Z ##[group]Fetching the repository
+2026-11-17T15:01:19.8908748Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=2 origin +68ed5e35c7268951779d9d35aa4f87f59fee2b67:refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-17T15:01:40.3722826Z From https://github.com/etblink/math
+2026-11-17T15:01:40.3723720Z  * [new ref]             68ed5e35c7268951779d9d35aa4f87f59fee2b67 -> origin/integration/bfss-unified-research-20261108
+2026-11-17T15:01:40.3726776Z ##[endgroup]
+2026-11-17T15:01:40.3727398Z ##[group]Determining the checkout info
+2026-11-17T15:01:40.3729278Z ##[endgroup]
+2026-11-17T15:01:40.3734692Z [command]/usr/bin/git sparse-checkout disable
+2026-11-17T15:01:40.3786169Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-17T15:01:40.3811111Z ##[group]Checking out the ref
+2026-11-17T15:01:40.3814418Z [command]/usr/bin/git checkout --progress --force -B integration/bfss-unified-research-20261108 refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-17T15:01:41.4792666Z Updating files:  13% (24776/179262)
+2026-11-17T15:01:41.5463125Z Updating files:  14% (25097/179262)
+2026-11-17T15:01:41.6149604Z Updating files:  15% (26890/179262)
+2026-11-17T15:01:41.7009079Z Updating files:  16% (28682/179262)
+2026-11-17T15:01:41.7833926Z Updating files:  17% (30475/179262)
+2026-11-17T15:01:41.8845381Z Updating files:  18% (32268/179262)
+2026-11-17T15:01:41.9709417Z Updating files:  19% (34060/179262)
+2026-11-17T15:01:42.0448964Z Updating files:  20% (35853/179262)
+2026-11-17T15:01:42.1138147Z Updating files:  21% (37646/179262)
+2026-11-17T15:01:42.1922090Z Updating files:  22% (39438/179262)
+2026-11-17T15:01:42.2691294Z Updating files:  23% (41231/179262)
+2026-11-17T15:01:42.3477413Z Updating files:  24% (43023/179262)
+2026-11-17T15:01:42.4208257Z Updating files:  25% (44816/179262)
+2026-11-17T15:01:42.4682972Z Updating files:  26% (46609/179262)
+2026-11-17T15:01:42.4900796Z Updating files:  26% (47780/179262)
+2026-11-17T15:01:42.5774105Z Updating files:  27% (48401/179262)
+2026-11-17T15:01:42.6509124Z Updating files:  28% (50194/179262)
+2026-11-17T15:01:42.7316495Z Updating files:  29% (51986/179262)
+2026-11-17T15:01:43.0457649Z Updating files:  30% (53779/179262)
+2026-11-17T15:01:43.1620515Z Updating files:  31% (55572/179262)
+2026-11-17T15:01:43.3932547Z Updating files:  32% (57364/179262)
+2026-11-17T15:01:43.4689505Z Updating files:  33% (59157/179262)
+2026-11-17T15:01:43.7371830Z Updating files:  33% (59220/179262)
+2026-11-17T15:01:43.8339584Z Updating files:  34% (60950/179262)
+2026-11-17T15:01:43.9266431Z Updating files:  35% (62742/179262)
+2026-11-17T15:01:44.0063570Z Updating files:  36% (64535/179262)
+2026-11-17T15:01:44.0823717Z Updating files:  37% (66327/179262)
+2026-11-17T15:01:44.1829199Z Updating files:  38% (68120/179262)
+2026-11-17T15:01:44.2672387Z Updating files:  39% (69913/179262)
+2026-11-17T15:01:44.3671148Z Updating files:  40% (71705/179262)
+2026-11-17T15:01:44.4685389Z Updating files:  41% (73498/179262)
+2026-11-17T15:01:44.4692947Z Updating files:  41% (75273/179262)
+2026-11-17T15:01:44.5624034Z Updating files:  42% (75291/179262)
+2026-11-17T15:01:44.9577610Z Updating files:  43% (77083/179262)
+2026-11-17T15:01:45.0528930Z Updating files:  44% (78876/179262)
+2026-11-17T15:01:45.1565513Z Updating files:  45% (80668/179262)
+2026-11-17T15:01:45.2696036Z Updating files:  46% (82461/179262)
+2026-11-17T15:01:45.3662301Z Updating files:  47% (84254/179262)
+2026-11-17T15:01:45.4684644Z Updating files:  48% (86046/179262)
+2026-11-17T15:01:45.4819701Z Updating files:  48% (87542/179262)
+2026-11-17T15:01:45.5845879Z Updating files:  49% (87839/179262)
+2026-11-17T15:01:45.6713675Z Updating files:  50% (89631/179262)
+2026-11-17T15:01:45.7466510Z Updating files:  51% (91424/179262)
+2026-11-17T15:01:45.8217353Z Updating files:  52% (93217/179262)
+2026-11-17T15:01:45.8890074Z Updating files:  53% (95009/179262)
+2026-11-17T15:01:45.9918218Z Updating files:  54% (96802/179262)
+2026-11-17T15:01:46.0618272Z Updating files:  55% (98595/179262)
+2026-11-17T15:01:46.1497809Z Updating files:  56% (100387/179262)
+2026-11-17T15:01:46.2173685Z Updating files:  57% (102180/179262)
+2026-11-17T15:01:46.2924906Z Updating files:  58% (103972/179262)
+2026-11-17T15:01:46.3898902Z Updating files:  59% (105765/179262)
+2026-11-17T15:01:46.4685578Z Updating files:  60% (107558/179262)
+2026-11-17T15:01:46.4748028Z Updating files:  60% (109198/179262)
+2026-11-17T15:01:46.5444648Z Updating files:  61% (109350/179262)
+2026-11-17T15:01:46.6099742Z Updating files:  62% (111143/179262)
+2026-11-17T15:01:46.8386815Z Updating files:  63% (112936/179262)
+2026-11-17T15:01:46.9711465Z Updating files:  64% (114728/179262)
+2026-11-17T15:01:47.0453289Z Updating files:  65% (116521/179262)
+2026-11-17T15:01:47.1349171Z Updating files:  66% (118313/179262)
+2026-11-17T15:01:47.2051587Z Updating files:  67% (120106/179262)
+2026-11-17T15:01:47.2804082Z Updating files:  68% (121899/179262)
+2026-11-17T15:01:47.3704019Z Updating files:  69% (123691/179262)
+2026-11-17T15:01:47.4506906Z Updating files:  70% (125484/179262)
+2026-11-17T15:01:47.4684267Z Updating files:  71% (127277/179262)
+2026-11-17T15:01:47.5268870Z Updating files:  71% (127666/179262)
+2026-11-17T15:01:47.5945732Z Updating files:  72% (129069/179262)
+2026-11-17T15:01:47.6606762Z Updating files:  73% (130862/179262)
+2026-11-17T15:01:47.7699727Z Updating files:  74% (132654/179262)
+2026-11-17T15:01:47.8398937Z Updating files:  75% (134447/179262)
+2026-11-17T15:01:47.9067515Z Updating files:  76% (136240/179262)
+2026-11-17T15:01:47.9680334Z Updating files:  77% (138032/179262)
+2026-11-17T15:01:48.0323380Z Updating files:  78% (139825/179262)
+2026-11-17T15:01:48.1119336Z Updating files:  79% (141617/179262)
+2026-11-17T15:01:48.1995282Z Updating files:  80% (143410/179262)
+2026-11-17T15:01:48.2722619Z Updating files:  81% (145203/179262)
+2026-11-17T15:01:48.3552413Z Updating files:  82% (146995/179262)
+2026-11-17T15:01:48.4396111Z Updating files:  83% (148788/179262)
+2026-11-17T15:01:48.4683716Z Updating files:  84% (150581/179262)
+2026-11-17T15:01:48.5669732Z Updating files:  84% (151225/179262)
+2026-11-17T15:01:48.6453236Z Updating files:  85% (152373/179262)
+2026-11-17T15:01:48.7270787Z Updating files:  86% (154166/179262)
+2026-11-17T15:01:48.8169045Z Updating files:  87% (155958/179262)
+2026-11-17T15:01:48.9017684Z Updating files:  88% (157751/179262)
+2026-11-17T15:01:48.9918532Z Updating files:  89% (159544/179262)
+2026-11-17T15:01:49.0761245Z Updating files:  90% (161336/179262)
+2026-11-17T15:01:49.1704022Z Updating files:  91% (163129/179262)
+2026-11-17T15:01:49.2405814Z Updating files:  92% (164922/179262)
+2026-11-17T15:01:49.4692620Z Updating files:  93% (166714/179262)
+2026-11-17T15:01:49.5192881Z Updating files:  93% (168206/179262)
+2026-11-17T15:01:49.9242478Z Updating files:  94% (168507/179262)
+2026-11-17T15:01:50.2473956Z Updating files:  95% (170299/179262)
+2026-11-17T15:01:50.4685427Z Updating files:  96% (172092/179262)
+2026-11-17T15:01:50.5644104Z Updating files:  96% (173387/179262)
+2026-11-17T15:01:50.8797419Z Updating files:  97% (173885/179262)
+2026-11-17T15:01:51.4690374Z Updating files:  98% (175677/179262)
+2026-11-17T15:01:51.5745600Z Updating files:  98% (176837/179262)
+2026-11-17T15:01:51.7667993Z Updating files:  99% (177470/179262)
+2026-11-17T15:01:51.7668473Z Updating files: 100% (179262/179262)
+2026-11-17T15:01:51.7668763Z Updating files: 100% (179262/179262), done.
+2026-11-17T15:01:51.8817331Z Switched to a new branch 'integration/bfss-unified-research-20261108'
+2026-11-17T15:01:51.8819643Z branch 'integration/bfss-unified-research-20261108' set up to track 'origin/integration/bfss-unified-research-20261108'.
+2026-11-17T15:01:51.9096459Z ##[endgroup]
+2026-11-17T15:01:51.9127080Z [command]/usr/bin/git log -1 --format=%H
+2026-11-17T15:01:51.9139981Z 68ed5e35c7268951779d9d35aa4f87f59fee2b67
+2026-11-17T15:01:51.9149373Z ##[group]Removing auth
+2026-11-17T15:01:51.9152823Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T15:01:51.9179972Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T15:01:51.9592324Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T15:01:51.9619392Z http.https://github.com/.extraheader
+2026-11-17T15:01:51.9624394Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-17T15:01:51.9708669Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T15:01:52.0128102Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T15:01:52.0160646Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T15:01:52.0586153Z ##[endgroup]
+2026-11-17T15:01:52.0812708Z ##[group]Run set -euo pipefail
+2026-11-17T15:01:52.0812972Z [36;1mset -euo pipefail[0m
+2026-11-17T15:01:52.0813145Z [36;1mpython3 tools/check_bfss_roadmap.py[0m
+2026-11-17T15:01:52.0862194Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-17T15:01:52.0862402Z ##[endgroup]
+2026-11-17T15:01:52.1621897Z BFSS_ROADMAP_CHECK_FAIL: W0B0 source/consumer or last-qualified W0A3 drift
+2026-11-17T15:01:52.1701720Z ##[error]Process completed with exit code 1.
+2026-11-17T15:01:52.3623487Z Post job cleanup.
+2026-11-17T15:01:52.4253835Z [command]/usr/bin/git version
+2026-11-17T15:01:52.4289830Z git version 2.56.1
+2026-11-17T15:01:52.4316927Z Temporarily overriding HOME='/home/runner/work/_temp/ff80a2e5-7c1b-400a-8130-4d581fe4d58c' before making global git config changes
+2026-11-17T15:01:52.4317948Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T15:01:52.4320853Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-17T15:01:52.4513030Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T15:01:52.4547924Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T15:01:52.5015720Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T15:01:52.5048819Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T15:01:52.5461482Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T15:01:52.5495332Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T15:01:52.6042374Z Cleaning up orphan processes
+2026-11-17T15:01:52.6300167Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
