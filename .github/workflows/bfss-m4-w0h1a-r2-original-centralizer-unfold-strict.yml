@@ -1,0 +1,184 @@
+name: BFSS M4 W0H1A R2 original centralizer unfolding strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean
+      - lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean
+      - .github/workflows/bfss-m4-w0h1a-r2-original-centralizer-unfold-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-m4-w0h1a-r2-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-centralizer-comap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - name: Checkout exact original BFSS source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Preflight original W0H0 and W0B0 GREEN with original W0B1 RED STOP provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-m4-w0h1a"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-w0h1a-r2/tested-commit.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0h1a-r2/preflight.log"
+          import json,hashlib,re,subprocess,zipfile
+          from pathlib import Path
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean":"a4c6a2d8006cdd151b72995bb35313c5f2299d57","lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean":"8e0e457e2d781737f09ef7b7e48a9a142d51a4e0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H0OriginalScalarImageAdapter.lean":"7555f5e17d9f465c1e4b7b04ffc450eb1667fc13","lean/diagnostics/BFSSP3M4W0H0OriginalScalarImageIndependentConsumer.lean":"21c02789f62e5e345eff7caf4e10505f6cbe4961","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip":"ffbd66e56aff83031aece2c3b310ed34678bdd9f","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_complete_job.log":"8861ab57e0e12df0d5143a014434fa3ecf5503de","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_GREEN_evidence_manifest.json":"e6fe871ebefc67b3c2cde2b5a44345d781ef79a3","research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44135729729_GREEN_evidence.zip":"ed7e477d931b0822ffb5dfd87f1bee5c9f4163ac","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip":"813b3325da4f721afc0bb313a710410eb40a3bcf","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_complete_job.log":"918c09a60ef1e99a9f8e1d56f380353719cb1fdc","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_RED_evidence_manifest.json":"9a4991d9ce4aeda01ad08684f436d5b9a88bbd48","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          for path,sha in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==sha,(path,actual,sha)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean").read_text()
+          assert len(re.findall(r"(?m)^theorem\b",source))==1
+          assert len(re.findall(r"(?m)^theorem\b",consumer))==1
+          assert len(re.findall(r"(?m)^example\b",consumer))==2
+          assert len(re.findall(r"(?m)^def originalSourceCentralizerPullback\b",source))==1
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==["originalGenerator_mem_sourceCentralizerPullback"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==["originalGenerator_mem_sourceCentralizerPullback_consumer"]
+          assert len(re.findall(r"(?m)^import ",source))==3
+          assert consumer.startswith("import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H1AOriginalGeneratorCentralizerComapR2\n")
+          for key in ["Subalgebra.comap","Subalgebra.centralizer","Subalgebra.mem_centralizer_iff","Set.mem_singleton_iff","originalComplexEquiv_generator_commutes"]:
+              assert key in source,key
+          assert "CliffordAlgebra.induction" not in source
+          assert "CliffordAlgebra.adjoin_range_ι" not in source
+          assert "P3M4W0B1OriginalFullCliffordCommutantInduction" not in source
+          for body in [source,consumer]:
+              assert "set_option autoImplicit false" in body
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
+              assert "maxHeartbeats" not in body and "maxRecDepth" not in body
+              assert "activeGammaComplexLinear" not in body
+          s=json.loads(Path("BFSS_GATE_STATE.json").read_text())
+          a,q=s["active"],s["last_qualified"]
+          assert a["gate"]=="P3-M4-W0H1A" and a["attempt"]=="R2"
+          assert a["status"]=="PENDING_STRICT_CI" and a["qualification"] is False
+          assert a["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean"]
+          assert a["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean"]
+          assert a["contract_commit"]=="884a1897bdecdfa365abd7206ad7411a8dddef15"
+          assert a["accepted_predecessor_run"]==44139239821
+          assert a["expected_source_reports"]==a["expected_consumer_reports"]==1
+          assert q["gate"]=="P3-M4-W0H0" and q["run_id"]==44139239821
+          assert q["status"]=="GREEN_QUALIFIED" and q["qualification"] is True
+          assert q["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H0OriginalScalarImageAdapter.lean"]
+          assert q["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip"]
+          assert s["last_qualified_source_exact_original_BFSS"]["gate"]=="P3-M4-W0H0"
+          assert s["last_qualified_source_exact_original_BFSS"]["run_id"]==44139239821
+          assert s["previous_active_W0B1_R2_stopped"]["stopped"] is True
+          assert s["previous_active_W0B1_R2_stopped"]["run_id"]==44127193329
+          assert s["previous_active_W0B1_R1_RED"]["run_id"]==44117272657
+          assert s["next_planned"]["gate"]=="P3-M4-W0H1B"
+          assert s["next_planned"]["status"]=="PROSPECTIVE_NOT_STAGED"
+          assert Path(a["prospective_receipt"]).is_file()
+          donor=Path("research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip")
+          raw=donor.read_bytes()
+          assert len(raw)==13262 and hashlib.sha256(raw).hexdigest()=="ccb4dea2e4114914c7554a6f6bbb76591de3f4c52be30d0d1bb1a9f4a3c52caa"
+          with zipfile.ZipFile(donor) as z:
+              assert z.testzip() is None
+              assert set(z.namelist())=={"auditor.log","cold-source.log","consumer.log","preflight.log","source-axioms.log","tested-commit.txt"}
+              assert z.read("tested-commit.txt").decode().strip()=="8760e7ecb1ac5bd0f8c3eb480d752b3c14716819"
+              assert b"Build completed successfully (9117 jobs)." in z.read("cold-source.log")
+              assert b"BFSS_W0H0_ORIGINAL_SCALAR_1_SOURCE_1_CONSUMER_2_CONTROLS_SIX_MUTANTS_STRICT_GREEN" in z.read("auditor.log")
+          for red in [s["previous_active_W0B1_R1_RED"],s["previous_active_W0B1_R2_stopped"]]:
+              with zipfile.ZipFile(red["evidence_archive"]) as z:
+                  assert z.testzip() is None
+                  assert z.read("tested-commit.txt").decode().strip()==red["tested_sha"]
+              assert "sorryAx" in Path(red["evidence_job_log"]).read_text()
+
+          old=s.get("previous_active_W0H1A_R1_RED",{})
+          assert old["run_id"]==44145848122 and old["status"]=="RED_UNQUALIFIED"
+          assert old["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComap.lean"] and old["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumer.lean"]
+          assert old["workflow_blob"]==pins[".github/workflows/bfss-m4-w0h1a-original-centralizer-comap-strict.yml"]
+          assert old["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0H1A_R1_44145848122_SOURCE_RED_evidence.zip"]
+          assert old["evidence_job_log_blob"]==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R1_44145848122_complete_job.log"]
+          assert old["evidence_manifest_blob"]==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R1_44145848122_SOURCE_RED_evidence_manifest.json"]
+          assert old["preservation_run"]==44148961842
+          assert a["previous_red_run"]==44145848122
+          red=Path("research/quantum-information/diagnostics/BFSS_M4_W0H1A_R1_44145848122_SOURCE_RED_evidence.zip")
+          assert red.stat().st_size==13910
+          assert hashlib.sha256(red.read_bytes()).hexdigest()=="ef701824430dc78c70d4bd049e013a30a1a09df447e44e6b1a6dc5231fafcd43"
+          assert Path("research/quantum-information/diagnostics/BFSS_W0H1A_R1_44145848122_complete_job.log").stat().st_size==235899
+          with zipfile.ZipFile(red) as z:
+              assert z.testzip() is None
+              assert set(z.namelist())=={"cold-source.log","preflight.log","tested-commit.txt"}
+              assert z.read("tested-commit.txt").decode().strip()=="4e04deec085de52ac1e55e7265e3463788893d3a"
+              assert "Tactic " in z.read("cold-source.log").decode() and "sorryAx" in z.read("cold-source.log").decode()
+          assert "change" in source and "Subalgebra.mem_comap" not in source
+          assert "rw [Subalgebra.mem_centralizer_iff]" in source
+          manifest=json.loads(Path("lean/lake-manifest.json").read_text())
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          assert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_W0H1A_R2_ORIGINAL_DONOR_GREEN_R1_SOURCE_RED_ARCHIVED_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Cold original singleton centralizer source, independent consumer, strict axiom audit
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/bfss-m4-w0h1a"
+          timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H1AOriginalGeneratorCentralizerComap 2>&1 | tee "$root/cold-source.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean 2>&1 | tee "$root/source-axioms.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean 2>&1 | tee "$root/consumer.log"
+          python3 - <<'PY' 2>&1 | tee "$root/auditor.log"
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-w0h1a-r2"
+          allowed={"propext","Classical.choice","Quot.sound"}
+          warning_ok=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          def audit(log,expected):
+              assert "error:" not in log and "sorryAx" not in log,log[-2000:]
+              warnings=[line for line in log.splitlines() if "warning:" in line and not warning_ok.fullmatch(line)]
+              assert not warnings,warnings[:3]
+              found=pat.findall(log)
+              assert len(found)==len(expected),(found,expected)
+              names=[n.rsplit(".",1)[-1] for n,_ in found]
+              assert names==expected and len(set(names))==len(names),names
+              for _,axioms in found:
+                  assert {a.strip() for a in axioms.split(",") if a.strip()}<=allowed,axioms
+          good="'N.a' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+          audit(good,["a"])
+          bads=[good.replace("Quot.sound","sorryAx",1),good.replace("Quot.sound","Foreign.axiom",1),good+good,"",good+"warning: unexpected warning\n",good+"error: failed proof\n"]
+          for k,bad in enumerate(bads):
+              try: audit(bad,["a"])
+              except AssertionError: pass
+              else: raise AssertionError(("negative mutation accepted",k))
+          cold=(root/"cold-source.log").read_text()
+          assert "error:" not in cold and "sorryAx" not in cold
+          assert "Build completed successfully" in cold
+          audit((root/"source-axioms.log").read_text(),["originalGenerator_mem_sourceCentralizerPullback"])
+          audit((root/"consumer.log").read_text(),["originalGenerator_mem_sourceCentralizerPullback_consumer"])
+          print("BFSS_W0H1A_R2_ORIGINAL_CENTRALIZER_1_SOURCE_1_CONSUMER_2_CONTROLS_SIX_MUTANTS_STRICT_GREEN")
+          PY
+      - name: Preserve exact provider-original source proof artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-m4-w0h1a-r2-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-m4-w0h1a-r2/
+          if-no-files-found: warn
+          retention-days: 14

@@ -2607,6 +2607,65 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0H1B full Clifford algebra-generation closure cannot stage before W0H1A qualified')
+    if a['gate']=='P3-M4-W0H1A' and a['status']=='PENDING_STRICT_CI' and a['attempt']=='R2':
+        import zipfile
+        require(a.get('qualification') is False
+            and a.get('accepted_predecessor_run')==44139239821
+            and a.get('previous_red_run')==44145848122
+            and a.get('source_blob')=='c5c0894d99a01e92e92a58dac7313698a2f69971'
+            and a.get('consumer_blob')=='b6e91f79c46724f65f54835623b97d5f909dcf66'
+            and a.get('workflow_blob')=='82313868f060241d6a9baf490275125b62a5b475'
+            and a.get('contract_commit')=='884a1897bdecdfa365abd7206ad7411a8dddef15'
+            and a.get('expected_source_reports')==a.get('expected_consumer_reports')==1
+            and a.get('independent_controls')==2
+            and s['last_qualified']['gate']=='P3-M4-W0H0'
+            and s['last_qualified']['run_id']==44139239821
+            and s['last_qualified']==s['accepted_anchors'][-1],
+            'W0H1A R2 native bounded source repair drift')
+        r1=s.get('previous_active_W0H1A_R1_RED',{})
+        require(r1.get('status')=='RED_UNQUALIFIED'
+            and r1.get('run_id')==44145848122
+            and r1.get('source_blob')=='a4c6a2d8006cdd151b72995bb35313c5f2299d57'
+            and r1.get('consumer_blob')=='8e0e457e2d781737f09ef7b7e48a9a142d51a4e0'
+            and r1.get('workflow_blob')=='95fdaea744514d567bdf4da471adb4c15c5650a0'
+            and r1.get('evidence_archive_blob')=='0240463e97836e347a5423999e6832dfcf81e2cf'
+            and r1.get('evidence_job_log_blob')=='135b2d53ad7e64f4cc6c516c4c80fba002181a7b'
+            and r1.get('evidence_manifest_blob')=='33b4c47ba4a0ebec35a408794ce1a96607cc16e2'
+            and r1.get('preservation_run')==44148961842,
+            'W0H1A original R1 RED evidence lost')
+        for kind in ['source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest']:
+            require(blob(root/r1[kind]) == r1[kind+'_blob'],'R1 frozen byte drift: '+kind)
+        require(hashlib.sha256((root/r1['evidence_archive']).read_bytes()).hexdigest()
+            =='ef701824430dc78c70d4bd049e013a30a1a09df447e44e6b1a6dc5231fafcd43'
+            and (root/r1['evidence_job_log']).stat().st_size==235899,
+            'W0H1A R1 original provider ZIP/log corrupt')
+        with zipfile.ZipFile(root/r1['evidence_archive']) as z:
+            require(z.testzip() is None
+                and set(z.namelist())=={'preflight.log','cold-source.log','tested-commit.txt'}
+                and z.read('tested-commit.txt').decode().strip()==r1['tested_sha']
+                and 'sorryAx' in z.read('cold-source.log').decode(),
+                'W0H1A R1 original native source RED diagnostic missing')
+        original=(root/r1['source']).read_text()
+        repair=(root/a['source']).read_text()
+        original=original.replace('P3M4W0H1AOriginalGeneratorCentralizerComap','P3M4W0H1AOriginalGeneratorCentralizerComapR2')
+        original=original.replace(
+            '  rw [Subalgebra.mem_comap, Subalgebra.mem_centralizer_iff]',
+            '  change\n'
+            '    FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv\n'
+            '      (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) w) ∈\n'
+            '        Subalgebra.centralizer ℂ ({T} : Set Op)\n'
+            '  rw [Subalgebra.mem_centralizer_iff]')
+        original=original.replace(
+            'This is a NEW architecture; stopped W0B1 induction is never imported.',
+            'This R2 is the bounded unfold repair of R1; stopped W0B1 induction is never imported.')
+        require(repair==original,'R2 source changed more than exact bounded unfold repair')
+        originalConsumer=(root/r1['consumer']).read_text()
+        originalConsumer=originalConsumer.replace('P3M4W0H1AOriginalGeneratorCentralizerComap','P3M4W0H1AOriginalGeneratorCentralizerComapR2').replace('P3M4W0H1AOriginalGeneratorCentralizerIndependentConsumer','P3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2')
+        require((root/a['consumer']).read_text()==originalConsumer,'R2 consumer theorem/controls drift')
+        require(s['next_planned']['gate']=='P3-M4-W0H1B'
+            and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+            and s['next_planned']['source_staged'] is False,
+            'W0H1B must remain prospective')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
