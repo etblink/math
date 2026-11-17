@@ -1,0 +1,62 @@
+{
+  "gate": "P3-M4-W0B0",
+  "attempt": "R1",
+  "status": "RED_UNQUALIFIED",
+  "qualification": false,
+  "strict_run": 44064728599,
+  "strict_job": 133975334691,
+  "tested_sha": "e668c0a6a542a5f5712c0bcaf9c219e96b3649ed",
+  "source_blob": "d3cbdd7446f06e203959776abee3629b8269f572",
+  "consumer_blob": "159c561d6e73e3c86959cd239deb10984064e92e",
+  "workflow_blob": "5eef739aaf906f90c603fecc84dda28e2391c594",
+  "original_artifact_id": 14320782146,
+  "original_archive_bytes": 13540,
+  "original_archive_sha256": "d7ade4d6b28b8ea442d2a7130b5c9a20a40e1d4481d0a7ff5d54704234483010",
+  "original_archive_git_blob": "7a74c38049c3cff6e0bdd1c6e7d2ea72c75deb07",
+  "original_archive_path": "research/quantum-information/diagnostics/BFSS_M4_W0B0_R1_44064728599_RED_evidence.zip",
+  "original_archive_members": {
+    "cold-source.log": {
+      "bytes": 149480,
+      "sha256": "a4b09e95b04ffd6bf6f70b332cdba29082c2a6fb080b975e16c9e77b5ca58da1"
+    },
+    "preflight.log": {
+      "bytes": 77,
+      "sha256": "9b457651035319939cf98a26e1b39d4618b03e5a24523b12c181462b94b99920"
+    },
+    "tested-commit.txt": {
+      "bytes": 41,
+      "sha256": "ea33cad4e74f482da00d6c9584173d50c43a43db9a0a5fd5e4371742b5678550"
+    }
+  },
+  "original_job_log_path": "research/quantum-information/diagnostics/BFSS_W0B0_R1_44064728599_complete_job.log",
+  "original_job_log_git_blob": "9b450ff0e633f7fb3c908805754c7d95fb992808",
+  "preflight": "PASS",
+  "pinned_toolchain": "PASS",
+  "cold_source": "RED",
+  "independent_consumer": "NOT_RUN",
+  "strict_auditor": "NOT_RUN",
+  "error": {
+    "line": 41,
+    "column": 8,
+    "issue": "failed to synthesize instance of type class",
+    "type": "SMulCommClass ℝ Op Op",
+    "term": "(h p).smul_right (v p)",
+    "analysis": "Mathlib generic Commute.smul_right requires scalar-commuting action on operator ring; real Op scalar action has no such typeclass instance at source site."
+  },
+  "source_axiom_reports": "UNQUALIFIED_SORRYAX_PRESENT_AFTER_FAILED_COMPILATION",
+  "preservation_workflow_run": 44108072439,
+  "accepted_predecessor": {
+    "gate": "P3-M4-W0A3",
+    "run": 44051746176
+  },
+  "stopped_prior_architecture": {
+    "gate": "P3-M4-W0A4",
+    "runs": [
+      44055363556,
+      44059417729
+    ],
+    "stop_reason": "TWO_CONSECUTIVE_ORIGINAL_COMPLEX_LINEAR_MAP_CONSTRUCTION_REDS"
+  },
+  "repair": "R2: rewrite ℝ smul as coerced ℂ smul using pinned RCLike.real_smul_eq_coe_smul, then apply Commute.smul_right with ℂ. No new source theorem, carrier, axioms, expansion or resource escalation.",
+  "claim_ceiling": "No W0B0 theorem qualified; exact R1 negative source evidence permanently preserved."
+}

@@ -1692,6 +1692,81 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0B1 cannot stage before W0B0 strict acceptance')
+    if a['gate'] == 'P3-M4-W0B0' and a.get('attempt') == 'R2':
+        import zipfile
+        old = s.get('previous_active_W0B0_R1_RED',{})
+        require(old.get('gate') == 'P3-M4-W0B0'
+                and old.get('attempt') == 'R1'
+                and old.get('status') == 'RED_UNQUALIFIED'
+                and old.get('qualification') is False
+                and old.get('run_id') == 44064728599
+                and old.get('job_id') == 133975334691
+                and old.get('tested_sha') == 'e668c0a6a542a5f5712c0bcaf9c219e96b3649ed'
+                and old.get('source_blob') == 'd3cbdd7446f06e203959776abee3629b8269f572'
+                and old.get('consumer_blob') == '159c561d6e73e3c86959cd239deb10984064e92e'
+                and old.get('workflow_blob') == '5eef739aaf906f90c603fecc84dda28e2391c594'
+                and old.get('artifact_id') == 14320782146
+                and old.get('artifact_sha256') == 'd7ade4d6b28b8ea442d2a7130b5c9a20a40e1d4481d0a7ff5d54704234483010'
+                and old.get('evidence_archive_blob') == '7a74c38049c3cff6e0bdd1c6e7d2ea72c75deb07'
+                and old.get('evidence_job_log_blob') == '9b450ff0e633f7fb3c908805754c7d95fb992808'
+                and old.get('evidence_manifest_blob') == '7db61cffda4a8a75cf63250f4d82737316fb0ad9'
+                and blob(root/old['evidence_archive']) == old['evidence_archive_blob']
+                and blob(root/old['evidence_job_log']) == old['evidence_job_log_blob']
+                and blob(root/old['evidence_manifest']) == old['evidence_manifest_blob'],
+                'W0B0 R2 cannot lose original R1 RED source or original provider evidence')
+        m = json.loads((root/old['evidence_manifest']).read_text())
+        require(m['status'] == 'RED_UNQUALIFIED'
+                and m['strict_run'] == old['run_id']
+                and m['original_archive_bytes'] == 13540
+                and m['original_archive_sha256'] == old['artifact_sha256']
+                and m['original_archive_git_blob'] == old['evidence_archive_blob']
+                and m['original_job_log_git_blob'] == old['evidence_job_log_blob']
+                and m['preservation_workflow_run'] == 44108072439,
+                'W0B0 R1 original RED evidence manifest drift')
+        expected={'cold-source.log','preflight.log','tested-commit.txt'}
+        require(set(m['original_archive_members']) == expected,
+                'W0B0 original source RED three ZIP members missing')
+        with zipfile.ZipFile(root/old['evidence_archive']) as z:
+            require(z.testzip() is None and set(z.namelist()) == expected
+                    and z.read('tested-commit.txt').decode().strip() == old['tested_sha']
+                    and 'BFSS_W0B0_ORIGINAL_GAMMA_COMMUTANT_W0A3_GREEN_W0A4_R1_R2_STOP_PREFLIGHT_PASS'
+                        in z.read('preflight.log').decode(),
+                    'W0B0 R1 original provider ZIP does not match original source')
+            for name, desc in m['original_archive_members'].items():
+                data=z.read(name)
+                require(len(data) == desc['bytes']
+                        and hashlib.sha256(data).hexdigest() == desc['sha256'],
+                        'W0B0 R1 original provider ZIP member hash mismatch: '+name)
+            cold=z.read('cold-source.log').decode()
+            require('SMulCommClass ℝ Op Op' in cold
+                    and 'failed to synthesize instance of type class' in cold
+                    and 'sorryAx' in cold and 'build failed' in cold,
+                    'W0B0 R1 original native source failure missing')
+        require(a.get('accepted_predecessor_run') == 44051746176
+                and a.get('previous_red_run') == 44064728599
+                and a.get('source_blob') == 'c67f30bb76a9990e508a8a050a8c3313e694bda7'
+                and a.get('consumer_blob') == old['consumer_blob']
+                and a.get('workflow_blob') == '8636cb31e5d80eff47a6d628b5c79957c425a5de'
+                and a.get('contract_commit') == '5c43690a791c101a6837a24827f84da1dac24345'
+                and s['last_qualified']['gate'] == 'P3-M4-W0A3'
+                and s['last_qualified']['run_id'] == 44051746176,
+                'W0B0 R2 scalar-only repair exact source/consumer/parent drift')
+        src = (root/a['source']).read_text()
+        new = "  rw [RCLike.real_smul_eq_coe_smul (K := ℂ)\n    (v p) (sourceNormalizedGamma p)]\n  exact (h p).smul_right (v p : ℂ)"
+        require(src.count(new) == 1,'W0B0 R2 repair hunk missing or repeated')
+        restored = src.replace(new,'  exact (h p).smul_right (v p)',1).encode('utf-8')
+        restored_git_blob = hashlib.sha1(
+            ('blob '+str(len(restored))+'\0').encode('utf-8')+restored).hexdigest()
+        require(restored_git_blob == old['source_blob'],
+                'W0B0 R2 source changed beyond one real-to-complex scalar repair')
+        require('OriginalFullComplexGammaTransport' not in src
+                and 'activeGammaComplexLinear' not in src
+                and 'AlgebraTensorModule.lift' not in src,
+                'W0B0 R2 reopened stopped W0A4 linear extension')
+        require(s.get('previous_active_W0A4_R2_stopped',{}).get('stopped') is True
+                and s['next_planned']['gate'] == 'P3-M4-W0B1'
+                and s['next_planned']['status'] == 'PROSPECTIVE_NOT_STAGED',
+                'W0B0 R2 must retain stopped W0A4 and prospective W0B1')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

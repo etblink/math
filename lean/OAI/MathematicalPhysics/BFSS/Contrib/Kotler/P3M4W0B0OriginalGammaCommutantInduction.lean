@@ -38,7 +38,9 @@ theorem sourceGammaRealLinear_commute
   change Commute T (∑ p : Source48Label, (v p) • sourceNormalizedGamma p)
   apply Commute.sum_right
   intro p hp
-  exact (h p).smul_right (v p)
+  rw [RCLike.real_smul_eq_coe_smul (K := ℂ)
+    (v p) (sourceNormalizedGamma p)]
+  exact (h p).smul_right (v p : ℂ)
 
 /-- The original M3I complex Clifford/Fock equivalence sends every
 complexified original generator into the commutant of T when T
