@@ -1508,6 +1508,58 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0A4 must remain prospective before its own contract')
+    if a['gate'] == 'P3-M4-W0A4' and a.get('attempt') == 'R2':
+        import zipfile
+        old = s.get('previous_active_W0A4_R1_RED', {})
+        require(old.get('gate') == 'P3-M4-W0A4'
+                and old.get('attempt') == 'R1'
+                and old.get('status') == 'RED_UNQUALIFIED'
+                and old.get('qualification') is False
+                and old.get('run_id') == 44055363556
+                and old.get('job_id') == 133943222828
+                and old.get('tested_sha') == '14b96aca0d455098fcd54486840f3b905eda2dd7'
+                and old.get('source_blob') == '606fcdd173d4c31f191d29e7de53a742cdcbf1aa'
+                and old.get('consumer_blob') == '18fec08b3259513e63deff44319eb90b759b6b5f'
+                and old.get('artifact_sha256') == '7deda8b0723841d8a35e19dd8587211254b7e3a8cebaa317918321a54d96dcb6'
+                and old.get('evidence_archive_blob') == 'ef3ad039799680fde9f0d1669f130ef275f9a2a3'
+                and old.get('evidence_job_log_blob') == '6f635122f8ab1a3078851aac68214462a4124488'
+                and old.get('evidence_manifest_blob') == '80118a64933e161b4b5faf196dad4a06dcd0b5a7'
+                and old.get('failure_phase') == 'COLD_ORIGINAL_LEAN_SOURCE'
+                and blob(root/old['evidence_archive']) == old['evidence_archive_blob']
+                and blob(root/old['evidence_job_log']) == old['evidence_job_log_blob']
+                and blob(root/old['evidence_manifest']) == old['evidence_manifest_blob'],
+                'W0A4 R2 must preserve exact source RED from original R1')
+        prev_manifest = json.loads((root/old['evidence_manifest']).read_text())
+        require(prev_manifest['status'] == 'RED_UNQUALIFIED'
+                and prev_manifest['original_archive_git_blob'] == old['evidence_archive_blob']
+                and prev_manifest['preservation_green_run'] == 44058037250
+                and prev_manifest['original_archive_bytes'] == 13594,
+                'W0A4 R1 RED original evidence metadata drift')
+        with zipfile.ZipFile(root/old['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist()) == {'preflight.log','cold-source.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip() == old['tested_sha'],
+                    'W0A4 R1 provider archive lost original three-member RED')
+            cold = z.read('cold-source.log').decode()
+            require('Unknown identifier' in cold
+                    and 'AlgebraTensorModule.lift' in cold
+                    and 'change' in cold and 'build failed' in cold,
+                    'W0A4 R1 original failure evidence no longer diagnostic')
+        require(a.get('previous_red_run') == 44055363556
+                and a.get('accepted_predecessor_run') == 44051746176
+                and s['last_qualified']['run_id'] == 44051746176
+                and a.get('source_blob') == '489d71f3ac7d51f19caf45bd89640b646e9ca882'
+                and a.get('consumer_blob') == old.get('consumer_blob'),
+                'W0A4 R2 source/consumer changed beyond one-namespace repair')
+        source_path = a['source']
+        old_source = subprocess.check_output(
+            ['git','show','14b96aca0d455098fcd54486840f3b905eda2dd7:'+source_path],
+            cwd=root,text=True)
+        require(old_source.count('  AlgebraTensorModule.lift') == 1
+                and (root/source_path).read_text() ==
+                    old_source.replace('  AlgebraTensorModule.lift',
+                                       '  TensorProduct.AlgebraTensorModule.lift',1),
+                'W0A4 R2 source is not byte-exact one-token namespace repair')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

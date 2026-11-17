@@ -31,7 +31,7 @@ private abbrev Op := Fermion 2 →L[ℂ] Fermion 2
 No surrogate Fock carrier and no new Clifford algebra action. -/
 noncomputable def activeGammaComplexLinear :
     (ℂ ⊗[ℝ] Source48Vector) →ₗ[ℂ] Op :=
-  AlgebraTensorModule.lift
+  TensorProduct.AlgebraTensorModule.lift
     { toFun := fun z : ℂ => z • sourceGammaRealLinear
       map_add' := by
         intro z w

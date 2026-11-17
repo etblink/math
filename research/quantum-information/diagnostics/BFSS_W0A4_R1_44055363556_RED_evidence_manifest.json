@@ -1,0 +1,57 @@
+{
+  "gate": "P3-M4-W0A4",
+  "attempt": "R1",
+  "status": "RED_UNQUALIFIED",
+  "strict_run": 44055363556,
+  "strict_job": 133943222828,
+  "tested_sha": "14b96aca0d455098fcd54486840f3b905eda2dd7",
+  "source_blob": "606fcdd173d4c31f191d29e7de53a742cdcbf1aa",
+  "consumer_blob": "18fec08b3259513e63deff44319eb90b759b6b5f",
+  "workflow_blob": "a946d90bfa8515588d3144f0b435121518f7d1c1",
+  "artifact_id": 14316043341,
+  "original_archive_bytes": 13594,
+  "original_archive_sha256": "7deda8b0723841d8a35e19dd8587211254b7e3a8cebaa317918321a54d96dcb6",
+  "original_archive_git_blob": "ef3ad039799680fde9f0d1669f130ef275f9a2a3",
+  "original_archive_path": "research/quantum-information/diagnostics/BFSS_M4_W0A4_R1_44055363556_RED_evidence.zip",
+  "original_archive_members": {
+    "preflight.log": {
+      "bytes": 71,
+      "sha256": "e63490b9b8ebd7ef823f49a5c6388e5d772d1d0c9f0c54f5b9903bb757fbe170"
+    },
+    "cold-source.log": {
+      "bytes": 149704,
+      "sha256": "e0089a31b2dcf1b192cd8f02842087fc20f22a3e30b98f866b6610d2430df6a2"
+    },
+    "tested-commit.txt": {
+      "bytes": 41,
+      "sha256": "723a11bd9ba9654fc1cd3563327cb23530ff64eded0de477607498b90990c238"
+    }
+  },
+  "original_job_log_git_blob": "6f635122f8ab1a3078851aac68214462a4124488",
+  "original_job_log_path": "research/quantum-information/diagnostics/BFSS_W0A4_R1_44055363556_complete_job.log",
+  "preflight": "PASS",
+  "pinned_toolchain": "PASS",
+  "cold_original_source": "RED",
+  "independent_consumer": "NOT_RUN",
+  "strict_auditor": "NOT_RUN",
+  "errors": [
+    {
+      "line": 34,
+      "message": "Unknown identifier `AlgebraTensorModule.lift`",
+      "cause": "Missing TensorProduct namespace"
+    },
+    {
+      "line": 48,
+      "message": "'change' tactic failed, pattern",
+      "cause": "Downstream of unresolved source definition; verify after R2 namespace correction"
+    }
+  ],
+  "preservation_initial_red_run": 44057773975,
+  "preservation_green_run": 44058037250,
+  "accepted_predecessor": {
+    "gate": "P3-M4-W0A3",
+    "strict_run": 44051746176,
+    "archive_git_blob": "845be0ed709f4fe44e288f116cc17eba4fcc5b9d"
+  },
+  "claim_ceiling": "No W0A4 theorem accepted, no source/consumer report accepted. W0A3 remains qualified. R2 at most one namespace repair before stop rule."
+}
