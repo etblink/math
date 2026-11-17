@@ -50,3 +50,6 @@ Begin with a specified physical observable algebra and faithful state, then test
 - Fliss and Frenkel, *Matrix Quantum Mechanics and Entanglement Entropy: A Review*, Entropy 28 (2026) 58, https://www.mdpi.com/1099-4300/28/1/58 : large-N matrix model and gauge-subsystem caveats.
 - Michel, Scheinpflug, Yin, *99.9...% of the SU(2) BFSS ground state*, arXiv:2611.09837 (2026), https://arxiv.org/abs/2611.09837 : external ground-state target, no native proof transfer.
 - Skolem–Noether theorem, https://encyclopediaofmath.org/wiki/Skolem-Noether_theorem : finite-dimensional inner automorphisms. Continuous group lifts require separately checked hypotheses.
+
+## Acceptance addendum (same-day, after independent artifact handoff)
+QTC1G0 is now **STRICT GREEN qualified** after exact provider ZIP Git preservation and canonical gate-state promotion; [receipt](../spectral-p2-original-field/BFSS_M4_QTC1G0_R1_GREEN_44024718712_GENERIC_QUARTER_ACCEPTANCE_2026_11_16.md). The earlier pending-archive status in this memo is a dated record and is superseded. All QIT research ceilings and the pause on QTC1G1/QTC2 remain unchanged.
