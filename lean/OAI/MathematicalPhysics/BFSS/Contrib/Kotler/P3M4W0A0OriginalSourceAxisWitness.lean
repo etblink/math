@@ -34,9 +34,9 @@ theorem originalComplexEquiv_allLabelAxis_eq_activeGamma
     exact sourceBlockColorEquiv.apply_symm_apply p
   have haxis : sourceBlockColorAxis q.1 q.2 =
       Pi.single p (1 : ℝ) := by
-    change Pi.single (sourceBlockColorLabel q.1 q.2) (1 : ℝ) =
-      Pi.single p (1 : ℝ)
-    rw [hlabel]
+    simpa only [sourceBlockColorAxis] using
+      congrArg (fun t : Source48Label =>
+        (Pi.single t (1 : ℝ) : Source48Vector)) hlabel
   simpa only [haxis, hlabel] using
     (originalComplexEquiv_sourceAxis_eq_activeGamma
       q.1.1 q.1.2 q.2)

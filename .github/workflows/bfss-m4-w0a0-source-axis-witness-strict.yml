@@ -36,7 +36,7 @@ jobs:
           python3 - <<'PY' 2>&1 | tee "$root/preflight.log"
           import json,re,subprocess
           from pathlib import Path
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A0OriginalSourceAxisWitness.lean":"81b5df7e7dd009a5f03f561ac80d55d17aafdea4","lean/diagnostics/BFSSP3M4W0A0OriginalSourceAxisIndependentConsumer.lean":"c58f6d3e49bbcb4b7d2c88a08f57f7e07b61ce63","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean":"a9db27fc28379b35ca85515d733cc0bc43376592","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R1_44020471704_evidence.zip":"8ae6ad676712bd361d4a4a0568fc5924a3c3daa5","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R2_44022359538_evidence.zip":"387e2c5d271459d524259800a269e752ab0b9001","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1G0_R1_44024718712_evidence.zip":"ade0727552de6bcdaf1ed2863479a99911c8e3cb"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A0OriginalSourceAxisWitness.lean":"175cd63e2ef031818b61a51b73eb59782fe38add","lean/diagnostics/BFSSP3M4W0A0OriginalSourceAxisIndependentConsumer.lean":"c58f6d3e49bbcb4b7d2c88a08f57f7e07b61ce63","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3A2OriginalComplexCliffordFockSourceAxisCrosswalk.lean":"a9db27fc28379b35ca85515d733cc0bc43376592","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean":"fad0eab5014aa038ddb0bf8411b0e81c358e7908","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R1_44020471704_evidence.zip":"8ae6ad676712bd361d4a4a0568fc5924a3c3daa5","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R2_44022359538_evidence.zip":"387e2c5d271459d524259800a269e752ab0b9001","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1G0_R1_44024718712_evidence.zip":"ade0727552de6bcdaf1ed2863479a99911c8e3cb","research/quantum-information/BFSS_QIT_SCC_W0A0_R1_RED_44033364617_TYPED_PI_SINGLE_2026_11_16.md":"91b84f5a149803f861b941dc5472bc6409a0be82","research/quantum-information/BFSS_QIT_SCC_W0A0_R2_PRE_GATE_TYPED_PI_SINGLE_CONGRARG_2026_11_16.md":"a8804dd8e880288eec2ed36aed0bc7abfc221ce2","research/quantum-information/diagnostics/BFSS_W0A0_R1_44033364617_evidence_manifest.json":"0c0f69a7902cf612683150182a1fb1819fda8917","research/quantum-information/diagnostics/BFSS_W0A0_R1_44033364617_complete_job.log":"1696f84aa7a54347107bcc7e9b5a7cc8a70311b0"}
           for path,expected in pins.items():
               actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert actual==expected,(path,expected,actual)
@@ -64,7 +64,16 @@ jobs:
           assert active["gate"]=="P3-M4-W0A0" and active["status"]=="PENDING_STRICT_CI" and not active["qualification"]
           assert active["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A0OriginalSourceAxisWitness.lean"]
           assert active["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4W0A0OriginalSourceAxisIndependentConsumer.lean"]
-          assert active["contract_commit"]=="25ca9c4c0f543e886c4717e41b4213d5ae5b163e"
+          assert active["attempt"]=="R2" and active["contract_commit"]=="0ee47e5703d87f48a9f99bcb6c431012b1362ea4"
+          assert state["previous_active_W0A0_R1_RED"]["run_id"]==44033364617
+          assert state["previous_active_W0A0_R1_RED"]["status"]=="RED_UNQUALIFIED"
+          assert state["previous_active_W0A0_R1_RED"]["tested_sha"]=="d4f6c7a090ffba44ba7f091c831e568aba154c26"
+          assert state["previous_active_W0A0_R1_RED"]["artifact_sha256"]=="e805e4eb1515a045031768794d1cb74786b3c64c0caff708f16fac80db45b58b"
+          assert subprocess.check_output(["git","rev-parse",
+            "HEAD^:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A0OriginalSourceAxisWitness.lean"],text=True).strip()=="81b5df7e7dd009a5f03f561ac80d55d17aafdea4"
+          assert "congrArg (fun t : Source48Label =>" in src
+          assert "(Pi.single t (1 : ℝ) : Source48Vector)" in src
+          assert "change Pi.single" not in src
           assert Path(active["prospective_receipt"]).is_file()
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           manifest=json.loads(Path("lean/lake-manifest.json").read_text())
