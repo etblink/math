@@ -3222,6 +3222,70 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0B2 scalar Schur bridge remains prospective after W0H1B full commutant')
+    if a['gate']=='P3-M4-W0B2A':
+        # W0B2A is an ORIGINAL Fermion 2 module endomorphism adapter, not Schur.
+        require(a.get('attempt')=='R1' and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('contract_commit')=='7bda19744b08a71ce85744a2fc2de4a84668a4fe'
+                and a.get('first_atom')=='SOURCE_EXACT_ORIGINAL_M3B_FOCK_CLIFFORD_MODULE_END_ADAPTER_FROM_QUALIFIED_W0H1B'
+                and a.get('source_blob')=='58d852a27e84288c0b1f33d784940155e2f26d54'
+                and a.get('consumer_blob')=='85784957405d4740f7dddc9e04dc72ed4c9d3b7a'
+                and a.get('workflow_blob')=='903636c37e0794846146aadd3b175a09553d34e0'
+                and a.get('accepted_predecessor_run')==44164974919
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0H1B'
+                and s['last_qualified']['attempt']=='R2'
+                and s['last_qualified']['run_id']==44164974919
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0B2A original module-end source or accepted W0H1B R2 predecessor drift')
+        donor=s['last_qualified']
+        require(donor['source_blob']=='9139fba785aa31a1e1cde83419f9848ea67fc016'
+                and donor['consumer_blob']=='61964ed693120a6db5f39d034581fc5a5aac9f0a'
+                and donor['workflow_blob']=='c46291c407af0f5e85f23bad2cb20114abd6b03c'
+                and donor.get('evidence_archive_blob')=='7e49358ea47500a2b2e8ab0407e7db44c7871cb5'
+                and donor.get('evidence_job_log_blob')=='7a0996ce15adfc8f9bf5462c350dafaecd6ff906'
+                and donor.get('evidence_manifest_blob')=='4ef0a86aabdf53da7bf85dd15101f89b592badd3'
+                and donor.get('preservation_run')==44168840610,
+                'W0B2A original W0H1B qualified provider evidence changed')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/donor[kind])==donor[kind+'_blob'],
+                    'W0B2A cannot alter W0H1B R2 original source/evidence '+kind)
+        require(s['previous_active_W0H1B_R1_RED']['run_id']==44160611850
+                and s['previous_active_W0B1_R2_stopped']['stopped'] is True
+                and s['previous_active_W0B1_R2_stopped']['run_id']==44127193329,
+                'W0B2A original prior native RED and stopped W0B1 source history lost')
+        for red in (s['previous_active_W0H1B_R1_RED'],
+                    s['previous_active_W0B1_R1_RED'],
+                    s['previous_active_W0B1_R2_stopped']):
+            for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/red[kind])==red[kind+'_blob'],
+                        'W0B2A changed frozen original RED '+kind)
+        for path,sha in (
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3BOriginalComplexCliffordSimpleModuleProbe.lean','e7de3612d83889d8e08318307b37b15ac6567202'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3COriginalCliffordFockSchurAndFiniteProbe.lean','6fefd9ae344df0b7247feb34c9bec5ea0a27aea0'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean','754a5f2a13baea90312f6031eb8fa7963dbdf42b')):
+            require(blob(root/path)==sha,'W0B2A exact original M3 donor source drift')
+        src=(root/a['source']).read_text()
+        cons=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\\b',src))==2
+                and len(re.findall(r'(?m)^noncomputable def\\b',src))==1
+                and len(re.findall(r'(?m)^theorem\\b',cons))==3
+                and len(re.findall(r'(?m)^example\\b',cons))==3
+                and 'originalComplexEquiv_fullClifford_commutes T h a' in src
+                and 'Module.End A V' in src
+                and 'originalComplexCliffordFock_scalarCommutant' not in src
+                and 'CliffordAlgebra.induction' not in src
+                and 'maxHeartbeats' not in src and 'maxRecDepth' not in src,
+                'W0B2A original module-end atomic scope or strict resources drift')
+        require(s['next_planned']['gate']=='P3-M4-W0B2B'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False,
+                'W0B2B scalar must not be automatically promoted')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
