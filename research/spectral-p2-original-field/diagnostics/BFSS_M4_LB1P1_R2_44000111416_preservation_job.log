@@ -1,0 +1,99 @@
+﻿2026-11-17T02:03:11.4221845Z Current runner version: '2.338.2'
+2026-11-17T02:03:11.4239185Z ##[group]Runner Image Provisioner
+2026-11-17T02:03:11.4239902Z Hosted Compute Agent
+2026-11-17T02:03:11.4240343Z Version: 20261103.629
+2026-11-17T02:03:11.4240740Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-17T02:03:11.4241223Z Build Date: 2026-11-03T17:26:59Z
+2026-11-17T02:03:11.4241720Z Worker ID: {0c87bbff-0462-4a36-9131-adcb2fe25990}
+2026-11-17T02:03:11.4242166Z Region: centralus
+2026-11-17T02:03:11.4242558Z Cloud: Azure
+2026-11-17T02:03:11.4242901Z ##[endgroup]
+2026-11-17T02:03:11.4243960Z ##[group]Operating System
+2026-11-17T02:03:11.4244382Z Ubuntu
+2026-11-17T02:03:11.4244707Z 26.04.1
+2026-11-17T02:03:11.4245062Z LTS
+2026-11-17T02:03:11.4245387Z ##[endgroup]
+2026-11-17T02:03:11.4245722Z ##[group]Runner Image
+2026-11-17T02:03:11.4246198Z Image: ubuntu-26.04
+2026-11-17T02:03:11.4246555Z Version: 20261111.196.1
+2026-11-17T02:03:11.4247356Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-17T02:03:11.4248277Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-17T02:03:11.4248896Z ##[endgroup]
+2026-11-17T02:03:11.4249590Z ##[group]GITHUB_TOKEN Permissions
+2026-11-17T02:03:11.4251388Z Actions: read
+2026-11-17T02:03:11.4251754Z Contents: read
+2026-11-17T02:03:11.4252191Z Metadata: read
+2026-11-17T02:03:11.4252537Z ##[endgroup]
+2026-11-17T02:03:11.4254142Z Secret source: Actions
+2026-11-17T02:03:11.4254763Z Cache mode: write
+2026-11-17T02:03:11.4255191Z Prepare workflow directory
+2026-11-17T02:03:11.4506436Z Prepare all required actions
+2026-11-17T02:03:11.4581808Z Complete job name: rehash-exact-original-p1-zip
+2026-11-17T02:03:11.5453410Z ##[group]Run set -euo pipefail
+2026-11-17T02:03:11.5453976Z [36;1mset -euo pipefail[0m
+2026-11-17T02:03:11.5454625Z [36;1mpython3 - <<'PY'[0m
+2026-11-17T02:03:11.5455170Z [36;1mimport os,json,urllib.request,urllib.error,hashlib,zipfile,base64,io,re[0m
+2026-11-17T02:03:11.5455778Z [36;1maid=14290894037[0m
+2026-11-17T02:03:11.5456147Z [36;1mrun=43998813826[0m
+2026-11-17T02:03:11.5456561Z [36;1mtested="de3af5cd0f7aa82de8aa9c7439bee46d02a37a02"[0m
+2026-11-17T02:03:11.5457239Z [36;1mdigest="6bcfef6696d6399c3f03ade5c0f97a732ee2f802ba9ab8ff13e6e6734d0db9a6"[0m
+2026-11-17T02:03:11.5457823Z [36;1mexpected_len=3888[0m
+2026-11-17T02:03:11.5458362Z [36;1murl="https://api.github.com/repos/etblink/math/actions/artifacts/"+str(aid)[0m
+2026-11-17T02:03:11.5459261Z [36;1mheaders={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}[0m
+2026-11-17T02:03:11.5460460Z [36;1mwith urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as r: metadata=json.load(r)[0m
+2026-11-17T02:03:11.5461255Z [36;1massert metadata["id"]==aid and metadata["size_in_bytes"]==expected_len[0m
+2026-11-17T02:03:11.5461794Z [36;1massert metadata["digest"]=="sha256:"+digest[0m
+2026-11-17T02:03:11.5462432Z [36;1massert metadata["workflow_run"]["id"]==run and metadata["workflow_run"]["head_sha"]==tested[0m
+2026-11-17T02:03:11.5463082Z [36;1mclass NoRedirect(urllib.request.HTTPRedirectHandler):[0m
+2026-11-17T02:03:11.5463693Z [36;1m    def redirect_request(self,req,fp,code,msg,hdrs,newurl):return None[0m
+2026-11-17T02:03:11.5464274Z [36;1mtry:[0m
+2026-11-17T02:03:11.5464850Z [36;1m    r=urllib.request.build_opener(NoRedirect).open(urllib.request.Request(url+"/zip",headers=headers),timeout=60)[0m
+2026-11-17T02:03:11.5465571Z [36;1mexcept urllib.error.HTTPError as exc:[0m
+2026-11-17T02:03:11.5466003Z [36;1m    assert exc.code==302,exc[0m
+2026-11-17T02:03:11.5466443Z [36;1m    signed=exc.headers["Location"][0m
+2026-11-17T02:03:11.5466935Z [36;1m    assert signed.startswith("https://")[0m
+2026-11-17T02:03:11.5467485Z [36;1m    with urllib.request.urlopen(signed,timeout=60) as r: archive=r.read()[0m
+2026-11-17T02:03:11.5468041Z [36;1melse:[0m
+2026-11-17T02:03:11.5468415Z [36;1m    with r: archive=r.read()[0m
+2026-11-17T02:03:11.5469071Z [36;1massert len(archive)==expected_len[0m
+2026-11-17T02:03:11.5469548Z [36;1massert hashlib.sha256(archive).hexdigest()==digest[0m
+2026-11-17T02:03:11.5470137Z [36;1mwith zipfile.ZipFile(io.BytesIO(archive)) as z:[0m
+2026-11-17T02:03:11.5470627Z [36;1m    assert z.testzip() is None[0m
+2026-11-17T02:03:11.5471274Z [36;1m    assert set(z.namelist())=={"tested-commit.txt","preflight.log","cold-source.log","source-axioms.log","consumer.log"}[0m
+2026-11-17T02:03:11.5472027Z [36;1m    assert z.read("tested-commit.txt").decode().strip()==tested[0m
+2026-11-17T02:03:11.5472842Z [36;1m    assert "BFSS_M4_LB1P1_SOURCE_CONSUMER_DONOR_TOOLCHAIN_STOP_RULE_PREFLIGHT_PASS" in z.read("preflight.log").decode()[0m
+2026-11-17T02:03:11.5473529Z [36;1m    cold=z.read("cold-source.log").decode()[0m
+2026-11-17T02:03:11.5474062Z [36;1m    assert "Build completed successfully (8965 jobs)." in cold[0m
+2026-11-17T02:03:11.5474599Z [36;1m    assert "error:" not in cold and "sorryAx" not in cold[0m
+2026-11-17T02:03:11.5475146Z [36;1m    allowed={"propext","Classical.choice","Quot.sound"}[0m
+2026-11-17T02:03:11.5475732Z [36;1m    pat=re.compile(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]")[0m
+2026-11-17T02:03:11.5476251Z [36;1m    def check(name, expected):[0m
+2026-11-17T02:03:11.5476684Z [36;1m        t=z.read(name).decode()[0m
+2026-11-17T02:03:11.5477122Z [36;1m        assert "error:" not in t and "sorryAx" not in t[0m
+2026-11-17T02:03:11.5477600Z [36;1m        entries=pat.findall(t)[0m
+2026-11-17T02:03:11.5478068Z [36;1m        assert len(entries)==2,(name,entries)[0m
+2026-11-17T02:03:11.5478648Z [36;1m        labels=[f.rsplit(".",1)[-1] for f,_ in entries][0m
+2026-11-17T02:03:11.5479223Z [36;1m        assert len(set(labels))==2 and set(labels)==set(expected),(name,labels)[0m
+2026-11-17T02:03:11.5480012Z [36;1m        for theorem,axioms in entries:[0m
+2026-11-17T02:03:11.5480572Z [36;1m            assert {a.strip() for a in axioms.split(",") if a.strip()}<=allowed,(theorem,axioms)[0m
+2026-11-17T02:03:11.5481345Z [36;1m        return [{"theorem":f,"axioms":[x.strip() for x in v.split(",") if x.strip()]} for f,v in entries][0m
+2026-11-17T02:03:11.5481935Z [36;1m    src=check("source-axioms.log",[[0m
+2026-11-17T02:03:11.5482461Z [36;1m        "originalFock_fourFactor_commutator_from_two_covariances",[0m
+2026-11-17T02:03:11.5483006Z [36;1m        "originalSource48_fourMajorana_commutator"])[0m
+2026-11-17T02:03:11.5483496Z [36;1m    con=check("consumer.log",[[0m
+2026-11-17T02:03:11.5484001Z [36;1m        "originalFock_fourFactor_conditional_consumer",[0m
+2026-11-17T02:03:11.5484491Z [36;1m        "originalSource48_fourMajorana_consumer"])[0m
+2026-11-17T02:03:11.5485175Z [36;1m    entries=[{"name":n,"bytes":len(z.read(n)),"sha256":hashlib.sha256(z.read(n)).hexdigest()} for n in z.namelist()][0m
+2026-11-17T02:03:11.5485921Z [36;1mprint("BFSS_P1_R2_ORIGINAL_GREEN_ZIP_REHASH_PASS "+json.dumps({[0m
+2026-11-17T02:03:11.5486577Z [36;1m    "artifact_id":aid,"strict_run":run,"tested_sha":tested,"bytes":len(archive),"sha256":digest,[0m
+2026-11-17T02:03:11.5487318Z [36;1m    "cold_jobs":8965,"zip_integrity":"PASS","entries":entries,"source_reports":src,[0m
+2026-11-17T02:03:11.5488086Z [36;1m    "consumer_reports":con,"claim_ceiling":"P1 original four-Majorana commutator only"},sort_keys=True))[0m
+2026-11-17T02:03:11.5560298Z [36;1mprint("BFSS_P1_R2_ORIGINAL_GREEN_ZIP_BASE64 "+base64.b64encode(archive).decode())[0m
+2026-11-17T02:03:11.5561187Z [36;1mPY[0m
+2026-11-17T02:03:11.6218865Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-17T02:03:11.6219519Z env:
+2026-11-17T02:03:11.6222199Z   GH_TOKEN: ***
+2026-11-17T02:03:11.6222531Z ##[endgroup]
+2026-11-17T02:03:12.4390525Z BFSS_P1_R2_ORIGINAL_GREEN_ZIP_REHASH_PASS {"artifact_id": 14290894037, "bytes": 3888, "claim_ceiling": "P1 original four-Majorana commutator only", "cold_jobs": 8965, "consumer_reports": [{"axioms": ["propext", "Classical.choice", "Quot.sound"], "theorem": "FCP.BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.originalFock_fourFactor_conditional_consumer"}, {"axioms": ["propext", "Classical.choice", "Quot.sound"], "theorem": "FCP.BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.originalSource48_fourMajorana_consumer"}], "entries": [{"bytes": 21087, "name": "cold-source.log", "sha256": "5f92b346f02b6550612c2f6ba59e1806afa602007f57954f9aff16850ab6188c"}, {"bytes": 1551, "name": "consumer.log", "sha256": "6fab9883e14f866e3388289623eb1cdb4e2df4720c6844d3e2dfe44895cb0ac9"}, {"bytes": 71, "name": "preflight.log", "sha256": "99f197fe748c1a7bf9f0b97a395c10904ee812bf0daafa881506ad31658c9ea4"}, {"bytes": 1546, "name": "source-axioms.log", "sha256": "67ae933d312688bf450b011e87fed66dd91ba4407ebd38384f612def3562c423"}, {"bytes": 41, "name": "tested-commit.txt", "sha256": "664994ed032845d28d8404d01a51d7798a7f7a93c4c6246ad311fced942f5041"}], "sha256": "6bcfef6696d6399c3f03ade5c0f97a732ee2f802ba9ab8ff13e6e6734d0db9a6", "source_reports": [{"axioms": ["propext", "Classical.choice", "Quot.sound"], "theorem": "FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalFock_fourFactor_commutator_from_two_covariances"}, {"axioms": ["propext", "Classical.choice", "Quot.sound"], "theorem": "FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalSource48_fourMajorana_commutator"}], "strict_run": 43998813826, "tested_sha": "de3af5cd0f7aa82de8aa9c7439bee46d02a37a02", "zip_integrity": "PASS"}
+2026-11-17T02:03:12.4522897Z BFSS_P1_R2_ORIGINAL_GREEN_ZIP_BASE64 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
+2026-11-17T02:03:12.4777733Z Cleaning up orphan processes

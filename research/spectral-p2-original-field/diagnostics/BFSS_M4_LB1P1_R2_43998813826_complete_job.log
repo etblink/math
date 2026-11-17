@@ -1,0 +1,795 @@
+﻿2026-11-17T01:52:25.8317234Z Current runner version: '2.338.2'
+2026-11-17T01:52:25.8345050Z ##[group]Runner Image Provisioner
+2026-11-17T01:52:25.8346192Z Hosted Compute Agent
+2026-11-17T01:52:25.8347400Z Version: 20261103.629
+2026-11-17T01:52:25.8348191Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-17T01:52:25.8349101Z Build Date: 2026-11-03T17:26:59Z
+2026-11-17T01:52:25.8349963Z Worker ID: {e9a43215-9dd1-43d0-83ea-1c3a1a1b3bde}
+2026-11-17T01:52:25.8350795Z Region: eastus2
+2026-11-17T01:52:25.8351520Z Cloud: Azure
+2026-11-17T01:52:25.8352162Z ##[endgroup]
+2026-11-17T01:52:25.8354196Z ##[group]Operating System
+2026-11-17T01:52:25.8355084Z Ubuntu
+2026-11-17T01:52:25.8355867Z 26.04.1
+2026-11-17T01:52:25.8356561Z LTS
+2026-11-17T01:52:25.8357192Z ##[endgroup]
+2026-11-17T01:52:25.8357836Z ##[group]Runner Image
+2026-11-17T01:52:25.8358660Z Image: ubuntu-26.04
+2026-11-17T01:52:25.8359338Z Version: 20261111.196.1
+2026-11-17T01:52:25.8361004Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-17T01:52:25.8362965Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-17T01:52:25.8364345Z ##[endgroup]
+2026-11-17T01:52:25.8365945Z ##[group]GITHUB_TOKEN Permissions
+2026-11-17T01:52:25.8368370Z Contents: read
+2026-11-17T01:52:25.8369075Z Metadata: read
+2026-11-17T01:52:25.8369831Z ##[endgroup]
+2026-11-17T01:52:25.8372044Z Secret source: Actions
+2026-11-17T01:52:25.8373243Z Cache mode: write
+2026-11-17T01:52:25.8374472Z Prepare workflow directory
+2026-11-17T01:52:25.8742386Z Prepare all required actions
+2026-11-17T01:52:25.8799105Z Getting action download info
+2026-11-17T01:52:26.0376881Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-17T01:52:26.1799914Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-17T01:52:26.3892446Z Complete job name: original-four-majorana-and-independent-consumer
+2026-11-17T01:52:26.4588884Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-17T01:52:26.4589691Z with:
+2026-11-17T01:52:26.4590059Z   persist-credentials: false
+2026-11-17T01:52:26.4590471Z   fetch-depth: 2
+2026-11-17T01:52:26.4590842Z   repository: etblink/math
+2026-11-17T01:52:26.4593941Z   token: ***
+2026-11-17T01:52:26.4594301Z   ssh-strict: true
+2026-11-17T01:52:26.4594666Z   ssh-user: git
+2026-11-17T01:52:26.4595008Z   clean: true
+2026-11-17T01:52:26.4595583Z   sparse-checkout-cone-mode: true
+2026-11-17T01:52:26.4596015Z   fetch-tags: false
+2026-11-17T01:52:26.4596377Z   show-progress: true
+2026-11-17T01:52:26.4596746Z   lfs: false
+2026-11-17T01:52:26.4597097Z   submodules: false
+2026-11-17T01:52:26.4597466Z   set-safe-directory: true
+2026-11-17T01:52:26.4597911Z   allow-unsafe-pr-checkout: false
+2026-11-17T01:52:26.4598620Z ##[endgroup]
+2026-11-17T01:52:26.6748805Z Syncing repository: etblink/math
+2026-11-17T01:52:26.6750573Z ##[group]Getting Git version info
+2026-11-17T01:52:26.6751168Z Working directory is '/home/runner/work/math/math'
+2026-11-17T01:52:26.6751942Z [command]/usr/bin/git version
+2026-11-17T01:52:26.6770298Z git version 2.56.1
+2026-11-17T01:52:26.6791914Z ##[endgroup]
+2026-11-17T01:52:26.6801806Z Temporarily overriding HOME='/home/runner/work/_temp/aae059bc-b5f4-4c4e-b0b6-4d61e1b04885' before making global git config changes
+2026-11-17T01:52:26.6803559Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T01:52:26.6806167Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-17T01:52:26.6857740Z Deleting the contents of '/home/runner/work/math/math'
+2026-11-17T01:52:26.6861767Z ##[group]Initializing the repository
+2026-11-17T01:52:26.6865484Z [command]/usr/bin/git init /home/runner/work/math/math
+2026-11-17T01:52:26.6945627Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-17T01:52:26.6946894Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-17T01:52:26.6947793Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-17T01:52:26.6948374Z hint: call:
+2026-11-17T01:52:26.6948745Z hint:
+2026-11-17T01:52:26.6949234Z hint: 	git config --global init.defaultBranch <name>
+2026-11-17T01:52:26.6949737Z hint:
+2026-11-17T01:52:26.6950389Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-17T01:52:26.6951504Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-17T01:52:26.6952400Z hint:
+2026-11-17T01:52:26.6952935Z hint: 	git branch -m <name>
+2026-11-17T01:52:26.6953493Z hint:
+2026-11-17T01:52:26.6954047Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-17T01:52:26.6954870Z Initialized empty Git repository in /home/runner/work/math/math/.git/
+2026-11-17T01:52:26.6962673Z [command]/usr/bin/git remote add origin https://github.com/etblink/math
+2026-11-17T01:52:26.7005193Z ##[endgroup]
+2026-11-17T01:52:26.7006272Z ##[group]Disabling automatic garbage collection
+2026-11-17T01:52:26.7008615Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-17T01:52:26.7037473Z ##[endgroup]
+2026-11-17T01:52:26.7038313Z ##[group]Setting up auth
+2026-11-17T01:52:26.7043305Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T01:52:26.7072199Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T01:52:26.7451408Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T01:52:26.7485906Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T01:52:26.7722453Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T01:52:26.7751295Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T01:52:26.7980379Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-17T01:52:26.8019640Z ##[endgroup]
+2026-11-17T01:52:26.8020597Z ##[group]Fetching the repository
+2026-11-17T01:52:26.8027857Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=2 origin +de3af5cd0f7aa82de8aa9c7439bee46d02a37a02:refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-17T01:52:48.4575853Z From https://github.com/etblink/math
+2026-11-17T01:52:48.4576926Z  * [new ref]             de3af5cd0f7aa82de8aa9c7439bee46d02a37a02 -> origin/integration/bfss-unified-research-20261108
+2026-11-17T01:52:48.4588281Z ##[endgroup]
+2026-11-17T01:52:48.4589014Z ##[group]Determining the checkout info
+2026-11-17T01:52:48.4589758Z ##[endgroup]
+2026-11-17T01:52:48.4590139Z [command]/usr/bin/git sparse-checkout disable
+2026-11-17T01:52:48.4634859Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-17T01:52:48.4661443Z ##[group]Checking out the ref
+2026-11-17T01:52:48.4665837Z [command]/usr/bin/git checkout --progress --force -B integration/bfss-unified-research-20261108 refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-17T01:52:49.5739765Z Updating files:  12% (23257/179111)
+2026-11-17T01:52:49.6504794Z Updating files:  13% (23285/179111)
+2026-11-17T01:52:49.7247886Z Updating files:  14% (25076/179111)
+2026-11-17T01:52:49.8004284Z Updating files:  15% (26867/179111)
+2026-11-17T01:52:49.8960346Z Updating files:  16% (28658/179111)
+2026-11-17T01:52:49.9842318Z Updating files:  17% (30449/179111)
+2026-11-17T01:52:50.0959797Z Updating files:  18% (32240/179111)
+2026-11-17T01:52:50.1829873Z Updating files:  19% (34032/179111)
+2026-11-17T01:52:50.2615192Z Updating files:  20% (35823/179111)
+2026-11-17T01:52:50.3375568Z Updating files:  21% (37614/179111)
+2026-11-17T01:52:50.4253684Z Updating files:  22% (39405/179111)
+2026-11-17T01:52:50.5124101Z Updating files:  23% (41196/179111)
+2026-11-17T01:52:50.5728876Z Updating files:  24% (42987/179111)
+2026-11-17T01:52:50.5989539Z Updating files:  24% (44218/179111)
+2026-11-17T01:52:50.6786240Z Updating files:  25% (44778/179111)
+2026-11-17T01:52:50.7541146Z Updating files:  26% (46569/179111)
+2026-11-17T01:52:50.8473452Z Updating files:  27% (48360/179111)
+2026-11-17T01:52:50.9277744Z Updating files:  28% (50152/179111)
+2026-11-17T01:52:51.0169728Z Updating files:  29% (51943/179111)
+2026-11-17T01:52:51.3730230Z Updating files:  30% (53734/179111)
+2026-11-17T01:52:51.5006196Z Updating files:  31% (55525/179111)
+2026-11-17T01:52:51.5929175Z Updating files:  32% (57316/179111)
+2026-11-17T01:52:51.6981039Z Updating files:  32% (57807/179111)
+2026-11-17T01:52:52.1250837Z Updating files:  33% (59107/179111)
+2026-11-17T01:52:52.2313258Z Updating files:  34% (60898/179111)
+2026-11-17T01:52:52.3348094Z Updating files:  35% (62689/179111)
+2026-11-17T01:52:52.4202791Z Updating files:  36% (64480/179111)
+2026-11-17T01:52:52.5023241Z Updating files:  37% (66272/179111)
+2026-11-17T01:52:52.5729458Z Updating files:  38% (68063/179111)
+2026-11-17T01:52:52.6143045Z Updating files:  38% (69113/179111)
+2026-11-17T01:52:52.7029357Z Updating files:  39% (69854/179111)
+2026-11-17T01:52:52.8062768Z Updating files:  40% (71645/179111)
+2026-11-17T01:52:52.9172033Z Updating files:  41% (73436/179111)
+2026-11-17T01:52:53.0180410Z Updating files:  42% (75227/179111)
+2026-11-17T01:52:53.4612064Z Updating files:  43% (77018/179111)
+2026-11-17T01:52:53.5643763Z Updating files:  44% (78809/179111)
+2026-11-17T01:52:53.5728137Z Updating files:  45% (80600/179111)
+2026-11-17T01:52:53.6695177Z Updating files:  45% (80756/179111)
+2026-11-17T01:52:53.7973059Z Updating files:  46% (82392/179111)
+2026-11-17T01:52:53.9046054Z Updating files:  47% (84183/179111)
+2026-11-17T01:52:54.0338158Z Updating files:  48% (85974/179111)
+2026-11-17T01:52:54.1383149Z Updating files:  49% (87765/179111)
+2026-11-17T01:52:54.2407013Z Updating files:  50% (89556/179111)
+2026-11-17T01:52:54.3249644Z Updating files:  51% (91347/179111)
+2026-11-17T01:52:54.4104039Z Updating files:  52% (93138/179111)
+2026-11-17T01:52:54.4840600Z Updating files:  53% (94929/179111)
+2026-11-17T01:52:54.6014018Z Updating files:  54% (96720/179111)
+2026-11-17T01:52:54.6588341Z Updating files:  54% (97392/179111)
+2026-11-17T01:52:54.7374754Z Updating files:  55% (98512/179111)
+2026-11-17T01:52:54.8348927Z Updating files:  56% (100303/179111)
+2026-11-17T01:52:54.9100754Z Updating files:  57% (102094/179111)
+2026-11-17T01:52:55.0042293Z Updating files:  58% (103885/179111)
+2026-11-17T01:52:55.1210217Z Updating files:  59% (105676/179111)
+2026-11-17T01:52:55.2238562Z Updating files:  60% (107467/179111)
+2026-11-17T01:52:55.3047929Z Updating files:  61% (109258/179111)
+2026-11-17T01:52:55.3818596Z Updating files:  62% (111049/179111)
+2026-11-17T01:52:55.9967686Z Updating files:  63% (112840/179111)
+2026-11-17T01:52:56.2374091Z Updating files:  63% (113575/179111)
+2026-11-17T01:52:56.3185732Z Updating files:  64% (114632/179111)
+2026-11-17T01:52:56.3983259Z Updating files:  65% (116423/179111)
+2026-11-17T01:52:56.5012792Z Updating files:  66% (118214/179111)
+2026-11-17T01:52:56.5728324Z Updating files:  67% (120005/179111)
+2026-11-17T01:52:56.5792864Z Updating files:  67% (121640/179111)
+2026-11-17T01:52:56.6610471Z Updating files:  68% (121796/179111)
+2026-11-17T01:52:56.7609196Z Updating files:  69% (123587/179111)
+2026-11-17T01:52:56.8487020Z Updating files:  70% (125378/179111)
+2026-11-17T01:52:56.9350237Z Updating files:  71% (127169/179111)
+2026-11-17T01:52:57.0612901Z Updating files:  72% (128960/179111)
+2026-11-17T01:52:57.1399512Z Updating files:  73% (130752/179111)
+2026-11-17T01:52:57.2147933Z Updating files:  74% (132543/179111)
+2026-11-17T01:52:57.2892472Z Updating files:  75% (134334/179111)
+2026-11-17T01:52:57.3615082Z Updating files:  76% (136125/179111)
+2026-11-17T01:52:57.4333684Z Updating files:  77% (137916/179111)
+2026-11-17T01:52:57.5065631Z Updating files:  78% (139707/179111)
+2026-11-17T01:52:57.5728319Z Updating files:  79% (141498/179111)
+2026-11-17T01:52:57.5869107Z Updating files:  79% (142981/179111)
+2026-11-17T01:52:57.6851715Z Updating files:  80% (143289/179111)
+2026-11-17T01:52:57.7682673Z Updating files:  81% (145080/179111)
+2026-11-17T01:52:57.8579523Z Updating files:  82% (146872/179111)
+2026-11-17T01:52:58.0100912Z Updating files:  83% (148663/179111)
+2026-11-17T01:52:58.0943790Z Updating files:  84% (150454/179111)
+2026-11-17T01:52:58.1801147Z Updating files:  85% (152245/179111)
+2026-11-17T01:52:58.2721606Z Updating files:  86% (154036/179111)
+2026-11-17T01:52:58.3710017Z Updating files:  87% (155827/179111)
+2026-11-17T01:52:58.4646189Z Updating files:  88% (157618/179111)
+2026-11-17T01:52:58.5665848Z Updating files:  89% (159409/179111)
+2026-11-17T01:52:58.5727647Z Updating files:  90% (161200/179111)
+2026-11-17T01:52:58.6609018Z Updating files:  90% (161347/179111)
+2026-11-17T01:52:58.7659953Z Updating files:  91% (162992/179111)
+2026-11-17T01:52:58.8473098Z Updating files:  92% (164783/179111)
+2026-11-17T01:52:59.1536347Z Updating files:  93% (166574/179111)
+2026-11-17T01:52:59.5736572Z Updating files:  94% (168365/179111)
+2026-11-17T01:52:59.6081668Z Updating files:  94% (169996/179111)
+2026-11-17T01:52:59.9913203Z Updating files:  95% (170156/179111)
+2026-11-17T01:53:00.3608965Z Updating files:  96% (171947/179111)
+2026-11-17T01:53:00.5729345Z Updating files:  97% (173738/179111)
+2026-11-17T01:53:00.7243697Z Updating files:  97% (174786/179111)
+2026-11-17T01:53:01.4084792Z Updating files:  98% (175529/179111)
+2026-11-17T01:53:01.5747321Z Updating files:  99% (177320/179111)
+2026-11-17T01:53:01.6370882Z Updating files:  99% (178245/179111)
+2026-11-17T01:53:01.6371566Z Updating files: 100% (179111/179111)
+2026-11-17T01:53:01.6371886Z Updating files: 100% (179111/179111), done.
+2026-11-17T01:53:01.7967201Z Switched to a new branch 'integration/bfss-unified-research-20261108'
+2026-11-17T01:53:01.7968151Z branch 'integration/bfss-unified-research-20261108' set up to track 'origin/integration/bfss-unified-research-20261108'.
+2026-11-17T01:53:01.8186860Z ##[endgroup]
+2026-11-17T01:53:01.8232384Z [command]/usr/bin/git log -1 --format=%H
+2026-11-17T01:53:01.8257742Z de3af5cd0f7aa82de8aa9c7439bee46d02a37a02
+2026-11-17T01:53:01.8267353Z ##[group]Removing auth
+2026-11-17T01:53:01.8270454Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T01:53:01.8311760Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T01:53:01.8772593Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T01:53:01.8797840Z http.https://github.com/.extraheader
+2026-11-17T01:53:01.8805159Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-17T01:53:01.8895612Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T01:53:01.9357582Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T01:53:01.9396459Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T01:53:01.9857731Z ##[endgroup]
+2026-11-17T01:53:02.0294739Z ##[group]Run set -euo pipefail
+2026-11-17T01:53:02.0295118Z [36;1mset -euo pipefail[0m
+2026-11-17T01:53:02.0295502Z [36;1mmkdir -p "$RUNNER_TEMP/bfss-m4-lb1p1"[0m
+2026-11-17T01:53:02.0295871Z [36;1mgit rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-lb1p1/tested-commit.txt"[0m
+2026-11-17T01:53:02.0296268Z [36;1mpython3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-lb1p1/preflight.log"[0m
+2026-11-17T01:53:02.0296755Z [36;1mimport json,re,subprocess,hashlib[0m
+2026-11-17T01:53:02.0296990Z [36;1mfrom pathlib import Path[0m
+2026-11-17T01:53:02.0301039Z [36;1mpins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean":"9a2899e24c02cb5a5dd58159605a34195fce3856","lean/diagnostics/BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.lean":"5822a7290c04e5fc88b297ad14d9d16b8c290bbd","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean":"d08200fae8ef6c9c9544414307ad537f1eeaa4a4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean":"b4012951a26aa7573db513adab3d7ce27396db7e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0BOriginalSource48SkewPlaneNormalization.lean":"1c47a8645bb8ae18110f29083c95887b8a0e3a15","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean":"7eb090ab82be47ecae18ae0d091716188cb2db79","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}[0m
+2026-11-17T01:53:02.0305250Z [36;1mfor path,want in pins.items():[0m
+2026-11-17T01:53:02.0305741Z [36;1m    got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()[0m
+2026-11-17T01:53:02.0306108Z [36;1m    assert got==want,(path,want,got)[0m
+2026-11-17T01:53:02.0306601Z [36;1msource=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean").read_text()[0m
+2026-11-17T01:53:02.0307288Z [36;1mconsumer=Path("lean/diagnostics/BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.lean").read_text()[0m
+2026-11-17T01:53:02.0308001Z [36;1massert re.findall(r"(?m)^#print axioms (\S+)$",source)==["originalFock_fourFactor_commutator_from_two_covariances","originalSource48_fourMajorana_commutator"][0m
+2026-11-17T01:53:02.0308746Z [36;1massert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==["originalFock_fourFactor_conditional_consumer","originalSource48_fourMajorana_consumer"][0m
+2026-11-17T01:53:02.0309265Z [36;1massert len(re.findall(r"(?m)^example\b",consumer))==4[0m
+2026-11-17T01:53:02.0309543Z [36;1mfor code in (source,consumer):[0m
+2026-11-17T01:53:02.0309840Z [36;1m    assert "set_option autoImplicit false" in code[0m
+2026-11-17T01:53:02.0310180Z [36;1m    assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",code)[0m
+2026-11-17T01:53:02.0310547Z [36;1m    assert "maxRecDepth" not in code and "maxHeartbeats" not in code[0m
+2026-11-17T01:53:02.0310885Z [36;1massert "Fermion 2 →L[ℂ] Fermion 2" in source[0m
+2026-11-17T01:53:02.0311209Z [36;1massert "originalMajorana_bivector_commutator i j k" in source[0m
+2026-11-17T01:53:02.0311557Z [36;1massert "originalMajorana_bivector_commutator i j l" in source[0m
+2026-11-17T01:53:02.0311932Z [36;1massert "originalFock_product_covariance_from_two_hypotheses" in source[0m
+2026-11-17T01:53:02.0312336Z [36;1massert "simp only [sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm]" in source[0m
+2026-11-17T01:53:02.0312722Z [36;1massert "originalSource48_fourMajorana_commutator" in consumer[0m
+2026-11-17T01:53:02.0313218Z [36;1mfor key in ("a0 a1 a2 a3","a0 a1 a1 a2","a0 a1 a0 a1","a0 a0 a2 a3"):[0m
+2026-11-17T01:53:02.0313505Z [36;1m    assert key in consumer,key[0m
+2026-11-17T01:53:02.0313837Z [36;1massert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"[0m
+2026-11-17T01:53:02.0314257Z [36;1mmanifest=json.loads(Path("lean/lake-manifest.json").read_text())[0m
+2026-11-17T01:53:02.0314872Z [36;1massert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"[0m
+2026-11-17T01:53:02.0315419Z [36;1mstate=json.loads(Path("BFSS_GATE_STATE.json").read_text())[0m
+2026-11-17T01:53:02.0315792Z [36;1massert state["branch"]=="integration/bfss-unified-research-20261108"[0m
+2026-11-17T01:53:02.0316140Z [36;1massert state["last_qualified"]["gate"]=="P3-M4-CT0"[0m
+2026-11-17T01:53:02.0316442Z [36;1massert state["last_qualified"]["run_id"]==43983772199[0m
+2026-11-17T01:53:02.0316737Z [36;1massert state["active"]["gate"]=="P3-M4-LB1P1"[0m
+2026-11-17T01:53:02.0317021Z [36;1massert state["active"]["status"]=="PENDING_STRICT_CI"[0m
+2026-11-17T01:53:02.0317317Z [36;1massert state["active"]["qualification"] is False[0m
+2026-11-17T01:53:02.0317586Z [36;1massert state["active"]["attempt"]=="R2"[0m
+2026-11-17T01:53:02.0317869Z [36;1massert state["active"]["previous_red_run"]==43996551474[0m
+2026-11-17T01:53:02.0318270Z [36;1massert state["active"]["previous_red_tested_sha"]=="c34911208aae4964283b39454ed41d990eb1306e"[0m
+2026-11-17T01:53:02.0318672Z [36;1massert state["active"]["prior_red_artifact_id"]==14290412981[0m
+2026-11-17T01:53:02.0319146Z [36;1massert state["active"]["prior_red_artifact_sha256"]=="0d873a2259c24bc4ccdbb3be175869ad413504dcd0cd12fe8b25830e557e7420"[0m
+2026-11-17T01:53:02.0319791Z [36;1massert hashlib.sha256(Path(state["active"]["prior_red_archive"]).read_bytes()).hexdigest()==state["active"]["prior_red_artifact_sha256"][0m
+2026-11-17T01:53:02.0320500Z [36;1massert "P3M4LB1P1OriginalFourMajoranaCommutator.lean:41:6: Unknown identifier" in Path(state["active"]["prior_red_job_log"]).read_text()[0m
+2026-11-17T01:53:02.0321245Z [36;1massert state["active"]["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean"][0m
+2026-11-17T01:53:02.0321996Z [36;1massert state["active"]["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean"][0m
+2026-11-17T01:53:02.0322734Z [36;1massert state["active"]["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.lean"][0m
+2026-11-17T01:53:02.0323256Z [36;1massert state["next_planned"]["status"]=="PROSPECTIVE_NOT_STAGED"[0m
+2026-11-17T01:53:02.0323590Z [36;1mstopped=state["previous_active_CT1G0_R2_stopped"][0m
+2026-11-17T01:53:02.0323866Z [36;1massert stopped["gate"]=="P3-M4-CT1G0"[0m
+2026-11-17T01:53:02.0324199Z [36;1massert stopped["status"]=="RED_UNQUALIFIED" and stopped["stopped"] is True[0m
+2026-11-17T01:53:02.0324623Z [36;1massert stopped["run_id"]==43991790285 and stopped["previous_red_run"]==43988822460[0m
+2026-11-17T01:53:02.0325034Z [36;1massert stopped["stop_reason"]=="TWO_ANALOGOUS_NATIVE_RECURSION_FAILURES"[0m
+2026-11-17T01:53:02.0325611Z [36;1massert hashlib.sha256(Path(stopped["evidence_archive"]).read_bytes()).hexdigest()==stopped["artifact_sha256"][0m
+2026-11-17T01:53:02.0326098Z [36;1massert "maxRecDepth" not in source and "maxHeartbeats" not in source[0m
+2026-11-17T01:53:02.0326505Z [36;1mprint("BFSS_M4_LB1P1_SOURCE_CONSUMER_DONOR_TOOLCHAIN_STOP_RULE_PREFLIGHT_PASS")[0m
+2026-11-17T01:53:02.0326824Z [36;1mPY[0m
+2026-11-17T01:53:02.0375112Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-17T01:53:02.0375548Z ##[endgroup]
+2026-11-17T01:53:02.0513052Z de3af5cd0f7aa82de8aa9c7439bee46d02a37a02
+2026-11-17T01:53:02.0886431Z BFSS_M4_LB1P1_SOURCE_CONSUMER_DONOR_TOOLCHAIN_STOP_RULE_PREFLIGHT_PASS
+2026-11-17T01:53:02.1250698Z ##[group]Run set -euo pipefail
+2026-11-17T01:53:02.1251091Z [36;1mset -euo pipefail[0m
+2026-11-17T01:53:02.1251770Z [36;1msudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift[0m
+2026-11-17T01:53:02.1252649Z [36;1mcurl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none[0m
+2026-11-17T01:53:02.1253452Z [36;1msource "$HOME/.elan/env"[0m
+2026-11-17T01:53:02.1253661Z [36;1mcd lean[0m
+2026-11-17T01:53:02.1253850Z [36;1mtimeout 1800s lake exe cache get[0m
+2026-11-17T01:53:02.1254132Z [36;1mtest "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'[0m
+2026-11-17T01:53:02.1254578Z [36;1mtest "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'[0m
+2026-11-17T01:53:02.1300049Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-17T01:53:02.1300388Z ##[endgroup]
+2026-11-17T01:54:58.9937167Z info: downloading installer
+2026-11-17T01:54:59.6471750Z info: downloading https://releases.lean-lang.org/lean4/v4.34.1/lean-4.34.1-linux.tar.zst
+2026-11-17T01:55:07.3148170Z info: installing /home/runner/.elan/toolchains/leanprover--lean4---v4.34.1
+2026-11-17T01:55:24.5246418Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: iut: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5247445Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: tate-curves-theta: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5248420Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: genl: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5249187Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: heights: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5250088Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: pi1: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5250788Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: orbicurve-cores: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5251410Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: oka: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5252060Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: tempered-fundamental-groups: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5252760Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: elliptic-curves: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5253437Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: formal-schemes: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5254061Z info: /home/runner/work/math/math/lean/lakefile.lean:290:0: belyi: applied compatibility patch before dependency resolution
+2026-11-17T01:55:24.5254599Z info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+2026-11-17T01:55:49.4770766Z info: mathlib: checking out revision 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+2026-11-17T01:55:51.8564311Z info: checkdecls: cloning https://github.com/PatrickMassot/checkdecls.git
+2026-11-17T01:55:52.0976258Z info: checkdecls: checking out revision '3d425859e73fcfbef85b9638c2a91708ef4a22d4'
+2026-11-17T01:55:52.1775084Z info: doc-gen4: cloning https://github.com/leanprover/doc-gen4.git
+2026-11-17T01:55:52.4366092Z info: doc-gen4: checking out revision '953c8992d174b4e56955e01e101d46668c68f2bb'
+2026-11-17T01:55:55.0160138Z info: PrimeCert: cloning https://github.com/b-mehta/PrimeCert.git
+2026-11-17T01:55:55.4774157Z info: PrimeCert: checking out revision '0803c2f6bd289c09704c7d352bb8fcf770cbb9b2'
+2026-11-17T01:55:55.5209657Z info: LeanArchitect: cloning https://github.com/hanwenzhu/LeanArchitect.git
+2026-11-17T01:55:55.7748579Z info: LeanArchitect: checking out revision '468e8f58fb4ad6e6ad672a08da6d0d0531e95a97'
+2026-11-17T01:55:56.6774720Z info: leancert: cloning https://github.com/alerad/leancert.git
+2026-11-17T01:55:57.2394254Z info: leancert: checking out revision '7f91b6eb3567437f6cfac03ed279706603ee22f4'
+2026-11-17T01:55:57.3093712Z info: PrimeNumberTheoremAnd: cloning https://github.com/AlexKontorovich/PrimeNumberTheoremAnd.git
+2026-11-17T01:55:58.2895030Z info: PrimeNumberTheoremAnd: checking out revision 'c39a751132c88b6e8080b74c74023fd95b3d8be0'
+2026-11-17T01:55:58.4651654Z warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes
+2026-11-17T01:55:58.5427018Z warning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes
+2026-11-17T01:55:58.6420360Z warning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes
+2026-11-17T01:55:58.7185188Z warning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes
+2026-11-17T01:55:58.8141240Z warning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes
+2026-11-17T01:55:58.8990778Z warning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes
+2026-11-17T01:55:58.9772443Z warning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes
+2026-11-17T01:55:59.0566603Z warning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes
+2026-11-17T01:55:59.1336288Z warning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes
+2026-11-17T01:55:59.2106515Z warning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes
+2026-11-17T01:55:59.3001249Z warning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes
+2026-11-17T01:55:59.3026184Z info: gromov: cloning https://github.com/Aaron1011/gromov.git
+2026-11-17T01:55:59.9761415Z info: gromov: checking out revision '8db79f13cf211b570e3116301d91379fbc01cf3e'
+2026-11-17T01:56:00.0210775Z info: TauCeti: cloning https://github.com/TauCetiProject/TauCeti.git
+2026-11-17T01:56:17.4549428Z info: TauCeti: checking out revision '3bed7e37f3c504a99e8c07e9f309540812a7aa90'
+2026-11-17T01:56:18.9799603Z info: SphereEversion: cloning https://github.com/leanprover-community/sphere-eversion.git
+2026-11-17T01:56:19.9445839Z info: SphereEversion: checking out revision '9c53f91e2a281199163ecea04dc4976cb79e2076'
+2026-11-17T01:56:19.9909388Z info: schoenflies-lean: cloning https://github.com/alonamaloh/schoenflies-lean
+2026-11-17T01:56:20.5898608Z info: schoenflies-lean: checking out revision '05a43d29cde026618777db3d4e4316204ccca237'
+2026-11-17T01:56:20.6424300Z info: ClassFieldTheory: cloning https://github.com/n-yamaguchi-0729/ClassFieldTheory.git
+2026-11-17T01:56:23.3586127Z info: ClassFieldTheory: checking out revision '2eb22d6485af45f29c5219de6c49f196a61c4f49'
+2026-11-17T01:56:23.9386479Z info: AINTLIB: cloning https://github.com/CBirkbeck/AINTLIB.git
+2026-11-17T01:56:31.8243229Z info: AINTLIB: checking out revision '160e446617a2168c34c95bbe7a76c4105b392434'
+2026-11-17T01:56:32.3998512Z info: AbsorptionCutoff: cloning https://github.com/BennyAvelin/AbsorptionCutoff.git
+2026-11-17T01:56:32.9250476Z info: AbsorptionCutoff: checking out revision '41c45c6d72e979419e46224bb7b4be5cee31f2b5'
+2026-11-17T01:56:33.0051373Z info: StrongPNT: cloning https://github.com/math-inc/strongpnt.git
+2026-11-17T01:56:33.2980268Z info: StrongPNT: checking out revision '2f5835c322314f55f1026ec2f139d704b7c45c69'
+2026-11-17T01:56:33.3481718Z info: carleson: cloning https://github.com/fpvandoorn/carleson.git
+2026-11-17T01:56:34.2992855Z info: carleson: checking out revision '306ae5b29300771aece1aa39f0a939183cc59486'
+2026-11-17T01:56:34.3770909Z info: rellich-kondrachov: cloning https://github.com/abenenson/rellich-kondrachov.git
+2026-11-17T01:56:34.6419194Z info: rellich-kondrachov: checking out revision '70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23'
+2026-11-17T01:56:34.7637939Z info: Zeta3Irrational: cloning https://github.com/ahhwuhu/zeta_3_irrational.git
+2026-11-17T01:56:35.0634949Z info: Zeta3Irrational: checking out revision 'e8785315a01c8fbcddaa0fc03b3c8b29a61bc1f1'
+2026-11-17T01:56:35.2007691Z info: fixed-point-theorems: cloning https://github.com/harfe/fixed-point-theorems-lean4.git
+2026-11-17T01:56:35.4402800Z info: fixed-point-theorems: checking out revision '770940ddf9878cf61952ed53d910b92bca841838'
+2026-11-17T01:56:35.4839562Z info: plausible: cloning https://github.com/leanprover-community/plausible
+2026-11-17T01:56:35.6773814Z info: plausible: checking out revision '118aa17ee84656b8bd727fef7c458ee8c833385c'
+2026-11-17T01:56:35.7196458Z info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+2026-11-17T01:56:35.8969899Z info: LeanSearchClient: checking out revision 'ddf04cf3949fa556442341e87d47f9f6e6074707'
+2026-11-17T01:56:35.9386389Z info: importGraph: cloning https://github.com/leanprover-community/import-graph
+2026-11-17T01:56:36.1737438Z info: importGraph: checking out revision 'e928b72544873815af278d38681b31c0293588e3'
+2026-11-17T01:56:36.2209767Z info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+2026-11-17T01:56:36.5823033Z info: proofwidgets: checking out revision '106ff4fafc74ef4ac99d81dbf3ab399118f497a5'
+2026-11-17T01:56:37.1264522Z info: aesop: cloning https://github.com/leanprover-community/aesop
+2026-11-17T01:56:37.4968450Z info: aesop: checking out revision '355695d523e41d0554926416cba2a2b3544fbbc9'
+2026-11-17T01:56:37.5434244Z info: Qq: cloning https://github.com/leanprover-community/quote4
+2026-11-17T01:56:37.7863225Z info: Qq: checking out revision '6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259'
+2026-11-17T01:56:37.8285596Z info: batteries: cloning https://github.com/leanprover-community/batteries
+2026-11-17T01:56:39.7959117Z info: batteries: checking out revision 'f2effa3d803fda822b1f97b806c47cf2adfbcbc2'
+2026-11-17T01:56:39.8567665Z info: leansqlite: cloning https://github.com/leanprover/leansqlite
+2026-11-17T01:56:40.1788156Z info: leansqlite: checking out revision 'f9cdb9eacb5c8b8ecc02ee9fd9e568d7d28c1416'
+2026-11-17T01:56:40.7184579Z info: Cli: cloning https://github.com/leanprover/lean4-cli
+2026-11-17T01:56:40.9343606Z info: Cli: checking out revision 'e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204'
+2026-11-17T01:56:40.9760003Z info: UnicodeBasic: cloning https://github.com/fgdorais/lean4-unicode-basic
+2026-11-17T01:56:42.7487441Z info: UnicodeBasic: checking out revision '0e569d08b6443ce0908d356884c765397253e2f0'
+2026-11-17T01:56:43.0635642Z info: BibtexQuery: cloning https://github.com/dupuisf/BibtexQuery
+2026-11-17T01:56:43.2766746Z info: BibtexQuery: checking out revision '4d8616fd4870d0a3453d845770833eac7951fe1c'
+2026-11-17T01:56:43.3194486Z info: MD4Lean: cloning https://github.com/acmepjz/md4lean
+2026-11-17T01:56:43.5824204Z info: MD4Lean: checking out revision '31907cc18f48a95384f99cee5582c00fb39e0f67'
+2026-11-17T01:56:44.7746464Z ✔ [4/42] Built Cache.Cli (535ms)
+2026-11-17T01:56:44.8689638Z ✔ [5/42] Built Cache.Cli:c.o (184ms)
+2026-11-17T01:56:44.9696750Z ✔ [6/42] Built Cache.Lean (708ms)
+2026-11-17T01:56:45.0696295Z ✔ [7/42] Built Cache.Lean:c.o (147ms)
+2026-11-17T01:56:45.1729604Z ✔ [8/42] Built Cache.Env (657ms)
+2026-11-17T01:56:45.3728692Z ✔ [9/42] Built Cache.Env:c.o (190ms)
+2026-11-17T01:56:45.6762182Z ✔ [10/42] Built Batteries.Tactic.OpenPrivate (1.2s)
+2026-11-17T01:56:45.7766718Z ✔ [11/42] Built Cache.Infra (610ms)
+2026-11-17T01:56:46.0767909Z ✔ [12/42] Built Cache.Infra:c.o (308ms)
+2026-11-17T01:56:46.7775448Z ✔ [13/42] Built Batteries.Tactic.OpenPrivate:c.o (1.1s)
+2026-11-17T01:56:47.0787311Z ✔ [14/42] Built Cache.IO (1.4s)
+2026-11-17T01:56:48.0779429Z ✔ [15/42] Built Cache.Hashing (945ms)
+2026-11-17T01:56:48.3782996Z ✔ [16/42] Built Cache.IO:c.o (1.2s)
+2026-11-17T01:56:48.4783581Z ✔ [17/42] Built Cache.Hashing:c.o (428ms)
+2026-11-17T01:56:49.7911424Z ✔ [18/42] Built Cache.Requests (1.8s)
+2026-11-17T01:56:50.6041503Z ✔ [19/42] Built Cache.Marker (783ms)
+2026-11-17T01:56:50.8046887Z ✔ [20/42] Built Cache.Marker:c.o (173ms)
+2026-11-17T01:56:51.5199706Z ✔ [21/42] Built Cache.Upload.Dest (921ms)
+2026-11-17T01:56:51.7246511Z ✔ [22/42] Built Cache.Upload.Dest:c.o (195ms)
+2026-11-17T01:56:52.0246980Z ✔ [23/42] Built Cache.Query (1.4s)
+2026-11-17T01:56:52.4217795Z ✔ [24/42] Built Cache.Query:c.o (420ms)
+2026-11-17T01:56:52.5213719Z ✔ [25/42] Built Cache.Requests:c.o (2.7s)
+2026-11-17T01:56:52.7217875Z ✔ [26/42] Built Cache.Upload.Rclone (1.2s)
+2026-11-17T01:56:52.8228207Z ✔ [27/42] Built Cache.Upload.Curl (1.1s)
+2026-11-17T01:56:53.0230883Z ✔ [28/42] Built Cache.Upload.Curl:c.o (257ms)
+2026-11-17T01:56:53.0235836Z ✔ [29/42] Built Cache.Upload.Rclone:c.o (285ms)
+2026-11-17T01:56:53.5276941Z ✔ [30/42] Built Cache.Warning (1.1s)
+2026-11-17T01:56:53.8286954Z ✔ [31/42] Built Cache.Upload.Azure (1.0s)
+2026-11-17T01:56:53.8287747Z ✔ [32/42] Built Cache.Warning:c.o (314ms)
+2026-11-17T01:56:53.9280029Z ✔ [33/42] Built Cache.Upload.Azure:c.o (137ms)
+2026-11-17T01:56:54.0337389Z ✔ [34/42] Built Cache.Upload.S3 (1.1s)
+2026-11-17T01:56:54.3333351Z ✔ [35/42] Built Cache.Upload.S3:c.o (276ms)
+2026-11-17T01:56:54.8338880Z ✔ [36/42] Built Cache.Upload.Defs (795ms)
+2026-11-17T01:56:55.0341027Z ✔ [37/42] Built Cache.Upload.Defs:c.o (151ms)
+2026-11-17T01:56:55.6347156Z ✔ [38/42] Built Cache.Upload (757ms)
+2026-11-17T01:56:55.7337990Z ✔ [39/42] Built Cache.Upload:c.o (141ms)
+2026-11-17T01:56:56.8348324Z ✔ [40/42] Built Cache.Main (1.2s)
+2026-11-17T01:56:57.5387237Z ✔ [41/42] Built Cache.Main:c.o (741ms)
+2026-11-17T01:56:58.2385531Z ✔ [42/42] Built cache:exe (683ms)
+2026-11-17T01:57:07.6003587Z Current branch: HEAD
+2026-11-17T01:57:07.6006334Z Using cache from origin: (some leanprover-community/mathlib4)
+2026-11-17T01:57:07.6007178Z Attempting to download 8908 file(s) from leanprover-community/mathlib4 cache at https://cache.mathlib.org/mathlib4-master
+2026-11-17T01:57:07.8496833Z 
+2026-11-17T01:57:07.9567420Z Downloaded: 1 file(s) [attempted 1/8908 = 0%, 250 KB/s], Decompressed: 0
+2026-11-17T01:57:08.0608418Z Downloaded: 128 file(s) [attempted 128/8908 = 1%, 1350 KB/s], Decompressed: 2
+2026-11-17T01:57:08.1636856Z Downloaded: 261 file(s) [attempted 261/8908 = 2%, 1458 KB/s], Decompressed: 48
+2026-11-17T01:57:08.2632416Z Downloaded: 419 file(s) [attempted 419/8908 = 4%, 4006 KB/s], Decompressed: 48
+2026-11-17T01:57:08.3654117Z Downloaded: 534 file(s) [attempted 534/8908 = 5%, 335 KB/s], Decompressed: 48
+2026-11-17T01:57:08.4677182Z Downloaded: 698 file(s) [attempted 698/8908 = 7%, 251 KB/s], Decompressed: 48
+2026-11-17T01:57:08.5720910Z Downloaded: 884 file(s) [attempted 884/8908 = 9%, 830 KB/s], Decompressed: 190
+2026-11-17T01:57:08.6743788Z Downloaded: 1039 file(s) [attempted 1039/8908 = 11%, 366 KB/s], Decompressed: 190
+2026-11-17T01:57:08.7743442Z Downloaded: 1179 file(s) [attempted 1179/8908 = 13%, 1367 KB/s], Decompressed: 190
+2026-11-17T01:57:08.8745066Z Downloaded: 1346 file(s) [attempted 1346/8908 = 15%, 1302 KB/s], Decompressed: 190
+2026-11-17T01:57:08.9756516Z Downloaded: 1531 file(s) [attempted 1531/8908 = 17%, 2847 KB/s], Decompressed: 190
+2026-11-17T01:57:09.0756100Z Downloaded: 1732 file(s) [attempted 1732/8908 = 19%, 845 KB/s], Decompressed: 190
+2026-11-17T01:57:09.1828823Z Downloaded: 1895 file(s) [attempted 1895/8908 = 21%, 2965 KB/s], Decompressed: 190
+2026-11-17T01:57:09.2856598Z Downloaded: 2043 file(s) [attempted 2043/8908 = 22%, 3223 KB/s], Decompressed: 190
+2026-11-17T01:57:09.3859198Z Downloaded: 2212 file(s) [attempted 2212/8908 = 24%, 1487 KB/s], Decompressed: 190
+2026-11-17T01:57:09.4878721Z Downloaded: 2349 file(s) [attempted 2349/8908 = 26%, 317 KB/s], Decompressed: 190
+2026-11-17T01:57:09.5888329Z Downloaded: 2464 file(s) [attempted 2464/8908 = 27%, 1383 KB/s], Decompressed: 190
+2026-11-17T01:57:09.6909130Z Downloaded: 2660 file(s) [attempted 2660/8908 = 29%, 3072 KB/s], Decompressed: 190
+2026-11-17T01:57:09.8307038Z Downloaded: 2845 file(s) [attempted 2845/8908 = 31%, 2021 KB/s], Decompressed: 190
+2026-11-17T01:57:09.9288162Z Downloaded: 3033 file(s) [attempted 3033/8908 = 34%, 1591 KB/s], Decompressed: 190
+2026-11-17T01:57:10.0340023Z Downloaded: 3234 file(s) [attempted 3234/8908 = 36%, 3730 KB/s], Decompressed: 190
+2026-11-17T01:57:10.1766863Z Downloaded: 3392 file(s) [attempted 3392/8908 = 38%, 956 KB/s], Decompressed: 190
+2026-11-17T01:57:10.2740400Z Downloaded: 3554 file(s) [attempted 3554/8908 = 39%, 231 KB/s], Decompressed: 774
+2026-11-17T01:57:10.3803292Z Downloaded: 3678 file(s) [attempted 3678/8908 = 41%, 2672 KB/s], Decompressed: 774
+2026-11-17T01:57:10.4819347Z Downloaded: 3826 file(s) [attempted 3826/8908 = 42%, 2494 KB/s], Decompressed: 774
+2026-11-17T01:57:10.5907197Z Downloaded: 4000 file(s) [attempted 4000/8908 = 44%, 1576 KB/s], Decompressed: 774
+2026-11-17T01:57:10.6989044Z Downloaded: 4156 file(s) [attempted 4156/8908 = 46%, 890 KB/s], Decompressed: 774
+2026-11-17T01:57:10.7992536Z Downloaded: 4320 file(s) [attempted 4320/8908 = 48%, 4117 KB/s], Decompressed: 774
+2026-11-17T01:57:10.9018745Z Downloaded: 4542 file(s) [attempted 4542/8908 = 50%, 3113 KB/s], Decompressed: 774
+2026-11-17T01:57:11.0086609Z Downloaded: 4729 file(s) [attempted 4729/8908 = 53%, 1666 KB/s], Decompressed: 774
+2026-11-17T01:57:11.1136507Z Downloaded: 4889 file(s) [attempted 4889/8908 = 54%, 976 KB/s], Decompressed: 774
+2026-11-17T01:57:11.2647144Z Downloaded: 5047 file(s) [attempted 5047/8908 = 56%, 285 KB/s], Decompressed: 774
+2026-11-17T01:57:11.3619494Z Downloaded: 5204 file(s) [attempted 5204/8908 = 58%, 873 KB/s], Decompressed: 774
+2026-11-17T01:57:11.4678372Z Downloaded: 5347 file(s) [attempted 5347/8908 = 60%, 269 KB/s], Decompressed: 774
+2026-11-17T01:57:11.5686882Z Downloaded: 5548 file(s) [attempted 5548/8908 = 62%, 2503 KB/s], Decompressed: 774
+2026-11-17T01:57:11.6706455Z Downloaded: 5747 file(s) [attempted 5747/8908 = 64%, 6048 KB/s], Decompressed: 774
+2026-11-17T01:57:11.7704363Z Downloaded: 5927 file(s) [attempted 5927/8908 = 66%, 5026 KB/s], Decompressed: 774
+2026-11-17T01:57:11.8732818Z Downloaded: 6113 file(s) [attempted 6113/8908 = 68%, 781 KB/s], Decompressed: 774
+2026-11-17T01:57:11.9790383Z Downloaded: 6238 file(s) [attempted 6238/8908 = 70%, 2093 KB/s], Decompressed: 774
+2026-11-17T01:57:12.0793426Z Downloaded: 6414 file(s) [attempted 6414/8908 = 72%, 1816 KB/s], Decompressed: 774
+2026-11-17T01:57:12.2078308Z Downloaded: 6581 file(s) [attempted 6581/8908 = 73%, 2786 KB/s], Decompressed: 774
+2026-11-17T01:57:12.3136651Z Downloaded: 6760 file(s) [attempted 6760/8908 = 75%, 1209 KB/s], Decompressed: 774
+2026-11-17T01:57:12.4115926Z Downloaded: 6920 file(s) [attempted 6920/8908 = 77%, 1489 KB/s], Decompressed: 774
+2026-11-17T01:57:12.5113018Z Downloaded: 7132 file(s) [attempted 7132/8908 = 80%, 3579 KB/s], Decompressed: 774
+2026-11-17T01:57:12.6178587Z Downloaded: 7301 file(s) [attempted 7301/8908 = 81%, 595 KB/s], Decompressed: 774
+2026-11-17T01:57:12.7184017Z Downloaded: 7484 file(s) [attempted 7484/8908 = 84%, 387 KB/s], Decompressed: 774
+2026-11-17T01:57:12.8179509Z Downloaded: 7619 file(s) [attempted 7619/8908 = 85%, 690 KB/s], Decompressed: 774
+2026-11-17T01:57:12.9219275Z Downloaded: 7825 file(s) [attempted 7825/8908 = 87%, 781 KB/s], Decompressed: 774
+2026-11-17T01:57:13.0224913Z Downloaded: 8003 file(s) [attempted 8003/8908 = 89%, 2696 KB/s], Decompressed: 774
+2026-11-17T01:57:13.1266558Z Downloaded: 8223 file(s) [attempted 8223/8908 = 92%, 519 KB/s], Decompressed: 774
+2026-11-17T01:57:13.2344606Z Downloaded: 8403 file(s) [attempted 8403/8908 = 94%, 4065 KB/s], Decompressed: 774
+2026-11-17T01:57:13.3346611Z Downloaded: 8579 file(s) [attempted 8579/8908 = 96%, 782 KB/s], Decompressed: 774
+2026-11-17T01:57:13.4341769Z Downloaded: 8691 file(s) [attempted 8691/8908 = 97%, 361 KB/s], Decompressed: 774
+2026-11-17T01:57:13.5171271Z Downloaded: 8829 file(s) [attempted 8829/8908 = 99%, 2133 KB/s], Decompressed: 774
+2026-11-17T01:57:13.5171989Z Downloaded: 8908 file(s) [attempted 8908/8908 = 100%, 2133 KB/s], Decompressed: 774
+2026-11-17T01:57:45.3769372Z Decompressed 8908 file(s)
+2026-11-17T01:57:45.3769663Z Already decompressed 8908 file(s)
+2026-11-17T01:57:47.7342714Z warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes
+2026-11-17T01:57:47.8096041Z warning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes
+2026-11-17T01:57:47.9074990Z warning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes
+2026-11-17T01:57:47.9843369Z warning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes
+2026-11-17T01:57:48.0854263Z warning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes
+2026-11-17T01:57:48.1675765Z warning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes
+2026-11-17T01:57:48.2476046Z warning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes
+2026-11-17T01:57:48.3289020Z warning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes
+2026-11-17T01:57:48.4038881Z warning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes
+2026-11-17T01:57:48.4814647Z warning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes
+2026-11-17T01:57:48.5709565Z warning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes
+2026-11-17T01:57:51.2208519Z ##[group]Run set -euo pipefail
+2026-11-17T01:57:51.2210311Z [36;1mset -euo pipefail[0m
+2026-11-17T01:57:51.2210513Z [36;1msource "$HOME/.elan/env"[0m
+2026-11-17T01:57:51.2210717Z [36;1mcd lean[0m
+2026-11-17T01:57:51.2210906Z [36;1mroot="$RUNNER_TEMP/bfss-m4-lb1p1"[0m
+2026-11-17T01:57:51.2211470Z [36;1mtimeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1P1OriginalFourMajoranaCommutator 2>&1 | tee "$root/cold-source.log"[0m
+2026-11-17T01:57:51.2212446Z [36;1mtimeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean 2>&1 | tee "$root/source-axioms.log"[0m
+2026-11-17T01:57:51.2213458Z [36;1mtimeout 360s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.lean 2>&1 | tee "$root/consumer.log"[0m
+2026-11-17T01:57:51.2214071Z [36;1mpython3 - <<'PY'[0m
+2026-11-17T01:57:51.2214297Z [36;1mimport os,re[0m
+2026-11-17T01:57:51.2214491Z [36;1mfrom pathlib import Path[0m
+2026-11-17T01:57:51.2214747Z [36;1mroot=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-lb1p1"[0m
+2026-11-17T01:57:51.2215061Z [36;1mallowed={"propext","Classical.choice","Quot.sound"}[0m
+2026-11-17T01:57:51.2215717Z [36;1mallow_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")[0m
+2026-11-17T01:57:51.2216285Z [36;1mpattern=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")[0m
+2026-11-17T01:57:51.2216635Z [36;1mdef check(log,expected):[0m
+2026-11-17T01:57:51.2216913Z [36;1m    assert "error:" not in log and "sorryAx" not in log,log[-1500:][0m
+2026-11-17T01:57:51.2217314Z [36;1m    bad=[x for x in log.splitlines() if "warning:" in x and not allow_warning.fullmatch(x)][0m
+2026-11-17T01:57:51.2217647Z [36;1m    assert not bad,bad[:5][0m
+2026-11-17T01:57:51.2217873Z [36;1m    entries=pattern.findall(log)[0m
+2026-11-17T01:57:51.2218151Z [36;1m    assert len(entries)==len(expected),(entries,expected)[0m
+2026-11-17T01:57:51.2218463Z [36;1m    names=[n.rsplit(".",1)[-1] for n,_ in entries][0m
+2026-11-17T01:57:51.2218793Z [36;1m    assert len(set(names))==len(names) and set(names)==set(expected),names[0m
+2026-11-17T01:57:51.2219098Z [36;1m    for n,raw in entries:[0m
+2026-11-17T01:57:51.2219393Z [36;1m        assert {x.strip() for x in raw.split(",") if x.strip()}<=allowed,(n,raw)[0m
+2026-11-17T01:57:51.2219860Z [36;1mfixture="\n".join("'N.%s' depends on axioms: [propext, Classical.choice, Quot.sound]"%x for x in ("a","b"))+"\n"[0m
+2026-11-17T01:57:51.2220247Z [36;1mcheck(fixture,["a","b"])[0m
+2026-11-17T01:57:51.2220446Z [36;1mmutants=[[0m
+2026-11-17T01:57:51.2220663Z [36;1m    fixture.replace("Quot.sound","sorryAx",1),[0m
+2026-11-17T01:57:51.2221128Z [36;1m    fixture.replace("Quot.sound","Unapproved.axiom",1),[0m
+2026-11-17T01:57:51.2221410Z [36;1m    fixture.replace("'N.b'","'N.a'"),[0m
+2026-11-17T01:57:51.2221662Z [36;1m    "\n".join(fixture.splitlines()[:1])+"\n",[0m
+2026-11-17T01:57:51.2221936Z [36;1m    fixture+"warning: unintended source warning\n",[0m
+2026-11-17T01:57:51.2222216Z [36;1m    fixture+"error: native source proof failure\n"][0m
+2026-11-17T01:57:51.2222468Z [36;1mfor i,bad in enumerate(mutants):[0m
+2026-11-17T01:57:51.2222698Z [36;1m    try: check(bad,["a","b"])[0m
+2026-11-17T01:57:51.2224099Z [36;1m    except AssertionError: pass[0m
+2026-11-17T01:57:51.2224396Z [36;1m    else: raise AssertionError(("negative auditor accepted",i))[0m
+2026-11-17T01:57:51.2224764Z [36;1mprint("BFSS_M4_LB1P1_AUDITOR_POSITIVE_AND_6_NEGATIVE_CONTROLS_PASS")[0m
+2026-11-17T01:57:51.2225088Z [36;1mcold=(root/"cold-source.log").read_text()[0m
+2026-11-17T01:57:51.2225542Z [36;1massert "error:" not in cold and "sorryAx" not in cold[0m
+2026-11-17T01:57:51.2225842Z [36;1massert "Build completed successfully" in cold[0m
+2026-11-17T01:57:51.2226588Z [36;1mcheck((root/"source-axioms.log").read_text(),["originalFock_fourFactor_commutator_from_two_covariances","originalSource48_fourMajorana_commutator"])[0m
+2026-11-17T01:57:51.2227327Z [36;1mcheck((root/"consumer.log").read_text(),["originalFock_fourFactor_conditional_consumer","originalSource48_fourMajorana_consumer"])[0m
+2026-11-17T01:57:51.2227908Z [36;1mprint("BFSS_M4_LB1P1_FOUR_ORIGINAL_MAJORANAS_2_SOURCE_2_CONSUMER_4_CONTROLS_STRICT_GREEN")[0m
+2026-11-17T01:57:51.2228251Z [36;1mPY[0m
+2026-11-17T01:57:51.2786904Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-17T01:57:51.2787221Z ##[endgroup]
+2026-11-17T01:57:53.2184835Z warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes
+2026-11-17T01:57:53.2949850Z warning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes
+2026-11-17T01:57:53.3962600Z warning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes
+2026-11-17T01:57:53.4766216Z warning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes
+2026-11-17T01:57:53.5777471Z warning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes
+2026-11-17T01:57:53.6631594Z warning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes
+2026-11-17T01:57:53.7442956Z warning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes
+2026-11-17T01:57:53.8236821Z warning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes
+2026-11-17T01:57:53.9006362Z warning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes
+2026-11-17T01:57:53.9763985Z warning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes
+2026-11-17T01:57:54.0617732Z warning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes
+2026-11-17T01:58:06.3067045Z ✔ [8923/8954] Built OAI.Analysis.Laughlin.Operators.CAR (6.4s)
+2026-11-17T01:58:06.5020157Z ℹ [8924/8954] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe (6.1s)
+2026-11-17T01:58:06.5055086Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean:69:0: 'FCP.BFSSS1V0.sourcePlane_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:06.5096597Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean:70:0: 'FCP.BFSSS1V0.sourcePlaneComplement_ortho_first' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:06.5106816Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean:71:0: 'FCP.BFSSS1V0.sourcePlaneComplement_ortho_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:06.9016779Z ✔ [8925/8955] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.ChargePenalty (6.9s)
+2026-11-17T01:58:08.8146758Z ✔ [8926/8955] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.Spin (8.9s)
+2026-11-17T01:58:09.7218415Z ✔ [8927/8958] Built OAI.Analysis.Laughlin.Operators.NormalOrder (3.2s)
+2026-11-17T01:58:10.2437202Z ℹ [8928/8958] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe (3.3s)
+2026-11-17T01:58:10.2466841Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean:89:0: 'FCP.BFSSS1V5.sourceColorModeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:10.2497224Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean:90:0: 'FCP.BFSSS1V5.sourceBlockColorEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:10.2516517Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean:91:0: 'FCP.BFSSS1V5.sourceBlockColorLabel_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:10.2546452Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean:92:0: 'FCP.BFSSS1V5.sourceBlockColorAxis_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:10.2576490Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V5ConcreteSixteenSourceColorBlocksProbe.lean:93:0: 'FCP.BFSSS1V5.sourceBlockColorAxis_other' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:12.5508463Z ✔ [8930/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.ChargeTransfer (3.8s)
+2026-11-17T01:58:12.7510708Z ✔ [8931/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.Reduction.SourceHamiltonian (3.1s)
+2026-11-17T01:58:15.7647406Z ✔ [8932/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardGlobal (5.5s)
+2026-11-17T01:58:18.8828217Z ✔ [8933/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardOccupation (3.1s)
+2026-11-17T01:58:22.2979417Z ✔ [8934/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardSpin (3.5s)
+2026-11-17T01:58:23.0988136Z ✔ [8935/8965] Built OAI.MathematicalPhysics.BFSS.Core (16s)
+2026-11-17T01:58:25.8093399Z ✔ [8936/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.SpinEmbedding (3.5s)
+2026-11-17T01:58:27.2095948Z ✔ [8937/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.HubbardExcitation (4.9s)
+2026-11-17T01:58:28.4119612Z ℹ [8938/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe (5.3s)
+2026-11-17T01:58:28.4121480Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean:40:0: 'FCP.BFSSS1V52L9E5B0.originalFockOperator_real_smul_eq_complex_smul' depends on axioms: [propext,
+2026-11-17T01:58:28.4122652Z  Classical.choice,
+2026-11-17T01:58:28.4122878Z  Quot.sound]
+2026-11-17T01:58:29.8141807Z ✔ [8939/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.GlobalSuperexchange (2.5s)
+2026-11-17T01:58:35.6216890Z ✔ [8940/8965] Built OAI.MathematicalPhysics.ContinuumCoulomb.ManyBody.FockNorm (5.9s)
+2026-11-17T01:58:43.3368240Z ℹ [8941/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionFockProbe (7.7s)
+2026-11-17T01:58:43.3369557Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean:179:0: 'FCP.BFSSFermionF1.fockBFSSUnitary' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:43.3371054Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean:180:0: 'FCP.BFSSFermionF1.creator_annihilator_car' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:43.3372290Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean:181:0: 'FCP.BFSSFermionF1.creator_adjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:43.3373241Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean:182:0: 'FCP.BFSSFermionF1.majorana0_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:43.3374189Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean:183:0: 'FCP.BFSSFermionF1.majorana0_car' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:50.3472843Z ℹ [8942/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2Probe (7.0s)
+2026-11-17T01:58:50.3473657Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean:141:0: 'FCP.BFSSFermionF2.creator_creator_car' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:50.3474958Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean:142:0: 'FCP.BFSSFermionF2.annihilator_annihilator_car' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:50.3476180Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean:143:0: 'FCP.BFSSFermionF2.annihilator_creator_car' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:50.3477109Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean:144:0: 'FCP.BFSSFermionF2.majorana1_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:50.3478046Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean:145:0: 'FCP.BFSSFermionF2.thetaLabelEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:50.3478963Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean:146:0: 'FCP.BFSSFermionF2.thetaCandidate_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:58:56.1540051Z ℹ [8943/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2BProbe (5.8s)
+2026-11-17T01:58:56.1541235Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2BProbe.lean:91:0: 'FCP.BFSSFermionF2B.majorana1_car' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:02.7596893Z ℹ [8944/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2Probe (6.7s)
+2026-11-17T01:59:02.7598123Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2Probe.lean:74:0: 'FCP.BFSSFermionF2B2.majorana0_car_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:10.1672663Z ℹ [8945/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2ImagProbe (7.4s)
+2026-11-17T01:59:10.1673942Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ImagProbe.lean:115:0: 'FCP.BFSSFermionF2B2Imag.majorana1_car_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:17.3759555Z ℹ [8946/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2MixedProbe (7.2s)
+2026-11-17T01:59:17.3760442Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedProbe.lean:124:0: 'FCP.BFSSFermionF2B2Mixed.majorana01_car_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:24.2969541Z ℹ [8947/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2MixedDiagProbe (6.0s)
+2026-11-17T01:59:24.2970458Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedDiagProbe.lean:83:0: 'FCP.BFSSFermionF2B2MixedDiag.majorana01_car_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:28.2007714Z ℹ [8948/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2MixedAllProbe (3.9s)
+2026-11-17T01:59:28.2009042Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2MixedAllProbe.lean:32:0: 'FCP.BFSSFermionF2B2MixedAll.majorana01_car_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:32.8032871Z ℹ [8949/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2IndexedProbe (4.6s)
+2026-11-17T01:59:32.8034352Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2IndexedProbe.lean:76:0: 'FCP.BFSSFermionF2B2Indexed.majoranaCandidate_car' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:36.8073224Z ℹ [8950/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2FermionF2B2ThetaProbe (4.0s)
+2026-11-17T01:59:36.8074648Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2B2ThetaProbe.lean:52:0: 'FCP.BFSSFermionF2B2Theta.thetaCandidate_CAR' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:40.9113250Z ℹ [8951/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2PairedThetaLabelCrosswalkProbe (4.1s)
+2026-11-17T01:59:40.9115067Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean:110:0: 'FCP.BFSSPairedThetaLabelCrosswalk.pairedToOldLabel_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:40.9117037Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean:111:0: 'FCP.BFSSPairedThetaLabelCrosswalk.pairedTheta_eq_reindexed_old' depends on axioms: [propext,
+2026-11-17T01:59:40.9117996Z  Classical.choice,
+2026-11-17T01:59:40.9118238Z  Quot.sound]
+2026-11-17T01:59:40.9119203Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean:112:0: 'FCP.BFSSPairedThetaLabelCrosswalk.pairedTheta_CAR' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:40.9120977Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean:113:0: 'FCP.BFSSPairedThetaLabelCrosswalk.pairedTheta_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:45.0154586Z ℹ [8952/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe (4.0s)
+2026-11-17T01:59:45.0156170Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe.lean:47:0: 'FCP.BFSSS1V7.sourceColorModeEquiv_eq_original' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:45.0157552Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V7OriginalSourceSixteenBlockLabelBridgeProbe.lean:48:0: 'FCP.BFSSS1V7.sourceBlockColorLabel_eq_original_paired' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:45.0158619Z ℹ [8953/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2PairedThetaConcreteModesProbe (4.1s)
+2026-11-17T01:59:45.0159482Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaConcreteModesProbe.lean:46:0: 'FCP.BFSSPairedThetaConcreteModes.pairedLabel_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:45.0160577Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaConcreteModesProbe.lean:47:0: 'FCP.BFSSPairedThetaConcreteModes.pairedLabel_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:45.0161670Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaConcreteModesProbe.lean:48:0: 'FCP.BFSSPairedThetaConcreteModes.pairedTheta_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:45.0162799Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaConcreteModesProbe.lean:49:0: 'FCP.BFSSPairedThetaConcreteModes.pairedTheta_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T01:59:48.7279819Z ℹ [8954/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockIndexBridgeProbe (3.8s)
+2026-11-17T01:59:48.7281252Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockIndexBridgeProbe.lean:29:0: 'FCP.BFSSSource48FockIndexBridge.sourceBlockColorMajorana_eq_G1APairedTheta' depends on axioms: [propext,
+2026-11-17T01:59:48.7282669Z  Classical.choice,
+2026-11-17T01:59:48.7282919Z  Quot.sound]
+2026-11-17T01:59:54.1338237Z ℹ [8955/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48NormalizedFockGammaProbe (5.4s)
+2026-11-17T01:59:54.1339792Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean:104:0: 'FCP.BFSSSource48NormalizedFockGamma.sourceNormalizedGamma_eq_paired' depends on axioms: [propext,
+2026-11-17T01:59:54.1340862Z  Classical.choice,
+2026-11-17T01:59:54.1341100Z  Quot.sound]
+2026-11-17T01:59:54.1342033Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean:105:0: 'FCP.BFSSSource48NormalizedFockGamma.sourceNormalizedGamma_sq_one' depends on axioms: [propext,
+2026-11-17T01:59:54.1343148Z  Classical.choice,
+2026-11-17T01:59:54.1343387Z  Quot.sound]
+2026-11-17T01:59:54.1344341Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean:106:0: 'FCP.BFSSSource48NormalizedFockGamma.sourceNormalizedGamma_pairwise_CAR' depends on axioms: [propext,
+2026-11-17T01:59:54.1345791Z  Classical.choice,
+2026-11-17T01:59:54.1346027Z  Quot.sound]
+2026-11-17T02:00:00.8403777Z ℹ [8956/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48RealLinearGammaProbe (6.7s)
+2026-11-17T02:00:00.8404791Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean:84:0: 'FCP.BFSSSource48RealLinearGamma.sourceGammaRealLinear_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-17T02:00:00.8406218Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48RealLinearGammaProbe.lean:85:0: 'FCP.BFSSSource48RealLinearGamma.sourceGammaRealLinear_axis_paired' depends on axioms: [propext,
+2026-11-17T02:00:00.8406896Z  Classical.choice,
+2026-11-17T02:00:00.8407080Z  Quot.sound]
+2026-11-17T02:00:05.9506204Z ℹ [8957/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2BFSSSource48FockGammaSelfAdjointProbe (5.2s)
+2026-11-17T02:00:05.9507727Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean:100:0: 'FCP.BFSSSource48FockGammaSelfAdjoint.sourceNormalizedGamma_selfAdjoint' depends on axioms: [propext,
+2026-11-17T02:00:05.9508759Z  Classical.choice,
+2026-11-17T02:00:05.9508998Z  Quot.sound]
+2026-11-17T02:00:05.9509949Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockGammaSelfAdjointProbe.lean:101:0: 'FCP.BFSSSource48FockGammaSelfAdjoint.sourceGammaRealLinear_selfAdjoint' depends on axioms: [propext,
+2026-11-17T02:00:05.9510976Z  Classical.choice,
+2026-11-17T02:00:05.9511212Z  Quot.sound]
+2026-11-17T02:00:11.5550620Z ℹ [8958/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB0OriginalSource48MajoranaBivectorCAR (5.6s)
+2026-11-17T02:00:11.5551703Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean:126:0: 'FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.originalMajorana_bivector_commutator_CAR' depends on axioms: [propext,
+2026-11-17T02:00:11.5552554Z  Classical.choice,
+2026-11-17T02:00:11.5552731Z  Quot.sound]
+2026-11-17T02:00:11.5553447Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean:127:0: 'FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.originalMajorana_bivector_commutator' depends on axioms: [propext,
+2026-11-17T02:00:11.5554180Z  Classical.choice,
+2026-11-17T02:00:11.5554346Z  Quot.sound]
+2026-11-17T02:00:11.5555036Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean:128:0: 'FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.originalMajorana_bivector_skewAdjoint' depends on axioms: [propext,
+2026-11-17T02:00:11.5556037Z  Classical.choice,
+2026-11-17T02:00:11.5556209Z  Quot.sound]
+2026-11-17T02:00:17.6600837Z ℹ [8959/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1SOriginalSource48SkewMatrixFockBivector (6.1s)
+2026-11-17T02:00:17.6602491Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean:177:0: 'FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK' depends on axioms: [propext,
+2026-11-17T02:00:17.6604017Z  Classical.choice,
+2026-11-17T02:00:17.6604262Z  Quot.sound]
+2026-11-17T02:00:17.6605563Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean:178:0: 'FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48_matrixSkew_entries' depends on axioms: [propext,
+2026-11-17T02:00:17.6606823Z  Classical.choice,
+2026-11-17T02:00:17.6607066Z  Quot.sound]
+2026-11-17T02:00:17.6608185Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean:179:0: 'FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK_skewAdjoint' depends on axioms: [propext,
+2026-11-17T02:00:17.6609399Z  Classical.choice,
+2026-11-17T02:00:17.6609626Z  Quot.sound]
+2026-11-17T02:00:17.6611051Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean:180:0: 'FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK_skewAdjoint_of_transpose' depends on axioms: [propext,
+2026-11-17T02:00:17.6612364Z  Classical.choice,
+2026-11-17T02:00:17.6612597Z  Quot.sound]
+2026-11-17T02:00:17.6613693Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean:181:0: 'FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK_zero' depends on axioms: [propext,
+2026-11-17T02:00:17.6615006Z  Classical.choice,
+2026-11-17T02:00:17.6615229Z  Quot.sound]
+2026-11-17T02:00:22.7657924Z ℹ [8960/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1C0OriginalSource48BivectorCommutatorExpansion (5.1s)
+2026-11-17T02:00:22.7659774Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean:170:0: 'FCP.BFSSP3M4LB1C0OriginalSource48BivectorCommutatorExpansion.originalSource48BivectorK_commutator_doubleSum' depends on axioms: [propext,
+2026-11-17T02:00:22.7661181Z  Classical.choice,
+2026-11-17T02:00:22.7661433Z  Quot.sound]
+2026-11-17T02:00:22.7662676Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean:171:0: 'FCP.BFSSP3M4LB1C0OriginalSource48BivectorCommutatorExpansion.originalSource48BivectorK_commutator_CAR_sum' depends on axioms: [propext,
+2026-11-17T02:00:22.7663989Z  Classical.choice,
+2026-11-17T02:00:22.7664225Z  Quot.sound]
+2026-11-17T02:00:22.7665581Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean:172:0: 'FCP.BFSSP3M4LB1C0OriginalSource48BivectorCommutatorExpansion.originalSource48BivectorK_zero_commutator' depends on axioms: [propext,
+2026-11-17T02:00:22.7666909Z  Classical.choice,
+2026-11-17T02:00:22.7667151Z  Quot.sound]
+2026-11-17T02:00:28.7743849Z ℹ [8961/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1C1OriginalSource48SkewKMajoranaCovariance (6.1s)
+2026-11-17T02:00:28.7745076Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean:252:0: 'FCP.BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovariance.originalFock_skew_delta_doubleSum_contract' depends on axioms: [propext,
+2026-11-17T02:00:28.7746144Z  Classical.choice,
+2026-11-17T02:00:28.7746320Z  Quot.sound]
+2026-11-17T02:00:28.7747098Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean:253:0: 'FCP.BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovariance.originalSource48BivectorK_skew_commutator_gamma' depends on axioms: [propext,
+2026-11-17T02:00:28.7747910Z  Classical.choice,
+2026-11-17T02:00:28.7748074Z  Quot.sound]
+2026-11-17T02:00:28.7748873Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean:254:0: 'FCP.BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovariance.originalSource48BivectorK_skew_commutator_gamma_of_transpose' depends on axioms: [propext,
+2026-11-17T02:00:28.7749965Z  Classical.choice,
+2026-11-17T02:00:28.7750123Z  Quot.sound]
+2026-11-17T02:00:32.9781316Z ℹ [8962/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1L2AbstractOriginalFockCovarianceLeibniz (4.2s)
+2026-11-17T02:00:32.9782503Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean:51:0: 'FCP.BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibniz.originalFock_product_covariance_from_two_hypotheses' depends on axioms: [propext,
+2026-11-17T02:00:32.9783371Z  Classical.choice,
+2026-11-17T02:00:32.9783553Z  Quot.sound]
+2026-11-17T02:00:32.9784293Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean:52:0: 'FCP.BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibniz.originalFock_indexed_product_covariance' depends on axioms: [propext,
+2026-11-17T02:00:32.9785054Z  Classical.choice,
+2026-11-17T02:00:32.9785220Z  Quot.sound]
+2026-11-17T02:00:36.9811318Z ℹ [8963/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1P0AOriginalSource48SkewPlane (3.0s)
+2026-11-17T02:00:36.9812679Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean:71:0: 'FCP.BFSSP3M4LB1P0AOriginalSource48SkewPlane.originalSource48SkewPlane_entries_skew' depends on axioms: [propext,
+2026-11-17T02:00:36.9813413Z  Classical.choice,
+2026-11-17T02:00:36.9813586Z  Quot.sound]
+2026-11-17T02:00:36.9814247Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean:72:0: 'FCP.BFSSP3M4LB1P0AOriginalSource48SkewPlane.originalSource48SkewPlane_transpose' depends on axioms: [propext,
+2026-11-17T02:00:36.9814941Z  Classical.choice,
+2026-11-17T02:00:36.9815117Z  Quot.sound]
+2026-11-17T02:00:43.4862402Z ℹ [8964/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1P0BOriginalSource48SkewPlaneNormalization (6.6s)
+2026-11-17T02:00:43.4863589Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0BOriginalSource48SkewPlaneNormalization.lean:156:0: 'FCP.BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalization.originalSource48BivectorK_plane_antisym' depends on axioms: [propext,
+2026-11-17T02:00:43.4864488Z  Classical.choice,
+2026-11-17T02:00:43.4864664Z  Quot.sound]
+2026-11-17T02:00:43.4865577Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0BOriginalSource48SkewPlaneNormalization.lean:157:0: 'FCP.BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalization.originalSource48BivectorK_plane_half' depends on axioms: [propext,
+2026-11-17T02:00:43.4866397Z  Classical.choice,
+2026-11-17T02:00:43.4866578Z  Quot.sound]
+2026-11-17T02:00:48.0914278Z ℹ [8965/8965] Built OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4LB1P1OriginalFourMajoranaCommutator (4.4s)
+2026-11-17T02:00:48.0915590Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean:79:0: 'FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalFock_fourFactor_commutator_from_two_covariances' depends on axioms: [propext,
+2026-11-17T02:00:48.0916451Z  Classical.choice,
+2026-11-17T02:00:48.0916623Z  Quot.sound]
+2026-11-17T02:00:48.0917323Z info: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean:80:0: 'FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalSource48_fourMajorana_commutator' depends on axioms: [propext,
+2026-11-17T02:00:48.0918045Z  Classical.choice,
+2026-11-17T02:00:48.0918216Z  Quot.sound]
+2026-11-17T02:00:48.1060542Z Build completed successfully (8965 jobs).
+2026-11-17T02:00:51.2527455Z warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes
+2026-11-17T02:00:51.3411088Z warning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes
+2026-11-17T02:00:51.5177365Z warning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes
+2026-11-17T02:00:51.6051564Z warning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes
+2026-11-17T02:00:51.7264473Z warning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes
+2026-11-17T02:00:51.8305015Z warning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes
+2026-11-17T02:00:51.9246141Z warning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes
+2026-11-17T02:00:52.0203554Z warning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes
+2026-11-17T02:00:52.1080572Z warning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes
+2026-11-17T02:00:52.2021760Z warning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes
+2026-11-17T02:00:52.4282337Z warning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes
+2026-11-17T02:01:02.9831995Z 'FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalFock_fourFactor_commutator_from_two_covariances' depends on axioms: [propext,
+2026-11-17T02:01:02.9866672Z  Classical.choice,
+2026-11-17T02:01:02.9866959Z  Quot.sound]
+2026-11-17T02:01:02.9867441Z 'FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalSource48_fourMajorana_commutator' depends on axioms: [propext,
+2026-11-17T02:01:02.9867919Z  Classical.choice,
+2026-11-17T02:01:02.9868097Z  Quot.sound]
+2026-11-17T02:01:05.2688617Z warning: belyi: repository '/home/runner/work/math/math/lean/.lake/packages/belyi' has local changes
+2026-11-17T02:01:05.3508875Z warning: formal-schemes: repository '/home/runner/work/math/math/lean/.lake/packages/formal-schemes' has local changes
+2026-11-17T02:01:05.4567506Z warning: elliptic-curves: repository '/home/runner/work/math/math/lean/.lake/packages/elliptic-curves' has local changes
+2026-11-17T02:01:05.5390245Z warning: tempered-fundamental-groups: repository '/home/runner/work/math/math/lean/.lake/packages/tempered-fundamental-groups' has local changes
+2026-11-17T02:01:05.6454051Z warning: oka: repository '/home/runner/work/math/math/lean/.lake/packages/oka' has local changes
+2026-11-17T02:01:05.7317575Z warning: orbicurve-cores: repository '/home/runner/work/math/math/lean/.lake/packages/orbicurve-cores' has local changes
+2026-11-17T02:01:05.8168173Z warning: pi1: repository '/home/runner/work/math/math/lean/.lake/packages/pi1' has local changes
+2026-11-17T02:01:05.9056560Z warning: heights: repository '/home/runner/work/math/math/lean/.lake/packages/heights' has local changes
+2026-11-17T02:01:05.9863510Z warning: genl: repository '/home/runner/work/math/math/lean/.lake/packages/genl' has local changes
+2026-11-17T02:01:06.0689543Z warning: tate-curves-theta: repository '/home/runner/work/math/math/lean/.lake/packages/tate-curves-theta' has local changes
+2026-11-17T02:01:06.1655676Z warning: iut: repository '/home/runner/work/math/math/lean/.lake/packages/iut' has local changes
+2026-11-17T02:01:14.9575431Z 'FCP.BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.originalFock_fourFactor_conditional_consumer' depends on axioms: [propext,
+2026-11-17T02:01:14.9608173Z  Classical.choice,
+2026-11-17T02:01:14.9608376Z  Quot.sound]
+2026-11-17T02:01:14.9608851Z 'FCP.BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.originalSource48_fourMajorana_consumer' depends on axioms: [propext,
+2026-11-17T02:01:14.9609354Z  Classical.choice,
+2026-11-17T02:01:14.9609530Z  Quot.sound]
+2026-11-17T02:01:15.3274405Z BFSS_M4_LB1P1_AUDITOR_POSITIVE_AND_6_NEGATIVE_CONTROLS_PASS
+2026-11-17T02:01:15.3275095Z BFSS_M4_LB1P1_FOUR_ORIGINAL_MAJORANAS_2_SOURCE_2_CONSUMER_4_CONTROLS_STRICT_GREEN
+2026-11-17T02:01:15.3379094Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-17T02:01:15.3379424Z with:
+2026-11-17T02:01:15.3379661Z   name: bfss-m4-lb1p1-de3af5cd0f7aa82de8aa9c7439bee46d02a37a02-1
+2026-11-17T02:01:15.3379986Z   path: /home/runner/work/_temp/bfss-m4-lb1p1/
+2026-11-17T02:01:15.3380222Z   if-no-files-found: warn
+2026-11-17T02:01:15.3380588Z   retention-days: 14
+2026-11-17T02:01:15.3380767Z   compression-level: 6
+2026-11-17T02:01:15.3380939Z   overwrite: false
+2026-11-17T02:01:15.3381125Z   include-hidden-files: false
+2026-11-17T02:01:15.3381320Z ##[endgroup]
+2026-11-17T02:01:15.5696029Z (node:4759) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-17T02:01:15.5696733Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-17T02:01:15.5757163Z With the provided path, there will be 5 files uploaded
+2026-11-17T02:01:15.5757780Z Artifact name is valid!
+2026-11-17T02:01:15.5758182Z Root directory input is valid!
+2026-11-17T02:01:15.9736333Z Beginning upload of artifact content to blob storage
+2026-11-17T02:01:15.9933968Z (node:4759) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-17T02:01:16.0495457Z Uploaded bytes 3888
+2026-11-17T02:01:16.0694301Z Finished uploading artifact content to blob storage!
+2026-11-17T02:01:16.0694836Z SHA256 digest of uploaded artifact zip is 6bcfef6696d6399c3f03ade5c0f97a732ee2f802ba9ab8ff13e6e6734d0db9a6
+2026-11-17T02:01:16.0696567Z Finalizing artifact upload
+2026-11-17T02:01:16.4035085Z Artifact bfss-m4-lb1p1-de3af5cd0f7aa82de8aa9c7439bee46d02a37a02-1.zip successfully finalized. Artifact ID 14290894037
+2026-11-17T02:01:16.4036553Z Artifact bfss-m4-lb1p1-de3af5cd0f7aa82de8aa9c7439bee46d02a37a02-1 has been successfully uploaded! Final size is 3888 bytes. Artifact ID is 14290894037
+2026-11-17T02:01:16.4040630Z Artifact download URL: https://github.com/etblink/math/actions/runs/43998813826/artifacts/14290894037
+2026-11-17T02:01:16.4298804Z Post job cleanup.
+2026-11-17T02:01:16.5015224Z [command]/usr/bin/git version
+2026-11-17T02:01:16.5052876Z git version 2.56.1
+2026-11-17T02:01:16.5085732Z Temporarily overriding HOME='/home/runner/work/_temp/982b079c-0b6a-438b-8f3e-fbd48ae482ab' before making global git config changes
+2026-11-17T02:01:16.5086495Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T02:01:16.5090322Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-17T02:01:16.5127686Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T02:01:16.5160184Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T02:01:16.5947252Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T02:01:16.5982272Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T02:01:16.6456346Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T02:01:16.6524170Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T02:01:16.7138747Z Cleaning up orphan processes
+2026-11-17T02:01:16.7610053Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
