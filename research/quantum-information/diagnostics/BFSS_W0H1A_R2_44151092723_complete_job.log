@@ -1,0 +1,370 @@
+﻿2026-11-17T18:44:34.0396641Z Current runner version: '2.338.2'
+2026-11-17T18:44:34.0415481Z ##[group]Runner Image Provisioner
+2026-11-17T18:44:34.0416166Z Hosted Compute Agent
+2026-11-17T18:44:34.0416523Z Version: 20261103.629
+2026-11-17T18:44:34.0416952Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-17T18:44:34.0417392Z Build Date: 2026-11-03T17:26:59Z
+2026-11-17T18:44:34.0417818Z Worker ID: {e50e5e27-62ff-40a9-8357-265a3d9b98c2}
+2026-11-17T18:44:34.0418280Z Region: centralus
+2026-11-17T18:44:34.0418612Z Cloud: Azure
+2026-11-17T18:44:34.0419000Z ##[endgroup]
+2026-11-17T18:44:34.0419806Z ##[group]Operating System
+2026-11-17T18:44:34.0420183Z Ubuntu
+2026-11-17T18:44:34.0420551Z 26.04.1
+2026-11-17T18:44:34.0420864Z LTS
+2026-11-17T18:44:34.0421194Z ##[endgroup]
+2026-11-17T18:44:34.0421533Z ##[group]Runner Image
+2026-11-17T18:44:34.0421935Z Image: ubuntu-26.04
+2026-11-17T18:44:34.0422315Z Version: 20261111.196.1
+2026-11-17T18:44:34.0423065Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-17T18:44:34.0423984Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-17T18:44:34.0424574Z ##[endgroup]
+2026-11-17T18:44:34.0425285Z ##[group]GITHUB_TOKEN Permissions
+2026-11-17T18:44:34.0426632Z Contents: read
+2026-11-17T18:44:34.0427030Z Metadata: read
+2026-11-17T18:44:34.0427427Z ##[endgroup]
+2026-11-17T18:44:34.0429030Z Secret source: Actions
+2026-11-17T18:44:34.0429580Z Cache mode: write
+2026-11-17T18:44:34.0430001Z Prepare workflow directory
+2026-11-17T18:44:34.0646382Z Prepare all required actions
+2026-11-17T18:44:34.0679265Z Getting action download info
+2026-11-17T18:44:34.3709093Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-17T18:44:34.4537973Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-17T18:44:34.6155243Z Complete job name: original-centralizer-comap
+2026-11-17T18:44:34.6690310Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-17T18:44:34.6690818Z with:
+2026-11-17T18:44:34.6691060Z   persist-credentials: false
+2026-11-17T18:44:34.6691329Z   fetch-depth: 2
+2026-11-17T18:44:34.6691572Z   repository: etblink/math
+2026-11-17T18:44:34.6693685Z   token: ***
+2026-11-17T18:44:34.6693910Z   ssh-strict: true
+2026-11-17T18:44:34.6694143Z   ssh-user: git
+2026-11-17T18:44:34.6694368Z   clean: true
+2026-11-17T18:44:34.6694609Z   sparse-checkout-cone-mode: true
+2026-11-17T18:44:34.6694882Z   fetch-tags: false
+2026-11-17T18:44:34.6695118Z   show-progress: true
+2026-11-17T18:44:34.6695358Z   lfs: false
+2026-11-17T18:44:34.6695578Z   submodules: false
+2026-11-17T18:44:34.6695936Z   set-safe-directory: true
+2026-11-17T18:44:34.6696204Z   allow-unsafe-pr-checkout: false
+2026-11-17T18:44:34.6696572Z ##[endgroup]
+2026-11-17T18:44:34.8904766Z Syncing repository: etblink/math
+2026-11-17T18:44:34.8906153Z ##[group]Getting Git version info
+2026-11-17T18:44:34.8906699Z Working directory is '/home/runner/work/math/math'
+2026-11-17T18:44:34.8907508Z [command]/usr/bin/git version
+2026-11-17T18:44:34.8923322Z git version 2.56.1
+2026-11-17T18:44:34.8939172Z ##[endgroup]
+2026-11-17T18:44:34.8946941Z Temporarily overriding HOME='/home/runner/work/_temp/e84a8818-9581-421b-a0f5-b669cf6b8656' before making global git config changes
+2026-11-17T18:44:34.8948114Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T18:44:34.8950473Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-17T18:44:34.9008918Z Deleting the contents of '/home/runner/work/math/math'
+2026-11-17T18:44:34.9011434Z ##[group]Initializing the repository
+2026-11-17T18:44:34.9015253Z [command]/usr/bin/git init /home/runner/work/math/math
+2026-11-17T18:44:34.9123371Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-17T18:44:34.9124536Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-17T18:44:34.9125888Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-17T18:44:34.9126567Z hint: call:
+2026-11-17T18:44:34.9126913Z hint:
+2026-11-17T18:44:34.9127362Z hint: 	git config --global init.defaultBranch <name>
+2026-11-17T18:44:34.9127898Z hint:
+2026-11-17T18:44:34.9128399Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-17T18:44:34.9129218Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-17T18:44:34.9129862Z hint:
+2026-11-17T18:44:34.9130215Z hint: 	git branch -m <name>
+2026-11-17T18:44:34.9130627Z hint:
+2026-11-17T18:44:34.9131169Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-17T18:44:34.9134556Z Initialized empty Git repository in /home/runner/work/math/math/.git/
+2026-11-17T18:44:34.9144200Z [command]/usr/bin/git remote add origin https://github.com/etblink/math
+2026-11-17T18:44:34.9194681Z ##[endgroup]
+2026-11-17T18:44:34.9195414Z ##[group]Disabling automatic garbage collection
+2026-11-17T18:44:34.9198436Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-17T18:44:34.9230005Z ##[endgroup]
+2026-11-17T18:44:34.9230631Z ##[group]Setting up auth
+2026-11-17T18:44:34.9235574Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T18:44:34.9266804Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T18:44:34.9662291Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T18:44:34.9690166Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T18:44:34.9913782Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T18:44:34.9941805Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T18:44:35.0160922Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-17T18:44:35.0199102Z ##[endgroup]
+2026-11-17T18:44:35.0199565Z ##[group]Fetching the repository
+2026-11-17T18:44:35.0208110Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=2 origin +e7feb875c00b26c570e2f38d20f1790c3f7c1a8a:refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-17T18:44:56.7766657Z From https://github.com/etblink/math
+2026-11-17T18:44:56.7767246Z  * [new ref]             e7feb875c00b26c570e2f38d20f1790c3f7c1a8a -> origin/integration/bfss-unified-research-20261108
+2026-11-17T18:44:56.7769951Z ##[endgroup]
+2026-11-17T18:44:56.7770227Z ##[group]Determining the checkout info
+2026-11-17T18:44:56.7771871Z ##[endgroup]
+2026-11-17T18:44:56.7777633Z [command]/usr/bin/git sparse-checkout disable
+2026-11-17T18:44:56.7827126Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-17T18:44:56.7855026Z ##[group]Checking out the ref
+2026-11-17T18:44:56.7859262Z [command]/usr/bin/git checkout --progress --force -B integration/bfss-unified-research-20261108 refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-17T18:44:57.9337278Z Updating files:  14% (25340/179327)
+2026-11-17T18:44:58.0023006Z Updating files:  15% (26900/179327)
+2026-11-17T18:44:58.0902400Z Updating files:  16% (28693/179327)
+2026-11-17T18:44:58.1748772Z Updating files:  17% (30486/179327)
+2026-11-17T18:44:58.2796986Z Updating files:  18% (32279/179327)
+2026-11-17T18:44:58.3653192Z Updating files:  19% (34073/179327)
+2026-11-17T18:44:58.4407263Z Updating files:  20% (35866/179327)
+2026-11-17T18:44:58.5148837Z Updating files:  21% (37659/179327)
+2026-11-17T18:44:58.5984163Z Updating files:  22% (39452/179327)
+2026-11-17T18:44:58.6797352Z Updating files:  23% (41246/179327)
+2026-11-17T18:44:58.7588838Z Updating files:  24% (43039/179327)
+2026-11-17T18:44:58.8298053Z Updating files:  25% (44832/179327)
+2026-11-17T18:44:58.8737564Z Updating files:  26% (46626/179327)
+2026-11-17T18:44:58.9005634Z Updating files:  26% (47692/179327)
+2026-11-17T18:44:58.9895998Z Updating files:  27% (48419/179327)
+2026-11-17T18:44:59.0697327Z Updating files:  28% (50212/179327)
+2026-11-17T18:44:59.1563347Z Updating files:  29% (52005/179327)
+2026-11-17T18:44:59.4817113Z Updating files:  30% (53799/179327)
+2026-11-17T18:44:59.5982669Z Updating files:  31% (55592/179327)
+2026-11-17T18:44:59.8297860Z Updating files:  32% (57385/179327)
+2026-11-17T18:44:59.8739423Z Updating files:  33% (59178/179327)
+2026-11-17T18:45:00.1344790Z Updating files:  33% (59231/179327)
+2026-11-17T18:45:00.2271626Z Updating files:  34% (60972/179327)
+2026-11-17T18:45:00.3168090Z Updating files:  35% (62765/179327)
+2026-11-17T18:45:00.3924829Z Updating files:  36% (64558/179327)
+2026-11-17T18:45:00.4712987Z Updating files:  37% (66351/179327)
+2026-11-17T18:45:00.5720883Z Updating files:  38% (68145/179327)
+2026-11-17T18:45:00.6535983Z Updating files:  39% (69938/179327)
+2026-11-17T18:45:00.7502938Z Updating files:  40% (71731/179327)
+2026-11-17T18:45:00.8472958Z Updating files:  41% (73525/179327)
+2026-11-17T18:45:00.8735999Z Updating files:  42% (75318/179327)
+2026-11-17T18:45:00.9352694Z Updating files:  42% (75822/179327)
+2026-11-17T18:45:01.3210384Z Updating files:  43% (77111/179327)
+2026-11-17T18:45:01.4110159Z Updating files:  44% (78904/179327)
+2026-11-17T18:45:01.5075077Z Updating files:  45% (80698/179327)
+2026-11-17T18:45:01.6154745Z Updating files:  46% (82491/179327)
+2026-11-17T18:45:01.7137653Z Updating files:  47% (84284/179327)
+2026-11-17T18:45:01.8274416Z Updating files:  48% (86077/179327)
+2026-11-17T18:45:01.8735601Z Updating files:  49% (87871/179327)
+2026-11-17T18:45:01.9301365Z Updating files:  49% (88703/179327)
+2026-11-17T18:45:02.0191203Z Updating files:  50% (89664/179327)
+2026-11-17T18:45:02.0970040Z Updating files:  51% (91457/179327)
+2026-11-17T18:45:02.1728601Z Updating files:  52% (93251/179327)
+2026-11-17T18:45:02.2403206Z Updating files:  53% (95044/179327)
+2026-11-17T18:45:02.3354701Z Updating files:  54% (96837/179327)
+2026-11-17T18:45:02.4074212Z Updating files:  55% (98630/179327)
+2026-11-17T18:45:02.4938980Z Updating files:  56% (100424/179327)
+2026-11-17T18:45:02.5608553Z Updating files:  57% (102217/179327)
+2026-11-17T18:45:02.6351034Z Updating files:  58% (104010/179327)
+2026-11-17T18:45:02.7371609Z Updating files:  59% (105803/179327)
+2026-11-17T18:45:02.8219704Z Updating files:  60% (107597/179327)
+2026-11-17T18:45:02.8735392Z Updating files:  61% (109390/179327)
+2026-11-17T18:45:02.8933111Z Updating files:  61% (110648/179327)
+2026-11-17T18:45:02.9595190Z Updating files:  62% (111183/179327)
+2026-11-17T18:45:03.2020160Z Updating files:  63% (112977/179327)
+2026-11-17T18:45:03.3346556Z Updating files:  64% (114770/179327)
+2026-11-17T18:45:03.4063723Z Updating files:  65% (116563/179327)
+2026-11-17T18:45:03.4939834Z Updating files:  66% (118356/179327)
+2026-11-17T18:45:03.5633076Z Updating files:  67% (120150/179327)
+2026-11-17T18:45:03.6349319Z Updating files:  68% (121943/179327)
+2026-11-17T18:45:03.7206518Z Updating files:  69% (123736/179327)
+2026-11-17T18:45:03.7979902Z Updating files:  70% (125529/179327)
+2026-11-17T18:45:03.8721917Z Updating files:  71% (127323/179327)
+2026-11-17T18:45:03.8733496Z Updating files:  72% (129116/179327)
+2026-11-17T18:45:03.9397708Z Updating files:  72% (129151/179327)
+2026-11-17T18:45:04.0065529Z Updating files:  73% (130909/179327)
+2026-11-17T18:45:04.1142814Z Updating files:  74% (132702/179327)
+2026-11-17T18:45:04.1816420Z Updating files:  75% (134496/179327)
+2026-11-17T18:45:04.2478161Z Updating files:  76% (136289/179327)
+2026-11-17T18:45:04.3072193Z Updating files:  77% (138082/179327)
+2026-11-17T18:45:04.3683894Z Updating files:  78% (139876/179327)
+2026-11-17T18:45:04.4361823Z Updating files:  79% (141669/179327)
+2026-11-17T18:45:04.5182953Z Updating files:  80% (143462/179327)
+2026-11-17T18:45:04.5888587Z Updating files:  81% (145255/179327)
+2026-11-17T18:45:04.6673831Z Updating files:  82% (147049/179327)
+2026-11-17T18:45:04.7852722Z Updating files:  83% (148842/179327)
+2026-11-17T18:45:04.8570579Z Updating files:  84% (150635/179327)
+2026-11-17T18:45:04.8735091Z Updating files:  85% (152428/179327)
+2026-11-17T18:45:04.9324618Z Updating files:  85% (152904/179327)
+2026-11-17T18:45:05.0148363Z Updating files:  86% (154222/179327)
+2026-11-17T18:45:05.1032833Z Updating files:  87% (156015/179327)
+2026-11-17T18:45:05.1857108Z Updating files:  88% (157808/179327)
+2026-11-17T18:45:05.2769857Z Updating files:  89% (159602/179327)
+2026-11-17T18:45:05.3595839Z Updating files:  90% (161395/179327)
+2026-11-17T18:45:05.4550347Z Updating files:  91% (163188/179327)
+2026-11-17T18:45:05.5277770Z Updating files:  92% (164981/179327)
+2026-11-17T18:45:05.8111152Z Updating files:  93% (166775/179327)
+2026-11-17T18:45:05.8736983Z Updating files:  94% (168568/179327)
+2026-11-17T18:45:06.2051433Z Updating files:  94% (168959/179327)
+2026-11-17T18:45:06.5118346Z Updating files:  95% (170361/179327)
+2026-11-17T18:45:06.8189389Z Updating files:  96% (172154/179327)
+2026-11-17T18:45:06.8747379Z Updating files:  97% (173948/179327)
+2026-11-17T18:45:07.2864330Z Updating files:  97% (174239/179327)
+2026-11-17T18:45:07.8054339Z Updating files:  98% (175741/179327)
+2026-11-17T18:45:07.8736325Z Updating files:  99% (177534/179327)
+2026-11-17T18:45:07.9896191Z Updating files:  99% (178033/179327)
+2026-11-17T18:45:07.9896499Z Updating files: 100% (179327/179327)
+2026-11-17T18:45:07.9896740Z Updating files: 100% (179327/179327), done.
+2026-11-17T18:45:08.1423048Z Switched to a new branch 'integration/bfss-unified-research-20261108'
+2026-11-17T18:45:08.1423812Z branch 'integration/bfss-unified-research-20261108' set up to track 'origin/integration/bfss-unified-research-20261108'.
+2026-11-17T18:45:08.1666126Z ##[endgroup]
+2026-11-17T18:45:08.1706328Z [command]/usr/bin/git log -1 --format=%H
+2026-11-17T18:45:08.1727295Z e7feb875c00b26c570e2f38d20f1790c3f7c1a8a
+2026-11-17T18:45:08.1736136Z ##[group]Removing auth
+2026-11-17T18:45:08.1738970Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T18:45:08.1765160Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T18:45:08.2152340Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T18:45:08.2176926Z http.https://github.com/.extraheader
+2026-11-17T18:45:08.2181906Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-17T18:45:08.3316969Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T18:45:08.3714958Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T18:45:08.3743848Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T18:45:08.4119107Z ##[endgroup]
+2026-11-17T18:45:08.5623026Z ##[group]Run set -euo pipefail
+2026-11-17T18:45:08.5623386Z [36;1mset -euo pipefail[0m
+2026-11-17T18:45:08.5623561Z [36;1mmkdir -p "$RUNNER_TEMP/bfss-m4-w0h1a-r2"[0m
+2026-11-17T18:45:08.5623806Z [36;1mgit rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-w0h1a-r2/tested-commit.txt"[0m
+2026-11-17T18:45:08.5624089Z [36;1mpython3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0h1a-r2/preflight.log"[0m
+2026-11-17T18:45:08.5624325Z [36;1mimport json,hashlib,re,subprocess,zipfile[0m
+2026-11-17T18:45:08.5624499Z [36;1mfrom pathlib import Path[0m
+2026-11-17T18:45:08.5630571Z [36;1mpins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean":"c5c0894d99a01e92e92a58dac7313698a2f69971","lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean":"b6e91f79c46724f65f54835623b97d5f909dcf66","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H0OriginalScalarImageAdapter.lean":"7555f5e17d9f465c1e4b7b04ffc450eb1667fc13","lean/diagnostics/BFSSP3M4W0H0OriginalScalarImageIndependentConsumer.lean":"21c02789f62e5e345eff7caf4e10505f6cbe4961","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip":"ffbd66e56aff83031aece2c3b310ed34678bdd9f","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_complete_job.log":"8861ab57e0e12df0d5143a014434fa3ecf5503de","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_GREEN_evidence_manifest.json":"e6fe871ebefc67b3c2cde2b5a44345d781ef79a3","research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44135729729_GREEN_evidence.zip":"ed7e477d931b0822ffb5dfd87f1bee5c9f4163ac","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip":"813b3325da4f721afc0bb313a710410eb40a3bcf","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_complete_job.log":"918c09a60ef1e99a9f8e1d56f380353719cb1fdc","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_RED_evidence_manifest.json":"9a4991d9ce4aeda01ad08684f436d5b9a88bbd48","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComap.lean":"a4c6a2d8006cdd151b72995bb35313c5f2299d57","lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumer.lean":"8e0e457e2d781737f09ef7b7e48a9a142d51a4e0",".github/workflows/bfss-m4-w0h1a-original-centralizer-comap-strict.yml":"95fdaea744514d567bdf4da471adb4c15c5650a0","research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log":"f8f7976d1072b2685c6f783c60558b1bc2b514bd","research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_original_run_jobs_artifacts.json":"985b6d8aff1a54145c8a7d17aee0322208795c83","research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json":"7a3e7c1265fd5b3bab5b2b77908aed9cc6fa03f2"}[0m
+2026-11-17T18:45:08.5636659Z [36;1mfor path,sha in pins.items():[0m
+2026-11-17T18:45:08.5637051Z [36;1m    actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()[0m
+2026-11-17T18:45:08.5637320Z [36;1m    assert actual==sha,(path,actual,sha)[0m
+2026-11-17T18:45:08.5637651Z [36;1msource=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean").read_text()[0m
+2026-11-17T18:45:08.5638130Z [36;1mconsumer=Path("lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean").read_text()[0m
+2026-11-17T18:45:08.5638473Z [36;1massert len(re.findall(r"(?m)^theorem\b",source))==1[0m
+2026-11-17T18:45:08.5638685Z [36;1massert len(re.findall(r"(?m)^theorem\b",consumer))==1[0m
+2026-11-17T18:45:08.5638996Z [36;1massert len(re.findall(r"(?m)^example\b",consumer))==2[0m
+2026-11-17T18:45:08.5639250Z [36;1massert len(re.findall(r"(?m)^def originalSourceCentralizerPullback\b",source))==1[0m
+2026-11-17T18:45:08.5639591Z [36;1massert re.findall(r"(?m)^#print axioms (\S+)$",source)==["originalGenerator_mem_sourceCentralizerPullback"][0m
+2026-11-17T18:45:08.5639972Z [36;1massert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==["originalGenerator_mem_sourceCentralizerPullback_consumer"][0m
+2026-11-17T18:45:08.5640271Z [36;1massert len(re.findall(r"(?m)^import ",source))==3[0m
+2026-11-17T18:45:08.5640637Z [36;1massert consumer.startswith("import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H1AOriginalGeneratorCentralizerComapR2\n")[0m
+2026-11-17T18:45:08.5641183Z [36;1mfor key in ["Subalgebra.comap","Subalgebra.centralizer","Subalgebra.mem_centralizer_iff","Set.mem_singleton_iff","originalComplexEquiv_generator_commutes"]:[0m
+2026-11-17T18:45:08.5641527Z [36;1m    assert key in source,key[0m
+2026-11-17T18:45:08.5641706Z [36;1massert "CliffordAlgebra.induction" not in source[0m
+2026-11-17T18:45:08.5641920Z [36;1massert "CliffordAlgebra.adjoin_range_ι" not in source[0m
+2026-11-17T18:45:08.5642172Z [36;1massert "P3M4W0B1OriginalFullCliffordCommutantInduction" not in source[0m
+2026-11-17T18:45:08.5642396Z [36;1mfor body in [source,consumer]:[0m
+2026-11-17T18:45:08.5642591Z [36;1m    assert "set_option autoImplicit false" in body[0m
+2026-11-17T18:45:08.5642817Z [36;1m    assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)[0m
+2026-11-17T18:45:08.5643065Z [36;1m    assert "maxHeartbeats" not in body and "maxRecDepth" not in body[0m
+2026-11-17T18:45:08.5643287Z [36;1m    assert "activeGammaComplexLinear" not in body[0m
+2026-11-17T18:45:08.5643488Z [36;1ms=json.loads(Path("BFSS_GATE_STATE.json").read_text())[0m
+2026-11-17T18:45:08.5643680Z [36;1ma,q=s["active"],s["last_qualified"][0m
+2026-11-17T18:45:08.5643863Z [36;1massert a["gate"]=="P3-M4-W0H1A" and a["attempt"]=="R2"[0m
+2026-11-17T18:45:08.5644097Z [36;1massert a["status"]=="PENDING_STRICT_CI" and a["qualification"] is False[0m
+2026-11-17T18:45:08.5644476Z [36;1massert a["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean"][0m
+2026-11-17T18:45:08.5644957Z [36;1massert a["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean"][0m
+2026-11-17T18:45:08.5645323Z [36;1massert a["contract_commit"]=="884a1897bdecdfa365abd7206ad7411a8dddef15"[0m
+2026-11-17T18:45:08.5645553Z [36;1massert a["accepted_predecessor_run"]==44139239821[0m
+2026-11-17T18:45:08.5646012Z [36;1massert a["expected_source_reports"]==a["expected_consumer_reports"]==1[0m
+2026-11-17T18:45:08.5646247Z [36;1massert q["gate"]=="P3-M4-W0H0" and q["run_id"]==44139239821[0m
+2026-11-17T18:45:08.5646479Z [36;1massert q["status"]=="GREEN_QUALIFIED" and q["qualification"] is True[0m
+2026-11-17T18:45:08.5646832Z [36;1massert q["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H0OriginalScalarImageAdapter.lean"][0m
+2026-11-17T18:45:08.5647285Z [36;1massert q["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip"][0m
+2026-11-17T18:45:08.5647766Z [36;1massert s["last_qualified_source_exact_original_BFSS"]["gate"]=="P3-M4-W0H0"[0m
+2026-11-17T18:45:08.5648041Z [36;1massert s["last_qualified_source_exact_original_BFSS"]["run_id"]==44139239821[0m
+2026-11-17T18:45:08.5648300Z [36;1massert s["previous_active_W0B1_R2_stopped"]["stopped"] is True[0m
+2026-11-17T18:45:08.5648537Z [36;1massert s["previous_active_W0B1_R2_stopped"]["run_id"]==44127193329[0m
+2026-11-17T18:45:08.5648773Z [36;1massert s["previous_active_W0B1_R1_RED"]["run_id"]==44117272657[0m
+2026-11-17T18:45:08.5648980Z [36;1massert s["next_planned"]["gate"]=="P3-M4-W0H1B"[0m
+2026-11-17T18:45:08.5649187Z [36;1massert s["next_planned"]["status"]=="PROSPECTIVE_NOT_STAGED"[0m
+2026-11-17T18:45:08.5649480Z [36;1massert Path(a["prospective_receipt"]).is_file()[0m
+2026-11-17T18:45:08.5649828Z [36;1mdonor=Path("research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip")[0m
+2026-11-17T18:45:08.5650152Z [36;1mraw=donor.read_bytes()[0m
+2026-11-17T18:45:08.5650446Z [36;1massert len(raw)==13262 and hashlib.sha256(raw).hexdigest()=="ccb4dea2e4114914c7554a6f6bbb76591de3f4c52be30d0d1bb1a9f4a3c52caa"[0m
+2026-11-17T18:45:08.5650846Z [36;1mwith zipfile.ZipFile(donor) as z:[0m
+2026-11-17T18:45:08.5651059Z [36;1m    assert z.testzip() is None[0m
+2026-11-17T18:45:08.5651423Z [36;1m    assert set(z.namelist())=={"auditor.log","cold-source.log","consumer.log","preflight.log","source-axioms.log","tested-commit.txt"}[0m
+2026-11-17T18:45:08.5652000Z [36;1m    assert z.read("tested-commit.txt").decode().strip()=="8760e7ecb1ac5bd0f8c3eb480d752b3c14716819"[0m
+2026-11-17T18:45:08.5652329Z [36;1m    assert b"Build completed successfully (9117 jobs)." in z.read("cold-source.log")[0m
+2026-11-17T18:45:08.5652694Z [36;1m    assert b"BFSS_W0H0_ORIGINAL_SCALAR_1_SOURCE_1_CONSUMER_2_CONTROLS_SIX_MUTANTS_STRICT_GREEN" in z.read("auditor.log")[0m
+2026-11-17T18:45:08.5653052Z [36;1mfor red in [s["previous_active_W0B1_R1_RED"],s["previous_active_W0B1_R2_stopped"]]:[0m
+2026-11-17T18:45:08.5653305Z [36;1m    with zipfile.ZipFile(red["evidence_archive"]) as z:[0m
+2026-11-17T18:45:08.5653494Z [36;1m        assert z.testzip() is None[0m
+2026-11-17T18:45:08.5653710Z [36;1m        assert z.read("tested-commit.txt").decode().strip()==red["tested_sha"][0m
+2026-11-17T18:45:08.5654000Z [36;1m    assert "sorryAx" in Path(red["evidence_job_log"]).read_text()[0m
+2026-11-17T18:45:08.5654239Z [36;1m[0m
+2026-11-17T18:45:08.5654376Z [36;1mold=s.get("previous_active_W0H1A_R1_RED",{})[0m
+2026-11-17T18:45:08.5654604Z [36;1massert old["run_id"]==44145848122 and old["status"]=="RED_UNQUALIFIED"[0m
+2026-11-17T18:45:08.5655200Z [36;1massert old["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComap.lean"] and old["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumer.lean"][0m
+2026-11-17T18:45:08.5656082Z [36;1massert old["workflow_blob"]==pins[".github/workflows/bfss-m4-w0h1a-original-centralizer-comap-strict.yml"][0m
+2026-11-17T18:45:08.5656788Z [36;1massert old["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0H1A_R1_44145848122_SOURCE_RED_evidence.zip"][0m
+2026-11-17T18:45:08.5657412Z [36;1massert old["evidence_job_log_blob"]==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R1_44145848122_complete_job.log"][0m
+2026-11-17T18:45:08.5657881Z [36;1massert old["evidence_manifest_blob"]==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R1_44145848122_SOURCE_RED_evidence_manifest.json"][0m
+2026-11-17T18:45:08.5658225Z [36;1massert old["preservation_run"]==44148961842[0m
+2026-11-17T18:45:08.5658403Z [36;1massert a["previous_red_run"]==44145848122[0m
+2026-11-17T18:45:08.5658677Z [36;1mred=Path("research/quantum-information/diagnostics/BFSS_M4_W0H1A_R1_44145848122_SOURCE_RED_evidence.zip")[0m
+2026-11-17T18:45:08.5658941Z [36;1massert red.stat().st_size==13910[0m
+2026-11-17T18:45:08.5659331Z [36;1massert hashlib.sha256(red.read_bytes()).hexdigest()=="ef701824430dc78c70d4bd049e013a30a1a09df447e44e6b1a6dc5231fafcd43"[0m
+2026-11-17T18:45:08.5659757Z [36;1massert Path("research/quantum-information/diagnostics/BFSS_W0H1A_R1_44145848122_complete_job.log").stat().st_size==235899[0m
+2026-11-17T18:45:08.5660074Z [36;1mwith zipfile.ZipFile(red) as z:[0m
+2026-11-17T18:45:08.5660241Z [36;1m    assert z.testzip() is None[0m
+2026-11-17T18:45:08.5660467Z [36;1m    assert set(z.namelist())=={"cold-source.log","preflight.log","tested-commit.txt"}[0m
+2026-11-17T18:45:08.5660814Z [36;1m    assert z.read("tested-commit.txt").decode().strip()=="4e04deec085de52ac1e55e7265e3463788893d3a"[0m
+2026-11-17T18:45:08.5661188Z [36;1m    assert "Tactic " in z.read("cold-source.log").decode() and "sorryAx" in z.read("cold-source.log").decode()[0m
+2026-11-17T18:45:08.5661600Z [36;1massert "change" in source and "Subalgebra.mem_comap" not in source[0m
+2026-11-17T18:45:08.5661855Z [36;1massert "rw [Subalgebra.mem_centralizer_iff]" in source[0m
+2026-11-17T18:45:08.5662042Z [36;1m[0m
+2026-11-17T18:45:08.5662168Z [36;1mh=s.get("w0h1a_r2_preflight_only",{})[0m
+2026-11-17T18:45:08.5662388Z [36;1massert h.get("run_id")==44149941739 and h.get("status")=="PREFLIGHT_ONLY_RED"[0m
+2026-11-17T18:45:08.5662656Z [36;1massert h.get("artifact_count")==0 and h.get("source_attempted") is False[0m
+2026-11-17T18:45:08.5662881Z [36;1massert h.get("consumer_attempted") is False[0m
+2026-11-17T18:45:08.5663217Z [36;1massert h.get("original_log_blob")==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log"][0m
+2026-11-17T18:45:08.5663738Z [36;1massert h.get("original_metadata_blob")==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_original_run_jobs_artifacts.json"][0m
+2026-11-17T18:45:08.5664252Z [36;1massert h.get("manifest_blob")==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json"][0m
+2026-11-17T18:45:08.5664588Z [36;1massert h.get("preservation_run")==44150575833[0m
+2026-11-17T18:45:08.5664907Z [36;1mm=json.loads(Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json").read_text())[0m
+2026-11-17T18:45:08.5665244Z [36;1massert m["run_id"]==44149941739 and m["artifact_count"]==0[0m
+2026-11-17T18:45:08.5665484Z [36;1massert m["source_attempted"] is False and m["consumer_attempted"] is False[0m
+2026-11-17T18:45:08.5665876Z [36;1massert m["workflow_blob"]=="82313868f060241d6a9baf490275125b62a5b475"[0m
+2026-11-17T18:45:08.5666209Z [36;1massert m["original_job_log"]["sha256"]=="728e0f91056dee2487dfd90c5b242b469b7db172c1271305287858d997d275c9"[0m
+2026-11-17T18:45:08.5666661Z [36;1massert "No such file or directory" in Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log").read_text()[0m
+2026-11-17T18:45:08.5667220Z [36;1massert "bfss-m4-w0h1a-r2/tested-commit.txt" in Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log").read_text()[0m
+2026-11-17T18:45:08.5667783Z [36;1moriginal_run=json.loads(Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_original_run_jobs_artifacts.json").read_text())[0m
+2026-11-17T18:45:08.5668160Z [36;1massert original_run["artifacts"]["total_count"]==0[0m
+2026-11-17T18:45:08.5668405Z [36;1massert original_run["run"]["head_sha"]=="3a48165bd006552444f036ae8ac2960fc7ffd5fe"[0m
+2026-11-17T18:45:08.5668676Z [36;1mmanifest=json.loads(Path("lean/lake-manifest.json").read_text())[0m
+2026-11-17T18:45:08.5668948Z [36;1massert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"[0m
+2026-11-17T18:45:08.5669301Z [36;1massert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"[0m
+2026-11-17T18:45:08.5669639Z [36;1mprint("BFSS_W0H1A_R2_ORIGINAL_DONOR_GREEN_R1_SOURCE_RED_ARCHIVED_PREFLIGHT_PASS")[0m
+2026-11-17T18:45:08.5669856Z [36;1mPY[0m
+2026-11-17T18:45:08.5715980Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-17T18:45:08.5716194Z ##[endgroup]
+2026-11-17T18:45:08.5846109Z e7feb875c00b26c570e2f38d20f1790c3f7c1a8a
+2026-11-17T18:45:08.7050721Z Traceback (most recent call last):
+2026-11-17T18:45:08.7051069Z   File "<stdin>", line 67, in <module>
+2026-11-17T18:45:08.7051502Z KeyError: 'research/quantum-information/diagnostics/BFSS_M4_W0H1A_R1_44145848122_SOURCE_RED_evidence.zip'
+2026-11-17T18:45:08.7210124Z ##[error]Process completed with exit code 1.
+2026-11-17T18:45:08.7336197Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-17T18:45:08.7336433Z with:
+2026-11-17T18:45:08.7336758Z   name: bfss-m4-w0h1a-r2-e7feb875c00b26c570e2f38d20f1790c3f7c1a8a-1
+2026-11-17T18:45:08.7337092Z   path: /home/runner/work/_temp/bfss-m4-w0h1a-r2/
+2026-11-17T18:45:08.7337276Z   if-no-files-found: warn
+2026-11-17T18:45:08.7337404Z   retention-days: 14
+2026-11-17T18:45:08.7337527Z   compression-level: 6
+2026-11-17T18:45:08.7337651Z   overwrite: false
+2026-11-17T18:45:08.7337773Z   include-hidden-files: false
+2026-11-17T18:45:08.7337907Z ##[endgroup]
+2026-11-17T18:45:08.8444009Z (node:2313) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-17T18:45:08.8444643Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-17T18:45:08.8478656Z With the provided path, there will be 2 files uploaded
+2026-11-17T18:45:08.8494273Z Artifact name is valid!
+2026-11-17T18:45:08.8497489Z Root directory input is valid!
+2026-11-17T18:45:09.1321260Z Beginning upload of artifact content to blob storage
+2026-11-17T18:45:09.1449225Z (node:2313) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-17T18:45:09.3334647Z Uploaded bytes 471
+2026-11-17T18:45:09.3836764Z Finished uploading artifact content to blob storage!
+2026-11-17T18:45:09.3837319Z SHA256 digest of uploaded artifact zip is 1fa9401343636219ec23b166e490fada123d0394a7106259fbe235217fb674b6
+2026-11-17T18:45:09.3838189Z Finalizing artifact upload
+2026-11-17T18:45:09.7560545Z Artifact bfss-m4-w0h1a-r2-e7feb875c00b26c570e2f38d20f1790c3f7c1a8a-1.zip successfully finalized. Artifact ID 14358602623
+2026-11-17T18:45:09.7561550Z Artifact bfss-m4-w0h1a-r2-e7feb875c00b26c570e2f38d20f1790c3f7c1a8a-1 has been successfully uploaded! Final size is 471 bytes. Artifact ID is 14358602623
+2026-11-17T18:45:09.7567414Z Artifact download URL: https://github.com/etblink/math/actions/runs/44151092723/artifacts/14358602623
+2026-11-17T18:45:09.7764651Z Post job cleanup.
+2026-11-17T18:45:09.8316763Z [command]/usr/bin/git version
+2026-11-17T18:45:09.8376492Z git version 2.56.1
+2026-11-17T18:45:09.8379498Z Temporarily overriding HOME='/home/runner/work/_temp/8a35e4d4-b4f7-4743-ab50-534997bf6fe6' before making global git config changes
+2026-11-17T18:45:09.8380132Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T18:45:09.8382374Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-17T18:45:09.8460591Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T18:45:09.8492613Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-17T18:45:09.8966576Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T18:45:09.8996020Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-17T18:45:09.9403254Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T18:45:09.9436283Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-17T18:45:09.9988895Z Cleaning up orphan processes
+2026-11-17T18:45:10.0271658Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
