@@ -194,6 +194,32 @@ def check_checkpoint(root: Path, s: dict):
                     and a.get('source_blob') != 'e4837ccb96108ecabcebfd0ba2534398fe0ddb2a'
                     and a.get('consumer_blob') != '2d38aa70c6b4a55d4b8af3245d6d63b15839d697',
                     'CT1G0 R2 does not retain original R1 RED or unchanged original gate limits')
+    if a['gate'] == 'P3-M4-LB1P1':
+        require(s['last_qualified']['gate'] == 'P3-M4-CT0'
+                and s['last_qualified']['run_id'] == 43983772199
+                and a.get('attempt') == 'R1'
+                and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
+                and a.get('independent_controls') == 4
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
+                and a.get('stop_rule_inherited') == 'CT1G0_R1_R2_STOPPED_NO_R3',
+                'P1 strict scope, Fock theorem roots or accepted predecessor drift')
+        stopped = s.get('previous_active_CT1G0_R2_stopped',{})
+        require(stopped.get('gate') == 'P3-M4-CT1G0'
+                and stopped.get('attempt') == 'R2'
+                and stopped.get('status') == 'RED_UNQUALIFIED'
+                and stopped.get('qualification') is False
+                and stopped.get('stopped') is True
+                and stopped.get('stop_reason') == 'TWO_ANALOGOUS_NATIVE_RECURSION_FAILURES'
+                and stopped.get('run_id') == 43991790285
+                and stopped.get('previous_red_run') == 43988822460
+                and stopped.get('artifact_sha256') == 'a4611075b4eb0ce42f010e2530e1b2d351c5adc3eee43a3709c091b296a2efe8'
+                and stopped.get('evidence_archive_blob') == blob(root/stopped['evidence_archive'])
+                and stopped.get('evidence_job_log_blob') == blob(root/stopped['evidence_job_log'])
+                and hashlib.sha256((root/stopped['evidence_archive']).read_bytes()).hexdigest()
+                    == stopped['artifact_sha256']
+                and '43991790285' in (root/stopped['receipt']).read_text()
+                and '43988822460' in (root/stopped['architecture_review']).read_text(),
+                'prior CT1 original REDs lost or stop rule bypassed')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
