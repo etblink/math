@@ -45,7 +45,8 @@ private theorem originalFock_left_tensor_contract
           (b i j * a p i) • (x p * x j) := by
             rw [smul_mul_assoc, smul_smul]
         _ = (a p i * b i j) • (x p * x j) := by
-          rw [mul_comm]
+          exact congrArg (fun c : ℂ => c • (x p * x j))
+            (mul_comm (b i j) (a p i))
     _ = ∑ i : ι, ∑ p : ι, ∑ j : ι,
         (a p i * b i j) • (x p * x j) := by
       apply Finset.sum_congr rfl
@@ -60,7 +61,12 @@ private theorem originalFock_left_tensor_contract
       exact Finset.sum_comm
     _ = ∑ p : ι, ∑ j : ι,
         (a * b) p j • (x p * x j) := by
-      simp only [Matrix.mul_apply, Finset.sum_smul]
+      apply Finset.sum_congr rfl
+      intro p hp
+      apply Finset.sum_congr rfl
+      intro j hj
+      rw [Matrix.mul_apply]
+      exact (Finset.sum_smul).symm
 
 /-- Reindex the SECOND generator covariance; the right matrix is TRANSPOSED. -/
 private theorem originalFock_right_tensor_contract
@@ -78,13 +84,21 @@ private theorem originalFock_right_tensor_contract
       intro i hi
       apply Finset.sum_congr rfl
       intro j hj
-      rw [Finset.mul_sum, Finset.smul_sum]
-      apply Finset.sum_congr rfl
-      intro p hp
       calc
-        b i j • (x i * (a p j • x p)) =
-          (b i j * a p j) • (x i * x p) := by
-            rw [mul_smul_comm, smul_smul]
+        b i j • (x i * (∑ p : ι, a p j • x p)) =
+          b i j • (∑ p : ι, x i * (a p j • x p)) := by
+            rw [Finset.mul_sum]
+        _ = ∑ p : ι, b i j • (x i * (a p j • x p)) := by
+            rw [Finset.smul_sum]
+        _ = ∑ p : ι, (b i j * a p j) • (x i * x p) := by
+            apply Finset.sum_congr rfl
+            intro p hp
+            calc
+              b i j • (x i * (a p j • x p)) =
+                b i j • (a p j • (x i * x p)) := by
+                  rw [mul_smul_comm]
+              _ = (b i j * a p j) • (x i * x p) := by
+                rw [smul_smul]
     _ = ∑ i : ι, ∑ p : ι, ∑ j : ι,
         (b i j * a p j) • (x i * x p) := by
       apply Finset.sum_congr rfl
@@ -92,7 +106,12 @@ private theorem originalFock_right_tensor_contract
       exact Finset.sum_comm
     _ = ∑ i : ι, ∑ p : ι,
         (b * a.transpose) i p • (x i * x p) := by
-      simp only [Matrix.mul_apply, Matrix.transpose_apply, Finset.sum_smul]
+      apply Finset.sum_congr rfl
+      intro i hi
+      apply Finset.sum_congr rfl
+      intro p hp
+      rw [Matrix.mul_apply, Matrix.transpose_apply]
+      exact (Finset.sum_smul).symm
 
 /-- The tensor-square covariance law on the actual original Fock operator
 carrier. The covariance hypothesis is explicit: this gate DOES NOT prove it
@@ -127,7 +146,13 @@ theorem originalFock_quadratic_covariance_tensor
               originalFock_right_tensor_contract x a b]
       _ = ∑ i : ι, ∑ j : ι,
           (a * b + b * a.transpose) i j • (x i * x j) := by
-            simp only [Matrix.add_apply, add_smul, Finset.sum_add_distrib]
+            rw [← Finset.sum_add_distrib]
+            apply Finset.sum_congr rfl
+            intro i hi
+            rw [← Finset.sum_add_distrib]
+            apply Finset.sum_congr rfl
+            intro j hj
+            rw [Matrix.add_apply, add_smul]
   exact congrArg (fun Z : Op => (1 / 4 : ℂ) • Z) hsum
 
 /-- Specialization to skew a; b is still completely arbitrary. -/

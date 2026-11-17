@@ -35,7 +35,7 @@ jobs:
           python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-qtc0b/preflight.log"
           import json,re,hashlib,subprocess,zipfile
           from pathlib import Path
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean":"ab7b1dbf31ad92000184204f14d083400d39bc00","lean/diagnostics/BFSSP3M4QTC0BOriginalFockQuadraticTensorIndependentConsumer.lean":"00755f559de156912d301efd91d944711ae382f6","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean":"b0b519e46566856e100bf6aa882f9fcdf37d397e","lean/diagnostics/BFSSP3M4QTC0AOriginalFockWeightedQuadraticIndependentConsumer.lean":"9d1dc845bea73d8e07549c69d9ef07804509f52e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean":"b4012951a26aa7573db513adab3d7ce27396db7e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean":"9a2899e24c02cb5a5dd58159605a34195fce3856","contributions/bfss-kotler/BFSS_PROJECT_LEAD_EVERGREEN_QUALIFIED_REUSE_LEDGER_2026_11_10.md":"4a8604acb431247694eb0a34bef1086a66e27af7","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean":"6836880557ec917cd14c54f4f3b011f9aa840a74","lean/diagnostics/BFSSP3M4QTC0BOriginalFockQuadraticTensorIndependentConsumer.lean":"00755f559de156912d301efd91d944711ae382f6","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean":"b0b519e46566856e100bf6aa882f9fcdf37d397e","lean/diagnostics/BFSSP3M4QTC0AOriginalFockWeightedQuadraticIndependentConsumer.lean":"9d1dc845bea73d8e07549c69d9ef07804509f52e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean":"b4012951a26aa7573db513adab3d7ce27396db7e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean":"9a2899e24c02cb5a5dd58159605a34195fce3856","contributions/bfss-kotler/BFSS_PROJECT_LEAD_EVERGREEN_QUALIFIED_REUSE_LEDGER_2026_11_10.md":"4a8604acb431247694eb0a34bef1086a66e27af7","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
           for path,want in pins.items():
               got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert got==want,(path,want,got)
@@ -67,6 +67,14 @@ jobs:
           assert last["gate"]=="P3-M4-QTC0A" and last["status"]=="GREEN_QUALIFIED" and last["run_id"]==44001621836
           assert last["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean"]
           assert active["gate"]=="P3-M4-QTC0B" and active["status"]=="PENDING_STRICT_CI" and active["qualification"] is False
+          assert active["attempt"]=="R2"
+          assert active["previous_red_run"]==44012367725
+          assert active["prior_red_artifact_id"]==14296824993
+          assert active["prior_red_artifact_sha256"]=="a50bc06b6f5ac03c15be16de7b943910ca55bc3a7960f40829c1049e8402c5c1"
+          assert active["prior_red_archive_blob"]=="671be94ee31c954b8f8b276de7b8ede9359aa617"
+          assert hashlib.sha256(Path(active["prior_red_archive"]).read_bytes()).hexdigest()==active["prior_red_artifact_sha256"]
+          assert "BFSS_M4_QTC0B_R2_PRE_GATE_TYPED_SCALAR_AND_SUM_REPAIR_2026_11_16.md" in active["prospective_receipt"]
+          assert Path(active["prospective_receipt"]).is_file()
           assert active["accepted_predecessor_run"]==44001621836
           assert active["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean"] and active["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4QTC0BOriginalFockQuadraticTensorIndependentConsumer.lean"]
           assert active["allowed_axioms"]==["propext","Classical.choice","Quot.sound"]
@@ -77,7 +85,7 @@ jobs:
           with zipfile.ZipFile(archive) as z:
               assert z.testzip() is None
               assert z.read("tested-commit.txt").decode().strip()==last["tested_sha"]
-          print("BFSS_M4_QTC0B_SOURCE_CONSUMER_ACCEPTED_QTC0A_STOP_AND_TOOLCHAIN_PREFLIGHT_PASS")
+          print("BFSS_M4_QTC0B_R2_ACCEPTED_QTC0A_ORIGINAL_R1_RED_AND_TYPED_SUM_REPAIR_PREFLIGHT_PASS")
           PY
       - name: Restore pinned Lean and Mathlib
         shell: bash

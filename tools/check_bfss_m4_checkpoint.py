@@ -391,7 +391,11 @@ def check_checkpoint(root: Path, s: dict):
         require(s['last_qualified']['gate'] == 'P3-M4-QTC0A'
                 and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
                 and s['last_qualified']['run_id'] == 44001621836
-                and a.get('attempt') == 'R1'
+                and (a.get('attempt') == 'R1' or
+                     (a.get('attempt') == 'R2'
+                      and a.get('previous_red_run') == 44012367725
+                      and a.get('prior_red_artifact_id') == 14296824993
+                      and a.get('prior_red_artifact_sha256') == 'a50bc06b6f5ac03c15be16de7b943910ca55bc3a7960f40829c1049e8402c5c1'))
                 and a.get('first_atom') == 'GENERIC_QUADRATIC_TENSOR_COEFFICIENT_REINDEXING'
                 and a.get('accepted_predecessor_run') == 44001621836
                 and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
@@ -409,6 +413,23 @@ def check_checkpoint(root: Path, s: dict):
                 and hashlib.sha256((root/prior['evidence_archive']).read_bytes()).hexdigest()
                      == prior['artifact_sha256'],
                 'QTC0B may not lose prior original provider ZIP or accepted source')
+        if a.get('attempt') == 'R2':
+            old = s.get('previous_active_QTC0B_R1_RED', {})
+            require(old.get('status') == 'RED_UNQUALIFIED'
+                    and old.get('qualification') is False
+                    and old.get('run_id') == 44012367725
+                    and old.get('tested_sha') == '7fbb73ee8b3f46d1a1d657c18c797d26ea2cc5c0'
+                    and old.get('source_blob') == 'ab7b1dbf31ad92000184204f14d083400d39bc00'
+                    and old.get('consumer_blob') == a.get('consumer_blob')
+                    and old.get('artifact_sha256') == 'a50bc06b6f5ac03c15be16de7b943910ca55bc3a7960f40829c1049e8402c5c1'
+                    and old.get('evidence_archive_blob') == blob(root/old['evidence_archive'])
+                    and hashlib.sha256((root/old['evidence_archive']).read_bytes()).hexdigest() == old['artifact_sha256']
+                    and old.get('evidence_job_log_blob') == blob(root/old['evidence_job_log'])
+                    and '44012367725' in (root/old['receipt']).read_text()
+                    and a.get('prior_red_artifact_sha256') == old['artifact_sha256']
+                    and a.get('prior_red_archive_blob') == old['evidence_archive_blob']
+                    and a.get('prior_red_job_log_blob') == old['evidence_job_log_blob'],
+                    'QTC0B R2 must preserve original provider ZIP, whole R1 RED and first causal')
         stopped = s.get('previous_active_CT1G0_R2_stopped',{})
         require(stopped.get('status') == 'RED_UNQUALIFIED'
                 and stopped.get('stopped') is True
