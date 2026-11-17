@@ -1901,6 +1901,100 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0B1 full Clifford-induction theorem must remain prospective')
+    if a['gate'] == 'P3-M4-W0B1' and a.get('attempt') == 'R2' and a['status'] == 'RED_UNQUALIFIED':
+        import zipfile
+        require(a.get('stopped') is True
+                and a.get('stop_reason') == 'TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP'
+                and a.get('qualification') is False and a.get('verdict') == 'RED'
+                and a.get('strict_outcome') == 'failure'
+                and a.get('run_id') == 44127193329
+                and a.get('job_id') == 134194094284
+                and a.get('tested_sha') == '4ec854fb464abdc2f5af5bcd4206531b8102e28e'
+                and a.get('artifact_id') == 14347939975
+                and a.get('artifact_sha256') == 'bfadd329f067ca9e7926b245e0ed9b2989e7b4594eb9868eb401e5cf985b87a2'
+                and a.get('source_blob') == '93244f15ae511cd4abbac13e216eed6b1988c009'
+                and a.get('consumer_blob') == '9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a'
+                and a.get('workflow_blob') == '1f43a7d9ac86d42457020730a53d59eb5db48f41'
+                and a.get('previous_red_run') == 44117272657
+                and a.get('evidence_archive_blob') == '813b3325da4f721afc0bb313a710410eb40a3bcf'
+                and a.get('evidence_job_log_blob') == '918c09a60ef1e99a9f8e1d56f380353719cb1fdc'
+                and a.get('evidence_manifest_blob') == '9a4991d9ce4aeda01ad08684f436d5b9a88bbd48'
+                and a.get('preservation_run') == 44132100611
+                and s['last_qualified']['gate'] == 'P3-M4-W0B0'
+                and s['last_qualified']['run_id'] == 44109519633
+                and s['accepted_anchors'][-1] == s['last_qualified'],
+                'W0B1 R2 second source RED must be STOPPED with exact qualified donor')
+        r1=s.get('previous_active_W0B1_R1_RED',{})
+        require(r1.get('gate') == 'P3-M4-W0B1'
+                and r1.get('attempt') == 'R1'
+                and r1.get('run_id') == 44117272657
+                and r1.get('status') == 'RED_UNQUALIFIED'
+                and r1.get('source_blob') == '6c9cae683665fb6cda2a6e8ff10d388f6a268a05'
+                and r1.get('consumer_blob') == '9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a'
+                and r1.get('evidence_archive_blob') == 'a448d2ae775926ee05ab4a9028e29e8061fecdac'
+                and r1.get('evidence_job_log_blob') == '7e8310126b2e5af543ec1f7274ce5467dbc59552'
+                and r1.get('evidence_manifest_blob') == 'a78963305bb75e7ab154f8c40a0c8d5ab7299f29',
+                'W0B1 R1 native source RED evidence altered or erased')
+        for red in (r1,a):
+            require(blob(root/red['evidence_archive']) == red['evidence_archive_blob']
+                    and blob(root/red['evidence_job_log']) == red['evidence_job_log_blob']
+                    and blob(root/red['evidence_manifest']) == red['evidence_manifest_blob'],
+                    'W0B1 provider-original RED ZIP, job log or manifest drift')
+            m=json.loads((root/red['evidence_manifest']).read_text())
+            raw=(root/red['evidence_archive']).read_bytes()
+            require(m['status'] == 'RED_UNQUALIFIED'
+                    and m['run_id'] == red['run_id']
+                    and m['job_id'] == red['job_id']
+                    and m['tested_sha'] == red['tested_sha']
+                    and m['original_zip']['sha256'] == red['artifact_sha256']
+                    and m['original_zip']['size'] == len(raw)
+                    and hashlib.sha256(raw).hexdigest() == red['artifact_sha256'],
+                    'W0B1 original provider RED SHA or run manifest mismatch')
+            with zipfile.ZipFile(root/red['evidence_archive']) as z:
+                require(z.testzip() is None
+                        and set(z.namelist()) == {'cold-source.log','preflight.log','tested-commit.txt'}
+                        and z.read('tested-commit.txt').decode().strip() == red['tested_sha']
+                        and 'sorryAx' in z.read('cold-source.log').decode(),
+                        'W0B1 original source RED ZIP member mismatch')
+                for member in m['original_zip']['members']:
+                    data=z.read(member['name'])
+                    require(len(data) == member['size']
+                            and hashlib.sha256(data).hexdigest() == member['sha256'],
+                            'W0B1 original ZIP member checksum mismatch')
+        with zipfile.ZipFile(root/r1['evidence_archive']) as z:
+            require('Unknown identifier' in z.read('cold-source.log').decode()
+                    and 'map_algebraMap' in z.read('cold-source.log').decode(),
+                    'W0B1 R1 first native scalar failure missing')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            cold=z.read('cold-source.log').decode()
+            require('P3M4W0B1OriginalFullCliffordCommutantInduction.lean:43:6' in cold
+                    and 'Type mismatch: After simplification' in cold
+                    and 'FockOp' in cold and 'build failed' in cold,
+                    'W0B1 R2 second scalar mismatch source RED missing')
+        job=(root/a['evidence_job_log']).read_text()
+        require('Type mismatch: After simplification' in job
+                and 'sorryAx' in job and 'error: build failed' in job,
+                'W0B1 R2 full native RED job log missing')
+        source=(root/a['source']).read_text()
+        original=source.replace('AlgEquiv.commutes','map_algebraMap')
+        require(source.count('AlgEquiv.commutes') == 1
+                and hashlib.sha1(b'blob '+str(len(original.encode())).encode()+b'\x00'+original.encode()).hexdigest()
+                    == r1['source_blob'],
+                'W0B1 R2 source must be original R1 with exactly one lemma substitution')
+        require(a.get('source_reports') == 0 and a.get('consumer_reports') == 0
+                and a.get('failure_phase') == 'COLD_ORIGINAL_LEAN_SOURCE'
+                and a.get('accepted_predecessor_run') == 44109519633
+                and str(a['run_id']) in (root/a['receipt']).read_text(),
+                'W0B1 STOP incorrectly qualified source or independent consumer')
+        nxt=s['next_planned']
+        require(nxt.get('gate') == 'P3-M4-W0G0'
+                and nxt.get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False
+                and (root/'research/quantum-information/BFSS_QIT_SCC_W0G0_SCALAR_ACTION_ADAPTER_FORWARD_2026_11_17.md').is_file(),
+                'W0G0 generic scalar action research must remain prospective after stop')
+
     if a['gate'] == 'P3-M4-W0B1' and a['status'] == 'PENDING_STRICT_CI':
         import zipfile
         require(a.get('attempt') == 'R2'
