@@ -1,0 +1,60 @@
+name: BFSS CT1G0 R2 original RED artifact preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths: [.github/workflows/bfss-ct1g0-r2-red-evidence-preservation.yml]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  independently-rehash-original-red:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Independently verify and expose original R2 diagnostic ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os,json,urllib.request,urllib.error,hashlib,base64,zipfile,io
+          aid=14288643341
+          run=43991790285
+          sha="f6b651c8b60afbb5821c4439111babd4278b4f9a"
+          digest="a4611075b4eb0ce42f010e2530e1b2d351c5adc3eee43a3709c091b296a2efe8"
+          api="https://api.github.com/repos/etblink/math/actions/artifacts/"+str(aid)
+          h={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}
+          with urllib.request.urlopen(urllib.request.Request(api,headers=h),timeout=60) as r: m=json.load(r)
+          assert m["id"]==aid and m["size_in_bytes"]==17642
+          assert m["workflow_run"]["id"]==run and m["workflow_run"]["head_sha"]==sha
+          assert m["digest"]=="sha256:"+digest
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self,req,fp,code,msg,hdrs,newurl): return None
+          try:
+            r=urllib.request.build_opener(NoRedirect).open(urllib.request.Request(api+"/zip",headers=h),timeout=60)
+          except urllib.error.HTTPError as ex:
+            assert ex.code==302
+            signed=ex.headers["Location"]
+            assert signed.startswith("https://")
+            with urllib.request.urlopen(signed,timeout=60) as r: data=r.read()
+          else:
+            with r: data=r.read()
+          assert len(data)==17642 and hashlib.sha256(data).hexdigest()==digest
+          with zipfile.ZipFile(io.BytesIO(data)) as z:
+            assert z.testzip() is None
+            assert set(z.namelist())=={"tested-commit.txt","preflight.log","cold-source.log"}
+            assert z.read("tested-commit.txt").decode().strip()==sha
+            assert "BFSS_M4_CT1G0_EXACT_ORIGINAL_FOCK_DONORS_CONSUMER_TOOLCHAIN_CHECKPOINT_PREFLIGHT_PASS" in z.read("preflight.log").decode()
+            cold=z.read("cold-source.log").decode()
+            assert "P3M4CT1G0OriginalFockJacobiSource48Adapter.lean:79:8: maximum recursion depth has been reached" in cold
+            assert "Build completed successfully" not in cold
+            assert "originalFock_commutator_jacobi' depends on axioms: [propext" in cold
+            assert "originalFock_commutator_sub' depends on axioms: [propext" in cold
+            assert "sorryAx" in cold and "originalSource48K_commutator_jacobi' depends on axioms: [propext" in cold
+            entries=[{"name":n,"size":len(z.read(n)),"sha256":hashlib.sha256(z.read(n)).hexdigest()} for n in z.namelist()]
+          print("BFSS_CT1G0_R2_ORIGINAL_RED_ZIP_REHASH_PASS "+json.dumps({"artifact_id":aid,"run":run,"tested_sha":sha,"bytes":len(data),"sha256":digest,"entries":entries,"first_error_line":79,"phase":"COLD_NATIVE_SOURCE","claim":"RED_UNQUALIFIED"},sort_keys=True))
+          print("BFSS_CT1G0_R2_ORIGINAL_RED_ZIP_BASE64 "+base64.b64encode(data).decode())
+          PY
