@@ -108,7 +108,8 @@ def check_checkpoint(root: Path, s: dict):
                     and blob(root/a['evidence_job_log']) == a['evidence_job_log_blob'],
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
-        expected_reports = 3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C'} else 2
+        expected_reports = (1 if a['gate'] == 'P3-M4-QTC1G0' else
+                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C'} else 2)
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
                 'incomplete strict qualification')
@@ -1011,6 +1012,79 @@ def check_checkpoint(root: Path, s: dict):
                 and not s['next_planned'].get('consumer_staged')
                 and not s['next_planned'].get('workflow_staged'),
                 'QTC2 source K covariance/bracket may not be pre-qualified')
+    if a['gate'] == 'P3-M4-QTC1G0':
+        require(s['last_qualified']['gate'] ==
+                    ('P3-M4-QTC1G0' if a['status'] == 'GREEN_QUALIFIED' else 'P3-M4-QTC0D')
+                and s['last_qualified']['run_id'] ==
+                    (a['run_id'] if a['status'] == 'GREEN_QUALIFIED' else 44018395393)
+                and a['attempt'] == 'R1'
+                and a['accepted_predecessor_run'] == 44018395393
+                and a['first_atom'] ==
+                    'ORIGINAL_FOCK_GENERIC_REAL_COMPLEX_ONE_QUARTER_ONLY_NO_SOURCE48_JOIN'
+                and a['expected_source_reports'] == a['expected_consumer_reports'] == 1
+                and a['independent_controls'] == 7
+                and a['allowed_axioms'] == ['propext','Classical.choice','Quot.sound']
+                and a['stopped_QTC1_R2'] == 44022359538
+                and a['stopped_QTC1_R1'] == 44020471704,
+                'QTC1G0 separate one-root mathematical donor or frozen history changed')
+        prior=s.get('previous_active_QTC1_R2_stopped',{})
+        require(prior.get('gate') == 'P3-M4-QTC1'
+                and prior.get('attempt') == 'R2'
+                and prior.get('status') == 'RED_UNQUALIFIED'
+                and prior.get('qualification') is False
+                and prior.get('stopped') is True
+                and prior.get('stop_reason') ==
+                    'TWO_ANALOGOUS_SOURCE48_DEFINITIONAL_JOIN_RECURSION_REDS'
+                and prior.get('run_id') == a['stopped_QTC1_R2']
+                and prior.get('artifact_sha256') ==
+                    a['stopped_QTC1_R2_original_artifact_sha256']
+                == '8ed71c1a193032813804829c975e35f5fce8f666609c344d142601aabe05a6ff'
+                and prior.get('evidence_archive_blob') == blob(root/prior['evidence_archive'])
+                and hashlib.sha256((root/prior['evidence_archive']).read_bytes()).hexdigest()
+                    == prior['artifact_sha256']
+                and prior.get('evidence_job_log_blob') == blob(root/prior['evidence_job_log'])
+                and prior.get('evidence_manifest_blob') == blob(root/prior['evidence_manifest'])
+                and '44022359538' in (root/prior['receipt']).read_text(),
+                'QTC1G0 cannot forget the original R2 failed source or two-RED architecture stop')
+        red1=s.get('previous_active_QTC1_R1_RED',{})
+        require(red1.get('gate') == 'P3-M4-QTC1'
+                and red1.get('status') == 'RED_UNQUALIFIED'
+                and red1.get('run_id') == a['stopped_QTC1_R1']
+                and red1.get('artifact_sha256') ==
+                    '4effa4881bb7d33f5397873db92bfa4279e351dbda9d1991062356fe1ed73bd8'
+                and red1.get('evidence_archive_blob') == blob(root/red1['evidence_archive'])
+                and red1.get('evidence_job_log_blob') == blob(root/red1['evidence_job_log']),
+                'QTC1G0 cannot forget first source-specialization RED')
+        qtc0d = next((x for x in s['accepted_anchors'] if x.get('gate') == 'P3-M4-QTC0D'),{})
+        require(qtc0d.get('run_id') == 44018395393
+                and qtc0d.get('source_blob') == 'e52b8ca7a440e04ab3c3a93187e5100daa39e074'
+                and qtc0d.get('evidence_archive_blob') == blob(root/qtc0d['evidence_archive']),
+                'QTC1G0 cannot erase accepted native original Fock QTC0D')
+        donor=root/'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean'
+        require(a.get('real_smul_donor_blob') == blob(donor)
+                == 'd7d460fc8d2806234816e8bd2088f9cebb6addd4',
+                'QTC1G0 real smul source donor drift')
+        source=(root/a['source']).read_text()
+        consumer=(root/a['consumer']).read_text()
+        require(source.startswith('import Mathlib.Tactic\n')
+                and len(re.findall(r'(?m)^import ',source)) == 2
+                and 'Fermion 2 →L[ℂ] Fermion 2' in source
+                and 'originalFockOperator_real_smul_eq_complex_smul' in source
+                and 'push_cast' in source
+                and '(B p q / 4 : ℝ)' in source
+                and '(1 / 4 : ℂ)' in source
+                and 'sourceNormalizedGamma' not in source
+                and 'originalSource48BivectorK' not in source
+                and len(re.findall(r'(?m)^theorem\s+',source)) == 1
+                and len(re.findall(r'(?m)^theorem\s+',consumer)) == 1
+                and len(re.findall(r'(?m)^example\b',consumer)) == 7,
+                'QTC1G0 must stay source-independent and preserve seven controls')
+        require(s.get('next_planned',{}).get('gate') == 'P3-M4-QTC1G1'
+                and s['next_planned'].get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and not s['next_planned'].get('source_staged')
+                and not s['next_planned'].get('consumer_staged')
+                and not s['next_planned'].get('workflow_staged'),
+                'QTC1G1 specialized adapter must remain prospective')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
