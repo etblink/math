@@ -1,0 +1,109 @@
+name: BFSS W0A1 R1 original GREEN artifact exact Git pinning
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-m4-w0a1-r1-green-evidence-pinning.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  pin-original-artifact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout exact unified branch for bounded artifact-only commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Recheck frozen original Lean source and prior qualified checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A1OriginalRealLinearGammaTransport.lean)" = "18330e00cc1917ffa97833c9cf7bcfcb35afefdd"
+          test "$(git rev-parse HEAD:lean/diagnostics/BFSSP3M4W0A1OriginalRealLinearGammaIndependentConsumer.lean)" = "9fd63b7cc0cd85b3cb10bb2b7b3d41b4b27a43ba"
+          python3 - <<'PY'
+          import json
+          s=json.load(open("BFSS_GATE_STATE.json"))
+          assert s["active"]["gate"]=="P3-M4-W0A1"
+          assert s["active"]["attempt"]=="R1" and s["active"]["status"]=="PENDING_STRICT_CI" and not s["active"]["qualification"]
+          assert s["last_qualified"]["gate"]=="P3-M4-W0A0" and s["last_qualified"]["run_id"]==44039594189
+          PY
+      - name: Independently download GitHub provider-original ZIP and audit source plus consumer roots
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os,json,urllib.request,urllib.error,hashlib,zipfile,io,re
+          from pathlib import Path
+          artifact=14311446591
+          run=44043503665
+          tested="cca989b7ab1e6ce836231c70bb7e6eabd9a4cceb"
+          digest="e5af3d64296888ea824482fca8f74261e8d12c3ecac5a7cb36d579c92d2f08d5"
+          size=13833
+          url="https://api.github.com/repos/etblink/math/actions/artifacts/"+str(artifact)
+          headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}
+          with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as r: meta=json.load(r)
+          assert meta["id"]==artifact and meta["size_in_bytes"]==size and meta["digest"]=="sha256:"+digest
+          assert meta["workflow_run"]["id"]==run and meta["workflow_run"]["head_sha"]==tested
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,hdrs,newurl):return None
+          try:
+              resp=urllib.request.build_opener(NoRedirect).open(urllib.request.Request(url+"/zip",headers=headers),timeout=60)
+          except urllib.error.HTTPError as e:
+              assert e.code==302,e
+              signed=e.headers["Location"]
+              assert signed.startswith("https://")
+              with urllib.request.urlopen(signed,timeout=90) as resp: raw=resp.read()
+          else:
+              with resp: raw=resp.read()
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          allowed={"propext","Classical.choice","Quot.sound"}
+          pattern=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          expected={
+             "source-axioms.log":{"originalNormalized_allSourceLabel_eq_activeGamma","originalFockGammaRealLinear_eq_sourceGammaRealLinear"},
+             "consumer.log":{"originalNormalized_allSourceLabel_consumer","originalFockGammaRealLinear_consumer"}
+          }
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None
+              assert set(z.namelist())=={"auditor.log","consumer.log","cold-source.log","preflight.log","source-axioms.log","tested-commit.txt"}
+              assert z.read("tested-commit.txt").decode().strip()==tested
+              assert "BFSS_W0A1_EXACT_ORIGINAL_REAL_LINEAR_W0A0_GREEN_R1_RED_DONORS_PREFLIGHT_PASS" in z.read("preflight.log").decode()
+              cold=z.read("cold-source.log").decode()
+              assert "Build completed successfully (9125 jobs)." in cold and "error:" not in cold and "sorryAx" not in cold
+              assert "BFSS_W0A1_ORIGINAL_REAL_LINEAR_2_SOURCE_2_CONSUMER_3_CONTROLS_STRICT_GREEN" in z.read("auditor.log").decode()
+              for name,roots in expected.items():
+                  report=z.read(name).decode()
+                  assert "error:" not in report and "sorryAx" not in report
+                  found=pattern.findall(report)
+                  assert len(found)==2 and {f.rsplit(".",1)[-1] for f,_ in found}==roots
+                  for _,axioms in found:
+                      assert {a.strip() for a in axioms.split(",") if a.strip()}<=allowed
+              print("BFSS_W0A1_ORIGINAL_GREEN_ZIP_REHASH_PASS",json.dumps({
+                 "artifact":artifact,"run":run,"sha":tested,"size":size,"sha256":digest,
+                 "members":[{"name":n,"size":len(z.read(n)),"sha256":hashlib.sha256(z.read(n)).hexdigest()} for n in z.namelist()],
+                 "source_roots":2,"consumer_roots":2,"cold_jobs":9125
+              },sort_keys=True))
+          path=Path("research/quantum-information/diagnostics/BFSS_M4_W0A1_R1_44043503665_evidence.zip")
+          assert not path.exists()
+          path.parent.mkdir(parents=True,exist_ok=True)
+          path.write_bytes(raw)
+          PY
+      - name: Push only exact 13833-byte artifact onto the same integration branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          path="research/quantum-information/diagnostics/BFSS_M4_W0A1_R1_44043503665_evidence.zip"
+          git add -- "$path"
+          test "$(git diff --cached --name-only)" = "$path"
+          test "$(wc -c < "$path" | tr -d ' ')" = 13833
+          git commit -m "BFSS W0A1: preserve byte-identical original strict GREEN CI ZIP"
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
