@@ -1,0 +1,53 @@
+{
+  "gate": "P3-M4-QTC0B",
+  "attempt": "R2",
+  "outcome": "RED_UNQUALIFIED",
+  "scope": "Original Fock tensor contraction",
+  "original_run": 44014529416,
+  "original_job": 133809148410,
+  "original_tested_sha": "7bef2507e243824b0b8bcba9893d292c8d93fc88",
+  "original_artifact_id": 14297929785,
+  "original_artifact_name": "bfss-m4-qtc0b-7bef2507e243824b0b8bcba9893d292c8d93fc88-1",
+  "original_artifact_sha256": "f7fa7726865600cab92e1270b558dcc856ad0cfc28318f2bb7d95e74b7ab8dbb",
+  "original_evidence_git_blob": "485d47d68a5425a79d720248a4b64b972da619ab",
+  "zip_size_bytes": 3984,
+  "zip_integrity": "PASS",
+  "zip_entries": {
+    "preflight.log": "e45d7104e552c64d5919ddfbe9dfb0ac0a056b76afbe93e87f7af251fc375bd2",
+    "tested-commit.txt": "66d0c36c456f6592f709777baa66060db942a7ccc881e90addc1b6f08d83d488",
+    "cold-source.log": "36551709c3cb2ae162571e225ac401a328a289f1400aa3296f931c42cc05e420"
+  },
+  "full_job_log_git_blob": "6290b76858d5e736b04af723532d94fec6b3e532",
+  "toolchain": "Lean 4.34.1, Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "preflight": "PASS",
+  "toolchain_restore": "PASS",
+  "accepted_QTC0A_source": "PASS",
+  "cold_native_source": "RED",
+  "consumer": "NOT_EXECUTED",
+  "failures": [
+    {
+      "file": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean",
+      "line": 113,
+      "column": 28,
+      "kind": "rewrite_no_transpose_occurrence",
+      "message": "Matrix.transpose rewrite does not match under the presented ordered coefficient expression"
+    },
+    {
+      "file": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean",
+      "line": 155,
+      "column": 34,
+      "kind": "rewrite_no_add_smul_occurrence",
+      "message": "add_smul rewrite does not match the presented ordered scalar-addition goal"
+    }
+  ],
+  "source_axioms": "sorryAx_PRESENT_FROM_UNRESOLVED_GOALS",
+  "source_blob": "6836880557ec917cd14c54f4f3b011f9aa840a74",
+  "consumer_blob": "00755f559de156912d301efd91d944711ae382f6",
+  "workflow_blob": "59880991d90f1e8b6f7c387f34133cc04c31f7c4",
+  "previous_R1_run": 44012367725,
+  "previous_R1_zip_sha256": "a50bc06b6f5ac03c15be16de7b943910ca55bc3a7960f40829c1049e8402c5c1",
+  "accepted_predecessor_QTC0A": 44001621836,
+  "classification": "PROOF_ELABORATION_RED_NOT_MATHEMATICAL_COUNTEREXAMPLE",
+  "decision": "ARCHITECTURE_STOP_ON_ORIGINAL_FOCK_DIRECT_REWRITE_R1_R2; NO_IDENTICAL_R3",
+  "next_research": "QTC0C generic finite-sum coefficient module separated from Fock algebra; prospective only"
+}

@@ -430,12 +430,74 @@ def check_checkpoint(root: Path, s: dict):
                     and a.get('prior_red_archive_blob') == old['evidence_archive_blob']
                     and a.get('prior_red_job_log_blob') == old['evidence_job_log_blob'],
                     'QTC0B R2 must preserve original provider ZIP, whole R1 RED and first causal')
+        if a.get('stopped') is True:
+            import zipfile
+            require(a.get('attempt') == 'R2'
+                    and a.get('status') == 'RED_UNQUALIFIED'
+                    and a.get('qualification') is False
+                    and a.get('stop_reason') == 'TWO_ANALOGOUS_NATIVE_DIRECT_FOCK_REWRITE_ELABORATION_FAILURES'
+                    and a.get('run_id') == 44014529416
+                    and a.get('job_id') == 133809148410
+                    and a.get('tested_sha') == '7bef2507e243824b0b8bcba9893d292c8d93fc88'
+                    and a.get('source_blob') == '6836880557ec917cd14c54f4f3b011f9aa840a74'
+                    and a.get('consumer_blob') == '00755f559de156912d301efd91d944711ae382f6'
+                    and a.get('workflow_blob') == '59880991d90f1e8b6f7c387f34133cc04c31f7c4'
+                    and a.get('artifact_id') == 14297929785
+                    and a.get('artifact_sha256') == 'f7fa7726865600cab92e1270b558dcc856ad0cfc28318f2bb7d95e74b7ab8dbb'
+                    and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
+                    == '485d47d68a5425a79d720248a4b64b972da619ab'
+                    and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
+                    == '6290b76858d5e736b04af723532d94fec6b3e532'
+                    and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
+                    == '9b99cc5346defa99307cd6dd6fe5b11430473892'
+                    and a.get('source_reports') == a.get('consumer_reports') == 0
+                    and a.get('independent_consumer_executed') is False
+                    and '44014529416' in (root/a['receipt']).read_text()
+                    and '44012367725' in (root/a['architecture_review']).read_text(),
+                    'QTC0B R2 two-red stop/bytes, proof scope or exact provider ZIP changed')
+            require(s.get('previous_active_QTC0B_R2_stopped') == a
+                    and s.get('previous_active_QTC0B_R2_pending',{}).get('attempt') == 'R2',
+                    'QTC0B R2 pending state or stopped acceptance lost')
+            manifest = json.loads((root/a['evidence_manifest']).read_text())
+            require(manifest.get('original_run') == a['run_id']
+                    and manifest.get('original_job') == a['job_id']
+                    and manifest.get('original_tested_sha') == a['tested_sha']
+                    and manifest.get('original_artifact_sha256') == a['artifact_sha256']
+                    and manifest.get('original_evidence_git_blob') == a['evidence_archive_blob']
+                    and manifest.get('full_job_log_git_blob') == a['evidence_job_log_blob']
+                    and manifest.get('zip_size_bytes') == 3984
+                    and manifest.get('source_axioms') == 'sorryAx_PRESENT_FROM_UNRESOLVED_GOALS',
+                    'QTC0B R2 original artifact manifest does not match accepted red')
+            with zipfile.ZipFile(root/a['evidence_archive']) as z:
+                members = {'preflight.log', 'tested-commit.txt', 'cold-source.log'}
+                require(z.testzip() is None and set(z.namelist()) == members
+                        and set(manifest['zip_entries']) == members,
+                        'QTC0B R2 original ZIP corrupted or incomplete')
+                for filename, expected in manifest['zip_entries'].items():
+                    require(hashlib.sha256(z.read(filename)).hexdigest() == expected,
+                            'QTC0B R2 original member drift: '+filename)
+                require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                        and 'BFSS_M4_QTC0B_R2_ACCEPTED_QTC0A_ORIGINAL_R1_RED_AND_TYPED_SUM_REPAIR_PREFLIGHT_PASS'
+                        in z.read('preflight.log').decode()
+                        and 'P3M4QTC0BOriginalFockQuadraticTensorContraction.lean:113:28'
+                        in z.read('cold-source.log').decode()
+                        and 'P3M4QTC0BOriginalFockQuadraticTensorContraction.lean:155:34'
+                        in z.read('cold-source.log').decode(),
+                        'QTC0B R2 first and second error or original preflight not preserved')
+            full_log = (root/a['evidence_job_log']).read_text()
+            require('sorryAx' in full_log
+                    and 'error: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean:113:28'
+                    in full_log
+                    and 'error: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean:155:34'
+                    in full_log,
+                    'QTC0B R2 complete job log lacks two errors or sorryAx')
         stopped = s.get('previous_active_CT1G0_R2_stopped',{})
         require(stopped.get('status') == 'RED_UNQUALIFIED'
                 and stopped.get('stopped') is True
                 and stopped.get('run_id') == 43991790285,
                 'QTC0B cannot evade stopped original native CT1 route')
-        require(s.get('next_planned',{}).get('gate') == 'P3-M4-QTC1'
+        require(s.get('next_planned',{}).get('gate') ==
+                    ('P3-M4-QTC0C' if a.get('stopped') is True else 'P3-M4-QTC1')
                 and s['next_planned'].get('status') == 'PROSPECTIVE_NOT_STAGED'
                 and not s['next_planned'].get('source_staged')
                 and not s['next_planned'].get('consumer_staged')
