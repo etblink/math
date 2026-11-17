@@ -772,6 +772,62 @@ def check_checkpoint(root: Path, s: dict):
                 and not s['next_planned'].get('consumer_staged')
                 and not s['next_planned'].get('workflow_staged'),
                 'QTC1 real-source normalization must remain prospective')
+    if a['gate'] == 'P3-M4-QTC1':
+        require(s['last_qualified']['gate'] == 'P3-M4-QTC0D'
+                and s['last_qualified']['run_id'] == 44018395393
+                and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
+                and a.get('attempt') == 'R1'
+                and a.get('first_atom') ==
+                    'ORIGINAL_REAL_TO_COMPLEX_K_QUARTER_COEFFICIENT_NORMALIZATION'
+                and a.get('accepted_predecessor_run') == 44018395393
+                and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
+                and a.get('independent_controls') == 7
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound'],
+                'QTC1 source real/complex quarter contract or accepted QTC0D drift')
+        previous = s.get('previous_active_QTC0D_R1_qualified',{})
+        require(previous.get('gate') == 'P3-M4-QTC0D'
+                and previous.get('status') == 'GREEN_QUALIFIED'
+                and previous.get('run_id') == 44018395393
+                and previous.get('source_blob') == 'e52b8ca7a440e04ab3c3a93187e5100daa39e074'
+                and previous.get('consumer_blob') == 'e6745b9f77fb8b1fbea58f4bb6055826320f342f'
+                and previous.get('artifact_sha256') == '7b19d5dc6d02f14c9ae831382b4d2f8c42d20d5a0ab4ad585d8e8858e9b1a54f'
+                and previous.get('evidence_archive_blob') == blob(root/previous['evidence_archive'])
+                and hashlib.sha256((root/previous['evidence_archive']).read_bytes()).hexdigest() == previous['artifact_sha256']
+                and previous.get('evidence_job_log_blob') == blob(root/previous['evidence_job_log']),
+                'QTC1 may not erase accepted QTC0D original provider artifact or consumer')
+        stopped = s.get('previous_active_QTC0B_R2_stopped',{})
+        require(stopped.get('stopped') is True
+                and stopped.get('run_id') == a.get('prior_stopped_QTC0B_R2') == 44014529416
+                and stopped.get('evidence_archive_blob') == blob(root/stopped['evidence_archive'])
+                and stopped.get('evidence_job_log_blob') == blob(root/stopped['evidence_job_log']),
+                'QTC1 cannot evade previous stopped direct-Fock QTC0B')
+        donor = root/'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/'
+        require(a.get('real_source_donor_blob') == blob(donor/'P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean')
+                == 'd7d460fc8d2806234816e8bd2088f9cebb6addd4'
+                and a.get('real_source_gamma_blob') == blob(donor/'SU2BFSSSource48NormalizedFockGammaProbe.lean')
+                == '7abc03723b3111e4a03389b722054e50d6a9bf30'
+                and a.get('real_source_K_covariance_donor_blob') == blob(donor/'P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean')
+                == 'c2e7a7c665121283cde13ae5dabc183362b6b420',
+                'QTC1 exact original Source48 K/gamma/covariance donors changed')
+        source=(root/a['source']).read_text()
+        consumer=(root/a['consumer']).read_text()
+        require('Fermion 2 →L[ℂ] Fermion 2' in source
+                and 'originalFockOperator_real_smul_eq_complex_smul' in source
+                and 'originalSource48BivectorK' in source
+                and 'sourceNormalizedGamma' in source
+                and '(B p q / 4 : ℝ)' in source
+                and '(1 / 4 : ℂ)' in source
+                and 'exact_mod_cast hr' in source
+                and len(re.findall(r'(?m)^theorem\s+',source)) == 2
+                and len(re.findall(r'(?m)^theorem\s+',consumer)) == 2
+                and len(re.findall(r'(?m)^example\b',consumer)) == 7,
+                'QTC1 not bounded to generic real scalar normalization and original K')
+        require(s.get('next_planned',{}).get('gate') == 'P3-M4-QTC2'
+                and s['next_planned'].get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and not s['next_planned'].get('source_staged')
+                and not s['next_planned'].get('consumer_staged')
+                and not s['next_planned'].get('workflow_staged'),
+                'QTC2 source K covariance/bracket may not be pre-qualified')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
