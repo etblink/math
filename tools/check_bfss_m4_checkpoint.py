@@ -3270,10 +3270,10 @@ def check_checkpoint(root: Path, s: dict):
             require(blob(root/path)==sha,'W0B2A exact original M3 donor source drift')
         src=(root/a['source']).read_text()
         cons=(root/a['consumer']).read_text()
-        require(len(re.findall(r'(?m)^theorem\\b',src))==2
-                and len(re.findall(r'(?m)^noncomputable def\\b',src))==1
-                and len(re.findall(r'(?m)^theorem\\b',cons))==3
-                and len(re.findall(r'(?m)^example\\b',cons))==3
+        require(len(re.findall(r'(?m)^theorem\b',src))==2
+                and len(re.findall(r'(?m)^noncomputable def\b',src))==1
+                and len(re.findall(r'(?m)^theorem\b',cons))==3
+                and len(re.findall(r'(?m)^example\b',cons))==3
                 and 'originalComplexEquiv_fullClifford_commutes T h a' in src
                 and 'Module.End A V' in src
                 and 'originalComplexCliffordFock_scalarCommutant' not in src
