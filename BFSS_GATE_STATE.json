@@ -672,7 +672,7 @@
   "active": {
     "gate": "P3-M4-W0A4",
     "attempt": "R2",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A4OriginalFullComplexGammaTransport.lean",
     "consumer": "lean/diagnostics/BFSSP3M4W0A4OriginalFullComplexGammaIndependentConsumer.lean",
@@ -693,8 +693,28 @@
     "contract_commit": "868d494b84e9c12687fbb60db98bb1d5a97cb5a0",
     "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0A4_R2_NAMESPACE_ONLY_REPAIR_CONTRACT_2026_11_17.md",
     "w0a3_original_archive_blob": "845be0ed709f4fe44e288f116cc17eba4fcc5b9d",
-    "note": "R2 strict PENDING with only one replacement of AlgebraTensorModule.lift by TensorProduct.AlgebraTensorModule.lift in original W0A4 source; independent consumer byte-identical to R1; exact original R1 RED artifact and full logs committed and recorded, W0A3 stays last-qualified, no new axioms, no Fock carrier replacement. Stop if second analogous RED. First R2 CI run #44058928429 RED at preflight (missing temp directory; Lean never ran), and roadmap #44058928173 RED from shallow-checkout git show; both archived and harness repaired with exact reconstructed Git blob SHA. Original R2 Lean source and independent consumer unchanged.",
-    "previous_red_run": 44055363556
+    "note": "W0A4 R2 exact original cold source RED: after namespace resolved, line 41:8 map_smul' expression smul_smul mismatch expected RingHom.id ℂ. Source axiom reports include sorryAx due compiler failure; no independent consumer; original artifact ZIP has only two preflight/tested SHA members due path mismatch but complete native Lean error preserved in byte-exact original job log. Second W0A4 real source construction failure (R1 #44055363556 and R2 #44059417729): STOP THIS CONSTRUCTION. W0A3 remains canonical last qualified. No next math gate staged.",
+    "previous_red_run": 44055363556,
+    "verdict": "RED",
+    "strict_outcome": "failure",
+    "stopped": true,
+    "stop_reason": "TWO_CONSECUTIVE_ORIGINAL_COMPLEX_LINEAR_MAP_CONSTRUCTION_REDS",
+    "run_id": 44059417729,
+    "job_id": 133957082631,
+    "tested_sha": "22f86b1b4dde9856420c8318ea0e2b6f3b341502",
+    "artifact_id": 14317629742,
+    "artifact_sha256": "5c4589b34218e6d34b7bc8fe3fbba8badb7f3bf0553522802fc9d3f763a47c90",
+    "evidence_archive": "research/quantum-information/diagnostics/BFSS_M4_W0A4_R2_44059417729_RED_evidence.zip",
+    "evidence_archive_blob": "c1d7f4436e22dd5698058ea3b5557d131823de9d",
+    "evidence_job_log": "research/quantum-information/diagnostics/BFSS_W0A4_R2_44059417729_complete_job.log",
+    "evidence_job_log_blob": "c8d16f4c41bfe15e2ceb05664a7efc3d5aef4d9d",
+    "evidence_manifest": "research/quantum-information/diagnostics/BFSS_W0A4_R2_44059417729_RED_evidence_manifest.json",
+    "evidence_manifest_blob": "51adef7627da2dd4c0aa0abd3f832a8f392403db",
+    "receipt": "research/quantum-information/BFSS_QIT_SCC_W0A4_R2_STOP_44059417729_2026_11_17.md",
+    "failure_phase": "COLD_ORIGINAL_LEAN_SOURCE",
+    "source_reports": 0,
+    "consumer_reports": 0,
+    "evidence_status": "PROVIDER_ORIGINAL_RED_TWO_MEMBER_ZIP_PLUS_FULL_JOB_LOG_GIT_PINNED;_COLD_SOURCE_LOG_OMITTED_BY_UPLOAD_PATH_MISMATCH"
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -707,7 +727,7 @@
   },
   "strategic_focus": {
     "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for the original physical Hamiltonian",
-    "immediate": "P1 R2 original four-Majorana GREEN #43998813826 with full original and independent rehash #44000111416, last qualified. QTC0A R1 strict pending on real original Fock carrier, only weighted quadratic Leibniz under explicit covariance; matrix a*b+b*aᵀ contraction QTC0B prospective, source K join later. CT1G0 stopped and negative evidence retained; ground-state fidelity remains ultimate open physical objective.",
+    "immediate": "W0A4 real→complex linear extension has been STOPPED after two original cold-source REDs (R1 #44055363556, R2 #44059417729). Last qualified W0A3 #44051746176. Next decision: first research and freeze a new B0 commutator-predicate induction bypassing construction of activeGammaComplexLinear; no math gate staged; original K Lie join and BFSS physical ground-state ambitions remain open.",
     "last_full_hardy_gate": "P3-AUX-HARDY-G15",
     "last_full_hardy_run": 43763173942,
     "full_G16_qualified": false,
@@ -722,9 +742,9 @@
     "source_staged": false,
     "consumer_staged": false,
     "workflow_staged": false,
-    "definition": "Original gamma 48-label pointwise commutation implies commutation with activeGammaComplexLinear w for all w:ℂ⊗ℝ Source48Vector, using real finite sum and complex tensor induction without native K(A) expansion.",
-    "gate_condition": "Only after W0A4 strict original-source and independent-consumer audit plus immutable original provider archive and acceptance.",
-    "exclusions": "W0B1 Clifford induction, W0B2 original M3B/M3C A-linearity Schur adapter, W0C original trace scalar elimination, full W0 injectivity and BFSS physical statements remain separate."
+    "definition": "Bypass stopped W0A4 activeGammaComplexLinear map construction: prove Commute T (Φ (CliffordAlgebra.ι Q w)) directly via 48 finite real gamma sum, qualified W0A3 pure-tensor generator theorem and TensorProduct.inductionOn on the commutation predicate. No second ℂ-linear map.",
+    "gate_condition": "First freeze new source-exact pre-gate contract and audit source dependencies; prior W0A4 R1/R2 original RED ZIPs, complete logs, accepted W0A3 ancestor and stopped native proof route must be preserved. No gate staged yet.",
+    "exclusions": "No original Clifford Schur scalar uniqueness, trace-separated W0 injectivity, gauge/fermion parity physical observability or BFSS spectral claims."
   },
   "monograph": {
     "edition": "0.8 internal consolidated checkpoint",
@@ -2625,5 +2645,46 @@
     "reason": "Temporary evidence directory not created before tee; independent roadmap shallow checkout missing historical commit object. No Lean compilation or consumer commenced.",
     "note": "Not counted as R2 native theorem RED, R1 remains the only original native source RED; first R2 CI harness and roadmap logs preserved.",
     "receipt": "research/quantum-information/diagnostics/BFSS_W0A4_R2_PREFLIGHT_ONLY_44058928429_2026_11_17.md"
+  },
+  "previous_active_before_W0A4_R2_stop": {
+    "gate": "P3-M4-W0A4",
+    "attempt": "R2",
+    "status": "PENDING_STRICT_CI",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A4OriginalFullComplexGammaTransport.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4W0A4OriginalFullComplexGammaIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-w0a4-r2-complexified-source-gamma-strict.yml",
+    "source_blob": "489d71f3ac7d51f19caf45bd89640b646e9ca882",
+    "consumer_blob": "18fec08b3259513e63deff44319eb90b759b6b5f",
+    "workflow_blob": "f2a80f5e2eb125c7a4beccd167fa1c185c224fe6",
+    "accepted_predecessor_run": 44051746176,
+    "first_atom": "ORIGINAL_FULL_COMPLEXIFIED_SOURCE_GAMMA_LINEAR_EXTENSION_VIA_TENSOR_INDUCTION_R2_ONE_NAMESPACE_REPAIR",
+    "expected_source_reports": 2,
+    "expected_consumer_reports": 2,
+    "independent_controls": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "contract_commit": "868d494b84e9c12687fbb60db98bb1d5a97cb5a0",
+    "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0A4_R2_NAMESPACE_ONLY_REPAIR_CONTRACT_2026_11_17.md",
+    "w0a3_original_archive_blob": "845be0ed709f4fe44e288f116cc17eba4fcc5b9d",
+    "note": "R2 strict PENDING with only one replacement of AlgebraTensorModule.lift by TensorProduct.AlgebraTensorModule.lift in original W0A4 source; independent consumer byte-identical to R1; exact original R1 RED artifact and full logs committed and recorded, W0A3 stays last-qualified, no new axioms, no Fock carrier replacement. Stop if second analogous RED. First R2 CI run #44058928429 RED at preflight (missing temp directory; Lean never ran), and roadmap #44058928173 RED from shallow-checkout git show; both archived and harness repaired with exact reconstructed Git blob SHA. Original R2 Lean source and independent consumer unchanged.",
+    "previous_red_run": 44055363556
+  },
+  "w0a4_r2_stopped": {
+    "gate": "P3-M4-W0A4",
+    "attempt": "R2",
+    "run_id": 44059417729,
+    "tested_sha": "22f86b1b4dde9856420c8318ea0e2b6f3b341502",
+    "status": "RED_UNQUALIFIED",
+    "stopped": true,
+    "stop_reason": "TWO_CONSECUTIVE_ORIGINAL_COMPLEX_LINEAR_MAP_CONSTRUCTION_REDS",
+    "original_zip_blob": "c1d7f4436e22dd5698058ea3b5557d131823de9d",
+    "original_job_log_blob": "c8d16f4c41bfe15e2ceb05664a7efc3d5aef4d9d",
+    "original_artifact_id": 14317629742,
+    "receipt": "research/quantum-information/BFSS_QIT_SCC_W0A4_R2_STOP_44059417729_2026_11_17.md",
+    "last_qualified": "P3-M4-W0A3"
   }
 }

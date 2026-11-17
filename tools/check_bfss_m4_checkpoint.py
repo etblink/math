@@ -1562,6 +1562,66 @@ def check_checkpoint(root: Path, s: dict):
             + original_source_bytes).hexdigest()
         require(reconstructed_source_blob == '606fcdd173d4c31f191d29e7de53a742cdcbf1aa',
                 'W0A4 R2 source is not byte-exact one-namespace repair of R1 RED')
+    if a['gate'] == 'P3-M4-W0A4' and a.get('attempt') == 'R2' and a['status'] == 'RED_UNQUALIFIED':
+        import zipfile
+        require(a.get('stopped') is True
+                and a.get('stop_reason') == 'TWO_CONSECUTIVE_ORIGINAL_COMPLEX_LINEAR_MAP_CONSTRUCTION_REDS'
+                and a.get('qualification') is False
+                and a.get('run_id') == 44059417729
+                and a.get('job_id') == 133957082631
+                and a.get('tested_sha') == '22f86b1b4dde9856420c8318ea0e2b6f3b341502'
+                and a.get('artifact_id') == 14317629742
+                and a.get('artifact_sha256') == '5c4589b34218e6d34b7bc8fe3fbba8badb7f3bf0553522802fc9d3f763a47c90'
+                and a.get('evidence_archive_blob') == 'c1d7f4436e22dd5698058ea3b5557d131823de9d'
+                and a.get('evidence_job_log_blob') == 'c8d16f4c41bfe15e2ceb05664a7efc3d5aef4d9d'
+                and a.get('evidence_manifest_blob') == '51adef7627da2dd4c0aa0abd3f832a8f392403db'
+                and a.get('source_blob') == '489d71f3ac7d51f19caf45bd89640b646e9ca882'
+                and a.get('consumer_blob') == '18fec08b3259513e63deff44319eb90b759b6b5f'
+                and a.get('workflow_blob') == 'f2a80f5e2eb125c7a4beccd167fa1c185c224fe6'
+                and a.get('previous_red_run') == 44055363556
+                and s['last_qualified']['gate'] == 'P3-M4-W0A3'
+                and s['last_qualified']['run_id'] == 44051746176
+                and s['accepted_anchors'][-1]['gate'] == 'P3-M4-W0A3',
+                'W0A4 R2 stopped native source RED cannot promote or lose original evidence')
+        m = json.loads((root/a['evidence_manifest']).read_text())
+        require(m['status'] == 'RED_UNQUALIFIED'
+                and m['stopped'] is True
+                and m['original_run'] == a['run_id']
+                and m['original_job'] == a['job_id']
+                and m['tested_sha'] == a['tested_sha']
+                and m['original_provider_archive_bytes'] == 374
+                and m['original_provider_archive_sha256'] == a['artifact_sha256']
+                and m['original_provider_archive_git_blob'] == a['evidence_archive_blob']
+                and m['original_job_log_git_blob'] == a['evidence_job_log_blob']
+                and m['prior_red']['run'] == 44055363556
+                and m['prior_red']['original_zip_git_blob'] ==
+                    s['previous_active_W0A4_R1_RED']['evidence_archive_blob'],
+                'W0A4 R2 original provider evidence manifest drift')
+        names = {'preflight.log','tested-commit.txt'}
+        require(set(m['original_provider_archive_members']) == names,
+                'W0A4 R2 provider artifact only has two members; no cold-source.log')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            require(z.testzip() is None and set(z.namelist()) == names
+                    and z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and 'BFSS_W0A4_R2_NAMESPACE_ONLY_W0A3_GREEN_R1_RED_DONORS_PREFLIGHT_PASS'
+                        in z.read('preflight.log').decode(),
+                    'W0A4 R2 provider-original RED artifact corrupt or not exact')
+            for name, info in m['original_provider_archive_members'].items():
+                data = z.read(name)
+                require(len(data) == info['bytes']
+                        and hashlib.sha256(data).hexdigest() == info['sha256'],
+                        'W0A4 R2 original ZIP member mismatch: '+name)
+        job = (root/a['evidence_job_log']).read_text()
+        require('P3M4W0A4OriginalFullComplexGammaTransport.lean:41:8: Type mismatch'
+                    in job
+                and 'smul_smul z w sourceGammaRealLinear' in job
+                and 'RingHom.id ℂ' in job and 'sorryAx' in job
+                and 'error: build failed' in job,
+                'W0A4 R2 original full job log lacks native failing proof')
+        require('cold-source.log omitted' in m['evidence_gap']
+                and s['next_planned']['status'] == 'PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False,
+                'W0A4 stop must not conceal incomplete ZIP or stage next theorem')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

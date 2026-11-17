@@ -1,0 +1,67 @@
+{
+  "gate": "P3-M4-W0A4",
+  "attempt": "R2",
+  "status": "RED_UNQUALIFIED",
+  "stopped": true,
+  "stop_reason": "TWO_CONSECUTIVE_ORIGINAL_COMPLEX_LINEAR_MAP_CONSTRUCTION_REDS",
+  "original_run": 44059417729,
+  "original_job": 133957082631,
+  "original_conclusion": "failure",
+  "tested_sha": "22f86b1b4dde9856420c8318ea0e2b6f3b341502",
+  "source_blob": "489d71f3ac7d51f19caf45bd89640b646e9ca882",
+  "consumer_blob": "18fec08b3259513e63deff44319eb90b759b6b5f",
+  "workflow_blob": "f2a80f5e2eb125c7a4beccd167fa1c185c224fe6",
+  "original_provider_artifact_id": 14317629742,
+  "original_provider_archive_sha256": "5c4589b34218e6d34b7bc8fe3fbba8badb7f3bf0553522802fc9d3f763a47c90",
+  "original_provider_archive_bytes": 374,
+  "original_provider_archive_git_blob": "c1d7f4436e22dd5698058ea3b5557d131823de9d",
+  "original_provider_archive_path": "research/quantum-information/diagnostics/BFSS_M4_W0A4_R2_44059417729_RED_evidence.zip",
+  "original_provider_archive_members": {
+    "preflight.log": {
+      "bytes": 68,
+      "sha256": "364ebb1bd72743ad3ac5057c6098c3b1dfecbf7b039c75e97303002c130d5bcf"
+    },
+    "tested-commit.txt": {
+      "bytes": 41,
+      "sha256": "8734b8a26517e5c1eb9641447e876601c7725831b41d88e4c473eb92f2837c21"
+    }
+  },
+  "original_provider_archive_integrity": "ZIP_CRC_PASS_TWO_MEMBERS_ONLY",
+  "original_job_log_git_blob": "c8d16f4c41bfe15e2ceb05664a7efc3d5aef4d9d",
+  "original_job_log_path": "research/quantum-information/diagnostics/BFSS_W0A4_R2_44059417729_complete_job.log",
+  "evidence_gap": "cold-source.log omitted from original ZIP because workflow cold-source output used bfss-m4-w0a4/ while uploaded root was bfss-m4-w0a4-r2/. Full original GitHub job log includes the exact native Lean error.",
+  "preflight": "PASS",
+  "toolchain": "PASS",
+  "original_cold_source": "RED",
+  "source_axioms": "NOT_QUALIFIED_SORRYAX_REPORTED",
+  "independent_consumer": "NOT_RUN",
+  "auditor": "NOT_RUN",
+  "diagnostic": {
+    "file": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A4OriginalFullComplexGammaTransport.lean",
+    "line": 41,
+    "column": 8,
+    "provided": "smul_smul z w sourceGammaRealLinear",
+    "provided_type": "z • w • sourceGammaRealLinear = (z * w) • sourceGammaRealLinear",
+    "expected_type": "(z • w) • sourceGammaRealLinear = (RingHom.id ℂ) z • w • sourceGammaRealLinear",
+    "analysis": "Complex-linear map_smul' obligation not definitionally solved. Qualified namespace fixed in R2, but the same original linear-extension construction fails for the second native attempt."
+  },
+  "prior_red": {
+    "run": 44055363556,
+    "tested_sha": "14b96aca0d455098fcd54486840f3b905eda2dd7",
+    "original_zip_sha256": "7deda8b0723841d8a35e19dd8587211254b7e3a8cebaa317918321a54d96dcb6",
+    "original_zip_git_blob": "ef3ad039799680fde9f0d1669f130ef275f9a2a3",
+    "original_full_job_log_git_blob": "6f635122f8ab1a3078851aac68214462a4124488",
+    "error": "Unknown identifier `AlgebraTensorModule.lift` at source 34:2 and dependent change failure at 48:2"
+  },
+  "preflight_only_diagnostics": {
+    "strict_run": 44058928429,
+    "roadmap_run": 44058928173,
+    "strict_job_log_git_blob": "c82ea3d5de1235e0d458b9be7cb1841d81f0766c",
+    "roadmap_job_log_git_blob": "4ee9996adb7e8b05f58abcc0719fad907624a41f"
+  },
+  "last_qualified": {
+    "gate": "P3-M4-W0A3",
+    "run": 44051746176
+  },
+  "physical_claims": "NONE"
+}
