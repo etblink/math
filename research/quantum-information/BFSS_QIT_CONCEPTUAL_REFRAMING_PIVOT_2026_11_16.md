@@ -53,3 +53,6 @@ Begin with a specified physical observable algebra and faithful state, then test
 
 ## Acceptance addendum (same-day, after independent artifact handoff)
 QTC1G0 is now **STRICT GREEN qualified** after exact provider ZIP Git preservation and canonical gate-state promotion; [receipt](../spectral-p2-original-field/BFSS_M4_QTC1G0_R1_GREEN_44024718712_GENERIC_QUARTER_ACCEPTANCE_2026_11_16.md). The earlier pending-archive status in this memo is a dated record and is superseded. All QIT research ceilings and the pause on QTC1G1/QTC2 remain unchanged.
+
+## Related SCC crosswalk (research extension, 2026-11-16)
+A subsequent [SCC/QIT bridge investigation](BFSS_QIT_SCC_COUNTERFACTUAL_DISTINGUISHABILITY_AND_TRANSPORT_2026_11_16.md) adds an explicit witness-relative pseudometric, a Heisenberg-closure condition for lawful transport, a qubit dynamics counterexample, and a minimal-carrier nonuniqueness counterexample. It is conceptually useful but **not** a qualified BFSS theorem or SCC closure. The source-specific QTC1G1 / QTC2 suspension remains unchanged.
