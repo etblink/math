@@ -34,33 +34,25 @@ theorem originalFock_commutator_sub_consumer (T S X : Op) :
 
 theorem originalSource48K_commutator_jacobi_consumer
     (A B : Matrix Source48Label Source48Label ℝ) (k : Source48Label) :
-    (originalSource48BivectorK A * originalSource48BivectorK B -
-       originalSource48BivectorK B * originalSource48BivectorK A) *
-        sourceNormalizedGamma k -
-      sourceNormalizedGamma k *
-        (originalSource48BivectorK A * originalSource48BivectorK B -
-          originalSource48BivectorK B * originalSource48BivectorK A) =
-      (originalSource48BivectorK A *
-          (originalSource48BivectorK B * sourceNormalizedGamma k -
-            sourceNormalizedGamma k * originalSource48BivectorK B) -
-        (originalSource48BivectorK B * sourceNormalizedGamma k -
-          sourceNormalizedGamma k * originalSource48BivectorK B) *
-            originalSource48BivectorK A) -
-      (originalSource48BivectorK B *
-          (originalSource48BivectorK A * sourceNormalizedGamma k -
-            sourceNormalizedGamma k * originalSource48BivectorK A) -
-        (originalSource48BivectorK A * sourceNormalizedGamma k -
-          sourceNormalizedGamma k * originalSource48BivectorK A) *
-            originalSource48BivectorK B) :=
+    originalFock_comm
+      (originalFock_comm
+        (originalSource48BivectorK A) (originalSource48BivectorK B))
+      (sourceNormalizedGamma k) =
+      originalFock_comm (originalSource48BivectorK A)
+        (originalFock_comm (originalSource48BivectorK B)
+          (sourceNormalizedGamma k)) -
+      originalFock_comm (originalSource48BivectorK B)
+        (originalFock_comm (originalSource48BivectorK A)
+          (sourceNormalizedGamma k)) :=
   originalSource48K_commutator_jacobi A B k
 
--- Control 1: arbitrary literal Fock operators, no commutativity.
+-- Control 1: arbitrary original Fock operators, no commutativity.
 example (T S X : Op) :
     (T - S) * X - X * (T - S) =
       (T * X - X * T) - (S * X - X * S) :=
   originalFock_commutator_sub T S X
 
--- Control 2: the zero left Jacobi input.
+-- Control 2: genuine original Fock zero Jacobi input.
 example (S X : Op) :
     ((0 : Op) * S - S * (0 : Op)) * X -
       X * ((0 : Op) * S - S * (0 : Op)) =
@@ -70,36 +62,33 @@ example (S X : Op) :
         ((0 : Op) * X - X * (0 : Op)) * S) :=
   originalFock_commutator_jacobi 0 S X
 
--- Control 3: repeated original source 48-axis; no label distinctness.
+-- Control 3: repeated exact source bivector, same original
+48 label; [K(A),K(A)] is zero without assuming operator
+commutativity or changing the fermionic representation.
 example (A : Matrix Source48Label Source48Label ℝ) :
-    (originalSource48BivectorK A * originalSource48BivectorK A -
-       originalSource48BivectorK A * originalSource48BivectorK A) *
-        sourceNormalizedGamma ((0 : Fin 24), (0 : Fin 2)) -
-      sourceNormalizedGamma ((0 : Fin 24), (0 : Fin 2)) *
-        (originalSource48BivectorK A * originalSource48BivectorK A -
-          originalSource48BivectorK A * originalSource48BivectorK A) = 0 := by
-  simp
+    originalFock_comm
+      (originalFock_comm (originalSource48BivectorK A)
+        (originalSource48BivectorK A))
+      (sourceNormalizedGamma ((0 : Fin 24), (0 : Fin 2))) = 0 := by
+  have hzero : originalFock_comm (originalSource48BivectorK A)
+        (originalSource48BivectorK A) = 0 := by
+    exact sub_self _
+  rw [hzero]
+  simp only [originalFock_comm, zero_mul, mul_zero, sub_self]
 
--- Control 4: exact source native paired distinct label through source adapter.
+-- Control 4: concrete paired, distinct source48 coordinate
+bound through the SOURCE ACTUAL K(A),K(B),Γ_k adapter.
 example (A B : Matrix Source48Label Source48Label ℝ) :
-    (originalSource48BivectorK A * originalSource48BivectorK B -
-       originalSource48BivectorK B * originalSource48BivectorK A) *
-        sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) -
-      sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) *
-        (originalSource48BivectorK A * originalSource48BivectorK B -
-          originalSource48BivectorK B * originalSource48BivectorK A) =
-      (originalSource48BivectorK A *
-          (originalSource48BivectorK B * sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) -
-            sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) * originalSource48BivectorK B) -
-        (originalSource48BivectorK B * sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) -
-          sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) * originalSource48BivectorK B) *
-            originalSource48BivectorK A) -
-      (originalSource48BivectorK B *
-          (originalSource48BivectorK A * sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) -
-            sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) * originalSource48BivectorK A) -
-        (originalSource48BivectorK A * sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) -
-          sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)) * originalSource48BivectorK A) *
-            originalSource48BivectorK B) :=
+    originalFock_comm
+      (originalFock_comm
+        (originalSource48BivectorK A) (originalSource48BivectorK B))
+      (sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2))) =
+      originalFock_comm (originalSource48BivectorK A)
+        (originalFock_comm (originalSource48BivectorK B)
+          (sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)))) -
+      originalFock_comm (originalSource48BivectorK B)
+        (originalFock_comm (originalSource48BivectorK A)
+          (sourceNormalizedGamma ((0 : Fin 24), (1 : Fin 2)))) :=
   originalSource48K_commutator_jacobi A B _
 
 #print axioms originalFock_commutator_jacobi_consumer

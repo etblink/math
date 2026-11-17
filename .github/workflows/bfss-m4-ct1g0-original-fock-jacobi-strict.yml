@@ -33,9 +33,9 @@ jobs:
           mkdir -p "$RUNNER_TEMP/bfss-m4-ct1g0"
           git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-ct1g0/tested-commit.txt"
           python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-ct1g0/preflight.log"
-          import json,re,subprocess
+          import json,re,subprocess,hashlib
           from pathlib import Path
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT1G0OriginalFockJacobiSource48Adapter.lean":"e4837ccb96108ecabcebfd0ba2534398fe0ddb2a","lean/diagnostics/BFSSP3M4CT1G0OriginalFockJacobiIndependentConsumer.lean":"2d38aa70c6b4a55d4b8af3245d6d63b15839d697","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean":"b4012951a26aa7573db513adab3d7ce27396db7e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT0OriginalSkewBivectorTrace.lean":"a6f93c62c83bf51a0b89691196f875399d2896fa","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT1G0OriginalFockJacobiSource48Adapter.lean":"df368f58b722ec8cd33a5e8656700cbe06badbe6","lean/diagnostics/BFSSP3M4CT1G0OriginalFockJacobiIndependentConsumer.lean":"299475618bdf1b0e6a43326c51f15640fa58c397","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean":"b4012951a26aa7573db513adab3d7ce27396db7e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT0OriginalSkewBivectorTrace.lean":"a6f93c62c83bf51a0b89691196f875399d2896fa","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
           for path,want in pins.items():
             got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
             assert got==want,(path,want,got)
@@ -69,7 +69,14 @@ jobs:
           assert state["last_qualified"]["run_id"]==43983772199
           assert state["active"]["gate"]=="P3-M4-CT1G0"
           assert state["active"]["status"]=="PENDING_STRICT_CI"
-          assert state["active"]["attempt"]=="R1"
+          assert state["active"]["attempt"]=="R2"
+          assert state["active"]["previous_red_run"]==43988822460
+          assert state["active"]["prior_red_artifact_id"]==14287816678
+          assert state["active"]["prior_red_artifact_sha256"]=="c03e06d90de7d0a7e946a55d27f5bd2c2d7e03981355d80ad512ff8dbe61d75e"
+          assert state["active"]["source_blob"]=="df368f58b722ec8cd33a5e8656700cbe06badbe6"
+          assert state["active"]["consumer_blob"]=="299475618bdf1b0e6a43326c51f15640fa58c397"
+          assert "maximum recursion depth has been reached" in Path(state["active"]["prior_red_job_log"]).read_text()
+          assert hashlib.sha256(Path(state["active"]["prior_red_evidence_archive"]).read_bytes()).hexdigest()==state["active"]["prior_red_artifact_sha256"]
           assert state["active"]["qualification"] is False
           assert state["active"]["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT1G0OriginalFockJacobiSource48Adapter.lean"]
           assert state["active"]["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4CT1G0OriginalFockJacobiIndependentConsumer.lean"]

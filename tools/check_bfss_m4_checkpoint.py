@@ -175,6 +175,25 @@ def check_checkpoint(root: Path, s: dict):
                       and str(a['previous_red_run']) in (root/a['prior_red_receipt']).read_text()
                       and a.get('source_blob') != '6f884308f3029d5e2b227ddcabd0558e35c2c6f8')),
                 'CT0 registration cannot erase predecessor, R1 RED, or strict contract')
+    if a['gate'] == 'P3-M4-CT1G0':
+        require(s['last_qualified']['gate'] == 'P3-M4-CT0'
+                and s['last_qualified']['run_id'] == 43983772199
+                and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 3
+                and a.get('independent_controls') == 4
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound'],
+                'CT1G0 source/consumer/gate contract drift')
+        if a.get('attempt') == 'R2':
+            require(a.get('previous_red_run') == 43988822460
+                    and a.get('previous_red_tested_sha') == 'a04d3240b8e1649ca058772af7a98f73095a177c'
+                    and a.get('prior_red_artifact_id') == 14287816678
+                    and a.get('prior_red_artifact_sha256') == 'c03e06d90de7d0a7e946a55d27f5bd2c2d7e03981355d80ad512ff8dbe61d75e'
+                    and a.get('prior_red_job_log_blob') == blob(root/a['prior_red_job_log'])
+                    and a.get('prior_red_evidence_archive_blob') == blob(root/a['prior_red_evidence_archive'])
+                    and hashlib.sha256((root/a['prior_red_evidence_archive']).read_bytes()).hexdigest() == a['prior_red_artifact_sha256']
+                    and str(a['previous_red_run']) in (root/a['prior_red_receipt']).read_text()
+                    and a.get('source_blob') != 'e4837ccb96108ecabcebfd0ba2534398fe0ddb2a'
+                    and a.get('consumer_blob') != '2d38aa70c6b4a55d4b8af3245d6d63b15839d697',
+                    'CT1G0 R2 does not retain original R1 RED or unchanged original gate limits')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

@@ -50,31 +50,33 @@ theorem originalFock_commutator_sub
   simp only [sub_mul, mul_sub]
   abel
 
-/-- Source EXACT Jacobi instance with unchanged source48 label order,
-actual original 1/4 bivector, and original Gamma(k) on Fermion 2.
-No skewness assumption is needed for this algebraic identity. -/
+/-- Opaque source-independent bracket on the actual original
+noncommutative Fock carrier. Its visible type stays Op, preventing
+the source 48 K sum from being elaborated repeatedly within Jacobi. -/
+def originalFock_comm (T S : Op) : Op := T * S - S * T
+
+/-- Source EXACT Jacobi, stated through an explicit original-Fock
+operator bracket. All original K, gamma, and 1/4 normalizations
+remain opaque, and no full K-bracket or defect vanishing is asserted.
+R1's expanded native statement failed during elaboration at line 53;
+this is a bounded proof-architecture repair without resource changes. -/
 theorem originalSource48K_commutator_jacobi
     (A B : Matrix Source48Label Source48Label ℝ)
     (k : Source48Label) :
-    (originalSource48BivectorK A * originalSource48BivectorK B -
-       originalSource48BivectorK B * originalSource48BivectorK A) *
-        sourceNormalizedGamma k -
-      sourceNormalizedGamma k *
-        (originalSource48BivectorK A * originalSource48BivectorK B -
-          originalSource48BivectorK B * originalSource48BivectorK A) =
-      (originalSource48BivectorK A *
-          (originalSource48BivectorK B * sourceNormalizedGamma k -
-            sourceNormalizedGamma k * originalSource48BivectorK B) -
-        (originalSource48BivectorK B * sourceNormalizedGamma k -
-          sourceNormalizedGamma k * originalSource48BivectorK B) *
-            originalSource48BivectorK A) -
-      (originalSource48BivectorK B *
-          (originalSource48BivectorK A * sourceNormalizedGamma k -
-            sourceNormalizedGamma k * originalSource48BivectorK A) -
-        (originalSource48BivectorK A * sourceNormalizedGamma k -
-          sourceNormalizedGamma k * originalSource48BivectorK A) *
-            originalSource48BivectorK B) :=
-  originalFock_commutator_jacobi
+    originalFock_comm
+      (originalFock_comm
+        (originalSource48BivectorK A)
+        (originalSource48BivectorK B))
+      (sourceNormalizedGamma k) =
+      originalFock_comm
+        (originalSource48BivectorK A)
+        (originalFock_comm
+          (originalSource48BivectorK B) (sourceNormalizedGamma k)) -
+      originalFock_comm
+        (originalSource48BivectorK B)
+        (originalFock_comm
+          (originalSource48BivectorK A) (sourceNormalizedGamma k)) := by
+  exact originalFock_commutator_jacobi
     (originalSource48BivectorK A)
     (originalSource48BivectorK B)
     (sourceNormalizedGamma k)
