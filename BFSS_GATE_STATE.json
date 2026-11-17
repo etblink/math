@@ -490,7 +490,7 @@
     "workflow": ".github/workflows/bfss-m4-w0a0-source-axis-witness-strict.yml",
     "source_blob": "81b5df7e7dd009a5f03f561ac80d55d17aafdea4",
     "consumer_blob": "c58f6d3e49bbcb4b7d2c88a08f57f7e07b61ce63",
-    "workflow_blob": "01ba2faeac74b051b6615f0632f34a2952b39c35",
+    "workflow_blob": "079b8e484e52898ca33717e3bf9af893011a6208",
     "accepted_predecessor_run": 44024718712,
     "first_atom": "ORIGINAL_SOURCE48_ALL_LABEL_AXIS_EXACT_M3I_FOCK_GAMMA_CROSSWALK_ONLY",
     "expected_source_reports": 1,
@@ -503,7 +503,7 @@
     ],
     "contract_commit": "25ca9c4c0f543e886c4717e41b4213d5ae5b163e",
     "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0A0_ALL_48_AXIS_PRE_GATE_2026_11_16.md",
-    "note": "W0A0 R1 staged but UNQUALIFIED until strict source+consumer GREEN and original artifact preservation. Source label crosswalk only; W0A1 vector span, W0B Schur, W0C trace, full W0 witness completeness, W1/W2 and source K bracket remain unproved. QTC1/CT1 stopped REDs retained."
+    "note": "W0A0 R1 staged but UNQUALIFIED until strict source+consumer GREEN and original artifact preservation. Source label crosswalk only; W0A1 vector span, W0B Schur, W0C trace, full W0 witness completeness, W1/W2 and source K bracket remain unproved. QTC1/CT1 stopped REDs retained. Original W0A0 math gate #44032934242 had passed preflight; concurrent roadmap run #44032934039 RED before proof due historical checker requiring one-line literal pins={...}. New workflow changes Python pin-table formatting ONLY; original source and consumer Git blobs unchanged. No Lean result promoted."
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -1955,5 +1955,16 @@
     "evidence_manifest_blob": "fcb8284e936cb37bd54fe6d023c17158d7d4e3ab",
     "receipt": "research/spectral-p2-original-field/BFSS_M4_QTC1G0_R1_GREEN_44024718712_GENERIC_QUARTER_ACCEPTANCE_2026_11_16.md",
     "evidence_status": "PROVIDER_ORIGINAL_ZIP_INDEPENDENT_REHASH_MEMBER_SHA256_COMPLETE_JOB_LOG"
+  },
+  "w0a0_checkpoint_format_red": {
+    "run_id": 44032934039,
+    "tested_sha": "8e3a80382d285be8154db7e2190770eed625210b",
+    "status": "RED_CHECKPOINT_ONLY_NO_MATHEMATICAL_QUALIFICATION",
+    "failure": "strict workflow pin table missing or ambiguous",
+    "cause": "tools/check_bfss_m4_checkpoint.py requires pins={...} one physical line (or restricted base= multiline variant), whereas first W0A0 workflow used pins = { ... }",
+    "old_workflow_blob": "01ba2faeac74b051b6615f0632f34a2952b39c35",
+    "repaired_workflow_blob": "079b8e484e52898ca33717e3bf9af893011a6208",
+    "source_and_consumer_unchanged": true,
+    "receipt": "research/quantum-information/BFSS_QIT_SCC_W0A0_ROADMAP_PIN_TABLE_RED_44032934039_2026_11_16.md"
   }
 }
