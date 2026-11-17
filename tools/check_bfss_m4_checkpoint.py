@@ -3601,7 +3601,7 @@ def check_checkpoint(root: Path, s: dict):
             require(a.get('contract_commit')=='2ece5242c232a2e77a8e5ecbf6ed634c5529a3a6'
                     and a.get('source_blob')=='96d3b63d08413f880d1adf0cef8b8e291f7b9453'
                     and a.get('consumer_blob')=='fe9136065179d706c60871ae16e02b8f60e1b189'
-                    and a.get('workflow_blob')=='3bf1f0dbb2cdcdcb4b28cbfa8c0eb6950764721c'
+                    and a.get('workflow_blob')=='5df8bb9123ee0bd47bccfa6f566d0c28cd339080'
                     and a.get('previous_red_run')==44184526501
                     and a.get('previous_red_preservation_run')==44189939903
                     and a.get('previous_red_artifact_sha256')=='a1c300789de7b8e97e88efa894841670ab92bf7e98d489373c54dff285b9eb73',
@@ -3616,6 +3616,23 @@ def check_checkpoint(root: Path, s: dict):
                     'W0C0 R1 native RED historical checkpoint lost')
             for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
                 require(blob(root/r[kind])==r[kind+'_blob'], 'W0C0 R1 original source/RED evidence drift '+kind)
+            first=s.get('w0c0_r2_first_preflight_red',{})
+            require(first.get('run_id')==44190799433
+                    and first.get('status')=='PREFLIGHT_RED_UNQUALIFIED'
+                    and first.get('failure_phase')=='PRE_LEAN_PIN_PATH_MISMATCH'
+                    and first.get('preservation_run')==44191210547
+                    and first.get('source_blob')==a.get('source_blob')
+                    and first.get('consumer_blob')==a.get('consumer_blob')
+                    and first.get('workflow_blob')=='3bf1f0dbb2cdcdcb4b28cbfa8c0eb6950764721c'
+                    and first.get('evidence_archive_blob')=='56e470ba2dbea58c9a05cdfcea91f64e06b568e8'
+                    and first.get('evidence_job_log_blob')=='74fa47be27ace746009b5dca6919cb3132383395'
+                    and first.get('evidence_manifest_blob')=='0589342a9fda8875ea0e8cd079246b467e726dd8',
+                    'W0C0 R2 historical preflight-only RED and exact artifacts lost')
+            for kind in ('evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/first[kind])==first[kind+'_blob'], 'W0C0 R2 first-preflight original evidence drift '+kind)
+            require((root/first['evidence_archive']).stat().st_size==754
+                    and hashlib.sha256((root/first['evidence_archive']).read_bytes()).hexdigest()==first['artifact_sha256'],
+                    'W0C0 R2 original setup-RED ZIP digest or size drift')
             import zipfile
             original=root/r['evidence_archive']
             require(original.stat().st_size==18813

@@ -1069,7 +1069,7 @@
     "workflow": ".github/workflows/bfss-m4-w0c0-r2-original-fock-scalar-trace-strict.yml",
     "source_blob": "96d3b63d08413f880d1adf0cef8b8e291f7b9453",
     "consumer_blob": "fe9136065179d706c60871ae16e02b8f60e1b189",
-    "workflow_blob": "3bf1f0dbb2cdcdcb4b28cbfa8c0eb6950764721c",
+    "workflow_blob": "5df8bb9123ee0bd47bccfa6f566d0c28cd339080",
     "contract_commit": "2ece5242c232a2e77a8e5ecbf6ed634c5529a3a6",
     "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0C0_R2_ORIGINAL_FOCK_LET_STYLE_REPAIR_PRE_GATE_2026_11_17.md",
     "accepted_predecessor_run": 44180157170,
@@ -1093,7 +1093,7 @@
       44127193329
     ],
     "original_W0H1B_R1_native_red_run": 44160611850,
-    "note": "R2 original Fermion 2 scalar-trace proof isolated from R1, only proposition letI-to-let and R2 namespace/import changes; original R1 failed warningAsError but original cold theorem source compiled. W0B2B last qualified; W0C1 prospective, physical claims excluded.",
+    "note": "R2 still pending strict source/consumer qualification after first setup-only RED #44190799433 (wrong contract pin), provider-original ZIP/log/manifest separately preserved #44191210547. Corrected workflow pins actual frozen R2 contract. Native R2 source and consumer bytes unchanged.",
     "previous_red_run": 44184526501,
     "previous_red_artifact_sha256": "a1c300789de7b8e97e88efa894841670ab92bf7e98d489373c54dff285b9eb73",
     "previous_red_preservation_run": 44189939903
@@ -3993,5 +3993,29 @@
     "cold_build_jobs": 9218,
     "failure_phase": "STRICT_ORIGINAL_SOURCE_WARNING_AS_ERROR",
     "failure_reason": "Proposition-valued letI at line 37:2 triggers Lean style linter under -DwarningAsError; cold source builds all 3 declarations but independent consumer never executed."
+  },
+  "w0c0_r2_first_preflight_red": {
+    "gate": "P3-M4-W0C0",
+    "attempt": "R2",
+    "status": "PREFLIGHT_RED_UNQUALIFIED",
+    "qualification": false,
+    "run_id": 44190799433,
+    "job_id": 134419344964,
+    "tested_sha": "5e988a4ebe038ee568065a358ee3c6d870f5e2e7",
+    "artifact_id": 14376991147,
+    "artifact_sha256": "a0c3aee58d3761ae4d79c3fbcad3119a0aeef9a48ba4e1bbd7f3d1e8bc339f24",
+    "source_blob": "96d3b63d08413f880d1adf0cef8b8e291f7b9453",
+    "consumer_blob": "fe9136065179d706c60871ae16e02b8f60e1b189",
+    "workflow_blob": "3bf1f0dbb2cdcdcb4b28cbfa8c0eb6950764721c",
+    "evidence_archive": "research/quantum-information/diagnostics/BFSS_M4_W0C0_R2_44190799433_PREFLIGHT_RED_evidence.zip",
+    "evidence_archive_blob": "56e470ba2dbea58c9a05cdfcea91f64e06b568e8",
+    "evidence_job_log": "research/quantum-information/diagnostics/BFSS_W0C0_R2_44190799433_complete_job.log",
+    "evidence_job_log_blob": "74fa47be27ace746009b5dca6919cb3132383395",
+    "evidence_manifest": "research/quantum-information/diagnostics/BFSS_W0C0_R2_44190799433_PREFLIGHT_RED_evidence_manifest.json",
+    "evidence_manifest_blob": "0589342a9fda8875ea0e8cd079246b467e726dd8",
+    "preservation_run": 44191210547,
+    "failed_before_lean": true,
+    "failure_phase": "PRE_LEAN_PIN_PATH_MISMATCH",
+    "note": "Wrong R2 contract filename in frozen source/consumer preflight pin table; source and consumer never executed, no native mathematical RED."
   }
 }
