@@ -1194,6 +1194,112 @@ def check_checkpoint(root: Path, s: dict):
                 and next_gate.get('consumer_staged') is False
                 and next_gate.get('workflow_staged') is False,
                 'W0A1 must remain prospective until its own pre-gate contract')
+    if a['gate'] == 'P3-M4-W0A1' and a['status'] == 'GREEN_QUALIFIED':
+        # Qualified real-vector donor/active transport, not a new complex
+        # generator-span, center, trace, full witness, or K-bracket theorem.
+        import zipfile
+        require(a.get('attempt') == 'R1' and a.get('accepted_predecessor_run') == 44039594189
+                and a.get('run_id') == 44043503665 and a.get('job_id') == 133903484817
+                and a.get('tested_sha') == 'cca989b7ab1e6ce836231c70bb7e6eabd9a4cceb'
+                and a.get('source_blob') == '18330e00cc1917ffa97833c9cf7bcfcb35afefdd'
+                and a.get('consumer_blob') == '9fd63b7cc0cd85b3cb10bb2b7b3d41b4b27a43ba'
+                and a.get('workflow_blob') == '7adcdfcbcc9e99866a061181adaabf2758769f8c'
+                and a.get('source_reports') == a.get('consumer_reports') == 2
+                and a.get('independent_controls') == 3 and a.get('auditor_negative_tests') == 6
+                and a.get('cold_build_jobs') == 9125 and a.get('artifact_id') == 14311446591
+                and a.get('artifact_sha256') == 'e5af3d64296888ea824482fca8f74261e8d12c3ecac5a7cb36d579c92d2f08d5'
+                and a.get('evidence_archive_blob') == 'ee39bccb7f61c497926bdb7eac9527cc53384d74'
+                and a.get('evidence_job_log_blob') == '2f01abc4f2e5cb868e283bf24084ee872d558774'
+                and a.get('evidence_manifest_blob') == '8f24d1b98d8c02d9460c8a150925fb374e2f191b'
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
+                and s['last_qualified'] == a and s['accepted_anchors'][-1] == a,
+                'W0A1 exact qualified original source/consumer or provider evidence missing')
+        predecessor = next((x for x in s['accepted_anchors'] if x.get('gate') == 'P3-M4-W0A0'), {})
+        require(predecessor.get('status') == 'GREEN_QUALIFIED'
+                and predecessor.get('run_id') == 44039594189
+                and predecessor.get('evidence_archive_blob') == '3ddc359754cab20045315a4167a9e5d15e316f80',
+                'W0A1 may not erase original W0A0 qualified predecessor or R1 negative evidence')
+        red = s.get('previous_active_W0A0_R1_RED', {})
+        require(red.get('status') == 'RED_UNQUALIFIED'
+                and red.get('run_id') == 44033364617
+                and red.get('artifact_sha256') == 'e805e4eb1515a045031768794d1cb74786b3c64c0caff708f16fac80db45b58b',
+                'W0A1 cannot erase original W0A0 dependent Pi.single failure')
+        manifest = json.loads((root/a['evidence_manifest']).read_text())
+        require(manifest.get('status') == 'GREEN_QUALIFIED'
+                and manifest.get('strict_run') == a['run_id']
+                and manifest.get('strict_job') == a['job_id']
+                and manifest.get('tested_sha') == a['tested_sha']
+                and manifest.get('original_archive_git_blob') == a['evidence_archive_blob']
+                and manifest.get('original_archive_sha256') == a['artifact_sha256']
+                and manifest.get('original_archive_bytes') == 13833
+                and manifest.get('preservation_run') == 44047203535
+                and manifest.get('job_log_git_blob') == a['evidence_job_log_blob']
+                and manifest.get('cold_build_jobs') == 9125
+                and manifest.get('independent_controls') == 3
+                and manifest.get('auditor_negative_tests') == 6,
+                'W0A1 exact independent provider evidence manifest mismatch')
+        members = manifest['original_zip_members']
+        expected_names = {'auditor.log','consumer.log','cold-source.log',
+                          'preflight.log','source-axioms.log','tested-commit.txt'}
+        require(set(members) == expected_names, 'W0A1 ZIP member manifest changed')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            require(z.testzip() is None and set(z.namelist()) == expected_names,
+                    'W0A1 provider original ZIP corrupted or incomplete')
+            for name, expected in members.items():
+                contents = z.read(name)
+                require(len(contents) == expected['bytes']
+                        and hashlib.sha256(contents).hexdigest() == expected['sha256'],
+                        'W0A1 exact ZIP member failed digest: '+name)
+            require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and 'BFSS_W0A1_EXACT_ORIGINAL_REAL_LINEAR_W0A0_GREEN_R1_RED_DONORS_PREFLIGHT_PASS'
+                        in z.read('preflight.log').decode()
+                    and 'Build completed successfully (9125 jobs).'
+                        in z.read('cold-source.log').decode()
+                    and 'sorryAx' not in z.read('cold-source.log').decode()
+                    and 'error:' not in z.read('cold-source.log').decode()
+                    and a['strict_marker'] in z.read('auditor.log').decode(),
+                    'W0A1 cold build, preflight or six-mutant auditor not accepted')
+            pat = re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+            allowed = {'propext','Classical.choice','Quot.sound'}
+            expected = {
+                'source-axioms.log': {'originalNormalized_allSourceLabel_eq_activeGamma',
+                                     'originalFockGammaRealLinear_eq_sourceGammaRealLinear'},
+                'consumer.log': {'originalNormalized_allSourceLabel_consumer',
+                                 'originalFockGammaRealLinear_consumer'}
+            }
+            for name, roots in expected.items():
+                report = z.read(name).decode()
+                found = pat.findall(report)
+                require('error:' not in report and 'sorryAx' not in report
+                        and len(found) == 2
+                        and {n.rsplit('.',1)[-1] for n,_ in found} == roots,
+                        'W0A1 source or independent consumer roots malformed: '+name)
+                for _, axioms in found:
+                    require({u.strip() for u in axioms.split(',') if u.strip()} <= allowed,
+                            'W0A1 axiom drift: '+name)
+        log = (root/a['evidence_job_log']).read_text()
+        require(a['strict_marker'] in log
+                and 'Build completed successfully (9125 jobs).' in log
+                and 'BFSS_W0A1_EXACT_ORIGINAL_REAL_LINEAR_W0A0_GREEN_R1_RED_DONORS_PREFLIGHT_PASS' in log,
+                'W0A1 complete original CI log not pinned or genuine')
+        source = (root/a['source']).read_text()
+        consumer = (root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\s+', source)) == 2
+                and len(re.findall(r'(?m)^theorem\s+', consumer)) == 2
+                and len(re.findall(r'(?m)^example\b', consumer)) == 3
+                and 'originalFockGammaRealLinear_eq_sourceGammaRealLinear' in source
+                and 'donor_normalized_eq_active_source_axis' in source
+                and 'Finset.sum_congr rfl' in source
+                and 'originalSource48BivectorK' not in source
+                and 'maxRecDepth' not in source,
+                'W0A1 scoped original-source real-linear carrier changed')
+        nxt = s.get('next_planned', {})
+        require(nxt.get('gate') == 'P3-M4-W0A2'
+                and nxt.get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False,
+                'W0A2 complexification gate not allowed without separate contract')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
