@@ -108,7 +108,7 @@ def check_checkpoint(root: Path, s: dict):
                     and blob(root/a['evidence_job_log']) == a['evidence_job_log_blob'],
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
-        expected_reports = (1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3'} else
+        expected_reports = (1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3','P3-M4-W0B1'} else
                             3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C'} else 2)
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
@@ -1901,6 +1901,70 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0B1 full Clifford-induction theorem must remain prospective')
+    if a['gate'] == 'P3-M4-W0B1' and a['status'] == 'PENDING_STRICT_CI':
+        import zipfile
+        require(a.get('attempt') == 'R1'
+                and a.get('qualification') is False
+                and a.get('accepted_predecessor_run') == 44109519633
+                and a.get('source_blob') == '6c9cae683665fb6cda2a6e8ff10d388f6a268a05'
+                and a.get('consumer_blob') == '9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a'
+                and a.get('workflow_blob') == '6565dd372ccb5ba6f553242b3180de8de1ac7e21'
+                and a.get('contract_commit') == '77bee50307dce781239c768fc65e281490b205b7'
+                and a.get('expected_source_reports') == 1
+                and a.get('expected_consumer_reports') == 1
+                and a.get('independent_controls') == 2
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate'] == 'P3-M4-W0B0'
+                and s['last_qualified']['run_id'] == 44109519633
+                and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
+                and s['accepted_anchors'][-1] == s['last_qualified'],
+                'W0B1 original Clifford algebra induction active source or qualified W0B0 drift')
+        donor=s['last_qualified']
+        require(donor.get('source_blob') == 'c67f30bb76a9990e508a8a050a8c3313e694bda7'
+                and donor.get('consumer_blob') == '159c561d6e73e3c86959cd239deb10984064e92e'
+                and donor.get('evidence_archive_blob') == 'abbebbf9e7d2eeefeeef901a415030e09551c2d6'
+                and donor.get('evidence_job_log_blob') == 'd2b6066d6911de727f69a671218c1e87e7ed60d0'
+                and blob(root/donor['evidence_archive']) == donor['evidence_archive_blob']
+                and blob(root/donor['evidence_job_log']) == donor['evidence_job_log_blob'],
+                'W0B1 cannot import a not-fully-accepted original W0B0 donor')
+        red=s.get('previous_active_W0B0_R1_RED',{})
+        require(red.get('status') == 'RED_UNQUALIFIED'
+                and red.get('run_id') == 44064728599
+                and red.get('evidence_archive_blob') == '7a74c38049c3cff6e0bdd1c6e7d2ea72c75deb07'
+                and red.get('evidence_job_log_blob') == '9b450ff0e633f7fb3c908805754c7d95fb992808'
+                and blob(root/red['evidence_archive']) == red['evidence_archive_blob']
+                and blob(root/red['evidence_job_log']) == red['evidence_job_log_blob'],
+                'W0B1 must preserve failed R1 original real-scalar typeclass evidence')
+        stopped=s.get('previous_active_W0A4_R2_stopped',{})
+        require(stopped.get('status') == 'RED_UNQUALIFIED'
+                and stopped.get('stopped') is True
+                and stopped.get('run_id') == 44059417729
+                and stopped.get('stop_reason') ==
+                   'TWO_CONSECUTIVE_ORIGINAL_COMPLEX_LINEAR_MAP_CONSTRUCTION_REDS'
+                and stopped.get('evidence_archive_blob') == 'c1d7f4436e22dd5698058ea3b5557d131823de9d'
+                and blob(root/stopped['evidence_archive']) == stopped['evidence_archive_blob'],
+                'W0B1 must retain stopped original complex-linear lift failures')
+        source=(root/a['source']).read_text()
+        consumer=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\s+',source))==1
+                and len(re.findall(r'(?m)^theorem\s+',consumer))==1
+                and len(re.findall(r'(?m)^example\b',consumer))==2
+                and 'CliffordAlgebra.induction' in source
+                and 'originalComplexEquiv_generator_commutes' in source
+                and 'Algebra.commutes' in source
+                and 'map_algebraMap' in source
+                and 'map_mul' in source and 'map_add' in source
+                and 'activeGammaComplexLinear' not in source
+                and 'OriginalFullComplexGammaTransport' not in source
+                and 'originalSource48BivectorK' not in source,
+                'W0B1 must prove complete Clifford image using already accepted W0B0 generator commutation')
+        nxt=s.get('next_planned',{})
+        require(nxt.get('gate') == 'P3-M4-W0B2'
+                and nxt.get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False,
+                'W0B2 Schur adapter must remain prospective before W0B1 acceptance')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
