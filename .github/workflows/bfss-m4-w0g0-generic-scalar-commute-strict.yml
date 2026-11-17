@@ -35,26 +35,26 @@ jobs:
           python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0g0/preflight.log"
           import json,hashlib,subprocess,re,zipfile
           from pathlib import Path
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean":"ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32","lean/diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean":"b1e2d8077f798c4b9526ddb61b9a50b58c093474","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/diagnostics/BFSSP3M4W0B0OriginalGammaCommutantIndependentConsumer.lean":"159c561d6e73e3c86959cd239deb10984064e92e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean":"93244f15ae511cd4abbac13e216eed6b1988c009","lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean":"9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip":"813b3325da4f721afc0bb313a710410eb40a3bcf","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_complete_job.log":"918c09a60ef1e99a9f8e1d56f380353719cb1fdc","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_RED_evidence_manifest.json":"9a4991d9ce4aeda01ad08684f436d5b9a88bbd48","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean":"ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32","lean/diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean":"b1e2d8077f798c4b9526ddb61b9a50b58c093474","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/diagnostics/BFSSP3M4W0B0OriginalGammaCommutantIndependentConsumer.lean":"159c561d6e73e3c86959cd239deb10984064e92e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean":"93244f15ae511cd4abbac13e216eed6b1988c009","lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean":"9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip":"813b3325da4f721afc0bb313a710410eb40a3bcf","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_complete_job.log":"918c09a60ef1e99a9f8e1d56f380353719cb1fdc","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_RED_evidence_manifest.json":"9a4991d9ce4aeda01ad08684f436d5b9a88bbd48","research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44134589228_PREFLIGHT_RED_evidence.zip":"49bfe05f74a3afa2a167e45d4b178438c2c8390b","research/quantum-information/diagnostics/BFSS_W0G0_R1_44134589228_complete_job.log":"7881bc0df7d4eeae68619a87fd0893a797e90456","research/quantum-information/diagnostics/BFSS_W0G0_R1_44134589228_PREFLIGHT_RED_manifest.json":"0d15093773a1e970776f171b6f9bee9b199b6b7a","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
           for path,sha in pins.items():
               actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert actual==sha,(path,actual,sha)
           source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean").read_text()
           consumer=Path("lean/diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean").read_text()
-          assert len(re.findall(r"(?m)^theorem\\b",source))==2
-          assert len(re.findall(r"(?m)^theorem\\b",consumer))==2
-          assert len(re.findall(r"(?m)^example\\b",consumer))==2
-          assert re.findall(r"(?m)^#print axioms (\\S+)$",source)==["generic_scalarImage_commutes","generic_algEquiv_scalarImage_commutes"]
-          assert re.findall(r"(?m)^#print axioms (\\S+)$",consumer)==["generic_scalarImage_commutes_consumer","generic_algEquiv_scalarImage_commutes_consumer"]
+          assert len(re.findall(r"(?m)^theorem\b",source))==2
+          assert len(re.findall(r"(?m)^theorem\b",consumer))==2
+          assert len(re.findall(r"(?m)^example\b",consumer))==2
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==["generic_scalarImage_commutes","generic_algEquiv_scalarImage_commutes"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==["generic_scalarImage_commutes_consumer","generic_algEquiv_scalarImage_commutes_consumer"]
           assert "Algebra.commute_algebraMap_right" in source
           assert "AlgEquiv.commutes" in source
           assert "CliffordAlgebra.induction" not in source
           assert len(re.findall(r"(?m)^import ",source))==2
           assert not re.search(r"(?m)^import .*BFSS",source)
-          assert consumer.startswith("import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0G0GenericScalarActionAdapter\\n")
+          assert consumer.startswith("import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0G0GenericScalarActionAdapter\n")
           for body in [source,consumer]:
               assert "set_option autoImplicit false" in body
-              assert not re.search(r"(?m)^\\s*(?:sorry|admit|axiom|unsafe)\\b",body)
+              assert not re.search(r"(?m)^\s*(?:sorry|admit|axiom|unsafe)\b",body)
               assert "maxHeartbeats" not in body and "maxRecDepth" not in body
               assert "originalComplexCliffordFockAlgEquiv" not in body
               assert "sourceNormalizedGamma" not in body
@@ -82,6 +82,18 @@ jobs:
                   assert z.read("tested-commit.txt").decode().strip()==red["tested_sha"]
               assert "sorryAx" in Path(red["evidence_job_log"]).read_text()
           assert Path(a["prospective_receipt"]).is_file()
+          evidence=Path("research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44134589228_PREFLIGHT_RED_evidence.zip")
+          raw=evidence.read_bytes()
+          assert len(raw)==389 and hashlib.sha256(raw).hexdigest()=="68fe1a129f566cdedbb36283dc217bb95c337ca1be1be97215b97c9aeecf866b"
+          with zipfile.ZipFile(evidence) as z:
+              assert z.testzip() is None and set(z.namelist())=={"preflight.log","tested-commit.txt"}
+              assert "AssertionError" in z.read("preflight.log").decode()
+          log=Path("research/quantum-information/diagnostics/BFSS_W0G0_R1_44134589228_complete_job.log").read_text()
+          assert "AssertionError" in log and "Process completed with exit code 1" in log
+          assert s["w0g0_preflight_r1"]["run_id"]==44134589228
+          assert s["w0g0_preflight_r1"]["status"]=="PREFLIGHT_ONLY_RED"
+          assert s["w0g0_preflight_r1"]["original_zip_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44134589228_PREFLIGHT_RED_evidence.zip"]
+          assert s["w0g0_preflight_r1"]["full_job_log_blob"]==pins["research/quantum-information/diagnostics/BFSS_W0G0_R1_44134589228_complete_job.log"]
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           manifest=json.loads(Path("lean/lake-manifest.json").read_text())
           assert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -115,8 +127,8 @@ jobs:
           from pathlib import Path
           root=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-w0g0"
           allowed={"propext","Classical.choice","Quot.sound"}
-          warning_ok=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
-          pat=re.compile(r"(?m)^'([^'\\n]+)' (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)")
+          warning_ok=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
           def audit(log,expected):
               assert "error:" not in log and "sorryAx" not in log,log[-2000:]
               warnings=[l for l in log.splitlines() if "warning:" in l and not warning_ok.fullmatch(l)]
@@ -127,9 +139,9 @@ jobs:
               assert names==expected and len(set(names))==len(names),names
               for name,axioms in found:
                   assert {a.strip() for a in axioms.split(",") if a.strip()}<=allowed,(name,axioms)
-          good="'N.a' depends on axioms: [propext, Classical.choice, Quot.sound]\\n"
+          good="'N.a' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
           audit(good,["a"])
-          negatives=[good.replace("Quot.sound","sorryAx",1),good.replace("Quot.sound","Foreign.ax",1),good+good,"",good+"warning: unexpected warning\\n",good+"error: failed proof\\n"]
+          negatives=[good.replace("Quot.sound","sorryAx",1),good.replace("Quot.sound","Foreign.ax",1),good+good,"",good+"warning: unexpected warning\n",good+"error: failed proof\n"]
           for i,invalid in enumerate(negatives):
               try: audit(invalid,["a"])
               except AssertionError: pass

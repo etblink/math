@@ -2093,7 +2093,7 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('accepted_predecessor_run') == 44109519633
                 and a.get('source_blob') == 'ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32'
                 and a.get('consumer_blob') == 'b1e2d8077f798c4b9526ddb61b9a50b58c093474'
-                and a.get('workflow_blob') == '47195e1970e94dc51d73ed232b7252757e7b560b'
+                and a.get('workflow_blob') == 'dee2c3f91077e4fcf89b370745fffecd68f963c0'
                 and a.get('contract_commit') == '41411b859527fa3501aa857c1106e336b04adca7'
                 and a.get('expected_source_reports') == 2
                 and a.get('expected_consumer_reports') == 2
@@ -2128,17 +2128,36 @@ def check_checkpoint(root: Path, s: dict):
                         and set(z.namelist()) == {'cold-source.log','preflight.log','tested-commit.txt'}
                         and z.read('tested-commit.txt').decode().strip() == red['tested_sha'],
                         'W0G0 predecessor source RED original ZIP invalid')
+        harness=s.get('w0g0_preflight_r1',{})
+        require(harness.get('run_id') == 44134589228
+                and harness.get('status') == 'PREFLIGHT_ONLY_RED'
+                and harness.get('failure_phase') == 'PREFLIGHT_BEFORE_LEAN'
+                and harness.get('source_blob') == 'ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32'
+                and harness.get('consumer_blob') == 'b1e2d8077f798c4b9526ddb61b9a50b58c093474'
+                and harness.get('original_zip_blob') == '49bfe05f74a3afa2a167e45d4b178438c2c8390b'
+                and harness.get('full_job_log_blob') == '7881bc0df7d4eeae68619a87fd0893a797e90456'
+                and harness.get('manifest_blob') == '0d15093773a1e970776f171b6f9bee9b199b6b7a'
+                and blob(root/harness['original_zip']) == harness['original_zip_blob']
+                and blob(root/harness['full_job_log']) == harness['full_job_log_blob']
+                and blob(root/harness['manifest']) == harness['manifest_blob'],
+                'W0G0 R1 original harness-only RED must remain pinned')
+        with zipfile.ZipFile(root/harness['original_zip']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist()) == {'preflight.log','tested-commit.txt'}
+                    and 'AssertionError' in z.read('preflight.log').decode()
+                    and z.read('tested-commit.txt').decode().strip() == harness['tested_sha'],
+                    'W0G0 harness-only original provider ZIP invalid')
         source=(root/a['source']).read_text()
         consumer=(root/a['consumer']).read_text()
-        require(len(re.findall(r'(?m)^theorem\\s+',source))==2
-                and len(re.findall(r'(?m)^theorem\\s+',consumer))==2
-                and len(re.findall(r'(?m)^example\\b',consumer))==2
+        require(len(re.findall(r'(?m)^theorem\s+',source))==2
+                and len(re.findall(r'(?m)^theorem\s+',consumer))==2
+                and len(re.findall(r'(?m)^example\b',consumer))==2
                 and 'Algebra.commute_algebraMap_right' in source
                 and 'AlgEquiv.commutes' in source
                 and 'CliffordAlgebra.induction' not in source
                 and 'originalComplexCliffordFockAlgEquiv' not in source
                 and not re.search(r'(?m)^import .*BFSS',source)
-                and consumer.startswith('import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0G0GenericScalarActionAdapter\\n'),
+                and consumer.startswith('import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0G0GenericScalarActionAdapter\n'),
                 'W0G0 generic source/consumer proof boundary changed')
         nxt=s.get('next_planned',{})
         require(nxt.get('gate') == 'P3-M4-W0H0'

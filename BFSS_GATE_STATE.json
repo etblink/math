@@ -732,7 +732,7 @@
     "workflow": ".github/workflows/bfss-m4-w0g0-generic-scalar-commute-strict.yml",
     "source_blob": "ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32",
     "consumer_blob": "b1e2d8077f798c4b9526ddb61b9a50b58c093474",
-    "workflow_blob": "47195e1970e94dc51d73ed232b7252757e7b560b",
+    "workflow_blob": "dee2c3f91077e4fcf89b370745fffecd68f963c0",
     "accepted_predecessor_run": 44109519633,
     "first_atom": "GENERIC_COMPLEX_ALGEBRA_MAP_CENTRALITY_AND_ALGEQUIV_SCALAR_TRANSPORT",
     "expected_source_reports": 2,
@@ -748,7 +748,7 @@
     "w0b1_stopped_r2_run": 44127193329,
     "w0b1_original_red_r1_run": 44117272657,
     "w0b0_original_green_run": 44109519633,
-    "note": "New independent generic scalar-image commutation and AlgEquiv transport only; no BFSS original Fock/Clifford import, no W0B1 R3 or source modifications. Frozen two W0B1 original REDs and W0A4 STOP preserved. Generic 2 theorem source, 2 theorem independent consumer, 2 concrete controls, strict axioms and negative mutations pending. W0B0 R2 remains last qualified; no BFSS/QIT physical conclusions."
+    "note": "New independent generic scalar-image commutation and AlgEquiv transport only; no BFSS original Fock/Clifford import, no W0B1 R3 or source modifications. Frozen two W0B1 original REDs and W0A4 STOP preserved. Generic 2 theorem source, 2 theorem independent consumer, 2 concrete controls, strict axioms and negative mutations pending. W0B0 R2 remains last qualified; no BFSS/QIT physical conclusions. Initial R1 harness-only preflight RED #44134589228 independently archived #44135186106; Python regex/escape repair in strict workflow+guard only, original source and consumer bytes unchanged."
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -3088,5 +3088,27 @@
     "receipt": "research/quantum-information/BFSS_QIT_SCC_W0B1_R2_STOP_44127193329_2026_11_17.md",
     "preservation_run": 44132100611,
     "evidence_status": "ORIGINAL_R2_RED_PROVIDER_ZIP_FULL_LOG_MEMBER_SHA256_AND_MANIFEST_GIT_PINNED"
+  },
+  "w0g0_preflight_r1": {
+    "gate": "P3-M4-W0G0",
+    "attempt": "R1",
+    "status": "PREFLIGHT_ONLY_RED",
+    "failure_phase": "PREFLIGHT_BEFORE_LEAN",
+    "run_id": 44134589228,
+    "job_id": 134220543984,
+    "tested_sha": "a7d236bb340637230d87718ba36470c1c5a4742d",
+    "artifact_id": 14350907997,
+    "artifact_sha256": "68fe1a129f566cdedbb36283dc217bb95c337ca1be1be97215b97c9aeecf866b",
+    "original_zip": "research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44134589228_PREFLIGHT_RED_evidence.zip",
+    "original_zip_blob": "49bfe05f74a3afa2a167e45d4b178438c2c8390b",
+    "full_job_log": "research/quantum-information/diagnostics/BFSS_W0G0_R1_44134589228_complete_job.log",
+    "full_job_log_blob": "7881bc0df7d4eeae68619a87fd0893a797e90456",
+    "manifest": "research/quantum-information/diagnostics/BFSS_W0G0_R1_44134589228_PREFLIGHT_RED_manifest.json",
+    "manifest_blob": "0d15093773a1e970776f171b6f9bee9b199b6b7a",
+    "preservation_run": 44135186106,
+    "source_blob": "ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32",
+    "consumer_blob": "b1e2d8077f798c4b9526ddb61b9a50b58c093474",
+    "contract": "research/quantum-information/BFSS_QIT_SCC_W0G0_R1_PREFLIGHT_ONLY_RED_44134589228_HARNESS_REPAIR_2026_11_17.md",
+    "note": "Original W0G0 R1 preflight-only regex over-escaping, zero Lean source/consumer attempted. Two member provider ZIP and full job log independently pinned; repair affects only strict workflow and roadmap guard. No native RED counted."
   }
 }
