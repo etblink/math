@@ -1,0 +1,151 @@
+name: BFSS M4 W0G0 generic scalar algebra-equiv strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean
+      - lean/diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean
+      - .github/workflows/bfss-m4-w0g0-generic-scalar-commute-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-m4-w0g0-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generic-scalar-action-adapter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - name: Checkout exact unified branch source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Preflight source exactness and frozen W0B1 original RED provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-m4-w0g0"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-w0g0/tested-commit.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0g0/preflight.log"
+          import json,hashlib,subprocess,re,zipfile
+          from pathlib import Path
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean":"ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32","lean/diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean":"b1e2d8077f798c4b9526ddb61b9a50b58c093474","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/diagnostics/BFSSP3M4W0B0OriginalGammaCommutantIndependentConsumer.lean":"159c561d6e73e3c86959cd239deb10984064e92e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean":"93244f15ae511cd4abbac13e216eed6b1988c009","lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean":"9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip":"813b3325da4f721afc0bb313a710410eb40a3bcf","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_complete_job.log":"918c09a60ef1e99a9f8e1d56f380353719cb1fdc","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_RED_evidence_manifest.json":"9a4991d9ce4aeda01ad08684f436d5b9a88bbd48","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          for path,sha in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert actual==sha,(path,actual,sha)
+          source=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean").read_text()
+          consumer=Path("lean/diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean").read_text()
+          assert len(re.findall(r"(?m)^theorem\\b",source))==2
+          assert len(re.findall(r"(?m)^theorem\\b",consumer))==2
+          assert len(re.findall(r"(?m)^example\\b",consumer))==2
+          assert re.findall(r"(?m)^#print axioms (\\S+)$",source)==["generic_scalarImage_commutes","generic_algEquiv_scalarImage_commutes"]
+          assert re.findall(r"(?m)^#print axioms (\\S+)$",consumer)==["generic_scalarImage_commutes_consumer","generic_algEquiv_scalarImage_commutes_consumer"]
+          assert "Algebra.commute_algebraMap_right" in source
+          assert "AlgEquiv.commutes" in source
+          assert "CliffordAlgebra.induction" not in source
+          assert len(re.findall(r"(?m)^import ",source))==2
+          assert not re.search(r"(?m)^import .*BFSS",source)
+          assert consumer.startswith("import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0G0GenericScalarActionAdapter\\n")
+          for body in [source,consumer]:
+              assert "set_option autoImplicit false" in body
+              assert not re.search(r"(?m)^\\s*(?:sorry|admit|axiom|unsafe)\\b",body)
+              assert "maxHeartbeats" not in body and "maxRecDepth" not in body
+              assert "originalComplexCliffordFockAlgEquiv" not in body
+              assert "sourceNormalizedGamma" not in body
+          s=json.loads(Path("BFSS_GATE_STATE.json").read_text())
+          a=s["active"]; q=s["last_qualified"]; old=s["previous_active_W0B1_R2_stopped"]
+          assert a["gate"]=="P3-M4-W0G0" and a["attempt"]=="R1"
+          assert a["status"]=="PENDING_STRICT_CI" and a["qualification"] is False
+          assert a["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean"]
+          assert a["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean"]
+          assert a["accepted_predecessor_run"]==44109519633
+          assert a["contract_commit"]=="41411b859527fa3501aa857c1106e336b04adca7"
+          assert q["gate"]=="P3-M4-W0B0" and q["status"]=="GREEN_QUALIFIED" and q["run_id"]==44109519633
+          assert q["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip"]
+          assert old["gate"]=="P3-M4-W0B1" and old["status"]=="RED_UNQUALIFIED" and old["stopped"] is True
+          assert old["stop_reason"]=="TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP"
+          assert old["run_id"]==44127193329 and old["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean"]
+          assert old["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip"]
+          r1=s["previous_active_W0B1_R1_RED"]
+          assert r1["run_id"]==44117272657 and r1["status"]=="RED_UNQUALIFIED"
+          assert r1["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip"]
+          for red in [r1,old]:
+              with zipfile.ZipFile(red["evidence_archive"]) as z:
+                  assert z.testzip() is None
+                  assert set(z.namelist())=={"cold-source.log","preflight.log","tested-commit.txt"}
+                  assert z.read("tested-commit.txt").decode().strip()==red["tested_sha"]
+              assert "sorryAx" in Path(red["evidence_job_log"]).read_text()
+          assert Path(a["prospective_receipt"]).is_file()
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          manifest=json.loads(Path("lean/lake-manifest.json").read_text())
+          assert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_W0G0_W0B0_GREEN_W0B1_R1_R2_STOP_ORIGINAL_EVIDENCE_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Cold generic source, separate consumer and strict axiom auditor
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/bfss-m4-w0g0"
+          timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0G0GenericScalarActionAdapter 2>&1 | tee "$root/cold-source.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0G0GenericScalarActionAdapter.lean 2>&1 | tee "$root/source-axioms.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4W0G0GenericScalarActionIndependentConsumer.lean 2>&1 | tee "$root/consumer.log"
+          python3 - <<'PY' 2>&1 | tee "$root/auditor.log"
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-w0g0"
+          allowed={"propext","Classical.choice","Quot.sound"}
+          warning_ok=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          pat=re.compile(r"(?m)^'([^'\\n]+)' (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)")
+          def audit(log,expected):
+              assert "error:" not in log and "sorryAx" not in log,log[-2000:]
+              warnings=[l for l in log.splitlines() if "warning:" in l and not warning_ok.fullmatch(l)]
+              assert not warnings,warnings[:3]
+              found=pat.findall(log)
+              assert len(found)==len(expected),(found,expected)
+              names=[name.rsplit(".",1)[-1] for name,_ in found]
+              assert names==expected and len(set(names))==len(names),names
+              for name,axioms in found:
+                  assert {a.strip() for a in axioms.split(",") if a.strip()}<=allowed,(name,axioms)
+          good="'N.a' depends on axioms: [propext, Classical.choice, Quot.sound]\\n"
+          audit(good,["a"])
+          negatives=[good.replace("Quot.sound","sorryAx",1),good.replace("Quot.sound","Foreign.ax",1),good+good,"",good+"warning: unexpected warning\\n",good+"error: failed proof\\n"]
+          for i,invalid in enumerate(negatives):
+              try: audit(invalid,["a"])
+              except AssertionError: pass
+              else: raise AssertionError(("negative mutation was accepted",i))
+          cold=(root/"cold-source.log").read_text()
+          assert "Build completed successfully" in cold
+          assert "error:" not in cold and "sorryAx" not in cold
+          audit((root/"source-axioms.log").read_text(),["generic_scalarImage_commutes","generic_algEquiv_scalarImage_commutes"])
+          audit((root/"consumer.log").read_text(),["generic_scalarImage_commutes_consumer","generic_algEquiv_scalarImage_commutes_consumer"])
+          print("BFSS_W0G0_2_GENERIC_SOURCE_2_CONSUMER_2_CONTROLS_SIX_MUTANTS_STRICT_GREEN")
+          PY
+      - name: Upload exact provider-original evidence even on RED
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-m4-w0g0-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-m4-w0g0/
+          if-no-files-found: warn
+          retention-days: 14

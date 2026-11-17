@@ -2086,6 +2086,67 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0B2 Schur adapter must remain prospective before W0B1 acceptance')
+    if a['gate'] == 'P3-M4-W0G0' and a['status'] == 'PENDING_STRICT_CI':
+        import zipfile
+        require(a.get('attempt') == 'R1'
+                and a.get('qualification') is False
+                and a.get('accepted_predecessor_run') == 44109519633
+                and a.get('source_blob') == 'ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32'
+                and a.get('consumer_blob') == 'b1e2d8077f798c4b9526ddb61b9a50b58c093474'
+                and a.get('workflow_blob') == '47195e1970e94dc51d73ed232b7252757e7b560b'
+                and a.get('contract_commit') == '41411b859527fa3501aa857c1106e336b04adca7'
+                and a.get('expected_source_reports') == 2
+                and a.get('expected_consumer_reports') == 2
+                and a.get('independent_controls') == 2
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate'] == 'P3-M4-W0B0'
+                and s['last_qualified']['run_id'] == 44109519633
+                and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
+                and s['accepted_anchors'][-1] == s['last_qualified'],
+                'W0G0 generic scalar interface cannot drift from qualified W0B0')
+        old=s.get('previous_active_W0B1_R2_stopped',{})
+        r1=s.get('previous_active_W0B1_R1_RED',{})
+        require(old.get('gate') == 'P3-M4-W0B1'
+                and old.get('attempt') == 'R2'
+                and old.get('run_id') == 44127193329
+                and old.get('status') == 'RED_UNQUALIFIED'
+                and old.get('stopped') is True
+                and old.get('stop_reason') == 'TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP'
+                and old.get('source_blob') == '93244f15ae511cd4abbac13e216eed6b1988c009'
+                and old.get('consumer_blob') == '9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a'
+                and r1.get('run_id') == 44117272657
+                and r1.get('status') == 'RED_UNQUALIFIED'
+                and r1.get('source_blob') == '6c9cae683665fb6cda2a6e8ff10d388f6a268a05',
+                'W0G0 cannot erase two stopped W0B1 source REDs')
+        for red in (r1,old):
+            require(blob(root/red['evidence_archive']) == red['evidence_archive_blob']
+                    and blob(root/red['evidence_job_log']) == red['evidence_job_log_blob']
+                    and blob(root/red['evidence_manifest']) == red['evidence_manifest_blob'],
+                    'W0G0 predecessor native RED evidence drift')
+            with zipfile.ZipFile(root/red['evidence_archive']) as z:
+                require(z.testzip() is None
+                        and set(z.namelist()) == {'cold-source.log','preflight.log','tested-commit.txt'}
+                        and z.read('tested-commit.txt').decode().strip() == red['tested_sha'],
+                        'W0G0 predecessor source RED original ZIP invalid')
+        source=(root/a['source']).read_text()
+        consumer=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\\s+',source))==2
+                and len(re.findall(r'(?m)^theorem\\s+',consumer))==2
+                and len(re.findall(r'(?m)^example\\b',consumer))==2
+                and 'Algebra.commute_algebraMap_right' in source
+                and 'AlgEquiv.commutes' in source
+                and 'CliffordAlgebra.induction' not in source
+                and 'originalComplexCliffordFockAlgEquiv' not in source
+                and not re.search(r'(?m)^import .*BFSS',source)
+                and consumer.startswith('import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0G0GenericScalarActionAdapter\\n'),
+                'W0G0 generic source/consumer proof boundary changed')
+        nxt=s.get('next_planned',{})
+        require(nxt.get('gate') == 'P3-M4-W0H0'
+                and nxt.get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False,
+                'W0H0 source-specific adapter cannot stage before generic strict qualification')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
