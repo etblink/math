@@ -250,7 +250,7 @@
   "active": {
     "gate": "P3-M4-LB1P1",
     "attempt": "R1",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean",
     "consumer": "lean/diagnostics/BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.lean",
@@ -271,10 +271,29 @@
       "Quot.sound"
     ],
     "stop_rule_inherited": "CT1G0_R1_R2_STOPPED_NO_R3",
-    "note": "P1 R1 only: conditional original Fock four-factor commutator plus exact four original source48 gammas; two roots, independent consumer, four controls; prior CT1 native K-sum gate stopped.",
-    "pending_run_id": 43996551474,
-    "pending_tested_sha": "c34911208aae4964283b39454ed41d990eb1306e",
-    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P1_R1_LAUNCH_43996551474_2026_11_16.md"
+    "note": "R1 original strict cold source RED: qualified donor namespaces split at period+newline (lines 41,75,77); original ZIP rehashed. No source or consumer theorem qualified.",
+    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P1_R1_LAUNCH_43996551474_2026_11_16.md",
+    "verdict": "RED",
+    "run_id": 43996551474,
+    "tested_sha": "c34911208aae4964283b39454ed41d990eb1306e",
+    "job_id": 133749915982,
+    "failure_phase": "COLD_NATIVE_SOURCE",
+    "first_error": "P3M4LB1P1OriginalFourMajoranaCommutator.lean:41:6 Unknown identifier (split qualified donor theorem)",
+    "source_reports_qualified": 0,
+    "consumer_reports_completed": 0,
+    "artifact_id": 14290412981,
+    "artifact_sha256": "0d873a2259c24bc4ccdbb3be175869ad413504dcd0cd12fe8b25830e557e7420",
+    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P1_R1_43996551474_evidence.zip",
+    "evidence_archive_blob": "300e166ae9069ee9880b13039411e0acb6fefcb6",
+    "evidence_job_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P1_R1_43996551474_complete_job.log",
+    "evidence_job_log_blob": "3769d6ce7d204fc35636f10dd93dc8b2827b1c1d",
+    "preservation_run_id": 43998088476,
+    "preservation_job_id": 133755029261,
+    "preservation_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P1_R1_43998088476_preservation_job.log",
+    "preservation_log_blob": "0ee823a81d37d144d993564877a8005094a0a481",
+    "evidence_manifest": "research/spectral-p2-original-field/diagnostics/BFSS_M4_LB1P1_R1_43996551474_manifest.json",
+    "evidence_manifest_blob": "f21d17f8848d9a2da5e88b106c5d4d5f488d9d98",
+    "receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P1_R1_RED_43996551474_LINE_SPLIT_DONOR_IDENTIFIER_2026_11_16.md"
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -287,7 +306,7 @@
   },
   "strategic_focus": {
     "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for the original physical Hamiltonian",
-    "immediate": "CT0 R2 last qualified #43983772199. CT1G0 R1/R2 stopped after native matrix K/Gamma recursion; original full RED artifacts preserved. P1 R1 pending strict source-exact four-Majorana commutator on original Fock (2 roots, 2 independent consumer roots, 4 controls), avoiding arbitrary K(A) expansion. Physical Gauss/fidelity objective unchanged.",
+    "immediate": "P1 R1 source syntax RED #43996551474 (line-split LB1L2/LB0 qualified names), original ZIP and logs preserved/rehashed #43998088476. CT0 R2 last qualified. New antisym bivector + all-index half-sum route promising for avoiding CT1 K(A) recursion. Physical Gauss/fidelity obligations unchanged.",
     "last_full_hardy_gate": "P3-AUX-HARDY-G15",
     "last_full_hardy_run": 43763173942,
     "full_G16_qualified": false,
@@ -792,5 +811,34 @@
     "evidence_manifest_blob": "87efa60e2341c7ebac9781599a26b7bfb940804d",
     "receipt": "research/spectral-p2-original-field/BFSS_M4_CT1G0_R2_RED_43991790285_NATIVE_JACOBI_RECURSION_STOP_2026_11_16.md",
     "architecture_review": "research/spectral-p2-original-field/BFSS_M4_CT1_TWO_REDS_ARCHITECTURE_DECISION_2026_11_16.md"
+  },
+  "previous_active_LB1P1_R1_pending": {
+    "gate": "P3-M4-LB1P1",
+    "attempt": "R1",
+    "status": "PENDING_STRICT_CI",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-lb1p1-four-original-majorana-strict.yml",
+    "source_blob": "c30f23f118cea33c388f391e81b406495d52de99",
+    "consumer_blob": "5822a7290c04e5fc88b297ad14d9d16b8c290bbd",
+    "workflow_blob": "b8339568106000863475857ee05513f2fdfc4ab9",
+    "accepted_predecessor_run": 43983772199,
+    "expected_source_reports": 2,
+    "expected_consumer_reports": 2,
+    "independent_controls": 4,
+    "contract_commit": "003414d88844bef9b0cce39fe28a1d841d5d8dd2",
+    "initial_contract": "research/spectral-p2-original-field/BFSS_M4_LB1P1_PROSPECTIVE_FOUR_MAJORANA_CONTRACT_2026_11_16.md",
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P1_R1_SOURCE_AUDIT_PRE_GATE_2026_11_16.md",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "stop_rule_inherited": "CT1G0_R1_R2_STOPPED_NO_R3",
+    "note": "P1 R1 only: conditional original Fock four-factor commutator plus exact four original source48 gammas; two roots, independent consumer, four controls; prior CT1 native K-sum gate stopped.",
+    "pending_run_id": 43996551474,
+    "pending_tested_sha": "c34911208aae4964283b39454ed41d990eb1306e",
+    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_LB1P1_R1_LAUNCH_43996551474_2026_11_16.md"
   }
 }
