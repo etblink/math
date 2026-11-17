@@ -3260,9 +3260,22 @@ def check_checkpoint(root: Path, s: dict):
         for red in (s['previous_active_W0H1B_R1_RED'],
                     s['previous_active_W0B1_R1_RED'],
                     s['previous_active_W0B1_R2_stopped']):
-            for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            # Historical W0B1 R1 source and workflow were replaced *at the same paths*
+            # by the separately archived original R2. Their R1 blobs remain historical
+            # Git objects and are named by R1 provider evidence, not current tree paths.
+            for kind in ('source','consumer','workflow'):
+                if red['run_id']==44117272657 and kind in ('source','workflow'):
+                    expected={'source':'6c9cae683665fb6cda2a6e8ff10d388f6a268a05',
+                              'workflow':'6565dd372ccb5ba6f553242b3180de8de1ac7e21'}
+                    require(red[kind+'_blob']==expected[kind]
+                            and blob(root/red[kind])==s['previous_active_W0B1_R2_stopped'][kind+'_blob'],
+                            'W0B2A original R1/R2 at-path replacement record drift '+kind)
+                else:
+                    require(blob(root/red[kind])==red[kind+'_blob'],
+                            'W0B2A changed frozen original RED '+kind)
+            for kind in ('evidence_archive','evidence_job_log','evidence_manifest'):
                 require(blob(root/red[kind])==red[kind+'_blob'],
-                        'W0B2A changed frozen original RED '+kind)
+                        'W0B2A changed frozen original RED evidence '+kind)
         for path,sha in (
             ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3BOriginalComplexCliffordSimpleModuleProbe.lean','e7de3612d83889d8e08318307b37b15ac6567202'),
             ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3COriginalCliffordFockSchurAndFiniteProbe.lean','6fefd9ae344df0b7247feb34c9bec5ea0a27aea0'),
