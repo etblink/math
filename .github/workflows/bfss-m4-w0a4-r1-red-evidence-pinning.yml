@@ -73,7 +73,7 @@ jobs:
               assert z.read("tested-commit.txt").decode().strip()==tested
               assert "BFSS_W0A4_FULL_COMPLEXIFIED_GAMMA_W0A3_QUALIFIED_DONORS_PREFLIGHT_PASS" in z.read("preflight.log").decode()
               cold=z.read("cold-source.log").decode()
-              assert "Unknown identifier \`AlgebraTensorModule.lift\`" in cold
+              assert "Unknown identifier `AlgebraTensorModule.lift`" in cold
               assert "'change' tactic failed, pattern" in cold
               assert "build failed" in cold
               assert "Build completed successfully" not in cold
