@@ -1,0 +1,18 @@
+# BFSS × QIT × SCC — W0B2A R1 CI harness staging diagnostic (not a mathematical RED)
+
+Date: 2026-11-17 Pacific. **Original W0B2A R1 strict source CI is separate and pending; no native source failure is inferred here.**
+
+## Original staging and exact runs
+
+- Original W0B2A R1 staging [commit `c0ae4222093f5f922a25569098d420b63fb9e66e`](https://github.com/etblink/math/commit/c0ae4222093f5f922a25569098d420b63fb9e66e) created source blob `58d852a27e84288c0b1f33d784940155e2f26d54`, independent consumer blob `85784957405d4740f7dddc9e04dc72ed4c9d3b7a`, workflow blob `903636c37e0794846146aadd3b175a09553d34e0`; original proof run [#44174996514](https://github.com/etblink/math/actions/runs/44174996514). The workflow's exact source and donor preflight passed. This note does not assert that the subsequent Lean build/consumer/auditor have passed.
+- Concurrent roadmap [#44174996360](https://github.com/etblink/math/actions/runs/44174996360) **HARNESS-ONLY RED** on the staging commit: `BFSS_ROADMAP_CHECK_FAIL: W0B2A changed frozen original RED source`. Initial W0B2A-specific check incorrectly required the *current* W0B1 R1 source/workflow paths to contain historical R1 blobs.
+- [Commit `af8bc34c9e1e4afea5428ebf0c6054dbe5bc401e`](https://github.com/etblink/math/commit/af8bc34c9e1e4afea5428ebf0c6054dbe5bc401e) repaired a separate, source-unchanged Python regex escaping error in the W0B2A checkpoint checker. Its roadmap [#44175149548](https://github.com/etblink/math/actions/runs/44175149548) still exhibited the historical R1-source guard RED. **Neither failure reached or tested the W0B2A Lean theorem.**
+- At the previously stopped original W0B1 gate, R1 [#44117272657](https://github.com/etblink/math/actions/runs/44117272657) source blob `6c9cae683665fb6cda2a6e8ff10d388f6a268a05` and workflow blob `6565dd372ccb5ba6f553242b3180de8de1ac7e21` were later superseded **at the same file paths** by stopped R2 [#44127193329](https://github.com/etblink/math/actions/runs/44127193329), source `93244f15ae511cd4abbac13e216eed6b1988c009`, workflow `1f43a7d9ac86d42457020730a53d59eb5db48f41`. Both exact R1/R2 original provider RED ZIPs, complete job logs, manifests and historical blob labels remain retained; **never assert that the old R1 bytes equal the current R2 tree's bytes**.
+- [Checker-only repair commit `337982c3d7cc7164edb34aac7481b164f2faec99`](https://github.com/etblink/math/commit/337982c3d7cc7164edb34aac7481b164f2faec99) distinguishes historical R1 path reuse from current R2 file bytes, while still validating exact R1 historical blob identities and **all original R1 and R2 evidence**. No Lean source, consumer, M3B/M3C/M3I donor, accepted W0H1B or archival proof bytes changed.
+- Independent post-repair roadmap [#44175396442](https://github.com/etblink/math/actions/runs/44175396442) **GREEN**: `BFSS_ROADMAP_CHECK_PASS schema 2 milestone M4 accepted P3-M4-W0H1B active P3-M4-W0B2A PENDING_STRICT_CI`.
+
+## Generalizable lesson and stop semantics
+
+A historical gate's `source_blob`/ `workflow_blob` records the **bytes at its tested commit**; the currently checked-out file path may hold a later attempt. Historic claims must be verified against original run receipts and preserved source identity, not by equating all historic at-path values to a current HEAD file. Red logs/ZIPs and manifests remain Git-pinned; neither R1 nor R2 W0B1 has been revived.
+
+Record roadmap-only REDs separately from native Lean REDs. The W0B2A two-analogous-native-RED stop is **not** triggered by these three checker commits. The original W0B2A R1 strict run and any eventual provider-original preservation still require separate outcome verification. `main` remains untouched.
