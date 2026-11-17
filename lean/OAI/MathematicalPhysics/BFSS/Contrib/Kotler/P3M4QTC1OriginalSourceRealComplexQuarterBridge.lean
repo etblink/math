@@ -44,7 +44,8 @@ theorem originalFock_real_quarter_quadratic
         ring
       have hc : ((B p q / 4 : ℝ) : ℂ) =
           (1 / 4 : ℂ) * ((B p q : ℝ) : ℂ) := by
-        exact_mod_cast hr
+        push_cast
+        ring
       calc
         (B p q / 4 : ℝ) • w p q =
           ((B p q / 4 : ℝ) : ℂ) • w p q :=
@@ -67,9 +68,22 @@ theorem originalSource48BivectorK_eq_originalFockQuadratic
     originalFockQuadratic sourceNormalizedGamma
       (fun p q : Source48Label => ((B p q : ℝ) : ℂ)) := by
   classical
-  unfold originalSource48BivectorK originalFockQuadratic
-  exact originalFock_real_quarter_quadratic
-    (fun p q : Source48Label => sourceNormalizedGamma p * sourceNormalizedGamma q) B
+  calc
+    originalSource48BivectorK B =
+      (∑ p : Source48Label, ∑ q : Source48Label,
+        (B p q / 4 : ℝ) •
+          (sourceNormalizedGamma p * sourceNormalizedGamma q)) := by
+        rfl
+    _ = (1 / 4 : ℂ) •
+      (∑ p : Source48Label, ∑ q : Source48Label,
+        ((B p q : ℝ) : ℂ) •
+          (sourceNormalizedGamma p * sourceNormalizedGamma q)) :=
+      originalFock_real_quarter_quadratic
+        (fun p q : Source48Label =>
+          sourceNormalizedGamma p * sourceNormalizedGamma q) B
+    _ = originalFockQuadratic sourceNormalizedGamma
+          (fun p q : Source48Label => ((B p q : ℝ) : ℂ)) := by
+        rfl
 
 #print axioms originalFock_real_quarter_quadratic
 #print axioms originalSource48BivectorK_eq_originalFockQuadratic

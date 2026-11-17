@@ -35,7 +35,7 @@ jobs:
           python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-qtc1/preflight.log"
           import hashlib,json,re,subprocess,zipfile
           from pathlib import Path
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean":"127cd129a375f7f024c882deb62d1220de26aa0d","lean/diagnostics/BFSSP3M4QTC1OriginalSourceRealComplexQuarterIndependentConsumer.lean":"24113406f779e1f2dcd769c9c400d0b897dda6a9","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0DOriginalFockThinTensorAdapter.lean":"e52b8ca7a440e04ab3c3a93187e5100daa39e074","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean":"b0b519e46566856e100bf6aa882f9fcdf37d397e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0CAbstractCoefficientContraction.lean":"9448c9a47c605cb6aba2cfc798ae28a0213c9411","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0D_R1_44018395393_evidence.zip":"c0de176f927ba70bed4494534f881d2ff93e732d","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0A_R1_44001621836_evidence.zip":"7cebb61b36ba22283cbd27a8d5f91b301b7303e2","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0C_R1_44016807302_evidence.zip":"721c3b827bffafbe61d3d81720a103fb5297e389","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0B_R1_44012367725_evidence.zip":"671be94ee31c954b8f8b276de7b8ede9359aa617","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0B_R2_44014529416_evidence.zip":"485d47d68a5425a79d720248a4b64b972da619ab","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean":"91ae604dbd8129320c0822bac16b4302c14d3c15","lean/diagnostics/BFSSP3M4QTC1OriginalSourceRealComplexQuarterIndependentConsumer.lean":"24113406f779e1f2dcd769c9c400d0b897dda6a9","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean":"d7d460fc8d2806234816e8bd2088f9cebb6addd4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean":"7abc03723b3111e4a03389b722054e50d6a9bf30","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0DOriginalFockThinTensorAdapter.lean":"e52b8ca7a440e04ab3c3a93187e5100daa39e074","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean":"b0b519e46566856e100bf6aa882f9fcdf37d397e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0CAbstractCoefficientContraction.lean":"9448c9a47c605cb6aba2cfc798ae28a0213c9411","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0D_R1_44018395393_evidence.zip":"c0de176f927ba70bed4494534f881d2ff93e732d","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0A_R1_44001621836_evidence.zip":"7cebb61b36ba22283cbd27a8d5f91b301b7303e2","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0C_R1_44016807302_evidence.zip":"721c3b827bffafbe61d3d81720a103fb5297e389","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0B_R1_44012367725_evidence.zip":"671be94ee31c954b8f8b276de7b8ede9359aa617","research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0B_R2_44014529416_evidence.zip":"485d47d68a5425a79d720248a4b64b972da619ab","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
           for path,expected in pins.items():
               got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert got==expected,(path,expected,got)
@@ -57,14 +57,28 @@ jobs:
           assert "Fermion 2 →L[ℂ] Fermion 2" in src
           assert "originalFockOperator_real_smul_eq_complex_smul" in src
           assert "originalSource48BivectorK" in src and "sourceNormalizedGamma" in src
-          assert "exact_mod_cast hr" in src and "Finset.smul_sum" in src
+          assert "push_cast" in src and "Finset.smul_sum" in src and "exact_mod_cast hr" not in src
           assert "originalFockQuadratic sourceNormalizedGamma" in src
           assert "(1 / 4 : ℂ)" in src and "(B p q / 4 : ℝ)" in src
           state=json.loads(Path("BFSS_GATE_STATE.json").read_text())
           q=state["last_qualified"]; a=state["active"]
           assert q["gate"]=="P3-M4-QTC0D" and q["run_id"]==44018395393 and q["status"]=="GREEN_QUALIFIED"
           assert a["gate"]=="P3-M4-QTC1" and a["status"]=="PENDING_STRICT_CI" and a["qualification"] is False
-          assert a["attempt"]=="R1" and a["accepted_predecessor_run"]==44018395393
+          assert a["attempt"]=="R2" and a["accepted_predecessor_run"]==44018395393
+          assert a["previous_red_run"]==44020471704
+          red=state["previous_active_QTC1_R1_RED"]
+          assert red["status"]=="RED_UNQUALIFIED" and red["qualification"] is False
+          assert red["run_id"]==44020471704 and red["tested_sha"]=="02859a9d28ec971bbd53a0f3bdad2638e87c3707"
+          assert red["artifact_id"]==14301386967
+          assert red["artifact_sha256"]=="4effa4881bb7d33f5397873db92bfa4279e351dbda9d1991062356fe1ed73bd8"
+          assert red["evidence_archive_blob"]=="8ae6ad676712bd361d4a4a0568fc5924a3c3daa5"
+          assert red["evidence_job_log_blob"]=="aa18bfb54c64d248849508c60d6cfd7f66d32cea"
+          assert a["prior_red_artifact_sha256"]==red["artifact_sha256"]
+          assert a["prior_red_source_blob"]==red["source_blob"]
+          assert Path(red["receipt"]).is_file()
+          assert "push_cast" in src and "unfold originalSource48BivectorK originalFockQuadratic" not in src
+          assert "originalFock_real_quarter_quadratic" in src and "rfl" in src
+          assert "set_option maxRecDepth" not in src
           assert a["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean"] and a["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4QTC1OriginalSourceRealComplexQuarterIndependentConsumer.lean"]
           assert a["allowed_axioms"]==["propext","Classical.choice","Quot.sound"]
           assert a["expected_source_reports"]==a["expected_consumer_reports"]==2
@@ -75,6 +89,8 @@ jobs:
           manifest=json.loads(Path("lean/lake-manifest.json").read_text())
           assert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
           artifacts=[
+            ("research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R1_44020471704_evidence.zip",
+             "4effa4881bb7d33f5397873db92bfa4279e351dbda9d1991062356fe1ed73bd8"),
             ("research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0D_R1_44018395393_evidence.zip",
              "7b19d5dc6d02f14c9ae831382b4d2f8c42d20d5a0ab4ad585d8e8858e9b1a54f"),
             ("research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0A_R1_44001621836_evidence.zip",
@@ -89,7 +105,7 @@ jobs:
           for path,digest in artifacts:
               assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==digest
               with zipfile.ZipFile(path) as z: assert z.testzip() is None
-          print("BFSS_M4_QTC1_SOURCE_REAL_COMPLEX_K_QUARTER_DONORS_AND_EVIDENCE_PREFLIGHT_PASS")
+          print("BFSS_M4_QTC1_R2_R1_RED_SOURCE_REAL_COMPLEX_K_QUARTER_DONORS_AND_EVIDENCE_PREFLIGHT_PASS")
           PY
       - name: Restore pinned Lean and Mathlib
         shell: bash

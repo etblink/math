@@ -820,7 +820,7 @@ def check_checkpoint(root: Path, s: dict):
         require(s['last_qualified']['gate'] == 'P3-M4-QTC0D'
                 and s['last_qualified']['run_id'] == 44018395393
                 and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
-                and a.get('attempt') == 'R1'
+                and a.get('attempt') in {'R1','R2'}
                 and a.get('first_atom') ==
                     'ORIGINAL_REAL_TO_COMPLEX_K_QUARTER_COEFFICIENT_NORMALIZATION'
                 and a.get('accepted_predecessor_run') == 44018395393
@@ -828,6 +828,54 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('independent_controls') == 7
                 and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound'],
                 'QTC1 source real/complex quarter contract or accepted QTC0D drift')
+        if a.get('attempt') == 'R2':
+            import zipfile
+            old = s.get('previous_active_QTC1_R1_RED',{})
+            require(old.get('status') == 'RED_UNQUALIFIED'
+                    and old.get('qualification') is False
+                    and old.get('run_id') == a.get('previous_red_run') == 44020471704
+                    and old.get('job_id') == 133828475926
+                    and old.get('tested_sha') == '02859a9d28ec971bbd53a0f3bdad2638e87c3707'
+                    and old.get('source_blob') == a.get('prior_red_source_blob')
+                    == '127cd129a375f7f024c882deb62d1220de26aa0d'
+                    and old.get('consumer_blob') == a.get('consumer_blob')
+                    == '24113406f779e1f2dcd769c9c400d0b897dda6a9'
+                    and old.get('artifact_id') == a.get('prior_red_artifact_id') == 14301386967
+                    and old.get('artifact_sha256') == a.get('prior_red_artifact_sha256')
+                    == '4effa4881bb7d33f5397873db92bfa4279e351dbda9d1991062356fe1ed73bd8'
+                    and old.get('evidence_archive_blob') == a.get('prior_red_archive_blob')
+                    == blob(root/old['evidence_archive'])
+                    == '8ae6ad676712bd361d4a4a0568fc5924a3c3daa5'
+                    and old.get('evidence_job_log_blob') == a.get('prior_red_job_log_blob')
+                    == blob(root/old['evidence_job_log'])
+                    == 'aa18bfb54c64d248849508c60d6cfd7f66d32cea'
+                    and old.get('evidence_manifest_blob') == blob(root/old['evidence_manifest'])
+                    and hashlib.sha256((root/old['evidence_archive']).read_bytes()).hexdigest()
+                       == old['artifact_sha256']
+                    and '44020471704' in (root/old['receipt']).read_text(),
+                    'QTC1 R2 may not erase any original R1 source, ZIP or full job log')
+            m = json.loads((root/old['evidence_manifest']).read_text())
+            require(m.get('zip_size_bytes') == 3729 and m.get('source_axioms')
+                    == 'sorryAx_FROM_UNRESOLVED_GOALS', 'QTC1 R1 failure scope erased')
+            with zipfile.ZipFile(root/old['evidence_archive']) as z:
+                require(z.testzip() is None
+                        and set(z.namelist()) == set(m['members'])
+                        == {'cold-source.log','preflight.log','tested-commit.txt'},
+                        'QTC1 R1 original provider RED archive corrupted')
+                for name, digest in m['members'].items():
+                    require(hashlib.sha256(z.read(name)).hexdigest() == digest,
+                            'QTC1 original provider ZIP member lost: '+name)
+                require(z.read('tested-commit.txt').decode().strip() == old['tested_sha']
+                        and 'P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean:47:8'
+                            in z.read('cold-source.log').decode()
+                        and 'P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean:71:8'
+                            in z.read('cold-source.log').decode(),
+                        'QTC1 original R1 RED diagnostics lost')
+            require(s.get('previous_active_QTC1_R1_pending',{}).get('status')
+                    == 'PENDING_STRICT_CI'
+                    and a.get('contract_commit') == '03dca0b288e0f72d74c0b0fb6f665443c5472045'
+                    and a.get('prior_red_artifact_sha256') == m['artifact_sha256'],
+                    'QTC1 R2 new contract or original launch chronology erased')
         previous = s.get('previous_active_QTC0D_R1_qualified',{})
         require(previous.get('gate') == 'P3-M4-QTC0D'
                 and previous.get('status') == 'GREEN_QUALIFIED'
@@ -861,7 +909,8 @@ def check_checkpoint(root: Path, s: dict):
                 and 'sourceNormalizedGamma' in source
                 and '(B p q / 4 : ℝ)' in source
                 and '(1 / 4 : ℂ)' in source
-                and 'exact_mod_cast hr' in source
+                and (('exact_mod_cast hr' in source) if a.get('attempt') == 'R1'
+                     else ('push_cast' in source and 'exact_mod_cast hr' not in source))
                 and len(re.findall(r'(?m)^theorem\s+',source)) == 2
                 and len(re.findall(r'(?m)^theorem\s+',consumer)) == 2
                 and len(re.findall(r'(?m)^example\b',consumer)) == 7,
