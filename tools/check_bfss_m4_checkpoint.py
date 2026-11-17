@@ -2904,18 +2904,30 @@ def check_checkpoint(root: Path, s: dict):
                     and 'Build completed successfully (9131 jobs).' in z.read('cold-source.log').decode()
                     and donor['strict_marker'] in z.read('auditor.log').decode(),
                     'W0H1B may only consume native qualified original source W0H1A')
-        for red in (s.get('previous_active_W0B1_R1_RED',{}),
-                    s.get('previous_active_W0B1_R2_stopped',{}),
-                    s.get('previous_active_W0H1A_R1_RED',{})):
-            require(red.get('run_id') in {44117272657,44127193329,44145848122}
-                    and red.get('status')=='RED_UNQUALIFIED'
-                    and blob(root/red['source'])==red['source_blob']
-                    and blob(root/red['consumer'])==red['consumer_blob']
-                    and blob(root/red['workflow'])==red['workflow_blob']
+        reds=(s.get('previous_active_W0B1_R1_RED',{}),
+              s.get('previous_active_W0B1_R2_stopped',{}),
+              s.get('previous_active_W0H1A_R1_RED',{}))
+        require([red.get('run_id') for red in reds]==[44117272657,44127193329,44145848122]
+                and [red.get('source_blob') for red in reds]
+                    == ['6c9cae683665fb6cda2a6e8ff10d388f6a268a05',
+                        '93244f15ae511cd4abbac13e216eed6b1988c009',
+                        'a4c6a2d8006cdd151b72995bb35313c5f2299d57'],
+                'W0H1B stopped historical native source blobs changed in canonical RED ledger')
+        for red in reds:
+            require(red.get('status')=='RED_UNQUALIFIED'
                     and blob(root/red['evidence_archive'])==red['evidence_archive_blob']
                     and blob(root/red['evidence_job_log'])==red['evidence_job_log_blob']
                     and blob(root/red['evidence_manifest'])==red['evidence_manifest_blob'],
-                    'W0H1B must preserve every prior original native source RED')
+                    'W0H1B must preserve every original native source RED provider ZIP/log/manifest')
+        # W0B1 R1 and R2 share a path, which currently holds R2 bytes. Their
+        # distinct original source/workflow blobs are retained in canonical Git
+        # history and their immutable negative-evidence manifests, not at the
+        # same live path. W0H1A R1 has a separate file and remains current.
+        h1red=reds[2]
+        require(blob(root/h1red['source'])==h1red['source_blob']
+                and blob(root/h1red['consumer'])==h1red['consumer_blob']
+                and blob(root/h1red['workflow'])==h1red['workflow_blob'],
+                'W0H1B must preserve separate frozen native W0H1A R1 source bytes')
         require(s['previous_active_W0B1_R2_stopped'].get('stopped') is True
                 and s['previous_active_W0B1_R2_stopped'].get('stop_reason')
                     =='TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP',
