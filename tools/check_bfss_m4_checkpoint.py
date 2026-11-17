@@ -197,7 +197,7 @@ def check_checkpoint(root: Path, s: dict):
     if a['gate'] == 'P3-M4-LB1P1':
         require(s['last_qualified']['gate'] == 'P3-M4-CT0'
                 and s['last_qualified']['run_id'] == 43983772199
-                and a.get('attempt') == 'R1'
+                and a.get('attempt') in {'R1','R2'}
                 and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
                 and a.get('independent_controls') == 4
                 and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
@@ -220,6 +220,18 @@ def check_checkpoint(root: Path, s: dict):
                 and '43991790285' in (root/stopped['receipt']).read_text()
                 and '43988822460' in (root/stopped['architecture_review']).read_text(),
                 'prior CT1 original REDs lost or stop rule bypassed')
+    if a['gate'] == 'P3-M4-LB1P1' and a.get('attempt') == 'R2':
+        require(a.get('previous_red_run') == 43996551474
+                and a.get('previous_red_tested_sha') == 'c34911208aae4964283b39454ed41d990eb1306e'
+                and a.get('prior_red_artifact_id') == 14290412981
+                and a.get('prior_red_artifact_sha256') == '0d873a2259c24bc4ccdbb3be175869ad413504dcd0cd12fe8b25830e557e7420'
+                and a.get('prior_red_archive_blob') == blob(root/a['prior_red_archive'])
+                and a.get('prior_red_job_log_blob') == blob(root/a['prior_red_job_log'])
+                and hashlib.sha256((root/a['prior_red_archive']).read_bytes()).hexdigest() == a['prior_red_artifact_sha256']
+                and '43996551474' in (root/a['prior_red_receipt']).read_text()
+                and a.get('source_blob') == '9a2899e24c02cb5a5dd58159605a34195fce3856'
+                and a.get('consumer_blob') == '5822a7290c04e5fc88b297ad14d9d16b8c290bbd',
+                'P1 R2 prior original donor-name RED or unchanged consumer missing')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

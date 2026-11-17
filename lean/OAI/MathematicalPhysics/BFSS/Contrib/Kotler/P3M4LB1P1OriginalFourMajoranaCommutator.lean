@@ -22,6 +22,8 @@ noncomputable section
 open OAI.BFSSQuantum
 open FCP.BFSSS1V0
 open FCP.BFSSSource48NormalizedFockGamma
+open FCP.BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibniz
+open FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR
 
 private abbrev Op := Fermion 2 →L[ℂ] Fermion 2
 
@@ -38,8 +40,7 @@ theorem originalFock_fourFactor_commutator_from_two_covariances
   calc
     T * (X * Y) - (X * Y) * T =
         (a • U - b • V) * Y + X * (c • U - d • V) :=
-      FCP.BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibniz.
-        originalFock_product_covariance_from_two_hypotheses
+      originalFock_product_covariance_from_two_hypotheses
           T X Y (a • U - b • V) (c • U - d • V) hX hY
     _ = a • (U * Y) - b • (V * Y) +
           c • (X * U) - d • (X * V) := by
@@ -72,10 +73,8 @@ theorem originalSource48_fourMajorana_commutator
     (if i = k then (2 : ℂ) else 0)
     (if j = l then (2 : ℂ) else 0)
     (if i = l then (2 : ℂ) else 0)
-    (FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.
-      originalMajorana_bivector_commutator i j k)
-    (FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.
-      originalMajorana_bivector_commutator i j l)
+    (originalMajorana_bivector_commutator i j k)
+    (originalMajorana_bivector_commutator i j l)
 
 #print axioms originalFock_fourFactor_commutator_from_two_covariances
 #print axioms originalSource48_fourMajorana_commutator
