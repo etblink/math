@@ -2861,7 +2861,7 @@ def check_checkpoint(root: Path, s: dict):
                 and nextgate.get('consumer_staged') is False
                 and nextgate.get('workflow_staged') is False,
                 'W0H1B still prospective until separate source-exact gate')
-    if a['gate']=='P3-M4-W0H1B' and a['status']=='PENDING_STRICT_CI':
+    if a['gate']=='P3-M4-W0H1B' and a['status']=='PENDING_STRICT_CI' and a.get('attempt')=='R1':
         import zipfile
         require(a.get('attempt')=='R1' and a.get('qualification') is False
                 and a.get('contract_commit')=='cccc758d74bdddf90c593dfce63f4bbdd7e7298b'
@@ -2965,6 +2965,104 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['consumer_staged'] is False
                 and s['next_planned']['workflow_staged'] is False,
                 'W0B2 scalar commutant remains prospective pending source-qualified W0H1B')
+    if a['gate']=='P3-M4-W0H1B' and a['status']=='PENDING_STRICT_CI' and a.get('attempt')=='R2':
+        import zipfile
+        require(a.get('qualification') is False
+                and a.get('contract_commit')=='c7ba0b963d904487461203e43d3f1f844a352dde'
+                and a.get('accepted_predecessor_run')==44151962609
+                and a.get('previous_original_native_red_run')==44160611850
+                and a.get('source_blob')=='9139fba785aa31a1e1cde83419f9848ea67fc016'
+                and a.get('consumer_blob')=='61964ed693120a6db5f39d034581fc5a5aac9f0a'
+                and a.get('workflow_blob')=='c46291c407af0f5e85f23bad2cb20114abd6b03c'
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0H1A'
+                and s['last_qualified']['attempt']=='R2'
+                and s['last_qualified']['run_id']==44151962609
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and s['last_qualified']==s['accepted_anchors'][-1],
+                'W0H1B R2 original source/consumer strict metadata/predecessor drift')
+        r1=s.get('previous_active_W0H1B_R1_RED',{})
+        require(r1.get('gate')=='P3-M4-W0H1B'
+                and r1.get('attempt')=='R1' and r1.get('status')=='RED_UNQUALIFIED'
+                and r1.get('qualification') is False
+                and r1.get('run_id')==44160611850
+                and r1.get('tested_sha')=='cbbcfc739d68451173c4825e5e656f76eee15afb'
+                and r1.get('job_id')==134313075652
+                and r1.get('artifact_id')==14364306805
+                and r1.get('artifact_sha256')=='58c5e1176099ce9b7764eba910d831b65a4afcb3de74b316f92cc5a996a6e234'
+                and r1.get('source_blob')=='94049ca4a90eeff2cacf423e2fa31250d316b6a1'
+                and r1.get('consumer_blob')=='3a5d04948ff1adae3fabd6f16da664d4a85725bf'
+                and r1.get('workflow_blob')=='d05f7de7d7a3acefba34221858cf716f8d8e02a1'
+                and r1.get('evidence_archive_blob')=='3cfab55e2a8a30cb4c63e0a4aa47d224b826636a'
+                and r1.get('evidence_job_log_blob')=='51c99b6096bffee493f39713f2b48c8add482440'
+                and r1.get('evidence_manifest_blob')=='1487191587142dbd9caa6fc881250a0b3b8e099b'
+                and r1.get('preservation_run')==44163946021
+                and r1.get('source_reports_clean')==1 and r1.get('source_reports_failed')==1
+                and r1.get('consumer_reports')==0,
+                'W0H1B R2 must preserve original R1 native source failure and its exact evidence')
+        for key in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/r1[key])==r1[key+'_blob'],'W0H1B R1 immutable original evidence/source drift '+key)
+        require(hashlib.sha256((root/r1['evidence_archive']).read_bytes()).hexdigest()
+                    =='58c5e1176099ce9b7764eba910d831b65a4afcb3de74b316f92cc5a996a6e234'
+                and (root/r1['evidence_archive']).stat().st_size==13841
+                and (root/r1['evidence_job_log']).stat().st_size==240572
+                and hashlib.sha256((root/r1['evidence_job_log']).read_bytes()).hexdigest()
+                    =='cfa66339951e5dc4136f8ca213b006ada987e95f2269ade4dcfdfb9c99f211ec',
+                'W0H1B source R1 provider-original ZIP/full original Actions log failed rehash')
+        with zipfile.ZipFile(root/r1['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'cold-source.log','preflight.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()==r1['tested_sha'],
+                    'W0H1B R1 provider-original three-member ZIP invalid')
+            cold=z.read('cold-source.log').decode()
+            require('Unknown constant' in cold
+                    and 'Subalgebra.mem_centralizer_iff.mp' in cold
+                    and 'sorryAx' in cold
+                    and 'originalSourceCentralizerPullback_eq_top' in cold,
+                    'W0H1B R1 original source failed reason or first theorem evidence changed')
+        orig=(root/r1['source']).read_text()
+        expected=orig.replace('P3M4W0H1BOriginalAdjoinFullCliffordCommutant',
+                              'P3M4W0H1BOriginalAdjoinFullCliffordCommutantR2')
+        expected=expected.replace(
+            '  have heq := (Subalgebra.mem_centralizer_iff.mp hmem) T (Set.mem_singleton T)\n  exact ⟨heq⟩',
+            '  rw [Subalgebra.mem_centralizer_iff] at hmem\n  exact hmem T (Set.mem_singleton T)')
+        expected=expected.replace(
+            'Does NOT import or retry the stopped W0B1 original induction source.',
+            'R2 only repairs final centralizer membership elaboration after R1 native source RED.\n'
+            'Does NOT import or retry the stopped W0B1 original induction source.')
+        require((root/a['source']).read_text()==expected,'W0H1B R2 original source changed more than bounded final proof')
+        oldconsumer=(root/r1['consumer']).read_text().replace(
+            'P3M4W0H1BOriginalAdjoinFullCliffordCommutant',
+            'P3M4W0H1BOriginalAdjoinFullCliffordCommutantR2').replace(
+            'P3M4W0H1BOriginalAdjoinFullCliffordIndependentConsumer',
+            'P3M4W0H1BOriginalAdjoinFullCliffordIndependentConsumerR2')
+        require((root/a['consumer']).read_text()==oldconsumer,
+                'W0H1B R2 original independently importing consumer changed theorem/control math')
+        donor=s['last_qualified']
+        require(donor['source_blob']=='c5c0894d99a01e92e92a58dac7313698a2f69971'
+                and donor['run_id']==44151962609
+                and donor['evidence_archive_blob']=='4437e182a35763d448b9780d158df926d073d839'
+                and blob(root/donor['evidence_archive'])==donor['evidence_archive_blob'],
+                'W0H1B R2 exact accepted original W0H1A donor drift')
+        require(s['previous_active_W0B1_R2_stopped']['stopped'] is True
+                and s['previous_active_W0B1_R2_stopped']['stop_reason']
+                    =='TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP',
+                'W0H1B R2 must preserve permanent native W0B1 source STOP')
+        for red in (s.get('previous_active_W0B1_R1_RED',{}),s.get('previous_active_W0B1_R2_stopped',{})):
+            require(red.get('run_id') in {44117272657,44127193329}
+                    and blob(root/red['evidence_archive'])==red['evidence_archive_blob']
+                    and blob(root/red['evidence_job_log'])==red['evidence_job_log_blob']
+                    and blob(root/red['evidence_manifest'])==red['evidence_manifest_blob'],
+                    'W0H1B R2 must preserve stopped original W0B1 negative evidence')
+        nxt=s.get('next_planned',{})
+        require(nxt.get('gate')=='P3-M4-W0B2'
+                and nxt.get('status')=='PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False,
+                'W0B2 Schur scalar bridge must remain prospective until independent W0H1B R2 strict GREEN')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
