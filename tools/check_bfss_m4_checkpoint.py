@@ -114,7 +114,65 @@ def check_checkpoint(root: Path, s: dict):
                 'incomplete strict qualification')
         require('STRICT GREEN' in (root/a['receipt']).read_text(),
                 'green lacks acceptance receipt')
-        if a['gate'] == 'P3-M4-CT0':
+        if a['gate'] == 'P3-M4-LB1P1' and a['status'] == 'GREEN_QUALIFIED':
+        import zipfile
+        require(a.get('run_id') == 43998813826
+                and a.get('job_id') == 133757449826
+                and a.get('tested_sha') == 'de3af5cd0f7aa82de8aa9c7439bee46d02a37a02'
+                and a.get('artifact_id') == 14290894037
+                and a.get('artifact_sha256') == '6bcfef6696d6399c3f03ade5c0f97a732ee2f802ba9ab8ff13e6e6734d0db9a6'
+                and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
+                and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
+                and a.get('evidence_preservation_job_log_blob') == blob(root/a['evidence_preservation_job_log'])
+                and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
+                and a.get('evidence_preservation_run') == 44000111416
+                and a.get('cold_build_jobs') == 8965,
+                'P1 original GREEN source/consumer/ZIP/rehash receipt mismatch')
+        manifest = json.loads((root/a['evidence_manifest']).read_text())
+        require(manifest['original_artifact_sha256'] == a['artifact_sha256']
+                and manifest['original_evidence_git_blob'] == a['evidence_archive_blob']
+                and manifest['original_tested_sha'] == a['tested_sha']
+                and manifest['original_run'] == a['run_id']
+                and manifest['independent_preservation_run'] == a['evidence_preservation_run']
+                and manifest['cold_build_jobs'] == a['cold_build_jobs']
+                and len(manifest['source_reports']) == len(manifest['consumer_reports']) == 2,
+                'P1 original GREEN evidence manifest drift')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            want_files = {'tested-commit.txt','preflight.log','cold-source.log',
+                          'source-axioms.log','consumer.log'}
+            require(z.testzip() is None and set(z.namelist()) == want_files,
+                    'P1 original ZIP corrupt or partial')
+            require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and 'BFSS_M4_LB1P1_SOURCE_CONSUMER_DONOR_TOOLCHAIN_STOP_RULE_PREFLIGHT_PASS'
+                    in z.read('preflight.log').decode(),
+                    'P1 original tested commit or preflight mismatch')
+            require('Build completed successfully (8965 jobs).' in z.read('cold-source.log').decode()
+                    and 'sorryAx' not in z.read('cold-source.log').decode(),
+                    'P1 original cold proof mismatch')
+            pat = re.compile(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]")
+            roots = {
+                'source-axioms.log': {
+                    'originalFock_fourFactor_commutator_from_two_covariances',
+                    'originalSource48_fourMajorana_commutator'},
+                'consumer.log': {
+                    'originalFock_fourFactor_conditional_consumer',
+                    'originalSource48_fourMajorana_consumer'}}
+            allowed = {'propext','Classical.choice','Quot.sound'}
+            for filename, expected_names in roots.items():
+                report = z.read(filename).decode()
+                found = pat.findall(report)
+                require('sorryAx' not in report and 'error:' not in report
+                        and len(found) == 2
+                        and {name.rsplit('.',1)[-1] for name, _ in found} == expected_names,
+                        'P1 archived original theorem roots mismatch')
+                for _, axioms in found:
+                    require({x.strip() for x in axioms.split(',') if x.strip()} <= allowed,
+                            'P1 archived original report contains unapproved axiom')
+        require(a['strict_marker'] in (root/a['evidence_job_log']).read_text()
+                and 'BFSS_P1_R2_ORIGINAL_GREEN_ZIP_REHASH_PASS'
+                in (root/a['evidence_preservation_job_log']).read_text(),
+                'P1 original strict success or independent rehash marker missing')
+    if a['gate'] == 'P3-M4-CT0':
             import zipfile
             require(a.get('run_id') == 43983772199
                     and a.get('tested_sha') == '7f7ae98f77858f79beccd9e1efdd334b513e2f56'
@@ -195,8 +253,10 @@ def check_checkpoint(root: Path, s: dict):
                     and a.get('consumer_blob') != '2d38aa70c6b4a55d4b8af3245d6d63b15839d697',
                     'CT1G0 R2 does not retain original R1 RED or unchanged original gate limits')
     if a['gate'] == 'P3-M4-LB1P1':
-        require(s['last_qualified']['gate'] == 'P3-M4-CT0'
-                and s['last_qualified']['run_id'] == 43983772199
+        require(s['last_qualified']['gate'] ==
+                    ('P3-M4-LB1P1' if a['status'] == 'GREEN_QUALIFIED' else 'P3-M4-CT0')
+                and s['last_qualified']['run_id'] ==
+                    (43998813826 if a['status'] == 'GREEN_QUALIFIED' else 43983772199)
                 and a.get('attempt') in {'R1','R2'}
                 and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
                 and a.get('independent_controls') == 4
