@@ -197,7 +197,7 @@ def check_checkpoint(root: Path, s: dict):
                     in z.read('preflight.log').decode()
                     and 'Build completed successfully (8963 jobs).' in z.read('cold-source.log').decode(),
                     'QTC0A tested commit, source preflight or native build incomplete')
-            pat = re.compile(r"(?m)^'([^'\\n]+)' depends on axioms: \\[([^\\]]*)\\]")
+            pat = re.compile(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]")
             expected_roots = {
                 'source-axioms.log': {'originalFock_commutator_complex_smul',
                                       'originalFock_quadratic_covariance_expanded'},
