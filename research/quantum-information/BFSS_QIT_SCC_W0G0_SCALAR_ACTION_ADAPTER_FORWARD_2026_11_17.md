@@ -16,3 +16,11 @@ The alternative centralizer-subalgebra/CliffordAlgebra.adjoin_range_ι route may
 
 Even if W0G0 succeeds, the full Clifford-image result must be independently requalified on the original Fock representation. W0B2 would then connect the original M3B module action to the M3C Schur scalar-commutant theorem; W0C would prove a trace-based structural witness. W0D parity-sensitive operational witness completeness is a separate QIT/SCC question and is not automatically implied. BFSS SU(2) gauge observability, original K(A), physical ground state and mass-gap claims remain open.
 
+
+## Additional pinned-Mathlib interface finding (read-only)
+
+At exact pinned Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612, Mathlib/Algebra/Group/Commute/Defs.lean defines Commute a b in terms of SemiconjBy and proves commute_iff_eq a b : Commute a b ↔ a * b = b * a by Iff.rfl. The original R2 compiler output contrasts an equality obtained from (Algebra.commutes z T).symm with an expected Commute proposition. Therefore the mismatch should **not** be diagnosed as necessarily arising from genuinely different Fock operator types merely because Lean prints an M3I-local FockOp abbreviation. A missing propositional normalization/definitional conversion is also plausible.
+
+Proposed abstract first consumer: explicitly convert Commute b ((algebraMap ℂ B) z) to b * (algebraMap ℂ B) z = (algebraMap ℂ B) z * b using commute_iff_eq, then prove this equality from (Algebra.commutes z b).symm. Test the definitionally equal target aliases in a separate generic setting; only after independent qualification test AlgEquiv scalar transport through a new source-exact adapter.
+
+This is a forward research hypothesis, **not a Lean-checked theorem for W0B1**, and it does not override the two-native-RED STOP on the existing source induction. No original BFSS source is to be edited under this memo alone.
