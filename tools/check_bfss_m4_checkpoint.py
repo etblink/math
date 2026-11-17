@@ -387,6 +387,39 @@ def check_checkpoint(root: Path, s: dict):
                 and hashlib.sha256((root/stopped['evidence_archive']).read_bytes()).hexdigest()
                     == stopped['artifact_sha256'],
                 'CT1G0 two-RED stop history must remain preserved')
+    if a['gate'] == 'P3-M4-QTC0B':
+        require(s['last_qualified']['gate'] == 'P3-M4-QTC0A'
+                and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
+                and s['last_qualified']['run_id'] == 44001621836
+                and a.get('attempt') == 'R1'
+                and a.get('first_atom') == 'GENERIC_QUADRATIC_TENSOR_COEFFICIENT_REINDEXING'
+                and a.get('accepted_predecessor_run') == 44001621836
+                and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
+                and a.get('independent_controls') == 7
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound'],
+                'QTC0B staged tensor contraction must inherit accepted QTC0A')
+        prior = s.get('previous_active_QTC0A_R1_qualified',{})
+        require(prior.get('run_id') == 44001621836
+                and prior.get('status') == 'GREEN_QUALIFIED'
+                and prior.get('source_blob') == 'b0b519e46566856e100bf6aa882f9fcdf37d397e'
+                and prior.get('consumer_blob') == '9d1dc845bea73d8e07549c69d9ef07804509f52e'
+                and prior.get('workflow_blob') == 'f765eab05612b9f4ea0ec94ec8f981fe19b130d2'
+                and prior.get('artifact_sha256') == 'bf8d93fe00846c9ea26815d32ee331424d9510d1816b66cd98c90ef82baf724c'
+                and prior.get('evidence_archive_blob') == blob(root/prior['evidence_archive'])
+                and hashlib.sha256((root/prior['evidence_archive']).read_bytes()).hexdigest()
+                     == prior['artifact_sha256'],
+                'QTC0B may not lose prior original provider ZIP or accepted source')
+        stopped = s.get('previous_active_CT1G0_R2_stopped',{})
+        require(stopped.get('status') == 'RED_UNQUALIFIED'
+                and stopped.get('stopped') is True
+                and stopped.get('run_id') == 43991790285,
+                'QTC0B cannot evade stopped original native CT1 route')
+        require(s.get('next_planned',{}).get('gate') == 'P3-M4-QTC1'
+                and s['next_planned'].get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and not s['next_planned'].get('source_staged')
+                and not s['next_planned'].get('consumer_staged')
+                and not s['next_planned'].get('workflow_staged'),
+                'QTC1 real source bridge may not be silently promoted')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
