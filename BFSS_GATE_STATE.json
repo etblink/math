@@ -250,7 +250,7 @@
   "active": {
     "gate": "P3-M4-CT1G0",
     "attempt": "R1",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT1G0OriginalFockJacobiSource48Adapter.lean",
     "consumer": "lean/diagnostics/BFSSP3M4CT1G0OriginalFockJacobiIndependentConsumer.lean",
@@ -270,10 +270,28 @@
       "Classical.choice",
       "Quot.sound"
     ],
-    "note": "First bounded Jacobi gate G0 only: opaque Fock Jacobi, operator subtraction, exact source48 K-gamma adapter. Finite-index covariance composition and defect-zero not proved.",
-    "pending_run_id": 43988822460,
-    "pending_tested_sha": "a04d3240b8e1649ca058772af7a98f73095a177c",
-    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_CT1G0_R1_LAUNCH_43988822460_2026_11_16.md"
+    "note": "R1 native source adapter elaboration hit default max recursion at declaration line 53. Generic Jacobi/sub standard-axiom reports clean; no source or consumer qualification. Original ZIP, complete logs, independent digest preserved. No resource escalation.",
+    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_CT1G0_R1_LAUNCH_43988822460_2026_11_16.md",
+    "verdict": "RED",
+    "run_id": 43988822460,
+    "tested_sha": "a04d3240b8e1649ca058772af7a98f73095a177c",
+    "failure_phase": "COLD_NATIVE_SOURCE",
+    "first_error": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT1G0OriginalFockJacobiSource48Adapter.lean:53:0 maximum recursion depth has been reached",
+    "artifact_id": 14287816678,
+    "artifact_sha256": "c03e06d90de7d0a7e946a55d27f5bd2c2d7e03981355d80ad512ff8dbe61d75e",
+    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_CT1G0_R1_43988822460_evidence.zip",
+    "evidence_archive_blob": "3af05171c5865f120bd1b93fd99c7be37ba52acb",
+    "evidence_job_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_CT1G0_R1_43988822460_complete_job.log",
+    "evidence_job_log_blob": "064789d736abc1c79f8ffbc6de83c842da309d52",
+    "preservation_run_id": 43991194687,
+    "preservation_job_id": 133731897600,
+    "preservation_job_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_CT1G0_R1_43991194687_original_zip_rehash.log",
+    "preservation_job_log_blob": "721153cf754d46510c5070a54db4838945ce6b67",
+    "evidence_manifest": "research/spectral-p2-original-field/diagnostics/BFSS_M4_CT1G0_R1_43988822460_evidence_manifest.json",
+    "evidence_manifest_blob": "687e65abf7b5369d23c106be04a49b3e3886bb7f",
+    "receipt": "research/spectral-p2-original-field/BFSS_M4_CT1G0_R1_RED_43988822460_RECURSIVE_NATIVE_ADAPTER_2026_11_16.md",
+    "source_reports_clean": 2,
+    "consumer_reports_completed": 0
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -286,7 +304,7 @@
   },
   "strategic_focus": {
     "endpoint": "Fixed-positive-regulator ground-state fidelity certificate for the original physical Hamiltonian",
-    "immediate": "CT0 R2 original Source48 K trace-zero qualified at #43983772199; CT1G0 R1 opaque original Fock Jacobi and source48 adapter PENDING_STRICT_CI. CT1G1 matrix coefficient composition not staged. P1 and Gauss remain alternatives.",
+    "immediate": "CT1G0 R1 source adapter recursion RED #43988822460 preserved complete original ZIP and separately rehashed #43991194687; CT0 R2 remains last qualified #43983772199. Next bounded R2 should use opaque original Fock commutator abbreviation, no recursion increase.",
     "last_full_hardy_gate": "P3-AUX-HARDY-G15",
     "last_full_hardy_run": 43763173942,
     "full_G16_qualified": false,
@@ -618,5 +636,33 @@
     "evidence_preservation_job_id": 133718010686,
     "evidence_status": "COMPLETE_ORIGINAL_ZIP_PRESERVED_AND_SEPARATELY_REHASHED",
     "receipt": "research/spectral-p2-original-field/BFSS_M4_CT0_R2_GREEN_43983772199_SOURCE48_SKEW_K_TRACE_ACCEPTANCE_2026_11_16.md"
+  },
+  "previous_active_CT1G0_R1_pending": {
+    "gate": "P3-M4-CT1G0",
+    "attempt": "R1",
+    "status": "PENDING_STRICT_CI",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT1G0OriginalFockJacobiSource48Adapter.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4CT1G0OriginalFockJacobiIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-ct1g0-original-fock-jacobi-strict.yml",
+    "source_blob": "e4837ccb96108ecabcebfd0ba2534398fe0ddb2a",
+    "consumer_blob": "2d38aa70c6b4a55d4b8af3245d6d63b15839d697",
+    "workflow_blob": "379dd974513f3cf327880c2f1d4203805d4bfbcd",
+    "accepted_predecessor_run": 43983772199,
+    "expected_source_reports": 3,
+    "expected_consumer_reports": 3,
+    "independent_controls": 4,
+    "contract_commit": "0742e59c3dea601d9c940294d0b203fd5d9ff44e",
+    "initial_contract": "research/spectral-p2-original-field/BFSS_M4_CT1_JACOBI_DEFECT_SOURCE_SHAPED_FORWARD_RESEARCH_2026_11_16.md",
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_CT1G0_R1_PRE_GATE_JACOBI_2026_11_16.md",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "note": "First bounded Jacobi gate G0 only: opaque Fock Jacobi, operator subtraction, exact source48 K-gamma adapter. Finite-index covariance composition and defect-zero not proved.",
+    "pending_run_id": 43988822460,
+    "pending_tested_sha": "a04d3240b8e1649ca058772af7a98f73095a177c",
+    "launch_receipt": "research/spectral-p2-original-field/BFSS_M4_CT1G0_R1_LAUNCH_43988822460_2026_11_16.md"
   }
 }
