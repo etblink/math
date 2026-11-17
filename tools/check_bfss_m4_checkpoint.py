@@ -108,7 +108,7 @@ def check_checkpoint(root: Path, s: dict):
                     and blob(root/a['evidence_job_log']) == a['evidence_job_log_blob'],
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
-        expected_reports = 3 if a['gate'] == 'P3-M4-CT0' else 2
+        expected_reports = 3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C'} else 2
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
                 'incomplete strict qualification')
@@ -503,9 +503,93 @@ def check_checkpoint(root: Path, s: dict):
                 and not s['next_planned'].get('consumer_staged')
                 and not s['next_planned'].get('workflow_staged'),
                 'QTC1 real source bridge may not be silently promoted')
+    if a['gate'] == 'P3-M4-QTC0C' and a['status'] == 'GREEN_QUALIFIED':
+        import zipfile
+        require(a.get('run_id') == 44016807302
+                and a.get('job_id') == 133816584592
+                and a.get('tested_sha') == '6683cf53cfab96d3bf225658ce21874d3b134e17'
+                and a.get('artifact_id') == 14299581585
+                and a.get('artifact_sha256') == '1a95148f7dc41086683592b670257734c7726f0fff0929e4b59930a65ffefa0e'
+                and a.get('source_blob') == '9448c9a47c605cb6aba2cfc798ae28a0213c9411'
+                and a.get('consumer_blob') == '4ec2e6eb6b98b6039326765454e563038258f869'
+                and a.get('workflow_blob') == '9d6cec275b32e307694fa9cf84926618d2c430be'
+                and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
+                == '721c3b827bffafbe61d3d81720a103fb5297e389'
+                and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
+                == '8fd0bf888505b499d4585671b31f3fa278ab31e6'
+                and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
+                == '34a81dcc4248eb0f9920cc664f5de0e87b477de0'
+                and a.get('cold_build_jobs') == 3092
+                and a.get('source_reports') == a.get('consumer_reports') == 3
+                and a.get('independent_controls') == 7,
+                'QTC0C strict acceptance, source/consumer blobs or original evidence drift')
+        require(s.get('previous_active_QTC0C_R1_pending',{}).get('gate') == 'P3-M4-QTC0C'
+                and s['previous_active_QTC0C_R1_pending'].get('status') == 'PENDING_STRICT_CI'
+                and s['previous_active_QTC0C_R1_pending'].get('source_blob') == a['source_blob']
+                and s['previous_active_QTC0C_R1_pending'].get('consumer_blob') == a['consumer_blob'],
+                'QTC0C launch chronology erased')
+        m = json.loads((root/a['evidence_manifest']).read_text())
+        require(m.get('gate') == a['gate']
+                and m.get('verdict') == a['status']
+                and m.get('run_id') == a['run_id']
+                and m.get('job_id') == a['job_id']
+                and m.get('tested_sha') == a['tested_sha']
+                and m.get('artifact_id') == a['artifact_id']
+                and m.get('artifact_sha256') == a['artifact_sha256']
+                and m.get('artifact_git_blob') == a['evidence_archive_blob']
+                and m.get('complete_job_log_git_blob') == a['evidence_job_log_blob']
+                and m.get('source_sha') == a['source_blob']
+                and m.get('consumer_sha') == a['consumer_blob']
+                and m.get('workflow_sha') == a['workflow_blob']
+                and m.get('cold_build_jobs') == a['cold_build_jobs']
+                and m.get('original_zip_bytes') == 2062
+                and m.get('controls') == 7
+                and m.get('auditor_negative_mutants') == 6
+                and m.get('whitelist') == ['propext','Classical.choice','Quot.sound'],
+                'QTC0C accepted evidence manifest mismatch')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            expected_files = {'tested-commit.txt','preflight.log','cold-source.log',
+                              'source-axioms.log','consumer.log','auditor.log'}
+            require(z.testzip() is None
+                    and set(z.namelist()) == expected_files
+                    and set(m['original_zip_entries']) == expected_files,
+                    'QTC0C original ZIP integrity or archive manifest entries drift')
+            for name, digest in m['original_zip_entries'].items():
+                require(hashlib.sha256(z.read(name)).hexdigest() == digest,
+                        'QTC0C original archived member SHA256 drift: '+name)
+            require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and 'BFSS_M4_QTC0C_ABSTRACT_SOURCE_CONSUMER_GREEN_RED_HISTORY_AND_TOOLCHAIN_PREFLIGHT_PASS'
+                       in z.read('preflight.log').decode()
+                    and 'Build completed successfully (3092 jobs).' in z.read('cold-source.log').decode(),
+                    'QTC0C provider-original tested SHA, preflight or cold build absent')
+            required_markers = {'BFSS_M4_QTC0C_AUDITOR_POSITIVE_AND_6_NEGATIVE_CONTROLS_PASS',
+                                'BFSS_M4_QTC0C_ABSTRACT_3_SOURCE_3_CONSUMER_7_CONTROLS_STRICT_GREEN'}
+            require(all(x in z.read('auditor.log').decode() for x in required_markers),
+                    'QTC0C original archived auditor not strict GREEN')
+            pat = re.compile(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]")
+            expected_roots = {
+                'source-axioms.log': {'coefficient_left', 'coefficient_right','coefficient_both'},
+                'consumer.log': {'left_consumer', 'right_consumer','both_consumer'}}
+            allowed = {'propext','Classical.choice','Quot.sound'}
+            for filename, names in expected_roots.items():
+                report = z.read(filename).decode()
+                found = pat.findall(report)
+                require('sorryAx' not in report and 'error:' not in report
+                        and len(found) == 3
+                        and {name.rsplit('.',1)[-1] for name, _ in found} == names,
+                        'QTC0C original source/consumer axiom roots not exact')
+                for name, ax in found:
+                    require({token.strip() for token in ax.split(',') if token.strip()} <= allowed,
+                            'QTC0C unapproved axiom: '+name)
+        full = (root/a['evidence_job_log']).read_text()
+        require(a['strict_marker'] in full
+                and 'BFSS_M4_QTC0C_AUDITOR_POSITIVE_AND_6_NEGATIVE_CONTROLS_PASS' in full,
+                'QTC0C original complete job log lacks strict and negative auditor receipts')
     if a['gate'] == 'P3-M4-QTC0C':
-        require(s['last_qualified']['gate'] == 'P3-M4-QTC0A'
-                and s['last_qualified']['run_id'] == 44001621836
+        require(s['last_qualified']['gate'] ==
+                    ('P3-M4-QTC0C' if a['status'] == 'GREEN_QUALIFIED' else 'P3-M4-QTC0A')
+                and s['last_qualified']['run_id'] ==
+                    (44016807302 if a['status'] == 'GREEN_QUALIFIED' else 44001621836)
                 and a['attempt'] == 'R1'
                 and a['first_atom'] == 'ABSTRACT_ORDERED_WORD_COEFFICIENT_CONTRACTION_NO_FOCK'
                 and a['expected_source_reports'] == a['expected_consumer_reports'] == 3
