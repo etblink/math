@@ -114,7 +114,50 @@ def check_checkpoint(root: Path, s: dict):
                 'incomplete strict qualification')
         require('STRICT GREEN' in (root/a['receipt']).read_text(),
                 'green lacks acceptance receipt')
-        if a['gate'] == 'P3-M4-LB1P1' and a['status'] == 'GREEN_QUALIFIED':
+        if a['gate'] == 'P3-M4-CT0':
+            import zipfile
+            require(a.get('run_id') == 43983772199
+                    and a.get('tested_sha') == '7f7ae98f77858f79beccd9e1efdd334b513e2f56'
+                    and a.get('artifact_id') == 14285716957
+                    and a.get('artifact_sha256') == '9e0a0118673c45300ff90414d039a64987d41dc04dd4559368c4bb2e595a7b8d'
+                    and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
+                    and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
+                    and a.get('evidence_preservation_job_log_blob') == blob(root/a['evidence_preservation_job_log'])
+                    and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
+                    and a.get('evidence_preservation_run') == 43987114193,
+                    'CT0 original evidence bytes or rehash provenance drift')
+            manifest = json.loads((root/a['evidence_manifest']).read_text())
+            require(manifest['original_artifact_sha256'] == a['artifact_sha256']
+                    and manifest['original_evidence_git_blob'] == a['evidence_archive_blob']
+                    and manifest['tested_sha'] == a['tested_sha']
+                    and manifest['strict_run'] == a['run_id']
+                    and manifest['preservation_run'] == a['evidence_preservation_run']
+                    and manifest['cold_jobs'] == a['cold_build_jobs'] == 9180
+                    and len(manifest['source_reports']) == len(manifest['consumer_reports']) == 3,
+                    'CT0 original evidence manifest mismatch')
+            with zipfile.ZipFile(root/a['evidence_archive']) as z:
+                expected_names = {'tested-commit.txt','preflight.log','cold-source.log',
+                                  'source-axioms.log','consumer.log'}
+                require(z.testzip() is None and set(z.namelist()) == expected_names,
+                        'CT0 original ZIP integrity or entries mismatch')
+                require(z.read('tested-commit.txt').decode().strip() == a['tested_sha'],
+                        'CT0 original ZIP tested commit mismatch')
+                require('BFSS_M4_CT0_EXACT_SOURCE_CONSUMER_DONOR_TOOLCHAIN_AND_CHECKPOINT_PREFLIGHT_PASS'
+                        in z.read('preflight.log').decode(),
+                        'CT0 original preflight missing')
+                require('Build completed successfully (9180 jobs).'
+                        in z.read('cold-source.log').decode(),
+                        'CT0 original cold build missing')
+                for name in ('source-axioms.log','consumer.log'):
+                    report = z.read(name).decode()
+                    require('sorryAx' not in report and 'error:' not in report
+                            and report.count('depends on axioms:') == 3,
+                            'CT0 archived root reports changed: '+name)
+            require(a['strict_marker'] in (root/a['evidence_job_log']).read_text()
+                    and 'BFSS_CT0_R2_ORIGINAL_ZIP_REHASH_PASS' in
+                        (root/a['evidence_preservation_job_log']).read_text(),
+                    'CT0 original strict and preservation receipts missing')
+    if a['gate'] == 'P3-M4-LB1P1' and a['status'] == 'GREEN_QUALIFIED':
         import zipfile
         require(a.get('run_id') == 43998813826
                 and a.get('job_id') == 133757449826
@@ -172,49 +215,6 @@ def check_checkpoint(root: Path, s: dict):
                 and 'BFSS_P1_R2_ORIGINAL_GREEN_ZIP_REHASH_PASS'
                 in (root/a['evidence_preservation_job_log']).read_text(),
                 'P1 original strict success or independent rehash marker missing')
-    if a['gate'] == 'P3-M4-CT0':
-            import zipfile
-            require(a.get('run_id') == 43983772199
-                    and a.get('tested_sha') == '7f7ae98f77858f79beccd9e1efdd334b513e2f56'
-                    and a.get('artifact_id') == 14285716957
-                    and a.get('artifact_sha256') == '9e0a0118673c45300ff90414d039a64987d41dc04dd4559368c4bb2e595a7b8d'
-                    and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
-                    and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
-                    and a.get('evidence_preservation_job_log_blob') == blob(root/a['evidence_preservation_job_log'])
-                    and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
-                    and a.get('evidence_preservation_run') == 43987114193,
-                    'CT0 original evidence bytes or rehash provenance drift')
-            manifest = json.loads((root/a['evidence_manifest']).read_text())
-            require(manifest['original_artifact_sha256'] == a['artifact_sha256']
-                    and manifest['original_evidence_git_blob'] == a['evidence_archive_blob']
-                    and manifest['tested_sha'] == a['tested_sha']
-                    and manifest['strict_run'] == a['run_id']
-                    and manifest['preservation_run'] == a['evidence_preservation_run']
-                    and manifest['cold_jobs'] == a['cold_build_jobs'] == 9180
-                    and len(manifest['source_reports']) == len(manifest['consumer_reports']) == 3,
-                    'CT0 original evidence manifest mismatch')
-            with zipfile.ZipFile(root/a['evidence_archive']) as z:
-                expected_names = {'tested-commit.txt','preflight.log','cold-source.log',
-                                  'source-axioms.log','consumer.log'}
-                require(z.testzip() is None and set(z.namelist()) == expected_names,
-                        'CT0 original ZIP integrity or entries mismatch')
-                require(z.read('tested-commit.txt').decode().strip() == a['tested_sha'],
-                        'CT0 original ZIP tested commit mismatch')
-                require('BFSS_M4_CT0_EXACT_SOURCE_CONSUMER_DONOR_TOOLCHAIN_AND_CHECKPOINT_PREFLIGHT_PASS'
-                        in z.read('preflight.log').decode(),
-                        'CT0 original preflight missing')
-                require('Build completed successfully (9180 jobs).'
-                        in z.read('cold-source.log').decode(),
-                        'CT0 original cold build missing')
-                for name in ('source-axioms.log','consumer.log'):
-                    report = z.read(name).decode()
-                    require('sorryAx' not in report and 'error:' not in report
-                            and report.count('depends on axioms:') == 3,
-                            'CT0 archived root reports changed: '+name)
-            require(a['strict_marker'] in (root/a['evidence_job_log']).read_text()
-                    and 'BFSS_CT0_R2_ORIGINAL_ZIP_REHASH_PASS' in
-                        (root/a['evidence_preservation_job_log']).read_text(),
-                    'CT0 original strict and preservation receipts missing')
     if a['gate'] == 'P3-M4-CT0':
         require(s['last_qualified']['gate'] ==
                     ('P3-M4-CT0' if a['status'] == 'GREEN_QUALIFIED' else 'P3-M4-LB1P0B')
