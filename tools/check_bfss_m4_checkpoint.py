@@ -109,7 +109,7 @@ def check_checkpoint(root: Path, s: dict):
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
         expected_reports = (1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3','P3-M4-W0B1','P3-M4-W0H0','P3-M4-W0H1A'} else
-                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C'} else 2)
+                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A'} else 2)
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
                 'incomplete strict qualification')
@@ -3224,8 +3224,8 @@ def check_checkpoint(root: Path, s: dict):
                 'W0B2 scalar Schur bridge remains prospective after W0H1B full commutant')
     if a['gate']=='P3-M4-W0B2A':
         # W0B2A is an ORIGINAL Fermion 2 module endomorphism adapter, not Schur.
-        require(a.get('attempt')=='R1' and a.get('status')=='PENDING_STRICT_CI'
-                and a.get('qualification') is False
+        require(a.get('attempt')=='R1' and a.get('status') in {'PENDING_STRICT_CI','GREEN_QUALIFIED'}
+                and a.get('qualification') == (a['status']=='GREEN_QUALIFIED')
                 and a.get('contract_commit')=='7bda19744b08a71ce85744a2fc2de4a84668a4fe'
                 and a.get('first_atom')=='SOURCE_EXACT_ORIGINAL_M3B_FOCK_CLIFFORD_MODULE_END_ADAPTER_FROM_QUALIFIED_W0H1B'
                 and a.get('source_blob')=='58d852a27e84288c0b1f33d784940155e2f26d54'
@@ -3235,13 +3235,15 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
                 and a.get('independent_controls')==3
                 and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
-                and s['last_qualified']['gate']=='P3-M4-W0H1B'
-                and s['last_qualified']['attempt']=='R2'
-                and s['last_qualified']['run_id']==44164974919
-                and s['last_qualified']['status']=='GREEN_QUALIFIED'
-                and s['accepted_anchors'][-1]==s['last_qualified'],
+                and ((s['last_qualified']['gate']=='P3-M4-W0H1B'
+                      and s['last_qualified']['attempt']=='R2'
+                      and s['last_qualified']['run_id']==44164974919
+                      and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                      and s['accepted_anchors'][-1]==s['last_qualified'])
+                     if a['status']=='PENDING_STRICT_CI'
+                     else (s['last_qualified']==a and s['accepted_anchors'][-1]==a)),
                 'W0B2A original module-end source or accepted W0H1B R2 predecessor drift')
-        donor=s['last_qualified']
+        donor=next((x for x in s['accepted_anchors'] if x.get('gate')=='P3-M4-W0H1B'),{})
         require(donor['source_blob']=='9139fba785aa31a1e1cde83419f9848ea67fc016'
                 and donor['consumer_blob']=='61964ed693120a6db5f39d034581fc5a5aac9f0a'
                 and donor['workflow_blob']=='c46291c407af0f5e85f23bad2cb20114abd6b03c'
@@ -3299,6 +3301,106 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['consumer_staged'] is False
                 and s['next_planned']['workflow_staged'] is False,
                 'W0B2B scalar must not be automatically promoted')
+        if a['status']=='GREEN_QUALIFIED':
+            import zipfile
+            require(a.get('qualification') is True and a.get('verdict')=='GREEN'
+                    and a.get('strict_outcome')=='success'
+                    and a.get('run_id')==44174996514
+                    and a.get('job_id')==134363872763
+                    and a.get('tested_sha')=='c0ae4222093f5f922a25569098d420b63fb9e66e'
+                    and a.get('artifact_id')==14370212842
+                    and a.get('artifact_sha256')=='36f960ad45b38c879929752d90745ee57cd6efe5473b835540e7a7d848e65dd7'
+                    and a.get('evidence_archive_blob')=='e4d1fa8d7a87d5ce4fcfc5483c2308648762a62b'
+                    and a.get('evidence_job_log_blob')=='bbe132b02b529ee8f43059f649574922404b6e80'
+                    and a.get('evidence_manifest_blob')=='65051d4aac0862e7d1d4879dfa1b57e30ba3a55d'
+                    and a.get('evidence_preservation_run')==a.get('preservation_run')==44178068165
+                    and a.get('source_reports')==a.get('consumer_reports')==3
+                    and a.get('auditor_negative_tests')==6
+                    and a.get('cold_build_jobs')==9133
+                    and a.get('strict_marker')=='BFSS_W0B2A_R1_ORIGINAL_FOCK_CLIFFORD_MODULE_END_3_SOURCE_3_CONSUMER_3_CONTROLS_SIX_MUTANTS_STRICT_GREEN'
+                    and a.get('receipt')=='research/quantum-information/BFSS_QIT_SCC_W0B2A_R1_GREEN_44174996514_ACCEPTANCE_2026_11_17.md'
+                    and s['last_qualified']==a
+                    and s['accepted_anchors'][-1]==a,
+                    'W0B2A R1 original source exact strict GREEN canonical acceptance mismatch')
+            idx=s.get('last_qualified_source_exact_original_BFSS',{})
+            require(idx.get('gate')=='P3-M4-W0B2A'
+                    and idx.get('run_id')==44174996514
+                    and idx.get('qualification') is True
+                    and idx.get('evidence_archive_blob')==a['evidence_archive_blob'],
+                    'W0B2A original source exact qualified index mismatch')
+            for kind in ('evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/a[kind])==a[kind+'_blob'],
+                        'W0B2A original provider ZIP, complete log or manifest Git blob mismatch '+kind)
+            raw=(root/a['evidence_archive']).read_bytes()
+            complete=(root/a['evidence_job_log']).read_bytes()
+            require(len(raw)==14216
+                    and hashlib.sha256(raw).hexdigest()==a['artifact_sha256']
+                    and len(complete)==235792
+                    and hashlib.sha256(complete).hexdigest()=='1ccd70596e82322700c0f3d15d3b3c5e9bc3a52d8f11b5aeac6186d1d1f5ade6',
+                    'W0B2A original provider content length or SHA-256 mismatch')
+            m=json.loads((root/a['evidence_manifest']).read_text())
+            require(m.get('gate')=='P3-M4-W0B2A'
+                    and m.get('attempt')=='R1'
+                    and m.get('status')=='GREEN_STRICT_PROVIDER_ORIGINAL_UNPROMOTED'
+                    and m.get('run_id')==a['run_id']
+                    and m.get('job_id')==a['job_id']
+                    and m.get('tested_sha')==a['tested_sha']
+                    and m.get('artifact_id')==a['artifact_id']
+                    and m.get('source_blob')==a['source_blob']
+                    and m.get('consumer_blob')==a['consumer_blob']
+                    and m.get('workflow_blob')==a['workflow_blob']
+                    and m['original_zip']['size']==len(raw)
+                    and m['original_zip']['sha256']==a['artifact_sha256']
+                    and m['original_job_log']['size']==len(complete)
+                    and m['original_job_log']['sha256']=='1ccd70596e82322700c0f3d15d3b3c5e9bc3a52d8f11b5aeac6186d1d1f5ade6'
+                    and m.get('source_reports')==m.get('consumer_reports')==3
+                    and m.get('independent_controls')==3
+                    and m.get('negative_mutants')==6
+                    and m.get('cold_build_jobs')==9133
+                    and m.get('strict_marker')==a['strict_marker']
+                    and m.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                    and m.get('accepted_predecessor_run')==44164974919
+                    and m.get('qualified_predecessor_preservation_run')==44168840610
+                    and m.get('prior_W0H1B_original_native_red_run')==44160611850
+                    and m.get('stopped_original_W0B1_native_red_runs')==[44117272657,44127193329]
+                    and m.get('roadmap_staging_green_run')==44175396442,
+                    'W0B2A provider-original six-member manifest/qualification metadata drift')
+            names={'auditor.log','cold-source.log','consumer.log','preflight.log','source-axioms.log','tested-commit.txt'}
+            allowed={'propext','Classical.choice','Quot.sound'}
+            pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+            with zipfile.ZipFile(root/a['evidence_archive']) as z:
+                require(z.testzip() is None and set(z.namelist())==names
+                        and len(m['original_zip']['members'])==6,
+                        'W0B2A original ZIP member list or CRC mismatch')
+                for member in m['original_zip']['members']:
+                    data=z.read(member['name'])
+                    require(len(data)==member['size']
+                            and hashlib.sha256(data).hexdigest()==member['sha256'],
+                            'W0B2A original ZIP member SHA mismatch '+member['name'])
+                require(z.read('tested-commit.txt').decode().strip()==a['tested_sha']
+                        and 'Build completed successfully (9133 jobs).' in z.read('cold-source.log').decode()
+                        and 'BFSS_W0B2A_R1_W0H1B_GREEN_ORIGINAL_M3B_M3C_M3I_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+                        and a['strict_marker'] in z.read('auditor.log').decode(),
+                        'W0B2A original source build, preflight or auditor marker missing')
+                for name,expected in (
+                    ('source-axioms.log',['originalFockClifford_module_smul',
+                                         'originalFockClifford_moduleEnd',
+                                         'originalFockClifford_moduleEnd_apply']),
+                    ('consumer.log',['originalFockClifford_module_smul_consumer',
+                                     'originalFockClifford_moduleEnd_apply_consumer',
+                                     'originalFockClifford_moduleEnd_smul_consumer'])):
+                    report=z.read(name).decode()
+                    roots=pat.findall(report)
+                    require('error:' not in report and 'sorryAx' not in report
+                            and len(roots)==3
+                            and [n.rsplit('.',1)[-1] for n,_ in roots]==expected
+                            and len(set(n for n,_ in roots))==3
+                            and all({x.strip() for x in axioms.split(',') if x.strip()}<=allowed for _,axioms in roots),
+                            'W0B2A original source or independent consumer theorem axiom mismatch '+name)
+            require(b'Build completed successfully (9133 jobs).' in complete
+                    and a['strict_marker'].encode() in complete
+                    and b'BFSS_W0B2A_R1_W0H1B_GREEN_ORIGINAL_M3B_M3C_M3I_PREFLIGHT_PASS' in complete,
+                    'W0B2A provider-original complete Actions log lacks strict evidence')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
