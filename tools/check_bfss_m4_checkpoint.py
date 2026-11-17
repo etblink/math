@@ -637,9 +637,90 @@ def check_checkpoint(root: Path, s: dict):
                 and not s['next_planned'].get('consumer_staged')
                 and not s['next_planned'].get('workflow_staged'),
                 'QTC0D source Fock adapter must remain unqualified/prospective')
+    if a['gate'] == 'P3-M4-QTC0D' and a['status'] == 'GREEN_QUALIFIED':
+        import zipfile
+        require(a.get('run_id') == 44018395393
+                and a.get('job_id') == 133821734785
+                and a.get('tested_sha') == '274f896c72f5fdb876d51d71b41cb97b41a4a107'
+                and a.get('artifact_id') == 14299603963
+                and a.get('artifact_sha256') == '7b19d5dc6d02f14c9ae831382b4d2f8c42d20d5a0ab4ad585d8e8858e9b1a54f'
+                and a.get('source_blob') == 'e52b8ca7a440e04ab3c3a93187e5100daa39e074'
+                and a.get('consumer_blob') == 'e6745b9f77fb8b1fbea58f4bb6055826320f342f'
+                and a.get('workflow_blob') == '8ddd78052a0d4eba6ea20bc0b97e034c517430ae'
+                and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
+                == 'c0de176f927ba70bed4494534f881d2ff93e732d'
+                and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
+                == '2d5c6032dc7e1955febf8b15742c30ecd862795d'
+                and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
+                == 'c8e471be7579908012983e96caa580964a61cd0a'
+                and a.get('source_reports') == a.get('consumer_reports') == 2
+                and a.get('cold_build_jobs') == 8965
+                and a.get('independent_controls') == 7,
+                'QTC0D native original Fock acceptance or original evidence drift')
+        prior = s.get('previous_active_QTC0D_R1_pending',{})
+        require(prior.get('gate') == a['gate']
+                and prior.get('status') == 'PENDING_STRICT_CI'
+                and prior.get('source_blob') == a['source_blob']
+                and prior.get('consumer_blob') == a['consumer_blob']
+                and prior.get('workflow_blob') == a['workflow_blob'],
+                'QTC0D launch chronology erased')
+        m = json.loads((root/a['evidence_manifest']).read_text())
+        require(m.get('gate') == a['gate']
+                and m.get('verdict') == a['status']
+                and m.get('run_id') == a['run_id']
+                and m.get('job_id') == a['job_id']
+                and m.get('tested_sha') == a['tested_sha']
+                and m.get('artifact_id') == a['artifact_id']
+                and m.get('artifact_sha256') == a['artifact_sha256']
+                and m.get('artifact_blob') == a['evidence_archive_blob']
+                and m.get('complete_job_log_blob') == a['evidence_job_log_blob']
+                and m.get('source_blob') == a['source_blob']
+                and m.get('consumer_blob') == a['consumer_blob']
+                and m.get('workflow_blob') == a['workflow_blob']
+                and m.get('archive_bytes') == 4120
+                and m.get('cold_build_jobs') == 8965
+                and m.get('controls') == 7
+                and m.get('negative_auditor_mutants') == 6
+                and m.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound'],
+                'QTC0D original provider ZIP manifest drift')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            expected = {'tested-commit.txt','preflight.log','cold-source.log',
+                        'source-axioms.log','consumer.log','auditor.log'}
+            require(z.testzip() is None and set(z.namelist()) == expected
+                    and set(m['zip_entries']) == expected,
+                    'QTC0D provider-original ZIP corrupted or incomplete')
+            for name, digest in m['zip_entries'].items():
+                require(hashlib.sha256(z.read(name)).hexdigest() == digest,
+                        'QTC0D original ZIP member SHA256 drift '+name)
+            require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and m['preflight_marker'] in z.read('preflight.log').decode()
+                    and 'Build completed successfully (8965 jobs).' in z.read('cold-source.log').decode()
+                    and m['strict_marker'] in z.read('auditor.log').decode()
+                    and m['auditor_marker'] in z.read('auditor.log').decode(),
+                    'QTC0D original strict source, job or auditor evidence absent')
+            pat = re.compile(r"(?m)^'([^'\n]+)' depends on axioms: \[([^\]]*)\]")
+            roots = {
+                'source-axioms.log': {'originalFock_quadratic_covariance_tensor',
+                                     'originalFock_quadratic_covariance_skew'},
+                'consumer.log': {'originalFock_tensor_covariance_consumer',
+                                 'originalFock_skew_covariance_consumer'}}
+            allowed = {'propext','Classical.choice','Quot.sound'}
+            for name, expected_roots in roots.items():
+                report = z.read(name).decode()
+                found = pat.findall(report)
+                require('sorryAx' not in report and 'error:' not in report
+                        and len(found) == 2
+                        and {x.rsplit('.',1)[-1] for x,_ in found} == expected_roots,
+                        'QTC0D source/consumer root audits are incomplete')
+                for theorem, axioms in found:
+                    require({x.strip() for x in axioms.split(',') if x.strip()} <= allowed,
+                            'QTC0D extra/unapproved axiom '+theorem)
+        log = (root/a['evidence_job_log']).read_text()
+        require(a['strict_marker'] in log and m['auditor_marker'] in log,
+                'QTC0D full original job log lacks 2+2 or auditor-positive markers')
     if a['gate'] == 'P3-M4-QTC0D':
-        require(s['last_qualified']['gate'] == 'P3-M4-QTC0C'
-                and s['last_qualified']['run_id'] == 44016807302
+        require(s['last_qualified']['gate'] == ('P3-M4-QTC0D' if a['status'] == 'GREEN_QUALIFIED' else 'P3-M4-QTC0C')
+                and s['last_qualified']['run_id'] == (44018395393 if a['status'] == 'GREEN_QUALIFIED' else 44016807302)
                 and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
                 and a['attempt'] == 'R1'
                 and a['first_atom'] == 'SOURCE_EXACT_FOCK_THIN_ADAPTER_FROM_QTC0A_AND_QTC0C'

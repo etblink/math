@@ -1,0 +1,20 @@
+# BFSS QTC0D R1 — original Fock thin tensor adapter, strict GREEN acceptance
+
+**Date:** 2026-11-16 Pacific (GitHub Actions completed 2026-11-17 UTC). **Branch:** `integration/bfss-unified-research-20261108`.
+
+**STRICT GREEN / QUALIFIED IN CONDITIONAL ORIGINAL FOCK SCOPE.** Exact [strict run #44018395393](https://github.com/etblink/math/actions/runs/44018395393), job `133821734785`, tested commit `274f896c72f5fdb876d51d71b41cb97b41a4a107`. [Contemporaneous roadmap #44018393943](https://github.com/etblink/math/actions/runs/44018393943) GREEN. Donor and exact files preflight PASS; pinned Lean 4.34.1 / Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restored PASS.
+
+Native source `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0DOriginalFockThinTensorAdapter.lean` has immutable blob `e52b8ca7a440e04ab3c3a93187e5100daa39e074`. Importing original QTC0A and generic QTC0C, the adapter uses only source-local product/scalar distribution and calls the **qualified** abstract `coefficient_both` once. It does **not** import or reuse unproved QTC0B. The carrier is the actual original `Fermion 2 →L[ℂ] Fermion 2` continuous-linear endomorphism algebra, with ordered products and exact `1/4` normalization.
+
+Strict source cold build **8,965 jobs PASS**. **Two** source root axiom reports `originalFock_quadratic_covariance_tensor` and `originalFock_quadratic_covariance_skew`, **two** independently importing consumer root reports `originalFock_tensor_covariance_consumer` and `originalFock_skew_covariance_consumer`, and seven consumer controls PASS. The allowed axioms are exactly `propext`, `Classical.choice`, `Quot.sound`; **no `sorryAx`**. Positive auditor and six negative mutants PASS. Consumer blob `e6745b9f77fb8b1fbea58f4bb6055826320f342f`; strict workflow blob `8ddd78052a0d4eba6ea20bc0b97e034c517430ae`.
+
+**Exact original GitHub artifact preserved:** [artifact #14299603963](https://github.com/etblink/math/actions/runs/44018395393/artifacts/14299603963), **4,120 bytes**. Original provider digest and independent downloaded SHA-256 both `7b19d5dc6d02f14c9ae831382b4d2f8c42d20d5a0ab4ad585d8e8858e9b1a54f`; Git blob `c0de176f927ba70bed4494534f881d2ff93e732d` archived at `research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0D_R1_44018395393_evidence.zip`. ZIP integrity PASS; six members `tested-commit.txt`, `preflight.log`, `cold-source.log`, `source-axioms.log`, `consumer.log`, `auditor.log` independently hashed and pinned in [manifest](diagnostics/BFSS_M4_QTC0D_R1_44018395393_evidence_manifest.json). The complete original Actions job log (not a reconstruction), Git blob `2d5c6032dc7e1955febf8b15742c30ecd862795d`, is archived at `research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0D_R1_44018395393_complete_job.log`.
+
+**Proved, precisely:** for any finite label index `ι`, any `T : Fermion 2 →L[ℂ] Fermion 2`, generators `x`, complex matrices `a,b`, **assuming**
+`hcov : ∀ k, T*x_k-x_k*T = ∑_p a_{pk}•x_p`,
+`[T,Q_x(b)]=Q_x(ab+ba.transpose)` with `Q_x(b)=(1/4)•∑_{i,j} b_{ij}•(x_i*x_j)`.
+For `a.transpose=-a`, a separate corollary proves `[T,Q_x(b)]=Q_x(ab-ba)` (still arbitrary `b`). The `hcov` hypothesis has **not** been discharged for any chosen original source-`K(A)`.
+
+**Historical controls:** Accepted QTC0A [#44001621836](https://github.com/etblink/math/actions/runs/44001621836) and QTC0C [#44016807302](https://github.com/etblink/math/actions/runs/44016807302) stay frozen; failed direct-QTC0B [R1 #44012367725](https://github.com/etblink/math/actions/runs/44012367725) and [R2 #44014529416](https://github.com/etblink/math/actions/runs/44014529416) retain exact RED ZIP/log evidence and architecture stop. No direct-QTC0B R3 was launched.
+
+**Not proved:** real original source `K(B)` identification, source-exact `K(A)` action/matrix bracket, faithful `Spin(9)`, physical Hilbert-domain self-adjointness, positive-regulator Hamiltonian fidelity, or ground state. **QTC1 real/complex source normalization remains prospective** until a new pre-gate decision. No `main` edits.
