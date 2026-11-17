@@ -1551,15 +1551,17 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('source_blob') == '489d71f3ac7d51f19caf45bd89640b646e9ca882'
                 and a.get('consumer_blob') == old.get('consumer_blob'),
                 'W0A4 R2 source/consumer changed beyond one-namespace repair')
-        source_path = a['source']
-        old_source = subprocess.check_output(
-            ['git','show','14b96aca0d455098fcd54486840f3b905eda2dd7:'+source_path],
-            cwd=root,text=True)
-        require(old_source.count('  AlgebraTensorModule.lift') == 1
-                and (root/source_path).read_text() ==
-                    old_source.replace('  AlgebraTensorModule.lift',
-                                       '  TensorProduct.AlgebraTensorModule.lift',1),
-                'W0A4 R2 source is not byte-exact one-token namespace repair')
+        patched_source = (root/a['source']).read_text()
+        require(patched_source.count('  TensorProduct.AlgebraTensorModule.lift') == 1,
+                'W0A4 R2 must contain exactly one qualified lift')
+        original_source_bytes = patched_source.replace(
+            '  TensorProduct.AlgebraTensorModule.lift',
+            '  AlgebraTensorModule.lift',1).encode('utf-8')
+        reconstructed_source_blob = hashlib.sha1(
+            ('blob '+str(len(original_source_bytes))+'\0').encode('utf-8')
+            + original_source_bytes).hexdigest()
+        require(reconstructed_source_blob == '606fcdd173d4c31f191d29e7de53a742cdcbf1aa',
+                'W0A4 R2 source is not byte-exact one-namespace repair of R1 RED')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

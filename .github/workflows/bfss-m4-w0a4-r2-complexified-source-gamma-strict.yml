@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/bfss-m4-w0a4"
+          mkdir -p "$RUNNER_TEMP/bfss-m4-w0a4-r2"
           git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-w0a4-r2/tested-commit.txt"
           python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0a4-r2/preflight.log"
           import json,re,subprocess,hashlib,zipfile
@@ -88,12 +88,14 @@ jobs:
               assert set(z.namelist())=={"preflight.log","cold-source.log","tested-commit.txt"}
               assert "Unknown identifier" in z.read("cold-source.log").decode()
               assert "AlgebraTensorModule.lift" in z.read("cold-source.log").decode()
-          r1_src=subprocess.check_output(
-              ["git","show","14b96aca0d455098fcd54486840f3b905eda2dd7:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A4OriginalFullComplexGammaTransport.lean"],
-              text=True)
-          assert r1_src.count("  AlgebraTensorModule.lift")==1
-          assert src==r1_src.replace("  AlgebraTensorModule.lift",
-                                     "  TensorProduct.AlgebraTensorModule.lift",1)
+          assert src.count("  TensorProduct.AlgebraTensorModule.lift")==1
+          reconstructed_r1=src.replace("  TensorProduct.AlgebraTensorModule.lift",
+                                       "  AlgebraTensorModule.lift",1)
+          original_bytes=reconstructed_r1.encode("utf-8")
+          exact_original_blob=hashlib.sha1(
+              ("blob "+str(len(original_bytes))+"\0").encode("utf-8")+original_bytes
+          ).hexdigest()
+          assert exact_original_blob=="606fcdd173d4c31f191d29e7de53a742cdcbf1aa"
           assert Path(a["prospective_receipt"]).is_file()
           for path,digest in [
              ("research/quantum-information/diagnostics/BFSS_M4_W0A4_R1_44055363556_RED_evidence.zip","7deda8b0723841d8a35e19dd8587211254b7e3a8cebaa317918321a54d96dcb6"),

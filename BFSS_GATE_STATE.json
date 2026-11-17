@@ -679,7 +679,7 @@
     "workflow": ".github/workflows/bfss-m4-w0a4-r2-complexified-source-gamma-strict.yml",
     "source_blob": "489d71f3ac7d51f19caf45bd89640b646e9ca882",
     "consumer_blob": "18fec08b3259513e63deff44319eb90b759b6b5f",
-    "workflow_blob": "114fc91655b2409728b959288f1f78208f7191a4",
+    "workflow_blob": "f2a80f5e2eb125c7a4beccd167fa1c185c224fe6",
     "accepted_predecessor_run": 44051746176,
     "first_atom": "ORIGINAL_FULL_COMPLEXIFIED_SOURCE_GAMMA_LINEAR_EXTENSION_VIA_TENSOR_INDUCTION_R2_ONE_NAMESPACE_REPAIR",
     "expected_source_reports": 2,
@@ -693,7 +693,7 @@
     "contract_commit": "868d494b84e9c12687fbb60db98bb1d5a97cb5a0",
     "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0A4_R2_NAMESPACE_ONLY_REPAIR_CONTRACT_2026_11_17.md",
     "w0a3_original_archive_blob": "845be0ed709f4fe44e288f116cc17eba4fcc5b9d",
-    "note": "R2 strict PENDING with only one replacement of AlgebraTensorModule.lift by TensorProduct.AlgebraTensorModule.lift in original W0A4 source; independent consumer byte-identical to R1; exact original R1 RED artifact and full logs committed and recorded, W0A3 stays last-qualified, no new axioms, no Fock carrier replacement. Stop if second analogous RED.",
+    "note": "R2 strict PENDING with only one replacement of AlgebraTensorModule.lift by TensorProduct.AlgebraTensorModule.lift in original W0A4 source; independent consumer byte-identical to R1; exact original R1 RED artifact and full logs committed and recorded, W0A3 stays last-qualified, no new axioms, no Fock carrier replacement. Stop if second analogous RED. First R2 CI run #44058928429 RED at preflight (missing temp directory; Lean never ran), and roadmap #44058928173 RED from shallow-checkout git show; both archived and harness repaired with exact reconstructed Git blob SHA. Original R2 Lean source and independent consumer unchanged.",
     "previous_red_run": 44055363556
   },
   "toolchain": {
@@ -2612,5 +2612,18 @@
     "original_zip_blob": "ef3ad039799680fde9f0d1669f130ef275f9a2a3",
     "full_original_log_blob": "6f635122f8ab1a3078851aac68214462a4124488",
     "receipt": "research/quantum-information/BFSS_QIT_SCC_W0A4_R1_RED_44055363556_DIAGNOSTIC_2026_11_17.md"
+  },
+  "w0a4_r2_preflight_diagnostic": {
+    "status": "RED_PREFLIGHT_BEFORE_LEAN",
+    "strict_run": 44058928429,
+    "strict_job": 133955389578,
+    "roadmap_run": 44058928173,
+    "roadmap_job": 133955388840,
+    "tested_sha": "6f2c9629342af68d0b30c8a879af1fd118e217d0",
+    "strict_original_job_log_git_blob": "c82ea3d5de1235e0d458b9be7cb1841d81f0766c",
+    "roadmap_original_job_log_git_blob": "4ee9996adb7e8b05f58abcc0719fad907624a41f",
+    "reason": "Temporary evidence directory not created before tee; independent roadmap shallow checkout missing historical commit object. No Lean compilation or consumer commenced.",
+    "note": "Not counted as R2 native theorem RED, R1 remains the only original native source RED; first R2 CI harness and roadmap logs preserved.",
+    "receipt": "research/quantum-information/diagnostics/BFSS_W0A4_R2_PREFLIGHT_ONLY_44058928429_2026_11_17.md"
   }
 }
