@@ -2845,9 +2845,9 @@ def check_checkpoint(root: Path, s: dict):
                 and h2.get('preservation_run')==44151502381,
                 'W0H1A R2 acceptance must retain original native and harness negative knowledge')
         for item in (red1,h1,h2):
-            for name in [('evidence_archive','evidence_job_log','evidence_manifest') if item is red1 else
+            for name in (('evidence_archive','evidence_job_log','evidence_manifest') if item is red1 else
                          ('original_log','original_metadata','manifest') if item is h1 else
-                         ('original_zip','original_log','manifest')]:
+                         ('original_zip','original_log','manifest')):
                 require(blob(root/item[name])==item[name+'_blob'],
                         'W0H1A accepted historical original diagnostic drift '+name)
         frozen=s.get('previous_active_W0B1_R2_stopped',{})
