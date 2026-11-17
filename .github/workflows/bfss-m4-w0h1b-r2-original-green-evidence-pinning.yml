@@ -1,0 +1,166 @@
+name: BFSS W0H1B R2 ORIGINAL full Clifford GREEN evidence preservation
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-m4-w0h1b-r2-original-green-evidence-pinning.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  preserve-original-W0H1B-R2-GREEN:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout original W0H1B R2 and canonical pending predecessor
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Assert exact R2 source and consumer and preserved original R1 RED
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1BOriginalAdjoinFullCliffordCommutantR2.lean)" = 9139fba785aa31a1e1cde83419f9848ea67fc016
+          test "$(git rev-parse HEAD:lean/diagnostics/BFSSP3M4W0H1BOriginalAdjoinFullCliffordIndependentConsumerR2.lean)" = 61964ed693120a6db5f39d034581fc5a5aac9f0a
+          test "$(git rev-parse HEAD:.github/workflows/bfss-m4-w0h1b-r2-original-centralizer-membership-strict.yml)" = c46291c407af0f5e85f23bad2cb20114abd6b03c
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0H1B_R1_44160611850_SOURCE_RED_evidence.zip)" = 3cfab55e2a8a30cb4c63e0a4aa47d224b826636a
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_W0H1B_R1_44160611850_complete_job.log)" = 51c99b6096bffee493f39713f2b48c8add482440
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_W0H1B_R1_44160611850_SOURCE_RED_evidence_manifest.json)" = 1487191587142dbd9caa6fc881250a0b3b8e099b
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path("BFSS_GATE_STATE.json").read_text())
+          a,q=s["active"],s["last_qualified"]
+          assert a["gate"]=="P3-M4-W0H1B" and a["attempt"]=="R2"
+          assert a["status"]=="PENDING_STRICT_CI" and a["qualification"] is False
+          assert a["source_blob"]=="9139fba785aa31a1e1cde83419f9848ea67fc016"
+          assert a["consumer_blob"]=="61964ed693120a6db5f39d034581fc5a5aac9f0a"
+          assert a["workflow_blob"]=="c46291c407af0f5e85f23bad2cb20114abd6b03c"
+          assert a["contract_commit"]=="c7ba0b963d904487461203e43d3f1f844a352dde"
+          assert a["previous_red_run"]==44160611850
+          assert a["accepted_predecessor_run"]==44151962609
+          assert a["expected_source_reports"]==a["expected_consumer_reports"]==2
+          assert a["independent_controls"]==3
+          assert q["gate"]=="P3-M4-W0H1A" and q["run_id"]==44151962609
+          assert q["status"]=="GREEN_QUALIFIED" and q["qualification"] is True
+          assert s["accepted_anchors"][-1]==q
+          assert s["last_qualified_source_exact_original_BFSS"]["run_id"]==44151962609
+          assert s["previous_active_W0H1B_R1_RED"]["run_id"]==44160611850
+          assert s["previous_active_W0H1B_R1_RED"]["status"]=="RED_UNQUALIFIED"
+          assert s["previous_active_W0H1B_R1_RED"]["preservation_run"]==44163946021
+          assert s["previous_active_W0B1_R2_stopped"]["stopped"] is True
+          assert s["next_planned"]["gate"]=="P3-M4-W0B2" and s["next_planned"]["status"]=="PROSPECTIVE_NOT_STAGED"
+          assert not Path("research/quantum-information/diagnostics/BFSS_M4_W0H1B_R2_44164974919_GREEN_evidence.zip").exists()
+          PY
+      - name: Rehash provider-original strict GREEN ZIP, complete original Actions log and axiom evidence
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,re,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          run=44164974919
+          job=134328472568
+          artifact=14366581610
+          tested="a383fc5bcab5656b3fb67efe4a398c1788b201d1"
+          digest="a5dc404d93dd6df74ff97e5a4f498661d467edc75391cb46099147859b8928a3"
+          size=14233
+          prefix="https://api.github.com/repos/etblink/math"
+          headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}
+          def getjson(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as res:return json.load(res)
+          runinfo=getjson(f"{prefix}/actions/runs/{run}")
+          meta=getjson(f"{prefix}/actions/artifacts/{artifact}")
+          assert runinfo["id"]==run and runinfo["status"]=="completed" and runinfo["conclusion"]=="success"
+          assert runinfo["head_sha"]==tested
+          assert meta["id"]==artifact and meta["size_in_bytes"]==size
+          assert meta["digest"]=="sha256:"+digest
+          assert meta["workflow_run"]["id"]==run and meta["workflow_run"]["head_sha"]==tested
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def download(url):
+              try:
+                  response=urllib.request.build_opener(NoRedirect).open(urllib.request.Request(url,headers=headers),timeout=60)
+              except urllib.error.HTTPError as e:
+                  assert e.code==302,e
+                  signed=e.headers["Location"]
+                  assert signed.startswith("https://")
+                  with urllib.request.urlopen(signed,timeout=90) as response:return response.read()
+              else:
+                  with response:return response.read()
+          raw=download(f"{prefix}/actions/artifacts/{artifact}/zip")
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          names={"auditor.log","cold-source.log","consumer.log","preflight.log","source-axioms.log","tested-commit.txt"}
+          allowed={"propext","Classical.choice","Quot.sound"}
+          pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          def audit(log,expected):
+              assert "error:" not in log and "sorryAx" not in log,log[-2000:]
+              found=pat.findall(log)
+              assert len(found)==len(expected),(found,expected)
+              assert [name.rsplit(".",1)[-1] for name,_ in found]==expected,found
+              assert len(set(name for name,_ in found))==len(found)
+              for _,axioms in found:
+                  assert {x.strip() for x in axioms.split(",") if x.strip()}<=allowed,axioms
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None and set(z.namelist())==names,z.namelist()
+              assert z.read("tested-commit.txt").decode().strip()==tested
+              assert "BFSS_W0H1B_R2_W0H1A_GREEN_R1_NATIVE_RED_W0B1_STOP_PREFLIGHT_PASS" in z.read("preflight.log").decode()
+              cold=z.read("cold-source.log").decode()
+              assert "Build completed successfully (9132 jobs)." in cold
+              assert "error:" not in cold and "sorryAx" not in cold
+              strict="BFSS_W0H1B_R2_ORIGINAL_ADJOIN_FULL_CLIFFORD_2_SOURCE_2_CONSUMER_3_CONTROLS_SIX_MUTANTS_STRICT_GREEN"
+              assert strict in z.read("auditor.log").decode()
+              audit(z.read("source-axioms.log").decode(),
+                    ["originalSourceCentralizerPullback_eq_top","originalComplexEquiv_fullClifford_commutes"])
+              audit(z.read("consumer.log").decode(),
+                    ["originalSourceCentralizerPullback_eq_top_consumer","originalComplexEquiv_fullClifford_commutes_consumer"])
+              members=[{"name":name,"size":len(z.read(name)),"sha256":hashlib.sha256(z.read(name)).hexdigest()} for name in sorted(z.namelist())]
+          log=download(f"{prefix}/actions/jobs/{job}/logs")
+          assert len(log)>20000
+          assert b"Build completed successfully (9132 jobs)." in log
+          assert strict.encode() in log
+          assert b"BFSS_W0H1B_R2_W0H1A_GREEN_R1_NATIVE_RED_W0B1_STOP_PREFLIGHT_PASS" in log
+          root=Path("research/quantum-information/diagnostics")
+          root.mkdir(parents=True,exist_ok=True)
+          archive=root/f"BFSS_M4_W0H1B_R2_{run}_GREEN_evidence.zip"
+          full=root/f"BFSS_W0H1B_R2_{run}_complete_job.log"
+          manifest=root/f"BFSS_W0H1B_R2_{run}_GREEN_evidence_manifest.json"
+          for p in (archive,full,manifest):assert not p.exists(),p
+          archive.write_bytes(raw)
+          full.write_bytes(log)
+          record={
+             "gate":"P3-M4-W0H1B","attempt":"R2","status":"GREEN_STRICT_PROVIDER_ORIGINAL_UNPROMOTED",
+             "run_id":run,"job_id":job,"tested_sha":tested,"artifact_id":artifact,
+             "original_zip":{"path":str(archive),"size":size,"sha256":digest,"members":members},
+             "original_job_log":{"path":str(full),"size":len(log),"sha256":hashlib.sha256(log).hexdigest()},
+             "source_blob":"9139fba785aa31a1e1cde83419f9848ea67fc016",
+             "consumer_blob":"61964ed693120a6db5f39d034581fc5a5aac9f0a",
+             "workflow_blob":"c46291c407af0f5e85f23bad2cb20114abd6b03c",
+             "source_reports":2,"consumer_reports":2,"independent_controls":3,
+             "negative_mutants":6,"cold_build_jobs":9132,"strict_marker":strict,
+             "allowed_axioms":["propext","Classical.choice","Quot.sound"],
+             "accepted_predecessor_run":44151962609,
+             "prior_W0H1B_native_source_red_run":44160611850,
+             "prior_W0H1B_native_red_preservation_run":44163946021,
+             "prior_W0B1_stopped_original_native_red_runs":[44117272657,44127193329]
+          }
+          manifest.write_text(json.dumps(record,sort_keys=True,indent=2)+"\n")
+          print("BFSS_W0H1B_R2_ORIGINAL_GREEN_PROVIDER_ZIP_AND_FULL_LOG_REHASH_PASS",json.dumps(record,sort_keys=True))
+          PY
+      - name: Git-pin provider-original six-member GREEN ZIP, complete original job log and checksum manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/quantum-information/diagnostics/BFSS_M4_W0H1B_R2_44164974919_GREEN_evidence.zip research/quantum-information/diagnostics/BFSS_W0H1B_R2_44164974919_complete_job.log research/quantum-information/diagnostics/BFSS_W0H1B_R2_44164974919_GREEN_evidence_manifest.json
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          test "$(wc -c < research/quantum-information/diagnostics/BFSS_M4_W0H1B_R2_44164974919_GREEN_evidence.zip | tr -d ' ')" = 14233
+          git commit -m "BFSS W0H1B R2: preserve original full Clifford GREEN ZIP complete Actions log and digest manifest"
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
