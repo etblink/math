@@ -432,7 +432,7 @@
   "active": {
     "gate": "P3-M4-QTC1",
     "attempt": "R1",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean",
     "consumer": "lean/diagnostics/BFSSP3M4QTC1OriginalSourceRealComplexQuarterIndependentConsumer.lean",
@@ -456,7 +456,27 @@
     "real_source_gamma_blob": "7abc03723b3111e4a03389b722054e50d6a9bf30",
     "real_source_K_covariance_donor_blob": "c2e7a7c665121283cde13ae5dabc183362b6b420",
     "prior_stopped_QTC0B_R2": 44014529416,
-    "note": "QTC1 R1 UNQUALIFIED candidate: small generic real-quarter to complex smul equality on true Fermion2 Op, then source-exact K(B) = originalFockQuadratic of original Source48 normalized gamma. QTC0D strictly accepted; no source K(A) hcov binding or K commutator."
+    "note": "QTC1 R1 strictly RED / unqualified at lines 47 and 71. Exact original provider ZIP and full job log preserved. QTC0D remains last qualified. Distinct typed-cast and explicit calc R2 permitted; no R1 direct retry.",
+    "verdict": "RED",
+    "run_id": 44020471704,
+    "job_id": 133828475926,
+    "tested_sha": "02859a9d28ec971bbd53a0f3bdad2638e87c3707",
+    "strict_outcome": "failure",
+    "failure_phase": "COLD_NEW_SOURCE",
+    "first_error": "line 47: exact_mod_cast cannot produce complex-coefficient scalar cast equality",
+    "second_error": "line 71: maximum recursion depth at source-K and Q definitional join",
+    "source_reports": 0,
+    "consumer_reports": 0,
+    "independent_consumer_executed": false,
+    "artifact_id": 14301386967,
+    "artifact_sha256": "4effa4881bb7d33f5397873db92bfa4279e351dbda9d1991062356fe1ed73bd8",
+    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R1_44020471704_evidence.zip",
+    "evidence_archive_blob": "8ae6ad676712bd361d4a4a0568fc5924a3c3daa5",
+    "evidence_job_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R1_44020471704_complete_job.log",
+    "evidence_job_log_blob": "aa18bfb54c64d248849508c60d6cfd7f66d32cea",
+    "evidence_manifest": "research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC1_R1_44020471704_evidence_manifest.json",
+    "evidence_manifest_blob": "96ad74210394739ccee2d168269d377f1bf29762",
+    "receipt": "research/spectral-p2-original-field/BFSS_M4_QTC1_R1_RED_44020471704_REAL_CAST_AND_SOURCE_JOIN_2026_11_16.md"
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -1599,5 +1619,34 @@
     "evidence_manifest_blob": "c8e471be7579908012983e96caa580964a61cd0a",
     "receipt": "research/spectral-p2-original-field/BFSS_M4_QTC0D_R1_GREEN_44018395393_NATIVE_FOCK_ADAPTER_ACCEPTANCE_2026_11_16.md",
     "evidence_status": "PROVIDER_ORIGINAL_4120_BYTE_ZIP_INDEPENDENT_SHA256_MEMBER_CHECKS_AND_COMPLETE_JOB_LOG_ACCEPTED"
+  },
+  "previous_active_QTC1_R1_pending": {
+    "gate": "P3-M4-QTC1",
+    "attempt": "R1",
+    "status": "PENDING_STRICT_CI",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4QTC1OriginalSourceRealComplexQuarterIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-qtc1-original-real-complex-quarter-strict.yml",
+    "source_blob": "127cd129a375f7f024c882deb62d1220de26aa0d",
+    "consumer_blob": "24113406f779e1f2dcd769c9c400d0b897dda6a9",
+    "workflow_blob": "44e44f0ae1c8f44bd75d01df7792225da897f6a6",
+    "accepted_predecessor_run": 44018395393,
+    "first_atom": "ORIGINAL_REAL_TO_COMPLEX_K_QUARTER_COEFFICIENT_NORMALIZATION",
+    "expected_source_reports": 2,
+    "expected_consumer_reports": 2,
+    "independent_controls": 7,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "contract_commit": "73a647b1e0cd4233e8fffbfba46286ccc3b9ccfb",
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_QTC1_R1_ORIGINAL_SOURCE_REAL_COMPLEX_QUARTER_BRIDGE_PRE_GATE_2026_11_16.md",
+    "real_source_donor_blob": "d7d460fc8d2806234816e8bd2088f9cebb6addd4",
+    "real_source_gamma_blob": "7abc03723b3111e4a03389b722054e50d6a9bf30",
+    "real_source_K_covariance_donor_blob": "c2e7a7c665121283cde13ae5dabc183362b6b420",
+    "prior_stopped_QTC0B_R2": 44014529416,
+    "note": "QTC1 R1 UNQUALIFIED candidate: small generic real-quarter to complex smul equality on true Fermion2 Op, then source-exact K(B) = originalFockQuadratic of original Source48 normalized gamma. QTC0D strictly accepted; no source K(A) hcov binding or K commutator."
   }
 }

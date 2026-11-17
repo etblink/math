@@ -772,6 +772,50 @@ def check_checkpoint(root: Path, s: dict):
                 and not s['next_planned'].get('consumer_staged')
                 and not s['next_planned'].get('workflow_staged'),
                 'QTC1 real-source normalization must remain prospective')
+    if a['gate'] == 'P3-M4-QTC1' and a.get('attempt') == 'R1' and a['status'] == 'RED_UNQUALIFIED':
+        import zipfile
+        require(a['run_id'] == 44020471704
+                and a['tested_sha'] == '02859a9d28ec971bbd53a0f3bdad2638e87c3707'
+                and a['job_id'] == 133828475926
+                and a['artifact_id'] == 14301386967
+                and a['artifact_sha256'] == '4effa4881bb7d33f5397873db92bfa4279e351dbda9d1991062356fe1ed73bd8'
+                and a['evidence_archive_blob'] == blob(root/a['evidence_archive'])
+                == '8ae6ad676712bd361d4a4a0568fc5924a3c3daa5'
+                and a['evidence_job_log_blob'] == blob(root/a['evidence_job_log'])
+                == 'aa18bfb54c64d248849508c60d6cfd7f66d32cea'
+                and a['evidence_manifest_blob'] == blob(root/a['evidence_manifest'])
+                == '96ad74210394739ccee2d168269d377f1bf29762'
+                and a['source_reports'] == a['consumer_reports'] == 0
+                and a['independent_consumer_executed'] is False,
+                'QTC1 R1 unqualified original RED bytes or source-only failure changed')
+        m = json.loads((root/a['evidence_manifest']).read_text())
+        require(m.get('run_id') == a['run_id']
+                and m.get('tested_sha') == a['tested_sha']
+                and m.get('artifact_sha256') == a['artifact_sha256']
+                and m.get('archive_blob') == a['evidence_archive_blob']
+                and m.get('complete_job_log_blob') == a['evidence_job_log_blob']
+                and m.get('zip_size_bytes') == 3729
+                and m.get('source_axioms') == 'sorryAx_FROM_UNRESOLVED_GOALS',
+                'QTC1 R1 exact original RED manifest drift')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist()) == {'cold-source.log','preflight.log','tested-commit.txt'}
+                    and set(m['members']) == set(z.namelist()),
+                    'QTC1 R1 original RED ZIP corruption or lost member')
+            for name, digest in m['members'].items():
+                require(hashlib.sha256(z.read(name)).hexdigest() == digest,
+                        'QTC1 R1 original member SHA256 changed: '+name)
+            require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and 'BFSS_M4_QTC1_SOURCE_REAL_COMPLEX_K_QUARTER_DONORS_AND_EVIDENCE_PREFLIGHT_PASS'
+                       in z.read('preflight.log').decode()
+                    and 'P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean:47:8'
+                       in z.read('cold-source.log').decode()
+                    and 'P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean:71:8'
+                       in z.read('cold-source.log').decode(),
+                    'QTC1 R1 original RED first/second diagnostic absent')
+        require('sorryAx' in (root/a['evidence_job_log']).read_text()
+                and '44020471704' in (root/a['receipt']).read_text(),
+                'QTC1 R1 original whole log or RED receipt missing')
     if a['gate'] == 'P3-M4-QTC1':
         require(s['last_qualified']['gate'] == 'P3-M4-QTC0D'
                 and s['last_qualified']['run_id'] == 44018395393

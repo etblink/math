@@ -1,0 +1,47 @@
+{
+  "gate": "P3-M4-QTC1",
+  "attempt": "R1",
+  "verdict": "RED_UNQUALIFIED",
+  "run_id": 44020471704,
+  "job_id": 133828475926,
+  "tested_sha": "02859a9d28ec971bbd53a0f3bdad2638e87c3707",
+  "artifact_id": 14301386967,
+  "artifact_name": "bfss-m4-qtc1-02859a9d28ec971bbd53a0f3bdad2638e87c3707-1",
+  "artifact_sha256": "4effa4881bb7d33f5397873db92bfa4279e351dbda9d1991062356fe1ed73bd8",
+  "zip_size_bytes": 3729,
+  "archive_blob": "8ae6ad676712bd361d4a4a0568fc5924a3c3daa5",
+  "complete_job_log_blob": "aa18bfb54c64d248849508c60d6cfd7f66d32cea",
+  "members": {
+    "cold-source.log": "30e20c03422f4a544dfffa1391031867092e1374c72345c6d6b3b7df3511c2f5",
+    "preflight.log": "529ab0aa99a1a5102092c1ec841faa6c45443902ebcadb739820b5ebe9b8054b",
+    "tested-commit.txt": "8ef86adb669e4fcf5efc955ced9ce00c84a9ed28faf3303e6a7957070eb3804b"
+  },
+  "source_blob": "127cd129a375f7f024c882deb62d1220de26aa0d",
+  "consumer_blob": "24113406f779e1f2dcd769c9c400d0b897dda6a9",
+  "workflow_blob": "44e44f0ae1c8f44bd75d01df7792225da897f6a6",
+  "phase": "COLD_NEW_SOURCE",
+  "preflight": "PASS",
+  "pin_restore": "PASS",
+  "qualified_QTC0D_donor": "PASS",
+  "independent_consumer": "NOT_EXECUTED",
+  "source_axioms": "sorryAx_FROM_UNRESOLVED_GOALS",
+  "errors": [
+    {
+      "line": 47,
+      "column": 8,
+      "kind": "exact_mod_cast_source_real_vs_target_complex",
+      "message": "mod_cast has type B p q / 4 = 1 / 4 * B p q, but expected cast real-to-complex ↑(B p q / 4) = 1 / 4 * ↑(B p q)"
+    },
+    {
+      "line": 71,
+      "column": 8,
+      "kind": "original_Source48_definitional_reduction_maximum_recursion_depth",
+      "message": "max recursion depth at exact originalFock_real_quarter_quadratic after unfolding both source K and complex Q"
+    }
+  ],
+  "governance_run": 44020471920,
+  "governance_verdict": "GREEN_NOT_MATHEMATICAL_QUALIFICATION",
+  "last_qualified_gate": "P3-M4-QTC0D",
+  "last_qualified_run": 44018395393,
+  "disposition": "R1_UNQUALIFIED; bounded R2 with typed norm_cast and source-definitional calc, no resource escalation; no mathematical counterexample"
+}
