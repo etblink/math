@@ -157,6 +157,67 @@ def check_checkpoint(root: Path, s: dict):
                     and 'BFSS_CT0_R2_ORIGINAL_ZIP_REHASH_PASS' in
                         (root/a['evidence_preservation_job_log']).read_text(),
                     'CT0 original strict and preservation receipts missing')
+    if a['gate'] == 'P3-M4-QTC0A' and a['status'] == 'GREEN_QUALIFIED':
+        import zipfile
+        require(a.get('run_id') == 44001621836
+                and a.get('job_id') == 133766836613
+                and a.get('tested_sha') == 'c2697826a7ebd258f604e60def408a84f52a61b9'
+                and a.get('source_blob') == 'b0b519e46566856e100bf6aa882f9fcdf37d397e'
+                and a.get('consumer_blob') == '9d1dc845bea73d8e07549c69d9ef07804509f52e'
+                and a.get('workflow_blob') == 'f765eab05612b9f4ea0ec94ec8f981fe19b130d2'
+                and a.get('artifact_id') == 14292159303
+                and a.get('artifact_sha256') == 'bf8d93fe00846c9ea26815d32ee331424d9510d1816b66cd98c90ef82baf724c'
+                and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
+                == '7cebb61b36ba22283cbd27a8d5f91b301b7303e2'
+                and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
+                and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
+                and a.get('cold_build_jobs') == 8963,
+                'QTC0A original strict artifact/metadata or accepted bytes drift')
+        manifest = json.loads((root/a['evidence_manifest']).read_text())
+        require(manifest['original_artifact_sha256'] == a['artifact_sha256']
+                and manifest['original_evidence_git_blob'] == a['evidence_archive_blob']
+                and manifest['original_tested_sha'] == a['tested_sha']
+                and manifest['original_run'] == a['run_id']
+                and manifest['original_job'] == a['job_id']
+                and manifest['job_log_git_blob'] == a['evidence_job_log_blob']
+                and len(manifest['source_reports']) == len(manifest['consumer_reports']) == 2
+                and manifest['independent_controls'] == 4
+                and manifest['auditor_negative_controls'] == 6,
+                'QTC0A evidence manifest does not match qualified gate')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            expected_files = {'tested-commit.txt', 'preflight.log', 'cold-source.log',
+                              'source-axioms.log', 'consumer.log'}
+            require(z.testzip() is None and set(z.namelist()) == expected_files,
+                    'QTC0A provider-original ZIP damaged or incomplete')
+            for name, digest in manifest['evidence_files'].items():
+                require(hashlib.sha256(z.read(name)).hexdigest() == digest,
+                        'QTC0A provider-original member SHA256 changed: '+name)
+            require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and 'BFSS_M4_QTC0A_SOURCE_CONSUMER_EVERGREEN_DONORS_PREDECESSOR_AND_STOP_PREFLIGHT_PASS'
+                    in z.read('preflight.log').decode()
+                    and 'Build completed successfully (8963 jobs).' in z.read('cold-source.log').decode(),
+                    'QTC0A tested commit, source preflight or native build incomplete')
+            pat = re.compile(r"(?m)^'([^'\\n]+)' depends on axioms: \\[([^\\]]*)\\]")
+            expected_roots = {
+                'source-axioms.log': {'originalFock_commutator_complex_smul',
+                                      'originalFock_quadratic_covariance_expanded'},
+                'consumer.log': {'originalFock_complex_scalar_consumer',
+                                 'originalFock_quadratic_covariance_consumer'}}
+            allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+            for name, expected in expected_roots.items():
+                report = z.read(name).decode()
+                found = pat.findall(report)
+                require('sorryAx' not in report and 'error:' not in report
+                        and len(found) == 2
+                        and {ident.rsplit('.', 1)[-1] for ident, _ in found} == expected,
+                        'QTC0A original theorem root audit changed: '+name)
+                for _, axioms in found:
+                    require({token.strip() for token in axioms.split(',') if token.strip()} <= allowed,
+                            'QTC0A report contains unapproved axiom')
+        joblog = (root/a['evidence_job_log']).read_text()
+        require(a['strict_marker'] in joblog
+                and 'BFSS_M4_QTC0A_AUDITOR_POSITIVE_AND_6_NEGATIVE_CONTROLS_PASS' in joblog,
+                'QTC0A complete job log lacks strict or mutant-auditor marker')
     if a['gate'] == 'P3-M4-LB1P1' and a['status'] == 'GREEN_QUALIFIED':
         import zipfile
         require(a.get('run_id') == 43998813826
@@ -293,8 +354,10 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('consumer_blob') == '5822a7290c04e5fc88b297ad14d9d16b8c290bbd',
                 'P1 R2 prior original donor-name RED or unchanged consumer missing')
     if a['gate'] == 'P3-M4-QTC0A':
-        require(s['last_qualified']['gate'] == 'P3-M4-LB1P1'
-                and s['last_qualified']['run_id'] == 43998813826
+        require(s['last_qualified']['gate'] ==
+                    ('P3-M4-QTC0A' if a['status'] == 'GREEN_QUALIFIED' else 'P3-M4-LB1P1')
+                and s['last_qualified']['run_id'] ==
+                    (44001621836 if a['status'] == 'GREEN_QUALIFIED' else 43998813826)
                 and a.get('attempt') == 'R1'
                 and a.get('first_atom') == 'WEIGHTED_QUADRATIC_LEIBNIZ_EXPANSION'
                 and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
