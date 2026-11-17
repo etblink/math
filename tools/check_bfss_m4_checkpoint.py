@@ -292,6 +292,38 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('source_blob') == '9a2899e24c02cb5a5dd58159605a34195fce3856'
                 and a.get('consumer_blob') == '5822a7290c04e5fc88b297ad14d9d16b8c290bbd',
                 'P1 R2 prior original donor-name RED or unchanged consumer missing')
+    if a['gate'] == 'P3-M4-QTC0A':
+        require(s['last_qualified']['gate'] == 'P3-M4-LB1P1'
+                and s['last_qualified']['run_id'] == 43998813826
+                and a.get('attempt') == 'R1'
+                and a.get('first_atom') == 'WEIGHTED_QUADRATIC_LEIBNIZ_EXPANSION'
+                and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 2
+                and a.get('independent_controls') == 4
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound'],
+                'QTC0A weighted-only gate / accepted P1 predecessor drift')
+        p1 = s.get('previous_active_LB1P1_R2_qualified',{})
+        require(p1.get('gate') == 'P3-M4-LB1P1'
+                and p1.get('status') == 'GREEN_QUALIFIED'
+                and p1.get('qualification') is True
+                and p1.get('run_id') == 43998813826
+                and p1.get('artifact_sha256') == '6bcfef6696d6399c3f03ade5c0f97a732ee2f802ba9ab8ff13e6e6734d0db9a6'
+                and p1.get('evidence_archive_blob') == blob(root/p1['evidence_archive'])
+                and hashlib.sha256((root/p1['evidence_archive']).read_bytes()).hexdigest()
+                    == p1['artifact_sha256']
+                and p1.get('evidence_job_log_blob') == blob(root/p1['evidence_job_log'])
+                and p1.get('evidence_manifest_blob') == blob(root/p1['evidence_manifest']),
+                'qualified original P1 strict ZIP or independent evidence lost')
+        stopped = s.get('previous_active_CT1G0_R2_stopped',{})
+        require(stopped.get('gate') == 'P3-M4-CT1G0'
+                and stopped.get('status') == 'RED_UNQUALIFIED'
+                and stopped.get('stopped') is True
+                and stopped.get('stop_reason') == 'TWO_ANALOGOUS_NATIVE_RECURSION_FAILURES'
+                and stopped.get('run_id') == 43991790285
+                and stopped.get('previous_red_run') == 43988822460
+                and stopped.get('evidence_archive_blob') == blob(root/stopped['evidence_archive'])
+                and hashlib.sha256((root/stopped['evidence_archive']).read_bytes()).hexdigest()
+                    == stopped['artifact_sha256'],
+                'CT1G0 two-RED stop history must remain preserved')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
