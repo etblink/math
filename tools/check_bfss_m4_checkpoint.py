@@ -503,6 +503,56 @@ def check_checkpoint(root: Path, s: dict):
                 and not s['next_planned'].get('consumer_staged')
                 and not s['next_planned'].get('workflow_staged'),
                 'QTC1 real source bridge may not be silently promoted')
+    if a['gate'] == 'P3-M4-QTC0C':
+        require(s['last_qualified']['gate'] == 'P3-M4-QTC0A'
+                and s['last_qualified']['run_id'] == 44001621836
+                and a['attempt'] == 'R1'
+                and a['first_atom'] == 'ABSTRACT_ORDERED_WORD_COEFFICIENT_CONTRACTION_NO_FOCK'
+                and a['expected_source_reports'] == a['expected_consumer_reports'] == 3
+                and a['independent_controls'] == 7
+                and a['accepted_predecessor_run'] == 44001621836
+                and a['allowed_axioms'] == ['propext','Classical.choice','Quot.sound'],
+                'QTC0C source/consumer contract drift')
+        prior = s.get('previous_active_QTC0B_R2_stopped', {})
+        require(prior.get('status') == 'RED_UNQUALIFIED'
+                and prior.get('qualification') is False
+                and prior.get('stopped') is True
+                and prior.get('stop_reason') ==
+                    'TWO_ANALOGOUS_NATIVE_DIRECT_FOCK_REWRITE_ELABORATION_FAILURES'
+                and prior.get('run_id') == a.get('predecessor_stopped_run') == 44014529416
+                and prior.get('artifact_sha256') == a.get('predecessor_stopped_artifact_sha256')
+                == 'f7fa7726865600cab92e1270b558dcc856ad0cfc28318f2bb7d95e74b7ab8dbb'
+                and prior.get('evidence_archive_blob') == blob(root/prior['evidence_archive'])
+                and hashlib.sha256((root/prior['evidence_archive']).read_bytes()).hexdigest() == prior['artifact_sha256']
+                and prior.get('evidence_job_log_blob') == blob(root/prior['evidence_job_log'])
+                and '44014529416' in (root/prior['receipt']).read_text()
+                and s.get('previous_active_before_QTC0C') == prior,
+                'QTC0C must not erase source-direct QTC0B two-RED history')
+        red1 = s.get('previous_active_QTC0B_R1_RED', {})
+        require(red1.get('run_id') == 44012367725
+                and red1.get('artifact_sha256') == 'a50bc06b6f5ac03c15be16de7b943910ca55bc3a7960f40829c1049e8402c5c1'
+                and red1.get('evidence_archive_blob') == blob(root/red1['evidence_archive'])
+                and red1.get('evidence_job_log_blob') == blob(root/red1['evidence_job_log']),
+                'QTC0C cannot erase source-direct R1 RED')
+        source = (root/a['source']).read_text()
+        consumer = (root/a['consumer']).read_text()
+        require(source.startswith('import Mathlib.Tactic\n')
+                and source.count('import ') == 1
+                and '[AddCommMonoid M] [Module ℂ M]' in source
+                and 'Fermion 2' not in source
+                and 'ContinuousLinearMap' not in source
+                and 'Matrix.transpose_apply' in source
+                and 'Finset.sum_comm' in source
+                and len(re.findall(r'(?m)^theorem\s+',source)) == 3
+                and len(re.findall(r'(?m)^theorem\s+',consumer)) == 3
+                and len(re.findall(r'(?m)^example\b',consumer)) == 7,
+                'QTC0C abstract coefficient isolation or seven controls lost')
+        require(s.get('next_planned',{}).get('gate') == 'P3-M4-QTC0D'
+                and s['next_planned'].get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and not s['next_planned'].get('source_staged')
+                and not s['next_planned'].get('consumer_staged')
+                and not s['next_planned'].get('workflow_staged'),
+                'QTC0D source Fock adapter must remain unqualified/prospective')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
