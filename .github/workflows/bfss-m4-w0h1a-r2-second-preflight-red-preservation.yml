@@ -1,0 +1,129 @@
+name: BFSS W0H1A R2 second preflight-only RED original evidence
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-m4-w0h1a-r2-second-preflight-red-preservation.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  preserve-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact pending source and preserved previous evidence
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+      - name: Check byte-identical original R2 proof and consumer
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean)" = c5c0894d99a01e92e92a58dac7313698a2f69971
+          test "$(git rev-parse HEAD:lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean)" = b6e91f79c46724f65f54835623b97d5f909dcf66
+          test "$(git rev-parse HEAD:.github/workflows/bfss-m4-w0h1a-r2-original-centralizer-unfold-strict.yml)" = d4cfd4ae234f3edab64e1722f208c093fac0e0b8
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0H1A_R1_44145848122_SOURCE_RED_evidence.zip)" = 0240463e97836e347a5423999e6832dfcf81e2cf
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json)" = 7a3e7c1265fd5b3bab5b2b77908aed9cc6fa03f2
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path("BFSS_GATE_STATE.json").read_text())
+          a=s["active"]
+          assert a["gate"]=="P3-M4-W0H1A" and a["attempt"]=="R2"
+          assert a["status"]=="PENDING_STRICT_CI" and a["qualification"] is False
+          assert a["source_blob"]=="c5c0894d99a01e92e92a58dac7313698a2f69971"
+          assert a["consumer_blob"]=="b6e91f79c46724f65f54835623b97d5f909dcf66"
+          assert a["workflow_blob"]=="d4cfd4ae234f3edab64e1722f208c093fac0e0b8"
+          assert s["w0h1a_r2_preflight_only"]["run_id"]==44149941739
+          assert s["previous_active_W0H1A_R1_RED"]["run_id"]==44145848122
+          assert s["last_qualified"]["run_id"]==44139239821
+          assert not Path("research/quantum-information/diagnostics/BFSS_M4_W0H1A_R2_44151092723_PREFLIGHT_RED_evidence.zip").exists()
+          PY
+      - name: Verify original provider ZIP, job log and original run
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          run=44151092723
+          job=134279313671
+          artifact=14358602623
+          tested="e7feb875c00b26c570e2f38d20f1790c3f7c1a8a"
+          size=471
+          expected_sha256="1fa9401343636219ec23b166e490fada123d0394a7106259fbe235217fb674b6"
+          prefix="https://api.github.com/repos/etblink/math"
+          headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"}
+          def fetch_json(u):
+              with urllib.request.urlopen(urllib.request.Request(u,headers=headers),timeout=60) as res:return json.load(res)
+          runinfo=fetch_json(f"{prefix}/actions/runs/{run}")
+          meta=fetch_json(f"{prefix}/actions/artifacts/{artifact}")
+          assert runinfo["status"]=="completed" and runinfo["conclusion"]=="failure"
+          assert runinfo["head_sha"]==tested and runinfo["id"]==run
+          assert meta["id"]==artifact and meta["size_in_bytes"]==size and meta["digest"]=="sha256:"+expected_sha256
+          assert meta["workflow_run"]["id"]==run and meta["workflow_run"]["head_sha"]==tested
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,hdrs,url):return None
+          def download(u):
+              try:
+                  res=urllib.request.build_opener(NoRedirect).open(urllib.request.Request(u,headers=headers),timeout=60)
+              except urllib.error.HTTPError as e:
+                  assert e.code==302,e
+                  signed=e.headers["Location"]
+                  assert signed.startswith("https://")
+                  with urllib.request.urlopen(signed,timeout=90) as res:return res.read()
+              else:
+                  with res:return res.read()
+          raw=download(f"{prefix}/actions/artifacts/{artifact}/zip")
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==expected_sha256
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None
+              assert set(z.namelist())=={"preflight.log","tested-commit.txt"},z.namelist()
+              assert z.read("tested-commit.txt").decode().strip()==tested
+              assert "KeyError" in z.read("preflight.log").decode()
+              items=[{"name":n,"size":len(z.read(n)),"sha256":hashlib.sha256(z.read(n)).hexdigest()} for n in sorted(z.namelist())]
+          log=download(f"{prefix}/actions/jobs/{job}/logs")
+          assert len(log)>10000
+          assert b"KeyError" in log
+          assert b"BFSS_M4_W0H1A_R1_44145848122_SOURCE_RED_evidence.zip" in log
+          assert b"Process completed with exit code 1" in log
+          root=Path("research/quantum-information/diagnostics")
+          root.mkdir(parents=True,exist_ok=True)
+          archive=root/f"BFSS_M4_W0H1A_R2_{run}_PREFLIGHT_RED_evidence.zip"
+          full=root/f"BFSS_W0H1A_R2_{run}_complete_job.log"
+          manifest=root/f"BFSS_W0H1A_R2_{run}_PREFLIGHT_RED_manifest.json"
+          for p in (archive,full,manifest):assert not p.exists(),p
+          archive.write_bytes(raw)
+          full.write_bytes(log)
+          rec={"gate":"P3-M4-W0H1A","attempt":"R2","status":"PREFLIGHT_ONLY_RED",
+               "run_id":run,"job_id":job,"tested_sha":tested,"artifact_id":artifact,
+               "original_zip":{"path":str(archive),"size":len(raw),"sha256":expected_sha256,"members":items},
+               "original_job_log":{"path":str(full),"size":len(log),"sha256":hashlib.sha256(log).hexdigest()},
+               "source_blob":"c5c0894d99a01e92e92a58dac7313698a2f69971",
+               "consumer_blob":"b6e91f79c46724f65f54835623b97d5f909dcf66",
+               "workflow_blob":"d4cfd4ae234f3edab64e1722f208c093fac0e0b8",
+               "failure_phase":"PREFLIGHT_BEFORE_LEAN",
+               "root_cause":"R2 pin table lacked original R1 native RED ZIP path; parallel roadmap also had R1-only pending rule",
+               "source_attempted":False,"consumer_attempted":False,
+               "prior_r2_harness_red_run":44149941739,
+               "first_original_native_source_red":44145848122}
+          manifest.write_text(json.dumps(rec,sort_keys=True,indent=2)+"\n")
+          print("BFSS_W0H1A_R2_SECOND_PREFLIGHT_ONLY_ORIGINAL_TWO_MEMBER_ZIP_REHASH_PASS",rec["original_zip"])
+          PY
+      - name: Git-pin original provider ZIP, full job log and manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/quantum-information/diagnostics/BFSS_M4_W0H1A_R2_44151092723_PREFLIGHT_RED_evidence.zip research/quantum-information/diagnostics/BFSS_W0H1A_R2_44151092723_complete_job.log research/quantum-information/diagnostics/BFSS_W0H1A_R2_44151092723_PREFLIGHT_RED_manifest.json
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m "BFSS W0H1A R2: preserve second setup-only RED provider ZIP and complete log"
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
