@@ -1622,6 +1622,76 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['status'] == 'PROSPECTIVE_NOT_STAGED'
                 and s['next_planned']['source_staged'] is False,
                 'W0A4 stop must not conceal incomplete ZIP or stage next theorem')
+    if a['gate'] == 'P3-M4-W0B0' and a['status'] == 'PENDING_STRICT_CI':
+        import zipfile
+        require(a.get('attempt') == 'R1' and a.get('qualification') is False
+                and a.get('accepted_predecessor_run') == 44051746176
+                and a.get('source_blob') == 'd3cbdd7446f06e203959776abee3629b8269f572'
+                and a.get('consumer_blob') == '159c561d6e73e3c86959cd239deb10984064e92e'
+                and a.get('workflow_blob') == '5eef739aaf906f90c603fecc84dda28e2391c594'
+                and a.get('contract_commit') == '812cc2b8ea6ace9b2210c3ec7ef05742a33fb87d'
+                and a.get('expected_source_reports') == 2
+                and a.get('expected_consumer_reports') == 2
+                and a.get('independent_controls') == 2
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate'] == 'P3-M4-W0A3'
+                and s['last_qualified']['run_id'] == 44051746176
+                and s['accepted_anchors'][-1] == s['last_qualified'],
+                'W0B0 source/consumer or last-qualified W0A3 drift')
+        w0a3 = next((x for x in s['accepted_anchors'] if x.get('gate') == 'P3-M4-W0A3'), {})
+        require(w0a3.get('status') == 'GREEN_QUALIFIED'
+                and w0a3.get('run_id') == 44051746176
+                and w0a3.get('source_blob') == '3a8d37dd0b065345b0a27529830dd0a1ee99a5b3'
+                and w0a3.get('evidence_archive_blob') == '845be0ed709f4fe44e288f116cc17eba4fcc5b9d',
+                'W0B0 cannot use unaccepted W0A3 donor')
+        r1 = s.get('previous_active_W0A4_R1_RED',{})
+        r2 = s.get('previous_active_W0A4_R2_stopped',{})
+        require(r1.get('status') == r2.get('status') == 'RED_UNQUALIFIED'
+                and r1.get('qualification') is False
+                and r2.get('qualification') is False
+                and r1.get('run_id') == 44055363556
+                and r2.get('run_id') == 44059417729
+                and r2.get('stopped') is True
+                and r2.get('stop_reason') == 'TWO_CONSECUTIVE_ORIGINAL_COMPLEX_LINEAR_MAP_CONSTRUCTION_REDS'
+                and r1.get('evidence_archive_blob') == 'ef3ad039799680fde9f0d1669f130ef275f9a2a3'
+                and r2.get('evidence_archive_blob') == 'c1d7f4436e22dd5698058ea3b5557d131823de9d'
+                and r1.get('evidence_job_log_blob') == '6f635122f8ab1a3078851aac68214462a4124488'
+                and r2.get('evidence_job_log_blob') == 'c8d16f4c41bfe15e2ceb05664a7efc3d5aef4d9d'
+                and r1.get('evidence_manifest_blob') == '80118a64933e161b4b5faf196dad4a06dcd0b5a7'
+                and r2.get('evidence_manifest_blob') == '51adef7627da2dd4c0aa0abd3f832a8f392403db',
+                'W0B0 must preserve both original W0A4 stopped RED diagnostics')
+        for red in (r1,r2):
+            require(blob(root/red['evidence_archive']) == red['evidence_archive_blob']
+                    and blob(root/red['evidence_job_log']) == red['evidence_job_log_blob']
+                    and blob(root/red['evidence_manifest']) == red['evidence_manifest_blob'],
+                    'Original RED evidence bytes changed during W0B0')
+        with zipfile.ZipFile(root/r2['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist()) == {'preflight.log','tested-commit.txt'},
+                    'W0A4 R2 provider original ZIP must remain two-member incomplete')
+        require('P3M4W0A4OriginalFullComplexGammaTransport.lean:41:8: Type mismatch'
+                in (root/r2['evidence_job_log']).read_text(),
+                'W0A4 R2 native source failure log lost')
+        src = (root/a['source']).read_text()
+        consumer = (root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\s+',src)) == 2
+                and len(re.findall(r'(?m)^theorem\s+',consumer)) == 2
+                and len(re.findall(r'(?m)^example\b',consumer)) == 2
+                and 'Commute.sum_right' in src
+                and 'TensorProduct.inductionOn' in src
+                and 'originalComplexEquiv_pureTensorGenerator_eq_activeGamma' in src
+                and 'AlgebraTensorModule.lift' not in src
+                and 'activeGammaComplexLinear' not in src
+                and 'OriginalFullComplexGammaTransport' not in src
+                and 'OriginalFullComplexGammaTransport' not in consumer,
+                'W0B0 proof must bypass stopped native W0A4 construction')
+        nxt = s.get('next_planned',{})
+        require(nxt.get('gate') == 'P3-M4-W0B1'
+                and nxt.get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False,
+                'W0B1 cannot stage before W0B0 strict acceptance')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
