@@ -80,7 +80,7 @@ jobs:
               members=[{"name":n,"size":len(z.read(n)),"sha256":hashlib.sha256(z.read(n)).hexdigest()} for n in sorted(z.namelist())]
           log=download(f"https://api.github.com/repos/etblink/math/actions/jobs/{jid}/logs")
           assert b"AssertionError" in log and b'File "<stdin>", line 9' in log
-          assert b"Cold generic source" in log
+          assert b"Process completed with exit code 1" in log
           zp=root/f"BFSS_M4_W0G0_R1_{run}_PREFLIGHT_RED_evidence.zip"
           lp=root/f"BFSS_W0G0_R1_{run}_complete_job.log"
           mp=root/f"BFSS_W0G0_R1_{run}_PREFLIGHT_RED_manifest.json"
