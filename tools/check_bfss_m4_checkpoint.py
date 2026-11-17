@@ -3575,6 +3575,71 @@ def check_checkpoint(root: Path, s: dict):
                     and a['strict_marker'].encode() in complete
                     and b'BFSS_W0B2B_R1_W0B2A_ACCEPTED_GREEN_M3C_SCHUR_AND_REDS_PREFLIGHT_PASS' in complete,
                     'W0B2B provider-original full Actions log required evidence absent')
+    if a['gate']=='P3-M4-W0C0':
+        # W0C0 separates original complex scalars by T1 ordinary Fock trace.
+        require(a.get('attempt')=='R1'
+                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('contract_commit')=='ab8ad007fdd670ffff387fac6758222ab1e7be34'
+                and a.get('first_atom')=='ORIGINAL_FOCK_T1_TRACE_ONE_NONZERO_AND_COMPLEX_SCALAR_TRACE_SEPARATION'
+                and a.get('source_blob')=='42ee591cbd6c9d7d98e736076c2a4b6cb321ae0e'
+                and a.get('consumer_blob')=='63ce6ff9ee136bf3b02a845dc1c8dea4cbaf9054'
+                and a.get('workflow_blob')=='43736998ba3bd7d2bb51b54b03afd56af17776b2'
+                and a.get('accepted_predecessor_run')==44180157170
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0B2B'
+                and s['last_qualified']['attempt']=='R1'
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and s['last_qualified']['run_id']==44180157170
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0C0 original trace source or accepted original W0B2B drift')
+        donor=s['last_qualified']
+        require(donor.get('source_blob')=='6d5fbe98aa8d660c9b7c680efefde02501d8e253'
+                and donor.get('consumer_blob')=='68e1fe906d2d498f01baf56db7879c2697596c1c'
+                and donor.get('workflow_blob')=='ce8fd612a8c23ffe5fc86aa61fdc480c3a2e8f8f'
+                and donor.get('evidence_archive_blob')=='f8133dba86db582f5d302885c7c134b3e2ff043a'
+                and donor.get('evidence_job_log_blob')=='76e06a033b2e3dacc6dbf9ae7c7c6280b1d4a07b'
+                and donor.get('evidence_manifest_blob')=='8770fa58b313985267fb710abb58fd3a282d7712'
+                and donor.get('preservation_run')==44182808147,
+                'W0C0 original predecessor source-exact Schur qualification lost')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/donor[kind])==donor[kind+'_blob'],
+                    'W0C0 changed original W0B2B qualified provider evidence '+kind)
+        for path,sha in (
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/T1OriginalFockTraceInvariance.lean','3be6c9a6f2898484df66690f94fdfa1877660897'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean','a16d3573b737bb4453e42b0b543d63cbbac1cd1b'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4BFermionLinearTransportProbe.lean','e55fcbb58ce4d3776bddefdd6d11ad83560bb75c')):
+            require(blob(root/path)==sha,'W0C0 exact original trace/vacuum donor drift '+path)
+        require(s['previous_active_W0H1B_R1_RED']['run_id']==44160611850
+                and s['previous_active_W0B1_R2_stopped']['run_id']==44127193329
+                and s['previous_active_W0B1_R2_stopped']['stopped'] is True,
+                'W0C0 original historical failures lost')
+        for key in ('previous_active_W0H1B_R1_RED','previous_active_W0B1_R1_RED','previous_active_W0B1_R2_stopped'):
+            red=s[key]
+            for kind in ('evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/red[kind])==red[kind+'_blob'],
+                        'W0C0 changed historical native RED evidence '+kind)
+        src=(root/a['source']).read_text()
+        cons=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\b',src))==3
+                and len(re.findall(r'(?m)^theorem\b',cons))==3
+                and len(re.findall(r'(?m)^example\b',cons))==3
+                and 'originalFockTrace_apply' in src
+                and 'LinearMap.trace_one' in src
+                and 'originalFermionVacuum_ne_zero' in src
+                and 'Module.finrank_pos' in src
+                and 'map_smul' in src
+                and 'originalFockClifford_scalar_operator_unique' not in src
+                and 'maxRecDepth' not in src and 'maxHeartbeats' not in src,
+                'W0C0 original scalar trace 3-root atomic proof scope changed')
+        require(s['next_planned']['gate']=='P3-M4-W0C1'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False,
+                'W0C1 original algebraic witness cannot be prequalified')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
