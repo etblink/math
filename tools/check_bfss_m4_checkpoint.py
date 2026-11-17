@@ -2312,6 +2312,85 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('workflow_staged') is False,
                 'source-exact W0H0 must remain prospective after generic W0G0 acceptance')
 
+    if a['gate'] == 'P3-M4-W0H0' and a['status'] == 'PENDING_STRICT_CI':
+        import zipfile
+        require(a.get('attempt') == 'R1'
+                and a.get('qualification') is False
+                and a.get('accepted_predecessor_run') == 44135729729
+                and a.get('source_blob') == '7555f5e17d9f465c1e4b7b04ffc450eb1667fc13'
+                and a.get('consumer_blob') == '21c02789f62e5e345eff7caf4e10505f6cbe4961'
+                and a.get('workflow_blob') == '66ca52d2884c2c6dd25885fc1ccaaf5c8f36d135'
+                and a.get('contract_commit') == '22d27cfd0bc281e50cf5b0fc036595e1d312a72f'
+                and a.get('expected_source_reports') == a.get('expected_consumer_reports') == 1
+                and a.get('independent_controls') == 2
+                and a.get('allowed_axioms') == ['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate'] == 'P3-M4-W0G0'
+                and s['last_qualified']['run_id'] == 44135729729
+                and s['last_qualified']['status'] == 'GREEN_QUALIFIED'
+                and s['accepted_anchors'][-1] == s['last_qualified'],
+                'W0H0 original scalar specialization must use accepted W0G0 exact generic donor')
+        generic=s['last_qualified']
+        orig=next((x for x in s['accepted_anchors'] if x.get('gate') == 'P3-M4-W0B0'),{})
+        last_original=s.get('last_qualified_source_exact_original_BFSS',{})
+        require(generic.get('source_blob') == 'ff4f7f2a123e5b554ef08f09bffbcd9eec0c1a32'
+                and generic.get('consumer_blob') == 'b1e2d8077f798c4b9526ddb61b9a50b58c093474'
+                and generic.get('evidence_archive_blob') == 'ed7e477d931b0822ffb5dfd87f1bee5c9f4163ac'
+                and generic.get('evidence_job_log_blob') == '71cbbb0b37e35eb6cf556d699bc64e56beb9af74'
+                and generic.get('evidence_manifest_blob') == '973d8bb06c529449306dde077678e9d6875fc878'
+                and orig.get('run_id') == 44109519633
+                and orig.get('evidence_archive_blob') == 'abbebbf9e7d2eeefeeef901a415030e09551c2d6'
+                and last_original.get('gate') == 'P3-M4-W0B0'
+                and last_original.get('run_id') == 44109519633,
+                'W0H0 generic and original BFSS qualified donor drift')
+        require(blob(root/generic['evidence_archive']) == generic['evidence_archive_blob']
+                and blob(root/generic['evidence_job_log']) == generic['evidence_job_log_blob']
+                and blob(root/generic['evidence_manifest']) == generic['evidence_manifest_blob']
+                and hashlib.sha256((root/generic['evidence_archive']).read_bytes()).hexdigest()
+                    == '4624751eec2ac6e549e9bf0faeb4a33963ad78eab7bfe383e2dc7302cc3561f4',
+                'W0H0 cannot use uncertified generic scalar donor')
+        with zipfile.ZipFile(root/generic['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist()) == {'auditor.log','cold-source.log','consumer.log',
+                         'preflight.log','source-axioms.log','tested-commit.txt'}
+                    and 'Build completed successfully (1042 jobs).' in z.read('cold-source.log').decode()
+                    and 'BFSS_W0G0_2_GENERIC_SOURCE_2_CONSUMER_2_CONTROLS_SIX_MUTANTS_STRICT_GREEN'
+                        in z.read('auditor.log').decode(),
+                    'W0H0 original scalar source cannot consume unqualified generic proof')
+        r1=s.get('previous_active_W0B1_R1_RED',{})
+        r2=s.get('previous_active_W0B1_R2_stopped',{})
+        require(r1.get('run_id') == 44117272657 and r1.get('status') == 'RED_UNQUALIFIED'
+                and r2.get('run_id') == 44127193329 and r2.get('stopped') is True
+                and r2.get('stop_reason') == 'TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP',
+                'W0H0 cannot reopen stopped W0B1 original induction')
+        for red in (r1,r2):
+            require(blob(root/red['evidence_archive']) == red['evidence_archive_blob']
+                    and blob(root/red['evidence_job_log']) == red['evidence_job_log_blob']
+                    and blob(root/red['evidence_manifest']) == red['evidence_manifest_blob'],
+                    'W0H0 must preserve original W0B1 native source RED evidence')
+        original_eq='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean'
+        require(blob(root/original_eq) == '754a5f2a13baea90312f6031eb8fa7963dbdf42b',
+                'W0H0 must specialize unchanged original M3I equivalence')
+        source=(root/a['source']).read_text()
+        consumer=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\s+',source)) == 1
+                and len(re.findall(r'(?m)^theorem\s+',consumer)) == 1
+                and len(re.findall(r'(?m)^example\b',consumer)) == 2
+                and 'generic_algEquiv_scalarImage_commutes' in source
+                and 'originalComplexCliffordFockAlgEquiv' in source
+                and 'CliffordAlgebra.induction' not in source
+                and 'P3M4W0B1OriginalFullCliffordCommutantInduction' not in source
+                and 'sourceNormalizedGamma' not in source
+                and 'activeGammaComplexLinear' not in source
+                and 'maxHeartbeats' not in source and 'maxRecDepth' not in source
+                and consumer.startswith('import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H0OriginalScalarImageAdapter\n'),
+                'W0H0 single source-exact scalar bridge altered')
+        nxt=s.get('next_planned',{})
+        require(nxt.get('gate') == 'P3-M4-W0H1'
+                and nxt.get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and nxt.get('source_staged') is False
+                and nxt.get('consumer_staged') is False
+                and nxt.get('workflow_staged') is False,
+                'W0H1 full Clifford-image commutant must remain prospective after W0H0 stage')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
