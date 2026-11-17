@@ -816,6 +816,95 @@ def check_checkpoint(root: Path, s: dict):
         require('sorryAx' in (root/a['evidence_job_log']).read_text()
                 and '44020471704' in (root/a['receipt']).read_text(),
                 'QTC1 R1 original whole log or RED receipt missing')
+    if a['gate'] == 'P3-M4-QTC1' and a.get('attempt') == 'R2' and a['status'] == 'RED_UNQUALIFIED':
+        import zipfile
+        require(a.get('run_id') == 44022359538
+                and a.get('job_id') == 133834549263
+                and a.get('tested_sha') == 'ceb4ec46e1763a82d64f4c42c1646c81c851dfef'
+                and a.get('artifact_id') == 14301697221
+                and a.get('artifact_sha256') == '8ed71c1a193032813804829c975e35f5fce8f666609c344d142601aabe05a6ff'
+                and a.get('evidence_archive_blob') == blob(root/a['evidence_archive'])
+                == '387e2c5d271459d524259800a269e752ab0b9001'
+                and a.get('evidence_job_log_blob') == blob(root/a['evidence_job_log'])
+                == '8cb9db0265e187278bed283b081bda0adf21ae99'
+                and a.get('evidence_manifest_blob') == blob(root/a['evidence_manifest'])
+                == '1930e3d228e4795ef3bbd327e4d1ca85f3cc5ac2'
+                and a.get('source_blob') == '91ae604dbd8129320c0822bac16b4302c14d3c15'
+                and a.get('consumer_blob') == '24113406f779e1f2dcd769c9c400d0b897dda6a9'
+                and a.get('workflow_blob') == 'b201182dc7cbeba887cecff439f41d70a20af748'
+                and a.get('stopped') is True
+                and a.get('stop_reason') == 'TWO_ANALOGOUS_SOURCE48_DEFINITIONAL_JOIN_RECURSION_REDS'
+                and a.get('stop_scope') == 'NO_DIRECT_QTC1_R3_SAME_SOURCE_K_TO_COMPLEX_Q_SPECIALIZATION_NO_RESOURCE_ESCALATION'
+                and a.get('failure_phase') == 'COLD_NEW_SOURCE'
+                and a.get('error_line') == 81
+                and a.get('error_column') == 6
+                and a.get('source_reports') == a.get('consumer_reports') == 0
+                and a.get('independent_consumer_executed') is False
+                and a.get('generic_root_standard_axioms_reported') is True
+                and a.get('generic_root_qualified_in_gate') is False
+                and a.get('source_K_join_sorryAx') is True,
+                'QTC1 R2 original RED verdict or fixed two-RED stop drift')
+        pending = s.get('previous_active_QTC1_R2_pending',{})
+        require(pending.get('gate') == 'P3-M4-QTC1'
+                and pending.get('attempt') == 'R2'
+                and pending.get('status') == 'PENDING_STRICT_CI'
+                and pending.get('source_blob') == a['source_blob']
+                and pending.get('consumer_blob') == a['consumer_blob']
+                and pending.get('workflow_blob') == a['workflow_blob']
+                and pending.get('previous_red_run') == 44020471704,
+                'QTC1 R2 exact launch chronology lost')
+        m = json.loads((root/a['evidence_manifest']).read_text())
+        require(m.get('verdict') == 'RED_UNQUALIFIED'
+                and m.get('run_id') == a['run_id']
+                and m.get('job_id') == a['job_id']
+                and m.get('tested_sha') == a['tested_sha']
+                and m.get('artifact_id') == a['artifact_id']
+                and m.get('artifact_sha256') == a['artifact_sha256']
+                and m.get('artifact_git_blob') == a['evidence_archive_blob']
+                and m.get('complete_job_log_blob') == a['evidence_job_log_blob']
+                and m.get('source_blob') == a['source_blob']
+                and m.get('consumer_blob') == a['consumer_blob']
+                and m.get('workflow_blob') == a['workflow_blob']
+                and m.get('archive_bytes') == 3674
+                and m.get('source_first_root_qualified_in_strict_gate') is False
+                and m.get('independent_consumer_executed') is False
+                and m.get('method_stop') == a['stop_reason'],
+                'QTC1 R2 provider original ZIP manifest or stopped result drift')
+        with zipfile.ZipFile(root/a['evidence_archive']) as z:
+            expected = {'cold-source.log','preflight.log','tested-commit.txt'}
+            require(z.testzip() is None
+                    and set(z.namelist()) == expected
+                    and set(m['original_zip_entries']) == expected,
+                    'QTC1 R2 original ZIP corrupt or incomplete')
+            for name, digest in m['original_zip_entries'].items():
+                require(hashlib.sha256(z.read(name)).hexdigest() == digest,
+                        'QTC1 R2 original ZIP member drift: '+name)
+            cold = z.read('cold-source.log').decode()
+            require(z.read('tested-commit.txt').decode().strip() == a['tested_sha']
+                    and 'BFSS_M4_QTC1_R2_R1_RED_SOURCE_REAL_COMPLEX_K_QUARTER_DONORS_AND_EVIDENCE_PREFLIGHT_PASS'
+                    in z.read('preflight.log').decode()
+                    and 'P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean:81:6'
+                    in cold
+                    and 'maximum recursion depth has been reached' in cold
+                    and "'FCP.BFSSP3M4QTC1OriginalSourceRealComplexQuarterBridge.originalFock_real_quarter_quadratic' depends on axioms: [propext,"
+                    in cold
+                    and "'FCP.BFSSP3M4QTC1OriginalSourceRealComplexQuarterBridge.originalSource48BivectorK_eq_originalFockQuadratic' depends on axioms: [propext,"
+                    in cold
+                    and 'sorryAx' in cold,
+                    'QTC1 R2 true source first root standard and second root sorryAx lost')
+        log = (root/a['evidence_job_log']).read_text()
+        require('P3M4QTC1OriginalSourceRealComplexQuarterBridge.lean:81:6' in log
+                and 'sorryAx' in log
+                and '44022359538' in (root/a['receipt']).read_text()
+                and '44020471704' in (root/a['architecture_decision']).read_text()
+                and '44022359538' in (root/a['architecture_decision']).read_text(),
+                'QTC1 R2 complete log or architecture stop receipt drift')
+        require(s.get('next_planned',{}).get('gate') == 'P3-M4-QTC1G0'
+                and s['next_planned'].get('status') == 'PROSPECTIVE_NOT_STAGED'
+                and not s['next_planned'].get('source_staged')
+                and not s['next_planned'].get('consumer_staged')
+                and not s['next_planned'].get('workflow_staged'),
+                'QTC1 two-RED architecture stop cannot silently advance to same route')
     if a['gate'] == 'P3-M4-QTC1':
         require(s['last_qualified']['gate'] == 'P3-M4-QTC0D'
                 and s['last_qualified']['run_id'] == 44018395393
@@ -915,7 +1004,8 @@ def check_checkpoint(root: Path, s: dict):
                 and len(re.findall(r'(?m)^theorem\s+',consumer)) == 2
                 and len(re.findall(r'(?m)^example\b',consumer)) == 7,
                 'QTC1 not bounded to generic real scalar normalization and original K')
-        require(s.get('next_planned',{}).get('gate') == 'P3-M4-QTC2'
+        require(s.get('next_planned',{}).get('gate') ==
+                    ('P3-M4-QTC1G0' if a.get('stopped') is True else 'P3-M4-QTC2')
                 and s['next_planned'].get('status') == 'PROSPECTIVE_NOT_STAGED'
                 and not s['next_planned'].get('source_staged')
                 and not s['next_planned'].get('consumer_staged')
