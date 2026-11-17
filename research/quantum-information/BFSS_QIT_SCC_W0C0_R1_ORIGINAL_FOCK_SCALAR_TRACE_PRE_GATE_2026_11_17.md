@@ -1,0 +1,28 @@
+# BFSS × QIT × SCC — W0C0 R1 original Fock scalar-trace separation pre-gate contract
+
+Date: 2026-11-17 Pacific. **FROZEN ORIGINAL-SOURCE PRE-GATE CONTRACT. W0C0 UNQUALIFIED UNTIL NATIVE CI AND EVIDENCE ACCEPTANCE.** Work only on `integration/bfss-unified-research-20261108`; `main` remains unchanged.
+
+## Qualified immediate predecessor and preserved original evidence
+
+W0B2B R1 original Schur scalar theorem is fully qualified: [strict #44180157170](https://github.com/etblink/math/actions/runs/44180157170) GREEN at exact tested `e5b93b53ba9917374e39b79dac4e808f44ad615c`, original 9,134 jobs, three source and three independent consumer axiom reports, three original controls and six negative auditor mutations, only `propext`, `Classical.choice`, `Quot.sound`. Source Git blob `6d5fbe98aa8d660c9b7c680efefde02501d8e253`; consumer `68e1fe906d2d498f01baf56db7879c2697596c1c`; strict workflow `ce8fd612a8c23ffe5fc86aa61fdc480c3a2e8f8f`. Original provider 14,293-byte six-member ZIP SHA-256 `90049da54aee06c9cc649b1577059f10c440c037de3689e25b5da9314b7623a6`, Git blob `f8133dba86db582f5d302885c7c134b3e2ff043a`; complete 239,585-byte Actions job log Git blob `76e06a033b2e3dacc6dbf9ae7c7c6280b1d4a07b`; manifest blob `8770fa58b313985267fb710abb58fd3a282d7712`. Independent preservation [#44182808147](https://github.com/etblink/math/actions/runs/44182808147) GREEN, acceptance commit `3f75d0288a9088d8a7949ea8ddf452696ddab5fb`, post-acceptance [roadmap #44183271274](https://github.com/etblink/math/actions/runs/44183271274) GREEN. Do not change any of those bytes, the accepted original W0B2A/W0H1B proofs, historical W0H1B R1 source RED #44160611850 or permanently stopped W0B1 R1/R2 source REDs #44117272657/#44127193329.
+
+## Exact donor interfaces and proof atom
+
+- T1: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/T1OriginalFockTraceInvariance.lean`, Git blob `3be6c9a6f2898484df66690f94fdfa1877660897`, defines the original source `originalFockTrace : (Fermion 2 →L[ℂ] Fermion 2) →ₗ[ℂ] ℂ`, `originalFockEndAlgEquiv`, and `originalFockTrace_apply`. It is the ordinary finite-dimensional *operator trace*, not a dimension-rescaled left-regular trace.
+- OP2c: `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean`, blob `a16d3573b737bb4453e42b0b543d63cbbac1cd1b`, proves `originalFermionVacuum_ne_zero` for the genuine `FCP.BFSSSU2GaugeG4B.fermionVacuum : Fermion 2` (G4B source blob `e55fcbb58ce4d3776bddefdd6d11ad83560bb75c`). Use only the nonzero carrier fact; this gate says nothing about SU(2) physical restrictions.
+- Exact pinned Mathlib `Mathlib.LinearAlgebra.Trace`: `LinearMap.trace_one` identifies `trace ℂ (Fermion 2) 1` with `(Module.finrank ℂ (Fermion 2) : ℂ)`; `Mathlib.LinearAlgebra.Dimension.Finite` supplies `Module.finrank_pos` for nontrivial finite-dimensional complex modules.
+- Original W0B2B theorem is *not needed* to prove scalar trace nondegeneracy itself, but is the qualified source-exact predecessor for the later witness step. Do not collapse separate gate obligations.
+
+**Stage W0C0 R1 only:** source `P3M4W0C0OriginalFockScalarTraceSeparation.lean`, consumer `BFSSP3M4W0C0OriginalFockScalarTraceIndependentConsumer.lean`, and strict original-source workflow with these 3 source roots:
+
+1. `originalFockTrace_one_eq_finrank`: original `originalFockTrace (1 : Fermion 2 →L[ℂ] Fermion 2) = (Module.finrank ℂ (Fermion 2) : ℂ)`, using T1 original source and Mathlib `LinearMap.trace_one`.
+2. `originalFockTrace_one_ne_zero`: show original trace of identity nonzero from the original transported vacuum `originalFermionVacuum_ne_zero` and Mathlib `Module.finrank_pos`; do not assert an unverified cardinality.
+3. `originalFockTrace_scalar_one_eq_zero_iff`: for `z : ℂ`, `originalFockTrace (z • (1 : Fermion 2 →L[ℂ] Fermion 2)) = 0 ↔ z = 0`, by linearity and nonzero original trace of identity.
+
+**No witness injectivity, operator difference T-S, QIT observability, physical parity/gauge, Spin(9) spectral, SCC operational, ground-state or mass-gap conclusion in W0C0.** W0C1, a separate later source-exact gate, should use W0B2B + W0C0 to prove that equal 48 original commutators and equal original trace force operator equality.
+
+## CI discipline, claim ceiling and stopping rule
+
+Freeze source, importing independent consumer, donor Git blobs, canonical accepted W0B2B provider ZIP/log/manifest and original negative evidence. Strict CI: Lean 4.34.1, Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`, original cold `lake build`, separate source and consumer `-DautoImplicit=false -DwarningAsError=true`, exactly three source and three consumer `#print axioms` roots, at least three original source controls (one, zero, scalar-zero), six adversarial axiom-log mutations, only `propext`, `Classical.choice`, `Quot.sound` and no `sorryAx`. Preserve 6-member provider CI ZIP and complete Actions job log even when RED as available; independently verify SHA-256/CRC/member hashes and full job log, Git-pin immutable evidence **before** canonical acceptance, then require separate independent roadmap GREEN. Two analogous original native source REDs trigger a typed-interface redesign STOP; preserve the original negatives and never inflate resource limits or substitute another carrier to hide failure. Distinguish harness RED from mathematical RED.
+
+Only W0C0's scalar-trace elimination may qualify here. W0C1 witness injectivity and W0D physical parity/gauge are PROSPECTIVE_NOT_STAGED.
