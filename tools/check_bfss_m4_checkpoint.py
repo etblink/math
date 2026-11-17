@@ -3401,6 +3401,84 @@ def check_checkpoint(root: Path, s: dict):
                     and a['strict_marker'].encode() in complete
                     and b'BFSS_W0B2A_R1_W0H1B_GREEN_ORIGINAL_M3B_M3C_M3I_PREFLIGHT_PASS' in complete,
                     'W0B2A provider-original complete Actions log lacks strict evidence')
+    if a['gate']=='P3-M4-W0B2B':
+        # Exact original W0B2A -> pinned M3C Schur; do not confuse source with W0C trace.
+        require(a.get('attempt')=='R1'
+                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('contract_commit')=='53cd6311d14d08ea75f9a205c58af0e3b90d3f5b'
+                and a.get('first_atom')=='SOURCE_EXACT_M3C_SCHUR_SCALAR_UNIQUENESS_FROM_QUALIFIED_ORIGINAL_W0B2A_MODULE_END'
+                and a.get('source_blob')=='6d5fbe98aa8d660c9b7c680efefde02501d8e253'
+                and a.get('consumer_blob')=='68e1fe906d2d498f01baf56db7879c2697596c1c'
+                and a.get('workflow_blob')=='ce8fd612a8c23ffe5fc86aa61fdc480c3a2e8f8f'
+                and a.get('accepted_predecessor_run')==44174996514
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0B2A'
+                and s['last_qualified']['attempt']=='R1'
+                and s['last_qualified']['run_id']==44174996514
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0B2B original exact source or accepted W0B2A R1 predecessor drift')
+        donor=s['last_qualified']
+        require(donor.get('source_blob')=='58d852a27e84288c0b1f33d784940155e2f26d54'
+                and donor.get('consumer_blob')=='85784957405d4740f7dddc9e04dc72ed4c9d3b7a'
+                and donor.get('workflow_blob')=='903636c37e0794846146aadd3b175a09553d34e0'
+                and donor.get('evidence_archive_blob')=='e4d1fa8d7a87d5ce4fcfc5483c2308648762a62b'
+                and donor.get('evidence_job_log_blob')=='bbe132b02b529ee8f43059f649574922404b6e80'
+                and donor.get('evidence_manifest_blob')=='65051d4aac0862e7d1d4879dfa1b57e30ba3a55d'
+                and donor.get('preservation_run')==44178068165,
+                'W0B2B cannot bypass qualified W0B2A provider-original evidence')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/donor[kind])==donor[kind+'_blob'],
+                    'W0B2B altered qualified original W0B2A '+kind)
+        import zipfile
+        old=root/donor['evidence_archive']
+        require(old.stat().st_size==14216
+                and hashlib.sha256(old.read_bytes()).hexdigest()=='36f960ad45b38c879929752d90745ee57cd6efe5473b835540e7a7d848e65dd7',
+                'W0B2B original W0B2A provider ZIP size/digest changed')
+        with zipfile.ZipFile(old) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'auditor.log','cold-source.log','consumer.log','preflight.log','source-axioms.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()=='c0ae4222093f5f922a25569098d420b63fb9e66e'
+                    and 'Build completed successfully (9133 jobs).' in z.read('cold-source.log').decode()
+                    and 'BFSS_W0B2A_R1_ORIGINAL_FOCK_CLIFFORD_MODULE_END_3_SOURCE_3_CONSUMER_3_CONTROLS_SIX_MUTANTS_STRICT_GREEN' in z.read('auditor.log').decode(),
+                    'W0B2B original W0B2A accepted ZIP content mismatch')
+        for path,sha in (
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3BOriginalComplexCliffordSimpleModuleProbe.lean','e7de3612d83889d8e08318307b37b15ac6567202'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3COriginalCliffordFockSchurAndFiniteProbe.lean','6fefd9ae344df0b7247feb34c9bec5ea0a27aea0'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean','754a5f2a13baea90312f6031eb8fa7963dbdf42b')):
+            require(blob(root/path)==sha,'W0B2B pinned original Schur donor drift '+path)
+        require(s['previous_active_W0H1B_R1_RED']['run_id']==44160611850
+                and s['previous_active_W0B1_R2_stopped']['run_id']==44127193329
+                and s['previous_active_W0B1_R2_stopped']['stopped'] is True,
+                'W0B2B cannot erase earlier original native failures')
+        for key in ('previous_active_W0H1B_R1_RED','previous_active_W0B1_R1_RED',
+                    'previous_active_W0B1_R2_stopped'):
+            oldred=s[key]
+            for kind in ('evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/oldred[kind])==oldred[kind+'_blob'],
+                        'W0B2B historical provider-original RED evidence drift '+kind)
+        src=(root/a['source']).read_text()
+        cons=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\b',src))==3
+                and len(re.findall(r'(?m)^theorem\b',cons))==3
+                and len(re.findall(r'(?m)^example\b',cons))==3
+                and 'originalComplexCliffordFock_scalarCommutant.2' in src
+                and 'originalComplexCliffordFock_scalarCommutant.1' in src
+                and 'Module.algebraMap_end_apply' in src
+                and 'ContinuousLinearMap.ext' in src
+                and 'CliffordAlgebra.induction' not in src
+                and 'originalFockTrace' not in src
+                and 'maxHeartbeats' not in src and 'maxRecDepth' not in src,
+                'W0B2B source/consumer original Schur 3-root scope changed')
+        require(s['next_planned']['gate']=='P3-M4-W0C'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False,
+                'W0C original trace cannot be prequalified')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
