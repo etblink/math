@@ -1692,7 +1692,7 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('consumer_staged') is False
                 and nxt.get('workflow_staged') is False,
                 'W0B1 cannot stage before W0B0 strict acceptance')
-    if a['gate'] == 'P3-M4-W0B0' and a.get('attempt') == 'R2':
+    if a['gate'] == 'P3-M4-W0B0' and a.get('attempt') == 'R2' and a['status'] == 'PENDING_STRICT_CI':
         import zipfile
         old = s.get('previous_active_W0B0_R1_RED',{})
         require(old.get('gate') == 'P3-M4-W0B0'
