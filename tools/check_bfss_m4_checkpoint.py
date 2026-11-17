@@ -2523,7 +2523,7 @@ def check_checkpoint(root: Path, s: dict):
                 and nxt.get('workflow_staged') is False,
                 'W0H1 new centralizer/adjoin route must stay prospective after W0H0 acceptance')
 
-    if a['gate'] == 'P3-M4-W0H1A' and a['status'] == 'PENDING_STRICT_CI':
+    if a['gate'] == 'P3-M4-W0H1A' and a['status'] == 'PENDING_STRICT_CI' and a.get('attempt') == 'R1':
         import zipfile
         require(a.get('attempt') == 'R1' and a.get('qualification') is False
                 and a.get('accepted_predecessor_run') == 44139239821
@@ -2614,7 +2614,7 @@ def check_checkpoint(root: Path, s: dict):
             and a.get('previous_red_run')==44145848122
             and a.get('source_blob')=='c5c0894d99a01e92e92a58dac7313698a2f69971'
             and a.get('consumer_blob')=='b6e91f79c46724f65f54835623b97d5f909dcf66'
-            and a.get('workflow_blob')=='d4cfd4ae234f3edab64e1722f208c093fac0e0b8'
+            and a.get('workflow_blob')=='64ec1b82e3ee81243529dc4f883ab510e6e35a7f'
             and a.get('contract_commit')=='884a1897bdecdfa365abd7206ad7411a8dddef15'
             and a.get('expected_source_reports')==a.get('expected_consumer_reports')==1
             and a.get('independent_controls')==2
@@ -2645,6 +2645,32 @@ def check_checkpoint(root: Path, s: dict):
             and m['original_job_log']['sha256']=='728e0f91056dee2487dfd90c5b242b469b7db172c1271305287858d997d275c9'
             and hashlib.sha256((root/h['original_log']).read_bytes()).hexdigest()==m['original_job_log']['sha256'],
             'R2 original no-artifact metadata or job log damaged')
+        second=s.get('w0h1a_r2_second_preflight_only',{})
+        require(second.get('run_id')==44151092723
+            and second.get('status')=='PREFLIGHT_ONLY_RED'
+            and second.get('source_attempted') is False
+            and second.get('consumer_attempted') is False
+            and second.get('artifact_id')==14358602623
+            and second.get('artifact_sha256')=='1fa9401343636219ec23b166e490fada123d0394a7106259fbe235217fb674b6'
+            and second.get('original_zip_blob')=='eb161bec2356866a90f9cc832f87bae86ffb5a03'
+            and second.get('original_log_blob')=='afa76557952cf3c3f650c3596b2cde16bbc80060'
+            and second.get('manifest_blob')=='8d8070b79fc6b307f198a32594abfdeaf65712bb'
+            and second.get('preservation_run')==44151502381
+            and second.get('source_blob')==a['source_blob']
+            and second.get('consumer_blob')==a['consumer_blob'],
+            'W0H1A R2 second setup-only RED evidence was erased or wrongly classified')
+        for kind in ('original_zip','original_log','manifest'):
+            require(blob(root/second[kind])==second[kind+'_blob'],
+                    'W0H1A R2 second provider original archive drift')
+        require(hashlib.sha256((root/second['original_zip']).read_bytes()).hexdigest()
+                =='1fa9401343636219ec23b166e490fada123d0394a7106259fbe235217fb674b6',
+                'W0H1A R2 second original 471-byte ZIP mismatch')
+        with zipfile.ZipFile(root/second['original_zip']) as z:
+            require(z.testzip() is None
+                and set(z.namelist())=={'preflight.log','tested-commit.txt'}
+                and z.read('tested-commit.txt').decode().strip()==second['tested_sha']
+                and 'KeyError' in z.read('preflight.log').decode(),
+                'W0H1A R2 second preflight-only ZIP evidence invalid')
         r1=s.get('previous_active_W0H1A_R1_RED',{})
         require(r1.get('status')=='RED_UNQUALIFIED'
             and r1.get('run_id')==44145848122

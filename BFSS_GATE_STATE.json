@@ -829,7 +829,7 @@
     "workflow": ".github/workflows/bfss-m4-w0h1a-r2-original-centralizer-unfold-strict.yml",
     "source_blob": "c5c0894d99a01e92e92a58dac7313698a2f69971",
     "consumer_blob": "b6e91f79c46724f65f54835623b97d5f909dcf66",
-    "workflow_blob": "d4cfd4ae234f3edab64e1722f208c093fac0e0b8",
+    "workflow_blob": "64ec1b82e3ee81243529dc4f883ab510e6e35a7f",
     "accepted_predecessor_run": 44139239821,
     "first_atom": "ORIGINAL_CENTRALIZER_PULLBACK_EXPLICIT_CHANGE_BOUNDED_NATIVE_REPAIR",
     "expected_source_reports": 1,
@@ -846,7 +846,7 @@
     "w0b0_original_generator_green_run": 44109519633,
     "w0b1_stopped_original_source_red_R1": 44117272657,
     "w0b1_stopped_original_source_red_R2": 44127193329,
-    "note": "R2 exact original Lean source/consumer unchanged; initial R2 harness-only #44149941739 failed before Lean and had ZERO artifacts. Original full Actions job log, run/job metadata and manifest pinned by #44150575833; bounded directory, exact build target and dual R1/R2 pin-table fixes now staged. W0H0 last qualified. First original native source R1 RED retained. Next analogous original native RED triggers W0H1A stop.",
+    "note": "R2 original source and consumer byte-identical throughout setup retries. Original native R1 source RED #44145848122 archived. R2 setup-only RED #44149941739 no artifact and #44151092723 two-member provider ZIP both archived, no native R2 compile. R2 native strict CI pending after workflow/roadmap harness-only repairs. Second analogous native original RED must stop architecture.",
     "previous_red_run": 44145848122
   },
   "toolchain": {
@@ -3459,5 +3459,26 @@
     "consumer_blob": "b6e91f79c46724f65f54835623b97d5f909dcf66",
     "original_workflow_blob": "82313868f060241d6a9baf490275125b62a5b475",
     "reason": "Preflight started before mkdir of R2 output dir; duplicate source keys caused parallel guard failure. No Lean, no source theorem verdict."
+  },
+  "w0h1a_r2_second_preflight_only": {
+    "run_id": 44151092723,
+    "job_id": 134279313671,
+    "tested_sha": "e7feb875c00b26c570e2f38d20f1790c3f7c1a8a",
+    "status": "PREFLIGHT_ONLY_RED",
+    "source_attempted": false,
+    "consumer_attempted": false,
+    "artifact_id": 14358602623,
+    "artifact_sha256": "1fa9401343636219ec23b166e490fada123d0394a7106259fbe235217fb674b6",
+    "original_zip": "research/quantum-information/diagnostics/BFSS_M4_W0H1A_R2_44151092723_PREFLIGHT_RED_evidence.zip",
+    "original_zip_blob": "eb161bec2356866a90f9cc832f87bae86ffb5a03",
+    "original_log": "research/quantum-information/diagnostics/BFSS_W0H1A_R2_44151092723_complete_job.log",
+    "original_log_blob": "afa76557952cf3c3f650c3596b2cde16bbc80060",
+    "manifest": "research/quantum-information/diagnostics/BFSS_W0H1A_R2_44151092723_PREFLIGHT_RED_manifest.json",
+    "manifest_blob": "8d8070b79fc6b307f198a32594abfdeaf65712bb",
+    "preservation_run": 44151502381,
+    "source_blob": "c5c0894d99a01e92e92a58dac7313698a2f69971",
+    "consumer_blob": "b6e91f79c46724f65f54835623b97d5f909dcf66",
+    "workflow_blob": "d4cfd4ae234f3edab64e1722f208c093fac0e0b8",
+    "cause": "Preflight KeyError from R2 workflow missing original R1 native RED ZIP pin; parallel roadmap R1-only attempt assertion misapplied to R2"
   }
 }
