@@ -1903,13 +1903,13 @@ def check_checkpoint(root: Path, s: dict):
                 'W0B1 full Clifford-induction theorem must remain prospective')
     if a['gate'] == 'P3-M4-W0B1' and a['status'] == 'PENDING_STRICT_CI':
         import zipfile
-        require(a.get('attempt') == 'R1'
+        require(a.get('attempt') == 'R2'
                 and a.get('qualification') is False
                 and a.get('accepted_predecessor_run') == 44109519633
-                and a.get('source_blob') == '6c9cae683665fb6cda2a6e8ff10d388f6a268a05'
+                and a.get('source_blob') == '93244f15ae511cd4abbac13e216eed6b1988c009'
                 and a.get('consumer_blob') == '9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a'
-                and a.get('workflow_blob') == '6565dd372ccb5ba6f553242b3180de8de1ac7e21'
-                and a.get('contract_commit') == '77bee50307dce781239c768fc65e281490b205b7'
+                and a.get('workflow_blob') == '1f43a7d9ac86d42457020730a53d59eb5db48f41'
+                and a.get('contract_commit') == '663641a1acd078eb3cc9a71e58ff56c74b389566'
                 and a.get('expected_source_reports') == 1
                 and a.get('expected_consumer_reports') == 1
                 and a.get('independent_controls') == 2
@@ -1944,7 +1944,33 @@ def check_checkpoint(root: Path, s: dict):
                 and stopped.get('evidence_archive_blob') == 'c1d7f4436e22dd5698058ea3b5557d131823de9d'
                 and blob(root/stopped['evidence_archive']) == stopped['evidence_archive_blob'],
                 'W0B1 must retain stopped original complex-linear lift failures')
+        r1=s.get('previous_active_W0B1_R1_RED',{})
+        require(a.get('previous_red_run') == 44117272657
+                and r1.get('run_id') == 44117272657
+                and r1.get('status') == 'RED_UNQUALIFIED'
+                and r1.get('qualification') is False
+                and r1.get('source_blob') == '6c9cae683665fb6cda2a6e8ff10d388f6a268a05'
+                and r1.get('consumer_blob') == '9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a'
+                and r1.get('workflow_blob') == '6565dd372ccb5ba6f553242b3180de8de1ac7e21'
+                and r1.get('evidence_archive_blob') == 'a448d2ae775926ee05ab4a9028e29e8061fecdac'
+                and r1.get('evidence_job_log_blob') == '7e8310126b2e5af543ec1f7274ce5467dbc59552'
+                and r1.get('evidence_manifest_blob') == 'a78963305bb75e7ab154f8c40a0c8d5ab7299f29'
+                and blob(root/r1['evidence_archive']) == r1['evidence_archive_blob']
+                and blob(root/r1['evidence_job_log']) == r1['evidence_job_log_blob']
+                and blob(root/r1['evidence_manifest']) == r1['evidence_manifest_blob'],
+                'W0B1 R1 original source RED evidence must remain Git-pinned')
+        import zipfile
+        with zipfile.ZipFile(root/r1['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist()) == {'cold-source.log','preflight.log','tested-commit.txt'}
+                    and 'Unknown identifier `map_algebraMap`' in z.read('cold-source.log').decode(),
+                    'W0B1 R1 original source failure evidence invalid')
         source=(root/a['source']).read_text()
+        raw=source.replace('AlgEquiv.commutes','map_algebraMap')
+        require(source.count('AlgEquiv.commutes') == 1
+                and hashlib.sha1(b'blob '+str(len(raw.encode())).encode()+b'\x00'+raw.encode()).hexdigest()
+                    == '6c9cae683665fb6cda2a6e8ff10d388f6a268a05',
+                'W0B1 R2 must only substitute scalar lemma')
         consumer=(root/a['consumer']).read_text()
         require(len(re.findall(r'(?m)^theorem\s+',source))==1
                 and len(re.findall(r'(?m)^theorem\s+',consumer))==1
@@ -1952,7 +1978,8 @@ def check_checkpoint(root: Path, s: dict):
                 and 'CliffordAlgebra.induction' in source
                 and 'originalComplexEquiv_generator_commutes' in source
                 and 'Algebra.commutes' in source
-                and 'map_algebraMap' in source
+                and 'AlgEquiv.commutes' in source
+                and 'map_algebraMap' not in source
                 and 'map_mul' in source and 'map_add' in source
                 and 'activeGammaComplexLinear' not in source
                 and 'OriginalFullComplexGammaTransport' not in source

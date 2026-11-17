@@ -724,17 +724,17 @@
   ],
   "active": {
     "gate": "P3-M4-W0B1",
-    "attempt": "R1",
+    "attempt": "R2",
     "status": "PENDING_STRICT_CI",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean",
     "consumer": "lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean",
     "workflow": ".github/workflows/bfss-m4-w0b1-full-clifford-commutant-strict.yml",
-    "source_blob": "6c9cae683665fb6cda2a6e8ff10d388f6a268a05",
+    "source_blob": "93244f15ae511cd4abbac13e216eed6b1988c009",
     "consumer_blob": "9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a",
-    "workflow_blob": "6565dd372ccb5ba6f553242b3180de8de1ac7e21",
+    "workflow_blob": "1f43a7d9ac86d42457020730a53d59eb5db48f41",
     "accepted_predecessor_run": 44109519633,
-    "first_atom": "ORIGINAL_FULL_COMPLEX_CLIFFORD_ALGEBRA_IMAGE_COMMUTATION_BY_ALGEBRA_INDUCTION",
+    "first_atom": "ORIGINAL_FULL_CLIFFORD_IMAGE_COMMUTATION_SCALAR_ALGEQUIV_COMMUTES_ONE_LEMMA_REPAIR",
     "expected_source_reports": 1,
     "expected_consumer_reports": 1,
     "independent_controls": 2,
@@ -743,15 +743,16 @@
       "Classical.choice",
       "Quot.sound"
     ],
-    "contract_commit": "77bee50307dce781239c768fc65e281490b205b7",
-    "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0B1_R1_FULL_ORIGINAL_CLIFFORD_COMMUTANT_INDUCTION_PRE_GATE_2026_11_17.md",
+    "contract_commit": "663641a1acd078eb3cc9a71e58ff56c74b389566",
+    "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0B1_R2_SCALAR_ALGEQUIV_COMMUTES_REPAIR_CONTRACT_2026_11_17.md",
     "w0b0_original_green_archive_blob": "abbebbf9e7d2eeefeeef901a415030e09551c2d6",
     "w0b0_original_red_archive_blob": "7a74c38049c3cff6e0bdd1c6e7d2ea72c75deb07",
     "w0a4_stopped_original_red_blobs": [
       "ef3ad039799680fde9f0d1669f130ef275f9a2a3",
       "c1d7f4436e22dd5698058ea3b5557d131823de9d"
     ],
-    "note": "W0B1 R1 source-exact original full Clifford algebra image commutation via pinned CliffordAlgebra.induction: scalar algebraMap centralization, qualified W0B0 original complexified generator commutation, closure under multiplication/addition. One source theorem, separately importing one independent consumer theorem with two examples, permitted axiom roots and six auditor mutations. W0B0 R2 original source GREEN #44109519633 is last qualified, all W0B0 original RED and two stopped W0A4 original RED preserved. W0B1 pending strict, not a full scalar commutant, no trace witness or physical BFSS claim."
+    "note": "W0B1 R2 single scalar induction case repair using pinned AlgEquiv.commutes in place of undefined map_algebraMap; same original Fock, W0B0 donor, theorem statement and independent consumer. Original R1 RED #44117272657 provider ZIP/log/manifest archived and guarded. Pending original strict source+consumer+auditor and independent roadmap; W0B0 R2 is last qualified. No W0B2/W0C/W0D or physical promotion.",
+    "previous_red_run": 44117272657
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -2992,5 +2993,51 @@
     "strict_marker": "BFSS_W0B0_R2_COMPLEX_SCALAR_2_SOURCE_2_CONSUMER_2_CONTROLS_STRICT_GREEN",
     "evidence_status": "PROVIDER_ORIGINAL_GREEN_ZIP_CRC_SHA256_6_MEMBERS_REHASHED_AND_GIT_PINNED_WITH_FULL_ORIGINAL_JOB_LOG",
     "preservation_run": 44114511786
+  },
+  "previous_active_W0B1_R1_RED": {
+    "gate": "P3-M4-W0B1",
+    "attempt": "R1",
+    "status": "RED_UNQUALIFIED",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-w0b1-full-clifford-commutant-strict.yml",
+    "source_blob": "6c9cae683665fb6cda2a6e8ff10d388f6a268a05",
+    "consumer_blob": "9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a",
+    "workflow_blob": "6565dd372ccb5ba6f553242b3180de8de1ac7e21",
+    "accepted_predecessor_run": 44109519633,
+    "first_atom": "ORIGINAL_FULL_COMPLEX_CLIFFORD_ALGEBRA_IMAGE_COMMUTATION_BY_ALGEBRA_INDUCTION",
+    "expected_source_reports": 1,
+    "expected_consumer_reports": 1,
+    "independent_controls": 2,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "contract_commit": "77bee50307dce781239c768fc65e281490b205b7",
+    "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0B1_R1_FULL_ORIGINAL_CLIFFORD_COMMUTANT_INDUCTION_PRE_GATE_2026_11_17.md",
+    "w0b0_original_green_archive_blob": "abbebbf9e7d2eeefeeef901a415030e09551c2d6",
+    "w0b0_original_red_archive_blob": "7a74c38049c3cff6e0bdd1c6e7d2ea72c75deb07",
+    "w0a4_stopped_original_red_blobs": [
+      "ef3ad039799680fde9f0d1669f130ef275f9a2a3",
+      "c1d7f4436e22dd5698058ea3b5557d131823de9d"
+    ],
+    "note": "Original cold source RED; source sorryAx due incomplete compilation; independent consumer and auditor not qualified. Provider original ZIP, full job log, machine-readable manifest independently Git-pinned. W0B0 R2 last qualified.",
+    "run_id": 44117272657,
+    "job_id": 134158680276,
+    "tested_sha": "c486662c149af872a88e97f485befe61fe1522f5",
+    "artifact_id": 14343844353,
+    "artifact_sha256": "3fd4c088723dae5cee7fdb68db391b482d26e1af5a241b1cb27541b11948b1b9",
+    "evidence_archive": "research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip",
+    "evidence_archive_blob": "a448d2ae775926ee05ab4a9028e29e8061fecdac",
+    "evidence_job_log": "research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log",
+    "evidence_job_log_blob": "7e8310126b2e5af543ec1f7274ce5467dbc59552",
+    "evidence_manifest": "research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json",
+    "evidence_manifest_blob": "a78963305bb75e7ab154f8c40a0c8d5ab7299f29",
+    "preservation_run": 44126231073,
+    "source_reports": 0,
+    "consumer_reports": 0,
+    "cause": "ORIGINAL_SOURCE_LINE_43_UNKNOWN_MAP_ALGEBRAMAP_SCALAR_CASE_TYPE_MISMATCH"
   }
 }

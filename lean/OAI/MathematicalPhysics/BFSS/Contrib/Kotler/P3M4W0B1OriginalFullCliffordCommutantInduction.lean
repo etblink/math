@@ -40,7 +40,7 @@ theorem originalComplexEquiv_allClifford_commutes
       (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv a) := by
   induction a using CliffordAlgebra.induction with
   | algebraMap z =>
-      simpa only [map_algebraMap] using
+      simpa only [AlgEquiv.commutes] using
         (Algebra.commutes z T).symm
   | ι w =>
       exact originalComplexEquiv_generator_commutes T h w

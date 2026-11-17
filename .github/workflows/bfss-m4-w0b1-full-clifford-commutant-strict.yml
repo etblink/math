@@ -1,4 +1,4 @@
-name: BFSS M4 W0B1 original full Clifford commutant induction strict
+name: BFSS M4 W0B1 R2 original full Clifford commutant strict
 
 'on':
   push:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: bfss-m4-w0b1-${{ github.ref }}
+  group: bfss-m4-w0b1-r2-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
           python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0b1/preflight.log"
           import json,re,subprocess,hashlib,zipfile
           from pathlib import Path
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean":"6c9cae683665fb6cda2a6e8ff10d388f6a268a05","lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean":"9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/diagnostics/BFSSP3M4W0B0OriginalGammaCommutantIndependentConsumer.lean":"159c561d6e73e3c86959cd239deb10984064e92e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A3OriginalComplexPureTensorGammaTransport.lean":"3a8d37dd0b065345b0a27529830dd0a1ee99a5b3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B0_R1_44064728599_RED_evidence.zip":"7a74c38049c3cff6e0bdd1c6e7d2ea72c75deb07","research/quantum-information/diagnostics/BFSS_M4_W0A4_R1_44055363556_RED_evidence.zip":"ef3ad039799680fde9f0d1669f130ef275f9a2a3","research/quantum-information/diagnostics/BFSS_M4_W0A4_R2_44059417729_RED_evidence.zip":"c1d7f4436e22dd5698058ea3b5557d131823de9d","research/quantum-information/diagnostics/BFSS_M4_W0A3_R1_44051746176_evidence.zip":"845be0ed709f4fe44e288f116cc17eba4fcc5b9d","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean":"93244f15ae511cd4abbac13e216eed6b1988c009","lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean":"9ea114c7f8a8c26b814b3abe9fd5c6a1e853e53a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/diagnostics/BFSSP3M4W0B0OriginalGammaCommutantIndependentConsumer.lean":"159c561d6e73e3c86959cd239deb10984064e92e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0A3OriginalComplexPureTensorGammaTransport.lean":"3a8d37dd0b065345b0a27529830dd0a1ee99a5b3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B0_R1_44064728599_RED_evidence.zip":"7a74c38049c3cff6e0bdd1c6e7d2ea72c75deb07","research/quantum-information/diagnostics/BFSS_M4_W0A4_R1_44055363556_RED_evidence.zip":"ef3ad039799680fde9f0d1669f130ef275f9a2a3","research/quantum-information/diagnostics/BFSS_M4_W0A4_R2_44059417729_RED_evidence.zip":"c1d7f4436e22dd5698058ea3b5557d131823de9d","research/quantum-information/diagnostics/BFSS_M4_W0A3_R1_44051746176_evidence.zip":"845be0ed709f4fe44e288f116cc17eba4fcc5b9d","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
           for path,expected in pins.items():
               actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert actual==expected,(path,expected,actual)
@@ -66,13 +66,29 @@ jobs:
           assert q["run_id"]==44109519633 and q["status"]=="GREEN_QUALIFIED"
           assert q["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean"]
           assert q["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip"]
-          assert a["gate"]=="P3-M4-W0B1" and a["attempt"]=="R1"
+          assert a["gate"]=="P3-M4-W0B1" and a["attempt"]=="R2"
           assert a["status"]=="PENDING_STRICT_CI" and a["qualification"] is False
           assert a["accepted_predecessor_run"]==44109519633
-          assert a["contract_commit"]=="77bee50307dce781239c768fc65e281490b205b7"
+          assert a["contract_commit"]=="663641a1acd078eb3cc9a71e58ff56c74b389566"
           assert a["source_blob"]==pins["lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B1OriginalFullCliffordCommutantInduction.lean"]
+          assert a["previous_red_run"]==44117272657
+          red=state["previous_active_W0B1_R1_RED"]
+          assert red["run_id"]==44117272657 and red["status"]=="RED_UNQUALIFIED"
+          assert red["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip"]
+          assert red["evidence_job_log_blob"]==pins["research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log"]
+          assert red["evidence_manifest_blob"]==pins["research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json"]
+          original=source.replace("AlgEquiv.commutes","map_algebraMap")
+          assert source.count("AlgEquiv.commutes")==1 and "map_algebraMap" not in source
+          raw=original.encode()
+          assert hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\x00"+raw).hexdigest()=="6c9cae683665fb6cda2a6e8ff10d388f6a268a05"
           assert a["consumer_blob"]==pins["lean/diagnostics/BFSSP3M4W0B1OriginalFullCliffordCommutantIndependentConsumer.lean"]
           assert Path(a["prospective_receipt"]).is_file()
+          zipbytes=Path("research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip").read_bytes()
+          assert len(zipbytes)==13688 and hashlib.sha256(zipbytes).hexdigest()=="3fd4c088723dae5cee7fdb68db391b482d26e1af5a241b1cb27541b11948b1b9"
+          with zipfile.ZipFile("research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip") as z:
+              assert z.testzip() is None and set(z.namelist())=={"cold-source.log","preflight.log","tested-commit.txt"}
+              assert "Unknown identifier `map_algebraMap`" in z.read("cold-source.log").decode()
+          assert "Unknown identifier `map_algebraMap`" in Path("research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log").read_text()
           r1=state["previous_active_W0B0_R1_RED"]
           assert r1["run_id"]==44064728599 and r1["status"]=="RED_UNQUALIFIED"
           assert r1["evidence_archive_blob"]==pins["research/quantum-information/diagnostics/BFSS_M4_W0B0_R1_44064728599_RED_evidence.zip"]
@@ -150,13 +166,13 @@ jobs:
                 ["originalComplexEquiv_allClifford_commutes"])
           audit((root/"consumer.log").read_text(),
                 ["originalComplexEquiv_allClifford_commutes_consumer"])
-          print("BFSS_W0B1_FULL_CLIFFORD_1_SOURCE_1_CONSUMER_2_CONTROLS_STRICT_GREEN")
+          print("BFSS_W0B1_R2_FULL_CLIFFORD_1_SOURCE_1_CONSUMER_2_CONTROLS_STRICT_GREEN")
           PY
       - name: Preserve complete provider-original strict evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: bfss-m4-w0b1-${{ github.sha }}-${{ github.run_attempt }}
+          name: bfss-m4-w0b1-r2-${{ github.sha }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/bfss-m4-w0b1/
           if-no-files-found: warn
           retention-days: 14
