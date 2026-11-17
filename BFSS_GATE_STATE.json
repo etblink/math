@@ -342,7 +342,7 @@
   "active": {
     "gate": "P3-M4-QTC0B",
     "attempt": "R1",
-    "status": "PENDING_STRICT_CI",
+    "status": "RED_UNQUALIFIED",
     "qualification": false,
     "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean",
     "consumer": "lean/diagnostics/BFSSP3M4QTC0BOriginalFockQuadraticTensorIndependentConsumer.lean",
@@ -363,7 +363,26 @@
       "Quot.sound"
     ],
     "first_atom": "GENERIC_QUADRATIC_TENSOR_COEFFICIENT_REINDEXING",
-    "note": "QTC0B R1 staged but unqualified: general original Fock tensor coefficient contraction a*b+b*a.transpose, skew corollary, seven compiled consumer controls including 2x2 E00 adversarial case. Do not promote without verified strict CI and original provider evidence. QTC1/QTC2 source real bracket and physical fidelity remain unproved."
+    "note": "R1 source RED: Lean tactic motive at mul_comm and unresolved finite-sum contractions; source sorryAx present, consumer not executed. Qualified predecessor QTC0A unchanged.",
+    "verdict": "RED",
+    "run_id": 44012367725,
+    "tested_sha": "7fbb73ee8b3f46d1a1d657c18c797d26ea2cc5c0",
+    "job_id": 133802161431,
+    "strict_outcome": "failure",
+    "failure_phase": "COLD_NATIVE_SOURCE",
+    "first_error": "Unrestricted rw [mul_comm] changes instance-dependent motive and triggers TopologicalSpace (PiLp 2 ...) vs TopologicalSpace (Fermion 2) mismatch.",
+    "first_error_line": 48,
+    "artifact_id": 14296824993,
+    "artifact_sha256": "a50bc06b6f5ac03c15be16de7b943910ca55bc3a7960f40829c1049e8402c5c1",
+    "evidence_archive": "research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0B_R1_44012367725_evidence.zip",
+    "evidence_archive_blob": "671be94ee31c954b8f8b276de7b8ede9359aa617",
+    "evidence_job_log": "research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0B_R1_44012367725_complete_job.log",
+    "evidence_job_log_blob": "c56410ec436f5505988f6a138ae19e8afbb5d88f",
+    "evidence_manifest": "research/spectral-p2-original-field/diagnostics/BFSS_M4_QTC0B_R1_44012367725_evidence_manifest.json",
+    "evidence_status": "COMPLETE_PROVIDER_ORIGINAL_ZIP_INDEPENDENT_REHASH_COMPLETE_JOB_LOG_COMMITTED",
+    "source_reports": 0,
+    "consumer_reports": 0,
+    "receipt": "research/spectral-p2-original-field/BFSS_M4_QTC0B_R1_RED_44012367725_NATIVE_FINITE_SUM_REWRITE_2026_11_16.md"
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -386,13 +405,13 @@
     "positive_eigenpair_qualified": false
   },
   "next_planned": {
-    "gate": "P3-M4-QTC1",
-    "status": "PROSPECTIVE_NOT_STAGED",
-    "contract": "research/spectral-p2-original-field/BFSS_M4_QTC0B_COEFFICIENT_REINDEX_PROOF_DESIGN_2026_11_16.md",
+    "gate": "P3-M4-QTC0B",
+    "attempt": "R2",
+    "status": "REPAIR_PROSPECTIVE_NOT_STAGED",
     "source_staged": false,
     "consumer_staged": false,
     "workflow_staged": false,
-    "decision": "Only if QTC0B fully qualifies: original real-source K(B) = generic Q_x((B:ℂ)) using preserved 1/4 and accepted real-complex scalar bridge; QTC2 original skew K commutator binding separately; physical fixed-regulator fidelity remains the program objective."
+    "decision": "R1 tactic motive and finite-sum reindexing repairs only, no statement changes, old original provider ZIP and complete RED job log immutable; QTC1 real bridge remains later."
   },
   "monograph": {
     "edition": "0.8 internal consolidated checkpoint",
@@ -1132,5 +1151,31 @@
     "evidence_manifest_blob": "848a9273e55424437190cc04daca9032fdca84d6",
     "receipt": "research/spectral-p2-original-field/BFSS_M4_QTC0A_R1_GREEN_44001621836_WEIGHTED_QUADRATIC_ACCEPTANCE_2026_11_16.md",
     "evidence_status": "PROVIDER_ORIGINAL_ZIP_INDEPENDENT_LOCAL_SHA256_REHASH_EXACT_BLOB_AND_COMPLETE_JOB_LOG_COMMITTED"
+  },
+  "previous_active_QTC0B_R1_pending": {
+    "gate": "P3-M4-QTC0B",
+    "attempt": "R1",
+    "status": "PENDING_STRICT_CI",
+    "qualification": false,
+    "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0BOriginalFockQuadraticTensorContraction.lean",
+    "consumer": "lean/diagnostics/BFSSP3M4QTC0BOriginalFockQuadraticTensorIndependentConsumer.lean",
+    "workflow": ".github/workflows/bfss-m4-qtc0b-original-fock-tensor-strict.yml",
+    "source_blob": "ab7b1dbf31ad92000184204f14d083400d39bc00",
+    "consumer_blob": "00755f559de156912d301efd91d944711ae382f6",
+    "workflow_blob": "02228778b0b8fee1cac4cabac3472da98c7b86ec",
+    "accepted_predecessor_run": 44001621836,
+    "expected_source_reports": 2,
+    "expected_consumer_reports": 2,
+    "independent_controls": 7,
+    "contract_commit": "e2132a98893a55c2537ac4eca8b9e81f49a5216b",
+    "initial_contract": "research/spectral-p2-original-field/BFSS_M4_QTC0B_R1_PRE_GATE_TENSOR_CONTRACTION_2026_11_16.md",
+    "prospective_receipt": "research/spectral-p2-original-field/BFSS_M4_QTC0B_R1_PRE_GATE_TENSOR_CONTRACTION_2026_11_16.md",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "first_atom": "GENERIC_QUADRATIC_TENSOR_COEFFICIENT_REINDEXING",
+    "note": "QTC0B R1 staged but unqualified: general original Fock tensor coefficient contraction a*b+b*a.transpose, skew corollary, seven compiled consumer controls including 2x2 E00 adversarial case. Do not promote without verified strict CI and original provider evidence. QTC1/QTC2 source real bracket and physical fidelity remain unproved."
   }
 }
