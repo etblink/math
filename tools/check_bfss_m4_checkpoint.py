@@ -2861,6 +2861,98 @@ def check_checkpoint(root: Path, s: dict):
                 and nextgate.get('consumer_staged') is False
                 and nextgate.get('workflow_staged') is False,
                 'W0H1B still prospective until separate source-exact gate')
+    if a['gate']=='P3-M4-W0H1B' and a['status']=='PENDING_STRICT_CI':
+        import zipfile
+        require(a.get('attempt')=='R1' and a.get('qualification') is False
+                and a.get('contract_commit')=='cccc758d74bdddf90c593dfce63f4bbdd7e7298b'
+                and a.get('accepted_predecessor_run')==44151962609
+                and a.get('source_blob')=='94049ca4a90eeff2cacf423e2fa31250d316b6a1'
+                and a.get('consumer_blob')=='3a5d04948ff1adae3fabd6f16da664d4a85725bf'
+                and a.get('workflow_blob')=='d05f7de7d7a3acefba34221858cf716f8d8e02a1'
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0H1A'
+                and s['last_qualified']['attempt']=='R2'
+                and s['last_qualified']['run_id']==44151962609
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0H1B original exact two-theorem centralizer adjoin source/predecessor drift')
+        donor=s['last_qualified']
+        idx=s.get('last_qualified_source_exact_original_BFSS',{})
+        require(donor.get('source_blob')=='c5c0894d99a01e92e92a58dac7313698a2f69971'
+                and donor.get('consumer_blob')=='b6e91f79c46724f65f54835623b97d5f909dcf66'
+                and donor.get('workflow_blob')=='64ec1b82e3ee81243529dc4f883ab510e6e35a7f'
+                and donor.get('evidence_archive_blob')=='4437e182a35763d448b9780d158df926d073d839'
+                and donor.get('evidence_job_log_blob')=='bf897e7e62cfac76040e15e7aaa4c2f370a84539'
+                and donor.get('evidence_manifest_blob')=='5a276db3410363592b2b45d34272002f5745adb5'
+                and idx.get('gate')=='P3-M4-W0H1A'
+                and idx.get('run_id')==44151962609
+                and idx.get('evidence_archive_blob')==donor['evidence_archive_blob'],
+                'W0H1B must retain exact accepted original W0H1A source and original provider GREEN')
+        require(blob(root/donor['evidence_archive'])==donor['evidence_archive_blob']
+                and blob(root/donor['evidence_job_log'])==donor['evidence_job_log_blob']
+                and blob(root/donor['evidence_manifest'])==donor['evidence_manifest_blob']
+                and hashlib.sha256((root/donor['evidence_archive']).read_bytes()).hexdigest()
+                    =='15cf911e6c0029b5a7ebed47f735f1d4ae9e21769e90f6b82ab657a7071c8d9f',
+                'W0H1B previous original generator membership provider ZIP full job log invalid')
+        with zipfile.ZipFile(root/donor['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'auditor.log','cold-source.log','consumer.log',
+                                           'preflight.log','source-axioms.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()==donor['tested_sha']
+                    and 'Build completed successfully (9131 jobs).' in z.read('cold-source.log').decode()
+                    and donor['strict_marker'] in z.read('auditor.log').decode(),
+                    'W0H1B may only consume native qualified original source W0H1A')
+        for red in (s.get('previous_active_W0B1_R1_RED',{}),
+                    s.get('previous_active_W0B1_R2_stopped',{}),
+                    s.get('previous_active_W0H1A_R1_RED',{})):
+            require(red.get('run_id') in {44117272657,44127193329,44145848122}
+                    and red.get('status')=='RED_UNQUALIFIED'
+                    and blob(root/red['source'])==red['source_blob']
+                    and blob(root/red['consumer'])==red['consumer_blob']
+                    and blob(root/red['workflow'])==red['workflow_blob']
+                    and blob(root/red['evidence_archive'])==red['evidence_archive_blob']
+                    and blob(root/red['evidence_job_log'])==red['evidence_job_log_blob']
+                    and blob(root/red['evidence_manifest'])==red['evidence_manifest_blob'],
+                    'W0H1B must preserve every prior original native source RED')
+        require(s['previous_active_W0B1_R2_stopped'].get('stopped') is True
+                and s['previous_active_W0B1_R2_stopped'].get('stop_reason')
+                    =='TWO_ANALOGOUS_ORIGINAL_SCALAR_INDUCTION_SOURCE_REDS_STOP',
+                'W0H1B must not revive frozen W0B1 native induction')
+        r2a=s.get('w0h1a_r2_preflight_only',{})
+        r2b=s.get('w0h1a_r2_second_preflight_only',{})
+        require(r2a.get('run_id')==44149941739 and r2a.get('artifact_count')==0
+                and r2a.get('source_attempted') is False
+                and r2b.get('run_id')==44151092723
+                and r2b.get('source_attempted') is False,
+                'W0H1B may not misclassify setup-only R2 REDs as original Lean failures')
+        for item,names in ((r2a,('original_log','original_metadata','manifest')),
+                           (r2b,('original_zip','original_log','manifest'))):
+            for name in names:
+                require(blob(root/item[name])==item[name+'_blob'],
+                        'W0H1B predecessor harness RED evidence lost '+name)
+        source=(root/a['source']).read_text()
+        consumer=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\s+',source))==2
+                and len(re.findall(r'(?m)^theorem\s+',consumer))==2
+                and len(re.findall(r'(?m)^example\b',consumer))==3
+                and 'Algebra.adjoin_le' in source
+                and 'CliffordAlgebra.adjoin_range_ι' in source
+                and 'originalGenerator_mem_sourceCentralizerPullback' in source
+                and 'originalComplexCliffordFockAlgEquiv' in source
+                and 'Subalgebra.centralizer' in source
+                and 'CliffordAlgebra.induction' not in source
+                and 'P3M4W0B1OriginalFullCliffordCommutantInduction' not in source
+                and 'maxHeartbeats' not in source
+                and 'maxRecDepth' not in source,
+                'W0H1B original exact source proof closure changed or old stopped induction revived')
+        require(s['next_planned']['gate']=='P3-M4-W0B2'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False,
+                'W0B2 scalar commutant remains prospective pending source-qualified W0H1B')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
