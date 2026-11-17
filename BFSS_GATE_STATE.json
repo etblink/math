@@ -829,7 +829,7 @@
     "workflow": ".github/workflows/bfss-m4-w0h1a-r2-original-centralizer-unfold-strict.yml",
     "source_blob": "c5c0894d99a01e92e92a58dac7313698a2f69971",
     "consumer_blob": "b6e91f79c46724f65f54835623b97d5f909dcf66",
-    "workflow_blob": "82313868f060241d6a9baf490275125b62a5b475",
+    "workflow_blob": "d4cfd4ae234f3edab64e1722f208c093fac0e0b8",
     "accepted_predecessor_run": 44139239821,
     "first_atom": "ORIGINAL_CENTRALIZER_PULLBACK_EXPLICIT_CHANGE_BOUNDED_NATIVE_REPAIR",
     "expected_source_reports": 1,
@@ -846,7 +846,7 @@
     "w0b0_original_generator_green_run": 44109519633,
     "w0b1_stopped_original_source_red_R1": 44117272657,
     "w0b1_stopped_original_source_red_R2": 44127193329,
-    "note": "Bounded R2 separate original source/consumer/workflow; only explicit definition unfolding change before mem_centralizer_iff. R1 native RED archived and source/workflow immutable. W0H0 original GREEN donor. W0H1B not staged; second analogous native RED triggers architecture STOP.",
+    "note": "R2 exact original Lean source/consumer unchanged; initial R2 harness-only #44149941739 failed before Lean and had ZERO artifacts. Original full Actions job log, run/job metadata and manifest pinned by #44150575833; bounded directory, exact build target and dual R1/R2 pin-table fixes now staged. W0H0 last qualified. First original native source R1 RED retained. Next analogous original native RED triggers W0H1A stop.",
     "previous_red_run": 44145848122
   },
   "toolchain": {
@@ -3439,5 +3439,25 @@
     "failure_phase": "COLD_ORIGINAL_LEAN_SOURCE",
     "failure_reason": "R1 original Lean source line 44 rewrite failed on named centralizer pullback, generated sorryAx, independent consumer not reached",
     "receipt": "research/quantum-information/BFSS_QIT_SCC_W0H1A_R2_ORIGINAL_CENTRALIZER_UNFOLD_REPAIR_CONTRACT_2026_11_17.md"
+  },
+  "w0h1a_r2_preflight_only": {
+    "run_id": 44149941739,
+    "job_id": 134275151501,
+    "tested_sha": "3a48165bd006552444f036ae8ac2960fc7ffd5fe",
+    "status": "PREFLIGHT_ONLY_RED",
+    "artifact_count": 0,
+    "source_attempted": false,
+    "consumer_attempted": false,
+    "original_log": "research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log",
+    "original_log_blob": "f8f7976d1072b2685c6f783c60558b1bc2b514bd",
+    "original_metadata": "research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_original_run_jobs_artifacts.json",
+    "original_metadata_blob": "985b6d8aff1a54145c8a7d17aee0322208795c83",
+    "manifest": "research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json",
+    "manifest_blob": "7a3e7c1265fd5b3bab5b2b77908aed9cc6fa03f2",
+    "preservation_run": 44150575833,
+    "source_blob": "c5c0894d99a01e92e92a58dac7313698a2f69971",
+    "consumer_blob": "b6e91f79c46724f65f54835623b97d5f909dcf66",
+    "original_workflow_blob": "82313868f060241d6a9baf490275125b62a5b475",
+    "reason": "Preflight started before mkdir of R2 output dir; duplicate source keys caused parallel guard failure. No Lean, no source theorem verdict."
   }
 }

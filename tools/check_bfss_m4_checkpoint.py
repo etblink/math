@@ -2614,7 +2614,7 @@ def check_checkpoint(root: Path, s: dict):
             and a.get('previous_red_run')==44145848122
             and a.get('source_blob')=='c5c0894d99a01e92e92a58dac7313698a2f69971'
             and a.get('consumer_blob')=='b6e91f79c46724f65f54835623b97d5f909dcf66'
-            and a.get('workflow_blob')=='82313868f060241d6a9baf490275125b62a5b475'
+            and a.get('workflow_blob')=='d4cfd4ae234f3edab64e1722f208c093fac0e0b8'
             and a.get('contract_commit')=='884a1897bdecdfa365abd7206ad7411a8dddef15'
             and a.get('expected_source_reports')==a.get('expected_consumer_reports')==1
             and a.get('independent_controls')==2
@@ -2622,6 +2622,29 @@ def check_checkpoint(root: Path, s: dict):
             and s['last_qualified']['run_id']==44139239821
             and s['last_qualified']==s['accepted_anchors'][-1],
             'W0H1A R2 native bounded source repair drift')
+        h=s.get('w0h1a_r2_preflight_only',{})
+        require(h.get('run_id')==44149941739
+            and h.get('status')=='PREFLIGHT_ONLY_RED'
+            and h.get('artifact_count')==0
+            and h.get('source_attempted') is False
+            and h.get('consumer_attempted') is False
+            and h.get('preservation_run')==44150575833
+            and h.get('original_workflow_blob')=='82313868f060241d6a9baf490275125b62a5b475'
+            and h.get('source_blob')==a.get('source_blob')
+            and h.get('consumer_blob')==a.get('consumer_blob')
+            and h.get('original_log_blob')=='f8f7976d1072b2685c6f783c60558b1bc2b514bd'
+            and h.get('original_metadata_blob')=='985b6d8aff1a54145c8a7d17aee0322208795c83'
+            and h.get('manifest_blob')=='7a3e7c1265fd5b3bab5b2b77908aed9cc6fa03f2',
+            'R2 preflight-only no-artifact RED evidence missing or misclassified')
+        for kind in ('original_log','original_metadata','manifest'):
+            require(blob(root/h[kind])==h[kind+'_blob'],
+                    'R2 original harness-only job evidence drift: '+kind)
+        m=json.loads((root/h['manifest']).read_text())
+        require(m['run_id']==44149941739 and m['artifact_count']==0
+            and m['source_attempted'] is False and m['consumer_attempted'] is False
+            and m['original_job_log']['sha256']=='728e0f91056dee2487dfd90c5b242b469b7db172c1271305287858d997d275c9'
+            and hashlib.sha256((root/h['original_log']).read_bytes()).hexdigest()==m['original_job_log']['sha256'],
+            'R2 original no-artifact metadata or job log damaged')
         r1=s.get('previous_active_W0H1A_R1_RED',{})
         require(r1.get('status')=='RED_UNQUALIFIED'
             and r1.get('run_id')==44145848122

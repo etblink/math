@@ -30,12 +30,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/bfss-m4-w0h1a"
+          mkdir -p "$RUNNER_TEMP/bfss-m4-w0h1a-r2"
           git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-w0h1a-r2/tested-commit.txt"
           python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0h1a-r2/preflight.log"
           import json,hashlib,re,subprocess,zipfile
           from pathlib import Path
-          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean":"a4c6a2d8006cdd151b72995bb35313c5f2299d57","lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean":"8e0e457e2d781737f09ef7b7e48a9a142d51a4e0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H0OriginalScalarImageAdapter.lean":"7555f5e17d9f465c1e4b7b04ffc450eb1667fc13","lean/diagnostics/BFSSP3M4W0H0OriginalScalarImageIndependentConsumer.lean":"21c02789f62e5e345eff7caf4e10505f6cbe4961","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip":"ffbd66e56aff83031aece2c3b310ed34678bdd9f","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_complete_job.log":"8861ab57e0e12df0d5143a014434fa3ecf5503de","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_GREEN_evidence_manifest.json":"e6fe871ebefc67b3c2cde2b5a44345d781ef79a3","research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44135729729_GREEN_evidence.zip":"ed7e477d931b0822ffb5dfd87f1bee5c9f4163ac","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip":"813b3325da4f721afc0bb313a710410eb40a3bcf","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_complete_job.log":"918c09a60ef1e99a9f8e1d56f380353719cb1fdc","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_RED_evidence_manifest.json":"9a4991d9ce4aeda01ad08684f436d5b9a88bbd48","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4"}
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean":"c5c0894d99a01e92e92a58dac7313698a2f69971","lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean":"b6e91f79c46724f65f54835623b97d5f909dcf66","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H0OriginalScalarImageAdapter.lean":"7555f5e17d9f465c1e4b7b04ffc450eb1667fc13","lean/diagnostics/BFSSP3M4W0H0OriginalScalarImageIndependentConsumer.lean":"21c02789f62e5e345eff7caf4e10505f6cbe4961","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean":"c67f30bb76a9990e508a8a050a8c3313e694bda7","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean":"754a5f2a13baea90312f6031eb8fa7963dbdf42b","research/quantum-information/diagnostics/BFSS_M4_W0H0_R1_44139239821_GREEN_evidence.zip":"ffbd66e56aff83031aece2c3b310ed34678bdd9f","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_complete_job.log":"8861ab57e0e12df0d5143a014434fa3ecf5503de","research/quantum-information/diagnostics/BFSS_W0H0_R1_44139239821_GREEN_evidence_manifest.json":"e6fe871ebefc67b3c2cde2b5a44345d781ef79a3","research/quantum-information/diagnostics/BFSS_M4_W0G0_R1_44135729729_GREEN_evidence.zip":"ed7e477d931b0822ffb5dfd87f1bee5c9f4163ac","research/quantum-information/diagnostics/BFSS_M4_W0B0_R2_44109519633_GREEN_evidence.zip":"abbebbf9e7d2eeefeeef901a415030e09551c2d6","research/quantum-information/diagnostics/BFSS_M4_W0B1_R1_44117272657_RED_evidence.zip":"a448d2ae775926ee05ab4a9028e29e8061fecdac","research/quantum-information/diagnostics/BFSS_M4_W0B1_R2_44127193329_RED_evidence.zip":"813b3325da4f721afc0bb313a710410eb40a3bcf","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_complete_job.log":"7e8310126b2e5af543ec1f7274ce5467dbc59552","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_complete_job.log":"918c09a60ef1e99a9f8e1d56f380353719cb1fdc","research/quantum-information/diagnostics/BFSS_W0B1_R1_44117272657_RED_evidence_manifest.json":"a78963305bb75e7ab154f8c40a0c8d5ab7299f29","research/quantum-information/diagnostics/BFSS_W0B1_R2_44127193329_RED_evidence_manifest.json":"9a4991d9ce4aeda01ad08684f436d5b9a88bbd48","lean/lean-toolchain":"ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5","lean/lake-manifest.json":"67d01d2717d0aaff59fb8814bb53581b961f42b4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComap.lean":"a4c6a2d8006cdd151b72995bb35313c5f2299d57","lean/diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumer.lean":"8e0e457e2d781737f09ef7b7e48a9a142d51a4e0",".github/workflows/bfss-m4-w0h1a-original-centralizer-comap-strict.yml":"95fdaea744514d567bdf4da471adb4c15c5650a0","research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log":"f8f7976d1072b2685c6f783c60558b1bc2b514bd","research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_original_run_jobs_artifacts.json":"985b6d8aff1a54145c8a7d17aee0322208795c83","research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json":"7a3e7c1265fd5b3bab5b2b77908aed9cc6fa03f2"}
           for path,sha in pins.items():
               actual=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert actual==sha,(path,actual,sha)
@@ -115,6 +115,25 @@ jobs:
               assert "Tactic " in z.read("cold-source.log").decode() and "sorryAx" in z.read("cold-source.log").decode()
           assert "change" in source and "Subalgebra.mem_comap" not in source
           assert "rw [Subalgebra.mem_centralizer_iff]" in source
+
+          h=s.get("w0h1a_r2_preflight_only",{})
+          assert h.get("run_id")==44149941739 and h.get("status")=="PREFLIGHT_ONLY_RED"
+          assert h.get("artifact_count")==0 and h.get("source_attempted") is False
+          assert h.get("consumer_attempted") is False
+          assert h.get("original_log_blob")==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log"]
+          assert h.get("original_metadata_blob")==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_original_run_jobs_artifacts.json"]
+          assert h.get("manifest_blob")==pins["research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json"]
+          assert h.get("preservation_run")==44150575833
+          m=json.loads(Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_manifest.json").read_text())
+          assert m["run_id"]==44149941739 and m["artifact_count"]==0
+          assert m["source_attempted"] is False and m["consumer_attempted"] is False
+          assert m["workflow_blob"]=="82313868f060241d6a9baf490275125b62a5b475"
+          assert m["original_job_log"]["sha256"]=="728e0f91056dee2487dfd90c5b242b469b7db172c1271305287858d997d275c9"
+          assert "No such file or directory" in Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log").read_text()
+          assert "bfss-m4-w0h1a-r2/tested-commit.txt" in Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_complete_job.log").read_text()
+          original_run=json.loads(Path("research/quantum-information/diagnostics/BFSS_W0H1A_R2_44149941739_PREFLIGHT_ONLY_original_run_jobs_artifacts.json").read_text())
+          assert original_run["artifacts"]["total_count"]==0
+          assert original_run["run"]["head_sha"]=="3a48165bd006552444f036ae8ac2960fc7ffd5fe"
           manifest=json.loads(Path("lean/lake-manifest.json").read_text())
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           assert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
@@ -139,8 +158,8 @@ jobs:
           set -euo pipefail
           source "$HOME/.elan/env"
           cd lean
-          root="$RUNNER_TEMP/bfss-m4-w0h1a"
-          timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H1AOriginalGeneratorCentralizerComap 2>&1 | tee "$root/cold-source.log"
+          root="$RUNNER_TEMP/bfss-m4-w0h1a-r2"
+          timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H1AOriginalGeneratorCentralizerComapR2 2>&1 | tee "$root/cold-source.log"
           timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1AOriginalGeneratorCentralizerComapR2.lean 2>&1 | tee "$root/source-axioms.log"
           timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4W0H1AOriginalGeneratorCentralizerIndependentConsumerR2.lean 2>&1 | tee "$root/consumer.log"
           python3 - <<'PY' 2>&1 | tee "$root/auditor.log"
