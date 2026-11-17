@@ -109,7 +109,7 @@ def check_checkpoint(root: Path, s: dict):
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
         expected_reports = (1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3','P3-M4-W0B1','P3-M4-W0H0','P3-M4-W0H1A'} else
-                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A','P3-M4-W0B2B'} else 2)
+                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A','P3-M4-W0B2B','P3-M4-W0C0'} else 2)
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
                 'incomplete strict qualification')
@@ -3577,14 +3577,10 @@ def check_checkpoint(root: Path, s: dict):
                     'W0B2B provider-original full Actions log required evidence absent')
     if a['gate']=='P3-M4-W0C0':
         # W0C0 separates original complex scalars by T1 ordinary Fock trace.
-        require(a.get('attempt')=='R1'
+        require(a.get('attempt') in {'R1','R2'}
                 and a.get('status')=='PENDING_STRICT_CI'
                 and a.get('qualification') is False
-                and a.get('contract_commit')=='ab8ad007fdd670ffff387fac6758222ab1e7be34'
                 and a.get('first_atom')=='ORIGINAL_FOCK_T1_TRACE_ONE_NONZERO_AND_COMPLEX_SCALAR_TRACE_SEPARATION'
-                and a.get('source_blob')=='42ee591cbd6c9d7d98e736076c2a4b6cb321ae0e'
-                and a.get('consumer_blob')=='63ce6ff9ee136bf3b02a845dc1c8dea4cbaf9054'
-                and a.get('workflow_blob')=='43736998ba3bd7d2bb51b54b03afd56af17776b2'
                 and a.get('accepted_predecessor_run')==44180157170
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
                 and a.get('independent_controls')==3
@@ -3594,7 +3590,47 @@ def check_checkpoint(root: Path, s: dict):
                 and s['last_qualified']['status']=='GREEN_QUALIFIED'
                 and s['last_qualified']['run_id']==44180157170
                 and s['accepted_anchors'][-1]==s['last_qualified'],
-                'W0C0 original trace source or accepted original W0B2B drift')
+                'W0C0 accepted W0B2B predecessor or status drift')
+        if a['attempt']=='R1':
+            require(a.get('contract_commit')=='ab8ad007fdd670ffff387fac6758222ab1e7be34'
+                    and a.get('source_blob')=='42ee591cbd6c9d7d98e736076c2a4b6cb321ae0e'
+                    and a.get('consumer_blob')=='63ce6ff9ee136bf3b02a845dc1c8dea4cbaf9054'
+                    and a.get('workflow_blob')=='43736998ba3bd7d2bb51b54b03afd56af17776b2',
+                    'W0C0 R1 original immutable pins changed')
+        else:
+            require(a.get('contract_commit')=='2ece5242c232a2e77a8e5ecbf6ed634c5529a3a6'
+                    and a.get('source_blob')=='96d3b63d08413f880d1adf0cef8b8e291f7b9453'
+                    and a.get('consumer_blob')=='fe9136065179d706c60871ae16e02b8f60e1b189'
+                    and a.get('workflow_blob')=='3bf1f0dbb2cdcdcb4b28cbfa8c0eb6950764721c'
+                    and a.get('previous_red_run')==44184526501
+                    and a.get('previous_red_preservation_run')==44189939903
+                    and a.get('previous_red_artifact_sha256')=='a1c300789de7b8e97e88efa894841670ab92bf7e98d489373c54dff285b9eb73',
+                    'W0C0 R2 original one-line repair contract/pin mismatch')
+            r=s.get('previous_active_W0C0_R1_RED',{})
+            require(r.get('attempt')=='R1' and r.get('run_id')==44184526501
+                    and r.get('tested_sha')=='deaf6f7cc314f3b18ff231945112b6478cae25e3'
+                    and r.get('status')=='RED_UNQUALIFIED' and r.get('qualification') is False
+                    and r.get('evidence_archive_blob')=='54f84642bc280e61ce9fe59b77bfd9caf7bc7c61'
+                    and r.get('evidence_job_log_blob')=='8cd529bae1b3b138597403f82dc16e610e981d91'
+                    and r.get('evidence_manifest_blob')=='3adae59c5e1705bf7a8ec27d5835af9ebf253335',
+                    'W0C0 R1 native RED historical checkpoint lost')
+            for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/r[kind])==r[kind+'_blob'], 'W0C0 R1 original source/RED evidence drift '+kind)
+            import zipfile
+            original=root/r['evidence_archive']
+            require(original.stat().st_size==18813
+                    and hashlib.sha256(original.read_bytes()).hexdigest()==r['artifact_sha256'],
+                    'W0C0 R1 original provider ZIP integrity failed')
+            with zipfile.ZipFile(original) as z:
+                require(z.testzip() is None and set(z.namelist())=={'preflight.log','cold-source.log','source-axioms.log','tested-commit.txt'}
+                        and z.read('tested-commit.txt').decode().strip()==r['tested_sha']
+                        and 'Build completed successfully (9218 jobs).' in z.read('cold-source.log').decode()
+                        and 'The goal is a proposition' in z.read('source-axioms.log').decode(),
+                        'W0C0 R1 provider-original cause or four members drifted')
+            require('The goal is a proposition' in (root/r['evidence_job_log']).read_text()
+                    and '  let : Nontrivial V :=' in (root/a['source']).read_text()
+                    and '  letI : Nontrivial V :=' not in (root/a['source']).read_text(),
+                    'W0C0 R2 proof diff or original failure log invalid')
         donor=s['last_qualified']
         require(donor.get('source_blob')=='6d5fbe98aa8d660c9b7c680efefde02501d8e253'
                 and donor.get('consumer_blob')=='68e1fe906d2d498f01baf56db7879c2697596c1c'
