@@ -78,3 +78,6 @@ A positive conceptual result is **not** a proof that SCC is realized by BFSS, th
 - Buscemi, *Comparison of Quantum Statistical Models: Equivalent Conditions for Sufficiency*, Commun. Math. Phys. 310, 625–647 (2012), https://doi.org/10.1007/s00220-012-1421-3 : operational comparison of statistical experiments under quantum channels.
 - Jenčová, *Recoverability of quantum channels via hypothesis testing*, Lett. Math. Phys. 114 (2024), https://doi.org/10.1007/s11005-024-01775-2 : sufficiency and information preservation for specified state families.
 - Relative subsystems and quantum reference frame transformations, Commun. Phys. (2025), https://www.nature.com/articles/s42005-025-02036-x : invariant algebras, group twirling, and subsystem relativity.
+
+## Source-exact witness-completeness audit (same day)
+The follow-on [witness completeness / direct K-bracket source audit](BFSS_QIT_SCC_SOURCE_EXACT_WITNESS_COMPLETENESS_AUDIT_2026_11_16.md) identifies a mathematically precise injective witness signature (Majorana commutator actions + trace), potential direct bracket proof using qualified LB1C1 and CT0, and the **stopped** CT1G0 native Jacobi failures. The general theorem is not yet a native source qualification; source import and elaboration costs must be compared before changing the QTC roadmap.
