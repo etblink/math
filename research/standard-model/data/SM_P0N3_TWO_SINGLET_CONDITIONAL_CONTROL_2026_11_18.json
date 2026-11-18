@@ -1,0 +1,130 @@
+{
+  "schema": "SM-P0N3_TWO_SINGLET_CONDITIONAL_CONTROL/0.1",
+  "audit_date": "2026-11-18",
+  "status": "SOURCE_BOUND_CONDITIONAL_ARITHMETIC_NOT_MODEL_PREDICTION",
+  "parent_commit": "c7c175f8faac97b9231f4f800a317783f2f9286e",
+  "target": "neutrino_mass_rank_and_secondary_absolute_mass_witnesses",
+  "model": {
+    "id": "type_i_two_heavy_singlets_tree_level",
+    "assumptions": [
+      "3 active neutrinos in 3+1D electroweak lepton sector",
+      "exactly two heavy electroweak-singlet Majorana neutrinos",
+      "2x3 Dirac Yukawa mass matrix",
+      "invertible symmetric 2x2 heavy Majorana mass matrix",
+      "zero direct active-active Majorana mass block at tree level",
+      "no independent Weinberg operator, triplet contribution or extra neutrino-mass state",
+      "heavy-decoupling standard 3-light-neutrino unitary approximation for numeric controls",
+      "charged-lepton mass basis and PMNS convention specified",
+      "standard light-Majorana exchange only for effective m_betabeta envelope"
+    ],
+    "structural_inference": "rank(M_light) <= rank(M_D) <= 2; kernel dimension at least 1",
+    "exact_tree_level_full_matrix_kernel": "for any x != 0 with M_D x=0, (x,0) is a massless mode of block matrix [[0,M_D^T],[M_D,M_N]]",
+    "qualifies_as_unique_two_singlet_uv_signature": false,
+    "source_derived_delta_m2_21": false,
+    "experimentally_qualified_physical_model": false
+  },
+  "numerical_control": {
+    "semantics": "INPUT_CONDITIONED_CENTRAL_VALUES_NOT_UNCERTAINTY_INTERVALS_OR_INDEPENDENT_JUNO_PREDICTIONS",
+    "inputs": {
+      "juno_207d_delta_m2_21_ev2": 0.00007388,
+      "juno_207d_sin2_theta12": 0.3036,
+      "juno_207d_delta_m2_31_no_ev2": 0.002509,
+      "juno_207d_delta_m2_31_io_ev2": -0.002482,
+      "dayabay_2023_sin2_2theta13": 0.0851
+    },
+    "derived_electron_sin2_theta13": 0.0217479743900712,
+    "expected": {
+      "NO": {
+        "masses_ev": [
+          0,
+          0.00859534757877772,
+          0.050089919145472776
+        ],
+        "sigma_ev": 0.05868526672425049,
+        "m_beta_ev": 0.008746875406398248,
+        "m_betabeta_light_only_min_ev": 0.0014634408733988696,
+        "m_betabeta_light_only_max_ev": 0.003642149430951828
+      },
+      "IO": {
+        "masses_ev": [
+          0.0498196748283246,
+          0.05055571184347027,
+          0
+        ],
+        "sigma_ev": 0.10037538667179487,
+        "m_beta_ev": 0.04949710788717063,
+        "m_betabeta_light_only_min_ev": 0.018924977484918545,
+        "m_betabeta_light_only_max_ev": 0.048954798833257124
+      }
+    },
+    "error_propagation": "NOT_PERFORMED",
+    "joint_likelihood": "NOT_IMPORTED",
+    "mass_ordering_selected_by_model": false,
+    "majorana_phase_status": "FREE_RELATIVE_PHASE_ENVELOPE",
+    "juno_207d_dataset_independent_of_59d": false,
+    "model_output_role": "OBSERVED_INPUT_CONDITIONAL_IMPLICATION",
+    "numeric_precision_is_not_experimental_precision": true
+  },
+  "comparator_controls": [
+    {
+      "pair": "2singlet_vs_3singlet_with_0_third_yukawa_row",
+      "low_energy_equivalence": true,
+      "uv_identity": false,
+      "framework_specific_evidence": false
+    },
+    {
+      "pair": "two_singlet_vs_rank_two_weinberg_EFT",
+      "can_reproduce_same_light_M": true,
+      "uv_identity": false
+    },
+    {
+      "pair": "same_light_masses_and_PMNS_majorana_vs_dirac",
+      "same_oscillation_and_beta": true,
+      "difference": "lepton_number_violation_channel_under_specified_mechanism"
+    },
+    {
+      "pair": "rank_two_plus_new_active_mass_operator",
+      "rank_two_guaranteed": false
+    }
+  ],
+  "external_witnesses": [
+    {
+      "id": "KATRIN_259d_2025",
+      "measurement": "m_beta < 0.45 eV",
+      "confidence": "90% CL",
+      "source": "https://doi.org/10.1126/science.adq9592",
+      "readiness": "INSUFFICIENT_TO_DISCRIMINATE_BENCHMARKS"
+    },
+    {
+      "id": "LEGEND_200_2026",
+      "measurement": "T_1/2(0nu)>1.9e26 yr; standard NME model m_betabeta<75-200 meV",
+      "confidence": "90% CL",
+      "source": "https://doi.org/10.1103/25tk-nctn",
+      "readiness": "MECHANISM_AND_NME_REQUIRED_NOT_EXCLUDING_CENTRAL_ENVELOPES"
+    },
+    {
+      "id": "DESI_DR1_LSS_CMB_SNE_2026",
+      "measurement": "Sigma<0.049 eV in LCDM or <0.077 eV in w0waCDM",
+      "confidence": "95% CL",
+      "source": "https://doi.org/10.1103/sjff-yj2t",
+      "readiness": "MODEL_AND_PRIOR_DEPENDENT_CONSTRAINT_TENSION_NOT_DIRECT_EXCLUSION"
+    }
+  ],
+  "sources": {
+    "pdg_2026": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-neutrino-mixing.pdf",
+    "juno_207d_preprint": "https://arxiv.org/abs/2609.37895",
+    "daya_bay": "https://doi.org/10.1103/PhysRevLett.130.161802",
+    "katrin": "https://doi.org/10.1126/science.adq9592",
+    "legend": "https://doi.org/10.1103/25tk-nctn",
+    "cosmology_contrast": "https://doi.org/10.1103/sjff-yj2t"
+  },
+  "full_physical_SM_D1_status": "PROSPECTIVE_UNSTAGED",
+  "bfss_accepted_anchor_count_preserved": 27,
+  "bfss_active_gate": "W0C2B2_BLOCKED",
+  "new_formal_or_physics_qualification": false,
+  "model_experiment_comparison_performed": false,
+  "empirical_significance_calculated": false,
+  "new_CI_gate_launched": false,
+  "fcp_repository_modified": false,
+  "next_scientific_target": "PIN_SPECIFIC_RESTRICTED_FLAVOR_MODEL_WITH_INDEPENDENT_PARAMETERS_AND_HELD_OUT_WITNESS"
+}
