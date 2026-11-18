@@ -42,7 +42,7 @@ jobs:
                        'BFSS_W0C2B2_R2_44280267807_complete_job.log',
                        'BFSS_W0C2B2_R2_44280267807_NATIVE_RED_evidence_manifest.json'):
               assert not (root/name).exists(),name
-          print('BFSS_W0C2B2_R2_SOURCE_EXACT_NATIVE_TIMEOUT_PRESERVATION_PREFLIGHT_PASS')
+          print('BFSS_W0C2B2_R2_SOURCE_EXACT_NATIVE_RECURSION_PRESERVATION_PREFLIGHT_PASS')
           PY
       - name: Independently inspect exact RED run and hash original provider ZIP and full job
         shell: bash
@@ -108,7 +108,7 @@ jobs:
           for p in (arc,log,manifest):assert not p.exists(),p
           arc.write_bytes(raw);log.write_bytes(full)
           manifest.write_text(json.dumps({
-            'gate':'P3-M4-W0C2B2','attempt':'R1','status':'ORIGINAL_NATIVE_SOURCE_RED_UNQUALIFIED',
+            'gate':'P3-M4-W0C2B2','attempt':'R2','status':'ORIGINAL_NATIVE_SOURCE_RED_UNQUALIFIED',
             'strict_run':run,'job_id':job,'tested_sha':tested,'artifact_id':artifact,
             'original_zip':{'path':str(arc),'size':size,'sha256':digest,'members':members},
             'original_job_log':{'path':str(log),'size':len(full),'sha256':hashlib.sha256(full).hexdigest()},
@@ -122,7 +122,7 @@ jobs:
             'predecessor_accepted_anchor_count':27,'predecessor_qualified_run':44267283653,
             'claim_ceiling':'No original all-48 gamma Lie defect centrality or unconditional original K Lie bracket qualified'
           },sort_keys=True,indent=2)+'\n')
-          print('BFSS_W0C2B2_R2_ORIGINAL_NATIVE_TIMEOUT_ZIP_COMPLETE_LOG_MEMBER_SHA_CRC_VERIFIED')
+          print('BFSS_W0C2B2_R2_ORIGINAL_NATIVE_RECURSION_ZIP_COMPLETE_LOG_MEMBER_SHA_CRC_VERIFIED')
           PY
       - name: Git-pin immutable original native RED ZIP transcript and SHA CRC manifest
         shell: bash
