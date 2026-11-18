@@ -3836,6 +3836,109 @@ def check_checkpoint(root: Path, s: dict):
                     and a['strict_marker'].encode() in complete
                     and b'BFSS_W0C0_R2_W0B2B_ACCEPTED_ORIGINAL_TRACE_VACUUM_PREFLIGHT_PASS' in complete,
                     'W0C0 original complete Actions log missing tested build or auditor success')
+    if a['gate']=='P3-M4-W0C1':
+        # W0C1 is source-exact original algebraic trace plus all 48 gamma
+        # commutators; physical witness admissibility is a later gate.
+        require(a.get('attempt')=='R1'
+                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('first_atom')=='ORIGINAL_48_GAMMA_AND_ZERO_TRACE_TRIVIAL_KERNEL_THEN_COMMUTATOR_TRACE_SIGNATURE_INJECTIVITY'
+                and a.get('contract_commit')=='953d4d488bf2529554125d8bb7d5ce03eb0b4529'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C1_R1_SOURCE48_SCOPE_PRE_STAGE_ADDENDUM_2026_11_17.md'
+                and a.get('source_blob')=='bdcef8cd83feda4fda905092649c7411a2456f9e'
+                and a.get('consumer_blob')=='9563e06c058771fec4be3b322be48799f38be231'
+                and a.get('workflow_blob')=='61341d74095497e43f69c05234f129c21868ed65'
+                and a.get('accepted_predecessor_run')==44192981282
+                and a.get('qualified_W0B2B_run')==44180157170
+                and a.get('qualified_W0C0_run')==44192981282
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0C0'
+                and s['last_qualified']['attempt']=='R2'
+                and s['last_qualified']['run_id']==44192981282
+                and s['last_qualified']['qualification'] is True
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0C1 R1 exact source/consumer contract or accepted predecessor drift')
+        require(a['original_frozen_contract']=='research/quantum-information/BFSS_QIT_SCC_W0C1_R1_ORIGINAL_COMMUTATOR_TRACE_WITNESS_PRE_GATE_2026_11_17.md'
+                and blob(root/a['original_frozen_contract'])=='800b6defbf23ef4dfcba3d5e345d186aff3c3208'
+                and blob(root/a['prospective_receipt'])=='1fe248e35d18fafbee557a78f79bf1fee3dd5e42',
+                'W0C1 original pre-gate plan or final Source48 namespace addendum changed')
+        predecessor=s['last_qualified']
+        schur=next((x for x in s['accepted_anchors'] if x.get('gate')=='P3-M4-W0B2B'),{})
+        require(schur.get('run_id')==44180157170
+                and schur.get('status')=='GREEN_QUALIFIED'
+                and schur.get('source_blob')=='6d5fbe98aa8d660c9b7c680efefde02501d8e253'
+                and schur.get('consumer_blob')=='68e1fe906d2d498f01baf56db7879c2697596c1c'
+                and schur.get('workflow_blob')=='ce8fd612a8c23ffe5fc86aa61fdc480c3a2e8f8f'
+                and schur.get('evidence_archive_blob')=='f8133dba86db582f5d302885c7c134b3e2ff043a'
+                and schur.get('evidence_job_log_blob')=='76e06a033b2e3dacc6dbf9ae7c7c6280b1d4a07b'
+                and schur.get('evidence_manifest_blob')=='8770fa58b313985267fb710abb58fd3a282d7712'
+                and schur.get('preservation_run')==44182808147,
+                'W0C1 original W0B2B Schur commutant donor unqualified or altered')
+        require(predecessor.get('source_blob')=='96d3b63d08413f880d1adf0cef8b8e291f7b9453'
+                and predecessor.get('consumer_blob')=='fe9136065179d706c60871ae16e02b8f60e1b189'
+                and predecessor.get('workflow_blob')=='b36fb1ae5b76a3b611292ac9ac4c11ca59509bde'
+                and predecessor.get('evidence_archive_blob')=='4992a5444441022a998afc26324551a273b747c9'
+                and predecessor.get('evidence_job_log_blob')=='d269402e6bb231c58f49eacc68a76c50ffe1aa5d'
+                and predecessor.get('evidence_manifest_blob')=='0243686ca56af184824568a38c3a646141c19a1d'
+                and predecessor.get('preservation_run')==44197140876,
+                'W0C1 original W0C0 trace donor not independently preserved')
+        for donor in (schur,predecessor):
+            for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/donor[kind])==donor[kind+'_blob'],
+                        'W0C1 original accepted donor source/evidence altered '+kind)
+        for path,expected in (
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/T1OriginalFockTraceInvariance.lean','3be6c9a6f2898484df66690f94fdfa1877660897'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean','a16d3573b737bb4453e42b0b543d63cbbac1cd1b'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4BFermionLinearTransportProbe.lean','e55fcbb58ce4d3776bddefdd6d11ad83560bb75c')):
+            require(blob(root/path)==expected,'W0C1 original T1/OP2c vacuum donor changed '+path)
+        import zipfile
+        for donor,size,digest,tested,cold in (
+            (schur,14293,'90049da54aee06c9cc649b1577059f10c440c037de3689e25b5da9314b7623a6','e5b93b53ba9917374e39b79dac4e808f44ad615c','Build completed successfully (9134 jobs).'),
+            (predecessor,19089,'37cd7da40243fff8833524789de91314a5bf21bf273a086f96cb81669679c8e1','d193649342bb543faa91bf559db0b953c6ec2dcd','Build completed successfully (9218 jobs).')):
+            raw=(root/donor['evidence_archive']).read_bytes()
+            require(len(raw)==size and hashlib.sha256(raw).hexdigest()==digest,
+                    'W0C1 original qualified provider ZIP changed')
+            with zipfile.ZipFile(root/donor['evidence_archive']) as z:
+                require(z.testzip() is None
+                        and set(z.namelist())=={'auditor.log','cold-source.log','consumer.log','preflight.log','source-axioms.log','tested-commit.txt'}
+                        and z.read('tested-commit.txt').decode().strip()==tested
+                        and cold in z.read('cold-source.log').decode(),
+                        'W0C1 original donor ZIP CRC/member/cold source mismatch')
+        require(s.get('previous_active_W0C0_R1_RED',{}).get('run_id')==44184526501
+                and s.get('w0c0_r2_first_preflight_red',{}).get('run_id')==44190799433
+                and s.get('w0c0_r2_second_preflight_red',{}).get('run_id')==44191695033
+                and s.get('w0c0_r2_green_preservation_harness_red',{}).get('run_id')==44196763215
+                and s.get('previous_active_W0B1_R2_stopped',{}).get('stopped') is True,
+                'W0C1 erased historical original negative evidence')
+        for key in ('previous_active_W0C0_R1_RED','w0c0_r2_first_preflight_red','w0c0_r2_second_preflight_red'):
+            red=s[key]
+            for kind in ('evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/red[kind])==red[kind+'_blob'],
+                        'W0C1 original historical RED evidence drift '+kind)
+        src=(root/a['source']).read_text()
+        cons=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\b',src))==2
+                and len(re.findall(r'(?m)^theorem\b',cons))==2
+                and len(re.findall(r'(?m)^example\b',cons))==3
+                and 'open FCP.BFSSS1V0' in src
+                and 'open FCP.BFSSS1V0' in cons
+                and 'originalFockClifford_scalar_operator_unique' in src
+                and 'originalFockTrace_scalar_one_eq_zero_iff' in src
+                and 'noncomputable def originalFockWitnessSignature' in src
+                and 'sourceNormalizedGamma' in src
+                and 'map_sub' in src and 'sub_mul' in src and 'mul_sub' in src
+                and 'abel' in src and 'CliffordAlgebra.induction' not in src
+                and 'maxRecDepth' not in src and 'maxHeartbeats' not in src
+                and 'sorry' not in src and 'admit' not in src,
+                'W0C1 original 2-root kernel plus injectivity scope drift')
+        require(s['next_planned']['gate']=='P3-M4-W0C2'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False,
+                'W0C2 cannot be prematurely staged or qualified')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
