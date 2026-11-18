@@ -19,21 +19,24 @@ def pointMassZero : Categorical 2 where
   nonneg := by
     intro i
     fin_cases i <;> decide
-  normalized := by decide
+  normalized := by
+    norm_num [Fin.sum_univ_succ]
 
 def pointMassOne : Categorical 2 where
   weight := fun i => if i = 1 then 1 else 0
   nonneg := by
     intro i
     fin_cases i <;> decide
-  normalized := by decide
+  normalized := by
+    norm_num [Fin.sum_univ_succ]
 
 def uniformTwo : Categorical 2 where
   weight := fun _ => (1 / 2 : ℚ)
   nonneg := by
     intro i
     norm_num
-  normalized := by decide
+  normalized := by
+    norm_num [Fin.sum_univ_succ]
 
 theorem positive_distinct_masses_consumer :
     0 < totalVariation pointMassZero pointMassOne := by
@@ -60,10 +63,12 @@ theorem every_normalized_pair_bounded_consumer
   exact ⟨totalVariation_nonneg p q, totalVariation_le_one p q⟩
 
 /-- Unit separation between disjoint point masses (mathematical). -/
-example : totalVariation pointMassZero pointMassOne = 1 := by decide
+example : totalVariation pointMassZero pointMassOne = 1 := by
+  norm_num [totalVariation, Fin.sum_univ_succ, pointMassZero, pointMassOne]
 
 /-- Symmetric half separation from the balanced rational law. -/
-example : totalVariation pointMassZero uniformTwo = 1 / 2 := by decide
+example : totalVariation pointMassZero uniformTwo = 1 / 2 := by
+  norm_num [totalVariation, Fin.sum_univ_succ, pointMassZero, uniformTwo]
 
 #print axioms positive_distinct_masses_consumer
 #print axioms symmetry_consumer
