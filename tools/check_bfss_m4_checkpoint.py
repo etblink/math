@@ -4496,7 +4496,7 @@ def check_checkpoint(root: Path, s: dict):
                 and blob(root/a['prospective_receipt'])=='090bfa986cfce97351d891979328fd81ebe77fb8'
                 and a.get('source_blob')=='b98cc05a012c98da8016496492d77135fc58ebc8'
                 and a.get('consumer_blob')=='dcbba93f72feb4f60912521f666d748bcf2e1687'
-                and a.get('workflow_blob')=='fa1ab7c0242f06e2e6a3e393d82774ec94f6b825'
+                and a.get('workflow_blob')=='61f2cc992208fb31dfad2740e76425fe4d3c9962'
                 and a.get('first_atom')=='ORIGINAL_FOCK_COMPLEX_NESTED_SINGLE_INDEX_COEFFICIENT_ACTION'
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
                 and a.get('independent_controls')==2
@@ -4571,6 +4571,32 @@ def check_checkpoint(root: Path, s: dict):
             (native['evidence_manifest'],'32def22a3c715395de8950be6001a0549d00920b'),
         ):
             require(blob(root/path)==sha,'original first native RED evidence changed '+path)
+        r2_preflight=s.get('w0c2b0m_r2_first_preflight_red',{})
+        require(r2_preflight.get('gate')=='P3-M4-W0C2B0M'
+                and r2_preflight.get('attempt')=='R2'
+                and r2_preflight.get('status')=='PREFLIGHT_BEFORE_LEAN_UNQUALIFIED'
+                and r2_preflight.get('failure_phase')=='PREFLIGHT_BEFORE_LEAN'
+                and r2_preflight.get('run_id')==44254608894
+                and r2_preflight.get('job_id')==134633170487
+                and r2_preflight.get('tested_sha')=='56d383e85e19928d395858c1f1e5582e9cf3e298'
+                and r2_preflight.get('artifact_sha256')=='9f75266ae0f91f388918ddda14ffac47a55b1d926cb6dea92d0c7d87fca4e55f'
+                and r2_preflight.get('failed_workflow_blob')=='fa1ab7c0242f06e2e6a3e393d82774ec94f6b825'
+                and r2_preflight.get('source_blob')=='b98cc05a012c98da8016496492d77135fc58ebc8'
+                and r2_preflight.get('consumer_blob')=='dcbba93f72feb4f60912521f666d748bcf2e1687'
+                and r2_preflight.get('original_math_compiled') is False
+                and r2_preflight.get('independent_consumer_executed') is False
+                and r2_preflight.get('native_complex_coefficient_red_count')==1
+                and r2_preflight.get('preservation_run')==44254864256
+                and r2_preflight.get('preservation_commit')=='6b34f961bd7d9562c72462eca8667d6b043d02bf',
+                'R2 original preflight RED source/execution classification or provenance drift')
+        for kind, expected in (
+            ('evidence_archive','3e7266878a5eb46fffb753dc852032fc1a196581'),
+            ('evidence_job_log','68cee08a05f5dc083c2737038423462104099ef2'),
+            ('evidence_manifest','6b257e84491140a6caac941a6329bb7c74cb86e1'),
+            ('receipt','15503ec6be1773f2609d98ead902c7860d4fb18a'),
+        ):
+            require(blob(root/r2_preflight[kind])==expected,
+                    'R2 preserved original first preflight RED modified '+kind)
         src=(root/a['source']).read_text()
         con=(root/a['consumer']).read_text()
         expected=['originalFock_complex_nested_coefficient_compose',
