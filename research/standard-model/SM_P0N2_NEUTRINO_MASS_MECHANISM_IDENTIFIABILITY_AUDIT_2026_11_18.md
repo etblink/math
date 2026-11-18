@@ -75,7 +75,7 @@ Loop-induced masses require additional specified fields, interactions and often 
 
 ## IV. Decision matrix and next high-value test
 
-| Model family | Qualified source mass operator? | Independent JUNO delta_m2_21? | Distinguishing restriction / next witness | Scope verdict |
+| Model family | Literature-defined 4D mass operator? | Independent JUNO delta_m2_21? | Distinguishing restriction / next witness | Scope verdict |
 |---|---|---|---|---|
 | Minimal massless-neutrino SM | No neutrino mass term in its renormalizable field content | No | Oscillations motivate extension | Empirically incomplete for neutrino mass |
 | Dirac extension, free Yukawas | Yes, as a theoretical construction | No | Lepton number, independent absolute-mass probes | Valid parameterized mechanism |
