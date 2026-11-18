@@ -1,0 +1,145 @@
+name: BFSS W0C2B2 E2 R1 source green consumer recursion RED evidence preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-m4-w0c2b2-e2-r1-consumer-recursion-red-preservation.yml
+permissions:
+  contents: write
+  actions: read
+jobs:
+  preserve-e2-original-native-consumer-red:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout original E2 R1 source and 27 accepted anchors
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Immutable original E2 source consumer donor and canonical anchors preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E2OriginalTargetGammaAction.lean)" = 7d372392703d0fe69942df9df58b421af6850656
+          test "$(git rev-parse HEAD:lean/diagnostics/BFSSW0C2B2E2OriginalTargetGammaActionIndependentConsumer.lean)" = 2c8ecc3b34ab432b11ea45bb2581dcdf0b7665fe
+          test "$(git rev-parse HEAD:.github/workflows/bfss-m4-w0c2b2-e2-original-target-gamma-action-strict.yml)" = 973546eaeb8deffa0703e71b280c8890529f1717
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2AOriginalBivectorLieDefectTraceBridge.lean)" = 51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter.lean)" = c5841055363a6eef713f35e568409dd2fa2b6c9e
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E1OriginalSkewBracketGammaAction.lean)" = 5663ee2dcfd6ea682d23c3cf45dcd424888a7b89
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E1_R1_44373898851_GREEN_evidence.zip)" = 7fb1148258fbc7c401058faedca4c57b6a9907be
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E0_R2_44368187249_GREEN_evidence.zip)" = 6b4204d7603459d075c60444e1b3e12adca78fe0
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D2A_R2_44355713875_NATIVE_RED_evidence.zip)" = c8d32c6291f7469400abf794b0eacd30113ec828
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          a,q=s['active'],s['last_qualified']
+          assert (a['gate'],a['attempt'],a['status'],a['qualification'])==('P3-M4-W0C2B2','R2','BLOCKED',False)
+          assert a['native_red_count']==2
+          assert len(s['accepted_anchors'])==27 and s['accepted_anchors'][-1]==q
+          assert (q['gate'],q['attempt'],q['run_id'],q['status'])==('P3-M4-W0C2B1','R2',44267283653,'GREEN_QUALIFIED')
+          assert s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+          root=Path('research/quantum-information/diagnostics')
+          for n in ('BFSS_M4_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence.zip',
+                    'BFSS_W0C2B2_E2_R1_44376918039_complete_job.log',
+                    'BFSS_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence_manifest.json'):
+              assert not (root/n).exists(),n
+          print('BFSS_E2_R1_27_ANCHORS_GREEN_AND_HISTORICAL_REDS_FROZEN_PREFLIGHT_PASS')
+          PY
+      - name: Download verify original E2 R1 provider ZIP and complete job log with SHA CRC
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,re,urllib.request,urllib.error,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/etblink/math'
+          rid=44376918039;jid=135058398229;aid=14462557062
+          sha='598b4a32b53e242684e2206086d6bb59c381a04b'
+          size=20473;digest='e5b1734769af4353e2721c174e9c1e5afb85888a6b3482644a6876be036346ad'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def reqjson(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as r:return json.load(r)
+          r=reqjson(f'{base}/actions/runs/{rid}')
+          j=reqjson(f'{base}/actions/jobs/{jid}')
+          a=reqjson(f'{base}/actions/artifacts/{aid}')
+          assert (r['head_sha'],r['status'],r['conclusion'],r['run_attempt'])==(sha,'completed','failure',1)
+          assert j['id']==jid and j['run_id']==rid and j['conclusion']=='failure'
+          for name,expected in [
+              ('Checkout original immutable','success'),
+              ('Preflight 27 anchors','success'),
+              ('Restore pinned Lean','success'),
+              ('Cold original K target gamma','failure'),
+              ('Upload original E2 source/consumer','success')]:
+              assert any(s['name'].startswith(name) and s['conclusion']==expected for s in j['steps']),name
+          assert (a['id'],a['size_in_bytes'],a['digest'])==(aid,size,'sha256:'+digest)
+          assert a['workflow_run']['id']==rid and a['workflow_run']['head_sha']==sha
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def download(path):
+              url=f'{base}{path}'
+              try: resp=urllib.request.build_opener(NoRedirect).open(urllib.request.Request(url,headers=headers),timeout=60)
+              except urllib.error.HTTPError as e:
+                  assert e.code==302,e
+                  signed=e.headers['Location']; assert signed.startswith('https://')
+                  with urllib.request.urlopen(signed,timeout=90) as r:return r.read()
+              else:
+                  with resp:return resp.read()
+          raw=download(f'/actions/artifacts/{aid}/zip')
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None
+              names=set(z.namelist())
+              assert {'preflight.log','tested-commit.txt','cold-source.log','source-axioms.log','consumer.log'}<=names,names
+              assert z.read('tested-commit.txt').decode().strip()==sha
+              assert 'BFSS_E2_27_ANCHORS_E1_ORIGINAL_STRICT_GREEN_ALL_HISTORICAL_RED_PINS_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+              cold=z.read('cold-source.log').decode()
+              assert 'Build completed successfully (9241 jobs)' in cold
+              assert 'error:' not in cold and 'sorryAx' not in cold
+              source=z.read('source-axioms.log').decode()
+              assert 'originalSource48K_skew_target_complex_gamma_covariance' in source
+              assert 'sorryAx' not in source and 'error:' not in source
+              cons=z.read('consumer.log').decode()
+              assert 'diagnostics/BFSSW0C2B2E2OriginalTargetGammaActionIndependentConsumer.lean:34:8: error: maximum recursion depth has been reached' in cons
+              assert 'sorryAx' in cons
+              members=[{'name':n,'size':len(z.read(n)),'sha256':hashlib.sha256(z.read(n)).hexdigest(),'crc32':format(z.getinfo(n).CRC,'08x')} for n in sorted(names)]
+          joblog=download(f'/actions/jobs/{jid}/logs')
+          assert len(joblog)>120000
+          for marker in (b'Build completed successfully (9241 jobs)',b'maximum recursion depth has been reached',b'Artifact ID 14462557062'):
+              assert marker in joblog
+          root=Path('research/quantum-information/diagnostics');root.mkdir(parents=True,exist_ok=True)
+          zp=root/'BFSS_M4_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence.zip'
+          lp=root/'BFSS_W0C2B2_E2_R1_44376918039_complete_job.log'
+          mp=root/'BFSS_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence_manifest.json'
+          for p in (zp,lp,mp):assert not p.exists(),p
+          zp.write_bytes(raw);lp.write_bytes(joblog)
+          mp.write_text(json.dumps({
+              'gate':'P3-M4-W0C2B2-E2','attempt':'R1','strict_run':rid,'job':jid,'artifact':aid,'tested_sha':sha,
+              'status':'SOURCE_GREEN_CONSUMER_NATIVE_MAX_RECURSION_RED',
+              'original_zip':{'path':str(zp),'size':len(raw),'sha256':digest,'members':members},
+              'complete_job_log':{'path':str(lp),'size':len(joblog),'sha256':hashlib.sha256(joblog).hexdigest()},
+              'source_blob':'7d372392703d0fe69942df9df58b421af6850656',
+              'consumer_blob':'2c8ecc3b34ab432b11ea45bb2581dcdf0b7665fe',
+              'workflow_blob':'973546eaeb8deffa0703e71b280c8890529f1717',
+              'source_compiled':True,'source_ax_report_standard_only':True,
+              'consumer_compiled':False,'consumer_axiom_report_qualified':False,
+              'first_causal_error':'E2 independent consumer line 34:8 max recursion at application of original target gamma theorem to expanded source expression',
+              'generated_sorryAx_in_consumer':True,
+              'original_canonical_B2_status':'BLOCKED','accepted_anchor_count':27,
+              'claim_ceiling':'Only native source theorem clean; no independent E2 qualification or original Lie bracket'
+          },indent=2,sort_keys=True)+'\n')
+          print('BFSS_E2_R1_ORIGINAL_SOURCE_GREEN_NATIVE_CONSUMER_RED_ZIP_WHOLE_LOG_SHA_CRC_VERIFIED')
+          PY
+      - name: Git-pin original E2 native consumer RED ZIP log checksum manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence.zip research/quantum-information/diagnostics/BFSS_W0C2B2_E2_R1_44376918039_complete_job.log research/quantum-information/diagnostics/BFSS_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence_manifest.json
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m 'BFSS E2 R1: preserve source-clean original consumer recursion RED evidence'
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
