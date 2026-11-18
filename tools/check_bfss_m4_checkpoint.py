@@ -3840,8 +3840,8 @@ def check_checkpoint(root: Path, s: dict):
         # W0C1 is source-exact original algebraic trace plus all 48 gamma
         # commutators; physical witness admissibility is a later gate.
         require(a.get('attempt')=='R2'
-                and a.get('status')=='PENDING_STRICT_CI'
-                and a.get('qualification') is False
+                and a.get('status') in {'PENDING_STRICT_CI','GREEN_QUALIFIED'}
+                and a.get('qualification') == (a['status']=='GREEN_QUALIFIED')
                 and a.get('first_atom')=='ORIGINAL_48_GAMMA_AND_ZERO_TRACE_TRIVIAL_KERNEL_THEN_COMMUTATOR_TRACE_SIGNATURE_INJECTIVITY'
                 and a.get('contract_commit')=='1b1b10b4cfdcf62716822ba1244ab2c469d33af2'
                 and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C1_R2_ORIGINAL_ZERO_SMUL_PROOF_REPAIR_PRE_GATE_2026_11_17.md'
@@ -3854,11 +3854,13 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
                 and a.get('independent_controls')==3
                 and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
-                and s['last_qualified']['gate']=='P3-M4-W0C0'
-                and s['last_qualified']['attempt']=='R2'
-                and s['last_qualified']['run_id']==44192981282
-                and s['last_qualified']['qualification'] is True
-                and s['accepted_anchors'][-1]==s['last_qualified'],
+                and ((s['last_qualified']['gate']=='P3-M4-W0C0'
+                      and s['last_qualified']['attempt']=='R2'
+                      and s['last_qualified']['run_id']==44192981282
+                      and s['last_qualified']['qualification'] is True
+                      and s['accepted_anchors'][-1]==s['last_qualified'])
+                     if a['status']=='PENDING_STRICT_CI'
+                     else (s['last_qualified']==a and s['accepted_anchors'][-1]==a)),
                 'W0C1 R1 exact source/consumer contract or accepted predecessor drift')
         require(a['original_frozen_contract']=='research/quantum-information/BFSS_QIT_SCC_W0C1_R1_ORIGINAL_COMMUTATOR_TRACE_WITNESS_PRE_GATE_2026_11_17.md'
                 and blob(root/a['original_frozen_contract'])=='800b6defbf23ef4dfcba3d5e345d186aff3c3208'
@@ -3901,7 +3903,7 @@ def check_checkpoint(root: Path, s: dict):
                 'W0C1 R2 one-line zero-smul typed proof repair or prior RED lost')
         require(blob(root/'research/quantum-information/BFSS_QIT_SCC_W0C1_R1_SOURCE48_SCOPE_PRE_STAGE_ADDENDUM_2026_11_17.md')=='1fe248e35d18fafbee557a78f79bf1fee3dd5e42',
                 'W0C1 original R1 namespace addendum not preserved')
-        predecessor=s['last_qualified']
+        predecessor=next((x for x in s['accepted_anchors'] if x.get('gate')=='P3-M4-W0C0' and x.get('run_id')==44192981282),{})
         schur=next((x for x in s['accepted_anchors'] if x.get('gate')=='P3-M4-W0B2B'),{})
         require(schur.get('run_id')==44180157170
                 and schur.get('status')=='GREEN_QUALIFIED'
@@ -3976,6 +3978,116 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['consumer_staged'] is False
                 and s['next_planned']['workflow_staged'] is False,
                 'W0C2 cannot be prematurely staged or qualified')
+
+        if a['status']=='GREEN_QUALIFIED':
+            require(a.get('attempt')=='R2'
+                    and a.get('verdict')=='GREEN' and a.get('strict_outcome')=='success'
+                    and a.get('run_id')==44208084307 and a.get('job_id')==134479111962
+                    and a.get('tested_sha')=='3f45d2df6c4200086ba2a8ee404d2f4e37524672'
+                    and a.get('artifact_id')==14384678894
+                    and a.get('artifact_sha256')=='94b561a285577bbe61cf780ecfbf8843415f5b5f11889ae67632c2c29fa51ac1'
+                    and a.get('evidence_archive_blob')=='49e33bdd397f1a803b4818044549bbc6d33c3fe3'
+                    and a.get('evidence_job_log_blob')=='8f0acb0cc2ddbc1cf525e5ea5973cbed375b09e4'
+                    and a.get('evidence_manifest_blob')=='bc464292d81b0d9772436e9859f637b2e1d21db7'
+                    and a.get('evidence_preservation_run')==a.get('preservation_run')==44210764881
+                    and a.get('source_reports')==a.get('consumer_reports')==2
+                    and a.get('independent_controls')==3 and a.get('auditor_negative_tests')==6
+                    and a.get('cold_build_jobs')==9230
+                    and a.get('strict_marker')=='BFSS_W0C1_R2_ORIGINAL_FOCK_WITNESS_2_SOURCE_2_CONSUMER_3_CONTROLS_SIX_MUTANTS_STRICT_GREEN'
+                    and a.get('receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C1_R2_GREEN_44208084307_ACCEPTANCE_2026_11_17.md'
+                    and s['last_qualified']==a and s['accepted_anchors'][-1]==a,
+                    'W0C1 R2 strict original-source witness canonical acceptance drift')
+            previous=s.get('previous_active_W0C1_R2_pending',{})
+            require(previous.get('gate')=='P3-M4-W0C1'
+                    and previous.get('attempt')=='R2'
+                    and previous.get('status')=='PENDING_STRICT_CI'
+                    and previous.get('qualification') is False
+                    and previous.get('source_blob')==a['source_blob']
+                    and previous.get('consumer_blob')==a['consumer_blob']
+                    and previous.get('workflow_blob')==a['workflow_blob'],
+                    'W0C1 R2 original pending checkpoint lost')
+            idx=s.get('last_qualified_source_exact_original_BFSS',{})
+            require(idx.get('gate')=='P3-M4-W0C1'
+                    and idx.get('run_id')==44208084307
+                    and idx.get('qualification') is True
+                    and idx.get('evidence_archive_blob')==a['evidence_archive_blob'],
+                    'W0C1 source-exact original qualification index drift')
+            require(blob(root/a['receipt'])=='8ff22b9a55fd86e9732679cac596d895a30c5565',
+                    'W0C1 original qualified receipt not pinned')
+            for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/a[kind])==a[kind+'_blob'],
+                        'W0C1 R2 original qualified source/consumer/evidence Git hash drift '+kind)
+            raw=(root/a['evidence_archive']).read_bytes()
+            full=(root/a['evidence_job_log']).read_bytes()
+            require(len(raw)==19649
+                    and hashlib.sha256(raw).hexdigest()==a['artifact_sha256']
+                    and len(full)==322152
+                    and hashlib.sha256(full).hexdigest()=='090effde9440dc0f227833a0039b0ec4efec2651e3d8b6327c9c41479f1c9371',
+                    'W0C1 original provider ZIP or full Actions transcript SHA-256 mismatch')
+            manifest=json.loads((root/a['evidence_manifest']).read_text())
+            require(manifest.get('gate')=='P3-M4-W0C1'
+                    and manifest.get('attempt')=='R2'
+                    and manifest.get('status')=='GREEN_STRICT_PROVIDER_ORIGINAL_UNPROMOTED'
+                    and manifest.get('run_id')==a['run_id']
+                    and manifest.get('job_id')==a['job_id']
+                    and manifest.get('tested_sha')==a['tested_sha']
+                    and manifest.get('artifact_id')==a['artifact_id']
+                    and manifest.get('source_blob')==a['source_blob']
+                    and manifest.get('consumer_blob')==a['consumer_blob']
+                    and manifest.get('workflow_blob')==a['workflow_blob']
+                    and manifest['original_zip']['size']==len(raw)
+                    and manifest['original_zip']['sha256']==a['artifact_sha256']
+                    and manifest['original_job_log']['size']==len(full)
+                    and manifest['original_job_log']['sha256']=='090effde9440dc0f227833a0039b0ec4efec2651e3d8b6327c9c41479f1c9371'
+                    and manifest.get('source_reports')==manifest.get('consumer_reports')==2
+                    and manifest.get('independent_controls')==3
+                    and manifest.get('negative_mutants')==6
+                    and manifest.get('cold_build_jobs')==9230
+                    and manifest.get('strict_marker')==a['strict_marker']
+                    and manifest.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                    and manifest.get('accepted_predecessor_run')==44192981282
+                    and manifest.get('qualified_W0B2B_run')==44180157170
+                    and manifest.get('prior_W0C1_R1_native_red_run')==44204390734
+                    and manifest.get('prior_W0C1_R1_preservation_run')==44207291646,
+                    'W0C1 original six-member evidence manifest drift')
+            import zipfile
+            allowed={'propext','Classical.choice','Quot.sound'}
+            pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+            names={'auditor.log','cold-source.log','consumer.log','preflight.log','source-axioms.log','tested-commit.txt'}
+            with zipfile.ZipFile(root/a['evidence_archive']) as z:
+                require(z.testzip() is None and set(z.namelist())==names
+                        and len(manifest['original_zip']['members'])==6,
+                        'W0C1 original provider ZIP membership/CRC failure')
+                for item in manifest['original_zip']['members']:
+                    data=z.read(item['name'])
+                    require(len(data)==item['size']
+                            and hashlib.sha256(data).hexdigest()==item['sha256']
+                            and format(z.getinfo(item['name']).CRC,'08x')==item['crc32'],
+                            'W0C1 original provider ZIP member SHA/CRC mismatch '+item['name'])
+                require(z.read('tested-commit.txt').decode().strip()==a['tested_sha']
+                        and 'Build completed successfully (9230 jobs).' in z.read('cold-source.log').decode()
+                        and 'BFSS_W0C1_R2_W0B2B_W0C0_ORIGINAL_SOURCE_EXACT_GREEN_AND_REDS_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+                        and a['strict_marker'] in z.read('auditor.log').decode(),
+                        'W0C1 original full cold source, preflight or auditor result mismatch')
+                for name,expected in (
+                    ('source-axioms.log',['originalFockWitness_kernel_zero',
+                                         'originalFockWitnessSignature_injective']),
+                    ('consumer.log',['originalFockWitness_kernel_zero_consumer',
+                                     'originalFockWitnessSignature_injective_consumer'])):
+                    report=z.read(name).decode()
+                    roots=pat.findall(report)
+                    require('error:' not in report and 'sorryAx' not in report
+                            and len(roots)==2
+                            and [n.rsplit('.',1)[-1] for n,_ in roots]==expected
+                            and len({n for n,_ in roots})==2
+                            and all({x.strip() for x in axioms.split(',') if x.strip()}<=allowed for _,axioms in roots),
+                            'W0C1 original source/independent consumer 4 axiom roots invalid '+name)
+            # The complete Actions transcript echoes deliberate auditor mutations. Its
+            # literal sorryAx occurrence is NOT the original theorem axiom report.
+            require(b'Build completed successfully (9230 jobs).' in full
+                    and a['strict_marker'].encode() in full
+                    and b'BFSS_W0C1_R2_W0B2B_W0C0_ORIGINAL_SOURCE_EXACT_GREEN_AND_REDS_PREFLIGHT_PASS' in full,
+                    'W0C1 original complete Actions log missing source success markers')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
