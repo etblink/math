@@ -82,7 +82,7 @@ jobs:
           source "$HOME/.elan/env"
           cd lean
           root="$RUNNER_TEMP/sm-d1-scc1"
-          timeout 1100s lake build OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation 2>&1 | tee "$root/cold-source.log"
+          timeout 1100s lake build OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMY0OneFamilyAnomalyLedger OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation 2>&1 | tee "$root/cold-source.log"
           timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC1FiniteWitnessSeparation.lean 2>&1 | tee "$root/source-axioms.log"
           timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/SMD1SCC1FiniteWitnessIndependentConsumer.lean 2>&1 | tee "$root/consumer.log"
           python3 - <<'PY' 2>&1 | tee "$root/auditor.log"
