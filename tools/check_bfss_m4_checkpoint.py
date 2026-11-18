@@ -4699,6 +4699,91 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['workflow_staged'] is False
                 and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
                 'real adapter or original Lie bracket prematurely promoted')
+    if a['gate']=='P3-M4-W0C2B0N':
+        # Exact original Source48 complexification adapter; no Jacobi or
+        # original K(A) Lie-bracket centrality is claimed at this gate.
+        require(a.get('attempt')=='R1'
+                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter.lean'
+                and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B0NOriginalSource48RealComplexCoefficientIndependentConsumer.lean'
+                and a.get('workflow')=='.github/workflows/bfss-m4-w0c2b0n-r1-original-source48-real-complex-strict.yml'
+                and a.get('source_blob')=='c5841055363a6eef713f35e568409dd2fa2b6c9e'
+                and a.get('consumer_blob')=='3773f069d3da87c7c899596817f02efec639fbfa'
+                and a.get('workflow_blob')=='d431d74251ba5826baf312534fd6578424306643'
+                and a.get('contract_commit')=='46500f85fe6e1befad711aeac090ca25238fd0a0'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0N_R1_ORIGINAL_SOURCE48_REAL_COMPLEX_COLUMN_ADAPTER_PRE_GATE_2026_11_17.md'
+                and blob(root/a['prospective_receipt'])=='9c0edd937706c8b06be120e341fabacea57946c6'
+                and a.get('first_atom')=='ORIGINAL_SOURCE48_REAL_COEFFICIENT_SUM_COMPLEXIFIED_MATRIX_COMMUTATOR_COLUMN'
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and a.get('accepted_predecessor_run')==44255202048
+                and s['last_qualified']['gate']=='P3-M4-W0C2B0M'
+                and s['last_qualified']['attempt']=='R2'
+                and s['last_qualified']['run_id']==44255202048
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and s['accepted_anchors'][-1]==s['last_qualified']
+                and len(s['accepted_anchors'])==25,
+                'W0C2B0N original real complex coefficient adapter pre-gate contract/accepted ancestry drift')
+        m=s['last_qualified']
+        require(m.get('source_blob')=='b98cc05a012c98da8016496492d77135fc58ebc8'
+                and m.get('consumer_blob')=='dcbba93f72feb4f60912521f666d748bcf2e1687'
+                and m.get('workflow_blob')=='61f2cc992208fb31dfad2740e76425fe4d3c9962'
+                and m.get('tested_sha')=='ec27f66e865af66bca6064a2fd219038e359364c'
+                and m.get('artifact_sha256')=='fb4cfc3b3b098941576ebdb42650ae0e2abd3dc7996538bf79201ebbc91bf7cd'
+                and m.get('preservation_run')==44257915520
+                and m.get('evidence_archive_blob')=='547432c9bf3fb0778d6bc060daa6f9a6e9afc004'
+                and m.get('evidence_job_log_blob')=='0e9a64e791cb343cf9b51576a06b328b3d2133cc'
+                and m.get('evidence_manifest_blob')=='e602e910a5c3ed5158eb810d8ac5822a13ea9e18',
+                'W0C2B0N accepted W0C2B0M R2 original strict/preservation drift')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/m[kind])==m[kind+'_blob'],
+                    'W0C2B0N original accepted complex donor byte drift '+kind)
+        require(s.get('previous_active_W0C2B0_R2_stopped',{}).get('native_red_count')==2
+                and s['previous_active_W0C2B0_R2_stopped']['status']=='BLOCKED'
+                and s.get('previous_active_W0C2B0M_R1_NATIVE_RED',{}).get('run_id')==44252646318
+                and s.get('w0c2b0m_r2_first_preflight_red',{}).get('run_id')==44254608894
+                and a.get('original_W0C2B0M_R1_native_RED_run')==44252646318
+                and a.get('original_W0C2B0M_R2_preflight_RED_run')==44254608894,
+                'original native/preflight RED negative knowledge drift')
+        for path,sha in (
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R1_44218523669_NATIVE_RED_evidence.zip','4117bd19a0a8d1614df176e72d69a9b628de19da'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R2_44222678258_NATIVE_RED_evidence.zip','3f15c1c8bcf0e057e3de2055abc6ec00e8b931ec'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R1_44252646318_NATIVE_RED_evidence.zip','277b934810e6a999c974917d23a199ccd0be3ddd'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R2_44254608894_PREFLIGHT_RED_evidence.zip','3e7266878a5eb46fffb753dc852032fc1a196581'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean','a02f767ebf1f569302e27676b8d426850db37af1'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean','c2e7a7c665121283cde13ae5dabc183362b6b420'),
+        ):
+            require(blob(root/path)==sha,'W0C2B0N historical original source/RED evidence drift '+path)
+        src=(root/a['source']).read_text()
+        con=(root/a['consumer']).read_text()
+        expected=['originalSource48Fock_real_column_to_complex',
+                  'originalSource48_complexify_commutator',
+                  'originalSource48Fock_real_commutator_column_to_complex']
+        roots=[line.split()[-1] for line in src.splitlines() if line.startswith('#print axioms ')]
+        consumers=[line.split()[-1] for line in con.splitlines() if line.startswith('#print axioms ')]
+        require(sum(l.startswith('theorem ') for l in src.splitlines())==3
+                and sum(l.startswith('theorem ') for l in con.splitlines())==3
+                and sum(l.startswith('example ') for l in con.splitlines())==3
+                and roots==expected and consumers==[x+'_consumer' for x in expected]
+                and src.count('Fermion 2 →L[ℂ] Fermion 2')==1
+                and con.count('Fermion 2 →L[ℂ] Fermion 2')==1
+                and 'RingHom.mapMatrix Complex.ofRealHom' in src
+                and 'originalFockOperator_real_smul_eq_complex_smul' in src
+                and 'Source48Label' in src
+                and 'sourceNormalizedGamma' not in src
+                and 'maxRecDepth' not in src
+                and 'maxHeartbeats' not in src
+                and 'originalSource48BivectorK' not in src,
+                'new original Source48 real complex matrix module scope drift')
+        require(s['next_planned']['gate']=='P3-M4-W0C2B1'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False
+                and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
+                'future Jacobi or original K Lie bracket prematurely promoted')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')

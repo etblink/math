@@ -1,0 +1,149 @@
+name: BFSS M4 W0C2B0N R1 original Source48 real-complex column adapter strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter.lean
+      - lean/diagnostics/BFSSP3M4W0C2B0NOriginalSource48RealComplexCoefficientIndependentConsumer.lean
+      - .github/workflows/bfss-m4-w0c2b0n-r1-original-source48-real-complex-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bfss-m4-w0c2b0n-r1-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  original-source48-real-complex:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - name: Checkout exact unified original BFSS source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Preflight accepted original M predecessor and 25 immutable anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-m4-w0c2b0n-r1"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-m4-w0c2b0n-r1/tested-commit.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-m4-w0c2b0n-r1/preflight.log"
+          import json, re, subprocess, hashlib, zipfile
+          from pathlib import Path
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter.lean":"c5841055363a6eef713f35e568409dd2fa2b6c9e","lean/diagnostics/BFSSP3M4W0C2B0NOriginalSource48RealComplexCoefficientIndependentConsumer.lean":"3773f069d3da87c7c899596817f02efec639fbfa","research/quantum-information/BFSS_QIT_SCC_W0C2B0N_R1_ORIGINAL_SOURCE48_REAL_COMPLEX_COLUMN_ADAPTER_PRE_GATE_2026_11_17.md":"9c0edd937706c8b06be120e341fabacea57946c6","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5B0OriginalFockRealComplexOperatorScalarBridgeProbe.lean":"a02f767ebf1f569302e27676b8d426850db37af1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean":"c2e7a7c665121283cde13ae5dabc183362b6b420","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0MOriginalFockComplexNestedCoefficientR2.lean":"b98cc05a012c98da8016496492d77135fc58ebc8","lean/diagnostics/BFSSP3M4W0C2B0MOriginalFockComplexNestedCoefficientIndependentConsumerR2.lean":"dcbba93f72feb4f60912521f666d748bcf2e1687",".github/workflows/bfss-m4-w0c2b0m-r2-original-complex-nested-strict.yml":"61f2cc992208fb31dfad2740e76425fe4d3c9962","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2AOriginalBivectorLieDefectTraceBridge.lean":"51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb","research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R2_44255202048_GREEN_evidence.zip":"547432c9bf3fb0778d6bc060daa6f9a6e9afc004","research/quantum-information/diagnostics/BFSS_W0C2B0M_R2_44255202048_complete_job.log":"0e9a64e791cb343cf9b51576a06b328b3d2133cc","research/quantum-information/diagnostics/BFSS_W0C2B0M_R2_44255202048_GREEN_evidence_manifest.json":"e602e910a5c3ed5158eb810d8ac5822a13ea9e18","research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R1_44218523669_NATIVE_RED_evidence.zip":"4117bd19a0a8d1614df176e72d69a9b628de19da","research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R2_44222678258_NATIVE_RED_evidence.zip":"3f15c1c8bcf0e057e3de2055abc6ec00e8b931ec","research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R1_44252646318_NATIVE_RED_evidence.zip":"277b934810e6a999c974917d23a199ccd0be3ddd","research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R2_44254608894_PREFLIGHT_RED_evidence.zip":"3e7266878a5eb46fffb753dc852032fc1a196581"}
+          for path, expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,(path,got,expected)
+          s=json.loads(Path("BFSS_GATE_STATE.json").read_text())
+          a,q=s["active"],s["last_qualified"]
+          assert (a["gate"],a["attempt"],a["status"],a["qualification"])==("P3-M4-W0C2B0N","R1","PENDING_STRICT_CI",False)
+          assert (q["gate"],q["attempt"],q["run_id"],q["status"],q["qualification"])==("P3-M4-W0C2B0M","R2",44255202048,"GREEN_QUALIFIED",True)
+          assert len(s["accepted_anchors"])==25 and s["accepted_anchors"][-1]==q
+          assert q["tested_sha"]=="ec27f66e865af66bca6064a2fd219038e359364c"
+          assert q["source_blob"]==pins[q["source"]] and q["consumer_blob"]==pins[q["consumer"]] and q["workflow_blob"]==pins[q["workflow"]]
+          assert q["evidence_archive_blob"]==pins[q["evidence_archive"]]
+          assert q["evidence_job_log_blob"]==pins[q["evidence_job_log"]]
+          assert q["evidence_manifest_blob"]==pins[q["evidence_manifest"]]
+          assert q["preservation_run"]==44257915520
+          assert a["source"]=="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter.lean" and a["source_blob"]==pins[a["source"]]
+          assert a["consumer"]=="lean/diagnostics/BFSSP3M4W0C2B0NOriginalSource48RealComplexCoefficientIndependentConsumer.lean" and a["consumer_blob"]==pins[a["consumer"]]
+          assert a["workflow"]==".github/workflows/bfss-m4-w0c2b0n-r1-original-source48-real-complex-strict.yml"
+          assert a["prospective_receipt"]=="research/quantum-information/BFSS_QIT_SCC_W0C2B0N_R1_ORIGINAL_SOURCE48_REAL_COMPLEX_COLUMN_ADAPTER_PRE_GATE_2026_11_17.md" and a["contract_commit"]=="46500f85fe6e1befad711aeac090ca25238fd0a0"
+          assert a["accepted_predecessor_run"]==44255202048 and a["expected_source_reports"]==a["expected_consumer_reports"]==3
+          assert a["independent_controls"]==3 and a["allowed_axioms"]==["propext","Classical.choice","Quot.sound"]
+          assert s["previous_active_W0C2B0_R2_stopped"]["native_red_count"]==2
+          assert s["previous_active_W0C2B0M_R1_NATIVE_RED"]["run_id"]==44252646318
+          assert s["w0c2b0m_r2_first_preflight_red"]["run_id"]==44254608894
+          assert s["next_planned"]["gate"]=="P3-M4-W0C2B1" and s["next_planned"]["status"]=="PROSPECTIVE_NOT_STAGED"
+          assert s["strategic_focus"]["full_bivector_bracket_qualified"] is False
+          source=Path(a["source"]).read_text();consumer=Path(a["consumer"]).read_text()
+          roots=["originalSource48Fock_real_column_to_complex","originalSource48_complexify_commutator","originalSource48Fock_real_commutator_column_to_complex"]
+          assert len(re.findall(r"(?m)^theorem\b",source))==3 and len(re.findall(r"(?m)^theorem\b",consumer))==3
+          assert len(re.findall(r"(?m)^example\b",consumer))==3
+          assert re.findall(r"(?m)^#print axioms (\S+)$",source)==roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",consumer)==[name+"_consumer" for name in roots]
+          assert len(re.findall(r"(?m)^import ",source))==2 and len(re.findall(r"(?m)^import ",consumer))==1
+          assert consumer.startswith("import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter\n")
+          for data in (source,consumer):
+              assert "set_option autoImplicit false" in data
+              assert "Fermion 2 →L[ℂ] Fermion 2" in data and "Source48Label" in data
+              for banned in ["maxRecDepth","maxHeartbeats","P3M4QTC1OriginalSourceRealComplexQuarterBridge","P3M4CT1G0OriginalFockJacobiSource48Adapter","sourceNormalizedGamma"]:
+                  assert banned not in data,banned
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",data)
+          for token in ["RingHom.mapMatrix Complex.ofRealHom","originalFockOperator_real_smul_eq_complex_smul","Finset.sum_congr","map_sub","map_mul"]:
+              assert token in source,token
+          assert "originalSource48BivectorK" not in source
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          manifest=json.loads(Path("lean/lake-manifest.json").read_text())
+          assert next(p["rev"] for p in manifest["packages"] if p["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          for name,sha,size in [
+              ("BFSS_M4_W0C2B0M_R2_44255202048_GREEN_evidence.zip","fb4cfc3b3b098941576ebdb42650ae0e2abd3dc7996538bf79201ebbc91bf7cd",4080),
+              ("BFSS_M4_W0C2B0M_R1_44252646318_NATIVE_RED_evidence.zip","e9242ef864e6f7bdacb76386f94595b1c67b5eb471f0c485de795bd2970d1529",3779),
+              ("BFSS_M4_W0C2B0M_R2_44254608894_PREFLIGHT_RED_evidence.zip","9f75266ae0f91f388918ddda14ffac47a55b1d926cb6dea92d0c7d87fca4e55f",512)]:
+              data=Path("research/quantum-information/diagnostics",name).read_bytes()
+              assert len(data)==size and hashlib.sha256(data).hexdigest()==sha,name
+              with zipfile.ZipFile(Path("research/quantum-information/diagnostics",name)) as z:assert z.testzip() is None,name
+          print("BFSS_W0C2B0N_R1_ORIGINAL_SOURCE48_REAL_COMPLEX_AND_25_QUALIFIED_ANCHORS_PREFLIGHT_PASS")
+          PY
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Cold original Source48 adapter source independent consumer and axiom audit
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/bfss-m4-w0c2b0n-r1"
+          timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter 2>&1 | tee "$root/cold-source.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter.lean 2>&1 | tee "$root/source-axioms.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSP3M4W0C2B0NOriginalSource48RealComplexCoefficientIndependentConsumer.lean 2>&1 | tee "$root/consumer.log"
+          python3 - <<'PY' 2>&1 | tee "$root/auditor.log"
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"bfss-m4-w0c2b0n-r1"
+          allowed={"propext","Classical.choice","Quot.sound"}
+          pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          warning_ok=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          def audit(log,expected):
+              assert "error:" not in log and "sorryAx" not in log
+              warnings=[line for line in log.splitlines() if "warning:" in line and not warning_ok.fullmatch(line)]
+              assert not warnings,warnings[:3]
+              found=pat.findall(log)
+              assert len(found)==len(expected),(found,expected)
+              names=[n.rsplit(".",1)[-1] for n,_ in found]
+              assert names==expected and len(set(names))==len(names),(names,expected)
+              for _,ax in found:
+                  assert {s.strip() for s in ax.split(",") if s.strip()}<=allowed,ax
+          good="'N.a' depends on axioms: [propext, Classical.choice, Quot.sound]\n'N.b' depends on axioms: [propext, Classical.choice, Quot.sound]\n'N.c' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+          audit(good,["a","b","c"])
+          bad=[good.replace("Quot.sound","sorryAx",1),good.replace("Quot.sound","Foreign.axiom",1),good+good,"",good+"warning: unexpected warning\n",good+"error: failed proof\n"]
+          for i,mutant in enumerate(bad):
+              try:audit(mutant,["a","b","c"])
+              except AssertionError:pass
+              else:raise AssertionError(("negative mutation accepted",i))
+          cold=(root/"cold-source.log").read_text()
+          assert "Build completed successfully" in cold and "error:" not in cold and "sorryAx" not in cold
+          audit((root/"source-axioms.log").read_text(),["originalSource48Fock_real_column_to_complex","originalSource48_complexify_commutator","originalSource48Fock_real_commutator_column_to_complex"])
+          audit((root/"consumer.log").read_text(),["originalSource48Fock_real_column_to_complex_consumer","originalSource48_complexify_commutator_consumer","originalSource48Fock_real_commutator_column_to_complex_consumer"])
+          print("BFSS_W0C2B0N_R1_ORIGINAL_SOURCE48_3_SOURCE_3_CONSUMER_3_CONTROLS_SIX_MUTANTS_STRICT_GREEN")
+          PY
+      - name: Preserve original Source48 strict proof and diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-m4-w0c2b0n-r1-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-m4-w0c2b0n-r1/
+          if-no-files-found: warn
+          retention-days: 14
