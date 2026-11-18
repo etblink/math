@@ -1,0 +1,80 @@
+{
+  "schema": "SM-P0N1_JUNO_SEPARATE_PREPRINT_SOURCE/0.1",
+  "audit_as_of": "2026-11-18",
+  "record_id": "juno_dm2_21_207d_2026_preprint",
+  "status": "SOURCE_VERIFIED_PREPRINT_RESEARCH_INTAKE_NOT_ACCEPTED_SM_D0",
+  "measurement_origin": "JUNO Collaboration; not a BFSS/NFC model prediction",
+  "source": {
+    "title": "Measurement of Neutrino Oscillation Parameters at JUNO and Indication of the Neutrino Mass Ordering",
+    "authors": "The JUNO Collaboration",
+    "url": "https://arxiv.org/abs/2609.37895",
+    "submitted_on": "2026-09-29",
+    "publication_status": "collaboration_preprint_at_audit",
+    "predecessor": {
+      "record_id": "juno_dm2_21_2026",
+      "url": "https://doi.org/10.1038/s41586-026-10538-z",
+      "status": "frozen_peer_reviewed_prior_analysis"
+    }
+  },
+  "analyzed_live_days": "207.2",
+  "inverse_beta_decay_candidates": 8294,
+  "baseline_km": "52.5",
+  "analyzed_data_dates": {
+    "start": "2025-08-30",
+    "end": "2026-05-18"
+  },
+  "parameters": [
+    {
+      "id": "juno_dm2_21_207d_2026_preprint",
+      "definition": "m2_sq - m1_sq",
+      "value": "7.388",
+      "error_minus": "0.078",
+      "error_plus": "0.078",
+      "scale": "1e-5",
+      "unit": "eV^2",
+      "quantity_role": "observed_fit_result",
+      "not_a_candidate_model_prediction": true
+    },
+    {
+      "id": "juno_sin2theta12_207d_2026_preprint",
+      "value": "0.3036",
+      "error_minus": "0.0064",
+      "error_plus": "0.0064",
+      "unit": "dimensionless",
+      "quantity_role": "observed_fit_result",
+      "not_a_candidate_model_prediction": true
+    }
+  ],
+  "mass_ordering_interpretation": {
+    "normal_ordering_indication_is_conditional": true,
+    "external_constraints_used": [
+      "Daya Bay to select physically compatible atmospheric splitting minima",
+      "long-baseline accelerator constraints in ordering preference analysis"
+    ],
+    "significance_from_combined_constraints": ">=2.1 sigma one-sided, as claimed in preprint",
+    "statistical_claim_standalone_JUNO_only": false
+  },
+  "independence_guard": {
+    "overlaps_59_day_first_JUNO_sample": true,
+    "treat_as_independent_likelihood_factor": false,
+    "full_joint_covariance": "NOT_IMPORTED_OR_INDEPENDENTLY_VERIFIED",
+    "experiment_likelihood": "NOT_IMPORTED_OR_RECONSTRUCTED",
+    "two_parameter_independence_assumed": false,
+    "gaussianity_assumed": false
+  },
+  "provenance_firewall": {
+    "frozen_SM_D0_was_modified": false,
+    "qualified_SM_P0N0_was_modified": false,
+    "reviewed_evidence_version_only": true,
+    "qualified_model_derived_predictions": 0,
+    "BFSS_status": "MISSING_PHYSICAL_MAP",
+    "NFC_status": "MISSING_PHYSICAL_MAP",
+    "full_physical_SM_D1": "PROSPECTIVE_UNSTAGED"
+  },
+  "restrictions": [
+    "Do not infer BFSS or NFC evidence from the existence of a new fit.",
+    "Do not treat 59.1 and 207.2 day measurements as independent samples.",
+    "Do not assign candidate-specific p-values or a likelihood ratio without a sourced model prediction and fit methodology.",
+    "Do not promote the preprint as peer-reviewed or silently update a frozen historical value."
+  ]
+}
