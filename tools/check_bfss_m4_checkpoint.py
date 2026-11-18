@@ -108,7 +108,8 @@ def check_checkpoint(root: Path, s: dict):
                     and blob(root/a['evidence_job_log']) == a['evidence_job_log_blob'],
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
-        expected_reports = (1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3','P3-M4-W0B1','P3-M4-W0H0','P3-M4-W0H1A'} else
+        expected_reports = (4 if a['gate']=='P3-M4-W0C2B1' else
+                             1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3','P3-M4-W0B1','P3-M4-W0H0','P3-M4-W0H1A'} else
                             3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A','P3-M4-W0B2B','P3-M4-W0C0','P3-M4-W0C2A','P3-M4-W0C2B0','P3-M4-W0C2B0N'} else 2)
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
@@ -4869,8 +4870,9 @@ def check_checkpoint(root: Path, s: dict):
     if a['gate']=='P3-M4-W0C2B1':
         # First source-exact original Fock noncommutative Jacobi/covariance
         # microgate, under explicit generic generator covariance hypotheses.
-        require(a.get('attempt')=='R2' and a.get('status')=='PENDING_STRICT_CI'
-                and a.get('qualification') is False
+        require(a.get('attempt')=='R2'
+                and a.get('status') in {'PENDING_STRICT_CI','GREEN_QUALIFIED'}
+                and a.get('qualification') == (a['status']=='GREEN_QUALIFIED')
                 and a.get('first_atom')=='ORIGINAL_FOCK_NONCOMMUTATIVE_JACOBI_AND_CONDITIONAL_COMPLEX_COEFFICIENT_COVARIANCE_CLOSURE'
                 and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B1OriginalFockJacobiCovarianceActionR2.lean'
                 and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B1OriginalFockJacobiCovarianceIndependentConsumerR2.lean'
@@ -4885,14 +4887,21 @@ def check_checkpoint(root: Path, s: dict):
                 and a.get('independent_controls')==4
                 and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
                 and a.get('accepted_predecessor_run')==44260119108
-                and s['last_qualified']['gate']=='P3-M4-W0C2B0N'
-                and s['last_qualified']['attempt']=='R1'
-                and s['last_qualified']['run_id']==44260119108
-                and s['last_qualified']['status']=='GREEN_QUALIFIED'
-                and len(s['accepted_anchors'])==26
-                and s['accepted_anchors'][-1]==s['last_qualified'],
+                and ((s['last_qualified']['gate']=='P3-M4-W0C2B0N'
+                       and s['last_qualified']['attempt']=='R1'
+                       and s['last_qualified']['run_id']==44260119108
+                       and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                       and len(s['accepted_anchors'])==26
+                       and s['accepted_anchors'][-1]==s['last_qualified'])
+                     if a['status']=='PENDING_STRICT_CI'
+                     else (s['last_qualified']==a
+                           and s['accepted_anchors'][-1]==a
+                           and len(s['accepted_anchors'])==27
+                           and s['accepted_anchors'][-2]['gate']=='P3-M4-W0C2B0N'
+                           and s['accepted_anchors'][-2]['run_id']==44260119108)),
                 'new B1 original Fock Jacobi covariance pre-gate contract or 26 accepted anchors drift')
-        n=s['last_qualified']
+        n=(s['last_qualified'] if a['status']=='PENDING_STRICT_CI'
+           else s['accepted_anchors'][-2])
         require(n.get('source_blob')=='c5841055363a6eef713f35e568409dd2fa2b6c9e'
                 and n.get('consumer_blob')=='3773f069d3da87c7c899596817f02efec639fbfa'
                 and n.get('workflow_blob')=='d431d74251ba5826baf312534fd6578424306643'
@@ -4977,6 +4986,86 @@ def check_checkpoint(root: Path, s: dict):
                 and 'originalSource48K_lieDefect' not in src
                 and 'maxRecDepth' not in src and 'maxHeartbeats' not in src,
                 'W0C2B1 changed original operator carrier Jacobi or conditional closure contract')
+        if a['status']=='GREEN_QUALIFIED':
+            import zipfile
+            require(a.get('run_id')==44267283653
+                    and a.get('job_id')==134674838882
+                    and a.get('tested_sha')=='df89d1f32ddbdb830cfc697007daac90564c0cfc'
+                    and a.get('artifact_id')==14410837798
+                    and a.get('artifact_sha256')=='3273d69f082a57bd6d6bfa83df7536ae118e9eb35963452565dd5a359d69a340'
+                    and a.get('strict_outcome')=='success'
+                    and a.get('verdict')=='GREEN'
+                    and a.get('source_reports')==a.get('consumer_reports')==4
+                    and a.get('auditor_negative_tests')==6
+                    and a.get('cold_build_jobs')==8965
+                    and a.get('preservation_run')==a.get('evidence_preservation_run')==44269104447
+                    and a.get('preservation_commit')=='f005b691f35393ca725885e0777a2edbf5759d8f'
+                    and a.get('receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B1_R2_GREEN_44267283653_ACCEPTANCE_2026_11_18.md'
+                    and blob(root/a['receipt'])=='e7edc3b35415ac495ae624a37f99927517d1f9d2'
+                    and a.get('strict_marker')=='BFSS_W0C2B1_R2_ORIGINAL_FOCK_JACOBI_4_SOURCE_4_CONSUMER_4_CONTROLS_SIX_MUTANTS_STRICT_GREEN',
+                    'W0C2B1 R2 exact original strict GREEN or acceptance receipt drift')
+            for kind,expected in (
+                ('evidence_archive','b79401089d48f219ec329d8b98690d9022cd4e7b'),
+                ('evidence_job_log','03e208ff823cdca8f881f879621dc338496334f9'),
+                ('evidence_manifest','dd64bcd5177d86d5f5d672a3ab4b8aa3f0a07357'),
+            ):
+                require(blob(root/a[kind])==expected,
+                        'W0C2B1 original GREEN archived provider bytes changed '+kind)
+            raw=(root/a['evidence_archive']).read_bytes()
+            require(len(raw)==4160 and hashlib.sha256(raw).hexdigest()==a['artifact_sha256'],
+                    'W0C2B1 provider original ZIP SHA256/byte length drift')
+            manifest=json.loads((root/a['evidence_manifest']).read_text())
+            require(manifest['strict_run']==44267283653
+                    and manifest['job_id']==134674838882
+                    and manifest['tested_sha']==a['tested_sha']
+                    and manifest['artifact_id']==14410837798
+                    and manifest['original_zip']['sha256']==a['artifact_sha256']
+                    and manifest['original_zip']['size']==4160
+                    and manifest['original_job_log']['size']==93275
+                    and manifest['original_job_log']['sha256']=='f8ce95200fae914f7ed1754547e954244b320a079abb70ad60d9b3e83e234e56'
+                    and manifest['source_reports']==manifest['consumer_reports']==4
+                    and manifest['original_fock_controls']==4
+                    and manifest['negative_auditor_mutants']==6
+                    and manifest['cold_build_jobs']==8965
+                    and manifest['source_blob']==a['source_blob']
+                    and manifest['consumer_blob']==a['consumer_blob']
+                    and manifest['workflow_blob']==a['workflow_blob']
+                    and manifest['strict_marker']==a['strict_marker']
+                    and manifest['accepted_predecessor_run']==44260119108
+                    and manifest['preserved_original_R1_native_red_run']==44263755514
+                    and manifest['preserved_original_R1_native_red_preservation_run']==44266245618,
+                    'W0C2B1 exact original provider GREEN manifest metadata drift')
+            with zipfile.ZipFile(root/a['evidence_archive']) as z:
+                names={'auditor.log','cold-source.log','consumer.log','preflight.log',
+                       'source-axioms.log','tested-commit.txt'}
+                require(z.testzip() is None and set(z.namelist())==names
+                        and z.read('tested-commit.txt').decode().strip()==a['tested_sha']
+                        and 'Build completed successfully (8965 jobs)' in z.read('cold-source.log').decode()
+                        and a['strict_marker'] in z.read('auditor.log').decode(),
+                        'W0C2B1 accepted original proof ZIP members corrupt or incomplete')
+                members=manifest['original_zip']['members']
+                require(len(members)==6 and {m['name'] for m in members}==names,
+                        'W0C2B1 exact provider ZIP member inventory mismatch')
+                for member in members:
+                    body=z.read(member['name'])
+                    require(len(body)==member['size']
+                            and hashlib.sha256(body).hexdigest()==member['sha256']
+                            and format(z.getinfo(member['name']).CRC,'08x')==member['crc32'],
+                            'W0C2B1 original provider member hash or CRC drift '+member['name'])
+                for name in ('source-axioms.log','consumer.log'):
+                    report=z.read(name).decode()
+                    require('sorryAx' not in report and 'error:' not in report
+                            and report.count('depends on axioms:')==4,
+                            'W0C2B1 original accepted axiom root reports changed')
+            qualified=s.get('w0c2b1_r2_qualified',{})
+            require(qualified.get('strict_run')==44267283653
+                    and qualified.get('preservation_run')==44269104447
+                    and qualified.get('accepted_anchors_after')==27
+                    and qualified.get('source_blob')==a['source_blob']
+                    and qualified.get('evidence_archive_blob')==a['evidence_archive_blob']
+                    and qualified.get('first_native_red_run')==44263755514
+                    and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
+                    'W0C2B1 accepted original Fock Jacobi/conditional closure premature physics claim')
         require(s['next_planned']['gate']=='P3-M4-W0C2B2'
                 and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
                 and s['next_planned']['source_staged'] is False
