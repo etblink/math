@@ -1,0 +1,151 @@
+name: SM-D1-SCC3B1 R1 original independent Python strict GREEN preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/sm-d1-scc3b1-r1-original-green-preservation.yml
+permissions:
+  actions: read
+  contents: write
+jobs:
+  archive-original-compatibility-green:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact tested source and full accepted Git history
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Verify original tested Python source SCC0 and frozen BFSS anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse a32b94ed2356cc34cc249b2f0bf0478394d5fa69:research/standard-model/tools/smd1_scc3b1.py)" = f395234389956eff23512055f23e659066869eb9
+          test "$(git rev-parse a32b94ed2356cc34cc249b2f0bf0478394d5fa69:research/standard-model/tests/test_smd1_scc3b1.py)" = b4903d31f2268f244f90b80c9ebe120e06ec932c
+          test "$(git rev-parse a32b94ed2356cc34cc249b2f0bf0478394d5fa69:.github/workflows/sm-d1-scc3b1-decision-strict.yml)" = 75697b0d0cf9105f73e7db437cced59a0fcc3bda
+          test "$(git rev-parse HEAD:research/standard-model/tools/smd1_scc3b1.py)" = f395234389956eff23512055f23e659066869eb9
+          test "$(git rev-parse HEAD:research/standard-model/tests/test_smd1_scc3b1.py)" = b4903d31f2268f244f90b80c9ebe120e06ec932c
+          test "$(git rev-parse HEAD:research/standard-model/tools/smd1_scc0.py)" = 95569dffd88af133df3dd56d23e1f61ca8c4a207
+          test "$(git rev-parse HEAD:research/standard-model/tests/test_smd1_scc0.py)" = 2a41d3592179c1fd205518f912ae365ba8f59f8f
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean)" = 8417daf98449b51d45b18951bd389cb3bd777405
+          test "$(git rev-parse HEAD:research/standard-model/evidence/SMD1_SCC3B0_R2_44414707214_ORIGINAL_STRICT_GREEN_evidence.zip)" = 0ed52e9e9aed7c98a5d1acefc776facacfc4517d
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMY0OneFamilyAnomalyLedger.lean)" = 481a984b5ba7d2d7df41297d162ab1d608646d6e
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          sm=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())
+          bf=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          assert sm['last_qualified_methodology']['gate']=='SM-D1-SCC0'
+          assert sm['last_qualified_formal_methodology']['gate']=='SM-D1-SCC3B0'
+          assert sm['last_qualified_formal_methodology']['independent_preservation_run']==44415834582
+          assert sm['last_qualified']['gate']=='SM-Y0'
+          assert sm['last_qualified_empirical']['gate']=='SM-D0'
+          assert any(x['id']=='SM-D1' and x['status']=='PROSPECTIVE_UNSTAGED' for x in sm['upcoming'])
+          assert len(bf['accepted_anchors'])==27
+          assert (bf['active']['gate'],bf['active']['status'],bf['active']['qualification'])==('P3-M4-W0C2B2','BLOCKED',False)
+          assert not list(Path('research/standard-model/evidence').glob('SMD1_SCC3B1_R1_44416698450_*'))
+          print('SM_D1_SCC3B1_R1_ORIGINAL_SCC0_SCC3B0_27_BFSS_FROZEN_SOURCE_PREFLIGHT_PASS')
+          PY
+      - name: Authenticate original R1 GREEN ZIP complete test logs and checksums
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,re,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/etblink/math'
+          run=44416698450;job=135198782235;artifact=14480091397
+          tested='a32b94ed2356cc34cc249b2f0bf0478394d5fa69'
+          size=2334
+          digest='b5a448bc43c17edb38c5b9c3a9539e5411d75eac4bfcee8920b3802a48380d5f'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],
+                   'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def api(path):
+              with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers),timeout=60) as r:return json.load(r)
+          rr=api(f'/actions/runs/{run}')
+          jj=api(f'/actions/jobs/{job}')
+          aa=api(f'/actions/artifacts/{artifact}')
+          assert (rr['head_sha'],rr['status'],rr['conclusion'],rr['run_attempt'])==(tested,'completed','success',1)
+          assert (jj['id'],jj['run_id'],jj['conclusion'])==(job,run,'success')
+          for key in ('Checkout exact research','Verify original source',
+                      'Run original SCC0 regression','Run separate adversarial',
+                      'Preserve original exact'):
+              assert any(s['name'].startswith(key) and s['conclusion']=='success' for s in jj['steps']),key
+          assert (aa['id'],aa['size_in_bytes'],aa['digest'])==(artifact,size,'sha256:'+digest)
+          assert (aa['workflow_run']['id'],aa['workflow_run']['head_sha'])==(run,tested)
+          assert aa['name']=='sm-d1-scc3b1-original-independent-python-compatibility'
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def download(path):
+              req=urllib.request.Request(base+path,headers=headers)
+              try:
+                  resp=urllib.request.build_opener(NoRedirect).open(req,timeout=60)
+              except urllib.error.HTTPError as e:
+                  assert e.code==302,e
+                  target=e.headers['Location']
+                  assert target.startswith('https://')
+                  with urllib.request.urlopen(target,timeout=90) as r:return r.read()
+              else:
+                  with resp:return resp.read()
+          raw=download(f'/actions/artifacts/{artifact}/zip')
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None
+              names=set(z.namelist())
+              required={'tested-commit.txt','preflight.log','python-version.log',
+                        'scc0-regression.log','independent-consumer.log','negative-auditor.log',
+                        'completion-auditor.log'}
+              assert required<=names,names
+              assert z.read('tested-commit.txt').decode().strip()==tested
+              assert 'SM_D1_SCC3B1_15_INDEPENDENT_TESTS_SOURCE_EXACT_SCC0_SCC3B0_SM_DATA_27_BFSS_ANCHORS_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+              legacy=z.read('scc0-regression.log').decode()
+              new=z.read('independent-consumer.log').decode()
+              neg=z.read('negative-auditor.log').decode()
+              done=z.read('completion-auditor.log').decode()
+              assert 'Ran 24 tests' in legacy and 'OK' in legacy and 'FAILED' not in legacy and 'ERROR' not in legacy
+              assert 'Ran 15 tests' in new and 'OK' in new and 'FAILED' not in new and 'ERROR' not in new
+              assert len(re.findall(r'(?m)^test_',new))==15
+              assert 'SM_D1_SCC3B1_7_NEGATIVE_CONTROLS_EXPECTED_REJECTIONS_AND_MISSING_MAP_PASS' in neg
+              assert 'SM_D1_SCC3B1_15_INDEPENDENT_TESTS_SCC0_REGRESSION_7_NEGATIVE_CONTROLS_STRICT_GREEN' in done
+              members=[{'name':n,'size':len(z.read(n)),
+                        'sha256':hashlib.sha256(z.read(n)).hexdigest(),
+                        'crc32':format(z.getinfo(n).CRC,'08x')} for n in sorted(names)]
+          full=download(f'/actions/jobs/{job}/logs')
+          assert len(full)>25000,len(full)
+          assert b'SM_D1_SCC3B1_15_INDEPENDENT_TESTS_SCC0_REGRESSION_7_NEGATIVE_CONTROLS_STRICT_GREEN' in full
+          assert b'Ran 24 tests' in full and b'Ran 15 tests' in full
+          out=Path('research/standard-model/evidence');out.mkdir(parents=True,exist_ok=True)
+          zp=out/'SMD1_SCC3B1_R1_44416698450_ORIGINAL_STRICT_GREEN_evidence.zip'
+          lp=out/'SMD1_SCC3B1_R1_44416698450_ORIGINAL_complete_job.log'
+          mp=out/'SMD1_SCC3B1_R1_44416698450_ORIGINAL_STRICT_GREEN_evidence_manifest.json'
+          for p in (zp,lp,mp):assert not p.exists(),p
+          zp.write_bytes(raw);lp.write_bytes(full)
+          mp.write_text(json.dumps({
+              'gate':'SM-D1-SCC3B1','attempt':'R1',
+              'status':'STRICT_INDEPENDENT_PYTHON_COMPATIBILITY_GREEN_NOT_LEAN_OR_PHYSICAL',
+              'original_run':run,'original_job':job,'original_artifact':artifact,'tested_commit':tested,
+              'original_zip':{'path':str(zp),'size':size,'sha256':digest,'members':members},
+              'complete_job_log':{'path':str(lp),'size':len(full),'sha256':hashlib.sha256(full).hexdigest()},
+              'original_tool_blob':'f395234389956eff23512055f23e659066869eb9',
+              'original_consumer_blob':'b4903d31f2268f244f90b80c9ebe120e06ec932c',
+              'original_workflow_blob':'75697b0d0cf9105f73e7db437cced59a0fcc3bda',
+              'SCC0_accepted_tool_blob':'95569dffd88af133df3dd56d23e1f61ca8c4a207',
+              'SCC0_regression_tests':24,'independent_adversarial_tests':15,'negative_controls':7,
+              'original_27_BFSS_anchors_unchanged':True,
+              'claim_ceiling':'Pure Python exact rational marginal typed decision logic, no Lean theorem, no physical prediction or experimental likelihood.'
+          },sort_keys=True,indent=2)+'\n')
+          print('SM_D1_SCC3B1_R1_ORIGINAL_GREEN_24_REGRESSION_15_ADVERSARIAL_7_NEGATIVE_ZIP_JOB_SHA_CRC_VERIFIED')
+          PY
+      - name: Commit original R1 GREEN provider ZIP job and checksum manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- research/standard-model/evidence/SMD1_SCC3B1_R1_44416698450_ORIGINAL_*
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m 'SM-D1-SCC3B1 R1 archive original Python compatibility strict GREEN'
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
