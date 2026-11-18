@@ -1,0 +1,446 @@
+﻿2026-11-18T23:19:45.6243780Z Current runner version: '2.338.2'
+2026-11-18T23:19:45.6264377Z ##[group]Runner Image Provisioner
+2026-11-18T23:19:45.6265075Z Hosted Compute Agent
+2026-11-18T23:19:45.6265471Z Version: 20261103.629
+2026-11-18T23:19:45.6265971Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-18T23:19:45.6266497Z Build Date: 2026-11-03T17:26:59Z
+2026-11-18T23:19:45.6267198Z Worker ID: {54dea22c-a8ba-4fd5-8fbf-137db6f72ec4}
+2026-11-18T23:19:45.6267725Z Region: centralus
+2026-11-18T23:19:45.6268129Z Cloud: Azure
+2026-11-18T23:19:45.6268753Z ##[endgroup]
+2026-11-18T23:19:45.6269888Z ##[group]Operating System
+2026-11-18T23:19:45.6270314Z Ubuntu
+2026-11-18T23:19:45.6270751Z 26.04.1
+2026-11-18T23:19:45.6271128Z LTS
+2026-11-18T23:19:45.6271494Z ##[endgroup]
+2026-11-18T23:19:45.6271865Z ##[group]Runner Image
+2026-11-18T23:19:45.6272262Z Image: ubuntu-26.04
+2026-11-18T23:19:45.6272669Z Version: 20261111.196.1
+2026-11-18T23:19:45.6273578Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-18T23:19:45.6274662Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-18T23:19:45.6275313Z ##[endgroup]
+2026-11-18T23:19:45.6276159Z ##[group]GITHUB_TOKEN Permissions
+2026-11-18T23:19:45.6277915Z Contents: read
+2026-11-18T23:19:45.6278576Z Metadata: read
+2026-11-18T23:19:45.6278969Z ##[endgroup]
+2026-11-18T23:19:45.6280548Z Secret source: Actions
+2026-11-18T23:19:45.6281241Z Cache mode: write
+2026-11-18T23:19:45.6281948Z Prepare workflow directory
+2026-11-18T23:19:45.6616954Z Prepare all required actions
+2026-11-18T23:19:45.6655359Z Getting action download info
+2026-11-18T23:19:45.9205045Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-18T23:19:46.0160034Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-18T23:19:46.1946012Z Complete job name: source-exact-physical-intake-independent-consumer
+2026-11-18T23:19:46.2536170Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-18T23:19:46.2536931Z with:
+2026-11-18T23:19:46.2537298Z   persist-credentials: false
+2026-11-18T23:19:46.2537744Z   fetch-depth: 2
+2026-11-18T23:19:46.2538113Z   repository: etblink/math
+2026-11-18T23:19:46.2540947Z   token: ***
+2026-11-18T23:19:46.2541371Z   ssh-strict: true
+2026-11-18T23:19:46.2541724Z   ssh-user: git
+2026-11-18T23:19:46.2542053Z   clean: true
+2026-11-18T23:19:46.2542491Z   sparse-checkout-cone-mode: true
+2026-11-18T23:19:46.2542920Z   fetch-tags: false
+2026-11-18T23:19:46.2543303Z   show-progress: true
+2026-11-18T23:19:46.2543667Z   lfs: false
+2026-11-18T23:19:46.2543999Z   submodules: false
+2026-11-18T23:19:46.2544399Z   set-safe-directory: true
+2026-11-18T23:19:46.2544812Z   allow-unsafe-pr-checkout: false
+2026-11-18T23:19:46.2545372Z ##[endgroup]
+2026-11-18T23:19:46.4831098Z Syncing repository: etblink/math
+2026-11-18T23:19:46.4832684Z ##[group]Getting Git version info
+2026-11-18T23:19:46.4833300Z Working directory is '/home/runner/work/math/math'
+2026-11-18T23:19:46.4834080Z [command]/usr/bin/git version
+2026-11-18T23:19:46.4834515Z git version 2.56.1
+2026-11-18T23:19:46.4843994Z ##[endgroup]
+2026-11-18T23:19:46.4855280Z Temporarily overriding HOME='/home/runner/work/_temp/4e34fe37-1165-4056-93e4-a0b2c8e7fef6' before making global git config changes
+2026-11-18T23:19:46.4856874Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-18T23:19:46.4860753Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-18T23:19:46.4917503Z Deleting the contents of '/home/runner/work/math/math'
+2026-11-18T23:19:46.4921058Z ##[group]Initializing the repository
+2026-11-18T23:19:46.4925726Z [command]/usr/bin/git init /home/runner/work/math/math
+2026-11-18T23:19:46.5022160Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-18T23:19:46.5024108Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-18T23:19:46.5025340Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-18T23:19:46.5026306Z hint: call:
+2026-11-18T23:19:46.5026999Z hint:
+2026-11-18T23:19:46.5027654Z hint: 	git config --global init.defaultBranch <name>
+2026-11-18T23:19:46.5028766Z hint:
+2026-11-18T23:19:46.5029567Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-18T23:19:46.5030627Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-18T23:19:46.5031459Z hint:
+2026-11-18T23:19:46.5031932Z hint: 	git branch -m <name>
+2026-11-18T23:19:46.5032455Z hint:
+2026-11-18T23:19:46.5033093Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-18T23:19:46.5034878Z Initialized empty Git repository in /home/runner/work/math/math/.git/
+2026-11-18T23:19:46.5045206Z [command]/usr/bin/git remote add origin https://github.com/etblink/math
+2026-11-18T23:19:46.5118709Z ##[endgroup]
+2026-11-18T23:19:46.5119399Z ##[group]Disabling automatic garbage collection
+2026-11-18T23:19:46.5122351Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-18T23:19:46.5149181Z ##[endgroup]
+2026-11-18T23:19:46.5150014Z ##[group]Setting up auth
+2026-11-18T23:19:46.5155233Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-18T23:19:46.5179922Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-18T23:19:46.5514991Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-18T23:19:46.5534708Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-18T23:19:46.5718013Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-18T23:19:46.5741109Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-18T23:19:46.5911823Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-18T23:19:46.5946526Z ##[endgroup]
+2026-11-18T23:19:46.5947467Z ##[group]Fetching the repository
+2026-11-18T23:19:46.5954066Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=2 origin +83bcb3956b6f5c4bf38a1ebe442f8870293ba2d6:refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-18T23:20:07.7961281Z From https://github.com/etblink/math
+2026-11-18T23:20:07.7966800Z  * [new ref]             83bcb3956b6f5c4bf38a1ebe442f8870293ba2d6 -> origin/integration/bfss-unified-research-20261108
+2026-11-18T23:20:07.7969731Z ##[endgroup]
+2026-11-18T23:20:07.7970668Z ##[group]Determining the checkout info
+2026-11-18T23:20:07.7971460Z ##[endgroup]
+2026-11-18T23:20:07.7975071Z [command]/usr/bin/git sparse-checkout disable
+2026-11-18T23:20:07.8029505Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-18T23:20:07.8055818Z ##[group]Checking out the ref
+2026-11-18T23:20:07.8059017Z [command]/usr/bin/git checkout --progress --force -B integration/bfss-unified-research-20261108 refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-18T23:20:08.9717963Z Updating files:  18% (32564/179698)
+2026-11-18T23:20:09.0343559Z Updating files:  19% (34143/179698)
+2026-11-18T23:20:09.0878659Z Updating files:  20% (35940/179698)
+2026-11-18T23:20:09.1387981Z Updating files:  21% (37737/179698)
+2026-11-18T23:20:09.2029542Z Updating files:  22% (39534/179698)
+2026-11-18T23:20:09.2709587Z Updating files:  23% (41331/179698)
+2026-11-18T23:20:09.3343491Z Updating files:  24% (43128/179698)
+2026-11-18T23:20:09.3912901Z Updating files:  25% (44925/179698)
+2026-11-18T23:20:09.4412749Z Updating files:  26% (46722/179698)
+2026-11-18T23:20:09.5139499Z Updating files:  27% (48519/179698)
+2026-11-18T23:20:09.5709245Z Updating files:  28% (50316/179698)
+2026-11-18T23:20:09.6448592Z Updating files:  29% (52113/179698)
+2026-11-18T23:20:09.9029760Z Updating files:  30% (53910/179698)
+2026-11-18T23:20:09.9693800Z Updating files:  30% (54864/179698)
+2026-11-18T23:20:10.0721397Z Updating files:  31% (55707/179698)
+2026-11-18T23:20:10.3611987Z Updating files:  32% (57504/179698)
+2026-11-18T23:20:10.6699794Z Updating files:  33% (59301/179698)
+2026-11-18T23:20:10.7533785Z Updating files:  34% (61098/179698)
+2026-11-18T23:20:10.8305992Z Updating files:  35% (62895/179698)
+2026-11-18T23:20:10.8914318Z Updating files:  36% (64692/179698)
+2026-11-18T23:20:10.9026825Z Updating files:  37% (66489/179698)
+2026-11-18T23:20:10.9546907Z Updating files:  37% (66852/179698)
+2026-11-18T23:20:11.0430158Z Updating files:  38% (68286/179698)
+2026-11-18T23:20:11.1091124Z Updating files:  39% (70083/179698)
+2026-11-18T23:20:11.1913390Z Updating files:  40% (71880/179698)
+2026-11-18T23:20:11.2746321Z Updating files:  41% (73677/179698)
+2026-11-18T23:20:11.3519686Z Updating files:  42% (75474/179698)
+2026-11-18T23:20:11.8043780Z Updating files:  43% (77271/179698)
+2026-11-18T23:20:11.8891483Z Updating files:  44% (79068/179698)
+2026-11-18T23:20:11.9026151Z Updating files:  45% (80865/179698)
+2026-11-18T23:20:11.9782000Z Updating files:  45% (81013/179698)
+2026-11-18T23:20:12.0724833Z Updating files:  46% (82662/179698)
+2026-11-18T23:20:12.1710050Z Updating files:  47% (84459/179698)
+2026-11-18T23:20:12.2943864Z Updating files:  48% (86256/179698)
+2026-11-18T23:20:12.3928107Z Updating files:  49% (88053/179698)
+2026-11-18T23:20:12.4805455Z Updating files:  50% (89849/179698)
+2026-11-18T23:20:12.5438137Z Updating files:  51% (91646/179698)
+2026-11-18T23:20:12.6080120Z Updating files:  52% (93443/179698)
+2026-11-18T23:20:12.6660285Z Updating files:  53% (95240/179698)
+2026-11-18T23:20:12.8181005Z Updating files:  54% (97037/179698)
+2026-11-18T23:20:12.8819695Z Updating files:  55% (98834/179698)
+2026-11-18T23:20:12.9026525Z Updating files:  56% (100631/179698)
+2026-11-18T23:20:12.9619886Z Updating files:  56% (101085/179698)
+2026-11-18T23:20:13.0188104Z Updating files:  57% (102428/179698)
+2026-11-18T23:20:13.0819071Z Updating files:  58% (104225/179698)
+2026-11-18T23:20:13.1668582Z Updating files:  59% (106022/179698)
+2026-11-18T23:20:13.2390079Z Updating files:  60% (107819/179698)
+2026-11-18T23:20:13.2908581Z Updating files:  61% (109616/179698)
+2026-11-18T23:20:13.3376720Z Updating files:  62% (111413/179698)
+2026-11-18T23:20:13.8283321Z Updating files:  63% (113210/179698)
+2026-11-18T23:20:13.8819241Z Updating files:  64% (115007/179698)
+2026-11-18T23:20:13.9026332Z Updating files:  65% (116804/179698)
+2026-11-18T23:20:13.9390920Z Updating files:  65% (117519/179698)
+2026-11-18T23:20:14.0179170Z Updating files:  66% (118601/179698)
+2026-11-18T23:20:14.0687790Z Updating files:  67% (120398/179698)
+2026-11-18T23:20:14.1256667Z Updating files:  68% (122195/179698)
+2026-11-18T23:20:14.2009184Z Updating files:  69% (123992/179698)
+2026-11-18T23:20:14.2623663Z Updating files:  70% (125789/179698)
+2026-11-18T23:20:14.3206110Z Updating files:  71% (127586/179698)
+2026-11-18T23:20:14.3717564Z Updating files:  72% (129383/179698)
+2026-11-18T23:20:14.4237983Z Updating files:  73% (131180/179698)
+2026-11-18T23:20:14.4729381Z Updating files:  74% (132977/179698)
+2026-11-18T23:20:14.5690978Z Updating files:  75% (134774/179698)
+2026-11-18T23:20:14.6154344Z Updating files:  76% (136571/179698)
+2026-11-18T23:20:14.6610662Z Updating files:  77% (138368/179698)
+2026-11-18T23:20:14.7083332Z Updating files:  78% (140165/179698)
+2026-11-18T23:20:14.7633373Z Updating files:  79% (141962/179698)
+2026-11-18T23:20:14.8323840Z Updating files:  80% (143759/179698)
+2026-11-18T23:20:14.8874596Z Updating files:  81% (145556/179698)
+2026-11-18T23:20:14.9026290Z Updating files:  82% (147353/179698)
+2026-11-18T23:20:14.9513166Z Updating files:  82% (147695/179698)
+2026-11-18T23:20:15.0185753Z Updating files:  83% (149150/179698)
+2026-11-18T23:20:15.0755529Z Updating files:  84% (150947/179698)
+2026-11-18T23:20:15.1384070Z Updating files:  85% (152744/179698)
+2026-11-18T23:20:15.4127772Z Updating files:  86% (154541/179698)
+2026-11-18T23:20:15.4797578Z Updating files:  87% (156338/179698)
+2026-11-18T23:20:15.5531432Z Updating files:  88% (158135/179698)
+2026-11-18T23:20:15.6340214Z Updating files:  89% (159932/179698)
+2026-11-18T23:20:15.7072401Z Updating files:  90% (161729/179698)
+2026-11-18T23:20:15.7951392Z Updating files:  91% (163526/179698)
+2026-11-18T23:20:15.8827366Z Updating files:  92% (165323/179698)
+2026-11-18T23:20:15.9036198Z Updating files:  93% (167120/179698)
+2026-11-18T23:20:16.2386427Z Updating files:  93% (167234/179698)
+2026-11-18T23:20:16.7698559Z Updating files:  94% (168917/179698)
+2026-11-18T23:20:16.9036700Z Updating files:  95% (170714/179698)
+2026-11-18T23:20:17.1939200Z Updating files:  95% (171227/179698)
+2026-11-18T23:20:17.6176983Z Updating files:  96% (172511/179698)
+2026-11-18T23:20:17.9038691Z Updating files:  97% (174308/179698)
+2026-11-18T23:20:18.0433385Z Updating files:  97% (175542/179698)
+2026-11-18T23:20:18.7575216Z Updating files:  98% (176105/179698)
+2026-11-18T23:20:18.9026376Z Updating files:  99% (177902/179698)
+2026-11-18T23:20:18.9743657Z Updating files:  99% (178559/179698)
+2026-11-18T23:20:18.9744114Z Updating files: 100% (179698/179698)
+2026-11-18T23:20:18.9745145Z Updating files: 100% (179698/179698), done.
+2026-11-18T23:20:19.1396012Z Switched to a new branch 'integration/bfss-unified-research-20261108'
+2026-11-18T23:20:19.1396644Z branch 'integration/bfss-unified-research-20261108' set up to track 'origin/integration/bfss-unified-research-20261108'.
+2026-11-18T23:20:19.1529834Z ##[endgroup]
+2026-11-18T23:20:19.1557402Z [command]/usr/bin/git log -1 --format=%H
+2026-11-18T23:20:19.1577648Z 83bcb3956b6f5c4bf38a1ebe442f8870293ba2d6
+2026-11-18T23:20:19.1585685Z ##[group]Removing auth
+2026-11-18T23:20:19.1595804Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-18T23:20:19.1625760Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-18T23:20:19.2023422Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-18T23:20:19.2043136Z http.https://github.com/.extraheader
+2026-11-18T23:20:19.2047737Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-18T23:20:19.2176641Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-18T23:20:19.2564996Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-18T23:20:19.2590198Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-18T23:20:19.2976297Z ##[endgroup]
+2026-11-18T23:20:19.3335685Z ##[group]Run set -euo pipefail
+2026-11-18T23:20:19.3336223Z [36;1mset -euo pipefail[0m
+2026-11-18T23:20:19.3336519Z [36;1mmkdir -p "$RUNNER_TEMP/sm-p0n0"[0m
+2026-11-18T23:20:19.3336905Z [36;1mgit rev-parse HEAD | tee "$RUNNER_TEMP/sm-p0n0/tested-commit.txt"[0m
+2026-11-18T23:20:19.3337332Z [36;1mpython3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/sm-p0n0/preflight.log"[0m
+2026-11-18T23:20:19.3337674Z [36;1mimport ast,json,re,subprocess[0m
+2026-11-18T23:20:19.3337964Z [36;1mfrom pathlib import Path[0m
+2026-11-18T23:20:19.3342428Z [36;1mpins={"research/standard-model/tools/sm_p0n0.py":"95192c55e594babe30eecf963debd7acf8a28c59","research/standard-model/tests/test_sm_p0n0.py":"70b7df6ffad8c6c8f8ae2f6a1ddc89f417e375ba","research/standard-model/SM_P0N0_JUNO_MASS_SPLITTING_PHYSICAL_INTERFACE_MICROGATE_2026_11_18.md":"9ec9c09356ce104272a41f19384a8fa5cdd35e97","research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json":"1d391ba994ee23f03c4423b45fbb15e7e42c86f1","research/standard-model/tools/smd1_scc0.py":"95569dffd88af133df3dd56d23e1f61ca8c4a207","research/standard-model/tests/test_smd1_scc0.py":"2a41d3592179c1fd205518f912ae365ba8f59f8f","research/standard-model/tools/smd1_scc3b1.py":"f395234389956eff23512055f23e659066869eb9","research/standard-model/tests/test_smd1_scc3b1.py":"b4903d31f2268f244f90b80c9ebe120e06ec932c","research/standard-model/evidence/SMD1_SCC3B1_R1_44416698450_ORIGINAL_STRICT_GREEN_evidence.zip":"242f749c580794702eaaaf8d89a927b799a316d6","research/standard-model/evidence/SMD1_SCC3B0_R2_44414707214_ORIGINAL_STRICT_GREEN_evidence.zip":"0ed52e9e9aed7c98a5d1acefc776facacfc4517d","research/standard-model/evidence/SMD1_SCC3A_R1_44410857114_ORIGINAL_STRICT_GREEN_evidence.zip":"a37c8350995349051c6623efa1cf532f1429821e","research/standard-model/evidence/SMD1_SCC2_R2_44407657796_ORIGINAL_STRICT_GREEN_evidence.zip":"2f8eb4be633546a7d2ddf1f33d174f6c3900264b","research/standard-model/evidence/SMD1_SCC1_R3_44403273333_ORIGINAL_STRICT_GREEN_evidence.zip":"faf10f95ec2973ad5040be3f6f2ac362dcc1ca10","lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMY0OneFamilyAnomalyLedger.lean":"481a984b5ba7d2d7df41297d162ab1d608646d6e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E2OriginalTargetGammaAction.lean":"7d372392703d0fe69942df9df58b421af6850656"}[0m
+2026-11-18T23:20:19.3346759Z [36;1mfor path,expect in pins.items():[0m
+2026-11-18T23:20:19.3347177Z [36;1m    got=subprocess.check_output(['git','hash-object','--no-filters',path],text=True).strip()[0m
+2026-11-18T23:20:19.3347575Z [36;1m    assert got==expect,(path,got,expect)[0m
+2026-11-18T23:20:19.3347941Z [36;1mcode=Path('research/standard-model/tools/sm_p0n0.py').read_text()[0m
+2026-11-18T23:20:19.3348490Z [36;1mtests=Path('research/standard-model/tests/test_sm_p0n0.py').read_text()[0m
+2026-11-18T23:20:19.3348835Z [36;1mast.parse(code)[0m
+2026-11-18T23:20:19.3349104Z [36;1mast.parse(tests)[0m
+2026-11-18T23:20:19.3349393Z [36;1massert len(re.findall(r'(?m)^    def test_',tests))==20[0m
+2026-11-18T23:20:19.3349833Z [36;1mfor p in ('class FrozenObservation','class MassSquaredSpectrum','class CandidateIntake',[0m
+2026-11-18T23:20:19.3350311Z [36;1m          'def symbolic_delta21','def same_delta_after_common_offset',[0m
+2026-11-18T23:20:19.3350747Z [36;1m          'def load_frozen_first_juno','def candidate_intakes','def intake_checkpoint'):[0m
+2026-11-18T23:20:19.3351132Z [36;1m    assert p in code,p[0m
+2026-11-18T23:20:19.3351403Z [36;1massert 'NO_EXPERIMENTAL_INFERENCE' in code[0m
+2026-11-18T23:20:19.3351714Z [36;1massert 'FIT_INPUT_NOT_PREDICTION' in code[0m
+2026-11-18T23:20:19.3352005Z [36;1massert 'MISSING_PHYSICAL_MAP' in code[0m
+2026-11-18T23:20:19.3352285Z [36;1massert 'NOT_PRESENT_IN_FROZEN_LEDGER' in code[0m
+2026-11-18T23:20:19.3352615Z [36;1massert 'FIRST_JUNO_DOI' in code[0m
+2026-11-18T23:20:19.3352938Z [36;1massert 'https://doi.org/10.1038/s41586-026-10538-z' in code[0m
+2026-11-18T23:20:19.3353499Z [36;1msm=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())[0m
+2026-11-18T23:20:19.3353909Z [36;1mbf=json.loads(Path('BFSS_GATE_STATE.json').read_text())[0m
+2026-11-18T23:20:19.3354220Z [36;1massert sm['last_qualified']['gate']=='SM-Y0'[0m
+2026-11-18T23:20:19.3354579Z [36;1massert sm['last_qualified_empirical']['gate']=='SM-D0'[0m
+2026-11-18T23:20:19.3354925Z [36;1massert sm['last_qualified_methodology']['gate']=='SM-D1-SCC0'[0m
+2026-11-18T23:20:19.3355308Z [36;1massert sm['last_qualified_decision_methodology']['gate']=='SM-D1-SCC3B1'[0m
+2026-11-18T23:20:19.3355795Z [36;1massert sm['last_qualified_decision_methodology']['independent_preservation_run']==44417161740[0m
+2026-11-18T23:20:19.3356231Z [36;1massert sm['last_qualified_formal_methodology']['gate']=='SM-D1-SCC3B0'[0m
+2026-11-18T23:20:19.3356701Z [36;1massert any(x['id']=='SM-D1' and x['status']=='PROSPECTIVE_UNSTAGED' for x in sm['upcoming'])[0m
+2026-11-18T23:20:19.3357135Z [36;1massert len(bf['accepted_anchors'])==27[0m
+2026-11-18T23:20:19.3357552Z [36;1massert (bf['active']['gate'],bf['active']['status'],bf['active']['qualification'])==('P3-M4-W0C2B2','BLOCKED',False)[0m
+2026-11-18T23:20:19.3358126Z [36;1mledger=json.loads(Path('research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json').read_text())[0m
+2026-11-18T23:20:19.3358782Z [36;1massert ledger['schema']=='SM-D0_EVIDENCE_LEDGER/0.1' and ledger['as_of']=='2026-11-18'[0m
+2026-11-18T23:20:19.3359231Z [36;1massert any(x['id']=='juno_dm2_21_2026' for x in ledger['constraints'])[0m
+2026-11-18T23:20:19.3359671Z [36;1mprint('SM_P0N0_20_JUNO_TESTS_SOURCE_EXACT_SM_D0_SCC0_SCC3B1_SCC3B0_27_BFSS_ANCHORS_PREFLIGHT_PASS')[0m
+2026-11-18T23:20:19.3360042Z [36;1m[0m
+2026-11-18T23:20:19.3360254Z [36;1mPY[0m
+2026-11-18T23:20:19.3392752Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-18T23:20:19.3393076Z ##[endgroup]
+2026-11-18T23:20:19.3987738Z 83bcb3956b6f5c4bf38a1ebe442f8870293ba2d6
+2026-11-18T23:20:19.4354909Z SM_P0N0_20_JUNO_TESTS_SOURCE_EXACT_SM_D0_SCC0_SCC3B1_SCC3B0_27_BFSS_ANCHORS_PREFLIGHT_PASS
+2026-11-18T23:20:19.4500556Z ##[group]Run set -euo pipefail
+2026-11-18T23:20:19.4500850Z [36;1mset -euo pipefail[0m
+2026-11-18T23:20:19.4501089Z [36;1mexport PYTHONHASHSEED=0[0m
+2026-11-18T23:20:19.4501425Z [36;1mpython3 --version | tee "$RUNNER_TEMP/sm-p0n0/python-version.log"[0m
+2026-11-18T23:20:19.4502008Z [36;1mpython3 -W error -m unittest discover -s research/standard-model/tests -p test_smd1_scc0.py -v 2>&1 | tee "$RUNNER_TEMP/sm-p0n0/scc0-regression.log"[0m
+2026-11-18T23:20:19.4502735Z [36;1mpython3 -W error -m unittest discover -s research/standard-model/tests -p test_smd1_scc3b1.py -v 2>&1 | tee "$RUNNER_TEMP/sm-p0n0/scc3b1-regression.log"[0m
+2026-11-18T23:20:19.4503463Z [36;1mpython3 -W error -m unittest discover -s research/standard-model/tests -p test_sm_p0n0.py -v 2>&1 | tee "$RUNNER_TEMP/sm-p0n0/physical-intake-consumer.log"[0m
+2026-11-18T23:20:19.4530883Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-18T23:20:19.4531236Z ##[endgroup]
+2026-11-18T23:20:19.5111990Z Python 3.14.4
+2026-11-18T23:20:19.5865568Z test_correlated_juno_marginals_cannot_form_joint (test_smd1_scc0.SMDSCC0IndependentTests.test_correlated_juno_marginals_cannot_form_joint) ... ok
+2026-11-18T23:20:19.5866613Z test_distinct_model_scenario_not_uniform_family_separation (test_smd1_scc0.SMDSCC0IndependentTests.test_distinct_model_scenario_not_uniform_family_separation) ... ok
+2026-11-18T23:20:19.5868620Z test_duplicate_observable_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_duplicate_observable_rejected) ... ok
+2026-11-18T23:20:19.5869424Z test_duplicate_outcome_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_duplicate_outcome_rejected) ... ok
+2026-11-18T23:20:19.5870175Z test_empty_witness_set_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_empty_witness_set_rejected) ... ok
+2026-11-18T23:20:19.5870964Z test_equal_marginals_not_theory_identity (test_smd1_scc0.SMDSCC0IndependentTests.test_equal_marginals_not_theory_identity) ... ok
+2026-11-18T23:20:19.5871940Z test_explicit_joint_witness_is_distinct_from_two_marginals (test_smd1_scc0.SMDSCC0IndependentTests.test_explicit_joint_witness_is_distinct_from_two_marginals) ... ok
+2026-11-18T23:20:19.5872822Z test_marginal_order_irrelevant (test_smd1_scc0.SMDSCC0IndependentTests.test_marginal_order_irrelevant) ... ok
+2026-11-18T23:20:19.5873400Z test_minimal_family_nonunique (test_smd1_scc0.SMDSCC0IndependentTests.test_minimal_family_nonunique) ... ok
+2026-11-18T23:20:19.5874055Z test_minimal_family_requires_two_complementary_witnesses (test_smd1_scc0.SMDSCC0IndependentTests.test_minimal_family_requires_two_complementary_witnesses) ... ok
+2026-11-18T23:20:19.5874747Z test_missing_physical_map_is_not_success (test_smd1_scc0.SMDSCC0IndependentTests.test_missing_physical_map_is_not_success) ... ok
+2026-11-18T23:20:19.5875381Z test_missing_prediction_is_not_equality (test_smd1_scc0.SMDSCC0IndependentTests.test_missing_prediction_is_not_equality) ... ok
+2026-11-18T23:20:19.5876235Z test_negative_weight_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_negative_weight_rejected) ... ok
+2026-11-18T23:20:19.5876819Z test_omitted_observable_cannot_be_inferred (test_smd1_scc0.SMDSCC0IndependentTests.test_omitted_observable_cannot_be_inferred) ... ok
+2026-11-18T23:20:19.5877434Z test_one_witness_separates_exactly (test_smd1_scc0.SMDSCC0IndependentTests.test_one_witness_separates_exactly) ... ok
+2026-11-18T23:20:19.5878087Z test_oscillation_splitting_cannot_fix_absolute_baseline (test_smd1_scc0.SMDSCC0IndependentTests.test_oscillation_splitting_cannot_fix_absolute_baseline) ... ok
+2026-11-18T23:20:19.5878961Z test_outcome_substitution_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_outcome_substitution_rejected) ... ok
+2026-11-18T23:20:19.5879684Z test_smy0_charge_counterfactual_independently_recomputed (test_smd1_scc0.SMDSCC0IndependentTests.test_smy0_charge_counterfactual_independently_recomputed) ... ok
+2026-11-18T23:20:19.5880509Z test_uniformly_separated_finite_families (test_smd1_scc0.SMDSCC0IndependentTests.test_uniformly_separated_finite_families) ... ok
+2026-11-18T23:20:19.5881108Z test_unit_substitution_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_unit_substitution_rejected) ... ok
+2026-11-18T23:20:19.5881685Z test_unnormalized_distribution_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_unnormalized_distribution_rejected) ... ok
+2026-11-18T23:20:19.5882285Z test_unproven_prediction_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_unproven_prediction_rejected) ... ok
+2026-11-18T23:20:19.5882898Z test_wrong_proton_decay_channel_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_wrong_proton_decay_channel_rejected) ... ok
+2026-11-18T23:20:19.5883506Z test_wrong_scenario_key_rejected (test_smd1_scc0.SMDSCC0IndependentTests.test_wrong_scenario_key_rejected) ... ok
+2026-11-18T23:20:19.5883816Z 
+2026-11-18T23:20:19.5883976Z ----------------------------------------------------------------------
+2026-11-18T23:20:19.5884363Z Ran 24 tests in 0.001s
+2026-11-18T23:20:19.5884509Z 
+2026-11-18T23:20:19.5884619Z OK
+2026-11-18T23:20:19.6394082Z test_complete_equal_marginals_are_only_relative_equality (test_smd1_scc3b1.IndependentSCC3B1Tests.test_complete_equal_marginals_are_only_relative_equality) ... ok
+2026-11-18T23:20:19.6395000Z test_constructor_rejects_unvalidated_probability (test_smd1_scc3b1.IndependentSCC3B1Tests.test_constructor_rejects_unvalidated_probability) ... ok
+2026-11-18T23:20:19.6395877Z test_duplicated_and_empty_observables_are_invalid_input (test_smd1_scc3b1.IndependentSCC3B1Tests.test_duplicated_and_empty_observables_are_invalid_input) ... ok
+2026-11-18T23:20:19.6396725Z test_finite_scenarios_all_pairs_require_known_witness (test_smd1_scc3b1.IndependentSCC3B1Tests.test_finite_scenarios_all_pairs_require_known_witness) ... ok
+2026-11-18T23:20:19.6397779Z test_incomplete_pair_blocks_full_family_certificate (test_smd1_scc3b1.IndependentSCC3B1Tests.test_incomplete_pair_blocks_full_family_certificate) ... ok
+2026-11-18T23:20:19.6398798Z test_invalid_outcomes_rejected_as_protocol_error (test_smd1_scc3b1.IndependentSCC3B1Tests.test_invalid_outcomes_rejected_as_protocol_error) ... ok
+2026-11-18T23:20:19.6399595Z test_invalid_unit_does_not_count_as_witness (test_smd1_scc3b1.IndependentSCC3B1Tests.test_invalid_unit_does_not_count_as_witness) ... ok
+2026-11-18T23:20:19.6400468Z test_invalid_unrelated_witness_does_not_erase_local_difference (test_smd1_scc3b1.IndependentSCC3B1Tests.test_invalid_unrelated_witness_does_not_erase_local_difference) ... ok
+2026-11-18T23:20:19.6401573Z test_known_positive_not_erased_by_missing_other_witness (test_smd1_scc3b1.IndependentSCC3B1Tests.test_known_positive_not_erased_by_missing_other_witness) ... ok
+2026-11-18T23:20:19.6402459Z test_known_positive_survives_declared_dependence_without_likelihood (test_smd1_scc3b1.IndependentSCC3B1Tests.test_known_positive_survives_declared_dependence_without_likelihood) ... ok
+2026-11-18T23:20:19.6403578Z test_missing_physical_map_remains_explicit_unavailable (test_smd1_scc3b1.IndependentSCC3B1Tests.test_missing_physical_map_remains_explicit_unavailable) ... ok
+2026-11-18T23:20:19.6404577Z test_missing_without_positive_is_undetermined (test_smd1_scc3b1.IndependentSCC3B1Tests.test_missing_without_positive_is_undetermined) ... ok
+2026-11-18T23:20:19.6405199Z test_tv_exact_mathematical_bounds (test_smd1_scc3b1.IndependentSCC3B1Tests.test_tv_exact_mathematical_bounds) ... ok
+2026-11-18T23:20:19.6405928Z test_two_joints_with_identical_marginals_can_differ (test_smd1_scc3b1.IndependentSCC3B1Tests.test_two_joints_with_identical_marginals_can_differ) ... ok
+2026-11-18T23:20:19.6406652Z test_valid_marginal_order_independent_and_half_tv (test_smd1_scc3b1.IndependentSCC3B1Tests.test_valid_marginal_order_independent_and_half_tv) ... ok
+2026-11-18T23:20:19.6407036Z 
+2026-11-18T23:20:19.6407187Z ----------------------------------------------------------------------
+2026-11-18T23:20:19.6407524Z Ran 15 tests in 0.001s
+2026-11-18T23:20:19.6407674Z 
+2026-11-18T23:20:19.6407761Z OK
+2026-11-18T23:20:19.6910307Z test_01_exact_original_juno_value_and_errors (test_sm_p0n0.PhysicalIntakeTests.test_01_exact_original_juno_value_and_errors) ... ok
+2026-11-18T23:20:19.6911266Z test_02_provenance_and_ordering_are_not_optional (test_sm_p0n0.PhysicalIntakeTests.test_02_provenance_and_ordering_are_not_optional) ... ok
+2026-11-18T23:20:19.6912161Z test_03_correlation_and_likelihood_unavailable (test_sm_p0n0.PhysicalIntakeTests.test_03_correlation_and_likelihood_unavailable) ... ok
+2026-11-18T23:20:19.6919467Z test_04_invariant_common_offset_over_finite_examples (test_sm_p0n0.PhysicalIntakeTests.test_04_invariant_common_offset_over_finite_examples) ... ok
+2026-11-18T23:20:19.6920214Z test_05_distinct_nonnegative_mass_spectra_same_splitting (test_sm_p0n0.PhysicalIntakeTests.test_05_distinct_nonnegative_mass_spectra_same_splitting) ... ok
+2026-11-18T23:20:19.6920944Z test_06_inverted_ordering_common_shift (test_sm_p0n0.PhysicalIntakeTests.test_06_inverted_ordering_common_shift) ... ok
+2026-11-18T23:20:19.6921555Z test_07_no_absolute_mass_from_splitting (test_sm_p0n0.PhysicalIntakeTests.test_07_no_absolute_mass_from_splitting) ... ok
+2026-11-18T23:20:19.6922188Z test_08_negative_squared_mass_rejected (test_sm_p0n0.PhysicalIntakeTests.test_08_negative_squared_mass_rejected) ... ok
+2026-11-18T23:20:19.6922790Z test_09_wrong_unit_and_ordering_rejected (test_sm_p0n0.PhysicalIntakeTests.test_09_wrong_unit_and_ordering_rejected) ... ok
+2026-11-18T23:20:19.6923510Z test_10_invalid_solar_order_rejected (test_sm_p0n0.PhysicalIntakeTests.test_10_invalid_solar_order_rejected) ... ok
+2026-11-18T23:20:19.6924206Z test_11_floating_point_as_source_mass_rejected (test_sm_p0n0.PhysicalIntakeTests.test_11_floating_point_as_source_mass_rejected) ... ok
+2026-11-18T23:20:19.6924910Z test_12_registry_never_fabricates_candidate_predictions (test_sm_p0n0.PhysicalIntakeTests.test_12_registry_never_fabricates_candidate_predictions) ... ok
+2026-11-18T23:20:19.6925626Z test_13_cannot_turn_fit_into_qualified_prediction (test_sm_p0n0.PhysicalIntakeTests.test_13_cannot_turn_fit_into_qualified_prediction) ... ok
+2026-11-18T23:20:19.6926258Z test_14_cannot_guess_candidate_status (test_sm_p0n0.PhysicalIntakeTests.test_14_cannot_guess_candidate_status) ... ok
+2026-11-18T23:20:19.6927087Z test_15_freeze_rejects_changed_empirical_provenance (test_sm_p0n0.PhysicalIntakeTests.test_15_freeze_rejects_changed_empirical_provenance) ... ok
+2026-11-18T23:20:19.6928503Z test_16_freeze_rejects_wrong_mass_unit (test_sm_p0n0.PhysicalIntakeTests.test_16_freeze_rejects_wrong_mass_unit) ... ok
+2026-11-18T23:20:19.6936433Z test_17_freeze_rejects_wrong_ordering_and_unrecognized_snapshot (test_sm_p0n0.PhysicalIntakeTests.test_17_freeze_rejects_wrong_ordering_and_unrecognized_snapshot) ... ok
+2026-11-18T23:20:19.6940021Z test_18_cofitted_angle_covariance_warning_cannot_be_deleted (test_sm_p0n0.PhysicalIntakeTests.test_18_cofitted_angle_covariance_warning_cannot_be_deleted) ... ok
+2026-11-18T23:20:19.6941318Z test_19_checkpoint_counts_zero_predictions_and_no_likelihood (test_sm_p0n0.PhysicalIntakeTests.test_19_checkpoint_counts_zero_predictions_and_no_likelihood) ... ok
+2026-11-18T23:20:19.6949599Z test_20_candidate_original_not_as_validation (test_sm_p0n0.PhysicalIntakeTests.test_20_candidate_original_not_as_validation) ... ok
+2026-11-18T23:20:19.6950119Z 
+2026-11-18T23:20:19.6950256Z ----------------------------------------------------------------------
+2026-11-18T23:20:19.6950568Z Ran 20 tests in 0.004s
+2026-11-18T23:20:19.6950707Z 
+2026-11-18T23:20:19.6950847Z OK
+2026-11-18T23:20:19.8127957Z ##[group]Run set -euo pipefail
+2026-11-18T23:20:19.8128672Z [36;1mset -euo pipefail[0m
+2026-11-18T23:20:19.8129034Z [36;1mpython3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/sm-p0n0/negative-auditor.log"[0m
+2026-11-18T23:20:19.8129391Z [36;1mimport json,sys,tempfile[0m
+2026-11-18T23:20:19.8129686Z [36;1mfrom dataclasses import replace[0m
+2026-11-18T23:20:19.8129965Z [36;1mfrom fractions import Fraction[0m
+2026-11-18T23:20:19.8130288Z [36;1mfrom pathlib import Path[0m
+2026-11-18T23:20:19.8130643Z [36;1msys.path.insert(0,str(Path.cwd()/'research/standard-model/tools'))[0m
+2026-11-18T23:20:19.8130978Z [36;1mfrom sm_p0n0 import *[0m
+2026-11-18T23:20:19.8131369Z [36;1mledger=Path('research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json')[0m
+2026-11-18T23:20:19.8131766Z [36;1mdata=json.loads(ledger.read_text())[0m
+2026-11-18T23:20:19.8132022Z [36;1mdef fail(fn,err):[0m
+2026-11-18T23:20:19.8132303Z [36;1m    try:fn()[0m
+2026-11-18T23:20:19.8132620Z [36;1m    except err:pass[0m
+2026-11-18T23:20:19.8132973Z [36;1m    else:raise AssertionError('negative control did not reject bad input')[0m
+2026-11-18T23:20:19.8133489Z [36;1mfail(lambda: MassSquaredSpectrum(Fraction(-1),Fraction(1),Fraction(2),Ordering.NORMAL),ValueError)[0m
+2026-11-18T23:20:19.8134052Z [36;1mfail(lambda: MassSquaredSpectrum(Fraction(0),Fraction(1),Fraction(2),Ordering.NORMAL,'eV'),ValueError)[0m
+2026-11-18T23:20:19.8134608Z [36;1mfail(lambda: MassSquaredSpectrum(Fraction(0),Fraction(1),Fraction(2),Ordering.INVERTED),ValueError)[0m
+2026-11-18T23:20:19.8135104Z [36;1mfail(lambda: MassSquaredSpectrum(0.0,Fraction(1),Fraction(2),Ordering.NORMAL),TypeError)[0m
+2026-11-18T23:20:19.8135656Z [36;1mfail(lambda: CandidateIntake('BFSS',CandidateStatus.MISSING_PHYSICAL_MAP,Fraction(1),True),ValueError)[0m
+2026-11-18T23:20:19.8136139Z [36;1mfail(lambda: CandidateIntake('BFSS','PREDICTED',None,False),TypeError)[0m
+2026-11-18T23:20:19.8136708Z [36;1mfail(lambda: MassSquaredSpectrum(Fraction(0),Fraction(1),Fraction(2),Ordering.NORMAL).shifted(Fraction(-1)),ValueError)[0m
+2026-11-18T23:20:19.8137196Z [36;1mm=load_frozen_first_juno(ledger)[0m
+2026-11-18T23:20:19.8137524Z [36;1massert m.value==Fraction(3,40000) and m.error_plus==Fraction(3,2500000)[0m
+2026-11-18T23:20:19.8137891Z [36;1massert len(candidate_intakes())==4[0m
+2026-11-18T23:20:19.8138470Z [36;1massert all(x.model_prediction is None for x in candidate_intakes())[0m
+2026-11-18T23:20:19.8138946Z [36;1mprint('SM_P0N0_7_ADVERSARIAL_REJECTIONS_ZERO_UNQUALIFIED_PREDICTIONS_PASS')[0m
+2026-11-18T23:20:19.8139340Z [36;1m[0m
+2026-11-18T23:20:19.8139525Z [36;1mPY[0m
+2026-11-18T23:20:19.8139764Z [36;1mpython3 - <<'PY'[0m
+2026-11-18T23:20:19.8140005Z [36;1mimport json,sys,os[0m
+2026-11-18T23:20:19.8140256Z [36;1mfrom pathlib import Path[0m
+2026-11-18T23:20:19.8140579Z [36;1msys.path.insert(0,'research/standard-model/tools')[0m
+2026-11-18T23:20:19.8140890Z [36;1mfrom sm_p0n0 import intake_checkpoint[0m
+2026-11-18T23:20:19.8141356Z [36;1mcheckpoint=intake_checkpoint(Path('research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json'))[0m
+2026-11-18T23:20:19.8141922Z [36;1mtarget=Path(os.environ['RUNNER_TEMP'])/'sm-p0n0'/'physical-intake-checkpoint.json'[0m
+2026-11-18T23:20:19.8142380Z [36;1mtarget.write_text(json.dumps(checkpoint,sort_keys=True,indent=2)+'\n')[0m
+2026-11-18T23:20:19.8142792Z [36;1mprint('SM_P0N0_FROZEN_JUNO_CHECKPOINT_GENERATED_NO_MODEL_PREDICTIONS')[0m
+2026-11-18T23:20:19.8143243Z [36;1mPY[0m
+2026-11-18T23:20:19.8143543Z [36;1mpython3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/sm-p0n0/completion-auditor.log"[0m
+2026-11-18T23:20:19.8143869Z [36;1mimport json,os,re[0m
+2026-11-18T23:20:19.8144117Z [36;1mfrom pathlib import Path[0m
+2026-11-18T23:20:19.8144509Z [36;1mroot=Path(os.environ['RUNNER_TEMP'])/'sm-p0n0'[0m
+2026-11-18T23:20:19.8145072Z [36;1mchecks={'scc0-regression.log':24,'scc3b1-regression.log':15,'physical-intake-consumer.log':20}[0m
+2026-11-18T23:20:19.8145618Z [36;1mfor path,n in checks.items():[0m
+2026-11-18T23:20:19.8145881Z [36;1m    log=(root/path).read_text()[0m
+2026-11-18T23:20:19.8146180Z [36;1m    assert f'Ran {n} tests' in log and 'OK' in log[0m
+2026-11-18T23:20:19.8146575Z [36;1m    assert not re.search(r'(?m)^FAILED|^ERROR|^Traceback ',log),path[0m
+2026-11-18T23:20:19.8146987Z [36;1m    assert len(re.findall(r'(?m)^test_',log))==n,(path,len(re.findall(r'(?m)^test_',log)))[0m
+2026-11-18T23:20:19.8148137Z [36;1massert 'SM_P0N0_7_ADVERSARIAL_REJECTIONS_ZERO_UNQUALIFIED_PREDICTIONS_PASS' in (root/'negative-auditor.log').read_text()[0m
+2026-11-18T23:20:19.8148865Z [36;1mchk=json.loads((root/'physical-intake-checkpoint.json').read_text())[0m
+2026-11-18T23:20:19.8149211Z [36;1massert chk['model_prediction_count']==0[0m
+2026-11-18T23:20:19.8149611Z [36;1massert chk['measurement']['role']=='EMPIRICAL_MEASUREMENT_NOT_MODEL_PREDICTION'[0m
+2026-11-18T23:20:19.8150011Z [36;1massert chk['measurement']['unit']=='eV^2'[0m
+2026-11-18T23:20:19.8150383Z [36;1massert chk['measurement']['likelihood_status']=='NOT_PRESENT_IN_FROZEN_LEDGER'[0m
+2026-11-18T23:20:19.8150839Z [36;1massert chk['measurement']['covariance_status']=='NOT_PRESENT_IN_FROZEN_LEDGER'[0m
+2026-11-18T23:20:19.8151209Z [36;1massert chk['physical_SM_D1']=='PROSPECTIVE_UNSTAGED'[0m
+2026-11-18T23:20:19.8151628Z [36;1massert chk['candidate_statuses']['BFSS']=='MISSING_PHYSICAL_MAP'[0m
+2026-11-18T23:20:19.8152049Z [36;1massert chk['candidate_statuses']['NFC-protected-persistence']=='MISSING_PHYSICAL_MAP'[0m
+2026-11-18T23:20:19.8152538Z [36;1mprint('SM_P0N0_24_SCC0_15_SCC3B1_20_INDEPENDENT_7_NEGATIVE_ZERO_MODEL_PREDICTION_STRICT_GREEN')[0m
+2026-11-18T23:20:19.8152968Z [36;1m[0m
+2026-11-18T23:20:19.8153153Z [36;1mPY[0m
+2026-11-18T23:20:19.8183212Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-18T23:20:19.8183600Z ##[endgroup]
+2026-11-18T23:20:19.9709896Z SM_P0N0_7_ADVERSARIAL_REJECTIONS_ZERO_UNQUALIFIED_PREDICTIONS_PASS
+2026-11-18T23:20:20.0019937Z SM_P0N0_FROZEN_JUNO_CHECKPOINT_GENERATED_NO_MODEL_PREDICTIONS
+2026-11-18T23:20:20.0223466Z SM_P0N0_24_SCC0_15_SCC3B1_20_INDEPENDENT_7_NEGATIVE_ZERO_MODEL_PREDICTION_STRICT_GREEN
+2026-11-18T23:20:20.0641498Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-18T23:20:20.0641912Z with:
+2026-11-18T23:20:20.0642213Z   name: sm-p0n0-original-juno-physical-intake-source-consumer
+2026-11-18T23:20:20.0642557Z   path: /home/runner/work/_temp/sm-p0n0/
+2026-11-18T23:20:20.0642837Z   retention-days: 14
+2026-11-18T23:20:20.0643079Z   if-no-files-found: warn
+2026-11-18T23:20:20.0643328Z   compression-level: 6
+2026-11-18T23:20:20.0643540Z   overwrite: false
+2026-11-18T23:20:20.0643791Z   include-hidden-files: false
+2026-11-18T23:20:20.0644040Z ##[endgroup]
+2026-11-18T23:20:20.1829831Z (node:2335) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-18T23:20:20.1830375Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-18T23:20:20.1896888Z With the provided path, there will be 9 files uploaded
+2026-11-18T23:20:20.1911042Z Artifact name is valid!
+2026-11-18T23:20:20.1911506Z Root directory input is valid!
+2026-11-18T23:20:20.4884792Z Beginning upload of artifact content to blob storage
+2026-11-18T23:20:20.5123580Z (node:2335) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-18T23:20:20.6521236Z Uploaded bytes 3798
+2026-11-18T23:20:20.6940182Z Finished uploading artifact content to blob storage!
+2026-11-18T23:20:20.6940857Z SHA256 digest of uploaded artifact zip is bfbc645d41d28e590b0f594c0cdad2a4f85271b77d7b4d384969c43e9389747a
+2026-11-18T23:20:20.6941374Z Finalizing artifact upload
+2026-11-18T23:20:21.0341458Z Artifact sm-p0n0-original-juno-physical-intake-source-consumer.zip successfully finalized. Artifact ID 14480966815
+2026-11-18T23:20:21.0342479Z Artifact sm-p0n0-original-juno-physical-intake-source-consumer has been successfully uploaded! Final size is 3798 bytes. Artifact ID is 14480966815
+2026-11-18T23:20:21.0348646Z Artifact download URL: https://github.com/etblink/math/actions/runs/44419768921/artifacts/14480966815
+2026-11-18T23:20:21.0552184Z Post job cleanup.
+2026-11-18T23:20:21.1192953Z [command]/usr/bin/git version
+2026-11-18T23:20:21.1226182Z git version 2.56.1
+2026-11-18T23:20:21.1256735Z Temporarily overriding HOME='/home/runner/work/_temp/1805eeae-553a-455f-9b4b-1bc1f105698e' before making global git config changes
+2026-11-18T23:20:21.1257815Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-18T23:20:21.1262042Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-18T23:20:21.1308591Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-18T23:20:21.1337888Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-18T23:20:21.1820805Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-18T23:20:21.1862327Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-18T23:20:21.2293178Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-18T23:20:21.2319743Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-18T23:20:21.2855072Z Cleaning up orphan processes
+2026-11-18T23:20:21.3127275Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
