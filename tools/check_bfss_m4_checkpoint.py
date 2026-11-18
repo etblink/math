@@ -4487,6 +4487,65 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['workflow_staged'] is False
                 and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
                 'W0C2B0 must not claim centrality, full bracket or stage B1 prematurely')
+    if a['gate']=='P3-M4-W0C2B0M':
+        # New complex-only W0C2B0M R1; old W0C2B0 R1/R2 remain stopped.
+        require(a.get('attempt')=='R1' and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('contract_commit')=='d66d9e52602e937063a9a47685d1a0223160f19f'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0M_R1_COMPLEX_NESTED_ACTION_PRE_GATE_2026_11_17.md'
+                and blob(root/a['prospective_receipt'])=='5d570016acc1808b4b28627804db24027206097e'
+                and a.get('source_blob')=='19e20ca4138c0303c28e3ab46d4b2fcf3a496bb0'
+                and a.get('consumer_blob')=='14f366562c5986f58fd282a09e28720e7ea171b5'
+                and a.get('workflow_blob')=='c730b0a7294e41d4edcb1145d2958c01061a4135'
+                and a.get('first_atom')=='ORIGINAL_FOCK_COMPLEX_NESTED_SINGLE_INDEX_COEFFICIENT_ACTION'
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
+                and a.get('independent_controls')==2
+                and a.get('accepted_predecessor_run')==44213315719
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0C2A'
+                and s['last_qualified']['run_id']==44213315719
+                and len(s['accepted_anchors'])==24
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0C2B0M original complex carrier contract drift')
+        old=s.get('previous_active_W0C2B0_R2_stopped',{})
+        require(old.get('gate')=='P3-M4-W0C2B0'
+                and old.get('status')=='BLOCKED'
+                and old.get('native_red_count')==2
+                and old.get('stopped') is True
+                and old.get('run_id')==44222678258
+                and old.get('preservation_run')==44224922749
+                and s['previous_active_W0C2B0_R1_RED']['run_id']==44218523669,
+                'stopped two-RED source history lost')
+        for path,expected in (
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R1_44218523669_NATIVE_RED_evidence.zip','4117bd19a0a8d1614df176e72d69a9b628de19da'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R2_44222678258_NATIVE_RED_evidence.zip','3f15c1c8bcf0e057e3de2055abc6ec00e8b931ec'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2A_R1_44213315719_GREEN_evidence.zip','cb5591ab7ae5762150ea1d10dc093788f812d929'),
+        ):
+            require(blob(root/path)==expected,'accepted or stopped original evidence drift '+path)
+        src=(root/a['source']).read_text()
+        con=(root/a['consumer']).read_text()
+        expected=['originalFock_complex_nested_coefficient_compose',
+                  'originalFock_complex_nested_coefficient_bracket']
+        source_roots=[line.split()[-1] for line in src.splitlines() if line.startswith('#print axioms ')]
+        consumer_roots=[line.split()[-1] for line in con.splitlines() if line.startswith('#print axioms ')]
+        require(sum(line.startswith('theorem ') for line in src.splitlines())==2
+                and sum(line.startswith('theorem ') for line in con.splitlines())==2
+                and sum(line.startswith('example ') for line in con.splitlines())==2
+                and source_roots==expected
+                and consumer_roots==[name+'_consumer' for name in expected]
+                and src.count('Fermion 2 →L[ℂ] Fermion 2')==1
+                and con.count('Fermion 2 →L[ℂ] Fermion 2')==1
+                and 'Matrix ι ι ℂ' in src and 'Matrix ι ι ℂ' in con
+                and 'Matrix ι ι ℝ' not in src and 'sourceNormalizedGamma' not in src
+                and 'maxRecDepth' not in src and 'maxHeartbeats' not in src,
+                'new original complex-only proof scope drift')
+        require(s['next_planned']['gate']=='P3-M4-W0C2B0N'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False
+                and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
+                'real adapter or original Lie bracket prematurely promoted')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
