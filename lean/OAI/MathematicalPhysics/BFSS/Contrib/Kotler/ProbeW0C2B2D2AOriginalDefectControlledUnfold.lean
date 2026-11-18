@@ -34,6 +34,7 @@ theorem originalSource48K_lieDefect_unfoldD2A (A B : Mat) :
         originalSource48BivectorK B * originalSource48BivectorK A) -
         originalSource48BivectorK (A * B - B * A) := by
   unfold originalSource48K_lieDefect
+  exact Eq.refl _
 
 #print axioms originalSource48K_lieDefect_unfoldD2A
 
