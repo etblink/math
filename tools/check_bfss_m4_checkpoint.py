@@ -5076,18 +5076,18 @@ def check_checkpoint(root: Path, s: dict):
     if a['gate']=='P3-M4-W0C2B2':
         # True original Source48 48-gamma Lie-defect centrality under native
         # real transpose-skew assumptions; no unconditional K Lie bracket yet.
-        require(a.get('attempt')=='R1'
+        require(a.get('attempt')=='R2'
                 and a.get('status')=='PENDING_STRICT_CI'
                 and a.get('qualification') is False
-                and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B2OriginalSource48KLieDefectGammaCentrality.lean'
-                and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B2OriginalSource48KLieDefectGammaCentralityIndependentConsumer.lean'
-                and a.get('workflow')=='.github/workflows/bfss-m4-w0c2b2-r1-original-source48-defect-gamma-centrality-strict.yml'
-                and a.get('source_blob')=='aae0746f002b1c74bf7712c59d7b5abfe4c8019a'
-                and a.get('consumer_blob')=='69f06d3c451f9a2ca09ff49fb1c752ad49033544'
-                and a.get('workflow_blob')=='776f5fc85b18fa1d74433f66f0604fd62ee5fd56'
-                and a.get('contract_commit')=='32897cf15193202689fd19c6cb6ac18116dbab4e'
-                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B2_R1_ORIGINAL_SOURCE48_DEFECT_GAMMA_CENTRALITY_PRE_GATE_2026_11_18.md'
-                and blob(root/a['prospective_receipt'])=='e91fa59fee108f0d846a1dbf8c61e4759e46edea'
+                and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B2OriginalSource48KLieDefectGammaCentralityR2.lean'
+                and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B2OriginalSource48KLieDefectGammaCentralityIndependentConsumerR2.lean'
+                and a.get('workflow')=='.github/workflows/bfss-m4-w0c2b2-r2-original-source48-defect-gamma-centrality-strict.yml'
+                and a.get('source_blob')=='d52f48a79750846231c306d9e9ac8ceda25d37be'
+                and a.get('consumer_blob')=='25d0051fe571eef7c736e43b2e90f758e063212c'
+                and a.get('workflow_blob')=='4c2ef120609b1ede323a4b053c3de0d427bc4647'
+                and a.get('contract_commit')=='bbf0af7702f7589ccd759551062b9af1c274a09e'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B2_R2_OPAQUE_ORIGINAL_FOCK_COMMUTATOR_SUB_PRE_GATE_2026_11_18.md'
+                and blob(root/a['prospective_receipt'])=='0bbe6c28039f2f1ed4079a82093ab7e836e03c6d'
                 and a.get('first_atom')=='SOURCE_EXACT_ORIGINAL_SOURCE48_LIE_DEFECT_COMMUTES_WITH_ALL_48_NORMALIZED_GAMMAS'
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==4
                 and a.get('independent_controls')==4
@@ -5133,6 +5133,43 @@ def check_checkpoint(root: Path, s: dict):
                 and s['previous_active_W0C2B0_R2_stopped']['native_red_count']==2
                 and s['previous_active_W0C2B0_R2_stopped']['status']=='BLOCKED',
                 'B2 must preserve original previous native RED stopping records')
+        first=s.get('previous_active_W0C2B2_R1_NATIVE_RED',{})
+        require(first.get('gate')=='P3-M4-W0C2B2'
+                and first.get('attempt')=='R1'
+                and first.get('status')=='NATIVE_SOURCE_RED_UNQUALIFIED'
+                and first.get('qualification') is False
+                and first.get('native_red_count')==1
+                and first.get('run_id')==44274131658
+                and first.get('job_id')==134697829384
+                and first.get('tested_sha')=='8dc20592dc7739d3b7a5438bed945efb2c6d720e'
+                and first.get('source_blob')=='aae0746f002b1c74bf7712c59d7b5abfe4c8019a'
+                and first.get('consumer_blob')=='69f06d3c451f9a2ca09ff49fb1c752ad49033544'
+                and first.get('workflow_blob')=='776f5fc85b18fa1d74433f66f0604fd62ee5fd56'
+                and first.get('artifact_sha256')=='44c16b6bf846278c43ddb2d262d16e3a14c7643c6d22d3b6e5e2ad570c34c50a'
+                and first.get('preservation_run')==44279294974
+                and first.get('preservation_commit')=='3812602415b2b3069b2a0120dd47050aa0abff13'
+                and first.get('failure_phase')=='ORIGINAL_SOURCE_LEAN'
+                and first.get('consumer_executed') is False
+                and a.get('previous_red_run')==44274131658
+                and a.get('previous_red_preservation_run')==44279294974,
+                'B2 original R1 native timeout provenance/stop rule drift')
+        for path,sha in (
+            (first['source'],'aae0746f002b1c74bf7712c59d7b5abfe4c8019a'),
+            (first['consumer'],'69f06d3c451f9a2ca09ff49fb1c752ad49033544'),
+            (first['workflow'],'776f5fc85b18fa1d74433f66f0604fd62ee5fd56'),
+            (first['evidence_archive'],'12b5843b116bae63e2183049cae572cb1fcc051b'),
+            (first['evidence_job_log'],'782ad9cbaa7f55be2592b8f1ca9bd5c9ad6e0481'),
+            (first['evidence_manifest'],'18a759d4ba00b6e818ef445d0333e0342a77e010'),
+        ):
+            require(blob(root/path)==sha,'B2 first original RED proof/evidence changed '+path)
+        red=json.loads((root/first['evidence_manifest']).read_text())
+        require(red['original_zip']['size']==20357
+                and red['original_zip']['sha256']==first['artifact_sha256']
+                and len(red['original_zip']['members'])==3
+                and red['failure_phase']=='ORIGINAL_SOURCE_LEAN'
+                and red['first_causal_error'].startswith('(kernel) deterministic timeout')
+                and red['native_red_count_this_architecture']==1,
+                'B2 original native RED evidence hash/causal classification changed')
         source=(root/a['source']).read_text()
         consumer=(root/a['consumer']).read_text()
         roots=['originalSource48K_skew_complex_gamma_covariance',
@@ -5151,6 +5188,8 @@ def check_checkpoint(root: Path, s: dict):
                 and 'originalFock_commutator_covariance_bracket' in source
                 and 'originalSource48_matrix_commutator_skew' in source
                 and 'originalSource48Fock_real_commutator_column_to_complex' in source
+                and 'private theorem originalFock_commutator_sub' in source
+                and 'exact originalFock_commutator_sub' in source
                 and 'sub_eq_zero.mp' in source
                 and 'originalSource48K_lieBracket_of_defect_central' not in source
                 and 'maxRecDepth' not in source
