@@ -109,7 +109,7 @@ def check_checkpoint(root: Path, s: dict):
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
         expected_reports = (1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3','P3-M4-W0B1','P3-M4-W0H0','P3-M4-W0H1A'} else
-                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A','P3-M4-W0B2B','P3-M4-W0C0','P3-M4-W0C2A'} else 2)
+                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A','P3-M4-W0B2B','P3-M4-W0C0','P3-M4-W0C2A','P3-M4-W0C2B0'} else 2)
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
                 'incomplete strict qualification')
@@ -4288,6 +4288,88 @@ def check_checkpoint(root: Path, s: dict):
                     and a['strict_marker'].encode() in full
                     and manifest['preflight_marker'].encode() in full,
                     'W0C2A original complete Actions log lacks source or audit success')
+    if a['gate']=='P3-M4-W0C2B0':
+        # Real-source coefficient contraction on exact original Fermion 2
+        # does not discharge nested K(A),K(B) Jacobi or full Lie bracket.
+        require(a.get('attempt')=='R1'
+                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('first_atom')=='ORIGINAL_FOCK_REAL_SMUL_COMMUTATOR_PLUS_FINITE_REAL_MATRIX_COEFFICIENT_CONTRACTION_AND_EXACT_SOURCE48_GAMMAS'
+                and a.get('contract_commit')=='30c3adc00b1d9fae9d4d8a827d84a74a811f946b'
+                and a.get('source_blob')=='4846915b6d6f99e765a1ec28f9286295d7db2571'
+                and a.get('consumer_blob')=='ee6224071561e675d276e9d3a8d2bd865e87d7d6'
+                and a.get('workflow_blob')=='341b3ad5ae1b381db1ca6e297110cfd5783472a6'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0_ORIGINAL_REAL_COEFFICIENT_CONTRACTION_PRE_GATE_2026_11_17.md'
+                and blob(root/a['prospective_receipt'])=='78dc5e410203b0a8b35b462764ba94c5c6c21498'
+                and a.get('accepted_predecessor_run')==44213315719
+                and a.get('qualified_W0C2A_run')==44213315719
+                and a.get('qualified_LB1C1_run')==43901524171
+                and a.get('qualified_QTC0A_run')==44001621836
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0C2A'
+                and s['last_qualified']['attempt']=='R1'
+                and s['last_qualified']['run_id']==44213315719
+                and s['last_qualified']['qualification'] is True
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0C2B0 real coefficient source-exact pending donor/checkpoint drift')
+        donor=s['last_qualified']
+        require(donor.get('source_blob')=='51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb'
+                and donor.get('consumer_blob')=='4ddacfbe1ee1d7d55b321f4cb9c0d6d462261aec'
+                and donor.get('workflow_blob')=='c1a18092b61cb05c08e08231ce10daadce99de45'
+                and donor.get('evidence_archive_blob')=='cb5591ab7ae5762150ea1d10dc093788f812d929'
+                and donor.get('evidence_job_log_blob')=='47d03e99bf3e9f4319200ecc02bfb7dc3db69175'
+                and donor.get('evidence_manifest_blob')=='6d348101dd6b9feffcf479802248445313973698'
+                and donor.get('preservation_run')==44216554946
+                and donor.get('cold_build_jobs')==9239,
+                'W0C2B0 exact W0C2A original provider evidence missing')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/donor[kind])==donor[kind+'_blob'],
+                    'W0C2B0 original accepted W0C2A donor altered '+kind)
+        for path,expected in (
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean','b0b519e46566856e100bf6aa882f9fcdf37d397e'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean','c2e7a7c665121283cde13ae5dabc183362b6b420'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0CAbstractCoefficientContraction.lean','9448c9a47c605cb6aba2cfc798ae28a0213c9411'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C1_R1_44204390734_NATIVE_RED_evidence.zip','b9c846a1ef7abdecc8d5e627c5a9921a903bbf14')):
+            require(blob(root/path)==expected,'W0C2B0 original qualified or native RED history changed '+path)
+        import zipfile
+        original=root/donor['evidence_archive']
+        raw=original.read_bytes()
+        require(len(raw)==20465
+                and hashlib.sha256(raw).hexdigest()=='09bdc60577e56a767738cc85d94c11eafbd9f06a2521f6637b08a09ddd4e9453',
+                'W0C2B0 qualified W0C2A original ZIP hash mismatch')
+        with zipfile.ZipFile(original) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'auditor.log','cold-source.log','consumer.log','preflight.log','source-axioms.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()=='48e7e58b23c19643c905d16fe69e46d0a7c0a73e'
+                    and 'Build completed successfully (9239 jobs).' in z.read('cold-source.log').decode(),
+                    'W0C2B0 previously qualified original ZIP member integrity drift')
+        src=(root/a['source']).read_text()
+        con=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\b',src))==3
+                and len(re.findall(r'(?m)^theorem\b',con))==3
+                and len(re.findall(r'(?m)^example\b',con))==3
+                and 'originalFockOperator_real_smul_eq_complex_smul' in src
+                and 'originalFock_commutator_complex_smul' in src
+                and 'originalFock_real_left_matrix_contraction' in src
+                and 'Finset.sum_comm' in src
+                and 'Matrix.mul_apply' in src
+                and 'originalSource48_gamma_real_bracket_contraction' in src
+                and 'sourceNormalizedGamma' in src
+                and 'P3M4QTC1OriginalSourceRealComplexQuarterBridge' not in src
+                and 'P3M4CT1G0OriginalFockJacobiSource48Adapter' not in src
+                and 'CliffordAlgebra.induction' not in src
+                and 'maxRecDepth' not in src and 'maxHeartbeats' not in src
+                and 'sorry' not in src and 'admit' not in src,
+                'W0C2B0 exact real Fock coefficient contraction scope drift')
+        require(s['next_planned']['gate']=='P3-M4-W0C2B1'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False
+                and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
+                'W0C2B0 must not claim centrality, full bracket or stage B1 prematurely')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
