@@ -1,0 +1,102 @@
+{
+  "schema": "SM-P0N2_NEUTRINO_MECHANISM_FRONTIER/0.1",
+  "audit_as_of": "2026-11-18",
+  "status": "SOURCE_BOUND_FORWARD_RESEARCH_NOT_EXPERIMENTAL_QUALIFICATION",
+  "predecessor_commit": "04984ff058266d21da055bec02e06f68775dbdad",
+  "sources": {
+    "pdg_2026": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-neutrino-mixing.pdf",
+    "pdg_2026_errata": "https://pdg.lbl.gov/2026/html/errata.html",
+    "juno_preprint": "https://arxiv.org/abs/2609.37895"
+  },
+  "observable": "delta_m2_21",
+  "model_candidates": [
+    {
+      "name": "minimal SM with massless neutrinos",
+      "physical_mass_operator": false,
+      "juno_independent_prediction": false,
+      "status": "MASS_MECHANISM_ABSENT"
+    },
+    {
+      "name": "Dirac 3 right-handed neutrinos, arbitrary Yukawas",
+      "physical_mass_operator": true,
+      "juno_independent_prediction": false,
+      "status": "PARAMETERIZED_NOT_PREDICTED"
+    },
+    {
+      "name": "generic Weinberg dimension-five EFT",
+      "physical_mass_operator": true,
+      "juno_independent_prediction": false,
+      "status": "PARAMETERIZED_NOT_PREDICTED"
+    },
+    {
+      "name": "generic type-I/II/III seesaws",
+      "physical_mass_operator": true,
+      "juno_independent_prediction": false,
+      "status": "PARAMETERIZED_NOT_PREDICTED"
+    },
+    {
+      "name": "minimal two-singlet type-I seesaw",
+      "physical_mass_operator": true,
+      "juno_independent_prediction": false,
+      "status": "CONDITIONAL_RANK_TWO_STRUCTURAL_RESTRICTION",
+      "claim": "Under tree-level exact-2-singlet and no-additional-mass-operator assumptions rank(m_light) <= 2, hence at least one massless light state; the solar splitting and theta12 are not predicted."
+    },
+    {
+      "name": "radiative mechanisms (unspecified model)",
+      "physical_mass_operator": null,
+      "juno_independent_prediction": false,
+      "status": "NOT_ASSESSED_NAMED_MODEL_REQUIRED"
+    },
+    {
+      "name": "BFSS original SU(2)",
+      "physical_mass_operator": false,
+      "juno_independent_prediction": false,
+      "status": "MISSING_PHYSICAL_MAP"
+    },
+    {
+      "name": "frozen canonical NFC",
+      "physical_mass_operator": false,
+      "juno_independent_prediction": false,
+      "status": "MISSING_PHYSICAL_MAP"
+    },
+    {
+      "name": "historical NFC neutrino sketches",
+      "physical_mass_operator": false,
+      "juno_independent_prediction": false,
+      "status": "HISTORICAL_UNQUALIFIED"
+    }
+  ],
+  "counterfactuals": [
+    {
+      "id": "oscillation_common_mass_squared_shift",
+      "preserves": "three-flavor vacuum oscillation probabilities, fixed PMNS",
+      "changes": "m_beta^2 under normalized electron mixing row",
+      "status": "SYMBOLIC_CONDITIONAL"
+    },
+    {
+      "id": "majorana_phase_shift",
+      "preserves": "standard vacuum neutrino oscillation probabilities",
+      "may_change": "m_betabeta under assumed standard light-neutrino-exchange 0nubb mechanism",
+      "status": "SYMBOLIC_CONDITIONAL"
+    },
+    {
+      "id": "same_low_energy_matrices_distinct_uv_models",
+      "preserves": "low-energy oscillation marginals",
+      "requires": "additional independently predicted observables to distinguish UV models",
+      "status": "SYMBOLIC_CONDITIONAL"
+    },
+    {
+      "id": "refitting_to_same_juno_data",
+      "status": "FIT_INPUT_NOT_PREDICTION",
+      "rule": "do not use fitted parameter as held-out empirical prediction"
+    }
+  ],
+  "juno_59d_and_207d_independent": false,
+  "numerical_physics_prediction_produced": false,
+  "experimental_likelihood_imported": false,
+  "experiment_comparison_performed": false,
+  "qualification_changes": false,
+  "prior_BFSS_accepted_anchor_count_preserved": 27,
+  "full_SM_D1": "PROSPECTIVE_UNSTAGED",
+  "next_target": "A separately pinned and independently constrained restricted 4D flavor model with held-out non-oscillation witnesses."
+}
