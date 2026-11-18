@@ -36,3 +36,17 @@ B. Add finite rational categorical distribution equality and TV positivity as a 
 C. Model experimental design and identifiability only after supplying versioned model predictions, parameter/nuisance domains, units, fixed protocols, covariance and physical maps. Do not assign scores to BFSS, NFC, Spin(10), or other candidates without calculations.
 
 **Governance**: single unified integration branch; preserve all original RED/GREEN evidence and current 27 accepted BFSS anchors; SM-Y0 and SM-D0 unchanged; complete SM-D1 remains prospective until physically qualified.
+
+## Verified pinned Mathlib source reuse (2026-11-18)
+
+The proposed lemma has now been **independently checked in the repository's exact pinned Mathlib**, not merely current public documentation:
+
+- Source repository: \`leanprover-community/mathlib4\`
+- Pin: \`d13f23b723b8a846827a245b89c10fc7d3f11612\`
+- Source: \`Mathlib/Order/CompleteLattice/Finset.lean\`
+- Immutable Git blob: \`fce1b985bf079d153d2774d0c7c370b3048589ab\`
+- Theorem at line 109: \`Finset.minimal_iff_forall_erase\`, with hypotheses \`hP : ∀ ⦃s t⦄, P t → t ⊆ s → P s\` and conclusion \`Minimal P s ↔ P s ∧ ∀ x ∈ s, ¬ P (s.erase x)\`.
+
+**Concrete reuse:** set \`P := UniformlySeparates p A B\` and discharge \`hP\` using the already-written SCC1 monotonicity theorem. This supplies a precise route from inclusion-minimality to deletion-minimality for a family-level witness set. This is *not* a qualified Lean import until a future source/consumer gate compiles and archives it.
+
+Reference: https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Order/CompleteLattice/Finset.lean#L109
