@@ -1,0 +1,333 @@
+{
+  "schema": "SM-D0_EVIDENCE_LEDGER/0.1",
+  "as_of": "2026-11-18",
+  "frozen_pdg_edition": "https://pdg.lbl.gov/2026/listings/particle_properties.html",
+  "governance": {
+    "purpose": "Empirical filter across candidate physical frameworks; BFSS not privileged.",
+    "verified_source_type": "Publications, collaboration official releases and collaboration preliminary/preprint results individually attributed.",
+    "qualifications": "This is a curated, nonexhaustive snapshot of directly sourced example constraints, not a current world average or statistical global fit.",
+    "claim_ceiling": "A consistency input ledger; it proves neither the Standard Model nor any unification hypothesis. CI validates schema and source-record checks, not the truth of external data or a theory's agreement.",
+    "source_review_date": "2026-11-18",
+    "online_recheck_policy": "Primary source text manually reviewed as-of date; source URLs retained, not a live automatically re-fetched experimental database."
+  },
+  "constraints": [
+    {
+      "id": "higgs_mass_cms_2026",
+      "domain": "higgs",
+      "observable": "CMS Higgs boson mass, combined diphoton and four-lepton channels",
+      "kind": "measurement",
+      "value": {
+        "central": "125.065",
+        "error_minus": "0.088",
+        "error_plus": "0.088",
+        "unit": "GeV",
+        "uncertainty_label": "reported total uncertainty"
+      },
+      "source_date": "2026-11-02",
+      "source": {
+        "url": "https://cms.cern/news/how-much-does-higgs-boson-weigh-cms-gives-its-most-precise-answer-yet",
+        "title": "CMS Collaboration, Higgs mass Run 1+2 combination HIG-26-010",
+        "status": "collaboration_preliminary"
+      },
+      "details": {
+        "facility": "LHC CMS",
+        "input": "H→γγ and H→ZZ→4ℓ at 7, 8 and 13 TeV; single experiment",
+        "analysis_mass_assumption": null,
+        "aggregation": "CMS combination, not PDG or ATLAS+CMS world average"
+      },
+      "interpretation": {
+        "model_test": "A candidate with a Higgs particle needs an observable mass compatible with this channel-specific CMS measurement",
+        "limitation": "Higgs mass is an empirical free parameter in the SM, not predicted by the basic model; source is a 2026 preliminary CMS combination."
+      }
+    },
+    {
+      "id": "w_mass_cms_nature_2026",
+      "domain": "electroweak",
+      "observable": "CMS W boson mass from W→μν",
+      "kind": "measurement",
+      "value": {
+        "central": "80360.2",
+        "error_minus": "9.9",
+        "error_plus": "9.9",
+        "unit": "MeV",
+        "uncertainty_label": "reported combined statistical and systematic"
+      },
+      "source_date": "2026-04-08",
+      "source": {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13061639/",
+        "title": "CMS Collaboration, High-precision measurement of the W boson mass, Nature 652 (2026)",
+        "status": "peer_reviewed_primary"
+      },
+      "details": {
+        "facility": "LHC CMS",
+        "input": "2016 pp collisions at 13 TeV; W→μν",
+        "analysis_mass_assumption": null,
+        "aggregation": "single CMS measurement, not world average or electroweak fit"
+      },
+      "interpretation": {
+        "model_test": "Constrain electroweak loop and mass relationships under the candidate's specified inputs",
+        "limitation": "W mass measurements include known inter-experiment tension (notably CDF); a single CMS value must not be presented as consensus."
+      }
+    },
+    {
+      "id": "higgs_inclusive_mu_cms_2026",
+      "domain": "higgs",
+      "observable": "CMS inclusive Higgs signal strength relative to SM at assumed Higgs mass 125.38 GeV",
+      "kind": "measurement",
+      "value": {
+        "central": "1.014",
+        "error_minus": "0.053",
+        "error_plus": "0.055",
+        "unit": "ratio",
+        "uncertainty_label": "reported asymmetric total uncertainty"
+      },
+      "source_date": "2026-08-14",
+      "source": {
+        "url": "https://arxiv.org/abs/2602.18611",
+        "title": "CMS Collaboration, Combined measurements and interpretations of Higgs production and decay, HIG-21-018 (2026 revision)",
+        "status": "collaboration_preprint"
+      },
+      "details": {
+        "facility": "LHC CMS",
+        "input": "138 fb^-1 2016–2018 pp at 13 TeV; combined multiple Higgs channels",
+        "analysis_mass_assumption": "125.38 GeV",
+        "aggregation": "CMS inclusive signal strength; correlated with other CMS Higgs channels"
+      },
+      "interpretation": {
+        "model_test": "A fully specified Higgs model should predict the inclusive production×decay rates, with theory errors and correlations",
+        "limitation": "This fit assumes 125.38 GeV, different from 2026 HIG-26-010 measured 125.065 GeV; do not combine as statistically independent or substitute the mass without recomputing the analysis."
+      }
+    },
+    {
+      "id": "juno_sin2theta12_2026",
+      "domain": "neutrinos",
+      "observable": "JUNO solar neutrino mixing angle sin²θ12 from first 59.1 days",
+      "kind": "measurement",
+      "value": {
+        "central": "0.3092",
+        "error_minus": "0.0087",
+        "error_plus": "0.0087",
+        "unit": "dimensionless",
+        "uncertainty_label": "published reported uncertainty"
+      },
+      "source_date": "2026-06-10",
+      "source": {
+        "url": "https://doi.org/10.1038/s41586-026-10538-z",
+        "title": "JUNO Collaboration, Measurement of reactor neutrino oscillation with the first JUNO data, Nature 654 (2026)",
+        "status": "peer_reviewed_primary"
+      },
+      "details": {
+        "facility": "JUNO",
+        "input": "First 59.1 days reactor antineutrino events",
+        "analysis_mass_assumption": null,
+        "analysis_ordering": "normal ordering scenario",
+        "aggregation": "single experiment; correlated with JUNO Δm²21 below"
+      },
+      "interpretation": {
+        "model_test": "Any neutrino mass/mixing mechanism must reproduce this angle under the specified oscillation model",
+        "limitation": "Not a direct absolute-neutrino-mass measurement, and not evidence of a specific mass-generation mechanism."
+      }
+    },
+    {
+      "id": "juno_dm2_21_2026",
+      "domain": "neutrinos",
+      "observable": "JUNO solar neutrino mass-squared splitting Δm²21",
+      "kind": "measurement",
+      "value": {
+        "central": "0.0000750",
+        "error_minus": "0.0000012",
+        "error_plus": "0.0000012",
+        "unit": "eV^2",
+        "uncertainty_label": "published reported uncertainty"
+      },
+      "source_date": "2026-06-10",
+      "source": {
+        "url": "https://doi.org/10.1038/s41586-026-10538-z",
+        "title": "JUNO Collaboration, Measurement of reactor neutrino oscillation with the first JUNO data, Nature 654 (2026)",
+        "status": "peer_reviewed_primary"
+      },
+      "details": {
+        "facility": "JUNO",
+        "input": "First 59.1 days reactor antineutrino events",
+        "analysis_mass_assumption": null,
+        "analysis_ordering": "normal ordering scenario",
+        "aggregation": "single experiment; correlated with JUNO sin²θ12 above"
+      },
+      "interpretation": {
+        "model_test": "A concrete neutrino sector must yield this mass-squared splitting after specifying ordering and mixing conventions",
+        "limitation": "Oscillation splitting alone does not give absolute neutrino masses; correlated JUNO parameters should not be treated as statistically independent."
+      }
+    },
+    {
+      "id": "p_to_e_pi0_sk_2020",
+      "domain": "baryon_number",
+      "observable": "Super-Kamiokande partial lifetime p→e+π0",
+      "kind": "lower_limit",
+      "value": {
+        "threshold": "2.4e34",
+        "unit": "years",
+        "confidence_level": "0.90",
+        "limit_label": "90% CL lower limit on τ/B"
+      },
+      "source_date": "2020-12-22",
+      "source": {
+        "url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.102.112011",
+        "title": "Super-Kamiokande, proton decay p→e+π0 (Phys Rev D 102, 112011)",
+        "status": "peer_reviewed_primary"
+      },
+      "details": {
+        "facility": "Super-Kamiokande",
+        "decay_channel": "p→e+π0",
+        "input": "450 kton·years, SK I–IV and enlarged fiducial volume",
+        "aggregation": "2020 channel-specific published bound; do not label newest 2026 global limit"
+      },
+      "interpretation": {
+        "model_test": "A specified GUT proton-decay partial-lifetime prediction in exactly this two-body channel must respect the channel-specific bound",
+        "limitation": "Not a bound on total proton lifetime or on two-pion/other decay channels; applies to τ/B at stated CL."
+      }
+    },
+    {
+      "id": "p_to_e_pi0pi0_sk_2026",
+      "domain": "baryon_number",
+      "observable": "Super-Kamiokande partial lifetime p→e+π0π0",
+      "kind": "lower_limit",
+      "value": {
+        "threshold": "7.2e33",
+        "unit": "years",
+        "confidence_level": "0.90",
+        "limit_label": "90% CL lower limit on τ/B"
+      },
+      "source_date": "2026-10-26",
+      "source": {
+        "url": "https://journals.aps.org/prd/abstract/10.1103/frxr-pk3t",
+        "title": "Super-Kamiokande, proton decay p→e+π0π0 in 0.401 megaton-years, Phys Rev D 114, 072009 (2026)",
+        "status": "peer_reviewed_primary"
+      },
+      "details": {
+        "facility": "Super-Kamiokande",
+        "decay_channel": "p→e+π0π0",
+        "input": "0.401 Mton·years SK I–V pure water phases",
+        "aggregation": "specific three-body, two-pion proton-decay search"
+      },
+      "interpretation": {
+        "model_test": "Exclude dynamical parameter points producing a partial lifetime in precisely p→e+π0π0 below this lower bound",
+        "limitation": "Not interchangeable with p→e+π0; different final-state multiplicity and experimental efficiencies."
+      }
+    },
+    {
+      "id": "p_to_mu_pi0pi0_sk_2026",
+      "domain": "baryon_number",
+      "observable": "Super-Kamiokande partial lifetime p→μ+π0π0",
+      "kind": "lower_limit",
+      "value": {
+        "threshold": "4.5e33",
+        "unit": "years",
+        "confidence_level": "0.90",
+        "limit_label": "90% CL lower limit on τ/B"
+      },
+      "source_date": "2026-10-26",
+      "source": {
+        "url": "https://journals.aps.org/prd/abstract/10.1103/frxr-pk3t",
+        "title": "Super-Kamiokande, proton decay p→μ+π0π0 in 0.401 megaton-years, Phys Rev D 114, 072009 (2026)",
+        "status": "peer_reviewed_primary"
+      },
+      "details": {
+        "facility": "Super-Kamiokande",
+        "decay_channel": "p→μ+π0π0",
+        "input": "0.401 Mton·years SK I–V pure water phases",
+        "aggregation": "specific three-body, muon and two-pion proton-decay search"
+      },
+      "interpretation": {
+        "model_test": "Compare a specifically calculated p→μ+π0π0 partial lifetime against this bound, with the same final-state kinematics.",
+        "limitation": "Not interchangeable with the electron channel or two-body p→μ+π0."
+      }
+    },
+    {
+      "id": "p_to_e_invisible_sk_2026",
+      "domain": "baryon_number",
+      "observable": "Super-Kamiokande partial lifetime p→e+X (massless invisible X)",
+      "kind": "lower_limit",
+      "value": {
+        "threshold": "1.72e33",
+        "unit": "years",
+        "confidence_level": "0.90",
+        "limit_label": "90% CL lower limit on τ/B"
+      },
+      "source_date": "2026-10-13",
+      "source": {
+        "url": "https://journals.aps.org/prd/abstract/10.1103/rsr5-d3x2",
+        "title": "Super-Kamiokande, proton decay to charged antilepton + massless invisible X, Phys Rev D 114, 072005 (2026)",
+        "status": "peer_reviewed_primary"
+      },
+      "details": {
+        "facility": "Super-Kamiokande",
+        "decay_channel": "p→e+X (invisible massless neutral X)",
+        "input": "401 kton·years entire pure-water phases",
+        "aggregation": "assumes massless invisible neutral X in final state"
+      },
+      "interpretation": {
+        "model_test": "Test only candidate models with the specified invisible massless neutral X and p→e+X decay kinematics",
+        "limitation": "Cannot be applied indiscriminately to an arbitrary massive invisible particle or other channel."
+      }
+    },
+    {
+      "id": "muon_edm_fermilab_2026",
+      "domain": "cp_violation",
+      "observable": "Fermilab muon EDM absolute upper limit",
+      "kind": "upper_limit",
+      "value": {
+        "threshold": "1.1e-19",
+        "unit": "e*cm",
+        "confidence_level": "0.95",
+        "limit_label": "95% CL bound on |d_mu|"
+      },
+      "source_date": "2026-08",
+      "source": {
+        "url": "https://news.fnal.gov/2026/08/muon-g-2-experiment-places-new-constraints-on-a-forbidden-property-of-muons/",
+        "title": "Fermilab Muon g-2 collaboration, 2026 official muon electric dipole moment release",
+        "status": "official_collaboration_release"
+      },
+      "details": {
+        "facility": "Fermilab Muon g−2",
+        "input": "25% of experiment data; reported d_mu=(-0.35±0.39)×10^-19 e·cm",
+        "aggregation": "direct muon EDM result, distinct from muon anomalous magnetic moment"
+      },
+      "interpretation": {
+        "model_test": "CP-violating candidate physics with a predicted muon EDM must respect the absolute bound under the same convention",
+        "limitation": "Release month known, day not asserted here; not an upper bound on electron EDM or on other CP-odd observables."
+      }
+    }
+  ],
+  "open_requirements": [
+    {
+      "id": "three_generations",
+      "status": "NOT_EXPLAINED_BY_LEDGER",
+      "why": "SM-Y0 verifies one given family only; three-generation origin remains unproved."
+    },
+    {
+      "id": "higgs_yukawa_spectrum",
+      "status": "NOT_EXPLAINED_BY_LEDGER",
+      "why": "Experimentally fitted masses and signal strengths do not derive Yukawa couplings."
+    },
+    {
+      "id": "neutrino_absolute_mass",
+      "status": "NOT_ESTABLISHED_BY_OSCILLATION_DATA",
+      "why": "JUNO measures oscillation mixing and squared-mass differences, not individual absolute masses."
+    },
+    {
+      "id": "ckm_pmns_full",
+      "status": "PENDING_DATA_IMPORT",
+      "why": "Version-specific PDG tables and covariance must be sourced before numeric model exclusion."
+    },
+    {
+      "id": "4d_chirality_gauge",
+      "status": "REQUIRES_EXPLICIT_DERIVATION",
+      "why": "No BFSS or Spin(10) map to physical 3+1-dimensional chiral SM fields has been qualified."
+    },
+    {
+      "id": "quantum_gravity",
+      "status": "OUTSIDE_SM_D0_SCOPE",
+      "why": "Collider and neutrino inputs alone cannot validate a quantum-gravity framework."
+    }
+  ]
+}
