@@ -1,19 +1,5 @@
 import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC3PrivatePairIncidence
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalWitnesses
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMY0OneFamilyAnomalyLedger
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalWitnesses
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMY0OneFamilyAnomalyLedger
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalWitnesses
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMY0OneFamilyAnomalyLedger
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalWitnesses
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMY0OneFamilyAnomalyLedger
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalWitnesses
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMY0OneFamilyAnomalyLedger
+import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalIndependentConsumer
 
 /-!
 Independent original consumer of SCC3A using the already-qualified SCC2
