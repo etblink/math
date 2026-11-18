@@ -1,0 +1,176 @@
+name: SM-D1-SCC3A R1 original private-pair native GREEN independent preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/sm-d1-scc3a-r1-original-green-preservation.yml
+permissions:
+  actions: read
+  contents: write
+jobs:
+  preserve-original-native-source-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout unified integration with full historical provenance
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Verify original tested source consumer SCC2 SCC1 and protected BFSS
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse 2dbedefbc206dee493a003fefb90352e8aab62b9:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3PrivatePairIncidence.lean)" = e7e737fa6877a85ef2bc216e3adb7fb63e12f485
+          test "$(git rev-parse 2dbedefbc206dee493a003fefb90352e8aab62b9:lean/diagnostics/SMD1SCC3PrivatePairIndependentConsumer.lean)" = 6756ffcbad4c4066d359bf038cf39bf31b49565f
+          test "$(git rev-parse 2dbedefbc206dee493a003fefb90352e8aab62b9:.github/workflows/sm-d1-scc3a-private-pair-lean-strict.yml)" = 8cf4430c063549be0e83dde8e06729a4364dd8f5
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3PrivatePairIncidence.lean)" = e7e737fa6877a85ef2bc216e3adb7fb63e12f485
+          test "$(git rev-parse HEAD:lean/diagnostics/SMD1SCC3PrivatePairIndependentConsumer.lean)" = 6756ffcbad4c4066d359bf038cf39bf31b49565f
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC2FamilyMinimalWitnesses.lean)" = 1f3aecd60e2fc9e73da88a8b2e9bc4c2a722ac2a
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC1FiniteWitnessSeparation.lean)" = b78f942e12874c1bb690ef2d6d6ef2a800031245
+          test "$(git rev-parse HEAD:research/standard-model/evidence/SMD1_SCC2_R2_44407657796_ORIGINAL_STRICT_GREEN_evidence.zip)" = 2f8eb4be633546a7d2ddf1f33d174f6c3900264b
+          test "$(git rev-parse HEAD:research/standard-model/evidence/SMD1_SCC1_R3_44403273333_ORIGINAL_STRICT_GREEN_evidence.zip)" = faf10f95ec2973ad5040be3f6f2ac362dcc1ca10
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMY0OneFamilyAnomalyLedger.lean)" = 481a984b5ba7d2d7df41297d162ab1d608646d6e
+          test "$(git rev-parse HEAD:research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json)" = 1d391ba994ee23f03c4423b45fbb15e7e42c86f1
+          test "$(git rev-parse HEAD:research/standard-model/tools/smd1_scc0.py)" = 95569dffd88af133df3dd56d23e1f61ca8c4a207
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())
+          bf=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          assert s['last_qualified']['gate']=='SM-Y0'
+          assert s['last_qualified_empirical']['gate']=='SM-D0'
+          assert s['last_qualified_methodology']['gate']=='SM-D1-SCC0'
+          assert s['last_qualified_formal_methodology']['gate']=='SM-D1-SCC2'
+          assert s['last_qualified_formal_methodology']['independent_preservation_run']==44409177660
+          assert s['previous_qualified_formal_methodology']['gate']=='SM-D1-SCC1'
+          assert any(x['id']=='SM-D1' and x['status']=='PROSPECTIVE_UNSTAGED' for x in s['upcoming'])
+          assert len(bf['accepted_anchors'])==27
+          assert (bf['active']['gate'],bf['active']['status'],bf['active']['qualification'])==('P3-M4-W0C2B2','BLOCKED',False)
+          assert not list(Path('research/standard-model/evidence').glob('SMD1_SCC3A_R1_44410857114_*'))
+          print('SM_D1_SCC3A_R1_FROZEN_SOURCE_CONSUMER_SCC2_SCC1_SM_BFSS_27_PREFLIGHT_PASS')
+          PY
+      - name: Independently verify original GREEN provider ZIP source consumer and full job
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,re,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/etblink/math'
+          run=44410857114
+          job=135178286697
+          artifact=14476464291
+          tested='2dbedefbc206dee493a003fefb90352e8aab62b9'
+          size=2581
+          digest='a5cc8125065db49f74745bd4f1c8327a90cbf2737474378cb5aec3d08a45f31e'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],
+                   'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def meta(path):
+              req=urllib.request.Request(base+path,headers=headers)
+              with urllib.request.urlopen(req,timeout=60) as resp:return json.load(resp)
+          rr=meta(f'/actions/runs/{run}')
+          jj=meta(f'/actions/jobs/{job}')
+          aa=meta(f'/actions/artifacts/{artifact}')
+          assert (rr['head_sha'],rr['status'],rr['conclusion'],rr['run_attempt'])==(tested,'completed','success',1)
+          assert (jj['id'],jj['run_id'],jj['conclusion'])==(job,run,'success')
+          for key in ('Checkout exact unified','Verify exact source consumer',
+                      'Restore pinned Lean','Cold SCC1 SCC2 SCC3',
+                      'Preserve exact tested source'):
+              assert any(s['name'].startswith(key) and s['conclusion']=='success'
+                         for s in jj['steps']),key
+          assert (aa['id'],aa['size_in_bytes'],aa['digest'])==(artifact,size,'sha256:'+digest)
+          assert (aa['workflow_run']['id'],aa['workflow_run']['head_sha'])==(run,tested)
+          assert aa['name']=='sm-d1-scc3a-original-private-pair-source-consumer'
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def download(path):
+              req=urllib.request.Request(base+path,headers=headers)
+              try:
+                  response=urllib.request.build_opener(NoRedirect).open(req,timeout=60)
+              except urllib.error.HTTPError as exc:
+                  assert exc.code==302,exc
+                  signed=exc.headers['Location']
+                  assert signed.startswith('https://')
+                  with urllib.request.urlopen(signed,timeout=90) as r:return r.read()
+              else:
+                  with response:return response.read()
+          raw=download(f'/actions/artifacts/{artifact}/zip')
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          roots=['uniform_iff_pairwise_cover','deletion_failure_iff_uncovered_pair',
+                 'uncovered_pair_yields_private','uniform_minimal_iff_private',
+                 'inclusion_minimal_iff_private']
+          consumers=['toy_two_witnesses_uniform_consumer','toy_incidence_cover_consumer',
+                     'true_private_pair_consumer','false_private_pair_consumer',
+                     'all_witnesses_have_private_pair_consumer',
+                     'minimal_from_private_pair_consumer']
+          allowed={'propext','Classical.choice','Quot.sound'}
+          pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          pkgwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          def audit(report,expected):
+              assert 'sorryAx' not in report and 'error:' not in report
+              unexpected=[x for x in report.splitlines() if 'warning:' in x and not pkgwarn.fullmatch(x)]
+              assert not unexpected,unexpected
+              found=pat.findall(report)
+              assert len(found)==len(expected),(found,expected)
+              assert [name.rsplit('.',1)[-1] for name,_ in found]==expected
+              for _,ax in found:
+                  assert {x.strip() for x in ax.split(',') if x.strip()}<=allowed,ax
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None
+              names=set(z.namelist())
+              required={'preflight.log','tested-commit.txt','cold-source.log','source-axioms.log',
+                        'consumer.log','auditor.log'}
+              assert required<=names,names
+              assert z.read('tested-commit.txt').decode().strip()==tested
+              assert 'SM_D1_SCC3A_5_SOURCE_6_CONSUMER_2_EXAMPLES_PINNED_MATHLIB_SCC2_SCC1_SM_Y0_SM_D0_SCC0_27_BFSS_ANCHORS_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+              cold=z.read('cold-source.log').decode()
+              assert 'Build completed successfully (3094 jobs)' in cold
+              assert 'error:' not in cold and 'sorryAx' not in cold
+              audit(z.read('source-axioms.log').decode(),roots)
+              audit(z.read('consumer.log').decode(),consumers)
+              assert 'SM_D1_SCC3A_5_NATIVE_SOURCE_6_INDEPENDENT_CONSUMER_2_EXAMPLES_6_NEGATIVE_AUDITS_STRICT_GREEN' in z.read('auditor.log').decode()
+              members=[{'name':n,'size':len(z.read(n)),
+                        'sha256':hashlib.sha256(z.read(n)).hexdigest(),
+                        'crc32':format(z.getinfo(n).CRC,'08x')} for n in sorted(names)]
+          complete=download(f'/actions/jobs/{job}/logs')
+          assert len(complete)>40000,len(complete)
+          assert b'SM_D1_SCC3A_5_NATIVE_SOURCE_6_INDEPENDENT_CONSUMER_2_EXAMPLES_6_NEGATIVE_AUDITS_STRICT_GREEN' in complete
+          assert b'SM_D1_SCC3A_5_SOURCE_6_CONSUMER_2_EXAMPLES_PINNED_MATHLIB_SCC2_SCC1_SM_Y0_SM_D0_SCC0_27_BFSS_ANCHORS_PREFLIGHT_PASS' in complete
+          out=Path('research/standard-model/evidence')
+          zp=out/'SMD1_SCC3A_R1_44410857114_ORIGINAL_STRICT_GREEN_evidence.zip'
+          lp=out/'SMD1_SCC3A_R1_44410857114_ORIGINAL_complete_job.log'
+          mp=out/'SMD1_SCC3A_R1_44410857114_ORIGINAL_STRICT_GREEN_evidence_manifest.json'
+          for p in (zp,lp,mp):assert not p.exists(),p
+          zp.write_bytes(raw)
+          lp.write_bytes(complete)
+          record={
+              'gate':'SM-D1-SCC3A','attempt':'R1',
+              'status':'NATIVE_SOURCE_AND_INDEPENDENT_CONSUMER_STRICT_GREEN_MATH_ONLY',
+              'original_run':run,'original_job':job,'original_artifact':artifact,'tested_commit':tested,
+              'original_zip':{'path':str(zp),'size':size,'sha256':digest,'members':members},
+              'complete_job_log':{'path':str(lp),'size':len(complete),'sha256':hashlib.sha256(complete).hexdigest()},
+              'source_blob':'e7e737fa6877a85ef2bc216e3adb7fb63e12f485',
+              'independent_consumer_blob':'6756ffcbad4c4066d359bf038cf39bf31b49565f',
+              'original_workflow_blob':'8cf4430c063549be0e83dde8e06729a4364dd8f5',
+              'cold_build_jobs':3094,'source_axiom_reports':5,'consumer_axiom_reports':6,
+              'consumer_examples':2,'negative_auditor_controls':6,
+              'allowed_axioms':sorted(allowed),
+              'BFSS_accepted_anchors_unchanged':27,
+              'scientific_ceiling':'Finite set of deterministic Boolean witnesses, possibly infinite model scenario families; private-pair certificate of inclusion minimality. No cardinality/cost optimum, statistical power, physical prediction or original conditional NFC SCC theorem transfer.'
+          }
+          mp.write_text(json.dumps(record,indent=2,sort_keys=True)+'\n')
+          print('SM_D1_SCC3A_R1_ORIGINAL_NATIVE_STRICT_GREEN_ZIP_COMPLETE_JOB_SHA_CRC_5_SOURCE_6_CONSUMER_INDEPENDENTLY_VERIFIED')
+          PY
+      - name: Commit archived original SCC3A GREEN provider ZIP full job and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- research/standard-model/evidence/SMD1_SCC3A_R1_44410857114_ORIGINAL_*
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m 'SM-D1-SCC3A R1 preserve original private-pair native strict GREEN evidence'
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
