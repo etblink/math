@@ -1,5 +1,4 @@
 import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC3PrivatePairIncidence
-import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalIndependentConsumer
 
 /-!
 Independent original consumer of SCC3A using the already-qualified SCC2
@@ -13,15 +12,37 @@ namespace FCP.StandardModel.SMD1SCC3Consumer
 
 open FCP.StandardModel.SMD1SCC1
 open FCP.StandardModel.SMD1SCC2
-open FCP.StandardModel.SMD1SCC2Consumer
 open FCP.StandardModel.SMD1SCC3
+
+/-- Original independent fixture: two scenarios versus one; each observation
+distinguishes a different cross-family pair. -/
+def toyA : Set (Fin 3) := {0, 1}
+def toyB : Set (Fin 3) := {2}
+def toyPredict (m : Fin 3) (w : Bool) : Bool :=
+  if m = 0 then w else if m = 1 then !w else false
+
+theorem toy_two_witnesses_uniform_consumer :
+    UniformlySeparates toyPredict toyA toyB
+      ({true, false} : Finset Bool) := by
+  intro a ha b hb
+  have ha' : a = (0 : Fin 3) ∨ a = (1 : Fin 3) := by
+    simpa [toyA] using ha
+  have hb' : b = (2 : Fin 3) := by
+    simpa [toyB] using hb
+  rcases ha' with h0 | h1
+  · subst a
+    subst b
+    exact ⟨true, by simp, by decide⟩
+  · subst a
+    subst b
+    exact ⟨false, by simp, by decide⟩
 
 /-- Exact incidence-cover form of the accepted SCC2 two-witness example. -/
 theorem toy_incidence_cover_consumer :
     ∀ pair : Fin 3 × Fin 3, pair.1 ∈ toyA → pair.2 ∈ toyB →
       pair ∈ CoveredPairs toyPredict ({true, false} : Finset Bool) := by
   exact (uniform_iff_pairwise_cover toyPredict toyA toyB
-    ({true, false} : Finset Bool)).mp two_witnesses_uniform_consumer
+    ({true, false} : Finset Bool)).mp toy_two_witnesses_uniform_consumer
 
 /-- The (0,2) pair belongs exclusively to the true-witness column. -/
 theorem true_private_pair_consumer :
@@ -67,7 +88,7 @@ theorem minimal_from_private_pair_consumer :
       ({true, false} : Finset Bool) := by
   apply (inclusion_minimal_iff_private toyPredict toyA toyB
     ({true, false} : Finset Bool)).mpr
-  exact ⟨two_witnesses_uniform_consumer,
+  exact ⟨toy_two_witnesses_uniform_consumer,
     all_witnesses_have_private_pair_consumer⟩
 
 example :
@@ -85,6 +106,7 @@ example :
   subst v
   exact hneq (by decide)
 
+#print axioms toy_two_witnesses_uniform_consumer
 #print axioms toy_incidence_cover_consumer
 #print axioms true_private_pair_consumer
 #print axioms false_private_pair_consumer
