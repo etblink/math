@@ -1,0 +1,132 @@
+name: SM-D1-SCC1 R2 consumer dependency RED original evidence preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/sm-d1-scc1-r2-native-red-evidence-preservation.yml
+permissions:
+  contents: write
+  actions: read
+jobs:
+  archive-r2-original-red:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout canonical branch with immutable history
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Check tested commit source and preserved gate boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse 963546220631a1b75229425d1aa860577ee011bc:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC1FiniteWitnessSeparation.lean)" = b78f942e12874c1bb690ef2d6d6ef2a800031245
+          test "$(git rev-parse 963546220631a1b75229425d1aa860577ee011bc:.github/workflows/sm-d1-scc1-finite-witness-lean-strict.yml)" = ca52ce31a45b3f92a0d2f9d334f1ff872405cb75
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          sm=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())
+          bf=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          assert sm['last_qualified']['gate']=='SM-Y0'
+          assert sm['last_qualified_empirical']['gate']=='SM-D0'
+          assert sm['last_qualified_methodology']['gate']=='SM-D1-SCC0'
+          assert len(bf['accepted_anchors'])==27
+          assert bf['active']['status']=='BLOCKED'
+          assert not list(Path('research/standard-model/evidence').glob('SMD1_SCC1_R2_44402082336_*'))
+          print('SM_D1_SCC1_R2_FROZEN_SOURCE_BFSS_27_ANCHORS_PREFLIGHT_PASS')
+          PY
+      - name: Independently verify original CI job ZIP and exact missing olean diagnosis
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,urllib.request,urllib.error,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/etblink/math'
+          run=44402082336;job=135147533074;artifact=14474546461
+          sha='963546220631a1b75229425d1aa860577ee011bc'
+          digest='0da8a32f0307feae7a17cdd9ddfc74ee97bdb2d1b3aa6a222d09572573f62e6e'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def metadata(path):
+              with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers),timeout=60) as x:return json.load(x)
+          rr=metadata(f'/actions/runs/{run}')
+          jj=metadata(f'/actions/jobs/{job}')
+          aa=metadata(f'/actions/artifacts/{artifact}')
+          assert (rr['head_sha'],rr['status'],rr['conclusion'],rr['run_attempt'])==(
+              sha,'completed','failure',1)
+          assert (jj['id'],jj['run_id'],jj['conclusion'])==(job,run,'failure')
+          for name in ('Checkout exact research','Verify pinned source consumer','Restore pinned Lean'):
+              assert any(s['name'].startswith(name) and s['conclusion']=='success' for s in jj['steps']),name
+          assert any(s['name'].startswith('Cold original source') and s['conclusion']=='failure'
+                     for s in jj['steps'])
+          assert (aa['id'],aa['size_in_bytes'],aa['digest'])==(artifact,2218,'sha256:'+digest)
+          assert (aa['workflow_run']['id'],aa['workflow_run']['head_sha'])==(run,sha)
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def getraw(path):
+              try:
+                  r=urllib.request.build_opener(NoRedirect).open(
+                      urllib.request.Request(base+path,headers=headers),timeout=60)
+              except urllib.error.HTTPError as exc:
+                  assert exc.code==302,exc
+                  signed=exc.headers['Location']
+                  assert signed.startswith('https://')
+                  with urllib.request.urlopen(signed,timeout=90) as r:return r.read()
+              else:
+                  with r:return r.read()
+          data=getraw(f'/actions/artifacts/{artifact}/zip')
+          assert len(data)==2218 and hashlib.sha256(data).hexdigest()==digest
+          with zipfile.ZipFile(io.BytesIO(data)) as z:
+              assert z.testzip() is None
+              names=set(z.namelist())
+              assert {'tested-commit.txt','preflight.log','cold-source.log',
+                      'source-axioms.log','consumer.log'}<=names,names
+              assert z.read('tested-commit.txt').decode().strip()==sha
+              assert 'Build completed successfully' in z.read('cold-source.log').decode()
+              source=z.read('source-axioms.log').decode()
+              assert 'agrees_refl' in source and 'defined_separation_not_agreement' in source
+              assert 'error:' not in source and 'sorryAx' not in source
+              con=z.read('consumer.log').decode()
+              assert 'error: object file' in con and 'SMY0OneFamilyAnomalyLedger.olean' in con
+              assert 'SM_D1_SCC1_14_SOURCE_7_CONSUMER_2_EXAMPLES_SM_Y0_SM_D0_SCC0_27_BFSS_ANCHORS_PINNED_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+              members=[{'name':n,'size':len(z.read(n)),
+                        'sha256':hashlib.sha256(z.read(n)).hexdigest(),
+                        'crc32':format(z.getinfo(n).CRC,'08x')} for n in sorted(names)]
+          whole=getraw(f'/actions/jobs/{job}/logs')
+          assert len(whole)>20000 and b'SMY0OneFamilyAnomalyLedger.olean' in whole
+          root=Path('research/standard-model/evidence')
+          zp=root/'SMD1_SCC1_R2_44402082336_ORIGINAL_DEPENDENCY_RED_evidence.zip'
+          lp=root/'SMD1_SCC1_R2_44402082336_ORIGINAL_complete_job.log'
+          mp=root/'SMD1_SCC1_R2_44402082336_ORIGINAL_DEPENDENCY_RED_evidence_manifest.json'
+          for p in (zp,lp,mp):assert not p.exists(),p
+          zp.write_bytes(data);lp.write_bytes(whole)
+          mp.write_text(json.dumps({
+              'gate':'SM-D1-SCC1','attempt':'R2','status':'ORIGINAL_MISSING_CONSUMER_OLEAN_RED_UNQUALIFIED',
+              'run':run,'job':job,'tested_sha':sha,'artifact':artifact,
+              'zip':{'path':str(zp),'size':len(data),'sha256':digest,'members':members},
+              'full_job_log':{'path':str(lp),'size':len(whole),
+                              'sha256':hashlib.sha256(whole).hexdigest()},
+              'source_blob':'b78f942e12874c1bb690ef2d6d6ef2a800031245',
+              'workflow_blob':'ca52ce31a45b3f92a0d2f9d334f1ff872405cb75',
+              'native_source':'PASS_14_AXIOM_REPORTS',
+              'independent_consumer':'NOT_ELABORATED_IMPORT_OLEAN_MISSING',
+              'BFSS_original_accepted_anchors_unchanged':27,
+              'qualification':False,
+              'scope':'Build dependency RED, not a theorem contradiction. Fully preserve negative CI evidence.'
+          },sort_keys=True,indent=2)+'\n')
+          print('SM_D1_SCC1_R2_ORIGINAL_DEPENDENCY_RED_ZIP_JOB_SHA_CRC_INDEPENDENTLY_VERIFIED')
+          PY
+      - name: Commit original R2 RED artifact full job and SHA CRC manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- research/standard-model/evidence/SMD1_SCC1_R2_44402082336_ORIGINAL_*
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m 'SM-D1-SCC1 R2 preserve original native consumer dependency RED'
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
