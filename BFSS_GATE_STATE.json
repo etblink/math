@@ -1249,7 +1249,7 @@
     "workflow": ".github/workflows/bfss-m4-w0c2b0m-r1-original-complex-nested-strict.yml",
     "source_blob": "19e20ca4138c0303c28e3ab46d4b2fcf3a496bb0",
     "consumer_blob": "14f366562c5986f58fd282a09e28720e7ea171b5",
-    "workflow_blob": "c730b0a7294e41d4edcb1145d2958c01061a4135",
+    "workflow_blob": "90492c571e555267d560aba6c910fef43ae52faf",
     "contract_commit": "d66d9e52602e937063a9a47685d1a0223160f19f",
     "prospective_receipt": "research/quantum-information/BFSS_QIT_SCC_W0C2B0M_R1_COMPLEX_NESTED_ACTION_PRE_GATE_2026_11_17.md",
     "accepted_predecessor_run": 44213315719,
@@ -1269,7 +1269,9 @@
     "stopped_W0C2B0_R2_run": 44222678258,
     "stopped_W0C2B0_R1_preservation_run": 44221612711,
     "stopped_W0C2B0_R2_preservation_run": 44224922749,
-    "note": "Original Fock Op complex single-index nested matrix action only; W0C2B0 real coefficient R1/R2 remain native RED and BLOCKED; no original all-48 gamma centrality, Lie bracket, Spin9, gauge or spectral claims. Proposed source and consumer are NOT qualified until strict original GREEN and independent preservation."
+    "note": "Original Fock Op complex single-index nested matrix action only; W0C2B0 real coefficient R1/R2 remain native RED and BLOCKED; no original all-48 gamma centrality, Lie bracket, Spin9, gauge or spectral claims. Proposed source and consumer are NOT qualified until strict original GREEN and independent preservation.",
+    "prior_preflight_red_run": 44251761371,
+    "prior_preflight_red_preservation_run": 44252181709
   },
   "toolchain": {
     "lean": "4.34.1",
@@ -4751,5 +4753,32 @@
     "stopped": true,
     "stop_rule": "STOP_CURRENT_COEFFICIENT_LAYOUT_AFTER_TWO_ANALOGOUS_NATIVE_REDS",
     "stop_receipt": "research/quantum-information/BFSS_QIT_SCC_W0C2B0_R1_R2_TWO_NATIVE_REDS_STOP_AND_COMPLEX_CARRIER_ROUTE_2026_11_17.md"
+  },
+  "w0c2b0m_r1_first_preflight_red": {
+    "gate": "P3-M4-W0C2B0M",
+    "attempt": "R1",
+    "status": "PREFLIGHT_BEFORE_LEAN_UNQUALIFIED",
+    "failure_phase": "PREFLIGHT_BEFORE_LEAN",
+    "run_id": 44251761371,
+    "job_id": 134623909530,
+    "tested_sha": "55175988156ac97e075d091ddfd1cc4cfac1a54e",
+    "artifact_id": 14403608294,
+    "artifact_sha256": "176992321525e4ce947ef720e8e5c7c91bef09a41ada9d9fad9866d1e2e069a3",
+    "evidence_archive": "research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R1_44251761371_PREFLIGHT_RED_evidence.zip",
+    "evidence_archive_blob": "c1874bd132ee5962454a85c6380e2be204b4596d",
+    "evidence_job_log": "research/quantum-information/diagnostics/BFSS_W0C2B0M_R1_44251761371_complete_job.log",
+    "evidence_job_log_blob": "a8532cd1ca1c3bc29e1c9a547f8f98e26769abb2",
+    "evidence_manifest": "research/quantum-information/diagnostics/BFSS_W0C2B0M_R1_44251761371_PREFLIGHT_RED_evidence_manifest.json",
+    "evidence_manifest_blob": "30fb623f207fcfc3d521a9522435dac80050d15b",
+    "source_blob": "19e20ca4138c0303c28e3ab46d4b2fcf3a496bb0",
+    "consumer_blob": "14f366562c5986f58fd282a09e28720e7ea171b5",
+    "failed_workflow_blob": "c730b0a7294e41d4edcb1145d2958c01061a4135",
+    "preservation_run": 44252181709,
+    "preservation_commit": "32c118701944b6beaafdac83695abbcfb052e3b4",
+    "receipt": "research/quantum-information/BFSS_QIT_SCC_W0C2B0M_R1_FIRST_PREFLIGHT_RED_44251761371_IMPORT_COUNT_REPAIR_2026_11_17.md",
+    "receipt_blob": "814fad537f4fbe9f3c1ccf2347c07731430dd3ee",
+    "native_source_executed": false,
+    "consumer_executed": false,
+    "note": "Preflight Python import regex matches `import ` (trailing space); expected list incorrectly contained `import`. Correct only expected literals and retain both theorem statements, consumer and strict policy unchanged."
   }
 }

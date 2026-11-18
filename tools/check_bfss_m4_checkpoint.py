@@ -4496,7 +4496,7 @@ def check_checkpoint(root: Path, s: dict):
                 and blob(root/a['prospective_receipt'])=='5d570016acc1808b4b28627804db24027206097e'
                 and a.get('source_blob')=='19e20ca4138c0303c28e3ab46d4b2fcf3a496bb0'
                 and a.get('consumer_blob')=='14f366562c5986f58fd282a09e28720e7ea171b5'
-                and a.get('workflow_blob')=='c730b0a7294e41d4edcb1145d2958c01061a4135'
+                and a.get('workflow_blob')=='90492c571e555267d560aba6c910fef43ae52faf'
                 and a.get('first_atom')=='ORIGINAL_FOCK_COMPLEX_NESTED_SINGLE_INDEX_COEFFICIENT_ACTION'
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
                 and a.get('independent_controls')==2
@@ -4522,6 +4522,25 @@ def check_checkpoint(root: Path, s: dict):
             ('research/quantum-information/diagnostics/BFSS_M4_W0C2A_R1_44213315719_GREEN_evidence.zip','cb5591ab7ae5762150ea1d10dc093788f812d929'),
         ):
             require(blob(root/path)==expected,'accepted or stopped original evidence drift '+path)
+        preflight=s.get('w0c2b0m_r1_first_preflight_red',{})
+        require(preflight.get('gate')=='P3-M4-W0C2B0M'
+                and preflight.get('run_id')==44251761371
+                and preflight.get('tested_sha')=='55175988156ac97e075d091ddfd1cc4cfac1a54e'
+                and preflight.get('failure_phase')=='PREFLIGHT_BEFORE_LEAN'
+                and preflight.get('native_source_executed') is False
+                and preflight.get('consumer_executed') is False
+                and preflight.get('preservation_run')==44252181709
+                and preflight.get('preservation_commit')=='32c118701944b6beaafdac83695abbcfb052e3b4'
+                and preflight.get('failed_workflow_blob')=='c730b0a7294e41d4edcb1145d2958c01061a4135'
+                and preflight.get('artifact_sha256')=='176992321525e4ce947ef720e8e5c7c91bef09a41ada9d9fad9866d1e2e069a3',
+                'first original W0C2B0M harness RED incorrectly classified or lost')
+        for kind, expected in (
+            ('evidence_archive','c1874bd132ee5962454a85c6380e2be204b4596d'),
+            ('evidence_job_log','a8532cd1ca1c3bc29e1c9a547f8f98e26769abb2'),
+            ('evidence_manifest','30fb623f207fcfc3d521a9522435dac80050d15b'),
+            ('receipt','814fad537f4fbe9f3c1ccf2347c07731430dd3ee'),
+        ):
+            require(blob(root/preflight[kind])==expected,'unqualified W0C2B0M preflight RED evidence drift '+kind)
         src=(root/a['source']).read_text()
         con=(root/a['consumer']).read_text()
         expected=['originalFock_complex_nested_coefficient_compose',
