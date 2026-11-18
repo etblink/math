@@ -1,0 +1,176 @@
+name: BFSS M4 W0C2B2 E2 R2 frozen source inferred consumer strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/diagnostics/BFSSW0C2B2E2R2OriginalTargetGammaActionIndependentConsumer.lean
+      - .github/workflows/bfss-m4-w0c2b2-e2-r2-inferred-original-target-consumer-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bfss-m4-w0c2b2-e2-r2-consumer
+  cancel-in-progress: false
+jobs:
+  original-source-target-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - name: Checkout original immutable unified BFSS branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Preflight 27 anchors E0 E1 original green and original stopped B2 evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-w0c2b2-e2-r2"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-w0c2b2-e2-r2/tested-commit.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-w0c2b2-e2-r2/preflight.log"
+          import json,re,subprocess
+          from pathlib import Path
+          src='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E2OriginalTargetGammaAction.lean'
+          con='lean/diagnostics/BFSSW0C2B2E2R2OriginalTargetGammaActionIndependentConsumer.lean'
+          roots=['originalSource48K_skew_target_complex_gamma_covariance']
+          pins={
+            src:'7d372392703d0fe69942df9df58b421af6850656',
+            con:'e4e532f5c6b49a24617642d2b47a0e4a7a75d1e2',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2AOriginalBivectorLieDefectTraceBridge.lean':'51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0NOriginalSource48RealComplexCoefficientAdapter.lean':'c5841055363a6eef713f35e568409dd2fa2b6c9e',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean':'c2e7a7c665121283cde13ae5dabc183362b6b420',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B1OriginalFockJacobiCovarianceActionR2.lean':'861628fe6322c919bee87e493e1e629d48bfa8bb',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B2OriginalSource48KLieDefectGammaCentralityR2.lean':'d52f48a79750846231c306d9e9ac8ceda25d37be',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E0OpaqueFockEqualActions.lean':'46051f2904ca92d4693d85f65fa39027ec548e35',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E1OriginalSkewBracketGammaAction.lean':'5663ee2dcfd6ea682d23c3cf45dcd424888a7b89',
+            'lean/diagnostics/BFSSW0C2B2E1OriginalSkewBracketGammaActionIndependentConsumer.lean':'4450f110f9a206d278f312a333de430f64b61298',
+            '.github/workflows/bfss-m4-w0c2b2-e1-original-skew-bracket-gamma-action-strict.yml':'939c0d381253d3b0d8e149f73ac19221b80afd46',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E1_R1_44373898851_GREEN_evidence.zip':'7fb1148258fbc7c401058faedca4c57b6a9907be',
+            'research/quantum-information/diagnostics/BFSS_W0C2B2_E1_R1_44373898851_complete_job.log':'d77b37ecdb0e9d7d58414a001f33cd9c9b3c71de',
+            'research/quantum-information/diagnostics/BFSS_W0C2B2_E1_R1_44373898851_GREEN_evidence_manifest.json':'c1cac668f56c2e63c6981be38f5f77ed13cb969f',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E0_R2_44368187249_GREEN_evidence.zip':'6b4204d7603459d075c60444e1b3e12adca78fe0',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_R1_44274131658_NATIVE_RED_evidence.zip':'12b5843b116bae63e2183049cae572cb1fcc051b',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_R2_44280267807_NATIVE_RED_evidence.zip':'b668e91fa897136c5144ef535cb0fef035e9c216',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D0_R1_44330552342_TIMEOUT_evidence.zip':'5b0cd1c0581ac1a8df5c50093f91e3d12b3fef43',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D0_R2_44336446671_NATIVE_RED_evidence.zip':'18c87219367977d3d9530e90789c3e8612740849',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D1_R1_44344524186_NATIVE_RED_evidence.zip':'274024155e885fb1c5bb49e20604bd621f503f39',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D2A_R1_44350891866_NATIVE_RED_evidence.zip':'01c99ad7de02f8b71f61b830b17c66ce3d536035',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D2A_R2_44355713875_NATIVE_RED_evidence.zip':'c8d32c6291f7469400abf794b0eacd30113ec828',
+            'research/quantum-information/BFSS_W0C2B2_E1_R1_GREEN_AND_E2_TARGET_GAMMA_PRE_GATE_2026_11_18.md':'58aed697bc99ff0a665cc47fe53f2b75780d3fae'
+          }
+          pins.update({
+            '.github/workflows/bfss-m4-w0c2b2-e2-original-target-gamma-action-strict.yml':'973546eaeb8deffa0703e71b280c8890529f1717',
+            'lean/diagnostics/BFSSW0C2B2E2OriginalTargetGammaActionIndependentConsumer.lean':'2c8ecc3b34ab432b11ea45bb2581dcdf0b7665fe',
+            'research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence.zip':'eb1f32067abc3fedf97a6a160c4f6f0ffae23c4c',
+            'research/quantum-information/diagnostics/BFSS_W0C2B2_E2_R1_44376918039_complete_job.log':'f158faf777920ca7dc0c7e3af6f2cae6e300855d',
+            'research/quantum-information/diagnostics/BFSS_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence_manifest.json':'ad9a0d2f58a7e743a484cbfcc08b8bbeff3c0063',
+            'research/methodology/TRUTH_FIRST_FOUNDATIONAL_RESEARCH_CHARTER_2026_11_18.md':'0513dda5fe1feaf4572d0dd1ed09293994ec2391'
+          })
+          for path,sha in pins.items():
+            got=subprocess.check_output(['git','hash-object','--no-filters',path],text=True).strip()
+            assert got==sha,(path,got,sha)
+          s=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          a,q=s['active'],s['last_qualified']
+          assert (a['gate'],a['attempt'],a['status'],a['qualification'])==('P3-M4-W0C2B2','R2','BLOCKED',False)
+          assert a['native_red_count']==2 and a['stop_rule_action']=='STOPPED_TWO_NATIVE_SOURCE_REDS_NO_UNCHANGED_RETRY'
+          assert len(s['accepted_anchors'])==27 and s['accepted_anchors'][-1]==q
+          assert (q['gate'],q['attempt'],q['run_id'],q['status'])==('P3-M4-W0C2B1','R2',44267283653,'GREEN_QUALIFIED')
+          assert s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+          assert s['strategic_focus']['full_bivector_bracket_qualified'] is False
+          assert Path('lean/lean-toolchain').read_text().strip()=='leanprover/lean4:v4.34.1'
+          lm=json.loads(Path('lean/lake-manifest.json').read_text())
+          assert next(m['rev'] for m in lm['packages'] if m['name']=='mathlib')=='d13f23b723b8a846827a245b89c10fc7d3f11612'
+          for file,expected_imports in ((src,3),(con,1)):
+            txt=Path(file).read_text()
+            assert len(re.findall(r'(?m)^theorem\b',txt))==(1 if file==src else 2)
+            assert len(re.findall(r'(?m)^import ',txt))==expected_imports
+            assert len(re.findall(r'(?m)^#print axioms (\S+)$',txt))==(1 if file==src else 2)
+            assert 'Fermion 2 →L[ℂ] Fermion 2' in txt
+            assert 'set_option autoImplicit false' in txt
+            assert not re.search(r'(?m)^\s*(sorry|admit|axiom|unsafe)\b',txt)
+            assert not any(t in txt for t in ('maxRecDepth','maxHeartbeats','originalSource48K_lieDefect A B'))
+          assert re.findall(r'(?m)^#print axioms (\S+)$',Path(src).read_text())==roots
+          assert re.findall(r'(?m)^#print axioms (\S+)$',Path(con).read_text())==[roots[0]+'_consumer',roots[0]+'_swapped_consumer']
+          assert 'theorem '+roots[0]+'_consumer :=\n  '+roots[0] in Path(con).read_text()
+          assert 'theorem '+roots[0]+'_swapped_consumer' in Path(con).read_text()
+          assert len(re.findall(r'(?m)^example\b',Path(con).read_text()))==2
+          assert 'originalSource48_matrix_commutator_skew' in Path(src).read_text()
+          assert 'originalSource48BivectorK_skew_commutator_gamma_of_transpose' in Path(src).read_text()
+          assert 'originalSource48Fock_real_commutator_column_to_complex' in Path(src).read_text()
+          assert 'originalFock_commutator_covariance_bracket' not in Path(src).read_text()
+          assert Path(con).read_text().startswith('import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.ProbeW0C2B2E2OriginalTargetGammaAction\n')
+          gm=json.loads(Path('research/quantum-information/diagnostics/BFSS_W0C2B2_E1_R1_44373898851_GREEN_evidence_manifest.json').read_text())
+          assert gm['status']=='ORIGINAL_SOURCE_SKEW_BRACKET_GAMMA_ACTION_STRICT_GREEN_DIAGNOSTIC'
+          assert gm['strict_run']==44373898851 and gm['tested_sha']=='dea5e983d339410741d474058d590b88f01d2e25'
+          assert gm['original_zip']['sha256']=='bb92aaa134037b190e43ee7458e0fba1c2760f115621fbb4085d63ec4ba4132d'
+          assert gm['original_job_log']['sha256']=='5cbcd6a3ed5251013c1236c73f1477b87e5d2ea907ec81ab46b24b6cfe58db4c'
+          assert gm['source_axiom_reports']==gm['consumer_axiom_reports']==2 and gm['negative_mutants_rejected']==6
+          m=json.loads(Path('research/quantum-information/diagnostics/BFSS_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence_manifest.json').read_text())
+          assert m['strict_run']==44376918039 and m['source_compiled'] is True and m['consumer_compiled'] is False
+          assert m['original_zip']['sha256']=='e5b1734769af4353e2721c174e9c1e5afb85888a6b3482644a6876be036346ad'
+          assert m['complete_job_log']['sha256']=='8f004944fdd26f4bcbbc19488ad08fd6d85ebec6bce77b7d89b83127b306ffe8'
+          print('BFSS_E2_R2_27_ANCHORS_R1_ORIGINAL_CONSUMER_RED_FROZEN_PREFLIGHT_PASS')
+          PY
+      - name: Restore pinned Lean 4.34.1 and Mathlib
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Cold frozen E2 source and new inferred two-root independent consumer strict
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/bfss-w0c2b2-e2-r2"
+          timeout 1100s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.ProbeW0C2B2E2OriginalTargetGammaAction 2>&1 | tee "$root/cold-source.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E2OriginalTargetGammaAction.lean 2>&1 | tee "$root/source-axioms.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/BFSSW0C2B2E2R2OriginalTargetGammaActionIndependentConsumer.lean 2>&1 | tee "$root/consumer.log"
+          python3 - <<'PY' 2>&1 | tee "$root/auditor.log"
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'bfss-w0c2b2-e2'
+          allowed={'propext','Classical.choice','Quot.sound'}
+          pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          allowed_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          def audit(log,expected):
+            assert 'sorryAx' not in log and 'error:' not in log
+            warnings=[line for line in log.splitlines() if 'warning:' in line and not allowed_warning.fullmatch(line)]
+            assert not warnings,warnings
+            found=pat.findall(log)
+            assert len(found)==len(expected),(found,expected)
+            assert [name.rsplit('.',1)[-1] for name,_ in found]==expected
+            for _,ax in found:assert {a.strip() for a in ax.split(',') if a.strip()}<=allowed,ax
+          good="'N.a' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+          audit(good,['a'])
+          mutants=[good.replace('Quot.sound','sorryAx',1),good.replace('Quot.sound','Foreign.axiom',1),
+                   good+good,'',good+'warning: unexpected\n',good+'error: failed\n']
+          for i,bad in enumerate(mutants):
+            try:audit(bad,['a'])
+            except AssertionError:pass
+            else:raise AssertionError(('negative mutation passed',i))
+          cold=(root/'cold-source.log').read_text()
+          assert 'Build completed successfully' in cold and 'sorryAx' not in cold and 'error:' not in cold
+          audit((root/'source-axioms.log').read_text(),[
+            'originalSource48K_skew_target_complex_gamma_covariance'])
+          audit((root/'consumer.log').read_text(),[
+            'originalSource48K_skew_target_complex_gamma_covariance_consumer',
+            'originalSource48K_skew_target_complex_gamma_covariance_swapped_consumer'])
+          print('BFSS_W0C2B2_E2_R2_SOURCE_1_TWO_INFERRED_CONSUMER_2_CONTROLS_6_MUTANTS_STRICT_GREEN')
+          PY
+      - name: Upload original E2 source/consumer provider evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-w0c2b2-e2-r2-original-evidence
+          path: /home/runner/work/_temp/bfss-w0c2b2-e2-r2/
+          retention-days: 14
+          if-no-files-found: warn
