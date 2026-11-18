@@ -1,0 +1,135 @@
+name: SM-D1-SCC3B0 original native rational total variation Lean strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean
+      - lean/diagnostics/SMD1SCC3B0RationalTotalVariationIndependentConsumer.lean
+      - .github/workflows/sm-d1-scc3b0-rational-tv-lean-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sm-d1-scc3b0-original-native-tv-strict
+  cancel-in-progress: false
+jobs:
+  original-rational-tv-source-and-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - name: Checkout exact unified source and protected original BFSS
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Verify native source consumer and original archived qualified anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/sm-d1-scc3b0"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/sm-d1-scc3b0/tested-commit.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/sm-d1-scc3b0/preflight.log"
+          import json,re,subprocess
+          from pathlib import Path
+          pins={"lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean":"8417daf98449b51d45b18951bd389cb3bd777405","lean/diagnostics/SMD1SCC3B0RationalTotalVariationIndependentConsumer.lean":"a6484a8cfeeef722d69539a524a4a2b0b79ee3ac","research/standard-model/SMD1_SCC3B0_FINITE_RATIONAL_TOTAL_VARIATION_LEAN_MICROGATE_2026_11_18.md":"291700fc28c1b21fd361fb4a9d1878734652ff60","lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3PrivatePairIncidence.lean":"e7e737fa6877a85ef2bc216e3adb7fb63e12f485","lean/diagnostics/SMD1SCC3PrivatePairIndependentConsumer.lean":"6756ffcbad4c4066d359bf038cf39bf31b49565f","lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC2FamilyMinimalWitnesses.lean":"1f3aecd60e2fc9e73da88a8b2e9bc4c2a722ac2a","lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC1FiniteWitnessSeparation.lean":"b78f942e12874c1bb690ef2d6d6ef2a800031245","lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMY0OneFamilyAnomalyLedger.lean":"481a984b5ba7d2d7df41297d162ab1d608646d6e","research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json":"1d391ba994ee23f03c4423b45fbb15e7e42c86f1","research/standard-model/tools/smd1_scc0.py":"95569dffd88af133df3dd56d23e1f61ca8c4a207","research/standard-model/evidence/SMD1_SCC1_R3_44403273333_ORIGINAL_STRICT_GREEN_evidence.zip":"faf10f95ec2973ad5040be3f6f2ac362dcc1ca10","research/standard-model/evidence/SMD1_SCC2_R2_44407657796_ORIGINAL_STRICT_GREEN_evidence.zip":"2f8eb4be633546a7d2ddf1f33d174f6c3900264b","research/standard-model/evidence/SMD1_SCC3A_R1_44410857114_ORIGINAL_STRICT_GREEN_evidence.zip":"a37c8350995349051c6623efa1cf532f1429821e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E2OriginalTargetGammaAction.lean":"7d372392703d0fe69942df9df58b421af6850656"}
+          for path,expected in pins.items():
+              got=subprocess.check_output(['git','hash-object','--no-filters',path],text=True).strip()
+              assert got==expected,(path,got,expected)
+          s=Path('lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean').read_text()
+          c=Path('lean/diagnostics/SMD1SCC3B0RationalTotalVariationIndependentConsumer.lean').read_text()
+          roots=["totalVariation_nonneg","totalVariation_self","totalVariation_symm","totalVariation_eq_zero_iff","totalVariation_pos_iff","totalVariation_pos_of_witness","totalVariation_le_one"]
+          consumer=["positive_distinct_masses_consumer","symmetry_consumer","self_zero_consumer","zero_characterizes_equal_weights_consumer","every_normalized_pair_bounded_consumer"]
+          assert s.startswith('import Mathlib.Tactic\n')
+          assert c.startswith('import OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC3B0FiniteRationalTotalVariation\n')
+          assert re.findall(r'(?m)^#print axioms (\S+)$',s)==roots
+          assert re.findall(r'(?m)^#print axioms (\S+)$',c)==consumer
+          assert len(re.findall(r'(?m)^theorem\b',s))==len(roots)==7
+          assert len(re.findall(r'(?m)^theorem\b',c))==len(consumer)==5
+          assert len(re.findall(r'(?m)^example\b',c))==2
+          assert 'structure Categorical' in s and 'nonneg :' in s and 'normalized :' in s
+          assert 'totalVariation' in s and ' / 2' in s
+          for f in (s,c):
+              assert not re.search(r'(?m)^\s*(sorry|admit|axiom|unsafe)\b',f)
+              assert not any(x in f for x in ('set_option maxRecDepth','set_option maxHeartbeats'))
+          assert 'NFC_SCC_Branch' not in s+c and 'originalSource48BivectorK' not in s+c
+          sm=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())
+          assert sm['last_qualified']['gate']=='SM-Y0'
+          assert sm['last_qualified_empirical']['gate']=='SM-D0'
+          assert sm['last_qualified_methodology']['gate']=='SM-D1-SCC0'
+          assert sm['last_qualified_formal_methodology']['gate']=='SM-D1-SCC3A'
+          assert sm['last_qualified_formal_methodology']['independent_preservation_run']==44411950638
+          assert [x['gate'] for x in sm['qualified_formal_methodology_lineage']]==['SM-D1-SCC1','SM-D1-SCC2','SM-D1-SCC3A']
+          assert any(x['id']=='SM-D1' and x['status']=='PROSPECTIVE_UNSTAGED' for x in sm['upcoming'])
+          bf=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          assert len(bf['accepted_anchors'])==27
+          assert (bf['active']['gate'],bf['active']['status'],bf['active']['qualification'])==('P3-M4-W0C2B2','BLOCKED',False)
+          assert Path('lean/lean-toolchain').read_text().strip()=='leanprover/lean4:v4.34.1'
+          lm=json.loads(Path('lean/lake-manifest.json').read_text())
+          assert next(x['rev'] for x in lm['packages'] if x['name']=='mathlib')=='d13f23b723b8a846827a245b89c10fc7d3f11612'
+          print('SM_D1_SCC3B0_7_SOURCE_5_CONSUMER_2_EXAMPLES_PINNED_SCC3A_SCC2_SCC1_SM_Y0_SM_D0_SCC0_27_BFSS_ANCHORS_PREFLIGHT_PASS')
+          
+          PY
+      - name: Restore pinned Lean 4.34.1 and Mathlib d13f23b7
+        shell: bash
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get
+          test "$(lake env lean --version | grep -oF '4.34.1')" = '4.34.1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+      - name: Cold rational TV source independent consumer and strict axioms
+        shell: bash
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          root="$RUNNER_TEMP/sm-d1-scc3b0"
+          timeout 1100s lake build OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC3B0FiniteRationalTotalVariation 2>&1 | tee "$root/cold-source.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean 2>&1 | tee "$root/source-axioms.log"
+          timeout 300s lake env lean -DautoImplicit=false -DwarningAsError=true diagnostics/SMD1SCC3B0RationalTotalVariationIndependentConsumer.lean 2>&1 | tee "$root/consumer.log"
+          python3 - <<'PY' 2>&1 | tee "$root/auditor.log"
+          import os,re
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'sm-d1-scc3b0'
+          roots=["totalVariation_nonneg","totalVariation_self","totalVariation_symm","totalVariation_eq_zero_iff","totalVariation_pos_iff","totalVariation_pos_of_witness","totalVariation_le_one"]
+          consumer=["positive_distinct_masses_consumer","symmetry_consumer","self_zero_consumer","zero_characterizes_equal_weights_consumer","every_normalized_pair_bounded_consumer"]
+          allowed={'propext','Classical.choice','Quot.sound'}
+          pattern=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          pkgwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          def check(raw,names):
+              assert 'sorryAx' not in raw and 'error:' not in raw
+              unexpected=[x for x in raw.splitlines() if 'warning:' in x and not pkgwarn.fullmatch(x)]
+              assert not unexpected,unexpected
+              found=pattern.findall(raw)
+              assert len(found)==len(names),(found,names)
+              assert [name.rsplit('.',1)[-1] for name,_ in found]==names
+              for _,axs in found:
+                  assert {a.strip() for a in axs.split(',') if a.strip()}<=allowed,axs
+          good="'SM.check' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+          check(good,['check'])
+          mutants=[good.replace('Quot.sound','sorryAx'),good.replace('Quot.sound','Foreign.axiom'),
+                   good+good,'',good+'warning: unexpected\n',good+'error: unexpected\n']
+          for k,value in enumerate(mutants):
+              try:check(value,['check'])
+              except AssertionError:pass
+              else:raise AssertionError(('negative auditor mutant survived',k))
+          cold=(root/'cold-source.log').read_text()
+          assert 'Build completed successfully' in cold and 'error:' not in cold and 'sorryAx' not in cold
+          check((root/'source-axioms.log').read_text(),roots)
+          check((root/'consumer.log').read_text(),consumer)
+          print('SM_D1_SCC3B0_7_NATIVE_SOURCE_5_INDEPENDENT_CONSUMER_2_EXAMPLES_6_NEGATIVE_AUDITS_STRICT_GREEN')
+          
+          PY
+      - name: Preserve original tested source and consumer logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sm-d1-scc3b0-original-rational-tv-source-consumer
+          path: /home/runner/work/_temp/sm-d1-scc3b0/
+          retention-days: 14
+          if-no-files-found: warn
