@@ -4866,6 +4866,91 @@ def check_checkpoint(root: Path, s: dict):
                 and s['next_planned']['workflow_staged'] is False
                 and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
                 'future Jacobi or original K Lie bracket prematurely promoted')
+    if a['gate']=='P3-M4-W0C2B1':
+        # First source-exact original Fock noncommutative Jacobi/covariance
+        # microgate, under explicit generic generator covariance hypotheses.
+        require(a.get('attempt')=='R1' and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('first_atom')=='ORIGINAL_FOCK_NONCOMMUTATIVE_JACOBI_AND_CONDITIONAL_COMPLEX_COEFFICIENT_COVARIANCE_CLOSURE'
+                and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B1OriginalFockJacobiCovarianceAction.lean'
+                and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B1OriginalFockJacobiCovarianceIndependentConsumer.lean'
+                and a.get('workflow')=='.github/workflows/bfss-m4-w0c2b1-r1-original-fock-jacobi-covariance-strict.yml'
+                and a.get('source_blob')=='db15340dfb46eea78c20549bb6d1616dd99f302b'
+                and a.get('consumer_blob')=='76f5071b847245fe4173b0dde8205c8b69173b5d'
+                and a.get('workflow_blob')=='a7e7b89896f5f447ec88f0c548d222be54a5fdee'
+                and a.get('contract_commit')=='4e950fcb597f1ac56aecd93fb70ec100e9ebad63'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B1_R1_ORIGINAL_FOCK_JACOBI_COVARIANCE_PRE_GATE_2026_11_17.md'
+                and blob(root/a['prospective_receipt'])=='8309ef707b0cd0776d2a2bf4c019b208ed4765f4'
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==4
+                and a.get('independent_controls')==4
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and a.get('accepted_predecessor_run')==44260119108
+                and s['last_qualified']['gate']=='P3-M4-W0C2B0N'
+                and s['last_qualified']['attempt']=='R1'
+                and s['last_qualified']['run_id']==44260119108
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and len(s['accepted_anchors'])==26
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'new B1 original Fock Jacobi covariance pre-gate contract or 26 accepted anchors drift')
+        n=s['last_qualified']
+        require(n.get('source_blob')=='c5841055363a6eef713f35e568409dd2fa2b6c9e'
+                and n.get('consumer_blob')=='3773f069d3da87c7c899596817f02efec639fbfa'
+                and n.get('workflow_blob')=='d431d74251ba5826baf312534fd6578424306643'
+                and n.get('tested_sha')=='d66a948cfd9741fd4f9428471d9e7f559228276f'
+                and n.get('artifact_sha256')=='e68c0260726275649427ee7d4e02c8c954504fd5fd228cd86a7f9a58e0f12761'
+                and n.get('preservation_run')==44261708018
+                and n.get('evidence_archive_blob')=='3e57a0e7205dc6f34c6f3da90ff3056fa63943ea'
+                and n.get('evidence_job_log_blob')=='43186ecee898599b9f21e02b2484543e24e79790'
+                and n.get('evidence_manifest_blob')=='4a2e00c318f0b202ebafda249bc6be81e3f0532c',
+                'accepted original N donor strict SHA and independent archive identity drift')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/n[kind])==n[kind+'_blob'],
+                    'original 26th accepted anchor source/evidence drift '+kind)
+        for path,sha in (
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean','b0b519e46566856e100bf6aa882f9fcdf37d397e'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B0MOriginalFockComplexNestedCoefficientR2.lean','b98cc05a012c98da8016496492d77135fc58ebc8'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean','c2e7a7c665121283cde13ae5dabc183362b6b420'),
+            ('lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2AOriginalBivectorLieDefectTraceBridge.lean','51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R2_44255202048_GREEN_evidence.zip','547432c9bf3fb0778d6bc060daa6f9a6e9afc004'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R1_44218523669_NATIVE_RED_evidence.zip','4117bd19a0a8d1614df176e72d69a9b628de19da'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0_R2_44222678258_NATIVE_RED_evidence.zip','3f15c1c8bcf0e057e3de2055abc6ec00e8b931ec'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R1_44252646318_NATIVE_RED_evidence.zip','277b934810e6a999c974917d23a199ccd0be3ddd'),
+            ('research/quantum-information/diagnostics/BFSS_M4_W0C2B0M_R2_44254608894_PREFLIGHT_RED_evidence.zip','3e7266878a5eb46fffb753dc852032fc1a196581'),
+        ):
+            require(blob(root/path)==sha,'original Fock Jacobi accepted donor/negative history drift '+path)
+        require(s['previous_active_W0C2B0_R2_stopped']['native_red_count']==2
+                and s['previous_active_W0C2B0_R2_stopped']['status']=='BLOCKED'
+                and s['previous_active_W0C2B0M_R1_NATIVE_RED']['run_id']==44252646318
+                and s['w0c2b0m_r2_first_preflight_red']['run_id']==44254608894
+                and a['original_W0C2B0M_R1_native_red_run']==44252646318,
+                'stopped real and complex-source native RED evidence lost or misclassified')
+        src=(root/a['source']).read_text()
+        con=(root/a['consumer']).read_text()
+        expected=['originalFock_commutator_sum','originalFock_commutator_weighted_sum',
+                  'originalFock_commutator_jacobi','originalFock_commutator_covariance_bracket']
+        roots=[line.split()[-1] for line in src.splitlines() if line.startswith('#print axioms ')]
+        consumers=[line.split()[-1] for line in con.splitlines() if line.startswith('#print axioms ')]
+        require(sum(line.startswith('theorem ') for line in src.splitlines())==4
+                and sum(line.startswith('theorem ') for line in con.splitlines())==4
+                and sum(line.startswith('example ') for line in con.splitlines())==4
+                and roots==expected
+                and consumers==[name+'_consumer' for name in expected]
+                and src.count('Fermion 2 →L[ℂ] Fermion 2')==1
+                and con.count('Fermion 2 →L[ℂ] Fermion 2')==1
+                and 'noncomm_ring' in src
+                and 'originalFock_commutator_complex_smul' in src
+                and 'originalFock_complex_nested_coefficient_bracket' in src
+                and 'sourceNormalizedGamma' not in src
+                and 'originalSource48K_lieDefect' not in src
+                and 'maxRecDepth' not in src and 'maxHeartbeats' not in src,
+                'W0C2B1 changed original operator carrier Jacobi or conditional closure contract')
+        require(s['next_planned']['gate']=='P3-M4-W0C2B2'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False
+                and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
+                'future all-48 gamma defect centrality/full K bracket prematurely promoted')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
