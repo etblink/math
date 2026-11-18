@@ -1,0 +1,136 @@
+name: BFSS W0C2B2 R1 original Source48 centrality native RED exact evidence preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/bfss-m4-w0c2b2-r1-native-red-preservation.yml
+permissions:
+  contents: write
+  actions: read
+jobs:
+  preserve-original-b2-r1-native-red:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout immutable B2 R1 source and 27 accepted anchors
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Verify source consumer workflow and accepted donor bytes before archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B2OriginalSource48KLieDefectGammaCentrality.lean)" = aae0746f002b1c74bf7712c59d7b5abfe4c8019a
+          test "$(git rev-parse HEAD:lean/diagnostics/BFSSP3M4W0C2B2OriginalSource48KLieDefectGammaCentralityIndependentConsumer.lean)" = 69f06d3c451f9a2ca09ff49fb1c752ad49033544
+          test "$(git rev-parse HEAD:.github/workflows/bfss-m4-w0c2b2-r1-original-source48-defect-gamma-centrality-strict.yml)" = 776f5fc85b18fa1d74433f66f0604fd62ee5fd56
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0C2B1_R2_44267283653_GREEN_evidence.zip)" = b79401089d48f219ec329d8b98690d9022cd4e7b
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0C2B1_R1_44263755514_NATIVE_RED_evidence.zip)" = 98b23994b080a087d77d8317a4758a774f0f1ef2
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          a,q=s['active'],s['last_qualified']
+          assert (a['gate'],a['attempt'],a['status'],a['qualification'])==('P3-M4-W0C2B2','R1','PENDING_STRICT_CI',False)
+          assert (q['gate'],q['attempt'],q['run_id'],q['status'])==('P3-M4-W0C2B1','R2',44267283653,'GREEN_QUALIFIED')
+          assert len(s['accepted_anchors'])==27 and s['accepted_anchors'][-1]==q
+          assert q['preservation_run']==44269104447
+          assert s['previous_active_W0C2B1_R1_NATIVE_RED']['run_id']==44263755514
+          assert s['previous_active_W0C2B0_R2_stopped']['native_red_count']==2
+          root=Path('research/quantum-information/diagnostics')
+          for name in ('BFSS_M4_W0C2B2_R1_44274131658_NATIVE_RED_evidence.zip',
+                       'BFSS_W0C2B2_R1_44274131658_complete_job.log',
+                       'BFSS_W0C2B2_R1_44274131658_NATIVE_RED_evidence_manifest.json'):
+              assert not (root/name).exists(),name
+          print('BFSS_W0C2B2_R1_SOURCE_EXACT_NATIVE_TIMEOUT_PRESERVATION_PREFLIGHT_PASS')
+          PY
+      - name: Independently inspect exact RED run and hash original provider ZIP and full job
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,urllib.request,urllib.error,zipfile
+          from pathlib import Path
+          prefix='https://api.github.com/repos/etblink/math'
+          run=44274131658;job=134697829384;artifact=14414399337
+          tested='8dc20592dc7739d3b7a5438bed945efb2c6d720e'
+          size=20357;digest='44c16b6bf846278c43ddb2d262d16e3a14c7643c6d22d3b6e5e2ad570c34c50a'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def getjson(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as response:return json.load(response)
+          r=getjson(f'{prefix}/actions/runs/{run}')
+          j=getjson(f'{prefix}/actions/jobs/{job}')
+          a=getjson(f'{prefix}/actions/artifacts/{artifact}')
+          assert r['head_sha']==tested and r['status']=='completed' and r['conclusion']=='failure' and r['run_attempt']==1
+          assert j['id']==job and j['run_id']==run and j['conclusion']=='failure'
+          for step in ('Checkout exact original','Preflight 27 accepted','Restore pinned Lean'):
+              assert any(s['name'].startswith(step) and s['conclusion']=='success' for s in j['steps']),step
+          assert any(s['name'].startswith('Cold original Source48 K defect') and s['conclusion']=='failure' for s in j['steps'])
+          assert any(s['name'].startswith('Preserve original Source48 gamma') and s['conclusion']=='success' for s in j['steps'])
+          assert a['id']==artifact and a['size_in_bytes']==size and a['digest']=='sha256:'+digest
+          assert a['workflow_run']['id']==run and a['workflow_run']['head_sha']==tested
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def download(url):
+              try:response=urllib.request.build_opener(NoRedirect).open(urllib.request.Request(url,headers=headers),timeout=60)
+              except urllib.error.HTTPError as e:
+                  assert e.code==302,e
+                  signed=e.headers['Location'];assert signed.startswith('https://')
+                  with urllib.request.urlopen(signed,timeout=90) as response:return response.read()
+              else:
+                  with response:return response.read()
+          raw=download(f'{prefix}/actions/artifacts/{artifact}/zip')
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          names={'preflight.log','tested-commit.txt','cold-source.log'}
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None and set(z.namelist())==names,z.namelist()
+              assert z.read('tested-commit.txt').decode().strip()==tested
+              assert 'BFSS_W0C2B2_R1_ORIGINAL_SOURCE48_DEFECT_CENTRALITY_27_ACCEPTED_ANCHORS_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+              cold=z.read('cold-source.log').decode()
+              for text in ('(kernel) deterministic timeout',
+                           'unknown constant',
+                           'originalSource48K_lieDefect_gamma_commutator_zero._abel_1_1',
+                           'originalSource48K_skew_complex_gamma_covariance',
+                           'originalSource48K_skew_bracket_complex_gamma_covariance',
+                           'originalSource48K_lieDefect_gamma_central',
+                           'error: build failed'):
+                  assert text in cold,text
+              members=[{'name':n,'size':len(z.read(n)),'sha256':hashlib.sha256(z.read(n)).hexdigest(),'crc32':format(z.getinfo(n).CRC,'08x')} for n in sorted(names)]
+          full=download(f'{prefix}/actions/jobs/{job}/logs')
+          assert len(full)>150000 and b'(kernel) deterministic timeout' in full
+          assert b'Artifact ID 14414399337' in full
+          root=Path('research/quantum-information/diagnostics');root.mkdir(parents=True,exist_ok=True)
+          arc=root/'BFSS_M4_W0C2B2_R1_44274131658_NATIVE_RED_evidence.zip'
+          log=root/'BFSS_W0C2B2_R1_44274131658_complete_job.log'
+          manifest=root/'BFSS_W0C2B2_R1_44274131658_NATIVE_RED_evidence_manifest.json'
+          for p in (arc,log,manifest):assert not p.exists(),p
+          arc.write_bytes(raw);log.write_bytes(full)
+          manifest.write_text(json.dumps({
+            'gate':'P3-M4-W0C2B2','attempt':'R1','status':'ORIGINAL_NATIVE_SOURCE_RED_UNQUALIFIED',
+            'strict_run':run,'job_id':job,'tested_sha':tested,'artifact_id':artifact,
+            'original_zip':{'path':str(arc),'size':size,'sha256':digest,'members':members},
+            'original_job_log':{'path':str(log),'size':len(full),'sha256':hashlib.sha256(full).hexdigest()},
+            'source_blob':'aae0746f002b1c74bf7712c59d7b5abfe4c8019a',
+            'consumer_blob':'69f06d3c451f9a2ca09ff49fb1c752ad49033544',
+            'workflow_blob':'776f5fc85b18fa1d74433f66f0604fd62ee5fd56',
+            'failure_phase':'ORIGINAL_SOURCE_LEAN','first_causal_error':'(kernel) deterministic timeout in expanded abel at source line 137',
+            'secondary_error':'unknown generated _abel_1_1 constant at source line 88',
+            'source_axiom_reports_clean':2,'source_axiom_reports_with_generated_unaccepted_axiom':2,
+            'consumer_executed':False,'native_red_count_this_architecture':1,
+            'predecessor_accepted_anchor_count':27,'predecessor_qualified_run':44267283653,
+            'claim_ceiling':'No original all-48 gamma Lie defect centrality or unconditional original K Lie bracket qualified'
+          },sort_keys=True,indent=2)+'\n')
+          print('BFSS_W0C2B2_R1_ORIGINAL_NATIVE_TIMEOUT_ZIP_COMPLETE_LOG_MEMBER_SHA_CRC_VERIFIED')
+          PY
+      - name: Git-pin immutable original native RED ZIP transcript and SHA CRC manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- research/quantum-information/diagnostics/BFSS_M4_W0C2B2_R1_44274131658_NATIVE_RED_evidence.zip research/quantum-information/diagnostics/BFSS_W0C2B2_R1_44274131658_complete_job.log research/quantum-information/diagnostics/BFSS_W0C2B2_R1_44274131658_NATIVE_RED_evidence_manifest.json
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m 'BFSS W0C2B2 R1: preserve original native Lean timeout RED evidence'
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
