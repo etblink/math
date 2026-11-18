@@ -109,7 +109,7 @@ def check_checkpoint(root: Path, s: dict):
                     'preflight RED requires complete pinned job log and exact provider artifact reference')
     if a['status']=='GREEN_QUALIFIED':
         expected_reports = (1 if a['gate'] in {'P3-M4-QTC1G0','P3-M4-W0A0','P3-M4-W0A2','P3-M4-W0A3','P3-M4-W0B1','P3-M4-W0H0','P3-M4-W0H1A'} else
-                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A','P3-M4-W0B2B','P3-M4-W0C0'} else 2)
+                            3 if a['gate'] in {'P3-M4-CT0','P3-M4-QTC0C','P3-M4-W0B2A','P3-M4-W0B2B','P3-M4-W0C0','P3-M4-W0C2A'} else 2)
         require(a.get('source_reports') == a.get('consumer_reports') == expected_reports
                 and a.get('strict_outcome') == 'success' and a.get('strict_marker'),
                 'incomplete strict qualification')
@@ -4088,6 +4088,94 @@ def check_checkpoint(root: Path, s: dict):
                     and a['strict_marker'].encode() in full
                     and b'BFSS_W0C1_R2_W0B2B_W0C0_ORIGINAL_SOURCE_EXACT_GREEN_AND_REDS_PREFLIGHT_PASS' in full,
                     'W0C1 original complete Actions log missing source success markers')
+    if a['gate']=='P3-M4-W0C2A':
+        # Only source-exact conditional Lie-defect trace and centralizer
+        # reduction; NOT the original K Lie bracket or physical Spin9.
+        require(a.get('attempt')=='R1'
+                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('qualification') is False
+                and a.get('first_atom')=='ORIGINAL_REAL_SKEW_MATRIX_COMMUTATOR_SKEW_TRACeless_K_LIE_DEFECT_AND_CONDITIONAL_W0C1_ZERO_KERNEL'
+                and a.get('contract_commit')=='3084f8598e1722420786d0d5249a56ac7710cd5b'
+                and a.get('source_blob')=='51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb'
+                and a.get('consumer_blob')=='4ddacfbe1ee1d7d55b321f4cb9c0d6d462261aec'
+                and a.get('workflow_blob')=='c1a18092b61cb05c08e08231ce10daadce99de45'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2A_ORIGINAL_BIVECTOR_DEFECT_REDUCTION_PRE_GATE_2026_11_17.md'
+                and blob(root/a['prospective_receipt'])=='8f8994200d1321053feaea80f307d72f5b2e901e'
+                and a.get('accepted_predecessor_run')==44208084307
+                and a.get('qualified_CT0_run')==43983772199
+                and a.get('qualified_W0C1_run')==44208084307
+                and a.get('expected_source_reports')==a.get('expected_consumer_reports')==3
+                and a.get('independent_controls')==3
+                and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
+                and s['last_qualified']['gate']=='P3-M4-W0C1'
+                and s['last_qualified']['attempt']=='R2'
+                and s['last_qualified']['run_id']==44208084307
+                and s['last_qualified']['qualification'] is True
+                and s['accepted_anchors'][-1]==s['last_qualified'],
+                'W0C2A original source exact conditional-defect contract or accepted predecessor drift')
+        w0c1=s['last_qualified']
+        ct0=next((x for x in s['accepted_anchors'] if x.get('gate')=='P3-M4-CT0'),{})
+        require(w0c1.get('source_blob')=='5fafaa3d73d3761719ea160466b40d94b85d74db'
+                and w0c1.get('consumer_blob')=='85e8067c892bc52533f6a3ecc1f099010efac4ae'
+                and w0c1.get('workflow_blob')=='c9db16b6c55239f3c8235a70f623ca9f929dcee1'
+                and w0c1.get('evidence_archive_blob')=='49e33bdd397f1a803b4818044549bbc6d33c3fe3'
+                and w0c1.get('evidence_job_log_blob')=='8f0acb0cc2ddbc1cf525e5ea5973cbed375b09e4'
+                and w0c1.get('evidence_manifest_blob')=='bc464292d81b0d9772436e9859f637b2e1d21db7'
+                and w0c1.get('preservation_run')==44210764881
+                and ct0.get('run_id')==43983772199
+                and ct0.get('status')=='GREEN_QUALIFIED'
+                and ct0.get('qualification') is True
+                and ct0.get('source_blob')=='a6f93c62c83bf51a0b89691196f875399d2896fa'
+                and ct0.get('consumer_blob')=='f2ddadc880c62632dd91547526ee97bc92a0d504'
+                and ct0.get('workflow_blob')=='ff7a9b5c612ee9a6050cc3622b7004150b03f46c'
+                and ct0.get('evidence_archive_blob')=='e0e0f0da963b7895eae425f4392b3b12866a2116'
+                and ct0.get('evidence_job_log_blob')=='a8f63cfafe8a914b9b155f43d213b7e3fd218ac1'
+                and ct0.get('evidence_manifest_blob')=='83db728c5e087968086ed58bae492952315c03cd',
+                'W0C2A original W0C1 or CT0 evidence unqualified or missing')
+        for donor in (w0c1,ct0):
+            for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+                require(blob(root/donor[kind])==donor[kind+'_blob'],
+                        'W0C2A accepted original trace/witness donor Git byte drift '+kind)
+        require(blob(root/'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean')=='c2e7a7c665121283cde13ae5dabc183362b6b420'
+                and s.get('previous_active_W0C1_R1_RED',{}).get('run_id')==44204390734
+                and s.get('previous_active_W0C1_R1_RED',{}).get('preservation_run')==44207291646
+                and blob(root/'research/quantum-information/diagnostics/BFSS_M4_W0C1_R1_44204390734_NATIVE_RED_evidence.zip')=='b9c846a1ef7abdecc8d5e627c5a9921a903bbf14',
+                'W0C2A source covariance donor or original R1 native RED changed')
+        import zipfile
+        original=root/w0c1['evidence_archive']
+        raw=original.read_bytes()
+        require(len(raw)==19649
+                and hashlib.sha256(raw).hexdigest()=='94b561a285577bbe61cf780ecfbf8843415f5b5f11889ae67632c2c29fa51ac1',
+                'W0C2A accepted W0C1 original CI ZIP hash mismatch')
+        with zipfile.ZipFile(original) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'auditor.log','cold-source.log','consumer.log','preflight.log','source-axioms.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()=='3f45d2df6c4200086ba2a8ee404d2f4e37524672'
+                    and 'Build completed successfully (9230 jobs).' in z.read('cold-source.log').decode(),
+                    'W0C2A accepted source-exact witness ZIP content drift')
+        src=(root/a['source']).read_text()
+        con=(root/a['consumer']).read_text()
+        require(len(re.findall(r'(?m)^theorem\b',src))==3
+                and len(re.findall(r'(?m)^theorem\b',con))==3
+                and len(re.findall(r'(?m)^example\b',con))==3
+                and 'noncomputable def originalSource48K_lieDefect' in src
+                and 'hcentral : ∀ k : Source48Label' in src
+                and 'originalFockWitness_kernel_zero' in src
+                and 'originalSource48BivectorK_skew_trace_zero' in src
+                and 'originalFockTrace_mul_comm' in src
+                and 'Matrix.transpose_mul' in src
+                and 'P3M4QTC1OriginalSourceRealComplexQuarterBridge' not in src
+                and 'P3M4CT1G0OriginalFockJacobiSource48Adapter' not in src
+                and 'maxRecDepth' not in src and 'maxHeartbeats' not in src
+                and 'sorry' not in src and 'admit' not in src,
+                'W0C2A scoped conditional-source-defect theorem declarations changed')
+        require(s['next_planned']['gate']=='P3-M4-W0C2B'
+                and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+                and s['next_planned']['source_staged'] is False
+                and s['next_planned']['consumer_staged'] is False
+                and s['next_planned']['workflow_staged'] is False
+                and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
+                'W0C2A conditional reduction must not promote original Lie bracket or W0C2B')
     if a['status']=='PENDING_STRICT_CI':
         require(a.get('accepted_predecessor_run') == s['last_qualified']['run_id'],
                 'pending gate qualified-predecessor drift')
