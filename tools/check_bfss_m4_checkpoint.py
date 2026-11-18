@@ -3839,15 +3839,15 @@ def check_checkpoint(root: Path, s: dict):
     if a['gate']=='P3-M4-W0C1':
         # W0C1 is source-exact original algebraic trace plus all 48 gamma
         # commutators; physical witness admissibility is a later gate.
-        require(a.get('attempt')=='R1'
+        require(a.get('attempt')=='R2'
                 and a.get('status')=='PENDING_STRICT_CI'
                 and a.get('qualification') is False
                 and a.get('first_atom')=='ORIGINAL_48_GAMMA_AND_ZERO_TRACE_TRIVIAL_KERNEL_THEN_COMMUTATOR_TRACE_SIGNATURE_INJECTIVITY'
-                and a.get('contract_commit')=='953d4d488bf2529554125d8bb7d5ce03eb0b4529'
-                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C1_R1_SOURCE48_SCOPE_PRE_STAGE_ADDENDUM_2026_11_17.md'
-                and a.get('source_blob')=='bdcef8cd83feda4fda905092649c7411a2456f9e'
-                and a.get('consumer_blob')=='9563e06c058771fec4be3b322be48799f38be231'
-                and a.get('workflow_blob')=='61341d74095497e43f69c05234f129c21868ed65'
+                and a.get('contract_commit')=='1b1b10b4cfdcf62716822ba1244ab2c469d33af2'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C1_R2_ORIGINAL_ZERO_SMUL_PROOF_REPAIR_PRE_GATE_2026_11_17.md'
+                and a.get('source_blob')=='5fafaa3d73d3761719ea160466b40d94b85d74db'
+                and a.get('consumer_blob')=='85e8067c892bc52533f6a3ecc1f099010efac4ae'
+                and a.get('workflow_blob')=='c9db16b6c55239f3c8235a70f623ca9f929dcee1'
                 and a.get('accepted_predecessor_run')==44192981282
                 and a.get('qualified_W0B2B_run')==44180157170
                 and a.get('qualified_W0C0_run')==44192981282
@@ -3862,8 +3862,45 @@ def check_checkpoint(root: Path, s: dict):
                 'W0C1 R1 exact source/consumer contract or accepted predecessor drift')
         require(a['original_frozen_contract']=='research/quantum-information/BFSS_QIT_SCC_W0C1_R1_ORIGINAL_COMMUTATOR_TRACE_WITNESS_PRE_GATE_2026_11_17.md'
                 and blob(root/a['original_frozen_contract'])=='800b6defbf23ef4dfcba3d5e345d186aff3c3208'
-                and blob(root/a['prospective_receipt'])=='1fe248e35d18fafbee557a78f79bf1fee3dd5e42',
+                and blob(root/a['prospective_receipt'])=='7d585894a12e92b4295f5e3ed99bda0131176aa9',
                 'W0C1 original pre-gate plan or final Source48 namespace addendum changed')
+        red=s.get('previous_active_W0C1_R1_RED',{})
+        require(red.get('gate')=='P3-M4-W0C1' and red.get('attempt')=='R1'
+                and red.get('run_id')==44204390734 and red.get('status')=='NATIVE_SOURCE_RED_UNQUALIFIED'
+                and red.get('qualification') is False
+                and red.get('native_red_count')==1
+                and red.get('tested_sha')=='38898e1198d5f0d1ad7f10b43e9e58830e007d19'
+                and red.get('source_blob')=='bdcef8cd83feda4fda905092649c7411a2456f9e'
+                and red.get('consumer_blob')=='9563e06c058771fec4be3b322be48799f38be231'
+                and red.get('workflow_blob')=='61341d74095497e43f69c05234f129c21868ed65'
+                and red.get('evidence_archive_blob')=='b9c846a1ef7abdecc8d5e627c5a9921a903bbf14'
+                and red.get('evidence_job_log_blob')=='f60230b28a2f3bf76711ad81dc6e25d4f66a9f0d'
+                and red.get('evidence_manifest_blob')=='e2a4c11096067471c6a8a2ebb7e2160d66e21b9f'
+                and red.get('preservation_run')==44207291646
+                and a.get('previous_red_run')==44204390734
+                and a.get('previous_red_preservation_run')==44207291646
+                and a.get('previous_red_artifact_sha256')=='006cbbca5679d7891d800851aabe160df014ab0f089500f059ef1999f688d884',
+                'W0C1 R1 original native RED preserved evidence/STOP count drift')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/red[kind])==red[kind+'_blob'],'W0C1 original R1 RED evidence drift '+kind)
+        import zipfile
+        raw=(root/red['evidence_archive']).read_bytes()
+        require(len(raw)==19367
+                and hashlib.sha256(raw).hexdigest()==red['artifact_sha256'],
+                'W0C1 R1 native RED ZIP SHA/size drift')
+        with zipfile.ZipFile(root/red['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'preflight.log','cold-source.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()==red['tested_sha']
+                    and 'unsolved goals' in z.read('cold-source.log').decode()
+                    and '⊢ 0 • 1 = 0' in z.read('cold-source.log').decode(),
+                    'W0C1 R1 native RED witness/error or provider archive corrupt')
+        require('unsolved goals' in (root/red['evidence_job_log']).read_text()
+                and 'exact zero_smul ℂ (1 : Op)' in (root/a['source']).read_text()
+                and 'by simp [hz0]' not in (root/a['source']).read_text(),
+                'W0C1 R2 one-line zero-smul typed proof repair or prior RED lost')
+        require(blob(root/'research/quantum-information/BFSS_QIT_SCC_W0C1_R1_SOURCE48_SCOPE_PRE_STAGE_ADDENDUM_2026_11_17.md')=='1fe248e35d18fafbee557a78f79bf1fee3dd5e42',
+                'W0C1 original R1 namespace addendum not preserved')
         predecessor=s['last_qualified']
         schur=next((x for x in s['accepted_anchors'] if x.get('gate')=='P3-M4-W0B2B'),{})
         require(schur.get('run_id')==44180157170
