@@ -1,0 +1,156 @@
+name: SM-D0 R1 original empirical-ledger provenance GREEN evidence preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/sm-d0-r1-original-green-preservation.yml
+permissions:
+  contents: write
+  actions: read
+jobs:
+  archive-original-sm-d0-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout unchanged SM-D0 and SM-Y0 source truth
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Pin original SM-D0 inputs and unmodified canonical research anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json)" = 1d391ba994ee23f03c4423b45fbb15e7e42c86f1
+          test "$(git rev-parse HEAD:research/standard-model/tools/smd0_validate.py)" = acb1847efbc092b9e5df7a775a7550dc1506f85b
+          test "$(git rev-parse HEAD:research/standard-model/SM_D0_EMPIRICAL_CONSTRAINTS_RESEARCH_AND_VALIDATION_2026_11_18.md)" = 706daade555cda8a547875f7ace28c7834ae9d46
+          test "$(git rev-parse HEAD:.github/workflows/sm-d0-empirical-constraints-frozen-source-audit.yml)" = 9af4408926ccac039b323cbd2929ad7c075805ca
+          test "$(git rev-parse HEAD:research/standard-model/SM_GATE_STATE.json)" = 02768df91731fcba91391c59713a8c33d8efec22
+          test "$(git rev-parse HEAD:research/standard-model/evidence/SMY0_R1_44388795375_ORIGINAL_STRICT_GREEN_evidence.zip)" = 8123915a1c0f792a031432d81a2ebc10dfab0c83
+          test "$(git rev-parse HEAD:research/methodology/TRUTH_FIRST_FOUNDATIONAL_RESEARCH_CHARTER_2026_11_18.md)" = 0513dda5fe1feaf4572d0dd1ed09293994ec2391
+          test "$(git rev-parse HEAD:research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E2_R2_44382978294_NATIVE_SYNTAX_RED_evidence.zip)" = 924d03cbeb88a186dc3f733297e5f01e04bbdc51
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          assert len(s['accepted_anchors'])==27
+          assert (s['active']['gate'],s['active']['status'],s['active']['qualification'])==(
+            'P3-M4-W0C2B2','BLOCKED',False)
+          assert s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
+          sm=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())
+          assert sm['last_qualified']['gate']=='SM-Y0'
+          assert sm['last_qualified']['status']=='STRICT_GREEN_INDEPENDENTLY_ARCHIVED'
+          assert sm['upcoming'][0]['id']=='SM-D0'
+          for p in (
+            'SMD0_R1_44392976400_ORIGINAL_GREEN_evidence.zip',
+            'SMD0_R1_44392976400_ORIGINAL_complete_job.log',
+            'SMD0_R1_44392976400_ORIGINAL_GREEN_evidence_manifest.json'):
+            assert not (Path('research/standard-model/evidence')/p).exists(),p
+          print('SM_D0_ORIGINAL_GREEN_FROZEN_INPUTS_SM_Y0_27_BFSS_ANCHORS_PREFLIGHT_PASS')
+          PY
+      - name: Independently download and attest original SM-D0 audit ZIP full job and SHA CRC manifest
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,urllib.request,urllib.error,zipfile
+          from pathlib import Path
+          repo='https://api.github.com/repos/etblink/math'
+          run=44392976400;job=135115264188;artifact=14469801963
+          tested='991cbd83cfc27557f08d9a9c8b07da2c32158531'
+          zipsize=1639;digest='8334235c0ded28131b335c51442857ed612b3bd50a3df6508c639914edcea0ca'
+          header={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def getjson(path):
+              with urllib.request.urlopen(urllib.request.Request(repo+path,headers=header),timeout=60) as response:return json.load(response)
+          runinfo=getjson(f'/actions/runs/{run}')
+          jobinfo=getjson(f'/actions/jobs/{job}')
+          artinfo=getjson(f'/actions/artifacts/{artifact}')
+          assert (runinfo['head_sha'],runinfo['status'],runinfo['conclusion'],runinfo['run_attempt'])==(
+            tested,'completed','success',1)
+          assert jobinfo['run_id']==run and jobinfo['id']==job and jobinfo['conclusion']=='success'
+          for name in ('Checkout exact truth-first','Preflight SM-D0 source',
+                       'Validate ten curated original-source','Upload exact SM-D0 frozen'):
+              assert any(s['name'].startswith(name) and s['conclusion']=='success' for s in jobinfo['steps']),name
+          assert (artinfo['id'],artinfo['size_in_bytes'],artinfo['digest'])==(artifact,zipsize,'sha256:'+digest)
+          assert artinfo['workflow_run']['id']==run and artinfo['workflow_run']['head_sha']==tested
+          assert artinfo['name']=='sm-d0-original-frozen-empirical-evidence'
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def download(path):
+              url=repo+path
+              try:
+                  response=urllib.request.build_opener(NoRedirect).open(
+                    urllib.request.Request(url,headers=header),timeout=60)
+              except urllib.error.HTTPError as err:
+                  assert err.code==302,err
+                  loc=err.headers['Location']
+                  assert loc.startswith('https://')
+                  with urllib.request.urlopen(loc,timeout=90) as response:return response.read()
+              else:
+                  with response:return response.read()
+          raw=download(f'/actions/artifacts/{artifact}/zip')
+          assert len(raw)==zipsize and hashlib.sha256(raw).hexdigest()==digest
+          expected={'tested-commit.txt','preflight.log','audit.log','validation.json','assertions.log'}
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None
+              names=set(z.namelist())
+              assert expected<=names,names
+              assert z.read('tested-commit.txt').decode().strip()==tested
+              assert 'SM_D0_TRUTH_FIRST_CHARTER_SM_Y0_QUALIFIED_27_BFSS_ACCEPTED_FROZEN_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+              assert 'SM_D0_10_PRIMARY_SOURCED_RECORDS_MEASUREMENT_LIMIT_TYPES_10_NEGATIVE_MUTATIONS_PASSED' in z.read('audit.log').decode()
+              assert 'SM_D0_10_INPUTS_10_NEGATIVE_AUDITS_ORIGINAL_SCHEMA_AND_PINNED_SOURCE_SHA_STRICT_GREEN' in z.read('assertions.log').decode()
+              validation=json.loads(z.read('validation.json'))
+              assert validation['as_of']=='2026-11-18'
+              assert validation['record_count']==10
+              assert (validation['measurement_count'],validation['lower_limit_count'],validation['upper_limit_count'])==(5,4,1)
+              assert validation['negative_mutations_rejected']==10
+              assert validation['primary_sources_fetched_in_ci'] is False
+              file_to_digest={
+                'ledger_sha256':'research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json',
+                'validator_sha256':'research/standard-model/tools/smd0_validate.py'
+              }
+              for key,filename in file_to_digest.items():
+                  assert validation[key]==hashlib.sha256(Path(filename).read_bytes()).hexdigest(),key
+              members=[{'name':x,'size':len(z.read(x)),'sha256':hashlib.sha256(z.read(x)).hexdigest(),
+                        'crc32':format(z.getinfo(x).CRC,'08x')} for x in sorted(names)]
+          full=download(f'/actions/jobs/{job}/logs')
+          assert len(full)>20000,len(full)
+          for token in (b'SM_D0_10_PRIMARY_SOURCED_RECORDS_MEASUREMENT_LIMIT_TYPES_10_NEGATIVE_MUTATIONS_PASSED',
+                        b'SM_D0_10_INPUTS_10_NEGATIVE_AUDITS_ORIGINAL_SCHEMA_AND_PINNED_SOURCE_SHA_STRICT_GREEN',
+                        b'Artifact ID 14469801963'):
+              assert token in full,token
+          root=Path('research/standard-model/evidence');root.mkdir(parents=True,exist_ok=True)
+          zipfile_out=root/'SMD0_R1_44392976400_ORIGINAL_GREEN_evidence.zip'
+          logfile_out=root/'SMD0_R1_44392976400_ORIGINAL_complete_job.log'
+          manifest_out=root/'SMD0_R1_44392976400_ORIGINAL_GREEN_evidence_manifest.json'
+          for p in (zipfile_out,logfile_out,manifest_out):assert not p.exists(),p
+          zipfile_out.write_bytes(raw);logfile_out.write_bytes(full)
+          manifest_out.write_text(json.dumps({
+            'gate':'SM-D0','attempt':'R1','status':'ORIGINAL_EMPIRICAL_LEDGER_PROVENANCE_AUDIT_GREEN_NOT_PHYSICS_PROOF',
+            'strict_run':run,'original_job_id':job,'tested_sha':tested,'original_provider_artifact':artifact,
+            'original_zip':{'path':str(zipfile_out),'size':len(raw),'sha256':digest,'members':members},
+            'original_complete_job_log':{'path':str(logfile_out),'size':len(full),
+                                         'sha256':hashlib.sha256(full).hexdigest()},
+            'source_ledger_blob':'1d391ba994ee23f03c4423b45fbb15e7e42c86f1',
+            'validator_blob':'acb1847efbc092b9e5df7a775a7550dc1506f85b',
+            'workflow_blob':'9af4408926ccac039b323cbd2929ad7c075805ca',
+            'record_count':10,'measurement_count':5,'lower_limit_count':4,'upper_limit_count':1,
+            'negative_mutations_rejected':10,'primary_sources_fetched_in_ci':False,
+            'SM_last_qualified_math_gate':'SM-Y0_R1_44388795375',
+            'BFSS_accepted_anchors_unchanged':27,'BFSS_canonical_status':'W0C2B2_BLOCKED',
+            'scientific_ceiling':'Source-curated snapshot and consistency validation; no independent experimental reanalysis, no model prediction, no GUT/SM/BFSS physical confirmation'
+          },sort_keys=True,indent=2)+'\n')
+          print('SM_D0_R1_ORIGINAL_VALIDATION_GREEN_ZIP_COMPLETE_JOB_AND_SHA_CRC_INDEPENDENTLY_VERIFIED')
+          PY
+      - name: Commit immutable original SM-D0 provider ZIP complete log and hash manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- research/standard-model/evidence/SMD0_R1_44392976400_ORIGINAL_GREEN_evidence.zip research/standard-model/evidence/SMD0_R1_44392976400_ORIGINAL_complete_job.log research/standard-model/evidence/SMD0_R1_44392976400_ORIGINAL_GREEN_evidence_manifest.json
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m 'SM-D0 R1: archive original GREEN empirical-ledger audit and complete job evidence'
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
