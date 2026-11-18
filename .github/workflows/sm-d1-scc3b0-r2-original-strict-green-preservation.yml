@@ -1,0 +1,168 @@
+name: SM-D1-SCC3B0 R2 original rational TV native GREEN independent preservation
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - .github/workflows/sm-d1-scc3b0-r2-original-strict-green-preservation.yml
+permissions:
+  actions: read
+  contents: write
+jobs:
+  original-r2-strict-green-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout accepted history and exact tested R2 original source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Verify original tested R2 source consumer workflow and old RED
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse ee7d687a8311a1dd3852df6aaaec4b27365fc8ad:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean)" = 8417daf98449b51d45b18951bd389cb3bd777405
+          test "$(git rev-parse ee7d687a8311a1dd3852df6aaaec4b27365fc8ad:lean/diagnostics/SMD1SCC3B0RationalTotalVariationIndependentConsumer.lean)" = 5b8be7515fec5be62c8433c8a5d8bc642e11dad4
+          test "$(git rev-parse ee7d687a8311a1dd3852df6aaaec4b27365fc8ad:.github/workflows/sm-d1-scc3b0-rational-tv-lean-strict.yml)" = a6f388f7a593662bf624977034015ffac9b1b12e
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean)" = 8417daf98449b51d45b18951bd389cb3bd777405
+          test "$(git rev-parse HEAD:lean/diagnostics/SMD1SCC3B0RationalTotalVariationIndependentConsumer.lean)" = 5b8be7515fec5be62c8433c8a5d8bc642e11dad4
+          test "$(git rev-parse HEAD:lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3PrivatePairIncidence.lean)" = e7e737fa6877a85ef2bc216e3adb7fb63e12f485
+          test "$(git rev-parse HEAD:research/standard-model/evidence/SMD1_SCC3A_R1_44410857114_ORIGINAL_STRICT_GREEN_evidence.zip)" = a37c8350995349051c6623efa1cf532f1429821e
+          test "$(git rev-parse HEAD:research/standard-model/evidence/SMD1_SCC2_R2_44407657796_ORIGINAL_STRICT_GREEN_evidence.zip)" = 2f8eb4be633546a7d2ddf1f33d174f6c3900264b
+          test "$(git rev-parse HEAD:research/standard-model/evidence/SMD1_SCC1_R3_44403273333_ORIGINAL_STRICT_GREEN_evidence.zip)" = faf10f95ec2973ad5040be3f6f2ac362dcc1ca10
+          test "$(git rev-parse HEAD:research/standard-model/tools/smd1_scc0.py)" = 95569dffd88af133df3dd56d23e1f61ca8c4a207
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          sm=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())
+          bf=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          assert sm['last_qualified']['gate']=='SM-Y0'
+          assert sm['last_qualified_empirical']['gate']=='SM-D0'
+          assert sm['last_qualified_methodology']['gate']=='SM-D1-SCC0'
+          assert sm['last_qualified_formal_methodology']['gate']=='SM-D1-SCC3A'
+          assert sm['last_qualified_formal_methodology']['independent_preservation_run']==44411950638
+          assert any(x['id']=='SM-D1' and x['status']=='PROSPECTIVE_UNSTAGED' for x in sm['upcoming'])
+          assert len(bf['accepted_anchors'])==27
+          assert (bf['active']['gate'],bf['active']['status'],bf['active']['qualification'])==('P3-M4-W0C2B2','BLOCKED',False)
+          assert Path('research/standard-model/evidence/SMD1_SCC3B0_R1_44413642677_ORIGINAL_CONSUMER_RED_evidence_manifest.json').exists()
+          assert not list(Path('research/standard-model/evidence').glob('SMD1_SCC3B0_R2_44414707214_*'))
+          print('SM_D1_SCC3B0_R2_SOURCE_EXACT_SCC3A_SCC2_SCC1_ORIGINAL_RED_SM_BFSS_27_FROZEN_PREFLIGHT_PASS')
+          PY
+      - name: Independently authenticate original R2 provider ZIP and strict theorem reports
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,io,json,os,re,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/etblink/math'
+          run=44414707214;job=135191818266;artifact=14478178317
+          tested='ee7d687a8311a1dd3852df6aaaec4b27365fc8ad'
+          size=2189
+          digest='0df3e01e26cdae85dd6cb81d6c27120a48bc6703455f0dfb576813c6f0c7e2e2'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],
+                   'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def api(path):
+              with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers),timeout=60) as r:return json.load(r)
+          rr=api(f'/actions/runs/{run}')
+          jj=api(f'/actions/jobs/{job}')
+          aa=api(f'/actions/artifacts/{artifact}')
+          assert (rr['head_sha'],rr['status'],rr['conclusion'],rr['run_attempt'])==(tested,'completed','success',1)
+          assert (jj['id'],jj['run_id'],jj['conclusion'])==(job,run,'success')
+          for name in ('Checkout exact unified','Verify native source',
+                       'Restore pinned Lean','Cold rational TV source',
+                       'Preserve original tested source'):
+              assert any(s['name'].startswith(name) and s['conclusion']=='success' for s in jj['steps']),name
+          assert (aa['id'],aa['size_in_bytes'],aa['digest'])==(artifact,size,'sha256:'+digest)
+          assert (aa['workflow_run']['id'],aa['workflow_run']['head_sha'])==(run,tested)
+          assert aa['name']=='sm-d1-scc3b0-original-rational-tv-source-consumer'
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,url):return None
+          def download(path):
+              req=urllib.request.Request(base+path,headers=headers)
+              try:
+                  resp=urllib.request.build_opener(NoRedirect).open(req,timeout=60)
+              except urllib.error.HTTPError as e:
+                  assert e.code==302,e
+                  target=e.headers['Location']
+                  assert target.startswith('https://')
+                  with urllib.request.urlopen(target,timeout=90) as r:return r.read()
+              else:
+                  with resp:return resp.read()
+          raw=download(f'/actions/artifacts/{artifact}/zip')
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          src=['totalVariation_nonneg','totalVariation_self','totalVariation_symm',
+               'totalVariation_eq_zero_iff','totalVariation_pos_iff',
+               'totalVariation_pos_of_witness','totalVariation_le_one']
+          con=['positive_distinct_masses_consumer','symmetry_consumer','self_zero_consumer',
+               'zero_characterizes_equal_weights_consumer',
+               'every_normalized_pair_bounded_consumer']
+          allowed={'propext','Classical.choice','Quot.sound'}
+          pat=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
+          pkgwarn=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+          def check(raw,names):
+              assert 'sorryAx' not in raw and 'error:' not in raw
+              unexpected=[x for x in raw.splitlines() if 'warning:' in x and not pkgwarn.fullmatch(x)]
+              assert not unexpected,unexpected
+              found=pat.findall(raw)
+              assert len(found)==len(names),(found,names)
+              assert [name.rsplit('.',1)[-1] for name,_ in found]==names
+              for _,ax in found:
+                  assert {a.strip() for a in ax.split(',') if a.strip()}<=allowed,ax
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              assert z.testzip() is None
+              names=set(z.namelist())
+              assert {'tested-commit.txt','preflight.log','cold-source.log',
+                      'source-axioms.log','consumer.log','auditor.log'}<=names,names
+              assert z.read('tested-commit.txt').decode().strip()==tested
+              assert 'SM_D1_SCC3B0_7_SOURCE_5_CONSUMER_2_EXAMPLES_PINNED_SCC3A_SCC2_SCC1_SM_Y0_SM_D0_SCC0_27_BFSS_ANCHORS_PREFLIGHT_PASS' in z.read('preflight.log').decode()
+              cold=z.read('cold-source.log').decode()
+              assert 'Build completed successfully (3092 jobs)' in cold and 'error:' not in cold and 'sorryAx' not in cold
+              check(z.read('source-axioms.log').decode(),src)
+              check(z.read('consumer.log').decode(),con)
+              assert 'SM_D1_SCC3B0_7_NATIVE_SOURCE_5_INDEPENDENT_CONSUMER_2_EXAMPLES_6_NEGATIVE_AUDITS_STRICT_GREEN' in z.read('auditor.log').decode()
+              members=[{'name':n,'size':len(z.read(n)),
+                        'sha256':hashlib.sha256(z.read(n)).hexdigest(),
+                        'crc32':format(z.getinfo(n).CRC,'08x')} for n in sorted(names)]
+          full=download(f'/actions/jobs/{job}/logs')
+          assert len(full)>40000,len(full)
+          assert b'SM_D1_SCC3B0_7_NATIVE_SOURCE_5_INDEPENDENT_CONSUMER_2_EXAMPLES_6_NEGATIVE_AUDITS_STRICT_GREEN' in full
+          assert b'SM_D1_SCC3B0_7_SOURCE_5_CONSUMER_2_EXAMPLES_PINNED_SCC3A_SCC2_SCC1_SM_Y0_SM_D0_SCC0_27_BFSS_ANCHORS_PREFLIGHT_PASS' in full
+          out=Path('research/standard-model/evidence');out.mkdir(parents=True,exist_ok=True)
+          zp=out/'SMD1_SCC3B0_R2_44414707214_ORIGINAL_STRICT_GREEN_evidence.zip'
+          lp=out/'SMD1_SCC3B0_R2_44414707214_ORIGINAL_complete_job.log'
+          mp=out/'SMD1_SCC3B0_R2_44414707214_ORIGINAL_STRICT_GREEN_evidence_manifest.json'
+          for p in (zp,lp,mp):assert not p.exists(),p
+          zp.write_bytes(raw);lp.write_bytes(full)
+          mp.write_text(json.dumps({
+              'gate':'SM-D1-SCC3B0','attempt':'R2',
+              'status':'NATIVE_SOURCE_AND_INDEPENDENT_CONSUMER_STRICT_GREEN_MATH_ONLY',
+              'original_run':run,'original_job':job,'original_artifact':artifact,'tested_commit':tested,
+              'original_zip':{'path':str(zp),'size':size,'sha256':digest,'members':members},
+              'complete_job_log':{'path':str(lp),'size':len(full),'sha256':hashlib.sha256(full).hexdigest()},
+              'original_source_blob':'8417daf98449b51d45b18951bd389cb3bd777405',
+              'original_consumer_blob':'5b8be7515fec5be62c8433c8a5d8bc642e11dad4',
+              'original_workflow_blob':'a6f388f7a593662bf624977034015ffac9b1b12e',
+              'source_axiom_reports':7,'consumer_axiom_reports':5,
+              'consumer_examples':2,'negative_auditor_mutants':6,'cold_build_jobs':3092,
+              'pinned_lean':'4.34.1','pinned_mathlib':'d13f23b723b8a846827a245b89c10fc7d3f11612',
+              'allowed_axioms':sorted(allowed),
+              'prior_original_RED':{'run':44413642677,'preservation_run':44414837216,
+                 'cause':'Finite rational sum decide failed to reduce in independent consumer'},
+              'BFSS_accepted_anchors_unchanged':27,
+              'scientific_ceiling':'Exact normalized finite rational categorical distributions and conventional total variation 0-1 mathematics only; no physical model predictions or sampling likelihood or empirical evidence.'
+          },sort_keys=True,indent=2)+'\n')
+          print('SM_D1_SCC3B0_R2_ORIGINAL_NATIVE_GREEN_7_SOURCE_5_CONSUMER_ZIP_FULL_JOB_SHA_CRC_INDEPENDENTLY_VERIFIED')
+          PY
+      - name: Commit original strict R2 GREEN ZIP complete log and manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- research/standard-model/evidence/SMD1_SCC3B0_R2_44414707214_ORIGINAL_*
+          test "$(git diff --cached --name-only | wc -l | tr -d ' ')" = 3
+          git commit -m 'SM-D1-SCC3B0 R2 archive exact original rational TV native strict GREEN'
+          git push origin HEAD:refs/heads/integration/bfss-unified-research-20261108
