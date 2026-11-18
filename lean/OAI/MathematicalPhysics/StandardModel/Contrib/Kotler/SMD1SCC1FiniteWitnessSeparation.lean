@@ -106,7 +106,7 @@ theorem singleton_deletion_minimal (p : Model → Obs → Bool)
     subst v
     intro hs
     rcases hs with ⟨x, hx, _⟩
-    simpa using hx
+    simp at hx
 
 /-- Distinguishing witnesses may produce distinct equally minimal supports. -/
 theorem distinct_singleton_minimals (p : Model → Obs → Bool)
