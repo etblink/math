@@ -5077,7 +5077,7 @@ def check_checkpoint(root: Path, s: dict):
         # True original Source48 48-gamma Lie-defect centrality under native
         # real transpose-skew assumptions; no unconditional K Lie bracket yet.
         require(a.get('attempt')=='R2'
-                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('status')=='BLOCKED'
                 and a.get('qualification') is False
                 and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B2OriginalSource48KLieDefectGammaCentralityR2.lean'
                 and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B2OriginalSource48KLieDefectGammaCentralityIndependentConsumerR2.lean'
@@ -5170,6 +5170,41 @@ def check_checkpoint(root: Path, s: dict):
                 and red['first_causal_error'].startswith('(kernel) deterministic timeout')
                 and red['native_red_count_this_architecture']==1,
                 'B2 original native RED evidence hash/causal classification changed')
+        require(a.get('strict_run')==44280267807
+                and a.get('strict_job_id')==134718776986
+                and a.get('strict_tested_sha')=='9daa90334e98c34be06866cbaf78bd9f2c5a9dbe'
+                and a.get('strict_outcome')=='failure'
+                and a.get('failure_phase')=='ORIGINAL_SOURCE_LEAN'
+                and a.get('consumer_executed') is False
+                and a.get('source_axiom_reports_clean')==2
+                and a.get('native_red_count')==2
+                and a.get('preservation_run')==44326513268
+                and a.get('preservation_commit')=='095324424294d23296d1ba0c47625ac273192310'
+                and a.get('artifact_id')==14418955007
+                and a.get('artifact_sha256')=='4b8d39783a7b9671ebb201f809c5d1760ca9e2afdd7ff72e61d1614230cfeceb'
+                and a.get('stop_rule_action')=='STOPPED_TWO_NATIVE_SOURCE_REDS_NO_UNCHANGED_RETRY',
+                'B2 second native RED unqualified stop/preservation record drift')
+        for kind,sha in (
+            ('evidence_archive','b668e91fa897136c5144ef535cb0fef035e9c216'),
+            ('evidence_job_log','9be94286a2dc42ae3a6aabdbd057891a4fe7e4c2'),
+            ('evidence_manifest','2f2215463886ba2e3611835e541dc56e95a8e99f'),
+        ):
+            require(a.get(kind+'_blob')==sha and blob(root/a[kind])==sha,
+                    'B2 original second RED evidence byte drift '+kind)
+        second=json.loads((root/a['evidence_manifest']).read_text())
+        require(second['gate']=='P3-M4-W0C2B2'
+                and second['attempt']=='R2'
+                and second['strict_run']==44280267807
+                and second['tested_sha']==a['strict_tested_sha']
+                and second['original_zip']['size']==20328
+                and second['original_zip']['sha256']==a['artifact_sha256']
+                and len(second['original_zip']['members'])==3
+                and second['original_job_log']['size']==343946
+                and second['original_job_log']['sha256']=='37f308b0c710ff22777ef49789421c3acf2840914eaa0a43ff693300855db21c'
+                and second['first_causal_error'].startswith('maximum recursion depth')
+                and second['native_red_count_this_architecture']==2
+                and second['consumer_executed'] is False,
+                'B2 R2 second native RED original manifest or stopping rule drift')
         source=(root/a['source']).read_text()
         consumer=(root/a['consumer']).read_text()
         roots=['originalSource48K_skew_complex_gamma_covariance',
