@@ -11,7 +11,7 @@ The importing independent consumer reuses SCC2's original synthetic fixture: A c
 ## Native contract
 
 - New source: `lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3PrivatePairIncidence.lean`, 5 source theorem axiom checks.
-- Importing independent consumer: `lean/diagnostics/SMD1SCC3PrivatePairIndependentConsumer.lean`, 5 theorem axiom checks and 2 examples. The qualified SCC2 independent consumer must be compiled before the SCC3 consumer: omission of an imported `.olean` produced an earlier native SCC1 RED and must not recur.
+- Importing independent consumer: `lean/diagnostics/SMD1SCC3PrivatePairIndependentConsumer.lean`, 6 theorem axiom checks and 2 examples. The importing SCC3 consumer independently reconstructs the finite SCC2-style toy fixture rather than attempting to import a diagnostics file as a library module. Explicitly cold-build the accepted SCC1 and SCC2 source imports before checking SCC3.
 - Original cold build, `-DautoImplicit=false`, `-DwarningAsError=true`, native auditor with six adversarial mutants, only `propext`, `Classical.choice`, `Quot.sound` allowed, no `sorryAx` or unjustified axioms.
 - Pin source/consumer, SCC2, original SCC1, SM-Y0, SM-D0, SCC0 evidence, SCC1 and SCC2 archived original ZIPs, 27 accepted BFSS anchors, Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`. No main-branch changes or side branch.
 - Every RED and GREEN must retain original exact tested SHA, original CI ZIP and independent original job-log/CRC/SHA evidence. No acceptance until independent archival and ledger promotion.
