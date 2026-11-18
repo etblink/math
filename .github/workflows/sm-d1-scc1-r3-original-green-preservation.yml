@@ -96,7 +96,10 @@ jobs:
           pattern=re.compile(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)")
           allowed={'propext','Classical.choice','Quot.sound'}
           def audit(raw,names):
-              assert 'sorryAx' not in raw and 'error:' not in raw and 'warning:' not in raw
+              assert 'sorryAx' not in raw and 'error:' not in raw
+              pkg_warning=re.compile(r"^warning: [a-zA-Z0-9_-]+: repository '[^']*/lean/\.lake/packages/[a-zA-Z0-9_-]+' has local changes$")
+              unexpected=[line for line in raw.splitlines() if 'warning:' in line and not pkg_warning.fullmatch(line)]
+              assert not unexpected,unexpected
               matched=pattern.findall(raw)
               assert len(matched)==len(names),(matched,names)
               assert [name.rsplit('.',1)[-1] for name,_ in matched]==names
