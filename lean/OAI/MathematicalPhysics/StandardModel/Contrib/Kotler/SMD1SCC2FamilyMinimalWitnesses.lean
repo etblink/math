@@ -67,7 +67,7 @@ theorem empty_witnesses_blocked (p : Model → Obs → Bool)
     ¬ UniformlySeparates p A B (∅ : Finset Obs) := by
   intro h
   rcases h a ha b hb with ⟨w, hw, _⟩
-  exact Finset.not_mem_empty w hw
+  simp at hw
 
 theorem family_minimal_implies_uniform (p : Model → Obs → Bool)
     (A B : Set Model) [DecidableEq Obs] (S : Finset Obs)
