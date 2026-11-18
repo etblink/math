@@ -4488,15 +4488,15 @@ def check_checkpoint(root: Path, s: dict):
                 and s['strategic_focus']['full_bivector_bracket_qualified'] is False,
                 'W0C2B0 must not claim centrality, full bracket or stage B1 prematurely')
     if a['gate']=='P3-M4-W0C2B0M':
-        # New complex-only W0C2B0M R1; old W0C2B0 R1/R2 remain stopped.
-        require(a.get('attempt')=='R1' and a.get('status')=='PENDING_STRICT_CI'
+        # New complex-only W0C2B0M R2: bounded explicit lemma repair after exact native R1 RED.
+        require(a.get('attempt')=='R2' and a.get('status')=='PENDING_STRICT_CI'
                 and a.get('qualification') is False
-                and a.get('contract_commit')=='d66d9e52602e937063a9a47685d1a0223160f19f'
-                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0M_R1_COMPLEX_NESTED_ACTION_PRE_GATE_2026_11_17.md'
-                and blob(root/a['prospective_receipt'])=='5d570016acc1808b4b28627804db24027206097e'
-                and a.get('source_blob')=='19e20ca4138c0303c28e3ab46d4b2fcf3a496bb0'
-                and a.get('consumer_blob')=='14f366562c5986f58fd282a09e28720e7ea171b5'
-                and a.get('workflow_blob')=='90492c571e555267d560aba6c910fef43ae52faf'
+                and a.get('contract_commit')=='58f7401d804bbd8e8b926263996895438a379430'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0M_R2_EXPLICIT_COMPLEX_MODULE_REPAIR_PRE_GATE_2026_11_17.md'
+                and blob(root/a['prospective_receipt'])=='090bfa986cfce97351d891979328fd81ebe77fb8'
+                and a.get('source_blob')=='b98cc05a012c98da8016496492d77135fc58ebc8'
+                and a.get('consumer_blob')=='dcbba93f72feb4f60912521f666d748bcf2e1687'
+                and a.get('workflow_blob')=='fa1ab7c0242f06e2e6a3e393d82774ec94f6b825'
                 and a.get('first_atom')=='ORIGINAL_FOCK_COMPLEX_NESTED_SINGLE_INDEX_COEFFICIENT_ACTION'
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==2
                 and a.get('independent_controls')==2
@@ -4541,6 +4541,36 @@ def check_checkpoint(root: Path, s: dict):
             ('receipt','814fad537f4fbe9f3c1ccf2347c07731430dd3ee'),
         ):
             require(blob(root/preflight[kind])==expected,'unqualified W0C2B0M preflight RED evidence drift '+kind)
+        native=s.get('previous_active_W0C2B0M_R1_NATIVE_RED',{})
+        require(native.get('gate')=='P3-M4-W0C2B0M'
+                and native.get('attempt')=='R1'
+                and native.get('status')=='NATIVE_SOURCE_RED_UNQUALIFIED'
+                and native.get('qualification') is False
+                and native.get('native_red_count')==1
+                and native.get('run_id')==44252646318
+                and native.get('job_id')==134626770690
+                and native.get('tested_sha')=='113b4dbc7850152442b2303be70c82858504848c'
+                and native.get('source_blob')=='19e20ca4138c0303c28e3ab46d4b2fcf3a496bb0'
+                and native.get('consumer_blob')=='14f366562c5986f58fd282a09e28720e7ea171b5'
+                and native.get('workflow_blob')=='90492c571e555267d560aba6c910fef43ae52faf'
+                and native.get('artifact_sha256')=='e9242ef864e6f7bdacb76386f94595b1c67b5eb471f0c485de795bd2970d1529'
+                and native.get('failure_phase')=='ORIGINAL_SOURCE_LEAN'
+                and native.get('source_error_lines')==[47,59]
+                and native.get('preservation_run')==44253870183
+                and native.get('preservation_commit')=='f01760a1f278e278a2afdbb86fe9941a11cee503'
+                and native.get('consumer_executed') is False
+                and a.get('previous_red_run')==44252646318
+                and a.get('previous_red_preservation_run')==44253870183,
+                'first complex original native RED or bounded R2 repair history missing')
+        for path, sha in (
+            (native['source'],'19e20ca4138c0303c28e3ab46d4b2fcf3a496bb0'),
+            (native['consumer'],'14f366562c5986f58fd282a09e28720e7ea171b5'),
+            (native['workflow'],'90492c571e555267d560aba6c910fef43ae52faf'),
+            (native['evidence_archive'],'277b934810e6a999c974917d23a199ccd0be3ddd'),
+            (native['evidence_job_log'],'043fb4d1cffaca05166825fcd5923e0278fb8b36'),
+            (native['evidence_manifest'],'32def22a3c715395de8950be6001a0549d00920b'),
+        ):
+            require(blob(root/path)==sha,'original first native RED evidence changed '+path)
         src=(root/a['source']).read_text()
         con=(root/a['consumer']).read_text()
         expected=['originalFock_complex_nested_coefficient_compose',
@@ -4556,6 +4586,8 @@ def check_checkpoint(root: Path, s: dict):
                 and con.count('Fermion 2 →L[ℂ] Fermion 2')==1
                 and 'Matrix ι ι ℂ' in src and 'Matrix ι ι ℂ' in con
                 and 'Matrix ι ι ℝ' not in src and 'sourceNormalizedGamma' not in src
+                and 'exact (Finset.sum_smul).symm' in src
+                and 'exact (sub_smul _ _ _).symm' in src
                 and 'maxRecDepth' not in src and 'maxHeartbeats' not in src,
                 'new original complex-only proof scope drift')
         require(s['next_planned']['gate']=='P3-M4-W0C2B0N'
