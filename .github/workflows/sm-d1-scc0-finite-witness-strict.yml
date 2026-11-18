@@ -1,0 +1,87 @@
+name: SM-D1-SCC0 finite witness separation methodology strict
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - research/standard-model/tools/smd1_scc0.py
+      - research/standard-model/tests/test_smd1_scc0.py
+      - .github/workflows/sm-d1-scc0-finite-witness-strict.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sm-d1-scc0-finite-witness-strict
+  cancel-in-progress: false
+jobs:
+  independent-protocol-source-and-negative-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact unified branch with original evidence untouched
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Preflight original SM/BFSS evidence and pinned research boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/sm-d1-scc0"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/sm-d1-scc0/tested-commit.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/sm-d1-scc0/preflight.log"
+          import json,subprocess
+          from pathlib import Path
+          pins={
+            'lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMY0OneFamilyAnomalyLedger.lean':'481a984b5ba7d2d7df41297d162ab1d608646d6e',
+            'lean/diagnostics/SMY0OneFamilyAnomalyIndependentConsumer.lean':'082492122e15f5f73a24b086ea1e3c4ae71527df',
+            'research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json':'1d391ba994ee23f03c4423b45fbb15e7e42c86f1',
+            'research/standard-model/evidence/SMY0_R1_44388795375_ORIGINAL_STRICT_GREEN_evidence.zip':'8123915a1c0f792a031432d81a2ebc10dfab0c83',
+            'research/standard-model/evidence/SMD0_R1_44392976400_ORIGINAL_GREEN_evidence.zip':'fb42b3de0ed438b10e006b9e0d40cef3b2ea44fa',
+            'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/ProbeW0C2B2E2OriginalTargetGammaAction.lean':'7d372392703d0fe69942df9df58b421af6850656',
+          }
+          for path,expected in pins.items():
+              got=subprocess.check_output(['git','hash-object','--no-filters',path],text=True).strip()
+              assert got==expected,(path,got,expected)
+          sm=json.loads(Path('research/standard-model/SM_GATE_STATE.json').read_text())
+          assert sm['last_qualified']['gate']=='SM-Y0'
+          assert sm['last_qualified_empirical']['gate']=='SM-D0'
+          assert any(x['id']=='SM-D1' and x['status']=='PROSPECTIVE_UNSTAGED'
+                     for x in sm['upcoming'])
+          bfss=json.loads(Path('BFSS_GATE_STATE.json').read_text())
+          assert len(bfss['accepted_anchors'])==27
+          assert (bfss['active']['gate'],bfss['active']['status'],
+                  bfss['active']['qualification'])==('P3-M4-W0C2B2','BLOCKED',False)
+          for filename in (
+              'research/standard-model/tools/smd1_scc0.py',
+              'research/standard-model/tests/test_smd1_scc0.py'):
+              s=Path(filename).read_text()
+              assert 'import Mathlib' not in s and 'NFC_SCC_Branch' not in s
+              assert 'https://' not in s and 'requests' not in s
+          print('SM_D1_SCC0_ORIGINAL_SM_Y0_SM_D0_BFSS_27_ANCHORS_FROZEN_PREFLIGHT_PASS')
+          PY
+      - name: Run independent exact finite counterfactual tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile research/standard-model/tools/smd1_scc0.py research/standard-model/tests/test_smd1_scc0.py
+          python3 -m unittest discover -s research/standard-model/tests -p test_smd1_scc0.py -v 2>&1 | tee "$RUNNER_TEMP/sm-d1-scc0/consumer.log"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/sm-d1-scc0/assertions.log"
+          import hashlib,os,re
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'sm-d1-scc0'
+          s=(root/'consumer.log').read_text()
+          assert re.search(r'Ran 24 tests in [0-9.]+s',s),s[-1000:]
+          assert '\nOK\n' in s and 'FAILED' not in s
+          for p in ('research/standard-model/tools/smd1_scc0.py',
+                    'research/standard-model/tests/test_smd1_scc0.py'):
+              print(p,hashlib.sha256(Path(p).read_bytes()).hexdigest())
+          print('SM_D1_SCC0_24_NEGATIVE_POSITIVE_INDEPENDENT_FIXTURES_PASS')
+          PY
+      - name: Preserve exact original test and preflight evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sm-d1-scc0-original-finite-counterfactual-evidence
+          path: /home/runner/work/_temp/sm-d1-scc0/
+          retention-days: 14
+          if-no-files-found: warn
