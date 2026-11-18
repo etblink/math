@@ -4292,8 +4292,12 @@ def check_checkpoint(root: Path, s: dict):
         # Real-source coefficient contraction on exact original Fermion 2
         # does not discharge nested K(A),K(B) Jacobi or full Lie bracket.
         require(a.get('attempt')=='R2'
-                and a.get('status')=='PENDING_STRICT_CI'
+                and a.get('status')=='BLOCKED'
                 and a.get('qualification') is False
+                and a.get('stopped') is True
+                and a.get('native_red_count')==2
+                and a.get('verdict')=='STOPPED_AFTER_TWO_NATIVE_REDS'
+                and a.get('stop_rule')=='STOP_CURRENT_COEFFICIENT_LAYOUT_AFTER_TWO_ANALOGOUS_NATIVE_REDS'
                 and a.get('first_atom')=='ORIGINAL_FOCK_REAL_SMUL_COMMUTATOR_PLUS_FINITE_REAL_MATRIX_COEFFICIENT_CONTRACTION_AND_EXACT_SOURCE48_GAMMAS'
                 and a.get('contract_commit')=='67a31cf3adca9dc8bda755e94c75c24582b0efb9'
                 and a.get('source_blob')=='0a75a24387c2a50f14ed5698575cf2c670a864c1'
@@ -4353,6 +4357,76 @@ def check_checkpoint(root: Path, s: dict):
                 'W0C2B0 original R1 complete Actions log checksum drift')
         require(blob(root/'research/quantum-information/BFSS_QIT_SCC_W0C2B0_ORIGINAL_REAL_COEFFICIENT_CONTRACTION_PRE_GATE_2026_11_17.md')=='78dc5e410203b0a8b35b462764ba94c5c6c21498',
                 'W0C2B0 original R1 frozen contract was altered')
+        r2=s.get('previous_active_W0C2B0_R2_RED',{})
+        require(r2.get('gate')=='P3-M4-W0C2B0'
+                and r2.get('attempt')=='R2'
+                and r2.get('status')=='NATIVE_SOURCE_RED_UNQUALIFIED'
+                and r2.get('qualification') is False
+                and r2.get('run_id')==a.get('run_id')==44222678258
+                and r2.get('job_id')==a.get('job_id')==134528155435
+                and r2.get('tested_sha')==a.get('tested_sha')=='105086fe87d17f79f75641878a6b9218db05167d'
+                and r2.get('artifact_id')==a.get('artifact_id')==14391499234
+                and r2.get('artifact_sha256')==a.get('artifact_sha256')=='9f7c56be541406843d1b5556c687f0500a4bb8112fc65867559f16fc70fff266'
+                and r2.get('source_blob')==a['source_blob']
+                and r2.get('consumer_blob')==a['consumer_blob']
+                and r2.get('workflow_blob')==a['workflow_blob']
+                and r2.get('evidence_archive_blob')==a.get('evidence_archive_blob')=='3f15c1c8bcf0e057e3de2055abc6ec00e8b931ec'
+                and r2.get('evidence_job_log_blob')==a.get('evidence_job_log_blob')=='d20cb3c7e2239fd63922a1afb70b86e2e8734088'
+                and r2.get('evidence_manifest_blob')==a.get('evidence_manifest_blob')=='850033634128dc24705404a5b086c3fbda3725e1'
+                and r2.get('preservation_run')==a.get('preservation_run')==44224922749
+                and r2.get('native_red_count')==2
+                and r2.get('consumer_executed') is False
+                and r2.get('stop_rule')=='STOP_CURRENT_COEFFICIENT_LAYOUT_AFTER_TWO_ANALOGOUS_NATIVE_REDS',
+                'W0C2B0 second original native RED or STOP evidence drift')
+        require(a.get('stop_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0_R1_R2_TWO_NATIVE_REDS_STOP_AND_COMPLEX_CARRIER_ROUTE_2026_11_17.md'
+                and blob(root/a['stop_receipt'])=='f501b81ab0305ba821a4ac72b041c2e11e353dea'
+                and a.get('previous_red_run')==44218523669
+                and a.get('previous_red_preservation_run')==44221612711,
+                'W0C2B0 R1/R2 decision receipt or source history changed')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/r2[kind])==r2[kind+'_blob'],
+                    'W0C2B0 original R2 native RED frozen file changed '+kind)
+        raw2=(root/r2['evidence_archive']).read_bytes()
+        log2=(root/r2['evidence_job_log']).read_bytes()
+        require(len(raw2)==20434
+                and hashlib.sha256(raw2).hexdigest()==r2['artifact_sha256']
+                and len(log2)==333135
+                and hashlib.sha256(log2).hexdigest()=='bffab9a103f67d8c3080be2a39124c5e68bc2a65502ab9ddb1e04daaa301ed46',
+                'W0C2B0 original R2 ZIP or full Actions job log SHA-256 changed')
+        r2manifest=json.loads((root/r2['evidence_manifest']).read_text())
+        require(r2manifest.get('run_id')==44222678258
+                and r2manifest.get('tested_sha')==r2['tested_sha']
+                and r2manifest.get('status')=='NATIVE_SOURCE_RED_UNQUALIFIED'
+                and r2manifest.get('native_mathematical_red_count')==2
+                and r2manifest.get('stop_rule')==r2['stop_rule']
+                and r2manifest['original_zip']['sha256']==r2['artifact_sha256']
+                and r2manifest['original_job_log']['sha256']=='bffab9a103f67d8c3080be2a39124c5e68bc2a65502ab9ddb1e04daaa301ed46'
+                and len(r2manifest['original_zip']['members'])==3,
+                'W0C2B0 original R2 native RED member digest or stop manifest changed')
+        import zipfile
+        with zipfile.ZipFile(root/r2['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'preflight.log','cold-source.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()==r2['tested_sha'],
+                    'W0C2B0 R2 provider ZIP missing original test evidence')
+            for member in r2manifest['original_zip']['members']:
+                data=z.read(member['name'])
+                require(len(data)==member['size']
+                        and hashlib.sha256(data).hexdigest()==member['sha256']
+                        and format(z.getinfo(member['name']).CRC,'08x')==member['crc32'],
+                        'W0C2B0 R2 original ZIP member hash/CRC changed '+member['name'])
+            source_log=z.read('cold-source.log').decode()
+            require(all(x in source_log for x in (
+                    'OriginalRealFockCoefficientContractionR2.lean:56:',
+                    'OriginalRealFockCoefficientContractionR2.lean:58:',
+                    'OriginalRealFockCoefficientContractionR2.lean:74:',
+                    'maximum recursion depth has been reached','sorryAx')),
+                    'W0C2B0 R2 verified native source diagnostics drift')
+        require(s['last_qualified']['gate']=='P3-M4-W0C2A'
+                and s['last_qualified']['run_id']==44213315719
+                and s['last_qualified']['status']=='GREEN_QUALIFIED'
+                and len(s['accepted_anchors'])==24,
+                'W0C2B0 STOP must preserve 24 accepted anchors')
         donor=s['last_qualified']
         require(donor.get('source_blob')=='51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb'
                 and donor.get('consumer_blob')=='4ddacfbe1ee1d7d55b321f4cb9c0d6d462261aec'
@@ -4406,7 +4480,7 @@ def check_checkpoint(root: Path, s: dict):
                 and 'maxRecDepth' not in src and 'maxHeartbeats' not in src
                 and 'sorry' not in src and 'admit' not in src,
                 'W0C2B0 exact real Fock coefficient contraction scope drift')
-        require(s['next_planned']['gate']=='P3-M4-W0C2B1'
+        require(s['next_planned']['gate']=='P3-M4-W0C2B0M'
                 and s['next_planned']['status']=='PROSPECTIVE_NOT_STAGED'
                 and s['next_planned']['source_staged'] is False
                 and s['next_planned']['consumer_staged'] is False
