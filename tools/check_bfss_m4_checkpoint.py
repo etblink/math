@@ -4291,16 +4291,16 @@ def check_checkpoint(root: Path, s: dict):
     if a['gate']=='P3-M4-W0C2B0':
         # Real-source coefficient contraction on exact original Fermion 2
         # does not discharge nested K(A),K(B) Jacobi or full Lie bracket.
-        require(a.get('attempt')=='R1'
+        require(a.get('attempt')=='R2'
                 and a.get('status')=='PENDING_STRICT_CI'
                 and a.get('qualification') is False
                 and a.get('first_atom')=='ORIGINAL_FOCK_REAL_SMUL_COMMUTATOR_PLUS_FINITE_REAL_MATRIX_COEFFICIENT_CONTRACTION_AND_EXACT_SOURCE48_GAMMAS'
-                and a.get('contract_commit')=='30c3adc00b1d9fae9d4d8a827d84a74a811f946b'
-                and a.get('source_blob')=='4846915b6d6f99e765a1ec28f9286295d7db2571'
-                and a.get('consumer_blob')=='ee6224071561e675d276e9d3a8d2bd865e87d7d6'
-                and a.get('workflow_blob')=='341b3ad5ae1b381db1ca6e297110cfd5783472a6'
-                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0_ORIGINAL_REAL_COEFFICIENT_CONTRACTION_PRE_GATE_2026_11_17.md'
-                and blob(root/a['prospective_receipt'])=='78dc5e410203b0a8b35b462764ba94c5c6c21498'
+                and a.get('contract_commit')=='67a31cf3adca9dc8bda755e94c75c24582b0efb9'
+                and a.get('source_blob')=='0a75a24387c2a50f14ed5698575cf2c670a864c1'
+                and a.get('consumer_blob')=='cc03e80af0573315f07a5d079c177a8ad279c559'
+                and a.get('workflow_blob')=='0d68b23bc98aef28870d050397e02d02af26e6bb'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B0_R2_REAL_SUM_SMUL_SOURCE_REPAIR_PRE_GATE_2026_11_17.md'
+                and blob(root/a['prospective_receipt'])=='18b55118c74bf613efaaad2953d990b1a83c3372'
                 and a.get('accepted_predecessor_run')==44213315719
                 and a.get('qualified_W0C2A_run')==44213315719
                 and a.get('qualified_LB1C1_run')==43901524171
@@ -4314,6 +4314,45 @@ def check_checkpoint(root: Path, s: dict):
                 and s['last_qualified']['qualification'] is True
                 and s['accepted_anchors'][-1]==s['last_qualified'],
                 'W0C2B0 real coefficient source-exact pending donor/checkpoint drift')
+        red=s.get('previous_active_W0C2B0_R1_RED',{})
+        require(red.get('gate')=='P3-M4-W0C2B0' and red.get('attempt')=='R1'
+                and red.get('run_id')==44218523669
+                and red.get('status')=='NATIVE_SOURCE_RED_UNQUALIFIED'
+                and red.get('qualification') is False
+                and red.get('native_red_count')==1
+                and red.get('tested_sha')=='f52bef1a52636bf51945d431c164f0f7ad28c6ce'
+                and red.get('source_blob')=='4846915b6d6f99e765a1ec28f9286295d7db2571'
+                and red.get('consumer_blob')=='ee6224071561e675d276e9d3a8d2bd865e87d7d6'
+                and red.get('workflow_blob')=='341b3ad5ae1b381db1ca6e297110cfd5783472a6'
+                and red.get('evidence_archive_blob')=='4117bd19a0a8d1614df176e72d69a9b628de19da'
+                and red.get('evidence_job_log_blob')=='6736a0b404bc31eaa4b7bae58ff78d0bd0b232f7'
+                and red.get('evidence_manifest_blob')=='ba36b8a4862ca4d0931d9dac86761a893a3e48ac'
+                and red.get('preservation_run')==44221612711
+                and a.get('previous_red_run')==44218523669
+                and a.get('previous_red_preservation_run')==44221612711
+                and a.get('previous_red_zip_sha256')=='02722db3e4d82c68bed20f980bc2f1b3400b7ed47604cc6f6463b0761d0b5ddb',
+                'W0C2B0 original R1 native RED / stop count evidence drift')
+        for kind in ('source','consumer','workflow','evidence_archive','evidence_job_log','evidence_manifest'):
+            require(blob(root/red[kind])==red[kind+'_blob'],
+                    'W0C2B0 R1 original RED evidence bytes changed '+kind)
+        import zipfile
+        raw=(root/red['evidence_archive']).read_bytes()
+        require(len(raw)==20778
+                and hashlib.sha256(raw).hexdigest()==red['artifact_sha256'],
+                'W0C2B0 original R1 provider ZIP SHA size changed')
+        with zipfile.ZipFile(root/red['evidence_archive']) as z:
+            require(z.testzip() is None
+                    and set(z.namelist())=={'preflight.log','cold-source.log','tested-commit.txt'}
+                    and z.read('tested-commit.txt').decode().strip()==red['tested_sha']
+                    and 'unsolved goals' in z.read('cold-source.log').decode()
+                    and 'maximum recursion depth has been reached' in z.read('cold-source.log').decode(),
+                    'W0C2B0 R1 native RED provider member error content mismatch')
+        full=(root/red['evidence_job_log']).read_bytes()
+        require(len(full)==333680
+                and hashlib.sha256(full).hexdigest()=='45b35f48b127d04d0d28e81b3b2aa03466ae589288b35223fba8f33b67797616',
+                'W0C2B0 original R1 complete Actions log checksum drift')
+        require(blob(root/'research/quantum-information/BFSS_QIT_SCC_W0C2B0_ORIGINAL_REAL_COEFFICIENT_CONTRACTION_PRE_GATE_2026_11_17.md')=='78dc5e410203b0a8b35b462764ba94c5c6c21498',
+                'W0C2B0 original R1 frozen contract was altered')
         donor=s['last_qualified']
         require(donor.get('source_blob')=='51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb'
                 and donor.get('consumer_blob')=='4ddacfbe1ee1d7d55b321f4cb9c0d6d462261aec'
@@ -4353,6 +4392,10 @@ def check_checkpoint(root: Path, s: dict):
                 and 'originalFockOperator_real_smul_eq_complex_smul' in src
                 and 'originalFock_commutator_complex_smul' in src
                 and 'originalFock_real_left_matrix_contraction' in src
+                and 'originalFock_real_sum_smul' in src
+                and 'originalFock_real_sub_smul' in src
+                and 'exact (originalFock_real_sum_smul' in src
+                and 'exact (originalFock_real_sub_smul' in src
                 and 'Finset.sum_comm' in src
                 and 'Matrix.mul_apply' in src
                 and 'originalSource48_gamma_real_bracket_contraction' in src
