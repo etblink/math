@@ -50,3 +50,14 @@ The proposed lemma has now been **independently checked in the repository's exac
 **Concrete reuse:** set \`P := UniformlySeparates p A B\` and discharge \`hP\` using the already-written SCC1 monotonicity theorem. This supplies a precise route from inclusion-minimality to deletion-minimality for a family-level witness set. This is *not* a qualified Lean import until a future source/consumer gate compiles and archives it.
 
 Reference: https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Order/CompleteLattice/Finset.lean#L109
+
+## Positive witness must not be erased by unknown status
+
+An additional audit of the existing SCC0 finite Python comparator reveals a **conservative scope conflation** worth fixing in a *new* microgate, not by rewriting SCC0 accepted evidence:
+
+- A fully typed, comparable single observation with different predictive distributions is already a legitimate witness of **exact mathematical difference**. An unrelated unavailable prediction cannot invalidate this existential witness.
+- Likewise, if one valid marginal differs, the corresponding joint distributions (when they exist) necessarily differ, even when other observables are correlated. Correlations matter for constructing the **joint likelihood and significance**, not for the logical existence of the differing marginal.
+- SCC0's \`compare_scenarios\` currently returns \`UNKNOWN\` whenever another selected prediction is missing, and \`JOINT_REQUIRED\` when two witnesses share a dependence group, even if an individually valid separating marginal is available. This is **overconservative for existential separation**, although it correctly refuses unsupported full statistical inference.
+- Proposed separation of decisions: (i) \`KNOWN_EXACT_DIFFERENCE\` if any valid comparable witness differs; (ii) \`MARGINAL_AGREEMENT_ON_ALL_DECLARED_WITNESSES\` only if every declared marginal is present and matches; (iii) \`UNKNOWN\` if no separating witness is available but one or more predictions are missing; (iv) \`INVALID\` for mismatched identity/protocol; (v) a *separate* \`JOINT_LIKELIHOOD_REQUIRED\` field if a significance calculation needs unavailable dependence data.
+
+**Important:** Do not change or requalify SCC0 implicitly. First formalize the revised semantics with adversarial fixtures and independent source/consumer qualification, then compare them to the original behavior. This distinction follows elementary probability logic and is not a physical SCC theorem.
