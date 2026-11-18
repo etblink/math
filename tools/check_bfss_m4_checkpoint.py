@@ -4869,18 +4869,18 @@ def check_checkpoint(root: Path, s: dict):
     if a['gate']=='P3-M4-W0C2B1':
         # First source-exact original Fock noncommutative Jacobi/covariance
         # microgate, under explicit generic generator covariance hypotheses.
-        require(a.get('attempt')=='R1' and a.get('status')=='PENDING_STRICT_CI'
+        require(a.get('attempt')=='R2' and a.get('status')=='PENDING_STRICT_CI'
                 and a.get('qualification') is False
                 and a.get('first_atom')=='ORIGINAL_FOCK_NONCOMMUTATIVE_JACOBI_AND_CONDITIONAL_COMPLEX_COEFFICIENT_COVARIANCE_CLOSURE'
-                and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B1OriginalFockJacobiCovarianceAction.lean'
-                and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B1OriginalFockJacobiCovarianceIndependentConsumer.lean'
-                and a.get('workflow')=='.github/workflows/bfss-m4-w0c2b1-r1-original-fock-jacobi-covariance-strict.yml'
-                and a.get('source_blob')=='db15340dfb46eea78c20549bb6d1616dd99f302b'
-                and a.get('consumer_blob')=='76f5071b847245fe4173b0dde8205c8b69173b5d'
-                and a.get('workflow_blob')=='a7e7b89896f5f447ec88f0c548d222be54a5fdee'
-                and a.get('contract_commit')=='4e950fcb597f1ac56aecd93fb70ec100e9ebad63'
-                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B1_R1_ORIGINAL_FOCK_JACOBI_COVARIANCE_PRE_GATE_2026_11_17.md'
-                and blob(root/a['prospective_receipt'])=='8309ef707b0cd0776d2a2bf4c019b208ed4765f4'
+                and a.get('source')=='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2B1OriginalFockJacobiCovarianceActionR2.lean'
+                and a.get('consumer')=='lean/diagnostics/BFSSP3M4W0C2B1OriginalFockJacobiCovarianceIndependentConsumerR2.lean'
+                and a.get('workflow')=='.github/workflows/bfss-m4-w0c2b1-r2-original-fock-jacobi-covariance-strict.yml'
+                and a.get('source_blob')=='861628fe6322c919bee87e493e1e629d48bfa8bb'
+                and a.get('consumer_blob')=='bd271b47833e2cca9fb80f1d6fca381c8b6a2ccb'
+                and a.get('workflow_blob')=='88c98717600cb561860e3b962e0ce830270afada'
+                and a.get('contract_commit')=='f18004c1bb5ccb92141989a6f0ea50e89942039e'
+                and a.get('prospective_receipt')=='research/quantum-information/BFSS_QIT_SCC_W0C2B1_R2_EXPLICIT_JACOBI_DISTRIBUTIVITY_REPAIR_PRE_GATE_2026_11_18.md'
+                and blob(root/a['prospective_receipt'])=='fbf48ed9df07784a079be1254aa721c4b5aa246d'
                 and a.get('expected_source_reports')==a.get('expected_consumer_reports')==4
                 and a.get('independent_controls')==4
                 and a.get('allowed_axioms')==['propext','Classical.choice','Quot.sound']
@@ -4924,6 +4924,38 @@ def check_checkpoint(root: Path, s: dict):
                 and s['w0c2b0m_r2_first_preflight_red']['run_id']==44254608894
                 and a['original_W0C2B0M_R1_native_red_run']==44252646318,
                 'stopped real and complex-source native RED evidence lost or misclassified')
+        native=s.get('previous_active_W0C2B1_R1_NATIVE_RED',{})
+        require(native.get('gate')=='P3-M4-W0C2B1'
+                and native.get('attempt')=='R1'
+                and native.get('status')=='NATIVE_SOURCE_RED_UNQUALIFIED'
+                and native.get('qualification') is False
+                and native.get('native_red_count')==1
+                and native.get('run_id')==44263755514
+                and native.get('job_id')==134663119955
+                and native.get('tested_sha')=='7f60d7f305d1862434781ff75fa19ff5f4bac900'
+                and native.get('source_blob')=='db15340dfb46eea78c20549bb6d1616dd99f302b'
+                and native.get('consumer_blob')=='76f5071b847245fe4173b0dde8205c8b69173b5d'
+                and native.get('workflow_blob')=='a7e7b89896f5f447ec88f0c548d222be54a5fdee'
+                and native.get('artifact_sha256')=='a0b6dfdd17dfdeceed8483f486e9bd98850bb187033fab457fbb1291f261d8ec'
+                and native.get('preservation_run')==44266245618
+                and native.get('preservation_commit')=='8bf6e1d8c2992a972d6c76fbd1bc9a712f413b1a'
+                and native.get('failure_phase')=='ORIGINAL_SOURCE_LEAN'
+                and native.get('source_error_line')==54
+                and native.get('source_axiom_reports_passed')==2
+                and native.get('source_axiom_reports_with_sorryAx')==2
+                and native.get('consumer_executed') is False
+                and a.get('previous_red_run')==44263755514
+                and a.get('previous_red_preservation_run')==44266245618,
+                'W0C2B1 first original Jacobi native RED provenance or bounded repair drift')
+        for path,sha in (
+            (native['source'],'db15340dfb46eea78c20549bb6d1616dd99f302b'),
+            (native['consumer'],'76f5071b847245fe4173b0dde8205c8b69173b5d'),
+            (native['workflow'],'a7e7b89896f5f447ec88f0c548d222be54a5fdee'),
+            (native['evidence_archive'],'98b23994b080a087d77d8317a4758a774f0f1ef2'),
+            (native['evidence_job_log'],'5e96a9c57152a876ae5e772fcca7a462aa91ac1c'),
+            (native['evidence_manifest'],'fcc701f35202253b973c6dc1e48fe2e199554d76'),
+        ):
+            require(blob(root/path)==sha,'W0C2B1 first native RED original artifact changed '+path)
         src=(root/a['source']).read_text()
         con=(root/a['consumer']).read_text()
         expected=['originalFock_commutator_sum','originalFock_commutator_weighted_sum',
@@ -4937,7 +4969,8 @@ def check_checkpoint(root: Path, s: dict):
                 and consumers==[name+'_consumer' for name in expected]
                 and src.count('Fermion 2 →L[ℂ] Fermion 2')==1
                 and con.count('Fermion 2 →L[ℂ] Fermion 2')==1
-                and 'noncomm_ring' in src
+                and 'simp only [sub_mul, mul_sub, mul_assoc]' in src
+                and '  abel\n' in src
                 and 'originalFock_commutator_complex_smul' in src
                 and 'originalFock_complex_nested_coefficient_bracket' in src
                 and 'sourceNormalizedGamma' not in src
