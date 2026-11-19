@@ -1,0 +1,175 @@
+{
+  "schema": "RHOPF_P7_ACTUAL_GP_TIME_EVOLUTION_AND_CONVERGENCE/0.1",
+  "research_date": "2026-11-18",
+  "branch": "integration/bfss-unified-research-20261108",
+  "parent_commit": "d9e01d2915e27f535eec257a557064f7e9a8319b",
+  "verdict": "PERIODIC_GP_DYNAMICS_NUMERICAL_CONSERVATION_PASS; INTERSPECIES_REPULSION_REDUCES_OVERLAP; NO_TOPOLOGY_CHANGE_OR_STABLE_SKYRMION_QUALIFIED",
+  "source_pins": {
+    "original_gamma_lean": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean",
+    "original_gamma_git_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "p6_profile_core": "research/topology/tools/rhopf_p6_gp_dynamics_core.py",
+    "p6_core_git_blob": "3297ad8bfdc943f624ed16b0d0de5dac044bfcea",
+    "original_SU2_Fock_gauge_action": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean",
+    "original_SU2_Fock_projection": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean",
+    "original_SU2_Fock_nonzero_vacuum": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean"
+  },
+  "physical_comparison": {
+    "field_type": "Bosonic complex two-component GP field on spatial three-torus, NOT original BFSS Fermion 2",
+    "domain": "Periodic cube [-6,6)^3, dimensionless; T^3; boundary not fixed Dirichlet during dynamics",
+    "initial_condition": "Original gamma-restricted complex Hopf texture, compact-supported radius 2, far field (0,1)",
+    "onebody_source_gamma_subcarrier": [
+      0,
+      1,
+      8,
+      9
+    ],
+    "g11": 2,
+    "g22": 2,
+    "g12_controls": [
+      2,
+      3.5
+    ],
+    "immiscible_homogeneous_parameter_condition": "g12²>g11*g22; 3.5>2; does not prove this initial texture is a stable phase-separated equilibrium",
+    "Hamiltonian": "E=∫[ 1/2(|∇ψ1|²+|∇ψ2|²) + (n1+n2-1)² + (g12-2)n1*n2 ] d³x",
+    "evolution": "i∂t ψj=−1/2 Δψj+[2(n1+n2-1)+(g12-2)n_other]ψj",
+    "species_Noether_charges": "N1,N2 conserved exactly under the continuum GP equations on periodic domain without Rabi conversion",
+    "energy_continuum_conserved": true,
+    "integrator": "Second-order split-step Fourier Strang; exact N1,N2 to machine precision, Hamiltonian energy only approximately conserved",
+    "time_interval": [
+      0,
+      0.36
+    ],
+    "time_step": 0.003,
+    "comparison_times": [
+      0,
+      0.18,
+      0.36
+    ],
+    "grid_sizes": [
+      40,
+      48,
+      64,
+      80
+    ],
+    "separately_prepared_stable_trapped_positive_control": false,
+    "stationary_vacuum_positive_numerical_control": true
+  },
+  "numerical": {
+    "N80": {
+      "g12_2": {
+        "E_initial": 55.75750936,
+        "relative_energy_drift": -0.000002880083657750204,
+        "overlap_t_end": 3.5864201,
+        "degree_estimate_t_end": -0.9857173024384738,
+        "gridpoint_min_total_density_t_end": 0.1498318,
+        "periodic_face_deviation_t_end": 0.0006321
+      },
+      "g12_3point5": {
+        "E_initial": 59.22241075,
+        "relative_energy_drift": -0.000002033997282537397,
+        "overlap_t_end": 3.080229,
+        "degree_estimate_t_end": -0.979885482720078,
+        "gridpoint_min_total_density_t_end": 0.1307674,
+        "periodic_face_deviation_t_end": 0.000631
+      },
+      "N1_initial": 5.22187329,
+      "N2_initial": 1722.77812671,
+      "max_relative_N1_drift": "<1e-13",
+      "max_relative_N2_drift": "<1e-13",
+      "overlap_reduction_absolute": 0.5061911,
+      "overlap_reduction_fraction": 0.14114
+    },
+    "spatial_grid_signed_degree_t_end_g12_2": [
+      {
+        "N": 40,
+        "degree": -0.8230353,
+        "error_from_minus_one": 0.1769647
+      },
+      {
+        "N": 48,
+        "degree": -0.9078785,
+        "error_from_minus_one": 0.0921215
+      },
+      {
+        "N": 64,
+        "degree": -0.9660220549882343,
+        "error_from_minus_one": 0.03397794501176565
+      },
+      {
+        "N": 80,
+        "degree": -0.9857173024384738,
+        "error_from_minus_one": 0.0142826975615262
+      }
+    ],
+    "early_t_0point18_N80_degree_g12_2": -0.9998745,
+    "temporal_refinement_N48_g12_3point5": {
+      "dt_coarse": 0.003,
+      "dt_fine": 0.0015,
+      "energy_rel_drift_coarse": -0.000002036222827452276,
+      "energy_rel_drift_fine": -5.092517466852947e-7,
+      "approx_error_improvement_factor": 3.99846,
+      "overlap_coarse": 3.080235881081273,
+      "overlap_fine": 3.0802533064310342
+    },
+    "unitary_stationary_vacuum_check": {
+      "N": 24,
+      "g12": [
+        2,
+        3.5
+      ],
+      "time_steps": 20,
+      "pass": true
+    },
+    "evidence_files_local": [
+      {
+        "path": "research/topology/data/RHOPF_P7_GP_REALTIME_CONSERVATION_AND_SPATIAL_CONVERGENCE_2026_11_18.json",
+        "sha256": "c85ccedb438887568800d500dff400d3836f06b4f99ff9407d5a1861dd09693a",
+        "cases": "40,48,64 and dt refinement; default independent consumer"
+      },
+      {
+        "path": "research/topology/data/RHOPF_P7_GP_N80_SPATIAL_SUPPLEMENT_2026_11_18.json",
+        "sha256": "6772e7a6a7659e528bc73f3c267741f4f59d383043630c72b75b833012bc6445",
+        "cases": "80 x 2 controls individually executed"
+      }
+    ]
+  },
+  "negative_knowledge": [
+    "The GP dynamics simulated here are not the original BFSS Hamiltonian or its fermionic Fock action; the 48-Majorana source and SU2 gauge projection are independent.",
+    "Near-exact discrete species conservation is built into the Strang substeps; it does not prove a stable soliton.",
+    "GP energy is not exactly preserved by the numerical Strang method; time-step refinement shows second-order error behavior.",
+    "A positive gridpoint density minimum does not prove the continuum field cannot vanish between mesh points.",
+    "Noninteger spectral degree drift at coarse meshes is a SPATIAL RESOLUTION warning; it becomes closer to -1 at finer N, so not evidence for a resolved reconnection.",
+    "Phase separation favors lower species overlap for g12=3.5, but no phase-separated ground state or trapped skyrmion stability is established.",
+    "Finite periodic domain T3 is not a strict spatial Dirichlet R3 field; face deviation remains small but nonzero.",
+    "One initial profile and short time horizon are insufficient to infer global energy minimizers, particle lifetimes, or a fundamental proton model."
+  ],
+  "qualified_acceptance": {
+    "source_original_gamma_entries_unchanged": true,
+    "two_original_source_P6_file_bytes_unchanged": true,
+    "new_source_local_tests_pass": true,
+    "native_Lean_CI_started": false,
+    "original_BFSS_Fock_to_GP_coupling": false,
+    "original_BFSS_full_physical_Hamiltonian_gap": false,
+    "quantum_vortex_reconnection_seen": false,
+    "genuine_topology_change_proved": false,
+    "stabilized_trapped_soliton_constructed": false,
+    "physical_particle_predicted": false,
+    "FCP_main_unchanged": true,
+    "NFC_retired_tower_D03_preserved": true,
+    "SM_D1": "PROSPECTIVE_UNSTAGED"
+  },
+  "reproducibility": {
+    "local_P7_core_sha": "76780f09e1316b814aaf5643a95f1722317bc2b1",
+    "local_P7_consumer_sha": "448dbdd3568735010fa19abed15cd4cc22bf8d00",
+    "command": "OPENBLAS_NUM_THREADS=1 python research/topology/tools/rhopf_p7_gp_realtime_independent_consumer.py",
+    "additional_N80_command": "OPENBLAS_NUM_THREADS=1 python research/topology/tools/rhopf_p7_gp_realtime_independent_consumer.py --full",
+    "local_environment": "Python 3.13.5, NumPy 2.3.5; Fourier FFT double precision; all quantities dimensionless"
+  },
+  "next_gate": "P8 source-driven genuine positive stability control (phase-separated/trapped energy-minimized fixed populations) with discretization checks, or qualify a newly independent 3D field–fermion/Fock action and index. Do NOT call P7 a real BFSS or proton result.",
+  "scholarly_sources": [
+    "https://doi.org/10.1103/PhysRevLett.91.010403",
+    "https://doi.org/10.1103/PhysRevA.111.013301",
+    "https://arxiv.org/abs/cond-mat/0411154",
+    "https://www.sciencedirect.com/science/article/pii/S0010465520300205"
+  ]
+}
