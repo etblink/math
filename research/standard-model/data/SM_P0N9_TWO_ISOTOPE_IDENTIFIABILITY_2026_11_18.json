@@ -1,0 +1,50 @@
+{
+  "schema": "SM_P0N9_TWO_ISOTOPE_IDENTIFIABILITY/0.1",
+  "date": "2026-11-18",
+  "status": "ABSTRACT_IDENTIFIABILITY_ONLY_NO_EMPIRICAL_NME_FIT",
+  "parent_commit": "5421d330e7d5e5d0e42b19fec639d3e65f86dc40",
+  "question": "Are exactly two isotope rate observations sufficient to identify light and heavy exchange when nuclear response and interference are not known?",
+  "mechanism": {
+    "noninterfering_assumption_required_for_2x2_inversion": true,
+    "coherent_scenario_rate_model_differs": true,
+    "noninterfering_rate_basis": "R_X/G_X=L_X x+H_X y, x,y>=0, coefficients include squared NME conventions",
+    "identifiability_condition": "D=L_Xe H_Ge-L_Ge H_Xe != 0 for TWO EXACT DETECTED RATES and FIXED known L,H; positivity/conditioning also required",
+    "coherent_rate_basis": "R_X/G_X=|a_X eta_L+b_X eta_H|^2; after dropping global phase: x,y,z=2Re(eta_L conjugate(eta_H)) with z^2<=4xy",
+    "coherent_two_rate_general_classification": "3 real unknowns, 2 measured rates: generally underdetermined, even with exact fixed nuclear amplitudes"
+  },
+  "synthetic_fixtures": {
+    "full_rank": {"coefficients": [2,1,1,2], "strengths": [0.4,0.2], "rates": [1.0,0.8], "kind": "synthetic invertible example, NOT nuclear data"},
+    "rank_deficient": {"coefficients": [2,4,1,2], "kind": "synthetic proportional columns"},
+    "almost_parallel": {"epsilon": 1e-6, "kind": "synthetic perturbation of collinear response, ill-conditioning"},
+    "coherent_distinct_solutions": {"measured_rates_synthetic": [2.0,5.0], "solution_1": "etaL=1, etaH=i", "solution_2": "|etaL|²=1.2, |etaH|²=1.1, interference z=-0.3", "kind": "exact different complex couplings yield identical 2 rates"}
+  },
+  "experimental": {
+    "nonzero_0nubb_signal_observed": false,
+    "isotope_NME_matrices_with_correlated_uncertainties_loaded": false,
+    "xenon_136_half_life_lower_limit_90CL_y": 3.8e26,
+    "germanium_76_half_life_lower_limit_90CL_y": 1.9e26,
+    "likelihoods_loaded": false,
+    "allowed_zero_couplings": true,
+    "source_NME_numbers_not_invented": true,
+    "data_readiness": "UPPER_LIMITS_ONLY_NO_EMPIRICAL_SEPARATION"
+  },
+  "sources": {
+    "noninterfering_two_mechanism_paper": "https://doi.org/10.1103/PhysRevD.108.055023",
+    "sterile_mass_dependent_matching_2024": "https://doi.org/10.1007/JHEP09(2024)201",
+    "short_range_ab_initio_2026": "https://doi.org/10.1103/d2n7-n2c7",
+    "xenon_2025": "https://doi.org/10.1103/jkf6-48j8",
+    "germanium_2026": "https://doi.org/10.1103/25tk-nctn"
+  },
+  "decision": {
+    "mathematical_criterion": "CONDITIONAL_FULL_RANK_ONLY",
+    "actual_two_isotope_experimental_mechanism_identifiability": "NOT_ESTABLISHED",
+    "new_phenomenological_exclusion": false,
+    "source_experiment_likelihood_calculated": false,
+    "source_original_nuclear_coefficients_qualified": false,
+    "new_formal_Lean_CI_gate": false,
+    "BFSS_accepted_anchor_count_preserved": 27,
+    "SM_D1": "PROSPECTIVE_UNSTAGED",
+    "FCP_main_unchanged": true,
+    "next_action": "Extract one jointly coherent source-defined NME calculation across both isotopes and both mechanisms with uncertainty covariance, then re-evaluate determinants/condition; absent actual rates, distinguishability remains prospective."
+  }
+}
