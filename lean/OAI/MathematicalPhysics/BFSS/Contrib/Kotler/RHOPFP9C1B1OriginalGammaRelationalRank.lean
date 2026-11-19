@@ -54,7 +54,10 @@ theorem relationalProjector_range_finrank_four :
           (LinearMap.range (Matrix.toLin' relationalProjector)) : ℝ) =
         LinearMap.trace ℝ (SpinIndex → ℝ)
           (Matrix.toLin' relationalProjector) :=
-          relationalProjector_toLin_idempotent.isProj_range.trace.symm
+          (LinearMap.IsProj.trace
+            ((LinearMap.isProj_range_iff_isIdempotentElem
+                (Matrix.toLin' relationalProjector)).2
+              relationalProjector_toLin_idempotent)).symm
       _ = Matrix.trace relationalProjector :=
         Matrix.trace_toLin'_eq relationalProjector
       _ = 4 := relationalProjector_trace_four
@@ -65,9 +68,8 @@ the indexed (0,1,8,9) basis imposed. -/
 theorem relationalProjector_rank_four :
     Matrix.rank relationalProjector = 4 := by
   change
-    Module.finrank ℝ (LinearMap.range relationalProjector.mulVecLin) = 4
-  simpa only [Matrix.toLin'_apply'] using
-    relationalProjector_range_finrank_four
+    Module.finrank ℝ (LinearMap.range (Matrix.toLin' relationalProjector)) = 4
+  exact relationalProjector_range_finrank_four
 
 #print axioms relationalProjector_toLin_idempotent
 #print axioms relationalProjector_range_finrank_four
