@@ -1,0 +1,511 @@
+{
+  "schema": "RHOPF_P1_SOURCE_EXACT_OCTONION_HOPF_EQUIVARIANCE/0.1",
+  "as_of": "2026-11-18",
+  "parent_sha": "6840ec57077b6f68bf646fd00c4435f92fe9115f",
+  "original_bfss_gamma_Lean_sha": "b9b8192055c70f0d001d7982669b9823c55562ed",
+  "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean",
+  "source_fixture_path": "research/topology/data/BFSS_GAMMA9_SOURCE_PERMUTATION_FIXTURE_2026_11_18.json",
+  "source_exactness": "Original 9x16 permutation and sign arrays matched to original GitHub Lean SHA; original Lean file unchanged",
+  "math": {
+    "source_map": "Q_k(psi)=psi^T Gamma_k psi; psi in real R^16; k=0..8",
+    "eight_bilinear_source": "B_k(u,v)=sum_{i=0}^7 sign[k][i] u_i v_{perm[k][i]-8}, k=0..7; Q=(2B(u,v), ||u||²−||v||²)",
+    "unit_source_choices": "e_u=e_0 of R8 first spin half; e_v=e_0 of R8 second spin half",
+    "alpha_original_u_basis_to_octonion_output_basis": [
+      {
+        "output_basis_index": 7,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 0,
+        "sign": -1
+      },
+      {
+        "output_basis_index": 3,
+        "sign": -1
+      },
+      {
+        "output_basis_index": 1,
+        "sign": -1
+      },
+      {
+        "output_basis_index": 4,
+        "sign": -1
+      },
+      {
+        "output_basis_index": 6,
+        "sign": -1
+      },
+      {
+        "output_basis_index": 2,
+        "sign": -1
+      },
+      {
+        "output_basis_index": 5,
+        "sign": -1
+      }
+    ],
+    "beta_original_v_basis_to_octonion_output_basis": [
+      {
+        "output_basis_index": 7,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 0,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 3,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 1,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 4,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 6,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 2,
+        "sign": 1
+      },
+      {
+        "output_basis_index": 5,
+        "sign": 1
+      }
+    ],
+    "normalized_octonion_product": "x ⋆ y = B(alpha^-1 x, beta^-1 y), with alpha,beta signed permutation isometries",
+    "octonion_unit_output_index": 7,
+    "multiplication_table_0_to_7": [
+      [
+        {
+          "out": 7,
+          "sign": -1
+        },
+        {
+          "out": 3,
+          "sign": 1
+        },
+        {
+          "out": 5,
+          "sign": -1
+        },
+        {
+          "out": 1,
+          "sign": -1
+        },
+        {
+          "out": 6,
+          "sign": -1
+        },
+        {
+          "out": 2,
+          "sign": 1
+        },
+        {
+          "out": 4,
+          "sign": 1
+        },
+        {
+          "out": 0,
+          "sign": 1
+        }
+      ],
+      [
+        {
+          "out": 3,
+          "sign": -1
+        },
+        {
+          "out": 7,
+          "sign": -1
+        },
+        {
+          "out": 6,
+          "sign": 1
+        },
+        {
+          "out": 0,
+          "sign": 1
+        },
+        {
+          "out": 5,
+          "sign": -1
+        },
+        {
+          "out": 4,
+          "sign": 1
+        },
+        {
+          "out": 2,
+          "sign": -1
+        },
+        {
+          "out": 1,
+          "sign": 1
+        }
+      ],
+      [
+        {
+          "out": 5,
+          "sign": 1
+        },
+        {
+          "out": 6,
+          "sign": -1
+        },
+        {
+          "out": 7,
+          "sign": -1
+        },
+        {
+          "out": 4,
+          "sign": 1
+        },
+        {
+          "out": 3,
+          "sign": -1
+        },
+        {
+          "out": 0,
+          "sign": -1
+        },
+        {
+          "out": 1,
+          "sign": 1
+        },
+        {
+          "out": 2,
+          "sign": 1
+        }
+      ],
+      [
+        {
+          "out": 1,
+          "sign": 1
+        },
+        {
+          "out": 0,
+          "sign": -1
+        },
+        {
+          "out": 4,
+          "sign": -1
+        },
+        {
+          "out": 7,
+          "sign": -1
+        },
+        {
+          "out": 2,
+          "sign": 1
+        },
+        {
+          "out": 6,
+          "sign": 1
+        },
+        {
+          "out": 5,
+          "sign": -1
+        },
+        {
+          "out": 3,
+          "sign": 1
+        }
+      ],
+      [
+        {
+          "out": 6,
+          "sign": 1
+        },
+        {
+          "out": 5,
+          "sign": 1
+        },
+        {
+          "out": 3,
+          "sign": 1
+        },
+        {
+          "out": 2,
+          "sign": -1
+        },
+        {
+          "out": 7,
+          "sign": -1
+        },
+        {
+          "out": 1,
+          "sign": -1
+        },
+        {
+          "out": 0,
+          "sign": -1
+        },
+        {
+          "out": 4,
+          "sign": 1
+        }
+      ],
+      [
+        {
+          "out": 2,
+          "sign": -1
+        },
+        {
+          "out": 4,
+          "sign": -1
+        },
+        {
+          "out": 0,
+          "sign": 1
+        },
+        {
+          "out": 6,
+          "sign": -1
+        },
+        {
+          "out": 1,
+          "sign": 1
+        },
+        {
+          "out": 7,
+          "sign": -1
+        },
+        {
+          "out": 3,
+          "sign": 1
+        },
+        {
+          "out": 5,
+          "sign": 1
+        }
+      ],
+      [
+        {
+          "out": 4,
+          "sign": -1
+        },
+        {
+          "out": 2,
+          "sign": 1
+        },
+        {
+          "out": 1,
+          "sign": -1
+        },
+        {
+          "out": 5,
+          "sign": 1
+        },
+        {
+          "out": 0,
+          "sign": 1
+        },
+        {
+          "out": 3,
+          "sign": -1
+        },
+        {
+          "out": 7,
+          "sign": -1
+        },
+        {
+          "out": 6,
+          "sign": 1
+        }
+      ],
+      [
+        {
+          "out": 0,
+          "sign": 1
+        },
+        {
+          "out": 1,
+          "sign": 1
+        },
+        {
+          "out": 2,
+          "sign": 1
+        },
+        {
+          "out": 3,
+          "sign": 1
+        },
+        {
+          "out": 4,
+          "sign": 1
+        },
+        {
+          "out": 5,
+          "sign": 1
+        },
+        {
+          "out": 6,
+          "sign": 1
+        },
+        {
+          "out": 7,
+          "sign": 1
+        }
+      ]
+    ],
+    "octonion_imaginary_basis_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "unoriented_seven_fano_lines": [
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        0,
+        2,
+        5
+      ],
+      [
+        0,
+        4,
+        6
+      ],
+      [
+        1,
+        2,
+        6
+      ],
+      [
+        1,
+        4,
+        5
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        5,
+        6
+      ]
+    ],
+    "nonassociative_associator_example": "(e0⋆e1)⋆e2 − e0⋆(e1⋆e2) = −2 e4",
+    "normed_hurwitz_id": "||x⋆y||²=||x||² ||y||² inherited from BFSS bilinear eight-squares identity",
+    "identified_map": "Q(u,v)=(2 alpha(u)⋆beta(v),||u||²−||v||²); after conjugating alpha(u) this is a conventional octonionic Hopf convention",
+    "clifford_spin9": "Gamma symmetric and Gamma_a Gamma_b+Gamma_b Gamma_a=2delta_ab I",
+    "lie_bracket": "[Gamma_k,Gamma_a Gamma_b]=2(delta_ka Gamma_b − delta_kb Gamma_a)",
+    "bivector_generators": 36,
+    "commutator_component_checks": 324,
+    "commutator_matrix_entry_checks": 82944,
+    "octonionic_base": "S8",
+    "octonionic_total": "S15",
+    "fibers": "For y∈S8, Gamma(y) is a symmetric traceless involution, hence 8-dimensional +1 eigenspace. Q^-1(y) is unit sphere of +1 eigenspace, S7",
+    "whole_fibration_source_identification": "MATHEMATICAL_FROM_SOURCE_PLUS_CLASSICAL_HURWITZ_AND_CLIFFORD_GEOMETRY",
+    "native_Lean_theorem_newly_qualified": false
+  },
+  "selected_coordinate_restrictions": [
+    {
+      "label": "complex_C2",
+      "real_spinor_indices": [
+        0,
+        1,
+        8,
+        9
+      ],
+      "nonzero_base_indices": [
+        0,
+        7,
+        8
+      ],
+      "restricted_map": "S3 to S2",
+      "selection_status": "EXPLICIT_CHOSEN_COORDINATES_NOT_DERIVED_PHYSICAL_DYNAMICS"
+    },
+    {
+      "label": "quaternion_H2",
+      "real_spinor_indices": [
+        0,
+        1,
+        2,
+        3,
+        8,
+        9,
+        10,
+        11
+      ],
+      "nonzero_base_indices": [
+        0,
+        1,
+        3,
+        7,
+        8
+      ],
+      "restricted_map": "S7 to S4",
+      "quaternion_octonion_basis_indices": [
+        7,
+        0,
+        1,
+        3
+      ],
+      "selection_status": "EXPLICIT_CHOSEN_COORDINATES_NOT_CANONICAL_SUBFIBRATION"
+    },
+    {
+      "label": "octonionic_O2",
+      "real_spinor_indices": "ALL_16",
+      "nonzero_base_indices": "ALL_9",
+      "restricted_map": "S15 to S8",
+      "selection_status": "ORIGINAL_SOURCE_REAL_SPINOR_CARRIER"
+    }
+  ],
+  "topology": {
+    "domain": "compactified three-dimensional space S3 for localized fixed-boundary texture",
+    "pi3_S2": "Z",
+    "pi3_S3": "Z",
+    "pi3_S4": "0",
+    "pi3_S8": "0",
+    "pi3_S15": "0",
+    "based_homotopy": "For q in selected S3 subspace, q0 its boundary vacuum and e an added orthogonal internal direction, a=q·q0, v=q−a q0, c=cos t, s=sin t, H_t(q)=(c²a+s²)q0+c v+s c(1−a)e. Unit, based and contracts to q0 for 0≤t≤pi/2",
+    "finite_anisotropy_topological_protection": false,
+    "hard_subsector_constraint_stability_proved": false,
+    "metastable_energy_barrier_proved": false,
+    "physical_unwinding_falsifier": "If local physical fields can continuously access the extra direction with finite admissible energy, topology in restricted S3 or S2 does not give absolute stability in unrestricted S15"
+  },
+  "nfc_canon": {
+    "frozen_commit": "ed3047c2cbc0abc34d2549dd27754e4d3d05af78",
+    "conditional_book_III_field_hopf_scholium": true,
+    "D03_recursive_forced_hopf_tower_retired": true,
+    "source_tower_not_reinstated": true
+  },
+  "experiment": {
+    "optical_Dennis_2021_reconstructed_measurement_not_replication": true,
+    "fundamental_particle_observed": false,
+    "new_energy_action_selected": false,
+    "reconstructed_field_or_mass_or_charge_or_decay_observable": false
+  },
+  "qualification": {
+    "new_formal_Lean_ci": false,
+    "new_physical_soliton_stability_claim": false,
+    "original_BFSS_27_anchor_gates_unchanged": true,
+    "FCP_main_unchanged": true,
+    "NFC_frozen_canon_unchanged": true,
+    "SM_D1": "PROSPECTIVE_UNSTAGED"
+  },
+  "next_scientific_decision": "RHOPF-P2 physical selection gate: define candidate physical field and energy/constraint selecting a source-exact complex/quaternionic subcarrier; test finite-energy extra-direction escapes and a weaker Faddeev-Skyrme competitor; only then seek observable and formal gate",
+  "literature": {
+    "octonion_spin9_geometry": "https://doi.org/10.1007/s00031-013-9233-x",
+    "octonion_not_canonical_subfibrations": "https://www.mdpi.com/2075-1680/7/4/72",
+    "faddeev_skyrme_target_S2_stability": "https://doi.org/10.1007/s00220-026-05702-5",
+    "hurwitz": "https://sites.science.oregonstate.edu/coursewikis/GO/book/content/octonionsn.html",
+    "Dennis_experiment": "https://doi.org/10.1038/s41467-021-26171-5"
+  }
+}
