@@ -1,0 +1,331 @@
+{
+  "schema": "SM-P0N6_PREJUNO_FROZEN_FITS_TEMPORAL_HOLDOUT/0.1",
+  "as_of": "2026-11-18",
+  "status": "SOURCE_BOUND_TEMPORAL_HOLDOUT_DESCRIPTIVE_ONLY",
+  "integrated_branch_parent_commit": "378655474c70ec38bf855fd6bf9743fa9b362708",
+  "research_scope": "2018 published fixed best-fit point outputs compared without reoptimization to 2026-09-29 JUNO v1 solar marginals",
+  "empirical_target": {
+    "sin2_theta12": 0.3036,
+    "sin2_theta12_quoted_pm": 0.0064,
+    "delta_m2_21_eV2": 0.00007388,
+    "delta_m2_21_quoted_pm_eV2": 7.8e-7,
+    "version": "arXiv:2609.37895v1",
+    "submitted": "2026-09-29",
+    "live_days": 207.2,
+    "ibd_candidates": 8294,
+    "prior_data_overlap": true
+  },
+  "sources": {
+    "geib_king_2018": {
+      "citation": "Geib and King, Comprehensive renormalization group analysis of the littlest seesaw model, PRD 97 075010 (2018)",
+      "pdf": "https://scoap3-prod-backend.s3.cern.ch/media/files/24829/10.1103/PhysRevD.97.075010.pdf",
+      "doi": "https://doi.org/10.1103/PhysRevD.97.075010",
+      "source_locations": "Section IV; Table I page 7; Table II page 8; Figures 1-4 pages 9-10",
+      "historical_fit_input": "2017-era neutrino global fit: sin²theta12=0.306 ±0.012, sin²theta13=0.02166 ±0.00075, sin²theta23=0.441 (+0.027/-0.021), delta_m2_21=(7.50 (+0.19/-0.17))*1e-5 eV², delta_m2_31=(2.524 (+0.039/-0.040))*1e-3 eV², CP optional",
+      "fitted_parameters": [
+        "m_a",
+        "m_b"
+      ],
+      "fixed_discrete_choice": [
+        "n=3",
+        "eta=±2π/3",
+        "named heavy singlet mass setting and case A/B/C/D"
+      ],
+      "five_primary_observables_included_solar": true,
+      "nominal_scale_to_1000_GeV": true
+    },
+    "king_sedgwick_rowley_2018": {
+      "citation": "King, Molina Sedgwick, and Rowley, Fitting high-energy Littlest Seesaw parameters using low-energy neutrino data and leptogenesis, JHEP 10 (2018) 184",
+      "pdf": "https://link.springer.com/content/pdf/10.1007/JHEP10(2018)184.pdf",
+      "doi": "https://doi.org/10.1007/JHEP10(2018)184",
+      "source_locations": "Table 1 page 13; Table 2 page 14; Table 3 page 15; Section 6.1 page 16",
+      "historical_fit_input": "NuFit3.2 (2018) including theta12=33.62 (+0.78/-0.76) degrees and delta_m2_21=(7.40 (+0.21/-0.20))*1e-5 eV²; plus Y_B=0.87±0.01 times 1e-10",
+      "four_fit_parameters": [
+        "a",
+        "b",
+        "M_atm",
+        "M_sol"
+      ],
+      "seven_observables_fitted": true,
+      "includes_solar_angle_and_split": true,
+      "includes_baryon_asymmetry": true,
+      "nominal_matching_scale": "M_Z"
+    },
+    "juno_207d": "https://arxiv.org/abs/2609.37895v1"
+  },
+  "historical_benchmarks": {
+    "geib_king_2018_SM_A_to_D": [
+      {
+        "case": "A",
+        "Matm_GeV": 1000000000000,
+        "Msol_GeV": 1000000000000000,
+        "ma_meV": 39.505,
+        "mb_meV": 4.1592,
+        "theta12_deg": 34.0683,
+        "theta13_deg": 8.42372,
+        "m2_meV": 8.63167,
+        "m3_meV": 50.2462,
+        "chi2_at_2017_fit": 7.14042,
+        "source_pages": [
+          8,
+          9
+        ],
+        "source": "https://doi.org/10.1103/PhysRevD.97.075010",
+        "published": "2018-04-06",
+        "source_role": "2017_DATA_FITTED_HISTORICAL_BENCHMARK",
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_n_fixed": 3,
+        "source_fit_eta_fixed": "±2π/3",
+        "source_high_scale_GeV": 20000000000000000,
+        "source_low_energy_matching_GeV": 1000,
+        "derived_sin2theta12": 0.31380249323682824,
+        "derived_delta_m2_21_eV2": 0.0000745057269889,
+        "derivation_for_delta_m2_21": "(m2(meV)*1e-3)^2 eV² under m1=0"
+      },
+      {
+        "case": "B",
+        "Matm_GeV": 1000000000000,
+        "Msol_GeV": 1000000000000000,
+        "ma_meV": 39.498,
+        "mb_meV": 4.2031,
+        "theta12_deg": 34.0472,
+        "theta13_deg": 8.50593,
+        "m2_meV": 8.70744,
+        "m3_meV": 50.2421,
+        "chi2_at_2017_fit": 4.38607,
+        "source_pages": [
+          8,
+          9
+        ],
+        "source": "https://doi.org/10.1103/PhysRevD.97.075010",
+        "published": "2018-04-06",
+        "source_role": "2017_DATA_FITTED_HISTORICAL_BENCHMARK",
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_n_fixed": 3,
+        "source_fit_eta_fixed": "±2π/3",
+        "source_high_scale_GeV": 20000000000000000,
+        "source_low_energy_matching_GeV": 1000,
+        "derived_sin2theta12": 0.3134607669697975,
+        "derived_delta_m2_21_eV2": 0.00007581951135360001,
+        "derivation_for_delta_m2_21": "(m2(meV)*1e-3)^2 eV² under m1=0"
+      },
+      {
+        "case": "C",
+        "Matm_GeV": 1000000000000000,
+        "Msol_GeV": 1000000000000,
+        "ma_meV": 47.226,
+        "mb_meV": 4.1757,
+        "theta12_deg": 34.3651,
+        "theta13_deg": 8.44364,
+        "m2_meV": 8.70107,
+        "m3_meV": 50.249,
+        "chi2_at_2017_fit": 3.23646,
+        "source_pages": [
+          8,
+          10
+        ],
+        "source": "https://doi.org/10.1103/PhysRevD.97.075010",
+        "published": "2018-04-06",
+        "source_role": "2017_DATA_FITTED_HISTORICAL_BENCHMARK",
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_n_fixed": 3,
+        "source_fit_eta_fixed": "±2π/3",
+        "source_high_scale_GeV": 20000000000000000,
+        "source_low_energy_matching_GeV": 1000,
+        "derived_sin2theta12": 0.31861995228300505,
+        "derived_delta_m2_21_eV2": 0.0000757086191449,
+        "derivation_for_delta_m2_21": "(m2(meV)*1e-3)^2 eV² under m1=0"
+      },
+      {
+        "case": "D",
+        "Matm_GeV": 1000000000000000,
+        "Msol_GeV": 1000000000000,
+        "ma_meV": 47.198,
+        "mb_meV": 4.1913,
+        "theta12_deg": 34.3572,
+        "theta13_deg": 8.4798,
+        "m2_meV": 8.73113,
+        "m3_meV": 50.2431,
+        "chi2_at_2017_fit": 1.49388,
+        "source_pages": [
+          8,
+          10
+        ],
+        "source": "https://doi.org/10.1103/PhysRevD.97.075010",
+        "published": "2018-04-06",
+        "source_role": "2017_DATA_FITTED_HISTORICAL_BENCHMARK",
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_n_fixed": 3,
+        "source_fit_eta_fixed": "±2π/3",
+        "source_high_scale_GeV": 20000000000000000,
+        "source_low_energy_matching_GeV": 1000,
+        "derived_sin2theta12": 0.31849147027115154,
+        "derived_delta_m2_21_eV2": 0.0000762326310769,
+        "derivation_for_delta_m2_21": "(m2(meV)*1e-3)^2 eV² under m1=0"
+      }
+    ],
+    "king_sedgwick_rowley_2018_SM_leptogenesis_A1_D1_A2_D2": [
+      {
+        "case": "A1",
+        "MGUT_GeV": 10000000000000000,
+        "Matm_GeV": 51000000000,
+        "Msol_GeV": 328000000000000,
+        "a": 0.00817,
+        "b": 0.215,
+        "theta12_deg": 34.2,
+        "theta13_deg": 8.58,
+        "delta_m2_21_eV2": 0.0000743,
+        "delta_m2_31_eV2": 0.00249,
+        "theta23_deg": 45.33,
+        "delta_CP_deg": -89,
+        "chi2_at_2018_fit": 1.51,
+        "source": "https://doi.org/10.1007/JHEP10(2018)184",
+        "published": "2018-10-29",
+        "source_role": "2018_NUFIT3_2_PLUS_LEPTOGENESIS_FITTED_BENCHMARK",
+        "source_pages": [
+          13,
+          14,
+          15
+        ],
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_included_baryon_asymmetry": true,
+        "source_low_energy_matching": "M_Z",
+        "derived_sin2theta12": 0.315937723657661
+      },
+      {
+        "case": "D1",
+        "MGUT_GeV": 10000000000000000,
+        "Matm_GeV": 1590000000000,
+        "Msol_GeV": 10800000000,
+        "a": 0.0456,
+        "b": 0.00117,
+        "theta12_deg": 34.32,
+        "theta13_deg": 8.64,
+        "delta_m2_21_eV2": 0.0000733,
+        "delta_m2_31_eV2": 0.00248,
+        "theta23_deg": 44.24,
+        "delta_CP_deg": -93.2,
+        "chi2_at_2018_fit": 2.64,
+        "source": "https://doi.org/10.1007/JHEP10(2018)184",
+        "published": "2018-10-29",
+        "source_role": "2018_NUFIT3_2_PLUS_LEPTOGENESIS_FITTED_BENCHMARK",
+        "source_pages": [
+          13,
+          14,
+          15
+        ],
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_included_baryon_asymmetry": true,
+        "source_low_energy_matching": "M_Z",
+        "derived_sin2theta12": 0.31788665205405087
+      },
+      {
+        "case": "A2",
+        "MGUT_GeV": 20000000000000000,
+        "Matm_GeV": 50500000000,
+        "Msol_GeV": 50700000000000,
+        "a": 0.00806,
+        "b": 0.083,
+        "theta12_deg": 34.3,
+        "theta13_deg": 8.59,
+        "delta_m2_21_eV2": 0.0000736,
+        "delta_m2_31_eV2": 0.0025,
+        "theta23_deg": 45.62,
+        "delta_CP_deg": -87.4,
+        "chi2_at_2018_fit": 1.76,
+        "source": "https://doi.org/10.1007/JHEP10(2018)184",
+        "published": "2018-10-29",
+        "source_role": "2018_NUFIT3_2_PLUS_LEPTOGENESIS_FITTED_BENCHMARK",
+        "source_pages": [
+          13,
+          14,
+          15
+        ],
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_included_baryon_asymmetry": true,
+        "source_low_energy_matching": "M_Z",
+        "derived_sin2theta12": 0.31756160783119014
+      },
+      {
+        "case": "D2",
+        "MGUT_GeV": 20000000000000000,
+        "Matm_GeV": 13600000000000,
+        "Msol_GeV": 10600000000,
+        "a": 0.135,
+        "b": 0.00116,
+        "theta12_deg": 34.33,
+        "theta13_deg": 8.59,
+        "delta_m2_21_eV2": 0.0000734,
+        "delta_m2_31_eV2": 0.0025,
+        "theta23_deg": 44.24,
+        "delta_CP_deg": -93,
+        "chi2_at_2018_fit": 2.07,
+        "source": "https://doi.org/10.1007/JHEP10(2018)184",
+        "published": "2018-10-29",
+        "source_role": "2018_NUFIT3_2_PLUS_LEPTOGENESIS_FITTED_BENCHMARK",
+        "source_pages": [
+          13,
+          14,
+          15
+        ],
+        "source_fit_included_solar_angle": true,
+        "source_fit_included_solar_split": true,
+        "source_fit_included_baryon_asymmetry": true,
+        "source_low_energy_matching": "M_Z",
+        "derived_sin2theta12": 0.3180492074603218
+      }
+    ]
+  },
+  "observation_roles": {
+    "initial_2018_solar_used_in_fit": true,
+    "sept2026_JUNO_207d_used_to_construct_historical_benchmark": false,
+    "sept2026_JUNO_207d_role": "NEW_OUT_OF_TIME_OBSERVATIONAL_SCREEN_NOT_PROSPECTIVELY_PREREGISTERED_TEST",
+    "sept2026_JUNO_207d_statistically_independent_of_JUNO_59d": false,
+    "claim_2018_parameter_free_solar_prediction": false,
+    "historical_fit_chi2_reusable_as_2026_chi2": false,
+    "compare_two_solar_marginals_as_independent_in_joint_test": false
+  },
+  "weaker_model_controls": [
+    {
+      "name": "historical_fit_can_absorb_solar_input",
+      "interpretation": "2018 theta12 is not held out against the 2017/2018 fit"
+    },
+    {
+      "name": "out_of_time_new_2026_data",
+      "interpretation": "pre-2018 frozen benchmark outputs can be tested as old predictions against later data but are not parameter-free"
+    },
+    {
+      "name": "different_2018_global_fit_sources",
+      "interpretation": "different atmospheric and other input data can change the preferred case; do not transfer historical model ranking or chi2"
+    },
+    {
+      "name": "full_CSD3_parameter_space_not_bounded",
+      "interpretation": "eight historical points cannot bound all high-scale CSD3 parameter choices or allowed RG corrections"
+    },
+    {
+      "name": "BFSS_NFC_identification_absent",
+      "interpretation": "no 3+1D lepton source mapping; no framework-level evidentiary credit"
+    }
+  ],
+  "qualification": {
+    "new_model_prediction_derived": false,
+    "experimental_likelihood_imported": false,
+    "experiment_significance_calculated": false,
+    "model_excluded": false,
+    "model_preferred": false,
+    "formal_lean_CI_run": false,
+    "sm_D1": "PROSPECTIVE_UNSTAGED",
+    "SM_D0_through_SM_P0N5_untouched": true,
+    "BFSS_accepted_anchor_count_preserved": 27,
+    "blocked_W0C2B2_remains": true,
+    "FCP_canonical_main_untouched": true
+  },
+  "next_decision": "Do not re-fit 2018 best fit points against JUNO in this phase. If source-first 2018 allowed parameter envelopes and dedicated joint likelihood with covariance can be recovered, separately preregister a bounded 2026 physical comparison. Otherwise retain central-value tension only and switch to a better discriminating candidate."
+}
