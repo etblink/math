@@ -1,0 +1,86 @@
+{
+  "schema": "RHOPF_P3_FOCK_INDEX_READINESS/0.1",
+  "date": "2026-11-18",
+  "parent_commit": "6b1af2ad0dd8cdf6ffe9a43baace1122705772f5",
+  "classification": "SOURCE_FAITHFUL_MATHEMATICAL_AUDIT__PHYSICAL_INDEX_NOT_ESTABLISHED",
+  "source_pins": {
+    "gamma16": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "BFSS_Core": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+    "original_Fock_star_Spin9": "b50ef04695587b267ad8519074b1293f98828749",
+    "original_negative_central_majorana": "6b7e627d902f7f9c291cc54b1f3aa1e4dfd5bc1d",
+    "original_Fock_SU2_gauge_rep": "328d607ee2bb45edd4268e5592d784c4c84488a7",
+    "original_Fock_SU2_projector": "13a80bb53eb3d0ca357e4c87db4bd3ebd53854ec",
+    "original_nonzero_gauge_vacuum": "a16d3573b737bb4453e42b0b543d63cbbac1cd1b",
+    "original_normalized_48CAR": "d08200fae8ef6c9c9544414307ad537f1eeaa4a4",
+    "original_Fock_Schur": "6d5fbe98aa8d660c9b7c680efefde02501d8e253",
+    "original_operator_HS_action": "a9c7b74e358eef4a56c2ae11eca5f138842d55a8"
+  },
+  "distinction": {
+    "original_Fock_space": "Fermion 2, complex dimension 2^24, 48 real Majorana generators",
+    "original_bosonic_space": "Boson 2, dimension 27 real matrix-mechanics variables, not physical R^3",
+    "source_gamma16": "Original nine 16x16 real Clifford matrices, NOT 48 CAR Majoranas",
+    "original_spin9_action": "Star automorphism on original Fock operator algebra (see B3 source), not presently a newly qualified Fock-vector group implementation",
+    "source_gauge_fixed_vacuum": "Original OP2c source shows nonzero fixed Fock vacuum; no soliton or bosonic L2 physical state",
+    "toy_Fock": "Previous P2 24-mode dGamma Hamiltonian is separate from original BFSS Hamiltonian"
+  },
+  "mathematical_topology": {
+    "real_bundle": "E_+(y)=ker(Gamma(y)-I), real rank8 over S8, sphere bundle S15",
+    "euler_number_abs": 1,
+    "euler_reason": "Gysin: H^0(S8,Z) --cup e--> H^8(S8,Z) -> H^8(S15,Z)=0 forces e to generate H^8(S8,Z)",
+    "three_space_source": "Compactified R^3=S3, with fixed boundary",
+    "pi3_S8": 0,
+    "pi3_S15": 0,
+    "Euler_pullback_over_S3": "zero; H^8(S3,Z)=0",
+    "toy_negative_projector": "P_-(y)=(I16-Gamma(y))/2, rank 8",
+    "complex_occupied_target": "Gr_8(C16) or Gr_8(C24) after eight positive spectators",
+    "pi3_complex_grassmannians": 0,
+    "reason": "From U(8)xU(8)->U(16)->Gr8(C16) and U(8)xU(16)->U(24)->Gr8(C24); pi3 Z⊕Z->Z is surjective",
+    "conclusion": "No strong 3D class-A topological charge from this rank8 occupied projector without additional physical symmetry",
+    "possible_independent_8d_index": "Higher-dimensional invariant over S8 is real, but not a 3D Fock particle invariant"
+  },
+  "CAR_parity": {
+    "normalization": "Gamma_{2j}=a_j+a†_j; Gamma_{2j+1}=i(a†_j-a_j)",
+    "parity_formula": "(-i)^n Gamma_0 Gamma_1 ... Gamma_{2n-1}",
+    "fermion_parity": "(-1)^F, anticommutes with all odd Majorana generators and commutes with every even Majorana bilinear",
+    "tested_occupation_modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "verified_pairs_total": 120,
+    "full_24_mode_dense_matrix_not_constructed": true,
+    "source_specific_pair_ordering_and_phase_not_Lean_qualified": true,
+    "conditional_48_mode_consequence": "If exact source 48 CAR and generator completeness and source -1 Spin9 action are qualified, parity conjugation realizes the same negative-central operator automorphism up to implementer phase",
+    "not_a_protected_Hopf_charge": "Parity remains constant along the full-target gapped toy escape"
+  },
+  "independent_execution": {
+    "local_version": "Python 3.13.5, NumPy 2.3.5",
+    "gamma_projector_source_sha": "82e113dab152f7330b1f2a32885b1799c208b0fc",
+    "fock_parity_consumer_sha": "6bc55b47f0beffbc02f169e21e624e419eca1863",
+    "gamma_original_fixture_sha": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "source_gamma_Clifford_identities_pass": true,
+    "occupied_rank": 8,
+    "gapped_projector_frames": 36,
+    "distinct_initial_spinors": 4,
+    "fermionic_small_mode_CAR_and_parity_checks_pass": true,
+    "two_committed_candidate_code_blobs_match_executed_files": true,
+    "numerical_tests_not_topological_theorem_proofs": true
+  },
+  "readiness": {
+    "Fock_pointwise_star_automorphism_inner": "Finite matrix algebra *-automorphisms are implemented by unitary, unique up to phase; does not give qualified continuous group lift or domain compatibility",
+    "physical_3D_Dirac_or_Yukawa_operator_defined": false,
+    "source_SU2_and_Spin9_compatible_on_physical_domain": false,
+    "fermionic_zero_mode_index_computed": false,
+    "spectral_flow_with_allowed_unwinding_computed": false,
+    "original_BFSS_Fock_vector_unitary_qualified_here": false,
+    "gauge_parity_commutator_qualified_here": false,
+    "new_BFSS_native_Lean_CI": false,
+    "physical_particle_claim": false,
+    "FCP_main_unchanged": true,
+    "NFC_forced_tower_D03_still_retired": true,
+    "BFSS_accepted_anchors_preserved": 27,
+    "W0C2B2_no_new_qualification": true
+  },
+  "recommended_next": "Before physical simulation choose physical field carrier, source-defined spatial Dirac/Yukawa operator, exact gauge/Spin9/chiral symmetries and boundary domain. Compare class-A escape to a symmetry-protected class-AIII winding competitor; calculate a genuine spectral-flow/index only after operator/source agreement, not from a finite 24-mode toy gap."
+}
