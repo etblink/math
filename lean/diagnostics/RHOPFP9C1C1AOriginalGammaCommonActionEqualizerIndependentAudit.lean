@@ -4,6 +4,7 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C1C1AOriginalGammaComm
 set_option autoImplicit false
 
 namespace FCP.RHOPFP9C1C1AIndependent
+open scoped Matrix
 open OAI.BFSSQuantum
 open FCP.BFSSGamma9
 open FCP.RHOPFP9C1A
