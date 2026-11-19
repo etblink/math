@@ -1,0 +1,126 @@
+{
+  "schema": "RHOPF_P9A1A_STRICT_ORIGINAL_GAMMA_FULL_GENERATOR_INEQUIVALENCE_ACCEPTANCE/1.0",
+  "date_local": "2026-11-18",
+  "timezone": "America/Los_Angeles",
+  "branch": "integration/bfss-unified-research-20261108",
+  "qualification": "R1_STRICT_NATIVE_GREEN_INDEPENDENTLY_VERIFIED",
+  "run": {
+    "id": 44466224648,
+    "url": "https://github.com/etblink/math/actions/runs/44466224648",
+    "event": "push",
+    "attempt": 1,
+    "conclusion": "success",
+    "tested_commit": "9698423c3365aaa310c5524dbf18351dcef7a81f",
+    "job_id": 135364534848,
+    "job_conclusion": "success"
+  },
+  "source": {
+    "original_gamma_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "original_core_blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+    "original_gram_blob": "ac69fc77e5a5b68c8ac06abf8f978a8be8b69a1b",
+    "original_p9a0_blob": "bf5eb554232a6d452e86d85b05220aad7c5d0aeb",
+    "new_native_blob": "779bd9a78811f60397657df8b8a4350aafae57b7",
+    "independent_lean_blob": "aaa656b626f25612a9705bef725b5ef3a1f471b7",
+    "workflow_blob": "64f59a0078ce68d0c71076b9583d330ba2941735",
+    "original_integer_consumer_blob": "9d20952c366e356ff5dc656a35d0b604236a15ac",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "lean": {
+    "original_gram_build_jobs": 8994,
+    "native_warning_as_error": true,
+    "independent_warning_as_error": true,
+    "theorems": [
+      "originalGammaPair_ne_scalar_distinct",
+      "K13_ne_K25",
+      "K13_ne_K46",
+      "K25_ne_K46"
+    ],
+    "native_axiom_reports_count": 4,
+    "independent_lean_axiom_reports_count": 4,
+    "reported_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "no_sorryAx": true
+  },
+  "independent_integer": {
+    "selected_four_coordinates": [
+      0,
+      1,
+      8,
+      9
+    ],
+    "source_original_gamma_sha_match": true,
+    "original_fixture_sha_match": true,
+    "clifford_pairs_checked": 81,
+    "selected_R4_checks": 384,
+    "same_restricted_phase": true,
+    "transverse_distinct_witnesses": [
+      {
+        "pair": [
+          0,
+          1
+        ],
+        "witness": [
+          2,
+          3,
+          -1,
+          1
+        ]
+      },
+      {
+        "pair": [
+          0,
+          2
+        ],
+        "witness": [
+          2,
+          3,
+          -1,
+          1
+        ]
+      },
+      {
+        "pair": [
+          1,
+          2
+        ],
+        "witness": [
+          4,
+          5,
+          1,
+          -1
+        ]
+      }
+    ],
+    "full_36_bivector_trace_Gram_orthogonal": true
+  },
+  "evidence": {
+    "artifact_id": 14501914179,
+    "artifact_name": "rhopf-p9a1a-9698423c3365aaa310c5524dbf18351dcef7a81f-1",
+    "zip_sha256": "df4c7881af68ceec33f760d670af6936b1400edeabe74b0f5ec82d91860f550b",
+    "downloaded_archive_verified": true,
+    "archived_file_sha256": {
+      "exact-tested-commit.txt": "52b9df36a5612e2430e12b4a91d95b452ed886741fc01e860312877bd5ff3dbd",
+      "independent-lean-types-and-axioms.log": "ef6b6226f54a609fef360d3d7819e4260e8ac429e648722da519bc6220e4d2b4",
+      "native-proofs-and-axioms.log": "ef6b6226f54a609fef360d3d7819e4260e8ac429e648722da519bc6220e4d2b4",
+      "independent-original-integer-consumer.json": "23300b8f6a4caadce5b5f1f00fea14fd3773f069580660b90f9dac248d389a27",
+      "original-gram-build.log": "24d73d51999bc60de388bc1a59026e103c64183bd7e76f258fab0d706b473a0c",
+      "toolchain-sha256.txt": "7f83f79f91770e700b0ce26892696260377a3460b843c2ed07610f52fb464f49"
+    }
+  },
+  "scope": {
+    "native_proven": "Three original full-R16 signed gamma bivectors pairwise inequivalent. General no-scalars result for two different canonically ordered source gamma pair products.",
+    "not_native_proven": [
+      "Selected R4 equal restriction and full coordinate preservation",
+      "Full source Hopf action global base invariance",
+      "Fock vector Spin9 implementer and Hamiltonian Noether charge or domain",
+      "Vortex particle/Standard Model observable"
+    ],
+    "original_hamiltonian_unchanged": true,
+    "original_fock_source_unchanged": true,
+    "next_gate": "RHOPF-P9A1B: source-exact native finite-coordinate selected R4 preservation and shared complex Hopf phase."
+  }
+}
