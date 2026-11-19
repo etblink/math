@@ -34,34 +34,18 @@ theorem relationalCirclePhase_mul (a b c d : ℝ) :
   rw [relationalCirclePhase_eq_complement_sum,
     relationalCirclePhase_eq_complement_sum,
     relationalCirclePhase_eq_complement_sum]
-  calc
-    (relationalComplement + a • relationalProjector + b • relationalPhaseJ) *
-      (relationalComplement + c • relationalProjector + d • relationalPhaseJ) =
-      relationalComplement * relationalComplement +
-      relationalComplement * (c • relationalProjector) +
-      relationalComplement * (d • relationalPhaseJ) +
-      (a • relationalProjector) * relationalComplement +
-      (a • relationalProjector) * (c • relationalProjector) +
-      (a • relationalProjector) * (d • relationalPhaseJ) +
-      (b • relationalPhaseJ) * relationalComplement +
-      (b • relationalPhaseJ) * (c • relationalProjector) +
-      (b • relationalPhaseJ) * (d • relationalPhaseJ) := by
-        noncomm_ring
-    _ = relationalComplement +
-      (a * c - b * d) • relationalProjector +
-      (a * d + b * c) • relationalPhaseJ := by
-        simp only [mul_smul_comm, smul_mul_assoc, smul_smul,
-          relationalComplement_idempotent,
-          relationalComplement_mul_projector,
-          relationalComplement_mul_phaseJ,
-          relationalProjector_mul_complement,
-          relationalPhaseJ_mul_complement,
-          relationalProjector_idempotent,
-          relationalProjector_mul_phaseJ,
-          relationalPhaseJ_mul_projector,
-          relationalPhaseJ_square_neg_projector,
-          smul_zero, zero_smul, smul_neg, zero_add, add_zero]
-        module
+  simp only [add_mul, mul_add, mul_smul_comm, smul_mul_assoc, smul_smul,
+    relationalComplement_idempotent,
+    relationalComplement_mul_projector,
+    relationalComplement_mul_phaseJ,
+    relationalProjector_mul_complement,
+    relationalPhaseJ_mul_complement,
+    relationalProjector_idempotent,
+    relationalProjector_mul_phaseJ,
+    relationalPhaseJ_mul_projector,
+    relationalPhaseJ_square_neg_projector,
+    smul_zero, smul_neg, add_zero]
+  module
 
 #print axioms relationalCirclePhase_mul
 
