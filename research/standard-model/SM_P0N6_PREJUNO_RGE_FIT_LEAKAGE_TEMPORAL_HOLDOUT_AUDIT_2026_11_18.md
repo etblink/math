@@ -70,19 +70,6 @@ All eight selected frozen points have `sin²theta12 > 0.3036`. Importantly, thei
 This is exactly why **we do not compute a significance** from displayed marginal ± values: missing joint JUNO covariance/response, theory matching/running uncertainties, historical parameter covariance, and source-defined model-specific likelihood. JUNO 207d and 59d analyses must never be combined as independent samples.
 
 
-## 3A. Important recovered 2018 source-defined *indicative* bands — NOT a 2026 exclusion
-
-**Subsequent source-specific inspection of the same October 2018 KSR paper** recovered Tables **4–5, printed p. 20**, which tabulate `1σ`, `2σ` and `3σ` *historical combined-seven-observable-fit perturbation ranges* for **A2** and **D2**. These are not omitted from the ledger because they appear stronger than four mere central points. They come with **an explicit source-authored limitation** in the paragraphs immediately below: the authors call these ranges **purely indicative and not absolute**, since the analysis could not vary/fit each observable separately and the underlying χ² aggregates seven differently sensitive observables, with `Y_B` especially influential.
-
-| 2018 fitted benchmark | Source historical 1σ `θ12` band | Source historical 2σ `θ12` band | Source historical 3σ `θ12` band | `sin²θ12` at source's indicative 3σ lower endpoint |
-|---|---|---|---|---:|
-| KSR A2 (Table 4) | 34.254°–34.350° | 34.236°–34.365° | 34.217°–34.383° | 0.316214 |
-| KSR D2 (Table 5) | 34.291°–34.379° | 34.278°–34.391° | 34.264°–34.404° | 0.316977 |
-
-JUNO September 2026's `sin²θ12=0.3036` corresponds to `θ12≈33.43558°`, below both **source-illustrative lower endpoints**. This is a **stronger descriptive observation about the studied historical fit neighborhoods**, *not* the statement that JUNO lies outside a valid model's 3σ predictive region. A source's seven-observable historical fit χ² contour **cannot be treated as a marginal frequentist/ Bayesian interval for an independently held-out 2026 `θ12` measurement**, nor does it bound unexamined corrections, altered high-scale parameters or other CSD(3) variants.
-
-**Updated stopping condition:** the source does contain *limited antecedent fit-neighborhood information*, but no source-accepted contemporary `θ12` predictive likelihood with the needed independent calibration, parameter uncertainty, theory-error treatment and exact 2026 joint experimental interface. Keep `SOURCE_HISTORICAL_INDICATIVE_RANGES_NOT_PREDICTION_INTERVAL`; do not reinterpret the printed '3σ' label as statistical exclusion.
-
 ## 3. Fit-input leakage and causal inference matrix
 
 | Question | Geib & King (2018) | King, Sedgwick & Rowley (2018) |
@@ -97,6 +84,19 @@ JUNO September 2026's `sin²θ12=0.3036` corresponds to `θ12≈33.43558°`, bel
 | Is the historical χ² a contemporary 2026 test statistic? | **NO** | **NO** |
 
 **Comparison interpretation:** this is a **retrospective out-of-time model check** with a fixed published 2018 point. It is not (a) a prediction of the 2018 input data made without those inputs, (b) a predeclared 2018 JUNO challenge, (c) a globally refitted 2026 Littlest Seesaw prediction, or (d) a physical confirmation/refutation of BFSS, NFC, FCP or a whole neutrino mechanism family.
+
+## 3A. Important recovered 2018 source-defined *indicative* bands — NOT a 2026 exclusion
+
+**Subsequent source-specific inspection of the same October 2018 KSR paper** recovered Tables **4–5, printed p. 20**, which tabulate `1σ`, `2σ` and `3σ` *historical combined-seven-observable-fit perturbation ranges* for **A2** and **D2**. These are not omitted from the ledger because they appear stronger than four mere central points. They come with **an explicit source-authored limitation** in the paragraphs immediately below: the authors call these ranges **purely indicative and not absolute**, since the analysis could not vary/fit each observable separately and the underlying χ² aggregates seven differently sensitive observables, with `Y_B` especially influential.
+
+| 2018 fitted benchmark | Source historical 1σ `θ12` band | Source historical 2σ `θ12` band | Source historical 3σ `θ12` band | `sin²θ12` at source's indicative 3σ lower endpoint |
+|---|---|---|---|---:|
+| KSR A2 (Table 4) | 34.254°–34.350° | 34.236°–34.365° | 34.217°–34.383° | 0.316214 |
+| KSR D2 (Table 5) | 34.291°–34.379° | 34.278°–34.391° | 34.264°–34.404° | 0.316977 |
+
+JUNO September 2026's `sin²θ12=0.3036` corresponds to `θ12≈33.43558°`, below both **source-illustrative lower endpoints**. This is a **stronger descriptive observation about the studied historical fit neighborhoods**, *not* the statement that JUNO lies outside a valid model's 3σ predictive region. A source's seven-observable historical fit χ² contour **cannot be treated as a marginal frequentist/ Bayesian interval for an independently held-out 2026 `θ12` measurement**, nor does it bound unexamined corrections, altered high-scale parameters or other CSD(3) variants.
+
+**Updated stopping condition:** the source does contain *limited antecedent fit-neighborhood information*, but no source-accepted contemporary `θ12` predictive likelihood with the needed independent calibration, parameter uncertainty, theory-error treatment and exact 2026 joint experimental interface. Keep `SOURCE_HISTORICAL_INDICATIVE_RANGES_NOT_PREDICTION_INTERVAL`; do not reinterpret the printed '3σ' label as statistical exclusion.
 
 ## 4. Adversarial FCP/SCC controls
 
