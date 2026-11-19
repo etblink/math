@@ -37,7 +37,7 @@ theorem originalGamma3_on_basis0 :
   funext i
   change (gamma (3 : SpaceIndex)) i (0 : SpinIndex) =
     (Pi.single (10 : SpinIndex) (1 : ℝ)) i
-  fin_cases i <;> norm_num [gamma, Matrix.map_apply, Pi.single]
+  fin_cases i <;> norm_num [gamma, Matrix.map_apply, Pi.single_apply]
 
 #print axioms originalGamma3_on_basis0
 
