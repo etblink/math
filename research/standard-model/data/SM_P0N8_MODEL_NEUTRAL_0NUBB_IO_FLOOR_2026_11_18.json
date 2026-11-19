@@ -1,0 +1,111 @@
+{
+  "schema": "SM-P0N8_FRAMEWORK_NEUTRAL_0NUBB_CONDITIONAL_IO_MASS_FLOOR/0.1",
+  "as_of_date": "2026-11-18",
+  "parent_branch_commit": "a0582bcd50984d6a4a34e74e5715e7f169cf16f0",
+  "scientific_goal": "Truth-seeking across any candidate model; neither SM nor BFSS nor NFC is privileged. Input-conditioned 0nu beta beta amplitude floor and mechanistic counterexamples.",
+  "claim_scope": {
+    "physics_condition": "3 light Majorana neutrinos, unitary 3x3 PMNS, inverted ordering, standard light-Majorana exchange is sole contributing process",
+    "floor_applies_to_total_process_unconditionally": false,
+    "full_3light_pmns_source_qualification": false,
+    "experimentally_detected_0nubb": false,
+    "cross_isotope_statistical_combination_performed": false,
+    "experimental_likelihood_imported": false,
+    "nuclear_amplitude_qualified": false,
+    "BFSS_NFC_lepton_map_qualified": false,
+    "new_formal_proof_qualified": false,
+    "no_new_lean_ci_gate": true,
+    "SM_D1": "PROSPECTIVE_UNSTAGED",
+    "BFSS_qualified_anchor_count_preserved": 27,
+    "W0C2B2": "BLOCKED",
+    "FCP_main_unchanged": true
+  },
+  "observable_inputs": {
+    "JUNO_2026_sin2_theta12": 0.3036,
+    "JUNO_2026_sin2_theta12_quoted_pm": 0.0064,
+    "JUNO_2026_delta_m2_21_ev2": 7.388e-05,
+    "JUNO_2026_delta_m2_31_IO_ev2": -0.002482,
+    "JUNO_2026_delta_m2_31_NO_ev2": 0.002509,
+    "DayaBay_2023_sin2_2theta13": 0.0851,
+    "DayaBay_2023_sin2_2theta13_quoted_pm": 0.0024
+  },
+  "derived": {
+    "electron_weights": [
+      0.6812547106347544,
+      0.29699731497517434,
+      0.0217479743900712
+    ],
+    "IO_all_lightest_analytic_lower_guarantee_ev": 0.018892677085671834,
+    "IO_lightest_zero_min_ev": 0.018924977484918545,
+    "IO_lightest_zero_max_ev": 0.048954798833257124,
+    "IO_any_lightest_numeric_min_ev": 0.018894633370134292,
+    "IO_numeric_min_lightest_ev": 0.0027927609044438063,
+    "NO_lightest_4meV_phase_cancellation_exists": true,
+    "IO_floor_is_2026_JUNO_DayaBay_central_input_not_CL": true,
+    "conditional_fixed_NME_half_life_improvement_factors": {
+      "KamLAND_Zen_136Xe": [
+        2.1964891350734668,
+        41.69967383473658
+      ],
+      "LEGEND_200_76Ge": [
+        15.759249215291135,
+        112.06577219762586
+      ]
+    },
+    "IO_numeric_min_method": "one-dimensional golden-section scan 0 <= lightest_mass <= 0.12 eV; diagnostic, NOT a proof of global infimum",
+    "IO_any_lightest_rigorous_lower_bound_origin": "Cauchy-Schwarz-style sharp a*sqrt(x^2+A)-b*x infimum; m2-m1 <= d21/(2sqrt A)"
+  },
+  "experiment": {
+    "published_light_mechanism_effective_mass_limit_range_ev": {
+      "KamLAND_Zen_136Xe": [
+        0.028,
+        0.122
+      ],
+      "LEGEND_200_76Ge": [
+        0.075,
+        0.2
+      ]
+    },
+    "KamLAND_Zen_136Xe_T1_2_limit_90CL_yr": 3.8e+26,
+    "KamLAND_Zen_source": "https://journals.aps.org/prl/abstract/10.1103/jkf6-48j8",
+    "LEGEND_200_76Ge_T1_2_limit_90CL_yr": 1.9e+26,
+    "LEGEND_source": "https://journals.aps.org/prl/abstract/10.1103/25tk-nctn",
+    "isotope_NME_factors_imported": false,
+    "NME_uncertainties_propagated": false,
+    "reach_factors_not_experiment_sensitivity_forecast": true,
+    "nu_oscillation_JUNO_207d_overlaps_59d": true
+  },
+  "countermodels": {
+    "NO_cancellation": {
+      "m1_ev": 0.004,
+      "has_2_majorana_phases_to_cancel": true
+    },
+    "dirac_L_conserved": {
+      "light_majorana_mass_mechanism_applicable": false,
+      "identical_oscillations_possible": true
+    },
+    "additional_short_distance_LNV": {
+      "new_amplitude_can_interfere": true,
+      "UV_realization_constructed": false,
+      "isotope_dependence_must_be_modelled": true
+    },
+    "different_UV_majorana_models_same_M_nu": {
+      "distinct_uv_origins_same_light_effective_amplitude": true
+    },
+    "changed_solar_mixing_forfeits_floor": {
+      "sin2theta12": 0.5,
+      "IO_lightest_mass_example_ev": 0.02,
+      "three_vector_phases_allow_exact_light_amplitude_cancellation": true,
+      "interpretation": "adversarial altered-input mathematical counterexample, NOT measured input or a 2026 fit"
+    }
+  },
+  "primary_sources": {
+    "JUNO_2026_v1": "https://arxiv.org/abs/2609.37895v1",
+    "Daya_Bay_2023": "https://doi.org/10.1103/PhysRevLett.130.161802",
+    "KamLAND_Zen_full_2025": "https://journals.aps.org/prl/abstract/10.1103/jkf6-48j8",
+    "LEGEND200_2026": "https://journals.aps.org/prl/abstract/10.1103/25tk-nctn",
+    "ab_initio_global_2026": "https://journals.aps.org/prd/abstract/10.1103/rsw5-57fz",
+    "chiEFT_sterile_2026": "https://link.springer.com/article/10.1140/epjc/s10052-026-15826-6",
+    "meV_frontier_2026": "https://doi.org/10.1016/j.physletb.2026.140862"
+  },
+  "next_qualified_research_target": "Select one source-bound cross-isotope mechanism discriminator with explicit NME/phase-space theory and isotope-specific likelihood. Do not assume any model true. No new theory needed unless existing families fail a discriminating test."
+}
