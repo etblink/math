@@ -34,7 +34,7 @@ theorem relationalCirclePhase_mul (a b c d : ℝ) :
   rw [relationalCirclePhase_eq_complement_sum,
     relationalCirclePhase_eq_complement_sum,
     relationalCirclePhase_eq_complement_sum]
-  simp only [add_mul, mul_add, mul_smul_comm, smul_mul_assoc, smul_smul,
+  simp only [add_mul, mul_add, mul_smul_comm, smul_mul_assoc,
     relationalComplement_idempotent,
     relationalComplement_mul_projector,
     relationalComplement_mul_phaseJ,
