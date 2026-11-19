@@ -1,0 +1,117 @@
+{
+  "schema": "RHOPF_P8_TRAPPED_GP_STABILITY_AUDIT/0.1",
+  "date": "2026-11-18",
+  "parent_commit": "8d70c28d693856738a242883859e657bec90225c",
+  "verdict": "GP_PHASE_SEPARATION_EQUILIBRIUM_POSITIVE_CONTROL__MIXED_STATE_DIRECTIONALLY_UNSTABLE__HOPF_IMPRINT_FAILS_SAMPLED_STABILITY__BFSS_PHYSICS_UNQUALIFIED",
+  "source_pins": {
+    "original_BFSS_gamma16": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "source_Hopf_P6_core": "3297ad8bfdc943f624ed16b0d0de5dac044bfcea",
+    "P7_parent": "8d70c28d693856738a242883859e657bec90225c",
+    "P8_tested_core": "ece95bc5e22201ff8aad0277ce92af7ea41bd8fd",
+    "P8_tested_consumer": "c3094613050ed374bdffa3a2caeb417e5bdca95f"
+  },
+  "model": {
+    "field": "Independent BOSONIC two-component Gross-Pitaevskii, not BFSS",
+    "energy": "E=∫{(|∇ψ1|²+|∇ψ2|²)/2+V(n1+n2)+g(n1²+n2²)/2+g12 n1 n2}d³x",
+    "trap": "V=.5*(0.6)^2*r²",
+    "component_populations": "N1=N2=50",
+    "couplings": {
+      "g11": 2,
+      "g22": 2,
+      "g12_mixed": 2,
+      "g12_phase_separation": 3.5
+    },
+    "domain": "Periodic cube [-L,L)^3, L=5 at N32 and L=6 at N40/N48",
+    "preparation": "Separately-Nj normalized imaginary-time Strang, then real-time Hamiltonian split step t<=0.3",
+    "original_Hopf_source_coordinates": [
+      0,
+      1,
+      8,
+      9
+    ]
+  },
+  "exact_directional_curvature": {
+    "perturbation": "ψ±(ε)=φ(1±ε sin(πx/L))/sqrt(1+ε² q), q=∫φ²f²/∫φ²",
+    "rational_energy": "E(ε)=(K0+ε²K2)/(1+ε²q)+(I0+ε²I2+ε⁴I4)/(1+ε²q)²",
+    "directional_second_derivative": "2*(K2−qK0+I2−2qI0)",
+    "mixed_sign": "NEGATIVE with fixed N1,N2 at N32,N40 and N48 sampled comparison",
+    "separated_control": "POSITIVE along a sampled antisymmetric direction; NOT full BdG spectrum"
+  },
+  "verified_numeric": {
+    "N32": {
+      "mixed_energy": 218.0885962957585,
+      "separated_energy": 211.7964525810521,
+      "mixed_second_derivative": -38.35049606786137,
+      "separated_sampled_curvature": 76.84211919190098
+    },
+    "N40": {
+      "mixed_energy": 218.24193247704866,
+      "separated_energy": 211.8654944799933,
+      "mixed_overlap": 13.171100393606057,
+      "separated_overlap": 4.694607629092553,
+      "mixed_second_derivative": -31.811776531230763,
+      "separated_sampled_curvature": 66.72018170869858,
+      "mixed_stationary_residual": 0.0007654526131602255,
+      "separated_stationary_residual": 0.001278421086783633,
+      "separated_realtime_energy_abs_drift": 2.62079993262887e-8,
+      "separated_realtime_population_max_abs_drift": 1.9753088054130785e-12,
+      "separated_relative_density_drift": 0.00012806933697931083
+    },
+    "N48_separate_local_execution": {
+      "mixed_energy": 218.24192643159796,
+      "separated_energy": 211.86549169946247,
+      "mixed_finite_eps_curvature_approx": -31.80731283634941
+    },
+    "miscible_N40": {
+      "g12": 2,
+      "energy": 196.78983949266694,
+      "overlap": 15.639900695867492
+    },
+    "initial_Hopf_imprint_degree_abs": 1,
+    "Hopf_N32": {
+      "start_energy": 626.8032691520425,
+      "relaxed_axisymmetric_energy": 223.98058336339295,
+      "core_break_final_energy": 211.80726513659735
+    },
+    "Hopf_N40": {
+      "start_energy": 628.7504864883585,
+      "relaxed_axisymmetric_energy": 223.91336547103413,
+      "core_break_final_energy": 211.87742916892256,
+      "separated_reference_energy": 211.8654944799933,
+      "final_gridpoint_min_density": 1.7795260729541727e-21
+    }
+  },
+  "full_local_generated_evidence": {
+    "path": "research/topology/data/RHOPF_P8_TRAPPED_GP_STATIONARITY_PERTURBATION_EVIDENCE_2026_11_18.json",
+    "sha256": "e40f4f4af23a2c4073bfb67d468c28e2b67e2e5525e54cae3f43c315e648dcfd",
+    "note": "Generated artifact exists in conversation container, not yet committed; P8 committed consumer reconstructs it."
+  },
+  "negative_controls": [
+    "Approximate stationarity does not imply energetic stability: symmetric mixture has negative population-preserving directional curvature.",
+    "Lower-energy separated stationary state passes only selected positive-curvature and short-time checks, not global stability or a complete BdG spectrum.",
+    "A Hopf-imprinted condensate is NOT robustly selected under the chosen trap and interactions: a small core-filling seed permits lower-energy relaxation.",
+    "After numerical relaxation, min condensate density becomes extremely small; no continuum Hopf-number change is certified.",
+    "Imaginary-time constrained minimization is NOT real GP time evolution or a physical decay-rate prediction.",
+    "The original BFSS 0+1D 48-Majorana Fock, SU2 color gauge and physical Hamiltonian are separate from GP bosonic populations.",
+    "The harmonic-trap periodic computational box has nonzero edge amplitudes, and full spatial/temporal/spectral convergence is open.",
+    "A phase-separated GP stationary state does not validate Kelvin's vortex atom, Schwarzschild Proton or a new elementary particle."
+  ],
+  "qualification": {
+    "local_default_consumer_pass": true,
+    "local_N48_independent_refinement": true,
+    "stable_Hopf_state_proven": false,
+    "actual_Hopf_reconnection_resolved": false,
+    "original_BFSS_Fock_coupling_derived": false,
+    "new_Lean_CI_launched": false,
+    "original_BFSS_source_modified": false,
+    "FCP_main_modified": false,
+    "NFC_D03_forced_tower_reactivated": false,
+    "experimentally_distinguishable_particle_prediction": false
+  },
+  "scholarly_sources": [
+    "https://doi.org/10.1103/PhysRevLett.88.080401",
+    "https://doi.org/10.1103/PhysRevLett.91.010403",
+    "https://doi.org/10.1103/PhysRevA.72.043616"
+  ],
+  "project_lead_next": "Stop generic GP toy escalation. Either source and qualify a full fixed-population Bogoliubov stability spectrum for a genuine Hopf stationary state, or prioritize original BFSS/SM physical couplings, fermionic index and measurable counterfactuals. Keep separate."
+}
