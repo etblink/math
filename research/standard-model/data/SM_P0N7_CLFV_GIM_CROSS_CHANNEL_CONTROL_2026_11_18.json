@@ -1,0 +1,65 @@
+{
+  "schema": "SM-P0N7_CLFV_GIM_CROSS_CHANNEL_CONTROL/0.1",
+  "audit_date": "2026-11-18",
+  "source_inputs": {
+    "JUNO_2026_delta_m2_21_eV2": 0.00007388,
+    "JUNO_2026_delta_m2_31_eV2": {
+      "NO": 0.002509,
+      "IO": -0.002482
+    },
+    "JUNO_2026_sin2_theta12": 0.3036,
+    "dayabay_sin2_2theta13": 0.0851
+  },
+  "conservative_inputs": {
+    "alpha_max": 0.0078125,
+    "W_mass_lower_GeV": 80,
+    "interpretation": "conservative scenario caps, not fitted central W mass or a global confidence envelope"
+  },
+  "model": {
+    "id": "THREE_LIGHT_UNITARY_PMNS_STANDARD_W_LOOP",
+    "light_only_unitary_three_active": true,
+    "heavy_light_mixing_included": false,
+    "heavy_neutrinos_new_dipoles_included": false,
+    "new_particles_included": false,
+    "loop_formula_role": "standard leading light-neutrino W-loop expansion, not a new full QFT calculation"
+  },
+  "derived": {
+    "envelope": {
+      "NO": 8.95762376469855e-54,
+      "IO": 9.295492695943895e-54
+    },
+    "envelope_semantics": "JUNO central splitting conditioned 3-light-unitary leading-loop analytic upper envelope; not a confidence bound",
+    "GIM_identity": "sum_i conj(Uei) Uμi=0 hence common mass² shift invisible",
+    "operator_bound": "abs(sum_i conj(Uei)Uμi mi²)<= (max mi²-min mi²)/2"
+  },
+  "experiment": {
+    "MEG_II_BR_limit_90CL": 1.5e-13,
+    "dataset": "MEG II 2021–2022, 2025 published 2026 reported, not full late-2026 data",
+    "preprint": "https://arxiv.org/abs/2504.15711",
+    "future_data_not_analysed_as_of_2026_11_18": true
+  },
+  "sources": {
+    "loop_formula": "https://www.mdpi.com/2218-1997/8/6/299",
+    "PMNS": "https://pdg.lbl.gov/2026/reviews/rpp2026-rev-neutrino-mixing.pdf",
+    "JUNO": "https://arxiv.org/abs/2609.37895",
+    "MEGII": "https://arxiv.org/abs/2504.15711",
+    "conservative_MW_physics": "https://project-gfitter.web.cern.ch/Standard_Model/index.html"
+  },
+  "provenance": {
+    "JUNO_atmospheric_fits_external_DayaBay_constraint": true,
+    "JUNO_207d_overlaps_JUNO_59d": true,
+    "joint_likelihood_imported": false,
+    "new_physics_delta_CP_used": false,
+    "theta23_measured_value_used": false
+  },
+  "decision": {
+    "role": "TRUE_PHYSICAL_NULL_CONTROL_NOT_CURRENT_EXPERIMENTAL_DISCRIMINATOR",
+    "statistical_significance_calculated": false,
+    "experimental_model_exclusion_claimed": false,
+    "BFSS_NFC_4D_map_claimed": false,
+    "new_CI_qualification": false,
+    "BFSS_accepted_anchor_count_preserved": 27,
+    "FCP_main_unchanged": true,
+    "SM_D1": "PROSPECTIVE_UNSTAGED"
+  }
+}
