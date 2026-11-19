@@ -12,7 +12,7 @@ This establishes an orthogonal original-source matrix for each
 unit-circle parameter; no continuous S¹ action, orbit quotient, Hopf
 bundle, physical Fock/Hamiltonian or coordinate mapping claimed.
 No original gamma entry expansion, private table duplication, new axioms,
-import all, or proof resource changes.
+unbounded aggregate imports, or proof resource changes.
 -/
 
 set_option autoImplicit false
