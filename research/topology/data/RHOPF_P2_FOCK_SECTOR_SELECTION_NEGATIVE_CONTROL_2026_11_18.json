@@ -1,0 +1,152 @@
+{
+  "schema": "RHOPF_P2_BOSON_FOCK_COMPARATIVE_RESEARCH_CHECKPOINT/0.1",
+  "research_date": "2026-11-18",
+  "parent_sha": "989b2615c6845240c2bbb58d24339173076036eb",
+  "research_status": "LOCAL_NUMERICAL_TOY_PASS_WITH_RIGOROUS_TOPOLOGICAL_NO_GO__NO_BFSS_PHYSICAL_BRIDGE",
+  "source": {
+    "original_gamma_lean_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean",
+    "original_gamma_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "reused_fixture": "research/topology/data/BFSS_GAMMA9_SOURCE_PERMUTATION_FIXTURE_2026_11_18.json",
+    "original_BFSS_fermion_carrier": "Fermion 2 = EuclideanSpace C (Fin (2^(8*(2^2-1)))) = C^(2^24)",
+    "original_BFSS_boson_carrier": "Boson 2 = R^(9*(2^2-1)) = R^27; NOT 3+1 spatial field",
+    "source_Fock_48_Majorana_CAR": "Original normalized 48 real Majoranas, distinguished from 16 classical spinor coordinates",
+    "original_qualifications": [
+      "M3I Clifford-to-Fock algebra equivalence",
+      "OP3C6 original Spin9 Fock operator automorphism",
+      "B3 original physical-star automorphism",
+      "HS operator-column action"
+    ],
+    "missing_original_Fock_vector_unitary": true
+  },
+  "boson_model": {
+    "actual_field_carrier": "illustrative 3D Φ:R3→S15, compact support perturbation of constant vacuum; NOT BFSS Boson 2",
+    "exact_quadratic_Hopf_map": "Q_k(Φ)=Φ^T Γ_k Φ, k=0..8, Q ∈ S8",
+    "selected_restricted_source_coords": [
+      0,
+      1,
+      8,
+      9
+    ],
+    "selected_restricted_target_coords": [
+      0,
+      7,
+      8
+    ],
+    "escape_added_original_coordinate": 2,
+    "energy": "E=a∫|∇Q|²+b∫Σ_i<j|∂iQ∧∂jQ|²+κ∫|P_perp Φ|²",
+    "strict_model": "Exact selected 4-real S3 constraint; projected S2 supports pi3(S2)=Z",
+    "unrestricted_model": "Full S15, allowing explicit based homotopy into extra target coordinate",
+    "kappa_finite_topologically_protected": false,
+    "hard_constraint_kappa_infinite_chosen_sector_topology": "conditional, assumes smooth finite-energy fields and fixed boundary",
+    "scaling_in_strict_model": "Under n_L(x)=n(x/L), E2(L)=a L I2 and E4(L)=b I4/L; positive terms can fix size but do not by themselves prove absolute global minimizer"
+  },
+  "fock_toy": {
+    "carrier": "Λ• C24, dimension 2^24 (mathematical Fock, no original mode identification)",
+    "one_particle_h": "diag(Σ Q_k(Φ) Γ_k, I8) on C16⊕C8",
+    "model_H": "dΓ(h) number conserving; NOT original BFSS charge/Hamiltonian",
+    "exact_spectral_identity": "For every unit Q, h16^2=I16 and tr h16=0, so eight eigen -1 and eight eigen +1; spectator block adds eight +1",
+    "negative_single_particle_levels": 8,
+    "positive_single_particle_levels": 16,
+    "many_body_ground_energy": -8,
+    "many_body_ground_fermion_number": 8,
+    "many_body_ground_parity": "even +1",
+    "fermion_gap": 1,
+    "fermionic_CAR_micro_consumer": "Independent 3-mode Jordan–Wigner occupancy matrices; CAR and 8x8 dΓ spectrum passed",
+    "parity_conserved_along_based_escape": true,
+    "gap_closed_along_based_escape": false,
+    "physical_BFSS_Fock_operator_identification": false,
+    "source_su2_gauge_fixedness_proved_for_toy": false,
+    "physical_fermionic_zero_modes_computed": false,
+    "spectral_flow_index_computed": false
+  },
+  "numerics": {
+    "environment": "Python 3.13.5, NumPy 2.3.5; OPENBLAS_NUM_THREADS=1",
+    "grid": "21^3; step 0.2 arbitrary length unit; support radius 1.4, extent ±2",
+    "mesh_spacing": 0.19999999999999996,
+    "path_frames": 17,
+    "theta_start": 0,
+    "theta_end": 1.5707963267948966,
+    "tested_kappa": [
+      0,
+      10,
+      100,
+      1000,
+      10000
+    ],
+    "E2_at_start": 39.0912895472591,
+    "E4_at_start": 198.48451843597357,
+    "E_initial": 237.57580798323266,
+    "Emax_kappa0": 237.57580798323266,
+    "Emax_kappa100": 237.57580798323266,
+    "Emax_kappa1000": 241.28404550378238,
+    "Emax_kappa10000": 985.0270684262578,
+    "E_final_kappa100_approx": 2.3607004096424766e-30,
+    "path_barrier_max_kappa10000_above_initial": 747.4512604430251,
+    "sample_rows": [
+      {
+        "theta": 0,
+        "energy_k0": 237.57580798323266,
+        "energy_k1000": 237.57580798323266,
+        "energy_k10000": 237.57580798323266,
+        "anisotropy_integral": 0
+      },
+      {
+        "theta": 0.19634954084936207,
+        "energy_k0": 227.20443288199934,
+        "energy_k1000": 240.48288293382947,
+        "energy_k10000": 359.98893340030077,
+        "anisotropy_integral": 0.013278450051830142
+      },
+      {
+        "theta": 0.39269908169872414,
+        "energy_k0": 193.02693381049534,
+        "energy_k1000": 238.36239806474754,
+        "energy_k10000": 646.3815763530174,
+        "anisotropy_integral": 0.045335464254252215
+      },
+      {
+        "theta": 0.7853981633974483,
+        "energy_k0": 78.31778334121353,
+        "energy_k1000": 168.98871184971796,
+        "energy_k10000": 985.0270684262578,
+        "anisotropy_integral": 0.09067092850850443
+      },
+      {
+        "theta": 1.1780972450961724,
+        "energy_k0": 10.538718869410815,
+        "energy_k1000": 55.874183123663045,
+        "energy_k10000": 463.89336141193314,
+        "anisotropy_integral": 0.04533546425425223
+      },
+      {
+        "theta": 1.5707963267948966,
+        "energy_k0": 2.2247157976088133e-30,
+        "energy_k1000": 3.584561917945447e-30,
+        "energy_k10000": 1.5823177000975155e-29,
+        "anisotropy_integral": 1.3598461203366343e-33
+      }
+    ],
+    "numerical_significance": "Grid/discretization-dependent, dimensionless illustrative energy only; no barrier minimax, decay rate or real soliton energy"
+  },
+  "negative_controls": [
+    "One extra allowed spinor coordinate gives based contraction into vacuum",
+    "Finite kappa=10000 produces finite barrier but not an exact disconnected topological sector",
+    "Constant Fock gap and even parity do not forbid contraction",
+    "Toy second quantization is not original BFSS 48 Majorana physical Fock Hamiltonian",
+    "Original source Spin(9) action on Fock OPERATORS is not an accepted Fock VECTOR group unitary",
+    "No spatial Dirac/Yukawa/APS index or localized zero-mode computation has been performed",
+    "Strict S2 protected model has weaker ontology than a hypothetical octonionic particle theory"
+  ],
+  "qualification": {
+    "original_BFSS_accepted_anchors_unchanged": 27,
+    "blocked_W0C2B2_unchanged": true,
+    "FCP_canon_unchanged": true,
+    "NFC_forced_Hopf_tower_D03_remains_retired": true,
+    "SM_D1": "PROSPECTIVE_UNSTAGED",
+    "native_Lean_CI_launched": false,
+    "original_BFSS_Hamiltonian_gap_claim": false,
+    "physically_stable_particle_claim": false,
+    "quantitative_experiment_claim": false
+  },
+  "next_decision": "RHOPF-P3 source first: identify actual original BFSS Fock-vector and SU2 gauge/admissible domain bridge to a candidate 3+1D field; require independently specified spatial Dirac/Yukawa operator or genuine index and a protected/observable distinction. Do not confuse toy gapped dGamma Hamiltonian with proof of any BFSS particle."
+}
