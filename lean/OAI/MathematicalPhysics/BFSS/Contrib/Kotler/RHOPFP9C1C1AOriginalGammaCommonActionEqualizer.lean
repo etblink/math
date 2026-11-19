@@ -88,15 +88,19 @@ theorem relationalProjector_range_iff_common_action
     change relationalProjector *ᵥ w = v at hw
     constructor
     · calc
-        KA *ᵥ v = (KA * relationalProjector) *ᵥ w := by
-          rw [← Matrix.mulVec_mulVec, hw]
+        KA *ᵥ v = KA *ᵥ (relationalProjector *ᵥ w) := by
+          rw [hw]
+        _ = (KA * relationalProjector) *ᵥ w :=
+          Matrix.mulVec_mulVec w KA relationalProjector
         _ = (KB * relationalProjector) *ᵥ w := by
           rw [K13_projected_eq_K25]
         _ = KB *ᵥ v := by
           rw [← Matrix.mulVec_mulVec, hw]
     · calc
-        KA *ᵥ v = (KA * relationalProjector) *ᵥ w := by
-          rw [← Matrix.mulVec_mulVec, hw]
+        KA *ᵥ v = KA *ᵥ (relationalProjector *ᵥ w) := by
+          rw [hw]
+        _ = (KA * relationalProjector) *ᵥ w :=
+          Matrix.mulVec_mulVec w KA relationalProjector
         _ = (KC * relationalProjector) *ᵥ w := by
           rw [K13_projected_eq_K46]
         _ = KC *ᵥ v := by
