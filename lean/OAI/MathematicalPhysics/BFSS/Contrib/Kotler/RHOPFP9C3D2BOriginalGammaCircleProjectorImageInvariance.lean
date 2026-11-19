@@ -34,8 +34,7 @@ theorem relationalProjector_commutes_circleMatrix (z : Circle) :
   change relationalProjector *
     relationalCirclePhase (z : ℂ).re (z : ℂ).im =
       relationalCirclePhase (z : ℂ).re (z : ℂ).im * relationalProjector
-  rw [relationalCirclePhase_eq_complement_sum,
-    relationalCirclePhase_eq_complement_sum]
+  rw [relationalCirclePhase_eq_complement_sum]
   simp only [mul_add, add_mul, mul_smul_comm, smul_mul_assoc,
     relationalProjector_mul_complement,
     relationalComplement_mul_projector,
