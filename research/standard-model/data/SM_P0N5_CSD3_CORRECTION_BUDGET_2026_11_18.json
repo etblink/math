@@ -1,0 +1,143 @@
+{
+  "schema": "SM_P0N5_CSD3_CORRECTION_ADMISSIBILITY/0.1",
+  "date": "2026-11-18",
+  "status": "BOUNDED_SOURCE_BOUND_ADVERSARIAL_CORRECTION_AUDIT_NO_EXCLUSION",
+  "predecessor_commit": "1977d49e536d1055dca85b99ac8e8faa54724ca7",
+  "model": "CSD3_LITTLEST_SEESAW_TM1_STRICT_VS_RGE_CORRECTED",
+  "original_2016_charged_lepton_yukawa": "diag(y_e,y_mu,y_tau)",
+  "original_2016_neutrino_yukawa_columns": [
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      3,
+      1
+    ]
+  ],
+  "exact_kernel": [
+    2,
+    -1,
+    1
+  ],
+  "strict_tm1_solar_relation": "cos²theta12*cos²theta13 = 2/3",
+  "inputs": {
+    "daya_bay_2023_sin2_2theta13": {
+      "central": 0.0851,
+      "quoted_pm": 0.0024,
+      "role": "OBSERVED_REACTOR_INPUT"
+    },
+    "juno_207d_2026_sin2theta12": {
+      "central": 0.3036,
+      "quoted_pm": 0.0064,
+      "role": "HELD_OUT_CENTRAL_SCREEN_NOT_LIKELIHOOD",
+      "overlaps_59day": true
+    }
+  },
+  "derived": {
+    "sin2theta13_from_dayabay": 0.0217479743900712,
+    "tm1_sin2theta12_from_dayabay": 0.318512357537918,
+    "juno_sin2theta12": 0.3036,
+    "tm1_minus_juno_sin2theta12": 0.01491235753791803,
+    "tm1_theta12_degrees": 34.3584843574429,
+    "juno_theta12_degrees": 33.435581923677724,
+    "required_theta12_shift_degrees": -0.9229024337651737,
+    "tm1_ue1_abs2": 0.6666666666666666,
+    "observational_ue1_abs2": 0.6812547106347544,
+    "required_ue1_abs2_shift": 0.014588043968087772,
+    "illustrative_12_charged_lepton_rotation_degrees": 1.27546266788694,
+    "source_2026_juno_delta_m2_21_ev2": 0.00007388,
+    "source_2026_juno_delta_m2_31_NO_ev2": 0.002509,
+    "tree_level_rank_two_NO_light_masses_eV": [
+      0,
+      0.00859534757877772,
+      0.050089919145472776
+    ],
+    "strict_2RH_tree_level_quasidegenerate_rescue_available": false
+  },
+  "historical_RGE_2016_table_examples": [
+    {
+      "case": "A_SM",
+      "table": 2,
+      "initial_theta12_deg": 34.32,
+      "final_theta12_deg": 34.13,
+      "final_theta13_deg": 8.11,
+      "source": "https://arxiv.org/abs/1609.09402",
+      "classification": "SAMPLE_NOT_GLOBAL_BOUND"
+    },
+    {
+      "case": "A_MSSM_tanbeta30",
+      "table": 2,
+      "initial_theta12_deg": 34.32,
+      "final_theta12_deg": 34.63,
+      "final_theta13_deg": 8.77,
+      "source": "https://arxiv.org/abs/1609.09402",
+      "classification": "SAMPLE_NOT_GLOBAL_BOUND"
+    },
+    {
+      "case": "B_SM",
+      "table": 3,
+      "initial_theta12_deg": 34.32,
+      "final_theta12_deg": 34.13,
+      "final_theta13_deg": 8.11,
+      "source": "https://arxiv.org/abs/1609.09402",
+      "classification": "SAMPLE_NOT_GLOBAL_BOUND"
+    },
+    {
+      "case": "C_SM",
+      "table": 4,
+      "initial_theta12_deg": 34.32,
+      "final_theta12_deg": 34.11,
+      "final_theta13_deg": 9.54,
+      "source": "https://arxiv.org/abs/1609.09402",
+      "classification": "SAMPLE_NOT_GLOBAL_BOUND"
+    }
+  ],
+  "model_classes": [
+    {
+      "id": "CSD3_exact_TM1",
+      "status": "CENTRAL_VALUE_TENSION_SCREEN",
+      "posthoc_mass_parameter_refit_changes_relation": false
+    },
+    {
+      "id": "CSD3_RGE_source_antecedent",
+      "status": "NOT_2026_QUANTITATIVELY_ADJUDICATED",
+      "requires_frozen_uv_parameters": true
+    },
+    {
+      "id": "CSD3_arbitrary_charged_lepton_rotation",
+      "status": "DIFFERENT_MODEL_NOT_AUTOMATIC_RESCUE"
+    },
+    {
+      "id": "quasidegenerate_high_scale_TM1_RGE",
+      "status": "INCOMPATIBLE_WITH_EXACT_2RH_TREE_LEVEL_ONE_ZERO_MASS",
+      "source": "https://doi.org/10.1103/t3w7-y9r3"
+    },
+    {
+      "id": "new_modular_fixed_point_beyond_TM1",
+      "status": "DISTINCT_COMPARATOR_POST_59DAY_SELECTION_CAVEAT",
+      "source": "https://doi.org/10.1007/JHEP06(2026)036"
+    }
+  ],
+  "primary_sources": [
+    "https://arxiv.org/abs/1512.07531",
+    "https://doi.org/10.1007/JHEP09(2016)023",
+    "https://arxiv.org/abs/1609.09402",
+    "https://doi.org/10.1103/PhysRevD.97.075010",
+    "https://doi.org/10.1103/t3w7-y9r3",
+    "https://doi.org/10.1007/JHEP06(2026)036",
+    "https://doi.org/10.1007/JHEP11(2026)092",
+    "https://arxiv.org/abs/2609.37895",
+    "https://doi.org/10.1103/PhysRevLett.130.161802"
+  ],
+  "likelihood_imported": false,
+  "experimental_exclusion_claimed": false,
+  "method_fcp_applied": "SOURCE_BOUND_PRIMARY_AND_WEAKER_FRAMEWORK_CONTROL",
+  "BFSS_accepted_anchors_unchanged": 27,
+  "FCP_repository_modified": false,
+  "SM_D1": "PROSPECTIVE_UNSTAGED",
+  "new_CI_gate_launched": false,
+  "next_target": "PROSPECTIVE_SOURCE_FIRST_2018_RGE_VARIANT_INPUT_LEAKAGE_AND_HOLDOUT_VALIDITY_AUDIT"
+}
