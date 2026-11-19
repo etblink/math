@@ -40,7 +40,7 @@ theorem originalGamma_sq (a : SpaceIndex) :
 theorem originalGamma_anticommute (a b : SpaceIndex) (hab : a ≠ b) :
     G b * G a = -(G a * G b) := by
   have h : G a * G b + G b * G a = 0 := by
-    simpa only [if_neg hab, zero_smul] using (gamma_clifford a b)
+    simpa [hab] using (gamma_clifford a b)
   calc
     G b * G a = (G a * G b + G b * G a) - G a * G b := by module
     _ = -(G a * G b) := by rw [h]; module
@@ -85,12 +85,10 @@ theorem K13_skew : K13.transpose = -K13 := by
 theorem K25_skew : K25.transpose = -K25 := by
   change (-(G 2 * G 5)).transpose = -(-(G 2 * G 5))
   rw [Matrix.transpose_neg, originalGammaPair_skew 2 5 (by decide)]
-  simp
 
 theorem K46_skew : K46.transpose = -K46 := by
   change (-(G 4 * G 6)).transpose = -(-(G 4 * G 6))
   rw [Matrix.transpose_neg, originalGammaPair_skew 4 6 (by decide)]
-  simp
 
 #print axioms originalGamma_sq
 #print axioms originalGamma_anticommute
