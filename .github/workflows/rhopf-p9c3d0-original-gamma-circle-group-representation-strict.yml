@@ -75,7 +75,8 @@ jobs:
           assert re.findall(r'(?m)^import (\S+)$',consumer)==[
             'OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D0OriginalGammaCircleGroupRepresentation']
           names=['relationalCircleMatrix_one','relationalCircleMatrix_mul','relationalCircleMatrix_orthogonal']
-          assert re.findall(r'(?m)^theorem (\S+)',src)==names+['relationalCircleRepresentation']
+          assert re.findall(r'(?m)^theorem (\S+)',src)==names
+          assert re.findall(r'(?m)^noncomputable def (\S+)',src)==['relationalCircleMatrix','relationalCircleRepresentation']
           assert re.findall(r'(?m)^#print axioms (\S+)$',src)==names+['relationalCircleRepresentation']
           assert re.findall(r'(?m)^#print axioms (\S+)$',consumer)==[
             'FCP.RHOPFP9C3D0.'+n for n in names]+['FCP.RHOPFP9C3D0.relationalCircleRepresentation']
