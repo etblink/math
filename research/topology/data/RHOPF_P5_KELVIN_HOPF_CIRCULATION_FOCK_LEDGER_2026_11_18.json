@@ -1,0 +1,119 @@
+{
+  "schema": "RHOPF_P5_KELVIN_HOPF_CIRCULATION_FIELD_SELECTION/0.1",
+  "date": "2026-11-18",
+  "parent_head": "fb59ea2b8f2c905e6e007e1c5c47bdafa19b804c",
+  "original_source_github_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+  "original_source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean",
+  "original_gamma_fixture": "research/topology/data/BFSS_GAMMA9_SOURCE_PERMUTATION_FIXTURE_2026_11_18.json",
+  "source_original_spinor_coordinates": [
+    0,
+    1,
+    8,
+    9
+  ],
+  "source_original_Q_nonzero_coordinates": [
+    0,
+    7,
+    8
+  ],
+  "experimental_and_physical_status": "SOURCE_PINNED_EXACT_MATH_ONLY_NOT_PHYSICAL_VORTEX_OR_PROTON",
+  "field": {
+    "domain": "R3 compactified to S3",
+    "z1": "2(x+i y)/(1+r²)",
+    "z2": "(r²−1+2 i z)/(1+r²)",
+    "normalization": "|z1|²+|z2|²=1",
+    "original_gamma_Q": "Q8=|z1|²−|z2|², Q7=2Re(z1 conjugate(z2)), Q0=−2Im(z1 conjugate(z2))",
+    "quadratic_null_torus": "(sqrt(x²+y²)−sqrt(2))²+z²=1",
+    "component_vortex_lines": "z1 zero along z-axis (compactified); z2 zero along unit circle in z=0 plane",
+    "original_boundary_spinor": "(z1,z2)→(0,1) at infinity",
+    "Berry_connection": "A=Im(conjugate(z1)dz1+conjugate(z2)dz2); NOT source physical fluid velocity",
+    "Berry_connection_components": [
+      "-4(x z+y)/(1+r²)²",
+      "4(x−y z)/(1+r²)²",
+      "2(x²+y²−z²−1)/(1+r²)²"
+    ],
+    "Berry_curvature": "B=curl A",
+    "Berry_helicity_density": "A·B=−16/(1+r²)³",
+    "exact_analytic_integral": "∫R3 A·B d³x = −4π²",
+    "normalized_Chern_Simons_Hopf": "(1/(4π²))∫R3 A·B = −1",
+    "orientation_notice": "Sign depends on chosen field orientation; |Hopf|=1"
+  },
+  "independent_controls": {
+    "sympy_symbolic_connection_and_curvature_verified": true,
+    "sympy_exact_radial_helicity_integral_verified": true,
+    "source_BFSS_gamma_spinor_match_at_5_points": true,
+    "smooth_A_circulation_axis_formula": "8πR²/(1+R²)²",
+    "z1_component_phase_winding_about_axis": 1,
+    "smooth_A_circulation_R_0point4": 2.988435342297068,
+    "smooth_A_circulation_R_0point1": 0.2463752693727904,
+    "smooth_A_circulation_R_0point01": 0.0025127715434354325,
+    "small_loop_limit": "Berry connection circulation→0; component phase winding remains +1",
+    "important_negative": "Do not identify the component's phase singularity with a singular vortex in the globally smooth Berry connection",
+    "common_phase_transformation": "z→exp(iχ) z ⇒ A→A+dχ, B unchanged",
+    "global_helix_gauge_invariance_conditions": "smooth single-valued χ, appropriate decay/boundary; verified ∇·B=0",
+    "based_full_S15_escape": "Base e8, extra e2; at origin q=−e8 and t=π/4 full ψ=e2, unit norm, selected C2 projection zero",
+    "Hopf_obstruction_status": "Hopf charge not defined for normalized selected C2 field at escape singularity; full R16 spinor remains unit and smooth",
+    "one_mode_CAR_positive_and_negative_controls": "For gamma=a+a† and N=a†a, [N,gamma]=a†−a !=0; parity gamma parity=−gamma",
+    "one_mode_not_original_24_Fock": true
+  },
+  "Kelvin_ideal_Euler_contract": {
+    "historical_paper": "William Thomson, On Vortex Atoms (1867) https://www.cambridge.org/core/journals/proceedings-of-the-royal-society-of-edinburgh/article/abs/4-on-vortex-atoms/12A04500F99264C9BFB6B029DF7F798E",
+    "assumptions": [
+      "smooth material flow diffeomorphism",
+      "ideal inviscid Euler dynamics",
+      "barotropic pressure p=p(rho)",
+      "conservative forces",
+      "regular material loop and fluid velocity"
+    ],
+    "conservation": "d/dt∮C(t) v·dx=0 from exact differential after Euler, only under these hypotheses",
+    "fluid_no_go": "A Berry connection built from a Hopf spinor is not automatically a material velocity v obeying Euler equations",
+    "quantum_vortex_reconnection": "Gross–Pitaevskii complex condensate may reconnect where phase/velocity definition fails at amplitude zeros, without contradicting ideal Euler theorem",
+    "qualifying_physical_sources": [
+      "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/some-topological-aspects-of-fluid-dynamics/E139B6426152FE1971F49427533A9301",
+      "https://www.nature.com/articles/nphys3679",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC12130869/",
+      "https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/on-the-zero-helicity-condition-for-quantum-vortex-defects/D3179B7C80BF4D55AC394E1CED9F28E0"
+    ]
+  },
+  "original_BFSS_scope": {
+    "actual_complex_Fock_dimension": "2^24; original 48 real normalized Majoranas; not the classical R16 spinor",
+    "original_SU2_gauge_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2aOriginalFockGaugeSource.lean",
+    "original_SU2_Fock_projector_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2bOriginalGaugeProjectionBridge.lean",
+    "original_gauge_vacuum_source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean",
+    "bosonic_configuration_space": "R27 SU2 BFSS matrix mechanics, not 3D fluid physical space",
+    "Kelvin_velocity_from_original_BFSS_derived": false,
+    "original_BFSS_Lagrangian_3D_Hopf_carrier_derived": false,
+    "original_Fock_U1_number_conservation_proved": false,
+    "original_Fock_parity_not_Kelvin_circulation": true
+  },
+  "negative_knowledge": [
+    "Actual Hopf CS integer is a geometric quantity, not automatically a Kelvin circulation or fluid helicity",
+    "Global smooth Hopf Berry connection has nonquantized shrinking-loop circulation around a component vortex zero",
+    "Topology changes in full S15 through selected doublet projection zero while full spinor stays unit",
+    "Fock U1 particle number, Fock Z2 parity, BFSS SU2 color gauge and Hopf projective U1 are distinct",
+    "Kelvin requires ideal Euler flow and material loops; none have been sourced from the BFSS 0+1D system",
+    "Gross–Pitaevskii reconnection is a counterexample to unconditional knot identity preservation in quantum fluids",
+    "Historical vortex atom is not validated by a torus illustration, phase winding, or proton analogy"
+  ],
+  "local_execution": {
+    "core_blob_sha": "a873c7ae139775db2dcb4011f913f60a17f0a762",
+    "independent_consumer_blob_sha": "51163025b8df79d097b5535b596c3217ba41f6df",
+    "python_environment": "Python 3.13; sympy 1.14.0; no dense original Fock calculation",
+    "consumer_status": "PASS; local executed bytes match staged GitHub blob sha",
+    "original_source_fixture_source_sha_assertion": true
+  },
+  "qualification": {
+    "native_Lean_CI_launched": false,
+    "real_physical_fluid_Euler_solution_verified": false,
+    "Fock_physical_hamiltonian_identified": false,
+    "source_gauge_compatibility_of_new_field": false,
+    "particle_stability_or_mass_derived": false,
+    "proton_QCD_prediction": false,
+    "Schwarzschild_proton_validated": false,
+    "original_BFSS_27_anchors_unchanged": true,
+    "FCP_main_unchanged": true,
+    "NFC_rejected_forced_tower_D03_still_retired": true,
+    "SM_D1": "PROSPECTIVE_UNSTAGED"
+  },
+  "next_scientific_priority": "RHOPF-P6 only with independently sourced physical Euler, GP, chiral/skyrmionic or quantum field action; test conserved current and admissible reconnection/zero directions; derive a measured observable before attempting particle identification"
+}
