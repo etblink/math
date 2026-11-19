@@ -121,7 +121,7 @@ jobs:
           import os,re
           root=Path(os.environ['RUNNER_TEMP'])/'rhopf-p9c1b0'
           reports=[
-            (root/'native-relational-projection-and-axioms.log').read_text(),
+            (root/'native-relational-trace-and-axioms.log').read_text(),
             (root/'independent-lean-types-and-axioms.log').read_text()]
           for data in reports:
             for name in ['K13K25_trace_zero','K13K46_trace_zero','K25K46_trace_zero',
