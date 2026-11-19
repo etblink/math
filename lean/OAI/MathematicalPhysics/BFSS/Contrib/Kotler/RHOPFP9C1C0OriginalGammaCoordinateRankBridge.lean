@@ -46,12 +46,23 @@ def selectedCoordinatePlane : Submodule ℝ (SpinIndex → ℝ) :=
 independent and their span has precisely real dimension four. -/
 theorem selectedCoordinatePlane_finrank_four :
     Module.finrank ℝ selectedCoordinatePlane = 4 := by
-  have hlin : LinearIndependent ℝ
-      (fun i : Fin 4 => Pi.single (selectedIndex i) (1 : ℝ)) :=
-    (Pi.linearIndependent_single_one SpinIndex ℝ).comp
-      selectedIndex selectedIndex_injective
-  simpa only [selectedCoordinatePlane, Fintype.card_fin] using
-    (finrank_span_eq_card hlin)
+  -- Isolate the source index embedding from the basis family so
+  -- elaboration never unfolds the original vector literal while inferring
+  -- the implicit parameters of LinearIndependent.comp.
+  let basisFamily : SpinIndex → (SpinIndex → ℝ) :=
+    fun j => Pi.single j (1 : ℝ)
+  have hbase : LinearIndependent ℝ basisFamily :=
+    Pi.linearIndependent_single_one SpinIndex ℝ
+  have hcomp : LinearIndependent ℝ (basisFamily ∘ selectedIndex) :=
+    hbase.comp selectedIndex selectedIndex_injective
+  have hspan :
+      Module.finrank ℝ
+        (Submodule.span ℝ (Set.range (basisFamily ∘ selectedIndex))) =
+          Fintype.card (Fin 4) :=
+    finrank_span_eq_card hcomp
+  change Module.finrank ℝ
+    (Submodule.span ℝ (Set.range (basisFamily ∘ selectedIndex))) = 4
+  exact hspan.trans (by decide)
 
 /-- The remaining source-specific witness is exactly four
 full-vector action identities, rather than 256 projector entries. -/
