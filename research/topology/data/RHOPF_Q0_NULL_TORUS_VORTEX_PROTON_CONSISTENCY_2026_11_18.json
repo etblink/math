@@ -1,0 +1,89 @@
+{
+  "schema": "RHOPF_Q0_NULL_TORUS_VORTEX_PROTON/0.1",
+  "date": "2026-11-18",
+  "parent_commit": "81c15ac90a46d74878db16ead0fe8f7cf4bc6bb5",
+  "status": "SOURCE_EXACT_MATH_POSITIVE__PROTON_AND_FOCK_PHYSICS_NOT_QUALIFIED",
+  "gamma_source_sha": "b9b8192055c70f0d001d7982669b9823c55562ed",
+  "original_spinor_coordinate_indices": [
+    0,
+    1,
+    8,
+    9
+  ],
+  "source_Q_nonzero_indices": [
+    0,
+    7,
+    8
+  ],
+  "source_relations": {
+    "Q8": "|z1|²−|z2|²",
+    "Q7_minus_iQ0": "2 z1 conjugate(z2)",
+    "z1": "2(x+iy)/(1+r²)",
+    "z2": "(r²−1+2iz)/(1+r²)",
+    "R4_signature": "(2,2)",
+    "R16_signature": "(8,8)",
+    "null_on_compact_S3": "S1×S1",
+    "spatial_null_torus": "(sqrt(x²+y²)−sqrt2)²+z²=1",
+    "vortex_lines": "z1=0 axial; z2=0 equatorial unit circle",
+    "phase_windings": [
+      1,
+      1
+    ],
+    "finite_linked_fibers": [
+      "(cos t,sin t,0)",
+      "(1+sqrt2 cos t,sin t,sin t)"
+    ],
+    "Gauss_link_numbers_at_80_160_320": [
+      -0.9999999999999999,
+      -0.9999999999999999,
+      -0.9999999999999999
+    ],
+    "orientation_link_integer": -1
+  },
+  "Schwarzschild_comparison": {
+    "observed_charge_radius_fm": 0.84075,
+    "proton_mass_kg": 1.67262192595e-27,
+    "proton_mass_Schwarzschild_radius_m": 2.4842316983493262e-54,
+    "assumed_charge_radius_as_horizon_required_mass_kg": 566073158625.6084,
+    "required_to_observed_mass_ratio": 3.3843461564339803e+38,
+    "Haramein_2010_assumed_radius_fm": 1.32,
+    "Haramein_assumed_radius_as_horizon_mass_kg": 888750008190.0719,
+    "Haramein_required_to_observed_mass_ratio": 5.31351403686334e+38,
+    "interpretation": "Dimensional check only. A measured electric RMS charge radius is not a Schwarzschild horizon; static Schwarzschild spacetime is spherical, not an intrinsic toroidal vortex."
+  },
+  "reproducibility": {
+    "exact_original_gamma_signed_permutations": true,
+    "symbolic_sympy_null_identity_pass": true,
+    "closed_fiber_linking_integral_pass": true,
+    "phase_winding_pass": true,
+    "mass_radius_arithmetic_pass": true,
+    "core_tested_git_blob": "baae99acbc114f5e9d87a85846ef17ce1c44e85b",
+    "independent_consumer_tested_git_blob": "14fd445e39776924ba3744263025430344f82f7f",
+    "full_original_BFSS_Fock_operator_used": false,
+    "native_Lean_CI_launched": false
+  },
+  "negative_knowledge": [
+    "Internal quadratic null form is not a physical Lorentzian spacetime metric.",
+    "The embedded torus is the selected observable's level set, not an invariant of physical spacetime.",
+    "Complex phase vortex winding is not physical circulation without a sourced current and field dynamics.",
+    "The selected four-real spinor sector is not dynamically guaranteed in the full original 16-spinor BFSS gamma carrier.",
+    "The original BFSS 48 Majoranas and SU(2) Fock Hamiltonian have not been coupled to the chosen R3 field.",
+    "Schwarzschild Proton 2010 arithmetic assumes a gravitational mass 38 orders larger than the measured proton mass.",
+    "Rodin modulo-nine cycle does not itself define a topological charge or particle mechanism."
+  ],
+  "sources": {
+    "Haramein_2010": "https://www.osti.gov/biblio/21506835",
+    "Haramein_full_text": "https://studyres.com/doc/7968628/the-schwarzschild-proton---hawaii-institute-for-unified-p...",
+    "CODATA_2022": "https://pml.nist.gov/cuu/pdf/wall_2022.pdf",
+    "charge_radius": "https://physics.nist.gov/cgi-bin/cuu/Value?rp",
+    "optical_scalar_hopfions": "https://link.springer.com/article/10.1186/s43593-022-00030-2",
+    "proton_pressure": "https://www.nature.com/articles/s41586-018-0060-z"
+  },
+  "governance": {
+    "original_27_BFSS_anchors_unchanged": true,
+    "FCP_main_unchanged": true,
+    "NFC_D03_retired_tower_stays_retired": true,
+    "SM_D1_unqualified": true,
+    "proton_particle_hypothesis_not_promoted": true
+  }
+}
