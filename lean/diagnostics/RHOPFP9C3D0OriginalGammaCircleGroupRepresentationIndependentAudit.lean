@@ -4,6 +4,7 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D0OriginalGammaCircl
 set_option autoImplicit false
 
 namespace FCP.RHOPFP9C3D0Independent
+noncomputable section
 
 open OAI.BFSSQuantum
 open FCP.RHOPFP9C3D0
