@@ -1,0 +1,150 @@
+{
+  "schema": "SM-P0N4_CSD3_TM1_HELDOUT_SOLAR_RELATION/0.1",
+  "audit_date": "2026-11-18",
+  "research_status": "CONDITIONAL_MODEL_RELATION_CENTRAL_VALUE_SCREEN_ONLY",
+  "branch_parent_sha": "1e587fbf8c2da64cf55d4dd4f3dfe88565b4ad27",
+  "model": {
+    "id": "LITTLEST_SEESAW_CSD3_TM1",
+    "original_antecedent_source": "https://arxiv.org/abs/1512.07531",
+    "source_publication_precedes_observation": true,
+    "low_energy_mass_matrix": "m_a*a*a^T + m_b*exp(i eta)*b*b^T, a=(0,1,1), b=(1,n,n-2); n=3 worked example",
+    "assumptions": [
+      "3 active light neutrinos and two heavy Majorana singlets",
+      "source-declared exact flavor vectors",
+      "diagonal charged-lepton mass basis",
+      "standard 3x3 unitary PMNS and heavy-decoupling leading-order seesaw",
+      "massless eigenvector labeled first mass state (normal ordering)",
+      "no unmodeled significant charged-lepton rotations, RGE/threshold or nonunitarity corrections"
+    ],
+    "null_eigenvector_unnormalized": [
+      2,
+      -1,
+      1
+    ],
+    "derivation": "a^T q=0; b(n)^T q=2-n+(n-2)=0; hence M_nu q=0 for all coefficients; |U_e1|^2=2/3",
+    "sum_rule": "cos(theta12)^2*cos(theta13)^2 = 2/3",
+    "solar_rule": "sin2theta12=(1-3*sin2theta13)/(3*(1-sin2theta13))",
+    "inputs_free_under_relation": [
+      "m_a",
+      "m_b",
+      "eta",
+      "n in CSD(n)"
+    ],
+    "model_uv_unique_from_this_relation": false,
+    "independent_prediction_of_theta13": false,
+    "BFSS_or_NFC_source_physical_map": false
+  },
+  "sources": {
+    "csd3_original": "https://arxiv.org/abs/1512.07531",
+    "tm1_review": "https://www.mdpi.com/2218-1997/9/11/472",
+    "daya_bay_2023": "https://doi.org/10.1103/PhysRevLett.130.161802",
+    "juno_207d_2026": "https://arxiv.org/abs/2609.37895",
+    "juno_59d_2026": "https://doi.org/10.1038/s41586-026-10538-z"
+  },
+  "experimental_inputs": {
+    "reactor": {
+      "id": "dayabay_final_ngd_2023_sin2_2theta13",
+      "central": 0.0851,
+      "quoted_plus_minus": 0.0024,
+      "quantity": "sin²(2theta13)",
+      "role": "RELATION_INPUT"
+    },
+    "juno_latest": {
+      "id": "juno_207d_2026_preprint_sin2theta12",
+      "central": 0.3036,
+      "quoted_plus_minus": 0.0064,
+      "quantity": "sin²(theta12)",
+      "role": "HELD_OUT_DIAGNOSTIC_NOT_CALIBRATED_GLOBAL_TEST",
+      "live_days": 207.2,
+      "overlaps_earlier_59d": true
+    },
+    "juno_historical": {
+      "id": "juno_59d_2026_peer_reviewed_sin2theta12",
+      "central": 0.3092,
+      "quoted_plus_minus": 0.0087,
+      "quantity": "sin²(theta12)",
+      "role": "HISTORICAL_OVERLAPPING_DATA_NOT_INDEPENDENT_REPLICATION"
+    }
+  },
+  "derived_central_arithmetic": {
+    "sin2theta13_from_dayabay_small_angle_branch": 0.0217479743900712,
+    "sin2theta12_tm1_given_dayabay": 0.318512357537918,
+    "sin2theta12_juno_207d": 0.3036,
+    "signed_tm1_minus_juno_207d": 0.01491235753791803,
+    "central_juno_59d_difference": 0.009312357537918037,
+    "tm1_interval_from_dayabay_quoted_one_parameter_pm": [
+      0.31807479965165725,
+      0.3189487818340878
+    ],
+    "juno_interval_from_quoted_pm": [
+      0.29719999999999996,
+      0.31
+    ],
+    "inferred_ue1_abs2_from_juno_dayabay": 0.6812547106347544,
+    "source_tm1_ue1_abs2": 0.6666666666666666,
+    "central_ue1_abs2_difference": 0.014588043968087772,
+    "sin2theta13_required_by_juno_central_if_strict_tm1": 0.04269576871529775,
+    "sin2_2theta13_required_by_juno_central_if_strict_tm1": 0.16349136019643018,
+    "charged_lepton_real_12_rotation_degrees_to_match_only_ue1_abs2": 1.27546266788694
+  },
+  "adversarial_controls": [
+    {
+      "id": "generic_two_singlet_not_TM1",
+      "a": [
+        0,
+        1,
+        1
+      ],
+      "b": [
+        1,
+        0,
+        1
+      ],
+      "q": [
+        1,
+        1,
+        -1
+      ],
+      "normalized_electron_probability": 0.3333333333333333,
+      "classification": "COUNTEREXAMPLE_RANK2_NOT_SUFFICIENT"
+    },
+    {
+      "id": "CSDn_all_share_TM1",
+      "classification": "WEAKER_FRAMEWORK_SHARED_SUM_RULE_NOT_UNIQUE_CSD3_ORIGIN"
+    },
+    {
+      "id": "charged_lepton_left_rotation",
+      "ue1_probability": "(2cos(phi)+sin(phi))^2/6",
+      "classification": "ASSUMPTION_SENSITIVE_NOT_FULL_PMNS_FIT"
+    },
+    {
+      "id": "juno_data_versions_overlap",
+      "classification": "NOT_INDEPENDENT_LIKELIHOODS"
+    }
+  ],
+  "quantitative_inference": {
+    "computed_role": "EXACT_CONDITIONAL_ARITHMETIC_ON_PUBLISHED_CENTRAL_INPUTS",
+    "displayed_pm_intervals_are_joint_confidence_regions": false,
+    "full_joint_likelihood_available": false,
+    "covariances_validated": false,
+    "theory_correction_budget_available": false,
+    "significance_calculated": false,
+    "exclusion_claimed": false,
+    "comparison_status": "CENTRAL_VALUE_TENSION_SCREEN_ONLY",
+    "known_model_selection": false
+  },
+  "governance": {
+    "SM_D0_unchanged": true,
+    "SM_P0N0_unchanged": true,
+    "SM_P0N1_unchanged": true,
+    "SM_P0N2_unchanged": true,
+    "SM_P0N3_unchanged": true,
+    "BFSS_accepted_anchor_count_preserved": 27,
+    "BFSS_W0C2B2": "BLOCKED",
+    "SM_D1_physical": "PROSPECTIVE_UNSTAGED",
+    "FCP_main_unchanged": true,
+    "new_CI_launched": false,
+    "empirical_model_qualification": false
+  },
+  "next_target": "Audit whether a source-pinned CSD3 correction or independent parameter restriction retains a genuine held-out prediction, with full likelihood and theory corrections only after provenance; otherwise record lost discrimination."
+}
