@@ -1,0 +1,69 @@
+{
+  "schema": "RHOPF_P9C0_R1_STRICT_NATIVE_COMMUTING_TRIPLE_ACCEPTANCE/1.0",
+  "date_local": "2026-11-18",
+  "timezone": "America/Los_Angeles",
+  "branch": "integration/bfss-unified-research-20261108",
+  "status": "QUALIFIED_R1_ORIGINAL_STRICT_GREEN",
+  "run": {
+    "id": 44473648647,
+    "attempt": 1,
+    "conclusion": "success",
+    "head_sha": "ccee1ce87a25ce45f58281e9f44042c1d95a2972",
+    "job_id": 135388864894,
+    "job_conclusion": "success",
+    "url": "https://github.com/etblink/math/actions/runs/44473648647"
+  },
+  "artifact": {
+    "id": 14505917889,
+    "name": "rhopf-p9c0-ccee1ce87a25ce45f58281e9f44042c1d95a2972-1",
+    "sha256": "3a36dc76fe799c1da4f2d357dd91fc007af007f599ad7bb3dc5fec3ec99a273c",
+    "independently_downloaded_verified": true,
+    "tested_commit_inside_verified": true
+  },
+  "toolchain": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "source_blobs": {
+    "SU2RealGammaProbe.lean": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "RHOPFP9A0OriginalGammaPairClifford.lean": "bf5eb554232a6d452e86d85b05220aad7c5d0aeb",
+    "SU2BFSSPairedSpin9V10HF10ANOriginalGammaDisjointPairLieBracketProbe.lean": "a9c96b4840e297b0b79f343d32e3992f50a5ace0",
+    "RHOPFP9C0OriginalGammaCommutingTriple.lean": "b93450236ea9cc93869c5a09102708d3c62b5dd3",
+    "RHOPFP9C0OriginalGammaCommutingIndependentAudit.lean": "f4fe3eaad3bce730e125b1631aa5dc2f2ca7630d"
+  },
+  "lean": {
+    "names": [
+      "K13_K25_commute",
+      "K13_K46_commute",
+      "K25_K46_commute",
+      "K13K25_involution",
+      "K13K46_involution",
+      "K25K46_involution"
+    ],
+    "native_axiom_reports": 6,
+    "independent_axiom_reports": 6,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sorryAx": false,
+    "warningAsError": true
+  },
+  "ceiling": {
+    "proven": "Original three full spinor gamma bivectors commute pairwise; pairwise products square to 1.",
+    "not_proven": [
+      "Idempotent relational projection",
+      "Rank-four projection and coordinate identification",
+      "Same original source Hopf restriction native theorem",
+      "Source Fock vector Spin9 lift or physical Hamiltonian symmetry",
+      "Observable conserved Hopf charge"
+    ],
+    "prior_reds": [
+      "RHOPFP9A1B_R1",
+      "RHOPFP9A1B_R2",
+      "RHOPFP9A1BD0"
+    ]
+  },
+  "next": "P9C1A bounded relational-projector idempotence and common-action theorems"
+}
