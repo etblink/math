@@ -1,0 +1,119 @@
+{
+  "schema": "RHOPF_P4_CHIRAL_FOCK_SOURCE_COMPARISON/0.1",
+  "date": "2026-11-18",
+  "parent_commit": "e82e983e0f60fe3ec5f82b3b310e77b6415f93d4",
+  "original_sources": {
+    "gamma16_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "source_48_majorana": "d08200fae8ef6c9c9544414307ad537f1eeaa4a4",
+    "BFSS_Core": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+    "original_Fock_SU2_gauge": "328d607ee2bb45edd4268e5592d784c4c84488a7",
+    "original_Fock_SU2_projection": "13a80bb53eb3d0ca357e4c87db4bd3ebd53854ec",
+    "original_SU2_Fock_vacuum": "a16d3573b737bb4453e42b0b543d63cbbac1cd1b",
+    "source_Spin9_operator_star": "b50ef04695587b267ad8519074b1293f98828749",
+    "source_Spin9_central_odd_action": "6b7e627d902f7f9c291cc54b1f3aa1e4dfd5bc1d"
+  },
+  "source_clifford_AIII": {
+    "parameter_domain": "R3 compactified to S3; mathematical parameter family, not physical band Brillouin zone or spatial Dirac",
+    "stereographic_map": "y(x)=((r²−1)/(r²+1),2x1/(r²+1),2x2/(r²+1),2x3/(r²+1))",
+    "sphere_map_degree_with_specified_orientation": -1,
+    "jacobian_density": "−8/(1+r²)^3",
+    "source_family": "h16(y)=Σ_{a=0}³ y_a Γ_a; C16=Γ4; h16²=I; {C16,h16}=0",
+    "source_volume": "Ω=Γ4Γ0Γ1Γ2Γ3, Ω²=I; Γ5ΩΓ5=−Ω",
+    "source_volume_spectrum": {
+      "plus": 8,
+      "minus": 8
+    },
+    "source_volume_trace": 0,
+    "source_complex_AIII_winding": 0,
+    "five_distinct_gamma_subsets_tested": 126,
+    "all_five_gamma_volume_traces_zero": true,
+    "reason": "Any five of the nine source gammas have one remaining gamma that anticommutes with the odd product, forcing zero trace."
+  },
+  "independent_positive_control": {
+    "four_complex_orbitals": "h4(y)=[[0,q],[q†,0]], q=y0 I2+i Σ_{j=1}³ yj σj in SU2",
+    "chiral_S4": "diag(I2,-I2)",
+    "volume_trace": 4,
+    "winding_absolute": 1,
+    "embedding": "add 20 trivially chiral one-particle modes for a 24-mode Fock comparison",
+    "this_is_original_BFSS": false
+  },
+  "Fock_comparison": {
+    "negative_one_particle_orbitals": 12,
+    "positive_one_particle_orbitals": 12,
+    "Fock_carrier": "abstract Λ• C24, dimension 2^24; no original 48-CAR identification",
+    "many_body_ground_energy": -12,
+    "ground_parity": "even +1",
+    "many_body_gap": 1,
+    "physical_BFSS_Hamiltonian": false,
+    "source_gamma_24_mode": "source 16 chiral gamma-family direct sum with 8 trivial modes",
+    "positive_24_mode": "minimal 4 chiral-family direct sum with 20 trivial modes",
+    "both_have_same_spectra_and_parity_but_different_windings": true
+  },
+  "symmetry_breaking_escape": {
+    "formula": "H_t(y)=cos(t)H_0(y)+sin(t)C24; t from 0 to π/2",
+    "identity": "H_t²=I because {H0,C24}=0 and H0²=C24²=I",
+    "chiral_defect": "{C24,H_t}=2sin(t)I, nonzero for t>0",
+    "final_hamiltonian": "C24 independent of parameter y",
+    "global_gap_open": true,
+    "fock_parity_constant": true,
+    "important_boundary_scope": "The bare cos/sin path is a FREE homotopy with moving boundary, not a valid fixed-boundary physical comparison; the separately checked constant-conjugation construction below repairs this.",
+    "frames_numerically_checked": 40,
+    "based_fix": {
+      "reference_E": "H0(y_infinity), with y_infinity=(1,0,0,0)",
+      "K": "C24 * E, anti-Hermitian, K²=−I",
+      "U_t": "cos(t/2)I−sin(t/2)K",
+      "based_path": "H'_t(y)=U_t [cos(t)H0(y)+sin(t)C24] U_t†",
+      "boundary": "H'_t(y_infinity)=E at EVERY t",
+      "start": "H'_0(y)=H0(y)",
+      "end": "H'_(π/2)(y)=E independent of y",
+      "spectral_gap": "[H'_t(y)]²=I, same 12 negative/12 positive levels, many-body excitation gap1",
+      "chiral_obstruction": "The based path leaves class AIII in its interior; this is why it does not contradict protected AIII winding",
+      "independent_local_fixtures": 40,
+      "status": "EXPLICIT_BOUNDARY_FIXED_GAPPED_CLASS_A_HOMOTOPY_CHECKED"
+    }
+  },
+  "negative_knowledge": [
+    "Chiral symmetry alone does not guarantee nonzero winding for the original BFSS 16-dimensional gamma representation.",
+    "All 126 source five-gamma subsets have vanishing complex AIII volume trace.",
+    "The minimal 4x4 comparison is nontrivial when its specified chiral symmetry is maintained.",
+    "A 24-mode exterior Fock Hilbert-space dimension match is NOT an original BFSS 48-Majorana operator identity.",
+    "Breaking an imposed chiral symmetry allows a gapped FREE contraction of the illustrative one-particle family.",
+    "The bare cos/sin path moves the boundary; the independently tested U_t-conjugated path fixes it, but necessarily breaks chiral symmetry in its interior.",
+    "Parameter-space class-AIII winding is not a real-space localized Dirac/Fredholm index.",
+    "The source SU2 gauge vacuum is proven separately, but no commutation with this invented 24-mode chiral family is established."
+  ],
+  "qualification": {
+    "CI_launched": false,
+    "original_48_Majorana_operator_Hamiltonian": false,
+    "new_Lean_theorem": false,
+    "source_SU2_gauge_covariance_of_toy": false,
+    "original_Fock_Vector_Spin9_lift": false,
+    "physical_chiral_symmetry_selected": false,
+    "spatial_Dirac_index": false,
+    "localized_zero_mode_count": false,
+    "particle_mass_charge_prediction": false,
+    "experimental_claim": false,
+    "BFSS_accepted_anchors_preserved": 27,
+    "FCP_main_unchanged": true,
+    "NFC_forced_tower_retired": true,
+    "SM_D1": "PROSPECTIVE_UNSTAGED"
+  },
+  "local_execution": {
+    "python": "3.13",
+    "original_gamma_fixture_sha": "b9b8192055c70f0d001d7982669b9823c55562ed",
+    "core_git_blob": "a083e7a8ad0de437ee430d1d9b4247b3d1468b6a",
+    "independent_consumer_git_blob": "428f8c121d1323b2b4f334968c44498d05d6edeb",
+    "outcome": "PASS; exact local file bytes match prepared GitHub blob SHA; no GitHub CI",
+    "stereographic_degree_quad": -1,
+    "source_five_tuple_trace_tests": 126,
+    "Fock_gap_breaking_frames": 40,
+    "dense_Fock_2_pow_24_matrix_built": false,
+    "boundary_fixed_gapped_frames": 40
+  },
+  "next_scientific_gate": "Physical symmetry admissibility. Identify original BFSS 48-CAR plus gauge/Hamiltonian source coupling to a specified 3D field (or an independently justified non-BFSS field theory); test if the symmetry forbidding the fifth gamma is a physically required one, then construct source-defined spatial index and observable.",
+  "primary_sources": [
+    "https://arxiv.org/abs/0905.2029",
+    "https://arxiv.org/abs/0803.2786",
+    "https://www.nature.com/articles/s41598-021-01888-x"
+  ]
+}
