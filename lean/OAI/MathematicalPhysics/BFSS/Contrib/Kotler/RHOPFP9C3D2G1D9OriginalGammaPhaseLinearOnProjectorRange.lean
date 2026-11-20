@@ -21,6 +21,7 @@ noncomputable section
 
 open OAI.BFSSQuantum
 open FCP.RHOPFP9C1A
+open FCP.RHOPFP9C1B1
 open FCP.RHOPFP9C2A
 open FCP.RHOPFP9C3D2G1D8
 
