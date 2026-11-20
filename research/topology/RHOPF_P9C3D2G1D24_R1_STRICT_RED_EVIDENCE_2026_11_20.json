@@ -1,0 +1,45 @@
+{
+  "gate": "RHOPF-P9C3D2G1D24",
+  "attempt": "R1",
+  "disposition": "REJECTED_NATIVE_RED",
+  "branch": "integration/bfss-unified-research-20261108",
+  "run_id": 44834708777,
+  "run_attempt": 1,
+  "job_id": 136628062420,
+  "exact_tested_commit": "343ce04fe75cfc9fd364632c61d3cf485e7d5d25",
+  "original_artifact_id": 14678616667,
+  "zip_sha256": "618262c31cf5e378ac53fba5808652b1cb935cce506244446185f34d352f3b01",
+  "independently_recalculated_sha256": true,
+  "github_artifact_and_original_upload_digest_match": true,
+  "original_exact_tested_commit_verified": true,
+  "zip_member_count": 5,
+  "source_preflight": "PASS",
+  "original_independent_signed_permutation_fixture": "PASS",
+  "lean_version": "4.34.1",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "dependency_build_jobs": 9071,
+  "native_compilation": "RED",
+  "independent_imported_consumer": "SKIPPED",
+  "original_axiom_reports_contain_sorryAx": true,
+  "errors": [
+    {
+      "line": 37,
+      "category": "type mismatch",
+      "actual": "LinearMap.BilinForm ℝ (Fin 4 → ℝ)",
+      "expected": "(Fin 4 → ℝ) → (Fin 4 → ℝ) → ℝ",
+      "diagnosis": "Inner field expects a plain binary function; eta-expand the already qualified bundled form"
+    },
+    {
+      "line": 32,
+      "category": "class reducibility warning treated as error",
+      "diagnosis": "Class-typed standalone def is semireducible; mark it @[instance_reducible] without installing any instance"
+    },
+    {
+      "line": 75,
+      "category": "rfl failed",
+      "diagnosis": "Core field application does not reduce while field definition ill-typed; recheck after eta expansion"
+    }
+  ],
+  "bounded_repair": "Eta-expand core's inner field to fun x y => relationalSourceBilinForm x y; add @[instance_reducible] annotation; no theorem statements or native source changes",
+  "acceptance": "NONE"
+}
