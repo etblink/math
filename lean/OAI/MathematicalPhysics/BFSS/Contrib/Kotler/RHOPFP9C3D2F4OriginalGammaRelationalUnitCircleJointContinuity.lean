@@ -31,11 +31,20 @@ norm-one rank-four relational projector image is jointly continuous. -/
 theorem relationalUnitCircleAction_joint_continuous :
     Continuous (fun p : Circle × RelationalUnitSpinor =>
       relationalUnitCircleAction p.1 p.2) := by
+  -- R2: isolate each continuous map with an explicit type to avoid
+  -- elaboration-time definitional-equality search through the original source.
+  have hSnd : Continuous (fun p : Circle × RelationalUnitSpinor => p.2) :=
+    continuous_snd
+  have hVal : Continuous (fun v : RelationalUnitSpinor => v.1) :=
+    continuous_subtypeVal
+  have hCarrier : Continuous (fun p : Circle × RelationalUnitSpinor => p.2.1) :=
+    hVal.comp hSnd
+  have hPair : Continuous (fun p : Circle × RelationalUnitSpinor =>
+      (p.1, p.2.1)) :=
+    continuous_fst.prodMk hCarrier
   have hbase : Continuous (fun p : Circle × RelationalUnitSpinor =>
       relationalCircleVector p.1 p.2.1) :=
-    relationalCircleVector_joint_continuous.comp
-      (continuous_fst.prodMk
-        (continuous_subtypeVal.comp continuous_snd))
+    relationalCircleVector_joint_continuous.comp hPair
   exact hbase.subtype_mk _
 
 #print axioms relationalUnitCircleAction_joint_continuous
