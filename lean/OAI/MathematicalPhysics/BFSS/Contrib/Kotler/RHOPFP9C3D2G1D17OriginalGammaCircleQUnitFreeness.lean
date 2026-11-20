@@ -50,15 +50,16 @@ theorem relationalCircleQUnitAction_fixed_point_implies_one
     exact v.2
   have hwNe : (w.1 : SpinIndex → ℝ) ≠ 0 := by
     intro hz
-    have hf : (0 : ℝ) = 1 := by
-      simpa [hz] using hwUnit
-    norm_num at hf
+    simp [hz] at hwUnit
   have hfixFour : relationalCircleFourAction z v.1 = v.1 :=
     congrArg Subtype.val hfix
   have hfixRange : relationalCircleRangeAction z w = w := by
     apply E.injective
-    change E (relationalCircleRangeAction z (E.symm v.1)) = E w
-    exact hfixFour
+    calc
+      E (relationalCircleRangeAction z (E.symm v.1)) =
+          relationalCircleFourAction z v.1 := by rfl
+      _ = v.1 := hfixFour
+      _ = E w := (E.apply_symm_apply v.1).symm
   have hfixSource : relationalCircleVector z w.1 = w.1 :=
     congrArg Subtype.val hfixRange
   exact relationalCircleVector_fixed_point_implies_one
