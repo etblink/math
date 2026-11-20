@@ -1,0 +1,217 @@
+name: RHOPF P9C3D2G1D17 original Gamma9 Circle Q-unit freeness strict
+
+'on':
+  push:
+    branches: [integration/bfss-unified-research-20261108]
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreeness.lean
+      - lean/diagnostics/RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreenessIndependentAudit.lean
+      - .github/workflows/rhopf-p9c3d2g1d17-original-gamma-circle-q-unit-freeness-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhopf-p9c3d2g1d17-source-circle-group-representation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-and-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - name: Checkout exact original source on unified integration branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Exact original-source hashes and bounded proof-contract preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/rhopf-p9c3d2g1d17"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/rhopf-p9c3d2g1d17/exact-tested-commit.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/rhopf-p9c3d2g1d17/toolchain-sha256.txt"
+          python3 - <<'PY'
+          import json,re,subprocess
+          from pathlib import Path
+          assert Path('lean/lean-toolchain').read_text().strip()=='leanprover/lean4:v4.34.1'
+          packages=json.loads(Path('lean/lake-manifest.json').read_text())['packages']
+          assert next(x['rev'] for x in packages if x['name']=='mathlib')=='d13f23b723b8a846827a245b89c10fc7d3f11612'
+          pref='lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/'
+          pins={
+            'lean/OAI/MathematicalPhysics/BFSS/Core.lean':'9882359ced78b0a3bd7e2f057974bd0a031b3e60',
+            pref+'SU2RealGammaProbe.lean':'b9b8192055c70f0d001d7982669b9823c55562ed',
+            pref+'RHOPFP9A0OriginalGammaPairClifford.lean':'bf5eb554232a6d452e86d85b05220aad7c5d0aeb',
+            pref+'SU2BFSSPairedSpin9V10HF10ANOriginalGammaDisjointPairLieBracketProbe.lean':'a9c96b4840e297b0b79f343d32e3992f50a5ace0',
+            pref+'RHOPFP9C0OriginalGammaCommutingTriple.lean':'b93450236ea9cc93869c5a09102708d3c62b5dd3',
+            pref+'RHOPFP9C1AOriginalGammaRelationalProjection.lean':'ca9c68a83c2ba269b3d1acb792f8956529e39ab0',
+            pref+'RHOPFP9C1B0OriginalGammaRelationalTrace.lean':'af0eb3094ac3c626644fe808626b891705ca0071',
+            pref+'RHOPFP9C1B1OriginalGammaRelationalRank.lean':'363c21fc83d955b4d31b3fb122cb0d7e95ecf562',
+            pref+'RHOPFP9C1C0OriginalGammaCoordinateRankBridge.lean':'fdf6b796602afe2a2b2a5b36afb9f4e977e82b1b',
+            pref+'RHOPFP9C1C1AOriginalGammaCommonActionEqualizer.lean':'1bd9dc0ef0cbabd952feaeed526661c7e92d7724',
+            pref+'RHOPFP9C2AOriginalGammaRelationalPhaseSquare.lean':'d1452cfc9f168146b6b2b6fcba60324fde55d74a',
+            pref+'RHOPFP9C2BOriginalGammaOrthogonalRelationalPhase.lean':'83971d2f666bc511097ec14a1f60d56148d21214',
+            pref+'RHOPFP9C2COriginalGammaRelationalPhasePartialIsometry.lean':'eb31bb873ef9d78e40f4a0186966ceb3e89f475e',
+            pref+'RHOPFP9C2DOriginalGammaRelationalQuarterTurn.lean':'bcb3e7d8e77b869d0fcc7c2f3e33c9aa23fbe428',
+            pref+'RHOPFP9C3AOriginalGammaRelationalCirclePhaseFamily.lean':'728883a8484707dc9cabff8a01d4ce9ba4c98302',
+            pref+'RHOPFP9C3B0OriginalGammaRelationalComplementSupport.lean':'efcaf79d34d3d6db88313eebfba96bea9ae2fc65',
+            pref+'RHOPFP9C3B1OriginalGammaRelationalCirclePhaseMultiplication.lean':'c340d43fd215ed8aba66af3efd9aa0729bd1acdd',
+            pref+'RHOPFP9C3COriginalGammaRelationalUnitCircleOrthogonality.lean':'03c0871e3df8e297a38a4213820143c0a8eb8821',
+            pref+'SU2BFSSPairedSpin9V10HF10AEOriginalGammaFourWordTraceZeroProbe.lean':'0c38739f0ddf712f53bfa34ef692bbf58728a75a',
+            pref+'RHOPFP9C3D0OriginalGammaCircleGroupRepresentation.lean':'16a54fabe42e14d5cf36882fe5833be84a0239e0',
+            pref+'RHOPFP9C3D1OriginalGammaCircleRepresentationContinuity.lean':'ec328fd6662d92697bf108b844873e2179b2eac0',
+            pref+'RHOPFP9C3D2AOriginalGammaCircleVectorAction.lean':'6803f9a0ce94f764d94e9c74fb43fc616c509e83',
+            pref+'RHOPFP9C3D2BOriginalGammaCircleProjectorImageInvariance.lean':'4e2a90be91530f0652f38bdcfa2abe80be4b4863',
+            pref+'RHOPFP9C3D2COriginalGammaRelationalPhaseKernelOnProjectorImage.lean':'18be05e39c70faa10abf790777932c828efff987',
+            pref+'RHOPFP9C3D2DOriginalGammaRelationalPhaseOnProjectorImage.lean':'52f9b74cfce4ea8318af117bd48ec06c23964a78',
+            pref+'RHOPFP9C3D2E0OriginalGammaRelationalPhaseLinearIndependence.lean':'6a18d2c7c2593177e343e1f2050d8b928f0c7915',
+            pref+'RHOPFP9C3D2E1OriginalGammaCircleNonzeroFixedPointCriterion.lean':'53755cb1bc70a151cc8a169a72156687c8d35dfc',
+            pref+'RHOPFP9C3D2E2OriginalGammaCirclePreservesNonzeroProjectorImage.lean':'53cac8d816acd9314b13b3805ada76a69c13bb46',
+            pref+'RHOPFP9C3D2E3OriginalGammaCircleIntrinsicNonzeroAction.lean':'8edf8af9c8daad610eb154a97be7957538441cb5',
+            pref+'RHOPFP9C3D2F0OriginalGammaCircleQuadraticFormInvariance.lean':'b8daf44b8e8994035b6ebb02e41db1aaa3b322e1',
+            pref+'RHOPFP9C3D2F1OriginalGammaRelationalUnitCircleAction.lean':'e152a78f6bf5cd58c077fea138a0ba01d60392f2',
+            pref+'RHOPFP9C3D2F2OriginalGammaRelationalUnitCircleFreeAction.lean':'a2cd32b332771de0d6e2d1a75bfde1e1fbbc0428',
+            pref+'RHOPFP9C3D2F3OriginalGammaCircleVectorJointContinuity.lean':'47101b8b12ee7801d35a569ad31fbd0fdfa75d43',
+            pref+'RHOPFP9C3D2F4OriginalGammaRelationalUnitCircleJointContinuity.lean':'c0f028c271b20847544e78f25dfd0423ec5a0f82',
+            pref+'RHOPFP9C3D2G0AOriginalGammaRelationalRangeNontrivial.lean':'72dec434c16e29a52243cb84ca0768ff0c1b9bdf',
+            pref+'RHOPFP9C3D2G0BOriginalGammaRelationalNonzeroFixedVector.lean':'6f40e6e5265fb061e2b29714e234d27576a4ffce',
+            pref+'RHOPFP9C3D2G0COriginalGammaRelationalUnitSphereNonempty.lean':'1307b7c8e38c5ee6d97eaf2de53bb8010b349e4f',
+            pref+'RHOPFP9C3D2G1AOriginalGammaRelationalRangeUnitSphereEquiv.lean':'d8ffd4fc5cab4153b4393e6c04a9ba65027e5b1c',
+            pref+'RHOPFP9C3D2G1BOriginalGammaRelationalRangeSphereHomeomorph.lean':'c3f72666223923b9addea5a0f6cb67758bdc2483',
+            pref+'RHOPFP9C3D2G1C0OriginalGammaRangeContinuousLinearEquivFinFour.lean':'d9f860529734ddcaf7589253dc9cd191b35c6703',
+            pref+'RHOPFP9C3D2G1C1OriginalGammaCoordinateQuadraticPositivity.lean':'d03426863565f5e2d95871e8a321eda9897fb3b2',
+            pref+'RHOPFP9C3D2G1C2OriginalGammaCoordinateQuadraticContinuity.lean':'797c320d83fcd1125fea4c64dc9b81fd52d1cdf0',
+            pref+'RHOPFP9C3D2G1C3OriginalGammaCoordinateRadiusContinuityPositivity.lean':'6a1ec4c8615454dc062b3af3d029ef65b8dbdac1',
+            pref+'RHOPFP9C3D2G1C4OriginalGammaCoordinateQuadraticHomogeneity.lean':'00b543ef6380a16bb61ced313422f252928b9fe6',
+            pref+'RHOPFP9C3D2G1C5OriginalGammaCoordinateQuadraticNormalization.lean':'0b0b2d10764c979a7b95f29ee17adeac389131c7',
+            pref+'RHOPFP9C3D2G1C6OriginalGammaQuadraticUnitRadiusFixed.lean':'c0abd0fc8222a88a1cbfb6450e11d24d1dcab369',
+            pref+'RHOPFP9C3D2G1C7OriginalGammaContinuousQuadraticRetraction.lean':'04340f5bbb7507685be4e824fd9dac76c582ce82',
+            pref+'RHOPFP9C3D2G1C8OriginalGammaStandardFourRadiusContinuityPositivity.lean':'2a547726b2da7fd3f914a56aa1113e955bd6731f',
+            pref+'RHOPFP9C3D2G1C9OriginalGammaStandardFourNormalizationAlgebra.lean':'cdb1f4e9f18b19c5a5a7765dd02d5c4511f6cbce',
+            pref+'RHOPFP9C3D2G1D0OriginalGammaContinuousInterSphereMaps.lean':'9e44f8af4a32259dad3a371416de05411b8303b7',
+            pref+'RHOPFP9C3D2G1D1AOriginalGammaPositiveRadiusHomogeneity.lean':'78ce3e643eaac27bce09fcc11879532b57f71547',
+            pref+'RHOPFP9C3D2G1D1BOriginalGammaInterSphereInverseIdentities.lean':'95c38cdb4e42738e161ab5f4756e6baf25fcb631',
+            pref+'RHOPFP9C3D2G1D2OriginalGammaInterSphereHomeomorph.lean':'867385524e1ccdd53dfa3350ae3e92f8538ae94a',
+            pref+'RHOPFP9C3D2G1D3OriginalGammaRangeUnitCoordinateHomeomorph.lean':'3e559cc73421704ea7a7dc729e592645e526b8d0',
+            pref+'RHOPFP9C3D2G1D4OriginalGammaRelationalStandardSphereHomeomorph.lean':'e837ba778a8d580725c7dec60f4ccb63e476d442',
+            pref+'RHOPFP9C3D2G1D5OriginalGammaStandardSphereCircleAction.lean':'243364cd6793a22fd3027278c2b348f514b12179',
+            pref+'RHOPFP9C3D2G1D6OriginalGammaStandardSphereCircleFreeAction.lean':'3633f459a7770409c8583749c5c273eb21d1b4e8',
+            pref+'RHOPFP9C3D2G1D7OriginalGammaStandardSphereCircleJointContinuity.lean':'6d62408c5eabcf42947e8b2f970519c171a4905e',
+            pref+'RHOPFP9C3D2G1D8OriginalGammaPhaseComplexStructureOnProjectorImage.lean':'e9263e4041a822812b70dbe31ee453ca7e28fbbb',
+            pref+'RHOPFP9C3D2G1D9OriginalGammaPhaseLinearOnProjectorRange.lean':'ccbfcad0f41d16ec13f3a66b3e0399fbeacf0f32',
+            pref+'RHOPFP9C3D2G1D10OriginalGammaPhaseLinearFinFour.lean':'eb848701dd053e885c04282fdc743b71a4d4af0f',
+            pref+'RHOPFP9C3D2G1D11OriginalGammaPhasePreservesTransportedQuadratic.lean':'ad8d4f433c91af38cec1c273c84dcc7571d9746c',
+            pref+'RHOPFP9C3D2G1D12OriginalGammaCirclePhaseProjectorRange.lean':'61f19749eaf90a5c8293eff82a7d11f1ff5a808d',
+            pref+'RHOPFP9C3D2BOriginalGammaCircleProjectorImageInvariance.lean':'4e2a90be91530f0652f38bdcfa2abe80be4b4863',
+            pref+'RHOPFP9C3D2G1D13OriginalGammaCircleActionFinFourPhase.lean':'3ab1accaf1ff0eb3ea9de8ad48235ab9dcdb8bd3',
+            pref+'RHOPFP9C3D2F0OriginalGammaCircleQuadraticFormInvariance.lean':'b8daf44b8e8994035b6ebb02e41db1aaa3b322e1',
+            pref+'RHOPFP9C3D2G1D14OriginalGammaCirclePreservesQUnit.lean':'03499c651537b762e5442e6459c509763cd1e06f',
+            pref+'RHOPFP9C3D2G1D15OriginalGammaCircleQUnitGroupLaws.lean':'730de9506fbf5e42b010a21940ebe0b3662d6319',
+            pref+'RHOPFP9C3D2G1D16OriginalGammaCircleQUnitJointContinuity.lean':'d8edc57ed2f5919f0896b59c9167b589b7ba9662',
+            pref+'RHOPFP9C3D2E1OriginalGammaCircleNonzeroFixedPointCriterion.lean':'53755cb1bc70a151cc8a169a72156687c8d35dfc',
+            pref+'RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreeness.lean':'0260331df443b831503648d33e862da26c177707',
+            'lean/diagnostics/RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreenessIndependentAudit.lean':'9368609b421764764f5dc5282e1e299b58aa234d',
+            'research/topology/tools/rhopf_p9a0_original_gamma_source_independent.py':'9d20952c366e356ff5dc656a35d0b604236a15ac',
+            'research/topology/data/BFSS_GAMMA9_SOURCE_PERMUTATION_FIXTURE_2026_11_18.json':'684680e139cfcd09c37bf075c0c014bdaa80ba35'}
+          for path,sha in pins.items():
+            got=subprocess.check_output(['git','hash-object','--no-filters',path],text=True).strip()
+            assert got==sha,(path,got,sha)
+          src=Path(pref+'RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreeness.lean').read_text()
+          consumer=Path('lean/diagnostics/RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreenessIndependentAudit.lean').read_text()
+          assert re.findall(r'(?m)^import (\S+)$',src)==[
+            'OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D16OriginalGammaCircleQUnitJointContinuity',
+            'OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2E1OriginalGammaCircleNonzeroFixedPointCriterion']
+          assert re.findall(r'(?m)^import (\S+)$',consumer)==[
+            'OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreeness']
+          names=['relationalCircleQUnitAction_fixed_point_implies_one']
+          assert re.findall(r'(?m)^theorem (\S+)',src)==['relationalCircleQUnitAction_fixed_point_implies_one']
+          assert re.findall(r'(?m)^abbrev (\S+)',src)==[]
+          assert re.findall(r'(?m)^noncomputable def (\S+)',src)==[]
+          assert re.findall(r'(?m)^#print axioms (\S+)$',src)==['relationalCircleQUnitAction_fixed_point_implies_one']
+          assert re.findall(r'(?m)^#print axioms (\S+)$',consumer)==[
+            'FCP.RHOPFP9C3D2G1D17.'+n for n in ['relationalCircleQUnitAction_fixed_point_implies_one']]
+          # Structural source/consumer scope precheck prevents unmatched sections
+          assert re.findall(r'(?m)^namespace (\S+)$',src)==['FCP.RHOPFP9C3D2G1D17']
+          assert re.findall(r'(?m)^end(?: (\S+))?$',src)==['','FCP.RHOPFP9C3D2G1D17']
+          assert re.findall(r'(?m)^noncomputable section$',src)==['noncomputable section']
+          assert re.findall(r'(?m)^namespace (\S+)$',consumer)==['FCP.RHOPFP9C3D2G1D17Independent']
+          assert re.findall(r'(?m)^end(?: (\S+))?$',consumer)==['','FCP.RHOPFP9C3D2G1D17Independent']
+          assert re.findall(r'(?m)^noncomputable section$',consumer)==['noncomputable section']
+          for s in [src,consumer]:
+            assert 'set_option autoImplicit false' in s
+            assert not re.search(r'(?m)^\s*(?:sorry|admit|axiom|unsafe|opaque|constant)\b',s)
+            assert not re.search(r'(?m)^\s*set_option\s+(?:maxRecDepth|maxHeartbeats)',s)
+            assert 'import all' not in s
+          print('RHOPF_P9C3D2G1D17_EXACT_ORIGINAL_SOURCE_CONTRACT_PASS')
+          PY
+          python3 research/topology/tools/rhopf_p9a0_original_gamma_source_independent.py |
+            tee "$RUNNER_TEMP/rhopf-p9c3d2g1d17/independent-original-integer-consumer.json"
+
+      - name: Restore exact Lean 4.34.1 and Mathlib
+        timeout-minutes: 44
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/share/swift
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2000s lake exe cache get
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = 'd13f23b723b8a846827a245b89c10fc7d3f11612'
+
+      - name: Compile accepted P9C0 and bounded native relational projection
+        timeout-minutes: 48
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 2700s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D16OriginalGammaCircleQUnitJointContinuity 2>&1 |
+            tee "$RUNNER_TEMP/rhopf-p9c3d2g1d17/qualified-original-dependency-build.log"
+          target=OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreeness
+          mkdir -p ".lake/build/lib/lean/$(dirname "$target")"
+          timeout 650s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/$target.olean" "$target.lean" 2>&1 |
+            tee "$RUNNER_TEMP/rhopf-p9c3d2g1d17/native-circle-q-unit-freeness-and-axioms.log"
+
+      - name: Independent source type consumer and strict axiom reports
+        timeout-minutes: 14
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          target=diagnostics/RHOPFP9C3D2G1D17OriginalGammaCircleQUnitFreenessIndependentAudit
+          mkdir -p .lake/build/lib/lean/diagnostics
+          timeout 600s lake env lean -DwarningAsError=true -o ".lake/build/lib/lean/$target.olean" "$target.lean" 2>&1 |
+            tee "$RUNNER_TEMP/rhopf-p9c3d2g1d17/independent-lean-types-and-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,re
+          root=Path(os.environ['RUNNER_TEMP'])/'rhopf-p9c3d2g1d17'
+          reports=[
+            (root/'native-circle-q-unit-freeness-and-axioms.log').read_text(),
+            (root/'independent-lean-types-and-axioms.log').read_text()]
+          for data in reports:
+            for name in ['relationalCircleQUnitAction_fixed_point_implies_one']:
+              full='FCP.RHOPFP9C3D2G1D17.'+name
+              matches=re.findall(r"'"+re.escape(full)+r"' depends on axioms: \[([^\]]+)\]",data,re.S)
+              if len(matches)==1:
+                axioms={a.strip() for a in matches[0].split(',')}
+                assert axioms.issubset({'propext','Classical.choice','Quot.sound'}),(full,axioms)
+              else:
+                assert "'"+full+"' does not depend on any axioms" in data,(full,matches)
+            assert 'sorryAx' not in data and 'error:' not in data
+          print('RHOPF_P9C3D2G1D17_NATIVE_INDEPENDENT_STRICT_PASS')
+          PY
+
+      - name: Archive original tested source and all RED/GREEN proof diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rhopf-p9c3d2g1d17-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/rhopf-p9c3d2g1d17
+          if-no-files-found: warn
+          include-hidden-files: true
+          retention-days: 30
