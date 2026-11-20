@@ -1,0 +1,30 @@
+{
+  "gate": "RHOPF-P9C3D2G1D4",
+  "attempt": "R1",
+  "status": "REJECTED_STRICT_RED",
+  "run_id": 44725244988,
+  "run_attempt": 1,
+  "job_id": 136250891801,
+  "exact_tested_commit": "f60489dce4527d431c1c070c4b6ab2db49414c6d",
+  "branch": "integration/bfss-unified-research-20261108",
+  "artifact_id": 14624611943,
+  "artifact_zip_sha256": "b08ba1468e6c2b53dfa2226ae4c69c7aa391da26c4a71e49208be1d1d6053785",
+  "independently_verified": true,
+  "upload_digest_matched": true,
+  "embedded_commit_verified": true,
+  "artifact_file_count": 5,
+  "original_preflight": "PASS",
+  "toolchain": "Lean 4.34.1",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "dependency_build_jobs": 9051,
+  "native_compilation": "RED",
+  "independent_consumer": "SKIPPED",
+  "axioms": "sorryAx present; gate not qualified",
+  "errors": [
+    "30:28 unknown identifier `StandardUnitCoordinates`",
+    "36:8 declaration uses `sorry`",
+    "46:9 unknown identifier `StandardUnitCoordinates`"
+  ],
+  "root_cause": "The exact accepted type is FCP.RHOPFP9C3D2G1D0.StandardUnitCoordinates, but D0 was not opened in native/consumer G1D4 modules.",
+  "repair": "R2: only add open FCP.RHOPFP9C3D2G1D0 to source and consumer; update exact Git blob pins. Preserve proof text/source dependencies/stop rule."
+}
