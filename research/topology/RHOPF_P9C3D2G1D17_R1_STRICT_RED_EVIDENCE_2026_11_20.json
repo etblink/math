@@ -1,0 +1,36 @@
+{
+  "gate": "RHOPF-P9C3D2G1D17",
+  "attempt": "R1",
+  "disposition": "REJECTED_NATIVE_RED",
+  "branch": "integration/bfss-unified-research-20261108",
+  "run_id": 44813710526,
+  "run_attempt": 1,
+  "job_id": 136556512498,
+  "exact_tested_commit": "4815654c159585509dc76efc0c15d6e2bd827a8d",
+  "artifact_id": 14670385186,
+  "original_artifact_zip_sha256": "099407c411c38e02fc2c0872070a44ea232562782494fcf90e68d448b8e7b847",
+  "independently_recalculated_sha256": true,
+  "upload_digest_matched": true,
+  "embedded_exact_commit_verified": true,
+  "zip_file_count": 5,
+  "source_contract_preflight": "PASS",
+  "toolchain_restore": "PASS",
+  "dependency_jobs": 9064,
+  "native_compilation": "RED",
+  "independent_imported_consumer": "SKIPPED",
+  "native_axiom_report_has_sorryAx": true,
+  "errors": [
+    {
+      "line": 54,
+      "kind": "linter",
+      "description": "unnecessarySimpa: use simp at hwUnit rather than simpa using hwUnit"
+    },
+    {
+      "line": 61,
+      "kind": "type_mismatch",
+      "description": "hfixFour yields E(rangeAction z (E.symm v))=v; proof expects E(rangeAction z (E.symm v))=E(E.symm v). Needs explicit inverse equivalence rewrite E.apply_symm_apply"
+    }
+  ],
+  "scope": "No accepted mathematical conclusion; retain R1 rejection",
+  "bounded_repair": "Replace linter-unnecessary simpa and supply explicit calc using E.apply_symm_apply to bridge source equality."
+}
