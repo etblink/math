@@ -1,0 +1,44 @@
+import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2F3OriginalGammaCircleVectorJointContinuity
+
+/-!
+# RHOPF-P9C3D2F4 — jointly continuous Circle action on relational unit spinors
+
+The accepted source-original real 16-spinor Gamma9 Circle action
+preserves the intrinsic norm-one projector image. P9C3D2F1/F2
+strictly established its algebraic action and trivial stabilizers.
+P9C3D2F3 strictly established joint continuity on the original
+real-spinor vector carrier.
+
+This bounded gate restricts joint continuity to the exact
+source-defined unit spinor subtype using its induced topology.
+It does not yet establish nonemptiness or an S³ homeomorphism,
+a Hopf quotient, a Fock implementer, Hamiltonian covariance
+or a physical topological soliton.
+-/
+
+set_option autoImplicit false
+
+namespace FCP.RHOPFP9C3D2F4
+noncomputable section
+
+open OAI.BFSSQuantum
+open FCP.RHOPFP9C3D2A
+open FCP.RHOPFP9C3D2F1
+open FCP.RHOPFP9C3D2F3
+
+/-- The source-original Gamma9 Circle action on the intrinsic
+norm-one rank-four relational projector image is jointly continuous. -/
+theorem relationalUnitCircleAction_joint_continuous :
+    Continuous (fun p : Circle × RelationalUnitSpinor =>
+      relationalUnitCircleAction p.1 p.2) := by
+  have hbase : Continuous (fun p : Circle × RelationalUnitSpinor =>
+      relationalCircleVector p.1 p.2.1) :=
+    relationalCircleVector_joint_continuous.comp
+      (continuous_fst.prodMk
+        (continuous_subtypeVal.comp continuous_snd))
+  exact hbase.subtype_mk _
+
+#print axioms relationalUnitCircleAction_joint_continuous
+
+end
+end FCP.RHOPFP9C3D2F4
