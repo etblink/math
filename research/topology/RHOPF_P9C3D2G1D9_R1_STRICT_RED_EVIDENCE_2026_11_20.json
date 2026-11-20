@@ -1,0 +1,36 @@
+{
+  "gate": "RHOPF-P9C3D2G1D9",
+  "attempt": "R1",
+  "disposition": "REJECTED_NATIVE_RED",
+  "run_id": 44780087045,
+  "exact_tested_commit": "ccd39d4f052dfd8632cdf4ab08906655b71c1d01",
+  "job_id": 136440133928,
+  "artifact_id": 14651843940,
+  "original_artifact_zip_sha256": "2367d8006772bd323ebd338987e9abe897defb863777152701442db08b0db32f",
+  "independent_sha256_verified": true,
+  "archive_embedded_commit_verified": true,
+  "archive_members": [
+    "exact-tested-commit.txt",
+    "independent-original-integer-consumer.json",
+    "native-projector-range-phase-linear-and-axioms.log",
+    "qualified-original-dependency-build.log",
+    "toolchain-sha256.txt"
+  ],
+  "source_preflight": "PASS",
+  "dependency_build_jobs": 9056,
+  "native": "RED",
+  "consumer": "SKIPPED",
+  "errors": [
+    {
+      "line": 40,
+      "diagnostic": "unknown identifier relationalProjector_toLin_idempotent"
+    },
+    {
+      "line": 72,
+      "diagnostic": "unknown identifier relationalProjector_toLin_idempotent"
+    }
+  ],
+  "axiom_contamination": "sorryAx",
+  "root_cause": "The accepted theorem is in namespace FCP.RHOPFP9C1B1, not opened in D9; original imported theorem unchanged.",
+  "stop_rule": "No G1D9 acceptance or math conclusion; bounded namespace repair only."
+}
