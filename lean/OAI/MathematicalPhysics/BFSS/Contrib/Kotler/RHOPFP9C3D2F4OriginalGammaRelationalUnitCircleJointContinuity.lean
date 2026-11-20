@@ -31,21 +31,25 @@ norm-one rank-four relational projector image is jointly continuous. -/
 theorem relationalUnitCircleAction_joint_continuous :
     Continuous (fun p : Circle × RelationalUnitSpinor =>
       relationalUnitCircleAction p.1 p.2) := by
-  -- R2: isolate each continuous map with an explicit type to avoid
-  -- elaboration-time definitional-equality search through the original source.
-  have hSnd : Continuous (fun p : Circle × RelationalUnitSpinor => p.2) :=
-    continuous_snd
+  -- R3: first compose using the exact syntactic Function.comp type
+  -- (rather than asking the elaborator to unify an expanded source action).
   have hVal : Continuous (fun v : RelationalUnitSpinor => v.1) :=
-    continuous_subtypeVal
-  have hCarrier : Continuous (fun p : Circle × RelationalUnitSpinor => p.2.1) :=
-    hVal.comp hSnd
+    continuous_subtype_val
+  have hSecond : Continuous (fun p : Circle × RelationalUnitSpinor =>
+      p.2.1) :=
+    hVal.comp continuous_snd
   have hPair : Continuous (fun p : Circle × RelationalUnitSpinor =>
       (p.1, p.2.1)) :=
-    continuous_fst.prodMk hCarrier
-  have hbase : Continuous (fun p : Circle × RelationalUnitSpinor =>
-      relationalCircleVector p.1 p.2.1) :=
+    continuous_fst.prodMk hSecond
+  have hcomposed : Continuous
+      ((fun q : Circle × (SpinIndex → ℝ) =>
+          relationalCircleVector q.1 q.2) ∘
+        (fun p : Circle × RelationalUnitSpinor => (p.1, p.2.1))) :=
     relationalCircleVector_joint_continuous.comp hPair
-  exact hbase.subtype_mk _
+  have hbase : Continuous (fun p : Circle × RelationalUnitSpinor =>
+      relationalCircleVector p.1 p.2.1) := by
+    exact hcomposed
+  exact hbase.subtype_mk (fun p => (relationalUnitCircleAction p.1 p.2).2)
 
 #print axioms relationalUnitCircleAction_joint_continuous
 
