@@ -34,8 +34,8 @@ theorem relationalCircleVector_dot_self
   calc
     ((relationalCircleMatrix z).mulVec v) ⬝ᵥ
         ((relationalCircleMatrix z).mulVec v) =
-        (((relationalCircleMatrix z).mulVec v) ᵥ*
-          relationalCircleMatrix z) ⬝ᵥ v := by
+        (Matrix.vecMul ((relationalCircleMatrix z).mulVec v)
+          (relationalCircleMatrix z)) ⬝ᵥ v := by
             rw [Matrix.dotProduct_mulVec]
     _ = (((relationalCircleMatrix z).transpose *
           relationalCircleMatrix z).mulVec v) ⬝ᵥ v := by
