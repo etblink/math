@@ -33,11 +33,14 @@ theorem relationalProjector_exists_nonzero_fixed :
   let F : (SpinIndex → ℝ) →ₗ[ℝ] (SpinIndex → ℝ) :=
     Matrix.toLin' relationalProjector
   have hIdem : IsIdempotentElem F := relationalProjector_toLin_idempotent
-  haveI : Nontrivial (LinearMap.range F) :=
+  have hnt : Nontrivial (LinearMap.range F) :=
     relationalProjector_range_nontrivial
-  obtain ⟨v, hv⟩ : ∃ v : LinearMap.range F, v ≠ 0 := exists_ne 0
+  obtain ⟨v, hv⟩ : ∃ v : LinearMap.range F, v ≠ 0 :=
+    (nontrivial_iff_exists_ne (0 : LinearMap.range F)).mp hnt
   refine ⟨v.1, ?_, ?_⟩
-  · exact (IsIdempotentElem.mem_range_iff hIdem).mp v.2
+  · have hProj : LinearMap.IsProj (LinearMap.range F) F :=
+      (LinearMap.isProj_range_iff_isIdempotentElem F).2 hIdem
+    exact hProj.map_id v.1 v.2
   · intro hzero
     apply hv
     exact Subtype.ext hzero
