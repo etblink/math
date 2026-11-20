@@ -32,9 +32,10 @@ open FCP.RHOPFP9C3D2G1D23
 /-- The actual original Gamma9 real-spinor transported dot,
 packaged as a positive-definite Mathlib inner-product core.
 No global InnerProductSpace or Norm instance is introduced. -/
+@[instance_reducible]
 noncomputable def relationalSourceInnerCore :
     InnerProductSpace.Core ℝ (Fin 4 → ℝ) where
-  inner := relationalSourceBilinForm
+  inner := fun x y => relationalSourceBilinForm x y
   conj_inner_symm := by
     intro x y
     change relationalSourceBilinForm y x =
