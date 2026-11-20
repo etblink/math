@@ -53,7 +53,6 @@ theorem relationalUnitSpinor_nonempty : Nonempty RelationalUnitSpinor := by
         exact map_smul (Matrix.toLin' relationalProjector) r⁻¹ v
       _ = u := by
         rw [hfixed]
-        rfl
   have hid : r⁻¹ * (r⁻¹ * q) = 1 := by
     rw [← hsq]
     field_simp
