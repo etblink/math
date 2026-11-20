@@ -44,9 +44,16 @@ theorem relationalUnitSpinor_nonempty : Nonempty RelationalUnitSpinor := by
   have hrne : r ≠ 0 := ne_of_gt hrpos
   have hsq : r * r = q := Real.mul_self_sqrt hqpos.le
   let u : SpinIndex → ℝ := r⁻¹ • v
+  -- R2: keep the linear-map application opaque while proving the
+  -- scalar transport; avoid rewriting against its unfolded mulVec form.
   have hu_fixed : (Matrix.toLin' relationalProjector) u = u := by
-    dsimp [u]
-    rw [map_smul, hfixed]
+    calc
+      (Matrix.toLin' relationalProjector) u =
+          r⁻¹ • (Matrix.toLin' relationalProjector) v := by
+        exact map_smul (Matrix.toLin' relationalProjector) r⁻¹ v
+      _ = u := by
+        rw [hfixed]
+        rfl
   have hid : r⁻¹ * (r⁻¹ * q) = 1 := by
     rw [← hsq]
     field_simp
