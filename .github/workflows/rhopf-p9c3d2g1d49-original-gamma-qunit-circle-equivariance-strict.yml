@@ -229,7 +229,7 @@ jobs:
             (root/'native-original-source-q-orthonormal-repr-and-axioms.log').read_text(),
             (root/'independent-lean-types-and-axioms.log').read_text()]
           for data in reports:
-            for name in ['relationalSourceQUnitEuclideanUnitHomeomorph']:
+            for name in ['relationalSourceQUnitCircleAction','relationalEuclideanUnitCircleAction','relationalSourceQUnitHomeomorph_circle']:
               full='FCP.RHOPFP9C3D2G1D49.'+name
               matches=re.findall(r"'"+re.escape(full)+r"' depends on axioms: \[([^\]]+)\]",data,re.S)
               if len(matches)==1:
