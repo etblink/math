@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "seed": 20261121,
+  "cases": 70,
+  "kappa": 0.5,
+  "max_errors": {
+    "deck_C": 0.0,
+    "gauge_C": 7.726561724930481e-15,
+    "gauge_scalar": 1.0148132334464322e-16,
+    "reconstructed_X": 0.0,
+    "C_finite_difference": 3.951909108285598e-10,
+    "du_bound_excess": 0.0,
+    "cutoff_zero_outside": 0.0,
+    "spectral_gap_lower_bound_excess": 0.0,
+    "zero_on_degeneracy_neighborhood": 0.0,
+    "cutoff_gradient_finite_difference": 3.78221217366137e-12,
+    "gauge_cutoff_gradient": 8.864799902627776e-17,
+    "covariance_derivative_upper_bound_excess": 0.0
+  },
+  "near_tube_face": [
+    {
+      "relative_distance_to_tube_boundary": 0.04,
+      "inside_amplitude": 3.918489369724968e-06,
+      "outside_amplitude": 0.0
+    },
+    {
+      "relative_distance_to_tube_boundary": 0.02,
+      "inside_amplitude": 3.1336554965968167e-10,
+      "outside_amplitude": 0.0
+    },
+    {
+      "relative_distance_to_tube_boundary": 0.01,
+      "inside_amplitude": 2.03344440049926e-18,
+      "outside_amplitude": 0.0
+    },
+    {
+      "relative_distance_to_tube_boundary": 0.005,
+      "inside_amplitude": 0.0,
+      "outside_amplitude": 0.0
+    }
+  ],
+  "analytic_geometry": "simple top SVD r,s; Y orthogonal u and n; ||Y||<kappa*r gives gap r-sigma2 >=(1-kappa)r; two orientations identified as (u,n,Y)~(-u,-n,Y)",
+  "covariance_derivative_bound": "||dC_X(H)||_F <= 8 sqrt(5) ||H||_F / (r-sigma2) <= 8 sqrt(5) ||H||_F / ((1-kappa) r)",
+  "squared_cutoff_gradient": "grad rho = 2Y/(kappa^2 r^2) - 2||Y||^2 un^T/(kappa^2 r^3), rho=||Y||^2/(kappa^2 r^2)",
+  "analytic_support": "r in [R,2R], ||Y||<=kappa*r implies norm(X)^2=r^2+norm(Y)^2 <=4(1+kappa^2)R^2; zero extension near SVD degeneracy",
+  "new_cutoff": "eta(norm(Y)^2/(kappa^2 r^2)) with eta identically 1 on [0,1/4], identically zero on [1,infinity), C_infinity flat endpoints",
+  "qualification": "source-oriented bosonic geometry and scalar cutoff tests; does not implement source Fermion 2 smooth section or Lean TestFunction"
+}

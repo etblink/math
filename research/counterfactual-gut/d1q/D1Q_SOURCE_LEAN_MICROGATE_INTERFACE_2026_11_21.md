@@ -1,0 +1,21 @@
+# D1Q → D1R: bounded source-original Lean interface, **no code or CI launched**
+
+**Status:** specification only. The first Lean step should be an independently type-checked *pilot*, not a new 9000-module strict gate based on untested term syntax. All roots below must be introduced on the isolated counterfactual research branch only. The inherited strict REDs D1F R1–R3 and D1K1A R1 remain RED.
+
+## Source boundary, in dependency order
+
+1. **Typed original 48-index realization.** Reuse `FCP.BFSSSU2GaugeG1A.pairedLabelEquiv` and `pairedAlgebraData.theta` rather than defining substitute gamma/θ operators. `ColorIndex 2` is `Fin (2^2-1)`; the failed `1 : ColorIndex 2` and `2 : ColorIndex 2` literals from D1K1A R1 may not be reused. If those labels are essential, use explicit bounded `Fin` constructors with preflight elaboration.
+2. **Pure covariance and source carrier operator.** For `u:S^8,n:S^2`, construct real `48×48 C(u,n)` with exact original Gamma9 and `Jpair`, prove `C^T=-C`, `C^2=-I`. Define source `H_C` as a finite matrix sum of products of **literal original** `pairedTheta` operators, and `P(C)` as the degree-24 scalar polynomial in `H_C` acting on literal `Fermion 2`.
+3. **Source-original CAR rank one.** Prove Hermitian idempotency and `rank(P(C))=1` from original CAR and dimension `2^24` using 24 commuting involutions and a Clifford trace trick. Original irreducibility/theta CAR are already present; avoid dense matrix evaluation or a new spatial Spin representation.
+4. **Original gauge conjugation.** Use `pairedGaugeData.fermion_adjoint` from G4J, `G3A` color output/input orientation and source G4E unitary to prove `U_g H_C U_g† = H_{C(u,On)}` and the resulting projector covariance. Check the SU2 center using the source exterior action.
+5. **Projector connection and holonomy.** Establish smoothness of `P(C)` and the Kato differential connection; prove BFSS zero curvature by tensor trace, not by a numerical sample. Independently prove the exact source-paired 24-orbital deck path returns `+1`, using D1P as *source of a mathematical target*, not as Lean evidence. Prove global section existence and true vector gauge equivariance.
+6. **Original compactly supported test function.** Use `r=σ1(X)`, `Y=X-r u nᵀ`, frame-invariant `rho=||Y||²/(κ²r²)`, flat radial/tube cutoffs. Prove local smoothness on the spectral-gap region, deck descent, zero extension, `HasCompactSupport`, and the exact `TestFunction` constructor required by source `SmoothCore 2`. A separately qualified theorem should prove `pairedGaugeData.invariantCore` via pointwise source gauge covariance and `GaugeCore`'s `physicalSpace` definition.
+7. **Original form only after membership.** Apply the accepted `massless_coreForm_energy` theorem on the *actual typed test function*, not a formal scalar model. Show the normalized quadratic-form bound and match the original physical charge form. Operator domain `Dom(H)` is **not** required for a form-only argument; do not claim it. The prospective L6H5E8BF source-graph crosswalk is not accepted without its own strict gate.
+
+## Independent consumer and stop rule
+
+For each independent gate, the consumer must instantiate the **original `pairedAlgebraData : AlgebraData 2` and `pairedGaugeData`**, import only the chosen explicit target, assert the exact original carrier and theorem statement, and print allowed axioms. Require strict exact commit/source pins and artifact archiving. Two failed native type-check attempts without a new proof architecture trigger a stop and preserved negative finding. Do **not** rerun D1F massless-subtraction or D1K1A without source-typed corrections and demonstrated mathematical relevance. Do not modify original source, pinned toolchain, `main`, unified integration, or live RHOPF.
+
+## Physical interpretation guardrail
+
+A flat rank-one Berry line with **trivial** Z2 holonomy is globally trivial; its first Chern class cannot supply a nonzero Hopfion invariant. A topological physical BFSS excitation, if one exists, needs a distinct dynamical/topological order parameter. Even a successful original form `O(R^-2)` construction would address an escape/continuum channel, not a new stable Hopfion, Standard Model embedding, mass-gap claim or GUT.
