@@ -231,3 +231,20 @@ After two strict native proof REDs, the plan was changed—not retried blindly. 
 | CF-066 | D1G local boson/fermion cancellation establishes a Gauss-physical BFSS Weyl sequence or a 3D stable Hopf soliton | **OPEN / NOT SUPPORTED** | Need original gauge-physical normalizable cutoffs and full closed-form/domain, longitudinal, Berry and derivative bounds. Hobart–Derrick spatial theory not yet derived. No new Lean CI |
 
 **Governance:** Python calculations only; original BFSS and the live RHOPF source unmodified. D1F native proof remains unqualified after three strict REDs.
+
+
+## 2026-11-21 / D1H source-normalized gauge-covariant valley prescreen (Python only)
+
+[D1H Git mathematical checkpoint](./D1H_GAUGE_COVARIANT_VALLEY_PYTHON_PRESCREEN_2026_11_21.md) preserves source pins, exact gauge covariance, pure Majorana Gaussian covariance, SVD-tube Jacobian, selected Gaussian moments and missing Fock derivative. Owner-accessible 16-file reproducibility archive `bfss_su2_d1h_gauge_covariance_research_2026_11_21.zip`, SHA256 `f4749def49364eae243be97763bd6d8848d4a289ede88ee5bfea1463aec3c07e`. Full report SHA256 `b32dc0380f5b019311a049df62941bb9040d61a548eace133ba5b4d8974d0e58`. These are external conversation attachments, not Git repository files; all central formulas and limitations are recorded in Git. **D1H is Python/numerical and closed-form selected-Gaussian calculation, not a new accepted Lean or physical-spectrum theorem.**
+
+| ID | Narrow test or candidate | D1H disposition | Qualification ceiling |
+| --- | --- | --- | --- |
+| CF-067 | Original 48-Majorana rank-one fermionic Gaussian covariance with correct 16-real-zero-mode polarization can be pure | **POSITIVE FINITE-DIMENSIONAL TEST** | `C²=-I` to ≤3.2e−15; removing zero-mode complex structure FAILS purity (`||C²+I||_F=4`). Fock ray phase not constructed |
+| CF-068 | Unbroken SO2 color stabilizer necessarily kills all rank-one fast fermion ground rays | **COUNTEREXAMPLE CANDIDATE / NEGATIVE OBSTRUCTION CONTROL** | Source C commutes with stabilizer and expected charge zero via `tr Γ=0`, residual ≤1.8e−16. Connected stabilizer not an immediate obstruction; actual gauge-invariant full vector/domain OPEN |
+| CF-069 | Gauge covariance and frozen-Y energy only exist for a convenient diagonal color orientation | **REJECTED BY RANDOMIZED ORIENTATIONS** | 12 SO3 proper rotations plus SVD controls; exact one-particle covariance, source potential, fixed fermion expectation; no full Gauss constraint |
+| CF-070 | Ambient rank-one SVD tube measure can be treated as flat in transverse Gaussian higher-order estimates | **REJECTED** | Exact chart Jacobian `r¹⁰det(I₂−YᵀY/r²)`, 24 independent metric checks ≤3.3e−15 |
+| CF-071 | The source bosonic+frozen-Fock local selected Gaussian contribution necessarily remains +8/R² | **REJECTED IN SELECTED JACOBIAN-WEIGHTED MODEL** | Exact untruncated Gaussian moments give `E_selected≈−26√2/R⁵`. **Negative partial result is NOT total physical H**; Fock derivative/cutoffs excluded |
+| CF-072 | Gauge equivariance permits discarding all fermionic angular kinetic terms | **REJECTED** | Pure Fock-ray FS metric `g=(1/16)||dC||²` checked by 4×4 exact-state overlap; 8 spatial tangents ×2 + 2 color ×4 yield a nonzero **12/R²** phase-independent kinetic term at rank-one. Berry curvature numerically near zero, global phase not proven |
+| CF-073 | Present D1H prescreen establishes Gauss-physical normalizable Weyl sequence or 3D Hopfion stability | **OPEN / NOT ESTABLISHED** | Need explicit smooth many-body Fock lift, exact gauge action, tube/angular/radial cutoffs, charge-graph/form domain, full nonnegative Rayleigh quotient. No Lean R4, no physical claim |
+
+**Next decision:** D1I smooth equivariant Fock-vector/phase lift and complete domain-checked cutoffs; only re-enter Lean when a physically meaningful source-typed target survives. Main/live RHOPF unaffected.

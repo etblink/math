@@ -119,3 +119,8 @@ The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINA
 ## D1G Python-first commuting-valley physics falsification (2026-11-21)
 
 [Original-source bosonic Hessian, 48-Majorana spectrum, leading supersymmetric cancellation, Gaussian quartic and near-valley coefficient gap audit](./D1G_PYTHON_COMMUTING_VALLEY_ENERGETICS_AND_GAP_FALSIFICATION_2026_11_21.md) adds CF-061–CF-066. With exact source f=√2ε and Γ9, the rank-one valley has **16 transverse bosonic oscillators and 16 nonzero Fock frequencies both √2R**, canceling the leading fixed-background energies +8√2R/−8√2R. A selected transverse Gaussian has quartic expectation 7/R², **not** a Gauss-physical spectral theorem. Python bundle SHA256 `4b68099964de576cf26ce415f45c6e24ee514a030bfdb94224a145c471a07113` is delivered separately to owner. No D1F Lean proof, CI, original gamma/Fock, live RHOPF, or main changes.
+
+
+## D1H gauge-covariant valley covariance, SVD measure and Fock quantum metric (2026-11-21)
+
+[Read D1H source-pinned Python mathematical checkpoint](./D1H_GAUGE_COVARIANT_VALLEY_PYTHON_PRESCREEN_2026_11_21.md) (CF-067–CF-073). **Pure 48-Majorana Gaussian C** is SO3-equivariant and has zero connected stabilizer charge; exact SVD-tube Jacobian `r¹⁰det(I₂−YᵀY/r²)` changes the Gaussian transverse higher-order cancellation. Selected terms give `E_selected~−26√2/R⁵` **only before** the nonzero phase-independent Fock-vector kinetic contribution `12/R²`, radial/patch cutoffs and full Gauss-domain effects. No physical Weyl sequence or Hopf soliton established. Reproducibility ZIP SHA256 `f4749def49364eae243be97763bd6d8848d4a289ede88ee5bfea1463aec3c07e` is supplied to owner separately; D1F strict RED status unchanged.
