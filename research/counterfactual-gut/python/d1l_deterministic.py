@@ -4,6 +4,7 @@ For real Gaussian 8x2 Y: x=alpha*r*tr(YtY) ~ Gamma(8,1),
 w=((lambda1-lambda2)/(lambda1+lambda2))^2 ~ Beta(1,7/2), independent.
 """
 import sys,json,math
+from pathlib import Path
 import numpy as np
 from numpy.polynomial.legendre import leggauss
 from scipy.special import roots_jacobi,gammaln
@@ -62,5 +63,5 @@ def main():
     for nx in (96,160,240):
       experiments.append(compute(r,tube_power=p,nx=nx,nw=24,nr=64,Cbeta=C))
   print(json.dumps(experiments,indent=2))
-  with open('/mnt/data/d1l/d1l_deterministic_results.json','w') as f:json.dump(experiments,f,indent=2)
+  with open(Path(__file__).resolve().parent / 'd1l_deterministic_results.json','w') as f:json.dump(experiments,f,indent=2)
 if __name__=='__main__':main()
