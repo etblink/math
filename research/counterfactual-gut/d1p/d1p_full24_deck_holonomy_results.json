@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "carrier": "literal Gamma7Gamma8 source 24-orbital SU2 color wedge, no dense 2^24 Fock matrix",
+  "seeds": "Gamma8 four-plus/four-minus occupied orbitals",
+  "path": "u(t)=sin(t)e7+cos(t)e8; n(t)=Ocolor(t)e0; 0<=t<=pi",
+  "full24_deck_checks": [
+    {
+      "steps": 24,
+      "maximum_instantaneous_occupied_Berry_trace": 2.835490614721767e-16,
+      "maximum_orthonormal_frame_residual": 1.2560795438214745e-15,
+      "maximum_neighbor_wedge_overlap_phase": 0.0,
+      "sum_neighbor_overlap_phases": 0.0,
+      "endpoint_occupied_subspace_error": 5.359111990479061e-16,
+      "endpoint_occupied_wedge_overlap_real": 0.9999999999999982,
+      "endpoint_occupied_wedge_overlap_imag": 0.0,
+      "endpoint_deck_holonomy_error": 1.7763568394002505e-15
+    },
+    {
+      "steps": 96,
+      "maximum_instantaneous_occupied_Berry_trace": 3.1884944779807045e-16,
+      "maximum_orthonormal_frame_residual": 1.2563432503128625e-15,
+      "maximum_neighbor_wedge_overlap_phase": 0.0,
+      "sum_neighbor_overlap_phases": 0.0,
+      "endpoint_occupied_subspace_error": 5.359111990479061e-16,
+      "endpoint_occupied_wedge_overlap_real": 0.9999999999999982,
+      "endpoint_occupied_wedge_overlap_imag": 0.0,
+      "endpoint_deck_holonomy_error": 1.7763568394002505e-15
+    },
+    {
+      "steps": 384,
+      "maximum_instantaneous_occupied_Berry_trace": 3.439588690752529e-16,
+      "maximum_orthonormal_frame_residual": 1.258366811370333e-15,
+      "maximum_neighbor_wedge_overlap_phase": 0.0,
+      "sum_neighbor_overlap_phases": 0.0,
+      "endpoint_occupied_subspace_error": 5.359111990479061e-16,
+      "endpoint_occupied_wedge_overlap_real": 0.9999999999999982,
+      "endpoint_occupied_wedge_overlap_imag": 0.0,
+      "endpoint_deck_holonomy_error": 1.7763568394002505e-15
+    }
+  ],
+  "all_plus_wrong_seeds_negative_control": {
+    "steps": 96,
+    "maximum_instantaneous_occupied_Berry_trace": 3.1884944779807045e-16,
+    "maximum_orthonormal_frame_residual": 1.25938000904174e-15,
+    "maximum_neighbor_wedge_overlap_phase": 0.0,
+    "sum_neighbor_overlap_phases": 0.0,
+    "endpoint_occupied_subspace_error": 2.82842712474619,
+    "endpoint_occupied_wedge_overlap_real": 0.0,
+    "endpoint_occupied_wedge_overlap_imag": 0.0,
+    "endpoint_deck_holonomy_error": 1.0
+  },
+  "proof_perspective": "exact \u03937\u03938 source block and source orbital matrix give endpoint A=4 positive SO2 blocks; occupied Berry trace vanishes along entire explicit path",
+  "limitation": "Real/complex 24-orbital exterior calculation, not a compiled original Fermion 2 Kato transport theorem"
+}
