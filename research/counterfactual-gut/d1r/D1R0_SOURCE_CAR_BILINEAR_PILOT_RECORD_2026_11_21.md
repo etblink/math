@@ -34,3 +34,18 @@ Only the workflow's static text check was changed from `pairedGaugeData.fermion`
 If D1R0 qualifies: (1) prove finite coefficient pushforward for the original source 48×48 theta-quadratic using the two-theta covariance; (2) transport through the **source** `originalCARQuadratic`, prove skew-C self-adjointness and polynomial projector covariance; (3) prove rank-one trace in original carrier; (4) only then Kato section and `pairedGaugeData.invariantCore` compact support and normalized form bound. Do not import prospectively unqualified Clifford-equivalence modules merely because their source files exist.
 
 **Stop rule:** do not count an in-progress run or RED as a mathematical theorem. After two native Lean REDs on a proof target, stop and change proof architecture; preserve all negative knowledge. D1F and D1K1A strict RED histories remain frozen.
+
+## R2 — native strict RED, exact first-causal evidence
+
+Run [#44958805038](https://github.com/etblink/math/actions/runs/44958805038), tested commit `08054d640561aab0815da86d93d102ba58970bea`, job `137012773505`, conclusion **FAILURE**. Original source pinned preflight PASS; Lean 4.34.1/Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612 restoration PASS. First native Lean error `D1R0OriginalCARGaugeBilinearPilot.lean:77:47: unsolved goals`:
+
+```lean
+⊢ (-Complex.I / 2) • ∑ x, ∑ x_1,
+    0 • (M.theta x.1 x.2 * M.theta x_1.1 x_1.2) = 0
+```
+
+The original `simp [originalCARQuadratic]` did not simplify nested zero scalar multiples and sums. The first two source theorems COMPILED with permitted axioms only: `originalThetaCAR` and `originalThetaPair_covariant` both report `[propext, Classical.choice, Quot.sound]`. Third `originalCARQuadratic_zero` has **sorryAx** and is NOT accepted. Cold build stopped; independent consumer was NOT RUN. This is a tactic failure, not a CAR counterexample.
+
+Native artifact [#14729665393](https://github.com/etblink/math/actions/runs/44958805038/artifacts/14729665393) preserved unconditionally: GitHub digest `sha256:7d896e1c24da07e67a42e8618d47c6b0491ceddb7d97f3733e77357a9d26e8c0`, size 10,759 bytes.
+
+**R3 controlled second-native attempt:** change only the third theorem proof to explicitly unfold `originalCARQuadratic`, apply `zero_smul` to the inner terms, and close the finite zero sums. Do not change the successful roots, consumer, dependency pins or workflow. If the second NATIVE compilation fails, STOP and preserve negative knowledge instead of blindly launching R4. Until all independent checks pass D1R0 is RED.
