@@ -99,3 +99,8 @@ The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINA
 ## D1F Lean microgate launched (2026-11-21)
 
 [D1F original massless Yukawa/Fock proof and evidence note](./D1F_ORIGINAL_MASSLESS_YUKAWA_FOCK_MICROGATE_2026_11_21.md) links the exact-source Lean candidate, independent original SU(2) consumer, and a **branch-only strict workflow**. Tested SHA: `deff085b1c26b606f81501a68eba50d81c56aedb`; [run #44934836209](https://github.com/etblink/math/actions/runs/44934836209) launched, **not presumed GREEN**. No original source, live RHOPF, main, or pins changed; the D1F candidate does not assert a physical hopfion or GUT.
+
+
+## D1F R1/R2 RED preservation and source-donor stop (2026-11-21)
+
+[Strict R1/R2 proof-process failure and donor-based next route](./D1F_R1_R2_STRICT_REDS_AND_SOURCE_DONOR_DECISION_2026_11_21.md) preserves [R1 #44934836209](https://github.com/etblink/math/actions/runs/44934836209) and [R2 #44935867919](https://github.com/etblink/math/actions/runs/44935867919). Both reach pinned native source compilation and fail at finite-sum/complex-scalar normalization; R2 has `sorryAx` in two downstream roots. **D1F UNQUALIFIED; two-RED stop rule active.** Do not launch a blind R3. Reuse the actually compiled upstream `FermionQuantization.deformedFermionField_quantized` and quantization-linearity subtraction instead.
