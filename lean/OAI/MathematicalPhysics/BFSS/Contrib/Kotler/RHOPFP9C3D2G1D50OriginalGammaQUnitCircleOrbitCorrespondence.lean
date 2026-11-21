@@ -22,6 +22,9 @@ noncomputable section
 
 open FCP.RHOPFP9C3D2G1C1
 open FCP.RHOPFP9C3D2G1D31
+open FCP.RHOPFP9C3D2G1D38
+open FCP.RHOPFP9C3D2G1D40
+open FCP.RHOPFP9C3D2G1D41
 open FCP.RHOPFP9C3D2G1D48
 open FCP.RHOPFP9C3D2G1D49
 
@@ -49,6 +52,12 @@ theorem relationalSourceQUnitCircleRelated_iff_euclidean
       relationalEuclideanUnitCircleRelated
         (relationalSourceQUnitEuclideanUnitHomeomorph x)
         (relationalSourceQUnitEuclideanUnitHomeomorph y) := by
+  let : NormedAddCommGroup RelationalSourceComplexFour :=
+    relationalSourceComplexFourNormedAddCommGroup
+  let : NormedSpace ℂ RelationalSourceComplexFour :=
+    relationalSourceComplexFourNormedSpace
+  let : InnerProductSpace ℂ RelationalSourceComplexFour :=
+    relationalSourceComplexFourInnerProductSpace
   constructor
   · rintro ⟨z, hz⟩
     refine ⟨z, ?_⟩
