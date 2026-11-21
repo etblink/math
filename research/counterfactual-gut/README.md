@@ -114,3 +114,8 @@ The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINA
 ## D1F R3 strict RED and stop rule (2026-11-21)
 
 [R3 first-causal diagnosis and staged-proof decision](./D1F_R3_STRICT_RED_AND_STAGED_RECOVERY_2026_11_21.md) verifies [run #44937500313](https://github.com/etblink/math/actions/runs/44937500313), tested at `6d2a9978005cac7f5cddf0bc5c5ed1fb9619a37c`. Original source/toolchain/dependencies PASS; new Lean module RED at frequency-subtraction helper plus source zero-at-origin simplification and local namespace projection errors. D1F public downstream roots carry `sorryAx`, consumer not reached. **No R4 until individual helper proofs have a source-exact validation plan.** Ledger adds CF-059/CF-060; do not infer physical falsification.
+
+
+## D1G Python-first commuting-valley physics falsification (2026-11-21)
+
+[Original-source bosonic Hessian, 48-Majorana spectrum, leading supersymmetric cancellation, Gaussian quartic and near-valley coefficient gap audit](./D1G_PYTHON_COMMUTING_VALLEY_ENERGETICS_AND_GAP_FALSIFICATION_2026_11_21.md) adds CF-061–CF-066. With exact source f=√2ε and Γ9, the rank-one valley has **16 transverse bosonic oscillators and 16 nonzero Fock frequencies both √2R**, canceling the leading fixed-background energies +8√2R/−8√2R. A selected transverse Gaussian has quartic expectation 7/R², **not** a Gauss-physical spectral theorem. Python bundle SHA256 `4b68099964de576cf26ce415f45c6e24ee514a030bfdb94224a145c471a07113` is delivered separately to owner. No D1F Lean proof, CI, original gamma/Fock, live RHOPF, or main changes.

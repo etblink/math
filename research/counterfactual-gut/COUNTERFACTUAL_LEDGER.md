@@ -215,3 +215,19 @@ After two strict native proof REDs, the plan was changed—not retried blindly. 
 | --- | --- | --- | --- |
 | CF-059 | R3 source-donor subtraction implementation qualifies the original massless Fock quantization bridge | **RED — UNQUALIFIED** | Native helper `quantizeFrequency_sub` fails normalization; `masslessField_zero` unresolved; namespace/field mistakes, `sorryAx`, consumer not reached |
 | CF-060 | R3 failure disproves the source algebraic massless-interaction identity or original BFSS physics | **NOT SUPPORTED** | All failures are Lean proof/interface errors; frozen original sources compile. Mathematical bridge remains a candidate; source donor theorem still accepted in its own scope |
+
+
+## 2026-11-21 / D1G Python-first commuting-valley original-BFSS tests (no new Lean)
+
+[Full D1G matrix/Hessian/fermion/Monte Carlo evidence memorandum](./D1G_PYTHON_COMMUTING_VALLEY_ENERGETICS_AND_GAP_FALSIFICATION_2026_11_21.md). User-download source/results bundle `bfss_su2_valley_python_research_2026_11_21.zip` SHA256 `4b68099964de576cf26ce415f45c6e24ee514a030bfdb94224a145c471a07113` (not hosted in GitHub). Original source pins, exact formulas, test sizes, and limits documented in memo. **All conclusions remain strictly local finite-dimensional/harmonic/selected-Gaussian statements**; no physical H theorem or Lean qualification.
+
+| ID | Candidate | D1G disposition | Evidence / limit |
+| --- | --- | --- | --- |
+| CF-061 | Original massless BFSS quartic source potential forces a growing effective barrier along SU2 commuting valleys | **REJECTED AS AUTOMATIC** | Original source Hessian has 16 transverse modes of frequency √2R; source Fock quadratic has 16 matching frequencies, E_B^(0)=+8√2R and E_F(min)=−8√2R; leading cancellation. Six radii, 10 random orientations |
+| CF-062 | A transverse oscillator Gaussian can show an unavoidable positive growing quartic correction | **REJECTED IN FIXED-ORIENTATION GAUSSIAN TEST** | Exact selected quartic expectation 7/R², Monte Carlo 40k samples at each R∈{2,5,10,20,50}; Gaussian shape derivative partial term 1/R². Not a gauge-physical trial-state spectral bound |
+| CF-063 | Pointwise full-rank Yukawa invertibility yields a uniform positive minimum one-particle frequency | **REJECTED** | For diag(R,ε,ε), min positive iK eigenfrequency numerically ≈2√2 ε²/R, full rank yet tends to 0; does not prove a small complete-H eigenenergy |
+| CF-064 | An improper O3 color reflection may be treated as extra SU2 gauge covariance | **REJECTED** | Proper SO3 covariance passes, improper O3 K transforms with pseudotensor sign; do not upgrade to physical symmetry |
+| CF-065 | Massive F(0) frequency 3/2 means original massless F(0) has a spectral gap | **REJECTED** | Source K_massless(0)=0; massive and massless are different models |
+| CF-066 | D1G local boson/fermion cancellation establishes a Gauss-physical BFSS Weyl sequence or a 3D stable Hopf soliton | **OPEN / NOT SUPPORTED** | Need original gauge-physical normalizable cutoffs and full closed-form/domain, longitudinal, Berry and derivative bounds. Hobart–Derrick spatial theory not yet derived. No new Lean CI |
+
+**Governance:** Python calculations only; original BFSS and the live RHOPF source unmodified. D1F native proof remains unqualified after three strict REDs.
