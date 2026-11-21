@@ -496,3 +496,16 @@ After two strict native proof REDs, the plan was changed—not retried blindly. 
 | CF-168 | D1S1 must create a new abstract Spin(48) action or change the original gauge convention to proceed | **REFUTED MATHEMATICALLY**: exact source G3A `R_g B A=adjointCoefficient g A B`, D1S0 source bilinear gauge identity, and a finite scalar sum rearrangement yield target transport `K^g=T_g K T_gᵀ` on original 48-index `FrequencyMatrix 2`. Prior D1S1 Python negative controls reject transposed-color action. Lean statement/proof remain to be implemented and independently compiled | Bounded proof design only; no D1S1 CI yet |
 
 **Project Lead acceptance:** promote D1S0 R1, freeze exact bytes, preserve the three D1R0 historical REDs and their artifacts; advance to D1S1 *source coefficient algebra* without a speculative whole-sector/spectrum gate. Main, unified integration, original BFSS source, RHOPF and toolchain unchanged.
+
+
+## 2026-11-21 / D1S1 first source-exact frequency gauge-transport pilot launched
+
+[Exact D1S1 source/consumer/CI launch record](./d1s/D1S1_R1_STRICT_PILOT_LAUNCH_2026_11_21.md). **Status: NOT QUALIFIED**, run [#44963966993](https://github.com/etblink/math/actions/runs/44963966993) started on exact source commit `b25ce884e01afd12106863934c58c18f53ff7331`.
+
+| ID | Adversarial target | Observed evidence | Qualification ceiling |
+| --- | --- | --- | --- |
+| CF-169 | A new complex quadratic/Spin(48) action is required to state original SU2 frequency covariance | **REFUTED AT THE SOURCE-INTERFACE LEVEL**: D1S1 candidate defines only `sourceTransportFrequency` on the literal real original `FrequencyMatrix 2` and targets original `pairedAlgebraData.quantizeFrequency K` on original `Fermion 2`. Its coefficient map uses G3A's input→output color convention. Strict source/consumer pending. | No native conclusion until exact CI qualifies |
+| CF-170 | A finite-sum proof may safely commute ordered Majorana operators | **REJECTED**: the new proof explicitly reorders **scalar finite sums only**; the ordered theta composition is held fixed and transported by accepted D1S0 `originalThetaPair_covariant`. Abstract four-sum lemma is isolated, then converted to source color and original quadratic action. | The proposed Lean proof may yet fail on elaboration/tactics; no implied strict GREEN |
+| CF-171 | A static source audit or Python success is equivalent to Lean proof verification | **FALSE**: no local Lean toolchain is available. Native strict R1 [#44963966993](https://github.com/etblink/math/actions/runs/44963966993) is the only compilation attempt; its exact artifact/axiom checks are not yet verified. Python 48-label and reduced-Fock tests rerun PASS with negative transposed-color control `≥16.59`. | Preserve any RED and exact logs, strict source+consumer required |
+
+**Research boundary:** D1S0 exact [#44961701135](https://github.com/etblink/math/actions/runs/44961701135) remains GREEN; D1R0 historical REDs remain FROZEN. D1S1 seeks only algebraic original-source gauge transport, no Gaussian rank-one/physical smooth-core/spectral theorem.
