@@ -104,3 +104,8 @@ The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINA
 ## D1F R1/R2 RED preservation and source-donor stop (2026-11-21)
 
 [Strict R1/R2 proof-process failure and donor-based next route](./D1F_R1_R2_STRICT_REDS_AND_SOURCE_DONOR_DECISION_2026_11_21.md) preserves [R1 #44934836209](https://github.com/etblink/math/actions/runs/44934836209) and [R2 #44935867919](https://github.com/etblink/math/actions/runs/44935867919). Both reach pinned native source compilation and fail at finite-sum/complex-scalar normalization; R2 has `sorryAx` in two downstream roots. **D1F UNQUALIFIED; two-RED stop rule active.** Do not launch a blind R3. Reuse the actually compiled upstream `FermionQuantization.deformedFermionField_quantized` and quantization-linearity subtraction instead.
+
+
+## D1F R3 new proof architecture (2026-11-21)
+
+[Source-donor R3 memorandum](./D1F_R3_SOURCE_DONOR_SUBTRACTION_MICROGATE_2026_11_21.md) documents replacement of the two failed direct double-sum tactics with the **compiled** original massive-plus-interaction Fock identity evaluated at `X` and `0`. R3 commit `6d2a9978005cac7f5cddf0bc5c5ed1fb9619a37c` and [run #44937500313](https://github.com/etblink/math/actions/runs/44937500313) **pending at launch**; proof must not be claimed qualified without strict native+independent consumer and allowed-axiom reports. CF-058 added append-only.

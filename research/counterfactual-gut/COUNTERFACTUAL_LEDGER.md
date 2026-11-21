@@ -194,3 +194,12 @@ Primary detailed source/math evidence: [D1C source Yukawa coefficient determinan
 | ID | Narrow hypothesis / process claim | Disposition | Required evidence |
 | --- | --- | --- | --- |
 | CF-057 | R2's direct simp rewrite proves massless 48-Majorana Fock quantization | **REJECTED AS PROOF PROCEDURE** | Native source RED at exact `44:50`; unsupported double-sum negation normalization; two downstream `sorryAx`. Adopt source-donor subtraction approach and independent consumer |
+
+
+## 2026-11-21 / D1F R3 original-source donor architecture (pending)
+
+After two strict native proof REDs, the plan was changed—not retried blindly. The [R3 source-donor proof memorandum](./D1F_R3_SOURCE_DONOR_SUBTRACTION_MICROGATE_2026_11_21.md) ties four small helpers (original frequency quantization subtractivity, massless field zero at the origin, mass-term constancy, and difference of the combined field at `X` and `0`) to the already-qualified `deformedFermionField_quantized` source theorem. New tested SHA: `6d2a9978005cac7f5cddf0bc5c5ed1fb9619a37c`; [strict run #44937500313](https://github.com/etblink/math/actions/runs/44937500313) **IN PROGRESS AT ENTRY**, not promoted. Public theorem statements and independent original paired-SU2 consumer unchanged.
+
+| ID | Claim | Status | Gate |
+| --- | --- | --- | --- |
+| CF-058 | A massless source Fock field can be derived from the accepted massive source theorem through subtraction instead of failed direct finite-sum algebra | **NEW SOURCE-DONOR CANDIDATE / NOT LEAN-QUALIFIED** | R3 exact native+independent source consumer and allowed-axiom audit; preserve any failure's first causal helper and artifact |
