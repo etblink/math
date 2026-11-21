@@ -97,3 +97,19 @@ Detailed source and arguments: [D1A rank-three topology, orientation invariants,
 | CF-027 | A justified source-operator spectral-gap locus may carry useful topology even when its ungapped parameter space has π₃=0 | **CONDITIONAL / OPEN** | Gap exclusions can alter topology; no source-normalized gapped physical family with a protected index and 3+1D meaning has been identified. Next inspect existing source operators and natural domains, preserving P1–P4 controls |
 
 **Decision:** Keep D1B active for the **original-source spectral-gap and observable-typing question**, not for a new decorative Hopf field. No new CI, Lean file, or physical conclusion.
+
+
+## 2026-11-21 / D1B source Gram–Fock scalar kernel and physical low-radius test (append-only)
+
+Evidence: [D1B original Gram/Fock operator algebra and spectral no-go](./D1B_ORIGINAL_GRAM_FOCK_SCALAR_KERNEL_AND_ZERO_GAP_AUDIT_2026_11_21.md). **Source-derived mathematics, NOT a new native Lean or physical theorem.**
+
+| ID | Narrow counterfactual proposition | Disposition | Evidence, precise limitations and bounded follow-up |
+| --- | --- | --- | --- |
+| CF-028 | Traceless symmetric real source 16×16 inputs produce nontrivial original Gram–Fock operators | **REJECTED for JOIN0A family** | Original CAR yields Q(Sym J)=(3/2)tr J·I, and original Clifford/Gram yields tr J_B=tr B·tr G. If B is symmetric traceless, K_B(X)=0 for every X; includes each original symmetric traceless Γ_i |
+| CF-029 | All 256 real coefficient directions are independently observable in the JOIN0A field | **REJECTED** | At least 135-dimensional traceless-symmetric subspace is a common kernel; coefficient dependence factors through one trace scalar plus at most 120 skew directions. No claim about independence of skew directions or full BFSS degrees |
+| CF-030 | Normalized source Gram–Fock field with real skew coefficient has source-compatible self-adjointness | **SOURCE-REFERENCE / mathematical implication** | JOIN0B1/2/3 give transpose/star transport; for Bᵀ=−B, K_B* =−K_B, so A_B=iK_B/(1+trG) is self-adjoint. Not a self-adjoint Hamiltonian or a nonzero index |
+| CF-031 | Normalized source Gram–Fock multiplication is everywhere invertible or uniformly bounded away from 0 on entire original physical Hilbert space | **REJECTED for this multiplier** | Source norm bound ‖A_B(X)‖≤C_B·‖X‖²/(1+‖X‖²); invariant Fock vacuum times normalized radial bumps near X=0 gives unit gauge-fixed states with ‖T_B ψ_ε‖≤C_B ε². This rules out a uniform lower bound for this multiplier, **not** the actual kinetic BFSS Hamiltonian, and not necessarily an isolated-zero band gap |
+| CF-032 | Choosing traceless symmetric Γ_i as source coefficients can generate a protected chiral sector through K_B | **REJECTED as stated** | K_{Γ_i}≡0, even though the original Γ_i remain essential in actual supercharges and full Spin(9) structure. Proposed "gamma vector gap" was an artifact of selecting an operator whose CAR contraction cancels |
+| CF-033 | A skew gamma-bivector field or original source Yukawa term could distinguish surviving spectral / orientation observables | **CONDITIONAL / OPEN** | Source actual gauge-covariant skew Fock family exists; its pointwise gap locus and original physical-Hamiltonian relevance remain unproved. Next compare historical Yukawa/charge operators at Gram-equal, W-opposite matrices and identify full physical symmetry; no new term is authorized |
+
+**Decision:** Do not repeat symmetric-coefficient spectrum experiments. D1C should test source-original fermion/differential Hamiltonian response, full physical symmetries, and genuinely discriminating observables. Full BFSS hopfion and GUT hypotheses remain unestablished.

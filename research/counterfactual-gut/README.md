@@ -74,3 +74,8 @@ Use [COUNTERFACTUAL_LEDGER.md](./COUNTERFACTUAL_LEDGER.md) as the single entry p
 ## D1A source-operator update (2026-11-21)
 
 [D1A rank-three topology and original Fock operator](./D1A_RANK_THREE_ORBIT_TOPOLOGY_AND_ORIGINAL_FOCK_OPERATOR_2026_11_21.md) extends D0/D1: even excluding rank-deficient 9×3 matrices gives **π₃ of the ordinary SO(3) quotient equal to zero**; the quotient has **π₂=ℤ₂**. The original Gram invariant is insufficient to distinguish color orientation (a cubic 3-form `W` supplies the missing datum); genuine original gauge-covariant Gram/Fock operators already exist in JOIN0A but their physical gap and domain implications are unproved. The [append-only ledger](./COUNTERFACTUAL_LEDGER.md) adds CF-022–CF-027. This is a counterfactual falsification result, **not** a physical Hopf or GUT theorem.
+
+
+## D1B source Fock spectral classification (2026-11-21)
+
+[D1B algebra and near-origin spectrum](./D1B_ORIGINAL_GRAM_FOCK_SCALAR_KERNEL_AND_ZERO_GAP_AUDIT_2026_11_21.md) derives directly from inspected original CAR and Gamma9 interfaces that every **traceless symmetric** real 16×16 source coefficient gives **zero** JOIN0A Gram–Fock operator; the symmetric trace component is scalar and skew coefficients give the genuinely self-adjoint normalized fields. The existing source norm bound and genuine gauge-invariant Fock vacuum yield normalized **physical gauge-fixed radial** wavefunctions near the bosonic origin with arbitrarily small multiplier image: **zero approximate spectrum for this bounded field**, not an assertion about the true BFSS Hamiltonian's mass gap. [Ledger CF-028–CF-033](./COUNTERFACTUAL_LEDGER.md) records the positive and negative knowledge with scope limits.
