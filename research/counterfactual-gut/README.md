@@ -94,3 +94,8 @@ The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINA
 ## D1E recovered acceptance evidence and new first-Chern obstruction (2026-11-21)
 
 [D1E historical strict-green recovery and rank-three Fock-band topology audit](./D1E_HISTORICAL_GREENS_AND_FOCK_BAND_CHERN_VETO_2026_11_21.md) corrects D1D's dated **prospective** language using *exact original-source bytes and native+independent-green receipts*: [G4K9D / massless source #42325087575](https://github.com/etblink/math/actions/runs/42325087575), [M5BE0 physical H #43493125150](https://github.com/etblink/math/actions/runs/43493125150), [M5BF0 physical source graph #43498649514](https://github.com/etblink/math/actions/runs/43498649514). Both source-original smooth-core and closed physical Hamiltonian interfaces are qualified **within their separate scopes**, not jointly a new spectral conclusion. On the ordinary full-rank SU2 gauge quotient, the natural 24-dimensional negative-band **first Chern class is necessarily zero** since H²(Gr⁺₃(ℝ⁹);ℤ)=0. The ledger adds [CF-049–CF-055](./COUNTERFACTUAL_LEDGER.md), retaining all old findings.
+
+
+## D1F Lean microgate launched (2026-11-21)
+
+[D1F original massless Yukawa/Fock proof and evidence note](./D1F_ORIGINAL_MASSLESS_YUKAWA_FOCK_MICROGATE_2026_11_21.md) links the exact-source Lean candidate, independent original SU(2) consumer, and a **branch-only strict workflow**. Tested SHA: `deff085b1c26b606f81501a68eba50d81c56aedb`; [run #44934836209](https://github.com/etblink/math/actions/runs/44934836209) launched, **not presumed GREEN**. No original source, live RHOPF, main, or pins changed; the D1F candidate does not assert a physical hopfion or GUT.

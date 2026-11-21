@@ -165,3 +165,12 @@ Primary detailed source/math evidence: [D1C source Yukawa coefficient determinan
 | CF-055 | Original smooth-core integrand equality automatically extends term-by-term to all Dom(H) | **REJECTED AS AUTOMATIC; JOIN OPEN** | Separate exact green modules establish core integral and closed H on natural domain, but no checked single consumer proves termwise unbounded-operator equality on Dom(H). A graph/form-closure joining theorem would require explicit topology and estimates |
 
 **Next decision:** avoid repeated CI for already qualified K9D/BE/BF. Keep the counterfactual branch documentation-only; draft a minimal source-exact massless coefficient/Fock microgate, then evaluate separately from source Hamiltonian spectral physics.
+
+
+## 2026-11-21 / D1F original massless Fock Lean microgate
+
+[D1F source/consumer/CI memorandum](./D1F_ORIGINAL_MASSLESS_YUKAWA_FOCK_MICROGATE_2026_11_21.md) records the exact source carrier, bounded proof targets and acceptance criteria. The Lean candidate and independent paired-SU2 consumer were committed, then a branch-only workflow was added. **First tested commit `deff085b1c26b606f81501a68eba50d81c56aedb`**, GitHub Actions [run #44934836209](https://github.com/etblink/math/actions/runs/44934836209), **IN PROGRESS at this evidence entry; not a qualified proof**. This status must be updated only after checking source and consumer reports.
+
+| ID | Proposition | Status | Positive and negative knowledge |
+| --- | --- | --- | --- |
+| CF-056 | Original BFSS massless frequency coefficient `F(X)-F(0)` quantizes to the genuine `deformedFermionField 1 0 X` on source Fock | **LEAN CANDIDATE / STRICT GATE PENDING** | Source and independent original paired SU2 consumer exist on isolated branch. Genuine original `FermionQuantization` and `frequency_bracket_contraction` reused. Requires strict successful source+consumer and no new axioms; no physics inference from draft code |
