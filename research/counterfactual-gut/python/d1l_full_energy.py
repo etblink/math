@@ -6,6 +6,7 @@ SVD metric/Jacobian, analytic Wishart control variates, Sobol gaussian samples.
 Only a variational *model* until literal source GaugeData/SmoothCore qualification.
 """
 import json, math
+from pathlib import Path
 import numpy as np
 from scipy.integrate import quad
 from scipy.special import expit, ndtri
@@ -144,6 +145,6 @@ def run():
       "Cbeta":C,"asymptotic":K,"R_scan":base,"width_scan_R40":offsets,
       "tube_scan_R16":tube,"qmc_convergence_R20":checks,
       "warning":"Do not use QMC for tubes with small surviving Gaussian mass; see deterministic eigenvalue quadrature."}
-    with open('/mnt/data/d1l/d1l_results.json','w') as f:json.dump(out,f,indent=2)
+    with open(Path(__file__).resolve().parent / 'd1l_results.json','w') as f:json.dump(out,f,indent=2)
     print(json.dumps(out,indent=2))
 if __name__=='__main__':run()
