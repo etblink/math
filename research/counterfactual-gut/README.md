@@ -69,3 +69,8 @@ Use [COUNTERFACTUAL_LEDGER.md](./COUNTERFACTUAL_LEDGER.md) as the single entry p
 ## First bounded test (2026-11-21)
 
 [D0 / D1 original-source configuration topology and Fock index audit](./D0_D1_ORIGINAL_CONFIGURATION_TOPOLOGY_AND_FOCK_INDEX_AUDIT_2026_11_21.md) and the appended [ledger entries CF-016–CF-021](./COUNTERFACTUAL_LEDGER.md) document two narrow obstructions (ordinary bosonic orbit-space contractibility; zero full finite even/odd Fock Fredholm index), plus the **positive** original source supercharge/gauge/Fock operator interface. Both obstructions are carefully distinguished from a potential gauge-equivariant/gapped-sector topology or an index on the infinite-dimensional physical Hilbert space. **No new Lean or physical theorem is claimed.**
+
+
+## D1A source-operator update (2026-11-21)
+
+[D1A rank-three topology and original Fock operator](./D1A_RANK_THREE_ORBIT_TOPOLOGY_AND_ORIGINAL_FOCK_OPERATOR_2026_11_21.md) extends D0/D1: even excluding rank-deficient 9×3 matrices gives **π₃ of the ordinary SO(3) quotient equal to zero**; the quotient has **π₂=ℤ₂**. The original Gram invariant is insufficient to distinguish color orientation (a cubic 3-form `W` supplies the missing datum); genuine original gauge-covariant Gram/Fock operators already exist in JOIN0A but their physical gap and domain implications are unproved. The [append-only ledger](./COUNTERFACTUAL_LEDGER.md) adds CF-022–CF-027. This is a counterfactual falsification result, **not** a physical Hopf or GUT theorem.

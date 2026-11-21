@@ -81,3 +81,19 @@ Full evidence and mathematical arguments: [D0–D1 source-topology and fermionic
 | CF-021 | A 3D Hopf charge can be equated directly with a Callias index or 4D chiral-family count | **REJECTED as automatic** | Hopf class uses (n:S^3\to S^2); a standard 3D Callias index uses an actual Fredholm Dirac/mass operator and asymptotic data on (S^2_\infty). Four-dimensional Weyl chirality is a further independent requirement. Test a source-derived operator and an exact index relation |
 
 **Decision:** **D0 narrow direct route STOPPED. D1 stays OPEN with a concrete source/interface target; prior P1–P4 escape and original gamma-AIII cancellation remain binding controls.** Next work is D1A source-operator typing, not another unsourced topological toy or a claimed GUT.
+
+
+## 2026-11-21 / D1A rank-three and original-operator audit (append-only)
+
+Detailed source and arguments: [D1A rank-three topology, orientation invariants, and source-Fock comparator](./D1A_RANK_THREE_ORBIT_TOPOLOGY_AND_ORIGINAL_FOCK_OPERATOR_2026_11_21.md). **This is not a new native Lean proof or physical finding.**
+
+| ID | Narrow claim / tested hypothesis | Disposition | Evidence and decision |
+| --- | --- | --- | --- |
+| CF-022 | Excluding rank-deficient bosonic matrices produces a nonzero 3D Hopf homotopy | **REJECTED for ordinary quotient** | Full-rank 9×3 matrices / standard adjoint SO(3) deformation-retract to oriented Gr₃(ℝ⁹); Stiefel bundle exact sequence gives π₃=0. π₂=ℤ₂ is genuine but different topology. Source SU2-adjoint ≅ SO3 surjectivity must be separately connected to exact Lean declaration before native qualification |
+| CF-023 | Nine-by-nine spatial Gram alone distinguishes physical SU(2) color orbits | **REJECTED** | Gram classifies O(3) orbits, not all SO(3) rank-three orbits. Exact reflection pair has same G but W₁₂₃=±1. The pair (G,W) separates color orbits on the standard adjoint model |
+| CF-024 | A rank-three-only configuration restriction is physically harmless in original BFSS | **OBSTRUCTION** | For SU2 the commuting bosonic matrices have rank≤1 color configuration; rank-three restriction discards the classical commutator-zero valleys. Source-dynamical exclusion not provided; measure-zero strata and full physical operator-domain questions remain separate |
+| CF-025 | An existing original gamma/Fock operator has nontrivial source-typed SU2 gauge covariance | **SOURCE-REFERENCE; POSITIVE** | Existing JOIN0A/ BIL0C/VLY0B source constructs K_B(X) on literal original Boson2 and Fermion2, proves pointwise gauge covariance. It depends only on Gram and hence cannot distinguish orientation-reflection witness at a fixed Fock vector. FullL2, domain, gap and physical charges OPEN |
+| CF-026 | Orientation-sensitive 3-form W is a protected physical Hopf or particle charge | **REJECTED as automatic; OPEN for relevance** | W is a cubic gauge-invariant spatial 3-form, not a spatial Spin9 scalar or conserved quantity. An orientation component can vanish by rotating the plane without rank loss. Only source-derived operator/spectral observables could make it relevant |
+| CF-027 | A justified source-operator spectral-gap locus may carry useful topology even when its ungapped parameter space has π₃=0 | **CONDITIONAL / OPEN** | Gap exclusions can alter topology; no source-normalized gapped physical family with a protected index and 3+1D meaning has been identified. Next inspect existing source operators and natural domains, preserving P1–P4 controls |
+
+**Decision:** Keep D1B active for the **original-source spectral-gap and observable-typing question**, not for a new decorative Hopf field. No new CI, Lean file, or physical conclusion.
