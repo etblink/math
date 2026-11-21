@@ -57,10 +57,8 @@ theorem relationalSourceQUnitCircleMulAction_smul_eq
         relationalRangeCoordinateDotSelf x.coordinates = 1} :=
       relationalSourceQUnitCircleMulAction;
     z • x = relationalSourceQUnitCircleAction z x := by
-  letI : MulAction Circle
-      {x : RelationalSourceComplexFour //
-        relationalRangeCoordinateDotSelf x.coordinates = 1} :=
-    relationalSourceQUnitCircleMulAction
+  change relationalSourceQUnitCircleAction z x =
+    relationalSourceQUnitCircleAction z x
   rfl
 
 /-- Locally installed standard MulAction has exactly the D49
@@ -72,9 +70,8 @@ theorem relationalEuclideanUnitCircleMulAction_smul_eq
       {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} :=
       relationalEuclideanUnitCircleMulAction;
     z • y = relationalEuclideanUnitCircleAction z y := by
-  letI : MulAction Circle
-      {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} :=
-    relationalEuclideanUnitCircleMulAction
+  change relationalEuclideanUnitCircleAction z y =
+    relationalEuclideanUnitCircleAction z y
   rfl
 
 #print axioms relationalSourceQUnitCircleMulAction
