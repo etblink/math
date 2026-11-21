@@ -1,25 +1,25 @@
 # D1K0 — Original Fock gauge action, Berry-flat lift and direct massless expectation
 
-**Date:** 2026-11-21. **Branch:** \`research/bfss-hopfion-gut-counterfactuals-20261121\`.
-**Parent:** [D1J](./D1J_SOURCE_TO_HAMILTONIAN_BRIDGE_AUDIT_2026_11_21.md), verified head \`ba2fd0f506230a3e7043f70cc0830e7f5ffb3bd2\`.
+**Date:** 2026-11-21. **Branch:** `research/bfss-hopfion-gut-counterfactuals-20261121`.
+**Parent:** [D1J](./D1J_SOURCE_TO_HAMILTONIAN_BRIDGE_AUDIT_2026_11_21.md), verified head `ba2fd0f506230a3e7043f70cc0830e7f5ffb3bd2`.
 **Disposition:** **SOURCE-READ + FINITE-DIMENSIONAL ANALYTIC ARGUMENT; NO NEW LEAN COMPILATION, CI, SOURCE-TYPED VECTOR PROOF, PHYSICAL FORM-DOMAIN OR SPECTRAL QUALIFICATION.**
 No mutation of original Lean sources, pinned toolchain, main or live RHOPF branch.
 
 ## Decision
 
-The remaining D1I obstacle is not the mathematical *existence* of a color Fock implementer or a local Berry-flat phase. The exact source contains the former, and the latter can be justified by an explicit finite-dimensional trace argument. Moreover, evaluating the original **massless** fermion field need not depend on D1F's three-RED direct massless quantization/subtraction bridge: the already-present source \`deformedFermionField_bracket\` suffices for an exact *mathematical* expectation contraction. What remains open is source-typed implementation of the particular rotor/state, a fully closed and gauge-physical \`SmoothCore 2\` trial, and the complete normalized quadratic-form estimate.
+The remaining D1I obstacle is not the mathematical *existence* of a color Fock implementer or a local Berry-flat phase. The exact source contains the former, and the latter can be justified by an explicit finite-dimensional trace argument. Moreover, evaluating the original **massless** fermion field need not depend on D1F's three-RED direct massless quantization/subtraction bridge: the already-present source `deformedFermionField_bracket` suffices for an exact *mathematical* expectation contraction. What remains open is source-typed implementation of the particular rotor/state, a fully closed and gauge-physical `SmoothCore 2` trial, and the complete normalized quadratic-form estimate.
 
 ## 1. Exact source gauge action and 24-mode identification
 
 These unmodified source files were inspected on the counterfactual branch:
 
-- \`Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean\` blob \`152204ef15a6569534e0503824a697cb9ae8e4ce\`: \`spinPairEquiv\`, \`colorModeEquiv\`, and \`pairedTheta\` identify precisely eight paired spin indices and three colors with 24 original modes, transported to \`Fermion 2\`.
-- \`.../SU2BFSSG3AAdjointColorRepresentationProbe.lean\` blob \`553869f1287c64893398c3b79c04fe010023bd08\`: \`adjointColorMatrix g B A = pairedAlgebraData.adjointCoefficient g A B\`; **rows are output colors**.
-- \`.../SU2BFSSG3B24ModeOrthogonalLiftProbe.lean\` blob \`3cdf867357ea2955bf9d88ec6f5f6a0f9228e92a\`: \`oneParticleMatrix_block\` is exactly \`δ_jk R(g)_{BA}\`.
-- \`.../SU2BFSSG3CComplexOneParticleUnitaryProbe.lean\` blob \`161861a9494836fcd2fad02a76e25cc6a81cf20b\`: complex scalar extension preserving the same 24 orbital indices.
-- \`.../SU2BFSSG4AExteriorGaugeActionProbe.lean\` blob \`141fbe74fc4883f686e05dbc702efb12c6fb8fab\`: \`exteriorGauge g = ExteriorAlgebra.map (orbitalGauge g)\`, fixing the exterior vacuum and transforming each source creator by the exact color *column* coefficients.
-- \`.../SU2BFSSG4EFermionHilbertUnitaryProbe.lean\` blob \`7247844122ab870d31e92903db4c2ab561f98112\`: \`fermionGaugeUnitaryHom\` is transported by \`fockAlgebraToBFSS\` to the exact \`Fermion 2\` Hilbert carrier.
-- \`.../SU2BFSSG4JExactGaugeDataAssemblyProbe.lean\` blob \`e20c76fb22bc09d16dbcd8657333227cb34ed1ea\`: \`pairedGaugeData.fermion = fermionGaugeUnitaryHom\` **definitionally**.
+- `Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean` blob `152204ef15a6569534e0503824a697cb9ae8e4ce`: `spinPairEquiv`, `colorModeEquiv`, and `pairedTheta` identify precisely eight paired spin indices and three colors with 24 original modes, transported to `Fermion 2`.
+- `.../SU2BFSSG3AAdjointColorRepresentationProbe.lean` blob `553869f1287c64893398c3b79c04fe010023bd08`: `adjointColorMatrix g B A = pairedAlgebraData.adjointCoefficient g A B`; **rows are output colors**.
+- `.../SU2BFSSG3B24ModeOrthogonalLiftProbe.lean` blob `3cdf867357ea2955bf9d88ec6f5f6a0f9228e92a`: `oneParticleMatrix_block` is exactly `δ_jk R(g)_{BA}`.
+- `.../SU2BFSSG3CComplexOneParticleUnitaryProbe.lean` blob `161861a9494836fcd2fad02a76e25cc6a81cf20b`: complex scalar extension preserving the same 24 orbital indices.
+- `.../SU2BFSSG4AExteriorGaugeActionProbe.lean` blob `141fbe74fc4883f686e05dbc702efb12c6fb8fab`: `exteriorGauge g = ExteriorAlgebra.map (orbitalGauge g)`, fixing the exterior vacuum and transforming each source creator by the exact color *column* coefficients.
+- `.../SU2BFSSG4EFermionHilbertUnitaryProbe.lean` blob `7247844122ab870d31e92903db4c2ab561f98112`: `fermionGaugeUnitaryHom` is transported by `fockAlgebraToBFSS` to the exact `Fermion 2` Hilbert carrier.
+- `.../SU2BFSSG4JExactGaugeDataAssemblyProbe.lean` blob `e20c76fb22bc09d16dbcd8657333227cb34ed1ea`: `pairedGaugeData.fermion = fermionGaugeUnitaryHom` **definitionally**.
 
 Consequently, the D1I *color* action \(\bigoplus_{k=0}^{24}\wedge^k(I_8\otimes R(g))\) agrees with the source exterior action **at the level of the defining one-particle matrices**, and G4E/G4J already provide its exact carrier transport. This is a source-definition match, not a newly compiled theorem about D1I's particular \(\Omega\) vector. Verify the exterior-to-BFSS transport explicitly in any eventual independent Lean consumer.
 
@@ -69,7 +69,7 @@ The nonzero Fubini–Study metric remains \(\mathrm{diag}(2I_8,4I_2)\) on spatia
 
 ## 4. Exact massless **source-bracket** Fock expectation, without D1F
 
-The original \`FermionQuantization.lean\` blob \`c6b72d030225c707ef54f5285a18a7a8175ee280\` provides the **already-compiled source** \`deformedFermionField_bracket\` (lines 195–198) and \`cubicFermionComponent\` (lines 111–116). With the pinned normalized \(f_{ABC}=\sqrt2\,\varepsilon_{ABC}\), the source field at \(h=1,m=0\) is
+The original `FermionQuantization.lean` blob `c6b72d030225c707ef54f5285a18a7a8175ee280` provides the **already-compiled source** `deformedFermionField_bracket` (lines 195–198) and `cubicFermionComponent` (lines 111–116). With the pinned normalized \(f_{ABC}=\sqrt2\,\varepsilon_{ABC}\), the source field at \(h=1,m=0\) is
 \[
 F_{\rm massless}(X)=(-i/2)\sum_{i,A,B,C,\beta,\delta}
 f_{ABC} X_{iC}(\Gamma_i)_{\beta\delta}\,\theta_{\delta B}\theta_{\beta A}
@@ -90,8 +90,8 @@ This is an **exact finite-dimensional contraction based on the literal compiled 
 
 ## 5. Outstanding physical boundary and next bounded gate
 
-- **Source typed**: identify the based \(\mathrm{Spin}(48)\) spatial lift on the precise \`Fermion 2\` carrier, prove its Majorana covariance and equality of the D1I color action with \`pairedGaugeData.fermion\` applied to the specific seed; retain exact choice of sign/phase.
-- **Compact smooth physical trial**: prove the cutoff/extension across the SVD chart is in original \`SmoothCore 2\`; use truly flat-endpoint \(C^\infty\) \(\chi,\beta,\eta\), not a finite-degree smoothstep. Prove source \(SU(2)\) equivariance and normalized nonzero norm.
+- **Source typed**: identify the based \(\mathrm{Spin}(48)\) spatial lift on the precise `Fermion 2` carrier, prove its Majorana covariance and equality of the D1I color action with `pairedGaugeData.fermion` applied to the specific seed; retain exact choice of sign/phase.
+- **Compact smooth physical trial**: prove the cutoff/extension across the SVD chart is in original `SmoothCore 2`; use truly flat-endpoint \(C^\infty\) \(\chi,\beta,\eta\), not a finite-degree smoothstep. Prove source \(SU(2)\) equivariance and normalized nonzero norm.
 - **Full form**: apply accepted massless-core identity to the explicit trial. Bound *all* radial, angular, tube-boundary, Jacobian, Berry, fermion and boson terms and prove a genuine \(q[\Psi_R]\to0\) estimate. The previously quoted \(K=26.06000549538\) remains a **model prescreen**, not a physical form quotient.
 - **Spectral implication only afterward**: disjoint radial support would provide orthogonality; if the exact form tends to zero, apply the nonnegative closed form's spectral projection/min-max principle to infer \(0\in\sigma_{\rm ess}(H)\). No direct operator-domain Weyl sequence is necessary for that route, but none has been established.
 
