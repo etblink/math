@@ -1,0 +1,46 @@
+{
+  "gate": "RHOPF-P9C3D2G1D38",
+  "attempt": "R1",
+  "disposition": "REJECTED_NATIVE_RED",
+  "branch": "integration/bfss-unified-research-20261108",
+  "run_id": 44870317438,
+  "run_attempt": 1,
+  "job_id": 136743148395,
+  "exact_tested_commit": "580786d1e7c09fb5b43824f9fde9e8e62ba53bcd",
+  "original_artifact_id": 14694191748,
+  "original_zip_sha256": "6002e0b8c3e03ebc37ff75e0b1baf83258162b432ea641caaee59d15a0044674",
+  "independently_recalculated_sha256": true,
+  "upload_and_github_digest_match": true,
+  "embedded_exact_tested_sha_matches": true,
+  "archive_file_count": 5,
+  "source_contract_preflight": "PASS",
+  "original_gamma9_integer_fixture": "PASS",
+  "lean_version": "4.34.1",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "dependency_build_jobs": 9085,
+  "native_compilation": "RED",
+  "independent_consumer": "SKIPPED",
+  "failure": {
+    "file": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D38OriginalGammaSourceQNormAndNormedGroup.lean",
+    "line": 81,
+    "column": 8,
+    "message": "typeclass instance problem stuck: InnerProductSpace.Core ?m.7 RelationalSourceComplexFour; scalar field metavariable not inferred for InnerProductSpace.Core.toNormedAddCommGroup",
+    "affected_symbol": "relationalSourceComplexFourNormedAddCommGroup",
+    "axioms": [
+      "propext",
+      "sorryAx",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "clean_native_declarations": [
+    "relationalSourceComplexFourQNorm",
+    "relationalSourceComplexFourQNorm_nonneg",
+    "relationalSourceComplexFourQNorm_sq",
+    "relationalSourceComplexFourQNorm_eq_core_sqrt",
+    "relationalSourceComplexFourQNorm_pos_of_ne_zero"
+  ],
+  "bounded_recovery": "Supply explicit pinned Mathlib scalar field (𝕜 := ℂ) and carrier (F := RelationalSourceComplexFour) to InnerProductSpace.Core.toNormedAddCommGroup; no change to underlying Q, group proof body, independent consumer or prior accepted evidence; update exact source blob pin",
+  "acceptance": "NONE",
+  "original_gamma_main_unchanged": true
+}
