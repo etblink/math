@@ -44,8 +44,8 @@ noncomputable def relationalSourceComplexFourSourceQOrthonormalBasis :
     FiniteDimensional.of_finrank_eq_succ
       (show Module.finrank ℂ RelationalSourceComplexFour = Nat.succ 1 from by
         simpa using relationalSourceComplexFour_finrank_complex)
-  simpa only [relationalSourceComplexFour_finrank_complex] using
-    (stdOrthonormalBasis ℂ RelationalSourceComplexFour)
+  exact (stdOrthonormalBasis ℂ RelationalSourceComplexFour).reindex
+    (finCongr relationalSourceComplexFour_finrank_complex)
 
 @[instance_reducible]
 noncomputable def relationalSourceComplexFourSourceQIsometricRepr :
@@ -68,11 +68,11 @@ theorem relationalSourceComplexFourSourceQIsometricRepr_norm_sq
     (x : RelationalSourceComplexFour) :
     ‖relationalSourceComplexFourSourceQIsometricRepr x‖ ^ 2 =
       relationalRangeCoordinateDotSelf x.coordinates := by
-  letI : NormedAddCommGroup RelationalSourceComplexFour :=
+  let : NormedAddCommGroup RelationalSourceComplexFour :=
     relationalSourceComplexFourNormedAddCommGroup
-  letI : NormedSpace ℂ RelationalSourceComplexFour :=
+  let : NormedSpace ℂ RelationalSourceComplexFour :=
     relationalSourceComplexFourNormedSpace
-  letI : InnerProductSpace ℂ RelationalSourceComplexFour :=
+  let : InnerProductSpace ℂ RelationalSourceComplexFour :=
     relationalSourceComplexFourInnerProductSpace
   calc
     ‖relationalSourceComplexFourSourceQIsometricRepr x‖ ^ 2 = ‖x‖ ^ 2 := by
@@ -86,7 +86,8 @@ theorem relationalSourceComplexFourSourceQIsometricRepr_circle
       (relationalSourceComplexFourCircleAction z x) =
         (z : ℂ) • relationalSourceComplexFourSourceQIsometricRepr x := by
   rw [relationalSourceComplexFourCircleAction_eq_smul]
-  exact map_smul relationalSourceComplexFourSourceQIsometricRepr (z : ℂ) x
+  exact map_smul
+    (relationalSourceComplexFourSourceQIsometricRepr.toLinearEquiv) (z : ℂ) x
 
 #print axioms relationalSourceComplexFourSourceQOrthonormalBasis
 #print axioms relationalSourceComplexFourSourceQIsometricRepr
