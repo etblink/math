@@ -1,0 +1,42 @@
+{
+  "kind": "D1S1 original real FrequencyMatrix 48x48 and reduced exterior Fock source-quantization covariance prescreen",
+  "original_source_contract": {
+    "FermionFrequency": "FrequencyMatrix 2 = Matrix (SpinIndex\u00d7ColorIndex 2) (SpinIndex\u00d7ColorIndex 2) \u211d",
+    "FermionQuantization": "M.quantizeFrequency K = (i/2) sum K[p,q] theta_p theta_q",
+    "G3A": "adjointCoefficient g A B = R_g[output B,input A]",
+    "G4J": "fermion_adjoint transport of original theta"
+  },
+  "max_abs_or_fro_residuals": {
+    "source_real_48_gauge_coefficient": 0.0,
+    "real_48_group_law": 1.4582607313108313e-14,
+    "source_Fock_gauge_conjugation": 1.2075854505306695e-14,
+    "source_Fock_selfadjoint": 2.220446049250313e-16,
+    "source_theta_covariance": 1.970082131557999e-15,
+    "source_flattened_sign": 9.338503553878937e-15
+  },
+  "original_48_coefficient_tests": 40,
+  "small_fock_tests": 9,
+  "small_fock_mode_counts": [
+    3,
+    6
+  ],
+  "wrong_color_transpose_min_fro_error": 16.589984370210203,
+  "examples": [
+    {
+      "modes": 3,
+      "Q_hermitian_residual": 0.0,
+      "Q_covariance_residual": 3.3530600958654945e-15
+    },
+    {
+      "modes": 3,
+      "Q_hermitian_residual": 0.0,
+      "Q_covariance_residual": 1.9432867066599163e-15
+    },
+    {
+      "modes": 3,
+      "Q_hermitian_residual": 0.0,
+      "Q_covariance_residual": 2.7773476133611577e-15
+    }
+  ],
+  "limitations": "No exact SU2 group parametrization in numerical prescreen: all tested proper real SO3 output-input rotations; not a compiled Lean theorem, 2^24 Fock test, Kato line, SmoothCore or physical spectrum."
+}
