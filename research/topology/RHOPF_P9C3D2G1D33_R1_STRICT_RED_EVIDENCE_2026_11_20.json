@@ -1,0 +1,55 @@
+{
+  "gate": "RHOPF-P9C3D2G1D33",
+  "attempt": "R1",
+  "disposition": "REJECTED_NATIVE_RED",
+  "branch": "integration/bfss-unified-research-20261108",
+  "run_id": 44858066562,
+  "run_attempt": 1,
+  "job_id": 136704809502,
+  "exact_tested_commit": "a73e484c999028829eec55157e2b4b73ade52ff2",
+  "original_artifact_id": 14689306233,
+  "original_zip_sha256": "ede54ce107ed644cebb306f73dc8e975c5721f1655bf24754d053b76c0bbd6ae",
+  "independently_computed_zip_sha256": true,
+  "original_upload_github_digest_match": true,
+  "embedded_tested_commit_verified": true,
+  "archive_file_count": 5,
+  "exact_original_source_contract": "PASS",
+  "original_gamma9_signed_permutation_fixture": "PASS",
+  "lean_version": "4.34.1",
+  "mathlib_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "qualified_dependency_build_jobs": 9080,
+  "native_compilation": "RED",
+  "independent_consumer": "SKIPPED",
+  "errors": [
+    {
+      "file": "RHOPFP9C3D2G1D33OriginalGammaHermitianRealLinearAdditive.lean",
+      "line": 64,
+      "message": "change tactic failed; target (↑a * H x y).re requires explicit Complex.re_ofReal_mul"
+    },
+    {
+      "file": "RHOPFP9C3D2G1D33OriginalGammaHermitianRealLinearAdditive.lean",
+      "line": 69,
+      "message": "change tactic failed; target (↑a * H x y).im requires explicit Complex.im_ofReal_mul"
+    }
+  ],
+  "axiom_reports": {
+    "relationalSourceHermitianCandidate_add_left": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "relationalSourceHermitianCandidate_real_smul_left": [
+      "propext",
+      "sorryAx",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "relationalSourceComplexFourHermitian_add_left": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "bounded_recovery": "Insert pinned Mathlib Complex.re_ofReal_mul and Complex.im_ofReal_mul rewrites in real homogeneity proof before change; update only exact source git blob pin in strict workflow; retain theorem statements and independent consumer unchanged",
+  "acceptance": "NONE"
+}
