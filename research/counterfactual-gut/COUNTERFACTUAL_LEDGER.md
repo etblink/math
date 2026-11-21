@@ -248,3 +248,20 @@ After two strict native proof REDs, the plan was changed—not retried blindly. 
 | CF-073 | Present D1H prescreen establishes Gauss-physical normalizable Weyl sequence or 3D Hopfion stability | **OPEN / NOT ESTABLISHED** | Need explicit smooth many-body Fock lift, exact gauge action, tube/angular/radial cutoffs, charge-graph/form domain, full nonnegative Rayleigh quotient. No Lean R4, no physical claim |
 
 **Next decision:** D1I smooth equivariant Fock-vector/phase lift and complete domain-checked cutoffs; only re-enter Lean when a physically meaningful source-typed target survives. Main/live RHOPF unaffected.
+
+
+## 2026-11-21 / D1I explicit source-paired Fock vector and smooth gauge-aware cutoff prescreen
+
+[Canonical D1I mathematical checkpoint](./D1I_EXPLICIT_FOCK_LIFT_GAUGE_TRIAL_2026_11_21.md). Reproducible 23-file user zip `bfss_su2_d1i_explicit_fock_lift_2026_11_21.zip` SHA256 `f8412861d84ca336a37d801eb1c0c15a517a44958b3a3d697ba42a9627115c07` (provided to owner, **not Git-hosted**); 15KB complete scientific report SHA256 `746ce65d445b408c81bd9eff9d62d28550d589c43baa0e7a7777a3c14fdca37b`. D1I is **NUMERICAL + FINITE-DIMENSIONAL MATHEMATICAL / CONDITIONAL VARIATIONAL** evidence; not a native Lean/physical spectrum theorem.
+
+| ID | Falsifiable claim | Adjudication / exact scope |
+| --- | --- | --- |
+| CF-074 | The D1H 48-Majorana rank-one Gaussian cannot be represented by a concrete original 24-mode Fock *vector* | **REFUTED FOR REFERENCE CONFIGURATION**: actual eight-particle Slater determinant `∏_{j=0}^7(c†_{j1}+i s_jc†_{j2})/√2 |vac>`; 8 separate 3-mode Fock blocks reproduce C (≤8.2e−16) |
+| CF-075 | Zero expected SO2 stabilizer charge might hide a nontrivial many-body character | **TRIVIAL CHARACTER ESTABLISHED FOR CONSTRUCTED SEED**: actual Gamma8 eigenvalues four `s=+1` and four `s=−1`; phase `exp(iθ Σ s_j)=1` at all θ; all-plus negative control fails by up to 1.93 |
+| CF-076 | Only covariance, not actual local Fock vector, can be transported gauge equivariantly | **POSITIVE CONSTRUCTION ON SPATIAL PATCH / NOT SOURCE-LEAN-QUALIFIED**: Clifford rotor `S(u)=(I+Γ(u)Γ8)/√[2(1+u8)]`, applied equally to BOTH transverse color blocks, combined with 24-mode exterior-power SO3 color action. Rotor transport errors ≤2.8e−15; one-color-only control fails by 1.81 |
+| CF-077 | Gauge equivariance eliminates fermionic angular kinetic energy | **REJECTED**: exact SVD angular inverse metric and Fock FS gives `12/r²` at Y=0; exact tube formula and Gaussian expansion `12/r²+36√2/r⁵+294/r⁸`; metric inversion errors ≤1.2e−16 |
+| CF-078 | Selected negative D1H energy proves negative physical H | **REJECTED AGAIN**: include positive variable-Fock kinetic; combined selected local formula begins `12/r²+10√2/r⁵+177/r⁸`, positive at large r; no physical H claimed |
+| CF-079 | An explicit color-equivariant smooth cutoff candidate has an O(R−2) **model** energy with computable coefficient | **CONDITIONALLY SUPPORTED**: actual chosen C∞ radial/patch cutoffs, Gaussian and SVD Jacobian, computed K=26.06000549538 (radial 17.3925 + Fock 4.9133 + patch 3.7542). Finite-R values use truncated FS expansion, beta leading order and omit tube tails, **not exact form Rayleigh** |
+| CF-080 | The D1I calculation has already established a Gauss-physical Weyl sequence, zero essential spectrum, or Hopfion stability | **NOT ESTABLISHED**: original source GaugeData Fock implementer, D1F massless interaction equality (three strict REDs), compact-tube/domain bounds and full closed H form remain unverified. Classical de Wit–Lüscher–Nicolai 1989 continuum mechanism predates D1I |
+
+**Next source-first decision:** a bounded audit of the actual Fock gauge action, original massless Fock coefficient/energy bridge and smooth-core cutoff/form-domain estimates. **No new Lean CI**; main/live RHOPF unchanged.
