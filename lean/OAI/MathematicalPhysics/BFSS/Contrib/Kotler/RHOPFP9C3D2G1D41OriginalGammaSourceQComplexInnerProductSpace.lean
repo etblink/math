@@ -45,7 +45,7 @@ noncomputable def relationalSourceComplexFourInnerProductSpace :
     relationalSourceComplexFourInnerProductCore
   exact InnerProductSpace.ofCore
     (𝕜 := ℂ) (F := RelationalSourceComplexFour)
-    relationalSourceComplexFourInnerProductCore.toPreInnerProductSpaceCore
+    (show PreInnerProductSpace.Core ℂ RelationalSourceComplexFour from inferInstance)
 
 /-- The packaged full inner product is still the original Gamma9
 Hermitian H, with Mathlib's conjugate-linear-first convention. -/
