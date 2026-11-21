@@ -139,3 +139,8 @@ The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINA
 ## D1K1A original-Fock seed exact gauge transport candidate (2026-11-21)
 
 [Read the strict launch provenance](./D1K1A_SOURCE_FOCK_GAUGE_STRICT_LAUNCH_2026_11_21.md) (CF-093–CF-095), including source/consumer/workflow blob pins and [CI #44947732882](https://github.com/etblink/math/actions/runs/44947732882). D1K1A defines an ordered source-Gamma8-signed **eight-orbital wedge** in exact `Space 23`, transports it via the qualified `fockAlgebraToBFSS` to literal original `Fermion 2`, and tests exact `pairedGaugeData.fermion` orbit, SU2 multiplication and original Fock norm by native+independent Lean. Strict source preflight passed at observation; **native source+consumer results were still pending**. Success would not establish nonzero normalization, Gamma8 sign balance, stabilizer descent, spatial rotor, smooth physical core, massless expectation or BFSS spectral theorem. D1F R1/R2/R3 RED evidence unchanged.
+
+
+## D1K1A R1 strict RED and Python-first stop (2026-11-21)
+
+[Read the exact compiler diagnosis and frozen evidence](./D1K1A_R1_STRICT_RED_COLORINDEX_FIRST_CAUSAL_2026_11_21.md) (CF-096/CF-097). [Run #44947732882](https://github.com/etblink/math/actions/runs/44947732882) **failed** at new source lines 37/39 because numeric `ColorIndex 2` literals did not synthesize; original dependencies and pinned toolchain passed. All three source theorem roots had `sorryAx`, and independent consumer was never executed. **Not a mathematical refutation or qualified proof.** No blind Lean rerun: focus turns to D1L Python-first adversarial energy calculations.
