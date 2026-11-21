@@ -130,3 +130,21 @@ Primary detailed source/math evidence: [D1C source Yukawa coefficient determinan
 | CF-040 | The 48×48 source-derived A_f alone is the full original BFSS physical Hamiltonian, giving a 3D chiral mass index | **REJECTED as identification / OPEN source joining** | Core.Q acts with derivatives in 27 coordinates and a f Γij θ XX term; actual H is unbounded on gauge-physical L². Reconstruct and source-verify exact Yukawa/H relation, domains and physical symmetry before using spectral conclusions |
 
 **Research decision:** **D1C narrow Yukawa-gap-to-Hop f route STOPPED. D1D source-normalized physical-operator and conditional eigenbundle tests remain OPEN.** Preserve all prior CF IDs and physical/empirical constraints.
+
+
+## 2026-11-21 / D1D original source fermion coefficient and physical-domain audit (append-only)
+
+[Full D1D memo](./D1D_SOURCE_PHYSICAL_FERMION_INTERACTION_AND_DOMAIN_BOUNDARY_2026_11_21.md) derives source-typed equalities using pinned upstream definitions, refines rank-stratum kernel counts, and identifies missing accepted native tests. **No new native Lean proof or physical observation.**
+
+| ID | Hypothesis / precise claim | Disposition | Positive/negative evidence, falsification target |
+| --- | --- | --- | --- |
+| CF-041 | D1C's Yukawa matrix is an unrelated invented 48×48 model | **REJECTED; positive source identification** | For paired SU2 and exact f=√2ε, D1C A_f(X) = M.fermionCoefficient X − M.fermionCoefficient 0, entrywise; index order matters. Source expansion, not new compiled theorem |
+| CF-042 | The massless A_f has a genuine original Fock quantization interface | **SOURCE-TYPED DERIVED IDENTITY; Lean gate OPEN** | M.deformedFermionField 1 0 X = (M.quantizeFrequency A_f(X)).restrictScalars ℝ follows from FermionQuantization.deformedFermionField_bracket and frequency_bracket_contraction. The upstream direct theorem is at h=m=1, not verbatim massless |
+| CF-043 | Original-core and deformed h=1,m=0 charges/forms already have newly requalified exact pin certificates in this audit | **NOT QUALIFIED; prospective source declarations found** | G4K9D source asserts sourcePotentialMultipliers_equal, sourceUnconditionalCoreCharge_equal and sourceUnconditionalCoreForm_equal, but its header says PROSPECTIVE / UNCOMPILED. Audit theorem statement, then run independent source/axiom consumer before acceptance |
+| CF-044 | Source massless A_f rank deficiency has no sharper classification than determinant zero | **POSITIVE MATHEMATICAL REFINEMENT** | Rank X=0→dim ker A_f=48; rank X=1 or 2→dim ker=16; rank X=3→dim ker=0. Clifford/SVD block rank argument and exact integer 48×48 canonical controls; not original physical Hilbert eigenstates |
+| CF-045 | Mass-deformed normal-frequency invertibility establishes a gap for original massless BFSS | **REJECTED** | F(0)=(3/2)Γ012⊗I3 invertible, while F0(0)=0. FermionFrequency.normalFermionFrequency_trivial_kernel assumes deformedBosonicPotential 1 1 q=0, not h=1,m=0. Never transfer it to source massless case |
+| CF-046 | Exact core-form identity is automatically equality of spectra of source normalized H=(1/16)T†T | **REJECTED as inference; physical domain OPEN** | Physical H natural Dom(T†T), closed graph, SU2 Gauss-fixed Hilbert and operator identification are separate. P3M5BE0/H5E8BE still explicitly prospective here. Form decomposition ≠ closed operator spectrum |
+| CF-047 | 16 massless one-particle zero directions along nonzero SU2 commuting valleys imply 16 four-dimensional chiral fermions | **REJECTED as implication** | Color rank≤1 ensures 16 Majorana coefficient-kernel dimensions, but Gauss projection, kinetic/normal fluctuations, normalizability and emergent 3+1D Weyl chirality unproved. Different index notions cannot be equated |
+| CF-048 | A small source-exact, independently checked bridge can make D1C useful to physical BFSS analysis without creating a new Hamiltonian | **CONDITIONAL RECOMMENDATION** | D1E staged sequence: coefficient type, Fock quantization, G4K9D core requalification, M5BE0 natural domain, only then symmetry/physical spectral diagnostics. Stop on any failed interface; preserve reds |
+
+**Next:** D1E proof-obligation map and original physical Hamiltonian domain admission; no automatic new CI on this documentation branch.
