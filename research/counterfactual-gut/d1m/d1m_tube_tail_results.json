@@ -1,0 +1,33 @@
+{
+  "source_Gaussian_frequency_alpha": 1.4142135623730951,
+  "fixed_tube_kappa": 0.5,
+  "transition_definition": "||Y|| >= kappa*r/2; Y Gaussian iid variance=(2*alpha*r)^-1",
+  "bound": "P(chi2_16>=x) <= 256 exp(-x/4), x=alpha*kappa^2*r^3/2",
+  "records": [
+    {
+      "r": 8.0,
+      "chi2_16_transition_threshold": 90.50966799187809,
+      "exact_Gaussian_transition_probability": 2.015219048603808e-12,
+      "provable_chernoff_upper_bound": 3.8130949814381196e-08
+    },
+    {
+      "r": 10.0,
+      "chi2_16_transition_threshold": 176.7766952966369,
+      "exact_Gaussian_transition_probability": 3.7251927813218726e-29,
+      "provable_chernoff_upper_bound": 1.6404165462788157e-17
+    },
+    {
+      "r": 12.0,
+      "chi2_16_transition_threshold": 305.47012947258855,
+      "exact_Gaussian_transition_probability": 1.8766294317086066e-55,
+      "provable_chernoff_upper_bound": 1.74679548718047e-31
+    },
+    {
+      "r": 20.0,
+      "chi2_16_transition_threshold": 1414.213562373095,
+      "exact_Gaussian_transition_probability": 1.431218121781608e-291,
+      "provable_chernoff_upper_bound": 7.277016714820881e-152
+    }
+  ],
+  "status": "exact distribution and Chernoff inequality, no source SmoothCore or complete form proof"
+}
