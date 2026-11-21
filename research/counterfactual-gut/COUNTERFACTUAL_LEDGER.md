@@ -65,3 +65,19 @@ Decision: pursue | archive | reject | defer
 ## Separation from the live RHOPF proof sequence
 
 This ledger must **never promote** `RHOPF-P9C3D2G1D44`, `D45`, or subsequent work based on branch names, draft source or a CI color alone. Their status belongs to exact tested commits and original receipts on the unified branch. This document may link qualified evidence but creates none.
+
+
+## 2026-11-21 / D0–D1 first original-source audit (append-only)
+
+Full evidence and mathematical arguments: [D0–D1 source-topology and fermionic-index audit](./D0_D1_ORIGINAL_CONFIGURATION_TOPOLOGY_AND_FOCK_INDEX_AUDIT_2026_11_21.md). **No new Lean/CI or physical qualification.** These do not replace or edit CF-000–CF-015.
+
+| ID | Exact new discriminator | Disposition | Positive/negative knowledge and next test |
+| --- | --- | --- | --- |
+| CF-016 | Topology of the **unrestricted ordinary** orbit space `Boson 2 / SU(2)` | **MATH-REFERENCE / narrow OBSTRUCTION** | `Boson 2 = ℝ²⁷`, genuine `bosonGaugeEquiv` is real linear; `[X] ↦ [(1−t)X]` contracts the entire quotient. Does not eliminate restricted/gapped sectors, equivariant topology, normalized states, or physical 3-space textures |
+| CF-017 | Full finite 24-mode Fock **even→odd** ordinary complex Fredholm index | **MATH-REFERENCE / REJECTED if proposed nonzero** | Both parity subspaces of `Λ•ℂ²⁴` have dimension `2²³`. Rank-nullity forces `ind D=0` for every full-sector linear `D`. No inference about gauge-fixed sector dimensions or full infinite-`L²` supersymmetric index |
+| CF-018 | Original BFSS supercharges already provide a 3-space Dirac operator | **REJECTED as a direct identification** | `Core.AlgebraData.charge` is a genuine differential operator with fermion/gamma couplings, but its derivatives are on 27 bosonic matrix-configuration coordinates, not three spatial coordinates. A physical texture and effective spatial operator remain to be derived |
+| CF-019 | Source SU(2) gauge action and fixed Fock space are a reusable coupling interface | **SOURCE-REFERENCE / OPEN coupling** | `G2A` genuine boson linear-isometric action, `OP2a` genuine fermion-unitary action, `OP2b` projector, `OP2c` nonzero vacuum. None proves an (S^3\to S^2) spatial field, Hopf-sector invariance, chiral zero modes, or GUT |
+| CF-020 | Nontrivial invariants may survive after physically justified **gap-locus excision** or **gauge-equivariant** reduction | **CONDITIONAL / OPEN** | A contractible ordinary full orbit space can coexist with nontrivial excised-locus topology or stabilizer/equivariant data. Specify actual excluded configurations or symmetry constraints; do not impose them merely to rescue the hypothesis |
+| CF-021 | A 3D Hopf charge can be equated directly with a Callias index or 4D chiral-family count | **REJECTED as automatic** | Hopf class uses (n:S^3\to S^2); a standard 3D Callias index uses an actual Fredholm Dirac/mass operator and asymptotic data on (S^2_\infty). Four-dimensional Weyl chirality is a further independent requirement. Test a source-derived operator and an exact index relation |
+
+**Decision:** **D0 narrow direct route STOPPED. D1 stays OPEN with a concrete source/interface target; prior P1–P4 escape and original gamma-AIII cancellation remain binding controls.** Next work is D1A source-operator typing, not another unsourced topological toy or a claimed GUT.

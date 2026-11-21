@@ -65,3 +65,7 @@ Any candidate must eventually explain a *local* four-dimensional effective theor
 Every ledger claim gets an **ID**, **premises**, **status**, **positive evidence**, **negative/alternative explanation**, **decisive falsification or gap**, and **next bounded test**. Use exact mathematical objects and typed maps where possible. Distinguish proofs from literature suggestions, external claims from source-qualified declarations, and 0+1D matrix quantum mechanics from 3+1D physics.
 
 Use [COUNTERFACTUAL_LEDGER.md](./COUNTERFACTUAL_LEDGER.md) as the single entry point for updates. Add dated entries and keep prior negative results accessible. No present result is asserted to prove a GUT.
+
+## First bounded test (2026-11-21)
+
+[D0 / D1 original-source configuration topology and Fock index audit](./D0_D1_ORIGINAL_CONFIGURATION_TOPOLOGY_AND_FOCK_INDEX_AUDIT_2026_11_21.md) and the appended [ledger entries CF-016–CF-021](./COUNTERFACTUAL_LEDGER.md) document two narrow obstructions (ordinary bosonic orbit-space contractibility; zero full finite even/odd Fock Fredholm index), plus the **positive** original source supercharge/gauge/Fock operator interface. Both obstructions are carefully distinguished from a potential gauge-equivariant/gapped-sector topology or an index on the infinite-dimensional physical Hilbert space. **No new Lean or physical theorem is claimed.**
