@@ -46,6 +46,12 @@ theorem relationalEuclideanUnitCircleContinuousSMul :
         relationalEuclideanUnitCircleMulAction;
     ContinuousSMul Circle
       {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} := by
+  -- The detached action is already fixed in the theorem's scoped type.
+  -- Bind its exact value locally as a non-instance `let`, matching
+  -- Mathlib's approach for Prop-valued detached structure certificates.
+  let : MulAction Circle
+      {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} :=
+    relationalEuclideanUnitCircleMulAction
   refine ⟨?_⟩
   change Continuous (fun p : Circle ×
     {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} =>
