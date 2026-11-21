@@ -55,3 +55,35 @@ Native artifact [#14729665393](https://github.com/etblink/math/actions/runs/4495
 The only Lean change in research commit `00fcf97a70b52742b17cce60a0f788fe876da361` is within `originalCARQuadratic_zero`: replace `simp [originalCARQuadratic]` with an explicit `unfold originalCARQuadratic`, `simp only [zero_smul]`, then `simp`. Original source file Git blob changed from `b141e620bc35cdfaae2795aa3f305cace157c5e5` to `171dee12e60414e24a2fd25e28de7b2ef14bb7ba`. Original two preceding theorem bodies, the entire independent consumer and the exact strict workflow are unchanged.
 
 [Run #44960222120](https://github.com/etblink/math/actions/runs/44960222120) is the newly started native gate at exact tested commit `00fcf97a70b52742b17cce60a0f788fe876da361` and should not be labeled GREEN until cold compilation, independent consumer, three+three source/consumer axiom checks, exact pins, and archive all qualify. The run launched automatically via the existing isolated-branch workflow trigger. If this attempt is another native RED, honor the two-native-RED stop rule. No additional repair/retry authorized automatically.
+
+## R3 — second native RED adjudicated; D1R0 strict gate FROZEN
+
+[Run #44960222120](https://github.com/etblink/math/actions/runs/44960222120) COMPLETED **FAILURE**. Exact tested commit `00fcf97a70b52742b17cce60a0f788fe876da361`; source job `137017163635`, run attempt 1; no subsequent native retry. Original-source pin preflight PASS, pinned Lean 4.34.1/Mathlib restore PASS, original source cold build **RED**. First causal native error:
+
+```text
+OAI/MathematicalPhysics/BFSS/Contrib/Kotler/D1R0OriginalCARGaugeBilinearPilot.lean:80:2:
+`simp` made no progress
+warning at line 79:13: unused simp argument `zero_smul`
+```
+
+The tested third proof was:
+
+```lean
+theorem originalCARQuadratic_zero :
+    originalCARQuadratic (fun _ _ => 0) = 0 := by
+  unfold originalCARQuadratic
+  simp only [zero_smul]
+  simp
+```
+
+**Source theorem axiom reports:** `originalThetaCAR` `[propext, Classical.choice, Quot.sound]`, **PASS as source compilation**; `originalThetaPair_covariant` identical allowed-axiom set, **PASS as source compilation**; `originalCARQuadratic_zero` `[propext, sorryAx, Classical.choice, Quot.sound]`, **FAIL and NOT QUALIFIED**. These first two theorems passed two independent native source compilations (R2 and R3), but the strict independent consumer was never reached, so **the complete D1R0 gate remains RED**. Do not claim independent acceptance on the basis of `#print axioms` alone.
+
+**Artifact:** [#14729288966](https://github.com/etblink/math/actions/runs/44960222120/artifacts/14729288966), GitHub-reported SHA-256 `99a50be1c65789ccecbd88fc46045361a26b4fae2bd0903b3b3ac9fb8f34f5d9` (10,820 bytes). The existing R2 artifact [#14729665393](https://github.com/etblink/math/actions/runs/44958805038/artifacts/14729665393) is preserved separately. Failure classification: **proof-tactic/elaboration in custom zero-coefficient quadratic**, not source drift, toolchain or a mathematical counterexample.
+
+**STOP RULE ENFORCED:** R2 and R3 are the two native RED attempts. No R4, no further edit to the D1R0 `.lean` root or strict workflow, and no more CI attempted on this theorem in this interval. Retain the two source-compiling CAR/gauge lemmas, but keep gate status **RED/FROZEN**.
+
+### Changed proof architecture for a future local-only design review
+
+The original `FermionQuantization.lean` already provides `AlgebraData.quantizeFrequency : FrequencyMatrix N → (Fermion N →L[ℂ] Fermion N)` with `quantizeFrequency(K) = (i/2) • Σ_{p,q} K(p,q) • (theta_p*theta_q)`. For a **real** skew covariance C indexed by the original `FrequencyIndex 2`, the flattened operator is algebraically `H_C = pairedAlgebraData.quantizeFrequency (-C)`. The proposed next conceptual gate should be *source quantization coefficient transport*, not proof normalization of the redundant new `originalCARQuadratic` definition. Verify the exact `FrequencyMatrix 2` scalar type and index coercions before stating Lean equalities. Preserve `originalThetaCAR` and `originalThetaPair_covariant` as candidates for independently consumed lemmas, without claiming that consumer was compiled. A future new proof architecture must undergo local elaboration/preflight before any strict CI and obey exact original source pins.
+
+**No physical promotion:** D1P/D1Q global Gaussian line, Kato transport, smooth Gauss-invariant core, normalized BFSS form and spectrum remain analytical/unqualified. The D1N variational coefficient is conditional; no Hopfion/GUT or spectral result is established.
