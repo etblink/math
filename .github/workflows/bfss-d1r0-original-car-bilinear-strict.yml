@@ -68,7 +68,7 @@ jobs:
           assert all("set_option maxRecDepth" not in x and "set_option maxHeartbeats" not in x for x in [a,b])
           assert all(token in a for token in [
             "originalThetaCAR","originalThetaPair_covariant","originalCARQuadratic",
-            "pairedAlgebraData","pairedGaugeData.fermion"])
+            "pairedAlgebraData","G.fermion g"])
           assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
           manifest=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
           assert next(x["rev"] for x in manifest if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
