@@ -59,7 +59,7 @@ theorem relationalSourceComplexFour_finrank_real :
         Module.finrank ℝ (Fin 4 → ℝ) :=
       relationalSourceComplexFourRealLinearEquiv.finrank_eq
     _ = 4 := by
-      exact Module.finrank_fin_fun
+      exact Module.finrank_fin_fun ℝ
 
 /-- Two complex dimensions, from four REAL dimensions and the
 original Gamma9 J4-induced complex module, without any frame choice. -/
