@@ -36,3 +36,10 @@ No source-derived physical Hopf sector, no topological protection, no BFSS spect
 **Bounded procedure after a RED:** inspect only first-causal compiler diagnostic, distinguish parser/import/elaboration vs invalid mathematical statement, compare source lemmas and real/complex coercions, update the minimal source/consumer at a NEW exact SHA, and preserve original failed gate with artifacts. Do not silently loosen checks, alter original Gamma9/Pauli source, rewrite accepted gates, change pins or move to unified RHOPF.
 
 **Next scientific discriminator after a real strict GREEN:** the original source core-form integrand is a quadratic form on `SmoothCore N`; a separately closed graph/form-domain characterization, spectral-family theorem, or effective-spatial operator is required to reason about physical protected chirality. Do not identify finite coefficient-matrix eigenmodes with physical normalizable states.
+
+
+## R1 verified RED / R2 bounded source repair
+
+At [strict R1 #44934836209](https://github.com/etblink/math/actions/runs/44934836209), tested SHA `deff085b1c26b606f81501a68eba50d81c56aedb`, preflight and toolchain passed, all 8951 dependencies built, then source `line 39` failed: `ring failed, ⊢ Complex.I * (1 / 2) = 0`. The two dependent Lean roots printed `sorryAx` and **cannot** be promoted; the independent consumer was not executed. Exact archived artifact [#14719612214](https://github.com/etblink/math/actions/runs/44934836209/artifacts/14719612214) stores the first-causal evidence.
+
+For R2, *only* the failing scalar/sum proof was changed: explicit negated-source-frequency sum equality, direct reuse of accepted original `frequency_bracket_contraction`, then a separate elementary scalar identity for `-(i/2)=(-i)/2`. This is a **source repair proposal**, not an accepted result. The source's massless coefficient and other declarations, independent consumer, upstream original files and workflow remain unchanged.

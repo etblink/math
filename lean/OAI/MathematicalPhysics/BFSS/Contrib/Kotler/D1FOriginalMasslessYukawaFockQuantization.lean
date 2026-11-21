@@ -33,10 +33,25 @@ theorem quantize_masslessFrequency (x : Boson N) :
     M.quantizeFrequency (masslessFrequency M x) =
       ((-Complex.I) / 2) •
         (∑ j : SpaceIndex, ∑ A : ColorIndex N, M.cubicFermionComponent x A j) := by
-  rw [← M.frequency_bracket_contraction x]
-  simp only [AlgebraData.quantizeFrequency, masslessFrequency, Complex.ofReal_neg,
-    neg_smul, Finset.sum_neg_distrib]
-  module
+  have hsum :
+      (∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N,
+        (masslessFrequency M x r s : ℂ) •
+          (M.theta r.1 r.2 * M.theta s.1 s.2)) =
+      -(∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N,
+        (((∑ j : SpaceIndex, ∑ C : ColorIndex N,
+          M.structureConstant s.2 r.2 C * x (j,C) *
+            M.gamma j r.1 s.1) : ℝ) : ℂ) •
+          (M.theta r.1 r.2 * M.theta s.1 s.2)) := by
+    simp only [masslessFrequency, Complex.ofReal_neg,
+      neg_smul, Finset.sum_neg_distrib]
+  change (Complex.I / 2) •
+    (∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N,
+      (masslessFrequency M x r s : ℂ) •
+        (M.theta r.1 r.2 * M.theta s.1 s.2)) = _
+  rw [hsum, M.frequency_bracket_contraction x]
+  rw [smul_neg, ← neg_smul]
+  congr 1
+  ring
 
 /-- Preserve the real-linear source field and complex-linear Fock operator types. -/
 theorem deformedFermionField_massless_quantized (x : Boson N) :
