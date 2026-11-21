@@ -58,6 +58,7 @@ arguments of source H (linear FIRST variable).
 A Core is only a standalone value, NOT a global instance; thus no
 norm or topological structure changes and original source Q remains
 distinguished from the default R4 Euclidean coordinate dot. -/
+@[instance_reducible]
 noncomputable def relationalSourceComplexFourInnerProductCore :
     InnerProductSpace.Core ℂ RelationalSourceComplexFour where
   inner := fun x y => relationalSourceComplexFourHermitian y x
