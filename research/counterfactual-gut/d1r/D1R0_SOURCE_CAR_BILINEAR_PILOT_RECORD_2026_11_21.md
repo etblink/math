@@ -49,3 +49,9 @@ The original `simp [originalCARQuadratic]` did not simplify nested zero scalar m
 Native artifact [#14729665393](https://github.com/etblink/math/actions/runs/44958805038/artifacts/14729665393) preserved unconditionally: GitHub digest `sha256:7d896e1c24da07e67a42e8618d47c6b0491ceddb7d97f3733e77357a9d26e8c0`, size 10,759 bytes.
 
 **R3 controlled second-native attempt:** change only the third theorem proof to explicitly unfold `originalCARQuadratic`, apply `zero_smul` to the inner terms, and close the finite zero sums. Do not change the successful roots, consumer, dependency pins or workflow. If the second NATIVE compilation fails, STOP and preserve negative knowledge instead of blindly launching R4. Until all independent checks pass D1R0 is RED.
+
+## R3 — targeted one-theorem repair, second native qualification attempt
+
+The only Lean change in research commit `00fcf97a70b52742b17cce60a0f788fe876da361` is within `originalCARQuadratic_zero`: replace `simp [originalCARQuadratic]` with an explicit `unfold originalCARQuadratic`, `simp only [zero_smul]`, then `simp`. Original source file Git blob changed from `b141e620bc35cdfaae2795aa3f305cace157c5e5` to `171dee12e60414e24a2fd25e28de7b2ef14bb7ba`. Original two preceding theorem bodies, the entire independent consumer and the exact strict workflow are unchanged.
+
+[Run #44960222120](https://github.com/etblink/math/actions/runs/44960222120) is the newly started native gate at exact tested commit `00fcf97a70b52742b17cce60a0f788fe876da361` and should not be labeled GREEN until cold compilation, independent consumer, three+three source/consumer axiom checks, exact pins, and archive all qualify. The run launched automatically via the existing isolated-branch workflow trigger. If this attempt is another native RED, honor the two-native-RED stop rule. No additional repair/retry authorized automatically.
