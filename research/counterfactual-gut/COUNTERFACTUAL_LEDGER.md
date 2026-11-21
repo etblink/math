@@ -203,3 +203,15 @@ After two strict native proof REDs, the plan was changed—not retried blindly. 
 | ID | Claim | Status | Gate |
 | --- | --- | --- | --- |
 | CF-058 | A massless source Fock field can be derived from the accepted massive source theorem through subtraction instead of failed direct finite-sum algebra | **NEW SOURCE-DONOR CANDIDATE / NOT LEAN-QUALIFIED** | R3 exact native+independent source consumer and allowed-axiom audit; preserve any failure's first causal helper and artifact |
+
+
+## 2026-11-21 / D1F R3 strict RED; staged recovery freeze
+
+[Read R3 exact-run first-causal memorandum](./D1F_R3_STRICT_RED_AND_STAGED_RECOVERY_2026_11_21.md). [Strict run #44937500313](https://github.com/etblink/math/actions/runs/44937500313), tested SHA `6d2a9978005cac7f5cddf0bc5c5ed1fb9619a37c`, **NATIVE RED**. Pinned original source/toolchain preflight and 8,951 dependencies PASS; new `D1FOriginalMasslessYukawaFockQuantization.lean` fails at `38:2` (`ring failed; ⊢ Complex.I*(1/2)=0`) in `quantizeFrequency_sub`; line `42:52` leaves unsimplified zero at origin; `M.helper` field notation is invalid for the newly declared `FCP.BFSSHopfD1F` lemmas and propagates further errors. Two downstream public results print `sorryAx`. **No independent consumer ran.** [Artifact #14720865473](https://github.com/etblink/math/actions/runs/44937500313/artifacts/14720865473), GitHub-reported SHA256 `b7501b9f9cc2d7c77be4cbb7f6b0c2ddd9662acb9c1dbc09c585ea90f8924815`.
+
+**Process decision:** Three D1F strict REDs, now including a different source-donor architecture; **no R4 blind full-build retry**. Preserve original and candidate code. Isolate helper proofs (typed quantization subtraction, source cubic zero at origin, correct namespace calls) with separate minimal elaboration before integrating donor theorem. No new accepted physics.
+
+| ID | Hypothesis / procedure | Disposition | Evidence |
+| --- | --- | --- | --- |
+| CF-059 | R3 source-donor subtraction implementation qualifies the original massless Fock quantization bridge | **RED — UNQUALIFIED** | Native helper `quantizeFrequency_sub` fails normalization; `masslessField_zero` unresolved; namespace/field mistakes, `sorryAx`, consumer not reached |
+| CF-060 | R3 failure disproves the source algebraic massless-interaction identity or original BFSS physics | **NOT SUPPORTED** | All failures are Lean proof/interface errors; frozen original sources compile. Mathematical bridge remains a candidate; source donor theorem still accepted in its own scope |

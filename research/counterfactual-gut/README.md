@@ -109,3 +109,8 @@ The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINA
 ## D1F R3 new proof architecture (2026-11-21)
 
 [Source-donor R3 memorandum](./D1F_R3_SOURCE_DONOR_SUBTRACTION_MICROGATE_2026_11_21.md) documents replacement of the two failed direct double-sum tactics with the **compiled** original massive-plus-interaction Fock identity evaluated at `X` and `0`. R3 commit `6d2a9978005cac7f5cddf0bc5c5ed1fb9619a37c` and [run #44937500313](https://github.com/etblink/math/actions/runs/44937500313) **pending at launch**; proof must not be claimed qualified without strict native+independent consumer and allowed-axiom reports. CF-058 added append-only.
+
+
+## D1F R3 strict RED and stop rule (2026-11-21)
+
+[R3 first-causal diagnosis and staged-proof decision](./D1F_R3_STRICT_RED_AND_STAGED_RECOVERY_2026_11_21.md) verifies [run #44937500313](https://github.com/etblink/math/actions/runs/44937500313), tested at `6d2a9978005cac7f5cddf0bc5c5ed1fb9619a37c`. Original source/toolchain/dependencies PASS; new Lean module RED at frequency-subtraction helper plus source zero-at-origin simplification and local namespace projection errors. D1F public downstream roots carry `sorryAx`, consumer not reached. **No R4 until individual helper proofs have a source-exact validation plan.** Ledger adds CF-059/CF-060; do not infer physical falsification.
