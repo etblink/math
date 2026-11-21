@@ -48,9 +48,9 @@ theorem relationalSourceComplexFourGroupNorm_smul
     (z : ℂ) (x : RelationalSourceComplexFour) :
     relationalSourceComplexFourGroupNorm (z • x) =
       ‖z‖ * relationalSourceComplexFourGroupNorm x := by
-  letI : NormedAddCommGroup RelationalSourceComplexFour :=
+  let : NormedAddCommGroup RelationalSourceComplexFour :=
     relationalSourceComplexFourNormedAddCommGroup
-  letI : NormedSpace ℂ RelationalSourceComplexFour :=
+  let : NormedSpace ℂ RelationalSourceComplexFour :=
     relationalSourceComplexFourNormedSpace
   change ‖z • x‖ = ‖z‖ * ‖x‖
   exact norm_smul z x
