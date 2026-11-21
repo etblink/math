@@ -310,3 +310,15 @@ After two strict native proof REDs, the plan was changed—not retried blindly. 
 | CF-095 | D1K1A gauge color transport proves physical Gauss-invariant, smooth/normalizable spinor, massless-field expectation, or original (q[\Psi_R]\to0) | **NOT ESTABLISHED / EXPLICITLY OUT OF SCOPE** | Subsequent stabilizer phase, spatial rotor, smooth-core extension, source bracket expectation and full physical form bound |
 
 **Next decision after exact CI evidence:** either preserve RED first cause and repair only its isolated atom, or accept narrow D1K1A GREEN and advance to Gamma8 sign/stabilizer and original-carrier smooth Spin48 lift. D1F three strict REDs remain untouched. No changes to original Lean sources, main or live RHOPF.
+
+
+## 2026-11-21 / D1K1A R1 strict RED — original color-index literal first cause
+
+[First-causal R1 compiler and archive audit](./D1K1A_R1_STRICT_RED_COLORINDEX_FIRST_CAUSAL_2026_11_21.md), [run #44947732882](https://github.com/etblink/math/actions/runs/44947732882), exact tested `225e837b98f3d8e34e11ff1f68835a05fe2af109`. **RED** after successful checkout, original source preflight, pinned toolchain/Mathlib restore and original G4J dependency compilation. Failure in new `D1K1AOriginalFockSeedGaugeTransport.lean` only: line 37 `OfNat (ColorIndex 2) 1` and line 39 `OfNat (ColorIndex 2) 2` unsynthesized in literal color orbitals; downstream source-root axiom reports polluted by `sorryAx`; independent consumer **NOT REACHED**. [Evidence artifact #14724253418](https://github.com/etblink/math/actions/runs/44947732882/artifacts/14724253418), GitHub-reported SHA256 `fdf94ef2e4fdeeb42d2651a1211d4e10a3460b26b0d1a9233cec91bd80d8d0e0`. All D1K1A proof candidates **UNQUALIFIED**.
+
+| ID | Adversarial test | Adjudication | Stop rule |
+| --- | --- | --- | --- |
+| CF-096 | D1K1A's first source-typed proof should elaborate the color orbitals directly with `1 : ColorIndex 2` and `2 : ColorIndex 2` | **REFUTED BY NATIVE LEAN**: no `OfNat` instance synthesized at lines 37/39, yielding `sorryAx` at all three reported roots; original sources and dependencies passed | Explicit bound-carrying `Fin` literals are an untested possible local repair; do not claim success or run a speculative R2 |
+| CF-097 | An R1 RED of the new eight-particle Lean seed disproves the finite-dimensional Fock-state or source massless physical-energy hypothesis | **REJECTED AS AN INFERENCE**: this is a literal/type elaboration failure, not a mathematical counterexample; independent consumer unrun and physical proof untouched | Freeze R1 evidence, prioritize Python-first D1L full-form energy falsification; revisit Lean only after a typed and significant target |
+
+**Next:** no further Lean trial at this stage; move attention to Python and analytic D1L energy investigation. No original Lean, main, live RHOPF or D1F source modification.
