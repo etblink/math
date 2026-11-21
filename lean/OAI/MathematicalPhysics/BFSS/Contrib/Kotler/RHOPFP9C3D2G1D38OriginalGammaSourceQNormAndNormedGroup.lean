@@ -79,6 +79,7 @@ noncomputable def relationalSourceComplexFourNormedAddCommGroup :
   letI : InnerProductSpace.Core ℂ RelationalSourceComplexFour :=
     relationalSourceComplexFourInnerProductCore
   exact InnerProductSpace.Core.toNormedAddCommGroup
+    (𝕜 := ℂ) (F := RelationalSourceComplexFour)
 
 #print axioms relationalSourceComplexFourQNorm
 #print axioms relationalSourceComplexFourQNorm_nonneg
