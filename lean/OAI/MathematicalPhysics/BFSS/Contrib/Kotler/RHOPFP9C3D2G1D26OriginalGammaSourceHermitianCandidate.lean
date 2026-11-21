@@ -52,7 +52,7 @@ theorem relationalSourceHermitianCandidate_im
 Hermitian conjugate symmetry for this source-derived candidate. -/
 theorem relationalSourceHermitianCandidate_conj_symm
     (x y : Fin 4 → ℝ) :
-    Complex.conj (relationalSourceHermitianCandidate y x) =
+    star (relationalSourceHermitianCandidate y x) =
       relationalSourceHermitianCandidate x y := by
   apply Complex.ext
   · change relationalSourceInnerCore.inner y x =

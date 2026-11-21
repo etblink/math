@@ -27,7 +27,7 @@ example (x y : Fin 4 → ℝ) :
   relationalSourceHermitianCandidate_im x y
 
 example (x y : Fin 4 → ℝ) :
-    Complex.conj (relationalSourceHermitianCandidate y x) =
+    star (relationalSourceHermitianCandidate y x) =
       relationalSourceHermitianCandidate x y :=
   relationalSourceHermitianCandidate_conj_symm x y
 
