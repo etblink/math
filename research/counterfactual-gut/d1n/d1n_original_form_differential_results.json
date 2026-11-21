@@ -1,0 +1,80 @@
+{
+  "kind": "D1N independent exact original local integrand + SVD/ambient gradient tests",
+  "source_contracts": {
+    "Gamma9": "SU2RealGammaProbe.lean b9b8192055c70f0d001d7982669b9823c55562ed",
+    "FermionQuantization": "FermionQuantization.lean c6b72d030225c707ef54f5285a18a7a8175ee280",
+    "GaugeData": "G4J exact color source e20c76fb22bc09d16dbcd8657333227cb34ed1ea"
+  },
+  "counts": {
+    "point": 12,
+    "differential": 8,
+    "gauge": 12
+  },
+  "max_abs_residuals": {
+    "gamma_clifford": 0.0,
+    "fermion_expect": 1.9895196601282805e-13,
+    "fermion_angular_formula": 1.6653345369377348e-16,
+    "dr_finite_difference": 3.6303023087658204e-10,
+    "dt_finite_difference": 5.978034733900017e-11,
+    "du_finite_difference": 4.4980470736977196e-11,
+    "dn_finite_difference": 2.2526003631839764e-11,
+    "cov_finite_difference": 4.026115552058229e-11,
+    "scalar_gradient_finite_difference": 7.660345840296499e-09,
+    "gauge_color_covariance": 5.863365348801608e-16,
+    "gauge_point_energy": 1.2505552149377763e-12,
+    "boson_potential": 2.8421709430404007e-13
+  },
+  "sample_point_examples": [
+    {
+      "r": 10.000000000000002,
+      "Y_fro": 1.1767102877583344,
+      "fermion_angular": 0.1212634011177772,
+      "analytic_formula": 0.12126340111777709,
+      "fermion_expect": -113.13708498984765,
+      "potential": 138.85665165413513,
+      "point_local_energy_model": 164.33405663697155
+    },
+    {
+      "r": 10.799999999999999,
+      "Y_fro": 1.4558833577179233,
+      "fermion_angular": 0.1043064633823318,
+      "analytic_formula": 0.10430646338233196,
+      "fermion_expect": -122.18805178903528,
+      "potential": 248.24455984690528,
+      "point_local_energy_model": 373.7212927464614
+    },
+    {
+      "r": 11.6,
+      "Y_fro": 1.3786611590022304,
+      "fermion_angular": 0.09013937585175742,
+      "analytic_formula": 0.09013937585175744,
+      "fermion_expect": -131.23901858822322,
+      "potential": 256.36059114464933,
+      "point_local_energy_model": 381.2198902846011
+    },
+    {
+      "r": 12.399999999999997,
+      "Y_fro": 1.199634370483287,
+      "fermion_angular": 0.07859721154314726,
+      "analytic_formula": 0.07859721154314728,
+      "fermion_expect": -140.28998538741098,
+      "potential": 221.6349489755138,
+      "point_local_energy_model": 302.79151384370545
+    }
+  ],
+  "width_negative_control": [
+    {
+      "alpha": 1.3859292911256331,
+      "coefficient_of_r": 0.0023089201018340333
+    },
+    {
+      "alpha": 1.4142135623730951,
+      "coefficient_of_r": -1.7763568394002505e-15
+    },
+    {
+      "alpha": 1.4424978336205572,
+      "coefficient_of_r": 0.0022183742154862074
+    }
+  ],
+  "limitations": "NOT a physical GaugeData or SmoothCore theorem; exact local finite-dimensional integrand, continuous extension not source typed."
+}
