@@ -297,3 +297,16 @@ After two strict native proof REDs, the plan was changed—not retried blindly. 
 | CF-092 | Gauge/phase/source-bracket identities already establish original BFSS `q[Ψ_R]→0` or zero essential spectrum | **NOT ESTABLISHED**: source-typed rotor/state, true invariant `SmoothCore 2` trial and complete original quadratic-form error control still OPEN; `K=26.06000549538` remains prescreen | Isolated typed gauge/rotor microgate, then exact smooth-core cutoffs/expectation and global nonnegative form bound |
 
 **D1K1 decision:** do not launch D1F R4 or broad CI; stage first the original `Fermion 2` source gauge+rotor state interface, then direct bracket expectation, then full form estimate. Main, live RHOPF, original Lean, pins and all historical strict-RED artifacts unchanged.
+
+
+## 2026-11-21 / D1K1A original Fock seed original-GaugeData strict gate launched
+
+[Source/consumer/strict-workflow launch checkpoint](./D1K1A_SOURCE_FOCK_GAUGE_STRICT_LAUNCH_2026_11_21.md), tested commit `225e837b98f3d8e34e11ff1f68835a05fe2af109`, [run #44947732882](https://github.com/etblink/math/actions/runs/44947732882). **At record creation: IN PROGRESS / NOT QUALIFIED.** Exact source pins/preflight subsequently observed PASS, Lean toolchain restore/build not yet complete. Stage is a small original-Fock color transport gate, not the full D1K smooth Spin48/physical-energy claim.
+
+| ID | Falsifiable D1K1A claim / objective | Current disposition | Strict acceptance requirement |
+| --- | --- | --- | --- |
+| CF-093 | A genuine eight-orbital wedge using **original Gamma8 diagonals and G1A mode labels** can be constructed and transported into literal original `Fermion 2` without replacing the carrier | **SOURCE-EXACT LEAN CANDIDATE COMMITTED / NOT YET QUALIFIED** | Native compilation; accepted axioms and source-typed declaration. Nonzero/normalized norm and exact sign balance are **separate OPEN** objectives |
+| CF-094 | That seed's color orbit agrees with the complete pinned original `pairedGaugeData.fermion` and obeys source SU2 multiplication and isometry | **THREE THEOREM CANDIDATES + INDEPENDENT CONSUMER PENDING** | Strict native proof + independent `Fermion 2` consumer, allowed axiom reports; `sorryAx` forbidden |
+| CF-095 | D1K1A gauge color transport proves physical Gauss-invariant, smooth/normalizable spinor, massless-field expectation, or original (q[\Psi_R]\to0) | **NOT ESTABLISHED / EXPLICITLY OUT OF SCOPE** | Subsequent stabilizer phase, spatial rotor, smooth-core extension, source bracket expectation and full physical form bound |
+
+**Next decision after exact CI evidence:** either preserve RED first cause and repair only its isolated atom, or accept narrow D1K1A GREEN and advance to Gamma8 sign/stabilizer and original-carrier smooth Spin48 lift. D1F three strict REDs remain untouched. No changes to original Lean sources, main or live RHOPF.
