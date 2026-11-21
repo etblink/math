@@ -137,7 +137,7 @@ jobs:
             pref+'RHOPFP9C3D2G1D40OriginalGammaSourceQComplexNormedSpace.lean':'d135eadf1d5fdd5810b9dd7fa84fd89cfee39114',
             pref+'RHOPFP9C3D2G1D41OriginalGammaSourceQComplexInnerProductSpace.lean':'6541f3742578a0d6bae213cea6fec61111dd7920',
             pref+'RHOPFP9C3D2G1D42OriginalGammaCircleComplexScalarBridge.lean':'bbc9459e1ffedfcd20470c74efd74200688773b5',
-            pref+'RHOPFP9C3D2G1D43OriginalGammaComplexFinrankTwo.lean':'b4765c698516a096c29eeb6136c2784e372528db',
+            pref+'RHOPFP9C3D2G1D43OriginalGammaComplexFinrankTwo.lean':'66535d8776544434be93197844a3d93400776d13',
             'lean/diagnostics/RHOPFP9C3D2G1D43OriginalGammaComplexFinrankTwoIndependentAudit.lean':'ed3ceb2e4dd95afa62d1a87be5d536ec4b19d5a9',
             'research/topology/tools/rhopf_p9a0_original_gamma_source_independent.py':'9d20952c366e356ff5dc656a35d0b604236a15ac',
             'research/topology/data/BFSS_GAMMA9_SOURCE_PERMUTATION_FIXTURE_2026_11_18.json':'684680e139cfcd09c37bf075c0c014bdaa80ba35'}
@@ -148,7 +148,7 @@ jobs:
           consumer=Path('lean/diagnostics/RHOPFP9C3D2G1D43OriginalGammaComplexFinrankTwoIndependentAudit.lean').read_text()
           assert re.findall(r'(?m)^import (\S+)$',src)==[
             'Mathlib.LinearAlgebra.Complex.FiniteDimensional',
-            'Mathlib.Tactic.Omega',
+            'Mathlib.Tactic',
             'OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D42OriginalGammaCircleComplexScalarBridge']
           assert re.findall(r'(?m)^import (\S+)$',consumer)==[
             'OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D43OriginalGammaComplexFinrankTwo']

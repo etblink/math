@@ -1,5 +1,5 @@
 import Mathlib.LinearAlgebra.Complex.FiniteDimensional
-import Mathlib.Tactic.Omega
+import Mathlib.Tactic
 import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D42OriginalGammaCircleComplexScalarBridge
 
 /-!
