@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Independent D1L symbolic and finite-difference checks (no BFSS Lean claims)."""
 import json, math
+from pathlib import Path
 import numpy as np
 import sympy as s
 import d1l_full_energy as d
@@ -79,5 +80,5 @@ out={"exact_selected_D1H_identity":True,"general_width_leading":"4*a + 8/a - 8*s
     "max_svd_jacobian_residual":max_jac,
     "cutoff_r_derivative_residual":abs(b-br),
     "cutoff_Y_derivative_residual":abs(y-by)}
-with open('/mnt/data/d1l/d1l_symbolic_validation.json','w') as f:json.dump(out,f,indent=2)
+with open(Path(__file__).resolve().parent / 'd1l_symbolic_validation.json','w') as f:json.dump(out,f,indent=2)
 print(json.dumps(out,indent=2))
