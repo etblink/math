@@ -85,6 +85,12 @@ theorem relationalSourceComplexFourSourceQIsometricRepr_circle
     relationalSourceComplexFourSourceQIsometricRepr
       (relationalSourceComplexFourCircleAction z x) =
         (z : ℂ) • relationalSourceComplexFourSourceQIsometricRepr x := by
+  let : NormedAddCommGroup RelationalSourceComplexFour :=
+    relationalSourceComplexFourNormedAddCommGroup
+  let : NormedSpace ℂ RelationalSourceComplexFour :=
+    relationalSourceComplexFourNormedSpace
+  let : InnerProductSpace ℂ RelationalSourceComplexFour :=
+    relationalSourceComplexFourInnerProductSpace
   rw [relationalSourceComplexFourCircleAction_eq_smul]
   exact map_smul
     (relationalSourceComplexFourSourceQIsometricRepr.toLinearEquiv) (z : ℂ) x
