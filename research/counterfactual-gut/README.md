@@ -79,3 +79,8 @@ Use [COUNTERFACTUAL_LEDGER.md](./COUNTERFACTUAL_LEDGER.md) as the single entry p
 ## D1B source Fock spectral classification (2026-11-21)
 
 [D1B algebra and near-origin spectrum](./D1B_ORIGINAL_GRAM_FOCK_SCALAR_KERNEL_AND_ZERO_GAP_AUDIT_2026_11_21.md) derives directly from inspected original CAR and Gamma9 interfaces that every **traceless symmetric** real 16×16 source coefficient gives **zero** JOIN0A Gram–Fock operator; the symmetric trace component is scalar and skew coefficients give the genuinely self-adjoint normalized fields. The existing source norm bound and genuine gauge-invariant Fock vacuum yield normalized **physical gauge-fixed radial** wavefunctions near the bosonic origin with arbitrarily small multiplier image: **zero approximate spectrum for this bounded field**, not an assertion about the true BFSS Hamiltonian's mass gap. [Ledger CF-028–CF-033](./COUNTERFACTUAL_LEDGER.md) records the positive and negative knowledge with scope limits.
+
+
+## D1C determinant / orientation checkpoint (2026-11-21)
+
+The [D1C original-source Yukawa coefficient audit](./D1C_SOURCE_YUKAWA_DETERMINANT_AND_ORIENTATION_OBSTRUCTION_2026_11_21.md) derives a new exact matrix identity from the pinned 16×16 Gamma9 matrices and normalized source Pauli-color f=√2ε: **det A_f(X)=2^40(det XᵀX)^8** for the specified 48×48 real quadratic-fermion coefficient. The **zero-eigenvalue gap locus is exactly rank-three X**, whose ordinary color gauge quotient already has **π3=0** (D1A). Eigenvalues and Pfaffian sign cannot distinguish a color reflection, and the W orientation sign is not a spatial SO9 scalar. The full native BFSS Hamiltonian/Fock spectral identification, parameter-family topology and 4D chirality remain **unproved**. The ledger adds **CF-034–CF-040**.
