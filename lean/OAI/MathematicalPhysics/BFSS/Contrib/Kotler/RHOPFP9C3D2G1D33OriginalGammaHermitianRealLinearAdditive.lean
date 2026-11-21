@@ -61,12 +61,14 @@ theorem relationalSourceHermitianCandidate_real_smul_left
     relationalSourceHermitianCandidate (a • x) y =
       (a : ℂ) * relationalSourceHermitianCandidate x y := by
   apply Complex.ext
-  · change relationalSourceInnerCore.inner (a • x) y =
-        a * relationalSourceInnerCore.inner x y
+  · rw [Complex.re_ofReal_mul]
+    change relationalSourceInnerCore.inner (a • x) y =
+      a * relationalSourceInnerCore.inner x y
     simp only [relationalSourceInnerCore_inner_apply,
       relationalSourceBilinForm_apply]
     exact relationalSourceTransportedDot_smul_left a x y
-  · change -relationalSourceInnerCore.inner
+  · rw [Complex.im_ofReal_mul]
+    change -relationalSourceInnerCore.inner
         (relationalPhaseJFourLinear (a • x)) y =
         a * (-relationalSourceInnerCore.inner
           (relationalPhaseJFourLinear x) y)
