@@ -75,7 +75,9 @@ noncomputable def originalCARQuadratic
     this basic exact source-carrier consumer is intentionally small. -/
 theorem originalCARQuadratic_zero :
     originalCARQuadratic (fun _ _ => 0) = 0 := by
-  simp [originalCARQuadratic]
+  unfold originalCARQuadratic
+  simp only [zero_smul]
+  simp
 
 #print axioms originalThetaCAR
 #print axioms originalThetaPair_covariant
