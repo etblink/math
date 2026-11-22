@@ -35,8 +35,19 @@ theorem originalMasslessAction_gauge_ae_transport
   have hf := ContinuousLinearMap.coeFn_compLp
     (G.fermion g).toContinuousLinearEquiv.toContinuousLinearMap
     (G.bosonPullback g⁻¹ ψ)
+  -- Align the two Mathlib a.e. representative identities with the exact
+  -- source GaugeData LinearMap wrappers before rewriting under Q(x).
+  -- Without this typed change, rw cannot see compLp inside G.fiberAction.
+  change
+    (G.fiberAction g (G.bosonPullback g⁻¹ ψ) :
+      Boson N → Fermion N) =ᵐ[volume]
+    (fun x : Boson N =>
+      G.fermion g ((G.bosonPullback g⁻¹ ψ : FullL2 N) x)) at hf
   have hb := Lp.coeFn_compMeasurePreserving ψ
     (G.boson g⁻¹).measurePreserving
+  change
+    (G.bosonPullback g⁻¹ ψ : Boson N → Fermion N) =ᵐ[volume]
+    (fun x : Boson N => (ψ : FullL2 N) (G.boson g⁻¹ x)) at hb
   filter_upwards [hf, hb] with x hfx hbx
   change M.quantizeFrequency
       (FCP.BFSSMasslessM1a.masslessSourceFrequency M x)
