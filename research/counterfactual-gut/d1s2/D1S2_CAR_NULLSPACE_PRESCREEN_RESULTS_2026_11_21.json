@@ -1,0 +1,38 @@
+{
+  "experiment": "D1S2 CAR nullspace and gauge transport prescreen",
+  "ran_utc_date": "2026-11-22",
+  "seed": 20261123,
+  "full_48_cases": 40,
+  "reduced_fock_cases": 9,
+  "reduced_modes": [
+    3,
+    6
+  ],
+  "passed": true,
+  "analytic_identity": "Q(K)=Q((K-K^T)/2)+(i/4)*Tr(K)*I",
+  "nullspace_dimension_at_least": 1175,
+  "full_48_max": {
+    "skew_transport": 5.446780560468639e-15,
+    "symmetric_traceless_transport": 2.4115662818340343e-15,
+    "skew_frobenius_invariance": 1.4210854715202004e-14,
+    "skew_spectrum_invariance": 4.833539459876348e-14,
+    "trace_invariance": 1.4210854715202004e-14,
+    "decomposition": 7.772677424536192e-15
+  },
+  "reduced_fock_max": {
+    "CAR": 1.7763568394002505e-15,
+    "scalar_decomposition": 6.262854365434711e-15,
+    "symmetric_traceless_invisibility": 3.1264010231025835e-15,
+    "skew_selfadjoint": 3.1401849173675503e-16,
+    "tracezero_selfadjoint": 2.0375314937740533e-15,
+    "trace_antihermitian_prediction": 2.1316282072803006e-14,
+    "scalar_gauge_transport": 7.424318163599374e-15
+  },
+  "negative_control_wrong_factor_min": 3.394112549695427,
+  "minimum_nontrivial_symmetric_traceless_norm_reduced": 3.7432067157697895,
+  "minimum_nontrivial_symmetric_traceless_norm_48": 33.12051759122671,
+  "local_original_detailed_prescreen_sha256": "ea3b7ea9109132c26f5cff84543105fd059b8e2b3cf7a8d6cf3cf46159e781e7",
+  "local_original_detailed_results_sha256": "342a7615deb832047bcc60a450f2ac38047b526db0f4c2949eee9a6c30f30fd4",
+  "repository_reduced_replicator_status": "Independent compact replicator prepared; the recorded numerical values originate from the more detailed locally executed prescreen whose SHA is above.",
+  "limitations": "Real 48-index coefficient tests and reduced 3/6-mode Fock analogues only; proper SO(3) rotations, no exact source SU(2) group elements, no full 2^24 Fock computation or Lean/physics theorem."
+}
