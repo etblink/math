@@ -32,3 +32,8 @@ New path-scoped workflow must verify frozen original BFSS Core/FermionFrequency/
 ## Claim boundary
 
 A2c source-only strict GREEN, if it occurs, establishes the mathematical **finite bounded original source quantizer self-adjointness for any real skew source K**. Without a separate exact D1S3 consumer theorem, physical original `fermionCoefficient x` specialization is **unqualified**. No implication for gauge-invariant domain of full quantum Hamiltonian, unbounded operator essential self-adjointness, spectral discreteness, mass gap, original BFSS ground state, physical Hopfion, Standard Model or GUT.
+
+
+## Exact candidate source and first CI launch receipt
+
+New source implementation commit [`1be36f8006d9d3e4d17b1839378504b887ca3074`](https://github.com/etblink/math/commit/1be36f8006d9d3e4d17b1839378504b887ca3074). Dedicated path-scoped strict workflow committed at `7d73df4b282a8611cdb43040fc7d70008d8a673e`, [original R1 #44985235000](https://github.com/etblink/math/actions/runs/44985235000), **PENDING at launch**. Its source preflight requires exactly one ADJ-A2b import and one `#print axioms` of `originalSkewFrequencyMatrix_quantize_isSelfAdjoint`; pins original source Core/FermionFrequency/FermionQuantization/FrequencyContraction and A0/A1/A2a/A2b accepted blobs, Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`. Evidence archive is unconditional and must be independently inspected. No A2c theorem or physical consumer is qualified as of this launch.
