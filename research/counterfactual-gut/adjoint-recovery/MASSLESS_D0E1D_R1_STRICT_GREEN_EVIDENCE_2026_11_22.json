@@ -1,0 +1,69 @@
+{
+  "gate": "BFSS-MASSLESS-D0e1d",
+  "attempt": "R1",
+  "disposition": "ACCEPTED_RESEARCH_BRANCH_STRICT_GREEN",
+  "branch": "research/bfss-hopfion-gut-counterfactuals-20261121",
+  "exact_tested_commit": "1d8205e97250d5ae1f961240dd93448ab8523cdd",
+  "workflow": "BFSS MASSLESS-D0e1d paired SU2 original closed dense graph strict",
+  "original_run": {
+    "id": 45050870462,
+    "attempt": 1,
+    "conclusion": "success",
+    "job_id": 137295467275
+  },
+  "evidence": {
+    "artifact_id": 14766096104,
+    "file_count": 6,
+    "zip_size_bytes": 9028,
+    "crc_valid": true,
+    "embedded_commit_matches": true,
+    "sha256": "cba7086343920d925d18086014f787b49f07b50145b3c0af65ba198ffa6a4c98",
+    "sha256_matches_github_digest": true,
+    "members": [
+      "native-source.log",
+      "preflight.log",
+      "environment-sha256.txt",
+      "cache.log",
+      "strict-axioms.log",
+      "tested-sha.txt"
+    ]
+  },
+  "toolchain": {
+    "lean": "4.34.1",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "dependency_build_jobs": 9007
+  },
+  "preflight": "BFSS_MASSLESS_D0E1D_SOURCE_PIN_PREFLIGHT_PASS",
+  "strict_sentinel": "BFSS_MASSLESS_D0E1D_PAIRED_CLOSED_DENSE_GRAPH_STRICT_GREEN",
+  "native_source_compilation": "PASS",
+  "standalone_same_source_warning_as_error": "PASS",
+  "independent_imported_consumer": "NOT_PART_OF_THIS_WORKFLOW",
+  "axiom_reports": {
+    "root_count": 2,
+    "from_native": 2,
+    "from_standalone": 2,
+    "each_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sorryAx": false
+  },
+  "qualified_theorems": [
+    "FCP.BFSSMasslessD0e1d.pairedOriginalMasslessGraph_isClosed",
+    "FCP.BFSSMasslessD0e1d.pairedOriginalMasslessDomain_dense_and_graph_closed"
+  ],
+  "source_sha": "84562c41e7cff18cba6f5ad2f0584447f2ff6794",
+  "workflow_sha": "af55860339fe3b24ce17fd2b8478c1ed5f4072e8",
+  "semantic_scope": "Original paired SU2 48-Majorana Fock source specialization of generic D0e1c closed massless multiplication graph plus accepted D0d0 original domain density; no surrogate Fock model",
+  "inventory_count": 14,
+  "not_proved": [
+    "self-adjointness or symmetry of massless multiplication operator",
+    "gauge-domain invariance on physical Hilbert",
+    "equivalence to original normalized H=(1/16)T†T",
+    "spectral gap or zero-energy physical state",
+    "Hopfion/SM/GUT"
+  ],
+  "unified_integration_status": "NOT_INTEGRATED; requires fresh unified-HEAD source parity and independent strict candidate CI",
+  "main_unchanged": true
+}
