@@ -746,3 +746,18 @@ Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 so
 | CF-228 | A2a pointwise GREEN permits accepting finite physical-Fock self-adjointness | **FALSE:** ADJ-A2b must apply abstract A0 finite double-sum theorem to source A2a pointwise result; distinct ADJ-A2c must identify the exact source `i/2` quantizer, with independent consumer qualification. | D1S4 R1/R2 frozen strict RED, no physical Hamiltonian/spectral/Hopfion/SM/GUT claims. |
 
 **Next bounded gate:** implement ADJ-A2b in a distinct new source module, import qualified A0 and A2a only, and qualify one original finite source theta-pair double-sum star-skew theorem with its own strict workflow and artifact. No D1S4 retry or edits to original BFSS, integration, main, FCP or RHOPF.
+
+
+## 2026-11-21 / ADJ-A2b original finite source theta sum — strict gate launched
+
+[Exact source and proof contract](./adjoint-recovery/ADJ_A2B_ORIGINAL_FINITE_SUM_STAR_SKEW_PLAN_2026_11_21.md). New source file `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSAdjointA2bOriginalFrequencyDoubleSumSkew.lean` introduced at `3c06f47ca95119b09becc54d1f750f7fe2751c21`, importing **only** qualified abstract ADJ-A0 and original-source ADJ-A2a. The only theorem `FCP.BFSSAdjointA2b.originalSkewFrequencyMatrix_finiteSum_star_skew` binds original source coefficient family as a typed `U` on literal original Fock CLM, passes each pointwise star reversal to A2a and applies A0 finite-pair sum. No nested source matrix rewrite, no full `quantizeFrequency` claim, no D1S4 import.
+
+**New independent strict workflow:** `.github/workflows/bfss-adj-a2b-original-frequency-double-sum-strict.yml` with original frozen BFSS and A0/A1/A2a source pins, Lean 4.34.1, exact Mathlib pin, native original-source build, warning-as-error strict recompile, exactly **one** permitted axiom root, sentinel and unconditional log/archive preservation. [ADJ-A2b strict R1 #44984349166](https://github.com/etblink/math/actions/runs/44984349166) exact tested source/workflow commit `5d96def503b529495afedb8d63884f145e503566` **QUEUED/PENDING at launch — no qualification claimed**. This is a distinct gate, not D1S4 R3. Documentation appended subsequently does not modify the tested source.
+
+| ID | Proposed test | Status and discrimination | Bound |
+| --- | --- | --- | --- |
+| CF-229 | Original double-sum skewness requires repeating D1S4's long manual `star_sum` tactic proof | **TEST STAGED:** invoke previously qualified abstract A0 with separately typed original `U` and direct A2a pointwise bridge; native CI must decide. | Do not promote a theorem before strict source and axiom checks. |
+| CF-230 | A2b could be implemented without depending on original theta/carrier by only importing A0 | **REJECTED:** original A2a supplies the source-exact `M.theta` and `K r s` link; both A0 and A2a are imported, preserving physical-source fidelity. | Still finite original Fock operator algebra, not an unbounded Hamiltonian. |
+| CF-231 | A2b R1 GREEN implies `M.quantizeFrequency K` Hermiticity | **FALSE:** exact `Complex.I/2` scalar conjugation and source definition bridge deferred to ADJ-A2c, with downstream physical `fermionCoefficient` consumer required. | D1S4 R1/R2 remain frozen RED; no mass-gap, Hopfion, SM or GUT claim. |
+
+**Stop rule:** first native RED preserve causal logs and original artifact; at most one diagnosed local repair, then two-RED STOP. No sorried theorem, relaxed warning settings or resource-limit changes.
