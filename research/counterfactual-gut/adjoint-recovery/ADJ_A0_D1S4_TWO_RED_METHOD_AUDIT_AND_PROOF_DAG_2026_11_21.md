@@ -60,3 +60,18 @@ New path-scoped workflow `.github/workflows/bfss-adj-a0-abstract-pairsum-star-st
 ## 6. Launch receipt — abstract microgate only
 
 New [ADJ-A0 R1 strict run #44981248994](https://github.com/etblink/math/actions/runs/44981248994) launched at **exact source/workflow tested commit** `66edb4caf5c59aba3bc3cddb902435f6da3618f7`, GitHub job `137082003730`. At the launch audit, contract preflight **PASS**, checkout **PASS**, pinned Lean/Mathlib restoration in progress; native build/strict axiom result **PENDING**, no accepted A0 theorem. This is an independent coefficient-free sum lemma, not D1S4 R3. Preserve first-causal diagnostics if RED and accept only original successful run and single-root axiom report if GREEN.
+
+
+## 7. ADJ-A0 R1 strict GREEN — accepted original proof at exact commit
+
+**CURRENT DISPOSITION: QUALIFIED ABSTRACT THEOREM (source-only, not BFSS physical)**. Earlier "PENDING" text above records launch-time status, now superseded by this exact receipt.
+
+- [Original ADJ-A0 strict GREEN #44981248994](https://github.com/etblink/math/actions/runs/44981248994), `completed/success`, exact tested SHA `66edb4caf5c59aba3bc3cddb902435f6da3618f7`, run attempt 1, job `137082003730`; job checkout/preflight, pinned Lean 4.34.1 and Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612, native and strict stages, and artifact archive all **PASS**.
+- Native module build: `Build completed successfully (904 jobs)`. Strict `lake env lean -DautoImplicit=false -DwarningAsError=true` recompilation **PASS**. Literal `BFSS_ADJ_A0_ABSTRACT_PREFLIGHT_PASS` and `BFSS_ADJ_A0_ABSTRACT_STRICT_GREEN` markers both present in original job output.
+- Exactly one strict source root: `FCP.BFSSAdjointA0.finitePairSum_star_skew`; axioms **exactly** `[propext, Classical.choice, Quot.sound]`; `sorryAx` absent from the actual axiom report.
+- Original [artifact #14737403671](https://github.com/etblink/math/actions/runs/44981248994/artifacts/14737403671), 5,056 bytes, GitHub-reported digest `sha256:1b064c9191eb8bd536d73a5673b0976f6f34087ad88a0eb8ded61fab4bc18f99`; artifact upload job output reports the identical hash, artifact ID and size. This is the GitHub-provided digest, not an independently recomputed downloaded ZIP.
+- Accepted new source Git blob `373e9929a9d2aa5a6d9bb3e1b01c4748d44fcea0`, dedicated workflow blob `aacba0b3a05fc4958906f37206fac71b88193257`, both frozen and unchanged.
+
+**Exactly what was proved:** for any finite index type and an additive abelian group with compatible star operation, every `U` satisfying `star (U r s)=-(U s r)` has skew-star double sum. The proof makes no mention of original `FrequencyMatrix`, theta, BFSS Fermion or scalar multiplication. It does **not** establish ADJ-A1, ADJ-A2, original finite-Fock Hermiticity, gauge covariance, physical-domain invariance, spectral gap, Hopfion, SM or GUT.
+
+**Next allowed gate (design):** ADJ-A1 must use fully typed scalar/coefficient-independent helpers first; only after their exact source CI accepts may the original `K r s` matrix entry be introduced at a controlled boundary. No D1S4 R3; its two original REDs and artifacts remain frozen. A later physical source theorem needs independent source and public-consumer qualification.
