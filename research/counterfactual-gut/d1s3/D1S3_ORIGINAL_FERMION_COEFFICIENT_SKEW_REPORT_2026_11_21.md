@@ -5,9 +5,9 @@
 ## Research motivation and frozen boundaries
 
 D1S2 established the exact CAR formula
-[
+$
 Q(K) = Q((K-K^{\mathsf T})/2) + (i/4)\operatorname{tr}(K)I.
-]
+$
 Although arbitrary real `K` can yield a gauge-covariant non-self-adjoint scalar, BFSS only uses a source-defined physical coefficient `M.fermionCoefficient x`. The next falsifiable question is whether this actual coefficient is **necessarily skew**. Answering it avoids treating an unphysical arbitrary real matrix as a genuine BFSS interaction.
 
 Literal pinned source identities:
