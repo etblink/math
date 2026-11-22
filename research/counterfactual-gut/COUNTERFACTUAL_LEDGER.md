@@ -681,3 +681,5 @@ Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 so
 | CF-213 | Negative knowledge should be discarded when a successor proof route begins | **REJECTED:** both exact D1S4 RED artifacts, source/CI frozen blobs, causal diagnostics and historical precedents are retained; only a new self-contained mathematical atom proceeds. | Do not rewrite branch history or replace RED receipts. |
 
 **Accepted unaffected:** D1S0 original independent GREEN, D1S3 strict source GREEN. **Frozen unchanged:** D1R0, D1S1 independent consumer, D1T0/D1T1, D1S4 R1/R2; no original BFSS, main, unified, FCP or RHOPF edits.
+
+**ADJ-A0 launch provenance (not qualification):** [R1 #44981248994](https://github.com/etblink/math/actions/runs/44981248994), tested source/workflow commit `66edb4caf5c59aba3bc3cddb902435f6da3618f7`, job `137082003730`; preflight PASS and toolchain restore underway at last check. Full abstract finite-sum axiom qualification **PENDING**. No physical or original Fock theorem promoted.
