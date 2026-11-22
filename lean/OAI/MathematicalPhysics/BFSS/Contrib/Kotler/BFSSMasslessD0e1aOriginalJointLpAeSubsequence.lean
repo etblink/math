@@ -16,7 +16,7 @@ open OAI.BFSSQuantum
 open MeasureTheory
 
 /-- Two independently L²-convergent original bosonic FullL2 sequences
-admit one strictly increasing common subsequence converging pointwise
+possess one strictly increasing common subsequence converging pointwise
 almost everywhere in both coordinates. -/
 theorem originalFullL2_joint_ae_subsequence {N : ℕ}
     (ψ η : ℕ → FullL2 N) (φ ζ : FullL2 N)
