@@ -638,3 +638,16 @@ D1S0 independently strict GREEN preserved. D1S1 source covariance theorem compil
 
 **Next research target, NOT launched:** source exact finite-Fock `IsSelfAdjoint (M.quantizeFrequency (M.fermionCoefficient x))`, through a generic source real-skew coefficient lemma. No source or CI changes made during the R2 promotion.
 
+
+
+## 2026-11-21 / D1S4 original finite Fock quantizer self-adjointness — strict source-only R1 launched
+
+[Exact source, proof strategy and qualification contract](./d1s4/D1S4_ORIGINAL_QUANTIZER_SELFADJOINT_STRICT_RECORD_2026_11_21.md). [D1S4 R1 #44978109630](https://github.com/etblink/math/actions/runs/44978109630) launched at exact source commit b3c5eeaae14a46ee4c0b2f2bbbf4195b508e0efd; status **PENDING** at launch, NOT a qualified GREEN. New source candidate blob ea95d0e0ecdc7e6e0405f1df91d47757d96baed4 and strict workflow blob 48034f0a42aa6c88257092aba460dd1002f0ffe6. Frozen D1S3 source blob f35d70284bec100dc617935cf41a6c933c618e5b required by preflight.
+
+| ID | Counterfactual or target | Tested hypothesis / exact state | Qualification ceiling |
+| --- | --- | --- | --- |
+| CF-203 | The original real skew source coefficient is sufficient for finite-Fock quantizer self-adjointness | **SOURCE-ONLY TEST LAUNCHED / PENDING:** for real skew K, each U(r,s)=(K[r,s]:ℂ)•theta_r theta_s satisfies star U(r,s)=-U(s,r); the double sum is skew-adjoint and complex I/2 converts it to self-adjoint. New generic Lean theorem sourceQuantizeSkew_isSelfAdjoint must compile natively and strictly, with allowed axiom report. | Algebraic reasoning is not an accepted new Lean theorem; does not qualify unbounded Hamiltonian or source physical-domain properties. |
+| CF-204 | A separate duplicate 24-mode Fock model is needed to make the physical finite-Fock theorem | **REJECTED as source modeling choice**: the candidate imports only frozen original D1S3 source and applies the original theta_selfAdjoint and original FermionQuantization.quantizeFrequency on Fermion N, then specializes to pairedAlgebraData on Fermion 2. R1 exact source and workflow are pinned. | Paired carrier theorem is source-only if CI GREEN, not full independent public consumer or Standard Model identification. |
+| CF-205 | Finite-Fock Hermiticity of original Q(C(x)) would prove full BFSS self-adjointness, spectral gap or physical Hopfion | **FALSE INFERENCE**: original bosonic differential/operator domain and source SmoothCore, closure, gauge physical-state and full Hamiltonian still require independent analysis. D1S4 only concerns finite bounded Fermion N →L[ℂ] Fermion N operators. | Preserve source theorem scope. Stop after at most two failed native attempts. |
+
+D1S0 independently GREEN and D1S3 source GREEN remain accepted. D1S1 source theorem compiled but its full independent consumer and D1T0/D1T1/D1R0 consumers remain RED/FROZEN. Original BFSS sources, main, unified integration and RHOPF unchanged.
