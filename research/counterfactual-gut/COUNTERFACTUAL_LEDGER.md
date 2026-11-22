@@ -789,3 +789,16 @@ Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 so
 | CF-237 | A2c finite source self-adjointness, if green, proves the unbounded Hamiltonian domain and mass gap | **FALSE:** finite bounded Fock fiber operator equality has no claim to full Hamiltonian self-adjointness, gauge-invariant SmoothCore, spectral gap, Hopfion, Standard Model or GUT. | Original D1S4 R1/R2 remain frozen RED and their error artifacts retained. |
 
 **Stop rule:** first native RED preserve logs and artifact; one evidence-driven proof-only correction maximum; two REDs freeze A2c and review architecture. No linter suppression, `sorry`, axioms, source modifications or resource-limit escalation.
+
+
+## 2026-11-21 / ADJ-A2c R1 strict warning-as-error RED — single proof-only repair allowed
+
+**Original R1 RED independently verified:** [run #44985235000](https://github.com/etblink/math/actions/runs/44985235000), exact tested `7d73df4b282a8611cdb43040fc7d70008d8a673e`, job `137094252185`. Pinned source preflight and Lean `4.34.1` / Mathlib restore **PASS**; original native build **8,956 jobs PASS with one linter warning**, and the exact theorem `FCP.BFSSAdjointA2c.originalSkewFrequencyMatrix_quantize_isSelfAdjoint` printed **only** `[propext, Classical.choice, Quot.sound]`. Strict warning-as-error **RED** at source line `35:9` solely because `simp <;> ring` raises `linter.unnecessarySeqFocus`: `Used tac1 <;> tac2 where (tac1; tac2) would suffice`. No failed theorem elaboration, no source-matrix rewrite, no `sorryAx`. No suppression of the linter is authorized. Original [artifact #14739049113](https://github.com/etblink/math/actions/runs/44985235000/artifacts/14739049113), 6,277 bytes, ZIP SHA-256 **`77c3eca26d79b12b06c8c6248c3dd1a32148c107882b9c61ce9be0e15855978b`** independently computed and matches the GitHub digest. All six original evidence files present, with native/strict logs and tested SHA.
+
+| ID | Test | Finding | Qualification boundary |
+| --- | --- | --- | --- |
+| CF-238 | ADJ-A2c R1 RED indicates original quantizer self-adjointness proof fails mathematically | **FALSE:** original Lean proof native builds and reports permitted axioms; only unnecessarySeqFocus strict linter warning at `simp <;> ring` fails warning-as-error. | R1 stays RED and no theorem is accepted without a new strict GREEN. |
+| CF-239 | Disabling the Lean linter is an appropriate way to qualify this theorem | **REJECTED:** retain strict warnings-as-errors, no linter suppression or resource escalation. Replace **only** `simp <;> ring` with `simp; ring`, per compiler's own diagnostic. | One bounded proof-only R2 retry maximum. |
+| CF-240 | R1 can be discarded because native compilation succeeded | **REJECTED:** original artifact and causal diagnosis preserved, R1 retained as RED; do not promote a native-only pass. | Second native or strict RED triggers two-RED STOP and architectural review. |
+
+**Preserve accepted gates:** A0, A1, A2a, A2b remain source exact qualified. D1S4 original R1/R2 remain FROZEN. No physical D1S3 consumer, unbounded Hamiltonian, spectrum, Hopfion, SM or GUT promotion.
