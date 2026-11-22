@@ -130,8 +130,8 @@ jobs:
           body=(d/"strict-axioms.log").read_text()
           reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",body)
           expected=[
-              "FCP.BFSSMasslessD0d0.originalMasslessAction_preserves_ae_tendsto",
-              "FCP.BFSSMasslessD0d0.pairedOriginalMasslessAction_preserves_ae_tendsto"]
+              "FCP.BFSSMasslessD0e0.originalMasslessAction_preserves_ae_tendsto",
+              "FCP.BFSSMasslessD0e0.pairedOriginalMasslessAction_preserves_ae_tendsto"]
           assert [n for n,_ in reports]==expected,(reports,expected)
           allowed={"propext","Classical.choice","Quot.sound"}
           for n,listed in reports:
