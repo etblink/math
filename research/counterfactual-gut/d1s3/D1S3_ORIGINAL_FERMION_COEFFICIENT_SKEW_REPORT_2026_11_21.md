@@ -84,3 +84,37 @@ If original source skewness qualifies, `tr C(x)=0` follows for physical BFSS inp
 D1S0 is independently strict GREEN. D1S1 original source covariance compiled strictly, but the full independent consumer remains RED/FROZEN. D1T0/D1T1 and D1R0 remain RED/FROZEN. **No physical Hopfion, spectral gap, Standard Model embedding or GUT claim.**
 
 For D1S3, if R1 RED, preserve first-causal error and archive; allow only a bounded repair whose rationale follows directly from that error. After two native REDs, freeze architecture and pivot. Do not silently qualify a source-only GREEN as an independently qualified original-public consumer.
+
+
+## R1 verified strict RED: native 8,994-job source build PASS; deprecation strict errors only
+
+[Run #44976005358](https://github.com/etblink/math/actions/runs/44976005358) **completed/failure**, exact tested commit `ad813db1bd64fe4bfcb79cffb23a37652cc3e71b`, first attempt, job `137065971549`. Frozen Core, FermionFrequency, FermionQuantization, FrequencyContraction and G1A paired source hashes all **PASS**; exact pinned Lean `4.34.1`/Mathlib environment restored **PASS**; native cold source build **PASS** (`Build completed successfully (8994 jobs)`).
+
+**All five original source declarations compiled and reported only** `[propext, Classical.choice, Quot.sound]` in the native source log, including the general `FCP.BFSSHopfD1S3.originalFermionCoefficient_skew` and paired SU(2) specialization. No source proof elaboration error or `sorryAx` occurred.
+
+The first causal failure occurred in **strict warning-as-error recompile**, `D1S3OriginalFermionCoefficientSkewProbe.lean:60:10` and `:60:26` / `:62:10` and `:62:31`:
+
+```text
+error: `if_pos` has been deprecated: Use `ite_eq_left` instead
+error: `if_neg` has been deprecated: Use `ite_eq_right` instead
+```
+
+These are **deprecated proof rewrite names** inside a mass-term `by_cases`, not a source gamma/structure-constant or skewness counterexample. Strict source sentinel `BFSS_D1S3_SOURCE_ONLY_STRICT_GREEN` did **not** print; original R1 is **RED/UNQUALIFIED** despite the successful native compilation.
+
+Original [artifact #14735923388](https://github.com/etblink/math/actions/runs/44976005358/artifacts/14735923388), GitHub SHA-256 `9978eaf6072c5dc041b05df52ab76ad6f11e9fe5891a9e1a721a0ede08189deb`, 8,308 bytes, independently recorded.
+
+### Bounded R2 repair and exact tested commit — pending independent native verification
+
+R2 updates **only two Lean source lines**, replacing the two `rw` sequences of deprecated lemmas:
+
+```lean
+rw [ite_eq_left hc.symm, ite_eq_left hc,
+  sourceMassTEntrySkew M r.1 s.1]
+rw [ite_eq_right (Ne.symm hc), ite_eq_right hc]
+```
+
+All other D1S3 theorem statements, five root names, source identities and proof steps are unchanged. Original source Git blob `26e61ab3598dc469427882f5cda5659fc2d47535` → `f35d70284bec100dc617935cf41a6c933c618e5b`. Frozen strict workflow stays blob `b3410a97aa7815a991511a06f802ccc7853e6f62` with warning-as-error and allowed-axiom parser unchanged.
+
+**R2 exact tested repair commit:** `768446976e6b35e2a23acbcece0c23a97f159e6a`. [R2 run #44976962312](https://github.com/etblink/math/actions/runs/44976962312) started automatically; **IN PROGRESS / NO GREEN CLAIM** at this documentation checkpoint.
+
+**Stop rule:** R2 is the second strict attempt. If RED, preserve its exact first error, native/strict log and original artifact, and **STOP**, without R3 or changing linter options. If GREEN, verify exact tested commit, original native and warning-as-error logs, every one of five permitted-axiom roots and original archived artifact; accept only **source-level skewness**, not an independently qualified new public-source consumer or physical BFSS spectral theorem.
