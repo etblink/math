@@ -1,0 +1,169 @@
+name: BFSS D1T1 source theorem inference diagnostic strict
+
+'on':
+  push:
+    branches:
+      - research/bfss-hopfion-gut-counterfactuals-20261121
+    paths:
+      - lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/D1S1OriginalFrequencyGaugeTransportProbe.lean
+      - lean/diagnostics/BFSSD1T1InferredGaugeConsumer.lean
+      - lean/diagnostics/BFSSD1T1SourceDeclarationCheck.lean
+      - .github/workflows/bfss-d1t1-source-type-inference-diagnostic-strict.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-d1t1-typed-original-frequency-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-independent-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - name: Checkout exact tested branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Freeze original source and declared Lean roots
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-d1t1"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-d1t1/tested-sha.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-d1t1/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-d1t1/preflight.log"
+          from pathlib import Path
+          import subprocess,re,json
+          root="lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/"
+          dep=root+"OperatorDependencies/"
+          src=root+"D1S1OriginalFrequencyGaugeTransportProbe.lean"
+          consumer="lean/diagnostics/BFSSD1T1InferredGaugeConsumer.lean"
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+            "lean/OAI/MathematicalPhysics/BFSS/FermionQuantization.lean":"c6b72d030225c707ef54f5285a18a7a8175ee280",
+            root+"D1S0OriginalQuantizedCARGaugeBridge.lean":"9fd3a61f9dac8a370a68920303a39f3c8b81b6bd",
+            root+"D1S1OriginalFrequencyGaugeTransportProbe.lean":"c2946bab3f82bf1ba57574a6a9d18258c185ef99",
+            "lean/OAI/MathematicalPhysics/BFSS/FermionQuantization.lean":"c6b72d030225c707ef54f5285a18a7a8175ee280",
+            "lean/OAI/MathematicalPhysics/BFSS/FermionFrequency.lean":"cbb82a42f42b3b3d3695081247bd14d0496abc7d",
+            dep+"SU2BFSSG3AAdjointColorRepresentationProbe.lean":"553869f1287c64893398c3b79c04fe010023bd08",
+            dep+"SU2BFSSG1APairedThetaProbe.lean":"152204ef15a6569534e0503824a697cb9ae8e4ce",
+            dep+"SU2BFSSG3B24ModeOrthogonalLiftProbe.lean":"3cdf867357ea2955bf9d88ec6f5f6a0f9228e92a",
+            dep+"SU2BFSSG4AExteriorGaugeActionProbe.lean":"141fbe74fc4883f686e05dbc702efb12c6fb8fab",
+            dep+"SU2BFSSG4EFermionHilbertUnitaryProbe.lean":"7247844122ab870d31e92903db4c2ab561f98112",
+            dep+"SU2BFSSG4JExactGaugeDataAssemblyProbe.lean":"e20c76fb22bc09d16dbcd8657333227cb34ed1ea",
+          }
+          for p,expected in pins.items():
+              actual=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
+              assert actual==expected,("FROZEN_ORIGINAL_SOURCE_DRIFT",p,actual,expected)
+          check_only="lean/diagnostics/BFSSD1T1SourceDeclarationCheck.lean"
+          a,b,c=Path(src).read_text(),Path(consumer).read_text(),Path(check_only).read_text()
+          assert re.findall(r"(?m)^import (\S+)$",a)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.D1S0OriginalQuantizedCARGaugeBridge",
+            "OAI.MathematicalPhysics.BFSS.FermionQuantization"]
+          assert re.findall(r"(?m)^import (\S+)$",b)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.D1S1OriginalFrequencyGaugeTransportProbe",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe",
+            "OAI.MathematicalPhysics.BFSS.FermionQuantization"]
+          source_roots=["sourceTransportFrequency_apply","originalQuantizeFrequency_gauge"]
+          consumer_roots=["inferred_source_reference","inferred_source_application",
+            "exact_transport_reference","exact_original_gauge_name","exact_original_quantizer_name"]
+          assert re.findall(r"(?m)^import (\S+)$",c)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.D1S1OriginalFrequencyGaugeTransportProbe"]
+          assert re.findall(r"(?m)^#check (\S+)$",c)==[
+            "FCP.BFSSHopfD1S1.sourceTransportFrequency_apply",
+            "FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",c)==[
+            "FCP.BFSSHopfD1S1.sourceTransportFrequency_apply",
+            "FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",a)==source_roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$",b)==consumer_roots
+          assert all("set_option autoImplicit false" in x for x in [a,b,c])
+          assert all(not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",x) for x in [a,b,c])
+          assert all("set_option maxRecDepth" not in x and "set_option maxHeartbeats" not in x for x in [a,b,c])
+          assert all(token in a for token in [
+            "sourceTransportFrequency","exchangeFourSums","exchangeQuadraticColors",
+            "sourceColorExchange","sourceRawQuadratic_gauge","sourceQuantize_apply",
+            "originalQuantizeFrequency_gauge","FrequencyMatrix 2","quantizeFrequency"])
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          manifest=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in manifest if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_D1T1_SOURCE_PIN_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore exact Lean and pinned Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-d1t1/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Cold source build plus independent original carrier consumer
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-d1t1"
+          timeout 2500s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.D1S1OriginalFrequencyGaugeTransportProbe 2>&1 | tee "$E/cold-build.log"
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            -o .lake/build/lib/lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/D1S1OriginalFrequencyGaugeTransportProbe.olean \
+            OAI/MathematicalPhysics/BFSS/Contrib/Kotler/D1S1OriginalFrequencyGaugeTransportProbe.lean \
+            2>&1 | tee "$E/source-axioms.log"
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSD1T1SourceDeclarationCheck.lean \
+            2>&1 | tee "$E/check-only-axioms.log"
+          timeout 500s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSD1T1InferredGaugeConsumer.lean \
+            2>&1 | tee "$E/consumer-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,os
+          d=Path(os.environ["RUNNER_TEMP"])/"bfss-d1t1"
+          cases=[
+            ("source-axioms.log",[
+              "FCP.BFSSHopfD1S1.sourceTransportFrequency_apply",
+              "FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge"]),
+            ("check-only-axioms.log",[
+              "FCP.BFSSHopfD1S1.sourceTransportFrequency_apply",
+              "FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge"]),
+            ("consumer-axioms.log",[
+              "FCP.BFSSHopfD1T1Consumer.inferred_source_reference",
+              "FCP.BFSSHopfD1T1Consumer.inferred_source_application",
+              "FCP.BFSSHopfD1T1Consumer.exact_transport_reference",
+              "FCP.BFSSHopfD1T1Consumer.exact_original_gauge_name",
+              "FCP.BFSSHopfD1T1Consumer.exact_original_quantizer_name"])
+          ]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for fname in ("cold-build.log","source-axioms.log","check-only-axioms.log","consumer-axioms.log"):
+              content=(d/fname).read_text()
+              for bad in ["error:","sorryAx","unknownIdentifier","unsolved goals"]:
+                  assert bad not in content,(fname,bad,content[-5000:])
+          for fname,expected in cases:
+              content=(d/fname).read_text()
+              reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",content)
+              assert [name for name,_ in reports]==expected,(fname,reports,expected)
+              for name,axioms in reports:
+                  actual={x.strip() for x in axioms.split(",") if x.strip()}
+                  assert actual<=allowed,(fname,name,actual)
+          print("BFSS_D1T1_TYPE_INFERENCE_DIAGNOSTIC_GREEN")
+          PY
+
+      - name: Preserve first-causal source and consumer evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-d1t1-typed-original-frequency-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-d1t1/
+          if-no-files-found: warn
+          retention-days: 30
