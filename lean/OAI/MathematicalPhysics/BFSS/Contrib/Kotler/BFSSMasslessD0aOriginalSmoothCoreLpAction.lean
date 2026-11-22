@@ -12,6 +12,7 @@ set_option autoImplicit false
 
 namespace FCP.BFSSMasslessD0a
 noncomputable section
+open OAI
 open OAI.BFSSQuantum
 open OAI.BFSSQuantum.AlgebraData
 open MeasureTheory
