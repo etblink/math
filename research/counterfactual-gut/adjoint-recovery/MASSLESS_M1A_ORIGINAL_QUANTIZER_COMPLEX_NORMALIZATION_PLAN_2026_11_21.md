@@ -56,3 +56,17 @@ Source implementation `e0cd51c9eb8535a715b0f2000bed41416d476f0b`, only original 
 with explicit unused-`neg_smul` warning. The source theorem's axiom report includes `sorryAx` because it failed; no strict source consumer or GREEN sentinel. Original [artifact #14741602016](https://github.com/etblink/math/actions/runs/44989442784/artifacts/14741602016) **6,084 bytes**, five archive files, independently recomputed SHA-256 `1ff0dfe599772619e124a73caff75b66ea4d7bd706f8a0e25dcb90c3e1463b12` matches GitHub, tested SHA confirmed.
 
 **One bounded proof-only R2 decision:** replace `simp only [smul_neg, neg_div, neg_smul]` after the qualified M0 rewrite by explicit `rw [smul_neg, neg_div]` and `exact (neg_smul (Complex.I / 2) S).symm`, with `S` the original cubic sum. The exact source theorem, coefficient, carrier, imports, source pins, workflow and `#print axioms` remain unchanged; no new original BFSS assumptions, lint changes or resource changes. If R2 is native or strict RED, two-RED STOP and new architecture review; no M1a R3, M1b or D1F R4.
+
+
+## Exact final R2 source repair and unqualified CI
+
+Original candidate's final proof `simp only [smul_neg, neg_div, neg_smul]` was replaced with the one correction directly justified by original R1's displayed goal:
+
+```lean
+  rw [smul_neg, neg_div]
+  exact (neg_smul (Complex.I / 2)
+    (∑ j : SpaceIndex, ∑ A : ColorIndex N,
+      M.cubicFermionComponent x A j)).symm
+```
+
+This is **only** a proof-body correction. Commit [`33bf69002d9227bbcd5eb1290c7363b4cd35b43d`](https://github.com/etblink/math/commit/33bf69002d9227bbcd5eb1290c7363b4cd35b43d), new source Git blob `93e11616d37a3bfac44320e7518027d8883c6072`. Original [strict R2 #44990226259](https://github.com/etblink/math/actions/runs/44990226259), exact tested `33bf69002d9227bbcd5eb1290c7363b4cd35b43d`, **PENDING/UNQUALIFIED** at launch. No change to theorem, source physics, imports, pinned original/accepted M0, warning-as-error, strict axiom restrictions, artifact retention or workflow. If second native/strict RED, mandatory two-RED STOP with original artifacts preserved and architecture reassessment. No M1b before an independently accepted strict M1a.
