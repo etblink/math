@@ -122,7 +122,7 @@ private theorem sourceQuantize_apply
       (Complex.I / 2) • sourceRawQuadratic K v := by
   simp [AlgebraData.quantizeFrequency, sourceRawQuadratic,
     Fintype.sum_prod_type, _root_.sum_apply,
-    IsSMulApply.smul_apply, mul_apply_eq_comp]
+    mul_apply_eq_comp]
 
 /-- Transport every original ordered two-theta monomial; only
 commuting SCALAR coefficients, never the theta operators. -/
