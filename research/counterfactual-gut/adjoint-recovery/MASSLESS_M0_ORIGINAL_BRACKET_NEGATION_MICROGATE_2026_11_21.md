@@ -48,3 +48,20 @@ Candidate source implemented at [`9579ca3328edb496bb2d84deadb4379c4430baf3`](htt
 Original archived [artifact #14739789534](https://github.com/etblink/math/actions/runs/44987939282/artifacts/14739789534) 6,393 bytes, 5 files (`cache.log`, `environment-sha256.txt`, `native-source.log`, `preflight.log`, `tested-sha.txt`), ZIP SHA-256 **`db5630ceb3649470530829459d8ea7fb69db07df159c4767f2be0ab14c0af9ef`** independently recomputed and matches GitHub. Archived tested SHA and preflight sentinel verified.
 
 **Precise R2 only:** replace just the first theorem's failing `simp only` line with **explicit outer then inner `←Finset.sum_neg_distrib` rewrites, `Finset.sum_congr` binders for `r` and `s`, and a final typed `neg_smul` for the individual original theta product**. Retain exact imported source and second theorem; no broad `ring`/`module`, no source or workflow contract change, no linter suppression. The R1 RED is permanent negative knowledge, not a physical counterexample. **If R2 is native or strict RED, two-RED STOP**; do not launch R3 without a separately authorized architecture review. The historical D1F R1–R3 and D1S4 R1/R2 remain frozen.
+
+
+## R2 exact proof-only repair and strict launch
+
+The single permitted repair modifies **only** the `sourceThetaQuadraticSum_neg` proof in new M0 source module; `sourceBracketCoefficient_negative_contraction`, theorem statements, exact original donor import, CI workflow and frozen original pins remain unchanged. [Implementation commit `aaf409edc3f388ce05d2f93fcf108a364382b8f1`](https://github.com/etblink/math/commit/aaf409edc3f388ce05d2f93fcf108a364382b8f1), new source Git blob `948671c8173dd69bba380a1b08fd46c7b63efb57`:
+```lean
+  simp only [Complex.ofReal_neg]
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro r _
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro s _
+  exact neg_smul (K r s : ℂ)
+    (M.theta r.1 r.2 * M.theta s.1 s.2)
+```
+This follows Lean's exact R1 remaining goal instead of relying on the simplifier to rewrite nested sums. [Strict original R2 #44988662078](https://github.com/etblink/math/actions/runs/44988662078), tested exact `aaf409edc3f388ce05d2f93fcf108a364382b8f1`, **QUEUED/PENDING at launch**. Only 2 standard-permitted `#print axioms` roots, original native/strict GREEN, original ZIP archive/tested-SHA integrity and pinned source preflight can qualify M0. **Second RED => STOP/FROZEN**, no R3 and no M1 implementation.
