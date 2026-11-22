@@ -45,3 +45,44 @@ The CI checks frozen source pins, Lean 4.34.1 and Mathlib `d13f23b723b8a846827a2
 - A diagnostic GREEN would show the source theorem can be referenced/applied without restating a large type and the two original-source aliases compile; it **would not qualify the explicit original public-name consumer**, nor rewrite historical D1S1/D1T0 RED records.
 - Future full acceptance, if scientifically useful, requires a separately typed, explicitly source-public operator identity with an independent consumer, exact original source pins, strict source and consumer Lean checks and allowed-axiom reports.
 - No rank-one CAR Gaussian projector, original `SmoothCore` physical trial, normalized BFSS Hamiltonian energy form, spectral theorem, physical Hopfion or GUT inference is established by this gate.
+
+## D1T1 R1 strict RED — declaration header metavariables cannot infer from theorem proofs
+
+**Verified [run #44968639116](https://github.com/etblink/math/actions/runs/44968639116)** at exact tested commit `87bf96c761e28407137320622bac8d5cd98b9ec2`, job `137043278951`; GitHub `completed/failure`, attempt 1. Frozen original-source preflight, Lean 4.34.1 and pinned Mathlib, native source cold build (9,074 jobs), and warning-as-error source recompile all **PASS**. Both source axiom roots report `[propext, Classical.choice, Quot.sound]` without `sorryAx`. Independent check-only file `BFSSD1T1SourceDeclarationCheck.lean` **PASS**: actual imported theorem signatures and allowed-axiom reports printed.
+
+**First causal failure** occurred when Lean elaborated the next file `diagnostics/BFSSD1T1InferredGaugeConsumer.lean` at lines 29:36 and 35:65:
+
+```text
+error(lean.inferDefTypeFailed): Failed to infer type of theorem `inferred_source_reference`
+Note: All parameter types and holes (e.g., `_`) in the header of a theorem
+are resolved before the proof is processed; information from the proof
+cannot be used to infer what these values should be
+error(lean.inferDefTypeFailed): Failed to infer type of theorem `inferred_source_application`
+```
+
+The two declarations used `theorem ... : _ := <source proof>` and thus violated Lean's declaration elaboration rules. This is a **syntax/elaboration design mistake**, not a counterexample to original source covariance, nor an indication of source wrong-sign or gauge defect. The three other consumer declarations (`exact_transport_reference`, `exact_original_gauge_name`, `exact_original_quantizer_name`) appeared with allowed axioms; the two failed declarations' subsequently printed allowed-axiom reports **do not qualify them** because their declarations failed. No strict diagnostic success sentinel.
+
+Original archived [artifact #14732839565](https://github.com/etblink/math/actions/runs/44968639116/artifacts/14732839565), 12,523 bytes, GitHub-reported SHA-256 `c87413ec731398acd854a09a69aea048594a6507c9e05e0131603fd521414be8`. R1 remains **RED** regardless of any later diagnostic success.
+
+## D1T1 R2 bounded declaration-level correction — PENDING, not accepted
+
+On the same isolated branch, R2 changed ONLY the two failed diagnostic declarations to a value-inferred **definition**, not a theorem. This is a mathematically distinct *diagnostic export*, not a fresh proof of the original covariance identity:
+
+```lean
+noncomputable def inferred_source_reference :=
+  FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge
+
+noncomputable def inferred_source_application
+    (g : GaugeGroup 2) (K : FrequencyMatrix 2) (v : Fermion 2) :=
+  FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge g K v
+```
+
+The replacement removes precisely the two erroneous theorem-header holes; the original imported source theorem, the source-check-only file, coefficient-transport theorem, literal public-source `rfl` aliases and dedicated strict workflow are **byte-unchanged**. Source / consumer blobs: `cf086b6970c1893a010119a1e5e6e43e1125d852` → `3f99537bd71fa78e9f0504c4f5546c8c49bdc2ad`; R2 exact source commit `f12b925ee0ee7d31c7f7c3eb775b9f07fc053cb7`.
+
+[R2 strict diagnostic #44971625678](https://github.com/etblink/math/actions/runs/44971625678) launched at that exact commit, **in progress at the record checkpoint**. Its native result is not assumed. The same frozen source hashes, independent check-only file, warning-as-error and source/consumer allowed-axiom parser remain in force.
+
+### Disposition and stop
+
+R2 is the **second native attempt for the D1T1 diagnostic**. If RED, preserve original first-causal artifact/log and **STOP**; do not blindly launch R3 or escalate maxRecDepth/maxHeartbeats. If GREEN, record **diagnostic success only**, because an inferred definition simply re-exports the already compiled source theorem and does not independently elaborate a new explicit public-source covariance proposition.
+
+Scientific limit unchanged: source-level gauge covariance of the real original 48-index quadratic operator; no independently qualified explicit public-name consumer, Gaussian rank-one projector, `SmoothCore` physical trial, BFSS spectrum, hopfion or GUT theorem.
