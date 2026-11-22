@@ -14,6 +14,7 @@ namespace FCP.BFSSMasslessD0d0
 noncomputable section
 open OAI
 open OAI.BFSSQuantum
+open OAI.BFSSQuantum.AlgebraData
 open MeasureTheory
 
 /-- The natural original full-L² domain of the partial massless multiplier
