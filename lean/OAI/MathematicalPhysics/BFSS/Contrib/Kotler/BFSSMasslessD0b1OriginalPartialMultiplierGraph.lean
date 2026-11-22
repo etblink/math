@@ -79,8 +79,9 @@ theorem pairedOriginalMasslessMultiplier_ae
         FCP.BFSSSU2GaugeG1A.pairedAlgebraData.quantizeFrequency
           (FCP.BFSSMasslessM1a.masslessSourceFrequency
             FCP.BFSSSU2GaugeG1A.pairedAlgebraData x) (ψ.val x)) := by
-  exact originalMasslessMultiplier_ae
-    FCP.BFSSSU2GaugeG1A.pairedAlgebraData ψ
+  simpa only [originalMasslessAction] using
+    (originalMasslessMultiplier_ae
+      FCP.BFSSSU2GaugeG1A.pairedAlgebraData ψ)
 
 #print axioms originalMasslessMultiplier
 #print axioms originalMasslessMultiplier_ae
