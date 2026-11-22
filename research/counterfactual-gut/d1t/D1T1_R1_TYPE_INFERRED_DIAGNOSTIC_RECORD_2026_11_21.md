@@ -86,3 +86,33 @@ The replacement removes precisely the two erroneous theorem-header holes; the or
 R2 is the **second native attempt for the D1T1 diagnostic**. If RED, preserve original first-causal artifact/log and **STOP**; do not blindly launch R3 or escalate maxRecDepth/maxHeartbeats. If GREEN, record **diagnostic success only**, because an inferred definition simply re-exports the already compiled source theorem and does not independently elaborate a new explicit public-source covariance proposition.
 
 Scientific limit unchanged: source-level gauge covariance of the real original 48-index quadratic operator; no independently qualified explicit public-name consumer, Gaussian rank-one projector, `SmoothCore` physical trial, BFSS spectrum, hopfion or GUT theorem.
+
+## D1T1 R2 strict RED — value-inferred `def` is a proposition; strict linter rejects
+
+**Verified original [R2 run #44971625678](https://github.com/etblink/math/actions/runs/44971625678)**: `completed/failure` at **exact tested commit** `f12b925ee0ee7d31c7f7c3eb775b9f07fc053cb7`, first GitHub attempt, original job `137052472550`; completed 2026-11-22T01:46:19Z (Nov 21 America/Los_Angeles). Frozen BFSS source/hash preflight **PASS**; Lean 4.34.1 and pinned Mathlib restoration **PASS**; native cold original D1S1 source build **PASS** (`Build completed successfully (9074 jobs)`); warning-as-error original source recompile and both source axiom reports **PASS**. The independent *check-only* module `BFSSD1T1SourceDeclarationCheck.lean` inspected both imported source theorems and reported only `[propext, Classical.choice, Quot.sound]`; **PASS**.
+
+**First-causal diagnostic, in next consumer file:**
+
+```text
+diagnostics/BFSSD1T1InferredGaugeConsumer.lean:27:0:
+error: Definition `inferred_source_reference` is a proposition; use `theorem` instead of `def`
+Note: This linter can be disabled with `set_option linter.defProp false`
+diagnostics/BFSSD1T1InferredGaugeConsumer.lean:32:0:
+error: Definition `inferred_source_application` is a proposition; use `theorem` instead of `def`
+```
+
+The revised `noncomputable def` declarations *did* infer proposition-valued types from the existing original source proof references, unlike R1 theorem header holes. Lean's **`defProp` linter** rejects treating proofs as proposition-valued definitions under our unchanged strict `-DwarningAsError=true`. Other consumer coefficient/original-name alias declarations were emitted with the allowed axioms; neither failed `def` is an accepted independent qualification merely because `#print axioms` can list axioms after an error. The D1T1 strict GREEN sentinel was NOT emitted.
+
+Original unmodified archived [R2 artifact #14733948187](https://github.com/etblink/math/actions/runs/44971625678/artifacts/14733948187): 12,103 bytes, GitHub SHA-256 `b1502e9c7b1996ee34dde3319c23bdeef82cc39ebf21f0ab44d57dcc60e18249`. Separate original R1 artifact [#14732839565](https://github.com/etblink/math/actions/runs/44968639116/artifacts/14732839565), 12,523 bytes, SHA-256 `c87413ec731398acd854a09a69aea048594a6507c9e05e0131603fd521414be8`, remains RED, preserved.
+
+### D1T1 two-attempt closure
+
+**D1T1 R1 = RED** (invalid theorem header metavariable `: _`: theorem type resolved before proof). **D1T1 R2 = RED** (the `def` proof re-export inferred a Prop, strict `defProp` linter rejects proposition-valued definitions). These are two separate **Lean-language/strict-lint contract failures**, not gauge covariance counterexamples. **STOP D1T1**: no R3, no source/consumer/workflow changes, no disabling `linter.defProp`, no increasing recursion depth or heartbeats just to force passage.
+
+### Research progress and next architecture (design only)
+
+The original D1S1 `FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge` continues to compile on literal original `Fermion 2`, `FrequencyMatrix 2`, paired algebra/gauge action with **only** `[propext, Classical.choice, Quot.sound]`. The typed/source-public name aliases also compiled separately in D1T0, while both D1S1 R2 and D1T0 R1 explicit independent consumers were blocked by recursion during elaboration.
+
+For any later independent qualification, require a normal **explicitly typed theorem proposition** that Lean can elaborate without excessive recursive normalization. Before starting a whole cold CI again, isolate the elaborate part with a tiny Lean-only diagnostic or local pinned Lean check, possibly using a source-level named proposition/adapter or a structured `show`/`change` bridge, while retaining exact original public source types. A `def` of proof/Prop or inferred alias is not an independent new mathematical theorem. No further gate is authorized or launched by this diagnostic closure.
+
+No rank-one Gaussian CAR projector, original gauge-invariant `SmoothCore` wavefunction, normalized 16-charge Hamiltonian energy bound, physical Hopfion, Standard Model embedding, or GUT result is established here.
