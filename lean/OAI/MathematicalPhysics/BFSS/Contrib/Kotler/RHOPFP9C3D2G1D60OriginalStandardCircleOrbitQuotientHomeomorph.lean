@@ -102,8 +102,6 @@ noncomputable def relationalSourceToStandardOrbitQuotientHomeomorph :
         E.symm (relationalEuclideanUnitCircleOrbitClass y) =
           relationalSourceQUnitCircleOrbitClass (H.symm y) := by
       apply E.injective
-      change E (E.symm (relationalEuclideanUnitCircleOrbitClass y)) =
-        E (relationalSourceQUnitCircleOrbitClass (H.symm y))
       rw [E.apply_symm_apply, relationalSourceToStandardOrbitQuotientEquiv_class]
       exact congrArg relationalEuclideanUnitCircleOrbitClass
         (H.apply_symm_apply y).symm
