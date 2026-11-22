@@ -73,7 +73,10 @@ theorem originalPhysicalMasslessGraph_eq_preimage
       congrArg
         (fun p : G.physicalSpace × G.physicalSpace =>
           ((p.1 : FullL2 2), (p.2 : FullL2 2))) hψ
-    exact heq ▸ hraw
+    change ((z.1 : FullL2 2), (z.2 : FullL2 2)) ∈
+      FCP.BFSSMasslessD0c0.originalMasslessGraph M
+    rw [← heq]
+    exact hraw
   · intro hz
     change ((z.1 : FullL2 2), (z.2 : FullL2 2)) ∈
       LinearMap.range

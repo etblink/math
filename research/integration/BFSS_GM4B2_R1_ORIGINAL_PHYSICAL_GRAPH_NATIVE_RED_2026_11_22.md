@@ -1,0 +1,12 @@
+# GM4B2 R1 original physical massless closed-graph — first-causal native RED (2026-11-22)
+
+**No qualification.** Original [run #45083711948](https://github.com/etblink/math/actions/runs/45083711948) at exact tested unified commit `7bb4fc6c1599f9692f75d438f79e8f02677c9a50`, workflow attempt 1, failed during **native source Lean compilation** after successful frozen-source preflight, pinned Lean 4.34.1 / Mathlib restoration, and predecessor 9,125 jobs. Independent consumer was not reached.
+
+- Native first-causal diagnostic `BFSSGM4B2OriginalPhysicalMasslessRestrictedGraphClosed.lean:76:10`: **invalid `▸` notation**. The equality `heq` identifies two pairs, but the goal was still expressed as membership in the inverse image of the original graph; Lean rejected casting `hraw` directly into the preimage membership. This is a proof-state elaboration problem, not evidence that physical graph closedness is false.
+- After the failed theorem, Lean printed transitive `sorryAx` dependencies for downstream GM4B2 declarations; **none is accepted or promoted**.
+- Original [RED artifact #14779365123](https://github.com/etblink/math/actions/runs/45083711948/artifacts/14779365123): independently downloaded **15,605-byte ZIP**, SHA-256 **`1d1835335c25fa6e4d20557f3d0bb67a8822c04e7acdf70045fa8a290843dff7`**, all ZIP CRCs PASS, embedded tested SHA exact match. Original job logs inspected.
+- Minimal R2 candidate: replace only the one line `exact heq ▸ hraw` by exposing actual D0c0 graph membership with `change`, rewrite the pair via `rw [← heq]`, and discharge with `exact hraw`. No changes to theorem statements, external source imports, mathematical assumptions, solver options or independent consumer.
+- **R2 must pass its own exact tested SHA / frozen-source preflight / native build / independent strict consumer / all source and consumer #print axioms / original artifact** before any qualified closedness claim. If R2 RED is deeper than this cast, stop and inspect the first causal error before further revisions.
+
+**Accepted predecessor status untouched:** GM4A original physical restriction GREEN #45078834611; GM4B0 nonzero physical-domain witness GREEN #45080704292; GM4B1 physical density GREEN #45082278440. Historical GREENs remain tied to their tested commits and source blobs.
+**Governance:** add-only diagnostic + single source proof edit on `integration/bfss-unified-research-20261108`; never overwrite historical RED artifacts, change `main`, alter frozen dependencies, or claim self-adjointness or a spectral gap.
