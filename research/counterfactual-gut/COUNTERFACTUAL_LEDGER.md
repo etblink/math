@@ -761,3 +761,16 @@ Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 so
 | CF-231 | A2b R1 GREEN implies `M.quantizeFrequency K` Hermiticity | **FALSE:** exact `Complex.I/2` scalar conjugation and source definition bridge deferred to ADJ-A2c, with downstream physical `fermionCoefficient` consumer required. | D1S4 R1/R2 remain frozen RED; no mass-gap, Hopfion, SM or GUT claim. |
 
 **Stop rule:** first native RED preserve causal logs and original artifact; at most one diagnosed local repair, then two-RED STOP. No sorried theorem, relaxed warning settings or resource-limit changes.
+
+
+## 2026-11-21 / ADJ-A2b exact original finite source double sum — strict GREEN accepted
+
+**Independently verified original strict [run #44984349166](https://github.com/etblink/math/actions/runs/44984349166):** job `137091538864`, exact tested commit `5d96def503b529495afedb8d63884f145e503566`, frozen source and sole-import preflight PASS, Lean 4.34.1/Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` PASS, native original BFSS build **8,955 jobs PASS**, strict warning-as-error recompilation PASS, exact axiom root `FCP.BFSSAdjointA2b.originalSkewFrequencyMatrix_finiteSum_star_skew` reports **only** `[propext, Classical.choice, Quot.sound]`, sentinel `BFSS_ADJ_A2B_SOURCE_ONLY_STRICT_GREEN` PASS. Original six-file [artifact #14738419623](https://github.com/etblink/math/actions/runs/44984349166/artifacts/14738419623) ZIP **6,026 bytes**, SHA-256 **`da9e1b926fea675c758e50f528a6805623358f0d43ace72422b5a54f7e0148a9`**, independently computed from original downloaded archive and matched to GitHub's digest. Tested source blob `a179985c31b6d8f0cd4092530c761155b320dc1c`.
+
+| ID | Hypothesis/test | Accepted result | Remaining boundary |
+| --- | --- | --- | --- |
+| CF-232 | The original source frequency-matrix theta-pair finite sum can reuse accepted A0 rather than manual nested `star_sum` proof | **TRUE:** ADJ-A2b source exact 8,955-job strict GREEN; `U` is typed original CLM, pointwise from qualified A2a, finite double sum from qualified A0. | Does not identify `M.quantizeFrequency K` or prove Hermiticity. |
+| CF-233 | The generic A0 abstract sum identity is disconnected from the original physical source | **FALSE:** A2b instantiates A0 on the original `Fermion N →L[ℂ] Fermion N` theta product with the exact skew frequency matrix `K`. | Physical `fermionCoefficient x` requires later D1S3 consumer. |
+| CF-234 | ADJ-A2b GREEN permits accepting the physical original Hamiltonian or spectral gap | **REJECTED:** only finite source theta-pair sum star-skew accepted. Exact `Complex.I/2` scalar factor and source `quantizeFrequency` self-adjointness need distinct ADJ-A2c and independent consumer proof. | D1S4 original R1/R2 remain strict RED and frozen; no SmoothCore/unbounded/spectral/Hopfion/SM/GUT claim. |
+
+**Next bounded gate:** separate ADJ-A2c generic original finite-Fock quantizer identity only, importing qualified A2b; then independently qualify D1S3 physical-coefficient and literal paired SU(2) consumers. No editing frozen D1S4 or original BFSS, main, unified integration, FCP or RHOPF.
