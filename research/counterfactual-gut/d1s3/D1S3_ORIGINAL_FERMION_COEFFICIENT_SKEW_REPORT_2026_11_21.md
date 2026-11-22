@@ -118,3 +118,27 @@ All other D1S3 theorem statements, five root names, source identities and proof 
 **R2 exact tested repair commit:** `768446976e6b35e2a23acbcece0c23a97f159e6a`. [R2 run #44976962312](https://github.com/etblink/math/actions/runs/44976962312) started automatically; **IN PROGRESS / NO GREEN CLAIM** at this documentation checkpoint.
 
 **Stop rule:** R2 is the second strict attempt. If RED, preserve its exact first error, native/strict log and original artifact, and **STOP**, without R3 or changing linter options. If GREEN, verify exact tested commit, original native and warning-as-error logs, every one of five permitted-axiom roots and original archived artifact; accept only **source-level skewness**, not an independently qualified new public-source consumer or physical BFSS spectral theorem.
+
+## R2 strict original-source GREEN — exact independent verification and promotion
+
+**Final adjudication (2026-11-21 America/Los_Angeles): QUALIFIED — SOURCE-ONLY STRICT GREEN.** The preceding R1 RED and pre-R2 pending statements are historical launch records, not the current gate disposition.
+
+- [Original R2 run #44976962312](https://github.com/etblink/math/actions/runs/44976962312): `completed/success` at exact tested commit `768446976e6b35e2a23acbcece0c23a97f159e6a` (GitHub run attempt 1), job `137068902617`. The branch's newer documentation-only HEAD is **not** the tested commit.
+- Frozen exact source preflight: **PASS**, `BFSS_D1S3_ORIGINAL_SOURCE_PIN_PREFLIGHT_PASS`; pinned Lean `4.34.1` and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restored exactly.
+- Native cold build: **PASS** (`Build completed successfully (8994 jobs)`); subsequent strict `lake env lean -DautoImplicit=false -DwarningAsError=true` recompile: **PASS**, no deprecated-lemma errors or unclosed proof goals.
+- Five exact source theorem roots all have independent strict `#print axioms` reports containing **only** `[propext, Classical.choice, Quot.sound]`:
+  `FCP.BFSSHopfD1S3.sourceStructureFirstTwoSkew`,
+  `FCP.BFSSHopfD1S3.sourceGammaEntrySymm`,
+  `FCP.BFSSHopfD1S3.sourceMassTEntrySkew`,
+  `FCP.BFSSHopfD1S3.originalFermionCoefficient_skew`,
+  `FCP.BFSSHopfD1S3.pairedOriginalFermionCoefficient_skew`.
+- Full source-only CI parser **PASS**: `BFSS_D1S3_SOURCE_ONLY_STRICT_GREEN`.
+- [Original R2 archive artifact #14736164117](https://github.com/etblink/math/actions/runs/44976962312/artifacts/14736164117): 7,785 bytes, GitHub-reported **SHA-256 `79b5e5f0ccc6785d2bd444db17c95cf692ae3729635b8d75bd0516620ddb71e3`**; the original upload log confirms the same SHA and artifact ID. No claim of an independently rehashed download is made.
+- R2 source blob `f35d70284bec100dc617935cf41a6c933c618e5b`; dedicated unchanged strict workflow blob `b3410a97aa7815a991511a06f802ccc7853e6f62`. Original BFSS `Core.lean` blob `9882359ced78b0a3bd7e2f057974bd0a031b3e60`, `FermionQuantization.lean` blob `c6b72d030225c707ef54f5285a18a7a8175ee280`, and `FrequencyContraction.lean` blob `425edf6d7d0f9d15ce5f8bc92e8788ef60068618` remained pinned.
+
+**Accepted mathematical content:** for every `N`, `M : AlgebraData N` and `x : Boson N`, the exact original `M.fermionCoefficient x` has transpose equal to its negative. For the literal original SU(2) paired algebra this holds on the actual `SpinIndex × ColorIndex 2` = 48 real frequency labels. The zero-trace consequence is mathematically immediate over `ℝ`; a separate original-source Lean `trace = 0` theorem was **not** part of these five certified roots.
+
+**Qualification ceiling:** This new accepted theorem is a **source-only proof**, not an independent-consumer GREEN. The earlier D1S1, D1T0 and D1T1 large explicit independent-consumer failures remain frozen RED; D1S0 independently strict GREEN is unchanged. Finite-Fock self-adjointness of `M.quantizeFrequency (M.fermionCoefficient x)` follows by a separate CAR calculation, but that operator result is **not yet qualified as a Lean theorem**. Nothing here establishes self-adjointness of an unbounded full BFSS operator, a spectral gap, physical Hopfion, Standard Model embedding or GUT.
+
+**Next bounded mathematical objective (design only):** qualify an original-source real-skew quantization self-adjointness lemma on the finite `Fermion N` carrier, then specialize to the exact `M.fermionCoefficient x`. Check for existing upstream formal equivalents and proof tactics first; isolate the linear finite-sum `IsSelfAdjoint` argument from any `SmoothCore` or gauge-consumer work. Do not reopen a frozen gate, alter pinned source, or launch a new CI from this promotion-only documentation commit.
+
