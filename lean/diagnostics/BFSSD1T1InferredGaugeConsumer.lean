@@ -26,13 +26,13 @@ private abbrev G : M.GaugeData := pairedGaugeData
 
 /-- Diagnostic A: infer the entire proposition of the already-compiled
 source theorem instead of elaborating the full proposition again. -/
-theorem inferred_source_reference : _ :=
+noncomputable def inferred_source_reference :=
   FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge
 
 /-- Diagnostic B: infer the proposition after applying source theorem
 to each literal original-carrier argument; still a re-export. -/
-theorem inferred_source_application
-    (g : GaugeGroup 2) (K : FrequencyMatrix 2) (v : Fermion 2) : _ :=
+noncomputable def inferred_source_application
+    (g : GaugeGroup 2) (K : FrequencyMatrix 2) (v : Fermion 2) :=
   FCP.BFSSHopfD1S1.originalQuantizeFrequency_gauge g K v
 
 /-- Retain the original real source matrix mapping as a small,
