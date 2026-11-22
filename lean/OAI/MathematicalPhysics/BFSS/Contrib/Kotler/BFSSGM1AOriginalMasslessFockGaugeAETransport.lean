@@ -59,7 +59,13 @@ theorem originalMasslessAction_gauge_ae_transport
         ((ψ : FullL2 N) (G.boson g⁻¹ x)))
   rw [hfx, hbx]
   have hinv : G.boson g (G.boson g⁻¹ x) = x := by
-    simpa only [map_inv] using (G.boson g).apply_symm_apply x
+    -- Use the genuine source group-homomorphism law directly. This
+    -- avoids conflating group inversion with the equiv's .symm field.
+    calc
+      _ = G.boson (g * g⁻¹) x := by
+        rw [map_mul]
+        rfl
+      _ = x := by simp
   have hcov :=
     FCP.BFSSGM0B.originalMasslessQuantizer_gauge_covariant M G g
       (G.boson g⁻¹ x) ((ψ : FullL2 N) (G.boson g⁻¹ x))
