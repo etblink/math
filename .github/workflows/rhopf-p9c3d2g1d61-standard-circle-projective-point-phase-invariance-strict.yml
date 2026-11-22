@@ -166,7 +166,6 @@ jobs:
           consumer=Path('lean/diagnostics/RHOPFP9C3D2G1D61StandardCircleProjectivePointPhaseInvarianceIndependentAudit.lean').read_text()
           assert re.findall(r'(?m)^import (\S+)$',src)==[
             'Mathlib.Tactic',
-            'Mathlib.Topology.Constructions',
             'Mathlib.LinearAlgebra.Projectivization.Basic',
             'OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D60OriginalStandardCircleOrbitQuotientHomeomorph']
           assert re.findall(r'(?m)^import (\S+)$',consumer)==[
