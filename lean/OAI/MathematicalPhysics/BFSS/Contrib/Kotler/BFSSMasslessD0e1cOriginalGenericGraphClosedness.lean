@@ -36,12 +36,12 @@ theorem originalMasslessGraph_isClosed {N : ℕ} (M : AlgebraData N) :
   have hgraph_ns (n : ℕ) :
       ((u (ns n)).1, (u (ns n)).2) ∈
         FCP.BFSSMasslessD0c0.originalMasslessGraph M := by
-    simpa only [Prod.mk.eta] using hgraph (ns n)
+    simpa only [Prod.mk.eta, SetLike.mem_coe] using hgraph (ns n)
   have hlim :=
     FCP.BFSSMasslessD0e1b.originalMasslessGraph_mem_of_joint_ae_limits
       M (fun n => (u (ns n)).1) (fun n => (u (ns n)).2)
       p.1 p.2 hgraph_ns hψae hηae
-  simpa only [Prod.mk.eta] using hlim
+  simpa only [Prod.mk.eta, SetLike.mem_coe] using hlim
 
 #print axioms originalMasslessGraph_isClosed
 
