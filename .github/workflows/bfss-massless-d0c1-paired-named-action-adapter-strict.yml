@@ -52,8 +52,8 @@ jobs:
             base+"Contrib/Kotler/BFSSMasslessD0aOriginalSmoothCoreLpAction.lean":"1bf49640d543635313495c505a4a4dbc64583ae2",
             base+"Contrib/Kotler/BFSSMasslessD0b0OriginalMaximalDomainSubmodule.lean":"84853fb624289121938e0fb4d2b45afdc16a74c6",
             base+"Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean":"152204ef15a6569534e0503824a697cb9ae8e4ce",
-          }
             base+"Contrib/Kotler/BFSSMasslessD0c0OriginalGenericPartialMultiplierGraph.lean":"2fc90310c9ac476d8e52ba0176ecc94f8994d1c9",
+          }
           for path,expected in pins.items():
               observed=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert observed==expected,("SOURCE_DRIFT",path,observed,expected)
