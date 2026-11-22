@@ -719,3 +719,17 @@ Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 so
 | CF-222 | D1S4 two-RED source should be patched now that A1 passed | **REJECTED:** keep original failed source/workflow and exact RED artifacts frozen. Use distinct A2a/A2b/A2c narrow modules to control evidence and prevent recurrent NORM-0B-style elaborator issue. | No physical Hamiltonian, spectral, Hopfion, Standard Model or GUT theorem. |
 
 **Acceptance:** A0 and A1 qualified within their exact scoped claims; D1S3 source skewness qualified; D1S4 remains frozen RED. Next authorized bounded implementation ADJ-A2a is a separately named original `FrequencyMatrix N` entry adapter, with exact-source strict CI and no D1S4 imports.
+
+
+
+## 2026-11-21 / ADJ-A2a exact original skew-entry theta-pair microgate launched
+
+[Scoped proof plan](./adjoint-recovery/ADJ_A2A_ORIGINAL_SOURCE_MATRIX_ENTRY_ADAPTER_PLAN_2026_11_21.md). Independent new original-source `FCP.BFSSAdjointA2a` module `BFSSAdjointA2aOriginalSkewMatrixEntryThetaPair.lean`, source commit [`8bf22fd72c1fe6c6315cfa46307da0c83927847c`](https://github.com/etblink/math/commit/8bf22fd72c1fe6c6315cfa46307da0c83927847c). First source-level theorem derives `K r s = -K s r` outside Fock expressions. Second defines `let c : ℝ := K r s`, `let d : ℝ := K s r`, then applies accepted A1 pairwise star-skew theorem with the exact source theta operator. One A1 import, no edits to A0/A1, original BFSS or frozen D1S4.
+
+**Strict workflow:** `.github/workflows/bfss-adj-a2a-original-skew-entry-theta-pair-strict.yml`. Initial workflow launch [#44983114717](https://github.com/etblink/math/actions/runs/44983114717) at `7547cfb1627a7925b9d1be3b94e7efa1e103d2e2` **cancelled via concurrency**, not proof RED. Before native testing, workflow-only commit `45e51eab58ddd5e39cca48125420484cd6e6774d` corrected the source preflight's inherited direct `FermionQuantization` import expectation to the actual sole accepted ADJ-A1 import. [Current original strict run #44983132507](https://github.com/etblink/math/actions/runs/44983132507), exact tested `45e51eab58ddd5e39cca48125420484cd6e6774d`, **IN PROGRESS / UNQUALIFIED** at launch. Native source, strict warning-as-error, two exact axiom reports, original artifact and sentinel required before acceptance. This is not a D1S4 R3.
+
+| ID | Test | Status | Bound |
+| --- | --- | --- | --- |
+| CF-223 | A skew original source matrix must be rewritten inside the original CLM to instantiate ADJ-A1 | **PROSPECTIVE FALSE:** newly staged entry theorem and explicitly typed `c,d` eliminate all such rewrites; only strict CI may establish Lean validity. | Source and consumer GREEN not yet qualified for A2a. |
+| CF-224 | Source exact parent import can be inherited from ADJ-A1's prior workflow | **FALSE AT PREFLIGHT:** new A2a has one direct A1 import rather than A1's own FermionQuantization import; workflow preflight was corrected before the substantive gate. | Initial workflow run cancelled, not evidence against the mathematical proof. |
+| CF-225 | A2a source GREEN would complete original quantizer Hermiticity | **FALSE:** independent A2b double-sum and A2c exact `i/2` quantizer gate with consumer validation are still necessary. | No physical Hamiltonian, gauge-domain, spectral, Hopfion, SM or GUT conclusion. |
