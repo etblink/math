@@ -28,3 +28,9 @@ New original source file `lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSA
 A2a GREEN will establish the source-exact *pointwise* (K)-coefficient theta-pair star reversal. It does not assemble the source finite double sum (future A2b), prove `M.quantizeFrequency K` self-adjoint (future A2c), qualify an external consumer, or say anything about gauge-physical domain, unbounded Hamiltonian, mass gap, Hopfion, Standard Model or GUT. Preserve the distinction between a proof architecture working and a physical theorem being established.
 
 **Status at authoring:** implementation candidate to be placed under its own exact-source CI; no ADJ-A2a GREEN claimed.
+
+
+
+## Original implementation and CI launch receipt
+
+Proof source [commit `8bf22fd72c1fe6c6315cfa46307da0c83927847c`](https://github.com/etblink/math/commit/8bf22fd72c1fe6c6315cfa46307da0c83927847c). Workflow initially created at `7547cfb1627a7925b9d1be3b94e7efa1e103d2e2`, then an independent preflight review found that the inherited source import expectation was `OAI.MathematicalPhysics.BFSS.FermionQuantization` whereas the new source imports qualified `OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSAdjointA1OriginalThetaPairRealScalarStar`. Corrected workflow-only in `45e51eab58ddd5e39cca48125420484cd6e6774d` without altering the Lean proof. Initial [run #44983114717](https://github.com/etblink/math/actions/runs/44983114717) at the earlier workflow commit cancelled via concurrency, not a Lean RED. Active strict [run #44983132507](https://github.com/etblink/math/actions/runs/44983132507) at exact SHA `45e51eab58ddd5e39cca48125420484cd6e6774d` **PENDING** at launch. Native/strict logs, two `#print axioms` roots, expected source pins, and original artifact require independent review before promotion. No A2a theorem is accepted merely because the workflow was launched.
