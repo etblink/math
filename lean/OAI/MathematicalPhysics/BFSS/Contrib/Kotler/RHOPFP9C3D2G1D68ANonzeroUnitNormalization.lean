@@ -29,9 +29,13 @@ noncomputable def relationalCanonicalNonzeroUnitNormalization
     (v : {v : EuclideanSpace ℂ (Fin 2) // v ≠ 0}) :
     {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} := by
   have hn : ‖v.val‖ ≠ 0 := norm_ne_zero_iff.mpr v.property
-  refine ⟨((((‖v.val‖⁻¹ : ℝ) : ℂ) • v.val)), ?_⟩
-  simpa only [norm_smul, norm_inv, norm_norm] using
-    (inv_mul_cancel₀ hn)
+  let w : EuclideanSpace ℂ (Fin 2) :=
+    (((‖v.val‖⁻¹ : ℝ) : ℂ) • v.val)
+  have hw : ‖w‖ = 1 := by
+    dsimp [w]
+    simpa only [norm_smul, norm_inv, norm_norm] using
+      (inv_mul_cancel₀ hn)
+  exact ⟨w, hw⟩
 
 /-- Normalization preserves the actual D61 complex projective
 point; RHS is the pinned original Projectivization.mk' of v. -/
@@ -45,7 +49,8 @@ theorem relationalCanonicalNonzeroUnitNormalization_projectivePoint
   apply (Projectivization.mk_eq_mk_iff' ℂ
       (relationalCanonicalNonzeroUnitNormalization v).val v.val
       (relationalStandardUnitSphere_nonzero _) v.property).2
-  exact ⟨((‖v.val‖⁻¹ : ℝ) : ℂ), rfl⟩
+  refine ⟨((‖v.val‖⁻¹ : ℝ) : ℂ), ?_⟩
+  dsimp [relationalCanonicalNonzeroUnitNormalization]
 
 /-- The SAME accepted D65 algebraic Equiv sends the exact D57
 Circle-orbit class of normalized v to the original projective point. -/
