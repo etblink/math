@@ -70,8 +70,8 @@ jobs:
             base+"Contrib/Kotler/RHOPFP9C3D2G1D69OriginalGammaQCanonicalProjectivizationHomeomorph.lean":"db6cba9a0e72cd83bb9241027ddddf3c27f6e213",
             "lean/diagnostics/RHOPFP9C3D2G1D69OriginalGammaQCanonicalProjectivizationHomeomorphIndependentAudit.lean":"03ed8d38e25d73c145e726daa5c8a7fa2622b305",
             "research/topology/data/BFSS_GAMMA9_SOURCE_PERMUTATION_FIXTURE_2026_11_18.json":"684680e139cfcd09c37bf075c0c014bdaa80ba35",
-            "lean/diagnostics/BFSSMasslessUnified14AndD69IndependentAudit.lean":"86c2ff8f60e1c27919c5c9de800bb42bf8b865d8",
-            "research/integration/BFSS_MASSLESS14_D69_CANDIDATE_MANIFEST_2026_11_22.json":"b1acf7f4a59a15563d2e395933024d63854c9eed",
+            "lean/diagnostics/BFSSMasslessUnified14AndD69IndependentAudit.lean":"6700db01eb4d23c75190aba9ddaa37645c05f841",
+            "research/integration/BFSS_MASSLESS14_D69_CANDIDATE_MANIFEST_2026_11_22.json":"203e563abfd1a4dc43ce390f9248ca4fd4f7a8a4",
           }
           for path,expected in pins.items():
               observed=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
@@ -93,6 +93,7 @@ jobs:
               "research/integration/BFSS_MASSLESS14_D69_CANDIDATE_MANIFEST_2026_11_22.json",
               ".github/workflows/bfss-massless14-d69-unified-integration-strict.yml",
               "research/integration/BFSS_MASSLESS14_D69_INTEGRATION_R1_PREFLIGHT_RED_2026_11_22.md",
+              "research/integration/BFSS_MASSLESS14_D69_INTEGRATION_R2_CONSUMER_RED_2026_11_22.md",
           }
           subprocess.check_call(["git","merge-base","--is-ancestor",frozen,"HEAD"])
           changed=set(subprocess.check_output(["git","diff","--name-only",frozen,"HEAD"],text=True).splitlines())
@@ -103,7 +104,8 @@ jobs:
             "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D69OriginalGammaQCanonicalProjectivizationHomeomorph"]
           roots=["originalPairedMasslessDomainDenseAndGraphClosed",
                  "originalGammaQCanonicalProjectivizationHomeomorph"]
-          assert re.findall(r"(?m)^theorem (\S+)",s)==roots
+          assert re.findall(r"(?m)^theorem (\S+)",s)==roots[:1]
+          assert re.findall(r"(?m)^noncomputable def (\S+)",s)==roots[1:]
           assert re.findall(r"(?m)^#print axioms (\S+)$",s)==roots
           assert "set_option autoImplicit false" in s
           assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",s)

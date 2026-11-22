@@ -43,7 +43,7 @@ theorem originalPairedMasslessDomainDenseAndGraphClosed :
 /-- Independent consumer of the accepted original D69 topology,
 with original source-Q analytic instances and genuine D66 quotient
 topology. This theorem asserts no link to the massless graph above. -/
-theorem originalGammaQCanonicalProjectivizationHomeomorph :
+noncomputable def originalGammaQCanonicalProjectivizationHomeomorph :
     letI : NormedAddCommGroup RelationalSourceComplexFour :=
       relationalSourceComplexFourNormedAddCommGroup;
     letI : NormedSpace ℂ RelationalSourceComplexFour :=
