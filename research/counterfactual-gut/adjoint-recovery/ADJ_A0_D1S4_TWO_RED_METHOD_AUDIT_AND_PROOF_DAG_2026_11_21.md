@@ -75,3 +75,10 @@ New [ADJ-A0 R1 strict run #44981248994](https://github.com/etblink/math/actions/
 **Exactly what was proved:** for any finite index type and an additive abelian group with compatible star operation, every `U` satisfying `star (U r s)=-(U s r)` has skew-star double sum. The proof makes no mention of original `FrequencyMatrix`, theta, BFSS Fermion or scalar multiplication. It does **not** establish ADJ-A1, ADJ-A2, original finite-Fock Hermiticity, gauge covariance, physical-domain invariance, spectral gap, Hopfion, SM or GUT.
 
 **Next allowed gate (design):** ADJ-A1 must use fully typed scalar/coefficient-independent helpers first; only after their exact source CI accepts may the original `K r s` matrix entry be introduced at a controlled boundary. No D1S4 R3; its two original REDs and artifacts remain frozen. A later physical source theorem needs independent source and public-consumer qualification.
+
+
+## 8. ADJ-A1 source-exact coefficient-independent original theta pair adapter staged
+
+ADJ-A0 strict GREEN has been promoted (Section 7). Next bounded target now staged as a **new** source-only ADJ-A1 theorem pair with explicit coefficient `c : ℝ`, and `d : ℝ` satisfying `c=-d`: the original theta pair on original `Fermion N →L[ℂ] Fermion N` obeys the real-scalar adjoint and negative reverse order identities **without any source matrix entry in the rewrite**. [ADJ-A1 full scoped report](./ADJ_A1_TYPED_ORIGINAL_THETA_PAIR_SOURCE_PLAN_2026_11_21.md).
+
+[ADJ-A1 R1 #44982026198](https://github.com/etblink/math/actions/runs/44982026198), exact tested `5afd9befcc2b16e52cdc991e6d18234d373dfb6f`, launched and **PENDING**; source blob `0441b0d067dcd9e1d1e721b3c576a6e8a0600a53`, strict workflow blob `39766e82b3992e29e39b36034f0468ca3ef96dcf`. The original full D1S4 `K r s` proof is not touched or restarted. Strict original physical theorem and public consumer remain unqualified.
