@@ -80,7 +80,19 @@ noncomputable def relationalSourceToStandardOrbitQuotientHomeomorph :
         E (relationalSourceQUnitCircleOrbitClass x) =
           relationalEuclideanUnitCircleOrbitClass (H x) :=
       relationalSourceToStandardOrbitQuotientEquiv_class x
-    simpa only [Function.comp_def, hPoint] using hComp
+    have hFun :
+        (fun x : {x : RelationalSourceComplexFour //
+          relationalRangeCoordinateDotSelf x.coordinates = 1} =>
+          E (relationalSourceQUnitCircleOrbitClass x)) =
+        (fun x : {x : RelationalSourceComplexFour //
+          relationalRangeCoordinateDotSelf x.coordinates = 1} =>
+          relationalEuclideanUnitCircleOrbitClass (H x)) :=
+      funext hPoint
+    change Continuous (fun x : {x : RelationalSourceComplexFour //
+      relationalRangeCoordinateDotSelf x.coordinates = 1} =>
+        E (relationalSourceQUnitCircleOrbitClass x))
+    rw [hFun]
+    exact hComp
   · apply hStandard.continuous_iff.mpr
     have hComp : Continuous (fun y :
         {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} =>
@@ -95,7 +107,16 @@ noncomputable def relationalSourceToStandardOrbitQuotientHomeomorph :
       rw [E.apply_symm_apply, relationalSourceToStandardOrbitQuotientEquiv_class]
       exact congrArg relationalEuclideanUnitCircleOrbitClass
         (H.apply_symm_apply y).symm
-    simpa only [Function.comp_def, hPoint] using hComp
+    have hFun :
+        (fun y : {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} =>
+          E.symm (relationalEuclideanUnitCircleOrbitClass y)) =
+        (fun y : {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} =>
+          relationalSourceQUnitCircleOrbitClass (H.symm y)) :=
+      funext hPoint
+    change Continuous (fun y : {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} =>
+      E.symm (relationalEuclideanUnitCircleOrbitClass y))
+    rw [hFun]
+    exact hComp
 
 /-- The new HOMEOMORPHISM acts on each original Gamma9 orbit class
 by the original D48 homeomorphism before taking the standard class. -/
