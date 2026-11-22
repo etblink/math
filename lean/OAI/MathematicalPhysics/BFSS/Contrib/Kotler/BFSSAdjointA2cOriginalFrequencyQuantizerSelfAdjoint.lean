@@ -32,7 +32,7 @@ theorem originalSkewFrequencyMatrix_quantize_isSelfAdjoint {N : ℕ}
     M K hK
   have hI : star (Complex.I / (2 : ℂ)) =
       -(Complex.I / (2 : ℂ)) := by
-    simp <;> ring
+    simp; ring
   rw [star_smul, hsum, hI]
   simp only [neg_smul, smul_neg, neg_neg]
 
