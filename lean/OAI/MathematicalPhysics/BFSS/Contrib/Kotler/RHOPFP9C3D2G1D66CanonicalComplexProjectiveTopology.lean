@@ -29,6 +29,7 @@ noncomputable section
 /-- Canonical topology on algebraic complex projectivization,
 quotient topology from nonzero Euclidean complex two-vectors.
 Defined independently of the D65 Circle orbit quotient Equiv. -/
+@[instance_reducible]
 noncomputable def relationalCanonicalComplexProjectivizationTopology :
     TopologicalSpace (Projectivization ℂ (EuclideanSpace ℂ (Fin 2))) :=
   inferInstanceAs (TopologicalSpace
@@ -44,8 +45,6 @@ theorem relationalCanonicalProjectivizationMk_isQuotientMap :
       (Projectivization.mk' ℂ :
         {v : EuclideanSpace ℂ (Fin 2) // v ≠ 0} →
         Projectivization ℂ (EuclideanSpace ℂ (Fin 2))) := by
-  letI : TopologicalSpace (Projectivization ℂ (EuclideanSpace ℂ (Fin 2))) :=
-    relationalCanonicalComplexProjectivizationTopology
   exact isQuotientMap_quotient_mk'
 
 /-- Characterize the canonical projective quotient topology by the
@@ -56,8 +55,6 @@ theorem relationalCanonicalProjectivization_continuous_iff
     letI : TopologicalSpace (Projectivization ℂ (EuclideanSpace ℂ (Fin 2))) :=
       relationalCanonicalComplexProjectivizationTopology
     Continuous f ↔ Continuous (f ∘ Projectivization.mk' ℂ) := by
-  letI : TopologicalSpace (Projectivization ℂ (EuclideanSpace ℂ (Fin 2))) :=
-    relationalCanonicalComplexProjectivizationTopology
   exact relationalCanonicalProjectivizationMk_isQuotientMap.continuous_iff
 
 #print axioms relationalCanonicalComplexProjectivizationTopology
