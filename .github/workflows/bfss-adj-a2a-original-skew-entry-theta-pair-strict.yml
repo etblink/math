@@ -50,7 +50,7 @@ jobs:
               assert observed==expected,("SOURCE_DRIFT",path,observed,expected)
           s=src.read_text()
           assert re.findall(r"(?m)^import (\S+)$",s)==[
-            "OAI.MathematicalPhysics.BFSS.FermionQuantization"]
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSAdjointA1OriginalThetaPairRealScalarStar"]
           assert re.findall(r"(?m)^#print axioms (\S+)$",s)==[
             "originalSkewFrequencyMatrix_entry",
             "originalSkewFrequencyMatrix_thetaPair_star"]
