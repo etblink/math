@@ -38,14 +38,21 @@ theorem sourceQuantizeSkew_isSelfAdjoint {N : ℕ}
       (M.theta_selfAdjoint s.1 s.2).star_eq,
       (M.theta_selfAdjoint r.1 r.2).star_eq]
     have hreal : star (K r s : ℂ) = (K r s : ℂ) := by simp
-    rw [hreal, hkentry r s, Complex.ofReal_neg, neg_smul]
+    rw [hreal, hkentry r s, Complex.ofReal_neg] <;> simp only [neg_smul]
   have hsum :
       star (∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N, U r s) =
         -(∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N, U r s) := by
     calc
       star (∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N, U r s) =
-          ∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N,
-            star (U r s) := by simp only [star_sum]
+          ∑ r : FrequencyIndex N,
+            star (∑ s : FrequencyIndex N, U r s) :=
+        star_sum Finset.univ (fun r : FrequencyIndex N =>
+          ∑ s : FrequencyIndex N, U r s)
+      _ = ∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N,
+            star (U r s) := by
+          apply Finset.sum_congr rfl
+          intro r _
+          exact star_sum Finset.univ (fun s : FrequencyIndex N => U r s)
       _ = ∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N,
             -(U s r) := by
           apply Finset.sum_congr rfl
@@ -62,8 +69,8 @@ theorem sourceQuantizeSkew_isSelfAdjoint {N : ℕ}
     (Complex.I / 2) •
       (∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N, U r s)
   have hI : star (Complex.I / (2 : ℂ)) =
-      -(Complex.I / (2 : ℂ)) := by simp
-  rw [star_smul, hsum, hI, neg_smul, smul_neg, neg_neg]
+      -(Complex.I / (2 : ℂ)) := by simp <;> ring
+  rw [star_smul, hsum, hI] <;> simp only [neg_smul, smul_neg, neg_neg]
 
 /-- The physical ORIGINAL source coefficient has a self-adjoint finite
 Fock quantization; this uses the accepted D1S3 skew source theorem. -/
