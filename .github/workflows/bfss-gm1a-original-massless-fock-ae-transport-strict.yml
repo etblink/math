@@ -1,0 +1,134 @@
+name: BFSS GM1A source-exact massless Fock a.e. gauge transport strict
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSGM1AOriginalMasslessFockGaugeAETransport.lean'
+      - 'lean/diagnostics/BFSSGM1AOriginalMasslessFockGaugeAEIndependentAudit.lean'
+      - '.github/workflows/bfss-gm1a-original-massless-fock-ae-transport-strict.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-gm1a-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-original-massless-ae-gauge-transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen source and isolated consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-gm1a-ae"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-gm1a-ae/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-gm1a-ae/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-gm1a-ae/preflight.log"
+          import subprocess,re,json
+          from pathlib import Path
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+            "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean":"e4990dadf1d8bde849e351467282ab3f14989c3b",
+            "lean/OAI/MathematicalPhysics/BFSS/CovariantFields.lean":"a2a5430550524a57f2fb7d519169050053e886bb",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMasslessM1bOriginalRealFieldRestrictionConsumer.lean":"fc2994f932cc13bbade9735f74a97390a4ea224d",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMasslessD0b0OriginalMaximalDomainSubmodule.lean":"84853fb624289121938e0fb4d2b45afdc16a74c6",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean":"e20c76fb22bc09d16dbcd8657333227cb34ed1ea",
+          }
+          for p,h in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",p],text=True).strip()
+              assert got==h,("FROZEN_SOURCE_DRIFT",p,got,h)
+          subprocess.check_call(["git","merge-base","--is-ancestor","b5bf3db6dc0ad7aea4d0216b998006a8f8c46be0","HEAD"])
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSGM1AOriginalMasslessFockGaugeAETransport.lean").read_text()
+          c=Path("lean/diagnostics/BFSSGM1AOriginalMasslessFockGaugeAEIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",s)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSGM0BOriginalMasslessFockPointwiseGaugeCovariance",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMasslessD0b0OriginalMaximalDomainSubmodule"]
+          assert re.findall(r"(?m)^theorem (\S+)",s)==[
+            "originalMasslessAction_gauge_ae_transport",
+            "pairedOriginalMasslessAction_gauge_ae_transport"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==[
+            "originalMasslessAction_gauge_ae_transport",
+            "pairedOriginalMasslessAction_gauge_ae_transport"]
+          assert re.findall(r"(?m)^import (\S+)$",c)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSGM1AOriginalMasslessFockGaugeAETransport"]
+          assert re.findall(r"(?m)^theorem (\S+)",c)==["pairedSourceMasslessActionGaugeAETransport"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",c)==["pairedSourceMasslessActionGaugeAETransport"]
+          for text in (s,c):
+              assert "set_option autoImplicit false" in text
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",text)
+              for forbidden in ["set_option maxRecDepth","set_option maxHeartbeats",
+                                "set_option synthInstance.maxHeartbeats"]:
+                  assert forbidden not in text
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_GM1A_ORIGINAL_SOURCE_AE_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-gm1a-ae/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Original massless AE transport native build and independent strict consumer
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-gm1a-ae"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSGM1AOriginalMasslessFockGaugeAETransport 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSGM1AOriginalMasslessFockGaugeAEIndependentAudit.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-gm1a-ae"
+          for n in ["native-source.log","strict-axioms.log"]:
+              content=(E/n).read_text()
+              for token in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert token not in content,(n,token,content[-6000:])
+          native=(E/"native-source.log").read_text()
+          for n in ["FCP.BFSSGM1A.originalMasslessAction_gauge_ae_transport",
+                    "FCP.BFSSGM1A.pairedOriginalMasslessAction_gauge_ae_transport"]:
+              assert "'"+n+"' depends on axioms:" in native or "'"+n+"' does not depend on any axioms" in native,("NATIVE_AXIOM_MISSING",n)
+          strict=(E/"strict-axioms.log").read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",strict)
+          assert [n for n,_ in reports]==["FCP.BFSSGM1AIndependent.pairedSourceMasslessActionGaugeAETransport"],reports
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for n,listed in reports:
+              axs={x.strip() for x in listed.split(",") if x.strip()}
+              assert axs<=allowed,(n,axs)
+          print("BFSS_GM1A_ORIGINAL_SOURCE_AE_STRICT_GREEN")
+          PY
+
+      - name: Preserve original first-causal evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-gm1a-ae-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-gm1a-ae/
+          if-no-files-found: warn
+          retention-days: 30
