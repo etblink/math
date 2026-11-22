@@ -36,9 +36,8 @@ theorem relationalStandardUnitSphereProjectivePoint_surjective :
     let w : EuclideanSpace ℂ (Fin 2) := (((‖v‖⁻¹ : ℝ) : ℂ) • v)
     have hw : ‖w‖ = 1 := by
       dsimp [w]
-      rw [norm_smul, Complex.norm_real, Real.norm_eq_abs, abs_inv,
-        abs_of_nonneg (norm_nonneg v)]
-      exact inv_mul_cancel₀ hn
+      simpa only [norm_smul, norm_inv, norm_norm] using
+        (inv_mul_cancel₀ hn)
     let y : {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} := ⟨w, hw⟩
     refine ⟨y, ?_⟩
     have hmk :
