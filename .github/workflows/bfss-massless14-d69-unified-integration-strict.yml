@@ -27,6 +27,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+          fetch-depth: 0
 
       - name: Frozen original source and isolated-root preflight
         shell: bash
@@ -91,6 +92,7 @@ jobs:
               "lean/diagnostics/BFSSMasslessUnified14AndD69IndependentAudit.lean",
               "research/integration/BFSS_MASSLESS14_D69_CANDIDATE_MANIFEST_2026_11_22.json",
               ".github/workflows/bfss-massless14-d69-unified-integration-strict.yml",
+              "research/integration/BFSS_MASSLESS14_D69_INTEGRATION_R1_PREFLIGHT_RED_2026_11_22.md",
           }
           subprocess.check_call(["git","merge-base","--is-ancestor",frozen,"HEAD"])
           changed=set(subprocess.check_output(["git","diff","--name-only",frozen,"HEAD"],text=True).splitlines())
