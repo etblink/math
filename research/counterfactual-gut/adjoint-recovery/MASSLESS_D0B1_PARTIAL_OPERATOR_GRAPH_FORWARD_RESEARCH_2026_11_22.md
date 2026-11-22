@@ -63,3 +63,27 @@ After independently accepting D0b0 original [strict #44998375996](https://github
 Dedicated original pinned source-path strict workflow `.github/workflows/bfss-massless-d0b1-original-partial-multiplier-graph-strict.yml` at exact tested SHA [`bd581010aa384b66f1e6d64e172bf132b6165a6f`](https://github.com/etblink/math/commit/bd581010aa384b66f1e6d64e172bf132b6165a6f); [**strict R1 #44999415076**](https://github.com/etblink/math/actions/runs/44999415076), **QUEUED/PENDING / UNQUALIFIED at launch**. Pins literal original BFSS Core/MixedEnergy/DeformedCharge/FermionFrequency/FermionQuantization/FrequencyContraction, M0→M1c+D0a+D0b0, paired theta, Lean 4.34.1 and original Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612`; original native build; warning-as-error; exactly five permitted `#print axioms` roots only `[propext, Classical.choice, Quot.sound]`, no `sorryAx`; `BFSS_MASSLESS_D0B1_PARTIAL_GRAPH_STRICT_GREEN`; unconditional original six-file evidence archive on RED or GREEN. **Do not promote or merge D0b1 without independent native and original archive SHA verification.** First strict native RED allows at most one exact-evidence proof-only R2; second RED STOP; never relax source pins or original workflow checks.
 
 **Future boundary after this gate:** Separate actual original `Dom(V)` density, closure, measurable-fiber adjointness, and gauge domain/graph invariance from original massless identity. Existing `coreToL2_dense` in `Core.lean` can be reused, but is not itself a proof of the multiplier's closed graph or spectra.
+
+
+## D0b1 original R1 native RED — exact first causal diagnosis and bounded proof-only repair
+
+**Independently verified original [strict R1 #44999415076](https://github.com/etblink/math/actions/runs/44999415076), job `137137438241`, tested SHA `bd581010aa384b66f1e6d64e172bf132b6165a6f`, original source blob `a1b0f6e9a3cf4a6f8f107dcd2854c28a05cfb92d`.** Completed **FAILURE** in native D0b1 source compilation. Frozen original source/M0–M1c/D0a/D0b0/paired donor preflight PASS; pinned Lean 4.34.1/Mathlib restored PASS; **all 8,999 imported dependency jobs built**, only final D0b1 job #9000 RED. First and sole native diagnostic:
+
+```
+error: OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMasslessD0b1OriginalPartialMultiplierGraph.lean:82:8:
+maximum recursion depth has been reached
+```
+
+The precise failing line is **`exact originalMasslessMultiplier_ae FCP.BFSSSU2GaugeG1A.pairedAlgebraData ψ`** in the *fifth* theorem `pairedOriginalMasslessMultiplier_ae`. The first four independently printed root reports (`originalMasslessMultiplier`, `originalMasslessMultiplier_ae`, `originalMasslessGraph`, `originalMasslessGraph_mem`) show only `[propext, Classical.choice, Quot.sound]`. The fifth failed declaration reports `sorryAx`, which is **unaccepted evidence of an unresolved elaboration**, not a valid axiom-free proof and not a claim about the four successful roots. Strict standalone compile never executed because native `lake build` failed. **This is elaborator definitional-unification blowup**, not a contradiction, graph-closure obstruction, new source mismatch or CI infrastructure failure.
+
+Original [Actions artifact #14745482198](https://github.com/etblink/math/actions/runs/44999415076/artifacts/14745482198), **8,474-byte ZIP**, independently downloaded and SHA256 recomputed **`80169177b597b3ec8ee12a468f32bbd8b62af0967aff4bb3b1321c22efeaf9ca`** matching original GitHub digest. Preserved archive includes **five** files: `environment-sha256.txt`, `native-source.log`, `cache.log`, `preflight.log`, `tested-sha.txt`; absence of `strict-axioms.log` is expected due to native early-exit, and must not be described as six-file GREEN evidence. `tested-sha.txt` matches R1 tested SHA.
+
+**One permitted proof-only architecture repair:** retain the exact public theorem statement, source bytes outside the proof, seven inherited source blobs, five-axiom-root workflow, no maxRecDepth/heartbeats/linters/CI guard changes. In the paired consumer, replace the raw `exact` elaboration with a **syntactic definitional rewrite**:
+
+```lean
+  simpa only [originalMasslessAction] using
+    (originalMasslessMultiplier_ae
+      FCP.BFSSSU2GaugeG1A.pairedAlgebraData ψ)
+```
+
+This explicitly unfolds just the lightweight **named action** on the already-proved generic a.e. theorem before matching the literal paired lambda goal, avoiding raw huge-paired `exact` definitional search. This is a *candidate tactic*, not yet compiled. R2 must independently pass native + warning-as-error, exact all-five axiom reports **without `sorryAx`**, original artifact ZIP/hash, original preflight and pin checks. **If R2 native/strict RED, STOP**, preserve both original archives and change proof architecture by source-level adapter/typed separation in a new scoped gate rather than silent R3 or increasing recursion limits. Do not claim D0b1 qualified from R1's four successful roots.
