@@ -28,7 +28,15 @@ theorem sourceThetaQuadraticSum_neg {N : ℕ}
       ((-(K r s) : ℝ) : ℂ) • (M.theta r.1 r.2 * M.theta s.1 s.2)) =
     -(∑ r : FrequencyIndex N, ∑ s : FrequencyIndex N,
       (K r s : ℂ) • (M.theta r.1 r.2 * M.theta s.1 s.2)) := by
-  simp only [Complex.ofReal_neg, neg_smul, Finset.sum_neg_distrib]
+  simp only [Complex.ofReal_neg]
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro r _
+  rw [← Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro s _
+  exact neg_smul (K r s : ℂ)
+    (M.theta r.1 r.2 * M.theta s.1 s.2)
 
 /-- The original donor's positive frequency_bracket_contraction now
 supplies the cubic-field sum after *separately* handling the negative
