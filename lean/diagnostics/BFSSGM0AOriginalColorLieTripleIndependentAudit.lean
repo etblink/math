@@ -9,6 +9,7 @@ set_option autoImplicit false
 
 namespace FCP.BFSSGM0AIndependent
 open OAI.BFSSQuantum
+open OAI.BFSSQuantum.AlgebraData
 
 theorem pairedOriginalSpatialColorLieTripleGaugeInvariant
     (g : GaugeGroup 2) (x : Boson 2) (i j k : SpaceIndex) :
