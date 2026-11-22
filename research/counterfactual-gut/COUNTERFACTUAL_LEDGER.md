@@ -774,3 +774,18 @@ Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 so
 | CF-234 | ADJ-A2b GREEN permits accepting the physical original Hamiltonian or spectral gap | **REJECTED:** only finite source theta-pair sum star-skew accepted. Exact `Complex.I/2` scalar factor and source `quantizeFrequency` self-adjointness need distinct ADJ-A2c and independent consumer proof. | D1S4 original R1/R2 remain strict RED and frozen; no SmoothCore/unbounded/spectral/Hopfion/SM/GUT claim. |
 
 **Next bounded gate:** separate ADJ-A2c generic original finite-Fock quantizer identity only, importing qualified A2b; then independently qualify D1S3 physical-coefficient and literal paired SU(2) consumers. No editing frozen D1S4 or original BFSS, main, unified integration, FCP or RHOPF.
+
+
+## 2026-11-21 / ADJ-A2c original finite-Fock quantizer identity — strict gate launched
+
+[Exact source/strict proof contract](./adjoint-recovery/ADJ_A2C_ORIGINAL_QUANTIZER_SELFADJOINT_PLAN_2026_11_21.md). Qualified A0/A1/A2a/A2b source proof chain unchanged. New source `BFSSAdjointA2cOriginalFrequencyQuantizerSelfAdjoint.lean` at implementation commit `1be36f8006d9d3e4d17b1839378504b887ca3074`, importing **only** accepted ADJ-A2b, proposes single original `FCP.BFSSAdjointA2c.originalSkewFrequencyMatrix_quantize_isSelfAdjoint`: for any original real skew `K : FrequencyMatrix N`, `IsSelfAdjoint (M.quantizeFrequency K)` on original finite bounded Fock CLM. This applies source `quantizeFrequency = (Complex.I/2) • Q(K)`, accepted A2b `star Q(K) = -Q(K)`, and explicit `star (Complex.I/2) = -(Complex.I/2)`. No physical `fermionCoefficient x` specialization or D1S3/D1S4 imports; no modification of original BFSS definitions.
+
+**New independent workflow:** `.github/workflows/bfss-adj-a2c-original-quantizer-selfadjoint-strict.yml`; frozen BFSS originals and accepted A0/A1/A2a/A2b source blob pins, Lean 4.34.1/Mathlib exact, native/strict source build, one exact permitted `#print axioms`, sentinel, unconditional original archive. [Strict R1 #44985235000](https://github.com/etblink/math/actions/runs/44985235000), exact tested source/workflow `7d73df4b282a8611cdb43040fc7d70008d8a673e`, **QUEUED/PENDING at launch**. Not qualified merely because GitHub queued the workflow.
+
+| ID | Test | Status | Boundary |
+| --- | --- | --- | --- |
+| CF-235 | The source exact `i/2` quantizer can be proved self-adjoint directly from qualified finite-sum star-skew A2b without reopening D1S4 | **TEST STAGED**: one original source lemma, exact definition `change`, `star_smul`, source A2b and complex scalar sign; only native/strict CI decides. | Generic finite bounded source quantizer only; no physical coefficients without separate consumer. |
+| CF-236 | The accepted source skewness D1S3 can be silently assumed as the physical quantizer consumer inside A2c | **REJECTED**: A2c source imports only A2b; distinct downstream physical-source and literal SU(2) consumer gate must explicitly import D1S3 and certify its roots. | Physical `fermionCoefficient x` remains separately unqualified in this proof chain. |
+| CF-237 | A2c finite source self-adjointness, if green, proves the unbounded Hamiltonian domain and mass gap | **FALSE:** finite bounded Fock fiber operator equality has no claim to full Hamiltonian self-adjointness, gauge-invariant SmoothCore, spectral gap, Hopfion, Standard Model or GUT. | Original D1S4 R1/R2 remain frozen RED and their error artifacts retained. |
+
+**Stop rule:** first native RED preserve logs and artifact; one evidence-driven proof-only correction maximum; two REDs freeze A2c and review architecture. No linter suppression, `sorry`, axioms, source modifications or resource-limit escalation.
