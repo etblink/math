@@ -56,10 +56,15 @@ theorem relationalEuclideanUnitCircleRelated_iff_orbitClass_eq
       {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} :=
     relationalEuclideanUnitCircleMulAction
   change (∃ z : Circle, z • x = y) ↔
-    (Quotient.mk (MulAction.orbitRel Circle _) x =
-      Quotient.mk (MulAction.orbitRel Circle _) y)
-  exact (MulAction.mem_orbit_symm (a₁ := x) (a₂ := y)).symm.trans
-    (Quotient.eq).symm
+    (Quotient.mk relationalEuclideanUnitCircleOrbitSetoid x =
+      Quotient.mk relationalEuclideanUnitCircleOrbitSetoid y)
+  have hReachability :
+      (∃ z : Circle, z • x = y) ↔
+        relationalEuclideanUnitCircleOrbitSetoid x y := by
+    change (∃ z : Circle, z • x = y) ↔
+      x ∈ MulAction.orbit Circle y
+    exact (MulAction.mem_orbit_symm (a₁ := x) (a₂ := y)).symm
+  exact hReachability.trans (Quotient.eq).symm
 
 /-- Under the accepted source-Q homeomorphism H from D48, equality
 of ORIGINAL Gamma9 Circle orbit classes is equivalent to equality
