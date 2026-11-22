@@ -55,6 +55,8 @@ theorem relationalCanonicalProjectivization_continuous_iff
     letI : TopologicalSpace (Projectivization ℂ (EuclideanSpace ℂ (Fin 2))) :=
       relationalCanonicalComplexProjectivizationTopology
     Continuous f ↔ Continuous (f ∘ Projectivization.mk' ℂ) := by
+  let : TopologicalSpace (Projectivization ℂ (EuclideanSpace ℂ (Fin 2))) :=
+    relationalCanonicalComplexProjectivizationTopology
   exact relationalCanonicalProjectivizationMk_isQuotientMap.continuous_iff
 
 #print axioms relationalCanonicalComplexProjectivizationTopology
