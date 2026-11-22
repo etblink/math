@@ -5,7 +5,7 @@ MASSLESS-D0e1b — source-specific a.e.-limit identification for the
 original maximal massless multiplication graph, at a smaller boundary
 than global graph closedness. Assumes a common a.e. convergent pair
 sequence and proves the resulting limit lies in the exact algebraic graph.
-Does not assert full IsClosed, symmetry, self-adjointness, or spectrum.
+Does not assert full topological graph closure, symmetry, self-adjointness, or spectrum.
 -/
 set_option autoImplicit false
 
