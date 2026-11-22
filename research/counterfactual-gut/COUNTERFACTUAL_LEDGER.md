@@ -802,3 +802,8 @@ Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 so
 | CF-240 | R1 can be discarded because native compilation succeeded | **REJECTED:** original artifact and causal diagnosis preserved, R1 retained as RED; do not promote a native-only pass. | Second native or strict RED triggers two-RED STOP and architectural review. |
 
 **Preserve accepted gates:** A0, A1, A2a, A2b remain source exact qualified. D1S4 original R1/R2 remain FROZEN. No physical D1S3 consumer, unbounded Hamiltonian, spectrum, Hopfion, SM or GUT promotion.
+
+
+### ADJ-A2c single permitted R2 launched after strict linter RED
+
+The one and only authorized proof-only edit committed as [`5ea5837c028b473b39a855b1bb49d1b7acccccfb`](https://github.com/etblink/math/commit/5ea5837c028b473b39a855b1bb49d1b7acccccfb), source blob `94893b6b4f623dfd92122947a4054c4b1a63a5ad`. Exact source diff: `simp <;> ring` → `simp; ring` at A2c `hI` proof, matching native compiler's `linter.unnecessarySeqFocus` diagnostic. No theorem statement, assumptions, original source, pin, workflow, lint configuration, recursion/heartbeats or import changed. **R2 strict workflow [#44985982244](https://github.com/etblink/math/actions/runs/44985982244)**, exact tested commit `5ea5837c028b473b39a855b1bb49d1b7acccccfb`, **QUEUED / UNQUALIFIED at launch**. Independent job log, warning-as-error recompilation, one axiom root and original evidence artifact/digest required before promotion. If R2 is RED, **two-RED STOP**; do not patch R3 without an explicit new architectural decision and revised scope.
