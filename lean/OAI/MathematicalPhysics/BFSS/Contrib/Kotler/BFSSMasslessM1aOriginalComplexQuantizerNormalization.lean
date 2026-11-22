@@ -36,7 +36,10 @@ theorem originalMasslessQuantizer_eq_cubic {N : ℕ}
       (∑ j : SpaceIndex, ∑ A : ColorIndex N,
         M.cubicFermionComponent x A j)
   rw [FCP.BFSSMasslessM0.sourceBracketCoefficient_negative_contraction M x]
-  simp only [smul_neg, neg_div, neg_smul]
+  rw [smul_neg, neg_div]
+  exact (neg_smul (Complex.I / 2)
+    (∑ j : SpaceIndex, ∑ A : ColorIndex N,
+      M.cubicFermionComponent x A j)).symm
 
 #print axioms originalMasslessQuantizer_eq_cubic
 
