@@ -1202,3 +1202,15 @@ New standalone `BFSSMasslessD0c1PairedNamedActionAdapter.lean` (original source 
 | CF-333 | May we reset original D0b1 red count or add D0c1 to unified integration before strict acceptance? | **NO**; original D0b1 frozen ×2, D0c1 independent source only | Qualified allowlist **seven** entries through D0c0, fresh unified candidate/CI needed for eventual merge |
 
 **Project Lead policy:** Native R1 and at most one diagnosed source-only proof repair; two native REDs => stop. Frozen D0b1 untouched, no blanket merge or source donor changes. Preserve original/negative evidence separately; promote D0c1 as eighth candidate only after strict qualification.
+
+
+## 2026-11-22 / D0c1 initial preflight RED — workflow-only correction, no native proof test
+
+[Original D0c1 #45040771426](https://github.com/etblink/math/actions/runs/45040771426), exact tested `b2a85567b63297a6cf3fc642b531b8a4ed84952c`, **failed before Lean preflight** with Python `IndentationError: unexpected indent` at line 20 of the original source pin checker. First causal error: new qualified D0c0 pin dictionary entry `base+"Contrib/Kotler/BFSSMasslessD0c0OriginalGenericPartialMultiplierGraph.lean":"2fc90310c9ac476d8e52ba0176ecc94f8994d1c9"` was accidentally placed **after** the `pins={...}` closing brace, before `for path,expected in pins.items():`. This is **workflow construction syntax error, not a native/strict Lean RED** and does not challenge qualified D0c0. Original [preflight-only artifact #14761557431](https://github.com/etblink/math/actions/runs/45040771426/artifacts/14761557431): 730-byte ZIP, exactly three files `preflight.log,environment-sha256.txt,tested-sha.txt`, independently SHA256 checked `230fb60de5392085f75dec6742d3e424e8e4c338bea3807a7ade64022c555ac5`, archived exact tested SHA matches. Corrected **only the placement** of the same original D0c0 source hash within `pins={}`; no axiom/strict checks, source, Lean/Mathlib or timeout limit altered. New workflow commit `8f2c262afdd0cabb5bee83a9474d32b46e8a9906`, original corrected [#45040907960](https://github.com/etblink/math/actions/runs/45040907960), **IN PROGRESS / UNQUALIFIED at latest preparation**. Actual paired-source theorem trial begins only after restored preflight.
+
+| ID | Test | Disposition | Boundary |
+| --- | --- | --- | --- |
+| CF-334 | Was initial D0c1 failure caused by BFSS source or Lean proof elaboration? | **NO**, Python indentation in workflow preflight pin dictionary, exact first-causal archive preserved | Not a native RED; no mathematical conclusion |
+| CF-335 | Can the error be corrected without relaxing source checks? | **YES**, move D0c0 SHA pin one line inside dictionary, with no proof or CI guard changes | Revised run #45040907960 remains pending; no D0c1 qualification yet |
+
+Seven independently qualified source files through D0c0 remain accepted future unified candidates; original D0b1 twice-native-red gate remains permanently frozen.
