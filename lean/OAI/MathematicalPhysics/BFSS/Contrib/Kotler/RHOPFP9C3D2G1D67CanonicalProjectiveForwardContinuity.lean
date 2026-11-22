@@ -54,8 +54,12 @@ theorem relationalStandardUnitSphereProjectivePoint_continuous :
           (⟨y.val, relationalStandardUnitSphere_nonzero y⟩ :
             {v : EuclideanSpace ℂ (Fin 2) // v ≠ 0})) :=
     hProjective.comp hInto
-  simpa only [Projectivization.mk'_eq_mk,
-    relationalStandardUnitSphereProjectivePoint] using hComp
+  change Continuous (fun y :
+    {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} =>
+      Projectivization.mk' ℂ
+        (⟨y.val, relationalStandardUnitSphere_nonzero y⟩ :
+          {v : EuclideanSpace ℂ (Fin 2) // v ≠ 0}))
+  exact hComp
 
 /-- The exact D65 standard Circle-orbit algebraic Equiv is continuous
 when its codomain has the INDEPENDENT D66 canonical projective topology.
