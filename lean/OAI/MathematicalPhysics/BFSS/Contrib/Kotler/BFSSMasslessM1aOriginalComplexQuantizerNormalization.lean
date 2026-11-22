@@ -4,7 +4,7 @@ import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMasslessM0OriginalBracket
 MASSLESS-M1a: exact original BFSS massless complex-linear source
 quantizer normalization via independently qualified M0.
 No failed D1F source, massive h=m=1 theorem, real restriction,
-FullL2 domain, spectral or physical Hopfion conclusion.
+bosonic Hilbert domain, spectral or physical Hopfion conclusion.
 -/
 set_option autoImplicit false
 
