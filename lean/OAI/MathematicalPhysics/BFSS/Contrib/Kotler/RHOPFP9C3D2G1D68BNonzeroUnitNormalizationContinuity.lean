@@ -38,7 +38,7 @@ theorem relationalCanonicalNonzeroUnitNormalization_continuous :
   have hcast : Continuous (fun v :
       {v : EuclideanSpace ℂ (Fin 2) // v ≠ 0} =>
         ((‖v.val‖⁻¹ : ℝ) : ℂ)) :=
-    continuous_ofReal.comp hinv
+    Complex.continuous_ofReal.comp hinv
   have hscaled : Continuous (fun v :
       {v : EuclideanSpace ℂ (Fin 2) // v ≠ 0} =>
         (((‖v.val‖⁻¹ : ℝ) : ℂ) • v.val)) :=
