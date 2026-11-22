@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "seed": 20261123,
+  "trials": 40,
+  "n_spin": 16,
+  "n_color": 3,
+  "n_space": 9,
+  "coeff_matrix_shape": [
+    48,
+    48
+  ],
+  "max_residuals": {
+    "source_skew": 0.0,
+    "source_trace": 0.0,
+    "source_gauge_covariance": 5.1996499561104315e-14,
+    "source_skew_gauge_transport": 1.457341821688791e-14,
+    "source_trace_gauge_transport": 2.1857153819412072e-15
+  },
+  "negative_controls_min_residuals": {
+    "nonsymmetric_gamma_min": 68.23287124181557,
+    "nonskew_mass_min": 15.282571318306358,
+    "wrong_color_transpose_min": 12.48859629062054,
+    "physical_nonzero_norm_min": 69.86159536177435
+  },
+  "source_formula": "C[(a,A),(b,B)] = 1.5*delta[A,B]*massT[a,b]-sum_j,c f[B,A,c]*x[j,c]*gamma[j,a,b]",
+  "limitations": "Random skew massT and symmetric gamma satisfy the identities used in source skewness proof but do NOT realize original Clifford/gamma data; epsilon3 tests an SU2-style color algebra, not source construction; 48-index coefficient tests only, no 2**24 source Fock or Lean theorem."
+}
