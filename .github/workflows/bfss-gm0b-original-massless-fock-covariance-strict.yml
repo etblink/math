@@ -1,0 +1,139 @@
+name: BFSS GM0B original massless Fock pointwise covariance strict
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSGM0BOriginalMasslessFockPointwiseGaugeCovariance.lean'
+      - 'lean/diagnostics/BFSSGM0BOriginalMasslessFockGaugeIndependentAudit.lean'
+      - '.github/workflows/bfss-gm0b-original-massless-fock-covariance-strict.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-gm0b-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-exact-original-massless-fock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen original source and independent consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-gm0b-source-fock"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-gm0b-source-fock/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-gm0b-source-fock/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-gm0b-source-fock/preflight.log"
+          from pathlib import Path
+          import subprocess,json,re
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/CovariantFields.lean":"a2a5430550524a57f2fb7d519169050053e886bb",
+            "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean":"e4990dadf1d8bde849e351467282ab3f14989c3b",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMasslessM1aOriginalComplexQuantizerNormalization.lean":"93e11616d37a3bfac44320e7518027d8883c6072",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMasslessM1bOriginalRealFieldRestrictionConsumer.lean":"fc2994f932cc13bbade9735f74a97390a4ea224d",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean":"e20c76fb22bc09d16dbcd8657333227cb34ed1ea",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean":"152204ef15a6569534e0503824a697cb9ae8e4ce",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSGM0AOriginalColorLieTripleGaugeInvariant.lean":"f93e6f7a9cb5fe296b567ab78bc447a7a54a13be",
+          }
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
+          subprocess.check_call(["git","merge-base","--is-ancestor",
+              "a2362e5ed5a12f4ce8a40b58d7e545bf2233bbb6","HEAD"])
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSGM0BOriginalMasslessFockPointwiseGaugeCovariance.lean").read_text()
+          t=Path("lean/diagnostics/BFSSGM0BOriginalMasslessFockGaugeIndependentAudit.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",s)==[
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMasslessM1bOriginalRealFieldRestrictionConsumer",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG4JExactGaugeDataAssemblyProbe",
+            "OAI.MathematicalPhysics.BFSS.CovariantFields"]
+          assert re.findall(r"(?m)^theorem (\S+)",s)==[
+            "originalMasslessQuantizer_gauge_covariant",
+            "pairedOriginalMasslessQuantizer_gauge_covariant"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==[
+            "originalMasslessQuantizer_gauge_covariant",
+            "pairedOriginalMasslessQuantizer_gauge_covariant"]
+          assert re.findall(r"(?m)^import (\S+)$",t)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSGM0BOriginalMasslessFockPointwiseGaugeCovariance"]
+          assert re.findall(r"(?m)^theorem (\S+)",t)==["pairedSourceMasslessFockPointwiseGaugeCovariant"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",t)==["pairedSourceMasslessFockPointwiseGaugeCovariant"]
+          for p in [s,t]:
+              assert "set_option autoImplicit false" in p
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe)\b",p)
+              for bad in ["set_option maxRecDepth","set_option maxHeartbeats",
+                          "set_option synthInstance.maxHeartbeats","IsFiniteMeasure"]:
+                  assert bad not in p
+          assert "G.deformedFermionField_covariant" in s
+          assert "FCP.BFSSMasslessM1b.originalMasslessFermionField_eq_quantized" in s
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_GM0B_SOURCE_EXACT_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-gm0b-source-fock/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Original massless Fock native build plus independent strict consumer
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-gm0b-source-fock"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSGM0BOriginalMasslessFockPointwiseGaugeCovariance 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSGM0BOriginalMasslessFockGaugeIndependentAudit.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-gm0b-source-fock"
+          for fn in ["native-source.log","strict-axioms.log"]:
+              text=(E/fn).read_text()
+              for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert bad not in text,(fn,bad,text[-4000:])
+          native=(E/"native-source.log").read_text()
+          for name in ["FCP.BFSSGM0B.originalMasslessQuantizer_gauge_covariant",
+                       "FCP.BFSSGM0B.pairedOriginalMasslessQuantizer_gauge_covariant"]:
+              assert "'"+name+"' depends on axioms:" in native or "'"+name+"' does not depend on any axioms" in native,("NATIVE_AXIOMS_MISSING",name)
+          body=(E/"strict-axioms.log").read_text()
+          reports=re.findall(r"(?m)^'([^'\n]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",body)
+          assert [x for x,_ in reports]==["FCP.BFSSGM0BIndependent.pairedSourceMasslessFockPointwiseGaugeCovariant"],reports
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for name,listed in reports:
+              axioms={v.strip() for v in listed.split(",") if v.strip()}
+              assert axioms<=allowed,(name,axioms)
+          print("BFSS_GM0B_SOURCE_EXACT_INDEPENDENT_STRICT_GREEN")
+          PY
+
+      - name: Preserve original first-causal evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-gm0b-source-fock-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-gm0b-source-fock/
+          if-no-files-found: warn
+          retention-days: 30
