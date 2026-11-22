@@ -55,3 +55,38 @@ The workflow freezes exact original source hashes, checks the expected import an
 On a RED, retrieve the first causal Lean/log error and archived artifact at the exact tested SHA. Only one narrowly justified follow-up attempt is permitted, with an invariant two-native-RED stop; no linter/recursion/axiom bypasses. A source-only GREEN requires independent verification of the native build, strict source reports, all three accepted roots, artifact hash and exact SHA.
 
 Even a GREEN would establish finite-Fock self-adjointness only. No self-adjoint unbounded BFSS Hamiltonian, SmoothCore invariance, spectral gap, physical Hopfion, Standard Model derivation or GUT follows. Earlier D1S0 independent GREEN and D1S3 source GREEN are retained; D1S1/D1T0/D1T1 and D1R0 consumers remain RED/FROZEN.
+
+
+## R1 strict RED — original first-causal failure independently verified
+
+[Original R1 run #44978109630](https://github.com/etblink/math/actions/runs/44978109630), exact **tested** source commit \`b3c5eeaae14a46ee4c0b2f2bbbf4195b508e0efd\`, GitHub job \`137072428155\`, `completed/failure` on first run attempt. Exact frozen source/hash preflight **PASS**, pinned Lean 4.34.1 and Mathlib restoration **PASS**, D1S3 dependency builds and axiom checks **PASS**. The original D1S4 source compilation **RED** before warning-as-error recompilation.
+
+The **first causal error**, source file `D1S4OriginalPhysicalQuantizationSelfAdjointProbe.lean:41:48`:
+
+\`\`\`text
+Tactic \`rewrite\` failed: Did not find an occurrence of the pattern
+  -?r • ?x
+in the target
+  -↑(K s r) • (θ_s * θ_r) = -(↑(K s r) • (θ_s * θ_r))
+\`\`\`
+
+Other source-elaboration errors: line 48:31, \`simp\` made no progress on star of nested frequency sums; line 65:32, unsolved scalar goal \`-Complex.I / 2 = -(Complex.I / 2)\`; line 66:27, \`rewrite\` failed on over-applied \`neg_smul\` while proving \`(-i/2) • (-S) = (i/2) • S\`.
+
+**R1 is mathematically unqualified:** all three \`#print axioms\` outputs include **\`sorryAx\`** (in addition to allowed \`propext, Classical.choice, Quot.sound\`). These arise from missing proof obligations. There is **no source GREEN sentinel** or successful native D1S4 build.
+
+Original archived [R1 artifact #14736927094](https://github.com/etblink/math/actions/runs/44978109630/artifacts/14736927094), 8,595 bytes, GitHub-reported SHA-256 \`00f3ba1c20120502b230d14987abd40d32469b1dfe9d0c693e79bc1b332f699e\`. Its original job log agrees on SHA and ID.
+
+## R2 targeted proof-only repair — second attempt, NOT accepted at launch
+
+The mathematical statements and original dependent source files are **identical**. The second native attempt modifies ONLY the D1S4 generic theorem's tactics:
+
+- Pairwise sign: use exact reality and skew coefficient rewrites, then \`simp only [neg_smul]\` only if a goal remains.
+- Double star sum: apply two explicit \`star_sum Finset.univ\` identities, one for the outer sum and one for each inner sum.
+- Pure complex scalar sign: \`simp <;> ring\`.
+- Final double negative: \`rw [star_smul, hsum, hI]\` then \`simp only [neg_smul, smul_neg, neg_neg]\` on remaining goals.
+
+D1S4 source blob: original \`ea95d0e0ecdc7e6e0405f1df91d47757d96baed4\` → repaired \`de987a392a2e3510aafa835f8522e753725021cc\`. Its dedicated workflow **remains** \`48034f0a42aa6c88257092aba460dd1002f0ffe6\`; original and D1S3 pinned source hashes have not moved. No `sorry`, extra axioms, increased recursion/heartbeats, or linter bypass introduced.
+
+**R2 exact tested source commit:** \`c8a92c991ba1dae72627a4f5b81efc4fe7851d2e\`. [Strict R2 run #44979114078](https://github.com/etblink/math/actions/runs/44979114078) **launched, still IN PROGRESS at this evidence checkpoint**. No accepted R2 theorem, no axiom report, no archive claim before it completes.
+
+**Two-attempt stop:** On R2 RED, preserve its original first-causal logs and artifact, freeze D1S4, do not launch R3; consider a separate architecture with a typed elementary adjoint lemma after offline review. On R2 GREEN, verify exact source SHA, frozen hash preflight, native build, warning-as-error, all three `#print axioms` roots **without sorryAx**, success sentinel and archive before promotion. This gate is **SOURCE ONLY** and proves nothing about unbounded BFSS Hamiltonian or physical state.

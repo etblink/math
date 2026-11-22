@@ -651,3 +651,16 @@ D1S0 independently strict GREEN preserved. D1S1 source covariance theorem compil
 | CF-205 | Finite-Fock Hermiticity of original Q(C(x)) would prove full BFSS self-adjointness, spectral gap or physical Hopfion | **FALSE INFERENCE**: original bosonic differential/operator domain and source SmoothCore, closure, gauge physical-state and full Hamiltonian still require independent analysis. D1S4 only concerns finite bounded Fermion N →L[ℂ] Fermion N operators. | Preserve source theorem scope. Stop after at most two failed native attempts. |
 
 D1S0 independently GREEN and D1S3 source GREEN remain accepted. D1S1 source theorem compiled but its full independent consumer and D1T0/D1T1/D1R0 consumers remain RED/FROZEN. Original BFSS sources, main, unified integration and RHOPF unchanged.
+
+
+## 2026-11-21 / D1S4 R1 source RED from star-sum/sign proof tactics; R2 scoped repair launched
+
+[Exact R1 diagnostics and R2 scope](./d1s4/D1S4_ORIGINAL_QUANTIZER_SELFADJOINT_STRICT_RECORD_2026_11_21.md). [R1 #44978109630](https://github.com/etblink/math/actions/runs/44978109630) at tested commit \`b3c5eeaae14a46ee4c0b2f2bbbf4195b508e0efd\` = **RED** despite frozen source preflight/toolchain PASS. Native D1S4 compiler failed at lines 41, 48, 65, 66 during generic finite-Fock adjoint proof; all three root reports contain \`sorryAx\`, so no proof is qualified. Archive [#14736927094](https://github.com/etblink/math/actions/runs/44978109630/artifacts/14736927094), reported SHA-256 \`00f3ba1c20120502b230d14987abd40d32469b1dfe9d0c693e79bc1b332f699e\` (8,595 bytes).
+
+| ID | Counterfactual/test | Grounded adjudication | Strict ceiling |
+| --- | --- | --- | --- |
+| CF-206 | D1S4 R1 native RED refutes algebraic skew-to-Hermiticity implication | **NO:** failure is unclosed Lean proof tactics (first line 41:48 sign rewrite; further nested star-sum and scalar normalization). The finite original-Fock CAR/adjoint mathematical argument remains plausible, but not Lean-qualified. D1S3 skewness SOURCE GREEN remains untouched. | R1 **unqualified** with \`sorryAx\` in all three roots. |
+| CF-207 | D1S4 R2 must change original BFSS source or relax strict CI to address the errors | **NO:** R2 changes only generic proof tactics (conditional neg-simplification, explicit \`star_sum\` for each finite level, \`simp <;> ring\`, double-negative simplification). The theorem statements, original source, D1S3 source, pinned Lean/Mathlib and workflow remain unchanged. R2 candidate blob \`de987a392a2e3510aafa835f8522e753725021cc\`. | [R2 #44979114078](https://github.com/etblink/math/actions/runs/44979114078) at \`c8a92c991ba1dae72627a4f5b81efc4fe7851d2e\` launched **PENDING**; do not promote until exact original strict result is verified. |
+| CF-208 | Another full D1S4 CI retry is automatic after a second RED | **REJECTED / TWO-ATTEMPT STOP:** preserve both original RED artifacts and first-causal logs, hold D1S4 if R2 fails. Do not raise recursion or disable linters, add axioms or edit frozen source. | Any eventual source GREEN is only bounded finite-Fock self-adjointness, not unbounded Hamiltonian, spectral gap, Hopfion or GUT. |
+
+Earlier D1S0 independently strict GREEN and D1S3 source GREEN preserved. D1S1 source compiled but full independent consumer RED/FROZEN; D1T0/D1T1/D1R0 RED/FROZEN. Main/unified integration, original BFSS and RHOPF unchanged.
