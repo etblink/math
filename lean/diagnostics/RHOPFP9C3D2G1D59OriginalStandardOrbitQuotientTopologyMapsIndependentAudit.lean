@@ -22,14 +22,14 @@ example :
       relationalSourceComplexFourNormedSpace;
     letI : InnerProductSpace ℂ RelationalSourceComplexFour :=
       relationalSourceComplexFourInnerProductSpace;
-    IsQuotientMap (relationalSourceQUnitCircleOrbitClass :
+    Topology.IsQuotientMap (relationalSourceQUnitCircleOrbitClass :
       {x : RelationalSourceComplexFour //
         relationalRangeCoordinateDotSelf x.coordinates = 1} →
         Quotient relationalSourceQUnitCircleOrbitSetoid) :=
   relationalSourceQUnitCircleOrbitClass_isQuotientMap
 
 example :
-    IsQuotientMap (relationalEuclideanUnitCircleOrbitClass :
+    Topology.IsQuotientMap (relationalEuclideanUnitCircleOrbitClass :
       {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} →
         Quotient relationalEuclideanUnitCircleOrbitSetoid) :=
   relationalEuclideanUnitCircleOrbitClass_isQuotientMap

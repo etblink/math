@@ -38,7 +38,7 @@ theorem relationalSourceQUnitCircleOrbitClass_isQuotientMap :
       relationalSourceComplexFourNormedSpace;
     letI : InnerProductSpace ℂ RelationalSourceComplexFour :=
       relationalSourceComplexFourInnerProductSpace;
-    IsQuotientMap (relationalSourceQUnitCircleOrbitClass :
+    Topology.IsQuotientMap (relationalSourceQUnitCircleOrbitClass :
       {x : RelationalSourceComplexFour //
         relationalRangeCoordinateDotSelf x.coordinates = 1} →
         Quotient relationalSourceQUnitCircleOrbitSetoid) := by
@@ -48,7 +48,7 @@ theorem relationalSourceQUnitCircleOrbitClass_isQuotientMap :
     relationalSourceComplexFourNormedSpace
   let : InnerProductSpace ℂ RelationalSourceComplexFour :=
     relationalSourceComplexFourInnerProductSpace
-  change IsQuotientMap
+  change Topology.IsQuotientMap
     (Quotient.mk relationalSourceQUnitCircleOrbitSetoid :
       {x : RelationalSourceComplexFour //
         relationalRangeCoordinateDotSelf x.coordinates = 1} →
@@ -59,10 +59,10 @@ theorem relationalSourceQUnitCircleOrbitClass_isQuotientMap :
 complex scalar Circle action is also a Mathlib quotient map,
 without a replaced orbit Setoid or alternate quotient topology. -/
 theorem relationalEuclideanUnitCircleOrbitClass_isQuotientMap :
-    IsQuotientMap (relationalEuclideanUnitCircleOrbitClass :
+    Topology.IsQuotientMap (relationalEuclideanUnitCircleOrbitClass :
       {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} →
         Quotient relationalEuclideanUnitCircleOrbitSetoid) := by
-  change IsQuotientMap
+  change Topology.IsQuotientMap
     (Quotient.mk relationalEuclideanUnitCircleOrbitSetoid :
       {y : EuclideanSpace ℂ (Fin 2) // ‖y‖ = 1} →
         Quotient relationalEuclideanUnitCircleOrbitSetoid)
