@@ -881,3 +881,17 @@ A **different, smaller test** is now staged without D1F imports or D1F R4. New s
 | CF-255 | Would a green negative-contraction identity establish the undeformed physical BFSS Hamiltonian or spectral/SM/Hopfion properties? | **NO:** still needs exact coefficient subtraction, complex-to-real restriction comparison with `deformedFermionField 1 0 x` and separate full `FullL2` operator/domain gates. | No physical spectral or GUT claim, no unqualified source imported. |
 
 **Bounded stop rule:** M0 R1 RED archives original diagnostics; one isolated proof repair max, second RED freezes M0 and returns to architecture audit. No linter weakening, `sorry`, original source changes, or D1F R4. A2d strict accepted independently, and original D1S4 frozen two-RED evidence remains intact.
+
+
+
+## 2026-11-21 / MASSLESS-M0 R1 original native RED — first causal finite-sum proof failure
+
+**Verified first-causal failure:** [run #44987939282](https://github.com/etblink/math/actions/runs/44987939282), job `137102507531`, tested commit `1beffd6416c1cb676688d5e26158b258630dddbb`. Original source preflight, Lean 4.34.1 and Mathlib restoration PASS, new source native RED at `BFSSMasslessM0OriginalBracketNegationProbe.lean:30:60`: the `simp only` tactic did not move negation through two source finite sums. Its `neg_smul` and `Finset.sum_neg_distrib` arguments are unused, and both reported roots include `sorryAx` due to incomplete proof; strict step not reached. Original [artifact #14739789534](https://github.com/etblink/math/actions/runs/44987939282/artifacts/14739789534), 6,393 bytes/five files, independently recomputed ZIP SHA-256 `db5630ceb3649470530829459d8ea7fb69db07df159c4767f2be0ab14c0af9ef`; archived tested SHA matches. Original source blob `8aed0ca5f56c4d9dee9d65d700f21870b9e84a2d`.
+
+| ID | Discriminator | R1 finding | Stop/go |
+| --- | --- | --- | --- |
+| CF-256 | A one-line `simp only` proves original finite `sourceThetaQuadraticSum_neg` | **FALSE:** original native elaboration leaves double-sum negation unresolved; unused simp arguments show why simplifier alone is insufficient. | Use exact two-level explicit `Finset.sum_congr` proof, not weakened CI. |
+| CF-257 | `sorryAx` printed in both M0 roots represents verified source mathematics | **FALSE:** both roots are **unqualified** due to first unclosed goal; strict consumer is unreachable. | R1 native RED and archive preserved, no physical inference. |
+| CF-258 | Explicit `sum_neg_distrib` outer/inner plus one pointwise `neg_smul` is a bounded alternative | **TEST PROPOSED:** one R2 proof-only edit, with unchanged original `frequency_bracket_contraction` donor. | Second native/strict RED freezes M0, no D1F R4 or M1 launch. |
+
+**Decision:** one evidence-driven R2 retry only, with the frozen original BFSS and Mathlib pins and two independent source axiom roots unchanged. D1F R1–R3, D1S4 R1/R2 remain frozen RED.
