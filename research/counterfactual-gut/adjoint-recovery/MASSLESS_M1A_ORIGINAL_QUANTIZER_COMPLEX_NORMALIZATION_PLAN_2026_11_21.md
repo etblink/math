@@ -45,3 +45,14 @@ The massless source coefficient difference `M.fermionCoefficient x − M.fermion
 ## Implementation and original strict test receipt
 
 Source implementation `e0cd51c9eb8535a715b0f2000bed41416d476f0b`, only original M0 import and one theorem. Dedicated strict original source workflow `bfss-massless-m1a-original-complex-quantizer-strict.yml` committed at `afe03600eb5c20611c8cb1dcd493edd6b2c723ce`, [first run #44989415373](https://github.com/etblink/math/actions/runs/44989415373) **cancelled during checkout** before source preflight or any Lean compilation when the replacement source-comment-only commit was pushed. The lexical preflight excludes a literal `FullL2` substring; the source comment was changed to `bosonic Hilbert domain` (proof, theorem statements, imports, workflow, accepted donor pins completely unchanged). Corrected source blob `079651a873507c42fb215f848782970876fff141`, commit `e5bd36ccf926b4e3675666ec1e6b7f0129e92ff3`. Active original [strict R1 #44989442784](https://github.com/etblink/math/actions/runs/44989442784), at that exact SHA, **PENDING at launch**. Only full original native source, standalone strict warning-as-error, one permitted axiom root, source preflight and original archived SHA/digest can qualify M1a. No M1b source or CI before M1a acceptance.
+
+
+## Original R1 native scalar normalization RED and bounded R2
+
+[Run #44989442784](https://github.com/etblink/math/actions/runs/44989442784), exact tested `e5bd36ccf926b4e3675666ec1e6b7f0129e92ff3`, original job `137107080285`, source blob `079651a873507c42fb215f848782970876fff141`: frozen source and pinned Lean/Mathlib preflight PASS, 8,952 prerequisite jobs build PASS, new original source **NATIVE RED** at line 30:44. Accepted M0 contraction successfully rewrites the entire theta sum. `simp only [smul_neg, neg_div, neg_smul]` leaves goal
+```lean
+⊢ -((Complex.I / 2) • S) = -(Complex.I / 2) • S
+```
+with explicit unused-`neg_smul` warning. The source theorem's axiom report includes `sorryAx` because it failed; no strict source consumer or GREEN sentinel. Original [artifact #14741602016](https://github.com/etblink/math/actions/runs/44989442784/artifacts/14741602016) **6,084 bytes**, five archive files, independently recomputed SHA-256 `1ff0dfe599772619e124a73caff75b66ea4d7bd706f8a0e25dcb90c3e1463b12` matches GitHub, tested SHA confirmed.
+
+**One bounded proof-only R2 decision:** replace `simp only [smul_neg, neg_div, neg_smul]` after the qualified M0 rewrite by explicit `rw [smul_neg, neg_div]` and `exact (neg_smul (Complex.I / 2) S).symm`, with `S` the original cubic sum. The exact source theorem, coefficient, carrier, imports, source pins, workflow and `#print axioms` remain unchanged; no new original BFSS assumptions, lint changes or resource changes. If R2 is native or strict RED, two-RED STOP and new architecture review; no M1a R3, M1b or D1F R4.
