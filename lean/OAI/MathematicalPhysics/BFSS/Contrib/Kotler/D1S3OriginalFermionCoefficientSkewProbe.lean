@@ -57,9 +57,9 @@ theorem originalFermionCoefficient_skew {N : ℕ}
       (if s.2 = r.2 then (3/2 : ℝ) * BFSSGamma.massT M.gamma s.1 r.1 else 0) =
       -(if r.2 = s.2 then (3/2 : ℝ) * BFSSGamma.massT M.gamma r.1 s.1 else 0) := by
     by_cases hc : r.2 = s.2
-    · rw [if_pos hc.symm, if_pos hc, sourceMassTEntrySkew M r.1 s.1]
+    · rw [ite_eq_left hc.symm, ite_eq_left hc, sourceMassTEntrySkew M r.1 s.1]
       ring
-    · rw [if_neg (Ne.symm hc), if_neg hc]
+    · rw [ite_eq_right (Ne.symm hc), ite_eq_right hc]
       simp
   have hs :
       (∑ j : SpaceIndex, ∑ C : ColorIndex N,
