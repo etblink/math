@@ -16,7 +16,7 @@ operator and square-root radial weight, in the original unweighted space. -/
 theorem pairedWeightedNativeGraph_totallyBounded (f : ℕ → ℕ → pairedGaugeData.invariantCore)
     (u : ℕ → FullL2 2) (q : ℕ → PiLp 2 (fun _ : SpinIndex => FullL2 2))
     (w : ℕ → FullL2 2) (B Q W : ℝ≥0)
-    (hu : ∀ j, Tendsto (fun n => coreToL2 (f j n).val) atTop (𝓝 (u j)))
+    (hu : ∀ j, Tendsto (fun n => OAI.BFSSQuantum.AlgebraData.coreToL2 (f j n).val) atTop (𝓝 (u j)))
     (hq : ∀ j, Tendsto (fun n => originalMinimalPhysicalHilbertChargeColumn
       pairedAlgebraData pairedGaugeData
       (closedChargeCoreInput pairedAlgebraData pairedGaugeData (f j n))) atTop (𝓝 (q j)))

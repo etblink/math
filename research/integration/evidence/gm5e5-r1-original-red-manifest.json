@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "gate": "GM5E5 R1",
+  "verdict": "NATIVE_SOURCE_GREEN_INDEPENDENT_CONSUMER_RED_UNQUALIFIED",
+  "tested_sha": "42db5bd85f43f7471331fd690fe008539ef290a9",
+  "run_id": 45126329908,
+  "job_id": 137531376515,
+  "attempt": 1,
+  "first_causal": "Independent consumer line 19:33 cannot resolve coreToL2 without its AlgebraData namespace",
+  "status": {
+    "preflight": "PASS",
+    "lean_mathlib": "PASS",
+    "native_build": "PASS_9151_JOBS",
+    "source_axiom_report": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "independent_consumer": "RED_UNKNOWN_IDENTIFIER",
+    "green_sentinel": "NOT_EMITTED"
+  },
+  "blobs": {
+    "source": "fd39e85e5d7c2d6009c53416072ba23b7440a81f",
+    "consumer": "0724a035bb43029396d3bbeb4c56c0fd6be85c58",
+    "workflow": "f9b9eb5542aed24195fe905dbf579d30d0c341e3"
+  },
+  "original_artifact": {
+    "id": 14796995405,
+    "bytes": 17327,
+    "sha256": "fd3165629a6da342afbf81104a505075195eed5a483f2c3985991b6b3b4b772b",
+    "provider_link": "https://github.com/etblink/math/actions/runs/45126329908/artifacts/14796995405",
+    "independently_downloaded": true,
+    "crc": "ALL_7_MEMBERS_PASS",
+    "repository_zip_archive": "research/integration/evidence/gm5e5-r1-original-red.zip",
+    "members": [
+      {
+        "name": "cache.log",
+        "bytes": 15132,
+        "sha256": "978bdde80a4a49bd898c504c88991d7c1ee97765d4df5f1586984a101ad9651d"
+      },
+      {
+        "name": "environment-sha256.txt",
+        "bytes": 176,
+        "sha256": "7f83f79f91770e700b0ce26892696260377a3460b843c2ed07610f52fb464f49"
+      },
+      {
+        "name": "native-source.log",
+        "bytes": 131632,
+        "sha256": "fb5b7ea93224165b49141a517f718ef052a19668159c0f0c4defed2e4d50b208"
+      },
+      {
+        "name": "preflight.log",
+        "bytes": 66,
+        "sha256": "a8bd79ee33f677908b5465fe33f9207563b636d450f9c980702faa5d0afcf896"
+      },
+      {
+        "name": "strict-axioms.log",
+        "bytes": 1679,
+        "sha256": "e8e3d8f860feead042282ea0ed727511fe81f81af415c1e478edff023a88918f"
+      },
+      {
+        "name": "tested-blobs.txt",
+        "bytes": 411,
+        "sha256": "ab7f0535eb38292a331ef15e688f820ff86383f63a8ef812996c4e78e9e3b62c"
+      },
+      {
+        "name": "tested-sha.txt",
+        "bytes": 41,
+        "sha256": "ef46bce95e5c5d6e55caaf7f76c1ee2f8a64efe0c13d3b3da72f72fcf9ee7b71"
+      }
+    ]
+  },
+  "complete_job_log": {
+    "path": "research/integration/evidence/gm5e5-r1-original-red-complete-job.log",
+    "bytes": 224564,
+    "sha256": "9adbd5e89029abaaf32d3866c085a2256f696e03d87fc78224580fea93451fd9"
+  },
+  "r2_repair": "Use OAI.BFSSQuantum.AlgebraData.coreToL2 in the independent consumer."
+}

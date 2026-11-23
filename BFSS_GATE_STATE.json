@@ -5588,7 +5588,7 @@
     "receipt": "research/methodology/BFSS_CROSS_TRACK_STATUS_RECONCILIATION_2026_11_22.md",
     "scopes": {
       "canonical_m4_anchor_register": "unchanged: W0C2B2 R2 BLOCKED and 27 accepted M4 anchors; top-level last_qualified and active retain their M4-only meanings",
-      "parallel_unified_massless_gauge_physical": "GM5E4 R1 strictly qualified #45123468324 at 9906eca664a1031f649b1722672d0dba155f3264 for the source squared gradient bound on the original weighted Sobolev limit. The conditional compactness adapter remains open.",
+      "parallel_unified_massless_gauge_physical": "GM5E4 R1 strictly qualified #45123468324 at 9906eca664a1031f649b1722672d0dba155f3264 for the source squared gradient bound on the original weighted Sobolev limit. GM5E5 R1 #45126329908 passed native source and failed the independent consumer on namespace resolution. GM5E5 R2 is staged for strict verification.",
       "historical_native_physical_hamiltonian": "P3-M5BE0 qualified at exact original run #43493125150; source-identical in unified branch",
       "empirical_and_standard_model": "independent research track, not promoted by BFSS mathematics"
     },
@@ -5852,10 +5852,21 @@
     ],
     "pending_and_negative": [
       {
-        "gate": "GM5E5 R1",
+        "gate": "GM5E5 R2",
         "status": "STAGED_AWAITING_STRICT_VERIFICATION",
         "scope": "Original unweighted L2 total boundedness for joint core-limit sequences with uniformly bounded input, native charge, and radial weighted limits",
-        "receipt": "research/integration/BFSS_GM5E5_ORIGINAL_WEIGHTED_GRAPH_COMPACTNESS_GATE_2026_11_22.md"
+        "receipt": "research/integration/BFSS_GM5E5_R1_CONSUMER_NAMESPACE_RED_AND_R2_REPAIR_2026_11_22.md",
+        "prior_red_run": 45126329908
+      },
+      {
+        "gate": "GM5E5 R1",
+        "run": 45126329908,
+        "sha": "42db5bd85f43f7471331fd690fe008539ef290a9",
+        "status": "NATIVE_SOURCE_GREEN_INDEPENDENT_CONSUMER_RED_UNQUALIFIED",
+        "cause": "Independent consumer line 19:33 cannot resolve coreToL2 without its AlgebraData namespace",
+        "artifact_id": 14796995405,
+        "original_zip_sha256": "fd3165629a6da342afbf81104a505075195eed5a483f2c3985991b6b3b4b772b",
+        "receipt": "research/integration/BFSS_GM5E5_R1_CONSUMER_NAMESPACE_RED_AND_R2_REPAIR_2026_11_22.md"
       },
       {
         "gate": "GM5E4 R1",
