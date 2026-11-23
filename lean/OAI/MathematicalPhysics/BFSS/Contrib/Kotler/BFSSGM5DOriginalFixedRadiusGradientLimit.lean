@@ -67,7 +67,7 @@ private theorem nativeCoreChargeValue_sub (M : AlgebraData 2) (G : M.GaugeData)
       originalMinimalPhysicalHilbertChargeColumn M G
         (closedChargeCoreInput M G g)
   rw [hinput]
-  exact map_sub (originalMinimalPhysicalHilbertChargeColumn M G)
+  exact LinearPMap.map_sub (originalMinimalPhysicalHilbertChargeColumn M G)
     (closedChargeCoreInput M G f) (closedChargeCoreInput M G g)
 
 /-- The squared gradient norm is bounded by the squared native charge norm
