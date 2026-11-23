@@ -1,0 +1,7 @@
+# GM5E3 original weighted graph gradient limit
+
+GM5E3 R1 is a candidate on unified integration. Its hypotheses are strong convergence of the original $L^2$ inputs, the native charge outputs, and the original $\sqrt{\|x\|}$-weighted outputs for a sequence in the gauge-invariant smooth core. Its conclusion is strong convergence of the source gradient to some $g$, with the input, gradient, and radial weighted limit in the existing weighted Sobolev closure.
+
+The proof reuses the explicit native partial-map subtraction and two-output Cauchy arguments from [GM5D R3](BFSS_GM5D_R3_ORIGINAL_FIXED_RADIUS_GRADIENT_LIMIT_GREEN_ACCEPTANCE_2026_11_22.md). [GM5E1 R1](BFSS_GM5E1_R1_ORIGINAL_RADIAL_WEIGHTED_GRADIENT_CONTROL_GREEN_ACCEPTANCE_2026_11_22.md) controls the gradient of a core difference by the charge and weighted outputs, using the [GM5E2 R2](BFSS_GM5E2_R2_ORIGINAL_RADIAL_WEIGHTED_CORE_SUBTRACTION_GREEN_ACCEPTANCE_2026_11_22.md) subtraction identity. The strong triple limit supplies membership via `mem_closure_of_tendsto` in `BFSSSliceSobolev.weightedClosure`.
+
+The strict workflow checks one native declaration and one independent declaration on literal paired SU(2) data. The consumer uses the original charge operator and explicit radial weight in its hypotheses. It checks closure membership of the resulting triple. The reverse approximation problem for the full intersection of the native charge and radial multiplier domains remains separate, as do the other energy limits and global moment control.
