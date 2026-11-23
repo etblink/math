@@ -1,8 +1,8 @@
 # GM5E8 R1 original zero mode from persistent overlap
 
-November 23, 2026 · Unified integration · Strict CI pending
+November 23, 2026 · Unified integration · [GM5E8 R2 strict qualification](BFSS_GM5E8_R2_ORIGINAL_PERSISTENT_OVERLAP_ZERO_MODE_GREEN_ACCEPTANCE_2026_11_23.md)
 
-## Staged statement
+## Qualified statement
 
 Let \(T\) be the original closed sixteen-charge column, \(H=T^\dagger T/16\) the original normalized Hamiltonian, and \(f_n\) a sequence in the original gauge-invariant smooth core. Assume \(\|f_n\|_2\le1\) and \(\|Tf_n\|\to0\). If one fixed physical vector \(w\) and one \(\delta>0\) satisfy \(|\langle w,f_n\rangle|\ge\delta\) eventually, the conclusion is a nonzero physical vector in the natural domain of \(H\) with \(Hu=0\). The standalone Lean consumer checks the original paired SU(2) core, charge column and Hamiltonian.
 
