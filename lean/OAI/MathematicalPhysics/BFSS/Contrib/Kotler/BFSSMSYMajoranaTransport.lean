@@ -83,10 +83,16 @@ private theorem pullMajorana_car
   simp only [smul_mul_assoc, mul_smul_comm, smul_smul]
   simp_rw [mul_comm (basisComplex _ γ) (basisComplex _ α), ← smul_add, h]
   by_cases hCD : C = D
-  · simp only [hCD, and_true, one_smul, zero_smul, smul_ite, smul_zero,
-      Finset.sum_ite_eq, Finset.mem_univ, ite_true]
-    rw [← Finset.sum_smul, gram]
-    simp [Matrix.one_apply, ite_smul]
+  · simp only [hCD, and_true]
+    have diagonal (β δ : SpinIndex) :
+        (basisComplex β α * basisComplex δ γ) •
+            ((if β = δ then (1 : ℂ) else 0) • (1 : Module.End ℂ E)) =
+          if β = δ then (basisComplex β α * basisComplex δ γ) • (1 : Module.End ℂ E)
+          else 0 := by
+      by_cases hβδ : β = δ <;> simp [hβδ]
+    simp_rw [diagonal]
+    simp only [Finset.sum_ite_eq, Finset.mem_univ, ite_true, ← Finset.sum_smul, gram,
+      Matrix.one_apply]
   · simp [hCD]
 
 private theorem recoverMajorana (theta : SpinIndex → ColorIndex 2 → Module.End ℂ E)

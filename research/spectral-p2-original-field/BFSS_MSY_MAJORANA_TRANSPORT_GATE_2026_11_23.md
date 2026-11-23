@@ -1,6 +1,6 @@
 # Reflected Appendix A Majorana transport
 
-23 November 2026 · Unified integration · Strict candidate R1
+23 November 2026 · Unified integration · Strict candidates R1 and R2
 
 The previous [gamma gate](BFSS_MSY_REFLECTED_GAMMA_BASIS_R1_GREEN_ACCEPTANCE_2026_11_23.md) identifies the literal Appendix A gamma matrices after reversing spatial axis nine. Write \(O=P/2\) for the normalized matrix, with columns giving the original spinor coordinates in the Appendix A basis. The [pairing check](BFSS_MSY_REFLECTED_GAMMA_BASIS_GATE_2026_11_23.md) found a complex-antilinear part of complex rank four at each color. The proof therefore uses real Majoranas and the existing original Fock unitary theorem.
 
@@ -21,9 +21,13 @@ The same row Gram identity leaves each fermionic color contraction invariant:
 
 The independent importing proof uses the existing paired BFSS Fock space and checks the coordinate formula and the contracted color operators on actual Fock vectors. This test exercises the basis direction and both factors in the bilinear. The hypotheses of the unitary theorem still need to be bound to the external Appendix A CAR realization.
 
+The R1 local Lean prescreen exposed a rewrite failure in the positive color diagonal case. The Kronecker delta remained inside nested scalar actions, preventing the Gram-sum rewrite. R2 reduces the delta pointwise before summing the surviving terms. The repaired algebra compiles locally with the original reflected gamma source. A separate prescreen using the Fock donor interface also compiles the source and consumer proof bodies. The [R1 strict run](https://github.com/etblink/math/actions/runs/45252301296) keeps its original source and evidence while the repaired commit runs its own strict check.
+
 ## Next source comparison
 
 MSY specifies the normalized fermionic color bilinear \(\mathcal G_{ab}\) in Eq. (4) and the finite plane action \(\mathcal U(e^{tE_{ab}},1)=e^{t\mathcal G_{ab}}\) below Eq. (7). Appendix A.3 uses the same Cartesian annihilator convention as the source real and imaginary Majorana pair. Appendix A.4 adds a unitary change on the color index to define the spherical modes used by the released coefficients. The occupation signs and mode order in Eq. (A.9) are explicit. The data crosswalk must account for that color basis. [MSY, Sec. II and Appendix A](https://arxiv.org/html/2611.09837v1)
+
+With zero-based labels \((A,c,\rho)\), Appendix A orders spherical modes as \(6A+2c+\rho\). The source Cartesian pairing orders the corresponding labels as \(6A+3\rho+c\). Reuse the source exterior-algebra map on the one-particle unitary, including this order, so the induced map on occupied modes carries the required fermionic signs. Perform this transport before applying the real spinor basis map to Cartesian Majoranas.
 
 On the native \(+iT_c\) curve, the generator is \(\tfrac12\sum_{ab} f_{abc}\mathcal G^{\rm orig}_{ab}\). The existing Pauli-color theorem gives \(f_{abc}=\sqrt2\,\epsilon_{abc}\). For a cyclic triple this gives \(\sqrt2\,\mathcal G^{\rm orig}_{ab}\) by CAR, with adjoint tangent \(\sqrt2 E_{ab}\) in row-output, column-input convention. The predicted time match is therefore \(t_{\rm MSY}=\sqrt2\,t_{\rm orig}\). Test that sign and scale in Lean against a single literal native plane before generalizing to all axes. L6G7K already identifies the original exponential and exact exterior-Fock operator. The exact native ZYZ theorem can then extend the plane comparison to the whole source SU(2) via its adjoint map. S1H remains available if the external representation is supplied with full Majorana covariance. The next comparison must then transport the common smooth-core charges with the ninth-axis reflection on coordinates and \(O\) on the charge output.
 
