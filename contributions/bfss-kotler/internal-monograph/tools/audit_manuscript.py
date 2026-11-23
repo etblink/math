@@ -23,11 +23,15 @@ PASS = []
 def check(condition: bool, label: str):
     (PASS if condition else FAIL).append(label)
 
-check(len(TEX) == 22, '22 TeX source files (master, 17 chapters, 4 appendices)')
-for i in range(1, 18):
-    hits = list((ROOT / 'chapters').glob(f'ch{i:02d}_*.tex'))
-    check(len(hits) == 1 and f'\\input{{chapters/{hits[0].stem}}}' in MAIN,
-          f'Chapter {i:02d} exists and is imported once')
+chapter_inputs = re.findall(r'\\input\{(chapters/[^}]+)\}', MAIN)
+check(len(chapter_inputs) == 21 and len(set(chapter_inputs)) == 21,
+      '21 unique chapter-section sources, including the embedded Gram section')
+check(all((ROOT / (p + '.tex')).is_file() for p in chapter_inputs),
+      'Every chapter-section source exists')
+check(len(re.findall(r'(?m)^\\chapter(?:\[|\{)', '\n'.join(
+      (ROOT / (p + '.tex')).read_text() for p in chapter_inputs))) == 20,
+      '20 numbered chapters in the master')
+check(len(TEX) == 26, '26 TeX files including the master and four appendices')
 for f in ['appendices/theorem_atlas', 'appendices/historical_lineage', 'appendices/notation_normalization',
           'appendices/negative_knowledge']:
     check(f'\\input{{{f}}}' in MAIN, f'{f} included in master')
@@ -51,15 +55,17 @@ for tex_path in TEX:
     if stack:
         environment_errors.append(f'{tex_path.name}: unclosed {stack!r}')
 check(not environment_errors, 'All TeX environments are properly nested')
-check('Edition 0.8 consolidated research checkpoint' in MAIN and 'Edition 0.6.1' in MAIN,
-      'Master distinguishes Edition 0.8 from historical compiled checkpoints')
-check('Throughout this working manuscript' in MAIN,
-      'Reader contract describes an unfinished working monograph')
-check('not} an independent mathematical peer review' in MAIN and
-      'physical spectral result' in MAIN and 'LaTeX{} build' in MAIN,
-      'Current reader contract distinguishes a completed build from mathematical review')
+check('Internal research monograph --- Edition 0.9' in MAIN,
+      'Master identifies the current internal edition')
+check('future BFSS project' in MAIN and 'proof reuse' in MAIN,
+      'Reader guide names the audience and gives reading paths')
+check('9ee5c7a99953' in MAIN and 'Claim index for the November 22 snapshot' in SOURCE,
+      'The edition declares its source cutoff and current claim index')
 for required in [
     'prop:bounded-l2-multiplier',
+    'eq:proposed-multiplier-energy',
+    'sec:d69-projective',
+    'ch:sm-benchmark',
     'eq:source-complex-car',
     'eq:physical-core-form-agreement',
     'prop:source-cover-descent',

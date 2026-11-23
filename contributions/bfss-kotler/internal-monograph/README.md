@@ -1,13 +1,31 @@
 # The Relative SU(2) BFSS Quantum System — internal research monograph
 
-**Current: Edition 0.8 consolidated checkpoint (16 November 2026).** The sections below retain Edition 0.7 historical validation and review provenance. See [Edition 0.8 consolidation](EDITION_0_8_CONSOLIDATION_2026_11_16.md), [route map](RESEARCH_ROUTE_MAP_2026_11_16.md), and the [dated build record](BUILD_VALIDATION_0_8_2026_11_16.md). Edition 0.7 is already an ancestor of unified integration; Edition 0.8 is developed directly on that branch. The original 38 atlas records are frozen in `THEOREM_ATLAS_0_7_FROZEN.json`; the current atlas adds 21 dated entries. No new physical spectral theorem or independent scientific referee acceptance is claimed.
+**Current internal edition: 0.9.** This book is for Evan Kotler, future BFSS project leads, and mathematically trained collaborators. It assumes graduate linear algebra and basic Hilbert space theory. The reader guide provides different paths for onboarding, selecting the next research question, and checking a theorem before reuse.
+
+The 20-chapter master is `main.tex`. The research cutoff is the unified source at `9ee5c7a999531bd502b4ff076af278ba9be5353b`. The new source comparison identifies the exact invariant-core pairing needed to connect the qualified physical massless multiplier to the original sixteen-charge form. It also maps Edition 0.8's numbering to the current layout. See [Edition 0.9 source comparison](EDITION_0_9_SOURCE_COMPARISON.md).
+
+The manuscript source and its evidence notes are maintained on `integration/bfss-unified-research-20261108` alongside the research they document. The [Edition 0.9 build record](BUILD_VALIDATION_0_9_2026_11_22.md) describes the compiled PDF. Earlier source snapshots are available at [Edition 0.8](https://github.com/etblink/math/tree/17f6ea86bc5fc87f6aae805475f7d3ea3c247d07/contributions/bfss-kotler/internal-monograph), [Edition 0.7](https://github.com/etblink/math/tree/b603f4c1715e15f5f92c69d7fb071992dbaa9f40/contributions/bfss-kotler/internal-monograph), and [Edition 0.6.1](https://github.com/etblink/math/tree/900859ed42492499eb7e932f3950ce7dbd263c06/contributions/bfss-kotler/internal-monograph).
+
+To build from this directory:
+
+```bash
+python3 tools/audit_manuscript.py
+latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/tmp/bfss-monograph-build main.tex
+```
+
+The 59-record atlas remains the dated Edition 0.8 inventory. The printed appendix includes a current claim index with superseding evidence. Historical build and review documents retain their original edition context.
+
+## Historical edition notes
+
+
+**Edition 0.8 consolidated checkpoint (16 November 2026).** See [Edition 0.8 consolidation](EDITION_0_8_CONSOLIDATION_2026_11_16.md), [route map](RESEARCH_ROUTE_MAP_2026_11_16.md), and the [dated build record](BUILD_VALIDATION_0_8_2026_11_16.md). The original 38 atlas records are frozen in `THEOREM_ATLAS_0_7_FROZEN.json`. Edition 0.8 added 21 dated entries.
 
 
 **Historical Edition 0.7 source: typesetting review candidate, locally built and visually screened (independent mathematical review pending).** The previous fully compiled checkpoint is **Edition 0.6.1 (2026-11-11), reported as 90 pages and 40 offline structural checks at commit `900859ed`**. All 17 chapters and the historical, normalization, and negative-knowledge appendices are drafted. **This is a working internal manuscript, not a published or peer-reviewed scientific result.**
 
 This directory helps an independent mathematician or mathematical physicist understand, critique, reproduce, and extend the *original source-exact relative SU(2) quantum model* and its formal verification. Its ultimate external successor will be drafted only after the relevant scientific results and formal proofs are complete and independently reviewed.
 
-## Contents
+## Edition 0.7 contents
 
 - `main.tex` — fully linked 17-chapter master manuscript, including a printed 38-record atlas and three additional source/evidence appendices.
 - `chapters/ch01_scope.tex` — expert introduction: mathematical system versus large-`N` M-theory conjecture, spectral targets, three proof chains, and evidentiary contract.
@@ -44,9 +62,9 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error \
 
 The completed 0.6.1 referee-response checkpoint was reported as **90 pages**, with **40 offline structural checks passed** at commit `900859ed`. That was a local, GitHub-hosted-service-independent review; subsequent editorial work requires its own new compilation and inspection. A selection of beginning, chapter-transition, and appendix pages was rendered locally and inspected. This workflow requires **no GitHub Actions, Pages, webhooks, or hosted LaTeX**. The review PDF is an output, not committed source.
 
-## Preservation and eventual integration
+## Edition 0.7 integration history
 
-The authorized editorial branch is `docs/bfss-internal-research-monograph-20261111`. Work on this branch may change only monograph files; no Lean proofs, frozen manifests, CI workflows, original FCP branches, or `main` are to be rewritten for editorial convenience. The unified integration branch remains separate until an explicit reviewed fast-forward decision. If it advances, incorporate/reconcile those changes before attempting a non-force fast-forward.
+Edition 0.7 was prepared on `docs/bfss-internal-research-monograph-20261111` and is now in unified integration history. Editions 0.8 and 0.9 were prepared directly on unified integration.
 
 ## Independent referee response (edition 0.6.1)
 
@@ -74,4 +92,4 @@ python3 tools/audit_consolidation_evidence.py
 python3 tools/release_candidate_build.py --outdir /tmp/bfss-ed08
 ```
 
-The evidence audit needs the Git checkout. The build and visual review validate editorial output; exact source/consumer strict receipts retain mathematical proof authority. Current workflow status is in the root checkpoint. Edition 0.7 branch instructions above are historical; ongoing authorized work is directly on unified integration.
+Run these historical validation commands from the Edition 0.8 source snapshot. The evidence audit requires the Git checkout. Exact source and independent consumer receipts establish the scope of Lean qualification. See the root checkpoint for current workflow status.

@@ -1,6 +1,4 @@
-% INTERNAL WORKING EDITION. Do not cite as an accepted theorem source.
-% Exact inspected source snapshot: etblink/math@d4870eb1ac58f6f8bdf77844b5cc39c5b77be4a5.
-% The 17-chapter architecture is in CHAPTER_BLUEPRINT.md.
+% Internal working manuscript. Evidence cutoff is declared in the front matter.
 \documentclass[11pt,oneside]{book}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -33,72 +31,65 @@
 \newcommand{\Bconfiguration}{\mathcal X}
 
 \title{\textbf{The Relative $\mathrm{SU}(2)$ BFSS Quantum System}\\[0.4em]
-  \Large Mathematical Construction, Formal Verification, and the Spectral Research Frontier\\[0.6em]
-  \large Internal research monograph --- Edition 0.8 consolidated research checkpoint}
+  \Large Source Operators, Symmetry, Topology, and the Physical Research Frontier\\[0.6em]
+  \large Internal research monograph --- Edition 0.9}
 \author{Internal mathematical research collaboration}
-\date{16 November 2026}
+\date{22 November 2026}
 
 \begin{document}
 \hypersetup{pageanchor=false}
 \frontmatter
 \maketitle
 \hypersetup{pageanchor=true}
-\chapter*{Editorial status and reader's contract}
-\addcontentsline{toc}{chapter}{Editorial status and reader's contract}
-This is Edition 0.8, a dated consolidation of the original-source research
-record through 16 November 2026. Edition 0.7 at
-\texttt{b603f4c1715e} remains the preserved editorial reference;
-Edition 0.6.1 is an earlier compiled checkpoint. The Edition 0.7
-monograph is already an ancestor of unified integration: this revision
-does not import a second manuscript branch or merge experimental histories.
+\chapter*{Who this book is for}
+\addcontentsline{toc}{chapter}{Who this book is for}
+This internal monograph is written for Evan Kotler, future BFSS project
+leads, and research collaborators joining the mathematical work. Evan
+should be able to use it to judge which routes are worth pursuing. An
+incoming lead should be able to recover a theorem's exact scope and
+dependencies without reconstructing the conversation that produced it.
+A collaborator in operator theory, representation theory, or
+mathematical physics should be able to follow the relevant argument
+before opening the Lean source.
 
-Throughout this working manuscript, exact Lean source and independently
-compiled consumer receipts control formal qualification. A \LaTeX{} build
-is \emph{not} an independent mathematical peer review or proof of a
-physical spectral result. Edition 0.7's independent AI referee report
-and itemized response remain in \texttt{reviews/}; they did not recompile
-the Lean implementation. Edition 0.8 has its own local editorial checks
-and build record, not a new independent scientific referee endorsement.
+We assume familiarity with graduate linear algebra and basic Hilbert
+space theory. The book introduces the BFSS carriers and conventions
+as it needs them. Lean notation is explained where it affects a
+statement, and gate identifiers are kept in the evidence notes whenever
+possible. For onboarding, read Chapters~\ref{ch:scope} and
+\ref{ch:carriers}, then the chapters on the physical Hamiltonian and
+the massless interaction. For a research decision, start at
+Chapter~\ref{ch:frontier}. For proof reuse, go from the mathematical
+statement to its source declaration and receipt in
+Appendix~\ref{app:atlas}.
 
-The original mathematical inspection baseline
-\texttt{d4870eb1ac58} and its frozen 38-record atlas are retained.
-The consolidation source/evidence snapshot is
-\texttt{2325d494224b}; later P0A proof-attempt verdicts, if recorded,
-are dated separately. The atlas appends new source-specific records
-rather than retrospectively changing the historical 38 entries.
-Every added qualification names its exact tested commit; no
-combined-tree or new physical theorem is inferred from this editorial work.
+\paragraph{Reading the evidence.}
+A source account states what was checked for the specific source and
+hypotheses. A conventional argument gives the mathematical reasoning
+in the book, and conditional arguments display the premises still
+owed. Numerical prescreens guide choices about what to test. Empirical
+intake records the evidence a candidate must explain. The typeset
+edition records an editorial synthesis. The exact source and original
+verification receipts supply the evidence for formal qualifications.
 
-The lead physical endpoint is now a fixed-positive-regulator
-ground-state fidelity certificate for the original relative SU(2)
-Hamiltonian. Positive-energy physical-sector eigenstates remain a
-distinct objective. Chapters 1, 6--10 and 12--14 contain dated
-consolidation sections explaining the accepted weighted-charge,
-column, symmetry and Hardy-algebra packages and the missing joins.
-Older as-of statements in the retained exposition are historical;
-the dated sections and exact receipt records identify subsequent progress.
+\paragraph{Research cutoff.}
+The unified integration source snapshot is
+\texttt{9ee5c7a99953}, inspected on 22 November 2026 Pacific time.
+The historical manuscript and theorem receipts retain their individual
+tested commits. Appendix~\ref{app:atlas} preserves the Edition 0.8
+inventory and provides a newer index with explicit scope and
+supersessions. Consult the live repository checkpoint for decisions
+after the cutoff.
 
-The subject has nine spatial labels, three gauge-color labels,
-sixteen spinor indices and forty-eight real Majorana labels.
-The 27 real bosonic configuration coefficients are not spacetime
-dimensions. The BFSS name identifies source lineage; eleven-dimensional
-M-theory or a large-$N$ physical equivalence is not an assumption.
-
-The evidence classes remain original definition, historically strict,
-integrated strict, source present with receipt pending, pending
-candidate, conditional analysis and open obligation. Finite operator
-algebra, physical-vector group action, closed-domain covariance,
-Hardy estimates and spectral conclusions are distinct claims.
-The operator Hilbert--Schmidt identity is not a physical Fock-vector
-singlet. The original normalized Hamiltonian and positive-regulator
-auxiliary Hamiltonian have equal kernels in an accepted scope, not
-equal operators or interchangeable spectra.
-
-The final chapters retain candidate-neutral unification questions and
-their no-go controls. The governing aim is to seek truth about physical
-reality and preserve results, including negative results, rather than
-protect a theory. Current workflow status lives in the root checkpoint;
-this book is a dated research synthesis.
+\paragraph{Scientific purpose.}
+The subject is the original relative SU(2) system. The immediate
+operator question is how the qualified physical massless multiplier
+enters the sixteen-charge energy form. The spectral chapters explain
+the distinct fidelity and positive point-spectrum objectives. The
+topology and Standard Model chapters ask what would allow an internal
+mathematical construction to make contact with physics. They preserve
+specific failed inferences and identify tests that could change the
+research decision.
 
 \tableofcontents
 \mainmatter
@@ -112,26 +103,29 @@ this book is a dated research synthesis.
 \part{The Physical Gauge Hilbert Space and Hamiltonian}
 \input{chapters/ch05_gauge}
 \input{chapters/ch06_hamiltonian}
+\input{chapters/massless_multiplier}
 
 \part{Spatial Symmetry and Representation Theory}
 \input{chapters/ch07_spin_geometry}
 \input{chapters/ch08_fock_action}
+\input{chapters/ch12_normalized}
 \input{chapters/ch09_gauge_covariance}
 
-\part{Analysis and the Prospective Spectral Mechanism}
+\part{Energy and Spectral Analysis}
 \input{chapters/ch10_energy}
 \input{chapters/ch11_compactness}
-
-\input{chapters/ch12_normalized}
+\input{chapters/weighted_fidelity}
 \input{chapters/ch13_spectral}
 
-\part{Research Synthesis}
-\input{chapters/ch14_frontier}
-
-\part{Prospective Unification: Hypotheses, Obstructions, and Tests}
-\input{chapters/ch15_particle}
+\part{Topology, Particle Structure, and Empirical Comparisons}
 \input{chapters/ch16_topology}
+\input{chapters/ch15_particle}
+\input{chapters/standard_model_scc}
 \input{chapters/ch17_unification}
+
+\part{Research Practice and Decisions}
+\input{chapters/proof_practice}
+\input{chapters/ch14_frontier}
 
 \appendix
 \input{appendices/theorem_atlas}

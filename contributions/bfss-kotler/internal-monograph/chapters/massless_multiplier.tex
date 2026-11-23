@@ -1,0 +1,108 @@
+\chapter[The Physical Massless Multiplier]{The Massless Fermionic Interaction on the Physical Hilbert Space}
+\label{ch:massless-multiplier}
+
+\section{From a finite Fock operator to multiplication on wavefunctions}
+Let \(M\) be the original paired \(\mathrm{SU}(2)\) algebra data,
+\(X\in\mathcal X\) the bosonic configuration, and \(\mathcal F\)
+the original Fock space. The source massless frequency
+\(K_{1,0}(X)\) equals \(K_{1,1}(X)-K_{1,1}(0)\) in the
+source conventions. This difference removes the constant mass term.
+Write \(B(X)=M.\operatorname{quantizeFrequency}(K_{1,0}(X))\).
+Its restriction of scalars to the reals is exactly
+\(M.\operatorname{deformedFermionField}(1,0,X)\). In particular
+the real inner product in the source energy identity is the real
+part of the complex Fock pairing with \(B(X)\). This uses the
+source normalization of the Majoranas and the sign established
+by the massless quantization proof.
+\formalrecord{M1a supplies the complex quantizer, M1b the field
+identity, and M1c the coefficient difference. The
+\href{https://github.com/etblink/math/actions/runs/45059474635}{target integration receipt}
+includes their exact source closure.}
+
+Each \(B(X)\) acts on the finite Fock space. Its dependence on \(X\)
+leads to a separate operator \(V\) on
+\(\mathcal H=L^2(\mathcal X;\mathcal F)\):
+\[
+ D(V)=\{u\in\mathcal H:B(\cdot)u(\cdot)\in L^2\},
+ \qquad (Vu)(X)=B(X)u(X)\quad\text{a.e.}
+\]
+Here the membership condition is on a representative and is independent
+of that choice. Two representatives agree outside a null set, where
+their images under the same pointwise linear map also agree.
+Continuity of the source field in \(X\) supplies measurability and
+local boundedness. Smooth compactly supported vectors belong to
+\(D(V)\). Their density in the ambient space gives density of \(D(V)\).
+
+To see the graph argument, suppose \(u_n\to u\) and \(Vu_n\to v\) in
+\(L^2\). Extract a joint subsequence converging almost everywhere in
+both coordinates. On that common full-measure set, continuity of the
+finite linear map \(B(X)\) in its input gives
+\(v(X)=B(X)u(X)\). Since \(v\in L^2\), \(u\in D(V)\) and \(Vu=v\).
+The source proof separates the maximal domain, the algebraic graph,
+the almost-everywhere limit argument, and the paired specialization.
+\formalrecord{D0a through D0e1d supply these interfaces. The generic
+partial operator was independently qualified in
+\href{https://github.com/etblink/math/actions/runs/45039242640}{D0c0}.
+The paired closed dense graph is covered by the
+\href{https://github.com/etblink/math/actions/runs/45059474635}{unified target receipt}.}
+
+\section{Restriction to the original physical fixed space}
+For the original gauge action \(U_g\), source covariance preserves
+\(D(V)\) and gives \(VU_gu=U_gVu\) there. Thus a fixed input has a
+fixed output. Let \(E=\mathcal H_{\rm phys}\) and write
+\(V_{\rm phys}\) for the restriction with domain \(D(V)\cap E\)
+and values in \(E\). If \(i:E\hookrightarrow\mathcal H\) is the
+inclusion, its actual graph satisfies
+\[
+ \operatorname{Graph}(V_{\rm phys})
+   =(i\times i)^{-1}\bigl(\operatorname{Graph}(V)\bigr).
+\]
+Continuity of \(i\times i\) transfers closedness. Separately, the
+original invariant smooth core is dense in \(E\) and belongs to the
+physical multiplier domain. These arguments give the closed, densely
+defined source operator. A self-adjoint realization would require
+an adjoint-domain argument for this operator.
+\formalrecord{GM0--GM3 supply gauge covariance, domain invariance and
+intertwining. GM4A constructs the restriction. GM4B1 supplies density
+and \href{https://github.com/etblink/math/actions/runs/45085548204}{GM4B2 R2}
+checks the inverse-image graph and paired closedness.}
+
+\section{The first composition with the sixteen-charge form}
+\label{sec:multiplier-energy-join}
+The October FCP S4B34--36 chain already established the concrete
+signed Pauli/Fock identity and evaluated the historical closed
+charge energy on its embedded invariant smooth core. Its hypotheses
+and input domain belong to that tested construction. The present
+unified source has the same mathematical ingredients for a focused
+composition with the named physical multiplier.
+
+For an original invariant smooth vector \(f\), let \(u=i_{\rm core}f\)
+be its image in \(E\). The source graph embedding and the massless
+core-domain theorem give \(u\in D(T)\cap D(V_{\rm phys})\). The
+following is the proposed direct consumer of the existing
+interfaces:
+\begin{align}
+ \tfrac1{16}\|Tu\|^2
+ &=\tfrac12\sum_p\|\iota\partial_p f\|_{L^2}^2
+   +\int_{\mathcal X} V_B(X)\|f(X)\|^2\,dX
+   +\operatorname{Re}\langle u,V_{\rm phys}u\rangle_E .
+ \label{eq:proposed-multiplier-energy}
+\end{align}
+The ordinary composition is short. Restrict the charge-form
+identity to \(u=i_{\rm core}f\), then replace the original pointwise
+massless fermion field by the real restriction of \(B(X)\). The
+almost-everywhere action of \(V\) and the isometric inclusion of
+\(E\) identify its integrated pairing with the final term. The
+Cauchy--Schwarz inequality gives integrability of this pairing from
+\(u,Vu\in L^2\). This manuscript records the composition and its
+source dependencies. An exact, separately accepted Lean consumer
+of the displayed statement remains a research target.
+
+A later extension should name the intended form domain and prove a
+continuity or approximation estimate there. A graph approximation
+for \(T\) alone controls the charge norm. Convergence in that norm
+does not provide convergence in the graph norm of \(V_{\rm phys}\).
+The question of which energy terms extend individually therefore
+requires analytic input about the proposed domain. The
+source comparison and bounded formal target are listed in
+\texttt{EDITION\_0\_9\_SOURCE\_COMPARISON.md}.

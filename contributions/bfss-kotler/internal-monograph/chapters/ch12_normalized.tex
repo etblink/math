@@ -1,8 +1,8 @@
 % Edition 0.5. Source snapshot d4870eb1, exact original normalized Fock observables.
-\chapter[The Normalized Fock-Field Program]{The Normalized Original Fock-Field Program: Bounded Observables and Genuine $L^2$ Classes}
+\section{The bounded normalized Gram field}
 \label{ch:norm}
 
-\section{Why we began another operator program after constructing the Hamiltonian}
+\subsection{Why we began another operator program after constructing the Hamiltonian}
 The original physical Hamiltonian of Chapter~\ref{ch:hamiltonian} is an
 unbounded operator on a gauge-invariant Hilbert space. It is tempting to
 read any subsequent bounded-operator theorem as a bound for the original
@@ -22,7 +22,7 @@ four distinct steps: an algebraic Gram bound, a continuous field,
 $L^2$ membership of pointwise images, and quotient-level representative
 independence. Each is a different proof obligation.
 
-\section[The actual spatial Gram matrix and the fixed-B field]{The actual spatial Gram matrix and the fixed-$B$ field}
+\subsection[The actual spatial Gram matrix and the fixed-B field]{The actual spatial Gram matrix and the fixed-$B$ field}
 For $X\in\mathbb R^{9\times3}$, let $x_i\in\mathbb R^3$ denote
 its $i$th color row, and write
 \begin{equation}\label{eq:norm-gram}
@@ -91,7 +91,7 @@ the proof nor the normalization changes the physical Hamiltonian.
 \href{https://github.com/etblink/math/actions/runs/43017992525}{strict run \#43017992525}.
 Atlas N-01.}
 
-\section{Continuity, measurable evaluation, and the non-finite measure trap}
+\subsection{Continuity, measurable evaluation, and the non-finite measure trap}
 The underlying bosonic space is $\mathbb R^{27}$ with ordinary
 Lebesgue volume. It is not a probability space, and its total volume
 is infinite. In particular, the constant function with values in a
@@ -137,7 +137,7 @@ measure of the full bosonic domain.
 \href{https://github.com/etblink/math/actions/runs/43047181537}{\#43047181537}.
 Atlas N-02.}
 
-\section{From a pointwise function to an actual almost-everywhere class}
+\subsection{From a pointwise function to an actual almost-everywhere class}
 An $L^2$ element is an equivalence class modulo null sets, not a
 canonical pointwise wavefunction. One must be careful when saying a
 multiplication rule is independent of representatives.
@@ -178,7 +178,7 @@ verified.
 \href{https://github.com/etblink/math/actions/runs/43091441892}{strict run \#43091441892}.
 Atlas N-04.}
 
-\section{A short mathematical deduction and an important qualification hold}
+\subsection{A short mathematical deduction and an important qualification hold}
 The accepted results suggest the natural formula
 \begin{equation}\label{eq:norm-multiplier-definition}
    (\mathsf M_B f)(X):=\widetilde A_B(X)f(X)
@@ -225,17 +225,17 @@ $\widetilde A_B(X)g(X)=\widetilde A_B(X)f(X)$ almost everywhere, and
 the former is $\texttt{MemLp}$ whenever the latter is. Its source
 proof is small, but the required independently completed strict gate
 \href{https://github.com/etblink/math/actions/runs/43095354808}{\#43095354808}
-was still \emph{queued with no conclusion} at our 11 November
-editorial source check. It must not be counted as a green qualification
-without a complete run and consumer audit.
-\formalrecord{Pending source
-\texttt{BFSSNORM0D3DOriginalFockRepresentativeTransport.lean},
+was queued at the 11 November editorial check and later ended
+cancelled. The separate direct original output interface retains
+its strict qualification.
+\formalrecord{Historical candidate source
+\path{BFSSNORM0D3DOriginalFockRepresentativeTransport.lean},
 \texttt{originalFockImage\_ae\_of\_rep} and
 \texttt{originalFockImage\_memLp\_of\_rep}; candidate blob
 \texttt{cb16f081fb1dbff0f149e94b39145d3ea2dec58b}.
-Atlas N-05, \textbf{pending strict acceptance}.}
+Atlas N-05, \textbf{recorded run cancelled}.}
 
-\section{The critical scientific boundary}
+\subsection{The critical scientific boundary}
 The observable $\widetilde A_B$ is normalized by $1+\|X\|^2$;
 its unnormalized numerator is quadratic in $X$. The physical
 fermionic interaction $B_M^{(1,0)}(X)$ of
@@ -254,7 +254,7 @@ handling of null-set representatives. This infrastructure may aid
 future compactness estimates or gauge-equivariant operator calculus;
 its usefulness is not evidence of an eigenpair or a mass gap.
 
-\section{Edition 0.8: columns and source tau norms}
+\subsection{Columns and source tau norms}
 \label{sec:ed08-tau}
 M2C1 qualifies norm comparisons between the original operator-valued
 $L^2$ space and genuine Fock-vector $L^2$ columns. The column norm

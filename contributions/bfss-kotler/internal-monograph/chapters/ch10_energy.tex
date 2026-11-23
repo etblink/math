@@ -3,13 +3,10 @@
 \label{ch:energy}
 
 \section{Why an operator construction does not yet imply confinement}
-Chapter~\ref{ch:hamiltonian} records the \emph{historically
-strict-qualified} FCP construction of a nonnegative self-adjoint physical
-Hamiltonian from the original closed sixteen-charge column,
-\(H_{\mathrm{phys}}=\frac1{16}T^\dagger T\). The modified
-current-tree import of the BA--BH chain has \emph{not} been independently
-requalified; this chapter uses the historical result at its tested source
-snapshot, not a fresh acceptance of that port. The spectral question is more
+Chapter~\ref{ch:hamiltonian} records the historical construction and
+the integrated M5BE0 and M5BF0 results on the original paired
+Hamiltonian \(H_{\mathrm{phys}}=\frac1{16}T^\dagger T\).
+The separate historical BG/BH correspondence retains its own scope. The spectral question is more
 demanding. We must understand how its quadratic form behaves as the bosonic
 configuration escapes through the noncompact space
 \(\Bconfiguration=\mathbb R^{9\times3}\). The scalar potential is quartic,
@@ -288,25 +285,36 @@ therefore be unnecessary. But changing \(C\) changes the required
 oscillator threshold, and that threshold cannot be adjusted without
 checking actual source branching, nonemptiness and center conventions.
 
-\begin{openproblem}[Physical unnormalized field and energy-to-moment
-bridge]\label{op:energy-to-moment}
-On the literal paired \(\mathrm{SU}(2)\) physical Hilbert space:
-(i) prove the exact Pauli/gamma/ordered-Majorana binding of the source
-fields, (ii) prove a source-typed operator growth bound, (iii) construct
-the physically correct Spin(9) reducing action and high-weight exclusion,
-and (iv) derive from the \emph{same} closed physical form a uniform
-positive first-radial-moment and gradient estimate. Theorem~\ref{thm:massless-energy}
-alone establishes none of (i)--(iv).
+\section{What the growth and energy theorems provide}
+P2-C2 qualifies a source growth estimate for the original concrete
+algebra data with a finite coefficient \(C_0\). P2-C4B qualifies
+the corresponding smooth-core lower-form machinery, including the
+required integrability. Keep that concrete source typing when using the
+bound. An exact value such as \(8\sqrt3\) and any transfer to a
+particular paired formulation require the appropriate assumptions
+and source bindings.
+\formalrecord{\href{https://github.com/etblink/math/actions/runs/43174015946}{P2-C2}
+and \href{https://github.com/etblink/math/actions/runs/43249643884}{P2-C4B}.}
+
+The historical FCP S4B36 theorem evaluates the original closed
+physical charge energy on the embedded invariant smooth core by
+the concrete Pauli/Fock coordinate formula. That qualification
+uses S4B34 and S4B35 for the ordered field and smooth-core energy.
+Chapter~\ref{ch:massless-multiplier} states the current-tree
+composition with the actual multiplier on exactly those core
+vectors. The normalized Gram field in Section~\ref{ch:norm}
+supplies a different bounded operator.
+\formalrecord{\href{https://github.com/etblink/Foundational-Convergence-Program/actions/runs/40472176948}{FCP S4B36 Gate 4}.}
+
+\begin{openproblem}[Physical energy-to-moment estimate]\label{op:energy-to-moment}
+Construct the genuine physical reducing action and prove whole-sector
+oscillator exclusion. On the specified sector of the same closed
+physical form, derive uniform control of the gradient and a positive
+first-radial-moment term with an explicit domain map. The qualified
+smooth-core lower bound supplies a starting inequality for this test.
 \end{openproblem}
 
-\editornote{Evidence statuses: the source core form A-01 is integrated
-strict-qualified; the concrete conservative norm constant is conditional
-finite-dimensional analysis; the source physical growth and coercivity
-joins O-02 and O-04 remain open. The normalized Gram observable of
-Chapter~\ref{ch:norm} is auxiliary and does not replace the unnormalized
-fermionic field.}
-
-\section{Edition 0.8: compare charge squares before naming another Hamiltonian}
+\section{Comparison of individual charge squares}
 \label{sec:ed08-square-difference}
 A promising independent energy route compares $Q(w)^2$ and $Q(z)^2$
 for equal-norm real spinors $w,z$ on the same original invariant
@@ -328,7 +336,7 @@ charges with the same graph domain. These are conditional
 consequences requiring exact source/core/closure adapters.
 Even equality $Q_\alpha^\dagger Q_\alpha=H$ does not prove
 $Q_\alpha^2=H$ without the necessary self-adjointness and domain
-identification. The direct averaged-resolvent contract in Chapter 14
+identification. The direct averaged-resolvent contract in Chapter~\ref{ch:weighted-fidelity}
 is a smaller possible spectral target than a full closed superalgebra.
 
 This route may remove an energy prerequisite without waiting for the

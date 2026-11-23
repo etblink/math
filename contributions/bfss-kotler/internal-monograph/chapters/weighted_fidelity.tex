@@ -1,0 +1,88 @@
+\chapter{Weighted Charges and Ground-State Fidelity}
+\label{ch:weighted-fidelity}
+The purpose of the auxiliary operator is to turn a bound on the
+weighted charge energy of a trial state into information about its
+projection onto the original kernel. Work at fixed $\varepsilon>0$,
+with the positive radial weight
+$w_\varepsilon(X)=(\|X\|^2+\varepsilon^2)^{1/2}$ and the bounded
+reciprocal output multiplier $B_\varepsilon=w_\varepsilon^{-1}$.
+The weighted charge graph consists of pairs $(u,z)$ for which
+$(u,B_\varepsilon z)$ belongs to the original charge graph. This route
+uses continuity and injectivity of the reciprocal multiplier to obtain
+a closed, single-valued graph. The source domain and density proofs
+establish the hypotheses for forming its adjoint square.
+
+\section{The weighted Hamiltonian and the shared kernel}
+Let $S_\varepsilon$ be the accepted weighted charge column on the
+original physical input space. Its normalized operator and form are
+\[
+ H_\varepsilon=\tfrac1{16}S_\varepsilon^\dagger S_\varepsilon,
+ \qquad q_\varepsilon[u]=\tfrac1{16}\|S_\varepsilon u\|^2 .
+\]
+The accepted weak form uses the natural domain of this adjoint square.
+For either charge column, the kernel of its adjoint square equals
+the kernel of the column. On the weighted graph, $(u,0)$ belongs
+precisely when $(u,B_\varepsilon 0)=(u,0)$ belongs to the original
+graph. This is the mechanism behind
+\begin{equation}\label{eq:ed08-kernels}
+ \ker H_\varepsilon=\ker H\qquad(\varepsilon>0).
+\end{equation}
+The equality concerns subspaces of the original physical Hilbert
+space. The common kernel may be trivial. The zero-regulator limit is
+a different analysis.
+\formalrecord{The natural adjoint square, normalized weak form, and
+kernel comparison have separate receipts in atlas entries
+\texttt{E08-C4A}, \texttt{E08-C4B}, and \texttt{E08-C4C}. The
+reciprocal pairing is indexed by \texttt{E08-CERTP0}.}
+
+\section{A conditional fidelity bound}
+\label{sec:ed08-resolvent}
+Let $E$ be the original physical Hilbert space and $T$ its closed
+sixteen-charge column, with $H=T^\dagger T/16$. For a normalized
+physical singlet $\psi$ in the weighted domain put
+$z=S_\varepsilon\psi$ and $\chi_\alpha=(T\psi)_\alpha$.
+The existing reciprocal construction gives
+$\chi_\alpha=B_\varepsilon z_\alpha$ under its actual graph
+hypotheses. Assume additionally that the outputs are physical,
+belong to a reducing spinor sector, and satisfy, for $t>0$,
+\begin{equation}\label{eq:ed08-R}
+ \tfrac1{16}\sum_\alpha
+ \langle\chi_\alpha,(H+t)^{-1}\chi_\alpha\rangle
+ =\langle\psi,H(H+t)^{-1}\psi\rangle.
+\end{equation}
+Assume the native spinor form-domain inequality
+\begin{equation}\label{eq:ed08-Hardy}
+ \|B_\varepsilon\eta\|^2\leq\kappa h[\eta],
+ \qquad \eta\in D(h)\cap E_{\rm spinor}.
+\end{equation}
+Neither displayed assumption has been qualified on the original
+source. The constant is not imported from a paper by convention.
+
+Conditionally, take $\eta_\alpha=(H+t)^{-1}\chi_\alpha$ and
+$a_\alpha=\langle\chi_\alpha,\eta_\alpha\rangle\geq0$.
+The resolvent equation gives $h[\eta_\alpha]\leq a_\alpha$.
+Reciprocal pairing and Cauchy--Schwarz yield
+$a_\alpha\leq\sqrt\kappa\|z_\alpha\|\sqrt{a_\alpha}$,
+hence $a_\alpha\leq\kappa\|z_\alpha\|^2$. Averaging and
+letting the spectral shift $t$ decrease to zero gives
+$\|(I-P_{\ker H})\psi\|^2\leq\kappa q_\varepsilon[\psi]$.
+The radial regulator $\varepsilon$ stays fixed. This is a conditional
+argument using bounded shifted resolvents, not a new Lean certificate
+or a proof of the assumptions.
+
+
+\section{What would turn the bound into a certificate}
+For a normalized original physical trial vector, the conditional
+conclusion is
+\[
+ \|P_{\ker H}\psi\|^2\geq\max\{0,1-\kappa q_\varepsilon[\psi]\}.
+\]
+A strictly positive right side would establish a nonzero vector in
+the original ground subspace. The work still requires a qualified
+physical singlet trial vector in the weighted form domain, a
+source-realized reducing spinor sector containing its charge outputs,
+the averaged resolvent identity, and a Hardy estimate with a usable
+constant. Only then can the trial energy be compared to $1/\kappa$.
+The identity $H=T^\dagger T/16$ supplies the closed positive form.
+A square identity for each individual charge or an intertwiner through
+the resolvent requires its own domain and covariance argument.
