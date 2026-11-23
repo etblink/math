@@ -31,8 +31,6 @@ theorem radialWeightedCore_sub {N : ℕ} (f g : SmoothCore N) :
         (Real.continuous_sqrt.comp continuous_norm) g,
       Lp.coeFn_sub (radialWeightedCore f) (radialWeightedCore g)
     ] with x hsub hf hg hlp
-  change (radialWeightedCore (f - g) : Boson N → Fermion N) x =
-      (radialWeightedCore f - radialWeightedCore g : FullL2 N) x
   rw [hsub, hlp, Pi.sub_apply, hf, hg]
   change (Real.sqrt ‖x‖) • (f x - g x) =
     (Real.sqrt ‖x‖) • f x - (Real.sqrt ‖x‖) • g x

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "gate": "GM5E2 R1",
+  "verdict": "NATIVE_SOURCE_RED_UNQUALIFIED",
+  "tested_sha": "06bc2e6606117ee6321e8472ef48a6f8ada4b782",
+  "run_id": 45114089413,
+  "job_id": 137492808415,
+  "attempt": 1,
+  "first_causal": "Unused tactic linter: change ... does nothing at source line 34:2",
+  "status": {
+    "preflight": "PASS",
+    "lean_mathlib": "PASS",
+    "native_build": "RED_AT_LAST_MODULE_9145",
+    "source_axiom_report": "STANDARD_ALLOWED_ONLY_BUT_BUILD_RED",
+    "independent_consumer": "NOT_RUN",
+    "green_sentinel": "NOT_EMITTED"
+  },
+  "blobs": {
+    "source": "d831c6022a34f34b336c06c52815e6e19d346bc3",
+    "consumer": "99457caf1f3412468ef09739c7fb874884280d6d",
+    "workflow": "e33e9563771deb540eb62716b763a66b9fe0c8e7"
+  },
+  "original_artifact": {
+    "id": 14791960823,
+    "bytes": 17187,
+    "sha256": "e9b4d86a7f60c37e7afe24b13a2aaf44865697b3c54b1b9d208141467d51e52d",
+    "provider_link": "https://github.com/etblink/math/actions/runs/45114089413/artifacts/14791960823",
+    "independently_downloaded": true,
+    "crc": "ALL_6_MEMBERS_PASS",
+    "members": [
+      {
+        "name": "cache.log",
+        "bytes": 15375,
+        "sha256": "21fdc58ab564ab27469e6bf8ff77d38d161d4c8ae406984e751aa6e9c998767b"
+      },
+      {
+        "name": "environment-sha256.txt",
+        "bytes": 176,
+        "sha256": "7f83f79f91770e700b0ce26892696260377a3460b843c2ed07610f52fb464f49"
+      },
+      {
+        "name": "native-source.log",
+        "bytes": 133333,
+        "sha256": "164028a3c85e43d7ccec44ad28a058e68cf79339c3db8c5f78c7ff7ede18502c"
+      },
+      {
+        "name": "preflight.log",
+        "bytes": 72,
+        "sha256": "99442f40e69f978235a1b45f4769ccbd8c4e09da3543e576c4d309a3c1b7df9e"
+      },
+      {
+        "name": "tested-blobs.txt",
+        "bytes": 427,
+        "sha256": "b7fc892346f42594461b88dd241291447f1c6513c8ecba8fe1cdc9e8c4a02be9"
+      },
+      {
+        "name": "tested-sha.txt",
+        "bytes": 41,
+        "sha256": "e7b9d19871f9fdb1824739f4aaf0a1c7da291bb44eb2c7d42ccdec556f3f9db8"
+      }
+    ],
+    "repository_zip_archive": false
+  },
+  "proposed_repair": "Remove only the redundant change; do not disable linter, modify theorem/consumer/workflow or resource settings"
+}
