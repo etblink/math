@@ -10,7 +10,7 @@ Let \(T\) be the original native sixteen-charge column and \(q(f)=\|Tf\|^2/16\) 
   = q(f) + \frac12\sum_j\int_{\mathbb R^{27}}
        \|\nabla\chi_j(X)\|^2\,\|f(X)\|^2\,dX.
 \]
-The gauge step uses pointwise equivariance and the almost-everywhere semantics of the actual pullback and fermion action. The form step composes the existing smooth IMS identity with GM5B's original closed-column evaluation. The independent consumer uses two cutoffs on the literal paired SU(2) data. Strict qualification is pending.
+The gauge step uses pointwise equivariance and the almost-everywhere semantics of the actual pullback and fermion action. The form step composes the existing smooth IMS identity with GM5B's original closed-column evaluation. The independent consumer uses two cutoffs on the literal paired SU(2) data. The localization identity is [strict-qualified in R2](BFSS_GM5E7_R2_ORIGINAL_GAUGE_CORE_LOCALIZATION_GREEN_ACCEPTANCE_2026_11_23.md).
 
 ## Analytic consequence to use when screening trial families
 
