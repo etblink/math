@@ -5972,14 +5972,20 @@
     "pending_and_negative": [
       {
         "gate": "MSY Majorana transport R1",
-        "status": "PENDING_STRICT_CI",
+        "status": "NATIVE_SOURCE_RED_UNQUALIFIED",
         "frozen_ancestor": "560a49b0b7fc754b7b9da9b5677cbd20c3e9767e",
         "workflow": ".github/workflows/bfss-msy-majorana-transport-strict.yml",
         "receipt": "research/spectral-p2-original-field/BFSS_MSY_MAJORANA_TRANSPORT_GATE_2026_11_23.md",
         "scope": "Reflected Appendix A spinor basis extends to a Fock isometry under Hermitian delta-one CAR and irreducibility; the contracted color bilinears agree. Independent consumer uses original paired Fock.",
         "run": 45252301296,
         "sha": "8b4da474e6dd3dea07d531a8e09d4fcbfde94a88",
-        "local_diagnostic": "Local prescreen found the CAR rewrite could not extract the Kronecker diagonal from nested scalar actions; original CI result pending"
+        "job_id": 137964860988,
+        "cause": "Native CAR accumulation at line 88:8 could not extract the Kronecker diagonal from nested scalar actions; source sorryAx and no independent consumer",
+        "native_build_jobs": 9123,
+        "artifact_id": 14857660761,
+        "original_zip_sha256": "c461fccfc2fe7a1c1f551b15b708bc1e18e7776c322b85fcf9ebf1a62df644f8",
+        "evidence": "research/integration/evidence/msy-majorana-transport-r1-original-red.zip",
+        "repair_run": 45254359502
       },
       {
         "gate": "MSY Majorana transport R2",
@@ -5988,7 +5994,10 @@
         "workflow": ".github/workflows/bfss-msy-majorana-transport-strict.yml",
         "receipt": "research/spectral-p2-original-field/BFSS_MSY_MAJORANA_TRANSPORT_GATE_2026_11_23.md",
         "scope": "Reflected Appendix A spinor basis extends to a Fock isometry under Hermitian delta-one CAR and irreducibility; the contracted color bilinears agree. Independent consumer uses original paired Fock.",
-        "repair": "Reduce the Kronecker delta to the diagonal pointwise before folding the matrix Gram sum; real gamma algebra and isolated Fock API prescreens pass"
+        "repair": "Reduce the Kronecker delta to the diagonal pointwise before folding the matrix Gram sum; real gamma algebra and isolated Fock API prescreens pass",
+        "run": 45254359502,
+        "sha": "4c7aeb721761de4b4cb3642ae22bdb7cd8d4ff1c",
+        "job_id": 137972114787
       },
       {
         "gate": "GM5E10 R1",
