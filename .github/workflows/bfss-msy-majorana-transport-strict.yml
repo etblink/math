@@ -1,0 +1,156 @@
+name: BFSS MSY Majorana transport strict
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYMajoranaTransport.lean'
+      - 'lean/diagnostics/BFSSMSYMajoranaTransportIndependentAudit.lean'
+      - '.github/workflows/bfss-msy-majorana-transport-strict.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-msy-majorana-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-msy-majorana:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen original source and independent consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-msy-majorana-transport"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-msy-majorana-transport/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git ls-tree HEAD -- \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYMajoranaTransport.lean \
+            lean/diagnostics/BFSSMSYMajoranaTransportIndependentAudit.lean \
+            .github/workflows/bfss-msy-majorana-transport-strict.yml \
+            > "$RUNNER_TEMP/bfss-msy-majorana-transport/tested-blobs.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-msy-majorana-transport/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-msy-majorana-transport/preflight.log"
+          from pathlib import Path
+          import subprocess,re,json
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean": "b9b8192055c70f0d001d7982669b9823c55562ed",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYReflectedGammaBasis.lean": "adf9f25a546d80ed92cb2a671c8eaad7e591ec77",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3JIndependentUnitaryExistenceProbe.lean": "c126e10f9303254c19b89ffd10073bd1365657f6",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/FCPM3LUnitaryCliffordModuleExistence.lean": "188eff243ec082c9cc8bc04c140af8dbed020754",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean": "152204ef15a6569534e0503824a697cb9ae8e4ce",
+          }
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
+          subprocess.check_call(["git","merge-base","--is-ancestor","560a49b0b7fc754b7b9da9b5677cbd20c3e9767e","HEAD"])
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYMajoranaTransport.lean").read_text()
+          t=Path("lean/diagnostics/BFSSMSYMajoranaTransportIndependentAudit.lean").read_text()
+          source_roots = [
+            "spinBasis_transpose_mul",
+            "color_bilinear_eq",
+            "exists_original_fock_isometry",
+          ]
+          consumer_roots = [
+            "originalFockTransportAudit",
+          ]
+          assert re.findall(r"(?m)^import (\S+)$", s) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYReflectedGammaBasis",
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainS1V52M3JIndependentUnitaryExistenceProbe",
+          ]
+          assert re.findall(r"(?m)^import (\S+)$", t) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYMajoranaTransport",
+          ]
+          assert re.findall(r"(?m)^#print axioms (\S+)$", s) == source_roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$", t) == consumer_roots
+          for content in [s,t]:
+              assert "set_option autoImplicit false" in content
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe|native_decide)\b",content)
+              for forbidden in ["set_option maxRecDepth","set_option maxHeartbeats",
+                                "set_option synthInstance.maxHeartbeats"]:
+                  assert forbidden not in content
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_MSY_MAJORANA_SOURCE_EXACT_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-msy-majorana-transport/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Original Fock transport and independent strict consumer
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-msy-majorana-transport"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYMajoranaTransport 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSMSYMajoranaTransportIndependentAudit.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import re,os
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-msy-majorana-transport"
+          for fn in ["native-source.log","strict-axioms.log"]:
+              log=(E/fn).read_text()
+              for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert bad not in log,(fn,bad,log[-6000:])
+          expected = {
+              "native-source.log": [
+                  "FCP.BFSSMSYMajorana.spinBasis_transpose_mul",
+                  "FCP.BFSSMSYMajorana.color_bilinear_eq",
+                  "FCP.BFSSMSYMajorana.exists_original_fock_isometry",
+              ],
+              "strict-axioms.log": [
+                  "FCP.BFSSMSYMajoranaIndependent.originalFockTransportAudit",
+              ],
+          }
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for filename, names in expected.items():
+              transcript = (E / filename).read_text()
+              if filename == "native-source.log":
+                  assert "Build completed successfully" in transcript
+              for name in names:
+                  pattern = re.escape("'" + name + "'") + (
+                      r" (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)"
+                  )
+                  reports = re.findall(pattern, transcript)
+                  assert len(reports) == 1, (filename, name, reports)
+                  axioms = {x.strip() for x in reports[0].split(",") if x.strip()}
+                  assert axioms <= allowed, (filename, name, axioms)
+          print("BFSS_MSY_MAJORANA_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN")
+          PY
+
+      - name: Preserve first-causal original source and consumer evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-msy-majorana-transport-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-msy-majorana-transport/
+          if-no-files-found: warn
+          retention-days: 30
