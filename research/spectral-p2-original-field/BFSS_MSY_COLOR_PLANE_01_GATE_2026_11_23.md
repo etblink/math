@@ -1,8 +1,8 @@
 # Appendix A color-plane comparison
 
-23 November 2026 · Unified integration · Strict candidate R1
+23 November 2026 · Unified integration · R1 native RED; bounded R2 recovery
 
-[Strict run #45260614151](https://github.com/etblink/math/actions/runs/45260614151) tests commit `7eea73abee40ea3998b3939b361fce28be5cd81e`. The frozen-source preflight and local roadmap check pass. A local typed interface prescreen checks the new proof bodies with the donor signatures. The full source and independently importing Fock consumer qualify through the strict run.
+[Strict run #45260614151](https://github.com/etblink/math/actions/runs/45260614151) tests commit `7eea73abee40ea3998b3939b361fce28be5cd81e`. The frozen-source preflight and local roadmap check pass. A local typed interface prescreen checks the new proof bodies with the donor signatures. The original R1 native source build failed; neither the source nor the independent Fock consumer qualified. A bounded R2 candidate retains the original theorem statements and independent consumer obligations. See the R1 failure receipt.
 
 This comparison starts from the [qualified reflected Majorana transport](BFSS_MSY_MAJORANA_TRANSPORT_GATE_2026_11_23.md) and works on the actual native positive-\(i\) Pauli-Z curve. Color labels are zero-based here. The plane \((0,1)\) is the paper's color plane \((1,2)\).
 

@@ -13,7 +13,7 @@ open FCP.BFSSSU2PhysicalDomainL6G6X
 /-- The first color basis vector maps to minus the second at positive
 MSY quarter-turn time. This checks the direction as well as the scale. -/
 theorem native_quarter_turn :
-    adjointColorMatrix (sourcePlusIGaugeCurve 2 (Real.pi / (2 * Real.sqrt 2))) 1 0 = -1 := by
+    adjointColorMatrix (sourcePlusIGaugeCurve (2 : Fin 3) (Real.pi / (2 * Real.sqrt 2))) 1 0 = -1 := by
   have h := congrArg (fun M : Matrix (Fin 3) (Fin 3) ℝ => M 1 0)
     (native_adjoint_plane01 (Real.pi / (2 * Real.sqrt 2)))
   have htime : Real.sqrt 2 * (Real.pi / (2 * Real.sqrt 2)) = Real.pi / 2 := by
@@ -25,8 +25,8 @@ ordered contraction inlined and one intertwiner for every time. -/
 theorem originalFockFinitePlaneAudit :
     ∃ J : Fermion 2 ≃ₗᵢ[ℂ] Fermion 2, ∀ (t : ℝ) (v : Fermion 2),
       J (NormedSpace.exp (((Real.sqrt 2 * t : ℝ) : ℂ) •
-        (∑ α : SpinIndex, pairedTheta α 0 * pairedTheta α 1)) v) =
-          fermionGaugeLinearEquiv (sourcePlusIGaugeCurve 2 t) (J v) := by
+        (∑ α : SpinIndex, pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3))) v) =
+          fermionGaugeLinearEquiv (sourcePlusIGaugeCurve (2 : Fin 3) t) (J v) := by
   let theta (α : SpinIndex) (a : ColorIndex 2) : Module.End ℂ (Fermion 2) :=
     (pairedTheta α a).toLinearMap
   have hcar (α β : SpinIndex) (a b : ColorIndex 2) :

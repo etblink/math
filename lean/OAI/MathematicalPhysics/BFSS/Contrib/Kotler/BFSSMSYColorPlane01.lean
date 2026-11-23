@@ -20,9 +20,9 @@ open FCP.BFSSSU2PhysicalDomainL6G6Z FCP.BFSSSU2PhysicalDomainL6G7K
 open FCP.BFSSMSYMajorana
 
 private theorem native_z_eq_half_angle (t : ℝ) :
-    sourcePlusIGaugeCurve 2 t = sourceZGauge (-(Real.sqrt 2 * t)) := by
+    sourcePlusIGaugeCurve (2 : Fin 3) t = sourceZGauge (-(Real.sqrt 2 * t)) := by
   apply Subtype.ext
-  change (sourcePlusIGaugeCurve 2 t : ColorMatrix 2) = sourceZMatrix (-(Real.sqrt 2 * t))
+  change (sourcePlusIGaugeCurve (2 : Fin 3) t : ColorMatrix 2) = sourceZMatrix (-(Real.sqrt 2 * t))
   rw [source_z_gaugeCurve_diagonal_exp]
   ext i j
   fin_cases i <;> fin_cases j <;>
@@ -31,7 +31,7 @@ private theorem native_z_eq_half_angle (t : ℝ) :
 /-- The adjoint of the actual native curve is the MSY (0,1) color
 rotation at angle `√2 * t`, in row-output/column-input order. -/
 theorem native_adjoint_plane01 (t : ℝ) :
-    adjointColorMatrix (sourcePlusIGaugeCurve 2 t) =
+    adjointColorMatrix (sourcePlusIGaugeCurve (2 : Fin 3) t) =
       !![Real.cos (Real.sqrt 2 * t), Real.sin (Real.sqrt 2 * t), 0;
           -Real.sin (Real.sqrt 2 * t), Real.cos (Real.sqrt 2 * t), 0;
           0, 0, 1] := by
@@ -43,22 +43,22 @@ variable {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
 /-- The ordered Majorana contraction in MSY Eq. (4), for colors zero and one. -/
 noncomputable def planeBilinear
     (theta : SpinIndex → ColorIndex 2 → E →L[ℂ] E) : E →L[ℂ] E :=
-  ∑ α, theta α 0 * theta α 1
+  ∑ α, theta α (0 : Fin 3) * theta α (1 : Fin 3)
 
 private theorem native_structure_constant (a b : ColorIndex 2) :
-    pairedAlgebraData.structureConstant a b 2 = Real.sqrt 2 * FCP.BFSSSU2.epsilon3 a b 2 :=
+    pairedAlgebraData.structureConstant a b (2 : Fin 3) = Real.sqrt 2 * FCP.BFSSSU2.epsilon3 a b (2 : Fin 3) :=
   FCP.BFSSSU2.algebraData_structureConstant_of_pauli_color pairedAlgebraData
     (fun c => (pairedAlgebraData_color c).trans (FCP.BFSSSU2Full.concreteAlgebraData_color c))
     a b 2
 
 private theorem native_spin_summand (α : SpinIndex) :
     (∑ a : ColorIndex 2, ∑ b : ColorIndex 2,
-      sourceFiberFermionColorTerm pairedAlgebraData 2 α a b) =
-      (2 * (Real.sqrt 2 : ℂ)) • (pairedTheta α 0 * pairedTheta α 1) := by
-  have hanti : pairedTheta α 1 * pairedTheta α 0 = -(pairedTheta α 0 * pairedTheta α 1) := by
+      sourceFiberFermionColorTerm pairedAlgebraData (2 : Fin 3) α a b) =
+      (2 * (Real.sqrt 2 : ℂ)) • (pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) := by
+  have hanti : pairedTheta α (1 : Fin 3) * pairedTheta α (0 : Fin 3) = -(pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) := by
     rw [eq_neg_iff_add_eq_zero]
-    have hn : ¬ (α = α ∧ (1 : ColorIndex 2) = 0) := fun h => (by decide : (1 : Fin 3) ≠ 0) h.2
-    have hc := pairedTheta_CAR α α 1 0
+    have hn : ¬ (α = α ∧ (1 : Fin 3) = (0 : Fin 3)) := fun h => (by decide : (1 : Fin 3) ≠ 0) h.2
+    have hc := pairedTheta_CAR α α (1 : Fin 3) (0 : Fin 3)
     rw [ite_eq_right hn] at hc
     have hz : (0 : ℂ) • (1 : Fermion 2 →L[ℂ] Fermion 2) = 0 := by
       apply ContinuousLinearMap.ext
@@ -67,20 +67,47 @@ private theorem native_spin_summand (α : SpinIndex) :
       exact zero_smul ℂ v
     exact hc.trans hz
   have hcoeff (a b : ColorIndex 2) :
-      (pairedAlgebraData.structureConstant a b 2 : ℂ) =
-        (Real.sqrt 2 : ℂ) * (FCP.BFSSSU2.epsilon3 a b 2 : ℂ) := by
+      (pairedAlgebraData.structureConstant a b (2 : Fin 3) : ℂ) =
+        (Real.sqrt 2 : ℂ) * (FCP.BFSSSU2.epsilon3 a b (2 : Fin 3) : ℂ) := by
     rw [native_structure_constant, Complex.ofReal_mul]
-  apply ContinuousLinearMap.ext
-  intro v
-  simp only [Fin.sum_univ_three, _root_.add_apply, _root_.smul_apply, sourceFiberFermionColorTerm, hcoeff,
-    FCP.BFSSSU2.epsilon3,
-    pairedAlgebraData_theta, Complex.ofReal_zero, Complex.ofReal_one, Complex.ofReal_neg,
-    mul_zero, mul_one, mul_neg, zero_smul, zero_add, add_zero, hanti, neg_smul, smul_neg, neg_neg,
-    two_mul, add_smul]
+  -- Each of the three color rows is reduced separately.  The R1
+  -- monolithic nine-term simp hit Lean's recursion limit.
+  have hrow0 :
+      (∑ b : ColorIndex 2,
+        sourceFiberFermionColorTerm pairedAlgebraData (2 : Fin 3) α (0 : Fin 3) b) =
+        (Real.sqrt 2 : ℂ) •
+          (pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) := by
+    simp [Fin.sum_univ_three, sourceFiberFermionColorTerm,
+      hcoeff, FCP.BFSSSU2.epsilon3]
+  have hrow1 :
+      (∑ b : ColorIndex 2,
+        sourceFiberFermionColorTerm pairedAlgebraData (2 : Fin 3) α (1 : Fin 3) b) =
+        (-(Real.sqrt 2 : ℂ)) •
+          (pairedTheta α (1 : Fin 3) * pairedTheta α (0 : Fin 3)) := by
+    simp [Fin.sum_univ_three, sourceFiberFermionColorTerm,
+      hcoeff, FCP.BFSSSU2.epsilon3]
+  have hrow2 :
+      (∑ b : ColorIndex 2,
+        sourceFiberFermionColorTerm pairedAlgebraData (2 : Fin 3) α (2 : Fin 3) b) = 0 := by
+    simp [Fin.sum_univ_three, sourceFiberFermionColorTerm,
+      hcoeff, FCP.BFSSSU2.epsilon3]
+  calc
+    _ = (Real.sqrt 2 : ℂ) •
+          (pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) +
+        (-(Real.sqrt 2 : ℂ)) •
+          (pairedTheta α (1 : Fin 3) * pairedTheta α (0 : Fin 3)) := by
+          change (∑ a : Fin 3, ∑ b : Fin 3,
+            sourceFiberFermionColorTerm pairedAlgebraData (2 : Fin 3) α a b) = _
+          rw [Fin.sum_univ_three, hrow0, hrow1, hrow2]
+          simp
+    _ = (2 * (Real.sqrt 2 : ℂ)) •
+          (pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) := by
+          rw [hanti]
+          simp only [smul_neg, neg_smul, neg_neg, two_mul, add_smul]
 
 /-- Exact coefficient and orientation of the native fermionic generator. -/
 theorem native_fermion_generator_plane01 :
-    sourceFiberFermionColorGenerator pairedAlgebraData 2 =
+    sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3) =
       (Real.sqrt 2 : ℂ) • planeBilinear pairedTheta := by
   unfold sourceFiberFermionColorGenerator sourceFiberFermionColorCurrent planeBilinear
   simp_rw [native_spin_summand]
@@ -101,8 +128,8 @@ private theorem planeBilinear_conj
       planeBilinear pairedTheta := by
   let T : SpinIndex → ColorIndex 2 → Module.End ℂ E := fun α a => (theta α a).toLinearMap
   have hB (v : E) : planeBilinear theta v =
-      ∑ α, pullMajorana T α 0 (pullMajorana T α 1 v) := by
-    have h := congrArg (fun A : Module.End ℂ E => A v) (color_bilinear_eq T 0 1).symm
+      ∑ α, pullMajorana T α (0 : Fin 3) (pullMajorana T α (1 : Fin 3) v) := by
+    have h := congrArg (fun A : Module.End ℂ E => A v) (color_bilinear_eq T (0 : Fin 3) (1 : Fin 3)).symm
     simp only [LinearMap.sum_apply, Module.End.mul_apply] at h
     simpa only [planeBilinear, _root_.sum_apply, mul_apply_eq_comp, T,
       ContinuousLinearMap.coe_coe]
@@ -115,8 +142,8 @@ private theorem planeBilinear_conj
   simp only [planeBilinear, _root_.sum_apply, mul_apply_eq_comp]
   apply Finset.sum_congr rfl
   intro α _
-  change J (pullMajorana T α 0 (pullMajorana T α 1 (J.symm v))) = _
-  rw [hJ α 0, hJ α 1, J.apply_symm_apply]
+  change J (pullMajorana T α (0 : Fin 3) (pullMajorana T α (1 : Fin 3) (J.symm v))) = _
+  rw [hJ α (0 : Fin 3), hJ α (1 : Fin 3), J.apply_symm_apply]
 
 noncomputable local instance planeRationalNormedAlgebra
     {V : Type*} [NormedAddCommGroup V] [NormedSpace ℂ V] :
@@ -133,7 +160,7 @@ theorem finite_plane01_intertwines [CompleteSpace E]
         pairedTheta α a (J v))
     (t : ℝ) (v : E) :
     J (NormedSpace.exp (((Real.sqrt 2 * t : ℝ) : ℂ) • planeBilinear theta) v) =
-      fermionGaugeLinearEquiv (sourcePlusIGaugeCurve 2 t) (J v) := by
+      fermionGaugeLinearEquiv (sourcePlusIGaugeCurve (2 : Fin 3) t) (J v) := by
   let e := J.toContinuousLinearEquiv
   let C := e.conjContinuousAlgEquiv
   have hC : Continuous C := (e.arrowCongr e).continuous
@@ -143,7 +170,7 @@ theorem finite_plane01_intertwines [CompleteSpace E]
     change t • D w = (t : ℂ) • D w
     exact RCLike.real_smul_eq_coe_smul (K := ℂ) t (D w)
   have hm : C (((Real.sqrt 2 * t : ℝ) : ℂ) • planeBilinear theta) =
-      t • sourceFiberFermionColorGenerator pairedAlgebraData 2 := by
+      t • sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3) := by
     rw [native_fermion_generator_plane01, htime, smul_smul, map_smul]
     change ((Real.sqrt 2 * t : ℝ) : ℂ) •
       J.toContinuousLinearEquiv.conjContinuousAlgEquiv (planeBilinear theta) =
@@ -153,7 +180,7 @@ theorem finite_plane01_intertwines [CompleteSpace E]
   rw [hm] at he
   have hp := congrArg (fun A : Fermion 2 →L[ℂ] Fermion 2 => A (J v)) he
   change J (NormedSpace.exp (((Real.sqrt 2 * t : ℝ) : ℂ) • planeBilinear theta) (J.symm (J v))) =
-      sourceFermionColorFlow 2 t (J v) at hp
+      sourceFermionColorFlow (2 : Fin 3) t (J v) at hp
   rw [J.symm_apply_apply, sourceFermionColorFlow_eq_actualGauge_apply] at hp
   exact hp
 
