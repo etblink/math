@@ -180,6 +180,98 @@ and \texttt{weightedClosure\_sqrt\_radial\_totallyBounded},
 strict \href{https://github.com/etblink/math/actions/runs/42320696105}{\#42320696105}
 (success). Atlas A-04.}
 
+\section{The native charge graph and conditional zero modes}
+\label{sec:conditional-zero-mode-criteria}
+Let \(T\) be the original closed sixteen-charge column and
+\(H=T^\dagger T/16\) its normalized physical Hamiltonian. The
+invariant smooth-core identity
+\eqref{eq:physical-multiplier-energy} bounds the magnitude of the
+fermionic energy by \(C_M M_1(f)\), where \(C_M\) is the source
+fermion growth constant. Since the bosonic potential is nonnegative,
+the native charge and radial weight control the gradient:
+\[
+ \|\nabla f\|_2^2
+ \le \tfrac18\|Tf\|^2+2C_M\|\sqrt{\|X\|}\,f\|_2^2 .
+\]
+Applying this estimate to core differences makes the gradients Cauchy
+whenever the inputs, charges and radial weighted inputs converge strongly.
+Their limits lie in Theorem~\ref{thm:weighted-closure}'s Sobolev graph.
+The gradient bound passes to the limit. Uniform bounds on those three
+components of a family of joint limits therefore give total boundedness
+of its input range in the original unweighted \(L^2\).
+The argument takes the radial bound as an input. Identifying this joint
+graph closure with the full intersection of the charge and weight domains
+remains a separate problem.
+
+\formalrecord{\href{https://github.com/etblink/math/actions/runs/45099280662}{GM5C}
+qualifies the core moment bound.
+\href{https://github.com/etblink/math/actions/runs/45120402139}{GM5E3} and
+\href{https://github.com/etblink/math/actions/runs/45123468324}{GM5E4}
+qualify the gradient limit and its estimate.
+\href{https://github.com/etblink/math/actions/runs/45128649701}{The native compactness step}
+is GM5E5 R2.}
+
+\paragraph{Three conditional criteria.}
+GM5E6 takes unit smooth-core inputs, charges tending strongly to zero
+and a uniform first radial moment. Compactness supplies a strong
+subsequence and the closed graph gives a unit vector of zero charge.
+The native weak form places that vector in the natural domain of \(H\)
+with value zero.
+
+GM5E8 takes bounded smooth-core inputs, vanishing charge and one fixed
+physical vector \(w\) with \(\lvert\langle w,f_n\rangle\rvert\) eventually
+bounded below by a positive constant. If the charge kernel were trivial,
+the first-coordinate image of the orthogonal complement of the closed
+charge graph would be dense in the input Hilbert space. For a graph
+orthogonal pair \((a,b)\), \(\langle a,f_n\rangle=-\langle b,Tf_n\rangle\)
+tends to zero. Approximation of \(w\) by such first coordinates, with
+uniformly bounded \(\|f_n\|\), would force the overlap to vanish.
+The persistent overlap therefore implies a nonzero charge-kernel vector
+and hence a zero mode of \(H\).
+
+GM5E9 takes \(\|f_n\|_2\le1\), \(Tf_n\to0\), and a single smooth real
+gauge-invariant cutoff \(\chi\). Set \(g_n=\chi f_n\). Assume a positive
+lower bound on \(\|g_n\|_2\) and upper bounds on its input, charge and radial
+weighted norms. The localized inputs have a subsequence \(g_{n_j}\to v\ne0\)
+by GM5E5. Choose \(k\) with \(\langle g_{n_k},v\rangle\ne0\).
+Gauge-preserving cutoff multiplication gives a fixed physical smooth
+test vector \(w=\chi g_{n_k}\). The real scalar can be moved across the
+original core pairing, so
+\[
+\langle w,f_{n_j}\rangle
+  =\langle g_{n_k},g_{n_j}\rangle
+  \longrightarrow \langle g_{n_k},v\rangle .
+\]
+GM5E8 now applies to the original, uncut subsequence. This construction
+uses cutoff multiplication only on smooth-core vectors.
+
+\formalrecord{\href{https://github.com/etblink/math/actions/runs/45191316189}{GM5E6 R2},
+\href{https://github.com/etblink/math/actions/runs/45212313638}{GM5E8 R2}, and
+\href{https://github.com/etblink/math/actions/runs/45219196584}{GM5E9 R1}
+qualify the respective criteria at their original source and paired
+consumer commits.}
+
+\paragraph{The remaining fixed-ball estimate.}
+For a fixed radius \(R>0\), take a radial smooth angle \(\theta\)
+equal to zero on the \(R\)-ball and \(\pi/2\) outside the \(2R\)-ball.
+The functions \(\chi=\cos\theta\) and \(\eta=\sin\theta\) are
+gauge-invariant and satisfy \(\chi^2+\eta^2=1\).
+The exact native IMS identity gives
+\[
+\|T(\chi f_n)\|^2 + \|T(\eta f_n)\|^2
+=\|Tf_n\|^2+8\int_{\mathcal X}\|\nabla\theta\|^2\|f_n\|^2\,dX .
+\]
+The left-hand side is a sum of nonnegative terms, giving an upper bound
+on the inner charge for bounded original input and charge. The support
+of \(\chi\) gives \(\|\sqrt{\|X\|}\,\chi f_n\|_2^2\le 2R\).
+A positive probability lower bound \(m\) in the fixed ball would also give
+\(\|\chi f_n\|_2^2\ge m\). These estimates explain why a fixed-ball
+lower bound would suffice for GM5E9. The exact IMS identity is qualified
+in \href{https://github.com/etblink/math/actions/runs/45201004845}{GM5E7 R2}.
+The fixed-ball-to-cutoff estimates still await a Lean consumer.
+Constructing an original physical sequence with vanishing charge and
+persistent mass in one fixed ball remains open.
+
 \section{Two different closed-domain statements must not be merged}
 The historical FCP D2B23--D2B25 sequence, recalled in
 Chapter~\ref{ch:hamiltonian}, constructs a complete weighted graph
@@ -291,9 +383,8 @@ closure of Theorem~\ref{thm:weighted-closure}, and deduce compactness
 for the actual restricted Hamiltonian without changing the model or
 its domains.
 \end{openproblem}
-\editornote{A-02, A-03 and A-04 are fully accepted abstract analysis
-theorems. Their precise physical-source inputs O-01 through O-04 are
-not discharged in this edition. The conditional coercivity route
-is resumed in Chapter~\ref{ch:spectral}; the auxiliary normalized
-Fock observable of Section~\ref{ch:norm} is not substituted for the
-original unnormalized linear field.}
+\editornote{The native moment bound and compactness results above supply
+a qualified connection to the original core. The genuine reducing-sector
+and sector coercivity hypotheses remain open in the positive point-spectrum
+route of Chapter~\ref{ch:spectral}. That route uses the original
+unnormalized linear field.}

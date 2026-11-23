@@ -55,15 +55,18 @@ for tex_path in TEX:
     if stack:
         environment_errors.append(f'{tex_path.name}: unclosed {stack!r}')
 check(not environment_errors, 'All TeX environments are properly nested')
-check('Internal research monograph --- Edition 0.9' in MAIN,
+check('Internal research monograph --- Edition 0.9.1}' in MAIN,
       'Master identifies the current internal edition')
 check('future BFSS project' in MAIN and 'proof reuse' in MAIN,
       'Reader guide names the audience and gives reading paths')
-check('9ee5c7a99953' in MAIN and 'Claim index for the November 22 snapshot' in SOURCE,
+check('fcd873ebbb31' in MAIN and 'Claim index for the November 23 snapshot' in SOURCE,
       'The edition declares its source cutoff and current claim index')
+check('sec:conditional-zero-mode-criteria' in labels and
+      'https://github.com/etblink/math/actions/runs/45219196584' in SOURCE,
+      'The localized zero-mode criterion links the qualified GM5E9 run')
 for required in [
     'prop:bounded-l2-multiplier',
-    'eq:proposed-multiplier-energy',
+    'eq:physical-multiplier-energy',
     'sec:d69-projective',
     'ch:sm-benchmark',
     'eq:source-complex-car',
@@ -80,7 +83,7 @@ for required in [
     'prop:color-quadratic-120',
     'prop:twisted-projective-gamma',
 ]:
-    check(required in count, f'Edition 0.7 mathematical anchor {required}')
+    check(required in count, f'Mathematical anchor {required}')
 check((ROOT / 'EDITORIAL_CONVERGENCE_AUDIT_2026_11_11.md').exists(),
       'Edition 0.7 whole-manuscript audit record is present')
 
