@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "gate": "GM5E10 R1",
+  "verdict": "NATIVE_SOURCE_RED_UNQUALIFIED",
+  "tested_sha": "acca603a28094254b02314a54e989c2eef639e37",
+  "run_id": 45231545024,
+  "job_id": 137892099662,
+  "attempt": 1,
+  "first_causal": "After integral_mono, lambda applications hid the pointwise rewrite pattern at native line 28:6, with the same failure at 45:33 and 58:8",
+  "status": {
+    "preflight": "PASS",
+    "lean_mathlib": "PASS",
+    "native_build": "FAILED_AT_9170_OF_9170",
+    "source_axiom_report": "IMS_BOUND_STANDARD_ONLY_MAIN_THEOREM_WITH_SORRYAX",
+    "independent_consumer": "NOT_RUN",
+    "green_sentinel": "NOT_EMITTED"
+  },
+  "blobs": {
+    "source": "02edae874d6c2de2f09e9dbfe04856c35fe0747e",
+    "consumer": "0cb9e78f67f5c5a19b1129b2f0fd5dabc653927c",
+    "workflow": "f2691aecf000e5cef4b714cfd17502a9427114aa"
+  },
+  "original_artifact": {
+    "id": 14850445142,
+    "bytes": 19853,
+    "sha256": "11ac818ad843f35008f546abea165875cf93f67e5ebb3f027ec8a39ca8984047",
+    "provider_link": "https://github.com/etblink/math/actions/runs/45231545024/artifacts/14850445142",
+    "repository_zip_archive": "research/integration/evidence/gm5e10-r1-original-red.zip",
+    "crc": "ALL_6_MEMBERS_PASS",
+    "members": [
+      {
+        "name": "cache.log",
+        "bytes": 16633,
+        "sha256": "5a8f5a5f0c57846237de59442236a6c0ed5d2b8837ed531b32cadf7ace92320a"
+      },
+      {
+        "name": "environment-sha256.txt",
+        "bytes": 176,
+        "sha256": "7f83f79f91770e700b0ce26892696260377a3460b843c2ed07610f52fb464f49"
+      },
+      {
+        "name": "native-source.log",
+        "bytes": 163114,
+        "sha256": "406e6a8987d4a279dce4ec73d2d4b88f5b1b7280aac8222bf688d3686071a1f2"
+      },
+      {
+        "name": "preflight.log",
+        "bytes": 61,
+        "sha256": "f5d851d48e35065518f43b33e46a6dd9f29c8d28837b9845d44eaec49881e4de"
+      },
+      {
+        "name": "tested-blobs.txt",
+        "bytes": 394,
+        "sha256": "0c2621ec80ca85971bf7ce0bf1c38c522499a655e63aeb82e9bf6ee0605173b1"
+      },
+      {
+        "name": "tested-sha.txt",
+        "bytes": 41,
+        "sha256": "7afd6df1e9193d7bce3a310d52076dac599946d4bf74ebe56db0b8b1aa85ff92"
+      }
+    ]
+  },
+  "complete_job_log": {
+    "path": "research/integration/evidence/gm5e10-r1-original-red-complete-job.log",
+    "bytes": 263343,
+    "sha256": "e6d7fa68e4e681ed9f2f5460c4c464e878d2897e9d7eeefe011efbbe97f89a48"
+  },
+  "r2_repair": "Expose the evaluated integrands with three definitional change steps before rewriting."
+}

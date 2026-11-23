@@ -25,6 +25,7 @@ private theorem coreCutoff_norm_le (χ : Boson 2 → ℝ)
   rw [coreToL2_norm_sq, coreToL2_norm_sq]
   apply integral_mono (coreNormSq_integrable _) (coreNormSq_integrable _)
   intro x
+  change ‖realCutoff χ hχ f x‖ ^ 2 ≤ ‖f x‖ ^ 2
   rw [realCutoff_norm_sq]
   exact (mul_le_mul_of_nonneg_right (hunit x) (sq_nonneg ‖f x‖)).trans_eq (one_mul _)
 
@@ -39,6 +40,7 @@ private theorem ballMass_le_coreCutoff_norm_sq (χ : Boson 2 → ℝ)
   rw [← integral_indicator hs, coreToL2_norm_sq]
   apply integral_mono ((coreNormSq_integrable f).indicator hs) (coreNormSq_integrable _)
   intro x
+  change s.indicator (fun y => ‖f y‖ ^ 2) x ≤ ‖realCutoff χ hχ f x‖ ^ 2
   by_cases hx : x ∈ s
   · have hnorm : ‖x‖ ≤ R := by
       simpa only [s, Metric.mem_closedBall, dist_zero_right] using hx
@@ -53,6 +55,7 @@ private theorem radialWeight_sq_le_of_support (f : SmoothCore 2) (S : ℝ)
   apply integral_mono (weighted_core_square_integrable _ continuous_norm f)
     ((coreNormSq_integrable f).const_mul S)
   intro x
+  change ‖x‖ * ‖f x‖ ^ 2 ≤ S * ‖f x‖ ^ 2
   by_cases hx : ‖x‖ ≤ S
   · exact mul_le_mul_of_nonneg_right hx (sq_nonneg _)
   · rw [hzero x (lt_of_not_ge hx)]
