@@ -5588,7 +5588,7 @@
     "receipt": "research/methodology/BFSS_CROSS_TRACK_STATUS_RECONCILIATION_2026_11_22.md",
     "scopes": {
       "canonical_m4_anchor_register": "unchanged: W0C2B2 R2 BLOCKED and 27 accepted M4 anchors; top-level last_qualified and active retain their M4-only meanings",
-      "parallel_unified_massless_gauge_physical": "GM4B1 qualified; GM4B2 R1 native RED; GM4B2 R2 pending exact independent CI",
+      "parallel_unified_massless_gauge_physical": "GM4B2 R2 qualified #45085548204 at 5e1a5f18e4cf4f8041449e31bab6ef2652b97f83, joining GM4A/B0/B1; GM4B2 R1 native RED preserved",
       "historical_native_physical_hamiltonian": "P3-M5BE0 qualified at exact original run #43493125150; source-identical in unified branch",
       "empirical_and_standard_model": "independent research track, not promoted by BFSS mathematics"
     },
@@ -5665,6 +5665,24 @@
         "gate": "P3-M5BF0 R1",
         "run": 43498649514,
         "status": "STRICT_GREEN"
+      },
+      {
+        "gate": "GM4B2 R2",
+        "run": 45085548204,
+        "status": "STRICT_GREEN",
+        "tested_sha": "5e1a5f18e4cf4f8041449e31bab6ef2652b97f83",
+        "job_id": 137403206776,
+        "native_build_jobs": 9126,
+        "source_axiom_reports": 6,
+        "consumer_axiom_reports": 2,
+        "original_artifact_id": 14779936264,
+        "original_zip_bytes": 15768,
+        "original_zip_sha256": "a501499ceecb8c459a788d12f9c2612c908f4acc0d4ed48eb325f1b932dc4209",
+        "source_blob": "a23aad279b923f6eb6dfeb343590b89a98fded0e",
+        "independent_consumer_blob": "9c7c9112d1d2d812df97b819e47cc46672ed833a",
+        "workflow_blob": "780a682e05ff7bf162888048a1a941fd00d5bceb",
+        "receipt": "research/integration/BFSS_GM4B2_R2_ORIGINAL_PHYSICAL_CLOSED_GRAPH_GREEN_ACCEPTANCE_2026_11_22.md",
+        "scope": "original SU(2) physical massless restricted graph closed; together with GM4B1 dense domain; no self-adjointness or gap"
       }
     ],
     "pending_and_negative": [
@@ -5679,7 +5697,11 @@
         "gate": "GM4B2 R2",
         "run": 45085548204,
         "sha": "5e1a5f18e4cf4f8041449e31bab6ef2652b97f83",
-        "status": "PENDING_STRICT_CI_NO_QUALIFICATION_AT_RECONCILIATION"
+        "status": "HISTORICAL_R2_PENDING_SNAPSHOT_SUPERSEDED_BY_STRICT_GREEN",
+        "superseded_by": {
+          "run": 45085548204,
+          "receipt": "research/integration/BFSS_GM4B2_R2_ORIGINAL_PHYSICAL_CLOSED_GRAPH_GREEN_ACCEPTANCE_2026_11_22.md"
+        }
       },
       {
         "gate": "P3-M4-W0C2B2",
@@ -5699,6 +5721,8 @@
       "parallel_qualified_track": "may be later chronologically than canonical M4 active gate without modifying M4 anchor count",
       "open_physical_claims": "no BFSS spectral gap, eigenpair, physical Hopfion, GUT, or Standard Model derivation"
     },
-    "immutable_legacy_checkpoint": "previous M4 accepted anchors, old snapshot statuses, source proof bytes and negative experiment registry deliberately preserved"
+    "immutable_legacy_checkpoint": "previous M4 accepted anchors, old snapshot statuses, source proof bytes and negative experiment registry deliberately preserved",
+    "latest_qualified_parallel_gm_gate": "GM4B2 R2",
+    "scope_note": "Legacy top-level last_qualified, active and 27 accepted_anchors remain M4-only; parallel GM status is documented in current_cross_track_status."
   }
 }
