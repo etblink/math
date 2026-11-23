@@ -46,8 +46,11 @@ def gaugeInvariantRealCutoff (M : AlgebraData 2) (G : M.GaugeData)
   change coreToL2 (realCutoff χ hχ f.val) ∈ G.physicalSpace
   apply smoothEquivariant_mem_physical M G
   intro g x
-  simp only [realCutoff, smoothMultiplier_apply, hg g x, G.invariantCore_equivariant f g x,
-    map_smul]
+  change (χ (G.boson g x) : ℂ) • f.val (G.boson g x) =
+    G.fermion g ((χ x : ℂ) • f.val x)
+  rw [hg g x, G.invariantCore_equivariant f g x]
+  exact ((G.fermion g).toContinuousLinearEquiv.toContinuousLinearMap.map_smul
+    (χ x : ℂ) (f.val x)).symm
 
 /-- IMS localization for the literal native closed charge column evaluated
 on the original invariant smooth core. -/
