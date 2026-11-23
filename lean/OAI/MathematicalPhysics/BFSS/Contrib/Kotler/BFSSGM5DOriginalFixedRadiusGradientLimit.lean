@@ -61,8 +61,14 @@ private theorem nativeCoreChargeValue_sub (M : AlgebraData 2) (G : M.GaugeData)
     apply Subtype.ext
     exact map_sub coreToL2 f.val g.val
   change originalMinimalPhysicalHilbertChargeColumn M G
-    (closedChargeCoreInput M G (f - g)) = _
-  rw [hinput, map_sub]
+    (closedChargeCoreInput M G (f - g)) =
+      originalMinimalPhysicalHilbertChargeColumn M G
+        (closedChargeCoreInput M G f) -
+      originalMinimalPhysicalHilbertChargeColumn M G
+        (closedChargeCoreInput M G g)
+  rw [hinput]
+  exact map_sub (originalMinimalPhysicalHilbertChargeColumn M G)
+    (closedChargeCoreInput M G f) (closedChargeCoreInput M G g)
 
 /-- The squared gradient norm is bounded by the squared native charge norm
 and a fixed-radius mass term. -/
@@ -129,9 +135,15 @@ theorem fixedRadiusNativeGraph_gradientLimit (M : AlgebraData 2) (G : M.GaugeDat
     simpa only [dist_eq_norm, hgsub, nativeCoreChargeValue_sub, hmass] using
       fixedRadiusCoreGradient_sq_le M G (f n - f m) R hsub
   obtain ⟨g, hg⟩ := cauchySeq_tendsto_of_complete hc
-  have hgraph : IsClosed (BFSSSliceSobolev.closedGraph (F := Fermion 2)
-      (volume : Measure (Boson 2)) coordinateDirection : Set _) :=
-    (BFSSSliceSobolev.graph (F := Fermion 2)
+  have hgraph : IsClosed
+      (BFSSSliceSobolev.closedGraph (F := Fermion 2)
+        (volume : Measure (Boson 2)) coordinateDirection :
+        Set (FullL2 2 × PiLp 2 (fun _ : CoordinateIndex 2 => FullL2 2))) := by
+    change IsClosed
+      ((BFSSSliceSobolev.graph (F := Fermion 2)
+        (volume : Measure (Boson 2)) coordinateDirection).topologicalClosure :
+        Set (FullL2 2 × PiLp 2 (fun _ : CoordinateIndex 2 => FullL2 2)))
+    exact (BFSSSliceSobolev.graph (F := Fermion 2)
       (volume : Measure (Boson 2)) coordinateDirection).isClosed_topologicalClosure
   refine ⟨g, hgraph.mem_of_tendsto (hu.prodMk_nhds hg) (Eventually.of_forall ?_), hg, ?_⟩
   · intro n
