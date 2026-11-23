@@ -1,6 +1,6 @@
 # MSY Color-Plane 01: immutable R1 native RED and bounded R2 recovery
 
-23 November 2026 · Unified integration · R1 **RED_UNQUALIFIED** · R2 **PENDING_STRICT_CI**
+23 November 2026 · Unified integration · R1 **RED_UNQUALIFIED** · R2 **RED_NATIVE_UNQUALIFIED** · architectural stop
 
 ## Exact original failure
 
@@ -29,3 +29,30 @@ Original tested blobs: source `a5e020d4aa630ce9fea5a00206ea3ce6c5d8dfe5`; indepe
 The prior reflected gamma-basis and Majorana transport GREEN qualifications are unaffected. R1 does not establish even the restricted color-plane identification. A future R2 GREEN, if independently qualified, identifies one normalized finite SU(2) color-plane action conditional on the Majorana intertwiner; it does **not** establish the full external Appendix A Fock realization, gauge-fixed smooth-core supercharge equivalence, original BFSS physical zero-mode existence, Standard Model, GUT, or ToE.
 
 Preserve this failure as negative proof-engineering knowledge, not a physical counterexample.
+
+## R2 strict result: second native RED, stop boundary reached
+
+- Strict run: https://github.com/etblink/math/actions/runs/45271008022
+- Exact tested commit `0b791ba369332de53f0f139d79f4ac788c3beffb`; job `138030480460`; attempt 1; conclusion FAILURE
+- Frozen-source/consumer preflight PASS, pinned Lean 4.34.1 and Mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` restoration PASS
+- First native failure: `BFSSMSYColorPlane01.lean:52:8` untyped `OfNat (ColorIndex 2) 2` remaining in the `native_structure_constant` proof application; the generic theorem at line 48 also times out during weak-head normalization at the default 200000 heartbeats
+- Other native failures: line 79 row 0 unresolved, line 86 row 1 unresolved, line 91 row 2 unresolved; line 101 rewrite did not find the row sum, line 104 final coefficient proof unresolved; unused simp-argument diagnostics at lines 80, 87, 92 and 106 under warning-as-error
+- Native reports: `native_adjoint_plane01` shows only the accepted `propext`, `Classical.choice`, `Quot.sound`; the other two declarations depend on unresolved `native_spin_summand` and are NOT axiom-qualified
+- Independent importing Fock consumer did NOT qualify because native source compilation failed
+- Original R2 provider artifact: https://github.com/etblink/math/actions/runs/45271008022/artifacts/14867250404 ; 38,746 bytes, provider SHA-256 `3927227aa22c79cabb983ac6eb63a03fae286e345c4640a60014ba86502393e7`
+- Tested source blob `77f8baf6c045ba337c3cc198c62bb1a3c745e9d3`; independent consumer blob `573df7e6e6c35855cb10a1fd1b0583f0f25bad3c`; R2 strict workflow unchanged
+- Independent ZIP bytes/CRC/recomputed artifact SHA-256 were not obtained in this audit; the digest is the GitHub Actions provider checksum, not a personally recomputed digest
+- Independent active-roadmap consistency run #45271008504 GREEN at the same SHA. This administrative GREEN does NOT qualify the native theorem.
+
+### Architecture stop, not proof rejection
+
+R1 and R2 are two source-native failures of the same combined color-plane proof track. **No monolithic R3 is authorized here.** Preserve the files at their original tested blobs, do not update the strict consumer or workflow in response to the RED, and do not alter accepted donor sources. Do not increase Lean recursion/heartbeat limits, disable the unused-simp linter, insert `sorry`, or weaken the theorem.
+
+A future separate microgate design must be compiled on the exact pinned source *before* a costly strict pipeline:
+
+1. **Finite color table gate.** State each `(a,b,c) : Fin 3` identity with fully typed `(2 : Fin 3)`; prove the three fixed-index `epsilon3` rows with `fin_cases` and exact algebraic calculation. Never elaborate the nested matrix/AlgebraData proof while proving table facts.
+2. **Bounded source generator gate.** Use the qualified Pauli structure-constant theorem as a donor. Establish the three `Fin 3` row contributions by explicit named equalities and `change`/small rewrites, with separate CAR antisymmetry. Keep source operators but avoid a nine-term monolithic simplifier.
+3. **Finite action bridge.** Only after the generator gate compiles, reuse the exact accepted L6G7K flow identification and the reflected Majorana unitary to compare exponentials. Include the exact independent Fock consumer and quarter-turn bosonic sign check.
+4. **Promotion boundary.** Qualify full source, consumer, environment and axiom reports at a frozen candidate commit, independently review the original evidence, then update canonical statuses. No claimed paper/source differential-supercharge equivalence or physical BFSS ground state follows from any of these finite color gates.
+
+This architectural stop retains useful negative proof-engineering knowledge while leaving the separate original source physical crosswalk and SM comparison free to progress.

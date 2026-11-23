@@ -1,6 +1,6 @@
 # Appendix A color-plane comparison
 
-23 November 2026 · Unified integration · R1 native RED; bounded R2 recovery
+23 November 2026 · Unified integration · R1 and R2 native RED; architecture stop
 
 [Strict run #45260614151](https://github.com/etblink/math/actions/runs/45260614151) tests commit `7eea73abee40ea3998b3939b361fce28be5cd81e`. The frozen-source preflight and local roadmap check pass. A local typed interface prescreen checks the new proof bodies with the donor signatures. The original R1 native source build failed; neither the source nor the independent Fock consumer qualified. A bounded R2 candidate retains the original theorem statements and independent consumer obligations. See the R1 failure receipt.
 
@@ -29,3 +29,7 @@ Exact symbolic checks give \(W^* W=I_{24}\) and send the ordered exterior basis 
 in Cartesian order. This tests the reorder sign and the complex conjugation convention together. The column of Cartesian annihilator components transforms infinitesimally by \(-E_{01}\), while the bosonic color matrix uses \(+E_{01}\). The same symbolic calculation gives \(U^*(-E_{01})U=\operatorname{diag}(-i,0,i)\), in agreement with Eq. (A.8). [MSY, Eqs. (A.7)–(A.9)](https://arxiv.org/html/2611.09837v1#A1.SS4)
 
 Reuse the existing exterior-algebra creation map and contraction identity from G4A. Generalize the occupation-inner-product induction from G4D to this explicit unitary matrix. It uses the orbital unitarity relation and the vacuum and contraction identities. The resulting map can check the literal Appendix A occupation action on the original Fock fiber. If that realization supplies the full adjoint covariance, S1H fixes the entire transported gauge representation and its phase. The native ZYZ factorization remains available as a separate route using two finite color planes.
+
+## Current strict status
+
+The bounded [R2 strict run #45271008022](https://github.com/etblink/math/actions/runs/45271008022) failed at `0b791ba369332de53f0f139d79f4ac788c3beffb`; source-native elaboration and fixed-color-sum proof errors remain. The independent consumer did not qualify. The [R1/R2 RED receipt](BFSS_MSY_COLOR_PLANE_01_R1_NATIVE_RED_AND_R2_BOUNDED_REPAIR_2026_11_23.md) records the original provider artifact hashes, exact native diagnostics, two-native-RED architecture stop, and prospective isolated finite table/generator/action proof boundaries. Do not infer a physical counterexample or promote a theorem from a partial axiom report.
