@@ -1,0 +1,11 @@
+# Appendix A color-plane comparison
+
+23 November 2026 · Unified integration · Strict candidate R1
+
+This comparison starts from the [qualified reflected Majorana transport](BFSS_MSY_MAJORANA_TRANSPORT_GATE_2026_11_23.md) and works on the actual native positive-\(i\) Pauli-Z curve. Color labels are zero-based here. The plane \((0,1)\) is the paper's color plane \((1,2)\).
+
+In the paper, \(E_{01}\) has entry \(+1\) in row 0, column 1, and \(-1\) in row 1, column 0. The native \(+iT_2\) curve is the previously checked native \(Z\) witness at angle \(-\sqrt2,t\) in the standard real Z-rotation convention used by that witness. The explicit sine and cosine entries in the Lean statement are those of \(\exp(\sqrt2,t E_{01})\) in the paper's convention. The independent consumer checks that at \(t=\pi/(2\sqrt2)\) the first color basis vector is sent to minus the second. [MSY, Eq. (7) and the following plane-action convention](https://arxiv.org/html/2611.09837v1#S2) · [Qualified incidence-track Z image](../incidence-before-identity/IBI_G0C_Z_IMAGE_R2_GREEN_43755443223_ACCEPTANCE_2026_11_15.md)
+
+The source bounded generator is \(i(-i/2)\sum_{\alpha,a,b} f_{ab2}\theta_{\alpha a}\theta_{\alpha b}\). The accepted Pauli formula gives \(f_{ab2}=\sqrt2\,\epsilon_{ab2}\). The two nonzero summands are the ordered \((0,1)\) and \((1,0)\) terms, which agree after applying the off-diagonal CAR. The native operator is therefore \(\sqrt2\) times the bilinear in the paper's Eq. (4). Conjugation by the Fock isometry commutes with the operator exponential. The previously checked L6G7K identity equates that native exponential with the actual original exterior-Fock action. This yields a finite action comparison for every real time in this plane, conditional on the all-generator Majorana intertwiner. [MSY, Eq. (4)](https://arxiv.org/html/2611.09837v1#S2)
+
+The importing consumer uses the literal paired Fock space and checks one isometry for every plane time, in addition to the independent bosonic quarter-turn check. The external Appendix A spherical occupation realization, the second plane needed for an Euler extension, and the smooth-core charge comparison remain open. The native time sign is relevant when those comparisons are combined with the inverse bosonic pullback.
