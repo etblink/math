@@ -24,6 +24,23 @@ def physicalMasslessCoreInput (M : AlgebraData 2) (G : M.GaugeData)
   ⟨⟨coreToL2 f.val, f.property⟩,
     FCP.BFSSMasslessD0b0.originalCore_mem_originalMasslessDomain M f.val⟩
 
+private theorem originalMasslessCoreAction_ae {N : ℕ} (M : AlgebraData N)
+    (f : SmoothCore N) :
+    FCP.BFSSMasslessD0b0.originalMasslessAction M (coreToL2 f) =ᵐ[volume]
+      fun x => M.deformedFermionField 1 0 x (f x) := by
+  filter_upwards [coreToL2_ae f] with x hx
+  have hfield := congrArg
+    (fun B : Fermion N →L[ℝ] Fermion N => B (f x))
+    (FCP.BFSSMasslessM1b.originalMasslessFermionField_eq_quantized M x)
+  calc
+    FCP.BFSSMasslessD0b0.originalMasslessAction M (coreToL2 f) x =
+        M.quantizeFrequency (FCP.BFSSMasslessM1a.masslessSourceFrequency M x)
+          (f x) := congrArg
+            (fun z : Fermion N => M.quantizeFrequency
+              (FCP.BFSSMasslessM1a.masslessSourceFrequency M x) z) hx
+    _ = M.deformedFermionField 1 0 x (f x) := by
+      simpa only [ContinuousLinearMap.coe_restrictScalars'] using hfield.symm
+
 private theorem physicalMasslessCoreField_ae (M : AlgebraData 2)
     (G : M.GaugeData) (f : G.invariantCore) :
     (((originalPhysicalMasslessMultiplier M G
@@ -35,15 +52,9 @@ private theorem physicalMasslessCoreField_ae (M : AlgebraData 2)
   change (FCP.BFSSMasslessD0c0.originalMasslessMultiplier M ψ :
     Boson 2 → Fermion 2) =ᵐ[volume] _
   refine (FCP.BFSSMasslessD0c0.originalMasslessMultiplier_ae M ψ).trans ?_
-  filter_upwards [coreToL2_ae f.val] with x hx
-  change M.quantizeFrequency
-    (FCP.BFSSMasslessM1a.masslessSourceFrequency M x) ((coreToL2 f.val) x) =
-      M.deformedFermionField 1 0 x (f.val x)
-  rw [hx]
-  have hfield := congrArg
-    (fun B : Fermion 2 →L[ℝ] Fermion 2 => B (f.val x))
-    (FCP.BFSSMasslessM1b.originalMasslessFermionField_eq_quantized M x)
-  simpa only [ContinuousLinearMap.coe_restrictScalars'] using hfield.symm
+  have hψ : ψ.val = coreToL2 f.val := rfl
+  rw [hψ]
+  exact originalMasslessCoreAction_ae M f.val
 
 /-- The real expectation of the named physical multiplier equals the
 source fermionic integrand on the exact original invariant core. -/
