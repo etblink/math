@@ -1,6 +1,6 @@
 # Reflected Appendix A Majorana transport
 
-23 November 2026 · Unified integration · Strict candidates R1 and R2
+23 November 2026 · Unified integration · R2 strictly qualified
 
 The previous [gamma gate](BFSS_MSY_REFLECTED_GAMMA_BASIS_R1_GREEN_ACCEPTANCE_2026_11_23.md) identifies the literal Appendix A gamma matrices after reversing spatial axis nine. Write \(O=P/2\) for the normalized matrix, with columns giving the original spinor coordinates in the Appendix A basis. The [pairing check](BFSS_MSY_REFLECTED_GAMMA_BASIS_GATE_2026_11_23.md) found a complex-antilinear part of complex rank four at each color. The proof therefore uses real Majoranas and the existing original Fock unitary theorem.
 
@@ -27,7 +27,9 @@ The independent importing proof uses the existing paired BFSS Fock space and che
 
 The [original provider ZIP](../integration/evidence/msy-majorana-transport-r1-original-red.zip) from [artifact #14857660761](https://github.com/etblink/math/actions/runs/45252301296/artifacts/14857660761) contains 18,511 bytes. Its six members passed CRC and its tested SHA, Git blobs, environment hashes and first native error were independently checked. SHA-256 is `c461fccfc2fe7a1c1f551b15b708bc1e18e7776c322b85fcf9ebf1a62df644f8`.
 
-R2 reduces the delta pointwise before summing the surviving terms. The repaired algebra compiles locally with the original reflected gamma source. A separate prescreen using the Fock donor interface also compiles the source and consumer proof bodies. The exact [R2 run #45254359502](https://github.com/etblink/math/actions/runs/45254359502) tests commit `4c7aeb721761de4b4cb3642ae22bdb7cd8d4ff1c`. The candidate status is pending strict qualification.
+R2 reduces the delta pointwise before summing the surviving terms. The exact [R2 run #45254359502](https://github.com/etblink/math/actions/runs/45254359502) passed at commit `4c7aeb721761de4b4cb3642ae22bdb7cd8d4ff1c`. Job `137972114787` passed frozen-source preflight, the pinned Lean 4.34.1 and Mathlib environment, the 9,123-job native build and the separately importing original Fock consumer. The three native reports for `spinBasis_transpose_mul`, `color_bilinear_eq`, and `exists_original_fock_isometry`, and the consumer report for `originalFockTransportAudit`, list only `propext`, `Classical.choice`, and `Quot.sound`. The [roadmap check #45254359367](https://github.com/etblink/math/actions/runs/45254359367) also passed at the tested commit.
+
+The [original R2 provider ZIP](../integration/evidence/msy-majorana-transport-r2-original-green.zip) from [artifact #14859441171](https://github.com/etblink/math/actions/runs/45254359502/artifacts/14859441171) has 17,474 bytes and SHA-256 `c7d46df5f3a3bc39177793ac5e37223ddd82ae0b0fced08fd8b2e59696b9e32f`. All seven members passed CRC. The archive matches the provider digest, exact tested SHA, environment hashes, source blob `452106651d52c55b9474e507d17ffa67ef22f872`, independent consumer blob `4d4cd4151415a5b8b75791b10dfb9f3465db2c21`, and workflow blob `43b1dca290de5a94042070f487de2b3167e8dc56`.
 
 ## Next source comparison
 
