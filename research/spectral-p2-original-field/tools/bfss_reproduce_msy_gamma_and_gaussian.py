@@ -84,6 +84,14 @@ for k in range(9):
     assert np.array_equal(A[k] @ P, flip[k] * P @ S[k])
 print("P.T @ P scalar:", c, "nonzero entries:", np.count_nonzero(P))
 print("P =", P.tolist())
+# A common consecutive-pair complex structure on each color's Majoranas.
+pairing = np.kron(np.eye(8, dtype=np.int64), J)
+anti_numerator = P + pairing @ P @ pairing
+anti_gram = anti_numerator.T @ anti_numerator
+gram_scale = 4*c
+assert np.array_equal(anti_gram @ anti_gram, gram_scale * anti_gram)
+assert np.trace(anti_gram) == 8*gram_scale
+print("Pairing anti-linear Gram projector: real rank 8, complex rank 4 per color")
 if s != a:
     assert intertwiner(np.ones(9, dtype=np.int64)) is None
     print("Orientation-preserving identity-axis control: no nonzero intertwiner")
