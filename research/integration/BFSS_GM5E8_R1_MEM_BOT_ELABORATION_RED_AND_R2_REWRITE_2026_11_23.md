@@ -1,0 +1,7 @@
+# GM5E8 R1 native bottom-submodule elaboration failure and R2 rewrite
+
+[Strict run #45206892889](https://github.com/etblink/math/actions/runs/45206892889) tested `e0478f7e69f4881a230b60b4c9bcf69d3c43e233`, attempt 1, job `137804928110` on unified integration. Frozen-source preflight and pinned Lean 4.34.1 / Mathlib restoration passed. At job 9,143 of 9,143 the native build stopped at line 32:10 in `dense_fst_orthogonal` with `Unknown constant Submodule.mem_bot.mpr`. Pinned Mathlib's `Submodule.mem_bot` takes the scalar ring explicitly. The following no-goals diagnostic and the `sorryAx` report follow from the failed elaboration. The independent paired consumer did not run.
+
+The [original artifact #14836830641](https://github.com/etblink/math/actions/runs/45206892889/artifacts/14836830641) is archived as an [unmodified ZIP](evidence/gm5e8-r1-original-red.zip). Its 17,978 bytes have SHA-256 `b7080be5dca41dd06b0d6e9ce9b9eeb73ced057776c6e9e83a07c384bd4d9fc1`, matching provider metadata and the upload log. All six members passed CRC. The embedded SHA, source/consumer/workflow blobs, and environment hashes match the tested checkout. See the [manifest](evidence/gm5e8-r1-original-red-manifest.json) and [complete job log](evidence/gm5e8-r1-original-red-complete-job.log).
+
+R2 rewrites the membership goal directly with `Submodule.mem_bot ℂ` and then resumes the same zero-vector argument. This is the sole Lean change. The theorem statement, independent consumer, workflow, dependencies, and elaboration limits are unchanged. R2 awaits strict verification.

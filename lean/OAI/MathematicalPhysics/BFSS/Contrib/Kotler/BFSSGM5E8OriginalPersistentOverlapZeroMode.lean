@@ -29,7 +29,7 @@ private theorem dense_fst_orthogonal
   have hD : Dᗮ = ⊥ := by
     apply le_antisymm _ bot_le
     intro x hx
-    apply Submodule.mem_bot.mpr
+    rw [Submodule.mem_bot ℂ]
     apply hzero
     rw [← hdouble]
     apply ((Kᗮ).mem_orthogonal _).mpr
