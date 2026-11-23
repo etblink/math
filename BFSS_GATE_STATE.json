@@ -5588,7 +5588,7 @@
     "receipt": "research/methodology/BFSS_CROSS_TRACK_STATUS_RECONCILIATION_2026_11_22.md",
     "scopes": {
       "canonical_m4_anchor_register": "unchanged: W0C2B2 R2 BLOCKED and 27 accepted M4 anchors; top-level last_qualified and active retain their M4-only meanings",
-      "parallel_unified_massless_gauge_physical": "GM5C R1 qualified #45099280662 at 0d98567ed139f749a497e12449400d1cab29c56f for first-radial-moment and fixed-radius L2 control on the original invariant smooth core. Earlier GM qualifications and native REDs are preserved.",
+      "parallel_unified_massless_gauge_physical": "GM5D R3 strictly qualified #45107140917 at d4080b6f6c75bcec824acc080849c662ec30cb16, for common-fixed-radius gradient closed-Sobolev-graph and kinetic-energy limits on original invariant smooth-core sequences converging in the native sixteen-charge graph; GM5A/B/C qualification and R1/R2 negative evidence remain preserved.",
       "historical_native_physical_hamiltonian": "P3-M5BE0 qualified at exact original run #43493125150; source-identical in unified branch",
       "empirical_and_standard_model": "independent research track, not promoted by BFSS mathematics"
     },
@@ -5734,14 +5734,41 @@
         "workflow_blob": "076c5eb892bcf24c13faa2d006e6091033fc6306",
         "receipt": "research/integration/BFSS_GM5C_R1_ORIGINAL_MASSLESS_CORE_MOMENT_CONTROL_GREEN_ACCEPTANCE_2026_11_22.md",
         "scope": "absolute first-radial-moment bound and fixed-radius L2 control on the original invariant smooth core, independently checked on paired SU(2) data"
+      },
+      {
+        "gate": "GM5D R3",
+        "run": 45107140917,
+        "status": "STRICT_GREEN",
+        "tested_sha": "d4080b6f6c75bcec824acc080849c662ec30cb16",
+        "job_id": 137470904526,
+        "native_build_jobs": 9131,
+        "source_axiom_reports": 4,
+        "independent_consumer_axiom_reports": 2,
+        "artifact_id": 14788881834,
+        "original_zip_sha256": "75875e4b5d8364d5173c4d3aa542246c2f262f7ed0725e57bed680dd7da2dd07",
+        "original_zip_bytes": 16520,
+        "original_zip_crc": "ALL_7_MEMBERS_PASS",
+        "source_blob": "676d41e7897a743bad8a6fbea45eed2733ca8a4d",
+        "independent_consumer_blob": "30c61113bf6329d919ea7d2981d5a1dedae9f2e0",
+        "workflow_blob": "8b4c4a389b7fabbf070cae9671262c9eb1e75a7e",
+        "receipt": "research/integration/BFSS_GM5D_R3_ORIGINAL_FIXED_RADIUS_GRADIENT_LIMIT_GREEN_ACCEPTANCE_2026_11_22.md",
+        "manifest": "research/integration/evidence/gm5d-r3-original-green-manifest.json",
+        "original_job_log": "research/integration/evidence/gm5d-r3-original-complete-job.log",
+        "scope": "common-fixed-radius original invariant smooth-core sequences convergent in native charge graph have a strong gradient Sobolev-graph limit and convergent kinetic energies; NOT a global potential/multiplier limit, spectral gap, or physical density"
       }
     ],
     "pending_and_negative": [
       {
         "gate": "GM5D R1",
-        "status": "STAGED_AWAITING_STRICT_VERIFICATION",
+        "status": "HISTORICAL_R1_NATIVE_RED_SUPERSEDED_BY_R3_STRICT_GREEN",
         "scope": "Strong source closed-gradient convergence and the original kinetic energy limit for common-radius core sequences converging in the native charge graph",
-        "receipt": "research/integration/BFSS_GM5D_ORIGINAL_FIXED_RADIUS_GRADIENT_LIMIT_GATE_2026_11_22.md"
+        "receipt": "research/integration/BFSS_GM5D_ORIGINAL_FIXED_RADIUS_GRADIENT_LIMIT_GATE_2026_11_22.md",
+        "run": 45102407563,
+        "sha": "26373ec7cdfb934e255401921b8a547b780aa772",
+        "superseded_by": {
+          "run": 45107140917,
+          "receipt": "research/integration/BFSS_GM5D_R3_ORIGINAL_FIXED_RADIUS_GRADIENT_LIMIT_GREEN_ACCEPTANCE_2026_11_22.md"
+        }
       },
       {
         "gate": "GM5C R1",
@@ -5812,6 +5839,19 @@
         "gate": "P3-M5BG0/BH",
         "status": "NOT_QUALIFIED_CURRENT_SOURCE",
         "note": "historical Hamiltonian equivalence remains separate"
+      },
+      {
+        "gate": "GM5D R2",
+        "run": 45104975857,
+        "sha": "2a4425ec1505cc59708cd70b671cdb4e7d748579",
+        "status": "NATIVE_SOURCE_RED_UNQUALIFIED",
+        "cause": "missing explicit LinearPMap namespace for map_sub; wrong FunLike elaboration",
+        "artifact_id": 14787867184,
+        "receipt": "research/integration/BFSS_GM5D_R2_EXPLICIT_LINEARPMAP_NATIVE_RED_2026_11_22.md",
+        "superseded_by": {
+          "run": 45107140917,
+          "receipt": "research/integration/BFSS_GM5D_R3_ORIGINAL_FIXED_RADIUS_GRADIENT_LIMIT_GREEN_ACCEPTANCE_2026_11_22.md"
+        }
       }
     ],
     "status_semantics": {
@@ -5822,7 +5862,7 @@
       "open_physical_claims": "no BFSS spectral gap, eigenpair, physical Hopfion, GUT, or Standard Model derivation"
     },
     "immutable_legacy_checkpoint": "previous M4 accepted anchors, old snapshot statuses, source proof bytes and negative experiment registry deliberately preserved",
-    "latest_qualified_parallel_gm_gate": "GM5C R1",
+    "latest_qualified_parallel_gm_gate": "GM5D R3",
     "scope_note": "Legacy top-level last_qualified, active and 27 accepted_anchors remain M4-only; parallel GM status is documented in current_cross_track_status."
   }
 }
