@@ -6436,6 +6436,163 @@
       "run_last_observed_status": "in_progress",
       "run_conclusion": null,
       "launch_binding": "research/spectral-p2-original-field/P3_AUX_HARDY_G9_R3_LAUNCH_BINDING_2026_11_14.md"
+    },
+    {
+      "id": "E-PY-REENTRY-20261124",
+      "title": "Post-E0 D1G/I/L replication, width scaling and Cartesian vacuum transport",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "RETROSPECTIVE_COMPUTATIONAL_ARCHIVAL_NOT_PHYSICAL_FIELD_THEOREM",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/BFSS_PYTHON_FIRST_RESEARCH_2026_11_24.md",
+      "source_baseline": "93d7adb2a62e8f9a3ecfe3f7e709eea1910914ea",
+      "source_artifact": {
+        "script": "research/computational/python-first-20261124/bfss-python-reentry/replicate.py",
+        "script_blob": "6ac4e7399282e573abd6f2663ddf7678f5cdeebe",
+        "transport_script": "research/computational/python-first-20261124/bfss-python-reentry/transport.py",
+        "transport_script_blob": "944696f40bf7ae04333f09731af3782abb4081bc",
+        "results": "research/computational/python-first-20261124/bfss-python-reentry/results.json",
+        "transport_results": "research/computational/python-first-20261124/bfss-python-reentry/transport_results.json",
+        "archive": "research/computational/python-first-20261124/original-archives/bfss-python-reentry-20261124.zip",
+        "archive_sha256": "038c21fdaeec45d6adee6cc8cd0cfae4fd0376613371457e3192165bcdf1a147"
+      },
+      "stages": {
+        "observation": "Historical D1G/I/L notes contain source-normalized commuting-valley cancellation, Fock covariance and width sensitivity; crosswalk identifies reflected Gamma9.",
+        "question": "Do independent finite tests recover those controls, and can a decreasing shell-width mismatch retain the model inverse-square scaling?",
+        "background": [
+          "D1G/I/K0/L notes on counterfactual branch",
+          "Scientific Method Protocol",
+          "CSQ-E0 core identity and MSY crosswalk"
+        ],
+        "hypothesis": "The specified finite samples reproduce valley cancellation and stabilizer covariance; model width perturbation delta_R=.1(10/R)^(3/2) is consistent with bounded R^2 E_model; reflected gamma and Cartesian vacuum transport pass stated finite identities.",
+        "falsifiers": [
+          "Verified nonzero exact Clifford or signed coefficient residual",
+          "Failure to reproduce rank-one zero counts or energy cancellation within scale-adjusted tolerance",
+          "Adverse width/rotor/stabilizer controls indistinguishable from correct construction"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "radius",
+            "random orientation",
+            "width ratio",
+            "tube shrinkage",
+            "spatial sign",
+            "Fock vacuum"
+          ],
+          "dependent_variables": [
+            "local energy cancellation",
+            "CAR and covariance residuals",
+            "scaled trial model energy",
+            "signed coefficient identity",
+            "vacuum annihilation residual"
+          ],
+          "controls": [
+            "seed 20261124",
+            "wrong all-plus stabilizer",
+            "wrong single-color rotor",
+            "wrong spatial reflection",
+            "unchanged vacuum",
+            "Wishart deterministic convergence"
+          ],
+          "reproduce_command": "cd research/computational/python-first-20261124/bfss-python-reentry && python replicate.py && python transport.py"
+        },
+        "analysis_plan": "Retain raw outputs, negative controls, model restrictions and exact versus floating-point residuals; no physical domain inference.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS only for executed battery; a verified discrepancy is a bounded falsifier, failed convergence is not a physical counterexample.",
+        "communication": "Original ZIP and every member preserved in Git; this record is retrospective."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "rank1_samples": 24,
+        "max_cancellation": 2.2737367544323206e-13,
+        "source_domain_qualified": false,
+        "companion_trial_integrals_recomputed": false
+      }
+    },
+    {
+      "id": "E-PY-MSY-SEED-20261124",
+      "title": "Exact finite occupation transport of the published companion seed S",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_FINITE_OCCUPATION_ARITHMETIC_NOT_LEAN_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/BFSS_PYTHON_FIRST_RESEARCH_2026_11_24.md",
+      "source_baseline": "93d7adb2a62e8f9a3ecfe3f7e709eea1910914ea",
+      "source_artifact": {
+        "script": "research/computational/python-first-20261124/bfss-seed-transport/transport_seed.py",
+        "script_blob": "b7fd27d9f4c91896edfff9b3afbec216f5835e99",
+        "independent_script": "research/computational/python-first-20261124/bfss-seed-transport/exact_transport.py",
+        "independent_script_blob": "b3e9f51cce788d288f1c95f2206df7a502fbc82e",
+        "generator_script": "research/computational/python-first-20261124/bfss-seed-transport/check_seed.py",
+        "generator_script_blob": "48733caa73cceafd030fe6c5ebc405924603670a",
+        "input": "research/computational/python-first-20261124/bfss-seed-transport/seed_packed.txt",
+        "integer_vector": "research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz",
+        "results": "research/computational/python-first-20261124/bfss-seed-transport/exact_transport_results.json",
+        "generator_results": "research/computational/python-first-20261124/bfss-seed-transport/generator_checks.json",
+        "archive": "research/computational/python-first-20261124/original-archives/bfss-seed-transport-20261124.zip",
+        "archive_sha256": "984f02bcdeb19c32af728b57533ed50082709527d233db589ad0d6ae9bf98a3c",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7",
+        "companion_blob": "cdfe3df61c65204c8e0bb6eb6289c8d192f6b8dc",
+        "source_gamma_blob": "b9b8192055c70f0d001d7982669b9823c55562ed",
+        "source_paired_blob": "152204ef15a6569534e0503824a697cb9ae8e4ce"
+      },
+      "stages": {
+        "observation": "Existing qualified reflected gamma and conditional Majorana transport plus a published 750-row constant seed; polarization mixing makes a simple relabeling invalid.",
+        "question": "Can the actual seed be transported by the finite exterior/permutation/Bogoliubov maps and pass exact original-convention generator tests?",
+        "background": [
+          "MSY reflected gamma and Majorana notes",
+          "fixed-regulator witnesses",
+          "CSQ-E0",
+          "D1I source pairing and Fock controls"
+        ],
+        "hypothesis": "The specified finite transport is unitary, preserves norm, yields the same coefficient vector by independent exact arithmetic, and all 39 reconstructed bilinear generators annihilate that vector.",
+        "falsifiers": [
+          "Nonzero exact intertwining or coefficient disagreement",
+          "Any nonzero generator residual for correct reconstructed vector",
+          "Undetected deliberately damaged permutation or coefficient"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "spherical versus Cartesian polarization",
+            "signed occupation permutation",
+            "three local color blocks",
+            "single coefficient perturbation"
+          ],
+          "dependent_variables": [
+            "local unitarity and CAR intertwining",
+            "full integer coefficient equality",
+            "generator residual support",
+            "norm"
+          ],
+          "controls": [
+            "pinned literal Gamma9 tables",
+            "independent Q(i,sqrt(2)) propagation",
+            "accumulator bounds",
+            "unsigned permutation",
+            "perturbed coefficient"
+          ],
+          "reproduce_command": "cd research/computational/python-first-20261124/bfss-seed-transport && OPENBLAS_NUM_THREADS=2 python transport_seed.py && OPENBLAS_NUM_THREADS=2 python check_seed.py && OPENBLAS_NUM_THREADS=2 python exact_transport.py"
+        },
+        "analysis_plan": "Preserve first failed matrix scaling, bounded exact arithmetic and both raw coefficient arrays. Distinguish finite representation agreement from typed original carrier and physical domain.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS with exact finite coefficient equalities; no Lean qualification or source physical spectral result.",
+        "communication": "Original ZIP and all 12 members, including both NPZ vectors, retained byte-for-byte; retrospective archival."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "source_support": 19136,
+        "integer_norm_squared": 8072064,
+        "color_generators_exact_zero": 3,
+        "spatial_generators_exact_zero": 36,
+        "perturbation_residual_support": 12,
+        "unsigned_permutation_residual_support": 16584,
+        "full_seed_transport_exact": true,
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
