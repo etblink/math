@@ -1,0 +1,11 @@
+# Foundational distinction — agreed starting question
+2026-11-23 Pacific. Status: owner-endorsed research question, not an accepted physical hypothesis.
+Companion: EVIDENCE_LED_UNIFICATION_IBI_CHARTER_2026_11_23.md.
+
+The owner endorsed the question: What are the minimum conditions under which physical distinctions become possible at all? This precedes commitment to objects-first, relations-first (physical IBI), or joint emergence. It is not a claim that any of these ontologies is false. Do not assume geometry, topology, dimensions, quantum mechanics, BFSS or NFC as fundamental; they may be useful test laboratories.
+
+Working distinctions: intrinsic/type identity (e.g. electron species), relational/configuration identity, and persistent identity under evolution. Do not conflate them. Operational starting model: specify a set of candidate states and an allowed family of tests with outcome distributions. Two states are operationally equivalent if every allowed test gives identical outcome distributions. Distinct equivalence classes witness distinguishability relative to that test family. This is a definition/model, not an ontological theorem. The state carrier, tests, probability, equality and admissibility are introduced mathematical structure, not derived primitives. Restricted observations can obscure distinctions; equality for a restricted family need not be physical equivalence for a richer family. Dynamics and persistence require further assumptions.
+
+First exploratory question: can distinctions be reconstructed internally from compatibility/incidence data without independently individuated physical objects? Compare object-first, relation-first and joint-emergence models fairly, including trivial and symmetry-related cases. Seek counterexamples before proposing universal claims. No implication from mathematical distinguishability to experimentally observed particle species is accepted.
+
+Owner-endorsed working method: conversational exploration, Python for numerical/symbolic experiments and counterexamples, literature and source receipts as appropriate, Lean reserved for select consequential well-posed mathematical claims. Preserve chronological positive and negative results on this research branch. No changes to Lean, CI, unified integration or main in this entry.
