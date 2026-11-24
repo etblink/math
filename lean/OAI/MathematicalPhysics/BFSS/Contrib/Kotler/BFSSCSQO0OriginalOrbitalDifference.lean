@@ -75,32 +75,28 @@ theorem rightOrderedMixed_orbital_apply
   exact congrArg (fun a : Fermion 2 => (-Complex.I) • a)
     (IsScalarTower.algebraMap_smul ℂ (v u) ((sourceD u f) x))
 
-private theorem sourceEnd_add_evaluate (A B : SourceEnd 2)
-    (f : SmoothCore 2) (x : Boson 2) :
-    ((A + B) f) x = (A f) x + (B f) x := rfl
-
-private theorem halfSquare_apply
-    (M : AlgebraData 2) (hcolor : ∀ a : ColorIndex 2,
-      M.color a = FCP.BFSSSU2.normalizedPauli a)
-    (hgamma : M.gamma = originalGamma) (w : SpinIndex → ℝ)
-    (f : SmoothCore 2) (x : Boson 2) :
-    (sourceScalarHalfSquare M w f) x =
-      (((-(spinorSquareNorm w : ℂ) / 2) •
-          sourceOriginalSecondDerivativeSum (N := 2)) f) x +
-        (sourceSpinorRightOrderedMixed M w f) x +
-        ((spinorSquareNorm w : ℂ) *
-          (sourceNineSpatialQuarticPotential M x : ℂ)) • f x := by
-  have hmix : (1 / 2 : ℂ) • sourceSpinorOrderedMixedTerm M w =
-      sourceSpinorRightOrderedMixed M w := by
-    rw [sourceSpinorOrderedMixedTerm_eq_rightOrdered M hcolor w, smul_smul] <;> norm_num
-  unfold sourceScalarHalfSquare
-  have h := sourceSU2HalfScalarSquare_kinetic_mixed_potential_apply M hcolor w hgamma f x
-  rw [hmix, sourceEnd_add_evaluate] at h
-  exact h
-
-private theorem cancelCommonTerms {V : Type*} [AddCommGroup V] (k p a b : V) :
-    (k + a + p) - (k + b + p) = a - b := by
+/-- Cancel the common terms before binding the original operators. -/
+private theorem halfSquareDifference
+    {E V : Type*} [AddCommGroup E] [Module ℂ E] [AddCommGroup V] [Module ℂ V]
+    (evaluate : E →ₗ[ℂ] V) (kinetic : ℝ → E) (potential : ℝ → V)
+    (normW normZ : ℝ) (halfW halfZ orderedW orderedZ rightW rightZ : E)
+    (hw : evaluate halfW =
+      evaluate (kinetic normW + (1 / 2 : ℂ) • orderedW) + potential normW)
+    (hz : evaluate halfZ =
+      evaluate (kinetic normZ + (1 / 2 : ℂ) • orderedZ) + potential normZ)
+    (hn : normW = normZ)
+    (hmw : orderedW = (2 : ℂ) • rightW) (hmz : orderedZ = (2 : ℂ) • rightZ) :
+    evaluate halfW - evaluate halfZ = evaluate rightW - evaluate rightZ := by
+  rw [hw, hz, hn, hmw, hmz]
+  have htwo : (1 / 2 : ℂ) * 2 = 1 := by norm_num
+  simp only [smul_smul, htwo, one_smul, map_add]
   abel
+
+private def evaluateAt (f : SmoothCore 2) (x : Boson 2) :
+    SourceEnd 2 →ₗ[ℂ] Fermion 2 where
+  toFun A := (A f) x
+  map_add' A B := rfl
+  map_smul' c A := rfl
 
 /-- Equal spinor norms cancel the common second-derivative and quartic
 terms, leaving the original orbital direction for the color difference. -/
@@ -114,10 +110,24 @@ theorem scalarHalfSquare_difference
       (-Complex.I) • fderiv ℝ (f : Boson 2 → Fermion 2) x
         (M.gaugeTangent x
           (sourceSpinorWeightedColor M w x - sourceSpinorWeightedColor M z x)) := by
-  rw [halfSquare_apply M hcolor hgamma w f x, halfSquare_apply M hcolor hgamma z f x, hn]
+  let kinetic : ℝ → SourceEnd 2 := fun n =>
+    (-(n : ℂ) / 2) • sourceOriginalSecondDerivativeSum (N := 2)
+  let potential : ℝ → Fermion 2 := fun n =>
+    ((n : ℂ) * (sourceNineSpatialQuarticPotential M x : ℂ)) • f x
+  have hMixed :=
+    halfSquareDifference (evaluateAt f x) kinetic potential
+      (spinorSquareNorm w) (spinorSquareNorm z)
+      (sourceScalarHalfSquare M w) (sourceScalarHalfSquare M z)
+      (sourceSpinorOrderedMixedTerm M w) (sourceSpinorOrderedMixedTerm M z)
+      (sourceSpinorRightOrderedMixed M w) (sourceSpinorRightOrderedMixed M z)
+      (sourceSU2HalfScalarSquare_kinetic_mixed_potential_apply M hcolor w hgamma f x)
+      (sourceSU2HalfScalarSquare_kinetic_mixed_potential_apply M hcolor z hgamma f x)
+      hn
+      (sourceSpinorOrderedMixedTerm_eq_rightOrdered M hcolor w)
+      (sourceSpinorOrderedMixedTerm_eq_rightOrdered M hcolor z)
   calc
     _ = (sourceSpinorRightOrderedMixed M w f) x -
-          (sourceSpinorRightOrderedMixed M z f) x := cancelCommonTerms _ _ _ _
+          (sourceSpinorRightOrderedMixed M z f) x := hMixed
     _ = _ := by
           rw [rightOrderedMixed_orbital_apply M hgamma w f x,
             rightOrderedMixed_orbital_apply M hgamma z f x]

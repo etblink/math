@@ -45,7 +45,7 @@ jobs:
           from pathlib import Path
           import subprocess,re,json
           pins={
-            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQO0OriginalOrbitalDifference.lean": "7da2e9484c2d029b273114c830298c65f3233f30",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQO0OriginalOrbitalDifference.lean": "3a3179bc04e494e244fd35b3f2ac5284802c6d27",
             "lean/diagnostics/BFSSCSQO0IndependentAudit.lean": "86b8a7978b135aa3f3fc1e9c298d02264c0579a6",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe.lean": "980ddf4dd5593c2464476513b75b8e064eff2af2",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5QOriginalDiagonalMixedCommutatorProbe.lean": "42d758cc80ecb9bea781f636e53877d285a17cf6",
@@ -58,7 +58,7 @@ jobs:
           for path,expected in pins.items():
               got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
               assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
-          subprocess.check_call(["git","merge-base","--is-ancestor","e52d0473dc7b8ee6ed485c7aa13a3c0b9780c67a","HEAD"])
+          subprocess.check_call(["git","merge-base","--is-ancestor","29e79c8a329cf1b7e4a0702d74f2f6b3397c62e3","HEAD"])
           s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQO0OriginalOrbitalDifference.lean").read_text()
           t=Path("lean/diagnostics/BFSSCSQO0IndependentAudit.lean").read_text()
           source_roots = ["originalFderiv_coordinate_sum", "rightOrderedMixed_orbital_apply", "scalarHalfSquare_difference"]
