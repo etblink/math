@@ -104,7 +104,7 @@ jobs:
           source "$HOME/.elan/env"
           cd lean
           E="$RUNNER_TEMP/bfss-csq-f0"
-          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF0OriginalFierzDifference 2>&1 | tee "$E/native-source.log"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF0OriginalFierzDifference OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSG1APairedThetaProbe 2>&1 | tee "$E/native-source.log"
           timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
             diagnostics/BFSSCSQF0IndependentAudit.lean \
             2>&1 | tee "$E/strict-axioms.log"
