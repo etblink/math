@@ -39,8 +39,10 @@ theorem basisWeightedSum {V : Type*} [AddCommGroup V] [Module ℂ V]
   have h (b : SpinIndex) : ((if b = a then (1 : ℝ) else 0) : ℂ) • A b =
       if b = a then A b else 0 := by
     by_cases hb : b = a <;> simp [hb]
-  simp only [h]
-  simp
+  calc
+    _ = ∑ b : SpinIndex, if b = a then A b else 0 :=
+      Finset.sum_congr rfl (fun b _ => h b)
+    _ = _ := by simp
 
 /-- The weighted charge on a coordinate spinor is the original charge. -/
 theorem basisCharge (M : AlgebraData 2) (a : SpinIndex) :
@@ -58,7 +60,8 @@ theorem basisSquarePoint (a b : SpinIndex)
   have h := FCP.BFSSCSQG0Literal.physicalSquareDifference
     (basisSpinor a) (basisSpinor b) hn f x
   rw [basisCharge, basisCharge] at h
-  exact sub_eq_zero.mp h
+  apply sub_eq_zero.mp
+  exact h
 
 /-- Recover equality of original smooth-core vectors from pointwise equality. -/
 theorem basisSquareCore (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :
@@ -80,14 +83,24 @@ theorem symmetricEnergy {A B : SourceEnd 2}
       _ = inner ℂ (coreToL2 f) (coreToL2 (B (B f))) :=
         congrArg (fun g : SmoothCore 2 => inner ℂ (coreToL2 f) (coreToL2 g)) h
       _ = _ := (hB f (B f)).symm
-  simpa only [← norm_sq_eq_re_inner (𝕜 := ℂ)] using congrArg Complex.re hi
+  rw [norm_sq_eq_re_inner (𝕜 := ℂ) (coreToL2 (A f)),
+    norm_sq_eq_re_inner (𝕜 := ℂ) (coreToL2 (B f)), hi]
 
 /-- All sixteen original physical basis-charge energies coincide. -/
 theorem basisEnergyEqual (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :
     ‖coreToL2 (pairedAlgebraData.charge a f.val)‖ ^ 2 =
-      ‖coreToL2 (pairedAlgebraData.charge b f.val)‖ ^ 2 :=
-  symmetricEnergy (pairedAlgebraData.charge_symmetric a)
-    (pairedAlgebraData.charge_symmetric b) f.val (basisSquareCore a b f)
+      ‖coreToL2 (pairedAlgebraData.charge b f.val)‖ ^ 2 := by
+  have ha := pairedAlgebraData.charge_symmetric a f.val
+    (pairedAlgebraData.charge a f.val)
+  have hb := pairedAlgebraData.charge_symmetric b f.val
+    (pairedAlgebraData.charge b f.val)
+  have hs := basisSquareCore a b f
+  rw [hs] at ha
+  have hi := ha.trans hb.symm
+  rw [norm_sq_eq_re_inner (𝕜 := ℂ)
+    (coreToL2 (pairedAlgebraData.charge a f.val)),
+    norm_sq_eq_re_inner (𝕜 := ℂ)
+      (coreToL2 (pairedAlgebraData.charge b f.val)), hi]
 
 /-- The original normalized sixteen-term average of constant energies. -/
 theorem averageConstant (E : SpinIndex → ℝ) (a : SpinIndex)
