@@ -35,7 +35,7 @@ theorem offDiagonalAudit (w z : SpinIndex → ℝ)
     sourceFierzChannelsReal pairedAlgebraData w p q x -
       sourceFierzChannelsReal pairedAlgebraData z p q x = 0 := by
   rw [pairedCoefficientAudit w z hn p q x]
-  simp only [hne, if_false, neg_zero]
+  simp only [hne, ite_false, neg_zero]
 
 #print axioms pairedCoefficientAudit
 #print axioms offDiagonalAudit

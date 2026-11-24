@@ -39,7 +39,7 @@ theorem weightedColor_component (M : AlgebraData 2)
   change (EuclideanSpace.proj (𝕜 := ℝ) c)
     (∑ k : SpaceIndex, (dotProduct w (M.gamma k *ᵥ w)) • spatialColor x k) = _
   rw [map_sum]
-  simp only [map_smul, smul_eq_mul] <;> rfl
+  simp only [map_smul, smul_eq_mul]; rfl
 
 /-- Equal norm cancels the gamma channel and leaves the exact diagonal
 color coefficient with its negative sign, before any Majorana action. -/
@@ -61,7 +61,7 @@ theorem originalFierzDifference (M : AlgebraData 2)
       (fun c => M.structureConstant p.2 q.2 c) (fun k c => x (k,c))
       (fun k => dotProduct v (M.gamma k *ᵥ v))
   by_cases he : p.1 = q.1
-  · simp only [sourceFierzChannelsReal, he, if_true, hn, hc]
+  · simp only [sourceFierzChannelsReal, he, ite_true, hn, hc]
     calc
       _ = -((∑ c : ColorIndex 2, M.structureConstant p.2 q.2 c *
           sourceSpinorWeightedColor M w x c) -
@@ -73,7 +73,7 @@ theorem originalFierzDifference (M : AlgebraData 2)
         apply Finset.sum_congr rfl
         intro c _
         ring
-  · simp only [sourceFierzChannelsReal, he, if_false, hn, sub_zero, sub_self, neg_zero]
+  · simp only [sourceFierzChannelsReal, he, ite_false, hn, sub_zero, sub_self, neg_zero]
 
 #print axioms finiteWeightedContraction
 #print axioms weightedColor_component
