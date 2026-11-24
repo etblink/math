@@ -44,7 +44,7 @@ jobs:
           from pathlib import Path
           import subprocess,re,json
           pins={
-            "lean/diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean": "af281b6105fb4d24e57b097c552be5eafcaed433",
+            "lean/diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean": "cbc101f48c0368bfbfd02c44ff510b04eed022d1",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQO0OriginalOrbitalDifference.lean": "3a3179bc04e494e244fd35b3f2ac5284802c6d27",
             "lean/diagnostics/BFSSCSQO0IndependentAudit.lean": "86b8a7978b135aa3f3fc1e9c298d02264c0579a6",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe.lean": "980ddf4dd5593c2464476513b75b8e064eff2af2",
@@ -58,7 +58,7 @@ jobs:
           subprocess.check_call(["git","merge-base","--is-ancestor","d1c304ca25d8cc26281bffd79652d58f2963fd5d","HEAD"])
           s=Path("lean/diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean").read_text()
           assert re.findall(r"(?m)^import (\S+)$",s)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe"]
-          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==["rawDonor","halfEvaluation","mixedEvaluation","potentialEvaluation","singleSpinorBinding"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==["rawDonor","evalAt_apply","halfOperator","halfEvaluation","mixedEvaluation","potentialEvaluation","singleSpinorBinding"]
           assert "set_option autoImplicit false" in s
           assert "set_option warningAsError true" in s
           assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe|native_decide)\b",s)
@@ -105,7 +105,7 @@ jobs:
           for log in [source,audit]:
               for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
                   assert bad not in log,(bad,log[-6000:])
-          names=["rawDonor","halfEvaluation","mixedEvaluation","potentialEvaluation","singleSpinorBinding"]
+          names=["rawDonor","evalAt_apply","halfOperator","halfEvaluation","mixedEvaluation","potentialEvaluation","singleSpinorBinding"]
           allowed={"propext","Classical.choice","Quot.sound"}
           for name in names:
               full="FCP.BFSSCSQO0G5PBindingDiagnostic."+name

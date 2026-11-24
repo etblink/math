@@ -54,14 +54,29 @@ theorem rawDonor (M : AlgebraData 2)
         (sourceNineSpatialQuarticPotential M x : ℂ)) • f x :=
   sourceSU2HalfScalarSquare_kinetic_mixed_potential_apply M hcolor w hgamma f x
 
-/-- B: test only the left evaluation boundary. -/
+/-- D1a: evaluation of an arbitrary original endomorphism, with its
+argument left opaque. No coefficient sum is involved. -/
+theorem evalAt_apply (f : SmoothCore 2) (x : Boson 2) (A : SourceEnd 2) :
+    evalAt f x A = (A f) x := by
+  rfl
+
+/-- D1b: expose the half-square definition at the operator level,
+before applying it to the smooth core or the fermion fiber. -/
+theorem halfOperator (M : AlgebraData 2) (w : SpinIndex → ℝ) :
+    half M w =
+      (1 / 2 : ℂ) •
+        (∑ p : FermionLabel 2,
+          sourceAllSpinorCoefficient M w p * sourceAllSpinorCoefficient M w p) := by
+  rw [half]
+
+/-- B: test the left evaluation boundary through two named equalities. -/
 theorem halfEvaluation (M : AlgebraData 2) (w : SpinIndex → ℝ)
     (f : SmoothCore 2) (x : Boson 2) :
     evalAt f x (half M w) =
       (((1 / 2 : ℂ) •
         (∑ p : FermionLabel 2,
           sourceAllSpinorCoefficient M w p * sourceAllSpinorCoefficient M w p)) f) x := by
-  rfl
+  rw [evalAt_apply, halfOperator]
 
 /-- C: test only the right kinetic-plus-mixed evaluation boundary. -/
 theorem mixedEvaluation (M : AlgebraData 2) (w : SpinIndex → ℝ)
@@ -96,6 +111,8 @@ theorem singleSpinorBinding (M : AlgebraData 2)
   exact rawDonor M hcolor w hgamma f x
 
 #print axioms rawDonor
+#print axioms evalAt_apply
+#print axioms halfOperator
 #print axioms halfEvaluation
 #print axioms mixedEvaluation
 #print axioms potentialEvaluation
