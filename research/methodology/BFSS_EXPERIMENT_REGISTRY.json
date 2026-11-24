@@ -6593,6 +6593,83 @@
         "full_seed_transport_exact": true,
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-COVARIANTS-20261124",
+      "title": "Finite generating covariants Phi and H3: trace reduction, Casimir and CAR commutator checks",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_FINITE_COVARIANT_ALGEBRA_NOT_LEAN_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-covariants/README.md",
+      "source_baseline": "2bd1039cf9181b903d290c14e6749e9d79330d66",
+      "source_artifact": {
+        "covariant_script": "research/computational/python-first-20261124/bfss-covariants/covariant_audit.py",
+        "covariant_script_blob": "56449e8475b80203a74ce0a7853af8fed72f90a7",
+        "commutator_script": "research/computational/python-first-20261124/bfss-covariants/commutator_audit.py",
+        "commutator_script_blob": "e51b49ace51d886c81ffa44435b0e5bcfc444421",
+        "input": "research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz",
+        "input_sha256": "131e703b19da9a1aea1e137dac45f451bbfc7f64374aff6619a46488410d5ff7",
+        "rank1": "research/computational/python-first-20261124/bfss-covariants/rank1.json",
+        "rank3_partial": "research/computational/python-first-20261124/bfss-covariants/rank3-partial.json",
+        "commutators": "research/computational/python-first-20261124/bfss-covariants/commutator_results.json",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7"
+      },
+      "stages": {
+        "observation": "The transported constant seed S is annihilated by all 39 generators; companion descendants Phi and H3 use noncommuting Yukawa entries, Casimirs and polynomial projectors.",
+        "question": "Can the finite generating operators be simplified without changing operator order, reproduce actual cubic descendants and satisfy their finite covariance identities?",
+        "background": [
+          "Exact finite seed transport",
+          "Companion covariants.py and model.py",
+          "Scientific Method Protocol",
+          "Original Gamma9 and paired Fock labeling"
+        ],
+        "hypothesis": "The noncommutative trace reduction agrees coefficientwise with the original formula; rank-one H3 has the stated Casimir eigenvalues; all Yukawa and mixed commutators obey the specified rotation identities in the reconstructed finite representation.",
+        "falsifiers": [
+          "Nonzero exact trace-reduction discrepancy",
+          "Nonzero coefficient residual for tested Casimir eigenvalue or commutator",
+          "Wrong-sign control indistinguishable from correct commutator"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "rank-one and rank-three diagonal fixtures",
+            "trace versus antisymmetric-square formulas",
+            "all color and spatial generator labels"
+          ],
+          "dependent_variables": [
+            "coefficientwise equality",
+            "support and integer-scaled norm",
+            "Casimir eigenvalue residuals",
+            "commutator residual support"
+          ],
+          "controls": [
+            "archived exact integer seed norm",
+            "Clifford identities",
+            "bounded Gaussian-integer arithmetic",
+            "wrong-sign commutator"
+          ],
+          "reproduce_command": "cd research/computational/python-first-20261124/bfss-covariants && OPENBLAS_NUM_THREADS=2 python covariant_audit.py ../bfss-seed-transport/source_seed_integer.npz rank1 && python commutator_audit.py"
+        },
+        "analysis_plan": "Preserve rational denominators, partial stdout receipt and execution timeout. Do not count the incomplete rank-three H3 calculation as successful. Seek coefficient-space reductions instead of repeated full Fock expansions.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for completed checks only; rank-three H3 separately INCONCLUSIVE. No physical theorem or Lean qualification.",
+        "communication": "Scripts and completed receipts preserved; rank-three stdout transcribed and explicitly marked partial."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "phi_exact_fixtures": 2,
+        "rank1_H3_support": 28256,
+        "rank1_color_Casimir": 12,
+        "rank1_spatial_Casimir": 8,
+        "rank3_H3_status": "INCONCLUSIVE",
+        "color_Y_commutators": 81,
+        "spatial_Y_commutators": 972,
+        "mixed_commutators": 108,
+        "wrong_sign_residual": 16,
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
