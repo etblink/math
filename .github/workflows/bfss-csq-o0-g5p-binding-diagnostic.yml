@@ -1,0 +1,125 @@
+name: BFSS CSQ-O0 isolated G5P binding diagnostic
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean'
+      - '.github/workflows/bfss-csq-o0-g5p-binding-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-csq-o0-g5p-binding-diagnostic-${{ github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  g5p-binding-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen original source and independent consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-csq-o0-g5p-binding-diagnostic"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-csq-o0-g5p-binding-diagnostic/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git ls-tree HEAD -- \
+            lean/diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean \
+            .github/workflows/bfss-csq-o0-g5p-binding-diagnostic.yml \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe.lean \
+            > "$RUNNER_TEMP/bfss-csq-o0-g5p-binding-diagnostic/tested-blobs.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-csq-o0-g5p-binding-diagnostic/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-csq-o0-g5p-binding-diagnostic/preflight.log"
+          from pathlib import Path
+          import subprocess,re,json
+          pins={
+            "lean/diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean": "af281b6105fb4d24e57b097c552be5eafcaed433",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQO0OriginalOrbitalDifference.lean": "3a3179bc04e494e244fd35b3f2ac5284802c6d27",
+            "lean/diagnostics/BFSSCSQO0IndependentAudit.lean": "86b8a7978b135aa3f3fc1e9c298d02264c0579a6",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe.lean": "980ddf4dd5593c2464476513b75b8e064eff2af2",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5QOriginalDiagonalMixedCommutatorProbe.lean": "42d758cc80ecb9bea781f636e53877d285a17cf6",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G5WOriginalOrbitalGaugeTangentProbe.lean": "7fccbe6d246eb12e238c1041e730926807512b98",
+            "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+          }
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
+          subprocess.check_call(["git","merge-base","--is-ancestor","d1c304ca25d8cc26281bffd79652d58f2963fd5d","HEAD"])
+          s=Path("lean/diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean").read_text()
+          assert re.findall(r"(?m)^import (\S+)$",s)==["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$",s)==["rawDonor","halfEvaluation","mixedEvaluation","potentialEvaluation","singleSpinorBinding"]
+          assert "set_option autoImplicit false" in s
+          assert "set_option warningAsError true" in s
+          assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe|native_decide)\b",s)
+          for forbidden in ["set_option maxRecDepth","set_option maxHeartbeats","set_option synthInstance.maxHeartbeats"]:
+              assert forbidden not in s
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_CSQ_O0_G5P_BINDING_DIAGNOSTIC_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-csq-o0-g5p-binding-diagnostic/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Build only frozen G5P donor and test isolated binding
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-csq-o0-g5p-binding-diagnostic"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6G5POriginalScalarMixedRemainderProbe 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSCSQO0G5PBindingDiagnostic.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import re,os
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-csq-o0-g5p-binding-diagnostic"
+          source=(E/"native-source.log").read_text()
+          audit=(E/"strict-axioms.log").read_text()
+          assert "Build completed successfully" in source
+          for log in [source,audit]:
+              for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert bad not in log,(bad,log[-6000:])
+          names=["rawDonor","halfEvaluation","mixedEvaluation","potentialEvaluation","singleSpinorBinding"]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          for name in names:
+              full="FCP.BFSSCSQO0G5PBindingDiagnostic."+name
+              reports=re.findall(re.escape("'"+full+"'")+r" (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",audit)
+              assert len(reports)==1,(full,reports)
+              assert {x.strip() for x in reports[0].split(",") if x.strip()}<=allowed,(full,reports)
+          print("BFSS_CSQ_O0_G5P_BINDING_DIAGNOSTIC_GREEN_NOT_FULL_O0")
+          PY
+
+      - name: Preserve first-causal original source and consumer evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-csq-o0-g5p-binding-diagnostic-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-csq-o0-g5p-binding-diagnostic/
+          if-no-files-found: warn
+          retention-days: 30
