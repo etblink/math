@@ -107,6 +107,29 @@ theorem current_diagonal_apply (M : AlgebraData 2) (c : ColorIndex 2)
     rfl
   · simp only [he, ite_false, map_zero]
 
+-- Bind the response and current evaluations before specializing the
+-- finite sums to the original Fock operators.
+private theorem responseDifferenceOfEvaluations {P C V : Type*} [Fintype P] [Fintype C]
+    [AddCommGroup V] [Module ℂ V]
+    (D : P → P → Prop) [∀ p q, Decidable (D p q)]
+    (a b : P → P → ℂ) (d : C → ℂ) (F : C → P → P → ℂ) (t : P → P → V)
+    (left right : V) (current : C → V)
+    (hLeft : left = (1 / 2 : ℂ) •
+      (∑ p : P, ∑ q : P, (Complex.I * a p q) • t p q))
+    (hRight : right = (1 / 2 : ℂ) •
+      (∑ p : P, ∑ q : P, (Complex.I * b p q) • t p q))
+    (hCurrent : ∀ c : C, current c = (-Complex.I / 2 : ℂ) •
+      (∑ p : P, ∑ q : P, if D p q then F c p q • t p q else 0))
+    (hCoefficient : ∀ p q, a p q - b p q =
+      -(if D p q then ∑ c : C, F c p q * d c else 0)) :
+    left - right = ∑ c : C, d c • current c := by
+  rw [hLeft, hRight]
+  calc
+    _ = ∑ c : C, d c • ((-Complex.I / 2 : ℂ) •
+        (∑ p : P, ∑ q : P, if D p q then F c p q • t p q else 0)) :=
+      finiteResponseDifference D a b d F t hCoefficient
+    _ = _ := by simp only [← hCurrent]
+
 /-- The literal G6H ordered response difference equals the weighted
 original bounded current, with exactly the original -i/2 normalization. -/
 theorem originalFermionicDifference (M : AlgebraData 2)
@@ -133,22 +156,35 @@ theorem originalFermionicDifference (M : AlgebraData 2)
         Complex.ofReal_sum, Complex.ofReal_mul] using h
     · simpa only [he, ite_false, Complex.ofReal_sub, Complex.ofReal_neg,
         Complex.ofReal_zero] using h
-  rw [sourceOriginalOrderedFermionicResponse_apply M hcolor hgamma w f x,
-    sourceOriginalOrderedFermionicResponse_apply M hcolor hgamma z f x]
-  calc
-    _ = ∑ c : ColorIndex 2, d c • ((-Complex.I / 2 : ℂ) •
-        (∑ p : FermionLabel 2, ∑ q : FermionLabel 2,
+  -- Do the finite response calculation on each complex Fock coordinate.
+  apply PiLp.ext
+  intro i
+  let coord : Fermion 2 →ₗ[ℂ] ℂ := EuclideanSpace.projₗ i
+  change coord (((sourceOriginalOrderedFermionicResponse M w) f) x -
+    ((sourceOriginalOrderedFermionicResponse M z) f) x) =
+    coord (∑ c : ColorIndex 2, d c • sourceFiberFermionColorCurrent M c (f x))
+  simp only [map_sub, map_sum, map_smul]
+  have hLeft := congrArg coord (sourceOriginalOrderedFermionicResponse_apply M hcolor hgamma w f x)
+  have hRight := congrArg coord (sourceOriginalOrderedFermionicResponse_apply M hcolor hgamma z f x)
+  simp only [map_smul, map_sum] at hLeft hRight
+  have hCurrent (c : ColorIndex 2) :
+      coord (sourceFiberFermionColorCurrent M c (f x)) =
+        (-Complex.I / 2 : ℂ) • (∑ p : FermionLabel 2, ∑ q : FermionLabel 2,
           if p.1 = q.1 then (M.structureConstant p.2 q.2 c : ℂ) •
-            M.theta p.1 p.2 (M.theta q.1 q.2 (f x)) else 0)) :=
-          finiteResponseDifference (fun p q : FermionLabel 2 => p.1 = q.1)
-            (fun p q => (sourceFierzChannelsReal M w p q x : ℂ))
-            (fun p q => (sourceFierzChannelsReal M z p q x : ℂ))
-            d (fun c p q => (M.structureConstant p.2 q.2 c : ℂ))
-            (fun p q => M.theta p.1 p.2 (M.theta q.1 q.2 (f x))) hd
-    _ = _ := by
-      apply Finset.sum_congr rfl
-      intro c _
-      rw [current_diagonal_apply M c f x]
+            coord (M.theta p.1 p.2 (M.theta q.1 q.2 (f x))) else 0) := by
+    have hc := congrArg coord (current_diagonal_apply M c f x)
+    simpa only [map_smul, map_sum, apply_ite, map_zero] using hc
+  exact responseDifferenceOfEvaluations
+    (P := FermionLabel 2) (C := ColorIndex 2) (V := ℂ)
+    (fun p q => p.1 = q.1)
+    (fun p q => (sourceFierzChannelsReal M w p q x : ℂ))
+    (fun p q => (sourceFierzChannelsReal M z p q x : ℂ))
+    d (fun c p q => (M.structureConstant p.2 q.2 c : ℂ))
+    (fun p q => coord (M.theta p.1 p.2 (M.theta q.1 q.2 (f x))))
+    (coord (((sourceOriginalOrderedFermionicResponse M w) f) x))
+    (coord (((sourceOriginalOrderedFermionicResponse M z) f) x))
+    (fun c => coord (sourceFiberFermionColorCurrent M c (f x)))
+    hLeft hRight hCurrent hd
 
 #print axioms finiteResponseDifference
 #print axioms current_diagonal_apply
