@@ -82,6 +82,13 @@ theorem physicalGaussCancel (u : ColorVector 2)
 theorem evaluateAdd (A B : SourceEnd 2) (f : SmoothCore 2) (x : Boson 2) :
     ((A + B) f) x = (A f) x + (B f) x := rfl
 
+/-- Transport an endomorphism equality into an evaluated sum without
+elaborating a concrete normal-order expression inside a calc chain. -/
+theorem evaluateEquation (f : SmoothCore 2) (x : Boson 2)
+    {Q A B : SourceEnd 2} (h : Q = A + B) :
+    (Q f) x = (A f) x + (B f) x :=
+  (congrArg (fun T : SourceEnd 2 => (T f) x) h).trans (evaluateAdd A B f x)
+
 /-- Pointwise normal order from literal G4B, with the original G6H
 ordered response. The scalar half-square is never wrapped. -/
 theorem normalOrder_apply (M : AlgebraData 2) (w : SpinIndex → ℝ)
@@ -91,15 +98,7 @@ theorem normalOrder_apply (M : AlgebraData 2) (w : SpinIndex → ℝ)
         sourceAllSpinorCoefficient M w p * sourceAllSpinorCoefficient M w p)) f) x +
       ((sourceOriginalOrderedFermionicResponse M w) f) x := by
   unfold sourceOriginalOrderedFermionicResponse
-  calc
-    _ = (((1 / 2 : ℂ) • (∑ p : FermionLabel 2,
-        sourceAllSpinorCoefficient M w p * sourceAllSpinorCoefficient M w p) +
-        (1 / 2 : ℂ) • (∑ p : FermionLabel 2, ∑ q : FermionLabel 2,
-          (M.fermionAction p.1 p.2 * M.fermionAction q.1 q.2) *
-            sourceAllSpinorCoefficientResponse M w p q)) f) x :=
-      congrArg (fun A : SourceEnd 2 => (A f) x)
-        (sourceAllSpinorCharge_normalOrder_response M w)
-    _ = _ := evaluateAdd _ _ f x
+  exact evaluateEquation f x (sourceAllSpinorCharge_normalOrder_response M w)
 
 /-- Pure evaluated additive assembly; no operator conversion. -/
 theorem joinDifferences {V : Type*} [AddCommGroup V]
@@ -145,6 +144,7 @@ theorem physicalSquareDifference (w z : SpinIndex → ℝ)
 #print axioms generator_apply
 #print axioms physicalGaussCancel
 #print axioms evaluateAdd
+#print axioms evaluateEquation
 #print axioms normalOrder_apply
 #print axioms joinDifferences
 #print axioms physicalSquareDifference

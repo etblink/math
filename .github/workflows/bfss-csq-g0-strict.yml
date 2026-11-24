@@ -45,7 +45,7 @@ jobs:
           from pathlib import Path
           import subprocess,re,json
           pins={
-            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQG0OriginalPhysicalSquare.lean": "e6810cc6544484ef867efdc5152cbefb8ed1e082",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQG0OriginalPhysicalSquare.lean": "1a89660e34463d74a442c17fee2366e290e56127",
             "lean/diagnostics/BFSSCSQG0IndependentAudit.lean": "34140d8d82b61337dba269e78f8e5fb2e1e4b843",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQO0LiteralOrbitalDifference.lean": "ab4fc2784acd101e55f8e588399c5439ab218adf",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF1OriginalFermionicDifference.lean": "0c01875de6c1d9b11688078d9e0ceefdb9a353a7",
@@ -63,7 +63,7 @@ jobs:
           subprocess.check_call(["git","merge-base","--is-ancestor","ff8413c9aeea8f3dfa6ef8b45ff3fd2760db0181","HEAD"])
           s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQG0OriginalPhysicalSquare.lean").read_text()
           t=Path("lean/diagnostics/BFSSCSQG0IndependentAudit.lean").read_text()
-          source_roots = ["gaussSignCancel","generator_apply","physicalGaussCancel","evaluateAdd","normalOrder_apply","joinDifferences","physicalSquareDifference"]
+          source_roots = ["gaussSignCancel","generator_apply","physicalGaussCancel","evaluateAdd","evaluateEquation","normalOrder_apply","joinDifferences","physicalSquareDifference"]
           consumer_roots = ["pairedGaussAudit","pairedSquareAudit"]
           assert re.findall(r"(?m)^import (\S+)$", s) == [
             "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQO0LiteralOrbitalDifference",
@@ -126,6 +126,7 @@ jobs:
                   "FCP.BFSSCSQG0.generator_apply",
                   "FCP.BFSSCSQG0.physicalGaussCancel",
                   "FCP.BFSSCSQG0.evaluateAdd",
+                  "FCP.BFSSCSQG0.evaluateEquation",
                   "FCP.BFSSCSQG0.normalOrder_apply",
                   "FCP.BFSSCSQG0.joinDifferences",
                   "FCP.BFSSCSQG0.physicalSquareDifference",
