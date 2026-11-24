@@ -1,4 +1,4 @@
-import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQG0LiteralPhysicalSquare
+import OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0b3BasisSquareComposition
 
 /-! CSQ-E0: original basis-charge square and energy on the actual
 paired invariant smooth core. No closed-domain or spectral claim.
@@ -35,14 +35,14 @@ theorem basisWeightedSum {V : Type*} [AddCommGroup V] [Module ℂ V]
     (A : SpinIndex → V) (a : SpinIndex) :
     (∑ b : SpinIndex, (basisSpinor a b : ℂ) • A b) = A a := by
   classical
-  unfold basisSpinor
-  have h (b : SpinIndex) : ((if b = a then (1 : ℝ) else 0) : ℂ) • A b =
-      if b = a then A b else 0 := by
-    by_cases hb : b = a <;> simp [hb]
+  have h (b : SpinIndex) :
+      (basisSpinor a b : ℂ) • A b = if b = a then A b else 0 := by
+    by_cases hb : b = a <;> simp [basisSpinor, hb]
   calc
-    _ = ∑ b : SpinIndex, if b = a then A b else 0 :=
+    (∑ b : SpinIndex, (basisSpinor a b : ℂ) • A b) =
+        ∑ b : SpinIndex, if b = a then A b else 0 :=
       Finset.sum_congr rfl (fun b _ => h b)
-    _ = _ := by simp
+    _ = A a := by simp
 
 /-- The weighted charge on a coordinate spinor is the original charge. -/
 theorem basisCharge (M : AlgebraData 2) (a : SpinIndex) :
@@ -54,22 +54,14 @@ theorem basisCharge (M : AlgebraData 2) (a : SpinIndex) :
 theorem basisSquarePoint (a b : SpinIndex)
     (f : pairedGaugeData.invariantCore) (x : Boson 2) :
     ((pairedAlgebraData.charge a * pairedAlgebraData.charge a) f.val) x =
-      ((pairedAlgebraData.charge b * pairedAlgebraData.charge b) f.val) x := by
-  have hn : spinorSquareNorm (basisSpinor a) =
-      spinorSquareNorm (basisSpinor b) := by rw [basisSpinor_norm, basisSpinor_norm]
-  have h := FCP.BFSSCSQG0Literal.physicalSquareDifference
-    (basisSpinor a) (basisSpinor b) hn f x
-  rw [basisCharge, basisCharge] at h
-  apply sub_eq_zero.mp
-  exact h
+      ((pairedAlgebraData.charge b * pairedAlgebraData.charge b) f.val) x :=
+  FCP.BFSSCSQE0b3.basisSquarePoint a b f x
 
 /-- Recover equality of original smooth-core vectors from pointwise equality. -/
 theorem basisSquareCore (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :
     pairedAlgebraData.charge a (pairedAlgebraData.charge a f.val) =
-      pairedAlgebraData.charge b (pairedAlgebraData.charge b f.val) := by
-  apply DFunLike.ext
-  intro x
-  exact basisSquarePoint a b f x
+      pairedAlgebraData.charge b (pairedAlgebraData.charge b f.val) :=
+  FCP.BFSSCSQE0b3.basisSquareCore a b f
 
 /-- Abstract original symmetry-to-energy implication. No charge expansion. -/
 theorem symmetricEnergy {A B : SourceEnd 2}
