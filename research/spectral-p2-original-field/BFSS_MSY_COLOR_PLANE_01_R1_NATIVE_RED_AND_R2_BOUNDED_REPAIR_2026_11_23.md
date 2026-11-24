@@ -56,3 +56,8 @@ A future separate microgate design must be compiled on the exact pinned source *
 4. **Promotion boundary.** Qualify full source, consumer, environment and axiom reports at a frozen candidate commit, independently review the original evidence, then update canonical statuses. No claimed paper/source differential-supercharge equivalence or physical BFSS ground state follows from any of these finite color gates.
 
 This architectural stop retains useful negative proof-engineering knowledge while leaving the separate original source physical crosswalk and SM comparison free to progress.
+
+
+## Independent archive of both failed attempts
+
+The original [R1 ZIP](../integration/evidence/msy-color-plane-01-r1-original-red.zip) and [R2 ZIP](../integration/evidence/msy-color-plane-01-r2-original-red.zip) now reside on unified integration. Each six-member archive passed CRC. Both byte counts and independently recomputed SHA-256 digests match the provider. The tested commit, source/consumer/workflow blobs, toolchain and manifest hashes, and first native diagnostics match the corresponding GitHub Actions attempts. Both failures precede independent consumer compilation.
