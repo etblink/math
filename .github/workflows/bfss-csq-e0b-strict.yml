@@ -48,7 +48,7 @@ jobs:
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0aOriginalBasisSelector.lean": "a12c7c4d8b70844aaeb7598f9ccad82bd75aadd6",
             "lean/diagnostics/BFSSCSQE0aIndependentAudit.lean": "bbfcc24e2c726cda71c08d3ca8dd5d84bb88c1d7",
             ".github/workflows/bfss-csq-e0a-strict.yml": "de63886bc41b50dbbeb22dff1ddffaa6c28715ae",
-            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0bOriginalBasisSquare.lean": "c236dc3b239540d6502627765fe87e39f02cb096",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0bOriginalBasisSquare.lean": "8ed12d7a462d045d106858d0c4affb626a1359eb",
             "lean/diagnostics/BFSSCSQE0bIndependentAudit.lean": "1bdde103629602e7aaebf990c42c0cdc1f486901",
             "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQG0LiteralPhysicalSquare.lean": "ae2ec2b46624886e6eb59ffe33ac8c970925b923",
             "lean/diagnostics/BFSSCSQG0LiteralIndependentAudit.lean": "ef9d51eb59b0692d7ccbcbc9de3de79206479a26",
@@ -64,7 +64,7 @@ jobs:
           subprocess.check_call(["git","merge-base","--is-ancestor","f320174e85d7a694eb12e602bc1bc451e8fcc303","HEAD"])
           s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0bOriginalBasisSquare.lean").read_text()
           t=Path("lean/diagnostics/BFSSCSQE0bIndependentAudit.lean").read_text()
-          source_roots = ["fermionDifferenceToEquality","weightedSquarePoint","basisSquarePoint","basisSquareCore"]
+          source_roots = ["fermionDifferenceToEquality","weightedSquarePoint","squarePointTransport","basisSquarePoint","basisSquareCore"]
           consumer_roots = ["pairedWeightedSquareAudit","pairedBasisSquareAudit"]
           assert re.findall(r"(?m)^import (\S+)$", s) == [
             "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0aOriginalBasisSelector",
@@ -123,6 +123,7 @@ jobs:
               "native-source.log": [
                   "FCP.BFSSCSQE0b.fermionDifferenceToEquality",
                   "FCP.BFSSCSQE0b.weightedSquarePoint",
+                  "FCP.BFSSCSQE0b.squarePointTransport",
                   "FCP.BFSSCSQE0b.basisSquarePoint",
                   "FCP.BFSSCSQE0b.basisSquareCore",
               ],

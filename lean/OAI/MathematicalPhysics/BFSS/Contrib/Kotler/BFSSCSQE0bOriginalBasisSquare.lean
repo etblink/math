@@ -37,6 +37,19 @@ theorem weightedSquarePoint (w z : SpinIndex → ℝ)
         sourceAllSpinorCharge pairedAlgebraData z) f.val) x)
     (FCP.BFSSCSQG0Literal.physicalSquareDifference w z hn f x)
 
+/-- Transport square evaluation across named operator equalities before
+introducing concrete paired charge expressions. -/
+theorem squarePointTransport (A B C D : SourceEnd 2)
+    (f : SmoothCore 2) (x : Boson 2) (ha : A = C) (hb : B = D)
+    (h : ((A * A) f) x = ((B * B) f) x) :
+    ((C * C) f) x = ((D * D) f) x := by
+  calc
+    ((C * C) f) x = ((A * A) f) x :=
+      congrArg (fun T : SourceEnd 2 => ((T * T) f) x) ha.symm
+    _ = ((B * B) f) x := h
+    _ = ((D * D) f) x :=
+      congrArg (fun T : SourceEnd 2 => ((T * T) f) x) hb
+
 /-- Specialize the already established equality using qualified E0a. -/
 theorem basisSquarePoint (a b : SpinIndex)
     (f : pairedGaugeData.invariantCore) (x : Boson 2) :
@@ -44,8 +57,12 @@ theorem basisSquarePoint (a b : SpinIndex)
       ((pairedAlgebraData.charge b * pairedAlgebraData.charge b) f.val) x := by
   have hn : spinorSquareNorm (basisSpinor a) =
       spinorSquareNorm (basisSpinor b) := by rw [basisSpinor_norm, basisSpinor_norm]
-  rw [← basisCharge pairedAlgebraData a, ← basisCharge pairedAlgebraData b]
-  exact weightedSquarePoint (basisSpinor a) (basisSpinor b) hn f x
+  exact squarePointTransport
+    (sourceAllSpinorCharge pairedAlgebraData (basisSpinor a))
+    (sourceAllSpinorCharge pairedAlgebraData (basisSpinor b))
+    (pairedAlgebraData.charge a) (pairedAlgebraData.charge b)
+    f.val x (basisCharge pairedAlgebraData a) (basisCharge pairedAlgebraData b)
+    (weightedSquarePoint (basisSpinor a) (basisSpinor b) hn f x)
 
 /-- Recover equality of original smooth-core vectors from pointwise equality. -/
 theorem basisSquareCore (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :
@@ -57,6 +74,7 @@ theorem basisSquareCore (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :
 
 #print axioms fermionDifferenceToEquality
 #print axioms weightedSquarePoint
+#print axioms squarePointTransport
 #print axioms basisSquarePoint
 #print axioms basisSquareCore
 end
