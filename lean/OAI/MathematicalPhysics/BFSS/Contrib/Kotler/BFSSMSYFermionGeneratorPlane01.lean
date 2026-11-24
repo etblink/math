@@ -61,21 +61,32 @@ private theorem generator_scale (s : ℂ) : Complex.I * (-Complex.I / 2) * (2 * 
   rw [show Complex.I * (-Complex.I / 2) * (2 * s) = -(Complex.I ^ 2) * s by ring,
     Complex.I_sq, neg_neg, one_mul]
 
+-- Unfold the current while the algebra data are a parameter. The
+-- specialization below only applies the resulting equality.
+private theorem generator_from_spin_contraction
+    (M : AlgebraData 2) (T : SpinIndex → SourceFiberEnd)
+    (hSpin : ∀ α : SpinIndex,
+      (∑ a : Fin 3, ∑ b : Fin 3, sourceFiberFermionColorTerm M (2 : Fin 3) α a b) =
+        (2 * (Real.sqrt 2 : ℂ)) • T α) :
+    sourceFiberFermionColorGenerator M (2 : Fin 3) =
+      (Real.sqrt 2 : ℂ) • (∑ α : SpinIndex, T α) := by
+  change Complex.I • ((-Complex.I / 2 : ℂ) •
+    (∑ α : SpinIndex, ∑ a : Fin 3, ∑ b : Fin 3,
+      sourceFiberFermionColorTerm M (2 : Fin 3) α a b)) = _
+  have hsum : (∑ α : SpinIndex, ∑ a : Fin 3, ∑ b : Fin 3,
+        sourceFiberFermionColorTerm M (2 : Fin 3) α a b) =
+      ∑ α : SpinIndex, (2 * (Real.sqrt 2 : ℂ)) • T α :=
+    Finset.sum_congr rfl (fun α _ => hSpin α)
+  rw [hsum, ← Finset.smul_sum, smul_smul, smul_smul, generator_scale]
+
 /-- The actual positive-i native color generator uses the forward
 Majorana order and contributes the coefficient `√2`. -/
 theorem native_fermion_generator_plane01 :
     sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3) =
       (Real.sqrt 2 : ℂ) •
-        (∑ α : SpinIndex, pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) := by
-  change Complex.I • ((-Complex.I / 2 : ℂ) •
-    (∑ α : SpinIndex, ∑ a : Fin 3, ∑ b : Fin 3,
-      sourceFiberFermionColorTerm pairedAlgebraData (2 : Fin 3) α a b)) = _
-  have hsum : (∑ α : SpinIndex, ∑ a : Fin 3, ∑ b : Fin 3,
-        sourceFiberFermionColorTerm pairedAlgebraData (2 : Fin 3) α a b) =
-      ∑ α : SpinIndex, (2 * (Real.sqrt 2 : ℂ)) •
-        (pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) :=
-    Finset.sum_congr rfl (fun α _ => spin_contraction α)
-  rw [hsum, ← Finset.smul_sum, smul_smul, smul_smul, generator_scale]
+        (∑ α : SpinIndex, pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) :=
+  generator_from_spin_contraction pairedAlgebraData
+    (fun α => pairedTheta α (0 : Fin 3) * pairedTheta α (1 : Fin 3)) spin_contraction
 
 #print axioms native_fermion_generator_plane01
 
