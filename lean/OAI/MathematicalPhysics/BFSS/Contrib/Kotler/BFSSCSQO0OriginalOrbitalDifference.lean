@@ -75,6 +75,10 @@ theorem rightOrderedMixed_orbital_apply
   exact congrArg (fun a : Fermion 2 => (-Complex.I) • a)
     (IsScalarTower.algebraMap_smul ℂ (v u) ((sourceD u f) x))
 
+private theorem sourceEnd_add_evaluate (A B : SourceEnd 2)
+    (f : SmoothCore 2) (x : Boson 2) :
+    ((A + B) f) x = (A f) x + (B f) x := rfl
+
 private theorem halfSquare_apply
     (M : AlgebraData 2) (hcolor : ∀ a : ColorIndex 2,
       M.color a = FCP.BFSSSU2.normalizedPauli a)
@@ -91,7 +95,7 @@ private theorem halfSquare_apply
     rw [sourceSpinorOrderedMixedTerm_eq_rightOrdered M hcolor w, smul_smul] <;> norm_num
   unfold sourceScalarHalfSquare
   have h := sourceSU2HalfScalarSquare_kinetic_mixed_potential_apply M hcolor w hgamma f x
-  rw [hmix, LinearMap.add_apply] at h
+  rw [hmix, sourceEnd_add_evaluate] at h
   exact h
 
 private theorem cancelCommonTerms {V : Type*} [AddCommGroup V] (k p a b : V) :
