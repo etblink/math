@@ -10,6 +10,8 @@ The first source existence certificate targets the 104-function witness. It uses
 
 The screen optimized the fixed-regulator Rayleigh quotient on degree-restricted subspaces and selected width and seed deletions. A 275-function degree-six candidate at dilation 7/5 gave q₁ about 1.727. A 527-function degree-eight candidate at that dilation gave about 0.229. Lower degree and fewer terms are different search criteria, so the 104-term witness retains degree-eight covariants. Global minimality remains open. The final 104-term witness was rechecked after rational rounding.
 
+A fresh run of the committed `verify.py` and `trial-104.json` on the pinned companion state used two workers and the default empty temporary cache. It reproduced `check-104.json` byte for byte, including the interval for q₁ and the comparison with 3/8.
+
 The coarse existence margin has a rational proof. Since \(14<(15/4)^2\), the paper's constant satisfies \(\kappa<66/25\). Therefore \(q_1<3/8\) gives \(1-\kappa q_1>1/100\) using rational arithmetic alone. The sharper interval reported for the 104-term witness gives the 3.9% figure in the table. The smaller rational target is sufficient for the first proof.
 
 The selected rows use 56 instances from S, 24 from Phi, and 24 from H3. In the pinned state, S is one constant tensor with 750 listed entries. Phi is `P_hat*Y(X)*S` and H3 is `((30*I-Ksp)/22)*Pi_3(C2)*Y(X)^3*S`. Both depend on S. This makes the native singlet proof for S and covariance of the generating operators higher-leverage checks than expanding the 104 rows separately. [Pinned state](https://github.com/asmichel/SU2-BFSS/blob/96b19b1fef98486e43bc2527604966c86afd7ca7/variational/results/optimized_state.json)
