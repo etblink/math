@@ -53,6 +53,31 @@ noncomputable local instance planeRationalNormedAlgebra
     NormedAlgebra ℚ (V →L[ℂ] V) :=
   .restrictScalars ℚ ℂ _
 
+-- Keep the target operators abstract while reconciling the real time
+-- action with complex scalar multiplication.
+private theorem scaled_conjugate_generator
+    (theta : SpinIndex → ColorIndex 2 → E →L[ℂ] E)
+    (phi : SpinIndex → ColorIndex 2 → Fermion 2 →L[ℂ] Fermion 2)
+    (J : E ≃ₗᵢ[ℂ] Fermion 2)
+    (hB : J.toContinuousLinearEquiv.conjContinuousAlgEquiv (planeBilinear theta) =
+      planeBilinear phi)
+    (G : Fermion 2 →L[ℂ] Fermion 2)
+    (hG : G = (Real.sqrt 2 : ℂ) •
+      (∑ α : SpinIndex, phi α (0 : Fin 3) * phi α (1 : Fin 3)))
+    (t : ℝ) :
+    J.toContinuousLinearEquiv.conjContinuousAlgEquiv
+      (((Real.sqrt 2 * t : ℝ) : ℂ) • planeBilinear theta) = t • G := by
+  have htime : t • G = (t : ℂ) • G := by
+    apply ContinuousLinearMap.ext
+    intro w
+    change t • G w = (t : ℂ) • G w
+    exact RCLike.real_smul_eq_coe_smul (K := ℂ) t (G w)
+  rw [htime, hG, smul_smul, map_smul]
+  change ((Real.sqrt 2 * t : ℝ) : ℂ) •
+    J.toContinuousLinearEquiv.conjContinuousAlgEquiv (planeBilinear theta) =
+      ((t : ℂ) * (Real.sqrt 2 : ℂ)) • planeBilinear phi
+  rw [hB, Complex.ofReal_mul, mul_comm (Real.sqrt 2 : ℂ)]
+
 /-- The MSY (0,1) plane exponential at angle `√2 * t` intertwines
 the actual original fermionic gauge action, under the qualified Majorana
 intertwining hypothesis. -/
@@ -67,18 +92,11 @@ theorem finite_plane01_intertwines [CompleteSpace E]
   let e := J.toContinuousLinearEquiv
   let C := e.conjContinuousAlgEquiv
   have hC : Continuous C := (e.arrowCongr e).continuous
-  have htime (D : Fermion 2 →L[ℂ] Fermion 2) : t • D = (t : ℂ) • D := by
-    apply ContinuousLinearMap.ext
-    intro w
-    change t • D w = (t : ℂ) • D w
-    exact RCLike.real_smul_eq_coe_smul (K := ℂ) t (D w)
   have hm : C (((Real.sqrt 2 * t : ℝ) : ℂ) • planeBilinear theta) =
-      t • sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3) := by
-    rw [native_fermion_generator_plane01, htime, smul_smul, map_smul]
-    change ((Real.sqrt 2 * t : ℝ) : ℂ) •
-      J.toContinuousLinearEquiv.conjContinuousAlgEquiv (planeBilinear theta) =
-        ((t : ℂ) * (Real.sqrt 2 : ℂ)) • planeBilinear pairedTheta
-    rw [planeBilinear_conj theta J hJ, Complex.ofReal_mul, mul_comm (Real.sqrt 2 : ℂ)]
+      t • sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3) :=
+    scaled_conjugate_generator theta pairedTheta J (planeBilinear_conj theta J hJ)
+      (sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3))
+      native_fermion_generator_plane01 t
   have he := NormedSpace.map_exp C hC (((Real.sqrt 2 * t : ℝ) : ℂ) • planeBilinear theta)
   rw [hm] at he
   have hp := congrArg (fun A : Fermion 2 →L[ℂ] Fermion 2 => A (J v)) he
