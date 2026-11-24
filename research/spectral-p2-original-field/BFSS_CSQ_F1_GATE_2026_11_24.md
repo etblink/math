@@ -7,3 +7,17 @@ Source 4a4cfc25acee2fc546130dadbcba857dab6d4a37; consumer 81d7734a870cba04938216
 The independently verified [original R1 ZIP](../integration/evidence/csq-f1-r1-original-red.zip) has 14,439 bytes and six CRC-checked members. Its SHA-256 `80af4d1958aeb8939b12c70c1924a903bbefa3655abb565200ef689ecec4bcaf` matches [provider artifact #14904016420](https://github.com/etblink/math/actions/runs/45358089401/artifacts/14904016420). Tested SHA, source and consumer and workflow blobs, environment hashes and first diagnostic match.
 
 R2 proves the evaluation assembly over a complex module. The original source proof applies its coordinate projection as a complex linear map, checks the finite calculation at each original Fock coordinate, then uses extensionality to recover the vector equality. This uses the accepted Fierz difference and existing ordered response and current evaluations. Local Lean compilation on the pinned original core passed with those imported identities supplied as hypotheses. The conditional declaration reported only standard Lean axioms. The public statement, original donor files and independent consumer retain their tested bytes or statements. The workflow pins the repaired source blob `0c01875de6c1d9b11688078d9e0ceefdb9a353a7` and checks the concrete paired consumer.
+
+## R2 strict qualification — November 24, 2026
+
+[Run #45362370426](https://github.com/etblink/math/actions/runs/45362370426) tested `8ddf2c54ace29140e4bec86ced4ab2370e8e1005` in job `138335366465`. The frozen-source preflight, Lean 4.34.1 and pinned Mathlib checks, 9,019-job native build, and standalone paired-Fock consumer all passed. Each of the three source declarations and two consumer declarations reports only `propext`, `Classical.choice`, and `Quot.sound`. The job emitted `BFSS_CSQ_F1_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN`.
+
+For equal-norm real spinors, with original gamma and normalized Pauli color data, the difference of the original ordered fermionic responses on the smooth core equals the bounded fermionic color current weighted by the corresponding color-coefficient differences. Independent consumers bind both identities to the original paired Fock realization. The orbital response and its assembly with the fermionic term into the original Gauss residual remain open.
+
+The [original R2 ZIP](../integration/evidence/csq-f1-r2-original-green.zip) has 14,140 bytes. The SHA-256 `8b42278fb2edad06eb0ba657415da17ff877eed19ba0f5df73ebfb7522580c8d` matches [provider artifact #14906036121](https://github.com/etblink/math/actions/runs/45362370426/artifacts/14906036121), and all seven archive members passed CRC verification. The archived tested SHA, three Git blobs, and two toolchain and manifest hashes agree with the repository at the tested commit.
+
+| Tested file | Git blob |
+| --- | --- |
+| Native source | `0c01875de6c1d9b11688078d9e0ceefdb9a353a7` |
+| Independent consumer | `81d7734a870cba04938216316f84a81296b734f4` |
+| Strict workflow | `3a4b0d6208fe399456d65de0b323a9a0d3c574c0` |
