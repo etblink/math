@@ -1,0 +1,78 @@
+name: BFSS direct pure integer R6 fixture
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'research/computational/python-first-20261124/bfss-physical-implication/replay_pure_integer_fixture.py'
+      - '.github/workflows/bfss-direct-pure-integer-r6.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  pure-integer-fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Frozen inputs and standard library runtime
+        id: preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          E="$RUNNER_TEMP/bfss-pure-integer-r6"
+          mkdir -p "$E"
+          git rev-parse HEAD | tee "$E/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 -I -S - <<'PY' | tee "$E/preflight.log"
+          import subprocess,sys
+          pins={
+            "research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz":"91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0",
+            "research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py":"7cc5e660fb40b2d96c5462a930f7ac266a362fe0",
+            "research/computational/python-first-20261124/bfss-seed-transport/check_seed.py":"48733caa73cceafd030fe6c5ebc405924603670a",
+            "research/computational/python-first-20261124/bfss-mixed104/jet_001.json":"89a8c71ccf96f20ed9f6c378341d826135b47afd",
+            "research/computational/python-first-20261124/bfss-h3-tensor/rank1_vector.npz":"fd48a584ad72683ab1aa4b974a8e3dfcc9fa15c7",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean":"818ff344566c2f2552a30591d92fb7f718efe866",
+          }
+          for path,sha in pins.items():
+            got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+            assert got==sha,(path,got,sha)
+            print(path,got)
+          print(sys.version)
+          print("BFSS_DIRECT_PURE_INTEGER_FROZEN_PASS")
+          PY
+          git ls-tree HEAD -- 'research/computational/python-first-20261124/bfss-physical-implication/replay_pure_integer_fixture.py' '.github/workflows/bfss-direct-pure-integer-r6.yml' | tee "$E/tested-blobs.txt"
+      - name: Independent antiunitary seed diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          E="$RUNNER_TEMP/bfss-pure-integer-r6"
+          python3 -I -S -u 'research/computational/python-first-20261124/bfss-physical-implication/audit_antiunitary_reality.py' --output "$E/antiunitary.json" 2>&1 | tee "$E/antiunitary.log"
+      - name: Replay full rank-one fixture without NumPy
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          E="$RUNNER_TEMP/bfss-pure-integer-r6"
+          python3 -I -S -u 'research/computational/python-first-20261124/bfss-physical-implication/replay_pure_integer_fixture.py' 001 --output "$E/results.json" 2>&1 | tee "$E/replay.log"
+          grep -Fx BFSS_DIRECT_FIXTURE_EXACT_PASS "$E/replay.log"
+          python3 -I -S - "$E/results.json" <<'PY'
+          import json,sys
+          r=json.load(open(sys.argv[1]))
+          assert r["comparisons"]=={"tau":152,"beta":152,"nu":456,"t":456,"v":152}
+          assert not r["errors"] and not r["imaginary_count"] and r["Euler_exact"] and r["H3_anchor_ok"]
+          print("BFSS_DIRECT_PURE_INTEGER_R6_SCOPE_PASS")
+          PY
+      - name: Preserve original evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-direct-pure-integer-r6-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-pure-integer-r6/
+          retention-days: 30
+          if-no-files-found: warn
