@@ -1,0 +1,215 @@
+name: BFSS MSY Python sparse spin contraction strict
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonSpinContraction.lean'
+      - 'lean/diagnostics/BFSSMSYPythonSpinContractionIndependentAudit.lean'
+      - '.github/workflows/bfss-msy-python-spin-contraction-strict.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-msy-python-spin-contraction-${{ github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-msy-python-spin-contraction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen original source and independent consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-msy-python-spin-contraction"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-msy-python-spin-contraction/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git ls-tree HEAD -- \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonSpinContraction.lean \
+            lean/diagnostics/BFSSMSYPythonSpinContractionIndependentAudit.lean \
+            .github/workflows/bfss-msy-python-spin-contraction-strict.yml \
+            > "$RUNNER_TEMP/bfss-msy-python-spin-contraction/tested-blobs.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-msy-python-spin-contraction/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-msy-python-spin-contraction/preflight.log"
+          from pathlib import Path
+          import subprocess,re,json
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean": "818ff344566c2f2552a30591d92fb7f718efe866",
+            "lean/diagnostics/BFSSMSYPythonGammaRowsIndependentAudit.lean": "5b56019d868a65164ab965e1fe25c55b258736b0",
+            ".github/workflows/bfss-msy-python-gamma-rows-strict.yml": "109e169729cfbe1944f3954f29e9e37b774c2363",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedSpin.lean": "4dacb9dda7a08018c81bb98bf61c69ed5112debe",
+            "lean/diagnostics/BFSSMSYPackedSpinIndependentAudit.lean": "99ad60fc763baee629bae62e7578934248647177",
+            ".github/workflows/bfss-msy-packed-spin-strict.yml": "2bf9b1149be6efc08262c50fd81f851144c5e0ce",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedColor.lean": "65e3501030c00a83ebcde684d7b0bc20245175a1",
+            "lean/diagnostics/BFSSMSYPackedColorIndependentAudit.lean": "5d146eed8fe25a546010c0fbfe5617dd9c237d70",
+            ".github/workflows/bfss-msy-packed-color-strict.yml": "bc1989646521358d2d8646c81530c189eb9596fb",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean": "d7d460fc8d2806234816e8bd2088f9cebb6addd4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48NormalizedFockGammaProbe.lean": "7abc03723b3111e4a03389b722054e50d6a9bf30",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSSource48FockIndexBridgeProbe.lean": "6d732c1acea271b7aba948c95755ac73d2d0fc0a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2PairedThetaLabelCrosswalkProbe.lean": "f3a2b41f902a20f6fe237ecce18dd7e869e9c45e",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9PlaneGeneratorProbe.lean": "02b8e54464b0aea151c96cefd316a86270cf8871",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9ZeroDiagonalInterfaceProbe.lean": "8aa93c41a83164e3a99eca139de477d82842d589",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9NormalizedPlaneInterfaceProbe.lean": "a217471af24ba8c086746d8ade85d1337a1b66d6",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2RealGammaProbe.lean": "b9b8192055c70f0d001d7982669b9823c55562ed",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSFullAlgebraDataProbe.lean": "de8242615e4b2959e2dfa57cf0c6fdf43896acb7",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedBilinear.lean": "4f4f88ab0456c733c333f4cb7af4ec60467699cf",
+            "lean/diagnostics/BFSSMSYPackedBilinearIndependentAudit.lean": "1f26be01e042ed59f8e07ecc6edd5e50623134fd",
+            ".github/workflows/bfss-msy-packed-bilinear-strict.yml": "b7f0fc74ba7fba8d70629e45dd96337f6571f8d4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYFermionGeneratorPlane01.lean": "87ea1b8a269d20b93c81af2ded8c6eddf4d3aac9",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYTypedColorTable.lean": "7079075f4725f4cf4e5245029a78ccf8794a5a27",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1BOriginalSignedCross.lean": "b42291fe0aa5f8b22a31bad19b9de5c775372a71",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2ColorCrossProbe.lean": "209b3808222730ca5e817d83ed32253a67513f7f",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6G6KOriginalBoundedFermionColorCurrentProbe.lean": "b71adefca6898253e8c7b6c9ad72b70296f2e958",
+            "research/computational/python-first-20261124/bfss-seed-transport/check_seed.py": "48733caa73cceafd030fe6c5ebc405924603670a",
+            "research/computational/python-first-20261124/bfss-seed-transport/generator_checks.json": "fee283573601e03df6f3c76afab7825032461a9c",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedCarrier.lean": "2ccb0fbb6db99dd5884911aac3c7352f6fed82b4",
+            "lean/diagnostics/BFSSMSYPackedCarrierIndependentAudit.lean": "3f6a8466236742e6c4ab50fdfe1ed192d7a210b4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedMask.lean": "edb3e4a044f0f10438de795148117cbe9fa0041f",
+            "lean/diagnostics/BFSSMSYPackedMaskIndependentAudit.lean": "85680c676f4fcda87617574cdae11303ffe3e7cf",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNormalizedToggle.lean": "15beb377bda1ac7ae0ed45f3f9f8bcd815e5f9b1",
+            "lean/diagnostics/BFSSMSYNormalizedToggleIndependentAudit.lean": "e6171f7256a09961a0d56ae90130a7b4a6ab5f2b",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYCoefficientCarrier.lean": "873b63f705402ecd082a0e8437830d2c61bae77e",
+            "lean/diagnostics/BFSSMSYCoefficientCarrierIndependentAudit.lean": "9f99584bce62ed4338e4d382d47ac2853ba51d98",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYSingletonParitySource.lean": "a9b17f0294e948fe459aa77e8f5dd9bb6c51a8d4",
+            "lean/diagnostics/BFSSMSYSingletonParitySourceIndependentAudit.lean": "532923733e0edce7a7f1f0b0a59f0e201f4151a4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3B5CoordinateProbe.lean": "42508b674326028bb0d197f2cda59f4066f5bdcb",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYSingletonParityCore.lean": "4452173ed142f9a6f57777720214be8ffadeb1eb",
+            "lean/diagnostics/BFSSMSYSingletonParityCoreIndependentAudit.lean": "a544db904dc42b44a08663647badeeb654dae821",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNativeOccupationTransition.lean": "15c6b5016e75756d64e8b799499c0f9a562c9ad4",
+            "lean/diagnostics/BFSSMSYNativeOccupationTransitionIndependentAudit.lean": "64d434759d5f407d01ea3ed89061b8d41b113bd4",
+            "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean": "152204ef15a6569534e0503824a697cb9ae8e4ce",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3B7SignedModeProbe.lean": "a6abe958c08ccd1e2850843950f65bf15c357c78",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3B2BasisActionProbe.lean": "bbcea77bd4aece7b429dd8d70fe6dcd20d2c8e0e",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean": "dbe9241436c7d3633547e559bccd5fe1fd82de9a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean": "93d7ae00d4ee21ce59ab137c349590e2c496ff38",
+            "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/FockNorm.lean": "17e71994583e7096c26a1af2fe97671f94336d84",
+          }
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
+          subprocess.check_call(["git","merge-base","--is-ancestor","98d561de2d98af6898ca651fff498a9172a9f689","HEAD"])
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonSpinContraction.lean").read_text()
+          t=Path("lean/diagnostics/BFSSMSYPythonSpinContractionIndependentAudit.lean").read_text()
+          # Independently recover literal masks from frozen Python word strings.
+          script=Path("research/computational/python-first-20261124/bfss-seed-transport/check_seed.py").read_text()
+          words=re.findall(r"'([IXZJ]{4})'", script)
+          assert len(words)==9
+          def masks(chars):
+              return [sum(1 << (3-k) for k,c in enumerate(word) if c in chars) for word in words]
+          for name,chars in [("pythonFlipMask","JX"),("pythonSignMask","JZ")]:
+              m=re.search(r"def "+name+r" : Fin 9 → ℕ :=\s*!\[([^\]]+)\]",Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean").read_text())
+              assert m,(name,"missing literal mask table")
+              got=[int(v.strip()) for v in m.group(1).split(",")]
+              assert got==masks(chars),(name,got,masks(chars))
+          print("PYTHON_GAMMA_WORD_MASKS_MATCH")
+          source_roots = [
+            "sourceRowWeight",
+            "sourceRowOff",
+            "packedSpin_eq_python",
+            "pythonSpin_zero_iff",
+          ]
+          consumer_roots = [
+            "literalSpinContraction_zero",
+            "literalSpinContraction_scale",
+          ]
+          assert re.findall(r"(?m)^import (\S+)$", s) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYPythonGammaRows",
+          ]
+          assert re.findall(r"(?m)^import (\S+)$", t) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYPythonSpinContraction",
+          ]
+          assert re.findall(r"(?m)^#print axioms (\S+)$", s) == source_roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$", t) == consumer_roots
+          for content in [s,t]:
+              assert "set_option autoImplicit false" in content
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe|native_decide)\b",content)
+              for forbidden in ["set_option maxRecDepth","set_option maxHeartbeats",
+                                "set_option synthInstance.maxHeartbeats"]:
+                  assert forbidden not in content
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_MSY_PYTHON_SPIN_CONTRACTION_SOURCE_EXACT_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-msy-python-spin-contraction/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Literal sparse Python spin contraction and original source controls
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-msy-python-spin-contraction"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYPythonSpinContraction 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSMSYPythonSpinContractionIndependentAudit.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import re,os
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-msy-python-spin-contraction"
+          for fn in ["native-source.log","strict-axioms.log"]:
+              log=(E/fn).read_text()
+              for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert bad not in log,(fn,bad,log[-6000:])
+          expected = {
+              "native-source.log": [
+                  "FCP.BFSSMSYPythonSpinContraction.sourceRowWeight",
+                  "FCP.BFSSMSYPythonSpinContraction.sourceRowOff",
+                  "FCP.BFSSMSYPythonSpinContraction.packedSpin_eq_python",
+                  "FCP.BFSSMSYPythonSpinContraction.pythonSpin_zero_iff",
+              ],
+              "strict-axioms.log": [
+                  "FCP.BFSSMSYPythonSpinContractionIndependent.literalSpinContraction_zero",
+                  "FCP.BFSSMSYPythonSpinContractionIndependent.literalSpinContraction_scale",
+              ],
+          }
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for filename, names in expected.items():
+              transcript = (E / filename).read_text()
+              if filename == "native-source.log":
+                  assert "Build completed successfully" in transcript
+              for name in names:
+                  pattern = re.escape("'" + name + "'") + (
+                      r" (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)"
+                  )
+                  reports = re.findall(pattern, transcript)
+                  assert len(reports) == 1, (filename, name, reports)
+                  axioms = {x.strip() for x in reports[0].split(",") if x.strip()}
+                  assert axioms <= allowed, (filename, name, axioms)
+          print("BFSS_MSY_PYTHON_SPIN_CONTRACTION_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN")
+          PY
+
+      - name: Preserve first-causal original source and consumer evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-msy-python-spin-contraction-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-msy-python-spin-contraction/
+          if-no-files-found: warn
+          retention-days: 30
