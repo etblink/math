@@ -9347,6 +9347,67 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PYTHON-GAMMA-ROWS-R2-GREEN-20261125",
+      "title": "Python gamma rows R2 qualified receipt",
+      "registered_at": "2026-11-25",
+      "status": "LEAN_QUALIFIED",
+      "classification": "EXACT_SOURCE_GAMMA_ROW_AND_ORDERED_PAIR_COEFFICIENT_BRIDGE",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "98d561de2d98af6898ca651fff498a9172a9f689",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_GAMMA_ROWS_R2_GREEN_SPARSE_SPIN_R1_2026_11_25.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45673518492,
+        "job_id": 139414823761,
+        "artifact_id": 15051617727,
+        "artifact_size_bytes": 19126,
+        "artifact_sha256": "b5f693f857264824aa84c9672806dbe6ba0786ec2cd54a112b5593bd7298ac02",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 9098,
+        "source_roots": 4,
+        "consumer_roots": 3,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_GAMMA_ROWS_R2_original_job_139414823761.log"
+      }
+    },
+    {
+      "id": "E-MSY-PYTHON-SPIN-CONTRACTION-R1-20261125",
+      "title": "Literal Python 48 signed row terms to original spin contraction R1",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "SPARSE_SPIN_CONTRACTION_TRANSPORT_NOT_ACTUAL_SEED_OR_DOMAIN_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "98d561de2d98af6898ca651fff498a9172a9f689",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_GAMMA_ROWS_R2_GREEN_SPARSE_SPIN_R1_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonSpinContraction.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPythonSpinContractionIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-python-spin-contraction-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "For each distinct spatial pair the full packed bivector contraction equals one eighth of the literal unscaled 48-row Python sum, reindexed by exact paired label equivalence. Thus its zero test is equivalent to the original source K action on arbitrary packed vectors.",
+        "controls": [
+          "Qualified gamma row and pair entry formulas",
+          "Exact row target and off-target coefficient conditions",
+          "Generic finite sum support collapse before specializing large packed carrier",
+          "Independent consumer on literal color-spin term enumeration and original K annihilation"
+        ],
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing strict sentinel"
+        ],
+        "analysis_plan": "Use named original source row labels, separate coefficient conversion from generic sum reduction, exact reindexing by pairedLabelEquiv, and qualified packed spin transport. Preserve all qualified ancestors, resource limits and raw seed artifacts. Stop after two native REDs."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
