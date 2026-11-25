@@ -102,9 +102,9 @@ theorem pairedTheta_even_occupationKet
   rw [pairedTheta_even, majorana0]
   simp only [_root_.smul_apply, _root_.add_apply]
   by_cases hi : colorModeEquiv (j, C) ∈ A
-  · rw [if_pos hi, creator_occupationKet, creationCoefficient_occupied _ _ hi,
+  · rw [ite_eq_left hi, creator_occupationKet, creationCoefficient_occupied _ _ hi,
       zero_smul, zero_add, annihilator_occupationKet_of_mem _ _ hi]
-  · rw [if_neg hi, annihilator_occupationKet_of_not_mem _ _ hi,
+  · rw [ite_eq_right hi, annihilator_occupationKet_of_not_mem _ _ hi,
       add_zero, creator_occupationKet]
 
 /-- Source odd Majorana has opposite phases on occupied and vacant
@@ -124,9 +124,9 @@ theorem pairedTheta_odd_occupationKet
   rw [pairedTheta_odd, majorana1_phase]
   simp only [_root_.smul_apply, _root_.sub_apply]
   by_cases hi : colorModeEquiv (j, C) ∈ A
-  · rw [if_pos hi, creator_occupationKet, creationCoefficient_occupied _ _ hi,
+  · rw [ite_eq_left hi, creator_occupationKet, creationCoefficient_occupied _ _ hi,
       zero_smul, zero_sub, annihilator_occupationKet_of_mem _ _ hi]
-  · rw [if_neg hi, annihilator_occupationKet_of_not_mem _ _ hi,
+  · rw [ite_eq_right hi, annihilator_occupationKet_of_not_mem _ _ hi,
       sub_zero, creator_occupationKet]
 
 #print axioms modeIndex_val

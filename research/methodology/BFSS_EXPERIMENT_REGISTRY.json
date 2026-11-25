@@ -7968,6 +7968,64 @@
         },
         "lean_qualification": false
       }
+    },
+    {
+      "id": "E-MSY-NATIVE-OCCUPATION-TRANSITION-R1-RED-20261124",
+      "title": "Native occupation transition R1 strict RED receipt",
+      "registered_at": "2026-11-24",
+      "status": "RED_UNQUALIFIED",
+      "classification": "LEAN_NATIVE_COMPATIBILITY_FAILURE_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prior_exploration_retroactively_registered": true,
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/R1_RED_R2_COMPATIBILITY_2026_11_24.md",
+      "source_baseline": "1cf50d67a516c0162256aa7211fa75c5864d47ce",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45545067025,
+        "job_id": 138972587852,
+        "artifact_id": 14991493225,
+        "artifact_size_bytes": 8351,
+        "artifact_sha256": "0a0fabc7f9be6b853670f22e65e4519288fe33f06e840094145117f568586b90",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Four deprecated if_pos / if_neg uses in native candidate",
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/R1_original_job_138972587852.log"
+      }
+    },
+    {
+      "id": "E-MSY-NATIVE-OCCUPATION-TRANSITION-R2-20261124",
+      "title": "Native paired Majorana signed occupation transitions R2 bounded repair",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "LEAN_CANDIDATE_SOURCE_EXACT_NOT_QUALIFIED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/R1_RED_R2_COMPATIBILITY_2026_11_24.md",
+      "source_baseline": "1cf50d67a516c0162256aa7211fa75c5864d47ce",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNativeOccupationTransition.lean",
+        "consumer": "lean/diagnostics/BFSSMSYNativeOccupationTransitionIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-native-occupation-transition-strict.yml"
+      },
+      "stages": {
+        "observation": "R1 native build reports only deprecated if_pos / if_neg, consumer not reached.",
+        "hypothesis": "Compiler-recommended conditional rewrite lemmas preserve exact theorem statements and strict checks.",
+        "falsifiers": [
+          "Frozen source drift",
+          "Native or independent consumer failure",
+          "Unexpected axiom",
+          "Missing success marker"
+        ],
+        "analysis_plan": "Audit exact tested commit, native build, independent consumer, allowed axiom roots and original artifact. Preserve RED; no physical inference."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "native_substitutions": 4,
+        "consumer_substitutions": 6,
+        "lean_qualification": false
+      }
     }
   ],
   "allowed_statuses": [

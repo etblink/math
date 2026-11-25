@@ -30,10 +30,10 @@ theorem originalOddPhaseAudit
   simp only [pairedAlgebraData_theta, pairedTheta_odd_occupationKet,
     pairedTheta_even_occupationKet]
   by_cases hi : colorModeEquiv (j, C) ∈ A
-  · rw [if_pos hi, if_pos hi, if_pos hi]
+  · rw [ite_eq_left hi, ite_eq_left hi, ite_eq_left hi]
     simp only [smul_neg, smul_smul]
     rw [mul_left_comm ((Real.sqrt 2 / 2 : ℝ) : ℂ) Complex.I]
-  · rw [if_neg hi, if_neg hi, if_neg hi]
+  · rw [ite_eq_right hi, ite_eq_right hi, ite_eq_right hi]
     simp only [smul_smul]
     rw [mul_left_comm ((Real.sqrt 2 / 2 : ℝ) : ℂ) Complex.I]
 
