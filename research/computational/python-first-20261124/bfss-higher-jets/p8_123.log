@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/mnt/data/bfss-higher-jets-20261124/higher_jets.py", line 59, in <module>
+    for d in sys.argv[4:]:run(tuple(map(int,d.split(','))),int(sys.argv[3]))
+                          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/bfss-higher-jets-20261124/higher_jets.py", line 51, in run
+    B=B2(x,b,k);BV=[apply(B,v) for v in V];beta-=mult*gram(BV,ds)
+                                                      ~~~~^^^^^^^
+  File "/mnt/data/bfss-higher-jets-20261124/higher_jets.py", line 35, in gram
+    r,i=dot(V[p],W[q]);assert i==0,(p,q,r,i);out[p,q]=r
+        ~~~^^^^^^^^^^^
+  File "/mnt/data/bfss-higher-jets-20261124/higher_jets.py", line 26, in dot
+    bound=2*mx(v)*mx(w)*min(len(v[0]),len(w[0]));bounds[1]=max(bounds[1],bound);assert bound<2**126,('dot bound',bound)
+                                                                                       ^^^^^^^^^^^^
+AssertionError: ('dot bound', 107878094063080323844714897569862385664)

@@ -7196,6 +7196,100 @@
         "rank3_direct_status": "INCONCLUSIVE_TIMEOUT",
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-HIGHER-JETS44-20261124",
+      "title": "Higher ordered Yukawa jets, nonzero weighted t contraction and exact 44-row finite bracket",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_RATIONAL_INTEGRATION_CONDITIONAL_ON_FINITE_INVARIANT_KERNELS_NOT_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-higher-jets/README.md",
+      "source_baseline": "e6b5a444cfaa338a2e1b7d23f2f66826e9709cf1",
+      "source_artifact": {
+        "kernel": "research/computational/python-first-20261124/bfss-higher-jets/exact_kernels.cpp",
+        "kernel_blob": "4991d27eddcaacdd502cc21842d328160a050310",
+        "jet_script": "research/computational/python-first-20261124/bfss-higher-jets/higher_jets.py",
+        "jet_script_blob": "e01dcdcbe0b87ef4f1465a55041c4d90afcae6bb",
+        "reconstruction": "research/computational/python-first-20261124/bfss-higher-jets/reconstruct4.py",
+        "integration": "research/computational/python-first-20261124/bfss-higher-jets/integrate44.py",
+        "matrices": "research/computational/python-first-20261124/bfss-higher-jets/matrices.json.gz",
+        "matrices_blob": "4b7412c8b76151f458415e0906e0fde80332773b",
+        "bracket": "research/computational/python-first-20261124/bfss-higher-jets/eigen_bracket.json",
+        "negative_control": "research/computational/python-first-20261124/bfss-higher-jets/omit_t_control.json",
+        "p8_control": "research/computational/python-first-20261124/bfss-higher-jets/p8_control.json",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7"
+      },
+      "stages": {
+        "observation": "Prior 32-row system verified ordered jets through p2, but higher powers require larger integer arithmetic and weighted t may be nonzero.",
+        "question": "Can bounded integer propagation and ordered derivative contractions extend exact matrix integration through p4, and can an eighth-power fixture reproduce the nested lower-power data?",
+        "background": [
+          "Archived 56-row mass blocks",
+          "Ordered jets through p2",
+          "MSY contract.py and blocks.py",
+          "Exact singlet transport and finite equivariance"
+        ],
+        "hypothesis": "All completed lower-power contractions reproduce exactly, reconstructed p4 kernels pass held-out fixtures, complete 44-row one-sided weighted form is Hermitian and positive, and bounded higher-power arithmetic preserves the nested fixture. Test t rather than assume zero.",
+        "falsifiers": [
+          "Nonzero exact discrepancy with prior raw kernels or integrated matrices",
+          "Nonzero held-out polynomial discrepancy",
+          "Reverse-order weighted form mismatch",
+          "Nonpositive rational LDL pivot of the completed charge matrix",
+          "Incorrect overflow handling"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Yukawa powers",
+            "eight diagonal configurations",
+            "full versus omitted t",
+            "bounded chunked arithmetic"
+          ],
+          "dependent_variables": [
+            "five contraction families",
+            "exact holdout residuals",
+            "orientation integration",
+            "Hermiticity",
+            "positive LDL pivots",
+            "rational Rayleigh quotient"
+          ],
+          "controls": [
+            "archived p2 raw and p4 nested fixture",
+            "Euler and transverse rotation",
+            "independent numerical orientation quadrature",
+            "deliberately omitted t"
+          ],
+          "reproduce_command": "See research/computational/python-first-20261124/bfss-higher-jets/README.md for build, finite fixture, reconstruction, rational integration and controls."
+        },
+        "analysis_plan": "Keep stopped p8 attempts and their arithmetic bounds. Use rational eigenvalue bracket and explicit negative direction for damaged expression. Restrict inference to tested finite representation and invariant reconstruction.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for 44 complete rows and one p8 fixture only. Full p8 interpolation, 56-row differential integration and physical source correspondence remain OPEN.",
+        "communication": "40 exact-byte research files including both bound-failure logs and source variants, complete rational matrices, lower pivots and negative-control vector; no architecture-specific compiled binary."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "integrated_rows": 44,
+        "exact_polynomial_fits": 63,
+        "holdout_scalar_values": 115,
+        "prior32_entrywise_exact": true,
+        "reverse_order_exact": 990,
+        "weighted_positive_pivots": 44,
+        "lower_bound": "629799/50000",
+        "upper_bound": "1259599/100000",
+        "rational_rayleigh_decimal": 12.595988555656618,
+        "omit_t_nonhermitian_pairs": 192,
+        "omit_t_negative_rational_rayleigh_decimal": -112.23378061127954,
+        "correct_same_direction_rayleigh_decimal": 311.07656438336926,
+        "p8_fixture": [
+          1,
+          1,
+          2
+        ],
+        "p8_nested_p4_exact": true,
+        "p8_123_status": "INCONCLUSIVE_ARITHMETIC_BOUND",
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [

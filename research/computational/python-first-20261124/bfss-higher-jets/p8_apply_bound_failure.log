@@ -1,0 +1,23 @@
+(1, 2, 3) jet 0 0 9.74
+(1, 2, 3) jet 0 1 17.01
+(1, 2, 3) jet 0 2 23.66
+(1, 2, 3) jet 0 3 31.04
+(1, 2, 3) jet 1 0 37.63
+(1, 2, 3) jet 1 1 44.55
+(1, 2, 3) jet 1 2 51.2
+(1, 2, 3) jet 1 3 57.98
+(1, 2, 3) jet 2 0 64.85
+(1, 2, 3) jet 2 1 71.94
+(1, 2, 3) jet 2 2 78.86
+(1, 2, 3) jet 2 3 86.43
+Traceback (most recent call last):
+  File "/mnt/data/bfss-higher-jets-20261124/higher_jets.py", line 66, in <module>
+    for d in sys.argv[4:]:run(tuple(map(int,d.split(','))),int(sys.argv[3]))
+                          ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/bfss-higher-jets-20261124/higher_jets.py", line 64, in run
+    cv=gram(V,[apply(CV(x),v) for v in V]);res={'diag':diag,'power':P,'N':N,'tau_raw':tau.tolist(),'nu_raw':nu,'B2_beta_raw':beta.tolist(),'B2_t_raw':tt,'sqrt2_i_cV_raw':cv.tolist(),'transverse_checks':checks,'transverse_multiplicity':6,'euler_exact':True,'apply_bound':str(bounds[0]),'dot_bound':str(bounds[1]),'seconds':time.monotonic()-t};(D/('jet_'+''.join(map(str,diag))+'_p'+str(P)+'.json')).write_text(json.dumps(res,indent=2)+'\n');print(diag,'complete',res['seconds'],flush=True)
+               ~~~~~^^^^^^^^^
+  File "/mnt/data/bfss-higher-jets-20261124/higher_jets.py", line 16, in apply
+    bound=mx(v)*sum(int(abs(w.real)+abs(w.imag)) for _,_,w in op);bounds[0]=max(bounds[0],bound);assert bound<2**62,('apply bound',bound)
+                                                                                                        ^^^^^^^^^^^
+AssertionError: ('apply bound', 4763002143403671552)
