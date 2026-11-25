@@ -84,10 +84,14 @@ def apply(T,V):
         R[idx]+=c*rr;I[idx]+=c*ii
     nz=np.flatnonzero((R!=0)|(I!=0))
     return {int(targets[k]):(int(R[k]),int(I[k])) for k in nz}
-def dot(A,B):
+def dot_complex(A,B):
     r=i=0
     for m,(a,b) in A.items():
         c,d=B.get(m,(0,0));r+=a*c+b*d;i+=a*d-b*c
+    return r,i
+
+def dot(A,B):
+    r,i=dot_complex(A,B)
     assert i==0,('imaginary contraction',i)
     return r
 def tensor(x,e=None):
@@ -128,7 +132,25 @@ def run(diag,out):
     for _ in range(5):V.extend([apply(z,V[-2]),apply(z,V[-1])])
     assert len(V)==21
     active=[(p,q) for p,q in it.product(range(21),repeat=2) if max(p,q)>=17]
-    def gram(A,B):return {(p,q):dot(A[p],B[q]) for p,q in active}
+    # Diagnostic, not an acceptance relaxation: retain both components.
+    imaginary=[];real_errors=[];hermitian_errors=[];completed=[]
+    anchor=dot(V[10],V[10])
+    expected_anchor=36*265261122846720 if diag==(0,0,1) else None
+    anchor_ok=expected_anchor is None or anchor==expected_anchor
+    checkpoint=out.with_name(out.stem+'-checkpoint.json')
+    def save_checkpoint():
+        checkpoint.write_text(json.dumps({'diag':diag,'completed_coordinates':completed,'imaginary':imaginary,'hermitian_errors':hermitian_errors,'H3_scaled_norm2':str(anchor),'H3_expected_scaled_norm2':str(expected_anchor),'H3_anchor_ok':anchor_ok,'accumulation':STATS},indent=2)+'\n')
+    save_checkpoint()
+    def gram(A,B,family,coord):
+        result={pq:dot_complex(A[pq[0]],B[pq[1]]) for pq in active}
+        if family=='tau':
+            for (p,q),(r,i) in result.items():
+                if result[q,p]!=(r,-i):hermitian_errors.append([coord,p,q])
+        for (p,q),(r,i) in result.items():
+            if i:
+                if not imaginary:print('first imaginary component',family,coord,p,q,r,i,flush=True)
+                imaginary.append([family,coord,p,q,str(r),str(i)])
+        return {pq:r for pq,(r,i) in result.items()}
     def B2(b,k):return ops(*[(int(x[a,i]),bil(a,b,g[i]@g[k])) for a,i in P if x[a,i] and (a,i)!=(b,k)])
     CV=ops(*[(int(x[c,i])*int(co),bil(c,b,g[i]@g[j]@g[k],1)) for c,i in P if x[c,i] for j,k in SP for b,co in enumerate(np.cross(x[:,j],x[:,k])) if co])
     tau=dict.fromkeys(active,0);beta=dict.fromkeys(active,0);nu=[];tt=[];eu=[{} for _ in V]
@@ -141,15 +163,17 @@ def run(diag,out):
         for j in range(9,19,2):
             A.extend([lin((1,apply(dz,V[r])),(1,apply(z,A[r]))) for r in (j,j+1)])
         BV=[apply(B2(b,i),v) for v in V]
-        for pq,val in gram(A,A).items():tau[pq]+=val
-        for pq,val in gram(BV,A).items():beta[pq]-=val
+        for pq,val in gram(A,A,'tau',[b,i]).items():tau[pq]+=val
+        for pq,val in gram(BV,A,'beta',[b,i]).items():beta[pq]-=val
         if b==i:
-            nu.append({pq:int(x[b,i])*v for pq,v in gram(V,A).items()})
-            tt.append({pq:int(x[b,i])*v for pq,v in gram(V,BV).items()})
+            nu.append({pq:int(x[b,i])*v for pq,v in gram(V,A,'nu',[b,i]).items()})
+            tt.append({pq:int(x[b,i])*v for pq,v in gram(V,BV,'t',[b,i]).items()})
         if x[b,i]:eu=[lin((1,u),(int(x[b,i]),v)) for u,v in zip(eu,A)]
+        completed.append([b,i]);save_checkpoint()
         print('direct derivative',b,i,flush=True)
-    assert all(u==lin((d,v)) for u,d,v in zip(eu,DEG,V))
-    cv=gram(V,[apply(CV,v) for v in V])
+    euler_errors=[p for p,(u,d,v) in enumerate(zip(eu,DEG,V)) if u!=lin((d,v))]
+    cv=gram(V,[apply(CV,v) for v in V],'v',None)
+    save_checkpoint()
     path=D/'bfss-mixed104'/('jet_'+''.join(map(str,diag))+'.json')
     if diag==(0,0,1):pin(path,'89a8c71ccf96f20ed9f6c378341d826135b47afd')
     receipt=json.loads(path.read_text());assert receipt['degrees']==DEG
@@ -159,17 +183,21 @@ def run(diag,out):
         for axis,A in enumerate(group):
             for (p,q),v in A.items():
                 parity=DEG[p]+DEG[q]+(name=='v')
-                if parity%2:assert v==0
+                if parity%2 and v:real_errors.append([name,axis,p,q,str(v),'odd-degree nonzero'])
                 actual=Fraction(v,N*SCALE*SCALE*2**(parity//2)*(2 if name in ('beta','t') else 1))
                 r=receipt[name][axis] if name in ('nu','t') else receipt[name]
                 expected=Fraction(r[p][q]);counts[name]+=1
                 if actual!=expected:errors.append([name,axis,p,q,str(actual),str(expected)])
-    report={'diag':diag,'receipt_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'comparisons':counts,'errors':errors,'Euler_exact':True,'accumulation':STATS,'scope':'max(p,q)>=17; literal direct 27-coordinate derivatives; no old-old placeholders'}
+    report={'diag':diag,'receipt_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'comparisons':counts,'errors':errors,'odd_degree_errors':real_errors,'Euler_exact':not euler_errors,'Euler_errors':euler_errors,'H3_anchor_ok':anchor_ok,'H3_scaled_norm2':str(anchor),'H3_expected_scaled_norm2':str(expected_anchor),'imaginary_count':len(imaginary),'imaginary':imaginary,'hermitian_errors':hermitian_errors,'accumulation':STATS,'scope':'max(p,q)>=17; literal direct 27-coordinate derivatives; no old-old placeholders'}
     out.write_text(json.dumps(report,indent=2)+'\n')
-    assert not errors,errors[:5]
-    print(json.dumps(report,indent=2))
+    print(json.dumps({k:v for k,v in report.items() if k!='imaginary'},indent=2),flush=True)
+    assert not errors and not real_errors and not euler_errors and anchor_ok and not hermitian_errors,('real/source diagnostics',errors[:5],real_errors[:5],euler_errors,anchor_ok,hermitian_errors[:5])
+    print('BFSS_DIRECT_FIXTURE_REAL_RECEIPTS_PASS',flush=True)
+    assert not imaginary,('historical zero-imaginary premise discrepancy',len(imaginary),imaginary[:5])
     print('BFSS_DIRECT_FIXTURE_EXACT_PASS',flush=True)
 def selftest():
+    assert dot_complex({0:(1,0)},{0:(0,1)})==(0,1)
+    assert dot_complex({0:(0,1)},{0:(1,0)})==(0,-1)
     # Compare direct actions to an independently specified two-mode example.
     assert apply([(0,0,0,0,1,0)],{0:(2,3),1:(4,5)})=={0:(2,3),1:(4,5)}
     assert apply([(0,0,0,1,1,0)],{0:(2,3),1:(4,5)})=={0:(-3,2),1:(5,-4)}
