@@ -1,0 +1,57 @@
+name: BFSS direct anchor diagnostic
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'research/computational/python-first-20261124/bfss-physical-implication/diagnose_direct_anchor.py'
+      - '.github/workflows/bfss-direct-anchor-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  anchor-isolation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Freeze input blobs and environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          E="$RUNNER_TEMP/bfss-anchor-diagnostic"
+          mkdir -p "$E"
+          git rev-parse HEAD | tee "$E/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git hash-object 'research/computational/python-first-20261124/bfss-physical-implication/replay_direct_fixture.py')" = bff700cee79c0c873899b5cc364f2a1cbf058bf5
+          test "$(git hash-object 'research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz')" = 91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0
+          test "$(git hash-object 'research/computational/python-first-20261124/bfss-h3-tensor/rank1_vector.npz')" = fd48a584ad72683ab1aa4b974a8e3dfcc9fa15c7
+          test "$(git hash-object 'research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py')" = 7cc5e660fb40b2d96c5462a930f7ac266a362fe0
+          test "$(git hash-object 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean')" = 818ff344566c2f2552a30591d92fb7f718efe866
+          git ls-tree HEAD -- 'research/computational/python-first-20261124/bfss-physical-implication/diagnose_direct_anchor.py' '.github/workflows/bfss-direct-anchor-diagnostic.yml' | tee "$E/tested-blobs.txt"
+          python3 -m venv "$RUNNER_TEMP/bfss-anchor-venv"
+          "$RUNNER_TEMP/bfss-anchor-venv/bin/python" -m pip install --disable-pip-version-check numpy==2.2.6
+          "$RUNNER_TEMP/bfss-anchor-venv/bin/python" -c 'import sys,numpy;print(sys.version,numpy.__version__)' | tee "$E/runtime.txt"
+      - name: Isolate primitive and H3 discrepancy
+        shell: bash
+        env:
+          OPENBLAS_NUM_THREADS: 1
+          OMP_NUM_THREADS: 1
+        run: |
+          set -euo pipefail
+          E="$RUNNER_TEMP/bfss-anchor-diagnostic"
+          "$RUNNER_TEMP/bfss-anchor-venv/bin/python" -u 'research/computational/python-first-20261124/bfss-physical-implication/diagnose_direct_anchor.py' "$E/results.json" 2>&1 | tee "$E/diagnostic.log"
+          grep -Fx BFSS_DIRECT_ANCHOR_DIAGNOSTIC_PASS "$E/diagnostic.log"
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-direct-anchor-diagnostic-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-anchor-diagnostic/
+          retention-days: 30
+          if-no-files-found: warn
