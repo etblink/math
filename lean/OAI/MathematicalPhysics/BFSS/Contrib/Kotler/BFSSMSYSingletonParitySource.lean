@@ -119,9 +119,12 @@ theorem creationCoefficient_eq_parityTest (i : Fin 24) (A : Finset (Fin 24))
     (hi : i ∉ A) :
     creationCoefficient i A =
       if (-1 : ℤˣ) ^ (A.filter (fun k => k < i)).card = 1 then (1 : ℂ) else -1 := by
-  rw [creationCoefficient_eq_sortSign i A hi]
-  unfold sortSign
-  rw [singletonPerm_sign i A hi]
+  calc
+    creationCoefficient i A = sortSign i A hi :=
+      creationCoefficient_eq_sortSign i A hi
+    _ = _ :=
+      congrArg (fun u : ℤˣ => if u = 1 then (1 : ℂ) else -1)
+        (singletonPerm_sign i A hi)
 
 #print axioms sorting_left_value
 #print axioms sorting_right_value

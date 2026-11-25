@@ -8237,6 +8237,64 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-SINGLETON-PARITY-SOURCE-R2-RED-20261124",
+      "title": "Literal source parity R2 native RED with three clean roots",
+      "registered_at": "2026-11-24",
+      "status": "RED_UNQUALIFIED",
+      "classification": "LEAN_DEPENDENT_SUBTYPE_REWRITE_FAILURE_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "118bc7f85febfaa3cac3c8b2c761373793318713",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_SOURCE_R2_RED_R3_CONGRARG_2026_11_24.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45552560780,
+        "job_id": 138996884424,
+        "artifact_id": 14993998503,
+        "artifact_size_bytes": 8688,
+        "artifact_sha256": "af95452029a91673e84aca12f542662063624bcdcb522c1efcb35cf48961a0f5",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Line 124 rewrite through unfolded sortSign fails under implicit transparency",
+        "clean_native_roots": [
+          "sorting_left_value",
+          "sorting_right_value",
+          "singletonPerm_sign"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_SOURCE_R2_original_job_138996884424.log"
+      }
+    },
+    {
+      "id": "E-MSY-SINGLETON-PARITY-SOURCE-R3-20261124",
+      "title": "Literal source parity R3 direct congrArg sign transport",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "ORIGINAL_SOURCE_PARITY_CANDIDATE_NOT_CARRIER_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "118bc7f85febfaa3cac3c8b2c761373793318713",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_SOURCE_R2_RED_R3_CONGRARG_2026_11_24.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYSingletonParitySource.lean",
+        "consumer": "lean/diagnostics/BFSSMSYSingletonParitySourceIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-singleton-parity-source-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Apply congrArg to literal integer-unit sign equality rather than rewriting inside dependent subtype definitions.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift"
+        ],
+        "analysis_plan": "Preserve three clean roots; strict native and independent qualification; archive exact original artifact."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
