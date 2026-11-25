@@ -33,7 +33,7 @@ theorem sign_of_strictMono_succ {n : ℕ}
     · exact (Fin.cycleRange_symm_zero (σ 0)).symm
     · rw [ht, Fin.cycleRange_symm_succ]
   calc
-    σ.sign = ((Fin.cycleRange (σ 0)).symm).sign :=
+    σ.sign = Equiv.Perm.sign (Fin.cycleRange (σ 0)).symm :=
       congrArg (fun p : Equiv.Perm (Fin (n + 1)) => p.sign) he
     _ = (-1) ^ (σ 0).val := by
       rw [Equiv.Perm.sign_symm, Fin.sign_cycleRange]

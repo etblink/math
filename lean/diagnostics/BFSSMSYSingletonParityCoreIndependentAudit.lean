@@ -10,7 +10,7 @@ open FCP.BFSSMSYSingletonParityCore
 
 /-- Test the generic sign identity on the actual Mathlib inverse cycle. -/
 theorem cycleAudit (p : Fin 4) :
-    ((Fin.cycleRange p).symm).sign = (-1) ^ p.val := by
+    Equiv.Perm.sign (Fin.cycleRange p).symm = (-1) ^ p.val := by
   have h : StrictMono (fun j : Fin 3 => (Fin.cycleRange p).symm j.succ) := by
     intro a b hab
     simpa only [Fin.cycleRange_symm_succ] using

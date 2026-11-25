@@ -1,0 +1,9 @@
+# Singleton parity core R1 RED / R2 explicit permutation sign
+
+Date: 2026-11-24 Pacific. Branch integration/bfss-unified-research-20261108.
+
+R1 RED_UNQUALIFIED. Exact tested commit d1e4f20988d1d3931f57bdee03795c1357aa402f. Run https://github.com/etblink/math/actions/runs/45548514649 ; job 138983814485. Exact checkout, frozen-source preflight and pinned toolchain restoration passed. Native build failed at BFSSMSYSingletonParityCore.lean:36:43, invalid field sign on Equiv.symm (σ 0).cycleRange. This is a field-notation elaboration error: Equiv.symm returns an Equiv, for which Equiv.sign does not exist. No additional native candidate errors were reported. The sign root includes sorryAx from error recovery; orderRank_eq_card_filter prints only propext, Classical.choice, Quot.sound. Neither root is promoted on the basis of a failing gate; independent consumer not executed.
+
+Original artifact https://github.com/etblink/math/actions/runs/45548514649/artifacts/14991874807 ; 8304 bytes. Independently downloaded, ZIP CRC verified, SHA-256 5217c40a3e0e625f86c0f826e2c380bd99513c3fb4c2cf0506670a2b1157e3c0 matches metadata; six members and exact tested-sha.txt. Original decoded job log archived alongside this memo. GitHub Actions original ZIP expires 2026-12-25 UTC.
+
+R2 REGISTERED_NOT_EXECUTED at staging. Replace only inverse-cycle field notation with explicit Equiv.Perm.sign in the calc expression and independent cycleAudit statement (definitionally the same intended permutation sign). No change to theorem mathematical content, rank proof, imports, frozen sources, workflow, audit roots or strict controls. Reverse substitutions restore both files exactly. No local Lean available; strict CI must verify both roots and both independent consumers. Do not proceed to the literal permOfDisjoint adapter until qualified. Native occupation transition R2 remains qualified, finite witness unchanged, all physical-domain and fidelity claims remain conditional.

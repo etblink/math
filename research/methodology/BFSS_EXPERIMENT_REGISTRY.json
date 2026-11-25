@@ -8078,6 +8078,60 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-SINGLETON-PARITY-CORE-R1-RED-20261124",
+      "title": "Singleton parity core R1 native RED",
+      "registered_at": "2026-11-24",
+      "status": "RED_UNQUALIFIED",
+      "classification": "LEAN_FIELD_NOTATION_FAILURE_NOT_MATHEMATICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "d1e4f20988d1d3931f57bdee03795c1357aa402f",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_CORE_R1_RED_R2_EXPLICIT_SIGN_2026_11_24.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45548514649,
+        "job_id": 138983814485,
+        "artifact_id": 14991874807,
+        "artifact_size_bytes": 8304,
+        "artifact_sha256": "5217c40a3e0e625f86c0f826e2c380bd99513c3fb4c2cf0506670a2b1157e3c0",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Invalid Equiv.sign field on inverse cycle at source line 36:43",
+        "rank_axiom_report_clean": true,
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_CORE_R1_original_job_138983814485.log"
+      }
+    },
+    {
+      "id": "E-MSY-SINGLETON-PARITY-CORE-R2-20261124",
+      "title": "Singleton parity core R2 explicit sign elaboration repair",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "GENERAL_COMBINATORIAL_LEAN_CANDIDATE_NOT_SOURCE_ADAPTER",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "d1e4f20988d1d3931f57bdee03795c1357aa402f",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_CORE_R1_RED_R2_EXPLICIT_SIGN_2026_11_24.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYSingletonParityCore.lean",
+        "consumer": "lean/diagnostics/BFSSMSYSingletonParityCoreIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-singleton-parity-core-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Explicit Equiv.Perm.sign resolves the field notation error without changing the mathematical identity.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift"
+        ],
+        "analysis_plan": "Exact source and consumer strict qualification; preserve original RED; no physical promotion."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
