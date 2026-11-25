@@ -1,0 +1,69 @@
+name: BFSS MSY independent integer recheck
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py'
+      - '.github/workflows/bfss-msy-integer-recheck.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  exact-integer-recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Freeze exact original and integer seed sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          E="$RUNNER_TEMP/bfss-msy-integer-recheck"
+          mkdir -p "$E"
+          git rev-parse HEAD | tee "$E/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git merge-base --is-ancestor 406689ca5d743fee2447282e962c206cdc07c720 HEAD
+          git ls-tree HEAD -- 'research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py' '.github/workflows/bfss-msy-integer-recheck.yml' > "$E/tested-blobs.txt"
+          python3 --version | tee "$E/python-version.txt"
+          python3 - <<'PY' | tee "$E/preflight.log"
+          import subprocess
+          pins = {
+              "research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz": "91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0",
+              "research/computational/python-first-20261124/bfss-seed-transport/check_seed.py": "48733caa73cceafd030fe6c5ebc405924603670a",
+              "research/computational/python-first-20261124/bfss-seed-transport/generator_checks.json": "fee283573601e03df6f3c76afab7825032461a9c",
+              "research/computational/python-first-20261124/bfss-seed-transport/exact_transport.py": "b3e9f51cce788d288f1c95f2206df7a502fbc82e",
+              "research/computational/python-first-20261124/bfss-seed-transport/exact_transport_results.json": "abc0872f50034a7dfc0bbad10e470c9a89540722",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean": "818ff344566c2f2552a30591d92fb7f718efe866",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonSpinContraction.lean": "60e72205d5453be6e1a580d678a10341d50ad186",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedCarrier.lean": "2ccb0fbb6db99dd5884911aac3c7352f6fed82b4",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedBilinear.lean": "4f4f88ab0456c733c333f4cb7af4ec60467699cf",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedColor.lean": "65e3501030c00a83ebcde684d7b0bc20245175a1",
+              "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedSpin.lean": "4dacb9dda7a08018c81bb98bf61c69ed5112debe",
+          }
+          for path, expected in pins.items():
+              got = subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got == expected,(path,got,expected)
+              print(path,got)
+          print("BFSS_MSY_INTEGER_RECHECK_FROZEN_INPUT_PASS")
+          PY
+      - name: Execute two independent integer accumulation algorithms
+        shell: bash
+        run: |
+          set -euo pipefail
+          E="$RUNNER_TEMP/bfss-msy-integer-recheck"
+          python3 'research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py' --output "$E/results.json" 2>&1 | tee "$E/recheck.log"
+          grep -Fx 'BFSS_MSY_INDEPENDENT_INTEGER_RECHECK_PASS' "$E/recheck.log"
+      - name: Preserve original computational evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-msy-integer-recheck-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-msy-integer-recheck/
+          retention-days: 30
+          if-no-files-found: warn
