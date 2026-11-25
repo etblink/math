@@ -6930,6 +6930,96 @@
         "full_witness_integrated": false,
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-CROSS-GRAM22-20261124",
+      "title": "22 actual witness rows: invariant multiplier cross-Gram expansion and precision audit",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "INHERITED_FINITE_KERNELS_AND_NUMERICAL_QUADRATURE_NOT_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "7aba675abeb3e74dd9c284b75b0751dc22eebeaa",
+      "memo": "research/computational/python-first-20261124/bfss-cross-gram22/README.md",
+      "source_artifact": {
+        "scripts": [
+          "research/computational/python-first-20261124/bfss-cross-gram22/integrate22.py",
+          "research/computational/python-first-20261124/bfss-cross-gram22/precision22.py"
+        ],
+        "script_blobs": [
+          "05e4e7c3fed58e638aab6c4eaf869253d42badb3",
+          "bb850189a6decaef8086d2b51f5ed5974d949ed8"
+        ],
+        "results": "research/computational/python-first-20261124/bfss-cross-gram22/results.json",
+        "precision": "research/computational/python-first-20261124/bfss-cross-gram22/precision_results.json",
+        "checksum_manifest": "research/computational/python-first-20261124/bfss-cross-gram22/SHA256SUMS",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7",
+        "companion_blob": "cdfe3df61c65204c8e0bb6eb6289c8d192f6b8dc",
+        "witness_blob": "bea23bb2d81bdaea543b75052fc1913673f2016e"
+      },
+      "stages": {
+        "observation": "Four-row baseline q1=100.528. Twenty-two actual rows are built from S and YS with invariant multipliers.",
+        "question": "How much does expanding invariant multipliers improve the restricted quotient, and do two Gaussian moment algorithms, direct/IBP mixed terms and precision changes agree?",
+        "hypothesis": "Existing finite kernels extend by product rule and Cayley-Hamilton. Independent exact rational row-angle coefficients and Stein recurrence match numerically; direct and IBP cross forms agree; four-row submatrix is recovered.",
+        "falsifiers": [
+          "Relative moment or direct/IBP discrepancy >1e-10",
+          "Prior four-row submatrix mismatch >1e-10",
+          "Nonpositive mass or weighted generalized spectrum",
+          "Precision disagreement >1e-7 in q1"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "22 actual labels",
+            "Invariant multipliers",
+            "Two actual widths",
+            "32/64 node quadrature",
+            "50-digit 32/48 node quadrature",
+            "Cross-term ablation"
+          ],
+          "dependent_variables": [
+            "253 distinct pair entries per matrix",
+            "Moment disagreements",
+            "Generalized q1 minima",
+            "Mass conditioning",
+            "Precision stability"
+          ],
+          "controls": [
+            "Archived four-row comparison",
+            "Independent row-angular exact moments",
+            "Stein recurrence",
+            "Direct vs integration-by-parts cross terms",
+            "Diagonal mass scaling and high precision whitening"
+          ],
+          "reproduce_command": "cd research/computational/python-first-20261124/bfss-cross-gram22 && OPENBLAS_NUM_THREADS=2 python integrate22.py > run.log && OPENBLAS_NUM_THREADS=2 python precision22.py > precision.log"
+        },
+        "analysis_plan": "Retain full matrices, raw logs, checksums, exact input pins and precision diagnostics; no claim of certified interval or full-witness result.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS only for completed numerical audits and inherited finite kernels. Restricted eigenvalue is not lower bound for full witness.",
+        "communication": "All ten original files transferred with matching Git blob hashes; retrospective registration."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "actual_basis_count": 22,
+        "full_basis_count": 104,
+        "distinct_entries": 253,
+        "moment_types": 102,
+        "trace_keys": 271,
+        "min_q1": 97.65908252589173,
+        "min_q1_50digit": "97.65908252589155948802059621445947425621",
+        "scalar12_min": 142.9936836825722,
+        "YS10_min": 164.62025261057997,
+        "no_cross22_min": 142.99368368257183,
+        "original4_min": 100.527979403252,
+        "lowdegree12_min": 97.81551483325188,
+        "scaled_mass_condition": 780683.0674687782,
+        "max_moment_disagreement": 2.3941611539381207e-15,
+        "max_direct_ibp_disagreement": 1.3711600597849545e-15,
+        "max_prior_submatrix_disagreement": 1.55545249889455e-14,
+        "high_precision_matrix_convergence": "2.03032048767034e-39",
+        "full_witness_integrated": false,
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
