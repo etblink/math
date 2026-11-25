@@ -44,12 +44,19 @@ theorem packedAction_intertwines (s : SpinIndex) (a : ColorIndex 2)
       majoranaNormalization • pairedTheta s a (packedCarrier c) := by
   obtain ⟨⟨j, rho⟩, h⟩ := spinPairEquiv.symm.surjective s
   subst s
-  fin_cases rho
-  · simpa only [packedAction, Equiv.apply_symm_apply, Prod.fst, Prod.snd, ite_true]
-      using packedEvenIntertwine j a c
-  · have hn : (1 : Fin 2) ≠ 0 := by decide
-    simpa only [packedAction, Equiv.apply_symm_apply, Prod.fst, Prod.snd, hn, ite_false]
-      using packedOddIntertwine j a c
+  have hr : rho.val = 0 ∨ rho.val = 1 := by
+    have hb := rho.isLt
+    omega
+  rcases hr with h0 | h1
+  · have he : rho = (0 : Fin 2) := Fin.ext h0
+    rw [he]
+    simpa only [packedAction, Equiv.apply_symm_apply, Prod.fst, Prod.snd,
+      if_pos (rfl : (0 : Fin 2) = 0)] using packedEvenIntertwine j a c
+  · have he : rho = (1 : Fin 2) := Fin.ext h1
+    rw [he]
+    have hn : (1 : Fin 2) ≠ 0 := by decide
+    simpa only [packedAction, Equiv.apply_symm_apply, Prod.fst, Prod.snd,
+      if_neg hn] using packedOddIntertwine j a c
 
 theorem normalization_square : majoranaNormalization * majoranaNormalization = (2 : ℂ) := by
   have hs : (Real.sqrt 2 : ℝ) * Real.sqrt 2 = 2 := by
