@@ -8694,6 +8694,58 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PACKED-MASK-R2-GREEN-20261125",
+      "title": "Packed mask R2 qualified receipt",
+      "registered_at": "2026-11-25",
+      "status": "LEAN_QUALIFIED",
+      "classification": "PACKED_MASK_DECODER_XOR_LOWER_PARITY_ONLY",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "3dd9bbbb753a275feeda1f5580ce80eb5c19cc95",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_MASK_R2_GREEN_PACKED_CARRIER_R1_2026_11_25.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45627935359,
+        "job_id": 139253026489,
+        "artifact_id": 15029773736,
+        "artifact_size_bytes": 8655,
+        "artifact_sha256": "0fa9a7bdcbea2a3190082c6a70d998f0fe30147a7ce599a08a30451a8ba60ecc",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 8977,
+        "source_roots": 8,
+        "consumer_roots": 2,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_MASK_R2_original_job_139253026489.log"
+      }
+    },
+    {
+      "id": "E-MSY-PACKED-CARRIER-R1-20261125",
+      "title": "Packed coefficient isometry and normalized even/odd Majorana intertwining R1",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "PACKED_MATHEMATICAL_COEFFICIENT_CARRIER_CANDIDATE_NOT_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "3dd9bbbb753a275feeda1f5580ce80eb5c19cc95",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_MASK_R2_GREEN_PACKED_CARRIER_R1_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedCarrier.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPackedCarrierIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-packed-carrier-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Inclusive mask adds exactly one occupied boundary bit; literal decoder isometry and pointwise XOR gather identify both normalized packed actions with original source theta.",
+        "controls": [
+          "Recovered literal packed coordinate",
+          "Original pairedAlgebraData.theta odd packed intertwining"
+        ],
+        "analysis_plan": "Strict native and independent consumer; exact root audit and artifact verification; no physical inference."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [

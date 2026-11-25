@@ -1,0 +1,11 @@
+# Packed mask R2 qualified; packed carrier R1 staged
+
+Date 2026-11-25 Pacific. Branch integration/bfss-unified-research-20261108.
+
+## Packed mask R2 — GREEN_QUALIFIED
+Run https://github.com/etblink/math/actions/runs/45627935359 ; exact commit 3dd9bbbb753a275feeda1f5580ce80eb5c19cc95; job 139253026489. Frozen preflight, pinned environment, native build 8977 jobs, independent controls, ten axiom roots (only propext, Classical.choice, Quot.sound), strict GREEN sentinel passed. Artifact https://github.com/etblink/math/actions/runs/45627935359/artifacts/15029773736 ; original ZIP independently downloaded and rehashed in Python, 8655 bytes, SHA-256 0fa9a7bdcbea2a3190082c6a70d998f0fe30147a7ce599a08a30451a8ba60ecc, CRC clean, seven members, exact tested SHA and three tested blobs verified. Native and independent axiom reports checked from ZIP; no errors or sorryAx. Full decoded original log archived. Original artifact expires 2026-12-25 UTC. Generic decoder bijection, XOR toggle, lower mask count and even weight qualified.
+
+## Packed carrier R1 — REGISTERED_NOT_EXECUTED
+The exact bit-encoded input weight for odd Majorana is I times parity of the inclusive mask (2^(i+1)-1); inclusiveCard proves the extra count is precisely occupation of i. The sign flips at one extra bit; use integer-unit powers and scalar complex arithmetic. Construct packed coordinate isometry using the qualified literal maskEquiv and pinned LinearIsometryEquiv.piLpCongrLeft. Prove coordinate recovery at decodeMask m, norm preservation and arbitrary weighted XOR gathering by pointwise transport; reuse qualified occupation even/odd intertwining rather than specialize another large sum proof. The independent consumer uses actual pairedAlgebraData.theta and recovered occupation coefficients. Ten native roots, two consumer roots, strict source pins and unchanged environment. No local Lean compiler; R1 unqualified pending strict CI.
+
+Scope: mathematical packed-bit coefficient action, not verified execution of Python or transfer of actual sparse arrays, products, gamma contractions or physical charges. Further gauge/Spin(9) and differential-domain interfaces remain. No physical promotion; finite witness unchanged.
