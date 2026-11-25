@@ -1,0 +1,9 @@
+fits [(0, 0, 1), (0, 1, 1), (0, 1, 2), (0, 1, 3), (0, 2, 3), (1, 1, 1), (1, 1, 2), (1, 1, 3), (1, 2, 2), (1, 2, 3)] hold [(0, 1, 4), (1, 2, 4)]
+(1, 2, 4) supports [19136, 84288, 191696, 275824, 321728, 334712, 338654, 337880, 338822] seconds 11.177498117000141
+Traceback (most recent call last):
+  File "/mnt/data/bfss-yukawa-moments-20261124/moments.py", line 58, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/mnt/data/bfss-yukawa-moments-20261124/moments.py", line 56, in main
+    rank1=next(x for x in data if x['diag']==(0,0,1));nodes=list(range(0,17,2));V=sp.Matrix([[sp.Integer(n)**(2*k) for n in nodes] for k in range(9)]);prob=V.inv()*sp.Matrix([sp.Rational(m,N) for m in rank1['even_moments_raw']]);assert all(p>=0 for p in prob) and sum(prob)==1
+StopIteration

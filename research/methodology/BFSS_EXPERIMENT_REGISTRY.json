@@ -7020,6 +7020,98 @@
         "full_witness_integrated": false,
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-YUKAWA-MOMENTS-56-20261124",
+      "title": "Exact higher Yukawa Krylov moments and 56 actual S-descendant mass and multiplication blocks",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_FINITE_MOMENTS_AND_RATIONAL_INTEGRATION_NOT_FULL_AUXILIARY_FORM",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-yukawa-moments/README.md",
+      "source_baseline": "73a8e3bcfbe178e1fbf76500053accc11b24214d",
+      "source_artifact": {
+        "moment_script": "research/computational/python-first-20261124/bfss-yukawa-moments/moments.py",
+        "moment_script_blob": "ff04b0a128430eaf894dffb8fbb1a33db48918e0",
+        "integration_script": "research/computational/python-first-20261124/bfss-yukawa-moments/integrate_mass.py",
+        "integration_script_blob": "6ffe47c4edf5d289ffaf6c2b17ab91d1998ef1df",
+        "pointwise_results": "research/computational/python-first-20261124/bfss-yukawa-moments/pointwise_moments.json",
+        "moment_polynomials": "research/computational/python-first-20261124/bfss-yukawa-moments/moment_polynomials.json",
+        "exact_matrices": "research/computational/python-first-20261124/bfss-yukawa-moments/exact_matrices.json.gz",
+        "exact_matrices_blob": "7a624589aab7b08d96405ca9c6eae4a3094a8093",
+        "positive_pivots": "research/computational/python-first-20261124/bfss-yukawa-moments/mass_ldl_pivots.json.gz",
+        "derivative_controls": "research/computational/python-first-20261124/bfss-yukawa-moments/derivative_controls.json",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7",
+        "companion_blob": "cdfe3df61c65204c8e0bb6eb6289c8d192f6b8dc"
+      },
+      "stages": {
+        "observation": "The 22-row system retains only S and YS directions. Hermiticity permits mass-contraction reduction to one sequence of moments; noncommutative ordered derivatives are required for further energy blocks.",
+        "question": "Can all even moments through degree 16 be recovered exactly, integrated on the 56 actual S-descendant rows, and distinguish a false commuting derivative rule?",
+        "background": [
+          "Exact transported S",
+          "Finite Yukawa covariance and source charge controls",
+          "22-row cross-Gram experiment",
+          "Pinned companion Gaussian orientation formula"
+        ],
+        "hypothesis": "Exact Krylov inner products give invariant homogeneous mass moments; 56-row mass and multiplicative blocks can be integrated rationally at common longitudinal width; independent held-outs and old mass submatrix agree; ordered derivative differs from naive commuting rule in general.",
+        "falsifiers": [
+          "Nonzero odd moment or Hermitian split discrepancy",
+          "Exact held-out invariant polynomial mismatch",
+          "Nonpositive rational LDL pivot",
+          "Orientation quadrature or prior 22-row mass discrepancy beyond tolerance",
+          "Ordered derivative finite-difference discrepancy or omitted-root control undetected"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "12 diagonal integer fixtures",
+            "Yukawa powers 0 through 8",
+            "actual two projected-Gaussian widths",
+            "invariant multipliers",
+            "noncommuting derivative directions"
+          ],
+          "dependent_variables": [
+            "exact Krylov moments",
+            "invariant polynomial coefficients",
+            "five rational matrices",
+            "exact LDL pivots",
+            "derivative coefficient residuals"
+          ],
+          "controls": [
+            "10 fit and 2 holdouts",
+            "96 odd moment checks",
+            "12 independent Hermitian split checks",
+            "rank-one polynomial omitted root",
+            "32/48-node quadrature",
+            "22-row mass submatrix",
+            "naive commuting derivative"
+          ],
+          "reproduce_command": "See research/computational/python-first-20261124/bfss-yukawa-moments/README.md; moments.py, integrate_mass.py, derivative_control.py."
+        },
+        "analysis_plan": "Preserve timeout and restart errors; keep exact arithmetic receipts, compressed matrices and pivots, distinguish numerical comparison from exact algebra and typed native qualification.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for completed finite tests and conditional exact rational integrals; no claim of full auxiliary quotient or source domain.",
+        "communication": "22 exact-byte archived files, lossless gzip matrix data, separate incomplete initial derivative receipt."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "fit_count": 10,
+        "holdout_count": 2,
+        "odd_moments_exact_zero": 96,
+        "hermitian_split_checks": 12,
+        "even_moment_max_degree": 16,
+        "integrated_mass_rows": 56,
+        "exact_multiplicative_blocks": 4,
+        "exact_positive_ldl_pivots": 56,
+        "orientation_quadrature_max_relative_discrepancy": 6.250725397191628e-15,
+        "previous22_mass_relative_discrepancy": 4.470978937505595e-15,
+        "scaled_mass_condition": 1904563.2562646072,
+        "ordered_derivative_exact_finite_difference_checks": 8,
+        "naive_rank3_cubic_residual_support": 228960,
+        "full_weighted_energy_status": "OPEN",
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
