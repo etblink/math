@@ -8580,6 +8580,58 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-NORMALIZED-TOGGLE-R3-GREEN-20261125",
+      "title": "Normalized occupation toggle R3 qualified receipt",
+      "registered_at": "2026-11-25",
+      "status": "LEAN_QUALIFIED",
+      "classification": "ORIGINAL_SOURCE_NORMALIZED_OCCUPATION_ACTION_ONLY",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "bfa30270cbfd3ec27da7c1c79b08624d834ae1b0",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/NORMALIZED_TOGGLE_R3_GREEN_PACKED_MASK_R1_2026_11_25.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45582419473,
+        "job_id": 139095507877,
+        "artifact_id": 15007932116,
+        "artifact_size_bytes": 8363,
+        "artifact_sha256": "cffb2719ac5fc6cae54a4e9a057966ccecc6a40c68d663cf485f3141fcc00c22",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 8976,
+        "source_roots": 8,
+        "consumer_roots": 2,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/NORMALIZED_TOGGLE_R3_original_job_139095507877.log"
+      }
+    },
+    {
+      "id": "E-MSY-PACKED-MASK-R1-20261125",
+      "title": "Literal packed mask decoder and lower parity bridge R1",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "PACKED_MASK_DECODER_CANDIDATE_NOT_ODD_PHASE_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "bfa30270cbfd3ec27da7c1c79b08624d834ae1b0",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/NORMALIZED_TOGGLE_R3_GREEN_PACKED_MASK_R1_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedMask.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPackedMaskIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-packed-mask-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Bounded testBit decoder bijection, literal XOR and lower-mask bit count coincide with source occupation toggles and even weight.",
+        "controls": [
+          "Last numeric bit 23",
+          "Literal XOR against source toggle"
+        ],
+        "analysis_plan": "Strict pinned native and independent consumer; exact root audit and original artifact; no physical inference."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [

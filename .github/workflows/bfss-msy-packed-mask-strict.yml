@@ -1,0 +1,179 @@
+name: BFSS MSY packed mask strict
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedMask.lean'
+      - 'lean/diagnostics/BFSSMSYPackedMaskIndependentAudit.lean'
+      - '.github/workflows/bfss-msy-packed-mask-strict.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-msy-packed-mask-${{ github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-msy-normalized-toggle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen original source and independent consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-msy-packed-mask"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-msy-packed-mask/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git ls-tree HEAD -- \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedMask.lean \
+            lean/diagnostics/BFSSMSYPackedMaskIndependentAudit.lean \
+            .github/workflows/bfss-msy-packed-mask-strict.yml \
+            > "$RUNNER_TEMP/bfss-msy-packed-mask/tested-blobs.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-msy-packed-mask/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-msy-packed-mask/preflight.log"
+          from pathlib import Path
+          import subprocess,re,json
+          pins={
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNormalizedToggle.lean": "15beb377bda1ac7ae0ed45f3f9f8bcd815e5f9b1",
+            "lean/diagnostics/BFSSMSYNormalizedToggleIndependentAudit.lean": "e6171f7256a09961a0d56ae90130a7b4a6ab5f2b",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYCoefficientCarrier.lean": "873b63f705402ecd082a0e8437830d2c61bae77e",
+            "lean/diagnostics/BFSSMSYCoefficientCarrierIndependentAudit.lean": "9f99584bce62ed4338e4d382d47ac2853ba51d98",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYSingletonParitySource.lean": "a9b17f0294e948fe459aa77e8f5dd9bb6c51a8d4",
+            "lean/diagnostics/BFSSMSYSingletonParitySourceIndependentAudit.lean": "532923733e0edce7a7f1f0b0a59f0e201f4151a4",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3B5CoordinateProbe.lean": "42508b674326028bb0d197f2cda59f4066f5bdcb",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYSingletonParityCore.lean": "4452173ed142f9a6f57777720214be8ffadeb1eb",
+            "lean/diagnostics/BFSSMSYSingletonParityCoreIndependentAudit.lean": "a544db904dc42b44a08663647badeeb654dae821",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNativeOccupationTransition.lean": "15c6b5016e75756d64e8b799499c0f9a562c9ad4",
+            "lean/diagnostics/BFSSMSYNativeOccupationTransitionIndependentAudit.lean": "64d434759d5f407d01ea3ed89061b8d41b113bd4",
+            "lean/OAI/MathematicalPhysics/BFSS/Core.lean": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG1APairedThetaProbe.lean": "152204ef15a6569534e0503824a697cb9ae8e4ce",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3B7SignedModeProbe.lean": "a6abe958c08ccd1e2850843950f65bf15c357c78",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2FermionF3B2BasisActionProbe.lean": "bbcea77bd4aece7b429dd8d70fe6dcd20d2c8e0e",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionFockProbe.lean": "dbe9241436c7d3633547e559bccd5fe1fd82de9a",
+            "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2FermionF2Probe.lean": "93d7ae00d4ee21ce59ab137c349590e2c496ff38",
+            "lean/OAI/MathematicalPhysics/ContinuumCoulomb/ManyBody/FockNorm.lean": "17e71994583e7096c26a1af2fe97671f94336d84",
+          }
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
+          subprocess.check_call(["git","merge-base","--is-ancestor","bfa30270cbfd3ec27da7c1c79b08624d834ae1b0","HEAD"])
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedMask.lean").read_text()
+          t=Path("lean/diagnostics/BFSSMSYPackedMaskIndependentAudit.lean").read_text()
+          source_roots = [
+            "mem_decodeMask",
+            "decodeMask_injective",
+            "decodeMask_bijective",
+            "xorMask_bit",
+            "decode_xor_source",
+            "decode_and_low",
+            "popcount_low",
+            "source_even_mask_weight",
+          ]
+          consumer_roots = [
+            "lastBitAudit",
+            "literalXorAudit",
+          ]
+          assert re.findall(r"(?m)^import (\S+)$", s) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYNormalizedToggle",
+          ]
+          assert re.findall(r"(?m)^import (\S+)$", t) == [
+            "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYPackedMask",
+          ]
+          assert re.findall(r"(?m)^#print axioms (\S+)$", s) == source_roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$", t) == consumer_roots
+          for content in [s,t]:
+              assert "set_option autoImplicit false" in content
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe|native_decide)\b",content)
+              for forbidden in ["set_option maxRecDepth","set_option maxHeartbeats",
+                                "set_option synthInstance.maxHeartbeats"]:
+                  assert forbidden not in content
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_MSY_PACKED_MASK_SOURCE_EXACT_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-msy-packed-mask/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Packed occupation masks and literal source controls
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-msy-packed-mask"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSMSYPackedMask 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSMSYPackedMaskIndependentAudit.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import re,os
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-msy-packed-mask"
+          for fn in ["native-source.log","strict-axioms.log"]:
+              log=(E/fn).read_text()
+              for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert bad not in log,(fn,bad,log[-6000:])
+          expected = {
+              "native-source.log": [
+                  "FCP.BFSSMSYPackedMask.mem_decodeMask",
+                  "FCP.BFSSMSYPackedMask.decodeMask_injective",
+                  "FCP.BFSSMSYPackedMask.decodeMask_bijective",
+                  "FCP.BFSSMSYPackedMask.xorMask_bit",
+                  "FCP.BFSSMSYPackedMask.decode_xor_source",
+                  "FCP.BFSSMSYPackedMask.decode_and_low",
+                  "FCP.BFSSMSYPackedMask.popcount_low",
+                  "FCP.BFSSMSYPackedMask.source_even_mask_weight",
+              ],
+              "strict-axioms.log": [
+                  "FCP.BFSSMSYPackedMaskIndependent.lastBitAudit",
+                  "FCP.BFSSMSYPackedMaskIndependent.literalXorAudit",
+              ],
+          }
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for filename, names in expected.items():
+              transcript = (E / filename).read_text()
+              if filename == "native-source.log":
+                  assert "Build completed successfully" in transcript
+              for name in names:
+                  pattern = re.escape("'" + name + "'") + (
+                      r" (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)"
+                  )
+                  reports = re.findall(pattern, transcript)
+                  assert len(reports) == 1, (filename, name, reports)
+                  axioms = {x.strip() for x in reports[0].split(",") if x.strip()}
+                  assert axioms <= allowed, (filename, name, axioms)
+          print("BFSS_MSY_PACKED_MASK_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN")
+          PY
+
+      - name: Preserve first-causal original source and consumer evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-msy-packed-mask-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-msy-packed-mask/
+          if-no-files-found: warn
+          retention-days: 30

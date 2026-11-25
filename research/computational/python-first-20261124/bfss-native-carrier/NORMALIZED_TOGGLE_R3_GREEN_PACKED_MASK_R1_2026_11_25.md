@@ -1,0 +1,11 @@
+# Normalized toggle R3 qualified; packed mask R1 staged
+
+Date 2026-11-25 Pacific. Branch integration/bfss-unified-research-20261108.
+
+## Normalized toggle R3 — GREEN_QUALIFIED
+Run https://github.com/etblink/math/actions/runs/45582419473 ; exact commit bfa30270cbfd3ec27da7c1c79b08624d834ae1b0; job 139095507877. Frozen preflight, pinned environment, native build 8976 jobs, independent controls, ten axiom roots (only propext, Classical.choice, Quot.sound), strict GREEN sentinel passed. Original artifact https://github.com/etblink/math/actions/runs/45582419473/artifacts/15007932116 ; independently downloaded and checked in Python, 8363 bytes, SHA-256 cffb2719ac5fc6cae54a4e9a057966ccecc6a40c68d663cf485f3141fcc00c22, ZIP CRC clean, seven members, exact SHA and source/consumer/workflow blobs match. Full decoded original log archived. Auxiliary package worktree cache warnings preserved; pinned Lean and Mathlib checks passed. Original artifact expiry 2026-12-25 UTC. Exact J(T c)=sqrt(2) theta J(c) qualified for arbitrary occupation-indexed coefficients and both phases, not yet packed masks or physical singlets.
+
+## Packed mask R1 — REGISTERED_NOT_EXECUTED
+Prove generic width decoder by literal Nat.testBit, bounded injectivity and cardinal equality (Fin 2^n vs Finset (Fin n)), exact XOR bit law and decoded set toggle, low-mask filtering and finite-width popcount correspondence, and source even parity weight. Use pinned Lean v4.34.1 Init/Data/Nat/Bitwise/Lemmas.lean (testBit_xor, testBit_two_pow, testBit_and, testBit_two_pow_sub_one, xor_lt_two_pow, eq_of_testBit_eq, testBit_lt_two_pow) and pinned Mathlib Fintype/EquivFin.lean and Fintype/Powerset.lean. Generic width avoids unfolding 2^24 elements. Independent checks last mode bit and literal natural XOR against source toggle. No dense matrices and no arbitrary Fintype order assumption. Local Lean unavailable; new candidate unqualified until strict CI.
+
+popcountWidth counts bits through finite width; it represents the mathematical bit count for the bounded masked integer, not a proof of CPython implementation. Odd inclusive-mask parity and packed coefficient-carrier reindexing remain next interfaces. Physical gauge/Spin(9), charge, weighted domain and fidelity remain separate. No physical promotion. Finite witness unchanged.
