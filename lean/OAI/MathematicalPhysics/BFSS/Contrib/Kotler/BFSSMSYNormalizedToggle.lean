@@ -93,59 +93,60 @@ theorem normalizedOddTerm (i : Fin 24) (A : Finset (Fin 24)) :
   · rw [ite_eq_left h, oddWeight, ite_eq_left h, smul_neg, smul_smul, neg_smul]
   · rw [ite_eq_right h, oddWeight, ite_eq_right h, smul_smul]
 
+/-- The whole finite-sum transport is checked on an abstract index and
+module. No specialized scalar-sum rewrite enters the final kernel term. -/
+private theorem normalized_of_weighted_sums {ι V : Type*} [AddCommGroup V]
+    [Module ℂ V] (s : Finset ι) (k : ℂ) (c w : ι → ℂ)
+    (b v : ι → V) (x y : V)
+    (hx : x = ∑ a ∈ s, (c a * w a) • b a)
+    (hy : y = ∑ a ∈ s, c a • v a)
+    (hv : ∀ a, k • v a = w a • b a) :
+    x = k • y := by
+  calc
+    x = ∑ a ∈ s, (c a * w a) • b a := hx
+    _ = ∑ a ∈ s, k • (c a • v a) := by
+      apply Finset.sum_congr rfl
+      intro a _
+      calc
+        (c a * w a) • b a = c a • (w a • b a) := (smul_smul _ _ _).symm
+        _ = c a • (k • v a) := congrArg (fun z : V => c a • z) (hv a).symm
+        _ = (c a * k) • v a := smul_smul _ _ _
+        _ = (k * c a) • v a := congrArg (fun z : ℂ => z • v a) (mul_comm _ _)
+        _ = k • (c a • v a) := (smul_smul _ _ _).symm
+    _ = k • (∑ a ∈ s, c a • v a) := Finset.smul_sum.symm
+    _ = k • y := congrArg (fun z : V => k • z) hy.symm
+
 /-- Exact normalized even computational action on arbitrary coefficients. -/
 theorem evenIntertwine (j : Fin 8) (C : ColorIndex 2) (c : FockCoordinateSpace 23) :
     coefficientCarrier (evenAction (colorModeEquiv (j, C)) c) =
       majoranaNormalization •
         pairedTheta (spinPairEquiv.symm (j, (0 : Fin 2))) C (coefficientCarrier c) := by
-  let i := colorModeEquiv (j, C)
-  calc
-    _ = ∑ A : Finset (Fin 24), (c A * occupationParity i A) •
-        occupationKet (toggleOccupation i A) := weightedToggle_carrier i _ c
-    _ = ∑ A : Finset (Fin 24), c A • (majoranaNormalization • evenTerm i A) := by
-      apply Finset.sum_congr rfl
-      intro A _
-      rw [normalizedEvenTerm, smul_smul]
-    _ = majoranaNormalization • (∑ A : Finset (Fin 24), c A • evenTerm i A) :=
-      by
-        rw [Finset.smul_sum]
-        apply Finset.sum_congr rfl
-        intro A _
-        calc
-          c A • (majoranaNormalization • evenTerm i A) =
-              (c A * majoranaNormalization) • evenTerm i A := smul_smul _ _ _
-          _ = (majoranaNormalization * c A) • evenTerm i A := by
-            rw [mul_comm (c A) majoranaNormalization]
-          _ = majoranaNormalization • (c A • evenTerm i A) := (smul_smul _ _ _).symm
-    _ = _ := congrArg (fun x : Fermion 2 => majoranaNormalization • x)
-      (evenCarrier j C c).symm
+  exact normalized_of_weighted_sums (ι := Finset (Fin 24)) (V := Fermion 2)
+    (Finset.univ : Finset (Finset (Fin 24))) majoranaNormalization
+    (fun A : Finset (Fin 24) => c A) (occupationParity (colorModeEquiv (j, C)))
+    (fun A : Finset (Fin 24) => occupationKet (toggleOccupation (colorModeEquiv (j, C)) A))
+    (evenTerm (colorModeEquiv (j, C)))
+    (coefficientCarrier (evenAction (colorModeEquiv (j, C)) c))
+    (pairedTheta (spinPairEquiv.symm (j, (0 : Fin 2))) C (coefficientCarrier c))
+    (weightedToggle_carrier (colorModeEquiv (j, C)) (occupationParity (colorModeEquiv (j, C))) c)
+    (evenCarrier j C c)
+    (normalizedEvenTerm (colorModeEquiv (j, C)))
 
 /-- Exact normalized odd computational action on arbitrary coefficients. -/
 theorem oddIntertwine (j : Fin 8) (C : ColorIndex 2) (c : FockCoordinateSpace 23) :
     coefficientCarrier (oddAction (colorModeEquiv (j, C)) c) =
       majoranaNormalization •
         pairedTheta (spinPairEquiv.symm (j, (1 : Fin 2))) C (coefficientCarrier c) := by
-  let i := colorModeEquiv (j, C)
-  calc
-    _ = ∑ A : Finset (Fin 24), (c A * oddWeight i A) •
-        occupationKet (toggleOccupation i A) := weightedToggle_carrier i _ c
-    _ = ∑ A : Finset (Fin 24), c A • (majoranaNormalization • oddTerm i A) := by
-      apply Finset.sum_congr rfl
-      intro A _
-      rw [normalizedOddTerm, smul_smul]
-    _ = majoranaNormalization • (∑ A : Finset (Fin 24), c A • oddTerm i A) :=
-      by
-        rw [Finset.smul_sum]
-        apply Finset.sum_congr rfl
-        intro A _
-        calc
-          c A • (majoranaNormalization • oddTerm i A) =
-              (c A * majoranaNormalization) • oddTerm i A := smul_smul _ _ _
-          _ = (majoranaNormalization * c A) • oddTerm i A := by
-            rw [mul_comm (c A) majoranaNormalization]
-          _ = majoranaNormalization • (c A • oddTerm i A) := (smul_smul _ _ _).symm
-    _ = _ := congrArg (fun x : Fermion 2 => majoranaNormalization • x)
-      (oddCarrier j C c).symm
+  exact normalized_of_weighted_sums (ι := Finset (Fin 24)) (V := Fermion 2)
+    (Finset.univ : Finset (Finset (Fin 24))) majoranaNormalization
+    (fun A : Finset (Fin 24) => c A) (oddWeight (colorModeEquiv (j, C)))
+    (fun A : Finset (Fin 24) => occupationKet (toggleOccupation (colorModeEquiv (j, C)) A))
+    (oddTerm (colorModeEquiv (j, C)))
+    (coefficientCarrier (oddAction (colorModeEquiv (j, C)) c))
+    (pairedTheta (spinPairEquiv.symm (j, (1 : Fin 2))) C (coefficientCarrier c))
+    (weightedToggle_carrier (colorModeEquiv (j, C)) (oddWeight (colorModeEquiv (j, C))) c)
+    (oddCarrier j C c)
+    (normalizedOddTerm (colorModeEquiv (j, C)))
 
 #print axioms toggle_involutive
 #print axioms weightedToggle_apply
