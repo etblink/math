@@ -47,7 +47,7 @@ def bil(a,b,M,phase=0):
     return [(3*(int(i)//2)+a,int(i)%2,3*(int(j)//2)+b,int(j)%2,int(M[i,j]),phase) for i,j in zip(*np.nonzero(M))]
 def ops(*parts):
     return [(p,u,q,v,c*k,h) for k,T in parts if k for p,u,q,v,c,h in T]
-def apply(T,V):
+def apply_literal(T,V):
     out={}
     for p,u,q,v,c,h in T:
         for m,(r,i) in V.items():
@@ -56,6 +56,34 @@ def apply(T,V):
             a,b=((r,i),(-i,r),(-r,-i),(i,-r))[phase]
             add(out,n^(1<<p),c*a,c*b)
     return out
+# Bounded vectorized direct scatter, with exact arbitrary-precision fallback.
+# Sequential right/left parity computations are retained, not compiled XOR masks.
+PAR=np.array([m.bit_count()%2 for m in range(4096)],dtype=np.int64)
+STATS={'bounded_calls':0,'fallback_calls':0,'max_bound':0}
+def apply(T,V):
+    if not T or not V:return {}
+    bound=max(max(abs(a),abs(b)) for a,b in V.values())*sum(abs(c) for _,_,_,_,c,_ in T)
+    STATS['max_bound']=max(STATS['max_bound'],bound)
+    if bound>=2**62:
+        STATS['fallback_calls']+=1
+        return apply_literal(T,V)
+    STATS['bounded_calls']+=1
+    m=np.fromiter(V,dtype=np.int64,count=len(V))
+    a=np.fromiter((z[0] for z in V.values()),dtype=np.int64,count=len(V))
+    b=np.fromiter((z[1] for z in V.values()),dtype=np.int64,count=len(V))
+    # Every term is a permutation, so no repeated targets within one scatter.
+    # Gather only touched masks, no full 2^24 scan.
+    targets=np.unique(np.concatenate([m^(1<<p)^(1<<q) for p,u,q,v,c,h in T]))
+    R=np.zeros(len(targets),dtype=np.int64);I=np.zeros_like(R)
+    def parity(z):return PAR[z&4095]^PAR[z>>12]
+    for p,u,q,v,c,h in T:
+        n=m^(1<<q)
+        phase=(h+u+v+2*(parity(m&((1<<q)-1))+v*((m>>q)&1)+parity(n&((1<<p)-1))+u*((n>>p)&1)))%4
+        rr=np.choose(phase,[a,-b,-a,b]);ii=np.choose(phase,[b,a,-b,-a])
+        idx=np.searchsorted(targets,n^(1<<p))
+        R[idx]+=c*rr;I[idx]+=c*ii
+    nz=np.flatnonzero((R!=0)|(I!=0))
+    return {int(targets[k]):(int(R[k]),int(I[k])) for k in nz}
 def dot(A,B):
     r=i=0
     for m,(a,b) in A.items():
@@ -136,14 +164,23 @@ def run(diag,out):
                 r=receipt[name][axis] if name in ('nu','t') else receipt[name]
                 expected=Fraction(r[p][q]);counts[name]+=1
                 if actual!=expected:errors.append([name,axis,p,q,str(actual),str(expected)])
-    report={'diag':diag,'receipt_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'comparisons':counts,'errors':errors,'Euler_exact':True,'scope':'max(p,q)>=17; literal direct 27-coordinate derivatives; no old-old placeholders'}
+    report={'diag':diag,'receipt_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'comparisons':counts,'errors':errors,'Euler_exact':True,'accumulation':STATS,'scope':'max(p,q)>=17; literal direct 27-coordinate derivatives; no old-old placeholders'}
     out.write_text(json.dumps(report,indent=2)+'\n')
     assert not errors,errors[:5]
     print(json.dumps(report,indent=2))
+    print('BFSS_DIRECT_FIXTURE_EXACT_PASS',flush=True)
 def selftest():
     # Compare direct actions to an independently specified two-mode example.
     assert apply([(0,0,0,0,1,0)],{0:(2,3),1:(4,5)})=={0:(2,3),1:(4,5)}
     assert apply([(0,0,0,1,1,0)],{0:(2,3),1:(4,5)})=={0:(-3,2),1:(5,-4)}
+    # Exhaustive small-carrier cross-check and forced wide-integer fallback.
+    V={m:(m-13,2*m+1) for m in range(32)}
+    for p,u,q,v,h in it.product(range(5),range(2),range(5),range(2),range(4)):
+        T=[(p,u,q,v,-3,h)]
+        assert apply(T,V)==apply_literal(T,V)
+    W={0:(2**70,-2**71)}
+    T=[(0,0,1,1,3,1)]
+    assert apply(T,W)==apply_literal(T,W)
     x=np.zeros((3,9),dtype=np.int64);x[0,0]=1
     T=tensor(x);assert np.count_nonzero(T)==175 and int(np.sum(T*T))==36*330
     assert np.array_equal(tensor(x,x),3*T)
@@ -155,6 +192,7 @@ def selftest():
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('diag',nargs='?',default='001');p.add_argument('--output',type=Path);p.add_argument('--self-test',action='store_true');a=p.parse_args()
     selftest()
+    print('BFSS_DIRECT_FIXTURE_SELFTEST_PASS',flush=True)
     if not a.self_test:
         assert len(a.diag)==3 and a.output is not None
         run(tuple(map(int,a.diag)),a.output)
