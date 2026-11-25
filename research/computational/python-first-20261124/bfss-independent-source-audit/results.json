@@ -1,0 +1,209 @@
+{
+  "source_baseline": "cd87fb25c3cd520c42c4d92cf2baafa28e29373d",
+  "classification": "SURVIVED_FINITE_TESTS",
+  "lean_qualification": false,
+  "physical_claim": false,
+  "registration": "retrospective; computations executed in isolated JavaScript before archival",
+  "inputs": {
+    "seed_blob": "91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0",
+    "rank1_anchor_blob": "fd48a584ad72683ab1aa4b974a8e3dfcc9fa15c7",
+    "rank3_anchor_blob": "54fcedb9dadb9ea5d5c76bb3d10615943c877955",
+    "gamma_blob": "818ff344566c2f2552a30591d92fb7f718efe866",
+    "matrix_blob": "07fb3c65e81b342034f2330d710bce400ab7ec05",
+    "published_receipt_blob": "491ee39a090df8ea0329875784831db105359e9d",
+    "jet_001_blob": "89a8c71ccf96f20ed9f6c378341d826135b47afd",
+    "jet_123_blob": "035863559cac8eed8219490fe5263615409ef3cb"
+  },
+  "anchor": {
+    "npz_crc_verified": true,
+    "seed_support": 19136,
+    "seed_norm2": "8072064",
+    "gamma_flip": [
+      9,
+      11,
+      14,
+      10,
+      12,
+      15,
+      13,
+      8,
+      0
+    ],
+    "gamma_sign": [
+      9,
+      10,
+      11,
+      15,
+      13,
+      12,
+      14,
+      0,
+      8
+    ],
+    "tensor_nonzero": 175,
+    "tensor_norm2": 330,
+    "bilinear_actions_including_control": 231,
+    "largest_conservative_integer_bound": 2998656,
+    "anchor_support": 28256,
+    "anchor_norm2": "265261122846720",
+    "max_component_l1": 489216,
+    "denominator": 55,
+    "coefficient_mismatches": 0,
+    "residual_norm2": "0",
+    "omitted_K000_triple_support": 30912,
+    "omitted_K000_triple_norm2": "6400471203840"
+  },
+  "scalar_and_design": {
+    "rows": 104,
+    "unique_labels": 104,
+    "degree_hist_families": {
+      "S": 56,
+      "Phi": 24,
+      "H3": 24
+    },
+    "max_degree": 8,
+    "scalar_derivative_exact_checks": 5616,
+    "nonzero_derivative_checks": 1314,
+    "rank_mod_prime": "1000003",
+    "all_designs_full_rank": 20,
+    "maximum_columns": 30,
+    "original_12_fit_degree18_tensor_rank": 27,
+    "required_degree18_rank": 30,
+    "holdouts_disjoint": true
+  },
+  "cyclic_tensor": {
+    "cyclic_basis_rank_mod_prime": 7,
+    "color_basis_trace_checks": 21,
+    "archived_cyclic_coordinate_checks": 972,
+    "compressed_tensor_derivative_checks": 26244,
+    "nonzero_derivative_checks": 1627,
+    "omit_DG_nonzero_control_entries": 979,
+    "euler_checks": 972,
+    "fixtures": [
+      "rank1",
+      "rank2",
+      "rank3",
+      "oblique"
+    ]
+  },
+  "matrix_evaluation": {
+    "compressed_bytes": 494595,
+    "decompressed_bytes": 2257778,
+    "gzip_crc_verified": true,
+    "upper_triangle_matrix_entry_checks": 16380,
+    "mass_parity_zero_checks": 2668,
+    "quadratic_forms_exact_match": [
+      "mass",
+      "H",
+      "q1"
+    ],
+    "quotients_exact_algebraic_match": [
+      "q_H",
+      "q_aux",
+      "q1"
+    ],
+    "q_H_truncated": "0.0367035650251277",
+    "q_aux_truncated": "0.3276575824757585",
+    "q1_truncated": "0.3643611475008863",
+    "sqrt_bracket_verified": true,
+    "target_strictly_crossed": true,
+    "conditional_fidelity_lower_bound_truncated": "0.0380865705976600",
+    "scope": "Reevaluation of frozen rational matrices, not fresh integral reconstruction"
+  },
+  "rank_one_jets": {
+    "fixture": [
+      0,
+      0,
+      1
+    ],
+    "core_indices": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "direct_directions": 12,
+    "represented_directions": 27,
+    "operator_actions": 555,
+    "max_primitive_accumulator_bound": 184482816,
+    "nonzero_jet_comparisons": 24,
+    "jet_comparisons": 64,
+    "structural_zero_checks": 80,
+    "euler_vector_checks": 4,
+    "selected_direction": {
+      "a": 0,
+      "k": 0,
+      "support": [
+        49056,
+        49024,
+        49056,
+        48992
+      ]
+    },
+    "scaled_norms": [
+      "299599188407091200/429",
+      "14962772706066432/6655",
+      "513791791237922029568/3003",
+      "1043422241108262912/1925"
+    ],
+    "all_exact": true
+  },
+  "rank_three_corrections": {
+    "fixture": [
+      1,
+      2,
+      3
+    ],
+    "rank3_anchor_support": 89088,
+    "rank3_anchor_denominator": 55,
+    "core_supports": [
+      337880,
+      335088,
+      338822,
+      338566
+    ],
+    "t_comparisons": 48,
+    "t_nonzero": 12,
+    "t_trace_checks": 16,
+    "v_comparisons": 16,
+    "v_nonzero": 8,
+    "operator_actions": 35,
+    "max_primitive_accumulator_bound": 3174751295299584,
+    "all_exact": true
+  },
+  "negatives": [
+    {
+      "kind": "implementation_failure",
+      "error": "SyntaxError: Cannot convert -0.1675521277750 to a BigInt",
+      "disposition": "Exact decimal and exponent parser; subsequent matrix evaluation passed. Not a mathematical falsifier."
+    },
+    {
+      "kind": "access_limitation",
+      "path": "bfss-mixed104/jet_polynomials.json",
+      "blob": "f1a0bbb2ba7b585d706e6c56e11fbfb44e167306",
+      "bytes": 1240033,
+      "disposition": "Connector returned empty content including base64. Independent exact refit from 17 raw receipts; coefficient-level comparison to committed large file still outstanding."
+    },
+    {
+      "kind": "historical_design_negative_control",
+      "rank": 27,
+      "required": 30
+    },
+    {
+      "kind": "omitted_DG_control",
+      "nonzero_entries": 979
+    },
+    {
+      "kind": "omitted_K000_triple",
+      "support": 30912,
+      "norm2": "6400471203840"
+    }
+  ],
+  "boundaries": [
+    "Prior connector executions retained as transcribed output receipts, not claimed as byte-for-byte original stdout files.",
+    "The refit was freshly rerun at archive time, with executable algorithm and full recovered coefficients preserved.",
+    "No independent full cryptographic rehash of original NPZs in the earlier isolated runs; input blobs and ZIP CRCs checked.",
+    "Only selected direct occupation jet blocks recomputed; inherited 1445 polynomials and all 1497 moment keys not freshly evaluated.",
+    "No physical fidelity promotion; no Lean or CI modifications."
+  ]
+}
