@@ -1,0 +1,9 @@
+# R3 RED: verifier arithmetic discrepancy localized
+
+Run 45715443214, tested 6acf58dae01d299869bc6236f8c42b4ec01819a0, job 139560190135. Original full job log committed at a8dbbcde16875d898e9f50c9a3bef85cfa7706a4. Artifact 15069937213 (2528 bytes), provider SHA256 379dc505d9db4735f414d8bffdf799b4bf16501962e52b4f04469cbe9cfee728 (not independently rehashed).
+
+All three color and four selected spin generators independently vanish on the literal frozen seed. All 27 first K actions, four selected second K actions and mixed multi-term action agree exactly between vectorized and literal code. First divergence at x100 H3 outer action p=1: 66860 coefficient differences. E.g. mask 4 vectorized (864,0), literal (0,0); mask 4124 vectorized (0,0), literal (-153792,0). This is an internal verifier inconsistency upstream of historical anchor comparison. R1/R2 real and imaginary discrepancies cannot presently be attributed to historical receipts. Preserve both results and don't promote physical conclusion.
+
+Local synthetic check of original vectorized mechanism on Python 3.13.5/NumPy 2.3.5 with 71445 masks (including deletion/reinsertion) and 16 terms matched literal scatter over 1024469 target masks. This is not a reproduction of actual failing data/runtime. R3 runtime Python 3.14.4 with numpy 2.2.6 source-built wheel. No claim of a runtime defect without discriminating evidence.
+
+R4: directly reconstruct p=1 input via literal actions, compare old vectorization, literal and separately aligned dense scatter on same actual input, audit input alignment and each individual term, then verify complete x100 anchor against pinned coefficient vector and x001 norm. Use exact bound on dense accumulators, no floating point. If successful, only then consider replacing verifier backend. No alteration to historical inputs or prior qualifications.
