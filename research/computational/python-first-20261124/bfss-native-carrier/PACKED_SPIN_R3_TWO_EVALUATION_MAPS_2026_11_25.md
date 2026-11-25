@@ -1,0 +1,9 @@
+# Packed Spin(9) R3 — two explicit evaluation maps
+
+Date 2026-11-25 Pacific. Owner authorized continuation after the documented two-native-RED stop. Prospective registration, not qualification. Source baseline e066d49948b7816a694950fb44f351dbdd98f116; exact R2 source blob 5edcee75ea9947773b7336c303d5ab440c95a31c; consumer 6b437c05214e68cb04c01b2b0c293e425505571d; workflow 2bf9b1149be6efc08262c50fd81f851144c5e0ce.
+
+## Hypothesis and procedure
+R1 specialized calc and R2 specialized exact on combined weighted operator expression both exceeded recursion depth. Use named complex linear packed map and source evaluation map (L6G6K literal evalSourceFiber pattern); named weighted packed terms and weighted real source operator terms. Prove a single-term equality using accepted R2 clean label/bilinear root, exact scalar conversion and operator composition. Then transport already weighted terms using two additive maps on an explicit finite index set, without scalar or normed-space structure in the abstract sum lemma. Separately name the definitional recovery equations for the two original sums, and apply the abstract equality only at matching named expressions. This is a proof-interface change, not a new generator. Remove source sequential-focus linter failure with explicit branches; likewise preempt analogous consumer lint, preserving both consumer statements. All five source and two consumer roots and workflow unchanged, no additional axioms or resource overrides. Local Lean compilation unavailable. Stop on another native RED; isolate a smaller interface gate before further full-size attempts. No physical qualification, seed or finite action claim.
+
+## Qualification
+Same pinned environment, frozen original preflight, native and independent strict compile, all seven required axiom reports and exact sentinel, independently audited artifact. Any failure is RED_UNQUALIFIED.
