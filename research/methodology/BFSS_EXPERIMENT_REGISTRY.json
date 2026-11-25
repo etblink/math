@@ -9735,6 +9735,40 @@
         "script_sha256": "a74d4d5dec36eb1a00c2dce6b592cd098b70a267560d0cfb7529fc3d106b8ae1",
         "results_sha256": "1fc4187724fde456d8f247c8d4272c715624e81e0d23b3c5594ea1b5e2fb58c9"
       }
+    },
+    {
+      "id": "E-MSY-SPINOR-CLOSURE-CARTAN-R1-20261125",
+      "title": "Exact Cartan and finite central rotation audit for source Spin(9) vector action",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "EXACT_FINITE_SPIN_COEFFICIENT_CERTIFICATE_NOT_KERNEL_OR_PHYSICAL_FIDELITY",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "972b7e34a7fbd891bd630e391ff6a91e562c420b",
+      "memo": "research/computational/python-first-20261124/bfss-spinor-closure/README.md",
+      "source_artifact": {
+        "script": "research/computational/python-first-20261124/bfss-spinor-closure/audit.py",
+        "results": "research/computational/python-first-20261124/bfss-spinor-closure/results.json"
+      },
+      "stages": {
+        "hypothesis": "Every normalized source plane is a sum of 24 commuting signed disjoint Majorana pairs with coefficients +/-1/4. Its 2pi Fock action equals occupation parity and its 4pi action is identity. The four disjoint spinor Cartan involutions have 16 joint rank-one weight spaces, including the +2 weight.",
+        "controls": [
+          "All 36 exact signed plane pair matchings",
+          "Exact Clifford blade central sign in literal packed mode order",
+          "Four commuting Cartan matrices, exact trace of all 16 products and all joint projectors",
+          "Double-normalization negative control"
+        ],
+        "falsifiers": [
+          "Any plane matching or central sign mismatch",
+          "Any joint projector rank differs from one",
+          "Double-normalization control fails"
+        ],
+        "analysis_plan": "Local Python integers only. Analytical individual charge deficiency proof, exact Lie integration and intertwiner averaging; avoid assuming closed charge symmetry or HS operator action suffices. No Lean changes."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
