@@ -7,6 +7,7 @@ namespace FCP.BFSSMSYSingletonParitySourceIndependent
 noncomputable section
 
 open FCP.BFSSMSYSingletonParitySource FCP.BFSSFermionF3B2
+open OAI.ContinuumCoulomb.HubbardGlobal
 
 /-- The actual source coefficient with two smaller occupied modes. -/
 theorem evenInsertionAudit :
@@ -14,8 +15,8 @@ theorem evenInsertionAudit :
   rw [creationCoefficient_eq_parityTest _ _ (by decide)]
   have h : (({0, 2, 4} : Finset (Fin 24)).filter (fun k => k < 3)).card = 2 := by
     decide
-  rw [h]
-  norm_num
+  have hs : (-1 : ℤˣ) ^ (2 : ℕ) = 1 := by decide
+  simp only [h, ite_eq_left hs]
 
 /-- The actual source coefficient with one smaller occupied mode. -/
 theorem oddInsertionAudit :
@@ -23,8 +24,8 @@ theorem oddInsertionAudit :
   rw [creationCoefficient_eq_parityTest _ _ (by decide)]
   have h : (({0, 3, 4} : Finset (Fin 24)).filter (fun k => k < 2)).card = 1 := by
     decide
-  rw [h]
-  norm_num
+  have hs : (-1 : ℤˣ) ^ (1 : ℕ) ≠ 1 := by decide
+  simp only [h, ite_eq_right hs]
 
 #print axioms evenInsertionAudit
 #print axioms oddInsertionAudit

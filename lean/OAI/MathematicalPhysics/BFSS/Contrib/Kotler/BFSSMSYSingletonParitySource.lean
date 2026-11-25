@@ -12,6 +12,7 @@ noncomputable section
 open Set.powersetCard
 open FCP.BFSSMSYSingletonParityCore FCP.BFSSMSYNativeOccupationTransition
 open FCP.BFSSFermionF3B2
+open OAI.ContinuumCoulomb.HubbardGlobal
 
 /-- Evaluate the original sorting permutation on the left summand. -/
 theorem sorting_left_value {α : Type*} [LinearOrder α] {m n : ℕ}
@@ -20,10 +21,14 @@ theorem sorting_left_value {α : Type*} [LinearOrder α] {m n : ℕ}
     ((orderIsoOfFin (disjUnion hd))
       (permOfDisjoint hd (Fin.castAdd n j))).val = (orderIsoOfFin S j).val := by
   simp only [permOfDisjoint, Equiv.trans_apply, finSumFinEquiv_symm_apply_castAdd]
+  let z : (disjUnion hd).val :=
+    Equiv.Finset.disjUnionEquiv S.val T.val hd (Sum.inl (orderIsoOfFin S j))
   change ((orderIsoOfFin (disjUnion hd))
-    ((orderIsoOfFin (disjUnion hd)).symm
-      (Equiv.Finset.disjUnionEquiv S.val T.val hd (Sum.inl (orderIsoOfFin S j))))).val = _
-  rw [OrderIso.apply_symm_apply, Equiv.Finset.disjUnionEquiv_inl]
+    ((orderIsoOfFin (disjUnion hd)).symm z)).val = _
+  calc
+    _ = z.val := congrArg (fun x : (disjUnion hd).val => x.val)
+      ((orderIsoOfFin (disjUnion hd)).apply_symm_apply z)
+    _ = (orderIsoOfFin S j).val := rfl
 
 /-- Evaluate the original sorting permutation on the right summand. -/
 theorem sorting_right_value {α : Type*} [LinearOrder α] {m n : ℕ}
@@ -32,10 +37,14 @@ theorem sorting_right_value {α : Type*} [LinearOrder α] {m n : ℕ}
     ((orderIsoOfFin (disjUnion hd))
       (permOfDisjoint hd (Fin.natAdd m j))).val = (orderIsoOfFin T j).val := by
   simp only [permOfDisjoint, Equiv.trans_apply, finSumFinEquiv_symm_apply_natAdd]
+  let z : (disjUnion hd).val :=
+    Equiv.Finset.disjUnionEquiv S.val T.val hd (Sum.inr (orderIsoOfFin T j))
   change ((orderIsoOfFin (disjUnion hd))
-    ((orderIsoOfFin (disjUnion hd)).symm
-      (Equiv.Finset.disjUnionEquiv S.val T.val hd (Sum.inr (orderIsoOfFin T j))))).val = _
-  rw [OrderIso.apply_symm_apply, Equiv.Finset.disjUnionEquiv_inr]
+    ((orderIsoOfFin (disjUnion hd)).symm z)).val = _
+  calc
+    _ = z.val := congrArg (fun x : (disjUnion hd).val => x.val)
+      ((orderIsoOfFin (disjUnion hd)).apply_symm_apply z)
+    _ = (orderIsoOfFin T j).val := rfl
 
 /-- Sign of the literal Mathlib singleton-then-occupation sorting permutation. -/
 theorem singletonPerm_sign {α : Type*} [LinearOrder α]
