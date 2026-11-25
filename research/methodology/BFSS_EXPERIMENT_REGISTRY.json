@@ -8347,6 +8347,65 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-COEFFICIENT-CARRIER-R1-RED-20261124",
+      "title": "Coefficient carrier R1 native RED with four clean roots",
+      "registered_at": "2026-11-24",
+      "status": "RED_UNQUALIFIED",
+      "classification": "LEAN_IMPLICIT_ARGUMENT_FAILURE_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "11f4ed0636e024e83a7c1afc6476d3ea0dcf3b5c",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/CARRIER_R1_RED_R2_IMPLICIT_DIMENSION_2026_11_24.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45556014646,
+        "job_id": 139008120896,
+        "artifact_id": 14996420495,
+        "artifact_size_bytes": 8370,
+        "artifact_sha256": "47762dac3539c0c941a250d4c4e5d1c784e617b2e2eac1919c64b21bccce1326",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Line 28: implicit Q supplied as third explicit argument to fockCoordinates_apply",
+        "clean_native_roots": [
+          "carrier_norm",
+          "occupationParity_erase",
+          "evenKet",
+          "oddKet"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/CARRIER_R1_original_job_139008120896.log"
+      }
+    },
+    {
+      "id": "E-MSY-COEFFICIENT-CARRIER-R2-20261124",
+      "title": "Coefficient carrier R2 implicit dimension repair",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "ORIGINAL_SOURCE_COEFFICIENT_SUM_CANDIDATE_NOT_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "11f4ed0636e024e83a7c1afc6476d3ea0dcf3b5c",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/CARRIER_R1_RED_R2_IMPLICIT_DIMENSION_2026_11_24.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYCoefficientCarrier.lean",
+        "consumer": "lean/diagnostics/BFSSMSYCoefficientCarrierIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-coefficient-carrier-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Correct named implicit dimension and explicit arguments resolve sole native diagnostic.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift"
+        ],
+        "analysis_plan": "Preserve all other proofs; strict native and independent qualification and archive exact original evidence."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [

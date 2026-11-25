@@ -25,7 +25,7 @@ theorem occupationCoeff_carrier (c : FockCoordinateSpace 23) (A : Finset (Fin 24
   rw [fockBFSSUnitary.symm_apply_apply]
   calc
     _ = fockCoordinates 23 ((fockCoordinates 23).symm c) A :=
-      (fockCoordinates_apply _ _ _).symm
+      (fockCoordinates_apply (Q := 23) ((fockCoordinates 23).symm c) A).symm
     _ = c A := congrArg (fun v : FockCoordinateSpace 23 => v A)
       ((fockCoordinates 23).apply_symm_apply c)
 
