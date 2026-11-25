@@ -8406,6 +8406,58 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-COEFFICIENT-CARRIER-R2-GREEN-20261124",
+      "title": "Coefficient carrier R2 qualified receipt",
+      "registered_at": "2026-11-24",
+      "status": "LEAN_QUALIFIED",
+      "classification": "ORIGINAL_SOURCE_COEFFICIENT_SUM_ONLY",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "e4078b203d430c206fda24405e3d4db7872831de",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/CARRIER_R2_GREEN_NORMALIZED_TOGGLE_R1_2026_11_24.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45557158865,
+        "job_id": 139011881007,
+        "artifact_id": 14996148868,
+        "artifact_size_bytes": 8364,
+        "artifact_sha256": "734b0ac21087e733aee511403c00931a14c10b09068a32e7551c18ef10c5d357",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 8975,
+        "source_roots": 8,
+        "consumer_roots": 2,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/CARRIER_R2_original_job_139011881007.log"
+      }
+    },
+    {
+      "id": "E-MSY-NORMALIZED-TOGGLE-R1-20261124",
+      "title": "Normalized occupation-indexed Majorana intertwining R1",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "ORIGINAL_SOURCE_NORMALIZED_OCCUPATION_ACTION_CANDIDATE_NOT_BITMASK_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "e4078b203d430c206fda24405e3d4db7872831de",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/CARRIER_R2_GREEN_NORMALIZED_TOGGLE_R1_2026_11_24.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNormalizedToggle.lean",
+        "consumer": "lean/diagnostics/BFSSMSYNormalizedToggleIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-normalized-toggle-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Toggle involution and exact sqrt(2) normalization identify arbitrary coefficient-side even/odd action with literal original theta.",
+        "controls": [
+          "Actual original theta output coefficient",
+          "Odd vacuum phase"
+        ],
+        "analysis_plan": "Strict pinned source and independent consumer; exact root audit and original artifact; no physical inference."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
