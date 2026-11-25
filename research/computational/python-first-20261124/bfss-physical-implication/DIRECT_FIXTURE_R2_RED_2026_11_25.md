@@ -1,0 +1,7 @@
+# Direct fixture R2 RED — real contractions and anchor disagree
+
+Run 45711502112, tested 294814c311fe3d220ae66cfe5147aacae9d565f8, job 139546797145. Original full log preserved at commit b52271acace9c0ec645ab0993b446c3b8e41ca41. Artifact 15069192221, 60792 bytes, provider-reported SHA256 51aab5db974eaf815cdda17041df167b2e1ba92654fb567965b7d7111df740c7 (not independently rehashed).
+
+27 coordinates completed, 1368 comparisons, 191 real mismatches: tau 72/152, beta 72/152, nu 47/456, t 0/456, v 0/152. In this rank-one configuration the t and v families are structural zeros, not a meaningful generic check. Euler and tau Hermitian controls pass; no odd-degree real errors. First imaginary tau coordinate [0,0], pair [2,18], real 0, imag -10953169920. Total imaginary observations 2443. H3 scaled norm squared 5129034750284544 vs expected 9549400422481920. This locates a discrepancy upstream of contraction/normalization, but does not establish which algorithm or source is incorrect. R2 is not a physical counterexample or proof. Hold physical promotion.
+
+Stop full replay retries. Diagnostic R3: real seed literal vs vectorized Majorana actions (including high-bit occupations and multi-term sums), exact coefficient comparison of x100 H3 against the archived binary numerator, then rank-one norm at x001. Compare before doing derivatives. Preserve stage-wise diagnostics and actual mismatch examples. No historical source, seed, gamma or receipt changes.
