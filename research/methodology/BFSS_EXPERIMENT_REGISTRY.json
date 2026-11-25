@@ -6742,6 +6742,102 @@
         "derivative_exact_checks": 108,
         "physical_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-DIFFERENTIAL-CHARGE-20261124",
+      "title": "Finite differential-charge actions on S, Phi and H3; scalar-only weighted Hardy obstruction",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "FINITE_DIFFERENTIAL_EXPRESSION_AND_ANALYTIC_SCALAR_RESTRICTION_NOT_LEAN_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-differential-charge/README.md",
+      "source_baseline": "8a200579f5850467c875d17b060c409ff80f0c5c",
+      "source_artifact": {
+        "directory": "research/computational/python-first-20261124/bfss-differential-charge",
+        "source_core_blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+        "seed_input": "research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz",
+        "charge_script": "research/computational/python-first-20261124/bfss-differential-charge/charge_audit.py",
+        "cubic_script": "research/computational/python-first-20261124/bfss-differential-charge/cubic_jets.py",
+        "scalar_script": "research/computational/python-first-20261124/bfss-differential-charge/scalar_bound.py",
+        "manifest": "research/computational/python-first-20261124/bfss-differential-charge/SHA256SUMS",
+        "git_blobs": {
+          "H3_rank1.json": "dc3976f0c1f5b64e94236395dd719ecfa63a3bd1",
+          "H3_rank3.json": "f83c0cd6640e5726ea55ee150cdf32f7772d0417",
+          "Phi_rank1.json": "3a994525a6cc4f3f932bc52be118e982b755e197",
+          "README.md": "4b262eedcc1f6cc7edca169f4f6f84d06d672e82",
+          "SHA256SUMS": "6bf09101baed05819298238b2ec1c03aa97f344b",
+          "charge_audit.py": "ad9f2a91b107fe6835270e6d3739017beec0365f",
+          "charge_audit_initial.py": "120995166e7503403e03139e35cad667284f5f12",
+          "constant_results.json": "a058b6265270464164daa763532775d14fd6787f",
+          "cubic_jets.py": "e0e794ff844a6663379f455a6f83d4116754d9ec",
+          "environment.txt": "bdc446d1827dfcb9705cf118c9fe209afd06571e",
+          "mixed_control.json": "d108046d8ec23c8fd23736f29ba7feb902aa0eb6",
+          "mixed_control.py": "b3e03706fc916e937414a399cba54245e6770225",
+          "oblique_initial_failure.txt": "c16b0df261f0309a91bcf366b9807278cd193088",
+          "scalar_bound.py": "79e7d8cea71100b38631dd6e1c37ae9ab1800996",
+          "scalar_bound_results.json": "5a1492664c839e1e59b3013fb572c2c5d33ac285"
+        }
+      },
+      "stages": {
+        "observation": "Archived exact seed and cubic coordinate jets permit pointwise evaluation of all original-convention differential charges.",
+        "question": "Do finite charge actions agree with independent scalar controls and covariance, and can real scalar-only profiles on S achieve the fixed-regulator threshold?",
+        "background": [
+          "CSQ-E0 original integrated charge energy identity",
+          "Exact Majorana seed and finite covariant audits",
+          "Cyclic H3 tensor reconstruction",
+          "Original Core.lean differential expression"
+        ],
+        "hypothesis": "Constant singlet two-point matrix is delta/2; real scalar profile has pointwise charge density equal to half gradient norm squared plus quartic potential; completed cubic charge evaluations respect derivative and covariance identities; a mixed control discriminates relative potential sign.",
+        "falsifiers": [
+          "Nonzero two-point identity residual",
+          "Disagreement with scalar control",
+          "Derivative or tangent identity failure",
+          "Wrong relative sign undetected in mixed control"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "constant seed, Phi, H3, artificial mixed polynomial",
+            "rank-one, rank-three, oblique configurations",
+            "Gaussian alpha and deliberately omitted derivative or reversed potential sign"
+          ],
+          "dependent_variables": [
+            "integer numerator norms and cross products",
+            "sixteen charge densities",
+            "derivative and tangent residuals",
+            "weighted scalar quotient"
+          ],
+          "controls": [
+            "full 48x48 two-point matrix",
+            "archived H3 coefficient vectors",
+            "Euler identity",
+            "color/spatial tangent identities",
+            "scalar Gram potential",
+            "independent radial quadrature",
+            "bounded exact integer accumulation"
+          ],
+          "reproduce_command": "See research/computational/python-first-20261124/bfss-differential-charge/README.md"
+        },
+        "analysis_plan": "Separate completed pointwise tests, oblique H3 timeout, analytic scalar-only lower bound, and unverified weighted-domain/full variational witness. Do not infer pointwise equality from integrated CSQ-E0.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for completed checks, H3 oblique INCONCLUSIVE; analytic scalar restriction only under stated real-profile and finite-representation assumptions. No Lean or physical qualification.",
+        "communication": "Preserve both code versions, exact raw receipts, failure log, environment and checksums."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "majorana_two_point_checks": 2304,
+        "completed_charge_actions": 112,
+        "constant_seed_fixtures": 3,
+        "cubic_fixtures": 3,
+        "mixed_control_fixtures": 1,
+        "wrong_sign_density_difference": 3695.811443001694,
+        "scalar_real_profile_lower_bound": 91.125,
+        "gaussian_min_q1": 140.07597113147634,
+        "H3_oblique_status": "INCONCLUSIVE",
+        "source_domain_qualified": false,
+        "full_witness_integrated": false
+      }
     }
   ],
   "allowed_statuses": [
