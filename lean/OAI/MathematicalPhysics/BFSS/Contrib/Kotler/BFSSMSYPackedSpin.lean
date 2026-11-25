@@ -42,44 +42,58 @@ theorem packedBilinear_source48 (p q : Source48Label) (x : PackedCoordinates) :
   exact (packedBilinear_intertwines (packedLabel p) (packedLabel q) x).trans
     (normalized_product_apply _ _ (packedCarrier x)).symm
 
--- Generic double sum: never normalize a specialized large Fock expression.
-private theorem double_transport {I E F : Type*} [Fintype I]
-    [AddCommGroup E] [Module ℂ E] [AddCommGroup F] [Module ℂ F]
-    (J : E →ₗ[ℂ] F) (w : I → I → ℂ) (p : I → I → E) (q : I → I → F)
-    (h : ∀ i j, J (p i j) = q i j) :
-    J (∑ i, ∑ j, w i j • p i j) = ∑ i, ∑ j, w i j • q i j := by
-  rw [map_sum]
-  apply Finset.sum_congr rfl
-  intro i _
-  rw [map_sum]
-  apply Finset.sum_congr rfl
-  intro j _
-  rw [map_smul, h]
-
-private theorem weighted_double_apply {I E : Type*} [Fintype I]
-    [NormedAddCommGroup E] [NormedSpace ℂ E]
-    (a : I → I → ℝ) (g : I → E →L[ℂ] E) (v : E) :
-    (∑ p, ∑ q, a p q • (g p * g q)) v =
-      ∑ p, ∑ q, (a p q : ℂ) • g p (g q v) := by
-  simp only [_root_.sum_apply]
+-- Additive transport only: no scalar tower, norm, or operator algebra
+-- enters the abstract sum comparison. The actual index set is explicit.
+private theorem double_map_congr {I E O F : Type*}
+    [AddCommMonoid E] [AddCommMonoid O] [AddCommMonoid F]
+    (s : Finset I) (J : E →+ F) (ev : O →+ F)
+    (P : I → I → E) (Q : I → I → O)
+    (h : ∀ p q, J (P p q) = ev (Q p q)) :
+    J (∑ p ∈ s, ∑ q ∈ s, P p q) =
+      ev (∑ p ∈ s, ∑ q ∈ s, Q p q) := by
+  simp only [map_sum]
   apply Finset.sum_congr rfl
   intro p _
   apply Finset.sum_congr rfl
   intro q _
-  change a p q • g p (g q v) = _
-  exact RCLike.real_smul_eq_coe_smul (K := ℂ) (a p q) _
+  exact h p q
 
--- Compose the two already elaborated finite-sum interfaces on abstract carriers.
--- Specialize only once, after all equality transitivity has been resolved.
-private theorem double_operator_transport {I E F : Type*} [Fintype I]
-    [AddCommGroup E] [Module ℂ E] [NormedAddCommGroup F] [NormedSpace ℂ F]
-    (J : E →ₗ[ℂ] F) (a : I → I → ℝ) (p : I → I → E)
-    (g : I → F →L[ℂ] F) (v : F)
-    (h : ∀ i j, J (p i j) = g i (g j v)) :
-    J (∑ i, ∑ j, (a i j : ℂ) • p i j) =
-      (∑ i, ∑ j, a i j • (g i * g j)) v :=
-  (double_transport J (fun i j => (a i j : ℂ)) p
-    (fun i j => g i (g j v)) h).trans (weighted_double_apply a g v).symm
+private abbrev BivectorOp := Fermion 2 →L[ℂ] Fermion 2
+
+private def packedBivectorMap : PackedCoordinates →ₗ[ℂ] Fermion 2 :=
+  packedCarrier.toLinearEquiv.toLinearMap
+
+-- Literal evaluation as in the qualified L6G6K source fiber proof.
+private def evalBivector (v : Fermion 2) : BivectorOp →ₗ[ℂ] Fermion 2 where
+  toFun T := T v
+  map_add' _A _B := rfl
+  map_smul' _z _A := rfl
+
+private def packedWeightedTerm (A : Matrix Source48Label Source48Label ℝ)
+    (x : PackedCoordinates) (p q : Source48Label) : PackedCoordinates :=
+  ((A p q / 4 : ℝ) : ℂ) • packedBilinear (packedLabel p) (packedLabel q) x
+
+private def sourceWeightedTerm (A : Matrix Source48Label Source48Label ℝ)
+    (p q : Source48Label) : BivectorOp :=
+  (A p q / 4 : ℝ) • (sourceNormalizedGamma p * sourceNormalizedGamma q)
+
+private theorem weightedTerm_transport
+    (A : Matrix Source48Label Source48Label ℝ) (x : PackedCoordinates)
+    (p q : Source48Label) :
+    packedBivectorMap.toAddMonoidHom (packedWeightedTerm A x p q) =
+      (evalBivector (packedCarrier x)).toAddMonoidHom (sourceWeightedTerm A p q) := by
+  change packedBivectorMap
+      (((A p q / 4 : ℝ) : ℂ) • packedBilinear (packedLabel p) (packedLabel q) x) =
+    (A p q / 4 : ℝ) •
+      sourceNormalizedGamma p (sourceNormalizedGamma q (packedCarrier x))
+  rw [map_smul]
+  change ((A p q / 4 : ℝ) : ℂ) •
+      packedCarrier (packedBilinear (packedLabel p) (packedLabel q) x) =
+    (A p q / 4 : ℝ) •
+      sourceNormalizedGamma p (sourceNormalizedGamma q (packedCarrier x))
+  rw [packedBilinear_source48]
+  exact (RCLike.real_smul_eq_coe_smul (K := ℂ) (A p q / 4)
+    (sourceNormalizedGamma p (sourceNormalizedGamma q (packedCarrier x)))).symm
 
 /-- The exact quarter-weighted original 48-real matrix contraction. -/
 noncomputable def packedBivector
@@ -88,16 +102,29 @@ noncomputable def packedBivector
   ∑ p : Source48Label, ∑ q : Source48Label,
     ((A p q / 4 : ℝ) : ℂ) • packedBilinear (packedLabel p) (packedLabel q) x
 
+-- Explicit, separately checked boundaries for both original definitions.
+private theorem packedBivector_eq_terms
+    (A : Matrix Source48Label Source48Label ℝ) (x : PackedCoordinates) :
+    packedBivector A x =
+      ∑ p : Source48Label, ∑ q : Source48Label, packedWeightedTerm A x p q := rfl
+
+private theorem originalBivector_eq_terms
+    (A : Matrix Source48Label Source48Label ℝ) :
+    originalSource48BivectorK A =
+      ∑ p : Source48Label, ∑ q : Source48Label, sourceWeightedTerm A p q := rfl
+
 theorem packedBivector_intertwines
     (A : Matrix Source48Label Source48Label ℝ) (x : PackedCoordinates) :
     packedCarrier (packedBivector A x) =
       originalSource48BivectorK A (packedCarrier x) := by
-  exact double_operator_transport (I := Source48Label) (E := PackedCoordinates)
-    (F := Fermion 2) packedCarrier.toLinearEquiv.toLinearMap
-    (fun p q => A p q / 4)
-    (fun p q => packedBilinear (packedLabel p) (packedLabel q) x)
-    sourceNormalizedGamma (packedCarrier x)
-    (fun p q => packedBilinear_source48 p q x)
+  have h := double_map_congr (Finset.univ : Finset Source48Label)
+    packedBivectorMap.toAddMonoidHom
+    (evalBivector (packedCarrier x)).toAddMonoidHom
+    (packedWeightedTerm A x) (sourceWeightedTerm A) (weightedTerm_transport A x)
+  change packedBivectorMap.toAddMonoidHom (packedBivector A x) =
+    (evalBivector (packedCarrier x)).toAddMonoidHom (originalSource48BivectorK A)
+  rw [packedBivector_eq_terms, originalBivector_eq_terms]
+  exact h
 
 /-- A normalized source Spin(9) plane is half the same-color
 original gamma product for distinct spatial indices. -/
@@ -119,7 +146,10 @@ theorem normalizedPlane_sourceCoefficient (r s : SpaceIndex) (hrs : r ≠ s)
   have hr : pairedAlgebraData.gamma r = FCP.BFSSGamma9.gamma r := rfl
   have hs : pairedAlgebraData.gamma s = FCP.BFSSGamma9.gamma s := rfl
   rw [hr, hs]
-  by_cases hab : a = b <;> simp [hab] <;> ring
+  by_cases hab : a = b
+  · simp only [ite_eq_left hab, one_mul]
+    ring
+  · simp [hab]
 
 noncomputable def packedSpinPlane (r s : SpaceIndex) (x : PackedCoordinates) :
     PackedCoordinates :=

@@ -18,7 +18,10 @@ theorem literalSpinWeightAudit (r s : SpaceIndex) (hrs : r ≠ s)
       if a = b then (pairedAlgebraData.gamma r * pairedAlgebraData.gamma s) α β / 8
       else 0 := by
   rw [normalizedPlane_sourceCoefficient r s hrs a b α β]
-  by_cases hab : a = b <;> simp [hab] <;> ring
+  by_cases hab : a = b
+  · simp only [ite_eq_left hab]
+    ring
+  · simp [hab]
 
 /-- Use the original source K and literal ordered packed double sum. -/
 theorem literalSpinZeroAudit (r s : SpaceIndex) (x : PackedCoordinates) :
