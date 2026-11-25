@@ -147,6 +147,10 @@ def selftest():
     x=np.zeros((3,9),dtype=np.int64);x[0,0]=1
     T=tensor(x);assert np.count_nonzero(T)==175 and int(np.sum(T*T))==36*330
     assert np.array_equal(tensor(x,x),3*T)
+    # Five-point stencil is exact for cubic polynomials; no finite difference tolerance.
+    for a,i in P:
+        e=np.zeros_like(x);e[a,i]=1
+        assert np.array_equal(12*tensor(x,e),8*(tensor(x+e)-tensor(x-e))-(tensor(x+2*e)-tensor(x-2*e)))
     assert sum(1 for p,q in it.product(range(21),repeat=2) if max(p,q)>=17)==152
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('diag',nargs='?',default='001');p.add_argument('--output',type=Path);p.add_argument('--self-test',action='store_true');a=p.parse_args()
