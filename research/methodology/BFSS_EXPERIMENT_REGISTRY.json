@@ -9096,6 +9096,65 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PACKED-SPIN-R1-RED-20261125",
+      "title": "Packed spin R1 native RED with three clean source roots",
+      "registered_at": "2026-11-25",
+      "status": "RED_UNQUALIFIED",
+      "classification": "SPECIALIZED_FINITE_SUM_RECURSION_DEPTH_AND_UNUSED_SIMP_ARGUMENT_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "fd059588832dcc29f0b08e617f1be47e790a24cb",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_SPIN_R1_RED_R2_ABSTRACT_COMPOSITION_2026_11_25.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45654496893,
+        "job_id": 139347429636,
+        "artifact_id": 15043402647,
+        "artifact_size_bytes": 19373,
+        "artifact_sha256": "303d71d2b8bb0104c6405c6d76981ed1bacbcef71b4a3107a8210120ce9eebe4",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Line 83 maximum recursion depth at specialized calc; line 107 unused Matrix.kronecker_apply",
+        "clean_native_roots": [
+          "sourceGamma_label",
+          "packedBilinear_source48",
+          "normalizedPlane_sourceCoefficient"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_SPIN_R1_original_job_139347429636.log"
+      }
+    },
+    {
+      "id": "E-MSY-PACKED-SPIN-R2-20261125",
+      "title": "Packed spin R2 abstract equality composition before specialization",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "SOURCE48_BIVECTOR_AND_SPIN_PLANE_TRANSPORT_CANDIDATE_NOT_SPARSE_SEED_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "fd059588832dcc29f0b08e617f1be47e790a24cb",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_SPIN_R1_RED_R2_ABSTRACT_COMPOSITION_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedSpin.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPackedSpinIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-packed-spin-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Compose the compiled generic double_transport and weighted_double_apply lemmas abstractly with explicit carriers; single exact application avoids specialized calc elaboration. Remove unused simp argument only.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing strict sentinel"
+        ],
+        "analysis_plan": "Same five source and two independent roots, exact source and workflow pins, original artifact audit. Stop on second native RED."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [

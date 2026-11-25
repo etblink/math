@@ -69,6 +69,18 @@ private theorem weighted_double_apply {I E : Type*} [Fintype I]
   change a p q • g p (g q v) = _
   exact RCLike.real_smul_eq_coe_smul (K := ℂ) (a p q) _
 
+-- Compose the two already elaborated finite-sum interfaces on abstract carriers.
+-- Specialize only once, after all equality transitivity has been resolved.
+private theorem double_operator_transport {I E F : Type*} [Fintype I]
+    [AddCommGroup E] [Module ℂ E] [NormedAddCommGroup F] [NormedSpace ℂ F]
+    (J : E →ₗ[ℂ] F) (a : I → I → ℝ) (p : I → I → E)
+    (g : I → F →L[ℂ] F) (v : F)
+    (h : ∀ i j, J (p i j) = g i (g j v)) :
+    J (∑ i, ∑ j, (a i j : ℂ) • p i j) =
+      (∑ i, ∑ j, a i j • (g i * g j)) v :=
+  (double_transport J (fun i j => (a i j : ℂ)) p
+    (fun i j => g i (g j v)) h).trans (weighted_double_apply a g v).symm
+
 /-- The exact quarter-weighted original 48-real matrix contraction. -/
 noncomputable def packedBivector
     (A : Matrix Source48Label Source48Label ℝ) (x : PackedCoordinates) :
@@ -80,17 +92,12 @@ theorem packedBivector_intertwines
     (A : Matrix Source48Label Source48Label ℝ) (x : PackedCoordinates) :
     packedCarrier (packedBivector A x) =
       originalSource48BivectorK A (packedCarrier x) := by
-  calc
-    _ = ∑ p : Source48Label, ∑ q : Source48Label,
-        ((A p q / 4 : ℝ) : ℂ) •
-          sourceNormalizedGamma p (sourceNormalizedGamma q (packedCarrier x)) :=
-      double_transport packedCarrier.toLinearEquiv.toLinearMap
-        (fun p q => ((A p q / 4 : ℝ) : ℂ))
-        (fun p q => packedBilinear (packedLabel p) (packedLabel q) x)
-        (fun p q => sourceNormalizedGamma p (sourceNormalizedGamma q (packedCarrier x)))
-        (fun p q => packedBilinear_source48 p q x)
-    _ = _ := (weighted_double_apply (fun p q => A p q / 4)
-      sourceNormalizedGamma (packedCarrier x)).symm
+  exact double_operator_transport (I := Source48Label) (E := PackedCoordinates)
+    (F := Fermion 2) packedCarrier.toLinearEquiv.toLinearMap
+    (fun p q => A p q / 4)
+    (fun p q => packedBilinear (packedLabel p) (packedLabel q) x)
+    sourceNormalizedGamma (packedCarrier x)
+    (fun p q => packedBilinear_source48 p q x)
 
 /-- A normalized source Spin(9) plane is half the same-color
 original gamma product for distinct spatial indices. -/
@@ -104,7 +111,7 @@ theorem normalizedPlane_sourceCoefficient (r s : SpaceIndex) (hrs : r ≠ s)
   have hentry :
       originalPairedPlane r s (pairedColorSpinEquiv (a, α)) (pairedColorSpinEquiv (b, β)) =
         (if a = b then (1 : ℝ) else 0) * (-(FCP.BFSSGamma9.gamma r * FCP.BFSSGamma9.gamma s) α β) := by
-    simp [originalPairedPlane, Matrix.reindex, Matrix.kronecker_apply, plane16, Matrix.one_apply]
+    simp [originalPairedPlane, Matrix.reindex, plane16, Matrix.one_apply]
   rw [← ha, ← hb, normalizedPairedPlane, zeroDiagonalPairedPlane_of_ne r s hrs]
   change (-(1 / 2 : ℝ)) *
     originalPairedPlane r s (pairedColorSpinEquiv (a, α)) (pairedColorSpinEquiv (b, β)) = _
