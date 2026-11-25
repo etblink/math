@@ -89,10 +89,20 @@ theorem decode_xor {n : ℕ} (m : Fin (2 ^ n)) (i : Fin n) :
         m.val.testBit k.val := by simp [hne]
     rw [hx, ← mem_decodeMask m k]
     by_cases hm : i ∈ decodeMask m
-    · rw [ite_eq_left hm, Finset.mem_erase]
-      simp only [Ne.symm hik, true_and]
-    · rw [ite_eq_right hm, Finset.mem_insert]
-      simp only [Ne.symm hik, false_or]
+    · rw [ite_eq_left hm]
+      constructor
+      · intro hk
+        exact Finset.mem_erase.mpr ⟨Ne.symm hik, hk⟩
+      · intro hk
+        exact (Finset.mem_erase.mp hk).2
+    · rw [ite_eq_right hm]
+      constructor
+      · intro hk
+        exact Finset.mem_insert.mpr (Or.inr hk)
+      · intro hk
+        rcases Finset.mem_insert.mp hk with heq | hk
+        · exact (hik heq.symm).elim
+        · exact hk
 
 theorem decode_xor_source (m : Fin (2 ^ 24)) (i : Fin 24) :
     decodeMask (xorMask m i) = toggleOccupation i (decodeMask m) :=

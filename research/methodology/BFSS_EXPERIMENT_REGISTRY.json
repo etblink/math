@@ -8632,6 +8632,68 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PACKED-MASK-R1-RED-20261125",
+      "title": "Packed mask R1 native RED with seven clean roots",
+      "registered_at": "2026-11-25",
+      "status": "RED_UNQUALIFIED",
+      "classification": "LEAN_MEMBERSHIP_SIMPLIFICATION_FAILURE_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "7971bcb7733e0810a534917e194323f0f06d620e",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_MASK_R1_RED_R2_EXPLICIT_MEMBERSHIP_2026_11_25.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45609727031,
+        "job_id": 139189801550,
+        "artifact_id": 15018409894,
+        "artifact_size_bytes": 8810,
+        "artifact_sha256": "451f03f491dded77c827cf303e7be17c0ac186a02e43348e01de9edbd4ab9886",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Line 93 simp made no progress in decode_xor non-toggled index erase branch",
+        "clean_native_roots": [
+          "mem_decodeMask",
+          "decodeMask_injective",
+          "decodeMask_bijective",
+          "xorMask_bit",
+          "decode_and_low",
+          "popcount_low",
+          "source_even_mask_weight"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_MASK_R1_original_job_139189801550.log"
+      }
+    },
+    {
+      "id": "E-MSY-PACKED-MASK-R2-20261125",
+      "title": "Packed mask R2 explicit erase/insert membership implications",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "PACKED_MASK_DECODER_CANDIDATE_NOT_ODD_PHASE_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "7971bcb7733e0810a534917e194323f0f06d620e",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_MASK_R1_RED_R2_EXPLICIT_MEMBERSHIP_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedMask.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPackedMaskIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-packed-mask-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Direct membership implications at non-toggled index avoid fragile simp matching of disequality.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift"
+        ],
+        "analysis_plan": "Preserve seven clean roots; exact strict native and independent verification and original artifact audit."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
