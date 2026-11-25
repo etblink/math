@@ -1,0 +1,1975 @@
+﻿2026-11-25T22:14:29.4308743Z Current runner version: '2.338.2'
+2026-11-25T22:14:29.4334867Z ##[group]Runner Image Provisioner
+2026-11-25T22:14:29.4335793Z Hosted Compute Agent
+2026-11-25T22:14:29.4336430Z Version: 20261111.635
+2026-11-25T22:14:29.4337069Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+2026-11-25T22:14:29.4337941Z Build Date: 2026-11-11T01:49:01Z
+2026-11-25T22:14:29.4338627Z Worker ID: {866ff29c-6325-4d80-b17f-96dba5e29b26}
+2026-11-25T22:14:29.4339322Z Region: eastus
+2026-11-25T22:14:29.4339936Z Cloud: Azure
+2026-11-25T22:14:29.4340482Z ##[endgroup]
+2026-11-25T22:14:29.4342515Z ##[group]Operating System
+2026-11-25T22:14:29.4343244Z Ubuntu
+2026-11-25T22:14:29.4343756Z 26.04.1
+2026-11-25T22:14:29.4344333Z LTS
+2026-11-25T22:14:29.4344842Z ##[endgroup]
+2026-11-25T22:14:29.4345942Z ##[group]Runner Image
+2026-11-25T22:14:29.4346622Z Image: ubuntu-26.04
+2026-11-25T22:14:29.4347194Z Version: 20261116.202.1
+2026-11-25T22:14:29.4348517Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261116.202/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-25T22:14:29.4350198Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261116.202
+2026-11-25T22:14:29.4351551Z ##[endgroup]
+2026-11-25T22:14:29.4352903Z ##[group]GITHUB_TOKEN Permissions
+2026-11-25T22:14:29.4355116Z Contents: read
+2026-11-25T22:14:29.4355776Z Metadata: read
+2026-11-25T22:14:29.4356449Z ##[endgroup]
+2026-11-25T22:14:29.4358607Z Secret source: Actions
+2026-11-25T22:14:29.4359657Z Cache mode: write
+2026-11-25T22:14:29.4360613Z Prepare workflow directory
+2026-11-25T22:14:29.4699787Z Prepare all required actions
+2026-11-25T22:14:29.4748747Z Getting action download info
+2026-11-25T22:14:29.6574163Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-25T22:14:29.7589350Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-25T22:14:29.9559208Z Complete job name: rank-one-replay
+2026-11-25T22:14:30.0556593Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-25T22:14:30.0557696Z with:
+2026-11-25T22:14:30.0558155Z   persist-credentials: false
+2026-11-25T22:14:30.0558680Z   fetch-depth: 0
+2026-11-25T22:14:30.0559143Z   repository: etblink/math
+2026-11-25T22:14:30.0562928Z   token: ***
+2026-11-25T22:14:30.0563376Z   ssh-strict: true
+2026-11-25T22:14:30.0563821Z   ssh-user: git
+2026-11-25T22:14:30.0564247Z   clean: true
+2026-11-25T22:14:30.0564693Z   sparse-checkout-cone-mode: true
+2026-11-25T22:14:30.0565219Z   fetch-tags: false
+2026-11-25T22:14:30.0565664Z   show-progress: true
+2026-11-25T22:14:30.0566114Z   lfs: false
+2026-11-25T22:14:30.0566543Z   submodules: false
+2026-11-25T22:14:30.0566998Z   set-safe-directory: true
+2026-11-25T22:14:30.0567508Z   allow-unsafe-pr-checkout: false
+2026-11-25T22:14:30.0568294Z ##[endgroup]
+2026-11-25T22:14:30.3994791Z Syncing repository: etblink/math
+2026-11-25T22:14:30.3997053Z ##[group]Getting Git version info
+2026-11-25T22:14:30.3997954Z Working directory is '/home/runner/work/math/math'
+2026-11-25T22:14:30.3999059Z [command]/usr/bin/git version
+2026-11-25T22:14:30.4034573Z git version 2.56.1
+2026-11-25T22:14:30.4070057Z ##[endgroup]
+2026-11-25T22:14:30.4088976Z Temporarily overriding HOME='/home/runner/work/_temp/00ad074e-7e42-43f8-a420-5cdd76298965' before making global git config changes
+2026-11-25T22:14:30.4091475Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-25T22:14:30.4096116Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-25T22:14:30.4177079Z Deleting the contents of '/home/runner/work/math/math'
+2026-11-25T22:14:30.4180595Z ##[group]Initializing the repository
+2026-11-25T22:14:30.4186952Z [command]/usr/bin/git init /home/runner/work/math/math
+2026-11-25T22:14:30.4304355Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-25T22:14:30.4306518Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-25T22:14:30.4308430Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-25T22:14:30.4309627Z hint: call:
+2026-11-25T22:14:30.4310216Z hint:
+2026-11-25T22:14:30.4311421Z hint: 	git config --global init.defaultBranch <name>
+2026-11-25T22:14:30.4312480Z hint:
+2026-11-25T22:14:30.4313258Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-25T22:14:30.4315073Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-25T22:14:30.4316965Z hint:
+2026-11-25T22:14:30.4317809Z hint: 	git branch -m <name>
+2026-11-25T22:14:30.4318807Z hint:
+2026-11-25T22:14:30.4320217Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-25T22:14:30.4322827Z Initialized empty Git repository in /home/runner/work/math/math/.git/
+2026-11-25T22:14:30.4334734Z [command]/usr/bin/git remote add origin https://github.com/etblink/math
+2026-11-25T22:14:30.4406893Z ##[endgroup]
+2026-11-25T22:14:30.4409003Z ##[group]Disabling automatic garbage collection
+2026-11-25T22:14:30.4411118Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-25T22:14:30.4459526Z ##[endgroup]
+2026-11-25T22:14:30.4461734Z ##[group]Setting up auth
+2026-11-25T22:14:30.4468295Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-25T22:14:30.4530570Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-25T22:14:30.5256014Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-25T22:14:30.5294284Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-25T22:14:30.5596156Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-25T22:14:30.5636815Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-25T22:14:30.5928964Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-25T22:14:30.5973342Z ##[endgroup]
+2026-11-25T22:14:30.5974309Z ##[group]Fetching the repository
+2026-11-25T22:14:30.5982932Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-11-25T22:14:52.8406311Z From https://github.com/etblink/math
+2026-11-25T22:14:52.8407601Z  * [new branch]          contrib/kotler-bfss-consolidated-prep -> origin/contrib/kotler-bfss-consolidated-prep
+2026-11-25T22:14:52.8409046Z  * [new branch]          contrib/kotler-bfss-spin-plane-covariance -> origin/contrib/kotler-bfss-spin-plane-covariance
+2026-11-25T22:14:52.8410376Z  * [new branch]          contribution/bfss-lean-v040-20261105 -> origin/contribution/bfss-lean-v040-20261105
+2026-11-25T22:14:52.8412121Z  * [new branch]          contribution/bfss-v040-follow-up-20261105 -> origin/contribution/bfss-v040-follow-up-20261105
+2026-11-25T22:14:52.8414193Z  * [new branch]          docs/bfss-internal-research-monograph-20261111 -> origin/docs/bfss-internal-research-monograph-20261111
+2026-11-25T22:14:52.8415611Z  * [new branch]          integration/bfss-ibi-qualified-candidate-20261115 -> origin/integration/bfss-ibi-qualified-candidate-20261115
+2026-11-25T22:14:52.8416767Z  * [new branch]          integration/bfss-unified-massless14-candidate-20261122 -> origin/integration/bfss-unified-massless14-candidate-20261122
+2026-11-25T22:14:52.8418032Z  * [new branch]          integration/bfss-unified-r3-target-strict-guard-20261122 -> origin/integration/bfss-unified-r3-target-strict-guard-20261122
+2026-11-25T22:14:52.8419388Z  * [new branch]          integration/bfss-unified-research-20261108 -> origin/integration/bfss-unified-research-20261108
+2026-11-25T22:14:52.8421074Z  * [new branch]          integration/community-20261027-bfss -> origin/integration/community-20261027-bfss
+2026-11-25T22:14:52.8422023Z  * [new branch]          integration/fcp-k1d2-pbw-20261027 -> origin/integration/fcp-k1d2-pbw-20261027
+2026-11-25T22:14:52.8422717Z  * [new branch]          main       -> origin/main
+2026-11-25T22:14:52.8423505Z  * [new branch]          research/bfss-hopfion-gut-counterfactuals-20261121 -> origin/research/bfss-hopfion-gut-counterfactuals-20261121
+2026-11-25T22:14:52.8424637Z  * [new branch]          research/bfss-ibi-p3-potential-consumer-20261115 -> origin/research/bfss-ibi-p3-potential-consumer-20261115
+2026-11-25T22:14:52.8425678Z  * [new branch]          research/bfss-incidence-before-identity-20261111 -> origin/research/bfss-incidence-before-identity-20261111
+2026-11-25T22:14:52.8426575Z  * [new branch]          research/bfss-incidence-unified-20261114 -> origin/research/bfss-incidence-unified-20261114
+2026-11-25T22:14:52.8427557Z  * [new branch]          research/bfss-massless-gauge-domain-boundary-20261122 -> origin/research/bfss-massless-gauge-domain-boundary-20261122
+2026-11-25T22:14:52.8428559Z  * [new branch]          research/bfss-norm0d-d0-continuity-20261111 -> origin/research/bfss-norm0d-d0-continuity-20261111
+2026-11-25T22:14:52.8429688Z  * [new branch]          research/bfss-original-gamma-faithfulness-20261107 -> origin/research/bfss-original-gamma-faithfulness-20261107
+2026-11-25T22:14:52.8431112Z  * [new branch]          research/bfss-p2-original-field-20261111 -> origin/research/bfss-p2-original-field-20261111
+2026-11-25T22:14:52.8432541Z  * [new branch]          research/bfss-spectral-confinement-roadmap-20261106 -> origin/research/bfss-spectral-confinement-roadmap-20261106
+2026-11-25T22:14:52.8433732Z  * [new branch]          research/bfss-spin9-structural-outline-20261115 -> origin/research/bfss-spin9-structural-outline-20261115
+2026-11-25T22:14:52.8435053Z  * [new branch]          research/evidence-led-unification-20261123 -> origin/research/evidence-led-unification-20261123
+2026-11-25T22:14:52.8436064Z  * [new branch]          research/fcp-k1d10-negative-action-20261027 -> origin/research/fcp-k1d10-negative-action-20261027
+2026-11-25T22:14:52.8436910Z  * [new branch]          research/fcp-k1d11-exact-kernel-20261027 -> origin/research/fcp-k1d11-exact-kernel-20261027
+2026-11-25T22:14:52.8437724Z  * [new branch]          research/fcp-k1d12-action-laws-20261027 -> origin/research/fcp-k1d12-action-laws-20261027
+2026-11-25T22:14:52.8438653Z  * [new branch]          research/fcp-k1d13-linear-representation-20261027 -> origin/research/fcp-k1d13-linear-representation-20261027
+2026-11-25T22:14:52.8439552Z  * [new branch]          research/fcp-k1d14-gl-kernel-20261027 -> origin/research/fcp-k1d14-gl-kernel-20261027
+2026-11-25T22:14:52.8440478Z  * [new branch]          research/fcp-k1d15-source-quadratic-20261027 -> origin/research/fcp-k1d15-source-quadratic-20261027
+2026-11-25T22:14:52.8441850Z  * [new branch]          research/fcp-k1d16-source-isometry-20261027 -> origin/research/fcp-k1d16-source-isometry-20261027
+2026-11-25T22:14:52.8442795Z  * [new branch]          research/fcp-k1d17-ancestor-cache-pilot-20261028 -> origin/research/fcp-k1d17-ancestor-cache-pilot-20261028
+2026-11-25T22:14:52.8443691Z  * [new branch]          research/fcp-k1d17-isometry-laws-20261028 -> origin/research/fcp-k1d17-isometry-laws-20261028
+2026-11-25T22:14:52.8444696Z  * [new branch]          research/fcp-k1d18-spin48-orientation-20261028 -> origin/research/fcp-k1d18-spin48-orientation-20261028
+2026-11-25T22:14:52.8445898Z  * [new branch]          research/fcp-k1d3-scalar-kernel-20261027 -> origin/research/fcp-k1d3-scalar-kernel-20261027
+2026-11-25T22:14:52.8446984Z  * [new branch]          research/fcp-k1d5-clifford-scalar-20261027 -> origin/research/fcp-k1d5-clifford-scalar-20261027
+2026-11-25T22:14:52.8448040Z  * [new branch]          research/fcp-k1d6-spin48-scalar-norm-20261027 -> origin/research/fcp-k1d6-spin48-scalar-norm-20261027
+2026-11-25T22:14:52.8449143Z  * [new branch]          research/fcp-k1d7-scalar-coeff-20261027 -> origin/research/fcp-k1d7-scalar-coeff-20261027
+2026-11-25T22:14:52.8450061Z  * [new branch]          research/fcp-k1d8-two-sign-upper-bound-20261027 -> origin/research/fcp-k1d8-two-sign-upper-bound-20261027
+2026-11-25T22:14:52.8451244Z  * [new branch]          research/fcp-k1d9-negative-spin-20261027 -> origin/research/fcp-k1d9-negative-spin-20261027
+2026-11-25T22:14:52.8452929Z [command]/usr/bin/git branch --list --remote origin/integration/bfss-unified-research-20261108
+2026-11-25T22:14:52.8455146Z   origin/integration/bfss-unified-research-20261108
+2026-11-25T22:14:52.8465321Z [command]/usr/bin/git rev-parse refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-25T22:14:52.8489461Z 294814c311fe3d220ae66cfe5147aacae9d565f8
+2026-11-25T22:14:52.8494712Z ##[endgroup]
+2026-11-25T22:14:52.8495664Z ##[group]Determining the checkout info
+2026-11-25T22:14:52.8496965Z ##[endgroup]
+2026-11-25T22:14:52.8502600Z [command]/usr/bin/git sparse-checkout disable
+2026-11-25T22:14:52.8560379Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-25T22:14:52.8590500Z ##[group]Checking out the ref
+2026-11-25T22:14:52.8595587Z [command]/usr/bin/git checkout --progress --force -B integration/bfss-unified-research-20261108 refs/remotes/origin/integration/bfss-unified-research-20261108
+2026-11-25T22:14:54.0073682Z Updating files:   9% (17756/181656)
+2026-11-25T22:14:54.0979483Z Updating files:  10% (18166/181656)
+2026-11-25T22:14:54.1962640Z Updating files:  11% (19983/181656)
+2026-11-25T22:14:54.2977933Z Updating files:  12% (21799/181656)
+2026-11-25T22:14:54.3973976Z Updating files:  13% (23616/181656)
+2026-11-25T22:14:54.4955880Z Updating files:  14% (25432/181656)
+2026-11-25T22:14:54.5937985Z Updating files:  15% (27249/181656)
+2026-11-25T22:14:54.7173195Z Updating files:  16% (29065/181656)
+2026-11-25T22:14:54.8361030Z Updating files:  17% (30882/181656)
+2026-11-25T22:14:54.9718212Z Updating files:  18% (32699/181656)
+2026-11-25T22:14:54.9866075Z Updating files:  19% (34515/181656)
+2026-11-25T22:14:55.0827853Z Updating files:  19% (34764/181656)
+2026-11-25T22:14:55.1816293Z Updating files:  20% (36332/181656)
+2026-11-25T22:14:55.2818114Z Updating files:  21% (38148/181656)
+2026-11-25T22:14:55.3984847Z Updating files:  22% (39965/181656)
+2026-11-25T22:14:55.5068835Z Updating files:  23% (41781/181656)
+2026-11-25T22:14:55.6163058Z Updating files:  24% (43598/181656)
+2026-11-25T22:14:55.7256579Z Updating files:  25% (45414/181656)
+2026-11-25T22:14:55.8242683Z Updating files:  26% (47231/181656)
+2026-11-25T22:14:55.9494617Z Updating files:  27% (49048/181656)
+2026-11-25T22:14:55.9866530Z Updating files:  28% (50864/181656)
+2026-11-25T22:14:56.0653103Z Updating files:  28% (51511/181656)
+2026-11-25T22:14:56.3359798Z Updating files:  29% (52681/181656)
+2026-11-25T22:14:56.6355671Z Updating files:  30% (54497/181656)
+2026-11-25T22:14:56.7851491Z Updating files:  31% (56314/181656)
+2026-11-25T22:14:56.9934400Z Updating files:  32% (58130/181656)
+2026-11-25T22:14:57.3034532Z Updating files:  32% (59496/181656)
+2026-11-25T22:14:57.4082088Z Updating files:  33% (59947/181656)
+2026-11-25T22:14:57.5562436Z Updating files:  34% (61764/181656)
+2026-11-25T22:14:57.6775875Z Updating files:  35% (63580/181656)
+2026-11-25T22:14:57.7855853Z Updating files:  36% (65397/181656)
+2026-11-25T22:14:57.8990065Z Updating files:  37% (67213/181656)
+2026-11-25T22:14:57.9867950Z Updating files:  38% (69030/181656)
+2026-11-25T22:14:58.0341039Z Updating files:  38% (69989/181656)
+2026-11-25T22:14:58.1579473Z Updating files:  39% (70846/181656)
+2026-11-25T22:14:58.3006368Z Updating files:  40% (72663/181656)
+2026-11-25T22:14:58.4333376Z Updating files:  41% (74479/181656)
+2026-11-25T22:14:58.9735072Z Updating files:  42% (76296/181656)
+2026-11-25T22:14:58.9866159Z Updating files:  43% (78113/181656)
+2026-11-25T22:14:59.0968721Z Updating files:  43% (78337/181656)
+2026-11-25T22:14:59.2299377Z Updating files:  44% (79929/181656)
+2026-11-25T22:14:59.3843837Z Updating files:  45% (81746/181656)
+2026-11-25T22:14:59.5179968Z Updating files:  46% (83562/181656)
+2026-11-25T22:14:59.6742375Z Updating files:  47% (85379/181656)
+2026-11-25T22:14:59.8354536Z Updating files:  48% (87195/181656)
+2026-11-25T22:14:59.9749277Z Updating files:  49% (89012/181656)
+2026-11-25T22:14:59.9865817Z Updating files:  50% (90828/181656)
+2026-11-25T22:15:00.0866538Z Updating files:  50% (91027/181656)
+2026-11-25T22:15:00.1983680Z Updating files:  51% (92645/181656)
+2026-11-25T22:15:00.2974751Z Updating files:  52% (94462/181656)
+2026-11-25T22:15:00.4423279Z Updating files:  53% (96278/181656)
+2026-11-25T22:15:00.5446614Z Updating files:  54% (98095/181656)
+2026-11-25T22:15:00.6645833Z Updating files:  55% (99911/181656)
+2026-11-25T22:15:00.7906109Z Updating files:  56% (101728/181656)
+2026-11-25T22:15:00.8993974Z Updating files:  57% (103544/181656)
+2026-11-25T22:15:00.9868124Z Updating files:  58% (105361/181656)
+2026-11-25T22:15:01.0651302Z Updating files:  58% (106384/181656)
+2026-11-25T22:15:01.2002286Z Updating files:  59% (107178/181656)
+2026-11-25T22:15:01.3151778Z Updating files:  60% (108994/181656)
+2026-11-25T22:15:01.4940216Z Updating files:  61% (110811/181656)
+2026-11-25T22:15:01.6278218Z Updating files:  62% (112627/181656)
+2026-11-25T22:15:01.9882250Z Updating files:  63% (114444/181656)
+2026-11-25T22:15:01.9922543Z Updating files:  63% (116184/181656)
+2026-11-25T22:15:02.1027733Z Updating files:  64% (116260/181656)
+2026-11-25T22:15:02.2450193Z Updating files:  65% (118077/181656)
+2026-11-25T22:15:02.3566129Z Updating files:  66% (119893/181656)
+2026-11-25T22:15:02.4502864Z Updating files:  67% (121710/181656)
+2026-11-25T22:15:02.5811127Z Updating files:  68% (123527/181656)
+2026-11-25T22:15:02.7044151Z Updating files:  69% (125343/181656)
+2026-11-25T22:15:02.8190036Z Updating files:  70% (127160/181656)
+2026-11-25T22:15:02.9189920Z Updating files:  71% (128976/181656)
+2026-11-25T22:15:02.9866463Z Updating files:  72% (130793/181656)
+2026-11-25T22:15:03.0141825Z Updating files:  72% (132100/181656)
+2026-11-25T22:15:03.1205533Z Updating files:  73% (132609/181656)
+2026-11-25T22:15:03.2254907Z Updating files:  74% (134426/181656)
+2026-11-25T22:15:03.4179746Z Updating files:  75% (136242/181656)
+2026-11-25T22:15:03.5129878Z Updating files:  76% (138059/181656)
+2026-11-25T22:15:03.6110333Z Updating files:  77% (139876/181656)
+2026-11-25T22:15:03.7103458Z Updating files:  78% (141692/181656)
+2026-11-25T22:15:03.8279202Z Updating files:  79% (143509/181656)
+2026-11-25T22:15:03.9303549Z Updating files:  80% (145325/181656)
+2026-11-25T22:15:03.9866743Z Updating files:  81% (147142/181656)
+2026-11-25T22:15:04.0422988Z Updating files:  81% (148053/181656)
+2026-11-25T22:15:04.1608814Z Updating files:  82% (148958/181656)
+2026-11-25T22:15:04.2730288Z Updating files:  83% (150775/181656)
+2026-11-25T22:15:04.3909981Z Updating files:  84% (152592/181656)
+2026-11-25T22:15:04.5236175Z Updating files:  85% (154408/181656)
+2026-11-25T22:15:04.6690845Z Updating files:  86% (156225/181656)
+2026-11-25T22:15:04.8013577Z Updating files:  87% (158041/181656)
+2026-11-25T22:15:04.9314325Z Updating files:  88% (159858/181656)
+2026-11-25T22:15:04.9866230Z Updating files:  89% (161674/181656)
+2026-11-25T22:15:05.0506637Z Updating files:  89% (162692/181656)
+2026-11-25T22:15:05.1839519Z Updating files:  90% (163491/181656)
+2026-11-25T22:15:05.2869039Z Updating files:  91% (165307/181656)
+2026-11-25T22:15:05.6160396Z Updating files:  92% (167124/181656)
+2026-11-25T22:15:06.0309013Z Updating files:  93% (168941/181656)
+2026-11-25T22:15:06.1034821Z Updating files:  93% (170466/181656)
+2026-11-25T22:15:06.5730229Z Updating files:  94% (170757/181656)
+2026-11-25T22:15:06.9866770Z Updating files:  95% (172574/181656)
+2026-11-25T22:15:07.0020440Z Updating files:  95% (174333/181656)
+2026-11-25T22:15:07.4377325Z Updating files:  96% (174390/181656)
+2026-11-25T22:15:08.0479453Z Updating files:  97% (176207/181656)
+2026-11-25T22:15:08.1799076Z Updating files:  97% (177392/181656)
+2026-11-25T22:15:08.5880984Z Updating files:  98% (178023/181656)
+2026-11-25T22:15:08.7582269Z Updating files:  99% (179840/181656)
+2026-11-25T22:15:08.7583270Z Updating files: 100% (181656/181656)
+2026-11-25T22:15:08.7657883Z Updating files: 100% (181656/181656), done.
+2026-11-25T22:15:08.9498085Z Switched to a new branch 'integration/bfss-unified-research-20261108'
+2026-11-25T22:15:08.9499812Z branch 'integration/bfss-unified-research-20261108' set up to track 'origin/integration/bfss-unified-research-20261108'.
+2026-11-25T22:15:08.9779922Z ##[endgroup]
+2026-11-25T22:15:08.9851597Z [command]/usr/bin/git log -1 --format=%H
+2026-11-25T22:15:08.9865072Z 294814c311fe3d220ae66cfe5147aacae9d565f8
+2026-11-25T22:15:08.9876650Z ##[group]Removing auth
+2026-11-25T22:15:08.9881155Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-25T22:15:08.9921817Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-25T22:15:09.0475044Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-25T22:15:09.0505844Z http.https://github.com/.extraheader
+2026-11-25T22:15:09.0515359Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-25T22:15:09.0562328Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-25T22:15:09.1110000Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-25T22:15:09.1147182Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-25T22:15:09.1674991Z ##[endgroup]
+2026-11-25T22:15:09.1897183Z ##[group]Run set -euo pipefail
+2026-11-25T22:15:09.1897615Z [36;1mset -euo pipefail[0m
+2026-11-25T22:15:09.1897916Z [36;1mE="$RUNNER_TEMP/bfss-direct-fixture"[0m
+2026-11-25T22:15:09.1898242Z [36;1mmkdir -p "$E"[0m
+2026-11-25T22:15:09.1898536Z [36;1mgit rev-parse HEAD | tee "$E/tested-sha.txt"[0m
+2026-11-25T22:15:09.1898900Z [36;1mtest "$(git rev-parse HEAD)" = "$GITHUB_SHA"[0m
+2026-11-25T22:15:09.1899358Z [36;1mgit merge-base --is-ancestor 8bbbaef5ea0c5d03c49369f16aa714cb26173f6d HEAD[0m
+2026-11-25T22:15:09.1899843Z [36;1mpython3 - <<'PY' | tee "$E/preflight.log"[0m
+2026-11-25T22:15:09.1900175Z [36;1mimport subprocess[0m
+2026-11-25T22:15:09.1900413Z [36;1mpins = {[0m
+2026-11-25T22:15:09.1901259Z [36;1m  "research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz": "91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0",[0m
+2026-11-25T22:15:09.1902356Z [36;1m  "research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py": "7cc5e660fb40b2d96c5462a930f7ac266a362fe0",[0m
+2026-11-25T22:15:09.1903390Z [36;1m  "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean": "818ff344566c2f2552a30591d92fb7f718efe866",[0m
+2026-11-25T22:15:09.1904299Z [36;1m  "research/computational/python-first-20261124/bfss-mixed104/jet_001.json": "89a8c71ccf96f20ed9f6c378341d826135b47afd",[0m
+2026-11-25T22:15:09.1904871Z [36;1m}[0m
+2026-11-25T22:15:09.1905099Z [36;1mfor path, expected in pins.items():[0m
+2026-11-25T22:15:09.1905602Z [36;1m    got = subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()[0m
+2026-11-25T22:15:09.1906114Z [36;1m    assert got == expected,(path,got,expected)[0m
+2026-11-25T22:15:09.1906447Z [36;1m    print(path,got)[0m
+2026-11-25T22:15:09.1906751Z [36;1mprint("BFSS_DIRECT_FIXTURE_FROZEN_INPUT_PASS")[0m
+2026-11-25T22:15:09.1907054Z [36;1mPY[0m
+2026-11-25T22:15:09.1907859Z [36;1mgit ls-tree HEAD -- 'research/computational/python-first-20261124/bfss-physical-implication/replay_direct_fixture.py' '.github/workflows/bfss-direct-fixture-replay.yml' | tee "$E/tested-blobs.txt"[0m
+2026-11-25T22:15:09.1908957Z [36;1mpython3 -m venv "$RUNNER_TEMP/bfss-venv"[0m
+2026-11-25T22:15:09.1909463Z [36;1m"$RUNNER_TEMP/bfss-venv/bin/python" -m pip install --disable-pip-version-check numpy==2.2.6[0m
+2026-11-25T22:15:09.1910222Z [36;1m"$RUNNER_TEMP/bfss-venv/bin/python" -c 'import sys,numpy;print(sys.version,numpy.__version__)' | tee "$E/runtime.txt"[0m
+2026-11-25T22:15:09.1948961Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-25T22:15:09.1949336Z ##[endgroup]
+2026-11-25T22:15:09.2088805Z 294814c311fe3d220ae66cfe5147aacae9d565f8
+2026-11-25T22:15:09.2399292Z research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz 91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0
+2026-11-25T22:15:09.2401335Z research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py 7cc5e660fb40b2d96c5462a930f7ac266a362fe0
+2026-11-25T22:15:09.2403009Z lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean 818ff344566c2f2552a30591d92fb7f718efe866
+2026-11-25T22:15:09.2404559Z research/computational/python-first-20261124/bfss-mixed104/jet_001.json 89a8c71ccf96f20ed9f6c378341d826135b47afd
+2026-11-25T22:15:09.2405729Z BFSS_DIRECT_FIXTURE_FROZEN_INPUT_PASS
+2026-11-25T22:15:09.2479783Z 100644 blob 6189719a2f7f7e762f2f56cd23faab44a45f36c6	.github/workflows/bfss-direct-fixture-replay.yml
+2026-11-25T22:15:09.2481602Z 100644 blob bff700cee79c0c873899b5cc364f2a1cbf058bf5	research/computational/python-first-20261124/bfss-physical-implication/replay_direct_fixture.py
+2026-11-25T22:15:12.1869073Z Collecting numpy==2.2.6
+2026-11-25T22:15:12.2297601Z   Downloading numpy-2.2.6.tar.gz (20.3 MB)
+2026-11-25T22:15:12.4246757Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.3/20.3 MB 115.4 MB/s eta 0:00:00
+2026-11-25T22:15:14.1758143Z   Installing build dependencies: started
+2026-11-25T22:15:15.4102871Z   Installing build dependencies: finished with status 'done'
+2026-11-25T22:15:15.4117139Z   Getting requirements to build wheel: started
+2026-11-25T22:15:15.5941132Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-25T22:15:15.5949381Z   Preparing metadata (pyproject.toml): started
+2026-11-25T22:16:17.9681850Z   Preparing metadata (pyproject.toml): still running...
+2026-11-25T22:17:19.3401889Z   Preparing metadata (pyproject.toml): still running...
+2026-11-25T22:18:20.2042277Z   Preparing metadata (pyproject.toml): still running...
+2026-11-25T22:19:25.1244737Z   Preparing metadata (pyproject.toml): still running...
+2026-11-25T22:19:30.5573052Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-25T22:19:30.5601852Z Building wheels for collected packages: numpy
+2026-11-25T22:19:30.5608917Z   Building wheel for numpy (pyproject.toml): started
+2026-11-25T22:19:30.6102027Z   Building wheel for numpy (pyproject.toml): finished with status 'done'
+2026-11-25T22:19:30.6191033Z   Created wheel for numpy: filename=numpy-2.2.6-cp314-cp314-linux_x86_64.whl size=10795475 sha256=882a3525b2d43fbc92ab8bb0c1870dac22950ac2e2182a74f0c93c53257196cb
+2026-11-25T22:19:30.6193180Z   Stored in directory: /home/runner/.cache/pip/wheels/83/be/bb/986b1bdc6955e697e6c56b03ef4aa1d67eb2c9fbeaf8e2804f
+2026-11-25T22:19:30.6245553Z Successfully built numpy
+2026-11-25T22:19:30.6302209Z Installing collected packages: numpy
+2026-11-25T22:19:32.1401049Z Successfully installed numpy-2.2.6
+2026-11-25T22:19:33.1466667Z 3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0] 2.2.6
+2026-11-25T22:19:33.1623207Z ##[group]Run set -euo pipefail
+2026-11-25T22:19:33.1623578Z [36;1mset -euo pipefail[0m
+2026-11-25T22:19:33.1623869Z [36;1mE="$RUNNER_TEMP/bfss-direct-fixture"[0m
+2026-11-25T22:19:33.1624767Z [36;1m"$RUNNER_TEMP/bfss-venv/bin/python" -u 'research/computational/python-first-20261124/bfss-physical-implication/replay_direct_fixture.py' 001 --output "$E/results.json" 2>&1 | tee "$E/replay.log"[0m
+2026-11-25T22:19:33.1625702Z [36;1mgrep -Fx 'BFSS_DIRECT_FIXTURE_SELFTEST_PASS' "$E/replay.log"[0m
+2026-11-25T22:19:33.1626358Z [36;1mgrep -Fx 'BFSS_DIRECT_FIXTURE_EXACT_PASS' "$E/replay.log"[0m
+2026-11-25T22:19:33.1626739Z [36;1mpython3 - "$E/results.json" <<'PY'[0m
+2026-11-25T22:19:33.1627047Z [36;1mimport json,sys[0m
+2026-11-25T22:19:33.1627300Z [36;1mr=json.load(open(sys.argv[1]))[0m
+2026-11-25T22:19:33.1627706Z [36;1massert r["comparisons"]=={"tau":152,"beta":152,"nu":456,"t":456,"v":152}[0m
+2026-11-25T22:19:33.1628176Z [36;1massert r["errors"]==[] and r["Euler_exact"][0m
+2026-11-25T22:19:33.1628514Z [36;1mprint("BFSS_DIRECT_FIXTURE_SCOPE_PASS")[0m
+2026-11-25T22:19:33.1628804Z [36;1mPY[0m
+2026-11-25T22:19:33.1663637Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-25T22:19:33.1663993Z env:
+2026-11-25T22:19:33.1664197Z   OPENBLAS_NUM_THREADS: 1
+2026-11-25T22:19:33.1664438Z   OMP_NUM_THREADS: 1
+2026-11-25T22:19:33.1664653Z ##[endgroup]
+2026-11-25T22:19:33.4209661Z BFSS_DIRECT_FIXTURE_SELFTEST_PASS
+2026-11-25T22:20:36.6306359Z first imaginary component tau [0, 0] 2 18 0 -10953169920
+2026-11-25T22:20:41.8362206Z direct derivative 0 0
+2026-11-25T22:21:25.2366853Z direct derivative 0 1
+2026-11-25T22:22:07.0705043Z direct derivative 0 2
+2026-11-25T22:22:52.7764650Z direct derivative 0 3
+2026-11-25T22:23:39.4647870Z direct derivative 0 4
+2026-11-25T22:24:21.4278141Z direct derivative 0 5
+2026-11-25T22:25:06.9241651Z direct derivative 0 6
+2026-11-25T22:25:50.8939319Z direct derivative 0 7
+2026-11-25T22:26:25.2520503Z direct derivative 0 8
+2026-11-25T22:27:08.4833920Z direct derivative 1 0
+2026-11-25T22:27:53.9532276Z direct derivative 1 1
+2026-11-25T22:28:33.3187257Z direct derivative 1 2
+2026-11-25T22:29:15.5219617Z direct derivative 1 3
+2026-11-25T22:29:58.6115143Z direct derivative 1 4
+2026-11-25T22:30:38.5587416Z direct derivative 1 5
+2026-11-25T22:31:21.9725890Z direct derivative 1 6
+2026-11-25T22:32:05.8964742Z direct derivative 1 7
+2026-11-25T22:32:39.7112604Z direct derivative 1 8
+2026-11-25T22:33:21.1435098Z direct derivative 2 0
+2026-11-25T22:34:02.8498304Z direct derivative 2 1
+2026-11-25T22:34:39.7597367Z direct derivative 2 2
+2026-11-25T22:35:20.3354500Z direct derivative 2 3
+2026-11-25T22:36:02.2058643Z direct derivative 2 4
+2026-11-25T22:36:40.0420077Z direct derivative 2 5
+2026-11-25T22:37:22.6177782Z direct derivative 2 6
+2026-11-25T22:38:05.5415105Z direct derivative 2 7
+2026-11-25T22:38:38.2467941Z direct derivative 2 8
+2026-11-25T22:38:39.9540415Z {
+2026-11-25T22:38:39.9541026Z   "diag": [
+2026-11-25T22:38:39.9541409Z     0,
+2026-11-25T22:38:39.9541749Z     0,
+2026-11-25T22:38:39.9542032Z     1
+2026-11-25T22:38:39.9542306Z   ],
+2026-11-25T22:38:39.9542882Z   "receipt_sha256": "620c8ab3845b2507e5bd3b87a544cbfb0e89f74931ee86480d6216ac79783d90",
+2026-11-25T22:38:39.9543593Z   "comparisons": {
+2026-11-25T22:38:39.9543934Z     "tau": 152,
+2026-11-25T22:38:39.9544252Z     "beta": 152,
+2026-11-25T22:38:39.9544586Z     "nu": 456,
+2026-11-25T22:38:39.9544916Z     "t": 456,
+2026-11-25T22:38:39.9545219Z     "v": 152
+2026-11-25T22:38:39.9545523Z   },
+2026-11-25T22:38:39.9545817Z   "errors": [
+2026-11-25T22:38:39.9546138Z     [
+2026-11-25T22:38:39.9546447Z       "tau",
+2026-11-25T22:38:39.9546761Z       0,
+2026-11-25T22:38:39.9547059Z       1,
+2026-11-25T22:38:39.9547359Z       17,
+2026-11-25T22:38:39.9547689Z       "-2707781276285/42042",
+2026-11-25T22:38:39.9548080Z       "-1066162782208/3003"
+2026-11-25T22:38:39.9548467Z     ],
+2026-11-25T22:38:39.9548783Z     [
+2026-11-25T22:38:39.9549114Z       "tau",
+2026-11-25T22:38:39.9549440Z       0,
+2026-11-25T22:38:39.9550061Z       1,
+2026-11-25T22:38:39.9550374Z       18,
+2026-11-25T22:38:39.9550907Z       "-523196783/27747720",
+2026-11-25T22:38:39.9551324Z       "27418066944/4235"
+2026-11-25T22:38:39.9551684Z     ],
+2026-11-25T22:38:39.9551980Z     [
+2026-11-25T22:38:39.9552282Z       "tau",
+2026-11-25T22:38:39.9552592Z       0,
+2026-11-25T22:38:39.9552891Z       2,
+2026-11-25T22:38:39.9553190Z       19,
+2026-11-25T22:38:39.9553505Z       "-16290976918047701/1345344",
+2026-11-25T22:38:39.9553924Z       "-181389922052096/3003"
+2026-11-25T22:38:39.9554543Z     ],
+2026-11-25T22:38:39.9554850Z     [
+2026-11-25T22:38:39.9555155Z       "tau",
+2026-11-25T22:38:39.9555481Z       0,
+2026-11-25T22:38:39.9555787Z       2,
+2026-11-25T22:38:39.9556095Z       20,
+2026-11-25T22:38:39.9556425Z       "20205651691/27747720",
+2026-11-25T22:38:39.9556832Z       "6760788000768/4235"
+2026-11-25T22:38:39.9557227Z     ],
+2026-11-25T22:38:39.9557543Z     [
+2026-11-25T22:38:39.9557855Z       "tau",
+2026-11-25T22:38:39.9558158Z       0,
+2026-11-25T22:38:39.9558481Z       3,
+2026-11-25T22:38:39.9558796Z       17,
+2026-11-25T22:38:39.9559133Z       "-4452804191929085/336336",
+2026-11-25T22:38:39.9559580Z       "-242799913007104/3003"
+2026-11-25T22:38:39.9559982Z     ],
+2026-11-25T22:38:39.9560293Z     [
+2026-11-25T22:38:39.9560603Z       "tau",
+2026-11-25T22:38:39.9561149Z       0,
+2026-11-25T22:38:39.9561481Z       3,
+2026-11-25T22:38:39.9561793Z       18,
+2026-11-25T22:38:39.9562103Z       "243793806073/15855840",
+2026-11-25T22:38:39.9562435Z       "8281611829248/4235"
+2026-11-25T22:38:39.9562759Z     ],
+2026-11-25T22:38:39.9563025Z     [
+2026-11-25T22:38:39.9563270Z       "tau",
+2026-11-25T22:38:39.9563562Z       0,
+2026-11-25T22:38:39.9563916Z       4,
+2026-11-25T22:38:39.9564162Z       19,
+2026-11-25T22:38:39.9564428Z       "-2475682080190455827/1345344",
+2026-11-25T22:38:39.9564783Z       "-10087189440499712/1001"
+2026-11-25T22:38:39.9565101Z     ],
+2026-11-25T22:38:39.9565360Z     [
+2026-11-25T22:38:39.9565622Z       "tau",
+2026-11-25T22:38:39.9565922Z       0,
+2026-11-25T22:38:39.9566204Z       4,
+2026-11-25T22:38:39.9566463Z       20,
+2026-11-25T22:38:39.9566725Z       "2113349532461/14798784",
+2026-11-25T22:38:39.9567080Z       "1274489023758336/4235"
+2026-11-25T22:38:39.9567408Z     ],
+2026-11-25T22:38:39.9567674Z     [
+2026-11-25T22:38:39.9567955Z       "tau",
+2026-11-25T22:38:39.9568226Z       0,
+2026-11-25T22:38:39.9568489Z       5,
+2026-11-25T22:38:39.9568746Z       17,
+2026-11-25T22:38:39.9569025Z       "-5209380901633137233/2690688",
+2026-11-25T22:38:39.9569402Z       "-11333883413827584/1001"
+2026-11-25T22:38:39.9569755Z     ],
+2026-11-25T22:38:39.9570015Z     [
+2026-11-25T22:38:39.9570270Z       "tau",
+2026-11-25T22:38:39.9570550Z       0,
+2026-11-25T22:38:39.9571001Z       5,
+2026-11-25T22:38:39.9571260Z       18,
+2026-11-25T22:38:39.9571539Z       "28567857884837/13873860",
+2026-11-25T22:38:39.9571897Z       "189453131317248/605"
+2026-11-25T22:38:39.9572236Z     ],
+2026-11-25T22:38:39.9572505Z     [
+2026-11-25T22:38:39.9572770Z       "tau",
+2026-11-25T22:38:39.9573048Z       0,
+2026-11-25T22:38:39.9573322Z       6,
+2026-11-25T22:38:39.9573589Z       19,
+2026-11-25T22:38:39.9573863Z       "-255911766363020040971/896896",
+2026-11-25T22:38:39.9574259Z       "-4082097487136776192/3003"
+2026-11-25T22:38:39.9574602Z     ],
+2026-11-25T22:38:39.9574857Z     [
+2026-11-25T22:38:39.9575122Z       "tau",
+2026-11-25T22:38:39.9575399Z       0,
+2026-11-25T22:38:39.9575666Z       6,
+2026-11-25T22:38:39.9575923Z       20,
+2026-11-25T22:38:39.9576213Z       "15676444735463/3669120",
+2026-11-25T22:38:39.9576586Z       "37292339632275456/847"
+2026-11-25T22:38:39.9576936Z     ],
+2026-11-25T22:38:39.9577215Z     [
+2026-11-25T22:38:39.9577501Z       "tau",
+2026-11-25T22:38:39.9577788Z       0,
+2026-11-25T22:38:39.9578067Z       7,
+2026-11-25T22:38:39.9578344Z       17,
+2026-11-25T22:38:39.9578646Z       "-4704236304314894718157/16144128",
+2026-11-25T22:38:39.9579056Z       "-4300202419259138048/3003"
+2026-11-25T22:38:39.9579417Z     ],
+2026-11-25T22:38:39.9579934Z     [
+2026-11-25T22:38:39.9580226Z       "tau",
+2026-11-25T22:38:39.9580510Z       0,
+2026-11-25T22:38:39.9580942Z       7,
+2026-11-25T22:38:39.9581214Z       18,
+2026-11-25T22:38:39.9581503Z       "196116952836558683/665945280",
+2026-11-25T22:38:39.9581885Z       "183539213474463744/4235"
+2026-11-25T22:38:39.9582224Z     ],
+2026-11-25T22:38:39.9582487Z     [
+2026-11-25T22:38:39.9582763Z       "tau",
+2026-11-25T22:38:39.9583038Z       0,
+2026-11-25T22:38:39.9583305Z       8,
+2026-11-25T22:38:39.9583578Z       19,
+2026-11-25T22:38:39.9584060Z       "-703568176778300073568577/16144128",
+2026-11-25T22:38:39.9584491Z       "-519252514286407696384/3003"
+2026-11-25T22:38:39.9584883Z     ],
+2026-11-25T22:38:39.9585164Z     [
+2026-11-25T22:38:39.9585445Z       "tau",
+2026-11-25T22:38:39.9585746Z       0,
+2026-11-25T22:38:39.9586035Z       8,
+2026-11-25T22:38:39.9586311Z       20,
+2026-11-25T22:38:39.9586602Z       "1012794898176866323/2663781120",
+2026-11-25T22:38:39.9586993Z       "25339873978465910784/4235"
+2026-11-25T22:38:39.9587351Z     ],
+2026-11-25T22:38:39.9587617Z     [
+2026-11-25T22:38:39.9587880Z       "tau",
+2026-11-25T22:38:39.9588164Z       0,
+2026-11-25T22:38:39.9588434Z       9,
+2026-11-25T22:38:39.9588713Z       17,
+2026-11-25T22:38:39.9588996Z       "759315441717851/56056",
+2026-11-25T22:38:39.9589357Z       "57591775731712/429"
+2026-11-25T22:38:39.9589691Z     ],
+2026-11-25T22:38:39.9589965Z     [
+2026-11-25T22:38:39.9590239Z       "tau",
+2026-11-25T22:38:39.9590528Z       0,
+2026-11-25T22:38:39.9590973Z       9,
+2026-11-25T22:38:39.9591283Z       18,
+2026-11-25T22:38:39.9591606Z       "40914445457/41621580",
+2026-11-25T22:38:39.9592002Z       "-11244013092864/4235"
+2026-11-25T22:38:39.9592375Z     ],
+2026-11-25T22:38:39.9592673Z     [
+2026-11-25T22:38:39.9592969Z       "tau",
+2026-11-25T22:38:39.9593294Z       0,
+2026-11-25T22:38:39.9593583Z       10,
+2026-11-25T22:38:39.9593887Z       17,
+2026-11-25T22:38:39.9594524Z       "-124211028034290649/332972640",
+2026-11-25T22:38:39.9594976Z       "-5672106196992/4235"
+2026-11-25T22:38:39.9595308Z     ],
+2026-11-25T22:38:39.9595602Z     [
+2026-11-25T22:38:39.9595904Z       "tau",
+2026-11-25T22:38:39.9596221Z       0,
+2026-11-25T22:38:39.9596550Z       10,
+2026-11-25T22:38:39.9596853Z       18,
+2026-11-25T22:38:39.9597166Z       "125043156869017/13735121400",
+2026-11-25T22:38:39.9597598Z       "21659844870144/232925"
+2026-11-25T22:38:39.9597975Z     ],
+2026-11-25T22:38:39.9598277Z     [
+2026-11-25T22:38:39.9598596Z       "tau",
+2026-11-25T22:38:39.9598904Z       0,
+2026-11-25T22:38:39.9599219Z       11,
+2026-11-25T22:38:39.9599518Z       19,
+2026-11-25T22:38:39.9599832Z       "8671167347783863261/4036032",
+2026-11-25T22:38:39.9600255Z       "562258216583168/39"
+2026-11-25T22:38:39.9600846Z     ],
+2026-11-25T22:38:39.9601154Z     [
+2026-11-25T22:38:39.9601469Z       "tau",
+2026-11-25T22:38:39.9601798Z       0,
+2026-11-25T22:38:39.9602099Z       11,
+2026-11-25T22:38:39.9602407Z       20,
+2026-11-25T22:38:39.9602712Z       "-98997964977/704704",
+2026-11-25T22:38:39.9603108Z       "-1634104389402624/4235"
+2026-11-25T22:38:39.9603495Z     ],
+2026-11-25T22:38:39.9603814Z     [
+2026-11-25T22:38:39.9604112Z       "tau",
+2026-11-25T22:38:39.9604453Z       0,
+2026-11-25T22:38:39.9604744Z       12,
+2026-11-25T22:38:39.9605062Z       19,
+2026-11-25T22:38:39.9605386Z       "-1142119800818391853/665945280",
+2026-11-25T22:38:39.9605823Z       "-1064794633273344/4235"
+2026-11-25T22:38:39.9606214Z     ],
+2026-11-25T22:38:39.9606508Z     [
+2026-11-25T22:38:39.9606803Z       "tau",
+2026-11-25T22:38:39.9607119Z       0,
+2026-11-25T22:38:39.9607414Z       12,
+2026-11-25T22:38:39.9607716Z       20,
+2026-11-25T22:38:39.9608026Z       "74983185580759/2092970880",
+2026-11-25T22:38:39.9608440Z       "3125784263786496/232925"
+2026-11-25T22:38:39.9608824Z     ],
+2026-11-25T22:38:39.9609116Z     [
+2026-11-25T22:38:39.9609409Z       "tau",
+2026-11-25T22:38:39.9609719Z       0,
+2026-11-25T22:38:39.9610019Z       13,
+2026-11-25T22:38:39.9610331Z       17,
+2026-11-25T22:38:39.9611149Z       "1213504460565652511/576576",
+2026-11-25T22:38:39.9611598Z       "14751864214716416/1001"
+2026-11-25T22:38:39.9611989Z     ],
+2026-11-25T22:38:39.9612292Z     [
+2026-11-25T22:38:39.9612591Z       "tau",
+2026-11-25T22:38:39.9612947Z       0,
+2026-11-25T22:38:39.9613257Z       13,
+2026-11-25T22:38:39.9613566Z       18,
+2026-11-25T22:38:39.9613893Z       "-230818910221517/221981760",
+2026-11-25T22:38:39.9614312Z       "-44943297478656/121"
+2026-11-25T22:38:39.9614690Z     ],
+2026-11-25T22:38:39.9615023Z     [
+2026-11-25T22:38:39.9615326Z       "tau",
+2026-11-25T22:38:39.9615867Z       0,
+2026-11-25T22:38:39.9616203Z       14,
+2026-11-25T22:38:39.9616540Z       17,
+2026-11-25T22:38:39.9616864Z       "97774265571853763/332972640",
+2026-11-25T22:38:39.9617308Z       "-185197282197504/605"
+2026-11-25T22:38:39.9617694Z     ],
+2026-11-25T22:38:39.9618023Z     [
+2026-11-25T22:38:39.9618335Z       "tau",
+2026-11-25T22:38:39.9618658Z       0,
+2026-11-25T22:38:39.9618987Z       14,
+2026-11-25T22:38:39.9619317Z       18,
+2026-11-25T22:38:39.9619697Z       "-21944375160767/563492160",
+2026-11-25T22:38:39.9620187Z       "3608953909936128/232925"
+2026-11-25T22:38:39.9620611Z     ],
+2026-11-25T22:38:39.9621070Z     [
+2026-11-25T22:38:39.9621393Z       "tau",
+2026-11-25T22:38:39.9621724Z       0,
+2026-11-25T22:38:39.9622035Z       15,
+2026-11-25T22:38:39.9622340Z       19,
+2026-11-25T22:38:39.9622677Z       "1288644426100334922911/4036032",
+2026-11-25T22:38:39.9623120Z       "1680452257283833856/1001"
+2026-11-25T22:38:39.9623515Z     ],
+2026-11-25T22:38:39.9623822Z     [
+2026-11-25T22:38:39.9624132Z       "tau",
+2026-11-25T22:38:39.9624459Z       0,
+2026-11-25T22:38:39.9624767Z       15,
+2026-11-25T22:38:39.9625067Z       20,
+2026-11-25T22:38:39.9625389Z       "-186634097850679/73993920",
+2026-11-25T22:38:39.9625800Z       "-43800586192158720/847"
+2026-11-25T22:38:39.9626183Z     ],
+2026-11-25T22:38:39.9626491Z     [
+2026-11-25T22:38:39.9626797Z       "tau",
+2026-11-25T22:38:39.9627117Z       0,
+2026-11-25T22:38:39.9627439Z       16,
+2026-11-25T22:38:39.9627752Z       19,
+2026-11-25T22:38:39.9628081Z       "914958082003701451/1331890560",
+2026-11-25T22:38:39.9628529Z       "-27378912813121536/605"
+2026-11-25T22:38:39.9628918Z     ],
+2026-11-25T22:38:39.9629230Z     [
+2026-11-25T22:38:39.9629549Z       "tau",
+2026-11-25T22:38:39.9629866Z       0,
+2026-11-25T22:38:39.9630174Z       16,
+2026-11-25T22:38:39.9630492Z       20,
+2026-11-25T22:38:39.9630980Z       "-105173952868417/4185941760",
+2026-11-25T22:38:39.9631399Z       "96225572406951936/46585"
+2026-11-25T22:38:39.9631789Z     ],
+2026-11-25T22:38:39.9632095Z     [
+2026-11-25T22:38:39.9632419Z       "tau",
+2026-11-25T22:38:39.9632729Z       0,
+2026-11-25T22:38:39.9633036Z       17,
+2026-11-25T22:38:39.9633335Z       1,
+2026-11-25T22:38:39.9633653Z       "-2707781276285/42042",
+2026-11-25T22:38:39.9634059Z       "-1066162782208/3003"
+2026-11-25T22:38:39.9634421Z     ],
+2026-11-25T22:38:39.9634694Z     [
+2026-11-25T22:38:39.9634973Z       "tau",
+2026-11-25T22:38:39.9635244Z       0,
+2026-11-25T22:38:39.9635533Z       17,
+2026-11-25T22:38:39.9635813Z       3,
+2026-11-25T22:38:39.9636106Z       "-4452804191929085/336336",
+2026-11-25T22:38:39.9636489Z       "-242799913007104/3003"
+2026-11-25T22:38:39.9636919Z     ],
+2026-11-25T22:38:39.9637201Z     [
+2026-11-25T22:38:39.9637468Z       "tau",
+2026-11-25T22:38:39.9637756Z       0,
+2026-11-25T22:38:39.9638036Z       17,
+2026-11-25T22:38:39.9638319Z       5,
+2026-11-25T22:38:39.9638602Z       "-5209380901633137233/2690688",
+2026-11-25T22:38:39.9639015Z       "-11333883413827584/1001"
+2026-11-25T22:38:39.9639383Z     ],
+2026-11-25T22:38:39.9639675Z     [
+2026-11-25T22:38:39.9639962Z       "tau",
+2026-11-25T22:38:39.9640262Z       0,
+2026-11-25T22:38:39.9640554Z       17,
+2026-11-25T22:38:39.9640986Z       7,
+2026-11-25T22:38:39.9641304Z       "-4704236304314894718157/16144128",
+2026-11-25T22:38:39.9641757Z       "-4300202419259138048/3003"
+2026-11-25T22:38:39.9642166Z     ],
+2026-11-25T22:38:39.9642463Z     [
+2026-11-25T22:38:39.9643121Z       "tau",
+2026-11-25T22:38:39.9643454Z       0,
+2026-11-25T22:38:39.9643765Z       17,
+2026-11-25T22:38:39.9644065Z       9,
+2026-11-25T22:38:39.9644373Z       "759315441717851/56056",
+2026-11-25T22:38:39.9644763Z       "57591775731712/429"
+2026-11-25T22:38:39.9645133Z     ],
+2026-11-25T22:38:39.9645441Z     [
+2026-11-25T22:38:39.9645715Z       "tau",
+2026-11-25T22:38:39.9645983Z       0,
+2026-11-25T22:38:39.9646237Z       17,
+2026-11-25T22:38:39.9646497Z       10,
+2026-11-25T22:38:39.9646770Z       "-124211028034290649/332972640",
+2026-11-25T22:38:39.9647343Z       "-5672106196992/4235"
+2026-11-25T22:38:39.9647669Z     ],
+2026-11-25T22:38:39.9647936Z     [
+2026-11-25T22:38:39.9648210Z       "tau",
+2026-11-25T22:38:39.9648495Z       0,
+2026-11-25T22:38:39.9648756Z       17,
+2026-11-25T22:38:39.9649022Z       13,
+2026-11-25T22:38:39.9649306Z       "1213504460565652511/576576",
+2026-11-25T22:38:39.9649671Z       "14751864214716416/1001"
+2026-11-25T22:38:39.9650018Z     ],
+2026-11-25T22:38:39.9650282Z     [
+2026-11-25T22:38:39.9650544Z       "tau",
+2026-11-25T22:38:39.9650985Z       0,
+2026-11-25T22:38:39.9651258Z       17,
+2026-11-25T22:38:39.9651536Z       14,
+2026-11-25T22:38:39.9651804Z       "97774265571853763/332972640",
+2026-11-25T22:38:39.9652153Z       "-185197282197504/605"
+2026-11-25T22:38:39.9652462Z     ],
+2026-11-25T22:38:39.9652711Z     [
+2026-11-25T22:38:39.9652959Z       "tau",
+2026-11-25T22:38:39.9653222Z       0,
+2026-11-25T22:38:39.9653468Z       17,
+2026-11-25T22:38:39.9653715Z       17,
+2026-11-25T22:38:39.9653977Z       "2622939267881178896393/8072064",
+2026-11-25T22:38:39.9654340Z       "65838168065966080/39"
+2026-11-25T22:38:39.9654644Z     ],
+2026-11-25T22:38:39.9654891Z     [
+2026-11-25T22:38:39.9655134Z       "tau",
+2026-11-25T22:38:39.9655390Z       0,
+2026-11-25T22:38:39.9655636Z       17,
+2026-11-25T22:38:39.9655882Z       18,
+2026-11-25T22:38:39.9656141Z       "-516412486423441/2561328",
+2026-11-25T22:38:39.9656485Z       "-3783649624326144/77"
+2026-11-25T22:38:39.9656788Z     ],
+2026-11-25T22:38:39.9657038Z     [
+2026-11-25T22:38:39.9657286Z       "tau",
+2026-11-25T22:38:39.9657547Z       0,
+2026-11-25T22:38:39.9657796Z       18,
+2026-11-25T22:38:39.9658044Z       1,
+2026-11-25T22:38:39.9658300Z       "-523196783/27747720",
+2026-11-25T22:38:39.9658619Z       "27418066944/4235"
+2026-11-25T22:38:39.9658916Z     ],
+2026-11-25T22:38:39.9659162Z     [
+2026-11-25T22:38:39.9659421Z       "tau",
+2026-11-25T22:38:39.9659678Z       0,
+2026-11-25T22:38:39.9659931Z       18,
+2026-11-25T22:38:39.9660179Z       3,
+2026-11-25T22:38:39.9660444Z       "243793806073/15855840",
+2026-11-25T22:38:39.9660912Z       "8281611829248/4235"
+2026-11-25T22:38:39.9661211Z     ],
+2026-11-25T22:38:39.9661455Z     [
+2026-11-25T22:38:39.9661703Z       "tau",
+2026-11-25T22:38:39.9661960Z       0,
+2026-11-25T22:38:39.9662205Z       18,
+2026-11-25T22:38:39.9662455Z       5,
+2026-11-25T22:38:39.9662714Z       "28567857884837/13873860",
+2026-11-25T22:38:39.9663049Z       "189453131317248/605"
+2026-11-25T22:38:39.9663352Z     ],
+2026-11-25T22:38:39.9663612Z     [
+2026-11-25T22:38:39.9663861Z       "tau",
+2026-11-25T22:38:39.9664120Z       0,
+2026-11-25T22:38:39.9664365Z       18,
+2026-11-25T22:38:39.9664610Z       7,
+2026-11-25T22:38:39.9664869Z       "196116952836558683/665945280",
+2026-11-25T22:38:39.9665220Z       "183539213474463744/4235"
+2026-11-25T22:38:39.9665539Z     ],
+2026-11-25T22:38:39.9665781Z     [
+2026-11-25T22:38:39.9666026Z       "tau",
+2026-11-25T22:38:39.9666283Z       0,
+2026-11-25T22:38:39.9666527Z       18,
+2026-11-25T22:38:39.9666783Z       9,
+2026-11-25T22:38:39.9667045Z       "40914445457/41621580",
+2026-11-25T22:38:39.9667370Z       "-11244013092864/4235"
+2026-11-25T22:38:39.9667674Z     ],
+2026-11-25T22:38:39.9667921Z     [
+2026-11-25T22:38:39.9668171Z       "tau",
+2026-11-25T22:38:39.9668429Z       0,
+2026-11-25T22:38:39.9668679Z       18,
+2026-11-25T22:38:39.9668927Z       10,
+2026-11-25T22:38:39.9669192Z       "125043156869017/13735121400",
+2026-11-25T22:38:39.9669535Z       "21659844870144/232925"
+2026-11-25T22:38:39.9670026Z     ],
+2026-11-25T22:38:39.9670282Z     [
+2026-11-25T22:38:39.9670533Z       "tau",
+2026-11-25T22:38:39.9670944Z       0,
+2026-11-25T22:38:39.9671189Z       18,
+2026-11-25T22:38:39.9671441Z       13,
+2026-11-25T22:38:39.9671703Z       "-230818910221517/221981760",
+2026-11-25T22:38:39.9672045Z       "-44943297478656/121"
+2026-11-25T22:38:39.9672349Z     ],
+2026-11-25T22:38:39.9672592Z     [
+2026-11-25T22:38:39.9672841Z       "tau",
+2026-11-25T22:38:39.9673101Z       0,
+2026-11-25T22:38:39.9673350Z       18,
+2026-11-25T22:38:39.9673782Z       14,
+2026-11-25T22:38:39.9674041Z       "-21944375160767/563492160",
+2026-11-25T22:38:39.9674382Z       "3608953909936128/232925"
+2026-11-25T22:38:39.9674700Z     ],
+2026-11-25T22:38:39.9674945Z     [
+2026-11-25T22:38:39.9675194Z       "tau",
+2026-11-25T22:38:39.9675448Z       0,
+2026-11-25T22:38:39.9675694Z       18,
+2026-11-25T22:38:39.9675941Z       17,
+2026-11-25T22:38:39.9676194Z       "-516412486423441/2561328",
+2026-11-25T22:38:39.9676533Z       "-3783649624326144/77"
+2026-11-25T22:38:39.9676841Z     ],
+2026-11-25T22:38:39.9677085Z     [
+2026-11-25T22:38:39.9677331Z       "tau",
+2026-11-25T22:38:39.9677598Z       0,
+2026-11-25T22:38:39.9677845Z       18,
+2026-11-25T22:38:39.9678090Z       18,
+2026-11-25T22:38:39.9678350Z       "92679842367347/3662699040",
+2026-11-25T22:38:39.9678689Z       "493506463178686464/232925"
+2026-11-25T22:38:39.9679012Z     ],
+2026-11-25T22:38:39.9679257Z     [
+2026-11-25T22:38:39.9679503Z       "tau",
+2026-11-25T22:38:39.9679766Z       0,
+2026-11-25T22:38:39.9680021Z       19,
+2026-11-25T22:38:39.9680271Z       2,
+2026-11-25T22:38:39.9680537Z       "-16290976918047701/1345344",
+2026-11-25T22:38:39.9681016Z       "-181389922052096/3003"
+2026-11-25T22:38:39.9681340Z     ],
+2026-11-25T22:38:39.9681604Z     [
+2026-11-25T22:38:39.9681876Z       "tau",
+2026-11-25T22:38:39.9682154Z       0,
+2026-11-25T22:38:39.9682425Z       19,
+2026-11-25T22:38:39.9682692Z       4,
+2026-11-25T22:38:39.9682986Z       "-2475682080190455827/1345344",
+2026-11-25T22:38:39.9683377Z       "-10087189440499712/1001"
+2026-11-25T22:38:39.9683716Z     ],
+2026-11-25T22:38:39.9684003Z     [
+2026-11-25T22:38:39.9684302Z       "tau",
+2026-11-25T22:38:39.9684624Z       0,
+2026-11-25T22:38:39.9684883Z       19,
+2026-11-25T22:38:39.9685130Z       6,
+2026-11-25T22:38:39.9685389Z       "-255911766363020040971/896896",
+2026-11-25T22:38:39.9685744Z       "-4082097487136776192/3003"
+2026-11-25T22:38:39.9686070Z     ],
+2026-11-25T22:38:39.9686314Z     [
+2026-11-25T22:38:39.9686563Z       "tau",
+2026-11-25T22:38:39.9686838Z       0,
+2026-11-25T22:38:39.9687090Z       19,
+2026-11-25T22:38:39.9687344Z       8,
+2026-11-25T22:38:39.9687606Z       "-703568176778300073568577/16144128",
+2026-11-25T22:38:39.9687971Z       "-519252514286407696384/3003"
+2026-11-25T22:38:39.9688307Z     ],
+2026-11-25T22:38:39.9688556Z     [
+2026-11-25T22:38:39.9688804Z       "tau",
+2026-11-25T22:38:39.9689062Z       0,
+2026-11-25T22:38:39.9689313Z       19,
+2026-11-25T22:38:39.9689562Z       11,
+2026-11-25T22:38:39.9689828Z       "8671167347783863261/4036032",
+2026-11-25T22:38:39.9690175Z       "562258216583168/39"
+2026-11-25T22:38:39.9690473Z     ],
+2026-11-25T22:38:39.9690868Z     [
+2026-11-25T22:38:39.9691117Z       "tau",
+2026-11-25T22:38:39.9691369Z       0,
+2026-11-25T22:38:39.9691619Z       19,
+2026-11-25T22:38:39.9691879Z       12,
+2026-11-25T22:38:39.9692146Z       "-1142119800818391853/665945280",
+2026-11-25T22:38:39.9692504Z       "-1064794633273344/4235"
+2026-11-25T22:38:39.9692823Z     ],
+2026-11-25T22:38:39.9693075Z     [
+2026-11-25T22:38:39.9693327Z       "tau",
+2026-11-25T22:38:39.9693586Z       0,
+2026-11-25T22:38:39.9693832Z       19,
+2026-11-25T22:38:39.9694082Z       15,
+2026-11-25T22:38:39.9694347Z       "1288644426100334922911/4036032",
+2026-11-25T22:38:39.9694701Z       "1680452257283833856/1001"
+2026-11-25T22:38:39.9695028Z     ],
+2026-11-25T22:38:39.9695283Z     [
+2026-11-25T22:38:39.9695535Z       "tau",
+2026-11-25T22:38:39.9695796Z       0,
+2026-11-25T22:38:39.9696050Z       19,
+2026-11-25T22:38:39.9696478Z       16,
+2026-11-25T22:38:39.9696752Z       "914958082003701451/1331890560",
+2026-11-25T22:38:39.9697103Z       "-27378912813121536/605"
+2026-11-25T22:38:39.9697421Z     ],
+2026-11-25T22:38:39.9697668Z     [
+2026-11-25T22:38:39.9697922Z       "tau",
+2026-11-25T22:38:39.9698188Z       0,
+2026-11-25T22:38:39.9698440Z       19,
+2026-11-25T22:38:39.9698692Z       19,
+2026-11-25T22:38:39.9698967Z       "804260054273609864106245/16144128",
+2026-11-25T22:38:39.9699339Z       "603101646998279290880/3003"
+2026-11-25T22:38:39.9699846Z     ],
+2026-11-25T22:38:39.9700098Z     [
+2026-11-25T22:38:39.9700348Z       "tau",
+2026-11-25T22:38:39.9700608Z       0,
+2026-11-25T22:38:39.9700994Z       19,
+2026-11-25T22:38:39.9701247Z       20,
+2026-11-25T22:38:39.9701511Z       "-687781586804847481/2663781120",
+2026-11-25T22:38:39.9701874Z       "-375453209598099456/55"
+2026-11-25T22:38:39.9702198Z     ],
+2026-11-25T22:38:39.9702446Z     [
+2026-11-25T22:38:39.9702704Z       "tau",
+2026-11-25T22:38:39.9702972Z       0,
+2026-11-25T22:38:39.9703229Z       20,
+2026-11-25T22:38:39.9703487Z       2,
+2026-11-25T22:38:39.9703760Z       "20205651691/27747720",
+2026-11-25T22:38:39.9704092Z       "6760788000768/4235"
+2026-11-25T22:38:39.9704401Z     ],
+2026-11-25T22:38:39.9704653Z     [
+2026-11-25T22:38:39.9704905Z       "tau",
+2026-11-25T22:38:39.9705167Z       0,
+2026-11-25T22:38:39.9705420Z       20,
+2026-11-25T22:38:39.9705678Z       4,
+2026-11-25T22:38:39.9705946Z       "2113349532461/14798784",
+2026-11-25T22:38:39.9706297Z       "1274489023758336/4235"
+2026-11-25T22:38:39.9706881Z     ],
+2026-11-25T22:38:39.9707258Z     [
+2026-11-25T22:38:39.9707839Z       "tau",
+2026-11-25T22:38:39.9708239Z       0,
+2026-11-25T22:38:39.9708602Z       20,
+2026-11-25T22:38:39.9709133Z       6,
+2026-11-25T22:38:39.9709531Z       "15676444735463/3669120",
+2026-11-25T22:38:39.9710047Z       "37292339632275456/847"
+2026-11-25T22:38:39.9710507Z     ],
+2026-11-25T22:38:39.9711117Z     [
+2026-11-25T22:38:39.9711553Z       "tau",
+2026-11-25T22:38:39.9771329Z       0,
+2026-11-25T22:38:39.9771590Z       20,
+2026-11-25T22:38:39.9771783Z       8,
+2026-11-25T22:38:39.9771979Z       "1012794898176866323/2663781120",
+2026-11-25T22:38:39.9772273Z       "25339873978465910784/4235"
+2026-11-25T22:38:39.9772521Z     ],
+2026-11-25T22:38:39.9772699Z     [
+2026-11-25T22:38:39.9772876Z       "tau",
+2026-11-25T22:38:39.9773063Z       0,
+2026-11-25T22:38:39.9773241Z       20,
+2026-11-25T22:38:39.9773420Z       11,
+2026-11-25T22:38:39.9773603Z       "-98997964977/704704",
+2026-11-25T22:38:39.9773858Z       "-1634104389402624/4235"
+2026-11-25T22:38:39.9774096Z     ],
+2026-11-25T22:38:39.9774275Z     [
+2026-11-25T22:38:39.9774452Z       "tau",
+2026-11-25T22:38:39.9774641Z       0,
+2026-11-25T22:38:39.9774824Z       20,
+2026-11-25T22:38:39.9774995Z       12,
+2026-11-25T22:38:39.9775178Z       "74983185580759/2092970880",
+2026-11-25T22:38:39.9775421Z       "3125784263786496/232925"
+2026-11-25T22:38:39.9775644Z     ],
+2026-11-25T22:38:39.9775818Z     [
+2026-11-25T22:38:39.9776000Z       "tau",
+2026-11-25T22:38:39.9776182Z       0,
+2026-11-25T22:38:39.9776356Z       20,
+2026-11-25T22:38:39.9776529Z       15,
+2026-11-25T22:38:39.9776711Z       "-186634097850679/73993920",
+2026-11-25T22:38:39.9776955Z       "-43800586192158720/847"
+2026-11-25T22:38:39.9777181Z     ],
+2026-11-25T22:38:39.9777352Z     [
+2026-11-25T22:38:39.9777527Z       "tau",
+2026-11-25T22:38:39.9777710Z       0,
+2026-11-25T22:38:39.9777885Z       20,
+2026-11-25T22:38:39.9778059Z       16,
+2026-11-25T22:38:39.9778245Z       "-105173952868417/4185941760",
+2026-11-25T22:38:39.9778502Z       "96225572406951936/46585"
+2026-11-25T22:38:39.9778727Z     ],
+2026-11-25T22:38:39.9778902Z     [
+2026-11-25T22:38:39.9779079Z       "tau",
+2026-11-25T22:38:39.9779264Z       0,
+2026-11-25T22:38:39.9779441Z       20,
+2026-11-25T22:38:39.9779624Z       19,
+2026-11-25T22:38:39.9779811Z       "-687781586804847481/2663781120",
+2026-11-25T22:38:39.9780070Z       "-375453209598099456/55"
+2026-11-25T22:38:39.9780298Z     ],
+2026-11-25T22:38:39.9781064Z     [
+2026-11-25T22:38:39.9781345Z       "tau",
+2026-11-25T22:38:39.9781536Z       0,
+2026-11-25T22:38:39.9781712Z       20,
+2026-11-25T22:38:39.9781884Z       20,
+2026-11-25T22:38:39.9782068Z       "4738132436234287/293015923200",
+2026-11-25T22:38:39.9782328Z       "69371158492272918528/232925"
+2026-11-25T22:38:39.9782563Z     ],
+2026-11-25T22:38:39.9782743Z     [
+2026-11-25T22:38:39.9782926Z       "beta",
+2026-11-25T22:38:39.9783109Z       0,
+2026-11-25T22:38:39.9783291Z       0,
+2026-11-25T22:38:39.9783464Z       19,
+2026-11-25T22:38:39.9783832Z       "135912150155/9856",
+2026-11-25T22:38:39.9784059Z       "-123468168192/143"
+2026-11-25T22:38:39.9784271Z     ],
+2026-11-25T22:38:39.9784446Z     [
+2026-11-25T22:38:39.9784620Z       "beta",
+2026-11-25T22:38:39.9784805Z       0,
+2026-11-25T22:38:39.9784977Z       0,
+2026-11-25T22:38:39.9785150Z       20,
+2026-11-25T22:38:39.9785340Z       "38235080881/221981760",
+2026-11-25T22:38:39.9785568Z       "114464784384/4235"
+2026-11-25T22:38:39.9785782Z     ],
+2026-11-25T22:38:39.9785957Z     [
+2026-11-25T22:38:39.9786133Z       "beta",
+2026-11-25T22:38:39.9786314Z       0,
+2026-11-25T22:38:39.9786490Z       1,
+2026-11-25T22:38:39.9786662Z       17,
+2026-11-25T22:38:39.9786845Z       "605117905757/84084",
+2026-11-25T22:38:39.9787067Z       "-1838033357824/3003"
+2026-11-25T22:38:39.9787283Z     ],
+2026-11-25T22:38:39.9787465Z     [
+2026-11-25T22:38:39.9787644Z       "beta",
+2026-11-25T22:38:39.9787838Z       0,
+2026-11-25T22:38:39.9788017Z       1,
+2026-11-25T22:38:39.9788193Z       18,
+2026-11-25T22:38:39.9788383Z       "27338928293/47567520",
+2026-11-25T22:38:39.9788612Z       "1958903808/77"
+2026-11-25T22:38:39.9788816Z     ],
+2026-11-25T22:38:39.9788995Z     [
+2026-11-25T22:38:39.9789167Z       "beta",
+2026-11-25T22:38:39.9789351Z       0,
+2026-11-25T22:38:39.9789527Z       2,
+2026-11-25T22:38:39.9789697Z       19,
+2026-11-25T22:38:39.9789882Z       "-93811812515383/336336",
+2026-11-25T22:38:39.9790116Z       "-55053093801984/1001"
+2026-11-25T22:38:39.9790354Z     ],
+2026-11-25T22:38:39.9790524Z     [
+2026-11-25T22:38:39.9790936Z       "beta",
+2026-11-25T22:38:39.9791124Z       0,
+2026-11-25T22:38:39.9791302Z       2,
+2026-11-25T22:38:39.9791476Z       20,
+2026-11-25T22:38:39.9791661Z       "3504411107933/332972640",
+2026-11-25T22:38:39.9791903Z       "9305492422656/4235"
+2026-11-25T22:38:39.9792117Z     ],
+2026-11-25T22:38:39.9792301Z     [
+2026-11-25T22:38:39.9792477Z       "beta",
+2026-11-25T22:38:39.9792660Z       0,
+2026-11-25T22:38:39.9792838Z       3,
+2026-11-25T22:38:39.9793018Z       17,
+2026-11-25T22:38:39.9793202Z       "-15845611698446/21021",
+2026-11-25T22:38:39.9793429Z       "-115009989435392/3003"
+2026-11-25T22:38:39.9793647Z     ],
+2026-11-25T22:38:39.9793818Z     [
+2026-11-25T22:38:39.9793994Z       "beta",
+2026-11-25T22:38:39.9794175Z       0,
+2026-11-25T22:38:39.9794350Z       3,
+2026-11-25T22:38:39.9794525Z       18,
+2026-11-25T22:38:39.9794713Z       "46932326995/1189188",
+2026-11-25T22:38:39.9794947Z       "1262503329792/605"
+2026-11-25T22:38:39.9795167Z     ],
+2026-11-25T22:38:39.9795351Z     [
+2026-11-25T22:38:39.9795530Z       "beta",
+2026-11-25T22:38:39.9795718Z       0,
+2026-11-25T22:38:39.9795894Z       4,
+2026-11-25T22:38:39.9796073Z       19,
+2026-11-25T22:38:39.9796264Z       "-7508881466054053/42042",
+2026-11-25T22:38:39.9796509Z       "-3693429124530176/1001"
+2026-11-25T22:38:39.9796728Z     ],
+2026-11-25T22:38:39.9796900Z     [
+2026-11-25T22:38:39.9797079Z       "beta",
+2026-11-25T22:38:39.9797264Z       0,
+2026-11-25T22:38:39.9797437Z       4,
+2026-11-25T22:38:39.9797610Z       20,
+2026-11-25T22:38:39.9797796Z       "32925375785879/41621580",
+2026-11-25T22:38:39.9798028Z       "795873138180096/4235"
+2026-11-25T22:38:39.9798244Z     ],
+2026-11-25T22:38:39.9798413Z     [
+2026-11-25T22:38:39.9798581Z       "beta",
+2026-11-25T22:38:39.9798764Z       0,
+2026-11-25T22:38:39.9798935Z       5,
+2026-11-25T22:38:39.9799104Z       17,
+2026-11-25T22:38:39.9799283Z       "-4465626268283248/21021",
+2026-11-25T22:38:39.9799668Z       "-577440232701952/231"
+2026-11-25T22:38:39.9799889Z     ],
+2026-11-25T22:38:39.9800056Z     [
+2026-11-25T22:38:39.9800229Z       "beta",
+2026-11-25T22:38:39.9800409Z       0,
+2026-11-25T22:38:39.9800581Z       5,
+2026-11-25T22:38:39.9800989Z       18,
+2026-11-25T22:38:39.9801175Z       "2973443233382/945945",
+2026-11-25T22:38:39.9801405Z       "154073529581568/847"
+2026-11-25T22:38:39.9801628Z     ],
+2026-11-25T22:38:39.9801801Z     [
+2026-11-25T22:38:39.9801971Z       "beta",
+2026-11-25T22:38:39.9802155Z       0,
+2026-11-25T22:38:39.9802486Z       6,
+2026-11-25T22:38:39.9802659Z       19,
+2026-11-25T22:38:39.9802845Z       "-692588407955960452/21021",
+2026-11-25T22:38:39.9803098Z       "-251163115050500096/1001"
+2026-11-25T22:38:39.9803319Z     ],
+2026-11-25T22:38:39.9803491Z     [
+2026-11-25T22:38:39.9803660Z       "beta",
+2026-11-25T22:38:39.9803841Z       0,
+2026-11-25T22:38:39.9804016Z       6,
+2026-11-25T22:38:39.9804189Z       20,
+2026-11-25T22:38:39.9804375Z       "681081729849166/10405395",
+2026-11-25T22:38:39.9804619Z       "72700042049224704/4235"
+2026-11-25T22:38:39.9804842Z     ],
+2026-11-25T22:38:39.9805016Z     [
+2026-11-25T22:38:39.9805188Z       "beta",
+2026-11-25T22:38:39.9805374Z       0,
+2026-11-25T22:38:39.9805546Z       7,
+2026-11-25T22:38:39.9805718Z       17,
+2026-11-25T22:38:39.9805901Z       "-5198083899776128/147",
+2026-11-25T22:38:39.9806130Z       "-485892178937643008/3003"
+2026-11-25T22:38:39.9806350Z     ],
+2026-11-25T22:38:39.9806521Z     [
+2026-11-25T22:38:39.9806688Z       "beta",
+2026-11-25T22:38:39.9806867Z       0,
+2026-11-25T22:38:39.9807040Z       7,
+2026-11-25T22:38:39.9807212Z       18,
+2026-11-25T22:38:39.9807389Z       "79600679933872/297297",
+2026-11-25T22:38:39.9807620Z       "597464444829696/35"
+2026-11-25T22:38:39.9807831Z     ],
+2026-11-25T22:38:39.9808000Z     [
+2026-11-25T22:38:39.9808170Z       "beta",
+2026-11-25T22:38:39.9808346Z       0,
+2026-11-25T22:38:39.9808517Z       8,
+2026-11-25T22:38:39.9808687Z       19,
+2026-11-25T22:38:39.9808872Z       "-103769900229920083616/21021",
+2026-11-25T22:38:39.9809125Z       "-16821648332616105984/1001"
+2026-11-25T22:38:39.9809355Z     ],
+2026-11-25T22:38:39.9809525Z     [
+2026-11-25T22:38:39.9809696Z       "beta",
+2026-11-25T22:38:39.9809875Z       0,
+2026-11-25T22:38:39.9810053Z       8,
+2026-11-25T22:38:39.9810221Z       20,
+2026-11-25T22:38:39.9810405Z       "61414572326933744/10405395",
+2026-11-25T22:38:39.9810757Z       "652719459542237184/385"
+2026-11-25T22:38:39.9810981Z     ],
+2026-11-25T22:38:39.9811152Z     [
+2026-11-25T22:38:39.9811319Z       "beta",
+2026-11-25T22:38:39.9811504Z       0,
+2026-11-25T22:38:39.9811674Z       9,
+2026-11-25T22:38:39.9811845Z       17,
+2026-11-25T22:38:39.9812032Z       "77659089314186/21021",
+2026-11-25T22:38:39.9812258Z       "43030063259648/3003"
+2026-11-25T22:38:39.9812479Z     ],
+2026-11-25T22:38:39.9812652Z     [
+2026-11-25T22:38:39.9812822Z       "beta",
+2026-11-25T22:38:39.9813005Z       0,
+2026-11-25T22:38:39.9813178Z       9,
+2026-11-25T22:38:39.9813350Z       18,
+2026-11-25T22:38:39.9813541Z       "-65696750767/3783780",
+2026-11-25T22:38:39.9813776Z       "-148073349120/121"
+2026-11-25T22:38:39.9813986Z     ],
+2026-11-25T22:38:39.9814159Z     [
+2026-11-25T22:38:39.9814327Z       "beta",
+2026-11-25T22:38:39.9814509Z       0,
+2026-11-25T22:38:39.9814679Z       10,
+2026-11-25T22:38:39.9814856Z       17,
+2026-11-25T22:38:39.9815035Z       "9137571411197/73993920",
+2026-11-25T22:38:39.9815262Z       "-239569993728/4235"
+2026-11-25T22:38:39.9815475Z     ],
+2026-11-25T22:38:39.9815642Z     [
+2026-11-25T22:38:39.9815817Z       "beta",
+2026-11-25T22:38:39.9815997Z       0,
+2026-11-25T22:38:39.9816171Z       10,
+2026-11-25T22:38:39.9816340Z       18,
+2026-11-25T22:38:39.9816522Z       "619292099761/1878307200",
+2026-11-25T22:38:39.9816751Z       "4608080216064/46585"
+2026-11-25T22:38:39.9816969Z     ],
+2026-11-25T22:38:39.9817138Z     [
+2026-11-25T22:38:39.9817314Z       "beta",
+2026-11-25T22:38:39.9817499Z       0,
+2026-11-25T22:38:39.9817673Z       11,
+2026-11-25T22:38:39.9817965Z       19,
+2026-11-25T22:38:39.9818149Z       "2699182936716103/6006",
+2026-11-25T22:38:39.9818376Z       "1367803597651968/1001"
+2026-11-25T22:38:39.9818591Z     ],
+2026-11-25T22:38:39.9818764Z     [
+2026-11-25T22:38:39.9818933Z       "beta",
+2026-11-25T22:38:39.9819115Z       0,
+2026-11-25T22:38:39.9819288Z       11,
+2026-11-25T22:38:39.9819463Z       20,
+2026-11-25T22:38:39.9819653Z       "-17035006256699/41621580",
+2026-11-25T22:38:39.9819889Z       "-523599596224512/4235"
+2026-11-25T22:38:39.9820107Z     ],
+2026-11-25T22:38:39.9820277Z     [
+2026-11-25T22:38:39.9820572Z       "beta",
+2026-11-25T22:38:39.9820910Z       0,
+2026-11-25T22:38:39.9821167Z       12,
+2026-11-25T22:38:39.9821343Z       19,
+2026-11-25T22:38:39.9821531Z       "1058713148272649/443963520",
+2026-11-25T22:38:39.9821767Z       "-28132187308032/605"
+2026-11-25T22:38:39.9821978Z     ],
+2026-11-25T22:38:39.9822148Z     [
+2026-11-25T22:38:39.9822320Z       "beta",
+2026-11-25T22:38:39.9822507Z       0,
+2026-11-25T22:38:39.9822684Z       12,
+2026-11-25T22:38:39.9822862Z       20,
+2026-11-25T22:38:39.9823042Z       "-24851869208209/146507961600",
+2026-11-25T22:38:39.9823287Z       "1830553248595968/232925"
+2026-11-25T22:38:39.9823510Z     ],
+2026-11-25T22:38:39.9823679Z     [
+2026-11-25T22:38:39.9823847Z       "beta",
+2026-11-25T22:38:39.9824028Z       0,
+2026-11-25T22:38:39.9824196Z       13,
+2026-11-25T22:38:39.9824369Z       17,
+2026-11-25T22:38:39.9824546Z       "9174953524116496/21021",
+2026-11-25T22:38:39.9824778Z       "2541788854288384/3003"
+2026-11-25T22:38:39.9824997Z     ],
+2026-11-25T22:38:39.9825169Z     [
+2026-11-25T22:38:39.9825341Z       "beta",
+2026-11-25T22:38:39.9825520Z       0,
+2026-11-25T22:38:39.9825691Z       13,
+2026-11-25T22:38:39.9825863Z       18,
+2026-11-25T22:38:39.9826042Z       "-19615552473694/10405395",
+2026-11-25T22:38:39.9826274Z       "-76268578013184/605"
+2026-11-25T22:38:39.9826495Z     ],
+2026-11-25T22:38:39.9826667Z     [
+2026-11-25T22:38:39.9826846Z       "beta",
+2026-11-25T22:38:39.9827092Z       0,
+2026-11-25T22:38:39.9827276Z       14,
+2026-11-25T22:38:39.9827454Z       17,
+2026-11-25T22:38:39.9827636Z       "-1301607469787/21141120",
+2026-11-25T22:38:39.9827869Z       "-92408286019584/4235"
+2026-11-25T22:38:39.9828088Z     ],
+2026-11-25T22:38:39.9828258Z     [
+2026-11-25T22:38:39.9828431Z       "beta",
+2026-11-25T22:38:39.9828612Z       0,
+2026-11-25T22:38:39.9828783Z       14,
+2026-11-25T22:38:39.9828958Z       18,
+2026-11-25T22:38:39.9829146Z       "-1149981354859/6976569600",
+2026-11-25T22:38:39.9829384Z       "1805626682376192/232925"
+2026-11-25T22:38:39.9829612Z     ],
+2026-11-25T22:38:39.9829787Z     [
+2026-11-25T22:38:39.9829956Z       "beta",
+2026-11-25T22:38:39.9830137Z       0,
+2026-11-25T22:38:39.9830313Z       15,
+2026-11-25T22:38:39.9830485Z       19,
+2026-11-25T22:38:39.9830955Z       "1167720710549097676/21021",
+2026-11-25T22:38:39.9831206Z       "86434295909711872/1001"
+2026-11-25T22:38:39.9831421Z     ],
+2026-11-25T22:38:39.9831590Z     [
+2026-11-25T22:38:39.9831756Z       "beta",
+2026-11-25T22:38:39.9831942Z       0,
+2026-11-25T22:38:39.9832115Z       15,
+2026-11-25T22:38:39.9832291Z       20,
+2026-11-25T22:38:39.9832468Z       "-85161375890042/2081079",
+2026-11-25T22:38:39.9832697Z       "-55701351916634112/4235"
+2026-11-25T22:38:39.9832921Z     ],
+2026-11-25T22:38:39.9833091Z     [
+2026-11-25T22:38:39.9833260Z       "beta",
+2026-11-25T22:38:39.9833439Z       0,
+2026-11-25T22:38:39.9833611Z       16,
+2026-11-25T22:38:39.9833782Z       19,
+2026-11-25T22:38:39.9833967Z       "-1058620662997697/887927040",
+2026-11-25T22:38:39.9834224Z       "-16094968871387136/4235"
+2026-11-25T22:38:39.9834449Z     ],
+2026-11-25T22:38:39.9834620Z     [
+2026-11-25T22:38:39.9834798Z       "beta",
+2026-11-25T22:38:39.9834982Z       0,
+2026-11-25T22:38:39.9835149Z       16,
+2026-11-25T22:38:39.9835319Z       20,
+2026-11-25T22:38:39.9835497Z       "4970208785909/58603184640",
+2026-11-25T22:38:39.9835733Z       "179470067614875648/232925"
+2026-11-25T22:38:39.9835960Z     ],
+2026-11-25T22:38:39.9836129Z     [
+2026-11-25T22:38:39.9836446Z       "beta",
+2026-11-25T22:38:39.9836670Z       0,
+2026-11-25T22:38:39.9836843Z       17,
+2026-11-25T22:38:39.9837034Z       3,
+2026-11-25T22:38:39.9837214Z       "7792512065024/3003",
+2026-11-25T22:38:39.9837434Z       "14006603251712/3003"
+2026-11-25T22:38:39.9837645Z     ],
+2026-11-25T22:38:39.9837815Z     [
+2026-11-25T22:38:39.9837989Z       "beta",
+2026-11-25T22:38:39.9838169Z       0,
+2026-11-25T22:38:39.9838351Z       17,
+2026-11-25T22:38:39.9838525Z       5,
+2026-11-25T22:38:39.9838704Z       "-2571429521464064/21021",
+2026-11-25T22:38:39.9839081Z       "845941920563200/3003"
+2026-11-25T22:38:39.9839296Z     ],
+2026-11-25T22:38:39.9839465Z     [
+2026-11-25T22:38:39.9839635Z       "beta",
+2026-11-25T22:38:39.9839814Z       0,
+2026-11-25T22:38:39.9839983Z       17,
+2026-11-25T22:38:39.9840157Z       7,
+2026-11-25T22:38:39.9840334Z       "-209931990662675328/7007",
+2026-11-25T22:38:39.9840568Z       "-6560804982095872/3003"
+2026-11-25T22:38:39.9841031Z     ],
+2026-11-25T22:38:39.9841213Z     [
+2026-11-25T22:38:39.9841380Z       "beta",
+2026-11-25T22:38:39.9841563Z       0,
+2026-11-25T22:38:39.9841735Z       17,
+2026-11-25T22:38:39.9841907Z       9,
+2026-11-25T22:38:39.9842087Z       "-7124618919424/21021",
+2026-11-25T22:38:39.9842321Z       "-21981593337856/3003"
+2026-11-25T22:38:39.9842536Z     ],
+2026-11-25T22:38:39.9842703Z     [
+2026-11-25T22:38:39.9842873Z       "beta",
+2026-11-25T22:38:39.9843053Z       0,
+2026-11-25T22:38:39.9843226Z       17,
+2026-11-25T22:38:39.9843397Z       10,
+2026-11-25T22:38:39.9843587Z       "-1248460586414144/1486485",
+2026-11-25T22:38:39.9843826Z       "-6881581989888/4235"
+2026-11-25T22:38:39.9844037Z     ],
+2026-11-25T22:38:39.9844210Z     [
+2026-11-25T22:38:39.9844381Z       "beta",
+2026-11-25T22:38:39.9844562Z       0,
+2026-11-25T22:38:39.9844738Z       17,
+2026-11-25T22:38:39.9844910Z       13,
+2026-11-25T22:38:39.9845090Z       "8804692151324416/21021",
+2026-11-25T22:38:39.9845314Z       "-255977962864640/3003"
+2026-11-25T22:38:39.9845536Z     ],
+2026-11-25T22:38:39.9845713Z     [
+2026-11-25T22:38:39.9845896Z       "beta",
+2026-11-25T22:38:39.9846078Z       0,
+2026-11-25T22:38:39.9846251Z       17,
+2026-11-25T22:38:39.9846430Z       14,
+2026-11-25T22:38:39.9846613Z       "3861355699748992/10405395",
+2026-11-25T22:38:39.9846848Z       "-601866199105536/4235"
+2026-11-25T22:38:39.9847066Z     ],
+2026-11-25T22:38:39.9847237Z     [
+2026-11-25T22:38:39.9847405Z       "beta",
+2026-11-25T22:38:39.9847585Z       0,
+2026-11-25T22:38:39.9847760Z       17,
+2026-11-25T22:38:39.9847933Z       17,
+2026-11-25T22:38:39.9848119Z       "88536954258332288/1617",
+2026-11-25T22:38:39.9848348Z       "130271120997220352/3003"
+2026-11-25T22:38:39.9848563Z     ],
+2026-11-25T22:38:39.9848733Z     [
+2026-11-25T22:38:39.9848900Z       "beta",
+2026-11-25T22:38:39.9849080Z       0,
+2026-11-25T22:38:39.9849253Z       17,
+2026-11-25T22:38:39.9849424Z       18,
+2026-11-25T22:38:39.9849605Z       "-1904871762515312/10405395",
+2026-11-25T22:38:39.9849843Z       "-11642824726413312/847"
+2026-11-25T22:38:39.9850064Z     ],
+2026-11-25T22:38:39.9850239Z     [
+2026-11-25T22:38:39.9850408Z       "beta",
+2026-11-25T22:38:39.9850593Z       0,
+2026-11-25T22:38:39.9850985Z       18,
+2026-11-25T22:38:39.9851172Z       1,
+2026-11-25T22:38:39.9851350Z       "66780283/31711680",
+2026-11-25T22:38:39.9851570Z       "-1324351488/847"
+2026-11-25T22:38:39.9851774Z     ],
+2026-11-25T22:38:39.9851948Z     [
+2026-11-25T22:38:39.9852116Z       "beta",
+2026-11-25T22:38:39.9852298Z       0,
+2026-11-25T22:38:39.9852472Z       18,
+2026-11-25T22:38:39.9852657Z       3,
+2026-11-25T22:38:39.9852840Z       "491513467/1921920",
+2026-11-25T22:38:39.9853059Z       "-1205164572672/4235"
+2026-11-25T22:38:39.9853281Z     ],
+2026-11-25T22:38:39.9853456Z     [
+2026-11-25T22:38:39.9853632Z       "beta",
+2026-11-25T22:38:39.9853815Z       0,
+2026-11-25T22:38:39.9853990Z       18,
+2026-11-25T22:38:39.9854168Z       5,
+2026-11-25T22:38:39.9854354Z       "2842333853123/443963520",
+2026-11-25T22:38:39.9854589Z       "-17098865639424/847"
+2026-11-25T22:38:39.9855005Z     ],
+2026-11-25T22:38:39.9855181Z     [
+2026-11-25T22:38:39.9855353Z       "beta",
+2026-11-25T22:38:39.9855598Z       0,
+2026-11-25T22:38:39.9855779Z       18,
+2026-11-25T22:38:39.9855948Z       7,
+2026-11-25T22:38:39.9856124Z       "26115257398487/63423360",
+2026-11-25T22:38:39.9856358Z       "-920614934151168/4235"
+2026-11-25T22:38:39.9856575Z     ],
+2026-11-25T22:38:39.9856740Z     [
+2026-11-25T22:38:39.9856914Z       "beta",
+2026-11-25T22:38:39.9857094Z       0,
+2026-11-25T22:38:39.9857260Z       18,
+2026-11-25T22:38:39.9857555Z       9,
+2026-11-25T22:38:39.9857731Z       "-37128916927/73993920",
+2026-11-25T22:38:39.9857958Z       "3062529785856/4235"
+2026-11-25T22:38:39.9858168Z     ],
+2026-11-25T22:38:39.9858346Z     [
+2026-11-25T22:38:39.9858518Z       "beta",
+2026-11-25T22:38:39.9858698Z       0,
+2026-11-25T22:38:39.9858870Z       18,
+2026-11-25T22:38:39.9859042Z       10,
+2026-11-25T22:38:39.9859226Z       "-467221011637/73253980800",
+2026-11-25T22:38:39.9859465Z       "24803637460992/232925"
+2026-11-25T22:38:39.9859682Z     ],
+2026-11-25T22:38:39.9859854Z     [
+2026-11-25T22:38:39.9860026Z       "beta",
+2026-11-25T22:38:39.9860209Z       0,
+2026-11-25T22:38:39.9860381Z       18,
+2026-11-25T22:38:39.9860553Z       13,
+2026-11-25T22:38:39.9860948Z       "98314181519/110990880",
+2026-11-25T22:38:39.9861179Z       "20468484538368/847"
+2026-11-25T22:38:39.9861391Z     ],
+2026-11-25T22:38:39.9861561Z     [
+2026-11-25T22:38:39.9861734Z       "beta",
+2026-11-25T22:38:39.9861919Z       0,
+2026-11-25T22:38:39.9862096Z       18,
+2026-11-25T22:38:39.9862266Z       14,
+2026-11-25T22:38:39.9862453Z       "-1328209828019/16278662400",
+2026-11-25T22:38:39.9862696Z       "1992401841291264/232925"
+2026-11-25T22:38:39.9862931Z     ],
+2026-11-25T22:38:39.9863105Z     [
+2026-11-25T22:38:39.9863284Z       "beta",
+2026-11-25T22:38:39.9863472Z       0,
+2026-11-25T22:38:39.9863645Z       18,
+2026-11-25T22:38:39.9863816Z       17,
+2026-11-25T22:38:39.9863990Z       "33328365701/1084160",
+2026-11-25T22:38:39.9864214Z       "-551644248932352/385"
+2026-11-25T22:38:39.9864430Z     ],
+2026-11-25T22:38:39.9864599Z     [
+2026-11-25T22:38:39.9864768Z       "beta",
+2026-11-25T22:38:39.9864945Z       0,
+2026-11-25T22:38:39.9865117Z       18,
+2026-11-25T22:38:39.9865286Z       18,
+2026-11-25T22:38:39.9865465Z       "164284727621/1993305600",
+2026-11-25T22:38:39.9865700Z       "37328634242924544/46585"
+2026-11-25T22:38:39.9865917Z     ],
+2026-11-25T22:38:39.9866085Z     [
+2026-11-25T22:38:39.9866259Z       "beta",
+2026-11-25T22:38:39.9866439Z       0,
+2026-11-25T22:38:39.9866617Z       19,
+2026-11-25T22:38:39.9866793Z       4,
+2026-11-25T22:38:39.9866969Z       "321812997716992/1911",
+2026-11-25T22:38:39.9867191Z       "105657577111552/231"
+2026-11-25T22:38:39.9867401Z     ],
+2026-11-25T22:38:39.9867572Z     [
+2026-11-25T22:38:39.9867744Z       "beta",
+2026-11-25T22:38:39.9867824Z       0,
+2026-11-25T22:38:39.9867904Z       19,
+2026-11-25T22:38:39.9867977Z       6,
+2026-11-25T22:38:39.9868069Z       "-520092622434044416/21021",
+2026-11-25T22:38:39.9868149Z       "75081637477744640/3003"
+2026-11-25T22:38:39.9868231Z     ],
+2026-11-25T22:38:39.9868304Z     [
+2026-11-25T22:38:39.9868385Z       "beta",
+2026-11-25T22:38:39.9868457Z       0,
+2026-11-25T22:38:39.9868538Z       19,
+2026-11-25T22:38:39.9868610Z       8,
+2026-11-25T22:38:39.9868703Z       "-93064768971221383936/21021",
+2026-11-25T22:38:39.9868791Z       "-1383643826454265856/3003"
+2026-11-25T22:38:39.9868864Z     ],
+2026-11-25T22:38:39.9868941Z     [
+2026-11-25T22:38:39.9869026Z       "beta",
+2026-11-25T22:38:39.9869111Z       0,
+2026-11-25T22:38:39.9869186Z       19,
+2026-11-25T22:38:39.9869264Z       11,
+2026-11-25T22:38:39.9869345Z       "-6942925547943040/21021",
+2026-11-25T22:38:39.9869433Z       "-518787987668992/1001"
+2026-11-25T22:38:39.9869515Z     ],
+2026-11-25T22:38:39.9869590Z     [
+2026-11-25T22:38:39.9869671Z       "beta",
+2026-11-25T22:38:39.9869745Z       0,
+2026-11-25T22:38:39.9869830Z       19,
+2026-11-25T22:38:39.9869904Z       12,
+2026-11-25T22:38:39.9870125Z       "-26610822736217024/1486485",
+2026-11-25T22:38:39.9870209Z       "-663511747264512/4235"
+2026-11-25T22:38:39.9870291Z     ],
+2026-11-25T22:38:39.9870370Z     [
+2026-11-25T22:38:39.9870445Z       "beta",
+2026-11-25T22:38:39.9870529Z       0,
+2026-11-25T22:38:39.9870602Z       19,
+2026-11-25T22:38:39.9870819Z       15,
+2026-11-25T22:38:39.9870903Z       "1146145689800038976/21021",
+2026-11-25T22:38:39.9870988Z       "2376431173632000/1001"
+2026-11-25T22:38:39.9871061Z     ],
+2026-11-25T22:38:39.9871138Z     [
+2026-11-25T22:38:39.9871337Z       "beta",
+2026-11-25T22:38:39.9871409Z       0,
+2026-11-25T22:38:39.9871488Z       19,
+2026-11-25T22:38:39.9871562Z       16,
+2026-11-25T22:38:39.9871647Z       "1197011173435808/135135",
+2026-11-25T22:38:39.9871726Z       "-62295230983962624/4235"
+2026-11-25T22:38:39.9871805Z     ],
+2026-11-25T22:38:39.9871880Z     [
+2026-11-25T22:38:39.9871960Z       "beta",
+2026-11-25T22:38:39.9872031Z       0,
+2026-11-25T22:38:39.9872109Z       19,
+2026-11-25T22:38:39.9872191Z       19,
+2026-11-25T22:38:39.9872274Z       "147659589594533319392/21021",
+2026-11-25T22:38:39.9872359Z       "53865902308851712/11"
+2026-11-25T22:38:39.9872432Z     ],
+2026-11-25T22:38:39.9872507Z     [
+2026-11-25T22:38:39.9872579Z       "beta",
+2026-11-25T22:38:39.9872658Z       0,
+2026-11-25T22:38:39.9872729Z       19,
+2026-11-25T22:38:39.9872808Z       20,
+2026-11-25T22:38:39.9872894Z       "-45601004633532944/10405395",
+2026-11-25T22:38:39.9872974Z       "-6307732932639326208/4235"
+2026-11-25T22:38:39.9873051Z     ],
+2026-11-25T22:38:39.9873125Z     [
+2026-11-25T22:38:39.9873204Z       "beta",
+2026-11-25T22:38:39.9873275Z       0,
+2026-11-25T22:38:39.9873355Z       20,
+2026-11-25T22:38:39.9873428Z       2,
+2026-11-25T22:38:39.9873513Z       "-1104584573/68302080",
+2026-11-25T22:38:39.9873599Z       "-221902798848/847"
+2026-11-25T22:38:39.9873672Z     ],
+2026-11-25T22:38:39.9873750Z     [
+2026-11-25T22:38:39.9873824Z       "beta",
+2026-11-25T22:38:39.9873902Z       0,
+2026-11-25T22:38:39.9873978Z       20,
+2026-11-25T22:38:39.9874058Z       4,
+2026-11-25T22:38:39.9874139Z       "-101391897307/295975680",
+2026-11-25T22:38:39.9874224Z       "-10664653357056/385"
+2026-11-25T22:38:39.9874305Z     ],
+2026-11-25T22:38:39.9874377Z     [
+2026-11-25T22:38:39.9874458Z       "beta",
+2026-11-25T22:38:39.9874533Z       0,
+2026-11-25T22:38:39.9874617Z       20,
+2026-11-25T22:38:39.9874690Z       6,
+2026-11-25T22:38:39.9874783Z       "-30055860737113/1775854080",
+2026-11-25T22:38:39.9874862Z       "-1357711040053248/847"
+2026-11-25T22:38:39.9874943Z     ],
+2026-11-25T22:38:39.9875014Z     [
+2026-11-25T22:38:39.9875093Z       "beta",
+2026-11-25T22:38:39.9875172Z       0,
+2026-11-25T22:38:39.9875244Z       20,
+2026-11-25T22:38:39.9875323Z       8,
+2026-11-25T22:38:39.9875404Z       "-766213103451073/710341632",
+2026-11-25T22:38:39.9875490Z       "80719308228919296/4235"
+2026-11-25T22:38:39.9875564Z     ],
+2026-11-25T22:38:39.9875643Z     [
+2026-11-25T22:38:39.9875717Z       "beta",
+2026-11-25T22:38:39.9875799Z       0,
+2026-11-25T22:38:39.9875879Z       20,
+2026-11-25T22:38:39.9875953Z       11,
+2026-11-25T22:38:39.9876040Z       "4542605743/11383680",
+2026-11-25T22:38:39.9876123Z       "198146109997056/4235"
+2026-11-25T22:38:39.9876202Z     ],
+2026-11-25T22:38:39.9876276Z     [
+2026-11-25T22:38:39.9876364Z       "beta",
+2026-11-25T22:38:39.9876439Z       0,
+2026-11-25T22:38:39.9876518Z       20,
+2026-11-25T22:38:39.9876597Z       12,
+2026-11-25T22:38:39.9876678Z       "-459642109321/146507961600",
+2026-11-25T22:38:39.9876764Z       "2205835610554368/232925"
+2026-11-25T22:38:39.9876840Z     ],
+2026-11-25T22:38:39.9876918Z     [
+2026-11-25T22:38:39.9876991Z       "beta",
+2026-11-25T22:38:39.9877070Z       0,
+2026-11-25T22:38:39.9877143Z       20,
+2026-11-25T22:38:39.9877224Z       15,
+2026-11-25T22:38:39.9877304Z       "9672529279291/887927040",
+2026-11-25T22:38:39.9877389Z       "704411194097664/847"
+2026-11-25T22:38:39.9877471Z     ],
+2026-11-25T22:38:39.9877544Z     [
+2026-11-25T22:38:39.9877623Z       "beta",
+2026-11-25T22:38:39.9877812Z       0,
+2026-11-25T22:38:39.9877896Z       20,
+2026-11-25T22:38:39.9877967Z       16,
+2026-11-25T22:38:39.9878056Z       "1150400471543/26637811200",
+2026-11-25T22:38:39.9878139Z       "199862921101049856/232925"
+2026-11-25T22:38:39.9878217Z     ],
+2026-11-25T22:38:39.9878293Z     [
+2026-11-25T22:38:39.9878365Z       "beta",
+2026-11-25T22:38:39.9878442Z       0,
+2026-11-25T22:38:39.9878514Z       20,
+2026-11-25T22:38:39.9878592Z       19,
+2026-11-25T22:38:39.9878673Z       "211705635544549/355170816",
+2026-11-25T22:38:39.9878857Z       "-996336454814662656/4235"
+2026-11-25T22:38:39.9878930Z     ],
+2026-11-25T22:38:39.9879007Z     [
+2026-11-25T22:38:39.9879085Z       "beta",
+2026-11-25T22:38:39.9879157Z       0,
+2026-11-25T22:38:39.9879234Z       20,
+2026-11-25T22:38:39.9879307Z       20,
+2026-11-25T22:38:39.9879392Z       "-4970331842381/117206369280",
+2026-11-25T22:38:39.9879472Z       "19855209118209933312/232925"
+2026-11-25T22:38:39.9879548Z     ],
+2026-11-25T22:38:39.9879622Z     [
+2026-11-25T22:38:39.9879703Z       "nu",
+2026-11-25T22:38:39.9879780Z       2,
+2026-11-25T22:38:39.9879853Z       0,
+2026-11-25T22:38:39.9879931Z       20,
+2026-11-25T22:38:39.9880010Z       "23420227/18498480",
+2026-11-25T22:38:39.9880092Z       "1324351488/847"
+2026-11-25T22:38:39.9880165Z     ],
+2026-11-25T22:38:39.9880241Z     [
+2026-11-25T22:38:39.9880314Z       "nu",
+2026-11-25T22:38:39.9880396Z       2,
+2026-11-25T22:38:39.9880469Z       1,
+2026-11-25T22:38:39.9880546Z       18,
+2026-11-25T22:38:39.9880755Z       "-586279/1761760",
+2026-11-25T22:38:39.9880837Z       "165543936/121"
+2026-11-25T22:38:39.9880915Z     ],
+2026-11-25T22:38:39.9880987Z     [
+2026-11-25T22:38:39.9881068Z       "nu",
+2026-11-25T22:38:39.9881140Z       2,
+2026-11-25T22:38:39.9881221Z       2,
+2026-11-25T22:38:39.9881293Z       20,
+2026-11-25T22:38:39.9881380Z       "-74250914/3468465",
+2026-11-25T22:38:39.9881463Z       "106476601344/605"
+2026-11-25T22:38:39.9881537Z     ],
+2026-11-25T22:38:39.9881614Z     [
+2026-11-25T22:38:39.9881691Z       "nu",
+2026-11-25T22:38:39.9881770Z       2,
+2026-11-25T22:38:39.9881842Z       3,
+2026-11-25T22:38:39.9881920Z       18,
+2026-11-25T22:38:39.9881998Z       "2521447463/660660",
+2026-11-25T22:38:39.9882082Z       "93167026176/605"
+2026-11-25T22:38:39.9882154Z     ],
+2026-11-25T22:38:39.9882236Z     [
+2026-11-25T22:38:39.9882316Z       "nu",
+2026-11-25T22:38:39.9882389Z       2,
+2026-11-25T22:38:39.9882470Z       4,
+2026-11-25T22:38:39.9882542Z       20,
+2026-11-25T22:38:39.9882630Z       "-10247426188/3468465",
+2026-11-25T22:38:39.9882710Z       "16500123500544/847"
+2026-11-25T22:38:39.9882790Z     ],
+2026-11-25T22:38:39.9882862Z     [
+2026-11-25T22:38:39.9882946Z       "nu",
+2026-11-25T22:38:39.9883027Z       2,
+2026-11-25T22:38:39.9883102Z       5,
+2026-11-25T22:38:39.9883179Z       18,
+2026-11-25T22:38:39.9883258Z       "69669713846/165165",
+2026-11-25T22:38:39.9883344Z       "2062515437568/121"
+2026-11-25T22:38:39.9883417Z     ],
+2026-11-25T22:38:39.9883496Z     [
+2026-11-25T22:38:39.9883573Z       "nu",
+2026-11-25T22:38:39.9883654Z       2,
+2026-11-25T22:38:39.9883733Z       6,
+2026-11-25T22:38:39.9883807Z       20,
+2026-11-25T22:38:39.9883896Z       "-1138147604576/3468465",
+2026-11-25T22:38:39.9883976Z       "859015470907392/385"
+2026-11-25T22:38:39.9884057Z     ],
+2026-11-25T22:38:39.9884130Z     [
+2026-11-25T22:38:39.9884211Z       "nu",
+2026-11-25T22:38:39.9884285Z       2,
+2026-11-25T22:38:39.9884364Z       7,
+2026-11-25T22:38:39.9884438Z       18,
+2026-11-25T22:38:39.9884522Z       "2272982018256/55055",
+2026-11-25T22:38:39.9884608Z       "107376933863424/55"
+2026-11-25T22:38:39.9884679Z     ],
+2026-11-25T22:38:39.9884754Z     [
+2026-11-25T22:38:39.9884828Z       "nu",
+2026-11-25T22:38:39.9884905Z       2,
+2026-11-25T22:38:39.9884978Z       8,
+2026-11-25T22:38:39.9885058Z       20,
+2026-11-25T22:38:39.9885137Z       "-9875797467904/266805",
+2026-11-25T22:38:39.9885223Z       "32104266357276672/121"
+2026-11-25T22:38:39.9885302Z     ],
+2026-11-25T22:38:39.9885373Z     [
+2026-11-25T22:38:39.9885578Z       "nu",
+2026-11-25T22:38:39.9885654Z       2,
+2026-11-25T22:38:39.9885733Z       9,
+2026-11-25T22:38:39.9885805Z       18,
+2026-11-25T22:38:39.9885890Z       "200039/31460",
+2026-11-25T22:38:39.9885968Z       "-15914237952/121"
+2026-11-25T22:38:39.9886046Z     ],
+2026-11-25T22:38:39.9886122Z     [
+2026-11-25T22:38:39.9886194Z       "nu",
+2026-11-25T22:38:39.9886271Z       2,
+2026-11-25T22:38:39.9886344Z       10,
+2026-11-25T22:38:39.9886422Z       17,
+2026-11-25T22:38:39.9886502Z       "-18110628814144/165165",
+2026-11-25T22:38:39.9886695Z       "-15914237952/121"
+2026-11-25T22:38:39.9886767Z     ],
+2026-11-25T22:38:39.9886848Z     [
+2026-11-25T22:38:39.9886923Z       "nu",
+2026-11-25T22:38:39.9887001Z       2,
+2026-11-25T22:38:39.9887078Z       10,
+2026-11-25T22:38:39.9887150Z       18,
+2026-11-25T22:38:39.9887232Z       "89046143411/69765696",
+2026-11-25T22:38:39.9887310Z       "77535903744/6655"
+2026-11-25T22:38:39.9887389Z     ],
+2026-11-25T22:38:39.9887464Z     [
+2026-11-25T22:38:39.9887544Z       "nu",
+2026-11-25T22:38:39.9887616Z       2,
+2026-11-25T22:38:39.9887697Z       11,
+2026-11-25T22:38:39.9887775Z       20,
+2026-11-25T22:38:39.9887854Z       "14915037136/3468465",
+2026-11-25T22:38:39.9887939Z       "-1002405101568/55"
+2026-11-25T22:38:39.9888012Z     ],
+2026-11-25T22:38:39.9888091Z     [
+2026-11-25T22:38:39.9888164Z       "nu",
+2026-11-25T22:38:39.9888244Z       2,
+2026-11-25T22:38:39.9888317Z       12,
+2026-11-25T22:38:39.9888396Z       19,
+2026-11-25T22:38:39.9888476Z       "86793423686656/495495",
+2026-11-25T22:38:39.9888561Z       "-1002405101568/55"
+2026-11-25T22:38:39.9888639Z     ],
+2026-11-25T22:38:39.9888710Z     [
+2026-11-25T22:38:39.9888791Z       "nu",
+2026-11-25T22:38:39.9888867Z       2,
+2026-11-25T22:38:39.9888945Z       12,
+2026-11-25T22:38:39.9889016Z       20,
+2026-11-25T22:38:39.9889105Z       "2226162874139/3052249200",
+2026-11-25T22:38:39.9889184Z       "26444650512384/21175"
+2026-11-25T22:38:39.9889263Z     ],
+2026-11-25T22:38:39.9889341Z     [
+2026-11-25T22:38:39.9889417Z       "nu",
+2026-11-25T22:38:39.9889501Z       2,
+2026-11-25T22:38:39.9889575Z       13,
+2026-11-25T22:38:39.9889656Z       18,
+2026-11-25T22:38:39.9889736Z       "-34482614482/165165",
+2026-11-25T22:38:39.9889824Z       "-877104463872/55"
+2026-11-25T22:38:39.9889896Z     ],
+2026-11-25T22:38:39.9889977Z     [
+2026-11-25T22:38:39.9890058Z       "nu",
+2026-11-25T22:38:39.9890134Z       2,
+2026-11-25T22:38:39.9890216Z       14,
+2026-11-25T22:38:39.9890289Z       17,
+2026-11-25T22:38:39.9890379Z       "9055314407072/165165",
+2026-11-25T22:38:39.9890463Z       "-877104463872/55"
+2026-11-25T22:38:39.9890547Z     ],
+2026-11-25T22:38:39.9890728Z     [
+2026-11-25T22:38:39.9890812Z       "nu",
+2026-11-25T22:38:39.9890887Z       2,
+2026-11-25T22:38:39.9890969Z       14,
+2026-11-25T22:38:39.9891049Z       18,
+2026-11-25T22:38:39.9891134Z       "-202382554369/317116800",
+2026-11-25T22:38:39.9891219Z       "3305581314048/3025"
+2026-11-25T22:38:39.9891292Z     ],
+2026-11-25T22:38:39.9891369Z     [
+2026-11-25T22:38:39.9891445Z       "nu",
+2026-11-25T22:38:39.9891522Z       2,
+2026-11-25T22:38:39.9891594Z       15,
+2026-11-25T22:38:39.9891671Z       20,
+2026-11-25T22:38:39.9891758Z       "283375153696/693693",
+2026-11-25T22:38:39.9891838Z       "-1925009173905408/847"
+2026-11-25T22:38:39.9891917Z     ],
+2026-11-25T22:38:39.9891988Z     [
+2026-11-25T22:38:39.9892066Z       "nu",
+2026-11-25T22:38:39.9892140Z       2,
+2026-11-25T22:38:39.9892219Z       16,
+2026-11-25T22:38:39.9892291Z       19,
+2026-11-25T22:38:39.9892378Z       "-43396447970816/495495",
+2026-11-25T22:38:39.9892466Z       "-1925009173905408/847"
+2026-11-25T22:38:39.9892538Z     ],
+2026-11-25T22:38:39.9892619Z     [
+2026-11-25T22:38:39.9892691Z       "nu",
+2026-11-25T22:38:39.9892770Z       2,
+2026-11-25T22:38:39.9892842Z       16,
+2026-11-25T22:38:39.9892919Z       20,
+2026-11-25T22:38:39.9893003Z       "-2226190585067/6104498400",
+2026-11-25T22:38:39.9893087Z       "935173294129152/6655"
+2026-11-25T22:38:39.9893159Z     ],
+2026-11-25T22:38:39.9893357Z     [
+2026-11-25T22:38:39.9893441Z       "nu",
+2026-11-25T22:38:39.9893514Z       2,
+2026-11-25T22:38:39.9893593Z       17,
+2026-11-25T22:38:39.9893665Z       10,
+2026-11-25T22:38:39.9893750Z       "-18110628814144/385385",
+2026-11-25T22:38:39.9893829Z       "-47742713856/847"
+2026-11-25T22:38:39.9893908Z     ],
+2026-11-25T22:38:39.9893980Z     [
+2026-11-25T22:38:39.9894061Z       "nu",
+2026-11-25T22:38:39.9894142Z       2,
+2026-11-25T22:38:39.9894219Z       17,
+2026-11-25T22:38:39.9894301Z       14,
+2026-11-25T22:38:39.9894381Z       "9055314407072/231231",
+2026-11-25T22:38:39.9894581Z       "-125300637696/11"
+2026-11-25T22:38:39.9894655Z     ],
+2026-11-25T22:38:39.9894733Z     [
+2026-11-25T22:38:39.9894807Z       "nu",
+2026-11-25T22:38:39.9894888Z       2,
+2026-11-25T22:38:39.9894969Z       17,
+2026-11-25T22:38:39.9895042Z       18,
+2026-11-25T22:38:39.9895131Z       "-4527657203536/165165",
+2026-11-25T22:38:39.9895211Z       "-240626146738176/121"
+2026-11-25T22:38:39.9895290Z     ],
+2026-11-25T22:38:39.9895366Z     [
+2026-11-25T22:38:39.9895445Z       "nu",
+2026-11-25T22:38:39.9895521Z       2,
+2026-11-25T22:38:39.9895601Z       18,
+2026-11-25T22:38:39.9895673Z       1,
+2026-11-25T22:38:39.9895761Z       "-586279/12332320",
+2026-11-25T22:38:39.9895843Z       "165543936/847"
+2026-11-25T22:38:39.9895917Z     ],
+2026-11-25T22:38:39.9895995Z     [
+2026-11-25T22:38:39.9896068Z       "nu",
+2026-11-25T22:38:39.9906396Z       2,
+2026-11-25T22:38:39.9906506Z       18,
+2026-11-25T22:38:39.9906587Z       3,
+2026-11-25T22:38:39.9906683Z       "2521447463/1541540",
+2026-11-25T22:38:39.9906770Z       "39928725504/605"
+2026-11-25T22:38:39.9906851Z     ],
+2026-11-25T22:38:39.9906925Z     [
+2026-11-25T22:38:39.9907014Z       "nu",
+2026-11-25T22:38:39.9907096Z       2,
+2026-11-25T22:38:39.9907168Z       18,
+2026-11-25T22:38:39.9907249Z       5,
+2026-11-25T22:38:39.9907328Z       "69669713846/231231",
+2026-11-25T22:38:39.9907413Z       "10312577187840/847"
+2026-11-25T22:38:39.9907486Z     ],
+2026-11-25T22:38:39.9907567Z     [
+2026-11-25T22:38:39.9907644Z       "nu",
+2026-11-25T22:38:39.9907725Z       2,
+2026-11-25T22:38:39.9907804Z       18,
+2026-11-25T22:38:39.9907876Z       7,
+2026-11-25T22:38:39.9907962Z       "2272982018256/55055",
+2026-11-25T22:38:39.9908040Z       "107376933863424/55"
+2026-11-25T22:38:39.9908115Z     ],
+2026-11-25T22:38:39.9908186Z     [
+2026-11-25T22:38:39.9908266Z       "nu",
+2026-11-25T22:38:39.9908338Z       2,
+2026-11-25T22:38:39.9908417Z       18,
+2026-11-25T22:38:39.9908496Z       9,
+2026-11-25T22:38:39.9908573Z       "85731/31460",
+2026-11-25T22:38:39.9908662Z       "-47742713856/847"
+2026-11-25T22:38:39.9908736Z     ],
+2026-11-25T22:38:39.9908816Z     [
+2026-11-25T22:38:39.9908892Z       "nu",
+2026-11-25T22:38:39.9908971Z       2,
+2026-11-25T22:38:39.9909045Z       18,
+2026-11-25T22:38:39.9909126Z       10,
+2026-11-25T22:38:39.9909208Z       "89046143411/162786624",
+2026-11-25T22:38:39.9909294Z       "232607711232/46585"
+2026-11-25T22:38:39.9909372Z     ],
+2026-11-25T22:38:39.9909445Z     [
+2026-11-25T22:38:39.9909528Z       "nu",
+2026-11-25T22:38:39.9909602Z       2,
+2026-11-25T22:38:39.9909680Z       18,
+2026-11-25T22:38:39.9909754Z       13,
+2026-11-25T22:38:39.9909843Z       "-34482614482/231231",
+2026-11-25T22:38:39.9909922Z       "-125300637696/11"
+2026-11-25T22:38:39.9909999Z     ],
+2026-11-25T22:38:39.9910078Z     [
+2026-11-25T22:38:39.9910152Z       "nu",
+2026-11-25T22:38:39.9910230Z       2,
+2026-11-25T22:38:39.9910301Z       18,
+2026-11-25T22:38:39.9910380Z       14,
+2026-11-25T22:38:39.9910464Z       "-202382554369/443963520",
+2026-11-25T22:38:39.9910554Z       "3305581314048/4235"
+2026-11-25T22:38:39.9910753Z     ],
+2026-11-25T22:38:39.9910837Z     [
+2026-11-25T22:38:39.9910911Z       "nu",
+2026-11-25T22:38:39.9910990Z       2,
+2026-11-25T22:38:39.9911068Z       18,
+2026-11-25T22:38:39.9911141Z       17,
+2026-11-25T22:38:39.9911227Z       "-4527657203536/165165",
+2026-11-25T22:38:39.9911306Z       "-240626146738176/121"
+2026-11-25T22:38:39.9911384Z     ],
+2026-11-25T22:38:39.9911648Z     [
+2026-11-25T22:38:39.9911735Z       "nu",
+2026-11-25T22:38:39.9911812Z       2,
+2026-11-25T22:38:39.9911890Z       18,
+2026-11-25T22:38:39.9911967Z       18,
+2026-11-25T22:38:39.9912052Z       "2226230622827/6976569600",
+2026-11-25T22:38:39.9912141Z       "818276632363008/6655"
+2026-11-25T22:38:39.9912215Z     ],
+2026-11-25T22:38:39.9912296Z     [
+2026-11-25T22:38:39.9912369Z       "nu",
+2026-11-25T22:38:39.9912451Z       2,
+2026-11-25T22:38:39.9912527Z       19,
+2026-11-25T22:38:39.9912607Z       12,
+2026-11-25T22:38:39.9912692Z       "43396711843328/495495",
+2026-11-25T22:38:39.9912893Z       "-501202550784/55"
+2026-11-25T22:38:39.9912973Z     ],
+2026-11-25T22:38:39.9913048Z     [
+2026-11-25T22:38:39.9913130Z       "nu",
+2026-11-25T22:38:39.9913205Z       2,
+2026-11-25T22:38:39.9913284Z       19,
+2026-11-25T22:38:39.9913359Z       16,
+2026-11-25T22:38:39.9913449Z       "-10849111992704/165165",
+2026-11-25T22:38:39.9913541Z       "-1443756880429056/847"
+2026-11-25T22:38:39.9913616Z     ],
+2026-11-25T22:38:39.9913699Z     [
+2026-11-25T22:38:39.9913772Z       "nu",
+2026-11-25T22:38:39.9913850Z       2,
+2026-11-25T22:38:39.9913922Z       19,
+2026-11-25T22:38:39.9914002Z       20,
+2026-11-25T22:38:39.9914084Z       "21698092049152/495495",
+2026-11-25T22:38:39.9914170Z       "-110563449020350464/385"
+2026-11-25T22:38:39.9914245Z     ],
+2026-11-25T22:38:39.9914326Z     [
+2026-11-25T22:38:39.9914407Z       "nu",
+2026-11-25T22:38:39.9914479Z       2,
+2026-11-25T22:38:39.9914558Z       20,
+2026-11-25T22:38:39.9914630Z       2,
+2026-11-25T22:38:39.9914718Z       "-37125457/6936930",
+2026-11-25T22:38:39.9914794Z       "26619150336/605"
+2026-11-25T22:38:39.9914872Z     ],
+2026-11-25T22:38:39.9914944Z     [
+2026-11-25T22:38:39.9915026Z       "nu",
+2026-11-25T22:38:39.9915104Z       2,
+2026-11-25T22:38:39.9915176Z       20,
+2026-11-25T22:38:39.9915256Z       4,
+2026-11-25T22:38:39.9915335Z       "-5123713094/3468465",
+2026-11-25T22:38:39.9915419Z       "8250061750272/847"
+2026-11-25T22:38:39.9915494Z     ],
+2026-11-25T22:38:39.9915576Z     [
+2026-11-25T22:38:39.9915651Z       "nu",
+2026-11-25T22:38:39.9915730Z       2,
+2026-11-25T22:38:39.9915801Z       20,
+2026-11-25T22:38:39.9915878Z       6,
+2026-11-25T22:38:39.9915962Z       "-284536901144/1156155",
+2026-11-25T22:38:39.9916041Z       "644261603180544/385"
+2026-11-25T22:38:39.9916119Z     ],
+2026-11-25T22:38:39.9916192Z     [
+2026-11-25T22:38:39.9916270Z       "nu",
+2026-11-25T22:38:39.9916343Z       2,
+2026-11-25T22:38:39.9916424Z       20,
+2026-11-25T22:38:39.9916498Z       8,
+2026-11-25T22:38:39.9916582Z       "-9875797467904/266805",
+2026-11-25T22:38:39.9916671Z       "32104266357276672/121"
+2026-11-25T22:38:39.9916744Z     ],
+2026-11-25T22:38:39.9916826Z     [
+2026-11-25T22:38:39.9916900Z       "nu",
+2026-11-25T22:38:39.9916978Z       2,
+2026-11-25T22:38:39.9917050Z       20,
+2026-11-25T22:38:39.9917128Z       11,
+2026-11-25T22:38:39.9917210Z       "7457518568/3468465",
+2026-11-25T22:38:39.9917297Z       "-501202550784/55"
+2026-11-25T22:38:39.9917376Z     ],
+2026-11-25T22:38:39.9917453Z     [
+2026-11-25T22:38:39.9917532Z       "nu",
+2026-11-25T22:38:39.9917606Z       2,
+2026-11-25T22:38:39.9917687Z       20,
+2026-11-25T22:38:39.9917760Z       12,
+2026-11-25T22:38:39.9917854Z       "2226162874139/6104498400",
+2026-11-25T22:38:39.9917934Z       "13222325256192/21175"
+2026-11-25T22:38:39.9918014Z     ],
+2026-11-25T22:38:39.9918088Z     [
+2026-11-25T22:38:39.9918170Z       "nu",
+2026-11-25T22:38:39.9918251Z       2,
+2026-11-25T22:38:39.9918325Z       20,
+2026-11-25T22:38:39.9918403Z       15,
+2026-11-25T22:38:39.9918483Z       "70843788424/231231",
+2026-11-25T22:38:39.9918568Z       "-1443756880429056/847"
+2026-11-25T22:38:39.9918641Z     ],
+2026-11-25T22:38:39.9918721Z     [
+2026-11-25T22:38:39.9918796Z       "nu",
+2026-11-25T22:38:39.9918879Z       2,
+2026-11-25T22:38:39.9918957Z       20,
+2026-11-25T22:38:39.9919029Z       16,
+2026-11-25T22:38:39.9919119Z       "-2226190585067/8139331200",
+2026-11-25T22:38:39.9919198Z       "701379970596864/6655"
+2026-11-25T22:38:39.9919368Z     ],
+2026-11-25T22:38:39.9919443Z     [
+2026-11-25T22:38:39.9919524Z       "nu",
+2026-11-25T22:38:39.9919601Z       2,
+2026-11-25T22:38:39.9919684Z       20,
+2026-11-25T22:38:39.9919767Z       19,
+2026-11-25T22:38:39.9919850Z       "21698092049152/495495",
+2026-11-25T22:38:39.9919937Z       "-110563449020350464/385"
+2026-11-25T22:38:39.9920010Z     ],
+2026-11-25T22:38:39.9920089Z     [
+2026-11-25T22:38:39.9920166Z       "nu",
+2026-11-25T22:38:39.9920245Z       2,
+2026-11-25T22:38:39.9920321Z       20,
+2026-11-25T22:38:39.9920402Z       20,
+2026-11-25T22:38:39.9920569Z       "445243659199/2441799360",
+2026-11-25T22:38:39.9920784Z       "32606945034633216/1925"
+2026-11-25T22:38:39.9920866Z     ]
+2026-11-25T22:38:39.9920942Z   ],
+2026-11-25T22:38:39.9921040Z   "odd_degree_errors": [],
+2026-11-25T22:38:39.9921125Z   "Euler_exact": true,
+2026-11-25T22:38:39.9921217Z   "Euler_errors": [],
+2026-11-25T22:38:39.9921301Z   "H3_anchor_ok": false,
+2026-11-25T22:38:39.9921407Z   "H3_scaled_norm2": "5129034750284544",
+2026-11-25T22:38:39.9921536Z   "H3_expected_scaled_norm2": "9549400422481920",
+2026-11-25T22:38:39.9921634Z   "imaginary_count": 2443,
+2026-11-25T22:38:39.9921730Z   "hermitian_errors": [],
+2026-11-25T22:38:39.9921814Z   "accumulation": {
+2026-11-25T22:38:39.9921908Z     "bounded_calls": 8051,
+2026-11-25T22:38:39.9921991Z     "fallback_calls": 1,
+2026-11-25T22:38:39.9922090Z     "max_bound": 7083549724304467820544
+2026-11-25T22:38:39.9922162Z   },
+2026-11-25T22:38:39.9922449Z   "scope": "max(p,q)>=17; literal direct 27-coordinate derivatives; no old-old placeholders"
+2026-11-25T22:38:39.9922536Z }
+2026-11-25T22:38:39.9922641Z Traceback (most recent call last):
+2026-11-25T22:38:39.9923187Z   File "/home/runner/work/math/math/research/computational/python-first-20261124/bfss-physical-implication/replay_direct_fixture.py", line 226, in <module>
+2026-11-25T22:38:39.9923296Z     run(tuple(map(int,a.diag)),a.output)
+2026-11-25T22:38:39.9923385Z     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-25T22:38:39.9923890Z   File "/home/runner/work/math/math/research/computational/python-first-20261124/bfss-physical-implication/replay_direct_fixture.py", line 194, in run
+2026-11-25T22:38:39.9924519Z     assert not errors and not real_errors and not euler_errors and anchor_ok and not hermitian_errors,('real/source diagnostics',errors[:5],real_errors[:5],euler_errors,anchor_ok,hermitian_errors[:5])
+2026-11-25T22:38:39.9924678Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-25T22:38:39.9925741Z AssertionError: ('real/source diagnostics', [['tau', 0, 1, 17, '-2707781276285/42042', '-1066162782208/3003'], ['tau', 0, 1, 18, '-523196783/27747720', '27418066944/4235'], ['tau', 0, 2, 19, '-16290976918047701/1345344', '-181389922052096/3003'], ['tau', 0, 2, 20, '20205651691/27747720', '6760788000768/4235'], ['tau', 0, 3, 17, '-4452804191929085/336336', '-242799913007104/3003']], [], [], False, [])
+2026-11-25T22:38:40.4043863Z ##[error]Process completed with exit code 1.
+2026-11-25T22:38:40.4150570Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-25T22:38:40.4151263Z with:
+2026-11-25T22:38:40.4151588Z   name: bfss-direct-fixture-294814c311fe3d220ae66cfe5147aacae9d565f8-1
+2026-11-25T22:38:40.4152036Z   path: /home/runner/work/_temp/bfss-direct-fixture/
+2026-11-25T22:38:40.4152353Z   retention-days: 30
+2026-11-25T22:38:40.4152575Z   if-no-files-found: warn
+2026-11-25T22:38:40.4152807Z   compression-level: 6
+2026-11-25T22:38:40.4153023Z   overwrite: false
+2026-11-25T22:38:40.4153254Z   include-hidden-files: false
+2026-11-25T22:38:40.4153504Z ##[endgroup]
+2026-11-25T22:38:40.6050470Z (node:5772) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-25T22:38:40.6051826Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-25T22:38:40.6213759Z With the provided path, there will be 7 files uploaded
+2026-11-25T22:38:40.6233257Z Artifact name is valid!
+2026-11-25T22:38:40.6234383Z Root directory input is valid!
+2026-11-25T22:38:40.8602548Z Beginning upload of artifact content to blob storage
+2026-11-25T22:38:40.9057213Z (node:5772) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-25T22:38:40.9586833Z Uploaded bytes 60792
+2026-11-25T22:38:40.9777788Z Finished uploading artifact content to blob storage!
+2026-11-25T22:38:40.9779204Z SHA256 digest of uploaded artifact zip is 51aab5db974eaf815cdda17041df167b2e1ba92654fb567965b7d7111df740c7
+2026-11-25T22:38:40.9781002Z Finalizing artifact upload
+2026-11-25T22:38:41.3041757Z Artifact bfss-direct-fixture-294814c311fe3d220ae66cfe5147aacae9d565f8-1.zip successfully finalized. Artifact ID 15069192221
+2026-11-25T22:38:41.3044090Z Artifact bfss-direct-fixture-294814c311fe3d220ae66cfe5147aacae9d565f8-1 has been successfully uploaded! Final size is 60792 bytes. Artifact ID is 15069192221
+2026-11-25T22:38:41.3050277Z Artifact download URL: https://github.com/etblink/math/actions/runs/45711502112/artifacts/15069192221
+2026-11-25T22:38:41.3298373Z Post job cleanup.
+2026-11-25T22:38:41.4207503Z [command]/usr/bin/git version
+2026-11-25T22:38:41.4254330Z git version 2.56.1
+2026-11-25T22:38:41.4298436Z Temporarily overriding HOME='/home/runner/work/_temp/c70ea373-9ccd-4b48-ae0f-0814dfd4366d' before making global git config changes
+2026-11-25T22:38:41.4299762Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-25T22:38:41.4304297Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/math/math
+2026-11-25T22:38:41.4357603Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-25T22:38:41.4418743Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-25T22:38:41.5079913Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-25T22:38:41.5142908Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-25T22:38:41.5744648Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-25T22:38:41.5792193Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-25T22:38:41.6517335Z Cleaning up orphan processes
+2026-11-25T22:38:41.7027380Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
