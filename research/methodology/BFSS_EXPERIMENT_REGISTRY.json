@@ -8026,6 +8026,58 @@
         "consumer_substitutions": 6,
         "lean_qualification": false
       }
+    },
+    {
+      "id": "E-MSY-NATIVE-OCCUPATION-TRANSITION-R2-GREEN-20261124",
+      "title": "Native occupation transition R2 qualified receipt",
+      "registered_at": "2026-11-24",
+      "status": "LEAN_QUALIFIED",
+      "classification": "SOURCE_NATIVE_TRANSITIONS_ONLY",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "2de90c905e539228af662e252046ed6081aced99",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/R2_GREEN_PARITY_CORE_R1_2026_11_24.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45546916877,
+        "job_id": 138978642270,
+        "artifact_id": 14992187156,
+        "artifact_size_bytes": 8026,
+        "artifact_sha256": "1745e590541f101cadd98038520c58b12274d1a48677e5175c163ce333c40d62",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 8972,
+        "source_roots": 5,
+        "consumer_roots": 2,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/R2_original_job_138978642270.log"
+      }
+    },
+    {
+      "id": "E-MSY-SINGLETON-PARITY-CORE-R1-20261124",
+      "title": "General singleton sorting sign and rank core R1",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "GENERAL_COMBINATORIAL_LEAN_CANDIDATE_NOT_SOURCE_ADAPTER",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "2de90c905e539228af662e252046ed6081aced99",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/R2_GREEN_PARITY_CORE_R1_2026_11_24.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYSingletonParityCore.lean",
+        "consumer": "lean/diagnostics/BFSSMSYSingletonParityCoreIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-singleton-parity-core-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Increasing-tail permutation sign is determined by the first-image rank; increasing finite enumeration rank counts smaller elements.",
+        "controls": [
+          "Mathlib inverse cycle",
+          "Nonconsecutive occupation-like set"
+        ],
+        "analysis_plan": "Strict pinned native build and independent consumer; audit exact roots and artifact; no literal sortSign claim until separate source adapter."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
