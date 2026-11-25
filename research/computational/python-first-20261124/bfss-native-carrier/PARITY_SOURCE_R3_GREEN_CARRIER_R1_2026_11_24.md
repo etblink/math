@@ -1,0 +1,11 @@
+# Literal source parity R3 qualified; coefficient carrier R1 staged
+
+Date 2026-11-24 Pacific. Branch integration/bfss-unified-research-20261108.
+
+## Source parity R3 — GREEN_QUALIFIED
+Run https://github.com/etblink/math/actions/runs/45553990523 ; commit bdbc16f13fad2590963736bb2d16b8463c3ae509; job 139001564034. Frozen preflight, pinned environment, native build 8974 jobs, independent even and odd insertion audits, six axiom roots (only propext, Classical.choice, Quot.sound), exact strict GREEN sentinel passed. Original artifact https://github.com/etblink/math/actions/runs/45553990523/artifacts/14995416289 ; independently downloaded, 8281 bytes, SHA-256 76a54e8de5b9af7f66171841f3b340f0d82936c0ae1fea2d3e6464a31a0ea93a, ZIP CRC clean, seven members, exact tested SHA. Full decoded original log archived. Source-level singleton sorting and creation coefficient parity now qualified. Original artifact expiry 2026-12-25 UTC.
+
+## Coefficient carrier R1 — REGISTERED_NOT_EXECUTED
+Reuse accepted F1 fockBFSSUnitary and F3-B5 occupationCoeff/occupationExpansion rather than new Fock basis or numerical Fintype ordering. The actual source coefficient Hilbert space FockCoordinateSpace 23 maps isometrically into original Fermion 2. Show exact recovered coefficients, full occupation expansion, norm preservation, smaller-mode parity unchanged by erasing the toggled mode, both native theta parity basis transitions and arbitrary finite coefficient sum formulas. Independent controls use the literal F1 unitary and pairedAlgebraData.theta. No dense matrices; no claim that native Fin index equals bitmask order. Pinned F3-B5 note: large specialized elaboration can be brittle; reuse the qualified expansion; if mapped-sum elaboration fails, abstract the generic map_sum step rather than raise kernel budgets. Source and consumer unqualified pending strict CI. Local Lean unavailable.
+
+This is the forward sum form of intertwining, not yet a reindexed coefficient-side operator identity or a theorem about packed bitmask encoding. Next define the toggle involution and reindex coefficient sums, show normalized t = sqrt(2) theta action and literal bit-index transport. Gauge/Spin(9), charge, weighted-domain and fidelity remain separate. No physical promotion.

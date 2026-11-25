@@ -8295,6 +8295,58 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-SINGLETON-PARITY-SOURCE-R3-GREEN-20261124",
+      "title": "Literal source parity R3 qualified receipt",
+      "registered_at": "2026-11-24",
+      "status": "LEAN_QUALIFIED",
+      "classification": "ORIGINAL_SOURCE_OCCUPATION_PARITY_ONLY",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "bdbc16f13fad2590963736bb2d16b8463c3ae509",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_SOURCE_R3_GREEN_CARRIER_R1_2026_11_24.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45553990523,
+        "job_id": 139001564034,
+        "artifact_id": 14995416289,
+        "artifact_size_bytes": 8281,
+        "artifact_sha256": "76a54e8de5b9af7f66171841f3b340f0d82936c0ae1fea2d3e6464a31a0ea93a",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 8974,
+        "source_roots": 4,
+        "consumer_roots": 2,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_SOURCE_R3_original_job_139001564034.log"
+      }
+    },
+    {
+      "id": "E-MSY-COEFFICIENT-CARRIER-R1-20261124",
+      "title": "Actual Fock coefficient carrier and parity-weighted theta sums R1",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "ORIGINAL_SOURCE_COEFFICIENT_SUM_CANDIDATE_NOT_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "bdbc16f13fad2590963736bb2d16b8463c3ae509",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PARITY_SOURCE_R3_GREEN_CARRIER_R1_2026_11_24.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYCoefficientCarrier.lean",
+        "consumer": "lean/diagnostics/BFSSMSYCoefficientCarrierIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-coefficient-carrier-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Qualified F1 isometry and F3-B5 occupation expansion transport arbitrary source coefficients with literal parity-weighted native theta action.",
+        "controls": [
+          "Literal F1 unitary coordinate recovery",
+          "Literal original pairedAlgebraData.theta odd coefficient sum"
+        ],
+        "analysis_plan": "Strict pinned source and independent consumer; exact root audit and original artifact; no physical inference."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
