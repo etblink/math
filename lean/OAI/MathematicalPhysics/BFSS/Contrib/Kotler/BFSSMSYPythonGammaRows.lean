@@ -167,11 +167,19 @@ theorem sourceGamma_entry (r : SpaceIndex) (i j : SpinIndex) :
       if pythonRowTarget r i = j then (pythonRowSign r i : ℝ) else 0 := by
   change FCP.BFSSGamma9.gamma r i j = _
   rw [sourceGamma_eq]
-  change ((if sourcePerm r i = j then sourceSign r i else (0 : ℤ)) : ℝ) = _
-  rw [sourcePerm_python, sourceSign_python]
+  change ((sourceGammaInt r i j : ℤ) : ℝ) = _
   by_cases h : pythonRowTarget r i = j
-  · rw [ite_eq_left h, ite_eq_left h]
-  · rw [ite_eq_right h, ite_eq_right h, Int.cast_zero]
+  · have hs : sourcePerm r i = j := (sourcePerm_python r i).trans h
+    have hi : sourceGammaInt r i j = pythonRowSign r i := by
+      rw [sourceGammaInt, ite_eq_left hs, sourceSign_python]
+    rw [ite_eq_left h]
+    exact congrArg (fun z : ℤ => (z : ℝ)) hi
+  · have hs : sourcePerm r i ≠ j :=
+      fun e => h ((sourcePerm_python r i).symm.trans e)
+    have hi : sourceGammaInt r i j = 0 := by
+      rw [sourceGammaInt, ite_eq_right hs]
+    rw [ite_eq_right h]
+    simpa only [Int.cast_zero] using congrArg (fun z : ℤ => (z : ℝ)) hi
 
 -- Same exact sparse row proof as the original source gamma gate.
 private theorem sourceGammaInt_mul_apply (r s : Fin 9) (i j : Fin 16) :
@@ -197,11 +205,28 @@ theorem sourceGammaPair_entry (r s : SpaceIndex) (i j : SpinIndex) :
   change (FCP.BFSSGamma9.gamma r * FCP.BFSSGamma9.gamma s) i j = _
   rw [sourceGamma_eq, sourceGamma_eq, ← Matrix.map_mul]
   change (((sourceGammaInt r * sourceGammaInt s) i j : ℤ) : ℝ) = _
-  rw [sourceGammaInt_mul_apply]
-  simp only [sourcePerm_python, sourceSign_python, pythonPairTarget, pythonPairSign]
-  by_cases h : pythonRowTarget s (pythonRowTarget r i) = j
-  · rw [ite_eq_left h, ite_eq_left h]
-  · rw [ite_eq_right h, ite_eq_right h, Int.cast_zero]
+  have ht : sourcePerm s (sourcePerm r i) = pythonPairTarget r s i :=
+    (sourcePerm_python s (sourcePerm r i)).trans
+      (congrArg (pythonRowTarget s) (sourcePerm_python r i))
+  have hw : sourceSign r i * sourceSign s (sourcePerm r i) =
+      pythonPairSign r s i := by
+    calc
+      _ = pythonRowSign r i * pythonRowSign s (sourcePerm r i) := by
+        rw [sourceSign_python r i, sourceSign_python s (sourcePerm r i)]
+      _ = _ := congrArg (fun k : Fin 16 => pythonRowSign r i * pythonRowSign s k)
+        (sourcePerm_python r i)
+  by_cases h : pythonPairTarget r s i = j
+  · have hs : sourcePerm s (sourcePerm r i) = j := ht.trans h
+    have hi : (sourceGammaInt r * sourceGammaInt s) i j = pythonPairSign r s i := by
+      rw [sourceGammaInt_mul_apply, ite_eq_left hs, hw]
+    rw [ite_eq_left h]
+    exact congrArg (fun z : ℤ => (z : ℝ)) hi
+  · have hs : sourcePerm s (sourcePerm r i) ≠ j :=
+      fun e => h (ht.symm.trans e)
+    have hi : (sourceGammaInt r * sourceGammaInt s) i j = 0 := by
+      rw [sourceGammaInt_mul_apply, ite_eq_right hs]
+    rw [ite_eq_right h]
+    simpa only [Int.cast_zero] using congrArg (fun z : ℤ => (z : ℝ)) hi
 
 #print axioms pythonRowSign_ne_zero
 #print axioms pythonPairSign_ne_zero

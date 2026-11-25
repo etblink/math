@@ -1,0 +1,11 @@
+# Python gamma rows R1 RED; R2 named integer branch then real cast
+
+Date 2026-11-25 Pacific; unified integration branch.
+
+## R1 RED_UNQUALIFIED
+Run https://github.com/etblink/math/actions/runs/45670744263 ; job 139405013480; tested commit 5d4d201c9ede8dd5b0275f75faeb0cade5b8f074. Frozen preflight and PYTHON_GAMMA_WORD_MASKS_MATCH and pinned environment PASS. Native failure at 170:2 change pattern casts branches of ite, not defeq to mapped integer entry; 203:23 and 204:24 dependent Decidable instance mismatch after simplifier unfolds named pythonPairTarget under real ite. The two nonzero-sign roots have clean native axiom reports; integer table comparison and sparse matrix product helpers produced no native diagnostics. Both real-entry roots have sorryAx from failed elaboration. Independent consumer not reached. Not evidence of disagreement or a physical falsification.
+
+Original artifact https://github.com/etblink/math/actions/runs/45670744263/artifacts/15048879477 independently downloaded and rehashed 19326 bytes, SHA-256 dd850cfd69386c9997a00ddc8cb44c99c0877dfdeaaf70b3408d159ba5b5c156, six files and clean CRC. Exact tested SHA, source blob 632e3d8d762829bad99acbd35a81275586f2e695, consumer 5b56019d868a65164ab965e1fe25c55b258736b0, workflow 109e169729cfbe1944f3954f29e9e37b774c2363 checked against original artifact manifest. Full original job transcript research/computational/python-first-20261124/bfss-native-carrier/PYTHON_GAMMA_ROWS_R1_original_job_139405013480.log.
+
+## R2 REGISTERED_NOT_EXECUTED
+Reuse named-condition/branch-first method from qualified packed bilinear and original reflected gamma gates. Expose cast of the named integer matrix ENTRY, not a casted conditional. Branch on literal named Python condition and derive matching original source condition with proven target equality. Establish integer branch equality before applying congrArg (fun z : ℤ => (z : ℝ)); use separately named target and sign-product equalities in ordered pair case. Never unfold pythonPairTarget under a dependent ite. No public definition or theorem statement, literal tables, imports, independent consumer, workflow, previously qualified source or resource-limit changes. Strict four source plus three independent roots required. No local Lean compilation. Stop on second native RED.

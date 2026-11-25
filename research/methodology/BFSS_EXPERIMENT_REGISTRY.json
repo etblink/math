@@ -9282,6 +9282,71 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PYTHON-GAMMA-ROWS-R1-RED-20261125",
+      "title": "Python gamma rows R1 native RED at cast and dependent ite boundary",
+      "registered_at": "2026-11-25",
+      "status": "RED_UNQUALIFIED",
+      "classification": "INTEGER_CAST_AND_DEPENDENT_ITE_INTERFACE_FAILURE_NOT_TABLE_DISAGREEMENT",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "5d4d201c9ede8dd5b0275f75faeb0cade5b8f074",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_GAMMA_ROWS_R1_RED_R2_NAMED_CAST_2026_11_25.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45670744263,
+        "job_id": 139405013480,
+        "artifact_id": 15048879477,
+        "artifact_size_bytes": 19326,
+        "artifact_sha256": "dd850cfd69386c9997a00ddc8cb44c99c0877dfdeaaf70b3408d159ba5b5c156",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Line 170 change under cast/ite; lines 203-204 dependent Decidable instance mismatch after unfolding pythonPairTarget under ite",
+        "clean_native_roots": [
+          "pythonRowSign_ne_zero",
+          "pythonPairSign_ne_zero"
+        ],
+        "python_word_mask_preflight": true,
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_GAMMA_ROWS_R1_original_job_139405013480.log"
+      }
+    },
+    {
+      "id": "E-MSY-PYTHON-GAMMA-ROWS-R2-20261125",
+      "title": "Python gamma rows R2 named branch integer equalities then cast",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "FINITE_GAMMA_COEFFICIENT_BRIDGE_NOT_SPARSE_WITNESS_CERTIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "5d4d201c9ede8dd5b0275f75faeb0cade5b8f074",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_GAMMA_ROWS_R1_RED_R2_NAMED_CAST_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPythonGammaRowsIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-python-gamma-rows-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Resolve each original integer row condition separately from named Python row condition using exact row target equality; prove integer entry equalities before coercion. Use congrArg cast only on completed branch equality, never rewrite a conditional under the cast or unfold target within dependent ite.",
+        "controls": [
+          "144 source row comparisons independently computed from frozen Python word list and frozen original tables",
+          "576 ascending pair rows checked",
+          "Kernel-check source gamma and gamma pair entry formulas; exact same-color row weight, off-row zero, cross-color zero"
+        ],
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Python word mask drift",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing strict sentinel"
+        ],
+        "analysis_plan": "Same public statements, literal tables, Python inputs, independent consumer, workflow, and resource limits; four native and three independent axiom roots. Stop on second native RED."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
