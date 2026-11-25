@@ -9472,6 +9472,69 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PYTHON-SPIN-CONTRACTION-R2-GREEN-20261125",
+      "title": "Sparse Python spin contraction R2 qualified receipt",
+      "registered_at": "2026-11-25",
+      "status": "LEAN_QUALIFIED",
+      "classification": "UNIVERSAL_LITERAL_PYTHON_SPIN_SUM_TRANSPORT",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "406689ca5d743fee2447282e962c206cdc07c720",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/SPARSE_SPIN_R2_GREEN_INTEGER_RECHECK_2026_11_25.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45682339064,
+        "job_id": 139445855110,
+        "artifact_id": 15055821787,
+        "artifact_size_bytes": 18786,
+        "artifact_sha256": "1a15180f5a8593e5ecfdcb4138dcbf9cae2dc923551d40e6df0ee6db3473daa9",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 9099,
+        "source_roots": 4,
+        "consumer_roots": 2,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_SPIN_CONTRACTION_R2_original_job_139445855110.log"
+      }
+    },
+    {
+      "id": "E-MSY-INTEGER-RECHECK-R1-20261125",
+      "title": "Independent exact integer seed generator recheck, Python-first",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "INDEPENDENT_COMPUTATIONAL_GAUSSIAN_INTEGER_SEED_ANNIHILATION_NOT_KERNEL_OR_PHYSICAL_DOMAIN_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "406689ca5d743fee2447282e962c206cdc07c720",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/SPARSE_SPIN_R2_GREEN_INTEGER_RECHECK_2026_11_25.md",
+      "source_artifact": {
+        "source": "research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck.py",
+        "workflow": ".github/workflows/bfss-msy-integer-recheck.yml",
+        "seed": "research/computational/python-first-20261124/bfss-seed-transport/source_seed_integer.npz",
+        "seed_git_blob": "91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0",
+        "seed_sha256": "131e703b19da9a1aea1e137dac45f451bbfc7f64374aff6619a46488410d5ff7"
+      },
+      "stages": {
+        "hypothesis": "Frozen 19136-entry integer occupation vector has squared norm 8072064 and is annihilated exactly by each of three color and 36 spin contractions. Independently recompute without NumPy, floats, complex floating point, or trusting archived zeros.",
+        "controls": [
+          "Strict standard-library NPZ validation; unique bounded masks; exact norm",
+          "Two arithmetic paths: ordered direct scatter and compiled XOR/parity grouped gather",
+          "Negative controls: first coefficient +1, undo final fermionic permutation signs",
+          "Check exact control metrics against frozen archived receipt; compare derived Python word masks with qualified Lean table"
+        ],
+        "falsifiers": [
+          "Input hash drift",
+          "Any nonzero generator residual",
+          "Scatter/gather discrepancy",
+          "Negative control fails or differs from archive",
+          "Malformed seed"
+        ],
+        "analysis_plan": "Independent Python execution in new workflow, no Lean changes. Archive per-generator residual statistics, input hashes, term counts, support and occupation parity. Computational result not Lean kernel proof or physical differential-domain certification."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
