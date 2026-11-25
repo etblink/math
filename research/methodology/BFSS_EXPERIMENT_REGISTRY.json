@@ -7904,6 +7904,70 @@
         "prior_undilated_frozen_scc_superseded": true,
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-MSY-NATIVE-OCCUPATION-TRANSITION-R1-20261124",
+      "title": "Native paired Majorana signed occupation transitions R1",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "LEAN_CANDIDATE_SOURCE_EXACT_NOT_QUALIFIED",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": true,
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/README.md",
+      "source_baseline": "531ee92e265f286cffea169212374814a1a77bd4",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNativeOccupationTransition.lean",
+        "consumer": "lean/diagnostics/BFSSMSYNativeOccupationTransitionIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-native-occupation-transition-strict.yml",
+        "finite_audit": "research/computational/python-first-20261124/bfss-native-carrier/parity_results.json"
+      },
+      "stages": {
+        "observation": "Full finite witness crosses threshold; native occupation and phase convention must be bound.",
+        "question": "Do literal source signed kets have the specified even/odd Majorana transition formulas?",
+        "background": [
+          "F1",
+          "F3-B7",
+          "G1A",
+          "FockNorm",
+          "MSY reflected gamma and transport"
+        ],
+        "hypothesis": "Expose the source sorting sign and both actual paired Majorana actions.",
+        "falsifiers": [
+          "Source hash drift",
+          "Native compile or consumer failure",
+          "Unexpected axiom",
+          "Incorrect signed transition"
+        ],
+        "experiment": {
+          "controls": [
+            "Independent literal pairedAlgebraData.theta consumer",
+            "Last mode label",
+            "Finite parity audit",
+            "Omit exterior sign",
+            "Reverse odd phase"
+          ],
+          "reproduce_command": "Workflow bfss-msy-native-occupation-transition-strict.yml; python research/computational/python-first-20261124/bfss-native-carrier/audit_parity.py"
+        },
+        "analysis_plan": "Strict source and independent consumer qualification; preserve RED; do not expand the entire Fock matrix.",
+        "conclusion_rule": "Only qualify tested native declarations after strict receipt audit; general parity, carrier and physical claims separate.",
+        "communication": "Chronological R1 candidate memo and finite parity receipts."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED",
+        "finite_parity_audit": {
+          "seed_sha256": "131e703b19da9a1aea1e137dac45f451bbfc7f64374aff6619a46488410d5ff7",
+          "support": 19136,
+          "norm_squared": 8072064,
+          "native_permutation_model_checks": 918528,
+          "mismatch": 0,
+          "omit_exterior_sign_mismatch": 436352,
+          "reverse_odd_phase_mismatch": 459264,
+          "scope": "Finite seed-support parity checks; native Lean transition candidate unqualified."
+        },
+        "lean_qualification": false
+      }
     }
   ],
   "allowed_statuses": [
