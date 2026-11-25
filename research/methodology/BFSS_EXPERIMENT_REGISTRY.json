@@ -7112,6 +7112,90 @@
         "full_weighted_energy_status": "OPEN",
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-ORDERED-JETS-20261124",
+      "title": "Ordered quadratic Yukawa jets, 32-row exact weighted integration and rational eigenvalue bracket",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_FINITE_RECONSTRUCTED_MATRICES_CONDITIONAL_NOT_LEAN_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-ordered-jets/README.md",
+      "source_baseline": "d4d594a0aa43b2db7f556b11e95af7ce83edc932",
+      "source_artifact": {
+        "jet_script": "research/computational/python-first-20261124/bfss-ordered-jets/jet2.py",
+        "jet_blob": "4879586a055de2b4cc234e7a66346321ac842827",
+        "reconstruction": "research/computational/python-first-20261124/bfss-ordered-jets/reconstruct.py",
+        "integration": "research/computational/python-first-20261124/bfss-ordered-jets/integrate32.py",
+        "integration_blob": "1c12ac21f6274360a614548539b05f6267f67a4b",
+        "bracket_script": "research/computational/python-first-20261124/bfss-ordered-jets/bracket32.py",
+        "bracket_blob": "74d20863c72fda8dc29354e9732d040f45339564",
+        "exact_matrices": "research/computational/python-first-20261124/bfss-ordered-jets/matrices.json.gz",
+        "matrix_blob": "29380fbf7e2219fc49a06be07bd6c9098251d036",
+        "bracket": "research/computational/python-first-20261124/bfss-ordered-jets/eigen_bracket.json",
+        "lower_pivots": "research/computational/python-first-20261124/bfss-ordered-jets/lower_pivots.json.gz",
+        "manifest": "research/computational/python-first-20261124/bfss-ordered-jets/SHA256SUMS"
+      },
+      "stages": {
+        "observation": "Exact higher mass moments do not determine all ordered derivative contractions; the naive commuting differentiation rule failed previously.",
+        "question": "Can the complete selected S-descendant subspace through Y^2 S be integrated using finite ordered derivatives, unbroken transverse symmetry, and exact Gaussian orientation moments?",
+        "background": [
+          "Previous 56-row mass/multiplication blocks",
+          "22-row weighted integration",
+          "Pinned companion contraction families",
+          "Exact finite seed and Yukawa covariance"
+        ],
+        "hypothesis": "Reduced transverse contractions reproduce direct rank-one results; invariant homogeneous kernel interpolation passes held-out rank-three fixture; all old 22-row matrices are recovered; rational bracket is established for 32-row minimum.",
+        "falsifiers": [
+          "Nonzero direct versus reduced contraction discrepancy",
+          "Nonzero held-out invariant residual",
+          "Prior 22-row discrepancy above tolerance",
+          "Nonpositive rational shifted pivot or rational trial failing proposed upper bound"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Yukawa powers 0,1,2",
+            "rank-one, rank-two, rank-three and holdout",
+            "full versus reduced transverse directions",
+            "rational orientation integral versus quadrature"
+          ],
+          "dependent_variables": [
+            "tau,nu,beta,t,v contractions",
+            "mass,H,q1 matrices",
+            "positive pivots and generalized eigenvalue bracket"
+          ],
+          "controls": [
+            "full direct rank-one receipt",
+            "transverse rotation identity",
+            "Euler homogeneity",
+            "imaginary components checked zero",
+            "previous 22-row mass,H,q1",
+            "exact trial quotient"
+          ],
+          "reproduce_command": "See research/computational/python-first-20261124/bfss-ordered-jets/README.md"
+        },
+        "analysis_plan": "Preserve incomplete direct runs; use symmetry only for contractions; do not assume higher t vanishes. Integrals conditional on invariant kernels and finite representation.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for completed 32-row calculation and rational bracket only; no typed domain or larger-subspace conclusion.",
+        "communication": "26 original files archived with matching blob hashes; retrospective record."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "completed_rows": 32,
+        "heldout_exact": true,
+        "orientation_moment_keys": 936,
+        "exact_vs_quadrature_relative": 6.440690296163624e-15,
+        "old22_max_relative": 5.473336448354806e-15,
+        "weighted_positive_pivots": 32,
+        "strict_shifted_positive_pivots": 32,
+        "qmin_lower": "59.07834",
+        "qmin_upper": "59.07835",
+        "numerical_qmin": 59.07834181710854,
+        "rank3_direct_status": "INCONCLUSIVE_TIMEOUT",
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
