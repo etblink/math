@@ -7395,6 +7395,123 @@
         "omitted_t_negative_rayleigh": -575.3661356053191,
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-CROSS-COVARIANTS104-20261124",
+      "title": "All 104 cross-family mass and multiplicative blocks; exact restricted mixed 44-row weighted brackets",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_FINITE_RECONSTRUCTED_MATRIX_BOUNDS_NOT_LEAN_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-covariant-cross/README.md",
+      "source_baseline": "168bcd5a4a172b769c9ce8c1387c2c51a7202cf5",
+      "source_artifact": {
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7",
+        "companion_blob": "cdfe3df61c65204c8e0bb6eb6289c8d192f6b8dc",
+        "cross_script": "research/computational/python-first-20261124/bfss-covariant-cross/cross_moments.py",
+        "cross_script_blob": "c02d0047769572edab62982b6371728dbb4391ab",
+        "cross_polynomials": "research/computational/python-first-20261124/bfss-covariant-cross/cross_polynomials.json",
+        "cross_polynomials_blob": "95f5dd083eef0d6d5c582c27da91e57323002520",
+        "full_mass_multiplication": "research/computational/python-first-20261124/bfss-covariant-cross/matrices.json.gz",
+        "full_mass_multiplication_blob": "b394dda2cd1a44ac6ac8eb2a8fea3e998afd8428",
+        "mixed_jets": "research/computational/python-first-20261124/bfss-covariant-cross/base_jets.py",
+        "mixed_jets_blob": "12330be918778c7cf7cd9557b1e321096a7fd2af",
+        "mixed_matrices": "research/computational/python-first-20261124/bfss-covariant-cross/mixed44_matrices.json.gz",
+        "mixed_matrices_blob": "790626e6e0a99299f9dde45f0a11ec1ef07ae26f",
+        "mixed_brackets": "research/computational/python-first-20261124/bfss-covariant-cross/mixed_brackets.json",
+        "mixed_brackets_blob": "0792ce73a7222687b393dea9b20367b4a491bdf4",
+        "lower_pivots": "research/computational/python-first-20261124/bfss-covariant-cross/mixed_lower_pivots.json.gz",
+        "checksums": "research/computational/python-first-20261124/bfss-covariant-cross/SHA256SUMS"
+      },
+      "stages": {
+        "observation": "56-row S sector has exact minimum above the required threshold. Published 104-row witness adds Phi and H3 families. Hermitian Yukawa moments can supply cross-family multiplicative kernels without repeated full pair expansions.",
+        "question": "Can all 104 mass/multiplication rows be independently reconstructed and integrated, and can the two new base covariants be distinguished in a complete low-order mixed differential system?",
+        "background": [
+          "Exact 56-row weighted reconstruction",
+          "Finite Phi trace reduction",
+          "H3 cyclic tensor projection",
+          "Original charge and weighted correction audits",
+          "Pinned companion variational basis"
+        ],
+        "hypothesis": "Cross-family moments reproduce archived S polynomials, pass exact held-out and power redistribution checks; complete mass and multiplication matrices recover all five prior blocks and have positive mass pivots; mixed low-order differential kernels recover previous S kernels and lead to Hermitian positive charge matrices.",
+        "falsifiers": [
+          "Nonzero exact moment split or held-out discrepancy",
+          "Failure of exact previous 56 or 32 row recovery",
+          "Nonpositive mass or weighted pivot",
+          "Non-Hermitian reverse-order weighted entry",
+          "Failed exact eigenvalue bracket"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "family S/Phi/H3",
+            "Yukawa power",
+            "diagonal slice configurations",
+            "Gaussian width",
+            "invariant multiplier",
+            "retained family in low-power mixed system"
+          ],
+          "dependent_variables": [
+            "moment and derivative contraction polynomials",
+            "exact matrix entries and pivots",
+            "rational eigenvalue brackets"
+          ],
+          "controls": [
+            "14 mass fixtures",
+            "2 mass holdouts",
+            "10 derivative fixtures with 6 held-out configurations",
+            "reference H3 norm and support",
+            "prior 45 S derivative polynomials",
+            "exact forward/reverse entries",
+            "numerical orientation quadrature"
+          ],
+          "reproduce_command": "See research/computational/python-first-20261124/bfss-covariant-cross/README.md for exact executable commands and immutable input directories."
+        },
+        "analysis_plan": "Retain all completed receipts, exact matrices, integer pivots and both stopped zero-factor jet attempts; do not infer full 80/80/104 weighted results from low-order subspaces.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for stated finite reconstructed matrices and rational brackets only; full mixed weighted matrices and native physical domain remain open.",
+        "communication": "64 files archived with verified Git blob hashes, including failed logs, exact matrices and lower pivots. No Lean changes."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "mass_rows": 104,
+        "unique_entries_per_block": 5460,
+        "full_mass_positive_pivots": 104,
+        "multiplicative_blocks": 5,
+        "mass_full_rank_fits": 41,
+        "mass_heldout_values": 82,
+        "hermitian_split_checks": 924,
+        "odd_degree_zeros": 518,
+        "prior_56_all_five_blocks_exact": true,
+        "complete_mixed_weighted_rows": 44,
+        "derivative_full_rank_fits": 58,
+        "derivative_heldout_values": 300,
+        "additional_scalar_holdout_checks": 675,
+        "old_45_polynomials_exact": true,
+        "reverse_entries": 1980,
+        "weighted_positive_pivots": 44,
+        "mixed_brackets": {
+          "S": [
+            59.078341,
+            59.078342
+          ],
+          "S+Phi": [
+            39.918605,
+            39.918606
+          ],
+          "S+H3": [
+            58.973349,
+            58.97335
+          ],
+          "S+Phi+H3": [
+            39.770665,
+            39.770666
+          ]
+        },
+        "full_80_80_104_weighted_status": "OUTSTANDING",
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
