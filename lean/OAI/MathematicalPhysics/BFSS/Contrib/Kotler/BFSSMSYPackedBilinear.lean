@@ -38,6 +38,27 @@ noncomputable def packedAction (s : SpinIndex) (a : ColorIndex 2)
     packedEvenAction (colorModeEquiv ((spinPairEquiv s).1, a)) c
   else packedOddAction (colorModeEquiv ((spinPairEquiv s).1, a)) c
 
+/-- Isolate the literal selector from the original source representation. -/
+private theorem packedAction_pair (j : Fin 8) (rho : Fin 2) (a : ColorIndex 2)
+    (c : PackedCoordinates) :
+    packedAction (spinPairEquiv.symm (j, rho)) a c =
+      (if rho = (0 : Fin 2) then packedEvenAction (colorModeEquiv (j, a)) c
+       else packedOddAction (colorModeEquiv (j, a)) c) := by
+  rw [packedAction, Equiv.apply_symm_apply]
+
+private theorem packedAction_even (j : Fin 8) (a : ColorIndex 2)
+    (c : PackedCoordinates) :
+    packedAction (spinPairEquiv.symm (j, (0 : Fin 2))) a c =
+      packedEvenAction (colorModeEquiv (j, a)) c := by
+  rw [packedAction_pair, ite_eq_left (rfl : (0 : Fin 2) = 0)]
+
+private theorem packedAction_odd (j : Fin 8) (a : ColorIndex 2)
+    (c : PackedCoordinates) :
+    packedAction (spinPairEquiv.symm (j, (1 : Fin 2))) a c =
+      packedOddAction (colorModeEquiv (j, a)) c := by
+  have hn : (1 : Fin 2) ≠ 0 := by decide
+  rw [packedAction_pair, ite_eq_right hn]
+
 theorem packedAction_intertwines (s : SpinIndex) (a : ColorIndex 2)
     (c : PackedCoordinates) :
     packedCarrier (packedAction s a c) =
@@ -50,13 +71,16 @@ theorem packedAction_intertwines (s : SpinIndex) (a : ColorIndex 2)
   rcases hr with h0 | h1
   · have he : rho = (0 : Fin 2) := Fin.ext h0
     rw [he]
-    simpa only [packedAction, Equiv.apply_symm_apply, Prod.fst, Prod.snd,
-      if_pos (rfl : (0 : Fin 2) = 0)] using packedEvenIntertwine j a c
+    calc
+      _ = packedCarrier (packedEvenAction (colorModeEquiv (j, a)) c) :=
+        congrArg (fun x : PackedCoordinates => packedCarrier x) (packedAction_even j a c)
+      _ = _ := packedEvenIntertwine j a c
   · have he : rho = (1 : Fin 2) := Fin.ext h1
     rw [he]
-    have hn : (1 : Fin 2) ≠ 0 := by decide
-    simpa only [packedAction, Equiv.apply_symm_apply, Prod.fst, Prod.snd,
-      if_neg hn] using packedOddIntertwine j a c
+    calc
+      _ = packedCarrier (packedOddAction (colorModeEquiv (j, a)) c) :=
+        congrArg (fun x : PackedCoordinates => packedCarrier x) (packedAction_odd j a c)
+      _ = _ := packedOddIntertwine j a c
 
 theorem normalization_square : majoranaNormalization * majoranaNormalization = (2 : ℂ) := by
   have hs : (Real.sqrt 2 : ℝ) * Real.sqrt 2 = 2 := by
