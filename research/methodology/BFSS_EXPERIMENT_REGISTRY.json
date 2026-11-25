@@ -8798,6 +8798,66 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PACKED-BILINEAR-R1-RED-20261125",
+      "title": "Packed bilinear R1 native RED with four clean roots",
+      "registered_at": "2026-11-25",
+      "status": "RED_UNQUALIFIED",
+      "classification": "LEAN_FIN_CASE_CONDITIONAL_SIMPLIFICATION_FAILURE_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "5b87dffaf470c2f7f13e609f467684d4637abbbb",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_BILINEAR_R1_RED_R2_EXPLICIT_FIN_CASES_2026_11_25.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45636819624,
+        "job_id": 139284394228,
+        "artifact_id": 15034686905,
+        "artifact_size_bytes": 9247,
+        "artifact_sha256": "3fe2e291b2d11765b8a90845194294132928496ca6708661be7ca21b1c680e1d",
+        "artifact_independently_rehashed": false,
+        "first_causal": "Lines 48 and 51 conditional Fin constructor mismatch after fin_cases",
+        "clean_native_roots": [
+          "spinIndex_val",
+          "spinPair_numeric",
+          "packedMode_numeric",
+          "normalization_square"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_BILINEAR_R1_original_job_139284394228.log"
+      }
+    },
+    {
+      "id": "E-MSY-PACKED-BILINEAR-R2-20261125",
+      "title": "Packed bilinear R2 explicit Fin numeral equality and if branch proofs",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "PACKED_BILINEAR_CONTRACTION_TRANSPORT_CANDIDATE_NOT_ACTUAL_SEED_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "5b87dffaf470c2f7f13e609f467684d4637abbbb",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_BILINEAR_R1_RED_R2_EXPLICIT_FIN_CASES_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedBilinear.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPackedBilinearIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-packed-bilinear-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Explicit Fin.ext equalities to 0 and 1 followed by if_pos and if_neg resolve both first-causal errors without changing statements.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing sentinel"
+        ],
+        "analysis_plan": "Preserve four clean roots and frozen carrier; strict native and independent verification; original artifact audit."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
