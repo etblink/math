@@ -9535,6 +9535,68 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-INTEGER-RECHECK-R1-PASS-20261125",
+      "title": "Independent integer witness generator recheck passed",
+      "registered_at": "2026-11-25",
+      "status": "SURVIVED_FINITE_TESTS",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "classification": "INDEPENDENT_EXACT_COMPUTATIONAL_CERTIFICATE_NOT_KERNEL_PROOF",
+      "source_baseline": "07d6867a37546ba8c83c045ab3e54dbf5f382be4",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/INTEGER_RECHECK_R1_PASS_2026_11_25.md",
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "run_id": 45685515501,
+        "job_id": 139456957960,
+        "artifact_id": 15056251686,
+        "artifact_size_bytes": 2552,
+        "artifact_sha256": "d7dffe13641664d16f7d268ea283b3498852422f9e5078badcfe5132620df72e",
+        "artifact_independently_rehashed": true,
+        "all_39_zero": true,
+        "algorithm_agreement": true,
+        "negative_controls_match": true,
+        "support": 19136,
+        "norm2": 8072064,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/INTEGER_RECHECK_R1_original_job_139456957960.log",
+        "results": "research/computational/python-first-20261124/bfss-seed-transport/independent_integer_recheck_results.json"
+      }
+    },
+    {
+      "id": "E-MSY-ABSTRACT-CLIFFORD-CHARGE-WEIGHT-20261125",
+      "title": "Abstract Clifford polynomial source-charge and radial weighted-form check",
+      "registered_at": "2026-11-25",
+      "status": "SURVIVED_FINITE_TESTS",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "classification": "EXACT_SYMBOLIC_COEFFICIENT_IDENTITIES_NOT_TYPED_ORIGINAL_DOMAIN_CERTIFICATE",
+      "source_baseline": "07d6867a37546ba8c83c045ab3e54dbf5f382be4",
+      "memo": "research/computational/python-first-20261124/bfss-charge-symbolic/README.md",
+      "prospectively_registered": false,
+      "source_artifact": {
+        "script": "research/computational/python-first-20261124/bfss-charge-symbolic/audit.py",
+        "results": "research/computational/python-first-20261124/bfss-charge-symbolic/results.json",
+        "script_sha256": "f413943ac9f2ebd8d4396741bc06169e0c958dd4b87dab76fc2b8f7e742c6493",
+        "results_sha256": "b927e6a84b3c6c573b8856f7eca62198e82e8987ca6247f5fcdcf69afc6541df"
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "kinetic_block_checks": 729,
+        "kinetic_symmetry_checks": 729,
+        "potential_polynomial_monomials": 324,
+        "cross_anticommutator_checks": 27,
+        "yukawa_divergence_terms": 432,
+        "radial_cv_terms": 25920,
+        "radial_b2_terms": 9504,
+        "negative_controls": {
+          "reverse_yukawa_sign": 432,
+          "omit_cv": 25920,
+          "omit_b2": 9504
+        },
+        "all_exact": true,
+        "scope": "Abstract Clifford polynomial identities, not a kernel or physical-domain certificate"
+      }
     }
   ],
   "allowed_statuses": [
