@@ -1,0 +1,6 @@
+{'q_H': {'contained': False, 'error': 0.41007593746901194}, 'q_aux': {'contained': False, 'error': 3.739912029800408}, 'q1': {'contained': False, 'error': 4.1499879672694195}}
+Traceback (most recent call last):
+  File "/mnt/data/bfss-mixed104-20261124/compare_companion.py", line 8, in <module>
+    (D/'companion_comparison.json').write_text(json.dumps(out,indent=2)+'\n');print({k:{'contained':v['contained_in_interval'],'error':v['absolute_disagreement_decimal']} for k,v in out.items()});assert all(v['contained_in_interval'] for v in out.values()),'disagreement with archived companion interval'
+                                                                                                                                                                                                           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: disagreement with archived companion interval
