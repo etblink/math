@@ -1,0 +1,57 @@
+{
+  "max_gram_degree": 11,
+  "moment_polynomial_count": 203,
+  "scalar_matrix_basis_terms": 1884,
+  "maximum_terms": 36,
+  "mgf_monomial_moments": 3430,
+  "stein_exact_comparisons": 1772,
+  "basis_evaluation_checks": 1772,
+  "fixtures": [
+    [
+      "1",
+      "1",
+      "1"
+    ],
+    [
+      "2",
+      "3",
+      "5"
+    ],
+    [
+      "3",
+      "2",
+      "1"
+    ],
+    [
+      "21",
+      "14",
+      "30"
+    ]
+  ],
+  "degree_counts": {
+    "0": 1,
+    "1": 2,
+    "2": 4,
+    "3": 6,
+    "4": 9,
+    "5": 12,
+    "6": 16,
+    "7": 20,
+    "8": 25,
+    "9": 30,
+    "10": 36,
+    "11": 42
+  },
+  "negative_controls": {
+    "wrong_column_count": {
+      "expected": "9",
+      "wrong": "8"
+    },
+    "missing_off_diagonal_half": {
+      "expected": "9",
+      "wrong": "36"
+    }
+  },
+  "all_exact": true,
+  "scale": "Each coefficient represents E of the Gram polynomial with G replaced by 2G; divide by 2^total Gram degree."
+}
