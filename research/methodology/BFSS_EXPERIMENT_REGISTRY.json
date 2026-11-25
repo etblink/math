@@ -7512,6 +7512,110 @@
         "full_80_80_104_weighted_status": "OUTSTANDING",
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-MIXED68-20261124",
+      "title": "Complete S descendants plus base Phi and H3: 68-row exact weighted counterfactual system",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "RECONSTRUCTED_FINITE_EXACT_RATIONAL_MATRICES_NOT_SOURCE_OPERATOR_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-mixed68/README.md",
+      "source_baseline": "430625cd4a79677f6f2732d36a6029c733d4bbd4",
+      "source_artifact": {
+        "files": "research/computational/python-first-20261124/bfss-mixed68",
+        "manifest": "research/computational/python-first-20261124/bfss-mixed68/SHA256SUMS",
+        "matrix": "research/computational/python-first-20261124/bfss-mixed68/mixed68_matrices.json.gz",
+        "matrix_blob": "a96c9283297f7a181107c3c4657d55147cf1fbf4",
+        "brackets": "research/computational/python-first-20261124/bfss-mixed68/mixed68_brackets.json",
+        "pivots": "research/computational/python-first-20261124/bfss-mixed68/mixed68_lower_pivots.json.gz",
+        "polynomials": "research/computational/python-first-20261124/bfss-mixed68/jet_polynomials.json",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7"
+      },
+      "stages": {
+        "observation": "56-row S sector has exact bracket above threshold; low-power mixed test showed base Phi markedly more helpful than H3. Full 104 mass/multiplication already reconstructed.",
+        "question": "Can the actual 56 S plus 12 base cubic rows cross the fixed-regulator target, and how do the base covariant effects change with S power?",
+        "background": [
+          "S exact 56-row matrices",
+          "mixed low-order 44 matrices",
+          "104 cross-family moment and mass matrices",
+          "ordered derivative and finite covariance audits"
+        ],
+        "hypothesis": "Cross-only exact jets recover inherited mixed kernels, assemble Hermitian positive rational matrices, and allow exact threshold comparisons for nested base-covariant restrictions.",
+        "falsifiers": [
+          "Mismatch of prior scalar contractions or polynomial coefficients",
+          "Rank-deficient fit or nonzero holdout residual",
+          "Failure to recover either inherited weighted submatrix",
+          "Non-Hermitian forward/reverse entry",
+          "Nonpositive exact weighted pivot"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "8 fitting and 2 holdout integer diagonal configurations",
+            "S maximum Yukawa power",
+            "presence of base Phi/H3",
+            "two actual witness widths"
+          ],
+          "dependent_variables": [
+            "exact mixed scalar contraction",
+            "invariant polynomial coefficients",
+            "rational mass and weighted matrix entries",
+            "rational eigenvalue brackets",
+            "numerical conditional mass residual"
+          ],
+          "controls": [
+            "720 exact scalar regressions",
+            "all 125 prior base polynomials",
+            "11 direct rotation checks",
+            "Euler identity",
+            "second holdout polynomial hash unchanged",
+            "both previous complete matrices"
+          ],
+          "reproduce_command": "See research/computational/python-first-20261124/bfss-mixed68/README.md; run mixed68.py, reconstruct68.py, integrate68.py, bracket68.py and scc68.py"
+        },
+        "analysis_plan": "Reuse archived S-S entries, explicitly mark zero placeholders in mixed-only receipts, verify both earlier submatrices, positive Bareiss pivots and rational trial upper bounds; reoptimize each subset rather than freeze coefficients.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS only for reconstructed finite matrices; a lower bracket above threshold excludes the specified subspace, not other widths or full witness. Numerical projection diagnostics are not certified bounds.",
+        "communication": "All 56 original research files and raw logs archived byte-exact. Scheduling duplicates were stopped; two logs truncated at start and retained; completed JSON receipts counted once. Full 80/80/104 weighted systems and source/domain qualification remain open."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "rows": 68,
+        "fit_fixtures": 8,
+        "holdouts": 2,
+        "full_rank_fits": 98,
+        "heldout_values": 348,
+        "prior_base_scalar_values_exact": 720,
+        "prior_125_polynomials_exact": true,
+        "old56_and_mixed44_matrices_exact": true,
+        "forward_reverse_checks": 4692,
+        "weighted_positive_pivots": 68,
+        "quadrature_relative": 7.500870476629954e-15,
+        "brackets": {
+          "S": [
+            0.638141,
+            0.638142
+          ],
+          "S+Phi": [
+            0.634652,
+            0.634653
+          ],
+          "S+H3": [
+            0.636491,
+            0.636492
+          ],
+          "S+Phi+H3": [
+            0.632632,
+            0.632633
+          ]
+        },
+        "all_four_above_target": true,
+        "base_both_relative_improvement": 0.008633326208479796,
+        "full_80_80_104_weighted_status": "OUTSTANDING",
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
