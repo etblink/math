@@ -7290,6 +7290,111 @@
         "p8_123_status": "INCONCLUSIVE_ARITHMETIC_BOUND",
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-FULL-JETS56-20261124",
+      "title": "Complete 56-row S-descendant sector: exact scaled jets, full rational integration and eigenvalue bracket",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_FINITE_RECONSTRUCTED_MATRIX_BOUNDS_NOT_LEAN_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-full-jets/README.md",
+      "source_baseline": "5ac8f73554a73ece6ed4208051723a7827d94136",
+      "source_artifact": {
+        "scaled_jet_script": "research/computational/python-first-20261124/bfss-full-jets/scaled_jets.py",
+        "scaled_jet_blob": "07e1c419ab8ca1429c45998ac7085b332d6d4c96",
+        "covariance_script": "research/computational/python-first-20261124/bfss-full-jets/covariance_basis.py",
+        "covariance_blob": "498afc0fa6fce5e76813d229413f5ee70b22abab",
+        "reconstruction": "research/computational/python-first-20261124/bfss-full-jets/reconstruct8.py",
+        "reconstruction_blob": "b92ef44eaaa360a3bfd7fe74a0b016a0cc5df96d",
+        "polynomials": "research/computational/python-first-20261124/bfss-full-jets/jet_polynomials.json",
+        "polynomials_blob": "e5d378b7e8ff046d59971e123db5b3eb7b76eaaf",
+        "integration": "research/computational/python-first-20261124/bfss-full-jets/integrate56.py",
+        "integration_blob": "00fefaab01c2d8f6738509458d0799df6d88b025",
+        "matrices": "research/computational/python-first-20261124/bfss-full-jets/matrices.json.gz",
+        "matrices_blob": "acb81cabfcf7c6593c707308f9a4ec111f0e5a1b",
+        "bracket": "research/computational/python-first-20261124/bfss-full-jets/eigen_bracket.json",
+        "bracket_blob": "2d1464d97731e5385edbbe1207c668eca26798c7",
+        "pivots": "research/computational/python-first-20261124/bfss-full-jets/lower_pivots.json.gz",
+        "pivots_blob": "944a76095571861dcaff99950f347c1dacc652aa",
+        "negative_control": "research/computational/python-first-20261124/bfss-full-jets/omit_t_control.json",
+        "negative_control_blob": "ac7f8f2d86d8059b201e5b4fbd7a7355f1f5ca06",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7",
+        "seed_sha256": "131e703b19da9a1aea1e137dac45f451bbfc7f64374aff6619a46488410d5ff7"
+      },
+      "stages": {
+        "observation": "The 44-row sector has exact rational minimum bracket 12.59598 to 12.59599; p8 integer bounds blocked generic fixture and nonzero t corrections must be kept.",
+        "question": "Can all 56 actual S-descendant rows be integrated by exact rescaling and rotation-derived jets, and does the finite minimum cross the fixed-regulator threshold?",
+        "background": [
+          "E-PY-MSY-HIGHER-JETS44-20261124",
+          "Exact seed transport, higher Yukawa moment reconstruction, ordered derivative and t-correction audits",
+          "Companion source blocks.py and contract.py"
+        ],
+        "hypothesis": "Exact divisibility and rotation formulas recover ordered jets and all inherited contraction kernels; all weighted matrix entries agree in reverse order and a rational positive LDL plus trial quotient yields a restricted eigenvalue bracket.",
+        "falsifiers": [
+          "Nondivisible scaled jet or exceeded integer bound",
+          "Nonzero ordered-vs-rotation or holdout residual",
+          "Prior rational matrix discrepancy",
+          "Weighted non-Hermiticity or invalid positive pivot",
+          "Rational trial quotient outside proposed upper bound"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "14 rank-varied diagonal configurations",
+            "Yukawa powers 0 through 8",
+            "Two actual projected Gaussian widths",
+            "All actual invariant multipliers",
+            "t-omission and row-deletion counterfactuals"
+          ],
+          "dependent_variables": [
+            "Five differential contraction families",
+            "Exact polynomial coefficients",
+            "Mass, H and q1 matrices",
+            "Rational generalized eigenvalue bracket",
+            "Reoptimized deletion minima"
+          ],
+          "controls": [
+            "Exact raw p2/p4 recovery",
+            "Three p0-p8 ordered vs rotation directions",
+            "28,431 B coefficient covariance identities",
+            "78 cV tangent identities",
+            "Two held-out fixtures",
+            "All reverse matrix entries",
+            "Independent orientation quadrature",
+            "Omitted t negative direction"
+          ],
+          "reproduce_command": "See research/computational/python-first-20261124/bfss-full-jets/README.md for compiled kernel, fixture batch, reconstruction, integration, bracket and counterfactual commands."
+        },
+        "analysis_plan": "Preserve failed uniform coefficient-rounding attempt and inherited unscaled p8 receipt; no promotion to native physical result. Compare exact finite minimum to target, reoptimize actual principal row subspaces.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for completed computational identities; exact rational finite-matrix bracket is conditional on reconstructed finite kernels. Failure to cross target in this restricted system does not exclude other bases or full witness.",
+        "communication": "Archive 64 exact-byte source/data/log files, excluding rebuildable architecture-specific shared object."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "completed_rows": 56,
+        "actual_new_eighth_power_fixtures": 13,
+        "inherited_eighth_power_fixtures": 1,
+        "full_rank_fits": 194,
+        "heldout_scalar_values": 680,
+        "B_covariance_identities": 28431,
+        "cV_tangent_checks": 78,
+        "high_rotation_checks": 27,
+        "prior44_entries_exact": true,
+        "exact_moment_keys": 1134,
+        "quadrature_relative_error": 7.500870476629954e-15,
+        "reverse_order_exact": 1596,
+        "weighted_positive_pivots": 56,
+        "lower_bracket": "638141/1000000",
+        "upper_bracket": "319071/500000",
+        "rational_rayleigh_decimal": 0.6381414796068431,
+        "restricted_104_coefficients_q1": 10.363719813621875,
+        "nonhermitian_pairs_if_t_omitted": 472,
+        "omitted_t_negative_rayleigh": -575.3661356053191,
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
