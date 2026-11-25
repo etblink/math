@@ -6670,6 +6670,78 @@
         "wrong_sign_residual": 16,
         "source_domain_qualified": false
       }
+    },
+    {
+      "id": "E-PY-MSY-H3-TENSOR-20261124",
+      "title": "Cubic coordinate projector, cyclic H3 reconstruction and Gram derivative",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "EXACT_FINITE_TENSOR_AND_FOCK_ARITHMETIC_NOT_LEAN_OR_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "memo": "research/computational/python-first-20261124/bfss-h3-tensor/README.md",
+      "source_baseline": "68ba9e055f788f093d51c88af319a96d5e7dd148",
+      "source_artifact": {
+        "directory": "research/computational/python-first-20261124/bfss-h3-tensor",
+        "projector_script": "research/computational/python-first-20261124/bfss-h3-tensor/projector_basis_audit.py",
+        "tensor_script": "research/computational/python-first-20261124/bfss-h3-tensor/tensor_projection.py",
+        "orbit_script": "research/computational/python-first-20261124/bfss-h3-tensor/orbit_reconstruct.py",
+        "derivative_script": "research/computational/python-first-20261124/bfss-h3-tensor/gram_derivative.py",
+        "rank3_comparison": "research/computational/python-first-20261124/bfss-h3-tensor/rank3_comparison.json",
+        "manifest": "research/computational/python-first-20261124/bfss-h3-tensor/GIT_BLOBS.json"
+      },
+      "stages": {
+        "observation": "Historical direct rank-three H3 Fock Casimir calculation timed out; finite generator commutators and singlet seed available.",
+        "question": "Can Casimir projection be transferred to coordinate tensors, then a cyclic basis, without changing coefficients?",
+        "background": [
+          "Archived seed transport and finite covariant commutators",
+          "Symmetric cubic trace projections",
+          "Scientific Method Protocol"
+        ],
+        "hypothesis": "Color spin-3 projector and spatial vector trace formula agree on complete coordinate bases; rank-three cyclic and direct tensor contraction agree exactly.",
+        "falsifiers": [
+          "Nonzero exact projector or Casimir residual",
+          "Disagreement between direct and cyclic occupation vectors",
+          "Derivative stencil discrepancy"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "full color and symmetric spatial bases",
+            "rank-one, rank-two, rank-three and oblique integer fixtures",
+            "trace omission and wrong denominator",
+            "27 coordinate directions"
+          ],
+          "dependent_variables": [
+            "exact matrix residual",
+            "integer occupation arrays",
+            "runtime",
+            "derivative residual"
+          ],
+          "controls": [
+            "archived seed hash and rank-one diagnostic",
+            "independent Casimir polynomial",
+            "direct rank-three tensor contraction",
+            "Gram derivative omitted"
+          ]
+        },
+        "analysis_plan": "Distinguish exact finite checks, incomplete older run, timing comparisons, and physical claims.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for completed audits; no change to historical timeout classification and no physical theorem.",
+        "communication": "Preserve scripts, raw receipts, full generated vectors and hashes."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "color_basis_count": 27,
+        "spatial_symmetric_basis_count": 165,
+        "target_dimension": 63,
+        "rank3_occupation_support": 89088,
+        "rank3_exact_vector_agreement": true,
+        "rank3_direct_seconds": 111.36314419600058,
+        "rank3_cyclic_seconds": 1.6521534729999985,
+        "derivative_exact_checks": 108,
+        "physical_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
