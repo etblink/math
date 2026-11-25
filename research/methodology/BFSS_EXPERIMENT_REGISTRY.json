@@ -8979,6 +8979,64 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PACKED-COLOR-R1-RED-20261125",
+      "title": "Packed color R1 native RED with two clean generator roots",
+      "registered_at": "2026-11-25",
+      "status": "RED_UNQUALIFIED",
+      "classification": "COLOR_INDEX_NUMERAL_ELABORATION_FAILURE_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "0bcad2cc003d2ca212aaa6b380f286cb871aca9a",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_COLOR_R1_RED_R2_TYPED_FIN3_2026_11_25.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45648521535,
+        "job_id": 139326125880,
+        "artifact_id": 15040420698,
+        "artifact_size_bytes": 17069,
+        "artifact_sha256": "67a4bf66050ccdad4162fbb056fb613b6c293c958ba497adf5bc6e0e74f7d10c",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Six missing OfNat (ColorIndex 2) instances on lines 151,156,161",
+        "clean_native_roots": [
+          "native_generator_plane02",
+          "native_generator_plane12"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_COLOR_R1_original_job_139326125880.log"
+      }
+    },
+    {
+      "id": "E-MSY-PACKED-COLOR-R2-20261125",
+      "title": "Packed color R2 explicit Fin 3 numeral elaboration",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "ALL_COLOR_GENERATOR_TRANSPORT_CANDIDATE_NOT_ACTUAL_SEED_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "0bcad2cc003d2ca212aaa6b380f286cb871aca9a",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_COLOR_R1_RED_R2_TYPED_FIN3_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedColor.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPackedColorIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-packed-color-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Explicit Fin 3 literals elaborate both three packed-plane statements and three literal independent consumers without changing the denoted indices.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing strict sentinel"
+        ],
+        "analysis_plan": "Preserve two clean roots and all proof bodies; same strict workflow, exact five source and three consumer reports and original artifact audit; stop after second native RED."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [

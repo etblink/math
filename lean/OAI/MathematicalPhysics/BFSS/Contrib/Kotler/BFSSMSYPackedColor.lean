@@ -148,17 +148,17 @@ private theorem generator_transport (c a b : Fin 3) (k : ℂ)
 
 theorem packed_plane01_generator (x : PackedCoordinates) :
     sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3) (packedCarrier x) =
-      ((Real.sqrt 2 : ℂ) / 2) • packedCarrier (packedColorPlane 0 1 x) :=
+      ((Real.sqrt 2 : ℂ) / 2) • packedCarrier (packedColorPlane (0 : Fin 3) (1 : Fin 3) x) :=
   generator_transport 2 0 1 (Real.sqrt 2 : ℂ) native_fermion_generator_plane01 x
 
 theorem packed_plane02_generator (x : PackedCoordinates) :
     sourceFiberFermionColorGenerator pairedAlgebraData (1 : Fin 3) (packedCarrier x) =
-      (-(Real.sqrt 2 : ℂ) / 2) • packedCarrier (packedColorPlane 0 2 x) :=
+      (-(Real.sqrt 2 : ℂ) / 2) • packedCarrier (packedColorPlane (0 : Fin 3) (2 : Fin 3) x) :=
   generator_transport 1 0 2 (-(Real.sqrt 2 : ℂ)) native_generator_plane02 x
 
 theorem packed_plane12_generator (x : PackedCoordinates) :
     sourceFiberFermionColorGenerator pairedAlgebraData (0 : Fin 3) (packedCarrier x) =
-      ((Real.sqrt 2 : ℂ) / 2) • packedCarrier (packedColorPlane 1 2 x) :=
+      ((Real.sqrt 2 : ℂ) / 2) • packedCarrier (packedColorPlane (1 : Fin 3) (2 : Fin 3) x) :=
   generator_transport 0 1 2 (Real.sqrt 2 : ℂ) native_generator_plane12 x
 
 #print axioms native_generator_plane02

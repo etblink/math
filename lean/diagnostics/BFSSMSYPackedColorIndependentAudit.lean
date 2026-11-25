@@ -33,7 +33,7 @@ private theorem sqrtTwo_ne_zero : (Real.sqrt 2 : ℂ) ≠ 0 := by
 
 theorem literalPlane01ZeroAudit (x : PackedCoordinates) :
     packedContraction (Finset.univ : Finset SpinIndex) (fun _ => (1 : ℂ))
-      (fun s => (s, (0 : ColorIndex 2))) (fun s => (s, (1 : ColorIndex 2))) x = 0 ↔
+      (fun s => (s, (0 : Fin 3))) (fun s => (s, (1 : Fin 3))) x = 0 ↔
       sourceFiberFermionColorGenerator pairedAlgebraData (2 : Fin 3) (packedCarrier x) = 0 :=
   zero_iff_scaled packedCarrier.toLinearEquiv.toLinearMap packedCarrier.injective
     _ _ ((Real.sqrt 2 : ℂ) / 2) (div_ne_zero sqrtTwo_ne_zero (by norm_num))
@@ -41,7 +41,7 @@ theorem literalPlane01ZeroAudit (x : PackedCoordinates) :
 
 theorem literalPlane02ZeroAudit (x : PackedCoordinates) :
     packedContraction (Finset.univ : Finset SpinIndex) (fun _ => (1 : ℂ))
-      (fun s => (s, (0 : ColorIndex 2))) (fun s => (s, (2 : ColorIndex 2))) x = 0 ↔
+      (fun s => (s, (0 : Fin 3))) (fun s => (s, (2 : Fin 3))) x = 0 ↔
       sourceFiberFermionColorGenerator pairedAlgebraData (1 : Fin 3) (packedCarrier x) = 0 :=
   zero_iff_scaled packedCarrier.toLinearEquiv.toLinearMap packedCarrier.injective
     _ _ (-(Real.sqrt 2 : ℂ) / 2) (div_ne_zero (neg_ne_zero.mpr sqrtTwo_ne_zero) (by norm_num))
@@ -49,7 +49,7 @@ theorem literalPlane02ZeroAudit (x : PackedCoordinates) :
 
 theorem literalPlane12ZeroAudit (x : PackedCoordinates) :
     packedContraction (Finset.univ : Finset SpinIndex) (fun _ => (1 : ℂ))
-      (fun s => (s, (1 : ColorIndex 2))) (fun s => (s, (2 : ColorIndex 2))) x = 0 ↔
+      (fun s => (s, (1 : Fin 3))) (fun s => (s, (2 : Fin 3))) x = 0 ↔
       sourceFiberFermionColorGenerator pairedAlgebraData (0 : Fin 3) (packedCarrier x) = 0 :=
   zero_iff_scaled packedCarrier.toLinearEquiv.toLinearMap packedCarrier.injective
     _ _ ((Real.sqrt 2 : ℂ) / 2) (div_ne_zero sqrtTwo_ne_zero (by norm_num))
