@@ -6838,6 +6838,98 @@
         "source_domain_qualified": false,
         "full_witness_integrated": false
       }
+    },
+    {
+      "id": "E-PY-MSY-CROSS-GRAM-20261124",
+      "title": "Independent weighted cross-Gram baseline for four actual MSY witness rows",
+      "registered_at": "2026-11-24",
+      "status": "SURVIVED_FINITE_TESTS",
+      "classification": "FINITE_KERNEL_AND_NUMERICAL_QUADRATURE_NOT_PHYSICAL_DOMAIN",
+      "prior_exploration_retroactively_registered": true,
+      "prospectively_registered": false,
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "3626c03cf70ed472380af9b1b2fff297fb4f55ce",
+      "memo": "research/computational/python-first-20261124/bfss-cross-gram/README.md",
+      "source_artifact": {
+        "scripts": [
+          "research/computational/python-first-20261124/bfss-cross-gram/gram_audit.py",
+          "research/computational/python-first-20261124/bfss-cross-gram/oriented_kernel.py",
+          "research/computational/python-first-20261124/bfss-cross-gram/integrate_gram.py"
+        ],
+        "witness": "research/computational/python-first-20261124/bfss-cross-gram/trial-104.json",
+        "witness_blob": "bea23bb2d81bdaea543b75052fc1913673f2016e",
+        "companion_commit": "96b19b1fef98486e43bc2527604966c86afd7ca7",
+        "companion_blob": "cdfe3df61c65204c8e0bb6eb6289c8d192f6b8dc",
+        "pointwise": "research/computational/python-first-20261124/bfss-cross-gram/pointwise_results.json",
+        "kernel": "research/computational/python-first-20261124/bfss-cross-gram/kernel_polynomials.json",
+        "oriented": "research/computational/python-first-20261124/bfss-cross-gram/oriented_results.json",
+        "integrated": "research/computational/python-first-20261124/bfss-cross-gram/integrated_results.json",
+        "checksum_manifest": "research/computational/python-first-20261124/bfss-cross-gram/SHA256SUMS"
+      },
+      "stages": {
+        "observation": "Previously verified pointwise differential charge actions and scalar-only obstruction. Actual witness includes S, Phi and H3 descendants with two projected profiles.",
+        "question": "Can a four-row actual witness subspace be integrated independently from finite charge contractions, including the mixed S/YS terms?",
+        "background": [
+          "Post-E0 seed and covariant transport",
+          "Differential charge audit",
+          "Archived exact 104-term witness",
+          "Companion gaussian.py and blocks.py"
+        ],
+        "hypothesis": "Degree-constrained invariant contractions reproduce held-out fixture data exactly; independent orientation-averaged Gaussian moment integrations agree and produce positive Gram matrices.",
+        "falsifiers": [
+          "Nonzero exact coefficient residual on held-out configuration",
+          "Mismatch of direct and integration-by-parts mixed integral",
+          "Relative quadrature/moment disagreement exceeding 1e-11",
+          "Nonpositive mass or generalized q1 eigenvalues"
+        ],
+        "experiment": {
+          "independent_variables": [
+            "Eight configuration fixtures",
+            "Fourteen orientation-gradient pairs",
+            "Actual two widths and four labels",
+            "32 and 128 quadrature nodes",
+            "Independent inverse-trace and eigenbasis moment formulas"
+          ],
+          "dependent_variables": [
+            "Charge contraction kernels",
+            "M,H,A1 matrices",
+            "Generalized q1 eigenvalues",
+            "Cross-term ablation"
+          ],
+          "controls": [
+            "Exact free differential charge on YS",
+            "Held-out oblique and signed fixtures",
+            "Isotropic scalar q1 control",
+            "Independent mixed-term integration by parts",
+            "Suppress mixed cross terms"
+          ],
+          "reproduce_command": "cd research/computational/python-first-20261124/bfss-cross-gram && OPENBLAS_NUM_THREADS=2 python gram_audit.py ../bfss-covariants ../bfss-h3-tensor ../bfss-seed-transport/source_seed_integer.npz ../bfss-differential-charge && OPENBLAS_NUM_THREADS=2 python oriented_kernel.py ../bfss-covariants ../bfss-h3-tensor ../bfss-seed-transport/source_seed_integer.npz ../bfss-differential-charge && python integrate_gram.py"
+        },
+        "analysis_plan": "Retain exact finite tests, raw matrices, quadrature discrepancies and basis restrictions. A partial subspace minimum is not a full-space lower bound.",
+        "conclusion_rule": "SURVIVED_FINITE_TESTS for finite kernels and numerical integration, not a certified interval or full witness/physical proof.",
+        "communication": "Exact archive member and all executable inputs and outputs retained with verified Git blob hashes."
+      },
+      "result": {
+        "status": "SURVIVED_FINITE_TESTS",
+        "actual_labels": [
+          0,
+          1,
+          424,
+          425
+        ],
+        "basis_count": 4,
+        "full_basis_count": 104,
+        "pointwise_pair_contractions": 1920,
+        "oriented_fixture_pairs": 14,
+        "free_D1_all16_exact_zero": true,
+        "max_relative_moment_disagreement": 1.8248806225068136e-14,
+        "min_q1": 100.52797940325225,
+        "min_q1_no_mixed": 156.59749686474245,
+        "truncated_q1": 142.65848442505117,
+        "full_witness_integrated": false,
+        "source_domain_qualified": false
+      }
     }
   ],
   "allowed_statuses": [
