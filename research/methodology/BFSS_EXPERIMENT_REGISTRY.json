@@ -8458,6 +8458,67 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-NORMALIZED-TOGGLE-R1-RED-20261124",
+      "title": "Normalized occupation toggle R1 native RED with six clean roots",
+      "registered_at": "2026-11-24",
+      "status": "RED_UNQUALIFIED",
+      "classification": "LEAN_NAMESPACE_AND_LARGE_INDEX_ELABORATION_FAILURE_NOT_PHYSICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "3ab02729b3286589ff4da95d0c390dc4483af2e3",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/NORMALIZED_TOGGLE_R1_RED_R2_FINSET_SMUL_2026_11_24.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45558878831,
+        "job_id": 139017477614,
+        "artifact_id": 14997521540,
+        "artifact_size_bytes": 8643,
+        "artifact_sha256": "40f0af46c6655014b9b1ac51cf0d3a836442f60bb443929e9e6e1a7614f0b5e0",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Line 100 unknown smul_sum; lines 119,137 recursion at generic helper specialization",
+        "clean_native_roots": [
+          "toggle_involutive",
+          "weightedToggle_apply",
+          "weightedToggle_carrier",
+          "normalization_cancel",
+          "normalizedEvenTerm",
+          "normalizedOddTerm"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/NORMALIZED_TOGGLE_R1_original_job_139017477614.log"
+      }
+    },
+    {
+      "id": "E-MSY-NORMALIZED-TOGGLE-R2-20261124",
+      "title": "Normalized occupation toggle R2 explicit Finset scalar distribution",
+      "registered_at": "2026-11-24",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "ORIGINAL_SOURCE_NORMALIZED_OCCUPATION_ACTION_CANDIDATE_NOT_BITMASK_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "3ab02729b3286589ff4da95d0c390dc4483af2e3",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/NORMALIZED_TOGGLE_R1_RED_R2_FINSET_SMUL_2026_11_24.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYNormalizedToggle.lean",
+        "consumer": "lean/diagnostics/BFSSMSYNormalizedToggleIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-normalized-toggle-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Use pinned Finset.smul_sum and scalar-local commutation, avoiding the failing private generic helper specializations.",
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift"
+        ],
+        "analysis_plan": "Preserve six clean roots; exact strict source and consumer verification and original artifact audit."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [

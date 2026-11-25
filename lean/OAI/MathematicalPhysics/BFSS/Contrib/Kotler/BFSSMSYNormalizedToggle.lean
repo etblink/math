@@ -93,15 +93,6 @@ theorem normalizedOddTerm (i : Fin 24) (A : Finset (Fin 24)) :
   · rw [ite_eq_left h, oddWeight, ite_eq_left h, smul_neg, smul_smul, neg_smul]
   · rw [ite_eq_right h, oddWeight, ite_eq_right h, smul_smul]
 
-private theorem push_normalized_sum {ι V : Type*} [Fintype ι] [AddCommGroup V]
-    [Module ℂ V] (c : ι → ℂ) (v : ι → V) :
-    (∑ A, c A • (majoranaNormalization • v A)) =
-      majoranaNormalization • (∑ A, c A • v A) := by
-  rw [smul_sum]
-  apply Finset.sum_congr rfl
-  intro A _
-  exact smul_comm _ _ _
-
 /-- Exact normalized even computational action on arbitrary coefficients. -/
 theorem evenIntertwine (j : Fin 8) (C : ColorIndex 2) (c : FockCoordinateSpace 23) :
     coefficientCarrier (evenAction (colorModeEquiv (j, C)) c) =
@@ -116,7 +107,16 @@ theorem evenIntertwine (j : Fin 8) (C : ColorIndex 2) (c : FockCoordinateSpace 2
       intro A _
       rw [normalizedEvenTerm, smul_smul]
     _ = majoranaNormalization • (∑ A : Finset (Fin 24), c A • evenTerm i A) :=
-      push_normalized_sum (fun A => c A) (evenTerm i)
+      by
+        rw [Finset.smul_sum]
+        apply Finset.sum_congr rfl
+        intro A _
+        calc
+          c A • (majoranaNormalization • evenTerm i A) =
+              (c A * majoranaNormalization) • evenTerm i A := smul_smul _ _ _
+          _ = (majoranaNormalization * c A) • evenTerm i A := by
+            rw [mul_comm (c A) majoranaNormalization]
+          _ = majoranaNormalization • (c A • evenTerm i A) := (smul_smul _ _ _).symm
     _ = _ := congrArg (fun x : Fermion 2 => majoranaNormalization • x)
       (evenCarrier j C c).symm
 
@@ -134,7 +134,16 @@ theorem oddIntertwine (j : Fin 8) (C : ColorIndex 2) (c : FockCoordinateSpace 23
       intro A _
       rw [normalizedOddTerm, smul_smul]
     _ = majoranaNormalization • (∑ A : Finset (Fin 24), c A • oddTerm i A) :=
-      push_normalized_sum (fun A => c A) (oddTerm i)
+      by
+        rw [Finset.smul_sum]
+        apply Finset.sum_congr rfl
+        intro A _
+        calc
+          c A • (majoranaNormalization • oddTerm i A) =
+              (c A * majoranaNormalization) • oddTerm i A := smul_smul _ _ _
+          _ = (majoranaNormalization * c A) • oddTerm i A := by
+            rw [mul_comm (c A) majoranaNormalization]
+          _ = majoranaNormalization • (c A • oddTerm i A) := (smul_smul _ _ _).symm
     _ = _ := congrArg (fun x : Fermion 2 => majoranaNormalization • x)
       (oddCarrier j C c).symm
 

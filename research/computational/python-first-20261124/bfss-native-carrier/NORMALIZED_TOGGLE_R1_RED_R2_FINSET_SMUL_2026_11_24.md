@@ -1,0 +1,11 @@
+# Normalized toggle R1 RED / R2 explicit Finset scalar distribution
+
+Date 2026-11-24 Pacific. Branch integration/bfss-unified-research-20261108.
+
+## R1 RED_UNQUALIFIED
+Run https://github.com/etblink/math/actions/runs/45558878831 ; exact tested commit 3ab02729b3286589ff4da95d0c390dc4483af2e3; job 139017477614. Checkout, frozen-source preflight and pinned Lean/Mathlib restoration passed. Native errors at lines 100 and 99: unresolved unqualified smul_sum identifier, unsolved generic scalar sum goal. Lines 119 and 137: maximum recursion depth reached at the two specializations of push_normalized_sum to the full 24-mode occupation index. These are separate elaboration diagnostics; do not infer that the recursion errors would necessarily persist after resolving the identifier. Six clean roots toggle_involutive, weightedToggle_apply, weightedToggle_carrier, normalization_cancel, normalizedEvenTerm, normalizedOddTerm report only propext, Classical.choice, Quot.sound. Both intertwining roots report sorryAx. Independent consumer not reached. No promotion from failed gate.
+
+Original artifact https://github.com/etblink/math/actions/runs/45558878831/artifacts/14997521540 ; independently downloaded, 8643 bytes; local Python SHA-256 40f0af46c6655014b9b1ac51cf0d3a836442f60bb443929e9e6e1a7614f0b5e0 matches metadata. ZIP CRC clean, all six members, tested-sha.txt exact. Full decoded original job log preserved alongside this memo. Original Actions ZIP expires 2026-12-25 UTC.
+
+## R2 REGISTERED_NOT_EXECUTED
+Pinned Mathlib Mathlib/Algebra/BigOperators/GroupWithZero/Action.lean at d13f23b723b8a846827a245b89c10fc7d3f11612 defines Finset.smul_sum (implicit r, f, s). Remove the failed private helper and its two direct generic specializations. Instead at the two scalar-sum steps use rw [Finset.smul_sum], Finset.sum_congr and a scalar-local calc using smul_smul and complex mul_comm. This uses the already successful concrete sum-congru pattern without inferring a generic function over the full index, and isolates scalar algebra from the 2^24-indexed sum. All six clean roots, all public statements, other proof steps, independent consumer, frozen dependencies, workflow and options unchanged. No recursion-budget increase or transparency override. Local Lean unavailable; strict verification pending. No packed-bitmask or physical qualification.
