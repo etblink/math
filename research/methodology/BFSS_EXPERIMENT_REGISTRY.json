@@ -9221,6 +9221,67 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PACKED-SPIN-R3-GREEN-20261125",
+      "title": "Packed spin R3 qualified receipt",
+      "registered_at": "2026-11-25",
+      "status": "LEAN_QUALIFIED",
+      "classification": "ARBITRARY_SOURCE48_BIVECTOR_AND_NORMALIZED_SPIN_PLANE_TRANSPORT_ONLY",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "d199b8d47a644b4fb19d96acccd3d733b0108c43",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_SPIN_R3_GREEN_PYTHON_GAMMA_ROWS_R1_2026_11_25.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45665185650,
+        "job_id": 139385328863,
+        "artifact_id": 15046889933,
+        "artifact_size_bytes": 18443,
+        "artifact_sha256": "4bef263e1074e8b8335136f9249502dec1446fca714313eee9b745659eb03377",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 9097,
+        "source_roots": 5,
+        "consumer_roots": 2,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_SPIN_R3_original_job_139385328863.log"
+      }
+    },
+    {
+      "id": "E-MSY-PYTHON-GAMMA-ROWS-R1-20261125",
+      "title": "Python gamma signed row target and weight source bridge R1",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "FINITE_GAMMA_COEFFICIENT_BRIDGE_NOT_SPARSE_WITNESS_CERTIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "d199b8d47a644b4fb19d96acccd3d733b0108c43",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_SPIN_R3_GREEN_PYTHON_GAMMA_ROWS_R1_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonGammaRows.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPythonGammaRowsIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-python-gamma-rows-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Python's high-to-low four-factor I/X/Z/J words give exact row XOR targets and signs equal to the actual original gamma matrices, and every pair product has a single nonzero signed row target. The original Spin(9) same-color term weight equals that integer sign divided by 8.",
+        "controls": [
+          "144 source row comparisons independently computed from frozen Python word list and frozen original tables",
+          "576 ascending pair rows checked",
+          "Kernel-check source gamma and gamma pair entry formulas; exact same-color row weight, off-row zero, cross-color zero"
+        ],
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Python word mask drift",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing strict sentinel"
+        ],
+        "analysis_plan": "Reuse exact private-table transcription/rfl and single-row finite-sum proof from SU2RealGammaProbe and reflected gamma gate. Kernel decide per spatial label. Freeze original and Python scripts. Distinguish coefficient support from actual sparse seed and summation. Stop after two native REDs."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
