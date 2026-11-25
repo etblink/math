@@ -107,7 +107,7 @@ private theorem row_scale (k : ℝ) :
 private theorem scale_sum {I E : Type*} [AddCommMonoid E] [Module ℂ E]
     (s : Finset I) (T : I → E) :
     (∑ i ∈ s, (1 / 8 : ℂ) • T i) = (1 / 8 : ℂ) • (∑ i ∈ s, T i) :=
-  (Finset.smul_sum _ _ _).symm
+  Finset.smul_sum.symm
 
 private def fullTerm (r s : SpaceIndex) (x : PackedCoordinates)
     (p q : Source48Label) : PackedCoordinates :=

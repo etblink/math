@@ -9408,6 +9408,70 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PYTHON-SPIN-CONTRACTION-R1-RED-20261125",
+      "title": "Sparse Python spin contraction R1 native RED at implicit smul_sum arguments",
+      "registered_at": "2026-11-25",
+      "status": "RED_UNQUALIFIED",
+      "classification": "PINNED_MATHLIB_IMPLICIT_ARGUMENT_INTERFACE_FAILURE_NOT_MATHEMATICAL_FALSIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "source_baseline": "60f94f4a5961b4a77ebe4ae93461a049b04d565f",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_SPIN_CONTRACTION_R1_RED_R2_IMPLICIT_SMUL_SUM_2026_11_25.md",
+      "result": {
+        "status": "RED_UNQUALIFIED",
+        "run_id": 45677663683,
+        "job_id": 139429414065,
+        "artifact_id": 15054970115,
+        "artifact_size_bytes": 19055,
+        "artifact_sha256": "2fe6850baf1174144e401ea9dc4920eaf981fe07dd76dd6648a636a1b9228eaf",
+        "artifact_independently_rehashed": true,
+        "first_causal": "Line 110:3 Function expected at Finset.smul_sum; arguments implicit in pinned API",
+        "clean_native_roots": [
+          "sourceRowWeight",
+          "sourceRowOff"
+        ],
+        "independent_consumer_executed": false,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_SPIN_CONTRACTION_R1_original_job_139429414065.log"
+      }
+    },
+    {
+      "id": "E-MSY-PYTHON-SPIN-CONTRACTION-R2-20261125",
+      "title": "Sparse Python spin contraction R2 infer implicit sum scaling arguments",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "SPARSE_SPIN_CONTRACTION_TRANSPORT_NOT_ACTUAL_SEED_OR_DOMAIN_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "60f94f4a5961b4a77ebe4ae93461a049b04d565f",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PYTHON_SPIN_CONTRACTION_R1_RED_R2_IMPLICIT_SMUL_SUM_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPythonSpinContraction.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPythonSpinContractionIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-python-spin-contraction-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Use Finset.smul_sum.symm at expected equality type instead of applying nonexistent positional parameters. The diagnostic gives the needed equality with implicit metavariables.",
+        "controls": [
+          "Qualified gamma row and pair entry formulas",
+          "Exact row target and off-target coefficient conditions",
+          "Generic finite sum support collapse before specializing large packed carrier",
+          "Independent consumer on literal color-spin term enumeration and original K annihilation"
+        ],
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing strict sentinel"
+        ],
+        "analysis_plan": "One-line proof change. Same source four and consumer two roots, unchanged public statements, imports, workflow and resource limits. Stop on second native RED."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
