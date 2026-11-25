@@ -9037,6 +9037,65 @@
       "result": {
         "status": "REGISTERED_NOT_EXECUTED"
       }
+    },
+    {
+      "id": "E-MSY-PACKED-COLOR-R2-GREEN-20261125",
+      "title": "Packed color R2 qualified receipt",
+      "registered_at": "2026-11-25",
+      "status": "LEAN_QUALIFIED",
+      "classification": "ALL_THREE_SOURCE_BOUNDED_FERMIONIC_COLOR_GENERATORS_TRANSPORT_ONLY",
+      "qualification": true,
+      "qualified_physical_claim": false,
+      "source_baseline": "566267c8095a095a488e35d4d515dd411bd19925",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_COLOR_R2_GREEN_PACKED_SPIN_R1_2026_11_25.md",
+      "result": {
+        "status": "LEAN_QUALIFIED",
+        "run_id": 45650790734,
+        "job_id": 139334406330,
+        "artifact_id": 15040703437,
+        "artifact_size_bytes": 16667,
+        "artifact_sha256": "24ddf9bfce16e395fa40df70b6e80248dafecaf57f2bf07b8b16d05976a652b3",
+        "artifact_independently_rehashed": true,
+        "native_jobs": 9069,
+        "source_roots": 5,
+        "consumer_roots": 3,
+        "original_job_log": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_COLOR_R2_original_job_139334406330.log"
+      }
+    },
+    {
+      "id": "E-MSY-PACKED-SPIN-R1-20261125",
+      "title": "Packed original Source48 bivector and normalized Spin(9) plane transport",
+      "registered_at": "2026-11-25",
+      "status": "REGISTERED_NOT_EXECUTED",
+      "classification": "SOURCE48_BIVECTOR_AND_SPIN_PLANE_TRANSPORT_CANDIDATE_NOT_SPARSE_SEED_OR_PHYSICAL_QUALIFICATION",
+      "qualification": false,
+      "qualified_physical_claim": false,
+      "prospectively_registered": true,
+      "source_baseline": "566267c8095a095a488e35d4d515dd411bd19925",
+      "memo": "research/computational/python-first-20261124/bfss-native-carrier/PACKED_COLOR_R2_GREEN_PACKED_SPIN_R1_2026_11_25.md",
+      "source_artifact": {
+        "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMSYPackedSpin.lean",
+        "consumer": "lean/diagnostics/BFSSMSYPackedSpinIndependentAudit.lean",
+        "workflow": ".github/workflows/bfss-msy-packed-spin-strict.yml"
+      },
+      "stages": {
+        "hypothesis": "Source48 inverse labels and normalized bilinears transport the original quarter-weighted K(A) without additional scaling. Distinct normalized Spin(9) planes have same-color source gamma-product weights divided by eight.",
+        "controls": [
+          "Literal source gamma-product coefficient at arbitrary color labels",
+          "Literal packed double-sum zero iff original K"
+        ],
+        "falsifiers": [
+          "Native error",
+          "Independent consumer failure",
+          "Unexpected axiom",
+          "Frozen-source drift",
+          "Missing strict sentinel"
+        ],
+        "analysis_plan": "Generic double-sum and real-to-complex scalar transport, reuse existing source bivector and normalized plane, strict five source and two consumer roots, original artifact audit. Sparse Python term enumeration and seed remain separate."
+      },
+      "result": {
+        "status": "REGISTERED_NOT_EXECUTED"
+      }
     }
   ],
   "allowed_statuses": [
