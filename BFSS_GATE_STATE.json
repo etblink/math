@@ -6563,13 +6563,13 @@
       ],
       "active": {
         "gate": "ICD-C0",
-        "attempt": "R1",
+        "attempt": "R2",
         "status": "CANDIDATE_UNQUALIFIED",
         "qualification": false,
         "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDC0OriginalPhysicalCommonDomain.lean",
         "consumer": "lean/diagnostics/BFSSICDC0OriginalPhysicalCommonDomainIndependentAudit.lean",
         "workflow": ".github/workflows/bfss-icdc0-original-physical-common-domain-strict.yml",
-        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICDB0_R1_GREEN_ICDC0_PRE_GATE_2026_11_26.md",
+        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICDC0_R1_CONSUMER_RED_R2_EXPLICIT_GRAPH_FOLD_2026_11_26.md",
         "pre_gate_commit": "1c5ef5c336e44cd33180c15211ba251647552f3f",
         "expected_source_reports": 5,
         "expected_consumer_reports": 2,
@@ -6710,7 +6710,49 @@
           "workflow_blob": "3db59e1290684e705491d02b9788cbc5212bb874",
           "native_jobs": 9008,
           "strict_marker": "BFSS_ICDB0_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN"
-        }
+        },
+        "prior_red": {
+          "attempt": "R1",
+          "status": "INDEPENDENT_CONSUMER_RED",
+          "qualification": false,
+          "run_id": 45910441121,
+          "job_id": 140217235775,
+          "tested_sha": "bb83b981273f14827d12d89c56f28252a95604e3",
+          "artifact_id": 15160666540,
+          "artifact_size_bytes": 25225,
+          "artifact_sha256": "78196535576eed833b5b0adabe793c5d55d88135da46e8e87f9063a447734b37",
+          "archive_crc_pass": true,
+          "source_blob": "01a9a26eee376861eac110f48ee8982ca7204343",
+          "consumer_blob": "2b8662b7910ddddc83482f2e8750b5fc6ca6f112",
+          "workflow_blob": "a04481a4e505e6f3fad690756dd2d0fb0769c9e4",
+          "native_jobs": 9176,
+          "source_reports_clean": 5,
+          "consumer_reports_clean": 1,
+          "cause": "maximum recursion depth in literal SU2 component graph audit",
+          "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICDC0_R1_CONSUMER_RED_R2_EXPLICIT_GRAPH_FOLD_2026_11_26.md"
+        },
+        "red_history": [
+          {
+            "attempt": "R1",
+            "status": "INDEPENDENT_CONSUMER_RED",
+            "qualification": false,
+            "run_id": 45910441121,
+            "job_id": 140217235775,
+            "tested_sha": "bb83b981273f14827d12d89c56f28252a95604e3",
+            "artifact_id": 15160666540,
+            "artifact_size_bytes": 25225,
+            "artifact_sha256": "78196535576eed833b5b0adabe793c5d55d88135da46e8e87f9063a447734b37",
+            "archive_crc_pass": true,
+            "source_blob": "01a9a26eee376861eac110f48ee8982ca7204343",
+            "consumer_blob": "2b8662b7910ddddc83482f2e8750b5fc6ca6f112",
+            "workflow_blob": "a04481a4e505e6f3fad690756dd2d0fb0769c9e4",
+            "native_jobs": 9176,
+            "source_reports_clean": 5,
+            "consumer_reports_clean": 1,
+            "cause": "maximum recursion depth in literal SU2 component graph audit",
+            "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICDC0_R1_CONSUMER_RED_R2_EXPLICIT_GRAPH_FOLD_2026_11_26.md"
+          }
+        ]
       }
     }
   }

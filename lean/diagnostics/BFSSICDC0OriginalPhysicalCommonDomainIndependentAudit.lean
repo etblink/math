@@ -10,13 +10,23 @@ open FCP.BFSSICDB0 FCP.BFSSICDC0 FCP.BFSSSU2GaugeG1A FCP.BFSSSU2GaugeG4J
 open FCP.BFSSSU2PhysicalDomainL6H5E8AU FCP.BFSSSU2PhysicalDomainL6H5E8AY
 open Set
 
+/-- Fold the literal source graph at arbitrary N, avoiding kernel
+conversion of the entire specialized SU2 closure and Fock carrier. -/
+private theorem literalIndividualClosedGraph_eq {N : ℕ} (M : AlgebraData N)
+    (G : M.GaugeData) (a : SpinIndex) :
+    originalIndividualClosedGraph M G a =
+      closure (Set.range (fun f : G.invariantCore =>
+        (coreToL2 f.val, coreToL2 (M.charge a f.val)))) := by
+  rfl
+
 /-- Audit the original individual closure, not a substitute operator. -/
 theorem originalSU2ComponentGraphAudit (a : SpinIndex) (u v : FullL2 2) :
     (u, v) ∈ closure (Set.range (fun f : pairedGaugeData.invariantCore =>
       (coreToL2 f.val, coreToL2 (pairedAlgebraData.charge a f.val)))) ↔
       ∃ y : SpinIndex → FullL2 2,
-        (u, y) ∈ originalMinimalClosedGraph pairedAlgebraData pairedGaugeData ∧ y a = v :=
-  paired_component_graph_iff a u v
+        (u, y) ∈ originalMinimalClosedGraph pairedAlgebraData pairedGaugeData ∧ y a = v := by
+  rw [← literalIndividualClosedGraph_eq pairedAlgebraData pairedGaugeData a]
+  exact paired_component_graph_iff a u v
 
 /-- The domain conclusion references AY's actual native partial map. -/
 theorem originalSU2CommonDomainAudit (a : SpinIndex) (u : pairedGaugeData.physicalSpace) :
