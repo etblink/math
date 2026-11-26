@@ -1,0 +1,11 @@
+# ICD0 R3 native RED — isolated ICD-A0 R1
+
+2026-11-26 Pacific. Exact R3 SHA 3803cbd2731573ce2fc39380c4c2b9eb0ade26ec, run 45881201342, job 140120681604. Frozen original-source preflight, pinned toolchain and upload passed; final native target 9174/9174 failed, independent consumer not reached. Original artifact 15148192668 (25629 bytes); independently downloaded SHA256 9d97035260d390d21c263ed966555808de736d0156c5a97de2ce73d6a375724a matches GitHub metadata, six ZIP members pass CRC. Archive tested SHA and blobs match source e878848bb21095be2634ba89e2b9aaa8c7c37056, consumer ec135ab0356dc1b799563b05109d37e41358a558, workflow 0fbd9f125020f94977b115ba3cd8b04b55299193. Provider retention-limited archive: https://github.com/etblink/math/actions/runs/45881201342/artifacts/15148192668.
+
+First causal: line 142:29 (deterministic) whnf timeout at 200000 heartbeats, on application of hpair through congrArg of closure/range. Line 144:2 tactic execution timeout follows. No preceding generator equality diagnostic. component_graph_iff and paired_core_charge_norm report clean axioms; four dependent roots contain recovery sorryAx. No mathematical counterexample. R3 entire source, consumer, workflow and historical receipts remain unchanged; ICD0 monolithic architecture STOPPED_UNQUALIFIED pending bounded isolation.
+
+ICD-A0 isolates the joint graph adapter only. No CSQE0 or AY import is needed in the new source. Prove abstract closed range congruence via explicit two-way range witnesses; prove literal source generator equality separately; then compose with AU originalMinimalClosedGraph_set_eq and AP originalPhysicalCoreGraphSet. Independent audit restates actual original joint graph membership at arbitrary N. Three source roots, one independent consumer root; pinned donors and toolchain and strict whitelist unchanged, no heartbeat/recursion escalation. This does not qualify the full ICD0 or its common-domain claim. No local Lean executable; native qualification pending. On native RED diagnose first causal, do not rerun unchanged.
+
+New source: lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDA0OriginalJointGraphAdapter.lean
+Consumer: lean/diagnostics/BFSSICDA0OriginalJointGraphAdapterIndependentAudit.lean
+Workflow: .github/workflows/bfss-icda0-original-joint-graph-adapter-strict.yml
