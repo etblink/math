@@ -1,0 +1,129 @@
+name: BFSS UGC4 physical graph core identification strict
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC4PhysicalGraphCoreIdentification.lean'
+      - 'lean/diagnostics/BFSSUGC4PhysicalGraphCoreIdentificationIndependentAudit.lean'
+      - '.github/workflows/bfss-ugc4-physical-graph-core-identification-strict.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-ugc4-physical-graph-core-identification-${{ github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-ugc4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen original source and independent consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-ugc4-physical-graph-core-identification"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-ugc4-physical-graph-core-identification/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git ls-tree HEAD -- \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC4PhysicalGraphCoreIdentification.lean \
+            lean/diagnostics/BFSSUGC4PhysicalGraphCoreIdentificationIndependentAudit.lean \
+            .github/workflows/bfss-ugc4-physical-graph-core-identification-strict.yml \
+            > "$RUNNER_TEMP/bfss-ugc4-physical-graph-core-identification/tested-blobs.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-ugc4-physical-graph-core-identification/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-ugc4-physical-graph-core-identification/preflight.log"
+          from pathlib import Path
+          import subprocess,re,json
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC3GraphHaarProjection.lean":"83af8583c1bb74fc7e410f750e8d2447409c07aa","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B10CFullHaarCoreCompatibilityAndDensityProbe.lean":"7b116f1efa2dd62cc5188b3ff2d2cf38ecd7bd9a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD1RestrictedSourceGraphProbe.lean":"01c33519d617209ac589eb4cdc71db400778e8ec","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2AClosedPhysicalGraphProbe.lean":"56edc9a394cf59149e040c05c76f7bdf65991984","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B4SourceSmoothInvariantCoreProbe.lean":"2e26998cb83f80abdf274ab6cae45ceadd1dd8b2","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC2ClosedGraphGaugeCovariance.lean":"ca97afd3b19b21f48a97f953ce6e6e10dffc7b19","lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean":"e4990dadf1d8bde849e351467282ab3f14989c3b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC0FullCoreGaugeCovariance.lean":"6fc94841ffd7f93ff75bcd04f9a5396e02e42044","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC1FullCoreGaugeAction.lean":"059f6fe01c8e3b110ea249662fa56ace1163165a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B6SourceFullL2GaugeActionProbe.lean":"02a0e02fde11ae8b0b6162df9a7f7a3df9a0800b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B7SourceFullL2GaugeIsometryAndFixednessProbe.lean":"351d2d226c53a3cff8a5e1d08c2d3e24c63a0f86","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B8AFixedPointSpaceProbe.lean":"136f461a29d5fe99453da0df081d824c33f6c7cf","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B9CGenuineGaugeHaarProjectionProbe.lean":"15e1526b266d4e895857532cb372a32dc328ac97"}
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
+          subprocess.check_call(["git","merge-base","--is-ancestor","72a018c3b1f7b083d52e375acc85600e9430d871","HEAD"])
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC4PhysicalGraphCoreIdentification.lean").read_text()
+          t=Path("lean/diagnostics/BFSSUGC4PhysicalGraphCoreIdentificationIndependentAudit.lean").read_text()
+          source_roots = ["core_haar_charge_commutes","graph_haar_core_mem","graph_haar_restricted_mem","original_restricted_graph_iff","upstream_physical_graph_iff"]
+          consumer_roots = ["originalSU2PhysicalGraphAudit","originalSU2CoreHaarChargeAudit"]
+          assert re.findall(r"(?m)^import (\S+)$", s) == ["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC3GraphHaarProjection","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainD2B10CFullHaarCoreCompatibilityAndDensityProbe"]
+          assert re.findall(r"(?m)^import (\S+)$", t) == ["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC4PhysicalGraphCoreIdentification"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$", s) == source_roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$", t) == consumer_roots
+          for content in [s,t]:
+              assert "set_option autoImplicit false" in content
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe|native_decide)\b",content)
+              for forbidden in ["set_option maxRecDepth","set_option maxHeartbeats",
+                                "set_option synthInstance.maxHeartbeats"]:
+                  assert forbidden not in content
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_UGC4_SOURCE_EXACT_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-ugc4-physical-graph-core-identification/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+
+      - name: Original physical graph core identification and independent SU2 consumer
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-ugc4-physical-graph-core-identification"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC4PhysicalGraphCoreIdentification 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSUGC4PhysicalGraphCoreIdentificationIndependentAudit.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import re,os
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-ugc4-physical-graph-core-identification"
+          for fn in ["native-source.log","strict-axioms.log"]:
+              log=(E/fn).read_text()
+              for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert bad not in log,(fn,bad,log[-6000:])
+          expected = {"native-source.log":["FCP.BFSSUGC4.core_haar_charge_commutes","FCP.BFSSUGC4.graph_haar_core_mem","FCP.BFSSUGC4.graph_haar_restricted_mem","FCP.BFSSUGC4.original_restricted_graph_iff","FCP.BFSSUGC4.upstream_physical_graph_iff"],"strict-axioms.log":["FCP.BFSSUGC4Independent.originalSU2PhysicalGraphAudit","FCP.BFSSUGC4Independent.originalSU2CoreHaarChargeAudit"]}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for filename, names in expected.items():
+              transcript = (E / filename).read_text()
+              if filename == "native-source.log":
+                  assert "Build completed successfully" in transcript
+              for name in names:
+                  pattern = re.escape("'" + name + "'") + (
+                      r" (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)"
+                  )
+                  reports = re.findall(pattern, transcript)
+                  assert len(reports) == 1, (filename, name, reports)
+                  axioms = {x.strip() for x in reports[0].split(",") if x.strip()}
+                  assert axioms <= allowed, (filename, name, axioms)
+          print("BFSS_UGC4_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN")
+          PY
+
+      - name: Preserve first-causal original source and consumer evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-ugc4-physical-graph-core-identification-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-ugc4-physical-graph-core-identification/
+          if-no-files-found: warn
+          retention-days: 30

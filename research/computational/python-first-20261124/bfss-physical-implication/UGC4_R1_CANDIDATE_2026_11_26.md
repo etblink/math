@@ -1,0 +1,3 @@
+# UGC4 R1 candidate — physical graph-core identification
+
+2026-11-26 Pacific. Pre-gate acceptance commit 72a018c3b1f7b083d52e375acc85600e9430d871 qualifies UGC3 and records proof design before staging. Uses D1's exact originalRestrictedClosedGraph and upstream G.deformedModelGraph 1 0. Five source roots, two independent concrete SU2-indexed consumer roots. Core Haar charge commutation is obtained by original fullClosedGraph uniqueness, not a differentiation-under-Haar assumption. Closed preimage argument transfers projected core membership to the original restricted closed graph; fixedness yields the reverse inclusion for physical inputs. Candidate remains unqualified pending native strict CI. No weighted domain or spectral conclusion. Original source unchanged.
