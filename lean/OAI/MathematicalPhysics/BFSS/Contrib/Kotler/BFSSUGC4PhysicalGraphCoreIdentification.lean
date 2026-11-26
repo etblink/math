@@ -16,6 +16,31 @@ open FCP.BFSSSU2PhysicalDomainD2B4 FCP.BFSSSU2PhysicalDomainD2B9B
 open FCP.BFSSSU2PhysicalDomainD2B10C
 open MeasureTheory Set
 
+/-- Keep the range-witness reduction dimension-generic, before specialization. -/
+private theorem restricted_pair_mem {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)
+    (f : SmoothCore N) (hf : f ∈ G.invariantCore) :
+    (coreToL2 f, M.chargeVector f) ∈ LinearMap.range
+      ((coreToL2.comp G.invariantCore.subtype).prod
+        (M.chargeVector.comp G.invariantCore.subtype)) :=
+  ⟨⟨f, hf⟩, rfl⟩
+
+private theorem restricted_range_to_closed {N : ℕ}
+    (M : AlgebraData N) (G : M.GaugeData)
+    (p : FullL2 N × (SpinIndex → FullL2 N))
+    (hp : p ∈ LinearMap.range
+      ((coreToL2.comp G.invariantCore.subtype).prod
+        (M.chargeVector.comp G.invariantCore.subtype))) :
+    p ∈ originalRestrictedClosedGraph M G := by
+  unfold originalRestrictedClosedGraph
+  exact Submodule.le_topologicalClosure _ hp
+
+private theorem restricted_closed_isClosed {N : ℕ}
+    (M : AlgebraData N) (G : M.GaugeData) :
+    IsClosed (originalRestrictedClosedGraph M G :
+      Set (FullL2 N × (SpinIndex → FullL2 N))) := by
+  unfold originalRestrictedClosedGraph
+  exact Submodule.isClosed_topologicalClosure _
+
 variable (M : AlgebraData 2) (G : M.GaugeData)
 
 theorem core_haar_charge_commutes (f : SmoothCore 2) :
@@ -43,33 +68,31 @@ theorem graph_haar_core_mem (p : FullL2 2 × (SpinIndex → FullL2 2))
       ((coreToL2.comp G.invariantCore.subtype).prod
         (M.chargeVector.comp G.invariantCore.subtype)) := by
   obtain ⟨f, rfl⟩ := hp
-  refine ⟨⟨sourceHaarAverageCore M G f,
-    sourceHaarAverageCore_mem_invariantCore M G f⟩, ?_⟩
-  apply Prod.ext
-  · exact (sourceFullHaarAverageCLM_coreToL2_compat M G f).symm
-  · funext α
-    change M.chargeVector (sourceHaarAverageCore M G f) α =
-      sourceFullHaarAverageCLM M G (M.chargeVector f α)
-    exact (congrFun (core_haar_charge_commutes M G f) α).symm
+  have hpair : graph_haar M G (coreToL2 f, M.chargeVector f) =
+      (coreToL2 (sourceHaarAverageCore M G f),
+        M.chargeVector (sourceHaarAverageCore M G f)) := by
+    change (sourceFullHaarAverageCLM M G (coreToL2 f),
+      fun α => sourceFullHaarAverageCLM M G (M.chargeVector f α)) = _
+    exact Prod.ext (sourceFullHaarAverageCLM_coreToL2_compat M G f)
+      (core_haar_charge_commutes M G f)
+  change graph_haar M G (coreToL2 f, M.chargeVector f) ∈ _
+  rw [hpair]
+  exact restricted_pair_mem M G (sourceHaarAverageCore M G f)
+    (sourceHaarAverageCore_mem_invariantCore M G f)
 
 theorem graph_haar_restricted_mem {p : FullL2 2 × (SpinIndex → FullL2 2)}
     (hp : p ∈ M.fullClosedGraph) :
     graph_haar M G p ∈ originalRestrictedClosedGraph M G := by
   let X := FullL2 2 × (SpinIndex → FullL2 2)
-  let R : Submodule ℂ X := LinearMap.range
-    ((coreToL2.comp G.invariantCore.subtype).prod
-      (M.chargeVector.comp G.invariantCore.subtype))
   let S : Set X := {q | graph_haar M G q ∈ originalRestrictedClosedGraph M G}
-  have hc : IsClosed (originalRestrictedClosedGraph M G : Set X) := by
-    change IsClosed (closure (R : Set X))
-    exact isClosed_closure
+  have hc : IsClosed (originalRestrictedClosedGraph M G : Set X) :=
+    restricted_closed_isClosed M G
   have hs : IsClosed S := hc.preimage (graph_haar_continuous M G)
   have hcore : (M.fullCoreGraph : Set X) ⊆ S := by
     intro q hq
-    change graph_haar M G q ∈ closure (R : Set X)
-    have hr : graph_haar M G q ∈ R := graph_haar_core_mem M G q hq
-    have hsub : (R : Set X) ⊆ closure (R : Set X) := subset_closure
-    exact hsub hr
+    change graph_haar M G q ∈ originalRestrictedClosedGraph M G
+    exact restricted_range_to_closed M G (graph_haar M G q)
+      (graph_haar_core_mem M G q hq)
   exact closure_minimal hcore hs hp
 
 theorem original_restricted_graph_iff (v : FullL2 2) (y : SpinIndex → FullL2 2) :
