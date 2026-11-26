@@ -19,7 +19,7 @@ section Generic
 
 variable {D E F ι : Type*} [AddCommGroup D] [Module ℂ D]
   [NormedAddCommGroup E] [NormedSpace ℂ E]
-  [NormedAddCommGroup F] [NormedSpace ℂ F] [CompleteSpace F]
+  [NormedAddCommGroup F] [NormedSpace ℂ F]
 
 /-- For a linear core, identical output norms on differences give identical
 Cauchy control. No topology or completeness on the core D is needed. -/
@@ -41,7 +41,7 @@ private theorem other_cauchy (A : ι → D →ₗ[ℂ] F)
 /-- The closed individual graph is exactly the coordinate projection of
 the closed joint graph when every component has the same core norm.
 In particular the projection loses no graph limit. -/
-theorem component_graph_iff (J : D →ₗ[ℂ] E) (A : ι → D →ₗ[ℂ] F)
+theorem component_graph_iff [CompleteSpace F] (J : D →ₗ[ℂ] E) (A : ι → D →ₗ[ℂ] F)
     (a : ι) (h : ∀ (d : D) (b : ι), ‖A b d‖ = ‖A a d‖)
     (u : E) (v : F) :
     (u, v) ∈ closure (Set.range (fun d : D => (J d, A a d))) ↔
@@ -57,8 +57,14 @@ theorem component_graph_iff (J : D →ₗ[ℂ] E) (A : ι → D →ₗ[ℂ] F)
         (𝓝 (u, v)) := by
       rw [he]
       exact ht
-    have hu : Tendsto (fun n : ℕ => J (f n)) atTop (𝓝 u) := ht'.fst
-    have ha : Tendsto (fun n : ℕ => A a (f n)) atTop (𝓝 v) := ht'.snd
+    have hfst : Tendsto (Prod.fst : E × F → E) (𝓝 (u, v)) (𝓝 u) :=
+      continuous_fst.continuousAt
+    have hsnd : Tendsto (Prod.snd : E × F → F) (𝓝 (u, v)) (𝓝 v) :=
+      continuous_snd.continuousAt
+    have hu : Tendsto (fun n : ℕ => J (f n)) atTop (𝓝 u) :=
+      hfst.comp ht'
+    have ha : Tendsto (fun n : ℕ => A a (f n)) atTop (𝓝 v) :=
+      hsnd.comp ht'
     have hlim (b : ι) : ∃ w : F, Tendsto (fun n : ℕ => A b (f n))
         atTop (𝓝 w) :=
       cauchySeq_tendsto_of_complete
@@ -105,9 +111,24 @@ theorem source_component_graph_iff {N : ℕ} (M : AlgebraData N) (G : M.GaugeDat
     (u v : FullL2 N) :
     (u, v) ∈ originalIndividualClosedGraph M G a ↔
       ∃ y : SpinIndex → FullL2 N, (u, y) ∈ originalMinimalClosedGraph M G ∧ y a = v := by
-  exact component_graph_iff (coreToL2.comp G.invariantCore.subtype)
-    (fun b : SpinIndex => (coreToL2.comp (M.charge b)).comp G.invariantCore.subtype)
-    a h u v
+  let J : G.invariantCore →ₗ[ℂ] FullL2 N :=
+    coreToL2.comp G.invariantCore.subtype
+  let A : SpinIndex → (G.invariantCore →ₗ[ℂ] FullL2 N) :=
+    fun b => (coreToL2.comp (M.charge b)).comp G.invariantCore.subtype
+  have hnorm : ∀ (f : G.invariantCore) (b : SpinIndex), ‖A b f‖ = ‖A a f‖ := by
+    intro f b
+    exact h f b
+  have hgen := component_graph_iff J A a hnorm u v
+  have hleft : originalIndividualClosedGraph M G a =
+      closure (Set.range (fun f : G.invariantCore => (J f, A a f))) := by
+    rfl
+  have hright : (originalMinimalClosedGraph M G :
+      Set (FullL2 N × (SpinIndex → FullL2 N))) =
+      closure (Set.range (fun f : G.invariantCore => (J f, fun b : SpinIndex => A b f))) := by
+    rw [originalMinimalClosedGraph_set_eq M G]
+    rfl
+  rw [← hleft, ← hright] at hgen
+  exact hgen
 
 /-- The AU ambient graph and AY native physical column have exactly the
 same input membership on the actual physical Hilbert subtype. -/

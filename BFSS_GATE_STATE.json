@@ -6563,17 +6563,41 @@
       ],
       "active": {
         "gate": "ICD0",
-        "attempt": "R1",
+        "attempt": "R2",
         "status": "CANDIDATE_UNQUALIFIED",
         "qualification": false,
         "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICD0OriginalCommonChargeDomain.lean",
         "consumer": "lean/diagnostics/BFSSICD0OriginalCommonChargeDomainIndependentAudit.lean",
         "workflow": ".github/workflows/bfss-icd0-original-common-charge-domain-strict.yml",
-        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICD0_R1_COMMON_CHARGE_DOMAIN_CANDIDATE_2026_11_26.md",
+        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICD0_R1_NATIVE_RED_R2_REPAIR_2026_11_26.md",
         "pre_gate_commit": "56a705efff040d0a20e711d8e155faab98aaf3bc",
         "expected_source_reports": 6,
         "expected_consumer_reports": 2,
-        "physical_claim": false
+        "physical_claim": false,
+        "prior_red": {
+          "attempt": "R1",
+          "status": "NATIVE_RED",
+          "qualification": false,
+          "run_id": 45874045901,
+          "job_id": 140096492796,
+          "tested_sha": "190174dfec7fd83de39e6a5538417088c3e1c4e7",
+          "artifact_id": 15145470862,
+          "artifact_size_bytes": 25788,
+          "artifact_sha256": "1040bf318588525e99b61df403f4679793abbe2982772ea58460f4e7aad13aae",
+          "archive_crc_pass": true,
+          "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICD0_R1_NATIVE_RED_R2_REPAIR_2026_11_26.md"
+        },
+        "superseded_preflight": {
+          "status": "PREFLIGHT_RED",
+          "qualification": false,
+          "run_id": 45873977692,
+          "tested_sha": "9bf5f056503b73c6d04f4f253fc00cc83d69e559",
+          "artifact_id": 15144526507,
+          "artifact_size_bytes": 1032,
+          "artifact_sha256": "2cff9d55820463520ed6676bbb1631ee2a910c709bd179819dfa6017f48d0057",
+          "archive_crc_pass": true,
+          "receipt": "research/computational/python-first-20261124/bfss-physical-implication/ICD0_R1_PREFLIGHT_LITERAL_REPAIR_2026_11_26.md"
+        }
       }
     }
   }
