@@ -1,0 +1,11 @@
+# UGC2 R1 GREEN_QUALIFIED; UGC3 R1 candidate
+
+2026-11-26 Pacific. Unified integration branch.
+
+UGC2 run 45859305316, attempt 1, job 140045847985, exact tested SHA f2d6669979b7fe723d247fac149ecc543cb4cd77. Frozen source and pinned environment PASS; 9001 native jobs PASS; independent consumer PASS; all ten required axiom reports exactly [propext, Classical.choice, Quot.sound]; BFSS_UGC2_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN present in job log. Original evidence artifact 15137702528 (8813 bytes), https://github.com/etblink/math/actions/runs/45859305316/artifacts/15137702528. Independently recomputed local ZIP SHA256 4b0d9cabf1671907ac3452178a0a88effc8d6c24e53aca9a36e728469ef30d9d, seven members CRC verified; archived tested SHA matches. Archived blobs: source ca97afd3b19b21f48a97f953ce6e6e10dffc7b19; consumer 9e04001157aebf97284f275e2592788e25cf7b50; workflow cc01797bae2f9dd702ae345af6698eb29dbd69c7. No sorryAx in required reports. Lake dependency and Node infrastructure warnings do not qualify as source proof failures.
+
+UGC2 establishes exact gauge invariance of original fullClosedGraph, both directions, and physicality of every output for physical input. It establishes neither Haar commutation nor graph-core equality alone.
+
+UGC3 R1 uses actual source normalized Haar, D2B9A integrability, D2B9B exact CLM, D2B9C physical range, UGC2 graph invariance. Pinned Mathlib Analysis.Convex.Integral gives Convex.integral_mem on closed convex sets for probability measures; MeasureTheory.SpecificCodomains.Pi gives Integrable.of_eval and eval_integral. The closed complex submodule is real-convex by restriction of scalars; integration takes place in the original finite product graph ambient space. Candidate proves continuity, integrability, componentwise equality with genuine Bochner integral, graph membership, physical range and fixedness for physical graph input. Two independent consumer roots; nine total required axiom reports. Candidate not qualified until exact native run. No changes to original source.
+
+UGC4 next: graph-norm approximation by true smooth-core Haar projection, using the D2B10C compatibility and an actual core-charge average identification, or graph uniqueness if justified. Do not substitute norm density for joint graph density. No physical ground-state existence or fidelity claim at this gate.
