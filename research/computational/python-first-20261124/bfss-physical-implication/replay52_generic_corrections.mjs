@@ -15,15 +15,15 @@ export function replay52corrections(seed,H3,diag,axes,active,includeCV=true){
  const B=(a,b,G,h=0)=>G.map(([j,w],i)=>[3*(i>>1)+a,i&1,3*(j>>1)+b,j&1,w,h]);
  const K=P.map(([a,i])=>B((a+1)%3,(a+2)%3,gamma[i],1));
  const ops=(...parts)=>parts.flatMap(([c,T])=>c?T.map(([p,u,q,v,w,h])=>[p,u,q,v,c*w,h]):[]);
- const stats={actions:0,dual_controls:0,max_bound:0,combines:0,wide_actions:0,wide_combines:0,max_wide_bound:'0',max_output_component:0};
- function max(V){let a=0;for(let [r,i] of V.values())a=Math.max(a,Math.abs(r),Math.abs(i));return a}
+ const stats={actions:0,dual_controls:0,max_bound:0,combines:0,wide_actions:0,wide_combines:0,max_wide_bound:'0',max_output_component:'0',wide_vectors:0};
+ function max(V){if(!V.size)return 0n;let wide=typeof V.values().next().value[0]==='bigint';if(!wide){let a=0;for(let [r,i] of V.values())a=Math.max(a,Math.abs(r),Math.abs(i));return BigInt(a)}let a=0n;for(let [r,i] of V.values()){if(r<0n)r=-r;if(i<0n)i=-i;if(r>a)a=r;if(i>a)a=i}return a}
  function add(O,m,r,i){let z=O.get(m),a=(z?z[0]:0)+r,b=(z?z[1]:0)+i;if(a||b)O.set(m,[a,b]);else O.delete(m)}
  function safeBound(parts){let n=0n;for(let [c,V] of parts)n+=BigInt(Math.abs(c))*BigInt(max(V));return n}
  function small(n){if(n<2n**52n){stats.max_bound=Math.max(stats.max_bound,Number(n));return true}if(n>BigInt(stats.max_wide_bound))stats.max_wide_bound=String(n);return false}
  function wideAdd(O,m,a,b){let z=O.get(m),r=(z?z[0]:0n)+a,i=(z?z[1]:0n)+b;if(r||i)O.set(m,[r,i]);else O.delete(m)}
- function narrow(O){let W=new Map();for(let [m,[a,b]] of O){assert(a>-(2n**52n)&&a<2n**52n&&b>-(2n**52n)&&b<2n**52n,["actual coefficient exceeds narrow storage",m,String(a),String(b)]);let r=Number(a),i=Number(b);stats.max_output_component=Math.max(stats.max_output_component,Math.abs(r),Math.abs(i));W.set(m,[r,i])}return W}
+ function narrow(O){let m=max(O);if(m>BigInt(stats.max_output_component))stats.max_output_component=String(m);if(m>=2n**52n){stats.wide_vectors++;return O}let W=new Map();for(let [k,[a,b]] of O)W.set(k,[Number(a),Number(b)]);return W}
  function lin(...parts){let O=new Map(),n=safeBound(parts);stats.combines++;if(!small(n)){stats.wide_combines++;for(let [c,V] of parts)if(c)for(let [m,[a,b]] of V)wideAdd(O,m,BigInt(c)*BigInt(a),BigInt(c)*BigInt(b));return narrow(O)}
- for(let [c,V] of parts)if(c)for(let [m,[a,b]] of V)add(O,m,c*a,c*b);return O}
+ for(let [c,V] of parts)if(c)for(let [m,[a,b]] of V)add(O,m,c*Number(a),c*Number(b));return O}
  const cache=new WeakMap();
  function compile(T){let g=new Map();for(let [p,u,q,v,w,h] of T){let d=(1<<p)^(1<<q),la=(1<<(p+u))-1,lb=(1<<(q+v))-1,phase=(h+u+v+2*((la>>>q)&1))&3,par=la^lb;
   if(!g.has(d))g.set(d,new Map());let row=g.get(d),key=par*4+(phase&1),c=phase>=2?-w:w;row.set(key,(row.get(key)||0)+c)}
@@ -31,12 +31,12 @@ export function replay52corrections(seed,H3,diag,axes,active,includeCV=true){
  function apply(T,V,control=false){let O=new Map();if(!T.length||!V.size)return O;let wide=!small(BigInt(max(V))*T.reduce((s,t)=>s+BigInt(Math.abs(t[4])),0n));stats.actions++;if(wide)stats.wide_actions++;
   let G=cache.get(T);if(!G){G=compile(T);cache.set(T,G)}
   for(let [d,terms] of G)for(let [m,z] of V){let cr=0,ci=0;for(let [par,h,w] of terms){let c=poppar(m&par)?-w:w;if(h)ci+=c;else cr+=c}
-   if(cr||ci){if(wide){let a=BigInt(z[0]),b=BigInt(z[1]),c=BigInt(cr),e=BigInt(ci);wideAdd(O,m^d,c*a-e*b,c*b+e*a)}else add(O,m^d,cr*z[0]-ci*z[1],cr*z[1]+ci*z[0])}} if(wide)O=narrow(O);
+   if(cr||ci){if(wide){let a=BigInt(z[0]),b=BigInt(z[1]),c=BigInt(cr),e=BigInt(ci);wideAdd(O,m^d,c*a-e*b,c*b+e*a)}else add(O,m^d,cr*Number(z[0])-ci*Number(z[1]),cr*Number(z[1])+ci*Number(z[0]))}} if(wide)O=narrow(O);
   if(control){let L=new Map();
-   for(let [p,u,q,v,w,h] of T){let Q=1<<q,P=1<<p;for(let [m,[a,b]] of V){let n=m^Q,phase=(h+u+v+2*(poppar(m&(Q-1))+v*((m>>>q)&1)+poppar(n&(P-1))+u*((n>>>p)&1)))&3;let r=phase===0?a:phase===1?-b:phase===2?-a:b,i=phase===0?b:phase===1?a:phase===2?-b:-a;if(wide)wideAdd(L,n^P,BigInt(w)*BigInt(r),BigInt(w)*BigInt(i));else add(L,n^P,w*r,w*i)}}
+   for(let [p,u,q,v,w,h] of T){let Q=1<<q,P=1<<p;for(let [m,[a,b]] of V){let n=m^Q,phase=(h+u+v+2*(poppar(m&(Q-1))+v*((m>>>q)&1)+poppar(n&(P-1))+u*((n>>>p)&1)))&3;let r=phase===0?a:phase===1?-b:phase===2?-a:b,i=phase===0?b:phase===1?a:phase===2?-b:-a;if(wide)wideAdd(L,n^P,BigInt(w)*BigInt(r),BigInt(w)*BigInt(i));else add(L,n^P,w*Number(r),w*Number(i))}}
    if(wide)L=narrow(L);assert(equal(O,L),"compiled/literal action discrepancy");stats.dual_controls++;
   }return O}
- function equal(A,B){if(A.size!==B.size)return false;for(let [m,z] of A){let x=B.get(m);if(!x||x[0]!==z[0]||x[1]!==z[1])return false}return true}
+ function equal(A,B){if(A.size!==B.size)return false;for(let [m,z] of A){let x=B.get(m);if(!x||BigInt(x[0])!==BigInt(z[0])||BigInt(x[1])!==BigInt(z[1]))return false}return true}
  function dot(A,B){let r=0n,i=0n;for(let [m,[a,b]] of A){let x=B.get(m);if(x){let [c,d]=x;r+=BigInt(a)*BigInt(c)+BigInt(b)*BigInt(d);i+=BigInt(a)*BigInt(d)-BigInt(b)*BigInt(c)}}return [r,i]}
  function gram(A,B){return pairs.map(([p,q])=>dot(A[p],B[q]).map(String))}
  const x=P.map(([a,i])=>a===i?diag[a]:0),s=x.reduce((s,v)=>s+v*v,0),Z=y=>ops(...K.map((k,p)=>[y[p],k]));
