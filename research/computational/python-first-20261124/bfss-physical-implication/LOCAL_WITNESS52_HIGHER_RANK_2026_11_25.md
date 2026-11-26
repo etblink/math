@@ -1,0 +1,30 @@
+# Reduced witness higher-rank weighted corrections and independent H3 anchors
+
+2026-11-25 Pacific. Baseline fea2b043c7c20ced6c57ce0d4ea5e5e55293708c. Local isolated JavaScript computations only; no workflow dispatch or Lean change. The owner directs CI for selective Lean qualification, not exploratory computation. Preserve previous rank-one evidence and R6 CANCELLED_EXTERNAL.
+
+## New independent H3 anchor verification
+
+Direct scalar tensor trace insertion and ordered K products, using the original frozen seed and gamma words, not the historical cyclic orbit or Casimir reconstruction. The saved H3 vector is used only for the final exact coefficient comparison. The local executed algorithm is reconstruct_higher_h3_local.mjs at fb484de904968467d84af13bff377a3bc99d029f. CRC/ISIZE, integer NPY header, shape, norm, unique support and denominator 55 checked for the archived anchors. The direct calculation uses scale 330, so comparison is to 6 times the archived numerator.
+
+- rank two X=diag(1,2,0): 350 nonzero ordered tensor coefficients, tensor norm squared 693000; all 59200 occupation coefficients agree, zero imaginary norm residual, scaled norm squared 557048357978112000. 350 actions, 29 literal/compiled controls, max bound 34793472. Receipt d543f732ebfc5e6a46f5b391c2748552143cb19b. Earlier rank2_orbit_vector.npz was not directly compared by the archived orbit reconstruction; this now gives a direct check.
+- rank three X=diag(1,2,3): 525 nonzero ordered tensor coefficients, tensor norm squared 6716160; all 89088 occupation coefficients agree, zero imaginary norm residual, scaled norm squared 5398594372176445440. 442 actions, 29 literal/compiled controls, max bound 179891712. Receipt 63d3aa90f7143f13b2276b42c072452445ca637b.
+
+Both anchors together: 148288 exact coefficient matches. Frozen rank-two blob 2f701d5d85df6a023998176d94e53c5ad872ad14 and rank-three blob 54fcedb9dadb9ea5d5c76bb3d10615943c877955; no archived data modified. Connector reported Git blob identities; independent Git/SHA256 rehash not performed here. The archived parser initially rejected the signed int32 mask dtype, then was bound to the actual signed header (736b0c6c8d6b8739e4b97d7e4f0aadb852de3b4e). No silent dtype reinterpretation.
+
+## Weighted correction experiments
+
+Use frozen H3 anchors as input and independently build all required Krylov ancestors, Phi and S from seed. The later independent coefficient equality proves the H3 input agrees with the direct construction at these exact two fixtures. Original t includes X_ai factor and 1/2; v includes the odd Yukawa power scaling. Rank-two diag(1,2,0) compares with canonical 012 by simultaneous cyclic proper color/spatial rotation, axis map a -> (a+1)%3; zero axis excluded from comparison. All raw source strata mapped by largest active core index, old-old placeholders never used. Parse historic raw integer JSON losslessly.
+
+- Rank-two low mixed block active [1,2,3,13,14]: 50 t and 25 v comparisons, 32 nonzero; all exact, no imaginary residual. 31 actions, 8 dual controls. Raw cae2169e99b5eae0ba566d66b4ed8d323b558a7e, comparison b69ea419784662e02b89cc2feb1ddb2a69c85d52.
+- Rank-two high block [17,18,19,20]: 32 t and 16 v comparisons, 16 nonzero; all exact, no imaginary residual. 31 actions, 8 dual controls, 5 wide actions, 5 wide result vectors, max wide conservative bound 342099898033766400, max wide output component 177960435941376000. Raw 7838c045c07870c7f6895ff26b14fc66fc0e5f53, comparison 4d55f8405f4d84cb8c732062c1d7939528a1dedb.
+- Rank-three low mixed block [1,2,3,13,14]: 75 t and 25 v comparisons, 44 nonzero; all exact, no imaginary residual; 25 exact t trace cancellations. 36 actions, 9 dual controls. Raw 9596d41a6e4c407f3a8adf7ee7b6d75e153f548c, comparison 45089bdb0c4e88ce56b2a2d39f1026dd301f6c71.
+
+223 new exact historical comparisons including 92 nonzero, plus 25 trace checks. All three blocks span three historical raw strata across the experiments. No full 12-core generic fixture yet.
+
+## Arithmetic negative knowledge and remedy
+
+First rank-three full active block attempt at 428b28c062bcc20bdc243ad166a5342325a1b9b7 stopped on conservative bound 7964462410629120 >= 2^52. The subsequent BigInt-accumulation-only attempt at 5e790f443e5ea6fa50ab6f0ce50113d28a44488c stopped on actual coefficient -17592799238615040 at mask 83200; narrowing would lose accuracy. Both were deliberate safety stops, not physical discrepancies. Next retain wide coefficient vectors as BigInt (25b2f59c341eb223b91b1c31dfbd4c42672f6a00); full 12-core rank-three axis 0 execution timed out without durable output. Stop unbounded repeats. Compute only required recurrence ancestors in each block (c387f74daaaae9bb5f606f56b35f62b6756fc20f, blob fbddfc9e5215b12d57fafc2e122edda8c44b5ad1). Exact BigInt bound determines narrow vs wide; if unsafe, accumulate and store BigInt, convert back only after exact component bound <2^52. No floating-point approximation to a wide integer. Exact dot products throughout. High rank-two successful execution exercises the wide branch. The previous R1/R2 verifier discrepancies are retained; do not infer their exact root cause.
+
+## Next bounded decision
+
+Use direct rank-two and rank-three anchor equality as fixed verified finite inputs. Finish generic weighted correction coverage with rectangular pair blocks rather than full 12-core dense Gram computations; exploit symmetry only after source sign convention established and preserve explicit independent controls. Next recompute generic tau/beta/nu and mass/Y on required designs, or evaluate the weighted scalar trial directly if a demonstrably smaller exact quadrature scheme is available. No fresh integration, full generic polynomial identification, spectral assertion, or Lean qualification. All physical claims remain conditional; this materially removes anchor and selected nonzero correction uncertainty. No CI used for these experiments.
