@@ -122,12 +122,25 @@ theorem source_component_graph_iff {N : ℕ} (M : AlgebraData N) (G : M.GaugeDat
   have hleft : originalIndividualClosedGraph M G a =
       closure (Set.range (fun f : G.invariantCore => (J f, A a f))) := by
     rfl
+  have hpair :
+      (fun f : G.invariantCore => (coreToL2 f.val, M.chargeVector f.val)) =
+        (fun f : G.invariantCore => (J f, fun b : SpinIndex => A b f)) := by
+    funext f
+    apply Prod.ext
+    · show coreToL2 f.val = J f
+      rfl
+    · funext b
+      show M.chargeVector f.val b = A b f
+      simp only [AlgebraData.chargeVector, A, LinearMap.pi_apply,
+        LinearMap.comp_apply, Submodule.subtype_apply]
   have hright : (originalMinimalClosedGraph M G :
       Set (FullL2 N × (SpinIndex → FullL2 N))) =
       closure (Set.range (fun f : G.invariantCore => (J f, fun b : SpinIndex => A b f))) := by
-    rw [originalMinimalClosedGraph_set_eq M G]
-    rfl
-  rw [← hleft, ← hright] at hgen
+    rw [originalMinimalClosedGraph_set_eq M G,
+      FCP.BFSSSU2PhysicalDomainL6H5E8AP.originalPhysicalCoreGraphSet]
+    exact congrArg (fun g : G.invariantCore → FullL2 N × (SpinIndex → FullL2 N) =>
+      closure (Set.range g)) hpair
+  rw [hleft, hright]
   exact hgen
 
 /-- The AU ambient graph and AY native physical column have exactly the
