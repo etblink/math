@@ -47,7 +47,7 @@ export function replay52(seed,diag,coords){
  assert(seed.size===19136&&dot(seed,seed)[0]===8072064n,"seed norm");
  let mass=gram(V,V),Y=gram(V,V.map((v,p)=>active.includes(p)?apply(z,v):undefined));
  const cross=(j,k,b)=>{let a=(b+1)%3,c=(b+2)%3;return x[9*a+j]*x[9*c+k]-x[9*c+j]*x[9*a+k]};
- let CV=ops(...P.flatMap(([c,i],p)=>x[p]?Array.from({length:9},(_,j)=>Array.from({length:9},(_,k)=>k>j?[0,1,2].map(b=>[x[p]*cross(j,k,b),B(c,b,mul(mul(gamma[i],gamma[j]),gamma[k]),1)]):[]).flat(2)).flat():[]));
+ let cvparts=[];for(let [c,i] of P)if(x[9*c+i])for(let j=0;j<9;j++)for(let k=j+1;k<9;k++)for(let b=0;b<3;b++){let w=x[9*c+i]*cross(j,k,b);if(w)cvparts.push([w,B(c,b,mul(mul(gamma[i],gamma[j]),gamma[k]),1)])}let CV=ops(...cvparts);
  let cv=gram(V,V.map((v,p)=>active.includes(p)?apply(CV,v):undefined)),records=[];
  for(let [b,i] of coords){let k=9*b+i,e=P.map((_,j)=>+(j===k)),dl=L(e),dw=first[k],dz=K[k];let dphi=lin([640*330*x[k],w],[320*330*s,dw],...ls.flatMap((l,j)=>{let h=dl[j];return [apply(h,apply(l,w)),apply(l,apply(h,w)),apply(l,apply(l,dw))].map(v=>[-660,v])}));
   let A=[new Map()];for(let j=0;j<6;j++)A[j+1]=lin([1,apply(dz,V[j])],[1,apply(z,A[j])]);A[9]=dphi;A[10]=H(tensor(k));for(let j=9;j<19;j+=2)for(let r of [j,j+1])A[r+2]=lin([1,apply(dz,V[r])],[1,apply(z,A[r])]);
