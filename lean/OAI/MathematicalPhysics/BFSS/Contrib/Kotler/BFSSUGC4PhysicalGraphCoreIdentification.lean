@@ -47,22 +47,29 @@ theorem graph_haar_core_mem (p : FullL2 2 × (SpinIndex → FullL2 2))
     sourceHaarAverageCore_mem_invariantCore M G f⟩, ?_⟩
   apply Prod.ext
   · exact (sourceFullHaarAverageCLM_coreToL2_compat M G f).symm
-  · exact (core_haar_charge_commutes M G f).symm
+  · funext α
+    change M.chargeVector (sourceHaarAverageCore M G f) α =
+      sourceFullHaarAverageCLM M G (M.chargeVector f α)
+    exact (congrFun (core_haar_charge_commutes M G f) α).symm
 
 theorem graph_haar_restricted_mem {p : FullL2 2 × (SpinIndex → FullL2 2)}
     (hp : p ∈ M.fullClosedGraph) :
     graph_haar M G p ∈ originalRestrictedClosedGraph M G := by
   let X := FullL2 2 × (SpinIndex → FullL2 2)
+  let R : Submodule ℂ X := LinearMap.range
+    ((coreToL2.comp G.invariantCore.subtype).prod
+      (M.chargeVector.comp G.invariantCore.subtype))
   let S : Set X := {q | graph_haar M G q ∈ originalRestrictedClosedGraph M G}
   have hc : IsClosed (originalRestrictedClosedGraph M G : Set X) := by
-    unfold originalRestrictedClosedGraph
-    exact Submodule.isClosed_topologicalClosure _
+    change IsClosed (closure (R : Set X))
+    exact isClosed_closure
   have hs : IsClosed S := hc.preimage (graph_haar_continuous M G)
   have hcore : (M.fullCoreGraph : Set X) ⊆ S := by
     intro q hq
-    change graph_haar M G q ∈ originalRestrictedClosedGraph M G
-    unfold originalRestrictedClosedGraph
-    exact Submodule.le_topologicalClosure _ (graph_haar_core_mem M G q hq)
+    change graph_haar M G q ∈ closure (R : Set X)
+    have hr : graph_haar M G q ∈ R := graph_haar_core_mem M G q hq
+    have hsub : (R : Set X) ⊆ closure (R : Set X) := subset_closure
+    exact hsub hr
   exact closure_minimal hcore hs hp
 
 theorem original_restricted_graph_iff (v : FullL2 2) (y : SpinIndex → FullL2 2) :
