@@ -44,9 +44,9 @@ export function replay52corrections(seed,H3,diag,axes,active,includeCV=true){
  const z=Z(x),ls=L(x),w=apply(z,seed,true);
  const SCALE=55;
  function Phi(){return lin([320*SCALE*s,w],...ls.map(l=>[-2*SCALE,apply(l,apply(l,w),true)]))}
- let V=[lin([SCALE,seed])];for(let p=0;p<6;p++)V.push(apply(z,V[p]));V[9]=Phi();V[10]=H3;
- for(let p=9;p<19;p+=2){V[p+2]=apply(z,V[p]);V[p+3]=apply(z,V[p+1])}
- let anchor=dot(V[10],V[10]);assert(seed.size===19136&&dot(seed,seed)[0]===8072064n,"seed norm");
+ let V=[lin([SCALE,seed])];const maxS=Math.max(0,...active.filter(p=>p<9));for(let p=0;p<maxS;p++)V.push(apply(z,V[p]));
+ for(let base of [9,10]){let mx=Math.max(-1,...active.filter(p=>p>=base&&(p-base)%2===0));if(mx>=base){V[base]=base===9?Phi():H3;for(let p=base;p<mx;p+=2)V[p+2]=apply(z,V[p])}}
+ let anchor=dot(H3,H3);assert(seed.size===19136&&dot(seed,seed)[0]===8072064n,"seed norm");
  const cross=(j,k,b)=>{let a=(b+1)%3,c=(b+2)%3;return x[9*a+j]*x[9*c+k]-x[9*c+j]*x[9*a+k]};
  let cvparts=[];for(let [c,i] of P)if(x[9*c+i])for(let j=0;j<9;j++)for(let k=j+1;k<9;k++)for(let b=0;b<3;b++){let w=x[9*c+i]*cross(j,k,b);if(w)cvparts.push([w,B(c,b,mul(mul(gamma[i],gamma[j]),gamma[k]),1)])}let CV=ops(...cvparts);
  let records=[];
