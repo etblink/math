@@ -1,0 +1,3 @@
+# ICD0 R1 preflight literal repair
+
+Initial staged commit 9bf5f056503b73c6d04f4f253fc00cc83d69e559 contained an accidentally double-escaped backslash in the Python source-import regex, detected during immediate post-staging source review. Correct that literal to match the intended non-whitespace import names exactly, identical to the consumer regex. No source, consumer, theorem, pins, audit roots, or resource bounds change. Initial candidate is superseded for qualification by the corrected exact commit; preserve any CI evidence, and distinguish any preflight failure from native mathematical RED. No local native compilation.

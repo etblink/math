@@ -53,7 +53,7 @@ jobs:
           t=Path("lean/diagnostics/BFSSICD0OriginalCommonChargeDomainIndependentAudit.lean").read_text()
           source_roots = ["component_graph_iff","source_component_graph_iff","source_common_domain","paired_core_charge_norm","paired_component_graph_iff","paired_common_domain"]
           consumer_roots = ["originalSU2ComponentGraphAudit","originalSU2CommonDomainAudit"]
-          assert re.findall(r"(?m)^import (\\S+)$", s) == ["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0OriginalCoreEnergy","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe"]
+          assert re.findall(r"(?m)^import (\S+)$", s) == ["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0OriginalCoreEnergy","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe"]
           assert re.findall(r"(?m)^import (\S+)$", t) == ["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICD0OriginalCommonChargeDomain"]
           assert re.findall(r"(?m)^#print axioms (\S+)$", s) == source_roots
           assert re.findall(r"(?m)^#print axioms (\S+)$", t) == consumer_roots
