@@ -1,0 +1,11 @@
+# LOC4 R1 strict GREEN; LOC5 Hilbert weak graph pre-gate
+
+2026-11-27 Pacific. Run [46014490189](https://github.com/etblink/math/actions/runs/46014490189), job 140558017081, exact tested SHA 7b9c66f4dfaa7a68d78cc7c7eec163849f97a11e. Frozen preflight and pinned Lean 4.34.1/Mathlib passed. Native build 8950 jobs, two source and one independent SU2 consumer axiom reports, all only propext, Classical.choice, Quot.sound. Strict GREEN sentinel BFSS_LOC4_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN. Nonfatal checkout dependency warnings remain.
+
+Original artifact [15206346944](https://github.com/etblink/math/actions/runs/46014490189/artifacts/15206346944) independently downloaded and verified with Python hashlib and zipfile: 7865 bytes, SHA256 b2ffbbfcd021fb5180b4723a9b9068a4ec8a267f8358113cd30aecd7be0055d4, seven members, testzip None. Tested SHA and exact source, consumer, workflow blobs matched: 0bf7c2ed959340ca9bf9fe89a83d2510458b3b7f, 3048d874b3a57b41ac30127c844e72d770221ae5, eb694c3090d73c1f16c89c8721d2e3848cb75fea. Provider artifact retention limited.
+
+LOC4 now gives global ambient closed graph membership for arbitrary strongly measurable L2 weak pairs. No compact support or auxiliary potential integrability assumption in the conclusion. Gauge-invariant physical core and actual adjoint-domain identification remain separate.
+
+## LOC5 R1 prospective contract
+
+Use exact source coreToL2_ae and Mathlib L2.inner_def to identify weak integral pairing with original Hilbert pairing. Use actual Lp representatives (Lp.stronglyMeasurable, Lp.memLp, Lp.toLp_coeFn) and qualified LOC4 to prove the forward membership implication. Reverse implication uses closedness of test-pairing equality and original charge_symmetric on SmoothCore. Conclude exact iff between original individual ambient closed graph and all original ambient Hilbert test pairings. Three source and one independent SU2 consumer axiom reports. No abstract alternative graph, gauge restriction, self-adjointness assertion, or spectral result. Next reuse UGC4.core_haar_charge_commutes and original smooth Haar compatibility to transfer the individual result to physical invariant tests. ICD-C0 is already qualified and is not being reproved. Native Lean unavailable locally; strict CI required. No donor edits or verification policy/resource changes.
