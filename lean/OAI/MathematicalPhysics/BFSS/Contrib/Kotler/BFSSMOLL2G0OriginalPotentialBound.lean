@@ -47,7 +47,12 @@ theorem potentialOperator_continuous {N : ℕ} (M : AlgebraData N) (a : SpinInde
     Complex.ofRealCLM.continuous.comp (coordinate_contDiff i B).continuous
   have h2 : Continuous (fun x : Boson N => (coordinate j C x : ℂ)) :=
     Complex.ofRealCLM.continuous.comp (coordinate_contDiff j C).continuous
-  exact continuous_const.smul (h1.smul (h2.smul continuous_const))
+  have htheta : Continuous (fun _ : Boson N => M.theta b A) :=
+    continuous_const
+  have hcoef : Continuous (fun _ : Boson N =>
+      (((1 / 2 : ℝ) * M.structureConstant A B C * M.gammaTwo i j a b : ℝ) : ℂ)) :=
+    continuous_const
+  exact hcoef.smul (h1.smul (h2.smul htheta))
 
 theorem potentialOperator_ball_bound {N : ℕ} (M : AlgebraData N)
     (a : SpinIndex) (R : ℝ) :
