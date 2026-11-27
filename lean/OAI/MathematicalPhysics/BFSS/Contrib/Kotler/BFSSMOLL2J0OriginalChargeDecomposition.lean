@@ -63,7 +63,12 @@ theorem potentialCore_apply {N : ℕ} (M : AlgebraData N) (a : SpinIndex)
   intro C hC
   apply Finset.sum_congr rfl
   intro b hb
-  simp only [LinearMap.smul_apply, LinearMap.comp_apply, map_smul]; rfl
+  simp only [LinearMap.smul_apply, LinearMap.comp_apply, map_smul]
+  change (((1 / 2 : ℝ) * M.structureConstant A B C * M.gammaTwo i j a b : ℝ) : ℂ) •
+      M.theta b A ((coordinate i B x : ℂ) • ((coordinate j C x : ℂ) • f x)) =
+    (((1 / 2 : ℝ) * M.structureConstant A B C * M.gammaTwo i j a b : ℝ) : ℂ) •
+      ((coordinate i B x : ℂ) • ((coordinate j C x : ℂ) • M.theta b A (f x)))
+  simp only [map_smul]
 
 theorem charge_apply_split {N : ℕ} (M : AlgebraData N) (a : SpinIndex)
     (f : SmoothCore N) (x : Boson N) :
