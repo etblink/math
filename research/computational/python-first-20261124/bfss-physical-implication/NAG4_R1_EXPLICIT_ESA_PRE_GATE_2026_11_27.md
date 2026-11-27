@@ -1,0 +1,7 @@
+# NAG4 R1 — literal core explicit ESA candidate
+
+2026-11-27 Pacific. NAG3 R2 strict GREEN qualification receipt NAG3_R2_GREEN_QUALIFIED_2026_11_27.md; exact tested e6e73f1e30ba42ad71b2f9232936113864bf0498. Atlas refresh bcd811756c589e7a3644224444c3d564ee58c171. Candidate only, no native qualification until strict run and evidence review.
+
+Use literal NAG3 core graph to prove actual core-domain inclusion; adapt the qualified AZ density argument with the D2B10C unconditional Haar density result. Transport literal charge symmetry from source Core.lean via exact NAG3 graph membership. Construct IsClosable from NAG3 graph-closure equality, and transport NAG2 self-adjointness across NAG3 closure equality with an abstract Hilbert helper. The paired SU2 theorem explicitly bundles Dense, IsFormalAdjoint with itself, IsClosable, and IsSelfAdjoint of native closure for every original spin label. Independent consumer checks the exact ESA interface and literal graph identity. No new premises, changes to donors, resource increases, square, spectrum or existence conclusion. Six source and two consumer axiom roots. Preserve all prior RED and GREEN evidence; PE-ESA remains open until strict qualification. Next common-square proof uses NAG1/ICD common domain, joint approximation, component outputs, CSQE0 energy equality, polarization and BE weak form.
+
+Native Lean not available in this session; use frozen strict CI for actual compilation.
