@@ -45,8 +45,14 @@ theorem reflectedCore_coordinateDerivative {N : ℕ} (k : ScalarCore N)
   rw [coordinateDerivative_apply]
   change fderiv ℝ (fun t : Boson N => k (x - t) • z) y
     (EuclideanSpace.single (i, A) 1) = _
-  rw [hd.fderiv]
-  simp
+  have he : fderiv ℝ (fun t : Boson N => k (x - t) • z) y =
+      ((fderiv ℝ (k : Boson N → ℝ) (x - y)).comp
+        (-ContinuousLinearMap.id ℝ (Boson N))).smulRight z :=
+    hd.fderiv
+  rw [he]
+  change (fderiv ℝ (k : Boson N → ℝ) (x - y)
+    (-(EuclideanSpace.single (i, A) 1))) • z = _
+  rw [map_neg]
 
 /-- Instantiate the weak pairing on the entire literal kinetic sum.
 No individual derivative of the input field is postulated. -/

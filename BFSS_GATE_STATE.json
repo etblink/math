@@ -6563,13 +6563,13 @@
       ],
       "active": {
         "gate": "MOL-B0",
-        "attempt": "R2",
+        "attempt": "R3",
         "status": "CANDIDATE_UNQUALIFIED",
         "qualification": false,
         "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLB0OriginalReflectedKernelTest.lean",
         "consumer": "lean/diagnostics/BFSSMOLB0OriginalReflectedKernelTestIndependentAudit.lean",
         "workflow": ".github/workflows/bfss-molb0-original-reflected-kernel-test-strict.yml",
-        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLB0_R1_NATIVE_RED_R2_EXPLICIT_SMOOTHNESS_SCALAR_2026_11_26.md",
+        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLB0_R2_NATIVE_RED_R3_EXPLICIT_DERIVATIVE_EQUALITY_2026_11_26.md",
         "pre_gate_commit": "7c6589078498ccbb339567f08b8c5b6f285a3dd8",
         "expected_source_reports": 4,
         "expected_consumer_reports": 2,
@@ -6875,24 +6875,24 @@
           "strict_marker": "BFSS_MOLA0_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN"
         },
         "prior_red": {
-          "attempt": "R1",
-          "status": "NATIVE_ELABORATION_RED",
+          "attempt": "R2",
+          "status": "NATIVE_REWRITE_RED",
           "qualification": false,
-          "run_id": 45924848565,
-          "job_id": 140263669535,
-          "tested_sha": "7ee1747cb772c21b600f1739674f79d2843437dc",
-          "artifact_id": 15166550431,
-          "artifact_size_bytes": 6512,
-          "artifact_sha256": "d07f06060283d456a97b6188b2ee5f7780f0502cc85406e21f34de4146562e45",
+          "run_id": 45925529932,
+          "job_id": 140265844086,
+          "tested_sha": "2c9093a5edb213036e7e07f30446bbf59c86f1e6",
+          "artifact_id": 15166691025,
+          "artifact_size_bytes": 6161,
+          "artifact_sha256": "e411f879e6f5a2e4bad3e6bb31a0d3c3843fde2648859851b9fd98856e1c1149",
           "archive_crc_pass": true,
-          "source_blob": "066c5c2164f082f124e4f49a67ef24aaddc29b0a",
+          "source_blob": "c539fc8e59113206744dfa27c8d4e04bceb3ea3a",
           "consumer_blob": "c7f3f532f48079185eb343c3415d51d6567088da",
           "workflow_blob": "5904f86c7c733571aaf03e0943ad22e1f1d51c2e",
           "native_jobs": 8926,
-          "source_reports_clean": 0,
+          "source_reports_clean": 2,
           "consumer_reached": false,
-          "cause": "ContDiff outer top vs coerced ENat top at 22:27; unspecified derivative scalar at 43:14",
-          "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLB0_R1_NATIVE_RED_R2_EXPLICIT_SMOOTHNESS_SCALAR_2026_11_26.md"
+          "cause": "Literal lambda versus composed function derivative rewrite at 48:6",
+          "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLB0_R2_NATIVE_RED_R3_EXPLICIT_DERIVATIVE_EQUALITY_2026_11_26.md"
         },
         "red_history": [
           {
@@ -6914,6 +6914,26 @@
             "consumer_reached": false,
             "cause": "ContDiff outer top vs coerced ENat top at 22:27; unspecified derivative scalar at 43:14",
             "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLB0_R1_NATIVE_RED_R2_EXPLICIT_SMOOTHNESS_SCALAR_2026_11_26.md"
+          },
+          {
+            "attempt": "R2",
+            "status": "NATIVE_REWRITE_RED",
+            "qualification": false,
+            "run_id": 45925529932,
+            "job_id": 140265844086,
+            "tested_sha": "2c9093a5edb213036e7e07f30446bbf59c86f1e6",
+            "artifact_id": 15166691025,
+            "artifact_size_bytes": 6161,
+            "artifact_sha256": "e411f879e6f5a2e4bad3e6bb31a0d3c3843fde2648859851b9fd98856e1c1149",
+            "archive_crc_pass": true,
+            "source_blob": "c539fc8e59113206744dfa27c8d4e04bceb3ea3a",
+            "consumer_blob": "c7f3f532f48079185eb343c3415d51d6567088da",
+            "workflow_blob": "5904f86c7c733571aaf03e0943ad22e1f1d51c2e",
+            "native_jobs": 8926,
+            "source_reports_clean": 2,
+            "consumer_reached": false,
+            "cause": "Literal lambda versus composed function derivative rewrite at 48:6",
+            "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLB0_R2_NATIVE_RED_R3_EXPLICIT_DERIVATIVE_EQUALITY_2026_11_26.md"
           }
         ]
       }
