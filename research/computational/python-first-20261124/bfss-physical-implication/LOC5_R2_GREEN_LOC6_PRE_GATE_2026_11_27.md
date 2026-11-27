@@ -1,0 +1,9 @@
+# LOC5 R2 strict GREEN; LOC6 physical weak graph pre-gate
+
+2026-11-27 Pacific. Run [46029035834](https://github.com/etblink/math/actions/runs/46029035834), job 140607793302, exact tested SHA 4b6844a8d209e2ee34eae7f9558ac7c59baec430. Frozen preflight, pinned Lean/Mathlib, native build 8951 jobs, three source and one independent SU2 consumer axiom reports passed; only propext, Classical.choice, Quot.sound. Strict GREEN sentinel BFSS_LOC5_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN. Original artifact [15214202155](https://github.com/etblink/math/actions/runs/46029035834/artifacts/15214202155), independently downloaded and verified by local Python hashlib and zipfile: 7790 bytes, SHA256 6200e89b1a80e3c5f476051aa49ce48fd9425d7c36ee317948219c6b5299a63d, seven members, testzip None; exact tested SHA and three blobs match. Provider retention limited. Prior R1 RED receipt retained.
+
+LOC5 qualifies exact Hilbert-pairing iff for the individual original ambient smooth-core closure. No compact-support restriction on either L2 vector.
+
+## LOC6 R1 prospective contract
+
+Use B7 source gauge isometry/fixedness, B9A/B9B normalized Haar integration, B10C smooth-core compatibility, UGC4 source charge commutation and ICD-B0 literal individual invariant closed graph. For physical u,v, Haar averaging leaves all inner products against u,v unchanged; every invariant-core weak pairing extends to all ambient tests. LOC5 then yields ambient graph membership; apply the continuous diagonal Haar map to the closure, using exact smooth-core compatibility to land in the original invariant graph, and fixedness of the physical inputs and outputs. Reverse direction by inclusion and LOC5. Four source reports and one independent consumer. No native adjoint domain, self-adjointness, Hamiltonian-square identity or physical existence claim. Native Lean unavailable locally, unqualified pending CI. No source donor edits or resource/verification relaxation.
