@@ -43,15 +43,27 @@ theorem kineticCore_apply {N : ℕ} (M : AlgebraData N) (a : SpinIndex)
           M.theta b A (coordinateDerivative i A f x) := by
   change coreEval x (kineticCore M a f) = _
   simp only [kineticCore, LinearMap.sum_apply, LinearMap.smul_apply,
-    LinearMap.comp_apply, map_sum, map_smul] <;> rfl
+    LinearMap.comp_apply, map_sum, map_smul]; rfl
 
 theorem potentialCore_apply {N : ℕ} (M : AlgebraData N) (a : SpinIndex)
     (f : SmoothCore N) (x : Boson N) :
     potentialCore M a f x = potentialField M a f x := by
   rw [potentialField, potentialOperator_apply]
   change coreEval x (potentialCore M a f) = _
-  simp only [potentialCore, LinearMap.sum_apply, LinearMap.smul_apply,
-    LinearMap.comp_apply, map_sum, map_smul] <;> rfl
+  simp only [potentialCore, LinearMap.sum_apply, map_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  apply Finset.sum_congr rfl
+  intro j hj
+  apply Finset.sum_congr rfl
+  intro A hA
+  apply Finset.sum_congr rfl
+  intro B hB
+  apply Finset.sum_congr rfl
+  intro C hC
+  apply Finset.sum_congr rfl
+  intro b hb
+  simp only [LinearMap.smul_apply, LinearMap.comp_apply, map_smul]; rfl
 
 theorem charge_apply_split {N : ℕ} (M : AlgebraData N) (a : SpinIndex)
     (f : SmoothCore N) (x : Boson N) :
