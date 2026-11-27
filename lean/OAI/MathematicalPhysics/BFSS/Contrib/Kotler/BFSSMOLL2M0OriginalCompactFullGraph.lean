@@ -26,7 +26,7 @@ theorem kinetic_potential_target_cancel {N : ℕ} (M : AlgebraData N)
   have hV := potentialField_memLp M a u hsmu h2u R hR
   change (h2v.sub hV).toLp (v - potentialField M a u) +
     hV.toLp (potentialField M a u) = h2v.toLp v
-  rw [MemLp.toLp_sub, sub_add_cancel]
+  rw [MemLp.toLp_sub h2v hV, sub_add_cancel]
 
 theorem concrete_fullWeak_charge_tendsto {N : ℕ} (M : AlgebraData N)
     (a : SpinIndex) (u v : Boson N → Fermion N)
