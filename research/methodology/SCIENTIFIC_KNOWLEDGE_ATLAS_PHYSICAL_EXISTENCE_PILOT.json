@@ -7,7 +7,7 @@
     "schema": "bfss_internal_theorem_atlas_v0.8",
     "records": 59
   },
-  "scope": "Pilot extension to existing monograph theorem atlas; scientific prerequisite links, not complete Lean import graph or new acceptance. Status of older atlas records unchanged. Evidence from original archived receipts unless explicitly noted; no artifact rehash in this interval.",
+  "scope": "Pilot extension to existing monograph theorem atlas; scientific prerequisite links, not complete Lean import graph or new acceptance. Status of older atlas records unchanged. Evidence from original archived receipts unless explicitly noted; NAG3 original artifact independently rehashed in the R2 qualification follow-up.",
   "status_vocabulary": {
     "SOURCE_DEFINITION": "Definition present in original source; not a standalone strict theorem receipt",
     "HISTORICAL_STRICT": "Historical FCP green for original source; current port requires separate confirmation",
@@ -169,20 +169,22 @@
     {
       "id": "PE-NAG3",
       "title": "Literal native smooth-core operator closure equals NAG2 operator",
-      "evidence_status": "PENDING_STRICT_GATE",
+      "evidence_status": "INTEGRATED_STRICT",
       "direct_dependencies": [
         "PE-NAG0",
         "PE-NAG1",
         "PE-NAG2"
       ],
       "provenance": {
-        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG3_R1_NATIVE_RED_R2_ABSTRACT_GRAPH_TRANSPORT_2026_11_27.md",
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG3_R2_GREEN_QUALIFIED_2026_11_27.md",
         "run_id": 46067320278,
         "tested_commit": "e6e73f1e30ba42ad71b2f9232936113864bf0498",
         "previous_red_run_id": 46063667974,
-        "evidence_basis": "R1 diagnostic and R2 in-progress run metadata"
+        "evidence_basis": "strict CI logs, independently rehashed original ZIP and CRC, tested source/consumer/workflow blob match",
+        "artifact_id": 15232452547,
+        "artifact_sha256": "7d0aad5ad6ab0496a03fe4e6b5be068a0554252e68e3fddf17a6710a1d926adc"
       },
-      "boundary": "No qualification until strict acceptance."
+      "boundary": "Exact literal core graph and closure equality; explicit core density, symmetry and ESA interface remain separate. No common-square or existence conclusion."
     },
     {
       "id": "PE-ESA",
@@ -352,8 +354,7 @@
   "validation": {
     "method": "Executed JS checks: unique IDs across base and extension; all reached dependency IDs resolve; DFS from each pilot record detects no cycle",
     "counts": {
-      "INTEGRATED_STRICT": 9,
-      "PENDING_STRICT_GATE": 1,
+      "INTEGRATED_STRICT": 10,
       "OPEN_PROOF_OBLIGATION": 3,
       "ANALYTICAL_CONDITIONAL": 5,
       "SURVIVED_FINITE_TESTS": 1,

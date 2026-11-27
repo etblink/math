@@ -1,4 +1,4 @@
-# Scientific knowledge atlas — physical existence pilot (v0.1)
+# Scientific knowledge atlas — physical existence pilot (v0.1.1)
 
 Snapshot e6e73f1e30ba42ad71b2f9232936113864bf0498; 2026-11-27 Pacific. Extends the existing [monograph theorem atlas](../../contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json) without changing its historical records. The machine-readable companion is `SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.json`. Scientific prerequisites are not asserted to be exhaustive Lean imports.
 
@@ -13,7 +13,7 @@ Snapshot e6e73f1e30ba42ad71b2f9232936113864bf0498; 2026-11-27 Pacific. Extends t
 | PE-NAG0 | INTEGRATED_STRICT | Actual native closed individual graph |
 | PE-NAG1 | INTEGRATED_STRICT | Native individual output physical; common dense domain |
 | PE-NAG2 | INTEGRATED_STRICT | Native individual self-adjointness on actual paired physical space |
-| PE-NAG3 | PENDING_STRICT_GATE | Literal native smooth-core operator closure equals NAG2 operator |
+| PE-NAG3 | INTEGRATED_STRICT | Literal native smooth-core operator closure equals NAG2 operator |
 | PE-ESA | OPEN_PROOF_OBLIGATION | Explicit literal core essential self-adjointness |
 | PE-SQUARE | ANALYTICAL_CONDITIONAL | Closed individual form equals normalized joint form; exact Q_alpha^2=H |
 | PE-SPIN | ANALYTICAL_CONDITIONAL | Genuine Spin(9) Fock-vector and physical-domain covariance |
@@ -28,10 +28,10 @@ Snapshot e6e73f1e30ba42ad71b2f9232936113864bf0498; 2026-11-27 Pacific. Extends t
 
 ## Critical path
 
-NAG2 establishes the self-adjoint realization. NAG3 and explicit ESA remain the planned qualification sequence. The common-square proof needs the joint graph approximation, exact component equality, equal core energies and native self-adjointness; NAG3 may be redundant as a *logical* premise if the graph approximation already follows from NAG0/ICD. Preserve the distinction between proof dependency and engineering sequence. Use the BE weak form to obtain equality of actions and domains. Parallel obligations: genuine Spin(9) vector/domain covariance, weighted trial and Hardy premises, raw finite contraction replay. No implication from formal core squares alone.
+NAG2 establishes the self-adjoint realization. NAG3 R2 is now strictly qualified (run 46067320278); explicit ESA is the next planned qualification. The common-square proof needs the joint graph approximation, exact component equality, equal core energies and native self-adjointness; NAG3 may be redundant as a *logical* premise if the graph approximation already follows from NAG0/ICD. Preserve the distinction between proof dependency and engineering sequence. Use the BE weak form to obtain equality of actions and domains. Parallel obligations: genuine Spin(9) vector/domain covariance, weighted trial and Hardy premises, raw finite contraction replay. No implication from formal core squares alone.
 
 The November 25 memorandum resolves the regulator referent: F is the same kernel-projection fidelity on the same original H for every positive delta, conditional on the source premises. The scalar lower bound supremum therefore needs no delta=0 operator. A single delta=1/2 already suffices conditionally. No claim of existence until the source and finite premises meet the acceptance standard.
 
 ## Verification
 
-21 pilot records linked to 59 existing records. Unique IDs, resolved reached dependency links and no reachable dependency cycles checked programmatically. These checks test indexing, not theorem truth or completeness. Archived receipts used as provenance; no full artifact requalification, no new Lean qualification, no raw replay. Preserve negative implementation and scope records separately. The historical base atlas and gate state remain untouched.
+21 pilot records linked to 59 existing records. Unique IDs, resolved reached dependency links and no reachable dependency cycles checked programmatically. These checks test indexing, not theorem truth or completeness. Archived receipts used as provenance; NAG3 R2 original artifact independently verified in this follow-up. No full archive requalification or raw replay. Preserve negative implementation and scope records separately. The historical base atlas remains untouched. NAG3 R2 qualification receipt: `NAG3_R2_GREEN_QUALIFIED_2026_11_27.md` (in the physical-implication archive).
