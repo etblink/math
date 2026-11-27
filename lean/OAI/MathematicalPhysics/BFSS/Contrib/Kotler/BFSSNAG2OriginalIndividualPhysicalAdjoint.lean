@@ -70,22 +70,31 @@ theorem source_graph_pairing_iff_weak {N : ℕ} (M : AlgebraData N)
       (fun f : G.invariantCore => coreToL2 (M.charge a f.val))
       (u : FullL2 N) (v : FullL2 N) ht (x : FullL2 N) (y : FullL2 N) ha
 
+/-- Native adjoint membership as a pairing test on an abstract
+complete Hilbert type, with no concrete let-bound target. -/
+private theorem native_adjoint_graph_pairing {E : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
+    (Q : E →ₗ.[ℂ] E) (hd : Dense (Q.domain : Set E)) (u v : E) :
+    (u, v) ∈ Q.adjoint.graph ↔
+      ∀ x y : E, (x, y) ∈ Q.graph → inner ℂ y u = inner ℂ x v := by
+  rw [LinearPMap.adjoint_graph_eq_graph_adjoint hd, Submodule.mem_adjoint_iff]
+  simp only [sub_eq_zero]
+
 theorem source_adjoint_graph_iff_weak (M : AlgebraData 2)
     (G : M.GaugeData) (a : SpinIndex)
     (h : ∀ (f : G.invariantCore) (b : SpinIndex),
       ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)
     (u v : G.physicalSpace) :
-    let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
+    letI : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
     (u, v) ∈ (individualPhysicalOperator M G a).adjoint.graph ↔
       ∀ f : G.invariantCore,
         inner ℂ (coreToL2 (M.charge a f.val)) (u : FullL2 2) =
           inner ℂ (coreToL2 f.val) (v : FullL2 2) := by
   let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
-  rw [LinearPMap.adjoint_graph_eq_graph_adjoint (source_native_domain_dense M G a h),
-    Submodule.mem_adjoint_iff]
-  simp only [sub_eq_zero]
-  exact source_graph_pairing_iff_weak M G a h
-      (source_individual_output_physical M G a h) u v
+  exact (native_adjoint_graph_pairing (individualPhysicalOperator M G a)
+    (source_native_domain_dense M G a h) u v).trans
+    (source_graph_pairing_iff_weak M G a h
+      (source_individual_output_physical M G a h) u v)
 
 /-- Keep the source-graph rewrite dimension-parametric. -/
 private theorem source_native_graph_mem_iff {N : ℕ} (M : AlgebraData N)
@@ -116,7 +125,7 @@ theorem source_native_selfAdjoint (M : AlgebraData 2)
     (G : M.GaugeData) (a : SpinIndex)
     (h : ∀ (f : G.invariantCore) (b : SpinIndex),
       ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :
-    let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
+    letI : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
     IsSelfAdjoint (individualPhysicalOperator M G a) := by
   let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
   let W : G.physicalSpace → G.physicalSpace → Prop := fun u v =>
