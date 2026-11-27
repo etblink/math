@@ -12,17 +12,27 @@ open Set Topology
 open OAI OAI.BFSSQuantum OAI.BFSSQuantum.AlgebraData
 open FCP.BFSSSU2GaugeG1A FCP.BFSSSU2GaugeG4J
 open FCP.BFSSICDA0 FCP.BFSSSU2PhysicalDomainL6H5E8AU
+open FCP.BFSSSU2PhysicalDomainL6G3
+
+/-- Pairing transport at an abstract output type; no concrete
+smooth-core or Hilbert carrier reduction is needed in the equality chain. -/
+private theorem abstractSymmetricPairing {D E : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    (J : D → E) (A B : D → D) (f g : D)
+    (ha : inner ℂ (J (A f)) (J (A g)) = inner ℂ (J f) (J (A (A g))))
+    (hb : inner ℂ (J (B f)) (J (B g)) = inner ℂ (J f) (J (B (B g))))
+    (h : A (A g) = B (B g)) :
+    inner ℂ (J (A f)) (J (A g)) = inner ℂ (J (B f)) (J (B g)) :=
+  ha.trans ((congrArg (fun k : D => inner ℂ (J f) (J k)) h).trans hb.symm)
 
 theorem symmetricPairing {A B : SourceEnd 2}
     (hA : CoreSymmetric A) (hB : CoreSymmetric B)
     (f g : SmoothCore 2) (h : A (A g) = B (B g)) :
     inner ℂ (coreToL2 (A f)) (coreToL2 (A g)) =
-      inner ℂ (coreToL2 (B f)) (coreToL2 (B g)) := by
-  calc
-    _ = inner ℂ (coreToL2 f) (coreToL2 (A (A g))) := hA f (A g)
-    _ = inner ℂ (coreToL2 f) (coreToL2 (B (B g))) :=
-      congrArg (fun k : SmoothCore 2 => inner ℂ (coreToL2 f) (coreToL2 k)) h
-    _ = _ := (hB f (B g)).symm
+      inner ℂ (coreToL2 (B f)) (coreToL2 (B g)) :=
+  abstractSymmetricPairing (fun k : SmoothCore 2 => coreToL2 k)
+    (fun k : SmoothCore 2 => A k) (fun k : SmoothCore 2 => B k)
+    f g (hA f (A g)) (hB f (B g)) h
 
 theorem paired_core_pairing (a b : SpinIndex)
     (f g : pairedGaugeData.invariantCore) :
