@@ -51,7 +51,8 @@ theorem mollifiedCore_coordinateDerivative {N : ℕ} (k : ScalarCore N)
     (kernelBilin N) volume) x (EuclideanSpace.single (i, A) 1) = _
   rw [hd.fderiv]
   rw [convolution_precompR_apply (kernelBilin N) hu
-    (k.hasCompactSupport.fderiv ℝ) (hk.continuous_fderiv one_ne_zero)] <;> rfl
+    (k.hasCompactSupport.fderiv ℝ) (hk.continuous_fderiv one_ne_zero)]
+  rfl
 
 #print axioms mollifiedCore
 #print axioms mollifiedCore_apply

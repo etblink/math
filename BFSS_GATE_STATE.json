@@ -6563,13 +6563,13 @@
       ],
       "active": {
         "gate": "MOL-A0",
-        "attempt": "R1",
+        "attempt": "R2",
         "status": "CANDIDATE_UNQUALIFIED",
         "qualification": false,
         "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLA0OriginalMollifiedCore.lean",
         "consumer": "lean/diagnostics/BFSSMOLA0OriginalMollifiedCoreIndependentAudit.lean",
         "workflow": ".github/workflows/bfss-mola0-original-mollified-core-strict.yml",
-        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLA0_R1_MOLLIFIED_CORE_PRE_GATE_2026_11_26.md",
+        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLA0_R1_LINTER_RED_R2_SEQUENCING_REPAIR_2026_11_26.md",
         "pre_gate_commit": "6fff2af59f6021ec12c484eb04ae47c09fd3c033",
         "expected_source_reports": 3,
         "expected_consumer_reports": 2,
@@ -6804,7 +6804,49 @@
             "raw_occupation_replay": false,
             "blocker": "Binary seed retrieval rejected by current connector; no exploratory CI."
           }
-        }
+        },
+        "prior_red": {
+          "attempt": "R1",
+          "status": "NATIVE_LINTER_RED",
+          "qualification": false,
+          "run_id": 45923374860,
+          "job_id": 140259044282,
+          "tested_sha": "a51f88d9e445026bd016dce7de8a908466125a00",
+          "artifact_id": 15165885461,
+          "artifact_size_bytes": 5806,
+          "artifact_sha256": "eec62db86cdb863560809441d37383eb5b081df8c3326b045a009a4b1e2c74ca",
+          "archive_crc_pass": true,
+          "source_blob": "77a82edb6c82b16d3a0a654faa9f4a3881657376",
+          "consumer_blob": "e52b9bd7438f64268b374285ce2923601f244a11",
+          "workflow_blob": "e298bc3c694e033fcdf80ee8cb551ff6e468418e",
+          "native_jobs": 8925,
+          "source_reports_clean": 3,
+          "consumer_reached": false,
+          "cause": "unnecessarySeqFocus at 54:71",
+          "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLA0_R1_LINTER_RED_R2_SEQUENCING_REPAIR_2026_11_26.md"
+        },
+        "red_history": [
+          {
+            "attempt": "R1",
+            "status": "NATIVE_LINTER_RED",
+            "qualification": false,
+            "run_id": 45923374860,
+            "job_id": 140259044282,
+            "tested_sha": "a51f88d9e445026bd016dce7de8a908466125a00",
+            "artifact_id": 15165885461,
+            "artifact_size_bytes": 5806,
+            "artifact_sha256": "eec62db86cdb863560809441d37383eb5b081df8c3326b045a009a4b1e2c74ca",
+            "archive_crc_pass": true,
+            "source_blob": "77a82edb6c82b16d3a0a654faa9f4a3881657376",
+            "consumer_blob": "e52b9bd7438f64268b374285ce2923601f244a11",
+            "workflow_blob": "e298bc3c694e033fcdf80ee8cb551ff6e468418e",
+            "native_jobs": 8925,
+            "source_reports_clean": 3,
+            "consumer_reached": false,
+            "cause": "unnecessarySeqFocus at 54:71",
+            "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLA0_R1_LINTER_RED_R2_SEQUENCING_REPAIR_2026_11_26.md"
+          }
+        ]
       }
     }
   }
