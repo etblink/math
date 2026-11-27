@@ -1,3 +1,5 @@
+**NAG4 R2 PENDING — 2026-11-27:** [#46074553299](https://github.com/etblink/math/actions/runs/46074553299), exact candidate `964daf1b305858115ea153342aad2a09217900b1`; [bounded abstract symmetry repair](research/computational/python-first-20261124/bfss-physical-implication/NAG4_R2_ABSTRACT_SYMMETRY_PRE_GATE_2026_11_27.md). R1 RED retained. NAG3 remains latest qualified; PE-ESA open. Common-square next only after disposition. No physical promotion.
+
 **NAG4 R1 RED — 2026-11-27:** [#46072004438](https://github.com/etblink/math/actions/runs/46072004438) native namespace failure and independent symmetry timeout; [original evidence and R2 plan](research/computational/python-first-20261124/bfss-physical-implication/NAG4_R1_NATIVE_RED_R2_ABSTRACT_SYMMETRY_2026_11_27.md). NAG3 remains latest strict qualified. PE-ESA open. No physical promotion.
 
 # Current research frontier — November 27, 2026 Pacific
