@@ -76,6 +76,17 @@ theorem nativeCoreOperator_graph_eq {N : ℕ} (M : AlgebraData N)
   rw [← individualPhysicalOperator_graph_eq M G a h] at hp'
   exact (individualPhysicalOperator M G a).graph_fst_eq_zero_snd hp' hz
 
+/-- Compose graph equalities abstractly, without rewriting through the
+concrete physical Hilbert carrier. -/
+private theorem graph_closure_transport {E : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    (A B : E →ₗ.[ℂ] E) (P R : Submodule ℂ (E × E))
+    (hA : A.graph = P) (hB : B.graph = R)
+    (hC : P.topologicalClosure = R) :
+    A.graph.topologicalClosure = B.graph :=
+  (congrArg (fun S : Submodule ℂ (E × E) => S.topologicalClosure) hA).trans
+    (hC.trans hB.symm)
+
 theorem source_native_core_graph_closure {N : ℕ} (M : AlgebraData N)
     (G : M.GaugeData) (a : SpinIndex)
     (h : ∀ (f : G.invariantCore) (b : SpinIndex),
@@ -84,15 +95,19 @@ theorem source_native_core_graph_closure {N : ℕ} (M : AlgebraData N)
       (x, y) ∈ originalIndividualClosedGraph M G a → y ∈ G.physicalSpace) :
     (nativeCoreOperator M G a).graph.topologicalClosure =
       (individualPhysicalOperator M G a).graph := by
-  rw [nativeCoreOperator_graph_eq M G a h,
-    individualPhysicalOperator_graph_eq M G a h]
   have hall (p : FullL2 N × FullL2 N) (hp : p ∈ individualCoreSubmodule M G a) :
       p.1 ∈ G.physicalSpace ∧ p.2 ∈ G.physicalSpace := by
     obtain ⟨f, hf⟩ := hp
     change (coreToL2 f.val, coreToL2 (M.charge a f.val)) = p at hf
     subst p
     exact ⟨f.property, hout _ _ f.property (source_core_pair_mem M G a f)⟩
-  exact physical_pair_closure G.physicalSpace (individualCoreSubmodule M G a) hall
+  have hC : (nativeCoreGraph M G a).topologicalClosure =
+      individualPhysicalGraph M G a :=
+    physical_pair_closure G.physicalSpace (individualCoreSubmodule M G a) hall
+  exact graph_closure_transport (nativeCoreOperator M G a)
+    (individualPhysicalOperator M G a) (nativeCoreGraph M G a)
+    (individualPhysicalGraph M G a) (nativeCoreOperator_graph_eq M G a h)
+    (individualPhysicalOperator_graph_eq M G a h) hC
 
 private theorem closure_eq_of_graph_eq {E : Type*}
     [NormedAddCommGroup E] [NormedSpace ℂ E]

@@ -1,0 +1,9 @@
+# NAG3 R1 native RED — R2 abstract graph equality transport
+
+2026-11-27 Pacific. Exact tested SHA 2282973188bf63b3dffe73fdacd33b9731f05294; run https://github.com/etblink/math/actions/runs/46063667974; job 140723707334. Original ZIP https://github.com/etblink/math/actions/runs/46063667974/artifacts/15231166542; 32619 bytes; provider SHA256 580325076feff04195d31522720ba9d6a4e7b2fa0f2b27d301e86f4d9026e536 matches upload log (ZIP bytes not independently rehashed in this review). Provider retention limited, expires 2026-12-27. Checkout, frozen preflight and restoration passed. Native dependency targets through 9241/9242 built including NAG2; source failed, independent consumer not reached.
+
+First causal error BFSSNAG3OriginalIndividualCoreClosure.lean:88:4: deterministic isDefEq timeout at 200000 heartbeats in second graph rewrite. First three source axiom reports contain only propext, Classical.choice, Quot.sound; remaining three include sorryAx and are unqualified. No evidence of a mathematical counterexample. NAG2 remains qualified.
+
+R2 separates abstract graph equality transport from concrete original carrier: congrArg of topologicalClosure on the first graph equality, transitivity with the physical pair closure identity, then symmetry of the second graph equality. The physical pair image argument and all theorem statements, hypotheses, consumers, workflow, pinned donors and resource limits remain unchanged. R2 is an unqualified candidate until strict native CI and evidence review. If a comparable deterministic timeout recurs, isolate the adapter rather than repeatedly increasing resources. No ESA, square, spectrum or existence claim.
+
+Knowledge atlas pilot dependency record: NAG0 (native graph exactness) + NAG1 (physical output) + NAG2 (core pair membership) + abstract pair embedding closure -> NAG3 graph closure -> exact native closure. NAG3 remains RED/PENDING; NAG2 remains GREEN_QUALIFIED. Do not promote downstream claims.
