@@ -47,7 +47,7 @@ theorem expandingField_error_sq_tendsto {N : ℕ} (u : Boson N → Fermion N)
       calc
         _ ≤ ‖cutoffField (expandingCutoff N n) u x‖ + ‖u x‖ := norm_sub_le _ _
         _ ≤ 1 * ‖u x‖ + ‖u x‖ :=
-          add_le_add_right (cutoffField_pointwise_bound (expandingCutoff N n) u 1 hχ x) _
+          add_le_add (cutoffField_pointwise_bound (expandingCutoff N n) u 1 hχ x) le_rfl
         _ = _ := by ring
     rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
     calc
