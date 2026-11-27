@@ -34,8 +34,13 @@ theorem translation_square_integrable {N : ℕ} (u : Boson N → Fermion N)
         (fun y : Boson N => ∫ x : Boson N, ‖‖u (x + y)‖ ^ 2‖) =
           fun _ => ∫ x : Boson N, ‖u x‖ ^ 2 := by
         funext y
-        simp only [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
-        exact integral_add_right_eq_self (fun x : Boson N => ‖u x‖ ^ 2) y
+        calc
+          _ = ∫ x : Boson N, ‖u (x + y)‖ ^ 2 := by
+            apply integral_congr_ae
+            filter_upwards [] with x
+            exact (Real.norm_eq_abs (‖u (x + y)‖ ^ 2)).trans
+              (abs_of_nonneg (sq_nonneg (‖u (x + y)‖ : ℝ)))
+          _ = _ := integral_add_right_eq_self (fun x : Boson N => ‖u x‖ ^ 2) y
     rw [he]
     exact integrable_const _
 
@@ -62,7 +67,7 @@ theorem normalized_mollified_square_le {N : ℕ} (φ : ContDiffBump (0 : Boson N
     (∫ x, ‖mollifiedCore (normalizedKernel φ) u hu hs x‖ ^ 2) ≤
       ∫ x, ‖u x‖ ^ 2 := by
   let μ := BFSSRellich.bumpMeasure φ
-  haveI : IsProbabilityMeasure μ := BFSSRellich.bumpMeasure_probability φ
+  have : IsProbabilityMeasure μ := BFSSRellich.bumpMeasure_probability φ
   have hi := translation_square_integrable u hsm h2 μ
   have hpoint : ∀ᵐ x ∂(volume : Measure (Boson N)),
       ‖mollifiedCore (normalizedKernel φ) u hu hs x‖ ^ 2 ≤

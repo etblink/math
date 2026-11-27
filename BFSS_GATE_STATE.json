@@ -6563,13 +6563,13 @@
       ],
       "active": {
         "gate": "MOL-L2B0",
-        "attempt": "R1",
+        "attempt": "R2",
         "status": "CANDIDATE_UNQUALIFIED",
         "qualification": false,
         "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2B0OriginalJensenContraction.lean",
         "consumer": "lean/diagnostics/BFSSMOLL2B0OriginalJensenContractionIndependentAudit.lean",
         "workflow": ".github/workflows/bfss-moll2b0-original-jensen-contraction-strict.yml",
-        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLL2A0_R1_GREEN_MOLL2B0_PRE_GATE_2026_11_26.md",
+        "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLL2B0_R1_NATIVE_RED_R2_EXPLICIT_SQUARE_NONNEG_2026_11_26.md",
         "pre_gate_commit": "0cc5cbe923dffabb5da41e2d092ca5d8ca1d3fee",
         "expected_source_reports": 3,
         "expected_consumer_reports": 2,
@@ -7118,7 +7118,49 @@
           "workflow_blob": "fbcde65976fd399973e05bb1b05300b7cf2f0dd3",
           "native_jobs": 8931,
           "strict_marker": "BFSS_MOLL2A0_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN"
-        }
+        },
+        "prior_red": {
+          "attempt": "R1",
+          "status": "NATIVE_ELABORATION_LINTER_RED",
+          "qualification": false,
+          "run_id": 45933238567,
+          "job_id": 140290449466,
+          "tested_sha": "6b5f439dcc62c3a07fbb06e92b69f8dc55440cef",
+          "artifact_id": 15170241218,
+          "artifact_size_bytes": 7298,
+          "artifact_sha256": "dbdf7e69766680a2bc92d82b84090d1c035d8d6d0b955ac90c583c2bcfa672db",
+          "archive_crc_pass": true,
+          "source_blob": "15fd307eb5f2767730775f2462a93b32228a46ad",
+          "consumer_blob": "1930b80b3abefeb98db686657662e75a93107d22",
+          "workflow_blob": "7202acd5a22b566592de48757a8eb5a1d29df112",
+          "native_jobs": 8932,
+          "source_reports_clean": 0,
+          "consumer_reached": false,
+          "cause": "Underspecified abs_of_nonneg/sq_nonneg at 37:51 and resulting 38:8 mismatch; proposition haveI linter at 65:2",
+          "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLL2B0_R1_NATIVE_RED_R2_EXPLICIT_SQUARE_NONNEG_2026_11_26.md"
+        },
+        "red_history": [
+          {
+            "attempt": "R1",
+            "status": "NATIVE_ELABORATION_LINTER_RED",
+            "qualification": false,
+            "run_id": 45933238567,
+            "job_id": 140290449466,
+            "tested_sha": "6b5f439dcc62c3a07fbb06e92b69f8dc55440cef",
+            "artifact_id": 15170241218,
+            "artifact_size_bytes": 7298,
+            "artifact_sha256": "dbdf7e69766680a2bc92d82b84090d1c035d8d6d0b955ac90c583c2bcfa672db",
+            "archive_crc_pass": true,
+            "source_blob": "15fd307eb5f2767730775f2462a93b32228a46ad",
+            "consumer_blob": "1930b80b3abefeb98db686657662e75a93107d22",
+            "workflow_blob": "7202acd5a22b566592de48757a8eb5a1d29df112",
+            "native_jobs": 8932,
+            "source_reports_clean": 0,
+            "consumer_reached": false,
+            "cause": "Underspecified abs_of_nonneg/sq_nonneg at 37:51 and resulting 38:8 mismatch; proposition haveI linter at 65:2",
+            "receipt": "research/computational/python-first-20261124/bfss-physical-implication/MOLL2B0_R1_NATIVE_RED_R2_EXPLICIT_SQUARE_NONNEG_2026_11_26.md"
+          }
+        ]
       }
     }
   }
