@@ -1,0 +1,9 @@
+# LOC6B R1 strict GREEN; LOC6C physical weak equivalence pre-gate
+
+2026-11-27 Pacific. [Run 46039074113](https://github.com/etblink/math/actions/runs/46039074113), job 140641851057, exact tested SHA 57908804a9dd2badd1ba1dfc4eb41de6bf282beb. Frozen preflight, pinned toolchain, native build 9070 jobs, four source and two independent concrete SU2 consumer reports passed; only propext, Classical.choice, Quot.sound. Strict GREEN sentinel BFSS_LOC6B_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN. Original [artifact 15218809401](https://github.com/etblink/math/actions/runs/46039074113/artifacts/15218809401), independently downloaded and checked with Python hashlib/zipfile: 13990 bytes, SHA256 063e86fa2362059e224c8295832fed9ac4dde415f86f36347665870213747047, seven members, testzip None; tested SHA and source/consumer/workflow blobs match. Dependency checkout warnings nonfatal; provider retention limited. Original LOC6 R1/R2 RED records remain frozen.
+
+LOC6B qualifies original physical weak test extension and concrete SU2 Haar transfer to the literal individual invariant closed graph. The parametric redesign resolved the earlier concrete elaboration timeout. LOC5 remains qualified.
+
+## LOC6C R1 prospective contract
+
+Separate the dimension-parametric graph inclusion and forward pairing theorem from the concrete reverse implication. Use LOC5 ambient graph characterization and LOC6B physical weak-pair extension plus ambient-to-physical transfer. Final root states the exact original LOC6 target for u,v in the original physicalSpace, every individual charge and all original invariant tests. Four source and one independent concrete SU2 consumer reports. No import from failed LOC6, no donor changes, no native adjoint-domain or essential self-adjointness assertion, no Hamiltonian or spectral claim. Native Lean unavailable locally; strict CI required. Resource and axiom policies unchanged.
