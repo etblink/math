@@ -75,34 +75,63 @@ theorem source_adjoint_graph_iff_weak (M : AlgebraData 2)
     (h : ∀ (f : G.invariantCore) (b : SpinIndex),
       ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)
     (u v : G.physicalSpace) :
-    letI : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
+    let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
     (u, v) ∈ (individualPhysicalOperator M G a).adjoint.graph ↔
       ∀ f : G.invariantCore,
         inner ℂ (coreToL2 (M.charge a f.val)) (u : FullL2 2) =
           inner ℂ (coreToL2 f.val) (v : FullL2 2) := by
-  letI : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
+  let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
   rw [LinearPMap.adjoint_graph_eq_graph_adjoint (source_native_domain_dense M G a h),
     Submodule.mem_adjoint_iff]
-  simp only [Prod.fst, Prod.snd, sub_eq_zero]
+  simp only [sub_eq_zero]
   exact source_graph_pairing_iff_weak M G a h
       (source_individual_output_physical M G a h) u v
+
+/-- Keep the source-graph rewrite dimension-parametric. -/
+private theorem source_native_graph_mem_iff {N : ℕ} (M : AlgebraData N)
+    (G : M.GaugeData) (a : SpinIndex)
+    (h : ∀ (f : G.invariantCore) (b : SpinIndex),
+      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)
+    (u v : G.physicalSpace) :
+    (u, v) ∈ (individualPhysicalOperator M G a).graph ↔
+      ((u : FullL2 N), (v : FullL2 N)) ∈ originalIndividualClosedGraph M G a := by
+  rw [individualPhysicalOperator_graph_eq M G a h]
+  exact individualPhysicalGraph_mem_iff M G a u v
+
+/-- Extensionality at an abstract Hilbert type avoids reducing the concrete
+source Hilbert carrier during the final native operator comparison. -/
+private theorem selfAdjoint_of_common_graph_test {E : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
+    (Q : E →ₗ.[ℂ] E) (W : E → E → Prop)
+    (hg : ∀ u v, (u, v) ∈ Q.graph ↔ W u v)
+    (ha : ∀ u v, (u, v) ∈ Q.adjoint.graph ↔ W u v) :
+    IsSelfAdjoint Q := by
+  rw [LinearPMap.isSelfAdjoint_def]
+  apply LinearPMap.eq_of_eq_graph
+  apply Submodule.ext
+  rintro ⟨u, v⟩
+  exact (ha u v).trans (hg u v).symm
 
 theorem source_native_selfAdjoint (M : AlgebraData 2)
     (G : M.GaugeData) (a : SpinIndex)
     (h : ∀ (f : G.invariantCore) (b : SpinIndex),
       ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :
-    letI : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
+    let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
     IsSelfAdjoint (individualPhysicalOperator M G a) := by
-  letI : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
-  rw [LinearPMap.isSelfAdjoint_def]
-  apply LinearPMap.eq_of_eq_graph
-  apply Submodule.ext
-  rintro ⟨u, v⟩
-  rw [source_adjoint_graph_iff_weak M G a h u v,
-    individualPhysicalOperator_graph_eq M G a h,
-    individualPhysicalGraph_mem_iff M G a u v]
-  exact (physical_closed_graph_iff_weak M G a (u : FullL2 2) (v : FullL2 2)
-    u.property v.property).symm
+  let : CompleteSpace G.physicalSpace := G.physicalSpace_closed.isComplete.completeSpace_coe
+  let W : G.physicalSpace → G.physicalSpace → Prop := fun u v =>
+    ∀ f : G.invariantCore,
+      inner ℂ (coreToL2 (M.charge a f.val)) (u : FullL2 2) =
+        inner ℂ (coreToL2 f.val) (v : FullL2 2)
+  have hg (u v : G.physicalSpace) :
+      (u, v) ∈ (individualPhysicalOperator M G a).graph ↔ W u v :=
+    (source_native_graph_mem_iff M G a h u v).trans
+      (physical_closed_graph_iff_weak M G a (u : FullL2 2) (v : FullL2 2)
+        u.property v.property)
+  have ha (u v : G.physicalSpace) :
+      (u, v) ∈ (individualPhysicalOperator M G a).adjoint.graph ↔ W u v :=
+    source_adjoint_graph_iff_weak M G a h u v
+  exact selfAdjoint_of_common_graph_test (individualPhysicalOperator M G a) W hg ha
 
 theorem paired_native_selfAdjoint (a : SpinIndex) :
     letI : CompleteSpace pairedGaugeData.physicalSpace :=
