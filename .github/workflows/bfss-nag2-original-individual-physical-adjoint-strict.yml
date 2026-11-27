@@ -1,0 +1,162 @@
+name: BFSS NAG2 original individual physical adjoint strict
+
+'on':
+  push:
+    branches:
+      - integration/bfss-unified-research-20261108
+    paths:
+      - 'lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG2OriginalIndividualPhysicalAdjoint.lean'
+      - 'lean/diagnostics/BFSSNAG2OriginalIndividualPhysicalAdjointIndependentAudit.lean'
+      - '.github/workflows/bfss-nag2-original-individual-physical-adjoint-strict.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bfss-nag2-original-individual-physical-adjoint-${{ github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  original-source-nag2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - name: Checkout exact tested SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Frozen original source and independent consumer preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bfss-nag2-original-individual-physical-adjoint"
+          git rev-parse HEAD | tee "$RUNNER_TEMP/bfss-nag2-original-individual-physical-adjoint/tested-sha.txt"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git ls-tree HEAD -- \
+            lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG2OriginalIndividualPhysicalAdjoint.lean \
+            lean/diagnostics/BFSSNAG2OriginalIndividualPhysicalAdjointIndependentAudit.lean \
+            .github/workflows/bfss-nag2-original-individual-physical-adjoint-strict.yml \
+            > "$RUNNER_TEMP/bfss-nag2-original-individual-physical-adjoint/tested-blobs.txt"
+          sha256sum lean/lean-toolchain lean/lake-manifest.json | tee "$RUNNER_TEMP/bfss-nag2-original-individual-physical-adjoint/environment-sha256.txt"
+          python3 - <<'PY' 2>&1 | tee "$RUNNER_TEMP/bfss-nag2-original-individual-physical-adjoint/preflight.log"
+          from pathlib import Path
+          import subprocess,re,json
+          pins={"lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2D0OriginalMollifierDifference.lean":"577bbc04be8aea65c678b2c5ba65dcda8d18dcb9","lean/diagnostics/BFSSMOLL2D0OriginalMollifierDifferenceIndependentAudit.lean":"fdd0cceb76b5e527a439f3eb794cb0b7b973892b",".github/workflows/bfss-moll2d0-original-mollifier-difference-strict.yml":"c69f6ca7ee011be232294e34e939f7fdd14d4dd9","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2C0OriginalHilbertNormBridge.lean":"a41c7410a9b7681353f248bf002cbfe270198c94","lean/diagnostics/BFSSMOLL2C0OriginalHilbertNormBridgeIndependentAudit.lean":"c576943feb92f75e9a8d883b65abb58fadbb3cc5",".github/workflows/bfss-moll2c0-original-hilbert-norm-bridge-strict.yml":"b8960917210f4b306ef1fb3a4f78e50d3583c643","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2B0OriginalJensenContraction.lean":"469558405428d6b8ef30f1aa5735f7c0569b00fc","lean/diagnostics/BFSSMOLL2B0OriginalJensenContractionIndependentAudit.lean":"1930b80b3abefeb98db686657662e75a93107d22",".github/workflows/bfss-moll2b0-original-jensen-contraction-strict.yml":"7202acd5a22b566592de48757a8eb5a1d29df112","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2A0OriginalNormalizedKernel.lean":"c33a655a403ac4dafd6c762e16191f68857a967d","lean/diagnostics/BFSSMOLL2A0OriginalNormalizedKernelIndependentAudit.lean":"70dd359e2a9725fd9c8fbfe78cb7c7ec87a124d2",".github/workflows/bfss-moll2a0-original-normalized-kernel-strict.yml":"fbcde65976fd399973e05bb1b05300b7cf2f0dd3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLE0OriginalKineticMollifierCommutation.lean":"12d56b34fa6ab1554b8008151185b9819145b11b","lean/diagnostics/BFSSMOLE0OriginalKineticMollifierCommutationIndependentAudit.lean":"fec6eeec146390335d8d2a144d8adadfd70f9321",".github/workflows/bfss-mole0-original-kinetic-mollifier-commutation-strict.yml":"6c04ae63591d63f37eb2f5490a3c3a032c87f433","lean/OAI/MathematicalPhysics/BFSS/RellichSmoothing.lean":"359b844bce3b7f85eef3bddbd82e46712b265793","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLD0OriginalKernelIntegralTransport.lean":"f98078b8c7e188128eab3c1d7310ac833086bb0e","lean/diagnostics/BFSSMOLD0OriginalKernelIntegralTransportIndependentAudit.lean":"934617f3316c86e35d41e1e458a91cc968c11392",".github/workflows/bfss-mold0-original-kernel-integral-transport-strict.yml":"aa7361179f7b0969d49d6cb142b6b577567cfd5f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLC0OriginalKineticPairingTransport.lean":"e9b0e09d318a5bf8d798cc965883f446c732a178","lean/diagnostics/BFSSMOLC0OriginalKineticPairingTransportIndependentAudit.lean":"c17c92cdb71d31608593c521ce0518d50a43749b",".github/workflows/bfss-molc0-original-kinetic-pairing-transport-strict.yml":"231ab4412925ae18119b634a0ca5527f2058e2e8","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLB0OriginalReflectedKernelTest.lean":"362c4b50d3fbecb628374e1d56adc4bc5a3bf4ab","lean/diagnostics/BFSSMOLB0OriginalReflectedKernelTestIndependentAudit.lean":"c7f3f532f48079185eb343c3415d51d6567088da",".github/workflows/bfss-molb0-original-reflected-kernel-test-strict.yml":"5904f86c7c733571aaf03e0943ad22e1f1d51c2e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLA0OriginalMollifiedCore.lean":"9f1bb106f140f1bbd12ab8cb671b47207244617d","lean/diagnostics/BFSSMOLA0OriginalMollifiedCoreIndependentAudit.lean":"e52b9bd7438f64268b374285ce2923601f244a11",".github/workflows/bfss-mola0-original-mollified-core-strict.yml":"e298bc3c694e033fcdf80ee8cb551ff6e468418e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDC0OriginalPhysicalCommonDomain.lean":"01a9a26eee376861eac110f48ee8982ca7204343","lean/diagnostics/BFSSICDC0OriginalPhysicalCommonDomainIndependentAudit.lean":"ee34692fcfb3930e2012cce970f12e0f2f9eb321",".github/workflows/bfss-icdc0-original-physical-common-domain-strict.yml":"a04481a4e505e6f3fad690756dd2d0fb0769c9e4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDB0OriginalComponentGraphLifting.lean":"e0babb86e8159168e31e02850be4d7292b01e248","lean/diagnostics/BFSSICDB0OriginalComponentGraphLiftingIndependentAudit.lean":"18922c12eb8f99584ef9590f2e70f5cefd509256",".github/workflows/bfss-icdb0-original-component-graph-lifting-strict.yml":"3db59e1290684e705491d02b9788cbc5212bb874","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDA0OriginalJointGraphAdapter.lean":"d14edf176225a797b586a59cebed266ff195a432","lean/diagnostics/BFSSICDA0OriginalJointGraphAdapterIndependentAudit.lean":"6921f808433d69f6d282a7bfdfb69e8e3f16f676",".github/workflows/bfss-icda0-original-joint-graph-adapter-strict.yml":"03c2e6b836ee607874586a647a6a51b7bea3fff0","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0OriginalCoreEnergy.lean":"42e8396605ef90b96f4434f3df1fb7c2f8eca547","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0b3BasisSquareComposition.lean":"e604acccafcc7295fd467f9339b7e155dfc6c59d","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC4PhysicalGraphCoreIdentification.lean":"032c90273c4214aad1b05aef7bd48894b6e23bf4","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AUOriginalMinimalClosedChargeLinearPMapProbe.lean":"389bd4318cbc389db226691bbccecaa78c6c6c3e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe.lean":"a9f27a48852ac570aedc8e0ab88d683250e6b138","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean":"0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5","lean/OAI/MathematicalPhysics/BFSS/Core.lean":"9882359ced78b0a3bd7e2f057974bd0a031b3e60","lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean":"e4990dadf1d8bde849e351467282ab3f14989c3b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2E0OriginalStrongApproximation.lean":"a0c4c33d9db49e073caeb7f0f72c59a991094c44","lean/diagnostics/BFSSMOLL2E0OriginalStrongApproximationIndependentAudit.lean":"e9eda3845bc6e975c939863ac116eb7e94463fbd",".github/workflows/bfss-moll2e0-original-strong-approximation-strict.yml":"97462dfa43667e197470eaf92bd396cc5ddfe25f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2F0OriginalUniformSupport.lean":"2102b3f9d0a61a9e157e27d8163730c2e11dfc47","lean/diagnostics/BFSSMOLL2F0OriginalUniformSupportIndependentAudit.lean":"70088db22c04cd0e77a96e31e5047273a1f16fb9",".github/workflows/bfss-moll2f0-original-uniform-support-strict.yml":"1111f3fa5803d0565bd4fed0aa95d55b1e9a35df","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2G0OriginalPotentialBound.lean":"b5d5924f8f58d062e1a021b179961670765ce1c1","lean/diagnostics/BFSSMOLL2G0OriginalPotentialBoundIndependentAudit.lean":"41d9808eb8a174443a51ccd242352f4367c0fec3",".github/workflows/bfss-moll2g0-original-potential-bound-strict.yml":"f6c4407d929233beafff84468c045e38fcc78128","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2H0OriginalPotentialL2Bound.lean":"7f2a52582e7f3fffab88dbb2e65146cdbbd2dd90","lean/diagnostics/BFSSMOLL2H0OriginalPotentialL2BoundIndependentAudit.lean":"0e3ba081595009170c26311ae9c18740ae1ae921",".github/workflows/bfss-moll2h0-original-potential-l2-bound-strict.yml":"769c8ffb2b66f72a2b20cec097c52d3e12bfb36b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2I0OriginalPotentialConvergence.lean":"cd410bf5c4183649f20fe2cc881bf0c7a5f12839","lean/diagnostics/BFSSMOLL2I0OriginalPotentialConvergenceIndependentAudit.lean":"6b3344b5ae8e44ee2df0dff28f629939ba83832c",".github/workflows/bfss-moll2i0-original-potential-convergence-strict.yml":"228b0d84a2aa61f6cf261ef6b5b3708284e85006","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2J0OriginalChargeDecomposition.lean":"680840840c9396d341023ce4cb6cf03dc7765007","lean/diagnostics/BFSSMOLL2J0OriginalChargeDecompositionIndependentAudit.lean":"6bb5f7d42c830420c4aedc999289c242457ce31d",".github/workflows/bfss-moll2j0-original-charge-decomposition-strict.yml":"5150154bdcd3722be1c22dd15dc8b378bda34ea1","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2K0OriginalCompactChargeConvergence.lean":"3bc50e061d957f44e36f594694225a44213eb5db","lean/diagnostics/BFSSMOLL2K0OriginalCompactChargeConvergenceIndependentAudit.lean":"4b2f57581e5f8c5269157f7fdd567adf08c1ef2b",".github/workflows/bfss-moll2k0-original-compact-charge-convergence-strict.yml":"1ea8464d299674b8e7a7b1149a06f547b9079c71","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2L0OriginalFullWeakPairReduction.lean":"727c093c0ad7e31d7ea2559354e742214c6f4303","lean/diagnostics/BFSSMOLL2L0OriginalFullWeakPairReductionIndependentAudit.lean":"0c063be5afa317d14173536c31944ba8312faf48",".github/workflows/bfss-moll2l0-original-full-weak-pair-reduction-strict.yml":"4d7919e25df289ac046b1f167ae566db52a95f3f","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSMOLL2M0OriginalCompactFullGraph.lean":"96c783483186fbdeee75b0c003c5af84dae35c10","lean/diagnostics/BFSSMOLL2M0OriginalCompactFullGraphIndependentAudit.lean":"26a1373b7cc6013311b84ba4b007a6d92443dde8",".github/workflows/bfss-moll2m0-original-compact-full-graph-strict.yml":"00b58c142fda4ef89c4f5b6293eefac4b7ad28a1","lean/OAI/MathematicalPhysics/BFSS/CliffordSymbols.lean":"cc01379653404c4ede3d551fd8d823e079543b21","lean/OAI/MathematicalPhysics/BFSS/Cutoffs.lean":"7fe937b9af79f4ea7a8f994fa37d510608464c2b","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC0OriginalWeakCutoffPairing.lean":"c235fdd8bbbf545b96d390869db356cbc91c3f61","lean/diagnostics/BFSSLOC0OriginalWeakCutoffPairingIndependentAudit.lean":"ddba11edd7a73d7dc97c3d647bcf563e34a39158",".github/workflows/bfss-loc0-original-weak-cutoff-pairing-strict.yml":"5a0bcdef4fe57d88a92372a6c2e7ce38dfc1524c","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC1OriginalCutoffL2Bounds.lean":"fde1bd18b0d8bc5d5b2f19d487ba9bfdfe3cf461","lean/diagnostics/BFSSLOC1OriginalCutoffL2BoundsIndependentAudit.lean":"cc98d4c4c38fe83e5717f4f75c8e36ede6d08f50",".github/workflows/bfss-loc1-original-cutoff-l2-bounds-strict.yml":"ebce234c51660582ffe8713f3ace61eb3004cdab","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC2OriginalExpandingCutoffs.lean":"58d8ef02a725ecd27833e451ff600537ed4cc715","lean/diagnostics/BFSSLOC2OriginalExpandingCutoffsIndependentAudit.lean":"e1be80a177af66940a3c7dc28952a5c7d8f675a2",".github/workflows/bfss-loc2-original-expanding-cutoffs-strict.yml":"9edc45bdc63a3c4c90e73a483d43653693578b69","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC3OriginalStrongLocalization.lean":"2ce0602be20788e45f60c1ec671488a6bf60240c","lean/diagnostics/BFSSLOC3OriginalStrongLocalizationIndependentAudit.lean":"7a490df4dc74f56dddca5fd1ffe9572a2e1cb0a8",".github/workflows/bfss-loc3-original-strong-localization-strict.yml":"b69ef95bbaae8de06a7ec2da653a1f6f22abd377","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC4OriginalGlobalWeakGraph.lean":"0bf7c2ed959340ca9bf9fe89a83d2510458b3b7f","lean/diagnostics/BFSSLOC4OriginalGlobalWeakGraphIndependentAudit.lean":"3048d874b3a57b41ac30127c844e72d770221ae5",".github/workflows/bfss-loc4-original-global-weak-graph-strict.yml":"eb694c3090d73c1f16c89c8721d2e3848cb75fea","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC5OriginalHilbertWeakGraph.lean":"41ec82d61a270741b4f5c9f3ec3d2178c3201db1","lean/diagnostics/BFSSLOC5OriginalHilbertWeakGraphIndependentAudit.lean":"feaaabc2c79bdb17b94c4d293e9564f979470827",".github/workflows/bfss-loc5-original-hilbert-weak-graph-strict.yml":"243157a37a66ae4d35999ddef3a4928a0591b8c3","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC3GraphHaarProjection.lean":"83af8583c1bb74fc7e410f750e8d2447409c07aa","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B7SourceFullL2GaugeIsometryAndFixednessProbe.lean":"351d2d226c53a3cff8a5e1d08c2d3e24c63a0f86","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B9AFullL2HaarExistenceBoundProbe.lean":"7a448ad7d2ef1a0540b1340db51ffc064b327149","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B9BFullL2HaarCLMProbe.lean":"9965705fe751df2f2fa5133de58d554ae028a309","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B9CGenuineGaugeHaarProjectionProbe.lean":"15e1526b266d4e895857532cb372a32dc328ac97","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainD2B10CFullHaarCoreCompatibilityAndDensityProbe.lean":"7b116f1efa2dd62cc5188b3ff2d2cf38ecd7bd9a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC6OriginalPhysicalWeakGraph.lean":"3c08e8d586874de60bdfd983f770be4fab1f96ff","lean/diagnostics/BFSSLOC6OriginalPhysicalWeakGraphIndependentAudit.lean":"0986f179fa0f80a0b1cbda33914907bb1577ce92",".github/workflows/bfss-loc6-original-physical-weak-graph-strict.yml":"e1315ecf053e62d85e3707729230b007beb61a45","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC6AOriginalParametricGraphTransport.lean":"44d932364d172fcd1664e8b0f91e147d72bb80ba","lean/diagnostics/BFSSLOC6AOriginalParametricGraphTransportIndependentAudit.lean":"a8fa1b4dee02c32789a198d7909e8a19053bafde",".github/workflows/bfss-loc6a-original-parametric-graph-transport-strict.yml":"cb26e175d48843ad25e0df3e727f118e7f2ba0ce","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC6BOriginalHaarGraphTransfer.lean":"8c9b4c60e9d5ec270d6c1bb9fcde1f644028c2f4","lean/diagnostics/BFSSLOC6BOriginalHaarGraphTransferIndependentAudit.lean":"29ac64f40ad0019ea4c3ab2931d0d73a06a0abbb",".github/workflows/bfss-loc6b-original-haar-graph-transfer-strict.yml":"a0edca4d282ebdcc84a7d3240d149e34125117ab","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC6COriginalPhysicalWeakEquivalence.lean":"8cd67196d505e5a23a244ba2ff2f8674d9a10ded","lean/diagnostics/BFSSLOC6COriginalPhysicalWeakEquivalenceIndependentAudit.lean":"c502b4bc3827d14ba335ad14e5c79745c2126bf0",".github/workflows/bfss-loc6c-original-physical-weak-equivalence-strict.yml":"872c8d81560c17d687e7196f2b3fa5b4638cd22a",".github/workflows/bfss-nag0-original-individual-physical-operator-strict.yml":"0141f0fd5312c6a764aeeaebb0342913c412692a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG0OriginalIndividualPhysicalOperator.lean":"bb65935668afc14b927b6d409af025611e3e040f","lean/diagnostics/BFSSNAG0OriginalIndividualPhysicalOperatorIndependentAudit.lean":"3f21151efed4d17d397b938ed2c1fe4fd91b0701","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC2ClosedGraphGaugeCovariance.lean":"ca97afd3b19b21f48a97f953ce6e6e10dffc7b19","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe.lean":"3ab254088e3fa2aea7622807b6b10e7eabc6fc8a","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AZOriginalPhysicalChargeDomainDensityReductionProbe.lean":"b69166ba7b1118e3542ba826e73aa4f95f575c3c",".github/workflows/bfss-nag1-original-individual-physical-domain-strict.yml":"66c703cfc1e8afbb9a8c5f55402ea914b30f478e","lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG1OriginalIndividualPhysicalDomain.lean":"bb70391c888e6dac8836808294447b0d6c99da5e","lean/diagnostics/BFSSNAG1OriginalIndividualPhysicalDomainIndependentAudit.lean":"2941aefc6e740ad5c4868c55462bed9f20c5f1a6"}
+          for path,expected in pins.items():
+              got=subprocess.check_output(["git","hash-object","--no-filters",path],text=True).strip()
+              assert got==expected,("FROZEN_SOURCE_DRIFT",path,got,expected)
+          subprocess.check_call(["git","merge-base","--is-ancestor","9c8e689413c97666edd33b1c57f512bcf6ce4b59","HEAD"])
+          s=Path("lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG2OriginalIndividualPhysicalAdjoint.lean").read_text()
+          t=Path("lean/diagnostics/BFSSNAG2OriginalIndividualPhysicalAdjointIndependentAudit.lean").read_text()
+          source_roots = ["weak_pairing_closed","source_core_pair_mem","source_graph_pairing_iff_weak","source_adjoint_graph_iff_weak","source_native_selfAdjoint","paired_native_selfAdjoint"]
+          consumer_roots = ["originalSU2IndividualAdjointWeakAudit","originalSU2IndividualSelfAdjointAudit"]
+          assert re.findall(r"(?m)^import (\S+)$", s) == ["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG1OriginalIndividualPhysicalDomain","OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC6COriginalPhysicalWeakEquivalence","Mathlib.Analysis.InnerProductSpace.LinearPMap"]
+          assert re.findall(r"(?m)^import (\S+)$", t) == ["OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG2OriginalIndividualPhysicalAdjoint"]
+          assert re.findall(r"(?m)^#print axioms (\S+)$", s) == source_roots
+          assert re.findall(r"(?m)^#print axioms (\S+)$", t) == consumer_roots
+          for content in [s,t]:
+              assert "set_option autoImplicit false" in content
+              assert not re.search(r"(?m)^\s*(sorry|admit|axiom|unsafe|native_decide)\b",content)
+              for forbidden in ["set_option maxRecDepth","set_option maxHeartbeats",
+                                "set_option synthInstance.maxHeartbeats"]:
+                  assert forbidden not in content
+          assert Path("lean/lean-toolchain").read_text().strip()=="leanprover/lean4:v4.34.1"
+          m=json.loads(Path("lean/lake-manifest.json").read_text())["packages"]
+          assert next(x["rev"] for x in m if x["name"]=="mathlib")=="d13f23b723b8a846827a245b89c10fc7d3f11612"
+          print("BFSS_NAG2_SOURCE_EXACT_PREFLIGHT_PASS")
+          PY
+
+      - name: Restore pinned Lean and Mathlib
+        shell: bash
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          source "$HOME/.elan/env"
+          cd lean
+          timeout 1800s lake exe cache get 2>&1 | tee "$RUNNER_TEMP/bfss-nag2-original-individual-physical-adjoint/cache.log"
+          test "$(lake env lean --version | grep -oF '4.34.1')" = 4.34.1
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = d13f23b723b8a846827a245b89c10fc7d3f11612
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/InnerProductSpace/LinearPMap.lean)" = d23a4b7eb98846403de0228106bbaeb022b85a21
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/InnerProductSpace/Subspace.lean)" = 216050abc9302261c8061d223460ff9667babfe5
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Calculus/ContDiff/Convolution.lean)" = bd9e90f63766eb35fdd67857ef621847de532df7
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Convolution.lean)" = 01ac3fc1f4d36b203933f575dde6b0931b0b8556
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Integral/Bochner/ContinuousLinearMap.lean)" = 24b8ad83aa2cb2a2cb5ce54ac6ce84dbad84bb7f
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/InnerProductSpace/LinearMap.lean)" = 9e464cfcd28bd0ac75d7d79f814305a6c88a4a28
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Function/L1Space/Integrable.lean)" = 2ad180afca8fb23408d5408050a8965089375ae5
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Integral/Bochner/Basic.lean)" = 5abe07ae60e8bdfe5d99a7e68c681a5b052ef4f2
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Integral/DominatedConvergence.lean)" = f9151af5679b358686392d6d28721e01382dcad0
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Calculus/BumpFunction/Normed.lean)" = 9f23d19dd1b85285b198375cbad423413b41d72c
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Calculus/BumpFunction/Basic.lean)" = c295ab7993c2b94fc9de8b3d6b79d7be7f4440a7
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Integral/Prod.lean)" = 7484a64e40beacdd472da61f858f02c8ffb62863
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Function/L2Space.lean)" = 77e0d3526db347b58cdd46fe666067be7e4fbe35
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Function/LpSpace/Basic.lean)" = 49ca798a7ffe3002a1d2ce7ae7ba6d06291406b6
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/InnerProductSpace/Basic.lean)" = 75aac879ab48e009bb05b5a71a189750e85382e9
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Function/LocallyIntegrable.lean)" = dc00e515b31d960ce61d0ce79d08ba0d8ab3af83
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Topology/Algebra/Support.lean)" = d4e215efd8fc8d81ecf98cdc1b7e091cfe9de8a0
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Distribution/TestFunction.lean)" = aeb2cff4a55ef56e4692140053af214e1f5dcabe
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Topology/MetricSpace/Pseudo/Defs.lean)" = 912bc464320d8ea70f002255c59e9f79d41f6ac2
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/SpecificLimits/Basic.lean)" = c633976a412c7d498b55d6188e811d005fd73da4
+
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Topology/Order/Compact.lean)" = 8e1982cb6cd1f808ded359ffdb0afa8ee9a8bdba
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Normed/Operator/Basic.lean)" = 0e6112200b6435832001d46b94f1aa6f6a35d0f0
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Topology/Algebra/Monoid.lean)" = aec0e747f56d1284079b639fd4ab1441ee848698
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Topology/Algebra/Module/ContinuousLinearMap/Basic.lean)" = 5fcb4432855e52781f08acce8e96afc667aa2f20
+
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Normed/Operator/BoundedLinearMaps.lean)" = 9bc162cf84aa20aad3e4b9b39ab26a43b4547dd6
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Function/StronglyMeasurable/Basic.lean)" = 54ee612fcbf62feb05db72a60e85689615b71f4a
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Function/LpSeminorm/Basic.lean)" = db81327ad7a9cc78cdb2684da7668ca57deea373
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/MeasureTheory/Function/LpSeminorm/SMul.lean)" = fde262f602b24b10b3a34f6549bb0506dd8ba1fd
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Topology/Algebra/Module/FiniteDimension.lean)" = b145c6f6f798571ca4680cf424fa53796437524e
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Analysis/Calculus/FDeriv/Congr.lean)" = da599f75bd35b874f08b3fb7b326c2679500eefb
+          test "$(git -C .lake/packages/mathlib hash-object Mathlib/Algebra/Order/Ring/Abs.lean)" = 06a4434d33bfe7820491a24053dddbcc7588a390
+
+      - name: Original individual physical adjoint and independent consumer
+        shell: bash
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          cd lean
+          E="$RUNNER_TEMP/bfss-nag2-original-individual-physical-adjoint"
+          timeout 3000s lake build OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG2OriginalIndividualPhysicalAdjoint 2>&1 | tee "$E/native-source.log"
+          timeout 600s lake env lean -DautoImplicit=false -DwarningAsError=true \
+            diagnostics/BFSSNAG2OriginalIndividualPhysicalAdjointIndependentAudit.lean \
+            2>&1 | tee "$E/strict-axioms.log"
+          python3 - <<'PY'
+          import re,os
+          from pathlib import Path
+          E=Path(os.environ["RUNNER_TEMP"])/"bfss-nag2-original-individual-physical-adjoint"
+          for fn in ["native-source.log","strict-axioms.log"]:
+              log=(E/fn).read_text()
+              for bad in ["error:","sorryAx","unsolved goals","unknown identifier"]:
+                  assert bad not in log,(fn,bad,log[-6000:])
+          expected = {"native-source.log":["FCP.BFSSNAG2.weak_pairing_closed","FCP.BFSSNAG2.source_core_pair_mem","FCP.BFSSNAG2.source_graph_pairing_iff_weak","FCP.BFSSNAG2.source_adjoint_graph_iff_weak","FCP.BFSSNAG2.source_native_selfAdjoint","FCP.BFSSNAG2.paired_native_selfAdjoint"],"strict-axioms.log":["FCP.BFSSNAG2Independent.originalSU2IndividualAdjointWeakAudit","FCP.BFSSNAG2Independent.originalSU2IndividualSelfAdjointAudit"]}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for filename, names in expected.items():
+              transcript = (E / filename).read_text()
+              if filename == "native-source.log":
+                  assert "Build completed successfully" in transcript
+              for name in names:
+                  pattern = re.escape("'" + name + "'") + (
+                      r" (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)"
+                  )
+                  reports = re.findall(pattern, transcript)
+                  assert len(reports) == 1, (filename, name, reports)
+                  axioms = {x.strip() for x in reports[0].split(",") if x.strip()}
+                  assert axioms <= allowed, (filename, name, axioms)
+          print("BFSS_NAG2_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN")
+          PY
+
+      - name: Preserve first-causal original source and consumer evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: bfss-nag2-original-individual-physical-adjoint-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/bfss-nag2-original-individual-physical-adjoint/
+          if-no-files-found: warn
+          retention-days: 30
