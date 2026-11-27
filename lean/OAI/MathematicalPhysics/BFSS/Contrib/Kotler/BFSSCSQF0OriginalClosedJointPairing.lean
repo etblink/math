@@ -39,10 +39,14 @@ theorem paired_core_pairing (a b : SpinIndex)
     inner ℂ (coreToL2 (pairedAlgebraData.charge a f.val))
       (coreToL2 (pairedAlgebraData.charge a g.val)) =
     inner ℂ (coreToL2 (pairedAlgebraData.charge b f.val))
-      (coreToL2 (pairedAlgebraData.charge b g.val)) :=
-  symmetricPairing (pairedAlgebraData.charge_symmetric a)
-    (pairedAlgebraData.charge_symmetric b) f.val g.val
-    (FCP.BFSSCSQE0.basisSquareCore a b g)
+      (coreToL2 (pairedAlgebraData.charge b g.val)) := by
+  have ha := pairedAlgebraData.charge_symmetric a f.val
+    (pairedAlgebraData.charge a g.val)
+  have hb := pairedAlgebraData.charge_symmetric b f.val
+    (pairedAlgebraData.charge b g.val)
+  have hs := FCP.BFSSCSQE0.basisSquareCore a b g
+  rw [hs] at ha
+  exact ha.trans hb.symm
 
 /-- Separate closedness in each argument extends a pairing identity
 from S x S to closure S x closure S. No sequential approximation. -/
