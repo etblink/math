@@ -29,10 +29,17 @@ theorem hilbert_pairing_mem_closed_graph {N : ℕ} (M : AlgebraData N)
     intro f
     rw [← core_hilbert_pairing (M.charge a f) u, ← core_hilbert_pairing f v]
     exact h f
+  have hsmu : StronglyMeasurable (u : Boson N → Fermion N) :=
+    Lp.stronglyMeasurable (p := 2) (μ := volume) u
+  have hsmv : StronglyMeasurable (v : Boson N → Fermion N) :=
+    Lp.stronglyMeasurable (p := 2) (μ := volume) v
+  have h2u : MemLp (u : Boson N → Fermion N) 2 volume :=
+    Lp.memLp u
+  have h2v : MemLp (v : Boson N → Fermion N) 2 volume :=
+    Lp.memLp v
   have hp := fullWeak_mem_closed_graph M a (u : Boson N → Fermion N)
-    (v : Boson N → Fermion N) u.stronglyMeasurable v.stronglyMeasurable
-    u.memLp v.memLp hw
-  rw [Lp.toLp_coeFn u u.memLp, Lp.toLp_coeFn v v.memLp] at hp
+    (v : Boson N → Fermion N) hsmu hsmv h2u h2v hw
+  rw [Lp.toLp_coeFn u h2u, Lp.toLp_coeFn v h2v] at hp
   exact hp
 
 theorem closed_graph_iff_hilbert_pairing {N : ℕ} (M : AlgebraData N)
