@@ -17,7 +17,7 @@ def reflectedCore {N : ℕ} (k : ScalarCore N) (x : Boson N) (z : Fermion N) :
     SmoothCore N where
   toFun := fun y => k (x - y) • z
   contDiff' := by
-    have h : ContDiff ℝ ⊤ (fun y : Boson N => x - y) :=
+    have h : ContDiff ℝ ((⊤ : ENat) : WithTop ENat) (fun y : Boson N => x - y) :=
       contDiff_const.sub contDiff_id
     exact (k.contDiff.comp h).smul_const z
   hasCompactSupport' := by
@@ -40,7 +40,7 @@ theorem reflectedCore_coordinateDerivative {N : ℕ} (k : ScalarCore N)
   have hk : HasFDerivAt (k : Boson N → ℝ)
       (fderiv ℝ (k : Boson N → ℝ) (x - y)) (x - y) :=
     (k.contDiff.differentiable (by simp)).differentiableAt.hasFDerivAt
-  have hr := (hasFDerivAt_id y).const_sub x
+  have hr := (hasFDerivAt_id (𝕜 := ℝ) y).const_sub x
   have hd := (hk.comp y hr).smul_const z
   rw [coordinateDerivative_apply]
   change fderiv ℝ (fun t : Boson N => k (x - t) • z) y
