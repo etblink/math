@@ -33,8 +33,14 @@ def expandingCutoff (N n : ℕ) (x : Boson N) : ℝ :=
   baseCutoff N (cutoffScale n • x)
 
 theorem expandingCutoff_smooth (N n : ℕ) :
-    ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (expandingCutoff N n) :=
-  (baseCutoff N).contDiff.comp (contDiff_const.smul contDiff_id)
+    ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) (expandingCutoff N n) := by
+  have hc : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞)
+      (fun _ : Boson N => cutoffScale n) := contDiff_const
+  have hi : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞)
+      (id : Boson N → Boson N) := contDiff_id
+  have hs : ContDiff ℝ ((⊤ : ℕ∞) : WithTop ℕ∞)
+      (fun x : Boson N => cutoffScale n • x) := hc.smul hi
+  exact (baseCutoff N).contDiff.comp hs
 
 theorem expandingCutoff_bounds (N n : ℕ) (x : Boson N) :
     0 ≤ expandingCutoff N n x ∧ expandingCutoff N n x ≤ 1 :=
