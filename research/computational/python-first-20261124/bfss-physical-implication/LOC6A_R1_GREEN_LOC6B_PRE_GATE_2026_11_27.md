@@ -1,0 +1,9 @@
+# LOC6A R1 strict GREEN; LOC6B concrete Haar transfer pre-gate
+
+2026-11-27 Pacific. [Run 46037222497](https://github.com/etblink/math/actions/runs/46037222497), job 140635570340, exact tested SHA 12a2442f9676dd2bc2b8551b176a81bead81b8bb. Frozen preflight, pinned toolchain, native build 9009 jobs, three source and one independent symbolic-N consumer reports passed; only propext, Classical.choice, Quot.sound. Strict GREEN sentinel BFSS_LOC6A_ORIGINAL_SOURCE_INDEPENDENT_STRICT_GREEN. Original [artifact 15219791919](https://github.com/etblink/math/actions/runs/46037222497/artifacts/15219791919), independently downloaded and checked by Python hashlib/zipfile: 10418 bytes, SHA256 fb4f03c24a525853a9ac28de3bf8c416500f120ea251b9f3cf0a2ad5a7cb7aa6, seven members, testzip None; tested SHA and source/consumer/workflow blobs match. Provider retention limited; dependency checkout warnings nonfatal.
+
+LOC6A qualifies continuous original graph transport and fixed-pair transport for symbolic N with explicit generator compatibility. Both earlier LOC6 REDs preserved. Concrete SU2 transfer remains unqualified.
+
+## LOC6B R1 prospective contract
+
+Use qualified source_fixed_graph_mem with N=2, genuine sourceFullHaarAverageCLM, literal Haar invariant-core constructor, and separately typed original embedded-core and charge commutation identities from D2B10C and UGC4. No re-elaboration of generic projection machinery inside concrete proof. Recover exact clean Haar pairing and physical weak extension proofs from LOC6 R2 as new declarations, not importing failed source. Four source axiom reports and two independent concrete SU2 consumers. Native Lean unavailable locally; strict CI required. Physical graph iff assembly, native adjoint and ESA separate. No change to failed implementations, qualified donors, allowed axioms or resource bounds. This is a test of actual specialization, not a claim it will compile.
