@@ -18,7 +18,9 @@ theorem theta_reflected_pairing {N : ℕ} (M : AlgebraData N)
     (b : SpinIndex) (A : ColorIndex N) (g d : ℝ) (z v : Fermion N) :
     inner ℂ ((-Complex.I * (g : ℂ)) • M.theta b A ((-d) • z)) v =
       inner ℂ z ((-Complex.I * (g : ℂ)) • M.theta b A (d • v)) := by
-  have hsym := (M.theta_selfAdjoint b A).isSymmetric
+  have hsym (p q : Fermion N) :
+      inner ℂ (M.theta b A p) q = inner ℂ p (M.theta b A q) :=
+    (M.theta_selfAdjoint b A).isSymmetric p q
   calc
     _ = conj (-Complex.I * (g : ℂ)) *
           ((-d) • inner ℂ z (M.theta b A v)) := by
