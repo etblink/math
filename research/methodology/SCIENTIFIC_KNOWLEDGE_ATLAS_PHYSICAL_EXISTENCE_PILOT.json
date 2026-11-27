@@ -1,0 +1,375 @@
+{
+  "schema": "bfss_scientific_knowledge_atlas_extension_v0.1",
+  "snapshot_commit": "e6e73f1e30ba42ad71b2f9232936113864bf0498",
+  "date": "2026-11-27",
+  "base_atlas": {
+    "path": "contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json",
+    "schema": "bfss_internal_theorem_atlas_v0.8",
+    "records": 59
+  },
+  "scope": "Pilot extension to existing monograph theorem atlas; scientific prerequisite links, not complete Lean import graph or new acceptance. Status of older atlas records unchanged. Evidence from original archived receipts unless explicitly noted; no artifact rehash in this interval.",
+  "status_vocabulary": {
+    "SOURCE_DEFINITION": "Definition present in original source; not a standalone strict theorem receipt",
+    "HISTORICAL_STRICT": "Historical FCP green for original source; current port requires separate confirmation",
+    "INTEGRATED_STRICT": "Strict green in etblink/math at cited tested commit, not necessarily latest exact branch head",
+    "SOURCE_PRESENT_REQUIRES_RECEIPT": "Current source read and declaration verified; exact strict receipt not independently checked here",
+    "PENDING_STRICT_GATE": "Candidate present; no qualification conclusion as of snapshot",
+    "ANALYTICAL_CONDITIONAL": "Conventional argument under stated assumptions, not a Lean-qualified physical source theorem",
+    "OPEN_PROOF_OBLIGATION": "Research target, no exact accepted Lean theorem",
+    "SURVIVED_FINITE_TESTS": "Exact archived computational evidence within specified scope, not native proof",
+    "STOPPED_UNQUALIFIED": "Stopped implementation; no theorem acceptance",
+    "SCOPE_LIMITATION": "Documented non-implication or scope boundary"
+  },
+  "records": [
+    {
+      "id": "PE-UGC4",
+      "title": "Literal restricted joint graph equals full graph physical-input slice",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "D-03",
+        "G-01"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/UGC4_R3_GREEN_QUALIFIED_ANALYTIC_HANDOFF_2026_11_26.md",
+        "run_id": 45869599441,
+        "tested_commit": "7449a4b6c5feb4196a67da368ccb8b8e01c60c46",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "Joint, not individual closure or ESA."
+    },
+    {
+      "id": "PE-CSQE0",
+      "title": "Equal original core energies for every spin label",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "D-03"
+      ],
+      "provenance": {
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0OriginalCoreEnergy.lean",
+        "source_blob_sha": "42e8396605ef90b96f4434f3df1fb7c2f8eca547",
+        "run_id": 45505859621,
+        "tested_commit": "93d7adb2a62e8f9a3ecfe3f7e709eea1910914ea",
+        "evidence_basis": "successful run metadata plus downstream archived strict receipt; original artifact not rechecked"
+      },
+      "boundary": "Core energy only, not closed operator square."
+    },
+    {
+      "id": "PE-ICDA",
+      "title": "Exact componentwise original joint graph adapter",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "D-03",
+        "PE-UGC4"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/ICDA0_R1_GREEN_ICDB0_PRE_GATE_2026_11_26.md",
+        "run_id": 45884276018,
+        "tested_commit": "ee905cef89f9a6d0968731dab172d56036735113",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "Joint graph adapter, arbitrary N; no common domain."
+    },
+    {
+      "id": "PE-ICDB",
+      "title": "Individual closed graph lifts to selected joint coordinate under equal core norms",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-ICDA"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/ICDB0_R1_GREEN_ICDC0_PRE_GATE_2026_11_26.md",
+        "run_id": 45886320206,
+        "tested_commit": "1c5ef5c336e44cd33180c15211ba251647552f3f",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "Generic result conditional on equal core norms; not yet paired specialization."
+    },
+    {
+      "id": "PE-ICDC",
+      "title": "Actual paired individual and joint input domains equal; selected component graph lift",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-ICDB",
+        "PE-CSQE0",
+        "H-02"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/ICDC0_R2_GREEN_QUALIFIED_CONSOLIDATION_2026_11_26.md",
+        "run_id": 45912386053,
+        "tested_commit": "b61ef18e55cbaf50970336edfe95a9e9c9654bca",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "Minimal closed domains, not operator square domains."
+    },
+    {
+      "id": "PE-LOC6C",
+      "title": "Physical individual closed graph iff invariant-core weak pairing",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-ICDC",
+        "PE-UGC4"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/LOC6C_R1_GREEN_PHYSICAL_WEAK_EQUIVALENCE_2026_11_27.md",
+        "run_id": 46041935392,
+        "tested_commit": "efcdd1671070a15136616fdabd7116b687627e53",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "Weak equivalence only, not native adjoint at this gate."
+    },
+    {
+      "id": "PE-NAG0",
+      "title": "Actual native closed individual graph",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-ICDC"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG0_R1_GREEN_QUALIFIED_2026_11_27.md",
+        "run_id": 46047069230,
+        "tested_commit": "f6aba5342b36e131c02df093782b2dd4e2fd6eba",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "Closed LinearPMap; no ESA."
+    },
+    {
+      "id": "PE-NAG1",
+      "title": "Native individual output physical; common dense domain",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-NAG0",
+        "PE-ICDC",
+        "H-01"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG1_R1_GREEN_QUALIFIED_2026_11_27.md",
+        "run_id": 46051319682,
+        "tested_commit": "9c8e689413c97666edd33b1c57f512bcf6ce4b59",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "No square identification."
+    },
+    {
+      "id": "PE-NAG2",
+      "title": "Native individual self-adjointness on actual paired physical space",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-NAG0",
+        "PE-NAG1",
+        "PE-LOC6C"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG2_R3_GREEN_QUALIFIED_2026_11_27.md",
+        "run_id": 46059907504,
+        "tested_commit": "66099b4a3b075e5909423221a7542d62b95b3ee7",
+        "evidence_basis": "archived strict receipt"
+      },
+      "boundary": "Self-adjoint native closed realization; not explicit literal core ESA."
+    },
+    {
+      "id": "PE-NAG3",
+      "title": "Literal native smooth-core operator closure equals NAG2 operator",
+      "evidence_status": "PENDING_STRICT_GATE",
+      "direct_dependencies": [
+        "PE-NAG0",
+        "PE-NAG1",
+        "PE-NAG2"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG3_R1_NATIVE_RED_R2_ABSTRACT_GRAPH_TRANSPORT_2026_11_27.md",
+        "run_id": 46067320278,
+        "tested_commit": "e6e73f1e30ba42ad71b2f9232936113864bf0498",
+        "previous_red_run_id": 46063667974,
+        "evidence_basis": "R1 diagnostic and R2 in-progress run metadata"
+      },
+      "boundary": "No qualification until strict acceptance."
+    },
+    {
+      "id": "PE-ESA",
+      "title": "Explicit literal core essential self-adjointness",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "direct_dependencies": [
+        "PE-NAG3",
+        "PE-NAG2"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG3_R1_PRE_GATE_2026_11_27.md",
+        "section": "follow-up scope",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Native closure equality and self-adjointness suffice mathematically; explicit density/symmetry/closability interfaces remain to audit."
+    },
+    {
+      "id": "PE-SQUARE",
+      "title": "Closed individual form equals normalized joint form; exact Q_alpha^2=H",
+      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "direct_dependencies": [
+        "PE-NAG2",
+        "PE-NAG1",
+        "PE-ICDC",
+        "PE-CSQE0",
+        "H-02",
+        "E08-BF"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/POST_ICD_ESA_MAXIMAL_GRAPH_MOLLIFIER_AND_SQUARE_AUDIT_2026_11_26.md",
+        "section": "4",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Need source-exact simultaneous graph approximation, component output equality, polarization, adjoint weak form. NAG3 is planned sequencing, not asserted logically necessary; no new native theorem."
+    },
+    {
+      "id": "PE-SPIN",
+      "title": "Genuine Spin(9) Fock-vector and physical-domain covariance",
+      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "direct_dependencies": [
+        "O-01",
+        "PE-ICDC",
+        "PE-NAG2",
+        "E08-LB1C1"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/GAUGE_SPIN_GLOBAL_REVIEW_2026_11_25.md",
+        "section": "direct finite Spin(9) covariance",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Require actual global phase-fixed action, domain covariance and generator normalization; operator HS action insufficient."
+    },
+    {
+      "id": "PE-TRIAL",
+      "title": "Literal normalized 104-function polynomial-Gaussian physical singlet and weighted charge domain",
+      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "direct_dependencies": [
+        "PE-SPIN",
+        "PE-UGC4",
+        "E08-C4A"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/README.md",
+        "section": "1, 4, 5",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Check seed cancellations, global source covariance and weighted graph inclusion; no inferred optimality."
+    },
+    {
+      "id": "PE-FINITE-LINEAGE",
+      "title": "Exact archived contraction-coefficient lineage and full-rank interpolation",
+      "evidence_status": "SURVIVED_FINITE_TESTS",
+      "direct_dependencies": [],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/README.md",
+        "section": "3",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "58,458 exact recorded comparisons and 79 full-rank designs; not independent replay of all underlying raw contractions."
+    },
+    {
+      "id": "PE-RAW",
+      "title": "Independent source-exact raw contraction/seed certificate",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "direct_dependencies": [
+        "PE-FINITE-LINEAGE"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/README.md",
+        "section": "7",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Raw contractions remain residual computational evidence obligation; no blanket native proof."
+    },
+    {
+      "id": "PE-HARDY",
+      "title": "Positive-regulator Hardy estimate on physical spinor intertwiners",
+      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "direct_dependencies": [
+        "PE-SPIN",
+        "PE-SQUARE",
+        "E08-G15"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/README.md",
+        "section": "6",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Verify source tau/Xi coefficients, compression isotropy and graph-core averaging; uniform for fixed delta>0, no gap."
+    },
+    {
+      "id": "PE-FIDELITY",
+      "title": "Same-H fidelity inequality for all positive regulators",
+      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "direct_dependencies": [
+        "PE-TRIAL",
+        "PE-RAW",
+        "PE-HARDY",
+        "PE-SQUARE"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/FORWARD_ANALYTICAL_RESEARCH_2026_11_25.md",
+        "section": "Uniform positive-regulator implication",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "F=||P_kerH psi||^2 independent of delta; scalar supremum only. Conservative delta=1/2 bound >11.075824%; no singular operator."
+    },
+    {
+      "id": "PE-EXIST",
+      "title": "Nonzero original physical zero-energy eigenstate",
+      "evidence_status": "OPEN_PROOF_OBLIGATION",
+      "direct_dependencies": [
+        "PE-FIDELITY"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/README.md",
+        "section": "7",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Conditional nonzero kernel implication; no uniqueness, gap, or empirical BFSS validation."
+    },
+    {
+      "id": "PE-NEG-ICD0",
+      "title": "Stopped monolithic ICD0 implementation",
+      "evidence_status": "STOPPED_UNQUALIFIED",
+      "direct_dependencies": [],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/ICDC0_R2_GREEN_QUALIFIED_CONSOLIDATION_2026_11_26.md",
+        "section": "What is now qualified",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Do not import stopped file. Replacement ICD-A/B/C achieve mathematical target separately."
+    },
+    {
+      "id": "PE-NEG-GM2A",
+      "title": "Massless multiplier maximal domain does not identify maximal first-order charge",
+      "evidence_status": "SCOPE_LIMITATION",
+      "direct_dependencies": [],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/POST_ICD_ESA_MAXIMAL_GRAPH_MOLLIFIER_AND_SQUARE_AUDIT_2026_11_26.md",
+        "section": "1",
+        "evidence_basis": "archived analytical/computational audit"
+      },
+      "boundary": "Do not infer ESA from GM2A; not a mathematical disproof of ESA."
+    }
+  ],
+  "validation": {
+    "method": "Executed JS checks: unique IDs across base and extension; all reached dependency IDs resolve; DFS from each pilot record detects no cycle",
+    "counts": {
+      "INTEGRATED_STRICT": 9,
+      "PENDING_STRICT_GATE": 1,
+      "OPEN_PROOF_OBLIGATION": 3,
+      "ANALYTICAL_CONDITIONAL": 5,
+      "SURVIVED_FINITE_TESTS": 1,
+      "STOPPED_UNQUALIFIED": 1,
+      "SCOPE_LIMITATION": 1
+    },
+    "existence_reachable_open_or_conditional_ids": [
+      "O-01",
+      "PE-EXIST",
+      "PE-FIDELITY",
+      "PE-HARDY",
+      "PE-RAW",
+      "PE-SPIN",
+      "PE-SQUARE",
+      "PE-TRIAL"
+    ]
+  },
+  "sequencing_note": "Complete NAG3 and explicit ESA first by plan. Common-square mathematics may instead use NAG0 closed graph + simultaneous joint approximation + NAG2 self-adjointness, so do not encode NAG3 as necessary dependency without proof. No zero-regulator operator needed."
+}
