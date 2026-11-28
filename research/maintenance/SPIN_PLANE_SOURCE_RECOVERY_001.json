@@ -1,0 +1,157 @@
+{
+  "schema": "historical-spin-plane-source-recovery-v1",
+  "date": "2026-11-28 Pacific",
+  "current_baseline": "2e0bcc98de5514498cb6f03727a355e8f504260d",
+  "source_pr": 1,
+  "source_run": 38120296827,
+  "source_tested_commit": "b9cd9e58ba41fcd9fe1860d6999dc40e3176e27d",
+  "source_job": 114413439724,
+  "created_at": "2026-10-11T07:07:10Z",
+  "updated_at": "2026-10-11T07:12:18Z",
+  "status": "HISTORICAL_SOURCE_COMPILER_AND_AXIOM_PASS",
+  "scope": "Source-only historical contributor gate; not independent consumer, warnings-as-errors, current combined-tree qualification, or a new proof gate. All six declared reports recovered from provider log. Original draft PR retained.",
+  "workflow": {
+    "path": ".github/workflows/bfss-spin-plane-covariance.yml",
+    "tested_blob": "a840c5b60745d7d6d7b223e5fe3889c502d717b3",
+    "active_on_main": false,
+    "artifact_upload_step": false,
+    "provider_artifacts_returned": 0
+  },
+  "pins": [
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/SpinPlaneCovariance.lean",
+      "tested_blob": "c262821f5532953048c9b2f3ecfbc04fa3b73f43",
+      "current_blob": "c262821f5532953048c9b2f3ecfbc04fa3b73f43",
+      "match": true
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+      "tested_blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "current_blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+      "match": true
+    },
+    {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GammaWords.lean",
+      "tested_blob": "d12051e70de679f5458dbd456667a32c7b407ce4",
+      "current_blob": "d12051e70de679f5458dbd456667a32c7b407ce4",
+      "match": true
+    },
+    {
+      "path": "lean/lean-toolchain",
+      "tested_blob": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+      "current_blob": "ba8ebf2dbaf6a668cd2a0e086186d6d569b69ff5",
+      "match": true
+    },
+    {
+      "path": "lean/lake-manifest.json",
+      "tested_blob": "67d01d2717d0aaff59fb8814bb53581b961f42b4",
+      "current_blob": "67d01d2717d0aaff59fb8814bb53581b961f42b4",
+      "match": true
+    }
+  ],
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check out exact contributor branch",
+      "conclusion": "success"
+    },
+    {
+      "name": "Reclaim runner disk before Mathlib dependency bootstrap",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install upstream-pinned Lean 4 toolchain",
+      "conclusion": "success"
+    },
+    {
+      "name": "Fetch exact Mathlib source and precompiled cache",
+      "conclusion": "success"
+    },
+    {
+      "name": "Compile unchanged upstream BFSS source dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Compile contributor module and check exact theorem axioms",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Check out exact contributor branch",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "reports": [
+    {
+      "declaration": "OAI.BFSSQuantum.AlgebraData.sourceGammaTwo_skew",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_i",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_j",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_remaining",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_all",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "OAI.BFSSQuantum.AlgebraData.sourceSpinKineticCoefficient",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "marker": "KOTLER_BFSS_SPIN_PLANE_COVARIANCE_PINNED_PASS",
+  "decoded_log": "SPIN_PLANE_38120296827_JOB_114413439724_DECODED.log",
+  "original_zip_census_effect": "none; workflow has no upload step; zero artifacts listed; decoded provider log is not an original artifact ZIP",
+  "atlas_lookup_gap": [
+    "OAI.BFSSQuantum.AlgebraData.sourceGammaTwo_skew",
+    "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_i",
+    "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_j",
+    "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_remaining",
+    "OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_all",
+    "OAI.BFSSQuantum.AlgebraData.sourceSpinKineticCoefficient"
+  ],
+  "pilot_test": {
+    "pilot_head": "c9e970ba8dc58d1bca240b8edda1f91a491fae7f",
+    "result": "USEFUL_EVIDENCE_RECONCILIATION_NOT_MEASURED_SPEEDUP",
+    "scope": "Route overlay narrowed to plane generator/K/source core; the November 25 memo already named SpinPlaneCovariance, so direct source review plus provider history, not autonomous RSKA discovery, recovered exact run. V7 lacked all six roots. No claim that RSKA was necessary or more efficient."
+  },
+  "exact_axiom_excerpt": "2026-10-11T07:12:14.9655640Z 'OAI.BFSSQuantum.AlgebraData.sourceGammaTwo_skew' depends on axioms: [propext, Classical.choice, Quot.sound]\n2026-10-11T07:12:14.9657612Z 'OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_i' depends on axioms: [propext, Classical.choice, Quot.sound]\n2026-10-11T07:12:14.9658526Z 'OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_j' depends on axioms: [propext, Classical.choice, Quot.sound]\n2026-10-11T07:12:14.9659172Z 'OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_remaining' depends on axioms: [propext,\n2026-10-11T07:12:14.9659578Z  Classical.choice,\n2026-10-11T07:12:14.9659760Z  Quot.sound]\n2026-10-11T07:12:14.9660175Z 'OAI.BFSSQuantum.AlgebraData.sourceSpinPlane_comm_gamma_all' depends on axioms: [propext, Classical.choice, Quot.sound]\n2026-10-11T07:12:14.9660888Z 'OAI.BFSSQuantum.AlgebraData.sourceSpinKineticCoefficient' depends on axioms: [propext, Classical.choice, Quot.sound]\n2026-10-11T07:12:15.2033196Z KOTLER_BFSS_SPIN_PLANE_COVARIANCE_PINNED_PASS"
+}
