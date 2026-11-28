@@ -1,0 +1,83 @@
+{
+  "schema": "rska-refinements-v0.1",
+  "baseline": "2e0bcc98de5514498cb6f03727a355e8f504260d",
+  "atlas_blob": "2fbca2d3963f66076a530d87ef18425b494d26bb",
+  "overlay_blob": "1cb6f177eef72be8422e5f260de4a47d648007bb",
+  "discovery_blob": "15c75e147a2f58b0270e51d5784524ed246fd3b9",
+  "pins": {
+    "source": {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Hom.lean",
+      "blob": "e078ce60467b0d7f7fadc19065d0aadfb132dca0"
+    },
+    "consumer": {
+      "path": "lean/diagnostics/BFSSIBIG0CSO3HomIndependentConsumer.lean",
+      "blob": "2d57aa3ecc1bfef72a16617ca8d209cbb4ddf7c7"
+    },
+    "receipt": {
+      "path": "research/incidence-before-identity/IBI_G0C_SO3_HOM_R2_GREEN_43782546758_ACCEPTANCE_2026_11_15.md",
+      "blob": "aec884fed91105158d0ef63cf23779888aacb085"
+    },
+    "integration": {
+      "path": "research/incidence-before-identity/IBI_QUALIFIED_INTEGRATION_R1_GREEN_43788864430_ACCEPTANCE_2026_11_15.md",
+      "blob": "56589ae9944999a22cf179785293a88d2d6fc9bf"
+    },
+    "g2a": {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG2ABosonGaugeProbe.lean",
+      "blob": "898c987cbcc0840f9c137682c3be345baca809d1"
+    },
+    "g3a": {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG3AAdjointColorRepresentationProbe.lean",
+      "blob": "553869f1287c64893398c3b79c04fe010023bd08"
+    },
+    "g4j": {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4JExactGaugeDataAssemblyProbe.lean",
+      "blob": "e20c76fb22bc09d16dbcd8657333227cb34ed1ea"
+    },
+    "gauge": {
+      "path": "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean",
+      "blob": "e4990dadf1d8bde849e351467282ab3f14989c3b"
+    }
+  },
+  "refinements": [
+    {
+      "id": "IBI-SO3-HOM",
+      "parent": "E08-IBI",
+      "title": "Original gauge group typed SO(3) homomorphism and surjectivity",
+      "status": "HISTORICAL_STRICT",
+      "source_run": "43782546758",
+      "tested_commit": "b3fce75382db8a50148b30d02585c0dd37ec1a20",
+      "named_roots": [
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointColorMatrix_mem_SO3",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3Hom",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3Hom_coe",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3Hom_surjective"
+      ],
+      "scope": "Historical strict original typed hom and surjectivity, exact source and consumer blob matches; 17-module integrated candidate receipt available. No fresh CI or entire closure requalification. No literal boson-coordinate adapter, Fock equivalence, orbit classification or spectral result.",
+      "source": "source",
+      "consumer": "consumer",
+      "evidence": [
+        "receipt",
+        "integration"
+      ],
+      "candidate_support": [
+        {
+          "target": "RSKA-TRIAL52",
+          "scope": "Source-exact proper color rotation preimages; candidate donor only, not a necessary or sufficient physical dependency."
+        }
+      ]
+    }
+  ],
+  "interface_review": {
+    "status": "SOURCE_INTERFACE_CANDIDATE_ONLY",
+    "scope": "Existing G3A matrix entries are pairedAlgebraData.adjointCoefficient g A B, with rows B and columns A. G2A bosonGaugeEquiv_apply uses original gaugeConjugate; G4J pairedGaugeData_boson_exact gives the literal boson field; GaugeCore gives trace-defined adjointCoefficient and boson_adjoint. These locate exact interfaces for a later coordinate adapter. Earlier adapter RED is not superseded here. No new proof or experiment; SO3 surjectivity not independently necessary for the already archived plane-flow proof, which uses exact source Euler factorization.",
+    "evidence": [
+      "g2a",
+      "g3a",
+      "g4j",
+      "gauge",
+      "receipt",
+      "integration"
+    ]
+  }
+}
