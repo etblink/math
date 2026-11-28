@@ -1,0 +1,450 @@
+{
+  "schema": "cross-track-source-signatures-v1",
+  "baseline": "10755f8d89f67dec6ad2fcbf01fd20e70f61a199",
+  "scope": "Seven SCC and empirical-interface sources. Current source identity against receipt pin. Lexical declaration headers and source axiom requests, not elaborated types or fresh axioms; non-Lean sources separately classified.",
+  "rows": [
+    {
+      "id": "SCC-BOOL",
+      "path": "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC1FiniteWitnessSeparation.lean",
+      "blob": "b78f942e12874c1bb690ef2d6d6ef2a800031245",
+      "expected_blob": "b78f942e12874c1bb690ef2d6d6ef2a800031245",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.StandardModel.SMD1SCC1"
+      ],
+      "imports": [
+        "Mathlib.Tactic"
+      ],
+      "listed_axiom_roots": [
+        "agrees_refl",
+        "agrees_symm",
+        "agrees_trans",
+        "separation_not_agreement",
+        "disagreement_has_witness",
+        "separation_mono",
+        "agreement_antitone",
+        "finite_separation_mono",
+        "singleton_deletion_minimal",
+        "distinct_singleton_minimals",
+        "uniform_separation_mono",
+        "overlap_blocks_uniform",
+        "missing_blocks_agreement",
+        "defined_separation_not_agreement"
+      ],
+      "declarations": [
+        {
+          "name": "AgreesOn",
+          "kind": "def",
+          "line": 28,
+          "source_header": "def AgreesOn (p : Model → Obs → Bool) (S : Set Obs) (a b : Model) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "SeparatesOn",
+          "kind": "def",
+          "line": 32,
+          "source_header": "def SeparatesOn (p : Model → Obs → Bool) (S : Set Obs) (a b : Model) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "agrees_refl",
+          "kind": "theorem",
+          "line": 35,
+          "source_header": "theorem agrees_refl (p : Model → Obs → Bool) (S : Set Obs) (a : Model) :\n    AgreesOn p S a a",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "agrees_symm",
+          "kind": "theorem",
+          "line": 40,
+          "source_header": "theorem agrees_symm (p : Model → Obs → Bool) (S : Set Obs) (a b : Model)\n    (hab : AgreesOn p S a b) : AgreesOn p S b a",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "agrees_trans",
+          "kind": "theorem",
+          "line": 45,
+          "source_header": "theorem agrees_trans (p : Model → Obs → Bool) (S : Set Obs) (a b c : Model)\n    (hab : AgreesOn p S a b) (hbc : AgreesOn p S b c) :\n    AgreesOn p S a c",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "separation_not_agreement",
+          "kind": "theorem",
+          "line": 51,
+          "source_header": "theorem separation_not_agreement (p : Model → Obs → Bool)\n    (S : Set Obs) (a b : Model) (h : SeparatesOn p S a b) :\n    ¬ AgreesOn p S a b",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "disagreement_has_witness",
+          "kind": "theorem",
+          "line": 58,
+          "source_header": "theorem disagreement_has_witness (p : Model → Obs → Bool)\n    (S : Set Obs) (a b : Model) (h : ¬ AgreesOn p S a b) :\n    SeparatesOn p S a b",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "separation_mono",
+          "kind": "theorem",
+          "line": 69,
+          "source_header": "theorem separation_mono (p : Model → Obs → Bool)\n    (S T : Set Obs) (a b : Model) (hST : S ⊆ T)\n    (h : SeparatesOn p S a b) : SeparatesOn p T a b",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "agreement_antitone",
+          "kind": "theorem",
+          "line": 75,
+          "source_header": "theorem agreement_antitone (p : Model → Obs → Bool)\n    (S T : Set Obs) (a b : Model) (hST : S ⊆ T)\n    (h : AgreesOn p T a b) : AgreesOn p S a b",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "FiniteSeparates",
+          "kind": "def",
+          "line": 82,
+          "source_header": "def FiniteSeparates (p : Model → Obs → Bool) (S : Finset Obs)\n    (a b : Model) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "finite_separation_mono",
+          "kind": "theorem",
+          "line": 86,
+          "source_header": "theorem finite_separation_mono (p : Model → Obs → Bool)\n    (S T : Finset Obs) (a b : Model) (hST : S ⊆ T)\n    (h : FiniteSeparates p S a b) : FiniteSeparates p T a b",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "DeletionMinimal",
+          "kind": "def",
+          "line": 93,
+          "source_header": "def DeletionMinimal (p : Model → Obs → Bool) [DecidableEq Obs]\n    (S : Finset Obs) (a b : Model) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "singleton_deletion_minimal",
+          "kind": "theorem",
+          "line": 98,
+          "source_header": "theorem singleton_deletion_minimal (p : Model → Obs → Bool)\n    [DecidableEq Obs] (a b : Model) (w : Obs)\n    (hne : p a w ≠ p b w) :\n    DeletionMinimal p ({w} : Finset Obs) a b",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "distinct_singleton_minimals",
+          "kind": "theorem",
+          "line": 112,
+          "source_header": "theorem distinct_singleton_minimals (p : Model → Obs → Bool)\n    [DecidableEq Obs] (a b : Model) (w₁ w₂ : Obs)\n    (hneq : w₁ ≠ w₂)\n    (h₁ : p a w₁ ≠ p b w₁) (h₂ : p a w₂ ≠ p b w₂) :\n    DeletionMinimal p ({w₁} : Finset Obs) a b ∧\n    DeletionMinimal p ({w₂} : Finset Obs) a b ∧\n    ({w₁} : Finset Obs) ≠ ({w₂} : Finset Obs)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "UniformlySeparates",
+          "kind": "def",
+          "line": 128,
+          "source_header": "def UniformlySeparates (p : Model → Obs → Bool)\n    (A B : Set Model) (S : Finset Obs) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "uniform_separation_mono",
+          "kind": "theorem",
+          "line": 132,
+          "source_header": "theorem uniform_separation_mono (p : Model → Obs → Bool)\n    (A B : Set Model) (S T : Finset Obs) (hST : S ⊆ T)\n    (h : UniformlySeparates p A B S) : UniformlySeparates p A B T",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "overlap_blocks_uniform",
+          "kind": "theorem",
+          "line": 139,
+          "source_header": "theorem overlap_blocks_uniform (p : Model → Obs → Bool)\n    (A B : Set Model) (S : Finset Obs)\n    (hab : ∃ x, x ∈ A ∧ x ∈ B) :\n    ¬ UniformlySeparates p A B S",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "FullyAgrees",
+          "kind": "def",
+          "line": 149,
+          "source_header": "def FullyAgrees (p : Model → Obs → Option Bool)\n    (S : Finset Obs) (a b : Model) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "DefinedSeparation",
+          "kind": "def",
+          "line": 155,
+          "source_header": "def DefinedSeparation (p : Model → Obs → Option Bool)\n    (S : Finset Obs) (a b : Model) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "missing_blocks_agreement",
+          "kind": "theorem",
+          "line": 160,
+          "source_header": "theorem missing_blocks_agreement (p : Model → Obs → Option Bool)\n    (S : Finset Obs) (a b : Model) (w : Obs)\n    (hw : w ∈ S) (hmissing : p a w = none) :\n    ¬ FullyAgrees p S a b",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "defined_separation_not_agreement",
+          "kind": "theorem",
+          "line": 169,
+          "source_header": "theorem defined_separation_not_agreement (p : Model → Obs → Option Bool)\n    (S : Finset Obs) (a b : Model)\n    (h : DefinedSeparation p S a b) :\n    ¬ FullyAgrees p S a b",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "SCC-MIN",
+      "path": "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC2FamilyMinimalWitnesses.lean",
+      "blob": "1f3aecd60e2fc9e73da88a8b2e9bc4c2a722ac2a",
+      "expected_blob": "1f3aecd60e2fc9e73da88a8b2e9bc4c2a722ac2a",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.StandardModel.SMD1SCC2"
+      ],
+      "imports": [
+        "Mathlib.Tactic",
+        "OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation"
+      ],
+      "listed_axiom_roots": [
+        "uniformDeletionMinimal_iff_minimal",
+        "uniformDeletionMinimal_is_uniform",
+        "equivalent_pair_blocks_uniform",
+        "empty_witnesses_blocked",
+        "family_minimal_implies_uniform"
+      ],
+      "declarations": [
+        {
+          "name": "UniformDeletionMinimal",
+          "kind": "def",
+          "line": 27,
+          "source_header": "def UniformDeletionMinimal (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs] (S : Finset Obs) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "uniformDeletionMinimal_iff_minimal",
+          "kind": "theorem",
+          "line": 34,
+          "source_header": "theorem uniformDeletionMinimal_iff_minimal (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs] (S : Finset Obs) :\n    UniformDeletionMinimal p A B S ↔\n      Minimal (UniformlySeparates p A B) S",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "uniformDeletionMinimal_is_uniform",
+          "kind": "theorem",
+          "line": 46,
+          "source_header": "theorem uniformDeletionMinimal_is_uniform (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs] (S : Finset Obs)\n    (h : UniformDeletionMinimal p A B S) :\n    UniformlySeparates p A B S",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "equivalent_pair_blocks_uniform",
+          "kind": "theorem",
+          "line": 54,
+          "source_header": "theorem equivalent_pair_blocks_uniform (p : Model → Obs → Bool)\n    (A B : Set Model) (S : Finset Obs) (a b : Model)\n    (ha : a ∈ A) (hb : b ∈ B)\n    (heq : ∀ w, w ∈ S → p a w = p b w) :\n    ¬ UniformlySeparates p A B S",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "empty_witnesses_blocked",
+          "kind": "theorem",
+          "line": 65,
+          "source_header": "theorem empty_witnesses_blocked (p : Model → Obs → Bool)\n    (A B : Set Model) (a b : Model) (ha : a ∈ A) (hb : b ∈ B) :\n    ¬ UniformlySeparates p A B (∅ : Finset Obs)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "family_minimal_implies_uniform",
+          "kind": "theorem",
+          "line": 72,
+          "source_header": "theorem family_minimal_implies_uniform (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs] (S : Finset Obs)\n    (h : Minimal (UniformlySeparates p A B) S) :\n    UniformlySeparates p A B S",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "SCC-PRIVATE",
+      "path": "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3PrivatePairIncidence.lean",
+      "blob": "e7e737fa6877a85ef2bc216e3adb7fb63e12f485",
+      "expected_blob": "e7e737fa6877a85ef2bc216e3adb7fb63e12f485",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.StandardModel.SMD1SCC3"
+      ],
+      "imports": [
+        "Mathlib.Tactic",
+        "OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalWitnesses",
+        "any theorem from the conditional NFC SCC manuscript."
+      ],
+      "listed_axiom_roots": [
+        "uniform_iff_pairwise_cover",
+        "deletion_failure_iff_uncovered_pair",
+        "uncovered_pair_yields_private",
+        "uniform_minimal_iff_private",
+        "inclusion_minimal_iff_private"
+      ],
+      "declarations": [
+        {
+          "name": "CoveredPairs",
+          "kind": "def",
+          "line": 28,
+          "source_header": "def CoveredPairs (p : Model → Obs → Bool) (S : Finset Obs) :\n    Set (Model × Model)",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "uniform_iff_pairwise_cover",
+          "kind": "theorem",
+          "line": 34,
+          "source_header": "theorem uniform_iff_pairwise_cover (p : Model → Obs → Bool)\n    (A B : Set Model) (S : Finset Obs) :\n    UniformlySeparates p A B S ↔\n      ∀ pair : Model × Model, pair.1 ∈ A → pair.2 ∈ B →\n        pair ∈ CoveredPairs p S",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "deletion_failure_iff_uncovered_pair",
+          "kind": "theorem",
+          "line": 47,
+          "source_header": "theorem deletion_failure_iff_uncovered_pair (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs]\n    (S : Finset Obs) (w : Obs) :\n    ¬ UniformlySeparates p A B (S.erase w) ↔\n      ∃ a, a ∈ A ∧ ∃ b, b ∈ B ∧\n        ∀ v, v ∈ S.erase w → p a v = p b v",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "PrivatePair",
+          "kind": "def",
+          "line": 71,
+          "source_header": "def PrivatePair (p : Model → Obs → Bool) (A B : Set Model)\n    [DecidableEq Obs] (S : Finset Obs) (w : Obs) : Prop",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "uncovered_pair_yields_private",
+          "kind": "theorem",
+          "line": 79,
+          "source_header": "theorem uncovered_pair_yields_private (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs]\n    (S : Finset Obs) (w : Obs)\n    (hcover : UniformlySeparates p A B S)\n    (hleft : ∃ a, a ∈ A ∧ ∃ b, b ∈ B ∧\n      ∀ v, v ∈ S.erase w → p a v = p b v) :\n    PrivatePair p A B S w",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "uniform_minimal_iff_private",
+          "kind": "theorem",
+          "line": 97,
+          "source_header": "theorem uniform_minimal_iff_private (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs] (S : Finset Obs) :\n    UniformDeletionMinimal p A B S ↔\n      UniformlySeparates p A B S ∧\n        ∀ w, w ∈ S → PrivatePair p A B S w",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "inclusion_minimal_iff_private",
+          "kind": "theorem",
+          "line": 118,
+          "source_header": "theorem inclusion_minimal_iff_private (p : Model → Obs → Bool)\n    (A B : Set Model) [DecidableEq Obs] (S : Finset Obs) :\n    Minimal (UniformlySeparates p A B) S ↔\n      UniformlySeparates p A B S ∧\n        ∀ w, w ∈ S → PrivatePair p A B S w",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "SCC-TV",
+      "path": "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean",
+      "blob": "8417daf98449b51d45b18951bd389cb3bd777405",
+      "expected_blob": "8417daf98449b51d45b18951bd389cb3bd777405",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.StandardModel.SMD1SCC3B0"
+      ],
+      "imports": [
+        "Mathlib.Tactic"
+      ],
+      "listed_axiom_roots": [
+        "totalVariation_nonneg",
+        "totalVariation_self",
+        "totalVariation_symm",
+        "totalVariation_eq_zero_iff",
+        "totalVariation_pos_iff",
+        "totalVariation_pos_of_witness",
+        "totalVariation_le_one"
+      ],
+      "declarations": [
+        {
+          "name": "totalVariation",
+          "kind": "def",
+          "line": 26,
+          "source_header": "def totalVariation {n : ℕ} (p q : Categorical n) : ℚ",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "totalVariation_nonneg",
+          "kind": "theorem",
+          "line": 29,
+          "source_header": "theorem totalVariation_nonneg {n : ℕ} (p q : Categorical n) :\n    0 ≤ totalVariation p q",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "totalVariation_self",
+          "kind": "theorem",
+          "line": 38,
+          "source_header": "theorem totalVariation_self {n : ℕ} (p : Categorical n) :\n    totalVariation p p = 0",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "totalVariation_symm",
+          "kind": "theorem",
+          "line": 42,
+          "source_header": "theorem totalVariation_symm {n : ℕ} (p q : Categorical n) :\n    totalVariation p q = totalVariation q p",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "totalVariation_eq_zero_iff",
+          "kind": "theorem",
+          "line": 51,
+          "source_header": "theorem totalVariation_eq_zero_iff {n : ℕ} (p q : Categorical n) :\n    totalVariation p q = 0 ↔ p.weight = q.weight",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "totalVariation_pos_iff",
+          "kind": "theorem",
+          "line": 75,
+          "source_header": "theorem totalVariation_pos_iff {n : ℕ} (p q : Categorical n) :\n    0 < totalVariation p q ↔ p.weight ≠ q.weight",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "totalVariation_pos_of_witness",
+          "kind": "theorem",
+          "line": 90,
+          "source_header": "theorem totalVariation_pos_of_witness {n : ℕ} (p q : Categorical n)\n    (i : Fin n) (hne : p.weight i ≠ q.weight i) :\n    0 < totalVariation p q",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "totalVariation_le_one",
+          "kind": "theorem",
+          "line": 98,
+          "source_header": "theorem totalVariation_le_one {n : ℕ} (p q : Categorical n) :\n    totalVariation p q ≤ 1",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "SCC-COMPARE",
+      "path": "research/standard-model/tools/smd1_scc3b1.py",
+      "blob": "f395234389956eff23512055f23e659066869eb9",
+      "expected_blob": "f395234389956eff23512055f23e659066869eb9",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "non-Lean",
+      "namespaces": [],
+      "imports": [],
+      "listed_axiom_roots": [],
+      "declarations": []
+    },
+    {
+      "id": "SM-LEDGER",
+      "path": "research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json",
+      "blob": "1d391ba994ee23f03c4423b45fbb15e7e42c86f1",
+      "expected_blob": "1d391ba994ee23f03c4423b45fbb15e7e42c86f1",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "non-Lean",
+      "namespaces": [],
+      "imports": [],
+      "listed_axiom_roots": [],
+      "declarations": []
+    },
+    {
+      "id": "SM-JUNO",
+      "path": "research/standard-model/tools/sm_p0n0.py",
+      "blob": "95192c55e594babe30eecf963debd7acf8a28c59",
+      "expected_blob": "95192c55e594babe30eecf963debd7acf8a28c59",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "non-Lean",
+      "namespaces": [],
+      "imports": [],
+      "listed_axiom_roots": [],
+      "declarations": []
+    }
+  ]
+}
