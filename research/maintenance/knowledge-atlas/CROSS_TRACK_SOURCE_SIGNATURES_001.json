@@ -1,0 +1,443 @@
+{
+  "schema": "cross-track-source-signatures-v1",
+  "baseline": "3280d88562fc8a514238aa1c95601361b99a2cc7",
+  "scope": "Seven Hopf, QIT and IBI modules. Current source identity against receipt pin or exact tested-commit source. Lexical declaration headers and source axiom requests, not elaborated types or fresh axioms.",
+  "rows": [
+    {
+      "id": "RH-GAMMA",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9A0OriginalGammaPairClifford.lean",
+      "blob": "bf5eb554232a6d452e86d85b05220aad7c5d0aeb",
+      "expected_blob": "bf5eb554232a6d452e86d85b05220aad7c5d0aeb",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.RHOPFP9A0"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe"
+      ],
+      "listed_axiom_roots": [
+        "originalGamma_sq",
+        "originalGamma_anticommute",
+        "originalGammaPair_sq_neg_one",
+        "originalGammaPair_skew",
+        "K13_sq",
+        "K25_sq",
+        "K46_sq",
+        "K13_skew",
+        "K25_skew",
+        "K46_skew"
+      ],
+      "declarations": [
+        {
+          "name": "G",
+          "kind": "abbrev",
+          "line": 26,
+          "source_header": "private abbrev G",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "originalGamma_sq",
+          "kind": "theorem",
+          "line": 29,
+          "source_header": "theorem originalGamma_sq (a : SpaceIndex) :\n    G a * G a = (1 : GammaMatrix)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalGamma_anticommute",
+          "kind": "theorem",
+          "line": 40,
+          "source_header": "theorem originalGamma_anticommute (a b : SpaceIndex) (hab : a ≠ b) :\n    G b * G a = -(G a * G b)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalGammaPair_sq_neg_one",
+          "kind": "theorem",
+          "line": 49,
+          "source_header": "theorem originalGammaPair_sq_neg_one (a b : SpaceIndex) (hab : a ≠ b) :\n    (G a * G b) * (G a * G b) = -(1 : GammaMatrix)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalGammaPair_skew",
+          "kind": "theorem",
+          "line": 59,
+          "source_header": "theorem originalGammaPair_skew (a b : SpaceIndex) (hab : a ≠ b) :\n    (G a * G b).transpose = -(G a * G b)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "K13",
+          "kind": "abbrev",
+          "line": 67,
+          "source_header": "private abbrev K13 : GammaMatrix",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "K25",
+          "kind": "abbrev",
+          "line": 68,
+          "source_header": "private abbrev K25 : GammaMatrix",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "K46",
+          "kind": "abbrev",
+          "line": 69,
+          "source_header": "private abbrev K46 : GammaMatrix",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "K13_sq",
+          "kind": "theorem",
+          "line": 71,
+          "source_header": "theorem K13_sq : K13 * K13 = -(1 : GammaMatrix)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "K25_sq",
+          "kind": "theorem",
+          "line": 74,
+          "source_header": "theorem K25_sq : K25 * K25 = -(1 : GammaMatrix)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "K46_sq",
+          "kind": "theorem",
+          "line": 78,
+          "source_header": "theorem K46_sq : K46 * K46 = -(1 : GammaMatrix)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "K13_skew",
+          "kind": "theorem",
+          "line": 82,
+          "source_header": "theorem K13_skew : K13.transpose = -K13",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "K25_skew",
+          "kind": "theorem",
+          "line": 85,
+          "source_header": "theorem K25_skew : K25.transpose = -K25",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "K46_skew",
+          "kind": "theorem",
+          "line": 89,
+          "source_header": "theorem K46_skew : K46.transpose = -K46",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "RH-SPHERE",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D2OriginalGammaInterSphereHomeomorph.lean",
+      "blob": "867385524e1ccdd53dfa3350ae3e92f8538ae94a",
+      "expected_blob": "867385524e1ccdd53dfa3350ae3e92f8538ae94a",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "file at exact tested commit",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.RHOPFP9C3D2G1D2"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D1BOriginalGammaInterSphereInverseIdentities"
+      ],
+      "listed_axiom_roots": [
+        "relationalQUnitHomeomorphStandardUnit",
+        "relationalQUnitHomeomorphStandardUnit_apply",
+        "relationalQUnitHomeomorphStandardUnit_symm_apply"
+      ],
+      "declarations": [
+        {
+          "name": "relationalQUnitHomeomorphStandardUnit",
+          "kind": "def",
+          "line": 30,
+          "source_header": "noncomputable def relationalQUnitHomeomorphStandardUnit :\n    RelationalQUnitCoordinates ≃ₜ StandardUnitCoordinates where\n  toFun",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "relationalQUnitHomeomorphStandardUnit_apply",
+          "kind": "theorem",
+          "line": 40,
+          "source_header": "theorem relationalQUnitHomeomorphStandardUnit_apply\n    (v : RelationalQUnitCoordinates) :\n    relationalQUnitHomeomorphStandardUnit v =\n      relationalQUnitToStandardUnit v",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "relationalQUnitHomeomorphStandardUnit_symm_apply",
+          "kind": "theorem",
+          "line": 47,
+          "source_header": "theorem relationalQUnitHomeomorphStandardUnit_symm_apply\n    (v : StandardUnitCoordinates) :\n    relationalQUnitHomeomorphStandardUnit.symm v =\n      standardUnitToRelationalQUnit v",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "RH-QNORM",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D39OriginalGammaQNormedGroupCoherence.lean",
+      "blob": "3c3a4ef365e9d7580dff8b8fd2f91ef573381e2c",
+      "expected_blob": "3c3a4ef365e9d7580dff8b8fd2f91ef573381e2c",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "file at exact tested commit",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.RHOPFP9C3D2G1D39"
+      ],
+      "imports": [
+        "Mathlib.Analysis.InnerProductSpace.Defs",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D38OriginalGammaSourceQNormAndNormedGroup"
+      ],
+      "listed_axiom_roots": [
+        "relationalSourceComplexFourGroupNorm",
+        "relationalSourceComplexFourGroupNorm_eq_QNorm",
+        "relationalSourceComplexFourGroupNorm_sq",
+        "relationalSourceComplexFourGroupNorm_pos_of_ne_zero"
+      ],
+      "declarations": [
+        {
+          "name": "or",
+          "kind": "instance",
+          "line": 15,
+          "source_header": null,
+          "listed_axiom_root": false
+        },
+        {
+          "name": "relationalSourceComplexFourGroupNorm",
+          "kind": "def",
+          "line": 33,
+          "source_header": "noncomputable def relationalSourceComplexFourGroupNorm\n    (x : RelationalSourceComplexFour) : ℝ",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "relationalSourceComplexFourGroupNorm_eq_QNorm",
+          "kind": "theorem",
+          "line": 41,
+          "source_header": "theorem relationalSourceComplexFourGroupNorm_eq_QNorm\n    (x : RelationalSourceComplexFour) :\n    relationalSourceComplexFourGroupNorm x =\n      relationalSourceComplexFourQNorm x",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "relationalSourceComplexFourGroupNorm_sq",
+          "kind": "theorem",
+          "line": 53,
+          "source_header": "theorem relationalSourceComplexFourGroupNorm_sq\n    (x : RelationalSourceComplexFour) :\n    (relationalSourceComplexFourGroupNorm x) ^ 2 =\n      relationalRangeCoordinateDotSelf x.coordinates",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "relationalSourceComplexFourGroupNorm_pos_of_ne_zero",
+          "kind": "theorem",
+          "line": 62,
+          "source_header": "theorem relationalSourceComplexFourGroupNorm_pos_of_ne_zero\n    (x : RelationalSourceComplexFour) (hx : x ≠ 0) :\n    0 < relationalSourceComplexFourGroupNorm x",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "RH-PROJ",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D69OriginalGammaQCanonicalProjectivizationHomeomorph.lean",
+      "blob": "db6cba9a0e72cd83bb9241027ddddf3c27f6e213",
+      "expected_blob": "db6cba9a0e72cd83bb9241027ddddf3c27f6e213",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.RHOPFP9C3D2G1D69"
+      ],
+      "imports": [
+        "Mathlib.Tactic",
+        "Mathlib.Topology.Constructions",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D60OriginalStandardCircleOrbitQuotientHomeomorph",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D68DCanonicalProjectiveHomeomorph"
+      ],
+      "listed_axiom_roots": [
+        "relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph",
+        "relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph_class"
+      ],
+      "declarations": [
+        {
+          "name": "relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph",
+          "kind": "def",
+          "line": 42,
+          "source_header": "noncomputable def relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph :\n    letI : NormedAddCommGroup RelationalSourceComplexFour",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph_class",
+          "kind": "theorem",
+          "line": 67,
+          "source_header": "theorem relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph_class :\n    letI : NormedAddCommGroup RelationalSourceComplexFour",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "QIT-W0B0",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean",
+      "blob": "c67f30bb76a9990e508a8a050a8c3313e694bda7",
+      "expected_blob": "c67f30bb76a9990e508a8a050a8c3313e694bda7",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.BFSSP3M4W0B0OriginalGammaCommutantInduction"
+      ],
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Group.Action.Defs",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0A3OriginalComplexPureTensorGammaTransport"
+      ],
+      "listed_axiom_roots": [
+        "sourceGammaRealLinear_commute",
+        "originalComplexEquiv_generator_commutes"
+      ],
+      "declarations": [
+        {
+          "name": "Op",
+          "kind": "abbrev",
+          "line": 28,
+          "source_header": "private abbrev Op",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "sourceGammaRealLinear_commute",
+          "kind": "theorem",
+          "line": 33,
+          "source_header": "theorem sourceGammaRealLinear_commute\n    (T : Op)\n    (h : ∀ p : Source48Label, Commute T (sourceNormalizedGamma p))\n    (v : Source48Vector) :\n    Commute T (sourceGammaRealLinear v)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalComplexEquiv_generator_commutes",
+          "kind": "theorem",
+          "line": 51,
+          "source_header": "theorem originalComplexEquiv_generator_commutes\n    (T : Op)\n    (h : ∀ p : Source48Label, Commute T (sourceNormalizedGamma p))\n    (w : ℂ ⊗[ℝ] Source48Vector) :\n    Commute T\n      (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv\n        (CliffordAlgebra.ι (source48Quadratic.baseChange ℂ) w))",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "QIT-W0H1B",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1BOriginalAdjoinFullCliffordCommutantR2.lean",
+      "blob": "9139fba785aa31a1e1cde83419f9848ea67fc016",
+      "expected_blob": "9139fba785aa31a1e1cde83419f9848ea67fc016",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.BFSSP3M4W0H1BOriginalAdjoinFullCliffordCommutantR2"
+      ],
+      "imports": [
+        "Mathlib.Algebra.Algebra.Subalgebra.Lattice",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H1AOriginalGeneratorCentralizerComapR2"
+      ],
+      "listed_axiom_roots": [
+        "originalSourceCentralizerPullback_eq_top",
+        "originalComplexEquiv_fullClifford_commutes"
+      ],
+      "declarations": [
+        {
+          "name": "A",
+          "kind": "abbrev",
+          "line": 27,
+          "source_header": "private abbrev A",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "Op",
+          "kind": "abbrev",
+          "line": 28,
+          "source_header": "private abbrev Op",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "originalSourceCentralizerPullback_eq_top",
+          "kind": "theorem",
+          "line": 33,
+          "source_header": "theorem originalSourceCentralizerPullback_eq_top\n    (T : Op)\n    (h : ∀ p : Source48Label, Commute T (sourceNormalizedGamma p)) :\n    originalSourceCentralizerPullback T = (⊤ : Subalgebra ℂ A)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalComplexEquiv_fullClifford_commutes",
+          "kind": "theorem",
+          "line": 50,
+          "source_header": "theorem originalComplexEquiv_fullClifford_commutes\n    (T : Op)\n    (h : ∀ p : Source48Label, Commute T (sourceNormalizedGamma p))\n    (a : A) :\n    Commute T (FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv a)",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "IBI-DET",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0B1NativeDetOne.lean",
+      "blob": "0b82625932304f9e03f07850cef674689475fc09",
+      "expected_blob": "0b82625932304f9e03f07850cef674689475fc09",
+      "comparison": "BYTE_IDENTICAL",
+      "pin_basis": "receipt source pin",
+      "source_kind": "Lean",
+      "namespaces": [
+        "FCP.BFSSIBIG0B1NativeDetOne"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0B1SourceColumnsTriple"
+      ],
+      "listed_axiom_roots": [
+        "matrixColorColumn",
+        "matrixColorColumn_apply",
+        "matrixColorColumn_adjoint",
+        "matrixColorColumn_one",
+        "originalColumnTriple_eq_sourceInner",
+        "sourceColorUnitTriple_eq_one",
+        "originalAdjointColorMatrix_det_one"
+      ],
+      "declarations": [
+        {
+          "name": "M",
+          "kind": "abbrev",
+          "line": 25,
+          "source_header": "private abbrev M : AlgebraData 2",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "matrixColorColumn",
+          "kind": "def",
+          "line": 29,
+          "source_header": "noncomputable def matrixColorColumn\n    (R : Matrix (Fin 3) (Fin 3) ℝ) (A : Fin 3) : ColorVector 2",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "matrixColorColumn_adjoint",
+          "kind": "theorem",
+          "line": 39,
+          "source_header": "theorem matrixColorColumn_adjoint (g : GaugeGroup 2) (A : Fin 3) :\n    matrixColorColumn (FCP.BFSSSU2GaugeG3A.adjointColorMatrix g) A =\n      M.colorConjugate (g : ColorMatrix 2)\n        (FCP.BFSSSU2GaugeG3A.colorUnit A)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "matrixColorColumn_one",
+          "kind": "theorem",
+          "line": 47,
+          "source_header": "theorem matrixColorColumn_one (A : Fin 3) :\n    matrixColorColumn (1 : Matrix (Fin 3) (Fin 3) ℝ) A =\n      FCP.BFSSSU2GaugeG3A.colorUnit A",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalColumnTriple_eq_sourceInner",
+          "kind": "theorem",
+          "line": 56,
+          "source_header": "theorem originalColumnTriple_eq_sourceInner\n    (R : Matrix (Fin 3) (Fin 3) ℝ) :\n    originalColumnTriple R =\n      inner ℝ (sourceCross (matrixColorColumn R 0)\n        (matrixColorColumn R 1)) (matrixColorColumn R 2)",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "sourceColorUnitTriple_eq_one",
+          "kind": "theorem",
+          "line": 69,
+          "source_header": "theorem sourceColorUnitTriple_eq_one :\n    inner ℝ (sourceCross\n      (FCP.BFSSSU2GaugeG3A.colorUnit (0 : Fin 3))\n      (FCP.BFSSSU2GaugeG3A.colorUnit (1 : Fin 3)))\n      (FCP.BFSSSU2GaugeG3A.colorUnit (2 : Fin 3)) = 1",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalAdjointColorMatrix_det_one",
+          "kind": "theorem",
+          "line": 84,
+          "source_header": "theorem originalAdjointColorMatrix_det_one (g : GaugeGroup 2) :\n    (FCP.BFSSSU2GaugeG3A.adjointColorMatrix g).det = 1",
+          "listed_axiom_root": true
+        }
+      ]
+    }
+  ]
+}
