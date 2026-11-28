@@ -1,0 +1,677 @@
+{
+  "schema": "spin9-fock-source-lineage-v1",
+  "baseline": "3cd3e87d8098a8305a3e1c41a9722803347b8184",
+  "scope": "19 historical acceptance receipts and 38 current source/consumer pin matches; source #print axioms requests indexed, no new compiler or provider-log verification. Editorial dependency links include source-import ancestry, not complete elaborated proof dependency graph. Conditional theorem scopes and stopped routes retained. No fresh qualification or binary recovery.",
+  "records": [
+    {
+      "id": "E08-OUTLINE",
+      "title": "Conditional Spin9 physical outline",
+      "scope": "Six abstract implications; actual FullL2 typed consumers do not instantiate physical action/domain/covariance.",
+      "prerequisites": [],
+      "run_id": 43799204363,
+      "tested_sha": "54d9f05ad803fac15fd7d956007694b95cb9f3c3",
+      "receipt_path": "research/spectral-p2-original-field/SPIN9_ABSTRACT_OUTLINE_R4_GREEN_43799204363_ACCEPTANCE_2026_11_15.md",
+      "receipt_blob": "a29ecb79f7d104bdadfd582a658642914f38674c",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSSpin9AbstractPhysicalOutline.lean",
+      "source_blob": "90432decaa1ea0243aa3f3f573a68a534ffc113c",
+      "consumer_path": "lean/diagnostics/BFSSSpin9AbstractPhysicalOutlineIndependentConsumer.lean",
+      "consumer_blob": "af490d8363742a95c859202d2b70a9e1025c7740",
+      "roots": [
+        "FCP.BFSSSpin9AbstractPhysicalOutline.charge_norm_eq_of_spin_orbit",
+        "FCP.BFSSSpin9AbstractPhysicalOutline.charge_basis_norm_eq",
+        "FCP.BFSSSpin9AbstractPhysicalOutline.charge_basis_sum_sq_eq_sixteen",
+        "FCP.BFSSSpin9AbstractPhysicalOutline.charge_basis_sq_eq_average",
+        "FCP.BFSSSpin9AbstractPhysicalOutline.charge_basis_sq_eq_average_of_sphere_transitive",
+        "FCP.BFSSSpin9AbstractPhysicalOutline.spin_preserves_gauge_fixed"
+      ],
+      "artifact_id": 14195748377,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "E08-HS0",
+      "title": "Original operator Hilbert–Schmidt isometry",
+      "scope": "Per-element linear isometry on distinct source HS operator-column carrier, not original Fock-vector unitary.",
+      "prerequisites": [
+        "S-04",
+        "S-05"
+      ],
+      "run_id": 43801631165,
+      "tested_sha": "e9c02b1eb5ff0aaf4b90be66abf761d5a5db117f",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_HS0_R1_GREEN_43801631165_ORIGINAL_FOCK_HS_ISOMETRY_ACCEPTANCE_2026_11_15.md",
+      "receipt_blob": "337130999f4072f87d4fb5b145010f21c937be8c",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS0OriginalSpin9FockHSIsometry.lean",
+      "source_blob": "780850642b475c53a91fb4c5dd91c3c6f46a1839",
+      "consumer_path": "lean/diagnostics/BFSSP3M4HS0OriginalSpin9FockHSIsometryIndependentConsumer.lean",
+      "consumer_blob": "327c0c30b9df1f102c97f4ca6695782dc618d2c6",
+      "roots": [
+        "FCP.BFSSP3M4HS0OriginalSpin9FockHSIsometry.originalSpin9FockHSFiberLinearEquiv",
+        "FCP.BFSSP3M4HS0OriginalSpin9FockHSIsometry.originalSpin9FockHSFiberLinearEquiv_toOperator",
+        "FCP.BFSSP3M4HS0OriginalSpin9FockHSIsometry.originalSpin9FockHSFiber_inner_invariant",
+        "FCP.BFSSP3M4HS0OriginalSpin9FockHSIsometry.originalSpin9FockHSFiberIsometry",
+        "FCP.BFSSP3M4HS0OriginalSpin9FockHSIsometry.originalSpin9FockHSFiberIsometry_apply"
+      ],
+      "artifact_id": 14197640557,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "E08-HS1",
+      "title": "Original operator HS algebraic unitary group action",
+      "scope": "Algebraic group law and fixed identity operator; no continuity in group parameter, vector action or physical singlet.",
+      "prerequisites": [
+        "E08-HS0"
+      ],
+      "run_id": 43806197198,
+      "tested_sha": "522b8943407775037b507a45e7cd0de0a3483ce1",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_HS1_R2_GREEN_43806197198_UNITARY_OPERATOR_HS_GROUP_ACCEPTANCE_2026_11_15.md",
+      "receipt_blob": "8698be9624dfb91a085800818a981239ea7f2f2c",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS1OriginalSpin9FockHSUnitaryGroupAction.lean",
+      "source_blob": "a9c7b74e358eef4a56c2ae11eca5f138842d55a8",
+      "consumer_path": "lean/diagnostics/BFSSP3M4HS1OriginalSpin9FockHSUnitaryGroupIndependentConsumer.lean",
+      "consumer_blob": "2f615ef5d62eceb9b47d4e0bbc5b00e21bb50622",
+      "roots": [
+        "FCP.BFSSP3M4HS1OriginalSpin9FockHSUnitaryGroupAction.originalSpin9FockHSFiberIsometryEquiv",
+        "FCP.BFSSP3M4HS1OriginalSpin9FockHSUnitaryGroupAction.originalSpin9FockHSFiberIsometryEquiv_apply",
+        "FCP.BFSSP3M4HS1OriginalSpin9FockHSUnitaryGroupAction.originalSpin9FockHSFiberUnitaryHom",
+        "FCP.BFSSP3M4HS1OriginalSpin9FockHSUnitaryGroupAction.originalSpin9FockHSFiberUnitaryHom_toOperator",
+        "FCP.BFSSP3M4HS1OriginalSpin9FockHSUnitaryGroupAction.originalSpin9FockHSFiberUnitaryHom_fixes_operator_one"
+      ],
+      "artifact_id": 14199390776,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "E08-CS0",
+      "title": "Actual source Spin9 central sign",
+      "scope": "Negative central element acts as -I48 and negates all active Majoranas; scalar Fock implementer excluded, parity identity not established.",
+      "prerequisites": [
+        "S-03",
+        "S-04"
+      ],
+      "run_id": 43806215702,
+      "tested_sha": "71b9fdd27500c75a4154c7032c4a8f73b1de1163",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_CS0_R2_GREEN_43806215702_SOURCE_CENTRAL_GAMMA_SIGN_ACCEPTANCE_2026_11_15.md",
+      "receipt_blob": "7bf632e27e9f14a6fe62fdbafe6c23597b2d4ffc",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CS0OriginalSpin9CentralGammaSign.lean",
+      "source_blob": "6b7e627d902f7f9c291cc54b1f3aa1e4dfd5bc1d",
+      "consumer_path": "lean/diagnostics/BFSSP3M4CS0OriginalSpin9CentralGammaSignIndependentConsumer.lean",
+      "consumer_blob": "4daeae400a9f3105a2732450e10b1557bbe821cd",
+      "roots": [
+        "FCP.BFSSP3M4CS0OriginalSpin9CentralGammaSign.originalSpin9Central_originalPairedOrthogonal_negativeOne",
+        "FCP.BFSSP3M4CS0OriginalSpin9CentralGammaSign.originalSpin9Central_activeGamma_negative",
+        "FCP.BFSSP3M4CS0OriginalSpin9CentralGammaSign.originalSpin9Central_activeGamma_negative_starAction",
+        "FCP.BFSSP3M4CS0OriginalSpin9CentralGammaSign.originalSpin9Central_originalAxis_negative"
+      ],
+      "artifact_id": 14199137431,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-LB0",
+      "title": "Original normalized 48-Majorana bivector CAR",
+      "scope": "Two delta terms with coefficient 2 and skew adjoint for distinct indices; no full K bracket.",
+      "prerequisites": [
+        "D-02"
+      ],
+      "run_id": 43811766549,
+      "tested_sha": "a0279b211a81922b17bff24c735bc1c4569f80f0",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB0_R3_GREEN_43811766549_ORIGINAL_MAJORANA_BIVECTOR_CAR_ACCEPTANCE_2026_11_15.md",
+      "receipt_blob": "4c6e741b33807e18673cb100ff7b18c628a5fe77",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean",
+      "source_blob": "d08200fae8ef6c9c9544414307ad537f1eeaa4a4",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB0OriginalSource48MajoranaBivectorCARIndependentConsumer.lean",
+      "consumer_blob": "7875dfc64ca1a6c56f02306bf7c35c4b11dd996d",
+      "roots": [
+        "FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.originalMajorana_bivector_commutator_CAR",
+        "FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.originalMajorana_bivector_commutator",
+        "FCP.BFSSP3M4LB0OriginalSource48MajoranaBivectorCAR.originalMajorana_bivector_skewAdjoint"
+      ],
+      "artifact_id": 14200957362,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "E08-LB1S",
+      "title": "Original skew-matrix Fock bivector K",
+      "scope": "Exact quarter-weighted original normalized CAR sum, skew adjoint for real skew matrices; not Lie hom or group lift.",
+      "prerequisites": [
+        "SPIN-LB0"
+      ],
+      "run_id": 43849019596,
+      "tested_sha": "13e79693918135c375db702c377cffa11ffd9d83",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB1S_R5_GREEN_43849019596_ORIGINAL_SOURCE48_K_SKEW_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "d445bfcf7f71a06ef1202bb7bbc406ec3e002414",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean",
+      "source_blob": "d7d460fc8d2806234816e8bd2088f9cebb6addd4",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivectorIndependentConsumer.lean",
+      "consumer_blob": "b66be3f0097dbb0a2747e58f7ff21b1bf1d7a1d8",
+      "roots": [
+        "FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK",
+        "FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48_matrixSkew_entries",
+        "FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK_skewAdjoint",
+        "FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK_skewAdjoint_of_transpose",
+        "FCP.BFSSP3M4LB1SOriginalSource48SkewMatrixFockBivector.originalSource48BivectorK_zero"
+      ],
+      "artifact_id": 14217203070,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-LB1C0",
+      "title": "Original K commutator expansion",
+      "scope": "Double-sum and CAR substitution for arbitrary real A, not final skew contraction.",
+      "prerequisites": [
+        "E08-LB1S"
+      ],
+      "run_id": 43853833739,
+      "tested_sha": "373e9b017586812bbfe47646fb5d80c76609e7e9",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB1C0_R1_GREEN_43853833739_ORIGINAL_K_COMMUTATOR_EXPANSION_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "f3eb22e87a403637a0a05056ae58a5fdfdc899ce",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean",
+      "source_blob": "8b11930128c92bb8a499970593252de942052b1b",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB1C0OriginalSource48BivectorCommutatorExpansionIndependentConsumer.lean",
+      "consumer_blob": "4011e62c0680c27d17a3d63e41f5bac8ac7036e5",
+      "roots": [
+        "FCP.BFSSP3M4LB1C0OriginalSource48BivectorCommutatorExpansion.originalSource48BivectorK_commutator_doubleSum",
+        "FCP.BFSSP3M4LB1C0OriginalSource48BivectorCommutatorExpansion.originalSource48BivectorK_commutator_CAR_sum",
+        "FCP.BFSSP3M4LB1C0OriginalSource48BivectorCommutatorExpansion.originalSource48BivectorK_zero_commutator"
+      ],
+      "artifact_id": 14220157294,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "E08-LB1C1",
+      "title": "Original K(A)-Majorana covariance",
+      "scope": "For real skew A, commutator with each original normalized gamma is sum_p A[p,k] Gamma_p. No full Lie bracket.",
+      "prerequisites": [
+        "SPIN-LB1C0"
+      ],
+      "run_id": 43901524171,
+      "tested_sha": "af8471e0bd30306778b65ace8d7c68ddf1ff2982",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB1C1_R6_GREEN_43901524171_SOURCE48_K_GAMMA_COVARIANCE_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "affcc72bda08c86d03da6a4772249a08401f05cd",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean",
+      "source_blob": "c2e7a7c665121283cde13ae5dabc183362b6b420",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovarianceIndependentConsumer.lean",
+      "consumer_blob": "a1c186bf3a630b251e4596ecf63a1dd48c12e701",
+      "roots": [
+        "FCP.BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovariance.originalFock_skew_delta_doubleSum_contract",
+        "FCP.BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovariance.originalSource48BivectorK_skew_commutator_gamma",
+        "FCP.BFSSP3M4LB1C1OriginalSource48SkewKMajoranaCovariance.originalSource48BivectorK_skew_commutator_gamma_of_transpose"
+      ],
+      "artifact_id": 14244520439,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "E08-LB1L2",
+      "title": "Hypothesis-first original Fock product covariance",
+      "scope": "Explicit covariance hypotheses retained; native K(A) substitution not discharged.",
+      "prerequisites": [
+        "E08-LB1C1"
+      ],
+      "run_id": 43937204884,
+      "tested_sha": "3f1de41d122d2f00e05b3530039f8dffe8798b53",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB1L2_GREEN_43937204884_ABSTRACT_FOCK_COVARIANCE_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "3601771e504e8a86dc8b591bab0d96bc96b4d4b8",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean",
+      "source_blob": "b4012951a26aa7573db513adab3d7ce27396db7e",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibnizIndependentConsumer.lean",
+      "consumer_blob": "785052f3c53488b56c36bc11f27a8e2100800d17",
+      "roots": [
+        "FCP.BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibniz.originalFock_product_covariance_from_two_hypotheses",
+        "FCP.BFSSP3M4LB1L2AbstractOriginalFockCovarianceLeibniz.originalFock_indexed_product_covariance"
+      ],
+      "artifact_id": 14261117575,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-LB1P0A",
+      "title": "Original elementary skew-plane matrices",
+      "scope": "Entrywise skew and transpose negative including coincident labels; no operator normalization.",
+      "prerequisites": [
+        "E08-LB1L2"
+      ],
+      "run_id": 43951949627,
+      "tested_sha": "7e3df8b9a760b1eecc8ac46a2a49ea5c3e4e76a0",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB1P0A_R4_GREEN_43951949627_SOURCE48_SKEW_PLANE_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "fa07a8beee3f2a7fba028e4265f33435dcbc97a4",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean",
+      "source_blob": "7eb090ab82be47ecae18ae0d091716188cb2db79",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB1P0AOriginalSource48SkewPlaneIndependentConsumer.lean",
+      "consumer_blob": "53da0ec8242c49cfb062257d71d5a22bd4c35500",
+      "roots": [
+        "FCP.BFSSP3M4LB1P0AOriginalSource48SkewPlane.originalSource48SkewPlane_entries_skew",
+        "FCP.BFSSP3M4LB1P0AOriginalSource48SkewPlane.originalSource48SkewPlane_transpose"
+      ],
+      "artifact_id": 14269006528,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-LB1P0B",
+      "title": "Native skew-plane generator normalization",
+      "scope": "Quarter antisymmetric product for arbitrary labels; half gamma product for distinct labels only.",
+      "prerequisites": [
+        "SPIN-LB1P0A",
+        "E08-LB1S"
+      ],
+      "run_id": 43962066769,
+      "tested_sha": "becb76924cabe59681dade936eda971ec1254ee3",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB1P0B_R3_GREEN_43962066769_SOURCE48_NORMALIZATION_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "e64a56162813e89d5e98c3148494b58b85456a10",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0BOriginalSource48SkewPlaneNormalization.lean",
+      "source_blob": "1c47a8645bb8ae18110f29083c95887b8a0e3a15",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalizationIndependentConsumer.lean",
+      "consumer_blob": "056d7692125f723c91e1d4a50540b9bcfaaf09da",
+      "roots": [
+        "FCP.BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalization.originalSource48BivectorK_plane_antisym",
+        "FCP.BFSSP3M4LB1P0BOriginalSource48SkewPlaneNormalization.originalSource48BivectorK_plane_half"
+      ],
+      "artifact_id": 14273998605,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-LB1P1",
+      "title": "Original four-Majorana commutator",
+      "scope": "All four labels including repeated cases; not full sparse-plane or general K bracket.",
+      "prerequisites": [
+        "SPIN-LB0",
+        "E08-LB1L2",
+        "SPIN-LB1P0B"
+      ],
+      "run_id": 43998813826,
+      "tested_sha": "de3af5cd0f7aa82de8aa9c7439bee46d02a37a02",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_LB1P1_R2_GREEN_43998813826_FOUR_MAJORANA_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "186bd75806abc5c4d7999d938299bfe8a88acfae",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P1OriginalFourMajoranaCommutator.lean",
+      "source_blob": "9a2899e24c02cb5a5dd58159605a34195fce3856",
+      "consumer_path": "lean/diagnostics/BFSSP3M4LB1P1OriginalFourMajoranaIndependentConsumer.lean",
+      "consumer_blob": "5822a7290c04e5fc88b297ad14d9d16b8c290bbd",
+      "roots": [
+        "FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalFock_fourFactor_commutator_from_two_covariances",
+        "FCP.BFSSP3M4LB1P1OriginalFourMajoranaCommutator.originalSource48_fourMajorana_commutator"
+      ],
+      "artifact_id": 14290894037,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-CT0",
+      "title": "Original skew bivector ordinary trace zero",
+      "scope": "Actual original Fock trace cyclicity and skew coefficient contraction; no bracket or physical action.",
+      "prerequisites": [
+        "S-05",
+        "SPIN-LB1P0B"
+      ],
+      "run_id": 43983772199,
+      "tested_sha": "7f7ae98f77858f79beccd9e1efdd334b513e2f56",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_CT0_R2_GREEN_43983772199_SOURCE48_SKEW_K_TRACE_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "d0b8fc96f1253e6c1b5e505d2c214665faa0e77e",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CT0OriginalSkewBivectorTrace.lean",
+      "source_blob": "a6f93c62c83bf51a0b89691196f875399d2896fa",
+      "consumer_path": "lean/diagnostics/BFSSP3M4CT0OriginalSkewBivectorTraceIndependentConsumer.lean",
+      "consumer_blob": "f2ddadc880c62632dd91547526ee97bc92a0d504",
+      "roots": [
+        "FCP.BFSSP3M4CT0OriginalSkewBivectorTrace.originalFockTrace_mul_comm",
+        "FCP.BFSSP3M4CT0OriginalSkewBivectorTrace.originalFock_complex_skew_symmetric_doubleSum_zero",
+        "FCP.BFSSP3M4CT0OriginalSkewBivectorTrace.originalSource48BivectorK_skew_trace_zero"
+      ],
+      "artifact_id": 14285716957,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-QTC0A",
+      "title": "Hypothesis-first weighted quadratic expansion",
+      "scope": "Actual original operator carrier; explicit covariance premise; no tensor contraction.",
+      "prerequisites": [
+        "E08-LB1L2"
+      ],
+      "run_id": 44001621836,
+      "tested_sha": "c2697826a7ebd258f604e60def408a84f52a61b9",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_QTC0A_R1_GREEN_44001621836_WEIGHTED_QUADRATIC_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "c2aaec49113027e4b96a941f2edca01f2ad6a8f9",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0AOriginalFockWeightedQuadraticCovariance.lean",
+      "source_blob": "b0b519e46566856e100bf6aa882f9fcdf37d397e",
+      "consumer_path": "lean/diagnostics/BFSSP3M4QTC0AOriginalFockWeightedQuadraticIndependentConsumer.lean",
+      "consumer_blob": "9d1dc845bea73d8e07549c69d9ef07804509f52e",
+      "roots": [
+        "FCP.BFSSP3M4QTC0AOriginalFockWeightedQuadraticCovariance.originalFock_commutator_complex_smul",
+        "FCP.BFSSP3M4QTC0AOriginalFockWeightedQuadraticCovariance.originalFock_quadratic_covariance_expanded"
+      ],
+      "artifact_id": 14292159303,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-QTC0C",
+      "title": "Abstract ordered tensor coefficient contraction",
+      "scope": "Arbitrary complex matrices and module, no Fock/source K instantiation.",
+      "prerequisites": [],
+      "run_id": 44016807302,
+      "tested_sha": "6683cf53cfab96d3bf225658ce21874d3b134e17",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_QTC0C_R1_GREEN_44016807302_ABSTRACT_COEFFICIENT_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "ddb19cfa996f8b2e7b534969333737179e7812b8",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0CAbstractCoefficientContraction.lean",
+      "source_blob": "9448c9a47c605cb6aba2cfc798ae28a0213c9411",
+      "consumer_path": "lean/diagnostics/BFSSP3M4QTC0CAbstractCoefficientIndependentConsumer.lean",
+      "consumer_blob": "4ec2e6eb6b98b6039326765454e563038258f869",
+      "roots": [
+        "FCP.BFSSP3M4QTC0CAbstractCoefficientContraction.coefficient_left",
+        "FCP.BFSSP3M4QTC0CAbstractCoefficientContraction.coefficient_right",
+        "FCP.BFSSP3M4QTC0CAbstractCoefficientContraction.coefficient_both"
+      ],
+      "artifact_id": 14299581585,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-QTC0D",
+      "title": "Thin original Fock tensor covariance adapter",
+      "scope": "Given hcov, Q(ab+ba^T), and skew specialization Q(ab-ba); original K not identified and hcov not discharged for it.",
+      "prerequisites": [
+        "SPIN-QTC0A",
+        "SPIN-QTC0C"
+      ],
+      "run_id": 44018395393,
+      "tested_sha": "274f896c72f5fdb876d51d71b41cb97b41a4a107",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_QTC0D_R1_GREEN_44018395393_NATIVE_FOCK_ADAPTER_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "8b4e1e0a46bc298ed863b377af85f68a412b770d",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC0DOriginalFockThinTensorAdapter.lean",
+      "source_blob": "e52b8ca7a440e04ab3c3a93187e5100daa39e074",
+      "consumer_path": "lean/diagnostics/BFSSP3M4QTC0DOriginalFockThinTensorIndependentConsumer.lean",
+      "consumer_blob": "e6745b9f77fb8b1fbea58f4bb6055826320f342f",
+      "roots": [
+        "FCP.BFSSP3M4QTC0DOriginalFockThinTensorAdapter.originalFock_quadratic_covariance_tensor",
+        "FCP.BFSSP3M4QTC0DOriginalFockThinTensorAdapter.originalFock_quadratic_covariance_skew"
+      ],
+      "artifact_id": 14299603963,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-QTC1G0",
+      "title": "Generic real-to-complex quarter normalization",
+      "scope": "Arbitrary finite labels and ordered original operator words; not native K/Q equality.",
+      "prerequisites": [
+        "E08-LB1S"
+      ],
+      "run_id": 44024718712,
+      "tested_sha": "2de9d213c3aa238ef68b3f71e8ad4e0534ce7f82",
+      "receipt_path": "research/spectral-p2-original-field/BFSS_M4_QTC1G0_R1_GREEN_44024718712_GENERIC_QUARTER_ACCEPTANCE_2026_11_16.md",
+      "receipt_blob": "e02f24922159fde0c3af446e32434e7771f08ece",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4QTC1G0OriginalFockGenericRealQuarter.lean",
+      "source_blob": "3a2015658d8d9f20d0a9ab4ae7deb9061949a256",
+      "consumer_path": "lean/diagnostics/BFSSP3M4QTC1G0OriginalFockGenericRealQuarterIndependentConsumer.lean",
+      "consumer_blob": "94a379def18b71e22c3be162b5272100628a8bcb",
+      "roots": [
+        "FCP.BFSSP3M4QTC1G0OriginalFockGenericRealQuarter.originalFock_real_quarter_quadratic_generic"
+      ],
+      "artifact_id": 14302906791,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pin_authority": "Exact source and consumer read at tested commit and current source pin match; receipt root report count."
+    },
+    {
+      "id": "SPIN-W0C1",
+      "title": "Original commutator-plus-trace witness injectivity",
+      "scope": "All 48 gamma commutations and trace zero imply operator zero; signature injective; no physical parity/gauge measurement completeness.",
+      "prerequisites": [
+        "F-02",
+        "QIT-W0H1B"
+      ],
+      "run_id": 44208084307,
+      "tested_sha": "3f45d2df6c4200086ba2a8ee404d2f4e37524672",
+      "receipt_path": "research/quantum-information/BFSS_QIT_SCC_W0C1_R2_GREEN_44208084307_ACCEPTANCE_2026_11_17.md",
+      "receipt_blob": "8ff22b9a55fd86e9732679cac596d895a30c5565",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C1OriginalCommutatorTraceWitnessR2.lean",
+      "source_blob": "5fafaa3d73d3761719ea160466b40d94b85d74db",
+      "consumer_path": "lean/diagnostics/BFSSP3M4W0C1OriginalCommutatorTraceIndependentConsumerR2.lean",
+      "consumer_blob": "85e8067c892bc52533f6a3ecc1f099010efac4ae",
+      "roots": [
+        "FCP.BFSSP3M4W0C1OriginalCommutatorTraceWitnessR2.originalFockWitness_kernel_zero",
+        "FCP.BFSSP3M4W0C1OriginalCommutatorTraceWitnessR2.originalFockWitnessSignature_injective"
+      ],
+      "artifact_id": 14384678894,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "unaudited_definition_lookup": "FCP.BFSSP3M4W0C1OriginalCommutatorTraceWitnessR2.originalFockWitnessSignature",
+      "unindexed_donors": [
+        "P3M4W0B2BOriginalSchurScalarCommutant",
+        "P3M4W0C0OriginalFockScalarTraceSeparationR2"
+      ]
+    },
+    {
+      "id": "SPIN-W0C2A",
+      "title": "Original Lie-defect trace and conditional centralizer reduction",
+      "scope": "Skew matrix commutator and trace-zero defect; full bracket conditional on all-48 gamma commutation. W0C2B2 remains blocked.",
+      "prerequisites": [
+        "SPIN-CT0",
+        "SPIN-W0C1",
+        "E08-LB1C1"
+      ],
+      "run_id": 44213315719,
+      "tested_sha": "48e7e58b23c19643c905d16fe69e46d0a7c0a73e",
+      "receipt_path": "research/quantum-information/BFSS_QIT_SCC_W0C2A_R1_GREEN_44213315719_ACCEPTANCE_2026_11_17.md",
+      "receipt_blob": "59ee35ff70dffe3520b442f5096a86ec7b7b9207",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0C2AOriginalBivectorLieDefectTraceBridge.lean",
+      "source_blob": "51c4b4ab238bcc0f897822a7da4d9fc74dfd55fb",
+      "consumer_path": "lean/diagnostics/BFSSP3M4W0C2AOriginalBivectorLieDefectIndependentConsumer.lean",
+      "consumer_blob": "4ddacfbe1ee1d7d55b321f4cb9c0d6d462261aec",
+      "roots": [
+        "FCP.BFSSP3M4W0C2AOriginalBivectorLieDefectTraceBridge.originalSource48_matrix_commutator_skew",
+        "FCP.BFSSP3M4W0C2AOriginalBivectorLieDefectTraceBridge.originalSource48K_lieDefect_trace_zero",
+        "FCP.BFSSP3M4W0C2AOriginalBivectorLieDefectTraceBridge.originalSource48K_lieBracket_of_defect_central"
+      ],
+      "artifact_id": 14388057344,
+      "source_consumer_pins_match": true,
+      "axioms_reported_in_historical_receipt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "source_receipt_queue": [
+    {
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineGammaCovariance.lean",
+      "source_blob": "a781695776197adb057f5a7c2c2f2d983a6441eb",
+      "source_axiom_requests": 6,
+      "scope": "Global original nine-gamma intertwining, inverse covariance and pair intertwining",
+      "status": "SOURCE_PRESENT_EXACT_RECEIPT_RECONCILIATION_PENDING",
+      "note": "Do not infer independent qualification from source or dependency use. Search exact historical acceptance and tested pins."
+    },
+    {
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineCompactness.lean",
+      "source_blob": "4dfc7d5498687cda6f552e4652514898fc83e2d4",
+      "source_axiom_requests": 8,
+      "scope": "Source Spin9 compactness and eight-unit-word surjection",
+      "status": "SOURCE_PRESENT_EXACT_RECEIPT_RECONCILIATION_PENDING",
+      "note": "Do not infer independent qualification from source or dependency use. Search exact historical acceptance and tested pins."
+    },
+    {
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DWNativeRepresentationDifferentiability.lean",
+      "source_blob": "8542aedf65081043c1ce0e1d7c8255bd5e275995",
+      "source_axiom_requests": 11,
+      "scope": "Identity differentiability of source Spin9 to SO16 representation",
+      "status": "SOURCE_PRESENT_EXACT_RECEIPT_RECONCILIATION_PENDING",
+      "note": "Do not infer independent qualification from source or dependency use. Search exact historical acceptance and tested pins."
+    },
+    {
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean",
+      "source_blob": "75a679f2a1435d747e219617feea266b4508c53d",
+      "source_axiom_requests": 3,
+      "scope": "Actual paired 48-real special orthogonal hom",
+      "status": "SOURCE_PRESENT_EXACT_RECEIPT_RECONCILIATION_PENDING",
+      "note": "Do not infer independent qualification from source or dependency use. Search exact historical acceptance and tested pins."
+    },
+    {
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean",
+      "source_blob": "353978608b978b00d0e36deb1c1a47c32641ea59",
+      "source_axiom_requests": 4,
+      "scope": "Actual negative central element paired SO48 image",
+      "status": "SOURCE_PRESENT_EXACT_RECEIPT_RECONCILIATION_PENDING",
+      "note": "Do not infer independent qualification from source or dependency use. Search exact historical acceptance and tested pins."
+    }
+  ],
+  "negative_knowledge": [
+    {
+      "run_ids": [
+        43796459069,
+        43797501515,
+        43798301546
+      ],
+      "lesson": "Outline import, application, and missing Core.olean repairs; never claim original representation instantiated."
+    },
+    {
+      "run_ids": [
+        43804304851
+      ],
+      "lesson": "HS1 identity theorem inverse mismatch and incorrect parent cold target; repair roundtrip and target."
+    },
+    {
+      "run_ids": [
+        43804542031
+      ],
+      "lesson": "CS0 wrong HS0 cold target, not mathematical failure."
+    },
+    {
+      "run_ids": [
+        43856330483,
+        43858870801,
+        43863772086,
+        43865912098,
+        43867535620
+      ],
+      "lesson": "LB1C1 RED sequence; R5 source roots standard-only but strict linter failed; R6 separator fix."
+    },
+    {
+      "run_ids": [
+        43916000648,
+        43918477267,
+        43921140661,
+        43924517686
+      ],
+      "lesson": "Native K product join recursion/timeouts; hypothesis-first LB1L2 avoids repeated giant terms."
+    },
+    {
+      "run_ids": [
+        43957825299,
+        43958703251
+      ],
+      "lesson": "P0B shallow checkout and explicit sub_smul/conditional lemma repair."
+    },
+    {
+      "run_ids": [
+        43996551474
+      ],
+      "lesson": "P1 split qualified donor identifier; syntax only."
+    },
+    {
+      "run_ids": [
+        43980155870
+      ],
+      "lesson": "CT0 wrong coefficient ring argument to trace_mul_comm."
+    },
+    {
+      "run_ids": [
+        44012367725,
+        44014529416
+      ],
+      "lesson": "Direct native QTC0B stopped; use qualified generic coefficient contraction then thin adapter."
+    },
+    {
+      "run_ids": [
+        44020471704,
+        44022359538
+      ],
+      "lesson": "Original QTC1 Source48 join REDs; direct R3 stopped; generic quarter donor not a source join."
+    }
+  ],
+  "remaining": {
+    "global_vector_lift": "Separate per-element inner implementability from coherent group lift with correct phase/central sign and topology. Source HS group is operator carrier only. Compare original Spin9 to Spin48 covering route and sufficient subgroup-specific Lie integration; do not require full so48 proof if physical argument only needs smaller route.",
+    "lie_bracket": "Conditional W0C2A requires actual all-48 gamma commutation of D(A,B); trace and witness kernel already qualified. Full bracket flag remains false and canonical W0C2B2 R2 blocked. QTC and sparse plane approaches are alternative donors, not mandatory physical prerequisites.",
+    "physical_transfer": "Original bosonic pullback, genuine SU2 unitary commutation, common closed charge domain and sixteen-charge covariance, actual spinor transitivity/singlet, compression isotropy and Hardy. CSQ-F2 already qualified common square; do not repeat it.",
+    "source_queue": "Five older source pins inspected; acceptance reconciliation pending, not promoted.",
+    "related": "RHOPF Gamma9-source geometry and PBW source-lineage records are reusable mathematical context, not proofs of physical group action."
+  },
+  "forward_research": "research/spectral-p2-original-field/BFSS_M4_SPIN9_COHERENT_FOCK_LIFT_FORWARD_RESEARCH_2026_11_15.md",
+  "donor_inventory": "research/computational/python-first-20261124/bfss-physical-implication/G16_RETROSPECTIVE_DONOR_INVENTORY_AND_REUSE_DECISION_2026_11_28.md"
+}
