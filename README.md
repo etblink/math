@@ -1,6 +1,6 @@
 # What this is and how to contribute
 
-> **Original SU(2) BFSS research in the downstream integration branch:** start at [BFSS_ACTIVE_ROADMAP.md](BFSS_ACTIVE_ROADMAP.md) and the [live gate checkpoint](BFSS_GATE_STATE.json). These links are BFSS-specific; all community manuscript contribution rules below remain unchanged.
+> **Independent downstream foundational research (etblink/math):** [Research library](research/README.md) · [Current roadmap](BFSS_ACTIVE_ROADMAP.md) · [Consolidation and maintenance](research/maintenance/README.md). The owner-authorized canonical baseline is now `main`. Original community manuscript contribution guidance below remains unchanged. Research claims retain their stated proof and evidence boundaries.
 
 OpenAI's math write-ups can be difficult to understand and can have incomplete citations. This repo seeks to be an inclusive effort to improve these write-ups, and the broader math community--students, postdocs, professors, and enthusiasts--is invited to participate. The effort is entirely independent and is neither sanctioned nor sponsored by OpenAI.
 

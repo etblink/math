@@ -1,19 +1,14 @@
 # Instructions for AI agents working on this repository
 
-## BFSS Project Lead: compulsory live checkpoint (downstream branch only)
+## BFSS Project Lead: canonical research baseline and maintenance freeze
 
-For tasks on the original SU(2) BFSS/Kotler project, including Lean modules in
-`lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/`, related `research/`
-memos and its strict workflows, start by reading
-[BFSS_ACTIVE_ROADMAP.md](BFSS_ACTIVE_ROADMAP.md) and the authoritative
-**live operational status** in [BFSS_GATE_STATE.json](BFSS_GATE_STATE.json).
-After verifying each red or green against exact run SHA and CI source/consumer
-receipts, update that checkpoint **before advancing** another proof gate.
-The roadmap governs which mathematical obligation to work on next; the exact
-Git/CI evidence remains proof authority. Keep `main` untouched for BFSS.
-This is a conditional addition for downstream BFSS, not a replacement of
-the community contribution requirements below.
+Owner-authorized consolidation, 2026-11-28. The downstream project is maintained on `main` in etblink/math, superseding the previous instruction to keep main untouched. The original unified integration branch and both pre-consolidation archive branches are retained as historical checkpoints, not active research branches. Do not write to upstream community repositories.
 
+Start at [research/README.md](research/README.md), [BFSS_ACTIVE_ROADMAP.md](BFSS_ACTIVE_ROADMAP.md) and the [maintenance register](research/maintenance/README.md). The [historical operational gate registry](BFSS_GATE_STATE.json) is preserved unchanged pending reconciliation. Exact tested source, independent consumer, proof reports and original CI receipts govern qualification; a source filename, old status heading or successful computation does not confer qualification.
+
+**Maintenance freeze:** no new research experiments, Lean proof gates or CI launches until the inventory, evidence reconciliation and workflow reactivation checks are complete. Historical workflows are preserved byte-for-byte in [the inert archive](archive/ci-workflows/README.md), with original paths available at the frozen research checkpoint. Restore only reviewed workflows with a specific need; never mass-reactivate them.
+
+Before any subsequent proof, identify exact mathematical differences from existing qualified results, reuse donors, preserve negative evidence, and update the concise roadmap and dependency-indexed knowledge catalogue. No destructive history rewrite, bulk file renaming or evidence deletion. No changes to original community manuscript rules below. No implied physical validity from mathematical qualification.
 
 This file is for AI coding agents (Claude Code, Codex and others) that help someone contribute to `mathcommunity/oai-math-revised`. Humans may find it useful too; the main guide is [README.md](README.md). Maintainers review every pull request; following these rules means your PR needs fewer changes.
 
