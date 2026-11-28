@@ -124,3 +124,7 @@ Owner imported 18 exact original FCP archives in [commit 634065bb9a5f](https://g
 ### RSKA adoption (2026-11-28)
 
 [Owner-approved adoption](RSKA_ADOPTION_2026_11_28.md) incorporates the twelve byte-identical [pilot files](rska-pilot/README.md) through a history-preserving two-parent merge, retaining the original pilot branch. The adoption record supersedes only the historical no-merge decision. Atlas V7 and the spin-plane recovery remain intact. All 35 virtual replay inputs preserved; native checkout checks remain outstanding. No source or CI changes, no new qualification, no expansion of architecture for its own sake. Maintenance freeze remains.
+
+### Workflow and checker compatibility (2026-11-28)
+
+[Bounded audit](WORKFLOW_CHECKER_COMPATIBILITY_2026_11_28.md) and [pin mapping receipt](WORKFLOW_CHECKER_COMPATIBILITY_001.json): 137/137 CSQ-F2, 11/11 D1B0, 84/84 checkpoint pins (232 occurrences, 232 distinct resolved path/blob pairs); 68 historical workflow occurrences resolved via archive. Historical pre-M4 checkpoint matches; 21/21 current roadmap relative file-link occurrences resolve. 864 archived workflow entries; zero executable workflows on main. Old watchdog/checker expect historical live roadmap, old workflow paths and old active-gate diff contract; do not reactivate. No native checker/CI/Lean execution; no requalification, no status edits. Freeze remains; design narrow manual-only current candidate after instruction reconciliation.
