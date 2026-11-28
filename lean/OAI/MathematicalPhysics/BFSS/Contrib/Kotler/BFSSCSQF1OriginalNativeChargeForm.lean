@@ -75,25 +75,53 @@ theorem paired_native_output (a : SpinIndex)
   source_output_of_common_input pairedAlgebraData pairedGaugeData a
     (fun f b => paired_core_charge_norm a b f) u (pairedIndividualInput a u) rfl
 
+/-- Keep the entire coordinate and subtype transport dimension-parametric;
+the concrete closed-graph pairing is supplied only at specialization. -/
+private theorem source_normalized_form {N : ℕ} (M : AlgebraData N)
+    (G : M.GaugeData) (a : SpinIndex)
+    (hn : ∀ (f : G.invariantCore) (b : SpinIndex),
+      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)
+    (hp : ∀ (b c : SpinIndex) (p q : FullL2 N × (SpinIndex → FullL2 N)),
+      p ∈ originalMinimalClosedGraph M G →
+      q ∈ originalMinimalClosedGraph M G →
+      inner ℂ (p.2 b) (q.2 b) = inner ℂ (p.2 c) (q.2 c))
+    (u v : (originalMinimalPhysicalHilbertChargeColumn M G).domain)
+    (w z : (individualPhysicalOperator M G a).domain)
+    (hw : (w : G.physicalSpace) = (u : G.physicalSpace))
+    (hz : (z : G.physicalSpace) = (v : G.physicalSpace)) :
+    inner ℂ (individualPhysicalOperator M G a w)
+      (individualPhysicalOperator M G a z) =
+      (1 / 16 : ℂ) * inner ℂ
+        (originalMinimalPhysicalHilbertChargeColumn M G u)
+        (originalMinimalPhysicalHilbertChargeColumn M G v) := by
+  let T := originalMinimalPhysicalHilbertChargeColumn M G
+  let p : FullL2 N × (SpinIndex → FullL2 N) :=
+    (((u : G.physicalSpace) : FullL2 N), originalMinimalHilbertOutputEquiv (T u))
+  let q : FullL2 N × (SpinIndex → FullL2 N) :=
+    (((v : G.physicalSpace) : FullL2 N), originalMinimalHilbertOutputEquiv (T v))
+  have hu : p ∈ originalMinimalClosedGraph M G := source_column_point M G u
+  have hv : q ∈ originalMinimalClosedGraph M G := source_column_point M G v
+  have hc (b : SpinIndex) : inner ℂ (T u b) (T v b) = inner ℂ (T u a) (T v a) := by
+    change inner ℂ (p.2 b) (q.2 b) = inner ℂ (p.2 a) (q.2 a)
+    exact hp b a p q hu hv
+  have hs := normalized_constant_pairing (T u) (T v) a hc
+  have h1 : T u a = (individualPhysicalOperator M G a w : FullL2 N) :=
+    source_output_of_common_input M G a hn u w hw
+  have h2 : T v a = (individualPhysicalOperator M G a z : FullL2 N) :=
+    source_output_of_common_input M G a hn v z hz
+  rw [h1, h2] at hs
+  exact hs
+
 theorem paired_normalized_form (a : SpinIndex)
     (u v : (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData).domain) :
     inner ℂ (individualPhysicalOperator pairedAlgebraData pairedGaugeData a (pairedIndividualInput a u))
       (individualPhysicalOperator pairedAlgebraData pairedGaugeData a (pairedIndividualInput a v)) =
       (1 / 16 : ℂ) * inner ℂ
         (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData u)
-        (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData v) := by
-  let T := originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData
-  have hu := source_column_point pairedAlgebraData pairedGaugeData u
-  have hv := source_column_point pairedAlgebraData pairedGaugeData v
-  have hc (b : SpinIndex) : inner ℂ (T u b) (T v b) = inner ℂ (T u a) (T v a) :=
-    paired_closed_joint_pairing b a _ _ hu hv
-  have hs := normalized_constant_pairing (T u) (T v) a hc
-  have h1 : T u a = (individualPhysicalOperator pairedAlgebraData pairedGaugeData a
-      (pairedIndividualInput a u) : FullL2 2) := paired_native_output a u
-  have h2 : T v a = (individualPhysicalOperator pairedAlgebraData pairedGaugeData a
-      (pairedIndividualInput a v) : FullL2 2) := paired_native_output a v
-  rw [h1, h2] at hs
-  exact hs
+        (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData v) :=
+  source_normalized_form pairedAlgebraData pairedGaugeData a
+    (fun f b => paired_core_charge_norm a b f) paired_closed_joint_pairing
+    u v (pairedIndividualInput a u) (pairedIndividualInput a v) rfl rfl
 
 #print axioms source_column_point
 #print axioms source_output_of_common_input
