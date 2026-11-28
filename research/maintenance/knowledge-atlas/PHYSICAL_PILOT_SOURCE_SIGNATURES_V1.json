@@ -1,0 +1,1298 @@
+{
+  "schema": "atlas-pilot-source-signatures-v1",
+  "baseline": "491dab35c75de2ac0177da92a7c15e8a89b2b14a",
+  "scope": "Lexical source inventory of 15 strict pilot modules, exact receipt-matched source blobs. #print axioms requests are source markers, not fresh axiom execution. Headers are literal source excerpts, not elaborated types; namespaces candidates only. Imports are direct file imports, not theorem dependency edges. No requalification.",
+  "rows": [
+    {
+      "id": "PE-UGC4",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC4PhysicalGraphCoreIdentification",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC4PhysicalGraphCoreIdentification.lean",
+      "blob": "032c90273c4214aad1b05aef7bd48894b6e23bf4",
+      "namespaces": [
+        "FCP.BFSSUGC4"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC3GraphHaarProjection",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainD2B10CFullHaarCoreCompatibilityAndDensityProbe"
+      ],
+      "listed_axiom_roots": [
+        "core_haar_charge_commutes",
+        "graph_haar_core_mem",
+        "graph_haar_restricted_mem",
+        "original_restricted_graph_iff",
+        "upstream_physical_graph_iff"
+      ],
+      "declarations": [
+        {
+          "name": "restricted_pair_mem",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 20,
+          "source_header": "private theorem restricted_pair_mem {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)\n    (f : SmoothCore N) (hf : f ∈ G.invariantCore) :\n    (coreToL2 f, M.chargeVector f) ∈ LinearMap.range\n      ((coreToL2.comp G.invariantCore.subtype).prod\n        (M.chargeVector.comp G.invariantCore.subtype))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "restricted_range_to_closed",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 27,
+          "source_header": "private theorem restricted_range_to_closed {N : ℕ}\n    (M : AlgebraData N) (G : M.GaugeData)\n    (p : FullL2 N × (SpinIndex → FullL2 N))\n    (hp : p ∈ LinearMap.range\n      ((coreToL2.comp G.invariantCore.subtype).prod\n        (M.chargeVector.comp G.invariantCore.subtype))) :\n    p ∈ originalRestrictedClosedGraph M G",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "restricted_closed_isClosed",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 37,
+          "source_header": "private theorem restricted_closed_isClosed {N : ℕ}\n    (M : AlgebraData N) (G : M.GaugeData) :\n    IsClosed (originalRestrictedClosedGraph M G :\n      Set (FullL2 N × (SpinIndex → FullL2 N)))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "core_haar_charge_commutes",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 46,
+          "source_header": "theorem core_haar_charge_commutes (f : SmoothCore 2) :\n    (fun α : SpinIndex => sourceFullHaarAverageCLM M G (M.chargeVector f α)) =\n      M.chargeVector (sourceHaarAverageCore M G f)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "graph_haar_core_mem",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 65,
+          "source_header": "theorem graph_haar_core_mem (p : FullL2 2 × (SpinIndex → FullL2 2))\n    (hp : p ∈ M.fullCoreGraph) :\n    graph_haar M G p ∈ LinearMap.range\n      ((coreToL2.comp G.invariantCore.subtype).prod\n        (M.chargeVector.comp G.invariantCore.subtype))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "graph_haar_restricted_mem",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 83,
+          "source_header": "theorem graph_haar_restricted_mem {p : FullL2 2 × (SpinIndex → FullL2 2)}\n    (hp : p ∈ M.fullClosedGraph) :\n    graph_haar M G p ∈ originalRestrictedClosedGraph M G",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "original_restricted_graph_iff",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 98,
+          "source_header": "theorem original_restricted_graph_iff (v : FullL2 2) (y : SpinIndex → FullL2 2) :\n    (v, y) ∈ originalRestrictedClosedGraph M G ↔\n      (v, y) ∈ M.fullClosedGraph ∧ v ∈ G.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "upstream_physical_graph_iff",
+          "namespace_candidate": "FCP.BFSSUGC4",
+          "kind": "theorem",
+          "line": 113,
+          "source_header": "theorem upstream_physical_graph_iff (v : FullL2 2) (y : SpinIndex → FullL2 2) :\n    (v, y) ∈ G.deformedModelGraph 1 0 ↔\n      (v, y) ∈ M.fullClosedGraph ∧ v ∈ G.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-CSQE0",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0OriginalCoreEnergy",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0OriginalCoreEnergy.lean",
+      "blob": "42e8396605ef90b96f4434f3df1fb7c2f8eca547",
+      "namespaces": [
+        "FCP.BFSSCSQE0"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0b3BasisSquareComposition"
+      ],
+      "listed_axiom_roots": [
+        "basisSpinor_norm",
+        "basisWeightedSum",
+        "basisCharge",
+        "basisSquarePoint",
+        "basisSquareCore",
+        "symmetricEnergy",
+        "basisEnergyEqual",
+        "averageConstant",
+        "originalBasisEnergy"
+      ],
+      "declarations": [
+        {
+          "name": "basisSpinor",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "def",
+          "line": 20,
+          "source_header": "def basisSpinor (a : SpinIndex) (b : SpinIndex) : ℝ",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "basisSpinor_norm",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 24,
+          "source_header": "theorem basisSpinor_norm (a : SpinIndex) :\n    spinorSquareNorm (basisSpinor a) = 1",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "basisWeightedSum",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 34,
+          "source_header": "theorem basisWeightedSum {V : Type*} [AddCommGroup V] [Module ℂ V]\n    (A : SpinIndex → V) (a : SpinIndex) :\n    (∑ b : SpinIndex, (basisSpinor a b : ℂ) • A b) = A a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "basisCharge",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 48,
+          "source_header": "theorem basisCharge (M : AlgebraData 2) (a : SpinIndex) :\n    sourceAllSpinorCharge M (basisSpinor a) = M.charge a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "basisSquarePoint",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 54,
+          "source_header": "theorem basisSquarePoint (a b : SpinIndex)\n    (f : pairedGaugeData.invariantCore) (x : Boson 2) :\n    ((pairedAlgebraData.charge a * pairedAlgebraData.charge a) f.val) x =\n      ((pairedAlgebraData.charge b * pairedAlgebraData.charge b) f.val) x",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "basisSquareCore",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 61,
+          "source_header": "theorem basisSquareCore (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :\n    pairedAlgebraData.charge a (pairedAlgebraData.charge a f.val) =\n      pairedAlgebraData.charge b (pairedAlgebraData.charge b f.val)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "symmetricEnergy",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 67,
+          "source_header": "theorem symmetricEnergy {A B : SourceEnd 2}\n    (hA : CoreSymmetric A) (hB : CoreSymmetric B)\n    (f : SmoothCore 2) (h : A (A f) = B (B f)) :\n    ‖coreToL2 (A f)‖ ^ 2 = ‖coreToL2 (B f)‖ ^ 2",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "basisEnergyEqual",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 82,
+          "source_header": "theorem basisEnergyEqual (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :\n    ‖coreToL2 (pairedAlgebraData.charge a f.val)‖ ^ 2 =\n      ‖coreToL2 (pairedAlgebraData.charge b f.val)‖ ^ 2",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "averageConstant",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 98,
+          "source_header": "theorem averageConstant (E : SpinIndex → ℝ) (a : SpinIndex)\n    (h : ∀ b : SpinIndex, E b = E a) :\n    (1 / 16 : ℝ) * (∑ b : SpinIndex, E b) = E a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalBasisEnergy",
+          "namespace_candidate": "FCP.BFSSCSQE0",
+          "kind": "theorem",
+          "line": 114,
+          "source_header": "theorem originalBasisEnergy (a : SpinIndex) (f : pairedGaugeData.invariantCore) :\n    ‖coreToL2 (pairedAlgebraData.charge a f.val)‖ ^ 2 =\n      pairedAlgebraData.coreForm f.val",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-ICDA",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDA0OriginalJointGraphAdapter",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDA0OriginalJointGraphAdapter.lean",
+      "blob": "d14edf176225a797b586a59cebed266ff195a432",
+      "namespaces": [
+        "FCP.BFSSICDA0"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AUOriginalMinimalClosedChargeLinearPMapProbe"
+      ],
+      "listed_axiom_roots": [
+        "closed_range_eq_of_pointwise",
+        "source_joint_generator_eq",
+        "source_joint_closed_graph_eq"
+      ],
+      "declarations": [
+        {
+          "name": "closed_range_eq_of_pointwise",
+          "namespace_candidate": "FCP.BFSSICDA0",
+          "kind": "theorem",
+          "line": 17,
+          "source_header": "theorem closed_range_eq_of_pointwise {D X : Type*} [TopologicalSpace X]\n    (f g : D → X) (h : ∀ d : D, f d = g d) :\n    closure (Set.range f) = closure (Set.range g)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_joint_generator_eq",
+          "namespace_candidate": "FCP.BFSSICDA0",
+          "kind": "theorem",
+          "line": 30,
+          "source_header": "theorem source_joint_generator_eq {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (f : G.invariantCore) :\n    (coreToL2 f.val, M.chargeVector f.val) =\n      (coreToL2 f.val, fun b : SpinIndex => coreToL2 (M.charge b f.val))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_joint_closed_graph_eq",
+          "namespace_candidate": "FCP.BFSSICDA0",
+          "kind": "theorem",
+          "line": 41,
+          "source_header": "theorem source_joint_closed_graph_eq {N : ℕ} (M : AlgebraData N) (G : M.GaugeData) :\n    (originalMinimalClosedGraph M G : Set (FullL2 N × (SpinIndex → FullL2 N))) =\n      closure (Set.range (fun f : G.invariantCore =>\n        (coreToL2 f.val, fun b : SpinIndex => coreToL2 (M.charge b f.val))))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-ICDB",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDB0OriginalComponentGraphLifting",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDB0OriginalComponentGraphLifting.lean",
+      "blob": "e0babb86e8159168e31e02850be4d7292b01e248",
+      "namespaces": [
+        "FCP.BFSSICDB0"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDA0OriginalJointGraphAdapter"
+      ],
+      "listed_axiom_roots": [
+        "component_graph_iff",
+        "source_literal_component_graph_iff",
+        "source_component_graph_iff"
+      ],
+      "declarations": [
+        {
+          "name": "other_cauchy",
+          "namespace_candidate": "FCP.BFSSICDB0",
+          "kind": "theorem",
+          "line": 23,
+          "source_header": "private theorem other_cauchy (A : ι → D →ₗ[ℂ] F)\n    (a b : ι) (h : ∀ d : D, ‖A b d‖ = ‖A a d‖) (f : ℕ → D)\n    (ha : CauchySeq (fun n => A a (f n))) :\n    CauchySeq (fun n => A b (f n))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "component_graph_iff",
+          "namespace_candidate": "FCP.BFSSICDB0",
+          "kind": "theorem",
+          "line": 41,
+          "source_header": "theorem component_graph_iff [CompleteSpace F] (J : D →ₗ[ℂ] E) (A : ι → D →ₗ[ℂ] F)\n    (a : ι) (h : ∀ (d : D) (b : ι), ‖A b d‖ = ‖A a d‖)\n    (u : E) (v : F) :\n    (u, v) ∈ closure (Set.range (fun d : D => (J d, A a d))) ↔\n      ∃ y : ι → F, (u, y) ∈ closure\n        (Set.range (fun d : D => (J d, fun b : ι => A b d))) ∧ y a = v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "originalIndividualClosedGraph",
+          "namespace_candidate": "FCP.BFSSICDB0",
+          "kind": "def",
+          "line": 98,
+          "source_header": "def originalIndividualClosedGraph {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)\n    (a : SpinIndex) : Set (FullL2 N × FullL2 N)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "source_literal_component_graph_iff",
+          "namespace_candidate": "FCP.BFSSICDB0",
+          "kind": "theorem",
+          "line": 105,
+          "source_header": "theorem source_literal_component_graph_iff {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)\n    (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (u v : FullL2 N) :\n    (u, v) ∈ originalIndividualClosedGraph M G a ↔\n      ∃ y : SpinIndex → FullL2 N,\n        (u, y) ∈ closure (Set.range (fun f : G.invariantCore =>\n          (coreToL2 f.val, fun b : SpinIndex => coreToL2 (M.charge b f.val)))) ∧\n        y a = v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_component_graph_iff",
+          "namespace_candidate": "FCP.BFSSICDB0",
+          "kind": "theorem",
+          "line": 128,
+          "source_header": "theorem source_component_graph_iff {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)\n    (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (u v : FullL2 N) :\n    (u, v) ∈ originalIndividualClosedGraph M G a ↔\n      ∃ y : SpinIndex → FullL2 N, (u, y) ∈ originalMinimalClosedGraph M G ∧ y a = v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-ICDC",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDC0OriginalPhysicalCommonDomain",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDC0OriginalPhysicalCommonDomain.lean",
+      "blob": "01a9a26eee376861eac110f48ee8982ca7204343",
+      "namespaces": [
+        "FCP.BFSSICDC0"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDB0OriginalComponentGraphLifting",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0OriginalCoreEnergy",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe"
+      ],
+      "listed_axiom_roots": [
+        "source_joint_domain_iff",
+        "source_common_domain",
+        "paired_core_charge_norm",
+        "paired_component_graph_iff",
+        "paired_common_domain"
+      ],
+      "declarations": [
+        {
+          "name": "source_joint_domain_iff",
+          "namespace_candidate": "FCP.BFSSICDC0",
+          "kind": "theorem",
+          "line": 22,
+          "source_header": "theorem source_joint_domain_iff {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)\n    (u : G.physicalSpace) :\n    (∃ y : SpinIndex → FullL2 N, ((u : FullL2 N), y) ∈ originalMinimalClosedGraph M G) ↔\n      u ∈ (originalMinimalPhysicalHilbertChargeColumn M G).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_common_domain",
+          "namespace_candidate": "FCP.BFSSICDC0",
+          "kind": "theorem",
+          "line": 32,
+          "source_header": "theorem source_common_domain {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)\n    (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (u : G.physicalSpace) :\n    (∃ v : FullL2 N, ((u : FullL2 N), v) ∈ originalIndividualClosedGraph M G a) ↔\n      u ∈ (originalMinimalPhysicalHilbertChargeColumn M G).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_core_charge_norm",
+          "namespace_candidate": "FCP.BFSSICDC0",
+          "kind": "theorem",
+          "line": 50,
+          "source_header": "theorem paired_core_charge_norm (a b : SpinIndex) (f : pairedGaugeData.invariantCore) :\n    ‖coreToL2 (pairedAlgebraData.charge b f.val)‖ =\n      ‖coreToL2 (pairedAlgebraData.charge a f.val)‖",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_component_graph_iff",
+          "namespace_candidate": "FCP.BFSSICDC0",
+          "kind": "theorem",
+          "line": 57,
+          "source_header": "theorem paired_component_graph_iff (a : SpinIndex) (u v : FullL2 2) :\n    (u, v) ∈ originalIndividualClosedGraph pairedAlgebraData pairedGaugeData a ↔\n      ∃ y : SpinIndex → FullL2 2,\n        (u, y) ∈ originalMinimalClosedGraph pairedAlgebraData pairedGaugeData ∧ y a = v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_common_domain",
+          "namespace_candidate": "FCP.BFSSICDC0",
+          "kind": "theorem",
+          "line": 66,
+          "source_header": "theorem paired_common_domain (a : SpinIndex) (u : pairedGaugeData.physicalSpace) :\n    (∃ v : FullL2 2, ((u : FullL2 2), v) ∈\n      originalIndividualClosedGraph pairedAlgebraData pairedGaugeData a) ↔\n      u ∈ (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-LOC6C",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC6COriginalPhysicalWeakEquivalence",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC6COriginalPhysicalWeakEquivalence.lean",
+      "blob": "8cd67196d505e5a23a244ba2ff2f8674d9a10ded",
+      "namespaces": [
+        "FCP.BFSSLOC6C"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC5OriginalHilbertWeakGraph",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC6BOriginalHaarGraphTransfer"
+      ],
+      "listed_axiom_roots": [
+        "individual_graph_subset_ambient",
+        "physical_graph_weak_pairing",
+        "physical_weak_pairing_mem_graph",
+        "physical_closed_graph_iff_weak"
+      ],
+      "declarations": [
+        {
+          "name": "individual_graph_subset_ambient",
+          "namespace_candidate": "FCP.BFSSLOC6C",
+          "kind": "theorem",
+          "line": 16,
+          "source_header": "theorem individual_graph_subset_ambient {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) :\n    originalIndividualClosedGraph M G a ⊆\n      closure (Set.range (fun f : SmoothCore N =>\n        (coreToL2 f, coreToL2 (M.charge a f))))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "physical_graph_weak_pairing",
+          "namespace_candidate": "FCP.BFSSLOC6C",
+          "kind": "theorem",
+          "line": 26,
+          "source_header": "theorem physical_graph_weak_pairing {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) (u v : FullL2 N)\n    (hp : (u, v) ∈ originalIndividualClosedGraph M G a) :\n    ∀ f : G.invariantCore,\n      inner ℂ (coreToL2 (M.charge a f.val)) u = inner ℂ (coreToL2 f.val) v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "physical_weak_pairing_mem_graph",
+          "namespace_candidate": "FCP.BFSSLOC6C",
+          "kind": "theorem",
+          "line": 38,
+          "source_header": "theorem physical_weak_pairing_mem_graph (M : AlgebraData 2)\n    (G : M.GaugeData) (a : SpinIndex) (u v : FullL2 2)\n    (hu : u ∈ G.physicalSpace) (hv : v ∈ G.physicalSpace)\n    (h : ∀ f : G.invariantCore,\n      inner ℂ (coreToL2 (M.charge a f.val)) u = inner ℂ (coreToL2 f.val) v) :\n    (u, v) ∈ originalIndividualClosedGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "physical_closed_graph_iff_weak",
+          "namespace_candidate": "FCP.BFSSLOC6C",
+          "kind": "theorem",
+          "line": 48,
+          "source_header": "theorem physical_closed_graph_iff_weak (M : AlgebraData 2)\n    (G : M.GaugeData) (a : SpinIndex) (u v : FullL2 2)\n    (hu : u ∈ G.physicalSpace) (hv : v ∈ G.physicalSpace) :\n    (u, v) ∈ originalIndividualClosedGraph M G a ↔\n    ∀ f : G.invariantCore,\n      inner ℂ (coreToL2 (M.charge a f.val)) u = inner ℂ (coreToL2 f.val) v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-NAG0",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG0OriginalIndividualPhysicalOperator",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG0OriginalIndividualPhysicalOperator.lean",
+      "blob": "bb65935668afc14b927b6d409af025611e3e040f",
+      "namespaces": [
+        "FCP.BFSSNAG0"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDC0OriginalPhysicalCommonDomain"
+      ],
+      "listed_axiom_roots": [
+        "individualClosedSubmodule_set_eq",
+        "individualPhysicalGraph_mem_iff",
+        "individualPhysicalOperator_graph_eq",
+        "individualPhysicalOperator_isClosed",
+        "paired_individual_graph_iff",
+        "paired_individual_isClosed"
+      ],
+      "declarations": [
+        {
+          "name": "individualCoreSubmodule",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "def",
+          "line": 17,
+          "source_header": "def individualCoreSubmodule {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) :\n    Submodule ℂ (FullL2 N × FullL2 N)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "individualClosedSubmodule",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "def",
+          "line": 24,
+          "source_header": "def individualClosedSubmodule {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) :\n    Submodule ℂ (FullL2 N × FullL2 N)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "individualClosedSubmodule_set_eq",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "theorem",
+          "line": 29,
+          "source_header": "theorem individualClosedSubmodule_set_eq {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) :\n    (individualClosedSubmodule M G a : Set (FullL2 N × FullL2 N)) =\n      originalIndividualClosedGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "individualPhysicalGraph",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "def",
+          "line": 35,
+          "source_header": "def individualPhysicalGraph {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) :\n    Submodule ℂ (G.physicalSpace × G.physicalSpace)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "individualPhysicalGraph_mem_iff",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "theorem",
+          "line": 41,
+          "source_header": "theorem individualPhysicalGraph_mem_iff {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) (u v : G.physicalSpace) :\n    (u, v) ∈ individualPhysicalGraph M G a ↔\n      ((u : FullL2 N), (v : FullL2 N)) ∈ originalIndividualClosedGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "individualPhysicalGraph_vertical",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "theorem",
+          "line": 49,
+          "source_header": "private theorem individualPhysicalGraph_vertical {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    ∀ p : G.physicalSpace × G.physicalSpace,\n      p ∈ individualPhysicalGraph M G a → p.1 = 0 → p.2 = 0",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "individualPhysicalOperator",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "def",
+          "line": 68,
+          "source_header": "def individualPhysicalOperator {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) :\n    G.physicalSpace →ₗ.[ℂ] G.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "individualPhysicalOperator_graph_eq",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "theorem",
+          "line": 73,
+          "source_header": "theorem individualPhysicalOperator_graph_eq {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    (individualPhysicalOperator M G a).graph = individualPhysicalGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "individualPhysicalOperator_isClosed",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "theorem",
+          "line": 80,
+          "source_header": "theorem individualPhysicalOperator_isClosed {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    (individualPhysicalOperator M G a).IsClosed",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_individual_graph_iff",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "theorem",
+          "line": 96,
+          "source_header": "theorem paired_individual_graph_iff (a : SpinIndex)\n    (u v : pairedGaugeData.physicalSpace) :\n    (u, v) ∈ (individualPhysicalOperator pairedAlgebraData pairedGaugeData a).graph ↔\n      ((u : FullL2 2), (v : FullL2 2)) ∈\n        originalIndividualClosedGraph pairedAlgebraData pairedGaugeData a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_individual_isClosed",
+          "namespace_candidate": "FCP.BFSSNAG0",
+          "kind": "theorem",
+          "line": 105,
+          "source_header": "theorem paired_individual_isClosed (a : SpinIndex) :\n    (individualPhysicalOperator pairedAlgebraData pairedGaugeData a).IsClosed",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-NAG1",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG1OriginalIndividualPhysicalDomain",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG1OriginalIndividualPhysicalDomain.lean",
+      "blob": "bb70391c888e6dac8836808294447b0d6c99da5e",
+      "namespaces": [
+        "FCP.BFSSNAG1"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG0OriginalIndividualPhysicalOperator",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC2ClosedGraphGaugeCovariance",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe"
+      ],
+      "listed_axiom_roots": [
+        "source_individual_output_physical",
+        "source_native_domain_iff",
+        "source_native_domain_eq",
+        "source_native_domain_dense",
+        "paired_native_domain_eq",
+        "paired_native_domain_dense"
+      ],
+      "declarations": [
+        {
+          "name": "source_individual_output_physical",
+          "namespace_candidate": "FCP.BFSSNAG1",
+          "kind": "theorem",
+          "line": 20,
+          "source_header": "theorem source_individual_output_physical (M : AlgebraData 2)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (u v : FullL2 2) (hu : u ∈ G.physicalSpace)\n    (hp : (u, v) ∈ originalIndividualClosedGraph M G a) :\n    v ∈ G.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_native_domain_iff",
+          "namespace_candidate": "FCP.BFSSNAG1",
+          "kind": "theorem",
+          "line": 31,
+          "source_header": "theorem source_native_domain_iff {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hout : ∀ u v : FullL2 N, u ∈ G.physicalSpace →\n      (u, v) ∈ originalIndividualClosedGraph M G a → v ∈ G.physicalSpace)\n    (u : G.physicalSpace) :\n    u ∈ (individualPhysicalOperator M G a).domain ↔\n      u ∈ (originalMinimalPhysicalHilbertChargeColumn M G).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_native_domain_eq",
+          "namespace_candidate": "FCP.BFSSNAG1",
+          "kind": "theorem",
+          "line": 54,
+          "source_header": "theorem source_native_domain_eq (M : AlgebraData 2)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    (individualPhysicalOperator M G a).domain =\n      (originalMinimalPhysicalHilbertChargeColumn M G).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_native_domain_dense",
+          "namespace_candidate": "FCP.BFSSNAG1",
+          "kind": "theorem",
+          "line": 64,
+          "source_header": "theorem source_native_domain_dense (M : AlgebraData 2)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    Dense ((individualPhysicalOperator M G a).domain : Set G.physicalSpace)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_native_domain_eq",
+          "namespace_candidate": "FCP.BFSSNAG1",
+          "kind": "theorem",
+          "line": 72,
+          "source_header": "theorem paired_native_domain_eq (a : SpinIndex) :\n    (individualPhysicalOperator pairedAlgebraData pairedGaugeData a).domain =\n      (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_native_domain_dense",
+          "namespace_candidate": "FCP.BFSSNAG1",
+          "kind": "theorem",
+          "line": 78,
+          "source_header": "theorem paired_native_domain_dense (a : SpinIndex) :\n    Dense ((individualPhysicalOperator pairedAlgebraData pairedGaugeData a).domain :\n      Set pairedGaugeData.physicalSpace)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-NAG2",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG2OriginalIndividualPhysicalAdjoint",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG2OriginalIndividualPhysicalAdjoint.lean",
+      "blob": "870e59c601872e7f2890b184e3f79cc873dccc68",
+      "namespaces": [
+        "FCP.BFSSNAG2"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG1OriginalIndividualPhysicalDomain",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC6COriginalPhysicalWeakEquivalence",
+        "Mathlib.Analysis.InnerProductSpace.LinearPMap"
+      ],
+      "listed_axiom_roots": [
+        "weak_pairing_closed",
+        "source_core_pair_mem",
+        "source_graph_pairing_iff_weak",
+        "source_adjoint_graph_iff_weak",
+        "source_native_selfAdjoint",
+        "paired_native_selfAdjoint"
+      ],
+      "declarations": [
+        {
+          "name": "weak_pairing_closed",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 20,
+          "source_header": "theorem weak_pairing_closed {D E : Type*}\n    [NormedAddCommGroup E] [InnerProductSpace ℂ E]\n    (J A : D → E) (u v : E)\n    (h : ∀ f : D, inner ℂ (A f) u = inner ℂ (J f) v)\n    (x y : E) (hp : (x, y) ∈ closure (Set.range (fun f => (J f, A f)))) :\n    inner ℂ y u = inner ℂ x v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_core_pair_mem",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 34,
+          "source_header": "theorem source_core_pair_mem {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) (f : G.invariantCore) :\n    (coreToL2 f.val, coreToL2 (M.charge a f.val)) ∈\n      originalIndividualClosedGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_graph_pairing_iff_weak",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 43,
+          "source_header": "theorem source_graph_pairing_iff_weak {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hout : ∀ x y : FullL2 N, x ∈ G.physicalSpace →\n      (x, y) ∈ originalIndividualClosedGraph M G a → y ∈ G.physicalSpace)\n    (u v : G.physicalSpace) :\n    (∀ x y : G.physicalSpace,\n      (x, y) ∈ (individualPhysicalOperator M G a).graph →\n      inner ℂ y u = inner ℂ x v) ↔\n    (∀ f : G.invariantCore,\n      inner ℂ (coreToL2 (M.charge a f.val)) (u : FullL2 N) =\n        inner ℂ (coreToL2 f.val) (v : FullL2 N))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "native_adjoint_graph_pairing",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 75,
+          "source_header": "private theorem native_adjoint_graph_pairing {E : Type*}\n    [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]\n    (Q : E →ₗ.[ℂ] E) (hd : Dense (Q.domain : Set E)) (u v : E) :\n    (u, v) ∈ Q.adjoint.graph ↔\n      ∀ x y : E, (x, y) ∈ Q.graph → inner ℂ y u = inner ℂ x v",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "source_adjoint_graph_iff_weak",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 83,
+          "source_header": "theorem source_adjoint_graph_iff_weak (M : AlgebraData 2)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (u v : G.physicalSpace) :\n    letI : CompleteSpace G.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_native_graph_mem_iff",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 100,
+          "source_header": "private theorem source_native_graph_mem_iff {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (u v : G.physicalSpace) :\n    (u, v) ∈ (individualPhysicalOperator M G a).graph ↔\n      ((u : FullL2 N), (v : FullL2 N)) ∈ originalIndividualClosedGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "selfAdjoint_of_common_graph_test",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 112,
+          "source_header": "private theorem selfAdjoint_of_common_graph_test {E : Type*}\n    [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]\n    (Q : E →ₗ.[ℂ] E) (W : E → E → Prop)\n    (hg : ∀ u v, (u, v) ∈ Q.graph ↔ W u v)\n    (ha : ∀ u v, (u, v) ∈ Q.adjoint.graph ↔ W u v) :\n    IsSelfAdjoint Q",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "source_native_selfAdjoint",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 124,
+          "source_header": "theorem source_native_selfAdjoint (M : AlgebraData 2)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    letI : CompleteSpace G.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_native_selfAdjoint",
+          "namespace_candidate": "FCP.BFSSNAG2",
+          "kind": "theorem",
+          "line": 145,
+          "source_header": "theorem paired_native_selfAdjoint (a : SpinIndex) :\n    letI : CompleteSpace pairedGaugeData.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-NAG3",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG3OriginalIndividualCoreClosure",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG3OriginalIndividualCoreClosure.lean",
+      "blob": "cc0ce464d7bfa87bdf7a45fdd498ce971434d0b7",
+      "namespaces": [
+        "FCP.BFSSNAG3"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG2OriginalIndividualPhysicalAdjoint"
+      ],
+      "listed_axiom_roots": [
+        "physical_pair_closure",
+        "nativeCoreGraph_mem_iff",
+        "nativeCoreOperator_graph_eq",
+        "source_native_core_graph_closure",
+        "source_native_core_closure",
+        "paired_native_core_closure"
+      ],
+      "declarations": [
+        {
+          "name": "physical_pair_closure",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 19,
+          "source_header": "theorem physical_pair_closure {E : Type*}\n    [NormedAddCommGroup E] [NormedSpace ℂ E]\n    (P : Submodule ℂ E) (A : Submodule ℂ (E × E))\n    (h : ∀ p : E × E, p ∈ A → p.1 ∈ P ∧ p.2 ∈ P) :\n    (A.comap (P.subtype.prodMap P.subtype)).topologicalClosure =\n      A.topologicalClosure.comap (P.subtype.prodMap P.subtype)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "nativeCoreGraph",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "def",
+          "line": 40,
+          "source_header": "def nativeCoreGraph {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) : Submodule ℂ (G.physicalSpace × G.physicalSpace)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "nativeCoreOperator",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "def",
+          "line": 44,
+          "source_header": "def nativeCoreOperator {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) : G.physicalSpace →ₗ.[ℂ] G.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "nativeCoreGraph_mem_iff",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 48,
+          "source_header": "theorem nativeCoreGraph_mem_iff {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) (u v : G.physicalSpace) :\n    (u, v) ∈ nativeCoreGraph M G a ↔\n      ∃ f : G.invariantCore, coreToL2 f.val = (u : FullL2 N) ∧\n        coreToL2 (M.charge a f.val) = (v : FullL2 N)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "nativeCoreGraph_le",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 62,
+          "source_header": "private theorem nativeCoreGraph_le {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex) :\n    nativeCoreGraph M G a ≤ individualPhysicalGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "nativeCoreOperator_graph_eq",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 68,
+          "source_header": "theorem nativeCoreOperator_graph_eq {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    (nativeCoreOperator M G a).graph = nativeCoreGraph M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "graph_closure_transport",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 81,
+          "source_header": "private theorem graph_closure_transport {E : Type*}\n    [NormedAddCommGroup E] [NormedSpace ℂ E]\n    (A B : E →ₗ.[ℂ] E) (P R : Submodule ℂ (E × E))\n    (hA : A.graph = P) (hB : B.graph = R)\n    (hC : P.topologicalClosure = R) :\n    A.graph.topologicalClosure = B.graph",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "source_native_core_graph_closure",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 90,
+          "source_header": "theorem source_native_core_graph_closure {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hout : ∀ x y : FullL2 N, x ∈ G.physicalSpace →\n      (x, y) ∈ originalIndividualClosedGraph M G a → y ∈ G.physicalSpace) :\n    (nativeCoreOperator M G a).graph.topologicalClosure =\n      (individualPhysicalOperator M G a).graph",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "closure_eq_of_graph_eq",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 112,
+          "source_header": "private theorem closure_eq_of_graph_eq {E : Type*}\n    [NormedAddCommGroup E] [NormedSpace ℂ E]\n    (A B : E →ₗ.[ℂ] E) (h : A.graph.topologicalClosure = B.graph) :\n    A.closure = B",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "source_native_core_closure",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 121,
+          "source_header": "theorem source_native_core_closure {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hout : ∀ x y : FullL2 N, x ∈ G.physicalSpace →\n      (x, y) ∈ originalIndividualClosedGraph M G a → y ∈ G.physicalSpace) :\n    (nativeCoreOperator M G a).closure = individualPhysicalOperator M G a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_native_core_closure",
+          "namespace_candidate": "FCP.BFSSNAG3",
+          "kind": "theorem",
+          "line": 130,
+          "source_header": "theorem paired_native_core_closure (a : SpinIndex) :\n    (nativeCoreOperator pairedAlgebraData pairedGaugeData a).closure =\n      individualPhysicalOperator pairedAlgebraData pairedGaugeData a",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-ESA",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG4OriginalIndividualCoreESA",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG4OriginalIndividualCoreESA.lean",
+      "blob": "23896a478a6ef36b289f0a76e5418a3ccb1660c8",
+      "namespaces": [
+        "FCP.BFSSNAG4"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG3OriginalIndividualCoreClosure"
+      ],
+      "listed_axiom_roots": [
+        "source_native_core_mem_domain",
+        "source_native_core_dense_of_normClosure",
+        "source_native_core_symmetric",
+        "source_native_core_closable",
+        "paired_native_core_selfAdjoint_closure",
+        "paired_native_core_esa"
+      ],
+      "declarations": [
+        {
+          "name": "source_native_core_mem_domain",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 18,
+          "source_header": "theorem source_native_core_mem_domain {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hout : ∀ u v : FullL2 N, u ∈ G.physicalSpace →\n      (u, v) ∈ originalIndividualClosedGraph M G a → v ∈ G.physicalSpace)\n    (f : G.invariantCore) :\n    (⟨coreToL2 f.val, f.property⟩ : G.physicalSpace) ∈\n      (nativeCoreOperator M G a).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_native_core_dense_of_normClosure",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 35,
+          "source_header": "theorem source_native_core_dense_of_normClosure {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hout : ∀ u v : FullL2 N, u ∈ G.physicalSpace →\n      (u, v) ∈ originalIndividualClosedGraph M G a → v ∈ G.physicalSpace)\n    (hd : G.coreNormClosure = G.physicalSpace) :\n    Dense ((nativeCoreOperator M G a).domain : Set G.physicalSpace)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "formalAdjoint_of_graph_pairing",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 63,
+          "source_header": "private theorem formalAdjoint_of_graph_pairing {E : Type*}\n    [NormedAddCommGroup E] [InnerProductSpace ℂ E]\n    (A : E →ₗ.[ℂ] E) (P : Submodule ℂ (E × E))\n    (hgraph : A.graph = P)\n    (hpair : ∀ u v x y : E, (u, v) ∈ P → (x, y) ∈ P →\n      inner ℂ v x = inner ℂ u y) :\n    A.IsFormalAdjoint A",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "submodule_pairing_transport",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 78,
+          "source_header": "private theorem submodule_pairing_transport {E : Type*}\n    [NormedAddCommGroup E] [InnerProductSpace ℂ E]\n    (P : Submodule ℂ E) (u v x y : P)\n    (f qf g qg : E)\n    (hf : f = (u : E)) (hqf : qf = (v : E))\n    (hg : g = (x : E)) (hqg : qg = (y : E))\n    (hs : inner ℂ qf g = inner ℂ f qg) :\n    inner ℂ v x = inner ℂ u y",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "source_native_core_graph_pairing",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 91,
+          "source_header": "private theorem source_native_core_graph_pairing {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (u v x y : G.physicalSpace)\n    (hp : (u, v) ∈ nativeCoreGraph M G a)\n    (hq : (x, y) ∈ nativeCoreGraph M G a) :\n    inner ℂ v x = inner ℂ u y",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "source_native_core_symmetric",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 106,
+          "source_header": "theorem source_native_core_symmetric {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖) :\n    (nativeCoreOperator M G a).IsFormalAdjoint (nativeCoreOperator M G a)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_native_core_closable",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 115,
+          "source_header": "theorem source_native_core_closable {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hout : ∀ u v : FullL2 N, u ∈ G.physicalSpace →\n      (u, v) ∈ originalIndividualClosedGraph M G a → v ∈ G.physicalSpace) :\n    (nativeCoreOperator M G a).IsClosable",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "selfAdjoint_closure_transport",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 124,
+          "source_header": "private theorem selfAdjoint_closure_transport {E : Type*}\n    [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]\n    (A B : E →ₗ.[ℂ] E) (h : A.closure = B) (hs : IsSelfAdjoint B) :\n    IsSelfAdjoint A.closure",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "paired_native_core_selfAdjoint_closure",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 131,
+          "source_header": "theorem paired_native_core_selfAdjoint_closure (a : SpinIndex) :\n    letI : CompleteSpace pairedGaugeData.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_native_core_esa",
+          "namespace_candidate": "FCP.BFSSNAG4",
+          "kind": "theorem",
+          "line": 142,
+          "source_header": "theorem paired_native_core_esa (a : SpinIndex) :\n    letI : CompleteSpace pairedGaugeData.physicalSpace",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-CSQF0",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF0OriginalClosedJointPairing",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF0OriginalClosedJointPairing.lean",
+      "blob": "d491ecaeebe9151dd2ad49f888235f6382468346",
+      "namespaces": [
+        "FCP.BFSSCSQF0"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG4OriginalIndividualCoreESA"
+      ],
+      "listed_axiom_roots": [
+        "symmetricPairing",
+        "paired_core_pairing",
+        "pairing_on_closure",
+        "joint_range_pairing",
+        "paired_closed_joint_pairing"
+      ],
+      "declarations": [
+        {
+          "name": "abstractSymmetricPairing",
+          "namespace_candidate": "FCP.BFSSCSQF0",
+          "kind": "theorem",
+          "line": 19,
+          "source_header": "private theorem abstractSymmetricPairing {D E : Type*}\n    [NormedAddCommGroup E] [InnerProductSpace ℂ E]\n    (J : D → E) (A B : D → D) (f g : D)\n    (ha : inner ℂ (J (A f)) (J (A g)) = inner ℂ (J f) (J (A (A g))))\n    (hb : inner ℂ (J (B f)) (J (B g)) = inner ℂ (J f) (J (B (B g))))\n    (h : A (A g) = B (B g)) :\n    inner ℂ (J (A f)) (J (A g)) = inner ℂ (J (B f)) (J (B g))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "symmetricPairing",
+          "namespace_candidate": "FCP.BFSSCSQF0",
+          "kind": "theorem",
+          "line": 28,
+          "source_header": "theorem symmetricPairing {A B : SourceEnd 2}\n    (hA : CoreSymmetric A) (hB : CoreSymmetric B)\n    (f g : SmoothCore 2) (h : A (A g) = B (B g)) :\n    inner ℂ (coreToL2 (A f)) (coreToL2 (A g)) =\n      inner ℂ (coreToL2 (B f)) (coreToL2 (B g))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_core_pairing",
+          "namespace_candidate": "FCP.BFSSCSQF0",
+          "kind": "theorem",
+          "line": 37,
+          "source_header": "theorem paired_core_pairing (a b : SpinIndex)\n    (f g : pairedGaugeData.invariantCore) :\n    inner ℂ (coreToL2 (pairedAlgebraData.charge a f.val))\n      (coreToL2 (pairedAlgebraData.charge a g.val)) =\n    inner ℂ (coreToL2 (pairedAlgebraData.charge b f.val))\n      (coreToL2 (pairedAlgebraData.charge b g.val))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "pairing_on_closure",
+          "namespace_candidate": "FCP.BFSSCSQF0",
+          "kind": "theorem",
+          "line": 53,
+          "source_header": "theorem pairing_on_closure {X F : Type*} [TopologicalSpace X]\n    [NormedAddCommGroup F] [InnerProductSpace ℂ F]\n    (S : Set X) (A B : X → F) (ha : Continuous A) (hb : Continuous B)\n    (h : ∀ x y : X, x ∈ S → y ∈ S →\n      inner ℂ (A x) (A y) = inner ℂ (B x) (B y))\n    (x y : X) (hx : x ∈ closure S) (hy : y ∈ closure S) :\n    inner ℂ (A x) (A y) = inner ℂ (B x) (B y)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "joint_range_pairing",
+          "namespace_candidate": "FCP.BFSSCSQF0",
+          "kind": "theorem",
+          "line": 73,
+          "source_header": "theorem joint_range_pairing {D E F ι : Type*} [TopologicalSpace E]\n    [NormedAddCommGroup F] [InnerProductSpace ℂ F]\n    (J : D → E) (A : ι → D → F) (a b : ι)\n    (h : ∀ f g : D, inner ℂ (A a f) (A a g) =\n      inner ℂ (A b f) (A b g))\n    (p q : E × (ι → F))\n    (hp : p ∈ closure (Set.range (fun f : D => (J f, fun i => A i f))))\n    (hq : q ∈ closure (Set.range (fun f : D => (J f, fun i => A i f)))) :\n    inner ℂ (p.2 a) (q.2 a) = inner ℂ (p.2 b) (q.2 b)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_closed_joint_pairing",
+          "namespace_candidate": "FCP.BFSSCSQF0",
+          "kind": "theorem",
+          "line": 93,
+          "source_header": "theorem paired_closed_joint_pairing (a b : SpinIndex)\n    (p q : FullL2 2 × (SpinIndex → FullL2 2))\n    (hp : p ∈ originalMinimalClosedGraph pairedAlgebraData pairedGaugeData)\n    (hq : q ∈ originalMinimalClosedGraph pairedAlgebraData pairedGaugeData) :\n    inner ℂ (p.2 a) (q.2 a) = inner ℂ (p.2 b) (q.2 b)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-CSQF1",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF1OriginalNativeChargeForm",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF1OriginalNativeChargeForm.lean",
+      "blob": "4ebad73518a7eb148c6d8909c6ed3c94cc65f5fd",
+      "namespaces": [
+        "FCP.BFSSCSQF1"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF0OriginalClosedJointPairing"
+      ],
+      "listed_axiom_roots": [
+        "source_column_point",
+        "source_output_of_common_input",
+        "normalized_constant_pairing",
+        "paired_native_output",
+        "paired_normalized_form"
+      ],
+      "declarations": [
+        {
+          "name": "source_column_point",
+          "namespace_candidate": "FCP.BFSSCSQF1",
+          "kind": "theorem",
+          "line": 19,
+          "source_header": "theorem source_column_point {N : ℕ} (M : AlgebraData N) (G : M.GaugeData)\n    (u : (originalMinimalPhysicalHilbertChargeColumn M G).domain) :\n    (((u : G.physicalSpace) : FullL2 N),\n      originalMinimalHilbertOutputEquiv (originalMinimalPhysicalHilbertChargeColumn M G u))\n      ∈ originalMinimalClosedGraph M G",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_output_of_common_input",
+          "namespace_candidate": "FCP.BFSSCSQF1",
+          "kind": "theorem",
+          "line": 30,
+          "source_header": "theorem source_output_of_common_input {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (h : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (u : (originalMinimalPhysicalHilbertChargeColumn M G).domain)\n    (v : (individualPhysicalOperator M G a).domain)\n    (he : (v : G.physicalSpace) = (u : G.physicalSpace)) :\n    originalMinimalHilbertOutputEquiv (originalMinimalPhysicalHilbertChargeColumn M G u) a =\n      (individualPhysicalOperator M G a v : FullL2 N)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "normalized_constant_pairing",
+          "namespace_candidate": "FCP.BFSSCSQF1",
+          "kind": "theorem",
+          "line": 53,
+          "source_header": "theorem normalized_constant_pairing {F : Type*}\n    [NormedAddCommGroup F] [InnerProductSpace ℂ F]\n    (x y : PiLp 2 (fun _ : Fin 16 => F)) (a : Fin 16)\n    (h : ∀ b : Fin 16, inner ℂ (x b) (y b) = inner ℂ (x a) (y a)) :\n    inner ℂ (x a) (y a) = (1 / 16 : ℂ) * inner ℂ x y",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "pairedIndividualInput",
+          "namespace_candidate": "FCP.BFSSCSQF1",
+          "kind": "def",
+          "line": 62,
+          "source_header": "def pairedIndividualInput (a : SpinIndex)\n    (u : (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData).domain) :\n    (individualPhysicalOperator pairedAlgebraData pairedGaugeData a).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "paired_native_output",
+          "namespace_candidate": "FCP.BFSSCSQF1",
+          "kind": "theorem",
+          "line": 69,
+          "source_header": "theorem paired_native_output (a : SpinIndex)\n    (u : (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData).domain) :\n    originalMinimalHilbertOutputEquiv\n      (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData u) a =\n      (individualPhysicalOperator pairedAlgebraData pairedGaugeData a\n        (pairedIndividualInput a u) : FullL2 2)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_normalized_form",
+          "namespace_candidate": "FCP.BFSSCSQF1",
+          "kind": "theorem",
+          "line": 80,
+          "source_header": "private theorem source_normalized_form {N : ℕ} (M : AlgebraData N)\n    (G : M.GaugeData) (a : SpinIndex)\n    (hn : ∀ (f : G.invariantCore) (b : SpinIndex),\n      ‖coreToL2 (M.charge b f.val)‖ = ‖coreToL2 (M.charge a f.val)‖)\n    (hp : ∀ (b c : SpinIndex) (p q : FullL2 N × (SpinIndex → FullL2 N)),\n      p ∈ originalMinimalClosedGraph M G →\n      q ∈ originalMinimalClosedGraph M G →\n      inner ℂ (p.2 b) (q.2 b) = inner ℂ (p.2 c) (q.2 c))\n    (u v : (originalMinimalPhysicalHilbertChargeColumn M G).domain)\n    (w z : (individualPhysicalOperator M G a).domain)\n    (hw : (w : G.physicalSpace) = (u : G.physicalSpace))\n    (hz : (z : G.physicalSpace) = (v : G.physicalSpace)) :\n    inner ℂ (individualPhysicalOperator M G a w)\n      (individualPhysicalOperator M G a z) =\n      (1 / 16 : ℂ) * inner ℂ\n        (originalMinimalPhysicalHilbertChargeColumn M G u)\n        (originalMinimalPhysicalHilbertChargeColumn M G v)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "paired_normalized_form",
+          "namespace_candidate": "FCP.BFSSCSQF1",
+          "kind": "theorem",
+          "line": 115,
+          "source_header": "theorem paired_normalized_form (a : SpinIndex)\n    (u v : (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData).domain) :\n    inner ℂ (individualPhysicalOperator pairedAlgebraData pairedGaugeData a (pairedIndividualInput a u))\n      (individualPhysicalOperator pairedAlgebraData pairedGaugeData a (pairedIndividualInput a v)) =\n      (1 / 16 : ℂ) * inner ℂ\n        (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData u)\n        (originalMinimalPhysicalHilbertChargeColumn pairedAlgebraData pairedGaugeData v)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-SQUARE",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF2OriginalCommonSquare",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF2OriginalCommonSquare.lean",
+      "blob": "ca2776b68a78a9306d3143743316bc258b7b889c",
+      "namespaces": [
+        "FCP.BFSSCSQF2"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF1OriginalNativeChargeForm",
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe"
+      ],
+      "listed_axiom_roots": [
+        "graph_iff_representative",
+        "common_form_test_iff",
+        "naturalSquare_of_common_form",
+        "source_hamiltonian_domain_le",
+        "paired_native_common_square",
+        "paired_core_closure_common_square"
+      ],
+      "declarations": [
+        {
+          "name": "graph_iff_representative",
+          "namespace_candidate": "FCP.BFSSCSQF2",
+          "kind": "theorem",
+          "line": 25,
+          "source_header": "theorem graph_iff_representative (P : E →ₗ.[ℂ] E) (x w : E) :\n    (x, w) ∈ P.graph ↔ ∃ h : x ∈ P.domain, w = P ⟨x, h⟩",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "common_form_test_iff",
+          "namespace_candidate": "FCP.BFSSCSQF2",
+          "kind": "theorem",
+          "line": 35,
+          "source_header": "theorem common_form_test_iff (A : E →ₗ.[ℂ] E) (T : E →ₗ.[ℂ] F)\n    (hd : A.domain = T.domain)\n    (e : T.domain → A.domain) (he : ∀ u, (e u : E) = (u : E))\n    (hf : ∀ u v : T.domain, inner ℂ (A (e u)) (A (e v)) =\n      (1 / 16 : ℂ) * inner ℂ (T u) (T v))\n    (u : T.domain) (w : E) :\n    (∀ v : A.domain, inner ℂ w (v : E) = inner ℂ (A (e u)) (A v)) ↔\n    (∀ v : T.domain, inner ℂ w (v : E) =\n      (1 / 16 : ℂ) * inner ℂ (T u) (T v))",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "naturalSquare_of_common_form",
+          "namespace_candidate": "FCP.BFSSCSQF2",
+          "kind": "theorem",
+          "line": 61,
+          "source_header": "theorem naturalSquare_of_common_form [CompleteSpace E]\n    (A : E →ₗ.[ℂ] E) (T : E →ₗ.[ℂ] F) (H : E →ₗ.[ℂ] E)\n    (hA : IsSelfAdjoint A) (hd : A.domain = T.domain)\n    (e : T.domain → A.domain) (he : ∀ u, (e u : E) = (u : E))\n    (hf : ∀ u v : T.domain, inner ℂ (A (e u)) (A (e v)) =\n      (1 / 16 : ℂ) * inner ℂ (T u) (T v))\n    (hHdom : H.domain ≤ T.domain)\n    (hH : ∀ (u : T.domain) (w : E),\n      (∀ v : T.domain, inner ℂ w (v : E) =\n        (1 / 16 : ℂ) * inner ℂ (T u) (T v)) ↔\n      ∃ h : (u : E) ∈ H.domain, w = H ⟨u, h⟩) :\n    naturalComp A A = H",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "source_hamiltonian_domain_le",
+          "namespace_candidate": "FCP.BFSSCSQF2",
+          "kind": "theorem",
+          "line": 104,
+          "source_header": "theorem source_hamiltonian_domain_le (M : AlgebraData 2) (G : M.GaugeData) :\n    (originalMinimalPhysicalNormalizedHamiltonian M G).domain ≤\n      (originalMinimalPhysicalHilbertChargeColumn M G).domain",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_native_common_square",
+          "namespace_candidate": "FCP.BFSSCSQF2",
+          "kind": "theorem",
+          "line": 112,
+          "source_header": "theorem paired_native_common_square (a : SpinIndex) :\n    naturalComp (individualPhysicalOperator pairedAlgebraData pairedGaugeData a)\n      (individualPhysicalOperator pairedAlgebraData pairedGaugeData a) =\n    originalMinimalPhysicalNormalizedHamiltonian pairedAlgebraData pairedGaugeData",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "paired_core_closure_common_square",
+          "namespace_candidate": "FCP.BFSSCSQF2",
+          "kind": "theorem",
+          "line": 129,
+          "source_header": "theorem paired_core_closure_common_square (a : SpinIndex) :\n    naturalComp (nativeCoreOperator pairedAlgebraData pairedGaugeData a).closure\n      (nativeCoreOperator pairedAlgebraData pairedGaugeData a).closure =\n    originalMinimalPhysicalNormalizedHamiltonian pairedAlgebraData pairedGaugeData",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    },
+    {
+      "id": "PE-G16-D1B0",
+      "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG16TripleSupportDiagnostic",
+      "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG16TripleSupportDiagnostic.lean",
+      "blob": "c5d12678d7916db42c8c8e009118c57e609002d5",
+      "namespaces": [
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic"
+      ],
+      "imports": [
+        "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG16FourPlaneIncidenceDiagnostic"
+      ],
+      "listed_axiom_roots": [
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleLabel_card",
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleSupport_card",
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleSupport_injective",
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.thirdAxis_outside"
+      ],
+      "declarations": [
+        {
+          "name": "TripleLabel",
+          "namespace_candidate": "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic",
+          "kind": "abbrev",
+          "line": 11,
+          "source_header": "abbrev TripleLabel : Type",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "tripleSupport",
+          "namespace_candidate": "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic",
+          "kind": "def",
+          "line": 14,
+          "source_header": "def tripleSupport (x : TripleLabel) : Finset (Fin 9)",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": false
+        },
+        {
+          "name": "tripleLabel_card",
+          "namespace_candidate": "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic",
+          "kind": "theorem",
+          "line": 17,
+          "source_header": "theorem tripleLabel_card : Fintype.card TripleLabel = 28",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "tripleSupport_card",
+          "namespace_candidate": "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic",
+          "kind": "theorem",
+          "line": 20,
+          "source_header": "theorem tripleSupport_card : ∀ x : TripleLabel, (tripleSupport x).card = 3",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "tripleSupport_injective",
+          "namespace_candidate": "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic",
+          "kind": "theorem",
+          "line": 23,
+          "source_header": "theorem tripleSupport_injective : Function.Injective tripleSupport",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        },
+        {
+          "name": "thirdAxis_outside",
+          "namespace_candidate": "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic",
+          "kind": "theorem",
+          "line": 26,
+          "source_header": "theorem thirdAxis_outside : ∀ x : TripleLabel,\n    x.1.2 < planeLeft x.1.1 ∨ planeRight x.1.1 < x.1.2",
+          "header_status": "LEXICAL_HEADER_EXTRACT",
+          "listed_axiom_root": true
+        }
+      ]
+    }
+  ]
+}
