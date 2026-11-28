@@ -1,0 +1,33 @@
+# CSQ-F1 interval — rank-two pure-S derivative replay and next square graph plan
+
+2026-11-27 Pacific. Baseline 866a49fec5c210c393032174fc1f72b5b6ca6bf7. Run 46089897821 at exact candidate 689a6045e52b1a7837e307d80904c1136511ed13 remained in progress at the last check. No change to its candidate, Lean sources, workflow or qualification state. Local isolated exact JavaScript only.
+
+## 1. Coverage inventory before new replay
+
+Active core indices are L=[1,2,3,13,14], M=[4,5,6], H=[17,18,19,20]. Inspect the archived low and high derivative raw blocks and their complete comparisons at diag(1,2,0). Nine coordinate representatives 00,01,02,10,11,12,20,21,22 with multiplicities 1,1,7,1,1,7,1,1,7 cover tau and beta; nu has two nonzero X-weighted axes, and the third is structurally zero. Thus the representative raw target comprises 144*20=2880 ordered family/coordinate/pair slots. LxL and HxH cover 41 pairs, 820 slots (628 direct, 192 covariance-only). Historical partial blocks did not increase this count: 128 overlapping exact raw contractions agree, including the low tangent control against direct values; 369 coordinate-level tau Hermitian checks pass. Three additional 25-pair tau/beta holdouts (150 slots) are separate controls and excluded from this denominator.
+
+An attempted all-receipt inventory call exceeded the isolated tool-call limit before returning; the successful smaller groups gave the above counts. This is an inventory of archived exact evidence, not a new occupation replay. No assumption that beta or nu is symmetric.
+
+## 2. Fresh direct pure-S square
+
+Choose the six S cores [1,2,3,4,5,6] and evaluate the full 36 ordered pairs on the nine representative coordinates using the archived literal derivative engine b988dee1779f779bd0a5016ffd03c3f0b0211eaa. Independently replay the occupation actions (not an interpolation or a covariance-derived tangent). Frozen seed blob 91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0; rank-two H3 anchor blob 2f701d5d85df6a023998176d94e53c5ad872ad14 validated by integer NPZ readers, CRC/ISIZE and norm; pure-S recursion does not use H3 in its derivative vectors. The binary blob fetch initially failed as UTF-8; explicit base64 file retrieval succeeded. Decoder adapted only to return verified bytes. No resource-bound relaxation.
+
+Nine preserved raw coordinate JSON files local52_rank2_deriv{00,01,02,10,11,12,20,21,22}_S_square_2026_11_27.json, final raw commit 54c2ff6553daf6801bbe1c342c68dd403d7b4284. All 720 raw slots directly evaluated; 180 slots already covered by the old L-square, 540 new. Coordinate 00 explicitly checked 27 raw overlaps with zero discrepancies. Across nine executions: 225 actions, 27 literal/compiled controls, maximum conservative narrow bound 3722821632 (<2^52), zero wide actions. Exact BigInt or bounded integer chunks.
+
+[Aggregate receipt](local52_rank2_derivative_S_complete_comparison_2026_11_27.json), commit ea3b42a29849ca98b81bbe941055fc2023d14ac2: 36 tau, 36 beta, 108 nu comparisons, 72 nonzero entries, zero discrepancies and zero imaginary residuals; all 36 contracted Euler checks against independent scale-55 mass pass. The aggregate includes 45 previously covered historical slots, 135 new. Reference full_jets jet_012_p8.json blob a9caab273766085c4a535a0b1c69d6d2d33c2c78; mass blob 8867fdb62119087ecbd35c2c0c2320c3d977736d. Exact comparison uses sum over nine representative coordinate multiplicities, beta minus sign, and X_aa times raw nu with canonical axis (a+1)%3; the archived common 1/2 beta normalization cancels on both sides. With scale S=330, compare integer aggregate numerators to archived raw integer numerators times S^2; Euler compares sum of X-weighted nu to degree of right S core times 36 times scale-55 mass. Initial indiscriminate lossless-number substitution failed on a decimal metadata field; corrected by isolating the three bracket-balanced integer arrays, checking their character set and quoting integer tokens before JSON parsing. No numerical discrepancy resulted from that parser failure.
+
+## 3. Updated exact rank-two frontier
+
+Union of L-square, H-square and S-square: 25+16+36-9=68 of 144 ordered pairs, 340 of 720 aggregate family entries; 1360 of 2880 representative raw slots (1168 direct, 192 covariance-only). 76 pairs, 1520 raw slots remain uncovered by these completed blocks. The uncovered rectangles are:
+- M x [13,14] and [13,14] x M: 6 each.
+- L x H and H x L: 20 each.
+- M x H and H x M: 12 each.
+Retain both orientations, because beta and nu need not be symmetric. Prefer the two six-pair mixed rectangles first, then small right blocks for high cores; preserve direct/covariance provenance and exact raw output per coordinate. Rank-three derivative coverage and global design reconstruction remain separate. This is finite fixture verification, not an unconditional weighted-form certificate.
+
+## 4. Next operator gate, after strict CSQ-F1 disposition
+
+The source interfaces are already sufficient for a short conditional graph proof. Let T be the literal AY physical charge column, A the literal NAG individual closed partial map, H the BE normalized Hamiltonian, D=Dom(T)=Dom(A). Once CSQ-F1 is qualified, use its exact normalized form identity on D. For u in D and w in the physical space, transport the two weak-representative predicates over all test vectors in the common domain by proof irrelevance and Subtype.ext. Use BE weakRepresentative_iff_naturalAdjointSquare for A and BE originalMinimalPhysicalNormalizedHamiltonian_weakForm_iff for T.
+
+Prefer a small generic graph adapter: for P : E →ₗ.[ℂ] E, a fixed input u:E and output w:E, (u,w) ∈ P.graph iff ∃ h:u∈P.domain, w=P ⟨u,h⟩. This follows directly from LinearPMap.mem_graph_iff and P.mem_graph (equality direction w=P⟨u,h⟩ is reversed from mem_graph_iff). For the forward graph implication use BC naturalComp_domain_le to obtain u∈Dom(A), then transport to D. For the reverse implication use BE originalMinimalPhysicalNormalizedHamiltonian_domain and BC naturalComp_domain_le on the original T†T to obtain u∈D. No assumption of invariance of D under A. Both weak predicates are equivalent for each such u,w, hence the graphs coincide. Apply LinearPMap.eq_of_eq_graph. Rewrite A.adjoint=A using qualified NAG2 and the exact same CompleteSpace instance; NAG3 identifies A with the literal core closure. BD mem_graph_naturalComp is an additional existing relational composition adapter, not a new dependency obligation. No operator-square theorem claimed before the native proof and independent consumer qualify.
+
+PE-SQUARE remains analytical conditional; zero-energy existence, uniqueness, mass gap, empirical validity remain open. Preserve results, not theories.
