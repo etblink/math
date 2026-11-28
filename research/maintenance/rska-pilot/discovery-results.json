@@ -1,0 +1,376 @@
+{
+  "schema": "rska-reviewed-discovery-v0.1",
+  "baseline": "0268d0cc753de364ce297e5fcb82519fcf49dc7e",
+  "atlas_blob": "2fbca2d3963f66076a530d87ef18425b494d26bb",
+  "scan": {
+    "schema": "rska-discovery-scan-v0.1",
+    "query": "SO3",
+    "limit": 6,
+    "scope": "Deterministic bounded scan. Source sharing, lexical imports, identifier mentions and axiom requests are candidate evidence only, not kernel proof dependencies or qualification.",
+    "shared_source_candidates": [
+      {
+        "ids": [
+          "E08-IBI",
+          "IBI-DET"
+        ],
+        "paths": [
+          "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0B1NativeDetOne.lean"
+        ],
+        "roots": [
+          0,
+          7
+        ],
+        "scope": "Co-location candidate only; not proof equivalence."
+      },
+      {
+        "ids": [
+          "E08-LB0",
+          "SPIN-LB0"
+        ],
+        "paths": [
+          "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean"
+        ],
+        "roots": [
+          0,
+          3
+        ],
+        "scope": "Co-location candidate only; not proof equivalence."
+      },
+      {
+        "ids": [
+          "E08-LB1C0",
+          "SPIN-LB1C0"
+        ],
+        "paths": [
+          "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean"
+        ],
+        "roots": [
+          0,
+          3
+        ],
+        "scope": "Co-location candidate only; not proof equivalence."
+      },
+      {
+        "ids": [
+          "E08-P0A",
+          "SPIN-LB1P0A"
+        ],
+        "paths": [
+          "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean"
+        ],
+        "roots": [
+          0,
+          2
+        ],
+        "scope": "Co-location candidate only; not proof equivalence."
+      }
+    ],
+    "sources": [
+      {
+        "id": "D-01",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Core.lean",
+        "kind": "unindexed-import-scan",
+        "blob": "9882359ced78b0a3bd7e2f057974bd0a031b3e60",
+        "imports": [
+          {
+            "module": "Mathlib",
+            "line": 1
+          }
+        ],
+        "outside_editorial_closure": [],
+        "lexical_axiom_requests": []
+      },
+      {
+        "id": "G-01",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean",
+        "kind": "unindexed-import-scan",
+        "blob": "e4990dadf1d8bde849e351467282ab3f14989c3b",
+        "imports": [
+          {
+            "module": "Mathlib",
+            "line": 1
+          },
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.GaugeOrbits",
+            "line": 2
+          }
+        ],
+        "outside_editorial_closure": [],
+        "lexical_axiom_requests": []
+      },
+      {
+        "id": "H-02",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean",
+        "kind": "unindexed-import-scan",
+        "blob": "0afafb8eae4b5efdbd4f95eff2ae1e9352dfe7c5",
+        "imports": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8BDOriginalPhysicalChargeAdjointSquareSelfAdjointProbe",
+            "line": 1
+          },
+          {
+            "module": "Mathlib.Analysis.InnerProductSpace.LinearPMap",
+            "line": 2
+          }
+        ],
+        "outside_editorial_closure": [],
+        "lexical_axiom_requests": []
+      },
+      {
+        "id": "RAD-G0B0",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxG0B0OriginalReciprocalFullL2AEMultiplication.lean",
+        "kind": "unindexed-import-scan",
+        "blob": "670cc600fdc42a03d21de759e8b46b6cb1306874",
+        "imports": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxR0B2AOriginalReciprocalFullL2BoundedAction",
+            "line": 1
+          },
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxG0AOriginalRadialGaugeInvariance",
+            "line": 2
+          }
+        ],
+        "outside_editorial_closure": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxG0AOriginalRadialGaugeInvariance",
+            "line": 2,
+            "target": "RAD-G0A",
+            "root_mentions": []
+          }
+        ],
+        "lexical_axiom_requests": []
+      },
+      {
+        "id": "RAD-R0A",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxR0AOriginalRadialScalar.lean",
+        "kind": "unindexed-import-scan",
+        "blob": "a67f8740586588c6d4ee9c9148574c81c14d4937",
+        "imports": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Core",
+            "line": 1
+          }
+        ],
+        "outside_editorial_closure": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Core",
+            "line": 1,
+            "target": "D-02",
+            "root_mentions": []
+          },
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Core",
+            "line": 1,
+            "target": "D-03",
+            "root_mentions": [
+              {
+                "root": "AlgebraData.charge",
+                "line": 11,
+                "text": "on L², NOT a claim that the weighted charge has dense domain, and NOT"
+              },
+              {
+                "root": "AlgebraData.charge",
+                "line": 22,
+                "text": "/-- Actual original sixteen-component charge-output carrier."
+              }
+            ]
+          }
+        ],
+        "lexical_axiom_requests": []
+      },
+      {
+        "id": "RAD-C3",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3OriginalPhysicalWeightedChargeGraph.lean",
+        "kind": "unindexed-import-scan",
+        "blob": "6aff6416d341738a1f55e6aaad107f4726f1e34f",
+        "imports": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxRADC2BOriginalReciprocalHilbertOutputLift",
+            "line": 1
+          },
+          {
+            "module": "Mathlib.Topology.Algebra.Module.LinearPMap",
+            "line": 2
+          }
+        ],
+        "outside_editorial_closure": [],
+        "lexical_axiom_requests": []
+      },
+      {
+        "id": "E08-IBI",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Angle.lean",
+        "kind": "bundle-root-gap",
+        "blob": "2bc7521a8f417ddd8e0e74370d3d014ddb200e2a",
+        "imports": [
+          {
+            "module": "Mathlib",
+            "line": 1
+          }
+        ],
+        "outside_editorial_closure": [],
+        "lexical_axiom_requests": [
+          {
+            "line": 37,
+            "name": "unitCircle_exists_angle"
+          }
+        ]
+      },
+      {
+        "id": "E08-IBI",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Euler.lean",
+        "kind": "bundle-root-gap",
+        "blob": "ffc6fb6449800a533015cdc7b648bc5d85037ac0",
+        "imports": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CSO3Angle",
+            "line": 10
+          }
+        ],
+        "outside_editorial_closure": [],
+        "lexical_axiom_requests": [
+          {
+            "line": 155,
+            "name": "sourceSO3_euler_decomp"
+          }
+        ]
+      },
+      {
+        "id": "E08-IBI",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Hom.lean",
+        "kind": "bundle-root-gap",
+        "blob": "e078ce60467b0d7f7fadc19065d0aadfb132dca0",
+        "imports": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CSourceSO3Witness",
+            "line": 1
+          },
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0B1NativeDetOne",
+            "line": 2
+          }
+        ],
+        "outside_editorial_closure": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0B1NativeDetOne",
+            "line": 2,
+            "target": "IBI-DET",
+            "root_mentions": [
+              {
+                "root": "FCP.BFSSIBIG0B1NativeDetOne.originalAdjointColorMatrix_det_one",
+                "line": 33,
+                "text": "FCP.BFSSIBIG0B1NativeDetOne.originalAdjointColorMatrix_det_one g⟩"
+              }
+            ]
+          }
+        ],
+        "lexical_axiom_requests": [
+          {
+            "line": 71,
+            "name": "originalAdjointColorMatrix_mem_SO3"
+          },
+          {
+            "line": 72,
+            "name": "originalAdjointSO3"
+          },
+          {
+            "line": 73,
+            "name": "originalAdjointSO3Hom"
+          },
+          {
+            "line": 74,
+            "name": "originalAdjointSO3Hom_coe"
+          },
+          {
+            "line": 75,
+            "name": "originalAdjointSO3Hom_surjective"
+          }
+        ]
+      },
+      {
+        "id": "E08-IBI",
+        "path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSourceSO3Witness.lean",
+        "kind": "bundle-root-gap",
+        "blob": "ecf86b8f8f70e5bc847716bb3f5287e460be940b",
+        "imports": [
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CSO3Euler",
+            "line": 1
+          },
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CXImage",
+            "line": 2
+          },
+          {
+            "module": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0CZImage",
+            "line": 3
+          }
+        ],
+        "outside_editorial_closure": [],
+        "lexical_axiom_requests": [
+          {
+            "line": 81,
+            "name": "abstractRotZ_eq_sourceRotZ"
+          },
+          {
+            "line": 82,
+            "name": "abstractRotX_eq_sourceRotX"
+          },
+          {
+            "line": 83,
+            "name": "originalAdjointColorMatrix_sourceZXZ"
+          },
+          {
+            "line": 84,
+            "name": "originalBFSS_adjoint_hits_every_SO3"
+          }
+        ]
+      }
+    ]
+  },
+  "review": {
+    "status": "REVIEWED_CANDIDATE_NOT_ADOPTED",
+    "recovered": {
+      "parent": "E08-IBI",
+      "proposed_id": "IBI-SO3-HOM",
+      "source": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Hom.lean",
+      "blob": "e078ce60467b0d7f7fadc19065d0aadfb132dca0",
+      "consumer": "lean/diagnostics/BFSSIBIG0CSO3HomIndependentConsumer.lean",
+      "consumer_blob": "2d57aa3ecc1bfef72a16617ca8d209cbb4ddf7c7",
+      "source_run": "43782546758",
+      "source_tested_commit": "b3fce75382db8a50148b30d02585c0dd37ec1a20",
+      "integration_candidate_run": "43788864430",
+      "named_roots": [
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointColorMatrix_mem_SO3",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3Hom",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3Hom_coe",
+        "FCP.BFSSIBIG0CSO3Hom.originalAdjointSO3Hom_surjective"
+      ],
+      "qualified_scope": "Historical strict original typed hom and surjectivity, exact source and consumer blob matches; 17-module integrated candidate receipt available. No fresh CI or entire closure requalification.",
+      "proposed_support_target": "RSKA-TRIAL52",
+      "support_scope": "Actual source gauge preimage for every proper color rotation in the existing SVD reconstruction; matrix-level preimage alone does not identify actual boson-coordinate action or unitary Fock action. This is a candidate reuse bridge, not a necessary dependency or newly verified physical claim."
+    },
+    "provenance": [
+      {
+        "path": "research/incidence-before-identity/IBI_G0C_SO3_HOM_R2_GREEN_43782546758_ACCEPTANCE_2026_11_15.md",
+        "blob": "aec884fed91105158d0ef63cf23779888aacb085"
+      },
+      {
+        "path": "research/incidence-before-identity/IBI_QUALIFIED_INTEGRATION_R1_GREEN_43788864430_ACCEPTANCE_2026_11_15.md",
+        "blob": "56589ae9944999a22cf179785293a88d2d6fc9bf"
+      },
+      {
+        "path": "lean/diagnostics/BFSSIBIG0CSO3HomIndependentConsumer.lean",
+        "blob": "2d57aa3ecc1bfef72a16617ca8d209cbb4ddf7c7"
+      }
+    ],
+    "rejected_inferences": [
+      "Shared source path is not equality of scoped claims. E08-IBI is a multi-module bundle, not an alias for IBI-DET.",
+      "RAD-G0B0 imports RAD-G0A but no named gauge-invariance root mention in the scanned file; do not add a mathematical prerequisite from import alone.",
+      "The D-01/D-02/D-03 shared Core module does not make every source definition a prerequisite of radial scalar results.",
+      "The SO3 hom receipt and integration receipt explicitly exclude literal G2A/G3A bosonic adapter and physical Fock/domain conclusions. The earlier G2A adapter RED is retained, not silently promoted."
+    ],
+    "marginal_benefit": "The specific SO3 hom and surjectivity roots are absent from V7's reverse lookup, despite source module and qualification receipt being in the bundle. Discovery surfaces the declaration gap with bounded query and pin-backed manual review; it is not autonomous proof discovery. No change to V7, overlay or inherited statuses."
+  }
+}
