@@ -1,7 +1,7 @@
 {
   "schema": "receipt-only-provider-disposition-v1",
-  "baseline": "c0c52426ca29831875620bd1a2c9272b20b10d77",
-  "scope": "Compact cross-shard lookup; first 12 audit shards only, no qualification or inference of historical artifact absence.",
+  "baseline": "bd540fe589aed49745f7ad9b40a4f4cd4a2666c4",
+  "scope": "Complete 321 receipt-only discovery run IDs; provider first-page listings, exact digest joins, prior recovery manifest joins. Empty listings or errors do not establish historical absence. Not a mathematical qualification index or exhaustive repository-wide provider inventory.",
   "source_blobs": {
     "RECEIPT_ONLY_PROVIDER_TRIAGE_001.json": "634c4442559a3b799d4b8916f68fdeaabbe99d52",
     "RECEIPT_ONLY_PROVIDER_TRIAGE_002.json": "288aac47b0859611dbb9763a604cb1034806614d",
@@ -14,7 +14,37 @@
     "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json": "5571e7ab55f0f4f9e6c6c252e173c462c03623e5",
     "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json": "327619ce5c8c038f2bf15011b8dbaab7d761e2a4",
     "RECEIPT_ONLY_PROVIDER_TRIAGE_011.json": "4883000c7d7e05dee7b603ad8ea7f41995a9d84a",
-    "RECEIPT_ONLY_PROVIDER_TRIAGE_012.json": "b63ab5ff065bfdb967a0dce026af173409854162"
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_012.json": "b63ab5ff065bfdb967a0dce026af173409854162",
+    "RECEIPT_ONLY_PROVIDER_QUEUE_V2.json": "ac0e4aaeda7871fbd385d24b58bb1f055c865b7d",
+    "ORIGINAL_RECOVERY_004.json": "26c99d9ce615f3f814c6759e1f10cb3ecc8eb191",
+    "ORIGINAL_RECOVERY_005.json": "c7284443a2761a1bef6b88c993e8b835615ae149",
+    "ORIGINAL_RECOVERY_006.json": "194ba7a726edec4e9b04fa8baed81d9d5a842730",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json": "88592a376465401e8511b75b90f50fa01c555609",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json": "1d85df723955b8904d506893a2d6619b58af9e64",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json": "999de20e33cec3cff2a8eb720db3e7c3fe2b6334",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json": "3eb1071f7f7463ea88a4ccd922f062ba3af69f6c",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json": "6e037bb861e326f93a1df95530c1bd54fdd5fbb8",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_018.json": "ba29275bfb9de267e6d6a971b7709778b9134d0b",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json": "04b79a918f142e4349789a30e2cebacd9cebec4c",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json": "7b792b9dd30bcc8224ae81e138339e61b13e80a4",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json": "c325a889263228977b3fb26d6408625548296d90",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json": "1acbf8cca9c88b77df67c905b2d0645b9174e8a3",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json": "7375ae9285f7d5e263a4b1726cb960033e07f0a1",
+    "RECEIPT_ONLY_PROVIDER_TRIAGE_024.json": "23f8eb16452bb6f24aaf98c3f07c1bbb918cd83f"
+  },
+  "counts": {
+    "runs": 321,
+    "with_artifacts": 179,
+    "empty_listing": 137,
+    "lookup_errors": 5,
+    "artifact_records": 179,
+    "dispositions": {
+      "RECOVERED_VERIFIED_NOT_COMMITTED": 121,
+      "FROZEN_ARCHIVE_DIGEST_MATCH": 54,
+      "ORIGINAL_BYTES_COMMITTED": 3,
+      "PREVIOUSLY_RECOVERED_NOT_COMMITTED": 1
+    },
+    "expired_at_lookup": 0
   },
   "rows": [
     {
@@ -104,6 +134,72 @@
     {
       "run_id": 42547700192,
       "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_001.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 42728268316,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 42764649026,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 42769361446,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 42779878513,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 42787913738,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 42798054277,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43017992525,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43047181537,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43084968990,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43091441892,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43095354808,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
       "lookup": "FOUND",
       "artifacts": []
     },
@@ -198,557 +294,1061 @@
       "artifacts": []
     },
     {
-      "run_id": 46063667974,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43232000116,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43234506856,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43242308459,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43249643884,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_019.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43263788066,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43268428683,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43271525095,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43275220286,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43278998368,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43289857042,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43294672405,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43298557973,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43298762479,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43302095754,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43306016092,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43309538795,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43313519129,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43318784891,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43322309537,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_020.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43325774438,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43335288061,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43335892084,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43336725804,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43343959865,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43349181533,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43349543790,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43351955062,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43356859031,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43361307421,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43361307455,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43364964618,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43368580602,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43371757607,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43375482588,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_021.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43378870092,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43379713104,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43388694442,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43390427806,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43391099205,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43397718772,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43398003077,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43398003237,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43421749439,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43421947368,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43422546945,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43461444633,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43467719230,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43481282293,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43484147197,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_022.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43489563142,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43489563180,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43493125150,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43498649514,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43510200014,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43511792871,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43513258078,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43514755373,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43516234402,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43518502567,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43520543478,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43521457638,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43521745235,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43523896876,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43526064993,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_023.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43527998761,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_024.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43530051259,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_024.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43530462404,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_024.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43532571952,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43536957727,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43539398734,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43541591975,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43546806160,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 15231166542,
-          "sha256": "580325076feff04195d31522720ba9d6a4e7b2fa0f2b27d301e86f4d9026e536",
-          "bytes": 32619,
-          "expires_at": "2026-12-27T20:52:50Z",
+          "id": 14095221825,
+          "sha256": "e4052878d404575e028c444e92ceb55c6dbdbcbfa94ed112d5133fc0033b8d9d",
+          "bytes": 17513,
+          "expires_at": "2026-12-14T02:49:28Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43546806160_artifact_14095221825.zip"
         }
       ]
     },
     {
-      "run_id": 45505859621,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43549082375,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14975385217,
-          "sha256": "001ff7ee13a8487fbc34023ec3aa570cdc2ff6c221278da61742bfe209a629af",
-          "bytes": 23251,
-          "expires_at": "2026-12-24T23:22:03Z",
+          "id": 14094964796,
+          "sha256": "2b3740a485dcddcfc1396cb7c71dfdeca841859dd2e9f3678f0b726afdccc4d9",
+          "bytes": 6763,
+          "expires_at": "2026-12-14T03:02:21Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43549082375_artifact_14094964796.zip"
         }
       ]
     },
     {
-      "run_id": 45503230128,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43550275483,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14973272958,
-          "sha256": "9de4c34e8b55b00ecfc30cec947a021e8f6c7866079ffacaad3b58a91050b341",
-          "bytes": 22455,
-          "expires_at": "2026-12-24T22:57:27Z",
+          "id": 14095099799,
+          "sha256": "2c675acedb3c550b3f0561d81ba44c1bc73285f76d4cfe59f1ec6eb29de1f3f4",
+          "bytes": 6424,
+          "expires_at": "2026-12-14T03:16:30Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43550275483_artifact_14095099799.zip"
         }
       ]
     },
     {
-      "run_id": 45499328227,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43551424126,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14972495825,
-          "sha256": "76479d9832c2745db4e313ca2657eb3e2422463d0ab55ead74fbd548cf22e7a6",
-          "bytes": 22710,
-          "expires_at": "2026-12-24T22:39:41Z",
+          "id": 14096484359,
+          "sha256": "29f14f51193070826c4505c58894d6915dc66411131871f2661a059091a32632",
+          "bytes": 19740,
+          "expires_at": "2026-12-14T03:38:23Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43551424126_artifact_14096484359.zip"
         }
       ]
     },
     {
-      "run_id": 45496051682,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43554665838,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14970336692,
-          "sha256": "d24fe51d8ab818c202f73762d5e8a7144aec3dd2c144e6fef1366f4c65352054",
-          "bytes": 22640,
-          "expires_at": "2026-12-24T22:14:43Z",
+          "id": 14098322089,
+          "sha256": "d6bc1d65f9ba86083d7ac5fc0a81b70862a9d4035ed35d2ea550a6bc7942a9d0",
+          "bytes": 32248,
+          "expires_at": "2026-12-14T04:18:14Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43554665838_artifact_14098322089.zip"
         }
       ]
     },
     {
-      "run_id": 45491739968,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43556707461,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14967943426,
-          "sha256": "6a6d116b6c48c55563b333c53f0d8361cbc18f58db96cacb7e77c1fec94410d0",
-          "bytes": 22938,
-          "expires_at": "2026-12-24T21:52:37Z",
+          "id": 14098179924,
+          "sha256": "15655719ea0fa7cae9bc1eeab21a00f21ab715773f170e710a16ae5240eba3dc",
+          "bytes": 24133,
+          "expires_at": "2026-12-14T04:46:50Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43556707461_artifact_14098179924.zip"
         }
       ]
     },
     {
-      "run_id": 45488223847,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43560114891,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14965259617,
-          "sha256": "634c031e9b7f93d6e7eeaa9daa94f50a5c93a3d415aa74bc140ab8e2351930ac",
-          "bytes": 22923,
-          "expires_at": "2026-12-24T21:29:00Z",
+          "id": 14099924518,
+          "sha256": "c7bb149f08a388148bb33f5f2a00c100db945e597d17e3785003cc96be9f22be",
+          "bytes": 10177,
+          "expires_at": "2026-12-14T05:15:58Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43560114891_artifact_14099924518.zip"
         }
       ]
     },
     {
-      "run_id": 45482665960,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43560215492,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43561741732,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14963983943,
-          "sha256": "283d52c4ac8871590d458aa38a1fcac54ce45a5168f1ddb66f363ec5c683c6ca",
-          "bytes": 22975,
-          "expires_at": "2026-12-24T20:59:42Z",
+          "id": 14100737285,
+          "sha256": "dbf49eb7b409b2ade8880f3fc1f904fe6825591bcf1fe16d71ef58bd276e2127",
+          "bytes": 7407,
+          "expires_at": "2026-12-14T05:34:07Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43561741732_artifact_14100737285.zip"
         }
       ]
     },
     {
-      "run_id": 45478456013,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43562804737,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14961893405,
-          "sha256": "acae2bdf1779122f296b7647ff2ca706638b140e4d08bd8db85a58d94ad31323",
-          "bytes": 22571,
-          "expires_at": "2026-12-24T20:35:41Z",
+          "id": 14101940448,
+          "sha256": "682058318f4e9006eba1aae64e8de41940a24200878a347a864fbf9953a6e1e0",
+          "bytes": 26233,
+          "expires_at": "2026-12-14T05:56:04Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43562804737_artifact_14101940448.zip"
         }
       ]
     },
     {
-      "run_id": 45474378463,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43565346269,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_015.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43566600912,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43566927415,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43568618192,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43570463487,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43572123886,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43573922855,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43575336639,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43575336761,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43575636423,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43576822333,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43578132553,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14960427386,
-          "sha256": "dbbffc094d37c8d9988c355353622f6eea3c4747e5765acbdd876cb299ad0cc9",
-          "bytes": 23016,
-          "expires_at": "2026-12-24T20:10:12Z",
+          "id": 14107950306,
+          "sha256": "97c99a3c0cfb334e362489c4e67e41d2cd02c78f3500468d86c895053adc5fd9",
+          "bytes": 10143,
+          "expires_at": "2026-11-28T09:12:59Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43578132553_artifact_14107950306.zip"
         }
       ]
     },
     {
-      "run_id": 45466372318,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43579923559,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14956012365,
-          "sha256": "51736059e9ffaac994fd05049958ccf21cfc3a8ee807e6ed4c2c1d55dadf41a0",
-          "bytes": 23024,
-          "expires_at": "2026-12-24T19:20:50Z",
+          "id": 14108247917,
+          "sha256": "bbaa274a86e87166fc392785011674be167481d34acf29d6029d8e901197ba34",
+          "bytes": 12727,
+          "expires_at": "2026-11-28T09:33:37Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43579923559_artifact_14108247917.zip"
         }
       ]
     },
     {
-      "run_id": 45463186211,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43583785009,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14954618793,
-          "sha256": "c39bbc639cd96900a37e4be15f8a1a383ced17703f0e258e27f0df5d8d949b8c",
-          "bytes": 24406,
-          "expires_at": "2026-12-24T19:01:56Z",
+          "id": 14110420001,
+          "sha256": "bdfeeaee9267e2912665392284560613609f0c7fb26230c7e17789026f66f52b",
+          "bytes": 26091,
+          "expires_at": "2026-11-28T10:20:43Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43583785009_artifact_14110420001.zip"
         }
       ]
     },
     {
-      "run_id": 45460932025,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43585322863,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14953346301,
-          "sha256": "76b327d72d50389977aac2916bb5faa24e4f2a73ed815fd0cf90ebb6fc38d914",
-          "bytes": 12611,
-          "expires_at": "2026-12-24T18:43:59Z",
+          "id": 14110173996,
+          "sha256": "17c42c25a210522dc81c75dc060de6b49eff0755a5db3355f5d57c73adc96c4b",
+          "bytes": 26239,
+          "expires_at": "2026-11-28T10:40:38Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43585322863_artifact_14110173996.zip"
         }
       ]
     },
     {
-      "run_id": 45456167277,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43587088274,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_016.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14950388383,
-          "sha256": "df55f00662e6bf2929814daa4051d6c201060eaee766a7c942c736c7217ceb25",
-          "bytes": 22788,
-          "expires_at": "2026-12-24T18:22:24Z",
+          "id": 14111595875,
+          "sha256": "ba600ba868210644c26b29d4df8f501f61b0299b10da5628d0c785dadfe0df18",
+          "bytes": 26832,
+          "expires_at": "2026-11-28T11:02:48Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43587088274_artifact_14111595875.zip"
         }
       ]
     },
     {
-      "run_id": 45453089352,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "run_id": 43589307044,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14949957527,
-          "sha256": "6afa4ea75c3c38c91c81ee3a77fc5e332feb788e9553acf46436642aff2c06d9",
-          "bytes": 22696,
-          "expires_at": "2026-12-24T18:05:56Z",
+          "id": 14112461120,
+          "sha256": "441a262b652153ae8a61239fdb208b142c65487b4c25e71d72d14232c3f3eb47",
+          "bytes": 27411,
+          "expires_at": "2026-11-28T11:37:51Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43589307044_artifact_14112461120.zip"
         }
       ]
     },
     {
-      "run_id": 45450453395,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43591940771,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14949165966,
-          "sha256": "6c51d37c370347898ff24e910206a7273a12ef855b228525e00af671de262859",
-          "bytes": 12709,
-          "expires_at": "2026-12-24T17:47:10Z",
+          "id": 14113580930,
+          "sha256": "1132bd3b384fda50eddabb58f1388ae61344068a4a9d839f05d4bdab3ce77405",
+          "bytes": 17875,
+          "expires_at": "2026-11-28T12:08:26Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43591940771_artifact_14113580930.zip"
         }
       ]
     },
     {
-      "run_id": 45445519570,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43593756655,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14944434626,
-          "sha256": "4c643db47728a8ee44a6e09ea068f61d7b1d75bba3bccec0ff319f4c902e668d",
-          "bytes": 9943,
-          "expires_at": "2026-12-24T17:20:14Z",
+          "id": 14113903544,
+          "sha256": "2133965653f6f4f1b8cbfef973e44e5a22ad021dafef355a5562d8235fa261eb",
+          "bytes": 17689,
+          "expires_at": "2026-11-28T12:30:53Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43593756655_artifact_14113903544.zip"
         }
       ]
     },
     {
-      "run_id": 45441390223,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43621045697,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14945352051,
-          "sha256": "05489881ad52214875c6fc57730abea694742cee488a529de3ddd5d777f92dad",
-          "bytes": 10206,
-          "expires_at": "2026-12-24T17:02:20Z",
+          "id": 14124816550,
+          "sha256": "7fc25d89a885233f419e26214b1aedd8796a0aa083589706e5ae567cceb9615e",
+          "bytes": 21361,
+          "expires_at": "2026-11-28T17:39:09Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43621045697_artifact_14124816550.zip"
         }
       ]
     },
     {
-      "run_id": 45439104090,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43623576828,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14941929387,
-          "sha256": "2192159497a4a888cc9a523a288a09232079d0e19d2901eacd503bbba0696956",
-          "bytes": 10507,
-          "expires_at": "2026-12-24T16:45:15Z",
+          "id": 14125985483,
+          "sha256": "0753acefba7848d7725052069126a3ce719b1dcee2c345ff5932c9595aa1abfa",
+          "bytes": 17122,
+          "expires_at": "2026-11-28T18:04:34Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43623576828_artifact_14125985483.zip"
         }
       ]
     },
     {
-      "run_id": 45356209225,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43625439216,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14902713326,
-          "sha256": "8c039903ba1c9f54ae0db452700cea8498ae7d03e63fda8efdab44af2fe4f112",
-          "bytes": 13644,
-          "expires_at": "2026-12-24T08:36:50Z",
+          "id": 14126271213,
+          "sha256": "893f27098d03ef2dd1bee91bba6c4f7624c03523c5cff019847cd538b5769f43",
+          "bytes": 17211,
+          "expires_at": "2026-11-28T18:26:51Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43625439216_artifact_14126271213.zip"
         }
       ]
     },
     {
-      "run_id": 45354418786,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43627438161,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14902835479,
-          "sha256": "93543fc7da7ad4f5bb69ee84da760f66b473a2868ac65788600fab1a12d5b067",
-          "bytes": 11623,
-          "expires_at": "2026-12-24T08:24:56Z",
+          "id": 14126474746,
+          "sha256": "f845089c90bc28e70f05c63896fc27db220d9fcf46105e2a2e6fd9b583f340b0",
+          "bytes": 16481,
+          "expires_at": "2026-11-28T18:46:29Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43627438161_artifact_14126474746.zip"
         }
       ]
     },
     {
-      "run_id": 45352942676,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43628804541,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14901153879,
-          "sha256": "89f2cb6d8773c498d708063fc5cf1be4d4c88f0c4417449d40b9ed40dcac03f1",
-          "bytes": 12089,
-          "expires_at": "2026-12-24T08:12:25Z",
+          "id": 14128076339,
+          "sha256": "3d3bfc09a92853f1c4fe8fc688a20719c1e729aa034152aee7fdd4ca901d315c",
+          "bytes": 17363,
+          "expires_at": "2026-11-28T19:04:14Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43628804541_artifact_14128076339.zip"
         }
       ]
     },
     {
-      "run_id": 45114089413,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43631150630,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14791960823,
-          "sha256": "e9b4d86a7f60c37e7afe24b13a2aaf44865697b3c54b1b9d208141467d51e52d",
-          "bytes": 17187,
-          "expires_at": "2026-12-23T05:10:26Z",
+          "id": 14128198644,
+          "sha256": "c0edfcb150542e1cd2e93d9e3cc091ac95f3adc2aa16e9fe7cbea2ebdfd83eff",
+          "bytes": 17297,
+          "expires_at": "2026-11-28T19:31:44Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43631150630_artifact_14128198644.zip"
         }
       ]
     },
     {
-      "run_id": 45102407563,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43632885471,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14786836660,
-          "sha256": "da88156dae66b8e895d1755c745a00a0c361b9ee8ef9f549802008559df67ab4",
-          "bytes": 16869,
-          "expires_at": "2026-12-23T03:07:03Z",
+          "id": 14128854349,
+          "sha256": "038b126acf03cef55581f025f301c931e72fc6843d3da78218a574ba21cca5ae",
+          "bytes": 17210,
+          "expires_at": "2026-11-28T19:48:03Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43632885471_artifact_14128854349.zip"
         }
       ]
     },
     {
-      "run_id": 45085548204,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43634684249,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14779936264,
-          "sha256": "a501499ceecb8c459a788d12f9c2612c908f4acc0d4ed48eb325f1b932dc4209",
-          "bytes": 15768,
-          "expires_at": "2026-12-23T00:11:29Z",
+          "id": 14129957989,
+          "sha256": "bb44148ff302eecab8a9dd9001da42da5654ed618d84814c81c12c26c4d573df",
+          "bytes": 17510,
+          "expires_at": "2026-11-28T20:09:34Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43634684249_artifact_14129957989.zip"
         }
       ]
     },
     {
-      "run_id": 45083711948,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43636892909,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14779365123,
-          "sha256": "1d1835335c25fa6e4d20557f3d0bb67a8822c04e7acdf70045fa8a290843dff7",
-          "bytes": 15605,
-          "expires_at": "2026-12-22T23:44:26Z",
+          "id": 14130986858,
+          "sha256": "9379bdaccf3a4b7748d2d34fb8af27ad267e86fadc9ac1203df7bc5af5eee86b",
+          "bytes": 17393,
+          "expires_at": "2026-11-28T20:33:42Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43636892909_artifact_14130986858.zip"
         }
       ]
     },
     {
-      "run_id": 45082278440,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43638440460,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14777789381,
-          "sha256": "c8b7ad97e896cff501235409c306efffb1a42877de563778285c2bdca1f19c4c",
-          "bytes": 14673,
-          "expires_at": "2026-12-22T23:28:48Z",
+          "id": 14131349180,
+          "sha256": "8d508f2c8547ef6356f72ebf5241e620e4a77849efe85d122bab665282b24d4c",
+          "bytes": 17724,
+          "expires_at": "2026-11-28T20:51:56Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43638440460_artifact_14131349180.zip"
         }
       ]
     },
     {
-      "run_id": 45080704292,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43640943132,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14778185442,
-          "sha256": "985ca2b93326f20a7122ff441b65a9caccb52663af8eeb1db5163d1aa953d5cf",
-          "bytes": 13980,
-          "expires_at": "2026-12-22T23:12:49Z",
+          "id": 14131809574,
+          "sha256": "56e67605484b8afe1bb0f217c9801cda621bdf159f24b46041836f40aa1bfab1",
+          "bytes": 18055,
+          "expires_at": "2026-11-28T21:18:21Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43640943132_artifact_14131809574.zip"
         }
       ]
     },
     {
-      "run_id": 45078834611,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43642981119,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_017.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14777002917,
-          "sha256": "e222c45bc5e8fbdcc4ee67af947a1cb4c97bec95f0e7c8058b4d8f53016b28e7",
-          "bytes": 13346,
-          "expires_at": "2026-12-22T22:56:56Z",
+          "id": 14132599152,
+          "sha256": "4a22449d6fe24f794ec23fa7327c802e6cdceb8bc6c7c235711aab5cce14129e",
+          "bytes": 17677,
+          "expires_at": "2026-11-28T21:42:35Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43642981119_artifact_14132599152.zip"
         }
       ]
     },
     {
-      "run_id": 45076208150,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "run_id": 43645016288,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_018.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14776525836,
-          "sha256": "1b424421c62621a1e461f9f66784663ac03b1bd795afc3cb795b78b6d2183548",
-          "bytes": 23441,
-          "expires_at": "2026-12-22T22:33:54Z",
+          "id": 14134281761,
+          "sha256": "afbb9755874c3b61f635bece5d447d18892f8a666b5b75624da12337bd67a3a7",
+          "bytes": 17533,
+          "expires_at": "2026-11-28T22:04:17Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43645016288_artifact_14134281761.zip"
         }
       ]
     },
     {
-      "run_id": 45074131733,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "run_id": 43647718971,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_018.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14775555322,
-          "sha256": "02e1d34802886dc850f51abe295c7f9aecdad5a31fa1a07a3df697dc1876e435",
-          "bytes": 11650,
-          "expires_at": "2026-12-22T22:07:45Z",
+          "id": 14135496115,
+          "sha256": "bfd179169d3939bc80659753c5a542221dce44ac9cdb7a3e29f0dfe581c6f5d1",
+          "bytes": 17281,
+          "expires_at": "2026-11-28T22:35:03Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43647718971_artifact_14135496115.zip"
         }
       ]
     },
     {
-      "run_id": 45072663919,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "run_id": 43649423110,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_018.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14774142958,
-          "sha256": "24f1f628a73790d61075a4f6858caf50df4b8c7aed692bb94f36400ac56761f0",
-          "bytes": 11506,
-          "expires_at": "2026-12-22T21:46:26Z",
+          "id": 14136320401,
+          "sha256": "881f24b85bd1e4d3d19f8739a6dc221cbccbc8b91f09402ca7dc42e8a3f873f2",
+          "bytes": 19214,
+          "expires_at": "2026-11-28T22:58:13Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43649423110_artifact_14136320401.zip"
         }
       ]
     },
     {
-      "run_id": 45070954807,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "run_id": 43651471352,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_018.json",
       "lookup": "FOUND",
       "artifacts": [
         {
-          "id": 14773872963,
-          "sha256": "58adfecb42d2c5dd04c5271737e480ca049fd391ed9b1c25f1894a8dd3c1dd59",
-          "bytes": 11243,
-          "expires_at": "2026-12-22T21:29:47Z",
+          "id": 14136821694,
+          "sha256": "6dee1ca1b03c0d9b3b66a7e968dfc4f09ef32a64436d5ae5cd11f85e66ebb84e",
+          "bytes": 18788,
+          "expires_at": "2026-11-28T23:18:10Z",
           "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 45069397982,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14773221982,
-          "sha256": "2f3641f4a2b779c846788680bb06f94e1eca81a331f2f80ea8d2e25c66b6bb5b",
-          "bytes": 11959,
-          "expires_at": "2026-12-22T21:11:21Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 45063336191,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14770264654,
-          "sha256": "eda48e2632c0e8748fb17a3895f0619389ca78e9a6b8b9bc669e1a2eb96e1233",
-          "bytes": 10920,
-          "expires_at": "2026-12-22T20:06:29Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 45061916954,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14770127413,
-          "sha256": "9a8dda9c2734d2b0a72a40146d17f5512fbdca566f47aab804b74fd195e74767",
-          "bytes": 7955,
-          "expires_at": "2026-12-22T19:50:25Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 45059474635,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14769244561,
-          "sha256": "879e13397e16b797b8c5cde75d1600b458c96466f0ff3b0b93ea3e51a45e2af9",
-          "bytes": 19668,
-          "expires_at": "2026-12-22T19:37:16Z",
-          "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43651471352_artifact_14136821694.zip"
         }
       ]
     },
@@ -765,7 +1365,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G5_D0_43653626212_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -782,7 +1383,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G5_R5_43662023823_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -799,7 +1401,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G6_R1_43664706689_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -816,7 +1419,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G7_R1_43667791893_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -833,7 +1437,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G7_R2_43670114014_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -850,7 +1455,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G8_R1_43673139716_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -867,7 +1473,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G8_R2_43674445069_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -884,7 +1491,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R1_43677035838_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -901,7 +1509,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R2_43678236725_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -918,7 +1527,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R3_43679125806_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -935,7 +1545,59 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G9_R4_43681465949_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43689689837,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14152376440,
+          "sha256": "1a811d2db37c7d7ab856945b9d50ba91e83c44dc45dfc98b962f299668ce9fb8",
+          "bytes": 4867,
+          "expires_at": "2026-11-29T07:34:39Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43689689837_artifact_14152376440.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43692012496,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14152758906,
+          "sha256": "056ce16bb52da5e27d2b98ec2cc32814ea6c1f5199fc8b1673b8b2d76f1221d5",
+          "bytes": 1570,
+          "expires_at": "2026-11-29T08:01:38Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43692012496_artifact_14152758906.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43693100174,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14153048347,
+          "sha256": "f2909ef46ec24391698460334122e9a4affce19d305872a894a048ae50a40aba",
+          "bytes": 4902,
+          "expires_at": "2026-11-29T08:22:20Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43693100174_artifact_14153048347.zip"
         }
       ]
     },
@@ -952,7 +1614,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G10_R1_43699086864_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -969,7 +1632,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G10_R2_43700520096_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -986,7 +1650,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G10_R3_43702235044_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43703395473,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14157861244,
+          "sha256": "b3bad77e302a47d87f9f73bad9bb6214f1571bcf44cf55fe7abbd9988251851e",
+          "bytes": 5155,
+          "expires_at": "2026-11-29T10:32:47Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43703395473_artifact_14157861244.zip"
         }
       ]
     },
@@ -1003,7 +1685,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G11_R1_43704688425_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43705949773,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14157734824,
+          "sha256": "9a4be4db8745b0b1e42c8f9ff3a64c500105b183fd21d328dd84ad56a7a226b7",
+          "bytes": 5160,
+          "expires_at": "2026-11-29T11:05:05Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43705949773_artifact_14157734824.zip"
         }
       ]
     },
@@ -1020,7 +1720,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G11_R2_43706576557_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1037,7 +1738,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G11_R3_43708533905_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43709229043,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14160192565,
+          "sha256": "29e2cd0c6597ab796f68c76c3af6f72f499466bc3f5ed4add1df9736fbe84303",
+          "bytes": 5242,
+          "expires_at": "2026-11-29T11:45:51Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43709229043_artifact_14160192565.zip"
         }
       ]
     },
@@ -1054,7 +1773,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R1_43711440502_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1071,7 +1791,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R2_43730966120_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1088,7 +1809,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_D0_R1_43733424334_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43733883094,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14169627035,
+          "sha256": "67cefaab18d445755e917773bba0ed648a02531c8191466844e244946887624a",
+          "bytes": 5392,
+          "expires_at": "2026-11-29T16:20:26Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43733883094_artifact_14169627035.zip"
         }
       ]
     },
@@ -1105,7 +1844,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_D0_R2_43734601883_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1122,7 +1862,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R3_43738033537_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1139,7 +1880,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G12_R4_43740253917_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1156,7 +1898,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G13_R1_43743787307_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1173,7 +1916,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G13_R2_43746155492_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43748016863,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14175905179,
+          "sha256": "f7f8a5a8b100d6db581bb7c5be0111b5a1226d0e1c0a756dfc29d85e5f41797b",
+          "bytes": 4846,
+          "expires_at": "2026-11-29T18:50:50Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43748016863_artifact_14175905179.zip"
         }
       ]
     },
@@ -1190,7 +1951,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G14_R1_43749092953_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43750250997,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14176767053,
+          "sha256": "a850235af2f3c92a0cc08d0846655c11182e8f203c8ee5f29698c7dec4fc053b",
+          "bytes": 4938,
+          "expires_at": "2026-11-29T19:18:29Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43750250997_artifact_14176767053.zip"
         }
       ]
     },
@@ -1207,7 +1986,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R1_43751403932_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43752271387,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14177252047,
+          "sha256": "51c75aab6cc00da9729e927d81ed0ca0971bb649c983fa3867ee1e28851cd8aa",
+          "bytes": 4984,
+          "expires_at": "2026-11-29T19:37:57Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43752271387_artifact_14177252047.zip"
         }
       ]
     },
@@ -1224,7 +2021,25 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_R2_43753325231_evidence.zip"
-          ]
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 43755443223,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14177809269,
+          "sha256": "48ecb3aedfefd1ef9e7dab6292bb288dbede06f1a85e8e6c90798df45eb55732",
+          "bytes": 5027,
+          "expires_at": "2026-11-29T20:10:18Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43755443223_artifact_14177809269.zip"
         }
       ]
     },
@@ -1241,597 +2056,8 @@
           "expired": false,
           "paths": [
             "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G15_D0_R1_43756234296_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 43773462950,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_007.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14185099175,
-          "sha256": "9bf3e1d40d7e9f738de85a5db966781c3be4e57c665fbf7db88bbf4305acaa46",
-          "bytes": 6819,
-          "expires_at": "2026-11-29T23:16:54Z",
-          "expired": false,
-          "paths": [
-            "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G16_D1B0_R1_43773462950_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44280267807,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14418955007,
-          "sha256": "4b8d39783a7b9671ebb201f809c5d1760ca9e2afdd7ff72e61d1614230cfeceb",
-          "bytes": 20328,
-          "expires_at": "2026-12-02T10:15:37Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_R2_44280267807_NATIVE_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44330552342,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14441212043,
-          "sha256": "cb089a42d1c9d63d92dfdeba00660f9266a02fb7aa338323ad31d50edeeb891b",
-          "bytes": 18821,
-          "expires_at": "2026-12-02T15:24:32Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D0_R1_44330552342_TIMEOUT_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44336446671,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14442143959,
-          "sha256": "0ab470da516ef01035522d399abcd5a8561b99fcf96a7c1c76c9a9bad9d651dc",
-          "bytes": 20124,
-          "expires_at": "2026-12-02T15:49:39Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D0_R2_44336446671_NATIVE_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44344524186,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14445679625,
-          "sha256": "8d951f5b1fbf4aab243e2e40bbef665bfdd1771864ccf2c274f9c15711f6a138",
-          "bytes": 20106,
-          "expires_at": "2026-12-02T16:31:32Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D1_R1_44344524186_NATIVE_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44350891866,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14450176873,
-          "sha256": "90d9b0bfcbae790c2825531fdf4083d685a337bdeacef7905e1bce5dead2f81c",
-          "bytes": 20012,
-          "expires_at": "2026-12-02T17:06:19Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D2A_R1_44350891866_NATIVE_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44355713875,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14453338145,
-          "sha256": "9b12156a79e903099c4d6490dfa1505d4f63623f438c1ab0ae9a0a9067fb0c58",
-          "bytes": 20103,
-          "expires_at": "2026-12-02T17:27:24Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D2A_R2_44355713875_NATIVE_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44364111715,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14455579444,
-          "sha256": "923922af8ef3b8abbec70c12fcb494c5d0be5a8dbc3fb8bfd25b7f8629d72fc9",
-          "bytes": 4074,
-          "expires_at": "2026-12-02T18:06:42Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E0_R1_44364111715_DEPENDENCY_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44368187249,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14457954368,
-          "sha256": "32065e648bc194211e09d25f720d883cc1adda8caec12283cb6dace19deb466c",
-          "bytes": 20816,
-          "expires_at": "2026-12-02T18:37:02Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E0_R2_44368187249_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44373898851,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14460072996,
-          "sha256": "bb92aaa134037b190e43ee7458e0fba1c2760f115621fbb4085d63ec4ba4132d",
-          "bytes": 4298,
-          "expires_at": "2026-12-02T18:59:31Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E1_R1_44373898851_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44376918039,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14462557062,
-          "sha256": "e5b1734769af4353e2721c174e9c1e5afb85888a6b3482644a6876be036346ad",
-          "bytes": 20473,
-          "expires_at": "2026-12-02T19:25:25Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44382978294,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14466171522,
-          "sha256": "2269072bb67c4e263c54afb8418d5c1c935c04ddf0d4a9e05620a7970dbfd39c",
-          "bytes": 20402,
-          "expires_at": "2026-12-02T19:57:21Z",
-          "expired": false,
-          "paths": [
-            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E2_R2_44382978294_NATIVE_SYNTAX_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44388795375,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14466219833,
-          "sha256": "67e997beebb4646463fd3a690afb91e6dd76ba917f596828613b331c814c5030",
-          "bytes": 2318,
-          "expires_at": "2026-12-02T20:19:11Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMY0_R1_44388795375_ORIGINAL_STRICT_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44392976400,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14469801963,
-          "sha256": "8334235c0ded28131b335c51442857ed612b3bd50a3df6508c639914edcea0ca",
-          "bytes": 1639,
-          "expires_at": "2026-12-02T20:38:08Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD0_R1_44392976400_ORIGINAL_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44398482716,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14471327772,
-          "sha256": "e96401c3d0e02f084654ab5287a2501a632e1dbe7f8f8b493b41549b2b9288ec",
-          "bytes": 1408,
-          "expires_at": "2026-12-02T21:09:59Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC0_R1_44398482716_ORIGINAL_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44400900631,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14472886007,
-          "sha256": "fc2e5597bbbc9bc3f8e9eab8708e9eefe5a3f7e5d9a5bcadefbd5d59d34d7319",
-          "bytes": 1954,
-          "expires_at": "2026-12-02T21:28:32Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC1_R1_44400900631_ORIGINAL_LINTER_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44402082336,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14474546461,
-          "sha256": "0da8a32f0307feae7a17cdd9ddfc74ee97bdb2d1b3aa6a222d09572573f62e6e",
-          "bytes": 2218,
-          "expires_at": "2026-12-02T21:35:33Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC1_R2_44402082336_ORIGINAL_DEPENDENCY_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44403273333,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14474152713,
-          "sha256": "8d4455001fd5f5a49cde2758b736a4e43737616298f3278a2615381a9f50bf65",
-          "bytes": 2636,
-          "expires_at": "2026-12-02T21:42:04Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC1_R3_44403273333_ORIGINAL_STRICT_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44406382070,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14476880464,
-          "sha256": "ea2cfc0030438239b17ce83a32ff49cb7c3f6385fa999ae2c43652079186c547",
-          "bytes": 1825,
-          "expires_at": "2026-12-02T22:02:02Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC2_R1_44406382070_ORIGINAL_NATIVE_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44407657796,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14476606748,
-          "sha256": "568b7b02056b145824a095b9c2f12ce149c25919b49d93b586c7187766d71cee",
-          "bytes": 2450,
-          "expires_at": "2026-12-02T22:09:24Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC2_R2_44407657796_ORIGINAL_STRICT_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44410857114,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14476464291,
-          "sha256": "a5cc8125065db49f74745bd4f1c8327a90cbf2737474378cb5aec3d08a45f31e",
-          "bytes": 2581,
-          "expires_at": "2026-12-02T22:27:08Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC3A_R1_44410857114_ORIGINAL_STRICT_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44413642677,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14479586372,
-          "sha256": "6934aaea446f9d149c91446bcec3bc89f8f5e31a79cf02a83ae8dd7071063715",
-          "bytes": 2611,
-          "expires_at": "2026-12-02T22:44:50Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC3B0_R1_44413642677_ORIGINAL_CONSUMER_RED_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44414707214,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14478178317,
-          "sha256": "0df3e01e26cdae85dd6cb81d6c27120a48bc6703455f0dfb576813c6f0c7e2e2",
-          "bytes": 2189,
-          "expires_at": "2026-12-02T22:52:05Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC3B0_R2_44414707214_ORIGINAL_STRICT_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44416698450,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14480091397,
-          "sha256": "b5a448bc43c17edb38c5b9c3a9539e5411d75eac4bfcee8920b3802a48380d5f",
-          "bytes": 2334,
-          "expires_at": "2026-12-02T23:00:11Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SMD1_SCC3B1_R1_44416698450_ORIGINAL_STRICT_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 44419768921,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14480966815,
-          "sha256": "bfbc645d41d28e590b0f594c0cdad2a4f85271b77d7b4d384969c43e9389747a",
-          "bytes": 3798,
-          "expires_at": "2026-12-02T23:20:20Z",
-          "expired": false,
-          "paths": [
-            "research/standard-model/evidence/SM_P0N0_R1_44419768921_ORIGINAL_STRICT_GREEN_evidence.zip"
-          ]
-        }
-      ]
-    },
-    {
-      "run_id": 43689689837,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14152376440,
-          "sha256": "1a811d2db37c7d7ab856945b9d50ba91e83c44dc45dfc98b962f299668ce9fb8",
-          "bytes": 4867,
-          "expires_at": "2026-11-29T07:34:39Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43692012496,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14152758906,
-          "sha256": "056ce16bb52da5e27d2b98ec2cc32814ea6c1f5199fc8b1673b8b2d76f1221d5",
-          "bytes": 1570,
-          "expires_at": "2026-11-29T08:01:38Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43693100174,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14153048347,
-          "sha256": "f2909ef46ec24391698460334122e9a4affce19d305872a894a048ae50a40aba",
-          "bytes": 4902,
-          "expires_at": "2026-11-29T08:22:20Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43703395473,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14157861244,
-          "sha256": "b3bad77e302a47d87f9f73bad9bb6214f1571bcf44cf55fe7abbd9988251851e",
-          "bytes": 5155,
-          "expires_at": "2026-11-29T10:32:47Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43705949773,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14157734824,
-          "sha256": "9a4be4db8745b0b1e42c8f9ff3a64c500105b183fd21d328dd84ad56a7a226b7",
-          "bytes": 5160,
-          "expires_at": "2026-11-29T11:05:05Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43709229043,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14160192565,
-          "sha256": "29e2cd0c6597ab796f68c76c3af6f72f499466bc3f5ed4add1df9736fbe84303",
-          "bytes": 5242,
-          "expires_at": "2026-11-29T11:45:51Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43733883094,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14169627035,
-          "sha256": "67cefaab18d445755e917773bba0ed648a02531c8191466844e244946887624a",
-          "bytes": 5392,
-          "expires_at": "2026-11-29T16:20:26Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43748016863,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14175905179,
-          "sha256": "f7f8a5a8b100d6db581bb7c5be0111b5a1226d0e1c0a756dfc29d85e5f41797b",
-          "bytes": 4846,
-          "expires_at": "2026-11-29T18:50:50Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43750250997,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14176767053,
-          "sha256": "a850235af2f3c92a0cc08d0846655c11182e8f203c8ee5f29698c7dec4fc053b",
-          "bytes": 4938,
-          "expires_at": "2026-11-29T19:18:29Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43752271387,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14177252047,
-          "sha256": "51c75aab6cc00da9729e927d81ed0ca0971bb649c983fa3867ee1e28851cd8aa",
-          "bytes": 4984,
-          "expires_at": "2026-11-29T19:37:57Z",
-          "expired": false,
-          "paths": []
-        }
-      ]
-    },
-    {
-      "run_id": 43755443223,
-      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_010.json",
-      "lookup": "FOUND",
-      "artifacts": [
-        {
-          "id": 14177809269,
-          "sha256": "48ecb3aedfefd1ef9e7dab6292bb288dbede06f1a85e8e6c90798df45eb55732",
-          "bytes": 5027,
-          "expires_at": "2026-11-29T20:10:18Z",
-          "expired": false,
-          "paths": []
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1846,7 +2072,9 @@
           "bytes": 4982,
           "expires_at": "2026-11-29T20:27:20Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43757062017_artifact_14179251346.zip"
         }
       ]
     },
@@ -1861,7 +2089,9 @@
           "bytes": 25795,
           "expires_at": "2026-11-29T20:55:09Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43759253590_artifact_14179588248.zip"
         }
       ]
     },
@@ -1876,7 +2106,9 @@
           "bytes": 5027,
           "expires_at": "2026-11-29T21:09:18Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43761025397_artifact_14180452000.zip"
         }
       ]
     },
@@ -1891,7 +2123,9 @@
           "bytes": 26056,
           "expires_at": "2026-11-29T21:37:01Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43763173942_artifact_14181661177.zip"
         }
       ]
     },
@@ -1924,7 +2158,9 @@
           "bytes": 6277,
           "expires_at": "2026-11-29T22:10:38Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43767310379_artifact_14182608752.zip"
         }
       ]
     },
@@ -1939,7 +2175,9 @@
           "bytes": 6936,
           "expires_at": "2026-11-29T22:18:04Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43768003845_artifact_14182842480.zip"
         }
       ]
     },
@@ -1954,7 +2192,10 @@
           "bytes": 304,
           "expires_at": "2026-11-29T22:26:45Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "ORIGINAL_BYTES_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43769261429_artifact_14184015528.zip",
+          "git_blob": "4c4d354e81738d60cf5e449433a55464880d28df"
         }
       ]
     },
@@ -1969,7 +2210,9 @@
           "bytes": 17224,
           "expires_at": "2026-11-29T22:43:46Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43769722679_artifact_14183888986.zip"
         }
       ]
     },
@@ -1984,7 +2227,27 @@
           "bytes": 1515,
           "expires_at": "2026-11-29T23:02:19Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43772018429_artifact_14185221302.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43773462950,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_007.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14185099175,
+          "sha256": "9bf3e1d40d7e9f738de85a5db966781c3be4e57c665fbf7db88bbf4305acaa46",
+          "bytes": 6819,
+          "expires_at": "2026-11-29T23:16:54Z",
+          "expired": false,
+          "paths": [
+            "research/spectral-p2-original-field/diagnostics/P3_AUX_HARDY_G16_D1B0_R1_43773462950_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
         }
       ]
     },
@@ -1999,7 +2262,9 @@
           "bytes": 1556,
           "expires_at": "2026-11-29T23:26:52Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43774271484_artifact_14184749662.zip"
         }
       ]
     },
@@ -2014,7 +2279,9 @@
           "bytes": 5980,
           "expires_at": "2026-11-30T01:03:50Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43782546758_artifact_14189491606.zip"
         }
       ]
     },
@@ -2029,7 +2296,9 @@
           "bytes": 20707,
           "expires_at": "2026-11-30T02:09:04Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43788864430_artifact_14192405680.zip"
         }
       ]
     },
@@ -2044,7 +2313,9 @@
           "bytes": 1879,
           "expires_at": "2026-11-30T03:15:19Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43796459069_artifact_14194817249.zip"
         }
       ]
     },
@@ -2059,7 +2330,9 @@
           "bytes": 1463,
           "expires_at": "2026-11-30T03:24:54Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43797501515_artifact_14195182679.zip"
         }
       ]
     },
@@ -2074,7 +2347,9 @@
           "bytes": 1858,
           "expires_at": "2026-11-30T03:33:28Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43798301546_artifact_14195272382.zip"
         }
       ]
     },
@@ -2089,7 +2364,9 @@
           "bytes": 2319,
           "expires_at": "2026-11-30T03:42:14Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43799204363_artifact_14195748377.zip"
         }
       ]
     },
@@ -2104,7 +2381,9 @@
           "bytes": 17437,
           "expires_at": "2026-11-30T04:17:01Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43801631165_artifact_14197640557.zip"
         }
       ]
     },
@@ -2119,7 +2398,9 @@
           "bytes": 17513,
           "expires_at": "2026-11-30T05:04:38Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43806197198_artifact_14199390776.zip"
         }
       ]
     },
@@ -2134,7 +2415,9 @@
           "bytes": 17333,
           "expires_at": "2026-11-30T05:04:59Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43806215702_artifact_14199137431.zip"
         }
       ]
     },
@@ -2149,7 +2432,9 @@
           "bytes": 3056,
           "expires_at": "2026-11-30T05:24:57Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43809206569_artifact_14199289833.zip"
         }
       ]
     },
@@ -2164,7 +2449,9 @@
           "bytes": 2877,
           "expires_at": "2026-11-30T05:35:17Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43810371539_artifact_14200487209.zip"
         }
       ]
     },
@@ -2179,7 +2466,9 @@
           "bytes": 3223,
           "expires_at": "2026-11-30T05:48:06Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43811766549_artifact_14200957362.zip"
         }
       ]
     },
@@ -2194,7 +2483,9 @@
           "bytes": 3279,
           "expires_at": "2026-11-30T09:41:52Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43840918666_artifact_14213402430.zip"
         }
       ]
     },
@@ -2209,7 +2500,9 @@
           "bytes": 3383,
           "expires_at": "2026-11-30T10:01:09Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43843745397_artifact_14214961953.zip"
         }
       ]
     },
@@ -2224,7 +2517,9 @@
           "bytes": 3251,
           "expires_at": "2026-11-30T10:13:04Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43845733042_artifact_14215452249.zip"
         }
       ]
     },
@@ -2239,7 +2534,9 @@
           "bytes": 2988,
           "expires_at": "2026-11-30T10:25:28Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43847454942_artifact_14217135273.zip"
         }
       ]
     },
@@ -2254,7 +2551,9 @@
           "bytes": 3369,
           "expires_at": "2026-11-30T10:36:16Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43849019596_artifact_14217203070.zip"
         }
       ]
     },
@@ -2269,7 +2568,9 @@
           "bytes": 3437,
           "expires_at": "2026-11-30T11:09:40Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43853833739_artifact_14220157294.zip"
         }
       ]
     },
@@ -2284,7 +2585,9 @@
           "bytes": 3905,
           "expires_at": "2026-11-30T11:24:20Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43856330483_artifact_14221048657.zip"
         }
       ]
     },
@@ -2299,7 +2602,9 @@
           "bytes": 3518,
           "expires_at": "2026-11-30T11:42:05Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43858870801_artifact_14223186275.zip"
         }
       ]
     },
@@ -2314,7 +2619,1382 @@
           "bytes": 3763,
           "expires_at": "2026-11-30T12:16:16Z",
           "expired": false,
-          "paths": []
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43863772086_artifact_14225555376.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43865912098,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14226296480,
+          "sha256": "c2dd251d22847576bfce188c70f3521f68f1faf1509ac0ec032bd0f1efe4c31d",
+          "bytes": 3176,
+          "expires_at": "2026-11-30T12:28:38Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43865912098_artifact_14226296480.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43867535620,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14226802574,
+          "sha256": "63307bcdf09461a8b09eb8e3d908f2e0d3c4bb00f35494ffe0ce729e91b9e02b",
+          "bytes": 3306,
+          "expires_at": "2026-11-30T12:42:14Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43867535620_artifact_14226802574.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43901524171,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14244520439,
+          "sha256": "e13e674522b96596ac58f58e67e1eb35e8c5a30e57669c8e3dd54280d9fe706a",
+          "bytes": 3552,
+          "expires_at": "2026-11-30T16:02:45Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43901524171_artifact_14244520439.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43916000648,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14252590377,
+          "sha256": "d9c50a4b2164400df37ed0a79c5ddf58415bcfcb84343ec63408b9aabd930c3e",
+          "bytes": 3208,
+          "expires_at": "2026-11-30T17:22:49Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43916000648_artifact_14252590377.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43918477267,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14252013704,
+          "sha256": "780d50444413b8e604e14a7d47f2320ed89525c75d51a4fc9e8d7fab3b2ac5cf",
+          "bytes": 3175,
+          "expires_at": "2026-11-30T17:36:54Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43918477267_artifact_14252013704.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43921140661,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14253248530,
+          "sha256": "3a0caffd4073ac01d7935c6fdee62a3bed4332a874b883e3aedc053142b2ed5a",
+          "bytes": 3138,
+          "expires_at": "2026-11-30T17:50:50Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43921140661_artifact_14253248530.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43923809697,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14255805027,
+          "sha256": "1029da2a846fcb221558d1d7ff97d48bad570989f1e60bd134660edbbd5eea07",
+          "bytes": 189,
+          "expires_at": "2026-11-30T17:58:28Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "ORIGINAL_BYTES_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43923809697_artifact_14255805027.zip",
+          "git_blob": "6f2ed5cf1ead94e18ec0aee87e459c8d2bcd524f"
+        }
+      ]
+    },
+    {
+      "run_id": 43923947361,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14254644441,
+          "sha256": "75ad7d4843df285c154e12085ad6f4e70fabd522ba63b7a09d077deb77fe9ed9",
+          "bytes": 189,
+          "expires_at": "2026-11-30T17:59:15Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "ORIGINAL_BYTES_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43923947361_artifact_14254644441.zip",
+          "git_blob": "cabdda69eefcf74e322626a96015f484a74cedd8"
+        }
+      ]
+    },
+    {
+      "run_id": 43924517686,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14259428570,
+          "sha256": "6119554ded7065e232e4497bb14bd109211e002bfd5cc233b33c6930563c7601",
+          "bytes": 3107,
+          "expires_at": "2026-11-30T19:00:50Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43924517686_artifact_14259428570.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43936812478,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43937204884,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14261117575,
+          "sha256": "a3d35817c6889e8387a103810b61fc50f8901be453906c4b0d7e75c153e9242a",
+          "bytes": 3582,
+          "expires_at": "2026-11-30T19:25:28Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43937204884_artifact_14261117575.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43940825520,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14262818881,
+          "sha256": "bb80b9715ae2d358219e40e6621f30f3497af2f19e8fe872d0645628431944de",
+          "bytes": 3494,
+          "expires_at": "2026-11-30T19:44:08Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43940825520_artifact_14262818881.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43943783442,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14264927130,
+          "sha256": "aaca5ae86df0b06a27deff741962418768c3fbf4cd7d168c1c171e3dfe4b5ae5",
+          "bytes": 3910,
+          "expires_at": "2026-11-30T19:59:32Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43943783442_artifact_14264927130.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43980155870,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14284665134,
+          "sha256": "8657ba3a6002428c8e7194d88460ac7998ed2ed4b86aeeaf6816613a3953e3b3",
+          "bytes": 17567,
+          "expires_at": "2026-11-30T23:50:15Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_43980155870_artifact_14284665134.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 43982339512,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_013.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43987114193,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43991194687,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43994555555,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 43998088476,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44000111416,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44000486759,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44032934039,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44058928173,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44058928429,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44109519454,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44115465461,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44149941739,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44196763215,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_014.json",
+      "lookup": "FOUND",
+      "artifacts": []
+    },
+    {
+      "run_id": 44280267807,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14418955007,
+          "sha256": "4b8d39783a7b9671ebb201f809c5d1760ca9e2afdd7ff72e61d1614230cfeceb",
+          "bytes": 20328,
+          "expires_at": "2026-12-02T10:15:37Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_R2_44280267807_NATIVE_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44330552342,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14441212043,
+          "sha256": "cb089a42d1c9d63d92dfdeba00660f9266a02fb7aa338323ad31d50edeeb891b",
+          "bytes": 18821,
+          "expires_at": "2026-12-02T15:24:32Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D0_R1_44330552342_TIMEOUT_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44336446671,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14442143959,
+          "sha256": "0ab470da516ef01035522d399abcd5a8561b99fcf96a7c1c76c9a9bad9d651dc",
+          "bytes": 20124,
+          "expires_at": "2026-12-02T15:49:39Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D0_R2_44336446671_NATIVE_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44344524186,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14445679625,
+          "sha256": "8d951f5b1fbf4aab243e2e40bbef665bfdd1771864ccf2c274f9c15711f6a138",
+          "bytes": 20106,
+          "expires_at": "2026-12-02T16:31:32Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D1_R1_44344524186_NATIVE_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44350891866,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14450176873,
+          "sha256": "90d9b0bfcbae790c2825531fdf4083d685a337bdeacef7905e1bce5dead2f81c",
+          "bytes": 20012,
+          "expires_at": "2026-12-02T17:06:19Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D2A_R1_44350891866_NATIVE_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44355713875,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14453338145,
+          "sha256": "9b12156a79e903099c4d6490dfa1505d4f63623f438c1ab0ae9a0a9067fb0c58",
+          "bytes": 20103,
+          "expires_at": "2026-12-02T17:27:24Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_D2A_R2_44355713875_NATIVE_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44364111715,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14455579444,
+          "sha256": "923922af8ef3b8abbec70c12fcb494c5d0be5a8dbc3fb8bfd25b7f8629d72fc9",
+          "bytes": 4074,
+          "expires_at": "2026-12-02T18:06:42Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E0_R1_44364111715_DEPENDENCY_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44368187249,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14457954368,
+          "sha256": "32065e648bc194211e09d25f720d883cc1adda8caec12283cb6dace19deb466c",
+          "bytes": 20816,
+          "expires_at": "2026-12-02T18:37:02Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E0_R2_44368187249_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44373898851,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14460072996,
+          "sha256": "bb92aaa134037b190e43ee7458e0fba1c2760f115621fbb4085d63ec4ba4132d",
+          "bytes": 4298,
+          "expires_at": "2026-12-02T18:59:31Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E1_R1_44373898851_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44376918039,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14462557062,
+          "sha256": "e5b1734769af4353e2721c174e9c1e5afb85888a6b3482644a6876be036346ad",
+          "bytes": 20473,
+          "expires_at": "2026-12-02T19:25:25Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E2_R1_44376918039_NATIVE_CONSUMER_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44382978294,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14466171522,
+          "sha256": "2269072bb67c4e263c54afb8418d5c1c935c04ddf0d4a9e05620a7970dbfd39c",
+          "bytes": 20402,
+          "expires_at": "2026-12-02T19:57:21Z",
+          "expired": false,
+          "paths": [
+            "research/quantum-information/diagnostics/BFSS_M4_W0C2B2_E2_R2_44382978294_NATIVE_SYNTAX_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44388795375,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14466219833,
+          "sha256": "67e997beebb4646463fd3a690afb91e6dd76ba917f596828613b331c814c5030",
+          "bytes": 2318,
+          "expires_at": "2026-12-02T20:19:11Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMY0_R1_44388795375_ORIGINAL_STRICT_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44392976400,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14469801963,
+          "sha256": "8334235c0ded28131b335c51442857ed612b3bd50a3df6508c639914edcea0ca",
+          "bytes": 1639,
+          "expires_at": "2026-12-02T20:38:08Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD0_R1_44392976400_ORIGINAL_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44398482716,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14471327772,
+          "sha256": "e96401c3d0e02f084654ab5287a2501a632e1dbe7f8f8b493b41549b2b9288ec",
+          "bytes": 1408,
+          "expires_at": "2026-12-02T21:09:59Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC0_R1_44398482716_ORIGINAL_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44400900631,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_008.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14472886007,
+          "sha256": "fc2e5597bbbc9bc3f8e9eab8708e9eefe5a3f7e5d9a5bcadefbd5d59d34d7319",
+          "bytes": 1954,
+          "expires_at": "2026-12-02T21:28:32Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC1_R1_44400900631_ORIGINAL_LINTER_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44402082336,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14474546461,
+          "sha256": "0da8a32f0307feae7a17cdd9ddfc74ee97bdb2d1b3aa6a222d09572573f62e6e",
+          "bytes": 2218,
+          "expires_at": "2026-12-02T21:35:33Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC1_R2_44402082336_ORIGINAL_DEPENDENCY_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44403273333,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14474152713,
+          "sha256": "8d4455001fd5f5a49cde2758b736a4e43737616298f3278a2615381a9f50bf65",
+          "bytes": 2636,
+          "expires_at": "2026-12-02T21:42:04Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC1_R3_44403273333_ORIGINAL_STRICT_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44406382070,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14476880464,
+          "sha256": "ea2cfc0030438239b17ce83a32ff49cb7c3f6385fa999ae2c43652079186c547",
+          "bytes": 1825,
+          "expires_at": "2026-12-02T22:02:02Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC2_R1_44406382070_ORIGINAL_NATIVE_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44407657796,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14476606748,
+          "sha256": "568b7b02056b145824a095b9c2f12ce149c25919b49d93b586c7187766d71cee",
+          "bytes": 2450,
+          "expires_at": "2026-12-02T22:09:24Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC2_R2_44407657796_ORIGINAL_STRICT_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44410857114,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14476464291,
+          "sha256": "a5cc8125065db49f74745bd4f1c8327a90cbf2737474378cb5aec3d08a45f31e",
+          "bytes": 2581,
+          "expires_at": "2026-12-02T22:27:08Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC3A_R1_44410857114_ORIGINAL_STRICT_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44413642677,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14479586372,
+          "sha256": "6934aaea446f9d149c91446bcec3bc89f8f5e31a79cf02a83ae8dd7071063715",
+          "bytes": 2611,
+          "expires_at": "2026-12-02T22:44:50Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC3B0_R1_44413642677_ORIGINAL_CONSUMER_RED_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44414707214,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14478178317,
+          "sha256": "0df3e01e26cdae85dd6cb81d6c27120a48bc6703455f0dfb576813c6f0c7e2e2",
+          "bytes": 2189,
+          "expires_at": "2026-12-02T22:52:05Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC3B0_R2_44414707214_ORIGINAL_STRICT_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44416698450,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14480091397,
+          "sha256": "b5a448bc43c17edb38c5b9c3a9539e5411d75eac4bfcee8920b3802a48380d5f",
+          "bytes": 2334,
+          "expires_at": "2026-12-02T23:00:11Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SMD1_SCC3B1_R1_44416698450_ORIGINAL_STRICT_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 44419768921,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_009.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14480966815,
+          "sha256": "bfbc645d41d28e590b0f594c0cdad2a4f85271b77d7b4d384969c43e9389747a",
+          "bytes": 3798,
+          "expires_at": "2026-12-02T23:20:20Z",
+          "expired": false,
+          "paths": [
+            "research/standard-model/evidence/SM_P0N0_R1_44419768921_ORIGINAL_STRICT_GREEN_evidence.zip"
+          ],
+          "disposition": "FROZEN_ARCHIVE_DIGEST_MATCH"
+        }
+      ]
+    },
+    {
+      "run_id": 45059474635,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14769244561,
+          "sha256": "879e13397e16b797b8c5cde75d1600b458c96466f0ff3b0b93ea3e51a45e2af9",
+          "bytes": 19668,
+          "expires_at": "2026-12-22T19:37:16Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45059474635_artifact_14769244561.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45061916954,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14770127413,
+          "sha256": "9a8dda9c2734d2b0a72a40146d17f5512fbdca566f47aab804b74fd195e74767",
+          "bytes": 7955,
+          "expires_at": "2026-12-22T19:50:25Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45061916954_artifact_14770127413.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45063336191,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14770264654,
+          "sha256": "eda48e2632c0e8748fb17a3895f0619389ca78e9a6b8b9bc669e1a2eb96e1233",
+          "bytes": 10920,
+          "expires_at": "2026-12-22T20:06:29Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45063336191_artifact_14770264654.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45069397982,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14773221982,
+          "sha256": "2f3641f4a2b779c846788680bb06f94e1eca81a331f2f80ea8d2e25c66b6bb5b",
+          "bytes": 11959,
+          "expires_at": "2026-12-22T21:11:21Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45069397982_artifact_14773221982.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45070954807,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14773872963,
+          "sha256": "58adfecb42d2c5dd04c5271737e480ca049fd391ed9b1c25f1894a8dd3c1dd59",
+          "bytes": 11243,
+          "expires_at": "2026-12-22T21:29:47Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45070954807_artifact_14773872963.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45072663919,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14774142958,
+          "sha256": "24f1f628a73790d61075a4f6858caf50df4b8c7aed692bb94f36400ac56761f0",
+          "bytes": 11506,
+          "expires_at": "2026-12-22T21:46:26Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45072663919_artifact_14774142958.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45074131733,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_005.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14775555322,
+          "sha256": "02e1d34802886dc850f51abe295c7f9aecdad5a31fa1a07a3df697dc1876e435",
+          "bytes": 11650,
+          "expires_at": "2026-12-22T22:07:45Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45074131733_artifact_14775555322.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45076208150,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14776525836,
+          "sha256": "1b424421c62621a1e461f9f66784663ac03b1bd795afc3cb795b78b6d2183548",
+          "bytes": 23441,
+          "expires_at": "2026-12-22T22:33:54Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45076208150_artifact_14776525836.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45078834611,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14777002917,
+          "sha256": "e222c45bc5e8fbdcc4ee67af947a1cb4c97bec95f0e7c8058b4d8f53016b28e7",
+          "bytes": 13346,
+          "expires_at": "2026-12-22T22:56:56Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45078834611_artifact_14777002917.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45080704292,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14778185442,
+          "sha256": "985ca2b93326f20a7122ff441b65a9caccb52663af8eeb1db5163d1aa953d5cf",
+          "bytes": 13980,
+          "expires_at": "2026-12-22T23:12:49Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45080704292_artifact_14778185442.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45082278440,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14777789381,
+          "sha256": "c8b7ad97e896cff501235409c306efffb1a42877de563778285c2bdca1f19c4c",
+          "bytes": 14673,
+          "expires_at": "2026-12-22T23:28:48Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45082278440_artifact_14777789381.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45083711948,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14779365123,
+          "sha256": "1d1835335c25fa6e4d20557f3d0bb67a8822c04e7acdf70045fa8a290843dff7",
+          "bytes": 15605,
+          "expires_at": "2026-12-22T23:44:26Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45083711948_artifact_14779365123.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45085548204,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14779936264,
+          "sha256": "a501499ceecb8c459a788d12f9c2612c908f4acc0d4ed48eb325f1b932dc4209",
+          "bytes": 15768,
+          "expires_at": "2026-12-23T00:11:29Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "PREVIOUSLY_RECOVERED_NOT_COMMITTED"
+        }
+      ]
+    },
+    {
+      "run_id": 45102407563,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14786836660,
+          "sha256": "da88156dae66b8e895d1755c745a00a0c361b9ee8ef9f549802008559df67ab4",
+          "bytes": 16869,
+          "expires_at": "2026-12-23T03:07:03Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45102407563_artifact_14786836660.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45114089413,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14791960823,
+          "sha256": "e9b4d86a7f60c37e7afe24b13a2aaf44865697b3c54b1b9d208141467d51e52d",
+          "bytes": 17187,
+          "expires_at": "2026-12-23T05:10:26Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45114089413_artifact_14791960823.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45352942676,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14901153879,
+          "sha256": "89f2cb6d8773c498d708063fc5cf1be4d4c88f0c4417449d40b9ed40dcac03f1",
+          "bytes": 12089,
+          "expires_at": "2026-12-24T08:12:25Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45352942676_artifact_14901153879.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45354418786,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14902835479,
+          "sha256": "93543fc7da7ad4f5bb69ee84da760f66b473a2868ac65788600fab1a12d5b067",
+          "bytes": 11623,
+          "expires_at": "2026-12-24T08:24:56Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45354418786_artifact_14902835479.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45356209225,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14902713326,
+          "sha256": "8c039903ba1c9f54ae0db452700cea8498ae7d03e63fda8efdab44af2fe4f112",
+          "bytes": 13644,
+          "expires_at": "2026-12-24T08:36:50Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45356209225_artifact_14902713326.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45439104090,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14941929387,
+          "sha256": "2192159497a4a888cc9a523a288a09232079d0e19d2901eacd503bbba0696956",
+          "bytes": 10507,
+          "expires_at": "2026-12-24T16:45:15Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45439104090_artifact_14941929387.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45441390223,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14945352051,
+          "sha256": "05489881ad52214875c6fc57730abea694742cee488a529de3ddd5d777f92dad",
+          "bytes": 10206,
+          "expires_at": "2026-12-24T17:02:20Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45441390223_artifact_14945352051.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45445519570,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14944434626,
+          "sha256": "4c643db47728a8ee44a6e09ea068f61d7b1d75bba3bccec0ff319f4c902e668d",
+          "bytes": 9943,
+          "expires_at": "2026-12-24T17:20:14Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45445519570_artifact_14944434626.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45450453395,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_004.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14949165966,
+          "sha256": "6c51d37c370347898ff24e910206a7273a12ef855b228525e00af671de262859",
+          "bytes": 12709,
+          "expires_at": "2026-12-24T17:47:10Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45450453395_artifact_14949165966.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45453089352,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14949957527,
+          "sha256": "6afa4ea75c3c38c91c81ee3a77fc5e332feb788e9553acf46436642aff2c06d9",
+          "bytes": 22696,
+          "expires_at": "2026-12-24T18:05:56Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45453089352_artifact_14949957527.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45456167277,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14950388383,
+          "sha256": "df55f00662e6bf2929814daa4051d6c201060eaee766a7c942c736c7217ceb25",
+          "bytes": 22788,
+          "expires_at": "2026-12-24T18:22:24Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45456167277_artifact_14950388383.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45460932025,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14953346301,
+          "sha256": "76b327d72d50389977aac2916bb5faa24e4f2a73ed815fd0cf90ebb6fc38d914",
+          "bytes": 12611,
+          "expires_at": "2026-12-24T18:43:59Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45460932025_artifact_14953346301.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45463186211,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14954618793,
+          "sha256": "c39bbc639cd96900a37e4be15f8a1a383ced17703f0e258e27f0df5d8d949b8c",
+          "bytes": 24406,
+          "expires_at": "2026-12-24T19:01:56Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45463186211_artifact_14954618793.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45466372318,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14956012365,
+          "sha256": "51736059e9ffaac994fd05049958ccf21cfc3a8ee807e6ed4c2c1d55dadf41a0",
+          "bytes": 23024,
+          "expires_at": "2026-12-24T19:20:50Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45466372318_artifact_14956012365.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45474378463,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14960427386,
+          "sha256": "dbbffc094d37c8d9988c355353622f6eea3c4747e5765acbdd876cb299ad0cc9",
+          "bytes": 23016,
+          "expires_at": "2026-12-24T20:10:12Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45474378463_artifact_14960427386.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45478456013,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14961893405,
+          "sha256": "acae2bdf1779122f296b7647ff2ca706638b140e4d08bd8db85a58d94ad31323",
+          "bytes": 22571,
+          "expires_at": "2026-12-24T20:35:41Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45478456013_artifact_14961893405.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45482665960,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14963983943,
+          "sha256": "283d52c4ac8871590d458aa38a1fcac54ce45a5168f1ddb66f363ec5c683c6ca",
+          "bytes": 22975,
+          "expires_at": "2026-12-24T20:59:42Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45482665960_artifact_14963983943.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45488223847,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14965259617,
+          "sha256": "634c031e9b7f93d6e7eeaa9daa94f50a5c93a3d415aa74bc140ab8e2351930ac",
+          "bytes": 22923,
+          "expires_at": "2026-12-24T21:29:00Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45488223847_artifact_14965259617.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45491739968,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14967943426,
+          "sha256": "6a6d116b6c48c55563b333c53f0d8361cbc18f58db96cacb7e77c1fec94410d0",
+          "bytes": 22938,
+          "expires_at": "2026-12-24T21:52:37Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45491739968_artifact_14967943426.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45496051682,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14970336692,
+          "sha256": "d24fe51d8ab818c202f73762d5e8a7144aec3dd2c144e6fef1366f4c65352054",
+          "bytes": 22640,
+          "expires_at": "2026-12-24T22:14:43Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45496051682_artifact_14970336692.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45499328227,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14972495825,
+          "sha256": "76479d9832c2745db4e313ca2657eb3e2422463d0ab55ead74fbd548cf22e7a6",
+          "bytes": 22710,
+          "expires_at": "2026-12-24T22:39:41Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45499328227_artifact_14972495825.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45503230128,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14973272958,
+          "sha256": "9de4c34e8b55b00ecfc30cec947a021e8f6c7866079ffacaad3b58a91050b341",
+          "bytes": 22455,
+          "expires_at": "2026-12-24T22:57:27Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45503230128_artifact_14973272958.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 45505859621,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 14975385217,
+          "sha256": "001ff7ee13a8487fbc34023ec3aa570cdc2ff6c221278da61742bfe209a629af",
+          "bytes": 23251,
+          "expires_at": "2026-12-24T23:22:03Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_45505859621_artifact_14975385217.zip"
+        }
+      ]
+    },
+    {
+      "run_id": 46063667974,
+      "shard": "RECEIPT_ONLY_PROVIDER_TRIAGE_003.json",
+      "lookup": "FOUND",
+      "artifacts": [
+        {
+          "id": 15231166542,
+          "sha256": "580325076feff04195d31522720ba9d6a4e7b2fa0f2b27d301e86f4d9026e536",
+          "bytes": 32619,
+          "expires_at": "2026-12-27T20:52:50Z",
+          "expired": false,
+          "paths": [],
+          "disposition": "RECOVERED_VERIFIED_NOT_COMMITTED",
+          "recovery_path": "research/maintenance/artifact-audit/originals/run_46063667974_artifact_15231166542.zip"
         }
       ]
     }
