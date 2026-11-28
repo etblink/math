@@ -1,6 +1,6 @@
 {
   "schema": "bfss_scientific_knowledge_atlas_extension_v0.1",
-  "snapshot_commit": "29289558cb056620275ec8277fe0047ea82c3af0",
+  "snapshot_commit": "a92852ca6d36770db95f4a16e4b60d5dff006aa8",
   "date": "2026-11-27",
   "base_atlas": {
     "path": "contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json",
@@ -228,23 +228,52 @@
       "boundary": "Ambient closed joint graph, arbitrary two graph pairs and two spin labels. Normalized form and natural square remain separate. The Lean file imports NAG4, and the stated graph argument uses CSQE0 and ICD-A0."
     },
     {
-      "id": "PE-SQUARE",
-      "title": "Closed individual form equals normalized joint form; exact Q_alpha^2=H",
-      "evidence_status": "ANALYTICAL_CONDITIONAL",
+      "id": "PE-CSQF1",
+      "title": "Native individual output equals selected joint coordinate; exact normalized form",
+      "evidence_status": "INTEGRATED_STRICT",
       "direct_dependencies": [
-        "PE-NAG2",
-        "PE-NAG1",
-        "PE-ICDC",
         "PE-CSQF0",
+        "PE-NAG1",
+        "PE-ICDC"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/CSQF1_R2_GREEN_QUALIFIED_2026_11_27.md",
+        "declarations": [
+          "FCP.BFSSCSQF1.paired_native_output",
+          "FCP.BFSSCSQF1.paired_normalized_form"
+        ],
+        "run_id": 46092801809,
+        "tested_sha": "aa1571c4e62c81a8d17de359a38ecab40c18a394",
+        "artifact_id": 15242314124,
+        "artifact_sha256": "2b716df874d80db8df3f4c509517acc18cc5f5d2b2b5121cf922a9fbe8eef998",
+        "evidence_basis": "Strict source and independent consumer, original ZIP SHA256 and CRC independently checked."
+      },
+      "boundary": "Exact common-domain form; natural-square operator equality is separate PE-SQUARE."
+    },
+    {
+      "id": "PE-SQUARE",
+      "title": "Each original closed individual charge and literal smooth-core closure has natural square equal to original normalized physical H",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-CSQF1",
+        "PE-NAG2",
+        "PE-NAG3",
         "H-02",
         "E08-BF"
       ],
       "provenance": {
-        "path": "research/computational/python-first-20261124/bfss-physical-implication/NAG4_INTERVAL_DIRECT_CLOSED_PAIRING_AND_WITNESS_COVERAGE_2026_11_27.md",
-        "section": "1",
-        "evidence_basis": "analytical route, not yet native qualified"
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/CSQF2_R1_GREEN_QUALIFIED_2026_11_27.md",
+        "declarations": [
+          "FCP.BFSSCSQF2.paired_native_common_square",
+          "FCP.BFSSCSQF2.paired_core_closure_common_square"
+        ],
+        "run_id": 46094976004,
+        "tested_sha": "a92852ca6d36770db95f4a16e4b60d5dff006aa8",
+        "artifact_id": 15243354904,
+        "artifact_sha256": "a9706542a8d35705e8c75174803c65954318908a6cad10b0a640957ff1b1bf8e",
+        "evidence_basis": "Strict native and independent consumer; original ZIP SHA256 and seven CRCs independently checked."
       },
-      "boundary": "Closed component pairing is qualified in PE-CSQF0. The route still needs exact native output transport, the normalized Hilbert-sum pairing and agreement of weak-representative graphs with NAG2 self-adjointness."
+      "boundary": "Equality of full LinearPMap, including domains and actions. No full-domain invariance, nontrivial kernel, mass gap or spectral claim."
     },
     {
       "id": "PE-SPIN",
@@ -301,9 +330,10 @@
       "provenance": {
         "path": "research/computational/python-first-20261124/bfss-physical-implication/README.md",
         "section": "7",
-        "evidence_basis": "archived analytical/computational audit"
+        "evidence_basis": "archived analytical/computational audit",
+        "interval_receipt": "research/computational/python-first-20261124/bfss-physical-implication/CSQF1_INTERVAL_RANK2_PURE_S_REPLAY_AND_SQUARE_GRAPH_PLAN_2026_11_27.md"
       },
-      "boundary": "Raw contractions remain residual computational evidence obligation; no blanket native proof."
+      "boundary": "Raw contractions remain residual computational evidence obligation. Rank-two derivative union 68/144 ordered pairs, 1360/2880 representative raw slots; rank-three derivatives and generic design/literal weighted integration remain. No blanket native proof."
     },
     {
       "id": "PE-HARDY",
@@ -378,10 +408,10 @@
     }
   ],
   "validation": {
-    "method": "Executed JS checks: unique IDs across base and extension; all reached dependency IDs resolve; DFS from each pilot record detects no cycle",
+    "method": "Executed JS: unique IDs across base and extension, all reached dependency IDs resolve, DFS detects no reachable cycle.",
     "counts": {
-      "INTEGRATED_STRICT": 11,
-      "ANALYTICAL_CONDITIONAL": 5,
+      "INTEGRATED_STRICT": 14,
+      "ANALYTICAL_CONDITIONAL": 4,
       "SURVIVED_FINITE_TESTS": 1,
       "OPEN_PROOF_OBLIGATION": 2,
       "STOPPED_UNQUALIFIED": 1,
@@ -394,9 +424,8 @@
       "PE-HARDY",
       "PE-RAW",
       "PE-SPIN",
-      "PE-SQUARE",
       "PE-TRIAL"
     ]
   },
-  "sequencing_note": "Complete NAG3 and explicit ESA first by plan. Common-square mathematics may instead use NAG0 closed graph + simultaneous joint approximation + NAG2 self-adjointness, so do not encode NAG3 as necessary dependency without proof. No zero-regulator operator needed."
+  "sequencing_note": "Common square qualified CSQ-F2; prioritize independent raw replay in parallel with actual global Spin(9) covariance, trial and Hardy premises. No zero-regulator operator needed."
 }
