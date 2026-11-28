@@ -1,6 +1,6 @@
 {
   "schema": "bfss_scientific_knowledge_atlas_extension_v0.1",
-  "snapshot_commit": "e6e73f1e30ba42ad71b2f9232936113864bf0498",
+  "snapshot_commit": "29289558cb056620275ec8277fe0047ea82c3af0",
   "date": "2026-11-27",
   "base_atlas": {
     "path": "contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json",
@@ -206,6 +206,28 @@
       "boundary": "Explicit density, symmetry, closability, and self-adjoint closure of each literal paired SU2 core supercharge; no common square or spectral conclusion."
     },
     {
+      "id": "PE-CSQF0",
+      "title": "Literal complex core pairing and selected-component equality on the closed joint graph",
+      "evidence_status": "INTEGRATED_STRICT",
+      "direct_dependencies": [
+        "PE-CSQE0",
+        "PE-ICDA"
+      ],
+      "provenance": {
+        "path": "research/computational/python-first-20261124/bfss-physical-implication/CSQF0_R3_GREEN_QUALIFIED_2026_11_27.md",
+        "declarations": [
+          "FCP.BFSSCSQF0.paired_core_pairing",
+          "FCP.BFSSCSQF0.paired_closed_joint_pairing"
+        ],
+        "run_id": 46082764637,
+        "tested_sha": "29289558cb056620275ec8277fe0047ea82c3af0",
+        "artifact_id": 15238137844,
+        "artifact_sha256": "277bb63b57e493608ff67f31119d5734194d6b1831cabeaae9f69dba0acf3767",
+        "evidence_basis": "Native source and independent consumer; original ZIP independently rehashed and all seven CRCs checked."
+      },
+      "boundary": "Ambient closed joint graph, arbitrary two graph pairs and two spin labels. Normalized form and natural square remain separate. The Lean file imports NAG4, and the stated graph argument uses CSQE0 and ICD-A0."
+    },
+    {
       "id": "PE-SQUARE",
       "title": "Closed individual form equals normalized joint form; exact Q_alpha^2=H",
       "evidence_status": "ANALYTICAL_CONDITIONAL",
@@ -213,7 +235,7 @@
         "PE-NAG2",
         "PE-NAG1",
         "PE-ICDC",
-        "PE-CSQE0",
+        "PE-CSQF0",
         "H-02",
         "E08-BF"
       ],
@@ -222,7 +244,7 @@
         "section": "1",
         "evidence_basis": "analytical route, not yet native qualified"
       },
-      "boundary": "Direct complex core pairing by literal square equality and symmetry, double closure, selected component transport and normalized joint weak form; avoid polarization. NAG4 is sequencing, not asserted logical dependency."
+      "boundary": "Closed component pairing is qualified in PE-CSQF0. The route still needs exact native output transport, the normalized Hilbert-sum pairing and agreement of weak-representative graphs with NAG2 self-adjointness."
     },
     {
       "id": "PE-SPIN",
