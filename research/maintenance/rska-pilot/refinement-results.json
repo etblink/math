@@ -1,0 +1,61 @@
+{
+  "schema": "rska-refinement-test-v0.1",
+  "inherited_keys_preserved": 517,
+  "new_keys": 5,
+  "refinements": 1,
+  "source_pins": 8,
+  "baseline_route_records": 77,
+  "scope": "Refinement membership and candidate support are non-entailing; neither is a prerequisite edge. No original record or route mutation.",
+  "new_lookup": [
+    {
+      "id": "IBI-SO3-HOM",
+      "kind": "scoped_refinement",
+      "parent": "E08-IBI",
+      "status": "HISTORICAL_STRICT"
+    }
+  ],
+  "inherited_lookup": [
+    {
+      "id": "PE-SQUARE",
+      "kind": "inherited",
+      "status": "INTEGRATED_STRICT"
+    }
+  ],
+  "controls": [
+    {
+      "name": "parent ID absent",
+      "rejected": true,
+      "reason": "source/consumer not in parent"
+    },
+    {
+      "name": "unrelated bundle",
+      "rejected": true,
+      "reason": "source/consumer not in parent"
+    },
+    {
+      "name": "ID collision",
+      "rejected": true,
+      "reason": "ID collision"
+    },
+    {
+      "name": "inherited root collision",
+      "rejected": true,
+      "reason": "root collision FCP.BFSSCSQF2.paired_native_common_square"
+    },
+    {
+      "name": "unsupported promotion",
+      "rejected": true,
+      "reason": "invalid refinement"
+    },
+    {
+      "name": "evidence drift",
+      "rejected": true,
+      "reason": "pin drift receipt"
+    },
+    {
+      "name": "missing candidate target",
+      "rejected": true,
+      "reason": "invalid support target"
+    }
+  ]
+}

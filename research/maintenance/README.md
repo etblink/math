@@ -120,3 +120,7 @@ Owner imported 18 exact original FCP archives in [commit 634065bb9a5f](https://g
 ### Original spin-plane source evidence recovery (2026-11-28)
 
 [Historical recovery and compact-route review](SPIN_PLANE_SOURCE_RECOVERY_AND_COMPACT_ROUTE_REVIEW_2026_11_28.md), [exact receipt](SPIN_PLANE_SOURCE_RECOVERY_001.json), and [decoded job log](SPIN_PLANE_38120296827_JOB_114413439724_DECODED.log): recovered source-only run #38120296827, six exact standard-axiom reports, 5/5 tested/current source/toolchain pins; no independent consumer or warning-as-error contract, no artifact upload. V7 unchanged, six missing lookup names recorded for future reconciliation. Original draft PR unchanged. Compact route signs reviewed against prior notes, no new analytical qualification. RSKA pilot remains isolated; marginal workflow speedup not established. Original ZIP census unchanged, freeze remains.
+
+### RSKA adoption (2026-11-28)
+
+[Owner-approved adoption](RSKA_ADOPTION_2026_11_28.md) incorporates the twelve byte-identical [pilot files](rska-pilot/README.md) through a history-preserving two-parent merge, retaining the original pilot branch. The adoption record supersedes only the historical no-merge decision. Atlas V7 and the spin-plane recovery remain intact. All 35 virtual replay inputs preserved; native checkout checks remain outstanding. No source or CI changes, no new qualification, no expansion of architecture for its own sake. Maintenance freeze remains.
