@@ -5,7 +5,7 @@
 ## Active priority: repository consolidation
 
 1. Preserve original history, source trees and evidence. [Known artifact checkpoint](research/maintenance/artifact-audit/KNOWN_ARTIFACT_RECONCILIATION_CHECKPOINT_V1.json): 341 known originals reconciled (149 in Git, 192 recovered pending binary commit); all 321 receipt-only discovery runs queried, companion FCP provenance resolved. Remaining body-level discovery and qualification reconciliation are open.
-2. Catalogue all qualifications, theorem signatures, source adapters, computational receipts and negative results; reconcile stale status labels without changing original receipts.
+2. [Consolidated scientific knowledge atlas](research/maintenance/knowledge-atlas/README.md): 97 scoped records, 197 named declaration/axiom-request keys, 118 partial editorial links, 26 exact Lean source modules. Expand receipt-body and actual dependency coverage, preserve negative results and reconcile stale statuses without changing original receipts. Seven additional verified provider originals discovered; [recovery 007](research/maintenance/artifact-audit/ORIGINAL_RECOVERY_007.json), now 348 known originals (149 in Git, 199 awaiting import).
 3. Validate reference resolution, dependency links, workflow and checker compatibility. Review CI triggers before selectively restoring executable workflows.
 4. Reassess the research frontier and explicitly end the freeze before staging another native gate.
 

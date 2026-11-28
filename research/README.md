@@ -6,6 +6,8 @@ This is the entry point for the independent downstream research program. We are 
 
 ## Find existing knowledge before starting research
 
+- [Consolidated scientific knowledge atlas](maintenance/knowledge-atlas/README.md): declaration lookup, source identity, scoped results, editorial prerequisite graph and direct lexical imports.
+
 - [Machine-readable file inventory](maintenance/RESEARCH_INVENTORY_2026_11_28.json): 5,846 pre-consolidation files with exact Git blob, byte size, location and coarse kind. Not a qualification index.
 - [CI run metadata and evidence index](maintenance/ci-run-index/README.md): 2,319 provider run records (success/failure/cancellation are not theorem status).
 - [Normalized legacy gate index](maintenance/NORMALIZED_LEGACY_GATE_INDEX.json): 187 distinct run IDs and 224 scalar record variants extracted from the original nested registry.
