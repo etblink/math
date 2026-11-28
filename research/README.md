@@ -15,7 +15,7 @@ This is the entry point for the independent downstream research program. We are 
 - [Physical existence atlas](methodology/SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.md) and [machine-readable pilot](methodology/SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.json).
 - [Historical monograph theorem atlas](../contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json).
 - [Original gate registry](../BFSS_GATE_STATE.json): preserved pending reconciliation; dated records must be read in their original scope.
-- [Archived original workflows](../archive/ci-workflows/README.md) and [historical roadmap](https://github.com/etblink/math/blob/3f38e7d79ef7e49f5c8a5dcf37276d7b4d1e77bd/BFSS_ACTIVE_ROADMAP.md).
+- [Archived workflow provenance catalogue](../archive/ci-workflows/README.md) and [historical roadmap](https://github.com/etblink/math/blob/3f38e7d79ef7e49f5c8a5dcf37276d7b4d1e77bd/BFSS_ACTIVE_ROADMAP.md).
 
 ## Research tracks (pre-consolidation file counts)
 

@@ -128,3 +128,7 @@ Owner imported 18 exact original FCP archives in [commit 634065bb9a5f](https://g
 ### Workflow and checker compatibility (2026-11-28)
 
 [Bounded audit](WORKFLOW_CHECKER_COMPATIBILITY_2026_11_28.md) and [pin mapping receipt](WORKFLOW_CHECKER_COMPATIBILITY_001.json): 137/137 CSQ-F2, 11/11 D1B0, 84/84 checkpoint pins (232 occurrences, 232 distinct resolved path/blob pairs); 68 historical workflow occurrences resolved via archive. Historical pre-M4 checkpoint matches; 21/21 current roadmap relative file-link occurrences resolve. 864 archived workflow entries; zero executable workflows on main. Old watchdog/checker expect historical live roadmap, old workflow paths and old active-gate diff contract; do not reactivate. No native checker/CI/Lean execution; no requalification, no status edits. Freeze remains; design narrow manual-only current candidate after instruction reconciliation.
+
+### Provenance-preserving cleanup pilot (2026-11-28)
+
+[Bounded cleanup review](PROVENANCE_GC_PILOT_2026_11_28.md) and [workflow catalogue](../../archive/ci-workflows/WORKFLOW_PROVENANCE_INDEX.json): exact 864-file duplicate inert workflow tree retained at two immutable commits, 68/68 historical archived-workflow pins resolved. Full pre-cleanup evidence checkpoint designated for retention. Only historical duplicate workflow files removed on the isolated cleanup branch. Existing receipts, original ZIPs, logs, research sources, RSKA replay inputs, V7 and qualification unchanged. No history rewrite or CI; main unchanged pending review.
