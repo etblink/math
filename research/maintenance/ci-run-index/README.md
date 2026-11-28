@@ -1,0 +1,9 @@
+# CI run metadata and evidence discovery index
+
+Snapshot: November 28, 2026, pre-consolidation latest run 46123329003. All 24 provider pages, 2,319 unique run IDs, 919 distinct historical workflow IDs. All listed status fields completed; 1,546 successes, 732 failures, 41 cancellations. The earlier status-filter endpoint was inconsistent; this index records unfiltered pagination, not an assertion about unlisted runs. Includes latest metadata per run, not every attempt log.
+
+Six [JSON shards](./) contain the provider metadata. Each row records run ID, workflow ID, name, status, conclusion, tested commit, branch, attempt, event and provider timestamps. Run URLs are https://github.com/etblink/math/actions/runs/<id>. Seven runs have more than one attempt. A provider success does **not** qualify a mathematical theorem; it can be an archive or administrative check.
+
+[Filename evidence join](FILENAME_EVIDENCE_JOIN.json) matches numerical run IDs in the 2,843 original research paths: 334 runs match at least one path, 109 have a named ZIP, 120 a named log. Among 1,406 runs whose names contain strict and not preservation/archive, 1,128 lack a filename match (617 successes, 471 failures, 40 cancellations). This is a deliberately broad discovery queue, **not a finding that evidence is missing**. For example, the qualified CSQ-F2 run 46094976004 has a receipt without its ID in the filename. Body-level links, differently named artifacts, shared receipts and other roots require semantic matching. Do not promote or downgrade anything from these heuristics.
+
+Next: index links and run IDs inside actual research memos; correlate exact source/consumer/artifact hashes and attempts; prioritize original provider artifacts near expiration; reconcile with theorem atlas and old operational registry. Preserve negative outcomes and scope. Repository-wide artifact listing endpoint unavailable; run-specific retrieval remains possible. No new CI or research performed.
