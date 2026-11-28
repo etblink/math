@@ -112,3 +112,7 @@ Owner imported 18 exact original FCP archives in [commit 634065bb9a5f](https://g
 ### Spin9 import and upstream compatibility follow-up (2026-11-28)
 
 [Import verification](artifact-audit/SPIN9_ORIGINAL_IMPORT_VERIFICATION_001.json): four archive paths and Git blob identities match prior recovery manifest exactly at 2cd76b20a4ab59ed88bb424ce9f6e2c91085a2f8. 370/372 known originals committed; two unlocated; prior historical receipts unchanged. [Static compatibility and physical route triage](UPSTREAM_COMPATIBILITY_AND_PHYSICAL_ROUTE_2026_11_28.md): no common changed immediate child in LinearAlgebra or preprints, 17 additional dependency packages, no merge qualification. Maintain freeze; no new CI or theorem.
+
+### Minimal physical existence dependency review (2026-11-28)
+
+[Retrospective dependency review](MINIMAL_PHYSICAL_EXISTENCE_DEPENDENCIES_2026_11_28.md) connects CSQ-F2 to the earlier scalar resolvent contract and identifies a proposed compact plane-flow closure route for the Hardy intertwining columns. No full Lie bracket or native Spin(9) covering lift is an independent prerequisite of this proposed route. Historical statuses unchanged; no mathematical experiment, Lean gate, CI or upstream merge. Remaining literal source binding, Hardy numerical join, weighted admissibility and independent raw witness obligations explicit.
