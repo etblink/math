@@ -1,0 +1,43 @@
+\chapter{Relational Topology and Particle Structure}\label{ch:topology}
+\chaplead{A geometric structure becomes relevant to the model through a specified map, its gauge behavior, and its relation to dynamics.}
+
+\section{Incidence and the classical color orbit}
+View the columns of $X$ as vectors $X_i\in\R^3$ in color space. The full adjoint rotation action preserves $X_i\cdot X_j$ and the signed triples $\det(X_i,X_j,X_k)$. The signed triples use orientation preservation. The source incidence results construct the relevant $\SO(3)$ adjoint action and its invariant data.
+
+There is an ordinary finite-dimensional converse for these explicit arrays. Suppose two configurations have the same column Gram matrix. Every linear relation among one set of columns is also a relation among the other, as can be checked by squaring the norm of the corresponding linear combination. Sending the columns to their counterparts defines an isometry of their spans. Extend it orthogonally to $\R^3$. If the span has dimension below three, the extension can be chosen with determinant one by reversing an unused direction if necessary. If it has dimension three, take a linearly independent triple. Equality of the signed determinants forces the isometry to have determinant one. Thus the arrays distinguish classical color orbits of the explicit $\SO(3)$ action. A source implementation of the converse and a map to quantum physical states have separate proof requirements.
+
+For a rank-one configuration write $X=c\,n^{\mathsf T}$ with $c\ne0$ and $\norm n=1$. There is a color rotation carrying $c$ to $-c$. The coarse direction after this identification is the unoriented line $[n]\in\mathbb{RP}^8$. This direction omits radial data and stabilizers of the original action.
+
+\section{Gamma eigenspaces and projective descent}
+On the oriented sphere define $\Gamma(n)=\sum_i n_i\gamma_i$ and $P_\pm(n)=(I\pm\Gamma(n))/2$. The Clifford identity gives $\Gamma(n)^2=I$ and its eigenspaces have rank eight. For example, a unit vector perpendicular to $n$ gives a gamma matrix that anticommutes with $\Gamma(n)$ and exchanges its two eigenspaces. The antipodal map also exchanges them:
+\[
+ P_+(-n)=P_-(n).
+\]
+A literal color arrow acts on the color factor and trivially on the sixteen-spinor labels. It commutes with a fixed spinor projection. If it intertwined the individually labelled $P_+(n)$ with the individually labelled $P_+(-n)$ under the rank-one identification, it would force $P_+(n)=P_-(n)$, which contradicts their complementary nonzero ranges. The obstruction concerns that labelled descent.
+
+There is a compatible twisted field. If $\ell$ denotes the tautological line over $\mathbb{RP}^8$, a vector $z\in\ell_{[n]}$ determines the map $z\mapsto\Gamma(z)$. In a local choice of unit generator the sign of the matrix changes with the sign of the generator. This is precisely the transition law of the line factor. The unordered pair of spectral projections is also compatible with reversal.
+
+An additional conditional test uses characteristic classes. If the source $+$ bundle over $S^8$ has $w_8\ne0$, it cannot be the pullback of an ordinary bundle from $\mathbb{RP}^8$. The double covering pulls top mod-two cohomology back by degree $2=0$ modulo two, and naturality would force the top class to vanish. Lower-degree positive cohomology of $S^8$ is zero, so the color-triple sum retains this $w_8$ by the Whitney formula. The source clutching comparison required to establish the premise belongs to the archived topological analysis.
+
+\section{Qualified relational topology and its interpretation}
+The classical octonionic Hopf fibration has spheres $S^{15}$ and $S^8$ with fiber $S^7$ \cite{gwz}. The original Gamma9 quadratic norm identity and the projective constructions use exact source data. D69 qualifies the homeomorphism from a particular original source-$Q$ circle orbit quotient to its canonical complex projectivization. This statement identifies a quotient with a specific target. A Hopf or Chern invariant, a physical wavefunction carrier map, and dynamical protection of a texture require their own constructions. A map from a three-sphere into $S^8$ alone supplies no homotopy protection, since $\pi_3(S^8)=0$.
+
+Related proposals for nested Hopf geometry or protected persistence can use the same descent test. They must specify the physical carrier, allowed variations, a conserved or topological quantity, and a mechanism connecting it to the dynamics. The source quotient is a precise mathematical comparison point.
+\evidence{D69 R1 \run{45048282121}.
+\src{research/topology/RHOPF_P0_RELATIONAL_OCTONIONIC_QUATERNIONIC_HOPFION_AUDIT_2026_11_18.md}{Gamma9 and homotopy audit}.
+\src{research/unification/SPIN9_HOPF_BUNDLE_PHYSICAL_VALLEY_RP8_OBSTRUCTION_2026_11_10.md}{Physical valley direction and antipodal obstruction}.}
+
+\section{Color labels, quadratic invariants and chirality}
+In the original real Majorana label space let $C=\R^3$ carry the adjoint color action and $S=\R^{16}$ the spatial spinor labels. An invariant rank-one operator on $C$ would give an invariant line, which irreducibility of the standard $\SO(3)$ action forbids. Thus three separately gauge-invariant rank-one color projectors cannot serve as the proposed family labels.
+
+Quadratic invariants do exist. The real decomposition
+\[
+ \Lambda^2(C\otimes S)
+  \cong(\Lambda^2 C\otimes\operatorname{Sym}^2S)
+      \oplus(\operatorname{Sym}^2C\otimes\Lambda^2S)
+\]
+shows that the gauge-invariant part is $\Lambda^2 S$. Here $\Lambda^2 C\cong C$ has no invariant vector, and the only invariant in $\operatorname{Sym}^2 C$ is the metric up to scale. Color contraction therefore gives $120$ real skew-quadratic coefficient directions. A physical Fock observable associated with any such direction requires a quantization, a physical domain, and its own dynamical calculation.
+
+Both complex chiral spinors of $\Spin(10)$ restrict to the same complex $\Spin(9)$ spinor. This abstract restriction loses the distinction between the two chiralities. The rotational spinor label therefore supplies no four-dimensional chirality through dimension matching alone. The gauge projection, the meaning of Lorentz and internal gauge actions, and the large-scale observables all belong to the proposed physical map.
+\evidence{\src{research/unification/BFSS_THREE_BY_SIXTEEN_SPIN9_SPIN10_FAMILY_FEASIBILITY_2026_11_10.md}{Family feasibility audit}.
+\src{research/methodology/BFSS_UNIFIED_QUALIFIED_INCIDENCE_SPIN9_MERGE_CHECKPOINT_2026_11_15.md}{Qualified incidence integration}.}

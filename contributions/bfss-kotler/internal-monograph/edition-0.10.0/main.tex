@@ -1,0 +1,102 @@
+\documentclass[11pt,oneside,openany]{book}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[letterpaper,inner=1.12in,outer=1.12in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,microtype,xcolor}
+\usepackage{hyperref,xurl,bookmark,etoolbox}
+\definecolor{navy}{HTML}{17304A}
+\definecolor{teal}{HTML}{1B615F}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=teal,citecolor=teal,
+  pdftitle={The Relative SU(2) BFSS Quantum System, Edition 0.10.0},
+  pdfauthor={Internal mathematical research collaboration},
+  pdfsubject={Closed supercharges and the zero-energy existence problem}}
+\urlstyle{same}
+\setcounter{tocdepth}{0}
+\setcounter{secnumdepth}{1}
+\makeatletter
+\patchcmd{\l@chapter}{\vskip 1.0em \@plus\p@}{\vskip .42em \@plus\p@}{}{}
+\patchcmd{\l@part}{\addvspace{2.25em \@plus\p@}}{\addvspace{1.15em \@plus\p@}}{}{}
+\makeatother
+\setlength{\emergencystretch}{2em}
+\renewcommand{\arraystretch}{1.18}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\E}{\mathcal E}
+\newcommand{\F}{\mathcal F}
+\newcommand{\Ltwo}{\mathcal H_{\mathrm{amb}}}
+\newcommand{\Core}{\mathcal D}
+\newcommand{\PhysCore}{\mathcal D_{\mathrm{phys}}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\dom}{\operatorname{Dom}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Spin}{\operatorname{Spin}}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\Gram}{G}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\A}{\overline Q}
+\newcommand{\snap}{ec55da1d6e6ffe50fedc1ea722f63eb470fae021}
+\newcommand{\repo}{https://github.com/etblink/math/blob/\snap}
+\newcommand{\run}[1]{\href{https://github.com/etblink/math/actions/runs/#1}{run \##1}}
+\newcommand{\src}[2]{\href{\repo/#1}{#2}}
+\newcommand{\evidence}[1]{\par\smallskip\noindent\begingroup\small\color{navy}\textbf{Evidence.}\enspace #1\par\endgroup}
+\newcommand{\chaplead}[1]{\noindent\textit{#1}\par\bigskip}
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\thispagestyle{empty}
+\noindent\textcolor{teal}{\large\bfseries Internal research monograph}\par
+\vspace{1.25in}
+\noindent{\color{teal}\rule{\textwidth}{1.1pt}}\par
+\vspace{0.28in}
+{\color{navy}\noindent\Huge\bfseries The Relative $\SU(2)$\\[0.15em] BFSS Quantum System\par}
+\vspace{0.32in}
+{\noindent\LARGE Closed Supercharges and the\\[0.12em] Zero-Energy Existence Problem\par}
+\vfill
+{\noindent\Large Edition 0.10.0\par}
+\smallskip
+{\noindent Internal mathematical research collaboration\par}
+{\noindent 27 November 2026, Pacific time\par}
+\vspace{0.48in}
+\end{titlepage}
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+This edition studies one spectral question on one specified operator. Does the original relative $\SU(2)$ matrix quantum mechanics have a normalizable zero-energy state? The question takes us from the literal sixteen supercharges to their closed graphs and from a source-defined trial vector to a proposed lower bound on its ground-subspace projection. The argument exposes where the mathematical work stands and precisely what evidence would change the conclusion.
+
+The book assumes graduate linear algebra and basic Hilbert space theory. Chapters~\ref{ch:question}--\ref{ch:charges} establish the notation and the domain chain. Chapter~\ref{ch:square} gives the conventional proof route from the qualified graph pairing to the common square. Chapters~\ref{ch:spin}--\ref{ch:certificate} follow the positive-regulator estimate through the exact trial calculation. Chapters~\ref{ch:local}--\ref{ch:comparison} cover independent spectral, topological and empirical questions. Appendix~\ref{app:evidence} gives the claim index. Appendix~\ref{app:crosswalk} locates material from Edition 0.9.1.
+
+The repository research cutoff is \href{https://github.com/etblink/math/commit/\snap}{\texttt{ec55da1d6e6f}}. The latest qualification in the common-square sequence is CSQ-F0 R3. Each source receipt names its own tested commit. The book uses ordinary mathematical proofs alongside source accounts, finite computational checks, and empirical benchmarks. Their evidence labels apply at the level of the stated claim. The main spectral conclusion remains conditional at this cutoff.
+
+\tableofcontents
+\mainmatter
+\part{The existence problem}
+\input{chapters/01-question}
+\input{chapters/02-source}
+\part{From supercharges to the Hamiltonian}
+\input{chapters/03-hamiltonian}
+\input{chapters/04-closures}
+\input{chapters/05-square}
+\part{From a trial state to a certificate}
+\input{chapters/06-spin}
+\input{chapters/07-fidelity}
+\input{chapters/08-witness}
+\input{chapters/09-certificate}
+\part{Independent routes and physical comparisons}
+\input{chapters/10-localization}
+\input{chapters/11-topology}
+\input{chapters/12-comparison}
+\appendix
+\input{appendices}
+\backmatter
+\input{references}
+\end{document}

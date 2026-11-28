@@ -1,0 +1,38 @@
+\chapter{A Zero-Energy State in the Relative Model}\label{ch:question}
+\chaplead{The spectral target is a vector in the kernel of the original nonnegative Hamiltonian. An explicit trial vector can establish existence by having positive projection onto that kernel.}
+
+\section{Which problem is being solved?}
+The relative $\SU(2)$ system is a matrix quantum mechanics with nine spatial labels and three adjoint color labels. Its bosonic configuration space is $\mathbb R^{3\times9}$ and its fermionic fiber is the complex Fock space of twenty-four modes. Gauge invariance selects a closed Hilbert subspace $\E$ of the ambient square-integrable wavefunctions. The Hamiltonian $H$ used throughout is the normalized adjoint square of the original closed charge column $T$ on that subspace.
+
+Banks, Fischler, Shenker and Susskind proposed matrix quantum mechanics as part of a large-$N$ description of M-theory \cite{bfss}. This book concerns the finite relative model. The physical subspace here is defined by the original gauge symmetry. Identifying this space and proving a spectral statement on it are mathematical tasks. Empirical interpretation requires an additional map to physically specified observables.
+
+For $\psi\in \E$ with $\norm{\psi}=1$, write
+\begin{equation}
+ F(\psi)=\norm{P_{\ker H}\psi}^{2}.\label{eq:fidelity}
+\end{equation}
+If $F(\psi)>0$, the vector $P_{\ker H}\psi/\sqrt{F(\psi)}$ is a normalizable zero mode. The spectral projection is supported at the point zero, so its range is in $\dom H$ and $H$ vanishes there. The statement concerns existence. Any assertion about multiplicity, a gap, or higher point spectrum needs further information.
+
+\section{Why small energy leaves a question}
+A trial energy estimates a first moment of the spectral measure of $\psi$. It cannot generally lower-bound the atom at zero. For example, on $L^2(0,1)$ take $H$ to be multiplication by $s$, and $\psi_\varepsilon=\varepsilon^{-1/2}\mathbf 1_{(0,\varepsilon)}$. Its energy is $\varepsilon/2$ and $\ker H=\{0\}$. The example explains why a sequence of small expectation values on its own leaves the zero-mode question open.
+
+The positive-regulator route controls the part of $\psi$ orthogonal to $\ker H$ using its weighted charge outputs. With $r=\norm{X}$ and $\delta>0$, the target inequality is
+\begin{equation}
+ F(\psi)\ge 1-\kappa q_\delta[\psi],
+ \qquad
+ q_\delta[\psi]=\frac1{16}\sum_{\alpha=1}^{16}
+      \norm{\sqrt{r^2+\delta^2}\,\A_\alpha\psi}^{2}.
+ \label{eq:target}
+\end{equation}
+The source Hardy estimate in Chapter~\ref{ch:fidelity} gives the proposed $\kappa=(36+8\sqrt{14})/25$. The bound uses the physical Spin(9) action on charge outputs, the common square, and a weighted-domain trial singlet. The finite computation must measure the original charge form on that trial. Chapter~\ref{ch:certificate} states the complete implication with those premises.
+
+\section{The evidence at the cutoff}
+The original normalized closed Hamiltonian is available, along with the equality of the individual and joint form domains and essential self-adjointness of the literal invariant-core charges. CSQ-F0 R3 qualifies equality of complex component pairings on the original closed joint graph. The transport of these pairings to the native normalized form and the identification of the natural squares have an analytical route. Physical Spin(9) covariance, the Hardy implication and the identification of the finite trial data have their own source obligations.
+
+The 104-function construction supplies the worked finite example. Its archived rational endpoint at $\delta=1$ is below $3/8$ under the source identification. For $\kappa<66/25$, the product of these two rational upper bounds is $99/100$. This explains why even the conservative threshold would suffice. Smaller positive regulators give wider conditional margins, and reduced witnesses offer smaller independent replay tasks. The compactness and fixed-ball route in Chapter~\ref{ch:local} is independent of this numerical margin.
+
+\section{How statements are used}
+A source qualification concerns exact declarations, hypotheses and tested bytes. A conventional proof in this edition exposes the deductions a reader can check on paper. A finite computational audit tests a defined finite set of operations, usually with exact arithmetic. An empirical benchmark records an observable that a proposed physical map would have to explain. The evidence index gives separate entries for these claims, with links to the original artifacts where available.
+
+The governing research question is what follows from the evidence. The source mathematics may produce a constructive result, an obstruction, or a sharper question. Chapter~\ref{ch:comparison} applies the same standard to the Hypothesis of Everything and proposed links to particle physics.
+\evidence{\src{research/methodology/TRUTH_FIRST_FOUNDATIONAL_RESEARCH_CHARTER_2026_11_18.md}{Truth-first research charter}.
+The source and analytical statuses are indexed in Appendix~\ref{app:evidence}.}

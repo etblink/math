@@ -1,0 +1,46 @@
+\chapter{The Conditional Existence Certificate}\label{ch:certificate}
+\chaplead{The operator and computation meet in a statement about the kernel of a single Hamiltonian.}
+
+\section{Exact statement and proof}
+\begin{theorem}[Conditional zero-energy existence]\label{thm:exist}
+Let $H$ be the original paired relative $\SU(2)$ Hamiltonian on $\E$ and let $\psi$ be the normalized 104-function trial of Chapter~\ref{ch:witness}. Suppose the following statements hold on the specified source.
+\begin{enumerate}
+ \item The natural squares of the self-adjoint individual charges equal $H$ on their exact domains.
+ \item The physical $\Spin(9)$ vector and graph action gives the intertwining rule \eqref{eq:chi}, preserves $h$, and makes $\psi$ a singlet. The trial belongs to the weighted charge domain.
+ \item The original physical spinor Hardy estimate \eqref{eq:hardy} holds at $\delta=1/2$.
+ \item The literal source contractions and row evaluation identify the archived normalized matrix quotients with the two forms on $\psi$. They give
+ \[
+       q_{\rm aux}[\psi]<\frac{327658}{10^6},\qquad
+       h[\psi]<\frac{36704}{10^6}.
+ \]
+\end{enumerate}
+Then $\norm{P_{\ker H}\psi}^2>11.075824\%$. In particular there exists a norm-one vector in $\dom H$ of energy zero.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:fidelity},
+\[
+ F(\psi)\ge 1-\kappa\big(q_{\rm aux}[\psi]+\tfrac14 h[\psi]\big).
+\]
+Since $\sqrt{14}<15/4$, $\kappa<66/25$. The strict rational upper bounds give
+\[
+ 1-\frac{66}{25}\frac{327658+36704/4}{10^6}
+    =\frac{2768956}{25000000}=0.11075824 .
+\]
+The projection is therefore nonzero and its normalization gives the asserted vector.
+\end{proof}
+
+The same construction at unit regulator gives
+$q_1[\psi]<3/8$ and $F(\psi)>1/100$ by the simple rational comparison in Chapter~\ref{ch:question}. Both estimates use the same trial, original $H$ and original kernel. The larger conditional bound uses the smaller positive regulator. The published preprint of Michel, Scheinpflug and Yin gives its own auxiliary-operator argument and variational result \cite{msy}. The present theorem uses the source-defined witness and the internal exact comparison. The preprint's numerical endpoint is not a premise of the theorem.
+
+\section{Which evidence would settle each premise?}
+\begin{description}
+ \item[Common square.] Finish the selected native output and Hilbert-sum pairing assembly, then prove equality of weak-representative graphs. A consumer needs to exercise both the natural square domain and the action.
+ \item[Covariance and admissibility.] Trace the original global wavefunction action from its exact infinitesimal conventions through the physical charge graph. Check each trial covariant, seed, and weighted cutoff against those conventions.
+ \item[Hardy estimate.] Bind the exact anticommutators and contractions to the same $\Spin(9)$ representation used in the resolvent argument, including the compression that recovers the factor $1/9$ and the graph-norm intertwiner approximation.
+ \item[Finite witness.] Independently replay a complete set of required raw source contractions, or provide exact certificates of the needed values. Use the existing rank and integration audits to close the remaining source-to-quotient link. Selected fixture agreement does not determine an entire family without the rank or a symbolic identity.
+\end{description}
+
+The ledger marks the source existence claim open. Strict closure results, ordinary proofs, and finite checks carry different evidentiary roles in this statement. Verifying the remaining source premises could yield a zero-mode result for the relative model. Questions about the multiplicity of the kernel, a gap above it and the interpretation of the model are separate.
+\evidence{\src{research/computational/python-first-20261124/bfss-physical-implication/FORWARD_ANALYTICAL_RESEARCH_2026_11_25.md}{Exact positive-regulator endpoints}.
+\src{research/methodology/SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.md}{Physical existence evidence ledger}.}

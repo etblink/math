@@ -1,0 +1,88 @@
+\chapter{Constructing and Checking an Exact Trial Witness}\label{ch:witness}
+\chaplead{A finite variational calculation supplies a rational energy only after its rows and entries have been identified with the literal original charge form.}
+
+\section{The packed seed and polynomial cores}
+Let $J_{\rm pack}$ denote the isometry from packed occupation coefficients to the original Fock carrier. The packed formalization transports each original Majorana action on arbitrary coefficient vectors. It provides the interface through which exact finite occupation computations can be interpreted as statements about original Fock vectors. The trial seed is the normalized vector
+\[
+ \xi=J_{\rm pack}(S_{\mathbb Z})/\sqrt{8072064},
+\]
+with the stored integer coefficient vector $S_{\mathbb Z}$. Its cancellation under the color and spatial generators is a finite source condition needed for the singlet argument. The archive records exact sparse cancellation and selective independent replay.
+
+Use three cyclically indexed color rows and define finite operators and polynomials by
+\[
+ K_{ai}=i\sum_{\alpha,\beta}(\gamma_i)_{\alpha\beta}
+            t_{\alpha,a+1}t_{\beta,a+2},\qquad
+ Z(X)=\sum_{a,i}X_{ai}K_{ai},\qquad Y(X)=Z(X)/\sqrt2.
+\]
+The row indices on the Majoranas are read cyclically. If $M_{dc}=\sum_iX_{di}K_{ci}$, one cubic core is defined by
+\[
+ 2\sqrt2\,\Phi(X)=2\bigg(160sI-Z(X)^2
+                  -\sum_{d<c}(M_{dc}-M_{cd})^2\bigg)Z(X)\xi .
+\]
+The second cubic, denoted $\Phi_3$, uses an ordered contraction of $X^{\otimes3}$ with three $K$ factors. Write $U$ for the sum over the six permutations of the color slots of $X^{\otimes3}$ and $D_{\rm c},D_{\rm s}$ for the trace-insertion sums in the color and spatial slots. Set $L=D_{\rm s}(5U-D_{\rm c}U)$ and define
+\[
+ 2\sqrt2\,\Phi_3(X)
+  =\frac1{330}\sum_{a,b,c,i,j,k}
+     L_{abcijk}(X)K_{ai}K_{bj}K_{ck}\xi .
+\]
+The order of the $K$ operators is part of the definition. The literal tensor construction gives a trial using the original coefficients and does not require an identification with a Casimir projector from an independent construction.
+
+The twenty-one cores are $Y^p\xi$ for $p=0,\ldots,8$, and $Y^p\Phi,Y^p\Phi_3$ for $p=0,\ldots,5$, with the latter families interleaved by degree in the archive. The source covariances of $K$, the seed and the tensor contractions imply equivariance of these cores under the stated actions. Multiplication by gauge- and rotation-invariant scalar factors preserves this law.
+
+\section{The 104 polynomial-Gaussian rows}
+Each row multiplies a core by a monomial $s^k u^\ell v^m$ and a sphere-averaged Gaussian. In physical width variables the latter is
+\[
+ f_{a,b}(X)=\int_{S^2}
+  \exp\!\left(-\tfrac a2 s+\tfrac{a-b}{2} n^{\mathsf T}G n\right)d\sigma(n),
+\]
+with $\sigma(S^2)=1$. This is an orientation average with a specified measure. The row coefficients are exact decimal rationals from the frozen trial specification. In the source expression a row of total polynomial degree $d$ has the dilation factor $(29/20)^{d/2}$. An overall common dilation factor cancels when the full vector is normalized. The absolute sizes in the term-by-term factors still affect the quotient.
+
+Positive widths, with smallest width $29/20$, give an upper bound by a polynomial times $\exp(-29r^2/40)$ for the trial and its differentiated terms. The unnormalized vector is a finite sum of these rows. Positivity of its squared norm is a finite test on its Gram matrix. Its normalized version is the $\psi$ used in Chapter~\ref{ch:certificate}.
+
+To see membership in the weighted domain under the covariance premises, multiply the trial by smooth radial cutoffs. Their supports grow to exhaust configuration space. Both the original weighted outputs and the inputs converge by the Gaussian bounds. For the charge of the cutoff, the product rule adds a first-order symbol term. On its annulus $\norm{\nabla\chi_R}_\infty\le C/R$, so $w_\delta\norm{\nabla\chi_R}$ is bounded there for fixed $\delta$. The tail of the trial then makes this additional term go to zero in $L^2$. The cutoffs are genuine invariant smooth-core vectors when the gauge equivariance holds. Closure of the original graph and its weighted inverse-image description give the required membership.
+
+\evidence{Packed carrier \run{45633634783}.
+\src{research/computational/python-first-20261124/bfss-physical-implication/README.md}{Literal trial formulas, seed provenance, and cutoff argument}.}
+
+\section{From finite contractions to global polynomials}
+The computational inputs are homogeneous scalar or matrix-valued polynomials in $X$. Their degrees follow by differentiating the polynomial cores or inserting the specified linear and quadratic fields. Hermitian products use their real parts for the real row coefficients. Scalar contractions are invariant under $\SO(3)\times\SO(9)$. The two matrix families transform by color conjugation and are spatially invariant.
+
+Every real $3\times9$ matrix can be brought to rectangular diagonal form by rotations in both factors. Orientation changes in singular-value decomposition can be compensated using sign choices and unused spatial axes. A sign change of any one diagonal entry is a spatial rotation when accompanied by a sign change in one unused direction. Thus diagonal restrictions are polynomials in the squared singular values $g_i$. An even simultaneous color and spatial sign flip fixes a rectangular diagonal matrix, and forces the off-diagonal entries of an equivariant color matrix to vanish there. Signed permutations give the corresponding permutation symmetry of the restrictions.
+
+A symmetric polynomial in $g_1,g_2,g_3$ is a polynomial in $(s,u,v)$. The $i$th diagonal component of a matrix family is symmetric in the other two variables, so it is a polynomial in $g_i$, $s-g_i$ and $u-sg_i+g_i^2$. Reduce its powers by
+\[
+ g_i^3=sg_i^2-ug_i+v .
+\]
+Covariance shows that the same polynomial matrix is obtained globally from a sum of $I,G,G^2$ with symmetric polynomial coefficients. This argument includes repeated or zero singular values. The degree of each contraction now gives a finite monomial basis.
+
+If the raw values of a contraction are correct at the fitted configurations, a full-column-rank design proves the coefficients in that basis. A nonzero determinant minor modulo a prime supplies exact rank over $\mathbb Q$. Held-out and independent direct values challenge the inputs and implementation. They have evidentiary value even when the rank already implies uniqueness of the coefficients.
+
+The archive traces 81 original raw receipts through 79 full-rank designs, with 58,458 exact comparisons of recorded scalar values. That audit checks the coefficient lineage and individual held-out entries under the raw values. An independent source-exact replay of all raw contractions needed for a witness remains open. The main reduced target uses 52 rows and 12 active cores, with a 56-row fallback. Its existing rectangular-configuration derivative tests supply partial direct coverage. A full certificate must reach each nonzero fitted family with its required inputs or a proved structural relation.
+
+\section{Weighted form and independent Gaussian integration}
+In the source derivative expansion write $Q_\alpha=-iT_{\alpha d}\partial_d/\sqrt2+B_\alpha$, where $d$ indexes a spatial-color coordinate and $T_{\alpha d}$ is the linear combination of normalized Majoranas. Repeated $d$ in that expression is summed. Let $A_{de}=\sum_\alpha T_{\alpha d}T_{\alpha e}$ and $C_d=\sum_\alpha T_{\alpha d}B_\alpha$. For $W=r^2+\delta^2$ the weighted form is obtained by integrating the charge norm:
+\begin{align*}
+ q_\delta[\psi]={}&\int W\left(\tfrac12\norm{\nabla\psi}^2+
+                        \Re\ip{\psi}{(u+Y)\psi}\right)dX\\
+ &-\tfrac1{32}\Re\int\sum_{d\ne e}(\partial_d W)
+                      \ip{\psi}{A_{de}\partial_e\psi}\,dX\\
+ &-\Re\frac{i}{16\sqrt2}\int\sum_d(\partial_d W)
+                   \ip{\psi}{C_d\psi}\,dX .
+\end{align*}
+The finite source expansion gives the coefficient tests for this formula. Symmetry of second derivatives cancels the antisymmetric off-diagonal kinetic contractions. Integration by parts on the mixed terms gives the original Yukawa field and the derivative of $W$. The two derivative-of-weight corrections are essential. Gaussian decay supplies the boundary control for these integrations.
+
+The product of two oriented Gaussian profiles is $\exp(-\tr(KG))$ for positive $3\times3$ precision matrix $K$. Its density normalized in $X$ has nine independent column vectors with covariance $K^{-1}/2$. For symmetric test matrix $L$,
+\[
+ \mathbb E \exp(\tr(LG))=\det(I-K^{-1}L)^{-9/2}
+\]
+near $L=0$. Differentiating at zero gives Gram moments. Because the integrable monomials reduce to symmetric invariants and matrix insertions, one can generate the needed moments with exact rational arithmetic. After integrating the Gaussian in $X$, relative orientation reduces to a scalar integral in the cosine of the angle between the two color axes. The independent audit uses the integrated orientation primitive, the common positive scale of all the matrices, and its own moment recurrence from the determinant identity.
+
+The independent Gaussian audit reproduced 203 moment polynomials through degree 11 and all 16,380 upper-triangle matrix entries of the three 104-row forms. These entries use the archived contraction polynomials. The rational endpoint computed from a coefficient vector $c$ has the schematic form
+\[
+ h[\psi]=\frac{c^{\mathsf T}M_Hc}{c^{\mathsf T}M_0c},
+ \qquad
+ q_{\rm aux}[\psi]=\frac{c^{\mathsf T}M_{\rm aux}c}{c^{\mathsf T}M_0c}.
+\]
+A common positive matrix normalization cancels. The correspondence between the raw occupation values and the literal contractions is still a load-bearing finite premise. The monograph keeps the verified integration and this remaining replay task visible in the final theorem.
+\evidence{\src{research/computational/python-first-20261124/bfss-independent-integrals/README.md}{Independent Gaussian moment and matrix audit}.
+\src{research/computational/python-first-20261124/bfss-physical-implication/NAG4_INTERVAL_DIRECT_CLOSED_PAIRING_AND_WITNESS_COVERAGE_2026_11_27.md}{Reduced witness coverage}.}

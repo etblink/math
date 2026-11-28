@@ -1,6 +1,13 @@
 # The Relative SU(2) BFSS Quantum System — internal research monograph
 
-**Current internal edition 0.9.1.** This book is for Evan Kotler, future BFSS project leads, and mathematically trained collaborators. It assumes graduate linear algebra and basic Hilbert space theory. The reader guide provides paths for onboarding, selecting the next research question, and checking a theorem before reuse.
+**Current internal edition 0.10.0.** The rewritten 12-chapter monograph starts with the original zero-energy existence problem and follows the closed-operator and finite-witness evidence through the conditional statement. Four appendices preserve notation, qualification links, negative results and the Edition 0.9.1 crosswalk. The research cutoff is [ec55da1d6e6f](https://github.com/etblink/math/commit/ec55da1d6e6ffe50fedc1ea722f63eb470fae021).
+
+- [Edition 0.10.0 source and build instructions](edition-0.10.0/README.md)
+- [Edition 0.10.0 build validation](edition-0.10.0/BUILD_VALIDATION.md)
+
+## Edition 0.9.1 archive
+
+**Archived internal edition 0.9.1.** This book is for Evan Kotler, future BFSS project leads, and mathematically trained collaborators. It assumes graduate linear algebra and basic Hilbert space theory. The reader guide provides paths for onboarding, selecting the next research question, and checking a theorem before reuse.
 
 The 20-chapter master is `main.tex`. The research cutoff is unified integration commit `fcd873ebbb3148fb0036e19b7b8cb81dbb28be98`. Edition 0.9.1 updates the massless energy, compactness, and research frontier through GM5E9 R1. It distinguishes the qualified conditional zero-mode criteria from the fixed-ball estimates awaiting formalization and the open trial-sequence construction. The chapter structure follows Edition 0.9.
 

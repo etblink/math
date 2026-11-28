@@ -1,0 +1,85 @@
+\chapter{The Positive-Regulator Hardy Estimate and Fidelity}\label{ch:fidelity}
+\chaplead{A Hardy estimate for physical spinor intertwiners gives a lower bound on the kernel projection of a physical trial singlet.}
+
+\section{The weighted graph and the shared kernel}
+For $\delta>0$ put $w_\delta(X)=\sqrt{r^2+\delta^2}$ and $B_\delta=w_\delta^{-1}$. Its reciprocal is bounded and injective. Weighted outputs can be defined by the inverse image of $\operatorname{graph} T$:
+\[
+ (u,z)\in G_\delta\quad\Longleftrightarrow\quad (u,B_\delta z)\in
+ \operatorname{graph} T .
+\]
+The map $(u,z)\mapsto(u,B_\delta z)$ is continuous, so the inverse image is closed. Injectivity makes the weighted output unique. The physical smooth core lies in this domain. At $z=0$ the defining equivalence says that $\ker T_\delta=\ker T$, where $T_\delta$ is the weighted column. Their normalized adjoint squares have this same kernel. The existence argument will use the spectral projection of $H$ throughout.
+
+For $u$ in the weighted domain,
+\[
+ q_\delta[u]=\tfrac1{16}\norm{T_\delta u}^2
+ =q_{\rm aux}[u]+\delta^2 h[u],\qquad
+ q_{\rm aux}[u]=\tfrac1{16}\norm{rTu}^2 .
+\]
+The right side defines a scalar quantity on the trial domain. The argument below only uses $B_\delta$ at positive $\delta$.
+
+\section{Hardy estimate on physical spinor columns}
+The source calculation has two parts. First, sum the charge anticommutator for four disjoint spatial planes to obtain the total generator $J$ and the corresponding linear fields $\tau_\alpha$. Put $f_\delta=B_\delta^2$. The source product-rule calculation gives
+\begin{equation}
+ \sum_{\alpha=1}^{16}\{Q_\alpha,f_\delta\tau_\alpha\}
+ = f_\delta J+2i f_\delta^2\sum_{\alpha=1}^{16}\Xi_\alpha\tau_\alpha .
+ \label{eq:anticomm}
+\end{equation}
+The $\Xi_\alpha$ come from the radial multiplier differentiation. The finite contraction identities in the audit are
+\[
+ \sum_\alpha\norm{\Xi_\alpha(X)v}^2=8r^2\norm{v}^2,\qquad
+ \sum_\alpha\norm{\tau_\alpha(X)v}^2
+   =\frac{61r^2-45\sum_a X_{a9}^2}{1568}\norm{v}^2 .
+\]
+Both coefficients refer to the original charge normalization. They enter the physical argument after compression to an intertwiner.
+
+Second, on a smooth spinor intertwiner $M$, the compressed forms $M^\ast f_\delta M$ and $M^\ast h M$ commute with the spin action, and are scalar by irreducibility. To average the distinguished ninth coordinate in the second contraction, compress the nine multiplication operators $f_\delta^2\sum_a X_{ai}^2$. Each commutes with the lifts of even sign flips after compression. The exact gamma-word commutant for those lifts is scalar. Rotations permute the spatial axes, so the nine scalars agree. Consequently the $X_{a9}^2$ contraction can be replaced by $r^2/9$ in each compressed expectation. Inserting the coefficient gives $(61-45/9)/1568=1/28$.
+
+Choose a unit spinor weight vector with $J$-weight $2$, and let $\eta$ be its image. Write $a=\norm{B_\delta\eta}^2$ and $q=h[\eta]$. The inequality $f_\delta^2r^2\le f_\delta$ gives
+\[
+ \sum_\alpha\norm{f_\delta\tau_\alpha\eta}^2\le a/28,\qquad
+ \sum_\alpha\norm{f_\delta\Xi_\alpha\eta}^2\le 8a .
+\]
+Taking the expectation in \eqref{eq:anticomm}, using source symmetry and Cauchy--Schwarz on the two sums, yields
+\[
+ 2a\le 8\sqrt{qa/28}+2\sqrt{8/28}\,a .
+\]
+For $a>0$, divide by $2\sqrt a$, move the last term to the left and square. The case $a=0$ is immediate. The coefficient is
+\begin{equation}
+ \norm{B_\delta\eta}^2\le \kappa h[\eta],\qquad
+ \kappa=\frac{4}{(\sqrt7-\sqrt2)^2}=\frac{36+8\sqrt{14}}{25}.
+ \label{eq:hardy}
+\end{equation}
+Scalarity of the compressed forms extends this from the chosen weight to every spinor column. The graph-norm approximation from Chapter~\ref{ch:spin} and boundedness of $B_\delta$ extend it to form-domain intertwiners. The argument uses the actual covariance, source anticommutator and finite contractions listed above. Their combined source Hardy implication retains its analytical status.
+\evidence{\src{research/computational/python-first-20261124/bfss-physical-implication/README.md}{End-to-end analytical source audit}, section 6. The source anticommutator and contraction receipts there include G14, G15 and X0.}
+
+\section{Resolvent proof of the projection estimate}
+\begin{theorem}[Conditional fidelity estimate]\label{thm:fidelity}
+Assume the common square, the physical $\Spin(9)$ graph action of
+Chapter~\ref{ch:spin}, and \eqref{eq:hardy} for physical spinor intertwiners. If $\psi$ is a unit physical spatial singlet in the weighted charge domain, then for each such $\delta>0$,
+\[
+ \norm{P_{\ker H}\psi}^2\ge 1-\kappa q_\delta[\psi].
+\]
+\end{theorem}
+\begin{proof}
+Let $t>0$, $\chi_\alpha=A_\alpha\psi$, and
+$\eta_\alpha=(H+t)^{-1}\chi_\alpha$. Equation~\eqref{eq:chi} and resolvent covariance make $\alpha\mapsto\eta_\alpha$ a form-domain intertwiner. Write
+\[
+ a_\alpha=\ip{\chi_\alpha}{\eta_\alpha}
+       =h[\eta_\alpha]+t\norm{\eta_\alpha}^2\ge0.
+\]
+The identity $\chi_\alpha=B_\delta w_\delta\chi_\alpha$, self-adjointness of the multiplier, and \eqref{eq:hardy} give
+\[
+ a_\alpha\le\norm{w_\delta\chi_\alpha}\norm{B_\delta\eta_\alpha}
+       \le\norm{w_\delta\chi_\alpha}\sqrt{\kappa a_\alpha}.
+\]
+It follows, including the zero case, that
+$a_\alpha\le\kappa\norm{w_\delta\chi_\alpha}^{2}$.
+
+By $A_\alpha^2=H$, the spectral calculus for the self-adjoint $A_\alpha$ gives
+\[
+ a_\alpha=\int_{[0,\infty)}\frac{\lambda}{\lambda+t}\,d\mu_\psi^H(\lambda).
+\]
+Average over the sixteen labels and hold $\delta$ fixed while $t\downarrow0$. The integrand increases to $\mathbf1_{(0,\infty)}$, so the left side tends to $1-F(\psi)$. The right side is $\kappa q_\delta[\psi]$.
+\end{proof}
+
+If the trial lies in the weighted domain for all positive regulators and the same $\kappa$ works, each inequality bounds the same scalar $F(\psi)$. Taking the supremum of the scalar lower bounds gives $F(\psi)\ge 1-\kappa q_{\rm aux}[\psi]$. The fixed-regulator examples in Chapter~\ref{ch:certificate} already give conditional positive margins.

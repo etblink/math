@@ -1,0 +1,41 @@
+\chapter{Localization, Escape, and Other Spectral Questions}\label{ch:local}
+\chaplead{Localization can detect a zero mode by producing a tight small-charge sequence. A coercive sector estimate addresses a different spectral question.}
+
+\section{First-moment tightness and the closed graph}
+Consider original physical smooth-core vectors $f_n$ with $\norm{f_n}=1$, $Tf_n\to0$ in the Hilbert sum and
+\[
+ \sup_n\int r\norm{f_n(X)}^2\,dX<\infty .
+\]
+The last condition bounds the $L^2$ mass outside radius $R$ by $C/R$. The original kinetic identity \eqref{eq:energy}, nonnegativity of $u(X)$ and the linear bound on $Y$ then give a uniform gradient estimate. Applying local Rellich compactness to smooth cutoffs, and using the uniform tail bound, gives a strongly convergent subsequence in ambient $L^2$. The limit has norm one and lies in $\E$. Closedness of $T$ gives $Tf=0$, so $f\in\ker H$. This presents the conventional reasoning behind the accepted conditional criterion.
+
+Exactly the same tail calculation explains why local compactness by itself does not give compactness over the full space. Translation or moving-annulus examples can have strong local convergence to zero and unit norm globally. The BFSS valley gives a source-motivated region to test for escape, but a formal valley packet with bounded form energy is not an operator-domain Weyl sequence.
+\evidence{GM5E6 R2 qualifies the tight-core zero-mode implication. \run{45191316189}. The underlying first-moment compactness needs the specified derivative and closed-domain hypotheses.}
+
+\section{A fixed-ball alternative}
+A normalized small-charge sequence need only retain some uniformly positive mass in one fixed ball if one can localize with a suitable controlled IMS partition. For the original gauge-invariant smooth core, the cutoff product rule controls how $T$ changes under multiplication. A fixed smooth gauge-invariant partition $\{\chi_j\}$ with $\sum_j\chi_j^2=1$ cancels the mixed terms because $\sum_j\chi_j\nabla\chi_j=0$. The remaining term is bounded by the derivative weights of the partition and the original Clifford principal symbol.
+
+GM5E10 R2 gives the precise conditional conclusion. On the original invariant core let the sequence have input norms at most one, native charge tending strongly to zero, and positive mass uniformly retained in a fixed closed ball. Given the finite smooth gauge-invariant IMS partition with its required support and gradient conditions, the theorem yields a nonzero zero mode on the natural Hamiltonian domain. Local compactness supplies persistent overlap after an appropriate cutoff, and the closed graph carries the low-charge conclusion. A sequence entirely supported in moving disjoint annuli cannot satisfy the fixed-ball hypothesis.
+
+Explicitly, the inner member $\chi_{j_0}$ equals one on $r\le R$ and vanishes for $r>S$, with $S\ge0$. The finite family is smooth and gauge invariant, with $\sum_j\chi_j^2=1$ and $\norm{\nabla\chi_j}^2\le D_*$ for all members and all configurations. For input norm at most one, the archived cutoff estimate bounds the squared \emph{unnormalized} charge column of the inner member by $\norm{Tf_n}^2+8\,|\{j\}|D_*$. Its radial moment is at most $S$, and its squared norm is bounded below by the mass in the fixed ball. The localized sequence serves as a compact test of overlap with the uncut sequence. Its charge is bounded; the charge that tends to zero is the uncut charge.
+
+In ordinary Euclidean coordinates a pair of partition functions can be constructed from a smooth angle $\varphi(r^2)$ that equals zero through $R^2$ and $\pi/2$ from $S^2$ onward, with $0\le R<S$. Take the cosine as the inner member and the sine as the other member. They are smooth and gauge invariant, their squares sum to one, and their gradients are bounded since their derivatives are supported in a fixed annulus. A native Lean instantiation of this construction and a source trial sequence meeting the probability and charge hypotheses remain separate tasks.
+\evidence{\src{research/integration/BFSS_GM5E10_R2_ORIGINAL_FIXED_BALL_ZERO_MODE_GREEN_ACCEPTANCE_2026_11_23.md}{GM5E10 R2 qualification and original artifact}. \run{45236470826}. This succeeds the fixed-ball proof obligation listed in Edition 0.9.1.}
+
+\section{Conditional high-type confinement}
+For a reducing physical sector $E_s$, an estimate of the form
+\begin{equation}
+ h[f]+b\norm{f}^2\ge
+      a\norm{\nabla f}^2+c\int r\norm{f(X)}^2\,dX,\qquad a,c>0,
+ \label{eq:coercivity}
+\end{equation}
+on the actual closed form domain would make its form embedding compact by the argument above. Functional calculus then makes the sector resolvent compact. For example, the resolvent maps bounded sets to a bounded set in the form norm, and the right side of \eqref{eq:coercivity} makes that set precompact in $L^2$. A positive eigenpair on the full physical space would also require a nontrivial reducing sector with suitable positive spectral content. The corresponding $\Spin(9)$ vector branching, transverse oscillator estimate, fermionic constant and domain transport remain distinct steps.
+
+The transverse lower bound begins at a fixed nonzero first row $X^1$ with length $\rho$ and direction $a$. Decompose the other rows as $t_2a+z_2$ and $t_3a+z_3$ with $z_i\perp a$. The wedge potential is at least $\rho^2(\norm{z_2}^2+\norm{z_3}^2)$. At fixed first row the change of coordinates is orthogonal on the other two rows, and their two perpendicular components have sixteen real coordinates. For $0<\beta<1/2$, reserve $\beta$ of the kinetic coefficient for $-\beta\Delta_z+\rho^2\norm z^2$ and retain $1/2-\beta$ in all coordinates. The auxiliary oscillator levels are $2\sqrt\beta\,\rho(n+8)$. This slice calculation differentiates only the two remaining rows. A specified physical sector would have to exclude enough low transverse levels for the resulting slope to dominate the unnormalized linear fermion bound. The scalar oscillator spectrum alone gives no such exclusion.
+
+The angular average used in that proposed estimate has a useful exact control. If $\sigma$ is normalized measure on $S^2$ and $G=XX^{\mathsf T}$, then
+\[
+ \int_{S^2}\norm{v^{\mathsf T}X}\,d\sigma(v)\ge \tfrac12\norm{X}.
+\]
+For $X\ne0$ diagonalize $G$ and write its eigenvalues as $\norm{X}^2p_i$ with $\sum p_i=1$. Concavity gives $\sqrt{\sum_i p_i v_i^2}\ge\sum_i p_i|v_i|$, and the integral of $|v_i|$ equals $1/2$. A rank-one matrix attains equality. On a physical norm density invariant under full adjoint color rotations the integrated directional energy is independent of $v$, so the average applies to any fixed direction under the source binding. The coefficient $1/2$ is a real constraint on any oscillator margin. Recovering the correct physical Fock-vector sector and showing that the estimate survives closure remain essential.
+
+The conditional zero-mode criteria and conditional compactness of a high-spin sector address different endpoints. An external numerical construction of ground-state or excited-state wavefunctions gives another comparison point \cite{bajajlin}. Agreement of observables or energies must be tied to the specific operator and domain to support a source theorem.

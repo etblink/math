@@ -1,0 +1,49 @@
+\chapter{Spin(9) on Physical States}\label{ch:spin}
+\chaplead{The charge outputs of a physical singlet must transform as an actual spinor in the wavefunction Hilbert space.}
+
+\section{Three actions with different carriers}
+The real spinor label representation $S$ acts on the sixteen gamma labels. The Fock implementation $V(k)$ acts on fermionic vectors. Its conjugation action $B\mapsto V(k)BV(k)^{-1}$ acts on fermionic operators. Conjugation preserves the adjoint and trace when $V(k)$ is unitary. An automorphism of the operator algebra, even with these properties, still needs an implementing phase convention to determine $V(k)$.
+
+The distinction affects particle decompositions and the Hardy estimate. The endomorphism space carries a tensor-product action of the Fock representation and its dual. The charge outputs in the Hardy estimate lie in the physical vector space. Its spinor intertwiners cannot be supplied by an isotypic calculation in the endomorphism representation.
+
+\section{The source ninth-axis stabilizer}
+The source map to $\SO(9)$ restricts to a two-sheeted covering of the orthogonal stabilizer of the last axis. The target stabilizer is continuously isomorphic to $\SO(8)$ by restriction to the perpendicular eight-dimensional space. The accepted source factorization by perpendicular unit-vector Clifford words gives compactness and connectedness of the covering subgroup. This fixes the geometric group and its map. A branching argument additionally needs the action of the classified subgroup on the original physical Fock vectors, with the vector eight-module and central signs identified. This is the representation requirement used by the transverse oscillator route in Chapter~\ref{ch:local}.
+\evidence{Source covering \run{42452043377} and target stabilizer \run{42498367504}.}
+
+\section{The proposed phase-fixed vector action}
+For a real skew endomorphism $B$ of the Majorana labels, define the quadratic infinitesimal action
+\[
+ K(B)=\frac14\sum_{p,q}B_{pq}t_p t_q .
+\]
+The CAR give
+\[
+ [K(B),t_r]=\sum_p B_{pr}t_p,\qquad
+ [K(B),K(C)]=K([B,C]).
+\]
+Indeed $[t_pt_q,t_r]=2(\delta_{qr}t_p-\delta_{pr}t_q)$ gives the first formula. Applying this derivation to both factors in $K(C)$ and using skewness gives the second as an equality of quadratic expressions. This calculation fixes the Lie algebra action without a scalar ambiguity. Since $K(B)^\ast=-K(B)$, integration of the spatial Lie algebra representation to simply connected $\Spin(9)$ gives a unitary implementation with the prescribed derivative.
+
+For a coordinate plane $(i,j)$ the spin-label generator is $\gamma_i\gamma_j/2$. Its Fock generator is
+\[
+ K_{ij}=\frac18\sum_{a,\alpha,\beta}
+            (\gamma_i\gamma_j)_{\alpha\beta}t_{\alpha a}t_{\beta a}.
+\]
+For $R(k)\in\SO(9)$ the corresponding action on wavefunctions is the finite Fock unitary times inverse pullback under $X\mapsto XR(k)^{\mathsf T}$. The spatial generator is the sum of the orbital derivative and $K_{ij}$ in the source orientation. The color and spatial rotations act on different label factors, so their infinitesimal actions commute. Exact source gauge factorization and the vector implementation are needed for the resulting global commutation on wavefunctions.
+
+\section{Covariance on the closed form domain}
+On the smooth core, the Clifford covariance of $\gamma_i$ and of $\gamma^{ij}$ combines with the orbital chain rule in \eqref{eq:sourcecharge}. The spatial action rotates the charge label by the spinor representation. Write $U(k)$ for the action on $\E$, and use compatible conventions so that for an invariant $\psi$ the map
+\begin{equation}
+ T_\chi:\C^{16}\longrightarrow \E,\qquad
+            T_\chi e_\alpha=A_\alpha\psi                         \label{eq:chi}
+\end{equation}
+intertwines $S$ and $U$. This statement requires the charge covariance on the actual graph domain and actual physical output space. On core vectors the column rotates by a unitary on the Hilbert sum. Preservation of the core and extension by graph convergence then show invariance of $D(T)$ and of $h$. The weak form \eqref{eq:weakH} gives invariance of $\dom H$ and commutation with $H$ and its bounded shifted resolvents.
+
+This is the analytical route for the original paired source. The monograph uses it as a premise for the fidelity proof. Qualifications for an operator action, an infinitesimal label commutator or a topological stabilizer cover each have their own scope.
+
+\section{Averaging intertwiners instead of classifying all sectors}
+Given an intertwiner $S\to D(h)$, approximate the images of a spinor basis by physical core vectors in the form graph norm. Average the resulting finite-column map over $\Spin(9)$ by
+\[
+ M\longmapsto \int_{\Spin(9)} U(k) M S(k)^{-1}\,dk .
+\]
+Graph norm invariance makes the averaging contractive, and it fixes an intertwiner. Smoothness and a common compact support bound are preserved by the compact spatial action. This provides smooth intertwiner approximants for the Hardy estimate. It leaves the full isotypic decomposition of $\E$ as a separate question.
+\evidence{\src{research/computational/python-first-20261124/bfss-physical-implication/GAUGE_SPIN_GLOBAL_REVIEW_2026_11_25.md}{Original gauge and Spin(9) audit}.
+The atlas records the genuine vector and domain covariance as an analytical item.}

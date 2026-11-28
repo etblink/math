@@ -1,0 +1,135 @@
+\chapter{Notation and Source Normalization}\label{app:notation}
+\small
+\begin{longtable}{@{}p{.23\textwidth}p{.72\textwidth}@{}}
+\toprule Symbol & Meaning and convention\\
+\midrule
+\endhead
+$X,X_i,X^a$ & Matrix of color rows and spatial columns, its $i$th column in $\R^3$, and its $a$th row in $\R^9$.\\
+$r,G,s,u,v$ & Frobenius radius, color Gram matrix $XX^{\mathsf T}$, and its three elementary symmetric functions in degree order. The incidence argument uses instead the column Gram data $X^{\mathsf T}X$.\\
+$\F,\Ltwo,\E$ & Complex Fock vector space, ambient square-integrable sections, and the closed gauge fixed space. $\operatorname{End}_\C\F$ is the separate Fock operator space.\\
+$\Core,\PhysCore$ & Compactly supported smooth sections and their gauge-equivariant subspace. The latter embeds densely in $\E$.\\
+$\gamma_i,\theta,t$ & Real gamma matrices on sixteen spin labels, original source Majoranas, and normalized Majoranas $t=\sqrt2\,\theta$.\\
+$Q_\alpha,A_\alpha,T$ & Core charge, its native self-adjoint closure on $\E$, and the original closed Hilbert-sum column.\\
+$h,H$ & $h(f,g)=\ip{Tf}{Tg}/16$ on $D(T)$, and the normalized adjoint square with natural domain. Inner products are conjugate-linear in the first argument.\\
+$Y(X),K_{ai}$ & Original unnormalized Yukawa multiplier and the finite operators used to define it in the trial coordinates.\\
+$w_\delta,B_\delta$ & Positive radial weight $\sqrt{r^2+\delta^2}$ and bounded reciprocal for $\delta>0$.\\
+$q_\delta,q_{\rm aux}$ & Weighted charge energy and the scalar form $\norm{rT\psi}^2/16$ on the trial domain.\\
+$t$ in $(H+t)^{-1}$ & Positive resolvent shift. Its limit in the projection argument is independent of the radial regulator.\\
+$F(\psi)$ & Squared projection of a unit trial onto the original kernel.\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+The normalizations used for the energy calculation are the Pauli trace convention $e_a=\sigma_a/\sqrt2$, the ordered-pair $1/2$ coefficient of the core charge, and the factor $1/16$ on the Hilbert-sum pairing. The ordinary energy has kinetic factor $1/2$. The regulator is expressed as $\delta^2$ inside the radial weight. A formula written using an additive parameter under the square root therefore needs the corresponding change of parameter.
+
+\chapter{Evidence Index and Declaration Map}\label{app:evidence}
+The original 59-record \src{contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json}{historical theorem atlas} preserves the earlier acceptance history. The 22-record \src{research/methodology/SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.json}{physical existence atlas} links the new chapters to their scientific prerequisites. The table presents the latter records as of the edition cutoff. Strict rows refer to the cited tested source and consumer; the archive retains their exact status fields. The dependency links express mathematical use and may differ from the Lean import graph.
+
+\small
+\begin{longtable}{@{}p{.25\textwidth}p{.47\textwidth}p{.21\textwidth}@{}}
+\toprule Record & Claim & Evidence\\
+\midrule
+\endhead
+\texttt{PE-UGC4} & Literal restricted joint graph equals full graph physical-input slice & Strict\newline\run{45869599441} \\
+\texttt{PE-CSQE0} & Equal original core energies for every spin label & Strict\newline\run{45505859621} \\
+\texttt{PE-ICDA} & Exact componentwise original joint graph adapter & Strict\newline\run{45884276018} \\
+\texttt{PE-ICDB} & Individual closed graph lifts to selected joint coordinate under equal core norms & Strict\newline\run{45886320206} \\
+\texttt{PE-ICDC} & Actual paired individual and joint input domains equal; selected component graph lift & Strict\newline\run{45912386053} \\
+\texttt{PE-LOC6C} & Physical individual closed graph iff invariant-core weak pairing & Strict\newline\run{46041935392} \\
+\texttt{PE-NAG0} & Actual native closed individual graph & Strict\newline\run{46047069230} \\
+\texttt{PE-NAG1} & Native individual output physical; common dense domain & Strict\newline\run{46051319682} \\
+\texttt{PE-NAG2} & Native individual self-adjointness on actual paired physical space & Strict\newline\run{46059907504} \\
+\texttt{PE-NAG3} & Literal native smooth-core operator closure equals NAG2 operator & Strict\newline\run{46067320278} \\
+\texttt{PE-ESA} & Explicit literal core essential self-adjointness & Strict\newline\run{46074553299} \\
+\texttt{PE-CSQF0} & Complex core and closed joint graph pairing & Strict\newline\run{46082764637} \\
+\texttt{PE-SQUARE} & Normalized common form and natural square equality & Analytical \\
+\texttt{PE-SPIN} & Genuine Spin(9) Fock-vector and physical-domain covariance & Analytical \\
+\texttt{PE-TRIAL} & Literal 104-function trial and weighted admissibility & Analytical \\
+\texttt{PE-FINITE-LINEAGE} & Exact archived contraction-coefficient lineage and full-rank interpolation & Finite audit \\
+\texttt{PE-RAW} & Independent source-exact raw contraction/seed certificate & Open \\
+\texttt{PE-HARDY} & Positive-regulator Hardy estimate on physical spinor intertwiners & Analytical \\
+\texttt{PE-FIDELITY} & Same-H fidelity inequality for all positive regulators & Analytical \\
+\texttt{PE-EXIST} & Nonzero original physical zero-energy eigenstate & Open \\
+\texttt{PE-NEG-ICD0} & Stopped monolithic ICD0 implementation & Stopped \\
+\texttt{PE-NEG-GM2A} & Limit of the massless multiplier domain theorem & Scope limit \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Source declaration map for the main proof}
+The following names identify the source interfaces used in Chapters~\ref{ch:ham}--\ref{ch:square}. Each link is pinned to the edition snapshot; the linked qualification receipts specify their individual tested commits.
+
+\begin{description}
+\item[Original data.] The \src{lean/OAI/MathematicalPhysics/BFSS/Core.lean}{core file} defines the actual charged differential expression, polarization and core symmetry.
+\item[Ambient joint graph.] ICD-A0 \nolinkurl{source_joint_closed_graph_eq} identifies the closure of the physical core range. ICD-B0 \nolinkurl{source_component_graph_iff} gives the selected-component lift. \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDA0OriginalJointGraphAdapter.lean}{ICD-A0 source} and \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDB0OriginalComponentGraphLifting.lean}{ICD-B0 source}.
+\item[Physical graph and square.] AY gives the physical Hilbert-sum column, its graph equality and the membership equivalence under the coordinate map. BE proves the normalized Hamiltonian weak-form equivalence and the generic natural adjoint-square characterization. \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe.lean}{AY source} and \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean}{BE source}.
+\item[Individual graph and domain.] NAG0 \nolinkurl{paired_individual_graph_iff}, NAG1 \nolinkurl{paired_native_domain_eq}, and NAG2 \nolinkurl{paired_native_selfAdjoint}. See \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG0OriginalIndividualPhysicalOperator.lean}{NAG0}, \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG1OriginalIndividualPhysicalDomain.lean}{NAG1} and \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG2OriginalIndividualPhysicalAdjoint.lean}{NAG2}.
+\item[Complex graph pairing.] CSQ-F0 \nolinkurl{paired_core_pairing}, \nolinkurl{pairing_on_closure}, \nolinkurl{joint_range_pairing}, and \nolinkurl{paired_closed_joint_pairing}. \src{lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF0OriginalClosedJointPairing.lean}{CSQ-F0 source} and \src{lean/diagnostics/BFSSCSQF0OriginalClosedJointPairingIndependentAudit.lean}{Independent consumer}.
+\end{description}
+
+For the final analytical assembly, the normalized pairing uses \texttt{PiLp.inner\_apply} at exponent two from \href{https://github.com/leanprover-community/mathlib4/blob/d13f23b723b8a846827a245b89c10fc7d3f11612/Mathlib/Analysis/InnerProductSpace/PiL2.lean}{the pinned Mathlib source}. The original normalized Hamiltonian is separately indexed by E08-BF. The common-square conclusion itself is PE-SQUARE and remains analytical at the cutoff.
+
+\chapter{Historical Lineage and Limits of Earlier Arguments}\label{app:lineage}
+\section{How the current proof developed}
+The October source work built the finite gamma and Fock carriers, identified the invariant physical core and related the undeformed energy to the literal core charge. S4B36 recovered the concrete core Pauli/Fock energy identity. The earlier H-03 comparison identifies historical and native paired operators under its source hypotheses. Its original qualification and the modified port must be tracked by their respective source records. The current normalized operator has its own exact integration evidence.
+
+The November sequence recovered larger parts of the original gauge, adjoint and graph arguments in bounded interfaces. The weighted charge construction and shared kernel gave the fidelity route a precise target. The fixed-ball localization sequence advanced from GM5E9 to the qualified conditional GM5E10 criterion. NAG4 established essential self-adjointness of each literal core charge. CSQ-F0 replaced an unqualified closed-pairing step with a qualified two-point graph theorem. This chronology explains the order of investigation. It does not mean every earlier report is a logical premise of each later claim.
+
+\section{Negative results and controls retained}
+\begin{longtable}{@{}p{.3\textwidth}p{.65\textwidth}@{}}
+\toprule Test or boundary & Consequence for reuse\\
+\midrule
+\endhead
+CSQ-F0 R2 recursion limit & The first concrete core pairing specialization exceeded Lean recursion depth. R3 reused direct source symmetry and kept the topological lemma. The R2 failure concerns the implementation.\\
+Monolithic ICD0 & The combined implementation stopped unqualified. The separate ICD-A0, ICD-B0 and ICD-C0 claims have their own receipts.\\
+Massless multiplication & A maximal multiplier domain is a domain for the fermion field. The first-order weak charge graph needs distributional testing and graph approximation.\\
+Bounded normalized Gram field & Its uniform bound applies to its normalized auxiliary expression. The original fermionic multiplication grows linearly with radius.\\
+Moving annulus & Uniform norm or small form energy alone cannot give persistent probability in a fixed ball.\\
+Finite witness fixture & Exact agreement on selected values tests those values. Global identification needs the admissible polynomial class, sufficient design rank and correct source inputs.\\
+Three color projectors & Full adjoint rotations forbid three separately invariant rank-one color family labels. Quadratic color contractions remain possible.\\
+Antipodal valley direction & Individually labelled gamma eigenspaces exchange under reversal. Twisted or unordered data have different descent conditions.\\
+Full Clifford access & Algebraic separation of all finite states assumes access to all operators. Physical parity, gauge and dynamical constraints define a different set of permitted tests.\\
+\bottomrule
+\end{longtable}
+
+\evidence{\src{research/computational/python-first-20261124/bfss-physical-implication/CSQF0_R2_NATIVE_RED_R3_DIRECT_CORE_PAIRING_2026_11_27.md}{CSQ-F0 R2 archive}.
+\src{contributions/bfss-kotler/internal-monograph/appendices/negative_knowledge.tex}{Edition 0.9.1 negative-knowledge appendix}.}
+
+\chapter{Edition Crosswalk and Reproduction}\label{app:crosswalk}
+The rewrite groups the earlier accounts by their role in the existence argument. The table is a locator for prior chapter citations. Material with a historical qualification remains attached to the original receipt.
+
+\small
+\begin{longtable}{@{}p{.48\textwidth}p{.47\textwidth}@{}}
+\toprule Edition 0.9.1 chapter & Edition 0.10.0 destination\\
+\midrule
+\endhead
+1. Scope and physical context & Chapter~\ref{ch:question}.\\
+2. Carriers and notation & Chapter~\ref{ch:source} and Appendix~\ref{app:notation}.\\
+3. Clifford and Fock realization & Chapter~\ref{ch:source}, with packed transport in Chapter~\ref{ch:witness}.\\
+4. Sixteen charges and smooth-core form & Chapters~\ref{ch:source} and \ref{ch:ham}.\\
+5. Gauge symmetry and physical space & Chapters~\ref{ch:source}, \ref{ch:ham}, and \ref{ch:charges}.\\
+6. Native physical Hamiltonian & Chapters~\ref{ch:ham} and \ref{ch:square}.\\
+7. Physical massless multiplier & Chapter~\ref{ch:ham}.\\
+8. Source Spin(9) and axis stabilizer & Chapters~\ref{ch:spin} and \ref{ch:topology}.\\
+9. Fock-operator action and normalized Gram field & Chapters~\ref{ch:spin} and \ref{ch:ham}.\\
+10. Gauge compatibility and sector reduction & Chapters~\ref{ch:spin} and \ref{ch:local}.\\
+11. Original energy and fermionic growth & Chapters~\ref{ch:ham} and \ref{ch:local}.\\
+12. First-moment compactness & Chapter~\ref{ch:local}.\\
+13. Weighted charges and fidelity & Chapters~\ref{ch:fidelity}--\ref{ch:certificate}.\\
+14. Conditional oscillator exclusion and spectrum & Chapter~\ref{ch:local}.\\
+15. Hopf geometry and gauge descent & Chapter~\ref{ch:topology}.\\
+16. Representation structure and families & Chapter~\ref{ch:topology}.\\
+17. Standard Model and counterfactual tests & Chapter~\ref{ch:comparison}.\\
+18. Conditions for a GUT or ToE & Chapter~\ref{ch:comparison}.\\
+19. Proof recovery and negative results & Appendices~\ref{app:evidence} and \ref{app:lineage}.\\
+20. The theorem frontier & Chapters~\ref{ch:certificate}, \ref{ch:local}, and \ref{ch:comparison}.\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Reproducing the edition and its evidence}
+The versioned manuscript directory contains \texttt{main.tex}, chapter sources, an evidence index, and build instructions. In a standard TeX Live installation run \texttt{latexmk -pdf main.tex}. Use the accompanying edition audit to check the include graph, bibliography and cross-references. The build record gives the PDF hash, page count and inspection scope. The manuscript build checks the exposition artifact. Exact Lean qualifications come from the archived source and independent consumer runs.
+
+For a finite energy assertion, first locate the frozen seed, exact row coefficients, normalization, contraction receipts and matrix generation audit. Check the stated dependencies in the physical existence atlas. Reproducing the exact rational quotient from the archived matrices exercises a different step from recomputing the raw source contractions. Both steps retain their individual evidence ceilings.
+
+For a source theorem, locate its declaration, original run and tested commit. Confirm source, consumer and workflow blobs, pinned environment and allowed axiom roots. Historical failures remain evidence about the attempted statements and proof architecture. The dated \src{contributions/bfss-kotler/internal-monograph/EDITION_0_10_0_REWRITE_PROSPECTUS_2026_11_27.md}{rewrite prospectus} gives the earlier editorial plan and the current source map that informed this edition.

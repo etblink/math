@@ -1,0 +1,67 @@
+\chapter{The Native Hamiltonian and the Massless Interaction}\label{ch:ham}
+\chaplead{The original closed charge graph determines the operator, the form domain and the test identity required to recognize its action.}
+
+\section{The original joint graph}
+Embed the physical test graph
+\[
+ G_0=\{(f,(Q_\alpha f)_\alpha):f\in\PhysCore\}
+       \subset\Ltwo\times \Ltwo^{16}
+\]
+in the ambient product. Its graph closure is a graph: if $f_n\to0$ and $Q_\alpha f_n\to y_\alpha$ for every $\alpha$, then for any ambient core vector $g$,
+\[
+ \ip{y_\alpha}{g}=\lim_n\ip{Q_\alpha f_n}{g}
+                =\lim_n\ip{f_n}{Q_\alpha g}=0.
+\]
+Density of the ambient core gives $y_\alpha=0$. The finite product topology and the finite Hilbert-sum norm give the same closure, and the latter specifies the inner product for the adjoint. Identifying the input with its physical subtype and the output with its Hilbert-sum coordinates gives the original closed operator
+\[
+ T:D(T)\subset\E\longrightarrow\Ltwo^{16}.
+\]
+Since $\PhysCore$ is dense in $\E$, $T$ is densely defined. At source level the graph is pulled back by the actual physical inclusion and the canonical Hilbert-sum coordinate map. This construction keeps the original charge graph as the reference object.
+
+The all-space graph, defined via $\Core$ in place of $\PhysCore$, admits Haar averaging on both entries. Compatibility of the smooth Haar action with the full charge column extends to the closed graph by boundedness and approximation. For an all-space graph point with physical input, its Haar average has that same input and therefore the same output, by single-valuedness. The averaged approximating core vectors lie in $\PhysCore$. This explains the physical-slice equality of the two graphs that the original source gate establishes.
+\evidence{AY gives the native physical Hilbert-sum graph and the exact coordinate transport. UGC4 R3 qualifies the restricted/full physical-input graph equality. \run{45869599441}.}
+
+\section{Domain, action and weak testing}
+For a closed densely defined $T$, its positive self-adjoint adjoint square is defined on
+\[
+ D(T^\ast T)=\{f\in D(T):Tf\in D(T^\ast)\}.
+\]
+For the normalized Hamiltonian set
+\[
+ H=\tfrac1{16}T^\ast T,\qquad
+ h(f,g)=\tfrac1{16}\ip{Tf}{Tg},\qquad D(h)=D(T).
+\]
+The form norm $\sqrt{\norm{f}^2+h[f]}$ is equivalent to the graph norm of $T$. The graph is closed, so the form is closed. The scalar $1/16$ leaves the adjoint-square domain unchanged and determines the action.
+
+For $f\in D(T)$ and $w\in\E$, the Hilbert adjoint definition gives
+\begin{equation}
+ \bigl(\forall g\in D(T),\ \ip{w}{g}=h(f,g)\bigr)
+ \quad\Longleftrightarrow\quad f\in D(H),\ Hf=w.
+ \label{eq:weakH}
+\end{equation}
+To see the normalization, the test equation is equivalent to
+$\ip{Tf}{Tg}=\ip{16w}{g}$ for all $g$. This is precisely $Tf\in D(T^\ast)$ and $T^\ast Tf=16w$. The weak identity also shows why replacing the core by the closed form domain matters.
+
+A vector in $D(T)$ with $Tf=0$ satisfies the weak equation with $w=0$. Conversely, $Hf=0$ implies $h[f]=0$. Thus $\ker H=\ker T$. This proves a kernel equivalence on the physical carrier and leaves its dimension as a spectral question.
+\evidence{The exact normalized weak representative, self-adjointness, and closedness are in the BE source interface. Appendix~\ref{app:evidence} gives the declaration map.}
+
+\section{Historical comparison of Hamiltonians}
+The original research archive also defines a historical physical operator via a matched carrier and form. Equality of operators under that identification needs equality of domains and outputs. The H-03 historical result provides a comparison at its tested source snapshot and explicit matching hypotheses. Changes to the port's imports and local instance expression are tracked in the historical atlas. For the rest of this book $H$ is the native normalized operator of \eqref{eq:weakH}; it has the independent native source receipt indexed by E08-BF.
+\evidence{H-03 in the \src{contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json}{historical theorem atlas}; E08-BF \run{43498649514}.}
+
+\section{The massless field and energy}
+Let $Y(X)$ be the unnormalized Hermitian fermionic field of the original massless source, linear in $X$. As a wavefunction multiplier the natural maximal domain consists of $f\in\Ltwo$ such that $Yf\in\Ltwo$. To see closedness, suppose $f_n\to f$ and $Yf_n\to g$ in $L^2$. A subsequence converges almost everywhere in both coordinates. Pointwise multiplication by the finite matrix $Y(X)$ gives $g=Yf$ almost everywhere. On the physical subspace the source covariance transports both membership in this domain and the output action. In particular smooth compact vectors lie in the multiplier domain.
+
+In the concrete Pauli normalization the source-matched ordinary energy on the invariant smooth core is
+\begin{equation}
+ q_{\rm core}[f]=\tfrac12\norm{\nabla f}^2+
+       \int \left(u(X)\norm{f(X)}^2+
+       \Re\ip{f(X)}{Y(X)f(X)}\right)\,dX .
+ \label{eq:energy}
+\end{equation}
+Here $u(X)=\sum_{a<b}\norm{X^a\wedge X^b}^2$ is the second elementary symmetric polynomial of $\Gram$. The original massless charge identity specializes the deformed source at its undeformed parameter values, and the concrete Pauli/Fock pairing gives the stated coefficients. Source results on the multiplier and this energy formula do not describe the maximal distributional domain of every first-order charge.
+
+The linear field satisfies a finite-dimensional bound $\norm{Y(X)}_{\op}\le C r$ for some fixed $C$. The quartic potential vanishes on rank at most one. The lower estimate from \eqref{eq:energy} therefore contains a negative radial term and gives no global positive first-moment bound by itself. Chapter~\ref{ch:local} states the further coercivity estimate that would be sufficient.
+
+The bounded normalized Gram/Fock construction uses a different field. Its normalization gives uniform auxiliary control under the stated Gram hypotheses. Substituting that bound for the original $Y(X)$ estimate would change the energy. The source atlas keeps these two objects distinct.
+\evidence{Original energy and the massless multiplier are indexed in A-01, the historical S4B36 receipt, and GM0--GM5. See the \src{contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json}{historical atlas}.}

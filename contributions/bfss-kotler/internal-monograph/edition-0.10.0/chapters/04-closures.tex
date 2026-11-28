@@ -1,0 +1,43 @@
+\chapter{Individual Charge Closures on the Physical Space}\label{ch:charges}
+\chaplead{A closed realization, its weak graph, and essential self-adjointness of the original core restriction are separate steps.}
+
+\section{The individual and joint domains}
+Fix a spin label $a$. The original core equality of squared energies implies
+\[
+ \norm{Q_a f}^{2}=\frac1{16}\sum_{\alpha=1}^{16}\norm{Q_\alpha f}^2
+ \qquad (f\in\PhysCore).
+\]
+Apply it to $f_n-f_m$ for a sequence in $\PhysCore$. Cauchy convergence of one charge output is equivalent to Cauchy convergence of the entire column. A sequence giving a point in the joint graph therefore gives an individual graph point by taking its $a$th coordinate. An individual graph approximation lifts to a joint graph approximation by completeness of the other fifteen output spaces. The lifted point is unique by single-valuedness of the joint graph.
+
+This argument identifies the input domains rather than assuming that closure commutes with projection. In general, the image of a closed graph under a coordinate projection need not be closed, and individual graph approximations might carry no bound on the remaining coordinates. Here the norm identity gives that bound on differences and makes the two approximations equivalent.
+
+Established gauge preservation at graph level transports each projected output to the physical subspace. The native operators $A_a$ on $\E$ are densely defined, and their domains satisfy
+\begin{equation}
+ D(A_a)=D(T),\qquad
+ \iota A_a f=(Tf)_a\quad(f\in D(T)),                 \label{eq:component}
+\end{equation}
+where $\iota:\E\hookrightarrow\Ltwo$ is the physical inclusion. The source has a qualified common-domain theorem and exact graph transport interfaces. The displayed output formula describes the analytical combination of those interfaces used for the normalized pairing in Chapter~\ref{ch:square}.
+\evidence{ICD-A0 supplies the original ambient graph adapter. ICD-B0 proves the component lift under the equal-norm premise. ICD-C0 specializes the common-domain identification. NAG0 and NAG1 construct the native individual closed operators and qualify the dense common domain. \run{45912386053} and \run{46051319682}.}
+
+\section{Weak graphs and the role of symmetry}
+The graph of the adjoint of a densely defined symmetric core restriction has a weak description. On the ambient space and with the inner product convention of Chapter~\ref{ch:source}, $(f,y)$ satisfies the adjoint graph test if
+\[
+ \ip{y}{g}=\ip{f}{Q_a g}\qquad(g\in\Core).
+\]
+This is the distributional equation $Q_a f=y$ in the test-pairing sense. Its output is unique by density. At physical level one tests $\PhysCore$, and identifying that weaker test family with the physical graph requires actual Haar transport. Orthogonality of the physical projection and commutation with the source charge are used to extend tests from invariant core vectors to arbitrary core vectors.
+
+One route to the ambient maximal graph is instructive. Let $Q=D+V$, where $D$ has constant first-order coefficients and $V$ is the smooth Hermitian matrix polynomial of the source. For $f,y\in L^2$ with $Qf=y$ distributionally, choose real cutoffs $\chi_R(X)=\chi(X/R)$ that equal one near the origin. Then
+\[
+ Q(\chi_R f)=\chi_Ry+[D,\chi_R]f,\qquad
+ \norm{[D,\chi_R]f}\le C R^{-1}\norm{f}.
+\]
+Thus both input and output converge in $L^2$. For fixed $R$, $D(\chi_R f)$ is in $L^2$, because the weak output is and $V$ is bounded on the compact support. Convolution with a compactly supported smooth approximate identity commutes with $D$ on these weak pairs. The convolutions converge in $L^2$ together with their $D$ output, and boundedness of $V$ on a single enlarged compact set gives convergence of the $V$ term. A diagonal approximation puts the original weak pair in the core graph closure. The argument avoids requiring all first derivatives separately in $L^2$.
+
+The ambient closure is therefore the maximal weak realization. The gauge projection preserves the ambient graph, which lets the physical weak test characterize the restricted closure. This analytic exposition shows the use of cutoff and mollifier estimates. The native source proof is indexed by its exact sequence of cutoffs, weak-graph lemmas, and physical Haar transfers.
+\evidence{\src{research/computational/python-first-20261124/bfss-physical-implication/POST_ICD_ESA_MAXIMAL_GRAPH_MOLLIFIER_AND_SQUARE_AUDIT_2026_11_26.md}{November 26 analytical audit}. LOC6C qualifies the physical weak equivalence. \run{46041935392}.}
+
+\section{Self-adjointness and the literal core}
+NAG2 supplies native self-adjointness by comparing the native adjoint graph with the original weak-pairing graph. The comparison determines both domains and outputs. NAG3 identifies the graph closure of the literal original invariant-core operator with that native realization. NAG4 then states the explicit density, symmetry, closability and self-adjoint closure package. For each label $a$ we may use $A_a=\overline{Q_a|_{\PhysCore}}$ as a self-adjoint operator on $\E$.
+
+Essential self-adjointness answers which closure of the core action is canonical. A self-adjoint operator has a self-adjoint square, but identifying it with the specific original $H$ requires agreement of their weak forms on the common domain. The result about the core square is the beginning of that comparison.
+\evidence{NAG2 R3 \run{46059907504}, NAG3 R2 \run{46067320278}, NAG4 R2 \run{46074553299}. The artifacts and exact declarations are in the physical-existence atlas.}

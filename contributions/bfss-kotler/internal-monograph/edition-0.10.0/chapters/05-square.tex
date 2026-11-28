@@ -1,0 +1,65 @@
+\chapter{The Common Square}\label{ch:square}
+\chaplead{The qualified theorem is a complex pairing identity on the closed joint graph. The following analytical assembly explains how that identity determines the natural square.}
+
+\section{The complex pairing on core vectors}
+For invariant core vectors $f,g$ the source square equality gives
+$Q_a(Q_a g)=Q_b(Q_b g)$ in the original core representation. Use source symmetry twice:
+\begin{equation}
+ \ip{Q_a f}{Q_a g}=\ip{f}{Q_a(Q_a g)}
+                 =\ip{f}{Q_b(Q_b g)}
+                 =\ip{Q_b f}{Q_b g}.
+ \label{eq:corepair}
+\end{equation}
+This establishes the complex identity directly for two independent inputs. Each pairing uses the actual core embedding. The symmetry theorem used in the first and last equalities tests the ambient smooth core, so the intermediate output is an admissible test.
+
+The source proof of \eqref{eq:corepair} uses the direct symmetry and square-equality chain. The earlier attempt to specialize a more generic pairing lemma in the concrete core proof hit an elaboration recursion bound. The abstract topological transport remains useful and is part of the qualified statement.
+
+\section{Closure in both arguments}
+Let $S$ be the range of the core graph map in the ambient product, and let $p_\alpha$ be its continuous projection to the $\alpha$th output coordinate. Fix $x\in S$. The set of $y$ satisfying
+\[
+ \ip{p_a(x)}{p_a(y)}=\ip{p_b(x)}{p_b(y)}
+\]
+is closed and contains $S$, hence contains $\overline S$. Now fix $y\in\overline S$. The same reasoning in the first variable gives the equality for every $x\in\overline S$. The graph identity from ICD-A0 identifies $\overline S$ with the original minimal closed joint graph. No limits of unbounded compositions are taken.
+
+\begin{theorem}[Source-qualified closed graph pairing]
+For arbitrary points $(u,y)$ and $(v,z)$ in the original ambient closed joint graph of the paired $\SU(2)$ data, and any spin labels $a,b$,
+\[
+ \ip{y_a}{z_a}=\ip{y_b}{z_b}.
+\]
+\end{theorem}
+\evidence{CSQ-F0 R3, exact candidate \texttt{29289558cb05}, \run{46082764637}.
+The independent consumer instantiates both the invariant-core and two-point closed-graph statements.
+\src{research/computational/python-first-20261124/bfss-physical-implication/CSQF0_R3_GREEN_QUALIFIED_2026_11_27.md}{Qualification receipt}.}
+
+\section{From a coordinate to the normalized form}
+Let $D=D(T)=D(A_a)$, and take $u,v\in D$. The AY graph membership equivalence transports the two native points $(u,Tu)$ and $(v,Tv)$ to ambient graph points. NAG0 and ICD-B0 place each native individual output in the selected coordinate of a joint graph point. Since the joint graph is single-valued for a given input, this yields \eqref{eq:component}. The physical inclusion is isometric. By the closed graph pairing,
+\[
+ \ip{A_a u}{A_a v}=\ip{(Tu)_a}{(Tv)_a}
+ =\ip{(Tu)_b}{(Tv)_b}\qquad\text{for every }b.
+\]
+The actual inner product on the target of $T$ is the Hilbert sum. In the pinned source this is the identity for $\operatorname{PiLp}$ at exponent two. Summing the last expression over the sixteen spin labels gives
+\begin{equation}
+ h(u,v)=\tfrac1{16}\ip{Tu}{Tv}=\ip{A_a u}{A_a v} \qquad(u,v\in D).
+ \label{eq:normalized-pair}
+\end{equation}
+The topology used for graph closure and the Hilbert-sum normalization play different roles. The topology makes the coordinate pairings continuous. The Hilbert structure supplies the factor of sixteen.
+
+\section{Why the weak test gives natural-domain equality}
+For $u\in D$ and $w\in\E$, \eqref{eq:normalized-pair} identifies the two tests
+\[
+ \forall v\in D,\quad \ip{w}{v}=h(u,v)
+ \qquad\text{and}\qquad
+ \forall v\in D,\quad \ip{w}{v}=\ip{A_a u}{A_a v}.
+\]
+By \eqref{eq:weakH} the first is equivalent to $(u,w)\in\operatorname{graph} H$. By the adjoint definition with the dense common domain the second is equivalent to $(u,w)\in\operatorname{graph}(A_a^\ast A_a)$. Each graph has its first coordinate in $D$, so this proves equality of the entire graphs once the source interfaces are assembled. NAG2 gives $A_a^\ast=A_a$, hence the natural composition $A_a^2$ has exactly the same domain and action as $H$.
+
+\begin{proposition}[Analytical common-square implication]\label{prop:common}
+Under the native coordinate and form identifications above, every $A_a^2$ equals the original $H$ as a self-adjoint operator on $\E$. In particular,
+\[
+ \dom H=\{u\in D:A_a u\in D\},\qquad
+ Hu=A_a(A_a u)\quad (u\in\dom H).
+\]
+\end{proposition}
+At the cutoff the source-qualified component pairing is available. The normalized physical pairing assembly and the natural-operator identification have the conventional argument above and await their own strict source qualification. The resolvent proof in Chapter~\ref{ch:fidelity} explicitly uses Proposition~\ref{prop:common}.
+\evidence{\src{research/computational/python-first-20261124/bfss-physical-implication/NAG4_INTERVAL_DIRECT_CLOSED_PAIRING_AND_WITNESS_COVERAGE_2026_11_27.md}{Direct pairing and weak-form route}.
+The exact AY, NAG0--NAG2 and BE interfaces are listed in Appendix~\ref{app:evidence}.}
