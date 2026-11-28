@@ -52,3 +52,7 @@ Original research head was 3,495 commits ahead of main and zero behind; main is 
 - [Baseline consolidated main](https://github.com/etblink/math/commit/b6c882db204d624b7d0bcd5e8bc7abe6db643189), [CI catalogue commit](https://github.com/etblink/math/commit/d8491154fb68784e7a9cc026406854a3a12f130c). The old integration head remains frozen. The draft PR is still open and untouched.
 
 Next maintenance tasks: targeted qualification reconciliation across all tracks; audit original artifact retention, then dependency-indexed theorem signature catalogue. Do not turn historical labels or provider statuses into fresh proof claims. No proof gate or computational experiment resumed.
+
+### Qualification reconciliation batch 1 (2026-11-28)
+
+[Lifecycle reconciliation and retention triage](QUALIFICATION_LIFECYCLE_RECONCILIATION_V1.json): all 13 multi-status legacy runs reviewed against exact historical acceptance/negative receipts or manifest: nine previously qualified, four RED. Three mixed qualification flags are pending-to-acceptance transitions, not conflicting new findings. Preserve both historical states. 12/12 reported original ZIP paths confirmed at the frozen baseline by Git blob lookup (no new SHA-256 rehash). GM4B2 R2 and CSQ-F2 R1 original ZIPs are provider-only according to receipts, with live provider expiry dates Dec 23 and Dec 28 UTC respectively; QTC0A expiry Dec 1 has a repository archive. Retention audit is not complete; prioritize provider-only original binaries. No new proof qualification or CI launch. Maintenance freeze remains.
