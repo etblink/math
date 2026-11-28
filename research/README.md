@@ -7,6 +7,9 @@ This is the entry point for the independent downstream research program. We are 
 ## Find existing knowledge before starting research
 
 - [Machine-readable file inventory](maintenance/RESEARCH_INVENTORY_2026_11_28.json): 5,846 pre-consolidation files with exact Git blob, byte size, location and coarse kind. Not a qualification index.
+- [CI run metadata and evidence index](maintenance/ci-run-index/README.md): 2,319 provider run records (success/failure/cancellation are not theorem status).
+- [Normalized legacy gate index](maintenance/NORMALIZED_LEGACY_GATE_INDEX.json): 187 distinct run IDs and 224 scalar record variants extracted from the original nested registry.
+- [Receipt discovery join](maintenance/RECEIPT_DISCOVERY_JOIN.json): 483 linked run IDs, 401 with known memo/receipt pointers; not an exhaustive qualification index.
 - [Physical existence atlas](methodology/SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.md) and [machine-readable pilot](methodology/SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.json).
 - [Historical monograph theorem atlas](../contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json).
 - [Original gate registry](../BFSS_GATE_STATE.json): preserved pending reconciliation; dated records must be read in their original scope.
