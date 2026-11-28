@@ -92,3 +92,7 @@ Prioritize scientifically reusable evidence over indiscriminate administrative h
 ### FCP PBW binary custody — verified (2026-11-28)
 
 Owner imported 18 exact original FCP archives in [commit 634065bb9a5f](https://github.com/etblink/math/commit/634065bb9a5fe2d291e9ef52c30594eff71be7f8). [Independent verification](artifact-audit/FCP_PBW_BINARY_IMPORT_VERIFICATION_001.json) confirms 18/18 exact Git blob and size matches to the recovery manifest, 82,052 bytes, all 203 prior directory entries unchanged, no unexpected additions. Expanded known original evidence census: 366/366 committed, zero known awaiting import. The previous recovery manifest remains historical. This does not establish exhaustive coverage of either repository. No source edits, CI or qualification promotion; maintenance freeze remains.
+
+### Original reciprocal donor and live roadmap reconciliation (2026-11-28)
+
+[Atlas V4](knowledge-atlas/ATLAS_INDEX_V4.json) and [reciprocal shard](knowledge-atlas/SPECTRAL_RECIPROCAL_RECEIPTS_002.json): ten historical strict receipts reviewed, 20/20 current source/consumer blob pins matched, 38 historical roots and eight RED diagnostics indexed. Positive-regulator scalar, L∞, genuine original FullL2 action, AE formula, SU2 preservation, ratio, and CERT-P0 duality separated by scope. Current known artifact custody (366/366) and atlas counts now reflected in live roadmap; historic checkpoint notes unchanged. No new evidence download, CI or qualification; freeze remains.
