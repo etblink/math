@@ -1,0 +1,3 @@
+# Historical original provider ZIP custody
+
+The 225 original files in this directory remain byte-for-byte at the [retained evidence checkpoint](https://github.com/etblink/math/tree/cab6a648457fbedfbb2451fd4b148323ec5a08ec/research/maintenance/artifact-audit/originals). The [evidence provenance catalogue](../EVIDENCE_PROVENANCE_INDEX.json) resolves their original paths, exact Git blob IDs, sizes, provider run/artifact/job identities, tested SHAs and original receipt references. Historical ZIP SHA256/CRC receipts are retained; decoded logs are not provider ZIPs. This is a working-tree cleanup pilot, not evidence deletion. See [review](../../PROVENANCE_GC_EVIDENCE_REVIEW_2026_11_28.md).

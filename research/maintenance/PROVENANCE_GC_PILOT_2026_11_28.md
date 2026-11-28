@@ -17,3 +17,7 @@ Current navigation resolves old paths using the two explicit commit/prefix mappi
 ## Decision
 
 This pilot tests working-tree reduction, not actual Git object garbage collection. No history rewrite, pruning, branch deletion or qualification change. Later phases may examine raw logs and original ZIPs separately after exact custody and active-use review, including scripts that consume them, provider artifact IDs and digests. Do not remove active computational inputs, witnesses or source. Freeze stays in force. Review this branch before merging.
+
+## Subsequent bounded vault review
+
+[Archival evidence review](PROVENANCE_GC_EVIDENCE_REVIEW_2026_11_28.md) separately covers 225 recovered original-provider ZIPs and five historical FCP decoded job logs. Earlier statements about no evidence ZIP removal describe the first workflow-only checkpoint. The subsequent pilot removes the duplicate working-tree copies, not the preserved historical evidence.
