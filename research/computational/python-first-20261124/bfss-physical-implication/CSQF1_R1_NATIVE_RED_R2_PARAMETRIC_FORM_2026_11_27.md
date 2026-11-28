@@ -1,0 +1,11 @@
+# CSQ-F1 R1 native RED; bounded R2 parametric normalized-form adapter
+
+2026-11-27 Pacific. Exact R1 run 46089897821, job 140808126027, candidate 689a6045e52b1a7837e307d80904c1136511ed13. Checkout, 131 frozen source pins, pinned toolchain restoration and original evidence upload succeeded. Native build reached job 9245/9245 but failed at BFSSCSQF1OriginalNativeChargeForm.lean:89:4 (maximum recursion depth). No independent consumer execution. Four roots (source_column_point, source_output_of_common_input, normalized_constant_pairing, paired_native_output) report only propext, Classical.choice, Quot.sound; paired_normalized_form reports sorryAx due to the failed elaboration. Gate RED, not partially qualified. CSQ-F0 R3 remains latest qualified.
+
+[Original complete decoded job](CSQF1_R1_original_job_140808126027.log), 457107 characters as returned by connector; archive commit 897e9b8836eef64870fb8866b3b37153cc67e480. [Provider artifact](https://github.com/etblink/math/actions/runs/46089897821/artifacts/15241717977), 32260 bytes, provider SHA256 6b03f48ca81a306a442d4b3ae9c517bc036275931e4d0a05be03ca5d8d67a86d. ZIP digest/CRC not independently recomputed in this interval.
+
+## R2 prospective change
+
+Move the normalized-form assembly to an arbitrary-N source adapter, accepting the already qualified closed joint pairing as an explicitly typed hypothesis on ambient graph points. This avoids elaboration of the concrete paired Fock carrier while applying the closed-graph pairing, evaluating the canonical PiLp output, rewriting individual coordinates, and transporting the subtype inner product. Instantiate the helper at N=2 with paired_closed_joint_pairing and paired_core_charge_norm, with explicit common-domain arguments. Use existing source_output_of_common_input and normalized_constant_pairing unchanged. Retain the exact public paired_normalized_form statement, independent consumer, five printed axiom roots, 131 source pins, strict workflow and resource limits; helper is private and covered by final root axiom audit. No new axiom, assumptions in concrete theorem, resource-limit increase or source changes outside failed candidate. No common-square/physical promotion.
+
+The repair addresses the first causal elaboration issue; subsequent proof lines were not yet independently established by R1. R2 needs native qualification.
