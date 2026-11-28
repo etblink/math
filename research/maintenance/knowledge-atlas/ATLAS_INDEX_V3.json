@@ -1,0 +1,3895 @@
+{
+  "schema": "scientific-knowledge-atlas-navigation-v3",
+  "baseline": "39db42d61a357736ede805c92a0c4d0a9a6081eb",
+  "scope": "V3 preserves V2 and adds 22 exact-current local compiler evidence records for the October 27 PBW source lineage; 20 historical FCP source provenance records separately linked. No qualification promotion. Lexical aggregate counts inherited from V1 only. Partial editorial dependencies.",
+  "source_blobs": {
+    "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json": "6007ccb5b694f300e311e56d717976506d671ee8",
+    "research/maintenance/knowledge-atlas/PHYSICAL_PILOT_SOURCE_SIGNATURES_V1.json": "b37039f15310a47bd9f7119971508cec9af15c42",
+    "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json": "11b100092db9a236c75e32767f74676d62731e51",
+    "research/maintenance/knowledge-atlas/CROSS_TRACK_SOURCE_SIGNATURES_001.json": "edf2e8450b25f35a576a1937b50e01111a86c171",
+    "research/maintenance/knowledge-atlas/CROSS_TRACK_SOURCE_SIGNATURES_002.json": "d67de2235b304e3f10b8cde16fee48d8a8edc209",
+    "research/maintenance/knowledge-atlas/BODY_RECEIPT_ARTIFACT_DISCOVERY_001.json": "9f11ecdaa2865d23ad488799a9471444f4b01cec"
+  },
+  "counts": {
+    "records": 125,
+    "editorial_edges": 137,
+    "named_roots": 286,
+    "lexical_lean_modules": 26,
+    "lexical_declarations": 187,
+    "lexical_axiom_requests": 140,
+    "lexical_import_links": 45,
+    "links_between_indexed_modules": 14,
+    "existence_reachable": 46,
+    "spectral_receipts_checked": 9,
+    "spectral_source_consumer_pin_matches": 18,
+    "spectral_audited_roots": 42,
+    "indexed_negative_diagnostics": 4,
+    "pbw_local_compiler_modules": 22,
+    "pbw_local_compiler_roots": 47,
+    "pbw_current_source_pins": 22,
+    "pbw_historical_fcp_runs": 20
+  },
+  "records": [
+    {
+      "id": "D-01",
+      "title": "The original carriers and dimensions",
+      "status": "SOURCE_DEFINITION",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "Configuration-space dimension is not spacetime dimension. The 11D M-theory interpretation is not an axiom of these definitions.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Core.lean"
+      ],
+      "named_roots": [
+        "SpaceIndex",
+        "ColorIndex",
+        "Boson",
+        "Fermion",
+        "FullL2",
+        "SmoothCore"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "D-02",
+        "D-03",
+        "G-01",
+        "S-01",
+        "A-02",
+        "N-02"
+      ]
+    },
+    {
+      "id": "D-02",
+      "title": "Original gamma, theta, and CAR source data",
+      "status": "SOURCE_DEFINITION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-01"
+      ],
+      "scope": "A structure declaration with fields is not a proof that a chosen concrete instance exists; concrete source witness is separate.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Core.lean"
+      ],
+      "named_roots": [
+        "AlgebraData",
+        "AlgebraData.gamma",
+        "AlgebraData.theta"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "D-03",
+        "G-01",
+        "G-03",
+        "F-01",
+        "N-01"
+      ]
+    },
+    {
+      "id": "D-03",
+      "title": "The original 16 charge operators and quadratic core form",
+      "status": "SOURCE_DEFINITION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-01",
+        "D-02"
+      ],
+      "scope": "The core expression is not by itself a self-adjoint full physical Hamiltonian.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Core.lean"
+      ],
+      "named_roots": [
+        "AlgebraData.charge",
+        "AlgebraData.chargeVector",
+        "AlgebraData.coreForm"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "H-01",
+        "A-01",
+        "PE-UGC4",
+        "PE-CSQE0",
+        "PE-ICDA"
+      ]
+    },
+    {
+      "id": "G-01",
+      "title": "The original gauge-invariant physical Hilbert subspace",
+      "status": "SOURCE_DEFINITION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-01",
+        "D-02"
+      ],
+      "scope": "Definition of an invariant subspace alone does not give nonzero physical states.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/GaugeCore.lean"
+      ],
+      "named_roots": [
+        "AlgebraData.GaugeData.physicalSpace",
+        "AlgebraData.GaugeData.physicalSpace_closed"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "G-02",
+        "G-04",
+        "H-01",
+        "S-06",
+        "PE-UGC4"
+      ]
+    },
+    {
+      "id": "G-02",
+      "title": "Nonzero normalizable physical radial bump",
+      "status": "HISTORICAL_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "G-01"
+      ],
+      "scope": "Historical strict-qualified result; the rewritten integration-port file is not independently qualified by this row; no supersymmetric ground state or eigenvalue.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSG4K2BNonzeroPhysicalL2Probe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_ne_zero",
+        "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_mem_physicalSpace",
+        "FCP.BFSSSU2GaugeG4K2B.pairedPhysicalSpace_ne_bot"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 37894319431,
+      "dependents": []
+    },
+    {
+      "id": "G-03",
+      "title": "Nonzero SU2-invariant original Fock vacuum and projection",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-02"
+      ],
+      "scope": "A fiber state is not automatically a nonzero gauge-physical bosonic wavefunction or a Hamiltonian eigenstate.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP2cNonzeroOriginalGaugeVacuum.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionVacuum_mem_fixed",
+        "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionGaugeProjection_ne_zero"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42530241914,
+      "dependents": []
+    },
+    {
+      "id": "G-04",
+      "title": "Original full-L2 maximal Gauss joint kernel iff physical SU2 invariants",
+      "status": "HISTORICAL_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "G-01"
+      ],
+      "scope": "Historical exact-source strict-green result, not a theorem identifying maximal generator domains with the invariant smooth charge core or proving physical Spin9 covariance.",
+      "source_paths": [],
+      "named_roots": [
+        "FCP.BFSSSU2PhysicalDomainL6H5E8AA.actualOriginalJointKernel_fixed_fullGauge",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8AA.actualOriginalJointKernel_iff_fullGaugeFixed",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8AA.actualOriginalJointKernel_iff_physical"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 38994451291,
+      "dependents": []
+    },
+    {
+      "id": "H-01",
+      "title": "Density of the original physical charge domain",
+      "status": "HISTORICAL_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-03",
+        "G-01"
+      ],
+      "scope": "Historical qualification, not an automatic integrated-tree qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 39079626713,
+      "dependents": [
+        "H-02",
+        "PE-NAG1"
+      ]
+    },
+    {
+      "id": "H-02",
+      "title": "The original normalized self-adjoint physical Hamiltonian",
+      "status": "HISTORICAL_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "H-01"
+      ],
+      "scope": "Neither spectral confinement nor positive eigenpair existence follows from self-adjointness.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_selfAdjoint",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_weakForm_iff"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 39088799248,
+      "dependents": [
+        "H-03",
+        "O-01",
+        "O-04",
+        "PE-ICDC",
+        "PE-SQUARE"
+      ]
+    },
+    {
+      "id": "H-03",
+      "title": "Identity of the native and historical paired physical Hamiltonians",
+      "status": "HISTORICAL_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "H-02"
+      ],
+      "scope": "The present integration port changes imports and one local letI to let; it is source-present but not independently requalified in this exact port.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainL6H5E8BHOriginalHistoricalPairedHamiltonianEqualityProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BH.originalMinimalPhysicalNormalizedHamiltonian_eq_historical",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BH.originalMinimalPhysicalNormalizedHamiltonian_domain_eq_historical",
+        "FCP.BFSSSU2PhysicalDomainL6H5E8BH.pairedOriginalPhysicalNormalizedHamiltonian_eq_historical"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 39096180117,
+      "dependents": []
+    },
+    {
+      "id": "F-01",
+      "title": "Faithfulness of the original Clifford-to-Fock operator map",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-02"
+      ],
+      "scope": "This is an operator-algebra statement, not an independent manuscript module comparison.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3HOriginalComplexCliffordFockFaithfulProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52M3H.originalComplexCliffordFock_injective"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42547700192,
+      "dependents": [
+        "F-02",
+        "S-03"
+      ]
+    },
+    {
+      "id": "F-02",
+      "title": "Original complex Clifford/Fock algebra equivalence",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "F-01"
+      ],
+      "scope": "Does not identify any separately stipulated manuscript Hilbert module; preserves the subtle central Spin signs.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OperatorDependencies/SU2BFSSPhysicalDomainS1V52M3IOriginalComplexCliffordFockAlgebraEquivProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv",
+        "FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv_apply"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42547700192,
+      "dependents": [
+        "O-02",
+        "QIT-W0B0",
+        "QIT-W0H1B"
+      ]
+    },
+    {
+      "id": "S-01",
+      "title": "Connectedness of the exact source ninth-axis stabilizer",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-01"
+      ],
+      "scope": "Does not by itself identify its complete representation category with standard Spin(8) branching.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisStabilizerConnectedness.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSourceNineAxisStabilizerConnectedness.source9Axis8Stabilizer_isPathConnected_pbw"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42426258689,
+      "dependents": [
+        "S-02",
+        "S-03",
+        "S-09"
+      ]
+    },
+    {
+      "id": "S-02",
+      "title": "Compact source stabilizer and its quotient parameterization",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-01"
+      ],
+      "scope": "No automatic transfer of Spin(8) representation-theoretic branching or physical covariance.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisStabilizerQuotient.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSourceNineAxisStabilizerQuotient.source9Axis8Stabilizer_isCompact_pbw",
+        "FCP.BFSSSourceNineAxisStabilizerQuotient.source9Axis8EightUnitSpinWordToStabilizer_isQuotientMap_pbw"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42429216538,
+      "dependents": [
+        "S-09",
+        "O-01",
+        "O-03",
+        "C-01"
+      ]
+    },
+    {
+      "id": "S-03",
+      "title": "Original active Majorana covariance under source Spin(9) operator action",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "F-01",
+        "S-01"
+      ],
+      "scope": "This is operator-algebra covariance, not a continuous Fock-vector implementation.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/OP3C6COriginalFockActiveGammaCovariance.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSOP3C6COriginalFockActiveGammaCovariance.originalFockGammaRealLinear_eq_activeGammaRealLinear",
+        "FCP.BFSSOP3C6COriginalFockActiveGammaCovariance.source9Spin_originalFockOperatorAutomorphismHom_activeGamma"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42728268316,
+      "dependents": [
+        "S-04",
+        "S-06",
+        "S-08"
+      ]
+    },
+    {
+      "id": "S-04",
+      "title": "Original Fock operator Spin(9) physical-star action",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-03"
+      ],
+      "scope": "No source-group continuity, Fock-vector unitary implementation, or Hamiltonian domain covariance is asserted.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P2bB3OriginalFockStarAutomorphismAction.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP2bB3OriginalFockStarAutomorphismAction.source9Spin_originalFockOperatorStarAutomorphismHom"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42764649026,
+      "dependents": [
+        "S-05",
+        "O-01"
+      ]
+    },
+    {
+      "id": "S-05",
+      "title": "Trace invariance of the original Fock operator action",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-04"
+      ],
+      "scope": "Supports but does not complete a continuous Hilbert–Schmidt group representation or its equality with the physical vector space.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/T1OriginalFockTraceInvariance.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSST1OriginalFockTraceInvariance.source9Spin_originalFockTrace_invariant"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42769361446,
+      "dependents": [
+        "O-03",
+        "C-01"
+      ]
+    },
+    {
+      "id": "S-06",
+      "title": "Source Spin(9) and SU2 color commute on 48 labels",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-03",
+        "G-01"
+      ],
+      "scope": "Do not elevate the source matrix commutator to fermionic gauge unitary, projector or full charge-operator commutation without a separate theorem/receipt.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0OriginalSpinGaugeMajoranaCommutation.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSC48C0OriginalSpinGaugeMajoranaCommutation.source9SpinOriginalPaired48_commutes_sourceGauge"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42779878513,
+      "dependents": [
+        "S-07",
+        "S-08",
+        "O-01"
+      ]
+    },
+    {
+      "id": "S-07",
+      "title": "Equality of the actual original S1J real gauge matrix and the paired 48-label color action",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-06"
+      ],
+      "scope": "Exact source real-label matrix identity; not genuine Fock gauge-unitary fixedness or physical projector invariance.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C0BOriginalSourceGaugeS1JMatrixIdentity.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSC48C0BOriginalSourceGaugeS1JMatrixIdentity.sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42787913738,
+      "dependents": [
+        "S-08"
+      ]
+    },
+    {
+      "id": "S-08",
+      "title": "Original active gamma / S1J gauge compatibility under Spin9",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-03",
+        "S-06",
+        "S-07"
+      ],
+      "scope": "Does not yet prove full operator automorphism commutation with genuine gauge conjugation or source-unitary/projector fixedness.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/C48C1A0OriginalActiveGammaS1JSpinCompatibility.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSC48C1A0OriginalActiveGammaS1JSpinCompatibility.spin9_activeGamma_S1J_gauge_commute"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42798054277,
+      "dependents": []
+    },
+    {
+      "id": "S-09",
+      "title": "Original ninth-axis stabilizer projection is a two-sheeted covering",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-01",
+        "S-02"
+      ],
+      "scope": "Covering does not alone identify K as standard Spin8 with vector-compatible root data and physical representation branching.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCovering.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_isCoveringMap_pbw",
+        "FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_fiber_ncard"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42452043377,
+      "dependents": [
+        "S-10"
+      ]
+    },
+    {
+      "id": "S-10",
+      "title": "Source fixed-axis orthogonal stabilizer is continuously isomorphic to SO(8)",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-09"
+      ],
+      "scope": "Target H equivalence not a new Spin8 source covering isomorphism, branching theorem or physical Fock action.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineAxisCoordinateEquivalence.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSSourceNineAxisCoordinateEquivalence.source9Axis8CoordinateContinuousMulEquiv"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42498367504,
+      "dependents": []
+    },
+    {
+      "id": "A-01",
+      "title": "Original massless core-energy identity",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-03"
+      ],
+      "scope": "Generic AlgebraData theorem; concrete Pauli/color field contraction and sharp growth bound are distinct.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralMasslessCoreFormIdentity.lean"
+      ],
+      "named_roots": [
+        "OAI.BFSSQuantum.AlgebraData.massless_coreForm_energy"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42325087575,
+      "dependents": [
+        "O-02",
+        "O-04",
+        "C-02"
+      ]
+    },
+    {
+      "id": "A-02",
+      "title": "Uniform first radial moment gives L2 tightness",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-01"
+      ],
+      "scope": "Assumes a radial-moment estimate; does not obtain it from the physical Hamiltonian.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralLinearMomentCompactness.lean"
+      ],
+      "named_roots": [
+        "OAI.BFSSRellich.linear_moment_tight_compactness"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42315568670,
+      "dependents": [
+        "A-03"
+      ]
+    },
+    {
+      "id": "A-03",
+      "title": "Smooth-core local/global compactness from gradients and moment",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "A-02"
+      ],
+      "scope": "Not an estimate of source charge energy; the hypotheses remain to be supplied.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralCoreLinearMomentCompactness.lean"
+      ],
+      "named_roots": [
+        "OAI.BFSSSliceSobolev.core_gradient_l2_local_totallyBounded",
+        "OAI.BFSSSliceSobolev.core_linear_moment_totallyBounded"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42318037096,
+      "dependents": [
+        "A-04"
+      ]
+    },
+    {
+      "id": "A-04",
+      "title": "Weighted closure compactness",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "A-03"
+      ],
+      "scope": "Physical form-domain identification and coercive bounds are not established by this result.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralWeightedClosureCompactness.lean"
+      ],
+      "named_roots": [
+        "OAI.BFSSSliceSobolev.weightedClosure_linear_totallyBounded",
+        "OAI.BFSSSliceSobolev.weightedClosure_sqrt_radial_totallyBounded"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 42320696105,
+      "dependents": [
+        "O-05",
+        "C-02"
+      ]
+    },
+    {
+      "id": "N-01",
+      "title": "Uniformly bounded original normalized Fock Gram field",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "D-02"
+      ],
+      "scope": "Auxiliary quadratic-Gram observable is not the unnormalized original fermionic interaction (linear in bosonic coordinates).",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0COriginalNormalizedFockField.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNORM0COriginalNormalizedFockField.originalNormalizedFockGram_norm_le"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43017992525,
+      "dependents": [
+        "N-02"
+      ]
+    },
+    {
+      "id": "N-02",
+      "title": "Pointwise image belongs to original vector L2",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "N-01",
+        "D-01"
+      ],
+      "scope": "This D1-A strict green does not establish a bounded continuous linear map on the full physical FullL2 carrier.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D2OriginalPointwiseL2Membership.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNORM0D2OriginalPointwiseL2Membership.originalPointwiseFock_memLp"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43047181537,
+      "dependents": [
+        "N-03"
+      ]
+    },
+    {
+      "id": "N-03",
+      "title": "Original representative-safe carrier bridge",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "N-02"
+      ],
+      "scope": "Generic carrier bridge does not alone prove the complete bounded complex-linear map.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3AOriginalLpCarrierBridge.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNORM0D3AOriginalLpCarrierBridge.originalCarrierLpOfMemLp_congr"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43084968990,
+      "dependents": [
+        "N-04"
+      ]
+    },
+    {
+      "id": "N-04",
+      "title": "Direct original Fock L2 output a.e. identity",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "N-03"
+      ],
+      "scope": "The representative-class transport successor is not implied by this gate.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3CDirectOriginalFockLpOutput.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNORM0D3CDirectOriginalFockLpOutput.originalFockLpDirect_ae"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43091441892,
+      "dependents": [
+        "N-05"
+      ]
+    },
+    {
+      "id": "N-05",
+      "title": "Image transport under a.e.-equal input representatives",
+      "status": "PENDING_STRICT_GATE",
+      "track": "monograph-base",
+      "prerequisites": [
+        "N-04"
+      ],
+      "scope": "This atlas is pinned to the preceding reviewed snapshot; no pass/fail status is inferred for the queued run.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNORM0D3DOriginalFockRepresentativeTransport.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_ae_of_rep",
+        "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_memLp_of_rep"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43095354808,
+      "dependents": []
+    },
+    {
+      "id": "O-01",
+      "title": "Continuous original physical Spin9 symmetry and full 16-charge covariance",
+      "status": "OPEN_PROOF_OBLIGATION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-02",
+        "S-04",
+        "S-06",
+        "H-02"
+      ],
+      "scope": "Matrix and operator-star covariance are insufficient without a physical-vector/source-domain bridge.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "O-03",
+        "PE-SPIN"
+      ]
+    },
+    {
+      "id": "O-02",
+      "title": "Source-typed unnormalized fermionic linear-growth inequality",
+      "status": "OPEN_PROOF_OBLIGATION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "A-01",
+        "F-02"
+      ],
+      "scope": "Numerical and finite-coefficient checks, and normalized auxiliary Gram bounds, are not this theorem.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "O-04"
+      ]
+    },
+    {
+      "id": "O-03",
+      "title": "Whole-sector low oscillator exclusion on the exact source carrier",
+      "status": "OPEN_PROOF_OBLIGATION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-02",
+        "S-05",
+        "O-01"
+      ],
+      "scope": "Conditional mathematical note exists, but physical-source transfer and bounded character projection remain unproved.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "O-04"
+      ]
+    },
+    {
+      "id": "O-04",
+      "title": "Physical high-type coercive first-moment estimate",
+      "status": "OPEN_PROOF_OBLIGATION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "O-02",
+        "O-03",
+        "H-02",
+        "A-01"
+      ],
+      "scope": "Decisive source-specific missing estimate. No global physical form-domain reduction currently admitted.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "O-05"
+      ]
+    },
+    {
+      "id": "O-05",
+      "title": "Compact resolvent and positive eigenpairs in original physical sector",
+      "status": "OPEN_PROOF_OBLIGATION",
+      "track": "monograph-base",
+      "prerequisites": [
+        "O-04",
+        "A-04"
+      ],
+      "scope": "Not a full BFSS mass gap; not currently established.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": []
+    },
+    {
+      "id": "C-01",
+      "title": "Analytical whole-isotypic oscillator exclusion",
+      "status": "ANALYTICAL_CONDITIONAL",
+      "track": "monograph-base",
+      "prerequisites": [
+        "S-02",
+        "S-05"
+      ],
+      "scope": "Analytical conditional proof; not Lean-qualified for the original physical-vector Hilbert operator.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": []
+    },
+    {
+      "id": "C-02",
+      "title": "Conditional full-space coercivity and radial tail",
+      "status": "ANALYTICAL_CONDITIONAL",
+      "track": "monograph-base",
+      "prerequisites": [
+        "A-01",
+        "A-04"
+      ],
+      "scope": "The earlier Fock-vector 6 threshold cannot be conflated with the endomorphism-fiber 12 bound; P1–P3 remain undischarged.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": []
+    },
+    {
+      "id": "E08-M2C1",
+      "title": "Original operator-L2 / Fock-column norm comparisons",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No original operator-norm isometry, Hamiltonian-domain transport or spectral result.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M2C1OriginalFockOperatorLpColumnNorm.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43379713104,
+      "dependents": []
+    },
+    {
+      "id": "E08-M3G0B1",
+      "title": "Almost-everywhere original full gauge operator action",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No group-parameter continuity or full physical Hamiltonian covariance.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M3G0B1OriginalGaugeAEFullOperator.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43467719230,
+      "dependents": []
+    },
+    {
+      "id": "E08-BF",
+      "title": "Original charge graph, normalized H and nonzero natural domain",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No eigenstate, kernel vector, selected radial witness or automatic BG/BH port qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M5BF0OriginalSourceGaugeGraphAndNonzeroHDomain.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43498649514,
+      "dependents": [
+        "PE-SQUARE"
+      ]
+    },
+    {
+      "id": "E08-C4A",
+      "title": "Positive-regulator natural weighted adjoint square",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "RAD-C3",
+        "RAD-C3DC"
+      ],
+      "scope": "Positive regulator only; normalized operator and kernel have separate receipts.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4AOriginalWeightedNaturalAdjointSquare.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_domain",
+        "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_selfAdjoint",
+        "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_closed",
+        "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_domain_dense",
+        "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_energy",
+        "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_nonneg"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43585322863,
+      "dependents": [
+        "E08-C4B",
+        "PE-TRIAL"
+      ],
+      "supplemental_evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json"
+    },
+    {
+      "id": "E08-C4B",
+      "title": "Normalized weighted operator and full weak form",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "E08-C4A"
+      ],
+      "scope": "No original/weighted operator equality, zero-regulator limit or spectral gap.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_eq",
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_domain",
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_apply",
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_selfAdjoint",
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_closed",
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_domain_dense",
+        "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_weakForm_iff"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43587088274,
+      "dependents": [
+        "E08-C4C"
+      ],
+      "supplemental_evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json"
+    },
+    {
+      "id": "E08-C4C",
+      "title": "Original and weighted kernel equality",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [
+        "E08-C4B",
+        "RAD-C3",
+        "RAD-C2B"
+      ],
+      "scope": "No nonzero kernel, uniqueness, equality of operators or positive spectra.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC4COriginalWeightedKernelPreservation.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.mem_ker_iff_graph_zero",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.oneSixteenth_ker",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.naturalAdjointSquare_graph_zero_iff",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.naturalAdjointSquare_ker",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedPhysicalCharge_graph_zero_iff",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedPhysicalCharge_ker_eq_original",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedNormalized_ker_eq_charge",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalNormalizedHamiltonian_ker_eq_charge",
+        "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedNormalized_ker_eq_originalH"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43589307044,
+      "dependents": [],
+      "supplemental_evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json"
+    },
+    {
+      "id": "E08-CERTP0",
+      "title": "Original reciprocal Hilbert pairing",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No Hardy estimate, physical spinor sector or fidelity theorem.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxCertP0OriginalReciprocalHilbertPairing.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43621045697,
+      "dependents": []
+    },
+    {
+      "id": "E08-G15",
+      "title": "Original tau norm and four-plane coefficient reduction",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No numerical coefficient estimate, full G16 or physical Hardy theorem.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG15OriginalTauCoefficientNormReduction.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43763173942,
+      "dependents": [
+        "PE-HARDY"
+      ]
+    },
+    {
+      "id": "E08-G16D0",
+      "title": "Finite plane incidence diagnostic",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "Diagnostic only; no original gamma adapter or full G16.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG16FourPlaneIncidenceDiagnostic.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43768003845,
+      "dependents": [
+        "PE-G16-D1B0"
+      ]
+    },
+    {
+      "id": "E08-G16D1A",
+      "title": "Original gamma-word Frobenius diagnostic",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No complete ordered-word/originalHardyY bridge or full G16.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG16SourceGammaWordFrobenius.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43769722679,
+      "dependents": [
+        "PE-HARDY"
+      ]
+    },
+    {
+      "id": "E08-IBI",
+      "title": "Seventeen-source incidence bundle",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No full orbit-classification converse, quantum dynamics, octonion identity or ontology theorem.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0AOriginalBosonGram.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0B0QuaternionPolynomial.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0B1FinDet3.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0B1NativeDetOne.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0B1SourceColumnsTriple.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CInversePauli.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CNativeXGenerator.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CNativeZGenerator.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CPauliTrace.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Angle.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Euler.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSO3Hom.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CSourceSO3Witness.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CXImage.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0CZImage.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1AOriginalLieTriple.lean",
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG1BOriginalSignedCross.lean",
+        "lean/diagnostics/BFSSIBIG0AOriginalBosonGramIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0B0QuaternionPolynomialIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0B1FinDet3IndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0B1NativeDetOneIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0B1SourceColumnsTripleIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CInversePauliIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CNativeXGeneratorIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CNativeZGeneratorIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CPauliTraceIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CSO3AngleIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CSO3EulerIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CSO3HomIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CSourceSO3WitnessIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CXImageIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG0CZImageIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG1AOriginalLieTripleIndependentConsumer.lean",
+        "lean/diagnostics/BFSSIBIG1BOriginalSignedCrossIndependentConsumer.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43788864430,
+      "dependents": []
+    },
+    {
+      "id": "E08-OUTLINE",
+      "title": "Conditional Spin9 physical outline",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "Physical unitary, domain, covariance, transitivity and singlet premises remain uninstantiated.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSSpin9AbstractPhysicalOutline.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43799204363,
+      "dependents": []
+    },
+    {
+      "id": "E08-HS0",
+      "title": "Original Fock-operator HS isometry",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "Not a Fock-vector action or physical singlet; group packaging belongs to HS1.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS0OriginalSpin9FockHSIsometry.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43801631165,
+      "dependents": []
+    },
+    {
+      "id": "E08-HS1",
+      "title": "Algebraic Spin9 group action on operator HS fiber",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No group-parameter continuity, Fock-vector implementer or physical domain result.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4HS1OriginalSpin9FockHSUnitaryGroupAction.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43806197198,
+      "dependents": []
+    },
+    {
+      "id": "E08-CS0",
+      "title": "Original central gamma sign",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No full physical lift or exact parity implementer construction.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4CS0OriginalSpin9CentralGammaSign.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43806215702,
+      "dependents": []
+    },
+    {
+      "id": "E08-LB0",
+      "title": "Original Majorana bivector CAR",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No arbitrary K(A) theorem or global symmetry follows from this gate alone.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB0OriginalSource48MajoranaBivectorCAR.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43811766549,
+      "dependents": []
+    },
+    {
+      "id": "E08-LB1S",
+      "title": "Original skew-matrix Fock bivector",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No Lie bracket, group integration, charge-domain or spectral theorem.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1SOriginalSource48SkewMatrixFockBivector.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43849019596,
+      "dependents": []
+    },
+    {
+      "id": "E08-LB1C0",
+      "title": "Original K(A) CAR commutator expansion",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "Skew delta contraction belongs to the separate LB1C1 receipt.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C0OriginalSource48BivectorCommutatorExpansion.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43853833739,
+      "dependents": []
+    },
+    {
+      "id": "E08-LB1C1",
+      "title": "Original K(A)-Majorana covariance",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No full bivector bracket, global Fock-vector group action or physical covariance.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1C1OriginalSource48SkewKMajoranaCovariance.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43901524171,
+      "dependents": [
+        "PE-SPIN"
+      ]
+    },
+    {
+      "id": "E08-LB1L2",
+      "title": "Hypothesis-first original Fock product covariance",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "Native K(A) substitution and full source Lie bracket remain unqualified.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1L2AbstractOriginalFockCovarianceLeibniz.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43937204884,
+      "dependents": []
+    },
+    {
+      "id": "E08-P0A",
+      "title": "Original sparse skew-plane matrix gate",
+      "status": "INTEGRATED_STRICT",
+      "track": "monograph-base",
+      "prerequisites": [],
+      "scope": "No K(E) normalization, full bracket or physical symmetry conclusion.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4LB1P0AOriginalSource48SkewPlane.lean"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43951949627,
+      "dependents": []
+    },
+    {
+      "id": "PE-UGC4",
+      "title": "Literal restricted joint graph equals full graph physical-input slice",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "D-03",
+        "G-01"
+      ],
+      "scope": "Joint, not individual closure or ESA.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSUGC4PhysicalGraphCoreIdentification.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSUGC4.core_haar_charge_commutes",
+        "FCP.BFSSUGC4.graph_haar_core_mem",
+        "FCP.BFSSUGC4.graph_haar_restricted_mem",
+        "FCP.BFSSUGC4.original_restricted_graph_iff",
+        "FCP.BFSSUGC4.upstream_physical_graph_iff"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 45869599441,
+      "dependents": [
+        "PE-ICDA",
+        "PE-LOC6C",
+        "PE-TRIAL"
+      ]
+    },
+    {
+      "id": "PE-CSQE0",
+      "title": "Equal original core energies for every spin label",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "D-03"
+      ],
+      "scope": "Core energy only, not closed operator square.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQE0OriginalCoreEnergy.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSCSQE0.basisSpinor_norm",
+        "FCP.BFSSCSQE0.basisWeightedSum",
+        "FCP.BFSSCSQE0.basisCharge",
+        "FCP.BFSSCSQE0.basisSquarePoint",
+        "FCP.BFSSCSQE0.basisSquareCore",
+        "FCP.BFSSCSQE0.symmetricEnergy",
+        "FCP.BFSSCSQE0.basisEnergyEqual",
+        "FCP.BFSSCSQE0.averageConstant",
+        "FCP.BFSSCSQE0.originalBasisEnergy"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 45505859621,
+      "dependents": [
+        "PE-ICDC",
+        "PE-CSQF0"
+      ]
+    },
+    {
+      "id": "PE-ICDA",
+      "title": "Exact componentwise original joint graph adapter",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "D-03",
+        "PE-UGC4"
+      ],
+      "scope": "Joint graph adapter, arbitrary N; no common domain.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDA0OriginalJointGraphAdapter.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSICDA0.closed_range_eq_of_pointwise",
+        "FCP.BFSSICDA0.source_joint_generator_eq",
+        "FCP.BFSSICDA0.source_joint_closed_graph_eq"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 45884276018,
+      "dependents": [
+        "PE-ICDB",
+        "PE-CSQF0"
+      ]
+    },
+    {
+      "id": "PE-ICDB",
+      "title": "Individual closed graph lifts to selected joint coordinate under equal core norms",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-ICDA"
+      ],
+      "scope": "Generic result conditional on equal core norms; not yet paired specialization.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDB0OriginalComponentGraphLifting.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSICDB0.component_graph_iff",
+        "FCP.BFSSICDB0.source_literal_component_graph_iff",
+        "FCP.BFSSICDB0.source_component_graph_iff"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 45886320206,
+      "dependents": [
+        "PE-ICDC"
+      ]
+    },
+    {
+      "id": "PE-ICDC",
+      "title": "Actual paired individual and joint input domains equal; selected component graph lift",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-ICDB",
+        "PE-CSQE0",
+        "H-02"
+      ],
+      "scope": "Minimal closed domains, not operator square domains.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSICDC0OriginalPhysicalCommonDomain.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSICDC0.source_joint_domain_iff",
+        "FCP.BFSSICDC0.source_common_domain",
+        "FCP.BFSSICDC0.paired_core_charge_norm",
+        "FCP.BFSSICDC0.paired_component_graph_iff",
+        "FCP.BFSSICDC0.paired_common_domain"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 45912386053,
+      "dependents": [
+        "PE-LOC6C",
+        "PE-NAG0",
+        "PE-NAG1",
+        "PE-CSQF1",
+        "PE-SPIN"
+      ]
+    },
+    {
+      "id": "PE-LOC6C",
+      "title": "Physical individual closed graph iff invariant-core weak pairing",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-ICDC",
+        "PE-UGC4"
+      ],
+      "scope": "Weak equivalence only, not native adjoint at this gate.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSLOC6COriginalPhysicalWeakEquivalence.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSLOC6C.individual_graph_subset_ambient",
+        "FCP.BFSSLOC6C.physical_graph_weak_pairing",
+        "FCP.BFSSLOC6C.physical_weak_pairing_mem_graph",
+        "FCP.BFSSLOC6C.physical_closed_graph_iff_weak"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46041935392,
+      "dependents": [
+        "PE-NAG2"
+      ]
+    },
+    {
+      "id": "PE-NAG0",
+      "title": "Actual native closed individual graph",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-ICDC"
+      ],
+      "scope": "Closed LinearPMap; no ESA.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG0OriginalIndividualPhysicalOperator.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNAG0.individualClosedSubmodule_set_eq",
+        "FCP.BFSSNAG0.individualPhysicalGraph_mem_iff",
+        "FCP.BFSSNAG0.individualPhysicalOperator_graph_eq",
+        "FCP.BFSSNAG0.individualPhysicalOperator_isClosed",
+        "FCP.BFSSNAG0.paired_individual_graph_iff",
+        "FCP.BFSSNAG0.paired_individual_isClosed"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46047069230,
+      "dependents": [
+        "PE-NAG1",
+        "PE-NAG2",
+        "PE-NAG3"
+      ]
+    },
+    {
+      "id": "PE-NAG1",
+      "title": "Native individual output physical; common dense domain",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-NAG0",
+        "PE-ICDC",
+        "H-01"
+      ],
+      "scope": "No square identification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG1OriginalIndividualPhysicalDomain.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNAG1.source_individual_output_physical",
+        "FCP.BFSSNAG1.source_native_domain_iff",
+        "FCP.BFSSNAG1.source_native_domain_eq",
+        "FCP.BFSSNAG1.source_native_domain_dense",
+        "FCP.BFSSNAG1.paired_native_domain_eq",
+        "FCP.BFSSNAG1.paired_native_domain_dense"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46051319682,
+      "dependents": [
+        "PE-NAG2",
+        "PE-NAG3",
+        "PE-CSQF1"
+      ]
+    },
+    {
+      "id": "PE-NAG2",
+      "title": "Native individual self-adjointness on actual paired physical space",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-NAG0",
+        "PE-NAG1",
+        "PE-LOC6C"
+      ],
+      "scope": "Self-adjoint native closed realization; not explicit literal core ESA.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG2OriginalIndividualPhysicalAdjoint.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNAG2.weak_pairing_closed",
+        "FCP.BFSSNAG2.source_core_pair_mem",
+        "FCP.BFSSNAG2.source_graph_pairing_iff_weak",
+        "FCP.BFSSNAG2.source_adjoint_graph_iff_weak",
+        "FCP.BFSSNAG2.source_native_selfAdjoint",
+        "FCP.BFSSNAG2.paired_native_selfAdjoint"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46059907504,
+      "dependents": [
+        "PE-NAG3",
+        "PE-ESA",
+        "PE-SQUARE",
+        "PE-SPIN"
+      ]
+    },
+    {
+      "id": "PE-NAG3",
+      "title": "Literal native smooth-core operator closure equals NAG2 operator",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-NAG0",
+        "PE-NAG1",
+        "PE-NAG2"
+      ],
+      "scope": "Exact literal core graph and closure equality; explicit core density, symmetry and ESA interface remain separate. No common-square or existence conclusion.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG3OriginalIndividualCoreClosure.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNAG3.physical_pair_closure",
+        "FCP.BFSSNAG3.nativeCoreGraph_mem_iff",
+        "FCP.BFSSNAG3.nativeCoreOperator_graph_eq",
+        "FCP.BFSSNAG3.source_native_core_graph_closure",
+        "FCP.BFSSNAG3.source_native_core_closure",
+        "FCP.BFSSNAG3.paired_native_core_closure"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46067320278,
+      "dependents": [
+        "PE-ESA",
+        "PE-SQUARE"
+      ]
+    },
+    {
+      "id": "PE-ESA",
+      "title": "Explicit literal core essential self-adjointness",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-NAG3",
+        "PE-NAG2"
+      ],
+      "scope": "Explicit density, symmetry, closability, and self-adjoint closure of each literal paired SU2 core supercharge; no common square or spectral conclusion.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSNAG4OriginalIndividualCoreESA.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSNAG4.source_native_core_mem_domain",
+        "FCP.BFSSNAG4.source_native_core_dense_of_normClosure",
+        "FCP.BFSSNAG4.source_native_core_symmetric",
+        "FCP.BFSSNAG4.source_native_core_closable",
+        "FCP.BFSSNAG4.paired_native_core_selfAdjoint_closure",
+        "FCP.BFSSNAG4.paired_native_core_esa"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46074553299,
+      "dependents": []
+    },
+    {
+      "id": "PE-CSQF0",
+      "title": "Literal complex core pairing and selected-component equality on the closed joint graph",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-CSQE0",
+        "PE-ICDA"
+      ],
+      "scope": "Ambient closed joint graph, arbitrary two graph pairs and two spin labels. Normalized form and natural square remain separate. The Lean file imports NAG4, and the stated graph argument uses CSQE0 and ICD-A0.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF0OriginalClosedJointPairing.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSCSQF0.paired_core_pairing",
+        "FCP.BFSSCSQF0.paired_closed_joint_pairing",
+        "FCP.BFSSCSQF0.symmetricPairing",
+        "FCP.BFSSCSQF0.pairing_on_closure",
+        "FCP.BFSSCSQF0.joint_range_pairing"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46082764637,
+      "dependents": [
+        "PE-CSQF1"
+      ]
+    },
+    {
+      "id": "PE-CSQF1",
+      "title": "Native individual output equals selected joint coordinate; exact normalized form",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-CSQF0",
+        "PE-NAG1",
+        "PE-ICDC"
+      ],
+      "scope": "Exact common-domain form; natural-square operator equality is separate PE-SQUARE.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF1OriginalNativeChargeForm.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSCSQF1.paired_native_output",
+        "FCP.BFSSCSQF1.paired_normalized_form",
+        "FCP.BFSSCSQF1.source_column_point",
+        "FCP.BFSSCSQF1.source_output_of_common_input",
+        "FCP.BFSSCSQF1.normalized_constant_pairing"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46092801809,
+      "dependents": [
+        "PE-SQUARE"
+      ]
+    },
+    {
+      "id": "PE-SQUARE",
+      "title": "Each original closed individual charge and literal smooth-core closure has natural square equal to original normalized physical H",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-CSQF1",
+        "PE-NAG2",
+        "PE-NAG3",
+        "H-02",
+        "E08-BF"
+      ],
+      "scope": "Equality of full LinearPMap, including domains and actions. No full-domain invariance, nontrivial kernel, mass gap or spectral claim.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/BFSSCSQF2OriginalCommonSquare.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSCSQF2.paired_native_common_square",
+        "FCP.BFSSCSQF2.paired_core_closure_common_square",
+        "FCP.BFSSCSQF2.graph_iff_representative",
+        "FCP.BFSSCSQF2.common_form_test_iff",
+        "FCP.BFSSCSQF2.naturalSquare_of_common_form",
+        "FCP.BFSSCSQF2.source_hamiltonian_domain_le"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 46094976004,
+      "dependents": [
+        "PE-HARDY",
+        "PE-FIDELITY"
+      ]
+    },
+    {
+      "id": "PE-SPIN",
+      "title": "Genuine Spin(9) Fock-vector and physical-domain covariance",
+      "status": "ANALYTICAL_CONDITIONAL",
+      "track": "physical-existence",
+      "prerequisites": [
+        "O-01",
+        "PE-ICDC",
+        "PE-NAG2",
+        "E08-LB1C1"
+      ],
+      "scope": "Require actual global phase-fixed action, domain covariance and generator normalization; operator HS action insufficient.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "PE-TRIAL",
+        "PE-HARDY"
+      ]
+    },
+    {
+      "id": "PE-TRIAL",
+      "title": "Literal normalized 104-function polynomial-Gaussian physical singlet and weighted charge domain",
+      "status": "ANALYTICAL_CONDITIONAL",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-SPIN",
+        "PE-UGC4",
+        "E08-C4A"
+      ],
+      "scope": "Check seed cancellations, global source covariance and weighted graph inclusion; no inferred optimality.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "PE-FIDELITY"
+      ]
+    },
+    {
+      "id": "PE-FINITE-LINEAGE",
+      "title": "Exact archived contraction-coefficient lineage and full-rank interpolation",
+      "status": "SURVIVED_FINITE_TESTS",
+      "track": "physical-existence",
+      "prerequisites": [],
+      "scope": "58,458 exact recorded comparisons and 79 full-rank designs; not independent replay of all underlying raw contractions.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "PE-RAW"
+      ]
+    },
+    {
+      "id": "PE-RAW",
+      "title": "Independent source-exact raw contraction/seed certificate",
+      "status": "OPEN_PROOF_OBLIGATION",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-FINITE-LINEAGE"
+      ],
+      "scope": "Raw contractions remain a residual computational evidence obligation. Rank-two derivative fixture coverage complete: 144/144 ordered pairs, 2880/2880 representative raw slots (2168 direct,712 covariance-derived), 720 unique aggregate comparisons; eight receipt union checked. Rank-three pure-S block complete: 36/144 ordered pairs, 972/3888 slots (468 direct,504 covariance-derived), 180/720 aggregate comparisons, 36 Euler identities and 216 transverse holdout comparisons, no discrepancies. Remaining rank-three mixed/high derivatives, generic design and literal weighted integration remain. No blanket native proof.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "PE-FIDELITY"
+      ]
+    },
+    {
+      "id": "PE-G16-D1B0",
+      "title": "Original four-plane admissible triple supports: cardinality, injectivity and consecutive-endpoint dichotomy",
+      "status": "INTEGRATED_STRICT",
+      "track": "physical-existence",
+      "prerequisites": [
+        "E08-G16D0"
+      ],
+      "scope": "Finite combinatorial diagnostic only. 28 distinct support triples, no middle index. No gamma-product sign, originalHardyY norm or physical Hardy conclusion.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxHardyG16TripleSupportDiagnostic.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleLabel_card",
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleSupport_card",
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleSupport_injective",
+        "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.thirdAxis_outside"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": 43773462950,
+      "dependents": [
+        "PE-HARDY"
+      ]
+    },
+    {
+      "id": "PE-HARDY",
+      "title": "Positive-regulator Hardy estimate on physical spinor intertwiners",
+      "status": "ANALYTICAL_CONDITIONAL",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-SPIN",
+        "PE-SQUARE",
+        "E08-G15",
+        "PE-G16-D1B0",
+        "E08-G16D1A"
+      ],
+      "scope": "G16 D0/D1A and recovered D1B0 strict diagnostics supply plane incidence, gamma-word Frobenius and triple-support uniqueness. Next literal ordered-product canonical-word adapter and Frobenius refolding; then source tau/Xi coefficients, compression isotropy and graph-core averaging. Uniform for fixed delta>0; no gap.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "PE-FIDELITY"
+      ]
+    },
+    {
+      "id": "PE-FIDELITY",
+      "title": "Same-H fidelity inequality for all positive regulators",
+      "status": "ANALYTICAL_CONDITIONAL",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-TRIAL",
+        "PE-RAW",
+        "PE-HARDY",
+        "PE-SQUARE"
+      ],
+      "scope": "F=||P_kerH psi||^2 independent of delta; scalar supremum only. Conservative delta=1/2 bound >11.075824%; no singular operator.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": [
+        "PE-EXIST"
+      ]
+    },
+    {
+      "id": "PE-EXIST",
+      "title": "Nonzero original physical zero-energy eigenstate",
+      "status": "OPEN_PROOF_OBLIGATION",
+      "track": "physical-existence",
+      "prerequisites": [
+        "PE-FIDELITY"
+      ],
+      "scope": "Conditional nonzero kernel implication; no uniqueness, gap, or empirical BFSS validation.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": []
+    },
+    {
+      "id": "PE-NEG-ICD0",
+      "title": "Stopped monolithic ICD0 implementation",
+      "status": "STOPPED_UNQUALIFIED",
+      "track": "physical-existence",
+      "prerequisites": [],
+      "scope": "Do not import stopped file. Replacement ICD-A/B/C achieve mathematical target separately.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": []
+    },
+    {
+      "id": "PE-NEG-GM2A",
+      "title": "Massless multiplier maximal domain does not identify maximal first-order charge",
+      "status": "SCOPE_LIMITATION",
+      "track": "physical-existence",
+      "prerequisites": [],
+      "scope": "Do not infer ESA from GM2A; not a mathematical disproof of ESA.",
+      "source_paths": [],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/SCIENTIFIC_KNOWLEDGE_ATLAS_SEED_V1.json",
+      "run_id": null,
+      "dependents": []
+    },
+    {
+      "id": "RH-GAMMA",
+      "title": "Source gamma bivectors square to −I and are skew; Clifford square/anticommutation identities.",
+      "status": "INTEGRATED_STRICT",
+      "track": "topology",
+      "prerequisites": [],
+      "scope": "Does not qualify common Hopf phase as native theorem at this gate or physical Fock-vector implementer.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9A0OriginalGammaPairClifford.lean"
+      ],
+      "named_roots": [
+        "FCP.RHOPFP9A0.originalGamma_sq",
+        "FCP.RHOPFP9A0.originalGamma_anticommute",
+        "FCP.RHOPFP9A0.originalGammaPair_sq_neg_one",
+        "FCP.RHOPFP9A0.originalGammaPair_skew",
+        "FCP.RHOPFP9A0.K13_sq",
+        "FCP.RHOPFP9A0.K25_sq",
+        "FCP.RHOPFP9A0.K46_sq",
+        "FCP.RHOPFP9A0.K13_skew",
+        "FCP.RHOPFP9A0.K25_skew",
+        "FCP.RHOPFP9A0.K46_skew"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44464409223,
+      "dependents": []
+    },
+    {
+      "id": "RH-SPHERE",
+      "title": "Original transported Q-unit sphere homeomorphic to Euclidean real-four unit sphere.",
+      "status": "INTEGRATED_STRICT",
+      "track": "topology",
+      "prerequisites": [],
+      "scope": "Not an isometry; not circle-action conjugacy or Hopf classification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D2OriginalGammaInterSphereHomeomorph.lean"
+      ],
+      "named_roots": [
+        "FCP.RHOPFP9C3D2G1D2.relationalQUnitHomeomorphStandardUnit",
+        "FCP.RHOPFP9C3D2G1D2.relationalQUnitHomeomorphStandardUnit_apply",
+        "FCP.RHOPFP9C3D2G1D2.relationalQUnitHomeomorphStandardUnit_symm_apply"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44717292545,
+      "dependents": []
+    },
+    {
+      "id": "RH-QNORM",
+      "title": "Detached normed additive group norm equals Gamma9-source QNorm, squares to Q, positive away from zero.",
+      "status": "INTEGRATED_STRICT",
+      "track": "topology",
+      "prerequisites": [],
+      "scope": "Local instance only; no explicit C² Q-isometry or physical state.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D39OriginalGammaQNormedGroupCoherence.lean"
+      ],
+      "named_roots": [
+        "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm",
+        "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm_eq_QNorm",
+        "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm_sq",
+        "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm_pos_of_ne_zero"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44873258244,
+      "dependents": []
+    },
+    {
+      "id": "RH-PROJ",
+      "title": "Original Gamma9 Q-unit circle orbit quotient homeomorphic to independently topologized canonical complex projectivization.",
+      "status": "INTEGRATED_STRICT",
+      "track": "topology",
+      "prerequisites": [],
+      "scope": "No explicit Hopf map/invariant, Chern class, CP¹ ≃ S² theorem, Fock/Gauss/Hamiltonian state or hopfion.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/RHOPFP9C3D2G1D69OriginalGammaQCanonicalProjectivizationHomeomorph.lean"
+      ],
+      "named_roots": [
+        "FCP.RHOPFP9C3D2G1D69.relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph",
+        "FCP.RHOPFP9C3D2G1D69.relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph_class"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 45048282121,
+      "dependents": []
+    },
+    {
+      "id": "QIT-W0B0",
+      "title": "Commuting with all 48 real normalized gamma images implies commuting with all complex Clifford generator images.",
+      "status": "INTEGRATED_STRICT",
+      "track": "quantum-information",
+      "prerequisites": [
+        "F-02"
+      ],
+      "scope": "Not all algebra elements at this gate, scalar commutant, or parity-respecting physical observability.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0B0OriginalGammaCommutantInduction.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3M4W0B0OriginalGammaCommutantInduction.sourceGammaRealLinear_commute",
+        "FCP.BFSSP3M4W0B0OriginalGammaCommutantInduction.originalComplexEquiv_generator_commutes"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44109519633,
+      "dependents": []
+    },
+    {
+      "id": "QIT-W0H1B",
+      "title": "All-element Clifford commutation via source centralizer pullback and adjoin range; uses W0H1A.",
+      "status": "INTEGRATED_STRICT",
+      "track": "quantum-information",
+      "prerequisites": [
+        "F-02"
+      ],
+      "scope": "Not itself Schur scalar or physical observable completeness.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3M4W0H1BOriginalAdjoinFullCliffordCommutantR2.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3M4W0H1BOriginalAdjoinFullCliffordCommutantR2.originalSourceCentralizerPullback_eq_top",
+        "FCP.BFSSP3M4W0H1BOriginalAdjoinFullCliffordCommutantR2.originalComplexEquiv_fullClifford_commutes"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44164974919,
+      "dependents": []
+    },
+    {
+      "id": "IBI-DET",
+      "title": "Actual SU2 adjoint-color determinant one; with orthogonality image lies in SO3.",
+      "status": "INTEGRATED_STRICT",
+      "track": "incidence-before-identity",
+      "prerequisites": [],
+      "scope": "This gate alone does not prove surjectivity or orbit classification, or physical ontology.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/IBIG0B1NativeDetOne.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn",
+        "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn_apply",
+        "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn_adjoint",
+        "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn_one",
+        "FCP.BFSSIBIG0B1NativeDetOne.originalColumnTriple_eq_sourceInner",
+        "FCP.BFSSIBIG0B1NativeDetOne.sourceColorUnitTriple_eq_one",
+        "FCP.BFSSIBIG0B1NativeDetOne.originalAdjointColorMatrix_det_one"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 43733883094,
+      "dependents": []
+    },
+    {
+      "id": "SCC-BOOL",
+      "title": "Deterministic Boolean witness agreement, separation, monotonicity, overlap obstruction and unavailable-prediction boundary.",
+      "status": "INTEGRATED_STRICT",
+      "track": "standard-model",
+      "prerequisites": [],
+      "scope": "No empirical discrimination or physical model mapping.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC1FiniteWitnessSeparation.lean"
+      ],
+      "named_roots": [
+        "FCP.StandardModel.SMD1SCC1.agrees_refl",
+        "FCP.StandardModel.SMD1SCC1.agrees_symm",
+        "FCP.StandardModel.SMD1SCC1.agrees_trans",
+        "FCP.StandardModel.SMD1SCC1.separation_not_agreement",
+        "FCP.StandardModel.SMD1SCC1.disagreement_has_witness",
+        "FCP.StandardModel.SMD1SCC1.separation_mono",
+        "FCP.StandardModel.SMD1SCC1.agreement_antitone",
+        "FCP.StandardModel.SMD1SCC1.finite_separation_mono",
+        "FCP.StandardModel.SMD1SCC1.singleton_deletion_minimal",
+        "FCP.StandardModel.SMD1SCC1.distinct_singleton_minimals",
+        "FCP.StandardModel.SMD1SCC1.uniform_separation_mono",
+        "FCP.StandardModel.SMD1SCC1.overlap_blocks_uniform",
+        "FCP.StandardModel.SMD1SCC1.missing_blocks_agreement",
+        "FCP.StandardModel.SMD1SCC1.defined_separation_not_agreement"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44403273333,
+      "dependents": [
+        "SCC-MIN"
+      ]
+    },
+    {
+      "id": "SCC-MIN",
+      "title": "Uniform family separation deletion-minimal iff inclusion-minimal under monotonicity.",
+      "status": "INTEGRATED_STRICT",
+      "track": "standard-model",
+      "prerequisites": [
+        "SCC-BOOL"
+      ],
+      "scope": "Not unique, least-cardinality, cheapest, statistically powerful or physically realizable.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC2FamilyMinimalWitnesses.lean"
+      ],
+      "named_roots": [
+        "FCP.StandardModel.SMD1SCC2.uniformDeletionMinimal_iff_minimal",
+        "FCP.StandardModel.SMD1SCC2.uniformDeletionMinimal_is_uniform",
+        "FCP.StandardModel.SMD1SCC2.equivalent_pair_blocks_uniform",
+        "FCP.StandardModel.SMD1SCC2.empty_witnesses_blocked",
+        "FCP.StandardModel.SMD1SCC2.family_minimal_implies_uniform"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44407657796,
+      "dependents": [
+        "SCC-PRIVATE"
+      ]
+    },
+    {
+      "id": "SCC-PRIVATE",
+      "title": "Uniform separation iff cross-pair coverage; minimality iff each retained witness has a private pair.",
+      "status": "INTEGRATED_STRICT",
+      "track": "standard-model",
+      "prerequisites": [
+        "SCC-MIN"
+      ],
+      "scope": "Finite witness set; generic families need not be finite; no statistical power or physical confirmation.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3PrivatePairIncidence.lean"
+      ],
+      "named_roots": [
+        "FCP.StandardModel.SMD1SCC3.uniform_iff_pairwise_cover",
+        "FCP.StandardModel.SMD1SCC3.deletion_failure_iff_uncovered_pair",
+        "FCP.StandardModel.SMD1SCC3.uncovered_pair_yields_private",
+        "FCP.StandardModel.SMD1SCC3.uniform_minimal_iff_private",
+        "FCP.StandardModel.SMD1SCC3.inclusion_minimal_iff_private"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44410857114,
+      "dependents": [
+        "SCC-COMPARE"
+      ]
+    },
+    {
+      "id": "SCC-TV",
+      "title": "Exact normalized finite rational total variation nonnegative, symmetric, zero iff equal weights and ≤1.",
+      "status": "INTEGRATED_STRICT",
+      "track": "standard-model",
+      "prerequisites": [],
+      "scope": "No physical predicted law, likelihood, finite sample power or continuous nuisance bounds.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/StandardModel/Contrib/Kotler/SMD1SCC3B0FiniteRationalTotalVariation.lean"
+      ],
+      "named_roots": [
+        "FCP.StandardModel.SMD1SCC3B0.totalVariation_nonneg",
+        "FCP.StandardModel.SMD1SCC3B0.totalVariation_self",
+        "FCP.StandardModel.SMD1SCC3B0.totalVariation_symm",
+        "FCP.StandardModel.SMD1SCC3B0.totalVariation_eq_zero_iff",
+        "FCP.StandardModel.SMD1SCC3B0.totalVariation_pos_iff",
+        "FCP.StandardModel.SMD1SCC3B0.totalVariation_pos_of_witness",
+        "FCP.StandardModel.SMD1SCC3B0.totalVariation_le_one"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44414707214,
+      "dependents": [
+        "SCC-COMPARE"
+      ]
+    },
+    {
+      "id": "SCC-COMPARE",
+      "title": "Separate exact witness, integrity, completeness, dependence and experimental inference; retain known exact marginal witness despite unrelated missing predictions.",
+      "status": "QUALIFIED_COMPUTATIONAL_METHOD",
+      "track": "standard-model",
+      "prerequisites": [
+        "SCC-TV",
+        "SCC-PRIVATE"
+      ],
+      "scope": "Independently tested Python; no Lean↔Python equivalence, physical prediction, likelihood or experimental conclusion.",
+      "source_paths": [
+        "research/standard-model/tools/smd1_scc3b1.py"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44416698450,
+      "dependents": [
+        "SM-JUNO"
+      ]
+    },
+    {
+      "id": "SM-LEDGER",
+      "title": "Ten dated empirical constraint records and ten adversarial mutation controls.",
+      "status": "QUALIFIED_EMPIRICAL_TRANSCRIPTION",
+      "track": "standard-model",
+      "prerequisites": [],
+      "scope": "Transcription integrity only, not independent experimental reanalysis, current global fit or model confirmation.",
+      "source_paths": [
+        "research/standard-model/data/SM_D0_EMPIRICAL_CONSTRAINTS_ASOF_2026_11_18.json"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44392976400,
+      "dependents": [
+        "SM-JUNO"
+      ]
+    },
+    {
+      "id": "SM-JUNO",
+      "title": "Frozen first JUNO data interface and common mass-squared-offset non-identifiability control.",
+      "status": "QUALIFIED_COMPUTATIONAL_METHOD",
+      "track": "standard-model",
+      "prerequisites": [
+        "SM-LEDGER",
+        "SCC-COMPARE"
+      ],
+      "scope": "Zero model-derived predictions; no current world average, joint covariance or independent likelihood.",
+      "source_paths": [
+        "research/standard-model/tools/sm_p0n0.py"
+      ],
+      "named_roots": [],
+      "evidence_record": "research/maintenance/knowledge-atlas/CROSS_TRACK_RECEIPT_SEED_V1.json",
+      "run_id": 44419768921,
+      "dependents": []
+    },
+    {
+      "id": "RAD-C2A",
+      "title": "Original FullL2 reciprocal injectivity",
+      "status": "INTEGRATED_STRICT",
+      "track": "spectral-radial",
+      "prerequisites": [],
+      "scope": "Positive regulator; no bounded inverse or surjectivity.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC2AOriginalReciprocalFullL2Injectivity.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC2AOriginalReciprocalFullL2Injectivity.originalReciprocalFullL2CLM_injective"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json",
+      "run_id": 43566927415,
+      "dependents": [
+        "RAD-C2B"
+      ]
+    },
+    {
+      "id": "RAD-C2B",
+      "title": "Injective reciprocal sixteen-output lift",
+      "status": "INTEGRATED_STRICT",
+      "track": "spectral-radial",
+      "prerequisites": [
+        "RAD-C2A"
+      ],
+      "scope": "Actual AY PiLp coordinate identity; no weighted graph.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC2BOriginalReciprocalHilbertOutputLift.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift.originalReciprocalHilbertOutputCLM",
+        "FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift.originalReciprocalHilbertOutputCLM_coordinate",
+        "FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift.originalReciprocalHilbertOutputCLM_injective"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json",
+      "run_id": 43568618192,
+      "dependents": [
+        "E08-C4C",
+        "RAD-C3"
+      ]
+    },
+    {
+      "id": "RAD-C3",
+      "title": "Closed original weighted charge graph",
+      "status": "INTEGRATED_STRICT",
+      "track": "spectral-radial",
+      "prerequisites": [
+        "RAD-C2B"
+      ],
+      "scope": "Inverse-image graph under id × B16; no density or maximal multiplier-domain equality.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3OriginalPhysicalWeightedChargeGraph.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph",
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph_mem_iff",
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn",
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_graph_eq",
+        "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_isClosed"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json",
+      "run_id": 43570463487,
+      "dependents": [
+        "E08-C4A",
+        "E08-C4C",
+        "RAD-C3DB"
+      ]
+    },
+    {
+      "id": "RAD-C3DA",
+      "title": "Compact-core weighted FullL2 reciprocal range",
+      "status": "INTEGRATED_STRICT",
+      "track": "spectral-radial",
+      "prerequisites": [],
+      "scope": "Weighted compact-support field is in FullL2; not global surjectivity.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalWeightedCoreField_continuous",
+        "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalWeightedCoreField_hasCompactSupport",
+        "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalWeightedCoreFieldL2",
+        "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalReciprocalFullL2CLM_core_witness",
+        "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalCoreToL2_mem_reciprocalRange"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json",
+      "run_id": 43572123886,
+      "dependents": [
+        "RAD-C3DB"
+      ]
+    },
+    {
+      "id": "RAD-C3DB",
+      "title": "Invariant smooth core lies in weighted graph domain",
+      "status": "INTEGRATED_STRICT",
+      "track": "spectral-radial",
+      "prerequisites": [
+        "RAD-C3",
+        "RAD-C3DA"
+      ],
+      "scope": "All sixteen original weighted outputs; no graph-norm density.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCoreOutput",
+        "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCoreOutput_reciprocal",
+        "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCoreGraph_mem",
+        "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCore_mem_domain"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json",
+      "run_id": 43578132553,
+      "dependents": [
+        "RAD-C3DC"
+      ]
+    },
+    {
+      "id": "RAD-C3DC",
+      "title": "Unconditional weighted physical input-domain density",
+      "status": "INTEGRATED_STRICT",
+      "track": "spectral-radial",
+      "prerequisites": [
+        "RAD-C3DB"
+      ],
+      "scope": "Every positive regulator and literal M,G at N=2; input norm only, not graph-norm core.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/P3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSP3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.originalWeightedPhysicalChargeColumn_domain_dense_of_coreNormClosure_eq",
+        "FCP.BFSSP3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.originalWeightedPhysicalChargeColumn_domain_dense_unconditional"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json",
+      "run_id": 43579923559,
+      "dependents": [
+        "E08-C4A"
+      ]
+    },
+    {
+      "id": "PBW-S1V0",
+      "title": "Source plane decomposition and orthogonal complement",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V0StandaloneOrthogonalGeometryProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V0.sourcePlane_decomposition",
+        "FCP.BFSSS1V0.sourcePlaneComplement_ortho_first",
+        "FCP.BFSSS1V0.sourcePlaneComplement_ortho_second"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": null,
+      "dependents": [
+        "PBW-S1V29"
+      ]
+    },
+    {
+      "id": "PBW-S1V29",
+      "title": "Spin48 generator action preserves real generator space and central sign",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [
+        "PBW-S1V0"
+      ],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V29AllSpin48CliffordGeneratorConjugationProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V29.all_sourceSpin48_generators_stay_real",
+        "FCP.BFSSS1V29.all_sourceSpin48_real_generator_space_preserved",
+        "FCP.BFSSS1V29.sourceSpin48_conjugation_central_sign_invariant"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 39333789056,
+      "dependents": [
+        "PBW-S1V30"
+      ]
+    },
+    {
+      "id": "PBW-S1V37",
+      "title": "Rank-one source conjugation determinant",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V37Original48CliffordGeneratorRankOneDeterminantProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V37.source48_polar_inverse_self",
+        "FCP.BFSSS1V37.source48_clifford_generator_conjugation",
+        "FCP.BFSSS1V37.source48_rankOneConjugationMatrix_det"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 39353100636,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2A",
+      "title": "Exterior coordinate word contraction",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2AOriginalExteriorCoordinateWordContractionProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_cons",
+        "FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_contraction_zero_of_not_mem",
+        "FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_leading_contraction"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40511851424,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52L9E5F20B",
+      "title": "Original source48 Clifford PBW basis and finite dimensionality",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52L9E5F20BOriginalSource48CliffordPBWBasisFiniteDimensionalProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52L9E5F20B.originalSourceCliffordPBWBasis",
+        "FCP.BFSSS1V52L9E5F20B.originalSourceClifford_finiteDimensional"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 39662865914,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V30",
+      "title": "Original Clifford generator injection through exterior equivalence",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [
+        "PBW-S1V29"
+      ],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V30Real48CliffordGeneratorInjectiveViaExteriorProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V30.source48_cliffordGenerator_equivExterior",
+        "FCP.BFSSS1V30.source48_cliffordGenerator_injective"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 39335067742,
+      "dependents": [
+        "PBW-S1V31"
+      ]
+    },
+    {
+      "id": "PBW-S1V38",
+      "title": "Original source48 normalized polar coefficient",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V38Original48PolarCoefficientBridgeProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V38.source48Quadratic_eq_dot",
+        "FCP.BFSSS1V38.source48_polar_eq_two_dot",
+        "FCP.BFSSS1V38.source48_normalizedPolarCoeff_dot",
+        "FCP.BFSSS1V38.source48_normalizedPolarCoeff_dot_self",
+        "FCP.BFSSS1V38.source48_originalNormalizedRankOne_det"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 39354326793,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2B",
+      "title": "Present coordinate contraction has nonzero erase coefficient",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2BOriginalExteriorWordNonzeroEraseContractionProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2B.originalExteriorCoordinateWord_contract_present_nonzero_erase"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40513783572,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2C",
+      "title": "Original ordered exterior PBW basis",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2COriginalExteriorPBWBasisOrderedWordProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis_eq_originalCoordinateWord",
+        "FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels_nodup"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40529606061,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2D",
+      "title": "Empty PBW basis and erase injectivity",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2DOriginalExteriorPBWEmptyAndEraseInjectivityProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2D.originalSourceExteriorPBWBasis_empty_eq_one",
+        "FCP.BFSSS1V52K1D2D.originalSourceFinset_erase_injective_at_present_label"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40532466604,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V31",
+      "title": "Canonical real vector conjugation action",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [
+        "PBW-S1V30"
+      ],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V31CanonicalAllSpin48RealVectorActionProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V31.every_sourceSpin48_conjugated_generator_unique",
+        "FCP.BFSSS1V31.sourceSpin48VectorAction_clifford_generator",
+        "FCP.BFSSS1V31.sourceSpin48VectorAction_add"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 39336266189,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2E1",
+      "title": "Absent-label PBW contraction vanishes",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E1OriginalPBWBasisAbsentCoordinateContractionProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2E1.originalSourcePBWOrderedLabels_mem_finset",
+        "FCP.BFSSS1V52K1D2E1.originalSourceExteriorPBWBasis_coordinateContraction_zero_of_not_mem"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40534646714,
+      "dependents": [
+        "PBW-S1V52K1D2F1"
+      ]
+    },
+    {
+      "id": "PBW-S1V52K1D2E2",
+      "title": "Least coordinate is ordered word head",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E2OriginalPBWLeastCoordinateHeadProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2E2.originalSourcePBWOrderedLabels_eq_finsetSort",
+        "FCP.BFSSS1V52K1D2E2.originalSourcePBWOrderedLabels_cons_of_least"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40536912614,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2E4",
+      "title": "Least occupied label and finite PBW support",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E4OriginalPBWFinitelyOccupiedMinimumProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2E4.originalSourcePBWSupportedIndex_member_occupied",
+        "FCP.BFSSS1V52K1D2E4.originalSourcePBWLeastOccupied_le_every_supported_coordinate"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40542794712,
+      "dependents": [
+        "PBW-S1V52K1D2F1",
+        "PBW-S1V52K1D2F2"
+      ]
+    },
+    {
+      "id": "PBW-S1V52K1A",
+      "title": "Trivial vector action iff original generators commute",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1AOriginalSpin48KernelCommutantProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1A.originalSourceSpin48_trivialAction_iff_generator_commutes"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40491802270,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2E3",
+      "title": "Least-coordinate contraction erases the label",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E3OriginalPBWLeastCoordinateContractionProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2E3.originalSourceExteriorPBWBasis_contraction_erase_of_least"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40542776547,
+      "dependents": [
+        "PBW-S1V52K1D2F1"
+      ]
+    },
+    {
+      "id": "PBW-S1V52K1D2E5",
+      "title": "No occupied PBW labels implies exterior scalar",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Separate scalar identification from empty occupied labels. Historical local compiler evidence only; no fresh integrated strict CI.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2E5OriginalPBWEmptySupportScalarProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2E5.originalExteriorScalar_of_no_occupiedPBWLabels"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": null,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1C",
+      "title": "Graded/even Clifford commutator and polar contraction",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1COriginalSpin48CliffordPolarContractionProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1C.originalSourceClifford_gradedCommutator_eq_polarContraction",
+        "FCP.BFSSS1V52K1C.originalSourceClifford_evenCommutator_eq_polarContraction",
+        "FCP.BFSSS1V52K1C.originalSourceSpin48_trivialAction_polarContractions_zero"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40494768705,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2F1",
+      "title": "Least occupied contraction isolates original PBW coefficient",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [
+        "PBW-S1V52K1D2E1",
+        "PBW-S1V52K1D2E3",
+        "PBW-S1V52K1D2E4"
+      ],
+      "scope": "Finite support; j least across supported coordinates and present in I. Exact coefficient identity, not arbitrary contractions.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2F1OriginalPBWLeastContractionCoefficientProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2F1.originalSourcePBWLeastContraction_coefficient"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40550171138,
+      "dependents": [
+        "PBW-S1V52K1D2F2"
+      ]
+    },
+    {
+      "id": "PBW-S1V52K1D0",
+      "title": "Transport original polar contraction to exterior algebra",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original source48 algebraic interface, scoped to archived roots; no physical spectrum, full group kernel, or fresh integrated qualification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D0OriginalCliffordExteriorContractionTransportProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D0.originalSourceClifford_exterior_contractLeft_transport",
+        "FCP.BFSSS1V52K1D0.originalSourceSpin48_trivialAction_exteriorPolarContractions_zero"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40497329075,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D2F2",
+      "title": "All coordinate contractions zero implies no occupied labels",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [
+        "PBW-S1V52K1D2F1",
+        "PBW-S1V52K1D2E4"
+      ],
+      "scope": "Concludes empty occupied-label set, not scalar identification or Spin48 kernel ±1 alone.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D2F2OriginalPBWAllContractionsNoOccupiedLabelsProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D2F2.originalSourcePBWAllContractions_zero_implies_no_occupied_labels"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40597125928,
+      "dependents": []
+    },
+    {
+      "id": "PBW-S1V52K1D1",
+      "title": "Trivial Spin48 vector action forces all exterior coordinate contractions zero",
+      "status": "LOCAL_COMPILER_EVIDENCE_ONLY",
+      "track": "pbw-source-lineage",
+      "prerequisites": [],
+      "scope": "Original trivial vector action implies exterior coordinate contractions vanish; no full kernel classification.",
+      "source_paths": [
+        "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPhysicalDomainS1V52K1D1OriginalPolarCoordinateExteriorContractionProbe.lean"
+      ],
+      "named_roots": [
+        "FCP.BFSSS1V52K1D1.originalSourcePolar_halfSingle_eq_coordinateDual",
+        "FCP.BFSSS1V52K1D1.originalSourceSpin48_trivialAction_exteriorCoordinateContractions_zero"
+      ],
+      "evidence_record": "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json",
+      "run_id": null,
+      "historical_fcp_run_id": 40503702666,
+      "dependents": []
+    }
+  ],
+  "reverse_declaration_index": {
+    "SpaceIndex": [
+      "D-01"
+    ],
+    "ColorIndex": [
+      "D-01"
+    ],
+    "Boson": [
+      "D-01"
+    ],
+    "Fermion": [
+      "D-01"
+    ],
+    "FullL2": [
+      "D-01"
+    ],
+    "SmoothCore": [
+      "D-01"
+    ],
+    "AlgebraData": [
+      "D-02"
+    ],
+    "AlgebraData.gamma": [
+      "D-02"
+    ],
+    "AlgebraData.theta": [
+      "D-02"
+    ],
+    "AlgebraData.charge": [
+      "D-03"
+    ],
+    "AlgebraData.chargeVector": [
+      "D-03"
+    ],
+    "AlgebraData.coreForm": [
+      "D-03"
+    ],
+    "AlgebraData.GaugeData.physicalSpace": [
+      "G-01"
+    ],
+    "AlgebraData.GaugeData.physicalSpace_closed": [
+      "G-01"
+    ],
+    "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_ne_zero": [
+      "G-02"
+    ],
+    "FCP.BFSSSU2GaugeG4K2B.radialBumpL2_mem_physicalSpace": [
+      "G-02"
+    ],
+    "FCP.BFSSSU2GaugeG4K2B.pairedPhysicalSpace_ne_bot": [
+      "G-02"
+    ],
+    "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionVacuum_mem_fixed": [
+      "G-03"
+    ],
+    "FCP.BFSSOriginalGaugeVacuumOP2C.originalFermionGaugeProjection_ne_zero": [
+      "G-03"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8AA.actualOriginalJointKernel_fixed_fullGauge": [
+      "G-04"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8AA.actualOriginalJointKernel_iff_fullGaugeFixed": [
+      "G-04"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8AA.actualOriginalJointKernel_iff_physical": [
+      "G-04"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8BA.originalMinimalPhysicalHilbertChargeColumn_domain_dense_unconditional": [
+      "H-01"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian": [
+      "H-02"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_selfAdjoint": [
+      "H-02"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8BE.originalMinimalPhysicalNormalizedHamiltonian_weakForm_iff": [
+      "H-02"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8BH.originalMinimalPhysicalNormalizedHamiltonian_eq_historical": [
+      "H-03"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8BH.originalMinimalPhysicalNormalizedHamiltonian_domain_eq_historical": [
+      "H-03"
+    ],
+    "FCP.BFSSSU2PhysicalDomainL6H5E8BH.pairedOriginalPhysicalNormalizedHamiltonian_eq_historical": [
+      "H-03"
+    ],
+    "FCP.BFSSS1V52M3H.originalComplexCliffordFock_injective": [
+      "F-01"
+    ],
+    "FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv": [
+      "F-02"
+    ],
+    "FCP.BFSSS1V52M3I.originalComplexCliffordFockAlgEquiv_apply": [
+      "F-02"
+    ],
+    "FCP.BFSSSourceNineAxisStabilizerConnectedness.source9Axis8Stabilizer_isPathConnected_pbw": [
+      "S-01"
+    ],
+    "FCP.BFSSSourceNineAxisStabilizerQuotient.source9Axis8Stabilizer_isCompact_pbw": [
+      "S-02"
+    ],
+    "FCP.BFSSSourceNineAxisStabilizerQuotient.source9Axis8EightUnitSpinWordToStabilizer_isQuotientMap_pbw": [
+      "S-02"
+    ],
+    "FCP.BFSSOP3C6COriginalFockActiveGammaCovariance.originalFockGammaRealLinear_eq_activeGammaRealLinear": [
+      "S-03"
+    ],
+    "FCP.BFSSOP3C6COriginalFockActiveGammaCovariance.source9Spin_originalFockOperatorAutomorphismHom_activeGamma": [
+      "S-03"
+    ],
+    "FCP.BFSSP2bB3OriginalFockStarAutomorphismAction.source9Spin_originalFockOperatorStarAutomorphismHom": [
+      "S-04"
+    ],
+    "FCP.BFSST1OriginalFockTraceInvariance.source9Spin_originalFockTrace_invariant": [
+      "S-05"
+    ],
+    "FCP.BFSSC48C0OriginalSpinGaugeMajoranaCommutation.source9SpinOriginalPaired48_commutes_sourceGauge": [
+      "S-06"
+    ],
+    "FCP.BFSSC48C0BOriginalSourceGaugeS1JMatrixIdentity.sourceGaugeOriginalPaired48_eq_sourceRealMajoranaMatrix": [
+      "S-07"
+    ],
+    "FCP.BFSSC48C1A0OriginalActiveGammaS1JSpinCompatibility.spin9_activeGamma_S1J_gauge_commute": [
+      "S-08"
+    ],
+    "FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_isCoveringMap_pbw": [
+      "S-09"
+    ],
+    "FCP.BFSSSourceNineAxisCovering.source9Axis8ProjectionHom_fiber_ncard": [
+      "S-09"
+    ],
+    "FCP.BFSSSourceNineAxisCoordinateEquivalence.source9Axis8CoordinateContinuousMulEquiv": [
+      "S-10"
+    ],
+    "OAI.BFSSQuantum.AlgebraData.massless_coreForm_energy": [
+      "A-01"
+    ],
+    "OAI.BFSSRellich.linear_moment_tight_compactness": [
+      "A-02"
+    ],
+    "OAI.BFSSSliceSobolev.core_gradient_l2_local_totallyBounded": [
+      "A-03"
+    ],
+    "OAI.BFSSSliceSobolev.core_linear_moment_totallyBounded": [
+      "A-03"
+    ],
+    "OAI.BFSSSliceSobolev.weightedClosure_linear_totallyBounded": [
+      "A-04"
+    ],
+    "OAI.BFSSSliceSobolev.weightedClosure_sqrt_radial_totallyBounded": [
+      "A-04"
+    ],
+    "FCP.BFSSNORM0COriginalNormalizedFockField.originalNormalizedFockGram_norm_le": [
+      "N-01"
+    ],
+    "FCP.BFSSNORM0D2OriginalPointwiseL2Membership.originalPointwiseFock_memLp": [
+      "N-02"
+    ],
+    "FCP.BFSSNORM0D3AOriginalLpCarrierBridge.originalCarrierLpOfMemLp_congr": [
+      "N-03"
+    ],
+    "FCP.BFSSNORM0D3CDirectOriginalFockLpOutput.originalFockLpDirect_ae": [
+      "N-04"
+    ],
+    "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_ae_of_rep": [
+      "N-05"
+    ],
+    "FCP.BFSSNORM0D3DOriginalFockRepresentativeTransport.originalFockImage_memLp_of_rep": [
+      "N-05"
+    ],
+    "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_domain": [
+      "E08-C4A"
+    ],
+    "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_selfAdjoint": [
+      "E08-C4A"
+    ],
+    "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_closed": [
+      "E08-C4A"
+    ],
+    "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_domain_dense": [
+      "E08-C4A"
+    ],
+    "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_energy": [
+      "E08-C4A"
+    ],
+    "FCP.BFSSP3AuxRADC4AOriginalWeightedNaturalAdjointSquare.originalWeightedPhysicalAdjointSquare_nonneg": [
+      "E08-C4A"
+    ],
+    "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_eq": [
+      "E08-C4B"
+    ],
+    "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_domain": [
+      "E08-C4B"
+    ],
+    "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_apply": [
+      "E08-C4B"
+    ],
+    "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_selfAdjoint": [
+      "E08-C4B"
+    ],
+    "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_closed": [
+      "E08-C4B"
+    ],
+    "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_domain_dense": [
+      "E08-C4B"
+    ],
+    "FCP.BFSSP3AuxRADC4BOriginalWeightedNormalizedAdjointSquare.originalWeightedPhysicalNormalizedAdjointSquare_weakForm_iff": [
+      "E08-C4B"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.mem_ker_iff_graph_zero": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.oneSixteenth_ker": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.naturalAdjointSquare_graph_zero_iff": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.naturalAdjointSquare_ker": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedPhysicalCharge_graph_zero_iff": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedPhysicalCharge_ker_eq_original": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedNormalized_ker_eq_charge": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalNormalizedHamiltonian_ker_eq_charge": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSP3AuxRADC4COriginalWeightedKernelPreservation.originalWeightedNormalized_ker_eq_originalH": [
+      "E08-C4C"
+    ],
+    "FCP.BFSSUGC4.core_haar_charge_commutes": [
+      "PE-UGC4"
+    ],
+    "FCP.BFSSUGC4.graph_haar_core_mem": [
+      "PE-UGC4"
+    ],
+    "FCP.BFSSUGC4.graph_haar_restricted_mem": [
+      "PE-UGC4"
+    ],
+    "FCP.BFSSUGC4.original_restricted_graph_iff": [
+      "PE-UGC4"
+    ],
+    "FCP.BFSSUGC4.upstream_physical_graph_iff": [
+      "PE-UGC4"
+    ],
+    "FCP.BFSSCSQE0.basisSpinor_norm": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.basisWeightedSum": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.basisCharge": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.basisSquarePoint": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.basisSquareCore": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.symmetricEnergy": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.basisEnergyEqual": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.averageConstant": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSCSQE0.originalBasisEnergy": [
+      "PE-CSQE0"
+    ],
+    "FCP.BFSSICDA0.closed_range_eq_of_pointwise": [
+      "PE-ICDA"
+    ],
+    "FCP.BFSSICDA0.source_joint_generator_eq": [
+      "PE-ICDA"
+    ],
+    "FCP.BFSSICDA0.source_joint_closed_graph_eq": [
+      "PE-ICDA"
+    ],
+    "FCP.BFSSICDB0.component_graph_iff": [
+      "PE-ICDB"
+    ],
+    "FCP.BFSSICDB0.source_literal_component_graph_iff": [
+      "PE-ICDB"
+    ],
+    "FCP.BFSSICDB0.source_component_graph_iff": [
+      "PE-ICDB"
+    ],
+    "FCP.BFSSICDC0.source_joint_domain_iff": [
+      "PE-ICDC"
+    ],
+    "FCP.BFSSICDC0.source_common_domain": [
+      "PE-ICDC"
+    ],
+    "FCP.BFSSICDC0.paired_core_charge_norm": [
+      "PE-ICDC"
+    ],
+    "FCP.BFSSICDC0.paired_component_graph_iff": [
+      "PE-ICDC"
+    ],
+    "FCP.BFSSICDC0.paired_common_domain": [
+      "PE-ICDC"
+    ],
+    "FCP.BFSSLOC6C.individual_graph_subset_ambient": [
+      "PE-LOC6C"
+    ],
+    "FCP.BFSSLOC6C.physical_graph_weak_pairing": [
+      "PE-LOC6C"
+    ],
+    "FCP.BFSSLOC6C.physical_weak_pairing_mem_graph": [
+      "PE-LOC6C"
+    ],
+    "FCP.BFSSLOC6C.physical_closed_graph_iff_weak": [
+      "PE-LOC6C"
+    ],
+    "FCP.BFSSNAG0.individualClosedSubmodule_set_eq": [
+      "PE-NAG0"
+    ],
+    "FCP.BFSSNAG0.individualPhysicalGraph_mem_iff": [
+      "PE-NAG0"
+    ],
+    "FCP.BFSSNAG0.individualPhysicalOperator_graph_eq": [
+      "PE-NAG0"
+    ],
+    "FCP.BFSSNAG0.individualPhysicalOperator_isClosed": [
+      "PE-NAG0"
+    ],
+    "FCP.BFSSNAG0.paired_individual_graph_iff": [
+      "PE-NAG0"
+    ],
+    "FCP.BFSSNAG0.paired_individual_isClosed": [
+      "PE-NAG0"
+    ],
+    "FCP.BFSSNAG1.source_individual_output_physical": [
+      "PE-NAG1"
+    ],
+    "FCP.BFSSNAG1.source_native_domain_iff": [
+      "PE-NAG1"
+    ],
+    "FCP.BFSSNAG1.source_native_domain_eq": [
+      "PE-NAG1"
+    ],
+    "FCP.BFSSNAG1.source_native_domain_dense": [
+      "PE-NAG1"
+    ],
+    "FCP.BFSSNAG1.paired_native_domain_eq": [
+      "PE-NAG1"
+    ],
+    "FCP.BFSSNAG1.paired_native_domain_dense": [
+      "PE-NAG1"
+    ],
+    "FCP.BFSSNAG2.weak_pairing_closed": [
+      "PE-NAG2"
+    ],
+    "FCP.BFSSNAG2.source_core_pair_mem": [
+      "PE-NAG2"
+    ],
+    "FCP.BFSSNAG2.source_graph_pairing_iff_weak": [
+      "PE-NAG2"
+    ],
+    "FCP.BFSSNAG2.source_adjoint_graph_iff_weak": [
+      "PE-NAG2"
+    ],
+    "FCP.BFSSNAG2.source_native_selfAdjoint": [
+      "PE-NAG2"
+    ],
+    "FCP.BFSSNAG2.paired_native_selfAdjoint": [
+      "PE-NAG2"
+    ],
+    "FCP.BFSSNAG3.physical_pair_closure": [
+      "PE-NAG3"
+    ],
+    "FCP.BFSSNAG3.nativeCoreGraph_mem_iff": [
+      "PE-NAG3"
+    ],
+    "FCP.BFSSNAG3.nativeCoreOperator_graph_eq": [
+      "PE-NAG3"
+    ],
+    "FCP.BFSSNAG3.source_native_core_graph_closure": [
+      "PE-NAG3"
+    ],
+    "FCP.BFSSNAG3.source_native_core_closure": [
+      "PE-NAG3"
+    ],
+    "FCP.BFSSNAG3.paired_native_core_closure": [
+      "PE-NAG3"
+    ],
+    "FCP.BFSSNAG4.source_native_core_mem_domain": [
+      "PE-ESA"
+    ],
+    "FCP.BFSSNAG4.source_native_core_dense_of_normClosure": [
+      "PE-ESA"
+    ],
+    "FCP.BFSSNAG4.source_native_core_symmetric": [
+      "PE-ESA"
+    ],
+    "FCP.BFSSNAG4.source_native_core_closable": [
+      "PE-ESA"
+    ],
+    "FCP.BFSSNAG4.paired_native_core_selfAdjoint_closure": [
+      "PE-ESA"
+    ],
+    "FCP.BFSSNAG4.paired_native_core_esa": [
+      "PE-ESA"
+    ],
+    "FCP.BFSSCSQF0.paired_core_pairing": [
+      "PE-CSQF0"
+    ],
+    "FCP.BFSSCSQF0.paired_closed_joint_pairing": [
+      "PE-CSQF0"
+    ],
+    "FCP.BFSSCSQF0.symmetricPairing": [
+      "PE-CSQF0"
+    ],
+    "FCP.BFSSCSQF0.pairing_on_closure": [
+      "PE-CSQF0"
+    ],
+    "FCP.BFSSCSQF0.joint_range_pairing": [
+      "PE-CSQF0"
+    ],
+    "FCP.BFSSCSQF1.paired_native_output": [
+      "PE-CSQF1"
+    ],
+    "FCP.BFSSCSQF1.paired_normalized_form": [
+      "PE-CSQF1"
+    ],
+    "FCP.BFSSCSQF1.source_column_point": [
+      "PE-CSQF1"
+    ],
+    "FCP.BFSSCSQF1.source_output_of_common_input": [
+      "PE-CSQF1"
+    ],
+    "FCP.BFSSCSQF1.normalized_constant_pairing": [
+      "PE-CSQF1"
+    ],
+    "FCP.BFSSCSQF2.paired_native_common_square": [
+      "PE-SQUARE"
+    ],
+    "FCP.BFSSCSQF2.paired_core_closure_common_square": [
+      "PE-SQUARE"
+    ],
+    "FCP.BFSSCSQF2.graph_iff_representative": [
+      "PE-SQUARE"
+    ],
+    "FCP.BFSSCSQF2.common_form_test_iff": [
+      "PE-SQUARE"
+    ],
+    "FCP.BFSSCSQF2.naturalSquare_of_common_form": [
+      "PE-SQUARE"
+    ],
+    "FCP.BFSSCSQF2.source_hamiltonian_domain_le": [
+      "PE-SQUARE"
+    ],
+    "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleLabel_card": [
+      "PE-G16-D1B0"
+    ],
+    "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleSupport_card": [
+      "PE-G16-D1B0"
+    ],
+    "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.tripleSupport_injective": [
+      "PE-G16-D1B0"
+    ],
+    "FCP.BFSSP3AuxHardyG16TripleSupportDiagnostic.thirdAxis_outside": [
+      "PE-G16-D1B0"
+    ],
+    "FCP.RHOPFP9A0.originalGamma_sq": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.originalGamma_anticommute": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.originalGammaPair_sq_neg_one": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.originalGammaPair_skew": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.K13_sq": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.K25_sq": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.K46_sq": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.K13_skew": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.K25_skew": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9A0.K46_skew": [
+      "RH-GAMMA"
+    ],
+    "FCP.RHOPFP9C3D2G1D2.relationalQUnitHomeomorphStandardUnit": [
+      "RH-SPHERE"
+    ],
+    "FCP.RHOPFP9C3D2G1D2.relationalQUnitHomeomorphStandardUnit_apply": [
+      "RH-SPHERE"
+    ],
+    "FCP.RHOPFP9C3D2G1D2.relationalQUnitHomeomorphStandardUnit_symm_apply": [
+      "RH-SPHERE"
+    ],
+    "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm": [
+      "RH-QNORM"
+    ],
+    "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm_eq_QNorm": [
+      "RH-QNORM"
+    ],
+    "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm_sq": [
+      "RH-QNORM"
+    ],
+    "FCP.RHOPFP9C3D2G1D39.relationalSourceComplexFourGroupNorm_pos_of_ne_zero": [
+      "RH-QNORM"
+    ],
+    "FCP.RHOPFP9C3D2G1D69.relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph": [
+      "RH-PROJ"
+    ],
+    "FCP.RHOPFP9C3D2G1D69.relationalSourceQCircleOrbitCanonicalProjectivizationHomeomorph_class": [
+      "RH-PROJ"
+    ],
+    "FCP.BFSSP3M4W0B0OriginalGammaCommutantInduction.sourceGammaRealLinear_commute": [
+      "QIT-W0B0"
+    ],
+    "FCP.BFSSP3M4W0B0OriginalGammaCommutantInduction.originalComplexEquiv_generator_commutes": [
+      "QIT-W0B0"
+    ],
+    "FCP.BFSSP3M4W0H1BOriginalAdjoinFullCliffordCommutantR2.originalSourceCentralizerPullback_eq_top": [
+      "QIT-W0H1B"
+    ],
+    "FCP.BFSSP3M4W0H1BOriginalAdjoinFullCliffordCommutantR2.originalComplexEquiv_fullClifford_commutes": [
+      "QIT-W0H1B"
+    ],
+    "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn": [
+      "IBI-DET"
+    ],
+    "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn_apply": [
+      "IBI-DET"
+    ],
+    "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn_adjoint": [
+      "IBI-DET"
+    ],
+    "FCP.BFSSIBIG0B1NativeDetOne.matrixColorColumn_one": [
+      "IBI-DET"
+    ],
+    "FCP.BFSSIBIG0B1NativeDetOne.originalColumnTriple_eq_sourceInner": [
+      "IBI-DET"
+    ],
+    "FCP.BFSSIBIG0B1NativeDetOne.sourceColorUnitTriple_eq_one": [
+      "IBI-DET"
+    ],
+    "FCP.BFSSIBIG0B1NativeDetOne.originalAdjointColorMatrix_det_one": [
+      "IBI-DET"
+    ],
+    "FCP.StandardModel.SMD1SCC1.agrees_refl": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.agrees_symm": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.agrees_trans": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.separation_not_agreement": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.disagreement_has_witness": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.separation_mono": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.agreement_antitone": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.finite_separation_mono": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.singleton_deletion_minimal": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.distinct_singleton_minimals": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.uniform_separation_mono": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.overlap_blocks_uniform": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.missing_blocks_agreement": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC1.defined_separation_not_agreement": [
+      "SCC-BOOL"
+    ],
+    "FCP.StandardModel.SMD1SCC2.uniformDeletionMinimal_iff_minimal": [
+      "SCC-MIN"
+    ],
+    "FCP.StandardModel.SMD1SCC2.uniformDeletionMinimal_is_uniform": [
+      "SCC-MIN"
+    ],
+    "FCP.StandardModel.SMD1SCC2.equivalent_pair_blocks_uniform": [
+      "SCC-MIN"
+    ],
+    "FCP.StandardModel.SMD1SCC2.empty_witnesses_blocked": [
+      "SCC-MIN"
+    ],
+    "FCP.StandardModel.SMD1SCC2.family_minimal_implies_uniform": [
+      "SCC-MIN"
+    ],
+    "FCP.StandardModel.SMD1SCC3.uniform_iff_pairwise_cover": [
+      "SCC-PRIVATE"
+    ],
+    "FCP.StandardModel.SMD1SCC3.deletion_failure_iff_uncovered_pair": [
+      "SCC-PRIVATE"
+    ],
+    "FCP.StandardModel.SMD1SCC3.uncovered_pair_yields_private": [
+      "SCC-PRIVATE"
+    ],
+    "FCP.StandardModel.SMD1SCC3.uniform_minimal_iff_private": [
+      "SCC-PRIVATE"
+    ],
+    "FCP.StandardModel.SMD1SCC3.inclusion_minimal_iff_private": [
+      "SCC-PRIVATE"
+    ],
+    "FCP.StandardModel.SMD1SCC3B0.totalVariation_nonneg": [
+      "SCC-TV"
+    ],
+    "FCP.StandardModel.SMD1SCC3B0.totalVariation_self": [
+      "SCC-TV"
+    ],
+    "FCP.StandardModel.SMD1SCC3B0.totalVariation_symm": [
+      "SCC-TV"
+    ],
+    "FCP.StandardModel.SMD1SCC3B0.totalVariation_eq_zero_iff": [
+      "SCC-TV"
+    ],
+    "FCP.StandardModel.SMD1SCC3B0.totalVariation_pos_iff": [
+      "SCC-TV"
+    ],
+    "FCP.StandardModel.SMD1SCC3B0.totalVariation_pos_of_witness": [
+      "SCC-TV"
+    ],
+    "FCP.StandardModel.SMD1SCC3B0.totalVariation_le_one": [
+      "SCC-TV"
+    ],
+    "FCP.BFSSP3AuxRADC2AOriginalReciprocalFullL2Injectivity.originalReciprocalFullL2CLM_injective": [
+      "RAD-C2A"
+    ],
+    "FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift.originalReciprocalHilbertOutputCLM": [
+      "RAD-C2B"
+    ],
+    "FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift.originalReciprocalHilbertOutputCLM_coordinate": [
+      "RAD-C2B"
+    ],
+    "FCP.BFSSP3AuxRADC2BOriginalReciprocalHilbertOutputLift.originalReciprocalHilbertOutputCLM_injective": [
+      "RAD-C2B"
+    ],
+    "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph": [
+      "RAD-C3"
+    ],
+    "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeGraph_mem_iff": [
+      "RAD-C3"
+    ],
+    "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn": [
+      "RAD-C3"
+    ],
+    "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_graph_eq": [
+      "RAD-C3"
+    ],
+    "FCP.BFSSP3AuxRADC3OriginalPhysicalWeightedChargeGraph.originalWeightedPhysicalChargeColumn_isClosed": [
+      "RAD-C3"
+    ],
+    "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalWeightedCoreField_continuous": [
+      "RAD-C3DA"
+    ],
+    "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalWeightedCoreField_hasCompactSupport": [
+      "RAD-C3DA"
+    ],
+    "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalWeightedCoreFieldL2": [
+      "RAD-C3DA"
+    ],
+    "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalReciprocalFullL2CLM_core_witness": [
+      "RAD-C3DA"
+    ],
+    "FCP.BFSSP3AuxRADC3DAOriginalWeightedCoreFullL2RangeWitness.originalCoreToL2_mem_reciprocalRange": [
+      "RAD-C3DA"
+    ],
+    "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCoreOutput": [
+      "RAD-C3DB"
+    ],
+    "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCoreOutput_reciprocal": [
+      "RAD-C3DB"
+    ],
+    "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCoreGraph_mem": [
+      "RAD-C3DB"
+    ],
+    "FCP.BFSSP3AuxRADC3DBOriginalPhysicalWeightedCoreGraph.originalWeightedChargeCore_mem_domain": [
+      "RAD-C3DB"
+    ],
+    "FCP.BFSSP3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.originalWeightedPhysicalChargeColumn_domain_dense_of_coreNormClosure_eq": [
+      "RAD-C3DC"
+    ],
+    "FCP.BFSSP3AuxRADC3DCOriginalWeightedPhysicalDomainDensity.originalWeightedPhysicalChargeColumn_domain_dense_unconditional": [
+      "RAD-C3DC"
+    ],
+    "FCP.BFSSS1V0.sourcePlane_decomposition": [
+      "PBW-S1V0"
+    ],
+    "FCP.BFSSS1V0.sourcePlaneComplement_ortho_first": [
+      "PBW-S1V0"
+    ],
+    "FCP.BFSSS1V0.sourcePlaneComplement_ortho_second": [
+      "PBW-S1V0"
+    ],
+    "FCP.BFSSS1V29.all_sourceSpin48_generators_stay_real": [
+      "PBW-S1V29"
+    ],
+    "FCP.BFSSS1V29.all_sourceSpin48_real_generator_space_preserved": [
+      "PBW-S1V29"
+    ],
+    "FCP.BFSSS1V29.sourceSpin48_conjugation_central_sign_invariant": [
+      "PBW-S1V29"
+    ],
+    "FCP.BFSSS1V37.source48_polar_inverse_self": [
+      "PBW-S1V37"
+    ],
+    "FCP.BFSSS1V37.source48_clifford_generator_conjugation": [
+      "PBW-S1V37"
+    ],
+    "FCP.BFSSS1V37.source48_rankOneConjugationMatrix_det": [
+      "PBW-S1V37"
+    ],
+    "FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_cons": [
+      "PBW-S1V52K1D2A"
+    ],
+    "FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_contraction_zero_of_not_mem": [
+      "PBW-S1V52K1D2A"
+    ],
+    "FCP.BFSSS1V52K1D2A.originalExteriorCoordinateWord_leading_contraction": [
+      "PBW-S1V52K1D2A"
+    ],
+    "FCP.BFSSS1V52L9E5F20B.originalSourceCliffordPBWBasis": [
+      "PBW-S1V52L9E5F20B"
+    ],
+    "FCP.BFSSS1V52L9E5F20B.originalSourceClifford_finiteDimensional": [
+      "PBW-S1V52L9E5F20B"
+    ],
+    "FCP.BFSSS1V30.source48_cliffordGenerator_equivExterior": [
+      "PBW-S1V30"
+    ],
+    "FCP.BFSSS1V30.source48_cliffordGenerator_injective": [
+      "PBW-S1V30"
+    ],
+    "FCP.BFSSS1V38.source48Quadratic_eq_dot": [
+      "PBW-S1V38"
+    ],
+    "FCP.BFSSS1V38.source48_polar_eq_two_dot": [
+      "PBW-S1V38"
+    ],
+    "FCP.BFSSS1V38.source48_normalizedPolarCoeff_dot": [
+      "PBW-S1V38"
+    ],
+    "FCP.BFSSS1V38.source48_normalizedPolarCoeff_dot_self": [
+      "PBW-S1V38"
+    ],
+    "FCP.BFSSS1V38.source48_originalNormalizedRankOne_det": [
+      "PBW-S1V38"
+    ],
+    "FCP.BFSSS1V52K1D2B.originalExteriorCoordinateWord_contract_present_nonzero_erase": [
+      "PBW-S1V52K1D2B"
+    ],
+    "FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWBasis_eq_originalCoordinateWord": [
+      "PBW-S1V52K1D2C"
+    ],
+    "FCP.BFSSS1V52K1D2C.originalSourceExteriorPBWOrderedLabels_nodup": [
+      "PBW-S1V52K1D2C"
+    ],
+    "FCP.BFSSS1V52K1D2D.originalSourceExteriorPBWBasis_empty_eq_one": [
+      "PBW-S1V52K1D2D"
+    ],
+    "FCP.BFSSS1V52K1D2D.originalSourceFinset_erase_injective_at_present_label": [
+      "PBW-S1V52K1D2D"
+    ],
+    "FCP.BFSSS1V31.every_sourceSpin48_conjugated_generator_unique": [
+      "PBW-S1V31"
+    ],
+    "FCP.BFSSS1V31.sourceSpin48VectorAction_clifford_generator": [
+      "PBW-S1V31"
+    ],
+    "FCP.BFSSS1V31.sourceSpin48VectorAction_add": [
+      "PBW-S1V31"
+    ],
+    "FCP.BFSSS1V52K1D2E1.originalSourcePBWOrderedLabels_mem_finset": [
+      "PBW-S1V52K1D2E1"
+    ],
+    "FCP.BFSSS1V52K1D2E1.originalSourceExteriorPBWBasis_coordinateContraction_zero_of_not_mem": [
+      "PBW-S1V52K1D2E1"
+    ],
+    "FCP.BFSSS1V52K1D2E2.originalSourcePBWOrderedLabels_eq_finsetSort": [
+      "PBW-S1V52K1D2E2"
+    ],
+    "FCP.BFSSS1V52K1D2E2.originalSourcePBWOrderedLabels_cons_of_least": [
+      "PBW-S1V52K1D2E2"
+    ],
+    "FCP.BFSSS1V52K1D2E4.originalSourcePBWSupportedIndex_member_occupied": [
+      "PBW-S1V52K1D2E4"
+    ],
+    "FCP.BFSSS1V52K1D2E4.originalSourcePBWLeastOccupied_le_every_supported_coordinate": [
+      "PBW-S1V52K1D2E4"
+    ],
+    "FCP.BFSSS1V52K1A.originalSourceSpin48_trivialAction_iff_generator_commutes": [
+      "PBW-S1V52K1A"
+    ],
+    "FCP.BFSSS1V52K1D2E3.originalSourceExteriorPBWBasis_contraction_erase_of_least": [
+      "PBW-S1V52K1D2E3"
+    ],
+    "FCP.BFSSS1V52K1D2E5.originalExteriorScalar_of_no_occupiedPBWLabels": [
+      "PBW-S1V52K1D2E5"
+    ],
+    "FCP.BFSSS1V52K1C.originalSourceClifford_gradedCommutator_eq_polarContraction": [
+      "PBW-S1V52K1C"
+    ],
+    "FCP.BFSSS1V52K1C.originalSourceClifford_evenCommutator_eq_polarContraction": [
+      "PBW-S1V52K1C"
+    ],
+    "FCP.BFSSS1V52K1C.originalSourceSpin48_trivialAction_polarContractions_zero": [
+      "PBW-S1V52K1C"
+    ],
+    "FCP.BFSSS1V52K1D2F1.originalSourcePBWLeastContraction_coefficient": [
+      "PBW-S1V52K1D2F1"
+    ],
+    "FCP.BFSSS1V52K1D0.originalSourceClifford_exterior_contractLeft_transport": [
+      "PBW-S1V52K1D0"
+    ],
+    "FCP.BFSSS1V52K1D0.originalSourceSpin48_trivialAction_exteriorPolarContractions_zero": [
+      "PBW-S1V52K1D0"
+    ],
+    "FCP.BFSSS1V52K1D2F2.originalSourcePBWAllContractions_zero_implies_no_occupied_labels": [
+      "PBW-S1V52K1D2F2"
+    ],
+    "FCP.BFSSS1V52K1D1.originalSourcePolar_halfSingle_eq_coordinateDual": [
+      "PBW-S1V52K1D1"
+    ],
+    "FCP.BFSSS1V52K1D1.originalSourceSpin48_trivialAction_exteriorCoordinateContractions_zero": [
+      "PBW-S1V52K1D1"
+    ]
+  },
+  "lexical_import_links": [
+    {
+      "from": "PE-UGC4",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC3GraphHaarProjection",
+      "target": null
+    },
+    {
+      "from": "PE-UGC4",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainD2B10CFullHaarCoreCompatibilityAndDensityProbe",
+      "target": null
+    },
+    {
+      "from": "PE-CSQE0",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0b3BasisSquareComposition",
+      "target": null
+    },
+    {
+      "from": "PE-ICDA",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AUOriginalMinimalClosedChargeLinearPMapProbe",
+      "target": null
+    },
+    {
+      "from": "PE-ICDB",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDA0OriginalJointGraphAdapter",
+      "target": "PE-ICDA"
+    },
+    {
+      "from": "PE-ICDC",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDB0OriginalComponentGraphLifting",
+      "target": "PE-ICDB"
+    },
+    {
+      "from": "PE-ICDC",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQE0OriginalCoreEnergy",
+      "target": "PE-CSQE0"
+    },
+    {
+      "from": "PE-ICDC",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8AYOriginalPhysicalHilbertChargeGraphProbe",
+      "target": null
+    },
+    {
+      "from": "PE-LOC6C",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC5OriginalHilbertWeakGraph",
+      "target": null
+    },
+    {
+      "from": "PE-LOC6C",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC6BOriginalHaarGraphTransfer",
+      "target": null
+    },
+    {
+      "from": "PE-NAG0",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSICDC0OriginalPhysicalCommonDomain",
+      "target": "PE-ICDC"
+    },
+    {
+      "from": "PE-NAG1",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG0OriginalIndividualPhysicalOperator",
+      "target": "PE-NAG0"
+    },
+    {
+      "from": "PE-NAG1",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSUGC2ClosedGraphGaugeCovariance",
+      "target": null
+    },
+    {
+      "from": "PE-NAG1",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8BAOriginalPhysicalChargeUnconditionalDensityProbe",
+      "target": null
+    },
+    {
+      "from": "PE-NAG2",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG1OriginalIndividualPhysicalDomain",
+      "target": "PE-NAG1"
+    },
+    {
+      "from": "PE-NAG2",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSLOC6COriginalPhysicalWeakEquivalence",
+      "target": "PE-LOC6C"
+    },
+    {
+      "from": "PE-NAG2",
+      "import": "Mathlib.Analysis.InnerProductSpace.LinearPMap",
+      "target": null
+    },
+    {
+      "from": "PE-NAG3",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG2OriginalIndividualPhysicalAdjoint",
+      "target": "PE-NAG2"
+    },
+    {
+      "from": "PE-ESA",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG3OriginalIndividualCoreClosure",
+      "target": "PE-NAG3"
+    },
+    {
+      "from": "PE-CSQF0",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSNAG4OriginalIndividualCoreESA",
+      "target": "PE-ESA"
+    },
+    {
+      "from": "PE-CSQF1",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF0OriginalClosedJointPairing",
+      "target": "PE-CSQF0"
+    },
+    {
+      "from": "PE-SQUARE",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.BFSSCSQF1OriginalNativeChargeForm",
+      "target": "PE-CSQF1"
+    },
+    {
+      "from": "PE-SQUARE",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.OperatorDependencies.SU2BFSSPhysicalDomainL6H5E8BEOriginalNormalizedPhysicalHamiltonianProbe",
+      "target": null
+    },
+    {
+      "from": "PE-G16-D1B0",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3AuxHardyG16FourPlaneIncidenceDiagnostic",
+      "target": null
+    },
+    {
+      "from": "RH-GAMMA",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.SU2RealGammaProbe",
+      "target": null
+    },
+    {
+      "from": "RH-SPHERE",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D1BOriginalGammaInterSphereInverseIdentities",
+      "target": null
+    },
+    {
+      "from": "RH-QNORM",
+      "import": "Mathlib.Analysis.InnerProductSpace.Defs",
+      "target": null
+    },
+    {
+      "from": "RH-QNORM",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D38OriginalGammaSourceQNormAndNormedGroup",
+      "target": null
+    },
+    {
+      "from": "RH-PROJ",
+      "import": "Mathlib.Tactic",
+      "target": null
+    },
+    {
+      "from": "RH-PROJ",
+      "import": "Mathlib.Topology.Constructions",
+      "target": null
+    },
+    {
+      "from": "RH-PROJ",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D60OriginalStandardCircleOrbitQuotientHomeomorph",
+      "target": null
+    },
+    {
+      "from": "RH-PROJ",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.RHOPFP9C3D2G1D68DCanonicalProjectiveHomeomorph",
+      "target": null
+    },
+    {
+      "from": "QIT-W0B0",
+      "import": "Mathlib.Algebra.BigOperators.Ring.Finset",
+      "target": null
+    },
+    {
+      "from": "QIT-W0B0",
+      "import": "Mathlib.Algebra.Group.Action.Defs",
+      "target": null
+    },
+    {
+      "from": "QIT-W0B0",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0A3OriginalComplexPureTensorGammaTransport",
+      "target": null
+    },
+    {
+      "from": "QIT-W0H1B",
+      "import": "Mathlib.Algebra.Algebra.Subalgebra.Lattice",
+      "target": null
+    },
+    {
+      "from": "QIT-W0H1B",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.P3M4W0H1AOriginalGeneratorCentralizerComapR2",
+      "target": null
+    },
+    {
+      "from": "IBI-DET",
+      "import": "OAI.MathematicalPhysics.BFSS.Contrib.Kotler.IBIG0B1SourceColumnsTriple",
+      "target": null
+    },
+    {
+      "from": "SCC-BOOL",
+      "import": "Mathlib.Tactic",
+      "target": null
+    },
+    {
+      "from": "SCC-MIN",
+      "import": "Mathlib.Tactic",
+      "target": null
+    },
+    {
+      "from": "SCC-MIN",
+      "import": "OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC1FiniteWitnessSeparation",
+      "target": "SCC-BOOL"
+    },
+    {
+      "from": "SCC-PRIVATE",
+      "import": "Mathlib.Tactic",
+      "target": null
+    },
+    {
+      "from": "SCC-PRIVATE",
+      "import": "OAI.MathematicalPhysics.StandardModel.Contrib.Kotler.SMD1SCC2FamilyMinimalWitnesses",
+      "target": "SCC-MIN"
+    },
+    {
+      "from": "SCC-PRIVATE",
+      "import": "any theorem from the conditional NFC SCC manuscript.",
+      "target": null
+    },
+    {
+      "from": "SCC-TV",
+      "import": "Mathlib.Tactic",
+      "target": null
+    }
+  ],
+  "stale_status_observations": [
+    {
+      "id": "N-05",
+      "historical_status": "PENDING_STRICT_GATE",
+      "run_id": 43095354808,
+      "observed_provider_conclusion": "cancelled",
+      "tested_sha": "77060b0c1ea5daf3bc3e7ca39d01ce83424cdf01",
+      "workflow_name": "BFSS NORM0D D1-B original representative class strict",
+      "job_listing": "empty",
+      "disposition": "Do not treat the historical pending snapshot as current or as evidence of a mathematical failure. Exact declaration/run association and successor search needed."
+    }
+  ],
+  "existence_reachability": {
+    "target": "PE-EXIST",
+    "records": [
+      "D-01",
+      "S-01",
+      "S-02",
+      "D-02",
+      "F-01",
+      "S-03",
+      "S-04",
+      "G-01",
+      "S-06",
+      "D-03",
+      "H-01",
+      "H-02",
+      "O-01",
+      "PE-UGC4",
+      "PE-ICDA",
+      "PE-ICDB",
+      "PE-CSQE0",
+      "PE-ICDC",
+      "PE-NAG0",
+      "PE-NAG1",
+      "PE-LOC6C",
+      "PE-NAG2",
+      "E08-LB1C1",
+      "PE-SPIN",
+      "RAD-C2A",
+      "RAD-C2B",
+      "RAD-C3",
+      "RAD-C3DA",
+      "RAD-C3DB",
+      "RAD-C3DC",
+      "E08-C4A",
+      "PE-TRIAL",
+      "PE-FINITE-LINEAGE",
+      "PE-RAW",
+      "PE-CSQF0",
+      "PE-CSQF1",
+      "PE-NAG3",
+      "E08-BF",
+      "PE-SQUARE",
+      "E08-G15",
+      "E08-G16D0",
+      "PE-G16-D1B0",
+      "E08-G16D1A",
+      "PE-HARDY",
+      "PE-FIDELITY",
+      "PE-EXIST"
+    ],
+    "open_or_conditional": [
+      "O-01",
+      "PE-SPIN",
+      "PE-TRIAL",
+      "PE-RAW",
+      "PE-HARDY",
+      "PE-FIDELITY",
+      "PE-EXIST"
+    ]
+  },
+  "previous_index": "research/maintenance/knowledge-atlas/ATLAS_INDEX_V2.json",
+  "supplemental_source_records": [
+    "research/maintenance/knowledge-atlas/SPECTRAL_RADIAL_RECEIPTS_001.json",
+    "research/maintenance/knowledge-atlas/PBW_SOURCE_LINEAGE_001.json"
+  ]
+}
