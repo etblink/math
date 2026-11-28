@@ -4,7 +4,7 @@
 
 ## Active priority: repository consolidation
 
-1. Preserve original history, source trees and evidence; reconcile outstanding run statuses and artifacts approaching expiry.
+1. Preserve original history, source trees and evidence. [Known artifact checkpoint](research/maintenance/artifact-audit/KNOWN_ARTIFACT_RECONCILIATION_CHECKPOINT_V1.json): 341 known originals reconciled (149 in Git, 192 recovered pending binary commit); all 321 receipt-only discovery runs queried, companion FCP provenance resolved. Remaining body-level discovery and qualification reconciliation are open.
 2. Catalogue all qualifications, theorem signatures, source adapters, computational receipts and negative results; reconcile stale status labels without changing original receipts.
 3. Validate reference resolution, dependency links, workflow and checker compatibility. Review CI triggers before selectively restoring executable workflows.
 4. Reassess the research frontier and explicitly end the freeze before staging another native gate.
