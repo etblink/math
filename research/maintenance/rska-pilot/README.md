@@ -43,3 +43,7 @@ The report and all 9 negative controls were executed in the isolated JavaScript 
 5. Obtain explicit owner acceptance before merge. If results fail these criteria, preserve branch as negative methodological evidence and do not merge.
 
 A small pilot is successful only if it improves actual research decisions. A growing graph by itself is not success.
+
+## Second-objective portability check
+
+[SM/JUNO and cross-track donor review](second-objective.json): same persisted atlas and prerequisite schema, no new objects or route edges. SM-JUNO reaches 7 records, including SCC-PRIVATE and SM-LEDGER; it explicitly has zero model-derived predictions. Spin Lie-defect target reaches QIT-W0H1B through SPIN-W0C1. All 11 pinned inputs fetched and checked on the pilot commit. These were independent read-only traversals of persisted records, not execution of the Node wrapper; all dependencies were already available in V7. The pilot makes alternate routes and negative-context annotations explicit, but does not yet prove improved research efficiency. No merge approval requested.
