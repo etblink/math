@@ -1,0 +1,18 @@
+# Rank-two derivative fixture replay complete — post-CSQ-F2
+
+2026-11-27 Pacific. Baseline e9beba014e3c3727d1de6c6d4597a60c9131a849. Local isolated exact JS only; no new Lean or CI work. CSQ-F2 R1 remains GREEN_QUALIFIED. Frozen seed 91c57e1f3f1e856a51bbc11dbb5a01ee9099ecc0, rank-two anchor 2f701d5d85df6a023998176d94e53c5ad872ad14, derivative engine b988dee1779f779bd0a5016ffd03c3f0b0211eaa and tangent engine 8e7f8588ba7b03f89687ee71f256984bb79b75b7 unchanged.
+
+Three new complete squares supply the remaining ordered cross rectangles. Direct coordinates 00,01,11,22; covariance-derived 02,10,12,20,21. Tangent 01 independently compared as a holdout. All nine selected coordinate receipts and tangent holdout preserved per block, with pinned input blob hashes in aggregate receipts. No wide actions or wide combines reported; exact chunked/BigInt arithmetic, no numerical differentiation.
+
+- S versus core18, both orientations: 12 new pairs, 60 historical matches (24 nonzero), 12 Euler identities; 1504 actions and 143 literal/compiled controls. Aggregate df2864204cdba4e1c4de38f7367ea066573a2a36. Overlap receipt 8924d982419f0f3a3232ed7f645a54dc24407ebf: 360 previous pure-S direct checks, 98 direct/tangent checks.
+- S plus middle versus core20, both orientations: 16 new pairs, 80 historical matches (24 nonzero), 16 Euler identities; 1749 actions and 179 literal/compiled controls. Aggregate 9ed72bdf97daf8ac2bd0fc7cd76f2bb3e7d05fb7. Overlap receipt cb736bac4e4dccd3a18fbece14c56be35224fe1d: 360 prior pure-S direct checks, 162 direct/tangent checks.
+- Middle versus high17,18,19, both orientations: 12 new pairs, 60 historical matches (32 nonzero), 12 Euler identities; 1609 actions and 179 literal/compiled controls. Aggregate 17fad49b31cadda89e299e95612f1b5b77cbd900. Overlap receipt c980ad686895c89ade73f51638f267e184a2881c: 40 prior middle-square direct checks, 50 direct/tangent checks.
+All 200 new aggregate historical comparisons and 40 contracted Euler checks pass, zero imaginary residuals or discrepancies. Total 4862 selected-run actions, 501 literal/compiled controls (excluding additional tangent holdouts), max conservative narrow bound 362071593216 < 2^52. Total 1070 overlap comparisons (760 prior-block direct, 310 direct/tangent holdout), all pass. New 800 representative slots split 400 direct, 400 covariance-derived.
+
+## Complete fixture inventory
+
+Machine-readable [union](local52_rank2_derivative_complete_union_2026_11_27.json) at d3d36f3c65b8fc33c89ee8de3225125692e7615f: programmatically checked eight pinned aggregate receipts, complete 144 ordered pairs of active [1,2,3,4,5,6,13,14,17,18,19,20], no missing pair, all receipts zero errors. Nine duplicate pairs in the low and pure-S squares excluded. 720 unique aggregate family entries and 2880 representative raw slots (2168 direct, 712 covariance-derived, retaining conservative prior classification). Rank-two derivative fixture coverage SURVIVED_FINITE_TESTS. Earlier complete mass/Y/t/v fixture comparisons retained separately. This is a receipt union audit, not fresh replay of all earlier raw actions. No claim of generic polynomial identity or unconditional witness certification.
+
+## Next frontier
+
+Rank-three diag(1,2,3) derivative replay: inspect actual rank-three stabilizer representatives and exact tensor anchor; start pure-S direct, then Phi/H3 mixed with independent transverse holdouts. Do not assume rank-two multiplicity or axis convention carries over. Then generic design coefficient identification, literal weighted integration, remaining Spin(9) covariance, trial admissibility and Hardy premises. No ground-state existence promotion; canonical theorem qualification and historical RED records unchanged.
