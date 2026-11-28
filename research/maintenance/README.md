@@ -108,3 +108,7 @@ Owner imported 18 exact original FCP archives in [commit 634065bb9a5f](https://g
 ### Original Spin9 group-source and upstream review (2026-11-28)
 
 [Atlas V7](knowledge-atlas/ATLAS_INDEX_V7.json): all five historical group-source receipts reconciled, 32 source and 32 independent reports reviewed; five source and three consumer pins match. [Recovery](artifact-audit/SPIN9_ORIGINAL_RECOVERY_001.json): four original ZIPs verified locally pending import; two additional historical originals currently not located, preserved decoded logs/acceptance in contributions. 366 committed originals unchanged; 370 committed or recovered, two separately unlocated ZIPs not counted as preserved. [Upstream synchronization assessment](UPSTREAM_SYNC_REVIEW_2026_11_28.md): six upstream commits, dependency changes including 17 package entries, Mathlib unchanged; defer synchronization during freeze. No CI or source changes.
+
+### Spin9 import and upstream compatibility follow-up (2026-11-28)
+
+[Import verification](artifact-audit/SPIN9_ORIGINAL_IMPORT_VERIFICATION_001.json): four archive paths and Git blob identities match prior recovery manifest exactly at 2cd76b20a4ab59ed88bb424ce9f6e2c91085a2f8. 370/372 known originals committed; two unlocated; prior historical receipts unchanged. [Static compatibility and physical route triage](UPSTREAM_COMPATIBILITY_AND_PHYSICAL_ROUTE_2026_11_28.md): no common changed immediate child in LinearAlgebra or preprints, 17 additional dependency packages, no merge qualification. Maintain freeze; no new CI or theorem.
