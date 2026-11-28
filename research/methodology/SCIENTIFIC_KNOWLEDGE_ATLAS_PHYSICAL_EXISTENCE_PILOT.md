@@ -1,4 +1,4 @@
-# Scientific knowledge atlas — physical existence pilot (v0.1.4)
+# Scientific knowledge atlas — physical existence pilot (v0.1.5)
 
 Snapshot a92852ca6d36770db95f4a16e4b60d5dff006aa8; 2026-11-27 Pacific. Extends the existing [monograph theorem atlas](../../contributions/bfss-kotler/internal-monograph/THEOREM_ATLAS.json) without changing its historical records. The machine-readable companion is `SCIENTIFIC_KNOWLEDGE_ATLAS_PHYSICAL_EXISTENCE_PILOT.json`. Scientific prerequisites are not asserted to be exhaustive Lean imports.
 
@@ -22,6 +22,7 @@ Snapshot a92852ca6d36770db95f4a16e4b60d5dff006aa8; 2026-11-27 Pacific. Extends t
 | PE-TRIAL | ANALYTICAL_CONDITIONAL | Literal normalized 104-function polynomial-Gaussian physical singlet and weighted charge domain |
 | PE-FINITE-LINEAGE | SURVIVED_FINITE_TESTS | Exact archived contraction-coefficient lineage and full-rank interpolation |
 | PE-RAW | OPEN_PROOF_OBLIGATION | Independent source-exact raw contraction/seed certificate |
+| PE-G16-D1B0 | INTEGRATED_STRICT | Recovered exact 28 triple support cardinality, injectivity and consecutive endpoint dichotomy (diagnostic only) |
 | PE-HARDY | ANALYTICAL_CONDITIONAL | Positive-regulator Hardy estimate on physical spinor intertwiners |
 | PE-FIDELITY | ANALYTICAL_CONDITIONAL | Same-H fidelity inequality for all positive regulators |
 | PE-EXIST | OPEN_PROOF_OBLIGATION | Nonzero original physical zero-energy eigenstate |
@@ -36,7 +37,7 @@ The November 25 memorandum resolves the regulator referent: F is the same kernel
 
 ## Verification
 
-23 pilot records linked to 59 existing records. Unique IDs, resolved reached dependency links and no reachable dependency cycles checked programmatically. These checks test indexing, not theorem truth or completeness. Archived receipts used as provenance; NAG3 R2, NAG4 R2, CSQ-F0 R3, CSQ-F1 R2, and CSQ-F2 R1 original artifacts independently verified in their follow-ups. No full archive requalification or raw replay. Preserve negative implementation and scope records separately. The historical base atlas remains untouched. NAG3 R2 qualification receipt: `NAG3_R2_GREEN_QUALIFIED_2026_11_27.md` (in the physical-implication archive).
+24 pilot records linked to 59 existing records. Unique IDs, resolved reached dependency links and no reachable dependency cycles checked programmatically. These checks test indexing, not theorem truth or completeness. Archived receipts used as provenance; NAG3 R2, NAG4 R2, CSQ-F0 R3, CSQ-F1 R2, and CSQ-F2 R1 original artifacts independently verified in their follow-ups. No full archive requalification or raw replay. Preserve negative implementation and scope records separately. The historical base atlas remains untouched. NAG3 R2 qualification receipt: `NAG3_R2_GREEN_QUALIFIED_2026_11_27.md` (in the physical-implication archive).
 
 NAG4 R2 qualification: [NAG4_R2_GREEN_QUALIFIED_2026_11_27.md](../computational/python-first-20261124/bfss-physical-implication/NAG4_R2_GREEN_QUALIFIED_2026_11_27.md).
 
@@ -47,3 +48,5 @@ CSQ-F1 R2 qualification: [CSQF1_R2_GREEN_QUALIFIED_2026_11_27.md](../computation
 CSQ-F2 R1 qualification: [CSQF2_R1_GREEN_QUALIFIED_2026_11_27.md](../computational/python-first-20261124/bfss-physical-implication/CSQF2_R1_GREEN_QUALIFIED_2026_11_27.md).
 
 Rank-three pure-S computational evidence (not theorem promotion): [completion receipt](../computational/python-first-20261124/bfss-physical-implication/POST_RANK2_RANK3_PURE_S_COMPLETE_2026_11_27.md).
+
+G16 D1B0 historical strict diagnostic recovered without new CI: [independent acceptance](../spectral-p2-original-field/P3_AUX_HARDY_G16_D1B0_R1_GREEN_43773462950_RETROSPECTIVE_ACCEPTANCE_2026_11_28.md). Exact archive and job log preserved. [Reuse inventory](../computational/python-first-20261124/bfss-physical-implication/G16_RETROSPECTIVE_DONOR_INVENTORY_AND_REUSE_DECISION_2026_11_28.md) supersedes redundant signed-row primary sequence; next D1B1 actual ordered gamma product adapter, then Frobenius quadratic and originalHardyY/G15 refolding. PE-HARDY remains conditional, PE-EXIST open. Machine-readable pilot revalidated with 24 records, 43 reached IDs and no reached dependency cycles. Base atlas unchanged.
