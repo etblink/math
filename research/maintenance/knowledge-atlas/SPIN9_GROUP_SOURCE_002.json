@@ -1,0 +1,188 @@
+{
+  "schema": "spin9-group-source-reconciliation-v1",
+  "baseline": "c70504f1c6bb33738be5674224a24df87639ba70",
+  "scope": "All five V6 source receipt queue modules reconciled, five tested-source/current pins and three independent audit pins matched. 32 original source and 32 independent root reports observed in preserved decoded logs or newly recovered original ZIP logs. F10R/U standalone audit pins not established. Historical scoped acceptance preserved; F10DW retrospective run/job/artifact review, no rerun or full cache rebuild. Partial editorial links, not a complete proof DAG.",
+  "records": [
+    {
+      "id": "SPIN-GLOBAL-GAMMA",
+      "title": "Global original nine-gamma covariance",
+      "scope": "Whole actual source Spin group, literal nine-vector action and real16 conjugation with inverse orientations; no Fock vector or domain transfer.",
+      "prerequisites": [],
+      "run_id": 42341006499,
+      "tested_sha": "a57dee28569da0a1db3a947ba63fcee836a1cbee",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineGammaCovariance.lean",
+      "source_blob": "a781695776197adb057f5a7c2c2f2d983a6441eb",
+      "consumer_path": "lean/diagnostics/BFSSSpectralSourceNineGammaCovarianceIndependentAudit.lean",
+      "consumer_blob": "b579d5f187e20e6289d9f95934d0767446f3c31d",
+      "roots": [
+        "FCP.BFSSSourceNineGammaCovariance.source9GammaCliffordAlgHom_vector_conjugation",
+        "FCP.BFSSSourceNineGammaCovariance.source9GammaUnits_global_covariance",
+        "FCP.BFSSSourceNineGammaCovariance.source9GammaSpecialOrthogonal_global_covariance",
+        "FCP.BFSSSourceNineGammaCovariance.source9GammaSpecialOrthogonal_intertwines",
+        "FCP.BFSSSourceNineGammaCovariance.source9GammaSpecialOrthogonal_inverse_covariance",
+        "FCP.BFSSSourceNineGammaCovariance.source9GammaUnitPair_intertwines"
+      ],
+      "artifact_id": 13561878078,
+      "receipt_path": "contributions/bfss-kotler/evidence/spectral-confinement-2026-11-06/source-nine-gamma-covariance-42341006499-acceptance.json",
+      "evidence": "ARCHIVED_ACCEPTANCE_AND_DECODED_LOGS",
+      "source_pin_match": true,
+      "consumer_pin_match": true,
+      "source_and_independent_axiom_reports": 12,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-COMPACT",
+      "title": "Actual source Spin9 compactness",
+      "scope": "Original inherited PBW topology and named CompactSpace value; not a covering or global Fock unitary.",
+      "prerequisites": [],
+      "run_id": 42397460623,
+      "tested_sha": "a78c80da46bc8167df4753017b37cf1323008ac1",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SpectralSourceNineCompactness.lean",
+      "source_blob": "4dfc7d5498687cda6f552e4652514898fc83e2d4",
+      "consumer_path": "lean/diagnostics/BFSSSpectralSourceNineCompactnessIndependentAudit.lean",
+      "consumer_blob": "66309f68495bb5e9e513fd4c164a17e5b284e839",
+      "roots": [
+        "FCP.BFSSSourceNineCompactness.source9QUnit_eq_euclidean_sphere_preimage",
+        "FCP.BFSSSourceNineCompactness.source9QUnit_isCompact",
+        "FCP.BFSSSourceNineCompactness.source9EightUnitParameters_isCompact",
+        "FCP.BFSSSourceNineCompactness.source9EightUnitSpinWord_range_eq_univ",
+        "FCP.BFSSSourceNineCompactness.source9Spin_univ_isCompact_pbw",
+        "FCP.BFSSSourceNineCompactness.source9Spin_compactSpace_pbw",
+        "FCP.BFSSSourceNineCompactness.source9Spin_isCompact_pbw",
+        "FCP.BFSSSourceNineCompactness.source9Spin_isClosed_pbw"
+      ],
+      "artifact_id": 13584528960,
+      "receipt_path": "contributions/bfss-kotler/evidence/spectral-confinement-2026-11-06/source-nine-compactness-42397460623-acceptance.json",
+      "evidence": "ARCHIVED_ACCEPTANCE_AND_DECODED_LOGS",
+      "source_pin_match": true,
+      "consumer_pin_match": true,
+      "source_and_independent_axiom_reports": 16,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "id": "SPIN-F10R",
+      "title": "Original paired-real SO48 group hom",
+      "scope": "Actual original 24×2 labels, determinant one and algebraic hom, no topological lift or Fock vector implementation.",
+      "prerequisites": [],
+      "run_id": 41287580971,
+      "tested_sha": "4e79469dae20001d8fcab770b5baae62d50afa22",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10RSourceSpinOriginalPaired48SOHomProbe.lean",
+      "source_blob": "75a679f2a1435d747e219617feea266b4508c53d",
+      "consumer_path": null,
+      "consumer_blob": null,
+      "roots": [
+        "FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48_mem_specialOrthogonal",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48SpecialOrthogonalHom",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinOriginalPaired48SpecialOrthogonalHom_apply"
+      ],
+      "artifact_id": 13076326213,
+      "receipt_path": "contributions/bfss-kotler/FCP_K1D18V10H_F10R_ACCEPTANCE_AND_F10S_NEGATIVE_SCALAR_CANDIDATE_2026_11_01.md",
+      "evidence": "ARCHIVED_ACCEPTANCE_AND_RECOVERED_ORIGINAL",
+      "source_pin_match": true,
+      "consumer_pin_match": null,
+      "source_and_independent_axiom_reports": 6,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "consumer_pin_limitation": "Original independent declaration-audit log verified; standalone consumer file not located at attempted path, no consumer pin claim."
+    },
+    {
+      "id": "SPIN-F10U",
+      "title": "Actual negative central paired SO48 image",
+      "scope": "Exactly -I48; nonidentity and not in kernel; no full kernel classification, parity or global lift.",
+      "prerequisites": [
+        "SPIN-F10R"
+      ],
+      "run_id": 41309779978,
+      "tested_sha": "c060702df934113d2a5a219e4ae10fb78352d701",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10UActualNegativeCentralSO48ImageProbe.lean",
+      "source_blob": "353978608b978b00d0e36deb1c1a47c32641ea59",
+      "consumer_path": null,
+      "consumer_blob": null,
+      "roots": [
+        "FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_originalPairedSO48_image",
+        "FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_originalPairedSO48_image_ne_one",
+        "FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_not_mem_originalPairedSO48_ker",
+        "FCP.BFSSPairedSpin9Clifford.source9NegativeCentral_ne_one"
+      ],
+      "artifact_id": 13085292065,
+      "receipt_path": "contributions/bfss-kotler/FCP_K1D18V10H_F10U_ACCEPTANCE_AND_F10V_CENTRAL_INVOLUTION_SIGN_CANDIDATE_2026_11_01.md",
+      "evidence": "ARCHIVED_ACCEPTANCE_AND_RECOVERED_ORIGINAL",
+      "source_pin_match": true,
+      "consumer_pin_match": null,
+      "source_and_independent_axiom_reports": 8,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "consumer_pin_limitation": "Original independent declaration-audit log verified; standalone consumer file not located at attempted path, no consumer pin claim."
+    },
+    {
+      "id": "SPIN-F10DW",
+      "title": "Source real16 representation differentiability at identity",
+      "scope": "Native chart differentiability and manifold derivative at one, not whole-group smoothness or physical Fock lift.",
+      "prerequisites": [],
+      "run_id": 42287468238,
+      "tested_sha": "54748cb062b54d970d5f448ae4fca9bd84bcfcd4",
+      "source_path": "lean/OAI/MathematicalPhysics/BFSS/Contrib/Kotler/SU2BFSSPairedSpin9V10HF10DWNativeRepresentationDifferentiability.lean",
+      "source_blob": "8542aedf65081043c1ce0e1d7c8255bd5e275995",
+      "consumer_path": "lean/diagnostics/FCP_K1D18V10HF10DWIndependentAudit.lean",
+      "consumer_blob": "4447f6bcee041169e1f254be8628a3de8d5d52b2",
+      "roots": [
+        "FCP.BFSSPairedSpin9Clifford.gamma16SOIdentity_extChartAt_apply_on_target",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGammaIdentityChartMatrix",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGammaIdentityChartMatrix_eq_eval",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGammaIdentityChartMatrix_zero",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGammaIdentityChartMatrix_contDiff",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGammaIdentityChartTarget_mem_eventually",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGamma_written_eventuallyEq",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGamma_written_contDiffAt_zero",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGamma_written_differentiableAt_zero",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGammaSpecialOrthogonalHom_mdifferentiableAt_one",
+        "FCP.BFSSPairedSpin9Clifford.source9SpinGammaSpecialOrthogonalHom_hasMFDerivAt_one"
+      ],
+      "artifact_id": 13538487589,
+      "receipt_path": "research/maintenance/artifact-audit/SPIN9_ORIGINAL_RECOVERY_001.json",
+      "evidence": "RETROSPECTIVE_PROVIDER_ORIGINAL_AND_JOB_STEPS",
+      "source_pin_match": true,
+      "consumer_pin_match": true,
+      "source_and_independent_axiom_reports": 22,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "negative": {
+    "run_id": 42285545709,
+    "artifact_id": 13538830000,
+    "lesson": "Eleven source reports allowed-only, independent audit failed missing ChartedSpace instance and two rewrites; successor actual source and independent audit compile with eleven allowed-only reports each. Preserve RED, not a source theorem counterexample."
+  },
+  "f10dw_review": {
+    "job": 128131906891,
+    "run": "completed/success",
+    "tested_sha": "54748cb062b54d970d5f448ae4fca9bd84bcfcd4",
+    "all_executed_steps": "success",
+    "cache_rebuild": "skipped by accepted sealed cache route; fresh parent DE through DV compilation and source/independent audit succeeded",
+    "original_artifact": 13538487589,
+    "source_embedded_blob": "8542aedf65081043c1ce0e1d7c8255bd5e275995",
+    "independent_embedded_blob": "4447f6bcee041169e1f254be8628a3de8d5d52b2",
+    "source_reports": 11,
+    "consumer_reports": 11,
+    "scope": "Identity differentiability only; no claim that derivative equals previously constructed Lie hom unless explicitly established by exact theorem type."
+  },
+  "recovery_manifest": "research/maintenance/artifact-audit/SPIN9_ORIGINAL_RECOVERY_001.json",
+  "remaining": "Actual coherent Fock-vector action, source topological covering/lift, physical gauge and domain covariance, transitivity/singlet, compression, Hardy and fidelity remain distinct. No new proof or CI."
+}
